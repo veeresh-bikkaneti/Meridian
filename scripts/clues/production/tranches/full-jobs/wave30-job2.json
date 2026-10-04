@@ -1,0 +1,862 @@
+[
+  {
+    "rank": 5864,
+    "attempt": 5821,
+    "place_id": "gn-3049519",
+    "input": {
+      "place": {
+        "place_id": "gn-3049519",
+        "name": "Komárom",
+        "country": "Hungary",
+        "subdivision": "Komárom-Esztergom",
+        "lat": 47.74318,
+        "lon": 18.11913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komárom",
+          "url": "https://en.wikipedia.org/wiki/Komárom",
+          "text": "Komárom (Hungarian pronunciation: [ˈkomaːrom]; German: Komorn; Latin: Brigetio, later Comaromium; Slovak: Komárno) is a city in Hungary on the south bank of the Danube in Komárom-Esztergom County. Komárom fortress played an important role in the Hungarian Revolution of 1848 and many contemporary English sources refer to it as the Fortress of Comorn. \nKomárom on the south bank was formerly known as a separate village called Újszőny (or Szony). Komarom on the north bank and Újszőny were connected in 1892 with an iron bridge across the Danube. The  two towns were united under the name of city of Komárom in 1896. \nOn 4 June 1920, the Treaty of Trianon that broke up the Austria-Hungary Empire split the city in two, because the southern border of Czechoslovakia was determined by the river Danube. This division separated the historical Komárom county of the Kingdom of Hungary and the city of Komárom. \nThe bigger, northern part of the city was attached to Czechoslovakia and renamed Komárno.  Its population resulted in a sizable ethnic Hungarian minority in present-day Slovakia. The southern part of the city, lying south of the Danube, remained in Hungary. \nOn 2 November 1938 by the First Vienna Award, the northern part of the city was returned to Hungary, and divided Komárom was reunified. At the end of World War II, the city was again divided between  Czechoslovakia and Hungary. \nFollowing the breakup of Czechoslovakia, two nations were established: the Czech Republic to the north and Slovakia to the south. Komárno is in today's Slovakia on the northern bank of the Danube."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "komarom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5865,
+    "attempt": 5822,
+    "place_id": "gn-3142228",
+    "input": {
+      "place": {
+        "place_id": "gn-3142228",
+        "name": "Raufoss",
+        "country": "Norway",
+        "subdivision": "Innlandet",
+        "lat": 60.72604,
+        "lon": 10.6133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raufoss",
+          "url": "https://en.wikipedia.org/wiki/Raufoss",
+          "text": "Raufoss is a town in Vestre Toten Municipality in Innlandet county, Norway. The town is the administrative centre of the municipality. It is located about 10 kilometres (6.2 mi) south of the larger town of Gjøvik. The town is located along the municipal border with the neighboring Gjøvik Municipality and the actual urban area of Raufoss does cross the border slightly, including a small part of Gjøvik as well (as defined by Statistics Norway).\nThe 7.12-square-kilometre (1,760-acre) town had a population (2022) of 7,918 and a population density of 1,112 inhabitants per square kilometre (2,880/sq mi). Since 2022, the population and area data for this town area has not been separately tracked by Statistics Norway and instead it has been considered part of the urban area for the town of Gjøvik.\nThe village of Raufoss was given town status in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "raufoss",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5866,
+    "attempt": 5823,
+    "place_id": "gn-3150742",
+    "input": {
+      "place": {
+        "place_id": "gn-3150742",
+        "name": "Jørpeland",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 59.02251,
+        "lon": 6.04078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jørpeland",
+          "url": "https://en.wikipedia.org/wiki/Jørpeland",
+          "text": "Jørpeland is the administrative centre of Strand Municipality in Rogaland county, Norway. The town is located on the western coast of the mainland, along the shore of the Idsefjorden, about 20 kilometres (12 mi) northeast of the city of Stavanger. It sits along the Norwegian National Road 13 a short distance southeast of the village of Tau where the Ryfast tunnel has its eastern entrance.\nThe 4.16-square-kilometre (1,030-acre) town has a population (2025) of 7,815 and a population density of 1,879 inhabitants per square kilometre (4,870/sq mi). Jørpeland is also known as \"Pulpit Rock City\", because Jørpeland is nearest city to the Preikestolen, which attracts tourists from all over the world. The Preikestolen is a huge cliff overlooking the Lysefjorden and it sits about 10 kilometres (6.2 mi) southeast of Jørpeland.\nJørpeland became designated as a town by the municipal council on 1 April 1998.  Prior to that time it was simply considered a very large village. Jørpeland is divided into nine boroughs: Leite, Barka, Tungland, Barkved, Jøssang, Førland, Langeland, Grønnevoll, and Fjelde. The river Jørpelandsåna runs through the town before emptying into the fjord on the south side of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "j rpeland",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "j",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rpeland",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5867,
+    "attempt": 5824,
+    "place_id": "gn-3167062",
+    "input": {
+      "place": {
+        "place_id": "gn-3167062",
+        "name": "Sasso Marconi",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.40064,
+        "lon": 11.25177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sasso Marconi",
+          "url": "https://en.wikipedia.org/wiki/Sasso_Marconi",
+          "text": "Sasso Marconi (Emilian: Al Sâs) is a town and comune in the Metropolitan City of Bologna, Emilia-Romagna, northern Italy. It lies in the lower valley of the Reno, about 17 kilometres (11 mi) south-southwest of Bologna, at the northern edge of the Bolognese Apennines.\nThe municipality is closely associated with Guglielmo Marconi, the Italian inventor and pioneer of wireless telegraphy. Marconi carried out his early wireless experiments at Villa Griffone, the family residence at Pontecchio Marconi, now part of the Marconi Museum and Mausoleum complex.\nBeyond its Marconi heritage, Sasso Marconi is notable for its position at the threshold between Bologna and the Apennines, for the Roman aqueduct of the Setta, for historic complexes such as Palazzo de' Rossi and Colle Ameno, and for the sandstone landscape of the Contrafforte Pliocenico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "sasso marconi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sasso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marconi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5868,
+    "attempt": 5825,
+    "place_id": "gn-3181757",
+    "input": {
+      "place": {
+        "place_id": "gn-3181757",
+        "name": "Borgo San Dalmazzo",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.33785,
+        "lon": 7.4931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borgo San Dalmazzo",
+          "url": "https://en.wikipedia.org/wiki/Borgo_San_Dalmazzo",
+          "text": "Borgo San Dalmazzo (Occitan: Lo Borg Sant Dalmatz) is a comune (municipality) in the Province of Cuneo in the Italian region Piedmont, located about 80 kilometres (50 mi) south of Turin and about 8 kilometres (5 mi) southwest of Cuneo.\nBorgo San Dalmazzo takes its name from Saint Dalmatius of Pavia. Sights include the parish church of San Dalmazzo (11th century).\nBorgo San Dalmazzo borders the following municipalities: Boves, Cuneo, Gaiola, Moiola, Roccasparvera, Roccavione, Valdieri, and Vignolo.\nThe Nazi and Italian Social Republic regimes established and operated the Borgo San Dalmazzo concentration camp during the Second World War. At Borgo, approximately 375 Jewish Italians (from Cuneo, Saluzzo, Mondovì and other nearby communes) and 349 Jewish refugees from other countries were imprisoned and eventually deported to Auschwitz and other Nazi extermination camps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "borgo san dalmazzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borgo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dalmazzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5869,
+    "attempt": 5826,
+    "place_id": "gn-3687758",
+    "input": {
+      "place": {
+        "place_id": "gn-3687758",
+        "name": "Campo de la Cruz",
+        "country": "Colombia",
+        "subdivision": "Atlántico",
+        "lat": 10.37808,
+        "lon": -74.88356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campo de la Cruz",
+          "url": "https://en.wikipedia.org/wiki/Campo_de_la_Cruz",
+          "text": "Campo de la Cruz (Spanish for \"field [or countryside] of the cross\") is a municipality and a town in the Colombian department of Atlántico. It is the fifth most populated town in the department and is situated on the west bank of the Magdalena river and at the southern part of the Department of Atlántico. By road, Campo de la Cruz is located 80 km to the south of Barranquilla. Originally a fishing village, it was formally founded in the 17th century during the colonial period as 'Puerto Real de la Cruz'.  Once the town gained independence from the Spanish Empire, the name was changed to its current denomination, Campo de la Cruz. During the colonial time and the early republican period it was a small but still important fluvial port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "campo de la cruz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5870,
+    "attempt": 5827,
+    "place_id": "gn-4147241",
+    "input": {
+      "place": {
+        "place_id": "gn-4147241",
+        "name": "Belle Glade",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.68451,
+        "lon": -80.66756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belle Glade, Florida",
+          "url": "https://en.wikipedia.org/wiki/Belle_Glade,_Florida",
+          "text": "Belle Glade is a city in south-central Florida in the far western part of Palm Beach County, Florida, United States, on the southeastern shore of Lake Okeechobee. It is part of the Miami metropolitan area of South Florida. As of the 2020 census, Belle Glade had a population of 16,698.\nBelle Glade (and the surrounding area) is sometimes referred to as \"Muck City\" due to the large quantity of muck, in which sugarcane grows, found in the area.  Despite being located in the South Florida region of the state, Belle Glade is culturally more associated with the Florida Heartland.\nFor a time during the early to mid 1980s, the city had the highest rate of AIDS infection per capita (37 cases in a population of roughly 19,000) in the United States. According to the FBI, in 2003, the city had the second highest violent crime rate in the country at 298 per 10,000 residents. In 2010, the Palm Beach County sheriff's office estimated that half of the young men in Belle Glade between the ages of 18 and 25 had felony convictions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "belle glade",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "glade",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5871,
+    "attempt": 5828,
+    "place_id": "gn-4165913",
+    "input": {
+      "place": {
+        "place_id": "gn-4165913",
+        "name": "New Smyrna Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.02582,
+        "lon": -80.927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Smyrna Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/New_Smyrna_Beach,_Florida",
+          "text": "New Smyrna Beach is a city in Volusia County, Florida, United States, located on the central east coast of the state, with the Atlantic Ocean to the east. The downtown section of the city is located on the west side of the Indian River and the Indian River Lagoon system. The Coronado Beach Bridge crosses the Intracoastal Waterway just south of Ponce de Leon Inlet, connecting the mainland with the beach on the coastal barrier island. The population was 30,142 at the 2020 census; according to 2023 census estimates, the city is estimated to have a population of 32,655.\nThe surrounding area offers many opportunities for outdoor recreation; these include fishing, sailing, motorboating, golfing, and hiking. Visitors participate in water sports of all kinds, including swimming, scuba diving, kitesurfing, and surfing. In July 2009, New Smyrna Beach was ranked number nine on the list of \"best surf towns\" in Surfer. It was recognized as one of the \"world's top 20 surf towns\" by National Geographic in 2012. It has also been dubbed the \"shark attack capital of the world.\"\nNew Smyrna Beach's motto is cygnus inter anates, which is Latin for \"a swan among ducks.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "new smyrna beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "smyrna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5872,
+    "attempt": 5829,
+    "place_id": "gn-4173717",
+    "input": {
+      "place": {
+        "place_id": "gn-4173717",
+        "name": "Southwest Ranches",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.0587,
+        "lon": -80.33727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southwest Ranches, Florida",
+          "url": "https://en.wikipedia.org/wiki/Southwest_Ranches,_Florida",
+          "text": "Southwest Ranches is a town in Broward County, Florida, United States. It is a suburban community part of the Miami metropolitan area and is located on the eastern edge of the Everglades, 15 miles (24 km) southwest of Fort Lauderdale and about 22 miles (35 km) northwest of Miami. It is unusual in that it consists of three non-contiguous areas, albeit they are in close proximity; the two largest being separated by 1,455 feet (0.443 km). It became the county's 30th incorporated place in 2000 to avoid annexation into Pembroke Pines and to preserve its semirural lifestyle. Because the area has many horse ranches and is located in the southwestern part of Broward County, residents chose \"Southwest Ranches\" over other potential town names.\nThe population at the 2020 census was 7,607. The town includes the former census-designated places of Country Estates, Green Meadow, Ivanhoe Estates, Rolling Oaks, and Sunshine Ranches (as well as subneighborhoods Landmark Ranch Estates and Sterling Ranch Estates), all of which are now Southwest Ranches neighborhoods. To support its rural-equestrian lifestyle, the town has developed many equestrian trails."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "southwest ranches",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southwest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ranches",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5873,
+    "attempt": 5830,
+    "place_id": "gn-4503134",
+    "input": {
+      "place": {
+        "place_id": "gn-4503134",
+        "name": "Mount Holly",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.99289,
+        "lon": -74.78766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Holly, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mount_Holly,_New_Jersey",
+          "text": "Mount Holly is a township that is the county seat of Burlington County in the U.S. state of New Jersey. It is an eastern suburb of Philadelphia, the nation's sixth largest city as of 2020. As of the 2020 United States census, the township's population was 9,981, an increase of 445 (+4.7%) from the 2010 census count of 9,536, which in turn reflected a decline of 1,192 (-11.1%) from the 10,728 counted in the 2000 census. The township, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nWhat is now Mount Holly was originally formed as Northampton on November 6, 1688. Northampton was incorporated as one of New Jersey's initial group of 104 townships created by an act of the New Jersey Legislature on February 21, 1798. Portions of the township were taken to form Little Egg Harbor Township (February 13, 1740, now part of Ocean County), Washington Township (November 19, 1802), Pemberton borough (December 15, 1826), Coaxen Township (March 10, 1845, now known as Southampton Township), Pemberton Township (March 10, 1846), Westampton Township (March 6, 1850) and Lumberton Township (March 14, 1860). There had been a Mount Holly post office since before the 1870 U.S. Census. The township was renamed Mount Holly as of November 6, 1931, based on the results of a referendum held three days earlier. The township was named for the prominent hill just north of downtown partially covered with holly trees.  Some areas of today's Mount Holly were known as Bridgetown.\nMount Holly gives its name to the National Weather Service Weather Forecast Office for the Philadelphia metropolitan area, serving most of New Jersey, Southeastern Pennsylvania, all of Delaware and Eastern Maryland, though the office is actually located in adjacent Westampton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "mount holly",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "holly",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5874,
+    "attempt": 5831,
+    "place_id": "gn-4891176",
+    "input": {
+      "place": {
+        "place_id": "gn-4891176",
+        "name": "Englewood",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.77976,
+        "lon": -87.64588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Englewood, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Englewood,_Chicago",
+          "text": "Englewood is a neighborhood and community area located on the South Side of Chicago, Illinois, United States. It is also the 68th of the 77 community areas in the city. At its peak population in 1960, over 97,000 people lived in its approximately 3 square miles (7.8 km2), but the neighborhood's population has since dropped dramatically. In 2000, it had a population of approximately 40,000 inhabitants, and the 2010 census indicated that its population has further declined to approximately 30,000. Englewood is bordered by Garfield Boulevard to the north, 75th Street to the south, Racine Avenue to the west, and an irregular border that bends along the Metra Railroad Tracks to the east. On the southwest side of Chicago lies West Englewood, which is generally lumped in with Englewood by Chicagoans. Englewood, a low-income African-American community, has a high rate of foreclosed properties due to the area's population drop."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "englewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5875,
+    "attempt": 5832,
+    "place_id": "gn-4900358",
+    "input": {
+      "place": {
+        "place_id": "gn-4900358",
+        "name": "Logan Square",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.92337,
+        "lon": -87.69922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Logan Square, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Logan_Square,_Chicago",
+          "text": "Logan Square is one of the 77 community areas of Chicago in Illinois, United States.\nThe Logan Square neighborhood, located within the Logan Square community area, is centered on the public square that serves as its namesake, located at the three-way intersection of Milwaukee Avenue, Logan Boulevard and Kedzie Boulevard.\nLogan Square is, in general, bounded by Metra's Milwaukee District North Line on the west, the North Branch of the Chicago River on the east, Diversey Parkway on the north, and the Bloomingdale Trail (also known as \"The 606\") on the south. The area is characterized by the prominent historical boulevards, stately greystones and large bungalow-style homes.\nThe community area consists of the  neighborhoods Logan Square, Bucktown, Palmer Square, and Kosciuszko Park. As of 2024, it had a population of 71,192. The area was originally settled largely by Norwegian, Danish, Polish, and Jewish immigrants beginning in the 19th century; it is now home to a large Latino community as well as a growing number of young professionals as a result of gentrification. The Logan Square Boulevards Historic District, encompassing the area's boulevards and namesake squares, was added to the National Register of Historic Places in 1985 and designated a Chicago Landmark in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "logan square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "logan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5876,
+    "attempt": 5833,
+    "place_id": "gn-4995197",
+    "input": {
+      "place": {
+        "place_id": "gn-4995197",
+        "name": "Hamtramck",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.39282,
+        "lon": -83.04964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamtramck, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Hamtramck,_Michigan",
+          "text": "Hamtramck (  ham-TRAM-ik) is a city in Wayne County in the U.S. state of Michigan. Hamtramck is about 5 miles (8.0 km) north of downtown Detroit and is surrounded by Detroit on most sides. As of the 2020 census, the city had a population of 28,433 and was by far the most densely populated municipality in Michigan.\nKnown in the 20th century as a center of Polish-American life and culture, Hamtramck has since attracted new immigrants, especially from Yemen, Bangladesh, and Pakistan. In 2013, it reportedly became the first Muslim-majority city in the U.S. In 2015, Hamtramck became the first city to have a Muslim-majority city council in U.S history, with four of the six members being Muslim. In 2022, Hamtramck became the first city with a fully Muslim city council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "hamtramck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5877,
+    "attempt": 5834,
+    "place_id": "gn-5115835",
+    "input": {
+      "place": {
+        "place_id": "gn-5115835",
+        "name": "East Elmhurst",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.76121,
+        "lon": -73.86514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Elmhurst, Queens",
+          "url": "https://en.wikipedia.org/wiki/East_Elmhurst,_Queens",
+          "text": "East Elmhurst is a residential neighborhood in the northwest section of the New York City borough of Queens. It is bounded to the south by Jackson Heights and Corona, to the north and east by Bowery Bay, and to the west by Woodside and Ditmars Steinway. The area also includes LaGuardia Airport, located on the shore of Flushing Bay, the LaGuardia Landing Lights Fields, and Astoria Heights (the latter two in ZIP Code 11370).\nEast Elmhurst is part of Queens Community District 3 and its ZIP Codes are 11369, 11370, and 11371. The neighborhood is patrolled by the New York City Police Department's 115th Precinct, though the airport is patrolled by the Port Authority Police Department. East Elmhurst and its southern neighbor Corona are often referred to jointly as \"Corona/East Elmhurst\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "east elmhurst",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "elmhurst",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5878,
+    "attempt": 5835,
+    "place_id": "gn-5123344",
+    "input": {
+      "place": {
+        "place_id": "gn-5123344",
+        "name": "Kew Gardens",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71427,
+        "lon": -73.83097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kew Gardens, Queens",
+          "url": "https://en.wikipedia.org/wiki/Kew_Gardens,_Queens",
+          "text": "Kew Gardens is a neighborhood in the central area of the New York City borough of Queens. Kew Gardens is bounded to the north by the Union Turnpike and the Jackie Robinson Parkway, to the east by the Van Wyck Expressway and 131st Street, to the south by Hillside Avenue, and to the west by Park Lane, Abingdon Road, and 118th Street. Forest Park is to the west and the neighborhood of Forest Hills to the northwest, Flushing Meadows–Corona Park north, Richmond Hill south, Briarwood southeast, and Kew Gardens Hills east.\nKew Gardens is located in Queens Community District 9 and its ZIP Code is 11415. It is patrolled by the New York City Police Department's 102nd Precinct. Politically, Kew Gardens is represented by the New York City Council's 29th District. It is located within New York's 5th congressional district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "kew gardens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kew",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gardens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5879,
+    "attempt": 5836,
+    "place_id": "gn-5145034",
+    "input": {
+      "place": {
+        "place_id": "gn-5145034",
+        "name": "Woodrow",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.5415,
+        "lon": -74.19106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodrow, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Woodrow,_Staten_Island",
+          "text": "Woodrow is a neighborhood located on the South Shore of Staten Island, New York, United States.  The neighborhood is represented in the New York State Senate by Andrew Lanza, in the New York State Assembly by Michael Reilly, and in the New York City Council by Joe Borelli.\nThe first Methodist church in the immediate New York City area opened in the neighborhood in 1771. Known today as the Woodrow United Methodist Church, its original congregants included some of the island's earliest well-known families. It was listed on the National Register of Historic Places in 1982.\nLong regarded as the western part of Huguenot, pursuant to the custom of old-time Staten Islanders of naming a particular East Shore or South Shore neighborhood after the nearest station on the Staten Island Railway.  The Prince's Bay post office is actually located in Woodrow, as well as I.S. 75.\nWoodrow is part of Staten Island Community District 3 and its ZIP Code is 10312. Woodrow is patrolled by the 123rd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "woodrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5880,
+    "attempt": 5837,
+    "place_id": "gn-5372902",
+    "input": {
+      "place": {
+        "place_id": "gn-5372902",
+        "name": "Midway City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74474,
+        "lon": -117.98923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midway City, California",
+          "url": "https://en.wikipedia.org/wiki/Midway_City,_California",
+          "text": "Midway City is an unincorporated community and census-designated place (CDP) that forms part of the county land controlled by Orange County, California. The only area in Orange County that incorporates its chamber of commerce and homeowners association to act in concert like a city council, the area mostly is surrounded by Westminster with Huntington Beach bordering it on the southwest. Midway City was so named because it is horizontally midway between Seal Beach, to the west, and Santa Ana, to the east. The 2020 census listed the population as 8,825.\nMidway City is one of Orange County's oldest communities, and many of its homes are of 1950s construction. The area includes two mobile home parks and the residents who live here are of moderate income, with many of them senior citizens. As described by Midway City local historian in 2008, \"Midway City is desirable because of its large lots – typically over 8,000 square feet with many larger lots as well.... The trend is that buyers are scraping the lots and building big homes or adding large additions onto the original home.\" The community fits within a 1.3 square miles (3.4 km2) area and takes up 0.632 square miles (1.64 km2) of land.\nBeing an unincorporated county area, municipal annexation by cities bordering Midway City is an ongoing issue for Midway City. Attempts at complete annexation have met fierce resistance from Midway's residents, who would rather have their community remain an unincorporated area of Orange County to maintain water and property tax rates that are lower than neighboring communities.\nHowever, Midway City's land adjacent to its borders has slowly been annexed by Westminster over time, particularly for public schools sites, to transfer decision making and government school funds from the county to the city. Annexation has also occurred along the heavily traveled Beach Boulevard/California State Route 39, where that annexed land could be redeveloped to generate significant business tax revenue for Westminster. As a result, Midway City presently is composed of four anemic sections, or \"islands\", that have stepped boundaries which include mostly residential property, small businesses, and not-for-profit businesses such as churches, American Legion Post 555, and the Brothers of Saint Patrick order."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "midway city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "midway",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5881,
+    "attempt": 5838,
+    "place_id": "gn-5398563",
+    "input": {
+      "place": {
+        "place_id": "gn-5398563",
+        "name": "Stanford",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.42411,
+        "lon": -122.16608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stanford, California",
+          "url": "https://en.wikipedia.org/wiki/Stanford,_California",
+          "text": "Stanford is a census-designated place (CDP) in the northwestern corner of Santa Clara County, California, United States. It is the home of Stanford University, after which it was named. The CDP's population was 21,150 at the 2020 census. Stanford is adjacent to the city of Palo Alto, which borders it to the east, but the CDP itself remains unincorporated.\nMost of the Stanford University campus and other core University-owned land is situated within the CDP of Stanford, though the Stanford University Medical Center, the Stanford Shopping Center, and the Stanford Research Park are officially part of the city of Palo Alto. Its resident population consists of the inhabitants of on-campus housing, including graduate student residences and single-family homes and condominiums owned by their faculty inhabitants but located on leased Stanford land.\nThe adjacent neighborhood of College Terrace, a residential neighborhood with streets named after universities and colleges, is neither part of the Stanford CDP nor owned by the university (except for a few individual houses). Instead, it is part of Palo Alto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "stanford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5882,
+    "attempt": 5839,
+    "place_id": "gn-5488598",
+    "input": {
+      "place": {
+        "place_id": "gn-5488598",
+        "name": "Ruidoso",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 33.33175,
+        "lon": -105.67304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruidoso, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Ruidoso,_New_Mexico",
+          "text": "Ruidoso (Spanish for \"noisy\") is a village in Lincoln County, New Mexico, United States, adjacent to the Lincoln National Forest. The population was  7,679 at the 2020 census. The city of Ruidoso Downs and the unincorporated area of Alto are suburbs of Ruidoso, and contribute to the Ruidoso Micropolitan Statistical Area's population of 21,223.\nA mountain resort town, Ruidoso lies in the Sierra Blanca mountain range of south-central New Mexico, where it merges with the Sacramento Mountains to the south. Ruidoso is a resort community close to the slopes of Ski Apache, the Mescalero Apache Tribe-owned ski resort on Sierra Blanca, an almost 12,000-foot (3,700 m) mountain. The tribe also operates the Inn of the Mountain Gods resort in the area, which includes a casino, hotel, arcade room and golf course. Ruidoso is the largest community in Lincoln County, and serves as the regional economic hub.\nIn recent years the village is contending with serious questions about the adequacy of the local water supply and zoning enforcement. As in many small communities that have been recently \"discovered\", there is an ongoing debate about how best to plan for additional growth.\nThe village received its name from the Rio Ruidoso (Spanish for \"Noisy River\"), a small stream that weaves through the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "ruidoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5883,
+    "attempt": 5840,
+    "place_id": "gn-6119101",
+    "input": {
+      "place": {
+        "place_id": "gn-6119101",
+        "name": "Regent Park",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.66041,
+        "lon": -79.3615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Regent Park",
+          "url": "https://en.wikipedia.org/wiki/Regent_Park",
+          "text": "Regent Park is a neighbourhood located in downtown Toronto, Ontario built in the late 1940s as a public housing project managed by Toronto Community Housing. It sits on what used to be a significant part of the Cabbagetown neighbourhood and is bounded by Gerrard Street East to the north, River Street to the east, Shuter Street to the south and Parliament Street to the west. Regent Park's residential dwellings, prior to the ongoing redevelopment, were entirely social housing and covered all of the 69 acres (280,000 m2) which comprise the community. The original neighbourhood was razed in the process of creating Regent Park. The nickname Cabbagetown is now applied to the remaining historical area north and west of the housing project, which has experienced considerable gentrification since the 1960s and 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "regent park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "regent",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

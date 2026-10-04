@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5924,
+    "attempt": 5881,
+    "place_id": "gn-6722148",
+    "input": {
+      "place": {
+        "place_id": "gn-6722148",
+        "name": "Saltivka",
+        "country": "Ukraine",
+        "subdivision": "Kharkiv",
+        "lat": 50.02207,
+        "lon": 36.34901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saltivka",
+          "url": "https://en.wikipedia.org/wiki/Saltivka",
+          "text": "Saltivka (Ukrainian: Салтiвка; Russian: Салтовка) is a large residential area located in the northeastern region of Kharkiv in eastern Ukraine. It covers most of the eponymous Saltivskyi District with parts extending into the Kyivskyi District and Nemyshlyanskyi District. It is sometimes called the Saltivskyi Masyv, as it realizes a soviet urban planning concept which consist of several different neighborhoods with similar architectural design. Despite its reputation as a deprived residential area with outdated and dilapidated housing, more than a third of Kharkiv's total population resides within its boundaries. According to various estimates, some 400–800,000 people used to live there, making it one of the largest residential areas in Ukraine.\nThe name of the neighborhood is derived from the road that leads to Staryi Saltiv and Verkhnii Saltiv in Chuhuiv Raion.\nThe exact borders of the area aren't well defined, traditionally it refers to a part of the city located between the Kharkiv river and its tributary Nemyshlia, though some might exclude from it the areas not covered by soviet tower blocks. Prior to the 1960s, Saltivka was called Saltivsky village, and consisted of a few small scattered areas with three-story buildings (Tyurinka, Stara Saltivka, Shevchenky, Selyshche imeni Kirova).\n\nSaltivka was conceived from the start as a purely residential neighborhood according to the Soviet concept of creating so-called sleeping districts in large industrial cities. Saltivka has almost no industrial compounds, but there are many shops and markets for residents. The neighborhood includes one of the largest warehouse markets in Ukraine near the Akademika Barabashova station of the Kharkiv metro. The Barabashov marketplace, according to some sources, is the largest in Europe.\nResidential development was initiated by the Dipromisto Institute in 1963. Saltivka's residential panel buildings typically have 9, 12 and 16 floors, and more rarely, 5 floors. Separate high-rise buildings were constructed from 1967, and construction on the bulk of the buildings in Saltivka began in the 1970s. Few new buildings have been added since the 1990s, mostly near the Studentska and Saltivska metro stations.\nSaltivka was shelled on a daily basis and heavily damaged during the 2022 Russian invasion of Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "saltivka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5925,
+    "attempt": 5882,
+    "place_id": "gn-685823",
+    "input": {
+      "place": {
+        "place_id": "gn-685823",
+        "name": "Baia Sprie",
+        "country": "Romania",
+        "subdivision": "Maramureş",
+        "lat": 47.66189,
+        "lon": 23.69215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baia Sprie",
+          "url": "https://en.wikipedia.org/wiki/Baia_Sprie",
+          "text": "Baia Sprie (Romanian pronunciation: [ˌbaja ˈspri.e] ; Hungarian: Felsőbánya, German: Mittelstadt) is a town in Maramureș County, northern Romania. Baia Sprie is situated at a distance of 9 km (5.6 mi) from Baia Mare and belongs to the Baia Mare metropolitan area. \nThe town administers three villages: Chiuzbaia (Kisbánya), Satu Nou de Sus (Felsőújfalu), and Tăuții de Sus (Giródtótfalu). Neighbouring communities are the city of Baia Mare and the communes Groși, Dumbrăvița, Șisești, and Desești.\nThe town was one of the most important mining centers in north-western Romania, exploitation of gold and silver being mentioned in documents written in the Middle Ages, during the time when the Saxons colonized the region. However, recent administrative changes and restructuring of the Romanian mining industry brought this activity to an almost complete halt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "baia sprie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sprie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5926,
+    "attempt": 5883,
+    "place_id": "gn-706244",
+    "input": {
+      "place": {
+        "place_id": "gn-706244",
+        "name": "Khotyn",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.50555,
+        "lon": 26.48978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khotyn",
+          "url": "https://en.wikipedia.org/wiki/Khotyn",
+          "text": "Khotyn (Ukrainian: Хотин, pronounced [xoˈtɪn] ; Romanian: Hotin, pronounced [hoˈtin]; see other names) is a city in Dniester Raion, Chernivtsi Oblast of western Ukraine, located south-west of Kamianets-Podilskyi. It hosts the administration of Khotyn urban hromada, one of the hromadas of Ukraine. According to the 2001 Ukrainian census, it has a population of 11,124. Current population: 8,936 (2022 estimate).\nKhotyn, first chronicled in 1001, is located on the right (southwestern) bank of the Dniester River, and is part of the historical region Bessarabia. Important architectural landmarks within the city include the Khotyn Fortress, constructed in the 13-15th centuries (new fortress started in 1325, major improvements in the 1380s and 1460s), and two 15th-century constructions by Moldavia's ruler Stephen the Great: the Prince's Palace (Palatul Domnesc) and the city's clock tower.\nHistorically, the town was part of the Kievan Rus' and the Galicia–Volhynia Principality (from its foundation to 1359), Principality of Moldavia, and the Polish–Lithuanian Commonwealth. For most of the period after 1514, Moldavia was a vassal of the Ottoman Empire, which also ruled Khotyn directly (1711–1812). Subsequently, it was part of the Bessarabia Governorate of the Russian Empire (1812–1917), and de jure it was part of Moldavian Democratic Republic (1917–1918). Khotyn was part of Romania (1918–1940, 1941–1944), was annexed by the Ukrainian Soviet Socialist Republic within the Soviet Union (1940–1941, 1944–1991) and now is part of independent Ukraine (1991–present)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "khotyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5927,
+    "attempt": 5884,
+    "place_id": "gn-12070764",
+    "input": {
+      "place": {
+        "place_id": "gn-12070764",
+        "name": "Valley East",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 46.64499,
+        "lon": -80.9973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valley East",
+          "url": "https://en.wikipedia.org/wiki/Valley_East",
+          "text": "Valley East (Vallée-Est in French) is a district of the city of Greater Sudbury, Ontario, Canada.\nFirst incorporated in 1973 as a separate town within the Regional Municipality of Sudbury, Valley East was so named because it comprised the eastern half of the Sudbury Basin. The largest of the six towns in the Regional Municipality, it was reincorporated as a city in 1997 due to continued population growth. On January 1, 2001, the city and the Regional Municipality were dissolved and amalgamated into the city of Greater Sudbury.\nBefore the amalgamation, Valley East was Northern Ontario's sixth-largest city, ranking after Timmins and before Kenora. According to the Canadian census of 2001, the last one that recorded Valley East as a separate entity, the city had a population of 22,374.\nIn the Canada 2011 Census, Valley East's main neighbourhoods were grouped as the population centre (or urban area) of Valley East, with a population of 20,676 and a population density of 368.9/km2, although the boundaries of the urban area do not correspond to those of the former municipality.\nValley East is now divided between Wards 5, 6 and 7 on Greater Sudbury City Council, and is represented by councillors Mike Parent, René Lapierre, and Natalie Labbée."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "valley east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5928,
+    "attempt": 5885,
+    "place_id": "gn-13494536",
+    "input": {
+      "place": {
+        "place_id": "gn-13494536",
+        "name": "Andro",
+        "country": "India",
+        "subdivision": "Manipur",
+        "lat": 24.74854,
+        "lon": 94.04296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andro, Imphal East",
+          "url": "https://en.wikipedia.org/wiki/Andro,_Imphal_East",
+          "text": "Andro is a village and a nagar panchayat in Imphal East district in the state of Manipur, India.\nAndro is an earmarked Scheduled Caste village which has been developed to represent the cultural heritage and artful creativeness of the Manipuri tribes. Located at distance of 25 km towards east of Imphal Andro creates an authentic Manipuri village along with the cultural complex established and run by the Mutua Museum Imphal. This complex encompasses varieties of pottery creations from north eastern India. The doll house of the complex has been imaginatively developed by displaying 29 different types of dolls that represent the cross cultural mix of Manipuri tribes across the region. Authentic Manipuri pottery can be purchased and even a few tricks of trade can be learned at the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "andro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5929,
+    "attempt": 5886,
+    "place_id": "gn-1735096",
+    "input": {
+      "place": {
+        "place_id": "gn-1735096",
+        "name": "Balik Pulau",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.34916,
+        "lon": 100.23938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balik Pulau",
+          "url": "https://en.wikipedia.org/wiki/Balik_Pulau",
+          "text": "Balik Pulau is a suburb of George Town within the Malaysian state of Penang. Located 12.7 km (7.9 mi) southwest of the city centre, it lies near the southwestern corner of Penang Island and is also the administrative seat of the island's Southwest district.\nBalik Pulau was established in 1794 as an agricultural village by the British East India Company. To this day, the economy of Balik Pulau still relies heavily on agriculture; Penang's most famous produce, including nutmegs, cloves and durians, are grown and harvested around the suburb. While Balik Pulau is generally seen as quieter in comparison to the bustling city centre on the other side of the island, urbanisation has also reached the suburb in recent years, with more residential developments being planned within the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "balik pulau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balik",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pulau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5930,
+    "attempt": 5887,
+    "place_id": "gn-2529362",
+    "input": {
+      "place": {
+        "place_id": "gn-2529362",
+        "name": "Tata",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 29.74409,
+        "lon": -7.973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tata, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Tata,_Morocco",
+          "text": "Tata (Arabic: طاطا, Berber languages: ⵟⴰⵟⴰ) is a city in central Morocco with a population of 18,611 according to the country's 2014 census. It is the largest city in Tata Province. \nIt is situated on a desert plain of the Sahara Desert, southeast of Agadir and Taroudant, close to the Algerian border and the mountain range Anti-Atlas, located at the foot of the Bani mountain range, a lower range along the southern side of the Anti-Atlas (Arabic: سلسلة جبال باني). Tourists use the town as a base for excursions in the area. Tata lies on the N12 highway between the north-east of the regional capital Guelmim and the south of the neighboring region of Drâa-Tafilalet. Due to the remoteness of the area, there is no border crossing with Algeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "tata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5931,
+    "attempt": 5888,
+    "place_id": "gn-2634920",
+    "input": {
+      "place": {
+        "place_id": "gn-2634920",
+        "name": "Wadebridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.51734,
+        "lon": -4.83633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wadebridge",
+          "url": "https://en.wikipedia.org/wiki/Wadebridge",
+          "text": "Wadebridge (; Cornish: Ponswad [ˈpɔnzwad] ) is a town and civil parish in north Cornwall, England, United Kingdom. The town straddles the River Camel five miles (eight kilometres) upstream from Padstow. At the 2021 census the population of the parish was 6,811 and the population of the built up area as defined by the Office for National Statistics (which excludes the Egloshayle part of the parish) was 5,625.\nOriginally known as Wade, it was a dangerous fording point across the river until a bridge was built here in the 15th century, after which the name changed to its present form. The bridge was strategically important during the English Civil War, and Oliver Cromwell went there to take it. Since then, it has been widened twice and refurbished in 1991.\nWadebridge was served by a railway station between 1834 and 1967; part of the line now forms the Camel Trail, a recreational route for walkers, cyclists and horse riders. The town used to be a road traffic bottleneck on the A39 road until it was bypassed in 1991, and the main shopping street, Molesworth Street, is now pedestrianised.\nThe town has a secondary school where several notable sports-people were educated. The Royal Cornwall Show is a three-day agricultural show held at the nearby Royal Cornwall Showground every June, and the 5-day Cornwall Folk Festival takes place around the August Bank Holiday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "wadebridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5932,
+    "attempt": 5889,
+    "place_id": "gn-2642342",
+    "input": {
+      "place": {
+        "place_id": "gn-2642342",
+        "name": "Monifieth",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.48227,
+        "lon": -2.81732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monifieth",
+          "url": "https://en.wikipedia.org/wiki/Monifieth",
+          "text": "Monifieth  (Scottish Gaelic: Monadh Fotha) is a coastal town and former police burgh in the council area of Angus, Scotland. It is situated on the north bank of the Firth of Tay on the east coast. In 2022, the population of Monifieth was 9,367, making it the fifth largest town in Angus.\nThe presence of a number of class II and III Pictish stones points to Monifieth having had some importance as an ecclesiastical centre in the early medieval period. The lands were a possession of the Céli Dé monastic order until they were granted to the Tironensian monks of Arbroath Abbey in the early 13th century. Until the early 19th century, Monifieth remained a small village but grew rapidly due to the expansion of the local textile industry.\nMonifieth is considered a commuter town and suburb of its closest city, Dundee, which it is physically attached to.The town falls within the boundaries of Angus Council but was part of Dundee City Council from 1975 to 1996. The local constituency boundary and whether Monifieth should fall within Angus or Dundee council areas continues to be a source of debate.\nPublic transport consists mainly of bus services operated by Stagecoach Buses. The town is served by Monifieth railway station, with hourly trains to Dundee & Edinburgh and North to Arbroath. Its nearest major road is the A92 and the town is connected to Dundee by the A930."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "monifieth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5933,
+    "attempt": 5890,
+    "place_id": "gn-2652000",
+    "input": {
+      "place": {
+        "place_id": "gn-2652000",
+        "name": "Crewkerne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.88298,
+        "lon": -2.79588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crewkerne",
+          "url": "https://en.wikipedia.org/wiki/Crewkerne",
+          "text": "Crewkerne ( KROO-kərn) is a town and electoral ward in south Somerset, England, 9 miles (14 km) southwest of Yeovil and 7 miles (11 km) east of Chard. A separate civil parish of West Crewkerne includes the hamlets of Clapton, Coombe, Woolminstone and Henley, and borders the county of Dorset to the south. The town is on the main headwater of the River Parrett, the A30 road and the West of England railway line.\nThe earliest written record of Crewkerne is in the 899 will of Alfred the Great who left it to his youngest son Æthelweard. After the Norman Conquest it was held by William the Conqueror and in the Domesday Survey of 1086 was described as a royal manor. Crewkerne Castle was possibly a Norman motte castle. The town grew up in the late mediaeval period around the textile industry, its wealth demonstrated in the 15th-century Church of St Bartholomew. During the 18th and 19th centuries the main industry was cloth making, including webbing, and sails for the Royal Navy.\nLocal ecological sites include the Bincombe Beeches local nature reserve and the Millwater biological Site of Special Scientific Interest. Crewkerne railway station is served by South Western Railway. The town is the birthplace of several notable people and has varied cultural and sporting facilities including those at Wadham School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "crewkerne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5934,
+    "attempt": 5891,
+    "place_id": "gn-2654663",
+    "input": {
+      "place": {
+        "place_id": "gn-2654663",
+        "name": "Brixham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.39431,
+        "lon": -3.51585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brixham",
+          "url": "https://en.wikipedia.org/wiki/Brixham",
+          "text": "Brixham  is a coastal town and civil parish in the borough of Torbay in the county of Devon, in the south-west of England. As of the 2021 census, Brixham had a population of 16,825. It is one of the main three centres of the borough, along with Paignton and Torquay.\nIt is believed that the name Brixham originates from the personal name of an early resident, Brioc, followed by the Old English suffix, ham meaning home. The town, which is predominantly hilly, is built around a natural harbour, which in addition to leisure craft, provides anchorage for what is now one of England's (but not the UK's) largest remaining commercial fishing fleets. A conspicuous local tourist attraction is the permanently moored replica of Sir Francis Drake's ship Golden Hind.\nHistorically, Brixham was made up of two separate communities connected by a marshy lane. In Fishtown, in the immediate vicinity of the harbour, the residents made a living mainly from fishing and related trades, as the name suggests. Cowtown, one mile (1.6 km) inland in the vicinity of what is now St Mary's Square, made its living from agriculture. Cowtown is on the road out of town to the south-west in the direction of Kingswear. St Mary's Square is overlooked by a sizeable church standing on the site of a Saxon original.\nOn 5 November 1688, the Dutch stadtholder William of Orange landed in Brixham with 40,000 soldiers, sailors, and volunteers, before marching on London, where he was crowned King William III as part of the Glorious Revolution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "brixham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5935,
+    "attempt": 5892,
+    "place_id": "gn-2694375",
+    "input": {
+      "place": {
+        "place_id": "gn-2694375",
+        "name": "Löddeköpinge",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.76667,
+        "lon": 13.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Löddeköpinge",
+          "url": "https://en.wikipedia.org/wiki/Löddeköpinge",
+          "text": "Löddeköpinge is the second-largest locality in Kävlinge Municipality, Scania County, Sweden, with 6,290 inhabitants as of 2010.\nLöddeköpinge is about 10 km southwest of the municipal seat Kävlinge and about 5 km from Barsebäck nuclear power plant.\nThe locality lies in the former parish of Löddeköpinge, which was an annex (subordinate) parish to that of Borgeby, located in the härad of Harjager and in the deanery of Torna and Diocese of Lund. In 1911 it covered 1884 hectares and had 1131 inhabitants. As a division of the Church of Sweden, Löddeköpinge parish became Borgeby's mother parish in 1937 and was transferred to the deanery of Harjager in 1939. Since 1962, it has been merged with Borgeby, Barsebäck, Hofterup and Hög as a single parish in the deanery of Rönneberga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "loddekopinge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5936,
+    "attempt": 5893,
+    "place_id": "gn-2756283",
+    "input": {
+      "place": {
+        "place_id": "gn-2756283",
+        "name": "Eijsden",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.78,
+        "lon": 5.7177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eijsden",
+          "url": "https://en.wikipedia.org/wiki/Eijsden",
+          "text": "Eijsden (Dutch pronunciation: [ˈɛizdə(n)] ; Limburgish: Èèsjde [ˈɛːʒdə]) is a village situated in the far south of the Netherlands. It is located in the southwestern part of the province of Limburg\nUntil 1 January 2011, Eijsden was the main village in a municipality of the same name. On that date this municipality merged with neighbouring Margraten, forming the current municipality of Eijsden-Margraten, in which Eijsden is still the largest settlement.\nThis village is one of the most southerly places in the Netherlands, extending down to the most southerly part of the border between the Netherlands and Belgium.\nIt is at Eijsden that the Meuse river, coming from France and Belgium, flows into the Netherlands, the last country of its course. From here on its name in Dutch is Maas. Running northward to the west of Eijsden west it forms part of the Belgium–Netherlands border. Its Belgian border across the Meuse is Lanaye, a village of Liège Province in Wallonia, whereas its border to the south is the Voerstreek exclave of Limburg province in Flanders.\nA smaller stream, the Voer, coming from Belgium, drains into the Meuse river in this place."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "eijsden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5937,
+    "attempt": 5894,
+    "place_id": "gn-2854386",
+    "input": {
+      "place": {
+        "place_id": "gn-2854386",
+        "name": "Pfaffenhofen an der Ilm",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.53053,
+        "lon": 11.505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pfaffenhofen an der Ilm",
+          "url": "https://en.wikipedia.org/wiki/Pfaffenhofen_an_der_Ilm",
+          "text": "Pfaffenhofen an der Ilm (German pronunciation: [pfafn̩ˈhoːfn̩ ʔan deːɐ̯ ˈʔɪlm] , lit. 'Pfaffenhofen on the Ilm'; Central Bavarian: Pfahofa an da Uim) is a municipality in Bavaria, Germany, capital of the district Pfaffenhofen. It is located on the river Ilm, and had a population of 23,282 in 2004.\nAs of a press release in October 2011 from the UN-backed annual International Awards for Liveable Communities (LivCom), Pfaffenhofen an der Ilm was saluted by judges for the quality of its environmental best practice. The Bavarian town of 23,000 people was also named the most liveable city with a population between 20,000-75,000. The elite group of cities fulfilled the awards’ range of key criteria involving environmental best practice, healthy lifestyle of citizens, community involvement as well as arts and cultural heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "pfaffenhofen an der ilm",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pfaffenhofen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ilm",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5938,
+    "attempt": 5895,
+    "place_id": "gn-3462882",
+    "input": {
+      "place": {
+        "place_id": "gn-3462882",
+        "name": "Fundão",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -19.93408,
+        "lon": -40.40473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fundão, Espírito Santo",
+          "url": "https://en.wikipedia.org/wiki/Fundão,_Espírito_Santo",
+          "text": "Fundão (Portuguese pronunciation: [fũˈdɐ̃w]) is a Brazilian municipality in the state of Espírito Santo. Part of the Greater Vitória metropolitan region, the Intermediate Region of Vitória, and the Immediate Region of Vitória, it is located north of the state capital, approximately 53 kilometres (33 mi) away. Covering an area of 288.724 square kilometres (111.477 sq mi), of which 0.9 square kilometres (0.35 sq mi) is urban, its population was recorded as 18,014 inhabitants by the Brazilian Institute of Geography and Statistics (IBGE) in 2022.\nThe average annual temperature in the municipal seat is 23.2 °C (73.8 °F), with the predominant vegetation being Atlantic Forest. With an urbanization rate of approximately 84%, the municipality had five healthcare facilities in 2009. Its Human Development Index (HDI) is 0.718, classified as high.\nFundão was emancipated from the former municipality of Nova Almeida in 1923. Today, it comprises the city of Fundão and the districts of Praia Grande, Timbuí, and Irundi. The municipality's name originates from the Fundão River, which flows through the seat. The primary economic activity is coffee production, though the industrial sector contributes the largest share to the municipal Gross Domestic Product (GDP).\nAs part of the Caminho dos Imigrantes tourist route, Fundão is home to the Pico do Goiapaba-Açu, a granite peak rising 850 metres (2,790 ft) where the Goiapaba-Açu Municipal Park is located. Praia Grande is a major tourist attraction in the region, drawing visitors from Minas Gerais and other parts of Espírito Santo. Between December and January, the festivals of Saint Benedict and Saint Sebastian are held in Timbuí and Fundão, featuring performances by congo bands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "fundao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5939,
+    "attempt": 5896,
+    "place_id": "gn-4058219",
+    "input": {
+      "place": {
+        "place_id": "gn-4058219",
+        "name": "Daphne",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 30.60353,
+        "lon": -87.9036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daphne, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Daphne,_Alabama",
+          "text": "Daphne () is a city in Baldwin County, Alabama, United States, on the eastern shoreline of Mobile Bay. The city is located along I-10, 11 miles east of Mobile and 170 miles southwest of the state capital of Montgomery. The 2020 United States census lists its population as 27,462, making Daphne the most populous city in Baldwin County. It is a principal city of the Daphne-Fairhope-Foley metropolitan area, which includes all of Baldwin County.\nThe inhabited history of what is now called Daphne dates at least to the Paleo-Indian period and Native American tribes around 9000 BC. Modern-day Daphne is a thriving suburb of nearby Mobile. Daphne has adopted the nickname ″The Jubilee City″ in recognition of its status as one of the locations of the Mobile Bay jubilee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "daphne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5940,
+    "attempt": 5897,
+    "place_id": "gn-4552707",
+    "input": {
+      "place": {
+        "place_id": "gn-4552707",
+        "name": "Tahlequah",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.91537,
+        "lon": -94.96996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tahlequah, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Tahlequah,_Oklahoma",
+          "text": "Tahlequah ( TAL-ə-kwah; Cherokee: ᏓᎵᏆ, daligwa [dàlígʷá]) is a city in Cherokee County, Oklahoma located at the foothills of the Ozark Mountains. It is part of the Green Country region of Oklahoma and was established as a capital of the 19th-century Cherokee Nation in 1839, as part of the new settlement in Indian Territory after the Cherokee Native Americans were forced west from the American Southeast on the Trail of Tears.\nAs of the 2020 census, Tahlequah had a population of 16,209.\nTahlequah is the capital of the two federally recognized Cherokee tribes based in Oklahoma, the modern Cherokee Nation and the United Keetoowah Band of Cherokee Indians. Tahlequah is also the county seat of Cherokee County. The main campus of Northeastern State University is located in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "tahlequah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5941,
+    "attempt": 5898,
+    "place_id": "gn-4935352",
+    "input": {
+      "place": {
+        "place_id": "gn-4935352",
+        "name": "East Cambridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.36676,
+        "lon": -71.08005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Cambridge, Cambridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/East_Cambridge,_Cambridge,_Massachusetts",
+          "text": "East Cambridge is a neighborhood of Cambridge, Massachusetts. East Cambridge is bounded by the Charles River and the Charlestown neighborhood of Boston on the east, the Somerville border on the north, Broadway and Main Street on the south, and the railroad tracks on the west.\nMost of the streets form a grid aligned with Cambridge Street, which was laid out to directly connect what is now the Charles River Dam Bridge with what in 1809 was the heart of Cambridge, Harvard Square.  The northern part of the grid is a roughly six by eight block residential area.  Cambridge Street itself is retail commercial, along with Monsignor O'Brien Highway, the Twin Cities Plaza strip mall, and the enclosed Cambridgeside Galleria.  Lechmere Square is the transportation hub for the northern side.  The southern half of the grid is largely office and laboratory space for hundreds of dot-com companies, research labs and startups associated with MIT, biotechnology firms including Genzyme, Biogen and Moderna, the Athenaeum Press Building, light industry, an NRG Energy power station (formerly Mirant Kendall), and various small businesses.  This half of the neighborhood is generally identified with Kendall Square.  Along the waterfront are several hotels and taller apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "east cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5942,
+    "attempt": 5899,
+    "place_id": "gn-5098095",
+    "input": {
+      "place": {
+        "place_id": "gn-5098095",
+        "name": "Florham Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.78788,
+        "lon": -74.38821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florham Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Florham_Park,_New_Jersey",
+          "text": "Florham Park is a borough in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 12,585, its highest decennial count ever and an increase of 889 (+7.6%) from the 11,696 recorded at the 2010 census, which in turn reflected an increase of 2,839 (+32.1%) from the 8,857 counted in the 2000 census.\nFlorham Park was incorporated as a borough by an act of the New Jersey Legislature on March 9, 1899, from portions of Chatham Township. In 2012, Forbes.com listed Florham Park as 440th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $675,107.\nSince 2008, Florham Park has been the main operations headquarters for the National Football League's New York Jets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "florham park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "florham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5943,
+    "attempt": 5900,
+    "place_id": "gn-5120442",
+    "input": {
+      "place": {
+        "place_id": "gn-5120442",
+        "name": "Hell's Kitchen",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.76496,
+        "lon": -73.9909
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hell's Kitchen, Manhattan",
+          "url": "https://en.wikipedia.org/wiki/Hell's_Kitchen,_Manhattan",
+          "text": "Hell's Kitchen—also known as Clinton, or Midtown West on real estate listings—is a neighborhood on the West Side of Midtown Manhattan in New York City, New York, United States. It is generally bordered by 34th Street (or 41st Street) to the south, 59th Street to the north, Eighth Avenue to the east, and the Hudson River to the west.\nHell's Kitchen had long been a bastion of poor and working-class Irish Americans. Its gritty reputation has long held real-estate prices below those of most other areas of Manhattan. By 1969, the City Planning Commission's Plan for New York City reported that development pressures related to its Midtown location were driving people of modest means from the area. Gentrification has accelerated since the early 1980s, and rents have risen rapidly.\nIn addition to its long-established Irish-American and Hispanic-American populations, Hell's Kitchen has a large LGBTQ population and is home to many LGBTQ bars and businesses. The neighborhood has long been a home to fledgling and working actors; it is the home of the Actors Studio training school and sits near Broadway theatres.\nHell's Kitchen is part of Manhattan Community District 4. It is patrolled by the 10th and Midtown North Precincts of the New York City Police Department. The area provides transport, medical, and warehouse-infrastructure support to the business district of Manhattan. It is known for its extensive selection of multi-ethnic, small, and relatively inexpensive restaurants, delicatessens, bodegas, bars, and associated nightlife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "hell s kitchen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "kitchen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

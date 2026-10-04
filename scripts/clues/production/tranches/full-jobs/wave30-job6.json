@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 5944,
+    "attempt": 5901,
+    "place_id": "gn-5339865",
+    "input": {
+      "place": {
+        "place_id": "gn-5339865",
+        "name": "Cotati",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.32686,
+        "lon": -122.70721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cotati, California",
+          "url": "https://en.wikipedia.org/wiki/Cotati,_California",
+          "text": "Cotati (, ; Miwok: Kota’ti) is a city in Sonoma County, California, United States, located approximately 45 mi (70 km) north of San Francisco in the 101 corridor between Rohnert Park and Petaluma. Cotati's population as of the 2020 Census was 7,584, making it the least populous incorporated community in Sonoma County.\nLike the rest of Sonoma County, Cotati is included in both the San Francisco Bay Area and the North Coast. Located in the Sonoma Coast AVA, Cotati can also be considered part of Wine Country. E & J Gallo Winery operates a 400-acre (160 ha) vineyard called Two Rock Vineyard in the hills west of town. Cotati's hexagonal downtown plaza, one of only two hexagonal town layouts in the United States, is California Historical Landmark number 879. The other U.S. city with a hexagonal layout is Detroit, Michigan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "cotati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5945,
+    "attempt": 5902,
+    "place_id": "gn-6070250",
+    "input": {
+      "place": {
+        "place_id": "gn-6070250",
+        "name": "McKenzie Towne",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 50.91342,
+        "lon": -113.96736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McKenzie Towne, Calgary",
+          "url": "https://en.wikipedia.org/wiki/McKenzie_Towne,_Calgary",
+          "text": "McKenzie Towne is a master planned residential neighbourhood in the southeast of Calgary, Alberta being developed by Carma Developers LP (now Brookfield Residential Properties Inc.). The community is bordered on the west by Deerfoot Trail, on the south by Stoney Trail, on the east by 52 St. S.E., and to the north by the South Trail regional commercial centre along 130 Ave. S.E.\nMcKenzie Towne boasts many recreational features, including: the McKenzie Towne Hall managed and operated by the staff and Board of Directors of the McKenzie Towne Council (which is the community's Residents' Association). Within the Hall: a gymnasium, meeting and banquet facilities, and a private outdoor park area. The Council offers recreational programming for children, youth, families adults and seniors, as well as facility rentals for events. The Council also runs community events and looks after the landscaping and maintenance of green spaces and amenities. The community also has a network of paved pathways, green spaces and parks; a fountain and splash park; an outdoor hockey rink and skate park and numerous ponds also complement McKenzie Towne. McKenzie Towne also contains one separate school board elementary school and a public elementary school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "mckenzie towne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mckenzie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "towne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5946,
+    "attempt": 5903,
+    "place_id": "gn-6100069",
+    "input": {
+      "place": {
+        "place_id": "gn-6100069",
+        "name": "Peace River",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 56.23715,
+        "lon": -117.29176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peace River, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Peace_River,_Alberta",
+          "text": "Peace River (originally named Peace River Crossing and known as Rivière-la-Paix in French) is a town in northwest Alberta, Canada. It is along the banks of the Peace River at its confluence with the Smoky River, the Heart River and Pat's Creek. It is approximately 486 kilometres (302 mi) northwest of Edmonton and 198 kilometres (123 mi) northeast of Grande Prairie on Highway 2. It was known as the Village of Peace River Crossing between 1914 and 1916.\nThe Peace River townsite is nearly 1,000 feet (300 m) below the relatively flat terrain surrounding it. Pat's Creek used to be an open channel through the town but is now channelled through a culvert under the town streets, re-emerging at the mouth on the Peace River at the Riverfront Park.\nThe population in the Town of Peace River was 6,729 in 2011, a 6.6% increase over its 2006 population. There are significant nodal settlements and subdivisions in the vicinity of the town on acreages along Highway 2 to the west, Highways 684 (Shaftesbury Trail) and 743 as well as the southwest portion of Northern Sunrise County. Regionally, there are various First Nation communities to the northeast,  French-Canadian farming communities to the south and to the east, and Mennonite and Hutterite German-Canadian farming communities to the north and northwest of the town.\nPeace River was the site of the 2004 Alberta Winter Games. In 2010, Peace River, in conjunction with Grimshaw and surrounding municipalities, jointly hosted the 2010 Alberta Summer Games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "peace river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "peace",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5947,
+    "attempt": 5904,
+    "place_id": "gn-6231822",
+    "input": {
+      "place": {
+        "place_id": "gn-6231822",
+        "name": "Greenhithe",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.77081,
+        "lon": 174.68651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenhithe, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Greenhithe,_New_Zealand",
+          "text": "Greenhithe is a northwestern suburb of Auckland, New Zealand, located on the North Shore. Greenhithe was the location of Tauhinu, a fortified Te Kawerau ā Maki and Ngāti Whātua pā which overlooked the entrance to Oruamo or Hellyers Creek, that was settled until the 1820s. In the 1860s, the Forgham family established a community at Greenhithe, which by the 1880s had become a major fruit producer for Auckland. Boat repair and construction became major industries in Greenhithe in the 1960s.\nThe area developed into a suburb of Auckland after the construction of the Auckland Harbour Bridge in 1959 and the Upper Harbour Bridge in 1975. The North Shore City Council identified Greenhithe as an area for suburban growth in 2002, leading the population to double between 2001 and 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "greenhithe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5948,
+    "attempt": 5905,
+    "place_id": "gn-6244598",
+    "input": {
+      "place": {
+        "place_id": "gn-6244598",
+        "name": "Island Bay",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.33616,
+        "lon": 174.77351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Island Bay",
+          "url": "https://en.wikipedia.org/wiki/Island_Bay",
+          "text": "Island Bay is a coastal suburb of Wellington, the capital of New Zealand, situated 5 km (3.1 mi) south of the city centre.\nIsland Bay lies on the bay which shares its name, one of numerous small bays off Cook Strait and west of Lyall Bay. 500m offshore in Island Bay lies Tapu Te Ranga Island, which forms a natural breakwater and provides a sheltered anchorage for local fishing boats.\nA noted current Island Bay resident is mayor of Wellington Andrew Little. Former residents include former Mayor Celia Wade-Brown, the late Bruce Stewart, writer and dramatist at Tapu Te Ranga Marae; Middlesbrough F.C. and All Whites striker Chris Killen; artist John Drawbridge; poet Alan Brunton; writer Robin Hyde; and, in the late 19th century, The Hermit of Island Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "island bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5949,
+    "attempt": 5906,
+    "place_id": "gn-6244914",
+    "input": {
+      "place": {
+        "place_id": "gn-6244914",
+        "name": "Whitby",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.10827,
+        "lon": 174.8902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitby, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Whitby,_New_Zealand",
+          "text": "Whitby is a large suburb of Porirua, New Zealand, located along much of the southern shore of the Pauatahanui Inlet of Porirua Harbour. Whitby was comprehensively planned in the 1960s (when still in Hutt County) and it has been continuously developed since, with current landscaping and expansion in the hills behind the eastern part of Whitby to facilitate the future growth of the suburb.\nThe name of the suburb itself, as well as the nautical theme of neighbourhood and street names, are drawn from the life and career of the Pacific explorer James Cook. The bicentennial of his first (1769) visit to New Zealand occurred when the development of Whitby started.\nThe suburb is commercially centred on the Whitby Shopping Centre, containing almost all the retail businesses in Whitby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "whitby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5950,
+    "attempt": 5907,
+    "place_id": "gn-6252065",
+    "input": {
+      "place": {
+        "place_id": "gn-6252065",
+        "name": "Nou Barris",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.44163,
+        "lon": 2.17727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nou Barris",
+          "url": "https://en.wikipedia.org/wiki/Nou_Barris",
+          "text": "Nou Barris (Catalan pronunciation: [ˈnɔw ˈβaris], lit. \"nine neighbourhoods\", Spanish pronunciation: [ˈnow ˈβaris]) is one of the ten districts into which Barcelona has been officially divided since 1984. The name refers to the original nine neighbourhoods it was composed of, even though nowadays it is made up of thirteen. It covers an area of 8.04 km2.\nIt is located in the northern part of the city adjacent to two other districts of Barcelona: Sant Andreu and Horta-Guinardó and grew up extensively out of small urbanised areas near the former municipalities of Sant Joan d'Horta and Sant Andreu de Palomar (now neighbourhoods of Barcelona) in the 20th century, especially from the 1950s on. The district council is located in a former mental institution, the Institut Mental de la Santa Creu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "nou barris",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nou",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barris",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5951,
+    "attempt": 5908,
+    "place_id": "gn-658120",
+    "input": {
+      "place": {
+        "place_id": "gn-658120",
+        "name": "Hervanta",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 61.44792,
+        "lon": 23.85301
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hervanta",
+          "url": "https://en.wikipedia.org/wiki/Hervanta",
+          "text": "Hervanta is a large suburb of Tampere in Finland, located next to Hallila and Vuores, some 10 km south of the city centre.\nHervanta currently covers an area of 13.8 km² and is continuing to grow. Home to a population of over 26,000, Hervanta is best known for its prefabricated blocks of flats. The total number of apartments is about 11,000. Nearly a fifth of the inhabitants (some 4,500 people) are students, many of them enrolled at the Tampere University, TUNI (TUNI was created by joining former Tampere University of Technology, TUT, with University of Tampere, UTA, and it also includes Tampere University of Applied Sciences, TAMK), or the Police University College. The largest student housing complex is Mikontalo, in fact nearly 3% of people in Hervanta reside there. Approximately 10% of Hervanta's population is composed of foreigners from 75 different nationalities.\nHervanta was known as a notorious neighborhood for a long time, but its reputation has improved considerably over time. It was selected as Finland's top suburb in a survey conducted by the Helsingin Sanomat newspaper and published on 17 August 2003. The Finnish Local Heritage Federation chose Hervanta as the District of the Year in 2026.\nThe complex of commercial buildings in the town center of Hervanta was designed by the Finnish architect Reima Pietilä."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "hervanta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5952,
+    "attempt": 5909,
+    "place_id": "gn-6697141",
+    "input": {
+      "place": {
+        "place_id": "gn-6697141",
+        "name": "Mindarie",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.68932,
+        "lon": 115.70698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mindarie, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Mindarie,_Western_Australia",
+          "text": "Mindarie is an outer coastal suburb of Perth, Western Australia. It is located 36 kilometres (22 mi) north of Perth's central business district, and forms part of the City of Wanneroo local government area.\nAfter being briefly used for its limestone deposits in the early 20th century, the suburb was formally established in 1988 with the construction of the Mindarie Marina and hotel, one of the largest man-made marina resorts in the state. Several shops, restaurants and schools are now dispersed throughout the rest of the area, which is primarily residential in character. A number of large bushland reserves and parks preserve Mindarie's previously natural state, such as its large coastal dunes.\nMindarie was used as one of the filming locations for the children's science fiction television series Stormworld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "mindarie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5953,
+    "attempt": 5910,
+    "place_id": "gn-7259253",
+    "input": {
+      "place": {
+        "place_id": "gn-7259253",
+        "name": "Ellsworth Air Force Base",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 44.14395,
+        "lon": -103.07507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellsworth Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Ellsworth_Air_Force_Base",
+          "text": "Ellsworth Air Force Base (AFB) (IATA: RCA, ICAO: KRCA, FAA LID: RCA) is a United States Air Force (USAF) base located about 10 miles (16 km) northeast of Rapid City, South Dakota, just north of the town of Box Elder.\nThe host unit at Ellsworth is the 28th Bomb Wing (28 BW). Assigned to the Global Strike Command's Eighth Air Force, the 28 BW is one of the USAF's two Rockwell B-1B Lancer wings, along with the 7th Bomb Wing at Dyess AFB, Texas. In 2023, the 28th Bomb Wing is commanded by Colonel Derek Oakley; its command chief master sergeant was Chief Master Sergeant Adam Vizi.\nEllsworth has a population of about 8,000 military members, family members and civilian employees. Rapid City itself has a population of 78,824. There are about 3,800 military retirees in western South Dakota.\nFor decades, Ellsworth's main entrance included a symbolic B-52 Stratofortress, a gift from the citizens of Rapid City. This entrance has recently been replaced.\nAn expansion of a bomber training area encompassing the Northern Plains known as the Powder River Training Complex began in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "ellsworth air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ellsworth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5954,
+    "attempt": 5911,
+    "place_id": "gn-8449777",
+    "input": {
+      "place": {
+        "place_id": "gn-8449777",
+        "name": "Visitacion Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.71715,
+        "lon": -122.40433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visitacion Valley, San Francisco",
+          "url": "https://en.wikipedia.org/wiki/Visitacion_Valley,_San_Francisco",
+          "text": "Visitacion Valley (VIZ-i-TAY-shən; Spanish: Valle de la Visitación), colloquially referred to as Viz Valley, is a neighborhood located in the southeastern quadrant of San Francisco, California.\nVisitacion Valley is roughly defined by McLaren Park and Gleneagles Golf Course to the West, Mansell Blvd and Portola to the north, Bayview Hill and Candlestick Cove to the east, and the San Francisco / San Mateo County line to the south. The streets of this neighborhood straddle the border between San Francisco and Daly City, hence partially blending with the adjacent Daly City neighborhood of Bayshore. The grounds of the Cow Palace, straddling the San Francisco/Daly City border, parking areas are partially within Visitacion Valley.\nThe Sunnydale Housing Community, a predominately African-American and Pacific Islander American community, is located in Visitacion Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "visitacion valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "visitacion",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5955,
+    "attempt": 5912,
+    "place_id": "gn-11072202",
+    "input": {
+      "place": {
+        "place_id": "gn-11072202",
+        "name": "Moreh",
+        "country": "India",
+        "subdivision": "Manipur",
+        "lat": 24.2508,
+        "lon": 94.30073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moreh, India",
+          "url": "https://en.wikipedia.org/wiki/Moreh,_India",
+          "text": "Moreh (Meitei pronunciation: /mō-rey/) is a border town located on the India–Myanmar border in Tengnoupal district of the Indian state of Manipur at the entrance of the Kabaw Valley. As a rapidly developing international trade point with the integrated customs and international immigration checkpoint, Moreh plays an important role in India's Look East Policy, trade and commerce under ASEAN–India Free Trade Area, India-Myanmar relationship, India–Myanmar–Thailand road connectivity, and Trans-Asian Railway connectivity.\nTamu in Myanmar, just across the Menal river from Moreh, is connected to Moreh via two roads: The Indo-Myanmar Friendship Bridge and a newer Moreh ICP Bridge which connects the Moreh Integrated Check Post (Moreh ICP). Tamu in Myanmar connects Moreh in India to Kalewa-Yagyi-Mandalay in Myanmar and Mae Sot in Thailand through the India–Myanmar–Thailand Trilateral Highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "moreh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5956,
+    "attempt": 5913,
+    "place_id": "gn-1268920",
+    "input": {
+      "place": {
+        "place_id": "gn-1268920",
+        "name": "Jigani",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 12.78612,
+        "lon": 77.63855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jigani",
+          "url": "https://en.wikipedia.org/wiki/Jigani",
+          "text": "Jigani Hobli is located in Anekal taluk in South Bengaluru, India and is situated at a distance of 28 km from Bangalore city railway station. Some of the features of the place Jigani are that it has a well-established Jigani industrial area and also very near to Electronics City,Bommasandra in Bangalore city. Several Government initiatives to develop this area in Bangalore have led to growth of the population in this area starting from 2004. \nCompanies like HCL, OTIS, APC, Toyota, BuziBrAIns, The Akshayapatra foundation etc. have brought more people to this remote location.\nIt is one of the industrial areas in Anekal taluk, with others being Attibele, Bommasandra, Chandapura, Electronic City and Sarjapura.jp\nSome prominent lakes here are the Jigani Lake, Hennagara Lake, Haragadde Lake and Konasandra Lake. \nDuring the 14th Century, King Veera Balalla III of the Hoysala Dynasty had established and consecrated the Varadaraja Temple here in Jigani. However, the structure is now left in the form of ruins.\nIt is known for its upscale and gated communities such as Nisarga Layout, Pride Vatika, Golden Nest Layout and Vakil Townscape. Recently, there have been talks of extending the newly inaugurated Yellow Line to the KIADB Industrial Areas of this region bringing about coordination among the industrial and technological hubs of South Bengaluru."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "jigani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5957,
+    "attempt": 5914,
+    "place_id": "gn-12977076",
+    "input": {
+      "place": {
+        "place_id": "gn-12977076",
+        "name": "Castelo dos Sonhos",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -8.3168,
+        "lon": -55.10001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castelo dos Sonhos",
+          "url": "https://en.wikipedia.org/wiki/Castelo_dos_Sonhos",
+          "text": "Castelo dos Sonhos or Castelo de Sonhos (lit. 'Dream Castle') is a district in the municipality of Altamira, in the Brazilian state of Pará. As of the 2010 census, by the Brazilian Institute of Geography and Statistics (IBGE), it had a population of 11,952 and contained 3,240 private households. The district is located about 950 km from the city of Altamira, making it the municipality's most remote district. It was created in August 1990.\nDue to its distance from Altamira, Castelo dos Sonhos is more closely connected to the nearby municipalities of Novo Progresso and Guarantã do Norte, in the state of Mato Grosso. The district lies along the BR-163 highway, in the Serra do Cachimbo region, and can be reached via BR-163 and the Trans-Amazonian Highway (BR-230). Altamira's municipal government maintains a local administrative office responsible for managing the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "castelo dos sonhos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castelo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sonhos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5958,
+    "attempt": 5915,
+    "place_id": "gn-1710181",
+    "input": {
+      "place": {
+        "place_id": "gn-1710181",
+        "name": "Jimenez",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.3365,
+        "lon": 123.8383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jimenez, Misamis Occidental",
+          "url": "https://en.wikipedia.org/wiki/Jimenez,_Misamis_Occidental",
+          "text": "Jimenez, officially the Municipality of Jimenez (Cebuano: Lungsod sa Jimenez; Tagalog: Bayan ng Jimenez), is a municipality in the province of Misamis Occidental, Philippines. According to the 2024 census, it has a population of 29,265 people.\nWithin the predominantly Catholic town lies the Church of Saint John the Baptist which is one of the oldest monuments in the Philippines. Many Jimeneznons live outside the country but have retained close ties to the town, with \"balikbayans\" offering community service and philanthropy, and others taking up residence upon retirement abroad.\nThe heritage town is one of the best preserved colonial towns in the entire Philippines. The conservation, preservation, and restoration of the town's heritage structures such as the church and ancestral houses are the main focus of the local government. The town is being pushed to be included in the UNESCO World Heritage List."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "jimenez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5959,
+    "attempt": 5916,
+    "place_id": "gn-2146291",
+    "input": {
+      "place": {
+        "place_id": "gn-2146291",
+        "name": "Toorak",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.84165,
+        "lon": 145.01438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toorak",
+          "url": "https://en.wikipedia.org/wiki/Toorak",
+          "text": "Toorak () is an inner suburb of Melbourne, Victoria, Australia, 5 km (3.1 mi) south-east of the Melbourne central business district, located within the City of Stonnington local government area. Toorak recorded a population of 12,817 at the 2021 census.\nThe name Toorak has become synonymous with wealth and privilege, the suburb long having the reputation of being Melbourne's most elite, and ranking among the most prestigious in Australia. It has the highest average property values in Melbourne, and is one of the most expensive suburbs in Australia. In early 2025, Toorak's Coonac estate was sold for $124 million, setting a record for the most expensive house ever sold in Australia. It is the nation's second-highest-earning postcode, trailing the Melbourne seaside suburb of Portsea, which ranks first nationally.\nLocated on a rise on the south side (or left bank) of a bend in the Yarra River, Toorak is bordered by South Yarra, at Williams Road on the west, Malvern, at Glenferrie Road on the east, Prahran and Armadale, at Malvern Road to the south and the suburbs of Richmond, Burnley and Hawthorn on the north side of the river. The suburb's main street is considered to be Toorak Road, on which the commercial area of Toorak Village is located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "toorak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5960,
+    "attempt": 5917,
+    "place_id": "gn-2169068",
+    "input": {
+      "place": {
+        "place_id": "gn-2169068",
+        "name": "Deniliquin",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.53245,
+        "lon": 144.95364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deniliquin",
+          "url": "https://en.wikipedia.org/wiki/Deniliquin",
+          "text": "Deniliquin (), also known by the local abbreviation \"Deni\" (/ˈdɛni/), is a town in the western Riverina region of south-western New South Wales, Australia, close to the border with Victoria. It is the largest town in the Edward River Council local government area.\nDeniliquin is located at the intersection of the Riverina and Cobb Highway approximately 725 kilometres (450 mi) south west of the state capital, Sydney and 285 kilometres (177 mi) due north of Melbourne. The town is divided in two parts by the Edward River, an anabranch of the Murray River, with the main business district located on the south bank.\nThe town services a productive agricultural district with prominent dairy, rice, wool and timber industries. At the 2021 census, the population of Deniliquin was 6,431."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "deniliquin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5961,
+    "attempt": 5918,
+    "place_id": "gn-2170139",
+    "input": {
+      "place": {
+        "place_id": "gn-2170139",
+        "name": "Cowra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.83554,
+        "lon": 148.69663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cowra",
+          "url": "https://en.wikipedia.org/wiki/Cowra",
+          "text": "Cowra () is a town in the Central West region of New South Wales, Australia. It is the largest population centre and the council seat for the Cowra Shire, with a population of 8,254.\nCowra is located approximately 310 m (1,017 ft) above sea level, on the banks of the Lachlan River, in the Lachlan Valley. By road it is approximately 310 km (193 mi) west of the state capital, Sydney, and 189 km (117 mi) north of the nation's capital, Canberra. The town is situated at the intersection of three state highways: the Mid-Western Highway, Olympic Highway and the Lachlan Valley Way.\nCowra is included in the rainfall recorder and weather forecast region for the Central West Slopes and Plains division of the Bureau of Meteorology forecasts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "cowra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5962,
+    "attempt": 5919,
+    "place_id": "gn-2179639",
+    "input": {
+      "place": {
+        "place_id": "gn-2179639",
+        "name": "Warkworth",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.4,
+        "lon": 174.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warkworth, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Warkworth,_New_Zealand",
+          "text": "Warkworth (Māori: Puhinui) is a town on the Northland Peninsula in the upper North Island of New Zealand. It is in the northern part of the Auckland Region, 64 km (40 mi) north of Auckland and 98 km (61 mi) south of Whangārei, at the head of the Mahurangi River. State Highway 1 runs past it.\nEuropean settler John Anderson Brown first settled at Warkworth in 1843, establishing a timber mill on the banks of the Mahurangi River. The town was established in 1853 and became a hub for timber and shipbuilding industries. The town became a hub for the Wilsons Cement Works in 1884, after the closure and with roading improvements in the 1930s it transitioned into a commercial and service hub for the surrounding rural area. Warkworth was the main settlement in Rodney County and was the seat of local governance for many years.\nWarkworth had a large American military presence during the Second World War. In the 21st century Warkworth has been expanding, with the town expected to increase up to five-fold in size."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "warkworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5963,
+    "attempt": 5920,
+    "place_id": "gn-2510799",
+    "input": {
+      "place": {
+        "place_id": "gn-2510799",
+        "name": "Son Servera",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.62073,
+        "lon": 3.36008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Son Servera",
+          "url": "https://en.wikipedia.org/wiki/Son_Servera",
+          "text": "Son Servera (Balearic Catalan: [son səɾˈveɾə]) is a municipality in northeast Mallorca, in the Balearic Islands, Spain.\nFounded in 1300 by James I of Aragon, in the lands of the Servera family, Son Servera was first documented in 1354 with the name of Benicanella, which would later become two towns: Son Fra Garí and Ca l'Hereu which would then become Son Servera. In 1814, king Ferdinand VII puts Son Servera municipality in Arta. In 1820, the population was struck by plague, but in 1934 the population reached 1,000 inhabitants and returned to the status of municipality.\nWith more than 10,000 inhabitants, Son Servera contains Cala Millor, a popular summer tourist area, with a large German community.  Costa de los Pinos is a summer destination for Spanish high society.\nSant Joan is the patron saint of the town and is celebrated on 24 June with a fiesta. The fiesta runs for a week with a local fair, farmers market, agricultural stalls, and the local dancers perform traditional mallorquine dance of Ball de bot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "son servera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "son",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "servera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
