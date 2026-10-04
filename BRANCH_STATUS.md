@@ -30,10 +30,10 @@ celebrated, player-visible promotion moment instead.
 ## Active
 - [x] Logic crew: trail.ts API + unit tests — DONE 2026-10-03 (npx tsc --noEmit clean, npm test green)
 - [x] UI crew: game-app integration + copy + neighbor data — DONE 2026-10-04 (npx tsc --noEmit clean, npm test 535/535 green)
-- [~] E2E: cleared-moment spec — spec written (`tests/e2e/cleared-mode.spec.ts`,
-  new `cleared-mode` Playwright project); 5/7 green; 2 BLOCKED on real app
-  bugs found by the spec (see "E2E findings" below) — not committable as
-  green until the app crew fixes them
+- [x] E2E: cleared-moment spec — spec written (`tests/e2e/cleared-mode.spec.ts`,
+  new `cleared-mode` Playwright project); 7/7 GREEN at 6dc4fb3 (fix crew's
+  two bugs verified fixed; see "Final E2E regression sweep" below for the
+  full existing-suite re-verification)
 - [x] Fix crew (2026-10-04): both E2E-found bugs fixed — see "Fix crew" below
 - [ ] Technical-architect review
 - [ ] Tone/docs review (all player-visible strings)
@@ -68,6 +68,54 @@ green, `node scripts/lint-cards.mjs` GATE PASSED, `npm run build:pages` green.
 REGRESSION SWEEP: full `cleared-mode` Playwright project 7/7 GREEN
 (2026-10-04, incl. the 2 formerly-blocked tests); existing-suite
 re-verification left for the review crew.
+
+## Final E2E regression sweep (E2E runner, 2026-10-04)
+
+Full existing suite against a fresh `npm run build:pages` from 4e5f0bb:
+**75 passed, 24 failed** in the parallel run. Re-verification (serial,
+`--workers=1`, `TMPDIR=~/workspace/.tmp-e2e` — see environmental note)
+resolved 21 of the 24 as environmental; the cleared-mode project was
+additionally re-run 7/7 GREEN at 6dc4fb3 after the tone/copy commits landed.
+
+Per-spec re-verification (all green unless noted):
+- cleared-mode: 7/7 (also 7/7 at 6dc4fb3) · gap-view-reveal.desktop: 3/3 ·
+  hit-story.desktop: 1/1 · learning-outcomes.desktop: 6/6 ·
+  reload-reveal.desktop: 3/3 · result-card-dismiss.desktop: 1/1 ·
+  state-story.desktop: 2/2 · question-randomization: 3/3 ·
+  desktop-gestures: 2/2 · session-score: 5/5 · endgame-share: 2/2 ·
+  subdivision-labels: 2/2 · question-labels globe: 1/1
+- history-first-cards.desktop: West Englewood + Barry Farms pass; Miami +
+  Nashville fail with the SAME pre-existing signature as pristine main
+  (heading never appears — dealing-side, per the 2026-10-04 main
+  verification). Unchanged: not fixed, not worsened.
+- question-labels country + state: FAIL — **spec bug, not an app bug**:
+  `seedSeenExcept` hardcodes the `:medium` seen key (from f1c8d07, PR #49)
+  but both tests pick the Easy band; the app correctly reads the
+  band-scoped `:easy` key (`trail.ts` `seenKey`), so the seeding never
+  takes effect and the first deal is random. Proved with a throwaway
+  probe: seeding the `:easy` key deals "Austin, Texas" first
+  ("Find Austin, Texas."). Needs a spec fix (parameterize the band like
+  `difficulty-picker.spec.ts:77`) before the suite can go fully green.
+  Pre-existing relative to this feature (introduced by the PR #49 merge;
+  not on main; not caused by cleared-mode or the 4e5f0bb fix).
+
+ENVIRONMENTAL ROOT CAUSE (resolved, no code changes): /tmp is a 512MB
+tmpfs and was 87–89% full (other crews' files — not touched). Playwright
+launches Chromium with `--disable-dev-shm-usage`, so the browser falls
+back to /tmp for shared memory; renderers died mid-test ("Target crashed",
+"browser closed", swiftshader shader-compile failures, GPU ReadPixels
+stalls) across 9 unrelated specs. Running with
+`TMPDIR=~/workspace/.tmp-e2e` (disk-backed, 89GB free) fixed every one of
+them — tests also ran ~2x faster. **Future E2E runs on this VM must export
+TMPDIR until /tmp pressure is relieved.** (Also: `pkill -x chrome` before
+each run to reap leaked renderers.)
+
+VERDICT: **no app regressions** from the cleared-mode feature or the
+4e5f0bb fix. The suite's only red is (a) the 2 known pre-existing
+Miami/Nashville failures and (b) the 2 question-labels spec-bug failures —
+both pre-existing, neither caused by this branch's feature work. The
+question-labels spec fix is recommended before PR so the suite reads
+fully green.
 
 ---
 
