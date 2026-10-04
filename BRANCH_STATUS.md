@@ -22,6 +22,50 @@ Make learning real, measurable, and visible in Meridian — per Veeresh's standi
 - Ships dark behind the flag; flag defaults to current behavior. Follow `docs/feature-flags.md` adoption pattern exactly.
 - Kid tone on every player-facing word.
 
+## Reviews (2026-10-03 — conducted by the Phase 2 coordinator directly; review
+subagents unavailable at this depth, so both reviews were done in-line with
+findings recorded here)
+
+### Technical-architect review — PASS
+- `src/game/learning.ts`: pure module, zero imports from game/lib — no
+  coupling to dealing/scoring/session. `recordAnswer` never mutates input
+  (snapshot-tested); LRU eviction only for new places past the cap with a
+  deterministic tiebreak; caps 1000/8/90 as specified (~1.5 MB worst case).
+- Persistence is fail-closed: malformed → null, writes swallowed, no
+  localStorage (node/SSR) → null. Migration validates; unknown versions → null.
+- Mastery rule matches the doc exactly (two most-recent hits, latest ≤ 50%
+  of its own hit radius; defensive `radiusKm > 0` guard — radii are > 0 in
+  practice). Growth-line precedence: newly-mastered > remembered > closer >
+  tricky; first encounter special-cased.
+- M1 (28d / 0.75), M3 (7d-vs-28d medians, ≥5/window), M4 (day streak anchored
+  today-or-yesterday) all match the doc's formulas.
+- Wiring: flag effect awaits the shared `loadFlags()` and caches the
+  boot-time value (adopter pattern for kill-switch-style tracks); store read
+  once when on, never when off. Hook sits *beside* `bankPlace` inside the
+  banked-guard with its own try/catch; the `setLearningStore` updater is pure
+  and its write idempotent, so a React re-invoked updater is harmless.
+  Growth line/summary derive from the persisted store at render — reload-safe.
+- Deliberate deviation from the doc (§4.4): a malformed *store-level*
+  payload fails closed to null, but one malformed *record* is dropped while
+  the store survives (doc says "any malformed payload → null"). Reason:
+  nuking 999 good records over one corrupt entry is worse fail-closed
+  behavior; unit-tested and documented in `parseLearningStore`.
+- Privacy: the module performs zero network I/O; share/export paths untouched.
+
+### Tone/docs/a11y review — PASS
+- All six growth lines ship verbatim from the doc's copy bank; a unit test
+  asserts the banned-tone list ("crushed", "destroyed", "noob", "god-tier",
+  "dominated") never appears in the bank.
+- "My growth" header, "Places explored/mastered", "Day streak — come back
+  tomorrow to keep growing!", "Your pins are landing closer in {region}!"
+  all match the doc; no gamer bravado, no shaming, no player comparison.
+- A11y: growth line is a plain paragraph in card reading order (after the
+  blurb, never replacing it); the 🌱 emoji uses `role="img"` + label per the
+  codebase's AiStoryBadge pattern; the growth section uses h3+dl consistent
+  with the existing "Score by edition" section.
+- Docs: design doc status line updated to reflect the Phase 2 prototype;
+  flag catalog in `docs/feature-flags.md` updated.
+
 ## Log
 - 2026-10-03: branch opened, pushed.
 - 2026-10-03 (Phase 2): pure learning module + flag registration + React wiring + unit tests committed; `npx tsc --noEmit` clean, `node scripts/lint-cards.mjs` GATE PASSED. Decisions from the design doc treated as settled at its recommendations per coordinator directive (no re-deciding).
