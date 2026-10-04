@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 930,
+    "attempt": 921,
+    "place_id": "gn-1818673",
+    "input": {
+      "place": {
+        "place_id": "gn-1818673",
+        "name": "Tai Po",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Tai Po",
+        "lat": 22.45007,
+        "lon": 114.16877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tai Po",
+          "url": "https://en.wikipedia.org/wiki/Tai_Po",
+          "text": "Tai Po  is an area in the New Territories of Hong Kong. It refers to the vicinity of the traditional market towns in the area presently known as Tai Po Old Market or Tai Po Kau Hui (大埔舊墟) (the original \"Tai Po Market\") on the north of Lam Tsuen River and the Tai Po Hui (the current Tai Po Market; historically Tai Wo Shi, literally Tai Wo market) on Fu Shin Street on the south of the Lam Tsuen River, near the old Tai Po Market railway station of the Kowloon-Canton Railway (British Section). Both market towns became part of the Tai Po New Town in the late 1970s and early 1980s. In present-day usage, \"Tai Po\" may refer to the area around the original market towns, the Tai Po New Town (Chinese: 大埔市), or the entire Tai Po District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "tai po",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "po",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 931,
+    "attempt": 922,
+    "place_id": "gn-2037013",
+    "input": {
+      "place": {
+        "place_id": "gn-2037013",
+        "name": "Harbin",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.75,
+        "lon": 126.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harbin",
+          "url": "https://en.wikipedia.org/wiki/Harbin",
+          "text": "Harbin or Hā'ěrbīn is the capital of Heilongjiang, China, and the largest city of the province—as well as the second largest urban population (after Shenyang, Liaoning province) and the largest metropolitan population (urban and rural regions together) in Northeast China. Harbin has direct jurisdiction over nine metropolitan districts, two county-level cities, and seven counties. It is the eighth most populous Chinese city according to the 2020 census. The built-up area of Harbin (which consists of all districts except Shuangcheng and Acheng) has 5,841,929 inhabitants, while the total metropolitan population is up to 10,009,854, making it one of the 100 largest urban areas in the world. Harbin serves as a key political, economic, scientific, cultural, and communications hub in Northeast China, as well as an important industrial base of the nation.\nSeveral different etymologies have been offered for the city's name. The city government says the name means \"swan\" in the Jurchen language, and other sources say that it comes from a Manchu word meaning \"a place for drying fishing nets\". The settlement grew from a small rural fishing village on the Songhua River to become one of the largest cities in Northeast China. Founded in 1898 with the coming of the Russian-built Chinese Eastern Railway, the city first prospered as a settlement inhabited by an overwhelming majority of immigrants from the Russian Empire. In the 1920s the city was considered China's fashion capital, since new designs from Paris and Moscow reached here first before arriving in Shanghai. From 1932 until 1945, Harbin was the largest city in the Japanese puppet state of Manchukuo. Well known for its historical Russian legacy and architecture, the city is famed for its European influence and serves as an important gateway in Sino-Russian trade today.\nHarbin is one of the top 50 cities and metropolitan areas in the world by scientific research output. The city hosts several major universities in Northeast China, including Harbin Engineering University, Harbin Medical University, Northeast Agricultural University, Harbin University of Science and Technology, Harbin Normal University, Northeast Forestry University, and Heilongjiang University. Notably, Harbin Institute of Technology is consistently ranked as one of the best universities in the world for engineering.\nHarbin was voted \"China Top Tourist City\" by the China National Tourism Administration in 2004. Though known for its bitterly cold seasons, Harbin is heralded as the Ice City (冰城) for its winter tourism and recreations, especially the ice sculpture festival. The city has hosted the 1996 Winter Asian Games, the 2009 Winter Universiade, and the 2025 Asian Winter Games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 421
+    },
+    "banned_terms": [
+      {
+        "term": "harbin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 932,
+    "attempt": 923,
+    "place_id": "gn-2525068",
+    "input": {
+      "place": {
+        "place_id": "gn-2525068",
+        "name": "Catania",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.49223,
+        "lon": 15.07041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catania",
+          "url": "https://en.wikipedia.org/wiki/Catania",
+          "text": "Catania (, UK also , US also ; Sicilian and Italian: [kaˈtaːnja] ) is the second-largest city in the autonomous island region of Sicily in Italy, after Palermo, both by area and by population. Despite being the second largest city of the island, Catania is the centre of the most densely populated Sicilian conurbation, which is among the largest in Italy. It has important road and rail transport infrastructures, and hosts the main airport of Sicily (fifth-largest in Italy). The city is located on Sicily's east coast, facing the Ionian Sea at the base of the active volcano Mount Etna. It is the capital of the 58-municipality province known as the Metropolitan City of Catania, which is the seventh-largest metropolitan area in Italy. The population of the city proper is 296,984, while the population of the metropolitan city is 1,067,550.\nCatania was founded in the 8th century BC by Chalcidian Greeks in Magna Graecia. The city has weathered multiple geologic catastrophes: it was almost completely destroyed by a catastrophic earthquake in 1169. A major eruption and lava flow from nearby Mount Etna nearly swamped the city in 1669 and it suffered severe devastation from the 1693 Sicily earthquake.\nDuring the 14th century, and into the Renaissance period, Catania was one of Italy's most important cultural, artistic and political centres. It was the site of Sicily's first university, founded in 1434. It has been the native or adopted home of some of Italy's most famous artists and writers, including the composers Vincenzo Bellini and Giovanni Pacini, and the writers Giovanni Verga, Luigi Capuana, Federico De Roberto and Nino Martoglio.\n\nCatania today is the industrial, logistical, and commercial centre of Sicily. Its airport, the Catania–Fontanarossa Airport, is the largest in Southern Italy. The central \"old town\" of Catania features exuberant late-baroque architecture, constructed following the 1693 earthquake, and is a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "catania",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 933,
+    "attempt": 924,
+    "place_id": "gn-2591976",
+    "input": {
+      "place": {
+        "place_id": "gn-2591976",
+        "name": "Talatona",
+        "country": "Angola",
+        "subdivision": "Luanda",
+        "lat": -8.91783,
+        "lon": 13.18562
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talatona",
+          "url": "https://en.wikipedia.org/wiki/Talatona",
+          "text": "Talatona is a city and municipality in the province of Luanda, bordering the Angolan capital, Luanda.\nIt was designed by the Angolan government to reduce traffic in central Luanda; Its infrastructure was built in a location south of Luanda, which currently houses several administrative and economic services that were relocated from the central zone of the capital. According to the 2018 population projections prepared by the National Institute of Statistics, it has a population of approximately 500,000 inhabitants. It is made up of the headquarters commune, which also bears the name Talatona, and the commune of Benfica; It is further subdivided into the urban districts of Camama, Futungo de Belas and Quifica. The municipal territory is bathed by the bay of Mussulo, managing two islands that are in this one, being the islet of Birds and the island of Desterro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "talatona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 934,
+    "attempt": 925,
+    "place_id": "gn-2759794",
+    "input": {
+      "place": {
+        "place_id": "gn-2759794",
+        "name": "Amsterdam",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.37403,
+        "lon": 4.88969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amsterdam",
+          "url": "https://en.wikipedia.org/wiki/Amsterdam",
+          "text": "Amsterdam (Dutch: [ˌɑmstərˈdɑm] ; lit. 'Dam in the Amstel') is the capital and largest city of the Netherlands. As of 1 January 2026, it had a population of 941,873 within the city proper, 1,457,018 in the urban area and 2,480,394 in the metropolitan area. Located in the Dutch province of North Holland, Amsterdam is colloquially referred to as the \"Venice of the North\", for its large number of canals, now a UNESCO World Heritage Site.\nAmsterdam was founded at the mouth of the Amstel river, which was dammed to control flooding. Originally a small fishing village in the 12th century, Amsterdam became a major world port during the Dutch Golden Age of the 17th century, when the Netherlands was an economic powerhouse. Amsterdam was the leading centre for finance and trade, as well as a hub of secular art production. In the 19th and 20th centuries, the city expanded and new neighborhoods and suburbs were built. The city has a long tradition of openness, liberalism, and tolerance. Cycling is key to the city's modern character, and there are numerous biking paths and lanes spread throughout.\nAmsterdam's main attractions include its historic canals; the Rijksmuseum, the state museum with Dutch Golden Age art; the Van Gogh Museum; the Dam Square, where the Royal Palace of Amsterdam and former city hall are located; the Amsterdam Museum; Stedelijk Museum, with modern art; the Concertgebouw concert hall; the Anne Frank House; the Scheepvaartmuseum, the Natura Artis Magistra; Hortus Botanicus, NEMO, the red-light district and cannabis coffee shops. The city is known for its nightlife and festival activity, with several nightclubs among the world's most famous. Its artistic heritage, canals, and narrow canal houses with gabled façades, well-preserved legacies of the city's 17th-century Golden Age, have attracted millions of visitors annually.\nThe Amsterdam Stock Exchange, founded in 1602, is considered the oldest \"modern\" securities market stock exchange in the world. As the commercial capital of the Netherlands and one of the top financial centres in Europe, Amsterdam is considered an alpha-world city. The city is the cultural capital of the Netherlands. Many large Dutch institutions have their headquarters in the city. Many of the world's largest companies are based in Amsterdam or have established their European headquarters there, such as technology companies Uber, Netflix, and Tesla. Although Amsterdam is the official capital of the Netherlands, it is not the seat of government. The main governmental institutions, and foreign embassies, are located in The Hague.\nIn 2022, Amsterdam was ranked the ninth-best city to live in by the Economist Intelligence Unit and 12th on quality of living for environment and infrastructure by Mercer. The city was ranked 4th place globally as a top tech hub in 2019. The Port of Amsterdam is the fourth-largest in Europe. The KLM hub and Amsterdam's main airport, Schiphol, is the busiest airport in the Netherlands, and third in Europe. The Dutch capital is one of the most multicultural cities in the world, with about 180 nationalities represented. Immigration and ethnic segregation in Amsterdam is a current issue.\nAmsterdam's notable residents throughout its history include painters Rembrandt and Vincent van Gogh, 17th-century philosophers Baruch Spinoza, John Locke, René Descartes, and John Amos Comenius, and Holocaust victim and diarist Anne Frank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 539
+    },
+    "banned_terms": [
+      {
+        "term": "amsterdam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 935,
+    "attempt": 926,
+    "place_id": "gn-3031582",
+    "input": {
+      "place": {
+        "place_id": "gn-3031582",
+        "name": "Bordeaux",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.84124,
+        "lon": -0.58046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bordeaux",
+          "url": "https://en.wikipedia.org/wiki/Bordeaux",
+          "text": "Bordeaux ( bor-DOH. French: [bɔʁdo] ; Gascon Occitan: Bordèu [buɾˈðɛw]; Basque: Bordele) is a city on the river Garonne in the Gironde department, southwestern France. A port city, it is the capital of the Nouvelle-Aquitaine region, as well as the prefecture of the Gironde department. Its inhabitants are called \"Bordelais\" (masculine) or \"Bordelaises\" (feminine). The term \"Bordelais\" may also refer to the city and its surrounding region.\nThe city of Bordeaux proper had a population of 267,991 in 2023 within its small municipal territory of 49 km2 (19 sq mi), but together with its suburbs and exurbs the Bordeaux metropolitan area had a population of 1,426,278 (2023), the sixth-most populous in France after Paris, Lyon, Marseille, Lille, and Toulouse.\nBordeaux and 27 suburban municipalities form the Bordeaux Metropolis, an indirectly elected metropolitan authority now in charge of wider metropolitan issues. The Bordeaux Metropolis, with a population of 854,334 at the 2023 census, is the fifth most populated metropolitan council in France after those of Paris, Marseille, Lyon and Lille.\nBordeaux is a world capital of wine: many châteaux and vineyards stand on the hillsides of the Gironde, and the city is home to the world's main wine fair, Vinexpo. Bordeaux is also one of the centers of gastronomy and business tourism for the organization of international congresses. It is a central and strategic hub for the aeronautics, military and space sector, home to major companies such as Dassault Aviation, ArianeGroup, Safran and Thales. The link with aviation dates back to 1910, the year the first airplane flew over the city. A crossroads of knowledge through university research, it is home to one of the only two megajoule lasers in the world, as well as a university population of more than 130,000 students within the Bordeaux Metropolis.\nBordeaux is an international tourist destination for its architectural and cultural heritage with more than 362 historic monuments, making it, after Paris, the city with the most listed or registered monuments in France. The city, known as the \"Pearl of Aquitaine\", was voted European Destination of the year in a 2015 online poll. The metropolis has also received awards and rankings by international organizations such as the 1957 Europe Prize for its efforts in transmitting the European ideal.\nIn June 2007, the Port of the Moon in historic Bordeaux was inscribed on the UNESCO World Heritage List, for its outstanding architecture and urban ensemble and in recognition of Bordeaux's international importance over the last 2000 years. Bordeaux is also ranked as a Sufficiency city by the Globalization and World Cities Research Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 428
+    },
+    "banned_terms": [
+      {
+        "term": "bordeaux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 936,
+    "attempt": 927,
+    "place_id": "gn-3078610",
+    "input": {
+      "place": {
+        "place_id": "gn-3078610",
+        "name": "Brno",
+        "country": "Czechia",
+        "subdivision": "South Moravian",
+        "lat": 49.19522,
+        "lon": 16.60796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brno",
+          "url": "https://en.wikipedia.org/wiki/Brno",
+          "text": "Brno ( BUR-noh, Czech pronunciation: [ˈbr̩no] ; German: Brünn [bʁʏn] ) is a city in the South Moravian Region of the Czech Republic. Located at the confluence of the Svitava and Svratka rivers, Brno has about 404,000 inhabitants, making it the second-largest city in the Czech Republic after the capital, Prague, and one of the 100 largest cities in the European Union. The Brno metropolitan area has approximately 730,000 inhabitants.\nBrno served as the capital of Moravia from the Middle Ages until 1948, and remains the political and cultural hub of the South Moravian Region. Brno is an important centre of the Czech judiciary. The Constitutional Court, the Supreme Court, the Supreme Administrative Court, the Supreme Public Prosecutor's Office, as well as state authorities, such as the Ombudsman and the Office for the Protection of Competition, are all located here.  Brno is also an important centre of learning and higher education, with 10 universities, 29 faculties and a student population of over 65,000, as well as more than 60 secondary schools throughout the city.\nThe Brno Exhibition Centre is one of the largest in Europe. The complex opened in 1928 and has a long history of hosting international trade fairs and expositions. The Masaryk Circuit has been hosting motorsport events since 1930, including the Road Racing World Championship Grand Prix. Another local tradition is the international fireworks competition and drone show Ignis Brunensis, which attracts over a million visitors annually.\nBrno's traditional symbols are two medieval landmarks which dominate the cityscape: the historic Špilberk Castle and its fortifications, and the Cathedral of Saints Peter and Paul on Petrov hill. Another historic landmark is the Veveří Castle near the Brno Reservoir. The Villa Tugendhat, a seminal example of functionalist architecture, was added to the UNESCO World Heritage Sites List in 2001. One of the natural sights outside the city is the Moravian Karst. Brno is a member of the UNESCO Creative Cities Network and was designated a \"City of Music\" in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "brno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 937,
+    "attempt": 928,
+    "place_id": "gn-3500957",
+    "input": {
+      "place": {
+        "place_id": "gn-3500957",
+        "name": "La Romana",
+        "country": "Dominican Republic",
+        "subdivision": "La Romana",
+        "lat": 18.42332,
+        "lon": -68.96635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Romana, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/La_Romana,_Dominican_Republic",
+          "text": "La Romana is a municipality and capital of the southeastern La Romana Province, opposite Catalina Island. It is one of the 10 largest cities in the Dominican Republic with a population estimated in 2022 at 153,241 within the city limits (metropolitan population: 270,000), of whom 149,840 are urban and 3,401 are rural.  The name Romana comes from the word \"Bomana\", a name given by Indians to what is known today as Romana River.\nThe modern La Romana International Airport was opened in 2000. The city is near several other cities, such as San Pedro de Macorís and the national capital, Santo Domingo de Guzmán. The city is a hub for a growing tourist industry with several nearby local resort spots, such as the beachfront Bayahibe, Dominicus, Casa de Campo, and the growing number of golf resorts that surround the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "la romana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "romana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 938,
+    "attempt": 929,
+    "place_id": "gn-3911925",
+    "input": {
+      "place": {
+        "place_id": "gn-3911925",
+        "name": "La Paz",
+        "country": "Bolivia",
+        "subdivision": "La Paz Department",
+        "lat": -16.5,
+        "lon": -68.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Paz",
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "text": "La Paz (Spanish: [la ˈpas]; lit. 'the peace'), officially Nuestra Señora de La Paz (Aymara: Chuqi Yapu Aymara pronunciation: [ˈtʃoqɛ ˈjapʊ]), is the seat of government of Bolivia. With 755,732 residents as of 2024, it is the third-most populous city in Bolivia. Its metropolitan area, which includes the neighboring city of El Alto, and other smaller towns, is the second most populous urban area in Bolivia, with a population of 2.2 million, after Santa Cruz de la Sierra with a population of 2.3 million. The city is also the capital of the department of the same name.\nLocated in west-central Bolivia 68 km (42 mi) southeast of Lake Titicaca, La Paz is set in a canyon created by the Choqueyapu River. It is in a bowl-like depression, part of the Amazon basin, surrounded by the high mountains of the Altiplano. Overlooking the city is the triple-peaked Illimani. Its peaks are always snow-covered and can be seen from many parts of the city. At an elevation of roughly 3,650 m (11,975 ft) above sea level, La Paz is the   highest Administrative capital city in the world. Due to its altitude, the city has an unusual subtropical highland climate, with rainy summers and dry winters.\nLa Paz was founded on 20 October 1548, by the Spanish conquistador Captain Alonso de Mendoza, at the site of the Inca settlement of Laja as a connecting point between the commercial routes that led from Potosí and Oruro to Lima; the full name of the city was originally Nuestra Señora de La Paz (meaning Our Lady of Peace) in commemoration of the restoration of peace following the insurrection of Gonzalo Pizarro and fellow conquistadors against the first viceroy of Peru. The city was later moved to its present location in the valley of Chuquiago Marka. La Paz was under Spanish colonial rule as part of the Viceroyalty of the Río de la Plata, before Bolivia gained independence. Since its founding, the city was the site of numerous revolts. In 1781, the indigenous leader and independence activist Túpac Katari laid siege to the city for a total of six months, but was finally defeated. On 16 July 1809, the Bolivian patriot Pedro Domingo Murillo ignited a revolution for independence, marking the beginning of the Spanish American Wars of Independence, which gained the freedom of South American states in 1821.\nAs the seat of the government of Bolivia, La Paz is the site of the Palacio Quemado, the presidential palace. It is also the seat of the Bolivian legislature, the Plurinational Legislative Assembly, and numerous government departments and agencies. The constitutional capital of Bolivia, Sucre, retains the judicial power. The city hosts all the foreign embassies as well as international missions in the country. La Paz is an important political, administrative, economic, and sports center of Bolivia; it generates 24% of the nation's gross domestic product and serves as the headquarters for numerous Bolivian companies and industries.\nLa Paz is also an important cultural center of South America, as it hosts several landmarks dating from colonial times, such as the San Francisco Church, the Metropolitan Cathedral, the Plaza Murillo and Jaén Street. La Paz is also situated at the confluence of archaeological regions of the Tiwanaku and Inca Empire. The city is renowned for its markets, particularly the Witches' Market, and for its nightlife. Its topography offers views of the city and the surrounding mountains of the Cordillera Real from numerous natural viewing points. La Paz is home to the largest urban cable car network in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 590
+    },
+    "banned_terms": [
+      {
+        "term": "la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 939,
+    "attempt": 930,
+    "place_id": "gn-3919968",
+    "input": {
+      "place": {
+        "place_id": "gn-3919968",
+        "name": "Cochabamba",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.38195,
+        "lon": -66.15995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cochabamba",
+          "url": "https://en.wikipedia.org/wiki/Cochabamba",
+          "text": "Cochabamba (Aymara and Quechua: Quchapampa) is a city and municipality in central Bolivia in a valley in the Andes mountain range. It is the capital of the Cochabamba Department and the fourth largest city in Bolivia, with a population of 661,484 according to the 2024 Bolivian census. Its name is from a compound of the Quechua words qucha \"lake\" and pampa, \"open plain.\" Residents of the city and the surrounding areas are commonly referred to as cochalas or, more formally, cochabambinos.\nIt is known as the \"City of Eternal Spring\" or \"The Garden City\" because of its spring-like temperatures all year round. It is also known as \"La Llajta,\" which means \"town\" in Quechua. It is the largest urban center between the higher capital of La Paz and Santa Cruz de la Sierra in the tropical plains of the east. It sits south-west of the Tunari mountains, and north of the foothills of the Valle Alto. In antiquity, the area featured numerous lakes, which gave the city its name. Many of these lakes have since disappeared to urban development, but Coña Coña and Alalay lakes are extant examples. It has been a populated settlement since the Pre-Inca period, and is today an important cultural, educational, political, and commercial centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "cochabamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 940,
+    "attempt": 931,
+    "place_id": "gn-3988214",
+    "input": {
+      "place": {
+        "place_id": "gn-3988214",
+        "name": "Salamanca",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.56979,
+        "lon": -101.1977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salamanca, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Salamanca,_Guanajuato",
+          "text": "Salamanca (Otomi: Xidoo \"Place of Tepetate\") is a city and municipality in the Mexican state of Guanajuato.\nThe city was founded on January 1, 1603, as 'Villa de Salamanca' by the Viceroy Gaspar de Zúñiga, fifth Count of Monterrey, who was originally from Salamanca (Spain). The town was founded in the lands of the Bajío, after cattle ranchers and poor farmers, a few Spaniards, and small groups of Otomis who formerly occupied a village named Xidoo, already lived in the area.\nIn recent years, many refineries have opened, and Salamanca has grown rapidly to become an important site for manufacturing and service industry in the region. Also, the University of Guanajuato has made many scientific contributions to develop agricultural and industrial technologies, giving a boost to the local and regional industries.\nThe city reported a 2020 census population of 160,682. The fourth largest city in the state (behind León, Irapuato, and Celaya), it is also the largest of four places called \"Salamanca\" in Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "salamanca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 941,
+    "attempt": 932,
+    "place_id": "gn-4013708",
+    "input": {
+      "place": {
+        "place_id": "gn-4013708",
+        "name": "Ciudad Juárez",
+        "country": "Mexico",
+        "subdivision": "Chihuahua",
+        "lat": 31.72024,
+        "lon": -106.46084
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Juárez",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Juárez",
+          "text": "Ciudad Juárez (US:  sew-DAHD HWAR-ez; Spanish: [sjuˈðað ˈxwaɾes] ; \"Juárez City\"), commonly referred to as just Juárez (Lipan: Tsé Táhú'ayá), is the most populous city in the Mexican state of Chihuahua. It was known until 1888 as El Paso del Norte (\"The North Pass\").\nIt is the seat of the Juárez Municipality with an estimated metropolitan population of 2.5 million people. Juárez lies on the Rio Grande (Río Bravo del Norte), south of El Paso, Texas, United States. Together with the surrounding areas, the cities form El Paso–Juárez, the second largest binational metropolitan area on the Mexico–U.S. border (after San Diego–Tijuana), with a combined population of over 3.4 million people.\nFour international points of entry connect Ciudad Juárez and El Paso: the Bridge of the Americas, the Ysleta–Zaragoza International Bridge, the Paso del Norte Bridge, and the Stanton Street Bridge. Combined, these bridges allowed 22,958,472 crossings in 2008, making Ciudad Juárez a major point of entry and transportation into the U.S. for all of central Northern Mexico. The city has a growing industrial center, which in large part is made up by more than 300 maquiladoras (assembly plants) located in and around the city. According to a 2007 New York Times article, Ciudad Juárez was \"absorbing more new industrial real estate space than any other North American city\". In 2008, fDi Magazine designated Ciudad Juárez \"The City of the Future\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad juarez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juarez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 942,
+    "attempt": 933,
+    "place_id": "gn-6954929",
+    "input": {
+      "place": {
+        "place_id": "gn-6954929",
+        "name": "Greater Noida",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.49615,
+        "lon": 77.53601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greater Noida",
+          "url": "https://en.wikipedia.org/wiki/Greater_Noida",
+          "text": "Greater Noida is a planned city located in the Gautam Buddha Nagar district of the Indian state of Uttar Pradesh. The city was created as an extension of the area under the UP Industrial Area Development Act, of 1976. Situated 40.2 km (25.0 mi) southeast of the Center of the capital city New Delhi, it takes around 30 minutes to travel between the cities via the Noida-Greater Noida Expressway. The city is administered by the Greater Noida Industrial Development Authority (GNIDA). Greater Noida is being developed as Metro Centre providing for quality urban environment, to attract economic activities and population to decongest Delhi. It provides for planning, Developing, Regulating and Operations under a Single Authority-GNIDA.\nNoida was one of several planned cities developed in the 1980s to address rapid population growth in metropolitan areas such as Delhi, Mumbai, and Kolkata. However, population growth in Noida surpassed early projections, prompting the Government of Uttar Pradesh to plan an extension of the city — later developed as Greater Noida."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "greater noida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "greater",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 943,
+    "attempt": 934,
+    "place_id": "gn-71137",
+    "input": {
+      "place": {
+        "place_id": "gn-71137",
+        "name": "Sanaa",
+        "country": "Yemen",
+        "subdivision": "Amanat Alasimah",
+        "lat": 15.35452,
+        "lon": 44.20646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanaa",
+          "url": "https://en.wikipedia.org/wiki/Sanaa",
+          "text": "Sanaa, officially the Sanaa Municipality, is the capital and largest city of Yemen. The city is the capital of the Sanaa Governorate, but is not part of the governorate, as it forms a separate administrative unit. At an elevation of 2,300 metres (7,500 ft), Sanaa is the seventh highest capital city in the world and is situated between the Sarawat Mountains of Jabal An-Nabi Shu'ayb and Jabal Tiyal, considered the highest mountains in the Arabian Peninsula and one of the highest in the Middle East.\nSanaa has a population of approximately 3,300,000 (2023), making it Yemen's largest city. As of 2020, the greater Sanaa urban area makes up about 10% of Yemen's total population. The Old City of Sanaa, a UNESCO World Heritage Site, has a distinctive architectural character, most notably expressed in its multi-story buildings decorated with geometric patterns. Al-Saleh Mosque, the largest in the country, is located in the southern outskirts of the city.\nIn September 2014, the Houthis captured Sanaa from the government of President Abdrabbuh Mansur Hadi. Since then, the Yemeni government has moved the seat to Aden, the former capital of South Yemen. Aden was declared the temporary capital by then-president Hadi in March 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "sanaa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 944,
+    "attempt": 935,
+    "place_id": "gn-732770",
+    "input": {
+      "place": {
+        "place_id": "gn-732770",
+        "name": "Burgas",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.50651,
+        "lon": 27.46886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burgas",
+          "url": "https://en.wikipedia.org/wiki/Burgas",
+          "text": "Burgas (Bulgarian: Бургас, pronounced [burˈɡas] ), sometimes transliterated as Bourgas, is the second largest city on the Bulgarian Black Sea Coast in the region of Northern Thrace and the fourth-largest city in Bulgaria after Sofia, Plovdiv, and Varna, with a population of 210,382 inhabitants, while 225,945 live in its urban area. It is the capital of Burgas Province and an important industrial, transport, cultural and tourist centre.\nThe city is surrounded by the Burgas Lakes and located at the westernmost point of the Black Sea, at the large Burgas Bay. LUKOIL Neftochim Burgas is the largest oil refinery in southeastern Europe and the largest industrial enterprise. The Port of Burgas is the second largest port in Bulgaria, and Burgas Airport is the second most important in the country. Burgas is the centre of the Bulgarian fishing and fish processing industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "burgas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 945,
+    "attempt": 936,
+    "place_id": "gn-8581443",
+    "input": {
+      "place": {
+        "place_id": "gn-8581443",
+        "name": "South Tangerang",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.28862,
+        "lon": 106.71789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Tangerang",
+          "url": "https://en.wikipedia.org/wiki/South_Tangerang",
+          "text": "South Tangerang (Indonesian: Tangerang Selatan, Sundanese: ᮓᮚᮩᮂ ᮒᮍᮨᮛᮀ ᮊᮤᮓᮥᮜ᮪, romanized: Dayeuh Tangerang Kidul)  abbreviated as Tangsel, is a city in the province of Banten, Indonesia. Located 30 km (19 mi) on the southwestern border of Jakarta, the city forms part of the Greater Jakarta metropolitan area. It was administratively separated from Tangerang Regency on 26 November 2008. According to the 2020 Census, the city population was 1,354,350 inhabitants, while the official estimate as of mid-2024 was 1,429,629 - comprising 712,409 males and 717,120 females. The total area is 164.86 km2 (63.65 sq mi). It is the second-largest city in Banten (after Tangerang immediately to its north) in terms of population, and has grown rapidly, not only as Jakarta's satellite city, but also as the development of business districts and commerce due to presence of large-scale planned town by private developers.\nSouth Tangerang is home to some planned towns built by private developers, the notable ones are Alam Sutera (in North Serpong), BSD City (in Serpong and Setu), and Bintaro Jaya (in Pondok Aren and Ciputat), complete with facilities such as business centers, hospitals, shopping malls, and international schools such as British School Jakarta, Global Jaya School, German School Jakarta (Deutsche Schule Jakarta), and a Monash University campus in BSD, among other prominent private universities. In the same city, there is another major mixed‑use development called SouthCity, a 57‑hectare superblock in the Pondok Cabe area that includes residential neighbourhoods, commercial spaces, and planned lifestyle facilities, as well as a joint investment of over Rp 1 trillion to build a regional shopping mall within the superblock, reflecting its role in South Tangerang's evolving urban landscape. Currently, the average land price in South Tangerang is the most expensive among Jakarta's satellite cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "south tangerang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tangerang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 946,
+    "attempt": 937,
+    "place_id": "gn-169577",
+    "input": {
+      "place": {
+        "place_id": "gn-169577",
+        "name": "Homs",
+        "country": "Syria",
+        "subdivision": "Homs",
+        "lat": 34.72405,
+        "lon": 36.72559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Homs",
+          "url": "https://en.wikipedia.org/wiki/Homs",
+          "text": "Homs, known in pre-Islamic times as Emesa, is a city in western Syria and the capital of the Homs Governorate. It is 501 m (1,644 ft) above sea level and is located 162 km (101 mi) north of Damascus. Located on the Orontes River, Homs is also the central link between the interior cities and the Mediterranean coast.\nBefore the Syrian civil war, Homs was a major industrial hub with a population of at least 652,609 people in 2004, it was the third-largest city in Syria after Aleppo to the north and the capital Damascus to the south. Its population reflected Syria's general religious diversity, composed of Sunni and Alawite Muslims, and Christians. There are a number of historic mosques and churches in the city, and it is close to the Krak des Chevaliers castle, a World Heritage Site.\nHoms did not emerge into the historical record until the 1st century BC in the Seleucid Empire, becoming the capital of a kingdom ruled by the Emesene dynasty who gave the city its name. Originally a center of worship for El-Gabal, a pagan idol linked to the sun, it later gained importance in Christianity under the Byzantines. Homs was conquered by the Muslims in the 7th century and made capital of a district that bore its current name. Throughout the Islamic era, Muslim dynasties contending for control of Syria sought after Homs due to the city's strategic position in the area. Homs began to decline under the Ottomans and only in the 19th century did the city regain its economic importance when its cotton industry boomed. During French Mandate rule, the city became a center of insurrection and, after independence in 1946, a center of Baathist resistance to the first Syrian governments.\nDuring the civil war, much of the city was devastated due to the Siege of Homs; reconstruction to affected parts of the city is underway. In December 2024, Syrian rebels began an offensive, entering Homs and taking control of the city on December 8."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "homs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 947,
+    "attempt": 938,
+    "place_id": "gn-1792520",
+    "input": {
+      "place": {
+        "place_id": "gn-1792520",
+        "name": "Tongzhou",
+        "country": "China",
+        "subdivision": "Beijing",
+        "lat": 39.90395,
+        "lon": 116.66183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tongzhou, Beijing",
+          "url": "https://en.wikipedia.org/wiki/Tongzhou,_Beijing",
+          "text": "Tongzhou (Chinese: 通州; pinyin: Tōngzhōu), historically romanized as Tong-Choo-Foo in 18th-century British accounts,\nis a district of Beijing. It is located in southeast Beijing and considered the eastern gateway to the nation's capital. Downtown Tongzhou itself lies around 20 km (12 mi) east of central Beijing, at the northern end of the Grand Canal (on the junction between the Tonghui Canal and the Northern Canal) and at the easternmost end of Chang'an Avenue. The entire district covers an area of 906 km2 (350 sq mi), or 6% of Beijing's total area. It had a population of 673,952 at the 2000 Census, and has seen significant growth and development since then, growing to a population of 1,184,000 at the 2010 Census and 1,840,295 at the 2020 census. The district is subdivided into four subdistricts, ten towns, and one ethnic township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "tongzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 948,
+    "attempt": 939,
+    "place_id": "gn-1803567",
+    "input": {
+      "place": {
+        "place_id": "gn-1803567",
+        "name": "Linfen",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 36.08889,
+        "lon": 111.51889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linfen",
+          "url": "https://en.wikipedia.org/wiki/Linfen",
+          "text": "Linfen (simplified Chinese: 临汾; traditional Chinese: 臨汾; pinyin: Lín Fén) is a prefecture-level city in the southwest of Shanxi province, China, bordering Shaanxi province to the west. Linfen City is located in the southern part of Shanxi Province, with the remaining branches of Taiyue to the east and the Luliang Mountains to the west. In the middle is a vast river valley plain, with the Fen River mainstream running across the north and south, and the land on both sides is fertile. It is situated along the banks of the Fen River. It has an area of 20,275 square kilometres (7,828 sq mi) and according to the 2020 Census, a population of 3,976,481 inhabitants of which 959,198 live in the built-up (or metro) area made up of Yaodu urban district. The GDP of Linfen ranked second in Shanxi Province. It was known as Pingyang (平陽) during the Spring and Autumn period. In 2006, the American Blacksmith Institute listed Linfen as one of the ten most polluted cities in the world, but air quality had improved by 2023.\nPrior to 1978, Linfen was famous for its spring water, greenery and rich agriculture and therefore nicknamed \"The Modern Fruit and Flower Town\". Since then it has been developing into a main industrial center for coal mining, which has significantly damaged the city's environment, air quality, farming, health and its previous status as a green village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "linfen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 949,
+    "attempt": 940,
+    "place_id": "gn-2067119",
+    "input": {
+      "place": {
+        "place_id": "gn-2067119",
+        "name": "Mandurah",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.5269,
+        "lon": 115.7217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandurah",
+          "url": "https://en.wikipedia.org/wiki/Mandurah",
+          "text": "Mandurah ( man-dyu-rə) is a coastal city in the Australian state of Western Australia, situated approximately 72 kilometres (45 mi) south of the state capital, Perth. It is the state's second most populous city, with a population of 107,643.\nMandurah's central business district is located on the Mandurah Estuary, which is an outlet for the Peel Inlet and Harvey Estuary. The city's name is derived from the Noongar word mandjar, meaning \"meeting place\" or \"trading place\". A townsite for Mandurah was laid out in 1831, two years after the establishment of the Swan River Colony, but attracted few residents, and until the post-war boom of the 1950s and 1960s it was little more than a small fishing village. In subsequent years, Mandurah's reputation for boating and fishing attracted many retirees, including to the canal developments in the city's south.\nAlong with four other local government areas (Boddington, Murray, Serpentine-Jarrahdale, and Waroona), the City of Mandurah is included in the wider Peel region. Mandurah is sometimes grouped together with Perth for statistical purposes, especially since the extension of the Kwinana Freeway and the completion of the Mandurah railway line in the late 2000s. The two cities now form a conurbation along the Indian Ocean coastline, although the Perth metropolitan area officially ends at Singleton around 9 kilometres (5.6 mi) north of Mandurah's city centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "mandurah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

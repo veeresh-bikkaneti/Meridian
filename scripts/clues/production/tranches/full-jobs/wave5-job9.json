@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 970,
+    "attempt": 961,
+    "place_id": "gn-1214520",
+    "input": {
+      "place": {
+        "place_id": "gn-1214520",
+        "name": "Medan",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 3.58333,
+        "lon": 98.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Medan",
+          "url": "https://en.wikipedia.org/wiki/Medan",
+          "text": "Medan ( meh-DAHN, Indonesian: [ˈmɛdan] , Batak: ᯔᯩᯑᯉ᯳) is the capital and largest city of the Indonesian province of North Sumatra. The nearby Strait of Malacca, Port of Belawan, and Kualanamu International Airport make Medan a regional hub and multicultural metropolis, acting as a financial centre for Sumatra and a gateway to the western part of Indonesia. About 60% of the economy in North Sumatra is backed by trading, agriculture, and processing industries, including exports from its 4 million acres of palm oil plantations. The National Development Planning Agency listed Medan as one of the four main central cities in Indonesia, alongside Jakarta, Surabaya, and Makassar. In terms of population, it is the most populous city in Indonesia outside of the island of Java. Its population, as of 2024, is approximately equal to the country of Moldova.\nAs of the 2020 Census, Medan had a population of 2,435,252 within its city limits; the official population estimate as of mid 2024 was 2,486,283 - comprising 1,237,602 males and 1,248,681 females - and projected to rise to 2,498,293 at mid 2025. When the surrounding urban area is included, the population is over 3.4 million, making it the fourth largest urban area in Indonesia. The Medan metropolitan area—which includes neighbouring Binjai, Deli Serdang Regency, and a part of Karo Regency—is the largest metropolitan area outside of Java, with 4,744,323 residents counted in the 2020 Census, rising to 4,944,979 in mid 2024.\nThe city was founded at the confluence of the Deli River and the Babura river by a Karonese man named Guru Patimpus. Then called Kampung Medan Putri, it became part of the Deli Sultanate, established in 1632. In the late 19th century, colonial Dutch seeking new plantation areas chose Medan and Deli as plantation hubs to found the Deli Company. Within a few years, the Dutch tobacco trade transformed Medan into an economic hub, earning it the nickname Het Land Dollar (\"the land of the money\"). The Deli Railway, established to ship tobacco, rubber, tea, timber, palm oil, and sugar from Medan to the Port of Belawan for worldwide export, brought further rapid development to Medan. The city became first the capital of the State of East Sumatra, and then the provincial capital of North Sumatra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "medan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 971,
+    "attempt": 962,
+    "place_id": "gn-1259229",
+    "input": {
+      "place": {
+        "place_id": "gn-1259229",
+        "name": "Pune",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.51957,
+        "lon": 73.85535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pune",
+          "url": "https://en.wikipedia.org/wiki/Pune",
+          "text": "Pune (Marathi: Puṇē, pronounced [ˈpuɳeː] ), previously spelled in English as Poona (the official name until 1978), is a city in the state of Maharashtra in the Deccan Plateau in Western India. It is the administrative headquarters of the Pune district, and of Pune division. In terms of the total amount of land under its jurisdiction, Pune is the largest city in Maharashtra by area, with a geographical area of 516.18km2, though by population it comes in a distant second to Mumbai. The city of Pune is part of Pune Metropolitan Region, which according to the 2011 Census of India, has 7.2 million residents, making it the seventh-most populous metropolitan area in India.  Pune is one of the largest IT hubs in India. It is also one of the most important automobile and manufacturing hubs of India. Pune is often referred to as the \"Oxford of the East\" because of its educational institutions. It has been ranked \"the most liveable city in India\" several times.\nPune at different points in time has been ruled by the Rashtrakuta dynasty, Ahmadnagar Sultanate, the Mughals, and the Adil Shahi dynasty. In the 18th century, the city was part of the Maratha Empire, and the seat of the Peshwas, the prime ministers of the Maratha Empire. Pune was seized by the British East India Company in the Third Anglo-Maratha War; it gained municipal status in 1858, the year in which Crown rule began. Many historical landmarks like Shaniwarwada, Shinde Chhatri, and Vishrambaug Wada date to this era. Historical sites from different eras dot the city.\nPune has historically been a major cultural centre, with important figures like Dnyaneshwar, Shivaji, Tukaram, Baji Rao I, Balaji Baji Rao, Madhavrao I, Nana Fadnavis, Mahadev Govind Ranade, Gopal Krishna Gokhale, Mahatma Jyotirao Phule, Savitribai Phule, Gopal Ganesh Agarkar, Tarabai Shinde, Dhondo Keshav Karve, and Pandita Ramabai doing their life's work in Pune City or in an area that falls in Pune Metropolitan Region. Pune was a major centre of resistance to the British Raj, with people like Gopal Krishna Gokhale and Bal Gangadhar Tilak playing leading roles in the struggle for Indian independence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "pune",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 972,
+    "attempt": 963,
+    "place_id": "gn-1262260",
+    "input": {
+      "place": {
+        "place_id": "gn-1262260",
+        "name": "Nagapattinam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.76377,
+        "lon": 79.84313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagapattinam",
+          "url": "https://en.wikipedia.org/wiki/Nagapattinam",
+          "text": "Nagapattinam (nākappaṭṭinam, previously spelt Nagapatnam or Negapatam) is a city in the Indian state of Tamil Nadu and the administrative headquarters of Nagapattinam district. The town came to prominence during the period of Medieval Cholas (9th–12th century CE) and served as their important port for commerce and east-bound naval expeditions. The Chudamani Vihara in Nagapattinam constructed by the Srivijayan king Sri Mara Vijayattungavarman of the Sailendra dynasty with the help of Rajaraja Chola I was an important Buddhist structure in those times. Nagapattinam was settled by the Portuguese and, later, the Dutch under whom it served as the capital of Dutch Coromandel from 1660 to 1781. In November 1781, the town was conquered by the British East India Company. It served as the capital of Tanjore district from 1799 to 1845 under Madras Presidency of the British. It continued to be a part of Thanjavur district in Independent India. In 1991, it was made the headquarters of the newly created Nagapattinam District. Nagapattinam is administered by a Special grade municipality covering an area of 17.92 km2 (6.92 sq mi) and had a population of 102,905 as of 2011.\nA majority of the people of Nagapattinam are employed in sea-borne trading, fishing, agriculture and tourism. Kayarohanaswami Temple and Soundararajaperumal Temple, Nagapattinam are the major Hindu pilgrimage sites. Nagapattinam is the base for tourism for Sikkal, Velankanni, Poompuhar, Kodiakkarai, Vedaranyam, and Tharangambadi. Roadways is the major mode of transport to Nagapattinam, while the city also has rail and sea transport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "nagapattinam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 973,
+    "attempt": 964,
+    "place_id": "gn-1784990",
+    "input": {
+      "place": {
+        "place_id": "gn-1784990",
+        "name": "Zhanjiang",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 21.23391,
+        "lon": 110.38749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhanjiang",
+          "url": "https://en.wikipedia.org/wiki/Zhanjiang",
+          "text": "Zhanjiang is a coastal city in southern China, located on the Leizhou Peninsula in Guangdong province. It is a prefecture-level city which administers the entire Leizhou Peninsula and lies directly opposite to Haikou, the capital of the Hainan province, across the Qiongzhou Strait. It is the southernmost port on the coast of mainland China, serving as a centre of commerce and navigation for much of southwestern China. The city's built-up urban centre consists of four districts: Chikan, Xiashan, Potou, and Mazhang. \nAccording to the 2020 census, the city's resident population was 6,981,236, down slightly from 6,994,832 in 2010—the highest decade-census figure to that date. More recent estimates (2023) place the total resident population at about 7,078,400, an all-time high, while the urban population of the built-up centre is estimated at roughly 3,402,700 (2023), also an all-time high.\nIn 2007, the Chinese Cities Brand Value Report ranked Zhanjiang among China's ten most livable cities.\nZhanjiang's culture is shaped by the Leizhou Peninsula, home to the distinctive Leizhou Opera (雷剧). The city also hosts a major base of the People's Liberation Army Navy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "zhanjiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 974,
+    "attempt": 965,
+    "place_id": "gn-1805528",
+    "input": {
+      "place": {
+        "place_id": "gn-1805528",
+        "name": "Jinhua",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 29.10678,
+        "lon": 119.64421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinhua",
+          "url": "https://en.wikipedia.org/wiki/Jinhua",
+          "text": "Jinhua is a prefecture-level city in central-western Zhejiang province in eastern China. It borders the provincial capital of Hangzhou to the northwest, Quzhou to the southwest, Lishui to the south, Taizhou to the east, and Shaoxing to the northeast. Its population was 7,050,683 as of the 2020 census including 1,463,990 in the built-up (or metro) area made of two urban districts (not including yet the satellite city of Lanxi, which has become essentially a suburban offshoot of Jinhua's main urban area).\nJinhua is rich in red soil and forest resources. The Jinhua or Wu River flows through the Lan and Fuchun to the Qiantang River beside Hangzhou, which flows into Hangzhou Bay and the East China Sea. In medieval China, it formed part of the water network feeding supplies to the southern end of the Grand Canal. It is best known for its dry-cured Jinhua ham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "jinhua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 975,
+    "attempt": 966,
+    "place_id": "gn-2036427",
+    "input": {
+      "place": {
+        "place_id": "gn-2036427",
+        "name": "Jinzhou",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.10778,
+        "lon": 121.14167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinzhou",
+          "url": "https://en.wikipedia.org/wiki/Jinzhou",
+          "text": "Jinzhou (, simplified Chinese: 锦州; traditional Chinese: 錦州; pinyin: Jǐnzhōu), formerly Chinchow, is a coastal prefecture-level city in central-west Liaoning province, China. It is a geographically strategic city located in the Liaoxi Corridor, which connects most of the land transports between North China and Northeast China, and is the economic center of western Liaoning.  Located on the northern shore of Liaodong Bay, Jinzhou encompasses a coastline of 97.7 km (60.7 mi), with the Port of Jinzhou being China's northernmost seaport.\nIt is the fifth-most populous city in Liaoning, with a population of 2,703,853 (2020 census), of whom 1,524,362 reside in the built-up (or metro) area encompassing the 3 urban urban districts and Linghai City largely being conurbated. The total area under the jurisdiction of Jinzhou is 9,989 square kilometers (3,857 sq mi), most of which is rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "jinzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 976,
+    "attempt": 967,
+    "place_id": "gn-2163355",
+    "input": {
+      "place": {
+        "place_id": "gn-2163355",
+        "name": "Hobart",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.87936,
+        "lon": 147.32941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hobart",
+          "url": "https://en.wikipedia.org/wiki/Hobart",
+          "text": "Hobart (  HOH-bart; Southeast Tasmanian: nipaluna) is the capital and most populous city of the island state of Tasmania, Australia. Located in Tasmania's south-east on the estuary of the River Derwent, it is the southernmost capital city in Australia. Despite containing nearly half of Tasmania's population, Hobart is the least-populated Australian state capital city, and second-smallest by population and area after Darwin(55.859) if territories are taken into account. Its skyline is dominated by the 1,271-metre (4,170 ft) kunanyi / Mount Wellington, and its harbour forms the second-deepest natural port in the world, with much of the city's waterfront consisting of reclaimed land. The metropolitan area is often referred to as Greater Hobart, to differentiate it from the City of Hobart, one of the seven local government areas that cover the city. It has a mild maritime climate.\nThe city lies on country which was known by the local Muwinina people as nipaluna, a name which includes surrounding features such as kunanyi / Mount Wellington and Timtumili Minanya (River Derwent). Prior to British colonisation, the land had been occupied for possibly as long as 35,000 years by Aboriginal Tasmanians, who generally refer to themselves as Palawa or Pakana.\nFounded in 1804 as a British penal colony, Hobart is Australia's second-oldest capital city after Sydney, New South Wales. Whaling quickly emerged as a major industry in the area, and for a time Hobart served as the Southern Ocean's main whaling port. Penal transportation ended in the 1850s, after which the city experienced periods of growth and decline. The early 20th century saw an economic boom on the back of mining, agriculture and other primary industries, and the loss of men who served in the world wars was counteracted by an influx of immigration. Despite the rise in migration from Asia and other non-English speaking regions, Hobart's population is predominantly ethnically Anglo-Celtic and has the highest percentage of Australian-born residents among Australia's capital cities.\nToday, Hobart is the financial and administrative hub of Tasmania, serving as the home port for both Australian and French Antarctic operations and acting as a tourist destination. Well-known drawcards include its convict-era architecture, Salamanca Market and the Museum of Old and New Art (MONA), the Southern Hemisphere's largest private museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 372
+    },
+    "banned_terms": [
+      {
+        "term": "hobart",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 977,
+    "attempt": 968,
+    "place_id": "gn-2177091",
+    "input": {
+      "place": {
+        "place_id": "gn-2177091",
+        "name": "Ballarat",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.56622,
+        "lon": 143.84957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballarat",
+          "url": "https://en.wikipedia.org/wiki/Ballarat",
+          "text": "Ballarat ( BAL-ə-RAT) (Wathawurrung: balla arat) is a city in the Central Highlands of Victoria, Australia. At the 2021 census, it had a population of 111,973, making it the third-largest urban inland city in Australia and the third-largest city in Victoria.\nWithin months of Victoria separating from the colony of New South Wales in 1851, gold was discovered near Ballarat, sparking the Victorian gold rush. Ballarat subsequently became a thriving boomtown that for a time rivalled Melbourne, the capital of Victoria, in terms of wealth and cultural influence. In 1854, following a period of civil disobedience in Ballarat over gold licenses, local miners launched an armed uprising against government forces. Known as the Eureka Rebellion, it led to the introduction of white male suffrage in Australia, and as such is interpreted as the origin of Australian democracy. The rebellion's symbol, the Eureka Flag, has become a national symbol.\nProclaimed a city on 9 September 1870, Ballarat's prosperity, unlike that of many other gold boomtowns, continued until the late 19th century, as the city's fields experienced sustained high gold yields for many decades. By the turn of the century, Ballarat's importance relative to Melbourne rapidly faded with the slowing of gold extraction. It has endured as a major regional centre and is the commercial capital and largest city of the Central Highlands, as well as a significant tourist destination. Ballarat is known for its history, culture and well-preserved colonial-era heritage, with much of the city subject to heritage overlays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "ballarat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 978,
+    "attempt": 969,
+    "place_id": "gn-2192362",
+    "input": {
+      "place": {
+        "place_id": "gn-2192362",
+        "name": "Christchurch",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.53333,
+        "lon": 172.63333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Christchurch",
+          "url": "https://en.wikipedia.org/wiki/Christchurch",
+          "text": "Christchurch ( ; Māori: Ōtautahi) is the largest city in the South Island and the second-largest city by urban area population in New Zealand. Christchurch has an urban population of 407,800, and a metropolitan population of 556,500. It is located in the Canterbury Region, near the centre of the east coast of the South Island, east of the Canterbury Plains. It is located near the southern end of Pegasus Bay, and is bounded to the east by the Pacific Ocean and to the south by the ancient volcanic complex of the Banks Peninsula. The Avon River / Ōtākaro winds through the centre of the city, with a large urban park along its banks. With the exception of the Port Hills, it is a relatively flat city, on an average about 20 m (66 ft) above sea level. Christchurch has a reputation for being an English city, with its architectural identity and nickname the 'Garden City' due to similarities with garden cities in England, but also has a historic Māori heritage. Christchurch has a temperate oceanic climate with moderate rainfall.\nThe area of modern-day greater Christchurch was first inhabited by the historic Māori iwi Waitaha in the mid-thirteenth century. Waitaha, who occupied the swamplands with patchworks of marshland, were invaded by Kāti Māmoe in the sixteenth century, and then were absorbed by Kāi Tahu a century later. Ōtautahi was inhabited seasonally, and a major trading centre was established at Kaiapoi Pā. British colonial settlement began in the mid-nineteenth century. The First Four Ships were chartered by the Canterbury Association and brought the Canterbury Pilgrims from Britain to Lyttelton Harbour in 1850. It became a city by letters patent on 31 July 1856, making it officially the oldest established city in New Zealand. Christchurch was heavily industrialised in the early 20th century, with the opening of the Main South Line railway and the development of state housing causing rapid growth in the city's economy and population.\nChristchurch has strong cultural connections with its European elements and architectural identity. Christchurch is also home to a number of performing arts centres and academic institutions (including the University of Canterbury). Christchurch has hosted numerous international sporting events, notably the 1974 British Commonwealth Games at the purpose-built Queen Elizabeth II Park. The city has been recognised as an Antarctic gateway since 1901, and is nowadays one of the five Antarctic gateway cities hosting Antarctic support bases for several nations. Christchurch is served by the Christchurch Airport in Harewood, the country's second-busiest airport.\nThe city suffered a series of earthquakes from September 2010, with the most destructive occurring on 22 February 2011, in which 185 people were killed and thousands of buildings across the city suffered severe damage, with many central city buildings collapsing, leading to ongoing recovery and rebuilding projects. Christchurch later became the site of the deadliest terrorist attack in New Zealand history, which targeted two mosques on 15 March 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 486
+    },
+    "banned_terms": [
+      {
+        "term": "christchurch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 979,
+    "attempt": 970,
+    "place_id": "gn-285787",
+    "input": {
+      "place": {
+        "place_id": "gn-285787",
+        "name": "Kuwait City",
+        "country": "Kuwait",
+        "subdivision": "Al Asimah",
+        "lat": 29.367,
+        "lon": 47.97429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuwait City",
+          "url": "https://en.wikipedia.org/wiki/Kuwait_City",
+          "text": "Kuwait City ( ; Arabic: مدينة الكويت, romanised: Madīnat al-Kuwayt) is the capital and largest city of Kuwait. Located at the heart of the country on the south shore of Kuwait Bay on the Persian Gulf, it is the political, cultural and economic primate city of the emirate, being home to the headquarters of most Kuwaiti corporations and the entirety of its banking system.\nAs of 2018, the metropolitan area had roughly three million inhabitants (more than 70% of the country's population). The city itself has no administrative status. All six governorates of the country contain parts of the urban agglomeration, which is subdivided into numerous areas. In a narrower sense, Kuwait City can also refer only to the town's historic core, which is part of the Capital Governorate and seamlessly merges with the adjacent urban areas.\nKuwait City's trade and transportation needs are served by Kuwait International Airport, Mina Al-Shuwaikh (Shuwaikh Port) and Mina Al Ahmadi (Ahmadi Port)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kuwait city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kuwait",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 980,
+    "attempt": 971,
+    "place_id": "gn-2875601",
+    "input": {
+      "place": {
+        "place_id": "gn-2875601",
+        "name": "Lübeck",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 53.86893,
+        "lon": 10.68729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lübeck",
+          "url": "https://en.wikipedia.org/wiki/Lübeck",
+          "text": "Lübeck (German: [ˈlyːbɛk] ; Low German: Lübęk or Lübeek [ˈlyːbeːk]; Latin: Lubeca), officially the Hanseatic City of Lübeck (German: Hansestadt Lübeck), is a city in Northern Germany. With around 220,000 inhabitants, it is the second-largest city on the German Baltic coast and the second-largest city in the state of Schleswig-Holstein, after its capital, Kiel. It is the 36th-largest city in Germany.\nThe city lies in the Holsatian part of Schleswig-Holstein, at the mouth of the Trave, which flows into the Bay of Lübeck in the borough of Travemünde, and on the Trave's tributary Wakenitz. The island with the historic old town and the districts north of the Trave are also located in the historical region of Wagria. Lübeck is the southwesternmost city on the Baltic Sea, and the closest point of access to the Baltic from Hamburg. The city lies in the Holsatian dialect area of Low German.\nBefore 819, Polabian Slavs founded a settlement which they called Liubice at the confluence of the Schwartau and the Trave. By the 10th century, Liubice was the second-most important settlement of the Obotrites after Starigard. Lübeck was granted Soest city rights in 1160, and, in 1260, it became an immediate city within the Holy Roman Empire. In the middle of the 12th century, Lübeck developed into the cradle of the Hanseatic League, of which it was considered the de facto capital and most important city from then on. The Lübeck law was eventually adopted by around 100 cities in the Baltic region. Lübeck preserved its status as an independent city, which it had held since 1226, until 1937.\nLübeck's historic old town, located on a densely built-up island, is Germany's most extensive UNESCO World Heritage Site. With six church towers surpassing 100 metres (330 ft), Lübeck has more such towers than any other city in the world. Nicknamed the \"City of the Seven Towers\" (Stadt der Sieben Türme), Lübeck's skyline is dominated by the seven towers of its five main Protestant churches: St Mary's, Lübeck Cathedral, St James', St Peter's, and St Giles's. The cathedral, constructed in various stages between 1173 and 1335, was the first large brickwork church in the Baltic region. St Mary's Church, built between 1265 and 1351, is considered the model on which most of the other Brick Gothic churches in the sphere of influence of the Hanseatic League are based. It is the second-tallest church with two main towers after Cologne Cathedral (which only surpassed it in 1880), has the tallest brick vault, and is the second-tallest brickwork structure after St. Martin's Church in Landshut.\nLübeck is home to the University of Lübeck with its University Medical Center Schleswig-Holstein, the Technical University of Applied Sciences Lübeck, and the Lübeck Academy of Music. There are 18 museums in Lübeck, among which are the European Hansemuseum, Lübeck Museum Port, and the Niederegger Marzipan Museum dedicated to the culinary specialty for which the city is best known, namely Lübeck Marzipan. Due to their southwestern location, Travemünde and the nearby seaside resorts of Niendorf, Timmendorfer Strand, Scharbeutz, Haffkrug, Sierksdorf, and Grömitz are among Germany's most visited seaside destinations.\nLübeck Main Station is located on the Vogelfluglinie railway line connecting continental Europe (Hamburg) to Scandinavia (Copenhagen) via the future Fehmarn Belt fixed link. The port of Lübeck is the second-largest German port on the Baltic Sea after the port of Rostock, and the Skandinavienkai in Travemünde is Germany's most important ferry port, with connections to Scandinavia and the Baltic countries. The city has its own regional airport at Lübeck-Blankensee, while nearby Hamburg Airport serves as Lübeck's main air hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 597
+    },
+    "banned_terms": [
+      {
+        "term": "lubeck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 981,
+    "attempt": 972,
+    "place_id": "gn-2990969",
+    "input": {
+      "place": {
+        "place_id": "gn-2990969",
+        "name": "Nantes",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.21725,
+        "lon": -1.55336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nantes",
+          "url": "https://en.wikipedia.org/wiki/Nantes",
+          "text": "Nantes (, US also ; French: [nɑ̃t] ; Gallo: Naunnt or Nantt [nɑ̃(ː)t]; Breton: Naoned [ˈnãunət]) is a city in the Loire-Atlantique department of France on the Loire, 50 km (31 mi) from the Atlantic coast. The city is the sixth largest in France, with a population of 327,734 in Nantes proper (2023) and a metropolitan area of 1,050,815 inhabitants (2023). With Saint-Nazaire, a seaport on the Loire estuary, Nantes forms one of the main north-western French metropolitan agglomerations.\nIt is the administrative seat of the Loire-Atlantique department and the Pays de la Loire region, one of 18 regions of France. Nantes belongs historically and culturally to Brittany, a former duchy and province, and its omission from the modern administrative region of Brittany is controversial.\nNantes was identified during classical antiquity as a port on the Loire. It was the seat of a bishopric at the end of the Roman era before it was captured by the Bretons in 851 with the help of Lambert II of Nantes. Although Nantes was the primary residence of the 15th-century dukes of Brittany, Rennes became the provincial capital after the 1532 union of Brittany and France. \nDuring the 17th century, after the establishment of the French colonial empire, Nantes gradually became the largest port in France and was responsible for nearly half of the 18th-century French Atlantic slave trade. The French Revolution resulted in an economic decline, but Nantes developed robust industries after 1850 (chiefly in shipbuilding and food processing). Deindustrialization in the second half of the 20th century spurred the city to adopt a service economy. \nIn 2024, the Globalization and World Cities Research Network ranked Nantes as a Sufficiency global city. Nantes received the European Green Capital Award in 2013. The European Commission noted the city's efforts to reduce air pollution and CO2 emissions, its high-quality and well-managed public transport system and its biodiversity, with 3,366 hectares (8,320 acres) of green space and several protected Natura 2000 areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "nantes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 982,
+    "attempt": 973,
+    "place_id": "gn-3393536",
+    "input": {
+      "place": {
+        "place_id": "gn-3393536",
+        "name": "Olinda",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.00889,
+        "lon": -34.85528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olinda",
+          "url": "https://en.wikipedia.org/wiki/Olinda",
+          "text": "Olinda (Portuguese pronunciation: [ɔˈlĩdɐ]) is a historic city in Pernambuco, Brazil, in the Northeast Region. It is located on the country's northeastern Atlantic Ocean coast, in the Metropolitan Region of Recife, the state capital. It has a population of 349,976 people, covers 41.681 square kilometres (16.093 mi2), and has a population density of 9,437 inhabitants per square kilometre (24,440/sq mi). It is noted as one of the best-preserved colonial cities in Brazil and has been inhabited since 1535.\nAs the former capital of the Captaincy of Pernambuco during the colonial era, Olinda has many historical buildings—the center was declared a UNESCO World Heritage Site in 1982—and a rich culture. The Carnaval of Olinda, a popular street party, is very similar to traditional Portuguese carnivals, with the addition of African influenced dances, reflecting the history of the Northeast. All the festivities are celebrated on the streets with no bleachers or roping, and, unlike in other cities, admission is free. There are hundreds of small musical groups (sometimes featuring a single performer) in many genres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "olinda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 983,
+    "attempt": 974,
+    "place_id": "gn-3515715",
+    "input": {
+      "place": {
+        "place_id": "gn-3515715",
+        "name": "Texcoco de Mora",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.51194,
+        "lon": -98.88293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Texcoco de Mora",
+          "url": "https://en.wikipedia.org/wiki/Texcoco_de_Mora",
+          "text": "Texcoco de Mora (, Otomi: Antamäwädehe) is a city located in the State of Mexico, 25 km northeast of Mexico City.   Texcoco de Mora is the municipal seat of the municipality of Texcoco.  In the pre-Hispanic era, this was a major Aztec city on the shores of Lake Texcoco. After the Conquest, the city was initially the second most important after Mexico City, but its importance faded over time, becoming more rural in character. Over the colonial and post-independence periods, most of Lake Texcoco was drained and the city is no longer on the shore and much of the municipality is on lakebed. Numerous Aztec archeological finds have been discovered here, including the 125 tonne stone statue of Chalchiuhtlicue, which was found near San Miguel Coatlinchán and now resides at the Museum of Anthropology in Mexico City.\nMuch of Texcoco's recent history involves the clash of the populace with local, state and federal authorities. The most serious of these is the continued attempts to develop an airport here, which despite the saturation of the current Mexico City airport, is opposed by local residents. The city and municipality is home to a number of archeological sites, such as the palace of Nezahualcoyotl, Texcotzingo (Baths of Nezahualcoyotl) and Huexotla. Other important sites include the Cathedral, the Juanino Monastery, and Chapingo Autonomous University. The most important annual festival is the Feria Internacional del Caballo (International Fair of the Horse), which showcases the area's mostly agricultural economic base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "texcoco de mora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "texcoco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 984,
+    "attempt": 975,
+    "place_id": "gn-3515807",
+    "input": {
+      "place": {
+        "place_id": "gn-3515807",
+        "name": "Cuautitlán Izcalli",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.64388,
+        "lon": -99.21598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuautitlán Izcalli",
+          "url": "https://en.wikipedia.org/wiki/Cuautitlán_Izcalli",
+          "text": "Cuautitlán Izcalli (Spanish pronunciation: [kwawtiˈtlan isˈkaʎi]) is a city and one of the 125 municipalities that make up the State of Mexico. Its municipal seat is Cuautitlán Izcalli. It is located in the Valley of Mexico area, and is part of the Metropolitan area of Mexico City. It borders to the north and northwest with Tepotzotlán, to the northeast and to the east with Cuautitlán, to the south with Tlalnepantla de Baz, to the southeast with Tultitlán, to the southwest with Atizapán de Zaragoza and to the west with the municipality of Nicolás Romero.\nIn 2026, the United Nations (UN) through its UNDP (United Nations Development Programme) placed the city and municipality in position number 20 of its M20 list, which listed the Mexican cities, municipalities and mayoralties with the greatest well-being and human development index (HDI)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "cuautitlan izcalli",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cuautitlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "izcalli",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 985,
+    "attempt": 976,
+    "place_id": "gn-3519537",
+    "input": {
+      "place": {
+        "place_id": "gn-3519537",
+        "name": "San Cristóbal de las Casas",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.73006,
+        "lon": -92.63825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Cristóbal de las Casas",
+          "url": "https://en.wikipedia.org/wiki/San_Cristóbal_de_las_Casas",
+          "text": "San Cristóbal de las Casas (Spanish: [saŋkɾisˈtoβal de las ˈkasas] ), also known by its native Tzotzil name, Jovel (pronounced [xɤ̞ˈve̞l]), is a town and municipality located in the Central Highlands region of the Mexican state of Chiapas. It was the capital of the state until 1892, and is still considered the cultural capital of Chiapas.\nThe municipality is mostly made up of mountainous terrain, but the city sits in a small valley surrounded by hills. The city's center maintains its Spanish colonial layout and much of its architecture, with red tile roofs, cobblestone streets and wrought iron balconies often with flowers. Most of the city's economy is based on commerce, services and tourism.\nTourism is based on the city's history, culture and indigenous population, although the tourism itself has affected the city, giving it foreign elements. Major landmarks of the city include the cathedral, the Santo Domingo church with its large open air crafts market and the Casa Na Bolom museum. The municipality has suffered severe deforestation, but it has natural attractions such as caves and rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "san cristobal de las casas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cristobal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "casas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 986,
+    "attempt": 977,
+    "place_id": "gn-3693345",
+    "input": {
+      "place": {
+        "place_id": "gn-3693345",
+        "name": "Pucallpa",
+        "country": "Peru",
+        "subdivision": "Ucayali",
+        "lat": -8.37915,
+        "lon": -74.55387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pucallpa",
+          "url": "https://en.wikipedia.org/wiki/Pucallpa",
+          "text": "Pucallpa (Spanish pronunciation: [pu'kalpa], Quechua: puka allpa, lit. 'red dirt'; Shipibo: May Ushin) is a city in eastern Peru located on the banks of the Ucayali River, a major tributary of the Amazon River. It is the capital of the Ucayali region, the Coronel Portillo Province and the Calleria District. The city is categorized as the only metropolis in Ucayali, being the largest populated center of the region. According to the Instituto Nacional de Estadística e Informática, it is the tenth most populated city in Peru and second largest in the Peruvian Amazon after Iquitos. In 2017, it had a population of 211,611 inhabitants.\nAlthough originally located in the district of Callería, in the 1980s it formed a conurbation with the towns of Puerto Callao (district of Yarinacocha) and San Fernando (district of Manantay, created in 2000).\nMost of the transport to Pucallpa is done through the Ucayali River, located in the central east of Peru and which contains the second most important river port in the Peruvian Amazon (behind Iquitos). The Federico Basadrees highway is the main center of land transportation and connects the northwest of the city with the Captain Rolden International Airport (Aeropuerto Internacional Capitán FAP David Abensur Rengifo), with flights to Brazil.\nThe economy of Pucallpa is based on trade, the timber industry and tourism. Among the main attractions of the city include ecological tourism, such as the Parque Natural, or cultural tourism, in the case of shamanism. Its main economic activities are fishing, agriculture, livestock and timber extraction. In addition, a small oil refinery near the Pachitea River and a gas refinery in the Curimaná District supply fuel to the city and the center of the country.\nThe first human inhabitants of the region were the Pano, who inhabited the entire length of the Ucayali River and its tributaries three millennia before colonization."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "pucallpa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 987,
+    "attempt": 978,
+    "place_id": "gn-3992619",
+    "input": {
+      "place": {
+        "place_id": "gn-3992619",
+        "name": "Piedras Negras",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 28.70007,
+        "lon": -100.52353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piedras Negras, Coahuila",
+          "url": "https://en.wikipedia.org/wiki/Piedras_Negras,_Coahuila",
+          "text": "Piedras Negras (Spanish pronunciation: [ˈpjeðɾas ˈneɣɾas]  lit. 'Black Rocks') is a city and seat of the surrounding municipality of the same name in the Mexican state of Coahuila. It stands at the northeastern edge of Coahuila on the Mexico–United States border, across the Rio Grande from Eagle Pass in the U.S. state of Texas. \nIn the 2015 census the city had a population of 163,595 inhabitants, while the metropolitan area had a population of 245,155 inhabitants. The Piedras Negras and the Eagle Pass areas are connected by the Eagle Pass–Piedras Negras International Bridge, Camino Real International Bridge, and the Union Pacific International Railroad Bridge.\nIn English, Piedras Negras translates to 'black stones' – a reference to coal deposits in the area. Across the river, coal was formerly mined on the U.S. side at Dolchburg, near Eagle Pass. This mine closed around 1905, after a fire. Mexico currently operates two large coal-fired power stations named \"José López Portillo\" and \"Carbón 2\" located 30 miles (48 km) south of Piedras Negras. These two coal-fired power plants are currently operated by Comisión Federal de Electricidad, the state-owned Mexican electric utility."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "piedras negras",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "piedras",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "negras",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 988,
+    "attempt": 979,
+    "place_id": "gn-4174757",
+    "input": {
+      "place": {
+        "place_id": "gn-4174757",
+        "name": "Tampa",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.94752,
+        "lon": -82.45843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tampa, Florida",
+          "url": "https://en.wikipedia.org/wiki/Tampa,_Florida",
+          "text": "Tampa (  TAM-pə) is a major city on the Gulf Coast of the U.S. state of Florida and the county seat of Hillsborough County. Tampa's borders include the north shore of Tampa Bay and the east shore of Old Tampa Bay. It is the third-most-populous city in Florida (after Jacksonville and Miami), 13th-most-populous in the Southeast, and 49th-most-populous city in the country, with a population of 403,364 at the 2020 census. The Tampa Bay metropolitan area, at over 3.42 million residents, is the second-largest metropolitan area in Florida and 17th-largest in the United States. The Greater Tampa Bay area has over 4 million residents and generally includes the Tampa and Sarasota metro areas.\nTampa's origins can be traced to the establishment of Fort Brooke in 1824, soon after the United States acquired the Florida territory from Spain. The surrounding settlement of Tampa was formally incorporated in 1849 but remained small and isolated until the mid-1880s, when the arrival of Henry B. Plant's railroad and Vicente Martinez Ybor's cigar factories jump-started a period of rapid economic and population growth. \"Tampa Town\" was reincorporated into the city of Tampa in 1887 and had evolved into a prosperous modern community by the early 20th century.\nIn the 21st century, Tampa has developed a diverse economy, driven by healthcare, finance, insurance, technology, cybersecurity, tourism, construction, professional services and maritime trade. The bay's port is the largest in the state, responsible for over $15 billion in economic impact. The city hosts a number of major employers, including Bloomin' Brands, WellCare, and Fortune 500 companies Crown Holdings and The Mosaic Company. Tampa's cultural landscape features the Tampa Museum of Art, Straz Center for the Performing Arts, and the historic Ybor City district, which reflects the city's Cuban and Spanish heritage. The city is also home to prominent educational institutions, including the University of South Florida and University of Tampa. The area's major league professional sports teams include the Tampa Bay Buccaneers (NFL), Tampa Bay Lightning (NHL), and Tampa Bay Rays (MLB). Tampa hosts the headquarters of United States Central Command at MacDill Air Force Base, described as the most important military HQ after the Pentagon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 359
+    },
+    "banned_terms": [
+      {
+        "term": "tampa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 989,
+    "attempt": 980,
+    "place_id": "gn-4726206",
+    "input": {
+      "place": {
+        "place_id": "gn-4726206",
+        "name": "San Antonio",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.42412,
+        "lon": -98.49363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio",
+          "text": "San Antonio ( SAN an-TOH-nee-oh; Spanish for \"Saint Anthony\") is a city in the southern part of the U.S. state of Texas. It is the seventh-most populous city in the United States, the second-most populous city in Texas (after Houston), and the second-most populous city in the Southern U.S., with a population of 1.43 million at the 2020 census. The Greater San Antonio metropolitan area, with an estimated 2.76 million residents, ranks as the third-largest metropolitan area in Texas and the 24th-largest in the nation. It is the county seat of Bexar County.\nThe area was named \"San Antonio\" in 1691 by a Spanish expedition in honor of Saint Anthony of Padua. A Spanish mission and colonial outpost was founded there in 1718, and San Antonio became the first chartered civil settlement in present-day Texas in 1731. It was part of the Spanish Empire, then the Mexican Republic from 1821 to 1836, before joining the United States after the annexation of the Republic of Texas in 1846. Straddling the regional divide between South and Central Texas, San Antonio anchors the southwestern corner of an urban megaregion colloquially known as the Texas Triangle. It lies about 80 miles (130 km) from Austin along the I-35 corridor, and together, the San Antonio–Austin metroplex is home to approximately 5 million people.\nSan Antonio is home to five 18th-century Spanish frontier missions, including The Alamo and those preserved in San Antonio Missions National Historical Park, which were collectively designated as UNESCO World Heritage sites in 2015. Major attractions include the River Walk, Tower of the Americas, SeaWorld San Antonio, Six Flags Fiesta Texas, and the Alamo Bowl. The city also hosts the San Antonio Stock Show & Rodeo and is home to the five-time NBA champion San Antonio Spurs. San Antonio welcomes approximately 32 million visitors annually and is a key military hub, hosting several major U.S. Armed Forces facilities, including Fort Sam Houston and nearby bases such as Lackland and Randolph Air Force Bases. The city is also home to two Fortune 500 companies, the South Texas Medical Center, and the largest majority-Hispanic population in the U.S., with 64% of residents identifying as Hispanic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 361
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

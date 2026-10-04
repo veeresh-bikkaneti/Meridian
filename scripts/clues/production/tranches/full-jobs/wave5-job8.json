@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 950,
+    "attempt": 941,
+    "place_id": "gn-2274895",
+    "input": {
+      "place": {
+        "place_id": "gn-2274895",
+        "name": "Monrovia",
+        "country": "Liberia",
+        "subdivision": "Montserrado County",
+        "lat": 6.30054,
+        "lon": -10.7969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monrovia",
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "text": "Monrovia is the administrative capital and largest city of Liberia. Founded in 1822, it is located on Cape Mesurado on the Atlantic coast and, as of the 2022 census, had a population of 1,761,032 residents. Its largely urbanized metropolitan area, including Montserrado and Margibi counties, was home to 2,225,911 inhabitants as of the 2022 census, representing 33.5% of Liberia’s total population.\nAs the nation’s primary city, Monrovia is Liberia’s economic, financial, and cultural center. Its economy is primarily centered on its harbor and its role as the seat of the Liberian government, with the Freeport of Monrovia serving as the country’s largest and main port. Monrovia was traditionally the land of the Vai people and was founded in April 1822 by members of the American Colonization Society as a settlement for free people of color from the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "monrovia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 951,
+    "attempt": 942,
+    "place_id": "gn-2742032",
+    "input": {
+      "place": {
+        "place_id": "gn-2742032",
+        "name": "Braga",
+        "country": "Portugal",
+        "subdivision": "Braga",
+        "lat": 41.5514,
+        "lon": -8.42311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braga",
+          "url": "https://en.wikipedia.org/wiki/Braga",
+          "text": "Braga is a city and a municipality, capital of the northwestern Portuguese district of Braga and of the historical and cultural Minho Province. Braga Municipality had a resident population of 212 635 inhabitants (in 2025). Its area is 183.40 km2. Its agglomerated urban area extends to the Cávado River and is the third most populated urban area in Portugal, behind Lisbon and Porto Metropolitan Areas.\nIt is host to the oldest Portuguese archdiocese, the Archdiocese of Braga of the Catholic Church and it is the seat of the Primacy of the Spains. During the Roman Empire, then known as Bracara Augusta, the settlement was the capital of the Roman province of Gallaecia and would later become the capital of the Kingdom of the Suebi, one of the first territories to separate from the Roman Empire in the 5th century. Inside the city there is also a castle tower that can be visited. Nowadays, Braga is among the most noted entrepreneurial and technological centers of the country, as well as a major hub for inland Northern Portugal, and it is an important stop on the Portuguese Way path of the Road of St James. The city hosted two games of the UEFA Euro 2004 and was the European Youth Capital in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "braga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 952,
+    "attempt": 943,
+    "place_id": "gn-2809346",
+    "input": {
+      "place": {
+        "place_id": "gn-2809346",
+        "name": "Wiesbaden",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.08601,
+        "lon": 8.24435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wiesbaden",
+          "url": "https://en.wikipedia.org/wiki/Wiesbaden",
+          "text": "Wiesbaden (German pronunciation: [ˈviːsˌbaːdn̩] ; lit. 'meadow baths') is the capital of the German state of Hesse, and the second-largest Hessian city after Frankfurt am Main. With around 283,000 inhabitants, it is Germany's 24th-largest city. Wiesbaden forms a conurbation with a population of around 500,000 with the neighbouring city of Mainz. This conurbation is in turn embedded in the Rhine-Main Metropolitan Region—Germany's second-largest metropolitan region after Rhine-Ruhr—which also includes the nearby cities of Frankfurt am Main, Darmstadt, Offenbach am Main, and Hanau, and has a combined population exceeding 5.8 million.\nThe city is located on the Rhine (Upper Rhine), at the foothills of the Taunus, opposite the Rhineland-Palatine capital of Mainz, and the city centre is located in the wide valley of the small Salzbach stream. Wiesbaden lies in the Rheingau wine-growing region, one of Germany's 13 wine regions. Three of Wiesbaden's boroughs were part of the city of Mainz until 1945, and still bear the designation \"Mainz\" in their names—the so-called AKK-boroughs of Mainz-Amöneburg, Mainz-Kastel, and Mainz-Kostheim. This so-called AKK-Konflikt (de:AKK-Konflikt) is the main cause for the rivalry between Mainz and Wiesbaden. Wiesbaden Main Station is connected to Frankfurt am Main by the Rhine-Main S-Bahn rapid transit system.\nHistorically, Wiesbaden was a Nassauian city. From 1170 to 1629, it lay in the County of Nassau, and from 1629 to 1721, it was in the county and later principality of Nassau-Idstein, all of which were territories within the Holy Roman Empire ruled by branches of the House of Nassau. In 1728, the city found itself in the principality of Nassau-Usingen, and in 1744, Biebrich Palace became the main residence of the House of Nassau-Usingen. In 1806, the city became the capital of the Duchy of Nassau. Since 1841, the newly built Wiesbaden City Palace was the principal Nassauian residence. From 1868 to 1944, the city lay in the Prussian Province of Hesse-Nassau, and from 1944 to 1945, it was the capital of the Province of Nassau. In 1945, it became the capital of Greater Hesse and subsequently, in 1946, of Hesse.\nWiesbaden is one of the oldest spa towns in Europe. Its name translates to \"meadow baths\", and there are 15 mineral springs—14 of which are hot springs—in the city centre. With a yield of around 2 million liters daily, Wiesbaden is the second-most productive German spa after Aachen. Its location in a mountain basin at the southern foot of the Taunus, protected by the mountains in the north and west, gives Wiesbaden a mild climate. It has been called the \"Nice of the North\" because of its climate and architecture. The city of Wiesbaden is one of the wealthiest cities in Germany and one of those with above-average purchasing power. The United States Army Europe and Africa headquarters is located in Wiesbaden-Erbenheim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 463
+    },
+    "banned_terms": [
+      {
+        "term": "wiesbaden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 953,
+    "attempt": 944,
+    "place_id": "gn-317109",
+    "input": {
+      "place": {
+        "place_id": "gn-317109",
+        "name": "Denizli",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 37.77417,
+        "lon": 29.0875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denizli",
+          "url": "https://en.wikipedia.org/wiki/Denizli",
+          "text": "Denizli is a city in Aegean Turkey, and seat of the province of Denizli. The city forms the urban part of the districts Merkezefendi and Pamukkale, with a population of 691 783 in 2024.\nDenizli has seen economic development in the last few decades, mostly due to textile production and exports.\nDenizli also attracts visitors to the nearby mineral-coated hillside hot spring of Pamukkale, and with red color thermal water spa hotels Karahayıt, just 5 kilometres (3 miles) north of Pamukkale. Recently, Denizli became a major domestic tourism destination due to the various types of thermal waters in Sarayköy, Central/Denizli (where Karahayıt and Pamukkale towns are located), Akköy (Gölemezli), Buldan (Yenicekent), and Çardak districts.\nThe ancient ruined city of Hierapolis, as well as ruins of the city of Laodicea on the Lycus, the ancient metropolis of Phrygia, are nearby. Also in the vicinity of Honaz, about 10 mi (16 km) west of Denizli is, what was, in the 1st century AD, the city of Colossae.\nThe weather is hot in Denizli in summers, whereas in winters, it may occasionally be very cold with snow on the mountains that surround the city. Some years, snow can be observed in the urban areas. Springs and autumns are rainy, with a mild warm climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "denizli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 954,
+    "attempt": 945,
+    "place_id": "gn-3452324",
+    "input": {
+      "place": {
+        "place_id": "gn-3452324",
+        "name": "Presidente Prudente",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.12556,
+        "lon": -51.38889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Presidente Prudente",
+          "url": "https://en.wikipedia.org/wiki/Presidente_Prudente",
+          "text": "Presidente Prudente is a Brazilian municipality located in the interior of São Paulo, approximately 558 kilometers (347 miles) from the state capital, São Paulo.\nAccording to the 2025 estimate by the Brazilian Institute of Geography and Statistics (IBGE), Presidente Prudente has a population of 234,706 inhabitants, with a floating population of 402,000 inhabitants, making it the 40th most populous municipality in São Paulo. The municipality covers a territorial area of 560.637 km².\nThe municipality comprises the seat and the districts of Ameliópolis, Eneida, Floresta do Sul, and Montalvão, which are subdivided into 255 neighborhoods.\nPresidente Prudente was emancipated from Conceição de Monte Alegre (now Paraguaçu Paulista) in the early 1920s. Its name honors the former Brazilian president Prudente de Morais (1841–1902), who was a lawyer and politician, serving as the first governor of São Paulo during the Republic (1889–1890).\nToday, the city is a major industrial, cultural, and service hub in western São Paulo, earning the nickname \"Capital of Western São Paulo.\" According to a study by the Getúlio Vargas Foundation, it ranks as the 27th most promising city in Brazil for building a professional career.\nIndustrialization in the city began in the mid-1930s, spurred by the economic crisis of 1929, which prompted the exploration of new economic activities. In addition to industry, cotton cultivation was also significant.\nThe municipality boasts a rich cultural tradition, encompassing crafts, theater, music, and sports. The main football club is Grêmio Desportivo Prudente, which plays at the Estádio Paulo Constantino (Prudentão). Other notable landmarks include the Parque do Povo and the Teatro Municipal Procópio Ferreira, alongside other theaters and small parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "presidente prudente",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "presidente",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prudente",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 955,
+    "attempt": 946,
+    "place_id": "gn-3577430",
+    "input": {
+      "place": {
+        "place_id": "gn-3577430",
+        "name": "Road Town",
+        "country": "British Virgin Islands",
+        "subdivision": "British Virgin Islands",
+        "lat": 18.42693,
+        "lon": -64.62079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Road Town",
+          "url": "https://en.wikipedia.org/wiki/Road_Town",
+          "text": "Road Town, located on Tortola, is the capital and largest town of the British Virgin Islands. It is situated on the horseshoe-shaped Road Harbour in the centre of the island's south coast. The population was about 15,000 in 2018.\nThe name is derived from the nautical term \"the roads\", a place less sheltered than a harbour but which ships can easily get to. A 28 hectares (69 acres) development called Wickham's Cay, consisting of two areas that were reclaimed from the sea and a marina, have enabled Road Town to emerge as a haven for yacht chartering and a centre of tourism. This area is the newest part of the city and the hub for the new commercial and administrative buildings of the BVI. The oldest building in Road Town, HM Prison on Main Street, was built in 1774."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "road town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "road",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 956,
+    "attempt": 947,
+    "place_id": "gn-1610780",
+    "input": {
+      "place": {
+        "place_id": "gn-1610780",
+        "name": "Hat Yai",
+        "country": "Thailand",
+        "subdivision": "Songkhla",
+        "lat": 7.00836,
+        "lon": 100.47668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hat Yai",
+          "url": "https://en.wikipedia.org/wiki/Hat_Yai",
+          "text": "Hat Yai (Thai: หาดใหญ่, pronounced [hàːt̚ jàj]) is a city in southern Thailand near the Malaysian border. As of 2024, the municipality is the fifth-largest city in Thailand, with a population of 191,696 and an urban population of 406,513 in the entire district of Amphoe Hat Yai. \nHat Yai is the largest city in Southern Thailand and is part of the Hat Yai-Songkhla Metropolitan Area (with a population of about 650,000) which include 2 big districts (Hat Yai, Mueang Songkhla) and 3 small neighboring districts (Bang Klam, Khlong Hoi Khong, Na Mom, forming the largest metropolitan area in the south, and the fourth-largest metropolitan area of the country. The city is often mistaken for being the provincial capital. In fact, Songkhla is the capital and the center of administration and culture while Hat Yai is the business center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "hat yai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hat",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 957,
+    "attempt": 948,
+    "place_id": "gn-1800627",
+    "input": {
+      "place": {
+        "place_id": "gn-1800627",
+        "name": "Mianyang",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 31.46784,
+        "lon": 104.68168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mianyang",
+          "url": "https://en.wikipedia.org/wiki/Mianyang",
+          "text": "Mianyang (simplified Chinese: 绵阳; traditional Chinese: 綿陽; pinyin: Miányáng; Wade–Giles: Mien2-yang2; Sichuanese romanization: Mien2-iang2; formerly known as Mienchow, Chinese: 綿州; pinyin: Mianzhou; Sichuanese romanization: Miencheo; lit. 'Mian Prefecture') is the second largest prefecture-level city of Sichuan province in Southwestern China. It borders Nanchong City to the east, Suining City to the south, Deyang City to the southwest, Aba Tibetan and Qiang Autonomous Prefecture to the west, Gansu Province to the north, and Guangyuan City to the northeast. Located in north-central Sichuan covering an area of 20,281 square kilometres (7,831 sq mi) consisting of Jiangyou, a county-level city, five counties, and three urban districts. At the end of 2024 and the beginning of 2025, the resident population will be 4.922 million, with an urbanization rate of 56.93%, an urban population of 2,802,100, and a rural population of 2.1199 million."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "mianyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 958,
+    "attempt": 949,
+    "place_id": "gn-2973783",
+    "input": {
+      "place": {
+        "place_id": "gn-2973783",
+        "name": "Strasbourg",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.58392,
+        "lon": 7.74553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strasbourg",
+          "url": "https://en.wikipedia.org/wiki/Strasbourg",
+          "text": "Strasbourg is a prefecture and commune, and the largest city of the Grand Est region of northeastern France, in the historic region of Alsace. It is the prefecture of the Bas-Rhin department and the official seat of the European Parliament.\nIn 2023, the city had 294,229 inhabitants, while Greater Strasbourg had a population of 522,596. Strasbourg's metropolitan area had a population of 875,163 the same year, making it the eighth-largest metro area in France and home to 14% of the Grand Est region's inhabitants. The transnational Strasbourg-Ortenau Eurodistrict had a population of roughly 1.02 million in 2020. Strasbourg is one of the de facto three main capitals of the European Union (alongside Brussels, Luxembourg), as it is the seat of several European institutions, such as the European Parliament, the Eurocorps and the European Ombudsman of the European Union. An organization separate from the European Union, the Council of Europe (with its European Court of Human Rights, its European Directorate for the Quality of Medicines most commonly known in French as \"Pharmacopée Européenne\", and its European Audiovisual Observatory) is also located in the city.\nTogether with Geneva (United Nations) and New York City (United Nations world headquarters), Strasbourg is among the few cities in the world that are not national capitals and host international organisations of the first order. The city is the seat of many non-European international institutions such as the Central Commission for Navigation on the Rhine and the International Institute of Human Rights. It is the second city in France in terms of international congresses and symposia, after Paris. Strasbourg's historic city centre, the Grande Île (Grand Island), was classified a World Heritage Site by UNESCO in 1988, with the newer \"Neustadt\" being added to the site in 2017. Strasbourg is immersed in Franco-German culture and although violently disputed throughout history, has been a cultural bridge between France and Germany for centuries, especially through the University of Strasbourg, currently the second largest in France, and the coexistence of Catholic and Protestant culture. It is also home to the largest Islamic place of worship in France, the Strasbourg Grand Mosque.\nEconomically, Strasbourg is an important centre of manufacturing and engineering, as well as a hub of road, rail and river transportation. The port of Strasbourg is the second largest on the Rhine after Duisburg in Germany, and the second-largest river port in France after Paris."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 396
+    },
+    "banned_terms": [
+      {
+        "term": "strasbourg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 959,
+    "attempt": 950,
+    "place_id": "gn-3082707",
+    "input": {
+      "place": {
+        "place_id": "gn-3082707",
+        "name": "Wałbrzych",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.77141,
+        "lon": 16.28432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wałbrzych",
+          "url": "https://en.wikipedia.org/wiki/Wałbrzych",
+          "text": "Wałbrzych (Polish: [ˈvawbʐɨx] ; German: Waldenburg; Lower Silesian: Walmbrig or Walmbrich; Czech: Valbřich or Valdenburk) is a city located in the Lower Silesian Voivodeship, in southwestern Poland, seat of Wałbrzych County. Wałbrzych lies approximately 70 kilometres (43 mi) southwest of the voivodeship capital Wrocław and about 30 kilometres (19 miles) from the Czech border. Wałbrzych has the status of municipality. Its administrative borders encompass an area of 85 km2 (33 sq mi) with 110,000 inhabitants, making it the second-largest city in the voivodeship and the 33rd largest in the country.\nWałbrzych was once a major coal mining and industrial center alongside most of Silesia. The city was left undamaged after World War II and possesses rich historical architecture; among the most recognizable landmarks is the Książ Castle, the largest castle of Lower Silesia and the third-largest in Poland.\nIn 2015 Wałbrzych became widely known due to the search for an allegedly buried Nazi gold train, which however was not found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "wa brzych",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wa",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "brzych",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 960,
+    "attempt": 951,
+    "place_id": "gn-343300",
+    "input": {
+      "place": {
+        "place_id": "gn-343300",
+        "name": "Asmara",
+        "country": "Eritrea",
+        "subdivision": "Maekel",
+        "lat": 15.33805,
+        "lon": 38.93184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asmara",
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "text": "Asmara ( əs-MAHR-ə), or Asmera, is the capital and most populous city of Eritrea, in the country's Central Region. It sits at an elevation of 2,325 metres (7,628 ft), making it the sixth-highest capital in the world by altitude and the second-highest capital in Africa. The city is located at the tip of an escarpment that is both the northwestern edge of the Eritrean Highlands and the Great Rift Valley in neighbouring Ethiopia. In 2017, the city was declared as a UNESCO World Heritage Site for its well-preserved Italian colonial modernist architecture. According to local traditions, the city was founded after four separate villages unified to live together peacefully after long periods of conflict. Asmara existed as a major settlement for over half a millennium and enjoyed some importance as it stood on the trade route to Massawa. \nAsmara first rose to prominence during the 20th century, when it became capital of Italian Eritrea. Under Italian rule the city of Asmara experienced rapid urbanization and modernization, to the point that was called Piccola Roma (Little Rome)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "asmara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 961,
+    "attempt": 952,
+    "place_id": "gn-3439101",
+    "input": {
+      "place": {
+        "place_id": "gn-3439101",
+        "name": "Ciudad del Este",
+        "country": "Paraguay",
+        "subdivision": "Alto Paraná Department",
+        "lat": -25.5036,
+        "lon": -54.65067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad del Este",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_del_Este",
+          "text": "Ciudad del Este (Spanish pronunciation: [sjuˈðað ðel ˈeste], Spanish for Eastern City; often shortened as CDE) is the second-largest city in Paraguay and capital of the Alto Paraná Department, situated on the Paraná River. It is located 327 km (203 mi) east of Asunción, the capital, and is adjacent to the border with Brazil, to which it is connected by the Friendship Bridge on the Paraná River. It is the largest city within the Triple Frontier region, which borders Foz do Iguaçu, Brazil and Puerto Iguazú, Argentina. The Itaipú Dam, one of the largest hydroelectric power plants in the world, is near Ciudad del Este, as is Iguazu Falls.\nCiudad del Este is a commercial city, and is one of the largest free-trade zones in the world. Its tax-free status attracts many Brazilians and Argentines to the city.\nCiudad del Este has consulates-general for Argentina, Brazil, and Taiwan, and honorary consulates for France, Germany, Italy, Mexico, Peru, Slovakia, Spain, Syria, Turkey, and Uruguay.\nThe city is home to Club Atlético 3 de Febrero, whose home ground Estadio Antonio Aranda was used for the 1999 Copa América and is Paraguay's third biggest football stadium.\nThe city is the seat of the Roman Catholic Diocese of Ciudad del Este."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad del este",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "este",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 962,
+    "attempt": 953,
+    "place_id": "gn-3444876",
+    "input": {
+      "place": {
+        "place_id": "gn-3444876",
+        "name": "Volta Redonda",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.52306,
+        "lon": -44.10417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Volta Redonda",
+          "url": "https://en.wikipedia.org/wiki/Volta_Redonda",
+          "text": "Volta Redonda (Portuguese pronunciation: [ˈvɔwtɐ ʁeˈdõdɐ]) is a municipality in the Rio de Janeiro state of Brazil with an area of 182.81 km2, located from 350m to 707m above the sea level (22°31'23\" S, 44°06'15\" W) and with a population of 261,563 inhabitants (2022 census). The area around the city has nearly 700,000 km2. Its name (which is Portuguese for Round Turn) is due to the round shape of a curve in the Paraíba do Sul river around which the city was built.\nSituated in Volta Redonda is Companhia Siderúrgica Nacional (CSN), Brazil's second largest steel producer. Today its economy, despite still being based on industry, is quite diverse, and largely focused on the areas of services and trade. Due to this, Volta Redonda is worldly known as Cidade do Aço (which is Portuguese for City of Steel).\nThe city borders with the municipalities of Barra Mansa (north, northwest, west and southwest), Barra do Piraí (northeast), Pinheiral, Piraí (south and east), and Rio Claro (south) and is 130 km from the city of Rio de Janeiro.\nAlong with the municipalities of Barra Mansa and Pinheiral, it is a conurbation of over 500,000 inhabitants, according to the IBGE estimates for 2008, and the state's largest urban spot outside the metropolitan region of Rio de Janeiro.\nEconomical center of the South Fluminense region, Volta Redonda is a strategic area, close to major hub cities in other regional states, such as Juiz de Fora (190 kilometers) and Sao Jose dos Campos (220 kilometers)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "volta redonda",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "volta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "redonda",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 963,
+    "attempt": 954,
+    "place_id": "gn-3465624",
+    "input": {
+      "place": {
+        "place_id": "gn-3465624",
+        "name": "Contagem",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.93167,
+        "lon": -44.05361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Contagem",
+          "url": "https://en.wikipedia.org/wiki/Contagem",
+          "text": "Contagem (Portuguese pronunciation: [kõˈtaʒẽj]) is a city in the center of the state of Minas Gerais, in Brazil. It is only 21 kilometres (13 miles) from the capital, Belo Horizonte, and forms part of a metropolitan area with a population of 4.8 million.\nOver time, the city's geographic boundaries were lost due to its horizontal growth towards the capital, causing intense conurbation with Belo Horizonte. Contagem is part of the Greater Belo Horizonte area and is one of the most important cities in this urban agglomeration, mainly due to its large industrial park. Its road system, designed to accommodate an intense flow of vehicles and cargo, is made up of the country's main highways, BR-381 (Fernão Dias - access to São Paulo), BR-262 (access to Vitória and Triângulo Mineiro) and BR-040 (access to Brasília and Rio de Janeiro)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "contagem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 964,
+    "attempt": 955,
+    "place_id": "gn-3526700",
+    "input": {
+      "place": {
+        "place_id": "gn-3526700",
+        "name": "Iztacalco",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.39528,
+        "lon": -99.09778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iztacalco",
+          "url": "https://en.wikipedia.org/wiki/Iztacalco",
+          "text": "Iztacalco (Spanish: [istaˈkalko] ) is a borough (demarcación territorial) in Mexico City. It is located in the central-eastern area and it is the smallest of the city's boroughs. The area's history began in 1309 when the island of Iztacalco, in what was Lake Texcoco, was settled in 1309 by the Mexica who would later found Tenochtitlan, according to the Codex Xolotl. The island community would remain small and isolated through the colonial period, but drainage projects in the Valley of Mexico dried up the lake around it. The area was transformed into a maze of small communities, artificial islands called chinampas and solid farmland divided by canals up until the first half of the 20th century. Politically, the area has been reorganized several times, being first incorporated in 1862 and the modern borough coming into existence in 1929. Today, all of the canals and farmland are dried out and urbanized as the most densely populated borough and the second most industrialized."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "iztacalco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 965,
+    "attempt": 956,
+    "place_id": "gn-3903987",
+    "input": {
+      "place": {
+        "place_id": "gn-3903987",
+        "name": "Sucre",
+        "country": "Bolivia",
+        "subdivision": "Chuquisaca Department",
+        "lat": -19.03332,
+        "lon": -65.26274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sucre",
+          "url": "https://en.wikipedia.org/wiki/Sucre",
+          "text": "Sucre (Spanish pronunciation: [ˈsukɾe]; Quechua: Chuqichaka; Aymara: Sukri; Guarani: Sucre), officially La Ilustre y Heroica Sucre (\"The Illustrious and Heroic Sucre\") is the de jure capital city of Bolivia, the capital of the Chuquisaca Department and the sixth most populous city in Bolivia. Located in the south-central part of the country, Sucre lies at an elevation of 2,790 m (9,150 ft), making it the second-highest capital city in the world after Quito. This relatively high altitude gives the city a subtropical highland climate with cool temperatures year-round. Over the centuries, the city has received various names, including La Plata, Charcas, and Chuquisaca. Today, the region is of predominantly Quechua background, with some Aymara communities and influences.\nSucre holds major national importance and is an educational and government center, as well as the location of the Bolivian Supreme Court. Its pleasant climate and low crime rates have made the city popular amongst foreigners and Bolivians alike. Notably, Sucre contains one of the best preserved Hispanic colonial and republican historic city centres in the Western Hemisphere - similar to cities such as Cuzco and Quito. This architectural heritage and the millenarian history of the Charcas region has led to Sucre's designation as a UNESCO World Heritage Site. The city has held an important place in Bolivian history from its place as an important center in the Real Audencia de Charcas, and later as the first capital of Bolivia before the fall of silver's importance as a global mineral commodity. Some regional tension remains from the historical transfer of capital functions to La Paz, and even today the issue features an important role in local culture and political ideology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "sucre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 966,
+    "attempt": 957,
+    "place_id": "gn-4641239",
+    "input": {
+      "place": {
+        "place_id": "gn-4641239",
+        "name": "Memphis",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 35.14953,
+        "lon": -90.04898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Memphis, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Memphis,_Tennessee",
+          "text": "Memphis (, MEM-fis) is a city in Shelby County, Tennessee, United States, and its county seat. Situated along the Mississippi River, it had a population of 633,104 at the 2020 census, making it the second-most populous city in Tennessee, the fifth-most populous in the Southeast, and the 29th-most populous in the US. While being the most populous single municipality on the Mississippi River, Memphis anchors the third largest metropolitan area by population behind only the Twin Cities and St. Louis. Metropolitan Memphis includes parts of Arkansas and Mississippi, the 45th-most populous metropolitan area in the U.S. with 1.34 million residents.\nEuropean exploration of the area began with Spanish conquistador Hernando de Soto in 1541. Located on the high Chickasaw Bluffs, the site offered natural protection from Mississippi River flooding and became a contested location in the colonial era. Modern Memphis was founded in 1819 by John Overton, James Winchester, and Andrew Jackson. The city thrived due to its river traffic and cotton-based economy, becoming one of the largest cities in the Antebellum South. After the American Civil War, it remained a key hub for the cotton and hardwood industries. Memphis is also notable for its role in the American Civil Rights Movement; Dr. Martin Luther King Jr. was assassinated there in 1968, and the city is now home to the National Civil Rights Museum, a Smithsonian affiliate.\nMemphis is one of the nation's leading commercial centers in transportation and logistics. The largest employer is FedEx, which maintains its global air hub at Memphis International Airport, one of the world's busiest cargo airports. The Port of Memphis also hosts the fifth-busiest inland water port in the U.S. Memphis is home to several large financial institutions, including First Horizon Bank, which is the second largest bank with its primary headquarters located in Tennessee. Memphis is also known for its music scene, with Beale Street central to the development of Memphis blues and a broader legacy that includes soul, rock and roll, and hip-hop. Cultural landmarks include Graceland, Sun Studio, the Memphis Pyramid, and the Stax Museum of American Soul Music. The city is also famed for its Memphis-style barbecue and hosts the annual World Championship Barbecue Cooking Contest. It is home to the Memphis Grizzlies of the NBA and several colleges and universities, including the University of Memphis, LeMoyne–Owen College, and Rhodes College.\nIn the 2020s, after experiencing several decades of high crime rates and incremental population loss, Memphis has begun to revitalize through redevelopment and a renewed focus on crime reduction, with Downtown Memphis being the primary target for renewal. Several projects are in the planning stages or have already begun construction, with a new 16-story research facility being developed on the St. Jude Campus, the renovation of the biggest hotel in downtown, and the redevelopment of the tallest tower in West Tennessee, 100 North Main. Tom Lee Park, the riverside park located downtown, completed a massive renovation in 2023 that cost more than $60 million and includes ballcourts, walkable trails, and bike stands. The park also includes a flyway that stretches out nearly to the Mississippi River and was opened several years after the park's completion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 526
+    },
+    "banned_terms": [
+      {
+        "term": "memphis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 967,
+    "attempt": 958,
+    "place_id": "gn-55671",
+    "input": {
+      "place": {
+        "place_id": "gn-55671",
+        "name": "Kismayo",
+        "country": "Somalia",
+        "subdivision": "Lower Juba",
+        "lat": -0.35817,
+        "lon": 42.54536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kismayo",
+          "url": "https://en.wikipedia.org/wiki/Kismayo",
+          "text": "Kismayo (Somali: Kismaayo, 𐒏𐒘𐒈𐒑𐒛𐒕𐒙) is a port city in the southern Lower Juba (Jubbada Hoose) province of Somalia. It is the de facto capital of the autonomous Jubaland region.\nThe city is situated 528 kilometres (328 miles) southwest of the capital Mogadishu, near the mouth of the Jubba River, where it empties into the Indian Ocean. According to the United Nations Development Programme, the city of Kismayo had a population of around 89,333 in 2005.\nDuring the Middle Ages, Kismayo and its surrounding area was part of the Ajuran Empire that governed much of southern Somalia and eastern Ethiopia, with its domain extending from Hafun in the north, to Qelafo in the west, to Kismayo in the south.\nIn the early modern period, Kismayo was ruled by the Geledi Sultanate and by the later 1800s, the Boqow dynasty. The kingdom was eventually incorporated into Italian Somaliland in 1925/6 after the death of the last sultan, Osman Ahmed. After independence in 1960, the city was made the center of the official Kismayo District.\nKismayo was the site of numerous battles during the civil war, from the early 1990s. In late 2006, Islamist militants affiliated with Al-Shabaab gained control of most of the city. To reclaim possession of the territory, a new autonomous regional administration dubbed Azania was announced in 2010 and formalized in 2011. In September 2012, the Somali National Army and AMISOM troops re-captured the city from the Al-Shabaab insurgents. The Juba Interim Administration was established and recognized in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "kismayo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 968,
+    "attempt": 959,
+    "place_id": "gn-6074377",
+    "input": {
+      "place": {
+        "place_id": "gn-6074377",
+        "name": "Milton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.51681,
+        "lon": -79.88294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milton, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Milton,_Ontario",
+          "text": "Milton (2021 population: 132,979) is a town in Southern Ontario, Canada, and part of the Regional Municipality of Halton in the Greater Toronto Area. Between 2001 and 2011, Milton was the fastest growing municipality in Canada, with a 71.4% increase in population from 2001 to 2006 and another 56.5% increase from 2006 to 2011. In 2016, Milton's census population was 110,128 with an estimated growth to 228,000 by 2031. It remained the fastest growing community in Ontario, but was deemed to be the 6th-fastest growing in Canada at that time.\nMilton is located 54 km (34 mi) west of Downtown Toronto on Highway 401, and is the western terminus for the Milton line commuter train and bus corridor operated by GO Transit. Milton is situated on the Niagara Escarpment, a UNESCO world biosphere reserve and the Bruce Trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "milton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 969,
+    "attempt": 960,
+    "place_id": "gn-765876",
+    "input": {
+      "place": {
+        "place_id": "gn-765876",
+        "name": "Lublin",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.25058,
+        "lon": 22.57009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lublin",
+          "url": "https://en.wikipedia.org/wiki/Lublin",
+          "text": "Lublin is the eighth-largest city in Poland and the second-largest city of historical Lesser Poland. It is the capital and the centre of Lublin Voivodeship with a population of 336,339 (December 2021). Lublin is the largest Polish city east of the Vistula River, located 153 km (95 mi) southeast of Warsaw.\nOne of the events that greatly contributed to the city's development was the Polish–Lithuanian Union of Krewo in 1385. Lublin thrived as a centre of trade and commerce due to its strategic location on the route between Vilnius and Kraków; the inhabitants had the privilege of free trade in the Grand Duchy of Lithuania. The Lublin Parliament session of 1569 led to the creation of a real union between the Crown of the Kingdom of Poland and the Grand Duchy of Lithuania, thus creating the Polish–Lithuanian Commonwealth. Lublin witnessed the early stages of the Reformation in the 16th century. A Calvinist congregation was founded and groups of radical Polish Brethren (called Arians by their detractors) appeared in the city, making it an important global centre of Unitarianism.\nUntil the partitions at the end of the 18th century, Lublin was an important royal city of the Kingdom of Poland. Its delegates, alike nobles, had the right to participate in the royal election. In 1578, Lublin was chosen as the seat of the Crown Tribunal, the highest appeal court in the Polish–Lithuanian Commonwealth, and for centuries, the city has been flourishing as a centre of culture and higher learning.\nIn 2011, the analytical Financial Times Group found Lublin to be one of the best cities for business in Poland. The Foreign Direct Investment ranking placed Lublin second among larger Polish cities in the cost-effectiveness category. Lublin is noted for its green spaces and a high standard of living; the city has been selected as the 2023 European Youth Capital and 2029 European Capital of Culture. Its historical Old Town is one of Poland's national monuments (Pomnik historii) tracked by the National Heritage Board of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 334
+    },
+    "banned_terms": [
+      {
+        "term": "lublin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
