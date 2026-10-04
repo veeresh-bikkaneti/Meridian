@@ -1991,6 +1991,7 @@ function PlayLoaded({
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
+          edition={run.edition}
           regionName={run.regionName}
           placeName={questionLabel}
           difficulty={place.difficulty}

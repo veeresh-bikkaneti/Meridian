@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  bubbleHeaderText,
   buildCollisionCounts,
   buildQuestionLabel,
   countryKeyForPlace,
@@ -601,4 +602,20 @@ test("curated starters: stamped subdivisions produce qualified country labels", 
     buildQuestionLabel({ edition: "globe", place: oia! }),
     "Oia, South Aegean, Greece",
   );
+});
+
+test("bubbleHeaderText — edition type plus region name", () => {
+  // Country edition: the edition type the card never showed before.
+  assert.equal(
+    bubbleHeaderText("country", "United States"),
+    "Country · United States",
+  );
+  // State edition.
+  assert.equal(bubbleHeaderText("state", "Nebraska"), "State · Nebraska");
+  assert.equal(
+    bubbleHeaderText("state", "Massachusetts"),
+    "State · Massachusetts",
+  );
+  // Globe collapses: the region name already is the edition label.
+  assert.equal(bubbleHeaderText("globe", "Globe"), "Globe");
 });

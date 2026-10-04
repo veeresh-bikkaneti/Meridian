@@ -1,6 +1,8 @@
 import { ChevronDown, Target, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { difficultyChip, type Difficulty } from "@/game/scoring";
+import { bubbleHeaderText } from "@/game/question-label";
+import type { Edition } from "@/game/run";
 
 export type BubbleViewState = "open" | "collapsed" | "dismissed";
 
@@ -60,6 +62,7 @@ function Enter({
 }
 
 export function QuestionBubble({
+  edition,
   regionName,
   placeName,
   difficulty,
@@ -67,6 +70,7 @@ export function QuestionBubble({
   view,
   onViewChange,
 }: {
+  edition: Edition;
   regionName: string;
   placeName: string;
   difficulty: Difficulty;
@@ -102,10 +106,14 @@ export function QuestionBubble({
             <div className="min-w-0">
               {expanded ? (
                 <>
-                  <p className="text-[11px] tracking-wider text-white/60 uppercase">{regionName}</p>
+                  <p className="text-[11px] tracking-wider text-white/60 uppercase">
+                    {bubbleHeaderText(edition, regionName)}
+                  </p>
                   <h2
-                    className="mt-0.5 line-clamp-3 font-display text-xl leading-tight"
+                    className="mt-0.5 max-h-48 overflow-y-auto font-display text-xl leading-tight"
                     title={placeName}
+                    tabIndex={0}
+                    aria-label={`Question: ${placeName}`}
                   >
                     {placeName}
                   </h2>
@@ -118,8 +126,10 @@ export function QuestionBubble({
                 </>
               ) : (
                 <p
-                  className="line-clamp-3 font-display text-lg leading-tight"
+                  className="max-h-48 overflow-y-auto font-display text-lg leading-tight"
                   title={placeName}
+                  tabIndex={0}
+                  aria-label={`Question: ${placeName}`}
                 >
                   {placeName}
                 </p>
