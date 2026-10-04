@@ -692,9 +692,10 @@ export function GameApp() {
             setCleared({ edition, regionId, regionName, choice });
           }
         }
-        // A celebration replay/promotion starts FRESH: the just-finished
-        // run (phase "done") is resumable, so resumeRun would return it
-        // unchanged and the replay would never restart. Picker paths keep
+        // A celebration replay/promotion starts FRESH: at the onContinue
+        // boundary the run is mid-run in reveal phase and resumable, so
+        // resumeRun would return it unchanged and the replay would never
+        // restart. Picker paths keep
         // resume semantics (leave-and-return mid-run restores the
         // in-progress run) — `fresh` is opt-in only, and isResumable's
         // semantics are deliberately unchanged (other flows depend on them).
