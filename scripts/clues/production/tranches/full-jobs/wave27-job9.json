@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 5403,
+    "attempt": 5361,
+    "place_id": "gn-11592286",
+    "input": {
+      "place": {
+        "place_id": "gn-11592286",
+        "name": "Mayfield",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.87172,
+        "lon": -3.03875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mayfield, Midlothian",
+          "url": "https://en.wikipedia.org/wiki/Mayfield,_Midlothian",
+          "text": "Mayfield is a community in Midlothian, Scotland, located just south of Dalkeith near Edinburgh between the A68 and the A7 south. It had an estimated population of \n13,690 in 2020.\nThis housing development was built in the 1950s as overspill accommodation for the colliery workers of nearby Newtongrange and Easthouses and for other essential workers, as well as to house the workforce for a small but relatively successful industrial estate.  The decline of the coal industry in the 1980s led to the closure of the collieries.\nThe massive growth in population in this part of Newbattle parish in the 1950s led to the existing mining village of Easthouses being virtually 'swallowed up' into the new housing development of Mayfield, which today has a population similar to that of a small town.\nWith the communities of Mayfield and Easthouses ever expanding, in 1955 the Church of Scotland had an additional church building erected within Newbattle parish. Mayfield and Easthouses church was built in a more utilitarian and functional style than the 18th-century building at Newbattle, as it had to double as both a place of worship and a place where the various church and other organisations (e.g. Boys Brigade [Anchor Boys, Junior Section, and Company Section], Girls Brigade, Cubs, Scouts, and Brownies) could establish themselves.\nThere are three primary schools: Mayfield Primary School which is conjoined with St. Luke's RC Primary School, and Lawfield Primary School (a new school made up of the former Langlaw Primary and Bryans Primary)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "mayfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5404,
+    "attempt": 5362,
+    "place_id": "gn-1177169",
+    "input": {
+      "place": {
+        "place_id": "gn-1177169",
+        "name": "Harappa",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.63251,
+        "lon": 72.87032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harappa",
+          "url": "https://en.wikipedia.org/wiki/Harappa",
+          "text": "Harappa (Punjabi pronunciation: [ɦəɽəˈpaː]) was a settlement in Punjab, Pakistan, about 24 kilometres (15 miles) west of Sahiwal, that takes its name from a modern village near the former course of the Ravi River. The Ravi now runs eight kilometres (five miles) to the north.\nThe city of Harappa is believed to have had as many as 23,500 residents and occupied about 150 hectares (370 acres) with clay brick houses, at its greatest extent during the Mature Harappan phase (2600 BC – 1900 BC), which is considered large for its time.\nThe ancient city of Harappa was heavily damaged under British rule when bricks from the ruins were used as track ballast to construct the Lahore–Multan Railway. The current village of Harappa is less than one kilometre (5⁄8 mi) from the ancient site. Although modern Harappa has a legacy railway station from the Raj period, it is a small crossroads town of 15,000 people today. In 2004, the site was added to the tentative list for UNESCO World Heritage Sites. In 2005, a controversial amusement park scheme at the site was abandoned when builders unearthed many archaeological artefacts during the early stages of building work."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "harappa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5405,
+    "attempt": 5363,
+    "place_id": "gn-2147864",
+    "input": {
+      "place": {
+        "place_id": "gn-2147864",
+        "name": "Sunshine",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78333,
+        "lon": 144.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunshine, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Sunshine,_Victoria",
+          "text": "Sunshine is a suburb in Melbourne, Victoria, Australia, 12 km (7.5 mi) west of Melbourne's city centre, located within the City of Brimbank local government area. Sunshine recorded a population of 9,445 at the 2021 census.\nSunshine, initially a town just outside Melbourne, is today a residential suburb with a mix of period and post-War homes, with a town centre that is an important retail centre in Melbourne's west. It is also one of Melbourne's principal places of employment outside the CBD with many industrial companies situated in the area, and is an important public transport hub with both V/Line and Metro services at Sunshine railway station and its adjacent major bus interchange.\nSunshine is both a low-density residential suburb and one of Melbourne's principal places of employment outside the city centre. Many heavy and light industrial companies are situated in and around the area and it is an important retail centre in Melbourne's west. In addition to Sunshine's street shopping strips there are two shopping centres, the Sunshine Plaza and the Sunshine Marketplace. There is a Village Cinemas multiplex, the \"Village 20 Sunshine Megaplex\", at the Sunshine Marketplace.\nEducational institutions in Sunshine include Victoria Polytechnic (the TAFE division of Victoria University). Secondary schools include Sunshine College and Harvester Technical College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "sunshine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5406,
+    "attempt": 5364,
+    "place_id": "gn-2346734",
+    "input": {
+      "place": {
+        "place_id": "gn-2346734",
+        "name": "Twon-Brass",
+        "country": "Nigeria",
+        "subdivision": "Bayelsa State",
+        "lat": 4.31231,
+        "lon": 6.24091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Twon-Brass",
+          "url": "https://en.wikipedia.org/wiki/Twon-Brass",
+          "text": "Twon-Brass, previously known simply as Brass or Brasstown, is a Nembe speaking community on Brass Island in the Nun River estuary of Southern Bayelsa State, Nigeria, in the Brass Local Government Area.   Twon Brass was found in the year, 1895\nThe traditional ruler is King Alfred Diete-Spiff, Amanayabo of Twon-Brass, \nThe town is on the east shore of the Brass River, one of the branches of the Nun River, which in turn is a branch of the Niger River.\nBrass began as a mining village of the Nembe people. In the early 19th-century it was an important location in the slave trade.\nAt one time the town was the main port of the Nembe Kingdom, called by one historian \"the Venice of the Niger Delta\", and was dominant in the palm oil trade of the region. When the Royal Niger Company became an increasingly strong rival in the trade, the town's economy was severely damaged.\nIn January 1895 the Nembe king William Koko led a dawn attack of more than a thousand warriors on the company's headquarters at Akassa, which triggered a retaliatory raid that destroyed the kingdom's inland capital of Nembe.\nThe British already had a consulate in Twon-Brass, from which after the fall of Koko they administered the area.\nIn the mid-20th century it was the base of several fisheries and a center for the shipping of palm products. It was also a location for the shipment of rubber.\nThere are plans for a multibillion-dollar gas facility on Brass Island.\nAgip Oil Company and Nigeria Liquefied Natural Gas operate terminals in the town.\nIn February 2009 gunmen in two speedboats attacked troops guarding the Agip oil terminal, but were repelled.\nThe Movement for the Emancipation of the Niger Delta (MEND) had threatened to target Italian companies since Italy had apparently offered to supply two attack boats to the Nigerian military.\nTourist attractions include beautiful Atlantic Ocean beaches, the graves of British soldiers who died in the Nembe-British fighting of 1895 and the old consulate buildings, which were in use till the end of the colonial period in 1960."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "twon brass",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "twon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brass",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5407,
+    "attempt": 5365,
+    "place_id": "gn-5393611",
+    "input": {
+      "place": {
+        "place_id": "gn-5393611",
+        "name": "Sausalito",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.85909,
+        "lon": -122.48525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sausalito, California",
+          "url": "https://en.wikipedia.org/wiki/Sausalito,_California",
+          "text": "Sausalito (Spanish for \"small willow grove\") is a city in Marin County, California, United States, located 1.5 miles (2.4 kilometers) southeast of Marin City, 8 miles (13 km) south-southeast of San Rafael, and about 4 miles (6 km) north of San Francisco from the Golden Gate Bridge.\nSausalito's population was 7,269 as of the 2020 census. The community is situated near the northern end of the Golden Gate Bridge, and prior to the building of that bridge served as a terminus for rail, car, and ferry traffic.\nSausalito developed rapidly as a shipbuilding center in World War II, with its industrial character giving way in postwar years to a reputation as a wealthy and artistic enclave, a picturesque residential community (incorporating large numbers of houseboats), and a tourist destination. The city is adjacent to, and largely bounded by, the protected spaces of the Golden Gate National Recreation Area as well as the San Francisco Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "sausalito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5408,
+    "attempt": 5366,
+    "place_id": "gn-6156244",
+    "input": {
+      "place": {
+        "place_id": "gn-6156244",
+        "name": "Stephenville",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 48.55001,
+        "lon": -58.5818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stephenville, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/Stephenville,_Newfoundland_and_Labrador",
+          "text": "Stephenville (Canada 2021 Census population 6,540) is a town in Newfoundland and Labrador, Canada, on the west coast of the island of Newfoundland.\nThe town functions as a local service centre for the southwestern part of the island, serving a direct population of 35,000 people from surrounding areas and over 100,000 people along the entire southwestern coast of the island.\nThe primary employer in the town was a paper mill, which closed in 2005.\nStephenville has a modern 40-bed hospital (built in 2003), schools, grocery stores, a movie theatre, four banks, an International Airport (Stephenville International Airport, CYJT, now named Dymond International Airport), year round ice free sea port (Port Harmon), and many government institutions.  The provincial community college system, College of the North Atlantic, is headquartered in Stephenville and maintains a campus there for students from the southwestern region of the island. The Newfoundland and Labrador Public Library system is also headquartered in Stephenville.   A provincial minimum/medium security facility was established in 1978 and provides core programs for federal and provincial offenders at the West Coast Corrections Centre (W.C.C.C.)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "stephenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5409,
+    "attempt": 5367,
+    "place_id": "gn-6559502",
+    "input": {
+      "place": {
+        "place_id": "gn-6559502",
+        "name": "Pego",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.84305,
+        "lon": -0.11707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pego, Spain",
+          "url": "https://en.wikipedia.org/wiki/Pego,_Spain",
+          "text": "Pego (Valencian and Spanish: [ˈpeɣo]) is a municipality located in the province of Alicante, Spain.\nLying just inland from the northern Costa Blanca resort of Dénia, the town of Pego sits in a depression, surrounded by mountains. A part of the Marina Alta comarca of Alicante, Pego has a population of 10,721 (2006) and a history dating from the Arab occupation.\nThe region around Pego was settled during the Bronze Age and later by Iberian and Roman civilizations, though the story of the town really begins during the times of the Moors in around 726, when Pego was an important Arab enclave which later formed part of the Taifa of Dénia. Subsequently, conquered by forces under James I of Aragon in 1244, Pego was later repopulated with peasants from Catalonia and the barony of Pego was created in 1262, and control of the town passed through the hands of various members of the Valencian nobility."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "pego",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5410,
+    "attempt": 5368,
+    "place_id": "gn-658288",
+    "input": {
+      "place": {
+        "place_id": "gn-658288",
+        "name": "Heinola",
+        "country": "Finland",
+        "subdivision": "Paijat-Hame",
+        "lat": 61.20564,
+        "lon": 26.03811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heinola",
+          "url": "https://en.wikipedia.org/wiki/Heinola",
+          "text": "Heinola (Finnish pronunciation: [ˈhei̯nolɑ]) is a town and a municipality of 17,694 inhabitants (31 December 2025) located in the eastern part of the Päijät-Häme region, Finland, near the borders of the South Savo region and the Kymenlaakso region. It is the third largest municipality in the region in terms of population after Lahti and Hollola. The neighbour municipalities of Heinola are Asikkala, Hartola, Iitti, Kouvola, Mäntyharju, Nastola, Pertunmaa and Sysmä.\nIn the coat of arms of Heinola, the Tavastia's provincial animal, the Eurasian lynx, crosses a fess resembling an arch bridge; it refers to the Jyränkö Bridge (Jyrängönsilta) from 1932, which crosses Jyrängönvirta, the  smaller part of the Kymi River. The coat of arms was designed by Gustaf von Numers and approved by the Heinola Town Council at its meeting on 23 September 1958. The coat of arms was approved for use by the Ministry of the Interior on 11 November of the same year.\nIn June 2024, Heinola was included in The Times newspaper's list of 30 attractive summer destinations where people can vacation without the oppressive heat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "heinola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5411,
+    "attempt": 5369,
+    "place_id": "gn-7261570",
+    "input": {
+      "place": {
+        "place_id": "gn-7261570",
+        "name": "Lackland Air Force Base",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.38663,
+        "lon": -98.61797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lackland Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Lackland_Air_Force_Base",
+          "text": "Lackland Air Force Base  (IATA: SKF, ICAO: KSKF, FAA LID: SKF) is a United States Air Force (USAF) base located in Bexar County, Texas, United States. The base is under the jurisdiction of the 802d Mission Support Group, Air Education and Training Command (AETC) and an enclave of the city of San Antonio. It is the only site for USAF and United States Space Force enlisted Basic Military Training (BMT).\nLackland AFB is part of Joint Base San Antonio (JBSA), an amalgamation of Fort Sam Houston, Randolph AFB and Lackland AFB, which were merged on 1 October 2010. JBSA was established in accordance with congressional legislation implementing the recommendations of the 2005 Base Realignment and Closure Commission. The legislation ordered the consolidation of the three facilities which were adjoining, but separate military installations, into a single joint base – one of 12 joint bases formed in the United States as a result of the law."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "lackland air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lackland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5412,
+    "attempt": 5370,
+    "place_id": "gn-7521636",
+    "input": {
+      "place": {
+        "place_id": "gn-7521636",
+        "name": "Espoonlahti",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.15054,
+        "lon": 24.65307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espoonlahti",
+          "url": "https://en.wikipedia.org/wiki/Espoonlahti",
+          "text": "Espoonlahti (Finnish) or Esboviken (Swedish) (literally The Bay of Espoo or Espoo Bay) is one of the five major urban areas  of Espoo, a city in Finland. It lies along the south-western coast of Espoo, bounded to the west by the bay of the same name, to the south by the shores of the Gulf of Finland, to the west by the Finnoo (Finnå) valley, to the east of the municipal border of Kirkkonummi, and to the north by the forests of Espoo central forest  area. This total area of about 4,800 hectares is further divided into areas called Soukka, Suvisaaristo, Kaitaa, Nöykkiö, Latokaski and Saunalahti, with one greater center called Espoonlahden keskus ( Espoonlahti center). Areas known as Laurinlahti, Ylä-Kivenlahti, Ala-Kivenlahti and Iivisniemi are also part of the Espoonlahti district. Yet another name pertinent to this area is Kanta-Espoonlahti (Espoonlahti Proper), which includes Espoonlahden keskus, Soukanmäki (Soukka Hill), Kivenlahti, Laurinlahti and Soukanniemi (Soukka Peninsula)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "espoonlahti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5413,
+    "attempt": 5371,
+    "place_id": "gn-920901",
+    "input": {
+      "place": {
+        "place_id": "gn-920901",
+        "name": "Chama",
+        "country": "Zambia",
+        "subdivision": "Muchinga",
+        "lat": -11.21303,
+        "lon": 33.1521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chama, Zambia",
+          "url": "https://en.wikipedia.org/wiki/Chama,_Zambia",
+          "text": "Chama is a small town in the Eastern Province of Zambia, and is headquarters of Chama District. It is one of the most remote district headquarters in the country, lying just inside the eastern edge of the upper Luangwa Rift Valley, at the foot of the highlands dividing Zambia and Malawi. It is served by only one gravel road which comes from Lundazi and the provincial capital of the Eastern Province, Chipata, 300 km to the south. A dirt track connects the town to the South Luangwa National Park 200 km south-west, running parallel to the Luangwa River. A little-used dirt track follows the Malawi border further north and crosses into Isoka District west of the Nyika Plateau. The Road Development Agency is also developing a road from Chama westwards across the Luangwa River to the town of Matumbo, where the road will end at a junction with the T2 Road, Zambia's Great North Road. It is meant to be the 2nd main road out of Chama after the Lundazi-Chipata Route and is meant to provide access for Chama Residents to the headquarters of Muchinga Province, which is Chinsali."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "chama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5414,
+    "attempt": 5372,
+    "place_id": "gn-2493605",
+    "input": {
+      "place": {
+        "place_id": "gn-2493605",
+        "name": "Ighram",
+        "country": "Algeria",
+        "subdivision": "Béjaïa",
+        "lat": 36.46295,
+        "lon": 4.50532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ighram",
+          "url": "https://en.wikipedia.org/wiki/Ighram",
+          "text": "Ighram (Kabyle: Iɣrem) is a town and commune of Kabylie in northern Algeria.  The town is located on the Soummam, on its left bank. It is located south-west of the wilaya of Béjaïa, a distance of more than 70 km from the provincial capital and less than 5 km from Akbou. It covers an area of 50.11 square kilometers and the population of the town of Ighram is estimated at 16 878 inhabitants, 8 472 men and 8 406 women with a density of 332 inhabitants / km ² (statistics 31 December 2003).\nAdministratively, it is bordered by the wilaya of Tizi Ouzou to the north, Akbou and Tazmalt to the south, to the west by the town of Beni Mellikeche.\nThe commune is composed of several villages (Elma-Ouguenane, Amar Ouzeguene Ath, Ath Kerrou, Azoun, Ath Selam, Boukir, Iaamourene, Igguirven, Ighrem Ighil Nacer, Ikherbouchen, Irsen, Iaâzunène, Laazib Ulahdir, Elmecheta, Taslent, Tazagharth, Tifthisin, Tighilt Makhlouf).\nThe homes are centered on courtyards and agriculture employs much of the population. The war of liberation and emigration have emptied many of the villages of their population, resulting in the relative deterioration of buildings.\nThe climate in Ighram both in winters and summers mild and hot respectively. Annual rainfall averages vary between 6.33 mm and 70.45 mm with peak rainfall in the month of December. In winter, the town receives an average of 63.63 mm of water. Temperatures range from 8.68 °C and 30.80 °C.\nEconomically the town of Ighram  is dependent on nearby Akbou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "ighram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5415,
+    "attempt": 5373,
+    "place_id": "gn-2511329",
+    "input": {
+      "place": {
+        "place_id": "gn-2511329",
+        "name": "San Juan de Aznalfarache",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.35813,
+        "lon": -6.03731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan de Aznalfarache",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_de_Aznalfarache",
+          "text": "San Juan de Aznalfarache is a city located in the province of Seville, Spain. According to the 2006 census (INE), the city has a population of 20,121 inhabitants.\nDespite being a separate municipality, San Juan is in the metropolitan area of Seville, to which it lies on an opposite bank of the Guadalquivir river. The city is linked by two road bridges and a pedestrian one to the Sevillian district of Triana on the Isla de La Cartuja.\nSan Juan lies to the north of Gelves, northeast of Mairena del Aljarafe and south of Tomares, which all also make up Seville's metropolitan area.\nThe city's name refers to the Fortress of Alfaraj (ar: حَصْن الڢَرَٰج, with its implied spelling as \"[h]áçn al-faráŷ\" in the Andalusī dialect), a known site for Muslim historians, which was likely built under the Umayyads but better known by the palace built by Al-Mu'tamid ibn Abbad in the 11th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "san juan de aznalfarache",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aznalfarache",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5416,
+    "attempt": 5374,
+    "place_id": "gn-2651778",
+    "input": {
+      "place": {
+        "place_id": "gn-2651778",
+        "name": "Cudworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.57131,
+        "lon": -1.41595
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cudworth, South Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Cudworth,_South_Yorkshire",
+          "text": "Cudworth (English:  KUUD-urth) is a village in the Metropolitan Borough of Barnsley in South Yorkshire, England. It had a population of 10,977 in the 2011 Census.\nThe modern village is part of the Cudworth ward of Barnsley Metropolitan Borough Council and has a mix of housing types with a great many developments from the inter-war and post-war periods. These supplement a small residual number of more ancient dwellings and buildings reflecting the importance of the rural economy before the opening of the deep mine collieries in the near vicinity at the end of the 19th and early 20th centuries.\nThe village is still surrounded by open space, including green belt, regenerated public open spaces that were formerly part of neighbouring collieries and the remaining agricultural land which still dominates the south and south-east sides of the village. Cudworth has two distinct historic centres known as Upper or Over Cudworth and Low or Nether Cudworth.\nThe name Cudworth derives from the Old English Cuthaworð meaning 'Cutha's enclosure'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "cudworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5417,
+    "attempt": 5375,
+    "place_id": "gn-2654490",
+    "input": {
+      "place": {
+        "place_id": "gn-2654490",
+        "name": "Brownhills",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.63333,
+        "lon": -1.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brownhills",
+          "url": "https://en.wikipedia.org/wiki/Brownhills",
+          "text": "Brownhills is a historic market and industrial town in the Metropolitan Borough of Walsall of the West Midlands county, England. The town is located south of Cannock Chase and close to the large Chasewater reservoir, it is 6 miles (9.7 km) northeast of Walsall, a similar distance southwest of Lichfield and 13 miles (20.9 km) miles north-northwest of Birmingham. It is part of the Aldridge-Brownhills parliamentary constituency and neighbours the villages of Pelsall and Walsall Wood. It lies within the boundaries of the historic county of Staffordshire.\nThe town lies close to the route of the ancient Watling Street, and although there is no record of its existence before the 17th century, Ogley Hay – a district of the town today – is recorded as a settlement in the Domesday Book. Brownhills quickly grew around the coal-mining industry, especially after the town became linked to the canal and railway networks in the mid-19th century. By the end of the century, Brownhills had grown from a hamlet of only 300 inhabitants to a town of more than 13,000, of whom the vast majority were employed in the coal industry. Mining remained the town's principal industry until the 1950s; the subsequent closure of the pits led to a severe economic decline that has continued until now. The local authority instituted a regeneration programme in 2007, which was hoped would revive the town's fortunes, but there has been little subsequent development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "brownhills",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5418,
+    "attempt": 5376,
+    "place_id": "gn-5098436",
+    "input": {
+      "place": {
+        "place_id": "gn-5098436",
+        "name": "Glen Rock",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.96288,
+        "lon": -74.13292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen Rock, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Glen_Rock,_New_Jersey",
+          "text": "Glen Rock is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 12,133, an increase of 532 (+4.6%) from the 2010 census count of 11,601, which in turn reflected an increase of 55 (+0.5%) from the 11,546 counted in the 2000 census.\nThe borough has been one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, Glen Rock residents had a median household income of $162,443, ranked 6th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475.\nGlen Rock was voted one of the best places to live in New Jersey for its low crime rate, good schools, close proximity to New York City and its high property values, including in 2018, when Niche ranked it the 19th best place to live in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "glen rock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5419,
+    "attempt": 5377,
+    "place_id": "gn-5883194",
+    "input": {
+      "place": {
+        "place_id": "gn-5883194",
+        "name": "Albion",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.18751,
+        "lon": -122.55687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albion, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Albion,_British_Columbia",
+          "text": "Albion, British Columbia is a neighbourhood in Maple Ridge, British Columbia and is one of several small towns incorporated within the municipality at its creation.  It is the oldest non-indigenous community of the district's settlements, and is only slightly younger than Fort Langley, adjacent across the Fraser River, and Kanaka Creek, which is just to the west and lies along the creek of the same name.  Its official definition is the area bounded by the Fraser River, Kanaka Way, and 240th Street, but in its historic sense it means the community centred on and flanking 240th Street and adjoining areas along the Fraser River waterfront and around the Maple Ridge Fairgrounds, while along Kanaka Way and also on the near bank of Kanaka Creek, the creek, is historically the community of Kanaka Creek.  Burgeoning newer home construction east of 240th Street near the Lougheed Highway  is also often referred to as part of Albion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "albion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5420,
+    "attempt": 5378,
+    "place_id": "gn-6215045",
+    "input": {
+      "place": {
+        "place_id": "gn-6215045",
+        "name": "Oamaru",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -45.09758,
+        "lon": 170.97087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oamaru",
+          "url": "https://en.wikipedia.org/wiki/Oamaru",
+          "text": "Oamaru, the largest town in North Otago, in the South Island of New Zealand, is the main town of the Waitaki District. It is 80 kilometres (50 mi) south of Timaru and 120 kilometres (75 mi) north of Dunedin on the Pacific coast; State Highway 1 and the railway Main South Line connect it to both cities. With a population of 14,300, Oamaru is the 28th largest urban area in New Zealand, and the third largest in Otago behind Dunedin and Queenstown. The town is the seat of Waitaki District, which includes the surrounding towns of Kurow, Weston, Palmerston, and Hampden, which combined have a population of 23,200.\nFriendly Bay is a popular recreational area on the edge of Oamaru Harbour, south of Oamaru's main centre. Just to the north of Oamaru is the substantial Alliance abattoir at Pukeuri, at a major junction with State Highway 83, the main route into the Waitaki Valley. This highway provides a link to Kurow, Omarama, Otematata and via the Lindis Pass to Queenstown and Wānaka. Oamaru serves as the eastern gateway to the Mackenzie Basin, via the Waitaki Valley.\nOamaru is built between the rolling hills of limestone and short stretch of flat land to the sea. The limestone rock is used for the construction of local \"Oamaru stone\", sometimes called \"whitestone\", buildings.\nOamaru enjoys a protected location in the shelter of Cape Wanbrow. The town was laid out in 1858 by Otago's provincial surveyor John Turnbull Thomson, who named the early streets after British rivers, particularly rivers in the northwest and southeast of the country.\nThe name Oamaru derives from the Māori and can be translated as 'the place of Maru' (cf.  Timaru). The identity of Maru remains open to conjecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "oamaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5421,
+    "attempt": 5379,
+    "place_id": "gn-8509567",
+    "input": {
+      "place": {
+        "place_id": "gn-8509567",
+        "name": "Muyu",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 31.47202,
+        "lon": 110.38717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muyu, Hubei",
+          "url": "https://en.wikipedia.org/wiki/Muyu,_Hubei",
+          "text": "Muyu (simplified Chinese: 木鱼; traditional Chinese: 木魚; pinyin: Mùyú; literally, \"Wooden fish\"; sometimes also 木鱼坪, Muyuping) is a town in Shennongjia Forestry District, in the west of Hubei province, People's Republic of China. Located on China National Highway 209, it is the main population and services center of the southern part of the district.\nThe town is stretched along the upper course of Xiang Stream (Xiang Xi) (or perhaps one of its tributaries), which flows from Shennongjia mountains southeast toward the Yangtze. The river valley is paralleled by China National Highway 209.\nServing as the natural \"gateway\" to Shennongjia National Nature Reserve (the entry to which is at Yazikou Junction, some 10 to 15 kilometres (6.2 to 9.3 mi) north of Muyu), Muyu and its vicinity is the location of most of the hotels and tourist services in the southern part of Shennongjia. Regular minibus service connects it to Yichang and Maoping (Zigui County). There is also less-regular shuttle van service north, to Songbai town (the seat of government of Shennongjia District) and Shiyan; but the road north (beyond Yazikou Junction) is still \"unimproved\" (as of 2009), and, moreover, that part of Shennongjia is closed to foreigners."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "muyu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5422,
+    "attempt": 5380,
+    "place_id": "gn-1283119",
+    "input": {
+      "place": {
+        "place_id": "gn-1283119",
+        "name": "Lobuche",
+        "country": "Nepal",
+        "subdivision": "Koshi",
+        "lat": 27.94806,
+        "lon": 86.81017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lobuche",
+          "url": "https://en.wikipedia.org/wiki/Lobuche",
+          "text": "Lobuche (also spelt Lobuje) is a Nepalese mountain which lies close to the Khumbu Glacier and the settlement of Lobuche. There are two main peaks, Lobuche East and Lobuche West. A permit to climb the mountain is required from the Nepal Mountaineering Association (NMA), which classifies Lobuche East (6,119m) as a \"trekking peak\" and Lobuche West (6,145m) as an \"expedition peak\". The permit is issued by Nepal Mountaineering Association and costs US$350 during spring, US$175 during autumn, and US$175 during winter/summer. The easier, trekking peak, the East peak is climbed far more frequently than the West peak; however, most of those climbers only do so to reach a false summit that is still a few hours from the true summit of Lobuche East. Between the two peaks is a long, deeply notched ridge, with a steep drop and its considerable distance making an approach of the West peak from the East practically impossible.\nThe first recorded ascent of Lobuche East was made by Laurence Nielson and Sherpa Ang Gyalzen on April 25, 1984.\nLobuche West was first climbed in 1955 via the South Shoulder."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "lobuche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5282,
+    "attempt": 5241,
+    "place_id": "gn-2345505",
+    "input": {
+      "place": {
+        "place_id": "gn-2345505",
+        "name": "Dambatta",
+        "country": "Nigeria",
+        "subdivision": "Kano State",
+        "lat": 12.435,
+        "lon": 8.51531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dambatta",
+          "url": "https://en.wikipedia.org/wiki/Dambatta",
+          "text": "Danbatta (or Dambatta or Dambarta) is a town and Local Government Area in Kano State, Nigeria. It is located about 79 kilometres (49 miles) north of Kano city at the Northern border of Kano state with Jigawa State.\nIt has an approximate area of 732 km2 and a population of 207,968 at the 2006 census. It is bordered to the north and east by Kazaure and Babura Local Government areas of Jigawa State respectively, and to the south and west by Minjibir and Makoda local Government areas of Kano state respectively.\nThe town is the location for the Audu Bako College of Agriculture (ABCOA) and Kano State School of Basic Midwifery. It is also home to Zone 3 of the Kano state Hospitals Management Board (HMB), Zonal Office of the Kano state Ministry of Education (MOE), Zonal Medical Store of Kano State Ministry of health (MOH), Zonal Office of Kano State Agricultural and Rural Development Agency (KNARDA) and Zonal Office of the Kano State Water Resources Engineering and Construction Agency (WRECA).\nThe postal code of the area is 702."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "dambatta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5283,
+    "attempt": 5242,
+    "place_id": "gn-5104774",
+    "input": {
+      "place": {
+        "place_id": "gn-5104774",
+        "name": "Somerville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.57427,
+        "lon": -74.60988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somerville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Somerville,_New_Jersey",
+          "text": "Somerville is a borough in and the county seat of Somerset County, in the U.S. state of New Jersey. The borough is located in the heart of the Raritan Valley region within the New York Metropolitan Area, located about 33 miles (53 km) from Manhattan and 20 miles (32 km) from Staten Island. The borough has grown to become a commercial hub for Central Jersey and commuter town of New York City.\nAs of the 2020 United States census, the borough's population was 12,346, an increase of 248 (+2.0%) from the 2010 census count of 12,098, which in turn reflected a decline of 325 (-2.6%) from the 12,423 counted in the 2000 census.\nSomerville was originally formed as a town on March 25, 1863, within a portion of Bridgewater Township. Somerville was incorporated as a borough by an act of the New Jersey Legislature on April 16, 1909, based on the results of a referendum held on May 4, 1909, at which point it was fully set off from Bridgewater Township. It is home of the oldest competitive bicycle race in the United States.\nThe borough is named for Somerset in England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "somerville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5284,
+    "attempt": 5243,
+    "place_id": "gn-6355180",
+    "input": {
+      "place": {
+        "place_id": "gn-6355180",
+        "name": "Port el Kantaoui",
+        "country": "Tunisia",
+        "subdivision": "Sousse Governorate",
+        "lat": 35.89239,
+        "lon": 10.59434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port El Kantaoui",
+          "url": "https://en.wikipedia.org/wiki/Port_El_Kantaoui",
+          "text": "Port El Kantaoui (Arabic: مرسى القنطاوي) is a tourist complex 10 kilometres north of Sousse city in central Tunisia. It was built in 1979 specifically  as a tourist center, around a large artificial harbour that provides mooring with 340 berths for luxury yachts, hosting sporting activities from water skiing to paragliding, and several golf courses. \nThe architecture, although modern and dazzlingly white, has been modeled on the more traditional buildings in Tunisia, complete with narrow streets and arches. The hotels that line the beachfront extend from Sousse itself along miles of sparkling clean sea to the harbor of Port El Kantaoui and to the north of the harbor.\nIn style, the port area Port El Kantaoui is designed as a white and blue Tunisian style village with reproduced medina quarter and cobblestone streets. It is popular with package holiday visitors, families, and first-time visitors, however, its extensive landscaping and detachment from the true Tunisia bring critics; most notably the Rough Guide has described Port El Kantaoui as \"Tunisia without tears ... artificial, soulless, even anemic\".\nIn 2015, 39 people were killed when a lone terrorist gunman opened fire at two hotels (2015 Sousse attacks). This is the worst attack in the recent history of Tunisia since the Tunisian Revolution of 2010–2011. Most of those killed were tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "port el kantaoui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kantaoui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5285,
+    "attempt": 5244,
+    "place_id": "gn-4138011",
+    "input": {
+      "place": {
+        "place_id": "gn-4138011",
+        "name": "Chevy Chase",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.981,
+        "lon": -77.083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chevy Chase, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Chevy_Chase,_Maryland",
+          "text": "Chevy Chase () is the colloquial name of an area that includes a town, several incorporated villages, and an unincorporated census-designated place in southern Montgomery County, Maryland; and one adjoining neighborhood in northwest Washington, D.C. Most of these derive from a late-19th-century effort to create a new suburb that its developer dubbed Chevy Chase after a colonial land patent. \nPrimarily residential, Chevy Chase adjoins Friendship Heights, a popular shopping district. It is the home of the Chevy Chase Club and Columbia Country Club, private clubs whose members include many prominent politicians and Washingtonians.\nThe name is derived from Cheivy Chace, the name of the land patented to Colonel Joseph Belt from Charles Calvert, 5th Baron Baltimore, on July 10, 1725. It has historic associations with a 1388 chevauchée, a French word describing a border raid, fought by Lord Percy of England and Earl Douglas of Scotland over hunting grounds, or a \"chace\", in the Cheviot Hills of Northumberland and Otterburn. The battle was memorialized in \"The Ballad of Chevy Chase\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "chevy chase",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chevy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chase",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5286,
+    "attempt": 5245,
+    "place_id": "gn-4351065",
+    "input": {
+      "place": {
+        "place_id": "gn-4351065",
+        "name": "Charles Village",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.32316,
+        "lon": -76.6133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charles Village, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Charles_Village,_Baltimore",
+          "text": "Charles Village is a neighborhood located in the north-central area of Baltimore, Maryland, USA. It is a diverse, eclectic, international, largely middle-class area with many single-family homes that is in proximity to many of Baltimore's cultural amenities. Nearby are the Baltimore Museum of Art, the Homewood campus of The Johns Hopkins University, Olmstead's Wyman Park, the weekly Waverly Farmers Market, and the arts district, Station North. Homes are Baltimore brick and stone row houses, many dating from the 1890s. Running from downtown north is the historic boulevard, Charles Street, where Baltimore's Easter Promenade once took place.\nThe development of the  neighborhood began in 1869 when 50 acres (200,000 m2) of land were purchased for development as \"Peabody Heights.\" The land was divided and turned over to various builders who constructed home exteriors, leaving the interiors to be custom built according to buyer specifications. The area was first developed as a streetcar suburb in the early 20th century, and is thought to be the first community to employ tract housing tactics. At the time, the area was known as Peabody Heights; the moniker Charles Village, derived from Charles Street, the area's major north–south corridor, was coined in the 1970s as the beginning of a process of conceptually grouping a large and somewhat heterogeneous area. The neighborhood history has been researched and published by Gregory J. Alexander and Paul K. Williams in their book Charles Village: A Brief History (The History Press, 2009).\nCharles Village in a strict sense consists of the area immediately to the east and south of the Johns Hopkins University Homewood campus.  However, smaller neighborhoods to the east of this area — including Abell and Harwood, are considered by residents and other Baltimoreans to be part of Greater Charles Village. The Charles Village Community Benefits District (CVCBD) covers a hundred-block area generally bounded by 33rd Street to the north, Greenmount Avenue to the east, 25th Street (east of Guilford) and 20th Street (west of Guilford) to the south, and Johns Hopkins and Howard Street to the west.  This area contains over 14,000 people and 700 businesses. The Charles Village Community Benefits District Management Authority (CVCBDMA) is a public entity that provides services within the CVCBD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 367
+    },
+    "banned_terms": [
+      {
+        "term": "charles village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5287,
+    "attempt": 5246,
+    "place_id": "gn-4503953",
+    "input": {
+      "place": {
+        "place_id": "gn-4503953",
+        "name": "Runnemede",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.85234,
+        "lon": -75.06795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Runnemede, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Runnemede,_New_Jersey",
+          "text": "Runnemede is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 8,324, a decrease of 144 (−1.7%) from the 2010 census count of 8,468, which in turn reflected a decline of 65 (−0.8%) from the 8,533 counted in the 2000 census.\nRunnemede was authorized to incorporate as a borough by an act of the New Jersey Legislature on March 23, 1926, from portions of the now-defunct Centre Township, and was then made independent based on the results of a referendum held on April 24, 1926. Acts enabling creation of the boroughs of Bellmawr, Mount Ephraim, and Lawnside were passed during the same two-day period. The derivation of the borough's name is uncertain, though claims that it derives from a Native American term for \"running water\" have been refuted and connections to General George Meade or to \"rum we need\" for a nearby tavern are probably apocryphal. Sources have cited the name as coming from Runnymede, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "runnemede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5288,
+    "attempt": 5247,
+    "place_id": "gn-1819783",
+    "input": {
+      "place": {
+        "place_id": "gn-1819783",
+        "name": "Happy Valley",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Wan Chai",
+        "lat": 22.26912,
+        "lon": 114.18619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Happy Valley, Hong Kong",
+          "url": "https://en.wikipedia.org/wiki/Happy_Valley,_Hong_Kong",
+          "text": "Happy Valley (Chinese: 跑馬地) is an upper-income residential area in Hong Kong, located on Hong Kong Island. The area is bordered by Caroline Hill to the east, Jardine's Lookout to the south, Morrison Hill to the west, and Causeway Bay to the north. Administratively, it is part of Wan Chai District.\nHappy Valley is considered as an area surrounded by Caroline Hill Road to the east, Tai Hang Road and Stubbs Road to the south, Canal Road Flyover and westbound section of Wong Nai Chung Road to the west, and Leighton Road to the north.\nThe area is home to the Happy Valley Racecourse, Hong Kong Racing Museum, Hong Kong Jockey Club Happy Valley Clubhouse, Hong Kong Sanatorium & Hospital, Hong Kong Adventist Hospital – Stubbs Road, home to a number of sports clubs including Valley RFC rugby club, Craigengower Cricket Club, Hong Kong FC football club, and a number of cemeteries including the Hong Kong Cemetery.\nIt has a population of 32,202 people, 70.7% of them being Chinese. Other ethnic minority groups include Filipinos (12.8%) and whites (6.3%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "happy valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "happy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5289,
+    "attempt": 5248,
+    "place_id": "gn-2965381",
+    "input": {
+      "place": {
+        "place_id": "gn-2965381",
+        "name": "Clondalkin",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.32444,
+        "lon": -6.39722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clondalkin",
+          "url": "https://en.wikipedia.org/wiki/Clondalkin",
+          "text": "Clondalkin (Irish: Cluain Dolcáin, meaning 'pasture of Dolcán') is a suburban village in County Dublin, Ireland, approximately 10 km (6 mi) west of Dublin city centre. It is within the administrative jurisdiction of South Dublin. Founded as a monastic settlement in the early 7th century, Clondalkin rose in significance during the early medieval period, becoming home to a scriptorium that produced illuminated gospel manuscripts and to one of Ireland's earliest and slenderest round towers.\nClondalkin is also the name of a civil parish and a townland in the ancient barony of Uppercross, and is also used in relation to some local religious parishes. The population of all electoral divisions labelled as Clondalkin was 47,938 as of the 2022 census.\nDespite being sacked by Vikings, the medieval village of Clondalkin grew with several streets and a large parish church, and in 1171 served as the encampment of Ruaidrí Ua Conchobair, the last High King of Ireland, as he moved to defend Dublin against the advancing forces of Richard de Clare. Clondalkin expanded from the mid-20th century as Dublin's suburbs grew westward, and is today a residential suburb of South Dublin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "clondalkin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5290,
+    "attempt": 5249,
+    "place_id": "gn-3892934",
+    "input": {
+      "place": {
+        "place_id": "gn-3892934",
+        "name": "Curacaví",
+        "country": "Chile",
+        "subdivision": "Santiago Metropolitan",
+        "lat": -33.39762,
+        "lon": -71.12708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curacaví",
+          "url": "https://en.wikipedia.org/wiki/Curacaví",
+          "text": "Curacaví (Spanish pronunciation: [ku.ɾa.ka.ˈβi]) is a city and commune in the Melipilla Province of central Chile's Santiago Metropolitan Region. Its climate is temperate Mediterranean with a long dry season, experiencing high temperatures in summer and low temperatures in winter. Curacaví is located on the Ruta 68 between the coastal conurbation of Viña del Mar and Valparaíso and Santiago which has proved a popular home for expats working in Santiago.\nCuracaví is a commune situated between the hills of the coastal mountain range in central Chile, located in the Metropolitan Region of Santiago, specifically in Melipilla Province, with an area of 693 km2 and borders the following municipalities: Casablanca, Quilpué, Lampa, Pudahuel, Maipú, Padre Hurtado, Melipilla, and Maria Pinto.\nCuracaví is integrated along with the communes of Talagante, Melipilla, Peñaflor, Isla de Maipo, Maria Pinto, El Monte, San Pedro and Alhué in the number 31 Electoral District and also belongs to the 7th Chilean Senate District (Santiago west). The commune covers five districts: Curacaví, Bustamante, Lo Prado, Zapata and Caren."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "curacavi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5291,
+    "attempt": 5250,
+    "place_id": "gn-1712206",
+    "input": {
+      "place": {
+        "place_id": "gn-1712206",
+        "name": "Guiuan",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.03088,
+        "lon": 125.72342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guiuan",
+          "url": "https://en.wikipedia.org/wiki/Guiuan",
+          "text": "Guiuan ([ˈgiˌwan] ; Waray: Bungto han Guiuan, Filipino: Bayan ng Guiuan), officially the Municipality of Guiuan, is a municipality in the province of Eastern Samar, Philippines. It constitutes the southeastern extremity of Samar Island and some adjacent islands, surrounded by Leyte Gulf and the Philippine Sea (which a marginal sea of the Pacific Ocean), two major bodies of water that makes the town the surfing capital of the Visayas. According to the 2024 census, it has a population of 52,749 people, making it the most populous municipality in Eastern Samar (followed by Dolores) and the second most populous administrative division in the entire province after the capital city Borongan.\nGuiuan played a significant part in Philippine history. Historical accounts attested that Ferdinand Magellan's 16th century expedition first landed on the island of Homonhon, which lies within the municipality, after their Pacific crossing. The Immaculate Conception Parish Church in the Guiuan poblacion was established in the 18th century by Jesuits and is one of the oldest in the country.\nDuring the Second World War, the islands of Suluan and Homonhon, both in Guiuan, became the American forces' first landing points, along with Dinagat Island, for the start of the Battle of Leyte Gulf. After the victory of Leyte Gulf operation, the entire town served as one of the naval bases for the Allies. In 1949, the Guiuan island of Tubabao hosted thousands of White Russian refugees fleeing from the wake of the Russian Revolution and Russian Civil War.\nIn November 2013, Guiuan was nearly levelled after Typhoon Haiyan, one of the deadliest and strongest tropical cyclones in the Philippines, made its first landfall in the town. Local and international aid helped Guiuan recover from the typhoon's catastrophic impact, and the town's economy has since flourished. Due to the COVID-19 pandemic, the town saw border restrictions and multiple lockdowns that affected the local economy and way of life.\nAs well as a rich historical background, Guiuan has many scenic spots. Being a coastal town on the Pacific side, the town has many white-sand beaches that are suitable for swimming and surfing. The Immaculate Conception Parish Church of Guiuan is currently in the tentative list for UNESCO World Heritage Sites under the Baroque Churches of the Philippines (Extension)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 375
+    },
+    "banned_terms": [
+      {
+        "term": "guiuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5292,
+    "attempt": 5251,
+    "place_id": "gn-1819029",
+    "input": {
+      "place": {
+        "place_id": "gn-1819029",
+        "name": "Sai Wan Ho",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Eastern District",
+        "lat": 22.28449,
+        "lon": 114.2232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sai Wan Ho",
+          "url": "https://en.wikipedia.org/wiki/Sai_Wan_Ho",
+          "text": "Sai Wan Ho is a primarily residential area on the northeastern shore of Hong Kong Island, Hong Kong, between Quarry Bay and Shau Kei Wan. It is part of the Eastern District, and is administered together with surrounding areas under the Eastern District Council.\nSuppose the area is divided by the Island Eastern Corridor, the seaside side of the new reclamation area to the north of the corridor area are private estates such as Grand Promenade, Les Saisons and Lei King Wan, the other side of the corridor area is dominated by old buildings, that is, it is built along the main road Shau Kei Wan Road. New private residences are also completed in the area, such as THE HOLBORN, which is completed in 2023 and Island Residence which is completed in 2017.\nSome government agencies and buildings, such as the Eastern Law Court Building (Eastern Magistrates' Courts), Marine Police Regional Headquarters, Hong Kong Film Archive, Sai Wan Ho Civic Centre, etc. are located in Sai Wan Ho. Soho East and Tai On Building, known as the \"Hong Kong Night Market\", are also located in the area.\nSai Wan Ho has various means of transportation. Sai Wan Ho is about a 10-minute walk from the large shopping malls Cityplaza and Kornhill Plaza and the core business district of Taikoo Place. Also, it only takes 12 and 18 minutes to Causeway Bay and Central. There are ferries across Victoria Harbour between Kwun Tong and Yau Tong from Sai Wan Ho Ferry Pier, and between Tseung Kwan O from Shau Kei Wan Typhoon Shelter Landing as well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "sai wan ho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ho",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5293,
+    "attempt": 5252,
+    "place_id": "gn-2169460",
+    "input": {
+      "place": {
+        "place_id": "gn-2169460",
+        "name": "Dandenong",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.98333,
+        "lon": 145.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dandenong",
+          "url": "https://en.wikipedia.org/wiki/Dandenong",
+          "text": "Dandenong ( DAN-dih-nong) is a major suburban centre and Metropolitan Activity Centre in south-east Melbourne, Victoria, Australia, about 29 km (18 mi) from the Melbourne CBD.  It is the administrative center of the City of Greater Dandenong and one of the largest commercial, employment, and transport hubs in metropolitan Melbourne. Positioned at the junction of major road, rail and freight networks, Dandenong serves as the principal center of Melbourne's south-east and a gateway between metropolitan Melbourne and Gippsland.\nOriginally established as a township in 1852, Dandenong developed into one of Victoria's major manufacturing and industrial centres during the twentieth century. Today, its economy is characterised by manufacturing, logistics, transport, retail, government services, healthcare and education. The suburb is part of one of Australia's largest industrial and employment precincts, anchored by neighboring Dandenong South.\nThe suburb is the focus of the Revitalising Central Dandenong urban renewal program, a long-term initiative aimed at strengthening the role of Central Dandenong as the civic, commercial and cultural heart of Melbourne's growing south-east. The renewal program has delivered major investment in public spaces, transport infrastructure, housing and commercial development. \nDandenong is one of Melbourne's most culturally diverse communities and is home to significant civic, cultural and transport infrastructure including Harmony Square, the heritage-listed Dandenong Town Hall, the Drum Theatre, Dandenong Market, and Dandenong Railway Station, which acts as a major interchange for metropolitan and regional rail services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "dandenong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5294,
+    "attempt": 5253,
+    "place_id": "gn-2640623",
+    "input": {
+      "place": {
+        "place_id": "gn-2640623",
+        "name": "Par",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.35107,
+        "lon": -4.70288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Par, Cornwall",
+          "url": "https://en.wikipedia.org/wiki/Par,_Cornwall",
+          "text": "Par (Cornish: Porth, meaning creek or harbour) is a village and fishing port with a harbour on the south coast of Cornwall, England, United Kingdom. The village is situated in the civil parish of Tywardreath and Par, although West Par and the docks lie in the parish of St Blaise.\nPar is approximately 3.5 miles (5.6 km) east of St Austell. Par has a population of around 1,600 (in 2012).\nIt became developed in the second quarter of the 19th century when the harbour was developed, to serve copper mines and other mineral sites in and surrounding the Luxulyan Valley; china clay later became the dominant traffic as copper working declined, and the harbour and the china clay dries remain as distinctive features of the industrial heritage; however the mineral activity is much reduced.\nPar Harbour and the beach at Par Sands are south of the village, and the latter includes a large static caravan holiday park; another small beach is at Spit Point west of the harbour. Between these two beaches the South West Coast Path takes an inland diversion through the village.\nPar lies in a triangle of streets which form a one-way traffic system. There is a variety of shops, a post office, a public house and other businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "par",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5295,
+    "attempt": 5254,
+    "place_id": "gn-4503646",
+    "input": {
+      "place": {
+        "place_id": "gn-4503646",
+        "name": "Pleasantville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.38984,
+        "lon": -74.52404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pleasantville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Pleasantville,_New_Jersey",
+          "text": "Pleasantville is a city in Atlantic County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 20,629, its highest decennial count ever and an increase of 380 (+1.9%) from the 2010 census count of 20,249, which in turn reflected an increase of 1,237 (+6.5%) from the 19,012 counted in the 2000 census.\nGeographically, the city, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area.\nPleasantville was originally incorporated as a borough by an act of the New Jersey Legislature on January 10, 1889, from portions of Egg Harbor Township, based on the results of a referendum held on December 15, 1888. Pleasantville was incorporated as a city on April 14, 1914, replacing Pleasantville borough, based on the results of a referendum held that same day. the city was named by David Ingersoll for its surroundings.\nThe city had the eighth-highest property tax rate in New Jersey, with an equalized rate of 4.903% in 2020, compared to 2.560% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "pleasantville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5296,
+    "attempt": 5255,
+    "place_id": "gn-5096289",
+    "input": {
+      "place": {
+        "place_id": "gn-5096289",
+        "name": "Carlstadt",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.84038,
+        "lon": -74.0907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlstadt, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Carlstadt,_New_Jersey",
+          "text": "Carlstadt is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,372, an increase of 245 (+4.0%) from the 2010 census count of 6,127, which in turn reflected an increase of 210 (+3.5%) from the 5,917 counted in the 2000 census.\nCarlstadt was originally formed as a village by an act of the New Jersey Legislature on March 12, 1860, within Lodi Township. Most sources indicate that the community was named for Carl Klein, the leader of a group of early German settlers who led the project to establish the community though Henry Gannett stated that the name derived from the city of Karlovac in Croatia, which was known as \"Carlstadt\" in German. The Borough of Carlstadt was incorporated on June 27, 1894, formally set off from Bergen Township. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "carlstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5297,
+    "attempt": 5256,
+    "place_id": "gn-5397095",
+    "input": {
+      "place": {
+        "place_id": "gn-5397095",
+        "name": "Sonoma",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.29186,
+        "lon": -122.45804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sonoma, California",
+          "url": "https://en.wikipedia.org/wiki/Sonoma,_California",
+          "text": "Sonoma () is a city in Sonoma County, California, United States, located in the North Bay region of the San Francisco Bay Area. Sonoma is one of the principal cities of California's Wine Country and the center of the Sonoma Valley AVA. Sonoma's population was 10,739 as of the 2020 census, while the Sonoma urban area had a population of 31,479. Sonoma is a popular tourist destination, owing to its Californian wineries, noted events like the Sonoma International Film Festival, and its historic center.\nSonoma's origins date to 1823, when Padre José Altimira, Giovanni Toscano, and Giovanni Álvarez established Mission San Francisco Solano, under the direction of Governor Luis Antonio Argüello. Following the Mexican secularization of the missions, Californio statesman Mariano G. Vallejo founded Sonoma on the former mission's lands in 1835. Sonoma served as the base of General Vallejo's operations until the Bear Flag Revolt in 1846, when American filibusters overthrew the local Mexican government and declared the California Republic, ushering in the American Conquest of California."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "sonoma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5298,
+    "attempt": 5257,
+    "place_id": "gn-2262581",
+    "input": {
+      "place": {
+        "place_id": "gn-2262581",
+        "name": "Torres Vedras",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 39.09109,
+        "lon": -9.2586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torres Vedras",
+          "url": "https://en.wikipedia.org/wiki/Torres_Vedras",
+          "text": "Torres Vedras (European Portuguese: [ˈtoʁɨʒ ˈvɛðɾɐʃ] ) is a medium-sized municipality and city in the West area of the Oeste e Vale do Tejo region of Portugal, and in historical Estremadura province, located approximately 50 kilometres (31 mi) north of the national and district capital, Lisbon. Historically a part of Estremadura, it is the most populous municipality of the Oeste intermunicipal community, with 83 072 residents at the time of the 2021 Census, in an area of 407.15 square kilometres (157.20 sq mi). \nOften locally shortened to just Torres, it is a settlement with over a thousand years of history, it is most known as the namesake of the Lines of Torres Vedras during the Peninsular War, as well as its Atlantic coastline popular in the Summer and its yearly Carnival, self-titled \"the Most Portuguese in Portugal\". Its territory is also home to a strong agricultural presence primarily linked to its vineyards and fruit production. It was, alongside neighbouring Alenquer, the European City of Wine in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "torres vedras",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "torres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vedras",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5299,
+    "attempt": 5258,
+    "place_id": "gn-3645806",
+    "input": {
+      "place": {
+        "place_id": "gn-3645806",
+        "name": "Chichiriviche",
+        "country": "Venezuela",
+        "subdivision": "Falcón",
+        "lat": 10.92872,
+        "lon": -68.27283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chichiriviche",
+          "url": "https://en.wikipedia.org/wiki/Chichiriviche",
+          "text": "Chichiriviche, also known as Chichiriviche de la Costa, is a Venezuelan city located in Falcón state located on the east coast, 195 km southeast of Coro. It is the capital of Municipality Monseñor Iturriza and has a population of 18,960 inhabitants as of 2011.\nChichiriviche is surrounded by the small cays and islands of fine white sand; to the west by the wetland Cuare Wildlife Refuge and to the south by Cuare Gulf. Its name is a Caribbean word meaning \"place where rises our sun\"\nChichiriviche has achieved a sustained development of its tourism industry, with a service infrastructure that translates into luxury hotels, resorts, inns, restaurants, network of marinas, shops and places of nightlife.\n\nIt is a tourist destination as well as a coconut farming and fishing town. A dish that has recently become common in Chichiriviche is ceviche made with lionfish; the lionfish is an invasive species and thus eating it serves both as a food source and a way of protecting the local environment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "chichiriviche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5300,
+    "attempt": 5259,
+    "place_id": "gn-4004153",
+    "input": {
+      "place": {
+        "place_id": "gn-4004153",
+        "name": "Jalostotitlán",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.16813,
+        "lon": -102.46097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jalostotitlán",
+          "url": "https://en.wikipedia.org/wiki/Jalostotitlán",
+          "text": "Jalostotitlán (Nahuatl languages: Xālōztōtitlān, lit. 'place of sandy caves', Nahuatl pronunciation: [ʃaːloːstoːˈtitɬaːn̥]) is a town and municipality located in the northeast corner of the state of Jalisco, Mexico, in a region known as Los Altos.\n\nThe municipality shares its border on the north with the municipality of Teocaltiche, the east with the municipality of San Juan de los Lagos, to the south with the municipality of San Miguel el Alto, to the southwest with the municipality of Valle de Guadalupe, and to the west with the municipality of Cañadas de Obregón.\nThe town is located in a midsection of the country, with semi-desert, arid lands to the north and more fertile lands to the south. Winters are relatively cold and summers are hot and rainy. The municipality also includes the towns of San Nicolás de las Flores, Teocaltitán de Guadalupe, San Gaspar de los Reyes and Mitic. In the center of town are the churches that originate from the 16th century, when the town was first founded. Jalostotitlan it's also known for its religious tourism to Santa Ana de Guadalupe, for being the birthplace of the saint Toribio Romo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "jalostotitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5301,
+    "attempt": 5260,
+    "place_id": "gn-5100940",
+    "input": {
+      "place": {
+        "place_id": "gn-5100940",
+        "name": "Matawan",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.41483,
+        "lon": -74.22959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matawan, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Matawan,_New_Jersey",
+          "text": "Matawan () is a borough in Monmouth County, in the U.S. state of New Jersey. A historic community located near the Raritan Bay in the much larger Raritan Valley region,  Raritan Bayshore  the borough is a commuter town of New York City within the New York Metropolitan Area. As of the 2020 United States census, the borough's population was 9,565, an increase of 755 (+8.6%) from the 2010 census count of 8,810, which in turn reflected a decline of 100 (−1.1%) from the 8,910 counted in the 2000 census.\nMatawan was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing the traditional downtowns, dense residential neighborhoods, maritime history, and the natural beauty of the Raritan Bayshore coastline. The plan has since been integrated into the 2016 Monmouth County Master Plan. Matawan is a part of the New Jersey Transit Village Initiative, a type of residential-focused transit-oriented development focused around the Aberdeen-Matawan train station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "matawan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

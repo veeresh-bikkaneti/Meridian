@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 5363,
+    "attempt": 5321,
+    "place_id": "gn-373130",
+    "input": {
+      "place": {
+        "place_id": "gn-373130",
+        "name": "Kafia Kingi",
+        "country": "South Sudan",
+        "subdivision": "Western Bahr al Ghazal",
+        "lat": 9.27345,
+        "lon": 24.41701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kafia Kingi",
+          "url": "https://en.wikipedia.org/wiki/Kafia_Kingi",
+          "text": "Kafia Kingi (Arabic: كافيا كنجي) is a mineral-rich region in South Sudan, on the border with Sudan and the Central African Republic. \nThe area was due to be given to South Sudan under the terms of the 2005 Comprehensive Peace Agreement which required use of the Sudan \"north–south line\" as of 1 January 1956. It was not until 1960 that the Kafia Kingi area was transferred north of that line and added to Darfur. Sudan controls all or most of this area today, though at times independent South Sudan forces have briefly controlled large portions.\nAlmost all of Kafia Kingi (except a southern portion south of the Umblasha River) is within the borders of the Sudanese Radom National Park, a biosphere reserve, of which two-thirds are also within the borders of Kafia Kingi, while another one-third of the National Park is within the Sudanese region of South Darfur.\nThe Kafia Kingi region is a known haven for ivory smugglers. Congolese ivory is frequently held in Kafia Kingi before being taken north into Darfur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "kafia kingi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kafia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kingi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5364,
+    "attempt": 5322,
+    "place_id": "gn-4917067",
+    "input": {
+      "place": {
+        "place_id": "gn-4917067",
+        "name": "Woodlawn",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.77948,
+        "lon": -87.59949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodlawn, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Woodlawn,_Chicago",
+          "text": "Woodlawn is one of the 77 community areas of Chicago in Illinois, United States. It is near the shore of Lake Michigan 8.5 miles (13.7 km) south of the Loop.\nThe community area is bounded by the lake to the east, 60th Street to the north, King Drive to the west and 67th Street to the south, and a small area that lies south of 67th Street between Cottage Grove Avenue and South Chicago Avenue. Locals sometimes divide the neighborhood along Cottage Grove into East and West Woodlawn.\nWoodlawn contains a large portion of Jackson Park, including the Barack Obama Presidential Center. The neighborhood is also home to a number of educational institutions: Hyde Park Career Academy, Mount Carmel High School, Chicago Theological Seminary, and the southern portion of the campus of the University of Chicago – including the Law School, the Harris School of Public Policy, the School of Social Service Administration, and the University of Chicago Press."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "woodlawn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5365,
+    "attempt": 5323,
+    "place_id": "gn-2167840",
+    "input": {
+      "place": {
+        "place_id": "gn-2167840",
+        "name": "Eastwood",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.79176,
+        "lon": 151.08057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastwood, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Eastwood,_New_South_Wales",
+          "text": "Eastwood is a suburb of Sydney, New South Wales, Australia. Eastwood is located 17 kilometres north-west of the Sydney central business district in the local government areas of the City of Ryde and the City of Parramatta. Eastwood is in the Northern Sydney region and is serviced by the Sydney Trains T9 Northern Line. Eastwood was originally its own town but due to the expansion of Sydney, was eventually absorbed.\nOriginally thought to have been inhabited by the Wallumedegal people, who lived in the area between the Lane Cove and Parramatta Rivers, the area was first settled by Europeans shortly after the arrival of the First Fleet in 1788, from land grants to soldiers of the Royal Marines and the New South Wales Corps, and was named \"Eastwood\" by an early white free settler, William Rutledge. Today it is a large suburban centre in the north of Sydney of more than 19,000 people, with a large shopping area. Eastwood is largely populated by immigrants; the 2021 census recorded 58.7 percent of residents as having been born overseas, two thirds of these (66.9%) being established immigrants arriving in Australia more than ten years prior, the majority (51.3% of the overall populace – 87.4% of those born overseas) born in Asia. \nEastwood is famous for the Granny Smith apple, which was accidentally first grown in the suburb by Maria Ann Smith from a chance seedling. Every October, the oval and cordoned-off streets become the grounds for the annual Granny Smith Festival, a celebration of the icon with fairground rides, market stalls, street theatres, parades, an apple-baking competition and a fireworks spectacular at the Upper Eastwood Oval. In recent years the festival has been influenced by the substantial Asian immigrant communities, with Chinese dragon dancers in the Grand Parade and Chinese stallholders. During the same period, Eastwood's annual Chinese New Year Celebrations have broadened their appeal by incorporating concurrent Korean New Year traditions, and have accordingly been renamed the Lunar New Year Festivities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "eastwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5366,
+    "attempt": 5324,
+    "place_id": "gn-2173911",
+    "input": {
+      "place": {
+        "place_id": "gn-2173911",
+        "name": "Broken Hill",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.9652,
+        "lon": 141.4512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broken Hill",
+          "url": "https://en.wikipedia.org/wiki/Broken_Hill",
+          "text": "Broken Hill is a city in the far west region of outback New South Wales, Australia. An inland mining city, it is near the border with South Australia on the crossing of the Barrier Highway (A32) and the Silver City Highway (B79), in the Barrier Range. It is 315 m (1,033 ft) above sea level, with a cold semi-arid climate, and an average rainfall of 265 mm (10.4 in). The closest major city is Mildura, 300 km (190 mi) to the south and the nearest state capital city is Adelaide, the capital of South Australia, which is more than 500 km (310 mi) to the southwest and linked via route A32, the Barrier Highway.\nThe town lies on the traditional lands of the Wilyakali people. It became prominent in Australia's mining, industrial relations, and economic history after the discovery of silver-lead-zinc ore in the Broken Hill ore deposit, in an ore body known as the Line of Lode. This led to the opening of several mines and established Broken Hill's recognition as a prosperous mining town well into the 1990s. Despite experiencing a slowing economic situation in the late 1990s and 2000s, Broken Hill itself was listed on the National Heritage List in 2015 and remains Australia's longest-running mining town. The Line of Lode Reserve, comprising a visitor centre and restaurant, is atop a man-made hill in the centre of the city.\nBroken Hill, historically considered one of Australia's boomtowns, has been referred to as \"The Silver City\", and less commonly as the \"Oasis of the West\", and the \"Capital of the Outback\". Although over 1,100 km (680 mi) west of Sydney and surrounded by desert, the town has prominent park and garden displays and offers a number of attractions, such as the Living Desert Sculptures. The town has a high potential for solar power, given its extensive daylight hours of sunshine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "broken hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "broken",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5367,
+    "attempt": 5325,
+    "place_id": "gn-2522960",
+    "input": {
+      "place": {
+        "place_id": "gn-2522960",
+        "name": "Termini Imerese",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.98225,
+        "lon": 13.69729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Termini Imerese",
+          "url": "https://en.wikipedia.org/wiki/Termini_Imerese",
+          "text": "Termini Imerese (Italian pronunciation: [ˈtɛrmini imeˈreːze, -eːse]; Sicilian: Tèrmini [ˈtɛɾmɪnɪ]) is a town of the Metropolitan City of Palermo on the northern coast of Sicily, in Italy.\nIt is one of the most important towns of the Metropolitan City of Palermo, from which it is 33 km away. The town is easily reachable through its well developed infrastructures: there are three highway exits along the A19, its station is the meeting point between all of the Sicilian railway lines and its seaport links the town with other important maritime Italian cities. It has a judicial district. It is culturally interesting for the close Greek ruins of Himera, its numerous churches, Roman ruins, prehistorical finds and the annual celebration of the Carnival, one of the oldest in Italy. In the heart of the old town, at its lower level, there are the thermal baths of the Grand Hotel delle Terme, where precious hot waters have flowed since Roman age. In the areas of Termini and the near Sciara and Caccamo is the Oriented Nature Reserve of Mount St. Calogero, located between the coast of Termini Imerese Gulf and the surrounding fertile flat territory. In the east zone of the town, there is a large industrial area, especially known for the former factory which was owned by FIAT and for the ENEL power plant \"Ettore Majorana\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "termini imerese",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "termini",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "imerese",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5368,
+    "attempt": 5326,
+    "place_id": "gn-2745932",
+    "input": {
+      "place": {
+        "place_id": "gn-2745932",
+        "name": "Urk",
+        "country": "Netherlands",
+        "subdivision": "Flevoland",
+        "lat": 52.6625,
+        "lon": 5.60139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Urk",
+          "url": "https://en.wikipedia.org/wiki/Urk",
+          "text": "Urk (Dutch: [ˈʏr(ə)k] ; Urkers: Urrek; Dutch Low Saxon: Ürrek) is a municipality and a town in the Flevoland province in the center-north of the Netherlands with a population of 22,173 as of 2025. It is surrounded by the Noordoostpolder on land and is on the coast of the IJsselmeer. Urk was formerly an island in the Almere, an inland sea that would become part of the Zuiderzee in the 13th century after a series of incursions by the North Sea. The building of a dike from Lemmer in 1939 ended Urk's status as an island and connected it to the Dutch mainland.\nThe mainstay of the town's formal economy has always been fishing, with Urk having the largest fishing fleet in the Netherlands. The products of the sea coming in through Urk harbor continue to be exported widely, although today Urk's fishing boats must travel greater distances to gather them than was required in most historical periods. Urk's inhabitants are socially tight-knitted and maintain their own unique dialect of Dutch. Religious life has traditionally been very important to Urk's inhabitants, with active, conservative congregations of the Dutch Reformed denominations playing key roles in the life of the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "urk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5369,
+    "attempt": 5327,
+    "place_id": "gn-3101795",
+    "input": {
+      "place": {
+        "place_id": "gn-3101795",
+        "name": "Chełmno",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 53.34855,
+        "lon": 18.4251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chełmno",
+          "url": "https://en.wikipedia.org/wiki/Chełmno",
+          "text": "Chełmno (Polish pronunciation: [ˈxɛu̯mnɔ] ), historically known as Culm in both German and English (Modern German: ), is a town in northern Poland near the Vistula river with 18,915 inhabitants as of December 2021. It is the seat of the Chełmno County in the Kuyavian-Pomeranian Voivodeship.\nDue to its regional importance in the Middle Ages, the town gave its name to the entire area, Chełmno Land (and later an administrative unit of the Kingdom of Poland, the Chełmno Voivodeship), the local Catholic diocese and Kulm law, a municipal form of government for over 180 cities and towns in Central Europe, most notably Warsaw, Gdańsk, Toruń, Königsberg, Olsztyn, Płock and Klaipėda. It possesses a well-preserved historic Old Town, listed as a Historic Monument of Poland, with landmark Gothic churches and a Renaissance town hall. It was an important education center in the early modern period, and the place of pioneering surgical operations by renown Polish 19th-century surgeon Ludwik Rydygier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "che mno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "che",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5370,
+    "attempt": 5328,
+    "place_id": "gn-3175746",
+    "input": {
+      "place": {
+        "place_id": "gn-3175746",
+        "name": "Grumo Appula",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.01089,
+        "lon": 16.70844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grumo Appula",
+          "url": "https://en.wikipedia.org/wiki/Grumo_Appula",
+          "text": "Grumo Appula (Barese: Gréume; Latin: Grumum) is a town and comune of the Metropolitan City of Bari, Apulia, southern Italy.\nThe town is a few kilometers inland from the port of Bari on the Adriatic Sea and it has a population of about 12,200. . It is part of the Alta Murgia National Park and was part of the mountain community of South-East of the Murgia Barese\nPhysical geography\nThe territory extends for about 81 km and part of it is included in the Alta Murgia National Park.\nThe Lagopetto municipal pine forest is one of the attractions of the national park.\nThe climatic and morphological characteristic allow the cultivation of olive groves and vineyards.\nOrigins of the name\nThe first element of the city's name is of uncertain origin: some trace it back to the Greek term drùmon, others to the Latin grumum, still others to a Messapian term with the same meaning as the Latin term.\nThe second part of the name, which refers to the historical region of Apulia, whose added only in 1863 to disambiguate the municipality from Grumo Nevano.\nThe City\nThe city originated as an Apulian center in pre-Roman times. Pliny likely refers to the inhabitants of Grumo in the Naturalis Historia (105, III), where, listing the peoples of Calabria (as Puglia was called at the time), he mentions the \"Grumbestini\" alongside the \"Palionenses\" of Palo del Colle (Palion) and the \"Butuntini\" of Bitonto (Butuntum). Italic tombs and Greek and Roman coins have been found in its territory.\nAfter the fall of the Western Roman Empire, it became part of the Ostrogothic Kingdom, followed by the Byzantines, who briefly restored Italy to the Empire during Justinian's \"restitutio\" in the 6th century. Barely touched by Lombard rule, it later fell under Norman domination. During this period, the village was included in the fief of Conversano (Bari) and, around the mid-13th century, passed to Goffredo di Montefusco.\nIn 1410, it was sold by Ladislaus of Durazzo to Pietro Busio de Senis. In the 16th century, under Philip IV of Spain, the fief belonged to the Kingdom of Naples. In 1600, it passed to the Della Tolfa family, then to the Guevara family, and in 1631 to the Spanish Marquis Antonio Castellar for 56,000 ducats (although its real value was 85,000). Finally, in 1715, it became the possession of the Caracciolo family before being declared a royal city in 1800.\nA proposal was once made to merge two neighboring municipalities, Toritto and Binetto, to form a new municipality, but the project was ultimately abandoned.\nSymbols\nThe coat of arms was officially recognized by decree of the head of government on January 12, 1935, and later granted by a presidential decree on January 19, 1999.\nPartially divided shield\nThe shield, of Samnite style, features an oak tree in the left section, while the right section depicts three crescents: one on a red field and two on a blue field. The interpretation of these crescents remains uncertain. Although they may instinctively be associated with the Arabs, who controlled Bari and its surroundings for about twenty years at the beginning of the 11th century, the crescent moon appeared on Roman military insignias from ancient times, from which the Arabs later adopted its use. Given this, the crescents on Grumo's coat of arms, in the absence of reliable sources, cannot be definitively attributed to the influence of either group of rulers over the centuries.\nThe shield is surmounted by a City crown, decorated with golden ornaments, and features two branches—an oak and an olive—tied together with a tricolor ribbon at the bottom.\nThe banner consists of a vertically divided drape: the first section in white, the second in red, and the third in blue.\nHonors\nIn 2005, it was awarded the honorary title of \"City\" by decree of the President of the Republic, and in 2011, it received the title of \"Garibaldian City.\"\nTypical products  \nGrumo Appula's territory offers a wide range of products. Some of the typical products are: olives, almonds (IGP), olive oil (IGP, DOP), mozzarella, dairy products and others local products.\nCulture:\nFilm girati a Grumo Appula: films shot in Grumo Appula \"La Stazione\" directed by Sergio Urbini (1990), \"Tutto l'amore Che C'è (2000), directed by Sergio Rubini, film with the actor from Bari Michele Ventucci and with Saponangelo and Margherita Buy;\nSet in Puglia in the seventies, the films describe how the arrival of three girls from Milan upsets the quiet of the town, altering the habits of the local kids.\nEvents:\nMadonna di  Mellitto festival\nMellito's little church, of great importance in Grumo Appula are the patronal festivals of San Rocco and Maria di Monteverde which occur respectively in September and may.\nMadonna di  Mellitto festival, worthy of note is the feast of the Madonna di Melitto which takes place in the summer during the feast days, a procession is held through the streets of the town in which, in addition to the statue of the Madonna di Melitto, there are assocarts made with paper flowers. The carts, which depict religious figures, are pulled by horses. The morning after the procession in the down, the statue of the Madonna and the carts are taken, accompanied by many faithful, to the hamblet of Melitto, about 9 km from the down centre.\nTammur Festival\nPerformance of a folk group during the festival of \"Tammur\".  Another important festival is the Tammur festival, which during the feast days various international folk groups. Perform throughout the down together with the brass band, small groups of musicians who usually open the procession.\nThe Night of the Bakers\nThe night of the cheese makers (also called \"fari ca tremb\") is a tradition of begging with teams of musicians and singers who go around the city to the sound of accordions and guitars, on the night between December 23 and 24, bring the sound of the \"pastorale\" and typical Christmas songs from house to house.\nThe Rites of Holy Week\nThe rites open in Grumo Appula with the procession of the addolorata, on passion Friday, an image carried on the shoulders of the butchers of the town, a procession that passes throughout the streets of the city.  At the end, some men, about 20, in piazza Cardinale Colasuonno, sing the canto del venerdì Santo, an ancient dirge entirely in the grumese dialect, which narrates the passion of Christ. On good Friday instead there is the beautiful and moving procession of the mysteries, a procession composed of 12 papier – mache statues made between the end of 1700 and the beginning of 1900. Significant, is the spiritual presentation of the individual mysteries, which takes place at the exit from the mother church in Corso Umberto after a brief reflection by the parish priest, the delivery of the crucifix in to the hands of the Addolorata takes place, where the wole city flocks to see this intense and significant moment.\nSchools:\nPrimary schools: 2 (G.Devito Francesco elementary school)\nLowers secondary schools: 2 (Giovanni XXIII middle school)\nSecondary schools: 1 (\"Tommasso Fiore Hospitality, Catering and Techinical Economic school\")"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 1181
+    },
+    "banned_terms": [
+      {
+        "term": "grumo appula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grumo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "appula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5371,
+    "attempt": 5329,
+    "place_id": "gn-3514680",
+    "input": {
+      "place": {
+        "place_id": "gn-3514680",
+        "name": "Villa del Carbón",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.72875,
+        "lon": -99.46362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa del Carbón",
+          "url": "https://en.wikipedia.org/wiki/Villa_del_Carbón",
+          "text": "Villa del Carbón is a municipality located in the northern part of Mexico State, just northwest of Mexico City. While the town and municipal seat of Villa del Carbón is the largest in the municipality, it is not the oldest. The municipality contains a number of villages of Otomí and Nahua origins, in which much of the indigenous culture still survives. The municipality's territory was defined in 1714 when a region known as Chiapan, split into what is now Chapa de Mota and Villa del Carbón. At that time, however, the community which is now a municipal seat did not have an official name; it was known first only by the name of its church Nuestra Señora de la Peña de Francia, and later by being a major supplier of charcoal. This would lead to the name of Villanueva del Carbón de Nuestra Señora Santa María de la Peña de Francia, which eventually shortened to Villa del Carbón. The major portions of the municipality's glyph, which serves as it coat-of-arms, does not reflect the town of Villa del Carbón but rather two of its oldest communities: Taxhimay and San Lorenzo Pueblo Nuevo.\nThe municipality covers an area of 356.14 km2 and has a total population of 39,587 (2005 census). Of this total, 8,029 live in the municipal seat of Villa del Carbón and the rest live among the other 57 communities which rely on the seat for government purposes.  The municipality border the municipalities of Jilotepec, Jiquipilco, Tepotzotlán, Nicolas Romero, Chapa de Mota and Morelos in Mexico State, with Tepejí del Río, Hidalgo State bordering it to the north. The municipality is divided into three \"barrios\" or districts named Pendo, Centro, and Taxhihué.\nToday, the municipality's economy is based primarily on tourism, as it has a number of streams, rivers and dams suitable for water sports, trout-fishing and camping facilities. It is also the home of a nationally recognized charreada(a type of rodeo) venue, that hosts major events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "villa del carbon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carbon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5372,
+    "attempt": 5330,
+    "place_id": "gn-3887758",
+    "input": {
+      "place": {
+        "place_id": "gn-3887758",
+        "name": "Huasco",
+        "country": "Chile",
+        "subdivision": "Atacama",
+        "lat": -28.46599,
+        "lon": -71.22276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huasco",
+          "url": "https://en.wikipedia.org/wiki/Huasco",
+          "text": "Huasco (Spanish pronunciation: [ˈwasko]) is a Chilean city and commune, in the Huasco Province, Atacama Region. It is the central town of a mining district dominated by medium-scale mining.\nThe port city of Huasco is located 50 km west of Vallenar and close to the town of Huasco Bajo, which lies on the southern bank of the Huasco River and only a few kilometers from its mouth. The coastal route between Huasco Bajo and Carrizal Bajo provides one of the two accesses to Llanos de Challe National Park. To the south the city lies near the former island of Guacolda which was joined to the continent and developed as part of an area of heavy industry hosting a thermoelectic power plant, the mineral processing plant Planta de Pellets and a deep water port.\nIn the 17th century the port was raided twice by English pirates; first by Bartholomew Sharp in 1680 and then by Edward Davis in 1686. During the Chilean War of Independence the bay was visited twice by Royalist ships while under the control of the Patriots, first in 1813 and then in 1817 but Huasco was spared from combat.\nHuasco saw significant economic development in the 19th century. Albeit the port and settlement of Huasco existed since centuries, it was officially established in 1850. The port was used between 1851 and 1873 to ship copper ore, copper regulus, alpaca wool and hides round Cape Horn to Swansea, Glamorgan and Wales. A new large pier was inaugurated in 1886 and in 1892 a railroad to the inland town of Vallenar was opened. Today, Huasco has two ports; the general port of Las Losas and the mining ports of Guacolda I and II. Together these ports stand for 7.5% of the annual tonnage of Chile's external trade as of 2024. \nHuasco gets its name from the river of the same name. The etymology of Huasco is uncertain, it is often suggested the word is of Quechua origin but proposals for its meaning differ more for example \"gold river\", \"cold river\", \"ravine\" or \"mudflow\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "huasco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5373,
+    "attempt": 5331,
+    "place_id": "gn-4500920",
+    "input": {
+      "place": {
+        "place_id": "gn-4500920",
+        "name": "Brigantine",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.41012,
+        "lon": -74.36459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brigantine, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Brigantine,_New_Jersey",
+          "text": "Brigantine (or simply The Island) is a city in Atlantic County in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 7,716, a decrease of 1,734 (−18.3%) from the 2010 census count of 9,450, which in turn reflected a decline of 3,144 (−25.0%) from the 12,594 counted in the 2000 census. The city, and all of Atlantic County, is part of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area.\nWhat is now the City of Brigantine has passed through a series of names and re-incorporations since it was first created. The area was originally incorporated as Brigantine Beach Borough by an act of the New Jersey Legislature on June 14, 1890, from portions of Galloway Township, based on the results of a referendum held on June 3, 1890. On April 23, 1897, the area was reincorporated as the City of Brigantine City. This name lasted until April 9, 1914, when it was renamed the City of East Atlantic City. On March 16, 1924, Brigantine was incorporated as a city, replacing East Atlantic City and incorporating further portions of Galloway Township. The borough was named for the many shipwrecks in the area, including those of brigantines.\nNew Jersey Monthly magazine ranked Brigantine as its 36th best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey. NJ.com designated Brigantine fourth in its rankings of \"The 25 best Jersey Shore towns, ranked\" in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "brigantine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5374,
+    "attempt": 5332,
+    "place_id": "gn-5122365",
+    "input": {
+      "place": {
+        "place_id": "gn-5122365",
+        "name": "Irvington",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.03922,
+        "lon": -73.86823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irvington, New York",
+          "url": "https://en.wikipedia.org/wiki/Irvington,_New_York",
+          "text": "Irvington, sometimes known as Irvington-on-Hudson, is a suburban village of the town of Greenburgh in Westchester County, New York, United States. It is a suburb of New York City, 20 miles (32 km) north of Midtown Manhattan in New York City, and is served by a station stop on the Metro-North Hudson Line. To the north of Irvington is the village of Tarrytown, to the south the village of Dobbs Ferry, and to the east unincorporated parts of Greenburgh, including East Irvington. Irvington includes within its boundaries the community of Ardsley-on-Hudson, which has its own ZIP code and Metro-North station, but which should not be confused with the nearby village of Ardsley.\nThe population of Irvington at the 2020 census was 6,652. Because many of Irvington's residents – especially those in the upper income brackets – live in Irvington and work in New York City, the village has a reputation as a \"commuter town\" or a \"bedroom community\".\nThe village's half-mile-long (0.8 kilometers) Main Street area has been designated as a historic district by New York state and on January 15, 2014, was added to the National Register of Historic Places. In 2010, Westchester Magazine ranked Irvington as the \"Best Place to Live in Westchester\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "irvington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5375,
+    "attempt": 5333,
+    "place_id": "gn-5132013",
+    "input": {
+      "place": {
+        "place_id": "gn-5132013",
+        "name": "Port Jefferson",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.94649,
+        "lon": -73.06927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Jefferson, New York",
+          "url": "https://en.wikipedia.org/wiki/Port_Jefferson,_New_York",
+          "text": "Port Jefferson, sometimes shortened as Port Jeff, is an incorporated village in the town of Brookhaven in Suffolk County, on the North Shore of Long Island, in New York, United States. The population was 7,962 at the time of the 2020 census.\nPort Jefferson was first settled in the 17th century and remained a rural community until its development as an active shipbuilding center in the mid-19th century. The village has since transitioned to a tourist-based economy. The community's port remains active as the terminus of the Bridgeport & Port Jefferson Ferry – one of two commercial ferry lines between Long Island and Connecticut – and is supplemented by the terminus of the Long Island Rail Road's Port Jefferson Branch. It is also the center of the Greater Port Jefferson region of northwestern Brookhaven, serving as the cultural, commercial and transportation hub of the neighboring Port Jefferson Station, Belle Terre, Mount Sinai, Miller Place, Poquott, and the Setaukets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "port jefferson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jefferson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5376,
+    "attempt": 5334,
+    "place_id": "gn-5212870",
+    "input": {
+      "place": {
+        "place_id": "gn-5212870",
+        "name": "Somerton",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.12344,
+        "lon": -75.01489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somerton, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Somerton,_Philadelphia",
+          "text": "Somerton is a neighborhood in the Far Northeast section of Philadelphia, Pennsylvania, United States. The neighborhood is bounded by Red Lion Road on the south, Roosevelt Boulevard on the east, East County Line Road and Poquessing Creek on the north, and the Philadelphia County / Montgomery County line on the west. Somerton is adjacent to the Philadelphia neighborhoods of Bustleton, Normandy, and Byberry, the townships of Bensalem and Lower Southampton in Bucks County, and Lower Moreland Township in Montgomery County. The area is home to a large and fast-growing foreign-born population, most notably of Russian, Ukrainian, Indian, and Central Asian immigrants.\nThe United States Postal Service operates the Somerton Postal Store at 669 Hendrix Street; however, all mail for the 19116 ZIP code is delivered by the Bustleton Post Office, located at 9925 Bustleton Avenue in Bustleton.\nThe neighborhood is served by the Forest Hills and Somerton SEPTA regional rail stations and SEPTA bus routes 58 and 84."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "somerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5377,
+    "attempt": 5335,
+    "place_id": "gn-6143367",
+    "input": {
+      "place": {
+        "place_id": "gn-6143367",
+        "name": "Sechelt",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.47512,
+        "lon": -123.75903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sechelt",
+          "url": "https://en.wikipedia.org/wiki/Sechelt",
+          "text": "Sechelt (; Sechelt: ch'atlich) is a district municipality located on the lower Sunshine Coast of British Columbia. Approximately 50 kilometres (31 mi) northwest of Vancouver, it is accessible from mainland British Columbia by a 40-minute ferry trip between Horseshoe Bay and Langdale, and a 25-minute drive from Langdale along Highway 101, also known as the Sunshine Coast Highway. The name Sechelt is derived from the she shashishalhem word shíshálh, the name of the First Nations people who first settled the area thousands of years ago.\nThe original Village of Sechelt was incorporated on February 15, 1956. Sechelt later expanded its boundaries in 1986 with the inclusion of a number of adjacent unincorporated areas. The District of Sechelt, as it is known today, encompasses 39.71 square kilometres (15.33 sq mi) at the isthmus of the Sechelt Peninsula, between the southern tip of Sechelt Inlet (Porpoise Bay) and the Strait of Georgia that separates the provincial mainland from Vancouver Island.\nSechelt is a seaside community with approximately 35 kilometres (22 mi) of Pacific Ocean shoreline that extends primarily along the coastline of the Sunshine Coast, and is bounded to the west and east by the unincorporated communities of Halfmoon Bay and Roberts Creek, respectively. The 2016 Canadian census placed its population at 10,200. The regional offices of the Sunshine Coast Regional District of British Columbia are located in Sechelt.\nAlthough its population is relatively small for its geographical area, Sechelt has several distinct neighbourhoods. From east to west, they are ts'uḵw'um (Wilson Creek), Davis Bay, Selma Park, the original Village of Sechelt, and West Sechelt. Several neighbourhoods around Sechelt Inlet were also included in Sechelt's 1986 incorporation as a district; these include West Porpoise Bay, East Porpoise Bay, Sandy Hook, Tillicum Bay and Tuwanek. The shíshálh Nation Government District, which contains a substantial commercial district, is immediately east of Sechelt's \"downtown\" village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "sechelt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5378,
+    "attempt": 5336,
+    "place_id": "gn-2166952",
+    "input": {
+      "place": {
+        "place_id": "gn-2166952",
+        "name": "Fairfield",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.86667,
+        "lon": 150.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairfield, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Fairfield,_New_South_Wales",
+          "text": "Fairfield is a suburb of  Western Sydney, in the state of New South Wales, Australia. Being in the centre of the Cumberland Plain, Fairfield is located 30 kilometres (19 mi) west of the Sydney central business district and is the administrative heart of the Fairfield City Council (local government area) – despite a very small portion of it belonging to the Cumberland Council. Fairfield supports a mixture of commercial and residential developments, mostly characterised by medium-density buildings and some new high-rise apartments.\nFairfield is one of the most multicultural and culturally diverse cities in Australia, with more than half of the residents having been born overseas, mostly in non-English speaking countries. The majority of the suburb's dwellers speak a language other than English at home, with the two most common ones being Arabic and Assyrian Neo-Aramaic. Fairfield is an ethnic enclave of Assyrian Christians (mostly from Iraq, and more recently Syria), along with newer Sunni Iraqi arrivals. Fairfield's large Iraqi and Assyrian community has had the media describe the suburb as Little Iraq or Little Assyria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "fairfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5379,
+    "attempt": 5337,
+    "place_id": "gn-2514073",
+    "input": {
+      "place": {
+        "place_id": "gn-2514073",
+        "name": "Martos",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.72107,
+        "lon": -3.97264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martos",
+          "url": "https://en.wikipedia.org/wiki/Martos",
+          "text": "Martos is a city and municipality of Spain belonging to the province of Jaén in the autonomous community of Andalusia.\nWith a population of over 24,000 people, Martos is the fifth largest municipality in the province and the second in Jaén metropolitan area. Housing lies at the foot of the 1,003-metre (3,290 ft) Peña de Martos, on the western side of the Sierra Sur de Jaén, a subrange of the Baetic System, in the south of the Iberian Peninsula.\nAs is essentially the case in the entire province of Jaén, the economy of Martos is heavily based on agriculture, specifically the cultivation of the olive tree. With over 22,000 hectares of olive fields (accounting for 85% of the municipality area) and 20 million liters per year, Martos is the largest olive oil producing city in the world, thus earning the nickname of 'Cradle of the Olive Grove'.\nMartos is also an important industrial center in inner Andalusia. French global automotive supplier Valeo established a factory in the city in the 1980s, making it the largest business in the province. Moreover, the low-cost fuel sales company Petroprix was founded in Martos in 2013, becoming the fastest-growing energy company of Europe in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "martos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5380,
+    "attempt": 5338,
+    "place_id": "gn-2641727",
+    "input": {
+      "place": {
+        "place_id": "gn-2641727",
+        "name": "New Barnet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.64969,
+        "lon": -0.17527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Barnet",
+          "url": "https://en.wikipedia.org/wiki/New_Barnet",
+          "text": "New Barnet is a neighbourhood on the northeast side of the London Borough of Barnet. It is a largely residential North London suburb located east of Chipping Barnet, west of Cockfosters, south of the village of Monken Hadley and north of Oakleigh Park.\nResidential properties include a mix of late Victorian villas and terraces, Edwardian detached housing, 1950-60s council housing and the redevelopment of land to low storey flats in the 1980s and 1990s. The north edge of New Barnet borders Monken Hadley Common, a common mostly made up of woods and cut by walking paths.\nThe main commercial area in New Barnet is east of New Barnet railway station on East Barnet Road. The high street is dominated by a medium-sized Sainsbury's supermarket with parking on top and is surrounded by a cluster of shops and facilities including Fayers, Just Add Water, PureGym, Tesco Express, Majestic Wine, Screwfix, Bikestrobe, Ink n Toner and Bodens Performing Arts. Several independent cafés also exist on the high street.\nA number of office blocks were built on Station Road to the west of the station in the 1960s and 70s; however, many have now been converted to flats. In the past, Station Approach in New Barnet was the home of CompShop, which produced the pioneering UK101 kit microcomputer.\nPublic houses in New Barnet include The Railway Tavern, The Railway Bell (Wetherspoons), The Builders Arms, and The Lord Kitchener."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "new barnet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barnet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5381,
+    "attempt": 5339,
+    "place_id": "gn-2786318",
+    "input": {
+      "place": {
+        "place_id": "gn-2786318",
+        "name": "Spa",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.48375,
+        "lon": 5.86674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spa, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Spa,_Belgium",
+          "text": "Spa (French pronunciation: [spa] ; Walloon: Spå) is a municipality and city of Wallonia in the province of Liège, Belgium, whose name became an eponym for mineral baths with supposed curative properties. It is in a valley in the Ardennes mountains 35 km (22 mi) south-east of Liège and 45 km (28 mi) south-west of Aachen. In 2006, Spa had a population of 10,543 and an area of 39.85 km2 (15.39 sq mi), giving a population density of 265/km2 (690/sq mi).\nSpa is one of Belgium's most popular tourist destinations, being renowned for its natural mineral springs, and production of \"Spa\" mineral water, which is exported worldwide. The motor-racing Circuit de Spa-Francorchamps, just south of the nearby village of Francorchamps, also hosts the annual Formula One Belgian Grand Prix and various endurance races such as the 24 Hours of Spa. The world's first beauty pageant, the Concours de Beauté, was held in Spa on 19 September 1888. The town also hosted the Tour de France on 5 July 2010, when stage 2 of the race ended there.\nIn 2021, Spa became part of the transnational UNESCO World Heritage Site the Great Spa Towns of Europe, for its famous mineral springs and architectural testimony to the rise of European bathing culture in the 18th and 19th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5382,
+    "attempt": 5340,
+    "place_id": "gn-2820775",
+    "input": {
+      "place": {
+        "place_id": "gn-2820775",
+        "name": "Tuntenhausen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.93509,
+        "lon": 12.01518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuntenhausen",
+          "url": "https://en.wikipedia.org/wiki/Tuntenhausen",
+          "text": "Tuntenhausen (German pronunciation: [tʊntn̩ˈhaʊzn̩]) is a municipality  in the district of Rosenheim in Bavaria in Germany.\nThere are 57 official districts of Tuntenhausen, namely Tuntenhausen itself, Antersberg, Aubenhausen, Bach, Berg, Beyharting, Biberg, Bichl (this Bichl is an Einöde), Bichl (this Bichl is a Weiler (hamlet)), Bolkam, Brettschleipfen, Dettendorf, Eggarten, Eisenbartling, Emling, Fischbach, Fuchsholz, Großrain, Guperding, Haus, Höglhaus, Hohenthann, Holzbichl, Hopfen, Hörmating, Innerthann, Jakobsberg, Karlsried, Knogl, Kronbichl, Lampferding, Mailling, Maxlrain, Moosmühle, Mühlholz, Neureith, Nordhof, Oberrain, Oed, Ostermünchen, Pangraz, Schlafthal, Schmidhausen, Schönau, Schwaig, Schweizerberg, Schweizerting, Seisrain, Sindlhausen, Söhl, Stetten (this Stetten is a Dorf (village)), Stetten (this Stetten is an Einöde), Thal, Unterrain, Voglried, Weiching, Weng.\nOstermünchen is a station of the Munich–Rosenheim railway and served about once per hour by local trains.\nThe town is known best for its church, a destination for Roman Catholic pilgrims in Bavaria.\nThe name of the town translates roughly to \"Sissy Town\" what makes it a notable name for a German town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "tuntenhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

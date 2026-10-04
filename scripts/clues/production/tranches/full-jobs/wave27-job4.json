@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 5302,
+    "attempt": 5261,
+    "place_id": "gn-11185299",
+    "input": {
+      "place": {
+        "place_id": "gn-11185299",
+        "name": "Sino-Singapore Tianjin Eco-city",
+        "country": "China",
+        "subdivision": "Tianjin",
+        "lat": 39.15314,
+        "lon": 117.78352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sino-Singapore Tianjin Eco-City",
+          "url": "https://en.wikipedia.org/wiki/Sino-Singapore_Tianjin_Eco-City",
+          "text": "The Sino-Singapore Tianjin Eco-City (SSTEC, simplified Chinese: 中新天津生态城; traditional Chinese: 中新天津生態城; pinyin: Zhōng-Xīn Tiānjīn Shēngtài Chéng) is a planned city jointly developed by the governments of China and Singapore. Located in Binhai, the Eco-City was intentionally sited on \"non-arable\" land with a \"water shortage\" to the southeast of Tianjin's urban core, in order to prove that sustainable urban development could be realised even under challenging environmental conditions. Spanning 30 square kilometres (12 mi2), the project embodies Singapore's longstanding expertise in urban planning, environmental management and efficient governance.\nAs of April 2019, the Eco-City was home to about 100,000 residents, though the original plan targeted a population of 350,000 by 2020. While growth has been slower than anticipated, the city remains an ambitious long-term undertaking with its developers continuing to target the original population milestone. Singapore's involvement has ensured that the city is guided by high planning standards, measurable sustainability benchmarks and a people-centric approach, although its full implementation by local Chinese officials remains to be seen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "sino singapore tianjin eco city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sino",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "singapore",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tianjin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5303,
+    "attempt": 5262,
+    "place_id": "gn-12747063",
+    "input": {
+      "place": {
+        "place_id": "gn-12747063",
+        "name": "New Territories",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Hong Kong SAR China",
+        "lat": 22.42441,
+        "lon": 114.11095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Territories",
+          "url": "https://en.wikipedia.org/wiki/New_Territories",
+          "text": "The New Territories is the largest of the three areas of Hong Kong, alongside Hong Kong Island and Kowloon. It makes up 86.2% of Hong Kong's territory at an area of 952 square kilometres (368 sq mi), and contains 53.7% of the city's population at 3,984,077 as of 2021. \nHistorically, the New Territories is the region leased from Qing China to the United Kingdom in 1898 for 99 years, following the cession of Hong Kong Island and Kowloon in earlier years. Upon the expiry of the lease, the three areas were handed over to the People's Republic of China in 1997.\nThe boundaries of the New Territories has changed with time. First defined by the Second Convention of Peking, it originally consisted of the mainland area north of Boundary Street on the Kowloon Peninsula and south of the Sham Chun River (now the border between Hong Kong and mainland China), along with over 200 outlying islands, including Lantau Island, Lamma Island, Cheung Chau, and Peng Chau. Later extension of the Kowloon urban areas saw the region between Boundary Street and the Kowloon Ranges, spanning from Lai Chi Kok to Lei Yue Mun, gradually absorbed into Kowloon as New Kowloon. Nevertheless, New Kowloon remains statutorily part of the New Territories."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "new territories",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "territories",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5304,
+    "attempt": 5263,
+    "place_id": "gn-2622418",
+    "input": {
+      "place": {
+        "place_id": "gn-2622418",
+        "name": "Espergærde",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.99464,
+        "lon": 12.54733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espergærde",
+          "url": "https://en.wikipedia.org/wiki/Espergærde",
+          "text": "Espergærde is a town situated in North Zealand near Øresund in Denmark.  It is part of the larger urban area Espergærde-Snekkersten-Helsingør (Elsinore), some 5 to 8 km south of the centre of Helsingør, separated from the urban area of Helsingør-Snekkersten by a 100m wide green belt, Egebæksvang forest and an area under natural protection around Flynderupgård (previously a village, later a farm, today a museum). The urban area of Espergærde also covers the two former villages Tibberup and Mørdrup and part of the former fishing village of Skotterup, with 11.524 inhabitants (2008). Espergærde is limited to the north by Egebæksvang forest and Flynderupgård, to the west by Rolighedsmoserne (swamp area) and Helsingørmotorvejen (motorway or highway), to the south by Krogerup mansion fields and Babyloneskoven (Babylone forest). Espergærde is part of Region Hovedstaden (the Copenhagen capital area).\nEspergærde has its own postal number, 3060, and is split in two parishes: Egebæksvang Parish (church near the old fishermen's village) and Mørdrup Parish (church next to the urban centre)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "esperg rde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "esperg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5305,
+    "attempt": 5264,
+    "place_id": "gn-2634217",
+    "input": {
+      "place": {
+        "place_id": "gn-2634217",
+        "name": "Wetherby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.92836,
+        "lon": -1.38672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetherby",
+          "url": "https://en.wikipedia.org/wiki/Wetherby",
+          "text": "Wetherby ( WETH-ə-bee) is a market town and civil parish in the City of Leeds, West Yorkshire, England. It is close to West Yorkshire county's border with North Yorkshire and lies approximately 12 miles (19 kilometres) from Leeds city centre, 12 mi (19 km) from York and 8 mi (13 km) from Harrogate. The town stands on the River Wharfe and, for centuries, it has been a crossing place and staging post on the Great North Road midway between London and Edinburgh.\nWetherby Bridge, which spans the River Wharfe, is a Scheduled Ancient Monument and a Grade II listed structure. The course of the Old Great North Road passes through the town and, as result of its situation on the road, as well as being a major cattle droving route from Scotland to London, many coaching inns were established in Wetherby which are still used by travellers today.\nThe town lies in the Wetherby ward of Leeds City Council and the Wetherby and Easingwold parliamentary constituency. It was listed in the 2018 Sunday Times report on the Best Places to Live in Northern England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "wetherby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5306,
+    "attempt": 5265,
+    "place_id": "gn-2640463",
+    "input": {
+      "place": {
+        "place_id": "gn-2640463",
+        "name": "Penistone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.52572,
+        "lon": -1.63027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penistone",
+          "url": "https://en.wikipedia.org/wiki/Penistone",
+          "text": "Penistone ( PEN-iss-tən) is a market town and civil parish in the Metropolitan Borough of Barnsley, South Yorkshire, England, which had a population of 13,270 at the 2021 census. Historically in the ancient Wapentake of Staincross and the West Riding of Yorkshire, it is 7 miles (11 km) west of central Barnsley, 17 miles (27 km) north-east of Glossop, 15 miles (24 km) north-west of Sheffield, 27 miles (43 km) south-west of Leeds and 29 miles (47 km) east of Manchester in the foothills of the Pennines. The town is frequently noted on lists of unusual place names.\nThe highest point, Hartcliffe Tower, is 1,194 ft (364 m) above sea level and has views over the Woodhead bypass and the Dark Peak. The surrounding countryside is predominantly rural with farming on rich well-watered soil on mainly gentle slopes rising to the bleak moorland to the west of the town. Dry stone walls, small hamlets and farms surrounded by fields and livestock are synonymous with the area. The area is known for its rugged breed of sheep, the Whitefaced Woodland.\nThe market town itself stands at its highest point around St Johns Church at around 820 ft (250 m) above sea level. However, the surrounding land rises well over 1,000 ft (300 m) towards Cubley and Thurlstone Moors and out towards smaller hamlets at Carlecotes, Victoria, Dunford and Crow Edge, elevated at points above 1,200 ft (370 m). There are several vantage points around Penistone that afford panoramic views of the surrounding areas of West Yorkshire and North Derbyshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "penistone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5307,
+    "attempt": 5266,
+    "place_id": "gn-2650228",
+    "input": {
+      "place": {
+        "place_id": "gn-2650228",
+        "name": "Edgware",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.6128,
+        "lon": -0.27539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgware",
+          "url": "https://en.wikipedia.org/wiki/Edgware",
+          "text": "Edgware () is a suburban town in northwest London. It was an ancient parish in the county of Middlesex east of the ancient Watling Street in what is now the London Borough of Barnet but it is now informally considered to cover a wider area, including parts of the borough of Harrow. The district is located 10 miles (16 km) north-northwest of Charing Cross and has a generally suburban character. The urban-rural fringe includes some elevated woodland on a high gravel and sand ridge along the Hertfordshire border with Greater London.\nEdgware is principally a shopping and residential area, identified in the London Plan as one of the capital's 35 major centres, and one of the northern termini of the Northern line. It has a bus garage, a shopping centre called the Broadwalk Centre, a library, a community hospital, Edgware Community Hospital, and two streams, Edgware Brook and Deans Brook which merge and become known as the Silk Stream, itself a tributary of the River Brent.\nAs of 2011, the town had a population of 58,619."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "edgware",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5308,
+    "attempt": 5267,
+    "place_id": "gn-3093040",
+    "input": {
+      "place": {
+        "place_id": "gn-3093040",
+        "name": "Lubań",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.12014,
+        "lon": 15.28768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lubań",
+          "url": "https://en.wikipedia.org/wiki/Lubań",
+          "text": "Lubań [ˈlubaɲ] (German: Lauban; Czech: Lubáň; Upper Sorbian: Lubań Šlešćina, pronounced [ˈlubanʲ ˈʃlɛʃtʃina]), sometimes called Lubań Śląski (lit. 'Silesian Lubań'); is a town in the Lower Silesian Voivodeship in southwest Poland. It is the administrative seat of Lubań County and also of the smaller Gmina Lubań (although it is not part of the territory of the latter, as the town is a separate urban gmina in its own right).\nFounded in the Middle Ages, Lubań is a historic town with a preserved medieval urban layout and heritage sites in a variety of styles, including Gothic, Renaissance and Baroque. For centuries, it prospered from trade, clothmaking and brewing. In recent history, it became known as the location of a major German-operated camp for Allied prisoners of war and civilians during the First World War. Lubań hosts the annual Sudetes Festival of Minerals, one of the largest geology and mineralogy festivals in Europe, and is the location of the Specialised Training Centre of the Border Guard of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "luban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5309,
+    "attempt": 5268,
+    "place_id": "gn-3127611",
+    "input": {
+      "place": {
+        "place_id": "gn-3127611",
+        "name": "Briviesca",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.54993,
+        "lon": -3.32315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Briviesca",
+          "url": "https://en.wikipedia.org/wiki/Briviesca",
+          "text": "Briviesca is a municipality and a Spanish city located in the north of the Iberian Peninsula, head of the judicial district of Briviesca, capital of the comarca of La Bureba and province of Burgos, autonomous community of Castile and León. According to the demographic data of 2017, the municipality has 6,861 inhabitants, being the 4th most populated in the province. The municipality of Briviesca is made up of five towns: Briviesca (seat or capital), Cameno, Quintanillabón, Revillagodos and Valdazo.\nThe first settlements date back to the 1st century BC, when the Autrigones, that  extended by all the current region of the Bureba and the Upper Ebro valley, established here their capital. Subsequently Briviesca, by then called Virovesca, was already considered an important nucleus of population, where the Romans inhabited in the crossroads of two important Roman roads.\nThis location, and the boom, in the Middle Ages, of the Camino de Santiago, made Briviesca grow little by little until it reached its maximum splendor in the Renaissance. Nowadays, its location halfway between Miranda de Ebro and Burgos has contributed its industrial and commercial development.\nBriviesca has wide green spaces open to fields and mountains, as well as a prominent Monumental Complex with several BICs: the Collegiate Church of Santa María la Mayor; the imposing Monastery of Santa Clara, within there is an important Gothic cloister; the cloister of the \"Hospitalillo\"; the Plaza Mayor, typical Castilian; its houses and palaces, as well as the Church of San Martín. Close to Briviesca the Santa Casilda's sanctuary is also found.\nBriviesca stands out for its large industrial estate \"La Vega\", in which important industries have been installed since the 70s, although today it is mainly made up of small industries and storage warehouses, especially farm implements, which is the main economic activity, not only of the city, but of the entire region. In the last decades, this has led to Briviesca increasing considerably of population. Nevertheless, due to the economic crisis that started in 2008, this luck was interrupted by losing an average of almost 100 inhabitants per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 345
+    },
+    "banned_terms": [
+      {
+        "term": "briviesca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5310,
+    "attempt": 5269,
+    "place_id": "gn-3372988",
+    "input": {
+      "place": {
+        "place_id": "gn-3372988",
+        "name": "Horta",
+        "country": "Portugal",
+        "subdivision": "Azores",
+        "lat": 38.53737,
+        "lon": -28.62615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horta, Azores",
+          "url": "https://en.wikipedia.org/wiki/Horta,_Azores",
+          "text": "Horta, officially the Very Loyal City of Horta, is a city in the Portuguese archipelago of the Azores encompassing the island of Faial with its largely green municipality (Município da Horta) with semi-arid yet fertile hillsides, rising highest away from the city, to the west.  About the narrowest width of the island to the east, facing the settlement is the much larger Pico Island noted for wine production.  The single-island-municipality's population in 2021 was 14,334  spread over 173 square kilometres (67 mi2). The city as an urban to suburban mass of no more than a tenth of the island has a population of about 7,000.\nHorta's marina is a primary stop for yachts crossing the Atlantic Ocean, and its walls and walkways are covered with paintings created by visitors noting the names of their vessels, crews, and the years they visited. Peter's Café Sport is a venue, popular among transatlantic sailers, facing the marina that houses Faial's scrimshaw museum (artifacts carved from whale tooth and jawbone).\nThe Legislative Assembly of the Azores is in Horta, making it Azores' legislative capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "horta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5311,
+    "attempt": 5270,
+    "place_id": "gn-9883562",
+    "input": {
+      "place": {
+        "place_id": "gn-9883562",
+        "name": "Olivenza",
+        "country": "Spain",
+        "subdivision": "Extremadura",
+        "lat": 38.68269,
+        "lon": -7.10046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olivenza",
+          "url": "https://en.wikipedia.org/wiki/Olivenza",
+          "text": "Olivenza (Spanish: [oliˈβenθa] ) or Olivença (Portuguese: [oliˈvẽsɐ] ) is a town in southwestern Spain, close to the Portugal–Spain border. It is a municipality belonging to the province of Badajoz, and to the wider autonomous community of Extremadura.\nThe town of Olivença was under Portuguese sovereignty from 1297 (Treaty of Alcañices) to 1801, when it was occupied by Spain during the War of the Oranges and ceded that year under the Treaty of Badajoz. Spain has since administered the territory (now split into two municipalities, Olivenza and Táliga), whereas Portugal invokes the self-revocation of the Treaty of Badajoz, plus the Congress of Vienna of 1815, to claim the return of the territory. In spite of the territorial dispute between Portugal and Spain, the issue has not been a sensitive matter in the relations between these two countries.\nOlivenza and other neighbouring Spanish (La Codosera, Alburquerque and Badajoz) and Portuguese (Arronches, Campo Maior, Estremoz, Portalegre and Elvas) towns reached an agreement in 2008 to create a euroregion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "olivenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5312,
+    "attempt": 5271,
+    "place_id": "gn-2649207",
+    "input": {
+      "place": {
+        "place_id": "gn-2649207",
+        "name": "Forfar",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.64382,
+        "lon": -2.89001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forfar",
+          "url": "https://en.wikipedia.org/wiki/Forfar",
+          "text": "Forfar ( ; Scots: Farfar, Scottish Gaelic: Baile Fharfair) is a market town, historical royal burgh and the county town of Angus, Scotland, and the administrative centre for Angus Council, with a new multi-million-pound office complex located on the outskirts of the town. In 2022, Forfar had a population of 13,801.\nThe town lies in Strathmore and is situated just off the main A90 road between Perth and Aberdeen, with Dundee (the nearest city) being 13 miles (21 km) away. It is approximately 5 miles (8 km) from Glamis Castle, seat of the Bowes-Lyon family and ancestral home of Queen Elizabeth the Queen Mother, and where Princess Margaret, younger sister of Queen Elizabeth II, was born in 1930.\nForfar dates back to the temporary Roman occupation of the area, and was subsequently held by the Picts and the Kingdom of Scotland. During the Scottish Wars of Independence, Forfar was occupied by English forces before being recaptured by the Scots and presented to Robert the Bruce. Forfar has been a major manufacturing centre for linen and jute. Today the main activities are agriculture and tourism around scenic Strathmore. The local glens are visited by hill-walkers, and there are ski-slopes in the mountains. The town is home to a number of local sporting teams, including the League Two football club, Forfar Athletic.\nThe Forfar bridie, a Scottish meat pastry snack, is traditionally identified with the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "forfar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5314,
+    "attempt": 5272,
+    "place_id": "gn-380308",
+    "input": {
+      "place": {
+        "place_id": "gn-380308",
+        "name": "Abyei",
+        "country": "Sudan",
+        "subdivision": "West Kordofan",
+        "lat": 9.59525,
+        "lon": 28.43493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abyei",
+          "url": "https://en.wikipedia.org/wiki/Abyei",
+          "text": "The Abyei Special Administrative Area (Arabic: منطقة أبيي) is an area of 10,546 km2 or 4,072 sq mi on the border between South Sudan and Sudan that has been accorded \"special administrative status\" by the 2004 Protocol on the Resolution of the Abyei Conflict (Abyei Protocol) in the Comprehensive Peace Agreement (CPA) that ended the Second Sudanese Civil War. The capital of the Abyei Area is Abyei Town. Under the terms of the Abyei Protocol, the Abyei Area is considered, on an interim basis, to be simultaneously part of both the Republic of South Sudan and Republic of Sudan, effectively a condominium.\nAs part of the 2011 independence process, a separate referendum was to be held in Abyei on whether they wanted to join Sudan or South Sudan; however an official referendum was never held.\nIn contrast to the borders of the former district, the Abyei Protocol defined the Abyei Area as \"the area of the nine Ngok Dinka chiefdoms transferred to Kordofan in 1905\". In 2005, a multinational border commission established this to be those portions of Kordofan south of 10°22′30″ N. However, following continued disputes that erupted into violence and threatened the CPA, an international arbitration process redrew Abyei's boundaries in 2009 to make it significantly smaller, extending no further north than 10°10′00\" N."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "abyei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5315,
+    "attempt": 5273,
+    "place_id": "gn-5144580",
+    "input": {
+      "place": {
+        "place_id": "gn-5144580",
+        "name": "Williamsburg",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71427,
+        "lon": -73.95347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Williamsburg, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Williamsburg,_Brooklyn",
+          "text": "Williamsburg is a neighborhood in the New York City borough of Brooklyn, bordered by Greenpoint to the north; Bedford–Stuyvesant to the south; Bushwick and East Williamsburg to the east; and the East River to the west. The southern portion of Williamsburg is commonly referred to as  South Williamsburg, a term used for the area along the East River south of Division Avenue. It was an independent city until 1855, when it was annexed by Brooklyn; at that time, the spelling was changed from Williamsburgh (with an \"h\") to Williamsburg.\nWilliamsburg, especially near the waterfront, was a vital industrial district until the mid-20th century. As many of the jobs were outsourced beginning in the 1970s, the area endured a period of economic contraction which did not begin to turn around until activist groups began to address housing, infrastructure, and youth education issues in the late 20th century. An ecosocial arts movement emerged alongside the activists in the late 1980s, often referred to as the Brooklyn Immersionists. The community-based scene cultivated a web of activity in the streets, rooftops and large warehouses, and attracted both the national and international press. Small, locally owned businesses began to return to the neighborhood during this expansion of creative urbanism in the 1990s.\nIn the 21st century, the city provided zoning changes and tax abatements to corporate developers which shifted the area from a creative, slow growth revival to an economy that was dominated by high rises and chain stores. Despite the rise in the cost of living that followed, and the loss of the original creative community that had rejuvenated the district, a new contemporary art scene and vibrant nightlife emerged that catered to new residents. The intensity and innovations of the Immersionist era in Williamsburg has continued to project the district's image internationally as a \"Little Berlin\". During the early 2000s, the neighborhood became a center for indie rock and electroclash. Numerous ethnic groups still inhabit enclaves within the neighborhood, including Italians, Jews, Hispanics, Poles, Puerto Ricans, and Dominicans.\nWilliamsburg is part of Brooklyn Community District 1, and its primary ZIP Codes are 11206, 11211 and 11249. It is patrolled by the 90th and 94th Precincts of the New York City Police Department. Politically, it is represented by the New York City Council's 33rd District, which represents the western and southern parts of the neighborhood, and the 34th District, which represents the eastern part. As of the 2020 United States census, the neighborhood's population is 151,308."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 412
+    },
+    "banned_terms": [
+      {
+        "term": "williamsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5316,
+    "attempt": 5274,
+    "place_id": "gn-6332745",
+    "input": {
+      "place": {
+        "place_id": "gn-6332745",
+        "name": "Millburn",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.72482,
+        "lon": -74.30404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Millburn, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Millburn,_New_Jersey",
+          "text": "Millburn is a suburban township in southwestern Essex County, within the U.S. state of New Jersey, and part of the New York metropolitan area. As of the 2020 United States census, the township's population was 21,710, its highest decennial count ever and an increase of 1,561 (+7.7%) from the 20,149 recorded at the 2010 census, which in turn reflected an increase of 384 (+1.9%) from the 19,765 counted in the 2000 census. Short Hills, with a 2020 population of 14,422, is an unincorporated community and census-designated place (CDP) located within Millburn that is home to most of the township's population.\nMillburn was created as a township by an act of the New Jersey Legislature on March 20, 1857, from portions of Springfield Township, when Union County was formed. Earlier known variously as Milltown, Millville, Rum Brook, and Vauxhall, the name \"Millburn\" was adopted before the township was established. The township's name derives from the burn (Scottish for a stream) that powered mills in the area.\nThe township is home to the South Mountain Reservation, The Mall at Short Hills, and the Paper Mill Playhouse, an established regional theater. The West Branch of the Rahway River runs through downtown Millburn, and the Paper Mill Playhouse is situated on the banks of the river.\nNew Jersey Monthly ranked Millburn as the 53rd-best place to live in New Jersey in its 2008 rankings of the \"Best Places to Live\" in New Jersey.\nMillburn had the highest annual property tax bills in New Jersey in 2018 of $24,308, compared to a statewide average of $8,767. The township had the highest annual bill in 2009 of $19,097, compared to the statewide average of $7,300 that year, which was the highest in the United States. This is primarily a function of high property values, as Millburn had the lowest effective property tax rate in 2014 (1.9%) among the 22 municipalities in Essex County.\nThe township is one of New Jersey's highest-income communities. In 2000, Millburn had the sixth-highest per capita income in the state, with $76,796. Based on data from the 2006–2010 American Community Survey, the township had a per-capita income of $84,663, ranked 10th in the state. Based on data from the American Community Survey for 2013–2017, Millburn residents had a median household income of $202,862, ranked highest in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 401
+    },
+    "banned_terms": [
+      {
+        "term": "millburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5317,
+    "attempt": 5275,
+    "place_id": "gn-2154912",
+    "input": {
+      "place": {
+        "place_id": "gn-2154912",
+        "name": "North Melbourne",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.79798,
+        "lon": 144.94512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Melbourne",
+          "url": "https://en.wikipedia.org/wiki/North_Melbourne",
+          "text": "North Melbourne is an inner-city suburb in Melbourne, Victoria, Australia, 3 km (1.9 mi) north-west of Melbourne's Central Business District, located within the local government area of City of Melbourne. North Melbourne recorded a population of 14,953 at the 2021 census.\nNorth Melbourne is bounded by the CityLink freeway to the west, Victoria Street to the south, O'Connell and Peel Streets to the east and Flemington Road to the north. Since July 2008 its local government area has been the City of Melbourne, when it took over the administration of parts of Kensington and North Melbourne that were previously under the City of Moonee Valley, resulting in an increase of approximately 4760 residents and almost 3000 workers (2006 Census).\nFormerly known as Hotham, it was essentially a working class area, with some middle class pockets, and was one of the first towns in Victoria to be granted Municipal status.\nToday it is noted for its Victorian architecture, cosmopolitan demographic, commercial and older industrial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "north melbourne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melbourne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5318,
+    "attempt": 5276,
+    "place_id": "gn-2644605",
+    "input": {
+      "place": {
+        "place_id": "gn-2644605",
+        "name": "Lerwick",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 60.15339,
+        "lon": -1.14427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lerwick",
+          "url": "https://en.wikipedia.org/wiki/Lerwick",
+          "text": "Lerwick (Scots: Lerook) is a port town and burgh in Shetland, Scotland. It is the main town of the Shetland archipelago, and has a population of 6,709 in 2022. It is the northernmost major settlement within the United Kingdom.\nCentred 123 miles (200 km) off the north coast of the Scottish mainland and on the east coast of the Shetland Mainland, Lerwick lies 211 miles (340 km) north-by-northeast of Aberdeen; 222 miles (357 km) west of the similarly sheltered port of Bergen in Norway; and 228 miles (367 km) south east of Tórshavn in the Faroe Islands. One of the UK's coastal weather stations is situated there, with the local climate having small seasonal variation due to the maritime influence. Being located further north than Saint Petersburg and three of the four mainland Nordic capitals, and on the same latitude as Anchorage, Alaska, Lerwick's nights in the middle of summer only get dark twilight and winters have less than six hours of complete daylight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "lerwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5319,
+    "attempt": 5277,
+    "place_id": "gn-4170556",
+    "input": {
+      "place": {
+        "place_id": "gn-4170556",
+        "name": "Rotonda West",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.88368,
+        "lon": -82.29009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotonda West, Florida",
+          "url": "https://en.wikipedia.org/wiki/Rotonda_West,_Florida",
+          "text": "Rotonda West is an unincorporated, deed-restricted planned community situated in Charlotte County, Florida, United States. The 2020 U.S. Census Bureau lists it as the Rotonda census-designated place, with a population of 10,114, up from 8,759 at the 2010 census. It is part of the Punta Gorda, Florida Metropolitan Statistical Area, included in the North Port-Bradenton, Florida Combined Statistical Area. It was developed and named Rotonda West by Cavanagh Communities Corporation, which purchased the land in 1969.\nThe developer also purchased land in southern Martin County and northern Palm Beach County for a second project to be named \"Rotonda East.\" The land selected for that development was swamp land, located north of West Indiantown Road, south of the Tailwinds Airport, west of Interstate 95 and east of Mack Dairy Road. It was not considered wise to drain those wetlands due to changing views on the ecological value of wetlands, and the Army Corps of Engineers refused a permit, so the Rotonda East project was abandoned."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "rotonda west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rotonda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5320,
+    "attempt": 5278,
+    "place_id": "gn-5110161",
+    "input": {
+      "place": {
+        "place_id": "gn-5110161",
+        "name": "Brighton Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.57788,
+        "lon": -73.95958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brighton Beach",
+          "url": "https://en.wikipedia.org/wiki/Brighton_Beach",
+          "text": "Brighton Beach, also referred to as Little Odessa, or Little Russia, is a neighborhood in the southern portion of the New York City borough of Brooklyn, within the greater Coney Island area along the Atlantic Ocean coastline. Brighton Beach is bounded by Coney Island proper at Ocean Parkway to the west, Manhattan Beach at Corbin Place to the east, Sheepshead Bay at the Belt Parkway to the north, and the Atlantic Ocean to the south along the beach and boardwalk.\nIt is known for its high population of Russian-speaking immigrants, and as a summer destination for New York City residents due to its beaches along the Atlantic Ocean and its proximity to the amusement parks in Coney Island. It was named in the 1870s as an allusion to the English resort city of Brighton.\nBrighton Beach is part of Brooklyn Community District 13, and its primary ZIP Code is 11235. It is patrolled by the 60th Precinct of the New York City Police Department. Politically, Brighton Beach is represented by the New York City Council's 48th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "brighton beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brighton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5321,
+    "attempt": 5279,
+    "place_id": "gn-5193955",
+    "input": {
+      "place": {
+        "place_id": "gn-5193955",
+        "name": "Holmesburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.0415,
+        "lon": -75.02795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holmesburg, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Holmesburg,_Philadelphia",
+          "text": "Holmesburg is a neighborhood in the Northeast section of Philadelphia, Pennsylvania, United States.  It began as a village within Lower Dublin Township, Pennsylvania, and was named in honor of Surveyor General of Pennsylvania Thomas Holme, a cartographer who devised the street plan for central Philadelphia.\nThe Surveyor General had no apparent business relationship or blood kinship to one John Holme, a Baptist minister and magistrate who immigrated to Philadelphia in the 1680s from New Jersey.\nJohn Holme's descendants were land speculators and became very prominent citizens in Holmesburg, who owned a portion of the Pennypack grist mill and a lumber business, establishing an estate called Box Grove.\nHolmesburg is bordered to the west by Brous Avenue to Ryan Avenue to Sandy Run/Pennypack Creek to Holme Avenue to Holme Circle to Ashton Road to Willits Road, the Delaware River to the east, and Cottman Avenue to the south.  The border shared with Torresdale to the north is Welsh/Willits/Academy Road and then over to Linden Avenue. Holmesburg's ZIP code is 19136."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "holmesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5322,
+    "attempt": 5280,
+    "place_id": "gn-728825",
+    "input": {
+      "place": {
+        "place_id": "gn-728825",
+        "name": "Nesebar",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.65921,
+        "lon": 27.73602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nesebar",
+          "url": "https://en.wikipedia.org/wiki/Nesebar",
+          "text": "Nesebar (often transcribed as Nessebar and sometimes as Nesebur, Bulgarian: Несебър, pronounced [nɛˈsɛbɐr]) is an ancient city and one of the major seaside resorts on the Bulgarian Black Sea Coast, located in Burgas Province. It is the administrative centre of the homonymous Nesebar Municipality. Often referred to as the \"Pearl of the Black Sea\", Nesebar is a rich city-museum defined by more than three millennia of ever-changing history. The small city exists in two parts separated by a narrow human-made isthmus with the ancient part of the settlement on the peninsula (previously an island), and the more modern section (i.e., hotels and later development) on the mainland side. The older part bears evidence of occupation by a variety of different civilisations over the course of its existence.\nIt is one of the most prominent tourist destinations and seaports on the Black Sea, in what has become a popular area with several large resorts—the largest, Sunny Beach, is situated immediately to the north of Nesebar.\nNesebar has on several occasions found itself on the frontier of a threatened empire, and as such it is a town with a rich history. Due to the city's abundance of historic buildings, UNESCO came to include Nesebar in its list of World Heritage Sites in 1983.\nAs of December 2019, the town has a population of 13,600 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "nesebar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
