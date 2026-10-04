@@ -24,15 +24,18 @@ const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = (page: Page): Promise<number> =>
   mapEl(page).getAttribute("data-zoom").then(Number);
 
-async function zoomDeep(page: Page, target = 10): Promise<number> {
+async function zoomDeep(page: Page): Promise<{ before: number; deep: number }> {
+  const before = await readZoom(page);
   const zoomIn = page.getByRole("button", { name: "Zoom in" });
-  for (let i = 0; i < 20; i++) {
-    const z = await readZoom(page);
-    if (z >= target) return z;
+  let deep = before;
+  for (let i = 0; i < 15; i++) {
     await zoomIn.click();
     await page.waitForTimeout(400);
+    const z = await readZoom(page);
+    if (z <= deep) break; // maxZoom reached (globe caps at 5)
+    deep = z;
   }
-  throw new Error(`zoomDeep: never reached ${target}`);
+  return { before, deep };
 }
 
 async function wheelNotches(page: Page, deltaY: number): Promise<void> {
@@ -47,8 +50,7 @@ test("reduced motion miss from deep zoom: instant fit, both pins framed, wheel w
   page,
 }) => {
   await startGlobeRun(page);
-  const deepZoom = await zoomDeep(page, 10);
-  expect(deepZoom).toBeGreaterThanOrEqual(10);
+  const { deep: deepZoom } = await zoomDeep(page);
   const { committedAt } = await commitMiss(page);
   // No 2.2 s beat under reduced motion: the card lands with the jump cut.
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });

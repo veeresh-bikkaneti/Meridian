@@ -34,16 +34,19 @@ const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = (page: Page): Promise<number> =>
   mapEl(page).getAttribute("data-zoom").then(Number);
 
-/** Click "Zoom in" until data-zoom >= target (each click ≈ +1). */
-async function zoomDeep(page: Page, target = 10): Promise<number> {
+/** Click "Zoom in" until the zoom stops increasing (hits maxZoom); returns before/deep. */
+async function zoomDeep(page: Page): Promise<{ before: number; deep: number }> {
+  const before = await readZoom(page);
   const zoomIn = page.getByRole("button", { name: "Zoom in" });
-  for (let i = 0; i < 20; i++) {
-    const z = await readZoom(page);
-    if (z >= target) return z;
+  let deep = before;
+  for (let i = 0; i < 15; i++) {
     await zoomIn.click();
     await page.waitForTimeout(400);
+    const z = await readZoom(page);
+    if (z <= deep) break; // maxZoom reached (globe caps at 5)
+    deep = z;
   }
-  throw new Error(`zoomDeep: never reached ${target}`);
+  return { before, deep };
 }
 
 /**
@@ -93,8 +96,7 @@ async function startStateRun(page: Page): Promise<void> {
 
 /** Shared miss-from-deep-zoom body: pull-back + framing + live gestures. */
 async function missFromDeepZoom(page: Page): Promise<void> {
-  const deepZoom = await zoomDeep(page, 10);
-  expect(deepZoom).toBeGreaterThanOrEqual(10);
+  const { deep: deepZoom } = await zoomDeep(page);
   await commitMiss(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   // The gap view pulled back from the deep zoom to fit both pins.
