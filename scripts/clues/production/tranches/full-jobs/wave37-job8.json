@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 7392,
+    "attempt": 7341,
+    "place_id": "gn-3456277",
+    "input": {
+      "place": {
+        "place_id": "gn-3456277",
+        "name": "Nobres",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -14.72028,
+        "lon": -56.3275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nobres",
+          "url": "https://en.wikipedia.org/wiki/Nobres",
+          "text": "Nobres is a city in the state of Mato Grosso, Brazil. It is located approximately 140 kilometers from Cuiabá on the south slopes of the Serra Azul.\nTourists are encouraged to visit the region for its beautiful waterways and limestone caves. \nThe municipality contains the 12,513 hectares (30,920 acres) Gruta da Lagoa Azul State Park (Cave of the Blue Lagoon State Park), created in 1999. The rock deposits in the area have also been used to study post-glacial carbonates. The municipality contains most of the 11,328 hectares (27,990 acres) Águas do Cuiabá Ecological Station, a fully protected conservation unit in the cerrado biome. \nIn 2016, its population was estimated at 14.938 people. The two major religious faiths are Roman Catholic and Protestant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "nobres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7393,
+    "attempt": 7342,
+    "place_id": "gn-3469455",
+    "input": {
+      "place": {
+        "place_id": "gn-3469455",
+        "name": "Bom Jardim de Minas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.94722,
+        "lon": -44.19111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bom Jardim de Minas",
+          "url": "https://en.wikipedia.org/wiki/Bom_Jardim_de_Minas",
+          "text": "Bom Jardim de Minas is a city of the state of Minas Gerais, Brazil.\nThe name means Good Garden of Minas (Gerais).\nIt is situated in the southern part of Minas Gerais and in the middle of the Mantiqueira Mountains, at 1,200 meters high, which gives the city a mild climate.\nThe only paved road that reaches Bom Jardim de Minas is the BR-267, which connects the city to the southern part of the State of Minas Gerais and the region of Juiz de Fora.\nPopulation: 6,459 inhabitants.\nIt was founded in 1770 with the formation of a farm land in current city. When it came near the farm houses, became a parish and then the district with the installation of the chapel on May 2, 1856. And finally, in 1938, the district was upgrade to city, with two districts, headquarters and Taboão.\nCurrently, the city has been increasing in the festivities such as Carnival. An agricultural exhibition in May, and a feast in honour of Jesus Christ in August. Along with the natural attractions of waterfalls and mountain scenery these contribute to the tourism industry of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "bom jardim de minas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jardim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "minas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7394,
+    "attempt": 7343,
+    "place_id": "gn-3522525",
+    "input": {
+      "place": {
+        "place_id": "gn-3522525",
+        "name": "Nuevo Progreso",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 26.05378,
+        "lon": -97.95149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuevo Progreso, Río Bravo, Tamaulipas",
+          "url": "https://en.wikipedia.org/wiki/Nuevo_Progreso,_Río_Bravo,_Tamaulipas",
+          "text": "Nuevo Progreso, Tamaulipas is a Mexican town in Río Bravo Municipality in the state of Tamaulipas located on the U.S.-Mexican border, a part of the binational Reynosa–McAllen metropolitan area. The Progreso-Nuevo Progreso International Bridge connects the town with Progreso Lakes, Texas. The 2010 census showed a population of 10,178 inhabitants.\nNuevo Progreso is known as one of the safest border towns in Tamaulipas, and is a popular medical tourism destination. There are over 100 dentists and 100 pharmacies in the five-block center of Nuevo Progreso. Nuevo Progreso is not a major trade route for commerce, and most tourists cross the border on foot. In addition to medical services, Nuevo Progreso also has restaurants and shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "nuevo progreso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuevo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "progreso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7395,
+    "attempt": 7344,
+    "place_id": "gn-3575039",
+    "input": {
+      "place": {
+        "place_id": "gn-3575039",
+        "name": "Arouca",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Tunapuna/Piarco",
+        "lat": 10.62877,
+        "lon": -61.33487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arouca, Trinidad and Tobago",
+          "url": "https://en.wikipedia.org/wiki/Arouca,_Trinidad_and_Tobago",
+          "text": "Arouca is a town in the East–West Corridor of Trinidad and Tobago located 19 km (12 mi) east of Port of Spain, along the Eastern Main Road. It is located west of Arima, east of Tunapuna and Tacarigua, south of Lopinot, and north of Piarco. It is governed by the Tunapuna–Piarco Regional Corporation. Arouca may be a corruption of Arauca, an Amerindian tribe.\nDuring most of the Spanish rule, Arouca (then called San Agustín de Arouca) was a settlement reserved for Amerindians. However, when the French arrived in 1783 under Governor José María Chacón's Cedula de Repoblación the Amerindians were restricted to Arima. Most of the land in Arouca was split between the Tablau and Chaumet families. Arouca steadily grew into a major agricultural center, but the extension of the railroad to Sangre Grande in 1898 lured many people in Arouca to relocate to the more prosperous Sangre Grande valley.\nToday, it mainly comprises residential housing. There are several schools located in Arouca including the Bon Air Primary School, Arouca Anglican Primary School, Arouca Girls R.C., Arouca Boys R.C., Arouca Government Primary Schools and Bon Air High School.\nArouca is home to four prisons and one correctional facility. These include the Golden Grove Prison, Remand Prison, Women's Prison and Youth Training and Rehabilitation Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "arouca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7396,
+    "attempt": 7345,
+    "place_id": "gn-3587428",
+    "input": {
+      "place": {
+        "place_id": "gn-3587428",
+        "name": "Aguilares",
+        "country": "El Salvador",
+        "subdivision": "San Salvador Department",
+        "lat": 13.95722,
+        "lon": -89.18972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguilares, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Aguilares,_El_Salvador",
+          "text": "Aguilares is a district in the San Salvador department of El Salvador, located 33 km away from the city of San Salvador. The municipality measures 33.72 km² and as of 2006, had an estimated population of 73,300. Sugar cane cultivation is the major economic activity for the area.\nThe municipality is divided into five administrative divisions, called cantones: Florida, Las Tunas, Pinalitos, Pishishapa, and Los Mangos. It is bounded on the north by El Paisnal, on the east by Suchitoto (Cuscatlán Department) and Guazapa, to the south by Nejapa and Guazapa, and to the west by Quezaltepeque (La Libertad Department) and El Paisnal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "aguilares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7397,
+    "attempt": 7346,
+    "place_id": "gn-3589637",
+    "input": {
+      "place": {
+        "place_id": "gn-3589637",
+        "name": "San Pedro La Laguna",
+        "country": "Guatemala",
+        "subdivision": "Sololá",
+        "lat": 14.69297,
+        "lon": -91.27201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro La Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_La_Laguna",
+          "text": "San Pedro La Laguna (Spanish pronunciation: [sam ˈpeðɾo la laˈɣuna]) is a Guatemalan town on the southwest shore of Lake Atitlán. For centuries, San Pedro La Laguna has been inhabited by the Tz'utujil people, and in recent years it has also become a tourist destination for its Spanish language schools, nightlife, and proximity to the lake and volcanoes, particularly Volcán San Pedro, at whose base San Pedro La Laguna is located.\nLocal crops include corn, beans, coffee, and avocado. Some women make belts, shawls, and skirts with a back strap loom. San Pedro graduates large numbers of teachers who work the Atitlán area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro la laguna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7398,
+    "attempt": 7347,
+    "place_id": "gn-3651868",
+    "input": {
+      "place": {
+        "place_id": "gn-3651868",
+        "name": "San Gabriel",
+        "country": "Ecuador",
+        "subdivision": "Carchi",
+        "lat": 0.59354,
+        "lon": -77.83066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Gabriel, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/San_Gabriel,_Ecuador",
+          "text": "San Gabriel is a name of the capital city of San Gabriel parish in Montúfar Canton in Carchi Province of Ecuador. The city and parish are located in the Andes, at an elevation of 2,878 metres (9,442 ft) above sea level. \nThe city of San Gabriel had a population of 12,575 in 2001 and 14,487 in the 2010 census. The parish had a population of 19,230 in 2001 and 21,096 in the census of 2010.\nSan Gabriel was designated a Pueblo Mágico (magical town) by the Ecuadorian Ministry of Tourism (MINTUR) in 2019. It is one of the country's five original Pueblos Mágicos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "san gabriel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gabriel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7399,
+    "attempt": 7348,
+    "place_id": "gn-3818398",
+    "input": {
+      "place": {
+        "place_id": "gn-3818398",
+        "name": "Zarumilla",
+        "country": "Peru",
+        "subdivision": "Tumbes",
+        "lat": -3.50306,
+        "lon": -80.27306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zarumilla",
+          "url": "https://en.wikipedia.org/wiki/Zarumilla",
+          "text": "Zarumilla is a city in the Tumbes Region, in northwestern Peru. It has a population of 54,625 as of 2019, and is the capital of the Zarumilla Province. It is also the main settlement in the Zarumilla District. It is located only a few kilometers away from the border town of Aguas Verdes, which is connected to Ecuador by a bridge.\nThe city's surroundings were the location of the eponymous battle that took place from July 23 to 31 during the 1941 Ecuadorian–Peruvian War. Its economy is focused on farming and the city serves today as a route of international trade with Ecuador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "zarumilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7400,
+    "attempt": 7349,
+    "place_id": "gn-3881179",
+    "input": {
+      "place": {
+        "place_id": "gn-3881179",
+        "name": "Lumaco",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -38.16485,
+        "lon": -72.90551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lumaco",
+          "url": "https://en.wikipedia.org/wiki/Lumaco",
+          "text": "Lumaco is a town and commune in Malleco Province in the Araucanía Region of Chile.  Its name in Mapudungun means \"water of luma\". Lumaco is located to 120 km (75 mi) northeast of Temuco and 52 km (32 mi) from Angol. It shares a boundary to the north with the communes of Purén and Los Sauces, to the east with Traiguén and Galvarino, to the south with Cholchol and Carahue in Cautin Province, and the west with Tirúa and Contulmo in the Arauco Province of the Biobío Region.\nThe area of Lumaco and Purén is rich in Mapuche and early Spanish archaeological sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "lumaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7401,
+    "attempt": 7350,
+    "place_id": "gn-3906209",
+    "input": {
+      "place": {
+        "place_id": "gn-3906209",
+        "name": "Rurrenabaque",
+        "country": "Bolivia",
+        "subdivision": "Beni Department",
+        "lat": -14.44125,
+        "lon": -67.52781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rurrenabaque",
+          "url": "https://en.wikipedia.org/wiki/Rurrenabaque",
+          "text": "Rurrenabaque is a small town in the north of Bolivia, on the Beni River. It is the capital of Rurrenabaque Municipality. In recent years, it has become popular with international tourism as it is an easy gateway for visits to Madidi National Park, which is within the Bolivian rainforest. It also provides access to the surrounding pampas. Locals commonly refer to the town by its shortened nickname, \"Rurre.\"\nRurrenabaque is located in José Ballivián Province in Beni Department, Bolivia. Rurrenabaque Municipality, the fourth municipal section of José Ballivián Province, had 19,195 inhabitants as of 2012, of which 13,446 lived in urban Rurrenabaque itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "rurrenabaque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7402,
+    "attempt": 7351,
+    "place_id": "gn-4144100",
+    "input": {
+      "place": {
+        "place_id": "gn-4144100",
+        "name": "Pike Creek",
+        "country": "United States",
+        "subdivision": "Delaware",
+        "lat": 39.73095,
+        "lon": -75.7041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pike Creek, Delaware",
+          "url": "https://en.wikipedia.org/wiki/Pike_Creek,_Delaware",
+          "text": "Pike Creek is a census-designated place (CDP) in New Castle County, Delaware, United States and is part of the Philadelphia metropolitan area. In 2007, CNN's Money Magazine ranked Pike Creek number 1 on its list of the 100 Best Places to Live in the United States. Pike Creek was the only community in Delaware to appear on the list. The population was 7,808 at the 2020 Census. Local attractions include Middle Run Natural Area, White Clay Creek State Park, Carousel Farm Park and Equestrian Center, Golf and Restaurants. Pike Creek is approximately five miles from downtown Newark, which contains the University of Delaware. Pike Creek is connected to the University of Delaware campus and the Newark downtown area by several bike trails. Pike Creek is approximately 10 miles (16 km) west of the state's largest city, Wilmington, which is a national financial center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "pike creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pike",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7403,
+    "attempt": 7352,
+    "place_id": "gn-4168590",
+    "input": {
+      "place": {
+        "place_id": "gn-4168590",
+        "name": "Pinecrest",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.66705,
+        "lon": -80.30811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pinecrest, Florida",
+          "url": "https://en.wikipedia.org/wiki/Pinecrest,_Florida",
+          "text": "Pinecrest is a suburban village in Miami-Dade County, Florida, United States. The village is part of the Miami metropolitan area of South Florida. As of the 2020 census, the population was 18,388.\nPinecrest is governed by a five-member village council and operates under the council-manager form of government. 33156, the ZIP code that encompasses most of the village, has been consistently ranked as one of the wealthiest in the United States by income. Based on the median home listing price in recent years at $4,300,000, Pinecrest has been ranked as one of the most expensive cities in Florida to purchase a home in."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "pinecrest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7404,
+    "attempt": 7353,
+    "place_id": "gn-4177465",
+    "input": {
+      "place": {
+        "place_id": "gn-4177465",
+        "name": "Warrington",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.38409,
+        "lon": -87.27497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrington, Florida",
+          "url": "https://en.wikipedia.org/wiki/Warrington,_Florida",
+          "text": "Warrington is a census-designated place (CDP) in Escambia County, Florida, United States. Warrington is located between downtown Pensacola and the state line with Alabama; it is 6 miles (10 km) away from both.\nThe population was 15,218 at the 2020 census, up from 14,531 at the 2010 census. It is part of the Pensacola–Ferry Pass–Brent, Florida Metropolitan Statistical Area.\nA failed referendum was held in 1975 to incorporate Warrington as a town. Despite falling outside of city limits and having a post office explicitly named \"Warrington\", mail going to the addresses in the Warrington ZIP code (32507) falls under the jurisdiction of Pensacola.\nNaval Air Station Pensacola is located in Warrington, albeit with their own ZIP code, 32508, corresponding to the mailing city \"Naval Air Station Pensacola, FL\", as well as their own census-designated place \"Pensacola Station\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "warrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7405,
+    "attempt": 7354,
+    "place_id": "gn-4360287",
+    "input": {
+      "place": {
+        "place_id": "gn-4360287",
+        "name": "Landover",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.934,
+        "lon": -76.89664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Landover, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Landover,_Maryland",
+          "text": "Landover is an unincorporated community and census-designated place in Prince George's County, Maryland, United States. As of the 2020 census, it had a population of 25,998.\nLandover is contained between Sheriff Road and Central Avenue to the south, Hill Road, Cabin Branch Drive, and the Washington Metropolitan Area Transit Authority (Metro) Orange Line tracks to the west, John Hanson Highway (U.S. Highway 50) to the north, and Washington D.C.'s Capital Beltway (Interstate 495/95) to the east. Landover borders the communities of New Carrollton, Landover Hills, Glenarden, Lanham, Ardmore, Kentland, Cheverly, Chapel Oaks, Fairmount Heights, Carmody Hills, Pepper Mill Village, Walker Mill, and Largo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "landover",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7406,
+    "attempt": 7355,
+    "place_id": "gn-4534934",
+    "input": {
+      "place": {
+        "place_id": "gn-4534934",
+        "name": "Del City",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.44201,
+        "lon": -97.44087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Del City, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Del_City,_Oklahoma",
+          "text": "Del City is a city in Oklahoma County, Oklahoma, United States, and a part of the  Oklahoma City metropolitan area. The population was  21,822 at the United States Census, 2020, a 2.3% increase from 2010.\nDel City is located near two major interstate highways, both of which connect it to Oklahoma City. Interstate 40 bisects the town from the northwest to southeast, and Interstate 35 lies just a short distance west of the city. The city borders southeast Oklahoma City, Midwest City and Tinker Air Force Base. George Epperly, founded the city, which was incorporated by a vote of its residents in 1948. Del City is named after Epperly's eldest daughter, Delaphene Campbell. Since its incorporation Del City has expanded three times, first by annexing Carter Park in 1954, Midway Village in 1963 and the acquisition of an undeveloped piece of land between the city and Tinker AFB\nA large area of Del City was significantly impacted by the May 3, 1999, tornado outbreak that passed through the Oklahoma City metro area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "del city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7407,
+    "attempt": 7356,
+    "place_id": "gn-4595864",
+    "input": {
+      "place": {
+        "place_id": "gn-4595864",
+        "name": "Simpsonville",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.73706,
+        "lon": -82.25428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Simpsonville, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Simpsonville,_South_Carolina",
+          "text": "Simpsonville is a city in Greenville County, South Carolina, United States. It is part of the Greenville, SC Metropolitan Statistical Area. The population is 23,354, according to the 2020 census, up from 18,238 in the 2010 census. The city's 2024 Annual Financial Audit estimates the population to be about 27,500. Independent data site DataCommons estimates the population of Simpsonville to be about 28,078. Simpsonville is part of the \"Golden Strip\", along with the cities of Mauldin and Fountain Inn, an area which is noted for having low unemployment due to a diversity of industries that include H.B. Fuller, KEMET, Sealed Air and Milliken. The unemployment rate is about 3.1 percent, according to 2023 census estimates. It is the 23rd-most populous city in South Carolina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "simpsonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7408,
+    "attempt": 7357,
+    "place_id": "gn-4991791",
+    "input": {
+      "place": {
+        "place_id": "gn-4991791",
+        "name": "Ecorse",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.24448,
+        "lon": -83.14576
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ecorse, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Ecorse,_Michigan",
+          "text": "Ecorse ( EE-korss) is a city in Wayne County in the U.S. state of Michigan. An inner-ring, Downriver suburb of Detroit, Ecorse is located roughly 9 miles (14.5 km) southwest of downtown Detroit. As of the 2020 census, the city had a population of 9,305.\nEcorse is part of the Downriver community within Metro Detroit.  The city shares a northwestern border with the city of Detroit and also borders the cities of Lincoln Park to the west, River Rouge to the north, and Wyandotte to the south.  The city shares its name with the Ecorse River, which forms its southern border with Wyandotte.  The Detroit River forms the city's eastern border as part of the Canada–United States border with LaSalle, Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ecorse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7409,
+    "attempt": 7358,
+    "place_id": "gn-5394086",
+    "input": {
+      "place": {
+        "place_id": "gn-5394086",
+        "name": "Seal Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74141,
+        "lon": -118.10479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seal Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Seal_Beach,_California",
+          "text": "Seal Beach is a coastal city in Orange County, California, United States. It was originally known as Bay City before it was incorporated into Orange County under its current name on October 24, 1915. As of the 2020 census, the population was 25,242, up from 24,168 at the 2010 census.\nSeal Beach is located in the westernmost corner of Orange County. To the northwest, just across the border with Los Angeles County, lies the city of Long Beach and the adjacent San Pedro Bay. To the southeast are Huntington Harbour, a neighborhood of Huntington Beach, and Sunset Beach, also part of Huntington Beach. To the east lie the city of Westminster and the neighborhood of West Garden Grove, part of the city of Garden Grove. To the north lie the unincorporated community of Rossmoor and the city of Los Alamitos. A majority of the city's acreage is devoted to the Naval Weapons Station Seal Beach military base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "seal beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7410,
+    "attempt": 7359,
+    "place_id": "gn-5456975",
+    "input": {
+      "place": {
+        "place_id": "gn-5456975",
+        "name": "Belen",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 34.66284,
+        "lon": -106.77642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belen, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Belen,_New_Mexico",
+          "text": "Belén (; Spanish: Belén) is the second most populated city in Valencia County, New Mexico, the United States, after its county seat, Los Lunas. The population was 7,360 as of the 2020 Census.\nBelén is Spanish for Bethlehem. It gained the nickname \"Hub City\" after the Atchison, Topeka and Santa Fe Railway completed a line through it in 1907. The city is geographically near the center of New Mexico, and is a significant transportation hub that includes access to rails, Interstate Highway 25, and air at Valencia County's only public airport.\nBelén is at the southern end of the Albuquerque Metropolitan Statistical Area. The city is located 35 miles south of Albuquerque."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "belen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7411,
+    "attempt": 7360,
+    "place_id": "gn-548982",
+    "input": {
+      "place": {
+        "place_id": "gn-548982",
+        "name": "Khvalynsk",
+        "country": "Russia",
+        "subdivision": "Saratov Oblast",
+        "lat": 52.49114,
+        "lon": 48.10606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khvalynsk",
+          "url": "https://en.wikipedia.org/wiki/Khvalynsk",
+          "text": "Khvalynsk is a river port town in Saratov Oblast, Russia, located by the Volga River. Population: 13,094 (2010 census); 13,752 (2002 census); 14,948 (1989 Soviet census); 16,000 (1974). It is located on the right bank of the Volga, at the foot of the Khvalynsk Mountains, 180 kilometers (110 mi) northeast of Saratov and 160 kilometers (99 mi) southwest of Samara.\nThe place name stems from the old Russian name of the Caspian Sea: Хвалынское море, or \"Khvalyn Sea\". The latter is derived from the name \"Khwalis\" for the inhabitants of Khwarezm. The town is the namesake of the Khvalynsk Hills and Khvalynsk culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "khvalynsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

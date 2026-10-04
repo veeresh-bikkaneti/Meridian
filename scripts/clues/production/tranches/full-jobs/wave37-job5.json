@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 7332,
+    "attempt": 7281,
+    "place_id": "gn-5122280",
+    "input": {
+      "place": {
+        "place_id": "gn-5122280",
+        "name": "Inwood",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.86566,
+        "lon": -73.9268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inwood, Manhattan",
+          "url": "https://en.wikipedia.org/wiki/Inwood,_Manhattan",
+          "text": "Inwood is a neighborhood in the New York City borough of Manhattan, at the northern tip of Manhattan Island. It is bounded by the Hudson River to the west, Spuyten Duyvil Creek and Marble Hill to the north, the Harlem River to the east, and Washington Heights to the south.\nInwood is part of Manhattan Community District 12, and its primary ZIP Code is 10034. It is served by the 34th Precinct of the New York City Police Department and Engine Company 95/Ladder Company 36 of the New York City Fire Department. Politically, it is part of the New York City Council's 10th district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "inwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7333,
+    "attempt": 7282,
+    "place_id": "gn-5125766",
+    "input": {
+      "place": {
+        "place_id": "gn-5125766",
+        "name": "Manhasset",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.79788,
+        "lon": -73.69957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manhasset, New York",
+          "url": "https://en.wikipedia.org/wiki/Manhasset,_New_York",
+          "text": "Manhasset is a hamlet and census-designated place (CDP) in Nassau County, on the North Shore of Long Island, in New York, United States. It is partially located on the southwestern part of the Cow Neck Peninsula. The population was 8,176 at the time of the 2020 census.\nAs with other unincorporated communities in New York, the CDP's local affairs are administered by the town in which it is located, the Town of North Hempstead.\nAdditionally, the hamlet serves as the town seat of North Hempstead, and North Hempstead Town Hall – the town's governmental headquarters – is located within Manhasset's downtown, along Plandome Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "manhasset",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7334,
+    "attempt": 7283,
+    "place_id": "gn-5127043",
+    "input": {
+      "place": {
+        "place_id": "gn-5127043",
+        "name": "Miller Place",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.95982,
+        "lon": -72.99621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miller Place, New York",
+          "url": "https://en.wikipedia.org/wiki/Miller_Place,_New_York",
+          "text": "Miller Place is a hamlet and census-designated place (CDP) in the Town of Brookhaven, Suffolk County, New York, United States. Despite preserving much of its historic identity, changes in the 20th century have transitioned the hamlet into a desirable and densely populated suburban area. The population was 11,723 at the 2020 census.\nMiller Place and Mount Sinai are historically linked, with residents sharing such institutions as the Mount Sinai Congregational Church, located on the hamlet's border. The harborfront section of Port Jefferson, 5 miles to the west, serves as a primary commercial downtown walking area for residents of both Miller Place and Mount Sinai."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "miller place",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "miller",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "place",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7335,
+    "attempt": 7284,
+    "place_id": "gn-5136433",
+    "input": {
+      "place": {
+        "place_id": "gn-5136433",
+        "name": "Scarsdale",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.0051,
+        "lon": -73.78458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scarsdale, New York",
+          "url": "https://en.wikipedia.org/wiki/Scarsdale,_New_York",
+          "text": "Scarsdale () is a coterminous town and village in Westchester County, New York, United States, 19 miles (31 km) north of New York City. It is on 6.683 square miles (17.31 km2) and is located inland within the Bronx River Valley. Scarsdale includes 17 neighborhoods which are bundled into the geographic regions of Edgewood, Fox Meadow, Greenacres, Heathcote, and Quaker Ridge. It is served by the Scarsdale station of the Metro-North Railroad's Harlem Line. Scarsdale has six entries on the National Register of Historic Places.\nIn the precolonial era, the village's area was inhabited by a band of the Wappinger tribes of Native Americans. Caleb Heathcote purchased land from four Native American leaders near the end of the 17th century. The town was incorporated in 1788, yet in 1908 the town opted to use a village government following annexation threats from the neighboring city of White Plains. The population has increased from 281 people when established to 18,253 at the 2020 census.\nThe village is primarily residential. It has about 714.78 acres (289.26 ha) of recreational facilities and parks, all accessible to the public. The village has fifteen houses of worship, with three rectories. Scarsdale operates under a coterminous town-village structure with an elected Mayor and six Trustees, which appoints a professional Village Manager to oversee daily administrative operations. Its municipal departments include police, fire, recreation, and public works. In the New York State Legislature, Scarsdale is in the New York State Assembly's 88th district and the New York State Senate's 37th district. In Congress, the town/village is in New York's 16th congressional district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "scarsdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7336,
+    "attempt": 7285,
+    "place_id": "gn-5180934",
+    "input": {
+      "place": {
+        "place_id": "gn-5180934",
+        "name": "Bloomsburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.0037,
+        "lon": -76.45495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bloomsburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Bloomsburg,_Pennsylvania",
+          "text": "Bloomsburg is a town in and the county seat of Columbia County, Pennsylvania. It is part of Northeastern Pennsylvania and is located 40 miles (64 km) southwest of Wilkes-Barre along the Susquehanna River. As of the 2020 census, Bloomsburg had a population of 12,711.\nBloomsburg is one of two principal communities of the Bloomsburg-Berwick, PA Micropolitan Statistical Area, a micropolitan area that covers all of Columbia county, and had a combined population of 67,295 at the 2010 census.\nBloomsburg is the only incorporated \"town\" in Pennsylvania. Nonetheless, Bloomsburg operates mostly like a borough, with a council, mayor, fire department, police department and other operations. All other incorporated municipalities in the state are townships, boroughs or cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "bloomsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7337,
+    "attempt": 7286,
+    "place_id": "gn-5215118",
+    "input": {
+      "place": {
+        "place_id": "gn-5215118",
+        "name": "Tacony",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.03122,
+        "lon": -75.04434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tacony, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Tacony,_Philadelphia",
+          "text": "Tacony (Delaware: tèkhane)  is a historic neighborhood in Northeast Philadelphia, United States, approximately 8 miles (13 km) from downtown (\"Center City\") Philadelphia. It is bounded by the east side of Frankford Avenue on the northwest, the south side of Cottman Avenue on the northeast, the north side of Robbins Street on the southwest, and the Delaware River and Interstate 95 on the southeast.\nTacony's ZIP code, along with Wissinoming, is 19135. The neighborhood has a large Irish American and Italian American population. A substantial influx of German and German-American inhabitants helped to swell the population after 1855. About 23,000 people now live in Tacony.\nAlthough numerous neighborhood borders in Philadelphia are often disputed, because of when and how they developed, were populated, and founded, Tacony is one of the earliest villages along the Delaware River and further inland, in what was at one time a section of \"Oxford Township,\" and would eventually become part of Philadelphia. For that reason it has some of the better defined neighborhood borders which are part of the city records that describe neighborhoods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "tacony",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7338,
+    "attempt": 7287,
+    "place_id": "gn-5738690",
+    "input": {
+      "place": {
+        "place_id": "gn-5738690",
+        "name": "Madras",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.63345,
+        "lon": -121.12949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madras, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Madras,_Oregon",
+          "text": "Madras ( MAD-russ) is a city in and the county seat of Jefferson County, Oregon,  United States. Situated in Central Oregon, it is located where US Route 26 and US Route 97 intersect, with the latter serving as the main north-south road in the city with traffic split into a one-way pair. Originally called \"The Basin\" after the circular valley the city is in, it is unclear whether Madras was named in 1903 for the cotton fabric called \"Madras\" that originated in the city of Madras (now Chennai) in Tamil Nadu, India, or the city itself. The population was 7456 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "madras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7339,
+    "attempt": 7288,
+    "place_id": "gn-6121621",
+    "input": {
+      "place": {
+        "place_id": "gn-6121621",
+        "name": "Revelstoke",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.99712,
+        "lon": -118.1953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Revelstoke, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Revelstoke,_British_Columbia",
+          "text": "Revelstoke () is a city in southeastern British Columbia, Canada, with a census population of 8,275 in 2021. Revelstoke is located 641 kilometres (398 mi) east of Vancouver, and 415 kilometres (258 mi) west of Calgary, Alberta. The city is situated on the banks of the Columbia River just south of the Revelstoke Dam and near its confluence with the Illecillewaet River. East of Revelstoke are the Selkirk Mountains and Glacier National Park, penetrated by Rogers Pass used by the Trans-Canada Highway and the Canadian Pacific Railway.  South of the community down the Columbia River are the Arrow Lakes, Mount Begbie, and the Kootenays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "revelstoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7340,
+    "attempt": 7289,
+    "place_id": "gn-6138369",
+    "input": {
+      "place": {
+        "place_id": "gn-6138369",
+        "name": "Saint-Hubert",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.50008,
+        "lon": -73.41583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Hubert, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Saint-Hubert,_Quebec",
+          "text": "Saint-Hubert ( -⁠ HEW-bərt, French: [sɛ̃t‿ybɛʁ] , locally [sẽɪ̯̃t͡s‿ybaɛ̯ʁ]) is a borough in the city of  Longueuil, located in the Montérégie region of Quebec, Canada. It had been a separate city prior to January 1, 2002, when it along with several other neighbouring south shore municipalities were merged into Longueuil. Its area is 65.98 km2 (25.48 sq mi) which makes it Longueuil's biggest borough by land though Le Vieux-Longueuil has the largest population. The city hall of Longueuil is located in Saint-Hubert. The borough is about 14 kilometres (8.7 mi) from  downtown Montreal.\nSaint-Hubert has a wide array of commercial, industrial and agricultural enterprises. The aerospace industry is arguably the most important of these enterprises.  Pratt & Whitney Canada designs and manufactures jet engines at a plant near Saint-Hubert Airport. The Canadian Space Agency has its head office in Saint-Hubert. The École nationale d'aérotechnique, a school that teaches aeronautics is located in the borough and operated by Collège Édouard-Montpetit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "saint hubert",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hubert",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7341,
+    "attempt": 7290,
+    "place_id": "gn-6173404",
+    "input": {
+      "place": {
+        "place_id": "gn-6173404",
+        "name": "Vanier",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.4399,
+        "lon": -75.66498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vanier, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Vanier,_Ontario",
+          "text": "Vanier (formerly Eastview) is a neighbourhood in the Rideau-Vanier Ward of the east end of Ottawa, Ontario, Canada.  Historically francophone and working class, the neighbourhood was a separate city until being amalgamated into Ottawa in 2001. It no longer has a majority francophone population. By 2012 its francophone population had shrunk to less than 40% from 63% in the early 1980s. The neighbourhood is located on the east bank of the Rideau River, across from the neighbourhoods of Lowertown and Sandy Hill, and just south of Rockcliffe Park, New Edinburgh, Lindenlea, and Manor Park. To the east of Vanier are the suburbs of Gloucester. Vanier has a relatively small area with a high population density."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "vanier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7342,
+    "attempt": 7291,
+    "place_id": "gn-6290236",
+    "input": {
+      "place": {
+        "place_id": "gn-6290236",
+        "name": "Airport West",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.7247,
+        "lon": 144.88126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Airport West",
+          "url": "https://en.wikipedia.org/wiki/Airport_West",
+          "text": "Airport West is a suburb in Melbourne, Victoria, Australia, 12 km (7.5 mi) north-west of Melbourne's central business district, located within the City of Moonee Valley local government area. Airport West recorded a population of 8,173 at the 2021 census.\nBounded by the Calder Highway to the south, the Tullamarine Freeway to the east, and the Western Ring Road to the north west, Airport West is so named for its position to the west of Essendon Airport, Melbourne's first general airport now used for light planes, charter and freight since the opening in 1970 of Melbourne Airport, located to the north of the suburb.\nIt has the distinction of being the only locality in Australia which does not itself contain an airport to contain the word \"Airport.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "airport west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "airport",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7343,
+    "attempt": 7292,
+    "place_id": "gn-6690581",
+    "input": {
+      "place": {
+        "place_id": "gn-6690581",
+        "name": "Belsize Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.54767,
+        "lon": -0.17228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belsize Park",
+          "url": "https://en.wikipedia.org/wiki/Belsize_Park",
+          "text": "Belsize Park is a residential area of Hampstead in the London Borough of Camden, in the inner north-west of London, England.\nThe streets are lined with Georgian and Victorian villas and mews houses. Some nearby localities are Hampstead village to the north and west, Camden Town to the south-east and Primrose Hill to the south.\nThere are restaurants, pubs, cafés, and independent boutiques in Belsize Village, and on Haverstock Hill and England's Lane. Hampstead Heath is close by, and Primrose Hill park is a five-minute walk from England's Lane.\nBelsize Park is in the Hampstead and Highgate constituency whose present MP is Tulip Siddiq."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "belsize park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belsize",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7344,
+    "attempt": 7293,
+    "place_id": "gn-710473",
+    "input": {
+      "place": {
+        "place_id": "gn-710473",
+        "name": "Chyhyryn",
+        "country": "Ukraine",
+        "subdivision": "Cherkasy",
+        "lat": 49.08045,
+        "lon": 32.66082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chyhyryn",
+          "url": "https://en.wikipedia.org/wiki/Chyhyryn",
+          "text": "Chyhyryn (Ukrainian: Чигирин [tʃɪɦɪˈrɪn] ; Polish: Czehryń [ˈt͡ʂɛxrɨɲ, ˈt͡ʂɛxrɨj̃]) is a city in Cherkasy Raion, Cherkasy Oblast, central Ukraine. It is located on Tiasmyn river not far where it enters the Dnieper.\nFrom 1648 to 1669, the city served as the residence of the hetman of the Zaporizhian Host. After a forced relocation of the Ruthenian Orthodox metropolitan see from Kyiv in 1658, it became a full-fledged capital of the Cossack Hetmanate. Among Metropolitans who served out of Chyhyryn were Dionysius Balaban and Joseph Tukalskyi-Nelyubovych. Chyhyryn also became a traditional place for the appointment to the office of the hetman of the Zaporizhian Host.\nSince the 17th century, the significance of the settlement has diminished to a semi-rural populated place. It hosts the administration of Chyhyryn urban hromada, one of the hromadas of Ukraine. Population: 8,539 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "chyhyryn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7345,
+    "attempt": 7294,
+    "place_id": "gn-7116406",
+    "input": {
+      "place": {
+        "place_id": "gn-7116406",
+        "name": "Lightwater",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34846,
+        "lon": -0.67147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lightwater",
+          "url": "https://en.wikipedia.org/wiki/Lightwater",
+          "text": "Lightwater is a village in the Surrey Heath district of Surrey, England, about 27 miles (43 km) southwest of central London. Immediately surrounding towns and villages include Bagshot, Deepcut, Windlesham, Camberley, and West End, Woking. It is bounded to the north-west by the M3 motorway and to the north-east by the \"Lightwater Bypass\" (A322). To the south-east it is bounded by the \"Red Road\" (B311), while to the south-west there are vehicle-testing tracks owned by the Ministry of Defence.\nThe village is adjacent to junction 3 of the M3 motorway. The nearest railway station is at Bagshot, on the line between Ascot and Aldershot. Lightwater is part of the civil parish of Windlesham, which has a population of 17,000 and also includes the neighbouring village of Bagshot. The village has a population of 6,500 as of the 2021 census, down from 7,000 in 2011. \nSince April of 2025, Lightwater has been home to the oldest living person, Ethel Caterham, a supercentenarian aged 117 years, 43 days old, after previous oldest living person Inah Canabarro Lucas died at the age of 116. Caterham has lived in a Lightwater care home since 2020, and in celebration for her 116th birthday was visited on 18 September 2025 by Charles III. Caterham is the last known surviving individual born in the 1900s decade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "lightwater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7346,
+    "attempt": 7295,
+    "place_id": "gn-8348548",
+    "input": {
+      "place": {
+        "place_id": "gn-8348548",
+        "name": "Erskineville",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.90254,
+        "lon": 151.18579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erskineville",
+          "url": "https://en.wikipedia.org/wiki/Erskineville",
+          "text": "Erskineville (previously known as Macdonaldtown) is a suburb in the Inner West of Sydney, New South Wales, Australia. It is located 6 kilometres south west of the Sydney central business district and is part of the local government area of the City of Sydney. Erskineville is a diverse suburb homing to a wide variety of ethnicity from its varying Southeast Europe and Aboriginal communities. Erskineville is colloquially known as Erko.\nErskineville is bordered by the suburbs of Newtown to the west, Redfern to the north, St Peters to the south, and Alexandria to the east. The locality of Macdonaldtown sits over the north-west border.\nErskineville is a residential suburb. Erskineville Oval is located on the eastern border of the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "erskineville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7347,
+    "attempt": 7296,
+    "place_id": "gn-895417",
+    "input": {
+      "place": {
+        "place_id": "gn-895417",
+        "name": "Banket",
+        "country": "Zimbabwe",
+        "subdivision": "Mashonaland West",
+        "lat": -17.38333,
+        "lon": 30.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banket, Zimbabwe",
+          "url": "https://en.wikipedia.org/wiki/Banket,_Zimbabwe",
+          "text": "Banket (originally known as Banket Junction) is a town in the province of Mashonaland West, Zimbabwe. It is located about 95 km north-west of Harare on the main Harare-Chinhoyi road. According to the 1982 Population Census, the town had a population of 5,698. The name of the town is derived from banket rock formation: early settlers saw a conglomerate, which they hoped would bear gold, like the banket of the Witwatersrand gold fields. The conglomerate was not gold-bearing, although gold was late discovered and, along with chromite, is still mined in the area. Cattle, maize, cotton and tobacco are commercially farmed in the area.\nBanket grew as a service centre for the surrounding mines and commercial farms, and has suffered from the downscaling of chromite mining in Zimbabwe. The town further suffered from the expropriation of white-owned commercial farms in the controversial land reform programme that began in 2000. The town's main source of income and business clientele, the farmers and businesspeople, all but disappeared from the scene, leading to a loss of business and income. The settlers who took over the farms failed to fill the gap created by the demise of commercial farms. This led to the collapse of retail businesses and the few industries that were in the town.\nThe town has three primary schools (Kuwadzana, St Georges and Banket Primary) and two secondary schools (Kuwadzana High School and the Catholic-church-owned Sacred Heart Secondary School). It has a district hospital and a council clinic. The town grew primarily because of its role as a service centre for surrounding commercial farms and mining settlements. Mazvikadei Dam is also located north of Banket."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "banket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7348,
+    "attempt": 7297,
+    "place_id": "gn-950037",
+    "input": {
+      "place": {
+        "place_id": "gn-950037",
+        "name": "Tarkastad",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.00893,
+        "lon": 26.25935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarkastad",
+          "url": "https://en.wikipedia.org/wiki/Tarkastad",
+          "text": "Tarkastad is a Karoo semi-urban settlement situated on the banks of Tarka River in the Eastern Cape province of South Africa. Tarkastad is on a plain to the north of the Winterberg mountain range on the R61 between Cradock and Komani and only three hours from Gqeberha. The name Tarkastad is believed to come from the Khoi-Khoi word Traka (meaning women) or the Celtic word Tarka (meaning otter) and the Afrikaans word Stad (meaning city). The fact that the town is overlooked by Martha and Mary; two peaks which look like two women resting after a hard day's work, also lends to the name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "tarkastad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7349,
+    "attempt": 7298,
+    "place_id": "gn-988290",
+    "input": {
+      "place": {
+        "place_id": "gn-988290",
+        "name": "Komatipoort",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.43321,
+        "lon": 31.95478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komatipoort",
+          "url": "https://en.wikipedia.org/wiki/Komatipoort",
+          "text": "Komatipoort is a town situated at the confluence of the Crocodile and Komati Rivers in Mpumalanga province, South Africa.  The town is 8 km from the Crocodile Bridge Gate into the Kruger National Park, just 3 km from the Mozambique border and 65 km from the Eswatini border.\nIt is a small, quiet town within the Lowveld with some attractive tree-lined streets. It is one of the hottest towns in South Africa where temperatures can reach almost 48 °C (47.7 °C (117.9 °F) on 12 December 1944) in the height of summer, but also with a perfect winter climate around 24 °C (75 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "komatipoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7350,
+    "attempt": 7299,
+    "place_id": "gn-10108696",
+    "input": {
+      "place": {
+        "place_id": "gn-10108696",
+        "name": "Albion Park Rail",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.56634,
+        "lon": 150.79177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albion Park Rail",
+          "url": "https://en.wikipedia.org/wiki/Albion_Park_Rail",
+          "text": "Albion Park Rail is a suburb of  Shellharbour, Australia situated in the Macquarie Valley (Shellharbour).  The South Coast railway line was opened to the railway station and Bombo in 1887.  At the time the nearest town was Albion Park, several kilometres away.  Over time, houses were built around the railway station, and Albion Park Rail developed into a town in its own right, and with its own name.\nAlbion Park Rail has a community area set up with a community centre, playing fields and a recently built skatepark.  It only has one school but it accommodates many students from Pre-School to Year 6. Albion Park Rail is located along the shores of Lake Illawarra, near Koona Bay. It is a fifteen-minute drive on the freeway to Wollongong.\nAlbion Park Rail is the site of the Illawarra Regional Airport which is the location of the Historical Aircraft Restoration Society."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "albion park rail",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "albion",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rail",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7351,
+    "attempt": 7300,
+    "place_id": "gn-11592294",
+    "input": {
+      "place": {
+        "place_id": "gn-11592294",
+        "name": "Stenhousemuir",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.02676,
+        "lon": -3.81462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stenhousemuir",
+          "url": "https://en.wikipedia.org/wiki/Stenhousemuir",
+          "text": "Stenhousemuir (; Scottish Gaelic: Featha Thaigh nan Clach) is a town in the Central Lowlands of Scotland. It lies within the Falkirk council area of Scotland. The town is two miles (three kilometres) north-northwest of Falkirk and directly adjoins to Larbert in the west, where the nearest rail access is located. The villages of Carron and Carronshore adjoin Stenhousemuir to the east but to a lesser extent. Historically, Stenhousemuir lies with the historic county of Stirlingshire. At the 2001 census it showed that it had a resident population of 10,351 but according to a 2009 estimate this was revised to around 10,190 residents. The combined population of the four localities in 2011 was 24,722, representing about 15% of the Falkirk council area total.\nIn 2008, a £15 million town centre development scheme was completed and opened which provided a new civic square, a library and large retailing outlets for Stenhousemuir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "stenhousemuir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
