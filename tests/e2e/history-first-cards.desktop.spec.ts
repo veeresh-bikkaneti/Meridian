@@ -155,6 +155,19 @@ async function commitTargetHit(page: Page): Promise<void> {
       // Tapped the projected spot but missed (far side / stale projection):
       // the 1-place pool re-deals the target, so advance and retry.
       await clickNextPlace(page);
+      // Cleared-mode (feat/cleared-mode-promotion): the isolated target is
+      // the band's last fresh place, so "Next place" celebrates the clear
+      // instead of advancing. Dismiss via the × button — Escape would also
+      // dismiss the result card underneath — then tap "Next place" again:
+      // the mark is set, so it advances normally and the 1-place pool
+      // re-deals the target.
+      const celebration = page.getByTestId("cleared-celebration");
+      await celebration.waitFor({ state: "visible", timeout: 5000 }).catch(() => null);
+      if (await celebration.isVisible()) {
+        await celebration.getByRole("button", { name: "Close celebration" }).click();
+        await expect(celebration).toBeHidden();
+        await clickNextPlace(page);
+      }
       await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
     } else {
       await page.waitForTimeout(2000);

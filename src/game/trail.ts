@@ -294,6 +294,16 @@ export type NewRunPool = {
    * same place twice across the cycle boundary.
    */
   prevLastId: string | null;
+  /**
+   * True exactly when the persistent history covered the band catalog and
+   * was reset (the `fresh.length === 0 && catalog.length > 0` branch) —
+   * i.e. the player just completed a full cycle of this band ("cleared"
+   * the band). False on a fresh or partially-seen history, and false for
+   * an empty catalog. The UI layer uses this as the run-start backstop for
+   * the cleared-mode celebration; poolForNewRun itself never touches the
+   * cleared marks (see clearedMarkKey/wasClearedCelebrated/... below).
+   */
+  cycleCompleted: boolean;
 };
 
 /**
@@ -305,6 +315,11 @@ export type NewRunPool = {
  * catalog (fail-closed dealing is the dealer's job: an empty pool deals
  * nothing). The reset clears ONLY this band's history — other bands' cycles
  * are untouched.
+ *
+ * The reset is reported via `cycleCompleted` (true exactly when the history
+ * covered the band catalog and was reset). poolForNewRun never reads or
+ * writes the cleared marks — the UI layer owns the was/mark/clear helpers
+ * below and calls them itself.
  *
  * The history outlives days, reloads, and restarts — "tomorrow" is just
  * another session over the same persistent history.
@@ -318,14 +333,105 @@ export function poolForNewRun<T extends { id: string }>(
   let fresh = catalog.filter((place) => !seen.has(place.id));
   const prevLastId =
     seenOrder.length > 0 ? seenOrder[seenOrder.length - 1]! : null;
+  let cycleCompleted = false;
   if (fresh.length === 0 && catalog.length > 0) {
     // Full cycle complete: reset the persistent history so the next cycle
     // deals every place again, in a new order. prevLastId is kept — it is
     // the previous cycle's final deal, used for the boundary check.
     store.write([]);
     fresh = [...catalog];
+    cycleCompleted = true;
   }
-  return { poolIds: fresh.map((place) => place.id), prevLastId };
+  return { poolIds: fresh.map((place) => place.id), prevLastId, cycleCompleted };
+}
+
+const CLEARED_KEY_PREFIX = "meridian:cleared:v1:";
+
+/**
+ * Storage key for a band's cleared-celebration mark, scoped like the seen
+ * keys (edition, region, difficulty band). Band-scoped because the no-repeat
+ * history — and therefore the cycle — is band-scoped: clearing easy says
+ * nothing about medium.
+ */
+export function clearedMarkKey(
+  edition: string,
+  regionId: string,
+  choice: PickerDifficulty,
+): string {
+  return `${CLEARED_KEY_PREFIX}${edition}:${regionId}:${choice}`;
+}
+
+/**
+ * Cleared-mark helpers: "the celebration was shown for the most recently
+ * completed cycle" of this edition/region/band. The UI layer calls these —
+ * poolForNewRun does NOT touch the marks. Independent of the seen stores:
+ * marks are only meaningful alongside a band's no-repeat history, but they
+ * read and write their own keys and never influence dealing.
+ *
+ * All helpers fail open like the seen stores: a storage hiccup (unavailable
+ * or throwing localStorage) degrades to "not celebrated" / no-op and must
+ * never break dealing or the game. Everything is keyed on plain strings.
+ */
+
+/** True when the band's cleared celebration has already been shown. */
+export function wasClearedCelebrated(
+  edition: string,
+  regionId: string,
+  choice: PickerDifficulty,
+): boolean {
+  const storage = safeStorage();
+  if (!storage) return false;
+  try {
+    return storage.getItem(clearedMarkKey(edition, regionId, choice)) !== null;
+  } catch {
+    return false;
+  }
+}
+
+/** Record that the band's cleared celebration has been shown. */
+export function markClearedCelebrated(
+  edition: string,
+  regionId: string,
+  choice: PickerDifficulty,
+): void {
+  const storage = safeStorage();
+  if (!storage) return;
+  try {
+    storage.setItem(clearedMarkKey(edition, regionId, choice), "1");
+  } catch {
+    // Fail open: the celebration simply won't be remembered.
+  }
+}
+
+/** Clear the band's mark (a new cycle begins; the next clear can celebrate again). */
+export function clearClearedMark(
+  edition: string,
+  regionId: string,
+  choice: PickerDifficulty,
+): void {
+  const storage = safeStorage();
+  if (!storage) return;
+  try {
+    storage.removeItem(clearedMarkKey(edition, regionId, choice));
+  } catch {
+    // Fail open.
+  }
+}
+
+/**
+ * True when every catalog ID is already in the store's no-repeat history —
+ * i.e. the band's pool is exhausted for this edition/region and the cycle
+ * is complete ("cleared"). An empty catalog is never cleared (never
+ * celebrate nothing). Pure: reads the store once, no side effects, never
+ * touches storage marks or the store's contents.
+ */
+export function isBandCleared(
+  catalogIds: string[],
+  store: SeenStore,
+): boolean {
+  if (catalogIds.length === 0) return false;
+  const seen = new Set(store.read());
+  return catalogIds.every((id) => seen.has(id));
 }
 
 export type Dealer<T extends { id: string }> = {

@@ -226,6 +226,37 @@ test("resumeRun restores endless runs; done (miss card) is resumable, summary is
   assert.equal(resumeRun(null, today, ["p1", "p2", "p3"]).index, 0);
 });
 
+test("a just-finished run (phase done) resumes unchanged — replay must startRun instead", () => {
+  // Contract the cleared-mode celebration replay relies on: a finished run
+  // (the miss card awaiting "Next place") IS resumable, so resumeRun hands
+  // it back untouched — phase "done", results intact. Forcing a fresh run
+  // on the replay path therefore goes through startRun; do NOT change
+  // isResumable to fix it (reload-mid-reveal and other flows depend on
+  // "done" being resumable).
+  const finished = {
+    ...startRun(today, ["p1", "p2", "p3"]),
+    index: 3,
+    hits: 2,
+    streak: 0,
+    bestStreak: 4,
+    phase: "done" as const,
+    results: [v3Result()],
+  };
+  assert.equal(isResumable(finished, today), true);
+  const resumed = resumeRun(finished, today, ["p1", "p2", "p3"]);
+  assert.equal(resumed.phase, "done");
+  assert.equal(resumed.index, 3);
+  assert.equal(resumed.hits, 2);
+  assert.equal(resumed.results.length, 1);
+
+  // startRun on the same input mints a fresh run: aim phase, index 0, no
+  // carried results — the replay restart.
+  const restarted = startRun(today, ["p1", "p2", "p3"]);
+  assert.equal(restarted.phase, "aim");
+  assert.equal(restarted.index, 0);
+  assert.equal(restarted.results.length, 0);
+});
+
 test("poolIds persist on the run; legacy saves backfill from the fresh pool", () => {
   const globeDay = {
     edition: "globe" as const,

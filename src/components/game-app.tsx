@@ -14,7 +14,7 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
 import { filterByTier, isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import {
   bankPlace,
@@ -39,7 +39,7 @@ import {
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
-import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
+import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
@@ -49,6 +49,7 @@ import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import {
   buildCollisionCounts,
   buildQuestionLabel,
@@ -369,13 +370,17 @@ function clearDrop() {
  * shrank another band's pool into rapid cycling. Each band now keeps its
  * own history; the pre-band history migrates lazily into the first band
  * touched (see seenStoreFor).
+ *
+ * Also threads through `cycleCompleted`: true when the band's persistent
+ * history covered the whole band catalog and was just reset — the
+ * cleared-mode celebration's backstop signal (see openRun).
  */
 function poolForRunStart(
   allPlaces: { id: string }[],
   edition: Edition,
   regionId: string,
   choice: PickerDifficulty,
-): { poolIds: string[]; prevLastId: string | null } {
+): { poolIds: string[]; prevLastId: string | null; cycleCompleted: boolean } {
   return poolForNewRun(allPlaces, seenStoreFor(edition, regionId, choice));
 }
 
@@ -505,6 +510,11 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // Cleared-mode celebration: set when a difficulty band's full cycle is
+  // celebrated (primary onContinue trigger or the run-start backstop). The
+  // dialog renders over the current screen; dismissing returns the player
+  // to exactly where they were.
+  const [cleared, setCleared] = useState<ClearedInfo | null>(null);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
@@ -646,7 +656,17 @@ export function GameApp() {
   }, []);
 
   const openRun = useCallback(
-    async (edition: Edition, regionId: string, regionName: string, choice: PickerDifficulty) => {
+    async (
+      edition: Edition,
+      regionId: string,
+      regionName: string,
+      choice: PickerDifficulty,
+      // `fresh` forces a brand-new run instead of resuming the saved one.
+      // The celebration's replay/promotion buttons always pass it: the
+      // just-finished run (phase "done") is resumable, so resumeRun would
+      // return it unchanged and the replay would never restart.
+      opts?: { fresh?: boolean },
+    ) => {
       setStarting({ regionName });
       setStartError(null);
       try {
@@ -657,13 +677,32 @@ export function GameApp() {
         // pool is built. Fail-closed: an empty band yields an empty pool,
         // never a widened one.
         const banded = filterByTier(places, choice);
-        const { poolIds, prevLastId } = poolForRunStart(banded, edition, regionId, choice);
-        const next = resumeRun(
-          readRun(),
-          { edition, regionId, regionName, dateKey, difficultyChoice: choice },
-          poolIds,
-          prevLastId,
-        );
+        const { poolIds, prevLastId, cycleCompleted } = poolForRunStart(banded, edition, regionId, choice);
+        // Cleared-mode backstop: a completed cycle at run start means the
+        // band was fully played through. If it was already celebrated, the
+        // new cycle begins silently (retire the mark); if not — a clear
+        // from before this feature existed, or a crash before the
+        // celebration — celebrate immediately instead of silently
+        // repeating. One celebration per clear: the mark is set either way.
+        if (cycleCompleted) {
+          if (wasClearedCelebrated(edition, regionId, choice)) {
+            clearClearedMark(edition, regionId, choice);
+          } else {
+            markClearedCelebrated(edition, regionId, choice);
+            setCleared({ edition, regionId, regionName, choice });
+          }
+        }
+        // A celebration replay/promotion starts FRESH: at the onContinue
+        // boundary the run is mid-run in reveal phase and resumable, so
+        // resumeRun would return it unchanged and the replay would never
+        // restart. Picker paths keep
+        // resume semantics (leave-and-return mid-run restores the
+        // in-progress run) — `fresh` is opt-in only, and isResumable's
+        // semantics are deliberately unchanged (other flows depend on them).
+        const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
+        const next = opts?.fresh
+          ? startRun(today, poolIds, prevLastId)
+          : resumeRun(readRun(), today, poolIds, prevLastId);
         commit(next);
         // Switching editions keeps the session (and its score) alive: a new
         // session starts only when none is live.
@@ -841,7 +880,38 @@ export function GameApp() {
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
           }}
+          onCleared={(info) => setCleared(info)}
+          celebrationOpen={cleared !== null}
         />
+        {cleared ? (
+          <ClearedCelebrationDialog
+            info={cleared}
+            onDismiss={() => setCleared(null)}
+            onPlayBand={(edition, regionId, regionName, choice) => {
+              // The player's explicit band choice follows them: persist it
+              // so the picker's highlighted button matches after a
+              // promotion (the promoted band used to live on
+              // run.difficultyChoice only, leaving the picker stale).
+              setDifficultyChoice(choice);
+              // Dismiss first: the new run replaces the screen (openRun's
+              // loading state), and its own backstop decides whether the
+              // fresh band deserves a celebration.
+              setCleared(null);
+              // Celebration buttons always start a FRESH run in the chosen
+              // band — never resume the just-finished one.
+              void openRun(edition, regionId, regionName, choice, { fresh: true });
+            }}
+            onBrowseEditions={() => {
+              // Back to the edition picker WITHOUT ending the game: the
+              // session (and its score) stays alive, like the Editions
+              // button mid-run.
+              setCleared(null);
+              clearDrop();
+              setRun(null);
+              setMenu(null);
+            }}
+          />
+        ) : null}
         {idleToast}
       </>
     );
@@ -1171,6 +1241,8 @@ function Play({
   onEditions,
   onSummaryDone,
   onReplayed,
+  onCleared,
+  celebrationOpen,
 }: {
   run: Run;
   session: Session | null;
@@ -1193,6 +1265,14 @@ function Play({
   onSummaryDone: () => void;
   /** A fresh run started via Play again; starts a fresh session. */
   onReplayed: (run: Run) => void;
+  /** A difficulty band was just cleared: show the celebration dialog. */
+  onCleared: (info: ClearedInfo) => void;
+  /**
+   * Whether the cleared-mode celebration dialog is open. The M5 Escape
+   * handler yields while it is open so one Escape press dismisses only
+   * the dialog (the dialog's own handler), never the result card beneath.
+   */
+  celebrationOpen: boolean;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -1254,6 +1334,8 @@ function Play({
       onEditions={onEditions}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
+      onCleared={onCleared}
+      celebrationOpen={celebrationOpen}
     />
   );
 }
@@ -1268,6 +1350,8 @@ function PlayLoaded({
   onEditions,
   onSummaryDone: finishSummary,
   onReplayed,
+  onCleared,
+  celebrationOpen,
 }: {
   run: Run;
   places: Starter[];
@@ -1287,6 +1371,10 @@ function PlayLoaded({
   onEditions: () => void;
   onSummaryDone: () => void;
   onReplayed: (run: Run) => void;
+  /** A difficulty band was just cleared: show the celebration dialog. */
+  onCleared: (info: ClearedInfo) => void;
+  /** Whether the cleared-mode celebration dialog is open (M5 Escape yields to it). */
+  celebrationOpen: boolean;
 }) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
@@ -1479,6 +1567,11 @@ function PlayLoaded({
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
+      // The cleared celebration owns Escape while it is open: its own
+      // handler dismisses the dialog, and falling through here would also
+      // dismiss the result card beneath it (phase "done" !== "aim"). Yield
+      // when the dialog is closed and the M5 behavior is unchanged.
+      if (celebrationOpen) return;
       if (run.phase !== "aim") {
         setCardDismissed(true);
         return;
@@ -1490,7 +1583,7 @@ function PlayLoaded({
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [run.phase, aim]);
+  }, [run.phase, aim, celebrationOpen]);
 
   useEffect(() => {
     if (place || run.phase === "done" || run.phase === "summary") return;
@@ -1645,6 +1738,44 @@ function PlayLoaded({
   }
 
   function onContinue() {
+    // Cleared-mode primary trigger, checked BEFORE advancing: if the
+    // just-answered place completes the band's catalog (persistent history
+    // plus the place just answered covers every band place), the band is
+    // cleared. Celebrate INSTEAD of advancing — the player stays on the
+    // answered reveal, and tapping "Next place" again advances normally
+    // because the mark is already set. Never fires mid-question: this is
+    // the "Next place" handler only.
+    const justAnswered = dealer.at(run.index);
+    // The mark check comes first: once celebrated, no later tap in this
+    // cycle can re-trigger, so the catalog/history scan below is skipped.
+    if (justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+      // The band catalog is the unfiltered region catalog narrowed by the
+      // run's difficulty band — the same filter the replay path uses.
+      const bandCatalogIds = filterByTier(places, run.difficultyChoice).map(
+        (place) => place.id,
+      );
+      if (bandCatalogIds.length > 0) {
+        // The persistent history plus the place just answered covers the
+        // band's catalog: the band is cleared. Checked through the
+        // canonical isBandCleared helper over a union store (the history
+        // write for the just-answered place may not have landed yet).
+        const seenUnion = memorySeenStore();
+        seenUnion.write([
+          ...seenStoreFor(run.edition, run.regionId, run.difficultyChoice).read(),
+          justAnswered.id,
+        ]);
+        if (isBandCleared(bandCatalogIds, seenUnion)) {
+          markClearedCelebrated(run.edition, run.regionId, run.difficultyChoice);
+          onCleared({
+            edition: run.edition,
+            regionId: run.regionId,
+            regionName: run.regionName,
+            choice: run.difficultyChoice,
+          });
+          return;
+        }
+      }
+    }
     setDrop(null);
     clearDrop();
     setAimAnnouncement(null);
@@ -1690,12 +1821,29 @@ function PlayLoaded({
     // Play again replays under the SAME difficulty band the run started with:
     // the pool is re-filtered from run.difficultyChoice — never silently
     // widened back to the full catalog.
-    const { poolIds: replayPoolIds, prevLastId: replayPrevLastId } = poolForRunStart(
+    const { poolIds: replayPoolIds, prevLastId: replayPrevLastId, cycleCompleted: replayCycleCompleted } = poolForRunStart(
       filterByTier(places ?? [], run.difficultyChoice),
       run.edition,
       run.regionId,
       run.difficultyChoice,
     );
+    // Cleared-mode backstop, same as openRun: a completed cycle here means
+    // the band was fully played through (e.g. a crash before the onContinue
+    // trigger could celebrate). Already celebrated -> the new cycle begins
+    // silently; otherwise celebrate immediately, once per clear.
+    if (replayCycleCompleted) {
+      if (wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+        clearClearedMark(run.edition, run.regionId, run.difficultyChoice);
+      } else {
+        markClearedCelebrated(run.edition, run.regionId, run.difficultyChoice);
+        onCleared({
+          edition: run.edition,
+          regionId: run.regionId,
+          regionName: run.regionName,
+          choice: run.difficultyChoice,
+        });
+      }
+    }
     const freshRun = resumeRun(
       run,
       {
