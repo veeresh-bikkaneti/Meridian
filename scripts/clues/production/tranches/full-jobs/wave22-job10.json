@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 4415,
+    "attempt": 4381,
+    "place_id": "gn-5097830",
+    "input": {
+      "place": {
+        "place_id": "gn-5097830",
+        "name": "Fanwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.64094,
+        "lon": -74.38348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fanwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Fanwood,_New_Jersey",
+          "text": "Fanwood is a borough in Union County, in the U.S. state of New Jersey. Located on a ridge in northern-central New Jersey, the borough is a commuter town of New York City in the New York metropolitan area. Fanwood is located in the Raritan Valley and Rahway Valley regions. As of the 2020 United States census, the borough's population was 7,774, an increase of 456 (+6.2%) from the 2010 census count of 7,318, which in turn reflected an increase of 144 (+2.0%) from the 7,174 counted in the 2000 census.\nFanwood was incorporated as a borough by an act of the New Jersey Legislature on October 2, 1895, from portions of Fanwood Township (now known as Scotch Plains), based on the results of a referendum held the previous day. The borough was named for Fannie Wood, an author."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "fanwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4416,
+    "attempt": 4382,
+    "place_id": "gn-5110309",
+    "input": {
+      "place": {
+        "place_id": "gn-5110309",
+        "name": "Brooklyn Heights",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69538,
+        "lon": -73.99375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklyn Heights",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn_Heights",
+          "text": "Brooklyn Heights is a residential neighborhood within the New York City borough of Brooklyn. The neighborhood is bounded by Old Fulton Street near the Brooklyn Bridge on the north, Cadman Plaza West on the east, Atlantic Avenue on the south, and the Brooklyn–Queens Expressway or the East River on the west. Adjacent neighborhoods are Dumbo to the north, Downtown Brooklyn to the east, and Cobble Hill and Boerum Hill to the south.\nOriginally referred to as Brooklyn Village, Brooklyn Heights was developed as a fashionable residential area after the introduction of ferry service to Manhattan in 1814. By the mid-19th century, the area was served by three ferry services as well as the Brooklyn and Jamaica Railroad, and it was one of New York's premier residential addresses. Some of its streets are named for early real estate developers. The neighborhood is noted for its low-rise architecture and its many brownstone rowhouses, most of them built prior to the Civil War. It also has an abundance of notable churches and other religious institutions. Brooklyn's first art gallery, the Brooklyn Arts Gallery, was opened in Brooklyn Heights in 1958. Much of the neighborhood is part of the Brooklyn Heights Historic District, a city-designated and National Historic Landmark District.\nDirectly across the East River from Manhattan and connected to it by subways and regular ferry service, Brooklyn Heights is also easily accessible from Downtown Brooklyn. Columbia Heights, an upscale six-block-long street next to the Brooklyn Heights Promenade, is sometimes considered to be its own neighborhood.\nBrooklyn Heights is part of Brooklyn Community District 2, and its primary ZIP Code is 11201. It is patrolled by the 84th Precinct of the New York City Police Department.  The New York City Fire Department operates two fire stations near Brooklyn Heights: Engine Company 205/Ladder Company 118 at 74 Middagh Street, and Engine Company 224 at 274 Hicks Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "brooklyn heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4417,
+    "attempt": 4383,
+    "place_id": "gn-5948111",
+    "input": {
+      "place": {
+        "place_id": "gn-5948111",
+        "name": "Elora",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.6834,
+        "lon": -80.43299
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elora, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Elora,_Ontario",
+          "text": "The Historic Village of Elora is a community in the township of Centre Wellington (Wellington County) in the Province of Ontario, Canada. It is well known for its 19th-century limestone architecture and its geographically, historically, and culturally significant limestone gorge.\nElora is no longer an incorporated municipality in its own right, although it is the seat of the municipal government that succeeded it. The Township of Centre Wellington was formed in 1999 when, on the advice of the Province, the County amalgamated the Town of Fergus; the Village of Elora; and the surrounding townships of Nichol, Pilkington, and West Garafraxa (along with the northwestern part of Eramosa.) The decision — along with the Ontario government’s role therein — remains highly controversial among Elora’s inhabitants.\nIn 2011, the village was estimated to have had a population of approximately 7,756."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "elora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4418,
+    "attempt": 4384,
+    "place_id": "gn-2234684",
+    "input": {
+      "place": {
+        "place_id": "gn-2234684",
+        "name": "Batibo",
+        "country": "Cameroon",
+        "subdivision": "North-West",
+        "lat": 5.8358,
+        "lon": 9.8553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batibo",
+          "url": "https://en.wikipedia.org/wiki/Batibo",
+          "text": "Batibo is a name that refers to a town and a subdivision in Cameroon. It is located along the Trans-African Highway, 27 miles west of Bamenda and about 100 miles east of Nigeria. Batibo is the economic, social, political and cultural heartbeat of the Moghamo speaking people as well as the Greater Widikum tribe. Batibo, formerly referred to as Aghwi, is home to a people including farmers, traders, and craftsmen.\nBatibo is the capital of Batibo Sub Division or Batibo Council and is located 40 kilometers southwest of Bamenda in the northwest region of Cameroon, along the Bamenda - Mamfe road. It is located between latitudes 575 and 590 north of the equator, longitudes 975 east of the Greenwich meridian, and at the transition between the equatorial forest in the south and the savannah to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "batibo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4419,
+    "attempt": 4385,
+    "place_id": "gn-2930367",
+    "input": {
+      "place": {
+        "place_id": "gn-2930367",
+        "name": "Bad Endorf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.90901,
+        "lon": 12.29795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Endorf",
+          "url": "https://en.wikipedia.org/wiki/Bad_Endorf",
+          "text": "Bad Endorf (German pronunciation: [baːt ˈʔɛndɔʁf]) is a municipality and a village in the district of Rosenheim in Bavaria in Germany. The market town is located about 15 km outside of Rosenheim and is in close proximity to Lake Simssee and Chiemsee lake and its larger shore towns, Prien, Gstadt, and Seebruck.\nThe town is home to a large health spa, as well as the German Federal Police winter sports training center which is famous for \"producing\" medal winners at the Winter Olympics such as female speed skater Claudia Pechstein.\nBad Endorf has one main bus station and several minor ones located around the town for regional destinations. The town also has a Deutsche Bahn railway station on the Rosenheim–Salzburg line with service to minor towns in the area as well as Rosenheim, Munich, and Salzburg, Austria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "bad endorf",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "endorf",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4420,
+    "attempt": 4386,
+    "place_id": "gn-3081874",
+    "input": {
+      "place": {
+        "place_id": "gn-3081874",
+        "name": "Wisła",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 49.65629,
+        "lon": 18.8591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wisła",
+          "url": "https://en.wikipedia.org/wiki/Wis%C5%82a",
+          "text": "Wisła (Polish: [ˈviswa] ; Czech: Visla; Silesian: Wistula; German: Weichsel [ˈvaɪksl̩] ) is a town in Cieszyn County, Silesian Voivodeship, southern Poland, with a population of about 11,132 (2019), near the border with the Czech Republic. It is situated in the Silesian Beskids mountain range in the historical region of Cieszyn Silesia and ethnic region of the Silesian Gorals. Wisła is the Polish name for the Vistula River, which has its source in the mountains near the town.\nIt is the only town in Poland with a majority Lutheran population (as of 2006 roughly two-thirds of the population were Protestant, which is a drop from 94,4% in 1900).\nWisła is a popular year-round tourist destination, being home to Malinka, a ski jumping hill. It is also known for being the home town of ski jumper Adam Małysz. Wisła is also the home of the Beskid Museum displaying agricultural tools, folk costumes and goatskin bagpipes from the surrounding region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "wis a",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4421,
+    "attempt": 4387,
+    "place_id": "gn-3120605",
+    "input": {
+      "place": {
+        "place_id": "gn-3120605",
+        "name": "Hoyo de Manzanares",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.62265,
+        "lon": -3.90733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoyo de Manzanares",
+          "url": "https://en.wikipedia.org/wiki/Hoyo_de_Manzanares",
+          "text": "Hoyo de Manzanares is a municipality of the Community of Madrid, Spain, and is located on the northwestern side of the Community of Madrid and to the south of the Sierra de Guadarrama.\nIt has a stable population of roughly 7,457 residents (INE 2008), a statistic that has been increasing consistently from the economic crisis of 2008/9 onwards. The population also greatly increases during the summer due to an influx of various families who own summer houses in the area.\nThis district of Madrid is found inside the Cuenca Alta del Manzanares Regional Park created by the Community of Madrid in 1985. This regional park is the oldest and most protected regional park in the Community of Madrid. As a result, Hoyo de Manzanares is surrounded by mountains and fields that give the town a beautiful location.\nThe only way to arrive in Hoyo de Manzanares from the city of Madrid is via the M-618 highway, which bisects the regional park, passing the nearby towns of Torrelodones, Colmenar Viejo, and finally Hoyo de Manzanares."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "hoyo de manzanares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hoyo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "manzanares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4422,
+    "attempt": 4388,
+    "place_id": "gn-3397562",
+    "input": {
+      "place": {
+        "place_id": "gn-3397562",
+        "name": "Jardim de Piranhas",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -6.37861,
+        "lon": -37.35194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jardim de Piranhas",
+          "url": "https://en.wikipedia.org/wiki/Jardim_de_Piranhas",
+          "text": "Jardim de Piranhas is a municipality in the state of Rio Grande do Norte in the Northeast region of Brazil.\nAccording to historical accounts, in the 19th century, cowboys attempting to cross the Piranhas River with their cattle became desperate due to the presence of piranha fish in the river. In their distress, they prayed to Nossa Senhora dos Aflitos (Our Lady of the Afflicted), promising to build a chapel in her honor if they safely made the crossing. After successfully crossing with their cattle, they fulfilled their vow by constructing a chapel. Later, a wealthy local woman named Margarida Cardoso Cavalcante donated land near the river for this chapel. The community that developed around this chapel became known as Jardim de Piranhas, named after Fazenda Jardim (Jardim Farm), located along the banks of the Piranhas River. The village grew steadily, eventually becoming a district of Caicó in 1936. On December 23, 1948, under State Law No. 146, Jardim de Piranhas was officially separated from Caicó and established as an independent municipality in the Brazilian state of Rio Grande do Norte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "jardim de piranhas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jardim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "piranhas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4424,
+    "attempt": 4389,
+    "place_id": "gn-6094407",
+    "input": {
+      "place": {
+        "place_id": "gn-6094407",
+        "name": "Oromocto",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.83512,
+        "lon": -66.47917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oromocto",
+          "url": "https://en.wikipedia.org/wiki/Oromocto",
+          "text": "Oromocto is a Canadian town in Sunbury County, New Brunswick.\nThe town is located on the west bank of the Saint John River at the mouth of the Oromocto River, approximately 20 kilometres (12 mi) southeast of Fredericton. The town's name is derived from the name of the Oromocto River; \"oromocto\" is thought to have originated from the Wolastoqey word welamukotuk which means \"deep water\". It appears on early maps as Ramouctou and La Rivière du Kamouctou (Freneuse seigneurial grant, 1684).\nIt is the administrative headquarters of the Oromocto First Nation band government and the site of Canadian Forces Base Gagetown, which dominates its economy and modern history.\nOn 1 January 2023, Oromocto annexed the local service district of the parish of Lincoln, excluding the Fredericton International Airport and a highway strip connecting it to the city. Revised census figures have not been released."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "oromocto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4425,
+    "attempt": 4390,
+    "place_id": "gn-661164",
+    "input": {
+      "place": {
+        "place_id": "gn-661164",
+        "name": "Anjala",
+        "country": "Finland",
+        "subdivision": "Kymenlaakso",
+        "lat": 60.68333,
+        "lon": 26.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anjala",
+          "url": "https://en.wikipedia.org/wiki/Anjala",
+          "text": "Anjala was a town in Kymenlaakso, Southern Finland, which merged in 1975 with Sippola to form Anjalankoski, and in 2009 further merged into Kouvola. It neighbours Inkeroinen via a bridge on the main road which runs through the two settlements crossing the Kymijoki river, which flows to the east of Anjala and to the south-west of Inkeroinen. It is approximately 35km north-west of Kotka, 25km south-east of Kouvola, and 118km north-east of Helsinki.\nAnjala is remembered historically in connection with the 18th-century event known as the Anjala Conspiracy.\nThe Regina School, one of the country's first public schools, was located here, as was its library, which was the first in the country. They were founded by Rabbe Gottlieb Wrede with the help of the Christian educational society Pro Fide et Christianismo, of which he was a member. \nCurrently, the town features many facilities including a swimming lake, a church, a small K-Market grocery store, a BestDrive by Continental garage, a Neste gas station with a car wash, cafe and, in summers, ice cream stall, and a cultural museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "anjala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4426,
+    "attempt": 4391,
+    "place_id": "gn-1176206",
+    "input": {
+      "place": {
+        "place_id": "gn-1176206",
+        "name": "Jandiala Sher Khan",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.82098,
+        "lon": 73.91815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jandiala Sher Khan",
+          "url": "https://en.wikipedia.org/wiki/Jandiala_Sher_Khan",
+          "text": "Jandiala Sher Khan, or Jandy ala Sher Khan (Urdu: جنڈیالہ شیر خاں), is a town of Sheikhupura District in Punjab, Pakistan. It is part of Sheikhupura Tehsil and is located at 31°49'15N 73°55'10E. The town is notable for being the birthplace of famous poet Waris Shah, known as the Punjabi Shakespeare, and contains his mausoleum.\nJandiala Sher Khan was an important provincial town in the Mughal Empire. The town was located on a floodplain and there were no nearby sources of water, requiring local residents to dig wells to irrigate their crops. During the reign of Emperor Akbar, a man of means known as Sher Khan settled here. Heeding the advice of a local dervish named Syed Ghaznavi, Sher Khan built a monumental step-well (known as a baoli) to provide easier access to the water table. Sher Khan also built a caravansary-like structure over the stairs to the well, either serving as a type of inn or providing space for merchants to sell goods to travelers along the road between Lahore and Kashmir. Immediately to the southeast of the baoli he also endowed a small mosque. The design of the step well is quintessentially Akbarian. The ground plan is conceived as a central domed chamber surrounded by eight smaller rooms, a motif known as hasht bihisht (\"eight paradises\"), a Mughal innovation derived from Timurid precedent. Sher Khan's endowment of the baoli was immortalized by a plaque in Persian calligraphy that used to hang on the site, but was moved to the Lahore Museum, Pakistan for safekeeping in 1971. It is the birthplace of the ex-governor of Punjab Kaliningrad Khan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "jandiala sher khan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jandiala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sher",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "khan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4427,
+    "attempt": 4392,
+    "place_id": "gn-1850004",
+    "input": {
+      "place": {
+        "place_id": "gn-1850004",
+        "name": "Tonoshō",
+        "country": "Japan",
+        "subdivision": "Kagawa",
+        "lat": 34.48047,
+        "lon": 134.17017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonoshō, Kagawa",
+          "url": "https://en.wikipedia.org/wiki/Tonosh%C5%8D,_Kagawa",
+          "text": "Tonoshō (土庄町, Tonoshō-chō) is a town and port in Shōzu District, Kagawa, Japan, with a population of 12,915. The town lies on the west coast of the island of Shōdoshima—the second-largest island in the Seto Inland Sea—and it is the main passenger access for the island. First settled around the 8th century, the town center grew into a complex maze of streets during the war-torn Muromachi period (1336–1573) to inhibit enemy forces. The town was officially incorporated in 1898, and today sesame oil, olives, sōmen noodles, fishing and tourism are important industries.\nThe town's jurisdiction totals 74.38 km2, covering historic Tonoshō and smaller settlements on western Shōdoshima, as well as Teshima, Odeshima, and other nearby islands.\nThe town is known as the setting of the manga and anime Teasing Master Takagi-san and is the creator's hometown. Tonoshō also participates in the regional Setouchi Triennale art festival, and several art installations are found in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "tonosho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4428,
+    "attempt": 4393,
+    "place_id": "gn-2149271",
+    "input": {
+      "place": {
+        "place_id": "gn-2149271",
+        "name": "Smithfield",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.85,
+        "lon": 150.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smithfield, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Smithfield,_New_South_Wales",
+          "text": "Smithfield is a suburb of Sydney, in the state of New South Wales, Australia. Smithfield is located 31 kilometres (19 mi) west of the Sydney central business district, in the local government areas of the City of Fairfield and Cumberland Council. Located in the Greater Western Sydney region, the suburb is one of the largest in Fairfield City by area. The suburb is a mix of residential, industrial, recreational, rural and commercial areas, and is mostly characterized by low-density housing.\nEstablished in 1836, Smithfield was the first major settlement of the Fairfield LGA. The original 1838 summary plan of Smithfield shows the suburb laid out in a grid pattern with most of the streets having the same names as they do today. The name of Smithfield is linked with the cattle markets of London and Dublin. In the 19th century, Smithfield used to be a semi-rural village, before becoming a large commercial centre in the early 20th century, in addition to featuring a significant employment centre in south-western Sydney.  \nLocated partially in the suburb, the Smithfield-Wetherill Park Industrial Estate is the largest industrial estate in the southern hemisphere and is the centre of manufacturing and distribution in greater western Sydney. A working class area, Smithfield is also multicultural, with over 130 different nationalities and 70 different languages being spoken."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "smithfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4429,
+    "attempt": 4394,
+    "place_id": "gn-2455735",
+    "input": {
+      "place": {
+        "place_id": "gn-2455735",
+        "name": "Kangaba",
+        "country": "Mali",
+        "subdivision": "Koulikoro",
+        "lat": 11.93333,
+        "lon": -8.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kangaba",
+          "url": "https://en.wikipedia.org/wiki/Kangaba",
+          "text": "Kangaba is a town, commune, and seat of the Kangaba Cercle in the Koulikoro Region of south-western Mali.\nKangaba is believed to have been founded in 1050 by Mandinka tribesmen and was a vassal state of the Ghana Empire. Once known as Kaba, the area was a core province of the Mali Empire. After winning the Battle of Kirina in 1235, Sundiata Keita proclaimed the Manden Charter, also known as the Kouroukan Fouga after the field near Kangaba where it was created, perhaps the oldest constitution in the world. Ceremonies are still held in the town to honor the ancient traditions and promote a message of peace and fraternity.\nThe Kamablon is a sacred circular mudbrick building with a conical roof in the bara, or large public square, at the center of town, built in 1653. The oldest of its kind in the Manden cultural zone, its septennial re-roofing ceremony brings together the traditional castes, founding dynasties of the Mali Empire, and griots who recite the oral history and tradition of the region. This ceremony was listed on the Representative List of the Intangible Cultural Heritage of Humanity in 2009.\nThe relationship between Kangaba and the Keita clan is disputed. Some sources claim that the town was the boyhood home of Sundiata Keita and the first capital of the Mali Empire. The Keitas likely, however, only established a base there after the decline of the larger empire, and it thus became associated in popular imagination with the original legend."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "kangaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4430,
+    "attempt": 4395,
+    "place_id": "gn-2517310",
+    "input": {
+      "place": {
+        "place_id": "gn-2517310",
+        "name": "Garrucha",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.18141,
+        "lon": -1.82252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garrucha",
+          "url": "https://en.wikipedia.org/wiki/Garrucha",
+          "text": "Garrucha is a municipality of Almería province, in the autonomous community of Andalusia, Spain. Garrucha is a seaport of south-eastern Spain on the Mediterranean Sea and the right bank of the river Antas. In 1998 the town had a population of 5000. The harbor of Garrucha, which is defended by an eighteenth-century castle, affords shelter to large ships, and is the natural outlet for the commerce of a once thriving agricultural and mining district. Garrucha had, at the beginning of the twentieth century a considerable trade in lead, silver, copper, iron, esparto grass and fruit, but now the only export from its harbour is gypsum mined in Sorbas, with a million metric tonnes being exported annually. Besides cargo ships, the port is home to a small fishing fleet and has approximately 300 moorings for leisure boats."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "garrucha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4431,
+    "attempt": 4396,
+    "place_id": "gn-2651095",
+    "input": {
+      "place": {
+        "place_id": "gn-2651095",
+        "name": "Dorking",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23228,
+        "lon": -0.3338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dorking",
+          "url": "https://en.wikipedia.org/wiki/Dorking",
+          "text": "Dorking () is a market town in Surrey in South East England about 21 mi (34 km) south-west of London. It is in Mole Valley District and the council headquarters are to the east of the centre. The High Street runs roughly east–west, parallel to the Pipp Brook and along the northern face of an outcrop of Lower Greensand. The town is bordered on three sides by the Surrey Hills National Landscape and is close to Box Hill and Leith Hill.\nThe earliest archaeological evidence of human activity is from the Mesolithic and Neolithic periods, and there are several Bronze Age bowl barrows in the local area. The town may have been the site of a staging post on Stane Street during Roman times, however the name 'Dorking' suggests an Anglo-Saxon origin for the modern settlement. A market is thought to have been held at least weekly since early medieval times and was highly regarded for the poultry traded there. The Dorking breed of domestic chicken is named after the town.\nThe local economy thrived during Tudor times, but declined in the 17th century due to poor infrastructure and competition from neighbouring towns. During the early modern period many inhabitants were nonconformists, including the author, Daniel Defoe, who lived in Dorking as a child. Six of the Mayflower Pilgrims, including William Mullins and his daughter Priscilla, lived in the town before setting sail for the New World.\nDorking started to expand during the 18th and 19th centuries as transport links improved and farmland to the south of the centre was released for housebuilding. The new turnpike, and later the railways, facilitated the sale of lime produced in the town, but also attracted wealthier residents, who had had no previous connection to the area. Residential expansion continued in the first half of the 20th century, as the Deepdene and Denbies estates began to be broken up. Further development is now constrained by the Metropolitan Green Belt, which encircles the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "dorking",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4432,
+    "attempt": 4397,
+    "place_id": "gn-2937932",
+    "input": {
+      "place": {
+        "place_id": "gn-2937932",
+        "name": "Dettelbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.80295,
+        "lon": 10.16519
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dettelbach",
+          "url": "https://en.wikipedia.org/wiki/Dettelbach",
+          "text": "Dettelbach (German: [ˈdɛtl̩ˌbax] ) is a town in the district of Kitzingen in the Regierungsbezirk Unterfranken in Bavaria, Germany. It is situated on the right bank of the Main, 20 km east of Würzburg, and 8 km north of Kitzingen. It includes neighboring villages as administrative subdivisions, namely Bibergau, Brück, Dettelbach-Bahnhof, Effeldorf, Euerfeld, Mainsondheim, Neuses am Berg, Neusetz, Schernau und Schnepfenbach.\nDettelbach was first mentioned as a settlement in 741 AD. \"Stadtrecht\" town privileges were granted in 1484 AD.\nDettelbach has a nearly complete medieval city wall that includes towers and two remaining town gates. Dettelbach's most prominent architectural features are cobble-stoned streets with picturesque rows of half-timbered houses, and historic buildings dating as far back as the Renaissance, or even late-Gothic era.\nDettelbach is famous for its wine, available from a number of local wineries. One major tourist attraction is the annual wine fest in the heart of downtown. The festival takes place every year from the Catholic Feast of Corpus Christi to the Sunday following the holiday.\nA local specialty are \"Muskatzinen,\" flavorful pastries spiced with nutmeg, made after a secret recipe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "dettelbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4433,
+    "attempt": 4398,
+    "place_id": "gn-3102677",
+    "input": {
+      "place": {
+        "place_id": "gn-3102677",
+        "name": "Braniewo",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.37971,
+        "lon": 19.81959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braniewo",
+          "url": "https://en.wikipedia.org/wiki/Braniewo",
+          "text": "Braniewo ([braˈɲɛvɔ]) (German: Braunsberg in Ostpreußen) is a town in northern Poland, in Warmia, in the Warmian-Masurian Voivodeship, with a population of 16,907 as of June 2021. It is the capital of Braniewo County.\nFounded in the Middle Ages, Braniewo is the oldest city in Warmia, and currently the second largest (after Olsztyn), and was its first capital until 1340. From the late medieval period, it prospered from international trade, and in the early modern period, it was a significant center of higher education in Poland, called the \"Athens of the North.\" Additionally, since the 16th century Braniewo is a noted center for brewing. The town features heritage sites in a variety of styles, including Gothic, Baroque, Neoclassical and Gothic Revival. Braniewo hosts a garrison of the Polish Armed Forces and is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "braniewo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4434,
+    "attempt": 4399,
+    "place_id": "gn-3438123",
+    "input": {
+      "place": {
+        "place_id": "gn-3438123",
+        "name": "Eusebio Ayala",
+        "country": "Paraguay",
+        "subdivision": "Cordillera Department",
+        "lat": -25.38276,
+        "lon": -56.96088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eusebio Ayala, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Eusebio_Ayala,_Paraguay",
+          "text": "Eusebio Ayala is a city and district of the Cordillera Department, Paraguay. It is named after Eusebio Ayala, a former President of Paraguay. It is located approximately 72 km of the city of Asunción, capital of Paraguay.\nThis city lies on the right bank of the stream Piribebuy, being axis road from where routes depart inside and outside the department. It was formerly called \"Barrero Grande\" and is still commonly known by this name, and it is well known for being located next to the fields of Acosta Ñu, the site of the Battle of Acosta Ñu, famous for the rump Paraguayan Army's desperate employment of child, elderly and wounded soldiers against a much larger veteran Brazilian and Argentine force in what proved to be the last major engagement of the Paraguayan War (1864 to 1870)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "eusebio ayala",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eusebio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ayala",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4435,
+    "attempt": 4400,
+    "place_id": "gn-3827380",
+    "input": {
+      "place": {
+        "place_id": "gn-3827380",
+        "name": "San Pedro Atocpan",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.2016,
+        "lon": -99.04963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro Atocpan",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_Atocpan",
+          "text": "San Pedro Atocpan is one of the communities that make up the borough of Milpa Alta in Mexico City. This location is known for the preparation of mole sauce, which employs over 90% of the community and provides almost all of the sauce that is eaten in Mexico City. Despite being in the Federal District and the second largest district in size, Milpa Alta is distinctly rural.  Only 116,000 of Mexico City's 8 million inhabitants live in the entire borough, and as of 2005, only 8,997 lived in San Pedro Atocpan. The name \"Atocpan\" is from Nahuatl and means \"on fertile soil\" The community is located in the northwest of the borough, on the highway between Mexico City and Oaxtepec, Morelos. It has a territory of 87.65 hectares, and is  about 2,500 meters above sea level. The land here is rugged as it is wedged between the Cuauhtzin Volcano and Teutli Mountain.\nThis community was designated as a \"Barrio Mágico\" by the city in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro atocpan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "atocpan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

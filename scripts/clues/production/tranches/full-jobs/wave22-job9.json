@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 4395,
+    "attempt": 4361,
+    "place_id": "gn-3026827",
+    "input": {
+      "place": {
+        "place_id": "gn-3026827",
+        "name": "Chantilly",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.19461,
+        "lon": 2.47124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chantilly, Oise",
+          "url": "https://en.wikipedia.org/wiki/Chantilly,_Oise",
+          "text": "Chantilly ( shan-TIL-ee, French: [ʃɑ̃tiji] ; Picard: Cantily) is a commune in the Oise department in the Valley of the Nonette in the Hauts-de-France region of Northern France. Surrounded by Chantilly Forest, the town of 10,591 inhabitants (2023) falls within the metropolitan area of Paris. It lies 38.4 km (23.9 mi) north-northeast of the centre of Paris and together with six neighbouring communes forms an urban area of 37,039 inhabitants (2022).\nIntimately tied to the House of Montmorency in the 15th to 17th centuries, the Château de Chantilly was home to the Princes of Condé, cousins of the Kings of France, from the 17th to the 19th centuries. It now houses the Musée Condé. Chantilly is also known for its horse racing track, Chantilly Racecourse, where prestigious races are held for the Prix du Jockey Club and Prix de Diane. Chantilly and the surrounding communities are home to the largest racehorse-training community in France.\nChantilly is also home to the Living Museum of the Horse, with stables built by the Princes of Condé. It is considered one of the more important tourist destinations in the Paris area. Chantilly gave its name to Chantilly cream and to Chantilly lace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "chantilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4396,
+    "attempt": 4362,
+    "place_id": "gn-3180630",
+    "input": {
+      "place": {
+        "place_id": "gn-3180630",
+        "name": "Capri",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.55073,
+        "lon": 14.24263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capri",
+          "url": "https://en.wikipedia.org/wiki/Capri",
+          "text": "Capri is an island located in the Tyrrhenian Sea off the Sorrento Peninsula, on the south side of the Gulf of Naples in the Campania region of Italy. A resort destination since the time of the Roman Republic, it is known for its natural beauty, historic sites, and tourism industry. It has 13,451 inhabitants.\nThe island is characterized by its rugged limestone landscape, sea stacks (faraglioni), coastal grottoes including the renowned Blue Grotto, and high cliffs overlooking the sea. Notable features include the harbours of Marina Grande and Marina Piccola, the panoramic Belvedere of Tragara, the ruins of Roman imperial villas such as Villa Jovis, and the towns of Capri and Anacapri, the latter situated higher up the slopes of Monte Solaro, the island's highest point.\nAdministratively, Capri is part of the Metropolitan City of Naples within the Campania region. The island is divided into two municipalities: Capri and Anacapri."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "capri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4397,
+    "attempt": 4363,
+    "place_id": "gn-5562087",
+    "input": {
+      "place": {
+        "place_id": "gn-5562087",
+        "name": "Crescent City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 41.75595,
+        "lon": -124.20175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crescent City, California",
+          "url": "https://en.wikipedia.org/wiki/Crescent_City,_California",
+          "text": "Crescent City (Tolowa: Taa-’at-dvn; Yurok: Kohpey; Wiyot: Daluwagh) is the only incorporated city in Del Norte County, California, United States, of which it is also the county seat. The city is on the North Coast of California and had a total population of 6,673 in the 2020 census, down from 7,643 in the 2010 census.\nThe city is the site of the Redwood National Park headquarters, as well as the historic Battery Point Light. Due to the richness of the local Pacific Ocean waters and the related catch, and ease of access, Crescent City Harbor serves as home port for numerous commercial fishing vessels. The population includes inmates at Pelican Bay State Prison, also within the city limits, and the former census-designated place Crescent City North annexed to the city.\nCrescent City's offshore geography makes it unusually susceptible to tsunamis. In 1964, much of the city was destroyed by four tsunami waves generated by the Great Alaskan earthquake off Anchorage, Alaska. In March 2011, the city's harbor suffered extensive damage and destruction from tsunamis generated by the earthquake off Miyagi Prefecture, Japan. Several dozen vessels and many of the docks they were moored to were destroyed as wave cycles related to the tsunamis exceeded 8 ft (2.4 m)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "crescent city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crescent",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4398,
+    "attempt": 4364,
+    "place_id": "gn-6316487",
+    "input": {
+      "place": {
+        "place_id": "gn-6316487",
+        "name": "Balneário Gaivota",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -29.15667,
+        "lon": -49.57944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balneário Gaivota",
+          "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Gaivota",
+          "text": "Balneário Gaivota is a municipality in the state of Santa Catarina in the South region of Brazil. Balneario Gaivota has the largest beach shore in Santa Catarina .\n\nThe municipality is known for its beautiful beaches and wonderful lagoons, and its boardwalk. It has 23km of waterfront (the largest in the state of Santa Catarina), with 49 small beaches throughout its length having in the south one of the most beautiful beaches from Santa Catarina Areias Claras ( White sands) and the municipality is the top 10 national In population growing. \nThe city was emancipated from the neighbouring municipality, Sombrio, on December 29, 1995, through Law 10.054/1995. The locality developed due to the practice of exploratory fishing, an activity that until today, together with tourism and estate properties are one of the main ones in the economy of the municipality.\nIt makes limits with the municipalities of Sombrio, to the West, Balneário Arroio do Silva, to the North, Passo de Torres, to the South, and the Atlantic Ocean, to the East.\nIn the summer the city  reaches over 100k tourists.\nthe economy of the city is based in tourism, fisheries and estate properties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "balneario gaivota",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balneario",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gaivota",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4399,
+    "attempt": 4365,
+    "place_id": "gn-733151",
+    "input": {
+      "place": {
+        "place_id": "gn-733151",
+        "name": "Bobov Dol",
+        "country": "Bulgaria",
+        "subdivision": "Kyustendil",
+        "lat": 42.36378,
+        "lon": 22.99827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bobov Dol",
+          "url": "https://en.wikipedia.org/wiki/Bobov_Dol",
+          "text": "Bobov Dol (Bulgarian: Бобов дол [ˈbɔbovˌdɔɫ]; also Bobovdol) is a town in Bobov Dol Municipality, Kyustendil Province, southwestern Bulgaria. Bobov Dol lies near the geographic centre of the Balkan Peninsula and is known for its coal mines and thermal power plant. The third-largest town in the province (after Kyustendil and Dupnitsa), it is the administrative centre of Bobov Dol municipality.\nLocated in a mountainous region, it is surrounded on three sides by the mountain Konyavska Planina, with the Gologlavski Rid ridge to the north and east and the volcano-resembling peak of Kolosh to the west. To the south is the Razmetanitsa plain which reaches the valley of the Struma River. The town's name (literally \"bean valley\") may allude to the bean-shaped valley where the original village, now the Hristo Botev neighbourhood, is located; the name was first mentioned in 1576. To the east is the other town part of Bobov Dol, the newer Minyor neighbourhood in the Bankovitsa area which dates to 1954 and mostly consists of tower blocks.\nBobov Dol was first mentioned in an Ottoman tax register of 1576, although the area had been inhabited by the Thracians in antiquity and was part of the medieval Bulgarian Empire, as well as the Byzantine Empire. Although in the 1830s the geologist Ami Boué visited the region and studied the local coal deposits, it was not until after the Liberation of Bulgaria that extraction began, namely in 1891. On 30 September 1967, the village of Bobov Dol was proclaimed a town. The Bobov Dol Thermal Power Plant was built between 1973 and 1975, 10 kilometres from the town, at the village of Golemo Selo. During the Socialist era, Bobov Dol attracted many workers as it experienced an economic and demographic boom, with groups of workers arriving from as far as Nicaragua in the 1980s.\nNotable natives include football manager Georgi Vasilev (born 1946) and Prime Minister Plamen Oresharski (born 1960). The local football club, PFC Minyor Bobov dol, plays in the second division of Bulgarian football, B PFG."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "bobov dol",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bobov",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dol",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4400,
+    "attempt": 4366,
+    "place_id": "gn-1252887",
+    "input": {
+      "place": {
+        "place_id": "gn-1252887",
+        "name": "Wellington",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.36552,
+        "lon": 76.78442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wellington, Tamil Nadu",
+          "url": "https://en.wikipedia.org/wiki/Wellington,_Tamil_Nadu",
+          "text": "Wellington (Native name: Jakkatalla (Badaga)) is a town in the Nilgiris District of the Indian state of Tamil Nadu, located 3 km (1.9 mi) north of Coonoor on the NH-181. The town includes the Wellington Bazaar, and the Wellington Cantonment. The Wellington Cantonment is home to The Madras Regimental Centre (MRC) and  The Defence Services Staff College (DSSC). The Nilgiri passenger train passes through Wellington, which also has a railway station.\nThe settlement of Wellington lies immediately outside of Wellington Cantonment, which was earlier known as Jakkatalla (or Jacketallah) from the Badaga Village of that name to the north of it. In 1852, Sir Richard Armstrong, the then Commander-in-Chief, recommended that the name should be changed to Wellington in honour of the Iron Duke, who had previously evinced an interest in the establishment of a sanatorium in the Nilgiris. In 1860, Sir Charles Trevelyan held that this interesting Military Establishment could not be connected with a more appropriate name than Wellington. He, therefore, ordered that Jakkatalla Station be called henceforth Wellington.\nThe construction of the barracks began in 1852 and was completed in 1860, popularly known as Wellington Barracks. It assumed importance in the Station, and since February 1942 is occupied by the Madras Regimental Centre. The Wellington Barracks is now named as Srinagesh Barracks in memory of the First Indian Colonel of the Madras Regiment Gen. S.M.Srinagesh.\nThe native Bazaar, now known as the Cantonment Market, is away from the Barracks and is on the other side of the stream after crossing the Waterloo Bridge (commonly known as Black Bridge, a tarred wooden construction, reconstructed in March 2009, and renamed as Manekshaw Bridge in memory of Field Marshal SHFJ Manekshaw) onto NH 181."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "wellington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4401,
+    "attempt": 4367,
+    "place_id": "gn-1711742",
+    "input": {
+      "place": {
+        "place_id": "gn-1711742",
+        "name": "Hilongos",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.37444,
+        "lon": 124.74972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilongos",
+          "url": "https://en.wikipedia.org/wiki/Hilongos",
+          "text": "Hilongos (IPA: [hɪ'lɔŋos]), officially the Municipality of Hilongos (Cebuano: Lungsod sa Hilongos; Waray: Bungto han Hilongos; Tagalog: Bayan ng Hilongos), is a First Income Class municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 66,774 people.\nHilongos is situated in the southwestern part of Leyte. Hilongos is also a center for government, religion, shipping, rice production, commerce, banking, finance, telecommunications, health services, education, sports and socio-cultural activities.\nThe Port of Hilongos is one of the biggest and busiest in Eastern Visayas (Region 8), known for being the main port where travelers go in and out of Leyte due to its strategic location on the island. Hilongos Port caters day and night trips to and from the city and is the primary choice for travelers especially from the southern parts of Leyte. Hilongos also has an airport, but is mostly restricted to general aviation use.\nHilongos has two public markets and two teo transport terminals. The municipality is composed of 51 barangays with vast coastal plains used in the production of rice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "hilongos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4402,
+    "attempt": 4368,
+    "place_id": "gn-2636790",
+    "input": {
+      "place": {
+        "place_id": "gn-2636790",
+        "name": "Stornoway",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 58.20925,
+        "lon": -6.38649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stornoway",
+          "url": "https://en.wikipedia.org/wiki/Stornoway",
+          "text": "Stornoway (Scottish Gaelic: Steòrnabhagh) is a port town in Scotland, the main town, and by far the largest, of the Outer Hebrides and the capital of both the Isle of Lewis and encompassing island of Lewis and Harris in Scotland.\nStornoway is the third-largest island town in Scotland's islands after Kirkwall in Orkney and Lerwick in Shetland. The historical civil parish of Stornoway, which includes various nearby villages, has a combined population of just over 10,000. The Comhairle nan Eilean Siar (the Western Isles Council) measures population in a different area: the Stornoway settlement area, Laxdale, Sandwick and Newmarket; in 2019, the estimated population for this area was 6,953.\nStornoway is an important port and the administrative centre of the Outer Hebrides. It is home to Comhairle nan Eilean Siar and a variety of educational, sporting and media establishments. Until relatively recently, observance of the Christian Sabbath (Sunday) has been associated with Hebridean culture. Recent changes mean that Sundays on Lewis now more closely resemble those in most parts of the Southern Isles, i.e. Benbecula, South Uist, Barra, and Vatersay, and on mainland Scotland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "stornoway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4403,
+    "attempt": 4369,
+    "place_id": "gn-2651030",
+    "input": {
+      "place": {
+        "place_id": "gn-2651030",
+        "name": "Downham Market",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.60714,
+        "lon": 0.38375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Downham Market",
+          "url": "https://en.wikipedia.org/wiki/Downham_Market",
+          "text": "Downham Market, sometimes simply referred to as Downham, is a market town and civil parish in Norfolk, England. It is on the edge of the Fens, on the River Great Ouse, approximately 11 miles (18 km) south of King's Lynn, 39 miles (63 km) west of Norwich, and 30 miles (48 km) north of Cambridge.\nThe civil parish has an area of 5.20 square kilometres (2.01 sq mi) and at the 2011 census had a population of 9,994 in 4,637 households. It now includes the hamlet of Broomhill, formerly part of Wimbotsham parish to the north of the town.\nThe town was an agricultural centre, developing as a market for the produce of the Fens with a bridge across the Ouse. During the Middle Ages, it was famed for its butter market and also hosted a notable horse fair. The market is now held Fridays and Saturdays.\nNotable buildings in the town include its medieval parish church, dedicated to St Edmund, and the Victorian clock tower, constructed in 1878. The town is also known as the place where Charles I hid after the Battle of Naseby. In 2004 the town completed a regeneration project on the Market Place, moving the market to the town hall car park. The decorative town sign depicts the crown and arrows of St Edmund with horses to show the importance of the horse fairs in the town's history. A heritage centre, Discover Downham, opened in a former fire station in 2016. The town is twinned with Civray, Vienne, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "downham market",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "downham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "market",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4404,
+    "attempt": 4370,
+    "place_id": "gn-2921355",
+    "input": {
+      "place": {
+        "place_id": "gn-2921355",
+        "name": "Gengenbach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.40476,
+        "lon": 8.01433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gengenbach",
+          "url": "https://en.wikipedia.org/wiki/Gengenbach",
+          "text": "Gengenbach (German pronunciation: [ˈɡɛŋənˌbax] ; Low Alemannic: Gängäbach) is a town in the district of Ortenau, Baden-Württemberg, Germany, and a popular tourist destination on the western edge of the Black Forest, with about 11,000 inhabitants.\nGengenbach is well known for its traditional Alemannic \"fasnacht\", (\"Fasend\"), a kind of historically influenced celebration of carnival, where tradition is followed, from wearing costumes with carved wooden masks to clapping with a \"Ratsche\" (a traditional-classic wooden \"sound-producing\" toy). Gengenbach also boasts a picturesque, traditional, medieval town centre (\"Altstadt\"). The traditional town Gengenbach is the proud owner of the world's biggest advent calendar. The 24 windows of the 18th century town hall represent the 24 \"windows\" of an Advent calendar. The town also hosts a department of The Graduate School of Offenburg University of Applied Sciences, part of the University of Applied Sciences Offenburg.\nThe nearest cities in the region are Offenburg, Freiburg, Karlsruhe, Baden-Baden and Strasbourg/France. Gengenbach is twinned with the town of Obernai, Alsace, France.\nIn the 2005 film version of Charlie and the Chocolate Factory, Gengenbach was inaccurately referred to as Düsseldorf, the place where the character Augustus Gloop becomes the first finder of Wonka's Golden ticket."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "gengenbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4405,
+    "attempt": 4371,
+    "place_id": "gn-4772943",
+    "input": {
+      "place": {
+        "place_id": "gn-4772943",
+        "name": "Midlothian",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.50598,
+        "lon": -77.64916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midlothian, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Midlothian,_Virginia",
+          "text": "Midlothian ( mid-LOH-thee-ən) is an unincorporated area and census-designated place in Chesterfield County, Virginia, United States. Settled as a coal town, Midlothian  village experienced suburbanization effects and is now part of the western suburbs of Richmond, south of the James River in the Greater Richmond Region. Because of its unincorporated status, Midlothian has no formal government, and the name is used to represent the original small Village of Midlothian and a vast expanse of Chesterfield County in the northwestern portion of Southside Richmond served by the Midlothian post office. As of the 2020 census, Midlothian had a population of 18,320.\nThe Village of Midlothian was named for the early 18th-century coal mining enterprises of the Wooldridge family. Incorporated in 1836, their Mid-Lothian Mining and Manufacturing Company employed free and enslaved people to do the deadly work of digging underground.  Midlothian is the site of the first commercially-mined coal in the Colony of Virginia and North America.\nBy the early 18th century, several mines were being developed in Chesterfield County by French Huguenots and others. The mine owners began to export the commodity from the region in the 1730s. Midlothian-area coal from Harry Heth's Black Heath mines heated the U.S. White House for President Thomas Jefferson. The transportation needs of coal shipping stimulated construction of a paved toll road (Virginia's first), the Manchester Turnpike in 1807; and the Chesterfield Railroad, Virginia's first, in 1831; each traveled the 13 miles (21 km) from the mining community to the port of Manchester, just below the Fall Line of the James River. In 1850, the Richmond and Danville Railroad built Coalfield Station, a freight and later passenger depot, near the mines.\nIn the 1920s, the old turnpike was straightened and became part of the new east-west U.S. Route 60. A few decades later, residential neighborhoods were developed in Southside Richmond near Midlothian, including the large Salisbury community and the Brandermill planned development sited on Swift Creek Reservoir. In the 21st century, Midlothian extends many miles beyond the original village area. State Route 288 connects the community with Interstate 64 and the State Route 76 \"Powhite Parkway\" toll road, and Interstate 95 in the Richmond metropolitan area's southwestern quadrant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "midlothian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4406,
+    "attempt": 4372,
+    "place_id": "gn-4897543",
+    "input": {
+      "place": {
+        "place_id": "gn-4897543",
+        "name": "Irving Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.95336,
+        "lon": -87.73645
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irving Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Irving_Park,_Chicago",
+          "text": "Irving Park is one of the 77 community areas of Chicago in Illinois, United States, and is located on the city's Northwest Side. It is bounded by the Chicago River on the east, the Milwaukee Road railroad tracks on the west, Addison Street on the south and Montrose Avenue on the north, west of Pulaski Road stretching to encompass the region between Belmont Avenue on the south and, roughly, Leland Avenue on the north. It is named after the American author Washington Irving.\nOld Irving Park, bounded by Montrose Avenue, Pulaski Road, Addison Street, and Cicero Avenue, has a variety of housing stock with Queen Anne, Victorian, and Italianate homes, a few farmhouses, and numerous bungalows.\nThe CTA Blue Line runs through this neighborhood with stops at Addison (shared with Avondale), Irving Park, and Montrose (shared with Albany Park)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "irving park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "irving",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4407,
+    "attempt": 4373,
+    "place_id": "gn-2172293",
+    "input": {
+      "place": {
+        "place_id": "gn-2172293",
+        "name": "Carlton",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 144.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlton, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Carlton,_Victoria",
+          "text": "Carlton is an inner city suburb of Melbourne, Victoria, Australia, 3 kilometres north of the Melbourne central business district within the City of Melbourne local government area (LGA) and located on the traditional lands of the Wurrundjeri peoples. Carlton recorded a population of 16,055 at the 2021 census.\nImmediately adjoining the CBD, Carlton is known nationwide for its Little Italy precinct centred on Lygon Street, for its preponderance of 19th-century Victorian architecture and its garden squares including the Carlton Gardens, the latter being the location of the Royal Exhibition Building, one of Australia's few man-made sites with World Heritage status.\nDue to its proximity to the University of Melbourne, the CBD campus of RMIT University and the Fitzroy campus of Australian Catholic University, Carlton is also home to one of the highest concentrations of university students in Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "carlton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4408,
+    "attempt": 4374,
+    "place_id": "gn-2653704",
+    "input": {
+      "place": {
+        "place_id": "gn-2653704",
+        "name": "Carnoustie",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.50263,
+        "lon": -2.7053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carnoustie",
+          "url": "https://en.wikipedia.org/wiki/Carnoustie",
+          "text": "Carnoustie (; Scottish Gaelic: Càrn Ùstaidh) is a seaside town and former police burgh in the council area of Angus, Scotland. It is at the mouth of the Barry Burn on the North Sea coast. In 2022, Carnoustie had a population of 11,359, making it the fourth-largest town in Angus. The town was founded in the late 18th century, and grew rapidly throughout the 19th century due to the growth of the local textile industry. It was popular as a tourist resort from the early Victorian era up to the latter half of the 20th century, due to its seaside location, and is best known for the Carnoustie Golf Links course that often hosts the Open Championship.\nCarnoustie can be considered a dormitory town for its nearest city, Dundee, which is 11 miles (18 kilometres) to the west. It is served principally by Carnoustie railway station, and also by Golf Street railway station. Its nearest major road is the A92, north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "carnoustie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4409,
+    "attempt": 4375,
+    "place_id": "gn-2657430",
+    "input": {
+      "place": {
+        "place_id": "gn-2657430",
+        "name": "Alsager",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.09617,
+        "lon": -2.30649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alsager",
+          "url": "https://en.wikipedia.org/wiki/Alsager",
+          "text": "Alsager  (  AWL-say-jər) is a town and civil parish in the unitary authority of Cheshire East in Cheshire, England. It is located to the north-west of Stoke-on-Trent and east of Crewe. At the 2021 census, the parish had a population of 13,389 and the built up area population was 15,505.\nThe civil parish is bordered by the parishes of Betchton to the north, Church Lawton to the north-east and east, Kidsgrove to the south-east, Audley Rural to the south, Barthomley to the south-west, Haslington to the west, and Hassall to the north-west.\nAlsager has hosted an annual summer carnival since 1998; it was located in Milton Park until June 2009 and moved temporarily to the Alsager School playing fields to increase capacity, before returning in 2017. In 2008, Alsager was awarded Fairtrade Town status by the Fairtrade Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "alsager",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4410,
+    "attempt": 4376,
+    "place_id": "gn-2850942",
+    "input": {
+      "place": {
+        "place_id": "gn-2850942",
+        "name": "Raesfeld",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.76667,
+        "lon": 6.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raesfeld",
+          "url": "https://en.wikipedia.org/wiki/Raesfeld",
+          "text": "Raesfeld (German pronunciation: [ˈʁaːsfɛlt]) is a municipality in the district of Borken in the state of North Rhine-Westphalia, Germany. It is located approximately 10 km south of Borken and 30 km east of the Dutch border.\nRaesfeld's landmark is the moated castle Schloss Raesfeld, originally built in the 13th century and extended and remodeled in Renaissance style in the 17th century. It is now primarily used by the state of North Rhine-Westphalia as a center for the teaching of crafts; the formal gardens have been lost, but the wildlife park has been restored and is part of the European Garden Heritage Network.\nThe municipality of Raesfeld includes Erle, a village within the Naturpark Hohe Mark that has an ancient oak, the Femeiche, thought to be 600–850 years old and named for Vehmic court sessions formerly held under it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "raesfeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4411,
+    "attempt": 4377,
+    "place_id": "gn-2893237",
+    "input": {
+      "place": {
+        "place_id": "gn-2893237",
+        "name": "Kandern",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.71393,
+        "lon": 7.66237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kandern",
+          "url": "https://en.wikipedia.org/wiki/Kandern",
+          "text": "Kandern (German pronunciation: [ˈkandɐn] ) is a city in southwestern Germany in the state of Baden-Württemberg, in the Kreis (district) of Lörrach. During the Battle of Schliengen, in which the French Revolutionary army fought the forces of Austria, the battle lines of both armies ended in Kandern. It is not far from a tripoint where the three countries Germany, France and Switzerland meet and is one of the smallest cities in Germany.\nTo many in North America, Kandern is best known as the birthplace of John Sutter, who owned the land that gold was discovered in 1848, which sparked the California gold rush, and the beginning of intensive settlement in California.\nToday, Kandern has a large community of English-speaking residents as a result of the presence of Black Forest Academy. This is an English-language institution founded in 1956. Most of the students are from the United States, Canada, and South Korea.\nThe coat of arms of Kandern is a pitcher on a yellow background. The blazon is Or a covered Jug Gules."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "kandern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4412,
+    "attempt": 4378,
+    "place_id": "gn-3523686",
+    "input": {
+      "place": {
+        "place_id": "gn-3523686",
+        "name": "Malinalco",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 18.94847,
+        "lon": -99.49619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malinalco",
+          "url": "https://en.wikipedia.org/wiki/Malinalco",
+          "text": "Malinalco  (Spanish pronunciation: [maliˈnalko]) is the municipality inside of Ixtapan Region, is a town and municipality located 65 kilometers south of the city of Toluca in the south of the western portion of the State of Mexico. Malinalco is 115 km (71 mi) southwest of Mexico City.\nMalinalco has always been associated with magic or sorcery due to the legend that it was the home of the goddess Malinalxochitl. The municipality is home to the famed village of Chalma, where according to legend, an image of a Black Christ miraculously appeared in a cave that was devoted to the god Oxtoteotl. It is the second-most visited shrine in Mexico, after the Basilica of Our Lady of Guadalupe.\nThe Aztecs conquered the area in the 1470s, and established a sanctuary for their military elite, the Eagle and Jaguar warriors. The complex was built on the Cerro de los Idolos (Hill of the Idols), over an older ceremonial site. The main attraction of this archeological site is the Cuauhcalli or House of Eagles, which is a building carved out of the side of the mountain.\nThe name Malinalco comes from the Nahuatl word malinalli, which is a kind of grass (Poaceae) called zacate del carbonero in Spanish, the word xóchitl, which means flower and co, which means place, which a translation of \"where they worship the goddess Malinalxóchitl, the malinalli flower\". The name also refers to one of the time periods on the Aztec calendar, marked by the malinalli plant, according to the Quauhtinchan Annals. In Aztec and early colonial times, the area was represented by a number of glyphs, often with elements of the malinalli plant and/or a human skull to indicate sacrifice.\nUnlike most other municipalities in the state of Mexico, Malinalco does not use an Aztec glyph or coat of arms. Instead, it has a logo that was designed by Ernesto Romero Tetazin in 1985. It consists of the seal of the nation of Mexico, from which rises a figure that simulates a low mountain under a malinalli flower. This includes the motto \"Your archeology is the perseverance of our race, culture and work\" (Tu arqueología constancia de nuestra raza cultura y trabajo). To the left is the word Malinaltepetl."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 371
+    },
+    "banned_terms": [
+      {
+        "term": "malinalco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4413,
+    "attempt": 4379,
+    "place_id": "gn-3853967",
+    "input": {
+      "place": {
+        "place_id": "gn-3853967",
+        "name": "Humahuaca",
+        "country": "Argentina",
+        "subdivision": "Jujuy",
+        "lat": -23.20612,
+        "lon": -65.34742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Humahuaca",
+          "url": "https://en.wikipedia.org/wiki/Humahuaca",
+          "text": "Humahuaca (Spanish pronunciation: [umaˈwaka]) is a small city in the province of Jujuy, Argentina. Since 2003 declared World Heritage Site by UNESCO at the Paris conference.\nIt has 11,369 inhabitants as per the 2001 census [INDEC], and is the principal town (seat) of the Department of Humahuaca.  The city is widely known for its location at the Quebrada de Humahuaca, along the Eastern valley of the central Andean Altiplano.\nHumahuaca is located north of Tilcara and Purmamarca, in the colourful valley of Quebrada de Humahuaca. \nThe townhall is located in the center of the village and it possesses a tower which can be seen from the main square with a clock that chimes at 12 pm, after which a small door opens and a figure of Saint Francisco Solano comes out and makes the sign of the cross."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "humahuaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4414,
+    "attempt": 4380,
+    "place_id": "gn-4360345",
+    "input": {
+      "place": {
+        "place_id": "gn-4360345",
+        "name": "Largo",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.89761,
+        "lon": -76.83025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Largo, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Largo,_Maryland",
+          "text": "Largo () is an unincorporated area and census-designated place in Prince George's County, Maryland, United States. The population was 11,605 at the 2020 census.\nLargo is located just east of the Capital Beltway (I-95/495) and is home to Prince George's Community College and Largo High School. Six Flags America amusement park (formerly known as Wild World and Adventure World) is to the east in Woodmore, and FedExField, the Washington Commanders's stadium, is across the Capital Beltway in Summerfield. Watkins Regional Park in Kettering just to the east of Largo (operated by the Maryland-National Capital Park and Planning Commission) has an old-fashioned carousel, miniature train ride, miniature golf, the Old Maryland Farm, a playground, and animals on display. Largo is not a post office designation, but is at the northern end of the Greater Upper Marlboro ZIP code area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "largo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

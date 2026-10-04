@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 4253,
+    "attempt": 4221,
+    "place_id": "gn-5139865",
+    "input": {
+      "place": {
+        "place_id": "gn-5139865",
+        "name": "Stony Brook",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.92565,
+        "lon": -73.14094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stony Brook, New York",
+          "url": "https://en.wikipedia.org/wiki/Stony_Brook,_New_York",
+          "text": "Stony Brook is a hamlet and census-designated place (CDP) in the Town of Brookhaven in Suffolk County, New York, United States, on the North Shore of Long Island. Begun in the colonial era as an agricultural enclave, the hamlet experienced growth first as a resort town and then to its current state as one of Long Island's major tourist towns and centers of education. Despite being referred to as a village by residents and tourists alike, Stony Brook has never been legally incorporated by the state. As of the 2020 census, Stony Brook had a population of 13,467.\nThe CDP is adjacent to the main campus of Stony Brook University, the largest public university in New York by area, and also The Stony Brook School, a private college preparatory school. It is also home to the Long Island Museum of American Art, History, and Carriages and the Stony Brook Village Center, a privately maintained commercial center planned in the style of a traditional New England village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "stony brook",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stony",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brook",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4254,
+    "attempt": 4222,
+    "place_id": "gn-13512366",
+    "input": {
+      "place": {
+        "place_id": "gn-13512366",
+        "name": "Victoria West",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.43188,
+        "lon": -123.38214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria West, Greater Victoria",
+          "url": "https://en.wikipedia.org/wiki/Victoria_West,_Greater_Victoria",
+          "text": "Victoria West, commonly called Vic West, is a historic neighbourhood of the city of Victoria, British Columbia, Canada, located just west of downtown across Victoria Harbour, bordering on the Township of Esquimalt.\nWhen the Hudson's Bay Company arrived in Victoria in 1842 to establish Fort Victoria, the neighbourhood now known as Victoria West was the site of a village of the Songhees, the aboriginal people of the Victoria area.  The Songhees called the Gorge waterway Camossung, named for a girl who turned to stone at the Gorge tidal rapids.  Songhees longhouses once extended from Songhees Point to beyond the present day Johnson Street Bridge.\nIn 1911, the Songhees people relocated to the New Songhees Reserve in Esquimalt to permit industrial development in Victoria West, following protracted negotiations with the band. Compensation included $10,000 per household (approximately $230,000 in 2021 Canadian dollars), which, in contrast to the usual practice, was paid directly to households rather than being held in trust by the Department of Indian Affairs.\nMuch of the residential and early commercial development of Victoria West occurred in the 1890s up until 1913.  Residential development was facilitated by the arrival of streetcar service in 1890.  While a few expensive homes were located in the neighbourhood, particularly in the area of the Gorge waterway, much of the development in the area was for working-class families.  The Esquimalt and Nanaimo Railway line passes through Victoria West, and the roundhouse was located in the neighbourhood.  In addition, at one time there were as many as seven shipbuilding companies in the area.\nThe largest and grandest of the homes built along the Vic West shore of the Gorge was Burleith, the residence built in 1892 by  James Dunsmuir, son of Robert Dunsmuir and set among 20 acres (8.1 ha) of lawns and gardens.   While Burleith has been demolished, Roslyn, another smaller grand home remains on Catherine Street.  Built in 1890 in the Queen Anne style for Andrew Gray, manager of the Albion Iron Works, Roslyn made an appearance in the movies when actor Bruce Dern leapt from an upstairs balcony.\nIn 1924 the Johnson Street Bridge bascule bridge was constructed linking Downtown Victoria with Vic West.  A second bridge, the Bay Street Bridge, stands where the Point Ellice Bridge was located.   On May 26, 1896 an overloaded streetcar of holidaymakers celebrating Queen Victoria's Diamond Jubilee caused the Point Ellice Bridge to collapse, killing 55 people.  The Point Ellice Bridge Disaster is the worst transit accident in Canadian history.\nAs industry left the area in the latter part of the 20th century, an opportunity for redevelopment of the former Songhees lands presented itself, and from the late 1980s condominium development along the harbour facing Downtown Victoria has resulted in an influx of population and spurred redevelopment of other parts of Victoria West, a process that continues with developments such as Dockside Green, the Railyards project and Bayview Place.\nAmenities in the area include the Victoria West Community Centre, churches and other services. \nIn 1984 Spinnaker's brewpub opened on Kimta Road off Esquimalt Road.  The Westsong Way, a pedestrian walkway, winds along the shore around Songhees Point, offering views of Downtown Victoria and James Bay across the harbour.  Parks and open space also include Victoria West Park, Banfield Park,  Barnard Park, and Raynor Park.\nThe area is served by Victoria West (Vic West) Elementary School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 559
+    },
+    "banned_terms": [
+      {
+        "term": "victoria west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4255,
+    "attempt": 4223,
+    "place_id": "gn-2633866",
+    "input": {
+      "place": {
+        "place_id": "gn-2633866",
+        "name": "Wimbledon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.42212,
+        "lon": -0.20805
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wimbledon, London",
+          "url": "https://en.wikipedia.org/wiki/Wimbledon,_London",
+          "text": "Wimbledon () is a suburb of southwest London, England, 7.0 miles (11.3 km) southwest of Charing Cross; it is the main commercial centre of the London Borough of Merton. Wimbledon had a population of 68,189 in 2011 which includes the electoral wards of Abbey, Wimbledon Town and Dundonald, Hillside, Wandle, Village, Raynes Park and Wimbledon Park.\nIt is home to the Wimbledon Championships and New Wimbledon Theatre, and contains Wimbledon Common, one of the largest areas of common land in London. The residential and retail area is split into two sections known as the \"village\" and the \"town\", with the High Street being the rebuilding of the original medieval village, and the \"town\" having first developed gradually after the building of the railway station in 1838.\nWimbledon has been inhabited since at least the Iron Age when the hill fort on Wimbledon Common is thought to have been constructed. In 1086 when the Domesday Book was compiled, Wimbledon was part of the manor of Mortlake. The ownership of the manor of Wimbledon changed between various wealthy families many times during its history, and the area also attracted other wealthy families who built large houses such as Eagle House, Wimbledon Manor House and Warren House.\nThe village developed with a stable rural population coexisting with nobility and wealthy merchants from the city. In the 18th century the Dog and Fox public house became a stop on the stagecoach run from London to Portsmouth, then in 1838 the London and South Western Railway (L&SWR) opened a station to the southeast of the village at the bottom of Wimbledon Hill. The location of the station shifted the focus of the town's subsequent growth away from the original village centre.\nWimbledon was a municipal borough in the county of Surrey from 1905 to 1965, when it became part of the London Borough of Merton as part of the creation of Greater London.\nWimbledon has established minority groups; among the prominent ones being British Asians (mainly British Pakistanis and British Sri Lankans), British Ghanaians, Poles and Irish people.\nNearby major settlements include Morden, Mitcham, Colliers Wood, Raynes Park, Roehampton, Southfields, Putney, Wimbledon Chase, Merton Park, New Malden and South Wimbledon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 365
+    },
+    "banned_terms": [
+      {
+        "term": "wimbledon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4256,
+    "attempt": 4224,
+    "place_id": "gn-3114866",
+    "input": {
+      "place": {
+        "place_id": "gn-3114866",
+        "name": "Ortuella",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.31113,
+        "lon": -3.05617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ortuella",
+          "url": "https://en.wikipedia.org/wiki/Ortuella",
+          "text": "Ortuella is a town and municipality located in the province of Bizkaia, in the Autonomous Community of Basque Country, northern  Spain.\nNowadays part of the Greater Bilbao region, until the beginning of the 19th century it was integrated in the Valley of Somorrostro of Enkarterri along with Santurtzi. In 1901 the locality segregated from the municipality of Santurtzi, becoming known as Santurce-Ortuella. This segregation was motivated by an increase of population due to the mining boom at the end of the 19th century, which saw the district of Ortuella become the most populous part of the municipality. In the 1980s, and by means of the resolution of 27 March 1981, the name of the municipality definitively lost the term \"Santurce\", simply being \"Ortuella\", which was the usual name used by their citizens.\nOrtuella was the site of a deadly explosion at the Marcelino Ugalde Primary School on 23 October 1980 that killed 50 schoolchildren and 14 adults, and injured  killed and injured an additional 128.\nThe patron saint of Ortuella is Saint Felix of Cantalica (18 May), the name of the main church of the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "ortuella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4258,
+    "attempt": 4225,
+    "place_id": "gn-3017624",
+    "input": {
+      "place": {
+        "place_id": "gn-3017624",
+        "name": "Fouesnant",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 47.89342,
+        "lon": -4.0124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fouesnant",
+          "url": "https://en.wikipedia.org/wiki/Fouesnant",
+          "text": "Fouesnant (French pronunciation: [fwɛnɑ̃]; Fouenant or Fouen in Breton) is a commune in the Finistère department of Brittany in north-western France. Fouesnant is bordered to the south by the Baie de La Forêt.\nIt lies on the south coast of Finistère and is bordered by the communes of: Bénodet and Pleuven to the west, Saint-Évarzec to the north, and La Forêt-Fouesnant to the east. It has 15 km of coastline on its south side, with a long beach running west between the headlands of Beg-Meil and Mousterlin, as well as Cap-Coz just to the east at the top of the Baie de la Foret, making it a tourist destination.\nThe town is in a very fertile area, is home to a number of orchards and is regarded as the source of the best Breton cider. This is celebrated each July with the Fete des Pommiers (Festival of the Apple Trees), an event that takes over the town centre with music, dance and various competitions.\nFouesnant hosts a street market in and around the town square every Friday morning.\n\nThe Glénan Islands, approximately 15 kilometres (9.3 mi) offshore, are administratively part of the commune of Fouesnant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "fouesnant",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4259,
+    "attempt": 4226,
+    "place_id": "gn-3118304",
+    "input": {
+      "place": {
+        "place_id": "gn-3118304",
+        "name": "Llanes",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.41982,
+        "lon": -4.75485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llanes",
+          "url": "https://en.wikipedia.org/wiki/Llanes",
+          "text": "Llanes (the Concejo de Llanes, Conceyu de Llanes in Asturian language) is a municipality of the province of Asturias, in northern Spain. Stretching for about 30 km along the coast at the extreme east of the province, Llanes is bounded to the south by the high ridge of the limestone Sierra del Cuera, which rises to over 1,100 m. The region is part of the Costa Verde (Green Coast) of Spain, which is known for its spectacular coastal scenery, with 32 white sand beaches, and mountains covered with a deep green mantle. Llanes lies to the north of the Picos de Europa, a mountain range whose geology is almost entirely of limestone karst.\nMost of the inhabitants of the district live on the coastal plain, on which the largest town is Llanes itself, with a population of about 4,000 out of the total for the district of about 13,000. The folklore, food, and fiestas of the region are famous for their colour and history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "llanes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4260,
+    "attempt": 4227,
+    "place_id": "gn-4557264",
+    "input": {
+      "place": {
+        "place_id": "gn-4557264",
+        "name": "Cobbs Creek",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.94761,
+        "lon": -75.24018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cobbs Creek, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Cobbs_Creek,_Philadelphia",
+          "text": "Cobbs Creek is a neighborhood located in the West Philadelphia section of Philadelphia, Pennsylvania, United States, named for the creek which forms part of Philadelphia's western border. Cobbs Creek is generally bounded by Market Street to the north, the Media/Wawa Regional Rail Line to the south, South 50th Street to the east and Cobbs Creek Park to the west\nIn 1998, the Cobbs Creek Automobile Suburb Historic District was created, with Cobbs Creek Parkway, Spruce Street, 52nd Street, and Angora Street its boundaries. The District protects 1049 buildings, with Tudor Revival, Colonial Revival, and Bungalow/Craftsman architectural styles contained within the district.\nFires from the 1985 bombing of the MOVE headquarters at 6221 Osage Avenue spread to 64 other buildings in the neighborhood. The destroyed homes were hastily rebuilt by the city, but were later condemned after years of attempted repairs to the shoddy construction.\nAlso listed on the National Register of Historic Places are the Holmes Junior High School and Walnut Park Plaza Hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "cobbs creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cobbs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4261,
+    "attempt": 4228,
+    "place_id": "gn-8436486",
+    "input": {
+      "place": {
+        "place_id": "gn-8436486",
+        "name": "Sunset Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64548,
+        "lon": -74.01241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunset Park, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Sunset_Park,_Brooklyn",
+          "text": "Sunset Park is a neighborhood in the western part of the New York City borough of Brooklyn, bounded by Park Slope and Green-Wood Cemetery to the north, Borough Park to the east, Bay Ridge to the south, and New York Harbor to the west. The neighborhood is named for a public park of the same name that covers 24.5 acres (9.9 ha) between Fifth and Seventh Avenues from 41st to 44th Street. The area north of 36th Street is alternatively known as Greenwood Heights, while the section north of 20th Street is also called South Slope.\nThe area was initially occupied by the Canarsee band of Munsee-speaking Lenape until the first European settlement occurred in 1636. Through the late 19th century, Sunset Park was sparsely developed and was considered part of Bay Ridge or South Brooklyn. The arrival of elevated railways and the subway led to Sunset Park's development, with middle-class row houses and industrial buildings being erected in the 1890s through the 1920s. After the decline of the industrial hubs in the 1940s and 1950s, the name \"Sunset Park\" was given to the region north of 65th Street as part of an urban renewal initiative. Immigrant groups started moving to the neighborhood in the late 20th century due to its relative affordability. By the 21st century, the neighborhood's population is primarily composed of Scandinavian, Irish, Italian, Hispanics and Chinese immigrants along with swaths of predominantly white young urban professionals.\nSunset Park is part of Brooklyn Community District 7. It is patrolled by the 72nd Precinct of the New York City Police Department. Fire services are provided by the New York City Fire Department's Engine Company 201 and Engine Company 228/Ladder Company 114. Politically, Sunset Park is represented by the New York City Council's 38th and 39th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "sunset park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunset",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4262,
+    "attempt": 4229,
+    "place_id": "gn-2654635",
+    "input": {
+      "place": {
+        "place_id": "gn-2654635",
+        "name": "Broadstairs",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.35845,
+        "lon": 1.44185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broadstairs",
+          "url": "https://en.wikipedia.org/wiki/Broadstairs",
+          "text": "Broadstairs () is a coastal town on the Isle of Thanet in the Thanet district of east Kent, England, about 80 miles (130 km) east of London. It is part of the civil parish of Broadstairs and St Peter's, which includes St Peter's, and had a population in 2011 of about 25,000. Situated between Margate and Ramsgate, Broadstairs is one of Thanet's seaside resorts, known as the \"jewel in Thanet's crown\". The town's coat of arms' Latin motto is Stella Maris (\"Star of the Sea\"). The name derives from a former flight of steps in the chalk cliff, which led from the sands up to the 11th-century shrine of St Mary on the cliff's summit.\nThe town spreads from Haine Road in the west to Kingsgate (named after the landing of King Charles II in 1683), a hamlet in St Peter parish in the north, and to Dumpton in the south (named after the yeoman Dudeman who farmed there in the 13th century). The hamlet of Reading (formerly Reden or Redyng) Street was established by Flemish refugees in the 17th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "broadstairs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4263,
+    "attempt": 4230,
+    "place_id": "gn-4710963",
+    "input": {
+      "place": {
+        "place_id": "gn-4710963",
+        "name": "Mexia",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.67989,
+        "lon": -96.4822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mexia, Texas",
+          "url": "https://en.wikipedia.org/wiki/Mexia,_Texas",
+          "text": "Mexia (  muh-HAY-uh or   meh-HAY-uh) is a city in Limestone County, Texas, United States. The population was 7,091 at the 2025 census.\nThe city's motto, based on the fact that outsiders tend to mispronounce the name as  (MEK-see-ə), is \"A great place to live, no matter how you pronounce it.\"\nNamed after General José Antonio Mexía, a Mexican hero for the Republic of Texas Army during the Texas Revolution, the town was founded near his estate. Nearby attractions include Fort Parker Historical recreation, the Confederate Reunion grounds, and Mexia State Supported Living Center (formerly Mexia State School), which began as a prisoner of war camp for members of Field Marshal Erwin Rommel's Afrika Korps during World War II.\nMexia is also home to the Mexia Public Schools Museum, one of a few museums dedicated to the historical and social significance of a Texas public school system.\nLate model Anna Nicole Smith attended Mexia Public Schools.\nMexia hosts a large Juneteenth celebration every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "mexia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4264,
+    "attempt": 4231,
+    "place_id": "gn-6324621",
+    "input": {
+      "place": {
+        "place_id": "gn-6324621",
+        "name": "Powai",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.1164,
+        "lon": 72.90471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Powai",
+          "url": "https://en.wikipedia.org/wiki/Powai",
+          "text": "Powai (pronounced [pəʋəiː]) is a residential suburb located in central Mumbai, Maharashtra, India. It is situated on the banks of Powai Lake, and is bound by the hills of Vikhroli Parksite to the south-east, Chandivali to the south-west, the L.B.S. Marg (old Mumbai-Agra road) to the north-east and the Sanjay Gandhi National Park to the north beyond the lake. The Jogeshwari-Vikhroli Link Road, one of the city's busiest thoroughfares linking the western and eastern suburbs, passes through Powai. The place also hosts thousands of devotees every year during the Ganesh Chaturthi festival for the visarjan processions.\nThe Indian Institute of Technology, Bombay, established in 1958 and currently the second oldest campus of the Indian Institutes of Technology as well as the Indian Institute of Management Mumbai, established in 1963 are both located here, as is a campus of the Bombay Scottish School. Powai is also home to residential complexes of the Income Tax department, Customs and NTPC, as well as those of ex-servicemen.\nPowai houses schools and colleges, some of which are S M Shetty School and College, Gopal Sharma School and Chandrabhan Sharma College. Chandivali has Sinhgad College of Management. The new school includes Pawar Public School towards Chandivali.\nSome of the Temples of Powai are Chinmaya Mission's Jagadeshwara Shiva Temple, Sri Ayyappa Vishnu Temple at Hiranandani, and Devi Vageshwari Mata Temple at Chandivali. Powai also hosts a community birthday havan.\nPowai is also Mumbai's start-up hub, with young entrepreneurs like the Hiranandanis starting from incubation cells set up by institutes like IIT Bombay from the tech industry and other sectors setting their bases there, causing the area to be referred to as India's Powai Valley.  As a result of the mixture of various communities living together, the suburb has one of the city's most cosmopolitan and modernized cultures. The place has a vibrant night-life, and shoots for several Bollywood as well as Hollywood movies, such as Kalyug, Ghajini, Slumdog Millionaire, Mardaani and Haseena Maan Jaayegi have taken place there. The Hiranandani Gardens are also known for their neoclassical architectural style and the area has some of the tallest residential buildings in Suburban Mumbai. The suburb is also known for being one of the preferred residential areas for expats in Mumbai."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 372
+    },
+    "banned_terms": [
+      {
+        "term": "powai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4265,
+    "attempt": 4232,
+    "place_id": "gn-3029213",
+    "input": {
+      "place": {
+        "place_id": "gn-3029213",
+        "name": "Cahors",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 44.4491,
+        "lon": 1.43663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cahors",
+          "url": "https://en.wikipedia.org/wiki/Cahors",
+          "text": "Cahors (French pronunciation: [kaɔʁ] ; Languedocien: Caors [kaˈuɾs, ˈkɔw(s)]) is a commune in the western part of Southern France. It is the smallest prefecture among the 13 departments that constitute the Occitanie Region. The capital and main city of the Lot department and the historical center of the Quercy, Cahors is home to 20,050 cadurciennes and cadurciens (2023).\nNestled in a meander of the Lot and surrounded by steep arid limestone hills, this historic city is home to great monumental diversity, mainly inherited from Roman times and the Middle Ages; the city's monuments include a historic city centre, Saint-Étienne cathedral, Roman walls and the famous Valentré bridge (a UNESCO World Heritage Site as part of the pilgrimage path to Santiago de Compostela). Famed for its wine and gastronomy (truffles and foie gras), this southern French city holds the label of the French Towns of Art and History. The Cadurcian economy is reliant on tertiary services and makes Cahors the Lot's economic centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "cahors",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4266,
+    "attempt": 4233,
+    "place_id": "gn-3523124",
+    "input": {
+      "place": {
+        "place_id": "gn-3523124",
+        "name": "San Andrés Mixquic",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.22512,
+        "lon": -98.96408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Andrés Mixquic",
+          "url": "https://en.wikipedia.org/wiki/San_Andr%C3%A9s_Mixquic",
+          "text": "San Andres Míxquic is a community located in the southeast of the Distrito Federal (Mexico City) in the borough of Tláhuac. The community was founded by the 11th century on what was a small island in Lake Chalco. “Míxquic” means “in mesquite” but the community's culture for most of its history was based on chinampas, gardens floating on the lake's waters and tied to the island. Drainage of Lake Chalco in the 19th and 20th century eventually destroyed the chinampas but the community is still agricultural in nature, despite being officially in the territory of Mexico City.\nSan Andres Míxquic is best known for its Day of the Dead commemorations, which consist of both ritual and cultural events lasting from 31 October to 2 November. These events draw thousands of Mexican and international visitors, and culminate in the Alumbrada, when the cemetery that surrounds the community's main church glows with thousands of candles and smoke from incense the evening of 2 November. This community was designated as a \"Barrio Mágico\" by the city in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "san andres mixquic",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mixquic",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4267,
+    "attempt": 4234,
+    "place_id": "gn-5104630",
+    "input": {
+      "place": {
+        "place_id": "gn-5104630",
+        "name": "Short Hills",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.74788,
+        "lon": -74.32543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Short Hills, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Short_Hills,_New_Jersey",
+          "text": "Short Hills is an unincorporated community and census-designated place (CDP) situated within Millburn, in Essex County, within the U.S. state of New Jersey, and part of the New York metropolitan area. The community is a commuter town for residents who work in Manhattan. As of the 2020 census, the CDP's population was 14,422.\nIn the Forbes magazine's rankings of the Most Expensive ZIP Codes in the United States, Short Hills was listed among the top 100 nationwide, coming in 66th in 2006 (with a median sale price of $1,200,000) and 67th in 2012 (median of $1,951,846). The median household income in Short Hills, according to the United States Census Bureau, exceeded $250,000 in the period from 2018-2022, while per capita income, as of the 2020 United States Census, was $153,124.\nShort Hills is home to the upscale Mall at Short Hills, also known as the Short Hills Mall, located near affluent communities in neighboring Morris and Union counties along the Passaic River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "short hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "short",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4268,
+    "attempt": 4235,
+    "place_id": "gn-7932638",
+    "input": {
+      "place": {
+        "place_id": "gn-7932638",
+        "name": "Malvern East",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.87397,
+        "lon": 145.04253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malvern East",
+          "url": "https://en.wikipedia.org/wiki/Malvern_East",
+          "text": "Malvern East is a suburb in Melbourne, Victoria, Australia, 12 km south-east of the Melbourne central business district, located within the City of Stonnington local government area. Malvern East recorded a population of 22,296 at the 2021 census.\nMalvern East is bounded to the north by Wattletree Road and Gardiners Creek, to the east by Warrigal Road, to the south by the Princes Highway (Dandenong Road) and to the west by Tooronga Road.\nIt is most famous for the Chadstone Shopping Centre, the largest shopping centre in the southern hemisphere, and the largest by total lettable space under one roof.\nIn recent times, what was once a relatively small suburb was extended to incorporate parts of neighbouring Chadstone. Based on its easterly proximity to Malvern, the expansion and redefinition of Malvern East was driven in the 1990s by resident groups eager to 'reclaim' their address from being identified with the Chadstone Shopping Centre, which had been massively expanded since its original construction. However, the Chadstone Shopping Centre shares the 'Malvern East' address and postcode."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "malvern east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "malvern",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4269,
+    "attempt": 4236,
+    "place_id": "gn-12060359",
+    "input": {
+      "place": {
+        "place_id": "gn-12060359",
+        "name": "Rastrick",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.6921,
+        "lon": -1.7883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rastrick",
+          "url": "https://en.wikipedia.org/wiki/Rastrick",
+          "text": "Rastrick is a village and local government ward in the county of West Yorkshire, England, between Halifax, 5 miles (8 km) north-west and Huddersfield, 4 miles (7 km) south. It is perhaps best known for its association, along with its neighbour Brighouse, 1 mile (2 km) north-east, with the Brighouse and Rastrick Brass Band. Along with Brighouse, it is part of Calderdale, but shares a Huddersfield postcode and phone number.\nThe population of the ward at the 2011 census was 11,351.\nHistorically part of the West Riding of Yorkshire, the village is on an incline facing north-east, the Parish Church, is vertically in the middle.\nThe area around the Parish Church is known as \"Top o' t'Town\" and the area around the Junction public house is known as \"Bottom o' t'Town\", this reflects the days when Rastrick had its own governance in the form of a Town Board whose Offices and lock-up were situated halfway between the two, on Ogden Lane.\nRemains of a fort have been found at Castle Hill, just below Top o' t'Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 161,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "rastrick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4270,
+    "attempt": 4237,
+    "place_id": "gn-4151460",
+    "input": {
+      "place": {
+        "place_id": "gn-4151460",
+        "name": "Coconut Grove",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.7126,
+        "lon": -80.25699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coconut Grove",
+          "url": "https://en.wikipedia.org/wiki/Coconut_Grove",
+          "text": "Coconut Grove, also known colloquially as \"The Grove\", is the oldest continuously inhabited neighborhood of Miami in Miami-Dade County, Florida. It is roughly bounded by North Prospect Drive to the south, LeJeune Road to the west, South Dixie Highway (US 1) and Rickenbacker Causeway to the north, and Biscayne Bay to the east. It is south of the neighborhoods of Brickell and The Roads and east of Coral Gables. The neighborhood's name has been sometimes spelled \"Cocoanut Grove\" but the definitive spelling \"Coconut Grove\" was established when the city was incorporated in 1919.\nWhat is now called Coconut Grove was formed in 1925 when the city of Miami annexed two areas of about equal size, the city of Coconut Grove and most of the town of Silver Bluff. Coconut Grove approximately corresponds to the same area as the 33133 ZIP Code although the ZIP Code includes parts of Coral Way and Coral Gables and a small part of ZIP Code 33129. Coconut Grove locals take pride that it is one of Miami's greenest areas.\nCoconut Grove is served by the Miami Metrorail at Coconut Grove and Douglas Road stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 161,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "coconut grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coconut",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4271,
+    "attempt": 4238,
+    "place_id": "gn-2640972",
+    "input": {
+      "place": {
+        "place_id": "gn-2640972",
+        "name": "Olney",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.15345,
+        "lon": -0.70201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olney, Buckinghamshire",
+          "url": "https://en.wikipedia.org/wiki/Olney,_Buckinghamshire",
+          "text": "Olney (, rarely , OW-nee, rarely OLL-nee; the \"L\" is not pronounced by local people), is a market town and civil parish in the unitary authority area of the City of Milton Keynes, England. \nThe parish occupies the northernmost part of the historic county of Buckinghamshire. Lying on the left bank of the River Great Ouse, the town is located (straight line distances) around 8 miles (13 km) from Milton Keynes, 10 miles (16 km) from Bedford, Northampton and Wellingborough, and just over 50 miles (80km) from London.\nAt the 2021 census, it had a population of 6,598.\nOlney is best known for poet William Cowper, anti-slavery preacher John Newton, and their 1770's collaboration on the Olney Hymns, including Amazing Grace, as well as for its Pancake Race.\nThe many places in the USA, and elsewhere, also called Olney, appear to be named either directly after Olney in England, or after a family whose surname originates from the Buckinghamshire town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "olney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4272,
+    "attempt": 4239,
+    "place_id": "gn-3175384",
+    "input": {
+      "place": {
+        "place_id": "gn-3175384",
+        "name": "Ivrea",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.46723,
+        "lon": 7.87617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivrea",
+          "url": "https://en.wikipedia.org/wiki/Ivrea",
+          "text": "Ivrea (Italian: [iˈvrɛːa]; Piedmontese: Ivrèja [iˈʋrɛja]; French: Ivrée; Latin: Eporedia) is a town and comune of the Metropolitan City of Turin in the Piedmont region of northwestern Italy. Situated on the road leading to the Aosta Valley (part of the medieval Via Francigena), it straddles the Dora Baltea and is regarded as the capital of the Canavese area.\nFounded by the Romans under the name \"Eporedia,\" the town became the center of the March of Ivrea during the Middle Ages and briefly served as the capital of the Kingdom of Italy in the 11th century. It later became part of the possessions of the House of Savoy. In the 20th century, Ivrea gained international recognition as the headquarters of the Olivetti company, a pioneer in technological innovation, known for creating some of the first computers. Thanks to Olivetti, the town also became a center of architectural innovation, with the construction of several modernist buildings that reflected the era's progressive spirit. On 1 July 2018, the site which is known as \"Industrial City of the 20th Century\" was listed as a UNESCO World Heritage Site.\nThe town is well known for the Ivrea Carnival, which features the famous Orange Battle as its main event, as well as for its ancient and modern architecture, including landmarks such as Ivrea Castle, Ivrea Cathedral and the Olivetti complex. It is also a growing hub for sports, particularly canoeing and kayaking, having hosted several international competitions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "ivrea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4273,
+    "attempt": 4240,
+    "place_id": "gn-3931453",
+    "input": {
+      "place": {
+        "place_id": "gn-3931453",
+        "name": "Supe Puerto",
+        "country": "Peru",
+        "subdivision": "Lima region",
+        "lat": -10.80135,
+        "lon": -77.74333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Supe Puerto",
+          "url": "https://en.wikipedia.org/wiki/Supe_Puerto",
+          "text": "Puerto Supe, officially known as Supe Puerto (to distinguish it from the neighboring district of Supe Pueblo, a separate municipality), is a small harbor town located in the province of Barranca, in the Lima Provincias region, on the coast of Peru. It is located approximately 190 km north of Lima, and is part of the Supe Valley.\nPuerto Supe is known for having one of the oldest archaeological sites in the Americas. The archaeological site of El Áspero has been dated at over 3000 BCE, and is part of a complex of 20 sites spread throughout the Supe Valley that constitute the oldest known civilization in the Americas: The Norte Chico, or Caral-Supe, civilization.\nThe town also boasts a lighthouse and a virtually intact, protected beach where the main attraction is a tidal island known as Isla del Faraón (Pharaoh's Island) that is surrounded by water as the tide rises in the late afternoon (cf. Mont Saint-Michel in Normandy, France). In recent years, however, the sea seems to have receded (or the ground risen), so that the water now forms an island only occasionally, on the highest tides."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "supe puerto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "supe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

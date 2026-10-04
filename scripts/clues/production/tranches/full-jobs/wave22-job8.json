@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 4375,
+    "attempt": 4341,
+    "place_id": "gn-2646276",
+    "input": {
+      "place": {
+        "place_id": "gn-2646276",
+        "name": "Ilfracombe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.2093,
+        "lon": -4.11344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilfracombe",
+          "url": "https://en.wikipedia.org/wiki/Ilfracombe",
+          "text": "Ilfracombe (  IL-frə-koom) is a seaside town and civil parish on the North Devon coast, England, with a small harbour surrounded by cliffs.\nThe parish stretches along the coast from the 'Coastguard Cottages' in Hele Bay toward the east and 4 miles (6 km) along the Torrs to Lee Bay toward the west. The resort is hilly and the highest point within the parish boundary is 'Hore Down Gate', 2 miles (3 km) inland and 860 feet (270 m) above sea level.\nThe landmark of Hillsborough Hill dominates the harbour and is the site of an Iron Age fortified settlement. In the built environment, the architectural-award-winning Landmark Theatre has a distinctive double-conical design. The 13th-century parish church, Holy Trinity, and the St Nicholas's Chapel (a lighthouse) on Lantern Hill, have been joined by Damien Hirst's statue of Verity as points of interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "ilfracombe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4376,
+    "attempt": 4342,
+    "place_id": "gn-2657125",
+    "input": {
+      "place": {
+        "place_id": "gn-2657125",
+        "name": "Ardrossan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.65018,
+        "lon": -4.80659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ardrossan",
+          "url": "https://en.wikipedia.org/wiki/Ardrossan",
+          "text": "Ardrossan (; from Scottish Gaelic  Àird Rosain 'headland of the small promontory') is a town on the North Ayrshire coast in southwestern Scotland. The town has a population of 10,670 and forms part of a conurbation with Saltcoats and Stevenston known as the 'Three Towns'. Ardrossan is located on the east shore of the Firth of Clyde, and is the main terminal of Caledonian MacBrayne ferry services operating from mainland Scotland to the Isle of Arran. \nThe town is home to the Ardrossan Wind Farm, and is home to a number of businesses and organisations including Cunningham Housing Association. The town is served by two secondary schools – Ardrossan Academy and St Matthews Academy. A new 2–18 curriculum campus is currently under construction, and will include Ardrossan Academy and Winton Primary School & Early Years on the former Shell oil refinery site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "ardrossan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4377,
+    "attempt": 4343,
+    "place_id": "gn-5103301",
+    "input": {
+      "place": {
+        "place_id": "gn-5103301",
+        "name": "River Edge",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.92871,
+        "lon": -74.03986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "River Edge, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/River_Edge,_New_Jersey",
+          "text": "River Edge is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 12,049, an increase of 709 (+6.3%) from the 2010 census count of 11,340, which in turn reflected an increase of 394 (+3.6%) from the 10,946 counted in the 2000 census.\nThe community was originally incorporated as the borough of Riverside by an act of the New Jersey Legislature on June 30, 1894, from portions of Midland Township, based on the results of a referendum held the previous day. On December 1, 1930, the borough's name was changed to River Edge. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The borough was named for its location along the Hackensack River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "river edge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "edge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4378,
+    "attempt": 4344,
+    "place_id": "gn-5223593",
+    "input": {
+      "place": {
+        "place_id": "gn-5223593",
+        "name": "Newport",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.4901,
+        "lon": -71.31283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newport, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Rhode_Island",
+          "text": "Newport is a seaside city on Aquidneck Island in Rhode Island, United States. It is located in Narragansett Bay, approximately 33 miles (53 km) southeast of Providence, 20 miles (32 km) south of Fall River, Massachusetts, 74 miles (119 km) south of Boston, and 180 miles (290 km) northeast of New York City. It is known as a New England summer resort and is famous for its historic mansions and its rich sailing history. As of the 2020 census, Newport had a population of 25,163.\nNewport hosted the first U.S. Open tournaments in both tennis and golf, as well as every challenge for the America's Cup between 1930 and 1983. It is also the home of Salve Regina University and Naval Station Newport, which houses the United States Naval War College, the Naval Undersea Warfare Center, and an important Navy training center. It was a major 18th-century port city and has many buildings from the colonial era.\nNewport is the county seat of Newport County, which has no governmental functions other than court administrative and sheriff corrections boundaries. It was the location of \"Summer White Houses\" of presidents Dwight D. Eisenhower and John F. Kennedy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "newport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4379,
+    "attempt": 4345,
+    "place_id": "gn-5504003",
+    "input": {
+      "place": {
+        "place_id": "gn-5504003",
+        "name": "Fernley",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 39.60797,
+        "lon": -119.25183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernley, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Fernley,_Nevada",
+          "text": "Fernley is a city in Lyon County, Nevada, United States, and part of the Reno–Tahoe–Sparks metropolitan area CSA. The city was incorporated in 2001. The population of the city was 22,895 at the 2020 census, making it the 7th most populous city in Nevada.\nFernley was home to the historic and one of the first Amazon.com centers in the world, which has since relocated within the metro area. Naval Air Station (TOPGUN), the U.S. Navy's Naval Strike and Air Warfare Center & TOPGUN training program since 1996, was moved nearby, to Fallon, from Naval Air Station Miramar. The city is home to the Reno-Fernley Raceway. The world's first Tesla Gigafactory, that produces battery packs, energy storage and electric vehicle components is nearby 15 miles west at the Tahoe Reno Industrial Center, and also there as of 2024 an under-construction lithium processing plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "fernley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4380,
+    "attempt": 4346,
+    "place_id": "gn-618387",
+    "input": {
+      "place": {
+        "place_id": "gn-618387",
+        "name": "Dnestrovsc",
+        "country": "Moldova",
+        "subdivision": "Transnistria",
+        "lat": 46.624,
+        "lon": 29.906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dnestrovsc",
+          "url": "https://en.wikipedia.org/wiki/Dnestrovsc",
+          "text": "Dnestrovsc (Romanian: Dnestrovsc or Nistrovsc, Moldovan Cyrillic: Днестровск; Russian: Днестрóвск, romanized: Dnestrovsk; Ukrainian: Дністровськ, romanized: Dnistrovs'k) is a town in the Transnistria, near the border with Ukraine. It is at the shores of the Cuciurgan Reservoir and is home to the Cuciurgan power station, also known as Moldavskaya GRES. It has since 1990 been administered by the breakaway Transnistrian Moldovan Republic as a part of its Slobozia District.\nIt is a company town which was founded in early Soviet times by the establishment of a large power plant, Moldavskaya GRES, today owned by Inter RAO UES.\nAt the 1989 census, Dnestrovsc had a population of 14,876. At the 2004 census it had ca. 11,200 inhabitants. According to the 2004 census, the population of the town was 12,382 inhabitants, of which 2,580 (20.83%) were Moldovans (Romanians), 3,390 (27.37%) Ukrainians and 5,249 (42.39%) Russians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "dnestrovsc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4381,
+    "attempt": 4347,
+    "place_id": "gn-7261282",
+    "input": {
+      "place": {
+        "place_id": "gn-7261282",
+        "name": "Fort Bliss",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.81357,
+        "lon": -106.41224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Bliss",
+          "url": "https://en.wikipedia.org/wiki/Fort_Bliss",
+          "text": "Fort Bliss is a United States Army post in New Mexico and Texas, with its headquarters in El Paso, Texas. Established in 1848, the fort was renamed in 1854 to honor Bvt.Lieut.Colonel William W.S. Bliss. It is the largest installation in the United States Army Forces Command (FORSCOM) and second-largest in the Army overall, the largest being the adjacent White Sands Missile Range. Fort Bliss provides the largest contiguous tract (1,500 sq mi or 3,900 km2) of restricted airspace in the continental United States, used for missile and artillery training and testing, and at 992,000 acres (401,000 ha) has the largest maneuver area, ahead of the National Training Center, which has 642,000 acres (260,000 ha). In August 2025, Immigration and Customs Enforcement (ICE) opened a detention facility named Camp East Montana with a capacity of 1,000, eventually 5,000, detainees on Fort Bliss."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "fort bliss",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bliss",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4382,
+    "attempt": 4348,
+    "place_id": "gn-7535506",
+    "input": {
+      "place": {
+        "place_id": "gn-7535506",
+        "name": "Golders Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.57631,
+        "lon": -0.20033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Golders Green",
+          "url": "https://en.wikipedia.org/wiki/Golders_Green",
+          "text": "Golders Green  is a suburb in the London Borough of Barnet in north West London, 5.6 miles (9 km) northwest of Charing Cross. Its historical origins lie in a medieval small suburban linear settlement that was sited near a farm and public grazing area green. The bulk of Golders Green forms a late Victorian/early Edwardian suburb centered on a commercial crossroads, the rest being of a later build. \nIt was founded as a medieval hamlet in the large parish of Hendon, Middlesex. The parish was superseded by Hendon Urban District in 1894 and by the Municipal Borough of Hendon in 1932, abolished in 1965. In the early 20th century, it grew rapidly in response to the opening of a tube station of the London Underground, adjacent to the Golders Green Hippodrome, which was home to the BBC Concert Orchestra for many years. The area has a wide variety of housing and a busy main shopping street, Golders Green Road.\nIt is known for its large Jewish population, as well as for being home to the largest Jewish kosher hub (located west of Hoop Lane after the rail bridge) in the United Kingdom, which attracts many Jewish tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "golders green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "golders",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4383,
+    "attempt": 4349,
+    "place_id": "gn-8739669",
+    "input": {
+      "place": {
+        "place_id": "gn-8739669",
+        "name": "Dalgety Bay",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.03496,
+        "lon": -3.35049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalgety Bay",
+          "url": "https://en.wikipedia.org/wiki/Dalgety_Bay",
+          "text": "Dalgety Bay ( ) is a coastal town and parish in Fife, Scotland, on the north shore of the Firth of Forth, nine miles (14 kilometres) from Edinburgh city centre. The civil parish is the eighth-largest in Fife, with a population of \n9,710 in 2020.\nDalgety bay was named after the original village of Dalgety, evident by the ruins of the 12th century St Bridget's Kirk. The root of the place-name Dalgety is the Scottish Gaelic word dealg, 'thorn', and the full name originally meant 'the place of the thorn[-bushes]'. The new town, of which building started in 1965, takes its name from the main bay it adjoins, but the town stretches over many bays and coves including Inverkeithing Bay, Donibristle Bay and St David's Bay.\nDalgety Bay is a commuter town and around 30% of the towns' workers work in Edinburgh. While the architecture of the town reflects construction by volume housebuilders, the town is a regular winner of the Best Kept Small Town title. Dalgety Bay has 26 Historic Scotland Listed Buildings or structures, and features on the Fife Coastal Path, one of Scotland's Great Trails."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "dalgety bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dalgety",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4384,
+    "attempt": 4350,
+    "place_id": "gn-11788280",
+    "input": {
+      "place": {
+        "place_id": "gn-11788280",
+        "name": "Old Harlow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.78353,
+        "lon": 0.13381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Old Harlow",
+          "url": "https://en.wikipedia.org/wiki/Old_Harlow",
+          "text": "Old Harlow is the old town area of Harlow, in Essex, England. It was the historical town centre prior to Harlow being designated a new town in 1947 during the new towns in the United Kingdom movement.\n\nOld Harlow is situated in the north-east area of the town and is the oldest area of the town. Old Harlow pre-dates the first written record in the Domesday Book of 1086, so it is unknown when the town first came into existence. Originally Old Harlow was going to be the central area of Harlow New Town, but due to the amount of demolition works and the loss of agricultural land it was decided to build Harlow New Town to the west of Old Harlow. As the new town was being built, Old Harlow seemed to be forgotten and fell behind in its development. It was not until 1977 that Old Harlow was improved with the building of a health service and a senior citizens day centre. Old Harlow still remains village-like with two Grade I listed buildings and many Grade II listed buildings.\nOld Harlow ward has a total population of 5,845 and comprises 2,498 homes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "old harlow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "old",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harlow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4385,
+    "attempt": 4351,
+    "place_id": "gn-2268326",
+    "input": {
+      "place": {
+        "place_id": "gn-2268326",
+        "name": "Fátima",
+        "country": "Portugal",
+        "subdivision": "Santarém",
+        "lat": 39.62071,
+        "lon": -8.65237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fátima, Portugal",
+          "url": "https://en.wikipedia.org/wiki/F%C3%A1tima,_Portugal",
+          "text": "Fátima (Portuguese pronunciation: [ˈfatimɐ] ) is a city in the municipality of Ourém and district of Santarém in the Oeste e Vale do Tejo Region of Portugal, with 71.29 km2 of area and 13,212 inhabitants (2021). The homonymous civil parish encompasses several villages and localities of which the city of Fátima is the largest.\nThe civil parish has been permanently associated with Our Lady of Fátima, a series of 1917 Marian apparitions that were purportedly witnessed by three local shepherd children at the Cova da Iria. The Catholic Church later recognized these events as \"worthy of belief\". A small chapel was built at the site of the apparition in 1919, and a statue of the Virgin Mary installed. The chapel and statue have since been enclosed within the Sanctuary of Our Lady of Fátima, a shrine complex containing two minor basilicas. Associated facilities for pilgrims, including a hotel and medical centre, have also been built over the decades within and around the Marian Shrine. The city has become an important international destination for religious tourists, receiving between 6 and 8 million pilgrims yearly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "fatima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4386,
+    "attempt": 4352,
+    "place_id": "gn-2336251",
+    "input": {
+      "place": {
+        "place_id": "gn-2336251",
+        "name": "Jebba",
+        "country": "Nigeria",
+        "subdivision": "Kwara State",
+        "lat": 9.11972,
+        "lon": 4.8236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jebba",
+          "url": "https://en.wikipedia.org/wiki/Jebba",
+          "text": "Jebba is a Nigerian town located along the River Niger. The town is divided into 4 categories out of which two for upper class known as Maunjani or Jebba North and for the lower class known as Mukhelenabi or Jebba South: Jebba North which is primarily on an island belongs to Mokwa LGA of Niger State while Jebba South belongs to Moro LGA of Kwara State. It has views of the River Niger and as of 2007 had an estimated population of 22,411. \nJebba is home to the largest paper mill in West Africa, as well as being the home of one of Nigeria's three hydro-electric dams. Powering the whole of Nigeria, every day. It has also a monument to Mungo Park, in remembrance of the shipwreck which took place there, while he tried to trace the source of the Niger. More recently it has taken in 16 new residents in the form of volunteers from Nigeria and the UK. Jebba's main quality is its Islamic culture.\nJebba North is predominantly inhabited by the Nupe and Fulani while Jebba South is mostly inhabited by the Yoruba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "jebba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4387,
+    "attempt": 4353,
+    "place_id": "gn-2794895",
+    "input": {
+      "place": {
+        "place_id": "gn-2794895",
+        "name": "Jodoigne",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.72357,
+        "lon": 4.86914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jodoigne",
+          "url": "https://en.wikipedia.org/wiki/Jodoigne",
+          "text": "Jodoigne (French: [ʒɔdɔɲ] ; Walloon: Djodogne [dʒɔdɔɲ] ; Dutch: Geldenaken [ˈɣɛldəˌnaːkə(n)] ) is a municipality and city of Wallonia located in the province of Walloon Brabant, Belgium.\nOn January 1, 2006, Jodoigne had a total population of 12,440. The total area is 73.31 km2 (28.31 sq mi) which gives a population density of 170 inhabitants per square kilometre (440/sq mi).\nThe municipality consists of the following districts: Dongelberg, Jauchelette, Jodoigne,  Jodoigne-Souveraine, Lathuy, Piétrain, Saint-Jean-Geest (including the hamlet of Sainte-Marie-Geest), Saint-Remy-Geest, and Zétrud-Lumay.\nIn the 1568 Battle of Jodoigne, one of the early battles of the Eighty Years' War, the Spanish Duke of Alba defeated a Dutch rebel force under William the Silent.\nThe previous mayor of Jodoigne, Louis Michel, a liberal politician was the Belgian foreign minister from 1999 until 2004 and was the Belgian European commissioner from 2004 until 2009. The current mayor is Jean-Paul Wahl.\nThe asteroid 1199 Geldonia was named in its honour (from the Latin form of the name) by Eugène Delporte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "jodoigne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4388,
+    "attempt": 4354,
+    "place_id": "gn-2890420",
+    "input": {
+      "place": {
+        "place_id": "gn-2890420",
+        "name": "Kirchlinteln",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.94236,
+        "lon": 9.31811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirchlinteln",
+          "url": "https://en.wikipedia.org/wiki/Kirchlinteln",
+          "text": "Kirchlinteln (German pronunciation: [ˈkɪʁçlɪntln̩]) is a municipality in the district of Verden, in Lower Saxony, Germany. Its central village is situated approximately 6 km east of Verden, and 40 km southeast of Bremen. It is surrounded by the Linteln Geest (also called the Verden Heath) which is dominated by woods, hills, heath and small villages. Over the last few decades many people have decided to build their homes in Kirchlinteln or to buy old cottages in this region because of its picturesque landscape and location close to the cities of Bremen and Hanover.\nKirchlinteln belonged to the Prince-Bishopric of Verden, established in 1180. In 1648 the Prince-Bishopric was transformed into the Principality of Verden, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712–1715) - and from 1715 on by the Hanoverian Crown. The Kingdom of Hanover incorporated the Principality in a real union and the Princely territory, including Kirchlinteln, became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "kirchlinteln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4389,
+    "attempt": 4355,
+    "place_id": "gn-3671591",
+    "input": {
+      "place": {
+        "place_id": "gn-3671591",
+        "name": "Puente Nacional",
+        "country": "Colombia",
+        "subdivision": "Santander Department",
+        "lat": 5.87739,
+        "lon": -73.6781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puente Nacional, Santander",
+          "url": "https://en.wikipedia.org/wiki/Puente_Nacional,_Santander",
+          "text": "Puente Nacional (pronounced [ˈpwente nasjoˈnal]; Spanish for 'National Bridge') is an agricultural town and municipality in the Suárez River Valley, part of the Santander Department of northeastern Colombia. It is colloquially referred to as \"Puente\" by its inhabitants.\n\nThe area was originally inhabited by four Muisca tribes, three of which were the Semisos, Irobaes, and Popobas. Their heritage now only survives in the names of three surrounding veredas. \nThe area between Puente and neighbouring Santa Sofía (formerly called Guatoque) was inhabited by a major tribe called the Sorocotá who governed a major commercial centre (possibly home to the region's largest agricultural market) which is why Puente's local radio station is called La Voz de Sorocotá (The Voice of Sorocotá). The town still has a market every Monday which sees locally sourced produce brought to the town from its many surrounding farms.\nGonzalo Jiménez de Quesada travelled south through the area in 1537 in the search for El Dorado. Having followed the course of the Magdalena River, his expedition then travelled down the Saravita, which formed the main trajectory of the subsequent conquests. It was in this area that some sources report that Quesada's men made the first ever encounter with a \"truffle\" crop later identified as the potato.\nFollowing the Spanish conquests a new town was baptised Puente Real de Vélez, existing as a subsidiary to the town founded by Martin Galeano in 1539, before eventually acquiring its current name during the period following the Comunero Rebellions of 1781. These local uprisings set in motion the first wave of Spanish American victories against the Spanish Empire, although liberation only arrived after 1819. Every year on 8 May week, the town transforms with homage to the Comuneros. Townsfolk dress in traditional late-18th century attire and parades are held through the town.\nIn 1960 the town's Cantarrana Street was the setting of a now-regularly commemorated massacre. It happened two years after the end of La Violencia (The Violence); the name given to the ten year sectarian civil-political conflict which pitted conservatives against liberals. On September 29, tensions still present from the decennial conflict culminated with a shooting involving local brigand Efrain Gonzalez which left 11 civilians dead and injured 19."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 368
+    },
+    "banned_terms": [
+      {
+        "term": "puente nacional",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puente",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nacional",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4390,
+    "attempt": 4356,
+    "place_id": "gn-5388467",
+    "input": {
+      "place": {
+        "place_id": "gn-5388467",
+        "name": "Rodeo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.03298,
+        "lon": -122.26691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rodeo, California",
+          "url": "https://en.wikipedia.org/wiki/Rodeo,_California",
+          "text": "Rodeo (; Spanish for \"Cattle roundup\") is a census-designated place (CDP) located in Contra Costa County, California, United States, in the East Bay sub-region of the San Francisco Bay Area, on the eastern shore of San Pablo Bay, 25 miles northeast of San Francisco. The population was 9,653 at the 2020 census. The place is named for the rodeos common in the late 19th century. Cattle from the surrounding hills were regularly driven down through the old town district to a loading dock on the shoreline of San Pablo Bay for shipment to slaughterhouses, a practice which continued through the early 20th century. Rodeo is served by the Interstate 80 freeway and State Route 4 and was formerly served by the first transcontinental railroad, which still passes through Rodeo. Rodeo has not been a stop on the railroad since the 1950s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "rodeo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4391,
+    "attempt": 4357,
+    "place_id": "gn-7279600",
+    "input": {
+      "place": {
+        "place_id": "gn-7279600",
+        "name": "Aluva",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.10764,
+        "lon": 76.35158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aluva",
+          "url": "https://en.wikipedia.org/wiki/Aluva",
+          "text": "Aluva (Malayalam pronunciation: [ɐːluʋɐ]), formerly known as Alwaye, is a  major town and municipality in the northern part of the Kochi metropolitan area in the Indian state of Kerala. Situated on the banks of the Periyar River, it serves as an important residential, commercial, and transportation hub in Ernakulam district and is the administrative headquarters of Aluva taluk. Located northeast of central Kochi, Aluva has long been recognized as a gateway between Kochi and central Kerala.\nAluva is noted for its cultural, religious, and historical significance. It is best known for the annual Aluva Sivarathri festival, one of Kerala’s largest religious gatherings, held on the sandbanks of the Periyar River. It is also closely associated with Sree Narayana Guru, who founded the Advaita Ashram in Aluva in 1913, establishing the town as an important centre of social reform and spiritual thought. Historically, Aluva developed as a prominent settlement along the Periyar River and grew into a centre for trade, education, and industry.\nAluva also serves as the administrative centre of the Aluva taluk. In 1956, the taluks of villages—including Mukundapuram, Kanayannur, Kunathunad, and North Paravur—were combined to form the Aluva taluk. Despite being part of the Kochi urban agglomeration, Aluva continues to function as an autonomous municipality and remains one of the most significant urban centres in Kerala. The headquarters of the District Police Chief of the Ernakulam Rural Police District, the Superintending Engineer of PWD (Roads), and the District Educational Officer are also located there. Additionally, Aluva is the northern starting point of the Kochi Metro rail’s first phase, which began operations in June 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "aluva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4392,
+    "attempt": 4358,
+    "place_id": "gn-795155",
+    "input": {
+      "place": {
+        "place_id": "gn-795155",
+        "name": "Kesklinn",
+        "country": "Estonia",
+        "subdivision": "Harjumaa",
+        "lat": 59.4355,
+        "lon": 24.75748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kesklinn, Tallinn",
+          "url": "https://en.wikipedia.org/wiki/Kesklinn,_Tallinn",
+          "text": "Kesklinn (Estonian for 'city centre') is one of the 8 administrative districts (Estonian: linnaosa) of Tallinn, the capital of Estonia. It is situated on the Tallinn Bay and bordered to the northwest by the district of Põhja-Tallinn, to the west by Kristiine, to the southwest by Nõmme, to the east by Lasnamäe and Pirita, and to the south by Rae Parish, beyond Lake Ülemiste. The island of Aegna, located in the Tallinn Bay, also falls within this administrative district. Kesklinn has an area of 30.6 km2 (11.8 sq mi) and a population of 57,731 (As of 1 November 2014); population density is 1,886.6/km2 (4,886/sq mi).\nIt is home to Tallinn's UNESCO-listed Old Town. Here sits the Tallinn Passenger Port and port-related business centres, including a new complex of high-rise buildings on Liivalaia Street, as well as Tartu Road and Maakri Street. Most of the city's public and cultural venues are located in Kesklinn. These include the parliament building (Toompea Castle), City Government, The Estonian National Opera, Estonian and Russian drama theatres, The National Library, Kadrioru and Kalevi stadiums and a considerable number of museums, theatres and government agencies. Real estate costs in the area are the highest in Estonia. While the population of the city and the country as a whole have fallen since independence, the population of Kesklinn has risen. One of the economy's key drivers is tourism from Helsinki, Finland, which is connected to Tallinn by rapid ferry traffic.\nOutside old town, there are a number of sights including Kadriorg Palace in Kadriorg, a Baroque building which was built in the 18th century by Peter I of Russia. Here also is the location of the Rotermanni quarter, Tatari, Kassisaba subdistricts. Until April 2007, a bronze Soviet war monument commemorated the occupation of Estonia by the Soviet Union; however this statue was relocated, sparking protests throughout the country's vocal Russian minority and abroad. This part of the city is home to 42 parks, including Kadriorg Park, Toompark, Hirvepark, and Tammsaare Park. The coastline gulf stretches from the Linnahall to a memorial of Maarjamäe.\nKesklinn has 21 subdistricts (Estonian: asum): Aegna, Juhkentali, Kadriorg, Kassisaba, Keldrimäe, Kitseküla, Kompassi, Luite, Maakri, Mõigu, Raua, Sadama, Sibulaküla, Südalinn, Tatari, Tõnismäe, Torupilli, Ülemistejärve, Uus Maailm, Vanalinn and Veerenni."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 373
+    },
+    "banned_terms": [
+      {
+        "term": "kesklinn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4393,
+    "attempt": 4359,
+    "place_id": "gn-2264427",
+    "input": {
+      "place": {
+        "place_id": "gn-2264427",
+        "name": "Porto de Mós",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.60191,
+        "lon": -8.81839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto de Mós",
+          "url": "https://en.wikipedia.org/wiki/Porto_de_M%C3%B3s",
+          "text": "Porto de Mós (European Portuguese pronunciation: [ˈpoɾtu ðɨ ˈmɔʃ] ) is a town and a municipality of Estremadura province in Leiria District. It is in the Centro Region and the Pinhal Litoral subregion. The population in 2011 was 24,342, in an area of 261.83 km2.\nThere were archeologic findings which link São Jorge, in the parish of Calvaria de Cima, as the exact place where the Battle of Aljubarrota was fought, crucial for maintaining the independence of Portugal in 1385. Currently, there is an interpretation center on the spot (Centre of Interpretation of the Battle of Aljubarrota) which helps visitors explore the battlefield and learn about the most important facts of this battle.\nIn this municipality, you can also find several caves carved in the mountains, the most important being Moinhos Velhos Cave, also known as Mira de Aire Cave.\nA portion of the Serras de Aire e Candeeiros Natural Park is also located in Porto de Mós municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "porto de mos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4394,
+    "attempt": 4360,
+    "place_id": "gn-2523146",
+    "input": {
+      "place": {
+        "place_id": "gn-2523146",
+        "name": "Serra San Bruno",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.57474,
+        "lon": 16.32622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serra San Bruno",
+          "url": "https://en.wikipedia.org/wiki/Serra_San_Bruno",
+          "text": "Serra San Bruno (Calabrian: La Serra) is a comune (municipality) in the Province of Vibo Valentia in the Italian region Calabria, located about 40 kilometres (25 mi) southwest of Catanzaro and about 25 kilometres (16 mi) southeast of Vibo Valentia. As of 31 May 2026, it had a population of 6,240 and an area of 39.6 square kilometres (15.3 mi2).\nClose by is the famous Carthusian monastery, Serra San Bruno Charterhouse (Certosa di Santo Stefano di Serra San Bruno), around which the town grew up. The town is named after Saint Bruno of Cologne, who founded the Carthusian Order in 1053 and the Grande Chartreuse, mother house of the Carthusians, near Grenoble, in France. He built the charterhouse of Serra San Bruno in 1095, and died here in 1101.\nThe municipality of Serra San Bruno contains the frazione (subdivision) Ninfo.\nSerra San Bruno borders the following municipalities: Arena, Gerocarne, Mongiana, Spadola, Brognaturo, Simbario, Stilo.\nThe movie Le Quattro Volte was filmed in this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "serra san bruno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "serra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bruno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

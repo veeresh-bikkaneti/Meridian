@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 4294,
+    "attempt": 4261,
+    "place_id": "gn-6690589",
+    "input": {
+      "place": {
+        "place_id": "gn-6690589",
+        "name": "King's Cross",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53067,
+        "lon": -0.12308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "King's Cross, London",
+          "url": "https://en.wikipedia.org/wiki/King's_Cross,_London",
+          "text": "King's Cross is a district in the London boroughs of Camden and Islington, on either side of Euston Road in north London, England, 1.5 miles (2.4 km) north of Charing Cross, bordered by Barnsbury to the north, Clerkenwell to the south-east, Angel to the east, Holborn and Bloomsbury to the south, Somers Town to the west and Camden Town to the north-west. It is served by two major rail termini, St Pancras and King's Cross. King's Cross station is the terminus of one of the major rail routes between London and the North.\nThe area, which was historically the south-eastern part of the parish and borough of St Pancras, and once known for drug-dealing and prostitution, has undergone significant regeneration since the mid-1990s. The introduction of the Eurostar rail service at St Pancras International and the rebuilding of King's Cross station helped stimulate the redevelopment of the long-derelict railway lands to the north of the termini."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "king s cross",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "king",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "cross",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4295,
+    "attempt": 4262,
+    "place_id": "gn-961152",
+    "input": {
+      "place": {
+        "place_id": "gn-961152",
+        "name": "Riversdale",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.09345,
+        "lon": 21.25725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riversdale, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Riversdale,_South_Africa",
+          "text": "Riversdale is a town located along the N2 highway, within the Hessequa region between Cape Town and George on the Agulhas Coastal Plain of the southern Western Cape province of South Africa.  It is an agricultural service oriented town, being a hub for shopping and other services for surrounding farming communities, smaller towns, and coastal resorts, like Witsand and Stilbaai.  It is located beneath the imposing Langeberg Mountains to the north, with Sleeping Beauty Mountain Peak overlooking the town. The town is home to the second largest collection of Thomas Bowler paintings within South Africa and is also the only town in the country, in which you would find a Ukrainian Museum of Culture. Riversdale links with the Klein Karoo, via the tarred Garcia's Mountain Pass, which offers traditional Karoo landscapes and wide open spaces for motorcyclists.\nThe Old Jail dates back to the 1800s, and is one of the most visited tourist facilities in town. The Bali Trading Complex is arguably one of the most visited facilities along all of the N2.\nThe Riversdal Landbouskou (agricultural show) is a popular agricultural festival, taking place annually in February. Riversdale as a popular tourist town, has many coffee shops, restaurants, accommodation facilities and traveller experiences like wineries, horse riding and fishing at the Korentepoort Dam Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "riversdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4296,
+    "attempt": 4263,
+    "place_id": "gn-3173302",
+    "input": {
+      "place": {
+        "place_id": "gn-3173302",
+        "name": "Mola di Bari",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.05997,
+        "lon": 17.09001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mola di Bari",
+          "url": "https://en.wikipedia.org/wiki/Mola_di_Bari",
+          "text": "Mola di Bari, commonly referred to simply as Mola (Barese: Màule), is a town and comune of the Metropolitan City of Bari, in the region of Apulia, in Southern Italy, on the Adriatic Sea.\nIn recent times, the town was best known for having primarily whitewashed buildings, however, growth, modern construction, and building design have changed the image significantly, particularly in the northern (and more modern) part of the town.\nMola's city center is its main piazza, Piazza XX Settembre near the port and it also boasts a church (Chiesa Matrice, i.e. Mother Church) dating back to the 13th century.\nBakeries in Mola are known for their focaccia food. Until the early 1990s, there were two privately owned public firewood ovens available to the inhabitants of Mola, one located on Via Nino Bixio, on the southern part of the town, and the other located on Via Pesce, on the opposite side of the main Piazza. These businesses served the local residents by providing a place to cook baked goods, primarily focaccia and breads. Typically, focaccia pans were quite large (some approaching half a meter in diameter) and were difficult to cook in one's home. The tradition of sending items to be baked by the local oven has passed.\nMola is also home to a large fishing industry that supplies fresh fish throughout the southern Italian region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "mola di bari",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mola",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bari",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4297,
+    "attempt": 4264,
+    "place_id": "gn-3839482",
+    "input": {
+      "place": {
+        "place_id": "gn-3839482",
+        "name": "Rada Tilly",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -45.92462,
+        "lon": -67.55424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rada Tilly",
+          "url": "https://en.wikipedia.org/wiki/Rada_Tilly",
+          "text": "Rada Tilly is a town in Escalante Department, Chubut Province (Patagonia), Argentina. The town is between Punta Piedras hill to the north and Punta del Marqués to the south.  Punta del Marqués, a geographical landmark on San Jorge Gulf, reaches a height of 167 metres (548 ft), and extends into the sea for 1.5 kilometres (0.93 mi).\nThe area was first populated at least 9,000 years ago, and was first recorded by Captain Robert FitzRoy during his voyage on HMS Beagle in the early 1830s (best known for its impact on the naturalist Charles Darwin). The municipality was established on July 24, 1948, as part of a nature conservation effort in the area during the administration of President Juan Perón. It was named for the Marquess Francisco Everardo Tilly y Paredes, a Spanish naval captain who defeated Portuguese forces on the Río de la Plata, in 1795; Rada is \"roadstead\" and also \"inlet\" in Spanish. The municipality is home to a growing population, which reached 6,208 in the 2001 Census, and has doubled every decade since 1980; its estimated population, per the provincial statistical bureau, was 9,226 in 2008. A beach resort city, Rada Tilly became one of the main recreational spots for visitors from nearby Comodoro Rivadavia, a city 13 kilometres (8.1 mi) to the north. Many people living primarily in Comodoro Rivadavia also own second homes in Rada Tilly. These second homes serve the purpose of a lake home or a cabin for many residents; thus providing an escape from the busy city life of el centro in Comodoro.\n\nThe main attraction of the city is its coastline, extending for 4.5 kilometres (2.8 mi), covered in fine sand. This uninterrupted geographical feature allows for the enjoyment of numerous leisure activities such as football, beach volleyball, and walking, as well as windsurfing, kitesurfing, diving, snorkeling, trekking, motocross, and mountain bicycling. Landsailing (three-wheeled carts with a sail attached to them that move with the force of the wind) is a popular spectator sport in Rada Tilly, and the 2008 Landsailing World Cup was held on these beaches.\nRada Tilly features one of the longest Seabee seawalls in the world, comparable to that at Blackpool South Shore [UK], but comprising smaller units. The beach is very flat and is very wide at low tide. It is also quite dynamic, with back beach elevation varying by as much as 3m, depending on the season [as derived from photos on Panoramio]. The production techniques evolved by Corporacion Tecnologica Argentina produced over 500 units per shift.\nRada Tilly is also a popular fishing destination, and the wide range of fish includes salmon, hake, and sea bass, among others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 444
+    },
+    "banned_terms": [
+      {
+        "term": "rada tilly",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rada",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tilly",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4298,
+    "attempt": 4265,
+    "place_id": "gn-3859965",
+    "input": {
+      "place": {
+        "place_id": "gn-3859965",
+        "name": "Cosquín",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.24525,
+        "lon": -64.46574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cosquín, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Cosqu%C3%ADn,_Argentina",
+          "text": "Cosquín is a small town in the province of Córdoba, Argentina, located about 52 km (32 mi) west of the city of Córdoba, and 783 km (487 mi) from Buenos Aires. It had about 57,000 inhabitants at the 2010 census [INDEC]. It is the head town of the Punilla Department, and is located on the banks of the Cosquín River, and on the foot of a small mountain (Cerro Pan de Azúcar).\nCosquín is the oldest town in the scenic Punilla Valley; the region was already populated by the 16th century. Cosquín was officially founded with the title of villa (town) on 4 August 1876, and declared a city on 26 August 1939.\nIn the past, the region of Cosquín was appreciated for its benign climate, recommended by physicians for pulmonary ailments, and a whole industry of hospitals and therapeutic establishments appeared in order to provide services to patients from Argentina and even other countries. As the popularity of this kind of treatment decreased, the economy of Cosquín became more focused on tourism.\nSince 1961, Cosquín hosts an annual National Folklore Festival, which receives around 100,000 visitors"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "cosquin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4299,
+    "attempt": 4266,
+    "place_id": "gn-5104882",
+    "input": {
+      "place": {
+        "place_id": "gn-5104882",
+        "name": "Sparta",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.03343,
+        "lon": -74.63849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sparta, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Sparta,_New_Jersey",
+          "text": "Sparta is a township in Sussex County in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 19,600, a decrease of 122 (−0.6%) from the 2010 census count of 19,722, which in turn reflected an increase of 1,642 (+9.1%) from the 18,080 counted in the 2000 census.\nSparta was organized as a township by an act of the New Jersey Legislature on April 14, 1845, from portions of Byram Township, Frankford Township, Hardyston Township and (the now-defunct) Newton Township. The township was named after the existing community of Sparta, which had been settled and named years before, the name likely coming from Sparta, Greece. Ogdensburg borough was incorporated on February 26, 1914, from portions of Sparta Township.\nThe township was listed as the safest place in New Jersey as well as the seventh safest municipality in the nation according to a 2022 crime statistic compilation from Safewise.com."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "sparta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4300,
+    "attempt": 4267,
+    "place_id": "gn-5959335",
+    "input": {
+      "place": {
+        "place_id": "gn-5959335",
+        "name": "Gander",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 48.95624,
+        "lon": -54.61647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gander, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/Gander,_Newfoundland_and_Labrador",
+          "text": "Gander is a town located in the northeastern part of the island of Newfoundland in the Canadian province of Newfoundland and Labrador, approximately  40 km (25 mi) south of Gander Bay,  100 km (62 mi) south of Twillingate and  90 km (56 mi) east of Grand Falls-Windsor. Located on the northeastern shore of Gander Lake, it is the site of Gander International Airport, once an important refuelling stop for transatlantic aircraft. The airport is still a preferred emergency landing point for aircraft facing on-board medical or security issues.\nWhen the U.S. closed its airspace after the September 11 attacks, Gander International Airport took in 38 commercial aircraft and four military aircraft; the town also accommodated nearly 6,700 passengers from airlines such as Olympic Airways, Air France, Lufthansa, British Airways, and Alitalia.\nMost of the streets in Gander are named after famous aviators, including Alcock and Brown, Amelia Earhart, Charles Lindbergh, Eddie Rickenbacker, Marc Garneau, and Chuck Yeager."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "gander",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4301,
+    "attempt": 4268,
+    "place_id": "gn-1916136",
+    "input": {
+      "place": {
+        "place_id": "gn-1916136",
+        "name": "Nanshan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.538,
+        "lon": 113.93889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanshan, Shenzhen",
+          "url": "https://en.wikipedia.org/wiki/Nanshan,_Shenzhen",
+          "text": "Nanshan District (Chinese: 南山区; pinyin: Nánshān Qū; Cantonese Jyutping: Naam4 Saan1 Keoi1) is one of the nine districts comprising the city of Shenzhen in Guangdong province, China. It encompasses the southwest area of the Shenzhen Special Economic Zone, with a population of 1.08 million. In 2025, the district of Nanshan's local GDP output exceeded 1,000 billion Chinese Yuan or 143.7 billion US dollars, an economy slightly larger than that of Uzbekistan or Bulgaria. The region has an established tourism industry and is home to several sightseeing locations, as well as multiple seaside parks such as the Shenzhen Bay Park and the Shenzhen Talent Park. Its tallest building is the 393-metre (1,289 ft) China Resources Headquarters.\nIt is known for being the home of Shenzhen High-Tech Industrial Park, which comprises some of China's largest technology companies and the establishments of well-known international companies, as well as being the  nation's richest district of a city-level municipality. The district has some of the most expensive neighbourhoods in China in terms of real estate prices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "nanshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4302,
+    "attempt": 4269,
+    "place_id": "gn-2052372",
+    "input": {
+      "place": {
+        "place_id": "gn-2052372",
+        "name": "Badaling",
+        "country": "China",
+        "subdivision": "Beijing",
+        "lat": 40.36397,
+        "lon": 115.98511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Badaling",
+          "url": "https://en.wikipedia.org/wiki/Badaling",
+          "text": "Badaling (Chinese: 八达岭; pinyin: Bādálǐng) is the site of the most visited section of the Great Wall of China, approximately 80 kilometers (50 mi) northwest of Beijing's city center, in Badaling Town, Yanqing District, Beijing municipality. The portion of the wall running through the site was built in 1504 during the Ming Dynasty, along with a military outpost reflecting the location's strategic importance. The highest point of Badaling is Beibalou (北八樓), approximately 1,015 meters (3,330 ft) above sea level.\nBadaling Great Wall was built in the Ming Dynasty (1505) to occupy a commanding and strategic position for protecting the Juyong Pass to its south, further protecting the city of Beijing.\nThe portion of the wall at Badaling has undergone restoration, and in 1957, it was the first section of the wall to open to tourism. Now visited annually by millions, the immediate area has seen significant development, including hotels, restaurants, and a cable car."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "badaling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4303,
+    "attempt": 4270,
+    "place_id": "gn-2525571",
+    "input": {
+      "place": {
+        "place_id": "gn-2525571",
+        "name": "Belpasso",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.59192,
+        "lon": 14.97985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belpasso",
+          "url": "https://en.wikipedia.org/wiki/Belpasso",
+          "text": "Belpasso (formerly Malpasso; Sicilian: Malupassu or Marpassu) is a comune (municipality) in the Metropolitan City of Catania in the Italian region of Sicily, located about 150 kilometres (93 mi) southeast of Palermo and about 10 kilometres (6 mi) northwest of Catania. Belpasso is the second biggest comune of the Catania's area for area (after Catania).\nThe original town was destroyed by the lava flows from Mount Etna in 1669. Rebuilt in a lower plain, that habitation was known as Fenice Moncada; the latter name derives from the family of the Princes of Paterno who owned the feud. This habitation proved malarial and was heavily damaged by the 1693 Sicily earthquake, causing the spot to be abandoned and named Malpasso, and the present town was founded in 1695 in lands belonging to the Duke of Montalto.\nBelpasso is the home to the Condorelli company producing typical Sicilian sweets, exported in all parts of the world. Condorelli is also the owner of a bar franchising, mainly located in the Metropolitan City of Catania.\nBelpasso borders the following municipalities: Adrano, Biancavilla, Bronte, Camporotondo Etneo, Castiglione di Sicilia, Catania, Lentini, Maletto, Mascalucia, Motta Sant'Anastasia, Nicolosi, Paternò, Ragalna, Ramacca, Randazzo, San Pietro Clarenza, Sant'Alfio, and Zafferana Etnea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "belpasso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4304,
+    "attempt": 4271,
+    "place_id": "gn-276359",
+    "input": {
+      "place": {
+        "place_id": "gn-276359",
+        "name": "Bsharri",
+        "country": "Lebanon",
+        "subdivision": "North Lebanon",
+        "lat": 34.25083,
+        "lon": 36.01056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bsharri",
+          "url": "https://en.wikipedia.org/wiki/Bsharri",
+          "text": "Bsharri (Arabic: بشرّي Bšarrī; also romanized Becharre, Bcharre, Bsharre, Bcharre Al Arz) is a Lebanese town located in the district of the same name, North Governorate, situated at altitudes between 1,100 m (3,600 ft) and 3,088 m (10,131 ft). Bsharri is the location of the Cedars of God, a UNESCO World Heritage Site and the only remaining place where the Cedrus libani (Lebanese cedar) tree grows natively. The region is the birthplace of famed poet, painter and sculptor Khalil Gibran; a museum in town honours his life and work.\nAs Bsharri is mountainous and experiences freezing winters, it is home to Lebanon's oldest ski resort, the Cedars Ski Resort, as well as the country's original ski lift, which was built in 1953. The resort is about 130 km (81 mi) from Beirut, approximately two hours' driving time. Qurnat as Sawdā Mountain is the highest peak in the Levant, at 3,088 meters above sea level.\nBsharri is at the head of the Holy Kadisha Valley, a natural area which contains some of the oldest Christian monastic communities in the Middle East. A center of Maronite Christianity, the area also features the largest cathedral in the Levant region, the Saint Saba Cathedral, constructed by Anthony II Peter Arida. As the city is home to nearly 40 churches and houses-of-worship, it is sometimes referred to as \"the city of churches\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "bsharri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4305,
+    "attempt": 4272,
+    "place_id": "gn-2963370",
+    "input": {
+      "place": {
+        "place_id": "gn-2963370",
+        "name": "Killarney",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.0598,
+        "lon": -9.50858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Killarney",
+          "url": "https://en.wikipedia.org/wiki/Killarney",
+          "text": "Killarney ( kil-AR-nee; Irish: Cill Airne [ˌciːl̠ʲ ˈaːɾˠn̠ʲə], meaning 'church of sloes') is a town in County Kerry, Ireland. It is on the northeastern shore of Lough Leane, part of Killarney National Park, and is home to St Mary's Cathedral, Ross Castle, Muckross House and Abbey, the Lakes of Killarney, MacGillycuddy's Reeks, Purple Mountain, Mangerton Mountain, Paps Mountain, the Gap of Dunloe and Torc Waterfall. Its natural heritage, history and location on the Ring of Kerry make Killarney a popular tourist destination. Tourism has underpinned the town's economy and shaped its development for more than two and a half centuries, and Killarney has been described the birthplace of Irish tourism.\nKillarney's population was 14,412 as of the 2022 census, making it the second largest in the county. It won the Best Kept Town award in 2007 in a cross-border competition jointly organised by the Department of the Environment and the Northern Ireland Amenity Council. In 2011, Killarney was named Ireland's tidiest town and the cleanest town in the country by Irish Business Against Litter. It was again named Ireland's tidiest large town in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "killarney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4306,
+    "attempt": 4273,
+    "place_id": "gn-3094303",
+    "input": {
+      "place": {
+        "place_id": "gn-3094303",
+        "name": "Kudowa-Zdrój",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.44297,
+        "lon": 16.24397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kudowa-Zdrój",
+          "url": "https://en.wikipedia.org/wiki/Kudowa-Zdr%C3%B3j",
+          "text": "Kudowa-Zdrój [kuˈdɔva ˈzdrui̯] (German: Bad Kudowa, Czech: Chudoba), or simply Kudowa, is a town located below the Table Mountains in Kłodzko County, Lower Silesian Voivodeship, in the southwestern part of Poland. It has a population of around 10,000 and is located at the Polish-Czech border, just across from the Czech town of Náchod, some 40 km (25 mi) west of Polish Kłodzko and 140 km (87 mi) from Prague.\nKudowa-Zdrój is one of the oldest European spa towns where heart and circulatory system diseases were cured. The downtown area features a park styled on 17th century revival, with exotic plants and a mineral water pump room. Due to its location, the town is famous for tourism, hiking and as the departure point for trips.\nThe town has several historical and heritage sites such as the Chapel of Skulls within the Czermna district of Kudowa, an ossuary containing the bones or skeletal remains of thousands. It is one of a few of its kind in Europe. Another site is the Basilica of Wambierzyce, nicknamed \"Silesian Jerusalem\", and one of the most popular Catholic pilgrimage destinations in Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "kudowa zdroj",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kudowa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zdroj",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4307,
+    "attempt": 4274,
+    "place_id": "gn-3123673",
+    "input": {
+      "place": {
+        "place_id": "gn-3123673",
+        "name": "el Raval",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.38042,
+        "lon": 2.1686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Raval",
+          "url": "https://en.wikipedia.org/wiki/El_Raval",
+          "text": "El Raval (Catalan pronunciation: [əl rəˈβal], Spanish pronunciation: [el raˈβal]) is a neighborhood in the Ciutat Vella district of Barcelona, the capital city of Catalonia. The neighborhood, especially the part closest to the old port, was formerly (informally) known as Barri Xinès or Barrio Chino, meaning \"Chinatown\". El Raval is one of the two historical neighborhoods that border La Rambla, the other being the Barri Gòtic; it contains some 50,000 people.\n\nAn area historically infamous for its nightlife and cabarets, as well as prostitution and crime, El Raval has changed significantly in recent years and due to its central location has become a minor attraction of Barcelona. It currently has a very diverse immigrant community (47.4% of its population was born abroad, ranging from Filipinos, South Americans, and Pakistanis, to a more recent Eastern European community, especially from Romania). It is home to many bars and restaurants, as well as community spaces and collectives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "el raval",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "raval",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4308,
+    "attempt": 4275,
+    "place_id": "gn-11790367",
+    "input": {
+      "place": {
+        "place_id": "gn-11790367",
+        "name": "Akihabara",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.69848,
+        "lon": 139.77253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akihabara",
+          "url": "https://en.wikipedia.org/wiki/Akihabara",
+          "text": "Akihabara (Japanese: 秋葉原) is a neighborhood in the Chiyoda ward of Tokyo, Japan, generally considered to be the area surrounding Akihabara Station (nicknamed Akihabara Electric Town). This area is part of the Sotokanda (外神田) and Kanda-Sakumachō districts of Chiyoda. There is an administrative district called Akihabara (part of Taitō ward), located north of Akihabara Electric Town surrounding Akihabara Neribei Park.\nThe name Akihabara is a shortening of Akibagahara (秋葉ヶ原), which comes from Akiba (秋葉), named after a fire-controlling deity of a firefighting shrine built after the area was destroyed by a fire in 1869. Akihabara gained the nickname Akihabara Electric Town (秋葉原電気街, Akihabara Denki Gai) shortly after World War II for being a major shopping center for household electronic goods and the post-war black market.\nAkihabara is considered by many to be the center of Japanese otaku culture, and is a major shopping district for video games, anime, manga, electronics and computer-related goods. Icons from popular anime and manga are displayed prominently on the shops in the area, and numerous maid cafés and large arcades are found throughout the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "akihabara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4309,
+    "attempt": 4276,
+    "place_id": "gn-3836951",
+    "input": {
+      "place": {
+        "place_id": "gn-3836951",
+        "name": "San Martín de los Andes",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -40.15789,
+        "lon": -71.35337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Martín de los Andes",
+          "url": "https://en.wikipedia.org/wiki/San_Mart%C3%ADn_de_los_Andes",
+          "text": "San Martín de los Andes is a city in the south-west of the province of Neuquén, Argentina, serving as the administration centre of the Lácar Department. Lying at the foot of the Andes, on the Lácar lake, it is considered one of the main tourism destinations in the province. The National Route 40 runs to the city, connecting it with important touristic points in the south of the province, such as Lanín and Nahuel Huapí national parks.\nThe city was founded in 1898 as a military outpost to secure the Argentine sovereignty over the area. The economy of the then-mountain village was based on wood logging and husbandry until the opening of the Lanín National Park in 1937, when tourism became the main industry. Migration from different parts of the world, such as Europe and the Middle East, as well as from neighboring Chile and other Argentine provinces, contributed to the population growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "san martin de los andes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4310,
+    "attempt": 4277,
+    "place_id": "gn-4138321",
+    "input": {
+      "place": {
+        "place_id": "gn-4138321",
+        "name": "Dupont Circle",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.90844,
+        "lon": -77.04414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dupont Circle",
+          "url": "https://en.wikipedia.org/wiki/Dupont_Circle",
+          "text": "Dupont Circle is a historic roundabout park and neighborhood of Washington, D.C., located in Northwest D.C. The Dupont Circle neighborhood is bounded approximately by 16th Street NW to the east, 22nd Street NW to the west, M Street NW to the south, and Florida Avenue NW to the north. Much of the neighborhood is listed on the National Register of Historic Places. However, the local government Advisory Neighborhood Commission (ANC 2B) and the Dupont Circle Historic District have slightly different boundaries.\nThe traffic circle is located at the intersection of Massachusetts Avenue NW, Connecticut Avenue NW, New Hampshire Avenue NW, P Street NW, and 19th Street NW.  The circle is named for Rear Admiral Samuel Francis Du Pont. The traffic circle contains the Dupont Circle Fountain in its center.\nThe neighborhood is known for its high concentration of embassies, many located on Embassy Row, and think tanks, many located on Think Tank Row."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "dupont circle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dupont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "circle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4311,
+    "attempt": 4278,
+    "place_id": "gn-5105974",
+    "input": {
+      "place": {
+        "place_id": "gn-5105974",
+        "name": "Wallington",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85316,
+        "lon": -74.11375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wallington, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wallington,_New_Jersey",
+          "text": "Wallington is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 11,868, an increase of 533 (+4.7%) from the 2010 census count of 11,335, which in turn reflected a decline of 248 (−2.1%) from the 11,583 counted in the 2000 census.\nWallington was created as a borough on January 2, 1895, based on a referendum held on December 31, 1894, from area taken from Bergen Township and Saddle River Township. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through New Jersey, in which 26 boroughs were formed in Bergen County alone in 1894, with Wallington the last of the 26 to be formed by an 1894 referendum. Sections of Wallington were ceded to Garfield in 1898. The borough is said to have been named for Walling Van Winkle (1650–1725), who built a home in the future borough. In the early 1900s Wallington was advertised as a \"Slovak colony\" for Slovak migrants living in urban areas to find suburban real estate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "wallington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4312,
+    "attempt": 4279,
+    "place_id": "gn-5122477",
+    "input": {
+      "place": {
+        "place_id": "gn-5122477",
+        "name": "Jackson Heights",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.75566,
+        "lon": -73.88541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jackson Heights",
+          "url": "https://en.wikipedia.org/wiki/Jackson_Heights",
+          "text": "Jackson Heights is a neighborhood in the northwestern part of the borough of Queens in New York City. Jackson Heights is neighbored by North Corona to the east, Elmhurst to the south, Woodside to the west, and today northern Astoria (Ditmars-Steinway) to the northwest, and East Elmhurst to the north and northeast. Jackson Heights has an ethnically diverse community, with half the population having been foreign-born since the 2000s. The New York Times has called it \"the most culturally diverse neighborhood in New York, if not on the planet.\" According to the 2010 United States census, the neighborhood has a population of 108,152.\nThe site of Jackson Heights was a vast marsh named Trains Meadow until 1909 when Edward A. MacDougall's Queensboro Corporation bought 325 acres (132 ha) of undeveloped land and farms. The Queensboro Corporation named the land Jackson Heights after Jackson Avenue, which was itself a namesake of John C. Jackson. A descendant of one of the earliest European families to settle in the borough, Jackson was a respected Queens entrepreneur. Jackson Avenue marked the northern border of the Queensboro Corporation's ambitious Garden City development. Further development arose through the development of transit and \"garden apartments\". \"Garden homes\" soon became prevalent in Jackson Heights. During the 1960s, Jackson Heights's white middle-class families began moving to the suburbs, and nonwhite residents began moving in.\nJackson Heights retains much of its residential character. It also has numerous commercial establishments clustered along 37th Avenue, as well as on several side streets served by subway stations. Most of the surviving garden city neighborhood is part of a national historic district called the Jackson Heights Historic District, which was listed on the National Register of Historic Places in 1999. A smaller part of the original garden city neighborhood was placed in a New York City historic district of the same name in 1993.\nJackson Heights is in Queens Community District 3 and its ZIP Code is 11372. The zip code 11370 is co-named with East Elmhurst. It is patrolled by the New York City Police Department's 115th Precinct. Politically, Jackson Heights is represented by the New York City Council's 21st and 25th districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "jackson heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jackson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4313,
+    "attempt": 4280,
+    "place_id": "gn-1724576",
+    "input": {
+      "place": {
+        "place_id": "gn-1724576",
+        "name": "Boac",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 13.4463,
+        "lon": 121.84
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boac, Marinduque",
+          "url": "https://en.wikipedia.org/wiki/Boac,_Marinduque",
+          "text": "Boac, officially the Municipality of Boac (Tagalog: Bayan ng Boac), is a municipality and capital of the province of Marinduque, Philippines. According to the 2024 census, it has a population of 54,365 people.\nSituated in the western coast of Marinduque island, the municipality is bordered in the north by the municipality of Mogpog, in the west by the Tayabas Bay and Sibuyan Sea, in the east by the municipality of Torrijos, and in the south by the municipalities of Gasan and Buenavista.\nBoac, a heritage town in its own right, is known as one of the main venues of the annual Moriones Festival and is the location of a number of historical sites in Marinduque including the Boac Cathedral fortress church, Casa Real and the Liwasan ng Kalayaan, Laylay Port, and the Battle of Paye site. The municipality is also home to the Marinduque Branch of the National Museum of the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "boac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
