@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 3045,
+    "place_id": "gn-2809889",
+    "input": {
+      "place": {
+        "place_id": "gn-2809889",
+        "name": "Wetzlar",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.56109,
+        "lon": 8.50495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetzlar",
+          "url": "https://en.wikipedia.org/wiki/Wetzlar",
+          "text": "Wetzlar (German pronunciation: [ˈvɛtslaːɐ̯] ) is a city in the state of Hesse, Germany. It is the twelfth largest city in Hesse with currently 55,371 inhabitants at the beginning of 2019 (including second homes). As an important cultural, industrial and commercial centre, the university town is one of the ten regional centres in the state of Hesse.\nA former free imperial city, it gained much of its fame as the seat of the Imperial Supreme Court (Reichskammergericht) of the Holy Roman Empire. Located 51 kilometres north of Frankfurt, at 8° 30′ E, 50° 34′ N, Wetzlar straddles the river Lahn and is on the German Timber-Frame Road, which passes mile upon mile of half-timbered houses. Historically, the city has acted as the hub of the Lahn-Dill-Kreis on the north edge of the Taunus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "wetzlar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3051,
+    "place_id": "gn-3456324",
+    "input": {
+      "place": {
+        "place_id": "gn-3456324",
+        "name": "Nepomuceno",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.23342,
+        "lon": -45.23488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nepomuceno",
+          "url": "https://en.wikipedia.org/wiki/Nepomuceno",
+          "text": "Nepomuceno is a Brazilian municipality located in the state of the state of Minas Gerais. The population in 2020 was 26,826 in a total area of 584 km2 (225 sq mi). The maximum elevation is 1,100 m (3,600 ft) and the minimum is 850 m (2,790 ft).\nThe city belongs to the IBGE statistical microregion of Varginha. It lies 12 km (7.5 mi) west of the important highway BR-381 (Fernão Dias). Distances to major and nearby cities are:\n\nBelo Horizonte – 233 km\nSão Paulo – 330 km\nRio de Janeiro – 396 km\nBrasília – 1085 km\nTrês Pontas – 54 km\nTrês Corações – 80 km\nVarginha – 81 km\nLavras – 25 km\nThe climate is humid, with mild summers, subject to sporadic periods of drought and with mild winters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "nepomuceno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3053,
+    "place_id": "gn-4180531",
+    "input": {
+      "place": {
+        "place_id": "gn-4180531",
+        "name": "Augusta",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.47097,
+        "lon": -81.97484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augusta, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Augusta,_Georgia",
+          "text": "Augusta is a city on the central eastern border of the U.S. state of Georgia and the county seat of Richmond County. The city lies directly across the Savannah River from North Augusta, South Carolina, at the head of its navigable portion. Augusta, the third-most-populous city in Georgia (following Atlanta and Columbus), is situated in the Fall Line region of the state.\nAccording to the U.S. Census Bureau, Augusta had a 2020 population of 202,071 and a 2025 estimated population of 201,999, not counting the independent cities of Blythe and Hephzibah located within the boundaries of Augusta-Richmond County. It is the 124th-most-populous city in the United States and the 92nd-largest metropolitan area. The process of consolidation between the city of Augusta and Richmond County began with a 1995 referendum in the two jurisdictions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "augusta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3056,
+    "place_id": "gn-639406",
+    "input": {
+      "place": {
+        "place_id": "gn-639406",
+        "name": "Riihimäki",
+        "country": "Finland",
+        "subdivision": "Kanta-Häme",
+        "lat": 60.73769,
+        "lon": 24.77726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riihimäki",
+          "url": "https://en.wikipedia.org/wiki/Riihimäki",
+          "text": "Riihimäki (Finnish pronunciation: [ˈriːhiˌmæki]; lit. 'grain drying cabin hill') is a town and municipality in the south of Finland, about 69 kilometres (43 mi) north of Helsinki and 109 kilometres (68 miles) southeast of Tampere. An important railway junction is located in Riihimäki, since railway tracks from Riihimäki lead to Helsinki, Tampere and Lahti.\nThe town is located in the province of Southern Finland and is part of the Kanta-Häme region. Its neighboring municipalities are Janakkala in the north, Hausjärvi in the east, Hyvinkää in the south and Loppi in the west. The town has a population of 28,555 (31 December 2025) and covers an area of 125.56 square kilometres (48.48 sq mi) of which 4.54 km2 (1.75 sq mi) is water. The population density is 235.97 inhabitants per square kilometre (611.2/sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "riihimaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3057,
+    "place_id": "gn-7303406",
+    "input": {
+      "place": {
+        "place_id": "gn-7303406",
+        "name": "Anna Regina",
+        "country": "Guyana",
+        "subdivision": "Pomeroon-Supenaam",
+        "lat": 7.26555,
+        "lon": -58.48265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anna Regina",
+          "url": "https://en.wikipedia.org/wiki/Anna_Regina",
+          "text": "Anna Regina is the capital city of the Pomeroon-Supenaam Region of Guyana, situated on the Atlantic coast, northwest of the mouth of the Essequibo River. Officially established as a town in 1990 under President Desmond Hoyte through the merger of 18 villages, its history traces back to an early 1800s Dutch plantation named in memory of a British planter's two daughters who tragically drowned there. The town has a notable history of labor and civil rights protests, commemorated by landmarks such as the 1972 Devonshire Castle Monument and the 1988 Damon Monument. Historically reliant on sugar production, Anna Regina's economy has since transitioned to rice manufacturing. As of the 2022 census, the town has a population of 11,846 residents, representing 21% of the region's population, and features a uniform, high-rainfall tropical rainforest climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "anna regina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3058,
+    "place_id": "gn-968665",
+    "input": {
+      "place": {
+        "place_id": "gn-968665",
+        "name": "Modimolle",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.7,
+        "lon": 28.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Modimolle",
+          "url": "https://en.wikipedia.org/wiki/Modimolle",
+          "text": "Modimolle, also known as Nylstroom, is a town located near the southern edge of the Waterberg Massif in Limpopo province, South Africa. It is a medium-sized town that focuses primarily on agriculture and farming (citrus, grapes and cattle) as well as wildlife and tourism. Nylstroom is also located approximately 135 kilometres (84 miles) north of Pretoria, South Africa's capital city.\nThe Waterberg Biosphere spreading north, a UNESCO designated Biosphere Reserve, contains approximately 15,000 square kilometres (5,792 square miles).  Waterberg is the first region in the northern part of South Africa to be named as a Biosphere Reserve by  UNESCO. The extensive rock formation was shaped by hundreds of millions of years of riverine erosion to yield diverse bluff and butte landform.  The ecosystem can be characterised as a dry deciduous forest or Bushveld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "modimolle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3059,
+    "place_id": "gn-11428685",
+    "input": {
+      "place": {
+        "place_id": "gn-11428685",
+        "name": "Rukban",
+        "country": "Jordan",
+        "subdivision": "Mafraq",
+        "lat": 33.31405,
+        "lon": 38.70342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rukban",
+          "url": "https://en.wikipedia.org/wiki/Rukban",
+          "text": "Rukban (Arabic: الرُّكبان, romanized: Al-Rukban) is an arid remote area in northeast Jordan adjacent to the Jordan–Syria border, and close to the tripoint with Iraq. \nThe area became in 2014 one of the crossing points for Syrian refugees fleeing the Syrian Civil War. While Jordan welcomed hundreds of thousands of refugees from Syria, the country specifically blocked the refugees at Rukban from entering, citing security concerns regarding the presence of hidden ISIS sleeper cells. This led to thousands of refugees piling up on the Syrian side of the border, creating the Rukban refugee camp.\nIn 2016, a car passing from the refugee camp in Syria managed to reach a Jordanian army outpost, exploding and killing 6 and injuring 14 Jordanian soldiers. Jordan thereafter declared its eastern and northern border closed military zones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "rukban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3063,
+    "place_id": "gn-146214",
+    "input": {
+      "place": {
+        "place_id": "gn-146214",
+        "name": "Paphos",
+        "country": "Cyprus",
+        "subdivision": "Pafos",
+        "lat": 34.77679,
+        "lon": 32.42451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paphos",
+          "url": "https://en.wikipedia.org/wiki/Paphos",
+          "text": "Paphos, also spelled Pafos, is a coastal city in southwest Cyprus and the capital of the Paphos District. In classical antiquity, two locations were known as Paphos: Old Paphos in modern Kouklia and Nea Paphos, both of which were at various times the capital of the ancient city-state of Paphos. It is the fourth-largest city in the country, after Nicosia, Limassol, and Larnaca, with an urban population of 55,000.\nThe modern city of Paphos lies on the Mediterranean coast, about 50 km (30 mi) west of Limassol, the island's largest port; the two cities are connected by the A6 highway. Paphos International Airport is the country's second-largest airport, and serves as a gateway to western and southern Cyprus. The city has a subtropical-Mediterranean climate, and experiences the mildest temperatures on the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "paphos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3070,
+    "place_id": "gn-4562778",
+    "input": {
+      "place": {
+        "place_id": "gn-4562778",
+        "name": "Barranquitas",
+        "country": "Puerto Rico",
+        "subdivision": "Barranquitas",
+        "lat": 18.18662,
+        "lon": -66.30628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barranquitas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Barranquitas,_Puerto_Rico",
+          "text": "Barranquitas (Spanish pronunciation: [baraŋˈkitas], locally [baraŋˈkitaʔ]) is a small mountain town and municipality located in the Cordillera Central region of Puerto Rico, south of Corozal and Naranjito; north of Coamo and Aibonito; west of Comerío and Cidra; and east of Orocovis. Barranquitas is spread over 6 barrios and Barranquitas Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nBarranquitas is about one hour by winding roads from San Juan, the capital. It is nestled amid hills and mountains, and nearby, between Barranquitas and Aibonito, is the San Cristóbal Canyon; one of the deepest canyons in the West Indies. For years, the overlook was used as a municipal garbage; in the last decade, the refuse was removed and the site restored."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "barranquitas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3073,
+    "place_id": "gn-713513",
+    "input": {
+      "place": {
+        "place_id": "gn-713513",
+        "name": "Alushta",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.67728,
+        "lon": 34.4097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alushta",
+          "url": "https://en.wikipedia.org/wiki/Alushta",
+          "text": "Alushta or Aluşta is a city of regional significance on the southern coast of the Crimean peninsula which is within the Autonomous Republic of Crimea, a region internationally recognised as territory of Ukraine, but occupied by the Russian Federation and incorporated as the Republic of Crimea. It is located along the Black Sea coast on the road from Gurzuf to Sudak, as well as on the Crimean Trolleybus line. According to the 2014 Census, Alushta had a population of 29,078.\nThe area is notable for its arid, rocky terrain due to its proximity to the Crimean Mountains. During Byzantine times, the town was called Alouston (Ἄλουστον) meaning \"Unwashed\". Vestiges survive of a Byzantine defensive tower from a fortress from which the town's name was derived, as well as a 15th-century Genoese fortress."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "alushta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3076,
+    "place_id": "gn-1278471",
+    "input": {
+      "place": {
+        "place_id": "gn-1278471",
+        "name": "Arakkonam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.08449,
+        "lon": 79.67053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arakkonam",
+          "url": "https://en.wikipedia.org/wiki/Arakkonam",
+          "text": "Arakkonam (Tamil: [aɾakkoːɳam]) is a railway town in the Ranipet district, state of Tamil Nadu. Included within the Chennai Metropolitan Area since 2022, Arakkonam is a major suburb of the state capital city Chennai, with a population of 78,395 per the census 2011. It is about 54 kilometres (34 mi) from the district headquarters Ranipet, and about 69 kilometres (43 mi) from Chennai.\nArakkonam is one of the hottest towns in India, where the temperature can exceed 43 °C (110 °F) for several peak days in summer it is famous for temples this city is developing day by day and it is one of the best city in Ranipet District The name 'Arakkonam' was derived from the word \"Arunthamizhkundram\" also later called \"Aarukonam\", meaning 'hexagon' which connects six important places around."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "arakkonam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3082,
+    "place_id": "gn-2635650",
+    "input": {
+      "place": {
+        "place_id": "gn-2635650",
+        "name": "Torquay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.46198,
+        "lon": -3.52522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torquay",
+          "url": "https://en.wikipedia.org/wiki/Torquay",
+          "text": "Torquay (  tor-KEE) is a seaside town in Devon, England, part of the unitary authority area of Torbay. It lies 18 miles (29 km) south of the county town of Exeter and 28 miles (45 km) east-north-east of Plymouth, on the north of Tor Bay, adjoining the neighbouring town of Paignton on the west of the bay and across from the fishing port of Brixham.  At the 2021 census, the built-up area of Torquay had a population of 52,037.\nThe town's economy, like Brixham's, was initially based upon fishing and agriculture; however, in the early 19th century, it began to develop into a fashionable seaside resort. Later, as the town's fame spread, it was popular with Victorian society. Renowned for its mild climate, the town earned the nickname the English Riviera."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "torquay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3083,
+    "place_id": "gn-2638977",
+    "input": {
+      "place": {
+        "place_id": "gn-2638977",
+        "name": "Rugeley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.7593,
+        "lon": -1.93694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rugeley",
+          "url": "https://en.wikipedia.org/wiki/Rugeley",
+          "text": "Rugeley (  ROOJ-lee) is a market town and civil parish in the Cannock Chase District, in Staffordshire, England. It lies on the north-eastern edge of Cannock Chase next to the River Trent; it is eight miles (13 kilometres) north of Lichfield, 10 miles (16 km) southeast of Stafford, five miles (8 km) northeast of Hednesford and 11 miles (18 km) southwest of Uttoxeter. At the 2021 Census, the population was 26,156.\nRugeley is twinned with Western Springs, Illinois and, in July 1962, both towns made telephone history on national television when the chairman of Rugeley Urban District Council made the first telephone call via the new Telstar satellite to the mayor of Western Springs. It was also featured in an article about workers' rights and town transformation in the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "rugeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3088,
+    "place_id": "gn-2739590",
+    "input": {
+      "place": {
+        "place_id": "gn-2739590",
+        "name": "Figueira da Foz",
+        "country": "Portugal",
+        "subdivision": "Coimbra",
+        "lat": 40.15085,
+        "lon": -8.86179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Figueira da Foz",
+          "url": "https://en.wikipedia.org/wiki/Figueira_da_Foz",
+          "text": "Figueira da Foz, officially the City of Figueira da Foz, often called simply Figueira for short, is a city and a municipality in the Coimbra District, in Portugal. Practically at the midpoint of the Iberian Peninsula's Atlantic coast, it is located at the mouth of the Mondego River, 40 km (25 mi) west of Coimbra and sheltered by hills (Serra da Boa Viagem), sharing about the same latitude with Philadelphia, Baku and Beijing. The population of the municipality in 2011 was 62,125, in an area of 379.05 km2 (146.35 sq mi). The city of Figueira da Foz proper has a population of 46,600. It is the second largest city in the district of Coimbra.\nIt is a coastal city with several beaches, summer and seaport facilities on the Atlantic Ocean coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "figueira da foz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "figueira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "foz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3095,
+    "place_id": "gn-717902",
+    "input": {
+      "place": {
+        "place_id": "gn-717902",
+        "name": "Makó",
+        "country": "Hungary",
+        "subdivision": "Csongrád",
+        "lat": 46.21667,
+        "lon": 20.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makó",
+          "url": "https://en.wikipedia.org/wiki/Makó",
+          "text": "Makó ([ˈmɒkoː], German: Makowa, Yiddish: מאַקאָווע Makowe, Romanian: Macău or Macovia, Slovak: Makov) is a town in Csongrád County, in southeastern Hungary, 10 km (6 mi) from the Romanian border. It lies on the Maros River. Makó is home to 21,913 people and it has an area of 229.23 square kilometres (88.51 square miles), of which 196.8 km2 (76.0 sq mi) is arable land. Makó is the fourth-largest town in Csongrád County after Szeged, Hódmezővásárhely and Szentes. The town is 28.6 km (17.8 mi) from Hódmezővásárhely, 36.2 km (22.5 mi) from Szeged, 75.4 km (46.9 mi) from Arad, 85 km (52.8 mi) from Gyula, 93.5 km (58.1 mi) from Timișoara (Temesvár), and 200 km (124 mi) from Budapest.\nThe climate is warmer than anywhere else in Hungary, with hot, dry summers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "mako",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3102,
+    "place_id": "gn-2647984",
+    "input": {
+      "place": {
+        "place_id": "gn-2647984",
+        "name": "Great Yarmouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.60831,
+        "lon": 1.73052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Yarmouth",
+          "url": "https://en.wikipedia.org/wiki/Great_Yarmouth",
+          "text": "Great Yarmouth ( YAR-məth), often called Yarmouth, is a seaside town which gives its name to the wider Borough of Great Yarmouth in Norfolk, England; it straddles the River Yare and is located 20 miles (32 km) east of Norwich. Its fishing industry, mainly for herring, shrank after the mid-20th century and has all but ended. North Sea oil from the 1960s supplied an oil rig industry that services offshore natural gas rigs; more recently, offshore wind power and other renewable energy industries have ensued. In 2021 the built up area had a population of 28,985.\nYarmouth has been a resort since 1760 and a gateway from the Norfolk Broads to the North Sea. Holidaymaking rose when a railway opened in 1844, bringing easier, cheaper access and some new settlements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "great yarmouth",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yarmouth",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3111,
+    "place_id": "gn-3404558",
+    "input": {
+      "place": {
+        "place_id": "gn-3404558",
+        "name": "Cabedelo",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -6.98111,
+        "lon": -34.83389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabedelo",
+          "url": "https://en.wikipedia.org/wiki/Cabedelo",
+          "text": "Cabedelo is a municipality of the Metropolitan Region of João Pessoa, in the state of Paraíba in the Northeast Region of Brazil.\nIt has an area of 29,873 square kilometers, with singular measures: 18 kilometers long and only three kilometers wide. Its population in 2020 was estimated by the Brazilian Institute of Geography and Statistics (IBGE) at 68,767 inhabitants. On 17th century Dutch maps, it appeared as an island because of the Jaguaribe and Mandacaru rivers. Its geophysical age also differs from neighbouring municipalities that tend to have older sedimentary plateaus and therefore divergent average altitude and climate.\nCurrently, it is troubled by the capital of Paraíba, João Pessoa, and serves as an extension of certain tertiary activities of the headquarters, such as tourism but also private higher education, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "cabedelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3124,
+    "place_id": "gn-5392952",
+    "input": {
+      "place": {
+        "place_id": "gn-5392952",
+        "name": "Santa Barbara",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.42083,
+        "lon": -119.69819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Barbara, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Barbara,_California",
+          "text": "Santa Barbara (Spanish: Santa Bárbara, meaning 'Saint Barbara') is a coastal city in Santa Barbara County, California, of which it is also the county seat. Situated on a south-facing section of coastline, the longest such section on the West Coast of the United States excepting Alaska, the city lies between the steeply rising Santa Ynez Mountains and the Pacific Ocean. Santa Barbara's climate is often described as Mediterranean, and the city has been dubbed \"The American Riviera\". As of the 2020 census, Santa Barbara had a population of 88,665.\nIn addition to being a popular tourist and resort destination, the city has a diverse economy that includes a large service sector, education, technology, health care, finance and local government. In 2004, the service sector accounted for 35% of local employment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "santa barbara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barbara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3142,
+    "place_id": "gn-2650435",
+    "input": {
+      "place": {
+        "place_id": "gn-2650435",
+        "name": "East Grinstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.12382,
+        "lon": -0.0061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Grinstead",
+          "url": "https://en.wikipedia.org/wiki/East_Grinstead",
+          "text": "East Grinstead () is a town in West Sussex, England, near the East Sussex, Surrey, and Kent borders, 27 miles (43 km) south of London, 21 miles (34 km) north of Brighton, and 38 miles (61 km) northeast of the county town of Chichester. Situated in the northeast corner of the county, bordering Surrey, the civil parish has an area of 2,443.45 hectares (6,037.9 acres). The population at the 2011 Census was 26,383.\nNearby towns include Crawley and Horley to the west, Tunbridge Wells to the east and Redhill and Reigate to the northwest. The town is contiguous with the village of Felbridge to the northwest. Until 1974 East Grinstead was in East Sussex, before joining with Haywards Heath and Burgess Hill as the Mid-Sussex district of West Sussex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "east grinstead",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grinstead",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3154,
+    "place_id": "gn-3928993",
+    "input": {
+      "place": {
+        "place_id": "gn-3928993",
+        "name": "San Vicente de Cañete",
+        "country": "Peru",
+        "subdivision": "Lima region",
+        "lat": -13.07556,
+        "lon": -76.38528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Vicente de Cañete",
+          "url": "https://en.wikipedia.org/wiki/San_Vicente_de_Cañete",
+          "text": "San Vicente de Cañete, commonly known as San Vicente or Cañete, is a city and capital of the Cañete Province, in southern Lima Region. With a population of 85,533 (2015 estimate).\nThe warm and peaceful town of Cañete is located just one and a half hour to the south  of Lima (144 km) and serves, for tourists, primarily as a gateway to the Lunahuaná District. The Plaza de Armas lies on 2 de Mayo, a few blocks inland from the spot on the Pan-American Highway, where buses pause for passengers to get on or off. All buses heading south from Lima or north to Lima on the Pan-American Highway pass through Cañete. This is one of the most important homes of the most representative liquor from Peru: the Pisco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "san vicente de canete",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vicente",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "canete",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

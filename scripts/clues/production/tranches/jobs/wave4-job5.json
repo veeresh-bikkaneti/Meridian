@@ -1,0 +1,702 @@
+[
+  {
+    "rank": 3386,
+    "place_id": "gn-2077895",
+    "input": {
+      "place": {
+        "place_id": "gn-2077895",
+        "name": "Alice Springs",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -23.69748,
+        "lon": 133.88362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alice Springs",
+          "url": "https://en.wikipedia.org/wiki/Alice_Springs",
+          "text": "Alice Springs (Eastern Arrernte: Mparntwe, [ᵐbaⁿɖʷə], colloquially in English The Alice or Alice) is a town in the Northern Territory, Australia; it is the third-largest settlement in the Northern Territory after Darwin and Palmerston. The name Alice Springs was given by surveyor William Whitfield Mills after Alice, Lady Todd (née Alice Gillam Bell), wife of the telegraph pioneer Charles Todd. The town is situated roughly in Australia's geographic centre, nearly equidistant from Adelaide and Darwin.\nThe area's original inhabitants, the Arrernte, have lived in the Central Australian desert for tens of thousands of years.\nAlice Springs had a population of 34,783 as of June 2025. The town's population accounts for approximately 10 percent of the population of the Northern Territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "alice springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alice",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3406,
+    "place_id": "gn-3618929",
+    "input": {
+      "place": {
+        "place_id": "gn-3618929",
+        "name": "Jinotega",
+        "country": "Nicaragua",
+        "subdivision": "Jinotega Department",
+        "lat": 13.09103,
+        "lon": -86.00234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinotega",
+          "url": "https://en.wikipedia.org/wiki/Jinotega",
+          "text": "Jinotega (Spanish pronunciation: [xinoˈteɣa]) (derived from Náhuatl: Xiotenko 'place next to the jiñocuajo trees') is the capital city of the Department of Jinotega in north-central Nicaragua.\nThe city is located in a long valley surrounded by the cool climate and Dariense Isabelia ridge located 142 km north of the capital Managua. In 2012, the Department of Jinotega had a total population of 417,372, of which 123,548 lived in the municipality. Of the total population, 50.5% are men and 49.5% are women, and almost 38.4% of the population lives in the urban area. Jinotega produces 80% of Nicaragua's coffee, which is exported to the United States, Russia, Canada and Europe.\nWithin the city of Jinotega are several rivers and a lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "jinotega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3414,
+    "place_id": "gn-972803",
+    "input": {
+      "place": {
+        "place_id": "gn-972803",
+        "name": "Mtubatuba",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.41789,
+        "lon": 32.18483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mtubatuba",
+          "url": "https://en.wikipedia.org/wiki/Mtubatuba",
+          "text": "Mtubatuba is a town north of Richards Bay close to the entrance of Ncivi and the iSimangaliso Wetland Park (previously Greater St Lucia Wetland Park) but now the iSimangaliso Wetland Park  is known to be under Mtuba town in KwaZulu-Natal, South Africa.\nTown some 55 km south-south-west of Hluhluwe and 28 km west of St Lucia. Administered by a health committee since 1950. The name, formerly spelt Matubatuba, is Zulu for ‘creator of opportunities’, referring to a chief of the Mkwanazi tribe who died here in 1955.\nThe town's early years were hampered by flooding. An additional setback occurred during World War I: a ship carrying essential parts of what was to be the town's first sugar mill was torpedoed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "mtubatuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3415,
+    "place_id": "gn-1145352",
+    "input": {
+      "place": {
+        "place_id": "gn-1145352",
+        "name": "Charikar",
+        "country": "Afghanistan",
+        "subdivision": "Parwan",
+        "lat": 35.01361,
+        "lon": 69.17139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charikar",
+          "url": "https://en.wikipedia.org/wiki/Charikar",
+          "text": "Charikar, also known as Imam Abu Hanifa or Imam Azam, is a city in the northeastern area of Afghanistan, serving as the capital of Parwan Province. It is within the jurisdiction of Charikar District and has an estimated population of 222,751 people. They include various ethnic groups of Afghanistan. The mayor of the city is Hafiz Raz Mohammad Yasir.\nCharikar was officially renamed in December 2022 to honor the 8th-century Sunni Muslim theologian and jurist Abu Hanifa, who is also sometimes called Imam Azam (\"The Great Imam\") and was the founder of the Hanafi school of Islamic law. The city lies on the Afghanistan Ring Road, 69 km (43 mi) from Kabul along the route to the northern provinces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "charikar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3416,
+    "place_id": "gn-1804162",
+    "input": {
+      "place": {
+        "place_id": "gn-1804162",
+        "name": "Lengshuitan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 26.4111,
+        "lon": 111.59559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lengshuitan, Yongzhou",
+          "url": "https://en.wikipedia.org/wiki/Lengshuitan,_Yongzhou",
+          "text": "Lengshuitan District (simplified Chinese: 冷水滩区; traditional Chinese: 冷水灘區; pinyin: Lěngshuǐtān Qū; lit. 'cold water shoal') is one of two urban districts of Yongzhou City, Hunan Province, China. It is located on the north of the city proper,  and lies to the eastern border of Guangxi. In July 1997, the government seat of Yongzhou City was moved here from Lingling District.\nThe district is bordered to the northwest and the north by Dong'an County, to the northeast and the east by Qidong and Qiyang Counties, and to the south by Lingling District. The district covers an area of 1,221 km2 (471 sq mi), and as of 2015, It had a registered population of 552,600 and a resident population of 529,200."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lengshuitan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3418,
+    "place_id": "gn-2517816",
+    "input": {
+      "place": {
+        "place_id": "gn-2517816",
+        "name": "Estepona",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.42764,
+        "lon": -5.14589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estepona",
+          "url": "https://en.wikipedia.org/wiki/Estepona",
+          "text": "Estepona (Spanish pronunciation: [esteˈpona]) is a town and municipality in the comarca of the Costa del Sol, southern Spain. It is located in the province of Málaga, part of the autonomous community of Andalusia. Its district covers an area of 137 square kilometers in a fertile valley crossed by small streams and a mountainous areas dominated by the Sierra Bermeja, which reaches an elevation of 1,449 m at the peak of Los Reales.\nEstepona is renowned for its beaches, which stretch along some 21 km of coastline.  It is a popular resort and holiday destination.\nDue to its natural environment, surrounded by the sea and the mountains, Estepona has a micro-climate with over 325 days of sunshine per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "estepona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3425,
+    "place_id": "gn-2660365",
+    "input": {
+      "place": {
+        "place_id": "gn-2660365",
+        "name": "Herisau",
+        "country": "Switzerland",
+        "subdivision": "Appenzell Ausserrhoden",
+        "lat": 47.38615,
+        "lon": 9.27916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herisau",
+          "url": "https://en.wikipedia.org/wiki/Herisau",
+          "text": "Herisau (Swiss Standard German pronunciation: [ˈhɛrizaʊ] ) is a municipality and the capital of the canton of Appenzell Ausserrhoden in Switzerland. It is the seat of the canton's government and parliament; the judicial authorities are situated in Trogen.\nThe central hamlet and the houses around the central square, the Protestant church of 1580, the houses Wetter and zur Rose (both 1737), the hamlet Schwänberg and the government building with the state archive are listed as heritage sites of national significance.\nTogether with other Alpine towns Herisau engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. \nHerisau was awarded Alpine Town of the Year 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "herisau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3435,
+    "place_id": "gn-3686561",
+    "input": {
+      "place": {
+        "place_id": "gn-3686561",
+        "name": "Chinchiná",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 4.9832,
+        "lon": -75.60488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinchiná, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Chinchiná,_Caldas",
+          "text": "Chinchiná is a town and municipality located in the department of Caldas in Colombia, 17 kilometres (11 mi) southwest of Manizales. Founded in 1857 by Antioquian colonists, Chinchiná lies 1,360 meters (4,460 ft) above sea level in a valley surrounded by coffee plantations in the Central Cordillera of the Andes. An active volcano, Nevado del Ruiz, lies approximately 30 kilometers (19 mi) to the east.\nKnown as Colombia's \"coffee heart\", the town is home to the Buendía coffee factory and Cenicafé, a coffee research center. Because of its close association with coffee production, the municipality was named part of the \"Coffee Cultural Landscape\" UNESCO World Heritage Site in 2011.  \nChinchiná has a mean temperature of approximately 20 degrees Celsius."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "chinchina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3442,
+    "place_id": "gn-618057",
+    "input": {
+      "place": {
+        "place_id": "gn-618057",
+        "name": "Cocieri",
+        "country": "Moldova",
+        "subdivision": "Dubăsari District",
+        "lat": 47.3017,
+        "lon": 29.11755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cocieri",
+          "url": "https://en.wikipedia.org/wiki/Cocieri",
+          "text": "Cocieri is a commune in the Republic of Moldova, and the administrative center of Dubăsari District. It is located on the eastern bank of the Dniester River, consisting of two villages, Cocieri and Vasilievca.\nDuring 1992 War of Transnistria inhabitants of this village rebelled against the separatist authorities of Transnistria. The military unit of the 14th former Soviet Army which was located in the village was attacked by local inhabitants who armed themselves and opposed the forces of Transnistria. As result, after the war, Cocieri remained in the area controlled by the Republic of Moldova.\nThe village can only be reached directly from Moldova proper by ferry, which does not run during winter due to ice on the river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "cocieri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3443,
+    "place_id": "gn-781988",
+    "input": {
+      "place": {
+        "place_id": "gn-781988",
+        "name": "Pogradec",
+        "country": "Albania",
+        "subdivision": "Korçë County",
+        "lat": 40.9025,
+        "lon": 20.6525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pogradec",
+          "url": "https://en.wikipedia.org/wiki/Pogradec",
+          "text": "Pogradec (Albanian pronunciation: [pɔɡɾaˈdɛt͡s],) is the eleventh most populous city in Albania and the capital of the eponymous municipality. It is located on a narrow plain between two mountain chains along the southwestern banks of the Lake of Ohrid. Its climate is profoundly influenced by a seasonal Mediterranean and continental climate. The total municipal population is 46,070, of which 17,371 is in the municipal unit as of the 2023 census.\nPogradec and its surroundings were listed by UNESCO as a World Heritage Site as part of the natural and cultural heritage of the region of Ohrid. Nevertheless, the Illyrian Royal Tombs in the adjacent unit of Proptisht are on the Albanian tentative list for becoming a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "pogradec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3452,
+    "place_id": "gn-2157698",
+    "input": {
+      "place": {
+        "place_id": "gn-2157698",
+        "name": "Mildura",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -34.18551,
+        "lon": 142.16251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mildura",
+          "url": "https://en.wikipedia.org/wiki/Mildura",
+          "text": "Mildura ( mill-DEW-rə) is a regional city in north-west Victoria, Australia. Located on the Victorian side of the Murray River, Mildura had a population of 35,652 at the 2021 census. When nearby Wentworth, Irymple, Nichols Point, Merbein and Red Cliffs are included, the combined urban area had a population of 58,914 in 2021, having grown marginally at an average annual rate of 1.3% year-on-year over the preceding five years.\nMildura is the largest settlement in the Sunraysia region, where around 90% of Australia's table grape exports are grown. Likewise, it is a major horticultural centre notable for its overall (table, sultana and wine) grape production, supplying about 80% of Victoria's grapes. Many wineries also source grapes from Mildura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "mildura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3454,
+    "place_id": "gn-2517595",
+    "input": {
+      "place": {
+        "place_id": "gn-2517595",
+        "name": "Fuengirola",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.53998,
+        "lon": -4.62473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuengirola",
+          "url": "https://en.wikipedia.org/wiki/Fuengirola",
+          "text": "Fuengirola (pronounced [fweŋxiˈɾola]) is a city on the Costa del Sol in the province of Málaga in the autonomous community of Andalusia in southern Spain. It is located on the central coast of the province and integrated into the region of the Costa del Sol and the Commonwealth of Municipalities of the Costa del Sol Occidental.\nIt is a major tourist resort, with  more than 8 km (5 mi) of beaches and a medieval Moorish fortress. In common with much of this coast, it has been the subject of considerable urban development.\nThe area has a subtropical Mediterranean climate, with annual average temperatures of 18 °C (65 °F) and average summer temperatures of over 30 °C (86 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "fuengirola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3455,
+    "place_id": "gn-2637329",
+    "input": {
+      "place": {
+        "place_id": "gn-2637329",
+        "name": "South Shields",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.99859,
+        "lon": -1.4323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Shields",
+          "url": "https://en.wikipedia.org/wiki/South_Shields",
+          "text": "South Shields ( SHEELZ) is a coastal port town in South Tyneside, Tyne and Wear, England; it lies on the south bank of the mouth of the River Tyne. The town was known in Roman times as Arbeia and as Caer Urfa by the Early Middle Ages. It is the fourth largest settlement in Tyne and Wear, after Newcastle upon Tyne, Sunderland and Gateshead; in 2021, it had a population of 75,337.\nSouth Shields was historically a part of County Durham, but in 1974 it became a part of the newly formed ceremonial county Tyne and Wear.\nSouth Shields is south of North Shields and Tynemouth across the River Tyne; and east of Newcastle upon Tyne and Jarrow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "south shields",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shields",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3458,
+    "place_id": "gn-2659601",
+    "input": {
+      "place": {
+        "place_id": "gn-2659601",
+        "name": "Montreux",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.43301,
+        "lon": 6.91143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montreux",
+          "url": "https://en.wikipedia.org/wiki/Montreux",
+          "text": "Montreux (UK: , US: ; French: [mɔ̃tʁø] ; Arpitan: Montrolx) is a Swiss municipality and town on the shoreline of Lake Geneva at the foot of the Alps. It belongs to the Riviera-Pays-d'Enhaut district in the canton of Vaud, having a population of nearly 27,000 with about 85,000 in the Vevey-Montreux agglomeration as of 2019.\nLocated in the centre of a region named the Vaud or Swiss Riviera (French: Riviera vaudoise), Montreux has been an important tourist destination since the 19th century due to its mild climate. The region includes numerous Belle Époque palaces and hotels near the shores of Lake Geneva. Montreux railway station is a stop on the Simplon Railway and is a mountain railway hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "montreux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3466,
+    "place_id": "gn-3531416",
+    "input": {
+      "place": {
+        "place_id": "gn-3531416",
+        "name": "Catemaco",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.42131,
+        "lon": -95.11398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catemaco",
+          "url": "https://en.wikipedia.org/wiki/Catemaco",
+          "text": "Catemaco (Spanish: [kate'mako] ) is a city in the south of the Mexican state of Veracruz. It serves as the municipal seat for the municipality of the same name. The city is located on Lake Catemaco, with the municipality stretching north to the Gulf of Mexico. Catemaco is a tourist destination, with its main attractions being the lake, remnants of the region's rainforest and a tradition of sorcery/witchcraft that has its roots in the pre-colonial period and is mostly practiced by men. This tradition is well-known in Mexico and attracts clients from various walks of life, including businessmen and national-level politicians. Catemaco holds an annual event in March dedicated to sorcery, which can draw up to 5,000 visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "catemaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3473,
+    "place_id": "gn-4990510",
+    "input": {
+      "place": {
+        "place_id": "gn-4990510",
+        "name": "Dearborn",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.32226,
+        "lon": -83.17631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dearborn, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Dearborn,_Michigan",
+          "text": "Dearborn is a city in Wayne County in the U.S. state of Michigan. An inner-ring suburb of Detroit, Dearborn borders Detroit to the north and east, roughly 7 miles (11.3 km) west of downtown Detroit. As of the 2020 census, it had a population of 109,976, ranking as the seventh-most populous city in Michigan. Dearborn is best known as the hometown of the Ford Motor Company and of its founder, Henry Ford.\nThe first written settlement of Dearborn is from the 18th century by French-Canadian voyageurs who initially called the settlement La Belle Fontaine or Place aux Fontaines because of the abundant springs in the area. Therefore, Dearborn was once named Springwells, an anglicization of the French name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "dearborn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3483,
+    "place_id": "gn-1169684",
+    "input": {
+      "place": {
+        "place_id": "gn-1169684",
+        "name": "Murree",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 33.90836,
+        "lon": 73.3903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murree",
+          "url": "https://en.wikipedia.org/wiki/Murree",
+          "text": "Murree is a mountain resort city in the northernmost region of the Punjab province of Pakistan. Lying in the Galyat region of the Pir Panjal Range under the western Himalayas, it is located in the northeast of the capital city of Islamabad. The town was built in the mid-19th century and served as the summer capital of the British Punjab, allowing British troops to escape the scorching heat of the plains of Punjab. It has an average altitude of 2,291 metres (7,516 ft).\nConstruction of the town started in 1851 on the hills of Murree as a sanatorium for British troops. The permanent town of Murree was constructed in 1853 and a church was consecrated shortly thereafter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "murree",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3487,
+    "place_id": "gn-1513953",
+    "input": {
+      "place": {
+        "place_id": "gn-1513953",
+        "name": "Qorasuv",
+        "country": "Uzbekistan",
+        "subdivision": "Andijan Region",
+        "lat": 40.72782,
+        "lon": 72.88577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qorasuv",
+          "url": "https://en.wikipedia.org/wiki/Qorasuv",
+          "text": "Qorasuv (also Korasuv, Karasu; Uzbek: Qorasuv, lit. 'Black Water') is a city in Qoʻrgʻontepa District of Andijan Region in eastern Uzbekistan, about 50 km from the district capital of Andijan. The town's name means \"black water\" in Uzbek (qora - black, suv - water). It lies in the politically volatile and religiously conservative Fergana Valley, along the border with Kyrgyzstan. Its population is 33,000 (2016).\nIt is essentially one town with Kara-Suu in Kyrgyzstan, but is separated from the latter by a Soviet-era border which today is tightly controlled by Uzbekistan. Qorasuv was the second town in Uzbekistan to be sealed off during the Andijan massacre in spring 2005, when some 6,000 people fled across the border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "qorasuv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3494,
+    "place_id": "gn-2493456",
+    "input": {
+      "place": {
+        "place_id": "gn-2493456",
+        "name": "Illizi",
+        "country": "Algeria",
+        "subdivision": "Illizi",
+        "lat": 26.48333,
+        "lon": 8.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Illizi",
+          "url": "https://en.wikipedia.org/wiki/Illizi",
+          "text": "Illizi (Amazigh language: Ilizi) is an Algerian town and commune, coextensive with Illizi District, situated in the south-eastern part of Algeria, and capital of Illizi Province. According to the 2008 census it is the largest commune by population in the province, with a population of 17,252, up from 10,163 in 1998, and an annual population growth rate of 5.5%, the highest in the province. It is one of the gates to the Tassili N'Ajjer National Park with caves and partly enclosed rock shelters containing prehistoric drawings dating from 6000 years BC. There are a hotel and two camping sites, as well as many local tourist agencies. During French colonial rule, the town was called Fort Polignac (1909–1962)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "illizi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3497,
+    "place_id": "gn-2638879",
+    "input": {
+      "place": {
+        "place_id": "gn-2638879",
+        "name": "Saddleworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.54846,
+        "lon": -2.00455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saddleworth",
+          "url": "https://en.wikipedia.org/wiki/Saddleworth",
+          "text": "Saddleworth is a civil parish of the Metropolitan Borough of Oldham in Greater Manchester, England. It comprises several villages and hamlets as well as suburbs of Oldham on the west side of the Pennine hills.\nAreas include Austerlands, Delph, Denshaw, Diggle, Dobcross, Friezland, Grasscroft, Greenfield, Grotton, Lydgate, Scouthead, Springhead and Uppermill.\nSaddleworth lies east of Oldham and 11 miles (18 kilometres) northeast of Manchester. It is broadly rural and had a population of 25,460 at the 2011 Census, making it one of the larger civil parishes in the United Kingdom.\nHistorically in the West Riding of Yorkshire and following the Industrial Revolution, in the 18th and 19th centuries, Saddleworth became a centre for cotton spinning and weaving."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "saddleworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

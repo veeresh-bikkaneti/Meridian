@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 3166,
+    "place_id": "gn-1486910",
+    "input": {
+      "place": {
+        "place_id": "gn-1486910",
+        "name": "Vorkuta",
+        "country": "Russia",
+        "subdivision": "Komi",
+        "lat": 67.50867,
+        "lon": 64.0667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vorkuta",
+          "url": "https://en.wikipedia.org/wiki/Vorkuta",
+          "text": "Vorkuta (Russian: Воркута́; Komi: Вӧркута, romanized: Vörkuta) is a coal-mining town and the third most-populous city in the Komi Republic of Russia, situated just north of the Arctic Circle in the Pechora coal basin, at the river Vorkuta. Population: 56,985 (2021 census); 70,548 (2010 census); 84,917 (2002 census); 115,646 (1989 Soviet census).\nVorkuta is among the five most populous cities north of the Arctic Circle and the easternmost town in Europe. It has the coldest recorded temperature of any European city, at −52 °C (−61 °F).\nVorkuta's population has dropped steadily since the fall of the Soviet Union, when mines were privatized and many people began moving farther south. Many of the mines have been abandoned, and by September 2020, the city's estimated population was only about 50,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "vorkuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3180,
+    "place_id": "gn-727462",
+    "input": {
+      "place": {
+        "place_id": "gn-727462",
+        "name": "Samokov",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.33855,
+        "lon": 23.55805
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samokov",
+          "url": "https://en.wikipedia.org/wiki/Samokov",
+          "text": "Samokov (Bulgarian: Самоков [ˈsamokof]) is a town in Sofia Province in the southwest of Bulgaria. It is in the Samokov Valley between the mountain ranges of Rila, Vitosha, and Sredna Gora, 55 kilometres from the capital Sofia. Due to the suitable winter sports conditions, Samokov, together with the nearby resort Borovets, is a major tourist centre.\nIn the past, Samokov was a centre of handicrafts and art, with notable Bulgarian National Revival figures like Zahari Zograf, Hristo Dimitrov and Nikola Obrazopisov. The town's name is a compound word of \"samo\" and \"kov\", respectively meaning \"self\" and the root of the verb \"forge, hammer\", and comes from the samokov, a mechanical forge powered by water, since the town of Samokov was a major iron-producing centre during the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "samokov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3184,
+    "place_id": "gn-1639215",
+    "input": {
+      "place": {
+        "place_id": "gn-1639215",
+        "name": "Kudus",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -6.8048,
+        "lon": 110.8405
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kudus, Indonesia",
+          "url": "https://en.wikipedia.org/wiki/Kudus,_Indonesia",
+          "text": "Kudus (Javanese: ꦏꦸꦢꦸꦱ꧀) is the capital and the namesake of the Kudus Regency in Central Java, Indonesia. Its name has an Arabic etymology (Arab: القدس al-Quds) connected to its foundation by the legendary figure Sunan Kudus. It also houses the mosque established by Sunan Kudus named Menara Kudus Mosque, one of the most important and influential mosques in Indonesia. According to the 2010 census, its population was 92,776, but by mid-2022 this had declined to 88,635.\nDuring the Dutch East Indies era, Kudus was the seat of the Kudus Regency which was a part of Semarang Residency dating back to 1817. From 1928 to 1931, it was the seat of the short-lived Koedoes Residency, which incorporated the regency as well as the neighboring Demak and Jepara regencies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "kudus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3198,
+    "place_id": "gn-997140",
+    "input": {
+      "place": {
+        "place_id": "gn-997140",
+        "name": "Heilbron",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.28115,
+        "lon": 27.9709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heilbron",
+          "url": "https://en.wikipedia.org/wiki/Heilbron",
+          "text": "Heilbron is a town in the Free State province of South Africa which services the cattle, dairy, sorghum, sunflower and maize industries. Raw stock beneficiation occurs in leisure foods, dairy products and stock feeds. It also serves as a dormitory town for the Gauteng metropolis.\nGame farming in the district grew to the extent that it is believed that game numbers reached an all-time high, evident in visiting tourist numbers. Due to its close proximity to Gauteng (60 km) the town became ever more popular to weekend tourists and city dwellers in need of a relaxing weekend filled with peace, quiet and fresh air. Popular activities are horse riding, off-road cycling, fishing, game drives, utilizing both motor vehicles and quad bikes, historical tours and affordable sporting facilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "heilbron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3205,
+    "place_id": "gn-1791464",
+    "input": {
+      "place": {
+        "place_id": "gn-1791464",
+        "name": "Wenling",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 28.37524,
+        "lon": 121.38416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenling",
+          "url": "https://en.wikipedia.org/wiki/Wenling",
+          "text": "Wenling (Wenling dialect: Ueng-ling Zy [ʔuəŋ ʔliŋ zɿ]; simplified Chinese: 温岭市; traditional Chinese: 溫嶺市; pinyin: Wēnlǐng Shì) is a coastal county-level city in the municipal region of Taizhou, in southeastern Zhejiang province, China. It borders Luqiao and Huangyan to the north, Yuhuan to the south, Yueqing to the west, looks out to the East China Sea to the east. Wenling locates on 28°22'N, 121°21'E, approximately 300 km (190 mi) south of Shanghai.\nJiangxia Tidal Power Station is located there as well as a number of e-waste recycling centers which have contributed to soil contamination in the region.\nBecause of its geographical location, Wenling has long suffered from typhoons. On 12 August 2004, Typhoon Rananim, the sixth strongest typhoon in PRC history, landed in Shitang Town, Wenling."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "wenling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3210,
+    "place_id": "gn-2649024",
+    "input": {
+      "place": {
+        "place_id": "gn-2649024",
+        "name": "Frome",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22834,
+        "lon": -2.32211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frome",
+          "url": "https://en.wikipedia.org/wiki/Frome",
+          "text": "Frome (  FROOM) is a town and civil parish in Somerset, England, at the eastern end of the Mendip Hills on the River Frome, 13 miles (21 km) south of Bath. At the 2021 census, it had a population of 28,567.\nFrome was one of the largest towns in Somerset until the Industrial Revolution. It first grew due to the wool and cloth industry, and later diversified into metal-working and printing. The town was enlarged during the 20th century but retains a large number of listed buildings, and most of the centre falls within a conservation area.\nThe town has road and rail transport links and acts as an economic, sporting and cultural centre for the surrounding area, including the annual Frome Festival and Frome Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "frome",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3214,
+    "place_id": "gn-3180208",
+    "input": {
+      "place": {
+        "place_id": "gn-3180208",
+        "name": "Casale Monferrato",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.13338,
+        "lon": 8.4525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casale Monferrato",
+          "url": "https://en.wikipedia.org/wiki/Casale_Monferrato",
+          "text": "Casale Monferrato (Italian pronunciation: [kaˈzaːle moɱferˈraːto]) is a town in the Piedmont region of northwestern Italy, in the province of Alessandria. It is situated about 60 km (37 mi) east of Turin on the right bank of the Po, where the river runs at the foot of the Montferrat hills. Beyond the river lies the vast plain of the Po valley.\nAn ancient Roman municipium, the town has been the most important trade and manufacturing centre of the area for centuries. After the fall of the Roman Empire, Casale became a free municipality and, in the 15th and early 16th centuries, served as the capital of the House of Palaiologos. Then in 1536, the town passed to the Gonzagas who fortified it with a large citadel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "casale monferrato",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monferrato",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3216,
+    "place_id": "gn-3437547",
+    "input": {
+      "place": {
+        "place_id": "gn-3437547",
+        "name": "Pedro Juan Caballero",
+        "country": "Paraguay",
+        "subdivision": "Amambay Department",
+        "lat": -22.54925,
+        "lon": -55.7387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedro Juan Caballero, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Pedro_Juan_Caballero,_Paraguay",
+          "text": "Pedro Juan Caballero (Spanish pronunciation: [ˈpeðɾo ˈxwaŋ kaβaˈʎeɾo]) is a Paraguayan city and the capital of the Amambay Department. It lies on the border with the Brazilian city of Ponta Porã in the state of Mato Grosso do Sul and is known as a centre for cheap electronic and consumer goods. This city is the highest city in Paraguay at 670 m (2201 ft) above sea level and is named after Pedro Juan Caballero. Pedro Juan Caballero is serviced by the Dr. Augusto Roberto Fuster International Airport and the country's most modern shopping centre, the Shopping Dubai, which cost US$30million.\nThe Blue Lagoon Amambay Hotel & Residential Complex is located in the city, the hotel is modernly structured and Paraguay.com considered it a First World condominium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "pedro juan caballero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caballero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3218,
+    "place_id": "gn-3489577",
+    "input": {
+      "place": {
+        "place_id": "gn-3489577",
+        "name": "Mandeville",
+        "country": "Jamaica",
+        "subdivision": "Manchester",
+        "lat": 18.04168,
+        "lon": -77.50714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandeville, Jamaica",
+          "url": "https://en.wikipedia.org/wiki/Mandeville,_Jamaica",
+          "text": "Mandeville (Jamaican Patois: Mandivl) is the capital and largest town in the parish of Manchester in the county of Middlesex, Jamaica. In 2022, the town had an estimated population of 49,695\n. It is located on an inland plateau at an altitude of 628 m (2,060 ft), and is 103 km (64 mi) west of Kingston. It is the only parish capital of Jamaica not located on the coast or on a major river.\nMandeville has a town square, parish church and clock tower, and many large, elegant early nineteenth-century houses line the winding streets in the town centre.\nIn the suburbs of the town many large houses have been built by returning residents from North America and the United Kingdom on an ad hoc basis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "mandeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3221,
+    "place_id": "gn-4334971",
+    "input": {
+      "place": {
+        "place_id": "gn-4334971",
+        "name": "New Iberia",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 30.00354,
+        "lon": -91.81873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Iberia, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/New_Iberia,_Louisiana",
+          "text": "New Iberia (French: La Nouvelle-Ibérie; Spanish: Nueva Iberia; Louisiana Creole: Nouvèl Ibéri) is the largest city in and the parish seat of Iberia Parish in the U.S. state of Louisiana. The city of New Iberia is located about 21 mi (34 km) southeast of Lafayette and forms part of the Lafayette metropolitan statistical area in the region of Acadiana. The 2020 United States census reported a population of 28,555. New Iberia is served by Amtrak's Sunset Limited, operating between Los Angeles and New Orleans. New Iberia has a major four-lane highway, U.S. 90 (future Interstate 49), and has its own general-aviation airfield, Acadiana Regional Airport.  Scheduled passenger and cargo airline service is available via the nearby Lafayette Regional Airport located adjacent to U.S. 90 in Lafayette."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "new iberia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iberia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3226,
+    "place_id": "gn-4936159",
+    "input": {
+      "place": {
+        "place_id": "gn-4936159",
+        "name": "Fall River",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.70149,
+        "lon": -71.15505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fall River, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Fall_River,_Massachusetts",
+          "text": "Fall River is a city in Bristol County, Massachusetts, United States. Fall River's population was 94,000 at the 2020 United States census, making it the tenth-largest city in the state, and the second-largest municipality in the county behind New Bedford. It abuts the Rhode Island state line with Tiverton, Rhode Island, to its south.\nLocated along the eastern shore of Mount Hope Bay at the mouth of the Taunton River, the city gained recognition during the 19th century as a leading textile manufacturing center in the United States. While the textile industry has long since moved on, its impact on the city's culture and landscape is still prominent. Fall River's official motto is \"We'll Try\", dating back to the aftermath of the Great Fire of 1843."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "fall river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3233,
+    "place_id": "gn-2127515",
+    "input": {
+      "place": {
+        "place_id": "gn-2127515",
+        "name": "Wakkanai",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 45.40944,
+        "lon": 141.67389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakkanai",
+          "url": "https://en.wikipedia.org/wiki/Wakkanai",
+          "text": "Wakkanai (稚内市, Wakkanai-shi; Ainu: ヤㇺワッカナィ Yam-wakka-nay meaning \"cold water river\" or more literally \"cold river valley\") is a city located in Sōya Subprefecture, Hokkaido, Japan. Wakkanai is the capital of Sōya Subprefecture. Situated approximately 1,100 km north of Tokyo and 270 km north of Sapporo, it is the northernmost municipality under Japanese administration following the loss of Karafuto (present-day Sakhalin) and the Kuril Islands, with Benten-jima being the northernmost point under Japanese control.\nWakkanai started as the Matsumae Domain's trading post with the Ainu people in 1685. Edo-period explorer Mamiya Rinzō set sail for his famous Karafuto expedition from the settlement. After Japan regained Karafuto following its victory in the Russo-Japanese War in 1905, Wakkanai rose to prominence as a gateway to this reclaimed territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "wakkanai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3243,
+    "place_id": "gn-2940213",
+    "input": {
+      "place": {
+        "place_id": "gn-2940213",
+        "name": "Celle",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.62264,
+        "lon": 10.08047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Celle",
+          "url": "https://en.wikipedia.org/wiki/Celle",
+          "text": "Celle (German pronunciation: [ˈtsɛlə] ) is a town and capital of the district of Celle in Lower Saxony, in north-central Germany. The town is situated on the banks of the river Aller, a tributary of the Weser, and has a population of about 71,000. Celle is the southern gateway to the Lüneburg Heath, has a castle (Schloss Celle) built in the Renaissance and Baroque styles and a picturesque old town centre (the Altstadt) with more than 400 timber-framed houses, making Celle one of the most remarkable members of the German Timber-Frame Road. From 1378 to 1705 Celle was the official residence of the Lüneburg branch of the dukes of Brunswick-Lüneburg (House of Welf), who had been banished from their original ducal seat by its townsfolk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "celle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3249,
+    "place_id": "gn-3833520",
+    "input": {
+      "place": {
+        "place_id": "gn-3833520",
+        "name": "Tunuyán",
+        "country": "Argentina",
+        "subdivision": "Mendoza",
+        "lat": -33.58125,
+        "lon": -69.01537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tunuyán",
+          "url": "https://en.wikipedia.org/wiki/Tunuyán",
+          "text": "Tunuyán is a city in the west of the province of Mendoza, Argentina, located on the western shore of the Tunuyán River, 80 km (50 mi) south from the provincial capital Mendoza and 100 km (62 mi) east of the Chilean border. It has 49,132 inhabitants, and is the head town of the Tunuyán Department. Along with the Tupungato Department and the San Carlos Department it makes up the \"Valle de Uco\" region, which is famous in the Argentine wine industry for its important and modern vineyards and wineries. Investments since the millennium, attracted by the climate, soil, and altitude combination, have transformed the area, making it one of Argentina's most important regions when it comes to high-quality wine production and its associated connoisseur-driven enotourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "tunuyan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3252,
+    "place_id": "gn-459201",
+    "input": {
+      "place": {
+        "place_id": "gn-459201",
+        "name": "Jūrmala",
+        "country": "Latvia",
+        "subdivision": "Jūrmala",
+        "lat": 56.968,
+        "lon": 23.77038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jūrmala",
+          "url": "https://en.wikipedia.org/wiki/Jūrmala",
+          "text": "Jūrmala (Latvian: [ˈjuːrmala] ; \"seaside\") is a state city in the Vidzeme region of Latvia, about 25 kilometres (16 miles) west of Riga. Jūrmala is a resort town stretching 32 km (20 miles) and is sandwiched between the Gulf of Riga and the Lielupe River. It has a 33 km (21 miles) stretch of white-sand beach and is the fifth-largest city in Latvia.\nWhile Latvia was under Soviet occupation, Jūrmala was a favorite holiday-resort and tourist destination for high-level Communist Party officials, particularly Leonid Brezhnev and Nikita Khrushchev. Although many amenities such as beach-houses and concrete hotels remain, some have fallen into disrepair. Jūrmala remains a tourist attraction with long beaches facing the Gulf of Riga and romantic wooden houses in the Art Nouveau style."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jurmala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3255,
+    "place_id": "gn-5197796",
+    "input": {
+      "place": {
+        "place_id": "gn-5197796",
+        "name": "Levittown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.15511,
+        "lon": -74.82877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Levittown, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Levittown,_Pennsylvania",
+          "text": "Levittown is a census-designated place (CDP) and planned community in Bucks County, Pennsylvania, United States. The community includes portions of the municipalities of Bristol Township, Falls Township, Middletown Township and Tullytown Borough, but is not itself an independent municipality. Levittown is part of the Philadelphia metropolitan area with a population was 52,699 at the 2020 census, which is down from 52,983 at the 2010 census.\nLevittown is 40 feet (12 m) above sea level. While not an independent municipality, it is sometimes recognized as the largest suburb of Philadelphia while Upper Darby, Lower Merion, Bensalem, Abington, and Bristol townships are municipalities larger in size within the three surrounding Pennsylvania counties. Starting with land purchased in 1951, it was planned and built by Levitt & Sons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "levittown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3256,
+    "place_id": "gn-5964347",
+    "input": {
+      "place": {
+        "place_id": "gn-5964347",
+        "name": "Grande Prairie",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 55.16667,
+        "lon": -118.80271
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grande Prairie",
+          "url": "https://en.wikipedia.org/wiki/Grande_Prairie",
+          "text": "Grande Prairie is a city in northwestern Alberta, Canada, within the southern portion of an area known as Peace River Country. It is located at the intersection of Highway 43 (part of the CANAMEX Corridor) and Highway 40 (the Bighorn Highway), approximately 456 kilometres (283 mi) northwest of the provincial capital, Edmonton. The city is surrounded by the County of Grande Prairie No. 1.\nGrande Prairie was the seventh-largest city in Alberta in 2021, with a population of 63,166, and was one of Canada's fastest growing cities between 2001 and 2006, and Canada's northernmost city with more than 50,000 people.\nThe city has adopted the trumpeter swan as its official symbol due to its proximity to the bird's migration route and its summer nesting grounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "grande prairie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prairie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3258,
+    "place_id": "gn-7258780",
+    "input": {
+      "place": {
+        "place_id": "gn-7258780",
+        "name": "West Falls Church",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.86484,
+        "lon": -77.18787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Falls Church, Virginia",
+          "url": "https://en.wikipedia.org/wiki/West_Falls_Church,_Virginia",
+          "text": "West Falls Church is a census-designated place (CDP) in Fairfax County, Virginia, United States. As of the 2020 census, West Falls Church had a population of 30,243.\nBefore 2010, West Falls Church was officially named Jefferson (from Thomas Jefferson). Outside of the Jefferson Village neighborhood, \"Jefferson\" generally is not used locally to refer to the area bounding Falls Church city to the south and southwest that comprises the CDP.  Likewise, \"West Falls Church\" is rarely used to describe the area but is usually applied to areas west of Falls Church city or near West Falls Church metro station. The bulk of it is made of subdivisions built in the 1940s and early 1950s, including Jefferson Village, Westlawn, Hillwood, Sleepy Hollow, Woodley, Raymondale and Broyhill Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "west falls church",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "church",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3260,
+    "place_id": "gn-12750571",
+    "input": {
+      "place": {
+        "place_id": "gn-12750571",
+        "name": "Mont Kiara",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.16866,
+        "lon": 101.65076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mont Kiara",
+          "url": "https://en.wikipedia.org/wiki/Mont_Kiara",
+          "text": "Mont Kiara, often stylized as MK, is an affluent suburb at the northwest of downtown Kuala Lumpur, Malaysia, in the constituency of Segambut. It consists mainly of high-rise residential condominiums and office complexes which were mostly developed by UEM Sunrise Berhad, a well-known property development arm of UEM Group. It is located in the heart of Klang Valley, halfway between Kepong and downtown Kuala Lumpur. It is adjacent to Sri Hartamas in the south and KL Metropolis in the east, and is heavily populated by expats.\nWhile the name \"North Kiara\" refers to the area near Bukit Segambut as it is located north of Mont Kiara, the name has been used by developers up till now to link their property developments to the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mont kiara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kiara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3261,
+    "place_id": "gn-149437",
+    "input": {
+      "place": {
+        "place_id": "gn-149437",
+        "name": "Tukuyu",
+        "country": "Tanzania",
+        "subdivision": "Mbeya",
+        "lat": -9.25,
+        "lon": 33.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tukuyu",
+          "url": "https://en.wikipedia.org/wiki/Tukuyu",
+          "text": "Tukuyu, formerly known as Neu Langenburg during the German's colonial rule, is a hillside town that lies about 36 miles (58 km) south of the city of Mbeya, at an elevation of around 5,000 ft (1,500 m) in the highland Rungwe District of southern Tanzania, East Africa. Tukuyu has a moderate to cool temperature ranging from 10 °C in May and June to mid 20 °C in around November.\nThe town and the surrounding areas are green all year round due to the almost year-round convectional rains resulting from Lake Nyasa. Tukuyu is divided into several wards include; Kawetere, Msasani, Bulyaga and Bagamoyo.\nThe local language is Nyakyusa, together with the national language Swahili. Secondary and college education is done in the English language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "tukuyu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

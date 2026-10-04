@@ -1,0 +1,707 @@
+[
+  {
+    "rank": 3909,
+    "place_id": "gn-2786743",
+    "input": {
+      "place": {
+        "place_id": "gn-2786743",
+        "name": "Sint-Amandsberg",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.05947,
+        "lon": 3.74943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Amandsberg",
+          "url": "https://en.wikipedia.org/wiki/Sint-Amandsberg",
+          "text": "Sint-Amandsberg (Dutch pronunciation: [ˌsɪnt ɑˈmɑntsbɛr(ə)x]; French: Mont-Saint-Amand) is a sub-municipality of the city of Ghent located in the province of East Flanders, Flemish Region, Belgium. The municipality of Sint-Amandsberg was formed in 1872, when it was detached from the municipality of Oostakker. In 1876 and 1900, parts of the original municipality were already annexed to Ghent. On 1 January 1977, the municipality of Sint-Amandsberg was merged into Ghent.\nIt is served by the Bus and train station of Gent Dampoort on the Ghent Antwerp NMBS/SNCB line.\nDuring the First World War, on 7 June 1915, the German airschip LZ37 crashed after being destroyed by Reginald Warneford."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "sint amandsberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amandsberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3910,
+    "place_id": "gn-2792179",
+    "input": {
+      "place": {
+        "place_id": "gn-2792179",
+        "name": "Lommel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.23074,
+        "lon": 5.31349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lommel",
+          "url": "https://en.wikipedia.org/wiki/Lommel",
+          "text": "Lommel (Dutch pronunciation: [ˈlɔməl]) is a municipality and city in the Belgian province of Limburg. Lying in the Kempen, it has about 34,000 inhabitants and is part of the arrondissement of Maaseik.\nBesides the residential town, Lommel also has a number of nature reserves, such as the nature reserve De Watering, the Lommel Sahara, and numerous forests and heathlands. Lommel is the third shopping city in Belgian Limburg with a commercial and shopping center De Singel. Importantly, the silver sand that is mined here for the benefit of the glass industry. Some sand mining quarries are transformed into nature reserves and recreational areas, including Lommel Sahara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "lommel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3930,
+    "place_id": "gn-461114",
+    "input": {
+      "place": {
+        "place_id": "gn-461114",
+        "name": "Bauska",
+        "country": "Latvia",
+        "subdivision": "Bauska Municipality",
+        "lat": 56.4071,
+        "lon": 24.18733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bauska",
+          "url": "https://en.wikipedia.org/wiki/Bauska",
+          "text": "Bauska () is a town in its eponymous municipality, found in the Zemgale region of southern Latvia.\nBauska is located 66 km (41 mi) from the Latvian capital Riga, 62 km (38.5 mi) from Jelgava and 20 km (12 mi) from the Lithuanian border on the busy European route E67. The town is situated at the confluence of the shallow rivers Mūsa and Mēmele, where they form the Lielupe River.\nAverage temperatures in January are −5 °C (23 °F), and 17.5 °C (63.5 °F) in July. Rainfall averages 500–650 mm (20–26 in) annually. The 80.4% of Bauska Municipality territory is agricultural land and 13% of forests."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "bauska",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3948,
+    "place_id": "gn-1177446",
+    "input": {
+      "place": {
+        "place_id": "gn-1177446",
+        "name": "Gwadar",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 25.12163,
+        "lon": 62.32541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwadar",
+          "url": "https://en.wikipedia.org/wiki/Gwadar",
+          "text": "Gwadar (Urdu: گوادر, Urdu pronunciation: [ɡəʋɑːd̪əɾ]) is a port city on the southwestern coast of the Pakistani province of Balochistan. It is on the shores of the Arabian Sea, opposite Oman, and had a population of over 90,000 in 2017 census. It was an overseas possession of the Sultanate of Muscat and Oman from 1783 to 1958, when it was purchased by Pakistan. It is about 120 km (75 mi) southwest of Turbat. The sister port city of Chabahar in Iran's Sistan and Baluchestan province is about 170 km (110 mi) to the west. In October 2011, Gwadar was declared the winter capital of Balochistan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "gwadar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3965,
+    "place_id": "gn-2658216",
+    "input": {
+      "place": {
+        "place_id": "gn-2658216",
+        "name": "Uster",
+        "country": "Switzerland",
+        "subdivision": "Zurich",
+        "lat": 47.34713,
+        "lon": 8.72091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uster",
+          "url": "https://en.wikipedia.org/wiki/Uster",
+          "text": "Uster (Swiss Standard German pronunciation: [ˈʊstər]; Zurich German: Uschter, pronounced [uʃːtər]) is a town and the capital of the Uster District in the Swiss canton of Zürich.\nThe importance of the town of Uster has grown considerably with the construction of the S-Bahn network of the Zürich Transport Network. With over 36,000 inhabitants, it is the third largest town in the canton and is one of the twenty largest towns in Switzerland. Along with Wetzikon, it forms one of the two centres of the Zürcher Oberland. Uster is located next to a lake, called Greifensee.\nThe town of Uster received the Wakker Prize in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "uster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3981,
+    "place_id": "gn-336372",
+    "input": {
+      "place": {
+        "place_id": "gn-336372",
+        "name": "Waliso",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 8.53417,
+        "lon": 37.96515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waliso",
+          "url": "https://en.wikipedia.org/wiki/Waliso",
+          "text": "Waliso (Amharic: ወሊሶ) (Oromo: Walisoo) is a town in Southwest Shewa Zone of the Oromia Region in Ethiopia, 114 km southwest of Addis Ababa, it has a latitude and longitude of 8°32′N 37°58′E with an elevation of 2063 meters above sea level. Waliso is the administrative center of this Zone.\n\nWaliso town has seven administrative Kebeles. Dej. Geresu Duki Comprehensive Secondary School, Oromia Institute of Water Technology,  Ambo University – Faculty of Social Science (Waliso Campus) and other private institutes and colleges are located in Woliso. In Waliso, there is a natural hot-spring, which makes the town one of the leading tourism heritages in Ethiopia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "waliso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3994,
+    "place_id": "gn-739236",
+    "input": {
+      "place": {
+        "place_id": "gn-739236",
+        "name": "Sungurlu",
+        "country": "Türkiye",
+        "subdivision": "Çorum",
+        "lat": 40.1675,
+        "lon": 34.37389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungurlu",
+          "url": "https://en.wikipedia.org/wiki/Sungurlu",
+          "text": "Sungurlu is a town in Çorum Province in the Black Sea Region of Turkey, located 72 km south-west of the city of Çorum. It is the seat of Sungurlu District. Its population is 30,275 (2022). The mayor is Muhsin Dere (MHP).\nSungurlu is on the main road from the Turkish capital Ankara to the Black Sea city of Samsun, and is a popular stop for soup or snacks, including Çorum's famous roasted chick peas (leblebi), when traveling that route by bus. The town consists of 17 quarters: Başpınar, Fevzipaşa, İsmetpaşa, Sunguroğlu, Şekerpınar, Turan, Yenidoğan, Akçay, Bahçelievler, Gürpınar, Hacettepe, Yenihayat, Cevheri, Çiftlik, Akçakent, Fatih and Örnekevler."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "sungurlu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3996,
+    "place_id": "gn-8063456",
+    "input": {
+      "place": {
+        "place_id": "gn-8063456",
+        "name": "Mandeni",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.14691,
+        "lon": 31.41403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandeni",
+          "url": "https://en.wikipedia.org/wiki/Mandeni",
+          "text": "Mandeni (also Mandini) is a town in iLembe District Municipality in the KwaZulu-Natal province of South Africa.\nThe town is roughly 22 km north-east of Stanger and 96 km north of Durban.\nThe town has four shopping centres, namely: Mandeni shopping centre, where most residents go, Sundumbili plaza, Gcaleka Shopping centre (also known as KwaGcaleka) and Mandeni Mall. It has seven township sections, all falling under Sundumbili township. These sections are Bhidla, Sikhalambazo, Thokoza, Dark City, Red Hill, Island (sometimes referred to as Ireland), Chappies and White City. There is also a suburb which accommodated only White people during the apartheid era known as eKwatasi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mandeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4010,
+    "place_id": "gn-2294727",
+    "input": {
+      "place": {
+        "place_id": "gn-2294727",
+        "name": "Techiman",
+        "country": "Ghana",
+        "subdivision": "Bono East",
+        "lat": 7.59054,
+        "lon": -1.93947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Techiman",
+          "url": "https://en.wikipedia.org/wiki/Techiman",
+          "text": "Techiman (Akan: Takyiman) is a city and the capital of the Techiman Metropolitan District and the Bono East Region of Ghana. The city is located about 32 miles (51 km) from Sunyani and about 65 miles (105 km) away from Kumasi. It has a tropical savanna climate, experiencing two wet seasons and a dry season. Techiman has a population of 67,241 as of the 2010 census figures released by the Ghana Statistical Service. The majority of ethnic groups in the city included the Akan, Bono, Gonja, Dagomba, Sisala, and Mamprusi people. The mayor of the city's metropolitan, as of 2021, is Benjamin Yaw Gyarko."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "techiman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4031,
+    "place_id": "gn-336496",
+    "input": {
+      "place": {
+        "place_id": "gn-336496",
+        "name": "Gimbi",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 9.17031,
+        "lon": 35.83491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gimbi",
+          "url": "https://en.wikipedia.org/wiki/Gimbi",
+          "text": "Gimbi (ጊምቢ) is a town in western Oromia Region, Ethiopia. Located in the West Welega Zone, it has a latitude and longitude of 9°10′N 35°50′E with an elevation between 1845 and 1930 meters above sea level. It is the administrative center of Gimbi woreda. The area gets an average of about 1,500 millimeters of rainfall each year, with places like Gimbi receiving over 2,800 millimeters annually. This region is one of the wettest in Ethiopia, only having two to four dry months per year. The rainfall is higher in the mountains, as the terrain there traps more moisture, while the lowlands get less rain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "gimbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4034,
+    "place_id": "gn-4562529",
+    "input": {
+      "place": {
+        "place_id": "gn-4562529",
+        "name": "Aibonito",
+        "country": "Puerto Rico",
+        "subdivision": "Aibonito",
+        "lat": 18.13996,
+        "lon": -66.266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aibonito, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Aibonito,_Puerto_Rico",
+          "text": "Aibonito (Spanish pronunciation: [ajβoˈnito]) is a small mountain town and municipality in Puerto Rico located in the Sierra de Cayey mountain range, north of Salinas; south of Barranquitas and Comerío; east of Coamo; and west of Cidra, and Cayey. Aibonito is spread over 8 barrios and Aibonito Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nAibonito is located at a relatively high elevation (its main square is the highest in the island at 732 metres (2,401 ft) above sea level), which makes its climate cooler than most of Puerto Rico's towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "aibonito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4041,
+    "place_id": "gn-5368335",
+    "input": {
+      "place": {
+        "place_id": "gn-5368335",
+        "name": "Los Altos",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.38522,
+        "lon": -122.11413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Altos, California",
+          "url": "https://en.wikipedia.org/wiki/Los_Altos,_California",
+          "text": "Los Altos ( ; Spanish for \"The Heights\") is a city in Santa Clara County, California, United States, in the San Francisco Bay Area. The population was 31,625 according to the 2020 census.\nMost of the city's growth took place between 1950 and 1980. Originally an agricultural town with many summer cottages and apricot orchards, Los Altos is a bedroom community on the western edge of Silicon Valley, serving as a major source of commuters to other parts of Silicon Valley. Los Altos strictly limits commercial zones to the downtown area and small shopping and office parks lining Foothill Expressway and El Camino Real."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "los altos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "altos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4045,
+    "place_id": "gn-995202",
+    "input": {
+      "place": {
+        "place_id": "gn-995202",
+        "name": "Howick",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.47795,
+        "lon": 30.23057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howick, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Howick,_South_Africa",
+          "text": "Howick is a town located in the UMngeni Local Municipality of KwaZulu-Natal Province, South Africa. The town is 1050 m above sea level, and about 88 kilometres from the port city of Durban. It experiences warm summers and cool, dry winters. A snappy chill descends upon Howick when snow falls on the nearby Drakensberg. The town is located on the N3 freeway, connecting it with the rest of South Africa.\nThe town is the location of Howick Falls, which is a large waterfall that occurs when the Umgeni River falls 95 metres (311 feet) over dolerite cliffs on its way to the Indian Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "howick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4046,
+    "place_id": "gn-1020641",
+    "input": {
+      "place": {
+        "place_id": "gn-1020641",
+        "name": "Beaufort West",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -32.35671,
+        "lon": 22.58295
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaufort West",
+          "url": "https://en.wikipedia.org/wiki/Beaufort_West",
+          "text": "Beaufort West (Afrikaans: Beaufort-Wes; Xhosa: eBhobhofolo) is a town in the Western Cape province in South Africa.  It is the largest town in the arid Great Karoo region, and is known as the \"Capital of the Karoo\". It forms part of the Beaufort West Local Municipality, with 34,085 inhabitants in 2011.\nIt is the centre of an agricultural district based mainly on sheep farming, and is a significant town and logistical support hub on the N1 national road.\nNext door to Beaufort West is the Karoo National Park. Important Permian fossils have been found in the area to the west of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "beaufort west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4050,
+    "place_id": "gn-1636816",
+    "input": {
+      "place": {
+        "place_id": "gn-1636816",
+        "name": "Majalengka",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.83611,
+        "lon": 108.22778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Majalengka",
+          "url": "https://en.wikipedia.org/wiki/Majalengka",
+          "text": "Majalengka (Sundanese: ᮙᮏᮜᮦᮀᮊ) is a town and district in West Java, Indonesia. The district is the regency seat of Majalengka Regency. At the 2010 Census, the district had a population of 68,871, of which the town (comprising the two kelurahan of Majalengka Wetan and Majalengka Kulon) had a population of 20,906. At the 2020 Census, the town population had decreased to 20,549, while the district had 74,107 inhabitants in mid 2024. \nIn Rajaguluh, one of the villages in Majalengka, 20 km (12 mi) from the town of Majalengka, there is a traditional food called \"pedesan bebek\", which is considered a little bit spicy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "majalengka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4051,
+    "place_id": "gn-1831732",
+    "input": {
+      "place": {
+        "place_id": "gn-1831732",
+        "name": "Banlung",
+        "country": "Cambodia",
+        "subdivision": "Ratanakiri",
+        "lat": 13.73939,
+        "lon": 106.98727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banlung",
+          "url": "https://en.wikipedia.org/wiki/Banlung",
+          "text": "Banlung (Khmer: បានលុង, Banlŭng [ɓaːnluŋ]) is the capital of Ratanakiri Province in northeastern Cambodia, and is  636 kilometres from the Cambodian capital of Phnom Penh. Ratanakiri Province borders Vietnam and Laos.  Banlung had been previously known as Banlung district before it officially gained town status. The town has a population of around 17,000 and the surrounding district has a population of 23,888.\nThe town became the capital of Ratanakiri Province in 1979, following the fall of the Khmer Rouge. The capital was moved from Veun Sai to Banlung in order to facilitate trade with Vietnam  (prior to Veun Sai, the capital was Lumphat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "banlung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4058,
+    "place_id": "gn-2675397",
+    "input": {
+      "place": {
+        "place_id": "gn-2675397",
+        "name": "Solna",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.36004,
+        "lon": 18.00086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solna",
+          "url": "https://en.wikipedia.org/wiki/Solna",
+          "text": "Solna (Swedish: Solna kommun or Solna stad, IPA: [ˈsôːlna]), also known as Solna Municipality, is a municipality in central Stockholm County, Sweden, located just north of Stockholm City Centre. Its seat is located in the town of Solna, which is a part of the Stockholm urban area. Solna is one of the wealthiest municipalities in Sweden.\nThe municipality is part of Metropolitan Stockholm. None of the area is considered rural, which is unusual for Swedish municipalities, which normally are of mixed rural/urban character. Solna is the third-smallest municipality in Sweden in terms of area, after nearby Sundbyberg, as well as Burlöv, Scania County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "solna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4070,
+    "place_id": "gn-3386213",
+    "input": {
+      "place": {
+        "place_id": "gn-3386213",
+        "name": "Touros",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.19889,
+        "lon": -35.46083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Touros",
+          "url": "https://en.wikipedia.org/wiki/Touros",
+          "text": "Touros (lit. \"bulls\") is a municipality in Rio Grande do Norte, Brazil. It is known as \"Brazil's Corner\" because it is located at the northeast corner of the country, being the closest South American city to Africa (2,841 km (1534 knots) from Kabrousse in southwestern Senegal). Touros has many varieties of fish, and there is a nearby seawater basin in the ocean formed by banks of coral.\nBordering municipalities include Rio do Fogo to the southeast, Pureza to the south, João Câmara to the southwest, Parazinho further to the west and São Miguel do Gostoso to the northwest.\nTouros is near Rio Carnaubinha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "touros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4072,
+    "place_id": "gn-3642390",
+    "input": {
+      "place": {
+        "place_id": "gn-3642390",
+        "name": "Elorza",
+        "country": "Venezuela",
+        "subdivision": "Apure",
+        "lat": 7.06088,
+        "lon": -69.49765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elorza",
+          "url": "https://en.wikipedia.org/wiki/Elorza",
+          "text": "Elorza is a town in the Apure State in Venezuela. Elorza is on the region of the Venezuelan Llanos and it had 26.800 inhabitants as of 2012. It is the capital of the Rómulo Gallegos Municipality. The current mayor is Pedro Guerra.\nThis town had shared its urban area with the neighboring Colombia until the government of Eleazar López Contreras. Back then the Venezuelan part was called Elorza, honoring the Venezuelan hero Andrés Elorza, and the Colombian part was called El Viento (The Wind)\nIn August 2001, Venezuela completed a nationwide conversion of land-line phones to three-digit area codes and seven-digit local numbers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "elorza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4082,
+    "place_id": "gn-6301965",
+    "input": {
+      "place": {
+        "place_id": "gn-6301965",
+        "name": "Palmerston",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -12.48602,
+        "lon": 130.9833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmerston, Northern Territory",
+          "url": "https://en.wikipedia.org/wiki/Palmerston,_Northern_Territory",
+          "text": "Palmerston is a planned satellite city of Darwin, the capital and largest city of Australia's Northern Territory. The city is situated approximately 20 kilometres from the Darwin central business district and 10 kilometres from Howard Springs and the surrounding rural areas. Palmerston had a population of 33,695 at the 2016 census, making it the second largest city in the Northern Territory. According to the 2021 census, the population grew to 37,247 people.\nThere are eighteen suburbs in Palmerston, ten of which are close to the Palmerston city centre. Palmerston is mostly residential with two light industrial areas in the north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "palmerston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
