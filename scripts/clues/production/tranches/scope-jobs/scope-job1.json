@@ -1,0 +1,912 @@
+[
+  {
+    "rank": 37,
+    "band": 1,
+    "place_id": "gn-789128",
+    "input": {
+      "place": {
+        "place_id": "gn-789128",
+        "name": "Kragujevac",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 44.01667,
+        "lon": 20.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kragujevac",
+          "url": "https://en.wikipedia.org/wiki/Kragujevac",
+          "text": "Kragujevac (Serbian Cyrillic: Крагујевац, pronounced [krǎɡujeʋats] ) is the fourth largest city in Serbia and the administrative centre of the Šumadija District. It is the historical centre of the geographical region of Šumadija in central Serbia, and is situated on the banks of the Lepenica River. According to the 2022 census, the city itself has a population of 146,318 while the city administrative area has 171,186 inhabitants.\nKragujevac was the first capital of modern Serbia and the first constitution in the Balkans, the Sretenje Constitution, was proclaimed in the city in 1835. A unit of the Scottish Women's Hospitals for Foreign Service was located there in World War I. During the Second World War, Kragujevac was the site of a massacre by the Nazis in which 2,778 Serb men and boys were killed.\nModern Kragujevac is known for its large munitions (Zastava Arms) and automobile (Fiat Serbia) industries, as well as its status as an education centre housing the University of Kragujevac, one of the region's largest higher education institutions."
+        },
+        {
+          "article": "Kragujevac (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kragujevac#Climate",
+          "text": "Kragujevac has a humid subtropical climate (Köppen climate classification: Cfa), and with a July mean temperature of . Winds most often blow from southwest and northwest, while they often blow from southeast in January, February and March."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 37,
+      "leadWords": 170,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives central Serbia location on the Lepenica River, first capital and 1835 constitution, wartime massacre, and arms and car industries, but no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kragujevac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 93,
+    "band": 1,
+    "place_id": "gn-1269771",
+    "input": {
+      "place": {
+        "place_id": "gn-1269771",
+        "name": "Imphal",
+        "country": "India",
+        "subdivision": "Manipur",
+        "lat": 24.80805,
+        "lon": 93.9442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imphal",
+          "url": "https://en.wikipedia.org/wiki/Imphal",
+          "text": "Imphal (UK:  IM-fahl, US:   IMP-hul; Meitei: [impʰal]) is the capital city of the Indian state of Manipur. The metropolitan centre of the city contains the ruins of Kangla Palace (officially known as Kangla Fort), the royal seat of the former Kingdom of Manipur, surrounded by a moat. Spread over parts of the districts of Imphal West and Imphal East, the former contains the majority of the city's area and population. Imphal is part of the Smart Cities Mission under the Ministry of Housing and Urban Affairs. Being a prominent commercial hub, Imphal is known for its weaving, brass-ware, bronze-ware, and other cottage industries. \nINS Imphal, the third ship of the Visakhapatnam-class stealth guided missile destroyer of the Indian Navy, was named in recognition of the Indian soldiers who fought in Battle of Imphal during World War II, and is the first Indian Navy Ship (INS) named after a city in Northeast India."
+        },
+        {
+          "article": "Imphal (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Imphal#Geography_and_climate",
+          "text": "Imphal lies in the Imphal Valley surrounded by nine ranges of hills at in extreme eastern India, with an average elevation of .\nIt has a humid subtropical climate (Köppen: Cwa) with cool, dry winters and a slightly hot monsoon season. Imphal enjoys a moderate climate tempered by its moderately high altitude and the surrounding hills. Maximum temperatures in the hottest months average about ; January is the coldest month, with average lows near , often drops to around 1 °C in the coldest nights and in some clear nights drops below freezing point. Frost is observable in the winter mornings few days of the year. The city receives about of rain, with June and July being the wettest months. Imphal observes 42.2 days with thunder and 46.1 days with fog, annually. Thunder is common in the pre monsoon and rainy season, whereas fog mostly occurs in the dry winter mornings which clears out in the noon.\nThe highest recorded temperature was , on 29 April 1999, and the lowest temperature was on 10 January 1970."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 176,
+      "leadWords": 152,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a capital location, palace ruins in a moat and cottage industries, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "imphal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 97,
+    "band": 1,
+    "place_id": "gn-1259385",
+    "input": {
+      "place": {
+        "place_id": "gn-1259385",
+        "name": "Port Blair",
+        "country": "India",
+        "subdivision": "Andaman and Nicobar",
+        "lat": 11.66613,
+        "lon": 92.74635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Blair",
+          "url": "https://en.wikipedia.org/wiki/Port_Blair",
+          "text": "Port Blair (), officially named Sri Vijaya Puram (Hindi pronunciation: [ˌɕɾˈɨː ˈʋɪ̯ˌd͡ʑʌjᵊ pʊˈɾ.əm]), is the capital city of the Indian union territory of Andaman and Nicobar Islands. It is located on the South Andaman Island situated between the Bay of Bengal to the west and the Andaman Sea to the east. It is located approximately 1,190 km (740 mi) from Chennai and 1,255 km (780 mi) from Kolkata in mainland India. It is the headquarters of the South Andaman district, and the union territory's only notified town.\nThe town is home to the Veer Savarkar International Airport, the only major airport in the islands, and Port Blair Port, and serves as the major gateway for the islands. It is home to the air base INS Utkrosh and the naval base INS Jarawa of the Indian Navy, and the Andaman and Nicobar Command, the only integrated tri-command of the Indian Armed Forces.\nThe indigenous inhabitants of the region were the Andamanese. In the late 18th century, the British colonised the Andaman Islands, and established a naval base, and a penal colony, which was abandoned two years later. On 22 February 1858, the British re-established a colony at Port Blair, and a new penal colony was established on the Ross Island near Port Blair, mainly to house the prisoners of the Indian rebellion of 1857. In 1872, the Andaman and Nicobar Islands were united under a single command and administered by a chief commissioner based at Port Blair. The Cellular Jail was completed in 1906, and used to house political prisoners and independence activists. During Second World War, the Japanese captured Port Blair on 23 March 1942, and it was retaken by the British on 7 October 1945. After India became independent in 1947, the Andaman and Nicobar islands became part of the Dominion of India, and later a union territory with the capital at Port Blair.\nThe city was named after Archibald Blair, an officer of the Royal Indian Navy, who colonised the region in the late 18th century. On 13 September 2024, the Government of India officially renamed the city to Sri Vijaya Puram."
+        },
+        {
+          "article": "Port Blair (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Port_Blair#Climate",
+          "text": "Port Blair has a tropical monsoon climate (Köppen climate classification Am)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 11,
+      "leadWords": 354,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives an island location between the Bay of Bengal and the Andaman Sea, plus colonial and jail history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox traceable to the source text."
+    },
+    "banned_terms": [
+      {
+        "term": "port blair",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blair",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 167,
+    "band": 1,
+    "place_id": "gn-4951788",
+    "input": {
+      "place": {
+        "place_id": "gn-4951788",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.10148,
+        "lon": -72.58981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Massachusetts",
+          "text": "Springfield is the most populous city in Hampden County, Massachusetts, United States, and its county seat. Springfield sits on the eastern bank of the Connecticut River near its confluence with three rivers: the western Westfield River, the eastern Chicopee River, and the eastern Mill River. At the 2020 census, the city's population was 155,929, making it the third most populous city in Massachusetts and the fourth most populous city in New England, after Boston, Worcester, and Providence. The Springfield metropolitan area, one of two metropolitan areas in Massachusetts (the other being Greater Boston), had a population of 699,162 in 2020.\nSpringfield was founded in 1636, the first Springfield in the New World. In the late 1700s, during the American Revolution, Springfield was designated by George Washington as the site of the Springfield Armory because of its central location.  Subsequently it was the site of Shays' Rebellion. The city would also play a pivotal role in the Civil War, as a stop on the Underground Railroad and home of abolitionist John Brown, widely known for his raid on Harpers Ferry, and for the Armory's manufacture of the famed \"Springfield rifles\" used ubiquitously by Union troops. Closing during the Lyndon B. Johnson administration, today the national park site features the largest collection of historic American firearms in the world.\nToday the city is the largest in western New England, and the urban, economic, and media capital of Massachusetts' section of the Connecticut River Valley, colloquially known as the Pioneer Valley. Springfield has several nicknames—\"The City of Firsts\", due to the many innovations developed there, such as the first American dictionary, the first American gas-powered automobile, and the first machining lathe for interchangeable parts; \"The City of Homes\", due to its Victorian residential architecture; and \"Hoop City\", as basketball was invented in Springfield in 1891 by Canadian James Naismith.\nHartford, the capital of Connecticut, lies 24 miles (39 km) south of Springfield on the western bank of the Connecticut River. The Hartford–Springfield region is known as the Knowledge Corridor because it hosts over 160,000 university students and over 32 universities and liberal arts colleges—the second-highest concentration of higher-learning institutions in the United States. The city of Springfield itself is home to Springfield College, Western New England University, American International College, and Springfield Technical Community College, among other higher educational institutions."
+        },
+        {
+          "article": "Springfield, Massachusetts (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Massachusetts#Climate",
+          "text": "Springfield, like other cities in southern New England, has a hot-summer humid continental climate (Köppen: Dfa) with four distinct seasons and precipitation evenly distributed throughout the year, but the intensity (and sometimes the duration) of warmer periods is greater than in northern areas. Winters are cold with a daily average in January of around . During winter, nor'easter storms can drop significant snowfalls on Springfield and the Connecticut River Valley. Temperatures below can occur each year, though the area does not experience the high snowfall amounts and blustery wind averages of nearby cities such as Worcester, Massachusetts, and Albany, New York.\nSpringfield's summers are very warm and sometimes humid. During summer, several times per month, on hot days afternoon thunderstorms will develop when unstable warm air collides with approaching cold fronts. The daily average in July is around . Usually several days during the summer exceed , constituting a \"heat wave\". Spring and fall temperatures are usually pleasant, with mild days and crisp, cool nights. Precipitation averages annually, and snowfall averages , most of which falls from mid-December to early March. Although not unheard of, extreme weather events like hurricanes and tornadoes occur infrequently in Springfield compared with other areas in the country. On the occasions that hurricanes have hit New England, Springfield's inland, upriver location has caused its damages to be considerably less than shoreline cities like New Haven, Connecticut, and Providence, Rhode Island.\nOn June 1, 2011, Springfield was directly struck by the second-largest tornado ever to hit Massachusetts. With wind speeds exceeding , the tornado left three dead, hundreds injured, and over 500 homeless in the city alone. The tornado caused hundreds of millions of dollars' worth of damage to Springfield and wrought significant destruction in a path from Westfield to Charlton, Massachusetts. It was the first deadly tornado to strike Massachusetts since May 29, 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 309,
+      "leadWords": 387,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river geography and rich founding and war history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 213,
+    "band": 1,
+    "place_id": "gn-5350734",
+    "input": {
+      "place": {
+        "place_id": "gn-5350734",
+        "name": "Fremont",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.54827,
+        "lon": -121.98857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fremont, California",
+          "url": "https://en.wikipedia.org/wiki/Fremont,_California",
+          "text": "Fremont () is a city in Alameda County, California, United States. Located in the East Bay region of the Bay Area, Fremont has a population of 230,504 as of 2020, making it the fourth most populous city in the Bay Area, behind San Jose, San Francisco, and Oakland. It is the closest East Bay city to the high-tech Silicon Valley network of businesses, and has a strong tech industry presence. The city's largest employer is a Tesla manufacturing plant, employing 25,000 people as of 2024.\nThe city's origins lie in the community that arose around Mission San José, founded in 1797 by the Spanish under Padre Fermín Lasuén. Fremont was incorporated on January 23, 1956, when the former towns of Mission San José, Centerville, Niles, Irvington, and Warm Springs unified into one city. Fremont is named after John C. Frémont, a general who helped lead the American Conquest of California from Mexico and later served as Military Governor of California and then U.S. Senator."
+        },
+        {
+          "article": "Fremont, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Fremont,_California#Climate",
+          "text": "Fremont has a warm-summer Mediterranean climate (Köppen: Csb) typical of the San Francisco Bay Area. This climate features warm, dry summers and cool, wet winters. Like nearby San Jose, precipitation is fairly low (about per year) because the city lies in the rain shadow of the Santa Cruz Mountains to the west. The highest temperature recorded was on September 6, 2022. The lowest temperature recorded was on December 23, 1990."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 70,
+      "leadWords": 164,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Bay Area location, tech industry and incorporation history, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fremont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 285,
+    "band": 1,
+    "place_id": "gn-5403022",
+    "input": {
+      "place": {
+        "place_id": "gn-5403022",
+        "name": "Torrance",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.83585,
+        "lon": -118.34063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrance, California",
+          "url": "https://en.wikipedia.org/wiki/Torrance,_California",
+          "text": "Torrance is a city in the Los Angeles metropolitan area in southwestern Los Angeles County, California, United States, founded in 1912, neighboring Redondo Beach, Rolling Hills Estates, Palos Verdes Estates, Lomita, Gardena, Lawndale, and Alondra Park, as well as the Los Angeles neighborhoods of Harbor City and Harbor Gateway. The city is part of what is known as the South Bay region. \nTorrance has a moderate year-round climate with average rainfall of 12 inches (300 mm) per year. Torrance has one and a half miles (2.4 km) of beachfront abutting Santa Monica Bay and 30 parks. It is the birthplace of the American Youth Soccer Organization (AYSO). The population was 147,067 at the 2020 census, decreasing by 5.1% to an estimated 139,576 in 2024."
+        },
+        {
+          "article": "Torrance, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Torrance,_California#Climate",
+          "text": "Torrance has a warm-summer Mediterranean climate (Köppen: Csb), bordering with a semi-arid climate (Bsk). The rainy season is November through March, as shown in the adjacent table. Summers tend to be warm but dry, despite Torrance's proximity to the coast. The Sunset Western Garden Book places most of Torrance in Zone 22, part of a basin area in Greater Los Angeles where cold air can pool—hence the surprisingly chilly record low temperatures for each calendar month at the airport, which has risk of frost over six months. Milder microclimates are found upslope of the airport to the south (Zone 23—thermal belt) and in the western blocks bordering the beach communities and Palos Verdes Estates (Zone 24—marine influence dominant)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 118,
+      "leadWords": 124,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only says it has a moderate year-round climate with average rainfall of 12 inches per year; a moderate label and an average rainfall figure alone provide no mechanism, extreme, or paradox verbatim-traceable to the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond a moderate-climate label and average rainfall"
+    },
+    "banned_terms": [
+      {
+        "term": "torrance",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 329,
+    "band": 1,
+    "place_id": "gn-4049979",
+    "input": {
+      "place": {
+        "place_id": "gn-4049979",
+        "name": "Birmingham",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 33.52066,
+        "lon": -86.80249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birmingham, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Birmingham,_Alabama",
+          "text": "Birmingham ( BUR-ming-ham) is a city in the north central region of Alabama, United States. It is the third-most populous city in the state, with an estimated population of 196,357 as of 2024. The Birmingham metropolitan area, with over 1.19 million residents, is the largest metropolitan area in Alabama and 47th-most populous in the US. Birmingham serves as a major regional economic, medical, and educational hub of the Deep South, Piedmont, and Appalachian regions. It is the county seat of Jefferson County.\nFounded in 1871 during the Reconstruction era, Birmingham was formed through the merger of three smaller communities, most notably Elyton. It quickly grew into an industrial and transportation center, with a focus on mining, steel production, and railroads. Named for Birmingham, England, it developed with a labor force that included many African Americans from rural Alabama, often employed under non-union conditions. Its rapid industrial growth from 1881 to 1920 earned it the nicknames \"The Magic City\" and \"The Pittsburgh of the South.\" Though the prominence of mining and heavy industry declined in the late 20th century, Birmingham remains a significant manufacturing center with a diverse economy in banking, telecommunications, transportation, medicine and higher education.\nThe Birmingham area serves as headquarters to Fortune 500 companies Regions Financial and Vulcan Materials Company, along with multiple other Fortune 1000 companies. The University of Alabama at Birmingham, established in 1969, includes a prominent medical school, dental school, and other professional programs, making it one of the state's leading research institutions. The area also hosts private colleges such as Samford University and Miles College, along with Jefferson State Community College and Lawson State Community College. Birmingham is also home to the headquarters of the Southeastern Conference (SEC) and Southwestern Athletic Conference (SWAC), reinforcing its cultural and athletic influence in the region."
+        },
+        {
+          "article": "Birmingham, Alabama (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Birmingham,_Alabama#Climate",
+          "text": "Birmingham has a humid subtropical climate, characterized by hot summers, mild winters, and abundant rainfall. Birmingham is primarily in USDA Hardiness Zone 8a, with some neighborhoods in Zone 8b. January has a daily mean temperature of . There are an average of 47 days annually with a low at or below freezing, and 1.4 days where the high does not surpass freezing. July has a daily mean temperature of . Highs reach or exceed on 65 days per year and on 2. The record low is , set on February 13, 1899."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 92,
+      "leadWords": 298,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its 1871 founding, steel and mining growth, and modern banking and medicine, but describes no climate mechanism, extreme, or paradox and no seasonal weather pattern",
+      "priorMissing": "A verbatim-traceable climate mechanism, extreme, or paradox for this city in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "birmingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 347,
+    "band": 1,
+    "place_id": "gn-2451478",
+    "input": {
+      "place": {
+        "place_id": "gn-2451478",
+        "name": "Ségou",
+        "country": "Mali",
+        "subdivision": "Ségou",
+        "lat": 13.44032,
+        "lon": -6.25947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ségou",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A9gou",
+          "text": "Ségou (French pronunciation: [seɡu]; Bambara: ߛߋߜ߭ߎ߫, Segu) is a town and an urban commune in south-central Mali that lies 235 kilometres (146 mi) northeast of Bamako on the right bank of the River Niger. The town is the capital of the Ségou Cercle and the Ségou Region. With 130,690 inhabitants in 2009, it is the fifth-largest town in Mali. \nIn the middle of the 19th century there were four villages with the name of Ségou spread out over a distance of around 12 km (7.5 mi) along the right bank of the river. They were, starting from the most upstream, Ségou-Koro (Old Ségou), Ségou-Bougou, Ségou-Koura (New Ségou) and Ségou-Sikoro. The present town is on the site of Ségou-Sikoro."
+        },
+        {
+          "article": "Ségou (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A9gou#Climate",
+          "text": "Ségou has a hot semi-arid climate (Köppen BSh). The city is irrigated by two important waterways: the Niger and the Bani River. Ségou has two seasons: a rainy season and a dry season. The rainy season starts in June and lasts about four months until September. Ségou's dry season includes a relatively mild period followed by a period of sweltering heat. The average yearly rainfall is about . The harmattan is the dominant wind in the dry season and it blows from north to south. The monsoon blowing from south to north-west is frequent during rainy season (hivernage)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 98,
+      "leadWords": 118,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives only location on the River Niger and the 19th-century arrangement of four villages",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "segou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 437,
+    "band": 1,
+    "place_id": "gn-3843123",
+    "input": {
+      "place": {
+        "place_id": "gn-3843123",
+        "name": "Neuquén",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -38.95078,
+        "lon": -68.0592
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neuquén",
+          "url": "https://en.wikipedia.org/wiki/Neuqu%C3%A9n",
+          "text": "Neuquén (Spanish pronunciation: [newˈken]; Mapudungun: Nehuenken) is the capital city of the Argentine province of Neuquén and of the Confluencia Department within that province, located in the extreme east of the province. It occupies a strip of land west of the confluence of the Limay and Neuquén rivers which form the Río Negro, making it part of the ecoregion of Alto Valle del Río Negro. The city had 287,787 inhabitants, and the surrounding Neuquén – Plottier – Cipolletti conurbation had a population of more than 500,000 at the 2022 Census, making it the largest urban agglomeration in Patagonia.\nFounded in 1904, it is the newest provincial capital city in Argentina."
+        },
+        {
+          "article": "Neuquén (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Neuqu%C3%A9n#Climate",
+          "text": "Neuquén has an arid climate (Köppen BWk). Precipitation is low, averaging per year, which is fairly evenly distributed throughout the year. The mean annual temperature is between ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 28,
+      "leadWords": 110,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a river confluence location and 1904 founding as a provincial capital with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "neuquen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 460,
+    "band": 1,
+    "place_id": "gn-3435217",
+    "input": {
+      "place": {
+        "place_id": "gn-3435217",
+        "name": "Corrientes",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -27.46784,
+        "lon": -58.8344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corrientes",
+          "url": "https://en.wikipedia.org/wiki/Corrientes",
+          "text": "Corrientes (Spanish pronunciation: [koˈrjentes] ; Guarani: Taragui, lit. 'Currents') is the capital city of the province of Corrientes, Argentina, on the eastern shore of the Paraná River, about 1,000 km (621 mi) from Buenos Aires and 300 km (186 mi) from Posadas, on National Route 12. It has a population of 346,334 according to the 2010 Census. It lies opposite its twin city, Resistencia, Chaco.\nCorrientes has a mix of colonial and modern architecture, several churches and a number of lapacho, ceibo, jacaranda and orange trees. It is also home to one of Argentina's biggest carnival and chamamé celebrations.\nThe annual average temperature is 21.3 °C (70.3 °F). The annual rainfall is around 1,500 millimetres (59 in)."
+        },
+        {
+          "article": "Corrientes (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Corrientes#Climate",
+          "text": "The annual average temperature is . The annual rainfall is around . The Köppen climate classification subtype for this climate is Cfa (humid subtropical climate). Frosts are rare; with the dates of the first and last frost being July 5 and July 12 respectively, indicating that most of the year is frost-free. The highest temperature recorded was on September 30, 2020, and the next day, the all-time record was broken again with . The lowest temperature ever recorded was on June 15, 1979."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 83,
+      "leadWords": 117,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only an annual average temperature of 21.3 degrees and annual rainfall around 1,500 millimetres; averages alone, with no mechanism, extreme, paradox, or seasonal rhythm, do not qualify as a climate clue",
+      "priorMissing": "Extract text stating a place-specific climate mechanism, extreme, record, or seasonal pattern beyond annual averages"
+    },
+    "banned_terms": [
+      {
+        "term": "corrientes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 475,
+    "band": 1,
+    "place_id": "gn-1183460",
+    "input": {
+      "place": {
+        "place_id": "gn-1183460",
+        "name": "Bannu",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 32.98527,
+        "lon": 70.60403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bannu",
+          "url": "https://en.wikipedia.org/wiki/Bannu",
+          "text": "Bannu (Urdu: بنوں, romanized: bannū̃, pronounced [bənːũː] ), also called Bani Gul or Bani (Pashto: باني, romanized: bānī, pronounced [ˈbɑni] ) is a city located on the Kurram River in southern Khyber Pakhtunkhwa, Pakistan. It is the capital of Bannu Division. Bannu's residents are primarily members of the Banuchi tribe and speak Banuchi (Baniswola), a dialect of Pashto which is similar to the distinct Waziristani dialect. The residents regardless of their tribes are commonly called Banusi, Banuchi or Banisi.\nThe major industries of Bannu are cloth weaving, sugar mills and the manufacturing of cotton fabrics, machinery and equipment. It is famous for its weekly Jumma fair. The district forms a basin drained by the Kurram and Gambila (or Tochi) rivers."
+        },
+        {
+          "article": "Bannu (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bannu#Climate",
+          "text": "Bannu has a hot semi-arid climate (Köppen BSh) featuring sweltering summers and mild winters. The average annual temperature is , with the hottest month being June with an average high of and the coolest January with an average low of . The average annual rainfall is , with the majority falling in the monsoon season of July and August, followed by a secondary maximum due to western disturbances from December to March."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 72,
+      "leadWords": 120,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Kurram River basin, cloth weaving, and the weekly fair but states no weather or climate, so a river basin alone is not a climate mechanism",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bannu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 505,
+    "band": 1,
+    "place_id": "gn-5352423",
+    "input": {
+      "place": {
+        "place_id": "gn-5352423",
+        "name": "Glendale",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.14251,
+        "lon": -118.25508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glendale, California",
+          "url": "https://en.wikipedia.org/wiki/Glendale,_California",
+          "text": "Glendale is a city located primarily in the Verdugo Mountains region, with a small portion in the San Fernando Valley of Los Angeles County, in the U.S. state of California. It is located about 10 miles (16 km) north of Downtown Los Angeles.\nAs of 2025, Glendale had a Census-estimated population of 187,823 making it the 4th-most populous city in Los Angeles County and the 24th-most populous city in California.\nGlendale—along with neighboring Burbank and nearby Hollywood—has served as a major production center for the American film industry, and especially animation, and is home to Disneytoon Studios, Marvel Animation, and DreamWorks Animation."
+        },
+        {
+          "article": "Glendale, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Glendale,_California#Climate",
+          "text": "Glendale has a Mediterranean climate (Köppen climate classification: Csa), with hot summers and mild winters with occasional rainfall. The highest recorded temperature in Glendale was on September 6, 2020. The lowest recorded temperature was on February 15, 1990. The warmest month is August and the coolest month is January.\nThe annual average precipitation is just over , mostly falling between November and April. Rainfall totals are highly variable from year to year, with the wettest years (sometimes over of rainfall) usually associated with warm El Niño conditions, and the drier years (sometimes under of rainfall) with cool La Niña episodes in the Pacific.\nThe hills and mountains of northern Glendale very rarely have snow, owing to its warmer temperatures during the winter. Frost sometimes occurs at night from late November to early March. Heavy rains and thunderstorms are also common during the winter. The spring brings temperate weather, with little rain. The summer is usually fairly warm, with highs from , to the low 100s (40 °C). Summer is usually very dry, but thunderstorms can come from Arizona, bringing high humidity into the area. These rare days cause heat indices over . Fall often brings clear and dry weather, but can be gusty due to the Santa Ana winds, blowing in once or twice a year from October to December. Santa Ana winds can reach up to , with gusts up to in mountain passes and canyons. Thunderstorms occur very rarely and they are accompanied by gusty winds and hail."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 250,
+      "leadWords": 102,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers California location in the Verdugo Mountains and San Fernando Valley near Los Angeles and film animation studios but states no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "glendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 508,
+    "band": 1,
+    "place_id": "gn-1255947",
+    "input": {
+      "place": {
+        "place_id": "gn-1255947",
+        "name": "Sivakasi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.44999,
+        "lon": 77.79797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sivakasi",
+          "url": "https://en.wikipedia.org/wiki/Sivakasi",
+          "text": "Sivakasi (also pronounced Shivakaashi) is a city in Virudhunagar District in the Indian state of Tamil Nadu. The city is known for firecrackers and match factories that produce 70% of the country's output. The printing industries in Sivakasi produce 30% of the total diaries produced in India. The industries in Sivakasi employ over 25,000 people and the estimated turnover of the firecracker, match making and printing industries in the city is around ₹20 billion (US$210 million). It is the largest city in Virudhunagar district.\nSivakasi was established in the 15th century during the reign of the Pandya king Harikesari Parakkirama Pandian. The city was a part of Madurai and has been ruled at various times by Later Pandyas, the Vijayanagar Empire, Madurai Nayaks, Chanda Sahib, the Carnatic kingdom and the British. A major riot against the British Raj took place in Sivakasi in 1899.\nSivakasi has a dry climate, making it suitable for dry crops like cotton, chilies and millets. Badhrkali Amman Temple is the most prominent landmark of Sivakasi, and the temple festivals constitute the major festivals of the city. AJ and Hatsun Indoor Stadium has a coaching centre for badminton and is the major sporting venue of the city. Sivakasi is a part of Sivakasi constituency and elects its member of legislative assembly every five years, and a part of the Virudhunagar constituency that elects its member of parliament. Sivakasi is locally administered by a municipal corporation which covers an area of 6.8 km2 (2.6 sq mi). Roadways are the major mode of transport, in addition to a railway which runs through the city. As of 2021, Sivakasi has an estimated population of 160,047."
+        },
+        {
+          "article": "Sivakasi (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Sivakasi#Geography",
+          "text": "Sivakasi is located at\nand has an average elevation of 101 metres (331 feet). The municipality covers an area of . The average humidity of the city is 76.2% and varies between 65.6% to 79.2%."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 35,
+      "leadWords": 276,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only states a dry climate making the area suitable for dry crops like cotton, chilies and millets, which is a bare classification with a crop effect and no mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the dry-climate label"
+    },
+    "banned_terms": [
+      {
+        "term": "sivakasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 596,
+    "band": 1,
+    "place_id": "gn-1273874",
+    "input": {
+      "place": {
+        "place_id": "gn-1273874",
+        "name": "Kochi",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.93988,
+        "lon": 76.26022
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kochi",
+          "url": "https://en.wikipedia.org/wiki/Kochi",
+          "text": "Kochi ( KOH-chee, Malayalam: [kotˈt͡ʃi] ), formerly known as Cochin ( KOH-chin), is a major port city along the Malabar Coast of India bordering the Laccadive Sea. It is part of the district of Ernakulam in the state of Kerala and is the financial, industial and commercial capital of the state. The city is also commonly referred to as Ernakulam, which is its central business district. As of 2011, the Kochi Municipal Corporation had a population of 677,381 over an area of 94.88 km2, and the larger Kochi urban agglomeration had over 2.1 million inhabitants within an area of 440 km2, making it the largest and the most populous metropolitan area in Kerala.  Kochi city is also part of the Greater Cochin development region and is classified as a Tier-II city by the Government of India. The civic body that governs the city is the Kochi Municipal Corporation, which was constituted in the year 1967, and the statutory bodies that oversee its development are the Greater Cochin Development Authority (GCDA) and the Goshree Islands Development Authority (GIDA).\nNicknamed the Queen of the Arabian Sea, Kochi was an important spice trading center on the west coast of India from antiquity.  The port of Muziris traded with the Romans, Persians, Arabs, and Chinese. From 1503 to 1663, the Portuguese established Fort Emmanuel, before it was taken over by the Dutch in 1663. The Dutch then ceded the area to the United Kingdom. Kochi remained under the control of the Kingdom of Cochin, which became a princely state of the British. The construction of the Cochin Port and the reclamation of Willingdon Island in 1928 transformed Kochi into a major seaport and trading hub on the Malabar Coast. Over the following decades, the city developed into a major industrial and commercial centre, with shipbuilding, petroleum refining, and information technology becoming important parts of its economy.\nKochi houses major government institutions including the High Court of Kerala. It is home to Cochin Shipyard, the largest shipbuilding and maintenance facility in India in terms of capacity. Kochi is the first city in India to implement a water metro system, the Kochi Water Metro, an integrated urban water transport network that is being developed in phases. It is also the only city in Kerala to have a rapid transit system. The Cochin International Airport is the first in the world to operate solely on solar energy.\nKochi's rich cultural heritage has made it a popular tourist destination among both domestic and international travellers. It has been hosting India's first art biennale, the Kochi-Muziris Biennale, since 2012, which attracts international artists and tourists. The Chinese fishing nets, introduced during the 14th century by the Chinese, are a symbol of the city and a popular tourist attraction in themselves. Other landmarks include Mattanchery Palace, Marine Drive, Venduruthy Bridge, Church of Saint Francis and Mattanchery Bridge. The city ranks first in the total number of international and domestic tourist arrivals in Kerala. The city was ranked the sixth best tourist destination in India according to a survey conducted by the Nielsen Company on behalf of the Outlook Traveller magazine. In October 2019, Kochi was ranked seventh in Lonely Planet's list of top 10 cities in the world to visit in 2020. In November 2023, the British Luxury travel magazine Condé Nast Traveller rated Kochi as one of the best places to go in Asia in 2024."
+        },
+        {
+          "article": "Kochi (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kochi#Climate",
+          "text": "Under the Köppen climate classification, Kochi features a tropical monsoon climate (Am). Kochi's proximity to the equator along with its coastal location results in little seasonal temperature variation, with moderate to high levels of humidity. Annual temperatures range between with the record high being , and record low .\nFrom June to September, the south-west monsoon brings in heavy rains as Kochi lies on the windward side of the Western Ghats. From October to December, Kochi receives lighter (yet significant) rain from the northeast monsoon, as it lies on the leeward side. Average annual rainfall is , with an annual average of 124 rainy days."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 105,
+      "leadWords": 567,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers the sea coast port, spice trade, forts, ship work, and art shows, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kochi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 621,
+    "band": 1,
+    "place_id": "gn-3114472",
+    "input": {
+      "place": {
+        "place_id": "gn-3114472",
+        "name": "Pamplona",
+        "country": "Spain",
+        "subdivision": "Navarre",
+        "lat": 42.81687,
+        "lon": -1.64323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pamplona",
+          "url": "https://en.wikipedia.org/wiki/Pamplona",
+          "text": "Pamplona (Spanish: [pamˈplona] ; Basque: Iruña [i.ɾuɲa]; officially in its bilingual form: Pamplona-Iruña), historically also known as Pampeluna in English, is the capital city of the Chartered Community of Navarre in Spain. As of 2024, with a population of 208,243, it is the 29th largest city in Spain.\nLying at near 450 m (1,480 ft) above sea level, the city (and the wider Cuenca de Pamplona) is located on the flood plain of the Arga river, a second-order tributary of the Ebro. Precipitation-wise, it is located in a transitional location between the rainy Atlantic northern façade of the Iberian Peninsula and its drier inland. Early population in the settlement traces back to the late Bronze to early Iron Age, even if the traditional inception date refers to the foundation of Pompaelo by Pompey during the Sertorian Wars circa 75 BC. During Visigothic rule Pamplona became an episcopal see, serving as a staging ground for the Christianization of the area. It later became one of the capitals of the Kingdom of Pamplona/Navarre.\nThe city is famous worldwide for the running of the bulls during the San Fermín festival, which is held annually from 6 July to 14 July. This festival was brought to literary renown with the 1926 publication of Ernest Hemingway's novel The Sun Also Rises. It is also home to Osasuna, the only Navarrese football club to have ever played in the Spanish top division."
+        },
+        {
+          "article": "Pamplona (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pamplona#Climate",
+          "text": "The climate of Pamplona is classified as a humid subtropical climate (Köppen climate classification: Cfa). The city features a mediterranean rainfall pattern of drier summers which is similar to but not as pronounced as it is in the rest of Spain. Sunshine hours are typical for a location in Northern Spain, thus more similar to the oceanic coastal climate in nearby Basque locations than typical Spanish Mediterranean areas are, but rainfall is significantly lower than in Bilbao and especially San Sebastián, and the climate is harsher than in the northern coastal areas (colder winter lows, warmer summer highs) because of the altitude of and its inland location."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 107,
+      "leadWords": 236,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only places the city in a transitional precipitation zone between the rainy Atlantic side and the drier inland — a bare classification with no mechanism, extreme, seasonal rhythm, or paradox; fail closed per locked tier-2 rule",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pamplona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 644,
+    "band": 1,
+    "place_id": "gn-2082600",
+    "input": {
+      "place": {
+        "place_id": "gn-2082600",
+        "name": "Jayapura",
+        "country": "Indonesia",
+        "subdivision": "Papua",
+        "lat": -2.53371,
+        "lon": 140.71813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jayapura",
+          "url": "https://en.wikipedia.org/wiki/Jayapura",
+          "text": "Jayapura (formerly Hollandia (1910–1962), Kota Baru (1962–1963), Soekarnopura (1963–1968)) is the capital and largest city of the Indonesian province of Papua on the island of New Guinea. It is situated on the northern coast of the island and covers an area of 835.48 km2 (322.58 sq mi). The city borders the Pacific Ocean and Yos Sudarso Bay to the north, the country of Papua New Guinea to the east, Keerom Regency to the south, and Jayapura Regency to the west.\nWith a population of 410,852 according to the official estimates for mid 2024 (comprising 218,356 males and 192,416 females), Jayapura is the second most populous city in the entire island of New Guinea, after Port Moresby, the capital of Papua New Guinea. During the 2010–2020 decade it was also the fastest-growing city in Indonesia, with the population increasing by 55.23% between 2010 and 2020. \nJayapura is the fourth largest city by economy in Eastern Indonesia—after Makassar, Denpasar, and Manado—with an estimated 2016 GDP at Rp19.48 trillion. Jayapura has a very high Human Development Index (HDI) at 0.801."
+        },
+        {
+          "article": "Jayapura (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Jayapura#Geography_and_climate",
+          "text": ", showing the floating village of Tobati (left) and Engros (right), just to the south of Jayapura.]]\nThe topography of Jayapura varies from valleys to hills, plateaus, and mountains up to above sea level. Jayapura overlooks the Yos Sudarso Bay. Jayapura is about in land area, and is divided into five districts. Around 30% of the area is inhabited, with the remainder consisting of a rough terrain, swamps, and protected forest.\nThe district of Muara Tami, which covers the eastern half (52.4%) of the city's area, up to the national border with Papua New Guinea, is relatively unpopulated with only 4.6% of the population, and serves as an outlet for the Tami River (\"Muara Tami\" means \"mouth of the Tami\") and other rivers originating in Keerom Regency to the south and emptying into the Pacific to the north. It comprises the administrative villages of Holtekam (in the northwest and thus closest to the urban area of Jayapura city), Kampung Mosso (in the east, bordering on Papua New Guinea), Koya Barat, Koya Tengah, Koya Timur, Skow Mabo, Skow Sae and Skow Yambe, of which Koya Barat and Koya Timur have the status of urban kelurahan and the others are classed as rural desa.\nJayapura has a tropical rainforest climate (Af) with heavy rainfall year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 213,
+      "leadWords": 177,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the northern coast of New Guinea, borders, population and economy, but contains no climate or weather information at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jayapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 670,
+    "band": 1,
+    "place_id": "gn-5879400",
+    "input": {
+      "place": {
+        "place_id": "gn-5879400",
+        "name": "Anchorage",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 61.21806,
+        "lon": -149.90028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anchorage, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Anchorage,_Alaska",
+          "text": "Anchorage (Denaʼina: Dgheyay Kaq'; Dgheyaytnu), officially the Municipality of Anchorage, is the most populous city in the U.S. state of Alaska. With a population of 291,247 at the 2020 census, it contains nearly 40 percent of the state's population. The Anchorage metropolitan area, which includes Anchorage and the neighboring Matanuska-Susitna Borough, had a population of 398,328 in 2020, accounting for more than half the state's population. At 1,706 sq mi (4,420 km2) of land area, the city is the fourth-largest by area in the U.S.\nAnchorage is in Southcentral Alaska, at the head of the Cook Inlet, on a peninsula formed by the Knik Arm to the north and the Turnagain Arm to the south. First settled as a tent city near the mouth of Ship Creek in 1915 when construction on the Alaska Railroad began, Anchorage was incorporated as a city in November 1920. In September 1975, the City of Anchorage merged with the Greater Anchorage Area Borough, creating the Municipality of Anchorage. The municipal city limits span 1,961.1 sq mi (5,079.2 km2), encompassing the urban core, a joint military base, several outlying communities, and almost all of Chugach State Park. Because of this, less than 10 percent of the Municipality (or Muni) is populated, with the highest concentration of people in the 100-square-mile (260 km2) area that makes up the city proper, on a promontory at the headwaters of the inlet, commonly called Anchorage, the City of Anchorage, or the Anchorage Bowl.\nAnchorage is almost equidistant from New York City, Tokyo, and Murmansk, Russia (straight over the North Pole). Anchorage lies within 10 hours by air of nearly 90 percent of the inhabited global north. For this reason, Ted Stevens Anchorage International Airport is a common refueling stop for international cargo flights and home to a major FedEx hub, which the company calls a \"critical part\" of its global network of services.\nAnchorage has won the All-America City Award four times: in 1956, 1965, 1984–85, and 2002, from the National Civic League. Kiplinger has named it the United States' most tax-friendly city."
+        },
+        {
+          "article": "Anchorage, Alaska (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Anchorage,_Alaska#Climate",
+          "text": "Anchorage has a subarctic climate (Köppen climate classification: Dsc on the borderline of Dsb, Trewartha Eolo bordering on Dclo), with strong maritime influences that lead to a relatively moderate climate, in contrast to the much more continental Fairbanks. Most of its precipitation falls in late summer. Average daytime summer temperatures range from approximately ; average daytime winter temperatures are about . Anchorage has a frost-free growing season that averages slightly over 101 days. According to local folklore, when a native plant called fireweed goes to seed after a full bloom, the first snowfall of winter is 6 weeks away.\nAverage January low and high temperatures at Ted Stevens Anchorage International Airport (ANC) are with an average winter snowfall of . snowiest winter on record, topping the 1954–1955 winter with . The coldest temperature ever recorded at the original weather station at Merrill Field on the East end of 5th Avenue was on February 3, 1947.\nSummers are mild (although cool compared to the contiguous US and even interior Alaska), and it can rain frequently, although not abundantly. Average July low and high temperatures are and the highest reading ever recorded was on July 4, 2019. The average annual precipitation at the airport is .\nThe coldest daily maximum recorded in Anchorage was on January 28, 1989, while the coldest daily maximum on average between 1991 and 2020 was . The eruption deposited about of volcanic ash on the city. The clean-up of ash resulted in excessive demands for water and caused major problems for the Anchorage Water and Wastewater Utility.\nThe average temperature of the sea ranges from in February to in August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 273,
+      "leadWords": 344,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states no climate fact at all; it gives inlet geography, settlement, and air distances with no mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "anchorage",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 705,
+    "band": 1,
+    "place_id": "gn-3689147",
+    "input": {
+      "place": {
+        "place_id": "gn-3689147",
+        "name": "Barranquilla",
+        "country": "Colombia",
+        "subdivision": "Atlántico",
+        "lat": 10.96854,
+        "lon": -74.78132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barranquilla",
+          "url": "https://en.wikipedia.org/wiki/Barranquilla",
+          "text": "Barranquilla (; Latin American Spanish: [baraŋˈkiʝa] ) is the capital district of the Atlántico department in Colombia. It is located near the Caribbean Sea and is the largest city and third port in the Caribbean coast region; as of 2018, it had a population of 1,206,319, making it Colombia's fourth-most populous city after Bogotá, Medellín, and Cali.\nBarranquilla lies strategically next to the delta of the Magdalena River, 7.5 km (4.7 mi) (originally 25 km (16 mi) before rapid urban growth) from its mouth at the Caribbean Sea, serving as a port for river and maritime transportation within Colombia. It is also the main economic center of the Atlántico department in Colombia. The city is the core of the Barranquilla metropolitan area, with a population of over 2 million, which also includes the municipalities of Soledad, Galapa, Malambo, and Puerto Colombia.\nBarranquilla was legally established as a town on April 7, 1813, although it dates from at least 1629. It grew into an important port, serving as a haven for immigrants from Europe, especially during and immediately following World War I and World War II, when waves of additional immigrants from the Middle East and Asia arrived. Barranquilla became Colombia's main port, and with its level of industrialization and modernity, it earned the nickname \"Colombia's Golden Gate\" (Spanish: La Puerta de Oro de Colombia). In the 1940s, Barranquilla was the second-largest city in Colombia and one of the most modern cities in the Caribbean and in South America; later local administrations, due to widespread corruption in their ranks, brought about a decline in the standard of living. As government investment increased in other Colombian cities, Barranquilla's national position was eclipsed.\nBarranquilla has hosted the 2018 Central American and Caribbean Games. The city is home to one of the most important folk and cultural festivals of Colombia, the Carnival of Barranquilla, which was declared a National Cultural Heritage by the Congress of Colombia in 2001 and recognized by UNESCO in 2003.\nErnesto Cortissoz International Airport, built in Barranquilla in 1919, was the first airport in South America. The city is served by domestic and international flights and was Avianca's first hub."
+        },
+        {
+          "article": "Barranquilla (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Barranquilla#Climate",
+          "text": "Barranquilla has a tropical savanna climate (Köppen Aw); it is hot all-year-round, with high levels of relative humidity. The average temperature is . Daytime temperatures usually remain around . Nevertheless, from late November to early April, trade winds more or less cool it to a more comfortable temperature during daylight. During the evening and through the night, temperature can change due to the strong winds it receives. Rainy seasons are from April to June and from August to November, when some streets flood producing \"arroyos\" (streams) that can be very dangerous, given the lack of appropriate rain drainage in some sectors of the city.\nThe average annual high temperature is around 33C and a low of 24C with precipitation averaging around 920mm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 122,
+      "leadWords": 360,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the river delta port, immigrants, and carnival but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, record/extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "barranquilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 716,
+    "band": 1,
+    "place_id": "gn-1562798",
+    "input": {
+      "place": {
+        "place_id": "gn-1562798",
+        "name": "Vinh",
+        "country": "Vietnam",
+        "subdivision": "Nghệ An Province",
+        "lat": 18.67337,
+        "lon": 105.69232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vinh",
+          "url": "https://en.wikipedia.org/wiki/Vinh",
+          "text": "Vinh (Vietnamese: [viŋ̟] ) is a former city located in the North Central Coast region of Vietnam and was the capital city of Nghệ An province, Vietnam. Vinh also is an economic and cultural center of the country's North-Central region. The city's name \"Vinh\" currently refers to a 166.22 square kilometres (64.18 sq mi) area, comprising an urban agglomeration of 6 wards, including Trường Vinh, Thành Vinh, Vinh Hưng, Vinh Phú, Vinh Lộc, and Cửa Lò.\nOn September 5, 2008, it was upgraded from a Grade-II city to a Grade-I city, becoming the fourth city to hold the status, after Haiphong, Đà Nẵng and Huế.\nVinh is located in the Southeast of Nghe An, alongside the Lam River and is located on the main North–South transportation route of Vietnam, making it accessible by highway, railroad, boat and air. The Vinh International Airport is served daily by four carriers: Vietnam Airlines, VietJet Air, Bamboo Airways and Jetstar Pacific. Vinh is a key point in the East–West economic corridor linking Myanmar, Thailand, Laos and Vietnam.\nThe city was bordered by Nghi Lộc district to the North and East, Hưng Nguyên district to the West, and Nghi Xuân district of Hà Tĩnh Province to the South across the Lam River. Vinh was about 300 kilometres (190 mi) South of Hanoi and 1,400 kilometres (870 mi) North of Ho Chi Minh City.\nIn 2025, the population of the city was 580669. The total area of the city was 166.22 square kilometres (64.18 sq mi), divided administratively into 24 wards and 9 communes.\nVinh ceased to exist as a municipal city on 1 July 2025, following the elimination of district level units in Vietnam."
+        },
+        {
+          "article": "Vinh (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Vinh#Climate",
+          "text": "Vinh has a tropical monsoon climate bordering closely on a humid subtropical climate (Köppen climate classification Am/Cwa) of the Central Coast."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 21,
+      "leadWords": 279,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Lam River location, transport routes, and city status changes, but states no climate mechanism, extreme, seasonal rhythm, or paradox; a non-redundant climate clue is not sourceable",
+      "priorMissing": "a place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "vinh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 721,
+    "band": 1,
+    "place_id": "gn-3688928",
+    "input": {
+      "place": {
+        "place_id": "gn-3688928",
+        "name": "Bello",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.33732,
+        "lon": -75.55795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bello, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Bello,_Antioquia",
+          "text": "Bello (Spanish pronunciation: [ˈbeʎo], [ˈbeʝo]) is a city and municipality in Antioquia Department, Colombia and a suburb of Medellín, the department capital. Bello is part of the Metropolitan Area of the Aburrá Valley in the department of Antioquia. It is bordered on the north by the municipality of San Pedro de los Milagros, on the east by the municipality of Copacabana, on the south by the municipality of Medellín and on the west by the municipalities of Medellín and San Jerónimo.\nIt is the center of the development in the north of the Aburrá Valley (Spanish: Valle de Aburrá), and as a member of the Metropolitan Area of Aburrá Valley, or AMVA (Spanish: Área Metropolitana del Valle de Aburrá), some public services are regulated for the Metropolitan Area. There are several nicknames for the municipality: Imperio del Cacique Niquia (Cacique Niquia's Empire), Cuna de Marco Fidel Suárez (\"Marco Fidel Suárez's cradle\"), \"Ciudad de los artistas\" (\"Artist's city\")."
+        },
+        {
+          "article": "Bello, Antioquia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bello,_Antioquia#Climate",
+          "text": "The city, being located in the tropics, does not experience climatic changes. The average rainfall is 1347 mm., The temperature is determined by climatic zones ranging from desert, through cold up to medium where he is the highest, which has an average temperature of 25.7 °C throughout the year, alternating between dry and wet periods and is cooled by winds that blow along the valley throughout the year.\nAdditionally the area receives trade winds that blow from the lower valleys of the Cauca River to the west and the Magdalena River to the east and middle, creating a dense layer of warm air, which causes the lower part of the town and some surrounding areas to increase in humidity and increase barometric temperature. As a result of the wind, northern municipalities such as Bello, Copacabana, Girardota and Barbosa are warmer than the Antioquia capital of Medellín, despite its proximity."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 149,
+      "leadWords": 157,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Aburrá Valley location, borders, and nicknames, but states no climate mechanism, extreme, seasonal rhythm, or paradox; a non-redundant climate clue is not sourceable",
+      "priorMissing": "a place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
