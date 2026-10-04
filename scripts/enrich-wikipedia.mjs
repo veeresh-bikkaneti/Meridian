@@ -490,6 +490,14 @@ export function extractHookSentence(extractText, placeName = "") {
       failReasons.push("fragment-start");
       continue;
     }
+    // Stripping a parenthesized SENTENCE from the middle of a fragment
+    // stitches its neighbours into a two-sentence hook ("…Sir Johannes
+    // Brand. (The name has since changed…) Sir Johannes Brand visited…"
+    // loses the parenthesis and fuses). A hook is exactly one sentence.
+    if (splitSentences(sentence).length !== 1) {
+      failReasons.push("multi-sentence");
+      continue;
+    }
     return { sentence };
   }
   return { rejected: failReasons.includes("too-long") ? "too-long" : failReasons[0] };

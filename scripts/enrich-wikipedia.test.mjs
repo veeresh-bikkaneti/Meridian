@@ -743,3 +743,27 @@ describe("bare-initial precision (tone-fix round 2 corrections)", () => {
     assert.ok(r.sentence?.includes("Andros"), `picked: ${r.sentence ?? r.rejected}`);
   });
 });
+
+describe("stitched-sentence guard (tone-fix round 3)", () => {
+  it("never returns a hook fused from two sentences by paren-stripping", () => {
+    const r = extractHookSentence(
+      "Frankfort is a small farming town in the Free State. " +
+        "It was founded in 1882 when the railroad arrived. " +
+        "The main street is 'Brand Street', named after the 4th president of the Orange Free State, Sir Johannes Brand. " +
+        "(The name has since changed to J.J Hadebe.) " +
+        "Sir Johannes Brand visited the town during 1883 and laid the cornerstone of the Dutch Reformed Church.",
+      "Frankfort",
+    );
+    assert.equal(r.sentence, "It was founded in 1882 when the railroad arrived.");
+  });
+  it("rejects a lone stitched candidate rather than fusing it (real Frankfort shape)", () => {
+    const r = extractHookSentence(
+      "Frankfort is a small farming town in the Free State. " +
+        "The main street is 'Brand Street', named after the 4th president of the Orange Free State, Sir Johannes Brand. " +
+        "(The name has since changed to J.J Hadebe.) " +
+        "Sir Johannes Brand visited the town during 1883 and laid the cornerstone of the Dutch Reformed Church.",
+      "Frankfort",
+    );
+    assert.equal(r.rejected, "multi-sentence");
+  });
+});
