@@ -79,6 +79,20 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     );
   });
 
+  it("scroll safety valve is keyboard-reachable", () => {
+    // max-h + overflow-y-auto creates a scroll region; without tabIndex a
+    // keyboard user can't reach a pathological name's tail.
+    const tabbed = source.match(/tabIndex=\{0\}/g) ?? [];
+    assert.ok(
+      tabbed.length >= 2,
+      "both place-name scroll regions need tabIndex={0}",
+    );
+    assert.ok(
+      /aria-label=\{`Question: \$\{placeName\}`\}/.test(source),
+      "scroll regions need an aria-label naming the question",
+    );
+  });
+
   it("takes an edition prop and renders the edition header", () => {
     assert.ok(
       /edition:\s*Edition/.test(source),

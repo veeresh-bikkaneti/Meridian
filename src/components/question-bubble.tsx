@@ -112,6 +112,8 @@ export function QuestionBubble({
                   <h2
                     className="mt-0.5 max-h-48 overflow-y-auto font-display text-xl leading-tight"
                     title={placeName}
+                    tabIndex={0}
+                    aria-label={`Question: ${placeName}`}
                   >
                     {placeName}
                   </h2>
@@ -126,6 +128,8 @@ export function QuestionBubble({
                 <p
                   className="max-h-48 overflow-y-auto font-display text-lg leading-tight"
                   title={placeName}
+                  tabIndex={0}
+                  aria-label={`Question: ${placeName}`}
                 >
                   {placeName}
                 </p>
