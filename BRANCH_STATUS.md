@@ -10,11 +10,11 @@ Screenshot: US country edition, header "UNITED STATES", title "West Cambridge/Ha
 
 ## Done
 - [x] Branch + worktree from origin/main (de9b7a8); AGENTS.md read
+- [x] Implemented: question-label.ts `bubbleHeaderText()`; question-bubble.tsx (line-clamp removed, max-h-48 + overflow-y-auto safety valve, edition header); game-app.tsx passes `edition={run.edition}`
+- [x] Unit: question-bubble.test.ts contract updated (6/6); bubbleHeaderText tests in question-label.test.ts (34/34)
+- [x] E2E: new `tests/e2e/question-card-header.spec.ts` — 5/5 green (West Cambridge full label, header Country/State/Globe, mid-session switch)
+- [x] Gates: tsc clean, npm test 948/948, lint-cards PASSED, build:pages green
 
 ## Pending
-- [ ] Implement: question-label.ts `bubbleHeaderText()` helper; question-bubble.tsx (remove line-clamp, add safety valve, edition header); game-app.tsx passes `edition`
-- [ ] Unit: update question-bubble.test.ts contract (no clamp, safety valve, edition prop); add bubbleHeaderText tests to question-label.test.ts
-- [ ] E2E: new spec — long-label no-truncation (West Cambridge/Harvard Square, Massachusetts); header correctness Globe/Country/State; mid-session edition switch
-- [ ] Gates: tsc, npm test, lint-cards, build:pages
-- [ ] Reviews: technical-architect + tone/docs subagents
+- [ ] Reviews: technical-architect + tone/docs subagents (running)
 - [ ] PR → merge (standing auth, only when green) → live verification
