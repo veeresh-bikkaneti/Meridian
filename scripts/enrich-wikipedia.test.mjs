@@ -12,6 +12,7 @@ import {
   splitSentences,
   stripParens,
   extractHookSentence,
+  hookRejection,
   validateHistory,
   pickArticle,
   haversineKm,
@@ -418,5 +419,229 @@ describe("validateHistory geography overlap (arch-M2)", () => {
       "Edna",
     );
     assert.ok(v.includes("restates-geography-blurb"), JSON.stringify(v));
+  });
+});
+
+describe("splitSentences middle initials (tone-fix task 1)", () => {
+  it("keeps a sentence naming a person by middle initial whole", () => {
+    assert.deepEqual(splitSentences("Named after Samuel D. Smith, a railroad magnate."), [
+      "Named after Samuel D. Smith, a railroad magnate.",
+    ]);
+  });
+  it("keeps the first sentence whole when a name ends it", () => {
+    const parts = splitSentences("Founded in 1887 by William H. Taft. It grew quickly.");
+    assert.equal(parts[0], "Founded in 1887 by William H. Taft.");
+    assert.equal(parts[1], "It grew quickly.");
+  });
+  it("rejoins a fragment that ends on a bare initial", () => {
+    const parts = splitSentences("It was named for Gov. Willie G. Blount in 1812. The town grew.");
+    assert.equal(parts[0], "It was named for Gov. Willie G. Blount in 1812.");
+  });
+  it("does not rejoin on multi-initial abbreviations like D.C.", () => {
+    const parts = splitSentences("He moved to Washington, D.C. It was 1990.");
+    assert.deepEqual(parts, ["He moved to Washington, D.C.", "It was 1990."]);
+  });
+  it("the picker returns the full naming sentence, not the truncated fragment", () => {
+    const r = extractHookSentence(
+      "Blountsville is a town in Alabama. It was named for Gov. Willie G. Blount, a former governor of Tennessee.",
+      "Blountsville",
+    );
+    assert.equal(
+      r.sentence,
+      "It was named for Gov. Willie G. Blount, a former governor of Tennessee.",
+    );
+  });
+});
+
+describe("census language rejection (tone-fix task 2)", () => {
+  it("rejects micropolitan statistical area hooks", () => {
+    const r = extractHookSentence(
+      "Laurel is a city in Mississippi. It is home to many commuters and is the principal city of a micropolitan statistical area.",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects CDP hooks", () => {
+    const r = extractHookSentence("The CDP is home to a historic lighthouse and a long pier.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects metropolitan area hooks even with a concrete tail", () => {
+    const r = extractHookSentence(
+      "It is part of the Sacramento metropolitan area and home to a gold-rush museum.",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects combined statistical area hooks", () => {
+    const r = extractHookSentence(
+      "The town, which is part of the Raleigh-Durham combined statistical area, was named after industrialist Julian Carr.",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("re-picks past a census sentence to a real hook", () => {
+    const r = extractHookSentence(
+      "Edna is a city in Texas. It is home to many commuters from the Houston metropolitan area. " +
+        "It was founded in 1882 when the railroad arrived.",
+    );
+    assert.equal(r.sentence, "It was founded in 1882 when the railroad arrived.");
+  });
+  it("validateHistory bans census geography too", () => {
+    const v = validateHistory(
+      "It is the principal city of the Jonesboro metropolitan area.",
+      "It is the principal city of the Jonesboro metropolitan area.",
+      "Jonesboro is a city in Arkansas, the United States.",
+    );
+    assert.ok(v.some((m) => m.startsWith("banned-pattern")), JSON.stringify(v));
+  });
+});
+
+describe("prison and present-day conflict rejection (tone-fix task 3)", () => {
+  it("rejects a prison lead (Warren, ME shape)", () => {
+    const r = extractHookSentence(
+      "Warren is a town in Knox County, Maine. " +
+        "It includes the villages of East Warren and South Warren, the latter home to the Maine State Prison.",
+      "Warren",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects an ongoing-war lead and re-picks a safe sentence (Hirske shape)", () => {
+    const r = extractHookSentence(
+      "Hirske is a city in Ukraine. " +
+        "During the Russo-Ukrainian War, it has been a site of protracted violence. " +
+        "It was founded in 1938 by miners who opened the Hirsko-Ivanivsk mine.",
+      "Hirske",
+    );
+    assert.ok(r.sentence?.includes("1938"), `picked: ${r.sentence ?? r.rejected}`);
+    assert.ok(!/violence/i.test(r.sentence ?? ""));
+  });
+  it("keeps historic war storytelling (Civil War founding)", () => {
+    const r = extractHookSentence(
+      "Leeds is a city in Alabama. Leeds was founded in 1877, during the final years of the post-Civil War Reconstruction Era.",
+      "Leeds",
+    );
+    assert.equal(
+      r.sentence,
+      "Leeds was founded in 1877, during the final years of the post-Civil War Reconstruction Era.",
+    );
+  });
+  it("keeps a past-century invasion told as history (Valletta shape)", () => {
+    const r = extractHookSentence(
+      "Valletta is the capital of Malta. The city was named after Jean Parisot de Valette, who defended the island against an Ottoman invasion during the Great Siege of Malta.",
+      "Valletta",
+    );
+    assert.ok(r.sentence?.includes("named after"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+  it("keeps a prison out via hookRejection reasons", () => {
+    assert.equal(hookRejection("It is the site of the state prison."), "unsafe-prison");
+    assert.equal(hookRejection("It was founded in 1882 when the railroad arrived."), null);
+  });
+});
+
+describe("definitional rejection (tone-fix task 4)", () => {
+  it("rejects the Jadcherla shape verbatim", () => {
+    const r = extractHookSentence(
+      "Jadcherla is a census town in Telangana. It is a historical town and is known for its cultural heritage.",
+      "Jadcherla",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects 'known for its natural environment' (Viikki shape)", () => {
+    const r = extractHookSentence("Viikki is a neighbourhood in Helsinki. Viikki is known for its natural environment.", "Viikki");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("keeps a concrete known-for hook", () => {
+    const r = extractHookSentence(
+      "Gordonville is a village. It is known for its covered bridges and maple syrup.",
+      "Gordonville",
+    );
+    assert.ok(r.sentence?.includes("covered bridges"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+});
+
+describe("pronoun guard (tone-fix task 5)", () => {
+  it("rejects a He-opener whose antecedent is in another sentence", () => {
+    const r = extractHookSentence(
+      "John Smith founded the town in 1830. He was the first mayor of the town.",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects a They-opener", () => {
+    const r = extractHookSentence("The two hamlets share a festival. They are famous for their parades and music.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects an Its-opener", () => {
+    const r = extractHookSentence("Its historic district was the site of the first county fair in the state.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects 'earn this designation' (Bon Accord shape)", () => {
+    const r = extractHookSentence(
+      "Bon Accord is a town in Alberta. It was the first community in Canada and eleventh in the world to earn this designation.",
+      "Bon Accord",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("keeps an It-opener resolved by the card's own subject", () => {
+    const r = extractHookSentence(
+      "Edna is a city in Texas. It was named after a railroad official's daughter.",
+      "Edna",
+    );
+    assert.equal(r.sentence, "It was named after a railroad official's daughter.");
+  });
+});
+
+describe("picker fall-through (tone-fix: usable-whole candidates)", () => {
+  it("never returns a candidate ending on a bare initial", () => {
+    // The B.C. Day sentence is whole once the splitter rejoins the chain,
+    // so it wins on position; what must never happen is a hook that stops
+    // at "…every B.C."
+    const r = extractHookSentence(
+      "Coombs is a village in British Columbia. " +
+        "Coombs is known for its Old Country Market and the fair held every B.C. Day in August. " +
+        "It is home to a butterfly garden.",
+      "Coombs",
+    );
+    assert.equal(
+      r.sentence,
+      "Coombs is known for its Old Country Market and the fair held every B.C. Day in August.",
+    );
+    assert.ok(!/\b[A-Z]\.$/.test(r.sentence ?? ""));
+  });
+  it("rejects with ends-in-initial when the only candidate trails off", () => {
+    const r = extractHookSentence(
+      "El Centro is a city in California. The city was founded in 1906 by W. F. Holt and C.A.",
+      "El Centro",
+    );
+    assert.equal(r.rejected, "ends-in-initial");
+  });
+  it("falls through an over-long best candidate to a shorter hook", () => {
+    const long =
+      "The town was named in 1882 for Samuel W. Fordyce, a railroad executive who had served as an officer in the Union Army during the Civil War, who later became president of several railroad companies across the American South and Southwest, and who personally surveyed the route through the county in the winter of 1881.";
+    assert.ok(long.length > 240);
+    const r = extractHookSentence(`Fordyce is a city in Arkansas. ${long} It was founded in 1882 when the railroad arrived.`, "Fordyce");
+    assert.equal(r.sentence, "It was founded in 1882 when the railroad arrived.");
+  });
+  it("keeps a hook whose definitional opener carries a real naming story", () => {
+    const r = extractHookSentence(
+      "Jalalpur is a city in Punjab. Jalalpur is a historical city, and it was named after a famous Sufi saint.",
+      "Jalalpur",
+    );
+    assert.ok(r.sentence?.includes("named after"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+});
+
+describe("splitSentences initial chains (tone-fix task 1, cont.)", () => {
+  it("keeps a multi-initial name whole (C.A. Barker)", () => {
+    const parts = splitSentences(
+      "The city was founded in 1906 by W. F. Holt and C.A. Barker, who purchased the land.",
+    );
+    assert.deepEqual(parts, [
+      "The city was founded in 1906 by W. F. Holt and C.A. Barker, who purchased the land.",
+    ]);
+  });
+  it("keeps a province abbreviation mid-phrase whole (B.C. Day)", () => {
+    const parts = splitSentences("The fair is held every B.C. Day in August. It draws crowds.");
+    assert.deepEqual(parts, ["The fair is held every B.C. Day in August.", "It draws crowds."]);
+  });
+  it("still splits a true boundary after an abbreviation chain", () => {
+    const parts = splitSentences("He moved to Washington, D.C. The city grew quickly.");
+    assert.deepEqual(parts, ["He moved to Washington, D.C.", "The city grew quickly."]);
   });
 });
