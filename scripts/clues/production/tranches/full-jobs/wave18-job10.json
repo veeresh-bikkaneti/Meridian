@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 3610,
+    "attempt": 3581,
+    "place_id": "gn-2787387",
+    "input": {
+      "place": {
+        "place_id": "gn-2787387",
+        "name": "Saint-Josse-ten-Noode",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.8538,
+        "lon": 4.37282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Josse-ten-Noode",
+          "url": "https://en.wikipedia.org/wiki/Saint-Josse-ten-Noode",
+          "text": "Saint-Josse-ten-Noode (French, pronounced [sɛ̃ ʒɔs tœn nod] ) or Sint-Joost-ten-Node (Dutch, pronounced [sɪɲˌtɕoːstɛˈnoːdə] ), often simply called Saint-Josse in French or Sint-Joost in Dutch, is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the north-eastern part of the region, it is bordered by the City of Brussels and Schaerbeek.\nAs of 1 January 2026, the municipality had a population of 27,003. The total area is 1.16 km2 (0.45 sq mi), which gives a population density of 23,278/km2 (60,290/sq mi). From a total of 581 municipalities in Belgium, Saint-Josse is both the smallest in area size and the most densely populated. Like all municipalities in Brussels, it is officially bilingual (French–Dutch)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "saint josse ten noode",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "josse",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noode",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3611,
+    "attempt": 3582,
+    "place_id": "gn-2926271",
+    "input": {
+      "place": {
+        "place_id": "gn-2926271",
+        "name": "Flensburg",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 54.78805,
+        "lon": 9.43722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flensburg",
+          "url": "https://en.wikipedia.org/wiki/Flensburg",
+          "text": "Flensburg (German: [ˈflɛnsbʊɐ̯k] ; Danish and Low Saxon: Flensborg; South Jutlandic: Flensborre; North Frisian: Flansborj, Flensborag) is a town in the German state of Schleswig-Holstein. After Kiel and Lübeck, it is the third-largest urban area in Schleswig-Holstein. Flensburg's city centre lies about 7 km (4 mi) from the Danish border.\nFlensburg was founded around the 12th century and developed rapidly during the Middle Ages as a major port for trade between the Kingdom of Denmark and the Hanseatic League. In the 16th century, it became part of the Danish Kingdom and remained under Danish rule until the early 19th century. Following the Danish-Prussian War of 1864, Flensburg became part of the Kingdom of Prussia. During the 20th century, the town transformed into a centre for both commerce and industry. It served as the seat of the Flensburg Government, the final administrative (and abortive) form of Nazi Germany, from 2 May 1945 until its dissolution in early June 1945.\nToday, Flensburg is known for its maritime heritage, its role as a border town with Denmark, and its well-preserved historic architecture. It is the cultural and organisational centre of the Danish minority of Southern Schleswig."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "flensburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3612,
+    "attempt": 3583,
+    "place_id": "gn-3016702",
+    "input": {
+      "place": {
+        "place_id": "gn-3016702",
+        "name": "Gap",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 44.55858,
+        "lon": 6.07868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gap, Hautes-Alpes",
+          "url": "https://en.wikipedia.org/wiki/Gap,_Hautes-Alpes",
+          "text": "Gap (French pronunciation: [ɡap], Occitan: [ˈɡap]) is the prefecture of the department of Hautes-Alpes, in the region of Provence-Alpes-Côte d'Azur, southern France. With a population of about 41,000, it is the most populated city in Hautes-Alpes. At a height of 750 metres above sea level, to the south of the Écrins Massif, it is also France's highest prefecture.\nTogether with other Alpine towns, Gap engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. Gap was awarded Alpine Town of the Year in 2002. In 2013 Gap was named the sportiest city in France by the national sports newspaper L'Équipe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "gap",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3613,
+    "attempt": 3584,
+    "place_id": "gn-3033791",
+    "input": {
+      "place": {
+        "place_id": "gn-3033791",
+        "name": "Belfort",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.64218,
+        "lon": 6.85385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belfort",
+          "url": "https://en.wikipedia.org/wiki/Belfort",
+          "text": "Belfort (French pronunciation: [bɛlfɔʁ] ; archaic German: Beffert, Beffort; Frainc-Comtou: Béfoûe) is a city in northeastern France, situated approximately 25 km (16 mi) from the Swiss border. It is the prefecture of the Territoire de Belfort.\nBelfort is 400 km (250 mi) from Paris and 55 km (34 mi) from Basel. The residents of the city are called \"Belfortains\". The city is located on the river Savoureuse, on a strategically important natural route between the Rhine and the Rhône – the Belfort Gap (Trouée de Belfort) or Burgundian Gate (Porte de Bourgogne). It is located approximately 16 km (10 mi) south from the base of the Ballon d'Alsace mountain range, source of the Savoureuse. The city of Belfort has 45,646 inhabitants (2022), and is the centre of a larger functional area (metropolitan area) with 131,807 inhabitants (2022), between the larger metropolitan areas of Mulhouse and Montbéliard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "belfort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3614,
+    "attempt": 3585,
+    "place_id": "gn-3080866",
+    "input": {
+      "place": {
+        "place_id": "gn-3080866",
+        "name": "Zakopane",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.29899,
+        "lon": 19.94885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zakopane",
+          "url": "https://en.wikipedia.org/wiki/Zakopane",
+          "text": "Zakopane (Podhale Goral: Zokopane) is a town in the south of Poland, in the southern part of the Podhale region at the foot of the Tatra Mountains. From 1975 to 1998, it was part of Nowy Sącz Voivodeship; since 1999, it has been part of Lesser Poland Voivodeship. As of 2017, its population was 27,266. Zakopane is a centre of Goral culture and is often referred to as \"the winter capital of Poland\". It is a popular tourist destination for many types of mountain and winter activities such as skiing, trekking, mountaineering and various forms of climbing.\nZakopane lies near Poland's border with Slovakia, in a valley between the Tatra Mountains and Gubałówka Hill. It is connected by rail and road to the provincial capital, Kraków. Zakopane lies 800–1,100 metres (2,600–3,600 ft) above sea level and centres on the intersection of its Krupówki and Kościuszko Streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "zakopane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3615,
+    "attempt": 3586,
+    "place_id": "gn-3084074",
+    "input": {
+      "place": {
+        "place_id": "gn-3084074",
+        "name": "Świecie",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 53.40953,
+        "lon": 18.44742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świecie",
+          "url": "https://en.wikipedia.org/wiki/Świecie",
+          "text": "Świecie (Polish: [ˈɕfjɛt͡ɕɛ] ; Kashubian: Swiecé; German: Schwetz an der Weichsel) is a town in northern Poland with 24,841 inhabitants (2023), capital of Świecie County in the Kuyavian-Pomeranian Voivodeship. It is located within the ethnocultural region of Kociewie in the historic region of Pomerania.\nFounded in the Middle Ages, Świecie is a former royal town of Poland, which prospered as a trade center due to its location at the intersection of important trade routes. The town features heritage sites in a variety of styles, including Gothic, Renaissance, Baroque, Neo-Renaissance and Neo-Gothic, a preserved market square, and the region's sole Museum of Firefighting. Świecie is home to one of the oldest psychiatric hospitals in Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "swiecie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3616,
+    "attempt": 3587,
+    "place_id": "gn-3090436",
+    "input": {
+      "place": {
+        "place_id": "gn-3090436",
+        "name": "Nysa",
+        "country": "Poland",
+        "subdivision": "Opole Voivodeship",
+        "lat": 50.47379,
+        "lon": 17.33437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nysa, Poland",
+          "url": "https://en.wikipedia.org/wiki/Nysa,_Poland",
+          "text": "Nysa [ˈnɨsa]  (German: Neisse or Neiße) is a town in southern Poland on the Nysa Kłodzka river, situated in the Opole Voivodeship. With 43,849 inhabitants (2019), it is the capital of Nysa County. It comprises the urban portion of the surrounding Gmina Nysa. Historically the town was part of Upper Silesia.\nOne of the oldest cities in Silesia, most possibly founded in the 10th century, Nysa was historically one of the leading cities in the region, and from 1290 to 1742 the capital of an episcopally-ruled eponymous duchy. In early modern times it became a center of printing and education, place of study of several notable individuals, including King of Poland Michał Korybut Wiśniowiecki. In the 19th and 20th centuries it was the location of German-operated prisoner-of-war camps for soldiers of various nationalities, including future leader of France, Charles de Gaulle. \nIn communist times it was best known for the ZSD plant founded in 1952, where most notably between 1959 and 1994 the ZSD Nysa van was assembled.\nNysa contains several notable heritage sights in Gothic, Renaissance and Baroque styles, most notably the Basilica of St. James and St. Agnes, a Historic Monument of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "nysa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3618,
+    "attempt": 3588,
+    "place_id": "gn-3110519",
+    "input": {
+      "place": {
+        "place_id": "gn-3110519",
+        "name": "Sant Joan Despí",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.36718,
+        "lon": 2.0574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Joan Despí",
+          "url": "https://en.wikipedia.org/wiki/Sant_Joan_Despí",
+          "text": "Sant Joan Despí (Old Catalan for 'Saint John of the Pine'; Catalan pronunciation: [ˈsaɲ ʒuˈan dəsˈpi]) is a city and municipality located in the Baix Llobregat area (Barcelona province in Catalonia, Spain). It is situated on the left bank of the Llobregat river. Es is a dialectal form of the masculine article el, hence Despí would be rendered Del pi in standard Catalan.\nSince 2006, the town has been the home of the FC Barcelona training ground and youth academy, the Ciutat Esportiva Joan Gamper; in 2019, the club's Johan Cruyff Stadium opened adjacent to the training facility, which is home to FC Barcelona Femení, FC Barcelona Atlètic, and Juvenil A (U19 A team)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sant joan despi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "despi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3619,
+    "attempt": 3589,
+    "place_id": "gn-3574724",
+    "input": {
+      "place": {
+        "place_id": "gn-3574724",
+        "name": "Couva",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Couva-Tabaquite-Talparo",
+        "lat": 10.42248,
+        "lon": -61.46748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Couva",
+          "url": "https://en.wikipedia.org/wiki/Couva",
+          "text": "Couva is a town in west-central Trinidad, south of Port of Spain and Chaguanas and north of San Fernando and Point Fortin. It is the capital and main urban centre of Couva–Tabaquite–Talparo, and the Greater Couva area includes the Point Lisas industrial estate and the port of Point Lisas. It is one of the fastest-growing towns in the country. Couva's southern boundary is at the village of California and Point Lisas, and to the north Couva stretches to McBean (both on the Trinidad Southern Main Road). To the east of Couva is Preysal. To the west of Couva is the road to Waterloo and Carli Bay, which are located on the Gulf of Paria. Couva was part of the Caroni County. Couva is considered a major power base for the United National Congress, whose headquarters was previously located here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "couva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3620,
+    "attempt": 3590,
+    "place_id": "gn-3690465",
+    "input": {
+      "place": {
+        "place_id": "gn-3690465",
+        "name": "Aguachica",
+        "country": "Colombia",
+        "subdivision": "Cesar Department",
+        "lat": 8.30844,
+        "lon": -73.6166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguachica",
+          "url": "https://en.wikipedia.org/wiki/Aguachica",
+          "text": "Aguachica (Spanish pronunciation: [aɣwaˈtʃika]) is a city and municipality in the southern region of the Cesar Department, Colombia, located between the inter-Andean valley of Magdalena Medio and the Motilones. It is the second most populated municipality in the department and an important livestock and commercial center in the southeast of the Colombian Caribbean.\nIn terms of transportation infrastructure, its geographically strategic position connects the Colombian Caribbean with the Santanderes through the Ruta del Sol, and is also a key communication point for the Catatumbo region via National Route 70. It also has air transportation through the Hacaritama Airport, a railway system, and in parallel with the Magdalena River waterway through the port of Gamarra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "aguachica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3621,
+    "attempt": 3591,
+    "place_id": "gn-3832694",
+    "input": {
+      "place": {
+        "place_id": "gn-3832694",
+        "name": "Villa María",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -32.40751,
+        "lon": -63.24016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa María, Córdoba",
+          "url": "https://en.wikipedia.org/wiki/Villa_María,_Córdoba",
+          "text": "Villa María  is a city in Córdoba Province, Argentina, and the head town of the General San Martín Department. It is located in the center of rich agricultural land. The area leads the country in production of milk . The city has a population of 72,162 per the 2001 census [INDEC] (Greater Villa María: 119,000), which makes it the third largest city in the province.\nThe city lies 137 km southeast from the provincial capital, on the left bank of the Tercero River, near the geographical center of Argentina, at the intersection of National Routes 9 and 158, and right next to the Cordoba-Buenos Aires Highway, one of the nation's most important communication arteries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "villa maria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3622,
+    "attempt": 3592,
+    "place_id": "gn-3919998",
+    "input": {
+      "place": {
+        "place_id": "gn-3919998",
+        "name": "Cobija",
+        "country": "Bolivia",
+        "subdivision": "Pando",
+        "lat": -11.02671,
+        "lon": -68.76918
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cobija",
+          "url": "https://en.wikipedia.org/wiki/Cobija",
+          "text": "Cobija is a city in Bolivia, capital of the department of Pando, and is located about 600 km (373 mi.) north of La Paz in the Amazon Basin on the border with Brazil. Cobija lies on the banks of the Rio Acre across from the Brazilian city of Brasiléia. Cobija lies at an elevation of ca. 280 m (920 ft.) above sea level and has a tropical and rainy climate.\nCobija has approximately 55,000 inhabitants, is the seat of a university and capital of the Bolivian Pando Department. Cobija has two airports and is connected by one road to El Choro in the Beni Department, which is not always passable during the rainy season. When the rain allows it, Cobija is connected to the rest of Bolivia also via road. Cobija is connected to Brazil by two bridges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "cobija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3623,
+    "attempt": 3593,
+    "place_id": "gn-3931470",
+    "input": {
+      "place": {
+        "place_id": "gn-3931470",
+        "name": "Puerto Maldonado",
+        "country": "Peru",
+        "subdivision": "Madre de Dios",
+        "lat": -12.58946,
+        "lon": -69.19948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Maldonado",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Maldonado",
+          "text": "Puerto Maldonado (Spanish pronunciation: [ˈpweɾto maldoˈnaðo] ) is a city in southeastern Peru in the Amazon rainforest 55 kilometres (34 mi) west of the Bolivian border, located at the confluence of the Tambopata and Madre de Dios rivers. The latter river joins the Madeira River as a tributary of the Amazon. This city is the capital of the Department of Madre de Dios.\nNearby are the Manu National Park, Tambopata National Reserve, and Bahuaja-Sonene National Park, which have been established to protect natural resources. These are some of the most pristine primary rain forests in the world. They include several oxbow lakes and clay licks, where hundreds of birds, including macaws, feed on clay. Among the indigenous peoples in this area are the Machiguenga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "puerto maldonado",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maldonado",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3624,
+    "attempt": 3594,
+    "place_id": "gn-4126226",
+    "input": {
+      "place": {
+        "place_id": "gn-4126226",
+        "name": "Pine Bluff",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 34.22843,
+        "lon": -92.0032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pine Bluff, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Pine_Bluff,_Arkansas",
+          "text": "Pine Bluff is a city in Jefferson County, Arkansas, United States, and its county seat. The population was 41,253 at the 2020 census, making it the tenth-most populous city in Arkansas.\nPine Bluff is situated in the southeast section of the Arkansas Delta and straddles the Arkansas Timberlands region to its west. Its topography is flat with wide expanses of farmland, similar to other places in the Delta Lowlands. Pine Bluff has numerous creeks, streams, and bayous, including Bayou Bartholomew, the longest bayou in the world and the second most ecologically diverse stream in the United States. Large bodies of water include Lake Pine Bluff, Lake Langhofer (Slack Water Harbor), and the Arkansas River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "pine bluff",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pine",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bluff",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3625,
+    "attempt": 3595,
+    "place_id": "gn-4155995",
+    "input": {
+      "place": {
+        "place_id": "gn-4155995",
+        "name": "Fort Myers",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.62168,
+        "lon": -81.84059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Myers, Florida",
+          "url": "https://en.wikipedia.org/wiki/Fort_Myers,_Florida",
+          "text": "Fort Myers (or Ft. Myers) is a city in and the county seat of Lee County, Florida, United States. As of the 2020 census, the population was 86,395; it was estimated to have grown to 101,581 in 2025, making it the 25th-most populous city in Florida. Together with the larger and more residential city of Cape Coral, it anchors the Cape Coral–Fort Myers metropolitan statistical area, which encompasses Lee County and has an estimated population of 875,607 as of 2025.\nFort Myers is a gateway to the Southwest Florida region and a major tourist destination within the state. The winter estates of Thomas Edison (\"Seminole Lodge\") and Henry Ford (\"The Mangoes\") are major attractions. The city takes its name from a local former fort that was built during the Seminole Wars. The fort took its name from Colonel Abraham Myers in 1850; Myers served in the United States Army, mostly in the Quartermaster Department, at various posts from 1833 to 1861, and was the quartermaster general of the Confederate States Army from 1861 to 1864.\nCentennial Park downtown along the Caloosahatchee River, the IMAG History & Science Center, Calusa Nature Center and Planetarium, and other historical sites are among the attractions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "fort myers",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "myers",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3626,
+    "attempt": 3596,
+    "place_id": "gn-4568149",
+    "input": {
+      "place": {
+        "place_id": "gn-4568149",
+        "name": "San Lorenzo",
+        "country": "Puerto Rico",
+        "subdivision": "San Lorenzo",
+        "lat": 18.1894,
+        "lon": -65.961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Lorenzo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/San_Lorenzo,_Puerto_Rico",
+          "text": "San Lorenzo (Spanish pronunciation: [san loˈɾenso], locally [ˌsaŋ loˈɾeŋso]; Spanish for \"Saint Lawrence\") is a town and municipality of Puerto Rico located in the eastern central region, north of Patillas and Yabucoa; south of Gurabo; east of Caguas and Cayey; and west of Juncos and Las Piedras. San Lorenzo is spread over twelve barrios and San Lorenzo Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nSan Lorenzo is called \"The town of the Samaritans\" and \"Land of Legends.\" The patron of the municipality is Nuestra Señora de las Mercedes (Our Lady of Mercedes). The surrounding areas produce tobacco and sugar cane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "san lorenzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lorenzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3627,
+    "attempt": 3597,
+    "place_id": "gn-4568490",
+    "input": {
+      "place": {
+        "place_id": "gn-4568490",
+        "name": "Utuado",
+        "country": "Puerto Rico",
+        "subdivision": "Utuado",
+        "lat": 18.26551,
+        "lon": -66.70045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Utuado, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Utuado,_Puerto_Rico",
+          "text": "Utuado (Spanish pronunciation: [uˈtwaðo]) is a town and municipality of Puerto Rico located in the central mountainous region of the island known as the Cordillera Central. It is located north of Adjuntas and Ponce; south of Hatillo and Arecibo; east of Lares; and west of Ciales and Jayuya. It is the third-largest municipality in land area in Puerto Rico (after Arecibo and Ponce). According to the 2020 US Census, the municipality has a population of 28,287 spread over 24 barrios and Utuado pueblo (the downtown area and the administrative center of the city).\nUtuado is the main municipality of the Utuado micropolitan statistical area and is part of the San Juan-Caguas-Fajardo Combined Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "utuado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3628,
+    "attempt": 3598,
+    "place_id": "gn-5350159",
+    "input": {
+      "place": {
+        "place_id": "gn-5350159",
+        "name": "Foster City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.55855,
+        "lon": -122.27108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foster City, California",
+          "url": "https://en.wikipedia.org/wiki/Foster_City,_California",
+          "text": "Foster City is a master-planned city located in San Mateo County, California, United States. Foster City is sometimes considered to be part of Silicon Valley for its local industry and its proximity to Silicon Valley cities. There are many notable companies headquartered in Foster City, such as Gilead Sciences, Zoox, and Replit. Visa and Sledgehammer Games were formerly headquartered in Foster City.\nThe 2020 census put the population at 33,805, an increase of more than 10% over the 2010 census figure of 30,567.\nFoster City contains at least 10 bridges of which seven cross its lagoon, two go across Highway 92 and one is the San Mateo-Hayward Bridge which crosses the San Francisco Bay.\nFoster City is one of the United States’ safest cities, with an average of one murder per decade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "foster city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "foster",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3629,
+    "attempt": 3599,
+    "place_id": "gn-5392323",
+    "input": {
+      "place": {
+        "place_id": "gn-5392323",
+        "name": "San Luis Obispo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.28275,
+        "lon": -120.65962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Luis Obispo, California",
+          "url": "https://en.wikipedia.org/wiki/San_Luis_Obispo,_California",
+          "text": "San Luis Obispo (Spanish for 'St. Louis the Bishop';  san LOO-iss ə-BISS-poh; Spanish: [san ˈlwis oˈβispo]; Obispeño: tiłhini) is a city in and the county seat of San Luis Obispo County, California, United States. Located on the Central Coast of California, San Luis Obispo is roughly halfway between the San Francisco Bay Area in the north and Greater Los Angeles in the south. The population was 47,063 at the 2020 census.\nSan Luis Obispo was founded by the Spanish in 1772, when Saint Junípero Serra established Mission San Luis Obispo de Tolosa. The town grew steadily through the Mexican period before a rapid expansion of San Luis Obispo following the American Conquest of California. San Luis Obispo is a popular tourist destination, known for its historic architecture, vineyards, and hospitality, as well as for being home to California Polytechnic State University, San Luis Obispo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "san luis obispo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "obispo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3630,
+    "attempt": 3600,
+    "place_id": "gn-699839",
+    "input": {
+      "place": {
+        "place_id": "gn-699839",
+        "name": "Nova Kakhovka",
+        "country": "Ukraine",
+        "subdivision": "Kherson",
+        "lat": 46.75966,
+        "lon": 33.35591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nova Kakhovka",
+          "url": "https://en.wikipedia.org/wiki/Nova_Kakhovka",
+          "text": "Nova Kakhovka (Ukrainian: Нова Каховка, IPA: [noˈwɑ kɐˈxɔu̯kɐ]), or Novaya Kakhovka (Russian: Новая Каховка) is a city in Kakhovka Raion, Kherson Oblast, southern Ukraine. Nova Kakhovka has been under Russian occupation since February 2022. Its estimated population in 2022 was 44,427.\nNova Kakhovka is an important port city on the east bank of the Dnieper River, where it meets the downstream end of the Kakhovka Reservoir. It forms one abutment of the Kakhovskyi Bridge over the hydroelectric Kakhovka Dam; the other is located in Beryslav. The city lies immediately downstream of the source of the North Crimean Canal that irrigates the Crimean Peninsula and can be said to control the seat of the channel.\nOn 6 June 2023, the dam was deliberately destroyed, causing catastrophic drainage of the reservoir. At the time, the dam was under the control of the Russian military, which had seized it in the early days of the Russian invasion of Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "nova kakhovka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kakhovka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

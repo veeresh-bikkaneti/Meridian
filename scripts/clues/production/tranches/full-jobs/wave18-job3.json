@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 3468,
+    "attempt": 3441,
+    "place_id": "gn-3995017",
+    "input": {
+      "place": {
+        "place_id": "gn-3995017",
+        "name": "Navolato",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 24.7668,
+        "lon": -107.69768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Navolato, Sinaloa",
+          "url": "https://en.wikipedia.org/wiki/Navolato,_Sinaloa",
+          "text": "Navolato is a city in the Mexican state of Sinaloa. It is located in the central coastal part of the state bordering the Gulf of California and serves as the municipal seat for the surrounding municipality of the same name.\nThe municipality reported 135,603 inhabitants in the 2010 census, while the city reported 29,153 inhabitants. The city is located about 25 kilometers west of Culiacán and can be reached by road. The municipality is 2,285 km2 (882 sq mi) in area and includes many smaller communities in addition to the city of Navolato; the largest of these are the towns of Campo Gobierno, and General Ángel Flores (La Palma).\nThe name Navolato comes from the native Nahuatl language. The people in Navolato produce sugarcane, maize, and other agricultural products. Nearby tourist destinations are Altata, Nuevo Altata, and El Tambor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "navolato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3469,
+    "attempt": 3442,
+    "place_id": "gn-4111410",
+    "input": {
+      "place": {
+        "place_id": "gn-4111410",
+        "name": "Fort Smith",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 35.38592,
+        "lon": -94.39855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Smith, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Fort_Smith,_Arkansas",
+          "text": "Fort Smith is the third-most populous city in Arkansas, United States, and one of the two county seats of Sebastian County. As of the 2020 census, the population was 89,142. It is the principal city of the Fort Smith, Arkansas–Oklahoma Metropolitan Statistical Area, a region of 298,592 residents that encompasses the Arkansas counties of Crawford, Franklin, and Sebastian, and the Oklahoma counties of LeFlore and Sequoyah.\nFort Smith lies on the Arkansas–Oklahoma state border, situated in the Arkansas Valley at the confluence of the Arkansas and Poteau rivers, also known as Belle Point. Fort Smith was established as a western frontier military post in 1817, when it was also a center of fur trading. The city developed there. Strategically located between the Ozarks to the north and the Ouachita Mountains to the south, it became well known as a base for migrants' settling of the \"Wild West\" and for its law enforcement heritage, as it was the hub for white law enforcement of the adjacent Indian Territory.\nThe city government is led by Mayor George McGill (D), who in 2018 was elected as the city's mayor (the first African American in its history), and a city Board of Directors composed of three members elected at-large and four members elected by ward."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "fort smith",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "smith",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3470,
+    "attempt": 3443,
+    "place_id": "gn-4699575",
+    "input": {
+      "place": {
+        "place_id": "gn-4699575",
+        "name": "Hurst",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.82346,
+        "lon": -97.17057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hurst, Texas",
+          "url": "https://en.wikipedia.org/wiki/Hurst,_Texas",
+          "text": "Hurst is a city in the U.S. state of Texas located in the densely populated portion of northeastern Tarrant County and is part of the Dallas–Fort Worth metropolitan area. It is considered a Dallas and Fort Worth suburb and is part of the Mid-Cities region. It is 13 miles from the Dallas/Fort Worth International Airport. As of the 2020 census, it had a population of 40,413.\nThe city of Hurst is surrounded by other communities including Bedford, Euless, Fort Worth, Richland Hills, North Richland Hills, Grapevine, and Colleyville. Hurst's education system is sponsored and served by the Hurst-Euless-Bedford Independent School District, while other school districts Grapevine-Colleyville ISD and Birdville ISD serve the far north and far west portions.\nPlaces of importance inside Hurst include the Tarrant County College campus that was built in 1961, the newly constructed Tarrant County Northeast Courthouse, the headquarters of Bell Helicopter (considered to be in the city limits of Fort Worth), the Hurst/Bell Station (opened in September 2000) that is jointly owned by the Dallas Area Rapid Transit and the Trinity Railway Express. The city's premier shopping center, North East Mall that was ranked the #1 Shopping Mall in Tarrant County and is the third largest mall in the state of Texas. The North East Mall opened in March 1972 (sources vary), is owned by the Indianapolis-based Simon Property Group. Hurst's only cinema complex, the North East Cinemark Rave 18 opened in 2004.\nRespectively in 2012, Hurst was ranked at #48 as one of the Best Dallas Suburbs according to D Magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "hurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3471,
+    "attempt": 3444,
+    "place_id": "gn-4908237",
+    "input": {
+      "place": {
+        "place_id": "gn-4908237",
+        "name": "Round Lake Beach",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.37169,
+        "lon": -88.09008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Round Lake Beach, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Round_Lake_Beach,_Illinois",
+          "text": "Round Lake Beach is a northern suburb of Chicago in Lake County, Illinois, United States. Per the 2020 census, the population was 27,252.\nThe United States Census Bureau defines an urban area of northwest Chicago-area suburbs that are separated from Chicago's urban area, with Round Lake Beach as the principal city: the Round Lake Beach–McHenry–Grayslake, IL–WI urban area had a population of 261,835 as of the 2020 census, making it the 155th largest in the United States. The village, along with the rest of the Round Lake area, has a significant Mexican population with many Latino businesses, restaurants, and shops throughout the town. Round Lake Beach has the second highest Latino population in Lake County, after nearby Waukegan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "round lake beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "round",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3472,
+    "attempt": 3445,
+    "place_id": "gn-4931429",
+    "input": {
+      "place": {
+        "place_id": "gn-4931429",
+        "name": "Brockton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.08343,
+        "lon": -71.01838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brockton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Brockton,_Massachusetts",
+          "text": "Brockton is a city in Plymouth County, Massachusetts, United States. Its population was 105,643 at the 2020 United States census, and it is a major economic and commercial hub for the southern part of Greater Boston. Along with Plymouth, it is one of the two county seats of the county. It is the sixth-largest city in Massachusetts and is sometimes referred to as the \"City of Champions\", due to the success of native boxers Rocky Marciano and Marvin Hagler, as well as its successful Brockton High School sports programs. Two villages within it are Montello and Campello, both of which have MBTA Commuter Rail Stations and post offices. Campello is the smallest neighborhood, but also the most populous. Brockton hosts a baseball team, the Brockton Rox of the Frontier League. It is one of the windiest cities in the United States, with wind speeds in the area averaging 14.3 mph (23.0 km/h)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "brockton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3473,
+    "attempt": 3446,
+    "place_id": "gn-4990510",
+    "input": {
+      "place": {
+        "place_id": "gn-4990510",
+        "name": "Dearborn",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.32226,
+        "lon": -83.17631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dearborn, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Dearborn,_Michigan",
+          "text": "Dearborn is a city in Wayne County in the U.S. state of Michigan. An inner-ring suburb of Detroit, Dearborn borders Detroit to the north and east, roughly 7 miles (11.3 km) west of downtown Detroit. As of the 2020 census, it had a population of 109,976, ranking as the seventh-most populous city in Michigan. Dearborn is best known as the hometown of the Ford Motor Company and of its founder, Henry Ford.\nThe first written settlement of Dearborn is from the 18th century by French-Canadian voyageurs who initially called the settlement La Belle Fontaine or Place aux Fontaines because of the abundant springs in the area. Therefore, Dearborn was once named Springwells, an anglicization of the French name. The settlement was connected to the Detroit River ribbon farm communities and other farms connected to the Rouge River and the Sauk Trail. The community grew in the 19th century with the establishment of the Detroit Arsenal on the Chicago Road linking Detroit and Chicago. During the 20th century, it developed as a major manufacturing hub for the automotive industry.\nHenry Ford was born on a farm that was once at the intersection of Ford Road and Greenfield Road. Ford later built his estate, Fair Lane, and his River Rouge Complex, the largest factory of his empire, in Dearborn. He developed the mass production of automobiles, and based the world headquarters of the Ford Motor Company here. The city has a campus of the University of Michigan, and Henry Ford College. The Henry Ford is the largest indoor-outdoor historic museum complex in the United States, and Metro Detroit's leading tourist attraction.\nDearborn residents are Americans primarily of European or Middle Eastern ancestry, many descendants of 19th and 20th-century immigrants. The census identifies primary European ethnicities as German, Polish, Irish, and Italian. New waves of immigration came from the Middle East in the late 20th century, mostly Muslims and fewer Christian minorities from Lebanon, Palestine, Syria, Iraq, and Yemen. Dearborn has the proportionally largest Muslim population in the United States and the largest mosque in North America. In 2023, Dearborn became the first Arab-majority city in the US, with 55% of its residents claiming to be of Middle Eastern or North African ancestry in a 2023 survey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "dearborn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3474,
+    "attempt": 3447,
+    "place_id": "gn-5100506",
+    "input": {
+      "place": {
+        "place_id": "gn-5100506",
+        "name": "Linden",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.62205,
+        "lon": -74.24459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linden, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Linden,_New_Jersey",
+          "text": "Linden is a city in southeastern Union County, in the U.S. state of New Jersey. It is part of the New York metropolitan area, located about 13 miles (21 km) southwest of Manhattan and bordering Staten Island, a borough of New York City, across the Arthur Kill. As of the 2020 United States census, the city's population was 43,738, an increase of 3,239 (+8.0%) from the 2010 census count of 40,499, which in turn reflected an increase of 1,105 (+2.8%) from the 39,394 counted in the 2000 census. In 2015, Linden was listed as the most polluted community in New Jersey, based on the volume of toxic chemicals released into the local environment by facilities in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "linden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3475,
+    "attempt": 3448,
+    "place_id": "gn-5132002",
+    "input": {
+      "place": {
+        "place_id": "gn-5132002",
+        "name": "Port Chester",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.00176,
+        "lon": -73.66568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Chester, New York",
+          "url": "https://en.wikipedia.org/wiki/Port_Chester,_New_York",
+          "text": "Port Chester is a village in the U.S. state of New York and the largest part of the town of Rye in Westchester County by population. As of the 2020 census, Port Chester had a population of 31,693. Port Chester is part of the New York City metropolitan statistical area. Located in southeast Westchester County, Port Chester borders Connecticut and the town of Greenwich to the east. It is one of only 12 villages in New York still incorporated under a charter; other villages either incorporated or reincorporated under the provisions of Village Law.\nThe village of Port Chester is nicknamed the \"Gateway to New England\" and serves as a transportation hub between New Englanders and New York. Its economy is primarily stimulated by small businesses, the local government and several national chain stores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "port chester",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chester",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3476,
+    "attempt": 3449,
+    "place_id": "gn-5160783",
+    "input": {
+      "place": {
+        "place_id": "gn-5160783",
+        "name": "Lima",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.74255,
+        "lon": -84.10523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lima, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Lima,_Ohio",
+          "text": "Lima ( LY-mə) is a city in Allen County, Ohio, United States, and its county seat. It had a population of 35,579 at the 2020 census. The city is located in northwest Ohio along Interstate 75, approximately 72 miles (116 km) north of Dayton, 78 miles (126 km) southwest of Toledo, and 63 mi (101 km) southeast of Fort Wayne, Indiana.\nLima was founded in 1831. It is the principal city of the Lima metropolitan area, which had 102,000 residents in 2020 and is included in the Lima–Van Wert–Wapakoneta combined statistical area. The Lima Army Tank Plant, officially called the Joint Systems Manufacturing Center, was built in 1941 and is the sole producer of the M1 Abrams tank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3477,
+    "attempt": 3450,
+    "place_id": "gn-5278120",
+    "input": {
+      "place": {
+        "place_id": "gn-5278120",
+        "name": "Wausau",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.95914,
+        "lon": -89.63012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wausau, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Wausau,_Wisconsin",
+          "text": "Wausau (  WAH-sah or Wə-sə) is a city in Marathon County, Wisconsin, United States, and its county seat. It is located on the Wisconsin River in central Wisconsin and had a population of 39,994 at the 2020 census. The Wausau metropolitan statistical area, consisting solely of Marathon County, had a population of 138,013.\nThe Wausau area was inhabited by various indigenous peoples, including the Ojibwe. It was settled by European immigrants in the mid-19th century and developed as a lumbering center due to its access to pine forests and river transport. Cultural and recreational attractions in Wausau include the Grand Theater, Granite Peak Ski Area, Rib Mountain State Park, Leigh Yawkey Woodson Art Museum, and the Wisconsin River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "wausau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3478,
+    "attempt": 3451,
+    "place_id": "gn-5373763",
+    "input": {
+      "place": {
+        "place_id": "gn-5373763",
+        "name": "Mission Viejo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.60002,
+        "lon": -117.672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mission Viejo, California",
+          "url": "https://en.wikipedia.org/wiki/Mission_Viejo,_California",
+          "text": "Mission Viejo ( vee-AY-hoh; corruption of Misión Vieja [miˈsjon ˈbjexa]; Spanish for 'Old Mission') is a commuter city in the Saddleback Valley in Orange County, California, United States. Mission Viejo is considered one of the largest master-planned communities ever built under a single project in the United States and is rivaled only by Highlands Ranch, Colorado in size. Its population as of 2020 was 93,653.\nMission Viejo is suburban in nature and culture, and consists of residential properties, offices and businesses. The city is noted for its tree-lined neighborhoods, receiving recognition from the National Arbor Day Foundation. The city's name is a reference to Rancho Mission Viejo, a large Spanish land grant from which the community was founded.\nThe United States Census Bureau defines an urban area of Orange County cities not part of Los Angeles's urban area with Mission Viejo as the principal city: the Mission Viejo–Lake Forest–Laguna Niguel, CA urban area had a population of 646,843 as of the 2020 census, ranked 65th in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "mission viejo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mission",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "viejo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3479,
+    "attempt": 3452,
+    "place_id": "gn-5394136",
+    "input": {
+      "place": {
+        "place_id": "gn-5394136",
+        "name": "Seaside",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.61107,
+        "lon": -121.85162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seaside, California",
+          "url": "https://en.wikipedia.org/wiki/Seaside,_California",
+          "text": "Seaside, formerly East Monterey, is a city in Monterey County, California, United States, with a population of 32,366 as of the 2020 census. It is located 2.25 miles (3.6 km) east-northeast of Monterey, at an elevation of 33 feet (10 m), and is the home of California State University, Monterey Bay (CSUMB), UC MBEST Center, and the Monterey College of Law, which are located on the site of the former military base Fort Ord. Also on the site are the Bayonet and Black Horse golf courses, now open to the public and host to PGA Tour events, including the 2012 PGA Professional National Championship. Seaside is the gateway to Fort Ord National Monument, created on April 20, 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "seaside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3480,
+    "attempt": 3453,
+    "place_id": "gn-640124",
+    "input": {
+      "place": {
+        "place_id": "gn-640124",
+        "name": "Raisio",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.48592,
+        "lon": 22.16895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raisio",
+          "url": "https://en.wikipedia.org/wiki/Raisio",
+          "text": "Raisio (Finnish: [ˈrɑi̯sio]; Swedish: Reso) is a town in Finland, located in the Southwest Finland region. It lies north of the regional capital, Turku. The population of Raisio is approximately 26,000, while the sub-region has a population of approximately 356,000. It is the 40th most populous municipality in Finland, and the third largest municipality in the Southwest Finland region after Turku and Kaarina.\nThe town of Raisio has a land area of 48.76 km2 (18.83 sq mi), and has about 5 kilometres (3 mi) of coastline to the Bay of Raisio at its southern tip.\nThe coat of arms of Raisio is inspired by Martin of Tours, the patron saint of the medieval stone church of Raisio parish. The coat of arms was designed by Olof Eriksson and approved for use on 23 April 1954."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "raisio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3481,
+    "attempt": 3454,
+    "place_id": "gn-744168",
+    "input": {
+      "place": {
+        "place_id": "gn-744168",
+        "name": "Karamürsel",
+        "country": "Türkiye",
+        "subdivision": "Kocaeli",
+        "lat": 40.69129,
+        "lon": 29.61649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karamürsel",
+          "url": "https://en.wikipedia.org/wiki/Karamürsel",
+          "text": "Karamürsel is a municipality and district of Kocaeli Province, Turkey. Its area is 262 km2, and its population is 59,676 (2022). It is on the south coast of the Gulf of Izmit. Before its conquest by the Ottomans it used to be called by the Greek name of Praenetos (Πραινετός in Greek). The modern name commemorates Kara Mürsel Bey who founded the Ottoman Navy and designed distinctive galley ships, called kadırgas, for it.\nKaramürsel holds special significance for the Turkish Navy, as it was here in 1323 that the Ottoman Empire first established an outlet to the sea, thus laying the foundations for the Ottoman Navy which would go on to dominate the eastern Mediterranean for several centuries.\nThe Karamürsel area is not as heavily industrialised as other parts of Kocaeli province.\nFerry services link Karamürsel to Izmit on the eastern end and Hereke on the northern side of the Bay of Izmit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "karamursel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3482,
+    "attempt": 3455,
+    "place_id": "gn-787237",
+    "input": {
+      "place": {
+        "place_id": "gn-787237",
+        "name": "Pančevo",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 44.87177,
+        "lon": 20.64167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pančevo",
+          "url": "https://en.wikipedia.org/wiki/Pančevo",
+          "text": "Pančevo (Serbian Cyrillic: Панчево, pronounced [pâːntʃeʋo]; German: Pantschowa; Hungarian: Pancsova; Romanian: Panciova; Slovak: Pánčevo) is a city and the administrative center of the South Banat District in the autonomous province of Vojvodina, Serbia. It is located on the shores of rivers Tamiš and Danube, in the southern part of Banat region. Since the 2022 census 115,454 people have been living in the Pančevo administrative area. Pančevo is the third largest city in Vojvodina and the sixth largest in Serbia by population (of the city only).\nPančevo was first mentioned in 1153 and was described as an important mercantile place. It gained the status of a city in 1873 following the disestablishment of the Military Frontier in that region. For most of its period, it was part of the Kingdom of Hungary and after 1920 it became part of the Kingdom of Serbs, Croats and Slovenes, which was renamed in 1929 to Yugoslavia. Since then with one interruption it was part of several Yugoslav states and after the dissolution of the latest in 2003, it is part of its successor state, Serbia. Pančevo is notable for being multi-ethnic, Serbs (and Germans until 1945) have been the dominant ethnic group since the 16th century and since 2011 they compose 80% of the total population of the city.\nPančevo is a city with rich cultural events and monuments, and in the past, it also used to be a filming location for many national and international movie productions. Since 2003 an international and multi-cultural carnival has been organized in the city. It is also the main economic center of the South Banat region and its economy is also mostly tied up to Belgrade's economy. HIP factory is located in Pančevo as well as UTVA which was heavily damaged during the bombing of Yugoslavia in 1999. Pančevo is also well known for its brewery and silk factory which were founded in the early 18th century, and as well as the light bulb factory which are all now defunct. Pančevo is also home to many historical objects, museums and parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "pancevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3484,
+    "attempt": 3456,
+    "place_id": "gn-1220855",
+    "input": {
+      "place": {
+        "place_id": "gn-1220855",
+        "name": "Vahdat",
+        "country": "Tajikistan",
+        "subdivision": "Republican Subordination",
+        "lat": 38.55632,
+        "lon": 69.01354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vahdat",
+          "url": "https://en.wikipedia.org/wiki/Vahdat",
+          "text": "Vahdat (Tajik: Ваҳдат) is a city in western Tajikistan, on the bank of the Kofarnihon River, 21 km east of Dushanbe. It was previously called Yangi-Bozor (1927–1936), Orjonikidzeobod (1936–1993, after Grigoriy Ordzhonikidze) and Kofarnihon (1993–2006). The current name of Vahdat is a completely new name that was introduced in the 2000s as part of an official renaming of the settlement. Its population is estimated at 43,200 for the city proper and 342,700 for the city with the outlying communities (2020). Vahdat was the focus on international attention in 2019 when a riot occurred in the city's prison, believed to be instigated by members of Islamic State, which led to the deaths of three guards and 29 inmates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "vahdat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3485,
+    "attempt": 3457,
+    "place_id": "gn-1263247",
+    "input": {
+      "place": {
+        "place_id": "gn-1263247",
+        "name": "Mayiladuthurai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.10354,
+        "lon": 79.655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mayiladuthurai",
+          "url": "https://en.wikipedia.org/wiki/Mayiladuthurai",
+          "text": "Mayiladuthurai (formerly known as Mayavaram or Mayuram) is a Special Grade Municipality and the district headquarters of Mayiladuthurai district in Tamil Nadu, India. The town is located 256 km (159 mi) from the state capital, Chennai.\nIn medieval times, Mayiladuthurai was ruled by the Chola Dynasty. It was subsequently part of the Pallavas, Pandiyas, Vijayanagara Empire, Thanjavur Nayak kingdom, Thanjavur Maratha kingdom, and eventually the British Empire. Mayiladuthurai was a part of the erstwhile Tanjore district until India's independence in 1947, Thanjavur district until 1991, and subsequently a part of the newly formed Nagapattinam district until 2020. Mayiladuthurai was carved out of Nagapattinam district and inaugurated as the 38th district of Tamil Nadu on 28 December 2020. \nMayiladuthurai is administered by a town panchayat established in 1866. In 1949, it was upgraded to a selection-grade municipality, and in 2023 it was upgraded to special-grade municipality status. As of 2025, the municipality covered an area of 11.27 km2 (4.35 mi2). Mayiladuthurai is within the Mayiladuthurai constituency of the Tamil Nadu Legislative Assembly and elects its member once every five years. It is part of the Mayiladuthurai constituency of the national assembly and elects its Member of Parliament (MP) also once every five years.\nMayiladuthurai serves as an important junction of the main line connecting Chennai with Trichy. Roadways and railways are the major mode of transportation to the town. The nearest airport, Pondicherry Airport, is located 116 km (72 mi) away. The town is known for agriculture and weaving. As Mayiladuthurai district is situated on the east coast, fishing plays a vital role in generating its revenue. In 2023, the district was declared a protected agricultural zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "mayiladuthurai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3486,
+    "attempt": 3458,
+    "place_id": "gn-1303406",
+    "input": {
+      "place": {
+        "place_id": "gn-1303406",
+        "name": "Nyaunglebin",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Bago Region",
+        "lat": 17.95363,
+        "lon": 96.72247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyaunglebin",
+          "url": "https://en.wikipedia.org/wiki/Nyaunglebin",
+          "text": "Nyaunglebin (Burmese: ညောင်လေးပင်) is the second largest city in the Nyaunglebin District of Bago Region. Nyaunglebin is not only the largest city in Bago District, but also the central city of the eastern part of the Bago Region. It is the fifth-largest city in the Bago Region overall and is located in the heart of eastern Bago.\nThe city is situated 82 miles (132 km) from Yangon, 48 miles (77 km) from Bago, 72 miles (116 km) from Taungoo, 120 miles (190 km) from Naypyidaw, and 332 miles (534 km) from Mandalay.\nNyaunglebin Township consists of four towns—Nyaunglebin, Pyuntasa, Madauk, and Painzaloke—as well as numerous villages. The Yangon-Mandalay Expressway passes 15 miles (24 km) west of Nyaunglebin.\nNyaunglebin serves as a key transportation hub, where major railways and highways intersect. There are both highway and railway links from Nyaunglebin to Shwegyin Township. Nyaunglebin Railway Station is a significant stop on the Yangon–Mandalay Railway.\nIn 1883, the British colonial government built the first section of the Yangon–Taungoo railway line, beginning from Yangon and ending in Nyaunglebin.\nDuring the time of the Revolutionary Council government, Nyaunglebin was designated a \"zone city\" of Bago Region, comprising Kyauktaga (West Nyaunglebin), Daik-U, and Nyaunglebin townships.\nIn 2022, the State Administration Council established Nyaunglebin District, which includes five townships: Nyaunglebin, Daik-U, Kyauktaga, Shwegyin, and Kyaukkyi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "nyaunglebin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3487,
+    "attempt": 3459,
+    "place_id": "gn-1513953",
+    "input": {
+      "place": {
+        "place_id": "gn-1513953",
+        "name": "Qorasuv",
+        "country": "Uzbekistan",
+        "subdivision": "Andijan Region",
+        "lat": 40.72782,
+        "lon": 72.88577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qorasuv",
+          "url": "https://en.wikipedia.org/wiki/Qorasuv",
+          "text": "Qorasuv (also Korasuv, Karasu; Uzbek: Qorasuv, lit. 'Black Water') is a city in Qoʻrgʻontepa District of Andijan Region in eastern Uzbekistan, about 50 km from the district capital of Andijan. The town's name means \"black water\" in Uzbek (qora - black, suv - water). It lies in the politically volatile and religiously conservative Fergana Valley, along the border with Kyrgyzstan. Its population is 33,000 (2016).\nIt is essentially one town with Kara-Suu in Kyrgyzstan, but is separated from the latter by a Soviet-era border which today is tightly controlled by Uzbekistan. Qorasuv was the second town in Uzbekistan to be sealed off during the Andijan massacre in spring 2005, when some 6,000 people fled across the border. A border town, it is an important market town, especially for cottonseed oil trading."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "qorasuv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3488,
+    "attempt": 3460,
+    "place_id": "gn-1736458",
+    "input": {
+      "place": {
+        "place_id": "gn-1736458",
+        "name": "Kudat",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 6.88732,
+        "lon": 116.82364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kudat",
+          "url": "https://en.wikipedia.org/wiki/Kudat",
+          "text": "Kudat (Malay: Pekan Kudat) is the capital of the Kudat District in the Kudat Division of Sabah, Malaysia. Its population was estimated to be around 29,025 in 2010. It is located on the Kudat Peninsula, about 190 kilometres (120 mi) north of Kota Kinabalu, the state capital, and is near the northernmost point of Borneo. It is the largest town in the heartland of the Rungus people which is a sub-ethnic group of the majority Kadazan-Dusun race and is therefore a major centre of Rungus culture. It is also notable for being one of the first parts of Sabah to be settled by Chinese Malaysians, particularly from the Hakka dialect group. It is the northernmost Malaysian city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "kudat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

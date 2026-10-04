@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3590,
+    "attempt": 3561,
+    "place_id": "gn-3532881",
+    "input": {
+      "place": {
+        "place_id": "gn-3532881",
+        "name": "Amozoc de Mota",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.04611,
+        "lon": -98.045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amozoc de Mota",
+          "url": "https://en.wikipedia.org/wiki/Amozoc_de_Mota",
+          "text": "Amozoc de Mota is a city located in the Mexican state of Puebla, Mexico.  Its borders are in the north, the Malintzin volcano; in the south, the \"Sierra de Amozoc\"; in the west, the Acajete municipal seat; and in the west, the capital of the State Puebla city. Amozoc city is the seventh largest in the State, of Puebla, with a 2020 census population of 125,876 inhabitants.\nIn Amozoc de Mota about 3,000 inhabitants speak indigenous languages: Nahuatl (1,482 inhabitants), Totonaco (776 inhabitants) and Mazateco (330 inhabitants).\nWhile a small city, it has gained international relevance because it is the home of the Autódromo Miguel E. Abed, which hosts a World Touring Car Championship event."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "amozoc de mota",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "amozoc",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mota",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3591,
+    "attempt": 3562,
+    "place_id": "gn-3639725",
+    "input": {
+      "place": {
+        "place_id": "gn-3639725",
+        "name": "Güiria",
+        "country": "Venezuela",
+        "subdivision": "Sucre",
+        "lat": 10.57721,
+        "lon": -62.29841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Güiria",
+          "url": "https://en.wikipedia.org/wiki/Güiria",
+          "text": "Güiria is the capital city of Valdez Municipality in the Venezuelan state of Sucre. Güiria was the place where the military campaign for South American independence set out to Upper Peru and also a starting point of the 1901 Venezuelan Civil War, also called the Liberating Revolution. Founded on 8 December 1767, Güiria is the state's third-largest urban centre, with a population of approximately 40,000. It is an important harbour, the only one in Venezuela located on the open Atlantic Ocean rather than on the Caribbean Sea, and the economic centre of Paria Peninsula, due to it being near the Gulf of Paria's natural gas fields, where several state and private companies have exploration projects."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "guiria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3592,
+    "attempt": 3563,
+    "place_id": "gn-3680539",
+    "input": {
+      "place": {
+        "place_id": "gn-3680539",
+        "name": "Ipiales",
+        "country": "Colombia",
+        "subdivision": "Nariño",
+        "lat": 0.82501,
+        "lon": -77.63966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipiales",
+          "url": "https://en.wikipedia.org/wiki/Ipiales",
+          "text": "Ipiales is a city and Catholic bishopric in Nariño Department, southern Colombia, near the border with Ecuador. It is located at around 0°49′49″N 77°38′40″W, with an elevation of about 2950 m. Ipiales is located on the high plateau called \"Tuquerres e Ipiales,\" and lies at a distance of 82 km from Pasto, the department's capital. Ipiales is known as \"la ciudad de las nubes verdes\" (the city of the green clouds) because sometimes, especially in the afternoon, greenish clouds appear over the city. \nOne of the area's favorite foods is the guinea pig or cavy (Cavia porcellus), called kuy or kuwi. \nThe economy of this city is based on border trade between Ecuador and Colombia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "ipiales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3593,
+    "attempt": 3564,
+    "place_id": "gn-3707961",
+    "input": {
+      "place": {
+        "place_id": "gn-3707961",
+        "name": "La Chorrera",
+        "country": "Panama",
+        "subdivision": "Panamá Oeste Province",
+        "lat": 8.87763,
+        "lon": -79.78007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Chorrera, Panama",
+          "url": "https://en.wikipedia.org/wiki/La_Chorrera,_Panama",
+          "text": "La Chorrera (Spanish pronunciation: [la tʃoˈreɾa]) is a city and municipality in central Panama, located about 30 km south-west of Panama City. It is the capital of the province of Panamá Oeste and one of the larger cities in the country and is fond of the phrase \"La Bella, Enamoradora y Querendona, La Gran Chorrera\", reportedly as a tribute to its beautiful women, kind people, and happy nightlife.\nLa Chorrera is renowned for its international fair and famous as being the home of Bollo and Chicheme. It is the home of San Francisco F.C., Mariano Rivera (five-time World Series champion with the New York Yankees), Vicente Mosquera (former World Boxing Champion), and José Luis Garcés."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "la chorrera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chorrera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3594,
+    "attempt": 3565,
+    "place_id": "gn-3985865",
+    "input": {
+      "place": {
+        "place_id": "gn-3985865",
+        "name": "San Juan de los Lagos",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.24893,
+        "lon": -102.33036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan de los Lagos",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_de_los_Lagos",
+          "text": "San Juan de los Lagos (English: Saint John of the Lakes) is a city and municipality located in the northeast corner of the state of Jalisco, Mexico, in a region known as Los Altos.  It is best known as the home of a small image of the Virgin Mary called Our Lady of San Juan de los Lagos (Nahuatl: Cihuapilli, lit. \"Great Lady\"). Miracles have been ascribed to her since 1632 and have made the Basilica of San Juan de los Lagos a major tourist attraction. The economy of the city is still heavily dependent on the flow of pilgrims to the shrine, which has amounted to between seven and nine million visitors per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "san juan de los lagos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lagos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3595,
+    "attempt": 3566,
+    "place_id": "gn-4247703",
+    "input": {
+      "place": {
+        "place_id": "gn-4247703",
+        "name": "Quincy",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 39.9356,
+        "lon": -91.40987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quincy, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Quincy,_Illinois",
+          "text": "Quincy ( KWIN-see) is a city in Adams County, Illinois, United States, and its county seat. Located on the Mississippi River, the population was 39,463 as of the 2020 census, down from 40,633 in 2010. The Quincy micropolitan area had 114,649 residents.\nKnown as Illinois's \"Gem City\", Quincy was a thriving transportation center as riverboats and rail service linked the city to many destinations west and along the river during the 19th century. It was Illinois' second-largest city, surpassing Peoria in 1870. The city has several historic districts, including the Downtown Quincy Historic District and the South Side German Historic District, which display the architecture of Quincy's many German immigrants from the late 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "quincy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3596,
+    "attempt": 3567,
+    "place_id": "gn-4901868",
+    "input": {
+      "place": {
+        "place_id": "gn-4901868",
+        "name": "Melrose Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.90059,
+        "lon": -87.85673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melrose Park, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Melrose_Park,_Illinois",
+          "text": "Melrose Park is a village in Leyden and Proviso Townships, Cook County, Illinois, United States. It is a suburb of Chicago. As of the 2020 census it had a population of 24,796.\nThe suburb was the home of Kiddieland Amusement Park from 1929 until 2010 (it closed in September 2009 before it was demolished in 2010 and the sign of Kiddieland was relocated to the Melrose Park Public Library; a Costco warehouse store now stands in its place), the Shrine of Our Lady of Mt. Carmel, Stern Pinball, Inc., the Melrose Park Taste, and the now-defunct Maywood Park horse racing track.\nThere is a Metra railroad station in Melrose Park with daily service to Chicago. Melrose Park is home to Gottlieb Memorial Hospital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "melrose park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "melrose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3597,
+    "attempt": 3568,
+    "place_id": "gn-5019335",
+    "input": {
+      "place": {
+        "place_id": "gn-5019335",
+        "name": "Brooklyn Park",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 45.09413,
+        "lon": -93.35634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklyn Park, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn_Park,_Minnesota",
+          "text": "Brooklyn Park is a suburban city on the west bank of the Mississippi River, upstream from (north of) the Twin Cities in northern Hennepin County. It is the sixth-largest city in the U.S. state of Minnesota. The population was 86,478 at the 2020 census. The city still has undeveloped land and farms, including the historic Eidem Homestead, a 1900s working farm that is a popular tourist attraction for families and school field trips. Brooklyn Park is considered both a second- and third-tier suburb of Minneapolis, because much of the land north of 85th Avenue was developed after 2000.\nWWE Hall of Fame wrestler Jesse Ventura served as mayor of Brooklyn Park from 1991 to 1995. He was elected governor of Minnesota in the 1998 election on a third-party ticket and served as governor from 1999 to 2003.\nBrooklyn Park is listed as a \"Tree City USA\" and is home to 47 miles (76 km) of trails and 67 parks, including Rush Creek Regional Trail and the northern section of Palmer Lake Park. The city is also known for Mississippi Gateway Regional Park, on the west side of Coon Rapids Dam Regional Park. Rasmussen University, North Hennepin Community College and a campus of Hennepin Technical College are in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "brooklyn park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3598,
+    "attempt": 3569,
+    "place_id": "gn-5467328",
+    "input": {
+      "place": {
+        "place_id": "gn-5467328",
+        "name": "Farmington",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 36.72806,
+        "lon": -108.21869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmington, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Farmington,_New_Mexico",
+          "text": "Farmington is a city in San Juan County, New Mexico, United States. As of the 2020 census, the city had a population of 46,624 people. Farmington (and surrounding San Juan County) makes up one of the four metropolitan statistical areas (MSAs) in New Mexico.\nFarmington is located at the junction of the San Juan River, the Animas River, and the La Plata River, and is located on the Colorado Plateau. Farmington is the largest city of San Juan County, one of the geographically largest counties in the United States covering 5,538 square miles (14,340 km2).  Farmington serves as the commercial hub for most of northwestern New Mexico and the Four Corners region of four states. Farmington lies at or near the junction of several highways: U.S. Route 64, New Mexico State Road 170, New Mexico State Road 371, and New Mexico State Road 516.\nIt is on the Trails of the Ancients Byway, one of the designated New Mexico Scenic Byways.\nThe primary non-government industries of Farmington are the production of petroleum, natural gas, and coal and its function as a major retail hub. Outside of Farmington, the Navajo Mine (coal), operated by the Navajo Transitional Energy Company (NTEC), is used entirely for fuel for the nearby Four Corners Generating Station to produce electric power."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "farmington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3599,
+    "attempt": 3570,
+    "place_id": "gn-766027",
+    "input": {
+      "place": {
+        "place_id": "gn-766027",
+        "name": "Łomża",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 53.17806,
+        "lon": 22.05935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Łomża",
+          "url": "https://en.wikipedia.org/wiki/Łomża",
+          "text": "Łomża (Polish pronunciation: [ˈwɔmʐa] ) is a city in north-eastern Poland, approximately 150 kilometres (93 mi) to the north-east of Warsaw and 80 kilometres (50 mi) west of Białystok. It is situated alongside the Narew River as part of the Podlaskie Voivodeship. It is the capital of Łomża County and has been the seat of the Roman Catholic Diocese of Łomża since 1925.\nŁomża is one of the principal economic, educational, and cultural centres of north-eastern Masovia as well as one of the three main cities of Podlaskie Voivodeship (beside Białystok and Suwałki). It lends its name to the protected area of Łomża Landscape Park. The town is also the location of the Łomża Brewery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "omza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3600,
+    "attempt": 3571,
+    "place_id": "gn-8223969",
+    "input": {
+      "place": {
+        "place_id": "gn-8223969",
+        "name": "Parangipettai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.49117,
+        "lon": 79.76053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parangipettai",
+          "url": "https://en.wikipedia.org/wiki/Parangipettai",
+          "text": "Parangipettai (  Pa-re-gi-Pe-Tie, Tamil: [pɐɾɐŋɡipːeːʈɐi̯]), historically called Porto Novo (\"New Port\" in Portuguese), is a coastal panchayat town in Cuddalore district in the Indian state of Tamil Nadu. Parangipettai is located on the north bank of the mouth of the Vellar River at a distance of 30 km from Cuddalore. From the state capital city of Chennai, Parangipettai can be reached through the National Highway NH32 stretch between Cuddalore and Chidambaram.\nIts strategic location on the Coromandel Coast has long made it a major trading center. In particular, it was an important trading destination for the Arabs, especially the Yemenis. During the colonial era, the Portuguese, the Dutch and the English successively colonized the area.\nThere is also a Gandhian connection to Parangipettai. Anne Marie Petersen became in 1909 a missionary in the so-called Loventhal Mission. The foundation stone was laid by Mahatma Gandhi himself in 1921, and a few years later, the school was officially opened under the name Seva Mandir at a place called Porto Novo, near Chidambaram, in Tamil Nadu, South India.\nToday, Parangipettai has evolved into a well-developed town with nearly all necessities such as healthcare, education and transport. It also hosts a marine biology station that is affiliated with the Annamalai University.\nThe town is an important pilgrimage center for Muslims and Hindus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "parangipettai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3601,
+    "attempt": 3572,
+    "place_id": "gn-949683",
+    "input": {
+      "place": {
+        "place_id": "gn-949683",
+        "name": "Thabazimbi",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.59165,
+        "lon": 27.41155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thabazimbi",
+          "url": "https://en.wikipedia.org/wiki/Thabazimbi",
+          "text": "Thabazimbi was an iron mining town in the Limpopo province of South Africa. The town is at the feet of the Ysterberg and is surrounded by the Witfonteinrand and Boshofberg with the Kransberg in the background. The name Thabazimbi means mountain of iron because of the large iron ore reef that was discovered in 1919 by J. H. Williams. \nUp until the mine closure in 2015, due to a 65 million ton rock fall, two million tonnes of ore was once hauled by train to Mittal's iron and steel works. The railway line from Rustenburg reached the area in the 1930s and full scale iron and steel production began. The town was proclaimed in 1953. Kumba Iron Ore, previously Kumba Resources, is now the principal operator of the iron ore mine.\n\nThe Marakele National Park about 20 km north-east of the town and in the heart of Waterberg Mountains is characterised by contrasting mountain landscapes, hills and valleys, as well a variety of wildlife. Marakele National Park is also the home of some of the Tuli elephants that were caught up in controversy in 1999 involving animal cruelty in South Africa.\nIn the post-apartheid era, the town made headlines in 2003 as the site of Kamp Staaldraad, the Springboks' infamous training camp prior to the Rugby World Cup.  The excesses of Kamp Staaldraad helped lead to an almost complete housecleaning of the upper administrative levels of South African rugby union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "thabazimbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3602,
+    "attempt": 3573,
+    "place_id": "gn-1222396",
+    "input": {
+      "place": {
+        "place_id": "gn-1222396",
+        "name": "Kuah",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 6.32649,
+        "lon": 99.8432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuah",
+          "url": "https://en.wikipedia.org/wiki/Kuah",
+          "text": "Kuah is a resort town, mukim and district capital of Langkawi, Kedah, Malaysia. It is the entry point for those coming by ferry from either the mainland or Penang Island. The town is centered on its jetty, which is a point of arrival for tourists from the mainland. With a population of more than 30,000, Kuah has become a major town due to the growth of visitors after Langkawi developed into a tourist centre since 1986.\nThere are a number of hotels in Kuah but it has no resorts, as the town has no proper beach despite being located by the sea. The nightlife in Kuah consists mostly of eating out in seafood restaurants. Kuah nevertheless has a number of attractions, and it serves as a focal point for tourists wishing to visit other parts of Langkawi. Today, Kuah is a commercial centre with shopping complexes, restaurants, fast food outlets, hotels and handicraft shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "kuah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3603,
+    "attempt": 3574,
+    "place_id": "gn-1263331",
+    "input": {
+      "place": {
+        "place_id": "gn-1263331",
+        "name": "Mattanur",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 11.93018,
+        "lon": 75.57152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mattanur",
+          "url": "https://en.wikipedia.org/wiki/Mattanur",
+          "text": "Mattanur, also spelled as  Mattannur, is a municipality and an aerotropolis situated in the midland region of Kannur district, Kerala, India. It is located about 27 km (17 mi) east of Kannur and 27 km (17 mi) northeast of Thalassery, two major towns in the district. In Swacch Survekshan 2024-25, Mattannur Municipality was ranked 53rd among the cleanest urban areas in India and second in Kerala, after Kochi Municipal Corporation, which was ranked 50th.\nMattanur lies between Kannur, Thalassery, and Iritty. It is the intersection where the Thalassery–Coorg Highway (popularly known as the TC Road) meets the Kannur–Mattanur Road. The inter-state buses travelling from Bangalore and Mysore to Thalassery and Kannur pass through Mattanur. It is an important hub, connecting Kodagu and Kannur. Kannur Airport is about 5 km (3.1 mi) from Mattanur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "mattanur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3604,
+    "attempt": 3575,
+    "place_id": "gn-2343252",
+    "input": {
+      "place": {
+        "place_id": "gn-2343252",
+        "name": "Epe",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.58412,
+        "lon": 3.98336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Epe, Lagos State",
+          "url": "https://en.wikipedia.org/wiki/Epe,_Lagos_State",
+          "text": "Epe is a city and Local Government Area (LGA)\nin Lagos State, Nigeria located on the north side of the Lekki Lagoon and about 90 km from Ibadan. During the 2006 Census, the population of Epe was approximately 181,409.\nThere is paramount ruler in the area as there are two major communities with individual monarchs. These are the Eko Epe and Ijebu Epe communities within the same town. The paramount ruler is the oloja of epeland who is the chairman obas and chiefs in epe division and also vice chairman obas and chiefs in Lagos state. notable festivals that are mostly celebrated in Epe land include Kayo-kayo Festival, Ebi day, Ojude-Oba, and Epe day.\n\nA road junction at the entrance into Epe from the Lekki-Epe Expressway features a sculpture of two giant fish, erected by the Lagos State Government.\nNotable higher institutions like Lagos State University (LASU), Yaba College of Technology, Lagos State University of Education (LASUED) (Formerly known as Michael Otedola College of Primary Education - MOCPED), and St. Augustine university all have campuses in Epe area of Lagos, Nigeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "epe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3605,
+    "attempt": 3576,
+    "place_id": "gn-2403094",
+    "input": {
+      "place": {
+        "place_id": "gn-2403094",
+        "name": "Waterloo",
+        "country": "Sierra Leone",
+        "subdivision": "Western Area",
+        "lat": 8.3389,
+        "lon": -13.07091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waterloo, Sierra Leone",
+          "url": "https://en.wikipedia.org/wiki/Waterloo,_Sierra_Leone",
+          "text": "Waterloo is a city in the Western Area of Sierra Leone and the capital of the Western Area Rural District, which is one of the sixteen districts of Sierra Leone. Waterloo is located about twenty miles east of Freetown. Waterloo is the second largest city in the Western Area region of Sierra Leone, after Freetown. The city had a population of 34,079 in the 2004 census, and 55,000 as per a 2015 estimate, while the Waterloo - Hastings Urban Area had a population of 208,795 in 2015. Waterloo is part of the Freetown metropolitan area.\nWaterloo is a major urban transport hub and lies on the main highway linking Freetown to the country's provinces. Waterloo is an entirely urban area, and lies 25 miles to Port Loko District entrance border line in the Northern Province.\nWaterloo is one of Sierra Leone's most ethnically diverse cities, as it is home to many of Sierra Leone's ethnic groups, with no single ethnic group forming  even 30% of the population .\nAlthough Waterloo is part of the larger Western Area Rural district council, the city has its own directly elected city council headed by a mayor. The current mayor of Waterloo is Dennis Omojowo Browne of the All People's Congress who was elected in the 2018 Sierra Leone local elections."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "waterloo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3606,
+    "attempt": 3577,
+    "place_id": "gn-2520611",
+    "input": {
+      "place": {
+        "place_id": "gn-2520611",
+        "name": "Cáceres",
+        "country": "Spain",
+        "subdivision": "Extremadura",
+        "lat": 39.47649,
+        "lon": -6.37224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cáceres, Spain",
+          "url": "https://en.wikipedia.org/wiki/Cáceres,_Spain",
+          "text": "Cáceres (US:  KAH-sə-rayss, Spanish: [ˈkaθeɾes] ) is a city and municipality located in the center of the autonomous community of Extremadura in southern Spain. It is the capital and most populated municipality of the province of the same name and hosts the seat of the Extremadura's Regional Supreme Court.\nCáceres' area —1,750.33 km2 (675.81 sq mi) — is the greatest of any municipality in Spain. As of 2025, it has a population of 96,598 inhabitants, of which 95,441 live in the city itself. Numerous inhabited places are scattered throughout the municipality, including castles and farmhouses with several centuries of history.  The medieval walled city was declared a World Heritage City by UNESCO in 1986.\nSince 2008 the city has been organized into four districts: Old Town Center, North, West, and South; a fifth district, Pedanías, covers the non-urban part of the term.  The actual municipal population data varies significantly, fluctuating by more than 30,000 people primarily related to educational centers such as the Cáceres Campus of the University of Extremadura  or the CEFOT-1 of the Army. The city usually empties in summer, when many residents return to their towns of origin.\nCáceres lies at the feet of the Sierra de la Mosca, a modest hill range. It is part of the Vía de la Plata (\"Silver Route\") path of the Camino de Santiago that crosses the west of the Iberian Peninsula in a north–south direction.\nThe Universidad de Extremadura, and two astronomical observatories are located in Cáceres, as well as several regional government departments. The city is also a co-see of the Catholic Diocese of Coria-Cáceres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "caceres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3607,
+    "attempt": 3578,
+    "place_id": "gn-2738752",
+    "input": {
+      "place": {
+        "place_id": "gn-2738752",
+        "name": "Guimarães",
+        "country": "Portugal",
+        "subdivision": "Braga",
+        "lat": 41.44443,
+        "lon": -8.29619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guimarães",
+          "url": "https://en.wikipedia.org/wiki/Guimarães",
+          "text": "Guimarães is a city and municipality located in northern Portugal.\nIts historic town centre has been listed as a UNESCO World Heritage Site since 2001, in recognition for being an \"exceptionally well-preserved and authentic example of the evolution of a medieval settlement into a modern town\" in Europe. The Nicolinas are the city's main festivities.\nGuimarães is referred to as the capital of the Ave Subregion (one of the most industrialised subregions in the country), and located in the historical Minho Province. The municipality has a population of 156,789 inhabitants according to the most recent data of 2023 in an area of 240.95 square kilometres (93.03 sq mi). The current mayor is Ricardo Araújo. Guimarães, along with Maribor, Slovenia, was the European Capital of Culture in 2012. Guimarães also received the 2026 European Green Capital Award.\nThe city was settled in the 9th century, at which time it was called Vimaranes. This name might have had its origin in the warrior Vímara Peres, who chose this area as the main government seat for the County of Portugal which he conquered for the Kingdom of Galicia. Guimarães has a significant historical importance due to the role it played in the foundation of Portugal. The city is commonly referred to as the \"birthplace of Portugal\" or \"the cradle city\" (Cidade Berço in Portuguese) because it was in Guimarães that Portugal's first King, Afonso Henriques was born, and also because the Battle of São Mamede – which is considered the seminal event for the foundation of the Kingdom of Portugal – was fought in the vicinity of the city. It was declared the most beautiful small city in Europe by the Condé Nast Traveler magazine in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "guimaraes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3608,
+    "attempt": 3579,
+    "place_id": "gn-2751771",
+    "input": {
+      "place": {
+        "place_id": "gn-2751771",
+        "name": "Leiderdorp",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.15833,
+        "lon": 4.52917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leiderdorp",
+          "url": "https://en.wikipedia.org/wiki/Leiderdorp",
+          "text": "Leiderdorp (Dutch pronunciation: [ˌlɛidərˈdɔr(ə)p] ) is a town and municipality in the western Netherlands, in the province of South Holland near the city of Leiden. It had a population of 27,377 in 2021.\nThe municipality covers an area of 12.28 km2 (4.74 sq mi) of which 0.70 km2 (0.27 sq mi) is water. Leiderdorp is located next to the city of Leiden, although the Oude Rijn (Old Rhine) river and the Zijl river separate the two. The HSL-Zuid high-speed rail line between Amsterdam and Brussels crosses Leiderdorp in a tunnel.\nIt is one of the oldest towns in South Holland province and was a base for the Spanish army in the Eighty Years' War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "leiderdorp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3609,
+    "attempt": 3580,
+    "place_id": "gn-2759887",
+    "input": {
+      "place": {
+        "place_id": "gn-2759887",
+        "name": "Almelo",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.35667,
+        "lon": 6.6625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almelo",
+          "url": "https://en.wikipedia.org/wiki/Almelo",
+          "text": "Almelo (Dutch pronunciation: [ˈɑlməloː] ) is a municipality and a city in the eastern Netherlands. The main population centres are Almelo itself and the villages of Aadorp, Mariaparochie, and Bornerbroek. Almelo has about 75,000 inhabitants in the middle of the rolling countryside of Twente, with the industrial centres of Enschede and Hengelo as close neighbours but also with tourist towns like Ootmarsum, Delden and Markelo only a bicycle ride away.\nAlmelo received city rights in 1394. Within the city limits lies the castle of the Counts of Almelo. Located in the city centre is Huize Almelo, a castle that in its current form dates back to 1662 but is not open to the public.\nThe city is also known for its local association football club Heracles Almelo, which plays in the Eredivisie, the highest football league in the Netherlands, and uses the Erve Asito stadium. Some of the Almelo population speak the Tweants dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "almelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

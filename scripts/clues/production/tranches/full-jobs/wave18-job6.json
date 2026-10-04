@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3530,
+    "attempt": 3501,
+    "place_id": "gn-1182998",
+    "input": {
+      "place": {
+        "place_id": "gn-1182998",
+        "name": "Bela",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 26.22718,
+        "lon": 66.31178
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bela, Balochistan",
+          "url": "https://en.wikipedia.org/wiki/Bela,_Balochistan",
+          "text": "Bela (Balochi: بݔلہ), (Urdu: بیلہ) is a city in Lasbela District in the Balochistan province of Pakistan. It is an ancient city surrounded by hills above the Arabian Sea, nearly 180 km (110 mi) northwest of Karachi and 500 km (310 mi) south of Quetta. During the autumn of 325 BC, the settlement was part of the Asian campaign of Alexander the Great under the name Rhambacia (Greek: Ῥαμβακία). After Alexander conquered the town, he commended the place and thought that if he built a city there it would become great and prosperous and he left Hephaestion behind to build it.\nIn 711 AD, it was part of Muhammad bin Qasim's campaign under the name Armabil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "bela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3531,
+    "attempt": 3502,
+    "place_id": "gn-1266666",
+    "input": {
+      "place": {
+        "place_id": "gn-1266666",
+        "name": "Khopoli",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.78562,
+        "lon": 73.34589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khopoli",
+          "url": "https://en.wikipedia.org/wiki/Khopoli",
+          "text": "Khopoli (Marathi pronunciation: [kʰopoˈliː], ISO: Khōpōlī) is a city in the Khalapur taluka of Raigad district, in the Indian state of Maharashtra, at the base of the Sahyadri mountains. Patalganga River, which is the tailrace channel of the Tata Hydroelectric Power Station, flows through Khopoli.\nIt is a municipal council and is a part of the Mumbai Metropolitan Region. Khopoli Municipal Council covers an area of 30 km2 (12 sq mi).\nKhopoli is served by a railway station connected to the Mumbai suburban railway by a single line from Karjat. The distance between CSMT to Khopoli is 114.24 km (70.99 mi) along the Central Railway Suburban Line, which is a broad gauge line carrying electric locomotives.\nInitially, Khopoli railway station had only one platform for both the up and down movement of local trains. In 2019, it was revamped with an additional platform.\nIt is also located on NH 4, about 80 km (50 mi) south of Mumbai and 80 km (50 mi) from Pune. Industries are well developed due to the strategic importance of the region as the Mumbai-Pune Expressway passes through the city. The city is called a city of waterfalls due to a number of waterfalls in the rainy season. Due to the presence of industries, the city has attracted migrants from across India. It is an industrial city with numerous industries and power plants located across it. Khopoli is located at the base of the Sahyadri Mountains range on the banks of the Patalganga river. This place also has several waterfalls, parks and hill stations. Because of its natural environment and scenery, Khopoli is a major spot for tourist attractions. Khopoli is connected with metro cities like Mumbai and Pune by rail and road. Imagica Theme Park, KP Falls and Zenith waterfall are the key attraction of this place. Khopoli is surrounded by tourist places like Khandala and Lonavala. The place has proximity to railway stations and bus stands. Also, cabs and rickshaws are common means of transport in Khopoli. The nearest airport is Chhatrapati Shivaji Maharaj Airport, which is 80 km away. Khopoli has several industrial hubs, MIDCs, and heavy industries which provide employment to the residents of this area. Khopoli is home to various steel, chemical and food and pulp industries.\nKhopoli is home to various Marathi, English, Hindi and even international schools. It has seen rapid growth in industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 396
+    },
+    "banned_terms": [
+      {
+        "term": "khopoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3532,
+    "attempt": 3503,
+    "place_id": "gn-1271644",
+    "input": {
+      "place": {
+        "place_id": "gn-1271644",
+        "name": "Gangoh",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 29.78004,
+        "lon": 77.26346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gangoh",
+          "url": "https://en.wikipedia.org/wiki/Gangoh",
+          "text": "Gangoh is a town and a municipal board in Saharanpur district in the state of Uttar Pradesh, India. It lies about 40 km south-west of Saharanpur city. Other nearby towns are Karnal, Haryana, which is about 35 km south-west of Gangoh; Yamunanagar, Haryana, about 50 km to the north-west; and Shamli, Uttar Pradesh, about 50 km to the south. The town lies about 150 km north-east of the national capital, Delhi.\nGangoh Block consists of about 173 villages and comes under the Nakur tehsil of Saharanpur district. The people of these villages mainly speak Khari boli, which is spoken in rural areas of the Upper Doab region of the Saharanpur, Shamli, Muzaffarnagar, Baghpat and Meerut districts. The soil of the block and its villages is fertile, and crops like wheat, rice, sugarcane, and mangoes are grown on a large scale every year.\nProposed Shamli Ambala six lane expressway will pass through Gangoh and it will enhance connectivity among West UP, Haryana and Punjab."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "gangoh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3533,
+    "attempt": 3504,
+    "place_id": "gn-1645875",
+    "input": {
+      "place": {
+        "place_id": "gn-1645875",
+        "name": "Curup",
+        "country": "Indonesia",
+        "subdivision": "Bengkulu",
+        "lat": -3.4703,
+        "lon": 102.5207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curup",
+          "url": "https://en.wikipedia.org/wiki/Curup",
+          "text": "Curup (Indonesian pronunciation: [ˈt͡ʃurʊp̚]; Rejang: Cu'up) is the regency seat and also an administrative district of Rejang Lebong Regency, part of the Indonesian Province of Bengkulu on Sumatra island. The district (kecamatan) has an area of 5.21 km², consisting of nine administrative villages with 26,971 residents at the 2020 Census, rising to 27,017 in the official estimates as of mid 2021, but dropping slightly to 26,762 as of mid 2024. It is the centre of an urban area (\"Greater Curup\") which had 135,443 inhabitants as at mid 2024. Curup is largely known as the main producing area of rice, vegetables, and especially coffee in Bengkulu, whose harvests are sent to Palembang, Jambi, Padang, Lampung and Jakarta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "curup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3534,
+    "attempt": 3505,
+    "place_id": "gn-174710",
+    "input": {
+      "place": {
+        "place_id": "gn-174710",
+        "name": "Yeghegnadzor",
+        "country": "Armenia",
+        "subdivision": "Vayots Dzor",
+        "lat": 39.7644,
+        "lon": 45.33268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yeghegnadzor",
+          "url": "https://en.wikipedia.org/wiki/Yeghegnadzor",
+          "text": "Yeghegnadzor (Armenian: Եղեգնաձոր [jɛʁɛɡnɑˈd͡zɔɾ]) is a town and urban municipal community in southern Armenia, serving as the provincial capital of Vayots Dzor Province and the Yeghegnadzor Municipality. It is located at a road distance of 123 km (76 mi) south of the capital Yerevan, on the shores of Srkghonk River (Armenian: Սրկղոնք), at a height of 1,194 meters (3,917 ft) above sea level.\nAs per the 2016 official estimate, Yeghegnadzor had a population of around 6,600. As of the 2011 census, the population of the town was 7,944 and as of the 2022 census, the population of the town was 6,912. Yeghegnadzor is the seat of the Diocese of Vayots Dzor of the Armenian Apostolic Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "yeghegnadzor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3535,
+    "attempt": 3506,
+    "place_id": "gn-1789998",
+    "input": {
+      "place": {
+        "place_id": "gn-1789998",
+        "name": "Xiaoshan",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.16746,
+        "lon": 120.25883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiaoshan, Hangzhou",
+          "url": "https://en.wikipedia.org/wiki/Xiaoshan,_Hangzhou",
+          "text": "Xiaoshan is a suburban district of Hangzhou, Zhejiang, China. It was formerly a city in its own right, separated by the Qiantang River from Hangzhou proper, but the municipality was annexed by its more populous neighbor in 2001.\n\nXiaoshan has a permanent population with residential rights of around 1,511,000 and an additional non-permanent population of about 876,500. Most of the local residents are Han people who speak a local variety of Wu Chinese in addition to Mandarin Chinese. The area's history of human settlement dates back to more than 8000 years ago, as excavations at Xiaoshan's Kuahuqiao archeological site have shown. Xiaoshan's manufacturing-dominated economy has made it one of the most affluent metropolitan districts in China. In 2012 it had a GDP of 161.2 billion CNY, or around $17,000 per capita. Hangzhou's international airport, Hangzhou Xiaoshan International Airport, is located in western Xiaoshan, close to the mouth of Hangzhou Bay. The district is also at the center of one of China's local real estate booms, as the demand for newer, more upscale housing from China's growing middle class has led to an explosion in construction of new high-rise condominiums. In addition, Hangzhou Xiaoshan Sports Centre is also found in Xiaoshan.The local culture is deeply rooted in the area's communist character, and the Chinese Communist Party has a strong local presence and an estimated local membership of 250,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "xiaoshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3536,
+    "attempt": 3507,
+    "place_id": "gn-2127896",
+    "input": {
+      "place": {
+        "place_id": "gn-2127896",
+        "name": "Takikawa",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 43.55278,
+        "lon": 141.90639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takikawa, Hokkaido",
+          "url": "https://en.wikipedia.org/wiki/Takikawa,_Hokkaido",
+          "text": "Takikawa (滝川市, Takikawa-shi) is a city located in the Sorachi Subprefecture, Hokkaido, Japan.\nTakikawa City is located in the central area of Hokkaido, it is conveniently located between the cities of Sapporo (biggest city) and Asahikawa (the second biggest city). Takikawa has an inland climate which causes great temperature difference between summer and winter. The average temperature in Takikawa is about 19 degrees Celsius in summer, and –5.9 degrees Celsius (21.4 Fahrenheit) in winter. Takikawa is one of the snowiest locations in Hokkaido, the average amount of snowfall in the past 10 years is 7.77 meters (25 feet, 6 inches).\nTakikawa is also the biggest city in northern Sorachi, making it a hub for neighboring towns. Takikawa is situated between the Ishikari River and Sorachi River, about 60 percent of Takikawa is covered in greenery by either forest or agriculture farmland. Takikawa is surrounded by rich nature.\nAs of December, 2016, the city has an estimated population of 41,306, with 21,561 households. The total area is 115.82 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "takikawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3537,
+    "attempt": 3508,
+    "place_id": "gn-2190224",
+    "input": {
+      "place": {
+        "place_id": "gn-2190224",
+        "name": "Hastings",
+        "country": "New Zealand",
+        "subdivision": "Hawke's Bay Region",
+        "lat": -39.6381,
+        "lon": 176.84918
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hastings, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Hastings,_New_Zealand",
+          "text": "Hastings (; Māori: Heretaunga, Māori pronunciation: [hɛɾɛˈtaʉŋa] ) is a city in New Zealand and one of the two major urban areas in Hawke's Bay, on the east coast of the North Island. The population of Hastings (including Flaxmere) is 49,800 (as of June 2025), with a further 15,000 people in Havelock North  and 2,040 in Clive. Hastings is about 18 kilometres south of the coastal city of Napier. These two neighbouring cities are often called \"The Bay Cities\" or \"The Twin Cities\".\nThe city is the administrative centre of the Hastings District. Since the merger of the surrounding and satellite settlements, Hastings has grown to become one of the largest urban areas in Hawke's Bay.\nHastings District is a food production region. The fertile Heretaunga Plains surrounding the city produce stone fruits, pome fruit, kiwifruit and vegetables, and the area is one of New Zealand's major red wine producers. Associated business include food processing, agricultural services, rural finance and freight. Hastings is the major service centre for the surrounding inland pastoral communities and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "hastings",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3538,
+    "attempt": 3509,
+    "place_id": "gn-2562622",
+    "input": {
+      "place": {
+        "place_id": "gn-2562622",
+        "name": "Qrendi",
+        "country": "Malta",
+        "subdivision": "Il-Qrendi",
+        "lat": 35.83446,
+        "lon": 14.45783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qrendi",
+          "url": "https://en.wikipedia.org/wiki/Qrendi",
+          "text": "Qrendi (Maltese: Il-Qrendi) is a village in the Western Region of Malta It is located close to Mqabba, Żurrieq and Siġġiewi. Within its boundaries are the two Neolithic temples of Mnajdra and Ħaġar Qim. The population of Qrendi was 3,324 in July 2024. This included 1,714 males and 1,610 females; 2,985 Maltese nationals and 339 foreign nationals.\nTwo annual feasts are held in Qrendi: the feast of Our Lady of Lourdes is celebrated either on the last Sunday of June or the first Sunday of July, and the Feast of the Ascension of Our Lady on 15 August.\nAlthough the majority of the village's old core buildings remain today, Qrendi has changed considerably in recent times. A bypass road has been built to divert through-traffic away from the village, modern suburb developments have been built and an open space with a bus terminus created in front of the Parish Church by removing the walled grounds from an old villa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "qrendi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3539,
+    "attempt": 3510,
+    "place_id": "gn-2644972",
+    "input": {
+      "place": {
+        "place_id": "gn-2644972",
+        "name": "Lancaster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.04649,
+        "lon": -2.79988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lancaster, Lancashire",
+          "url": "https://en.wikipedia.org/wiki/Lancaster,_Lancashire",
+          "text": "Lancaster ( LANG-kə-stər or   LANG-kast-ər) is a city in Lancashire, England, and the main cultural hub, economic and commercial centre of City of Lancaster district. The city is on the River Lune, directly inland from Morecambe Bay. Lancaster is the county town, although Lancashire County Council has been based at County Hall in Preston since its formation in 1889.\nThe city's long history is marked by Lancaster Roman Fort, Lancaster Castle, Lancaster Priory Church, Lancaster Cathedral and the Ashton Memorial. It is the seat of Lancaster University and has a campus of the University of Cumbria. It had a population of 52,660 in the 2021 census, compared to the district, which had a population of 142,931. \nThe House of Lancaster was a branch of the English royal family. The Duchy of Lancaster still holds large estates on behalf of Charles III, who is the Duke of Lancaster. The Port of Lancaster and the 18th-century Lancaster slave trade played a major role in the city's growth, but for many years the outport of Glasson Dock, downstream, has been the main shipping facility."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "lancaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3540,
+    "attempt": 3511,
+    "place_id": "gn-2817599",
+    "input": {
+      "place": {
+        "place_id": "gn-2817599",
+        "name": "Verden",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.92334,
+        "lon": 9.23804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verden, Aller",
+          "url": "https://en.wikipedia.org/wiki/Verden,_Aller",
+          "text": "Verden an der Aller (German: [ˈfeːɐ̯dn̩ ʔan dɐ ˈʔalɐ] ; Northern Low Saxon: Veern), also called Verden (Aller) or simply Verden, is a town in Lower Saxony, Germany, on the river Aller. It is the district town of the district of Verden in Lower Saxony and an independent municipality (de:Selbständige Gemeinde). The town is located in the middle Weser region on the Aller river immediately before it flows into the Weser. As a center of horse breeding and equestrian sports, it bears the nickname \"equestrian town\". The suffix \"Aller\" was introduced because the name \"Verden\" was also used in German to refer to the French town of Verdun. The town name comes from \"ford\" or \"ferry\". The town was conveniently located at a ford through the Aller river, near an important trade route.\nVerden is famous for a massacre of Saxons in 782, committed on the orders of Charlemagne (the Massacre of Verden), for its cathedral, and for its horse-breeding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "verden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3541,
+    "attempt": 3512,
+    "place_id": "gn-3385742",
+    "input": {
+      "place": {
+        "place_id": "gn-3385742",
+        "name": "União dos Palmares",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.16278,
+        "lon": -36.03194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "União dos Palmares",
+          "url": "https://en.wikipedia.org/wiki/União_dos_Palmares",
+          "text": "União dos Palmares (Central northeastern portuguese pronunciation: [uniˈɐ̃w ˈduɦ pawˈmɐɾi(s)]) is a municipality located in the Brazilian state of Alagoas. Its population was 65,790 (2020) and its area is 428 km2 (165 sq mi). Surrounding agricultural land is largely dedicated to sugar cane and cattle. At one time, when the city was an active rail stop with regular passenger service, it was named simply União due to its rail junction joining Alagoas and Pernambuco. The name was changed in 1944 to reflect its historic significance. The city is increasingly seeing domestic and foreign tourist drawn by historical and natural features that are now protected in Parque Nacional Serra da Barriga and Parque Memorial Quilombo dos Palmares."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "uniao dos palmares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "uniao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palmares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3542,
+    "attempt": 3513,
+    "place_id": "gn-3449847",
+    "input": {
+      "place": {
+        "place_id": "gn-3449847",
+        "name": "Santa Rita do Sapucaí",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -22.25222,
+        "lon": -45.70333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rita do Sapucaí",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rita_do_Sapucaí",
+          "text": "Santa Rita do Sapucaí (Portuguese pronunciation: [ˈsɐ̃tɐ ˈʁitɐ ðu sɐpukɐˈi]) is a municipality situated in the southernmost part of the State of Minas Gerais. The city is known as the \"electronic valley\", since it has plenty of electronic industries, and both a technical school (ETE - Escola Técnica de Eletrônica Francisco Moreira da Costa) and a University (Inatel - Instituto Nacional de Telecomunicações) which hold courses in electronic knowledge. It also has another university – FAI, which has majors in administration and informatics.\nIn July 2012, Santa Rita do Sapucaí became the first jurisdiction in Minas Gerais to adopt same-sex marriage, and the first municipality in Brazil to individually legalize it. (See: Same-sex marriage in Brazil)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "santa rita do sapucai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rita",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sapucai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3543,
+    "attempt": 3514,
+    "place_id": "gn-3454818",
+    "input": {
+      "place": {
+        "place_id": "gn-3454818",
+        "name": "Pato Branco",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -26.22861,
+        "lon": -52.67056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pato Branco",
+          "url": "https://en.wikipedia.org/wiki/Pato_Branco",
+          "text": "Pato Branco (\"White Duck\" in English) is a municipality in the state of Paraná in Brazil. The municipality covers 537,8 km2 (206.7 mi2) and has a population of 83,843 (2020 IBGE estimate). Pato Branco started off as a village in 1942 and was given status as a city December 14, 1952. It has two private colleges, Faculdade Mater Dei and Faculdade de Pato Branco, and a campus of the Federal University of Technology - Paraná. The city has experienced a positive economic development throughout the last few years.\nPato Branco is located 760 meters above sea level and has a sub-tropical climate with warm summers and mild winters, morning frost being usual during the winter season. Occasional snowfall. There is no defined period of drought. The coldest month of the year is July with an average temperature of 14.2 °C (57.6 °F). January is the warmest month with an average of 22.5 °C (72.5 °F).\nThe current mayor (elected for 2021–2024) is Robson Cantu.\nThe city has a small commercial airport with flights to Curitiba (Juvenal Loureiro Cardoso Airport).\nFormer Brazil International footballer, Alexandre Pato is from the city. He notably played in Europe for the likes of Chelsea FC & AC Milan. Rogério Ceni, a notable goalkeeper that won the 2002 FIFA World Cup and as of 2022, he own the record of most goals scored by a goalkeeper, with 131 goals also was born in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "pato branco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pato",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "branco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3544,
+    "attempt": 3515,
+    "place_id": "gn-3515064",
+    "input": {
+      "place": {
+        "place_id": "gn-3515064",
+        "name": "Tula de Allende",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.05561,
+        "lon": -99.34398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tula de Allende",
+          "url": "https://en.wikipedia.org/wiki/Tula_de_Allende",
+          "text": "Tula de Allende (Otomi: Mämeni) is a town and one of the 84 municipalities of Hidalgo in central-eastern Mexico. The municipality covers an area of 305.8 km2 (118.07 sq mi), and as of 2010, the municipality had a total population of 103,919. The municipality includes numerous smaller outlying towns, the largest of which are El Llano, San Marcos, and San Miguel Vindho. It is a regional economic center and one of Mexico's fastest growing cities. However, it is best known as the home of the Tula archeological site, noted for its Atlantean figures. Its built-up area (or metro) made up of Atotonilco de Tula, Atitalaquia, Tlaxcoapan municipalities was home to 188,659 inhabitants at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "tula de allende",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "allende",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3545,
+    "attempt": 3516,
+    "place_id": "gn-3883629",
+    "input": {
+      "place": {
+        "place_id": "gn-3883629",
+        "name": "La Unión",
+        "country": "Chile",
+        "subdivision": "Los Ríos Region",
+        "lat": -40.29313,
+        "lon": -73.08167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Unión, Chile",
+          "url": "https://en.wikipedia.org/wiki/La_Unión,_Chile",
+          "text": "La Unión is a city and commune of the Ranco Province in the Los Ríos Region in Chile. It is situated approximately 40 km north of Osorno and 80 km southeast of Valdivia. Covering an area of 2,136.7 km2, it has a population of 36,447, of which 25,615 are considered part of the urban population, according to the 2012 census. The commune derived its name from the confluence of the Llollelhue and Radimadi rivers.\nLa Unión was founded in 1821 during the government of Bernardo O'Higgins, to secure sovereignty over the Central Valley south of Valdivia. It is a major centre for milk production; COLUN is the main milk and dairy product producer in the zone. The commune is covered in forest to the west of the city and the east is dominated by agricultural landscapes spanning Los Llanos. Alerce Costero National Park lies in the western mountains.\nThe city served until 2001 as a dormitory town for the coal mines of Catamutún."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "la union",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3546,
+    "attempt": 3517,
+    "place_id": "gn-3906466",
+    "input": {
+      "place": {
+        "place_id": "gn-3906466",
+        "name": "Riberalta",
+        "country": "Bolivia",
+        "subdivision": "Beni Department",
+        "lat": -11.01026,
+        "lon": -66.05257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riberalta",
+          "url": "https://en.wikipedia.org/wiki/Riberalta",
+          "text": "Riberalta is a city in the Beni Department in northern Bolivia, situated where the Madre de Dios River joins the Beni River. Riberalta is on the south (southeast) bank of the Beni River.\nAs the capital of the province of Vaca Diez, the city has maintained its charm even after the Brazilian nut trade sparked recent development. Bolivia is the dominant producer of the nuts, in the period 2017/2018, the country accounted for 78% of production. Peru produces 16% while Brazil produces a mere 2%. City life in Riberalta Municipality is punctuated by nature thanks to its location on the banks of the Beni and Madre de Dios rivers and its proximity to the Amazon rainforest. Home to the Bolivian Navy flotilla and the 1st Naval District, the city is also called the Bolivian capital of the Amazon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "riberalta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3547,
+    "attempt": 3518,
+    "place_id": "gn-4058553",
+    "input": {
+      "place": {
+        "place_id": "gn-4058553",
+        "name": "Decatur",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 34.60593,
+        "lon": -86.98334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Decatur, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Decatur,_Alabama",
+          "text": "Decatur () is the largest city in and the county seat of Morgan County (with a portion also in Limestone County) in the U.S. state of Alabama. Nicknamed \"The River City,\" it is located in northern Alabama on the banks of Wheeler Lake along the Tennessee River. The population was 57,938 at the 2020 census.\nDecatur is the core city of the two-county large Decatur metropolitan area, with an estimated population of 157,425 in 2022. Combined with the Huntsville Metropolitan Area, the two create the Huntsville-Decatur Combined Statistical Area, of which Decatur is the second-largest city.\nLike many southern cities in the early 19th century, Decatur's early success was based upon its location along a river. Railroad routes and boating traffic pushed the city to the front of North Alabama's economic atmosphere. The city rapidly grew into a large economic center within the Tennessee Valley and was a hub for travelers and cargo between Nashville and Mobile, as well as Chattanooga and New Orleans. Throughout the 20th century, the city experienced steady growth but was eclipsed as the regional economic center by the fast-growing Huntsville during the space race. Decatur now finds its economy heavily based on manufacturing, mining, cargo transit, chemical, and high-tech companies such as Vulcan Materials, Daikin, Toray, and United Launch Alliance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "decatur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3548,
+    "attempt": 3519,
+    "place_id": "gn-4159050",
+    "input": {
+      "place": {
+        "place_id": "gn-4159050",
+        "name": "Homestead",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.46872,
+        "lon": -80.47756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Homestead, Florida",
+          "url": "https://en.wikipedia.org/wiki/Homestead,_Florida",
+          "text": "Homestead is a city within Miami-Dade County in the U.S. state of Florida, between Biscayne National Park to the east and Everglades National Park to the west. Homestead is primarily a Miami suburb and a major agricultural area. It is a principal city of the Miami metropolitan area of South Florida, which was home to 6,138,333 people at the 2020 census. It is located approximately 26 miles (42 km) southwest of Miami, and 25 miles (40 km) northwest of Key Largo. The population was 80,737 as of the 2020 census.\nThe city of Homestead is located near the southern terminus of the Homestead Extension of Florida's Turnpike where it ends at its junction with U.S. 1.  Homestead is immediately north and east of Florida City, and these two cities comprise the greater Homestead–Florida City area. Some of the notable unincorporated communities in the area are Redland, Leisure City, Naranja, and Princeton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "homestead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3549,
+    "attempt": 3520,
+    "place_id": "gn-4172131",
+    "input": {
+      "place": {
+        "place_id": "gn-4172131",
+        "name": "Sarasota",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.33643,
+        "lon": -82.53065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarasota, Florida",
+          "url": "https://en.wikipedia.org/wiki/Sarasota,_Florida",
+          "text": "Sarasota () is a city in and the county seat of Sarasota County, Florida, United States. It is located in Southwest Florida on Sarasota Bay, a lagoon on the Gulf Coast. The population was 54,842 at the 2020 census. The two-county Sarasota metropolitan area has an estimated 935,000 residents, making it the fifth-largest metropolitan area in Florida and 61st-largest in the United States.\nThe Sarasota area was explored by the Spanish in the 16th century, and was settled by American William Henry Whitaker in the mid-19th century. Sarasota's development accelerated in the late 19th and early 20th centuries, particularly with the influence of Bertha Honore Palmer and the Ringling family as the home of Ringling Bros. and Barnum & Bailey Circus. The city's economy is based on tourism, healthcare, education, and real estate. Its cultural attractions include the John and Mable Ringling Museum of Art, Sarasota Opera, and numerous galleries and theaters. Sarasota city limits contain several barrier islands between Sarasota Bay and the Gulf of Mexico, including Lido Key, St. Armands Key, Bird Key, and the northern portion of Siesta Key. Its coastline, including nearby Siesta Beach, draws visitors year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "sarasota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
