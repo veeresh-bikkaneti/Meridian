@@ -1,10 +1,11 @@
 // assemble.mjs — assemble the published GeoDetective files from the
 // validated audit records, and prove the published files leak nothing.
 //
-// Run: node scripts/clues/production/assemble.mjs
+// Run: node scripts/clues/production/assemble.mjs [--records <file>]
 //
-// Reads:  records.jsonl (audit trail), pool.jsonl (rank order +
-//         curated aliases for the leak scan)
+// Reads:  records.jsonl (audit trail; --records overrides, e.g. the
+//         Option A union records-final.jsonl), pool.jsonl (rank
+//         order + curated aliases for the leak scan)
 // Writes: public/loop/clues/{index}.json for every accepted record, in
 //         pool fame-rank order (index 0 = highest fame), and
 //         public/loop/manifest.json {v:1, size, generatedAt};
@@ -19,7 +20,7 @@
 // with a non-zero exit and no manifest is written.
 
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, isAbsolute, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { assemblePublishedFile, buildManifest } from "../compose-clues.mjs";
@@ -35,8 +36,17 @@ function readJsonLines(path) {
   return readFileSync(path, "utf8").split("\n").filter((l) => l.trim()).map((l) => JSON.parse(l));
 }
 
-function main() {
-  const records = readJsonLines(join(HERE, "records.jsonl"));
+function argValue(args, name) {
+  const idx = args.indexOf(name);
+  return idx >= 0 ? args[idx + 1] : undefined;
+}
+
+function main(argv = []) {
+  const recordsArg = argValue(argv, "--records");
+  const recordsPath = recordsArg ? (isAbsolute(recordsArg) ? recordsArg : join(HERE, recordsArg)) : join(HERE, "records.jsonl");
+  const reportArg = argValue(argv, "--report");
+  const reportPath = reportArg ? (isAbsolute(reportArg) ? reportArg : join(HERE, reportArg)) : join(HERE, "assembly-report.json");
+  const records = readJsonLines(recordsPath);
   const pool = readJsonLines(join(HERE, "pool.jsonl"));
   const rankOf = new Map(pool.map((input, idx) => [input.place.place_id, idx + 1]));
   const inputOf = new Map(pool.map((input) => [input.place.place_id, input]));
@@ -103,10 +113,10 @@ function main() {
         "folded substring scan of every published clue text against the place's leak terms (name + aliases + curated aliases), plus a whole-file scan with the source href scrubbed",
     },
   };
-  writeFileSync(join(HERE, "assembly-report.json"), JSON.stringify(report, null, 2) + "\n");
+  writeFileSync(reportPath, JSON.stringify(report, null, 2) + "\n");
   console.log(JSON.stringify(report, null, 2));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  main();
+  main(process.argv.slice(2));
 }
