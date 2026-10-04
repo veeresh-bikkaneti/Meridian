@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 141,
+    "place_id": "gn-629634",
+    "input": {
+      "place": {
+        "place_id": "gn-629634",
+        "name": "Brest",
+        "country": "Belarus",
+        "subdivision": "Brest",
+        "lat": 52.10894,
+        "lon": 23.71749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brest, Belarus",
+          "url": "https://en.wikipedia.org/wiki/Brest,_Belarus",
+          "text": "Brest, formerly Brest-Litovsk (1600s–1923) and Brest-on-the-Bug (1923–1939), is a city in south-western Belarus at the border with Poland opposite the Polish town of Terespol, where the Bug and Mukhavets rivers meet, making it a border town. It serves as the administrative center of Brest Region and Brest District, though it is administratively separated from the district. As of 2026, it has a population of 347,138.\nBrest is one of the oldest cities in Belarus and a historical site for many cultures, as it hosted important historical events, such as the Union of Brest and Treaty of Brest-Litovsk. Furthermore, the Brest Fortress was recognized by the Soviet Union as a Hero Fortress in honour of the defense of Brest Fortress in June 1941.\nIn the High Middle Ages, the city often passed between Poland, the principalities of Kievan Rus', and the Grand Duchy of Lithuania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "brest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 142,
+    "place_id": "gn-984998",
+    "input": {
+      "place": {
+        "place_id": "gn-984998",
+        "name": "Ladysmith",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.55874,
+        "lon": 29.77896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ladysmith, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+          "text": "Ladysmith, officially known as uMnambithi since 2024, is a town that serves as the seat of both the Alfred Duma Local Municipality and the Uthukela District Municipality in KwaZulu-Natal, South Africa. It lies 230 kilometres (140 mi) north-west of Durban and 365 kilometres (227 mi) south-east of Johannesburg. Important industries in the area include food processing, textiles, and tyre production.\nThe town was named after Juana María de los Dolores de León Smith, also known as \"Lady Smith,\" the Spanish wife of Sir Harry Smith, the Governor of the Cape Colony from 1847–1852. It held strategic importance during the Second Boer War when, after numerous small skirmishes, it was besieged by Boer forces on 2 November 1899. After three British attempts to relieve the defenders and one Boer attempt to take the town all failed, the siege was eventually broken on 28 February 1900."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "ladysmith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 143,
+    "place_id": "gn-4221552",
+    "input": {
+      "place": {
+        "place_id": "gn-4221552",
+        "name": "Savannah",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.08354,
+        "lon": -81.09983
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savannah, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+          "text": "Savannah is a city in and the county seat of Chatham County, Georgia, United States. Established in 1733 on the Savannah River, it is the oldest city in the state, and was the capital of the colonial Province of Georgia and later the first state capital of Georgia. A strategic port city in the American Revolution and during the American Civil War, Savannah today is an industrial center and an important Atlantic seaport. The city is the most populous in the Coastal Georgia region and the fifth-most populous in the state as a whole, with a population of 147,780 at the 2020 census and an estimated 149,440 in 2025. The Savannah metropolitan area, with about 438,000 residents in 2025, is the third-largest metro area in the state.\nSavannah attracts millions of visitors each year to its cobblestone streets, parks, and notable historic buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "savannah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 144,
+    "place_id": "gn-1688749",
+    "input": {
+      "place": {
+        "place_id": "gn-1688749",
+        "name": "San Pedro",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.3595,
+        "lon": 121.0473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro, Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+          "text": "San Pedro, officially the City of San Pedro (Filipino: Lungsod ng San Pedro), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 348,968 people.\nIt is named after its patron, Saint Peter.\nSan Pedro has been dubbed as “dormitory town” of Metro Manila and migrants from other provinces commuting everyday through its highly efficient road and transport system. Despite being one of the smallest political units in the entire province, with a total land area of only 24.05 square kilometers (9.29 sq mi), San Pedro is the 5th most populous city (out of 6) after the cities of Biñan, Calamba, Santa Rosa and Cabuyao. The city also has the highest population density in the province of Laguna and in the whole Calabarzon region, having 15,000 inhabitants per square kilometer (39,000/sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 145,
+    "place_id": "gn-1276032",
+    "input": {
+      "place": {
+        "place_id": "gn-1276032",
+        "name": "Bhavnagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 21.76287,
+        "lon": 72.15331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhavnagar",
+          "url": "https://en.wikipedia.org/wiki/Bhavnagar",
+          "text": "Bhavnagar is a city and the headquarters of Bhavnagar district in the Indian state of Gujarat. Bhavnagar was founded in 1723 by Bhavsinhji Gohil. It was the capital of Bhavnagar State, which was a princely state before it was merged into the Indian Union in February 1948.Bhavnagar currently has the 5th largest population in Gujarat.\nBhavnagar is situated 190 kilometres or 120 miles away from the state capital Gandhinagar and to the west of the Gulf of Khambhat. It has always been an important city for trade with many large and small scale industries along with the world's largest ship breaking yard, Alang which is located 50 kilometres or 31 miles away. Historically, Bhavnagar holds the distinction of being the first princely state to voluntarily merge into the Union of India in January 1948, a move led by Maharaja Krishnakumarsinhji Gohil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "bhavnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 146,
+    "place_id": "gn-184745",
+    "input": {
+      "place": {
+        "place_id": "gn-184745",
+        "name": "Nairobi",
+        "country": "Kenya",
+        "subdivision": "Nairobi County",
+        "lat": -1.28333,
+        "lon": 36.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nairobi",
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "text": "Nairobi (  ny-ROH-bee) (Jiji kuu la Nairobi, in Swahili),  is the capital and largest city of Kenya, located in the south-central part of the country. As of 2026, it has a population of 5.6 million and a metropolitan population of 15.95 million, making it the 8th most populous city in Africa and the 4th most populous metropolitan area. The city goes beyond its borders and has expanded into neighbouring counties, making it the 4th largest metropolitan area in Africa.\nNicknamed the \"Green City under the Sun\", Nairobi is uniquely notable for being the only capital city in the world that hosts a national park within its boundaries. Its name originates from the Maasai phrase Enkare Nyirobi, meaning \"place of cool waters\".\nAs the national capital, Nairobi is home to the Kenyan Parliament Buildings, the State House and the Supreme Court Building."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "nairobi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 147,
+    "place_id": "gn-3471039",
+    "input": {
+      "place": {
+        "place_id": "gn-3471039",
+        "name": "Balneário Camboriú",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.99056,
+        "lon": -48.63472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balneário Camboriú",
+          "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+          "text": "Balneário Camboriú (Portuguese pronunciation: [bawneˈaɾju kɐ̃boɾiˈu]) is a coastal city in the southern Brazilian state of Santa Catarina. The city is built on steep hills which drop down to the sea. It is a popular tourist destination for South Americans, who are drawn to its main ocean boulevard Avenida Atlântica (Atlantic Avenue), and who swell the city's population from 139,155 (2022 Census) to over one million in the summer. The city is famous for its unique beach-to-beach cable car which links its central beach with the beach of Laranjeiras. Balneário Camboriú is located 10 km (6.2 mi) south of the city of Itajaí, 96 km (60 mi) south of the city of Joinville, and 80 km (50 mi) north of the state capital, Florianópolis.\nThe city is served by Ministro Victor Konder International Airport located in the adjoining municipality of Navegantes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "balneario camboriu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balneario",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camboriu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 148,
+    "place_id": "gn-4905687",
+    "input": {
+      "place": {
+        "place_id": "gn-4905687",
+        "name": "Peoria",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.69365,
+        "lon": -89.58899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peoria, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Peoria,_Illinois",
+          "text": "Peoria ( pee-OR-ee-ə) is a city in Peoria County, Illinois, United States, and its county seat. Located on the Illinois River, the city had a population of 113,150 as of the 2020 census, making it the eighth-most populous city in Illinois. It is the principal city of the Peoria metropolitan area in Central Illinois, consisting of Fulton, Marshall, Peoria, Stark, Tazewell, and Woodford counties and had a combined population of 402,391 in 2020.\nEstablished in 1691 by the French explorer Henri de Tonti, Peoria is the oldest permanent European settlement in Illinois, according to the Illinois State Archaeological Survey. The city received its current name when the County of Peoria was organized in 1825 and was named after the Peoria people, a member of the Illinois Confederation. On October 16, 1854, Abraham Lincoln made his Peoria speech against the Kansas–Nebraska Act."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "peoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 149,
+    "place_id": "gn-5393015",
+    "input": {
+      "place": {
+        "place_id": "gn-5393015",
+        "name": "Santa Clara",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.35411,
+        "lon": -121.95524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Clara, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+          "text": "Santa Clara ( SAN-tə KLAR-ə; Spanish for 'Saint Clare') is a city in Santa Clara County, California, United States. Located in the southern San Francisco Bay Area, it was founded by the Spanish in 1777 with the establishment of Mission Santa Clara de Asís under the leadership of Junípero Serra. The city's population was 127,647 at the 2020 census, making it the eighth-most populous city in the Bay Area. The U.S. Census Bureau estimated Santa Clara's population at 133,446 as of July 1, 2025.\nSanta Clara is located in the center of Silicon Valley and is home to the headquarters of companies such as Intel, Advanced Micro Devices (AMD), and Nvidia. It is also home to Santa Clara University, the oldest university in California, Levi's Stadium, home of the National Football League's San Francisco 49ers, and California's Great America amusement park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "santa clara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 150,
+    "place_id": "gn-1839652",
+    "input": {
+      "place": {
+        "place_id": "gn-1839652",
+        "name": "Osan",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.15222,
+        "lon": 127.07056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osan",
+          "url": "https://en.wikipedia.org/wiki/Osan",
+          "text": "Osan (Korean: 오산; Korean pronunciation: [o.san]) is a city in Gyeonggi Province, South Korea, approximately 35 km (22 mi) south of Seoul. The population of the city is around 200,000.  The local economy is supported by a mix of agricultural and industrial enterprises.\nIt is famous for one of the largest markets in South Korea, Osan Market, which has been in continuous operation since 1792. The city was the scene of the first battle between the US and North Korea during the Korean War in 1950; there is a statue and museum dedicated to UN forces on the outskirts of the city.\nThe United States Air Force base named after the city, Osan Air Base, is not actually located in the city, but is instead 8 km (5.0 mi) south, in the Songtan district (formerly a separate city) of Pyeongtaek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "osan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 151,
+    "place_id": "gn-2921466",
+    "input": {
+      "place": {
+        "place_id": "gn-2921466",
+        "name": "Gelsenkirchen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.50508,
+        "lon": 7.09654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gelsenkirchen",
+          "url": "https://en.wikipedia.org/wiki/Gelsenkirchen",
+          "text": "Gelsenkirchen (; German: [ˌɡɛlzn̩ˈkɪʁçn̩] ; Westphalian: Gelsenkiärken) is the 26th-most populous city of Germany and the 12th-most populous in the state of North Rhine-Westphalia with a population of 266,199 as of 2025. On the Emscher River (a tributary of the Rhine), it lies at the centre of the Ruhr area, the largest urban area of Germany, of which it is the fifth-largest city after Dortmund, Essen, Duisburg and Bochum. The Ruhr is located in the Rhine-Ruhr metropolitan region, the second-biggest metropolitan region by GDP in the European Union. Gelsenkirchen is the fifth-largest city of Westphalia after Dortmund, Bochum, Bielefeld and Münster, and it is one of the southernmost cities in the Low German dialect area. The city is home to the football club Schalke 04, which is named after Gelsenkirchen-Schalke. The club's current stadium Veltins-Arena, however, is located in Gelsenkirchen-Erle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "gelsenkirchen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 152,
+    "place_id": "gn-294801",
+    "input": {
+      "place": {
+        "place_id": "gn-294801",
+        "name": "Haifa",
+        "country": "Israel",
+        "subdivision": "Haifa",
+        "lat": 32.81303,
+        "lon": 34.99928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haifa",
+          "url": "https://en.wikipedia.org/wiki/Haifa",
+          "text": "Haifa ( HY-fə; Hebrew: חיפה, romanized: Ḥayfā, IPA: [ˈχajfa]; Arabic: حيفا, romanized: Ḥayfā, IPA: [ħaj.faː]) is the third-largest city in Israel—after Jerusalem and Tel Aviv—with a population of 297,082 in 2024. The city of Haifa forms part of the Haifa metropolitan area, the third-most populous metropolitan area in Israel. It is home to the Baháʼí Faith's Baháʼí World Centre, a UNESCO World Heritage Site and destination for Baháʼí pilgrimage.\nBuilt on the slopes of Mount Carmel, the settlement has a history spanning more than 3,000 years. Over the millennia, the Haifa area has changed hands: being conquered and ruled by the Canaanites, Israelites, Phoenicians, Assyrians, Babylonians, Persians, Hasmoneans, Romans, Byzantines, Arabs, Crusaders, Ottomans, and the British. The earliest known settlement in the vicinity was Tell Abu Hawam, a small port city established in the Late Bronze Age (14th century BCE)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "haifa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 153,
+    "place_id": "gn-3186573",
+    "input": {
+      "place": {
+        "place_id": "gn-3186573",
+        "name": "Zenica",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 44.20169,
+        "lon": 17.90397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zenica",
+          "url": "https://en.wikipedia.org/wiki/Zenica",
+          "text": "Zenica (English:  ZEN-it-sə, Bosnian: [zěnitsa] ) is a city in Bosnia and Herzegovina and an administrative and economic center of the Federation of Bosnia and Herzegovina's Zenica-Doboj Canton. It is located in the Bosna river valley, about 70 km (43 mi) north of Sarajevo. The city is known for its Ironworks Zenica factory but also as a significant university center. According to the 2013 census, the settlement of Zenica itself counts 70,553 citizens and the administrative area 110,663, making it the nation's fourth-largest city.\nThe urban part of today's city was formed in several phases, including Neolithic, Illyrian, and the Roman Municipium of Bistua Nuova (2nd–4th century; old name of the city), with an early Christian dual basilica. Traces of an ancient settlement have been found here as well; villa rustica, thermae, a temple, and other buildings were also present."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "zenica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 154,
+    "place_id": "gn-3421319",
+    "input": {
+      "place": {
+        "place_id": "gn-3421319",
+        "name": "Nuuk",
+        "country": "Greenland",
+        "subdivision": "Sermersooq",
+        "lat": 64.18347,
+        "lon": -51.72157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuuk",
+          "url": "https://en.wikipedia.org/wiki/Nuuk",
+          "text": "Nuuk (Greenlandic pronunciation: [nuːk] ; formerly Danish: Godthåb) is the capital and most populous city of Greenland, an autonomous territory of Denmark. It is the seat of the Sermersooq municipality and the government of Greenland and is the territory's largest cultural and economic center. In January 2025, it had a population of 20,113—more than a third of the territory's population—making it one of the smallest capital cities in the world by population.\n\nThe city was founded in 1728 by the Danish-Norwegian missionary Hans Egede when he relocated from the earlier Hope Colony (Haabets Koloni), where he had arrived in 1721; the governor Claus Paarss was part of the relocation. The new colony was placed at the Inuit settlement of Nûk and named Godthaab ('good hope'). Nuuk is the Greenlandic word for 'cape' and is commonly found in Greenlandic place names."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "nuuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 155,
+    "place_id": "gn-3691175",
+    "input": {
+      "place": {
+        "place_id": "gn-3691175",
+        "name": "Trujillo",
+        "country": "Peru",
+        "subdivision": "La Libertad",
+        "lat": -8.11599,
+        "lon": -79.02998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trujillo, Peru",
+          "url": "https://en.wikipedia.org/wiki/Trujillo,_Peru",
+          "text": "Trujillo (Spanish: [tɾuˈxiʝo]; Quechua: Truhillu; Mochica: Cɥimor) is a city in coastal northwestern Peru and the capital of the Department of La Libertad. It is the third most populous city and center of the third most populous metropolitan area of Peru. It is located on the banks of the Moche River, near its mouth at the Pacific Ocean, in the Moche Valley. This was a site of the great prehistoric Moche and Chimu cultures before the Inca conquest and subsequent expansion.\nThe Independence of Trujillo from Spain was proclaimed in the Historic Centre of Trujillo on December 29, 1820, and the city was honored in 1822 by the Congress of the Republic of Peru with the title \"Meritorious City and Faithful to the Fatherland\", for its role in the fight for Peruvian independence. Trujillo is the birthplace of Peru's judiciary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "trujillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 156,
+    "place_id": "gn-11054399",
+    "input": {
+      "place": {
+        "place_id": "gn-11054399",
+        "name": "Bukit Bintang",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.14657,
+        "lon": 101.71023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukit Bintang",
+          "url": "https://en.wikipedia.org/wiki/Bukit_Bintang",
+          "text": "Bukit Bintang (Malay: [ˈbu.ket̚ ˈbin.taŋ]; stylised as Bintang Walk or Starhill, the latter being a translation of the Malay name) is the shopping and entertainment district of Kuala Lumpur, Malaysia. It encompasses Jalan Bukit Bintang (Bukit Bintang Road in English) and its immediate surrounding areas. The area has long been Kuala Lumpur's most prominent retail belt that is home to many landmark shopping centres, al-fresco cafés, bars, night markets, food street, mamak stalls as well as hawker-type eateries. This area is popular among tourists and locals, especially among the youths.\nSince June 2021, the local municipal and authority, Kuala Lumpur City Hall (DBKL), has created a scramble crossing at the junction of Bukit Bintang, located in front of the McDonald's Bukit Bintang outlet, just below the KL Monorail Line. This was done to increase the walkability in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "bukit bintang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bukit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bintang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 157,
+    "place_id": "gn-11524601",
+    "input": {
+      "place": {
+        "place_id": "gn-11524601",
+        "name": "Jebel Ali",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.00255,
+        "lon": 55.10811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jebel Ali",
+          "url": "https://en.wikipedia.org/wiki/Jebel_Ali",
+          "text": "Jebel Ali (Arabic: جبل علي) is a major port city located within the Emirate of Dubai, United Arab Emirates, approximately 35 kilometres (22 mi) southwest of the city of Dubai. Situated along the southern coast of the Persian Gulf, it serves as one of the UAE's most significant industrial and logistical hubs. Off its coast lies the artificial archipelago Palm Jebel Ali, one of several palm-shaped islands developed by Nakheel as part of Dubai's coastal expansion projects. The area also encompasses Expo City Dubai, the legacy site of Expo 2020, and Dubai Investment Park, a mixed-use complex that includes industrial, commercial, and residential zones. As of 2024, it has a total population of 540,732.\nInitially a sparsely inhabited coastal area, Jebel Ali was developed in the 1970s as part of a state-directed initiative to diversify Dubai's economy beyond oil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "jebel ali",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jebel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ali",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 158,
+    "place_id": "gn-293397",
+    "input": {
+      "place": {
+        "place_id": "gn-293397",
+        "name": "Tel Aviv",
+        "country": "Israel",
+        "subdivision": "Tel Aviv",
+        "lat": 32.08088,
+        "lon": 34.78057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tel Aviv",
+          "url": "https://en.wikipedia.org/wiki/Tel_Aviv",
+          "text": "Tel Aviv, officially Tel Aviv-Yafo, and also known as Tel Aviv-Jaffa, is the most populous city in the Gush Dan metropolitan area of Israel. Located on the Israeli Mediterranean coastline and with a population of 494,900, it is the economic and technological center of the country and a global high-tech hub. If East Jerusalem is considered part of Israel, Tel Aviv is the country's second-most-populous city, after Jerusalem; if not, Tel Aviv is the most populous city, ahead of West Jerusalem.\nTel Aviv is governed by the Tel Aviv-Yafo Municipality, headed by Mayor Ron Huldai, and is home to most of Israel's foreign embassies. It is a beta+ world city and is ranked 53rd in the 2022 Global Financial Centres Index. Tel Aviv has the third- or fourth-largest economy and the largest economy per capita in the Middle East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "tel aviv",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aviv",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 159,
+    "place_id": "gn-2934691",
+    "input": {
+      "place": {
+        "place_id": "gn-2934691",
+        "name": "Duisburg",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.43247,
+        "lon": 6.76516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duisburg",
+          "url": "https://en.wikipedia.org/wiki/Duisburg",
+          "text": "Duisburg (German: [ˈdyːsbʊʁk] ; Low German: Duisborg [ˈdʏsbɔɐ̯χ]) is a major city in western Germany, located in the state of North Rhine-Westphalia. With around half a million inhabitants, it is one of the largest cities in the Ruhr area and part of the larger Rhine-Ruhr metropolitan region, one of the biggest population centers in Europe. Duisburg is situated at the confluence of the Ruhr and the Rhine, a geographic position that has historically made it an important center of trade, industry, and transportation. Administratively, Duisburg forms an independent city (kreisfreie Stadt).\nThe city is known for hosting Europe's largest inland port, the Port of Duisburg, which plays a key role in European logistics and international trade. The port's facilities are directly linked to major motorways, rail networks, and the Rhine waterway, connecting Duisburg to the North Sea and beyond."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "duisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 160,
+    "place_id": "gn-3644918",
+    "input": {
+      "place": {
+        "place_id": "gn-3644918",
+        "name": "Cúa",
+        "country": "Venezuela",
+        "subdivision": "Miranda",
+        "lat": 10.16245,
+        "lon": -66.88248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cúa",
+          "url": "https://en.wikipedia.org/wiki/C%C3%BAa",
+          "text": "Cúa (founded in 1690) is a small city capital of the Urdaneta Municipality, located in the Miranda State (Estado Miranda) in the north of Venezuela with an altitude of 490 m. Cúa is noted for warm and clear weather, with year-round sunshine and 60 days of rainfall annually, and an average temperature that range from 18 °C to 28 °C, but with relative low humidity.\nWith leafy forest and meadows, Cúa has a population of 123,000 (2004), mainly dedicated to services and industry (plastic pipes, paper rolls) it's a dormitory town. The most important districts of Cúa are: Nueva Cúa, Lecumberry, La Fila, Mume, Santa rosa and Aparay.\nThe local Sanctuary of the Virgin of Betania has become famous for its attributed Marian apparitions.\nCúa is one of the locations served by the IFE Ezequiel Zamora Mass Transportation System."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "cua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
