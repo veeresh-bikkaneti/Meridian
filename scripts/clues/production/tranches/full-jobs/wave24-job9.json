@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 4796,
+    "attempt": 4761,
+    "place_id": "gn-2160413",
+    "input": {
+      "place": {
+        "place_id": "gn-2160413",
+        "name": "Leeton",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.55105,
+        "lon": 146.40483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leeton, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Leeton,_New_South_Wales",
+          "text": "Leeton is a town in the Riverina region of New South Wales, Australia. It is situated in the Murrumbidgee Irrigation Area. It is the administrative centre of the Leeton Shire Council local government area, which includes neighbouring suburbs, towns and localities such as Yanco, Wamoon, Whitton, Gogeldrie, Stanbridge and Murrami. \nThe town was designed by Walter Burley Griffin and built for the New South Wales government early 20th century irrigation schemes. Leeton is home to citrus, rice, cotton, grape, walnut, and wheat farming. It is known as Australia's Rice Capital, as well as The Heart of SunRice Country, as it is home to the headquarters of SunRice corporation, one of Australia's largest food exporters. Other industry includes Arnott's Biscuits (previously Freedom Foods), Webster Limited, and Murrumbidgee Irrigation Limited."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "leeton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4797,
+    "attempt": 4762,
+    "place_id": "gn-2753806",
+    "input": {
+      "place": {
+        "place_id": "gn-2753806",
+        "name": "Honselersdijk",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.00665,
+        "lon": 4.22441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Honselersdijk",
+          "url": "https://en.wikipedia.org/wiki/Honselersdijk",
+          "text": "Honselersdijk is a town in the Dutch province of South Holland. It is home to the historic Huis Honselaarsdijk, former palatial estate of the Dutch Princes of Orange. Huis Honselaarsdijk was one of the finest examples of Baroque architecture and grounds in the history of The Netherlands.  Today, only part of the outbuildings remain, and these are referred to locally as \"De Nederhof\".\nHonselersdijk is part of the municipality of Westland, and lies about 2.6 km (2 mi) southwest of the border of The Hague, with a population of approximately 5,180.\nThe statistical area \"Honselersdijk\", which also includes the surrounding countryside and part of the hamlet Mariëndijk, has a total population of approximately 7,460.\nToday, Honselersdijk is home to one of the largest flower auctions in the world, Royal Flora Holland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "honselersdijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4798,
+    "attempt": 4763,
+    "place_id": "gn-2830880",
+    "input": {
+      "place": {
+        "place_id": "gn-2830880",
+        "name": "Sottrum",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.11357,
+        "lon": 9.23228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sottrum",
+          "url": "https://en.wikipedia.org/wiki/Sottrum",
+          "text": "Sottrum is a municipality in the district of Rotenburg, in Lower Saxony, Germany. It is situated approximately 11 km west of Rotenburg, and 30 km east of Bremen.\nSottrum belonged to the Prince-Bishopric of Verden, established in 1180. In 1648 the Prince-Bishopric was transformed into the Principality of Verden, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712–1715) - and from 1715 on by the Hanoverian Crown. The Kingdom of Hanover incorporated the Principality in a real union and the Princely territory, including Sottrum, became part of the new Stade Region, established in 1823.\nSottrum is also the seat of the Samtgemeinde (\"collective municipality\") Sottrum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sottrum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4799,
+    "attempt": 4764,
+    "place_id": "gn-2855794",
+    "input": {
+      "place": {
+        "place_id": "gn-2855794",
+        "name": "Oyten",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.05498,
+        "lon": 9.01995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oyten",
+          "url": "https://en.wikipedia.org/wiki/Oyten",
+          "text": "Oyten (German pronunciation: [ˈɔʏtn̩]; Low German: Eiten) is a municipality in the district of Verden, in Lower Saxony, Germany. It is situated approximately 20 km northwest of Verden, and 15 km east of Bremen. Oyten is made up of eight neighborhoods: Oyten-South, Bassen, Oyten-North, Sagehorn, Bockhorst, Shaphusen, Meyerdamm, and Oyterdamm.\nOyten belonged to the Prince-Archbishopric of Bremen, established in 1180. In 1648 the Prince-Archbishopric was transformed into the Duchy of Bremen, which was first ruled in personal union by the Swedish Crown – interrupted by a Danish occupation (1712–1715) – and from 1715 on by the Hanoverian Crown. In 1807 the ephemeric Kingdom of Westphalia annexed the Duchy, before France annexed it in 1810. In 1813 the Duchy was restored to the Electorate of Hanover, which – after its upgrade to the Kingdom of Hanover in 1814 – incorporated the Duchy in a real union and the Ducal territory, including Oyten, became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "oyten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4800,
+    "attempt": 4765,
+    "place_id": "gn-3588043",
+    "input": {
+      "place": {
+        "place_id": "gn-3588043",
+        "name": "Uspantán",
+        "country": "Guatemala",
+        "subdivision": "Quiché",
+        "lat": 15.34672,
+        "lon": -90.8705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uspantán",
+          "url": "https://en.wikipedia.org/wiki/Uspant%C3%A1n",
+          "text": "Uspantán is a municipality in the Guatemalan department of El Quiché. It is one of the largest municipalities of El Quiché and stretches from the mountainous highlands in the South to the tropical lowlands in the North.  The municipal seat is in Villa de San Miguel Uspantán with a population of 2,800. The birthplace of Nobel Peace Prize winner Rigoberta Menchú, a community named Laj Chimel, is located Uspantán not far from the municipal seat.  Completion of paving on the road in from Chichicastenango has brought a small tourist boom to the town.\nThe municipality includes the pre-Columbian Maya archaeological site of Chitinamit, believed to be Jakawitz, the first capital of the K'iche' Maya."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "uspantan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4801,
+    "attempt": 4766,
+    "place_id": "gn-4185110",
+    "input": {
+      "place": {
+        "place_id": "gn-4185110",
+        "name": "Buford",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.12066,
+        "lon": -84.00435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buford, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Buford,_Georgia",
+          "text": "Buford is a city in Gwinnett and Hall counties in the U.S. state of Georgia. As of the 2020 census, the city had a population of 17,144. Most of the city is in Gwinnett County, which is part of the Atlanta-Sandy Springs-Marietta Metropolitan Statistical Area. The northern sliver of the city is in Hall County, which comprises the Gainesville, Georgia Metropolitan Statistical Area and is part of the larger Atlanta-Athens-Clarke-Sandy Springs Combined Statistical Area.\nThe city was founded in 1872 after a railroad was built in the area connecting Charlotte, North Carolina, with Atlanta. Buford was named after Algernon Sidney Buford, who at the time was president of the Atlanta and Richmond Air-Line Railway. The city's leather industry, led by the Bona Allen Company, as well as its location as a railway stop, caused the population to expand during the early 1900s until after the Great Depression had ended.\nThe city has its own school district, the Buford City School District, and has been the birthplace and home of several musicians and athletes. Various tourist locations, including museums and community centers, the largest mall in the state of Georgia, the Mall of Georgia, and Lake Lanier Islands are in the Buford region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "buford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4802,
+    "attempt": 4767,
+    "place_id": "gn-4223004",
+    "input": {
+      "place": {
+        "place_id": "gn-4223004",
+        "name": "Skidaway Island",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 31.93494,
+        "lon": -81.04705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skidaway Island, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Skidaway_Island,_Georgia",
+          "text": "Skidaway Island is an unincorporated community and census-designated place (CDP) in Chatham County, Georgia, and lies on a barrier island of the same name. Located south of Savannah, Skidaway Island is known for its waterfront properties and golf courses within The Landings, one of the largest gated communities in the country. The population was 9,310 at the 2020 census. A separate area of the island hosts the Skidaway Institute of Oceanography, a research institution operated by the University of Georgia. It receives scholars and researchers from several other Georgia universities as well, including Georgia Tech, Savannah State University, and the College of Coastal Georgia. Skidaway Island is part of the Savannah Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "skidaway island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "skidaway",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4803,
+    "attempt": 4768,
+    "place_id": "gn-4351127",
+    "input": {
+      "place": {
+        "place_id": "gn-4351127",
+        "name": "Cherry Hill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.25483,
+        "lon": -76.63441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cherry Hill, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Cherry_Hill,_Baltimore",
+          "text": "Cherry Hill is one of the southernmost neighborhoods in Baltimore, Maryland. It has a population of 11,977 as of May 2026. It is a historically significant neighborhood in southern Baltimore, known as the first planned suburban community for African Americans in the U.S. and home to the city's largest public housing project. It is a relatively isolated peninsula located south of downtown, bounded by the Middle Branch of the Patapsco River. Limited access points include Hanover Street and the Cherry Hill Light Rail stop.\nCherry Hill developed in the 1940s to house African American veterans of WWII and the Korean War and was home to a community of Roma people in the early 1900s. In the 2015–2016 school year, the Maritime Industries Academy moved to Cherry Hill to provide a local high school option for teenagers, which then officially closed in 2023 due to health hazards and low attendance rates.\nCherry Hill is largely affected by the incinerators and landfills located in South Baltimore, and the residents have some of the highest cancer and asthma rates in the country. Cherry Hill is also a major food desert and has a large minority population. There are several initiatives being taken to better the community, including implementing recycling and composting programs, as well as ecological restoration activities. The neighborhood is home to Harbor Hospital and the bakery that makes the famous local Berger Cookies. It includes the Cherry Hill Homes (over 1,000 public housing units), private homes, and other low-income apartments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "cherry hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cherry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4804,
+    "attempt": 4769,
+    "place_id": "gn-4561871",
+    "input": {
+      "place": {
+        "place_id": "gn-4561871",
+        "name": "University City",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.95071,
+        "lon": -75.19476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "University City, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/University_City,_Philadelphia",
+          "text": "University City is the easternmost portion of West Philadelphia, encompassing several Philadelphia universities.  It is situated directly across the Schuylkill River from Center City.\nThe University of Pennsylvania was instrumental in coining the name University City as part of a 1950s urban renewal and gentrification effort.  University City is also home to Drexel University and the University City campus of Saint Joseph's University.\nThe eastern side of University City contains the Penn and Drexel campuses, several medical institutions, independent centers of scientific research, 30th Street Station, one of the nation's busiest passenger train stations, Cira Centre, and Cira Centre South. The western side contains Victorian and early 20th-century housing stock and is primarily residential."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "university city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "university",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4805,
+    "attempt": 4770,
+    "place_id": "gn-4919381",
+    "input": {
+      "place": {
+        "place_id": "gn-4919381",
+        "name": "Crawfordsville",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.04115,
+        "lon": -86.87445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crawfordsville, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Crawfordsville,_Indiana",
+          "text": "Crawfordsville () is a city in Montgomery County in west central Indiana, United States, 49 miles (79 km) west by northwest of Indianapolis. As of the 2020 census, the city had a population of 16,306. The city is the county seat of Montgomery County, the only chartered city and the largest populated place in the county. It is the principal city of the Crawfordsville, IN Micropolitan Statistical Area, which encompasses all of Montgomery County. The city is also part of the Indianapolis–Carmel–Muncie, IN Combined Statistical Area.\nThe city was founded in 1823 on the bank of Sugar Creek, a southern tributary of the Wabash River and named for U.S. Treasury Secretary William H. Crawford. The city is home to Wabash College, a private liberal arts men's college, and the General Lew Wallace Study & Museum, a National Historic Landmark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "crawfordsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4806,
+    "attempt": 4771,
+    "place_id": "gn-5000947",
+    "input": {
+      "place": {
+        "place_id": "gn-5000947",
+        "name": "Marquette",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 46.54354,
+        "lon": -87.39542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marquette, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Marquette,_Michigan",
+          "text": "Marquette ( mar-KET) is the county seat of Marquette County and the largest city in the Upper Peninsula of Michigan, United States. Located on the shores of Lake Superior, Marquette is a major port known primarily for shipping iron ore (hematite, magnetite) from the Marquette Iron Range. The city is partially surrounded by Marquette Township, but the two are administered autonomously.\nMarquette is named after Jacques Marquette, a French Jesuit missionary who had explored the Great Lakes region. Marquette had a population of 20,629 at the 2020 census, making it the largest city in Michigan north of the Tri-Cities. It is the third-largest American city on Lake Superior, behind Duluth, Minnesota, and Superior, Wisconsin. Marquette's urban area extends south toward Harvey and west toward Negaunee and Ishpeming, at the base of the Huron Mountains.\nMarquette is the home of Northern Michigan University (NMU), a four-year public university. NMU's athletic teams are nicknamed the Wildcats and compete primarily in the NCAA Division II Great Lakes Intercollegiate Athletic Conference (GLIAC). The men's ice hockey team, which competes in the NCAA Division I Central Collegiate Hockey Association (CCHA), won the Division I national championship in 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "marquette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4807,
+    "attempt": 4772,
+    "place_id": "gn-5039173",
+    "input": {
+      "place": {
+        "place_id": "gn-5039173",
+        "name": "New Ulm",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.31246,
+        "lon": -94.46053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Ulm, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/New_Ulm,_Minnesota",
+          "text": "New Ulm (  NEW ULM) is a city and the county seat of Brown County, Minnesota, United States. The population was 14,120 at the 2020 census. New Ulm is on the triangle of land formed by the confluence of the Minnesota River and the Cottonwood River.\nNew Ulm is home to the Hermann Heights Monument, Flandrau State Park, the historic August Schell Brewing Company, and the Minnesota Music Hall of Fame. The city is known for its German heritage and its historical sites and landmarks dating to the US-Dakota War of 1862.\nNew Ulm is the episcopal see of the Diocese of New Ulm and home to the Handmaids of the Heart of Jesus. The Dakota called New Ulm the \"Village on the Cottonwood\" or Wachupata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "new ulm",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ulm",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4808,
+    "attempt": 4773,
+    "place_id": "gn-5120034",
+    "input": {
+      "place": {
+        "place_id": "gn-5120034",
+        "name": "Harlem",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80788,
+        "lon": -73.94542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harlem",
+          "url": "https://en.wikipedia.org/wiki/Harlem",
+          "text": "Harlem is a neighborhood in Upper Manhattan, New York City. It is bounded roughly by the Hudson River on the west; the Harlem River and 155th Street on the north; Fifth Avenue on the east; and 110th Street on the south. The greater Harlem area encompasses several other neighborhoods and extends west and north to 155th Street, east to the East River, and south to Martin Luther King Jr. Boulevard, Central Park, and East 96th Street.\nOriginally a Dutch village, formally organized in 1658, it is named after the city of Haarlem in the Netherlands. Harlem's history has been defined by a series of economic boom-and-bust cycles, with significant population shifts accompanying each cycle. Harlem was predominantly occupied by Jewish and Italian Americans in the late 19th century, while African-American residents began to arrive in large numbers during the Great Migration in the early 20th century. In the 1920s and 1930s, Central and West Harlem were the center of the Harlem Renaissance, a major African-American cultural movement. With job losses during the Great Depression of the 1930s and the deindustrialization of New York City after World War II, rates of crime and poverty increased significantly. In the 21st century, crime rates decreased significantly, and Harlem started to gentrify.\nThe area is served by the New York City Subway and local bus routes. It contains several public elementary, middle, and high schools, and is close to several colleges, including Columbia University, the Manhattan School of Music, and the City College of New York. Central Harlem is part of Manhattan Community District 10. It is patrolled by the 28th and 32nd Precincts of the New York City Police Department. The greater Harlem area also includes Manhattan Community Districts 9 and 11 and several police precincts, while fire services are provided by four New York City Fire Department stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "harlem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4809,
+    "attempt": 4774,
+    "place_id": "gn-5129433",
+    "input": {
+      "place": {
+        "place_id": "gn-5129433",
+        "name": "Nyack",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.09065,
+        "lon": -73.91791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyack, New York",
+          "url": "https://en.wikipedia.org/wiki/Nyack,_New_York",
+          "text": "Nyack (English pronunciation: /ˈnaɪæk/ ) is a village primarily located in the town of Orangetown in Rockland County, New York, United States. Incorporated in 1872, a small western section of the village lies in Clarkstown. The population was 7,265 at the time of the 2020 census. It is a suburb of New York City about 15 miles (24 km) north of the Manhattan boundary on the west bank of the Hudson River, north of South Nyack, east of Central Nyack, south of Upper Nyack, and southeast of Valley Cottage. It is one of five villages and hamlets that constitute \"The Nyacks\", and is named after the Native Americans who lived there before European colonization."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "nyack",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4810,
+    "attempt": 4775,
+    "place_id": "gn-5222476",
+    "input": {
+      "place": {
+        "place_id": "gn-5222476",
+        "name": "Greenville",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.87121,
+        "lon": -71.55201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenville, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Greenville,_Rhode_Island",
+          "text": "Greenville is a village and census-designated place (CDP) in the town of Smithfield, Rhode Island, United States. As of the 2020 census, Greenville had a population of 9,061. The CDP is centered on the village of Greenville but also encompasses the nearby villages of West Greenville and Spragueville, as well as the Mountaindale Reservoir and beach.\nThe village of Greenville is named after Revolutionary War general Nathanael Greene, who was born in Rhode Island in 1742. The location, however, was first settled in the 17th century. The village contains the Greenville Baptist Church (American Baptist Churches, USA), Greenville Public Library, and William Winsor School, and there are many apple orchards in the surrounding area. The area was active in the Free Will Baptist movement in the 19th century, and the Smithville Seminary, a Free Baptist institution, was nearby. U.S. Route 44, known locally as \"Putnam Pike\", runs through the center of Greenville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "greenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4811,
+    "attempt": 4776,
+    "place_id": "gn-5377985",
+    "input": {
+      "place": {
+        "place_id": "gn-5377985",
+        "name": "Northridge",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.22834,
+        "lon": -118.53675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northridge, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Northridge,_Los_Angeles",
+          "text": "Northridge is a neighborhood in the San Fernando Valley region of the City of Los Angeles. The community is home to California State University, Northridge and the Northridge Fashion Center.\nOriginally named Zelzah by settlers in 1908, the community was renamed North Los Angeles in 1929 but the appellation sometimes caused confusion between North Hollywood and Los Angeles. In 1938, civic leader Carl S. Dentzel decided to rename the community to Northridge Village, which morphed into modern-day Northridge.\nThe Northridge area can trace its history back to the Tongva people and later to Spanish explorers. It was sold by the Mexican governor Pío Pico to Eulogio de Celis, whose heirs divided it for resale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "northridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4812,
+    "attempt": 4777,
+    "place_id": "gn-5688789",
+    "input": {
+      "place": {
+        "place_id": "gn-5688789",
+        "name": "Dickinson",
+        "country": "United States",
+        "subdivision": "North Dakota",
+        "lat": 46.87918,
+        "lon": -102.78962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dickinson, North Dakota",
+          "url": "https://en.wikipedia.org/wiki/Dickinson,_North_Dakota",
+          "text": "Dickinson is a city in and the county seat of Stark County, North Dakota, United States. The population was 25,679 at the 2020 census, making it the seventh most populous city in North Dakota. Dickinson, founded in 1881, is also home to Dickinson State University.\nSince the North Dakota oil boom the city has become one of the fastest-growing cities in the United States. According to the 2020 census, the city is estimated to have a population of 25,679, however, other sources have estimates of the population at 33,646 or possibly exceeding 35,000. Dickinson is home to the Ukrainian Cultural Institute, which has a museum and holds events year-round for the local Ukrainian community.\nDickinson is the principal city of the Dickinson Micropolitan Statistical Area, a micropolitan area that covers Billings and Stark counties and had a combined population of 34,591 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "dickinson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4813,
+    "attempt": 4778,
+    "place_id": "gn-5742750",
+    "input": {
+      "place": {
+        "place_id": "gn-5742750",
+        "name": "Newport",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.63678,
+        "lon": -124.05345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newport, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Oregon",
+          "text": "Newport is a city in and the county seat of Lincoln County, Oregon, United States. It was incorporated in 1882 with the name dating back to the establishment of a post office in 1868. Newport was named for Newport, Rhode Island. As of the 2020 census, the city had a total population of 10,256.\nIt is also home of the Oregon Coast Aquarium, Hatfield Marine Science Center, Nye Beach, Yaquina Head Light, Yaquina Bay Light, Newport Sea Lion Docks, Pacific Maritime Heritage Center, and the former Rogue Ales. The city is the western terminus of U.S. Route 20, a cross-country highway that originates in Boston and is the longest road in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "newport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4814,
+    "attempt": 4779,
+    "place_id": "gn-5892532",
+    "input": {
+      "place": {
+        "place_id": "gn-5892532",
+        "name": "Banff",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.17622,
+        "lon": -115.56982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banff, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Banff,_Alberta",
+          "text": "Banff is a resort town in Banff National Park, Alberta, Canada, in Alberta's Rockies along the Trans-Canada Highway, 126 km (78 mi) west of Calgary, 58 km (36 mi) east of Lake Louise, and 1,400 to 1,630 m (4,590 to 5,350 ft) above sea level.\nBanff was the first municipality to incorporate within a Canadian national park. The town is a member of the Calgary Regional Partnership.\nBanff is one of Canada's most popular tourist destinations. Known for its mountainous surroundings and hot springs, it is a destination for outdoor sports and hiking, biking, scrambling and skiing. Sunshine Village, Ski Norquay and Lake Louise Ski Resort are nearby ski resorts within the national park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "banff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4815,
+    "attempt": 4780,
+    "place_id": "gn-6087591",
+    "input": {
+      "place": {
+        "place_id": "gn-6087591",
+        "name": "New Hamburg",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.38339,
+        "lon": -80.6997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Hamburg, Ontario",
+          "url": "https://en.wikipedia.org/wiki/New_Hamburg,_Ontario",
+          "text": "New Hamburg is a community of approximately 11,953 (2011 stats) in the township of Wilmot, Ontario, Canada. It is in the far western part of the Regional Municipality of Waterloo, near the regional border with Perth County. It is adjacent to the community of Baden, which sits to its east and is also a part of the township of Wilmot. The nearest cities are Kitchener, Waterloo, and Stratford.\nThe Nith River winds throughout the town and flows through the downtown core, which is home to a 50-foot waterwheel made of wood, being built in 1990. This wooden wheel was torn down on March 15, 2023, and replaced with a metal recreation of the wheel.\nThe weekly newspapers serving the community are the Wilmot-Tavistock Gazette and the New Hamburg Independent. The downtown has been designated a Heritage Conservation District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "new hamburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

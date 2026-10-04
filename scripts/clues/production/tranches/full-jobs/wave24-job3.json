@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 4676,
+    "attempt": 4641,
+    "place_id": "gn-2647057",
+    "input": {
+      "place": {
+        "place_id": "gn-2647057",
+        "name": "Herne Bay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.373,
+        "lon": 1.12857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herne Bay",
+          "url": "https://en.wikipedia.org/wiki/Herne_Bay",
+          "text": "Herne Bay ( ) is a seaside town on the north coast of Kent in South East England. It is 6 miles (10 km) north of Canterbury and 4 miles (6 km) east of Whitstable. It neighbours the ancient villages of Herne and Reculver and is part of the City of Canterbury local government district, although it remains a separate town with countryside between it and Canterbury. Herne Bay's seafront is home to the world's first freestanding purpose-built Clock Tower, built in 1837. From the late Victorian period until 1978, the town had the second-longest pier in the United Kingdom.\nThe town began as a small shipping community, receiving goods and passengers from London en route to Canterbury and Dover. The town rose to prominence as a seaside resort during the early 19th century after the building of a pleasure pier and promenade by a group of London investors, and reached its heyday in the late Victorian era. Its popularity as a holiday destination has declined over the past decades, due to the increase in foreign travel and to a lesser degree exposure to flooding that has prevented the town's redevelopment. In 2011 the town had a population of 38,563."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "herne bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herne",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4677,
+    "attempt": 4642,
+    "place_id": "gn-2746609",
+    "input": {
+      "place": {
+        "place_id": "gn-2746609",
+        "name": "Strijen",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.74521,
+        "lon": 4.55083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strijen",
+          "url": "https://en.wikipedia.org/wiki/Strijen",
+          "text": "Strijen (Dutch pronunciation: [ˈstrɛiə(n)] ) is a town and former municipality in the western Netherlands, in the province of South Holland. The municipality, covering an area of 57.70 km2 (22.28 sq mi) of which 6.85 km2 (2.64 sq mi) is water, is located on the Hoeksche Waard island along the Hollands Diep estuary. On 1 January 2019 it was merged with the municipalities of Binnenmaas, Cromstrijen, Korendijk, and Oud-Beijerland to form the municipality of Hoeksche Waard.\n\nStrijen hosts a public library, swimming pool, a small shopping centre and a local museum.\nFurthermore, Strijen is home to an important and welcome resting stop for migrating birds, especially geese. During winter, the endangered Eurasian spoonbill uses this area as a foraging ground.\nThe municipality of Strijen also included the population centres of Cillaarshoek, De Klem, Mookhoek, Oudendijk, and Strijensas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "strijen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4678,
+    "attempt": 4643,
+    "place_id": "gn-2853162",
+    "input": {
+      "place": {
+        "place_id": "gn-2853162",
+        "name": "Plön",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 54.16202,
+        "lon": 10.42765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plön",
+          "url": "https://en.wikipedia.org/wiki/Pl%C3%B6n",
+          "text": "Plön (German: [ˈpløːn] ; Holsatian: Plöön) is the district seat of the Plön district in Schleswig-Holstein, Germany, and has about 8,700 inhabitants. It lies right on the shores of Schleswig-Holstein's biggest lake, the Great Plön Lake, as well as on several smaller lakes, touching the town on virtually all sides. The town's landmark is Plön Castle, a chateau built in the 17th century on a hill overlooking the town.\nPlön has a grammar school with a 300-year history, and is home to a German Navy non-commissioned officer school and the Max Planck Institute for Evolutionary Biology. The town, nestled as it is in the hilly, wooded lake district of Holstein Switzerland (Holsteinische Schweiz), also has importance in the tourism industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "plon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4679,
+    "attempt": 4644,
+    "place_id": "gn-3310247",
+    "input": {
+      "place": {
+        "place_id": "gn-3310247",
+        "name": "Shannon",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.70389,
+        "lon": -8.86417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shannon, County Clare",
+          "url": "https://en.wikipedia.org/wiki/Shannon,_County_Clare",
+          "text": "Shannon (Irish: Sionainn) or Shannon Town (Baile na Sionnainne) is a town in County Clare, Ireland. It was given town status on 1 January 1982. The town is named after the nearby River Shannon. It is located just off the N19 road, a spur of the N18/M18 road between Limerick and Ennis. It is the location of Shannon Airport, an international airport serving the Clare/Limerick region in the west of Ireland, as well as being the location of one of the two bases of Shanwick Oceanic Control which oversees transatlantic air traffic control over the western portion of the North Atlantic Ocean.\nIt has a population of 10,256 as per the 2022 census, the second largest town in the county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "shannon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4680,
+    "attempt": 4645,
+    "place_id": "gn-3514663",
+    "input": {
+      "place": {
+        "place_id": "gn-3514663",
+        "name": "Álvaro Obregón",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.35867,
+        "lon": -99.20329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Álvaro Obregón, Mexico City",
+          "url": "https://en.wikipedia.org/wiki/%C3%81lvaro_Obreg%C3%B3n,_Mexico_City",
+          "text": "Álvaro Obregón (Spanish pronunciation: [ˈalβaɾo oβɾeˈɣon]) is a borough (demarcación territorial) in Mexico City. It contains a large portion of the south-west part of Mexico City. It had a 2020 census population of 759,137 inhabitants and lies at an elevation of 2,319 m. above sea level.\nIt was named after Álvaro Obregón, a leader of the Mexican Revolution and an early-20th-century Mexican president, who was assassinated in this area. Its former name is San Ángel, and the historic San Ángel neighborhood still retains this name, as does the Televisa San Angel motion picture and television studio, which is located in this municipality, which also includes the well-known upscale commercial neighborhoods Santa Fe, Jardines del Pedregal as well as Colonia Florida."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "alvaro obregon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alvaro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "obregon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4681,
+    "attempt": 4646,
+    "place_id": "gn-3822989",
+    "input": {
+      "place": {
+        "place_id": "gn-3822989",
+        "name": "José María Morelos",
+        "country": "Mexico",
+        "subdivision": "Quintana Roo",
+        "lat": 19.74887,
+        "lon": -88.70866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "José María Morelos, Quintana Roo",
+          "url": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mar%C3%ADa_Morelos,_Quintana_Roo",
+          "text": "José María Morelos is the municipal seat and largest city in José María Morelos Municipality in the Mexican state of Quintana Roo. According to the 2010 census, the city's population was 11,750 persons.\nJosé María Morelos was established in the 19th century with the purpose of exporting wood and chicle. It was originally called Kilómetro 50, since it was 50 kilometres (31 mi) from Peto. When Quintana Roo became a state in 1974, the place was renamed after the revolutionary rebel leader José María Morelos, and it became the seat of the namesake municipality.\nThe local economy relies largely on agricultural activities, such as livestock raising, beekeeping, and forestry, with key products including sugar cane, corn, honey, and valuable hardwoods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "jose maria morelos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "morelos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4682,
+    "attempt": 4647,
+    "place_id": "gn-3837980",
+    "input": {
+      "place": {
+        "place_id": "gn-3837980",
+        "name": "San Antonio Oeste",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -40.73193,
+        "lon": -64.94769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio Oeste",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_Oeste",
+          "text": "San Antonio Oeste is a port city in the Argentine province of Río Negro, and head of the department of San Antonio.\nThe town is bordered by its sister communities of San Antonio Este, to the east, and Las Grutas, to the southwest. Discovered by an expedition of the Spanish Empire in 1779, San Matías Gulf became the site of an outpost, San Antonio (so named in honor of St. Anthony of Padua). Water scarcity led the original settlement to fail in 1905, leading the community to settle west of the gulf, in what today is San Antonio Oeste.\nThe arrival of the Buenos Aires Great Southern Railway in its expansion towards Bariloche in 1910 led to the hamlet's growth. It later became the site of Punta Verde, the leading port for the large wool export industry of Patagonia, though the collapse in the wool market during the 1930s and 1940s led to the port's closure in 1944.\n\nSan Antonio Oeste benefited afterwards from a growth in tourism in nearby Las Grutas, a scenic cove known for its grottoes. Since 2000, it has also been home to a growing fishing industry, resulting from the opening of a deep-water port in San Antonio Este."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio oeste",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oeste",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4683,
+    "attempt": 4648,
+    "place_id": "gn-3862254",
+    "input": {
+      "place": {
+        "place_id": "gn-3862254",
+        "name": "Catriel",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -37.87552,
+        "lon": -67.79451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catriel",
+          "url": "https://en.wikipedia.org/wiki/Catriel",
+          "text": "Colonia Catriel, or simply Catriel, is a town in the northern tip of the province of Río Negro, Argentina, near the border with La Pampa Province. It has a population of about 18,000, with postal code 8307 and telephone prefix 0299.\nCatriel was named after Cacique Catriel, a Native American who according to several stories participated in the defence of Argentine government interests against aborigines.\nThe town has a dry and temperate climate, with hot summers and winters which barely see snow. A characteristic dry strong wind is also common.\nThe main economic activity in and around the town is oil extraction, which started in 1959 and made the city grow fast, as state owned YPF set extraction points nearby. However, nowadays the main oil company in the city is Petrobras, which has made several investments in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "catriel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4684,
+    "attempt": 4649,
+    "place_id": "gn-3994535",
+    "input": {
+      "place": {
+        "place_id": "gn-3994535",
+        "name": "Ocampo",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.64761,
+        "lon": -101.47923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocampo, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Ocampo,_Guanajuato",
+          "text": "Ocampo is a  city (and municipality) located in the northwest region of the Mexican state of Guanajuato.  The municipality has an area of 1,019.49  square kilometres (3.7% of the surface of the state) and is bordered and to the south and east by San Felipe, to the north by the state of San Luis Potosí, to the west by the state of Jalisco. The municipality had a population of 23,500 inhabitants according to the 2010 census.\nThe municipality is named after Melchor Ocampo,  a 19th-century liberal statesman.\nThe municipal president of Ocampo and its many smaller outlying communities is Francisco Pedroza\nAs of 2008, the largest group of immigrants from Ocampo go to Dallas, and the second-largest go to Chicago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "ocampo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4685,
+    "attempt": 4650,
+    "place_id": "gn-4558475",
+    "input": {
+      "place": {
+        "place_id": "gn-4558475",
+        "name": "Hanover",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.80066,
+        "lon": -76.98304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hanover, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Hanover,_Pennsylvania",
+          "text": "Hanover is a borough in York County, Pennsylvania, United States. The population was 16,439 at the 2020 census. Located 19 miles (31 km) southwest of York and 54 miles (87 km) north-northwest of Baltimore, Maryland, the town is situated in a productive agricultural region. It is named after the German city of Hanover and is a principal city of the York–Hanover metropolitan area.\nHanover was the site of the final encounter between the Union and Confederate armies before they fought against each other in the Battle of Gettysburg during the American Civil War. Hanover has since become known as the \"Snack Food Capital of the World\" due to the establishment of multiple food manufacturing businesses there during the 20th century. Notable companies based in the borough include Utz Brands and Snyder's of Hanover."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "hanover",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4686,
+    "attempt": 4651,
+    "place_id": "gn-5143966",
+    "input": {
+      "place": {
+        "place_id": "gn-5143966",
+        "name": "West Point",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.39148,
+        "lon": -73.95597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Point, New York",
+          "url": "https://en.wikipedia.org/wiki/West_Point,_New_York",
+          "text": "West Point is a census-designated place in Orange County, New York, United States. It is the oldest continuously occupied military post in the United States.\nLocated on the Hudson River in New York, General George Washington stationed his headquarters in West Point in the summer and fall of 1779 during the American Revolutionary War, and later called it \"the most important Post in America\" in 1781 following the war's end. West Point was also the site of General Benedict Arnold's failed attempt at treason during the Revolutionary War.\nWest Point was first occupied by the United States Armed Forces in January 1778 by Brigadier General Samuel Holden Parsons. Since then, West Point has been occupied by the United States Army. It comprises 25.1 sq mi (65 km2) land and water, including the campus of the United States Military Academy, which is commonly referred to as \"West Point\".\nWest Point is a census-designated place (CDP) located in the town of Highlands in Orange County, located on the western bank of the Hudson River. The population was 7,341 at the 2020 census. It is part of the Kiryas Joel–Poughkeepsie–Newburgh metropolitan area as well as the larger New York–Newark, NY–NJ–CT–PA Combined Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "west point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4687,
+    "attempt": 4652,
+    "place_id": "gn-5558857",
+    "input": {
+      "place": {
+        "place_id": "gn-5558857",
+        "name": "Anderson",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.44821,
+        "lon": -122.29778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anderson, California",
+          "url": "https://en.wikipedia.org/wiki/Anderson,_California",
+          "text": "Anderson is a city in Shasta County, California, United States, approximately 10 miles (16 km) south of Redding. Its population is 11,323 as of the 2020 census, up from 9,932 from the 2010 census.\nLocated 138 miles (222 km) north of Sacramento, the city's roots are as a railroad town near the northern tip of the Central Valley of California.\nThe city was named after ranch owner Elias Anderson, who granted the Oregon and California Railroad trackage rights and land for a station.  Elias Anderson was a farmer, hotel owner, and postmaster. Elias married Elizabeth Summers in 1839 and built the Prairie House in the community of Cottonwood in 1856 on the south side of Cottonwood Creek (now Tehama County).\nElias Anderson purchased the American Ranch from Thomas Freeman in 1856 and built the American Ranch Hotel in what would become downtown Anderson, California.  The post office was inside the hotel. Elias Anderson purchased 210 acres (85 ha) from Pierson B. Reading in 1865 and deeded a right-of-way through his property to Central Pacific Railroad in 1872; in return the railroad gave the depot his name. Elias and Elizabeth Anderson built their new home at 2865 East Street in 1873; it no longer exists. While it stood, the house was designated as California Historical Landmark No. 12. In 1876 the Andersons moved their ranch hotel to the corner of Main and Ferry Streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "anderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4688,
+    "attempt": 4653,
+    "place_id": "gn-5962442",
+    "input": {
+      "place": {
+        "place_id": "gn-5962442",
+        "name": "Goderich",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.74171,
+        "lon": -81.71339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goderich, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Goderich,_Ontario",
+          "text": "Goderich ( GOD-rich or GOD-ə-rich) is a town in the Canadian province of Ontario and is the county seat of Huron County. The town was founded by John Galt and William \"Tiger\" Dunlop of the Canada Company in 1827. First laid out in 1828, the town is named after Frederick John Robinson, 1st Viscount Goderich, who was prime minister of the United Kingdom at the time. It was incorporated as a town in 1850.\nAs of the Canada 2021 Census, the population is 7,881 in a land area of 8.54 square kilometres.\nLocated on the eastern shore of Lake Huron at the mouth of the Maitland River, Goderich faces the lake to the west and is notable for its sunsets. Some claim that Queen Elizabeth II once commented that Goderich was \"the prettiest town in Canada\" although no reigning monarch has ever visited Goderich.  The town indicates that tourism is among its important industries. It has been named one of Ontario's best small towns by Comfort Life, a website for retirement living in Canada.\nThe town participates yearly in the Communities in Bloom competition; and has won awards in many categories.  In 2012, Goderich was a National Finalist in the competition, and was also part of the Circle of excellence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "goderich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4689,
+    "attempt": 4654,
+    "place_id": "gn-6535150",
+    "input": {
+      "place": {
+        "place_id": "gn-6535150",
+        "name": "San Giorgio Su Legnano",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.57377,
+        "lon": 8.91374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Giorgio su Legnano",
+          "url": "https://en.wikipedia.org/wiki/San_Giorgio_su_Legnano",
+          "text": "San Giorgio su Legnano (Legnanese: San Giorgiu) is a comune (municipality) in the Metropolitan City of Milan in the Italian region Lombardy, located about 20 kilometres (12 mi) northwest of Milan.\nSan Giorgio su Legnano borders the following municipalities: Legnano, Villa Cortese, Canegrate, Busto Garolfo. It is located in the Po Valley northwest of Milan, from which it is 34 km away, near the valley in which the Olona river flows. Located slightly higher than the neighbouring Legnano (hence the preposition \"su\", en. \"up\", in the name), it is one of the smaller municipalities in the metropolitan city of Milan.\nSince 1957, the town has hosted the annual Campaccio competition, a cross country running event which attracts world class athletes. On 10 December 2006, San Giorgio su Legnano hosted the 2006 European Cross Country Championships."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "san giorgio su legnano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "giorgio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "su",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "legnano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4690,
+    "attempt": 4655,
+    "place_id": "gn-667991",
+    "input": {
+      "place": {
+        "place_id": "gn-667991",
+        "name": "Sarichioi",
+        "country": "Romania",
+        "subdivision": "Tulcea County",
+        "lat": 44.95,
+        "lon": 28.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarichioi",
+          "url": "https://en.wikipedia.org/wiki/Sarichioi",
+          "text": "Sarichioi (Russian: Сарикёй, from Turkish: Sarıköy, \"Yellow Village\" ) is a commune in Tulcea County, Northern Dobruja, Romania. It is composed of five villages: Enisala, Sabangia, Sarichioi, Zebil, and Visterna. Besides the ethnic Romanian majority (56.4% of the population), the commune is home to a sizeable Lipovan community (43.1%).\n\nThe village of Enisala (Turkish: Yeni Sala, Bulgarian: Ново село, \"New Village\") is the site of a fortress dominating nearby lakes (previously gulfs) of Razelm and Babadag. Dated to the late 13th or the beginning of the 14th century, it was built to control  the travel routes that passed through the region. The fortress' three hexagonal towers are the only ones of this type found in the whole region of Dobruja. There are several competing theories regarding its builders. On the one hand, some historians consider that its architecture is reminiscent of the Western manner of planning, and attribute it either to the Genoese, who held several trading posts in the area, or to the Byzantines, who intermittently controlled the region. On the other hand, other historians consider the towers very similar to ones found in Tsepina, Shumen, Perperikon, Vidin, consequently attributing it to Bulgarians, who are also known to have  controlled the region at certain times during the probable period of construction.  All written mentions of the fortress postdate its abandonment, making a definite attribution improbable. The castle was first conquered by the Ottomans in 1388/1389, and retaken in 1416/1417 after a brief Wallachian rule. Due to the new political situation and the development of sand spits that hampered trade, the fortress gradually decayed, and was finally abandoned around the end of the 15th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "sarichioi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4691,
+    "attempt": 4656,
+    "place_id": "gn-1685925",
+    "input": {
+      "place": {
+        "place_id": "gn-1685925",
+        "name": "Sogod",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.3847,
+        "lon": 124.9814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sogod, Southern Leyte",
+          "url": "https://en.wikipedia.org/wiki/Sogod,_Southern_Leyte",
+          "text": "Sogod (IPA:Tagalog pronunciation: [ˈsuɡud]), officially the Municipality of Sogod (Cebuano: Lungsod sa Sogod; Tagalog: Bayan ng Sogod), is a 1st income class municipality in the province of Southern Leyte, Philippines. According to the 2024 census, it has a population of 48,815 people.\nSogod is located along the Southern Leyte section of the Pan-Philippine Highway, 126 kilometers (78 miles) south of Tacloban City, the regional center of Eastern Visayas. Rugged mountains envelop most of the town's northern terrain with numerous river systems flowing throughout the southern lowlands. Known as the center of trade, commerce and industry in the south-central region of Leyte, Sogod is also home to Southern Leyte State University (SLSU) Main Campus and Saint Thomas Aquinas College (STAC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "sogod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4692,
+    "attempt": 4657,
+    "place_id": "gn-1780777",
+    "input": {
+      "place": {
+        "place_id": "gn-1780777",
+        "name": "Batu Kawan",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.25822,
+        "lon": 100.42876
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batu Kawan",
+          "url": "https://en.wikipedia.org/wiki/Batu_Kawan",
+          "text": "Batu Kawan is an island and newly developing suburb of Seberang Perai in the Malaysian state of Penang. It is geographically separated from the rest of Seberang Perai by the Jawi and Tengah rivers. As of 2020, Batu Kawan contained a population of 11,409.\nLong considered a quiet agricultural backwater, Batu Kawan is undergoing rapid development, which was sparked by the completion of the Second Penang Bridge that connects the town with Batu Maung on Penang Island in 2014. A host of multinational firms, including Boston Scientific, Western Digital Corporation, Bose Corporation, Dexcom and Bosch, have set up manufacturing plants within the Batu Kawan Industrial Park. In addition, Batu Kawan is home to Design Village, Malaysia's largest outlet mall.\nAmong the ongoing developments within Batu Kawan are an IKEA store, Aspen Vision City and Utropolis, the latter of which is expected to serve as a hub for tertiary education."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "batu kawan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "batu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kawan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4693,
+    "attempt": 4658,
+    "place_id": "gn-2172686",
+    "input": {
+      "place": {
+        "place_id": "gn-2172686",
+        "name": "Camberwell",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.84205,
+        "lon": 145.0694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camberwell, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Camberwell,_Victoria",
+          "text": "Camberwell ( KAM-bər-wel) is an inner suburb of Melbourne, Victoria, Australia, 10 km east of Melbourne's Central Business District, located within the City of Boroondara local government area. Camberwell recorded a population of 21,965 at the 2021 census.\nThe western, southern and eastern boundaries of the suburb generally follow Burke Road, Toorak Road and Warrigal Road respectively. The northern boundary generally follows Riversdale Road, except for an area in the northwest where it extends upwards to Canterbury Road, incorporating Camberwell, East Camberwell and Riversdale railway stations. Known for grand, historic residences and tranquil, leafy streets, Camberwell is commonly regarded as one of Melbourne's most prestigious and exclusive suburbs. Camberwell has been Melbourne's geographical centre of population since the 2020s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "camberwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4694,
+    "attempt": 4659,
+    "place_id": "gn-3149563",
+    "input": {
+      "place": {
+        "place_id": "gn-3149563",
+        "name": "Kongsberg",
+        "country": "Norway",
+        "subdivision": "Buskerud",
+        "lat": 59.66858,
+        "lon": 9.65017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kongsberg",
+          "url": "https://en.wikipedia.org/wiki/Kongsberg",
+          "text": "Kongsberg (Norwegian pronunciation: [ˈkɔ̂ŋːsbær(ɡ)] ) is a historical mining town and municipality in Buskerud county, Norway. The city is located on the river Numedalslågen at the entrance to the valley of Numedal. Kongsberg has been a centre of silver mining, arms production and forestry for centuries, and is the site of high technology industry including the headquarters of Norway's largest defence contractor Kongsberg Gruppen.\nKongsberg, formerly spelled Konningsberg (lit. \"King's Mountain\"), was developed as a mining city on the basis of the Kongsberg Silver Mines, founded by and named after King Christian IV of Denmark and Norway in 1624. The king invited German engineers and other specialists from Saxony and the Harz region to help build the mining company. As a mining city, Kongsberg had a distinct urban culture that contrasted with its surroundings, strongly influenced by the traditions of mining communities in Germany and where the German language was extensively used in mining business and for religious services. In the first years nearly half of the city's population were German immigrants, and the majority of the engineers and executives were German immigrants and their descendants well into the 19th century, becoming a distinct social class called mining families that formed the educated social elite of Kongsberg in contrast to the Norwegian farming population; the first Nobel laureate in economics Ragnar Frisch belonged to such a Kongsberg mining family. By the 18th century Kongsberg was Norway's second largest city, second only to Bergen. Kongsberg was one of Norway's two privileged mining cities and thus formed a special mining jurisdiction (Bergstad), and only became part of Buskerud county in 1760. On 1 January 1838, the new national law, creating local governments, made Kongsberg a municipality. The rural municipalities of Ytre Sandsvær and Øvre Sandsvær were merged into the municipality of Kongsberg in 1964. Kongsberg gradually lost importance to other cities in the 19th century, particularly to the rapidly growing capital of Christiania (Oslo).\nThe Kongsberg Silver Mines closed in 1958 after operating for 334 years and is today a museum and the city's main tourist attraction. Kongsberg remains the site of the Royal Norwegian Mint (Norwegian: Det Norske Myntverket), which mints Norwegian coins and also produces circulating and collectors' coins for other countries. Kongsberg is also the home of Norway's major defence contractor, Kongsberg Gruppen, founded in 1814. Two of its best-known products were the Kongsberg Colt and the Krag–Jørgensen rifle.\nBoth the University of South-Eastern Norway Kongsberg campus, and Tinius Olsen's school, a combined technical vocational college and secondary school, are located in Kongsberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 424
+    },
+    "banned_terms": [
+      {
+        "term": "kongsberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4695,
+    "attempt": 4660,
+    "place_id": "gn-3166243",
+    "input": {
+      "place": {
+        "place_id": "gn-3166243",
+        "name": "Spinetta Marengo",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.88554,
+        "lon": 8.6775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spinetta Marengo",
+          "url": "https://en.wikipedia.org/wiki/Spinetta_Marengo",
+          "text": "Spinetta Marengo (Piedmontese: Marengh) is a town in Piedmont, Italy located within the municipal boundaries of the comune of Alessandria. The population is 6,417.\nOn 14 June 1800 the village was the scene of an important battle between the French army commanded by Napoleon and an Austrian army led by Melas. Every second Sunday in June, there is traditionally a costumed commemoration of the battle, drawing many international visitors. According to local legend, Majno, a thief who was said to have robbed Pope Pius VII while on his way to Paris in 1804 to crown Napoleon emperor, laid up in hiding in the woods of Fraschetta, just by Spinetta Marengo.\nThe dish Chicken Marengo is named after the town. According to legend, Napoleon's chef created the dish from the few ingredients he could find after the battle, using a sabre instead of a cooking knife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "spinetta marengo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spinetta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marengo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
