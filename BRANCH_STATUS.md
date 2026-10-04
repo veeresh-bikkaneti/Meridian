@@ -183,3 +183,44 @@ counts were taken on opposite sides of the #46 rebuild.
 - No changes to `src/components`; the merge's writes are confined to `src/game/data/geonames/` chunks + manifest, produced by the repo's own verified pipeline script.
 - The cache is append-only via the script; it was created by this fresh crawl run (not edited or compacted by hand).
 - Only this file (`BRANCH_STATUS.md`) is staged/committed on this branch, by name — never `git add -A`, including while the crawl writes into the tree.
+
+## Independent re-verification (coordinator, 2026-10-04)
+
+**Data arithmetic (first-hand, per-place diff over all 64 chunks):**
+- First merge 8,958 hooked → re-merge 8,799 hooked. Removed 203, added 44, repaired(changed) 202. Net −159.
+- `8579 − 203 + 44 = 8420` closes exactly. Manifest `historySentences: 8420` matches.
+- 124,690 places both sides; 0 process losses. The 379 pre-existing hooked records (94 curated + 285) are byte-untouched.
+
+**Independent tone sample (first-hand, NOT the committed sample):**
+- My own draw: seed 20261003 (mulberry32), n=100, stratified over 10 regions, merge-output only.
+- Result: **2% hard fails, ~31% soft fails** (vs crew's 0%/9% — different grader/sample; both within the 1–5% hard gate).
+- Hard fails (article-verified, both "pure modern trivia where the intro had a better hook"):
+  - `gn-5397059` Solvang, CA — picker chose founding dates over "The Danish Capital of America" in the intro.
+  - `gn-3188582` Tuzla — picker chose "two universities" over 9th-century history + "Europe's only salt lake" in the intro.
+- Per the binding protocol (1–5% hard = SHIP WITH CAVEAT): these 2 hooks go on a post-merge strip list. Checked a third candidate (`gn-5327422` Bellflower, dates-only) — its article intro has NO better hook, so it stays. Strip list = 2 hooks.
+
+**Interpretation calls (all spot-checked first-hand, all approved):**
+- "It" exempt from pronoun guard (2,323 hooks): card names the place; negligible ambiguity.
+- War scoped to present-day conflict: Valletta (1565), Kutno (1939) verified historical.
+- 5 definitional-template keeps: each carries a genuine historical anchor (e.g. Jalalpur Pirwala).
+- Admin-seat rejection narrowed to governmental seats: kept seats carry real hooks.
+- 8 prison-mention hooks: all POW/history mentions, none a prison-facility lead.
+
+**1-record gap:** `gn-4915989` (West Englewood) had curated history + wiki slug already at the pre-merge base, so the merge's history-present check excluded it pre-bucketing. Verified first-hand. Gap accounted for exactly.
+
+**Idempotency:** crew-attested only (crawl cache is Liz's-VM-only); verified from manifest/diff evidence, could not re-execute.
+
+**Reviews:** technical-architect APPROVE WITH NOTES (middle-initial repair verified working live); tone/docs/a11y APPROVE WITH NOTES (ship-with-caveat sound, 2-hook strip list confirmed, attribution intact, no a11y impact).
+
+**Gates (first-hand, post-merge 9f2825b):**
+- `npm test`: 519/519 pass (incl. 103/103 enrich-wikipedia tests)
+- `npx tsc --noEmit`: clean
+- `node scripts/lint-cards.mjs`: GATE PASSED (8,799 with hook, 0 violations)
+- `npm run build:pages`: green (buildId 9f2825b)
+
+**E2E (first-hand):**
+- `history-first-cards.desktop`: 2/4 pass (West Englewood, Barry Farms — cards lead with history ✓). Miami/Nashville fail on a PRE-EXISTING test bug: they're difficulty-1 (Easy band) but the spec hardcodes the `:medium` seen-key and never selects a difficulty. Test code, data, and band logic are identical on main → fails on main too. Not caused by this branch.
+- `question-labels` (PR #46): 0/3 pass — same pre-existing band bugs, plus the 14MB globe chunk times out loading in the test harness. Pre-existing, not caused by this branch.
+- The wiki data itself does not affect dealing, bands, or chunk loading.
+
+**Merge:** `9f2825b` merges origin/main (PRs #47–#49) into the wiki branch; BRANCH_STATUS kept from the wiki side. Zero conflict markers repo-wide. No app code changes (data + manifest + scripts + BRANCH_STATUS only).
