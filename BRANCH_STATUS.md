@@ -35,9 +35,65 @@ celebrated, player-visible promotion moment instead.
   two bugs verified fixed; see "Final E2E regression sweep" below for the
   full existing-suite re-verification)
 - [x] Fix crew (2026-10-04): both E2E-found bugs fixed — see "Fix crew" below
+- [x] Post-rebase full E2E verification — DONE 2026-10-04: full suite
+  111 tests → 107 green after flake re-runs; question-labels 3/3 green,
+  cleared-mode 7/7 green; only reds are the 2 known pre-existing
+  (Miami/Nashville) + 2 main-inherited endgame-share stale-spec failures
+  (main's PR #54 changed the share text; branch touches no share code)
 - [ ] Technical-architect review
 - [ ] Tone/docs review (all player-visible strings)
 - [ ] PR → merge → live verification
+
+## Post-rebase full E2E verification (E2E runner, 2026-10-04)
+
+Rebased branch (HEAD d020e18, merge-base == origin/main f1a3413): `npm run
+build:pages` GREEN, then the FULL Playwright suite (`npx playwright test
+--workers=1`, `TMPDIR=~/workspace/.tmp-e2e`, `pkill -x chrome` first):
+**103 passed, 8 failed (111 tests, 56.4m).** Targeted re-runs (serial,
+chrome reaped between, `--retries=1`) resolved 4 as genuine environmental
+flakes; the other 4 split into 2 known pre-existing + 2 main-inherited
+stale-spec failures. No app code was touched.
+
+RE-RUN RESOLUTIONS (all green on clean re-runs, zero code changes):
+- gap-view-reveal.desktop:146 "hit: light confirmation" → PASSED (19.6s)
+- hit-story.desktop:24 "hit: the result card renders the place blurb" → PASSED (46.5s)
+- difficulty-picker.spec:302 "resume after reload keeps the chosen tier" → PASSED (46.8s)
+- safari-launch.spec:79 "starting a run lazy-loads the map chunk; pin drop + reveal work" → PASSED (22.4s)
+  All four failed in the long run with map-interaction timeouts (drop-pin
+  button stayed disabled after a tap; tapHitsMap false) — the same
+  tile/render-stall environmental class documented in the prior sweep.
+  Each passed a clean single re-run, so they are not regressions.
+
+CONFIRMED GREEN:
+- question-labels: **3/3 GREEN** (globe + country + state) — the band
+  parameterization fix (7b9be1f) works; the two pre-rebase reds are gone.
+- cleared-mode: **7/7 GREEN** (feature project, no failed dirs).
+
+RED THAT REMAINS (4), none caused by this branch:
+1. history-first-cards.desktop Miami + Nashville — the known pre-existing
+   failures, identical signature on pristine main (dealing-side, heading
+   never appears). Unchanged: not fixed, not worsened.
+2. endgame-share.spec:166 (clipboard exact text) + :207 (mocked
+   navigator.share) — **main-inherited stale spec, not a branch
+   regression.** The rebase pulled in main's PR #54 (cumulative-score
+   breakdown), which changed the share text to append per-band/region
+   lines (`Medium 0/1 (0%) · 0 pts`, `Globe 0`); PR #54 updated
+   session-score.spec.ts but never touched endgame-share.spec.ts (last
+   spec change 1a68b64, ancestor of main), which still asserts the old
+   exact 3-line text. PROOF: `git diff origin/main HEAD --name-only`
+   shows this branch touches zero share/endgame files (13 files changed:
+   trail.ts, game-app.tsx, cleared-celebration.tsx, state-neighbors,
+   cleared-mode/question-labels/history-first-cards specs, config,
+   BRANCH_STATUS, package.json) — the spec-vs-app mismatch exists
+   byte-identical on pristine main and would fail there too.
+
+VERDICT: **no cleared-mode regressions from the rebase.** The branch's
+E2E posture is green everywhere except (a) the 2 known pre-existing
+Miami/Nashville reds and (b) the 2 endgame-share reds that main itself
+carries. Options for the coordinator: leave endgame-share red (it fails
+on main too, so not this branch's gate to close), or update the stale
+spec to PR #54's new share format — either way the call is a main-track
+decision, not cleared-mode feature work.
 
 ## Fix crew (2026-10-04)
 
