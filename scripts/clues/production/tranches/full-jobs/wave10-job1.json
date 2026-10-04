@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1815,
+    "attempt": 1801,
+    "place_id": "gn-2867543",
+    "input": {
+      "place": {
+        "place_id": "gn-2867543",
+        "name": "Münster",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.96236,
+        "lon": 7.62571
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Münster",
+          "url": "https://en.wikipedia.org/wiki/Münster",
+          "text": "Münster (German: [ˈmʏnstɐ] ; Westphalian: Mönster) is an independent city (Kreisfreie Stadt) in North Rhine-Westphalia, Germany. It is in the northern part of the state and the historic capital of the Westphalia region, as well being the centre of a state district. During the Protestant Reformation, Münster was the location of the Anabaptist rebellion. Münster and Osnabrück were the sites of the signing of the Treaties of Westphalia which ended the Thirty Years' War in 1648. Today, it is known as the bicycle capital of Germany.\nMünster gained the status of a Großstadt (major city) with more than 100,000 inhabitants in 1915. As of 2014, there are 300,000 people living in the city, with about 61,500 students, only some of whom are recorded in the official population statistics as having their primary residence in Münster. Münster is a part of the international Euregio region with more than 1,000,000 inhabitants (Enschede, Hengelo, Gronau, Osnabrück)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "munster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1816,
+    "attempt": 1802,
+    "place_id": "gn-300619",
+    "input": {
+      "place": {
+        "place_id": "gn-300619",
+        "name": "Sivas",
+        "country": "Türkiye",
+        "subdivision": "Sivas",
+        "lat": 39.74833,
+        "lon": 37.01611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sivas",
+          "url": "https://en.wikipedia.org/wiki/Sivas",
+          "text": "Sivas is a city in central Turkey. It is the seat of Sivas Province and Sivas District. Its population is 365,274 (2022).\nThe city, which lies at an elevation of 1,278 metres (4,193 ft) in the broad valley of the Kızılırmak river, is a moderately sized trade centre and industrial city, although the economy has traditionally been based on agriculture. Rail repair shops and a thriving manufacturing industry of rugs, bricks, cement, and cotton and woolen textiles form the mainstays of the city's economy. The surrounding region is a cereal-producing area with large deposits of iron ore which are worked at Divriği.\nSivas is also a communications hub for the north–south and east–west trade routes to Iraq and Iran, respectively. With the development of railways, the city gained new economic importance as junction of important rail lines linking the cities of Ankara, Kayseri, Samsun, and Erzurum. The city is linked by air to Istanbul and İzmir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "sivas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1817,
+    "attempt": 1803,
+    "place_id": "gn-3403642",
+    "input": {
+      "place": {
+        "place_id": "gn-3403642",
+        "name": "Campina Grande",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -7.23056,
+        "lon": -35.88111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campina Grande",
+          "url": "https://en.wikipedia.org/wiki/Campina_Grande",
+          "text": "Campina Grande (Central northeastern portuguese pronunciation: [kɐ̃ˈpinɐ ˈɡɾɐ̃di]) is the second most populous Brazilian city in the State of Paraíba after João Pessoa, the capital. It is considered to be the most important city of the Northeastern Brazilian subregion called agreste. It is considered one of the main industrial, technological and educational centers in the northeastern region of Brazil. Settled in the 17th century, the city was officially established in 1864.  Campina Grande also has a large cultural agenda, including the world's largest Saint John's Festival (called O Maior São João do Mundo), which takes place during the entire month of June."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "campina grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1818,
+    "attempt": 1804,
+    "place_id": "gn-3454865",
+    "input": {
+      "place": {
+        "place_id": "gn-3454865",
+        "name": "Alvorada",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -30.00018,
+        "lon": -51.07632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alvorada",
+          "url": "https://en.wikipedia.org/wiki/Alvorada",
+          "text": "Alvorada (Portuguese: [aw.voˈɾa.dɐ] , lit. 'dawn') is a municipality in the state of Rio Grande do Sul, in the south of Brazil, adjacent to the capital of the state, Porto Alegre. The city is also known as \"The Capital of Solidarity.\" Alvorada is primarily a bedroom community with most workers commuting to adjacent cities such as Porto Alegre to work. Its name means \"the awakening\" or \"the sunrise\".\nAlthough improvements have been made, the city suffers from heavy crime and squatting. The largest of these slums or favelas is the dangerous Umbu subdivision. Drug and arms trafficking are punctuated by periodic violence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "alvorada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1819,
+    "attempt": 1805,
+    "place_id": "gn-3460370",
+    "input": {
+      "place": {
+        "place_id": "gn-3460370",
+        "name": "Jacareí",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.30528,
+        "lon": -45.96583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jacareí",
+          "url": "https://en.wikipedia.org/wiki/Jacareí",
+          "text": "Jacareí (Portuguese pronunciation: [ʒakaɾeˈi]) is a city in the state of São Paulo, Brazil. The population is 250,952 (2025 est.) in an area of 464.27 km2. The city is known as \"Capital of Beer\" by the daily output of its factories, considered the biggest in Latin America. The economic activity is mainly based on industrial production. The industries produce mainly paper, chemicals, glass, wire, and rubber.\nIts neighboring municipalities are: São José dos Campos to the north and northeast; Jambeiro to the east; Santa Branca to the southeast; Guararema to the southwest; Santa Isabel to the west and Igaratá to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "jacarei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1820,
+    "attempt": 1806,
+    "place_id": "gn-3460728",
+    "input": {
+      "place": {
+        "place_id": "gn-3460728",
+        "name": "Itapetininga",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.59167,
+        "lon": -48.05306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itapetininga",
+          "url": "https://en.wikipedia.org/wiki/Itapetininga",
+          "text": "Itapetininga is a municipality in the state of São Paulo, Brazil. The population is 157,790 (2022 Census) in an area of 1790 km2. The name comes from a Tupi-Guarani language, meaning \"dry stone\".\nThe city is the seat of the Government Region of Itapetininga, made up of twelve other municipalities: Alambari, Angatuba, Boituva, Campina do Monte Alegre, Capela do Alto, Cerquilho, Cesário Lange, Guareí, Quadra, São Miguel Arcanjo, Sarapuí and Tatuí, which together have more than 520 thousand inhabitants.\nIt is situated in the southern part of the state, and is known as cidade das escolas, meaning city of schools in Portuguese."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "itapetininga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1821,
+    "attempt": 1807,
+    "place_id": "gn-3620381",
+    "input": {
+      "place": {
+        "place_id": "gn-3620381",
+        "name": "Chinandega",
+        "country": "Nicaragua",
+        "subdivision": "Chinandega Department",
+        "lat": 12.62951,
+        "lon": -87.13133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinandega",
+          "url": "https://en.wikipedia.org/wiki/Chinandega",
+          "text": "Chinandega (Spanish pronunciation: [tʃinanˈdeɣa]) is a city and the departmental seat of Chinandega department in Nicaragua. It is also the administrative centre of the surrounding municipality of the same name. It is Nicaragua's 2nd most important city (economy) and 6th largest city, with a population of 115,067 (2022 estimate), and a total of 137,539 in the municipality. It is located about 134 kilometres (83 mi) northwest of Managua and about 72 kilometres (45 mi) southwest of El Guasaule, on the border with Honduras. Chinandega is situated about 20 kilometres (12 mi) from the Pacific Ocean.\nThe city is served by Chinandega Airport.\nThe region around Chinandega produces agricultural products, particularly oil, flour, peanuts, shrimp, and sugarcane, and distilled liquors.\nThe city's weather is warm and humid due to its location at a low altitude in the tropics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "chinandega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1822,
+    "attempt": 1808,
+    "place_id": "gn-5089178",
+    "input": {
+      "place": {
+        "place_id": "gn-5089178",
+        "name": "Manchester",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 42.99564,
+        "lon": -71.45479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manchester, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Manchester,_New_Hampshire",
+          "text": "Manchester is the most populous city in the U.S. state of New Hampshire. Located on the banks of the Merrimack River, it had a population of 115,644 at the 2020 census. Manchester is the tenth-most populous city in New England. Along with the city of Nashua, it is one of two seats of New Hampshire's most populous county, Hillsborough County. The Manchester–Nashua metropolitan area has approximately 423,000 residents and lies near the northern end of the Northeast megalopolis.\nManchester was first named by the merchant and inventor Samuel Blodget, eponym of Samuel Blodget Park and Blodget Street in the city's North End. His vision was to create a great industrial center similar to that of the original Manchester in England, which was the world's first industrialized city. During the Industrial Revolution, Manchester was a major industrial and economic hub for New England, with the Amoskeag Manufacturing Company being the largest cotton textile plant in the world. After World War II, many textile manufacturing jobs left Manchester, but new industries and companies were introduced to the city, such as DEKA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "manchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1823,
+    "attempt": 1809,
+    "place_id": "gn-515003",
+    "input": {
+      "place": {
+        "place_id": "gn-515003",
+        "name": "Orenburg",
+        "country": "Russia",
+        "subdivision": "Orenburg Oblast",
+        "lat": 51.76712,
+        "lon": 55.09883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orenburg",
+          "url": "https://en.wikipedia.org/wiki/Orenburg",
+          "text": "Orenburg (Russian: Оренбу́рг, pronounced [ɐrʲɪnˈburk], Kazakh: Орынбор, romanized: Orynbor), formerly known as Chkalov (1938–1957), is the administrative center of Orenburg Oblast, Russia. It lies in Eastern Europe, near the boundary of Europe and Asia, along the banks of the Ural River, being approximately 1,480 kilometers (920 mi) southeast of Moscow.\nOrenburg is close to the border with Kazakhstan. Founded in the 18th century, the city was an important place for Kazakh–Russian trade in the 19th century, the founding place of the first two Kazakh republics in the 20th century, and then the first capital of the Kazakh ASSR from 1920 to 1925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "orenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1824,
+    "attempt": 1810,
+    "place_id": "gn-5405288",
+    "input": {
+      "place": {
+        "place_id": "gn-5405288",
+        "name": "Valencia",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.44361,
+        "lon": -118.60953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valencia, Santa Clarita, California",
+          "url": "https://en.wikipedia.org/wiki/Valencia,_Santa_Clarita,_California",
+          "text": "Valencia is a neighborhood in Santa Clarita located within Los Angeles County, California. It is one of the four unincorporated communities (along with Saugus, Newhall, and Canyon Country) that merged to create the city of Santa Clarita in 1987. It is situated in the western part of Santa Clarita, stretching from Lyons Avenue to the south (on the border with Newhall) to north of Copper Hill Drive, and from Interstate 5 east to Bouquet Canyon and Seco Canyon Roads. Valencia was founded as a master-planned community with the first development, Old Orchard I, built on Lyons Avenue behind Old Orchard Elementary School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "valencia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1825,
+    "attempt": 1811,
+    "place_id": "gn-7279599",
+    "input": {
+      "place": {
+        "place_id": "gn-7279599",
+        "name": "Airoli",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.15096,
+        "lon": 72.99625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Airoli",
+          "url": "https://en.wikipedia.org/wiki/Airoli",
+          "text": "Airoli (Marathi pronunciation: [əiɾoliː]) or Airoli Node is a residential and commercial area of Navi Mumbai in the Indian state of Maharashtra. The name Airoli Naka is derived from Airoli-Diva Gaon the largest village prominent in the node.\nIt is a part of the Mumbai Metropolitan Region and is administered by Navi Mumbai Municipal Corporation. It is connected to Mulund via Mulund Airoli bridge, to Thane by Kalwa bridge. Also, Thane Belapur Highway Provides well connectivity to Thane and rest of the Navi Mumbai. Airoli is also a part of extended Palm-Beach Road starting from Ghansoli and ending at Airoli near Dmart. Airoli also gaining a lot of tourist attraction due to Flamingo Boat Rides. \nAiroli Knowledge Park\nAiroli Knowledge Park is a Special Economic Zone developed for the IT companies. This is specifically dedicated to the Information Technology Companies and this starts from Airoli, Sec-20 Neva Garden Park Near MSEB Sub-Station Airlo till Mukund Bridge Thane. This entire corridor is developed for IT companies and their dedicated corporate parks. This SEZ consists of companies like Capgemini, Accenture, Wipro & Commercial Office Space providers like Mindspace. Many financial institutes like Axis Bank also have their corporate & operations units here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "airoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1826,
+    "attempt": 1812,
+    "place_id": "gn-747712",
+    "input": {
+      "place": {
+        "place_id": "gn-747712",
+        "name": "Edirne",
+        "country": "Türkiye",
+        "subdivision": "Edirne",
+        "lat": 41.67719,
+        "lon": 26.55597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edirne",
+          "url": "https://en.wikipedia.org/wiki/Edirne",
+          "text": "Edirne (US: ; Turkish: [e.ˈdiɾ.ne]), historically known as Orestias, Orestiada, Adrianople, or Adriana, is a city in Turkey, in the northwestern part of the province of Edirne in Eastern Thrace. Situated 7 km (4.3 mi) from the Greek and 20 km (12 mi) from the Bulgarian borders, Edirne was the second capital city of the Ottoman Empire from the 1360s to 1453, before Constantinople became its capital.\nThe city is a commercial centre for woven textiles, silks, carpets and agricultural products and has a growing tourism industry. It is the seat of Edirne Province and Edirne District. Its population is 180,002 (2022)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "edirne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1827,
+    "attempt": 1813,
+    "place_id": "gn-10941913",
+    "input": {
+      "place": {
+        "place_id": "gn-10941913",
+        "name": "Kajang",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 2.99424,
+        "lon": 101.78875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kajang",
+          "url": "https://en.wikipedia.org/wiki/Kajang",
+          "text": "Kajang is a town in the Hulu Langat District, located at the southeast part of Selangor, Malaysia, and further southeast of Federal Territory of Kuala Lumpur. Kajang, along with much of the Hulu Langat District, is governed by the Kajang Municipal Council. Kajang town is located on the eastern banks of the Langat River. It is surrounded by Cheras, Semenyih, Bangi, Putrajaya and Seri Kembangan\n.\nAccording to the 2020 census, the local authority area (which includes Kajang, Cheras, Balakong, Bangi, Semenyih and Pekan Hulu Langat) has a population of 1.05 million people, making it the second largest city in Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kajang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1828,
+    "attempt": 1814,
+    "place_id": "gn-1256525",
+    "input": {
+      "place": {
+        "place_id": "gn-1256525",
+        "name": "Siliguri",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 26.71004,
+        "lon": 88.42851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siliguri",
+          "url": "https://en.wikipedia.org/wiki/Siliguri",
+          "text": "Siliguri (, Bengali pronunciation: [ʃiliɡuɽi];  ), also known as Shiliguri, is a major tier-II city in West Bengal. It forms the Twin Cities with the neighbouring city of Jalpaiguri. The city spans areas of the Darjeeling and Jalpaiguri districts in the Indian state of West Bengal. Known as the \"Gateway of Northeast India\", It is located on the banks of the Mahananda in the foothills of the Himalayas. Siliguri is the third largest urban agglomeration in West Bengal, after Kolkata and Asansol.\nSiliguri has great strategic importance in West Bengal, with convenient access to three international borders: Nepal, Bangladesh and Bhutan. It also connects the North-East with mainland India. Located in the foothills of Eastern Himalayas, Siliguri is a significant trading and transportation hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "siliguri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1829,
+    "attempt": 1815,
+    "place_id": "gn-1258182",
+    "input": {
+      "place": {
+        "place_id": "gn-1258182",
+        "name": "Rewa",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 24.53256,
+        "lon": 81.29234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rewa, Madhya Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Rewa,_Madhya_Pradesh",
+          "text": "Rewa (Hindi pronunciation: [ɾiːʋaː]) is a city in the north-eastern part of Madhya Pradesh state in India. It is the administrative center of Rewa District and Rewa Division. The city lies about 420 kilometres (261 mi) northeast of the state capital Bhopal and 230 kilometres (143 mi) north of the city of Jabalpur. The maximum length of Rewa district is 125 km (78 mi) from east to west and the length of Rewa from north to south is 96 km (60 mi). This area is surrounded by Kaimur hills to the south. Vindhyachal ranges pass through the middle of the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "rewa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1830,
+    "attempt": 1816,
+    "place_id": "gn-1261731",
+    "input": {
+      "place": {
+        "place_id": "gn-1261731",
+        "name": "Nashik",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.99727,
+        "lon": 73.79096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nashik",
+          "url": "https://en.wikipedia.org/wiki/Nashik",
+          "text": "Nashik, formerly Nasik, is a city in the northern region of the Indian state of Maharashtra situated on the banks of the river Godavari, about 165 km (103 mi) northeast of the state capital Mumbai. The city lies in the Nashik Metropolitan Region. It is the administrative headquarters of Nashik district. Nashik is the 4th largest city in Maharashtra after Mumbai, Pune and Nagpur, and the largest city in Northern Maharashtra. It is also one of the fastest developing Tier-2 cities in India.\nNashik is one of the Hindu pilgrimage sites of the Kumbh Mela, which is held every 12 years. \nAccording to the Ramayana, Nashik is where Lakshmana cut off the nose of the demoness Surpanakha on the banks of the Godavari River. It is also called Panchavati.\nIt was known as \"Gulshanabad\" during the Mughal period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "nashik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1831,
+    "attempt": 1817,
+    "place_id": "gn-1270351",
+    "input": {
+      "place": {
+        "place_id": "gn-1270351",
+        "name": "Haridwar",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.94791,
+        "lon": 78.16025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haridwar",
+          "url": "https://en.wikipedia.org/wiki/Haridwar",
+          "text": "Haridwar (; Hindi: [ɦəɾɪd̪waːɾ] ; formerly Mayapuri) is a city and municipal corporation in the Haridwar district of Uttarakhand, India. With a population of 228,832 according to 2011 census, it is the second-largest city in the state and the largest in the district. Haridwar is located at the south western part of the state.\nThe city is situated on the right bank of the Ganges river, at the foothills of the Shivalik ranges. Haridwar lies in a doab region where people speak Khari Boli, which is a dialect of Hindi. The other districts of doab region lie in Western Uttar Pradesh. Haridwar is regarded as a holy place for Hindus, hosting important religious events and serving as a gateway to several prominent places of worship. The word 'Haridwar' means the gateway to the Lord Hari. The most significant of the events here is the Kumbha Mela, which is celebrated every 12 years in Haridwar. During the Haridwar Kumbh Mela, millions of Hindu pilgrims, devotees, and tourists congregate in Haridwar to perform ritualistic bathing on the banks of the Ganges to wash away their sins to attain moksha.\nAccording to Puranic legend, Haridwar, along with Ujjain, Nashik, and Prayag, is one of four sites where drops of amrita, the elixir of immortality, accidentally spilled over from a kumbha (pitcher) while being carried by the celestial bird deity Garuda just after the Samudra Manthana, or the churning of the ocean of milk. Brahma Kund, the spot where the amrita fell, is believed to be located at Har ki Pauri (literally, \"footsteps of the Lord\") and is considered to be the most sacred ghat of Haridwar. \nHaridwar is also the primary centre of the Kanwar pilgrimage, in which millions of participants gather sacred water from the Ganges and carry it across hundreds of miles to dispense as offerings in Shiva shrines. \nHaridwar is additionally a passage for the Chota Char Dham (the four principal pilgrim destinations in Uttarakhand: Gangotri, Yamunotri, Kedarnath, and Badrinath). \nThe city has industrial development in addition to its religious significance, including the State Industrial Development Corporation of Uttarakhand (SIDCUL) industrial estate and the nearby township of Bharat Heavy Electricals Limited (BHEL) and its affiliated ancillaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 366
+    },
+    "banned_terms": [
+      {
+        "term": "haridwar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1832,
+    "attempt": 1818,
+    "place_id": "gn-1272648",
+    "input": {
+      "place": {
+        "place_id": "gn-1272648",
+        "name": "Dibrugarh",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.47989,
+        "lon": 94.90837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dibrugarh",
+          "url": "https://en.wikipedia.org/wiki/Dibrugarh",
+          "text": "Dibrugarh (Assamese: [dibɹʊ.ɡɔ(ɹ)]) is a city in the Indian state of Assam, located 435 km east of the state capital Dispur. It has been declared as the second capital of Assam and serves as the headquarters of the Dibrugarh district in Upper Assam. Dibrugarh also serves as the headquarters of the Sonowal Kachari Autonomous Council, which is the governing council of the Sonowal Kachari tribe (found predominantly in the district). The historic town of Dibrugarh was formally announced as the second city of Assam on 7 March 2024 with the formation of the Dibrugarh Municipal Corporation by dissolving the municipal board."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "dibrugarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1833,
+    "attempt": 1819,
+    "place_id": "gn-1582886",
+    "input": {
+      "place": {
+        "place_id": "gn-1582886",
+        "name": "Đồng Hới",
+        "country": "Vietnam",
+        "subdivision": "Quang Tri",
+        "lat": 17.46885,
+        "lon": 106.62226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Đồng Hới",
+          "url": "https://en.wikipedia.org/wiki/Đồng_Hới",
+          "text": "Đồng Hới is an urban ward (phường) in Quảng Trị Province, in Vietnam. It is one of the 78 new wards, communes and special zones of the province following the reorganization in 2025.\nOn June 16, 2025, the Standing Committee of the National Assembly issued Resolution No. 1680/NQ-UBTVQH15 on the reorganization of commune-level administrative units in Quảng Trị Province in 2025. Accordingly, Đức Ninh Đông Ward, Đồng Hải Ward, Đồng Phú Ward, Phú Hải Ward, Hải Thành Ward, Nam Lý Ward, together with Bảo Ninh Commune and Đức Ninh Commune, were merged to form a new ward named Đồng Hới Ward."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "ong hoi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hoi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1834,
+    "attempt": 1820,
+    "place_id": "gn-1797595",
+    "input": {
+      "place": {
+        "place_id": "gn-1797595",
+        "name": "Qinhuangdao",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 39.94104,
+        "lon": 119.58936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qinhuangdao",
+          "url": "https://en.wikipedia.org/wiki/Qinhuangdao",
+          "text": "Qinhuangdao (; Chinese: 秦皇岛) is a port city on the coast of China in northern Hebei. It is administratively a prefecture-level city, about 300 km (190 mi) east of Beijing, on the Bohai Sea, the innermost gulf of the Yellow Sea. Its population during the 2020 national census was 3,136,879, with 1,881,047 people living in the built-up (or 'metro') area made up of four urban districts.At the end of 2024, the total resident population of the city was 3,111,400, an increase of 0.4 thousand over the end of the previous year. Among them, the resident population of urban areas is 2,078,120."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "qinhuangdao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

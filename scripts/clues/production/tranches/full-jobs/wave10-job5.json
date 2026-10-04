@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1896,
+    "attempt": 1881,
+    "place_id": "gn-5225507",
+    "input": {
+      "place": {
+        "place_id": "gn-5225507",
+        "name": "Warwick",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.7001,
+        "lon": -71.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warwick, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Warwick,_Rhode_Island",
+          "text": "Warwick ( WORR-ik or  WOR-wik) is a city in Kent County, Rhode Island, United States, and is the third-largest city in the state, with a population of 82,823 at the 2020 census. Warwick is located approximately 12 miles (19 km) south of downtown Providence, Rhode Island, 63 miles (101 km) southwest of Boston, Massachusetts, and 171 miles (275 km) northeast of New York City.\nWarwick was founded by Samuel Gorton in 1642 and has witnessed major events in American history. It was decimated during King Philip's War (1675–1676) and was the site of the Gaspee Affair, the first act of armed resistance against the British, preceding even the Boston Tea Party, and a significant prelude to the American Revolution. Warwick was also the home of Revolutionary War General Nathanael Greene, George Washington's second-in-command, and Civil War General George S. Greene, a hero of the Battle of Gettysburg.\nToday, it is home to Rhode Island's main airport, T. F. Green Airport, which serves the Providence area and also functions as a reliever for Logan International Airport in Boston, Massachusetts. Warwick was also home to Rocky Point, which closed in 1995 and is now a state park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 178,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "warwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1897,
+    "attempt": 1882,
+    "place_id": "gn-2647793",
+    "input": {
+      "place": {
+        "place_id": "gn-2647793",
+        "name": "Guildford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23536,
+        "lon": -0.57427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guildford",
+          "url": "https://en.wikipedia.org/wiki/Guildford",
+          "text": "Guildford ( ) is a town in west Surrey, England, around 27 mi (43 km) southwest of central London. As of the 2011 census, the town had a population of about 77,000; it is the seat of the wider Borough of Guildford, which had around 152,148 inhabitants in 2025. Its name is thought to derive from a crossing of the River Wey, a tributary of the River Thames, that flows through the town centre.\nThe earliest evidence of human activity in the area is from the Mesolithic and Guildford is mentioned in the will of Alfred the Great from c. 880. The exact location of the main Anglo-Saxon settlement is unclear and the current site of the modern town centre may not have been occupied until the early 11th century. Following the Norman Conquest, a motte-and-bailey castle was constructed; which was developed into a royal residence by Henry III. During the late Middle Ages, Guildford prospered as a result of the wool trade and the town was granted a charter of incorporation by Henry VII in 1488.\nThe River Wey Navigation between Guildford and the Thames was opened in 1653, facilitating the transport of produce, building materials and manufactured items to new markets in London. The arrival of the railways in the 1840s attracted further investment and the town began to grow with the construction of its first new suburb at Charlotteville in the 1860s. The town became the centre of a new Anglican diocese in 1927 and the foundation stone of the cathedral was laid in 1936. Guildford became a university town in September 1966, when the University of Surrey was established by Royal Charter.\nGuildford is surrounded on three sides by the Surrey Hills National Landscape, which severely limits its potential for expansion to the east, west and south. Recent development has been focused to the north of the town in the direction of Woking. Guildford now officially forms the southwestern tip of the Greater London Built-up Area, as defined by the Office for National Statistics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 177,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "guildford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1898,
+    "attempt": 1883,
+    "place_id": "gn-2562617",
+    "input": {
+      "place": {
+        "place_id": "gn-2562617",
+        "name": "Paola",
+        "country": "Malta",
+        "subdivision": "Paola",
+        "lat": 35.87297,
+        "lon": 14.49897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paola, Malta",
+          "url": "https://en.wikipedia.org/wiki/Paola,_Malta",
+          "text": "Paola (Maltese: Raħal Ġdid, Italian: Casal Nuovo, both meaning \"New Town\") is a town in the Port Region of Malta, with 8,706 inhabitants as of 2019. The town is a commercial centre in the Southern Harbour area of Malta, about 5 km (3.1 mi) from the capital Valletta, contiguous to Tarxien and Fgura, with which it forms a single urban area. Paola is named after Grand Master Antoine de Paule, who laid the foundation stone in 1626.\nPaola is renowned for the Ħal Saflieni Hypogeum, the Basilica of Christ the King (the largest church in the Maltese Islands), Antoine de Paule Square and its shopping centres, the Good Friday procession, and its football club, Hibernians FC. The Mariam Al-Batool Mosque, the only mosque in Malta, as well as an Islamic Cultural Centre are found in Paola. The country's correctional facilities (Corradino prison) and the largest burial grounds, the Addolorata Cemetery are also within the limits of Paola.\nThere are two parish churches, one dedicated to Christ the King and the other to Our Lady of Lourdes. The feast of Christ the King is celebrated on the last Sunday of July and Our Lady of Lourdes is celebrated on the first Sunday after 17 August. The parish also has a Franciscan church dedicated to Saint Anthony, in the Għajn Dwieli zone of the parish. St Ubaldesca Church is the oldest church in Paola and was the first parish church there. In 2008 the church underwent minimal restoration. Villa Perellos, named after grand master Ramon Perellos y Roccaful, is a local historical landmark.\nWhen the Order of St John came to Malta, a big part from Paola to Birmula, was named all Birmula but they changed them to 3 towns. A big part named Fgura and another big part, near dock 6 became Paola."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 176,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "paola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1899,
+    "attempt": 1884,
+    "place_id": "gn-3108877",
+    "input": {
+      "place": {
+        "place_id": "gn-3108877",
+        "name": "Sitges",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.23506,
+        "lon": 1.81193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sitges",
+          "url": "https://en.wikipedia.org/wiki/Sitges",
+          "text": "Sitges (Catalan: [ˈsidʒəs], Spanish: [ˈsitʃes]; Old Catalan for 'underground [grain] silos') is a town about 35 kilometres southwest of Barcelona, in Catalonia, Spain, renowned worldwide for its film festival, Carnival, and Catalan culture. Located between the Garraf Massif and the Mediterranean Sea, it is known for its beaches, nightspots, LGBTQ+ tourism, and historical sites.\nWhile the roots of Sitges' artistic reputation date back to the late 19th century, when painter Santiago Rusiñol took up residence there during the summer, the town became a centre for the 1960s counterculture in mainland Spain during the Francoist regime, and became known as \"Ibiza in miniature\".\nToday, the economy of Sitges is based on tourism and culture, offering more than 4,500 hotel beds, half of them in four-star hotels.\nAlmost 35% of the approximately 26,000 permanent inhabitants are estimated to be foreigners, a majority from Northern Europe.\nThere are 17 beaches in Sitges, the most popular being Platja de Sant Sebastià, Platja de la Fragata, Platja de la Bassa Rodona, Platja dels Balmins, Platja de la Ribera and Platja d'Aiguadolç.\nSitges has been referred to as the Saint-Tropez of Spain, with property prices approaching those of the most expensive European cities, the main reason for this being the setting by the sea and the surrounding Garraf Park. Proximity to Barcelona-El Prat Airport is also a major advantage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 176,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "sitges",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1900,
+    "attempt": 1885,
+    "place_id": "gn-3083426",
+    "input": {
+      "place": {
+        "place_id": "gn-3083426",
+        "name": "Tczew",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.09242,
+        "lon": 18.77787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tczew",
+          "url": "https://en.wikipedia.org/wiki/Tczew",
+          "text": "Tczew ([tt͡ʂɛf] , formerly German: ) is a city on the Vistula River in the Pomeranian Voivodeship, in northern Poland, with 59,111 inhabitants (December 2021). It is the capital of Tczew County and the largest city of the ethnocultural region of Kociewie within the historic region of Pomerania.\nFounded in the Middle Ages with city rights since 1260, Tczew was a major river port on the Vistula, and prospered as a major center for grain trade in Poland. The city is known for its Old Town with medieval Gothic churches, and the Vistula bridges, which played a key role in the Invasion of Poland at the onset of World War II. During the war, it was the location of a major German-operated transit camp for Poles expelled from the region, now home to the Vistula River Museum, the main museum devoted to the history of Poland's longest river.\nTczew is the largest railroad junction in northern Poland, with railroads towards Gdańsk, Bydgoszcz, Warsaw and Chojnice, and a location for the electric machinery and food industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 175,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "tczew",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1901,
+    "attempt": 1886,
+    "place_id": "gn-2649322",
+    "input": {
+      "place": {
+        "place_id": "gn-2649322",
+        "name": "Fleet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28333,
+        "lon": -0.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fleet, Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Fleet,_Hampshire",
+          "text": "Fleet is a town and civil parish in the Hart District of Hampshire, England, centred 38 miles (61 km) south-west of London and 13 miles (21 km) east of Basingstoke, near the towns of Farnborough, Aldershot and Farnham. The town is sometimes referred to as Fleet and Crookham, as the urban development is continuous and inseparable between Fleet, Church Crookham and Crookham Village, while the civil parish of Fleet Town Council manages Fleet town centre and its surrounding areas. \nIt is the largest town of the Hart District and features several major technology business areas, fast rail links to London, and a nearby connection to the M3 motorway. The nearby motorway service station, Fleet services, is named after the town. Fleet railway station is the only railway station in the town, providing direct commuter services to major cities such as London, Winchester, Southampton and Portsmouth. The Basingstoke Canal runs through the town; once a major transport route for goods, it has become a leisure route and an important habitat for waterfowl.\nAs of 2021 town of Fleet had a total population of 44,822 and includes the contiguous parishes of Church Crookham, Crookham Village, Dogmersfield, Elvetham Heath, as well as Ewshot. The town has a prominent golf club, an athletics club and two major football clubs.\nMajor annual events in the town include Fleet Half Marathon, Fleet Carnival, Music on The Views, Lions Firework Fiesta, Remembrance Sunday and Fleet Christmas Festival.\nLocal landmarks include Fleet Pond, the largest freshwater lake in Hampshire, and a High Street featuring many Victorian and Edwardian buildings. Major civic services are located in Fleet town centre, including Fleet Library and The Harlington, a community arts and civic centre. A weekly Saturday market is held in Gurkha Square, in front of the library.\nThe eastern end of Fleet is occupied by the Aldershot and Minley training areas, which are covered by forest and heathland and managed by the Ministry of Defence. This stretch of natural habitat separates Fleet from the built-up areas of Aldershot and Farnborough. Much of the land remains publicly accessible."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 171,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "fleet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1902,
+    "attempt": 1887,
+    "place_id": "gn-2961284",
+    "input": {
+      "place": {
+        "place_id": "gn-2961284",
+        "name": "Tallaght",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.2859,
+        "lon": -6.37344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tallaght",
+          "url": "https://en.wikipedia.org/wiki/Tallaght",
+          "text": "Tallaght ( TAL-ə; Irish: Tamhlacht, IPA: [ˈt̪ˠəul̪ˠəxt̪ˠ]) is a southwestern outer suburb on the southside of Dublin, Ireland, and is the county town of South Dublin. Tallaght was the site of a monastic settlement from at least the 8th century, which became one of medieval Ireland's more important monastic centres.\nUp to the 1960s, Tallaght was a small village in County Dublin, linked to several nearby rural areas which were part of the large civil parish of the same name—the local council estimates the population then to be 2,500. Suburban development began in the 1970s and a \"town centre\" area has been developing since the late 1980s. There is no legal definition of the boundaries of Tallaght, but the 13 electoral divisions known as \"Tallaght\" followed by the name of a locality have, according to the 2022 census, a population of 81,022, up from 76,119 over six years. This makes Tallaght the largest settlement on the island without city status, though there have been calls for it to be declared one.\nThe village core of the district is located north of, and near to, the River Dodder, and parts of the broader area within South Dublin are close to the borders of the local authority areas of Dublin City Council and Dún Laoghaire-Rathdown County Council, and close to the borders of County Kildare and County Wicklow. Several streams flow through the area, notably the Jobstown or Tallaght Stream (a tributary of the Dodder), and the Fettercairn Stream (a tributary of the River Camac), while the Tymon River, the main component of the River Poddle (Liffey tributary), rises in Cookstown, near Fettercairn.\nTallaght is also the name of an extensive civil parish, which includes other areas of southern and southwestern Dublin, from Templeogue to Ballinascorney in the mountains. A book about the civil parish was published in the 19th century, The History and Antiquities of Tallaght in the County of Dublin, written by William Domville Handcock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 171,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "tallaght",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1903,
+    "attempt": 1888,
+    "place_id": "gn-632978",
+    "input": {
+      "place": {
+        "place_id": "gn-632978",
+        "name": "Vaasa",
+        "country": "Finland",
+        "subdivision": "Ostrobothnia",
+        "lat": 63.096,
+        "lon": 21.61577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaasa",
+          "url": "https://en.wikipedia.org/wiki/Vaasa",
+          "text": "Vaasa (Finnish: [ˈvɑːsɑ]; Swedish: Vasa, Finland Swedish: [ˈvɑːsːɑ] ), formerly (1855–1917) known as Nikolaistad (Finnish: Nikolainkaupunki; lit. 'city of Nicholas'), is a city in Finland and the regional capital of Ostrobothnia, located on the west coast of the country, on the Gulf of Bothnia. Vaasa city has approximately 71,000 inhabitants, while the Vaasa sub-region has a population of approximately 112,000. It is the 14th-most populous municipality in Finland, and the tenth-most populous urban area in the country.\nThe settlement developed from 1606 near Korsholm; King Charles IX of Sweden granted Vaasa its municipal charter in 1611, naming the town after the Swedish royal House of Vasa.\nDuring the Finnish Civil War in 1918, Vaasa briefly served as the capital of White Finland and hosted the Senate of Finland.\nThe city has several institutions of higher education: the University of Vaasa, the Vaasa University of Applied Sciences, the Novia University of Applied Sciences, and some faculties of the Åbo Akademi University, the University of Helsinki, and the Hanken School of Economics.\nVaasa is a bilingual municipality with Finnish and Swedish as its official languages. The population consists of 62% Finnish speakers, 23% Swedish speakers, and 15% speakers of other languages. The municipalities surrounding Vaasa, such as Korsholm and Malax, have a clear majority of Swedish speakers. As a result, the Swedish language maintains a strong position in the city, making it the most significant cultural center for Swedish-Finns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 170,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "vaasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1904,
+    "attempt": 1889,
+    "place_id": "gn-3171366",
+    "input": {
+      "place": {
+        "place_id": "gn-3171366",
+        "name": "Pavia",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.19205,
+        "lon": 9.15917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pavia",
+          "url": "https://en.wikipedia.org/wiki/Pavia",
+          "text": "Pavia (UK:  pah-VEE-ə, US:  pə-VEE-ə; Italian: [paˈviːa] ) is a town and comune in south-western Lombardy, Northern Italy, 35 kilometres (22 miles) south of Milan on the lower Ticino near its confluence with the Po. It has a population of about 73,086.\nThe city was a major political centre in the medieval period, being the capital of the Ostrogothic Kingdom from 540 to 553, the capital of the Kingdom of the Lombards from 572 to 774, the capital of the Kingdom of Italy from 774 to 1024 and the seat of the Visconti court from 1365 to 1413.\nPavia is the capital of the fertile province of Pavia, which is known for a variety of agricultural products, including wine, rice, cereals, and dairy products. Although there are a number of industries located in the suburbs, these tend not to disturb the peaceful atmosphere of the town. It is home to the ancient University of Pavia and several other universities, colleges and related institutions and the 15th-century Policlinico San Matteo. Pavia is the episcopal seat of the Roman Catholic Bishop of Pavia. There are many artistic and cultural treasures in the area, including several important churches and museums, such as the Certosa di Pavia. The municipality of Pavia is part of the Parco naturale lombardo della Valle del Ticino (a Nature reserve included by UNESCO in the World Network of Biosphere Reserves) and preserves two forests (Strict nature reserve Bosco Siro Negri and Bosco Grande nature reserve)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 169,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "pavia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1905,
+    "attempt": 1890,
+    "place_id": "gn-4942807",
+    "input": {
+      "place": {
+        "place_id": "gn-4942807",
+        "name": "Lynn",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.46676,
+        "lon": -70.94949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lynn, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Lynn,_Massachusetts",
+          "text": "Lynn is the eighth-largest municipality in Massachusetts, United States, and the largest city in Essex County. Situated on the Atlantic Ocean, 3.7 miles (6.0 km) north of the Boston city line at Suffolk Downs, Lynn is part of Greater Boston's urban inner core and is a major economic and cultural center of the North Shore.\nSettled by Europeans in 1629, Lynn is the 5th oldest colonial settlement in the Commonwealth. An early industrial center, Lynn was long colloquially referred to as the \"City of Sin\", owing to its historical reputation for crime and vice. Today, however, the city is known for its immigrant population, historic architecture, downtown cultural district, loft-style apartments, and public parks and open spaces, which include the oceanfront Lynn Shore Reservation; the 2,200-acre, Frederick Law Olmsted-designed Lynn Woods Reservation; and the High Rock Reservation and Park designed by Olmsted's sons. Lynn also is home to Lynn Heritage State Park, the southernmost portion of the Essex Coastal Scenic Byway, and the seaside, National Register-listed Diamond Historic District. The population was 101,253 at the 2020 United States census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 169,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "lynn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1906,
+    "attempt": 1891,
+    "place_id": "gn-5143620",
+    "input": {
+      "place": {
+        "place_id": "gn-5143620",
+        "name": "West Albany",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.68313,
+        "lon": -73.77845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Albany, New York",
+          "url": "https://en.wikipedia.org/wiki/West_Albany,_New_York",
+          "text": "West Albany is a hamlet in the town of Colonie, Albany County, New York, United States. Parts of the neighboring city of Albany around Watervliet Avenue Extension and Industrial Park Road are also considered part of West Albany and include the majority of the West Albany Rail Yard. The hamlet lies along Albany's northern border and was once home to many industries, including one of the largest cattle stockyards in the United States, a large railroad switching yard, and a Tobin First Prize packing plant. Those industries are gone now and the community is mostly a residential suburb of Albany in the shadow of abandoned industrial complexes. West Albany has historically been ethnically diverse with Polish, Italian, Irish, German, and English immigrants drawn by the 5,000+ jobs at the West Albany Rail Yard. Though the neighborhood is predominately Italian-American, it remains diverse with the Polish American Citizens Club, the West Albany Italian Benevolent Society, the Bet Shraga Hebrew Academy, and a Korean worship center in the former St. Francis de Sales Catholic Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 168,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "west albany",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1907,
+    "attempt": 1892,
+    "place_id": "gn-1679980",
+    "input": {
+      "place": {
+        "place_id": "gn-1679980",
+        "name": "Vigan",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 17.57472,
+        "lon": 120.38694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vigan",
+          "url": "https://en.wikipedia.org/wiki/Vigan",
+          "text": "Vigan, officially the City of Vigan (Ilocano: Siudad ti Vigan; Filipino: Lungsod ng Vigan; Spanish: Ciudad de Vigan), is a component city and capital of the province of Ilocos Sur, Philippines. According to the 2024 census, it has a population of 54,498 people.\nLocated on the western coast of the large island of Luzon, facing the South China Sea, it is a UNESCO World Heritage Site and it is one of the few Spanish colonial towns left in the Philippines whose old structures have mostly remained intact. It is well known for its sett pavements and a unique architecture of the Spanish colonial era which fuses native Philippine and Oriental building designs and construction, with colonial Spanish architecture that is still abundant in the area, mainly the bahay na bato houses and an Earthquake Baroque church.\nIt is known as the birthplace of Elpidio Quirino, the 6th President of the Philippines. He was born at the former location of the Provincial Jail (his father was a warden). He also resided in the Syquia Mansion, which was a wedding gift from his in-laws to his wife.\nThe entire city of Vigan was later inscribed as a UNESCO World Heritage City after being declared as a UNESCO World Heritage Site. It is a member of the Organization of World Heritage Cities (OWHC).\nIn May 2015, Vigan was officially recognized as one of the New7Wonders Cities together with Beirut, Doha, Durban, Havana, Kuala Lumpur, and La Paz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "vigan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1908,
+    "attempt": 1893,
+    "place_id": "gn-1714674",
+    "input": {
+      "place": {
+        "place_id": "gn-1714674",
+        "name": "Dipolog",
+        "country": "Philippines",
+        "subdivision": "Zamboanga Peninsula",
+        "lat": 8.56697,
+        "lon": 123.33471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dipolog",
+          "url": "https://en.wikipedia.org/wiki/Dipolog",
+          "text": "Dipolog ([diˈpɔʔlɔg]), officially the City of Dipolog, is a  component city and capital of the province of Zamboanga del Norte, Philippines. According to the 2024 census, it has a population of 136,528 people making it the most populous in the province.\nGeographically, the city is surrounded by rolling hills to the southeast and the Sulu Sea to the north. Dipolog is known for its wild orchids and its sardine industry which stems from the rich fishing area off its shores. It is known as the \"Gateway to Western Mindanao\" through the Western Nautical Highway\nand has also been called the \"Bottled Sardines Capital of the Philippines.\"\nDipolog can be reached by plane via Dipolog Airport or by ferry at the Galas Port in Barangay Galas or at nearby Pulauan Port in Dapitan. The development of the Port of Dipolog, a roll-on/roll-off facility at Barangay Galas, will allow for the eventual transfer of the service to Dipolog while retaining inter-island operations at Pulauan, which is a base port.\nA popular city attraction is the foreshore Dipolog Boulevard which, though still in its second phase of construction, has become a popular haven for exercise and leisure. It is also the site for various celebrations and festivals in the city. In the third phase of the project, the length of the boulevard will be extended to reach the seaport in Barangay Galas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "dipolog",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1909,
+    "attempt": 1894,
+    "place_id": "gn-3879123",
+    "input": {
+      "place": {
+        "place_id": "gn-3879123",
+        "name": "Nacimiento",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -37.50253,
+        "lon": -72.67307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nacimiento, Chile",
+          "url": "https://en.wikipedia.org/wiki/Nacimiento,_Chile",
+          "text": "Nacimiento (Spanish pronunciation: [nasiˈmjento], English: Birth) is a Chilean city situated in the Bío Bío Province, Bío Bío Region, 550 km (342 mi) south of Santiago, and 104 km (65 mi) from the closest major city in the region, Concepción.\nIt was first used as a fort for the Spanish army to advance and control the territory, and it was officially baptised on Christmas Eve of December 1603 with the name of Nacimiento de Nuestro Señor (Nativity of Our Lord).  Destroyed in the later risings of the Mapuche and repaired in 1665, 1724 and for the last time in 1739, it was transferred with its inhabitants in 1749 to the site of the current town.\nFor a long time it was considered the last frontier of Chile, but after the arrival of foreign investors and developers it became a very prosperous city. The Palacio Gleisner is testament to that early prosperity.\nAmong the rivers that surround the city include the Bío Bío and the Vergara rivers. Industrial practices of lumber companies such as Mininco, Inforsa and Santa Fé (among others) have caused contaminants to pollute the waters of the Vergara River, which was the life source of local agricultural cultivation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "nacimiento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1910,
+    "attempt": 1895,
+    "place_id": "gn-540771",
+    "input": {
+      "place": {
+        "place_id": "gn-540771",
+        "name": "Kronstadt",
+        "country": "Russia",
+        "subdivision": "St.-Petersburg",
+        "lat": 59.992,
+        "lon": 29.77616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kronstadt",
+          "url": "https://en.wikipedia.org/wiki/Kronstadt",
+          "text": "Kronstadt (Russian: Кроншта́дт, romanized: Kronshtadt, IPA: [krɐnˈʂtat]) is a Russian port city in Kronshtadtsky District of the federal city of Saint Petersburg, located on Kotlin Island, 30 km (19 mi) west of Saint Petersburg, near the head of the Gulf of Finland. It is linked to the former Russian capital by a combination levee-causeway-seagate, the St Petersburg Dam, part of the city's flood defences, which also acts as road access to Kotlin island from the mainland.\nFounded in the early 18th century by Peter the Great, it became an important international centre of commerce whose trade role was later eclipsed by its strategic significance as the primary maritime defence outpost of the former Russian capital. The main base of the Russian Baltic Fleet was located in Kronstadt, guarding the approaches to Saint Petersburg. The Kronstadt Fortress, a massive system of sea and land fortifications, served as the shield of the former Russian capital.\nIn March 1921, the island city was the site of the Kronstadt rebellion.\nThe historic centre of the city and its fortifications are part of the World Heritage Site that is Saint Petersburg and Related Groups of Monuments.\nKronstadt has been a place of pilgrimage for Orthodox Christians for many years due to the memory of Saint John of Kronstadt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "kronstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1911,
+    "attempt": 1896,
+    "place_id": "gn-1274256",
+    "input": {
+      "place": {
+        "place_id": "gn-1274256",
+        "name": "Chidambaram",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.39933,
+        "lon": 79.69144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chidambaram",
+          "url": "https://en.wikipedia.org/wiki/Chidambaram",
+          "text": "Chidambaram (Thillai) is a major town and municipality in Cuddalore district in the Indian state of Tamil Nadu, on the banks of the Vellar River where it meets the Bay of Bengal. It is the headquarters of the Chidambaram taluk. The town is believed to be of significant antiquity and has been ruled, at different times, by the Pallavas until ninth century, Medieval Cholas, Later Cholas, Later Pandyas, Vijayanagara Empire, Thanjavur Nayakas, Marathas and the British. The town is known for the Thillai Nataraja Temple and Thillai Kali Temple, \nand the annual chariot festival held in the months of December–January (In the Tamil month of Marghazhi known as \"Margazhi Urchavam\") and June to July (In the Tamil month of Aani known as \"Aani Thirumanjanam\"). One of the Divya Desams Divya Sri Govindaraja Perumal Temple (Thiruchitrakoodam) is a part of Thillai Nataraja Temple complex. Thiruvetkalam Shiva Temple, Vadakiruppu, Thirunelvayil Shiva Temple, Sivapuri and Tirukkazhippalai Palvannanathar Temple are the other three ancient Shiva temples in the region.\nChidambaram covers an area of 25.5 km2 (9.8 sq mi) and had a population of 1,15,913 as of 2011. It is administered by a Selective grade municipality. Tertiary sector involving tourism is the major occupation. Roadways are the major means of transportation with a total of 64.12 km (39.84 mi) of district roads including one national highway passing through the town. As of 2011, there were eleven government schools: six primary schools, three middle schools and two higher secondary schools in Chidambaram. Annamalai University, established in 1929 in Chidambaram, is one of the oldest and most prominent universities in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "chidambaram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1912,
+    "attempt": 1897,
+    "place_id": "gn-1803266",
+    "input": {
+      "place": {
+        "place_id": "gn-1803266",
+        "name": "Lintong",
+        "country": "China",
+        "subdivision": "Shaanxi",
+        "lat": 34.37803,
+        "lon": 109.20892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lintong, Xi'an",
+          "url": "https://en.wikipedia.org/wiki/Lintong,_Xi'an",
+          "text": "Lintong District (Chinese: 临潼区; pinyin: Líntóng Qū), formerly Lintong County, is one of 11 urban districts of the prefecture-level city of Xi'an, the capital of Shaanxi Province, Northwest China. The district was approved to establish from the former Lintong County (临潼县) by the Chinese State Council on June 25, 1997. The Terracotta Army and the Mausoleum of the First Qin Emperor was discovered in March 1974 near this district. The district borders the prefecture-level cities of Xianyang to the northwest and Weinan to the east, Gaoling County to the northeast, Baqiao District to the southeast, Lianhu and Xincheng Districts to the south, and Chang'an District to the southwest.\nArtifacts from the tomb of Qin Shi Huang, China's first emperor, can be viewed at the Emperor Qinshihuang's Mausoleum Site Museum (秦始皇帝陵博物院) in Lintong District.\nThe National Time Service Center, the Chinese Academy of Sciences (中国科学院国家授时中心), formerly known as Shaanxi Astronomical Observatory (陕西天文台), was established in 1966 in Lintong responsible for the time standard in mainland China. It was renamed to its present name in 2001.\nThe name of the district comes from two rivers. Lin river is on the east side and Tong river is on the west side of the district.\nLintong is headquarters of the 47th Group Army of the People's Liberation Army, one of the two group armies that comprise the Lanzhou Military Region responsible for defending China's northwest borders."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "lintong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1913,
+    "attempt": 1898,
+    "place_id": "gn-2186239",
+    "input": {
+      "place": {
+        "place_id": "gn-2186239",
+        "name": "New Plymouth",
+        "country": "New Zealand",
+        "subdivision": "Taranaki Region",
+        "lat": -39.06667,
+        "lon": 174.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Plymouth",
+          "url": "https://en.wikipedia.org/wiki/New_Plymouth",
+          "text": "New Plymouth (Māori: Ngāmotu) is the major city of the Taranaki region on the west coast of the North Island of New Zealand. It is named after the English city of Plymouth, in Devon, from where the first English settlers to New Plymouth migrated. The New Plymouth District, which includes New Plymouth City and several smaller towns, is the 10th largest district (out of 67) in New Zealand, and has a population of 90,100 – about two-thirds of the total population of the Taranaki region and  1.7% of New Zealand's population. This includes New Plymouth City (60,200), Waitara (7,720), Inglewood (3,970), Ōakura (1,780), Ōkato (561) and Urenui (429).\nThe city itself is a service centre for the region's principal economic activities, including intensive pastoral activities (mainly dairy farming) as well as oil, natural gas and petrochemical exploration and production. It is also the region's financial centre as the home of TSB (formerly the Taranaki Savings Bank), the largest of the remaining non-government New Zealand-owned banks.\nNotable features are the botanic garden (i.e. Pukekura Park), the critically acclaimed Len Lye Centre and Art Gallery, the 13 km (8.1 mi) New Plymouth Coastal Walkway alongside the Tasman Sea, the Len Lye-designed 45-metre-tall (148 ft) artwork known as the Wind Wand, Paritutu Rock, and views of Mount Taranaki.\nNew Plymouth was awarded the most liveable city (for a population between 75,000–150,000) by the International Awards for Liveable Communities in 2021. In 2023, New Plymouth was awarded New Zealand's most beautiful small city by Keep New Zealand Beautiful. It also won multiple awards in 2008. The city was in 2010 chosen as one of two walking & cycling \"Model Communities\" by the government. Based on New Plymouth's already positive attitude towards cyclists and pedestrians, the city received $3.71m to invest into infrastructure and community programmes to boost walking and cycling."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "new plymouth",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plymouth",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1914,
+    "attempt": 1899,
+    "place_id": "gn-2653877",
+    "input": {
+      "place": {
+        "place_id": "gn-2653877",
+        "name": "Canterbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.27904,
+        "lon": 1.07992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canterbury",
+          "url": "https://en.wikipedia.org/wiki/Canterbury",
+          "text": "Canterbury (  KAN-tər-bər-ee or  -⁠berr-ee) is a city and UNESCO World Heritage Site in the Canterbury district, county of Kent, England; it was a county borough until 1974. Lying on the River Stour not far from its mouth on the Strait of Dover, the city has a mild oceanic climate.\nCanterbury is a popular tourist destination, with the city's economy heavily reliant upon tourism, alongside higher education and retail. As of 2021, the city had a population of 55,087 inhabitants, including a substantial number of students and one of the highest student-to-permanent-resident ratios in Britain.\nThe site of the city has been occupied since Paleolithic times and served as the capital of the Celtic Cantiaci and Jute Kingdom of Kent. Many historical structures fill the area, including a city wall founded in Roman times and rebuilt in the 14th century, the Westgate Towers museum, the ruins of St Augustine's Abbey, the Norman Canterbury Castle, and the oldest extant school in the world, the King's School. Modern additions include the Marlowe Theatre and Kent County Cricket Club's St Lawrence Ground. Canterbury Cathedral is known for its architecture, its music, and for being the seat of the Archbishop of Canterbury; it receives a million visitors per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "canterbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1915,
+    "attempt": 1900,
+    "place_id": "gn-5100572",
+    "input": {
+      "place": {
+        "place_id": "gn-5100572",
+        "name": "Livingston",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.79593,
+        "lon": -74.31487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livingston, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Livingston,_New_Jersey",
+          "text": "Livingston is a township in Essex County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 31,330, its highest decennial count ever and an increase of 1,964 (+6.7%) from 29,366 recorded at the 2010 census, which in turn reflected an increase of 1,975 (+7.2%) from the 27,391 counted in the 2000 census. In 2025, the Population Estimates Program by the United States Census Bureau calculated that the township had a population of 32,223.\nLivingston was incorporated as a township by an act of the New Jersey Legislature on February 5, 1813, from portions of Caldwell Township (now Fairfield Township) and Springfield Township (now in Union County). Portions of the original township were later taken to form Fairmount (March 11, 1862, now part of West Orange) and Roseland (March 10, 1908).\nThe township was named for William Livingston, the first Governor of New Jersey; his family's coat of arms served as the township's seal for many years.\nThe community has been one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, township residents had a median household income of $153,381, ranked 14th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "livingston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

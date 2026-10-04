@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 1855,
+    "attempt": 1841,
+    "place_id": "gn-4562831",
+    "input": {
+      "place": {
+        "place_id": "gn-4562831",
+        "name": "Bayamón",
+        "country": "Puerto Rico",
+        "subdivision": "Bayamón",
+        "lat": 18.39856,
+        "lon": -66.15572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayamón, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Bayamón,_Puerto_Rico",
+          "text": "Bayamón (Spanish pronunciation: [baʝaˈmon], locally [baʝaˈmoŋ]) is a city and municipality in Puerto Rico. Located on the northeastern coastal plain, it is bounded by Guaynabo to the east, Toa Alta and Naranjito to the west, Toa Baja and Cataño to the north, and Aguas Buenas and Comerío to the south. Part of the San Juan metropolitan area, Bayamón is spread over 11 barrios and the downtown area and administrative center of Bayamón Pueblo. With a population of 185,187 as of the 2020 census, it is the second most populated municipality in the archipelago and island after the capital of San Juan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bayamon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1856,
+    "attempt": 1842,
+    "place_id": "gn-5375911",
+    "input": {
+      "place": {
+        "place_id": "gn-5375911",
+        "name": "Murrieta",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.55391,
+        "lon": -117.21392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murrieta, California",
+          "url": "https://en.wikipedia.org/wiki/Murrieta,_California",
+          "text": "Murrieta  is a city in the Inland Empire region of southwestern Riverside County, California, United States. The population of Murrieta was 110,949 as of the 2020 census. Murrieta experienced a 133.7% population increase between 2000 and 2010, making it one of the fastest-growing cities in the state during that period. Largely residential, Murrieta is typically characterized as a bedroom community. Murrieta is bordered by the city of Temecula to the south, the cities of Menifee and Wildomar to the north, and the unincorporated community of French Valley to the east. Murrieta is at the center of the Los Angeles-San Diego mega-region. Murrieta is named for Juan Murrieta, a Californio ranchero who founded the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "murrieta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1857,
+    "attempt": 1843,
+    "place_id": "gn-6176823",
+    "input": {
+      "place": {
+        "place_id": "gn-6176823",
+        "name": "Waterloo",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.4668,
+        "lon": -80.51639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waterloo, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Waterloo,_Ontario",
+          "text": "Waterloo is a city in the Canadian province of Ontario. It is one of three cities in the Regional Municipality of Waterloo (formerly Waterloo County). Waterloo is situated about 94 km (58 mi) west-southwest of Toronto, but it is not considered to be part of the Greater Toronto Area (GTA). At the time of the 2021 census, the population of Waterloo was 121,436.\nDue to the close proximity of the city of Kitchener to Waterloo, the two together are often referred to as \"Kitchener–Waterloo\", \"K-W\", or \"The Twin Cities\". Nearby Cambridge, Ontario is also sometimes grouped in, creating KWC or \"Tri-cities\". While several unsuccessful attempts to combine the municipalities of Kitchener and Waterloo have been made, the 1973 establishment of the Region of Waterloo lessened motivation to do so, and as a result, Waterloo remains an independent city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "waterloo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1858,
+    "attempt": 1844,
+    "place_id": "gn-7910079",
+    "input": {
+      "place": {
+        "place_id": "gn-7910079",
+        "name": "Sodo",
+        "country": "Ethiopia",
+        "subdivision": "South Ethiopia Regional State",
+        "lat": 6.86,
+        "lon": 37.76159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sodo",
+          "url": "https://en.wikipedia.org/wiki/Sodo",
+          "text": "Sodo (Amharic: ሶዶ) or officially  Wolaita Sodo (Amharic: ወላይታ ሶዶ, Wolaytta: Wolaytta Sooddo) is a city in south Ethiopia. The city is a political and administrative center of the Wolaita Zone and South Ethiopia Regional State. It has a latitude and longitude of 6°54′N 37°45′E with an elevation between 1,600 and 2,100 metres (5,200 and 6,900 feet) above sea level. It was part of the former Sodo woreda which included Sodo Zuria which completely surrounds it.\nSodo is a center of major health and education institutions in Ethiopia. Soddo Christian Hospital has one of the 10 surgical training centers in Africa. The hospital provides a full range of medical, and surgical services, including Orthopedic and General, Maternity, and Pediatrics.  Wolaita Sodo University Teaching Referral Hospital is also located in this town and it serves around two million people. The total number of beds in the hospital was 200; out of which 60 beds were in Obstetrics and Gynecology department.\nSodo's amenities include digital and mobile telephone access, postal service, 24 hour electrical service, two banks, and a hospital. Sodo is also the seat of the Roman Catholic Apostolic Vicariate of Sodo-Hosaena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "sodo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1859,
+    "attempt": 1845,
+    "place_id": "gn-877401",
+    "input": {
+      "place": {
+        "place_id": "gn-877401",
+        "name": "Songea",
+        "country": "Tanzania",
+        "subdivision": "Ruvuma",
+        "lat": -10.68333,
+        "lon": 35.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Songea",
+          "url": "https://en.wikipedia.org/wiki/Songea",
+          "text": "Songea  is the capital of Ruvuma Region in southwestern Tanzania. It is located along the A19 road.  The city has a population of 286,285, and is the seat of the Roman Catholic Archdiocese of Songea.  Between 1905 and 1907, the city was a centre of African resistance during the Maji Maji Rebellion in German East Africa.  The city is poised to experience significant economic growth in the near future as the Mtwara Corridor opens up in a few years. It is projected to be the sixth fastest growing city on the African continent between 2020 and 2025, with a 5.74% growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "songea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1860,
+    "attempt": 1846,
+    "place_id": "gn-11204413",
+    "input": {
+      "place": {
+        "place_id": "gn-11204413",
+        "name": "El Mourouj",
+        "country": "Tunisia",
+        "subdivision": "Ben Arous Governorate",
+        "lat": 36.71364,
+        "lon": 10.2096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Mourouj",
+          "url": "https://en.wikipedia.org/wiki/El_Mourouj",
+          "text": "El Mourouj (Arabic: المروج, romanized: el-Murūj) is a town and commune in the southern suburbs of Tunis in the Ben Arous Governorate, Tunisia. It became a commune in 1991. It has 120,732 inhabitants as of 2022, compared to 81,986 in 2004, making it the most populous commune in the Ben Arous Governorate. It is the seat of El Mourouj Delegation. The delegation, divided into five districts (numbered 1, 3, 4, 5 and 6), has a main axis; the Avenue des Martyrs, which divides it into two parts from north to south. Exceptionally, El Mourouj 2 is part of Tunis Governorate.\nThe town was built in the 1980s to absorb and organize the growth of population, it had been planned since 1977 and intended to accommodate 130,000 inhabitants. The delegation was created on May 31, 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "el mourouj",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mourouj",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1861,
+    "attempt": 1847,
+    "place_id": "gn-12269572",
+    "input": {
+      "place": {
+        "place_id": "gn-12269572",
+        "name": "Fangchenggang",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 21.76945,
+        "lon": 108.35661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fangchenggang",
+          "url": "https://en.wikipedia.org/wiki/Fangchenggang",
+          "text": "Fangchenggang (Chinese: 防城港 \"Port of Fangcheng\") is a prefecture-level city in the south of Guangxi Zhuang Autonomous Region, People's Republic of China.\nFangchenggang  is the southernmost port in China and is located in Fangcheng. It primarily services bulk carriers, of up to 180,000 t (180,000 long tons; 200,000 short tons) deadweight tons in size. The closest airport is located in Van Don, about 91 km away (1 hour drive). As of December 2018, the region had large amounts of land reclamation in progress to build new and additional ports. The resident population of the city in 2024 will be 1,079,800."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "fangchenggang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1862,
+    "attempt": 1848,
+    "place_id": "gn-1258980",
+    "input": {
+      "place": {
+        "place_id": "gn-1258980",
+        "name": "Raipur",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.23333,
+        "lon": 81.63333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raipur",
+          "url": "https://en.wikipedia.org/wiki/Raipur",
+          "text": "Raipur (Hindi: rāypura, pronounced [ɾaːɪpʊɾᵊ] ) is the capital city of the Indian state of Chhattisgarh. Raipur is also the administrative headquarters of Raipur district and Raipur division, and the most populous city of the state. It was a part of Madhya Pradesh before the state of Chhattisgarh was formed on 1 November 2000. It is a major commercial hub for trade and commerce in the region. It has exponential industrial growth and has become a major business hub in Central India. It has been ranked as India's 6th cleanest city as per the Swachh Survekshan for the year 2021. (In the Swachh Survekshan Awards-2023, Chhattisgarh secured the third rank in the ‘Best Performing States’ category). Raipur is ranked 7th in India's Ease of Living Index 2022 and 7th in the Municipal Performance Index 2020, both by the Ministry of Housing and Urban Affairs.\nIt is among the biggest producers of steel and iron in the country. There are about 200 steel rolling mills, 195 sponge iron plants, at least 6 steel plants, 60 plywood factories, 35 ferro-alloy plants, and 500 agro industries in the city. In addition, Raipur also has over 800 rice milling plants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "raipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1863,
+    "attempt": 1849,
+    "place_id": "gn-1267648",
+    "input": {
+      "place": {
+        "place_id": "gn-1267648",
+        "name": "Karur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.95771,
+        "lon": 78.08095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karur",
+          "url": "https://en.wikipedia.org/wiki/Karur",
+          "text": "Karur (Tamil: [kaɾuːɾ]) is a city and municipal corporation in the Indian state of Tamil Nadu. It is the administrative headquarters of Karur district and is administered by the Karur Municipal Corporation. It is located on the banks of the rivers Amaravathi, Kaveri and Noyyal. It is situated at about 395 km (245 mi) southwest of the state capital Chennai.\nThe region was ruled by the Cheras during the Sangam period and the town might have been part of the Chera capital at Vanchi-Karuvoor. It formed a part of the principal trade route between the west coast and Tamil Nadu. Archeological evidence points to Karur being a centre of trade during the Chera period. The region was ruled later by the Cholas, as evident from temple epigraphs. It was under the control of Pandyas, Vijayanagara Empire and the Madurai Nayaks across various periods in history. In the later part of the 18th century, the region came under the Kingdom of Mysore and the British East India Company annexed it to the Madras Presidency in 1799. After Indian Independence in 1947, it became pert of Madras State, the predecessor of Tamil Nadu.\nThe economy of the town is dependent on agriculture and textiles. Hindus form the majority of the urban population, with a minor population of Muslims and Christians. Tamil is the major spoken and official language. Karur is a part of the Karur Assembly constituency that elects a member to the Tamil Nadu Legislative Assembly once every five years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "karur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1864,
+    "attempt": 1850,
+    "place_id": "gn-1309611",
+    "input": {
+      "place": {
+        "place_id": "gn-1309611",
+        "name": "Myeik",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Tanintharyi Region",
+        "lat": 12.43954,
+        "lon": 98.60028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myeik, Myanmar",
+          "url": "https://en.wikipedia.org/wiki/Myeik,_Myanmar",
+          "text": "Myeik (Burmese: မြိတ်, MLCTS: mrit, pronounced [mjeɪʔ] or [beɪʔ]; Mon: ဗိက်, [pòik]; Thai: มะริด, RTGS: Marit, [má(ʔ).rít]; formerly Mergui, ) is a rural city in Tanintharyi Region, Myanmar, located in the extreme south of the country on the coast of the Andaman Sea. As of 2010, the estimated population was over 209,000. Myeik is the largest city in Tanintharyi Region, and serves as the  regional headquarters of the Myanmar Navy's Tanintharyi Regional Command. The area inland from the city is a major smuggling corridor into Thailand. The Singkhon Pass, also known as the Maw-daung Pass, has an international cross-border checkpoint."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "myeik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1865,
+    "attempt": 1851,
+    "place_id": "gn-1503772",
+    "input": {
+      "place": {
+        "place_id": "gn-1503772",
+        "name": "Khanty-Mansiysk",
+        "country": "Russia",
+        "subdivision": "Khanty-Mansia",
+        "lat": 61.00187,
+        "lon": 69.02728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khanty-Mansiysk",
+          "url": "https://en.wikipedia.org/wiki/Khanty-Mansiysk",
+          "text": "Khanty-Mansiysk (Russian: Ха́нты-Манси́йск; Khanty: Ёмвоҷ, Jomvoćś; Mansi: Абга, Abga) is a city in west-central Siberia in Russia. It lies on the eastern bank of the Irtysh River, 15 kilometers (9.3 mi) from its confluence with the Ob, in the oil-rich region of Western Siberia. Though it is an independent city, Khanty-Mansiysk also functions as the administrative centre of Khanty-Mansiysky District, and the administrative center of Khanty-Mansi Autonomous Okrug–Yugra.\nWith 101,466 estimated inhabitants, Khanty-Mansiysk is among Russia's few regional capitals that are not the largest cities in their surrounding area, as it is surpassed in population by Surgut, Nizhnevartovsk and Nefteyugansk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "khanty mansiysk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "khanty",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mansiysk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1866,
+    "attempt": 1852,
+    "place_id": "gn-1647383",
+    "input": {
+      "place": {
+        "place_id": "gn-1647383",
+        "name": "Ciampea",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.55472,
+        "lon": 106.70083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciampea",
+          "url": "https://en.wikipedia.org/wiki/Ciampea",
+          "text": "Ciampea is a town and an administrative district  (Indonesian: kecamatan) in the Bogor Regency, West Java, Indonesia and thus part of Jakarta's metropolitan area.\nCiampea District covers an area of 30.62 km2, and had a population of 147,130 at the 2010 Census and 168,359 at the 2020 Census; the official estimate as at mid 2024 was 181,305 (comprising 93,142 males and 88,163 females). The administrative centre is at the town of Bojong Rangkas, and the district is sub-divided into thirteen villages (desa), all sharing the postcode of 16620, as listed below with their areas and populations as at mid 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ciampea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1867,
+    "attempt": 1853,
+    "place_id": "gn-1861749",
+    "input": {
+      "place": {
+        "place_id": "gn-1861749",
+        "name": "Ikoma",
+        "country": "Japan",
+        "subdivision": "Nara",
+        "lat": 34.68333,
+        "lon": 135.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ikoma, Nara",
+          "url": "https://en.wikipedia.org/wiki/Ikoma,_Nara",
+          "text": "Ikoma (生駒市, Ikoma-shi) is a city at the northwestern end of Nara Prefecture in the Kansai region of Japan. It was founded on November 1, 1971. As of September 1, 2023, the city has an estimated population of 117,259, with 51,478 households. It has a population density of 2,300 persons per km², and it has the third largest population in the prefecture. The total area is 53.18 km². The city is known as one of the most affluent suburbs of the Greater Osaka Metropolitan Area (Keihanshin), with a high rate of college graduates, professionals, and company directors amongst its residents. As a result, the city has developed as a satellite city of Osaka, with some 54% of its residents commuting across prefectural borders to Osaka. Kansai Science City is partially located in Ikoma, which is also home to the Nara Institute of Science and Technology.  The city is also famous for chasen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "ikoma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1868,
+    "attempt": 1854,
+    "place_id": "gn-1863440",
+    "input": {
+      "place": {
+        "place_id": "gn-1863440",
+        "name": "Hachiōji",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.65583,
+        "lon": 139.32389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hachiōji",
+          "url": "https://en.wikipedia.org/wiki/Hachiōji",
+          "text": "Hachiōji (八王子市, Hachiōji-shi) is a city located in the western portion of the Tokyo Metropolis, Japan. As of 31 March 2021, the city has an estimated population of 561,344, and a population density of 3,000 persons per km2. The total area of the city is 186.38 km2 (71.96 sq mi). It is the most populous city in Tokyo outside of the special wards.\nIn 2015, it was designated as a core city for the first time in Tokyo. It was the second city in Tokyo Prefecture (present-day Tokyo) to implement the municipal system after Tokyo City (present-day Tokyo's 23 wards)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hachioji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1869,
+    "attempt": 1855,
+    "place_id": "gn-2112708",
+    "input": {
+      "place": {
+        "place_id": "gn-2112708",
+        "name": "Hitachi",
+        "country": "Japan",
+        "subdivision": "Ibaraki",
+        "lat": 36.6,
+        "lon": 140.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hitachi, Ibaraki",
+          "url": "https://en.wikipedia.org/wiki/Hitachi,_Ibaraki",
+          "text": "Hitachi (日立市, Hitachi-shi) is a city located in Ibaraki Prefecture, Japan. As of 1 January 2024, the city had an estimated population of 165,822 in 76,702 households and a population density of 735 persons per km2. The percentage of the population aged over 65 was 32.7%. The total area of the city is 225.71 square kilometres (87.15 sq mi).  Hitachi is well known in the world for its brand name of electric products, including power plants and appliances, of the Hitachi company founded in the town in 1910 by Namihei Odaira with considerable properties as its factories in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hitachi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1870,
+    "attempt": 1856,
+    "place_id": "gn-2537406",
+    "input": {
+      "place": {
+        "place_id": "gn-2537406",
+        "name": "Settat",
+        "country": "Morocco",
+        "subdivision": "Casablanca-Settat",
+        "lat": 33.00103,
+        "lon": -7.61662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Settat",
+          "url": "https://en.wikipedia.org/wiki/Settat",
+          "text": "Settat is a city in Morocco between the national capital Rabat and Marrakesh. Settat is located 83.9 km (52.1 mi) by road south of the centre of Casablanca, roughly an hour's drive. \nIt lies about 40 km (25 mi) north of Ben Ahmed and 34 km (21 mi) south of Berrechid. \nIt is the capital of Settat Province and is its largest city in both size and population. According to the 2024 Moroccan census, it had a population of 171,556 people.\nSettat is 370 m (1,210 ft) above sea level, built on a plateau surrounded by foothills in all directions. The landmarks of Settat include the 17th century Ismailia Kasbah."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "settat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1871,
+    "attempt": 1857,
+    "place_id": "gn-2538475",
+    "input": {
+      "place": {
+        "place_id": "gn-2538475",
+        "name": "Rabat",
+        "country": "Morocco",
+        "subdivision": "Rabat-Salé-Kénitra",
+        "lat": 34.01325,
+        "lon": -6.83255
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rabat",
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "text": "Rabat is the capital city of Morocco, located on the northwestern coasts of the Atlantic Ocean. Rabat is the country's seventh-largest city with a population of 515,619 (2024) and the second largest metropolitan area after Casablanca, with a population of approximately 2.1 million (2025). It is also the capital city of the Rabat-Salé-Kénitra administrative region. Rabat is located on the Atlantic Ocean at the mouth of the river Bou Regreg, opposite Salé, the city's main commuter town.\nRabat was founded in the 12th century, by the Almohads. After a period of growth, the city fell into a period of decline. In the 17th century, Rabat became a haven for the Barbary corsairs. When the French established a protectorate over Morocco in 1912, Rabat became its administrative center. When Morocco achieved independence in 1956, Rabat became its capital.\nRabat is one of the four imperial cities of Morocco, and its medina is listed as a World Heritage Site. It is accessible by train through the ONCF system and by plane through the nearby Rabat–Salé Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "rabat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1872,
+    "attempt": 1858,
+    "place_id": "gn-2656046",
+    "input": {
+      "place": {
+        "place_id": "gn-2656046",
+        "name": "Bedford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.13459,
+        "lon": -0.46632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedford",
+          "url": "https://en.wikipedia.org/wiki/Bedford",
+          "text": "Bedford is a market town in Bedfordshire. At the 2021 Census, the population of its urban area was 167,446. Bedford is the county town of Bedfordshire and seat of the Borough of Bedford local government district.\nBedford was founded at a ford on the River Great Ouse and is thought to have been the burial place of King Offa of Mercia, who is remembered for building Offa's Dyke on the Welsh border. Bedford Castle was built by Henry I, although it was destroyed in 1224. Bedford was granted borough status in 1166 and has been represented in Parliament since 1265. It is known for its large population of Italian descent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bedford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1873,
+    "attempt": 1859,
+    "place_id": "gn-3086800",
+    "input": {
+      "place": {
+        "place_id": "gn-3086800",
+        "name": "Ruda Śląska",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.2584,
+        "lon": 18.85632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruda Śląska",
+          "url": "https://en.wikipedia.org/wiki/Ruda_Śląska",
+          "text": "Ruda Śląska (German: Ruda O.S.; Silesian: Wielgo Ruda) is a city in Silesia in southern Poland, near Katowice. It is a city in the Metropolis GZM, a metropolis with a population of two million. It is in the Silesian Highlands, on the Kłodnica River (tributary of the Oder).\nIt has been part of the Silesian Voivodeship since its formation in 1999. Previously, it was in Katowice Voivodeship, and before then, part of the Autonomous Silesian Voivodeship. Ruda Śląska is one of the cities in the Katowice urban area (population 2.7 million) and within the greater Katowice-Ostrava metropolitan area (population 5,294,000). The population of the city is 135,008 (December 2021)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "ruda slaska",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ruda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slaska",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1874,
+    "attempt": 1860,
+    "place_id": "gn-3174659",
+    "input": {
+      "place": {
+        "place_id": "gn-3174659",
+        "name": "Livorno",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.54427,
+        "lon": 10.32615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livorno",
+          "url": "https://en.wikipedia.org/wiki/Livorno",
+          "text": "Livorno (Italian: [liˈvorno] ) is a port city on the Tyrrhenian Sea on the western coast of the region of Tuscany in central Italy. The capital of the Province of Livorno, with a population of 152,451, it is the 25th-largest city in Italy. It is traditionally known in English as Leghorn (pronounced  leh-GORN,  LEG-horn or  LEG-ərn).\nDuring the Renaissance, Livorno was designed as an \"ideal town\". Developing considerably from the second half of the 16th century by the will of the House of Medici, Livorno was an important free port. Its intense commercial activity was largely dominated by foreign traders. Also the seat of consulates and shipping companies, it became the main port-city of the Grand Duchy of Tuscany. The high status of a multiethnic and multicultural Livorno lasted until the second half of the nineteenth century, when it was surpassed by other cities. Evidence of that prosperous time can be seen in the many churches, villas, and palaces of the city.\nLivorno is considered to be the most modern among all the Tuscan cities, and is the third most-populous of the region, after Florence and Prato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "livorno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

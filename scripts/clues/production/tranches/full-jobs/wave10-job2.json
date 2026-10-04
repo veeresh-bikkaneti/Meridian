@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 1835,
+    "attempt": 1821,
+    "place_id": "gn-1812990",
+    "input": {
+      "place": {
+        "place_id": "gn-1812990",
+        "name": "Dengzhou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 32.68273,
+        "lon": 112.08873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dengzhou",
+          "url": "https://en.wikipedia.org/wiki/Dengzhou",
+          "text": "Dengzhou (simplified Chinese: 邓州; traditional Chinese: 鄧州; pinyin: Dèngzhōu), formerly Deng County (邓县; 鄧縣; Dèng Xiàn), is a county-level city in Nanyang, Henan, China. It has an area of 2,294 km2 (886 sq mi) and a population of 1,500,000. The urban area is 35 km2, and the urban population is 300,000. The city is located in the southwest of Henan province and adjacent to Henan's border with Hubei and Shaanxi provinces. It geometrically lies in the center of the triangle of Zhengzhou, Wuhan and Xi'an, equidistant from these three cities. \nIt is a city with a long cultural history in China. Historical figures from Dengzhou include Zhang Zhongjing (Han dynasty physician and inventor), Han Yu (Tang dynasty poet), Kou Zhun (Song dynasty chancellor), and Fan Zhongyan (Song dynasty writer). Modern figures include the writers Yao Xueyin and Zhou Daxin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "dengzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1836,
+    "attempt": 1822,
+    "place_id": "gn-1816269",
+    "input": {
+      "place": {
+        "place_id": "gn-1816269",
+        "name": "Baise",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 23.89013,
+        "lon": 106.62684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baise",
+          "url": "https://en.wikipedia.org/wiki/Baise",
+          "text": "Baise (Chinese: 百色; pinyin: Bǎisè, Bósè; local pronunciation: paːk˧˥ ɬɐk˥), or Bose, is the westernmost prefecture-level city of Guangxi, China bordering Vietnam as well as the provinces of Guizhou and Yunnan. At the end of 2024, the registered population of the city was 4,214,900, and the resident population of the city was 3,464,700, of which the urban resident population was 1,636 million, accounting for 47.22% of the resident population (the urbanization rate of the resident population).\nThe name is from Youjiang Zhuang Baksaek, meaning \"in, or blocking, a mountain pass\". The name Bwzswz is the Zhuang transliteration of the Chinese name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "baise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1837,
+    "attempt": 1823,
+    "place_id": "gn-2034414",
+    "input": {
+      "place": {
+        "place_id": "gn-2034414",
+        "name": "Tonghua",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 41.71972,
+        "lon": 125.92639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonghua",
+          "url": "https://en.wikipedia.org/wiki/Tonghua",
+          "text": "Tonghua (Chinese: 通化; pinyin: Tōnghuà) is a prefecture-level city in the south of Jilin province, People's Republic of China. It borders North Korea's Chagang Province to the south and southeast, Baishan to the east, Jilin City to the north, Liaoyuan to the northwest, and Liaoning province to the west and southwest. Its population was 1,812,114 registered residents at the 2020 census living in an area of 15,195 square kilometres (5,867 sq mi). Its built-up (or metro) area made of the two urban districts was home to 446,917 inhabitants. It is known as one of the five medicine production centres in China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "tonghua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1838,
+    "attempt": 1824,
+    "place_id": "gn-2034638",
+    "input": {
+      "place": {
+        "place_id": "gn-2034638",
+        "name": "Sujiatun",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.65917,
+        "lon": 123.33917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sujiatun, Shenyang",
+          "url": "https://en.wikipedia.org/wiki/Sujiatun,_Shenyang",
+          "text": "Sujiatun District (simplified Chinese: 苏家屯区; traditional Chinese: 蘇家屯區; pinyin: Sūjiātún Qū) is one of ten districts of the prefecture-level city of Shenyang, the capital of Liaoning Province, Northeast China, and forms part of the southern suburbs. The current population of Sujiatun is 430,000 and is located 15 km away from central Shenyang. Sujiatun is known mostly for its agricultural and industrial activity. It borders the districts of Yuhong and Heping to the north, Dongling to the northeast, Tiexi to the northwest; it also borders the prefecture-level cities of Fushun to the east, Benxi to the southeast, and Liaoyang to the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sujiatun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1839,
+    "attempt": 1825,
+    "place_id": "gn-2229798",
+    "input": {
+      "place": {
+        "place_id": "gn-2229798",
+        "name": "Kousséri",
+        "country": "Cameroon",
+        "subdivision": "Far North",
+        "lat": 12.07689,
+        "lon": 15.03063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kousséri",
+          "url": "https://en.wikipedia.org/wiki/Kousséri",
+          "text": "Kousséri (from Arabic: قصور quṣūr meaning \"palaces\"), founded and known as Mser in the indigenous Mser language, is a city in Far North Province, Cameroon.  It is the capital of the Logone-et-Chari department. It is a market town, and its population has recently been swollen by refugees from Chad. It had a population of 89,123 at the 2005 Census. The majority of the population are Shuwa Arabs with Chadian Arabic used as the lingua franca.\nIt forms a transborder agglomeration with the city of N'Djamena, capital of Chad, from which it is separated by the Logone River and the Chari River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kousseri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1840,
+    "attempt": 1826,
+    "place_id": "gn-229268",
+    "input": {
+      "place": {
+        "place_id": "gn-229268",
+        "name": "Mbarara",
+        "country": "Uganda",
+        "subdivision": "Western Region",
+        "lat": -0.60467,
+        "lon": 30.64851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mbarara",
+          "url": "https://en.wikipedia.org/wiki/Mbarara",
+          "text": "Mbarara City is a city in the Western Region of Uganda and the second largest city in Uganda after Kampala. The city is divided into 6 boroughs of Kakoba Division, Kamukuzi Division, Nyamitanga Division, Biharwe Division, Kakiika Division, Nyakayojo Division. It is the main commercial centre of most of south western districts of Uganda and the site of the district headquarters. In May 2019, the Uganda's cabinet granted Mbarara a city status, which started on 1 July 2020. The name of the municipality came from a colonial mispronunciation of Emburara (Hyperemia rufa), a tall grass that previously covered the whole area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "mbarara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1841,
+    "attempt": 1827,
+    "place_id": "gn-233508",
+    "input": {
+      "place": {
+        "place_id": "gn-233508",
+        "name": "Entebbe",
+        "country": "Uganda",
+        "subdivision": "Central Region",
+        "lat": 0.05621,
+        "lon": 32.47949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Entebbe",
+          "url": "https://en.wikipedia.org/wiki/Entebbe",
+          "text": "Entebbe is a city in Central Uganda which is located on  Lake Victoria peninsula, approximately 36 kilometres (22 mi) southwest of the Ugandan capital city, Kampala. Entebbe was once the seat of government for the Protectorate of Uganda prior to independence, in 1962. The city is the location of Entebbe International Airport, Uganda's largest commercial and military airport, which gained worldwide attention in a 1976 Israeli rescue of 100 hostages kidnapped by the militant group of the PFLP-EO and Revolutionary Cells (RZ) organizations. Entebbe is also the location of State House, the official office and residence of the President of Uganda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "entebbe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1842,
+    "attempt": 1828,
+    "place_id": "gn-2349019",
+    "input": {
+      "place": {
+        "place_id": "gn-2349019",
+        "name": "Atani",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.01277,
+        "lon": 6.74768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atani",
+          "url": "https://en.wikipedia.org/wiki/Atani",
+          "text": "Atani  is a city on the eastern bank of the Niger River in Anambra State, Nigeria. Atani is the headquarter of Ogbaru Local Government Area, a Local Government in the Northern Senatorial District of Anambra State.\nIt is one of the communities in Ogbaru situated in Igboland. Its political relations differ not so much from what obtains in other communities in the Igbo enclave. However, disparities exist in terms of geographical location and tradition. The political structure in Igboland begins from the family – with Umunna as the smallest unit), and extends to community – Obodo, which is the largest unit.\nIt was a town populated by early fishermen and migrant settlers. Atani is still the rice, fish, yam and cassava basin of Anambra state, producing most of the food sold in many markets in Delta and Anambra States.\nAtani people are of Ukwuani origin in Anambra state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "atani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1843,
+    "attempt": 1829,
+    "place_id": "gn-2407656",
+    "input": {
+      "place": {
+        "place_id": "gn-2407656",
+        "name": "Koidu",
+        "country": "Sierra Leone",
+        "subdivision": "Eastern Province",
+        "lat": 8.64387,
+        "lon": -10.9714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koidu",
+          "url": "https://en.wikipedia.org/wiki/Koidu",
+          "text": "Koidu Town (or Sefadu; officially known as Koidu City) is the capital and largest city of the Kono District in the Eastern Province of Sierra Leone. Its population is 128,030 based on the 2015 census. It is the fifth largest city in Sierra Leone by population, after Freetown, Kenema, Bo and Makeni. It lies approximately 280 miles east of Freetown, and about 60 miles north of Kenema.\nKoidu Town is  a major urban, business, commercial and diamond trade center. Two of the world's ten largest and most famous rough diamonds were found in the Woyie River that flows through Koidu Town.\nThe mayor of Koidu City and members of the Koidu-New Sembehun city council are directly elected every four years. The current mayor of Koidu Town is Komba Sam of the Sierra Leone People's Party political party. Koidu is not a stronghold of any political party; the city is home to large support of both the Sierra Leone People's Party and the All People's Congress.\nKoidu is one of the most ethnically and religiously diverse cities in Sierra Leone. The city is inhabited by many ethnic groups, with no ethnic group forming a majority. The Krio language is by far the most widely spoken language in Koidu Town and is the primary language of communication in the city. Sierra Leone's vice president Mohamed Juldeh Jalloh, Sierra Leone's First Lady Fatima Bio and Sierra Leone's former vice president Samuel Sam-Sumana were born and raised in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "koidu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1844,
+    "attempt": 1830,
+    "place_id": "gn-2521886",
+    "input": {
+      "place": {
+        "place_id": "gn-2521886",
+        "name": "Almería",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.83814,
+        "lon": -2.45974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almería",
+          "url": "https://en.wikipedia.org/wiki/Almería",
+          "text": "Almería (UK: , US also , Spanish: [almeˈɾi.a] ) is a city and municipality of Spain, located in Andalusia. It is the capital of the province of the same name. The city lies in southeastern Iberia, extending primarily in between the eastern fringes of the Sierra de Gádor and the Andarax riverbed along the coastline of the Gulf of Almería, a large inlet of the Mediterranean Sea. The municipality has a population of 201,946.\nCaliph Abd al-Rahman III founded the city in 955. The city grew wealthy during the Islamic era, becoming a world city throughout the 11th and 12th centuries. It enjoyed an active port that traded silk, oil, and raisins. This period was brought to an end with the 1147 conquest of the city by a Christian coalition. Control over Almería switched hands over the rest of the middle ages. In the early modern period, with the onset of Barbary piracy, the ethnic cleansing of moriscos in the Kingdom of Granada, and several natural calamities, urban decay accrued. The 19th-century reactivation of mining activity (lead) in the hinterland fostered commercial activity and demographic growth.\nKey road routes include the A-7 connecting Almería to the rest of the Spanish Mediterranean coast and the A-92 connecting the city to Granada and inner Andalusia. Almería is served by a medium-sized airport and a port with a growing specialization in passenger and ro-ro transport with the North of Africa (Algeria and Morocco).\nBeing adjacent to a small desert, Almería has an exceptionally dry climate by European standards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "almeria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1845,
+    "attempt": 1831,
+    "place_id": "gn-2702979",
+    "input": {
+      "place": {
+        "place_id": "gn-2702979",
+        "name": "Jönköping",
+        "country": "Sweden",
+        "subdivision": "Jönköping",
+        "lat": 57.78145,
+        "lon": 14.15618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jönköping",
+          "url": "https://en.wikipedia.org/wiki/Jönköping",
+          "text": "Jönköping (, Swedish: [ˈjœ̂nːˌɕøːpɪŋ] ) is a city in southern Sweden with 112,766 inhabitants (2022). Jönköping is situated on the southern shore of Sweden's second largest lake, Vättern, in the province of Småland. \nThe city is the seat of Jönköping Municipality, which has a population of 144,699 (2022) and is Småland's most populous municipality. Jönköping is also the seat of Jönköping County which has a population of 367,064 (2022). Jönköping is the seat of a district court and a court of appeal as well as the Swedish National Courts Administration. It is also the seat of the Swedish Board of Agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "jonkoping",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1846,
+    "attempt": 1832,
+    "place_id": "gn-3165243",
+    "input": {
+      "place": {
+        "place_id": "gn-3165243",
+        "name": "Trento",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.06787,
+        "lon": 11.12108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trento",
+          "url": "https://en.wikipedia.org/wiki/Trento",
+          "text": "Trento, also known in English as Trent,  is a city on the Adige River in Trentino-Alto Adige/Südtirol in Italy. It is the capital of the autonomous province of Trento (Trentino). In the 16th century, the city was the location of the Council of Trent. It was part of Austria and Austria-Hungary before it was annexed by Italy in 1919. With 118,142 inhabitants (2022), Trento is the third largest municipality in the Alps and second largest in the historical region of Tyrol.\nTrento is an educational, scientific, financial and political centre in Trentino-Alto Adige/Südtirol, in Tyrol and in Northern Italy in general. The city contains a picturesque Medieval and Renaissance historic centre, with ancient buildings such as Trento Cathedral and the Castello del Buonconsiglio.\nTogether with other Alpine towns, Trento engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. Trento was awarded the title of Alpine Town of the Year 2004.\nThe city often ranks highly among Italian cities for quality of life, standard of living, and business and job opportunities, being ranked 3rd in 2023. Trento is also one of the nation's wealthiest and most prosperous cities, with its province being one of the richest in Italy, with a GDP per capita of €46,100 and a nominal GDP of €25.5 billion in 2023.\nThe University of Trento, founded in 1962 as a Higher University Institute of Social Sciences, is one of the most prestigious medium-small Italian universities, with a strong international vocation. It ranks 1st among 'medium-sized' Universities in the Censis ranking and 2nd in the Il Sole 24 Ore ranking of Italian universities. \nThe School of International Studies of the University of Trento is a member of the Association of Professional Schools of International Affairs (Apsia), a selected group of institutions for higher education in the field of international relations. It is the first, and currently only, Italian institute and one of the few European institutes in the club of the best international study schools in the world that form policy makers.\nIn the last twenty years, thanks to the gradual creation of various research centers (Fondazione Bruno Kessler, Edmund Mach Foundation) and laboratories in the IT, engineering and sciences fields, Trento and its university have been nicknamed the \"Silicon Valley of the Alps\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "trento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1847,
+    "attempt": 1833,
+    "place_id": "gn-3351764",
+    "input": {
+      "place": {
+        "place_id": "gn-3351764",
+        "name": "Balombo",
+        "country": "Angola",
+        "subdivision": "Benguela",
+        "lat": -12.35426,
+        "lon": 14.77232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balombo",
+          "url": "https://en.wikipedia.org/wiki/Balombo",
+          "text": "Balombo is a town and municipality in Benguela Province in Angola. The municipality had a population of 108,965 in 2014.\nThe municipality was created in 1954 and covers an area of 2,635 km². It is bordered to the north by the municipality of Cassongue, to the east by the municipality of Londuimbali, to the south by the municipalities of Ucuma, Chinjenje, and Ganda, and to the west by the municipality of Bocoio.\nThe municipality consists of the central commune, corresponding to the town of Balombo, and the communes of Chindumbo, Chingongo, and Maca Mombolo.\nIts economic activity is based on agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "balombo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1848,
+    "attempt": 1834,
+    "place_id": "gn-3432043",
+    "input": {
+      "place": {
+        "place_id": "gn-3432043",
+        "name": "La Plata",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.92126,
+        "lon": -57.95442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Plata",
+          "url": "https://en.wikipedia.org/wiki/La_Plata",
+          "text": "La Plata (Spanish pronunciation: [la ˈplata]) is the capital city of Buenos Aires province, Argentina. According to the 2022 census, the Partido has a population of 772,618 and its metropolitan area, the Greater La Plata, has 938,287 inhabitants. It is located 9 kilometers (6 miles) inland from the southern shore of the Río de la Plata estuary.\nLa Plata was planned and developed to serve as the provincial capital after the city of Buenos Aires was federalized in 1880. It was officially founded by Governor Dardo Rocha on 19 November 1882. Its construction is documented in photographs by Tomás Bradley Sutton. La Plata was briefly known as Ciudad Eva Perón (Eva Perón City) between 1952 and 1955."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "la plata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1849,
+    "attempt": 1835,
+    "place_id": "gn-3452525",
+    "input": {
+      "place": {
+        "place_id": "gn-3452525",
+        "name": "Pouso Alegre",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -22.23,
+        "lon": -45.93639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pouso Alegre",
+          "url": "https://en.wikipedia.org/wiki/Pouso_Alegre",
+          "text": "Pouso Alegre is a municipality in southern region of Minas Gerais state, Brazil, with a population of 162,133 in 2020.  The area of the municipality is 543 km2. It lies in the valley of the Sapucaí River.\nCities that form boundaries with Pouso Alegre are: Cachoeira de Minas, Santa Rita do Sapucaí, Careaçu, São Sebastião da Bela Vista, Estiva, Congonhal,\nSão João da Mata and Silvianópolis.\nThe distance to the state capital, Belo Horizonte, is 385 km, to São Paulo 202 km, and to Rio de Janeiro 390 km. The city is 8 km away from its airport, Pouso Alegre Airport. from the main interstate highway BR-381 (Rodovia Fernão Dias), which connects São Paulo to Belo Horizonte.\nPouso Alegre is an industrial center with industries in the food sector, textiles, and metallurgy.  Many national and multinational enterprises have their plants here. Their activities include food (Unilever), clothing (Searchco), cars (Usiparts - Johnson Control's - Sumidenso), pharmaceuticals (ACG Capsules, Uniao Quimica, Sanobiol), \nglass (Sobral Invicta), and many other small and medium enterprises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "pouso alegre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pouso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alegre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1850,
+    "attempt": 1836,
+    "place_id": "gn-3461655",
+    "input": {
+      "place": {
+        "place_id": "gn-3461655",
+        "name": "Hortolândia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.85833,
+        "lon": -47.22
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hortolândia",
+          "url": "https://en.wikipedia.org/wiki/Hortolândia",
+          "text": "Hortolândia is a Brazilian municipality in the interior of the state of São Paulo. It is part of the Metropolitan Region of Campinas and the Mesoregion and Microregion of Campinas. It is located northwest of the state capital, about 110 km away. It is part of the São Paulo macrometropolis, which exceeds 29 million inhabitants and makes up approximately 75 percent of the state's population. The metropolitan regions of Campinas and São Paulo form the first megalopolis in the southern hemisphere.  It is bordered by Sumaré, to the north; Monte Mor, to the south and west; and Campinas, to the east.\nHortolândia was founded in 1991, splitting from Sumaré, and the privileged location and proximity to major industrial centers in the country caused the municipality to undergo a rapid demographic and industrial development. Hortolândia is considered a technopole and has several high tech companies, including IBM. These activities make the city have the 76th largest nominal municipal GDP in Brazil, with BR$12.9 billion in 2017. Hortolândia has several campuses of renowned universities, such as the Federal Institute of São Paulo and the Adventist University Center of São Paulo.\nSome of the city's main attractions are important green areas that provide space for sports and resting. There are also the cultural projects and events held by the Municipal Secretariat of Culture, the body responsible for projecting the cultural life of Hortolândia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "hortolandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1851,
+    "attempt": 1837,
+    "place_id": "gn-3617763",
+    "input": {
+      "place": {
+        "place_id": "gn-3617763",
+        "name": "Managua",
+        "country": "Nicaragua",
+        "subdivision": "Managua Department",
+        "lat": 12.13282,
+        "lon": -86.2504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Managua",
+          "url": "https://en.wikipedia.org/wiki/Managua",
+          "text": "Managua (Spanish pronunciation: [maˈnaɣwa]) is the capital and largest city of Nicaragua, and one of the largest cities in Central America. Located on the shores of Lake Managua, the city had an estimated population of 1,063,815 as of 2023, and a population of 1,401,687 in its metropolitan area. The city also serves as the seat of Managua Department.\nFounded in 1819, Managua became the national capital in 1852. It was a small fishing village before then. The city underwent a rapid expansion and urbanization between 1842 and 1930, leading it to become one of the most developed cities in Central America. Several earthquakes have affected the city's growth, especially the 1931 earthquake and the 1972 earthquake, but the city has been rebuilt several times. Today, the city is a major economic hub for both the country and Central America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "managua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1852,
+    "attempt": 1838,
+    "place_id": "gn-3698304",
+    "input": {
+      "place": {
+        "place_id": "gn-3698304",
+        "name": "Chimbote",
+        "country": "Peru",
+        "subdivision": "Ancash",
+        "lat": -9.07508,
+        "lon": -78.59373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chimbote",
+          "url": "https://en.wikipedia.org/wiki/Chimbote",
+          "text": "Chimbote  [tʃimˈbote] ; Quechua: Chimputi) is a city in northwestern Peru. It is the largest city in the Ancash Region and the tenth most populous in Peru. With a population of 425,367 in 2017, it is the capital of both Santa Province and Chimbote District. The city has an altitude of 4 meters.\nThe city is located on the coast in Ferrol Bay, 130 km south of Trujillo and 420 kilometers (260 mi) north of Lima on the North Pan-American highway. It is the start of a chain of important cities on the Peruvian north coast like Trujillo, Chiclayo and Piura. The advantages of this geographic location made Chimbote into a transshipment junction for the Santa River valley. The city is the second most important port city after Callao."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "chimbote",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1853,
+    "attempt": 1839,
+    "place_id": "gn-3827606",
+    "input": {
+      "place": {
+        "place_id": "gn-3827606",
+        "name": "Buenavista",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.60833,
+        "lon": -99.16944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buenavista, Tultitlán",
+          "url": "https://en.wikipedia.org/wiki/Buenavista,_Tultitlán",
+          "text": "Buenavista is the largest colonia in Tultitlán Municipality in State of Mexico, Mexico. The neighborhood is part of the Mexico City metropolitan area and had a 2010 census population of 206,081 inhabitants, or 39.32% of its municipal population of 524,074. It lies near the northern tip of the Federal District (Distrito Federal). It is the second-largest locality in Mexico that is not a municipal seat (after Ojo de Agua, Tecámac Municipality, State of Mexico). Tultitlán Municipality's seat lies in the town of Tultitlán de Mariano Escobedo, with a population of 31,936. As of 2020, the population change soared to 216,776 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "buenavista",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1854,
+    "attempt": 1840,
+    "place_id": "gn-3873775",
+    "input": {
+      "place": {
+        "place_id": "gn-3873775",
+        "name": "Rancagua",
+        "country": "Chile",
+        "subdivision": "O'Higgins Region",
+        "lat": -34.1691,
+        "lon": -70.74053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rancagua",
+          "url": "https://en.wikipedia.org/wiki/Rancagua",
+          "text": "Rancagua (Spanish pronunciation: [raŋˈkaɣwa], abbreviated as Rgua ) is a city and commune in central Chile and part of the Rancagua conurbation. It is the capital of the Cachapoal Province and of the O'Higgins Region, located 87 km (54 mi) south of the national capital of Santiago.\nIt was originally named Santa Cruz de Triana by Spanish colonists. The 2024 Chilean census recorded 257,744 inhabitants in the commune of Rancagua. The main economic activities range from mining, tourism, agriculture, timber, food production and services to minor industrial activities. The city also serves as the administrative and legal center of the region.\nTogether with Machalí and Gultro, it forms the Rancagua conurbation. After Curicó, Talca and Concepción, it is one of the most important and densely populated cities of the south central zone of Chile."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "rancagua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 1936,
+    "attempt": 1921,
+    "place_id": "gn-5341145",
+    "input": {
+      "place": {
+        "place_id": "gn-5341145",
+        "name": "Cupertino",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.323,
+        "lon": -122.03218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cupertino, California",
+          "url": "https://en.wikipedia.org/wiki/Cupertino,_California",
+          "text": "Cupertino ( KOOP-ər-TEEN-oh) is a city in Santa Clara County, California, United States, directly west of San Jose on the western edge of the Santa Clara Valley with portions extending into the foothills of the Santa Cruz Mountains. The population was 60,381 as of the 2020 census, decreasing by 1,671 (-2.9%) to a Census-estimated 58,710 by 2024. The city is the home of Apple Inc., headquartered at Apple Park.\nNamed for a local creek, which Spanish explorer Juan Bautista de Anza's cartographer had named after Saint Joseph of Cupertino, Cupertino was officially incorporated in 1955, though it saw economic activity in the early 19th century. The area was originally an agricultural community producing prunes, apricots and cherries, with a winery joining the ranks by the 19th century. Cupertino grew immensely during the 1950s due to the suburban housing boom experienced after the Second World War, concurring with the earliest roots of Silicon Valley developing near Cupertino. By the 1960s, office parks were being built and technology companies were setting up shop in the city, most notably Apple and Hewlett-Packard.\nCupertino remains a cornerstone of Silicon Valley. The economy is dominated by technology companies, including large ones like Apple Inc., as well as medium-sized companies and startups."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "cupertino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1937,
+    "attempt": 1922,
+    "place_id": "gn-6941080",
+    "input": {
+      "place": {
+        "place_id": "gn-6941080",
+        "name": "Fort Bragg",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.139,
+        "lon": -79.00603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Bragg",
+          "url": "https://en.wikipedia.org/wiki/Fort_Bragg",
+          "text": "Fort Bragg (renamed Fort Liberty from 2023 to 2025) is a U.S. Army military installation located in North Carolina. It ranks among the largest military bases in the world by population, with more than 52,000 military personnel.\nCovering more than 251 square miles (650 km2), Fort Bragg is home to the Army's XVIII Airborne Corps and serves as the headquarters of the U.S. Army Special Operations Command, which oversees the 1st Special Forces Command (Airborne) and the 75th Ranger Regiment. Additionally, it hosts the 82nd Airborne Division, United States Army Western Hemisphere Command, U.S. Army Reserve Command, and Womack Army Medical Center. Fort Bragg also operates two airfields: Pope Field, where the U.S. Air Force stations global airlift and special operations units, as well as the Air Force Combat Control School, and Simmons Army Airfield, which supports Army aviation units for airborne and special operations missions.\nThe installation was originally named for Confederate general Braxton Bragg. In 2023, the U.S. Department of Defense renamed the installation \"Fort Liberty\" due to controversy surrounding memorials to Confederate leaders. In February 2025, the U.S. Army changed the name of the installation back to \"Fort Bragg\", but in honor of World War II paratrooper Roland L. Bragg instead of the Confederate general."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "fort bragg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bragg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1938,
+    "attempt": 1923,
+    "place_id": "gn-4614748",
+    "input": {
+      "place": {
+        "place_id": "gn-4614748",
+        "name": "Collierville",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 35.04204,
+        "lon": -89.66453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collierville, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Collierville,_Tennessee",
+          "text": "Collierville ( \"call your ville\" or  \"call yer ville\"), officially the Town of Collierville, is a town in Shelby County, Tennessee, United States, and a suburb located in the Memphis metropolitan area. With a population of 51,324 in the 2020 census, Collierville is the third-largest municipality in the county after Memphis and Bartlett. It is home to the Carriage Crossing shopping mall and is served by Collierville Schools.\nFounded by 19th-century businessman Jesse R. Collier in 1836, the settlement was the site of the first and second battles of Collierville during the American Civil War, during which the town suffered severe damage. After a period of regrowth, Collierville saw substantial economic expansion in the twentieth and twenty-first centuries and now boasts a high quality of life.\nDowntown Collierville is listed on the National Register of Historic Places, and in 2014 Collierville's historic town square was ranked by Parade as the \"Best Main Street\" in America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "collierville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1939,
+    "attempt": 1924,
+    "place_id": "gn-5907896",
+    "input": {
+      "place": {
+        "place_id": "gn-5907896",
+        "name": "Brandon",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 49.84692,
+        "lon": -99.95306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brandon, Manitoba",
+          "url": "https://en.wikipedia.org/wiki/Brandon,_Manitoba",
+          "text": "Brandon () is the second-largest city in the province of Manitoba, Canada. It is located on the banks of the Assiniboine River in Western Manitoba, approximately 214 kilometres (133 mi) west of the provincial capital, Winnipeg, and 120 kilometres (75 mi) east of the Saskatchewan provincial border. The city covers an area of 77.41 km2 (29.89 sq mi) with a population of 51,313, and a census metropolitan area population of 54,268. Brandon is the primary commercial centre for the Westman Region and parts of southeastern Saskatchewan, a trading area with a population of more than 190,000 people.\nThe City of Brandon was incorporated in 1882, having a history rooted in the Assiniboine River fur trade as well as its role as a major junction on the Canadian Pacific Railway. Known as The Wheat City, Brandon's economy is predominantly associated with agriculture, alongside major sectors in education, food processing, manufacturing, health care, business services, and transportation.\nBrandon's post-secondary institutions include Brandon University, Assiniboine College, and the Manitoba Emergency Services College. Canadian Forces Base Shilo is located 30 km (19 mi) east of Brandon and maintains close ties with the city. Brandon's Keystone Centre is one of the largest consolidated entertainment, recreation, convention, and agriculture complexes in Canada, and is the home of the Brandon Wheat Kings and the Royal Manitoba Winter Fair."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "brandon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1940,
+    "attempt": 1925,
+    "place_id": "gn-8223932",
+    "input": {
+      "place": {
+        "place_id": "gn-8223932",
+        "name": "Central",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.28299,
+        "lon": 114.15846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Central, Hong Kong",
+          "url": "https://en.wikipedia.org/wiki/Central,_Hong_Kong",
+          "text": "Central (Chinese: 中環), also known as Central District, is the central business district of Hong Kong. It is located in the northeastern corner of the Central and Western District, on the north shore of Hong Kong Island, across Victoria Harbour from Tsim Sha Tsui, the southernmost point of Kowloon Peninsula. The area was the heart of Victoria City, although that name is rarely used anymore.\nAs the central business district of Hong Kong, it is the area where many multinational financial services corporations have their headquarters. Consulates of many countries are also located in this area, as is Government Hill, the site of the government headquarters until 2011. The area, with its proximity to Victoria Harbour, has served as the centre of trade and financial activities from the earliest days of the British colonial era in 1841, and continues to flourish and serve as the place of administration since the handover to China in 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "central",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1941,
+    "attempt": 1926,
+    "place_id": "gn-1023287",
+    "input": {
+      "place": {
+        "place_id": "gn-1023287",
+        "name": "Allanridge",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.75431,
+        "lon": 26.64382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allanridge",
+          "url": "https://en.wikipedia.org/wiki/Allanridge",
+          "text": "Allanridge is a gold-mining town in the Lejweleputswa District Municipality of the Free State province in South Africa. It is the main centre of the Loraine Gold Mining Company and is dominated by the tall headgear and complex reduction works that processes thousands of tons of gold-bearing ore every month.\nAllanridge established as a settlement in the Free State goldfields in 1947 and was named after Allan Roberts whose borehole's proximity to the gold-bearing reef was the precursor to the mining in the area. The town layout was designed by town planner William Backhouse, who also planned Welkom, the second-largest city in the Free State province. It became a municipality on 21 December 1956 but this changed on the 5 December 2000 when it was incorporated into the Matjhabeng Local Municipality with the city of Welkom and the towns of Hennenman, Odendaalsrus, Ventersburg and Virginia.\nThe Phathakahle township is 3 km outside of Allanridge. It was established during the apartheid era to house the mine workers of the Loraine Gold Mining Company.\nIt also has three primary Schools (S.A Mokhothu, Dihwai and Tshireletso ) and two high schools {LA wesi and Mosala}. The first part of Nyakallong was (skomplas)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "allanridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1942,
+    "attempt": 1927,
+    "place_id": "gn-2189529",
+    "input": {
+      "place": {
+        "place_id": "gn-2189529",
+        "name": "Invercargill",
+        "country": "New Zealand",
+        "subdivision": "Southland",
+        "lat": -46.4,
+        "lon": 168.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Invercargill",
+          "url": "https://en.wikipedia.org/wiki/Invercargill",
+          "text": "Invercargill ( IN-vər-KAR-ghil, Māori: Waihōpai) is the southernmost and westernmost city in New Zealand, and one of the southernmost cities in the world. It is the commercial centre of the Southland region. The city lies in the heart of the wide expanse of the Southland Plains to the east of the Ōreti or New River some 18 km (11 miles) north of Bluff, which is the southernmost town in the South Island. It sits amid rich farmland that is bordered by large areas of conservation land and marine reserves, including Fiordland National Park covering the south-west corner of the South Island and the Catlins coastal region.\nMany streets in the city, especially in the centre and main shopping district, are named after rivers in Scotland. These include the main streets Dee and Tay, as well as those named after the Tweed, Forth, Tyne, Esk, Don, Ness, Yarrow, Spey, Eye and Ythan rivers, amongst others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "invercargill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1943,
+    "attempt": 1928,
+    "place_id": "gn-4060791",
+    "input": {
+      "place": {
+        "place_id": "gn-4060791",
+        "name": "Enterprise",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 31.31517,
+        "lon": -85.85522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enterprise, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Enterprise,_Alabama",
+          "text": "Enterprise is a city in the southeastern part of Coffee County and the southwestern part of Dale County in Southeastern Alabama, United States. Its population was 28,711 at the 2020 census. Enterprise is the primary city of the Enterprise micropolitan statistical area (with the portion of the city in Dale County part of the Ozark micropolitan statistical area). It was originally a part of Enterprise–Ozark micropolitan area before being split; for a longer while it was originally part of the Dothan-Enterprise-Ozark combined statistical area but is now its own separate primary statistical area in later censuses.\nEnterprise is famous for the Boll Weevil Monument, a large monument of a woman holding a boll weevil, in the middle of Main Street. The city erected the statue because the destruction of the cotton crop by the boll weevil had led to agricultural diversity, starting with peanuts and more prosperity than had ever come from cotton alone. It is the only statue to an insect pest in the world. Enterprise is right outside the U.S. Army's Fort Rucker, the home of Army Aviation.\nEnterprise is home to Enterprise State Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "enterprise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1944,
+    "attempt": 1929,
+    "place_id": "gn-4932869",
+    "input": {
+      "place": {
+        "place_id": "gn-4932869",
+        "name": "Chelmsford",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.59981,
+        "lon": -71.36728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chelmsford, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Chelmsford,_Massachusetts",
+          "text": "Chelmsford () is a town in Middlesex County, Massachusetts, United States.\nChelmsford was incorporated in May 1655 by an act of the Massachusetts General Court.  When Chelmsford was incorporated, its local economy was fueled by lumber mills, limestone quarries, and kilns. In the 1700s, the Chelmsford militia played a role in the American Revolution at the Battle of Lexington and Concord and the Battle of Bunker Hill. The farming community of East Chelmsford was incorporated as Lowell in the 1820s; over the next decades it would go on to become one of the first large-scale factory towns in the United States because of its early role in the country's Industrial Revolution. Chelmsford experienced a drastic increase in population between 1950 and 1970, coinciding with the connection of U.S. Route 3 in Lowell to Massachusetts Route 128 in the 1950s and the extension of U.S. Route 3 from Chelmsford to New Hampshire in the 1960s.\nChelmsford has a representative town meeting form of government. The town has one public high school—Chelmsford High School, which was ranked among the top 500 schools in the nation in 2015—as well as two middle schools, and four elementary schools. The charter middle school started in Chelmsford became a regional charter school (Innovation Academy Charter School) covering grades 5 through 12, now located in Tyngsborough.  Chelmsford high school age students also have the option of attending the Nashoba Valley Technical High School, located in Westford.\nIn 2011, Chelmsford was declared the 28th best place to live in the United States by Money magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "chelmsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1945,
+    "attempt": 1930,
+    "place_id": "gn-5374361",
+    "input": {
+      "place": {
+        "place_id": "gn-5374361",
+        "name": "Monterey",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.60024,
+        "lon": -121.89468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monterey, California",
+          "url": "https://en.wikipedia.org/wiki/Monterey,_California",
+          "text": "Monterey (  MON-tə-RAY; Spanish: Monterrey) is a city on the southern edge of Monterey Bay, on the Central Coast of California. Located in Monterey County, the city occupies a land area of 8.645 sq mi (22.39 km2) and recorded a population of 30,218 in the 2020 census.\nMonterey was founded by the Spanish in 1774, when Gaspar de Portolá and Junípero Serra established the Presidio of Monterey and the Cathedral of San Carlos Borromeo. Monterey was elevated to capital of the Province of the Californias in 1777, serving as the administrative and military headquarters of both Alta California and Baja California, as well as its only official port of entry. Following the Mexican War of Independence, Monterey continued as the capital of the Mexican Department of the Californias.\nDuring the United States conquest of California, part of the Mexican-American War, Monterey was seized by the American military in the Battle of Monterey in 1846. Following its capture, Monterey continued to serve as the capital of the American interim government of California until 1849, during which it hosted California's 1st Constitutional Convention. In the late 19th century, Monterey and its surrounding area began to attract communities of artists, writers, and other creatives, leading to the creation of an art colony.\nToday, Monterey is a popular tourist destination on the Central Coast, hosting notable attractions such as the Monterey Bay Aquarium, Cannery Row, Fisherman's Wharf, California Roots Music and Arts Festival, and the annual Monterey Jazz Festival. The city is also an important hub for the military and higher education, home to the Defense Language Institute, the Naval Postgraduate School, the Middlebury Institute of International Studies at Monterey and California State University, Monterey Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "monterey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1946,
+    "attempt": 1931,
+    "place_id": "gn-1251081",
+    "input": {
+      "place": {
+        "place_id": "gn-1251081",
+        "name": "Anuradhapura",
+        "country": "Sri Lanka",
+        "subdivision": "North Central Province",
+        "lat": 8.31223,
+        "lon": 80.41306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anuradhapura",
+          "url": "https://en.wikipedia.org/wiki/Anuradhapura",
+          "text": "Anuradhapura (Sinhala: අනුරාධපුරය, romanised: Anurādhapuraya, IPA: [ənuraːd̪əpurəjə]; Tamil: அனுராதபுரம், romanised: Aṉurātapuram, IPA: [ɐnuɾaːðɐβuɾɐm]) is a major city located in the north central plain of Sri Lanka. It is the capital city of North Central Province and the capital of Anuradhapura District. The city lies 205 kilometres (127 mi) north of the current capital of Colombo in the North Central Province, on the banks of the historic Malwathu Oya. The city is now a World Heritage Site famous for its well-preserved ruins of the ancient Sinhalese civilisation.\nWhile Mahāvaṃsa places the founding of the city in 437 BCE, the site has been inhabited for much longer, making it a major human settlement on the island for almost three millennia and one of the oldest continuously occupied cities in Asia. It is the cradle of the Hydraulic Sinhalese civilisation, Theravada Buddhism, and the longest-serving ancient capital of Sri Lanka that has survived for 1500 years. Moreover, it was the first capital of the Sinhala Kingdom of Rajarata, following the kingdoms of Tambapanni and Upatissa Nuwara. Anuradhapura was also the centre of Theravada Buddhism for many centuries and has been a major Buddhist pilgrimage site with ruins of many ancient Buddhist temples, including the famous Anuradhapura Maha Viharaya and the Jaya Sri Maha Bodhi, the oldest still-living, documented, planted tree in the world believed to have originated from the original Bodhi tree at Bodh Gaya (Bihar, India) under which the Buddha attained enlightenment. These vast networks of ancient temples and monasteries now cover over 100 square kilometres (40 mi2) of area of the city today.\nThe city was mostly destroyed and largely deserted after 993 CE, with the Chola invasion from South India. Although several attempts were made by later Sinhalese kings to return the capital to Anuradhapura, it was not reestablished as a major population centre of the island until the British colonial era in the 19th century CE. Despite its decline as a political centre, Anuradhapura remained a vital pilgrimage site for Buddhists throughout the medieval period and continues to be a significant spiritual destination today. The modern revival of Anuradhapura began in the 1870s under British colonial rule, with infrastructure and urban planning initiatives aimed at supporting administration and accommodating pilgrims. The contemporary city, much of which was moved during the mid-20th century to preserve the site of the ancient capital, is a major road junction of northern Sri Lanka and lies along a railway line. The city is the headquarters of Sri Lanka's archeological survey, and tourism is a significant factor in its economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 425
+    },
+    "banned_terms": [
+      {
+        "term": "anuradhapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1947,
+    "attempt": 1932,
+    "place_id": "gn-2969679",
+    "input": {
+      "place": {
+        "place_id": "gn-2969679",
+        "name": "Versailles",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.80359,
+        "lon": 2.13424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Versailles, Yvelines",
+          "url": "https://en.wikipedia.org/wiki/Versailles,_Yvelines",
+          "text": "Versailles ( vair-SY, vur-SY; French: [vɛʁsɑj] ) is a commune in the department of Yvelines, Île-de-France. It is known for the Château de Versailles and the Gardens of Versailles, the latter of which is designated a UNESCO World Heritage Site. Located in the western suburbs of the French capital, 17.1 km (10.6 mi) from the centre of Paris, Versailles is a wealthy suburb of Paris with a service-based economy and is a major tourist destination. As of 2023, its population was 84,095, down from a peak of 94,145 in 1975.\nA new town founded by order of King Louis XIV, Versailles was the de facto capital of the Kingdom of France for over a century, from 1682 to 1789, before becoming the cradle of the French Revolution. After having lost its status as a royal city, it became the préfecture (regional capital) of the Seine-et-Oise département in 1790, then of Yvelines in 1968. It is also a Roman Catholic diocese.\nVersailles is historically known for numerous treaties such as the Treaty of Paris, which ended the American Revolution, and the Treaty of Versailles after World War I. Today, the Congress of France – the name given to the body created when both houses of the French Parliament, the National Assembly and the Senate – gathers in the Château de Versailles to vote on revisions to the Constitution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "versailles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1948,
+    "attempt": 1933,
+    "place_id": "gn-3024297",
+    "input": {
+      "place": {
+        "place_id": "gn-3024297",
+        "name": "Colmar",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.08078,
+        "lon": 7.35584
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colmar",
+          "url": "https://en.wikipedia.org/wiki/Colmar",
+          "text": "Colmar (French pronunciation: [kɔlmaʁ]; Alsatian: Colmer [ˈkolməʁ]; German: Colmar or Kolmar) is a city and commune in the Haut-Rhin department and Alsace region of north-eastern France. The third-largest commune in Alsace (after Strasbourg and Mulhouse), it is the seat of the prefecture of the Haut-Rhin department and of the subprefecture of the Colmar-Ribeauvillé arrondissement.\nColmar was first mentioned in the 9th century and grew into an important medieval trading town within the Holy Roman Empire. In the 17th century it was annexed by France under Louis XIV, though it retained a distinct German character due to its location, predominant language, and culture. The city shifted between French and German control multiple times, before being permanently restored to France in 1945.\nThe city is known for its well-preserved old town, numerous architectural landmarks, its blend of French and German heritage and its museums, among which is the Unterlinden Museum, which houses the Isenheim Altarpiece.\nColmar is located on the Alsatian Wine Route and considers itself to be the capital of Alsatian wine (capitale des vins d'Alsace)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "colmar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1949,
+    "attempt": 1934,
+    "place_id": "gn-6332582",
+    "input": {
+      "place": {
+        "place_id": "gn-6332582",
+        "name": "Little Havana",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.76806,
+        "lon": -80.23306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Havana",
+          "url": "https://en.wikipedia.org/wiki/Little_Havana",
+          "text": "Little Havana (Spanish: Pequeña Habana) is a neighborhood of Miami, Florida, United States. Home to many Cuban exiles, as well as many immigrants from Central and South America, Little Havana is named after Havana, the capital and largest city in Cuba.\nLittle Havana is noted as a center of social, cultural, and political activity in Miami. Its festivals, including the Calle Ocho Festival, Viernes Culturales/Cultural Fridays, the Three Kings Parade and others, have been televised to millions of people every year on different continents. It is also known for its landmarks, including Calle Ocho (SW 8th Street/Tamiami Trail), and its Walk of Fame (for famous artists and Latin personalities, including Celia Cruz, Willy Chirino, Gloria Estefan, Thalía, Julio Iglesias, and Desi Arnaz), the Cuban Memorial Boulevard, Plaza de la Cubanidad, Domino Park, the Tower Theater, José Martí Park, the Firestone/Walgreens Building, St. John Bosco Catholic Church, Municipio de Santiago de Cuba and others.\nMáximo Gómez Park, also known as Domino Park, is an integral part of Little Havana. Located on the historic Calle Ocho (8th Street) it is a place for Cuban immigrants to gather, drink coffee, smoke cigars, and play dominos. The park has also become a tourist destination, where non-Cubans can engage with immigrants.\nLittle Havana is the best known Cuban exile neighborhood in the world. It is characterized by its street life, restaurants, music and other cultural activities, small business enterprises, political passion, and great warmth among its residents.\nIn 2015, Little Havana was included in the National Trust for Historic Preservation's annual list of 11 Most Endangered Places. In 2017, the Trust declared it a national treasure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "little havana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "havana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1950,
+    "attempt": 1935,
+    "place_id": "gn-997678",
+    "input": {
+      "place": {
+        "place_id": "gn-997678",
+        "name": "Hartbeespoort",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -25.7287,
+        "lon": 27.87
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hartbeespoort",
+          "url": "https://en.wikipedia.org/wiki/Hartbeespoort",
+          "text": "Hartbeespoort, informally known as \"Harties\", is a small resort town in the North West Province of South Africa, situated on slopes of the Magaliesberg mountain and the banks of the Hartbeespoort Dam. The name of the town means \"gateway of the hartbees\" (a species of antelope) in Afrikaans. Schoemansville, named after General Hendrik Schoeman, a Boer General in the Anglo-Boer War, who owned the farm that the Hartbeespoort Dam was built on, is the oldest neighbourhood of Hartbeespoort.\nHartbeespoort is the collective name of a few smaller towns situated around the Hartbeespoort Dam, including the towns of Meerhof, Ifafi, Melodie, Schoemansville and Kosmos.\nThe town consists of holiday homes and permanent residences around the dam as it is popular with visitors from nearby Gauteng Province. It is home to the Om Die Dam (English: Around the dam) ultra marathon of 50 km, which takes place annually in the first half of the year.\n\nSome of the main tourist attractions in or around the town are:\n\nThe Hartbeespoort Dam wall and tunnel\nThe Hartbeespoort Dam Snake Park\nThe Hartbeespoort Dam Aquarium\nHartbeespoort Aerial Cableway (the longest monocableway in Africa)\nTransvaal Yacht Club\nOberon Leisure Resort\nWelwitchia Country Market\nThe Elephant Sanctuary Hartbeespoort Dam\nBushbabies Monkey Sanctuary\nLion and Safari Park reserve\nHarties horse trail safaris\nChameleon Village\nOther leisure-oriented venues around the dam include Pecanwood Golf Estate, Hartbeespoort Boat Club (near Kosmos), Sandy Lane Golf Club (at Caribbean Beach Club), Kosmos Marina Club, Magalies Park (estate and golf club). A number of other leisure developments and resorts are in progress. Local tourism booking services and destination logistics are supported by regional digital marketplaces, including Visit Hartbees.\nIn 2010 the Hartbeespoort Aerial Cableway was completely revamped and modernised and officially reopened on 14 August 2010 by Minister of Tourism Marthinus van Schalkwyk.\nHartbeespoort is part of the Madibeng Local Municipality, that also includes the nearby town of Brits.\n\nDespite the semi-rural setting of the Hartbeespoort environs, it is ranked by the World Health Organization as the most polluted town in South Africa in terms of airborne particulates, with air pollution levels roughly twice that of Vereeniging, a heavily industrialised city south of Johannesburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 361
+    },
+    "banned_terms": [
+      {
+        "term": "hartbeespoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1951,
+    "attempt": 1936,
+    "place_id": "gn-2269594",
+    "input": {
+      "place": {
+        "place_id": "gn-2269594",
+        "name": "Cascais",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69681,
+        "lon": -9.42147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cascais",
+          "url": "https://en.wikipedia.org/wiki/Cascais",
+          "text": "Cascais (European Portuguese pronunciation: [kɐʃˈkajʃ] ) is a town and municipality in the Lisbon District of Portugal, located on the Estoril Coast. The municipality has a total of 214,158 inhabitants in an area of 97.40 km2. Cascais is an important tourist destination. Its marina hosts events such as the America's Cup and the town of Estoril, part of the Cascais municipality, hosts conferences such as the Horasis Global Meeting.\nSince the 1870s, Cascais has been a popular seaside resort after King Luís I of Portugal and the Portuguese royal family made the seaside town their residence every September, thus also attracting members of the Portuguese nobility, who established a summer community there. Cascais is known for the many members of royalty who have lived there, including King Edward VIII of the United Kingdom, when he was the Duke of Windsor, King Juan Carlos I of Spain, and King Umberto II of Italy. Former Cuban president Fulgencio Batista was also once a resident of the municipality. The Casino Estoril inspired Ian Fleming's first James Bond novel, Casino Royale.\nThe municipality is one of the wealthiest in both Portugal and the Iberian Peninsula. It has one of the most expensive real estate markets and one of the highest costs of living in the country, and is consistently ranked highly for its quality of life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "cascais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1952,
+    "attempt": 1937,
+    "place_id": "gn-3792383",
+    "input": {
+      "place": {
+        "place_id": "gn-3792383",
+        "name": "Agustín Codazzi",
+        "country": "Colombia",
+        "subdivision": "Cesar Department",
+        "lat": 10.03672,
+        "lon": -73.23558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agustín Codazzi, Cesar",
+          "url": "https://en.wikipedia.org/wiki/Agust%C3%ADn_Codazzi,_Cesar",
+          "text": "Agustín Codazzi, or simply Codazzi, is a city and municipality of the Department of Cesar in Colombia. It was founded in 1784 by the Spanish Captain Salvador Felix de Arias with the name of El Pueblito  del Espíritu Santo but later renamed after the Italian cartographer Agostino Codazzi, who died in this place in 1859. It is located along the Serranía del Perijá, covering some of the area pertaining to the valley of the Cesar River.\nIn 1958 Codazzi was proclaimed a municipality due to its rapid population increase in the 1950s and 1960s, triggered by an agricultural boom of cotton, that attracted people searching for jobs from many departments of Colombia; mainly from Tolima, Huila, Santander, North Santander, Antioquia, Cundinamarca, Bolivar and Magdalena.\nWhen this boom ended, the agroindustry opted for other products like palm, sugar cane, liquors and milk products. In 2005 the municipality of Codazzi had approximately 52,219 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "agustin codazzi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "agustin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "codazzi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1953,
+    "attempt": 1938,
+    "place_id": "gn-1267090",
+    "input": {
+      "place": {
+        "place_id": "gn-1267090",
+        "name": "Khambhāt",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 22.31744,
+        "lon": 72.61916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khambhāt",
+          "url": "https://en.wikipedia.org/wiki/Khambh%C4%81t",
+          "text": "Khambhāt (; Gujarati: [kʰəmbʱɑt] ), also known as Cambay, is a city and the surrounding urban agglomeration in Anand district in the Indian state of Gujarat. It was once an important trading center, but its harbour gradually silted up, and the maritime trade moved to Surat. Khambhāt lies on an alluvial plain at the north end of the Gulf of Khambhāt, noted for the extreme rise and fall of its tides, which can vary as much as thirty feet in the vicinity of Khambat. Khambat is known for its halvasan sweet, sutarfeni, akik stone and kites (patang), and for sources of oil and gas.\nKhambhāt is perhaps the only place in India where the Harappan craft of agate bead making is found in the living tradition. Surprisingly Khambhāt has no stone deposits; the craft has survived mainly through acquiring stones from the Rajpipla hills, about 200 km away from the city. Khambhat has historically been an important centre of Jainism, and contains several old Jain temples and collections of Jain palm-leaf manuscripts. In the folklore of Khambhāt, the beginning of the craft is attributed to Baba Ghor, a 1500 AD saint from Ethiopia (Habash) who had led a large contingent of Muslims (Siddi) to settle in the city. However, in the archaeological record the origin of the craft can be traced to nearby Lothal, a Harappan outpost that flourished about 4000 years ago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "khambhat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1954,
+    "attempt": 1939,
+    "place_id": "gn-3496331",
+    "input": {
+      "place": {
+        "place_id": "gn-3496331",
+        "name": "Moca",
+        "country": "Dominican Republic",
+        "subdivision": "Espaillat Province",
+        "lat": 19.39289,
+        "lon": -70.52347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moca, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/Moca,_Dominican_Republic",
+          "text": "Moca is the capital of Espaillat province in the Cibao region of the Dominican Republic, and is the tenth-largest city of the country with a population of 164,022 inhabitants. Moca is located 11 miles/18 kilometers east from the country’s second-largest city, Santiago. It is divided into eight municipal districts: San Víctor, Las Lagunas, José Contreras, Juan López, El Higuerito, La Ortega, Monte de la Jagua and Canca La Reina.\nThe city is known as \"La Villa Heroica\" (Village of Heroes) due to the number of men and women from Moca who have played a major role in the Dominican Republic's history in bringing down two dictators, Ulises Heureaux and Rafael Trujillo, and bringing democracy back to the country.\nMoca is home to the Corazon Sagrado de Jesus (\"Sacred Heart of Jesus\") Cathedral. All its pane glass windows were originally brought from Italy depicting the apostles and Jesus' path to the crucifixion. Agriculture forms the primary livelihood of the inhabitants.  Plantain and yucca are main crops. Most crops are harvested by hand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "moca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1955,
+    "attempt": 1940,
+    "place_id": "gn-4568040",
+    "input": {
+      "place": {
+        "place_id": "gn-4568040",
+        "name": "Salinas",
+        "country": "Puerto Rico",
+        "subdivision": "Salinas",
+        "lat": 17.97747,
+        "lon": -66.29795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salinas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Salinas,_Puerto_Rico",
+          "text": "Salinas (Spanish pronunciation: [saˈlinas], locally [saˈlinaʔ]) is a town and municipality in the southern part of Puerto Rico located in the southern coast of the island, south of Aibonito and Cayey; southeast of Coamo, east of Santa Isabel; and west of Guayama. Salinas is spread over five barrios and Salinas Pueblo, which is the downtown area and administrative center of the city.\nIt has long been a fishing spot for Puerto Ricans, known for its beaches, its variety of fish, and as the birthplace of the famous \"mojo isleño\".\nAlthough Salinas does not have any commercial airports, there is a military training area there, Camp Santiago, which is one of the training centers of the Puerto Rico National Guard. Army National Guard, Air National Guard, State Guard, U.S. Army Reserve Officers' Training Corps (ROTC), the United States Army Reserve, and the United States Army also conduct military training at Camp Santiago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "salinas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
