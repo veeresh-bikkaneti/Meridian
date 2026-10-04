@@ -1,0 +1,15 @@
+{
+  "attempted": 200,
+  "accepted": 43,
+  "workerRejected": 157,
+  "validatorRejected": 0,
+  "malformedWorkerRejections": 0,
+  "validatorReasonHistogram": {},
+  "workerRejectionTierHistogram": {
+    "climate": 134,
+    "giveaway": 6,
+    "history": 16,
+    "hook": 1
+  },
+  "pipelineIssues": []
+}
