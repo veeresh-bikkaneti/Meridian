@@ -149,6 +149,10 @@ export default defineConfig({
       name: "safari-launch",
       testMatch: /safari-launch\.spec\.ts/,
     },
+    {
+      name: "question-card-header",
+      testMatch: /question-card-header\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
