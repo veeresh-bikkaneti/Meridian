@@ -124,3 +124,31 @@ therefore coordinator-authored + locally validated; the independent
 reviewer still certifies the milestone.
 Wave-2 jobs are already built (10 x 20, pool ranks 218-425, committed
 8dcffe2) with inputs at .scratch/geodetective/tier2-inputs-wave2.jsonl.
+
+## WAVE 1 — milestone-1 review: NEEDS WORK -> fixes applied -> re-presented
+Reviewer verdict (reviews/milestone-1-review.md): NEEDS WORK. Certified
+without reservation: locked hashes, wave accounting (200/94/106/0),
+byte-identical re-fold, 470/470 quotes verbatim, assembly mechanics
+(323<->323 full comparison), leak 0/1,615 (two methods), all 14
+conversions, honest disclosure handling (Victoria/Detroit quotes
+verified verbatim in current form). Withheld on 2 hollow accepts:
+- Tarakan gn-1624725 tier 2: Af label + generic trait only; Blackburn
+  comparator (converted with MORE climate content) is decisive.
+  Tier 5 also census filler. -> CONVERTED to tier-2 rejection.
+- Dumaguete gn-1714201 tier 3: university superlative, no founding/
+  event; same class as 5 same-wave conversions. -> CONVERTED tier 3.
+Watch items ruled on by coordinator (full lead reads):
+- Negombo gn-1233369 tier 3: no founding/event in lead (fishing
+  duration claim only) -> CONVERTED to tier-3 rejection.
+- Sochi gn-491422: REPAIRED by reshuffle — tier 3 = 2014 Winter Games
+  (the lead's defining event), tier 4 = F1 Grand Prix 2014-2021,
+  tier 5 = longest city in Europe (145 km). Locally validated.
+- Savannah gn-4221552 tier 5: REPAIRED — population ranking replaced
+  with the historic-district / 22 parklike squares fact. Validated.
+- Bonn gn-2946447 tier 1: census-filler sentence removed (reviewer's
+  non-blocking note). Validated.
+Post-fix fold: attempted 200, accepted 91, rejected 109 (climate 82,
+history 25, giveaway 1, hook 1), validatorRejected 0. Union accepted
+320 (229 + 91); manifest 320; leak scan 0 hits / 1,600 texts.
+(Reviewer expected 92/321 pre-watch-rulings; Negombo's conversion
+accounts for the extra -1.) Awaiting re-review certification.
