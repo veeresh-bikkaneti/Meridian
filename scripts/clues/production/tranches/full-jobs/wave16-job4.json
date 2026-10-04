@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 3083,
+    "attempt": 3061,
+    "place_id": "gn-2638977",
+    "input": {
+      "place": {
+        "place_id": "gn-2638977",
+        "name": "Rugeley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.7593,
+        "lon": -1.93694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rugeley",
+          "url": "https://en.wikipedia.org/wiki/Rugeley",
+          "text": "Rugeley (  ROOJ-lee) is a market town and civil parish in the Cannock Chase District, in Staffordshire, England. It lies on the north-eastern edge of Cannock Chase next to the River Trent; it is eight miles (13 kilometres) north of Lichfield, 10 miles (16 km) southeast of Stafford, five miles (8 km) northeast of Hednesford and 11 miles (18 km) southwest of Uttoxeter. At the 2021 Census, the population was 26,156.\nRugeley is twinned with Western Springs, Illinois and, in July 1962, both towns made telephone history on national television when the chairman of Rugeley Urban District Council made the first telephone call via the new Telstar satellite to the mayor of Western Springs. It was also featured in an article about workers' rights and town transformation in the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "rugeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3084,
+    "attempt": 3062,
+    "place_id": "gn-2639545",
+    "input": {
+      "place": {
+        "place_id": "gn-2639545",
+        "name": "Redhill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.24048,
+        "lon": -0.17044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redhill, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Redhill,_Surrey",
+          "text": "Redhill () is a town in the borough of Reigate and Banstead within the county of Surrey, England. The town, which adjoins the town of Reigate to the west, is due south of Croydon in Greater London, and is part of the London commuter belt. The town is also the post town, entertainment and commercial area of three adjoining communities: Earlswood, Merstham and Whitebushes, as well as of two small rural villages to the east in the Tandridge District, Bletchingley and Nutfield.\nThe town is situated on the junction of the north–south A23 (London to Brighton) road, and the east–west A25 road which runs from Guildford through to Sevenoaks. It is also on the railway junction, served by Redhill railway station, of the Brighton Main Line, North-Downs line, and Redhill-Tonbridge line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "redhill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3085,
+    "attempt": 3063,
+    "place_id": "gn-2640037",
+    "input": {
+      "place": {
+        "place_id": "gn-2640037",
+        "name": "Portishead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48199,
+        "lon": -2.76973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portishead, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Portishead,_Somerset",
+          "text": "Portishead ( PORT-iss-hed) is a town and civil parish in the North Somerset unitary authority area, in the county of Somerset, England. With a population of 26,366 at the 2021 Census, the town is located on the Severn Estuary opposite Cardiff and Newport in Wales. The town is 8 miles (13 km) to the west of Bristol and 18 miles northeast of Weston-super-Mare and approximately 110 miles (180 km) west of London.\nPortishead has a long history as a fishing port. As a royal manor it expanded rapidly during the early 19th century around the docks, with supporting transport infrastructure. A power station and chemical works were added in the 20th century, but the dock and industrial facilities have since closed and have been redeveloped into a marina and residential areas. Portishead was also the telephone control centre used by British Telecom (BT) for non-direct dialled calls to maritime vessels, a service known as Portishead Radio. The headquarters of both Avon and Somerset Constabulary and Avon Fire and Rescue Service are in Portishead.\nPortishead Lifeboat Station is situated close to the marina.  Run solely by local Royal National Lifeboat Institution (RNLI) volunteers, it serves the waters of the Severn estuary and inland waterways into the city of Bristol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "portishead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3086,
+    "attempt": 3064,
+    "place_id": "gn-2644660",
+    "input": {
+      "place": {
+        "place_id": "gn-2644660",
+        "name": "Leigh",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.49642,
+        "lon": -2.51973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leigh, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Leigh,_Greater_Manchester",
+          "text": "Leigh is a town in the Wigan district, in Greater Manchester, England, on low-lying land northwest of Chat Moss. It is situated approximately 6 miles (9.7 km) southeast of Wigan and 11 miles (18 km) west of Manchester city centre. In 2011 it had a population of 53,000.\nWithin the boundaries of the historic county of Lancashire, Leigh was originally the centre of a large ecclesiastical parish covering six vills or townships. When the three townships of Pennington, Westleigh and Bedford merged in 1875, forming the Leigh Local Board District, Leigh became the official name for the town, although it had been applied to the area of Pennington and Westleigh around the parish church for many centuries.\nThe town became an urban district in 1894 when part of Atherton was added. In 1899 Leigh became a municipal borough. The first town hall was built on King Street and replaced by the present building in 1907.\nOriginally an agricultural area (noted for dairy farming), domestic spinning and weaving led to a considerable silk industry and, in the 20th century, the cotton industry. Leigh also exploited the underlying coal measures, particularly after the town was connected to the canals and railways. Leigh had an important engineering base. The legacy of Leigh's industrial past can be seen in the remaining red brick mills – some of which are listed buildings– although it is now a mainly residential town, with Edwardian and Victorian terraced housing packed around the town centre. Leigh's present-day economy is based largely on the retail sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "leigh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3087,
+    "attempt": 3065,
+    "place_id": "gn-2652974",
+    "input": {
+      "place": {
+        "place_id": "gn-2652974",
+        "name": "Clacton-on-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.78967,
+        "lon": 1.15597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clacton-on-Sea",
+          "url": "https://en.wikipedia.org/wiki/Clacton-on-Sea",
+          "text": "Clacton-on-Sea, often simply called Clacton,  is a coastal town in Essex, England. It lies on the Tendring Peninsula and is the largest settlement in the Tendring District, with a population of 53,200 in 2021. The town is situated around 77 miles (124 km) north-east of London, 16 miles (26 km) south-east of Colchester and 16 miles (26 km) south of Harwich. The area was historically in the parish of Great Clacton. The development of the seaside resort began in the 1870s and was called Clacton-on-Sea to distinguish it from the older village about 1 mile (1.6 km) inland. Great Clacton and Clacton-on-Sea were always administered together, forming a single urban district called Clacton between 1895 and 1974; the two settlements gradually merged into a single urban area during the 20th century. It lies within the Parliamentary constituency of Clacton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "clacton on sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "clacton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3088,
+    "attempt": 3066,
+    "place_id": "gn-2739590",
+    "input": {
+      "place": {
+        "place_id": "gn-2739590",
+        "name": "Figueira da Foz",
+        "country": "Portugal",
+        "subdivision": "Coimbra",
+        "lat": 40.15085,
+        "lon": -8.86179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Figueira da Foz",
+          "url": "https://en.wikipedia.org/wiki/Figueira_da_Foz",
+          "text": "Figueira da Foz, officially the City of Figueira da Foz, often called simply Figueira for short, is a city and a municipality in the Coimbra District, in Portugal. Practically at the midpoint of the Iberian Peninsula's Atlantic coast, it is located at the mouth of the Mondego River, 40 km (25 mi) west of Coimbra and sheltered by hills (Serra da Boa Viagem), sharing about the same latitude with Philadelphia, Baku and Beijing. The population of the municipality in 2011 was 62,125, in an area of 379.05 km2 (146.35 sq mi). The city of Figueira da Foz proper has a population of 46,600. It is the second largest city in the district of Coimbra.\nIt is a coastal city with several beaches, summer and seaport facilities on the Atlantic Ocean coast. As a tourism city, it plays an important part in the centre of the country. A zone of legal gambling, one can find in Figueira one of the biggest casinos of the Iberian Peninsula – the Casino Figueira."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "figueira da foz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "figueira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "foz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3089,
+    "attempt": 3067,
+    "place_id": "gn-3006283",
+    "input": {
+      "place": {
+        "place_id": "gn-3006283",
+        "name": "La Teste-de-Buch",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.63278,
+        "lon": -1.14513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Teste-de-Buch",
+          "url": "https://en.wikipedia.org/wiki/La_Teste-de-Buch",
+          "text": "La Teste-de-Buch (French pronunciation: [la tɛst də byʃ]; Occitan: La Tèsta (de Bug), [la ˈtɛstə (ðe ˈβyc)]; lit. 'La Teste-of-Buch') is a coastal commune in the Gironde department in the Nouvelle-Aquitaine region in Southwestern France. Until 13 June 1994, it was officially known simply as La Teste.\nThe commune is located on the south shore of Arcachon Bay (Bassin d'Arcachon) and on the Atlantic coast of France, lying in the southwestern part of Gironde, on the departmental border with Landes. It is the eighth-largest commune in metropolitan France in geographical area at 180.20 km2 (69.58 sq mi). It is the largest and most populated of the four communes that make up the Communauté d'agglomération Bassin d'Arcachon Sud (COBAS), which coincides with the urban unit (agglomeration) of La Teste-de-Buch-Arcachon, population 67,563 (2018). As of 2023, the population of the commune was 27,566.\nLa Teste-de-Buch is famous for the Dune of Pilat (Dune du Pilat), the highest sand dune in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "la teste de buch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "teste",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3090,
+    "attempt": 3068,
+    "place_id": "gn-3175786",
+    "input": {
+      "place": {
+        "place_id": "gn-3175786",
+        "name": "Grosseto",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 42.76296,
+        "lon": 11.10941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grosseto",
+          "url": "https://en.wikipedia.org/wiki/Grosseto",
+          "text": "Grosseto (Italian pronunciation: [ɡrosˈseːto] ) is a city and a comune in the central Italian region of Tuscany, capital of the province of Grosseto. It is the most populous city of Maremma region and southern Tuscany.\nLocated at the center of the Maremma region, the city was born on the right bank of the Ombrone river, near the Tyrrhenian Sea. The first center raised in the Middle Ages, following the end of the ancient city of Rusellae. Since the 19th century has had a great economic and demographic development, which makes it an important city for services, agriculture and as a seaside resort.\nThe comune of Grosseto, with 82,284 inhabitants, includes the frazioni of Marina di Grosseto, Roselle, Principina a Mare, Principina Terra, Montepescali, Braccagni, Istia d'Ombrone, Batignano, Alberese and Rispescia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "grosseto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3091,
+    "attempt": 3069,
+    "place_id": "gn-3175860",
+    "input": {
+      "place": {
+        "place_id": "gn-3175860",
+        "name": "Gravina in Puglia",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.81748,
+        "lon": 16.41915
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gravina in Puglia",
+          "url": "https://en.wikipedia.org/wiki/Gravina_in_Puglia",
+          "text": "Gravina in Puglia (Italian: [ɡraˈviːna im ˈpuʎʎa]; Barese: Gravéine [ɡraˈviːnə, ɡraˈvejnə]; Latin: Silvium; Ancient Greek: Σιλούϊον, romanized: Siloúïon) is a town and comune (municipality) of the Metropolitan City of Bari, Apulia, southern Italy.\nThe word gravina comes from the Latin grava or from the Messapic graba, with the meaning of 'rock', 'shaft' and 'erosion of bank river'. Other words that share the same root are grava, gravaglione and gravinelle. Alternatively, when the emperor Frederick II went to Gravina, because of the large extension of the lands and for the presence of wheat, he decided to give to it the motto Grana dat et vina, that is to say It offers wheat and wine. Gravina is the home of the Alta Murgia National Park.\nGravina in Puglia is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "gravina in puglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gravina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "puglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3092,
+    "attempt": 3070,
+    "place_id": "gn-3840092",
+    "input": {
+      "place": {
+        "place_id": "gn-3840092",
+        "name": "Puerto Madryn",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -42.76848,
+        "lon": -65.03827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Madryn",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Madryn",
+          "text": "Puerto Madryn (Spanish pronunciation: [ˈpweɾto ˈmaðɾin]; Welsh: Porth Madryn), usually known as Madryn, is a city in the province of Chubut in Argentine Patagonia. It is the capital of the Viedma Department, and has about 103,175 inhabitants according to the last census in 2022.\nPuerto Madryn is protected by the Golfo Nuevo, which is formed by the Península Valdés and the Punta Ninfas. It is an important centre for tourists visiting the natural attractions of the Península Valdés and the coast.\nThe name of the city commemorates Love Jones Parry, one of the colonizers of Patagonia, who owned Madryn Castle in Wales. The toponym originated around 1863, when Love Jones Parry, along with Lewis Jones travelled to Patagonia aboard Candelaría to decide whether that region was adequate for a Welsh colony.\nA new shopping mall in the city centre has helped tourism develop significantly, making Puerto Madryn a more attractive place for both international and domestic tourists visiting Patagonia. It is twinned with Nefyn, a small town on the Llŷn Peninsula in North Wales, the result of its enduring link with Welsh culture since the Welsh settlement in Argentina. The first of a two-Test tour to Argentina by the Wales national rugby union team was played in 2006 in Puerto Madryn, a 27–25 win for Argentina. Puerto Madryn is home to two football clubs; Club Social y Atlético Guillermo Brown, who play in Nacional B and Deportivo Madryn that currently play in Torneo Argentino B.\nA basketball team, Deportivo Puerto Madryn, plays in the Liga Nacional de Básquetbol (LNB). Their home arena is known as the Deportivo Puerto Madryn Arena.\nEl Tehuelche Airport is located 10 km (6 miles) northwest of the city centre. Commercial flights from Buenos Aires, Ushuaia, and other Argentinian cities are available. Most tourists fly into Trelew Airport as flights into Puerto Madryn are restricted as a result of environmental concerns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "puerto madryn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madryn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3093,
+    "attempt": 3071,
+    "place_id": "gn-4992982",
+    "input": {
+      "place": {
+        "place_id": "gn-4992982",
+        "name": "Flint",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.01253,
+        "lon": -83.68746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flint, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Flint,_Michigan",
+          "text": "Flint is a city in and the county seat of Genesee County, Michigan, United States. The city's population was 81,252 at the 2020 census, and was estimated to be 79,735 in 2024, making it the most populous city in Genesee County and the 12th-most populous city in Michigan. Located along the Flint River 66 miles (106 km) northwest of Detroit, it is a principal city within the Central Michigan region. The Flint metropolitan area is located entirely within Genesee County and is the fourth-largest metro area in Michigan, with a population of 406,892 in the 2020 census.\nFlint was founded as a village by fur trader Jacob Smith in 1819 and became a major lumbering area on the historic Saginaw Trail during the 19th century. The city was incorporated in 1855. From the late 19th century to the mid-20th century, the city was a leading manufacturer of carriages and later automobiles, earning it the nickname \"Vehicle City\". General Motors (GM) was founded in Flint in 1908, and the city grew into an automobile manufacturing powerhouse for GM's Buick and Chevrolet divisions, especially after World War II up until the early 1980s recession. Flint was also the home of a sit-down strike in 1936–37 that played a vital role in the formation of the United Auto Workers.\nSince the late 1960s, Flint has faced several crises. The city experienced an economic downturn after GM significantly downsized its workforce in the area from a high of 80,000 in 1978 to under 8,000 by 2010. From 1960 to 2010, the population of the city nearly halved, from 196,940 to 102,434. In the mid-2000s, Flint became known for its comparatively high crime rates and has repeatedly been ranked among the most dangerous cities in the United States according to crime statistics. The city was under a state of financial emergency from 2002 to 2004 and again from 2011 to 2015.\nFrom 2014 to 2019, Flint faced a public health emergency due to lead contamination in parts of the local water supply as well as an outbreak of Legionnaires' disease. The acute lead crisis has been addressed as the city has secured a new source of clean water, installed modern copper pipes to nearly every home, and distributed filters to all residents who want them. However, a legacy of distrust in public authorities remains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "flint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3094,
+    "attempt": 3072,
+    "place_id": "gn-5188140",
+    "input": {
+      "place": {
+        "place_id": "gn-5188140",
+        "name": "Easton",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.68843,
+        "lon": -75.22073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Easton, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Easton,_Pennsylvania",
+          "text": "Easton is a city in and the county seat of Northampton County, Pennsylvania, United States. The city's population was 28,127 as of the 2020 census. Easton straddles the Lehigh River as it flows into the Delaware River, which serves as the city's eastern geographic boundary with Phillipsburg, New Jersey.\nEaston is the easternmost city in the Lehigh Valley, a region of 731 square miles (1,890 km2) that is Pennsylvania's third-largest and the nation's 68th-largest metropolitan region with 861,889 residents as of the U.S. 2020 census. The smallest of the Valley's three major cities, Easton has less than half the population of Bethlehem and about one-fourth that of Allentown.\nThe greater Easton area includes the city of Easton, three townships (Forks, Palmer, and Williams), and three boroughs (Glendon, West Easton, and Wilson). Centre Square, the city's town square in its downtown neighborhood, is home to the Soldiers' and Sailors' Monument, a memorial for Easton-area veterans killed during the American Civil War. In the first half of the 20th century, Centre Square was referred to locally as the Circle. The Peace Candle, a candle-like structure, is assembled and disassembled every year atop the Civil War monument for the Christmas season.\nNorfolk Southern Railway's Lehigh Line, formerly the main line of the Lehigh Valley Railroad, runs through Easton on its way from Phillipsburg to Bethlehem and Allentown. Easton sits 14 miles (23 km) northeast of Allentown, 51 miles (82 km) north of Philadelphia, and 64 miles (103 km) west of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "easton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3095,
+    "attempt": 3073,
+    "place_id": "gn-717902",
+    "input": {
+      "place": {
+        "place_id": "gn-717902",
+        "name": "Makó",
+        "country": "Hungary",
+        "subdivision": "Csongrád",
+        "lat": 46.21667,
+        "lon": 20.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makó",
+          "url": "https://en.wikipedia.org/wiki/Makó",
+          "text": "Makó ([ˈmɒkoː], German: Makowa, Yiddish: מאַקאָווע Makowe, Romanian: Macău or Macovia, Slovak: Makov) is a town in Csongrád County, in southeastern Hungary, 10 km (6 mi) from the Romanian border. It lies on the Maros River. Makó is home to 21,913 people and it has an area of 229.23 square kilometres (88.51 square miles), of which 196.8 km2 (76.0 sq mi) is arable land. Makó is the fourth-largest town in Csongrád County after Szeged, Hódmezővásárhely and Szentes. The town is 28.6 km (17.8 mi) from Hódmezővásárhely, 36.2 km (22.5 mi) from Szeged, 75.4 km (46.9 mi) from Arad, 85 km (52.8 mi) from Gyula, 93.5 km (58.1 mi) from Timișoara (Temesvár), and 200 km (124 mi) from Budapest.\nThe climate is warmer than anywhere else in Hungary, with hot, dry summers. The town is noted for its onion which is a hungarikum, the spa and the thermal bath. The Makó International Onion Festival, the largest of its kind, is held annually. Makó is a popular tourist destination in Hungary.\nThe Makó gas field, located near the town, is the largest natural gas field in Central Europe. The gas volume is more than 600 billion cubic metres (21 trillion cubic feet), according to a report by the Scotia Group.\nThe town's floodplain forests are protected as part of Körös-Maros National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "mako",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3096,
+    "attempt": 3074,
+    "place_id": "gn-785058",
+    "input": {
+      "place": {
+        "place_id": "gn-785058",
+        "name": "Veles",
+        "country": "North Macedonia",
+        "subdivision": "Veles",
+        "lat": 41.71719,
+        "lon": 21.77196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Veles, North Macedonia",
+          "url": "https://en.wikipedia.org/wiki/Veles,_North_Macedonia",
+          "text": "Veles (Macedonian: Велес [ˈvɛlɛs] ) is a city in the central part of North Macedonia on the Vardar river. The city of Veles is the seat of Veles Municipality. Veles is the seventh largest Macedonian city with a total population of 40,664 (census 2021). The largest cities in the proximity of Veles are: Skopje – the capital and the largest city of North Macedonia – 54 km in the northwest direction, Štip 43 km to the east, Sveti Nikole 34 km to the northeast, Prilep 79 km in the southwest direction, and Kavadarci and Negotino 43 km and 40 km respectively to the southeast. Veles is on the crossroad of important international road and rail lines. For all these reasons, Veles is considered to have a good geolocation within North Macedonia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "veles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3097,
+    "attempt": 3075,
+    "place_id": "gn-8576625",
+    "input": {
+      "place": {
+        "place_id": "gn-8576625",
+        "name": "Noborito",
+        "country": "Japan",
+        "subdivision": "Kanagawa",
+        "lat": 35.62203,
+        "lon": 139.56051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noborito",
+          "url": "https://en.wikipedia.org/wiki/Noborito",
+          "text": "Noborito (登戸) is a neighborhood in Tama-ku, Kawasaki, Kanagawa Prefecture, Japan just across the southwestern border of Tokyo on the Tama River and about 18 minutes south of Shinjuku on the Odakyu Odawara Line Express.  \nIn 1927, Odakyu Line and Nanbu Line were constructed. Noborito Station became the interchange station.\nDuring World War II, the Imperial Japanese Army established its secret institute, the Number Nine Research Laboratory, for researching special weapons, such as the Fu-Go balloon bomb, counterfeit bills, and other chemical and biological weapons. It is called the \"Noborito Institute\" now, and several houses are used by Meiji University.\nFor many years after 1945, Noborito was thought of as a rather sleepy suburb and company dormitory for workers to commute to more urban destinations such as Kawasaki, Tachikawa, and Shinjuku.  \nNoborito has the Okamoto Taro Art Museum and Minka-en folk village, both nearer Mukōgaoka-Yūen Station than Noborito Station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "noborito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3098,
+    "attempt": 3076,
+    "place_id": "gn-11551009",
+    "input": {
+      "place": {
+        "place_id": "gn-11551009",
+        "name": "Chadderton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.5448,
+        "lon": -2.13984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chadderton",
+          "url": "https://en.wikipedia.org/wiki/Chadderton",
+          "text": "Chadderton is a town in the Metropolitan Borough of Oldham, Greater Manchester, England, on the River Irk and Rochdale Canal. It is located in the foothills of the Pennines, 1 mile (1.6 km) west of Oldham, 5 miles (8.0 km) south of Rochdale and 6 miles (9.7 km) north-east of Manchester. The town is near the A627(M) motorway.\nHistorically part of Lancashire, Chadderton's early history is marked by its status as a manorial township, with its own lords, who included the Asshetons, Chethams, Radclyffes and Traffords. Chadderton in the Middle Ages was chiefly distinguished by two mansions, Foxdenton Hall and Chadderton Hall, and by the families who occupied them. Farming was the main industry of the area, with locals supplementing their incomes by hand-loom woollen weaving in the domestic system.\nChadderton's urbanisation coincided largely with developments in textile manufacture during the Industrial Revolution. A late-19th century factory-building boom transformed Chadderton from a rural township into a major mill town and the second most populous urban district in the United Kingdom. More than 50 cotton mills had been built in Chadderton by 1914. Although Chadderton's industries declined in the mid-20th century, the town continued to grow as a result of suburbanisation and urban renewal. The legacy of the town's industrial past remains visible in its landscape of red-brick cotton mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "chadderton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3099,
+    "attempt": 3077,
+    "place_id": "gn-1855341",
+    "input": {
+      "place": {
+        "place_id": "gn-1855341",
+        "name": "Nishihara",
+        "country": "Japan",
+        "subdivision": "Okinawa",
+        "lat": 26.25353,
+        "lon": 127.74352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nishihara, Okinawa",
+          "url": "https://en.wikipedia.org/wiki/Nishihara,_Okinawa",
+          "text": "Nishihara (西原町, Nishihara-chō; Okinawan: ニシバル, romanized: Nishibaru) is a town located in Nakagami District, Okinawa Prefecture, Japan. In the Okinawan language, nishi means \"north\" (in Japanese, however, it means \"west\"), as Nishihara was north of the historical Ryukyuan capital of Shuri.\nAs of October 2016, the town had an estimated population of 34,463 and a density of 2,200 persons per km2. The total area is 15.84 square kilometres (6.12 mi2).\nSituated 10 kilometres (6.2 mi) northeast of the city hall of Naha, Nishihara is surrounded by the cities, towns, and villages of Naha, Urasoe, Ginowan, Haebaru, Yonabaru, and Nakagusuku.\nBecause both the University of the Ryukyus and the Okinawa Christian Junior College are located in Nishihara, and the Okinawa International University is located nearby, Nishihara's municipal slogan is \"Education Town\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "nishihara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3100,
+    "attempt": 3078,
+    "place_id": "gn-2111781",
+    "input": {
+      "place": {
+        "place_id": "gn-2111781",
+        "name": "Nagai",
+        "country": "Japan",
+        "subdivision": "Yamagata",
+        "lat": 38.10361,
+        "lon": 140.035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagai, Yamagata",
+          "url": "https://en.wikipedia.org/wiki/Nagai,_Yamagata",
+          "text": "Nagai (長井市, Nagai-shi) is a city located in Yamagata Prefecture, Japan, and since August 2025 has been officially designated as the Japanese \"hometown\" for the United Republic of Tanzania.  In conjunction with Japan's METI internship program and JICA's African Business Education Initiative for Youth, seeks to deepen Japan-Africa relations.  Under METI's program; fully funded internships, job matching, and visa support for young professionals from developing countries are provided.  JICA's ABE Initiative, exclusively designed for young professionals in African nations, is a long-term, comprehensive program. It is a combination of a master's degree program at a Japanese university followed by an internship at a Japanese company. As of 1 February 2020, the city had an estimated population of 26,466 in 9940 households, and a population density of 120 people per km2. The total area of the city is 214.67 square kilometres (83 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "nagai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3101,
+    "attempt": 3079,
+    "place_id": "gn-2641157",
+    "input": {
+      "place": {
+        "place_id": "gn-2641157",
+        "name": "Nuneaton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.52323,
+        "lon": -1.46523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuneaton",
+          "url": "https://en.wikipedia.org/wiki/Nuneaton",
+          "text": "Nuneaton ( nə-NEE-tən) is a market town in the Nuneaton and Bedworth district, in northern Warwickshire, England, close to the county border with Leicestershire to the north-east.  Nuneaton's population at the 2021 census was 88,813, making it the largest town in Warwickshire. Nuneaton's urban area, which also includes the large villages of Bulkington and Hartshill, had a population of 99,372 at the 2021 census.\nNuneaton gained its name from a medieval nunnery which was established in the 12th century, when it became a small market town. It later developed into an important industrial town due to ribbon weaving and coal mining.\nThe author George Eliot was born on a farm on the Arbury Estate just outside Nuneaton in 1819 and lived in the town for much of her early life. Her novel Scenes of Clerical Life (1858) depicts Nuneaton. The George Eliot Hospital is named after her, and there is also a statue of her in the town centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "nuneaton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3102,
+    "attempt": 3080,
+    "place_id": "gn-2647984",
+    "input": {
+      "place": {
+        "place_id": "gn-2647984",
+        "name": "Great Yarmouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.60831,
+        "lon": 1.73052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Yarmouth",
+          "url": "https://en.wikipedia.org/wiki/Great_Yarmouth",
+          "text": "Great Yarmouth ( YAR-məth), often called Yarmouth, is a seaside town which gives its name to the wider Borough of Great Yarmouth in Norfolk, England; it straddles the River Yare and is located 20 miles (32 km) east of Norwich. Its fishing industry, mainly for herring, shrank after the mid-20th century and has all but ended. North Sea oil from the 1960s supplied an oil rig industry that services offshore natural gas rigs; more recently, offshore wind power and other renewable energy industries have ensued. In 2021 the built up area had a population of 28,985.\nYarmouth has been a resort since 1760 and a gateway from the Norfolk Broads to the North Sea. Holidaymaking rose when a railway opened in 1844, bringing easier, cheaper access and some new settlements. Wellington Pier opened in 1854, and Britannia Pier in 1858. Through the 20th century, Yarmouth boomed as a resort, with a promenade, pubs, trams, fish-and-chip shops, theatres, the Pleasure Beach, the Sea Life Centre, the Hippodrome Circus, the Time and Tide Museum and a Victorian seaside Winter Garden in cast iron and glass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "great yarmouth",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yarmouth",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

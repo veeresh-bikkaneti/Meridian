@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 3123,
+    "attempt": 3101,
+    "place_id": "gn-5124276",
+    "input": {
+      "place": {
+        "place_id": "gn-5124276",
+        "name": "Levittown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72593,
+        "lon": -73.51429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Levittown, New York",
+          "url": "https://en.wikipedia.org/wiki/Levittown,_New_York",
+          "text": "Levittown is a hamlet and census-designated place (CDP) in the Town of Hempstead in Nassau County, on Long Island, in New York. It is a suburb of New York City, located halfway between the villages of Hempstead and Farmingdale. The CDP had a total population of 51,758 at the time of the 2020 census, making it the most populous unincorporated CDP in Nassau County and the second most populous CDP on Long Island, behind Brentwood.\nLevittown gets its name from its builder, the firm of Levitt & Sons, Inc. founded by Abraham Levitt on August 2, 1929, which built the district as a planned community for returning World War II veterans between 1947 and 1951. Sons William and Alfred served as the company's president and chief architect and planner, respectively. Levittown was the first truly mass-produced suburb and is widely regarded as the archetype for postwar suburbs throughout the country. William Levitt, who assumed control of Levitt & Sons in 1954, is considered the father of modern suburbia in the United States.\nThere have been multiple proposals in the past to incorporate Levittown either as a village or as the third city in Nassau County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "levittown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3124,
+    "attempt": 3102,
+    "place_id": "gn-5392952",
+    "input": {
+      "place": {
+        "place_id": "gn-5392952",
+        "name": "Santa Barbara",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.42083,
+        "lon": -119.69819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Barbara, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Barbara,_California",
+          "text": "Santa Barbara (Spanish: Santa Bárbara, meaning 'Saint Barbara') is a coastal city in Santa Barbara County, California, of which it is also the county seat. Situated on a south-facing section of coastline, the longest such section on the West Coast of the United States excepting Alaska, the city lies between the steeply rising Santa Ynez Mountains and the Pacific Ocean. Santa Barbara's climate is often described as Mediterranean, and the city has been dubbed \"The American Riviera\". As of the 2020 census, Santa Barbara had a population of 88,665.\nIn addition to being a popular tourist and resort destination, the city has a diverse economy that includes a large service sector, education, technology, health care, finance and local government. In 2004, the service sector accounted for 35% of local employment. In 2024, the biggest employer in Santa Barbara County was government, followed by private education and healthcare, then leisure and hospitality. Together, these accounted for 50.5% of all employment.\nArea institutions of higher learning include the University of California, Santa Barbara, Santa Barbara City College, Westmont College, The Colleges of Law, and Antioch University Santa Barbara. \nThe city is served by Santa Barbara Municipal Airport and train service is provided by Amtrak, which operates two service lines with stops in Santa Barbara: the Pacific Surfliner, which runs from San Diego to San Luis Obispo, and the Coast Starlight, which runs from Los Angeles to Seattle. The Santa Barbara area is connected via U.S. Highway 101 to Los Angeles 100 mi (160 km) to the southeast and San Francisco 325 mi (525 km) to the northwest. \nBehind the city, in and beyond the Santa Ynez Mountains, is the Los Padres National Forest, which contains several remote wilderness areas. Channel Islands National Park and Channel Islands National Marine Sanctuary are located approximately 20 miles (30 km) offshore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "santa barbara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barbara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3125,
+    "attempt": 3103,
+    "place_id": "gn-5814916",
+    "input": {
+      "place": {
+        "place_id": "gn-5814916",
+        "name": "Walla Walla",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.06458,
+        "lon": -118.34302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walla Walla, Washington",
+          "url": "https://en.wikipedia.org/wiki/Walla_Walla,_Washington",
+          "text": "Walla Walla ( WAH-lə WAH-lə) is a city in and the county seat of Walla Walla County, Washington, United States. It is one of the largest cities in Southeastern Washington with a population of 34,060 at the 2020 census, estimated to have decreased to 33,339 as of 2023. The combined population of the city and its two suburbs, the town of College Place and unincorporated Walla Walla East, is about 45,500. Walla Walla is located near the Palouse and Blue Mountains, approximately 6 miles (9.7 km) from the Oregon border to the south.\nThe city lies within the historic territory of several Indigenous Northwest Plateau peoples, among which were the Walawalałáma (Walla Walla). The settlement's name, Walla Walla, is derived from a Nez Perce word for \"place of many waters\". The Lewis and Clark Expedition reached the Walla Walla Valley in 1806 and were followed by a trading post founded by the Hudson's Bay Company in 1818. The Whitman Mission was established in 1836 and closed after a massacre at the site in 1847. The modern settlement of Walla Walla was founded as Steptoeville in 1856 around Fort Walla Walla and incorporated as a city on January 11, 1862. Walla Walla became the most populous city in Washington Territory but was later eclipsed in the 1880s, remaining a regional hub.\nWalla Walla is home to the Washington State Penitentiary, Whitman College, and Marcus Whitman Hotel. The surrounding area has a significant agricultural industry, including a wine-growing region with over 120 wineries. The city is located on U.S. Route 12, a major regional highway, and has a commercial airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "walla walla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "walla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3126,
+    "attempt": 3104,
+    "place_id": "gn-590031",
+    "input": {
+      "place": {
+        "place_id": "gn-590031",
+        "name": "Narva",
+        "country": "Estonia",
+        "subdivision": "Ida-Virumaa",
+        "lat": 59.37722,
+        "lon": 28.19028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narva",
+          "url": "https://en.wikipedia.org/wiki/Narva",
+          "text": "Narva is a city and municipality in Estonia. It is located in Ida-Viru County, at the eastern extreme point of Estonia, on the west bank of the Narva river, which forms the Estonia–Russia international border. As of 1 January 2025, the population of Narva was approximately 52,495, according to data compiled by national statistical bureaus in the Baltic region. Narva is Estonia's third-largest city after Tallinn and Tartu.\nNarva was nearly completely destroyed in 1944, during World War II. During the Soviet era (1944–1991), the city's original inhabitants were not permitted to return, and immigrant workers from Soviet Russia and other parts of the former Soviet Union were introduced. Narva's population, 65% ethnic Estonian as of the 1934 census, became overwhelmingly non-Estonian in the second half of the 20th century. According to data from 2013, 46.7% of the city's inhabitants are citizens of Estonia, 36.3% are citizens of the Russian Federation, while 15.3% have undefined citizenship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "narva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3127,
+    "attempt": 3105,
+    "place_id": "gn-6113335",
+    "input": {
+      "place": {
+        "place_id": "gn-6113335",
+        "name": "Prince Albert",
+        "country": "Canada",
+        "subdivision": "Saskatchewan",
+        "lat": 53.20008,
+        "lon": -105.76772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prince Albert, Saskatchewan",
+          "url": "https://en.wikipedia.org/wiki/Prince_Albert,_Saskatchewan",
+          "text": "Prince Albert is the third largest city in Saskatchewan, Canada, after Saskatoon and Regina. It is situated near the geographic centre of the province on the banks of the North Saskatchewan River. Often simply referred to as P. A., the city is also known as the \"Gateway to the North\" since it is the northernmost major urban centre in the province and serves as somewhat of a hub between Saskatchewan's northern communities and larger communities in the south. Prince Albert National Park is located 51 kilometres (32 mi) north of the city and contains a wealth of lakes, forest, and wildlife. The city itself is located in a transition zone between the aspen parkland and boreal forest biomes. Prince Albert is surrounded by the Rural Municipality of Prince Albert No. 461, of which it is the seat, but is politically separate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "prince albert",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prince",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "albert",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3128,
+    "attempt": 3106,
+    "place_id": "gn-638936",
+    "input": {
+      "place": {
+        "place_id": "gn-638936",
+        "name": "Rovaniemi",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 66.49897,
+        "lon": 25.68867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rovaniemi",
+          "url": "https://en.wikipedia.org/wiki/Rovaniemi",
+          "text": "Rovaniemi ( ROH-və-nee-ə-mee, Finnish: [ˈroʋɑˌnie̯mi] ; Northern Sami: Roavvenjárga [ˈro̯ɑvveˌɲaːrːka]; Inari Sami: Ruávinjargâ; Skolt Sami: Ruäʹvnjargg) is a city in Finland and the regional capital of Lapland. It is located near the Arctic Circle in the northern interior of the country. The population of Rovaniemi is approximately 66,000, while the sub-region has a population of approximately 70,000. It is the 17th most populous municipality in Finland, and the 11th most populous urban area in the country.\n\nRovaniemi is the administrative capital and commercial centre of Finland's northernmost province, Lapland, and its southern part Peräpohjola. The city centre is situated about 6 kilometres (4 miles) south of the Arctic Circle and is between the hills of Ounasvaara and Korkalovaara, at the confluence of the river Kemijoki and its tributary, the Ounasjoki. It is the second-largest city of Northern Finland after Oulu, and, together with the capital city Helsinki, it is one of Finland's most significant tourist cities in terms of foreign tourism. In 2024, CNN listed Rovaniemi as \"one of the best places in the world to celebrate Christmas.\"\nThe city and the surrounding Rovaniemen maalaiskunta (Rural municipality of Rovaniemi) were consolidated into a single entity on 1 January 2006. Rovaniemi municipality has an approximate population of 66,000. The urban area of Rovaniemi has a population of 53,361, in an area of about 59 km2 (23 sq mi). Rovaniemi is a monolingual Finnish-speaking municipality, and unusually for larger Finnish towns, it is also known by its Finnish name and spelling in the Swedish language.\nThe coat of arms of Rovaniemi was designed by Toivo Vuorela. Its explanation is \"in the green field, a silver pall with light-height upper branches; accompanied by a golden flame in the upper corner\". It was approved on 15 August 1956 by the Rovaniemi Rural Municipal Council and confirmed on October 26 at the Ministry of the Interior as the coat of arms of the Rovaniemi Rural Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "rovaniemi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3129,
+    "attempt": 3107,
+    "place_id": "gn-7626291",
+    "input": {
+      "place": {
+        "place_id": "gn-7626291",
+        "name": "La Rinconada",
+        "country": "Peru",
+        "subdivision": "Puno",
+        "lat": -14.63126,
+        "lon": -69.44638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Rinconada, Peru",
+          "url": "https://en.wikipedia.org/wiki/La_Rinconada,_Peru",
+          "text": "La Rinconada is a town in the Peruvian Andes near a gold mine. At up to 5,100 m (16,700 ft; 3.2 mi) above sea level, it is the highest larger permanent settlement in the world.\nBetween 2001 and 2009, the population was estimated by National Geographic to have increased to 30,000 people from a small gold prospector camp because the price of gold rose 235% over that period, although this number has not been reflected by the 2007 or 2017 censuses.\nThe town has gained notoriety for its extreme living conditions that include its high rates of altitude sickness, pollution, poverty, murder, and sex trafficking, and as a result has sometimes been referred to in Spanish as la ciudad sin ley del Perú, which means \"the lawless city of Peru\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "la rinconada",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rinconada",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3130,
+    "attempt": 3108,
+    "place_id": "gn-8299617",
+    "input": {
+      "place": {
+        "place_id": "gn-8299617",
+        "name": "High Peak",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.36797,
+        "lon": -1.84536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "High Peak, Derbyshire",
+          "url": "https://en.wikipedia.org/wiki/High_Peak,_Derbyshire",
+          "text": "High Peak is a local government district with borough status in Derbyshire, England, covering a high moorland plateau in the Dark Peak area of the Peak District National Park. The district stretches from Holme Moss in the north to Sterndale Moor in the south, and from Hague Bar in the west to Bamford in the east. The population of the borough taken at the 2011 Census was 90,892. The borough is unusual in having two administrative centres for its council, High Peak Borough Council; the offices are in Buxton and Glossop. Other towns include Chapel-en-le-Frith, Hadfield, New Mills and Whaley Bridge. Under current local government restructuring plans it is planned that the district will be abolished in 2028, with its area forming part of a new Derbyshire North unitary authority.\nHigh Peak was the name of a hundred of the ancient county of Derbyshire covering a larger area than the current district with the hundred including the town of Bakewell and extending just to the west of Matlock. It may have derived its name from the ancient Forest of High Peak, a royal hunting reserve administered by William Peverel, a favourite of William I, who was based at Peak Castle. High Peak contains much of the Peak District National Park. The district contains the highest point in Derbyshire, Kinder Scout, which stands at 636m (2,087 ft) above sea level. Its settlements act as commuter centres for people who work in the surrounding counties and other parts of Derbyshire, owing to its proximity to Cheshire, Greater Manchester, South Yorkshire, Staffordshire and West Yorkshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "high peak",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "high",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "peak",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3131,
+    "attempt": 3109,
+    "place_id": "gn-1623180",
+    "input": {
+      "place": {
+        "place_id": "gn-1623180",
+        "name": "Tuban",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -6.8976,
+        "lon": 112.0649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuban",
+          "url": "https://en.wikipedia.org/wiki/Tuban",
+          "text": "Tuban is a town located on the north coast of Java, in Tuban Regency (of which the town is the administrative capital), approximately 100 km (62 mi) west of Surabaya, the capital of East Java. Tuban Regency is surrounded by Lamongan Regency in the east, Bojonegoro Regency in the south, and Rembang Regency, Central Java in the west. Tuban town covers 21.29 km2 (8.22 sq mi) and in mid 2025 had an officially estimated population of 88,128.\nAs an ancient town, Tuban is of considerable historical and cultural value. The most prominent feature is the beauty of the scenery such as beaches, caves, and forests, especially the teak forest.\nTuban was formerly an important port in the Majapahit era and is mentioned in Chinese records from the eleventh century. An ancient anchor from one of Kublai Khan's ships is preserved in the historical museum. Tuban is believed to have been Islamised before its conquest by Demak c. 1527. Even following its Islamisation, it remained loyal to Hindu-Buddhist Majapahit in the interior. The grave of Sunan Bonang, a sixteenth-century Islamic missionary - one of the Wali Sanga involved in the initial spread of Islam in Java, is located in Tuban. The site is within a few minutes walk of the alun-alun (town square). This site is an important destination for Muslim pilgrims.\nThe Dutch name of the city is 'Toeban'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "tuban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3132,
+    "attempt": 3110,
+    "place_id": "gn-1630238",
+    "input": {
+      "place": {
+        "place_id": "gn-1630238",
+        "name": "Raha",
+        "country": "Indonesia",
+        "subdivision": "Southeast Sulawesi",
+        "lat": -4.838,
+        "lon": 122.7209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raha, Muna",
+          "url": "https://en.wikipedia.org/wiki/Raha,_Muna",
+          "text": "Raha is the main town and port on Muna Island, Southeast Sulawesi, Indonesia. Raha is the capital of Muna Regency.\n\nThe Raha town is located on the coast of the Buton Strait, is the capital of Muna Regency, within Southeast Sulawesi Province. The total area of the town is 155.03 km2 consisting of Katobu District and parts of neighbouring districts, altogether comprising 12 kelurahan and `5 desa, with a population of 2018 of 69,980 people. The limits of Raha are as follows:  \nNorth side is bordered by Napabalano District;\nSouth side is bordered by Banggai Village, Duruka District;\nThe East is bordered by the Buton Strait;\nWest side is bordered by Wali Village, Watopute District\nThe metropolitan area was estimated in 2018 as covering 1,030.24 km2 with 84,920 population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "raha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3133,
+    "attempt": 3111,
+    "place_id": "gn-175499",
+    "input": {
+      "place": {
+        "place_id": "gn-175499",
+        "name": "Nchelenge",
+        "country": "Zambia",
+        "subdivision": "Luapula Province",
+        "lat": -9.34506,
+        "lon": 28.73396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nchelenge",
+          "url": "https://en.wikipedia.org/wiki/Nchelenge",
+          "text": "Nchelenge is a town in the Luapula Province of northern Zambia, lying on the south eastern shore of Lake Mweru. It is contiguous with Kashikishi, and they are sometimes referred to as Nchelenge-Kashikishi. Nchelenge is the administrative centre for the Zambian part of Lake Mweru, being the seat of the district government and branches of national agencies, while Kashikishi is the market and fisheries centre. Nchelenge attained District status in 1997 when it was upgraded from being a sub-District structure of the Kawambwa District in Luapula. \nFerries sail from Nchelenge to Kilwa Island and Isokwe. In 2001 a large motorised barge was launched to carry trucks laden with concentrated copper ore from the Dikulushi Mine in DR Congo across Lake Mweru to Nchelenge, from where they travel to Namibia. \nThe principal highway of the Luapula Province ends its tarred surface at Nchelenge-Kashikishi, providing good communication southwards to Mansa and the Great North Road at Serenje. Northwards a dirt road continues to Chiengi and Zambia's border with DR Congo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "nchelenge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3134,
+    "attempt": 3112,
+    "place_id": "gn-2301190",
+    "input": {
+      "place": {
+        "place_id": "gn-2301190",
+        "name": "Elmina",
+        "country": "Ghana",
+        "subdivision": "Central",
+        "lat": 5.0847,
+        "lon": -1.35093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmina",
+          "url": "https://en.wikipedia.org/wiki/Elmina",
+          "text": "Elmina (Fante: Edina) is a town and the capital of the Komenda/Edina/Eguafo/Abirem District on the south coast of Ghana in the Central Region. It is situated on a bay on the Atlantic Ocean, 12.2 km (7.6 mi) west of Cape Coast. Elmina was the first European settlement in West Africa and it has a population of 33,576 people, as of 2013. The current Municipality chief of Elmina is Solomon Ebo Appiah.\nWhen the Portuguese, after first coming in contact with the Gold Coast struck an agreement with the King of Elmina to build the  São Jorge da Mina Castle in the 1470s, the settlement grew to become an important centre of commerce and trade in the region. Nowadays, Elmina shows strong influence from Europe in its culture and people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "elmina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3135,
+    "attempt": 3113,
+    "place_id": "gn-2342192",
+    "input": {
+      "place": {
+        "place_id": "gn-2342192",
+        "name": "Gamboru",
+        "country": "Nigeria",
+        "subdivision": "Borno State",
+        "lat": 12.37299,
+        "lon": 14.2069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gamboru",
+          "url": "https://en.wikipedia.org/wiki/Gamboru",
+          "text": "Gamboru (or Gamburu) is a market town in Borno State, northeast Nigeria, near the Cameroon border.  It is the administrative headquarters of the local government area. \nThe A3 highway terminates here and continues into Cameroon as part of the Trans-Sahel Highway.\nA 2013 IRIN report indicated that pharmacies in Gamboru Ngala were subject to attack by Islamist insurgents Boko Haram, and that the prices of medicines had \"gone up by at least a third\" as a result.\nThe Boko Haram attack on Gamboru on May 5–6, 2014, and its twin town of Ngala killed at least 300 people. Some residents reported that they planned to move to Cameroon in the wake of the attacks, and a Nigerian Army source indicated that corruption was hampering efforts to defend local residents.\nOn May 9, 2014, it was reported that the bridge linking Gamboru to the rest of Nigeria, and also linking \"the immigration checkpoints of both Cameroon and Nigeria,\" had been destroyed. On May 11 it was reported that Borno State Governor Kashim Shettima had visited the town to view the destruction and offer condolences, and \"promised to rebuild the Gamboru Ngala central market.\" Local government chairman Bakura Mustapha indicated that over 200 vehicles, and \"hundreds of shops and houses\" had been burned.\nOn 2 February 2015, the Nigerian Army said it had recaptured Gamboru from Boko Haram, along with the nearby towns of Mafa, Mallam Fatori, Abadam, and Marte, following joint military operations by Nigerian and Cameroonian forces, civilian forces, and three days of Chadian airstrikes.\nOn 6 January 2020, a bomb at the marketplace on the bridge to Fotokol killed at least 30 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "gamboru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3136,
+    "attempt": 3114,
+    "place_id": "gn-2343720",
+    "input": {
+      "place": {
+        "place_id": "gn-2343720",
+        "name": "Eket",
+        "country": "Nigeria",
+        "subdivision": "Akwa Ibom State",
+        "lat": 4.64231,
+        "lon": 7.92438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eket",
+          "url": "https://en.wikipedia.org/wiki/Eket",
+          "text": "Eket  is a city and one of the 31 local government areas in Akwa Ibom State, Nigeria. The name Eket or Ekid also refers to the indigenous people of the two Local Government Areas of Eket and Esit Eket who are a stock of the Ibibio people of the southern part of Ibibioland and to their dialect which is Ekid. The Eket people use the endonym Ekid for themselves and their language, but Europeans spell and pronounce the name as \"Eket\". The Eket in Ibibioland has no relationship with Eket in Sweden.\nApart from being a local government area in Akwa Ibom State, Eket is one of the three geopolitical zones in the state. The geopolitical zones are Uyo senatorial district, Ikot Ekpene senatorial district and Eket senatorial district.\nThe town itself is an industrial city that in recent years has become a conurbation joining together separate villages. The Office of the Surveyor-General of Akwa Ibom State estimates the area of the Eket Local Government Area to be approximately 176.000 square Km while the 2006 National Census gives the population of the Local Government Area as 172,856. However, the  Akwa Ibom State Ministry of Economic Development gives the 2013 estimated population of the Eket Local Government Area as given as 218,438 with a population density of 1,241/km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "eket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3137,
+    "attempt": 3115,
+    "place_id": "gn-241448",
+    "input": {
+      "place": {
+        "place_id": "gn-241448",
+        "name": "Anse Boileau",
+        "country": "Seychelles",
+        "subdivision": "Anse Boileau",
+        "lat": -4.71667,
+        "lon": 55.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anse Boileau",
+          "url": "https://en.wikipedia.org/wiki/Anse_Boileau",
+          "text": "Anse Boileau (French pronunciation: [ɑ̃s bwalo] ) is an administrative district on the south of the island of Mahé in the Seychelles. Anse Boileau encapsulates the natural wonders of the Seychelles: it sits at the foot of a steep, green mountain, it is on the shores of the Indian Ocean, and in its midst are streams, mini-forests, creeks, ponds, and an enchanting array of all that defines the Seychellois landscape. It is often described as a fishing village because many of the local residents fish for a living. It has a school, a restaurant, a number of grocery shops, a health centre, and a police station. It is a short distance away from Anse La Mouche, a popular tourist destination. Anse Boileau is so-called because of its many coves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "anse boileau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anse",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boileau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3138,
+    "attempt": 3116,
+    "place_id": "gn-2515096",
+    "input": {
+      "place": {
+        "place_id": "gn-2515096",
+        "name": "Lebrija",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.92077,
+        "lon": -6.07529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lebrija",
+          "url": "https://en.wikipedia.org/wiki/Lebrija",
+          "text": "Lebrija (Spanish pronunciation: [leˈβɾixa]) is a city and municipality of Spain located in the autonomous community of Andalusia, most specifically in the Province of Sevilla. It straddles the left bank of the Guadalquivir river, and the eastern edge of the marshes known as Las Marismas.\nAccording to a 2008 population census, it has 26,046 inhabitants, and has an area surface of 372 km2, making it one of the biggest municipalities in the province.  The nearest municipalities are El Cuervo and Las Cabezas de San Juan, in Seville and Trebujena and the city of Jerez de la Frontera in the province of Cádiz.\nThe main productive activity is agriculture, with beet, cotton, wheat and various fruits its main products. Winemaking activities are also prominent with Manzanilla and other finos too. Lebrija is also known for its pottery and earthenware heritage, including búcaros. The farmers of this area were the first to cultivate corn brought over from the Americas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "lebrija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3139,
+    "attempt": 3117,
+    "place_id": "gn-2562792",
+    "input": {
+      "place": {
+        "place_id": "gn-2562792",
+        "name": "Senglea",
+        "country": "Malta",
+        "subdivision": "Senglea",
+        "lat": 35.88777,
+        "lon": 14.51588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senglea",
+          "url": "https://en.wikipedia.org/wiki/Senglea",
+          "text": "Senglea (Maltese: L-Isla [ˈlɪslɐ]), also known by its title Città Invicta (or Civitas Invicta), is a fortified city in the Port Region of Malta. It is one of the Three Cities in the Grand Harbour area, the other two being Cospicua and Vittoriosa, and has a population of approximately 2,720 people. The city's title Città Invicta (lit. invincible city) was given because it managed to resist the Ottoman invasion at the Great Siege of Malta in 1565. The name Senglea comes from the Grand Master who built it, Claude de la Sengle, and gave the city a part of his name. While Senglea is the 52nd most populated locality on the island, due to its incredibly small land area, it is the 2nd most densely populated locality after Sliema.\nIn Senglea, locals speak the Cottonera dialect.\nSenglea was part of a town named Birmula. When the order of St John came to Malta they planned to build 3 cities from this land. It started from Senglea, then Vittoriosa and Cospicua. The rest of the land was named Cottonera and it was surrounded with the Cottonera lines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "senglea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3140,
+    "attempt": 3118,
+    "place_id": "gn-2641690",
+    "input": {
+      "place": {
+        "place_id": "gn-2641690",
+        "name": "Newburn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.9876,
+        "lon": -1.74415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newburn",
+          "url": "https://en.wikipedia.org/wiki/Newburn",
+          "text": "Newburn, also known as Newburn-upon-Tyne, is a village and district of Newcastle upon Tyne, in Tyne and Wear, England. Situated on the North bank of the River Tyne, it is built rising up the valley from the river. It is situated approximately 5 miles (8 km) from the city centre, 14 miles (23 km) east of Hexham and 13 miles (21 km) south south west of Morpeth. In the 2001 census, the population was given as 9,301, increasing to 9,536 at the 2011 Census. Newburn is in the Newcastle upon Tyne district of Tyne and Wear and is part of the parliamentary constituency of Newcastle upon Tyne North.\nHistorically, the area was larger than Newcastle upon Tyne as it was the most eastern fordable point of the River Tyne. The area has Roman remains, and a Norman church dating from 1070 AD. In 1640, the Battle of Newburn took place. The area grew with the Industrial Revolution with the discovery of coal, and in 1822 Spencer's Steelworks was opened. The village's steelworks fell into decline after the First World War, and the area is now home to a country park and various leisure facilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "newburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3141,
+    "attempt": 3119,
+    "place_id": "gn-2650209",
+    "input": {
+      "place": {
+        "place_id": "gn-2650209",
+        "name": "Edmonton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.62561,
+        "lon": -0.05798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edmonton, London",
+          "url": "https://en.wikipedia.org/wiki/Edmonton,_London",
+          "text": "Edmonton ( ) is a town in north London, England within the London Borough of Enfield, a local government district of Greater London. The northern part of the town is known as Lower Edmonton or Edmonton Green, and the southern part as Upper Edmonton. Situated 8.4 miles (13.5 km) north-northeast of Charing Cross, it borders Enfield to the north, Chingford to the east, and Tottenham to the south, with Palmers Green and Winchmore Hill to the west. The population of Edmonton was 82,472 as of 2011.\nThe town forms part of the ceremonial county of Greater London and until 1965 was in the ancient county of Middlesex. Historically a parish in the Edmonton Hundred of Middlesex, Edmonton became an urban district in 1894, and a municipal borough in 1937. Local government took place at the now-demolished Edmonton Town Hall in Fore Street between 1855 and 1965. In 1965, following reform of local government in London, the municipal borough and former parish of Edmonton was abolished, merging with that of Enfield and Southgate to form the new local government district of Enfield, a borough of Greater London.\nOnce a rural village, the opening of the railway and tramway in the 19th century, especially the opening of the high-level station at Lower Edmonton, caused the area to expand rapidly, forming part of the metropolitan and urban area of London, similar to much of the county of Middlesex. The late 19th century saw the establishment of industry on former marshland and movement of a working-class population to the area, encouraging much of this development. By the 1930s, the area had become a popular north London shopping destination, and in the 1960s and 1970s, the area underwent major redevelopment, with the construction of the Edmonton Green indoor market and shopping centre, as well as mass construction of council housing, including tower blocks. In recent years, as a result of increased levels of immigration, the town has been transformed from a predominantly white area into one of the most ethnically diverse areas in England, with the majority of the population now belonging to an ethnic minority background, as first recorded in the 2011 census.\nIn 1795, Fort Edmonton in Canada was named after the town in Middlesex. The fort evolved into the city of Edmonton, the capital city of Alberta, Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 386
+    },
+    "banned_terms": [
+      {
+        "term": "edmonton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3142,
+    "attempt": 3120,
+    "place_id": "gn-2650435",
+    "input": {
+      "place": {
+        "place_id": "gn-2650435",
+        "name": "East Grinstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.12382,
+        "lon": -0.0061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Grinstead",
+          "url": "https://en.wikipedia.org/wiki/East_Grinstead",
+          "text": "East Grinstead () is a town in West Sussex, England, near the East Sussex, Surrey, and Kent borders, 27 miles (43 km) south of London, 21 miles (34 km) north of Brighton, and 38 miles (61 km) northeast of the county town of Chichester. Situated in the northeast corner of the county, bordering Surrey, the civil parish has an area of 2,443.45 hectares (6,037.9 acres). The population at the 2011 Census was 26,383.\nNearby towns include Crawley and Horley to the west, Tunbridge Wells to the east and Redhill and Reigate to the northwest. The town is contiguous with the village of Felbridge to the northwest. Until 1974 East Grinstead was in East Sussex, before joining with Haywards Heath and Burgess Hill as the Mid-Sussex district of West Sussex.\nThe town is on the Greenwich Meridian. It has many historic buildings, and the Weald and Ashdown Forest lie to the south-east.\nThe name Grinstead derives from the Old English grēnestede, meaning 'green place'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "east grinstead",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grinstead",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

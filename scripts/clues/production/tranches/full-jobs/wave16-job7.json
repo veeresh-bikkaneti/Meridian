@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 3143,
+    "attempt": 3121,
+    "place_id": "gn-2753638",
+    "input": {
+      "place": {
+        "place_id": "gn-2753638",
+        "name": "Hoorn",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.6425,
+        "lon": 5.05972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoorn",
+          "url": "https://en.wikipedia.org/wiki/Hoorn",
+          "text": "Hoorn (Dutch pronunciation: [ˈɦoːr(ə)n] ) is a city and municipality in the northwest of the Netherlands, in the province of North Holland. It is the largest town and the traditional capital of the region of West Friesland. Hoorn is located on the Markermeer, 20 kilometers (12 mi) east of Alkmaar and 35 kilometers (22 mi) north of Amsterdam. The municipality has just over 75,000 inhabitants and a land area of 20.38 km2 (7.87 sq mi), making it the third most densely populated municipality in North Holland after Haarlem and Amsterdam. Apart from the city of Hoorn, the municipality includes the villages of Blokker and Zwaag, as well as parts of the hamlets De Bangert, De Hulk and Munnickaij.\nHoorn is well known in the Netherlands for its rich history. The town acquired city rights in 1357 and flourished during the Dutch Golden Age. In this period, Hoorn developed into a prosperous port city, being home to one of the six chambers of the Dutch East India Company (VOC). Towards the end of the eighteenth century, however, it started to become increasingly more difficult for Hoorn to keep competing with nearby Amsterdam. Ultimately, it lost its function as port city and became a regional center of trade, mainly serving the smaller villages of West Friesland. Nowadays, Hoorn is a city with modern residential areas and a historic city center that, due to its proximity to Amsterdam, is sometimes considered to be part of the Randstad metropolitan area. Cape Horn and the Hoorn Islands were both named after this city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "hoorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3144,
+    "attempt": 3122,
+    "place_id": "gn-2755420",
+    "input": {
+      "place": {
+        "place_id": "gn-2755420",
+        "name": "Gouda",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.01667,
+        "lon": 4.70833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gouda, South Holland",
+          "url": "https://en.wikipedia.org/wiki/Gouda,_South_Holland",
+          "text": "Gouda (Dutch pronunciation: [ˈɣʌudaː] ) is a city and municipality in the west of the Netherlands, between Rotterdam and Utrecht, in the  province of South Holland. Gouda has a population of 75,000 and is famous for its Gouda cheese, stroopwafels, many grachten, smoking pipes, and its 15th-century city hall. Its array of historic churches and other buildings makes it a very popular day-trip destination.\nIn the Middle Ages the Van der Goude family founded a settlement at the location of the current city and built a fortified castle alongside the banks of the Gouwe River, from which the family and the city took their names. Locals long called the settlement Ter Goude, or Tergou or Tergouw for short.\nThe area, originally marshland, developed over the course of two centuries. By 1225, a canal was linked to the Gouwe and its estuary became a harbour. In 1272 Floris V, Count of Holland granted the city city rights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "gouda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3145,
+    "attempt": 3123,
+    "place_id": "gn-2812482",
+    "input": {
+      "place": {
+        "place_id": "gn-2812482",
+        "name": "Weimar",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.9803,
+        "lon": 11.32903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weimar",
+          "url": "https://en.wikipedia.org/wiki/Weimar",
+          "text": "Weimar is a city in the German state of Thuringia, in Central Germany between Erfurt to the west and Jena to the east, 80 km (50 mi) southwest of Leipzig, 170 km (106 mi) north of Nuremberg and 170 km (106 mi) west of Dresden. Together with the neighbouring cities of Erfurt and Jena, it forms the central metropolitan area of Thuringia, with approximately 500,000 inhabitants. The city itself has a population of 65,000. Weimar is well known because of its cultural heritage and importance in German history.\nThe city was a focal point of the German Enlightenment and home of the leading literary figures of Weimar Classicism, Johann Wolfgang von Goethe and Friedrich Schiller. In the 19th century, composers such as Franz Liszt made Weimar a music centre. Later, artists and architects including Henry van de Velde, Wassily Kandinsky, Paul Klee, Lyonel Feininger, and Walter Gropius came to the city and founded the Bauhaus movement, the most important German design school of the interwar period.\nThe political history of 20th-century Weimar was volatile: it was the place where Germany's first democratic constitution was signed after the First World War, giving its name to the Weimar Republic (1918–33), which existed between the end of World War I and the rise of the Nazis. It was also one of the cities mythologized by Nazi propaganda.\nUntil 1948, Weimar was the capital of Thuringia. Many places in the city centre have been designated as UNESCO World Heritage Sites, either as part of the Classical Weimar complex (containing monuments to the classical period of Weimar in 18th and 19th centuries) or the Bauhaus complex (containing buildings associated with the Bauhaus art school). Heritage tourism is one of the leading economic sectors of Weimar.\nNoted institutions in Weimar are the Bauhaus University, the Liszt School of Music, the Duchess Anna Amalia Library, and two leading courts of Thuringia (the Supreme Administrative Court and Constitutional Court). In 1999, Weimar was the European Capital of Culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "weimar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3146,
+    "attempt": 3124,
+    "place_id": "gn-2896753",
+    "input": {
+      "place": {
+        "place_id": "gn-2896753",
+        "name": "Idar-Oberstein",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.71443,
+        "lon": 7.30776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idar-Oberstein",
+          "url": "https://en.wikipedia.org/wiki/Idar-Oberstein",
+          "text": "Idar-Oberstein (German: [ˌiːdaːɐ̯ ˈʔoːbɐˌʃtaɪn] ) is a town in the Birkenfeld district in Rhineland-Palatinate, Germany. As a Große kreisangehörige Stadt (large city belonging to a district), it assumes some of the responsibilities that for smaller municipalities in the district are assumed by the district administration. Today's town of Idar-Oberstein is the product of two rounds of administrative reform, one in 1933 and the other in 1969, which saw many municipalities amalgamated into one. The various Stadtteile have, however, retained their original identities, which, aside from the somewhat more urban character encountered in Idar and Oberstein, tend to hark back to each centre's history as a rural village. Idar-Oberstein is known as a gemstone town, and also as a garrison town. It is also the largest town in the Hunsrück."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "idar oberstein",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "idar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oberstein",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3147,
+    "attempt": 3125,
+    "place_id": "gn-2907851",
+    "input": {
+      "place": {
+        "place_id": "gn-2907851",
+        "name": "Heidenheim an der Brenz",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.67798,
+        "lon": 10.15162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heidenheim an der Brenz",
+          "url": "https://en.wikipedia.org/wiki/Heidenheim_an_der_Brenz",
+          "text": "Heidenheim an der Brenz (German pronunciation: [ˈhaɪdn̩haɪm ʔan deːɐ̯ ˈbʁɛnts], lit. 'Heidenheim on the Brenz'), usually shortened to Heidenheim (German pronunciation: [ˈhaɪdn̩haɪm] ; Swabian: Hoidna or Hoirna), is a town in Baden-Württemberg in southern Germany. It is located near the border with Bavaria, approximately 17 km south of Aalen and 33 km north of Ulm. Heidenheim is the largest town and the seat of the district of Heidenheim, and ranks third behind Aalen and Schwäbisch Gmünd in size among the towns in the region of East Württemberg. Heidenheim is the economic center for all the communities in Heidenheim district and is the headquarters of the Voith industrial company. The town's population in 2021 was just below the 50,000 mark. Heidenheim collaborates with the town of Nattheim in administrative matters.\nThe residents of Heidenheim and its surrounding area speak the distinct German dialect of Swabian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "heidenheim an der brenz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "heidenheim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "brenz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3148,
+    "attempt": 3126,
+    "place_id": "gn-2939811",
+    "input": {
+      "place": {
+        "place_id": "gn-2939811",
+        "name": "Cottbus",
+        "country": "Germany",
+        "subdivision": "Brandenburg",
+        "lat": 51.75769,
+        "lon": 14.32888
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cottbus",
+          "url": "https://en.wikipedia.org/wiki/Cottbus",
+          "text": "Cottbus (German pronunciation: [ˈkɔtbʊs] ) or Chóśebuz (Lower Sorbian pronunciation: [ˈxɨɕɛbus]) is a university city and the second-largest city in the German state of Brandenburg after the state capital, Potsdam. With around 100,000 inhabitants, Cottbus is the most populous city in Lusatia. Cottbus lies in the Sorbian settlement area (Serbski sedleński rum) of Lower Lusatia, and is the second-largest city on the River Spree after Berlin, which is situated around 125 km (78 mi) downstream. The city is located on the shores of Germany's largest artificial lake, the Cottbuser Ostsee (Chóśebuski pódzajtšny jazor).\nCottbus is the political and cultural center of the Lower Sorbian-speaking Sorbs, also known as the Wends in Lower Lusatia; the overall center of Sorbian culture is Bautzen/Budyšin. Cottbus is the largest bilingual city in Germany. Signage is mostly in German and Lower Sorbian. The city hosts several Lower Sorbian institutions like the Lower Sorbian version of the Sorbischer Rundfunk/Serbski rozgłos, the Lower Sorbian Gymnasium, and the Wendish Museum. The use of the Lower Sorbian language, however, is more widespread in the surrounding municipalities than in the city itself. The Wendish Quarter is a part of the city supposed to resemble the traditional Sorbian architectural style.\nCottbus is the seat of the Brandenburg University of Technology. Due to this, the city has the official names Universitätsstadt Cottbus/Uniwersitne město Chóśebuz (University City Cottbus). Branitz Castle, built in 1770–71, in the southeast of the city, was a residence of the Prince of Pückler-Muskau. The prince, who also created Muskau Park, designed the extensive Branitz Park on the shores of the Spree, with its two grass pyramids. Cottbus State Theater is the only state theater in Brandenburg. Cottbus main station is a major railway junction with extensive sidings/depots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "cottbus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3149,
+    "attempt": 3127,
+    "place_id": "gn-3005866",
+    "input": {
+      "place": {
+        "place_id": "gn-3005866",
+        "name": "Laval",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 48.07247,
+        "lon": -0.77019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laval, Mayenne",
+          "url": "https://en.wikipedia.org/wiki/Laval,_Mayenne",
+          "text": "Laval (French pronunciation: [laval] ) is a town in western France, about 300 km (190 mi) west-southwest of Paris, and the capital of the Mayenne department. Its inhabitants are called Lavallois. The commune of Laval proper, without the metropolitan area, is the 9th most populous in the Pays de la Loire region.\nA part of the traditional province of Maine before the French Revolution, which now split between two departments, Mayenne and Sarthe, Laval also lies on the threshold of Brittany and is not far from Normandy and Anjou. It was thus an important stronghold in northwestern France during the Middle Ages. Laval became a city during the 11th century, and was the cradle of the House of Laval, one of the most powerful families in Maine and Brittany. The counts of Laval developed a textile industry around 1300 and made Laval a significant centre for the French Renaissance a century later. The linen industry remained the principal activity in Laval until the 20th century, when milk processing became more profitable.\nLaval developed around a promontory, on which the castle was built, and along the river Mayenne. The Laval metropolitan area is a small economic centre in western France, particularly active in the industrial sector, dairy production, electronics and chemicals. Laval is economically oriented towards Rennes, the administrative capital of the region of Brittany, and located only 80 kilometres (50 miles) west of Laval.\nLaval proper covers 34.2 square kilometres (13.2 sq mi) and has a population of 49,400 inhabitants, while about 145,000 live in its metropolitan area (1,435 square kilometres (554 sq mi)). The Laval Agglomération intercommunality is made up of 34 communes covering 686 square kilometres (265 sq mi) with 115,000 inhabitants.\nLaval is notably the birthplace of Henri Rousseau, a major Naïve painter, and the town has a museum dedicated to him and other Naïve artists. Laval also enjoys a significant architectural heritage, with its castle, portions of city walls, medieval houses, old bridges and churches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "laval",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3150,
+    "attempt": 3128,
+    "place_id": "gn-3042198",
+    "input": {
+      "place": {
+        "place_id": "gn-3042198",
+        "name": "Peel",
+        "country": "Isle of Man",
+        "subdivision": "Peel",
+        "lat": 54.22209,
+        "lon": -4.69099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peel, Isle of Man",
+          "url": "https://en.wikipedia.org/wiki/Peel,_Isle_of_Man",
+          "text": "Peel (Manx: Purt ny h-Inshey 'port of the Island') is a seaside town and small fishing port in the Isle of Man, in the historic parish of German but administered separately. Peel is the second largest town in the Island after Ramsey. However, it is the fourth largest settlement because the larger settlements of Douglas and Onchan are classed as a City and a Village, respectively. \nUntil 2016 (when it was merged with Glenfaba) Peel was also a House of Keys constituency, electing one Member of the House of Keys (MHK), who, since September 2015, is Ray Harmer. \nPeel has a ruined castle on St Patrick's Isle, and a cathedral, seat of the Diocese of Sodor and Man (the diocese was founded when Mann was ruled by the Norse)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "peel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3151,
+    "attempt": 3129,
+    "place_id": "gn-3195506",
+    "input": {
+      "place": {
+        "place_id": "gn-3195506",
+        "name": "Maribor",
+        "country": "Slovenia",
+        "subdivision": "Urban Municipality of Maribor",
+        "lat": 46.55583,
+        "lon": 15.64593
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maribor",
+          "url": "https://en.wikipedia.org/wiki/Maribor",
+          "text": "Maribor (UK:  MARR-ib-or, US:  MAR-, Slovene: [ˈmáːɾibɔɾ] ; also known by other historical names) is the second-largest city in Slovenia and the largest city of the traditional region of Lower Styria. It is the seat of the Urban Municipality of Maribor and the Drava Statistical Region. Maribor is also the economic, administrative, educational, and cultural centre of eastern Slovenia.\nMaribor was first mentioned as a castle in 1164, as a settlement in 1209, and as a city in 1254. Like most Slovene ethnic territory, Maribor was under Habsburg rule until 1918, when Rudolf Maister and his men secured the city for the State of Slovenes, Croats and Serbs, which then joined the Kingdom of Serbia to form the Kingdom of Yugoslavia. In 1991 Maribor became part of independent Slovenia.\nMaribor, along with the Portuguese city of Guimarães, was selected as the European Capital of Culture for 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "maribor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3152,
+    "attempt": 3130,
+    "place_id": "gn-3345283",
+    "input": {
+      "place": {
+        "place_id": "gn-3345283",
+        "name": "Tonypandy",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.62202,
+        "lon": -3.45544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonypandy",
+          "url": "https://en.wikipedia.org/wiki/Tonypandy",
+          "text": "Tonypandy (, Welsh pronunciation: [tɔnəˈpandi]) is a town, community and electoral ward located in the county borough of Rhondda Cynon Taf, within the historic county boundaries of Glamorgan, Wales, lying in the Rhondda Fawr Valley. A former industrial coal mining town, the town was the scene of the 1910 Tonypandy riots.\nThe community boundaries of Tonypandy are drawn relatively tightly around the central part of the urban area. According to the 2011 UK Census, the population of the community was 3,750. The Office for National Statistics defines a larger \"Tonypandy built-up area\" covering much of the Rhondda Fawr valley and the lower Rhondda Fach valley, which had a population of 62,545 in 2011. They also define a smaller \"Tonypandy built-up area sub division\" which had a population of 17,789.\nThe town is served by Tonypandy railway station on the Rhondda Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "tonypandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3153,
+    "attempt": 3131,
+    "place_id": "gn-3407378",
+    "input": {
+      "place": {
+        "place_id": "gn-3407378",
+        "name": "Aracati",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -4.56167,
+        "lon": -37.76972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aracati",
+          "url": "https://en.wikipedia.org/wiki/Aracati",
+          "text": "Aracati (locally [aˌɾakaˈti]) is a city or municipality in the state of Ceará, in the northeast region of Brazil. The city was officially founded on April 11, 1747. It is part of the microregion of Litoral de Aracati, which is one of the four microregions that make up the macroregion of Jaguaribe. It is the birthplace of the revolutionary Eduardo Angelim, the romanticist Adolfo Caminha, the bishop Manuel do Rego Medeiros, the abolitionist Dragão do Mar, the actor Emiliano Queiroz, the classical pianist Jacques Klein and the writer Yury Teodósio.\nThe city center of Aracati was named an important historical site in April 2000 by the National Institute of Historic and Artistic Heritage of Brazil. The city has several colonial-period residences, and churches from the 17th and 18th century. The facades of many residential buildings of Aracati have well-preserved examples of azulejo, the blue-white ceramic tiles common in Portuguese colonial architecture.\n\nAracati receives a significant amount of international tourism for its small size, attracted primarily by the quiet and calm life of the coast. Foreign-born residents can be seen living and working more and more frequently in its famous beach of Canoa Quebrada. The beaches of Majorlândia and Quixaba are also important in the region and also offer services such as bars, restaurants, and hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "aracati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3154,
+    "attempt": 3132,
+    "place_id": "gn-3928993",
+    "input": {
+      "place": {
+        "place_id": "gn-3928993",
+        "name": "San Vicente de Cañete",
+        "country": "Peru",
+        "subdivision": "Lima region",
+        "lat": -13.07556,
+        "lon": -76.38528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Vicente de Cañete",
+          "url": "https://en.wikipedia.org/wiki/San_Vicente_de_Cañete",
+          "text": "San Vicente de Cañete, commonly known as San Vicente or Cañete, is a city and capital of the Cañete Province, in southern Lima Region. With a population of 85,533 (2015 estimate).\nThe warm and peaceful town of Cañete is located just one and a half hour to the south  of Lima (144 km) and serves, for tourists, primarily as a gateway to the Lunahuaná District. The Plaza de Armas lies on 2 de Mayo, a few blocks inland from the spot on the Pan-American Highway, where buses pause for passengers to get on or off. All buses heading south from Lima or north to Lima on the Pan-American Highway pass through Cañete. This is one of the most important homes of the most representative liquor from Peru: the Pisco.\nCerro Azul, Peru is a district north of the city centre San Vicente de Cañete.\nThe first inhabitants of these lands were the Huarcos. Later, the area was inhabited by descendants of slaves forced to work on the plantations. The slaves and their descendants lived here. The slaves arrived from Guinea, the Congo, and Angola, brought to the Peruvian coast during the seventeenth and eighteenth centuries to work in the cotton and sugar cane fields and in the vineyards.\nIt also has a district called Asia which has a lot of beaches which people from Lima rent houses and there is also a mall called Sur Plaza Boulevard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "san vicente de canete",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vicente",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "canete",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3155,
+    "attempt": 3133,
+    "place_id": "gn-4018404",
+    "input": {
+      "place": {
+        "place_id": "gn-4018404",
+        "name": "Apaseo el Alto",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.45632,
+        "lon": -100.62125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apaseo el Alto",
+          "url": "https://en.wikipedia.org/wiki/Apaseo_el_Alto",
+          "text": "Apaseo el Alto is a Mexican city and municipality located in the state of Guanajuato. The municipality has an area of 491.81 square kilometres (1.6% of the surface of the state) and is bordered to the north by Apaseo el Grande, to the east by the state of Querétaro, to the south by Jerécuaro and Tarimoro, and to the northwest by Celaya. The municipality had a population of 56,817 inhabitants according to the 2005 census.\nIn pre-Columbian times Apaseo (Apatzeo) was known as Atlayahualco or \"place of where water flows\" by the Otomí people who lived in the region.\nThe municipal president of Apaseo el Alto and its many smaller outlying communities, which include San Juan del Llanito, San Bartolo and many others, is Dr. Miguel Ángel Sánchez Escutia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "apaseo el alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "apaseo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3156,
+    "attempt": 3134,
+    "place_id": "gn-4074267",
+    "input": {
+      "place": {
+        "place_id": "gn-4074267",
+        "name": "Madison",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 34.69926,
+        "lon": -86.74833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madison, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Madison,_Alabama",
+          "text": "Madison is a city located primarily in Madison County, near the northern border of the U.S. state of Alabama. Madison extends west into neighboring Limestone County. The city is included in the Huntsville Metropolitan Area, the second-largest in the state, and is also included in the merged Huntsville-Decatur Combined Statistical Area. The population was 56,933 at the 2020 census. Madison is an enclave of Huntsville, which surrounds it on all sides, though there are some small unincorporated lands within Madison in Madison and Limestone counties and along the border with Huntsville.\nMadison was mostly a small city for many years, with its population being around 400-500 for much of its history until the Redstone Arsenal was established to the southeast, which attracted many people to the area for jobs. This rapidly increased the city's population and stimulated economic growth. Many of Madison's residents work in Research Park or the Redstone Arsenal. Madison has been one of the fastest-growing cities in Alabama, as well as one of the wealthiest in the state. In 2022 census estimates, Madison was the ninth-largest city in Alabama, the eighth-densest city in Alabama, and the second-largest city in North Alabama after Huntsville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "madison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3157,
+    "attempt": 3135,
+    "place_id": "gn-4164092",
+    "input": {
+      "place": {
+        "place_id": "gn-4164092",
+        "name": "Merritt Island",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.359,
+        "lon": -80.69
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merritt Island, Florida",
+          "url": "https://en.wikipedia.org/wiki/Merritt_Island,_Florida",
+          "text": "Merritt Island is a peninsula in Brevard County, Florida, United States, located on the eastern Florida coast, along the Atlantic Ocean.  It is also the name of an unincorporated town in the central and southern parts of the island and a census-designated place (CDP).\nThe population was 34,518 at the 2020 census, down from 34,743 at the 2010 census. It is part of the Palm Bay–Melbourne–Titusville, Florida Metropolitan Statistical Area.\nNASA's John F. Kennedy Space Center is located on Merritt Island to the north of the town, and Merritt Island National Wildlife Refuge is located north of the space center.\nThe central part of Merritt Island, previously known as Merritt City, is home to the majority of the population and includes the local high school, library, and shopping district.  The southern area is heavily residential, with centralized light commercial and light industrial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "merritt island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "merritt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3158,
+    "attempt": 3136,
+    "place_id": "gn-4170617",
+    "input": {
+      "place": {
+        "place_id": "gn-4170617",
+        "name": "Royal Palm Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.7084,
+        "lon": -80.2306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royal Palm Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Royal_Palm_Beach,_Florida",
+          "text": "Royal Palm Beach is a village in southeast Florida, located within Palm Beach County. Despite its name, the village is located approximately fifteen miles (24 km) inland from the Atlantic Ocean. It is part of the Miami metropolitan area. The population was at 38,932 residents in the 2020 US census.\nRoyal Palm Beach is known for its many parks and general mission to protect green space, as evidenced by the recent acquisition of 190 acres (0.77 km2) to create a master central park and the development of 25 acres (100,000 m2) preserved into a passive bird watching and nature park. The village offers a variety of activities for the outdoor and sports enthusiast including soccer, basketball, tennis, youth Pop Warner Football and cheerleading, senior activities, and year-round golf programs. The public schools within the Village consist of \"A\"-rated elementary and middle schools and there are numerous private schools offering classes from pre-kindergarten through high school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "royal palm beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3159,
+    "attempt": 3137,
+    "place_id": "gn-4943828",
+    "input": {
+      "place": {
+        "place_id": "gn-4943828",
+        "name": "Methuen",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.7262,
+        "lon": -71.19089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Methuen, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Methuen,_Massachusetts",
+          "text": "Methuen () is a 23-square-mile (60 km2) city in Essex County, Massachusetts, United States. The population was 53,059 at the 2020 census. Methuen lies along the northwestern edge of Essex County, just east of Middlesex County and just south of Rockingham County, New Hampshire.  The city is bordered by Haverhill to the northeast, North Andover to the southeast, Lawrence and Andover to the south, Dracut (Middlesex County) to the west, Pelham, New Hampshire (Hillsborough County) to the northwest, and Salem, New Hampshire (Rockingham County) to the north.  Methuen is located 17 miles (27 km) southwest from Newburyport, 30 miles (48 km) north-northwest of Boston and 25 miles (40 km) south-southeast of Manchester, New Hampshire. The city is a part of the Merrimack Valley and its ZIP Code is 01844."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "methuen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3160,
+    "attempt": 3138,
+    "place_id": "gn-5120478",
+    "input": {
+      "place": {
+        "place_id": "gn-5120478",
+        "name": "Hempstead",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.70621,
+        "lon": -73.61874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hempstead, New York",
+          "url": "https://en.wikipedia.org/wiki/Hempstead,_New_York",
+          "text": "Hempstead is the most populous town in the state of New York. It is the largest of the three towns within Nassau County (alongside North Hempstead and Oyster Bay), located on Long Island, immediately east of southern Queens. The population was 793,409 at the time of the 2020 United States census, and its highest decennial census count ever was back in the 1970 United States census, where the town recorded a population of 801,592, which also made it the ninth largest municipality in the country by population at that time.\nThe town occupies the southwestern part of Nassau County, on western Long Island. A total of 22 incorporated villages (one of which is named Hempstead) are completely or partially within the town.\nHofstra University's campus is located in Hempstead."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "hempstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3161,
+    "attempt": 3139,
+    "place_id": "gn-561887",
+    "input": {
+      "place": {
+        "place_id": "gn-561887",
+        "name": "Gatchina",
+        "country": "Russia",
+        "subdivision": "Leningradskaya Oblast'",
+        "lat": 59.57639,
+        "lon": 30.12833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gatchina",
+          "url": "https://en.wikipedia.org/wiki/Gatchina",
+          "text": "Gatchina (Russian: Га́тчина, IPA: [ˈɡatːɕɪnə]) is a town and the administrative center of Gatchinsky District in Leningrad Oblast, Russia. It lies 45 kilometers (28 mi) south-southwest of  St. Petersburg, along the  E95 highway which links Saint Petersburg and  Pskov. Population:  92,937 (2010 census); 88,420 (2002 census); 79,714 (1989 Soviet census).It was previously known as Khotchino, Gatchina (until February 14, 1923), Trotsk (until August 2, 1929), and Krasnogvardeysk (until January 28, 1944).\nGatchina, the largest town in Leningrad Oblast, is best known as the location of the Great Gatchina Palace, one of the main residences of the Russian Imperial Family during the 18th and 19th centuries. The historic center and Gatchina Palace are part of the UNESCO World Heritage Site's \"Historic Centre of Saint Petersburg and Related Groups of Monuments\".\nAnother popular tourist attraction in Gatchina is the  Prioratsky Palace.\nGatchina has placed highly in quality-of-life rankings in Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "gatchina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3162,
+    "attempt": 3140,
+    "place_id": "gn-6317755",
+    "input": {
+      "place": {
+        "place_id": "gn-6317755",
+        "name": "Nova Mutum",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -13.82889,
+        "lon": -56.08222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nova Mutum",
+          "url": "https://en.wikipedia.org/wiki/Nova_Mutum",
+          "text": "Nova Mutum is a municipality in the state of Mato Grosso in the Central-West Region of Brazil.\nLocated 242 kilometers (150 miles) north of Cuiabá, the state capital, it belongs to the Alto Teles Pires microregion  and Norte Mato-Grossense mesoregion. In 2022, the Brazilian Institute of Geography and Statistics estimated its population to be 55,832 people.\nThe city has the 3rd best Human Development Index (HDI) of the state, and the 8th largest economy of the state, with a GDP of R$2167526.000000, 332nd of Brazil. Much of its economy is focused on agriculture; the municipality is the second-largest state grain producer and one of the largest in Brazil, with an area of 410,000 hectares (1,000,000 acres) of planted soybeans, the 3rd-largest exporter in Mato Grosso and 53rd of Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "nova mutum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mutum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
