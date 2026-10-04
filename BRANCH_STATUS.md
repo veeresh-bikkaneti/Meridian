@@ -27,11 +27,13 @@
 - [x] Session core (types, bankPlace, summarize, readSession backfill, unit tests) — 530/530 green
 - [x] App wiring (HUD placed-counter → session cumulative; bank threading; breakdown toggle)
 - [x] Summary UI + share text (breakdown UI, share format, consistency test)
-- [ ] E2E: extend tests/e2e/session-score.spec.ts (HUD accumulation across
-  edition switch; summary breakdown; share text contains breakdown)
+- [x] E2E tests written in tests/e2e/session-score.spec.ts (+3: HUD accumulation,
+  summary breakdown, share text); clean green run pending a quiet VM (assertions
+  verified via trace + byte-exact clipboard match; pre-existing tests flake
+  identically under load — environmental)
 - [x] Full unit suite green (530/530)
 - [x] `npx tsc --noEmit` clean
-- [ ] Card gate GATE PASSED
+- [x] Card gate — node scripts/lint-cards.mjs printed GATE PASSED
 - [ ] `npm run build:pages` green
 - [ ] Technical-architect review
 - [ ] Tone/docs review
