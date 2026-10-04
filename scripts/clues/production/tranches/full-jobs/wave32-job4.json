@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 6307,
+    "attempt": 6261,
+    "place_id": "gn-2746804",
+    "input": {
+      "place": {
+        "place_id": "gn-2746804",
+        "name": "Steenbergen",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.58417,
+        "lon": 4.31944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steenbergen",
+          "url": "https://en.wikipedia.org/wiki/Steenbergen",
+          "text": "Steenbergen (Dutch pronunciation: [ˈsteːnbɛrɣə(n)] ) is a municipality and a town in the province of North Brabant in the south of the Netherlands. The municipality had a population of 24,310 in 2021 and covers an area of 159.14 km2 (61.44 sq mi) of which 12.71 km2 (4.91 sq mi) is water. The municipality is mainly agricultural including a strongly growing greenhouse sector, but Steenbergen and the nearby town of Dinteloord also contain some light industry. An extension of the A4 motorway, opened in 2014, increased the municipality's attractiveness, aiding connections with the large cities of Rotterdam to the north and the Belgian city of Antwerp to the south. Connection with the nearby city of Bergen op Zoom was also improved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "steenbergen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6308,
+    "attempt": 6262,
+    "place_id": "gn-2949150",
+    "input": {
+      "place": {
+        "place_id": "gn-2949150",
+        "name": "Bienenbüttel",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.14157,
+        "lon": 10.48679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bienenbüttel",
+          "url": "https://en.wikipedia.org/wiki/Bienenbüttel",
+          "text": "Bienenbüttel is a free municipality in the district of Uelzen, in Lower Saxony, Germany. It is situated on the river Ilmenau, approximately 20 kilometres (12 mi) north of Uelzen, and 13 kilometres (8 mi) southeast of Lüneburg. Bienenbüttel is a part of the Hamburg Metropolitan Region and of the Lüneburg Heath (German: Lüneburger Heide).\nBienenbüttel is the seat of the Einheitsgemeinde (\"free municipality\") Bienenbüttel.\nIncorporated into the municipality are the villages of Bargdorf, Beverbeck with Grünewald, Bornsen, Edendorf, Eitzen I with Bardenhagen, Grünhagen, Hohenbostel, Hohnstorf, Niendorf, Rieste with Neu-Rieste, Steddorf with Neu-Steddorf, Varendorf, Wichmannsburg and Wulfstorf.\n\nBienenbüttel is located on the Elbe Lateral Canal, a 115-kilometre (71 mi) long waterway, and has a station on the highspeed Hanover–Hamburg railway (Hamburg-Uelzen-Hannover)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bienenbuttel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6309,
+    "attempt": 6263,
+    "place_id": "gn-2956093",
+    "input": {
+      "place": {
+        "place_id": "gn-2956093",
+        "name": "Angermünde",
+        "country": "Germany",
+        "subdivision": "Brandenburg",
+        "lat": 53.01499,
+        "lon": 13.99924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angermünde",
+          "url": "https://en.wikipedia.org/wiki/Angermünde",
+          "text": "Angermünde (German pronunciation: [aŋɐˈmʏndə] ) is a town in the district of Uckermark in the state of Brandenburg, in north-eastern Germany. It is about 43 miles (69 km) northeast of Berlin, the capital of Germany.\nThe population is about 14,000, but has been declining since its traditional industrial base, enamel-working, has declined. An administrative sub-centre of its district, it has several Protestant churches, a former Franciscan church, a number of schools of higher learning and a recently refurbished historic marketplace with an old town hall. Located in the game-filled forests of the Uckermark, with its many lakes, it now relies heavily on tourism and the sources of revenue linked to it.\nSince 2010, Angermünde is a federally declared resort town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "angermunde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6310,
+    "attempt": 6264,
+    "place_id": "gn-3104218",
+    "input": {
+      "place": {
+        "place_id": "gn-3104218",
+        "name": "Zumaia",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.29469,
+        "lon": -2.25341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zumaia",
+          "url": "https://en.wikipedia.org/wiki/Zumaia",
+          "text": "Zumaia ([s̻umaja], Spanish: Zumaya) is a small town in the north of Spain in the Basque Country.\nThe town has two beaches (Itzurun and Santiago), which are of interest to geologists because they are situated among the longest set of continuous rock strata in the world. These formations are termed flysch and they date from the mid-cretaceous period to the present, a time period of over 100 million years. The K–T boundary is present at the Itzurun beach, and fossils can be found, notably of ammonites. The strata stretches along a distance of about 8 km, between the beaches of Deba and Getaria, with Zumaia lying in the middle.\nThe town is also the home-turned-museum of the painter Ignacio Zuloaga. Exhibits include works by El Greco, Rivera, Zurbarán and Goya. Across the street there is a museum of craft and hand-crafted products of Laia. Within the city centre, the Basque-style Gothic church of San Pedro can be found. It has a temple with a magnificent reredos by Juan de Antxieta, the only work by this Basque sculptor found in Gipuzkoa.\nZumaia is located at the point where the Urola and Narrondo rivers come together. The origins of the town can be traced by its ancient monastery. In the Middle Ages, the people who lived in the Sehatz valley having to endure the continuous attacks of pirates and pillagers, fortified the city. The church today retains the relic of its defensive appearance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "zumaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6311,
+    "attempt": 6265,
+    "place_id": "gn-3114267",
+    "input": {
+      "place": {
+        "place_id": "gn-3114267",
+        "name": "Parets del Vallès",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.57481,
+        "lon": 2.23306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parets del Vallès",
+          "url": "https://en.wikipedia.org/wiki/Parets_del_Vallès",
+          "text": "Parets del Vallès (Catalan pronunciation: [pəˈɾɛdz ðəl βəˈʎɛs]) is a municipality situated 23 km north of Barcelona, in Catalonia, Spain, in the south-west of the comarca of Vallès Oriental, and 7 km from its capital Granollers. It covers an area of 8,98 km2, and has approx. 19,000 inhabitants. From north to south, the town is crossed by the Tenes river. The population is spread over six areas: Barri Antic (Catalan for \"old quarter\"), on top of the hill surrounding the church; Eixample (\"extension\"), the most densely populated, laid out in the 1930s; Escorxador (\"slaughterhouse\"); Can Cerdanet; Can Volart; and Can Riera (these last three named after the farms in those areas). The municipality includes a small exclave to the north-west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "parets del valles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "parets",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6312,
+    "attempt": 6266,
+    "place_id": "gn-3129293",
+    "input": {
+      "place": {
+        "place_id": "gn-3129293",
+        "name": "Arzúa",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.93333,
+        "lon": -8.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arzúa",
+          "url": "https://en.wikipedia.org/wiki/Arzúa",
+          "text": "Arzúa (Galician pronunciation: [aɾˈzu.a], Spanish pronunciation: [aɾˈθu.a]) is a municipality in the province of A Coruña, in the autonomous community of Galicia, northwestern Spain. It has an area of 155.89 km2, a population of 5,887 (2024 estimate), and a population density of 37.76 people/km2. It is one of the Galician municipalities with the most cows per capita.\nAlthough the region has long been settled, even pre-dating Roman occupation, the current population of the town are mostly of Basque extraction.\nFor many pilgrims, the village is the last stopping point before the last day's trek into Santiago de Compostela. The French Way and the Northern Way (Camino del Norte) of the Camino de Santiago meet in Arzúa before arriving in Santiago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "arzua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6313,
+    "attempt": 6267,
+    "place_id": "gn-3173480",
+    "input": {
+      "place": {
+        "place_id": "gn-3173480",
+        "name": "Mezzolombardo",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.20774,
+        "lon": 11.09636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mezzolombardo",
+          "url": "https://en.wikipedia.org/wiki/Mezzolombardo",
+          "text": "Mezzolombardo (local dialect: Mezombart) is a comune (municipality) in Trentino in the northern Italian region Trentino-Alto Adige/Südtirol, located about 15 kilometres (9 mi) north of the city of Trento. As of 31 December 2006, it had a population of 6,498 and an area of 13.8 square kilometres (5.3 mi2).\nMezzolombardo borders the following municipalities: Ton, Mezzocorona, Spormaggiore, San Michele all'Adige, Fai della Paganella, Nave San Rocco, and Zambana.\nThe inhabitants are called Mezzolombardesi or rarely Forcoloti. Behind the latter demonym there is a bizarre story: its inhabitants were nicknamed Forcoloti for having attacked the inhabitants of nearby Mezzocorona with pitchforks while they attempted to burn a crucifix (thus earning the nickname Brusacristi)\nlocated on the border between the two municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "mezzolombardo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6314,
+    "attempt": 6268,
+    "place_id": "gn-318264",
+    "input": {
+      "place": {
+        "place_id": "gn-318264",
+        "name": "Çivril",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 38.30139,
+        "lon": 29.73861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Çivril",
+          "url": "https://en.wikipedia.org/wiki/Çivril",
+          "text": "Çivril (Turkish: [ˈtʃivɾil]) is a municipality and district of Denizli Province, Turkey. Its area is 1,570 km2, and its population is 59,967 (2022). Çivril district area neighbors those of two districts of Uşak Province to its north, namely Sivaslı and Karahallı, and four districts of Afyonkarahisar Province from the north-east to the south which are, clockwise, Sandıklı, Dinar, Dazkırı and Dazkırı, and to its south-west, three districts of the same province as itself depending Denizli. These last three are Bekilli, Çal and Baklan.\nIt is the third-most populated district of the province after Merkezefendi and Pamukkale and is situated on a plain to the northeast of the city of Denizli, being actually closer to the neighboring provincial seat of Uşak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "civril",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6315,
+    "attempt": 6269,
+    "place_id": "gn-3207077",
+    "input": {
+      "place": {
+        "place_id": "gn-3207077",
+        "name": "Katlenburg-Lindau",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 51.68333,
+        "lon": 10.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katlenburg-Lindau",
+          "url": "https://en.wikipedia.org/wiki/Katlenburg-Lindau",
+          "text": "Katlenburg-Lindau (German pronunciation: [ˈkatlənbʊʁk ˈlɪndaʊ]; Eastphalian: Katelnborg-Lindau) is a municipality in the Landkreis (district) of Northeim in Lower Saxony, Germany. It is situated approximately 10 km southeast of Northeim, and 20 km northeast of Göttingen. Katlenburg-Lindau was formed on 1 March 1974 from the formerly independent communities of Katlenburg-Duhm, Gillersheim, Berka, Elvershausen, Wachenhausen, Suterode and Lindau. With the exception of Lindau, which had belonged Landkreis Duderstadt (itself formerly part of the Eichsfeld), these communities were part of Landkreis Northeim. \nThe Max Planck Institute for Solar System Research (Max-Planck-Institut für Sonnensystemforschung) of the Max Planck Society was located in Lindau from 1946 to 2014, when it was moved to Göttingen. Until June 2004 the MPI was known as \"Max-Planck-Institut für Aeronomie\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "katlenburg lindau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "katlenburg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lindau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6316,
+    "attempt": 6270,
+    "place_id": "gn-3458681",
+    "input": {
+      "place": {
+        "place_id": "gn-3458681",
+        "name": "Lavrinhas",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.57083,
+        "lon": -44.90222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavrinhas",
+          "url": "https://en.wikipedia.org/wiki/Lavrinhas",
+          "text": "Lavrinhas is a municipality in the state of São Paulo in Brazil. It is formed by the neighborhoods of Jardim Mavisou, Pinheiros, Capela do Jacu, Village Campestre and Centro, where its seat is located. The municipality is crossed by many rivers, creeks etc; the main ones being Jacu River, Braço River and Paraíba do Sul River, this being its main river. It is a historical town, wherein events of the 1932 Paulista Revolution took place. As for its economy, most of it is based on agriculture, cattle raising, in addition to being known for having mineral water spring and crystal clear waters, which attract tourists from all over the country; therefore, it is recognized as a Municipality of Tourist Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "lavrinhas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6317,
+    "attempt": 6271,
+    "place_id": "gn-3460521",
+    "input": {
+      "place": {
+        "place_id": "gn-3460521",
+        "name": "Itumirim",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.31694,
+        "lon": -44.87111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itumirim",
+          "url": "https://en.wikipedia.org/wiki/Itumirim",
+          "text": "Itumirim is a Brazilian municipality located in the state of Minas Gerais. The city belongs to the mesoregion of Campo das Vertentes and to the microregion of Lavras. As of 2020 it has a population of 6,000.\nThe city has two micro-municipalities inside of it, which are Macuco de Minas and Rosário, which are widely considered to not be different cities. \n\"Itumirim\" is a term of Tupi origin meaning \"little waterfall.\"\nCurrently, As of 2026, the city is creating a legacy through New Years and Carnaval concerts, which give space to local bands to play in front of thousands of people. The duo Maria Cecília e Rodolfo have played here once and it has been the largest concert ever since. It became a municipality by the state Decree Law No. 1058 of December 31, 1943."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "itumirim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6318,
+    "attempt": 6272,
+    "place_id": "gn-3520935",
+    "input": {
+      "place": {
+        "place_id": "gn-3520935",
+        "name": "Putla Villa de Guerrero",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 17.02622,
+        "lon": -97.92843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Putla Villa de Guerrero",
+          "url": "https://en.wikipedia.org/wiki/Putla_Villa_de_Guerrero",
+          "text": "Putla Villa de Guerrero or simply Putla (Mixtec: Ñuucaa, 'Place  of  Copper' or Ñuuñuma, 'Place of Smoke'), is a town and municipality in the State of Oaxaca, Mexico. \nIt is part of Putla District in the west of the Sierra Sur Region.\nThe name Putla is derived from the Nahuatl name Puctitlán, meaning place of mist. The Villa de Guerrero part is in honor of Vicente Guerrero, a hero of the Mexican War of Independence. Putla became the seat of its municipality in 1907 and is located 374 km from the city of Oaxaca.\nIt connects the Mixteca region with the coast of Oaxaca and is a commercial center for the Mixtecs, Amuzgos, and Chatinos that live in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "putla villa de guerrero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "putla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guerrero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6319,
+    "attempt": 6273,
+    "place_id": "gn-3591885",
+    "input": {
+      "place": {
+        "place_id": "gn-3591885",
+        "name": "Pajapita",
+        "country": "Guatemala",
+        "subdivision": "San Marcos",
+        "lat": 14.72152,
+        "lon": -92.03521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pajapita",
+          "url": "https://en.wikipedia.org/wiki/Pajapita",
+          "text": "Pajapita is a town and municipality in the San Marcos department of Guatemala.It was created on 31 May 1920, after the station of Vado Ancho on the Panamerican Railroad of Guatemala was built.  Due to its privileged location on the way from Guatemala to Mexico, Pajapita enjoyed considerable development while the Guatemalan railways were owned by International Railways of Central America (IRCA), an American company that belonged to the United Fruit Company.  However, with the decline of the rail that followed the constructions of major highways in the country the importance of the town of Vado Ancho diminished, to the point that in the early 21st century it was completely abandoned.\nPajapita is called also \"Land of the Almond trees\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "pajapita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6320,
+    "attempt": 6274,
+    "place_id": "gn-3700017",
+    "input": {
+      "place": {
+        "place_id": "gn-3700017",
+        "name": "Volcán",
+        "country": "Panama",
+        "subdivision": "Chiriquí Province",
+        "lat": 8.78046,
+        "lon": -82.63896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Volcán, Panama",
+          "url": "https://en.wikipedia.org/wiki/Volcán,_Panama",
+          "text": "Volcán is a town and corregimiento in Tierras Altas District, Chiriquí Province, Panama. It has a land area of 233.7 square kilometres (90.2 sq mi) and had a population of 12,717 as of 2010, giving it a population density of 54.4 inhabitants per square kilometre (141/sq mi). Its population as of 1990 was 7,146; its population as of 2000 was 10,188.\nVolcan sits on an old lava flow from Volcán Barú, the highest point in Panama at 3,475 metres (11,460 feet). The low range of mountains to the south of Volcan were once part of Volcan Baru, blown/slid several kilometers to their current location by a violent eruption of the volcano.\nVolcan is the Heart of the breadbasket of Panama. Major roads out of Volcan go to the farming communities of Cerro Punta, Plaza de Caisan, La Concepcion, Rio Sereno on the border with Costa Rica and the soon to be completed road to Boquete. Crops grown in and around Volcan include onions, cabbage, carrots, coffee, bananas, potatoes, lettuce, corn, tomatoes, cauliflower, broccoli and cut flowers. Large dairy, horse and cattle farms with many smaller sheep, pigs and chicken farms are along the roads into Volcan. A few kilometres north of Volcan on the road to Cerro Punta is a large trout farm. The farming community is supported by a large Catholic High School, San Benito, dedicated to the improvement of farming methods in Panama."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "volcan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6321,
+    "attempt": 6275,
+    "place_id": "gn-3834971",
+    "input": {
+      "place": {
+        "place_id": "gn-3834971",
+        "name": "Sunchales",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -30.94478,
+        "lon": -61.5597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunchales",
+          "url": "https://en.wikipedia.org/wiki/Sunchales",
+          "text": "Sunchales is a city in the province of Santa Fe, Argentina. It has 21,304 inhabitants per the 2010 census [INDEC]. It lies in the center-west of the province, 135 km (84 mi) from the provincial capital Santa Fe, on National Route 34.\nSunchales is located in the most fertile part of Argentina, at the core of the Humid Pampa, and within the so-called \"central milk basin\", which manufactures most of the country's production of dairy and exports it through the ports on the Paraná River (mainly Rosario and San Lorenzo). It is an important station of the Nuevo Central Argentino railway.\nThe town was the starting point of SanCor, a dairy cooperative and the leader in its field in Argentina. It is named the Provincial Capital of Cooperativism, and holds important celebrations of the International Day of Cooperatives during the first week of July.\nSunchales is also the seat of the National Festival of Children's Soccer in October, and celebrates the feast of its patron saint, Charles Borromeo, on November 4.\nThe city has a local basketball team, Libertad Sunchales, which belongs to Argentina's National Basketball League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "sunchales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6322,
+    "attempt": 6276,
+    "place_id": "gn-3946937",
+    "input": {
+      "place": {
+        "place_id": "gn-3946937",
+        "name": "Azángaro",
+        "country": "Peru",
+        "subdivision": "Puno",
+        "lat": -14.91416,
+        "lon": -70.19846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azángaro",
+          "url": "https://en.wikipedia.org/wiki/Azángaro",
+          "text": "Azángaro is a town in Southern Peru, capital of the province Azángaro in the region of Puno.\nThe colonial church in Azangaro is known as the golden temple. In the adjacent Plaza San Bernardo, Pedro Vilca Apaza was drawn and quartered for his role as a General in Tupac Amaru II's attempt to liberate Perú from the Spanish government. His last words were, \"Por este Sol aprended a morir como yo.\" After Tupac Amaru II's execution, leadership of the revolution shifted to Azangaro.\nThe church bell tower, an example of colonial decorative adobe, was much disfigured by rains before recent rains caused a collapse of most of the tower. The gold interior is a magnificent example of rich colonial art. Recently, colonial treasures were robbed from the church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "azangaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6323,
+    "attempt": 6277,
+    "place_id": "gn-3982401",
+    "input": {
+      "place": {
+        "place_id": "gn-3982401",
+        "name": "Tarandacuao",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.0013,
+        "lon": -100.51832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarandacuao",
+          "url": "https://en.wikipedia.org/wiki/Tarandacuao",
+          "text": "Tarandacuao is a Mexican city (and municipality) located in the lowlands of the state of Guanajuato. The municipality has an area of 117.39 square kilometres, (0.31% of the surface of the state) and is bordered to the north and east by Jerécuaro, to the south by the state of Michoacán, and to the west by Acámbaro. The municipality had 11,583 inhabitants according to the 2005 census. Outlying communities found in Tarandacuao include La Purísima, San Juan De Dios, San José de Hidalgo, San Antonio, El Tocuz, San felipe and La Virgen.\nThe name of the municipality is of Purépecha origin and means \"Place where the water is born,\" a possible reference to the Lerma River, which runs through the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tarandacuao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6324,
+    "attempt": 6278,
+    "place_id": "gn-4501943",
+    "input": {
+      "place": {
+        "place_id": "gn-4501943",
+        "name": "Gloucester City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.89281,
+        "lon": -75.12041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gloucester City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Gloucester_City,_New_Jersey",
+          "text": "Gloucester City is a city in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 11,484, an increase of 28 (+0.2%) from the 2010 census count of 11,456, which in turn reflected a decline of 28 (−0.2%) from the 11,484 counted in the 2000 census. It is located directly across the Delaware River from Philadelphia and the Port of Philadelphia.\nGloucester City was incorporated by an act of the New Jersey Legislature on February 25, 1868, from the remaining portions of Union Township, which was then dissolved. Additional territory was annexed in 1925 from Centre Township and in 1927 from Haddon Township. The city's name derives from Gloucester, England.\nGloucester City is known for its Irish American population, which was ninth-highest in the United States by percentage in the 2000 Census.\nThe city had the 23rd-highest property tax rate in New Jersey, with an equalized rate of 4.343% in 2020, compared to 3.470% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "gloucester city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gloucester",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6325,
+    "attempt": 6279,
+    "place_id": "gn-4558942",
+    "input": {
+      "place": {
+        "place_id": "gn-4558942",
+        "name": "Kennett Square",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.84678,
+        "lon": -75.7116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kennett Square, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Kennett_Square,_Pennsylvania",
+          "text": "Kennett Square is a borough in Chester County, Pennsylvania, United States. As of the 2020 U.S. census, Kennett Square had a population of 5,943.\nKennett Square is located in the Philadelphia metropolitan area, and is considered a suburb of both Philadelphia, the nation's sixth largest city as of 2020, and Wilmington, Delaware. The local high school is Kennett High School. The former corporate headquarters of Genesis HealthCare, which administers elderly care facilities, is based in Kennett Square inside the Walker Building and Franklin Center.\nThe borough is sometimes referred to as the \"Mushroom Capital of the World\" because mushroom farming in the region produces over 500 million pounds of mushrooms a year, representing half of the nation's mushroom crop production. To celebrate this heritage, Kennett Square holds an annual Mushroom Festival, where the town and its businesses hold a parade, gives mushroom farm tours, and sells food and other goods. Kennett Square is 3 miles away from Longwood Gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kennett square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kennett",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6326,
+    "attempt": 6280,
+    "place_id": "gn-4929432",
+    "input": {
+      "place": {
+        "place_id": "gn-4929432",
+        "name": "Auburndale",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.34732,
+        "lon": -71.2495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Auburndale, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Auburndale,_Massachusetts",
+          "text": "Auburndale is one of the 13 villages within the city of Newton in Middlesex County, Massachusetts, United States. It lies at the western end of Newton near the intersection of interstate highways 90 and 95. It is bisected by the Massachusetts Turnpike (Interstate 90). Auburndale is surrounded by three other Newton villages (West Newton, Waban, and Newton Lower Falls) as well as the city of Waltham and the Charles River.  Auburndale is the home of Williams and Burr Elementary Schools, as well as Lasell University.  Auburndale Square is the location of the Plummer Memorial Library, which is run by the Auburndale Community Library and no longer affiliated with the Newton Free Library, the Turtle Lane Playhouse, and many small businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "auburndale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

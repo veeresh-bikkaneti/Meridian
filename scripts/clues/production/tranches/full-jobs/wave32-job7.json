@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 6367,
+    "attempt": 6321,
+    "place_id": "gn-3120811",
+    "input": {
+      "place": {
+        "place_id": "gn-3120811",
+        "name": "Hernani",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.26615,
+        "lon": -1.97615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hernani, Spain",
+          "url": "https://en.wikipedia.org/wiki/Hernani,_Spain",
+          "text": "Hernani is a town and municipality located in the province of Gipuzkoa, Basque Autonomous Community, Spain. The town sits on the left bank of the Urumea river. It is located at a distance of 9.2 km from San Sebastián. The municipality of Hernani occupies an area of approximately 40 square kilometres and is bordered by San Sebastián, Astigarraga, Arano, Elduayen, Errenteria, Lasarte-Oria and Urnieta.\nFrom the town centre, at the foot of Mount Santa Barbara, it is possible to see a large area of the valley of Urumea. Its festivities, held between 23 and 27 June in honour of John the Baptist; and between his celebrations the popular \"azeri dantza\" (also celebrated in celebrations of Carnival) should be emphasized.\nThe title character of Victor Hugo's play Hernani is named after the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "hernani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6368,
+    "attempt": 6322,
+    "place_id": "gn-3158792",
+    "input": {
+      "place": {
+        "place_id": "gn-3158792",
+        "name": "Egersund",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.45133,
+        "lon": 5.9997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Egersund",
+          "url": "https://en.wikipedia.org/wiki/Egersund",
+          "text": "Egersund (Norwegian: [/eːɡɛˈʂʉn/] ) is a town in Eigersund Municipality in Rogaland county, Norway. The town is located along the southwestern coast of Norway, about 75 kilometres (47 mi) south of the city of Stavanger.  The town is situated along a strait which separates the mainland from the island of Eigerøya. From 1838 until 1964, the town was also an independent municipality.\nThe 7.01-square-kilometre (1,730-acre) town has a population (2025) of 11,902 and a population density of 1,698 inhabitants per square kilometre (4,400/sq mi).\nEgersund has one of the best natural harbours in Norway, and it used to be the largest harbour in Norway when measured in quantity of fish brought in each year (surpassed by Ålesund in 2006). The tidal range, the difference in height between high tide and low tide, is practically zero due to the presence of an amphidromic point. Several internationally known companies have divisions here, like Navico (earlier Robertson autopilots) and Jeppesen Norway formerly C-MAP Norway (producer of electronic sea-maps). In addition, the Aker Solutions corporation owns and runs a large installation here which specializes in the building of parts for oil platforms. Most of the industry is related to the sea and to boats."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "egersund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6369,
+    "attempt": 6323,
+    "place_id": "gn-3164253",
+    "input": {
+      "place": {
+        "place_id": "gn-3164253",
+        "name": "Villadossola",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 46.0708,
+        "lon": 8.26709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villadossola",
+          "url": "https://en.wikipedia.org/wiki/Villadossola",
+          "text": "Villadossola (Piedmontese Vila d'Òssola) is a town and comune of the Val d’Ossola in the Province of Verbano-Cusio-Ossola, Piedmont, northern Italy, some 120 kilometres (75 mi) northeast of Turin. It stands just south of Domodossola, to the west of the Toce, and at the mouth of the picturesque Valle Antrona, one of the seven side valleys of the Val d’Ossola.\nIn the past this was an important centre for the iron and steel, and chemical industries. Today the local economy is focused on the tertiary sector and many of the industrial buildings have been converted to other uses: the town's theatre, La Fabbrica, is based in a former factory.\nVilladossola borders the following communes: Beura-Cardezza, Borgomezzavalle, Domodossola, Montescheno, Pallanzeno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "villadossola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6370,
+    "attempt": 6324,
+    "place_id": "gn-3463558",
+    "input": {
+      "place": {
+        "place_id": "gn-3463558",
+        "name": "Faxinal dos Guedes",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.85278,
+        "lon": -52.26028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faxinal dos Guedes",
+          "url": "https://en.wikipedia.org/wiki/Faxinal_dos_Guedes",
+          "text": "Faxinal dos Guedes is a municipality located in the west of the state of Santa Catarina, in the South Region of Brazil. Its population, according to the 2022 Brazilian Institute of Geography and Statistics Census, was 11 192 inhabitants. With an area of 340,070 km2, part of its territory is located on the western edge of a meteoritic crater, the Vargeão Dome.\nIt is one of the highest altitude cities in the state of Santa catarina, with its urban area having peaks of up to 3297,244 ft (1.005 m). Because of this, it bears the title of Capital of the Winds.\nIt is located in the Immediate Geographical Region of Xanxerê and in the Intermediate Geographical Region of Chapecó. It is in the expansive area of the Metropolitan Region of Chapecó and at 307 miles away from the capital of Santa Catarina, Florianópolis.\nWith a high index of human development, the city is a highlight in the national scenario because it is the only one in the entire southern region of Brazil to have basic sanitation services serving 100% of the urban area besides having almost all of its asphalted streets.\nIts economy is based on industry, with emphasis on the production of paper and packaging, and on the agricultural sector, with emphasis on the production of corn and soy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "faxinal dos guedes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "faxinal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guedes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6371,
+    "attempt": 6325,
+    "place_id": "gn-3531574",
+    "input": {
+      "place": {
+        "place_id": "gn-3531574",
+        "name": "Cárdenas",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 22.00144,
+        "lon": -99.64247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cárdenas, San Luis Potosí",
+          "url": "https://en.wikipedia.org/wiki/Cárdenas,_San_Luis_Potosí",
+          "text": "Cárdenas is a municipality and city in the Mexican state of San Luis Potosí.\nThe municipality is located east of the state capital in the Middle Zone, and it has the following coordinates: 99 ° 39 'W and 22 ° 00' north, with a height of 1.200 m above sea level. It is bordered to the north by Alaquines, to the east by Tamasopo, to the south by Rayon, and to the west by Río Verde, and it is 200 km away from the city of San Luis Potosí. With a population of about 20,000 inhabitants, it is the second largest city in the Middle Zone. it is 19 km away from the town of Alaquines, San Luis Potosí."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "cardenas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6372,
+    "attempt": 6326,
+    "place_id": "gn-364132",
+    "input": {
+      "place": {
+        "place_id": "gn-364132",
+        "name": "Wadi Halfa",
+        "country": "Sudan",
+        "subdivision": "Northern State",
+        "lat": 21.79577,
+        "lon": 31.37129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wadi Halfa",
+          "url": "https://en.wikipedia.org/wiki/Wadi_Halfa",
+          "text": "Wadi Halfa (Arabic: وادي حلفا, romanized: Wādī Ḥalfā, Sudanese Arabic: [ˈwaːdi ˈħalfa], \"Esparto Valley\") is a city in the Northern State of Sudan on the shores of Lake Nubia near the border with Egypt. It is the terminus of a rail line from Khartoum and the point where goods are transferred from rail to ferries going down the lake. As of 2007, the city had a population of 15,725. The city is located amidst numerous ancient Nubian antiquities and was the focus of much archaeological work by teams seeking to save artifacts from the flooding caused by the completion of the Aswan Dam. The Wadi Halfa Sailent, a disputed territory between Egypt and Sudan, is located to its north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "wadi halfa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wadi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "halfa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6373,
+    "attempt": 6327,
+    "place_id": "gn-3714734",
+    "input": {
+      "place": {
+        "place_id": "gn-3714734",
+        "name": "Ancón",
+        "country": "Panama",
+        "subdivision": "Panamá",
+        "lat": 8.96015,
+        "lon": -79.5514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ancón, Panama",
+          "url": "https://en.wikipedia.org/wiki/Ancón,_Panama",
+          "text": "Ancón is a corregimiento in Panamá District, Panamá Province, Panama with a population of 29,761 as of 2010. Its population as of 1990 was 11,518; its population as of 2000 was 11,169. It is sometimes considered a suburb or small town within Panama City, northeast of the limits of the town of Balboa. Ancon Hill is also the name of a large hill that overlooks Panama City and once served as a form of protection from pirates and sea invasion. The township was originally located around this hill, and was created to house employees of the Panama Canal during its construction. As part of the construction effort, the historic Gorgas Army Hospital was founded and built on the hillside. The first ship to officially transit the canal, SS Ancon, was named after the district. The community continued to serve as housing for employees of the Panama Canal Company until 1980, when parts of it began to be turned over to the Panamanian government under the 1977 Torrijos-Carter Treaties. Modern-day Ancón is a corregimiento (the Panamanian equivalent of a suburb in the United States) of Panama City, serving mainly as a residential area. The Gorgas Army Hospital building is now the Panamanian Oncology Hospital, primarily used for cancer research. The area also houses Panama's Supreme Court, just a few feet away from the Gorgas Army Hospital building, and several Smithsonian Tropical Research Institute buildings for research into tropical biology. Ancón is also a parish (parroquia) of the District of Panama, located in the Panama Canal adjacent area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "ancon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6374,
+    "attempt": 6328,
+    "place_id": "gn-371827",
+    "input": {
+      "place": {
+        "place_id": "gn-371827",
+        "name": "Kurmuk",
+        "country": "Sudan",
+        "subdivision": "Blue Nile",
+        "lat": 10.557,
+        "lon": 34.287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurmuk, Ethiopia",
+          "url": "https://en.wikipedia.org/wiki/Kurmuk,_Ethiopia",
+          "text": "Kurmuk (also known as Kormuk) is a town in western Ethiopia. Located in the Asosa Zone of the Benishangul-Gumuz Region, Kurmuk has an elevation of 653 meters above sea level.\nIn 1962, Kurmuk was connected to Asosa by a dry-weather road, \"rough but passable by trucks\" according to the Highway Authority. However, by 1996 travel by this road was \"discouraged for safety reasons.\"\nBased on figures from the Central Statistical Agency, in 2005 this town has an estimated total population of 554, of whom 297 were males and 257 were females. According to the 1994 national census, its total population was 322, of whom 172 were males and 150 were females. It is the largest settlement in Kurmuk woreda.\nThe Italian colonial battalion stationed at Kurmuk attacked its twin in Sudan, Kurmuk, 7 July 1940, which was held by Bimbashi Mervyn Bell, with three British auxiliaries and 51 police. Bell eventually withdrew his men in good order, allowing the Italians to capture Kurmuk. Kurmuk was taken from the Italians by the British several months later on 14 February 1941. At the end of 1985, the Sudan Peoples Liberation Army (SPLA) set up bases in the hills across the Ethiopian border, south of Kurmuk . The Ethiopian National Defense Force provided the SPLA with support when they launched a cross-border raid into Sudan in 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "kurmuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6375,
+    "attempt": 6329,
+    "place_id": "gn-3862761",
+    "input": {
+      "place": {
+        "place_id": "gn-3862761",
+        "name": "Capilla del Monte",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -30.8607,
+        "lon": -64.52531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capilla del Monte",
+          "url": "https://en.wikipedia.org/wiki/Capilla_del_Monte",
+          "text": "Capilla del Monte is a small city in the northeastern part of the province of Córdoba, Argentina, located by the Sierras Chicas mountain chain, in the northern end of the Punilla Valley. It has about 11,281 inhabitants as per the 2010 census [INDEC].\nTourism is the main source of income in Capilla del Monte. The most popular tourist attraction in the area is the Cerro Uritorco, a small mountain only 3 km away from the city, famed around Argentina as a center of alleged paranormal phenomena and UFO sightings. There are many other locations in Capilla del Monte that attract tourists from all over the country.\nThe city also features the tall El Cajón Dam and its large reservoir.\nCapilla del Monte was founded on October 30, 1585. Its name means \"Chapel on the Hill\" in Spanish.\nThe area has been used as a special stage for Rally Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "capilla del monte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capilla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6376,
+    "attempt": 6330,
+    "place_id": "gn-4004092",
+    "input": {
+      "place": {
+        "place_id": "gn-4004092",
+        "name": "Jaral del Progreso",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.37205,
+        "lon": -101.06419
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaral del Progreso",
+          "url": "https://en.wikipedia.org/wiki/Jaral_del_Progreso",
+          "text": "Jaral del Progreso is a Mexican city and municipality located in the Bajío (lowlands) of the state of Guanajuato. With an area of 174.37 square kilometres (67.32 sq mi), Jaral del Progreso accounts for 0.57% of the surface of the state. It is bordered to the north by Salamanca, to the northeast by Cortazar to the southeast by Salvatierra, to the south by Yuriria, and to the west by Valle de Santiago. The municipality had a total of 14,906 inhabitants according to the 2005 census. The municipal president of Jaral del Progreso and its many smaller outlying communities is Alfonso Borja Pimentel. Like most of the neighboring municipalities, Jaral del Progreso's economy is based mostly on agriculture and ranching."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "jaral del progreso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jaral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "progreso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6377,
+    "attempt": 6331,
+    "place_id": "gn-4013669",
+    "input": {
+      "place": {
+        "place_id": "gn-4013669",
+        "name": "Coalcomán de Vázquez Pallares",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 18.7775,
+        "lon": -103.16
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coalcomán de Vázquez Pallares",
+          "url": "https://en.wikipedia.org/wiki/Coalcomán_de_Vázquez_Pallares",
+          "text": "Coalcomán de Vázquez Pallares is a municipality located in the Sierra Madre del Sur mountain range, in the southwest region of the state of Michoacán in central-western Mexico.\nThe municipality has an area of 2,881.57 square kilometres (4.89% of the surface of the state) and is bordered to the north by the state of Jalisco and the municipality of Tepalcatepec, to the east by Arteaga and Aguililla, to the south by Aquila, and to the west by Chinicuila. The municipality had a population of 18,156 inhabitants according to the 2005 census.  Its municipal seat is the city of the same name.\nCoalcomán is a word of Nahuatl origin that means \"Snake\" or \"Snake with Hands\", according to some authors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "coalcoman de vazquez pallares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coalcoman",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vazquez",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pallares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6378,
+    "attempt": 6332,
+    "place_id": "gn-4137715",
+    "input": {
+      "place": {
+        "place_id": "gn-4137715",
+        "name": "Bellevue",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.826,
+        "lon": -77.01
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellevue (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Bellevue_(Washington,_D.C.)",
+          "text": "Bellevue is a residential neighborhood in far Southeast and Southwest in Washington, D.C., United States. It is bounded by South Capitol Street, one block of Atlantic Street SE, and 1st Streets SE and SW to the north and east; Joliet Street SW and Oxon Run Parkway to the south; Martin Luther King Jr. Avenue SE, Shepherd Parkway, 2nd Street SW, and Xenia Street SW to the west. Bellevue was created from some of the earliest land patents in Maryland, and draws its name from a 1795 mansion built in the area. Subdivisions began in the 1870s, but extensive residential building did not occur until the early 1940s. Bellevue is adjacent to a number of federal and city agency buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bellevue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6379,
+    "attempt": 6333,
+    "place_id": "gn-4141126",
+    "input": {
+      "place": {
+        "place_id": "gn-4141126",
+        "name": "Woodridge",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.93122,
+        "lon": -76.97109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodridge (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Woodridge_(Washington,_D.C.)",
+          "text": "Woodridge is a residential neighborhood located in Ward 5 of Northeast Washington, D.C. Woodridge is contained between Eastern Avenue N.E. to the east, Taylor Street N.E. to the north, South Dakota Avenue N.E. to the west, and Bladensburg Road N.E. to the south. Its central commercial strips are Rhode Island Avenue NE (Route 1) and Bladensburg Road N.E. Woodridge borders the adjacent neighborhoods of Brookland, Langdon, North Michigan Park, and Fort Lincoln in Northeast Washington D.C. In addition to these neighborhoods in the District of Columbia, Woodridge borders the city of Mount Rainier and town of Cottage City in Maryland. In terms of public transportation, residents of Woodridge have access to the Brookland-CUA and Rhode Island Avenue Metro stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "woodridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6380,
+    "attempt": 6334,
+    "place_id": "gn-4317412",
+    "input": {
+      "place": {
+        "place_id": "gn-4317412",
+        "name": "Bogalusa",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 30.79102,
+        "lon": -89.84869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bogalusa, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Bogalusa,_Louisiana",
+          "text": "Bogalusa ( BOH-gə-LOO-sə) is a city in Washington Parish, Louisiana, United States. The population was 12,232 at the 2010 census. In the 2020 census the city reported a population of 10,659. It is the principal city of the Bogalusa Micropolitan Statistical Area, which includes all of Washington Parish and is also part of the larger New Orleans–Metairie–Slidell combined statistical area.\nThe name of the city derives from the Choctaw language term bogue lusa, which translates into English as \"dark water\" or \"smoky water\". Located in an area of pine forests, in the early 20th century, this industrial city was developed as a company town, to provide worker housing and services in association with a Great Southern Lumber Company sawmill. In the late 1930s, this operation was replaced with paper mills and chemical operations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bogalusa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6381,
+    "attempt": 6335,
+    "place_id": "gn-4430104",
+    "input": {
+      "place": {
+        "place_id": "gn-4430104",
+        "name": "Holly Springs",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 34.7676,
+        "lon": -89.44869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holly Springs, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Holly_Springs,_Mississippi",
+          "text": "Holly Springs is a city in and the county seat of Marshall County, Mississippi, United States, near the border with Tennessee to the north. As of the 2020 census, the population was 6,968, down from 7,699 in 2010. Along with the Mississippi Delta, in the 19th century, the area was developed for cotton plantations. After the Civil War, many freedmen continued to work in agriculture as sharecroppers and tenant farmers.\nAs the county seat, Holly Springs is a center of trade and court sessions. The city has several National Register of Historic Places-listed properties and historic districts, including the Southwest Holly Springs Historic District, Holly Springs Courthouse Square Historic District, Depot-Compress Historic District, and East Holly Springs Historic District. Hillcrest Cemetery contains the graves of five Confederate generals and has been called \"Little Arlington of the South\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "holly springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "holly",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6382,
+    "attempt": 6336,
+    "place_id": "gn-4533580",
+    "input": {
+      "place": {
+        "place_id": "gn-4533580",
+        "name": "Claremore",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.3126,
+        "lon": -95.61609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Claremore, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Claremore,_Oklahoma",
+          "text": "Claremore   is a city in and the county seat of Rogers County in northeastern Oklahoma, United States. Its population was 19,580 at the 2020 census, a 5.4% increase over the 18,581 recorded in 2010.  Located in the foothills of the Ozark Mountains, it is home of Rogers State University, and is part of the Tulsa metropolitan area.\nThis area was part of the territory of the Osage, but they were forced out under a treaty with the United States. During the Indian Removal period and until statehood, this area was a reserve of the Cherokee Nation, which had been removed from its territory in the Southeastern United States. This was within what was known as the Cherokees' Cooweescoowee District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "claremore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6383,
+    "attempt": 6337,
+    "place_id": "gn-4561374",
+    "input": {
+      "place": {
+        "place_id": "gn-4561374",
+        "name": "Southwest Center City Philadelphia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.94281,
+        "lon": -75.18086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southwest Center City Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Southwest_Center_City_Philadelphia",
+          "text": "Southwest Center City (SWCC), also known as Graduate Hospital, is a neighborhood that is located in South Philadelphia, Pennsylvania, United States, bordering Center City Philadelphia. \nContrary to what the name might suggest, Southwest Center City is located to the southwest of Center City and is not itself considered part of Center City. The neighborhood is bordered on the north by South Street, on the south by Washington Avenue, on the west by the Schuylkill River, and on the east by Broad Street.\nIt is an area adjacent to the Fitler Square and Rittenhouse Square neighborhoods to the north and Point Breeze to the south, and is home to community service organizations, restaurants, churches, retail establishments, and some light industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "southwest center city philadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southwest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "center",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "philadelphia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6384,
+    "attempt": 6338,
+    "place_id": "gn-4758390",
+    "input": {
+      "place": {
+        "place_id": "gn-4758390",
+        "name": "Falls Church",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.88233,
+        "lon": -77.17109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falls Church, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Falls_Church,_Virginia",
+          "text": "Falls Church is an independent city in the Commonwealth of Virginia, United States. As of the 2020 census, the population was 14,658. Falls Church is part of both Northern Virginia and the Washington metropolitan area. As of 2020, it has a median household income of $146,922, the second-highest household income of any county in the nation behind Loudoun County, Virginia.\nTaking its name from the Falls Church, an 18th-century parish of the Church of England, later the Episcopal Church, Falls Church gained township status within Fairfax County in 1875.\nIn 1948, it seceded from Fairfax County and was incorporated as the City of Falls Church, an independent city with county-level governance status although it is not nominally a county.\nThe city's corporate boundaries do not include all of the area historically known as Falls Church; these areas include portions of Seven Corners and other portions of the current Falls Church postal districts in Fairfax County and Arlington County, known as East Falls Church, which was part of the town of Falls Church from 1875 to 1936. For statistical purposes, the U.S. Department of Commerce's Bureau of Economic Analysis combines the City of Falls Church with Fairfax City and Fairfax County.\nAt 2.11 square miles (5.5 km2), Falls Church is the smallest incorporated municipality in the Commonwealth of Virginia and the smallest county-equivalent municipality in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "falls church",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "church",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6385,
+    "attempt": 6339,
+    "place_id": "gn-4945848",
+    "input": {
+      "place": {
+        "place_id": "gn-4945848",
+        "name": "Northbridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.15148,
+        "lon": -71.64951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northbridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Northbridge,_Massachusetts",
+          "text": "Northbridge is a town in Worcester County, Massachusetts, United States. The population was 16,335 at the 2020 census.  The Northbridge Town Hall is located at 7 Main Street in Whitinsville. The town is now a part of the Blackstone River Valley National Heritage Corridor, of the National Park Service. Northbridge claims to history include: Native American Nipmuc lands, Colonel John Spring, who led the Uxbridge militia training company in the American Revolution, Samuel Spring, Revolutionary War Chaplain, the Residence of Ezra T. Benson 1830–1832, the birthplace of President Millard Fillmore's mother, Phoebe, and home to the Whitin Machine Works from 1831 to 1964.\nFor geographic and demographic information on the village of Whitinsville, please see the article Whitinsville, Massachusetts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "northbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6386,
+    "attempt": 6340,
+    "place_id": "gn-5130561",
+    "input": {
+      "place": {
+        "place_id": "gn-5130561",
+        "name": "Park Slope",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.6701,
+        "lon": -73.98597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park Slope",
+          "url": "https://en.wikipedia.org/wiki/Park_Slope",
+          "text": "Park Slope is a neighborhood in Brooklyn, New York City, within an area known as South Brooklyn. Park Slope is roughly bounded by Prospect Park and Prospect Park West to the east, Fourth Avenue to the west, Flatbush Avenue to the north, and Prospect Expressway to the south. Generally, the neighborhood is divided into three sections from north to south: North Slope, Center Slope, and South Slope. The neighborhood takes its name from its location on the western slope of neighboring Prospect Park. Fifth Avenue and Seventh Avenue are its primary commercial streets, while its east–west side streets are lined with brownstones and apartment buildings.\nPark Slope was settled by the Lenape before Europeans arrived in the 17th century. The area was mostly farms and woods until the early 19th century, when the land was subdivided into rectangular parcels. The western section of the neighborhood was occupied in the mid-19th century, being located near the industrial Gowanus Canal and ferries. After the completion of Prospect Park, numerous mansions and rowhouses were developed in Park Slope's eastern section in the 1880s. Park Slope faced social and infrastructural decline in the mid-20th century, but the building stock was renovated after the area became gentrified starting in the 1960s. Much of the neighborhood is overlaid by the Park Slope Historic District, which is composed of a National Historic District and a New York City landmark district.\nPark Slope features historic buildings, top-rated restaurants, bars, and shops, as well as proximity to Prospect Park, the Brooklyn Academy of Music, the Brooklyn Botanic Garden, the Brooklyn Museum, the Brooklyn Conservatory of Music, and the Central Library and Park Slope branches of the Brooklyn Public Library. The neighborhood had a population of about 62,200 as of the 2000 census. Park Slope is generally ranked as one of New York City's most desirable neighborhoods.\nPark Slope is part of Brooklyn Community District 6, and its primary ZIP Codes are 11215 and 11217. It is patrolled by the 78th Precinct of the New York City Police Department. Politically, it is represented by the New York City Council's 33rd and 39th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 353
+    },
+    "banned_terms": [
+      {
+        "term": "park slope",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slope",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

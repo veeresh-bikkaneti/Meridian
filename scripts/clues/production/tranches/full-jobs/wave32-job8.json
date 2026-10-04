@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 6387,
+    "attempt": 6341,
+    "place_id": "gn-5137622",
+    "input": {
+      "place": {
+        "place_id": "gn-5137622",
+        "name": "Seneca Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.91062,
+        "lon": -76.79662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seneca Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Seneca_Falls,_New_York",
+          "text": "Seneca Falls is a town in Seneca County, New York, United States. The population was 9,027 at the 2020 census.\nThe Town of Seneca Falls contains the former village also called Seneca Falls. The town is east of Geneva, New York, in the northern part of the Finger Lakes District.\nSeneca Falls is a historic location along a branch of the Erie Canal and is often association with women's rights in the United States due to the 1848 Seneca Falls convention, which produced the Declaration of Rights and Sentiments. This event was looked back upon by women's rights activists in the later 19th and early 20th centuries as a \"birth\" or \"beginning\" of women's rights in the United States. Modern historians such as Lisa Tetrault have cast doubt on that assertion and many key myths, including issues as mundane as the mere presence of Susan B. Anthony. Tetrault and modern scholars still argue the event was nonetheless deeply significant for the attention it garnered among the general American populace.\nIt is also believed to have been the inspiration for the fictional town of \"Bedford Falls\", portrayed in filmmaker Frank Capra's classic 1946 film It's a Wonderful Life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "seneca falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seneca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6388,
+    "attempt": 6342,
+    "place_id": "gn-5190311",
+    "input": {
+      "place": {
+        "place_id": "gn-5190311",
+        "name": "Frankford",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.01384,
+        "lon": -75.07859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frankford, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Frankford,_Philadelphia",
+          "text": "Frankford is a neighborhood in the Northeast section of Philadelphia situated about six miles (10 km) northeast of Center City. Although its borders are vaguely defined, the neighborhood is bounded roughly by the original course of Frankford Creek on the south to Castor Ave and Roosevelt boulevard on the northwest and southwest, to Cheltenham Avenue on the north, and to Aramingo Avenue and I-95 on the east. Adjacent neighborhoods are Bridesburg, Juniata, Northwood, Summerdale, and Wissinoming.\nHistorically, Frankford had an unofficial division separating Frankford (proper) from East Frankford, which encompassed the area east of Frankford Avenue. The division divided the community first along racial lines, with African Americans to the east of Frankford Avenue and Caucasians to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "frankford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6389,
+    "attempt": 6343,
+    "place_id": "gn-5347742",
+    "input": {
+      "place": {
+        "place_id": "gn-5347742",
+        "name": "Farmersville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.29773,
+        "lon": -119.20678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmersville, California",
+          "url": "https://en.wikipedia.org/wiki/Farmersville,_California",
+          "text": "Farmersville is a city in Tulare County, California, United States. It is situated in the San Joaquin Valley near the foothills of the Sierra Nevada, just east of Visalia, California. The population was 10,397 at the 2020 census, down from 10,588 at the 2010 census.\nThe city hosts a number of annual events, including a Memorial Day Parade in May that draws around 4,000 visitors from the surrounding area, a Fall Festival held on the downtown boulevard each October, and a Christmas Tree Lighting event in December at the Old Methodist Church building. A little history on the Memorial Day Parade. It originated in 1954 after the completion of the Veteran's Memorial Building on E Front and N Magnolia. They wanted to celebrate the newly built building with a parade and a grand opening, no Grand Marshal or Queen is mentioned. The building was sold by its leadership in the 1970's."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "farmersville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6390,
+    "attempt": 6344,
+    "place_id": "gn-5373121",
+    "input": {
+      "place": {
+        "place_id": "gn-5373121",
+        "name": "Mill Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.90604,
+        "lon": -122.54498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mill Valley, California",
+          "url": "https://en.wikipedia.org/wiki/Mill_Valley,_California",
+          "text": "Mill Valley is a city in Marin County, California, United States, located about 14 miles (23 km) north of San Francisco via the Golden Gate Bridge and 52 miles (84 km) from Napa Valley. The population was 14,231 at the 2020 census.\nMill Valley is located on the western and northern shores of Richardson Bay, and the eastern slopes of Mount Tamalpais. Beyond the flat coastal area and marshlands, it occupies narrow wooded canyons, mostly of second-growth redwoods, on the southeastern slopes of Mount Tamalpais. The Mill Valley 94941 ZIP Code also includes the following adjacent unincorporated communities: Almonte, Alto, Homestead Valley, Tamalpais Valley, and Strawberry. The Muir Woods National Monument is also located just outside the city limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "mill valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6391,
+    "attempt": 6345,
+    "place_id": "gn-5388735",
+    "input": {
+      "place": {
+        "place_id": "gn-5388735",
+        "name": "Rosamond",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.86414,
+        "lon": -118.16341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosamond, California",
+          "url": "https://en.wikipedia.org/wiki/Rosamond,_California",
+          "text": "Rosamond is an unincorporated community in Kern County, California, US, near the Los Angeles county line. Rosamond is part of Greater Los Angeles and is located in the Mojave Desert just north of Lancaster and Palmdale, the two largest cities in the Antelope Valley. As of the 2020 Census, Rosamond's population was 20,961. For statistical purposes, the United States Census Bureau has defined Rosamond as a census-designated place (CDP).\nRosamond is a suburban bedroom community with many residents employed by nearby Edwards Air Force Base or commuting to Los Angeles, Lancaster, and Palmdale for work. The town is about 15 minutes north of the Lancaster Metrolink station providing direct access to Los Angeles Union Station in just two hours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "rosamond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6392,
+    "attempt": 6346,
+    "place_id": "gn-5785868",
+    "input": {
+      "place": {
+        "place_id": "gn-5785868",
+        "name": "Arlington",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.19871,
+        "lon": -122.12514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arlington, Washington",
+          "url": "https://en.wikipedia.org/wiki/Arlington,_Washington",
+          "text": "Arlington is a city in northern Snohomish County, Washington, United States, part of the Seattle metropolitan area. The city lies on the Stillaguamish River in the western foothills of the Cascade Range, adjacent to the city of Marysville. It is approximately 10 miles (16 km) north of Everett, the county seat, and 40 miles (64 km) north of Seattle, the state's largest city. As of the 2020 U.S. census, Arlington had a population of 19,868; its estimated population is 21,959 as of 2024.\nThe city lies in the traditional territory of the Stillaguamish people, an indigenous Coast Salish group. Arlington was established in the 1880s by settlers and the area was platted as two towns, Arlington and Haller City. Haller City was absorbed by the larger Arlington, which was incorporated as a city in 1903. During the Great Depression of the 1930s, the Arlington area was the site of major projects undertaken for employment under the direction of federal relief agencies, including construction of a municipal airport that would serve as a naval air station during World War II. Arlington began suburbanizing in the 1980s, growing by more than 450 percent by 2000 and annexing the unincorporated area of Smokey Point to the southwest.\nThe economy of the Arlington area historically relied on timber and agriculture. In the early 21st century, it has transitioned to a service economy, with some aviation industry jobs near the municipal airport. The city is governed by a mayor–council government, electing a mayor and seven city councilmembers. The municipal government maintains the city's parks system and water and wastewater utilities. Other services, including public utilities, public transportation, and schools, are contracted to regional or county-level agencies and companies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "arlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6393,
+    "attempt": 6347,
+    "place_id": "gn-5799587",
+    "input": {
+      "place": {
+        "place_id": "gn-5799587",
+        "name": "Kenmore",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.75732,
+        "lon": -122.24401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenmore, Washington",
+          "url": "https://en.wikipedia.org/wiki/Kenmore,_Washington",
+          "text": "Kenmore (Lushootseed: ƛ̕ax̌ʷadis) is a city in King County, Washington, United States, along the northernmost shore of Lake Washington. It is a suburban commuter town at the mouth of the Sammamish River, 12 miles (19 km) northeast of downtown Seattle and 2 miles (3.2 km) west of Bothell. The population was 23,914 at the 2020 census. Kenmore Air Harbor is the largest seaplane-only passenger facility of its kind in the United States.\nKenmore is connected to nearby areas by State Route 522 and the Burke-Gilman Trail, which both run east–west along the lakeshore. The city limits stretch north to the Snohomish County line and south to a border with Kirkland south of Saint Edward State Park and Bastyr University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "kenmore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6394,
+    "attempt": 6348,
+    "place_id": "gn-646421",
+    "input": {
+      "place": {
+        "place_id": "gn-646421",
+        "name": "Matinkylä",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.15885,
+        "lon": 24.74241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matinkylä",
+          "url": "https://en.wikipedia.org/wiki/Matinkylä",
+          "text": "Matinkylä (Finnish: [ˈmat̪inˌkylæ]; Swedish: Mattby, Finland Swedish: [ˈmatˌby]; both literally translated the \"village of Matt/Matti\") is one of the major districts of Espoo, a city on the southern coast of Finland. Matinkylä sits between the Länsiväylä highway and the coast of the Gulf of Finland, between the areas of Haukilahti and Iivisniemi.\nThe middle part of Matinkylä consists of high apartment buildings, whereas the southern part consists of terraced houses and shorter apartment buildings. There are also some detached houses and paired houses in the area. Iirislahti in eastern Matinkylä, as well as Nuottalahti, Nuottaniemi and Koukkuniemi in southern Matinkylä consist of smaller houses. Matinkylä also has a marine area with many islands, such as Iso Vasikkasaari and Miessaari.\nAbout 30,000 people live in the Greater Matinkylä area, consisting of Matinkylä itself and the neighbouring areas of Olari and Henttaa. Iso Omena, one of Finland's biggest shopping malls, is situated in Matinkylä.\nMatinkylä was the final stop of the Länsimetro, until the extension to Kivenlahti was finished in December 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "matinkyla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6395,
+    "attempt": 6349,
+    "place_id": "gn-711348",
+    "input": {
+      "place": {
+        "place_id": "gn-711348",
+        "name": "Buchach",
+        "country": "Ukraine",
+        "subdivision": "Ternopil",
+        "lat": 49.06234,
+        "lon": 25.39496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buchach",
+          "url": "https://en.wikipedia.org/wiki/Buchach",
+          "text": "Buchach (Ukrainian: Бучач, IPA: [ˈbutʃɐtʃ] ; Polish: Buczacz; Yiddish: בעטשאָטש, romanized: Betshotsh; German: Butschatsch) is a city located on the Strypa River (a tributary of the Dniester) in Chortkiv Raion of Ternopil Oblast (province) of Western Ukraine. It hosts the administration of Buchach urban hromada, one of the hromadas of Ukraine. Buchach rests 135 kilometres (84 miles) south-east of Lviv, in the historic region of Halychyna (Galicia).\nThe city was located in the Polish–Lithuanian Commonwealth until the partitions, followed by the Habsburg monarchy (1772–1804), Austrian Empire (1804–1867), Austria-Hungary (1867–1918), West Ukrainian People's Republic (1918–1919), the Second Polish Republic (1919–1939), and the Ukrainian SSR of the Soviet Union (1939–1991). In 2022 the population was estimated to be 12,171 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "buchach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6396,
+    "attempt": 6350,
+    "place_id": "gn-7250691",
+    "input": {
+      "place": {
+        "place_id": "gn-7250691",
+        "name": "Kew Gardens Hills",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.73002,
+        "lon": -73.8234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kew Gardens Hills, Queens",
+          "url": "https://en.wikipedia.org/wiki/Kew_Gardens_Hills,_Queens",
+          "text": "Kew Gardens Hills is a neighborhood in the middle of the New York City borough of Queens. The borders are Flushing Meadows–Corona Park to the west, the Long Island Expressway to the north, Union Turnpike to the south, and Kissena/Parsons Boulevards to the east.\nThe neighborhood is located near several highways including the Long Island Expressway, Grand Central Parkway, Van Wyck Expressway, and the Jackie Robinson Parkway (Interborough). It is also served by several bus routes. Adjacent neighborhoods include Forest Hills to the west, Pomonok and Hillcrest to both the east and southeast, Briarwood to the south, and Queensboro Hill to the north.\nKew Gardens Hills is located in Queens Community District 8 and its ZIP Code is 11367. It is patrolled by the New York City Police Department's 107th Precinct. Politically, Kew Gardens Hills is represented by the New York City Council's 24th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "kew gardens hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kew",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gardens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6397,
+    "attempt": 6351,
+    "place_id": "gn-740881",
+    "input": {
+      "place": {
+        "place_id": "gn-740881",
+        "name": "Osmaneli",
+        "country": "Türkiye",
+        "subdivision": "Bilecik",
+        "lat": 40.35722,
+        "lon": 30.01417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osmaneli",
+          "url": "https://en.wikipedia.org/wiki/Osmaneli",
+          "text": "Osmaneli is a town in Bilecik Province in the Marmara region of Turkey. It is the seat of Osmaneli District and has a population of 16,192 (2021). Its neighbours are Pamukova from north, Geyve from north-east, Gölpazarı from south-east, Bilecik from south, Yenişehir from south-west and İznik from west.\nSituated on a hillside at a point where the Karasu, flowing down from Kandilli Dağ, enters the Sakarya River, this small town was known in antiquity as Leukai (in greek Λεύκαι and Λεύκη, Lèukae or Lèuke or Lèfke, \"poplar\") and more recently as Lefke. South of the town is a narrow and very beautiful river gorge with rocky walls up to 100 m/328 ft high, contributing to some spectacular scenery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "osmaneli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6398,
+    "attempt": 6352,
+    "place_id": "gn-7932632",
+    "input": {
+      "place": {
+        "place_id": "gn-7932632",
+        "name": "Blackburn North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.80931,
+        "lon": 145.1518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn North",
+          "url": "https://en.wikipedia.org/wiki/Blackburn_North",
+          "text": "Blackburn North (formerly North Blackburn) is a suburb of Melbourne, Victoria, Australia, 17 km east of Melbourne's Central Business District, located within the City of Whitehorse local government area. Blackburn North recorded a population of 7,627 at the 2021 census.\nBlackburn North is a predominantly residential suburb, with wide green and leafy streets and houses on quarter acre blocks. The suburb had its start in the early 1960s, much of it being built on land formerly used as an apple orchard. North Blackburn Shopping Centre was originally known as Old Orchard Shopping Centre for this reason, as is Old Orchard Primary School today. North Blackburn Post Office opened on 2 May 1955 and was renamed Blackburn North around 1990.\nPrior to the formation of the City of Whitehorse in 1994, Blackburn North was a part of the now defunct City of Nunawading."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6399,
+    "attempt": 6353,
+    "place_id": "gn-8349269",
+    "input": {
+      "place": {
+        "place_id": "gn-8349269",
+        "name": "Huntingdale",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.08318,
+        "lon": 115.96614
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntingdale, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Huntingdale,_Western_Australia",
+          "text": "Huntingdale is a southeastern suburb of Perth, Western Australia. It is part of the City of Gosnells local government area, which suggested the name of the suburb in 1974 as it was used by local developers as a promotional name. It is largely a residential suburb with associated schools and small businesses, mainly existing to service local residents. Homes in the area include a section of older residences constructed mainly in the 1970s, while there was significant new development from the 1990s onward in the southern portion of Huntingdale. There are some remaining pockets of semi-rural land comprising remnants of horticultural and chicken-farming enterprises, but in the early 2000s these were fast being taken over for new residential developments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "huntingdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6400,
+    "attempt": 6354,
+    "place_id": "gn-8469788",
+    "input": {
+      "place": {
+        "place_id": "gn-8469788",
+        "name": "Dubai Marina",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.08525,
+        "lon": 55.14646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubai Marina",
+          "url": "https://en.wikipedia.org/wiki/Dubai_Marina",
+          "text": "Dubai Marina (Arabic: مرسى دبي), also known as Marsa Dubai, is a district in Dubai, United Arab Emirates. It is built around an artificially constructed canal along a 3-kilometre (2 mi) stretch of the Persian Gulf shoreline. In 2024 it had a population of 70,550.\nThe district can accommodate over 120,000 people, and is located on Interchange 5 between Jebel Ali Port and the area which hosts Dubai Internet City, Dubai Media City, and the American University in Dubai. The Dubai Marina was inspired by the Concord Pacific Place development along False Creek in Vancouver, Canada. There have been many instances of marine wildlife, especially whales and sharks, entering the marina because of its proximity to the open sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "dubai marina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dubai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6401,
+    "attempt": 6355,
+    "place_id": "gn-1273810",
+    "input": {
+      "place": {
+        "place_id": "gn-1273810",
+        "name": "Covelong",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.78653,
+        "lon": 80.25065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Covelong",
+          "url": "https://en.wikipedia.org/wiki/Covelong",
+          "text": "Kovalam (கோவளம்), historically known as Covelong, is a coastal fishing village in Thiruporur taluk, Chengalpattu district, Tamil Nadu, India. It lies on the Coromandel Coast along the East Coast Road (ECR), about 40 kilometres (25 mi) south of central Chennai and north of Mamallapuram.\nKovalam developed as a trading settlement during the early eighteenth century. In 1719, Godefroy de la Merveille obtained permission from Sa'adatullah Khan I, Nawab of the Carnatic, to establish a trading post at the site, then known to Europeans as Cabelon. The settlement subsequently became associated with the Ostend Company, which established one of its early Asian trading posts at Covelong. Today, the village is particularly associated with its beach, fishing community and surfing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "covelong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6402,
+    "attempt": 6356,
+    "place_id": "gn-1732893",
+    "input": {
+      "place": {
+        "place_id": "gn-1732893",
+        "name": "Batu Arang",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.31667,
+        "lon": 101.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batu Arang",
+          "url": "https://en.wikipedia.org/wiki/Batu_Arang",
+          "text": "Batu Arang is a town in Gombak District, Selangor, Malaysia, that is located about 50 km (31 miles) from the capital Kuala Lumpur. Coal was first discovered in the region in 1908, when British authorities found large deposits of coal reserves that could be commercially viable and fuel a railway system. The town was established when the British started mining operations. In 1915, a railway system linking Batu Arang and Kuang was built to transport coal to the rest of the country. As coal output and demand increased, rail services to and from Kuala Lumpur expanded. The demand for coal from Batu Arang skyrocketed due to the First World War, which led to a reduction of coal imports. The local coal was frequently sold to the railway companies, power stations, tin mines, dredges, and end customers.\nDuring World War II, in 1942, British authorities halted mining operations, and destroyed the power station and main sub-station as Japanese forces approached Batu Arang. When the Japanese occupied the area, they repaired the damaged equipment and hired more people to mine coal. Their mining methods, however, have left a devastating effect on the coal mine because they only focused on surface mining. When Japan surrendered at the end of World War II, Malayan Collieries resumed mining but were faced with problems such as improper mining methods by Japanese, delayed delivery for new equipment, labor strikes, fire, floods, increasing costs, rising coal prices and competition from petroleum, which is a cheaper and more attractive fuel. These problems led to the permanent closure of the coal mine on January 30, 1960.\nAfter the closure of the mine, many miners and workers moved out of town and many buildings became ruins, the coal mine filled with water, land faced soil erosion, and the railway line from Kuang was dismantled, effectively ended railway service in Batu Arang. Despite this, some residents remained in the town and shops, facilities, and amenities continue to operate. On October 16, 2011, the town celebrated 100 years since its establishment and was granted heritage town status to boost economic prospects of its residents and make it one of the most important tourist attractions in Selangor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "batu arang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "batu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6403,
+    "attempt": 6357,
+    "place_id": "gn-2157343",
+    "input": {
+      "place": {
+        "place_id": "gn-2157343",
+        "name": "Moe",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.17828,
+        "lon": 146.26099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moe, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Moe,_Victoria",
+          "text": "Moe (  MOH-ee) is a town in the Latrobe Valley in the Gippsland region of Victoria, Australia.  It is approximately 130 kilometres (80 miles) east of the central business district of Melbourne, 45 kilometres (30 miles) due south of the peak of Mount Baw Baw in the Great Dividing Range and features views of the Baw Baw Ranges to the north and Strzelecki Ranges to the south.\nAt June 2018, Moe had an estimated urban population of 16,812 (including Newborough). The population has been slowly shrinking with an average annual rate of –0.1% year-on-year for the five years to 2018. It is administered by the Latrobe City Council.\nMoe was originally known as The Mowie, then Little Moi. The town's name is believed to derive from a Kurnai (local Indigenous) word \"moia\" or \"mouay\" meaning \"swamp\".\nMoe is a navigation point and stopover for tourists en route to Erica, the historic goldfields township of Walhalla, the Walhalla Goldfields Railway and Mount Baw Baw. Lake Narracan is nearby, and Moe is home to the annual Moe Cup horse races, the Moe Jazz Festival and the recreated historic settlement Old Gippstown. The city has locally produced Aboriginal/Koori art and is regularly home to local Australian Football and Netball Finals in the Gippsland Football & Netball Leagues and the Mid Gippsland Football League. The region is represented by Gippsland Power in the TAC Cup competition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "moe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6404,
+    "attempt": 6358,
+    "place_id": "gn-2268563",
+    "input": {
+      "place": {
+        "place_id": "gn-2268563",
+        "name": "Ericeira",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.96275,
+        "lon": -9.41563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ericeira",
+          "url": "https://en.wikipedia.org/wiki/Ericeira",
+          "text": "Ericeira (Portuguese pronunciation: [eɾiˈsɐjɾɐ]) is a civil parish and seaside community on the western coast of Portugal (in Mafra municipality, located 35km northwest of the center of Lisbon, about 45km by road) considered the surfing capital of Europe. It is also one of only two European spots among the World Surfing Reserves because of its exceptional coastline conditions. Ericeira's population in 2011 was estimated in 10,260, covering an area of 12 km2.\nEriceira was a popular summer retreat for many of Lisbon's families in the 1940s and 1950s. Today, it is a popular destination for local and visiting tourists, as well as surfers from around the world (owing to the forty beaches with good conditions in the area)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "ericeira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6405,
+    "attempt": 6359,
+    "place_id": "gn-2640091",
+    "input": {
+      "place": {
+        "place_id": "gn-2640091",
+        "name": "Poplar",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51113,
+        "lon": -0.01565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poplar, London",
+          "url": "https://en.wikipedia.org/wiki/Poplar,_London",
+          "text": "Poplar is a district in the London Borough of Tower Hamlets. It is located five miles (8 km) east of Charing Cross and lies on the western bank of the River Lea.\nPoplar is identified as a major district centre in the London Plan, with its centre being Chrisp Street Market, a significant commercial and retail centre surrounded by extensive residential development.\nOriginally part of the Manor and Ancient Parish of Stepney, the Hamlet of Poplar had become an autonomous area of Stepney by the 17th century, and an independent parish in 1817, the Parish and later Metropolitan Borough of Poplar. After a series of mergers, Poplar became part of the London Borough of Tower Hamlets in 1965."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "poplar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6406,
+    "attempt": 6360,
+    "place_id": "gn-2647007",
+    "input": {
+      "place": {
+        "place_id": "gn-2647007",
+        "name": "Hexham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.96986,
+        "lon": -2.104
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hexham",
+          "url": "https://en.wikipedia.org/wiki/Hexham",
+          "text": "Hexham ( HEKS-əm) is a market town and civil parish in Northumberland, England, on the south bank of the River Tyne, formed by the confluence of the North Tyne and the South Tyne at Warden nearby, and close to Hadrian's Wall. Hexham was the administrative centre for the Tynedale district from 1974 to 2009. In 2011, it had a population of 13,097.\nSmaller towns and villages around Hexham include Corbridge, Riding Mill, Stocksfield and Wylam to the east, Acomb and Bellingham to the north, Allendale to the south and Haydon Bridge, Bardon Mill and Haltwhistle to the west. Newcastle upon Tyne is 25 miles (40 km) to the east and Carlisle 37 miles (60 km) to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "hexham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

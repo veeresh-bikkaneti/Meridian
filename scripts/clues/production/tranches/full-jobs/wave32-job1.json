@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 6246,
+    "attempt": 6201,
+    "place_id": "gn-2263974",
+    "input": {
+      "place": {
+        "place_id": "gn-2263974",
+        "name": "Reguengos de Monsaraz",
+        "country": "Portugal",
+        "subdivision": "Évora",
+        "lat": 38.42529,
+        "lon": -7.53494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reguengos de Monsaraz",
+          "url": "https://en.wikipedia.org/wiki/Reguengos_de_Monsaraz",
+          "text": "Reguengos de Monsaraz (European Portuguese pronunciation: [rɨˈɣẽɡuʒ ðɨ mõsɐˈɾaʃ] ), officially the Municipality of Reguengos de Monsaraz (Portuguese: Município de Reguengos de Monsaraz), is a municipality in Évora District in Portugal. The population in 2011 was 10,828, in an area of 464.00 km2. The City of Reguengos de Monsaraz proper has a population of 7,308.\nThe present Mayor is Marta Prates, elected by the Social Democratic Party. The municipal holiday is June 13.\nReguengos de Monsaraz is the second largest city in the district of Évora (the largest city in the suburban area of Évora), constituting one of the four municipalities that make up the suburban area of Évora, which are Arraiolos, Montemor-o-Novo, Reguengos de Monsaraz and Viana of the Alentejo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "reguengos de monsaraz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "reguengos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monsaraz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6247,
+    "attempt": 6202,
+    "place_id": "gn-2512465",
+    "input": {
+      "place": {
+        "place_id": "gn-2512465",
+        "name": "Playa Blanca",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.86426,
+        "lon": -13.82814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Playa Blanca",
+          "url": "https://en.wikipedia.org/wiki/Playa_Blanca",
+          "text": "Playa Blanca (Spanish for \"White Beach\") is the southernmost town of the Spanish island of Lanzarote. It is the newest resort on the island, and is part of the municipality of Yaiza. In 2025 Playa Blanca had 14,276 residents.\nApproximately a 40-minute drive (45 km) from the airport, it has a state school, a private school (teaching the English educational curriculum), a notary, the bustling Rubicon Marina, church, harbour with ferries to Corralejo on the northern tip of Fuerteventura and an industrial area on the entrance to the town. A public library was opened in April 2012.\nThe bus and coach station (\"Estacion de Guaguas\") is the northern edge of the commercial area of the town, at the corner of Av. de las Canarias and Calle los Calamares. Direct or connecting services are available from here to all parts of the island. The building is also the location of the local police station and the local government administration (Ayuntamiento).\nIn early October 2008, Playa Blanca became the first town on the Island to have a dedicated local bus service, rather than through buses only. The price is a flat-rate €1.30 per journey for an adult, regardless of distance traveled around the town. The route follows a continuous loop from Faro Park in the west of the town, to Las Coloradas in the east. Frequency is every half an hour throughout the day and evening.\nThe coastline around Playa Blanca is essentially one large 9 kilometre wide bay which is then broken up into three smaller, but still large, bays. From East to west these are Playa Dorada, Playa Blanca and Playa Flamingo. This basic geography means that the beaches in and around Playa Blanca are sheltered and ideal for swimming and sunbathing.\nThe Atlantic Ocean is to the east, west and south. From the inland edge of the town to the interior, the landscape is level and volcanic. The main road route to Playa Blanca is the LZ2, heading north from the town then eastwards to the capital Arrecife. The second significant road route is the LZ 702 mountain road heading north-east from Playa Blanca via Maciot and Femés, connecting to the LZ72 at an interchange near Uga.\nThe residents are an eclectic mix of American, British, Canadian, Canarian, German, Irish, and Spanish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 383
+    },
+    "banned_terms": [
+      {
+        "term": "playa blanca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "playa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blanca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6248,
+    "attempt": 6203,
+    "place_id": "gn-2519464",
+    "input": {
+      "place": {
+        "place_id": "gn-2519464",
+        "name": "Chiva",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.46667,
+        "lon": -0.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiva, Spain",
+          "url": "https://en.wikipedia.org/wiki/Chiva,_Spain",
+          "text": "Chiva is a municipality in the comarca of Hoya de Buñol in the Valencian Community, Spain. It has a population of 16,750 inhabitants (INE  2023). It is a Spanish-speaking town, in which Spanish has the legally recognised linguistic predominance compared to Valencian, co-official regional language of the Valencian Community. Part of the Hoya de Buñol region, it is located 31 kilometres inland following the A3 Highway from the capital of Valencia in direction towards Madrid.\nChiva has the largest municipal park in Valencia; the mountainous Paraje Natural Municipal Sierra de Chiva, with a surface area of more than 5,500 ha.. This enclave is considered to have ecological, scenic and cultural significance, for which it justified its status as a protected area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "chiva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6249,
+    "attempt": 6204,
+    "place_id": "gn-2523025",
+    "input": {
+      "place": {
+        "place_id": "gn-2523025",
+        "name": "Spezzano Albanese",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.66854,
+        "lon": 16.30939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spezzano Albanese",
+          "url": "https://en.wikipedia.org/wiki/Spezzano_Albanese",
+          "text": "Spezzano Albanese (Arbëreshë: Spixan) is a municipality in the province of Cosenza, Calabria, southern Italy.\nIt is located on a 320 m high hill commanding the plain of Sibari and the Esaro river valley. It originated from Albanian emigration in the 15th century. Sights include the archaeological site of Torre del Mordillo, whose excavated Bronze Age remains and a necropolis dating from the 18th century BC up to the early Hellenistic Age; the Torre Scribla, what remains of a Norman fortress originally including two towers, which was the first residence / Fief of Robert Guiscard the future Duke of Calabria and Puglia, on his arrival in Calabria; and the Sanctuary of Madonna delle Grazie, a Catholic church from the 16th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "spezzano albanese",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spezzano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "albanese",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6250,
+    "attempt": 6205,
+    "place_id": "gn-2636071",
+    "input": {
+      "place": {
+        "place_id": "gn-2636071",
+        "name": "Tewkesbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.99244,
+        "lon": -2.1601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tewkesbury",
+          "url": "https://en.wikipedia.org/wiki/Tewkesbury",
+          "text": "Tewkesbury ( TEWKS-bər-ee) is a market town and civil parish in the north of Gloucestershire, England. The town grew following the construction of Tewkesbury Abbey in the twelfth century and played a significant role in the Wars of the Roses. It stands at the confluence of the River Severn and the River Avon, and became an important trading point. The town gives its name to the Borough of Tewkesbury. The town lies near the border with Worcestershire, marked largely by the Carrant Brook (a tributary of the River Avon).\nThe name Tewkesbury is thought to come from Theoc, the name of a Saxon who founded a hermitage there in the 7th century, and in the Old English language was called Theocsbury. An erroneous derivation from Theotokos (the Greek title of Mary, mother of God) enjoyed currency in the monastic period of the town's history.\nThe Battle of Tewkesbury, which took place on 4 May 1471, was one of the decisive battles of the Wars of the Roses and is marked annually by a medieval festival in the town, including historical re-enactment.\nTewkesbury is also the only town in England to be semi coastal as it spends the winter months surrounded by water."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "tewkesbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6251,
+    "attempt": 6206,
+    "place_id": "gn-2638995",
+    "input": {
+      "place": {
+        "place_id": "gn-2638995",
+        "name": "Ruddington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.89254,
+        "lon": -1.14953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruddington",
+          "url": "https://en.wikipedia.org/wiki/Ruddington",
+          "text": "Ruddington () is a large village in the borough of Rushcliffe in Nottinghamshire, England. The village is 5 miles (8 km) south of Nottingham and 11 miles (18 km) northwest of Loughborough. It had a population of 6,441 at the 2001 Census, increasing to 7,216 at the 2011 Census and 7,674 in 2021. Ruddington is twinned with Grenay, France.\nThe village residents have previously conducted high-profile campaigns in an attempt to retain the rural identity as a village and prevent it being subsumed into the adjoining suburban village of Clifton and town of West Bridgford. It maintains this through a variety of local amenities such as several shops, schools, public houses, community centre, village hall and churches within the village centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ruddington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6252,
+    "attempt": 6207,
+    "place_id": "gn-2639506",
+    "input": {
+      "place": {
+        "place_id": "gn-2639506",
+        "name": "Reigate",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23736,
+        "lon": -0.20582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reigate",
+          "url": "https://en.wikipedia.org/wiki/Reigate",
+          "text": "Reigate ( RY-gate) is a town in Surrey, England, around 19 miles (30 km) south of central London. The settlement is recorded in Domesday Book of 1086 as Cherchefelle and first appears with its modern name in the 1190s. The earliest archaeological evidence for human activity is from the Paleolithic and Neolithic, and during the Roman period, tile-making took place to the north-east of the modern centre.\nA motte-and-bailey castle was erected in Reigate in the late 11th or early 12th century. It was originally constructed of timber, but the curtain walls were rebuilt in stone about a century later. An Augustinian priory was founded to the south of the modern town centre in the first half of the 13th century. The priory was closed during the Reformation and was rebuilt as a private residence for William Howard, 1st Baron Howard of Effingham. The castle was abandoned at around the same time and fell into disrepair.\nDuring the medieval and early modern periods, Reigate was primarily an agricultural settlement. A weekly market began no later than 1279 and continued until 1895. Key crops included oats, hops and flax, but there is no record of rye being grown in the local area. The economy initially declined in the 18th century, as new turnpike roads allowed cheaper goods made outside the town to become available, undercutting local producers. Following the arrival of the railways in the mid-19th century, Reigate began to expand and the sale of much of the priory estate in 1921 released further land for housebuilding.\nReigate is part of the London commuter belt and, since 1974, has been one of four towns in the borough of Reigate and Banstead. The borough council is based at the town hall in Castlefield Road, and Surrey County Council has its headquarters at Woodhatch Place. Much of the North Downs, to the north of Reigate, is owned by the National Trust, including Colley Hill, 722 feet (220 m) above ordnance datum (OD) and Reigate Hill 771 feet (235 m) above OD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "reigate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6253,
+    "attempt": 6208,
+    "place_id": "gn-2641546",
+    "input": {
+      "place": {
+        "place_id": "gn-2641546",
+        "name": "Newton-le-Willows",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45,
+        "lon": -2.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton-le-Willows",
+          "url": "https://en.wikipedia.org/wiki/Newton-le-Willows",
+          "text": "Newton-le-Willows, often shortened informally to Newton, is a market town in the Metropolitan Borough of St Helens, Merseyside, England. The population at the 2021 census was 24,642. Newton-le-Willows is on the eastern edge of St Helens, south of Wigan and north of Warrington, equidistant to Liverpool and Manchester.\nWithin the boundaries of the historic county of Lancashire, the Newton township was historically largely pastoral lands, with the mining industry encroaching from the north and the west as time went on. The township (often referred to as Newton in Makerfield at that time) is documented since at least the 12th century. In the early 19th century the township saw significant urban development to support the construction of the Liverpool and Manchester Railway. The presence of the Sankey Canal running through the Sankey Valley necessitated the construction of the Sankey Viaduct by George Stephenson, and the town of Earlestown developed around the industrial works there. Earlestown gradually became the administrative and commercial centre of the township, with the historic market and fairs moving to a purpose built square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "newton le willows",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "willows",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6254,
+    "attempt": 6209,
+    "place_id": "gn-2642694",
+    "input": {
+      "place": {
+        "place_id": "gn-2642694",
+        "name": "Methil",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.18543,
+        "lon": -3.02157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Methil",
+          "url": "https://en.wikipedia.org/wiki/Methil",
+          "text": "Methil (Scottish Gaelic: Meadhchill) is a coastal town in Fife, Scotland.\nMethil has ancient origins: two Bronze Age cemeteries have been discovered which date the settlement as over 8,000 years old. The town was first recorded as \"Methkil\" in 1207, and belonged to the Bishop of St Andrews. Methil was part of its own barony from 1614 and also part of the former burgh of Buckhaven and Methil, which existed between 1891 and 1975. Previously an industrial maritime powerhouse of the region and once Scotland's greatest coal port, it is now redirecting itself towards a green energy future.\nMethil lies on the north shore of the Firth of Forth, between Largo Bay to the east and Wemyss Bay to the west. It is situated within a continuous urban area described as Levenmouth; the River Leven delineates Methil from adjacent towns. The Fife Coastal Path, one of Scotland's Great Trails, runs through Methil. The town has a population of 10,890 (2022)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "methil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6255,
+    "attempt": 6210,
+    "place_id": "gn-2646208",
+    "input": {
+      "place": {
+        "place_id": "gn-2646208",
+        "name": "Ingleby Greenhow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.44983,
+        "lon": -1.10687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ingleby Greenhow",
+          "url": "https://en.wikipedia.org/wiki/Ingleby_Greenhow",
+          "text": "Ingleby Greenhow is a village and civil parish in the county of North Yorkshire, England. It is on the border of the North York Moors and 3 miles (4.8 km) south of Great Ayton.\nFrom 1974 to 2023 it was part of the Hambleton District. It is now administered by the unitary North Yorkshire Council.\nThe parish of Ingleby Greenhow has records of a John Thomasson de Grenehow, a member of the clergy, who in 1376 \"had to appear before a Commission appointed to be tried with several others for either poaching or cutting down timber, or destroying property belonging to Peter de Malo Luca the 6th, of Mulgrave Castle\".\n\n The name may derive from the Saxon for \"Englishman's green hill\". \"How\", derived from the Old Norse word haugr, means hill or mound. Ingleby Manor was bought by a Scottish courtier David Foulis in 1608. St Andrew's Church was almost entirely rebuilt in 1741, but has a Norman chancel arch inside.\nIn 1931, British altitude and distance records for gliders were established over the moors near here, as recounted by the novelist, pilot, and aeronautical engineer Nevil Shute in his memoir, Slide Rule. The glider, a Tern produced by Shute's company, Airspeed Ltd. was flown by a skilled German sailplane pilot, Carl Magersuppe, who had been hired by Airspeed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "ingleby greenhow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ingleby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "greenhow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6256,
+    "attempt": 6211,
+    "place_id": "gn-2649198",
+    "input": {
+      "place": {
+        "place_id": "gn-2649198",
+        "name": "Formby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.55838,
+        "lon": -3.06999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Formby",
+          "url": "https://en.wikipedia.org/wiki/Formby",
+          "text": "Formby is a town and civil parish in the Metropolitan Borough of Sefton, Merseyside, England.\nHistorically in Merseyside, three manors are recorded in the Domesday Book of 1086 under \"Fornebei\", Halsall, Walton and Poynton. Cockle raking and shrimp fishing lasted into the 19th century. By 1872, the township and sub-district was made up of two chapelries (St Peter's and St Luke's), Birkdale township, the hamlets of Ainsdale and Raven-Meols and Altcar parish. Formby was built on the plain adjoining the Irish Sea coast a few miles north of the Crosby channel.\nA commuter town for Liverpool, Formby is also a tourist destination with day trippers attracted to its beaches, sand dunes and wildlife, particularly the endangered red squirrel and natterjack toad. The area is conserved by the National Trust, and designated a Site of Special Scientific Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "formby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6257,
+    "attempt": 6212,
+    "place_id": "gn-2649852",
+    "input": {
+      "place": {
+        "place_id": "gn-2649852",
+        "name": "Euxton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.6699,
+        "lon": -2.67615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Euxton",
+          "url": "https://en.wikipedia.org/wiki/Euxton",
+          "text": "Euxton ( EKS-tən) is a village and civil parish in the Borough of Chorley, Lancashire, England. The population at the 2011 census was 9,993, but is now estimated to be around 14,000 due to housing developments in the village, including at Buckshaw. The village is just to the west of Chorley, and south of Clayton-le-Woods.\nEuxton covers an area around 2.5 miles (4.0 km) from east to west and 2 miles (3.2 km) north to south. The village is made up of several areas including Runshaw Moor, Balshaw, Shaw Green, Daisy Hill, Buckshaw, Pincock, Primrose Hill, Glead Hill, Dawbers, Spout Hillock, Culbeck and Pear Tree.\nThe boundaries of Euxton have remained largely unchanged, as they follow a series of natural waterways. The northern boundary is formed by Worden Brook, which runs through the centre of Buckshaw Village and becomes Shaw Brook, marking the border between Euxton and Leyland. To the east, the boundary was historically defined by German Brook and German Lane (now Washington Lane), whereas the boundary is now broadly aligned with West Way. The southern boundary is formed by the River Yarrow, while to the west, the parish boundary follows historic field lines from Runshaw Moor southwards to the point where the A581 changes from Dawbers Lane to Southport Road near the Elephant Restaurant and on to the Yarrow.\nEuxton is served by five primary schools: Balshaw Lane Primary, Primrose Hill Primary, Euxton C of E Primary, Euxton RC Primary and Trinity C of E/Methodist Primary School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "euxton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6258,
+    "attempt": 6213,
+    "place_id": "gn-2650977",
+    "input": {
+      "place": {
+        "place_id": "gn-2650977",
+        "name": "Dromore",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.41374,
+        "lon": -6.14908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dromore, County Down",
+          "url": "https://en.wikipedia.org/wiki/Dromore,_County_Down",
+          "text": "Dromore (from Irish Droim Mór, meaning 'large ridge') is a market town and civil parish in County Down, Northern Ireland, situated on the River Lagan. It lies within the local government district of Armagh City, Banbridge and Craigavon, about 19 miles (31 km) southwest of Belfast, on the A1 Belfast–Dublin road. The 2021 census recorded a population of 6,492.\nThe town's centre is Market Square, which has a rare set of stocks. It is in the old linen manufacturing district. Dromore has the remains of a castle and earthworks, although these have modern buildings surrounding them, a large motte and bailey or encampment (known locally as \"the Mound\"), and an earlier earthwork known as the Priest's Mount on the Maypole Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "dromore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6259,
+    "attempt": 6214,
+    "place_id": "gn-2657215",
+    "input": {
+      "place": {
+        "place_id": "gn-2657215",
+        "name": "Arbroath",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.56317,
+        "lon": -2.58736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arbroath",
+          "url": "https://en.wikipedia.org/wiki/Arbroath",
+          "text": "Arbroath () or Aberbrothock (Scottish Gaelic: Obar Bhrothaig [ˈopəɾ ˈvɾo.ɪkʲ]) is a historic coastal town and former royal burgh in Angus, Scotland. It is the largest town in the council area, with a population of 23,481 in 2022. It lies on the North Sea coast, some 16 miles (26 km) east-northeast of Dundee and 45 miles (72 km) south-southwest of Aberdeen.\nThere is evidence of Iron Age settlement, but its history as a town began with the founding of Arbroath Abbey in 1178. It grew much during the Industrial Revolution through the flax and then the jute industry and the engineering sector. A new harbour was created in 1839; by the 20th century, Arbroath was one of Scotland's larger fishing ports.\nThe town is notable for the Declaration of Arbroath and the Arbroath smokie. Arbroath Football Club holds the world record for the number of goals scored in a professional football match: 36–0 against Bon Accord of Aberdeen in the Scottish Cup in 1885."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "arbroath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6260,
+    "attempt": 6215,
+    "place_id": "gn-2747506",
+    "input": {
+      "place": {
+        "place_id": "gn-2747506",
+        "name": "Schoonhoven",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.9475,
+        "lon": 4.84861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schoonhoven",
+          "url": "https://en.wikipedia.org/wiki/Schoonhoven",
+          "text": "Schoonhoven (Dutch pronunciation: [ˈsxoːnˌɦoːvə(n)] ) is a city and was a former municipality in the western Netherlands, in the province of South Holland. Since 2015 it has been a part of the municipality of Krimpenerwaard, before it had been an independent municipality.\nThe former municipality had a population of data missing in 2021, and covered an area of 6.92 km2 (2.67 sq mi) of which 0.65 km2 (0.25 sq mi) water. From 2010 to 2014, it was the smallest municipality in the Netherlands in land area, following the merger of Rozenburg into Rotterdam.\nThe first winner of the Dutch version of Pop Idol, Jamai Loman, is from this city. Also Jan-Arie van der Heijden, football player for Feyenoord, lives in Schoonhoven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "schoonhoven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6261,
+    "attempt": 6216,
+    "place_id": "gn-2851782",
+    "input": {
+      "place": {
+        "place_id": "gn-2851782",
+        "name": "Puchheim",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.15,
+        "lon": 11.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puchheim",
+          "url": "https://en.wikipedia.org/wiki/Puchheim",
+          "text": "Puchheim (German pronunciation: [ˈpuːxhaɪm] ; Central Bavarian: Buachham) is a town in the district of Fürstenfeldbruck, in Bavaria, Germany, and a western suburb of Munich. It has about 21,000 inhabitants.\nPuchheim is divided into two parts: the old, rural Puchheim-Ort and the newer Puchheim-Bahnhof, which grew up around the railway station opened in 1896. One of Germany's first airfields was laid out north of the station around 1910 and, during World War I, served as a prisoner-of-war camp; the surrounding moorland was later drained by the prisoners so that houses could be built.\nPuchheim-Ort, the old part of the town, was first recorded as Puohheim in the church records of Freising around 948–957, roughly two centuries before the founding of Munich."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "puchheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6262,
+    "attempt": 6217,
+    "place_id": "gn-2871601",
+    "input": {
+      "place": {
+        "place_id": "gn-2871601",
+        "name": "Meßstetten",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.18317,
+        "lon": 8.96565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meßstetten",
+          "url": "https://en.wikipedia.org/wiki/Meßstetten",
+          "text": "Meßstetten (German: [mɛsˈʃtɛtn] ) is a town in the Zollernalbkreis district, in Baden-Württemberg, Germany, which is situated in the Swabian Jura, 24 km southeast of Balingen. At an altitude of 907 m (2,976 ft), Meßstetten is the highest city (of more than 10,000 inhabitants) in Germany. It is close to the Heuberg Training Area with the Lager Heuberg. Within the Heuberg Training Area there is the legendary Dreibannmarke, also called the \"Bahn\", a 17th-century border, which today marks the border between three different municipalities, formerly in the three states of Württemberg, Baden, and Hohenzollern. The meadow at the Dreibannmarke served as a stopping place for traveling merchants, wagons and craftsmen. With care it is possible to identify traces of the border. After the inauguration of the firing ranges, a meadow in Meßstetten was allocated as a camping site at the edge of the restricted area. Until 1835 merchandise was smuggled over the customs borders guarded by local hunters. Coffee smuggler Haux had was killed on 21 July 1831 in Pfaffental.\nBetween 1934 and 1942, many men were sterilized because of \"hereditary diseases\". Under the program known as Aktion T4, the Nazis murdered mentally handicapped and mentally ill patients. These men and women were deported to the Grafeneck Killing Facility, where they were killed as \"life unworthy of life\". After the closure of Grafeneck in December 1940, a further deportation to the Hadamar Killing Facility occurred on 1941. After war a new city called Ostlandsiedlung was built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "me stetten",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "me",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "stetten",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6263,
+    "attempt": 6218,
+    "place_id": "gn-2936886",
+    "input": {
+      "place": {
+        "place_id": "gn-2936886",
+        "name": "Dinkelsbühl",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.06942,
+        "lon": 10.31985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinkelsbühl",
+          "url": "https://en.wikipedia.org/wiki/Dinkelsbühl",
+          "text": "Dinkelsbühl (German pronunciation: [ˈdɪŋkl̩sˌbyːl] ) is a historic town in Central Franconia, a region of Germany that is now part of the state of Bavaria, in southern Germany. Dinkelsbühl is a former free imperial city of the Holy Roman Empire. In local government terms, Dinkelsbühl lies near the western edge of the Landkreis (or local government district) of Ansbach, north of Aalen.\nDinkelsbühl lies on the northern part of the Romantic Road, and is one of three particularly striking historic towns on the northern part of the route, the others being Rothenburg ob der Tauber and Nördlingen. These three, along with Berching, are today the only towns in Germany that still have completely intact city walls. All four are in Bavaria.\nThe town lies on the southern edge of the Franconian Heights and on the River Wörnitz, which rises in the town of Schillingsfürst. The population in 2013 was 11,315."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "dinkelsbuhl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6264,
+    "attempt": 6219,
+    "place_id": "gn-2976050",
+    "input": {
+      "place": {
+        "place_id": "gn-2976050",
+        "name": "Saran",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.95013,
+        "lon": 1.87601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saran, Loiret",
+          "url": "https://en.wikipedia.org/wiki/Saran,_Loiret",
+          "text": "Saran (French pronunciation: [saʁɑ̃]) is a commune located in the northern suburbs of Orléans, in the Loiret department in the region Centre-Val de Loire.\nSubject to a modified oceanic climate, the municipality has no recorded permanent watercourses.\nSaran is an urban municipality with a population of 17316, having experienced significant population growth since 1962. It is part of the Orléans urban area and the Orléans catchment area.\nThe remains of the Aérotrain track, an experimental 18 km elevated structure with an inverted-T profile, built in 1969 by engineer Jean Bertin, was designated as \"Outstanding Contemporary Architecture\" in 2015.\nSaran has, considering its size, many sports facilities including two stadiums, indoor and outdoor tennis courts, one swimming pool and four gymnasiums."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "saran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6265,
+    "attempt": 6220,
+    "place_id": "gn-3013534",
+    "input": {
+      "place": {
+        "place_id": "gn-3013534",
+        "name": "Hendaye",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 43.35809,
+        "lon": -1.7744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hendaye",
+          "url": "https://en.wikipedia.org/wiki/Hendaye",
+          "text": "Hendaye (French pronunciation: [ɑ̃daj] ; Basque: Hendaia, Spanish: Hendaya; Occitan: Hendaia) is a commune in the Pyrénées-Atlantiques department and Nouvelle-Aquitaine region of southwestern France.\nThe town, metropolitan France's most southwesterly and a popular seaside tourist resort, stands on the right bank of the River Bidasoa – which marks the Franco-Spanish border – at the point where it empties into the Atlantic Ocean in the French Basque Country.\nHendaye has three distinguishable parts: la ville (the town), which stretches from Saint Vincent's church to the area around the SNCF railway station and the industrial zone; la plage (the beach), the seaside quarter; and les hauteurs (the heights), the villas and camping sites on the hills between and behind the other two areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "hendaye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
