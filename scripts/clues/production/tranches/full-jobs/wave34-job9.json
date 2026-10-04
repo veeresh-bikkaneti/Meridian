@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 6809,
+    "attempt": 6761,
+    "place_id": "gn-202239",
+    "input": {
+      "place": {
+        "place_id": "gn-202239",
+        "name": "Gikongoro",
+        "country": "Rwanda",
+        "subdivision": "Southern Province",
+        "lat": -2.46397,
+        "lon": 29.57389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gikongoro",
+          "url": "https://en.wikipedia.org/wiki/Gikongoro",
+          "text": "Gikongoro is a city in Nyamagabe district, Southern Province, Rwanda.\nIt was previously part of Gikongoro Province, which has been disestablished. Gikongoro province was founded by the newly independent Rwandan state shortly after it gained freedom from Belgium in 1962. It was designed to undermine control of the Tutsi who had a stronghold in nearby Nyanza. Before the genocide in 1993, Gikongo city had a population of under 10,000. Human Rights Watch has described Gikongoro town and province at the time of the genocide as \"largely incoherent.\" Local political leader Emmanuel Gapyisi was assassinated in 1993 and  minister and PSD head Frederic Nzamurambaho was killed at the start of the genocide. Once the genocide began, the Tutsi population of Gikongoro was wiped out quickly compared to other towns.\nThe city has been growing in recent years, with a number of modern buildings constructed. The city is now called Nyamagabe. It is the gateway to Nyungwe Forest, a large area of montane rain forest, home to many species of monkeys and chimpanzees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "gikongoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6810,
+    "attempt": 6762,
+    "place_id": "gn-2142457",
+    "input": {
+      "place": {
+        "place_id": "gn-2142457",
+        "name": "Yarraville",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81667,
+        "lon": 144.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yarraville",
+          "url": "https://en.wikipedia.org/wiki/Yarraville",
+          "text": "Yarraville is an inner suburb in Melbourne, Victoria, Australia, 6 km (3.7 mi) west of Melbourne's central business district, located within the City of Maribyrnong local government area. Yarraville recorded a population of 15,636 at the 2021 census.\nYarraville is bordered on the east by the junction of the Maribyrnong and the Yarra Rivers, and its southern boundary is the West Gate Freeway.\nIn 2020, Yarraville was named Australia's best suburb and fifth in the world. The suburb lies immediately north of the West Gate Bridge, and immediately west of its namesake, the Yarra River. Features of Yarraville include C.J. Cruickshank Park, Yarraville Oval, Beaton Reserve, Yarraville Gardens, and Stony Creek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "yarraville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6811,
+    "attempt": 6763,
+    "place_id": "gn-2168607",
+    "input": {
+      "place": {
+        "place_id": "gn-2168607",
+        "name": "Doncaster",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78828,
+        "lon": 145.12373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doncaster, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Doncaster,_Victoria",
+          "text": "Doncaster ( DONK-ah-stər) is a suburb of Melbourne, Victoria, Australia, 18 km (11 mi) east of Melbourne's Central Business District, located within the City of Manningham local government area. Doncaster recorded a population of 25,020 at the 2021 census.\nThe suburb is situated on 8.9 km2 (3.4 sq mi) of land, around the top of the 120 m (390 ft) high Doncaster Hill. The suburb consists of a central area along the top of Doncaster Hill, which includes several historical buildings along Doncaster Road, the Westfield Doncaster Shopping Centre and surrounding high-rise apartments, while the rest of the suburb is typical of many of Melbourne's eastern suburbs, with extensive low-density housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "doncaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6812,
+    "attempt": 6764,
+    "place_id": "gn-2221408",
+    "input": {
+      "place": {
+        "place_id": "gn-2221408",
+        "name": "Tombel",
+        "country": "Cameroon",
+        "subdivision": "South-West",
+        "lat": 4.7466,
+        "lon": 9.6705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tombel",
+          "url": "https://en.wikipedia.org/wiki/Tombel",
+          "text": "Tombel is a town and commune in the Southwest Region of Cameroon, in the north of the Mungo Valley. The town is traditionally part of the Bakossi people's country, but now has a significant population of other tribes from other regions of Cameroon.\nIn late 1966, tension between some Bakossi indigenes and some Bamilekes resulted in an outbreak of violence. This outbreak was the remnants of the Union of the Peoples of Cameroon's political movement.  Losses were counted on both sides, mostly from the Bamilekes with 236 settlers dead. The Bakossi indigenes argued that some Bamilekes were forcing a political course that threatened the integrity of the Bakossi land and people. In response, the army moved in, rounded up all able-bodied Bakossi men in the Tombel area, and placed them in detention camps, where many were severely tortured to obtain confessions. Eventually, 143 Bakossi men were put on trial and 17 were sentenced to death, while 75 received sentences of life imprisonment.\nLying immediately to the south of Mount Kupe, Tombel receives little direct sunshine, particularly in the rainy season, due to constant cloud cover. The town has suffered from persistent shortage of water supply, despite attempts by the women of the town to improve the situation.\nPolitician Mary Muyali Meboka was born in Tombel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "tombel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6813,
+    "attempt": 6765,
+    "place_id": "gn-2271912",
+    "input": {
+      "place": {
+        "place_id": "gn-2271912",
+        "name": "Almodôvar",
+        "country": "Portugal",
+        "subdivision": "Beja",
+        "lat": 37.51279,
+        "lon": -8.06008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almodôvar",
+          "url": "https://en.wikipedia.org/wiki/Almodôvar",
+          "text": "Almodôvar (pronounced [almuˈðovaɾ]  or [-vɐɾ], from Arabic: المدوّر, romanized: al-Mudawwar, lit. 'the Round one'), officially known as Town of Almodôvar (Portuguese: Vila de Almodôvar), is a town and a municipality in the District of Beja, Portugal. The population in 2011 was 7,449, in an area of 777.88 km2.\nThe present Mayor is António Bota, a member of the Socialist Party.\nThe town's Museum of Southwestern Writing is featured on episode 1 of the three part documentary The Celts: Blood, Iron and Sacrifice, which was broadcast by the BBC in 2015, and hosted by Alice Roberts and Neil Oliver, featuring stone tables containing what some archeologists believe to be a proto-Celtic language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "almodovar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6814,
+    "attempt": 6766,
+    "place_id": "gn-2524494",
+    "input": {
+      "place": {
+        "place_id": "gn-2524494",
+        "name": "Isola delle Femmine",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.19123,
+        "lon": 13.24691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isola delle Femmine",
+          "url": "https://en.wikipedia.org/wiki/Isola_delle_Femmine",
+          "text": "Isola delle Femmine (Sicilian: Isula dî Fìmmini) is an Italian town in northwestern Sicily, administratively part of the Metropolitan City of Palermo.\nDespite its name, which can be translated in English as \"The Island of Females\", the town is located in mainland Sicily.  The name of the town was chosen after the name of the small island that sits just off shore from it when it became an independent municipality from the neighboring city of Capaci in 1854.  The reason for this choice of name was a natural one based upon the combined history of the town and the island, a history that also explains the origin of the Island’s name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "isola delle femmine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "isola",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "delle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "femmine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6815,
+    "attempt": 6767,
+    "place_id": "gn-2633731",
+    "input": {
+      "place": {
+        "place_id": "gn-2633731",
+        "name": "Witley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.14993,
+        "lon": -0.64768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Witley",
+          "url": "https://en.wikipedia.org/wiki/Witley",
+          "text": "Witley is a village in the civil parish of Witley and Milford in the Waverley district in Surrey, England. It is centred 2.6 miles (4 km) south west of the town of Godalming and 6.6 miles (11 km) southwest of Guildford. The land is a mixture of rural (ranging from woodland protected by the Surrey Hills AONB including a small part of the forested Greensand Ridge to cultivated fields) contrasting with elements more closely resembling a suburban satellite village. In 2011 the parish had a population of 8,130.\nThe civil parish includes the small town of Milford in the north. Occupying its hills in the south-west are Sandhills, Wormley and Brook. On 1 April 2023 the parish was renamed from \"Witley\" to \"Witley and Milford\", at the same time part was moved to Haslemere and Peper Harow.\nWitley Common is a wide expanse of land, owned by the National Trust, crossed by the A3 road. The village is served by two stations on the Portsmouth Direct Line: Witley station, to the south in nearby Wormley, and, to the north, Milford station, which is more or less equidistant between Milford and Witley. Its church dates to the pre-Norman Conquest period of the Kingdom of England. The village has the private, but charitable co-educational boarding and day school King Edward's School founded in Westminster in 1553 by King Edward VI and bishop Nicholas Ridley – supported by the City of London Corporation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "witley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6816,
+    "attempt": 6768,
+    "place_id": "gn-2635651",
+    "input": {
+      "place": {
+        "place_id": "gn-2635651",
+        "name": "Torpoint",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.37505,
+        "lon": -4.19566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torpoint",
+          "url": "https://en.wikipedia.org/wiki/Torpoint",
+          "text": "Torpoint (Cornish: Penntorr [ˈpɛnːtɔrː] ) is a town and civil parish on the Rame Peninsula in southeast Cornwall, United Kingdom. It is situated opposite the city of Plymouth across the Hamoaze which is the tidal estuary of the River Tamar. At the 2021 census the parish had a population of 7,444 and the built up area had a population of 7,160.\nTorpoint is linked to Plymouth (and Devonport) by the Torpoint Ferry. The three vessels that operate the service are chain ferries – that is, they are propelled across the river by pulling themselves on fixed chains which lie across the bed of the river. The journey takes about seven minutes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "torpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6817,
+    "attempt": 6769,
+    "place_id": "gn-2636132",
+    "input": {
+      "place": {
+        "place_id": "gn-2636132",
+        "name": "Teignmouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.54581,
+        "lon": -3.49671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teignmouth",
+          "url": "https://en.wikipedia.org/wiki/Teignmouth",
+          "text": "Teignmouth (  TIN-məth) is a seaside town, fishing port and civil parish in the English county of Devon. It lies on the north bank of the estuary mouth of the River Teign, about 12 miles (19 km) south of Exeter. The town had a population of 14,932 at the 2021 census. \nFrom the 1800s onwards, the town grew rapidly in size from a fishing port associated with the Newfoundland cod industry to a fashionable resort of some note in Georgian times; there was further expansion after the opening of the South Devon Railway in 1846. Today, its port still operates and the town remains a popular seaside and day-trip holiday location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "teignmouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6818,
+    "attempt": 6770,
+    "place_id": "gn-2636948",
+    "input": {
+      "place": {
+        "place_id": "gn-2636948",
+        "name": "Stepney",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5175,
+        "lon": -0.04292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stepney",
+          "url": "https://en.wikipedia.org/wiki/Stepney",
+          "text": "Stepney is an area in the London Borough of Tower Hamlets in the East End of London. Stepney is no longer officially defined, and is usually used to refer to a relatively small area. However, for much of its history the place name was applied to a much larger manor and parish, which covered most of the inner East End.\nStepney Green Park is a remnant of a larger area of Common Land formerly known as Mile End Green.\nThe area was built up rapidly during the 19th century, mainly to accommodate immigrant workers and poor families displaced from London. It developed a reputation for poverty, overcrowding, violence and political dissent. It was severely damaged during the Blitz, with over a third of housing destroyed; and then, in the 1960s, slum clearance and development replaced most residential streets with tower blocks and modern housing estates. Some Georgian architecture and Victorian era terraced housing remain such as Arbour Square, the eastern side of Stepney Green, and the streets around Matlock Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "stepney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6819,
+    "attempt": 6771,
+    "place_id": "gn-2640413",
+    "input": {
+      "place": {
+        "place_id": "gn-2640413",
+        "name": "Penryn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.16812,
+        "lon": -5.10416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penryn, Cornwall",
+          "url": "https://en.wikipedia.org/wiki/Penryn,_Cornwall",
+          "text": "Penryn (; Cornish: Pennrynn [ˈpɛnːrɪnː] , meaning 'promontory') is a civil parish and town in west Cornwall, England, United Kingdom. It is on the Penryn River about 1 mile (1.6 km) northwest of Falmouth. At the 2021 census the parish had a population of 8,489 and the built up area as defined by the Office for National Statistics (which extends beyond the parish boundary) had a population of 11,195.\nThough now the town is overshadowed by the larger nearby town of Falmouth, Penryn was once an important harbour in its own right, lading granite and tin to be shipped to other parts of the country and world during the medieval period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "penryn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6820,
+    "attempt": 6772,
+    "place_id": "gn-2644444",
+    "input": {
+      "place": {
+        "place_id": "gn-2644444",
+        "name": "Linlithgow",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.97639,
+        "lon": -3.60364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linlithgow",
+          "url": "https://en.wikipedia.org/wiki/Linlithgow",
+          "text": "Linlithgow  ( lin-LITH-goh; Scots: Lithgae; Scottish Gaelic: Gleann Iucha) is a town and historic royal burgh in West Lothian, Scotland. It was historically West Lothian's county town, reflected in the county's historical name of Linlithgowshire. An ancient town, it lies in the Central Belt on a historic route between Edinburgh and Falkirk beside Linlithgow Loch. The town is situated approximately 20 miles (32 km) west of Edinburgh. In 2022, the population of Linlithgow was 12,517, while the Linlithgow ward (which includes the town and greater area) had a population of 16,499 in 2019.\nDuring the medieval period, the town grew in prominence as a royal burgh and residence around Linlithgow Palace. In later centuries, Linlithgow became a centre of industry in leather making and other materials, before developing rapidly in the Victorian era with the opening of the Union Canal in the 1820s and the arrival of the railway in 1842. Linlithgow was the former county town of the county but the Council now resides in nearby Livingston. Today Linlithgow has less industry and the economy of the town centre is focused on hospitality, heritage and tourism services. Linlithgow's patron saint is Saint Michael and its motto is St. Michael is kind to strangers. A statue of the saint holding the burgh coat of arms stands on the High Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "linlithgow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6821,
+    "attempt": 6773,
+    "place_id": "gn-2644501",
+    "input": {
+      "place": {
+        "place_id": "gn-2644501",
+        "name": "Limavady",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.05045,
+        "lon": -6.95074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limavady",
+          "url": "https://en.wikipedia.org/wiki/Limavady",
+          "text": "Limavady (; from Irish  Léim an Mhadaidh 'leap of the dog') is a market town in County Londonderry, Northern Ireland, with Binevenagh as a backdrop. Lying  17 miles (27 km) east of Derry and 14 miles (23 km) southwest of Coleraine, Limavady had a population of 11,279 people at the 2021 Census. In the 40 years between 1971 and 2011, Limavady's population nearly doubled. Limavady is within Causeway Coast and Glens Borough.\nFrom 1988 to 2004, a total of 1,332 dwellings were built in the town, mainly at Bovally along the southeastern edge of the town. The large industrial estate at Aghanloo is 2 miles (3 km) north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "limavady",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6822,
+    "attempt": 6774,
+    "place_id": "gn-2651407",
+    "input": {
+      "place": {
+        "place_id": "gn-2651407",
+        "name": "Deganwy",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.30446,
+        "lon": -3.82735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deganwy",
+          "url": "https://en.wikipedia.org/wiki/Deganwy",
+          "text": "Deganwy is a town and electoral ward in the community of Conwy in Conwy County Borough in Wales. It lies in the Creuddyn Peninsula alongside Llandudno (to the north) and Rhos-on-Sea (to its east). Historically part of Caernarfonshire, the peninsula is in a region of north Wales where as many as 1 in 3 residents can speak Welsh, and is home to some of the most expensive streets in Wales. Deganwy is located on the east bank of the River Conwy. The original wooden castle was rebuilt in stone after 1210. Deganwy is in the ecclesiastical parish of Llanrhos, and has a Victorian era Gothic parish church dedicated to All Saints.\nThe name Deganwy has been interpreted in modern times as Din-Gonwy, which would mean \"Fort on the River Conwy\", but the historical spellings make it impossible for this to be the actual origin of the name although mentioned in Domesday Book is \"the territory of the Decanae tribe\". In Middle Welsh, it was written as Degannwy, and in Brythonic as *Decantouion.\nDeganwy formed part of the ancient borough of Conwy from medieval times. The borough was reformed to become a municipal borough in 1877 and was converted into a community in 1974. Deganwy forms part of the Conwy built-up area as defined by the Office for National Statistics, and forms part of the Conwy post town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "deganwy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6823,
+    "attempt": 6775,
+    "place_id": "gn-2651826",
+    "input": {
+      "place": {
+        "place_id": "gn-2651826",
+        "name": "Croxley Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.63333,
+        "lon": -0.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Croxley Green",
+          "url": "https://en.wikipedia.org/wiki/Croxley_Green",
+          "text": "Croxley Green is both a village and a suburb of Rickmansworth in Hertfordshire, England. It is also a civil parish. Located on the A412 between Watford to the northeast and Rickmansworth to the southwest, it is approximately 20 miles (32 km) northwest of central London. It purportedly has the longest village green in England with a length of 1,207.5 metres.\nCroxley Green has changed considerably in the years since John Dickinson built paper mills in the area. The area has grown into a semi-urban community, thanks to Croxley tube station on the Metropolitan line providing connections to London's West End at Baker Street and stations through to the City at Aldgate.\nThe population at the 2011 Census was 12,562. Croxley Green is a part of the UK Parliament constituency, South West Hertfordshire. Gagan Mohindra is the Member of Parliament since the December 2019 United Kingdom general election."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "croxley green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "croxley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6824,
+    "attempt": 6776,
+    "place_id": "gn-2800430",
+    "input": {
+      "place": {
+        "place_id": "gn-2800430",
+        "name": "Chaumont-Gistoux",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.67753,
+        "lon": 4.7212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chaumont-Gistoux",
+          "url": "https://en.wikipedia.org/wiki/Chaumont-Gistoux",
+          "text": "Chaumont-Gistoux (French pronunciation: [ʃomɔ̃ ʒistu]; Walloon: Tchåmont-Djistou) is a municipality of Wallonia located in the Belgian province of Walloon Brabant. On 1 January 2006 Chaumont-Gistoux had a total population of 10,926. The total area is 48.09 km2 which gives a population density of 227 inhabitants per km2.\nIt was formed from the fusion, in 1977, of Dion-Valmont (itself a fusion in 1971 of Dion-le-Val and Dion-le-Mont), Bonlez, Corroy-le-Grand, Longueville and Chaumont-Gistoux. The administrative offices are now in the village of Gistoux.\nIt is a semi-rural municipality with several working farms, large areas given over to fields and forests, although there is a major industry of sand extraction, now mostly in decline. Due to this history there are now several haulage and construction firms based in the municipality.\nChaumont-Gistoux is on the KW-line, a defensive line erected early in the Second World War, intended to prevent invasion from Nazi Germany. A small museum houses information about the line and many exhibits from the war.\nPrincess Claire of Belgium grew up in Chaumont-Gistoux. The Coombs family still resides there to this day, and the Princess, her husband Prince Laurent and their children are often seen in the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "chaumont gistoux",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chaumont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gistoux",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6825,
+    "attempt": 6777,
+    "place_id": "gn-2837093",
+    "input": {
+      "place": {
+        "place_id": "gn-2837093",
+        "name": "Schönaich",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.65871,
+        "lon": 9.06012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schönaich",
+          "url": "https://en.wikipedia.org/wiki/Schönaich",
+          "text": "Schönaich (German pronunciation: [ˈʃøːnaɪç]) is a municipality in the district of Böblingen, Baden-Württemberg, Germany. It is situated 5 km southeast of Böblingen, and 16 km southwest of Stuttgart.\nSchönaich is a township with a population of about 10,000 and is situated at the outskirts of the Schönbuch forest in a scenic location but at the same time close to cities like Böblingen, Sindelfingen, Tübingen, and Stuttgart. A major shopping mall is nearby in Sindelfingen. A number of restaurants or snack bars with German, Italian, Turkish and Chinese food and ice cream parlors offer their services in Schönaich. The Panzerkaserne, an American installation with a commissary, is 3 km away from Schönaich.\nSchönaich has six Kindergarten for children between 3 and 6 years of age and a place for toddlers called \"Kinderhaus\". First grade to fourth grade students attend the local school. From 5th grade on students can either go to one of the high schools (Gymnasium) in Böblingen or continue at the middle school in Schönaich. The graduation from a Gymnasium or an equivalent degree from a foreign school permits access to the universities and colleges in Germany. Universities are in Stuttgart and Tübingen.\nSchönaich has a music school (Jugendmusikschule), an arts school, and an adult education school (Volkshochschule) which offers various courses mainly for adults, but also some for the youth and children.\nDoctors from several fields have their practice in Schönaich: general practitioners; ear, nose and throat; internist; orthopedist; gynecologist; pediatrist; dentists. The closest hospitals are in Böblingen and Sindelfingen.\nPublic transportation is not inexpensive but the connection between Böblingen and Stuttgart is good. Busses go from Schönaich to Böblingen, their schedule is quite good during the day but less frequent at night. The Stuttgart airport (code: STR) is within 20 minutes driving distance from Schönaich. You have easy access to the Autobahn 81 which leads you south to Lake Constanz and Switzerland, or north to Stuttgart where it crosses another major Autobahn to Munich or Karlsruhe. From there you can get to anywhere in Germany on these routes. Tip: the ADAC The German automobile Club gives travel advice. The Black Forest, the Schwäbische Alb with its caves, or Lake Constanz are close enough for a one-day excursion. Tübingen and Bebenhausen are historical places you will enjoy to discover. There are many opportunities for leisure.\nThe TV standard is PAL. Internet access via DSL is possible in all of Schönaich.\nThe local police station is staffed during the day.\nYou find churches from the following denominations in Schönaich: Evangelische Kirchengemeinde (Protestant church), Katholische Kirchengemeinde (Roman Catholic church), Süddeutsche Gemeinschaft Schönaich (a free church close to the Protestant church), Evangelisch-Methodistische Gemeinde (Methodist church), and Neuapostolische Kirche (New Apostolic Church). Services are usually in German.\nIn the industrial area at the outskirts of Schönaich you find the small industry which is typical for the area. Exception: major employers in the area are Hewlett-Packard and IBM in Böblingen, and Mercedes AG in Sindelfingen, all within easy commuting distance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 497
+    },
+    "banned_terms": [
+      {
+        "term": "schonaich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6826,
+    "attempt": 6778,
+    "place_id": "gn-2842644",
+    "input": {
+      "place": {
+        "place_id": "gn-2842644",
+        "name": "Saarburg",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.60641,
+        "lon": 6.54365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saarburg",
+          "url": "https://en.wikipedia.org/wiki/Saarburg",
+          "text": "Saarburg (German pronunciation: [ˈzaːɐ̯bʊʁk] , [ˈzaːɐ̯bʊʁç]) is a town of the Trier-Saarburg district, in the state of Rhineland-Palatinate, Germany, on the banks of the river Saar in the hilly country a few kilometres upstream from the Saar's junction with the Moselle. Now known as a tourist attraction, the river Leuk flows into the town centre and makes a spectacular drop of 18 metres before joining the larger Saar that bisects the town. The waterfall is the result of a 13th-century project to redirect the Leuk through the city centre.\nSaarburg is the seat of the Verbandsgemeinde (\"collective municipality\") Saarburg-Kell. The area around Saarburg is noted for the cultivation of Riesling grapes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "saarburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6827,
+    "attempt": 6779,
+    "place_id": "gn-3085047",
+    "input": {
+      "place": {
+        "place_id": "gn-3085047",
+        "name": "Środa Śląska",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.16406,
+        "lon": 16.59508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Środa Śląska",
+          "url": "https://en.wikipedia.org/wiki/Środa_Śląska",
+          "text": "Środa Śląska (, Polish: [ˈɕrɔda ˈɕlɔ̃ska]; German: Neumarkt in Schlesien) is a town in the Lower Silesian Voivodeship, in south-western Poland. It is the seat of Środa County, and of the smaller administrative district (gmina) called Gmina Środa Śląska. The town lies approximately 32 km (20 mi) west of the regional capital Wrocław, on the Średzka Woda creek. As of 2019, the town has a population of 9,516. It is part of the Wrocław metropolitan area.\nThe town emerged from a medieval Polish trade settlement in the 13th century, and its town rights, granted by Henry the Bearded, became a model for municipal rights of more than 100 towns in Poland. The town has been an important craft and trade center since and has a number of heritage structures, including in Romanesque, Gothic and Baroque styles, and is the site of the discovery of the medieval Środa Treasure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "sroda slaska",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sroda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slaska",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6828,
+    "attempt": 6780,
+    "place_id": "gn-3126633",
+    "input": {
+      "place": {
+        "place_id": "gn-3126633",
+        "name": "Candás",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.58922,
+        "lon": -5.76735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Candás",
+          "url": "https://en.wikipedia.org/wiki/Candás",
+          "text": "Candás is a small fishing village in Asturias, the north of Spain.\nIt is one of 12 parishes (administrative divisions) in Carreño, a municipality within the province and autonomous community of Asturias, in northern Spain.\nSituated at 39 m (128 ft) above sea level, it is\n2.21 km2 (0.85 sq mi) in size, with a population of 6500 (INE 2009). The postal code is 33430.\nThis seafaring village has many places of tourist interest, such as the Antón Museum of Sculpture, a multisports centre and outdoor places, like Baragaña Square, the pier and more.\nOn the pier is located one of the most notable ice-cream shops of Carreño, 'Helados Helio Hermanos'. Founded in 1944, it sells ice cream and hand-made \"turrones\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "candas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

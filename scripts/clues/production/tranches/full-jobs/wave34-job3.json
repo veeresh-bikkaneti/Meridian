@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6688,
+    "attempt": 6641,
+    "place_id": "gn-2161376",
+    "input": {
+      "place": {
+        "place_id": "gn-2161376",
+        "name": "Kingaroy",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -26.53994,
+        "lon": 151.8373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingaroy",
+          "url": "https://en.wikipedia.org/wiki/Kingaroy",
+          "text": "Kingaroy () is a rural town and locality in the South Burnett Region, Queensland, Australia. The town is situated on the junction of the D'Aguilar and the Bunya Highways, 218 kilometres (135 mi) north-west of the state capital Brisbane and 141 kilometres (88 mi) south west of Gympie.  In the 2021 census, the locality of Kingaroy had a population of 10,266 people.\nKingaroy is the seat of the South Burnett Region. It is known as the \"Peanut Capital of Australia\" because Australia's largest peanut processing plant is located in the town and its peanut silo dominates the skyline. Kingaroy is also known as the hometown of former Premier of Queensland, Sir Joh Bjelke-Petersen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "kingaroy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6689,
+    "attempt": 6642,
+    "place_id": "gn-2520428",
+    "input": {
+      "place": {
+        "place_id": "gn-2520428",
+        "name": "Campillos",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.04826,
+        "lon": -4.86308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campillos",
+          "url": "https://en.wikipedia.org/wiki/Campillos",
+          "text": "Campillos is a municipality and town in the province of Málaga, part of the autonomous community of Andalusia in southern Spain. It is located northwest of the province in the comarca of Guadalteba and within the judicial district of Antequera. The municipality is approximately 30 kilometers from Antequera and 70 from the provincial capital. It covers an area of 188 km2 extending from grain fields and olive groves and includes several lakes inhabited by flamingos and storks.\nIt has a population of approximately 8,633 residents according to the National Institute of Statistics (2012). The parish church Our Lady of Repose, Iglesia Parroquial Nuestra Señora del Reposo, near the plaza is a major attraction. The natives are called Campilleros.\nCampillos was founded in 1492.\nIt is home to the Campillos International Piano Competition, first held in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "campillos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6690,
+    "attempt": 6643,
+    "place_id": "gn-2521050",
+    "input": {
+      "place": {
+        "place_id": "gn-2521050",
+        "name": "Benissa",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.71492,
+        "lon": 0.04849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benissa",
+          "url": "https://en.wikipedia.org/wiki/Benissa",
+          "text": "Benissa (Valencian: [beˈnisa], Spanish: Benisa [beˈnisa]) is a small town in Spain in the province of Alicante, 275 m above sea level, and one of the oldest towns on the Costa Blanca.\nThe municipality of Benissa has 4 km of coastline linking the towns of Moraira and Calp.  The scenery of the area includes cliff tops, rocky coves, sandy beaches and tiny bays along the Benissa Costa.  The territory of Benissa also contains  terraced vineyards, mountains and palm trees.  Spanish village houses, with doorsteps directly onto the street, internal courtyards and deceptively spacious inside.  Old finques (a farm or country estate) sit on large plots amongst vineyards with panoramic views to the sea.\nNearby towns along the Costa Blanca are La Fustera, Cala dels Pinets, Cala de La Llobella, Cala l'Advocat, Baladrar and Cap Blanc before reaching Moraira."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "benissa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6691,
+    "attempt": 6644,
+    "place_id": "gn-2639958",
+    "input": {
+      "place": {
+        "place_id": "gn-2639958",
+        "name": "Poulton-le-Fylde",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.83333,
+        "lon": -2.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poulton-le-Fylde",
+          "url": "https://en.wikipedia.org/wiki/Poulton-le-Fylde",
+          "text": "Poulton-le-Fylde (), commonly shortened to Poulton, is a market town in Lancashire, England, situated on the coastal plain called the Fylde. In the 2021–2022 United Kingdom censuses, it had a population of 18,115.\nThere is evidence of human habitation in the area from 12,000 years ago, and several archaeological finds from Roman Britain have been found in the area. At the time of the Norman Conquest, Poulton was a small agricultural settlement in the Hundred of Amounderness. The church of St Chad was recorded in 1094, when it was endowed to Lancaster Priory.\nBy the post-Medieval period, the town had become an important commercial centre for the region with weekly and triannual markets. Goods were imported and exported through two harbours on the River Wyre. In 1837, the town was described as the \"metropolis of the Fylde\", but its commercial importance waned from the mid-19th century with the development of the nearby coastal towns of Fleetwood and Blackpool.\nPoulton has the administrative centre of the Borough of Wyre and is in the parliamentary constituency of Fylde. It is part of the Blackpool Urban Area and approximately 5 miles (8 km) from Blackpool town centre. There are rail links to Blackpool and Preston, and bus routes to the larger towns and villages of the Fylde.\nPoulton has a library and two secondary schools: Baines School and Hodgson Academy. There is a farmers' market once a month, and since October 2011 there has been a weekly market on Mondays in the centre of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "poulton le fylde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "poulton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fylde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6692,
+    "attempt": 6645,
+    "place_id": "gn-2640348",
+    "input": {
+      "place": {
+        "place_id": "gn-2640348",
+        "name": "Petersfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.00495,
+        "lon": -0.93375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petersfield",
+          "url": "https://en.wikipedia.org/wiki/Petersfield",
+          "text": "Petersfield is a market town and civil parish in the East Hampshire district of Hampshire, England. It is 15 miles (24 km) north of Portsmouth. The town has its own railway station on the Portsmouth Direct line, the mainline rail link connecting Portsmouth and London Waterloo. Situated below the northern slopes of the South Downs, Petersfield lies wholly within the South Downs National Park.\nThe town is on the crossroads of well-used north–south (formerly the A3 road which now bypasses the town) and east–west routes (today the A272 road) and it grew as a coach stop on the Portsmouth to London route. Petersfield is twinned with Barentin in France, and Warendorf in Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "petersfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6693,
+    "attempt": 6646,
+    "place_id": "gn-2656340",
+    "input": {
+      "place": {
+        "place_id": "gn-2656340",
+        "name": "Bargoed",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.68333,
+        "lon": -3.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bargoed",
+          "url": "https://en.wikipedia.org/wiki/Bargoed",
+          "text": "Bargoed (Welsh: Bargod) is a town and community in the Rhymney Valley, Wales, one of the South Wales Valleys. It lies on the Rhymney River in the county borough of Caerphilly. It straddles the ancient boundary of Glamorgan and Monmouthshire, with Bargoed lying in Glamorgan and Aberbargoed in Monmouthshire. 'Greater Bargoed', as defined by the local authority Caerphilly County Borough Council, consists of the towns of Bargoed and Aberbargoed and the village of Gilfach. The combined population of these settlements is about 13,000. The town's rugby club Bargoed RFC holds the world record for the most consecutive league wins in a row and was World Rugby magazine's team of the year in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "bargoed",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6694,
+    "attempt": 6647,
+    "place_id": "gn-2656528",
+    "input": {
+      "place": {
+        "place_id": "gn-2656528",
+        "name": "Ballyclare",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.75089,
+        "lon": -5.99944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballyclare",
+          "url": "https://en.wikipedia.org/wiki/Ballyclare",
+          "text": "Ballyclare (from Irish Bealach Cláir, meaning 'pass of the plain') is a market town in County Antrim, Northern Ireland. It is located within the Antrim and Newtownabbey Borough Council area, approximately 13 miles (21 km) north-northwest of Belfast. The town had a population of 10,850 according to the 2021 census. It is the principal settlement in the Ballyclare District Electoral Area.\nIt sits on the river Six Mile Water. The town probably owes its origins to its being a crossing point of the river, the strategic importance of which is shown by existence of a small Norman motte on the south side of the river and presently located in the War Memorial Park. The broad main street dates from the 17th century. In the centre of the town is the Market Square with the Town Hall. The town grew in the 19th century with the coming of the railway and it became an important industrial town with a large paper mill in the South West of the town and a large Linen Bleach Green. These factories gave their names to the roads leading to them, the Mill Road and the Green Road, but have been closed for some time. It is now a local service centre with a significant dormitory role in relation to Belfast. It is the main focus within the rural area for shopping, education and recreation. To the north is the remnant of Craig Hill, which once provided a wooded backdrop but is now covered with modern housing. Much of the Craig Hill has been quarried for its basalt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "ballyclare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6695,
+    "attempt": 6648,
+    "place_id": "gn-2657774",
+    "input": {
+      "place": {
+        "place_id": "gn-2657774",
+        "name": "Abram",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.50855,
+        "lon": -2.59266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abram, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Abram,_Greater_Manchester",
+          "text": "Abram is a village and electoral ward in the Metropolitan Borough of Wigan, Greater Manchester, England. It lies on flat land on the northeast bank of the Leeds and Liverpool Canal, 2 miles (3.2 km) west of Leigh, 3 miles (4.8 km) southeast of Wigan, and 14.5 miles (23 km) west of Manchester. Abram is a dormitory village with a population of 9,855.\nHistorically part of Lancashire, Abram anciently formed a township and chapelry in the parish of Wigan and hundred of West Derby. Abram appears in an entry of an ancient survey of Lancashire in 1212 under the name \"Edburgham\".\nThe urbanisation and development of Abram largely coincided with the Industrial Revolution. Abram is at the centre of a coal district, and industrial scale coal mining was introduced to Abram around the middle of the 19th century with the opening of several collieries. In 1911, Abram was described as \"distinctly unpicturesque ... trees are in the minority, and stunted and blackened with smoke\", with \"collieries, pit-banks, and railway lines\" as well as \"much pasture land\". The Maypole Colliery Disaster in 1908 resulted in 75 deaths and profoundly changed the character of the village.\nAbram's coal mining industry declined in the mid-20th century, but the village has continued to grow due to its position between Leigh, Manchester, Warrington and Wigan. To the south of the village lies Abram Flashes, a 39.6 hectares (97.9 acres) area of shallow wetlands and a Site of Special Scientific Interest. Abram has historic associations with traditional morris dancing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "abram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6696,
+    "attempt": 6649,
+    "place_id": "gn-273203",
+    "input": {
+      "place": {
+        "place_id": "gn-273203",
+        "name": "Byblos",
+        "country": "Lebanon",
+        "subdivision": "Mount Lebanon",
+        "lat": 34.12111,
+        "lon": 35.64806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Byblos",
+          "url": "https://en.wikipedia.org/wiki/Byblos",
+          "text": "Byblos ( BIB-loss; Ancient Greek: Βύβλος), also known as Jbail, Jebeil, Jbeil or Jubayl (Arabic: جُبَيْل, romanized: Jubayl, locally Jbeil [ʒ(ə)beːl]), is an ancient city in the Keserwan-Jbeil Governorate of Lebanon. The area is believed to have been first settled between 8800 and 7000 BC and continuously inhabited since 5000 BC. During its history, Byblos was part of numerous cultures including Canaanite, Egyptian, Phoenician, Assyrian, Persian, Hellenistic, Roman, Umayyad, Abbasid, Genoese, Ayyubid, Mamluk and Ottoman. Urbanisation is thought to have begun during the third millennium BC when it developed into a city, making it one of the oldest cities in the world,  if not the oldest. It is a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "byblos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6697,
+    "attempt": 6650,
+    "place_id": "gn-2742965",
+    "input": {
+      "place": {
+        "place_id": "gn-2742965",
+        "name": "Amarante",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.27271,
+        "lon": -8.08245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amarante, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Amarante,_Portugal",
+          "text": "Amarante (Portuguese pronunciation: [ɐmɐˈɾɐ̃tɨ] ) is a city and a municipality in the Tâmega e Sousa subregion in northern Portugal. The population in 2021 was 52,116, in an area of 301.33 square kilometres (116.34 mi2). The city itself, encompassed by the parish of São Gonçalo, Madalena, Cepelos and Gatão had a population of 11,564 in 2021. The city has been part of the UNESCO Creative Cities Network under the category of City of Music since 2017.\nIt is reputed to have helped local forces fend off a French attack in the early 19th century. Amarante is also associated with the priest and saint Gundisalvus of Amarante, known locally as São Gonçalo de Amarante."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "amarante",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6698,
+    "attempt": 6651,
+    "place_id": "gn-2744042",
+    "input": {
+      "place": {
+        "place_id": "gn-2744042",
+        "name": "Zandvoort",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.37125,
+        "lon": 4.53306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zandvoort",
+          "url": "https://en.wikipedia.org/wiki/Zandvoort",
+          "text": "Zandvoort (Dutch pronunciation: [ˈzɑntfoːrt] ) is a municipality in the province of North Holland, Netherlands. It is one of the major beach resorts of the Netherlands; it has a long sandy beach. It is bordered by coastal dunes of Zuid-Kennemerland National Park and the Amsterdam water supply dunes. It hosts the country's most prominent motor racing circuit, Circuit Zandvoort—the host of the Dutch Grand Prix from 1950 through 1985 and from 2021 to 2026.\nThe municipality extends inland to take in Bentveld; it had a population of 17,374 in 2025. A nudist bathing section of the beach with six eateries begins about 2 km (1¼ miles) to the south and extends kilometers further."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "zandvoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6699,
+    "attempt": 6652,
+    "place_id": "gn-2797376",
+    "input": {
+      "place": {
+        "place_id": "gn-2797376",
+        "name": "Gosselies",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.46936,
+        "lon": 4.43324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gosselies",
+          "url": "https://en.wikipedia.org/wiki/Gosselies",
+          "text": "Gosselies (French pronunciation: [ɡɔsli]; Walloon: Gochliye) is a town of Wallonia and a district of the municipality of Charleroi, located in the province of Hainaut, Belgium.\nLocated in the north of Charleroi, it was a city and a municipality of its own before the merger of the municipalities in 1977. Gosselies was the home of the headquarters of Caterpillar Belgium, as well as Solar Turbines Europe. The Brussels South Charleroi Airport (BSCA) is located in Gosselies too.\nOn the pre-metro line M3, opened in June 2013, there are nine stations located in Gosselies. Since this date, Gosselies has been re-connected with the center of Charleroi and the SNCB Charleroi-South railway station by tram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "gosselies",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6700,
+    "attempt": 6653,
+    "place_id": "gn-2835260",
+    "input": {
+      "place": {
+        "place_id": "gn-2835260",
+        "name": "Schwanewede",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.22398,
+        "lon": 8.58969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwanewede",
+          "url": "https://en.wikipedia.org/wiki/Schwanewede",
+          "text": "Schwanewede (German pronunciation: [ˈʃvaːnəveːdə]) is a municipality in the district of Osterholz, in Lower Saxony, Germany. It is situated approximately 14 km west of Osterholz-Scharmbeck, and 22 km northwest of Bremen.\nIt belonged to the Prince-Archbishopric of Bremen. In 1648, the Prince-Archbishopric was transformed into the Duchy of Bremen, which Sweden first ruled over in a personal union. In 1715, the Hanoverian Crown started to rule over Schwanwede until 1823, in which the Duchy was abolished, leading all of its territory to become part of the Stade Region.\nSchwanewede consists of 12 smaller villages which form the municipality of Schwanewede, namely Beckedorf, Löhnhorst, Meyenburg, Aschwarden, Neuenkirchen, Brundorf, Eggestedt, Harriersand, Hinnebeck, Leuchtenburg and Rade.\nThe Farge concentration camp is located in Schwanewede-Neuenkirchen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "schwanewede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6701,
+    "attempt": 6654,
+    "place_id": "gn-2947026",
+    "input": {
+      "place": {
+        "place_id": "gn-2947026",
+        "name": "Bogen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.91122,
+        "lon": 12.68955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bogen, Germany",
+          "url": "https://en.wikipedia.org/wiki/Bogen,_Germany",
+          "text": "Bogen (German pronunciation: [ˈboːɡn̩] ; Central Bavarian: Boong) is a town in the district of Straubing-Bogen in Bavaria, Germany. It has a population of 10,105. Bogen is located between the southern slopes of the Bavarian Forest and the River Danube. The town lies at the foot of the Bogenberg, a hill immediately on the Danube. The pilgrimage church of the Assumption of the Virgin Mary (Mariä Himmelfahrt) on the Bogenberg is the destination of one of the oldest pilgrimages for Saint Mary in Bavaria (first mentioned in 1103).\nThis was also the seat of power of the Counts of Bogen, who died out in 1242, before the fief passed over to the Wittelsbachs. Since 1958, the German Army has been based at the Graf-Aswin-Kaserne military barracks in Bogen. The barracks are home to army engineers and are used for training medics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "bogen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6702,
+    "attempt": 6655,
+    "place_id": "gn-296137",
+    "input": {
+      "place": {
+        "place_id": "gn-296137",
+        "name": "Yumurtalık",
+        "country": "Türkiye",
+        "subdivision": "Adana",
+        "lat": 36.76863,
+        "lon": 35.78938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yumurtalık",
+          "url": "https://en.wikipedia.org/wiki/Yumurtalık",
+          "text": "Yumurtalık (Turkish: [juˈmuɾtaɫɯk]), formerly called Aegeae, Ayas, Lyeys or Laiazzo, is a municipality and district of Adana Province, Turkey. Its area is 447 km2, and its population is 17,654 (2022). It is a Mediterranean port and resort town at a distance of about 40 km (25 mi) from Adana city. The resident population of the town Yumurtalık is 5,739 (2022), but in the summer, it rises to 40,000 people since many inhabitants of Adana have holiday homes here. There are also many daily visitors during the holiday season.\nYumurtalık has a large free economic zone housing the production units of up to thirty companies presently in operation or in phase of being built. Fields of activities include industries ranging from petrochemicals, synthetic fibers and steel industry, and there are also plans for establishing a major shipyard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "yumurtal k",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yumurtal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6703,
+    "attempt": 6656,
+    "place_id": "gn-2994617",
+    "input": {
+      "place": {
+        "place_id": "gn-2994617",
+        "name": "Mende",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 44.52161,
+        "lon": 3.49978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mende, Lozère",
+          "url": "https://en.wikipedia.org/wiki/Mende,_Lozère",
+          "text": "Mende (French pronunciation: [mɑ̃d], Occitan pronunciation: [ˈmende]) is a commune and the prefecture of the department of Lozère, in the region of Occitania, Southern France. Its inhabitants are called the Mendois. The city, including the first traces of dwellings date back to 200 BC, was originally named Mimata, probably in reference to the mountains that surround it.\nMende is located between Clermont-Ferrand and Montpellier, but also on the axis of Lyon–Saint-Étienne–Albi–Toulouse. The other important nearby towns are Aurillac and Saint-Flour (Cantal), Le Puy-en-Velay (Haute-Loire), Rodez, Millau (Aveyron) and Alès and Nîmes (Gard).\nEven though Mende remains a relatively sparsely populated city (approximately 12,000 inhabitants), it remains the most important of the Lozère Department. In addition, it is the city-centre of the only urban area of this department.\nIt is the seat of the Roman Catholic Diocese of Mende."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "mende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6704,
+    "attempt": 6657,
+    "place_id": "gn-3014393",
+    "input": {
+      "place": {
+        "place_id": "gn-3014393",
+        "name": "Guer",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 47.90404,
+        "lon": -2.12031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guer",
+          "url": "https://en.wikipedia.org/wiki/Guer",
+          "text": "Guer (French pronunciation: [ɡɛʁ]; Breton: Gwern-Porc'hoed) is a commune in the Morbihan department in Brittany in north-western France.\nIt is located at the edge of the famous Brocéliande Forest, which is the setting of the Round Table novels in Brittany. It is 43 km (27 mi) southwest from Rennes, the regional capital.\nCamp Coëtquidan (Camp de Coëtquidan) is located in Guer and comprises three military educational facilities:\n\nÉcole Spéciale Militaire de Saint-Cyr, France's foremost military academy dedicated to the training of Army officers through direct recruitment;\nÉcole militaire interarmes (inter-services military school), for non-commissioned officers; and\nÉcole Militaire des Aspirants de Coëtquidan (Coetquidan's cadets' military school), for direct recruitment officers under timed contracts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "guer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6705,
+    "attempt": 6658,
+    "place_id": "gn-3021296",
+    "input": {
+      "place": {
+        "place_id": "gn-3021296",
+        "name": "Divonne-les-Bains",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.3571,
+        "lon": 6.13494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Divonne-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/Divonne-les-Bains",
+          "text": "Divonne-les-Bains (French pronunciation: [divɔn le bɛ̃]; lit. 'Divonne-the-Baths'; Arpitan: Digouona), or simply Divonne, is a commune in the Ain department in the Auvergne-Rhône-Alpes region in Eastern France.\nDivonne-les-Bains is a spa town situated on the border with French-speaking Switzerland, between the foot of the Jura Mountains and Lake Geneva. It is situated in the Pays de Gex, about 8 km (5.0 mi) from Gex to the southwest, from which the area takes its name. Divonne-les-Bains is about 20 km (12 mi) from Geneva to the south and 10 km (6.2 mi) from Nyon to the northeast. Since 2012, Divonne-les-Bains has formed part of a wider agglomeration known as the Grand Genève (Greater Geneva). A short way above the town are several springs, which were exploited in the 19th century to provide spa facilities for which Divonne-les-Bains became renowned. The golf course was built in the 1930s. Many of its present-day amenities (casino, hippodrome, open air swimming pool, as well as the Lac de Divonne, an artificial lake) were built after 1945. The Casino de Divonne was opened in 1954. A cultural centre by the lake (L'Esplanade du Lac) was completed in 2005.\nDivonne-les-Bains used to host a small chamber music festival every summer, centred on its tiny theatre and the Domaine de Divonne. The Château of Divonne, now a luxury hotel, suffered a serious fire in January 2017; it is currently being rebuilt. There is a lively market on Sundays and a succession of cultural and sporting events throughout the year. Every year, the town hosts a folk festival in the beginning of July at the hippodrome called Les Vaches Folks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "divonne les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "divonne",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6706,
+    "attempt": 6659,
+    "place_id": "gn-3091256",
+    "input": {
+      "place": {
+        "place_id": "gn-3091256",
+        "name": "Myślenice",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.83383,
+        "lon": 19.9383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myślenice",
+          "url": "https://en.wikipedia.org/wiki/Myślenice",
+          "text": "Myślenice [mɨɕlɛˈɲit͡sɛ] is a town in southern Poland situated in the Lesser Poland Voivodeship, 30 km south of Kraków. The town is divided into six districts. The most popular of them, Zarabie, is a famous tourist destination. It is located behind the Raba river (Zarabie meaning \"Beyond the (River) Raba\"), next to Chełm district on the slope of the hill of the same name, where is a view tower and a landscape park and ski lifts.\nMyślenice is a city located in the tectonic window area, between the Dalin, Chełm and Uklejna hills. The city is also located on the border of two Beskids (in the south) and the foothills (in the north). From the western bank of the Raba River these are Maków Beskids and Wieliczka Foothills  while on the eastern bank of the river - Island Beskids and Wiśnicz Foothills.\nMyślenice has a direct and very convenient bus connection with Kraków however there is no train station in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "myslenice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6707,
+    "attempt": 6660,
+    "place_id": "gn-3124768",
+    "input": {
+      "place": {
+        "place_id": "gn-3124768",
+        "name": "Colmenarejo",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.56063,
+        "lon": -4.01713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colmenarejo",
+          "url": "https://en.wikipedia.org/wiki/Colmenarejo",
+          "text": "Colmenarejo (Spanish: [kolmenaˈɾexo] ) is a Spanish town and municipality in the Community of Madrid, located in the northwest of the region, in the foothills of the Sierra de Guadarrama, 899 meters high and 37 kilometers away from the capital. It is bordered to the north by El Escorial, to the east by Galapagar, to the south by Villanueva del Pardillo and to the west by Valdemorillo. Its only road access is the M 510, from Galapagar or from Valdemorillo. It has in its municipality with the east bank of the reservoir of Valmayor, second in capacity of the Region of Madrid, with the third Campus of the University Carlos III of Madrid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "colmenarejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
