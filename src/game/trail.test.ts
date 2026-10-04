@@ -1,14 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  clearClearedMark,
+  clearedMarkKey,
   createDealer,
   cycleSeed,
   difficultyWeight,
+  isBandCleared,
+  markClearedCelebrated,
   memorySeenStore,
   mintSeed,
   poolForNewRun,
   seenStoreFor,
   shufflePlaces,
+  wasClearedCelebrated,
   weightedShufflePlaces,
 } from "./trail.ts";
 
@@ -67,9 +72,10 @@ test("poolForNewRun excludes the persistent history (cross-day no-repeat)", () =
   // Simulate a previous run (any day — the date is irrelevant now): a and c
   // were dealt, c most recently.
   store.write(["a", "c"]);
-  const { poolIds, prevLastId } = poolForNewRun(places, store);
+  const { poolIds, prevLastId, cycleCompleted } = poolForNewRun(places, store);
   assert.deepEqual(poolIds, ["b", "d"]);
   assert.equal(prevLastId, "c");
+  assert.equal(cycleCompleted, false);
   const pool = places.filter((p) => poolIds.includes(p.id));
   const dealer = createDealer(pool, 99, store, 0, prevLastId);
   assert.deepEqual(new Set([dealer.at(0)!.id, dealer.at(1)!.id]), new Set(["b", "d"]));
@@ -87,6 +93,7 @@ test("a new run on another day deals only unseen places (persistent history)", (
   const day1 = poolForNewRun(places, store);
   assert.deepEqual(day1.poolIds, ["a", "b", "c"]);
   assert.equal(day1.prevLastId, null);
+  assert.equal(day1.cycleCompleted, false);
   const dealer1 = createDealer(places, 5, store, 0, day1.prevLastId);
   dealer1.markDealtThrough(1);
   assert.equal(store.read().length, 2);
@@ -95,6 +102,7 @@ test("a new run on another day deals only unseen places (persistent history)", (
   const day2 = poolForNewRun(places, store);
   const dealtDay1 = store.read();
   assert.equal(day2.poolIds.length, 1);
+  assert.equal(day2.cycleCompleted, false);
   assert.ok(!dealtDay1.includes(day2.poolIds[0]!));
   assert.equal(day2.prevLastId, day1Last);
   const pool2 = places.filter((p) => day2.poolIds.includes(p.id));
@@ -104,6 +112,7 @@ test("a new run on another day deals only unseen places (persistent history)", (
   dealer2.markDealtThrough(0);
   const day3 = poolForNewRun(places, store);
   assert.deepEqual(day3.poolIds, ["a", "b", "c"]);
+  assert.equal(day3.cycleCompleted, true);
   assert.deepEqual(store.read(), []);
   assert.equal(day3.prevLastId, day2.poolIds[0]);
 });
@@ -215,8 +224,10 @@ test("a two-place pool still avoids the boundary repeat", () => {
   const run1 = poolForNewRun(places, store);
   const d1 = createDealer(places, 11, store, 0, run1.prevLastId);
   d1.markDealtThrough(1);
+  assert.equal(run1.cycleCompleted, false);
   const run2 = poolForNewRun(places, store);
   assert.deepEqual(run2.poolIds, ["a", "b"]);
+  assert.equal(run2.cycleCompleted, true);
   assert.deepEqual(store.read(), []);
   const d2 = createDealer(places, 22, store, 0, run2.prevLastId);
   assert.notEqual(d2.at(0)!.id, run2.prevLastId);
@@ -339,9 +350,10 @@ test("v1 migration routes each entry to its own edition/region", () => {
 });
 
 test("poolForNewRun on an empty catalog yields an empty pool (fail closed)", () => {
-  const { poolIds, prevLastId } = poolForNewRun([], memorySeenStore());
+  const { poolIds, prevLastId, cycleCompleted } = poolForNewRun([], memorySeenStore());
   assert.deepEqual(poolIds, []);
   assert.equal(prevLastId, null);
+  assert.equal(cycleCompleted, false);
   assert.equal(createDealer([], 5, memorySeenStore()).at(0), null);
 });
 
@@ -596,6 +608,7 @@ test("one band's dealt history never shrinks another band's pool (repeat-mode re
     eDealer.markDealtThrough(2);
     const eRun2 = poolForNewRun(easy, easyStore());
     assert.equal(eRun2.poolIds.length, 3, "easy starts a fresh full cycle");
+    assert.equal(eRun2.cycleCompleted, true);
 
     // Medium's partial history survived easy's reset untouched.
     const mRun2 = poolForNewRun(medium, mediumStore());
@@ -604,6 +617,7 @@ test("one band's dealt history never shrinks another band's pool (repeat-mode re
       2,
       "medium still excludes its 2 dealt places after easy's cycle reset",
     );
+    assert.equal(mRun2.cycleCompleted, false);
   });
 });
 
@@ -625,4 +639,161 @@ test("legacy v1 entries route to the medium band and the unscoped key folds in",
       "legacy v1 keys pruned",
     );
   });
+});
+
+test("poolForNewRun reports cycleCompleted exactly on the reset branch", () => {
+  const places = [{ id: "a" }, { id: "b" }, { id: "c" }];
+  // Fresh history: no completion, full catalog dealt.
+  const freshRun = poolForNewRun(places, memorySeenStore());
+  assert.equal(freshRun.cycleCompleted, false);
+  assert.deepEqual(freshRun.poolIds, ["a", "b", "c"]);
+  assert.equal(freshRun.prevLastId, null);
+  // Partial history: still no completion.
+  const partial = memorySeenStore();
+  partial.write(["a"]);
+  const partialRun = poolForNewRun(places, partial);
+  assert.equal(partialRun.cycleCompleted, false);
+  assert.deepEqual(partialRun.poolIds, ["b", "c"]);
+  assert.equal(partialRun.prevLastId, "a");
+  // History covers the catalog: the reset fires, the pool is the full
+  // catalog again, the store is cleared, and prevLastId survives.
+  const full = memorySeenStore();
+  full.write(["a", "b", "c"]);
+  const resetRun = poolForNewRun(places, full);
+  assert.equal(resetRun.cycleCompleted, true);
+  assert.deepEqual(resetRun.poolIds, ["a", "b", "c"]);
+  assert.deepEqual(full.read(), []);
+  assert.equal(resetRun.prevLastId, "c");
+  // Empty catalog: never a completion (nothing to celebrate).
+  const emptyRun = poolForNewRun([], memorySeenStore());
+  assert.equal(emptyRun.cycleCompleted, false);
+  assert.deepEqual(emptyRun.poolIds, []);
+  assert.equal(emptyRun.prevLastId, null);
+});
+
+test("clearedMarkKey is band-scoped, stable, and disjoint from seen keys", () => {
+  assert.equal(
+    clearedMarkKey("state", "arkansas", "easy"),
+    "meridian:cleared:v1:state:arkansas:easy",
+  );
+  assert.equal(
+    clearedMarkKey("globe", "globe", "hard"),
+    "meridian:cleared:v1:globe:globe:hard",
+  );
+  // Easy and medium must not collide.
+  assert.notEqual(
+    clearedMarkKey("state", "arkansas", "easy"),
+    clearedMarkKey("state", "arkansas", "medium"),
+  );
+  // The cleared namespace is disjoint from the seen namespace (v1 and v2).
+  const key = clearedMarkKey("globe", "globe", "easy");
+  assert.ok(!key.startsWith("meridian:seen:"));
+});
+
+test("cleared marks round-trip per band (set/check/clear, no cross-band collision)", () => {
+  withFakeStorage((backing) => {
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+    markClearedCelebrated("state", "ark", "easy");
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), true);
+    assert.equal(
+      backing.get("meridian:cleared:v1:state:ark:easy"),
+      "1",
+      "mark lands under the band-scoped key",
+    );
+    // Other bands are independent.
+    assert.equal(wasClearedCelebrated("state", "ark", "medium"), false);
+    markClearedCelebrated("state", "ark", "medium");
+    assert.equal(wasClearedCelebrated("state", "ark", "medium"), true);
+    assert.equal(wasClearedCelebrated("state", "ark", "hard"), false);
+    // Marking twice is idempotent.
+    markClearedCelebrated("state", "ark", "medium");
+    assert.equal(wasClearedCelebrated("state", "ark", "medium"), true);
+    // Distinct editions/regions don't collide.
+    assert.equal(wasClearedCelebrated("globe", "globe", "medium"), false);
+    // Clearing one band leaves the other band's mark intact.
+    clearClearedMark("state", "ark", "easy");
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+    assert.equal(wasClearedCelebrated("state", "ark", "medium"), true);
+    assert.ok(!backing.has("meridian:cleared:v1:state:ark:easy"));
+    assert.ok(backing.has("meridian:cleared:v1:state:ark:medium"));
+    // Clearing an unset mark is a no-op.
+    clearClearedMark("state", "ark", "hard");
+    assert.equal(wasClearedCelebrated("state", "ark", "hard"), false);
+  });
+});
+
+test("cleared marks fail open when storage throws", () => {
+  const throwing = {
+    getItem: (_k: string): string | null => {
+      throw new Error("storage denied");
+    },
+    setItem: (_k: string, _v: string): void => {
+      throw new Error("storage denied");
+    },
+    removeItem: (_k: string): void => {
+      throw new Error("storage denied");
+    },
+    get length(): number {
+      throw new Error("storage denied");
+    },
+    key: (_i: number): string | null => {
+      throw new Error("storage denied");
+    },
+  };
+  const g = globalThis as { localStorage?: unknown };
+  const prev = g.localStorage;
+  g.localStorage = throwing;
+  try {
+    // A storage hiccup degrades to "not celebrated" and must never throw —
+    // dealing and the game keep working.
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+    markClearedCelebrated("state", "ark", "easy");
+    clearClearedMark("state", "ark", "easy");
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+  } finally {
+    if (prev === undefined) delete g.localStorage;
+    else g.localStorage = prev;
+  }
+});
+
+test("cleared marks fail open when storage is unavailable", () => {
+  const g = globalThis as { localStorage?: unknown };
+  const prev = g.localStorage;
+  delete g.localStorage;
+  try {
+    // Node has no localStorage: safeStorage() returns null, every helper
+    // degrades silently.
+    assert.equal(wasClearedCelebrated("state", "ark", "easy"), false);
+    markClearedCelebrated("state", "ark", "easy");
+    clearClearedMark("state", "ark", "easy");
+  } finally {
+    if (prev === undefined) delete g.localStorage;
+    else g.localStorage = prev;
+  }
+});
+
+test("isBandCleared is true when the store covers the catalog", () => {
+  const store = memorySeenStore();
+  store.write(["a", "b", "c"]);
+  assert.equal(isBandCleared(["a", "b", "c"], store), true);
+  // Pure: the store is unchanged after the call.
+  assert.deepEqual(store.read(), ["a", "b", "c"]);
+});
+
+test("isBandCleared is false on a partial history", () => {
+  const partial = memorySeenStore();
+  partial.write(["a"]);
+  assert.equal(isBandCleared(["a", "b"], partial), false);
+  assert.equal(isBandCleared(["a", "b"], memorySeenStore()), false);
+  // Extra ids outside the catalog are harmless.
+  const extra = memorySeenStore();
+  extra.write(["a", "b", "z"]);
+  assert.equal(isBandCleared(["a", "b"], extra), true);
+});
+
+test("isBandCleared is false for an empty catalog (never celebrate nothing)", () => {
+  const store = memorySeenStore();
+  store.write(["a"]);
+  assert.equal(isBandCleared([], store), false);
+  assert.equal(isBandCleared([], memorySeenStore()), false);
 });
