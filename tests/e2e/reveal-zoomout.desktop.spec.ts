@@ -37,17 +37,14 @@ test.beforeEach(async ({ context }) => {
 /**
  * Warmup: the shared startGlobeRun's 15 s map-mount timeout flakes on a cold
  * browser (first software-WebGL map init), failing whatever test runs first.
- * Mount the map once here with retries so the real tests run warm.
+ * Navigate once and wait generously for the map so the real tests run warm.
  */
 test("warmup: first map mount", async ({ page }) => {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      await startGlobeRun(page);
-      return;
-    } catch (e) {
-      if (attempt === 2) throw e;
-    }
-  }
+  await page.goto("http://127.0.0.1:4123/Meridian/?idle-ms=3600000");
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 120_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 60_000 });
+  await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");
 });
 
 const mapEl = (page: Page) => page.locator(".satellite-map");
