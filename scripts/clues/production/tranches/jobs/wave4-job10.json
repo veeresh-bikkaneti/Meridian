@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4088,
+    "place_id": "gn-2202064",
+    "input": {
+      "place": {
+        "place_id": "gn-2202064",
+        "name": "Nadi",
+        "country": "Fiji",
+        "subdivision": "Western",
+        "lat": -17.80309,
+        "lon": 177.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nadi",
+          "url": "https://en.wikipedia.org/wiki/Nadi",
+          "text": "Nadi (Fijian: [ˈnandi]  nan-DEE, Hindi: नंदी) is the third-largest city in Fiji, after Suva and Lautoka. It is located on the western side of the main island of Viti Levu, and had a population of 59,707 at the most recent census, in 2017. Nadi is multiracial with many of its inhabitants Asians, Indian or Indigenous Fijians, along with a large transient population of foreign tourists. Along with sugar cane production, tourism is a mainstay of the local economy.\nThe Nadi region has Fiji's highest concentration of hotels and motels. With its large Indo-Fijian population, Nadi is a centre for Hinduism in Fiji."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "nadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4089,
+    "place_id": "gn-243590",
+    "input": {
+      "place": {
+        "place_id": "gn-243590",
+        "name": "Iriba",
+        "country": "Chad",
+        "subdivision": "Wadi Fira",
+        "lat": 15.11667,
+        "lon": 22.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iriba",
+          "url": "https://en.wikipedia.org/wiki/Iriba",
+          "text": "Iriba (Arabic: هريبا) is a small town in the Wadi Fira Region of Chad. It is known as part of the Kobé Department as well as having its own prefecture and area court. It is currently being served by the Iriba Airport.\nIriba has a desert climate with two distinct periods, dry and rainy seasons. During the rainy season, considerable rainfall occurs in the area, which disappears rapidly in the seasonal rivers named \"Wadi\". The winters (from December to February) can be quite cold, and the summertime is extremely hot and dry, with water shortage being a chronic problem in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "iriba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4090,
+    "place_id": "gn-2527915",
+    "input": {
+      "place": {
+        "place_id": "gn-2527915",
+        "name": "Tinghir",
+        "country": "Morocco",
+        "subdivision": "Drâa-Tafilalet",
+        "lat": 31.51472,
+        "lon": -5.53278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tinghir",
+          "url": "https://en.wikipedia.org/wiki/Tinghir",
+          "text": "Tinghir is a city in the region of Drâa-Tafilalet, south of the High Atlas and north of Saghro. It is the capital of Tinghir Province.\nLush palm trees cover about 38 km on tracts 500 to 1500 metre wide along the Wadi Todgha. After the Todra Gorge, Wadi Todgha has a difficult passage along the southern slopes of the Atlas Mountains (Tizgi); it then flows across the plain, meandering slightly over 20 kilometres (12 mi) to Ferkla. The palm oasis, dense and widespread, is irrigated by a network of pipes and irrigation canals. Occasional heavy rains are absorbed in a few days."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "tinghir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4102,
+    "place_id": "gn-3353811",
+    "input": {
+      "place": {
+        "place_id": "gn-3353811",
+        "name": "Otjiwarongo",
+        "country": "Namibia",
+        "subdivision": "Otjozondjupa Region",
+        "lat": -20.46369,
+        "lon": 16.64772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otjiwarongo",
+          "url": "https://en.wikipedia.org/wiki/Otjiwarongo",
+          "text": "Otjiwarongo (Herero for \"beautiful place\") is a city of 49,000 inhabitants in Namibia. It is the capital of Otjozondjupa Region, and it also houses the constituency office of the Otjiwarongo electoral constituency.\nOtjiwarongo is situated in central-north Namibia on the TransNamib railway. It is the biggest business centre in the Otjozondjupa Region. Otjiwarongo is located on the B1 road and its links to the capital Windhoek, the Golden Triangle of Otavi, Tsumeb and Grootfontein, and Etosha National Park. It is one of Namibia's fast-growing towns, with a neat and peaceful quality environment and many excellent facilities, including supermarkets, banks, lodges, and hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "otjiwarongo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4105,
+    "place_id": "gn-3435103",
+    "input": {
+      "place": {
+        "place_id": "gn-3435103",
+        "name": "Curuzú Cuatiá",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -29.79145,
+        "lon": -58.0499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curuzú Cuatiá",
+          "url": "https://en.wikipedia.org/wiki/Curuzú_Cuatiá",
+          "text": "Curuzú Cuatiá is a city in the south of the province of Corrientes in the Argentine Mesopotamia. It had about 34,000 inhabitants at the 2010 census [INDEC], and is the head town of the Curuzú Cuatiá Department.\nThe area has an undulated terrain, with many small rivers and streams that empty into the Paraná River in the west, or into the Uruguay River in the east. The climate is wet subtropical, with uniformly distributed annual rainfall of 1,200 mm on average. The average temperatures are 14.5 °C (winter) and 26 °C (summer), with recorded extremes of −3 °C and 44 °C respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "curuzu cuatia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "curuzu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuatia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4112,
+    "place_id": "gn-3868158",
+    "input": {
+      "place": {
+        "place_id": "gn-3868158",
+        "name": "Villarrica",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -39.28569,
+        "lon": -72.2279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villarrica, Chile",
+          "url": "https://en.wikipedia.org/wiki/Villarrica,_Chile",
+          "text": "Villarrica is a city and commune in southern Chile located on the western shore of Villarrica Lake in the Province of Cautín, Araucanía Region 746 km (464 mi) south of Santiago and close to the Villarrica Volcano ski center to the south east. Residents of Villarrica are known as Villarricences.\nTourism, grain and dairy farming, and forestry are the main economic activities of the community. The climate is mild and humid with the greatest rainfall experienced between May and July (autumn and winter). The dry season is between December and February (Summer).\nOther lakes found nearby include Calafquén, Caburgua, Huilipilún and Colico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "villarrica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4121,
+    "place_id": "gn-8741024",
+    "input": {
+      "place": {
+        "place_id": "gn-8741024",
+        "name": "Sunabeda",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 18.7284,
+        "lon": 82.82932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunabeda",
+          "url": "https://en.wikipedia.org/wiki/Sunabeda",
+          "text": "Sunabeda is an industrial town and a municipality in the state of Odisha, India, located in the valleys of the Koraput region. The Engine division and Sukhoi division of the aircraft manufacturing company Hindustan Aeronautics Limited (HAL), a public sector undertaking (PSU) of Ministry of Defence, which manufactures the Saturn AL-31 engines for the Sukhoi Su-30MKI Flanker fighter jet fleet of the Indian Air Force, is in Sunabeda.\nOther major establishments of this town are Naval Armament Depot (NAD), State government offices, Sports Authority of India hostel, Central University of Orissa  (CUO) and Battalion headquarter of Commando Battalion for Resolute Action (CoBRA)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sunabeda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4123,
+    "place_id": "gn-909299",
+    "input": {
+      "place": {
+        "place_id": "gn-909299",
+        "name": "Lundazi",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -12.29292,
+        "lon": 33.1782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lundazi",
+          "url": "https://en.wikipedia.org/wiki/Lundazi",
+          "text": "Lundazi is a town in the Eastern Province of Zambia, lying near the border with Malawi, around 116 mi (187 km) north of Chipata. Lundazi is known as a \"Boma\" or administrative centre (boma derives from the Swahili word for a thorn fence, built to protect livestock or travelers' camps). It was a former colonial headquarters. Lundazi is the seat for Lundazi District. It is perched high above the eastern side of the Luangwa Valley, and close to a quiet border crossing (the Mqocha/Mtyocha Border) to Malawi.\n\nIt has an airstrip, schools and a hotel in the form of a Norman castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lundazi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4128,
+    "place_id": "gn-12958682",
+    "input": {
+      "place": {
+        "place_id": "gn-12958682",
+        "name": "Bom Jardim",
+        "country": "Brazil",
+        "subdivision": "Maranhão",
+        "lat": -3.54281,
+        "lon": -45.60852
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bom Jardim, Maranhão",
+          "url": "https://en.wikipedia.org/wiki/Bom_Jardim,_Maranhão",
+          "text": "Bom Jardim is a municipality in the state of Maranhão in the Northeast region of Brazil. The population is 41,822. The former mayor of Bom Jardim, Lidiane Leite, was arrested for the embezzlement of US$4 million from the municipality.\nThe municipality contains a small part of the Baixada Maranhense Environmental Protection Area, a 1,775,035.6 hectares (4,386,208 acres) sustainable use conservation unit created in 1991 that has been a Ramsar Site since 2000.\nThe municipality also contains part of the 271,197-hectare (670,140-acre) Gurupi Biological Reserve, a full protected conservation unit created in 1988. The average annual rainfall is 2,169 millimetres (85.4 in)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bom jardim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jardim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4132,
+    "place_id": "gn-2562693",
+    "input": {
+      "place": {
+        "place_id": "gn-2562693",
+        "name": "Munxar",
+        "country": "Malta",
+        "subdivision": "Il-Munxar",
+        "lat": 36.03048,
+        "lon": 14.23469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munxar",
+          "url": "https://en.wikipedia.org/wiki/Munxar",
+          "text": "Munxar (Maltese: Il-Munxar) is an administrative unit of Malta, which lies on the southern side of the island of Gozo. The population of Munxar was 1,872 in July 2024. This included 1,002 males and 870 females; 1,098 Maltese nationals and 774 foreign nationals.\n\nClose to this village, there is Xlendi Bay, a popular tourist resort engulfed in a fjord-like inlet amongst high cliffs. Xlendi Bay is a small fishing village, but is also an ideal bathing and diving resort especially in summer. Otherwise, foreigners and locals enjoy the late spring and early autumn sunsets often captured by artists or keen photographers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "munxar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4138,
+    "place_id": "gn-2787413",
+    "input": {
+      "place": {
+        "place_id": "gn-2787413",
+        "name": "Saint-Gilles",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.82763,
+        "lon": 4.34389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Gilles, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Saint-Gilles,_Belgium",
+          "text": "Saint-Gilles (French, pronounced [sɛ̃ ʒil] ) or Sint-Gillis (Dutch, pronounced [sɪntˈxɪlɪs] ) is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the southern part of the region, it is bordered by the City of Brussels, Anderlecht, Forest and Ixelles. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nSaint-Gilles has a multicultural identity stemming from its diverse population. The housing stock varies from semi-derelict tenements near Brussels-South railway station in the north, to elegant bourgeois houses on the southern borders with Uccle and Ixelles, to tourist hotels at the inner end of the Chaussée de Charleroi/Charleroisesteenweg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "saint gilles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gilles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4144,
+    "place_id": "gn-3445630",
+    "input": {
+      "place": {
+        "place_id": "gn-3445630",
+        "name": "Vacaria",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.51222,
+        "lon": -50.93389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vacaria",
+          "url": "https://en.wikipedia.org/wiki/Vacaria",
+          "text": "Vacaria is a municipality in the northeast of the southern Brazilian state of Rio Grande do Sul.\nIt is located at a latitude of 28° 30' 44\" South and a longitude of 50° 56' 02\" west, with an altitude of 971 meters. Its population in 2020 was estimated to be 66,575 inhabitants. The total area of the city is 2105.6 km2. The city is known in Brazil for its climate and its production of apples.\nIts Catedral Nossa Senhora da Oliveira is the episcopal see of the Roman Catholic Diocese of Vacaria, which was founded in 1937 as a territorial prelature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "vacaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4147,
+    "place_id": "gn-3939470",
+    "input": {
+      "place": {
+        "place_id": "gn-3939470",
+        "name": "Huancavelica",
+        "country": "Peru",
+        "subdivision": "Huancavelica",
+        "lat": -12.78691,
+        "lon": -74.97298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huancavelica",
+          "url": "https://en.wikipedia.org/wiki/Huancavelica",
+          "text": "Huancavelica (Spanish pronunciation: [waŋkaβeˈlika] ) or Wankawillka in Quechua is a city in Peru.  It is the capital of the department of Huancavelica and according to the 2017 census had a population of 49,570 people. The city was established on August 5, 1572 by the Viceroy of Peru Francisco de Toledo. Indigenous peoples represent a major percentage of the population.  It has an approximate altitude of 3,676 metres (12,060 ft); the climate is cold and dry between the months of February and August with a rainy season between September and January.  It is considered one of the poorest cities in Peru."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "huancavelica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4156,
+    "place_id": "gn-4923531",
+    "input": {
+      "place": {
+        "place_id": "gn-4923531",
+        "name": "Michigan City",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.70754,
+        "lon": -86.89503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Michigan City, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Michigan_City,_Indiana",
+          "text": "Michigan City is a city in LaPorte County, Indiana, United States. It had a population of 32,075 at the 2020 census. Located along Lake Michigan in the Michiana region, the city is about 45 miles (72 km) east of Chicago and is 40 miles (64 km) west of South Bend.\nMichigan City is noted for both its proximity to Indiana Dunes National Park and for bordering Lake Michigan. It receives a fair amount of tourism during the summer, especially by residents of Chicago and nearby cities in Northern Indiana. It is connected to Chicago via the South Shore Line passenger train."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "michigan city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "michigan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4160,
+    "place_id": "gn-585400",
+    "input": {
+      "place": {
+        "place_id": "gn-585400",
+        "name": "Naftalan",
+        "country": "Azerbaijan",
+        "subdivision": "Naftalan",
+        "lat": 40.50821,
+        "lon": 46.8203
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naftalan, Azerbaijan",
+          "url": "https://en.wikipedia.org/wiki/Naftalan,_Azerbaijan",
+          "text": "Naftalan is a city in Azerbaijan, known as a medical touristic center. It is located on an agricultural plain near the Lesser Caucasus Mountains. The word naftalan also means a petroleum product that can be obtained there. It is the centre of a petroleum industry, with a grade of oil referred to as \"Naftalan\".\nThe city is located approximately 330 kilometers west of Baku, 50 kilometers from Ganja city, and 40 kilometers from Mingachevir city. It is 225 meters above sea level and experiences a warm spring and mild winter climate, with an average annual temperature of approximately +14.8 degrees Celsius."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "naftalan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4169,
+    "place_id": "gn-933004",
+    "input": {
+      "place": {
+        "place_id": "gn-933004",
+        "name": "Tlokweng",
+        "country": "Botswana",
+        "subdivision": "South-East",
+        "lat": -24.66861,
+        "lon": 25.97111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlokweng",
+          "url": "https://en.wikipedia.org/wiki/Tlokweng",
+          "text": "Tlokweng is a peri-urban settlement classified as an urban  village located east of the capital of Botswana, Gaborone and falling under the jurisdiction of South East District Council.  It can be considered part of the conurbation of Gaborone. Tlokweng stands on the other side of the river, and is on the road to the border with South Africa, the border post being just 15 km to the east. The population was 35,982 at the 2011 census. It is now part of Gaborone agglomeration, home to 421,907 inhabitants at the 2011 census. The tribe originating from Tlokweng is referred to as Batlokwa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "tlokweng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4212,
+    "place_id": "gn-5596475",
+    "input": {
+      "place": {
+        "place_id": "gn-5596475",
+        "name": "Idaho Falls",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 43.46658,
+        "lon": -112.03414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idaho Falls, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Idaho_Falls,_Idaho",
+          "text": "Idaho Falls is the fourth most populous city in Idaho and the county seat of Bonneville County. It is the state's most populous city outside the Boise metropolitan area. As of the 2020 census, the population of Idaho Falls was 64,818. In the 2010 census, the population of Idaho Falls was 56,813 (2019 estimate: 62,888), with a metro population of 133,265.  As of the 2020 census, the Idaho Falls Metropolitan Statistical Area had a population of 154,855.\nIdaho Falls serves as the commercial, cultural, and healthcare hub for Eastern Idaho, as well as parts of western Wyoming and southern Montana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "idaho falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "idaho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4226,
+    "place_id": "gn-5926432",
+    "input": {
+      "place": {
+        "place_id": "gn-5926432",
+        "name": "Comox",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.68294,
+        "lon": -124.93613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comox, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Comox,_British_Columbia",
+          "text": "Comox (English: ) is a town on the southern coast of the Comox Peninsula in the Strait of Georgia on the eastern coast of Vancouver Island, British Columbia. Thousands of years ago, the warm dry summers, mild winters, fertile soil, and abundant sea life attracted First Nations, who called the area kw'umuxws (Kwakʼwala, the adopted language of the Kʼómoks, for plentiful).\nWhen the area was opened for settlement in the mid-19th century, it quickly attracted farmers, a lumber industry and a fishing industry. For over fifty years, the village remained isolated from the outside world other than by ship until roads and a railway were built into the area during the First World War. The installation of an air force base near the village during the Second World War brought new prosperity to the area, and in recent years, Comox attracts tourists for its fishing; local wildlife; year-round golf; and proximity to the Mount Washington ski area, the Forbidden Plateau, and Strathcona Provincial Park. The town is also home to a Royal Canadian Air Force base CFB Comox, an airport for military and commercial airline use and the Sea Cadet training facility HMCS Quadra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "comox",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4227,
+    "place_id": "gn-5097575",
+    "input": {
+      "place": {
+        "place_id": "gn-5097575",
+        "name": "Edgewater",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82704,
+        "lon": -73.97569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgewater, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Edgewater,_New_Jersey",
+          "text": "Edgewater is a borough located along the Hudson River in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 14,336, an increase of 2,823 (+24.5%) from the 2010 census count of 11,513, which in turn reflected an increase of 3,836 (+50.0%) from the 7,677 counted in the 2000 census\nThe borough's history has featured the founding of the first colony in Bergen County, contribution to the Revolutionary War, a period as a \"sleepy, pastoral little town\" with resort hotels in the 19th century, industrialization in the early 20th century, and a transition to a rapidly growing residential community in the late 20th century.\nEdgewater was incorporated as a municipality on December 7, 1894, from portions of Ridgefield Township as the Borough of Undercliff, based on the results of a referendum that passed two days earlier. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The borough's name was changed to Edgewater on November 8, 1899. The borough was named for its location on the Hudson River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "edgewater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4231,
+    "place_id": "gn-13561901",
+    "input": {
+      "place": {
+        "place_id": "gn-13561901",
+        "name": "Quinpool District",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.64335,
+        "lon": -63.59847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quinpool District",
+          "url": "https://en.wikipedia.org/wiki/Quinpool_District",
+          "text": "The Quinpool District refers to a commercial district of Halifax, Nova Scotia, encompassing the eastern portion of Quinpool Road as well as the streets directly north and south of it. Prominent landmarks on Quinpool Road include the Atlantica Hotel, the Oxford Theatre, and an eclectic variety of local businesses, including many popular Chinese and Greek restaurants.\nQuinpool Road runs from the Armdale Rotary through Connaught Avenue, terminating at what is known as the Willow Tree, on Robie Street - an unusual five-way intersection named for the prominent tree that once grew in the median. The street is commercialised from Connaught Ave to the Willow Tree and comprises a popular shopping and dining centre for the local community. It is also part of the Nova Scotia provincial road system, meaning that the Province of Nova Scotia pays the Halifax Regional Municipality in part for snow clearing and maintenance.\nWhile the street is an important commercial district in Halifax, it also forms a major boundary between the city's working class North End and wealthier South End, both physically and socially."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "quinpool district",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quinpool",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "district",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
