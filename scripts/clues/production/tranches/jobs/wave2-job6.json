@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 834,
+    "place_id": "gn-1647142",
+    "input": {
+      "place": {
+        "place_id": "gn-1647142",
+        "name": "Cianjur",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.82222,
+        "lon": 107.13944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cianjur",
+          "url": "https://en.wikipedia.org/wiki/Cianjur",
+          "text": "Cianjur (Sundanese: ᮎᮤᮃᮔ᮪ᮏᮥᮁ) is a town and district in the West Java province of Indonesia, and is the seat of Cianjur Regency. The district of Cianjur is located along one of the main roads between Jakarta (120 km to the northwest) and Bandung (60 km to the east). The population was 158,125 at the 2010 Census and 173,265 at the 2020 Census; the official estimate as of 2025 was 178,798. Because of its location, some of Cianjur's residents commute to work in Bandung.\nThe road on which Cianjur is located used to be the main (extremely busy) road from Jakarta to Bandung but was in effect replaced as the main road link between these two main cities when the Jakarta-Bandung tollroad was fully completed in 2005. However, due to its low traffic, Cianjur returned as one of the alternative routes for travellers from Jakarta and Bandung."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "cianjur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 859,
+    "place_id": "gn-13118277",
+    "input": {
+      "place": {
+        "place_id": "gn-13118277",
+        "name": "Bandar Utama",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.14818,
+        "lon": 101.61407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Utama",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Utama",
+          "text": "Bandar Utama Damansara is an affluent residential township and suburb located within the Sungai Buloh mukim (subdivision) of the Petaling District in Selangor, Malaysia. Developed by the See Hoy Chan Holdings Group, the township covers approximately 1,000 acres and is characterized by its meticulously planned residential precincts, ranging from BU1 to BU12.\nUntil the early 1990s, the area consisted largely of the Effingham Estate, a vast oil palm plantation. Its transformation into a modern residential suburb was part of a strategic master plan to meet the growing demand for high-end housing in the Klang Valley. Today, it is considered one of the most prestigious addresses in Petaling Jaya. Administratively, Bandar Utama Damansara and the adjacent Kampung Sungai Kayu Ara constitute the PJU 6 section of the city.[1]\nThe township is a major commercial engine for the region, anchored by the 1 Utama Shopping Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bandar utama",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "utama",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 871,
+    "place_id": "gn-3844421",
+    "input": {
+      "place": {
+        "place_id": "gn-3844421",
+        "name": "Mendoza",
+        "country": "Argentina",
+        "subdivision": "Mendoza",
+        "lat": -32.88946,
+        "lon": -68.84582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendoza, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Mendoza,_Argentina",
+          "text": "Mendoza (Latin American Spanish: [menˈdosa]), officially the City of Mendoza (Spanish: Ciudad de Mendoza), is the capital of the province of Mendoza in Argentina. It is located in the northern-central part of the province, in a region of foothills and high plains, on the eastern side of the Andes. As of the 2010 census [INDEC], Mendoza had a population of 115,041 with a metropolitan population of 1,055,679, making Greater Mendoza the fourth largest census metropolitan area in the country.\nRuta Nacional 7, the major road running between Buenos Aires and Santiago, runs through Mendoza. The city is a frequent stopover for climbers on their way to Aconcagua (the highest mountain in the Western and Southern Hemispheres) and for adventure travelers interested in mountaineering, hiking, horse riding, rafting, and other sports. In the winter, skiers come to the city for easy access to the Andes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "mendoza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 878,
+    "place_id": "gn-1645528",
+    "input": {
+      "place": {
+        "place_id": "gn-1645528",
+        "name": "Denpasar",
+        "country": "Indonesia",
+        "subdivision": "Bali",
+        "lat": -8.65,
+        "lon": 115.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denpasar",
+          "url": "https://en.wikipedia.org/wiki/Denpasar",
+          "text": "Denpasar (Indonesian pronunciation: [denˈpasar]; Balinese: ᬤᬾᬦ᭄ᬧᬲᬃ, Dénpasar) is the capital and the largest city of the province of Bali, Indonesia.\nDenpasar is the largest city in the Lesser Sunda Islands and the second largest city in Eastern Indonesia after Makassar. It is bordered by Badung Regency to its west and north, Gianyar Regency to its east, and the Indian Ocean and the Badung Strait to its south. The growth of the tourism industry on the island of Bali has pushed the city of Denpasar to become a center of business activities, and has positioned the city as an area with high per capita income and growth in Bali. The population of the city at the end of 2024 was 670,210.\nDenpasar is the main gateway to the Bali island, the city is also a hub for other cities in the Lesser Sunda Islands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "denpasar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 885,
+    "place_id": "gn-2638785",
+    "input": {
+      "place": {
+        "place_id": "gn-2638785",
+        "name": "St Helens",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45,
+        "lon": -2.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Helens, Merseyside",
+          "url": "https://en.wikipedia.org/wiki/St_Helens,_Merseyside",
+          "text": "St Helens () is a large town in Merseyside, England, with a population of 117,308. It is the administrative centre of the Metropolitan Borough of St Helens which had a population of 183,200 at the 2021 Census.\nThe town is 6 miles (10 kilometres) north of the River Mersey, in the south-west part of historic Lancashire. The town was initially a small settlement within the historic county's ancient hundred of West Derby in the township of Windle but by the mid-1700s the town had developed into a larger urban area beyond the townships borders. By 1838 the council was formally made responsible for the administration of Windle and the three other townships of Eccleston, Parr and Sutton that were to form the town's traditional shape. In 1868 the town was incorporated as a municipal borough, then later became a county borough in 1887."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "st helens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "helens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 896,
+    "place_id": "gn-160196",
+    "input": {
+      "place": {
+        "place_id": "gn-160196",
+        "name": "Dodoma",
+        "country": "Tanzania",
+        "subdivision": "Dodoma",
+        "lat": -6.17221,
+        "lon": 35.73947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dodoma",
+          "url": "https://en.wikipedia.org/wiki/Dodoma",
+          "text": "Dodoma  (lit. 'It has sunk' in Gogo), officially Dodoma City (Jiji Kuu la Dodoma, in Swahili), is the capital city of Tanzania. With a population of 765,179 as per 2022 which is projected to reach 1,000,000 by the end of 2026 (given the current pace of relocation of government organizations and NGOs), it is also the administrative capital of both Dodoma Municipal Council and the entire Dodoma Region. In July 2024, Dodoma officially surpassed Arusha to become the third largest city in Tanzania on both infrastructure and population measures.\nIn 1974, the Tanzanian government announced that Tanzania's national capital would be moved from Dar es Salaam to Dodoma for social and economic reasons and to centralise the capital within the country. It became the official capital in 1996.\nMuch of Dodoma's initial design did not come to fruition until the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "dodoma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 901,
+    "place_id": "gn-2462881",
+    "input": {
+      "place": {
+        "place_id": "gn-2462881",
+        "name": "Laayoune",
+        "country": "Western Sahara",
+        "subdivision": "Western Sahara",
+        "lat": 27.1418,
+        "lon": -13.18797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laayoune",
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "text": "Laayoune or El Aaiún (Arabic: العيون, al-ʕuyūn [alʕujuːn], Hassaniyya: [ˈləʕjuːn] , lit. 'The Springs') is the largest city of the disputed territory of Western Sahara, with a population of 262,791 in 2024. The city is the de jure capital of the Sahrawi Arab Democratic Republic, though it is under de facto Moroccan administration as occupied territory. The modern city is thought to have been founded by the Spanish captain Antonio de Oro in 1938. From 1958 it became the administrative capital of the Spanish Sahara, administered by the Governor General of Spanish West Africa.\nLaayoune is the capital of the Laâyoune-Sakia El Hamra region administered by Morocco, but it is still under the supervision of MINURSO, a UN mission.\nThe town is located south of the dry river of Saguia el-Hamra, where the old lower town built by Spanish colonists is located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "laayoune",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 904,
+    "place_id": "gn-2806654",
+    "input": {
+      "place": {
+        "place_id": "gn-2806654",
+        "name": "Wolfsburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.4236,
+        "lon": 10.77597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolfsburg",
+          "url": "https://en.wikipedia.org/wiki/Wolfsburg",
+          "text": "Wolfsburg (German: [ˈvɔlfsbʊʁk] ; Eastphalian: Wulfsborg) is the fifth-largest city in the German state of Lower Saxony. It lies on the river Aller, 75 kilometres (47 mi) east of Hanover and 230 kilometres (143 mi) west of Berlin.\nWolfsburg is famous as the location of Volkswagen AG's headquarters and, until it was overtaken by Tesla Gigafactory Texas in 2022, the world's biggest car plant. The Autostadt is a visitor attraction next to the Volkswagen factory that features the company's model range: Audi, Bentley, Ducati, Lamborghini, Porsche, SEAT, Škoda Auto and Volkswagen Commercial Vehicles. Wolfsburg is one of the few German cities built during the first half of the 20th century as a planned city. From its founding on 1 July 1938 as a home for workers producing the KdF-Wagen until 25 May 1945, the city was called Stadt des KdF-Wagens bei Fallersleben."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "wolfsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 906,
+    "place_id": "gn-2874225",
+    "input": {
+      "place": {
+        "place_id": "gn-2874225",
+        "name": "Mainz",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.98185,
+        "lon": 8.28008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mainz",
+          "url": "https://en.wikipedia.org/wiki/Mainz",
+          "text": "Mainz (German: [maɪnts] ; see below) is the capital and largest city of the German state of Rhineland-Palatinate, and with around 223,000 inhabitants, it is Germany's 35th-largest city. It lies in the Rhine-Main Metropolitan Region — Germany's second-largest metropolitan region after Rhine-Ruhr — which also encompasses the cities of Frankfurt am Main, Wiesbaden, Darmstadt, Offenbach am Main, and Hanau.\nMainz is located at the northern end of the Upper Rhine Plain, on the left bank of the Rhine. It is the largest city of Rhenish Hesse, a region of Rhineland-Palatinate that was historically part of Hesse, and is one of Germany's most important wine regions because of its mild climate. Mainz is connected to Frankfurt am Main by the Rhine-Main S-Bahn rapid transit system. Before 1945, Mainz had six boroughs on the other side of the Rhine (see: de:Rechtsrheinische Stadtteile von Mainz)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "mainz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 908,
+    "place_id": "gn-344979",
+    "input": {
+      "place": {
+        "place_id": "gn-344979",
+        "name": "Addis Ababa",
+        "country": "Ethiopia",
+        "subdivision": "Addis Ababa",
+        "lat": 9.02497,
+        "lon": 38.74689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Addis Ababa",
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+          "text": "Addis Ababa (  AD-iss AB-ə-bə; Amharic: አዲስ አበባ [adˈdis ˈaβəβa] , lit. 'new flower'; Oromo: Finfinnee, lit. 'fountain of hot mineral water') is the capital and largest city of Ethiopia. With an estimated population of 6,287,000 inhabitants as of 2025, it is the tenth largest city in Africa. At an elevation of 2,355 metres (7,726 ft), it is the fourth-highest capital city in the world and the highest capital in Africa. Addis Ababa is a highly developed and important cultural, artistic, financial and administrative center of Ethiopia.\nThe founding history of Addis Ababa dates back to the late 19th century by Menelik II, Negus of Shewa, in 1886 after finding Mount Entoto unpleasant two years prior. At the time, the city was a resort town; its large mineral spring abundance attracted nobilities of the empire and led them to establish permanent settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "addis ababa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "addis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ababa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 909,
+    "place_id": "gn-3454031",
+    "input": {
+      "place": {
+        "place_id": "gn-3454031",
+        "name": "Petrópolis",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.505,
+        "lon": -43.17861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petrópolis",
+          "url": "https://en.wikipedia.org/wiki/Petrópolis",
+          "text": "Petrópolis (Portuguese: [peˈtɾɔpolis, -pu-]) is a city of the estado (state) of central Rio de Janeiro, in southeastern Brazil, in a valley of the  Órgãos Mountains, 40 kilometres (25 mi) north of Rio de Janeiro city. According to the 2022 Brazilian census, Petrópolis municipality had a population of 278,881 inhabitants. Besides being the largest and most populous city in the Fluminense Mountain Region, the city also has the largest Gross Domestic Product and Human Development Index in the region.\nThe town's name (\"City of Peter\") honors Pedro II, the last Emperor of Brazil, who is entombed there at the Cathedral of Saint Peter of Alcantara. The city was the summer residence of the Brazilian Emperors and aristocrats in the 19th century, and was the official capital of the state of Rio de Janeiro during the First Brazilian Republic, between 1894 and 1902."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "petropolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 914,
+    "place_id": "gn-1795855",
+    "input": {
+      "place": {
+        "place_id": "gn-1795855",
+        "name": "Shaoxing",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.00237,
+        "lon": 120.57864
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaoxing",
+          "url": "https://en.wikipedia.org/wiki/Shaoxing",
+          "text": "Shaoxing is a prefecture-level city on the southern shore of Hangzhou Bay in northeastern Zhejiang province, China. Located on the south bank of the Qiantang River estuary, it borders Ningbo to the east, Taizhou to the southeast, Jinhua to the southwest, and Hangzhou to the west. As of the 2020 census, its population was 5,270,977 inhabitants, among which 2,958,643 (Keqiao, Yuecheng and Shangyu urban districts) lived in the built-up (or metro) area of Hangzhou–Shaoxing, with a total of 13,035,326 inhabitants.\nNotable residents of Shaoxing include Wang Xizhi, the parents of Zhou Enlai, Lu Xun, and Cai Yuanpei. It is also noted for Shaoxing wine, meigan cai, and stinky tofu, and was featured on A Bite of China. Its local variety of Chinese opera sung in the local dialect and known as Yue opera is second in popularity only to Peking opera."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "shaoxing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 918,
+    "place_id": "gn-2820256",
+    "input": {
+      "place": {
+        "place_id": "gn-2820256",
+        "name": "Ulm",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.39841,
+        "lon": 9.99155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulm",
+          "url": "https://en.wikipedia.org/wiki/Ulm",
+          "text": "Ulm (German pronunciation: [ʊlm] ) is the sixth-largest city of the southwestern German state of Baden-Württemberg, and with around 130,000 inhabitants, it is Germany's 60th-largest city.\nUlm is located on the eastern edges of the Swabian Jura mountain range, on the upper course of the River Danube, at the confluence with the small Blau Stream, coming from the Blautopf in the west. The mouth of the Iller also falls within Ulm's city limits. The Danube forms the border with Bavaria, where Ulm's twin city Neu-Ulm lies. The city was part of Ulm until 1810, and Ulm and Neu-Ulm have a combined population of around 190000. Ulm forms an urban district of its own (Stadtkreis Ulm), and is the administrative seat of the Alb-Donau-Kreis, the district that surrounds it on three sides, but which the city itself is not a part of."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "ulm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 919,
+    "place_id": "gn-311046",
+    "input": {
+      "place": {
+        "place_id": "gn-311046",
+        "name": "İzmir",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.41273,
+        "lon": 27.13838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İzmir",
+          "url": "https://en.wikipedia.org/wiki/İzmir",
+          "text": "İzmir, known in Greek and historically known as Smyrna, is the third most populous city in Turkey, after Istanbul and Ankara, and the largest metropolitan area on the Aegean Sea. It is on the Aegean coast of Anatolia, and is the capital of İzmir Province. As of 2025 end of year estimate, İzmir Province has a total population of 4,504,184 while İzmir city is home to around 3.5 million inhabitants. It extends along the outlying waters of the Gulf of İzmir and inland to the north across the Gediz River Delta; to the east along an alluvial plain created by several small streams; and to slightly more rugged terrain in the south. İzmir's climate is Mediterranean.\nİzmir has more than 3,000 years of recorded urban history, and up to 8,500 years of history as a human settlement since the Neolithic period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "izmir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 939,
+    "place_id": "gn-3919968",
+    "input": {
+      "place": {
+        "place_id": "gn-3919968",
+        "name": "Cochabamba",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.38195,
+        "lon": -66.15995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cochabamba",
+          "url": "https://en.wikipedia.org/wiki/Cochabamba",
+          "text": "Cochabamba (Aymara and Quechua: Quchapampa) is a city and municipality in central Bolivia in a valley in the Andes mountain range. It is the capital of the Cochabamba Department and the fourth largest city in Bolivia, with a population of 661,484 according to the 2024 Bolivian census. Its name is from a compound of the Quechua words qucha \"lake\" and pampa, \"open plain.\" Residents of the city and the surrounding areas are commonly referred to as cochalas or, more formally, cochabambinos.\nIt is known as the \"City of Eternal Spring\" or \"The Garden City\" because of its spring-like temperatures all year round. It is also known as \"La Llajta,\" which means \"town\" in Quechua. It is the largest urban center between the higher capital of La Paz and Santa Cruz de la Sierra in the tropical plains of the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "cochabamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 945,
+    "place_id": "gn-8581443",
+    "input": {
+      "place": {
+        "place_id": "gn-8581443",
+        "name": "South Tangerang",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.28862,
+        "lon": 106.71789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Tangerang",
+          "url": "https://en.wikipedia.org/wiki/South_Tangerang",
+          "text": "South Tangerang (Indonesian: Tangerang Selatan, Sundanese: ᮓᮚᮩᮂ ᮒᮍᮨᮛᮀ ᮊᮤᮓᮥᮜ᮪, romanized: Dayeuh Tangerang Kidul)  abbreviated as Tangsel, is a city in the province of Banten, Indonesia. Located 30 km (19 mi) on the southwestern border of Jakarta, the city forms part of the Greater Jakarta metropolitan area. It was administratively separated from Tangerang Regency on 26 November 2008. According to the 2020 Census, the city population was 1,354,350 inhabitants, while the official estimate as of mid-2024 was 1,429,629 - comprising 712,409 males and 717,120 females. The total area is 164.86 km2 (63.65 sq mi). It is the second-largest city in Banten (after Tangerang immediately to its north) in terms of population, and has grown rapidly, not only as Jakarta's satellite city, but also as the development of business districts and commerce due to presence of large-scale planned town by private developers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "south tangerang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tangerang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 946,
+    "place_id": "gn-169577",
+    "input": {
+      "place": {
+        "place_id": "gn-169577",
+        "name": "Homs",
+        "country": "Syria",
+        "subdivision": "Homs",
+        "lat": 34.72405,
+        "lon": 36.72559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Homs",
+          "url": "https://en.wikipedia.org/wiki/Homs",
+          "text": "Homs, known in pre-Islamic times as Emesa, is a city in western Syria and the capital of the Homs Governorate. It is 501 m (1,644 ft) above sea level and is located 162 km (101 mi) north of Damascus. Located on the Orontes River, Homs is also the central link between the interior cities and the Mediterranean coast.\nBefore the Syrian civil war, Homs was a major industrial hub with a population of at least 652,609 people in 2004, it was the third-largest city in Syria after Aleppo to the north and the capital Damascus to the south. Its population reflected Syria's general religious diversity, composed of Sunni and Alawite Muslims, and Christians. There are a number of historic mosques and churches in the city, and it is close to the Krak des Chevaliers castle, a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "homs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 953,
+    "place_id": "gn-317109",
+    "input": {
+      "place": {
+        "place_id": "gn-317109",
+        "name": "Denizli",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 37.77417,
+        "lon": 29.0875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denizli",
+          "url": "https://en.wikipedia.org/wiki/Denizli",
+          "text": "Denizli is a city in Aegean Turkey, and seat of the province of Denizli. The city forms the urban part of the districts Merkezefendi and Pamukkale, with a population of 691 783 in 2024.\nDenizli has seen economic development in the last few decades, mostly due to textile production and exports.\nDenizli also attracts visitors to the nearby mineral-coated hillside hot spring of Pamukkale, and with red color thermal water spa hotels Karahayıt, just 5 kilometres (3 miles) north of Pamukkale. Recently, Denizli became a major domestic tourism destination due to the various types of thermal waters in Sarayköy, Central/Denizli (where Karahayıt and Pamukkale towns are located), Akköy (Gölemezli), Buldan (Yenicekent), and Çardak districts.\nThe ancient ruined city of Hierapolis, as well as ruins of the city of Laodicea on the Lycus, the ancient metropolis of Phrygia, are nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "denizli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 961,
+    "place_id": "gn-3439101",
+    "input": {
+      "place": {
+        "place_id": "gn-3439101",
+        "name": "Ciudad del Este",
+        "country": "Paraguay",
+        "subdivision": "Alto Paraná Department",
+        "lat": -25.5036,
+        "lon": -54.65067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad del Este",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_del_Este",
+          "text": "Ciudad del Este (Spanish pronunciation: [sjuˈðað ðel ˈeste], Spanish for Eastern City; often shortened as CDE) is the second-largest city in Paraguay and capital of the Alto Paraná Department, situated on the Paraná River. It is located 327 km (203 mi) east of Asunción, the capital, and is adjacent to the border with Brazil, to which it is connected by the Friendship Bridge on the Paraná River. It is the largest city within the Triple Frontier region, which borders Foz do Iguaçu, Brazil and Puerto Iguazú, Argentina. The Itaipú Dam, one of the largest hydroelectric power plants in the world, is near Ciudad del Este, as is Iguazu Falls.\nCiudad del Este is a commercial city, and is one of the largest free-trade zones in the world. Its tax-free status attracts many Brazilians and Argentines to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad del este",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "este",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 965,
+    "place_id": "gn-3903987",
+    "input": {
+      "place": {
+        "place_id": "gn-3903987",
+        "name": "Sucre",
+        "country": "Bolivia",
+        "subdivision": "Chuquisaca Department",
+        "lat": -19.03332,
+        "lon": -65.26274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sucre",
+          "url": "https://en.wikipedia.org/wiki/Sucre",
+          "text": "Sucre (Spanish pronunciation: [ˈsukɾe]; Quechua: Chuqichaka; Aymara: Sukri; Guarani: Sucre), officially La Ilustre y Heroica Sucre (\"The Illustrious and Heroic Sucre\") is the de jure capital city of Bolivia, the capital of the Chuquisaca Department and the sixth most populous city in Bolivia. Located in the south-central part of the country, Sucre lies at an elevation of 2,790 m (9,150 ft), making it the second-highest capital city in the world after Quito. This relatively high altitude gives the city a subtropical highland climate with cool temperatures year-round. Over the centuries, the city has received various names, including La Plata, Charcas, and Chuquisaca. Today, the region is of predominantly Quechua background, with some Aymara communities and influences.\nSucre holds major national importance and is an educational and government center, as well as the location of the Bolivian Supreme Court."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "sucre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

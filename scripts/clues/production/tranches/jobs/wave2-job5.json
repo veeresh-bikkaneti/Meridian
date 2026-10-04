@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 740,
+    "place_id": "gn-1647866",
+    "input": {
+      "place": {
+        "place_id": "gn-1647866",
+        "name": "Bukittinggi",
+        "country": "Indonesia",
+        "subdivision": "West Sumatra",
+        "lat": -0.30907,
+        "lon": 100.37055
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukittinggi",
+          "url": "https://en.wikipedia.org/wiki/Bukittinggi",
+          "text": "Bukittinggi (Minangkabau: Bukiktinggi, Jawi: بوكيت تيڠڬي, formerly Dutch: Fort de Kock) is the third largest city in West Sumatra, Indonesia, with a population of 111,312 in 2010 and 121,028 in 2020. The official estimate as of mid 2025 lists a population of 125,920 (consisting of 62,809 males and 63,111 females). The city covers an area of 24.84 km2. It is located in the Minangkabau Highlands, 90 km by road from the West Sumatran capital city of Padang. The city is completely surrounded by the Agam Regency (Bukittinggi was its regency seat until 1998), making it an enclave within the regency, and it is located at 0°18′20″S 100°22′9″E, near the volcanoes Mount Singgalang (inactive) and Mount Marapi (still active). At 930 m above sea level, the city has a cool climate with temperatures between 16.1° to 24.9 °C.\nBukittinggi used to be known as Fort de Kock and was once dubbed as 'Parijs van Sumatera'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "bukittinggi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 747,
+    "place_id": "gn-6169141",
+    "input": {
+      "place": {
+        "place_id": "gn-6169141",
+        "name": "Trois-Rivières",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.34515,
+        "lon": -72.5477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trois-Rivières",
+          "url": "https://en.wikipedia.org/wiki/Trois-Rivières",
+          "text": "Trois-Rivières (French: [tʁwɑ ʁivjɛʁ], Canadian French: [tʁwɔ ʁivjaɛ̯ʁ] ; lit. 'Three Rivers') is a city in the Mauricie administrative region of Quebec, Canada. It is located at the confluence of the Saint-Maurice and Saint Lawrence rivers, on the north shore of the Saint Lawrence River across from the city of Bécancour. It is part of the densely populated Quebec City–Windsor Corridor and is approximately halfway between Montreal and Quebec City. Trois-Rivières is the economic and cultural hub of the Mauricie region. The settlement was founded by French colonists on July 4, 1634, as the second permanent settlement in New France, after Quebec City in 1608.\nThe name of Trois-Rivières, which dates from the end of the 16th century, was used by French explorers in reference to the three channels in the Saint-Maurice River formed at its mouth with the Saint Lawrence, as it is divided by two islands, Potherie (Île Caron) and Île Saint-Quentin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "trois rivieres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trois",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rivieres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 753,
+    "place_id": "gn-3247449",
+    "input": {
+      "place": {
+        "place_id": "gn-3247449",
+        "name": "Aachen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.77664,
+        "lon": 6.08342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aachen",
+          "url": "https://en.wikipedia.org/wiki/Aachen",
+          "text": "Aachen is the 13th-largest city in North Rhine-Westphalia and the 27th-largest city of Germany, with around 264,000 inhabitants. It is the western-most major city in Germany, lying approximately 61 km (38 mi) west of Cologne and Bonn, directly bordering Belgium in the southwest, and the Netherlands in the northwest. The city lies in the Meuse–Rhine Euroregion and is the seat of the district of Aachen (Städteregion Aachen).\nThe once Celtic settlement was equipped with several thermae in the course of colonization by Roman pioneers settling at the warm Aachen thermal springs around the 1st century. After the withdrawal of the Roman troops, the vicus Aquae Granni was Frankized around the 5th century, by which it came under Merovingian and later Carolingian rule. With the completion of the Carolingian Palace of Aachen at the transition to the 9th century, Aachen was constituted as the main royal residence of the Frankish Empire ruled by Charlemagne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "aachen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 756,
+    "place_id": "gn-4931972",
+    "input": {
+      "place": {
+        "place_id": "gn-4931972",
+        "name": "Cambridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3751,
+        "lon": -71.10561
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_Massachusetts",
+          "text": "Cambridge ( KAYM-brij) is a city in Middlesex County, Massachusetts, United States. It is located in the Greater Boston metropolitan area directly across the Charles River from Boston. The city's population as of the 2020 U.S. census was 118,403, making it the most populous city in the county, the fourth-largest in Massachusetts behind Boston, Worcester, and Springfield, and ninth-most populous in New England. The city was named in honor of the University of Cambridge in Cambridge, England, which was an important center of the Puritan theology that was embraced by the town's founders.\nFounded in December 1630 during the colonial era, Cambridge was one among the first cities established in the Thirteen Colonies, and it went on to play a historic role during the American Revolution. In May 1775, approximately 16,000 American patriots assembled in Cambridge Common to begin organizing a military retaliation against British troops following the Battles of Lexington and Concord."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 761,
+    "place_id": "gn-1791681",
+    "input": {
+      "place": {
+        "place_id": "gn-1791681",
+        "name": "Weifang",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.71,
+        "lon": 119.10194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weifang",
+          "url": "https://en.wikipedia.org/wiki/Weifang",
+          "text": "Weifang (simplified Chinese: 潍坊; traditional Chinese: 濰坊; pinyin: Wéifāng) is a prefecture-level city in central Shandong province, People's Republic of China. The city borders Dongying to the northwest, Zibo to the west, Linyi to the southwest, Rizhao to the south, Qingdao to the east, and looks out to the Laizhou Bay to the north. Its population was 9,386,705 at the 2020 census, of whom 3,095,520 lived in the built-up (or metro) area made up of four urban districts (Kuiwen, Weicheng, Hanting and Fangzi) and Changle County.\nWeifang has numerous natural and historic sites, such as Shihu Garden (from the Late Ming and early Qing dynasty), Fangong Pavilion (from the Song dynasty), fossil sites (including dinosaur fossils, in Shanwang, Linqu), Mount Yi National Forest Park, Mount Qingyun and the Old Dragon Spring. Painted New Year woodcuts from Yangjiabu are also well-known. The city is served by Weifang Airport to various cities across China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "weifang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 770,
+    "place_id": "gn-3463030",
+    "input": {
+      "place": {
+        "place_id": "gn-3463030",
+        "name": "Foz do Iguaçu",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.54778,
+        "lon": -54.58806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foz do Iguaçu",
+          "url": "https://en.wikipedia.org/wiki/Foz_do_Iguaçu",
+          "text": "Foz do Iguaçu (Brazilian Portuguese pronunciation: [ˈfɔz du iɡwaˈsu]; \"Mouth of the Iguazu\"), colloquially referred to as Foz, is the Brazilian city on the border of Iguaçu Falls. Foz in Portuguese means the mouth or end of a river and Iguaçu in Guarani or Tupi comes from the words y [ɨ], meaning \"river\", and guasu [waˈsu], meaning \"big\".\nThe city is the 7th largest in the state of Paraná with a population of approximately 258,000 inhabitants. It is approximately 650 km (400 mi) west of the capital of the state, Curitiba, being the westernmost city in that State.\nThe inhabitants of the city are known as iguaçuenses. The Iguaçu Falls located on the border of Argentina and Brazil and consisting of approximately 257 individual waterfalls over 2.7 km (1.7 mi) were chosen as one of the \"New Natural Seven Wonders of the World.\"\nThe city is characterized by tourism and cultural diversity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "foz do iguacu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "foz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iguacu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 774,
+    "place_id": "gn-12226438",
+    "input": {
+      "place": {
+        "place_id": "gn-12226438",
+        "name": "Ciudad de la Paz",
+        "country": "Equatorial Guinea",
+        "subdivision": "Djibloho",
+        "lat": 1.5925,
+        "lon": 10.82361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad de la Paz",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_de_la_Paz",
+          "text": "Ciudad de la Paz (Spanish: [θjuˈðað ðe la ˈpaθ], lit. 'City of Peace'), previously known as Djibloho  or Oyala, commonly known as La Paz, is the official capital city of Equatorial Guinea, though still under construction. Established as an urban district in Wele-Nzas in 2015, it is also the administrative headquarters of Djibloho, Equatorial Guinea's newest province created in 2017, and is located near the town of Mengomeyén. In 2017, the city was officially named Ciudad de la Paz (\"City of Peace\").\nThe planned city's location was chosen for its easy access, milder climate, and inland location, as the 2004 Equatorial Guinea coup attempt raised fears about maritime access to the capital. It was designed by the Portuguese Studio for Architecture and Urbanism FAT – Future Architecture Thinking. It is projected to have around 200,000 inhabitants, a new Parliament building, a number of presidential villas and an area of 8150 hectares."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad de la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 777,
+    "place_id": "gn-1580240",
+    "input": {
+      "place": {
+        "place_id": "gn-1580240",
+        "name": "Huế",
+        "country": "Vietnam",
+        "subdivision": "Thừa Thiên Huế Province",
+        "lat": 16.4619,
+        "lon": 107.59546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huế",
+          "url": "https://en.wikipedia.org/wiki/Huế",
+          "text": "Huế, formerly Thừa Thiên Huế province, is a centrally-governed city in central Vietnam, located approximately at the center of the country, and an educational, medical, and cultural hub. It borders Quảng Trị to the north, Đà Nẵng to the south, Salavan and Sekong of Laos to the west and the South China Sea to the east. As one of the country's nine centrally-governed cities, it falls under the administration of the central government.\nHuế has 128 km of coastline, 22,000 ha of lagoons and over 200,000 ha of forest. The city is located in the middle of the North Central and South Central regions (including the South Central Coast and Central Highlands), and is transitional in many aspects: geology, climate, administrative division, and local culture.\nWhat is now the modern city was historically part of Thuận Hóa, a territory ceded by Champa to Đại Việt in 1306 as a wedding dowry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "hue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 778,
+    "place_id": "gn-1648473",
+    "input": {
+      "place": {
+        "place_id": "gn-1648473",
+        "name": "Bogor",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.59444,
+        "lon": 106.78917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bogor",
+          "url": "https://en.wikipedia.org/wiki/Bogor",
+          "text": "Bogor (Sundanese: ᮘᮧᮌᮧᮁ; Dutch: Buitenzorg) is a landlocked city in West Java, Indonesia. Located around 53 kilometers (33 mi) south of the national capital of Jakarta, it is the 6th largest city in the Jakarta metropolitan area and the 14th overall nationwide.\nThe city covers an area of 111.39 km2, and it had a population of 950,334 at the 2010 Census and 1,043,070 at the 2020 Census. The official population estimate as at 2025 was 1,281,010.\nBogor is an important center of economy, science, cultural heritage and tourism in Indonesia because this city is a mountainous area that used to be a resting place for Dutch nobles during the Dutch colonial period because of its cool climate and the many classical European-style buildings in the city. During the Middle Ages, the city served as the capital of the Sunda Kingdom (Sundanese: Karajaan Sunda) and was called Pakuan Pajajaran or Dayeuh Pakuan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bogor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 780,
+    "place_id": "gn-1788852",
+    "input": {
+      "place": {
+        "place_id": "gn-1788852",
+        "name": "Xining",
+        "country": "China",
+        "subdivision": "Qinghai",
+        "lat": 36.62554,
+        "lon": 101.75739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xining",
+          "url": "https://en.wikipedia.org/wiki/Xining",
+          "text": "Xining is the capital and most populous city of Qinghai province in western China and the largest city on the Tibetan Plateau. As of the 2020 census, it had 2,467,965 inhabitants (2,208,708 as of 2010), of whom 1,954,795 lived in the built-up (or metro) area made of 5 urban districts. The city lies in the Huangshui River Valley, also known as Tsongkha (Tibetan: ཙོང་ཁ་), and owing to its high altitude, has a cool climate on the borderline between cool semi-arid and dry winter humid continental.\nXining was a commercial hub along the Northern Silk Road's Hexi Corridor for over 2000 years, and was a stronghold of the Han, Sui, Tang, and Song dynasties' resistance against nomadic attacks from the west. Although long a part of Gansu province, Xining was added to Qinghai in 1928. Xining holds sites of religious significance to Muslims and Buddhists, including the Dongguan Mosque and Kumbum Monastery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "xining",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 782,
+    "place_id": "gn-217695",
+    "input": {
+      "place": {
+        "place_id": "gn-217695",
+        "name": "Bunia",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Ituri",
+        "lat": 1.55941,
+        "lon": 30.25224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunia",
+          "url": "https://en.wikipedia.org/wiki/Bunia",
+          "text": "Bunia is the capital city of Ituri Province in the Democratic Republic of the Congo (DRC). It was part of the Orientale Province until that province's dissolution.\nIt lies at an elevation of 1,275 metres or 4,180 feet on a plateau about 30 kilometres or 19 miles west of Lake Albert in the Albertine Rift, and about 25 kilometres or 16 miles east of the Ituri Rainforest.\nThe city is at the center of the Ituri conflict between the Lendu and Hema. In the Second Congo War the city and district were the scene of much fighting and many civilian deaths from this conflict, and related clashes between militias and Uganda-based forces. Consequently, the city is the base of one of the largest United Nations peace-keeping forces in Africa, and its headquarters in northeastern DRC. The area's natural resources include gold mines over which militias and foreign forces have been fighting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bunia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 786,
+    "place_id": "gn-4033936",
+    "input": {
+      "place": {
+        "place_id": "gn-4033936",
+        "name": "Papeete",
+        "country": "French Polynesia",
+        "subdivision": "Îles du Vent",
+        "lat": -17.5347,
+        "lon": -149.56843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papeete",
+          "url": "https://en.wikipedia.org/wiki/Papeete",
+          "text": "Papeete (Tahitian: Papeʻete, pronounced [pa.pe.ʔe.te]) is the capital city of French Polynesia, an overseas collectivity of the French Republic located in the Pacific Ocean. The commune of Papeʻete is located on the island of Tahiti, in the administrative subdivision of the Windward Islands, of which Papeʻete is the administrative capital. Both the President of French Polynesia and French High Commissioner reside in Papeʻete.\nIt is the primary center of Tahitian and French Polynesian public and private governmental, commercial, industrial, and financial services, the hub of French Polynesian tourism and a commonly used port of call. The Windward Islands are themselves part of the Society Islands. The name Papeʻete, means \"water from a basket\"— this was an effect of a naming taboo during Pōmare I's reign where the Tahitian contemporary word for water vai was substituted with pape, the old name Vaiʻete is still recognised in some areas such as the Marquesas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "papeete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 792,
+    "place_id": "gn-2873891",
+    "input": {
+      "place": {
+        "place_id": "gn-2873891",
+        "name": "Mannheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.4891,
+        "lon": 8.46694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mannheim",
+          "url": "https://en.wikipedia.org/wiki/Mannheim",
+          "text": "Mannheim (German pronunciation: [ˈmanhaɪm] ; Palatine German: Mannem or Monnem), officially the University City of Mannheim (German: Universitätsstadt Mannheim), is the second-largest city in Baden-Württemberg after Stuttgart, the state capital, and Germany's 21st-largest city, with a population of over 315,000. It is located at the border with Rhineland-Palatinate. The city is the cultural and economic centre of the Rhine-Neckar, Germany's seventh-largest metropolitan region, with nearly 2.4 million inhabitants.\nMannheim is located at the confluence of the Upper Rhine and the Neckar in the Kurpfalz (Electoral Palatinate) region of northwestern Baden-Württemberg. The city lies in the Upper Rhine Plain, Germany's warmest region, between the Palatine Forest and the Oden Forest. Mannheim forms a continuous urban zone of around 500,000 inhabitants with Ludwigshafen am Rhein in the Rhineland-Palatinate, while some northern suburbs lie in Hesse; Hamburg is the only other German city with a presence in two states other than its own."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "mannheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 796,
+    "place_id": "gn-3874787",
+    "input": {
+      "place": {
+        "place_id": "gn-3874787",
+        "name": "Punta Arenas",
+        "country": "Chile",
+        "subdivision": "Region of Magallanes",
+        "lat": -53.16282,
+        "lon": -70.90922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Punta Arenas",
+          "url": "https://en.wikipedia.org/wiki/Punta_Arenas",
+          "text": "Punta Arenas (Spanish pronunciation: [ˈpunta aˈɾenas], historically known as Sandy Point in English) is the capital city of Chile's southernmost region, Magallanes and Antarctica Chilena. Although the city officially was renamed Magallanes in 1927, its name was changed back to Punta Arenas in 1938. The city is the world's largest south of the 46th parallel south. Due to its location, it is also the coldest coastal city with more than 100,000 inhabitants in Latin America. Punta Arenas is one of the world's most southerly ports and serves as an Antarctic gateway city. Punta Arenas is the world's southernmost city with more than 100,000 inhabitants and claims the title of southernmost city in the world, although that title is also claimed by Ushuaia in Argentina, which lies farther south but is slightly smaller than Punta Arenas, and Puerto Williams in Chile, which lies farther south still but is smaller than Ushuaia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "punta arenas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "punta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arenas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 806,
+    "place_id": "gn-115019",
+    "input": {
+      "place": {
+        "place_id": "gn-115019",
+        "name": "Shiraz",
+        "country": "Iran",
+        "subdivision": "Fars",
+        "lat": 29.61031,
+        "lon": 52.53113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shiraz",
+          "url": "https://en.wikipedia.org/wiki/Shiraz",
+          "text": "Shiraz is the fifth-most-populous city of Iran and the capital of Fars province, which is historically known by the exonym Persia proper. As of the 2016 national census, the population of the city was 1,565,572 people, and its built-up area with Sadra was home to almost 1,800,000 inhabitants. A census in 2021 showed an increase in the city's population to 1,995,500 people. Shiraz is located in southwestern Iran on the rudkhaneye khoshk (lit. 'dry river') seasonal river. The city has a moderate climate and has been a regional trade center for over a thousand years.\nThe earliest reference to the city, as Tiraziš, is on Elamite clay tablets dated to 2000 BCE. The modern city was founded by the Sasanian dynasty and restored by the Umayyad Caliphate in 693 CE and grew prominent under the successive Iranian Saffarid and Buyid dynasties in the 9th and 10th–11th centuries, respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "shiraz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 812,
+    "place_id": "gn-3164527",
+    "input": {
+      "place": {
+        "place_id": "gn-3164527",
+        "name": "Verona",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.43854,
+        "lon": 10.9938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verona",
+          "url": "https://en.wikipedia.org/wiki/Verona",
+          "text": "Verona ( və-ROH-nə; Italian: [veˈroːna] ; Venetian: Verona or Veròna) is the largest city in the region of Veneto in Italy, with a population of 255,139 as of 2026. It is one of the seven provincial capitals of the region, and is also the 2nd-largest city in northeast Italy. The metropolitan area of Verona covers an area of 1,426 km2 (550.58 sq mi) and has a population of 714,310 inhabitants. It is one of the main tourist destinations in Northern Italy because of its artistic heritage and several annual fairs and shows as well as the opera season in the Arena, an ancient Roman amphitheater.\nBetween the 13th and 14th centuries, the city was ruled by the della Scala family. Under the rule of the family, in particular of Cangrande I della Scala, the city experienced great prosperity, becoming rich and powerful and was surrounded by new walls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "verona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 815,
+    "place_id": "gn-3493175",
+    "input": {
+      "place": {
+        "place_id": "gn-3493175",
+        "name": "Puerto Plata",
+        "country": "Dominican Republic",
+        "subdivision": "Puerto Plata",
+        "lat": 19.79344,
+        "lon": -70.6884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Plata",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Plata",
+          "text": "Puerto Plata, officially known as San Felipe de Puerto Plata; (French: Port-de-Plate) is a major coastal city in the Dominican Republic, and capital of the Puerto Plata Province. The city is a major trading port as well as a tourism hub; Puerto Plata has resorts such as Playa Dorada and Costa Dorada, which are located east of the city proper. There are 100,000 hotel beds in the city. The first aerial tramway of the Caribbean is located in Puerto Plata, in which visitors can ride up to the Pico Isabel de Torres, a 793-meter (2600-foot) high mountain within the city.\nThe city's history dates back to the early 16th century, when Spanish colonists founded a small colonial settlement in the region. During the first decades of the existence of the Captaincy General of Santo Domingo, the settlement was considered the main commercial and maritime port of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "puerto plata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 820,
+    "place_id": "gn-2013159",
+    "input": {
+      "place": {
+        "place_id": "gn-2013159",
+        "name": "Yakutsk",
+        "country": "Russia",
+        "subdivision": "Sakha",
+        "lat": 62.03114,
+        "lon": 129.72288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakutsk",
+          "url": "https://en.wikipedia.org/wiki/Yakutsk",
+          "text": "Yakutsk is the capital and largest city of Sakha, Russia, located about 450 km (280 mi) south of the Arctic Circle. Fueled by the mining industry, Yakutsk has become one of Russia's most rapidly growing regional cities, with a population of 355,443 at the 2021 census.\nYakutsk has an average annual temperature of −8.0 °C (17.6 °F), winter high temperatures consistently well below −20 °C (−4 °F), and a record low of −64.4 °C (−83.9 °F) has been recorded.\nAs a result, Yakutsk is the coldest city of over 200,000 people in the world (though a number of smaller towns in that region (and the Northwest Territories and Nunavut) are colder). Yakutsk is also the largest city located in continuous permafrost; the only other large city is Norilsk, also in Siberia. Yakutsk is in the Central Yakutian Lowland and is a major port on the Lena River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "yakutsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 826,
+    "place_id": "gn-3183719",
+    "input": {
+      "place": {
+        "place_id": "gn-3183719",
+        "name": "Vlorë",
+        "country": "Albania",
+        "subdivision": "Vlorë County",
+        "lat": 40.4696,
+        "lon": 19.48379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vlorë",
+          "url": "https://en.wikipedia.org/wiki/Vlorë",
+          "text": "Vlorë ( VLOR-ə; Albanian: [ˈvlɔɾə]; Albanian definite form: Vlora) is the third most populous city of Albania and seat of Vlorë County and Vlorë Municipality. Located in southwestern Albania, Vlorë sprawls on the Bay of Vlorë and is surrounded by the foothills of the Ceraunian Mountains along the Albanian Adriatic and Ionian Sea Coasts. It experiences a Mediterranean climate, which is affected by the Ceraunian Mountains and the proximity to the Mediterranean Sea.\nThe coastal area of Vlorë was one of the Illyrian sites that had experienced pre-urban activity beginning from the 11th–10th centuries BC. The area was colonized by Ancient Greeks. A large fortified port-town that was inhabited from the 6th century BC to the 2nd century AD is placed, now partially submerged, in Triport, northwest of present-day Vlorë. Substantial port activity in this site occurred from at least the archaic period to the medieval period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "vlore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 827,
+    "place_id": "gn-3645528",
+    "input": {
+      "place": {
+        "place_id": "gn-3645528",
+        "name": "Ciudad Guayana",
+        "country": "Venezuela",
+        "subdivision": "Bolívar",
+        "lat": 8.35122,
+        "lon": -62.64102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Guayana",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Guayana",
+          "text": "Ciudad Guayana (Spanish pronunciation: [sjuˈðað ɣwaˈʝana]) (English: Guayana City) is a city in Bolívar State, Venezuela. It stretches 40 kilometers along the south bank of the Orinoco river, at the point where it is joined by its main tributary, the Caroní River. The Caroní flows through the city from south to north, dividing it into its predominant halves — the old town of San Félix, to the east, and the newer area of Puerto Ordaz (Spanish pronunciation: [ˈpweɾto oɾˈðas]), to the west. \nCiudad Guayana was officially founded in 1961 by the unification of two former settlements, but the modern history of San Félix can be traced back to the eighteenth century. Located within the city limits are Cachamay Falls (part of Parque Cachamay) and Llovizna Falls. There are three bridges across the Caroní, and another crossing over the Orinoco, the Orinoquia Bridge, which was inaugurated in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad guayana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guayana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
