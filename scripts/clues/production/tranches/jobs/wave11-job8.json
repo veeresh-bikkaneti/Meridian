@@ -1,0 +1,712 @@
+[
+  {
+    "rank": 368,
+    "place_id": "gn-3682631",
+    "input": {
+      "place": {
+        "place_id": "gn-3682631",
+        "name": "Envigado",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.17591,
+        "lon": -75.59174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Envigado",
+          "url": "https://en.wikipedia.org/wiki/Envigado",
+          "text": "Envigado (Spanish pronunciation: [embiˈɣaðo]) is a city and municipality due South of Medellín, Colombia in the department of Antioquia. It is located in the Metropolitan Area of the Aburrá Valley. It borders El Poblado, Medellín to the north, Sabaneta to the south, El Retiro and Caldas to the east, and Itagüí to the west.\nEnvigado is known for maintaining the traditions of the Paisa Region and for its architecture. It also has one of the highest standards of living in Colombia, and (according to the Colombian magazine Semana), has the country's lowest rate of what the magazine calls, \"people with unmet basic needs\".\nIts recent history is closely associated with  Pablo Escobar and the Medellin cartel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "envigado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 369,
+    "place_id": "gn-1855425",
+    "input": {
+      "place": {
+        "place_id": "gn-1855425",
+        "name": "Niihama",
+        "country": "Japan",
+        "subdivision": "Ehime",
+        "lat": 33.96047,
+        "lon": 133.30522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niihama",
+          "url": "https://en.wikipedia.org/wiki/Niihama",
+          "text": "Niihama (新居浜市, Niihama-shi) is a city located in the eastern part of Ehime Prefecture, Japan.  As of 31 July 2022, the city had an estimated population of 115,824 in 57,781 households and a population density of 490 persons per km2. The total area of the city is 234.50 square kilometres (90.54 sq mi). It has the third largest population in Ehime, behind the prefectural capital of Matsuyama and the recently expanded city of Imabari. It is famous for its Besshi copper mine as well as the annual Niihama Taiko Festival (also known as \"The Man Festival\", otokomatsuri 男祭り) that is the center of annual drunken and boisterous activity and draws tourists from around the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "niihama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 370,
+    "place_id": "gn-2856883",
+    "input": {
+      "place": {
+        "place_id": "gn-2856883",
+        "name": "Osnabrück",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.27264,
+        "lon": 8.0498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osnabrück",
+          "url": "https://en.wikipedia.org/wiki/Osnabr%C3%BCck",
+          "text": "Osnabrück (German: [ɔsnaˈbʁʏk] ; Westphalian: Ossenbrügge; archaic English: Osnaburg) is a city in Lower Saxony in western Germany. It is situated on the river Hase in a valley penned between the Wiehen Hills and the northern tip of the Teutoburg Forest. With a population of 166,057 Osnabrück is the fourth largest city in Lower Saxony.\nMore recently Osnabrück has become well known for its industry. Numerous companies in the automobile, paper, steel and grocery sectors are located in the city and its surrounding area. In spite of the massive destruction inflicted on the city during World War II, the Altstadt ('old town') was eventually reconstructed extensively with designs accurately depicting the original medieval architecture there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "osnabruck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 371,
+    "place_id": "gn-3169361",
+    "input": {
+      "place": {
+        "place_id": "gn-3169361",
+        "name": "Rimini",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.05755,
+        "lon": 12.56528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rimini",
+          "url": "https://en.wikipedia.org/wiki/Rimini",
+          "text": "Rimini ( RIM-in-ee; Italian: [ˈriːmini] ; Romagnol: Rémin or Rémne; Latin: Ariminum) is a city and municipality (comune) in the region of Emilia-Romagna in northern Italy. As of 2026, with a population of 150,774, it is the 26th-largest city in Italy.\nSprawling along the Adriatic Sea, Rimini is situated at a strategically-important north-south passage along the coast at the southern tip of the Po Valley. It is one of the most notable seaside resorts in Europe, with a significant domestic and international tourist economy. The first bathing establishment opened in 1843. The city is also the birthplace of the film director Federico Fellini, and the nearest Italian city to the independent Republic of San Marino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "rimini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 372,
+    "place_id": "gn-3369157",
+    "input": {
+      "place": {
+        "place_id": "gn-3369157",
+        "name": "Cape Town",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.92584,
+        "lon": 18.42322
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cape Town",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town",
+          "text": "Cape Town is the legislative capital of South Africa. It is the country's oldest city and the seat of the Parliament of South Africa. Cape Town is the country's second-largest city by population, after Johannesburg, and the largest city in the Western Cape. The city is part of the City of Cape Town metropolitan municipality.\nThe city is known for its harbour, its natural setting in the Cape Floristic Region, and for landmarks such as Table Mountain and Cape Point. Located on the shore of Table Bay, the City Bowl area of Cape Town, which contains its central business district (CBD), is the oldest urban area in the Western Cape, with a significant cultural heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "cape town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cape",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 373,
+    "place_id": "gn-3460132",
+    "input": {
+      "place": {
+        "place_id": "gn-3460132",
+        "name": "Japeri",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.64306,
+        "lon": -43.65333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Japeri",
+          "url": "https://en.wikipedia.org/wiki/Japeri",
+          "text": "Japeri (Portuguese pronunciation: [ʒapeˈɾi]) is a municipality in the state of Rio de Janeiro, Southeast Region of Brazil. The city was founded on June 30, 1991. It is known to be located next to the last station of the largest branch of the railroad of Brazil (Central do Brasil), whose image has been put on stamps in Brazil. The construction date of 1858 and was incorporated into the Central do Brasil in 1903. It was the first stop of compositions for São Paulo, including the famous Trem de Prata (Silver Train). In the district of Engenheiro Pedreira is the first public golf course of Brazil, sponsored by FGERJ - Golf Federation of Rio de Janeiro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "japeri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 374,
+    "place_id": "gn-3474574",
+    "input": {
+      "place": {
+        "place_id": "gn-3474574",
+        "name": "Palmas",
+        "country": "Brazil",
+        "subdivision": "Tocantins",
+        "lat": -10.16745,
+        "lon": -48.32766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmas, Tocantins",
+          "url": "https://en.wikipedia.org/wiki/Palmas,_Tocantins",
+          "text": "Palmas (Brazilian Portuguese pronunciation: [ˈpawmɐs], Palm trees; Akwẽ-Xerénte: Akwẽ krikahâzawre wam hã [akwẽ kɾikahəʐawɾɛ wam hə̃]) is the capital and largest city of the state of Tocantins, Brazil. According to IBGE estimates from 2020, the city had 306,296 inhabitants. Palmas has a metropolitan area with 471,639 inhabitants.\nPalmas was founded in 1990 and developed from the ground up in a former agricultural area as the capital of the new state of Tocantins, formed under the 1988 constitution. It was intended to develop a relatively undeveloped area of the nation to provide better jobs for people. The city has a well-designed road system, and its urban zoning is modeled on that of Brasília, the national capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "palmas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 375,
+    "place_id": "gn-3646190",
+    "input": {
+      "place": {
+        "place_id": "gn-3646190",
+        "name": "Catia La Mar",
+        "country": "Venezuela",
+        "subdivision": "Vargas",
+        "lat": 10.60545,
+        "lon": -67.03238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catia La Mar",
+          "url": "https://en.wikipedia.org/wiki/Catia_La_Mar",
+          "text": "Catia La Mar is a city and port in the municipality of Vargas, in the Venezuelan state of La Guaira (also previously called Vargas). It is Maiquetía's neighbor to the west.\nCatia la Mar is about 10 minutes from Simón Bolívar International Airport, Venezuela's main airport.\nNamed after the 16th-century cacique Catia, contemporary of Guaicaipuro, founded in 1558 by Francisco Fajardo with the name of \"La Villa de Catia\", currently called Catia la Mar. The city hosts a naval academy and university, a fishing port called La Zorra, and several beaches (Costa Dorada, Playa La Zorra, Playa Candilejas, Puerto Viejo). Its main neighborhoods are Atlantida, Playa Grande, Páez, Ezequiel Zamora, La Lucha, and La Soublette."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "catia la mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "catia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 376,
+    "place_id": "gn-3996663",
+    "input": {
+      "place": {
+        "place_id": "gn-3996663",
+        "name": "Manzanillo",
+        "country": "Mexico",
+        "subdivision": "Colima",
+        "lat": 19.11695,
+        "lon": -104.34214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manzanillo, Colima",
+          "url": "https://en.wikipedia.org/wiki/Manzanillo,_Colima",
+          "text": "Manzanillo (, ; Spanish pronunciation: [mansaˈniʝo]) is the most populous city in the Mexican state of Colima and seat of Manzanillo Municipality. The city, located on the Pacific Ocean, contains Mexico's busiest port, responsible for handling Pacific cargo for the Mexico City area. It is the largest-producing municipality for the business sector and tourism in the small state of Colima. Recent data from DataMexico indicates that Manzanillo has relatively young workforce, with high economic participation in service, retail, and logistics industries connected to the city's port activity.\nThe city has been referred to as the \"sailfish capital of the world\". Since 1957, it has hosted national and international fishing competitions, such as the Dorsey Tournament."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "manzanillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 378,
+    "place_id": "gn-7626690",
+    "input": {
+      "place": {
+        "place_id": "gn-7626690",
+        "name": "Pimpri-Chinchwad",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.61867,
+        "lon": 73.80375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pimpri-Chinchwad",
+          "url": "https://en.wikipedia.org/wiki/Pimpri-Chinchwad",
+          "text": "Pimpri-Chinchwad, also known as PCMC, is a city in the Indian state of Maharashtra. The city is about 15 km (9.3 mi) northwest of the historic city of Pune, at an altitude of 590 m (1,940 ft) above sea level. It is the fifth largest city in Maharashtra and the eighteenth largest city in India and the sixteenth largest satellite city in the world by population. The city is located 135 km (84 mi) southeast from the state's capital Mumbai. It is one of the most rapidly developing suburban areas in India and has emerged as the third fastest growing city in the country. It is well known for its automotive, IT and manufacturing industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "pimpri chinchwad",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pimpri",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chinchwad",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 380,
+    "place_id": "gn-119208",
+    "input": {
+      "place": {
+        "place_id": "gn-119208",
+        "name": "Qom",
+        "country": "Iran",
+        "subdivision": "Qom Province",
+        "lat": 34.6401,
+        "lon": 50.8764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qom",
+          "url": "https://en.wikipedia.org/wiki/Qom",
+          "text": "Qom (Persian: قم; [qom] ) is the capital of Qom province, Iran. It is also the capital of Qom County and its Central District. It is the seventh largest metropolis and the seventh largest city in Iran. The city is 140 km (87 mi) to the south of Tehran, on the banks of the Qom River. Qom is a holy city in Shia Islam, as it is the site of the Fatima Masumeh Shrine, a descendant of the Islamic prophet Muhammad. She was the granddaughter of Ja'far al-Sadiq, the daughter of Musa al-Kazim, the sister of Ali al-Rida, and the aunt of Muhammad al-Jawad, the sixth, seventh, eighth and ninth of the Twelve Imams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "qom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 381,
+    "place_id": "gn-1234633",
+    "input": {
+      "place": {
+        "place_id": "gn-1234633",
+        "name": "Moratuwa",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.773,
+        "lon": 79.8816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moratuwa",
+          "url": "https://en.wikipedia.org/wiki/Moratuwa",
+          "text": "Moratuwa (Sinhala: මොරටුව) is a large municipality on the southwestern coast of Sri Lanka, near Dehiwala-Mount Lavinia. It is situated on the Galle–Colombo (Galle road) main highway, 18 km (11 mi) south of the centre of Colombo. Moratuwa is surrounded on three sides by water, except in the north of the city, by the Indian Ocean on the west, the Lake Bolgoda on the east and the Moratu river on the south. According to the 2012 census, the suburb had a population of 168,280.\nMoratuwa is the birthplace of Veera Puran Appu, a resistance fighter against British rule in Matale, the philanthropist Sir Charles Henry de Soysa and the musician Pandit W. D. Amaradeva."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "moratuwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 382,
+    "place_id": "gn-1256287",
+    "input": {
+      "place": {
+        "place_id": "gn-1256287",
+        "name": "Silchar",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 24.82733,
+        "lon": 92.79787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silchar",
+          "url": "https://en.wikipedia.org/wiki/Silchar",
+          "text": "Silchar is a city and the headquarters of the Cachar district of the state of Assam, India. It is second largest city of Assam after Guwahati in terms of population and GDP. It is located 343 kilometres (213 mi; 185 nmi) south east of Guwahati. It was founded by Captain Thomas Fisher in 1832 when he shifted the headquarters of Cachar to Janiganj in Silchar. It earned the moniker \"Island of Peace\" from Indira Gandhi, the then Prime Minister of India. Silchar is the site of the world's first polo club and the first competitive polo match. In 1985, an Air India flight from Kolkata to Silchar became the world's first all-women crew flight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "silchar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 383,
+    "place_id": "gn-1263364",
+    "input": {
+      "place": {
+        "place_id": "gn-1263364",
+        "name": "Mathura",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 27.5035,
+        "lon": 77.67215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mathura",
+          "url": "https://en.wikipedia.org/wiki/Mathura",
+          "text": "Mathura (Braj pronunciation: [mɐ.t̪ʰʊ.ɾäː] ) is a city and the administrative headquarters of Mathura district in the Indian state of Uttar Pradesh. It is located 162 kilometres (101 mi) south-east of Delhi; and about 15 kilometres (9.3 mi) from the town of Vrindavan. In ancient times, Mathura was an economic hub, located at the junction of important caravan routes. The 2011 Census of India estimated the population of Mathura at 441,894.\nIn Hinduism, the birthplace of Krishna, one of the main deities, is believed to be located in Mathura at the Krishna Janmasthan Temple Complex. It is one of the Sapta Puri, the seven cities considered holy by Hindus, also  called the Mokshyadayni Tirth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "mathura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 384,
+    "place_id": "gn-1640344",
+    "input": {
+      "place": {
+        "place_id": "gn-1640344",
+        "name": "Kendari",
+        "country": "Indonesia",
+        "subdivision": "Southeast Sulawesi",
+        "lat": -3.9778,
+        "lon": 122.51507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kendari",
+          "url": "https://en.wikipedia.org/wiki/Kendari",
+          "text": "Kendari is the capital city of the Indonesian province of Southeast Sulawesi. It had a population of 289,966 at the 2010 Census and 345,107 at the 2020 census, making it the most populous city in the province, and the fourth most on Sulawesi. The official estimate as at mid 2025 was 375,829 (comprising 188,853 males and 186,976 females). The city covers an area of 270.14 square kilometers (104.30 sq mi), or about 0.7 percent of Southeast Sulawesi's land area.\nLocated on Kendari Bay, it continues to be an important trade center, with the province's main port and airport. It is the economic and educational center of the province, home to various universities and colleges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "kendari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 385,
+    "place_id": "gn-1735076",
+    "input": {
+      "place": {
+        "place_id": "gn-1735076",
+        "name": "Butterworth",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.3991,
+        "lon": 100.36382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butterworth, Seberang Perai",
+          "url": "https://en.wikipedia.org/wiki/Butterworth,_Seberang_Perai",
+          "text": "Butterworth is the city centre of Seberang Perai in the Malaysian state of Penang. It lies about 3 km (1.9 mi) east of George Town, the capital city of Penang, across the Penang Strait. As of 2020, Butterworth had a total population of 80,378 residents.\nButterworth was named after William John Butterworth, a former Governor of the Straits Settlements during the mid-19th century. Under the British Raj, the town came into being as a transportation hub, due to its proximity to George Town. While the British East India Company initially obtained Seberang Perai (then named Province Wellesley) for agricultural purposes, Butterworth has also witnessed massive industrialisation during the latter half of the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "butterworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 386,
+    "place_id": "gn-1798760",
+    "input": {
+      "place": {
+        "place_id": "gn-1798760",
+        "name": "Pingliang",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 35.53917,
+        "lon": 106.68611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pingliang",
+          "url": "https://en.wikipedia.org/wiki/Pingliang",
+          "text": "Pingliang (simplified Chinese: 平凉; traditional Chinese: 平涼; pinyin: Píngliàng; lit. 'Pacify Liang') is a prefecture-level city in eastern Gansu province, China, bordering Shaanxi province to the south and east and the Ningxia Hui Autonomous Region to the north. The city was established in 376 AD. It has a residential population of 2,125,300 in 2019. The urban population is almost 900,000.\nPingliang is well known for the nearby Kongtong Mountains, which are sacred to Taoism and location of the mythical meeting place of the Yellow Emperor and Guangchengzi, an immortal.\nThe Book of Sui and Tongdian record that the Ashina tribe who founded the First Turkic Khaganate (also known as Göktürk Khaganate) were from Pingliang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "pingliang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 387,
+    "place_id": "gn-1838343",
+    "input": {
+      "place": {
+        "place_id": "gn-1838343",
+        "name": "Pyeongtaek",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 36.99472,
+        "lon": 127.08889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyeongtaek",
+          "url": "https://en.wikipedia.org/wiki/Pyeongtaek",
+          "text": "Pyeongtaek (Korean: 평택; Korean pronunciation: [pʰjʌŋ.tʰɛk̚]) is a city in Gyeonggi Province, South Korea. Located in the southwestern part of the province, Pyeongtaek was founded as a union of two districts in 1940. It was elevated to city status in 1986 and is home to a South Korean naval base and a large concentration of United States troops. The South Korean government plans to transform Pyeongtaek into an international economic hub to coincide with the move of United States Forces Korea (USFK) to Pyeongtaek. During the Korean War, it was the site of the Battle of Pyongtaek, an early battle between U.S. and North Korean forces. It is also the location of Pyeongtaek University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "pyeongtaek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 388,
+    "place_id": "gn-2992166",
+    "input": {
+      "place": {
+        "place_id": "gn-2992166",
+        "name": "Montpellier",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.61093,
+        "lon": 3.87635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montpellier",
+          "url": "https://en.wikipedia.org/wiki/Montpellier",
+          "text": "Montpellier (UK: ; US: ) is a city in southern France near the Mediterranean Sea. One of the largest urban centres in the region of Occitania, Montpellier is the prefecture of the department of Hérault. As of 2023, 310,240 people live in the city proper, while its metropolitan area has a population of 842,923. Montpellier is the third-largest French city near the Mediterranean coast, behind Marseille and Nice, and the seventh-largest city of France overall. The inhabitants are called Montpelliérains and Montpelliéraines.\nIn the Middle Ages, Montpellier was an important city of the Crown of Aragon (and was the birthplace of James I), and then of Majorca, before its sale to France in 1349."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "montpellier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 389,
+    "place_id": "gn-3171457",
+    "input": {
+      "place": {
+        "place_id": "gn-3171457",
+        "name": "Parma",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.79935,
+        "lon": 10.32618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parma",
+          "url": "https://en.wikipedia.org/wiki/Parma",
+          "text": "Parma (Italian: [ˈparma] ; Parmigiano: Pärma [ˈpɛːʁmɐ]) is a city in the region of Emilia-Romagna in northern Italy, known for its architecture, music, art, prosciutto (ham), cheese and surrounding countryside. With a population of 199,450 as of 2026, Parma is the second most populous city in Emilia-Romagna after Bologna, the region's capital.\nThe city is home to the University of Parma, one of the oldest universities in the world. Parma is divided into two parts by the stream of the same name. The district on the west side of the river is Oltretorrente, meaning The other side of the stream. Parma's Etruscan name was adapted by Romans to describe the round shield called Parma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "parma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 295,
+    "place_id": "gn-2991214",
+    "input": {
+      "place": {
+        "place_id": "gn-2991214",
+        "name": "Mulhouse",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 47.75205,
+        "lon": 7.32866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mulhouse",
+          "url": "https://en.wikipedia.org/wiki/Mulhouse",
+          "text": "Mulhouse is a French city of the European Collectivity of Alsace (Haut-Rhin department, in the Grand Est region of France). It is near the border with Switzerland and Germany. It is the largest city in Haut-Rhin and second largest in Alsace after Strasbourg.\nMulhouse is known for its museums, especially the Cité de l'Automobile (also known as the Musée national de l'automobile, 'National Museum of the Automobile') and the Cité du Train (also known as Musée Français du Chemin de Fer, 'French Museum of the Railway'), respectively the largest automobile and railway museums in Europe. An industrial town nicknamed \"the French Manchester\", Mulhouse is also the main seat of the Upper Alsace University, where the secretariat of the European Physical Society is found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mulhouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 296,
+    "place_id": "gn-3451138",
+    "input": {
+      "place": {
+        "place_id": "gn-3451138",
+        "name": "Rio Grande",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -32.035,
+        "lon": -52.09861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Grande, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Rio_Grande,_Rio_Grande_do_Sul",
+          "text": "Rio Grande (lit. 'Great River') is a municipality (município) and one of the oldest cities in the Brazilian state of Rio Grande do Sul. It was the state capital from 1835 to 1845. It is the most important port city in the state and has one of the most important maritime ports in Brazil.\nThe city is named after a nearby channel which indirectly connects the Lagoa dos Patos, to the northeast, and Lagoa Mirim, to the west, with the Atlantic Ocean. The municipality is bordered by Santa Vitória do Palmar on the south and Pelotas on the north, which lies across the São Gonçalo Channel.\nThe city built up its wealth over the course of its long history of strong industrial movements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "rio grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 298,
+    "place_id": "gn-379003",
+    "input": {
+      "place": {
+        "place_id": "gn-379003",
+        "name": "El Obeid",
+        "country": "Sudan",
+        "subdivision": "North Kordofan",
+        "lat": 13.18421,
+        "lon": 30.21669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Obeid",
+          "url": "https://en.wikipedia.org/wiki/El_Obeid",
+          "text": "El Obeid (Arabic: الأُبَيِّض, romanized: al-ʔubayyiḍ, lit. 'the white' ), also romanized as Al-Ubayyid, is the capital of the state of North Kordofan, in Sudan. It is located within the Sheikan locality and under the former administrative structure within Sheikan District. El Obeid is an important commercial and transport centre linking western Sudan with the eastern parts of the country. The city is known for its trade in gum arabic, millet, oilseeds and livestock, and has a railway terminus, major roads and El Obeid Airport.\nEl Obeid prospered as a caravan stop under the Musaba’at Kingdom before the Egyptians founded the modern city in 1821. It was destroyed and abandoned during the  Mahdist period, then rebuilt after Anglo-Egyptian forces took control in 1899."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "el obeid",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "obeid",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 299,
+    "place_id": "gn-5505411",
+    "input": {
+      "place": {
+        "place_id": "gn-5505411",
+        "name": "Henderson",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 36.0397,
+        "lon": -114.98194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henderson, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Henderson,_Nevada",
+          "text": "Henderson is a city in Clark County, Nevada, United States, about 16 miles (26 km) southeast of  Las Vegas. It is the 2nd most populous city in Nevada, after Las Vegas, with 317,610 residents as of the 2020 census. The city is part of the Las Vegas Valley metropolitan area.\nHenderson has an extensive system of outdoor recreation facilities, including over 220 miles (350 km) of trails and 72 parks.\nIncorporated in 1953, Henderson was originally known for its role in magnesium production during World War II. Since then, it has grown rapidly through the development of master planned communities starting with the large Green Valley neighborhood, redevelopment and reinvestment after the PEPCON disaster, and the city government's historically proactive planning and management."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "henderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 300,
+    "place_id": "gn-6992326",
+    "input": {
+      "place": {
+        "place_id": "gn-6992326",
+        "name": "Mohali",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.67995,
+        "lon": 76.72211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mohali",
+          "url": "https://en.wikipedia.org/wiki/Mohali",
+          "text": "Mohali, officially Sahibzada Ajit Singh Nagar or Ajitgarh, is a planned city in the Mohali district in Punjab, India, which is an administrative and a commercial hub lying south-west of Chandigarh. It is the headquarters of the Mohali district and one of the six Municipal Corporations of the State. It is officially named after Sahibzada Ajit Singh, the eldest son of Guru Gobind Singh.  It is one of the major satellite cities of Chandigarh and is part of the Chandigarh Capital Region.\nMohali has developed rapidly as an Information technology hub of the state of Punjab, and has thus grown in importance. The Government of Punjab has initiated significant infrastructure and recreation projects in attempts to increase the standard of living in Mohali."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mohali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 301,
+    "place_id": "gn-1272842",
+    "input": {
+      "place": {
+        "place_id": "gn-1272842",
+        "name": "Dharmavaram",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 14.41435,
+        "lon": 77.72035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dharmavaram, Sri Sathya Sai district",
+          "url": "https://en.wikipedia.org/wiki/Dharmavaram,_Sri_Sathya_Sai_district",
+          "text": "Dharmavaram is a town in Sri Sathya Sai District of the Andhra Pradesh state  of Indian country. It is mandal and divisional headquarters of Dharmavaram mandal and Dharmavaram revenue division respectively. The city is known for its handloom silk sarees.\nThe city is renowned for cotton, silk weaving industries and leather puppets. The city is called as Silk city of Andhra Pradesh. Dharmavaram is famous for Handloom Weavers, Saree Designs, Jacquard designs, Silk Extraction from Silkworm Cacoons, Dyeing and it is fully populated by maximum weavers and by developing technology makes changes by producing various types of machine equipment emerging for weavers to weave quickly than the past decades and quality production was happening now and the production was famous for Sarees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "dharmavaram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 302,
+    "place_id": "gn-144448",
+    "input": {
+      "place": {
+        "place_id": "gn-144448",
+        "name": "Ahvaz",
+        "country": "Iran",
+        "subdivision": "Khuzestan",
+        "lat": 31.31901,
+        "lon": 48.6842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahvaz",
+          "url": "https://en.wikipedia.org/wiki/Ahvaz",
+          "text": "Ahvaz (Persian: اهواز; [ʔæhˈvɒːz] ) is a city in the Central District of Ahvaz County, Khuzestan province, Iran, serving as capital of the province, the county, and the district.\nPositioned near the border with Iraq, along the banks of the Karun River, Ahvaz serves as a key industrial and transportation hub, with a diverse population and a history shaped by its proximity to Iraq and the Persian Gulf.\nAhvaz is home to over 1.3 million people within its metropolitan area. Census results suggest a steady increase in population. It is home to Persians, Arabs and other groups such as Qashqai and Kurds. Languages spoken in the area include Persian, Khuzestāni Arabic, Southern Kurdish, Neo-Mandaic, and dialects such as Bakhtiari, Dezfuli and Shushtari."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "ahvaz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 303,
+    "place_id": "gn-1710914",
+    "input": {
+      "place": {
+        "place_id": "gn-1710914",
+        "name": "Imus",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.42972,
+        "lon": 120.93667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imus",
+          "url": "https://en.wikipedia.org/wiki/Imus",
+          "text": "Imus (Tagalog pronunciation: [ˈʔimus]), officially the City of Imus (Filipino: Lungsod ng Imus), is a component city and de jure capital of the province of Cavite, Philippines. According to the 2024 census, it has a population of 481,949 people.\nIt is the de jure capital of the province of Cavite, located 20 kilometers (12 mi) south of Metro Manila, when President Ferdinand Marcos decreed the transfer of the seat of the provincial government from Trece Martires on June 11, 1977. However, most offices of the provincial government are still located in Trece Martires. Imus was officially converted into a city following a referendum on June 30, 2012.\nImus was the site of two major Katipunero victories during the Philippine Revolution against Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "imus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 304,
+    "place_id": "gn-1717641",
+    "input": {
+      "place": {
+        "place_id": "gn-1717641",
+        "name": "Cavite City",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.48369,
+        "lon": 120.89878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cavite City",
+          "url": "https://en.wikipedia.org/wiki/Cavite_City",
+          "text": "Cavite City, officially the City of Cavite (Filipino: Lungsod ng Kabite; Chavacano: Ciudad de Cavite) is a component city in the Philippines. According to the 2024 census, it has a population of 98,673 people.\nThe city was the capital of Cavite Province from its establishment in 1614 until the title was transferred to the newly created, more accessible city of Trece Martires in 1954. Cavite City was originally a small port town, Cavite Puerto, that prospered during the early Spanish colonial period, when it served as the main seaport of Manila. Cavite Puerto hosted the Manila-Acapulco galleon trade, along with other large sea-bound ships. Thereafter, San Roque and La Caridad, two formerly independent towns in Cavite province, were annexed by the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "cavite city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cavite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 305,
+    "place_id": "gn-1736376",
+    "input": {
+      "place": {
+        "place_id": "gn-1736376",
+        "name": "Kota Bharu",
+        "country": "Malaysia",
+        "subdivision": "Kelantan",
+        "lat": 6.12361,
+        "lon": 102.24333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kota Bharu",
+          "url": "https://en.wikipedia.org/wiki/Kota_Bharu",
+          "text": "Kota Bharu (Kelantanese: Koto Baghu), colloquially referred to as KB, is a town in Malaysia that serves as the state capital and royal seat of Kelantan. It is situated in the northeastern part of Peninsular Malaysia and lies near the mouth of the Kelantan River.\nThe town is home to many religious buildings, various museums, the unique architecture of the old royal palaces (still occupied by the Sultan and Sultanah and off-limits to visitors but viewable from outside) and former royal buildings (which can be visited). It is served by Keretapi Tanah Melayu's East Coast Line at the nearby Wakaf Bharu Terminal Station, in the town of Wakaf Bharu across the Kelantan River and Sultan Ismail Petra Airport, located in Pengkalan Chepa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "kota bharu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kota",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bharu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 306,
+    "place_id": "gn-1816920",
+    "input": {
+      "place": {
+        "place_id": "gn-1816920",
+        "name": "Shaoyang",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.23818,
+        "lon": 111.46214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaoyang",
+          "url": "https://en.wikipedia.org/wiki/Shaoyang",
+          "text": "Shaoyang (simplified Chinese: 邵阳; traditional Chinese: 邵陽; pinyin: Shàoyáng), formerly named Baoqing (Paoking) (Chinese: 宝庆), is a prefecture-level city in southwestern Hunan province, China, bordering Guangxi to the south. It has a history of 2500 years and remains an important commercial and transportation city in Hunan. As of the 2020 Chinese census, its total population was 6,563,520 inhabitants, of whom 1,415,173 lived in the built-up (or metro) area made of three urban districts and Xinshao County largely conurbated.\nOne of the major forest areas in Hunan, Shaoyang has a forest coverage of 42.7%. The 23,000,000-acre (93,000 km2) NanShan Pastures is one of the biggest in South Central China and provide dairy products and meat for Hunanese.\nShaoyang is home to Shaoyang University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "shaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 307,
+    "place_id": "gn-204953",
+    "input": {
+      "place": {
+        "place_id": "gn-204953",
+        "name": "Tshikapa",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Kasai",
+        "lat": -6.41621,
+        "lon": 20.79995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tshikapa",
+          "url": "https://en.wikipedia.org/wiki/Tshikapa",
+          "text": "Tshikapa is the capital city of Kasaï Province in the Democratic Republic of the Congo. The city is located 60 km (37 mi) north of the Angolan border and 189 km (117 mi) west of Kananga at the confluence of the Tshikapa and Kasai rivers. According to records published by the Utrecht University library, the population of the city grew from 38,900 in 1970 to 180,900 in 1994. However, the Congo wars and the Kamwina Nsapu rebellion triggered waves of internal displacement, with many residents fleeing violence or relocating temporarily. The World Population Review estimates the 2025 population of Tshikapa and its urban agglomeration at 1,185,920. \nTshikapa has been a site of diamond mining since its founding in the early 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "tshikapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 308,
+    "place_id": "gn-3835994",
+    "input": {
+      "place": {
+        "place_id": "gn-3835994",
+        "name": "Santa Rosa",
+        "country": "Argentina",
+        "subdivision": "La Pampa",
+        "lat": -36.61617,
+        "lon": -64.28991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa, La Pampa",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa,_La_Pampa",
+          "text": "Santa Rosa (Spanish pronunciation: [ˈsanta ˈrosa]) is a city in the Argentine Pampas (lowlands), and the capital of La Pampa Province, Argentina. It lies on the east of the province, on the shore of the Don Tomás Lagoon, at the intersection of National Routes National Route 5 and National Route 35. The city (94,340) and its surroundings hold 102,610 inhabitants (2001 census [INDEC]), around a third of the population of the province. Its current mayor is Luciano di Nápoli. \nFounded in 1892 by Tomás Mason, Santa Rosa did not develop into a relatively important agricultural centre until the second half of the 20th century. It is still one of the smallest provincial capitals of the country after Patagonian Rawson, Ushuaia and Viedma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 309,
+    "place_id": "gn-3906194",
+    "input": {
+      "place": {
+        "place_id": "gn-3906194",
+        "name": "Sacaba",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.39799,
+        "lon": -66.03825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sacaba",
+          "url": "https://en.wikipedia.org/wiki/Sacaba",
+          "text": "Sacaba is a capital city and a municipality in the Bolivian province of Chapare. The city, located 13 km (8.1 mi) eastward from Cochabamba, is the second largest city in the Cochabamba Department after Cochabamba city. Post-colonial architecture may be seen in the inner part of Sacaba; however, some has been destroyed due to lack of municipal care.\nSacaba was the site of anti-coca eradication riots in 2002, which caused the removal of Evo Morales, leader of the cocalero movement and the MAS, from his seat in the Bolivian congress. Morales opposed the closing of a coca market in Sacaba, and ensuing protests involved the death of several people on both sides. Morales served as president of Bolivia between 2006 and 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sacaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 310,
+    "place_id": "gn-4984247",
+    "input": {
+      "place": {
+        "place_id": "gn-4984247",
+        "name": "Ann Arbor",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.27756,
+        "lon": -83.74088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ann Arbor, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Ann_Arbor,_Michigan",
+          "text": "Ann Arbor is a city in Washtenaw County, Michigan, United States. The county seat, it had a population of 123,851 in 2020, making it the fifth most populous city in Michigan.\nThe city is home to the University of Michigan, the oldest university in the state. Its economy is primarily focused on high technology, with numerous startup companies drawn to the area due to the university's robust research and development activities.\nFounded in 1824 with American settlers from the East Coast, it was incorporated as a city in 1851. Located on the Huron River, Ann Arbor is the principal city of its metropolitan area, and it is also included in the Detroit–Warren–Ann Arbor combined statistical area and that of Great Lakes megalopolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "ann arbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ann",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 312,
+    "place_id": "gn-1279186",
+    "input": {
+      "place": {
+        "place_id": "gn-1279186",
+        "name": "Aizawl",
+        "country": "India",
+        "subdivision": "Mizoram",
+        "lat": 23.72894,
+        "lon": 92.71791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aizawl",
+          "url": "https://en.wikipedia.org/wiki/Aizawl",
+          "text": "Aizawl (English:   EYE-zawl; Mizo: [ˈaɪ̯.ˈzɔːl] ), formerly known as Aijal, is the capital city and the most populous city of Mizoram, India. It is also the third largest city in northeast India. It is situated atop a series of ridges, with an average elevation of around 1,132 metres (3,714 feet) above sea level. In 2024, the city has an estimated population of 415,000 people.\nHaving served as the capital of the British Lushai Hills from 1898 to 1947, colonial structures are prevalent in the city centre including but not limited to the Aijal Club, Raj Bhavan, the Red School, and the Office of the Deputy Commissioner. As the seat of the Government of Mizoram, Aizawl is home to the Assembly House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "aizawl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 313,
+    "place_id": "gn-1329221",
+    "input": {
+      "place": {
+        "place_id": "gn-1329221",
+        "name": "Amarapura",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Mandalay Region",
+        "lat": 21.90709,
+        "lon": 96.04894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amarapura",
+          "url": "https://en.wikipedia.org/wiki/Amarapura",
+          "text": "Amarapura (Burmese: အမရပူရ, romanized: aamarapuur, pronounced [ʔəməɹa̰pùɹa̰], lit. 'The Immortal City'; also spelt as Ummerapoora) is a former capital of Myanmar, and now a township of Mandalay city. Amarapura is bounded by the Irrawaddy River in the west, Chanmyathazi Township in the north, and the ancient capital site of Ava (Inwa) in the south. It was the capital of Myanmar twice during the Konbaung period (1783–1821 and 1842–1857) before finally being supplanted by Mandalay 11 kilometres (6.8 mi) north in 1859. It is historically referred to as Taungmyo (Southern City) in relation to Mandalay. Amarapura today is part of Mandalay, as a result of urban sprawl. The township is known today for its traditional silk and cotton weaving, and bronze casting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "amarapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 314,
+    "place_id": "gn-2750053",
+    "input": {
+      "place": {
+        "place_id": "gn-2750053",
+        "name": "Nijmegen",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.8425,
+        "lon": 5.85278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nijmegen",
+          "url": "https://en.wikipedia.org/wiki/Nijmegen",
+          "text": "Nijmegen ( NY-may-gən, Dutch: [ˈnɛimeːɣə(n)] ; Nijmeegs: Nimwéêge [ˈnɪmβ̞ɛːçə]) is the largest city in the Dutch province of Gelderland and the ninth largest of the Netherlands as a whole. Located on the Waal River close to the German border, Nijmegen is one of the oldest cities in the Netherlands and the first to be recognized as such in Roman times. In 2005, it celebrated 2,000 years of existence.\nNijmegen became a free imperial city in 1230 and a Hanseatic city in 1402. Since 1923 it has been a university city with the opening of a Catholic institution now known as the Radboud University Nijmegen. The city is well known for the annual Vierdaagse — the International Four Days Marches Nijmegen event."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "nijmegen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 315,
+    "place_id": "gn-3348613",
+    "input": {
+      "place": {
+        "place_id": "gn-3348613",
+        "name": "Gabela",
+        "country": "Angola",
+        "subdivision": "Kwanza Sul",
+        "lat": -10.85147,
+        "lon": 14.37993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gabela, Angola",
+          "url": "https://en.wikipedia.org/wiki/Gabela,_Angola",
+          "text": "Gabela is a town, with a population of 116,903 (2014), and a commune, named Gabela Sede, in the municipality of Amboim, province of Cuanza Sul, Angola and the seat of that municipality. The area of the  commune comprises 459 km2 with a population of 184,723. It was founded as N'Guebela on September 28, 1907.\nAround the town, some areas of the Angolan Scarp savanna and woodlands with its unique plants and animals are still to be found. The Gabela akalat (Sheppardia gabela), a species of bird, was first recorded here by scientists and subsequently named after the town, as were the Gabela helmet-shrike (Prionops gabela) and Gabela bush-shrike (Laniarius amboimensis); these endangered species are only found in the uplands near Gabela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "gabela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 316,
+    "place_id": "gn-3456290",
+    "input": {
+      "place": {
+        "place_id": "gn-3456290",
+        "name": "Nilópolis",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.8075,
+        "lon": -43.41389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nilópolis",
+          "url": "https://en.wikipedia.org/wiki/Nil%C3%B3polis",
+          "text": "Nilópolis (Portuguese pronunciation: [niˈlɔpoliʃ], [niˈlɔpɔliʃ], [niˈlɔpuliʃ]) is a municipality in Brazil, located in the Rio de Janeiro state's southwestern region, bordering São João de Meriti, Mesquita and Rio de Janeiro. It is the smallest municipality in Rio de Janeiro state, with a total area of 19.39 km2. The population of 162,693 inhabitants living in an area of 9 km2 and the remaining area corresponds to the Gericinó's Natural Park. Officially, the population density exceeds 8,120 inhabitants/km2, but if calculated just 9 km2 occupied, it becomes the most densely populated city in Brazil with more than 17.400 inhabitants/km2. Currently, São João de Meriti has the highest population density, with 12,897 inhabitants/km2.\nThe city was named after Nilo Peçanha, a President of Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "nilopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

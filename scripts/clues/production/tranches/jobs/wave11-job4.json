@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 270,
+    "place_id": "gn-12495083",
+    "input": {
+      "place": {
+        "place_id": "gn-12495083",
+        "name": "Chirmiri",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 23.19073,
+        "lon": 82.35314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chirmiri",
+          "url": "https://en.wikipedia.org/wiki/Chirmiri",
+          "text": "Chirmiri is a hill station city and a Municipal Corporation in the Manendragarh-Chirmiri-Bharatpur district in the Indian state of Chhattisgarh. It was a part of Koriya district until 15 August 2021 when the separate Manendragarh-Chirmiri-Bharatpur district was created. It is famously known for its coal extraction as the area is rich in coal.\nChirmiri, secured the top position in the Swacch Survekshan 2022 rankings for the '50,000-1 lakh' population category in the Eastern zone. The city was given the award for 'Fastest mover' city under the same category during Swacchh Survekshan 2020. For the 2022 Survekshan, Chirmiri scored 100% under categories like Waste generation vs processing, Remediation of Dumpsites, Cleanliness of Residential Areas, Cleanliness of Market Areas, Cleanliness Of Drains, and Cleanliness of Water Bodies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "chirmiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 271,
+    "place_id": "gn-1268865",
+    "input": {
+      "place": {
+        "place_id": "gn-1268865",
+        "name": "Jodhpur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.26841,
+        "lon": 73.00594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jodhpur",
+          "url": "https://en.wikipedia.org/wiki/Jodhpur",
+          "text": "Jodhpur (Hindi pronunciation: [ˈd͡ʒoːd̪ʱ.pʊr] ) is the second-largest city of the north-western Indian state of Rajasthan, after its capital Jaipur. As of 2025, the city has a population of 1.6 million. It serves as the administrative headquarters of the Jodhpur district and Jodhpur division. It is the historic capital of the Kingdom of Marwar, founded in 1459 by Rao Jodha, a Rajput chief of the Rathore clan. On 11 August 1947, 4 days prior to the Indian independence, Maharaja Hanwant Singh the last ruler of Jodhpur state signed the Instrument of Accession and merged his state in Union of India. On 30 March 1949, it became part of the newly formed state of Rajasthan, which was created after merging the states of the erstwhile Rajputana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jodhpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 272,
+    "place_id": "gn-2729907",
+    "input": {
+      "place": {
+        "place_id": "gn-2729907",
+        "name": "Longyearbyen",
+        "country": "Svalbard & Jan Mayen",
+        "subdivision": "Svalbard",
+        "lat": 78.22334,
+        "lon": 15.64689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longyearbyen",
+          "url": "https://en.wikipedia.org/wiki/Longyearbyen",
+          "text": "Longyearbyen (Urban East Norwegian: [ˈlɔ̀ŋjɛrˌbyːən], locally [ˈlɔ̀ŋjɑrˌbyːən], 'Longyear town') is one of the world's northernmost settlements, with an estimated population of around 2,400–2,800, and is the capital and largest settled area of Svalbard. It stretches along the foot of the left bank of the Longyear Valley and on the shore of Adventfjorden, the short estuary leading into Isfjorden on the west coast of Spitsbergen, the island's broadest inlet. As of 2002, Longyearbyen Community Council is an official Norwegian municipality. It is the seat of the Governor of Svalbard. As of 2024, the town's mayor is Leif Terje Aunevik.\nKnown as Longyear City until 1926, the town was established by and named after American John Munro Longyear, whose Arctic Coal Company started coal-mining there in 1906."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "longyearbyen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 273,
+    "place_id": "gn-3464975",
+    "input": {
+      "place": {
+        "place_id": "gn-3464975",
+        "name": "Curitiba",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.42778,
+        "lon": -49.27306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curitiba",
+          "url": "https://en.wikipedia.org/wiki/Curitiba",
+          "text": "Curitiba ( KOOR-ih-CHEE-bə; Brazilian Portuguese: [kuɾiˈtʃibɐ]) is the capital and largest city in the state of Paraná in Southern Brazil. The city's population was 1,829,225 as of 2024, making it the eighth most populous city in Brazil and the largest in Brazil's South Region. The Curitiba metropolitan area comprises 29 municipalities with a total population of over 3,559,366, making it the ninth most populous metropolitan area in the country.\nThe city sits on a plateau at 932 m (3,058 ft) above sea level. It is located west of the seaport of Paranaguá and is served by the Afonso Pena International and Bacacheri airports. Curitiba is an important cultural, political, and economic center in Latin America and hosts the Federal University of Paraná, established in 1912."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "curitiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 274,
+    "place_id": "gn-3608248",
+    "input": {
+      "place": {
+        "place_id": "gn-3608248",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.75971,
+        "lon": -86.78221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 275,
+    "place_id": "gn-3644768",
+    "input": {
+      "place": {
+        "place_id": "gn-3644768",
+        "name": "Cumaná",
+        "country": "Venezuela",
+        "subdivision": "Sucre",
+        "lat": 10.4639,
+        "lon": -64.17859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumaná",
+          "url": "https://en.wikipedia.org/wiki/Cuman%C3%A1",
+          "text": "Cumaná (Spanish pronunciation: [kumaˈna]) is the capital city of Venezuela's Sucre State. It is located 402 kilometres (250 mi) east of Caracas. Cumaná was one of the first cities founded by Spain in the mainland Americas and is the oldest continuously-inhabited Hispanic-established city in South America. Its early history includes several successful counters by the indigenous people of the area who were attempting to prevent Spanish incursion into their land, resulting in the city being refounded several times. The municipality of Sucre, which includes the capital city, Cumaná, had a population of 358,919 at the 2011 Census; the latest estimate (as of mid-2016) is 423,546.\nThe city is located at the mouth of the Manzanares River on the Caribbean coast, in the northeast of Venezuela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "cumana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 276,
+    "place_id": "gn-5894171",
+    "input": {
+      "place": {
+        "place_id": "gn-5894171",
+        "name": "Barrie",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.40011,
+        "lon": -79.66634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrie",
+          "url": "https://en.wikipedia.org/wiki/Barrie",
+          "text": "Barrie is a city in Central Ontario, Canada, about 90 kilometres (56 mi) north of Toronto. The city is located along the shores of Kempenfelt Bay and geographically within Simcoe County, although it is a single-tier municipality that is politically independent from the surrounding county.\nThe city is part of the extended urban area in Southern Ontario known as the Greater Golden Horseshoe. As of the 2021 census, the city's population was 147,829, while the census metropolitan area had a population of 212,856 residents. The area was first settled during the War of 1812 as a supply depot for British forces, and Barrie was named after Sir Robert Barrie. The city has grown significantly in recent decades due to the emergence of the technology industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "barrie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 277,
+    "place_id": "gn-8556321",
+    "input": {
+      "place": {
+        "place_id": "gn-8556321",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.76667,
+        "lon": -86.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 279,
+    "place_id": "gn-1172451",
+    "input": {
+      "place": {
+        "place_id": "gn-1172451",
+        "name": "Lahore",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.558,
+        "lon": 74.35071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahore",
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "text": "Lahore is the capital and largest city of the Pakistani province of Punjab. It is the second-largest city in Pakistan, after Karachi, and 27th largest in the world, with a population of over 14 million. Lahore is one of country's major industrial, educational and economic hubs, and is considered the historic capital and cultural centre of the wider Punjab region.\nThe site of the city has been inhabited for over two millennia, although Lahore itself rose to prominence in the late 10th century. At times Lahore has served as the capital of several empires, including the Odi Shahi dynasty, Ghaznavid Empire and Delhi Sultanate. It was one of the principal cities in the Mughal Empire, being its capital city during the reign of Akbar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "lahore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 280,
+    "place_id": "gn-2949186",
+    "input": {
+      "place": {
+        "place_id": "gn-2949186",
+        "name": "Bielefeld",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 52.03333,
+        "lon": 8.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bielefeld",
+          "url": "https://en.wikipedia.org/wiki/Bielefeld",
+          "text": "Bielefeld (German pronunciation: [ˈbiːləfɛlt] ) is a city in the Ostwestfalen-Lippe region in the north-east of North Rhine-Westphalia, Germany. With a population of 342,952, it is also the most populous city in the administrative region (Regierungsbezirk) of Detmold and the 18th largest city in Germany.\nThe historical centre of the city is situated in the Ravensberg Basin north of the Teutoburg Forest hill range, but modern Bielefeld extends across the range and further south into the flat Westphalian Basin. The city is situated on the Hermannsweg, a hiking trail that runs for 156 km along the ridges of the Teutoburg Forest.\nBielefeld is home to a significant number of internationally operating companies, including Dr. Oetker, DMG Mori (former Gildemeister), Möller Group, Goldbeck and Schüco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "bielefeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 282,
+    "place_id": "gn-3583361",
+    "input": {
+      "place": {
+        "place_id": "gn-3583361",
+        "name": "San Salvador",
+        "country": "El Salvador",
+        "subdivision": "San Salvador Department",
+        "lat": 13.68935,
+        "lon": -89.18718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Salvador",
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "text": "San Salvador (Spanish pronunciation: [san salβaˈðoɾ]) is the capital and largest city of El Salvador and of its eponymous department. It is the country's largest agglomeration, serving as the country's political, cultural, educational and financial center. The municipality of San Salvador has 525,990 inhabitants (2024). The Metropolitan Area of San Salvador, which comprises the capital itself and 13 of its municipalities, has a population of 2,404,097. The urban area of San Salvador has a population of 1,600,000 inhabitants.\nThe city is home to the Consejo de Ministros de El Salvador (Council of Ministries of El Salvador), the Legislative Assembly of El Salvador, the Supreme Court of El Salvador, and other governmental institutions, as well as the official residence of the president of El Salvador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "san salvador",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salvador",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 284,
+    "place_id": "gn-5139568",
+    "input": {
+      "place": {
+        "place_id": "gn-5139568",
+        "name": "Staten Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.56233,
+        "lon": -74.13986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Staten_Island",
+          "text": "Staten Island  ( STAT-ən) is the southernmost of the five boroughs of New York City. It is separated from New Jersey by the Arthur Kill and the Kill Van Kull and from the rest of New York by New York Bay. With a population of 495,747 in the 2020 census, Staten Island is the least populated borough but the third largest in land area at 58.5 sq mi (152 km2). It is the least densely populated and most suburban borough of the city. The borough is coextensive with Richmond County, one of the 62 counties of New York state, and includes the southernmost point of the state.\nOriginally home to Lenape Native Americans, the island was settled by Dutch colonists in the 17th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "staten island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "staten",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 286,
+    "place_id": "gn-1260341",
+    "input": {
+      "place": {
+        "place_id": "gn-1260341",
+        "name": "Parbhani",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.26855,
+        "lon": 76.77081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parbhani",
+          "url": "https://en.wikipedia.org/wiki/Parbhani",
+          "text": "Parbhani (parbhani, Marathi pronunciation: [pəɾbʰəɳiː] ) is a city in Maharashtra state of India. It is the administrative headquarters of Parbhani District. Parbhani is one of the largest cities in Marathwada region. Parbhani is around 200 kilometres (120 mi) away from regional headquarters of Aurangabad while it is 491 km (305 mi) away from the state capital Mumbai.\nAlong with the entire Marathwada region, Parbhani was a part of the erstwhile Nizam State; later a part of Hyderabad State; after reorganization of states in 1956 it became a part of the then-Bombay state; since 1960, it has been part of the present Maharashtra state.\nParbhani is home to Vasantrao Naik Marathwada Agricultural University, which is one of only four agriculture universities in Maharashtra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "parbhani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 287,
+    "place_id": "gn-1275971",
+    "input": {
+      "place": {
+        "place_id": "gn-1275971",
+        "name": "Bhilai",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.20919,
+        "lon": 81.4285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhilai",
+          "url": "https://en.wikipedia.org/wiki/Bhilai",
+          "text": "Bhilai is a city in Durg district of the Indian state of Chhattisgarh, in east-central India. Along with its twin city, Durg, the urban agglomeration of Durg-Bhilai Nagar has a population of more than a million, making it the second most populous urban area in Chhattisgarh, after Raipur. The Bhilai metropolis contains three municipal corporations: Bhilai Municipal Corporation, Bhilai Charoda Municipal Corporation and, Risali Municipal Corporation.\nBhilai is a major industrial and educational hub of central India. The city is home to several industries, including Bhilai Steel Plant, Jaypee Cement, Orient Cement, NSPCL Bhilai Power Plant, Steel Authority of India, FSNL, and ACC Cement. The city is home to the Indian Institute of Technology Bhilai, as well as the Bhilai Institute of Technology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bhilai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 288,
+    "place_id": "gn-1689286",
+    "input": {
+      "place": {
+        "place_id": "gn-1689286",
+        "name": "San Juan",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6,
+        "lon": 121.0333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan, Metro Manila",
+          "url": "https://en.wikipedia.org/wiki/San_Juan,_Metro_Manila",
+          "text": "San Juan, officially the City of San Juan (Filipino: Lungsod ng San Juan), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 134,312 people. It is located in Metro Manila's approximate geographical center, and is the country's smallest city by land area.\nThe city is known historically for the site of the first battle of the Katipunan, the organization which led the 1896 Philippine Revolution against the Spanish Empire. Notable landmarks today such as the Pinaglabanan Shrine and heritage homes are located in the city. Other locations include Greenhills and Santolan Town Plaza, making the city a major shopping hub with a range of upscale, boutique, and bargain retail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "san juan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 289,
+    "place_id": "gn-1689510",
+    "input": {
+      "place": {
+        "place_id": "gn-1689510",
+        "name": "San Jose",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 12.35275,
+        "lon": 121.06761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Jose, Occidental Mindoro",
+          "url": "https://en.wikipedia.org/wiki/San_Jose,_Occidental_Mindoro",
+          "text": "San Jose, officially the Municipality of San Jose (Tagalog: Bayan ng San Jose),  is a municipality in the province of Occidental Mindoro, Philippines. According to the 2024 census, it has a population of 143,495 people.\nSan Jose has the province's largest commercial port and airport, the most banking, business, dining and commercial establishments in Occidental Mindoro, and has become a center of trade in the Mimaropa region. Its major local and international exports include rice, salt and processed milkfish. It was ranked 13th in \"overall competitiveness\" among Philippine local government units in the 2017 Cities and Municipalities Competitiveness Index (CMCI).\nIn pre-colonial times, it was named Pandurucan by the indigenous Mangyans after the local river, before later renamed for its patron saint, St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 290,
+    "place_id": "gn-1785738",
+    "input": {
+      "place": {
+        "place_id": "gn-1785738",
+        "name": "Yuncheng",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 35.02306,
+        "lon": 110.99278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yuncheng",
+          "url": "https://en.wikipedia.org/wiki/Yuncheng",
+          "text": "Yuncheng (simplified Chinese: 运城; traditional Chinese: 運城) is the southernmost prefecture-level city in Shanxi province, People's Republic of China. It borders Linfen and Jincheng municipalities to the north and east, and Henan (Luoyang and Jiyuan to the east, Sanmenxia to the south) and Shaanxi (Weinan) provinces to the east, south and west, respectively. As of the 2020 census, its population was 4,774,508 inhabitants (5,134,779 in 2010), of whom 928,334 (680,036 in 2010) lived in the built-up (or metro) area made of Yanhu District. One can note than Pinglu County, 205,080 inhabitants in the south, is now part of Sanmenxia built-up (or metro) area.\nYuncheng is a city that was born and prospered from salt. It is named after the \"City of Salt Luck\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "yuncheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 291,
+    "place_id": "gn-191245",
+    "input": {
+      "place": {
+        "place_id": "gn-191245",
+        "name": "Kisumu",
+        "country": "Kenya",
+        "subdivision": "Kisumu County",
+        "lat": -0.10221,
+        "lon": 34.76171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisumu",
+          "url": "https://en.wikipedia.org/wiki/Kisumu",
+          "text": "Kisumu ( kee-SOO-moo) is the third-largest city in Kenya located in the Lake Victoria area in the former Nyanza Province. It is the second-largest city in the Lake Victoria Basin after Kampala. The city has a population of 438,588 according to the recent 2026 population estimates. The metro region, including Maseno and Ahero, had a population of 6,771 (Maseno) and 11,801 (Ahero) people respectively, totaling to a combined population of 457,160 people, according to the 2019 Kenya Population and Housing Census which was conducted by the Kenya National Bureau of Statistics.\nIn addition to its political importance, the city is a significant industrial and commercial centre in Kenya. It is also home to a number of higher-education institutions and a sizeable academic community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "kisumu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 292,
+    "place_id": "gn-2036113",
+    "input": {
+      "place": {
+        "place_id": "gn-2036113",
+        "name": "Liaoyang",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.27194,
+        "lon": 123.17306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liaoyang",
+          "url": "https://en.wikipedia.org/wiki/Liaoyang",
+          "text": "Liaoyang (Chinese: 辽阳; pinyin: Liáoyáng) is a prefecture-level city of east-central Liaoning province, China, situated on the Taizi River. It is approximately one hour south of Shenyang, the provincial capital, by car. Liaoyang is home to Liaoning University's College of Foreign Studies and a number of vocational colleges. The city hosts a limited number of professional basketball and volleyball games in a modern sports facility. According to the latest statistics in 2020, the age distribution of the population in Liaoyang is as follows: 0–14 years old account for 9.83% of the population; 15–59 years old account for 62.26% of the population; 60 years old and above account for 27.91% of the population; 65 years old and above account for 19.46% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "liaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 294,
+    "place_id": "gn-2634910",
+    "input": {
+      "place": {
+        "place_id": "gn-2634910",
+        "name": "Wakefield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.68331,
+        "lon": -1.49768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakefield",
+          "url": "https://en.wikipedia.org/wiki/Wakefield",
+          "text": "Wakefield is a cathedral city in West Yorkshire, England, located on the River Calder. The city had a population of 109,766 in the 2021 census, up from 99,251 in the 2011 census. The city is the administrative centre of the wider Metropolitan Borough of Wakefield, which had a 2025 population of 369,450, the 26th most populous district in England. It is part of the West Yorkshire Built-up Area and the Yorkshire and the Humber region.\nIn 1888, it gained city status due to its cathedral. The city has a town hall and is home to the county hall, which was the former administrative centre of the city's county borough and metropolitan borough as well as county town for the West Riding of Yorkshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "wakefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

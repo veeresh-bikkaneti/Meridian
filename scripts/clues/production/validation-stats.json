@@ -1,13 +1,13 @@
 {
-  "attempted": 1800,
-  "accepted": 60,
-  "workerRejected": 1740,
+  "attempted": 1989,
+  "accepted": 63,
+  "workerRejected": 1926,
   "validatorRejected": 0,
   "malformedWorkerRejections": 0,
   "validatorReasonHistogram": {},
   "workerRejectionTierHistogram": {
-    "climate": 1675,
-    "history": 62,
+    "climate": 1857,
+    "history": 66,
     "hook": 2,
     "giveaway": 1
   },
