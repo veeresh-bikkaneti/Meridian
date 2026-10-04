@@ -138,6 +138,10 @@ export default defineConfig({
       testMatch: /difficulty-picker\.spec\.ts/,
     },
     {
+      name: "cleared-mode",
+      testMatch: /cleared-mode\.spec\.ts/,
+    },
+    {
       name: "crash-loop-breaker",
       testMatch: /crash-loop-breaker\.spec\.ts/,
     },
