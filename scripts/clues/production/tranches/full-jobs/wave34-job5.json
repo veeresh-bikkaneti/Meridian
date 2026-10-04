@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 6729,
+    "attempt": 6681,
+    "place_id": "gn-5372242",
+    "input": {
+      "place": {
+        "place_id": "gn-5372242",
+        "name": "Mentone",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.07001,
+        "lon": -117.13448
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mentone, California",
+          "url": "https://en.wikipedia.org/wiki/Mentone,_California",
+          "text": "Mentone is a census-designated place in the Inland Empire region of San Bernardino County, California, United States. The population was 9,557 at the 2020 census, up from 8,720 at the 2010 census.\nAccording to the United States Census Bureau, it has a total area of 6.1 square miles (16 km2); 6.1 square miles (16 km2) of it is land and 0.19% is water. Lugonia Avenue as California State Route 38 serves as its main street, being called Mentone Boulevard upon entering Mentone from Redlands on the west side, then changes to Mill Creek Road on the east end. Route 38 through Mentone serves as one of three gateways to the San Bernardino Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "mentone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6730,
+    "attempt": 6682,
+    "place_id": "gn-5423294",
+    "input": {
+      "place": {
+        "place_id": "gn-5423294",
+        "name": "Golden",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.75554,
+        "lon": -105.2211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Golden, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Golden,_Colorado",
+          "text": "Golden is a home rule city that is the county seat of Jefferson County, Colorado, United States. The city population was 20,399 at the 2020 United States census. Golden lies along Clear Creek at the base of the Front Range of the Rocky Mountains. Founded during the Pike's Peak gold rush on June 16, 1859, the mining camp was originally named Golden City in honor of Thomas L. Golden. Golden City served as the capital of the provisional Territory of Jefferson from 1860 to 1861, and capital of the official Territory of Colorado from 1862 to 1867. In 1867, the territorial capital was moved about 12 miles (19 km) east to Denver City. Golden is now a part of the Denver-Aurora-Centennial, CO Metropolitan Statistical Area and the Front Range Urban Corridor.\nThe Colorado School of Mines, offering programs in engineering and science, is located in Golden. It is also home to the National Earthquake Information Center, on the campus of Mines; and the National Laboratory of the Rockies, a federally-funded science institution. Additionally, Coors Brewing Company, CoorsTek, Spyderco, Software Bisque, American Mountaineering Center, and Colorado Railroad Museum are located in the city. It is the birthplace of the Jolly Rancher, a candy bought out by the Hershey Foods Corporation, and home to  Yeti Cycles. Western showman William F. \"Buffalo Bill\" Cody is buried nearby on Lookout Mountain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "golden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6731,
+    "attempt": 6683,
+    "place_id": "gn-583578",
+    "input": {
+      "place": {
+        "place_id": "gn-583578",
+        "name": "Aktanysh",
+        "country": "Russia",
+        "subdivision": "Tatarstan Republic",
+        "lat": 55.71714,
+        "lon": 54.07116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aktanysh",
+          "url": "https://en.wikipedia.org/wiki/Aktanysh",
+          "text": "Aktanysh (Russian: Актаны́ш; Tatar: Актаныш; Bashkir: Аҡтаныш), historically known as Lower Aktanyshbash (Russian: Нижний Актанышбаш; Bashkir: Түбәнге Аҡтанышбаш) is a rural locality (a selo) and the administrative center of Aktanyshsky District of the Republic of Tatarstan, Russia. The population is less than 10,000, though it has steadily increased in recent decades;  8,923 (2010 census); 8,148 (2002 census); 6,814 (1989 Soviet census).\nThe village is situated in the lower reaches of the Belaya (Ağiðel) river, in the easternmost part of Tatarstan, less than 6 km (3.7 mi) from the border with Bashkortostan. Aktanysh lies about 300 km (190 mi) east of Kazan and 165 km (103 mi) northwest of Ufa as the crow flies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "aktanysh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6732,
+    "attempt": 6684,
+    "place_id": "gn-5897209",
+    "input": {
+      "place": {
+        "place_id": "gn-5897209",
+        "name": "Bécancour",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.34106,
+        "lon": -72.43224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bécancour, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Bécancour,_Quebec",
+          "text": "Bécancour (French pronunciation: [bekɑ̃kuʁ] ) is a city in the Centre-du-Québec region of Quebec, Canada; it is the seat of the Bécancour Regional County Municipality. It is located on the south shore of the Saint Lawrence River at the confluence of the Bécancour River, opposite Trois-Rivières.\nWôlinak, an Abenaki Indian reserve, is an enclave within the town of Bécancour. They arrived from Norridgewock, Maine (formerly Acadia) in the aftermath of Father Rale's War.\nThere was a small migration of Acadians to the village (1759), after the British began the Expulsion of the Acadians from the Maritimes.  Specifically, the Acadians migrated from present-day New Brunswick to avoid being killed or captured in the St. John River Campaign.\nThe town of Bécancour was created October 17, 1965, from an amalgamation of eleven municipalities. Bécancour was one of the province of Quebec's first amalgamated cities. At the time, Bécancour was the largest city in Quebec in terms of land area (as of 2003, the title belongs to La Tuque, Quebec).\nBécancour is now divided into six secteurs (lit. \"sectors\"): Bécancour, Saint-Grégoire, Gentilly, Précieux-Sang, Sainte-Angèle-de-Laval, and Sainte-Gertrude.  Bécancour, Saint-Grégoire and Gentilly, each located near the shore of the Saint Lawrence River, can be considered the main urban centres.  Autoroute 55 intersects Autoroute 30 and Route 132 at Saint-Grégoire.\nBécancour is part of the Trois-Rivières metropolitan area; many residents work in Trois-Rivières and commute across the Laviolette Bridge daily."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "becancour",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6733,
+    "attempt": 6685,
+    "place_id": "gn-5898138",
+    "input": {
+      "place": {
+        "place_id": "gn-5898138",
+        "name": "Beloeil",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.56839,
+        "lon": -73.20568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beloeil, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Beloeil,_Quebec",
+          "text": "Beloeil (; French pronunciation: [bɛlœj] ) is a city in Quebec, Canada. It is a suburb of Montreal, on the South Shore and is on the Richelieu River, 32 kilometres (20 mi) east of Montreal. According to the official Commission de toponymie du Québec, the name is written Belœil with an oe ligature; however, other sources avoid the ligature, including the Ministry of Municipal Affairs and the town's own official website.\nThe population as of the Canada 2021 Census was 24,107. It is part of the Regional County Municipality of La Vallée-du-Richelieu, within the Administrative Region of Montérégie. It occupies the west shore of the Richelieu River in front of the Mont Saint-Hilaire. Along with the city of McMasterville to the immediate south of Beloeil, and the cities of Mont-Saint-Hilaire and Otterburn Park on the eastern bank of the Richelieu, Beloeil forms an unbroken urban area of over 52,959 inhabitants, which is part of Greater Montreal.\nBelœil was created as a village in 1903 and became a ville (city) in 1914, but can trace its history through the parish of Saint-Mathieu-de-Belœil, established in 1772, and the seigneurie de Belœil, founded in 1694. Its name probably derives from the old French expression \"Quel bel œil!\", meaning \"What a beautiful view!\", generally attributed to Jean-Baptiste Hertel, brother of the first seigneur (lord) of Belœil, Joseph-François Hertel de la Fresnière."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "beloeil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6734,
+    "attempt": 6686,
+    "place_id": "gn-5938513",
+    "input": {
+      "place": {
+        "place_id": "gn-5938513",
+        "name": "Deux-Montagnes",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.53455,
+        "lon": -73.90168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deux-Montagnes, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Deux-Montagnes,_Quebec",
+          "text": "Deux-Montagnes (French pronunciation: [dømɔ̃taɲ]) is a suburban municipality in Southwestern Quebec, Canada on the north shore of the Rivière des Mille Îles where it flows out of Lake of Two Mountains (French: Lac des Deux Montagnes). It is part of the Deux-Montagnes Regional County Municipality in the greater Montreal region. It is located 40 kilometres (25 mi) from Montreal.\n\nThe name \"Deux-Montagnes\" (French for \"Two Mountains\") dates to 1674 when it was given to the lake bordering on the municipality, and to the seigneury which stood north of the lake.  Founded as the Village Municipality of Saint-Eustache-sur-le-Lac in 1921, it became a city in 1958, and changed its name to Deux-Montagnes in 1963."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "deux montagnes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "deux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montagnes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6735,
+    "attempt": 6687,
+    "place_id": "gn-631077",
+    "input": {
+      "place": {
+        "place_id": "gn-631077",
+        "name": "Vuosaari",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.20963,
+        "lon": 25.14195
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vuosaari",
+          "url": "https://en.wikipedia.org/wiki/Vuosaari",
+          "text": "Vuosaari (Swedish: Nordsjö) is a neighbourhood in the city of Helsinki, Finland. It is located by the sea in East Helsinki and with its area of 15.38 km2 (5.94 sq mi) is geographically the largest district in the city. It also has two Helsinki Metro stations, Rastila and Vuosaari\nVuosaari is one of the fastest-growing areas in Helsinki. The number of inhabitants has been increasing rapidly since early 1990s and it continues to grow as new residential areas are being built.\nAmong other things, Vuosaari is noted for its nature and large, relatively unspoilt recreational seashore areas. One of these is Uutela, a popular nature park located in the southeastern corner of Vuosaari. The continual planning of new residential zones has in fact raised criticism, as many people would rather preserve Vuosaari's closeness to nature.\nVuosaari is the location of a new major seaport in Helsinki, the Vuosaari Harbour.\nAs of 2005, 7.7% of the population of Vuosaari are foreign citizens and 11.6% were born outside of Finland. This has given the neighbourhood an overtly multi-cultural image in Finnish folklore, even though the percentage is higher in many other places in the Capital Region.\nThe two natural gas power plants of Helsingin Energia, the power utility of the city of Helsinki, are located in Vuosaari."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "vuosaari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6736,
+    "attempt": 6688,
+    "place_id": "gn-6318824",
+    "input": {
+      "place": {
+        "place_id": "gn-6318824",
+        "name": "Uiramutã",
+        "country": "Brazil",
+        "subdivision": "Roraima",
+        "lat": 4.59556,
+        "lon": -60.16778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uiramutã",
+          "url": "https://en.wikipedia.org/wiki/Uiramutã",
+          "text": "Uiramutã (Brazilian Portuguese pronunciation: [wiɾamuˈtɐ̃]) is a municipality located in the northeast of the state of Roraima in Brazil. Its population is 10,789 (as of 2020) and its area is 8,066 km2. It is the northernmost municipality of Brazil, with Monte Caburaí being the northernmost point. West of this mountain, there is also the Monte Roraima, the tallest mountain in Roraima and in Guyana, located in the triple frontier of Brazil, Guyana and Venezuela. Still, Uiramutã holds the title of the northernmost urban seat of a municipality in Brazil. Its counterparts in the South, West and East are respectively Chuí, state of Rio Grande do Sul; Mâncio Lima, Acre; and João Pessoa, Paraíba.\nThe municipality is located entirely inside the Raposa Serra do Sol Indigenous Territory. Because of this, its economic activities are limited. As a result, Uiramutã is also noted for being the Brazilian municipality that depends the most on government funds: 80% of its income is provided by the public administration, including social insurance and welfare programs such as the Bolsa Família.\nThe town of Uiramutã was established in 1911 by Severino Pereira da Silva, a gold miner, who founded the village for both the indigenous and non-indigenous community. Uiramutã became an independent municipality in 1995, and can be accessed via the RR-171 road.\nThe town was once claimed by the United Kingdom as part of British Guiana in a territorial dispute with Brazil before arbitration by the King of Italy in 1904 validated most of the British claim while deviating in awarding the area west of the present-day border and east of the Contigo River between the Takutu River to the south and its source at the Mt. Roraima tripoint to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "uiramuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6737,
+    "attempt": 6689,
+    "place_id": "gn-706757",
+    "input": {
+      "place": {
+        "place_id": "gn-706757",
+        "name": "Soledar",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.6921,
+        "lon": 38.07098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soledar",
+          "url": "https://en.wikipedia.org/wiki/Soledar",
+          "text": "Soledar (Ukrainian: Соледар, IPA: [soleˈdɑr] ; Russian: Соледар, IPA: [səlʲɪˈdar]; lit. 'gift of salt') is a destroyed city in Bakhmut Raion, Donetsk Oblast, Ukraine. Situated in the Donbas region of eastern Ukraine, the city was formerly highly important for its salt mining industry, from which its name Soledar is derived. The last estimate of its population before its destruction was 10,490, in 2022.\nFrom 1925 until 1991, it was known as Karlo-Libknekhtovsk after the German socialist Karl Liebknecht. During the Battle of Soledar of the Russian invasion of Ukraine, Soledar was completely destroyed and depopulated by Russian forces, who have occupied the ruins of the city and the surrounding area since January 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "soledar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6738,
+    "attempt": 6690,
+    "place_id": "gn-7115111",
+    "input": {
+      "place": {
+        "place_id": "gn-7115111",
+        "name": "Corvera de Asturias",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.53554,
+        "lon": -5.88893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corvera de Asturias",
+          "url": "https://en.wikipedia.org/wiki/Corvera_de_Asturias",
+          "text": "Corvera de Asturias (Asturian: Corvera) is a municipality in the principality of Asturias in northern Spain. It shares a boundary to the north with Avilés and Gozón; to the east with Carreño and Gijón; to the south with Llanera and Illas and to the west with Castrillón. Its capital, Nubledo, has a population of more than 300 residents.\nCorvera is the most eastern of the four counties forming the Great County of Aviles. It is situated in the northern-central area of the Principality of Asturias. It is 45.48 km2 (17.56 sq mi) in size and has a population of over 16,000 residents, mainly concentrated in the villages of Las Vegas and Los Campos. The main roads to get there are AS-19, AS-17 and A-8. The A-8 proceeds to Tabaza (Carreño) and the shopping centre Parque Astur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "corvera de asturias",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "corvera",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "asturias",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6739,
+    "attempt": 6691,
+    "place_id": "gn-7257422",
+    "input": {
+      "place": {
+        "place_id": "gn-7257422",
+        "name": "Wallingford Center",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.44987,
+        "lon": -72.81892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wallingford Center, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Wallingford_Center,_Connecticut",
+          "text": "Wallingford Center is a historic district in the heart of Wallingford comprising the primary community in the town of Wallingford, New Haven County, Connecticut, United States.\nIt features a walkable downtown area lined with boutique shops, local eateries, and historic estates spanning Colonials, Victorians, and Cape Cods.\nWallingford Center also benefits from transit connectivity, with the Wallingford Train Station serving the Hartford Line for commutes to New Haven, Hartford, along with access to New York City and Boston. Its location along I-91 and the Wilbur Cross Parkway provides residents with access to the broader Connecticut region, whether for work or recreation.\nAs of the 2020 census, Wallingford Center had a population of 18,278."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "wallingford center",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wallingford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "center",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6740,
+    "attempt": 6692,
+    "place_id": "gn-7538668",
+    "input": {
+      "place": {
+        "place_id": "gn-7538668",
+        "name": "Gamboa",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.89757,
+        "lon": -43.19276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gamboa, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Gamboa,_Rio_de_Janeiro",
+          "text": "Gamboa is a neighborhood in Rio de Janeiro, Brazil. Gamboa, along with Santo Cristo and Saúde, is one of the oldest boroughs of Rio. It was originally settled by the aristocracy, due to the attractive position on the shores of Guanabara Bay, but lost its glamour when the docks were built. Along with this history, the area also hosts The English Cemetery at Gamboa, one of the oldest British institutions in Rio.\nIn 1809, Dom João VI ceded to the British two and a half acres of farmland along the shore of the bay. Lord Strangford, British Ambassador to the Emperor's court, founded the cemetery, and the first burial took place in 1811."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "gamboa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6741,
+    "attempt": 6693,
+    "place_id": "gn-7870919",
+    "input": {
+      "place": {
+        "place_id": "gn-7870919",
+        "name": "Niagara",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.64455,
+        "lon": -79.40712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niagara, Toronto",
+          "url": "https://en.wikipedia.org/wiki/Niagara,_Toronto",
+          "text": "Niagara is a neighbourhood in Toronto, Ontario, Canada, located south of Queen Street West; it is usually bordered by Strachan Avenue to the west, Bathurst Street to the east, and the railway corridor to the south, and so named because Niagara Street runs through the centre of it.  The eastern portion of this area (with what is now called the Fashion District) was first planned as the New Town Extension when Toronto was incorporated as a city.  The area was developed as a residential area for the workers of industries located along the CN and CP railway corridors. It remains a working-class neighbourhood that has seen the development of new condominium apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "niagara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6742,
+    "attempt": 6694,
+    "place_id": "gn-8555644",
+    "input": {
+      "place": {
+        "place_id": "gn-8555644",
+        "name": "Bondi Junction",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.89275,
+        "lon": 151.24723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bondi Junction",
+          "url": "https://en.wikipedia.org/wiki/Bondi_Junction",
+          "text": "Bondi Junction is an eastern suburb of Sydney, in the state of New South Wales, Australia. It is 6 kilometres east of the Sydney central business district and is part of the local government area of Waverley.\nBondi Junction is a largely commercial area which has undergone many changes since the late 20th century. There have been many major commercial and residential developments around the main street and surrounding area, notably a new bus/rail interchange and large shopping mall. Many of the original pubs have been maintained, notably, the Nelson Hotel, so named because of its location on Nelson Street. Bondi Beach is a neighbouring suburb to the east with its namesake beach. Similarly named Bondi and North Bondi are also neighbouring suburbs.\nBondi Junction and the neighbouring area is well known for its famous rugby league team, the Sydney Roosters, still officially known as the Eastern Suburbs District Rugby League Football Club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "bondi junction",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bondi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "junction",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6743,
+    "attempt": 6695,
+    "place_id": "gn-8985840",
+    "input": {
+      "place": {
+        "place_id": "gn-8985840",
+        "name": "Dharamjaigarh",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 22.46376,
+        "lon": 83.21127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dharamjaigarh",
+          "url": "https://en.wikipedia.org/wiki/Dharamjaigarh",
+          "text": "Dharamjaigarh is a sub-division,town and a nagar panchayat in Raigarh District  in the state of Chhattisgarh, India. Major languages spoken are Hindi and Chhattisgarhi, with a little Odia, Bengali and English. \nSituated in the northern part of the district, it lies close to the forested hills of the Eastern Chhattisgarh region and borders parts of Jashpur and Korba. The area is known for its large tribal population, dense sal forests, and small-scale agriculture, particularly paddy cultivation. Dharamjaigarh also holds historical significance as part of the former princely state of Raigarh, and today serves as an administrative and commercial hub for surrounding villages.\nLaljeet Singh Rathia is a current MLA of the Dharamjaigarh constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "dharamjaigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6744,
+    "attempt": 6696,
+    "place_id": "gn-972549",
+    "input": {
+      "place": {
+        "place_id": "gn-972549",
+        "name": "Murraysburg",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -31.96046,
+        "lon": 23.76204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murraysburg",
+          "url": "https://en.wikipedia.org/wiki/Murraysburg",
+          "text": "Murraysburg is an Afrikaans speaking town of approximately 5,000 people in the Western Cape province of South Africa. It is situated in the far northeast of the province, about 540 kilometres (340 mi) from the provincial capital Cape Town, and 80 kilometres (50 mi) west of Graaff-Reinet. It is governed as part of the Beaufort West Local Municipality within the Central Karoo District Municipality.\nMurraysburg is situated on the R63 regional road, which connects it to the N1 and N12 national roads to the west and the N9 to the east. It is a distance of 620 kilometres (385 mi) from Cape Town by road, and 345 kilometres (214 mi) from Port Elizabeth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "murraysburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6745,
+    "attempt": 6697,
+    "place_id": "gn-1020066",
+    "input": {
+      "place": {
+        "place_id": "gn-1020066",
+        "name": "Berea",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.85185,
+        "lon": 30.99337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berea, Durban",
+          "url": "https://en.wikipedia.org/wiki/Berea,_Durban",
+          "text": "The Berea is a ridge above the city of Durban, KwaZulu-Natal, South Africa on the northern side which overlooks the city centre and the Indian Ocean. Berea is also used as a collective designation for the suburbs in the area. It has been described as the area between the Howard College Campus of the University of KwaZulu-Natal and the Burman Bush Nature Reserve.\nSome of the oldest mansions in Durban were built in this once-forested area. Today, many of these have been converted into offices or made way for apartment buildings. The Berea was once the most expensive real-estate area in the province but is now third to  uMhlanga and Durban North.\nThe two main areas of the Berea are Musgrave, Bulwer, and upper Glenwood, which are separated by the N3 national route that leads into the city centre. A related neighbouring area designation is Overport. The Berea borders the orange-roofed Durban suburb of Morningside.\nDurbanites who have called Berea their home include cricketer Andrew Hudson, radio personality Alan Khan, and TV presenter Imraan Vagar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "berea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6746,
+    "attempt": 6698,
+    "place_id": "gn-1221714",
+    "input": {
+      "place": {
+        "place_id": "gn-1221714",
+        "name": "Hisor",
+        "country": "Tajikistan",
+        "subdivision": "Republican Subordination",
+        "lat": 38.52504,
+        "lon": 68.55124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hisor, Tajikistan",
+          "url": "https://en.wikipedia.org/wiki/Hisor,_Tajikistan",
+          "text": "Hisor (Tajik: Ҳисор) or Hisar (Russian: Гиссар, Gissar) is a city in western Tajikistan, about 15 km west of Dushanbe. The city was the seat of the former Hisar District, and is part of the Districts of Republican Subordination. It lies at an altitude of 799–824 m, surrounded by high mountains (Gissar Range to the north, Babatag and Aktau ranges to the south). The river Khanaka, a tributary to the Kofarnihon, flows through the town. Its population is estimated at 29,100 for the city proper and 308,100 for the city with the outlying communities (2020). As of 2002, its population was composed 81.6% of Tajiks, 12.3% Uzbeks, 3.6% Russians, and 2.5% others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "hisor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6747,
+    "attempt": 6699,
+    "place_id": "gn-1227037",
+    "input": {
+      "place": {
+        "place_id": "gn-1227037",
+        "name": "Tangalle",
+        "country": "Sri Lanka",
+        "subdivision": "Southern Province",
+        "lat": 6.02338,
+        "lon": 80.79738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangalle",
+          "url": "https://en.wikipedia.org/wiki/Tangalle",
+          "text": "Tangalle (Sinhala තංගල්ල [ˈtaŋɡalːə], Tamil: தங்காலை) (also known as Tangalla) is a large town in Hambantota District, Southern Province, Sri Lanka, governed by an Urban Council. It is one of the largest towns in southern province. It is located 195 km (121 mi) south of Colombo and 35 km (22 mi) east of Matara. It has a mild climate, in comparison to the rest of the district, and sandy beaches.\nTangalle is a regionally important fishing port, situated on one of the largest bays in Sri Lanka, which is protected from the ocean by an enclosing reef. It is a centre of tourism and a popular holiday destination on the south coast. In the town centre there is an old Dutch fort which is used as a prison today. The Dutch and subsequently the British used Tangalle as an important anchorage on the southern coast of the island. The Dutch Fort, Rest House and Court House are a few remaining examples of Dutch architecture in Tangalle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "tangalle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6748,
+    "attempt": 6700,
+    "place_id": "gn-1229901",
+    "input": {
+      "place": {
+        "place_id": "gn-1229901",
+        "name": "Polonnaruwa",
+        "country": "Sri Lanka",
+        "subdivision": "North Central Province",
+        "lat": 7.93965,
+        "lon": 81.00274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polonnaruwa",
+          "url": "https://en.wikipedia.org/wiki/Polonnaruwa",
+          "text": "Poḷonnaruwa, (Sinhala: පොළොන්නරුව, romanized: Poḷonnaruva; Tamil: பொலன்னறுவை, romanized: Polaṉṉaṟuvai) also referred as Pulathisipura and Vijayarajapura in ancient times, is the main town of Polonnaruwa District in North Central Province, Sri Lanka. The modern town of Polonnaruwa is also known as New Town, and the other part of Polonnaruwa remains as the royal ancient city of the Kingdom of Polonnaruwa.\nThe second-oldest of all Sri Lanka's kingdoms, Polonnaruwa was first established as a military post by the Sinhalese kingdom. It was renamed Jananathamangalam by the Chola dynasty after their successful invasion of the country's then capital, Anuradhapura, in the 10th century. The Ancient City of Polonnaruwa has been declared a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "polonnaruwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 6648,
+    "attempt": 6601,
+    "place_id": "gn-4004690",
+    "input": {
+      "place": {
+        "place_id": "gn-4004690",
+        "name": "Huandacareo",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.98864,
+        "lon": -101.27607
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huandacareo",
+          "url": "https://en.wikipedia.org/wiki/Huandacareo",
+          "text": "Huandacareo (or Guandacareo) is an archaeological zone located about 60 kilometers north of the city of Morelia, in the state of Michoacán.\nThe site was constructed on an elevated plateau overlooking the Cuitzeo lake, some 2.46 kilometers (1.53 miles) from its north western shores and about two kilometers from the center of the Huandacareo town and municipality. Locally the place is better known as \"The Nopalera\".\nThe site is located on the western side of Lake Cuitzeo, located at around 19°56′0″N 101°5′0″W. It has an area of 300–400 km2.\nThe lake is astatic, and the volume and level of water in the lake fluctuates frequently. It is the second largest freshwater lake in Mexico.\nAlthough this site is of a clear Purépecha ancestry, the geographic location on the Cuitzeo basin and the ceremonial center concept, attests to the presence of some cultural elements originating elsewhere. As an example obsidian from the \"cerro de Zináparo\" in northern Michoacán or from Zinapécuaro east of Cuitzeo can be noted; as well as coastal materials, especially the Pacific Ocean. Also from the Mexican plateau and certainly from the Purépecha region of Pátzcuaro, that provided the main cultural influence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "huandacareo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6649,
+    "attempt": 6602,
+    "place_id": "gn-4237727",
+    "input": {
+      "place": {
+        "place_id": "gn-4237727",
+        "name": "Effingham",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 39.12004,
+        "lon": -88.54338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Effingham, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Effingham,_Illinois",
+          "text": "Effingham is a city in Effingham County, Illinois, United States, and its county seat. It is in South Central Illinois. Its population was 12,252 at the 2020 census. It is the principal city of the Effingham micropolitan statistical area.\nThe city bills itself as \"The Crossroads of Opportunity\" because of its location at the intersection of two major Interstate highways: I-57 running from Chicago to Sikeston, Missouri, and I-70 running from Utah to Maryland. It is also served by U.S. Route 45, which runs from Ontonagon, Michigan to Mobile, Alabama; U.S. Route 40, the historic National Road, which stretches from Atlantic City, New Jersey to Silver Summit, Utah; and Illinois routes 32 and 33. It is also a major railroad junction, the crossing of the Illinois Central main line from Chicago to Memphis with the Pennsylvania Railroad line from Indianapolis to St. Louis. For this reason, Effingham has a much broader range of restaurants and lodging facilities than  typical towns of its size."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "effingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6650,
+    "attempt": 6603,
+    "place_id": "gn-4322811",
+    "input": {
+      "place": {
+        "place_id": "gn-4322811",
+        "name": "Donaldsonville",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 30.10114,
+        "lon": -90.99412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donaldsonville, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Donaldsonville,_Louisiana",
+          "text": "Donaldsonville (historically French: Lafourche-des-Chitimachas) is a city in, and the parish seat of Ascension Parish in the U.S. state of Louisiana. Located along the River Road of the west bank of the Mississippi River, it is a part of the Baton Rouge metropolitan statistical area. At the 2020 U.S. census, it had a population of 6,695.\nDonaldsonville's historic district has what has been described as the finest collection of buildings from the antebellum era to 1933, of any of the Louisiana river towns above New Orleans. Union forces attacked the city, occupying it and several of the river parishes beginning in 1862. Fort Butler was built on the west bank of the Mississippi River. The fort was successfully defended on June 28, 1863, against a Confederate attack. This battle was one of the first occasions when free blacks and fugitive slaves fought as soldiers on behalf of the Union. The fort is listed on the National Register of Historic Places.\nAfter the war, in 1868 Donaldsonville residents elected as mayor Pierre Caliste Landry, an attorney and Methodist minister; he was the first African American to be elected as mayor in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "donaldsonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6651,
+    "attempt": 6604,
+    "place_id": "gn-4626334",
+    "input": {
+      "place": {
+        "place_id": "gn-4626334",
+        "name": "Greeneville",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.16316,
+        "lon": -82.83099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greeneville, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Greeneville,_Tennessee",
+          "text": "Greeneville is an incorporated town in and the county seat of Greene County, Tennessee, United States. The population as of the 2020 census was 15,479. The town was named in honor of Revolutionary War hero Nathanael Greene, and it is the second oldest town in Tennessee.  It is the only town with this spelling in the United States, although there are numerous U.S. towns named Greenville. The town was the capital of the short-lived State of Franklin in the 18th-century history of East Tennessee.\nGreeneville is known as the town where United States President Andrew Johnson began his political career when elected to be an alderman and transitioned from his trade as a tailor. He and his family lived there for most of his adult years. It was an area of strong abolitionist and Unionist views and yeoman farmers, an environment that influenced Johnson's outlook.\nThe Greeneville Historic District was established in 1974.\nThe U.S. Navy Los Angeles-class submarine USS Greeneville was named in honor of the town.\nGreeneville is part of the Johnson City-Kingsport-Bristol, TN-VA Combined Statistical Area – commonly known as the \"Tri-Cities\" region. Tusculum University, a private Christian university located in nearby Tusculum, has a Greeneville mailing address."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "greeneville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6652,
+    "attempt": 6605,
+    "place_id": "gn-4681485",
+    "input": {
+      "place": {
+        "place_id": "gn-4681485",
+        "name": "Cinco Ranch",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.73884,
+        "lon": -95.758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cinco Ranch, Texas",
+          "url": "https://en.wikipedia.org/wiki/Cinco_Ranch,_Texas",
+          "text": "Cinco Ranch is a planned community located in the extraterritorial jurisdiction of the city of Houston within Fort Bend and Harris counties in the U.S. state of Texas. It lies approximately 25 miles (40 km) west of the Harris County seat of Houston and 10 miles (16 km) north of the Fort Bend County seat of Richmond. Cinco Ranch is considered to be part of the Greater Katy area and is roughly 10 miles southeast of the city of Katy. Cinco Ranch was defined as a census designated place in the 2000 U.S. census but has since grown to include additional area. As of the 2020 census, Cinco Ranch had a population of 16,899."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "cinco ranch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cinco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ranch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6653,
+    "attempt": 6606,
+    "place_id": "gn-4752665",
+    "input": {
+      "place": {
+        "place_id": "gn-4752665",
+        "name": "Christiansburg",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.12985,
+        "lon": -80.40894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Christiansburg, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Christiansburg,_Virginia",
+          "text": "Christiansburg (formerly Hans Meadows) is a town in the southwestern portion of Montgomery County, Virginia, United States. It has served as the seat of government for the county since 1792, when it was formally recognized by the Virginia General Assembly. Christiansburg is contiguously bordered on its north by the only other incorporated town in Montgomery County, Blacksburg. Christiansburg (and Blacksburg) are situated on the Eastern Continental Divide in the Appalachian Mountains.\nThe economy of Christiansburg and Blacksburg are dominated by the presence of Virginia Tech (located inside the town of Blacksburg) by far the largest employer in the county.\nChristiansburg's population was 23,348 at the 2020 census, up from 21,041 at the 2010 census.  Christiansburg and Blacksburg are the principal municipalities of the Blacksburg–Christiansburg metropolitan area which also encompasses the city of Radford, the unincorporated areas of Montgomery County, plus all of Giles and Pulaski Counties. The 2020 census recorded that the population of the Blacksburg-Christiansburg metropolitan area was 181,854, ranked 238th of the 387 uniquely defined metropolitan areas in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "christiansburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6654,
+    "attempt": 6607,
+    "place_id": "gn-4943097",
+    "input": {
+      "place": {
+        "place_id": "gn-4943097",
+        "name": "Marblehead",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.5001,
+        "lon": -70.85783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marblehead, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Marblehead,_Massachusetts",
+          "text": "Marblehead is a coastal New England town in Essex County, Massachusetts, United States, along the North Shore. Its population was 20,441 at the 2020 census.  The town lies on a small peninsula that extends into the northern part of Massachusetts Bay.  Attached to the town is a near island, known as Marblehead Neck, connected to the mainland by a narrow isthmus.  Marblehead Harbor, protected by shallow shoals and rocks from the open sea, lies between the mainland and the Neck.  Beside the Marblehead town center, two other villages lie within the town: the Old Town, which was the original town center, and Clifton, which lies along the border with the neighboring town of Swampscott.\nA town with roots in commercial fishing and yachting, Marblehead was a major shipyard and is often referred to as the birthplace of the American Navy, a title sometimes disputed with nearby Beverly. Marblehead was once the fishing capital of Massachusetts. It is also the origin of Marine Corps Aviation. Three US Navy ships have been named USS Marblehead. A center of recreational boating, Marblehead has long been a popular sailing, kayaking and fishing destination, with several yacht clubs established in the late 19th century.\nIt is home to the Marblehead Light, Fort Sewall, Little Harbor, Mass Audubon's Marblehead Neck Wildlife Sanctuary, Crocker Park, and Devereux Beach. Archibald Willard's famous painting The Spirit of '76 currently resides in Abbot Hall.  Much of the Old Town is protected by the Marblehead Historic District.\nMarblehead is also home of the Marblehead Men's Softball League, which was established in 1939 and is the oldest and longest standing adult softball league in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "marblehead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6655,
+    "attempt": 6608,
+    "place_id": "gn-5106520",
+    "input": {
+      "place": {
+        "place_id": "gn-5106520",
+        "name": "Wood-Ridge",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.84566,
+        "lon": -74.08792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wood-Ridge, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wood-Ridge,_New_Jersey",
+          "text": "Wood-Ridge is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 10,137, an increase of 2,511 (+32.9%) from the 2010 census count of 7,626, which in turn reflected a decline of 18 (-0.2%) from the 7,644 counted in the 2000 census.\nWood-Ridge was incorporated as a borough by an act of the New Jersey Legislature on December 6, 1894, from portions of Bergen Township, based on the results of a referendum held the previous day. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "wood ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6656,
+    "attempt": 6609,
+    "place_id": "gn-5108219",
+    "input": {
+      "place": {
+        "place_id": "gn-5108219",
+        "name": "Beacon",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.50482,
+        "lon": -73.96958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beacon, New York",
+          "url": "https://en.wikipedia.org/wiki/Beacon,_New_York",
+          "text": "Beacon is a city located on the Hudson River in Dutchess County, New York, United States. As of the 2020 census, the city's population was 13,769. Beacon is part of the Kiryas Joel–Poughkeepsie–Newburgh metropolitan area as well as the larger New York metropolitan area.\nBeacon was so named to commemorate the historic beacon fires that blazed forth from the summit of the Fishkill Mountains to alert the Continental Army of British troop movements. Originally an industrial city along the Hudson, Beacon experienced a revival beginning in 2003 with the arrival of Dia Beacon, one of the largest modern art museums in the United States. Recent growth has generated debates on development and zoning issues.\nThe area known as Beacon was settled by Europeans as the villages of Matteawan and Fishkill Landing in 1709. They were among the first colonial communities in the county. Beacon is located in the southwestern corner of Dutchess County in the Mid-Hudson Region, approximately 90 miles (140 km) south of Albany, and approximately 60 miles (97 km) north of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "beacon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6657,
+    "attempt": 6610,
+    "place_id": "gn-5110918",
+    "input": {
+      "place": {
+        "place_id": "gn-5110918",
+        "name": "Bushwick",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69427,
+        "lon": -73.91875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bushwick, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Bushwick,_Brooklyn",
+          "text": "Bushwick is a neighborhood in the northern part of the New York City borough of Brooklyn. It is bound by the neighborhood of Ridgewood, Queens, to the northeast; Williamsburg to the northwest; the cemeteries of Highland Park to the southeast; and Bedford–Stuyvesant to the south and southwest.\nThe town was first founded by the Dutch as Boswijck during the Dutch colonization of the Americas in the 17th century. In the 19th century, the neighborhood became a community of German immigrants and their descendants. The 20th century saw an influx of Italian immigrants and Italian-Americans up to the 1980s. By the late 20th century, the neighborhood became predominantly Hispanic as another wave of immigrants arrived. Formerly Brooklyn's 18th Ward, the neighborhood was once an independent town and has undergone various territorial changes throughout its history.\nBushwick is part of Brooklyn Community District 4, and its primary ZIP Codes are 11206, 11207, 11221, and 11237. It is patrolled by the 83rd Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 34th and 37th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "bushwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6658,
+    "attempt": 6611,
+    "place_id": "gn-5113460",
+    "input": {
+      "place": {
+        "place_id": "gn-5113460",
+        "name": "Concord",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.60816,
+        "lon": -74.08431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Concord,_Staten_Island",
+          "text": "Concord is a neighborhood located in the borough of Staten Island in New York City, New York, United States.\n\nLocated in northeastern Staten Island, and bordered by the neighborhoods of Grasmere, Clifton, Dongan Hills, Emerson Hill, and Old Town, Concord was named Dutch Farms originally, but was renamed in 1845 after Concord, Massachusetts as a consequence of that town's historical significance. Early residents of Concord included Judge William Emerson (brother of Ralph Waldo Emerson and for whom nearby Emerson Hill is named) and Henry David Thoreau. In the early 19th Century, Concord had a dominant German immigrant population. Today, it is ethnically diverse.\nConcord currently consists of one-family homes, small apartment buildings, and condominiums. The neighborhood's center is traversed by some of the most heavily traveled roads on Staten Island, including Clove Road; Richmond Road; Targee Street; and the Staten Island Expressway.\n\nMuch property in Concord was condemned to make way for the Staten Island Expressway in the early 1960s; a principal east–west thoroughfare. Price Street is now a service road of the expressway and is known as Narrows Road North.\nIn 1985, Staten Island's first mosque opened in Concord; it later moved to Tompkinsville, however."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6659,
+    "attempt": 6612,
+    "place_id": "gn-5116049",
+    "input": {
+      "place": {
+        "place_id": "gn-5116049",
+        "name": "East Rockaway",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64205,
+        "lon": -73.66957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Rockaway, New York",
+          "url": "https://en.wikipedia.org/wiki/East_Rockaway,_New_York",
+          "text": "East Rockaway is a village located within Nassau County, on the South Shore of Long Island, in New York, United States. The population was 10,159 at the time of the 2020 census.\nThe Village of East Rockaway is located on the eastern edge of Rockaway Peninsula in the town of Hempstead, adjacent to Hewlett Harbor, Hewlett, Rockville Centre, Lynbrook, and Oceanside. It is the final neighborhood before the beginning of Five Towns to the west – although some have come to include wealthier sections of East Rockaway as a part of Five Towns. \nThe village is an inner suburb, only 24 km (15 mi) from downtown Manhattan. The primary ethnicities are Italian and Irish. The Waverly Park neighborhood, near the Hewlett-East Rockaway Jewish Center and along the border with Hewlett, has a sizable Jewish community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "east rockaway",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rockaway",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6660,
+    "attempt": 6613,
+    "place_id": "gn-5280814",
+    "input": {
+      "place": {
+        "place_id": "gn-5280814",
+        "name": "Weirton",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 40.41896,
+        "lon": -80.58952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weirton, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Weirton,_West_Virginia",
+          "text": "Weirton ( WEER-tən) is a city in Hancock and Brooke counties in the U.S. state of West Virginia. It is located along the Ohio River in the state's northern panhandle bordering Ohio and Pennsylvania. The population was 19,163 at the 2020 census, making it the seventh-most populous city in West Virginia.\nWeirton was incorporated in 1947 after the consolidation of various small towns in the vicinity of the Weirton Steel Corporation, founded by Ernest T. Weir in 1909. It is a principal city of the Weirton–Steubenville metropolitan area, which had a population of 116,903 residents in 2020; it is also a major city in the western part of the Pittsburgh–New Castle–Weirton combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "weirton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6661,
+    "attempt": 6614,
+    "place_id": "gn-5355782",
+    "input": {
+      "place": {
+        "place_id": "gn-5355782",
+        "name": "Hawaiian Gardens",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.8314,
+        "lon": -118.07284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawaiian Gardens, California",
+          "url": "https://en.wikipedia.org/wiki/Hawaiian_Gardens,_California",
+          "text": "Hawaiian Gardens is a city in Los Angeles County, California, United States. It is the smallest city in the county in area (approximately 1.0 mi2) and was incorporated on April 9, 1964. The population was 14,149 at the 2020 census, down slightly from 14,254 at the 2010 census.\nThe city's unusual name originated with a 1920s refreshment stand that was decorated with palm fronds and bamboo. It was the then-rural area's main landmark for many years, and its name stuck as the small town grew up around it. As one of seven Los Angeles County cities that allow casino gambling, more than $9.2 million (65%) of the city's revenue comes from the Gardens Casino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "hawaiian gardens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hawaiian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gardens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6662,
+    "attempt": 6615,
+    "place_id": "gn-5373504",
+    "input": {
+      "place": {
+        "place_id": "gn-5373504",
+        "name": "Mira Monte",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.43361,
+        "lon": -119.28511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mira Monte, California",
+          "url": "https://en.wikipedia.org/wiki/Mira_Monte,_California",
+          "text": "Mira Monte ( ; Spanish for \"Mountain View\") is a rural community in Ventura County, California, United States. Mira Monte is located in between the communities of Oak View, Meiners Oaks, and southwest of the City of Ojai, California. For statistical purposes, the United States Census Bureau has defined Mira Monte as a census-designated place (CDP). The census definition of the area may not precisely correspond to local understanding of the area with the same name. According to the 2020 census, the population of Mira Monte is 6,618, down from 6,845 at the 2010 census. The U.S. census of 2023 shows that Mira Monte had a population of  7,301 (683 more people since 2020)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "mira monte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6663,
+    "attempt": 6616,
+    "place_id": "gn-5377389",
+    "input": {
+      "place": {
+        "place_id": "gn-5377389",
+        "name": "North Fair Oaks",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.47438,
+        "lon": -122.19663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Fair Oaks, California",
+          "url": "https://en.wikipedia.org/wiki/North_Fair_Oaks,_California",
+          "text": "North Fair Oaks is a census-designated place and an unincorporated area located in San Mateo County, California, United States, adjacent to Redwood City, Atherton, and Menlo Park. As of the 2020 census the area had a total population of 14,027. Because of the large number of residents from one Mexican state the area is also known as Little Michoacán. The larger area including North Fair Oaks and adjacent parts of Redwood City has a large Hispanic/Latino population and is known locally as Little Mexico. The neighborhood is distinctive, as it is one out of only three communities (the others being East Palo Alto and Pescadero) in San Mateo County that have a majority-Hispanic/Latino population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "north fair oaks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fair",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oaks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6664,
+    "attempt": 6617,
+    "place_id": "gn-5772418",
+    "input": {
+      "place": {
+        "place_id": "gn-5772418",
+        "name": "Canyon Rim",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.70661,
+        "lon": -111.82188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canyon Rim, Utah",
+          "url": "https://en.wikipedia.org/wiki/Canyon_Rim,_Utah",
+          "text": "Canyon Rim was a census-designated place (CDP) in Salt Lake County, Utah, United States, that was consolidated with neighboring Millcreek CDP in 2010. The consolidated CDP was incorporated in 2016. The population was 10,428 at the 2000 census, a minuscule decrease from the 1990 figure of 10,527. The area formerly in Canyon Rim CDP is located just south of Interstate 80 and the Sugar House neighborhood of Salt Lake City near the mouth of Parley's Canyon (hence the name Canyon Rim). Canyon rim is notable for Canyon Rim Park, Tanner Park, and Parleys Historic Nature Park.\nThe area formerly in Canyon Rim CDP is part of the Salt Lake City, Utah Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "canyon rim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canyon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6665,
+    "attempt": 6618,
+    "place_id": "gn-5940934",
+    "input": {
+      "place": {
+        "place_id": "gn-5940934",
+        "name": "Dolbeau-Mistassini",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.8786,
+        "lon": -72.23142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolbeau-Mistassini",
+          "url": "https://en.wikipedia.org/wiki/Dolbeau-Mistassini",
+          "text": "Dolbeau-Mistassini (French pronunciation: [dɔlbo mistasini]) is a town in northern Quebec, Canada, at the confluence of the Mistassibi River, Riviere aux Rats and the Mistassini River, on Lac Saint-Jean. Dolbeau-Mistassini is in the Maria-Chapdelaine Regional County Municipality and is the commercial hub of Lac-St-Jean with big stores and shopping centres.\nThe city was formed in 1997 through the amalgamation of the cities of Dolbeau and Mistassini. Dolbeau is located on the right (west) bank of the Mistassini River, in the geographic township of Parent (not in the adjacent Dolbeau Township). The town of Mistassini is on the left (east) bank of the Mistassini River at the confluence with the Mistassibi River, directly opposite Dolbeau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "dolbeau mistassini",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dolbeau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mistassini",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6666,
+    "attempt": 6619,
+    "place_id": "gn-6104876",
+    "input": {
+      "place": {
+        "place_id": "gn-6104876",
+        "name": "Pincourt",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.38338,
+        "lon": -73.9825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pincourt",
+          "url": "https://en.wikipedia.org/wiki/Pincourt",
+          "text": "Pincourt (French pronunciation: [pɛ̃kuʁ]) is a municipality on the island of Île Perrot, off the western tip of the island of Montreal, Quebec. The population as of the 2021 Canadian census was 14,751. The town shares the island with the three other municipalities of Notre-Dame-de-l'Île-Perrot, Terrasse Vaudreuil and L'Île-Perrot, bordering on each one. The south end of the Ottawa River (Rivière des Outaouais) flows between Vaudreuil-Dorion and Pincourt, defining the town's western boundary.\nMany houses, condos and townhouses are newly built as the town has undergone a building boom, which also included the opening of the new francophone Chêne-Bleu high school. The municipality also has two bilingual primary schools and one French primary school. Several parks and natural protected areas are open throughout the year for recreation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "pincourt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6667,
+    "attempt": 6620,
+    "place_id": "gn-6179343",
+    "input": {
+      "place": {
+        "place_id": "gn-6179343",
+        "name": "West Point Grey",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.26667,
+        "lon": -123.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Point Grey",
+          "url": "https://en.wikipedia.org/wiki/West_Point_Grey",
+          "text": "West Point Grey is a neighbourhood in the northwest of the city of Vancouver, British Columbia, Canada. It is on Point Grey and bordered by 16th Avenue to the south, Alma Street to the east, English Bay to the north, and Blanca Street to the west. Notable beaches within West Point Grey include Spanish Banks, Locarno and Jericho. Immediately to the south is Pacific Spirit Regional Park and to the east is Kitsilano.\nThe main commercial area with shops and restaurants is along West 10th Avenue between Tolmie Street and Discovery Street. North of West 4th Avenue, the area slopes steeply downhill where it meets English Bay at Locarno Beach and the Spanish Banks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "west point grey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
