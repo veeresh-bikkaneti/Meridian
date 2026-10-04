@@ -19,8 +19,10 @@ import { filterByTier, isPickerDifficulty, type PickerDifficulty } from "@/game/
 import {
   bankPlace,
   clearSession,
+  DIFFICULTY_LABELS,
   EDITION_LABELS,
   endSession,
+  formatSuccessRate,
   IDLE_TIMEOUT_MS,
   idleTimeoutFromSearch,
   idleWarnMsFor,
@@ -704,7 +706,7 @@ export function GameApp() {
   // Bank one scored place into the session (exactly-once: called only from
   // the pin-commit path, which appends exactly one result per commit).
   const bankScoredPlace = useCallback(
-    (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number }) => {
+    (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number; difficultyChoice: PickerDifficulty; regionId: string; regionName: string }) => {
       const dateKey = trailDate();
       updateSession((prev) => {
         // Sessions are date-scoped like runs: a UTC-midnight rollover starts
@@ -1179,6 +1181,9 @@ function Play({
     hit: boolean;
     distanceKm: number;
     streakAfter: number;
+    difficultyChoice: PickerDifficulty;
+    regionId: string;
+    regionName: string;
   }) => void;
   /** Ends the session and returns its summary (null when there is no session). */
   onEndGame: () => SessionSummary | null;
@@ -1274,6 +1279,9 @@ function PlayLoaded({
     hit: boolean;
     distanceKm: number;
     streakAfter: number;
+    difficultyChoice: PickerDifficulty;
+    regionId: string;
+    regionName: string;
   }) => void;
   onEndGame: () => SessionSummary | null;
   onEditions: () => void;
@@ -1384,6 +1392,14 @@ function PlayLoaded({
   const sessionTotal =
     session?.totalScore ?? run.results.reduce((sum, r) => sum + r.score, 0);
   const [showBreakdown, setShowBreakdown] = useState(false);
+
+  // Per-difficulty rows for the score breakdown popover: only modes the
+  // player has actually played this session, easy → medium → hard.
+  // formatSuccessRate never prints "0%" — with zero places the mode simply
+  // isn't listed.
+  const breakdownDifficulties = session
+    ? summarizeSession(session).byDifficulty.filter((d) => d.places > 0)
+    : [];
 
   // Escape closes the score breakdown for keyboard users (it holds no
   // focusables, so focus never enters it; the toggle button re-opens it).
@@ -1593,6 +1609,9 @@ function PlayLoaded({
         hit,
         distanceKm: distance,
         streakAfter: nextRun.streak,
+        difficultyChoice: run.difficultyChoice,
+        regionId: run.regionId,
+        regionName: run.regionName,
       });
       // Learning record: observational, flag-gated, fail closed. Runs
       // *beside* bankPlace — never inside dropPin/bankPlace — and can never
@@ -1730,7 +1749,7 @@ function PlayLoaded({
                 data-testid="score-total"
                 aria-expanded={showBreakdown}
                 aria-controls="session-score-breakdown"
-                aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition.`}
+                aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
                 className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
               >
@@ -1750,6 +1769,25 @@ function PlayLoaded({
                       </span>
                     </div>
                   ))}
+                  {breakdownDifficulties.length > 0 ? (
+                    <>
+                      <div className="my-1 border-t border-line" aria-hidden="true" />
+                      {breakdownDifficulties.map((d) => (
+                        <div
+                          key={d.difficulty}
+                          className="flex items-center justify-between py-1"
+                        >
+                          <span className="text-muted">
+                            {DIFFICULTY_LABELS[d.difficulty]} · {d.hits}/{d.places} (
+                            {formatSuccessRate(d.hits, d.places)})
+                          </span>
+                          <span className="font-semibold tabular-nums text-fg">
+                            {d.score.toLocaleString("en-US")}
+                          </span>
+                        </div>
+                      ))}
+                    </>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -1772,7 +1810,9 @@ function PlayLoaded({
               </p>
             ) : null}
             <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
-              {run.hits} placed
+              {/* Session-scoped places (not this run's): switching editions
+                  no longer drops the counter back to 0. */}
+              {session?.hits ?? run.hits} placed
             </p>
             {run.phase !== "summary" ? (
               <button

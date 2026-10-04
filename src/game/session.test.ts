@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   bankPlace,
+  DIFFICULTY_LABELS,
   endSession,
+  formatSuccessRate,
   IDLE_TIMEOUT_MS,
   idleTimeoutFromSearch,
   idleWarnMsFor,
@@ -12,6 +14,7 @@ import {
   clearSession,
   seedSessionFromRun,
   startSession,
+  successRate,
   summarizeSession,
   touchSession,
   writeSession,
@@ -46,13 +49,18 @@ test("startSession: zeroed totals, not ended, records activity time", () => {
   assert.equal(s.ended, false);
   assert.ok(typeof s.id === "string" && s.id.length > 0);
   assert.deepEqual(s.byEdition.globe, { score: 0, places: 0, hits: 0 });
+  // New breakdown fields start empty.
+  assert.deepEqual(s.byDifficulty.easy, { score: 0, places: 0, hits: 0 });
+  assert.deepEqual(s.byDifficulty.medium, { score: 0, places: 0, hits: 0 });
+  assert.deepEqual(s.byDifficulty.hard, { score: 0, places: 0, hits: 0 });
+  assert.deepEqual(s.regions, []);
 });
 
 test("bankPlace: accumulates totals and the per-edition breakdown", () => {
   let s = startSession("2026-10-02", NOW);
-  s = bankPlace(s, { edition: "globe", score: 120, hit: true, distanceKm: 40, streakAfter: 1 });
-  s = bankPlace(s, { edition: "globe", score: 200, hit: true, distanceKm: 10, streakAfter: 2 });
-  s = bankPlace(s, { edition: "country", score: 0, hit: false, distanceKm: 900, streakAfter: 0 });
+  s = bankPlace(s, { edition: "globe", score: 120, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "medium", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "globe", score: 200, hit: true, distanceKm: 10, streakAfter: 2, difficultyChoice: "medium", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "country", score: 0, hit: false, distanceKm: 900, streakAfter: 0, difficultyChoice: "easy", regionId: "us", regionName: "United States" });
   assert.equal(s.totalScore, 320);
   assert.equal(s.placesPlayed, 3);
   assert.equal(s.hits, 2);
@@ -66,7 +74,7 @@ test("bankPlace: accumulates totals and the per-edition breakdown", () => {
 
 test("bankPlace: a miss banks 0 points but still counts the place", () => {
   let s = startSession("2026-10-02", NOW);
-  s = bankPlace(s, { edition: "state", score: 0, hit: false, distanceKm: 55, streakAfter: 0 });
+  s = bankPlace(s, { edition: "state", score: 0, hit: false, distanceKm: 55, streakAfter: 0, difficultyChoice: "hard", regionId: "ne", regionName: "Nebraska" });
   assert.equal(s.totalScore, 0);
   assert.equal(s.placesPlayed, 1);
   assert.equal(s.hits, 0);
@@ -75,7 +83,7 @@ test("bankPlace: a miss banks 0 points but still counts the place", () => {
 
 test("bankPlace: pure — never mutates the input session", () => {
   const s = startSession("2026-10-02", NOW);
-  const next = bankPlace(s, { edition: "globe", score: 50, hit: true, distanceKm: 5, streakAfter: 1 });
+  const next = bankPlace(s, { edition: "globe", score: 50, hit: true, distanceKm: 5, streakAfter: 1, difficultyChoice: "medium", regionId: "globe", regionName: "Globe" });
   assert.equal(s.totalScore, 0);
   assert.equal(next.totalScore, 50);
 });
@@ -107,8 +115,8 @@ test("isIdleExpired: fires only past the timeout", () => {
 
 test("endSession: marks ended; summarizeSession tallies with breakdown", () => {
   let s = startSession("2026-10-02", NOW);
-  s = bankPlace(s, { edition: "globe", score: 120, hit: true, distanceKm: 40, streakAfter: 1 });
-  s = bankPlace(s, { edition: "state", score: 90, hit: true, distanceKm: 20, streakAfter: 2 });
+  s = bankPlace(s, { edition: "globe", score: 120, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "state", score: 90, hit: true, distanceKm: 20, streakAfter: 2, difficultyChoice: "easy", regionId: "ne", regionName: "Nebraska" });
   const ended = endSession(s);
   assert.equal(ended.ended, true);
   assert.equal(isSessionLive(ended, "2026-10-02"), false);
@@ -150,6 +158,13 @@ test("seedSessionFromRun: backfills a pre-session run's results exactly once", (
   assert.equal(seeded.placesPlayed, 2);
   assert.equal(seeded.hits, 1);
   assert.deepEqual(seeded.byEdition.globe, { score: 120, places: 2, hits: 1 });
+  // The seed carries the run's difficulty choice and region into the new breakdowns.
+  assert.deepEqual(seeded.byDifficulty.medium, { score: 120, places: 2, hits: 1 });
+  assert.deepEqual(seeded.byDifficulty.easy, { score: 0, places: 0, hits: 0 });
+  assert.deepEqual(seeded.byDifficulty.hard, { score: 0, places: 0, hits: 0 });
+  assert.deepEqual(seeded.regions, [
+    { edition: "globe", regionId: "globe", regionName: "Globe", score: 120, places: 2, hits: 1 },
+  ]);
   // Seeding twice would double-count — the caller must only seed fresh sessions.
   const double = seedSessionFromRun(seeded, run);
   assert.equal(double.totalScore, 240);
@@ -182,7 +197,7 @@ test("storage round-trip: write/read preserves the session; garbage reads as nul
   try {
     assert.equal(readSession(), null);
     let s = startSession("2026-10-02", NOW);
-    s = bankPlace(s, { edition: "country", score: 75, hit: true, distanceKm: 30, streakAfter: 3 });
+    s = bankPlace(s, { edition: "country", score: 75, hit: true, distanceKm: 30, streakAfter: 3, difficultyChoice: "medium", regionId: "fr", regionName: "France" });
     writeSession(s);
     const restored = readSession();
     assert.ok(restored);
@@ -216,4 +231,169 @@ test("banked scores carry the run's scoring version implicitly via results", () 
     streakBefore: 0,
   };
   assert.equal(r.scoringVersion, SCORING_VERSION);
+});
+
+test("bankPlace: accumulates byDifficulty across mixed modes and editions", () => {
+  let s = startSession("2026-10-02", NOW);
+  s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "globe", score: 150, hit: true, distanceKm: 10, streakAfter: 2, difficultyChoice: "medium", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "country", score: 0, hit: false, distanceKm: 900, streakAfter: 0, difficultyChoice: "medium", regionId: "us", regionName: "United States" });
+  s = bankPlace(s, { edition: "state", score: 80, hit: true, distanceKm: 20, streakAfter: 1, difficultyChoice: "hard", regionId: "ne", regionName: "Nebraska" });
+  assert.deepEqual(s.byDifficulty.easy, { score: 100, places: 1, hits: 1 });
+  assert.deepEqual(s.byDifficulty.medium, { score: 150, places: 2, hits: 1 });
+  assert.deepEqual(s.byDifficulty.hard, { score: 80, places: 1, hits: 1 });
+  // Totals and byEdition are untouched by the new fields.
+  assert.equal(s.totalScore, 330);
+  assert.equal(s.placesPlayed, 4);
+  assert.deepEqual(s.byEdition.globe, { score: 250, places: 2, hits: 2 });
+});
+
+test("bankPlace: replaying a region accumulates into one row (no duplicates)", () => {
+  let s = startSession("2026-10-02", NOW);
+  s = bankPlace(s, { edition: "state", score: 90, hit: true, distanceKm: 20, streakAfter: 1, difficultyChoice: "easy", regionId: "ne", regionName: "Nebraska" });
+  s = bankPlace(s, { edition: "state", score: 60, hit: false, distanceKm: 80, streakAfter: 0, difficultyChoice: "easy", regionId: "ne", regionName: "Nebraska" });
+  assert.equal(s.regions.length, 1);
+  assert.deepEqual(s.regions[0], { edition: "state", regionId: "ne", regionName: "Nebraska", score: 150, places: 2, hits: 1 });
+  // A different region appends a new row in first-seen order.
+  s = bankPlace(s, { edition: "state", score: 70, hit: true, distanceKm: 15, streakAfter: 1, difficultyChoice: "easy", regionId: "ia", regionName: "Iowa" });
+  assert.equal(s.regions.length, 2);
+  assert.deepEqual(s.regions.map((row) => row.regionId), ["ne", "ia"]);
+  // Same region id under a different edition is a separate row (match on edition + regionId).
+  s = bankPlace(s, { edition: "country", score: 110, hit: true, distanceKm: 50, streakAfter: 2, difficultyChoice: "medium", regionId: "us", regionName: "United States" });
+  assert.equal(s.regions.length, 3);
+  assert.deepEqual(s.regions[2], { edition: "country", regionId: "us", regionName: "United States", score: 110, places: 1, hits: 1 });
+});
+
+test("summarizeSession: per-difficulty rates in Easy→Medium→Hard order; null for unplayed", () => {
+  let s = startSession("2026-10-02", NOW);
+  s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "globe", score: 0, hit: false, distanceKm: 400, streakAfter: 0, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+  s = bankPlace(s, { edition: "state", score: 80, hit: true, distanceKm: 20, streakAfter: 1, difficultyChoice: "hard", regionId: "ne", regionName: "Nebraska" });
+  const summary = summarizeSession(s);
+  assert.deepEqual(
+    summary.byDifficulty.map((b) => [b.difficulty, b.score, b.places, b.hits, b.rate]),
+    [
+      ["easy", 100, 2, 1, 50],
+      ["medium", 0, 0, 0, null],
+      ["hard", 80, 1, 1, 100],
+    ],
+  );
+  // Unplayed modes report null — never 0.
+  assert.equal(summary.byDifficulty[1].rate, null);
+  // Regions pass through in first-seen order.
+  assert.deepEqual(
+    summary.regions.map((row) => row.regionName),
+    ["Globe", "Nebraska"],
+  );
+  // Labels cover every picker difficulty.
+  assert.deepEqual(DIFFICULTY_LABELS, { easy: "Easy", medium: "Medium", hard: "Hard" });
+});
+
+test("successRate / formatSuccessRate: whole percent; em-dash for zero places", () => {
+  assert.equal(successRate(4, 5), 80);
+  assert.equal(successRate(1, 3), 33); // Math.round(33.33…)
+  assert.equal(successRate(2, 3), 67);
+  assert.equal(successRate(0, 2), 0); // played and missed: an honest 0
+  assert.equal(successRate(0, 0), null); // no data — never confused with 0%
+  assert.equal(formatSuccessRate(4, 5), "80%");
+  assert.equal(formatSuccessRate(0, 2), "0%");
+  assert.equal(formatSuccessRate(0, 0), "—");
+});
+
+test("readSession: old-format sessions backfill the new breakdowns (fail-open)", () => {
+  // node:test has no sessionStorage; emulate the DOM API surface used.
+  const store = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
+    setItem: (k: string, v: string) => void store.set(k, v),
+    removeItem: (k: string) => void store.delete(k),
+  };
+  try {
+    // Old-format payload: no byDifficulty/regions keys at all.
+    const legacy = {
+      id: "abc",
+      dateKey: "2026-10-02",
+      totalScore: 120,
+      placesPlayed: 2,
+      hits: 1,
+      bestStreak: 1,
+      totalDistanceKm: 60,
+      bestDistanceKm: 20,
+      byEdition: {
+        globe: { score: 120, places: 2, hits: 1 },
+        country: { score: 0, places: 0, hits: 0 },
+        state: { score: 0, places: 0, hits: 0 },
+      },
+      lastActivityAt: NOW,
+      ended: false,
+    };
+    store.set("meridian.session", JSON.stringify(legacy));
+    const restored = readSession();
+    assert.ok(restored);
+    assert.equal(restored.totalScore, 120);
+    assert.deepEqual(restored.byDifficulty.easy, { score: 0, places: 0, hits: 0 });
+    assert.deepEqual(restored.byDifficulty.medium, { score: 0, places: 0, hits: 0 });
+    assert.deepEqual(restored.byDifficulty.hard, { score: 0, places: 0, hits: 0 });
+    assert.deepEqual(restored.regions, []);
+    // Malformed breakdown fields also backfill to empty — the session survives.
+    store.set(
+      "meridian.session",
+      JSON.stringify({ ...legacy, byDifficulty: { easy: "junk" }, regions: "nope" }),
+    );
+    const repaired = readSession();
+    assert.ok(repaired);
+    assert.deepEqual(repaired.regions, []);
+    assert.deepEqual(repaired.byDifficulty.hard, { score: 0, places: 0, hits: 0 });
+    // A partially valid breakdown is still fail-open: nothing half-trusted.
+    store.set(
+      "meridian.session",
+      JSON.stringify({
+        ...legacy,
+        byDifficulty: { easy: { score: 1, places: 1, hits: 1 }, medium: { score: 0, places: 0, hits: 0 }, hard: "broken" },
+        regions: [
+          { edition: "globe", regionId: "globe", regionName: "Globe", score: 1, places: 1, hits: 1 },
+          { bogus: true },
+        ],
+      }),
+    );
+    const partial = readSession();
+    assert.ok(partial);
+    assert.deepEqual(partial.byDifficulty.easy, { score: 0, places: 0, hits: 0 });
+    assert.deepEqual(partial.regions, []);
+    // The original fail-closed cases are unchanged.
+    store.set("meridian.session", JSON.stringify({ ...legacy, totalScore: -5 }));
+    assert.equal(readSession(), null);
+    store.set("meridian.session", JSON.stringify({ ...legacy, byEdition: { globe: { score: 1 } } }));
+    assert.equal(readSession(), null);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+  }
+});
+
+test("storage round-trip: session JSON preserves the new breakdown fields", () => {
+  // node:test has no sessionStorage; emulate the DOM API surface used.
+  const store = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
+    setItem: (k: string, v: string) => void store.set(k, v),
+    removeItem: (k: string) => void store.delete(k),
+  };
+  try {
+    let s = startSession("2026-10-02", NOW);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    s = bankPlace(s, { edition: "state", score: 80, hit: true, distanceKm: 20, streakAfter: 2, difficultyChoice: "hard", regionId: "ne", regionName: "Nebraska" });
+    s = bankPlace(s, { edition: "state", score: 60, hit: false, distanceKm: 80, streakAfter: 0, difficultyChoice: "hard", regionId: "ne", regionName: "Nebraska" });
+    writeSession(s);
+    const restored = readSession();
+    assert.ok(restored);
+    assert.deepEqual(restored.byDifficulty.easy, { score: 100, places: 1, hits: 1 });
+    assert.deepEqual(restored.byDifficulty.medium, { score: 0, places: 0, hits: 0 });
+    assert.deepEqual(restored.byDifficulty.hard, { score: 140, places: 2, hits: 1 });
+    assert.deepEqual(restored.regions, [
+      { edition: "globe", regionId: "globe", regionName: "Globe", score: 100, places: 1, hits: 1 },
+      { edition: "state", regionId: "ne", regionName: "Nebraska", score: 140, places: 2, hits: 1 },
+    ]);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+  }
 });

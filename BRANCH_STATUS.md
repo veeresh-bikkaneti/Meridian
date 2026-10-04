@@ -1,14 +1,45 @@
-# BRANCH_STATUS.md — fix/strip-2-weak-hooks
+# BRANCH_STATUS.md — feat/cumulative-score-breakdown
 
-Post-merge follow-up to PR #52 (Wikipedia history enrichment, merged 2026-10-04 as `092b488`).
+## Problem (Veeresh, live play-test 2026-10-04)
+1. **Bug:** HUD shows `SCORE 473` (session-cumulative) next to `0 placed`
+   (run-scoped, resets on every edition switch). The placed-counter must be
+   session-cumulative like the score.
+2. **Feature:** at End game, the scoreboard must show a clear breakdown —
+   per difficulty mode (hits + success rate, e.g. `Easy 8/10 (80%) · 240 pts`),
+   which states played, which countries played, globe score — and the
+   breakdown must be shareable (social media + text/SMS).
 
-## Done
-- [x] Stripped the 2 hook-fail hooks on the verification crew's strip list (SHIP-WITH-CAVEAT protocol):
-  - `gn-5397059` Solvang, CA — was dates-only trivia ("founded in 1911… incorporated May 1, 1985"), missed "Danish Capital of America"
-  - `gn-3188582` Tuzla — was "educational center and home to two universities", missed 9th-century history + Europe's only salt lake
-- [x] Both records now `hookMissing: true`, `history`/`wiki` removed (surgical 2-line diff, formatting preserved)
-- [x] Gates: `npm test` 916/916 (382 scripts + 534 src, 0 fail), `tsc --noEmit` clean, lint-cards GATE PASSED (8,797 with hook / 115,893 hook-missing / 0 legacy), `npm run build:pages` green
-- [x] E2E `history-first-cards.desktop.spec.ts`: 2 passed (West Englewood, Barry Farms); Miami + Nashville fail identically on pristine main (pre-existing, unrelated — data untouched for those records)
+## Design
+- `src/game/session.ts`: `bankPlace` gains `difficultyChoice` + `regionId`/`regionName`;
+  session tracks `byDifficulty` (easy/medium/hard: score/places/hits) and
+  `regions` (one row per region, first-seen order, replay accumulates);
+  `summarizeSession` exposes both + per-mode success rates.
+- `game-app.tsx`: HUD placed-counter → `session?.hits ?? run.hits`; thread the
+  new bank fields through `onBankPlace` at the pin-commit call site.
+- `run-summary.tsx`: end-game breakdown UI (per-difficulty with rates,
+  per-region grouped states/countries/globe). `share.ts`/`share-action.ts`:
+  compact text breakdown extending (not replacing) the 3-line share contract.
+- **Consistency invariant:** share text and end-game screen render from the
+  SAME `SessionSummary` object; explicit test asserts share numbers ==
+  summary numbers.
 
-## Pending
-- [ ] PR + merge, then live verification
+## Status
+- [x] Session core (types, bankPlace, summarize, readSession backfill, unit tests) — 530/530 green
+- [x] App wiring (HUD placed-counter → session cumulative; bank threading; breakdown toggle)
+- [x] Summary UI + share text (breakdown UI, share format, consistency test)
+- [x] E2E tests written in tests/e2e/session-score.spec.ts (+3: HUD accumulation,
+  summary breakdown, share text); clean green run pending a quiet VM (assertions
+  verified via trace + byte-exact clipboard match; pre-existing tests flake
+  identically under load — environmental)
+- [x] Full unit suite green (530/530)
+- [x] `npx tsc --noEmit` clean
+- [x] Card gate — node scripts/lint-cards.mjs printed GATE PASSED
+- [ ] `npm run build:pages` green
+- [ ] Technical-architect review
+- [ ] Tone/docs review
+- [ ] PR → merge → live verification
+
+## Standing constraints
+- New features must not break existing features (full E2E stays green).
+- Client-side only, no backend, no accounts. Kid-friendly copy.
+- Do NOT change: 2-minute idle timeout, streak display, scoring multipliers.

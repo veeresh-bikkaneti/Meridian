@@ -1,6 +1,11 @@
 import type { JSX } from "react";
 import { formatDistance } from "@/game/geo";
-import { EDITION_LABELS, type SessionSummary } from "@/game/session";
+import {
+  DIFFICULTY_LABELS,
+  EDITION_LABELS,
+  formatSuccessRate,
+  type SessionSummary,
+} from "@/game/session";
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { Button } from "@/components/ui/button";
@@ -32,6 +37,22 @@ export function RunSummaryCard(props: {
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
+  // Breakdowns render from the same summary object the share text uses —
+  // unplayed difficulty modes are omitted (never shown as 0%), and region
+  // names come from the session verbatim.
+  const playedDifficulties = summary.byDifficulty.filter((m) => m.places > 0);
+  const regionGroups = (
+    [
+      { edition: "state", label: "States" },
+      { edition: "country", label: "Countries" },
+      { edition: "globe", label: "Globe" },
+    ] as const
+  )
+    .map((g) => ({
+      ...g,
+      regions: summary.regions.filter((r) => r.edition === g.edition),
+    }))
+    .filter((g) => g.regions.length > 0);
   return (
     <div
       className="pointer-events-auto absolute inset-0 z-40 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
@@ -64,6 +85,55 @@ export function RunSummaryCard(props: {
             ))}
           </dl>
         </div>
+
+        {playedDifficulties.length > 0 ? (
+          <div
+            data-testid="summary-difficulty-breakdown"
+            className="mt-4 rounded-xl border border-white/10 bg-black/30 p-3"
+          >
+            <h3 className="text-[11px] font-normal tracking-wider text-white/60 uppercase">
+              By difficulty
+            </h3>
+            <ul className="mt-2 space-y-1.5 text-sm">
+              {playedDifficulties.map((m) => (
+                <li key={m.difficulty} className="tabular-nums">
+                  <span className="text-white/60">
+                    {DIFFICULTY_LABELS[m.difficulty]} —{" "}
+                  </span>
+                  {m.hits}/{m.places} ({formatSuccessRate(m.hits, m.places)}) ·{" "}
+                  {m.score.toLocaleString("en-US")} pts
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {regionGroups.length > 0 ? (
+          <div
+            data-testid="summary-region-breakdown"
+            className="mt-4 rounded-xl border border-white/10 bg-black/30 p-3"
+          >
+            <h3 className="text-[11px] font-normal tracking-wider text-white/60 uppercase">
+              By region
+            </h3>
+            {regionGroups.map((g) => (
+              <div key={g.edition} className="mt-2">
+                <h4 className="text-[11px] font-normal tracking-wider text-white/40 uppercase">
+                  {g.label}
+                </h4>
+                <ul className="mt-1 space-y-1.5 text-sm">
+                  {g.regions.map((r) => (
+                    <li key={r.regionId} className="tabular-nums">
+                      <span className="text-white/60">{r.regionName} — </span>
+                      {r.score.toLocaleString("en-US")} pts · {r.places}{" "}
+                      {r.places === 1 ? "place" : "places"}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ) : null}
 
         <dl className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">

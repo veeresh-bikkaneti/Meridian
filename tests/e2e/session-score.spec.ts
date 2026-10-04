@@ -204,3 +204,352 @@ test("idle warning appears before the kill and activity dismisses it", async ({
     await page.evaluate(() => sessionStorage.getItem("meridian.session")),
   ).not.toBeNull();
 });
+
+/** The HUD pill rendering `{n} placed` next to the SCORE button. */
+function placedPill(page: import("playwright/test").Page) {
+  return page.getByText(/^\d+ placed$/);
+}
+
+/** Session-scoped hit count — the oracle for the placed pill. */
+async function sessionHits(page: import("playwright/test").Page): Promise<number> {
+  return page.evaluate(() => {
+    const raw = sessionStorage.getItem("meridian.session");
+    return raw ? (JSON.parse(raw) as { hits: number }).hits : -1;
+  });
+}
+
+function difficultyGroup(page: import("playwright/test").Page) {
+  return page.getByRole("group", {
+    name: "How do you want to grow your map today?",
+  });
+}
+
+/**
+ * Start a globe run with a chosen difficulty band via the edition picker's
+ * segmented control (Easy / Medium / Hard) — the same control a player
+ * uses; the choice is carried onto the run and banked per place.
+ */
+async function startGlobeRunWithDifficulty(
+  page: import("playwright/test").Page,
+  difficulty: "Easy" | "Medium" | "Hard",
+): Promise<void> {
+  await page.goto(`http://127.0.0.1:4123/Meridian/?idle-ms=${NO_IDLE}`);
+  const group = difficultyGroup(page);
+  await expect(group.getByRole("button", { name: difficulty })).toBeVisible();
+  await group.getByRole("button", { name: difficulty }).click();
+  await expect(
+    group.getByRole("button", { name: difficulty }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible();
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  // Zoom-stabilize (mirrors startGlobeRun): the intro dive must settle
+  // before commitHit projects the spot, or the tap can land off the map.
+  const map = page.locator(".satellite-map");
+  await expect
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+}
+
+test("HUD placed-counter accumulates across an edition switch", async ({
+  page,
+}) => {
+  test.setTimeout(240_000);
+  await startGlobeRun(page, NO_IDLE);
+  await dismissTileOverlayIfPresent(page);
+  await commitHit(page);
+
+  // One hit banked: the pill is session-scoped, so it reads 1 placed.
+  expect(await sessionHits(page)).toBe(1);
+  await expect(placedPill(page)).toHaveText("1 placed");
+
+  await clickNextPlace(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+
+  // Switch editions mid-session via the Editions button (no End game).
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  await page.getByRole("button", { name: "Choose a country" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  await page.getByRole("button", { name: "Play entire United States" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+
+  // The counter survives the switch: it must NOT reset to 0 placed.
+  expect(await sessionHits(page)).toBe(1);
+  await expect(placedPill(page)).toHaveText("1 placed");
+
+  // A hit in the new edition adds to the session count, not a fresh 1.
+  await dismissTileOverlayIfPresent(page);
+  await commitHit(page);
+  expect(await sessionHits(page)).toBe(2);
+  await expect(placedPill(page)).toHaveText("2 placed");
+});
+
+test("end-game summary shows per-difficulty and per-region breakdown", async ({
+  page,
+}) => {
+  test.setTimeout(240_000);
+
+  // Easy globe run: one hit banked into the Easy bucket.
+  await startGlobeRunWithDifficulty(page, "Easy");
+  await dismissTileOverlayIfPresent(page);
+  await commitHit(page);
+  await clickNextPlace(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+
+  // Medium country run: switch the band on the edition menu, then play.
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  const group = difficultyGroup(page);
+  await group.getByRole("button", { name: "Medium" }).click();
+  await expect(group.getByRole("button", { name: "Medium" })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  await page.getByRole("button", { name: "Choose a country" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  await page.getByRole("button", { name: "Play entire United States" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await dismissTileOverlayIfPresent(page);
+  await commitHit(page);
+
+  // Storage oracle: the band switch really banked the hits into the right
+  // buckets. (commitHit may burn a place with a miss when the spot is
+  // untappable, so this asserts on hits, not places.)
+  const byDifficulty = await page.evaluate(() => {
+    const raw = sessionStorage.getItem("meridian.session");
+    return raw
+      ? (
+          JSON.parse(raw) as {
+            byDifficulty: Record<string, { places: number; hits: number }>;
+          }
+        ).byDifficulty
+      : null;
+  });
+  expect(byDifficulty?.easy.hits).toBe(1);
+  expect(byDifficulty?.medium.hits).toBe(1);
+
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible();
+
+  // Per-difficulty breakdown: one row per played mode in the 8/10 (80%)
+  // rate format; unplayed modes are omitted.
+  const difficultyBreakdown = page.getByTestId("summary-difficulty-breakdown");
+  await expect(difficultyBreakdown).toBeVisible();
+  await expect(difficultyBreakdown).toContainText(/Easy[^\n]*\d+\/\d+ \(\d+%\)/);
+  await expect(difficultyBreakdown).toContainText(/Medium[^\n]*\d+\/\d+ \(\d+%\)/);
+  await expect(difficultyBreakdown).toContainText(/\d+\/\d+ \(\d+%\)/);
+
+  // Per-region breakdown: the regions played, in first-seen order.
+  const regionBreakdown = page.getByTestId("summary-region-breakdown");
+  await expect(regionBreakdown).toBeVisible();
+  await expect(regionBreakdown).toContainText("Globe");
+  await expect(regionBreakdown).toContainText("United States");
+});
+
+/**
+ * Share-text breakdown E2E: the end-game "Share score" button copies the
+ * session payload through the same ShareButton clipboard path as
+ * endgame-share.spec.ts, and the breakdown lines (per-difficulty rates,
+ * per-region totals) are part of the copied text.
+ */
+
+const SHARE_SITE_URL = "https://veeresh-bikkaneti.github.io/Meridian/";
+
+function collectShareErrors(page: import("playwright/test").Page): string[] {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(m.text());
+  });
+  return errors;
+}
+
+function expectCleanShareConsole(errors: string[]): void {
+  // React #418 is a pre-existing flaky hydration warning, unrelated to this
+  // feature (same filter as the question-labels and PWA specs).
+  const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
+  expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
+}
+
+/** Init script: remove the native share sheet so the clipboard path runs. */
+function noNativeShareScript(): void {
+  try {
+    Object.defineProperty(navigator, "share", {
+      value: undefined,
+      configurable: true,
+    });
+  } catch {
+    /* navigator.share stays; the test asserts the path taken instead */
+  }
+}
+
+async function newSharePage(
+  browser: import("playwright/test").Browser,
+): Promise<{
+  context: import("playwright/test").BrowserContext;
+  page: import("playwright/test").Page;
+}> {
+  const context = await browser.newContext({
+    permissions: ["clipboard-read", "clipboard-write"],
+  });
+  await serveBuiltArtifact(context);
+  await context.addInitScript(noNativeShareScript);
+  const page = await context.newPage();
+  return { context, page };
+}
+
+interface ShareTestInputs {
+  dateKey: string;
+  regionName: string;
+  totalScore: number;
+  placesPlayed: number;
+  bestStreak: number;
+  byDifficulty: Record<
+    string,
+    { score: number; places: number; hits: number }
+  >;
+  regions: { regionName: string; score: number }[];
+}
+
+/** The app's session/run records, read from the storage it wrote. */
+async function readShareTestInputs(
+  page: import("playwright/test").Page,
+): Promise<ShareTestInputs> {
+  return page.evaluate(() => {
+    const session = JSON.parse(sessionStorage.getItem("meridian.session") ?? "null");
+    const run = JSON.parse(sessionStorage.getItem("meridian.run") ?? "null");
+    return {
+      dateKey: run.dateKey as string,
+      regionName: run.regionName as string,
+      totalScore: session.totalScore as number,
+      placesPlayed: session.placesPlayed as number,
+      bestStreak: session.bestStreak as number,
+      byDifficulty: session.byDifficulty as Record<
+        string,
+        { score: number; places: number; hits: number }
+      >,
+      regions: session.regions as { regionName: string; score: number }[],
+    };
+  });
+}
+
+/**
+ * Mirrors sessionShareText() for the session payload: the approved 3-line
+ * contract (kept byte-identical for identical inputs), then one line per
+ * played difficulty mode (easy → medium → hard), then one line of
+ * per-region totals in first-seen order.
+ */
+function expectedSessionShareText(input: ShareTestInputs): string {
+  const [year, month, day] = input.dateKey.split("-").map(Number);
+  const monthName = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+  const when =
+    new Date().getUTCFullYear() === year
+      ? `${monthName} ${day}`
+      : `${monthName} ${day}, ${year}`;
+  const streak =
+    input.bestStreak >= 2 ? ` · 🔥 ${input.bestStreak} best streak` : "";
+  // averagePerPlace is computed by summarizeSession, not stored on the
+  // session record — mirror the computation here.
+  const averagePerPlace =
+    input.placesPlayed > 0 ? Math.round(input.totalScore / input.placesPlayed) : 0;
+  const base =
+    `meridian ${when}\n` +
+    `${SHARE_SITE_URL}\n` +
+    `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
+    `${averagePerPlace} avg/place${streak} · ${input.regionName}`;
+  const lines = [base];
+  const labels: Record<string, string> = {
+    easy: "Easy",
+    medium: "Medium",
+    hard: "Hard",
+  };
+  for (const mode of ["easy", "medium", "hard"] as const) {
+    const bucket = input.byDifficulty[mode];
+    // Unplayed modes are omitted — never shown as 0%.
+    if (!bucket || bucket.places <= 0) continue;
+    const rate = Math.round((100 * bucket.hits) / bucket.places);
+    lines.push(
+      `${labels[mode]} ${bucket.hits}/${bucket.places} ` +
+        `(${rate}%) · ` +
+        `${bucket.score.toLocaleString("en-US")} pts`,
+    );
+  }
+  if (input.regions.length > 0) {
+    lines.push(
+      input.regions
+        .map((r) => `${r.regionName} ${r.score.toLocaleString("en-US")}`)
+        .join(" · "),
+    );
+  }
+  return lines.join("\n");
+}
+
+test("share text contains the breakdown", async ({
+  browser,
+}: {
+  browser: import("playwright/test").Browser;
+}) => {
+  test.setTimeout(240_000);
+  const { context, page } = await newSharePage(browser);
+  const errors = collectShareErrors(page);
+  try {
+    await startGlobeRun(page, NO_IDLE);
+    await dismissTileOverlayIfPresent(page);
+    await commitHit(page);
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+
+    // Second edition, so the breakdown has region + difficulty rows.
+    await page.getByRole("button", { name: "Editions" }).click();
+    await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+    await page.getByRole("button", { name: "Choose a country" }).click();
+    await page.getByRole("button", { name: "United States" }).click();
+    await page.getByRole("button", { name: "Play entire United States" }).click();
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+    await dismissTileOverlayIfPresent(page);
+    await commitHit(page);
+
+    await page.getByRole("button", { name: "End game" }).click();
+    const dialog = page.getByRole("dialog", { name: "Game summary" });
+    await expect(dialog).toBeVisible();
+
+    const inputs = await readShareTestInputs(page);
+    // commitHit may burn a place with a miss when the spot is untappable,
+    // so the session can hold more places than the two guaranteed hits.
+    expect(inputs.placesPlayed).toBeGreaterThanOrEqual(2);
+    const expected = expectedSessionShareText(inputs);
+
+    // The clipboard path: click "Share score" → the exact session share
+    // text lands on the clipboard.
+    const shareButton = dialog.getByRole("button", { name: "Share score" });
+    await expect(shareButton).toBeVisible();
+    await shareButton.click();
+    const clip = await page.evaluate(() => navigator.clipboard.readText());
+    expect(clip).toBe(expected);
+
+    // The breakdown is part of the copied text: per-difficulty rate rows
+    // in the 8/10 (80%) format and the per-region totals line.
+    expect(clip).toMatch(/\d+\/\d+ \(\d+%\)/);
+    expect(clip).toContain("Medium");
+    expect(clip).toContain("Globe");
+    expect(clip).toContain("United States");
+
+    expectCleanShareConsole(errors);
+  } finally {
+    await context.close();
+  }
+});
