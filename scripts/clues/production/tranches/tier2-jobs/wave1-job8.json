@@ -1,0 +1,907 @@
+[
+  {
+    "rank": 151,
+    "place_id": "gn-2921466",
+    "input": {
+      "place": {
+        "place_id": "gn-2921466",
+        "name": "Gelsenkirchen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.50508,
+        "lon": 7.09654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gelsenkirchen",
+          "url": "https://en.wikipedia.org/wiki/Gelsenkirchen",
+          "text": "Gelsenkirchen (; German: [ˌɡɛlzn̩ˈkɪʁçn̩] ; Westphalian: Gelsenkiärken) is the 26th-most populous city of Germany and the 12th-most populous in the state of North Rhine-Westphalia with a population of 266,199 as of 2025. On the Emscher River (a tributary of the Rhine), it lies at the centre of the Ruhr area, the largest urban area of Germany, of which it is the fifth-largest city after Dortmund, Essen, Duisburg and Bochum. The Ruhr is located in the Rhine-Ruhr metropolitan region, the second-biggest metropolitan region by GDP in the European Union. Gelsenkirchen is the fifth-largest city of Westphalia after Dortmund, Bochum, Bielefeld and Münster, and it is one of the southernmost cities in the Low German dialect area. The city is home to the football club Schalke 04, which is named after Gelsenkirchen-Schalke. The club's current stadium Veltins-Arena, however, is located in Gelsenkirchen-Erle.\nGelsenkirchen was first documented in 1150, but it remained a tiny village until the 19th century, when the Industrial Revolution led to the economic and population growth of the region. In 1840, when the mining of coal began, 6,000 inhabitants lived in Gelsenkirchen; by 1900 the population had increased to 138,000. In the early 20th century, Gelsenkirchen was the most important coal mining town in Europe. It was called the \"city of a thousand fires\" for the flames of mine gases flaring at night. In 1928, Gelsenkirchen was merged with the adjoining cities of Buer and Gelsenkirchen-Horst. The city bore the name Gelsenkirchen-Buer, until it was renamed Gelsenkirchen in 1930. The city remained a center of coal mining and oil refining during the Nazi era, which led to it being a frequent a target of Allied bombing raids during World War II: nevertheless, over a third of the city's buildings date from before 1949. There are no longer coalmines in and around Gelsenkirchen; the city is searching for a new economic basis, having been afflicted for decades with one of the country's highest unemployment rates."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 325,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Ruhr location, coal mining growth, and mine-gas flames behind the thousand fires nickname; those flames are not climate, and no climate mechanism, extreme, or paradox is stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "gelsenkirchen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 152,
+    "place_id": "gn-294801",
+    "input": {
+      "place": {
+        "place_id": "gn-294801",
+        "name": "Haifa",
+        "country": "Israel",
+        "subdivision": "Haifa",
+        "lat": 32.81303,
+        "lon": 34.99928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haifa",
+          "url": "https://en.wikipedia.org/wiki/Haifa",
+          "text": "Haifa ( HY-fə; Hebrew: חיפה, romanized: Ḥayfā, IPA: [ˈχajfa]; Arabic: حيفا, romanized: Ḥayfā, IPA: [ħaj.faː]) is the third-largest city in Israel—after Jerusalem and Tel Aviv—with a population of 297,082 in 2024. The city of Haifa forms part of the Haifa metropolitan area, the third-most populous metropolitan area in Israel. It is home to the Baháʼí Faith's Baháʼí World Centre, a UNESCO World Heritage Site and destination for Baháʼí pilgrimage.\nBuilt on the slopes of Mount Carmel, the settlement has a history spanning more than 3,000 years. Over the millennia, the Haifa area has changed hands: being conquered and ruled by the Canaanites, Israelites, Phoenicians, Assyrians, Babylonians, Persians, Hasmoneans, Romans, Byzantines, Arabs, Crusaders, Ottomans, and the British. The earliest known settlement in the vicinity was Tell Abu Hawam, a small port city established in the Late Bronze Age (14th century BCE). In the 3rd century CE, Haifa was known as a dye-making center. Haifa el-Atika, 5 km northwest of Tell Abu Hawam, is the former site of Haifa as it existed between the 11th–18th centuries. In the late Ottoman period, in the 1760s, Haifa el-Atika was relocated 2.5 kilometres (1+1⁄2 miles) to the east as a new, fortified town, today known as the Old City of Haifa. \nWhilst in the late 19th century the population was almost exclusively Arab, it was a mixed city during the Mandate period, with a balanced population mix of a 55% Jewish majority alongside a 45% Arab minority by 1945. During and after the Battle of Haifa in the 1948 Palestine war, most of the city's Arab population fled or were expelled and the Old City was subsequently demolished. That year, the city became part of the then-newly established state of Israel. Today it is one of Israel's mixed cities, with an Arab-Israeli population of c.10%.\nAs of 2016, the city is a major seaport located on Israel's Mediterranean coastline in the Bay of Haifa covering 63.7 km2 (24.6 sq mi). It lies about 90 km (56 mi) north of Tel Aviv and is the major regional center of northern Israel. Two respected academic institutions, the University of Haifa and the Technion – Israel Institute of Technology the oldest and top ranked university in both Israel and the Middle East, are located in Haifa, in addition to the largest K–12 school in Israel, the Hebrew Reali School. The city plays an important role in Israel's economy. It is home to Matam, one of the oldest and largest high-tech parks in the country; and prior to the opening of Tel Aviv Light Rail, Haifa was the only Israeli city with an underground rapid transit system, known as the Carmelit. Haifa Bay is a center of heavy industry, petroleum refining and chemical processing. Haifa formerly functioned as the western terminus of an oil pipeline from Iraq via Jordan."
+        },
+        {
+          "article": "Haifa (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Haifa#Climate",
+          "text": "Haifa has a hot-summer Mediterranean climate with hot, dry summers and mild, rainy winters (Köppen climate classification Csa). Spring arrives in March when temperatures begin to increase. By late May, the temperature has warmed up considerably to herald warm summer days. The average temperature in summer is and in winter, . Frost is rare in Haifa, but temperatures around can sometimes occur, usually in the early morning. Snow is very rare, which last fell in 1950. Humidity tends to be high all year round, and rain usually occurs between September and May. Annual precipitation is approximately ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 97,
+      "leadWords": 470,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Mount Carmel slopes, Mediterranean port, long settlement history, and pilgrimage centre, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "haifa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 153,
+    "place_id": "gn-3186573",
+    "input": {
+      "place": {
+        "place_id": "gn-3186573",
+        "name": "Zenica",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 44.20169,
+        "lon": 17.90397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zenica",
+          "url": "https://en.wikipedia.org/wiki/Zenica",
+          "text": "Zenica (English:  ZEN-it-sə, Bosnian: [zěnitsa] ) is a city in Bosnia and Herzegovina and an administrative and economic center of the Federation of Bosnia and Herzegovina's Zenica-Doboj Canton. It is located in the Bosna river valley, about 70 km (43 mi) north of Sarajevo. The city is known for its Ironworks Zenica factory but also as a significant university center. According to the 2013 census, the settlement of Zenica itself counts 70,553 citizens and the administrative area 110,663, making it the nation's fourth-largest city.\nThe urban part of today's city was formed in several phases, including Neolithic, Illyrian, and the Roman Municipium of Bistua Nuova (2nd–4th century; old name of the city), with an early Christian dual basilica. Traces of an ancient settlement have been found here as well; villa rustica, thermae, a temple, and other buildings were also present. The earliest findings date from the period of 3000–2000 BC; they were found in the localities of Drivuša and Gradišće. Zenica's current name was first mentioned in 1415. A medieval church has been unearthed in Zenica, as well as the Franciscan Monastery of St. Mary. The independence of Medieval Bosnia is directly connected to Zenica (Gradješa's plate and abjuration act; Kulin ban's time; Vranduk, a castle of the Bosnian kings; Janjići and 'hižas' [homes] of Bosnian Church members; stećci, stone tombstone monuments, etc.) During Ottoman rule (1463–1878), Zenica became a Muslim town; at the end of the 17th century, Zenica had 2,000 citizens, mostly Muslims; Orthodox and Catholic Christians are mentioned again from the end of the 18th century, and Jews in the 19th century. Modern Zenica was mostly built in the Austro-Hungarian and Yugoslavian periods. The population rose rapidly during the 20th century; however, from the Bosnian War until 2013, the city lost a quarter of its population. The municipality of Zenica became the City of Zenica in 2014.\nThe city is geographically located in the heart of Bosnia. The settled area is 43.01 km2 (16.61 mi2) and of the city proper covers 558.5 km2 (215.6 mi2). Elevation is 310–350 m (1,017–1,148 ft). The rivers Bosna, Lašva, Babina, and Kočeva flow through the settlement. A moderate continental climate prevails. The city has thirteen urban local settlements and it consists of a total of 81 rural settlements.\nZenica has nine national monuments. The football club Čelik is a landmark of the city, and it also has one of the tallest buildings in Bosnia and Herzegovina—Lamela. Famous Zenicans include Semir Osmanagić, Anabela Basalo, Danis Tanović, Amar Jašarspahić Gile, Mladen Krstajić, Dejan Lovren, Mervana Jugić-Salkić, and Amel Tuka."
+        },
+        {
+          "article": "Zenica (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Zenica#Climate",
+          "text": "Within the municipality, a moderate continental climate prevails. Summers are hot and winters moderately cold. The mean annual temperature is , average annual precipitation is , with the lowest monthly precipitation occurring in March and the highest in November. The coldest month is January, with an average annual minimum of , while July is the hottest, with an average annual maximum of ]. The lowest mean monthly temperature in Zenica was , in January 1964; the minimal, , was in January 1963. The highest mean monthly temperature, , was registered in August 2003; the highest daily, , was in August 2024. Relative air humidity is 70% and cloudiness 6.1 tenths. Air pressure is 976.3 millibars. Zenica has one meteorological station, founded in 1925 and located at an elevation of above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 132,
+      "leadWords": 426,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only that a moderate continental climate prevails; that is a bare classification with no mechanism, extreme, or paradox",
+      "priorMissing": "extract text describing a place-specific climate mechanism, extreme, or paradox beyond the classification label"
+    },
+    "banned_terms": [
+      {
+        "term": "zenica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 154,
+    "place_id": "gn-3421319",
+    "input": {
+      "place": {
+        "place_id": "gn-3421319",
+        "name": "Nuuk",
+        "country": "Greenland",
+        "subdivision": "Sermersooq",
+        "lat": 64.18347,
+        "lon": -51.72157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuuk",
+          "url": "https://en.wikipedia.org/wiki/Nuuk",
+          "text": "Nuuk (Greenlandic pronunciation: [nuːk] ; formerly Danish: Godthåb) is the capital and most populous city of Greenland, an autonomous territory of Denmark. It is the seat of the Sermersooq municipality and the government of Greenland and is the territory's largest cultural and economic center. In January 2025, it had a population of 20,113—more than a third of the territory's population—making it one of the smallest capital cities in the world by population.\n\nThe city was founded in 1728 by the Danish-Norwegian missionary Hans Egede when he relocated from the earlier Hope Colony (Haabets Koloni), where he had arrived in 1721; the governor Claus Paarss was part of the relocation. The new colony was placed at the Inuit settlement of Nûk and named Godthaab ('good hope'). Nuuk is the Greenlandic word for 'cape' and is commonly found in Greenlandic place names. It is so named because of its position at the end of the Nuup Kangerlua fjord on the Labrador Sea's eastern shore. Its latitude, at 64°11' N, makes it the world's northernmost capital, a few kilometres farther north than Reykjavík. When home rule was established in 1979, the authorization of place names was transferred to Greenlandic authorities, who preferred Greenlandic names to Danish ones. The name Godthåb mostly went out of use over the next two decades."
+        },
+        {
+          "article": "Nuuk (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nuuk#Climate",
+          "text": "Nuuk has a maritime-influenced tundra climate (Köppen ET) with long, cold, snowy winters and short, cold summers. Although the winters are very cold, they are still milder than those in other tundra climates at similar latitudes, such as Alaska or parts of Eastern Siberia. Instead, peak winter is similar to identical latitudes in the Nordic countries. On 21 December, the shortest day and longest night of the year, the sun rises at 11:22 am and sets at 3:28 pm. On 21 June, the longest day and shortest night of the year, the sun sets at 1:03 am and rises at 3:53 am, producing constant civil twilight. Nuuk occasionally has mild temperatures year-round, with each month having recorded or warmer, although only June, July, August, and September have recorded what could be considered hot weather (defined as or higher). The monthly averages range from to , whereas all-time extremes range from on 14 January 1984 to on 6 July 2008. The record wind in Nuuk is 68 km/h.\nThe average monthly temperature ( in July) is colder than what is considered the limit for trees ( during the warmest month). There are a few planted trees, which do not sustain well."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 200,
+      "leadWords": 217,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the 1728 founding, the fjord and Labrador Sea location, and status as the world's northernmost capital, with no climate mechanism, extreme, or paradox stated; latitude alone is geography, not climate",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "nuuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 155,
+    "place_id": "gn-3691175",
+    "input": {
+      "place": {
+        "place_id": "gn-3691175",
+        "name": "Trujillo",
+        "country": "Peru",
+        "subdivision": "La Libertad",
+        "lat": -8.11599,
+        "lon": -79.02998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trujillo, Peru",
+          "url": "https://en.wikipedia.org/wiki/Trujillo,_Peru",
+          "text": "Trujillo (Spanish: [tɾuˈxiʝo]; Quechua: Truhillu; Mochica: Cɥimor) is a city in coastal northwestern Peru and the capital of the Department of La Libertad. It is the third most populous city and center of the third most populous metropolitan area of Peru. It is located on the banks of the Moche River, near its mouth at the Pacific Ocean, in the Moche Valley. This was a site of the great prehistoric Moche and Chimu cultures before the Inca conquest and subsequent expansion.\nThe Independence of Trujillo from Spain was proclaimed in the Historic Centre of Trujillo on December 29, 1820, and the city was honored in 1822 by the Congress of the Republic of Peru with the title \"Meritorious City and Faithful to the Fatherland\", for its role in the fight for Peruvian independence. Trujillo is the birthplace of Peru's judiciary.\nIn 1823, Riva Agüero settled in Trujillo after being deposed, but his government lacked legal recognition, while the Congress in Lima continued to function and appointed Torre Tagle as the new president. In 1824, to facilitate the campaign for independence, Trujillo was declared the provisional capital of Peru by Bolívar. It was the scene of a military revolt in 1932. Trujillo is considered the \"cradle of liberty and cradle of the judiciary in Peru\".\nTrujillo is also known as the \"City of Everlasting Spring\", is considered the \"Capital of the Marinera\", a traditional dance in Peru, \"Cradle of the Peruvian Paso horse\", as well as the \"Capital of Culture of Peru\". It has sponsored numerous national and international cultural events, and has a lively arts community. Current festivals include the \"National Marinera Festival\", the Trujillo Spring Festival and the International Book Festival, which is one of the most important cultural events in the country.\nTrujillo is close to two major archeological sites of pre-Columbian monuments: Chan Chan, the largest adobe city in the ancient world, designated a World Heritage Site by UNESCO in 1986; and the temples of the Sun and Moon (the largest adobe pyramid in Peru).\nThe city center contains many examples of colonial and religious architecture, often incorporating distinctive wrought ironwork. It includes residential areas, a central business district, and industrial supply distribution to the various districts. The Roman Catholic Archdiocese of Trujillo has its seat here. Roman Catholicism is the predominant religion and 10 colonial churches are located within the old city wall, now encircled by Avenida España; additional churches in the towns of Huamán, Huanchaco and Moche are located within 15 kilometres (9.3 miles) of Trujillo's centre.\nSince 2011, the city has been developing the pilot project Trujillo: Sustainable City, as part of the platform \"Emerging and Sustainable Cities of the Inter-American Development Bank\", in cooperation with the IDB. In 2012 Trujillo was selected by IBM to participate in a \"Smarter Cities Challenge\" project intended to improve public safety and transportation through technology."
+        },
+        {
+          "article": "Trujillo, Peru (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Trujillo,_Peru#Climate",
+          "text": "This city has a desert climate (BWh, according to the Köppen climate classification) and it is known as La Ciudad de la Eterna Primavera (city of everlasting spring) because of its sunny and pleasant weather year-round. The International Spring Festival in early October attracts visitors from all over Peru and the world. The city is in an area of mild climate and low rainfall, with moderate temperatures ranging between due to the Humboldt Current.\nTrujillo has a warm climate during the day and mild during the night due to the sea breeze. It has an average temperature of , and the extreme minimum and maximum temperatures fluctuate between in winter and summer, respectively. Rains are light, sporadic and occur during the afternoon or evening. The Andes and their foothills are very close to the coast, and having a lower elevation relative to the mountains of central and southern Peru, the flow of moist air from the Amazon region, which converges with the sea breezes from the west, favors during the summer a higher frequency of light showers. According to the climate classification of Thornthwaite, city of Trujillo would correspond to an arid climate type with no rain during all seasons.\nThe parts of the city closest to the sea experience haze during the morning and usually the temperature is lower than in the central and upper parts of the city. However, during the phenomenon of El Niño the climate varies, mainly the rainfall, with less intensity than in regions located north of the city, and the temperature can also be lifted."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 261,
+      "leadWords": 478,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only gives the nickname City of Everlasting Spring; that is a mild-weather label with no described climate mechanism, extreme, or paradox",
+      "priorMissing": "extract text describing a place-specific climate mechanism, extreme, or paradox beyond the spring nickname"
+    },
+    "banned_terms": [
+      {
+        "term": "trujillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 156,
+    "place_id": "gn-11054399",
+    "input": {
+      "place": {
+        "place_id": "gn-11054399",
+        "name": "Bukit Bintang",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.14657,
+        "lon": 101.71023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukit Bintang",
+          "url": "https://en.wikipedia.org/wiki/Bukit_Bintang",
+          "text": "Bukit Bintang (Malay: [ˈbu.ket̚ ˈbin.taŋ]; stylised as Bintang Walk or Starhill, the latter being a translation of the Malay name) is the shopping and entertainment district of Kuala Lumpur, Malaysia. It encompasses Jalan Bukit Bintang (Bukit Bintang Road in English) and its immediate surrounding areas. The area has long been Kuala Lumpur's most prominent retail belt that is home to many landmark shopping centres, al-fresco cafés, bars, night markets, food street, mamak stalls as well as hawker-type eateries. This area is popular among tourists and locals, especially among the youths.\nSince June 2021, the local municipal and authority, Kuala Lumpur City Hall (DBKL), has created a scramble crossing at the junction of Bukit Bintang, located in front of the McDonald's Bukit Bintang outlet, just below the KL Monorail Line. This was done to increase the walkability in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 139,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers only a shopping and entertainment district, its retail belt, eateries, and a 2021 scramble crossing, with no climate mechanism, extreme, or paradox and no founding history",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "bukit bintang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bukit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bintang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 157,
+    "place_id": "gn-11524601",
+    "input": {
+      "place": {
+        "place_id": "gn-11524601",
+        "name": "Jebel Ali",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.00255,
+        "lon": 55.10811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jebel Ali",
+          "url": "https://en.wikipedia.org/wiki/Jebel_Ali",
+          "text": "Jebel Ali (Arabic: جبل علي) is a major port city located within the Emirate of Dubai, United Arab Emirates, approximately 35 kilometres (22 mi) southwest of the city of Dubai. Situated along the southern coast of the Persian Gulf, it serves as one of the UAE's most significant industrial and logistical hubs. Off its coast lies the artificial archipelago Palm Jebel Ali, one of several palm-shaped islands developed by Nakheel as part of Dubai's coastal expansion projects. The area also encompasses Expo City Dubai, the legacy site of Expo 2020, and Dubai Investment Park, a mixed-use complex that includes industrial, commercial, and residential zones. As of 2024, it has a total population of 540,732.\nInitially a sparsely inhabited coastal area, Jebel Ali was developed in the 1970s as part of a state-directed initiative to diversify Dubai's economy beyond oil. It is the site of the Port of Jebel Ali, the largest man-made harbor in the world and the busiest port in the Middle East by container volume. The port is operated by DP World and serves as a major regional transshipment and cargo handling hub.\nAdjacent to the port is the Jebel Ali Free Zone (JAFZA), established in 1985 to attract foreign investment through regulatory and tax incentives. As of recent years, JAFZA hosts over 8,700 companies from more than 100 countries and contributes approximately 23 percent of Dubai's gross domestic product, with a particular emphasis on non-oil sectors.\nThe area includes several large-scale infrastructure installations, including the Jebel Ali Power and Desalination Complex, one of the largest combined power and water facilities in the world. It also houses Emirates Global Aluminium, a major aluminum smelter, along with oil storage and bunkering terminals, warehousing complexes, and labor accommodations. Jebel Ali is connected to regional and international transport networks via Sheikh Zayed Road (E11), the Dubai Metro Red Line, and Al Maktoum International Airport, located in the adjacent Dubai South district."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 320,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Persian Gulf coast location, the man-made port, free zone, and industrial facilities, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "jebel ali",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jebel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ali",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 158,
+    "place_id": "gn-293397",
+    "input": {
+      "place": {
+        "place_id": "gn-293397",
+        "name": "Tel Aviv",
+        "country": "Israel",
+        "subdivision": "Tel Aviv",
+        "lat": 32.08088,
+        "lon": 34.78057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tel Aviv",
+          "url": "https://en.wikipedia.org/wiki/Tel_Aviv",
+          "text": "Tel Aviv, officially Tel Aviv-Yafo, and also known as Tel Aviv-Jaffa, is the most populous city in the Gush Dan metropolitan area of Israel. Located on the Israeli Mediterranean coastline and with a population of 494,900, it is the economic and technological center of the country and a global high-tech hub. If East Jerusalem is considered part of Israel, Tel Aviv is the country's second-most-populous city, after Jerusalem; if not, Tel Aviv is the most populous city, ahead of West Jerusalem.\nTel Aviv is governed by the Tel Aviv-Yafo Municipality, headed by Mayor Ron Huldai, and is home to most of Israel's foreign embassies. It is a beta+ world city and is ranked 53rd in the 2022 Global Financial Centres Index. Tel Aviv has the third- or fourth-largest economy and the largest economy per capita in the Middle East. Tel Aviv is ranked the 4th top global startup ecosystem hub. The city currently has the highest cost of living in the world. Tel Aviv receives over 2.5 million international visitors annually. Tel Aviv is home to Tel Aviv University, the largest university in the country with more than 30,000 students.\nThe city was founded in 1909 by the Yishuv (Jewish residents) and initially given the Hebrew name Ahuzat Bayit (Hebrew: אחוזת בית, lit. 'House Estate' or 'Homestead'), namesake of the Jewish association which established the neighbourhood as a modern housing estate on the outskirts of the ancient port city of Jaffa (Yafo in Hebrew), then part of the Mutasarrifate of Jerusalem within the Ottoman Empire. Its name was changed the following year to Tel Aviv, after the biblical name Tel Abib (lit. \"Tell of Spring\") adopted by Nahum Sokolow as the title for his Hebrew translation of Theodor Herzl's 1902 novel Altneuland (\"Old New Land\"). Other Jewish suburbs of Jaffa had been established before Tel Aviv, the oldest among them being Neve Tzedek. Over the following decades, Tel Aviv started rapidly developing and expanding, under the leadership of Meir Dizengoff. Tel Aviv was given township status within the Jaffa Municipality in 1921, and eventually became independent from Jaffa in 1934. Accelerating Jewish immigration, largely from Nazi Germany, caused the growth of Tel Aviv to soon outpace that of Jaffa, which had a majority Arab population at the time. In 1948, the Israeli Declaration of Independence was proclaimed in the city, and government functions were carried out there until they moved to Jerusalem over the following few years. After the 1947–1949 Palestine war, Tel Aviv began the municipal annexation of parts of Jaffa, being fully reunified with Jaffa under the name Tel Aviv in April 1950, before a renaming to Tel Aviv-Yafo in August 1950.\nTel Aviv's White City, designated a UNESCO World Heritage Site in 2003, comprises the world's largest concentration of International Style buildings, including Bauhaus and other related modernist architectural styles. Popular attractions include Old Jaffa, the Eretz Israel Museum, the Museum of Art, Yarkon Park, and the city's promenade and beach."
+        },
+        {
+          "article": "Tel Aviv (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tel_Aviv#Climate",
+          "text": "in Tel Aviv]]\nTel Aviv has a Mediterranean climate (Köppen climate classification: Csa), and enjoys plenty of sunshine throughout the year. Most precipitation falls in the form of rain between the months of October and April, with intervening dry summers, and there is almost no rainfall from June to September. The average annual temperature is , and the average sea temperature is during the winter, and during the summer. The city averages of precipitation annually.\nSummers in Tel Aviv last about five months, from June to October. August, the warmest month, averages a high of , and a low of . The high relative humidity due to the location of the city by the Mediterranean Sea, in a combination with the high temperatures, creates a thermal discomfort during the summer. Summer low temperatures in Tel Aviv seldom drop below .\nWinters are mild and wet, with most of the annual precipitation falling within the months of December, January and February as intense rainfall and thunderstorms. In January, the coolest month, the average maximum temperature is , the minimum temperature averages . During the coldest days of winter, temperatures may vary between and . Both freezing temperatures and snowfall are extremely rare in the city.\nAutumns and springs are characterized by sharp temperature changes, with heat waves that might be created due to hot and dry air masses that arrive from the nearby deserts. During heatwaves in autumn and springs, temperatures usually climb up to and even up to , accompanied with exceptionally low humidity. An average day during autumn and spring has a high of to , and a low of to .\nThe highest recorded temperature in Tel Aviv was on 17 May 1916, and the lowest is on 7 February 1950, during a cold wave that brought the only recorded snowfall in Tel Aviv."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 306,
+      "leadWords": 494,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Mediterranean coastline, 1909 founding, economic and technology role, and the White City buildings, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "tel aviv",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aviv",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 159,
+    "place_id": "gn-2934691",
+    "input": {
+      "place": {
+        "place_id": "gn-2934691",
+        "name": "Duisburg",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.43247,
+        "lon": 6.76516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duisburg",
+          "url": "https://en.wikipedia.org/wiki/Duisburg",
+          "text": "Duisburg (German: [ˈdyːsbʊʁk] ; Low German: Duisborg [ˈdʏsbɔɐ̯χ]) is a major city in western Germany, located in the state of North Rhine-Westphalia. With around half a million inhabitants, it is one of the largest cities in the Ruhr area and part of the larger Rhine-Ruhr metropolitan region, one of the biggest population centers in Europe. Duisburg is situated at the confluence of the Ruhr and the Rhine, a geographic position that has historically made it an important center of trade, industry, and transportation. Administratively, Duisburg forms an independent city (kreisfreie Stadt).\nThe city is known for hosting Europe's largest inland port, the Port of Duisburg, which plays a key role in European logistics and international trade. The port's facilities are directly linked to major motorways, rail networks, and the Rhine waterway, connecting Duisburg to the North Sea and beyond. Today, Duisburg is a hub for the steel, chemical, and logistics industries, and it has also become an important node in trade relations with China, being a key terminus for freight trains on the Chongqing–Xinjiang–Europe railway.\nHistorically, Duisburg traces its origins back to a Frankish settlement and was first documented in the 9th century. During the Middle Ages, it developed as a trading town on the Rhine and briefly served as a member of the Hanseatic League. Although the city lost importance after the silting of its old Rhine port in the late medieval period, it gained renewed significance with the rise of heavy industry in the 19th century. The expansion of coal mining, ironworks, and steel production transformed Duisburg into one of Germany's key industrial centers during the Industrial Revolution.\nModern Duisburg combines its industrial legacy with cultural and educational institutions such as the University of Duisburg-Essen, one of the largest universities in Germany. The city is also home to theaters, museums, and sports venues, while its industrial heritage sites, such as the Landschaftspark Duisburg-Nord, have been repurposed into landmarks of cultural tourism. Like much of the Ruhr area, Duisburg has undergone structural change in recent decades, shifting from heavy industry to a more diversified economy that includes services, logistics, and research."
+        },
+        {
+          "article": "Duisburg (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Duisburg#Climate",
+          "text": "Duisburg has an oceanic climate (Köppen: Cfb)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 7,
+      "leadWords": 352,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Rhine and Ruhr confluence, Europe's largest inland port, steel and logistics, and medieval trade history, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "duisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 161,
+    "place_id": "gn-3699088",
+    "input": {
+      "place": {
+        "place_id": "gn-3699088",
+        "name": "Cajamarca",
+        "country": "Peru",
+        "subdivision": "Cajamarca Department",
+        "lat": -7.16378,
+        "lon": -78.50027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cajamarca",
+          "url": "https://en.wikipedia.org/wiki/Cajamarca",
+          "text": "Cajamarca (Spanish pronunciation: [kaxaˈmaɾka]), also known by the Quechua name, Kashamarka, is the capital and largest city of the Cajamarca Region as well as an important cultural and commercial center in the northern Andes. It is located in the northern highlands of Peru at approximately 2,750 m (8,900 ft) above sea level in the valley of the Mashcon river. Cajamarca had an estimated population of about 226,031 inhabitants in 2015, making it the 13th largest city in Peru.\nCajamarca has a mild highland climate, and the area has very fertile soil. The city is well known for its dairy products and mining activity in the surroundings.\nAmong its tourist attractions, Cajamarca has numerous examples of Spanish colonial religious architecture, beautiful landscapes, pre-Hispanic archeological sites and hot springs at the nearby town of Baños del Inca (Baths of the Inca). The history of the city is highlighted by the Battle of Cajamarca, which marked the defeat of the Inca Empire by Spanish invaders as the Incan emperor Atahualpa was captured and executed here."
+        },
+        {
+          "article": "Cajamarca (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cajamarca#Climate",
+          "text": "Cajamarca has a subtropical highland climate (Cwb, in the Köppen climate classification) which is characteristic of high elevations at tropical latitudes. This city presents a semi-dry, temperate, semi-cold climate with presence of rainfall mostly in spring and summer (from October to April) with little or no rainfall the rest of the year.\nDaily average temperatures have a great variation, being pleasant during the day but cold during the night and dawn. January is the warmest month, with an average maximum temperature of 72 °F (22 °C) and an average minimum of 45 °F (7 °C). The coldest months are June and July, both with an average maximum of 71 °F (21 °C) but with an average minimum of 38 °F (3 °C). Frosts may occur but are less frequent and less intense than in the southern Peruvian Andes."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 138,
+      "leadWords": 172,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only that the city has a mild highland climate; a mild microclimate label does not qualify, and no mechanism, extreme, or paradox is described",
+      "priorMissing": "extract text describing a place-specific climate mechanism, extreme, or paradox beyond the mild highland label"
+    },
+    "banned_terms": [
+      {
+        "term": "cajamarca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 162,
+    "place_id": "gn-4509884",
+    "input": {
+      "place": {
+        "place_id": "gn-4509884",
+        "name": "Dayton",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.75895,
+        "lon": -84.19161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dayton, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Dayton,_Ohio",
+          "text": "Dayton ( ) is a city in Montgomery County, Ohio, United States, and its county seat. It is the \nsixth-most populous city in Ohio, with a population of 137,644 at the time of 2020 United States census. The Dayton metropolitan area has an estimated 822,000 residents and is the state's fourth-largest metropolitan area. Dayton is located within Ohio's Miami Valley region, 40 miles (64 km) north of Cincinnati and 55 miles (89 km) southwest of Columbus, Ohio.\nDayton was founded in 1796 along the Great Miami River and named after Jonathan Dayton, a Founding Father of the United States who owned a significant amount of land in the area. It grew in the 19th century as a canal town and was home to many patents and inventors, most notably the Wright brothers, who developed the first successful motor-operated airplane. It later developed an industrialized economy and was home to the Dayton Project, a branch of the larger Manhattan Project, to develop the polonium triggers used in early atomic bombs. \nWith the decline of heavy manufacturing in the late 20th century, Dayton shifted from a manufacturing economy to more of a service economy. Ohio's borders are within 500 miles (800 km) of roughly 60 percent of the country's population and manufacturing infrastructure, making Dayton a logistics hub. The city near Wright-Patterson Air Force Base, a significant contributor to research and development in the industrial, aeronautical, and astronautical engineering fields. Along with defense and aerospace, healthcare accounts for much of the Dayton area's economy. Significant institutions in Dayton include the Air Force Institute of Technology, Carillon Historical Park, the Dayton Art Institute, the Dayton Performing Arts Alliance, Wright State University, and the University of Dayton."
+        },
+        {
+          "article": "Dayton, Ohio (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dayton,_Ohio#Climate",
+          "text": "Dayton's climate features hot, humid summers and cold winters, and is classified as a humid continental climate (Köppen Dfa). Unless otherwise noted, all normal figures quoted within the text below are from the official climatology station, Dayton International Airport, at an elevation of about to the north of downtown Dayton, which lies within the valley of the Miami River; thus temperatures there are typically cooler than in downtown.\nAt the airport, monthly mean temperatures range from in January to in July. The highest temperature ever recorded in Dayton was on July 22, 1901, and the coldest was on February 13 during the Great Blizzard of 1899. On average, there are 14 days of + highs and 4.5 nights of sub- lows annually. Snow is moderate, with a normal seasonal accumulation of , usually occurring from November to March, occasionally April, and rarely October. Precipitation averages annually, with total rainfall peaking in May.\nDayton is subject to severe weather typical of the Midwestern United States. Tornadoes are possible from the spring to the fall. Floods, blizzards, and severe thunderstorms can also occur.\nOn Memorial Day of 2019, Dayton suffered extensive property damage and one death during a tornado outbreak, in which a total of 15 tornadoes touched down in the Dayton area. Several streets were closed, including portions of I-75 and North Dixie Drive in Northridge. 64,000 residents lost power and much of the region's water supply was cut off."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 239,
+      "leadWords": 283,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the Miami Valley location, 1796 founding, the Wright brothers, the Manhattan Project branch, and logistics, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "dayton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 163,
+    "place_id": "gn-1253367",
+    "input": {
+      "place": {
+        "place_id": "gn-1253367",
+        "name": "Vasco da Gama",
+        "country": "India",
+        "subdivision": "Goa",
+        "lat": 15.39585,
+        "lon": 73.81568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vasco da Gama, Goa",
+          "url": "https://en.wikipedia.org/wiki/Vasco_da_Gama,_Goa",
+          "text": "Vasco da Gama (, Portuguese: [ˈvaʃku ðɐ ˈɣɐmɐ]), often shortened to Vasco, is a city in the state of Goa on the west coast of India. It is named after the Portuguese explorer Vasco da Gama. It is the headquarters of the Mormugão taluka (subdistrict). The city lies on the western tip of the Mormugao peninsula, at the mouth of the Zuari River, about 30 kilometres (20 mi) from Panaji, Goa's capital, 28 kilometres (17 mi) from Margao, the district headquarters and about 5 kilometres (3 mi) from Dabolim Airport. The city is sometimes also referred to as Sambhaji Nagar after the Maratha king Sambhaji, a decision that has been controversial.\nThe city was developed along with the nearby Mormugao Port in 1886 and remained with the Portuguese Empire until the 1961 Indian military operation that annexed Goa. The 1888-constructed Mormugao Port remains a busy shipping route in Asia. It is one of the major ports of independent India. The shipbuilding area of Goa Shipyard Limited that builds Indian Navy and Coast Guard vessels was also built there in 1957 (during the Portuguese era). Initially built around the city's harbour as the 'Estaleiros Navais de Goa', the area has, since the end of Portuguese presence, expanded into construction for several other branches of maritime patrol and security. The Indian Navy has an obvious presence here, with its vast campuses and ports, which include the naval base INS Hansa."
+        },
+        {
+          "article": "Vasco da Gama, Goa (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Vasco_da_Gama,_Goa#Climate",
+          "text": "The city has a tropical monsoon climate (Koppen: Am)"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 9,
+      "leadWords": 238,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the west coast of Goa location, the river mouth, the port developed in 1886, shipbuilding, and the naval presence, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "vasco da gama",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vasco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gama",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 164,
+    "place_id": "gn-2636882",
+    "input": {
+      "place": {
+        "place_id": "gn-2636882",
+        "name": "Stockport",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.40979,
+        "lon": -2.15761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockport",
+          "url": "https://en.wikipedia.org/wiki/Stockport",
+          "text": "Stockport is a town in Greater Manchester, England, 6 miles (10 km) south-east of Manchester, 7 miles (11 km) south-west of Ashton-under-Lyne and 12 miles (19 km) north of Macclesfield. The rivers Goyt and Tame merge to create the River Mersey here. It is the main settlement of the wider Metropolitan Borough of Stockport. At the 2021 census, the built up area as defined by the Office for National Statistics had a population of 117,935, and the metropolitan borough had a population of 294,773.\nMost of the town is within the boundaries of the historic county of Cheshire, with the area north of the Mersey in the historic county of Lancashire. Stockport in the 16th century was a small town entirely on the south bank of the Mersey, known for the cultivation of hemp and manufacture of rope. In the 18th century, it had one of the first mechanised silk factories in the British Isles. Stockport's predominant industries of the 19th century were the cotton and allied industries. It was also at the centre of the country's hatting industry, which by 1884 was exporting more than six million hats a year; the last hat works in Stockport closed in 1997. The town's football club, Stockport County, is nicknamed The Hatters.\nDominating the western approaches to the town is Stockport Viaduct. Built in 1840, its 27 brick arches carry the main line railway through the town over the River Mersey and the M60 motorway."
+        },
+        {
+          "article": "Stockport (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Stockport#Geography",
+          "text": "Stockport lies on elevated ground, south-east of Manchester city centre, at the confluence of the rivers Goyt and\nTame, creating the River Mersey. It shares a common boundary with the City of Manchester.\nStockport stands on Permian sandstones and red Triassic sandstones and mudstones, mantled by thick deposits of till and pockets of sand and gravel deposited by glaciers at the end of the Last Glacial Period, some 15,000 years ago. To the extreme east is the Red Rock fault and the older rocks from the Upper Carboniferous period surface. An outcrop of coal measures extends southwards through Tameside and into Hazel Grove. The Pennines lie to the east of the town, consisting of the upland moors and Millstone Grit outcrops of sandstones and shales in the Dark Peak area of the Peak District."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 134,
+      "leadWords": 243,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the rivers merging to form the Mersey, hemp, silk, cotton and hatting industries, and the 1840 viaduct, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "stockport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 165,
+    "place_id": "gn-3096880",
+    "input": {
+      "place": {
+        "place_id": "gn-3096880",
+        "name": "Kalisz",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 51.76109,
+        "lon": 18.09102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalisz",
+          "url": "https://en.wikipedia.org/wiki/Kalisz",
+          "text": "Kalisz (Polish: [ˈkaliʂ] ) is a city in central Poland, and the second-largest city in the Greater Poland Voivodeship, with 97,905 residents (December 2021). It is the capital city of the Kalisz Land. Situated on the Prosna river in the southeastern part of Greater Poland, the city forms a conurbation with the nearby towns of Ostrów Wielkopolski and Nowe Skalmierzyce.\nKalisz is one of the oldest cities in Poland and one of the two traditional capitals of Greater Poland (alongside Poznań). It has served as an important regional center in Poland since the Middle Ages as a provincial capital and notable royal city. It is one of the historical burial sites of medieval Polish monarchs and dukes of the Piast dynasty and the site of a number of significant events in Polish history as well as several battles. Since the 19th century it has been the center of an industrial district. It is the cultural, scientific, educational and administrative center of the eastern and southern Greater Poland region, and the seat of Roman Catholic Diocese of Kalisz."
+        },
+        {
+          "article": "Kalisz (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kalisz#Climate",
+          "text": "Kalisz has an oceanic climate (Köppen climate classification: Cfb) using the isotherm or a humid continental climate (Köppen climate classification: Dfb) using the isotherm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 177,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river and regional geography and medieval history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kalisz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 168,
+    "place_id": "gn-499099",
+    "input": {
+      "place": {
+        "place_id": "gn-499099",
+        "name": "Samara",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.20767,
+        "lon": 50.13553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samara",
+          "url": "https://en.wikipedia.org/wiki/Samara",
+          "text": "Samara, known as Kuybyshev from 1935 to 1991, is the largest city and the administrative centre of Samara Oblast in Russia. It is sited at the confluence of the Volga and the Samara rivers. The city has a population of over 1.14 million residents, with up to 1.22 million residents in the urban agglomeration (not including Novokuybyshevsk, which is not conurbated). The city covers an area of 541.4 square kilometers (209.0 sq mi), and is the ninth-largest city and tenth-largest agglomeration in Russia, and the third-most populous city on the Volga and in the Volga Federal District.\nFormerly a closed city, Samara is now a large and important social, political, economic, industrial, and cultural centre in Russia and hosted the European Union—Russia Summit in May 2007. It has a continental climate characterised by hot summers and cold winters. The life of Samara's citizens has always been intrinsically linked to the Volga River, which has not only served as the main commercial thoroughfare of Russia throughout several centuries, but also has great visual appeal. Samara's riverfront is one of the main recreation sites for both local citizens and tourists."
+        },
+        {
+          "article": "Samara (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Samara#Climate",
+          "text": "Samara experiences a humid continental climate (Köppen climate classification Dfb, borders on Dfa). Samara's humidity levels are higher in the summer than many Russian cities thanks to the precipitation levels and the close proximity to the Volga. The humidity levels usually range from 29% to 98% humidity over the period of a year. There was a record high of during a severe heat wave. Being far inland, summers are very warm and winters very cold for its latitude among European cities."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 81,
+      "leadWords": 188,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only a continental climate label with hot summers and cold winters, with no mechanism, extreme, or paradox beyond that bare classification",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the continental classification"
+    },
+    "banned_terms": [
+      {
+        "term": "samara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 169,
+    "place_id": "gn-5907364",
+    "input": {
+      "place": {
+        "place_id": "gn-5907364",
+        "name": "Brampton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.68341,
+        "lon": -79.76633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brampton",
+          "url": "https://en.wikipedia.org/wiki/Brampton",
+          "text": "Brampton is the ninth most populous municipality in Canada and the regional seat of the Regional Municipality of Peel. It is also the third most populous city in the Greater Golden Horseshoe urban area, behind Toronto and Mississauga. Brampton is part of the Greater Toronto Area (GTA), located in the Canadian province of Ontario, and is a lower-tier municipality within the Peel Region. The City of Brampton is bordered by Vaughan to the east, Halton Hills to the west, Caledon to the north, Mississauga to the south, and Etobicoke (Toronto) to the southeast.\nNamed after the town of Brampton in Cumberland, England, Brampton was incorporated as a village in 1853 and as a town in 1873, and became a city in 1974. The modern City of Brampton was formed following an amalgamation of several surrounding townships and communities.\nThe city was once known as \"The Flower Town of Canada\", a title referring to its abundance of greenhouses and strong floriculture industry in the 1860s. It maintains the term \"Flower City\" as its slogan.\nDespite being built as a car-centric city, Brampton has a significant transit system, with a ridership of 49,200,800, or about 226,500 per weekday as of the second quarter of 2024."
+        },
+        {
+          "article": "Brampton (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Brampton#Climate",
+          "text": "Brampton features a continental climate (Köppen climate classification: Dfa) which is typical of the rest of the Greater Toronto Area.\nData from Toronto Pearson International Airport, located east.\nData is from Georgetown, located south-southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 34,
+      "leadWords": 203,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Toronto-area geography, town history, and flower history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "brampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 170,
+    "place_id": "gn-1254360",
+    "input": {
+      "place": {
+        "place_id": "gn-1254360",
+        "name": "Tirupati",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 13.63551,
+        "lon": 79.41989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tirupati",
+          "url": "https://en.wikipedia.org/wiki/Tirupati",
+          "text": "Tirupati ( Tiru-pa-ti) is a city in the Indian state of Andhra Pradesh and serves as the administrative headquarters of Tirupati district. It is known for its significant religious and cultural heritage, being home to the renowned Tirumala Venkateswara Temple, a major Hindu pilgrimage site, as well as other historic temples. The temple is one of the eight Svayam Vyakta Kshetras (self-manifested temples) dedicated to the deity Vishnu. Tirupati is situated 150 km from Chennai, 250 km from Bangalore, and 416 km from Vijayawada.\nTirupati is the second largest city in the Rayalaseema region, after Kurnool. According to the 2011 census of India, Tirupati had a population of 287,035, making it the ninth most populous city in Andhra Pradesh, while the larger urban agglomeration had a population of 459,985, ranking it the seventh largest in the state. The city functions as a municipal corporation and serves as the headquarters for  the Tirupati district, Tirumala Tirupati Devasthanams, Tirupati Urban, Tirupati Rural mandals, the Tirupati revenue division, the Andhra Pradesh Southern Power Distribution Company Limited (APSPDCL), and the Tirupati Urban Development Authority (TUDA).\nIn 2012–2013, Tirupati was recognised by India's Ministry of Tourism as the \"Best Heritage City\". Additionally, it was selected as one of the hundred Indian cities to be developed under the Smart Cities Mission, a Government of India initiative aimed at urban development and modernisation."
+        },
+        {
+          "article": "Tirupati (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tirupati#Climate",
+          "text": "Tirupati has a tropical savanna climate under the Köppen climate classification system, specifically Aw (dry \"winter\"), closely bordering As (dry \"summer\"). During the dry season, which lasts from January to May, average minimum temperatures are between . The dry season is followed by the rainy season, which lasts from June until the end of December. The city experiences heavy rainfall in November during the northeast monsoon season. The highest rainfall in 24 hours () was on 16 November 2015, during the 2015 South India floods. Cyclones commonly hit the Coast of Nellore and bring heavy rain to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 99,
+      "leadWords": 226,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives regional geography and temple heritage but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tirupati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 171,
+    "place_id": "gn-1270583",
+    "input": {
+      "place": {
+        "place_id": "gn-1270583",
+        "name": "Gwalior",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.22983,
+        "lon": 78.17337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwalior",
+          "url": "https://en.wikipedia.org/wiki/Gwalior",
+          "text": "Gwalior (pronounced [ɡʋɑːlɪjəɾ] ) is the fourth largest city of the Indian state of Madhya Pradesh where it serves as the capital and the administrative headquarters of the eponymous district and division. It is an important cultural, industrial, sports and political centre. Known as the music city of India, it is home to the oldest musical gharana of the Indian subcontinent and of the earliest known epigraphical inscription that uses the number 0 (zero) as part of the Hindu numeral system. The grand historic city and its fortress have been ruled by several Indian kingdoms from the Alchon Huns to the Gurjara Pratihara and Kachchhapaghata dynasties. Later it fell into the hands of the Delhi Sultanate before passing on to their vassals, the Tomars.\nThe Mughal Empire conquered the city and its fortress in the 16th century. Following the decline of the empire, the city fell into the hands of Jat rulers, then to the British East India Company in 1730. The Scindia Dynasty of the Maratha Empire took control of the city in the early 18th century.\nGwalior was one of the major locations of the Sepoy Mutiny. Prior to Indian independence, the Kingdom of Gwalior remained a princely state of the British Raj with the Scindia as rulers and the city became the winter capital of the Central India Agency. Gwalior was a premier twenty-one Gun Salute State  along with Hyderabad, Mysore, Jammu and Kashmir and Baroda.\nPost Independence, the city became the capital of the short-lived state of Madhya Bharat, now part of the larger state of Madhya Pradesh. Located in its northern part, it is one of the counter-magnet cities hosting many administrative offices of the Chambal division including the state and national headquarters of several organisations, commissions and boards and is surrounded by industrial and commercial zones of neighbouring districts, Malanpur, Bhind, Banmore, Morena.\n\nGwalior occupies a strategic location in the historical Gird region. Surrounded by high rocky hills, the city is situated in the valley in the Ganga-Yamuna Drainage Basin. The city's metropolitan area includes Lashkar, Old City (Fort City), Gwalior West, Gwalior East, Greater Gwalior, and Morar Cantonment.\nGwalior is one of the cities selected under the central government's flagship Smart Cities Mission and startup centre programmes.\nOne of UNESCO's cities of Music as part of the world creative cities network, Gwalior's identity is strongly associated with its rich musical, artistic traditions and vibrant culture, making it one of India's most touristic cities."
+        },
+        {
+          "article": "Gwalior (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gwalior#Climate",
+          "text": "Gwalior has a sub-tropical climate with hot summers from late March to early July, the humid monsoon season from late June to early October, and a cool dry winter from early November to late February. Under Köppen's climate classification the city has a humid subtropical climate. The highest recorded temperature was 48 °C and the lowest was −1 °C. Summers start in late March, and along with other cities like Jaipur and Delhi, are among the hottest in India and the world. Temperatures peak in May and June with daily averages being around , and end in late June with the onset of the monsoon. Gwalior receives 750 mm of rain on average per year, most of which is concentrated in the Monsoon months (from late June to early October). August is the wettest month with about 250 mm of rain. Winter in Gwalior starts in late October, and is generally very mild with daily temperatures averaging in the range, and mostly dry and sunny conditions. January is the coldest month with average lows in the 5-6 °C range (41-42 °F) and occasional cold snaps that plummet temperatures down to a single digit.\nGwalior has been ranked 26th best \"National Clean Air City\" (under Category 1 >10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 211,
+      "leadWords": 410,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives hill and valley geography and long royal history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gwalior",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 172,
+    "place_id": "gn-2656173",
+    "input": {
+      "place": {
+        "place_id": "gn-2656173",
+        "name": "Bath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3751,
+        "lon": -2.36172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bath, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Bath,_Somerset",
+          "text": "Bath (RP: , locally [ba(ː)θ]) is a city in Somerset, England, known for and named after its Roman-built baths. The city became a UNESCO World Heritage Site in 1987, and was later listed as one of the \"Great Spa Towns of Europe\". Bath is in the valley of the River Avon, 97 miles (156 km) west of London and 11 miles (18 km) southeast of Bristol, and is the largest city and urban settlement in Somerset.\nThe city became a spa with the Latin name Aquae Sulis (\"the waters of Sulis\") c. 60 AD when the Romans built baths and a temple in the Avon valley, although hot springs were known even before then. Bath Abbey was founded in the 7th century and became a religious centre; the building was rebuilt in the 12th and 16th centuries. In the 17th century, claims were made for the curative properties of water from the springs, and Bath became popular as a spa town in the Georgian era. Georgian architecture, crafted from Bath stone, includes the Royal Crescent, Circus, Grand Pump Room, and the Assembly Rooms, where Beau Nash presided over the city's social life from 1705 until his death in 1761.\nMany of the streets and squares were laid out by John Wood, the Elder, and in the 18th century the city became fashionable and the population grew. Jane Austen lived in Bath in the early 19th century. Further building was undertaken in the 19th century and following the Bath Blitz in World War II. At the 2021 census, the population of the built-up area was 94,080.\nBath has over 6 million yearly visitors, making it one of the ten English cities visited most by overseas tourists. Attractions include the spas, canal boat tours, Royal Crescent, Bath Skyline, Parade Gardens, Sydney Gardens and Royal Victoria Park which hosts carnivals and seasonal events. Shopping areas include SouthGate shopping centre, the Corridor arcade and artisan shops at Walcot, Milsom, Stall and York Streets. There are theatres, including the Theatre Royal, as well as several museums including the Museum of Bath Architecture, the Victoria Art Gallery, the Museum of East Asian Art, the Herschel Museum of Astronomy, Fashion Museum, and the Holburne Museum. The city has two universities – the University of Bath and Bath Spa University – with Bath College providing further education. Sporting clubs from the city include Bath Rugby and Bath City."
+        },
+        {
+          "article": "Bath, Somerset (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bath,_Somerset#Climate",
+          "text": "Along with the rest of South West England, Bath has a temperate climate which is generally wetter and milder than the rest of the country. The annual mean temperature is approximately . Seasonal temperature variation is less extreme than most of the United Kingdom because of the adjacent sea temperatures. The summer months of July and August are the warmest, with mean daily maxima of approximately . In winter, mean minimum temperatures of are common. In the summer, the Azores high pressure affects the south-west of England bringing fair weather; however, convective cloud sometimes forms inland, reducing the number of hours of sunshine. Annual sunshine rates are slightly less than the regional average of 1,600 hours.\nMost of the rainfall in the south-west is caused by Atlantic depressions or by convection. In summer, a large proportion of the rainfall is caused by sun heating the ground, leading to convection and to showers and thunderstorms. Average rainfall is around . About 8–15 days of snowfall is typical. November to March have the highest mean wind speeds, and June to August have the lightest winds. The predominant wind direction is from the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 191,
+      "leadWords": 400,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions hot springs and Roman-built baths, which are spring water rather than climate, and states no climate mechanism, extreme, paradox, or weather pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 173,
+    "place_id": "gn-3021372",
+    "input": {
+      "place": {
+        "place_id": "gn-3021372",
+        "name": "Dijon",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.31344,
+        "lon": 5.01391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dijon",
+          "url": "https://en.wikipedia.org/wiki/Dijon",
+          "text": "Dijon (UK: , US: ; French: [diʒɔ̃] ; Burgundian: Digion) is a city and the prefecture of the Côte-d'Or department of the Bourgogne-Franche-Comté region in eastern France. As of 2023, the population of the commune was 161,830, making it the most populous commune in Bourgogne-Franche-Comté.\nThe earliest archaeological finds within the city limits of Dijon date to the Neolithic period. Dijon later became a Roman settlement named Divio, located on the road between Lyon and Paris. The province was home to the Dukes of Burgundy from the early 11th until the late 15th century, and Dijon became a place of tremendous wealth and power, one of the great European centres of art, learning, and science.\nThe city has retained varied architectural styles from many of the main periods of the past millennium, including Capetian, Gothic, and Renaissance. Many still-inhabited townhouses in the city's central district date from the 18th century and earlier. Dijon's architecture is distinguished by, among other things, toits bourguignons (Burgundian polychrome roofs) made of glazed terracotta tiles of various colours arranged in geometric patterns.\nDijon holds an International and Gastronomic Fair every year in the northern-hemisphere autumn. Dijon also hosts every three years the international flower show Florissimo. Dijon has become famous for Dijon mustard, which originated in 1856, when Jean Naigeon of Dijon substituted verjuice, the acidic \"green\" juice of not-quite-ripe grapes, for vinegar in the traditional mustard recipe. Dijon is a green city with an important tertiary sector, as well as a regional economic centre with a diversified fabric, a traditional food-processing center (Dijon crême de cassis and kir, gingerbread, Lanvin chocolate...) and a renowned pharmaceutical sector.\nOn 4 July 2015, UNESCO registered the historical centre of the city as a World Heritage site, as one of the components of the \"Climats, terroirs of Burgundy\" site, because of its historical importance in regulating the system of wine production in Burgundy."
+        },
+        {
+          "article": "Dijon (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dijon#Climate",
+          "text": "Dijon features an oceanic climate (Cfb) with continental influence under the Köppen climate classification. The city is highly influenced by its position far inland in Northeastern France. Thus, winters are cool to cold with moderate frosts at night and thawing conditions during the day while summers are warm to hot and humid with frequent thunderstorms."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 55,
+      "leadWords": 315,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern France geography, ducal history, roofs, and food fame but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dijon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

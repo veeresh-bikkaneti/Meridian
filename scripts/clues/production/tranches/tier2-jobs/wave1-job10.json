@@ -1,0 +1,882 @@
+[
+  {
+    "rank": 194,
+    "place_id": "gn-3547398",
+    "input": {
+      "place": {
+        "place_id": "gn-3547398",
+        "name": "Matanzas",
+        "country": "Cuba",
+        "subdivision": "Matanzas Province",
+        "lat": 23.04388,
+        "lon": -81.58284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matanzas",
+          "url": "https://en.wikipedia.org/wiki/Matanzas",
+          "text": "Matanzas (Latin American Spanish: [maˈtansas]; Lucumi: Ayá Áta) is the capital of the Cuban province of Matanzas. Known for its poets, culture, and Afro-Cuban folklore, it is located on the northern shore of the island of Cuba, on the Bay of Matanzas (Spanish Bahia de Matanzas), 102 kilometres (63 mi) east of the capital Havana and 32 kilometres (20 mi) west of the resort town of Varadero.\nMatanzas is called the City of Bridges, for the seventeen bridges that cross the three rivers that traverse the city (Rio Yumuri, San Juan, and Canimar). For this reason it was referred to as the \"Venice of Cuba.\" It was also called \"La Atenas de Cuba\" (\"The Athens of Cuba\") for its poets.\nMatanzas is known as the birthplace of the music and dance traditions danzón and rumba."
+        },
+        {
+          "article": "Matanzas (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Matanzas#Geography",
+          "text": "]]\nThe city is located on the north shore of the island of Cuba, on all three sides of the Bay of Matanzas. The bay cuts deep in the island, and three rivers flow in the bay inside city limits (Rio Yumuri, San Juan, and Canimar). To the south-east, the landscape rises into a hill called Pan de Matanzas, divided from the Atlantic coast by the Yumuri Valley and a coastal ridge.\nThe city of Matanzas is divided into four neighborhoods: Versalles, Matanzas, Playa and Pueblo Nuevo. The municipality is divided into the barrios of Bachicha, Bailén, Barracones, Bellamar, Camarioca, Cárcel, Ceiba Mocha, Colón, Corral Nuevo, Guanábana, Ojo de Agua, Refugio, San Luis, San Severino, Simpson y Monserrate, Versalles and Yumurí."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 121,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers a northern shore location, bridges over three rivers, poets, and music traditions only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "matanzas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 195,
+    "place_id": "gn-3838583",
+    "input": {
+      "place": {
+        "place_id": "gn-3838583",
+        "name": "Rosario",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.94682,
+        "lon": -60.63932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosario",
+          "url": "https://en.wikipedia.org/wiki/Rosario",
+          "text": "Rosario, officially the Autonomous City of Rosario, is a city in central Argentina, in the south of the province of Santa Fe. Located 300 km (186 mi) northwest of Buenos Aires on the west bank of the Paraná River, it is the country's third-most populous city after Buenos Aires and Córdoba. With a growing and important metropolitan area, Greater Rosario has an estimated population of 1,750,000 as of 2020. One of its main attractions includes the neoclassical, Art Nouveau, and Art Deco architecture that has been preserved in hundreds of residences, houses and public buildings. The city is also famous for being the birthplace of revolutionary Marxist Che Guevara and footballer Lionel Messi.\nRosario is the head city of the Rosario Department and is located at the heart of the major industrial corridor in Argentina. The city is a major railroad terminal and the shipping center for north-eastern Argentina. Ships reach the city via the Paraná River, which allows the existence of a 10-metre-deep (34 ft) port. The Port of Rosario is subject to silting and must be dredged periodically. Exports include wheat, flour, hay, linseed and other vegetable oils, corn, sugar, lumber, meat, hides, and wool. Manufactured goods include flour, sugar, meat products, and other foodstuffs. The Rosario-Victoria Bridge, opened in 2003, spans the Paraná River, connecting Rosario with the city of Victoria, across the Paraná Delta. The city plays a critical role in agricultural commerce, and thus finds itself at the center of a continuing debate over taxes levied on big-ticket agricultural goods such as soy.\nAlong with Paraná, Rosario is one of the few Argentine cities that cannot point to a particular individual as its founder. The city's patron is the \"Virgin of the Rosary\", whose feast day is 7 October."
+        },
+        {
+          "article": "Rosario (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Rosario#Climate",
+          "text": "The Rosario area has a Pampean, humid subtropical climate (Köppen climate classification: Cfa/Cwa), and is well known for its changeable weather conditions. The city has average temperatures of maximum and minimum. The annual rainfall is .\nRosario is usually warmer than other mainland Argentine capital cities in the winter. The lowest average in winter is . This is due in part to the city's flat topography, its situation on the Paraná River bank, and the presence of high density of urbanization. Those conditions have created a microclimate known as urban heat island that often means that the city is significantly warmer than its surrounding rural areas.\nThe temperature difference usually is greater at night than during the day, greater in winter than in summer and most apparent when winds are light. However snowfalls are extremely rare: the most recent occurrence of sleet in the CBD was on 9 July 2007.\nDuring the spring Rosario commonly enjoys extended periods of warm weather and clear skies. Rosario has average day-night temperatures of . The city experiences hot and humid summer days, with maximum temperatures above , when northerly winds blow humid air from Brazil. The record high temperature is on January 9, 2006, while the record low is on July 15, 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 210,
+      "leadWords": 294,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; river port silting is a river process, not climate, and the rest covers exports, architecture, and famous births",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rosario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 196,
+    "place_id": "gn-5336899",
+    "input": {
+      "place": {
+        "place_id": "gn-5336899",
+        "name": "Chula Vista",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.64005,
+        "lon": -117.0842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chula Vista, California",
+          "url": "https://en.wikipedia.org/wiki/Chula_Vista,_California",
+          "text": "Chula Vista ( CHOO-lə VIST-ə; Spanish for 'Beautiful/Pretty View', Spanish pronunciation: [ˈtʃula ˈβista] ) is a city in San Diego County, California, United States. It is the second-most populous city in the San Diego metropolitan area, the seventh-most populous city in Southern California, the 15th-most populous city in the state of California, and the 81st-most populous city in the United States. The population was 275,487 as of the 2020 census, up from 243,916 as of the 2010 census. It is located in the South Bay, about halfway—7.5 miles (12.1 km)—between the two downtowns of the San Diego–Tijuana region. Chula Vista is named for its scenic location between San Diego Bay and coastal mountain foothills.\nThe area, along with San Diego, was inhabited by the Kumeyaay before contact from the Spanish, who later claimed the area. In 1821, Chula Vista became part of the newly declared Mexican Empire, which reformed as the First Mexican Republic two years later. California became part of the United States in 1848 as a result of the Mexican–American War, and was admitted to the union as a state in 1850.\nFounded in the early 19th century and incorporated in October 1911, fast population growth has recently been observed in the city. The city is home to the Chula Vista Elite Athlete Training Center, Sesame Place San Diego, North Island Credit Union Amphitheatre, Chula Vista Marina, and the Living Coast Discovery Center."
+        },
+        {
+          "article": "Chula Vista, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chula_Vista,_California#Climate",
+          "text": "Like the rest of lowland San Diego County, Chula Vista has a semi-arid climate (BSk), with mediterranean characteristics, though the winter rainfall is too low and erratic to qualify as an actual Mediterranean climate.\nWith a moderate climate where the annual averages seldom oscillate much, there has still been a high and a low recorded since the station's inception in 1918. In 1949, the maximum daytime temperature was just once, the lowest on record. Thanks to the maritime moderation, on average the coldest day is at a very mild . Summer nights are warmer than in coastal climates further north, but cooler than in the hot interior. The warmest low on record is in 2016, while the warmest average night between 1991 and 2020 stood at ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 127,
+      "leadWords": 235,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; a scenic location between a bay and mountain foothills is geography, and the rest covers Spanish and Mexican era history",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chula vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 197,
+    "place_id": "gn-1856177",
+    "input": {
+      "place": {
+        "place_id": "gn-1856177",
+        "name": "Nagasaki",
+        "country": "Japan",
+        "subdivision": "Nagasaki",
+        "lat": 32.75,
+        "lon": 129.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagasaki",
+          "url": "https://en.wikipedia.org/wiki/Nagasaki",
+          "text": "Nagasaki (長崎, Nagasaki; Japanese pronunciation: [na.ɡaꜜ.sa.kʲi, na.ŋa-], lit. 'Long Cape'), officially Nagasaki City (長崎市, Nagasaki-shi; [na.ɡa.sa.kʲi̥ꜜ.ɕi, na.ɡa.saꜜ.kʲi̥.ɕi, na.ŋa-]), is the capital and the largest city of Nagasaki Prefecture on the island of Kyushu in Japan.\nFounded by the Portuguese, the port of Nagasaki became the sole port used for trade with the Portuguese and Dutch during the 16th through 19th centuries. The Hidden Christian Sites in the Nagasaki Region have been recognized and included in the UNESCO World Heritage Sites list. Part of Nagasaki was home to a major Imperial Japanese Navy base during the First Sino-Japanese War and Russo-Japanese War. Near the end of World War II, the American atomic bombings of Hiroshima and Nagasaki made Nagasaki the second city in the world to experience a nuclear attack. The city was later rebuilt.\nAs of February 1, 2024, Nagasaki has an estimated population of 392,281, and a population density of 966 people per km2. The total area is 405.86 km2 (156.70 sq mi)."
+        },
+        {
+          "article": "Nagasaki (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nagasaki#Climate",
+          "text": "Nagasaki has the typical humid subtropical climate of Kyūshū and Honshū, characterized by mild winters and long, hot, and humid summers. Apart from Kanazawa and Shizuoka, it is the wettest sizeable city in Japan. In the summer, the combination of persistent heat and high humidity results in unpleasant conditions, with wet-bulb temperatures sometimes reaching . In the winter, however, Nagasaki is drier and sunnier than Gotō to the west, and temperatures are slightly milder than further inland in Kyūshū. Since records began in 1878, the wettest month has been July 1982, with including in a single day, whilst the driest month has been September 1967, with . Precipitation occurs year-round, though winter is the driest season; rainfall peaks sharply in June and July. August is the warmest month of the year. On January 24, 2016, a snowfall of was recorded."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 140,
+      "leadWords": 164,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers port trade history, a naval base, and the atomic bombing and rebuilding only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "nagasaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 200,
+    "place_id": "gn-3632308",
+    "input": {
+      "place": {
+        "place_id": "gn-3632308",
+        "name": "Mérida",
+        "country": "Venezuela",
+        "subdivision": "Mérida",
+        "lat": 8.57899,
+        "lon": -71.16922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mérida, Mérida",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9rida,_M%C3%A9rida",
+          "text": "Mérida, officially known as Santiago de los Caballeros de Mérida, is the capital of the municipality of Libertador and the state of Mérida, and is one of the main cities of the Venezuelan Andes. It was founded in 1558 by Captain Juan Rodríguez Suárez, forming part of Nueva Granada, but later became part of the Captaincy General of Venezuela and played an active role in the War of Independence.\nThe capital city's population is 199,878 inhabitants, and the metropolitan area (including the municipalities of Libertador, Campo Elías, Sucre, and Santos Marquina) reaches 392,751 people (2011 census). The city accounts for 24% of the total population of Mérida State. It is home to the University of Los Andes and the Archdiocese of Mérida. It also has the highest and longest cable car in the world. It is the largest student and tourist center of western Venezuela. The mass transit system (Trolebús Mérida) is available as a means of tourist transport.\nThis city sits on a plateau nestled in the valley of the Chama River, which runs from end to end. The city of Mérida is located at an altitude of 1,600 metres (5,200 feet). Visible from the city is the country's highest summit Pico Bolívar, with an altitude of 4,981 metres (16,342 feet)."
+        },
+        {
+          "article": "Mérida, Mérida (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9rida,_M%C3%A9rida#Climate",
+          "text": "]]\nMérida features a tropical monsoon climate (Köppen: Am), with cooler temperatures than other cities in Venezuela, with dry winters. Though the emission greenhouse gases has caused a rise in temperatures, this has been less, in relative terms, than in other important cities in Venezuela, with readings that vary between 19 °C and , with an overall average of . Precipitation is heavy during the rainy season, from April to November, though the city does receive more sunshine than most cities in the Colombian Andes, since the valley is too narrow for fog to accumulate.\nVenezuela is situated in an inter-tropical zone, so that there is very little temperature variance over the course of a year. The same is true in Mérida—the temperatures recorded in August are normally comparable to those measured under comparable conditions in broad daylight in January.\nOn the other hand, given Mérida's location in the interior of the country, far from the maritime coasts and the influence of the ocean, and its high altitude, the temperature variance over the course of a day is relatively high. Between day and night a difference of more than can be observed; this difference sometimes reaches more than . The maximums are reached during the day, and are usually around , but on rare occasions exceed . The lower limit of daytime temperatures tends to be around .\nSnow can be seen in some Mérida peaks, such as Pico El Águila."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 241,
+      "leadWords": 212,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states no climate mechanism, extreme, or paradox; a plateau in a river valley, altitude, a cable car, and a visible high peak are geography, not a traceable climate clue",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "merida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 201,
+    "place_id": "gn-4006702",
+    "input": {
+      "place": {
+        "place_id": "gn-4006702",
+        "name": "Ensenada",
+        "country": "Mexico",
+        "subdivision": "Baja California",
+        "lat": 31.87149,
+        "lon": -116.60071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ensenada",
+          "url": "https://en.wikipedia.org/wiki/Ensenada",
+          "text": "Ensenada ('inlet', pronounced [enseˈnaða]) is a city in Ensenada Municipality, Baja California, situated on the Pacific Coast of Mexico. Located on Bahía de Todos Santos, the city had a population of 279,765 in 2018, making it the third-largest city in Baja California. The city is an important international trade center and home to the Port of Ensenada, the second-busiest port in Mexico. Ensenada is a major tourist destination, owing to its warm climate and proximity to the Pacific Ocean, and is commonly known as La Cenicienta del Pacífico (\"The Cinderella of the Pacific\").\nEnsenada was founded in 1882, when the small community of Rancho Ensenada de Santos was made the regional capital for the northern partition of the Baja California Territory. The city grew significantly with the proliferation of mines in the surrounding mountains. While the Mexican Revolution curtailed much of Ensenada's expansion, the onset of Prohibition in the United States transformed the city into a popular tourist destination for Americans seeking entertainment and alcohol. Ensenada's reputation as a resort town was cemented by the 1950s and 1960s, which saw a construction boom and the city's rise in international prominence outside of North America.\nToday, Ensenada is a major economic and cultural hub for Baja California. The city is home to numerous universities, like the Ensenada Institute of Technology and the Autonomous University of Baja California, Ensenada. Ensenada is an important biotechnology hub and is home to numerous research institutions, like the Ensenada Center for Scientific Research. The city is a member of the UNESCO Creative Cities Network."
+        },
+        {
+          "article": "Ensenada (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ensenada#Climate",
+          "text": "The average rainfall is per year, falling mainly in the winter months. Ensenada has a mild semi-arid climate (Köppen BSk), much like the rest of northwestern Baja California. During the colder months from November to February, rainfall is scarce and temperatures average . On the other hand, the warmer months from June to September are the driest, and during this time maintain an average temperature of .\nFor Ensenada's warm summer coastal location, the city's climate is greatly affected by the offshore cold California Current. Due to the current, the late summer and early fall seasons are typically the warmest periods for the city. Santa Ana winds – observed in much of Southern California as well – are responsible for temperature rises at any time of the year. During Santa Anas, wind direction changes and brings warm air from the interior to the coast. Snowfall is rare with the last recent one in January 2007, when the hills south of the city received small amounts of snowfall.\nSimilar to the South Coast of California, Ensenada experiences the periodic May Gray and June Gloom marine layer effects."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 186,
+      "leadWords": 258,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract offers only a bare 'warm climate' label with no mechanism, extreme, or paradox; a bare classification is not enough for a non-redundant climate clue",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox beyond the warm-climate label in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ensenada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 202,
+    "place_id": "gn-5392900",
+    "input": {
+      "place": {
+        "place_id": "gn-5392900",
+        "name": "Santa Ana",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74557,
+        "lon": -117.86783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Ana, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Ana,_California",
+          "text": "Santa Ana (Spanish for 'Saint Anne') is a city in and the county seat of Orange County, California, United States. Located in the Greater Los Angeles region of Southern California, the city's population was 310,227 at the 2020 census. As of 2023, Santa Ana is the third most populous city in Orange County (after Anaheim and Irvine), the 14th-most populous city in California, and the 65th most populous city in the United States. Santa Ana is a major regional economic and cultural hub for the Orange Coast.\nIn 1810, the Spanish governor of California granted Rancho Santiago de Santa Ana to José Antonio Yorba. Following the Mexican War of Independence, the Yorba family rancho was enlarged, becoming one of the largest and most valuable in the region and home to a diverse Californio community. Following the American Conquest of California, the rancho was sold to the Sepúlveda family, who subsequently lost their land claim. In 1869, William H. Spurgeon then purchased the rancho and formally founded the modern city of Santa Ana.\nApproximately four-fifths Hispanic or Latino, Santa Ana has been characterized by The New York Times as the \"face of a new California, a state where Latinos have more influence in everyday life—electorally, culturally and demographically—than almost anywhere else in the country.\""
+        },
+        {
+          "article": "Santa Ana, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Santa_Ana,_California#Climate",
+          "text": "Santa Ana experiences a hot semi-arid climate (Köppen: BSh), with hot, dry summers and mild winters with moderate rainfall. Rainfall averages about per year, most of which falls from November through April. There are an average of 35 days with measurable precipitation annually.\nThe record high temperature for Santa Ana was on June 14, 1917. The record low temperature was on January 12, 1989. There are an average of 30.1 days with highs of or higher.\nThe wettest \"rain year\" in Santa Ana was from July 1940 to June 1941 with , and the driest was from July 2017 to June 2018 with a mere . The most rainfall in one month was in February 1998. The most rainfall in 24 hours was on February 16, 1927."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 127,
+      "leadWords": 213,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers a Greater Los Angeles location, a Spanish rancho grant, and the city's founding purchase only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "santa ana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 203,
+    "place_id": "gn-5729485",
+    "input": {
+      "place": {
+        "place_id": "gn-5729485",
+        "name": "Gresham",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.49818,
+        "lon": -122.43148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gresham, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Gresham,_Oregon",
+          "text": "Gresham ( GRESH-əm) is a city in the Willamette Valley, Located in Multnomah County in the U.S. state of Oregon, bordered by Portland to the northwest and partially in the southwest. It was first settled in the early 1850s by the Powell brothers. It remained unincorporated until 1905; it was named after Walter Quintin Gresham, an American Civil War general and United States Secretary of State.\nThe early economy of the city was primarily supported by agriculture, and by the mid-20th century, the city saw a population boom, increasing from 4,000 residents to more than 10,000 between 1960 and 1970. The population was 114,247 at the 2020 census, making it the second most populous city in the county and the fourth-most populous city in Oregon. Gresham is an economic center for eastern Multnomah County."
+        },
+        {
+          "article": "Gresham, Oregon (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gresham,_Oregon#Climate",
+          "text": "Gresham, like most of western Oregon, has a Mediterranean climate (Köppen Csb/Csa). Summers feature pleasant mornings, very warm and sunny afternoons and only very occasional rainfall, whereas winters are cloudy with cool to cold afternoons, occasional frosts, and frequent long rainy periods."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 42,
+      "leadWords": 134,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers a valley location next to a larger city, early settlers, farming, and a population boom only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gresham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 204,
+    "place_id": "gn-610611",
+    "input": {
+      "place": {
+        "place_id": "gn-610611",
+        "name": "Aktobe",
+        "country": "Kazakhstan",
+        "subdivision": "Aktobe",
+        "lat": 50.27969,
+        "lon": 57.20718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aktobe",
+          "url": "https://en.wikipedia.org/wiki/Aktobe",
+          "text": "Aktobe (Kazakh: Ақтөбе, romanized: Aqtöbe, pronounced [ɑqtɵbʲé] ; Russian: Актобе) is a major city in western Kazakhstan, located on the river Ilek. It serves as the administrative center of the Aktobe Region and is an important cultural, economic, and industrial hub. As of 2023, the city had a population of 560,820, making it the fourth-largest city in Kazakhstan, and the largest in the western part of the country. It covers an expansive area of approximately 428.469 km2 and is strategically located to serve as a regional center for trade and commerce.\nAktobe is known for its natural resources, with two significant water reservoirs, Aktobe and Sazdy, supplying the city and surrounding areas. The city's economy is driven primarily by industries such as coal mining, metallurgy, and the extraction and processing of oil and gas. These industries have contributed to Aktobe's growth, transforming it into a vital center for energy production and heavy industry in Kazakhstan.\nAktobe's infrastructure has developed alongside its industrial growth. It is well-connected by road and rail to other major cities in Kazakhstan and neighboring countries. The city is undergoing rapid urbanization, with plans for further expansion and development. The agglomeration of Aktobe and surrounding settlements is expected to increase significantly in the coming years, with a projected population of around 1.3 million people. In addition to its industrial significance, Aktobe is a growing cultural center. It hosts a variety of cultural events and its educational institutions, including universities and technical schools, have contributed to its development as a center for higher learning and innovation."
+        },
+        {
+          "article": "Aktobe (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Aktobe#Climate",
+          "text": "Aktobe has a humid continental climate (Köppen climate classification Dfa), with wide seasonal variations in temperature. In winter, temperatures can reach a low of , with a daily average minimum of . Summer temperatures can reach a high of , with an average maximum temperature of . The weather can change rapidly, especially during spring and autumn (the especially windy days in March when the weather changes are known locally as the Бес Қонақ, or \"Five Guests\"). Precipitation usually occurs in early spring and late autumn/early winter, and is otherwise sporadic throughout the year. Overall, Aktobe receives about of precipitation per year. The seasonal swings are exceptionally strong for the latitude due to its position right at the centre of the massive Eurasian landmass."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 124,
+      "leadWords": 258,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; reservoirs supplying water and coal, metal, oil, and gas industries are resources and economy, not climate",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "aktobe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 205,
+    "place_id": "gn-1267579",
+    "input": {
+      "place": {
+        "place_id": "gn-1267579",
+        "name": "Kashipur",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.21399,
+        "lon": 78.95693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kashipur, Uttarakhand",
+          "url": "https://en.wikipedia.org/wiki/Kashipur,_Uttarakhand",
+          "text": "Kashipur (Hindi: Kāshīpur [kaːʃiːpʊr]) is a city of Udham Singh Nagar district in the Indian state of Uttarakhand, and one of its seven subdivisions. Located in the western part of Udham Singh Nagar district, it is Kumaun's third most populous city and the sixth most populous in Uttarakhand. Its ancient name was \"Govisana\". According to the 2011 Census of India, the population is 121,623 for the city of Kashipur and 283,136 for Kashipur Tehsil. Kashipur also has IIM Kashipur, one of the thirteen Indian Institutes of Managements the government has set up during the Eleventh Five-year Plan.\nHistorically part of Kumaun, Kashipur is named after Kashinath Adhikari, the founder of the township and governor of the pargana, one of the officers of the Chand Kings of Kumaun in the 16th and 17th centuries. Kashipur remained under the rule of Chand Kings until the latter half of eighteenth century until Nand Ram, the then governor of Kashipur, became practically independent.\nKashipur was ceded to British in 1801, after which, it played a major role in the conquest of Kumaon during the Anglo-Gorkha war in 1815. After Kumaun was ceded to the British under the Treaty of Sugauli, Kashipur became the headquarters of Terai district in the Kumaon division. The Municipality of Kashipur was established in 1872, and was upgraded to a Municipal Corporation on 26 January 2013."
+        },
+        {
+          "article": "Kashipur, Uttarakhand (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kashipur,_Uttarakhand#Climate",
+          "text": "Kashipur has been ranked 19th best “National Clean Air City” under (Category 3 population under 3 lakhs cities) in India.\nLocation\nGeology\nGeologically, Kashipur is dominated by the Terai tract, which runs horizontally through the city from Jaspur in the west, passing through the city center, to Bajpur and Rudrapur in the east. Terai formation consists of clays, sandy clays,\nfine to medium sand and occasional gravels. In this formation there is a dominance of clayey successions over sandy horizons.\nClimate\nKashipur has a humid subtropical climate (Köppen: Cwa), like much of the Indo-Gangetic Plains to its south, with average maximum temperatures in summer (June) being around ; and in winter (January) around . The driest month is November, with 5 mm of rain. With an average of 374 mm, the most precipitation falls in July. There is a difference of 369 mm of precipitation between the driest and wettest months. During the year, the average temperatures vary by 17.1 °C. The main seasons are summer from March to June, the monsoon season from July to November and winter from December to February.\nThe climate of Kashipur is characterized by relatively high temperatures and evenly distributed precipitation throughout the year. In summer, Kashipur is largely under the influence of moist, maritime airflow from the western side of the subtropical anticyclonic cells over low-latitude ocean waters. Temperatures are high and can lead to warm, oppressive nights. Summers are usually somewhat wetter than winters, with much of the rainfall coming from convectional thunderstorm activity; tropical cyclones also enhance warm-season rainfall in some regions. The coldest month is usually quite mild, although frosts are not uncommon, and winter precipitation is derived primarily from frontal cyclones along the polar front.\nBut in the recent years kashipur has witnessed a drastic change in weather and its climatic conditions due to increase in construction in the nearby regions also due to overpopulation and increase in demand by people for the region's resources. due to this we have seen that the trees are cut due to which average temperature is increasing. also the most popular lake in the girital region has alao dried up."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 357,
+      "leadWords": 226,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers an ancient name, a founder from the 16th and 17th centuries, and cession to the British only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kashipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 206,
+    "place_id": "gn-1812545",
+    "input": {
+      "place": {
+        "place_id": "gn-1812545",
+        "name": "Dongguan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.01797,
+        "lon": 113.74866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dongguan",
+          "url": "https://en.wikipedia.org/wiki/Dongguan",
+          "text": "Dongguan  is a prefecture-level city in central Guangdong Province, China. An important industrial city in the Pearl River Delta, Dongguan borders the provincial capital of Guangzhou to the north, Huizhou to the northeast, Shenzhen to the south, and the Pearl River to the west. It is part of the Pearl River Delta built-up (or metro) area with more than 65.57 million inhabitants as of the 2020 census spread over nine municipalities across an area of 19,870 square kilometers (7,670 sq mi).\nDongguan's city administration is considered especially progressive in seeking foreign direct investment. Dongguan ranks behind only Shenzhen, Shanghai and Suzhou in exports among Chinese cities, with $65.54 billion in shipments. It is also home to one of the world's largest shopping malls, the New South China Mall, which is seeing increased activity. The city is geographically and thus culturally Cantonese in the Weitou form as well as culturally Hakka in the prefectures of Fenggang and Qingxi; the majority of the 21st century population speaks Mandarin due to the large influx of economic migrants from other parts of China. The city is home to several universities, including Guangdong University of Science and Technology, Guangdong Medical University and Dongguan University of Technology."
+        },
+        {
+          "article": "Dongguan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dongguan#Climate",
+          "text": "Dongguan has a dry-winter humid subtropical climate (Köppen climate classification: Cwa), with abundant rainfall over the year. It lies just south of the Tropic of Cancer. The average temperature is throughout the year with average rainfall of . With monthly percent possible sunshine ranging from 23 percent in March to 57 percent in October, the city receives 1892 hours of bright sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 63,
+      "leadWords": 201,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location, exports, a large mall, languages and universities, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dongguan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 207,
+    "place_id": "gn-2633691",
+    "input": {
+      "place": {
+        "place_id": "gn-2633691",
+        "name": "Wolverhampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.58547,
+        "lon": -2.12296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolverhampton",
+          "url": "https://en.wikipedia.org/wiki/Wolverhampton",
+          "text": "Wolverhampton (  WUUL-vər-HAMP-tən) is a city and metropolitan borough in the West Midlands, England. Located around 12 miles (19 km) north-west of Birmingham, it forms the north-western part of the West Midlands conurbation, with the towns of Willenhall and Walsall to the east, and the towns of Sedgley and Dudley to the south. The population in 2021 was 263,700, making it the third largest city in the county after Birmingham and Coventry.\nHistorically in Staffordshire, Wolverhampton grew as a market town specialising in the wool trade. During the Industrial Revolution, it became a major centre for coal mining, steel production, lock making, and automotive manufacturing; the economy of the city is still based on engineering, including a large aerospace industry and a service sector. The city is home to the University of Wolverhampton. A town for most of its history, it gained city status in 2001. The M6 motorway runs just outside the city's east and north-east borders, while the M54 motorway starts to the north and links the city with Telford. The city is served by Wolverhampton station, while the western terminus of the West Midlands Metro network is also located in the city.\nWolverhampton has produced many notable musicians and artists. It is known in the sports world as the home of EFL Championship football team Wolverhampton Wanderers FC, which plays at Molineux Stadium. As a result of experiencing a heavy influx of Indian immigrants since the 1950s, the city is home to the largest percentage of Sikhs in England, who have been influential in shaping its identity; it also hosts a higher percentage of Hindus than the national average."
+        },
+        {
+          "article": "Wolverhampton (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wolverhampton#Climate",
+          "text": "Like the rest of central England, Wolverhampton's climate is oceanic (Köppen Cfb) and therefore quite temperate, with average maximum temperatures in July being around , and with the maximum daytime temperature in January being around .\nThe Met Office's nearest observation station is at Penkridge, about north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 50,
+      "leadWords": 272,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location, industry, football and immigrant communities, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wolverhampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 208,
+    "place_id": "gn-3082914",
+    "input": {
+      "place": {
+        "place_id": "gn-3082914",
+        "name": "Tychy",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.13717,
+        "lon": 18.96641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tychy",
+          "url": "https://en.wikipedia.org/wiki/Tychy",
+          "text": "Tychy (Polish pronunciation: [ˈtɨxɨ] ; ) is a city in Silesia in southern Poland, approximately 20 kilometres (12 mi) south of Katowice. Situated on the southern edge of the Upper Silesian industrial district, the city borders Katowice to the north, Mikołów to the west, Bieruń to the east and Kobiór to the south. The Gostynia river, a tributary of the Vistula, flows through Tychy.\nSince 1999, Tychy has been located within the Silesian Voivodeship. Tychy is also one of the founding cities of the Metropolitan Association of Upper Silesia, a pan-Silesian economic and political union formed with the eventual aim of bringing the most populous Silesian areas under a single administrative body.\nTychy is well known for its brewing industry and the Tyskie brand of beer, which dates back to the 17th century. Since 1950, Tychy has grown rapidly, mainly as a result of post-war socialist planning policies enacted to disperse the population of industrial Upper Silesia. The city is also known as the home of the accomplished ice hockey club GKS Tychy."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 173,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location on a river, brewing history and post-war growth, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tychy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 209,
+    "place_id": "gn-3454690",
+    "input": {
+      "place": {
+        "place_id": "gn-3454690",
+        "name": "Paulínia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.76111,
+        "lon": -47.15417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paulínia",
+          "url": "https://en.wikipedia.org/wiki/Paul%C3%ADnia",
+          "text": "Paulínia is a Brazilian municipality in the interior of the state of São Paulo. It is located in the northwest of the São Paulo Macrometropolis and is about 119 km from the state capital. It occupies an area of 139 km2 and in 2022 Census, IBGE estimated its population at 110,537. It was emancipated on 28 February 1964, but its foundation dates back to the beginning of the 20th century. The town is named after José Paulino Nogueira, a well-known farmer in the Campinas region, the municipality from which Paulínia emancipated and who lent his name to the railroad station around which the town developed. It is located in the Rio-São Paulo axis, serving as a link between Greater São Paulo and cities in the area, such as Cosmópolis, Artur Nogueira, and Conchal.\nIt is known for hosting one of the largest petrochemical poles in Latin America, centered on the Paulínia Refinery (Replan). Thanks to Replan and the petrochemical pole, which are based in the northern part of the city, Paulínia has the seventh highest per capita income in Brazil. Also due to the pole, the city presents high levels of ozone pollution, mainly in the district of Betel and in the Replan region, where companies such as Rhodia, Purina, Shell, Syngenta, and Petrobras are located. Paulínia stands out for its intense population growth, the largest in the Metropolitan Region of Campinas. Historically, the service sector has not been very important for the municipality, but recently it has been developing because of projects like Paulínia Magia do Cinema (English: Paulínia Magic of Cinema).\nSince 2019, Paulínia has had a new source of income and employment for the city and the Metropolitan Region of Campinas. The technology sector has been growing in Paulínia with the arrival of ASCENTY, a multinational company specialized in the field of \"Data Centers\", with data processing centers and branches in Brazil, Chile, Mexico and Colombia, thus opening the door for the arrival of two other companies in the city, CloudHQ and Amazon.\nThe municipality is formed by the city of Paulínia and the district of Betel, in the eastern region. Paulínia is part of the so-called Extended Metropolitan Complex, which exceeds 29 million inhabitants, approximately 75% of the population of the entire state of São Paulo. The metropolitan regions of Campinas and São Paulo already form the first megalopolis in the southern hemisphere, uniting 65 municipalities that together are home to 12% of the Brazilian population."
+        },
+        {
+          "article": "Paulínia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Paul%C3%ADnia#Climate",
+          "text": "The city of Paulínia belongs to the climate zone designated by the letter C, with climate type Cwa, according to the Köppen-Geiger climate classification, and the climate is considered subhumid temperate, with rains concentrated in the summer months, with a decrease in its frequency in the winter, when the relative humidity of the air drops, especially during the afternoon, with rates below 30% or even close to 20%. Due to the low concentration of buildings, heat islands rarely occur, so the thermometers remain below the 40 °C mark in most of the city, even in the hottest months of the year.\nAccording to data from the Integrated Center for Agrometeorological Information (CIIAGRO/SP), referring to the period from December 1993 to January 2011 and from February 2016, the absolute minimum temperature recorded in Paulinia was 0 °C in June 1994, on 26 and 27 June, and the highest reached 40.6 °C on 8 October 2020. The highest rainfall accumulations recorded in 24 hours, equal to or greater than 100 mm, were 119.4 mm on 1 December 2003, 118.6 mm on 17 November 2003, and 103.4 mm on 22 December 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 189,
+      "leadWords": 410,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states high ozone pollution near the refinery, which is air pollution, not a climate mechanism, extreme, or paradox; no weather pattern, seasonal rhythm, or climate record is described",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract, not an ozone pollution level"
+    },
+    "banned_terms": [
+      {
+        "term": "paulinia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 210,
+    "place_id": "gn-3723779",
+    "input": {
+      "place": {
+        "place_id": "gn-3723779",
+        "name": "Jacmel",
+        "country": "Haiti",
+        "subdivision": "Sud-Est",
+        "lat": 18.23569,
+        "lon": -72.53686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jacmel",
+          "url": "https://en.wikipedia.org/wiki/Jacmel",
+          "text": "Jacmel (French pronunciation: [ʒakmɛl] ; Haitian Creole: Jakmèl) is a commune in southern Haiti previously founded by the Spanish in 1504 before the relocation of the Dominicans to the eastern side of the island after the Devastations of Osorio and repopulated by the French in 1698. It is the capital of the department of Sud-Est, 24 miles (39 km) southwest of Port-au-Prince across the Tiburon Peninsula, and had a population of 221,965 at the 2024 Census. The town's name is derived from its indigenous Taíno name of Yaquimel. In 1925, Jacmel was dubbed as the \"City of Light,\" becoming the first in the Caribbean to have electricity.\nThe city is known for its well-preserved Gingerbread houses built in the early 19th century. The town has been tentatively accepted as a World Heritage Site. It sustained damage in the 2010 Haiti earthquake.\nJacmel is home to the country's leading film school, the Ciné Institute."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 153,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives founding dates, gingerbread houses and a film school, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jacmel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 211,
+    "place_id": "gn-3868707",
+    "input": {
+      "place": {
+        "place_id": "gn-3868707",
+        "name": "Valdivia",
+        "country": "Chile",
+        "subdivision": "Los Ríos Region",
+        "lat": -39.81422,
+        "lon": -73.24589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valdivia",
+          "url": "https://en.wikipedia.org/wiki/Valdivia",
+          "text": "Valdivia (Spanish pronunciation: [balˈdiβja]; Mapuche: Ainil) is a city and commune in southern Chile, administered by the Municipality of Valdivia. The city is named after its founder, Pedro de Valdivia, and is located at the confluence of the Calle-Calle, Valdivia, and Cau-Cau Rivers, approximately 15 km (9 mi) east of the coastal towns of Corral and Niebla. Since October 2007, Valdivia has been the capital of Los Ríos Region and is also the capital of Valdivia Province. The 2024 Chilean census recorded 170,043 inhabitants (Valdivianos) in the commune of Valdivia. The main economic activities of Valdivia include tourism, wood pulp manufacturing, forestry, metallurgy, and beer production. The city is also the home of the Austral University of Chile, founded in 1954, the Centro de Estudios Científicos and one of Chile's three environmental courts.\nThe city of Valdivia and the Chiloé Archipelago were once the two southernmost outliers of the Spanish Empire. From 1645 to 1740, the city depended directly on the Viceroyalty of Peru, which financed the building of the Valdivian fort system that turned Valdivia into one of the most fortified cities of the New World. In the mid-19th century, Valdivia was the port of entry for German immigrants who settled in the city and surrounding areas.\nIn 1960, Valdivia was severely damaged by the Great Chilean earthquake, the most powerful earthquake ever recorded, at magnitude 9.5. The earthquake caused c. 2 m of subsidence around Valdivia leaving large areas of former pastures and cultivated fields permanently flooded. Today there are various protected wetlands within the urbanised area of Valdivia as well as in its outskirts."
+        },
+        {
+          "article": "Valdivia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Valdivia#Climate",
+          "text": "Valdivia has an oceanic climate (Köppen Cfb) bordering on a Mediterranean climate (Köppen Csb). The natural vegetation of the region is the Valdivian temperate rainforest.\nDuring the summer months (December, January and February) the average temperature is about , while in winter the temperature descends to . The annual average temperature for Los Ríos Region is , while the mean temperature amplitude is 8.8 °C (47.8 °F) and the daily is 11 °C (51.8 °F). The effects of saline water entering the water supply of Valdivia were particularly noticeable in March 2015 when there was a surge in complains about the taste of the water. The saltwater in the rivers near Valdivia during autumn is expected to increase in the future. Estimations indicate that whenever the sum of the water discharge of Cruces and Calle-Calle rivers falls below saltwater reaches the supply site at Cuesta Soto."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 146,
+      "leadWords": 267,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a 1960 earthquake, subsidence and permanently flooded fields, which are geologic effects of a one-off event, not climate; no climate mechanism, extreme, or paradox is stated",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract, not an earthquake and its flooding"
+    },
+    "banned_terms": [
+      {
+        "term": "valdivia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 212,
+    "place_id": "gn-3870011",
+    "input": {
+      "place": {
+        "place_id": "gn-3870011",
+        "name": "Temuco",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -38.73628,
+        "lon": -72.59738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temuco",
+          "url": "https://en.wikipedia.org/wiki/Temuco",
+          "text": "Temuco (Spanish pronunciation: [teˈmuko]) is a city and commune, capital of the Cautín Province and of the Araucanía Region in southern Chile. The city is located 670 kilometres (416 miles) south of Santiago. The city grew out from a fort of the same name established in 1881 during Chile's invasion of Araucanía. Temuco lies in the middle of the historic Araucanía, a traditional land of the indigenous Mapuche.\nTemuco's central place in Araucanía with easy access to the Andean valleys, lakes and coastal areas makes it a hub for tourism, agricultural, livestock and forestry operations as well as a communication and trade centre for the numerous small towns of Araucanía. Temuco has recently been regarded as a university city as it houses two large universities: University of the Frontier and Temuco Catholic University. Nobel laureates Gabriela Mistral and Pablo Neruda both lived in Temuco for some time."
+        },
+        {
+          "article": "Temuco (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Temuco#Climate",
+          "text": "Climatologically, Temuco lies at the border of Chile's central valley Mediterranean region, albeit with a Mediterranean climate (Köppen climate classification: Csb). Through the year, cyclonic and anticyclonic influences alternate, with a distinct drier summer period (although not as dry as Santiago or other central valley cities, receiving just enough precipitation to avoid a Mediterranean climate classification). Its mean annual temperature is , with highest median during the warmest month of and lowest median during the coldest month of (Ciren-Corfo, 1992). Annual mean rain during 1961-1990 (Dirección Meteorológica de Chile, 1991) was (Capelli de Steffens et al., 1997)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 97,
+      "leadWords": 147,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location, a fort origin, tourism access and universities, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "temuco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 214,
+    "place_id": "gn-1270668",
+    "input": {
+      "place": {
+        "place_id": "gn-1270668",
+        "name": "Guntur",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.29974,
+        "lon": 80.45729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guntur",
+          "url": "https://en.wikipedia.org/wiki/Guntur",
+          "text": "Guntur (), natively spelt as Gunturu, is a city in the Indian state of Andhra Pradesh and the administrative headquarters of Guntur district. The city is part of the Andhra Pradesh Capital Region and is located on the Eastern Coastal Plains approximately 14 miles (23 km) south-west of the state capital Amaravati. Guntur is the second largest by area in the state with 159.46 square kilometres (61.57 square miles) of land. According to data from the 2011 Census of India, Guntur had a population of 743,354 in that year, making it the third-most-populous city in the state,. The city is the heartland of the state, located in the center of Andhra Pradesh and making it a central part connecting different regions.\nThe city is home to numerous state government offices and agencies. being part of the district capital and being in close proximity to the state capital Amaravati. The city is about 1100 miles south of the national capital New Delhi. It is classified as a Y-grade city as per the Seventh Central Pay Commission. It is the 24th most densely populated city in the world and 11th in India. Guntur was estimated to have population of around 0.9 million in 2021 and by the year 2026 the city has 1.1 million wider metropolitan urban region population.\nGuntur serves as a major hub for the export of chilli, cotton and tobacco, and has the largest chilli-market yard in Asia. It is also a major hub for transport, education, medicine and commercial activities in the state. Ancient temples and sites near the city include Kondaveedu Fort, Amareswaraswamy temple, and Undavalli Caves, and Sri Bramarambha Malleswara Swamy Temple at Pedakakani."
+        },
+        {
+          "article": "Guntur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guntur#Climate",
+          "text": "According to the Köppen-Geiger climate classification system, the climate in Guntur is tropical with dry winters (Aw). The average temperature is warm-to-hot year round. The summer season, especially May and June, has the highest temperatures, which are usually followed by monsoon rains. During the winter season, running from November to February, the weather is usually dry with little-to-no rainfall. The wettest month is July. The average annual temperature is and annual rainfall is about . Rain storms and cyclones are common in the region during the rainy season, which starts with the monsoons in early June. Cyclones may occur any time of the year but occur most commonly between May and November.\nGuntur has been ranked 11th best “National Clean Air City” under (Category 2 3-10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 130,
+      "leadWords": 278,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives coastal plains location, population and chilli, cotton and tobacco exports, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "guntur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 216,
+    "place_id": "gn-1807681",
+    "input": {
+      "place": {
+        "place_id": "gn-1807681",
+        "name": "Huainan",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 32.62639,
+        "lon": 116.99694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huainan",
+          "url": "https://en.wikipedia.org/wiki/Huainan",
+          "text": "Huainan (Chinese: 淮南; pinyin: Huáinán) is a prefecture-level city with 3,033,528 inhabitants as of the 2020 census in north-central Anhui province, China. It is named for the Han-era Principality of Huainan. It borders the provincial capital of Hefei to the south, Lu'an to the southwest, Fuyang to the west, Bozhou to the northwest, Bengbu to the northeast and Chuzhou to the east. Huainan is one of the core cities of Hefei Metropolitan Circle and is known for its coal industry and thermal power plants. Its built-up area made of 4 urban districts (all but Panji not yet conurbated) and Fengtai County largely being urbanized, was home to 1,868,944 inhabitants as of 2020. Its city flower is the Chinese rose (Rosa chinensis) and its city tree is the Old-World Plane Tree (Platanus orientalis). It is also considered to be the hometown and birthplace of tofu."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives borders, coal industry, power plants and tofu origin, but no climate mechanism, extreme, or paradox; a city flower and city tree are not climate facts",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "huainan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 217,
+    "place_id": "gn-1808770",
+    "input": {
+      "place": {
+        "place_id": "gn-1808770",
+        "name": "Hebi",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 35.73231,
+        "lon": 114.28616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hebi",
+          "url": "https://en.wikipedia.org/wiki/Hebi",
+          "text": "Hebi (simplified Chinese: 鹤壁; traditional Chinese: 鶴壁; pinyin: Hèbì [xɤ̂.pî]; postal: Hopi) is a prefecture-level city in northern Henan province, China. Situated in mountainous terrain at the edge of the Shanxi plateau, Hebi is about 25 miles (40 km) south of Anyang, 40 miles (64 km) northeast of Xinxiang and 65 miles (105 km) north of Kaifeng.\nAs of the 2020 census, its population was 1,565,973 inhabitants and in the 2018 estimate 574,000 lived in the built-up (or metro) area made of Qibin District and Qi County largely conurbated. One can notice that Shancheng District and Heshan District are for the moment, part of another built-up area of 372,600 inhabitants close to Anyang.\nHebi has several coal mines. The city is also home to the Hebi New Area, an economic development zone."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives mountainous terrain at the edge of a plateau, distances and coal mines, but landform alone is not a climate mechanism, extreme, or paradox; no weather effect is described",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract, showing how the terrain shapes the weather"
+    },
+    "banned_terms": [
+      {
+        "term": "hebi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
