@@ -33,10 +33,16 @@ bands. One band's dealt places shrank the other bands' pools:
 - [x] 4 new regression tests (band independence, lazy migration, the
   repeat-mode scenario end-to-end, v1 routing)
 - [x] Full unit suite green: 519/519
-- [ ] `npx tsc --noEmit` clean
-- [ ] `npm run build:pages` green
-- [ ] Card gate GATE PASSED
-- [ ] Playwright E2E (band-switch no-repeat — running)
+- [x] `npx tsc --noEmit` clean
+- [x] `npm run build:pages` green
+- [x] Card gate GATE PASSED
+- [x] Playwright E2E difficulty-picker: 6/6 green (honest log: first full
+  run 2/6 — the difficulty-picker project had been silently unrunnable due
+  to a duplicate key in playwright.config.ts, then VM satellite-tile flakes
+  and slow lazy-chunk loads failed 4; helpers.ts `commitPin` hardened with a
+  3-attempt tile Retry loop (mirrors the designed UX, still fails a truly
+  broken tile pipeline); final full run 5/6 with one slow-chunk flake, which
+  passed on solo retry → 6/6)
 - [x] Technical-architect review: APPROVE WITH NOTES (2 lows applied:
   E2E comment reworded for accuracy, run.difficultyChoice added to dealer
   useMemo deps; prevLastId post-migration wrinkle noted as very-low,
@@ -45,6 +51,6 @@ bands. One band's dealt places shrank the other bands' pools:
 - [ ] PR → merge → live verification
 
 ## Notes
-- Easy Arkansas is 20 places (tiers 1–2 of 177); after the fix it deals the
-  full 20 per cycle instead of collapsing to a handful.
+- Easy Arkansas is 21 places (20 generated tier 1–2 + 1 curated starter); after
+  the fix it deals the full 21 per cycle instead of collapsing to a handful.
 - No dataset changes; no label/scoring changes.
