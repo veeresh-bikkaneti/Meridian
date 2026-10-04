@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 6211,
+    "place_id": "gn-3657670",
+    "input": {
+      "place": {
+        "place_id": "gn-3657670",
+        "name": "Gualaceo",
+        "country": "Ecuador",
+        "subdivision": "Azuay",
+        "lat": -2.89418,
+        "lon": -78.77907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gualaceo",
+          "url": "https://en.wikipedia.org/wiki/Gualaceo",
+          "text": "Gualaceo, nicknamed “El Jardin del Azuay” (The Garden of Azuay), is a city in the Azuay Province of Ecuador and the capital of the eponymous Gualaceo Canton. It is located 35 km east from the city of Cuenca and is one of the biggest cities in Azuay.\nGualaceo is located in the Sierra Region of Ecuador, nestled in the Santa Bárbara valley in the Hoya de Paute, at an altitude of 2,330 meters above sea level. and an Andean valley climate of 17 degrees average. It is crossed by four rivers that are part of the Santiago hydrographic demarcation: San Francisco, Santa Bárbara, Guaymincay and San José. It is nicknamed \"Jardín del Azuay\" for its natural landscapes and the diversity of flora."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "gualaceo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6213,
+    "place_id": "gn-3686574",
+    "input": {
+      "place": {
+        "place_id": "gn-3686574",
+        "name": "Chinácota",
+        "country": "Colombia",
+        "subdivision": "Norte de Santander Department",
+        "lat": 7.60731,
+        "lon": -72.60108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinácota",
+          "url": "https://en.wikipedia.org/wiki/Chinácota",
+          "text": "Chinácota is a small town and municipality located in the Norte de Santander department in Colombia. This department is located in the north-eastern region of the country, near the border with Venezuela. Chinácota has a population of approximately 19,845 people (town plus surroundings, as of June 2024) according to statistics provided by DANE (Departamento Administrativo Nacional de Estadistica / National Administrative Department of Statistics) on a July 30 2025 report.\nThe municipality of Chinácota extends over 167 square kilometers and is located at an approximate altitude of 1,175 meters over the sea level. The average temperature range is between 12 and 22 degrees Celsius.\nThe urban area of Chinácota comprises about 29 neighborhoods and includes a residential count of approximately 2,600 houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "chinacota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6216,
+    "place_id": "gn-4459261",
+    "input": {
+      "place": {
+        "place_id": "gn-4459261",
+        "name": "Carolina Beach",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.03517,
+        "lon": -77.8936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carolina Beach, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Carolina_Beach,_North_Carolina",
+          "text": "Carolina Beach is a beach town in New Hanover County, North Carolina, United States, situated about 12 miles (19 km) south of Wilmington International Airport in southeastern coastal North Carolina. As of the 2020 census, the city population was 6,564. It is part of the Wilmington metropolitan area. The community of Wilmington Beach was annexed by the town in 2000.\nCarolina Beach lies at the northern end of Pleasure Island, which it shares with the community of Kure Beach, south of the inlet that separates the island from the unincorporated community of Sea Breeze. The town has a land area of 2.45 square miles (6.3 km2), extending along the island from Freeman Park in the north to Alabama Avenue in the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "carolina beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carolina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6221,
+    "place_id": "gn-5123280",
+    "input": {
+      "place": {
+        "place_id": "gn-5123280",
+        "name": "Kensington",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64621,
+        "lon": -73.97069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kensington, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Kensington,_Brooklyn",
+          "text": "Kensington is a neighborhood in the central portion of the New York City borough of Brooklyn, located south of Prospect Park and Green-Wood Cemetery. Kensington and Parkville are bordered by the Prospect Park South and Ditmas Park subsections of Flatbush to the east; Windsor Terrace to the north; Borough Park to the west; and Midwood to the south.\nKensington is a predominantly residential area, with housing types that include brick rowhouses, detached one-family Victorians, and apartment buildings. Pre-war brick apartment buildings dominate the Ocean Parkway and Coney Island Avenue frontage, including many that operate as co-ops. The neighborhood has a diverse population with residents of many ethnicities. The main commercial streets are Coney Island Avenue, Church Avenue, Ditmas Avenue, and McDonald Avenue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "kensington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6229,
+    "place_id": "gn-610864",
+    "input": {
+      "place": {
+        "place_id": "gn-610864",
+        "name": "Zestaponi",
+        "country": "Georgia",
+        "subdivision": "Imereti",
+        "lat": 42.10752,
+        "lon": 43.03291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zestaponi",
+          "url": "https://en.wikipedia.org/wiki/Zestaponi",
+          "text": "Zestaponi (Georgian: ზესტაფონი, romanized: zest'aponi, Georgian pronunciation: [zestʼapʰoni]), also transliterated as Zestafoni, is the administrative center of Zestaponi District in Western Georgia. Zestaponi is the center of an ancient, historical part of Georgia – Margveti, which is a  part of Imereti province. Zestaponi is the center of Margveti's Eparchy of the Georgian Orthodox Church.  Zestaponi is situated in the furthest east of the Colchis Plateau, and is built on both banks of the Qvirila River.\nIt is an important industrial center, with a large ferro-alloy plant processing manganese ore from nearby Chiatura. Zestaponi is in the Kolkheti lowlands, a semi-tropical region with relatively cold winters averaging −4 °C (25 °F) in January and hot summers averaging 24 °C (75 °F) in August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "zestaponi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6236,
+    "place_id": "gn-7281805",
+    "input": {
+      "place": {
+        "place_id": "gn-7281805",
+        "name": "Caroline Springs",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.74124,
+        "lon": 144.73631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caroline Springs",
+          "url": "https://en.wikipedia.org/wiki/Caroline_Springs",
+          "text": "Caroline Springs is a suburb in Melbourne, Victoria, Australia, 21 km (13 mi) west of the Melbourne central business district, located within the City of Melton local government area. Caroline Springs recorded a population of 20,365 at the 2021 census.\nCaroline Springs has been developed on greenfield land since 1999 by Delfin, in partnership with the original landowners. Centrally located, just north of Kororoit Creek, is the town square and main shopping centre, known as CS Square, and a man-made lake known as Lake Caroline.\nAt the time of development, it was one of Melbourne's fastest growing suburbs and Delfin anticipated the population to be in excess of 25,000 people by 2015.\nThe Caroline Springs Post Office opened on 8 August 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "caroline springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caroline",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6245,
+    "place_id": "gn-2184361",
+    "input": {
+      "place": {
+        "place_id": "gn-2184361",
+        "name": "Motueka",
+        "country": "New Zealand",
+        "subdivision": "Tasman District",
+        "lat": -41.13333,
+        "lon": 173.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Motueka",
+          "url": "https://en.wikipedia.org/wiki/Motueka",
+          "text": "Motueka is a town in the South Island of New Zealand, close to the mouth of the Motueka River on the western shore of Tasman Bay. It is the second largest in the Tasman Region, with a population of 8,290 as of June 2025.\nThe surrounding district has a number of apple, pear, and kiwifruit orchards, as well as growing a variety of specialised crops such as hops. The area formerly served  as the main centre of tobacco growing in New Zealand until the early 1980s. A number of small vineyards have also been developed.\nNearby beaches (such as Kaiteriteri and Mārahau) are very popular with holidaymakers, and the area around Motueka has one of the country's highest annual sunshine-hour indices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "motueka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6264,
+    "place_id": "gn-2976050",
+    "input": {
+      "place": {
+        "place_id": "gn-2976050",
+        "name": "Saran",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.95013,
+        "lon": 1.87601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saran, Loiret",
+          "url": "https://en.wikipedia.org/wiki/Saran,_Loiret",
+          "text": "Saran (French pronunciation: [saʁɑ̃]) is a commune located in the northern suburbs of Orléans, in the Loiret department in the region region Centre-Val de Loire..\nSubject to a modified oceanic climate, the municipality has no recorded permanent watercourses.\nSaran is an urban municipality with a population of 17316, having experienced significant population growth since 1962. It is part of the Orléans urban area and the Orléans catchment area.\nThe remains of the Aérotrain track, an experimental 18 km elevated structure with an inverted-T profile, built in 1969 by engineer Jean Bertin, was designated as \"Outstanding Contemporary Architecture\" in 2015.\nSaran has, considering its size, many sports facilities including two stadiums, indoor and outdoor tennis courts, one swimming pool and four gymnasiums."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "saran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6266,
+    "place_id": "gn-3045332",
+    "input": {
+      "place": {
+        "place_id": "gn-3045332",
+        "name": "Siófok",
+        "country": "Hungary",
+        "subdivision": "Somogy County",
+        "lat": 46.90413,
+        "lon": 18.058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siófok",
+          "url": "https://en.wikipedia.org/wiki/Siófok",
+          "text": "Siófok (Hungarian pronunciation: [ˈʃijoːfok]; German: Fock; Latin: Fuk) is a town in Somogy County, Hungary on the southern bank of Lake Balaton. It is the second largest municipality in Somogy County and the seat of Siófok District. It covers an area of about 124.66 km2 (48.13 sq mi) between Lake Balaton, the Mezőföld and the Outer Somogy-Hills. Lying at the mouth of the Sió Channel, it serves as the most important logistic station for goods between Lake Balaton and the River Danube.\nThe town is Hungary's second most popular holiday destination (after Budapest) due to its 17-kilometre-long (11-mile) coast, over 1,000 hotels, and plenty of bars, restaurants and nightclubs. Siófok is one of the richest municipalities of Hungary due to tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "siofok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6267,
+    "place_id": "gn-3057379",
+    "input": {
+      "place": {
+        "place_id": "gn-3057379",
+        "name": "Štúrovo",
+        "country": "Slovakia",
+        "subdivision": "Nitra Region",
+        "lat": 47.79495,
+        "lon": 18.7175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Štúrovo",
+          "url": "https://en.wikipedia.org/wiki/Štúrovo",
+          "text": "Štúrovo () is the southernmost town of Slovakia, situated on the river Danube not far from the mouth of the Hron. Connected by the Mária Valéria Bridge it forms a cross-border urban area with the city of Esztergom in Hungary. In 2023 the town had a population of 9,361, two-thirds of whom belong to the Hungarian minority. Administratively, it is part of the Nitra Region and the Nové Zámky District.\nŠtúrovo / Párkány is a popular summer holiday destination with the Vadas Thermal Resort, the biggest aquapark in Slovakia. It is also an industrial and commercial center of local importance with lively cross-border traffic, an industrial park, railway junction, hotels, casinos, supermarkets and the annual Fair of Saints Simon and Jude."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "sturovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6269,
+    "place_id": "gn-3110881",
+    "input": {
+      "place": {
+        "place_id": "gn-3110881",
+        "name": "Sant Andreu de Llavaneres",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.56667,
+        "lon": 2.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Andreu de Llavaneres",
+          "url": "https://en.wikipedia.org/wiki/Sant_Andreu_de_Llavaneres",
+          "text": "Sant Andreu de Llavaneres (Catalan pronunciation: [ˌsant ənˈdɾew ðə ʎəβəˈneɾəs]) is a municipality located 36 km north of Barcelona (Catalonia) (Spain), along the Mediterranean coast, between Mataró and Sant Vicenç de Montalt. It belongs to the Maresme comarca and the Barcelona province. The short name is simply Llavaneres.\nLlavaneres faces the sea to the east and a natural park to the west. The village has a mixed agricultural and residential character and has become a popular vacation and summer-residence location for people living in Barcelona over the last forty years.\nGood connections with Barcelona, the Maresme coast and the Mediterranean axis of France and Spain include a train line to Barcelona, as well as the C-32 highway and the N-2 road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "sant andreu de llavaneres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andreu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llavaneres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6273,
+    "place_id": "gn-3464971",
+    "input": {
+      "place": {
+        "place_id": "gn-3464971",
+        "name": "Curiúva",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.0325,
+        "lon": -50.45833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curiúva",
+          "url": "https://en.wikipedia.org/wiki/Curiúva",
+          "text": "Curiúva is a Brazilian municipality located in the interior of the state of Paraná. It belongs to the Intermediate Geographic Region of Ponta Grossa and the Immediate Geographic Region of Telêmaco Borba and is situated northwest of the state capital, approximately 287 km (178 mi) away. It covers an area of 576.263 km2 (222.496 sq mi), of which 2,085.9 m2 (22,452 sq ft) are in the urban area. According to 2018 IBGE estimates, its population was 15,003 inhabitants.\nThe municipal seat has an average annual temperature of 19.1 °C (66.4 °F), and the predominant vegetation in the municipality is the mixed ombrophilous forest. With 68.77% of its residents living in the urban area, the municipality had nine healthcare facilities in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "curiuva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6282,
+    "place_id": "gn-5790562",
+    "input": {
+      "place": {
+        "place_id": "gn-5790562",
+        "name": "College Place",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.0493,
+        "lon": -118.3883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "College Place, Washington",
+          "url": "https://en.wikipedia.org/wiki/College_Place,_Washington",
+          "text": "College Place is a city in Walla Walla County, Washington, United States. It neighbors the larger city of Walla Walla, and had a population of 10,090 per Washington State Office of Financial Management (OFM) population estimates. \nCollege Place is the home of Walla Walla University (formerly Walla Walla College, thus the city's name), a Seventh-day Adventist Church operated liberal arts university.\nThe City has a quaint downtown primarily centered along College Avenue from Rose Street to 13th Street. It is anchored by small businesses such as Happy Wanderer, Andy's Market, Enable Art, and Rogers Bakery. Many businesses downtown are owned by Seventh-Day Adventist owners so they close two hours before sunset on Fridays and then reopen at sunset on Saturday evenings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "college place",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "college",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "place",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6283,
+    "place_id": "gn-6179602",
+    "input": {
+      "place": {
+        "place_id": "gn-6179602",
+        "name": "Wetaskiwin",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 52.96683,
+        "lon": -113.36869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetaskiwin",
+          "url": "https://en.wikipedia.org/wiki/Wetaskiwin",
+          "text": "Wetaskiwin ( wə-TAS-k(ə-)win) is a city in the province of Alberta, Canada. The city is 70 kilometres (43 mi) south of the provincial capital of Edmonton. The city name comes from the Cree word wītaskiwinihk, meaning \"the hills where peace was made\".\nWetaskiwin is home to the Reynolds-Alberta Museum, a museum dedicated to celebrating \"the spirit of the machine\" as well as the Wetaskiwin and District Heritage Museum, which documents the pioneer arrival and lifestyle in Wetaskiwin's early years. Southeast of Wetaskiwin, the Alberta Central Railway Museum acknowledges the impact that the railway had on Central Alberta.\nThe city is well known in Western Canada for the slogan and jingle \"Cars cost less in Wetaskiwin\", from the Wetaskiwin Auto Dealers Association."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "wetaskiwin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6288,
+    "place_id": "gn-8029814",
+    "input": {
+      "place": {
+        "place_id": "gn-8029814",
+        "name": "Summer Hill",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.89146,
+        "lon": 151.13825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summer Hill, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Summer_Hill,_New_South_Wales",
+          "text": "Summer Hill is a suburb of Sydney, in the state of New South Wales, Australia. Summer Hill is located 7 kilometres west of the Sydney central business district, in the local government area of the Inner West Council.\nSummer Hill is a primarily residential suburb of Sydney's Inner West, adjoining two of Sydney's major arterial roads, Parramatta Road and Liverpool Road. The first land grant was made in 1794 to former convict and jailor Henry Kable, and the suburb began growing following the opening of the railway station on the Main Suburban railway line, in 1879.\nBy the 1920s, the suburb had become relatively upper class, with large estates and mansions built throughout the suburb. Some of these still exist today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "summer hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "summer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6289,
+    "place_id": "gn-8437716",
+    "input": {
+      "place": {
+        "place_id": "gn-8437716",
+        "name": "Dirceu Arcoverde",
+        "country": "Brazil",
+        "subdivision": "Piauí",
+        "lat": -9.34251,
+        "lon": -42.43425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dirceu Arcoverde",
+          "url": "https://en.wikipedia.org/wiki/Dirceu_Arcoverde",
+          "text": "Dirceu Arcoverde is a municipality in the state of Piauí in the Northeast region of Brazil.\nIt is a city of medium development of the State of Piauí semiarid region and is situated in the south of the Serra da Capivara National Park. The population is very small and most of the residents live in the countryside extensions. In the urban region has just over 2,500 inhabitants.\nThe municipal seat, the city of Dirceu Arcoverde or Bom Jardim - as it is affectionately called by local residents, is at an altitude of 740 meters (2,430 ft) above sea level and is considered one of the urban areas at higher altitude in the state of Piauí.\nThe weather is warm and seasonal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "dirceu arcoverde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dirceu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arcoverde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6290,
+    "place_id": "gn-884798",
+    "input": {
+      "place": {
+        "place_id": "gn-884798",
+        "name": "Mvurwi",
+        "country": "Zimbabwe",
+        "subdivision": "Mashonaland Central",
+        "lat": -17.03333,
+        "lon": 30.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mvurwi",
+          "url": "https://en.wikipedia.org/wiki/Mvurwi",
+          "text": "Mvurwi, originally known as Umvukwesi, is a town in Mashonaland Central province in Zimbabwe.\nSome of Mvurwi's schools include Holy Rosary Primary and Secondary School, Mvurwi Primary and High School and Umvukwesi Primary School which is one of the town's most elite learning facilities and produces noteworthy results.\nPreviously, it fell within the breadbasket region (from Banket - Shamva) where much of foodstuffs and the golden leaf were being produced.  Majority of Mvurwians are small scale farmers who rely on the agro-based economy.  The industry sector has to be improved in future, currently it has got Delta Beverage brewing company and Mashonaland Tobacco Sales to mention a few.\nChiote/ Pembi Falls and Galiva are dams surrounding the borders of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mvurwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6293,
+    "place_id": "gn-1263707",
+    "input": {
+      "place": {
+        "place_id": "gn-1263707",
+        "name": "Manipal",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 13.35,
+        "lon": 74.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manipal",
+          "url": "https://en.wikipedia.org/wiki/Manipal",
+          "text": "Manipal (Kannada: [mɐɳipaːlɐ]) is a suburb and town within Udupi, in coastal Karnataka, India. Manipal is located five kilometres away from the centre of Udupi City, in Udupi District, Karnataka (state) in south western India. It is administered by the Udupi City Municipality. The suburb is located in coastal Karnataka, 62 km north of Mangalore and 8 km east of the Arabian Sea. From its location on a plateau, at an altitude of about 75 metres above sea level, it commands a panoramic view of the Arabian Sea to the west and the Western Ghats to the east. Manipal has a tropical climate with moderate to heavy rainfall during the monsoon season, making it lush and green throughout the year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "manipal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6296,
+    "place_id": "gn-1735262",
+    "input": {
+      "place": {
+        "place_id": "gn-1735262",
+        "name": "Tanah Rata",
+        "country": "Malaysia",
+        "subdivision": "Pahang",
+        "lat": 4.46361,
+        "lon": 101.3763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanah Rata",
+          "url": "https://en.wikipedia.org/wiki/Tanah_Rata",
+          "text": "Tanah Rata is a town located in Cameron Highlands, Pahang, Malaysia. The name \"tanah rata\" means flat ground in Malay and it refers to the relatively flat area on which the town is located amidst this highland region. It has an elevation of 1,440 metres (4,720 ft).\nIt is the largest town in the Cameron Highlands region and contains many facilities and amenities, including the district council, banks and ATMs, the main Police Station of Cameron Highlands and the main hospital in Cameron Highlands. There is a taxi station and a bus station for travel to other parts of Cameron Highlands, as well as to Ipoh and to Kuala Lumpur. There are also backpacker inns and hotels at various prices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tanah rata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tanah",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6299,
+    "place_id": "gn-2171000",
+    "input": {
+      "place": {
+        "place_id": "gn-2171000",
+        "name": "Collingwood",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.80253,
+        "lon": 144.98872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collingwood, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Collingwood,_Victoria",
+          "text": "Collingwood is an inner-city suburb in Melbourne, Victoria, Australia, 3 km north-east of the Melbourne central business district, located within the City of Yarra local government area. Collingwood recorded a population of 9,179 at the 2021 census.\nThe area now known as Collingwood is thought to have been named Yálla-birr-ang by the Wurundjeri people, the original Indigenous inhabitants of the area. Following colonisation, the suburb was named in 1842 after Baron Collingwood or an early hotel which bore his name. Collingwood is one of the oldest suburbs in Melbourne and is bordered by Smith Street, Alexandra Parade, Hoddle Street and Victoria Parade.\nCollingwood is notable for its historical buildings, with many nineteenth century dwellings, shops and factories still in use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "collingwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

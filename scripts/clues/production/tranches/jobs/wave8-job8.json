@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 8185,
+    "place_id": "gn-3195674",
+    "input": {
+      "place": {
+        "place_id": "gn-3195674",
+        "name": "Mali Lošinj",
+        "country": "Croatia",
+        "subdivision": "Primorje-Gorski Kotar",
+        "lat": 44.53056,
+        "lon": 14.46861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mali Lošinj",
+          "url": "https://en.wikipedia.org/wiki/Mali_Lo%C5%A1inj",
+          "text": "Mali Lošinj is a town in the Primorje-Gorski Kotar County, on the island of Lošinj, in western Croatia. At the time of the 2021 census, there were 7,537 inhabitants, of whom 86% were Croats. The town of Mali Lošinj itself had an urban population of 5,561.\nThe favourable climatic conditions, the construction of hotels and resorts, foresting, and maintenance of beaches have led to the intensive development of tourism. The town is located in the most protected part of the Lošinj bay, on the eastern, sunny side of the island.\nThe asteroid 10415 Mali Lošinj is named after this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "mali losinj",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mali",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "losinj",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8190,
+    "place_id": "gn-5197842",
+    "input": {
+      "place": {
+        "place_id": "gn-5197842",
+        "name": "Lewisburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.96453,
+        "lon": -76.88441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewisburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lewisburg,_Pennsylvania",
+          "text": "Lewisburg is a borough in Union County, Pennsylvania, United States, 30 miles (48 km) south by southeast of Williamsport and 60 miles (97 km) north of Harrisburg. The population was 5,158 as of the 2020 census. It is the county seat of Union County. Located in central Pennsylvania's Susquehanna Valley, on the West Branch Susquehanna River, it is home to Bucknell University. Its 19th-century downtown, centered around Market Street, is listed on the National Register of Historic Places. Lewisburg is the principal city of the Lewisburg Micropolitan Statistical Area, and is also part of the larger Bloomsburg–Berwick–Sunbury Combined Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lewisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8191,
+    "place_id": "gn-5747420",
+    "input": {
+      "place": {
+        "place_id": "gn-5747420",
+        "name": "Raleigh Hills",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.48067,
+        "lon": -122.76204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raleigh Hills, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Raleigh_Hills,_Oregon",
+          "text": "Raleigh Hills is a census-designated place and neighborhood in Washington County, Oregon within the metropolitan area of Portland, Oregon, United States. It is located in the southwest hills in Washington County, with Beaverton to the west, West Slope to the north, and Progress and Garden Home to the south. As of the 2020 census, Raleigh Hills had a population of 6,196.\nRaleigh Hills is located at the intersection of Oregon Routes 10 and 210. Fire protection and EMS services are provided through Tualatin Valley Fire and Rescue. Raleigh Hills is also the location of the first ever New Seasons Market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "raleigh hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "raleigh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8208,
+    "place_id": "gn-3126622",
+    "input": {
+      "place": {
+        "place_id": "gn-3126622",
+        "name": "Candeleda",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.15521,
+        "lon": -5.24045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Candeleda",
+          "url": "https://en.wikipedia.org/wiki/Candeleda",
+          "text": "Candeleda (Spanish pronunciation: [kandeˈleða]) is a town and municipality located in the province of Ávila, in the autonomous community of Castile and León, Spain. According to the 2011 INE census, the municipality has a population of 5,213 inhabitants, making it the fifth largest municipality in the province after Ávila –the capital–, Arévalo, Arenas de San Pedro and Las Navas del Marqués. The town is located on the southern hillside of the Gredos mountains, 432 m above sea level, giving it a microclimate with a thermal regime of mild winters and hot summers and average summer temperatures of 26 °C.\nCandeleda is related, economically and culturally, with the neighbouring town of Arenas de San Pedro and the Tiétar valley in Castile and León, the region of La Vera in Extremadura, as well as the Campana de Oropesa region and the city of Talavera de la Reina in Castile-La Mancha. Due to the relatively long distance between Candeleda and Ávila, links with the capital are limited to administrative and medical matters. The village festival and processions in honour of the town's patron saint, the Virgin of Chilla, are held annually on the second and third Sunday of September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "candeleda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8215,
+    "place_id": "gn-2514452",
+    "input": {
+      "place": {
+        "place_id": "gn-2514452",
+        "name": "Los Silos",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.3661,
+        "lon": -16.81552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Silos",
+          "url": "https://en.wikipedia.org/wiki/Los_Silos",
+          "text": "Los Silos is a municipality and town in the northwestern part of the island Tenerife, Canary Islands, Spain. It is located on the north coast, 57 km West of the capital Santa Cruz de Tenerife.\n\nIts name first appears in 1509, when the agricultural activity of the region made necessary the construction of silos to store  cereals. The town located at the heart of the Teno Massif, contains an extremely valuable and interesting wealth of plant and animal life. The leafy laurisilva woodlands are in stark contrast with the plains on the coast, which still hold small areas of cardones and tabaibas, furrowed by steep-sided ravines which are routes bringing together the highlands and the coast.\nAmong the plant formations, the most outstanding is the cardonal–tabaibal which occupies the lower parts of the district, practically from sea level up to areas close to the old coastal cliffs, which separate the sector of the oldest Isla Baja from the Monte Verde, a woodland with great water needs whose existence depends on the additional moisture brought by the sea of clouds which reaches the island on the Trade Winds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "los silos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8218,
+    "place_id": "gn-2634478",
+    "input": {
+      "place": {
+        "place_id": "gn-2634478",
+        "name": "West Byfleet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33764,
+        "lon": -0.50649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Byfleet",
+          "url": "https://en.wikipedia.org/wiki/West_Byfleet",
+          "text": "West Byfleet is a village in Surrey which grew up around its relatively minor stop on the London & South Western Railway: the station, originally Byfleet and Woodham, opened in 1887. More than 1 mile (1.6 km) from the medieval village of Byfleet, the initial concentration of a new development soon established its own economy apart from that of a dependent London commuter village and spread in most directions to its borders including to the border of the old settlement, divided by the shielded M25 motorway today. The first place of worship was dedicated in 1912, the parish of West Byfleet associated with it was established in 1917. The village is bounded to the north by the Basingstoke Canal and to the east by the M25 and the Wey Navigation Canal. Forming part of the contiguous development centred on London and its stockbroker belt just outside the M25 motorway, it is 18 miles from London Heathrow and equidistant between the business parks of Woking and Brooklands. In local government it forms a ward on the same basis as its parish in the Borough of Woking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "west byfleet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "byfleet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8219,
+    "place_id": "gn-5102136",
+    "input": {
+      "place": {
+        "place_id": "gn-5102136",
+        "name": "Ocean Grove",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.21206,
+        "lon": -74.00653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean Grove, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ocean_Grove,_New_Jersey",
+          "text": "Ocean Grove is an unincorporated community and census-designated place (CDP) that is part of Neptune Township, in Monmouth County, New Jersey, United States. It had a population of 3,057 at the 2020 census, down from 3,342 in 2010. It is located on the Atlantic Ocean's Jersey Shore, between Asbury Park to the north and Bradley Beach to the south. Listed on the National Register of Historic Places, Ocean Grove is noted for its abundant examples of Victorian architecture and for the Great Auditorium, acclaimed as \"the state's most wondrous wooden structure, soaring and sweeping, alive with the sound of music.\" Another building, a former high school, is now the Jersey Shore Arts Center.\nOcean Grove was founded in 1869 as an outgrowth of the camp meeting movement in the United States, when a group of Methodist clergymen, led by William B. Osborn and Ellwood H. Stokes, formed the Ocean Grove Camp Meeting Association to develop and operate a summer camp meeting site on the New Jersey seashore. By the early 20th century, the popular Christian meeting ground became known as the \"Queen of Religious Resorts\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "ocean grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8221,
+    "place_id": "gn-2634502",
+    "input": {
+      "place": {
+        "place_id": "gn-2634502",
+        "name": "West Bay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.71084,
+        "lon": -2.76107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Bay, Dorset",
+          "url": "https://en.wikipedia.org/wiki/West_Bay,_Dorset",
+          "text": "West Bay, originally known as Bridport Harbour, is a small harbour settlement and resort on the English Channel coast in Dorset, England, sited at the mouth of the River Brit approximately 1.5 miles (2.4 km) south of Bridport. The area is part of the Jurassic Coast, a World Heritage Site.\nThe harbour at West Bay is not a natural landscape feature and it has a long history of having been silted up, blocked by shingle and damaged by storms, and each time repairs, improvements and enlargements have subsequently been made. The harbour has been moved twice: it was originally 1 mile (1.6 km) inland, then was moved to the coast beside the East Cliff, then was moved again 270 metres (300 yd) along the coast to the west, where it is located today.\nThe previous main commercial trade of the harbour—exporting Bridport's ropes and nets—declined in the second half of the 19th century. When the railway arrived in 1884, attempts were made to provide the settlement with the facilities of a resort, and today West Bay has a mixed economy of tourism and fishing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "west bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8222,
+    "place_id": "gn-2634772",
+    "input": {
+      "place": {
+        "place_id": "gn-2634772",
+        "name": "Wargrave",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50068,
+        "lon": -0.86577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wargrave",
+          "url": "https://en.wikipedia.org/wiki/Wargrave",
+          "text": "Wargrave () is a historic village and civil parish in Berkshire, England. The village is primarily on the River Thames but also along the confluence of the River Loddon and lies on the border with southern Oxfordshire. The village has many old listed buildings, two marinas with chandlery services for boats, a boating club and rises steeply to the northeast in the direction of Bowsey Hill, with higher parts of the village generally known as Upper Wargrave. In Upper Wargrave is a Recreation Ground with a cricket club, bowls club, football pitches and tennis club.\nWargrave is situated in the A321 road 7 miles (11 km) from both Maidenhead and Reading and 3 miles (4.8 km) from Henley-on-Thames. The  village is larger than the county average, having its own railway station on the Henley Branch Line, off the Great Western Main Line from London Paddington; the village is quickly accessible to nearby parts of the M4 corridor, particularly Berkshire and Heathrow Airport and local major centres of employment include Reading and Maidenhead, with smaller businesses and additional commercial facilities in nearby Henley-on-Thames and Wokingham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "wargrave",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8224,
+    "place_id": "gn-2765278",
+    "input": {
+      "place": {
+        "place_id": "gn-2765278",
+        "name": "Seefeld in Tirol",
+        "country": "Austria",
+        "subdivision": "Tyrol",
+        "lat": 47.33016,
+        "lon": 11.18786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seefeld in Tirol",
+          "url": "https://en.wikipedia.org/wiki/Seefeld_in_Tirol",
+          "text": "Seefeld in Tirol is an old farming village, now a major tourist resort, in Innsbruck-Land District in the Austrian state of Tyrol with a local population of 3,312 (as of 1 January 2013). The village is located about 17 km (11 mi) northwest of Innsbruck on a plateau between the Wetterstein mountains and the Karwendel on a historic road from Mittenwald to Innsbruck that has been important since the Middle Ages. It was first mentioned in 1022 and since the 14th century has been a pilgrimage site, benefiting not only from the visit of numerous pilgrims but also from its stacking rights as a trading station between Augsburg and the Venice. Also since the 14th century, Tyrolean shale oil has been extracted in the area. Seefeld was a popular holiday resort even before 1900 and, since the 1930s, has been a well known winter sports centres and amongst the most popular tourist resorts in Austria. The municipality, which has been the venue for several Winter Olympics Games, is the home village of Anton Seelos, the inventor of the parallel turn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "seefeld in tirol",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seefeld",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tirol",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8226,
+    "place_id": "gn-5873776",
+    "input": {
+      "place": {
+        "place_id": "gn-5873776",
+        "name": "Seward",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 60.10426,
+        "lon": -149.4435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seward, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Seward,_Alaska",
+          "text": "Seward (Alutiiq: Qutalleq; Dena'ina: Tl'ubugh) is an incorporated home rule city in Alaska, United States. Located on Resurrection Bay, a fjord of the Gulf of Alaska on the Kenai Peninsula, Seward is situated on Alaska's southern coast, approximately 120 miles (190 km) by road from Alaska's largest city, Anchorage.\nWith a population of 2,717 people as of the 2020 census, Seward is the fourth-largest city in the Kenai Peninsula Borough, behind Kenai, Homer, and the borough seat of Soldotna. The city is named for former United States Secretary of State William H. Seward, who orchestrated the United States' purchase of Alaska from the Russian Empire in 1867 while serving in this position as part of President Andrew Johnson's administration.\nSeward is the southern terminus of the Alaska Railroad and the historic starting point of the original Iditarod Trail to Interior Alaska, with Mile 0 of the trail marked on the shoreline at the southern end of town.\nIn 2015, President Barack Obama visited Seward, first stopping at Exit Glacier to discuss the visible impacts of climate change with Bear Grylls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "seward",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8234,
+    "place_id": "gn-3177952",
+    "input": {
+      "place": {
+        "place_id": "gn-3177952",
+        "name": "Cortina d'Ampezzo",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 46.5369,
+        "lon": 12.13903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cortina d'Ampezzo",
+          "url": "https://en.wikipedia.org/wiki/Cortina_d'Ampezzo",
+          "text": "Cortina d'Ampezzo (Italian: [korˈtiːna damˈpɛttso]; local Ladin: Anpezo, elsewhere Ampëz; historical Austrian German: Hayden), often abbreviated to Cortina, is a town and comune (municipality) in the province of Belluno, in the Veneto region of Northern Italy. Situated on the Boite river, in an alpine valley in the heart of the southern Dolomitic Alps, it is an upscale summer and winter sport resort known for its skiing trails, scenery, accommodation, shops and its jet-set-dominated après-ski scene. It is part of the linguistic and cultural region of Ladinia. The town's Latin motto, granted in 1928 on its flag and coat of arms, reads: MODO VIVO AC TUTA QUIESCO (roughly, \"I live frugally and rest quietly\".)\nDuring the Middle Ages, Cortina d'Ampezzo fell under the jurisdiction of the Patriarchate of Aquileia and the Holy Roman Empire. In 1420 it was conquered by the Republic of Venice. From 1508, it then spent much of its history under Habsburg rule, briefly undergoing some territorial changes under Napoleon, before being returned to the Austrian Empire (later Austria-Hungary), which held it until 1918."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "cortina d ampezzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cortina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ampezzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8236,
+    "place_id": "gn-5952337",
+    "input": {
+      "place": {
+        "place_id": "gn-5952337",
+        "name": "Fermont",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 52.79445,
+        "lon": -67.08378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fermont",
+          "url": "https://en.wikipedia.org/wiki/Fermont",
+          "text": "Fermont (; French pronunciation: [fɛʁmɔ̃]) is a mining city in Côte-Nord region, Quebec, Canada, near the Quebec-Labrador border about 23 kilometres (14 mi) from Labrador City on Route 389, which connects to the Trans-Labrador Highway (Newfoundland and Labrador Route 500).  It is the seat of the Regional County Municipality of Caniapiscau.\nThe city is located about 565 km (351 mi) from Baie-Comeau, about 867 km (539 mi) from Saguenay, and about 1,000 km (621 mi) from Quebec City.\nFermont (French contraction of \"Fer Mont\", meaning \"Iron Mountain\") was founded as a company town in the early 1970s to exploit rich iron ore deposits from Mont Wright, which is about 25 kilometres (16 mi) to the west.\nThe town is notable for the huge self-contained structure containing apartments, stores, schools, bars, a hotel, restaurants, a supermarket and swimming pool; the large building shelters a community of smaller apartment buildings and homes on its leeward side. Popularly known as The Wall (Le Mur), the structure was designed to be a windscreen to the rest of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "fermont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8240,
+    "place_id": "gn-7261152",
+    "input": {
+      "place": {
+        "place_id": "gn-7261152",
+        "name": "Fairchild Air Force Base",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.61879,
+        "lon": -117.64826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairchild Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Fairchild_Air_Force_Base",
+          "text": "Fairchild Air Force Base (AFB) (IATA: SKA, ICAO: KSKA, FAA LID: SKA) is a United States Air Force base, located in the northwest United States in eastern Washington, approximately twelve miles (20 km) southwest of Spokane.\nThe host unit at Fairchild is the 92nd Air Refueling Wing (92 ARW) assigned to the Air Mobility Command's Eighteenth Air Force. The 92 ARW is responsible for providing air refueling, as well as passenger and cargo airlift and aero-medical evacuation missions supporting U.S. and coalition conventional operations as well as U.S. Strategic Command strategic deterrence missions.\nFairchild AFB was established 84 years ago in 1942 as the Spokane Army Air Depot. and is named in honor of General Muir S. Fairchild (1894–1950); a World War I aviator from the state, he was the Vice Chief of Staff of the Air Force at the time of his death.\nDuring the Cold War, Fairchild was a Strategic Air Command (SAC) base for 45 years (1947–1992), with bombers and tankers, as well as missiles for a brief period (1960–1965)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "fairchild air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fairchild",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8247,
+    "place_id": "gn-7259430",
+    "input": {
+      "place": {
+        "place_id": "gn-7259430",
+        "name": "Offutt Air Force Base",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.12024,
+        "lon": -95.92095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Offutt Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Offutt_Air_Force_Base",
+          "text": "Offutt Air Force Base  (IATA: OFF, ICAO: KOFF, FAA LID: OFF) is a U.S. Air Force base south of Omaha, adjacent to Bellevue in Sarpy County, Nebraska. It is the headquarters of the U.S. Strategic Command (USSTRATCOM), the 557th Weather Wing, and the 55th Wing (55 WG) of the Air Combat Command (ACC), the latter serving as the host unit.\nAviation use at Offutt began in September 1918 during World War I as an Army Air Service balloon field. Originally named Fort Crook, it was renamed in honor of World War I pilot and Omaha native 1st Lt. Jarvis Offutt in 1924.\nOffutt AFB's legacy includes the construction of the Enola Gay and Bockscar, the planes that dropped Little Boy and Fat Man over Hiroshima and Nagasaki in World War II. Offutt served over 40 years as the headquarters for the former Strategic Air Command (SAC) and home for its associated ground and aerial command centers for the United States in the case of nuclear war during the Cold War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "offutt air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "offutt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8249,
+    "place_id": "gn-3123801",
+    "input": {
+      "place": {
+        "place_id": "gn-3123801",
+        "name": "Dosrius",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.58333,
+        "lon": 2.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dosrius",
+          "url": "https://en.wikipedia.org/wiki/Dosrius",
+          "text": "Dosrius (Catalan pronunciation: [ˌdozˈriws], lit. 'two rivers') is a municipality in the comarca of Maresme in\nCatalonia, Spain, located in the interior of the comarca on the border with the Eastern Valleys, and is at the head of the Argentona Riera. The original name, first recorded in 963, is \"Duos Rios\". This literally means \"Two Rivers\" and refers to the 2 rivers that join to form the Argentona Riera, and is reflected in the coat of arms.\nThese rivers rarely flow, though they quickly fill during wet weather causing disruption in the village owing to the narrow streets being one way. Newer housing and schools are on the other side of the river, and egress from housing further up the valley frequently takes this route owing to the poor condition of the newly built \"Ronda de Dalt\" (Upper Bypass). A bridge has been built that would alleviate this problem, though this still  hasn't been opened due to the currently suspended construction work that is part of the same development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "dosrius",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8261,
+    "place_id": "gn-11979899",
+    "input": {
+      "place": {
+        "place_id": "gn-11979899",
+        "name": "Inner Harbor",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28356,
+        "lon": -76.6063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inner Harbor",
+          "url": "https://en.wikipedia.org/wiki/Inner_Harbor",
+          "text": "The Inner Harbor is a historic seaport, tourist attraction, and landmark in Baltimore, Maryland. It was described by the Urban Land Institute in 2009 as \"the model for post-industrial waterfront redevelopment around the world\". The Inner Harbor is located at the mouth of Jones Falls, creating the wide and short northwest branch of the Patapsco River, whose tidal waters flow into the Chesapeake Bay.  The district includes any water west of a line drawn between the foot of President Street and the American Visionary Art Museum.\nThe name \"Inner Harbor\" is used not just for the water but for the surrounding area of the city, with approximate street boundaries of President Street to the east, Lombard Street to the north, Greene Street to the west, and Key Highway on the south. The harbor is within walking distance of Oriole Park at Camden Yards and M&T Bank Stadium – as well as the city's prominent Federal Hill Park and the adjacent pocket park, Robert Baker Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "inner harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "inner",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8275,
+    "place_id": "gn-1262926",
+    "input": {
+      "place": {
+        "place_id": "gn-1262926",
+        "name": "Mohana",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 19.44273,
+        "lon": 84.26128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mohana",
+          "url": "https://en.wikipedia.org/wiki/Mohana",
+          "text": "Mohana is a hill valley census town and community development block (CD block) headquarters located in the Gajapati district of the Indian state of Odisha. Serving as the headquarters of the geographically largest block by territorial area in Gajapati district, Mohana operates under the local governance of the Mohana Panchayat Samiti and falls under the administrative jurisdiction of the Mohana Police Station.\nStructurally situated within the mountain-clad ranges of the Eastern Ghats, the town serves as a transit and logistic checkpoint along National Highway 326 (NH-326), a major socioeconomic corridor connecting southern Odisha's tribal regions. At the town level, the urban area covers 2.51 km² and recorded a population of 5,197 during the 2011 census across 1,121 households with a baseline literacy rate of 88.55%. The entire surrounding community development block accommodates a collective population estimated at 182,679 people across a vast territorial expanse of 1,636.51 km². Politically, the town falls within the Scheduled Tribe reserved Mohana Assembly constituency (Sl."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "mohana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8280,
+    "place_id": "gn-11592169",
+    "input": {
+      "place": {
+        "place_id": "gn-11592169",
+        "name": "Kingswells",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.15798,
+        "lon": -2.22426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingswells",
+          "url": "https://en.wikipedia.org/wiki/Kingswells",
+          "text": "Kingswells is a village and suburb of Aberdeen, Scotland, situated west of the city and to the east of Westhill which lies on the other side of the Aberdeen Western Peripheral Route bypass (part of the A90 road).\nKingswells has a primary school, a doctor's surgery, a veterinary practice (Ardene), a community centre, a Co-op convenience store, a garage, a beauty salon, and a church. For food and leisure, the village hosts two take-away outlets, a restaurant/café and a pub at the Four Mile.\nNext to the village lies the Prime Four Business Park, which features offices of many major oil and gas companies, a hotel, gym and Starbucks coffee shop, along with a dentist's surgery.\nAlthough Kingswells does not have a secondary school, buses operate regularly, providing transport to nearby secondary schools such as Bucksburn Academy.\nThe village is served by public transport, including the McGill's service 14, which runs between Kingswells and Aberdeen City Centre on weekdays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kingswells",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8283,
+    "place_id": "gn-3174975",
+    "input": {
+      "place": {
+        "place_id": "gn-3174975",
+        "name": "Lazise",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.50499,
+        "lon": 10.73923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lazise",
+          "url": "https://en.wikipedia.org/wiki/Lazise",
+          "text": "Lazise is a comune (municipality) and town in the Province of Verona in the Italian region Veneto, located about 120 kilometres (75 miles) west of Venice and about 20 kilometres (12 miles) northwest of Verona. It is situated on the eastern shore of Lake Garda. As of 31 December 2004, it had a population of 6,213 and an area of 65.0 square kilometres (25.1 sq mi). This geographical location empowers a position of great landscape value, but it also features elements of architectural value and of historical importance.\nLazise has many attractions: a thermal spring situated in Colà, two amusement parks (Canevaworld and Gardaland, the latter situated partly on the territory of Castelnuovo del Garda, where it is based, and partly on the territory of Lazise) and an extensive hilly agricultural landscape. Lazise records about 3.5 million tourist visits every year, figures that place it at 12th place in Italy among tourist destinations, and the first Italian lake destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "lazise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 6300,
+    "place_id": "gn-2525095",
+    "input": {
+      "place": {
+        "place_id": "gn-2525095",
+        "name": "Castellammare del Golfo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.02653,
+        "lon": 12.88183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castellammare del Golfo",
+          "url": "https://en.wikipedia.org/wiki/Castellammare_del_Golfo",
+          "text": "Castellammare del Golfo (Italian: [kaˌstɛllamˈmaːre del ˈɡolfo]; Sicilian: Casteḍḍammari [kaˌstɛɖɖamˈmaːɾɪ]; Latin: Emporium Segestanorum or Emporium Aegestensium) is a town and municipality in the Trapani Province of Sicily. The name can be translated as \"Sea Fortress on the Gulf\", stemming from the medieval fortress in the harbor. The nearby body of water conversely takes its name from the town, and is known as Gulf of Castellammare.\nHeading upwards from its marina/harbour called \"Cala Marina\", with many restaurants and bars, the urban plan is made of steps and winding streets that lead to Piazza Petrolo in one direction or towards the main central gardens, where the town center lies with many shops, cafes and restaurants. The main street is called Corso Garibaldi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "castellammare del golfo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castellammare",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "golfo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6302,
+    "place_id": "gn-2641637",
+    "input": {
+      "place": {
+        "place_id": "gn-2641637",
+        "name": "Newhaven",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.79693,
+        "lon": 0.05545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newhaven",
+          "url": "https://en.wikipedia.org/wiki/Newhaven",
+          "text": "Newhaven is a port town in the Lewes district of East Sussex, England, lying at the mouth of the River Ouse.\nThe town developed during the Middle Ages as the nearby port of Seaford began drying up, forcing a new port to be established. A sheltered harbour was built in the mid-16th century, and a breakwater in the late 18th, to provide continued access to the sea. Newhaven increased in importance following the arrival of the railway in 1847, and regular cross-Channel ferry services to Dieppe. Though these have been reduced in the 21st century, Newhaven still provides regular ferry services and continues to be used as an important freight terminal. In 2021 the parish had a population of 12,854."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "newhaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6304,
+    "place_id": "gn-2694560",
+    "input": {
+      "place": {
+        "place_id": "gn-2694560",
+        "name": "Ljungby",
+        "country": "Sweden",
+        "subdivision": "Kronoberg",
+        "lat": 56.83324,
+        "lon": 13.94082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ljungby",
+          "url": "https://en.wikipedia.org/wiki/Ljungby",
+          "text": "Ljungby (Swedish: [ˈjɵ̂ŋːbʏ] ) is the central locality of Ljungby Municipality, Kronoberg County, Sweden, with 15,785 inhabitants in 2015.\nLjungby was instituted in 1829 as a köping, or market town, and did not become a municipality of its own when the first local government acts took effect in 1863, but retained part of the surrounding rural municipality of the same name. In 1936 Ljungby got the title stad, Swedish for Town or City. Since 1971 Ljungby is the seat of Ljungby Municipality.\nMuch of the town center was destroyed in the city fire of 1953. At the time of the rebuilding, International Style architecture was used, characterized locally by the Hotel Terazza and adjacent structures, which still remains controversial locally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "ljungby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6305,
+    "place_id": "gn-2741961",
+    "input": {
+      "place": {
+        "place_id": "gn-2741961",
+        "name": "Buarcos",
+        "country": "Portugal",
+        "subdivision": "Coimbra",
+        "lat": 40.16604,
+        "lon": -8.8768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buarcos",
+          "url": "https://en.wikipedia.org/wiki/Buarcos",
+          "text": "Buarcos is a freguesia (civil parish) in Figueira da Foz Municipality, Portugal. The population in 2011 was 18,454, in an area of 15.53 km².\nDuring the 1600s, the people of Buarcos were harassed by pirates and built the long fortification that stands to this day. It is a traditional fishing town that has grown also as a noted beach resort due to its natural landscape namely the beach which is sheltered from the strong northern winds by the Boa Viagem small mountain range (Serra da Boa Viagem). Many of its inhabitants still work in the fishing industry but tourism is also an important activity. It has hotels, seafood restaurants and bars with view over the bay and the extensive beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "buarcos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6308,
+    "place_id": "gn-2949150",
+    "input": {
+      "place": {
+        "place_id": "gn-2949150",
+        "name": "Bienenbüttel",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.14157,
+        "lon": 10.48679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bienenbüttel",
+          "url": "https://en.wikipedia.org/wiki/Bienenbüttel",
+          "text": "Bienenbüttel is a free municipality in the district of Uelzen, in Lower Saxony, Germany. It is situated on the river Ilmenau, approximately 20 kilometres (12 mi) north of Uelzen, and 13 kilometres (8 mi) southeast of Lüneburg. Bienenbüttel is a part of the Hamburg Metropolitan Region and of the Lüneburg Heath (German: Lüneburger Heide).\nBienenbüttel is the seat of the Einheitsgemeinde (\"free municipality\") Bienenbüttel.\nIncorporated into the municipality are the villages of Bargdorf, Beverbeck with Grünewald, Bornsen, Edendorf, Eitzen I with Bardenhagen, Grünhagen, Hohenbostel, Hohnstorf, Niendorf, Rieste with Neu-Rieste, Steddorf with Neu-Steddorf, Varendorf, Wichmannsburg and Wulfstorf.\n\nBienenbüttel is located on the Elbe Lateral Canal, a 115-kilometre (71 mi) long waterway, and has a station on the highspeed Hanover–Hamburg railway (Hamburg-Uelzen-Hannover)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bienenbuttel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6316,
+    "place_id": "gn-3458681",
+    "input": {
+      "place": {
+        "place_id": "gn-3458681",
+        "name": "Lavrinhas",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.57083,
+        "lon": -44.90222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavrinhas",
+          "url": "https://en.wikipedia.org/wiki/Lavrinhas",
+          "text": "Lavrinhas is a municipality in the state of São Paulo in Brazil. It is formed by the neighborhoods of Jardim Mavisou, Pinheiros, Capela do Jacu, Village Campestre and Centro, where its seat is located. The municipality is crossed by many rivers, creeks etc; the main ones being Jacu River, Braço River and Paraíba do Sul River, this being its main river. It is a historical town, wherein events of the 1932 Paulista Revolution took place. As for its economy, most of it is based on agriculture, cattle raising, in addition to being known for having mineral water spring and crystal clear waters, which attract tourists from all over the country; therefore, it is recognized as a Municipality of Tourist Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "lavrinhas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6321,
+    "place_id": "gn-3834971",
+    "input": {
+      "place": {
+        "place_id": "gn-3834971",
+        "name": "Sunchales",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -30.94478,
+        "lon": -61.5597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunchales",
+          "url": "https://en.wikipedia.org/wiki/Sunchales",
+          "text": "Sunchales is a city in the province of Santa Fe, Argentina. It has 21,304 inhabitants per the 2010 census [INDEC]. It lies in the center-west of the province, 135 km (84 mi) from the provincial capital Santa Fe, on National Route 34.\nSunchales is located in the most fertile part of Argentina, at the core of the Humid Pampa, and within the so-called \"central milk basin\", which manufactures most of the country's production of dairy and exports it through the ports on the Paraná River (mainly Rosario and San Lorenzo). It is an important station of the Nuevo Central Argentino railway.\nThe town was the starting point of SanCor, a dairy cooperative and the leader in its field in Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sunchales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6322,
+    "place_id": "gn-3946937",
+    "input": {
+      "place": {
+        "place_id": "gn-3946937",
+        "name": "Azángaro",
+        "country": "Peru",
+        "subdivision": "Puno",
+        "lat": -14.91416,
+        "lon": -70.19846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azángaro",
+          "url": "https://en.wikipedia.org/wiki/Azángaro",
+          "text": "Azángaro is a town in Southern Peru, capital of the province Azángaro in the region of Puno.\nThe colonial church in Azangaro is known as the golden temple. In the adjacent Plaza San Bernardo, Pedro Vilca Apaza was drawn and quartered for his role as a General in Tupac Amaru II's attempt to liberate Perú from the Spanish government. His last words were, \"Por este Sol aprended a morir como yo.\" After Tupac Amaru II's execution, leadership of the revolution shifted to Azangaro.\nThe church bell tower, an example of colonial decorative adobe, was much disfigured by rains before recent rains caused a collapse of most of the tower. The gold interior is a magnificent example of rich colonial art."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "azangaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6326,
+    "place_id": "gn-4929432",
+    "input": {
+      "place": {
+        "place_id": "gn-4929432",
+        "name": "Auburndale",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.34732,
+        "lon": -71.2495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Auburndale, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Auburndale,_Massachusetts",
+          "text": "Auburndale is one of the 13 villages within the city of Newton in Middlesex County, Massachusetts, United States. It lies at the western end of Newton near the intersection of interstate highways 90 and 95. It is bisected by the Massachusetts Turnpike (Interstate 90). Auburndale is surrounded by three other Newton villages (West Newton, Waban, and Newton Lower Falls) as well as the city of Waltham and the Charles River.  Auburndale is the home of Williams and Burr Elementary Schools, as well as Lasell University.  Auburndale Square is the location of the Plummer Memorial Library, which is run by the Auburndale Community Library and no longer affiliated with the Newton Free Library, the Turtle Lane Playhouse, and many small businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "auburndale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6335,
+    "place_id": "gn-5965932",
+    "input": {
+      "place": {
+        "place_id": "gn-5965932",
+        "name": "Greely",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.26139,
+        "lon": -75.56111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greely, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Greely,_Ontario",
+          "text": "Greely is a suburban-rural community in Ottawa, Ontario, Canada. Located south of the city in Osgoode Ward, it was part of the Township of Osgoode prior to amalgamation in 2001. Greely is currently the largest rural village in terms of land area and the third largest in terms of population in the City of Ottawa.  According to the Greely Community Association, it is bounded on the east by Sale Barn Road and Greyscreek Road, on the north by Mitch Owens on the west by Manotick Station Road, and on the south by Snake Island Road. According to the Canada 2011 Census, the population within these boundaries was 9,049.\nGreely falls within the borders of the federal parliamentary riding of Carleton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "greely",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6338,
+    "place_id": "gn-6232191",
+    "input": {
+      "place": {
+        "place_id": "gn-6232191",
+        "name": "Blockhouse Bay",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.9182,
+        "lon": 174.70019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blockhouse Bay",
+          "url": "https://en.wikipedia.org/wiki/Blockhouse_Bay",
+          "text": "Blockhouse Bay is a residential suburb in the south west of Auckland, in New Zealand's North Island. It is sited on the northern coast of the Manukau Harbour, and is also close to the administrative boundary that existed between Auckland City and Waitakere City, two of the former four cities of what was the Auckland conurbation before amalgamation into Auckland Council.\nThe suburb is located 11 kilometres to the southwest of the city centre, and is surrounded by the more central suburbs of Lynfield and New Windsor, and the Waitakere suburbs of New Lynn and Green Bay.\nThe Blockhouse Bay Library is located in the town centre, as is the Blockhouse Bay Community Centre, located 200 metres from the library."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "blockhouse bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blockhouse",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6343,
+    "place_id": "gn-1717896",
+    "input": {
+      "place": {
+        "place_id": "gn-1717896",
+        "name": "Cateel",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.79139,
+        "lon": 126.45333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cateel",
+          "url": "https://en.wikipedia.org/wiki/Cateel",
+          "text": "Cateel ([kɐtiʔil]), officially the Municipality of Cateel (Cebuano: Lungsod sa Cateel; Tagalog: Bayan ng Cateel), is a municipality in the province of Davao Oriental, Philippines. According to the 2024 census, it has a population of 45,623 people.\nCateel is home of the Aliwagwag Falls, located in Barangay Aliwagwag within the Aliwagwag Protected Landscape. It is a multi-tiered cascade regarded by hydraulic engineers as the highest waterfall in the country and is considered one of the most beautiful in the Philippines. \nThe falls consist of 84 cascading tiers resembling a stairway, with individual drops ranging from 2 to 33.5 meters (7 to 110 ft). Some of the notable tiers measure approximately 22 meters (72 ft) and 20 meters (66 ft)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "cateel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6354,
+    "place_id": "gn-2640004",
+    "input": {
+      "place": {
+        "place_id": "gn-2640004",
+        "name": "Portrush",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.19592,
+        "lon": -6.6493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portrush",
+          "url": "https://en.wikipedia.org/wiki/Portrush",
+          "text": "Portrush (from Irish Port Rois, meaning 'port of the promontory') is a small seaside resort town on the north coast of County Antrim, Northern Ireland. It neighbours the resort of Portstewart in County Londonderry. The main part of the old town, including the railway station as well as most hotels, restaurants and bars, is built on a 1 mile (1.6 km)–long peninsula, Ramore Head. It had a population of 6,150 at the 2021 census.\nThe town is well known for its three sandy beaches, the West Strand, East Strand and White Rocks, as well as the Royal Portrush Golf Club, the only golf club outside Great Britain which has hosted The Open Championship – in 1951, 2019, and 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "portrush",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6356,
+    "place_id": "gn-2645099",
+    "input": {
+      "place": {
+        "place_id": "gn-2645099",
+        "name": "Knowle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.38333,
+        "lon": -1.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knowle, West Midlands",
+          "url": "https://en.wikipedia.org/wiki/Knowle,_West_Midlands",
+          "text": "Knowle  is a large village situated 3 miles (5 km) east-southeast of the town of Solihull, in the county of the West Midlands, England. Knowle lies within the Arden area of the historic county boundaries of Warwickshire, and since 1974 it has been part of the Metropolitan Borough of Solihull. It lies 2.5 miles from the Warwickshire border and had a recorded population of 10,678.\nKnowle is in the parliamentary constituency of Meriden and Solihull East. It is contiguous to the south with the similar-sized communities of Dorridge and Bentley Heath, both of which are mainly residential in nature. The affluent district of Copt Heath is a suburb of Knowle to the north, with Tilehouse Green to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "knowle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6370,
+    "place_id": "gn-3463558",
+    "input": {
+      "place": {
+        "place_id": "gn-3463558",
+        "name": "Faxinal dos Guedes",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.85278,
+        "lon": -52.26028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faxinal dos Guedes",
+          "url": "https://en.wikipedia.org/wiki/Faxinal_dos_Guedes",
+          "text": "Faxinal dos Guedes is a municipality located in the west of the state of Santa Catarina, in the South Region of Brazil. Its population, according to the 2022 Brazilian Institute of Geography and Statistics Census, was 11 192 inhabitants. With an area of 340,070 km2, part of its territory is located on the western edge of a meteoritic crater, the Vargeão Dome.\nIt is one of the highest altitude cities in the state of Santa catarina, with its urban area having peaks of up to 3297,244 ft (1.005 m). Because of this, it bears the title of Capital of the Winds.\nIt is located in the Immediate Geographical Region of Xanxerê and in the Intermediate Geographical Region of Chapecó."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "faxinal dos guedes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "faxinal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guedes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6374,
+    "place_id": "gn-371827",
+    "input": {
+      "place": {
+        "place_id": "gn-371827",
+        "name": "Kurmuk",
+        "country": "Sudan",
+        "subdivision": "Blue Nile",
+        "lat": 10.557,
+        "lon": 34.287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurmuk, Ethiopia",
+          "url": "https://en.wikipedia.org/wiki/Kurmuk,_Ethiopia",
+          "text": "Kurmuk (also known as Kormuk) is a town in western Ethiopia. Located in the Asosa Zone of the Benishangul-Gumuz Region, Kurmuk has an elevation of 653 meters above sea level.\nIn 1962, Kurmuk was connected to Asosa by a dry-weather road, \"rough but passable by trucks\" according to the Highway Authority. However, by 1996 travel by this road was \"discouraged for safety reasons.\"\nBased on figures from the Central Statistical Agency, in 2005 this town has an estimated total population of 554, of whom 297 were males and 257 were females. According to the 1994 national census, its total population was 322, of whom 172 were males and 150 were females. It is the largest settlement in Kurmuk woreda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "kurmuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6379,
+    "place_id": "gn-4141126",
+    "input": {
+      "place": {
+        "place_id": "gn-4141126",
+        "name": "Woodridge",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.93122,
+        "lon": -76.97109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodridge (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Woodridge_(Washington,_D.C.)",
+          "text": "Woodridge is a residential neighborhood located in Ward 5 of Northeast Washington, D.C. Woodridge is contained between Eastern Avenue N.E. to the east, Taylor Street N.E. to the north, South Dakota Avenue N.E. to the west, and Bladensburg Road N.E. to the south. Its central commercial strips are Rhode Island Avenue NE (Route 1) and Bladensburg Road N.E. Woodridge borders the adjacent neighborhoods of Brookland, Langdon, North Michigan Park, and Fort Lincoln in Northeast Washington D.C. In addition to these neighborhoods in the District of Columbia, Woodridge borders the city of Mount Rainier and town of Cottage City in Maryland. In terms of public transportation, residents of Woodridge have access to the Brookland-CUA and Rhode Island Avenue Metro stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "woodridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6381,
+    "place_id": "gn-4430104",
+    "input": {
+      "place": {
+        "place_id": "gn-4430104",
+        "name": "Holly Springs",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 34.7676,
+        "lon": -89.44869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holly Springs, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Holly_Springs,_Mississippi",
+          "text": "Holly Springs is a city in and the county seat of Marshall County, Mississippi, United States, near the border with Tennessee to the north. As of the 2020 census, the population was 6,968, down from 7,699 in 2010. Along with the Mississippi Delta, in the 19th century, the area was developed for cotton plantations. After the Civil War, many freedmen continued to work in agriculture as sharecroppers and tenant farmers.\nAs the county seat, Holly Springs is a center of trade and court sessions. The city has several National Register of Historic Places-listed properties and historic districts, including the Southwest Holly Springs Historic District, Holly Springs Courthouse Square Historic District, Depot-Compress Historic District, and East Holly Springs Historic District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "holly springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "holly",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6383,
+    "place_id": "gn-4561374",
+    "input": {
+      "place": {
+        "place_id": "gn-4561374",
+        "name": "Southwest Center City Philadelphia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.94281,
+        "lon": -75.18086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southwest Center City Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Southwest_Center_City_Philadelphia",
+          "text": "Southwest Center City (SWCC), also known as Graduate Hospital, is a neighborhood that is located in South Philadelphia, Pennsylvania, United States, bordering Center City Philadelphia. \nContrary to what the name might suggest, Southwest Center City is located to the southwest of Center City and is not itself considered part of Center City. The neighborhood is bordered on the north by South Street, on the south by Washington Avenue, on the west by the Schuylkill River, and on the east by Broad Street.\nIt is an area adjacent to the Fitler Square and Rittenhouse Square neighborhoods to the north and Point Breeze to the south, and is home to community service organizations, restaurants, churches, retail establishments, and some light industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "southwest center city philadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southwest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "center",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "philadelphia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6384,
+    "place_id": "gn-4758390",
+    "input": {
+      "place": {
+        "place_id": "gn-4758390",
+        "name": "Falls Church",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.88233,
+        "lon": -77.17109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falls Church, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Falls_Church,_Virginia",
+          "text": "Falls Church is an independent city in the Commonwealth of Virginia, United States. As of the 2020 census, the population was 14,658. Falls Church is part of both Northern Virginia and the Washington metropolitan area. As of 2020, it has a median household income of $146,922, the second-highest household income of any county in the nation behind Loudoun County, Virginia.\nTaking its name from the Falls Church, an 18th-century parish of the Church of England, later the Episcopal Church, Falls Church gained township status within Fairfax County in 1875.\nIn 1948, it seceded from Fairfax County and was incorporated as the City of Falls Church, an independent city with county-level governance status although it is not nominally a county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "falls church",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "church",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

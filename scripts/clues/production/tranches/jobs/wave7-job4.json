@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6489,
+    "place_id": "gn-5328152",
+    "input": {
+      "place": {
+        "place_id": "gn-5328152",
+        "name": "Big Bear City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.26112,
+        "lon": -116.84503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Big Bear City, California",
+          "url": "https://en.wikipedia.org/wiki/Big_Bear_City,_California",
+          "text": "Big Bear City is an unincorporated community and census-designated place in San Bernardino County, California, United States along the east shore of Big Bear Lake and surrounded by the San Bernardino National Forest. It is 27 miles (43 km) northeast of the city of San Bernardino, and immediately east of the incorporated city of Big Bear Lake. Its population was 12,738 at the 2020 census, up from 12,304 at the 2010 census. Big Bear City is mostly residential, with smaller houses and cabins laid out in typical square block fashion. Big Bear is on the Pacific Crest Trail.\nStandard Air Lines of Los Angeles began a regular airline service to the community in the summer of 1929."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "big bear city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "big",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bear",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6492,
+    "place_id": "gn-614622",
+    "input": {
+      "place": {
+        "place_id": "gn-614622",
+        "name": "Gagra",
+        "country": "Georgia",
+        "subdivision": "Abkhazia",
+        "lat": 43.27858,
+        "lon": 40.27124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gagra",
+          "url": "https://en.wikipedia.org/wiki/Gagra",
+          "text": "Gagra (Georgian: გაგრა; Abkhaz and Russian: Гагра) is a town in Abkhazia/Georgia, sprawling for 5 km on the northeast coast of the Black Sea, at the foot of the Caucasus Mountains. Its subtropical climate made Gagra a popular health resort since the Imperial Russian times.\nIt had a population of 26,636 in 1989, but this has declined considerably as a result of ethnic cleansing of Georgians in Abkhazia and other demographic shifts during and after the War in Abkhazia (1992–93).\nGagra is the center of the district of the same name. It is located in the western part of the region of Abkhazia, and the Psou River serves as the border with the Krasnodar Krai of Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "gagra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6495,
+    "place_id": "gn-631204",
+    "input": {
+      "place": {
+        "place_id": "gn-631204",
+        "name": "Vuokatti",
+        "country": "Finland",
+        "subdivision": "Kainuu",
+        "lat": 64.14466,
+        "lon": 28.28196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vuokatti",
+          "url": "https://en.wikipedia.org/wiki/Vuokatti",
+          "text": "Vuokatti is an urban area that is a physically separate part of the municipality of Sotkamo, Finland. It is home to more than 6,000 inhabitants, making it the second most populous urban area in the region of Kainuu, after the main urban area of the municipality of Kajaani. Vuokatti is also the name of the nearby forested hill range and the urban area's train station.\nThe highest hill in the area is the 345 meter high Porttivaara, the second highest being Vuokatinvaara.\nVuokatti has a ski resort, sports academy, a SuperPark, and the Katinkulta resort. There is also a skiing tunnel, which makes cross-country skiing possible in all seasons, and there are also snowboarding and snowtubing tunnels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "vuokatti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6496,
+    "place_id": "gn-933238",
+    "input": {
+      "place": {
+        "place_id": "gn-933238",
+        "name": "Nata",
+        "country": "Botswana",
+        "subdivision": "Central",
+        "lat": -20.21667,
+        "lon": 26.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nata, Botswana",
+          "url": "https://en.wikipedia.org/wiki/Nata,_Botswana",
+          "text": "Nata is a village in the Central District of Botswana. Located in the north of the district about 200 km (124 miles) from the city of Francistown, the village is served by Nata Airport. The population was 7,713 at the 2022 census, with a growth rate of 1.3% from 6,714 at the 2011 census. The village of Nata lies along the Nata River, which carries its rainy season flow to the Makgadikgadi Pans, a seasonal hypersaline lake, in one of the largest salt flats in the world. The village serves as a crossroads for routes to Maun and Kasane, providing essential services to travelers. \nThe village has 6 wards, namely: Sekao, Maaloso, Kachikao, Manakanagore, Makwenaejang and Basimane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "nata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6517,
+    "place_id": "gn-2705402",
+    "input": {
+      "place": {
+        "place_id": "gn-2705402",
+        "name": "Höllviken",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.40982,
+        "lon": 12.9558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Höllviken",
+          "url": "https://en.wikipedia.org/wiki/Höllviken",
+          "text": "Höllviken is a locality situated in Vellinge Municipality, Skåne County, Sweden with 15,678 inhabitants in 2019. It is located close to both Malmö and the Øresund Bridge which connects Sweden and Denmark.\nThe town is a popular summer vacation spot for northern Europeans, who are attracted to its sandy beaches and the historical sites which date back to the time of the Vikings. The peninsula on which the town is situated is unique because it is surrounded by two different seas: Öresund and the Baltic Sea.\nPrior to the 1960s, the peninsula remained mainly populated by wealthy businessmen from the Malmö region during the summers. Recently, however, it has begun to grow as a commuter town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "hollviken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6519,
+    "place_id": "gn-2802990",
+    "input": {
+      "place": {
+        "place_id": "gn-2802990",
+        "name": "Aubange",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 49.56652,
+        "lon": 5.80492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aubange",
+          "url": "https://en.wikipedia.org/wiki/Aubange",
+          "text": "Aubange (French pronunciation: [obɑ̃ʒ] ; German: Ibingen [ˈiːbɪŋən]; Luxembourgish: Éibeng; Walloon: Åbindje) is a municipality and city of Wallonia located in the province of Luxembourg, Belgium.\nOn 1 January 2012 the municipality, which covers 45.6 km2, had 16,042 inhabitants, giving a population density of 330.9 inhabitants per km2. It is the third municipality of the Province of Luxembourg regarding the number of inhabitants but it is also among the smallest ones in terms of area.\nThe municipality is French-speaking but most of which falls within the Luxembourgish-speaking Arelerland, adjoins the tripoint where the borders of Belgium, the Grand Duchy of Luxembourg, and France meet.\nThe municipality consists of the following districts: Athus, Aubange, Halanzy, and Rachecourt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "aubange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6520,
+    "place_id": "gn-2814883",
+    "input": {
+      "place": {
+        "place_id": "gn-2814883",
+        "name": "Waldkirch",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.09585,
+        "lon": 7.96371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waldkirch",
+          "url": "https://en.wikipedia.org/wiki/Waldkirch",
+          "text": "Waldkirch (German pronunciation: [ˈvaltˌkɪʁç] ) is a town in Baden-Württemberg, Germany, located 15 kilometers northeast of Freiburg im Breisgau. While the English translation of its name is Forest Church, it is known as the \"town of mechanical organs\", where fairground organs played on the streets were long manufactured by such well-known firms as Carl Frei (later of Breda, Netherlands), Andreas Ruth and Son, and Wilhelm Bruder and Sons.  The largest employers today are SICK AG, which manufactures optical sensors, Faller AG, which prints pharmaceutical packages and inserts, and Mack Rides, which exports amusement park and water park rides worldwide. Cultural events include the Klappe 11 Cinema festival, the Organ Festival and the Peter Feuchtwanger Piano Masterclass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "waldkirch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6523,
+    "place_id": "gn-3147822",
+    "input": {
+      "place": {
+        "place_id": "gn-3147822",
+        "name": "Leirvik",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 59.77977,
+        "lon": 5.50051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leirvik",
+          "url": "https://en.wikipedia.org/wiki/Leirvik",
+          "text": "Leirvik or Stord is a town and the administrative centre of Stord Municipality in Vestland county, Norway. The town lies along the southern coast of the large island of Stord, along the Hardangerfjorden. The town gained \"town status\" in 1997. The town includes the Eldøyane peninsula where the large Kværner Stord industrial area is located.\n\nLeirvik is the regional centre of the traditional district of Sunnhordland, and has many public services and offices such as the Haugaland og Sunnhordland District Court and the Sunnhordland Museum, as well as many shops and restaurants. Stord Church and several schools such as Stord Upper Secondary School and Western Norway University of Applied Sciences are all located in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "leirvik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6533,
+    "place_id": "gn-4996832",
+    "input": {
+      "place": {
+        "place_id": "gn-4996832",
+        "name": "Huntington Woods",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.48059,
+        "lon": -83.16687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntington Woods, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Huntington_Woods,_Michigan",
+          "text": "Huntington Woods is a city in Oakland County in the U.S. state of Michigan. An inner-ring suburb of Detroit on the Woodward Corridor, Huntington Woods is located roughly 12 miles (19.3 km) northwest of downtown Detroit. As of the 2020 census, the city had a population of 6,388.\nHuntington Woods is situated along the Woodward Corridor (M-1) and is bounded by Ten and Eleven Mile Roads to the north and south, and by Woodward and Coolidge Highway to the east and west. Rackham Golf Course is located in the central southern side of the city. The western portion of the Detroit Zoo is located within the city limits and is a contributor to its tax base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "huntington woods",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "huntington",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woods",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6547,
+    "place_id": "gn-741570",
+    "input": {
+      "place": {
+        "place_id": "gn-741570",
+        "name": "Mesudiye",
+        "country": "Türkiye",
+        "subdivision": "Ordu",
+        "lat": 40.45446,
+        "lon": 37.77353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mesudiye, Ordu",
+          "url": "https://en.wikipedia.org/wiki/Mesudiye,_Ordu",
+          "text": "Mesudiye, formerly Hamidiye, (in Greek Μεσουδιέ and Μιλάς) is a municipality and district of Ordu Province, Turkey. Its area is 1,046 km2, and its population is 13,221 (2022). The town lies at an elevation of 1,100 m (3,609 ft).\nMesudiye is a large area of hilly countryside, villages and pasture far inland from the Black Sea coast, south-west of the city of Ordu, in the direction of Sivas. This is a low-income district that since the 1950s has seen successive generations migrate away to jobs in Istanbul and elsewhere. Today Mesudiye itself is a small town of 5,600 people and the whole district is sparsely populated, although busier in summer with returning Mesudiye families on vacation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "mesudiye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6552,
+    "place_id": "gn-1170974",
+    "input": {
+      "place": {
+        "place_id": "gn-1170974",
+        "name": "Mankera",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.38771,
+        "lon": 71.44047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mankera",
+          "url": "https://en.wikipedia.org/wiki/Mankera",
+          "text": "Mankera  (Saraiki and Urdu: منكيره) is the principal town of Mankera Tehsil, an administrative subdivision of Bhakkar District, in the Punjab province of Pakistan. It is situated about 320 km (200 mi) west of Lahore, capital city of the Punjab province.\nBhakkar is located in the west of Punjab. The mighty Indus River flows on the western side of the district and the Jhelum and Chenab rivers both flow on the eastern side, all of which can be destructive during the monsoon season. One-third of the land is sandy, of which a small portion is irrigated by Thal canal and tubewells. The rest of the sandy land is cultivated and is entirely dependent upon rains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "mankera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6553,
+    "place_id": "gn-12048032",
+    "input": {
+      "place": {
+        "place_id": "gn-12048032",
+        "name": "Vincent Square",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.49292,
+        "lon": -0.13179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vincent Square",
+          "url": "https://en.wikipedia.org/wiki/Vincent_Square",
+          "text": "Vincent Square is a grass-covered square in Westminster, London, England. It is London's largest privately owned square, covering 13 acres, lined with mature trees including London planes. In among a network of backstreets, it chiefly provides playing fields for Westminster School, who own it absolutely; otherwise, it functions as a green lung and a view for the homes, hotel and other organisations adjoining. Nine of its adjoining buildings have been given strict statutory architectural recognition and protection. Westminster Under School, the preparatory school of the senior Westminster School, is based at 27 Vincent Square. The Liberal Democrat Headquarters, housing one of Parliament's three largest political parties, was based at 1 Vincent Square, until September 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "vincent square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vincent",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6556,
+    "place_id": "gn-2271542",
+    "input": {
+      "place": {
+        "place_id": "gn-2271542",
+        "name": "Armação de Pêra",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.10256,
+        "lon": -8.35695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armação de Pêra",
+          "url": "https://en.wikipedia.org/wiki/Armação_de_Pêra",
+          "text": "Armação de Pêra is a town (vila) and Portuguese parish (freguesia) in the municipality of Silves. The population in 2011 was 4,867, in an area of 7.99 km2. The village used to be called Pêra de Baixo  or Lower Pêra to distinguish it from the present Pêra, which was then named Pêra de Cima or Upper Pêra.\nThe town (vila in Portuguese) of Armação de Pêra is a popular tourist center with fine beaches, hotels, cafés and restaurants. It is on a broad bay that stretches from Pont da Galé to Senhora da Rocha. Its beaches extend from Praia dos Pescadores or the Fishermen's Beach, to Salomão beach, including those of Maré Grande and Beijinhos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "armacao de pera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "armacao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6563,
+    "place_id": "gn-2638039",
+    "input": {
+      "place": {
+        "place_id": "gn-2638039",
+        "name": "Shepperton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39546,
+        "lon": -0.44889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shepperton",
+          "url": "https://en.wikipedia.org/wiki/Shepperton",
+          "text": "Shepperton is a village in the Spelthorne district, in north Surrey, England, around 15 mi (24 km) south west of central London. The settlement is on the north bank of the River Thames, between the towns of Chertsey and Sunbury-on-Thames. The village is mentioned in a document of 959 AD and in Domesday Book.\nIn the 19th century, resident writers and poets included Rider Haggard, Thomas Love Peacock, George Meredith, and Percy Bysshe Shelley, who were attracted by the proximity of the River Thames. The river was painted at Walton Bridge in 1754 by Canaletto and in 1805 by Turner. Shepperton Lock and nearby Sunbury Lock were built in the 1810s, to facilitate river navigation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "shepperton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6570,
+    "place_id": "gn-2905604",
+    "input": {
+      "place": {
+        "place_id": "gn-2905604",
+        "name": "Herrsching am Ammersee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.99888,
+        "lon": 11.17679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herrsching am Ammersee",
+          "url": "https://en.wikipedia.org/wiki/Herrsching_am_Ammersee",
+          "text": "Herrsching am Ammersee (German pronunciation: [ˈhɛʁʃɪŋ ʔam ˈʔamɐˌzeː] , lit. 'Herrsching on the Ammersee') is a municipality in Upper Bavaria, Germany, on the east shore of the Ammersee, southwest of Munich. The population is around 8,000 in winter, increasing to 13,000 in summer.\nSituated at one terminus of the Munich S-Bahn line S8, the village is popular with travellers for its water-sports and as the starting point of trips to the Benedictine Andechs Abbey. Herrsching is also a stop for touring steamships of the Bavarian Seenschiffahrt or lake fleet.\nHerrsching is home for the unit finance of \"college of public service in Bavaria\".\nPrior to the Second World War, it was there the Reichsfinanzschule Hersching."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "herrsching am ammersee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herrsching",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ammersee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6577,
+    "place_id": "gn-3157686",
+    "input": {
+      "place": {
+        "place_id": "gn-3157686",
+        "name": "Fetsund",
+        "country": "Norway",
+        "subdivision": "Akershus",
+        "lat": 59.92463,
+        "lon": 11.15711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fetsund",
+          "url": "https://en.wikipedia.org/wiki/Fetsund",
+          "text": "Fetsund is a village in the municipality Lillestrøm, Akershus, Norway. The name comes from the local geography, Fet means \"where water meets grass\". As for the -sund part, it simply means 'strait, inlet'. Accordingly, Fetsund is located at the strait of Glomma, Norway's largest river, just before it enters Øyeren nature reservation, and this is the place the logging industry in years past pulled the logs out of the water for transport to steam sawmills.\nToday, Fetsund and its surrounding area is a small town and is mainly a residential area with very little industry. The old log industry is gone, but its buildings and site is still preserved as a national museum, Fetsund Lenser."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "fetsund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6578,
+    "place_id": "gn-3363957",
+    "input": {
+      "place": {
+        "place_id": "gn-3363957",
+        "name": "Moorreesburg",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.15388,
+        "lon": 18.66031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moorreesburg",
+          "url": "https://en.wikipedia.org/wiki/Moorreesburg",
+          "text": "Moorreesburg is a rural town situated about 90 kilometres (60 mi) north of Cape Town, in the Western Cape province of South Africa. It was laid out in 1879 on the farm Hooikraal, was administered by a village management board from 1882 and attained municipal status in 1909. Today it falls within the Swartland Local Municipality, which is part of the West Coast District Municipality. The town is the seat of government for the West Coast District Municipality.\nMoorreesburg lies just off the N7 national road, at a driving distance of 100 kilometres (62 mi) from Cape Town. The R311 regional road also passes through the town, as does the West Coast branch line railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "moorreesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6580,
+    "place_id": "gn-3587018",
+    "input": {
+      "place": {
+        "place_id": "gn-3587018",
+        "name": "Chirilagua",
+        "country": "El Salvador",
+        "subdivision": "San Miguel Department",
+        "lat": 13.22028,
+        "lon": -88.13861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chirilagua",
+          "url": "https://en.wikipedia.org/wiki/Chirilagua",
+          "text": "Chirilagua is a municipality in southeastern El Salvador, in the department of San Miguel.\nIt contains approximately 24,000 inhabitants as a result of census of 2007. The town is located on a mountain plateau adjacent to the Pacific Ocean.\nThere is a lot to do at this town; from eating traditional food, to playing soccer in La plaza  or the soccer fields, to just getting a snow cone and walking around. “ La Plaza “ which is a center of the town where there are many food places, a turf field, shopping center, grocery store playground, and basketball court. There are many types of religions in this town but the most popular one is Catholicism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "chirilagua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6581,
+    "place_id": "gn-3590804",
+    "input": {
+      "place": {
+        "place_id": "gn-3590804",
+        "name": "Río Bravo",
+        "country": "Guatemala",
+        "subdivision": "Suchitepeque",
+        "lat": 14.40042,
+        "lon": -91.31713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Bravo, Suchitepéquez",
+          "url": "https://en.wikipedia.org/wiki/Río_Bravo,_Suchitepéquez",
+          "text": "Río Bravo is a town, with a population of 15,391 (2018 census), and a municipality in the Suchitepéquez department of Guatemala. Rio Bravo is a municipality that belongs to the department of Suchitepequez, in the Republic of Guatemala. The town was established December 10, 1951.\nFormerly it was known as San Francisco Rio Bravo and belonged to the municipality of Santa Barbara. Its population was established near the Grande de Zacapa River, from which it gets its name.\nIt is located 127 km from the capital of Guatemala, reaching the coastal plain along the Pacific Ocean, because of this temperature is normally maintained at 32 °C but drops to 22 °C or 37 °C totals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "rio bravo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bravo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6596,
+    "place_id": "gn-5978765",
+    "input": {
+      "place": {
+        "place_id": "gn-5978765",
+        "name": "Huntsville",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.33341,
+        "lon": -79.21632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntsville, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Huntsville,_Ontario",
+          "text": "Huntsville is a town in the District Municipality of Muskoka, Ontario, Canada. It is located 215 kilometres (134 mi) north of Toronto and 130 kilometres (81 mi) south of North Bay. Of the three major Muskoka towns (the others being Gravenhurst and Bracebridge), Huntsville has the largest population (21,147 per 2021 census) and land area (710.64 square kilometres (274.38 sq mi)).\nHuntsville is located in the hilly terrain of the Canadian Shield and is dotted with many lakes. Due to its natural environment and natural resources, Huntsville is a tourist destination that draws many people from around the world. The Toronto Star ranked the town the #1 place to take a summer trip in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "huntsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

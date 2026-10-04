@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 7932,
+    "place_id": "gn-4708016",
+    "input": {
+      "place": {
+        "place_id": "gn-4708016",
+        "name": "Lost Creek",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.29548,
+        "lon": -97.84445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lost Creek, Texas",
+          "url": "https://en.wikipedia.org/wiki/Lost_Creek,_Texas",
+          "text": "Lost Creek is an affluent upper-middle-class neighborhood and census-designated place (CDP) in Travis County, Texas, United States. The population was 1,276 at the 2020 census. The census tract is bordered by Capital of Texas Highway to the east, Barton Creek to the south, Barton Creek Boulevard to the west, and Bee Caves Road to the north. The Lost Creek CDP encompasses several small neighborhoods—Parkstone, Woods of Westlake, Camelot, and Knollwood—as well as the largest and most populous Lost Creek neighborhood.\nThe neighborhood is named after a secluded section of Barton Creek away from more popular portions downstream that include Barton Springs and Zilker Park.\nSuburban residential development began in the late 1970s and continued for over three decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "lost creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lost",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7933,
+    "place_id": "gn-999964",
+    "input": {
+      "place": {
+        "place_id": "gn-999964",
+        "name": "Groblersdal",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.16843,
+        "lon": 29.39412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Groblersdal",
+          "url": "https://en.wikipedia.org/wiki/Groblersdal",
+          "text": "Groblersdal is a farming town situated 32 km north of the 178 million m³ Loskop Dam in the Sekhukhune District of Limpopo.\nThe town is South Africa's second largest irrigation settlement. The main crops in this man-made floodplain are cotton, tobacco, citrus fruit, table grapes, maize, wheat, vegetables, sunflower seeds, peanuts, lucerne and peaches, although not in order of importance as some previously leading crops e.g. tobacco, have made way for others such as grapes.\nGroblersdal was laid out on the farm \"Klipbank\" taking advantage of the Loskop Dam, and named after the original owner WJ Grobler.\nNotable people from Groblersdal include Roma Blecher, noted philanthropist and Shakespeare scholar, and South African Test bowler Duanne Olivier (born 1992)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "groblersdal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7935,
+    "place_id": "gn-2141050",
+    "input": {
+      "place": {
+        "place_id": "gn-2141050",
+        "name": "Hienghène",
+        "country": "New Caledonia",
+        "subdivision": "North Province",
+        "lat": -20.68333,
+        "lon": 164.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hienghène",
+          "url": "https://en.wikipedia.org/wiki/Hiengh%C3%A8ne",
+          "text": "Hienghène (French pronunciation: [jɛ̃ɡɛn] ,; Fwâi: Hyehen) is a commune in the North Province of New Caledonia, an overseas territory of France in the Pacific Ocean. It is located on a bay called Hienghène Bay, known for its eroded limestone islets.\nThe islets are remnants of a limestone and silica formation that once covered the whole of the bay, some 40 million years ago. Erosion from wind and water carved away the softer limestone, leaving the harder silica behind in eye-catching formations. Several of these formations have been given fanciful names, such as the Sphinx, the Towers of Notre Dame, and the Hen (pictured).\nThe commune is home to New Caledonia Super Ligue football club Hienghène Sport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "hienghene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7941,
+    "place_id": "gn-3923770",
+    "input": {
+      "place": {
+        "place_id": "gn-3923770",
+        "name": "Arani",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.56854,
+        "lon": -65.76883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arani, Bolivia",
+          "url": "https://en.wikipedia.org/wiki/Arani,_Bolivia",
+          "text": "Arani, also known as Jarani (from Quechua: jarani or jallmani) is the capital of Arani Province and Arani Municipality located in Cochabamba Department in the center of Bolivia at an altitude of 9,400 ft (2,865 m). At the time of census 2001 it had 3,512 inhabitants.\nArani is well known for its bread due to the traditional use of multiple types of flour for making the bread. Bread is sold in various shops along the main streets leading to the main square, and along the major highway that leads to the city of Cochabamba. There is a bread festival held each year.\nDuring November through early December, the rainy season sets in and heavy rainfall is expected."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "arani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7946,
+    "place_id": "gn-752659",
+    "input": {
+      "place": {
+        "place_id": "gn-752659",
+        "name": "Akbaba",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.15108,
+        "lon": 29.11737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akbaba, Istanbul",
+          "url": "https://en.wikipedia.org/wiki/Akbaba,_Istanbul",
+          "text": "Akbaba is a neighbourhood in the municipality and district of Beykoz, Istanbul Province, Turkey. Its population is 2,771 (2022). It is home to the türbe of Akbaba Sultan (Akbaba Mehmed Efendi or Akmehmet Efendi in short), a Bektashi Sufi baba who participated in the Conquest of Constantinople and was a mentor of Ottoman Sultan Mehmet the Conqueror (reigned 1444–1446, 1451–1481). Following the Conquest, he moved to this valley rich with spring waters and established a tekke with his dervish murids. The tekke was last revived by the Naqshbandi Shaykh Abdulhakim Efendi of Bukhara between 1876 and 1889.\nCanfeda Hatun, a noblewoman attendant of Sultan Murad III’s mother, completed building a mosque in 1588 which bears her name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "akbaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7948,
+    "place_id": "gn-2058304",
+    "input": {
+      "place": {
+        "place_id": "gn-2058304",
+        "name": "Williamstown",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.6721,
+        "lon": 138.89108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Williamstown, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Williamstown,_South_Australia",
+          "text": "Williamstown is a small South Australian village in the Adelaide Hills. It is 51 km north east of Adelaide and 16 km south-east of Gawler. Williamstown was originally known as Victoria Creek. The township was laid out in 1858 by Lewis Johnston, or Johnstone, on land he purchased in 1857, and named for his son.\nWilliamstown has an elevation of 310 m and an average rainfall of 680 mm. It has a summer average temperature of 31 °C with temperatures often reaching the mid 40s, and a winter average temperature of 15 °C, with nights dropping below freezing, which makes the region excellent for the cultivation of fruits, especially grapes in the lower riverine alluvial deposits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "williamstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7952,
+    "place_id": "gn-3816366",
+    "input": {
+      "place": {
+        "place_id": "gn-3816366",
+        "name": "Frontera Corozal",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.81473,
+        "lon": -90.88351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frontera Corozal",
+          "url": "https://en.wikipedia.org/wiki/Frontera_Corozal",
+          "text": "Frontera Corozal is a mostly Ch’ol community located in the Mexican state of Chiapas on the Usumacinta River, which separates it from neighboring Guatemala. The community was founded in the 1970s by families migrating from northern Chiapas. It is known for its dock with boats called lanchas which ferry people to the otherwise inaccessible Mayan ruins of Yaxchilan as well as to Bethel, Guatemala. It is also home to a regional museum, which is centered on two steles found nearby at Dos Caobas. The community is located in the Lacandon Jungle, surrounded by tropical rainforest, but this area has suffered severe damage. There have been recent efforts to promote conservation here, especially on communally owned lands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "frontera corozal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "frontera",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corozal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7955,
+    "place_id": "gn-5316960",
+    "input": {
+      "place": {
+        "place_id": "gn-5316960",
+        "name": "Taylor",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 34.46504,
+        "lon": -110.09123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taylor, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Taylor,_Arizona",
+          "text": "Taylor is a town in Navajo County, Arizona, United States. It was founded by settlers of The Church of Jesus Christ of Latter-day Saints in January 1878, several months before the neighboring community of Snowflake. Taylor straddles Silver Creek, flowing from the nearby White Mountains to the Little Colorado River on Arizona's Colorado Plateau. As of the 2020 census, Taylor had a population of 3,995. The town was named for John Taylor, the third president of the Church of Jesus Christ of Latter-day Saints. There is no postal home delivery in Taylor; residents within a certain radius of the Post Office who produce proof of Taylor residency are allocated a small PO box free of charge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "taylor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7961,
+    "place_id": "gn-2882329",
+    "input": {
+      "place": {
+        "place_id": "gn-2882329",
+        "name": "Seiffen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.65,
+        "lon": 13.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seiffen",
+          "url": "https://en.wikipedia.org/wiki/Seiffen",
+          "text": "Seiffen is a town in the district of Erzgebirgskreis in the central south of Saxony in Germany.\nSeiffen nestles in the heart of the Ore Mountains, which are famous for many Christmas traditions. As the silver and tin deposits declined, former miners had to look for new ways to feed their families. In addition to lace making and weaving, the local population turned to  wood carving. Nutcrackers, \"smoking men\", Christmas pyramids (carousels with figures of the Christmas story or from mining) and Schwibbögen (wooden candle arches, displayed in windows, symbolising the opening of a mine) are some of many Christmas goods made in the Ore Mountains. Seiffen is a centre of the wooden toy industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "seiffen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7962,
+    "place_id": "gn-3033470",
+    "input": {
+      "place": {
+        "place_id": "gn-3033470",
+        "name": "Bénodet",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 47.87531,
+        "lon": -4.1058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bénodet",
+          "url": "https://en.wikipedia.org/wiki/B%C3%A9nodet",
+          "text": "Bénodet (French pronunciation: [benɔdɛ]; Breton: Benoded) is a commune in the Finistère department and administrative region of Brittany in north-western France. It lies about 16 kilometres south of Quimper. The Breton name Benoded means \"mouth of the Odet\".\nBénodet has a casino, a thalassotherapy centre, a cinema, a marina, a number of hotels, and several beaches. As with many coastal towns in Brittany, there are many second homes and the population increases sixfold over the summer period. Bénodet is also the site of menhirs and a church, dedicated to the 5th-century Irish saint Brigid of Kildare, which was built at the end of the 11th century and was classed as a historic monument in 1916."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "benodet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7967,
+    "place_id": "gn-5331568",
+    "input": {
+      "place": {
+        "place_id": "gn-5331568",
+        "name": "Buellton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.6136,
+        "lon": -120.19265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buellton, California",
+          "url": "https://en.wikipedia.org/wiki/Buellton,_California",
+          "text": "Buellton is a small city in Santa Barbara County, California, United States. It is located in the Santa Ynez Valley, 3 miles (4.8 km) west of Solvang. The population was 5,161 at the 2020 census, up from 4,828 at the 2010 census.\nLocated at the junction of U.S. Route 101 and State Route 246, Buellton attracts travelers to hotels, restaurants, parks and shops. It may be most famous for its nickname “Home of Split Pea Soup,” which is a reference to the former Pea Soup Andersen's Restaurant that shut down in 2024. Buellton traces its beginnings to 1867 when a portion of a Mexican land grant was deeded to Rufus T. Buell and his brother."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "buellton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7979,
+    "place_id": "gn-6100086",
+    "input": {
+      "place": {
+        "place_id": "gn-6100086",
+        "name": "Peachland",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.76862,
+        "lon": -119.74633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peachland",
+          "url": "https://en.wikipedia.org/wiki/Peachland",
+          "text": "Peachland is a district municipality in the Okanagan Valley on the west side of Okanagan Lake in British Columbia, Canada. It was founded in 1899 by John Moore Robinson, although the region had long been home to the Okanagan people. Peachland is approximately half-an-hour's drive south of the city of Kelowna and about a 20-minute drive north of Summerland. The Okanagan Valley is very narrow in the area and there are few terraces that mark former lake levels and the former lake bottom. As a result, the city is largely located on a steep sidehill. Like many other areas in the Okanagan, Peachland is rapidly growing, with new residents coming from all across Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "peachland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7980,
+    "place_id": "gn-6182958",
+    "input": {
+      "place": {
+        "place_id": "gn-6182958",
+        "name": "Windsor",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.98345,
+        "lon": -64.13204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Nova_Scotia",
+          "text": "Windsor is a community located in Hants County, Nova Scotia, Canada.  It is a service centre for the western part of the county and is situated on Highway 101.\nThe community has a history dating back to its use by the Mi'kmaq Nation for several millennia prior to European colonization.  When the Acadians lived in the area, the town was raided by New England forces in 1704. The area was central to both Father Le Loutre's War and the Expulsion of the Acadians during the Bay of Fundy Campaign in 1755. The town promotes itself as the birthplace of ice hockey and was the home of Canada's first internationally best-selling author, Thomas Chandler Haliburton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7982,
+    "place_id": "gn-2163270",
+    "input": {
+      "place": {
+        "place_id": "gn-2163270",
+        "name": "Holsworthy",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.98333,
+        "lon": 150.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holsworthy, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Holsworthy,_New_South_Wales",
+          "text": "Holsworthy, formerly spelled Holdsworthy, is a suburb in south-western Sydney, in the state of New South Wales, Australia. It is located roughly 31 kilometres south-west of the Sydney central business district. The residential part of the suburb, including the Holsworthy Barracks, is primarily in the local government area of the  City of Liverpool. However, most of the wooded area in the south is a part of City of Campbelltown, with a portion east of Heathcote in Sutherland Shire.\nHolsworthy is best known for the Holsworthy Barracks, a large Australian Army reserve where training exercises frequently occur. The reserve lies adjacent to Heathcote Road, which connects to Bankstown, Liverpool, Lucas Heights, Engadine, and Heathcote."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "holsworthy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7991,
+    "place_id": "gn-3435701",
+    "input": {
+      "place": {
+        "place_id": "gn-3435701",
+        "name": "Capioví",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -26.92936,
+        "lon": -55.05773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capioví",
+          "url": "https://en.wikipedia.org/wiki/Capiov%C3%AD",
+          "text": "Capioví is a village and municipality in Misiones Province in north-eastern Argentina.\nLand was first acquired in the area by the Carlos Culmey Company, in 1919, and the following year, Enrique Graef and his family became the future town's first settlers. Named for the Capioví Falls, upstream, the village grew following Culmey's installation of a sawmill. The cultivation of yerba maté was followed by the 1971 opening of a Papel Misionero paper mill.\nCapioví at Christmas time:\nThe town is decorated with Christmas decorations handmade from recycled plastic bottles. A lot of the inhabitants get together all year round to make these crafts which are put up in December for visitors to admire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "capiovi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7993,
+    "place_id": "gn-461224",
+    "input": {
+      "place": {
+        "place_id": "gn-461224",
+        "name": "Baldone",
+        "country": "Latvia",
+        "subdivision": "Ķekava",
+        "lat": 56.74451,
+        "lon": 24.40078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baldone",
+          "url": "https://en.wikipedia.org/wiki/Baldone",
+          "text": "Baldone (; German: Baldohn) is a town in Ķekava Municipality, in the Semigallia region of Latvia. The town is famous for its sulfur water springs and was a spa resort. It is connected to the capital Riga by the P91 and P89 roads and the Ķekaviņa river flows through the town.\nThe town serves as the extra-territorial seat of Baldone Parish, which surrounds the town entirely. From 2008 to 2021, the town served as the seat of Baldone Municipality before its dissolution. \nIn 1991, the village of Baldone received city rights, governing also the Baldone Rural Territory until 28 January 2010, when it was split off of the town and renamed Baldone Parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "baldone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7994,
+    "place_id": "gn-4690070",
+    "input": {
+      "place": {
+        "place_id": "gn-4690070",
+        "name": "Falfurrias",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 27.22699,
+        "lon": -98.14417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falfurrias, Texas",
+          "url": "https://en.wikipedia.org/wiki/Falfurrias,_Texas",
+          "text": "Falfurrias ( fal-FURE-ee-əss) is a city in and the county seat of Brooks County, Texas, United States. Its population was 4,609 at the 2020 census, in a county that in the same census was just over 7,000. The town is named for founder Edward Cunningham Lasater's ranch, La Mota de Falfurrias. In 1893, the Falfurrias ranch was one of the largest in Texas at some 350,000 acres (140,000 ha).\nThe biggest industry in Falfurrias is the United States Border Patrol interior checkpoint south of the city on U.S. Route 281. As an indirect consequence, many migrants seeking to bypass the checkpoint by setting off across the arid land die of exposure and dehydration."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "falfurrias",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7998,
+    "place_id": "gn-673367",
+    "input": {
+      "place": {
+        "place_id": "gn-673367",
+        "name": "Mihai Viteazu",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.63333,
+        "lon": 28.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mihai Viteazu, Constanța",
+          "url": "https://en.wikipedia.org/wiki/Mihai_Viteazu,_Constan%C8%9Ba",
+          "text": "Mihai Viteazu (Romanian pronunciation: [miˈhaj viˈte̯azu]) is a commune in Constanța County, Northern Dobruja, Romania. It is situated in the northeastern part of the county, some 60 km (37 mi) from the county seat, Constanța. To the east are the shores of the Black Sea and of Lake Sinoe, while to the north is Tulcea County.\nThe commune consists of two villages, which are 3 km (1.9 mi) apart:\n\nMihai Viteazu, named after the Wallachian prince Michael the Brave (historical name: Sariurt).\nSinoe (historical names: Casapchioi, Turkish: Kasapköy).\nThe Eolica Mihai Viteazu Wind Farm (with a nominal output of up to 80 MW of power) is located on the territory of the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "mihai viteazu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mihai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "viteazu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8002,
+    "place_id": "gn-2158100",
+    "input": {
+      "place": {
+        "place_id": "gn-2158100",
+        "name": "Merbein",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -34.16802,
+        "lon": 142.06599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merbein",
+          "url": "https://en.wikipedia.org/wiki/Merbein",
+          "text": "Merbein is a town in the Rural City of Mildura, Victoria, Australia. It is on the Calder Highway between Mildura and the Murray River crossing at the Abbotsford Bridge to Curlwaa. At the 2016 census, the town had a population of 1,981. Merbein is 12 kilometres from Mildura, 553 kilometres (344 mi) from Melbourne and 389 kilometres (242 mi) from Adelaide.\nThe town is known for farming and is part what is informally called the \"fruit bowl\" or \"food bowl\", the growing region roughly made of the Coomealla and Sunraysia irrigation districts fed by the Darling and Murray rivers. Produce farmed in Merbein include grapes, citrus, mushrooms, green beans, asparagus and pistachios."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "merbein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8009,
+    "place_id": "gn-5104930",
+    "input": {
+      "place": {
+        "place_id": "gn-5104930",
+        "name": "Spring Lake Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.152,
+        "lon": -74.039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Lake Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Spring_Lake_Heights,_New_Jersey",
+          "text": "Spring Lake Heights is a borough located in the southern coastal portion of Monmouth County, New Jersey, United States. As of the 2020 United States census, the borough's population was 4,890, an increase of 177 (+3.8%) from the 2010 census count of 4,713, which in turn reflected a decline of 514 (−9.8%) from the 5,227 counted in the 2000 census.\nThe borough of Spring Lake Heights was formed by an act of the New Jersey Legislature on March 19, 1927, from portions of Wall Township, based on the results of a referendum held on May 3, 1927. The borough was named for Spring Lake, which was named for a clear spring-fed lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "spring lake heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

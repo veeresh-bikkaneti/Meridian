@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 7740,
+    "place_id": "gn-3488980",
+    "input": {
+      "place": {
+        "place_id": "gn-3488980",
+        "name": "Port Royal",
+        "country": "Jamaica",
+        "subdivision": "Kingston",
+        "lat": 17.93738,
+        "lon": -76.84062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Royal",
+          "url": "https://en.wikipedia.org/wiki/Port_Royal",
+          "text": "Port Royal (Jamaican Patois: Puot Rayal) is a small town located at the end of the Palisadoes, at the mouth of Kingston Harbour, in southeastern Jamaica.\nFounded in 1494 by the Spanish, it was once the largest and most prosperous city in the Caribbean, functioning as the centre of shipping and commerce in the Caribbean Sea by the latter half of the 17th century. It was destroyed by an earthquake on 7 June 1692 and its accompanying tsunami, leading to the establishment of Kingston, which would later become the capital and the most populated city in Jamaica. Severe hurricanes have regularly damaged the area. Another severe earthquake occurred in 1907.\nPort Royal became home port to English and Dutch government sponsored privateers who were encouraged to attack Spanish vessels, at a time when many European nations were reluctant to attack the powerful Spanish fleet directly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "port royal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7746,
+    "place_id": "gn-2160053",
+    "input": {
+      "place": {
+        "place_id": "gn-2160053",
+        "name": "Lithgow",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.4845,
+        "lon": 150.14903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lithgow, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lithgow,_New_South_Wales",
+          "text": "Lithgow is a city in the Central Tablelands of New South Wales, Australia and is the administrative centre of the City of Lithgow local government area. It is located in a mountain valley named Lithgow's Valley by John Oxley in honour of William Lithgow, the Auditor-General of the colony of New South Wales.\nLithgow is on the Great Western Highway, about 150 km (95 mi) west of Sydney, or via the old mountain route, Bells Line of Road, from Windsor. At June 2021 Lithgow had an urban population of 11,197.\nLithgow is surrounded by a varied landscape characterised by seven valleys which include national parks, one of which, the Blue Mountains National Park, is a World Heritage Area. The Wollemi National Park is home to the Jurassic-age tree the Wollemi Pine, which was found growing in a remote canyon in the park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "lithgow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7750,
+    "place_id": "gn-2960805",
+    "input": {
+      "place": {
+        "place_id": "gn-2960805",
+        "name": "Beggen",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.64506,
+        "lon": 6.12932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beggen",
+          "url": "https://en.wikipedia.org/wiki/Beggen",
+          "text": "Beggen (German pronunciation: [ˈbɛɡn̩]; Luxembourgish pronunciation: [ˈbæɡən] ) is a district in northern Luxembourg City, in southern Luxembourg. As of 31 December 2025, the district has a population of 3,844 inhabitants.\nThe district is the location of the 19th century Château de Beggen, built on the ruins of a former 18th century paper mill. In the 20th century, the château has served, successively, as the home of the director general of Luxembourg's notable steel company, ARBED, a base for both occupying Wehrmacht forces and, later, the liberating US troops during the Second World War, a hotel, an embassy of the Soviet Union, and currently, the embassy of the Russian Federation in Luxembourg.\nBeggen is home to FC Avenir Beggen, a historically successful football club that has struggled in the last years and now plays at level 3 in the Luxembourg football league."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "beggen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7755,
+    "place_id": "gn-2144127",
+    "input": {
+      "place": {
+        "place_id": "gn-2144127",
+        "name": "Wentworth Falls",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.71033,
+        "lon": 150.37534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wentworth Falls, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Wentworth_Falls,_New_South_Wales",
+          "text": "Wentworth Falls (postcode: 2782) is a town in the Blue Mountains region of New South Wales, situated approximately 100 kilometres (62 mi) west of the Sydney central business district, and about 8 kilometres (5.0 mi) east of Katoomba, Australia on the Great Western Highway, with a Wentworth Falls railway station on the Main Western line. The town is at an elevation of 867 metres (2,844 ft) AHD. At the 2016 census, Wentworth Falls had a population of 6,076.\nWentworth Falls hosts several festivals and events, including the Wentworth Falls Autumn Festival in April, the Wentworth Falls Public School Art and Craft Show in October and the Task Force 72 Annual Regatta in either November or December. Wentworth Falls is home to WFCC or Wentworth Falls Cricket Club. Established in 1892 it is one of the Blue Mountains' longest serving cricket clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "wentworth falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wentworth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7757,
+    "place_id": "gn-3008020",
+    "input": {
+      "place": {
+        "place_id": "gn-3008020",
+        "name": "Lamotte-Beuvron",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.602,
+        "lon": 2.02837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lamotte-Beuvron",
+          "url": "https://en.wikipedia.org/wiki/Lamotte-Beuvron",
+          "text": "Lamotte-Beuvron (French pronunciation: [lamɔt bøvʁɔ̃]) is a town and commune of about 5000 inhabitants in the Loir-et-Cher department of Centre-Val de Loire, France.\nThe French Federal Equestrian Park, one of the largest in Europe, is based in Lamotte-Beuvron. Each July, the Federal Equestrian Park hosts the French Pony Championship, in which more than 15,000 participants compete. It also houses the permanent offices of the French Equestrian Federation and, since 2009, the Bureau of the National Association of the French Riding Pony.\nThe town is the birthplace of the Tarte Tatin dessert, an upside-down apple pastry named after the Tatin sisters, who created it at their Hôtel Tatin, across the street from the Lamotte-Beuvron railway station.\nLamotte-Beuvron's motto is \"Hill yesterday, Mountain tomorrow\" (« Motte hier, Mont demain ») which expresses the confidence of the residents in the expansion of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "lamotte beuvron",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lamotte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beuvron",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7766,
+    "place_id": "gn-2169281",
+    "input": {
+      "place": {
+        "place_id": "gn-2169281",
+        "name": "Daylesford",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.34113,
+        "lon": 144.14256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daylesford, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Daylesford,_Victoria",
+          "text": "Daylesford is a town in the foothills of the Great Dividing Range, within the Shire of Hepburn, Victoria, Australia, approximately 114 kilometres north-west of Melbourne. First established in 1852 as a gold mining town, Daylesford had a population of 2,781 at the 2021 census.\nAs one of Australia's few spa towns, Daylesford is a notable tourist destination. The town's numerous spas, restaurants and galleries are popular alongside the many gardens and country-house-conversion styled bed and breakfasts.\nThe broader area around the town, including Hepburn Springs to the north, is known for its natural spring mineral spas and is the location of over 80 per cent of Australia's effervescent mineral water reserve.\nIt is also the filming location for the third season of The Saddle Club, the twenty first season of The Block and scenes from the 2004 film Love's Brother."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "daylesford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7771,
+    "place_id": "gn-2822939",
+    "input": {
+      "place": {
+        "place_id": "gn-2822939",
+        "name": "Tharandt",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.98525,
+        "lon": 13.58035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tharandt",
+          "url": "https://en.wikipedia.org/wiki/Tharandt",
+          "text": "Tharandt (German: [ˈtaʁant] ) is a municipality in Saxony, Germany, situated on the Weißeritz, 13 km (8.1 mi) southwest of Dresden.\nIt has a Protestant Church and the oldest academy of forestry in Germany, founded as the Royal Saxon Academy of Forestry by Heinrich Cotta in 1811, together with its arboretum, the Forstbotanischer Garten Tharandt. In 2002, a severe flood destroyed many of the academy buildings and the library, including some of its more-than-500-year old books. The academy was rebuilt and today has about 650 students and is famous for its long traditions of educating students from all over the world in (tropical) forestry, resource management and sustainable land use.\nIn the early 20th century, Tharandt was a favorite summer resort of the people of Dresden, one of its principal charms being the magnificent beech woods which surround it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "tharandt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7775,
+    "place_id": "gn-965471",
+    "input": {
+      "place": {
+        "place_id": "gn-965471",
+        "name": "Philipstown",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -30.43733,
+        "lon": 24.47261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Philipstown, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Philipstown,_South_Africa",
+          "text": "Philipstown is a town in the eastern Karoo region of South Africa.\nTown 56 km north-east of De Aar. It was established in May 1863 on the farm Rietfontein and became a municipality in August 1876. Named after Sir Philip Wodehouse (1811–1887), Governor of the Cape Colony from 1861 to 1870.\nAt the jailhouse to the west of town is the building where a small force of the 65th Imperial Yeomanry and Native Police held off a large force of General De Wet's men during the Second Anglo-Boer War. During this action, Corporal William Sopp of the Imperial Yeomanry was awarded the Distinguished Conduct Medal for courage under fire when he rode out from this building to warn the approaching Australian Bushmen who were coming to relieve them that there were hundreds of Boers lying in wait for them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "philipstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7778,
+    "place_id": "gn-2659700",
+    "input": {
+      "place": {
+        "place_id": "gn-2659700",
+        "name": "Meiringen",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.72709,
+        "lon": 8.1872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meiringen",
+          "url": "https://en.wikipedia.org/wiki/Meiringen",
+          "text": "Meiringen (Swiss Standard German pronunciation: [ˈmaɪrɪŋən]) is a municipality in the Interlaken-Oberhasli administrative district in the canton of Bern in Switzerland. Besides the village of Meiringen, the municipality includes the settlements of Balm, Brünigen, Eisenbolgen, Hausen, Prasti, Sand, Stein, Unterbach, Unterheidon, Wylerli and Zaun. The municipal coat of arms shows a black eagle in a yellow field. (\"Or an Eagle displayed Sable crowned, beaked, langued and membered of the first.\")\nFormerly the coat of arms of the entire Oberhasli Talschaft, this design continues the imperial coat of arms.\nMeiringen is famous for the nearby Reichenbach Falls, a waterfall that was the setting for the final showdown between Sir Arthur Conan Doyle's fictional detective Sherlock Holmes and his nemesis Professor Moriarty. The village is also known for its claim to have been the place where meringue was first created."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "meiringen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7783,
+    "place_id": "gn-3113957",
+    "input": {
+      "place": {
+        "place_id": "gn-3113957",
+        "name": "Peñafiel",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 41.60165,
+        "lon": -4.11418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peñafiel, Spain",
+          "url": "https://en.wikipedia.org/wiki/Pe%C3%B1afiel,_Spain",
+          "text": "Peñafiel is a town in the Valladolid Province and the greater autonomous community of Castile and León, Spain. It is best known for the Peñafiel Castle and for its medieval square used for bullfights and named \"Plaza del Coso\" (English: \"Bullring Square\"). The square is surrounded by private homes, but since medieval times the rights to use their windows, balconies and doorways during bullfights are owned by the town (see easement), which auctions them to the highest bidders.\nThe town is full of deep excavated caves which were traditionally used to store the wine because of the constant temperature they kept all year around. These caves have chimney vents for ventilation and to evacuate the gases generated by the fermentation of the wine. These chimney vents dot the landscape in and around the town and the castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "penafiel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7787,
+    "place_id": "gn-3167875",
+    "input": {
+      "place": {
+        "place_id": "gn-3167875",
+        "name": "San Pellegrino Terme",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.83443,
+        "lon": 9.66753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pellegrino Terme",
+          "url": "https://en.wikipedia.org/wiki/San_Pellegrino_Terme",
+          "text": "San Pellegrino Terme (Italian pronunciation: [sam pelleˈɡriːno ˈtɛrme]; Lombard: San Pelegrì Terme) is a commune in the province of Bergamo, Lombardy, Italy. Located in the Val Brembana, it is the location of the beverage company San Pellegrino, where its carbonated mineral water drinks are produced.\nNamed for Saint Peregrine of Auxerre, the town is home to several Art Nouveau edifices from the early 20th century, including the Casinò, the Grand Hotel and the Terme ('Baths').\nLeonardo da Vinci visited the source in Lombardy to sample the town's \"miraculous\" water.\nDuring the 15th and 16th centuries, the town was referred to frequently as Mathusanash Pellegrino in writings coming from the Papal States, France and the Holy Roman Empire. It may have originated from satire concerning the Italian Wars which happened around San Pellegrino from 1494 and 1559."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "san pellegrino terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pellegrino",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7795,
+    "place_id": "gn-5947954",
+    "input": {
+      "place": {
+        "place_id": "gn-5947954",
+        "name": "Ellison",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.93307,
+        "lon": -119.36907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellison, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Ellison,_British_Columbia",
+          "text": "Ellison is an unincorporated community located approximately midway up the Okanagan valley within the local government jurisdiction of the Regional District of Central Okanagan. The Ellison community is founded upon a heritage of agriculture, rural acreages and scattered residential neighbourhoods within scenic valley terrain.\nThe name Ellison was adopted 1 December 1955, and is named after Price Ellison (1852-1932), a stock raiser and wheat grower that settled here in 1876, and at one time owned or controlled 80% of the property in the area. The Ellison Post Office was opened 1 May 1912, with Thomas Clinton as postmaster, and closed 15 May 1920.\nThe geography of Ellison contains many small and rare dryland ecosystems of open, arid grasslands and pine forest savannahs. Streams that support a diversity of animals and plants cross these dry ecosystems."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "ellison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7797,
+    "place_id": "gn-2062428",
+    "input": {
+      "place": {
+        "place_id": "gn-2062428",
+        "name": "Maida Vale",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.95187,
+        "lon": 116.02764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maida Vale, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Maida_Vale,_Western_Australia",
+          "text": "Maida Vale is a suburb of Perth, Western Australia, located within the City of Kalamunda. Kalamunda Road runs through the suburb. Its first European settler was William Henry Mead, who arrived in 1873, built a home in the Ridge Hill area and established the orchard Orangedale. It was named in 1910 after a property name of another settler, WH McCormack. The name is believed to be derived from the eponymous area of West London, which is itself named after the 1806 Battle of Maida.\nWithin the suburb there is a primary school (Maida Vale Primary School), a golf course, numerous parks/ovals, a Seventh Day Adventist church ground and caravan park, two child care centres, a heated swimming pool and several small shops including a BP Petrol station, BWS and a new IGA grocery store."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "maida vale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maida",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7802,
+    "place_id": "gn-6534499",
+    "input": {
+      "place": {
+        "place_id": "gn-6534499",
+        "name": "Pedrengo",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.69598,
+        "lon": 9.73495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedrengo",
+          "url": "https://en.wikipedia.org/wiki/Pedrengo",
+          "text": "Pedrengo (Bergamasque: Pedrèngh) is a comune (municipality) in the Province of Bergamo in the Italian region of Lombardy, located about 50 kilometres (31 mi) northeast of Milan and about 5 kilometres (3 mi) east of Bergamo. As of 31 December 2004, it had a population of 5,321 and an area of 3.6 square kilometres (1.4 mi2).\nPedrengo borders the following municipalities: Albano Sant'Alessandro, Gorle, Scanzorosciate, Seriate, Torre de' Roveri.\nPedrengo is famous for the villas that have remained to this day, thanks to noble and wealthy families that in the past centuries have come to the city. This is thanks to the lush green of parks and gardens, as well as large spaces that characterized the city. These villas were the ideal place to spend the summer months and also served as country residences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "pedrengo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7806,
+    "place_id": "gn-3019875",
+    "input": {
+      "place": {
+        "place_id": "gn-3019875",
+        "name": "Erquy",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.63126,
+        "lon": -2.46507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erquy",
+          "url": "https://en.wikipedia.org/wiki/Erquy",
+          "text": "Erquy (French pronunciation: [ɛʁki]; Breton: Erge-ar-Mor; Gallo: Erqi) is a commune in the Côtes-d'Armor department of Brittany in northwestern France.\nErquy is located in a cove of the Penthièvre coast bordered by cape Erquy on one side and a volcanic rock formation called pointe de la Heussaye on the other.\nIts harbour shelters a flotilla of about 80 trawlers, earning the town a reputation as the scallop \"capital\". The shellfish are collected in the Saint-Brieuc bay.\nIt is a popular summer destination, known for its ten fine sand beaches and pink sandstone houses.\nErquy claims to be the inspiration behind the village of the Asterix comics, which is situated in roughly the same place in ancient Armorica (now Brittany); this would make the villagers likely Coriosolites, a tribe who lived in that area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "erquy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7807,
+    "place_id": "gn-3673887",
+    "input": {
+      "place": {
+        "place_id": "gn-3673887",
+        "name": "Nemocón",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 5.06767,
+        "lon": -73.87769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nemocón",
+          "url": "https://en.wikipedia.org/wiki/Nemoc%C3%B3n",
+          "text": "Nemocón is a municipality and town of Colombia in the Central Savanna Province, part of the department of Cundinamarca. Nemocón, famous for its salt mine, was an important village in the Muisca Confederation, the country in the central Colombian Andes before the arrival of the Spanish. \nThe municipality is situated in the northern part of the Bogotá savanna, part of the Altiplano Cundiboyacense with its urban centre at an altitude of 2,585 metres (8,481 ft) and 65 kilometres (40 mi) from the capital Bogotá. Nemocón is the northeasternmost municipality of the Metropolitan Area of Bogotá and the Bogotá River originates close to Nemocón. The median temperature of Nemocón is 12.8 °C. The municipality borders Tausa in the north, Zipaquirá and Gachancipá in the south, Suesca  in the east, and Cogua in the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "nemocon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7808,
+    "place_id": "gn-488864",
+    "input": {
+      "place": {
+        "place_id": "gn-488864",
+        "name": "Starocherkasskaya",
+        "country": "Russia",
+        "subdivision": "Rostov",
+        "lat": 47.24077,
+        "lon": 40.04186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Starocherkasskaya",
+          "url": "https://en.wikipedia.org/wiki/Starocherkasskaya",
+          "text": "Starocherkasskaya (Russian: Старочерка́сская, lit. 'Old Cherkassk'), formerly Cherkassk (Черка́сск), is a rural locality (a stanitsa) in Aksaysky District of Rostov Oblast, Russia, with origins dating from the late 16th century. It is located on the right bank of the Don River approximately 35 kilometers (22 mi) upstream from the major Russian port city of Rostov-on-Don.\nIt is famous for having been the center of Don Cossack culture and politics for nearly two centuries as the capital of the Don Host Oblast. Due to regular spring floods that submerged the small city on several occasions, the Cossacks moved their capital to higher ground at Novocherkassk in 1805.\nIn and around Starocherkasskaya there are over forty noteworthy historical and cultural sites including the Resurrection (Voskresensky) Cathedral, completed in 1719, and its famous gilded wooden iconostasis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "starocherkasskaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7811,
+    "place_id": "gn-2644271",
+    "input": {
+      "place": {
+        "place_id": "gn-2644271",
+        "name": "Little Paxton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.25045,
+        "lon": -0.25801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Paxton",
+          "url": "https://en.wikipedia.org/wiki/Little_Paxton",
+          "text": "Little Paxton in Cambridgeshire, England is a village and civil parish that lies 5 miles (8.0 km) south of Huntingdon and 1.7 miles (2.7 km) north of St Neots. It is in the district and historic county of Huntingdonshire. Until the 1970s it was a minor village and the church was under threat of closure. The building of a housing estate and a junior school revived its fortunes and the establishment of the Paxton Pits Nature Reserve around part of the nearby gravel pits has brought visitors to the village.\nThe nature reserve features lakes, woodland and part of the Ouse floodplain and is home to large numbers of cormorants and many summer visitors such as nightingales and a large number of passerine birds. Grebes, ducks and geese have colonised the lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "little paxton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paxton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7812,
+    "place_id": "gn-3489200",
+    "input": {
+      "place": {
+        "place_id": "gn-3489200",
+        "name": "Oracabessa",
+        "country": "Jamaica",
+        "subdivision": "Saint Mary Parish",
+        "lat": 18.40319,
+        "lon": -76.94641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oracabessa",
+          "url": "https://en.wikipedia.org/wiki/Oracabessa",
+          "text": "Oracabessa is a small town in Saint Mary Parish, Jamaica\n16 kilometres (10 mi) east of Ocho Rios. Its population is nearly 7,000. Lit in the afternoons by an apricot light that may have inspired its Spanish name, Oracabeza, or \"Golden Head,\" Oracabessa's commercial district consists of a covered produce market and a few shops and bars. The main street is a narrow promenade with a number of well-maintained buildings in the early 20th-century Jamaican vernacular tradition.\nTo the east, Oracabessa merges into a residential community, which is the site of luxury villas such as Goldeneye, Golden Clouds, and Firefly Estate, the latter once the home of British playwright Noël Coward. To the immediate west of Oracabessa is the village of Boscobel, home of Ian Fleming International Airport, Jamaica's newest international airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "oracabessa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7816,
+    "place_id": "gn-2973720",
+    "input": {
+      "place": {
+        "place_id": "gn-2973720",
+        "name": "Suippes",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.12886,
+        "lon": 4.53446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suippes",
+          "url": "https://en.wikipedia.org/wiki/Suippes",
+          "text": "Suippes (French pronunciation: [sɥip]) is a commune in the Marne department in north-eastern France. It was part of the so-called la Champagne pouilleuse, a region battered by conflict during World War I. In the early months of the war, British soldiers were deployed here and were to march to Châlons-sur-Marne to fight the First Battle of the Marne. In October 1918, the United States also deployed a brigade in the area and was assigned as Fourth French Army reserve. The commune was pillaged and razed by the Germans in the same way they attacked Heiltz-le-Maurupt, Marfaux, Fromentieres, and Esternay.\nThe commune is home to France's 40th Artillery Regiment and was once home to 15th Artillery Regiment which operated the nuclear Pluton missile as part of France's deterrent during the Cold War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "suippes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

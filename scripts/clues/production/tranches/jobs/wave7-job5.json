@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 6616,
+    "place_id": "gn-2145921",
+    "input": {
+      "place": {
+        "place_id": "gn-2145921",
+        "name": "Tullamarine",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.70128,
+        "lon": 144.881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tullamarine",
+          "url": "https://en.wikipedia.org/wiki/Tullamarine",
+          "text": "Tullamarine (  TUL-ə-mə-REEN) is a suburb in Melbourne, Victoria, Australia, 14 km (8.7 mi) north-west of Melbourne's Central Business District, located within the Cities of Brimbank, Hume and Merri-bek local government areas. Tullamarine recorded a population of 6,733 at the 2021 census.\nThe suburb is a collection of recent housing estates and light industry. Generally flat and exposed to the hot northerly winds of Melbourne's summer, as well as cold southerly winds in winter, its most notable feature is the nearby Melbourne Airport. Tullamarine's residential area is contained in a circular loop of the Moonee Ponds Creek, and its western boundary is the Melbourne Airport. Tullamarine contains the smaller residential area of Gladstone Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "tullamarine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6625,
+    "place_id": "gn-2655532",
+    "input": {
+      "place": {
+        "place_id": "gn-2655532",
+        "name": "Blaby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.57577,
+        "lon": -1.16403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blaby",
+          "url": "https://en.wikipedia.org/wiki/Blaby",
+          "text": "Blaby () is a large village in the Blaby District in central Leicestershire, England, approximately five miles (8 km) south of Leicester city centre. At the time of the 2011 census, Blaby had a population of 6,194, falling slightly from 6,240 in 2001. Given Blaby's proximity to the city, it is part of the Leicester Urban Area.\nIts name likely came from Old Norse. Blábýr = \"farmstead or village belonging to a man named Blár\" (where the -r is a case ending). There seems to have been a dense patch of Viking settlement in Leicestershire, although some records in the Blaby Library indicate the origin of the village's name was from the first vicar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "blaby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6633,
+    "place_id": "gn-3071024",
+    "input": {
+      "place": {
+        "place_id": "gn-3071024",
+        "name": "Mariánské Lázně",
+        "country": "Czechia",
+        "subdivision": "Carlsbad Region",
+        "lat": 49.96459,
+        "lon": 12.70118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mariánské Lázně",
+          "url": "https://en.wikipedia.org/wiki/Mariánské_Lázně",
+          "text": "Mariánské Lázně (Czech pronunciation: [ˈmarɪjaːnskɛː ˈlaːzɲɛ]; German: Marienbad) is a spa town in Cheb District in the Karlovy Vary Region of the Czech Republic. It has about 14,000 inhabitants. The town proper is located on the border between the Teplá Highlands and Podčeskoleská Hills, in the Slavkovský les Protected Landscape Area. Mariánské Lázně is a railway junction and a popular holiday resort.\nMost of the town's buildings come from its Golden Era in the second half of the 19th century, when many celebrities and top European rulers came to enjoy the curative carbon dioxide springs. The town centre with the spa cultural landscape is well preserved and is protected as an urban monument reservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "marianske lazne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marianske",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lazne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6638,
+    "place_id": "gn-3195890",
+    "input": {
+      "place": {
+        "place_id": "gn-3195890",
+        "name": "Makarska",
+        "country": "Croatia",
+        "subdivision": "Split-Dalmatia",
+        "lat": 43.29694,
+        "lon": 17.01778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makarska",
+          "url": "https://en.wikipedia.org/wiki/Makarska",
+          "text": "Makarska (Croatian pronunciation: [mâkarskaː]) is a town on the Adriatic coastline of Croatia, about 60 km (37 mi) southeast of Split and 140 km (87 mi) northwest of Dubrovnik, in the Split-Dalmatia County.\nMakarska is a prominent regional tourist center, located on a horseshoe-shaped bay between the Biokovo mountains and the Adriatic Sea. The city is noted for its palm-fringed promenade, where cafes, bars and boutiques overlook the harbor. Adjacent to the beach are several large capacity hotels as well as a camping grounds.\nMakarska is the centre of the Makarska Riviera, a popular tourist destination under the Biokovo mountain. It stretches for 60 km (37 mi) between the municipalities of Brela and Gradac."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "makarska",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6641,
+    "place_id": "gn-3461659",
+    "input": {
+      "place": {
+        "place_id": "gn-3461659",
+        "name": "Horizontina",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -27.62583,
+        "lon": -54.30778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horizontina",
+          "url": "https://en.wikipedia.org/wiki/Horizontina",
+          "text": "Horizontina (Portuguese pronunciation: [oɾizõˈtʃĩnɐ]) is a municipality in Rio Grande do Sul, in southern Brazil, with 19,389 inhabitants in 2020. It is located 496 km north of the state capital. The first settlers were German, Italian and Polish immigrants who arrived in the region in 1927. Nowadays, most of the inhabitants are of German-Brazilian descent.\nThe city has an average annual temperature of 20.8 °C. Horizontina's human development index is 0.783, considered high by the United Nations Development Programme, ranking 110th in Brazil, 11th in the state of Rio Grande do Sul, and 1st in its micro-region.\nThe colonization of the city occurred in 1927, when the first German colonists arrived in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "horizontina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6675,
+    "place_id": "gn-772748",
+    "input": {
+      "place": {
+        "place_id": "gn-772748",
+        "name": "Działdowo",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 53.23958,
+        "lon": 20.17004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Działdowo",
+          "url": "https://en.wikipedia.org/wiki/Działdowo",
+          "text": "Działdowo (pronounced [d͡ʑau̯ˈdɔvɔ]) is a town in northern Poland with 20,935 inhabitants as of December 2021, the capital of Działdowo County. As part of Masuria, it is situated in the Warmian-Masurian Voivodeship.\nFounded in the Middle Ages and granted town rights in 1344, the town features heritage sites in various styles, including Gothic, Baroque, Gothic Revival and Baroque Revival, a preserved medieval urban layout with a market square and a medieval castle. It is particularly known as the location of the Soldau concentration camp during the German occupation of Poland in World War II. The town is a major railroad junction connecting the capital city of Warsaw with Gdańsk and Olsztyn to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "dzia dowo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dzia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dowo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6678,
+    "place_id": "gn-1010586",
+    "input": {
+      "place": {
+        "place_id": "gn-1010586",
+        "name": "Dewetsdorp",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.58274,
+        "lon": 26.66511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dewetsdorp",
+          "url": "https://en.wikipedia.org/wiki/Dewetsdorp",
+          "text": "Dewetsdorp is a small town in the Free State province of South Africa, 68 km south-east of Bloemfontein. The town was set up, without approval of the Volksraad, by field-cornet Jacobus de Wet, father of the Second Anglo-Boer War general Christiaan de Wet. Eventually recognized officially, the town became a municipality and named De Wet in 1890. General Christiaan de Wet successfully attacked English forces stationed there in November 1900.\nIt was laid out on the farm Kareefontein in 1876 and at first bore this name. Applications to the Volksraad in 1876 for the establishment of a village failed, but another request in 1879 led to recognition in 1880 under the name Dewetsdorp."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "dewetsdorp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6686,
+    "place_id": "gn-189190",
+    "input": {
+      "place": {
+        "place_id": "gn-189190",
+        "name": "Lokichar",
+        "country": "Kenya",
+        "subdivision": "Turkana County",
+        "lat": 2.38116,
+        "lon": 35.65123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lokichar",
+          "url": "https://en.wikipedia.org/wiki/Lokichar",
+          "text": "Lokichar is a small town in Kenya's Turkana County.\nLokichar is situated in the heart of the dusty and arid Turkana basin (desert) in the Rift Valley, 550 km north-east of Nairobi.\nUntil 2010 it was a forgotten backwater of Turkana cattle-based pastoralists with a pre-2010 population under 1,000. The principal activity was basket weaving and other native crafts to cater for the sparse traffic.\nThe 2011 discovery of oil by Tullow Oil, talk of the Uganda/South Sudan oil pipeline to Lamu passing through, and the opening of the border to the new state of South Sudan has started to transform its prospects. The 2012 population for the area was 2,000 and rising."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "lokichar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6702,
+    "place_id": "gn-296137",
+    "input": {
+      "place": {
+        "place_id": "gn-296137",
+        "name": "Yumurtalık",
+        "country": "Türkiye",
+        "subdivision": "Adana",
+        "lat": 36.76863,
+        "lon": 35.78938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yumurtalık",
+          "url": "https://en.wikipedia.org/wiki/Yumurtalık",
+          "text": "Yumurtalık (Turkish: [juˈmuɾtaɫɯk]), formerly called Aegeae, Ayas, Lyeys or Laiazzo, is a municipality and district of Adana Province, Turkey. Its area is 447 km2, and its population is 17,654 (2022). It is a Mediterranean port and resort town at a distance of about 40 km (25 mi) from Adana city. The resident population of the town Yumurtalık is 5,739 (2022), but in the summer, it rises to 40,000 people since many inhabitants of Adana have holiday homes here. There are also many daily visitors during the holiday season.\nYumurtalık has a large free economic zone housing the production units of up to thirty companies presently in operation or in phase of being built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yumurtal k",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yumurtal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6706,
+    "place_id": "gn-3091256",
+    "input": {
+      "place": {
+        "place_id": "gn-3091256",
+        "name": "Myślenice",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.83383,
+        "lon": 19.9383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myślenice",
+          "url": "https://en.wikipedia.org/wiki/Myślenice",
+          "text": "Myślenice [mɨɕlɛˈɲit͡sɛ] is a town in southern Poland situated in the Lesser Poland Voivodeship, 30 km south of Kraków. The town is divided into six districts. The most popular of them, Zarabie, is a famous tourist destination. It is located behind the Raba river (Zarabie meaning \"Beyond the (River) Raba\"), next to Chełm district on the slope of the hill of the same name, where is a view tower and a landscape park and ski lifts.\nMyślenice is a city located in the tectonic window area, between the Dalin, Chełm and Uklejna hills. The city is also located on the border of two Beskids (in the south) and the foothills (in the north)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "myslenice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6708,
+    "place_id": "gn-3352263",
+    "input": {
+      "place": {
+        "place_id": "gn-3352263",
+        "name": "Warmbad",
+        "country": "Namibia",
+        "subdivision": "Karas Region",
+        "lat": -28.44611,
+        "lon": 18.73569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warmbad, Namibia",
+          "url": "https://en.wikipedia.org/wiki/Warmbad,_Namibia",
+          "text": "Warmbad (Afrikaans and German for Warm Bath, Nama: |Aixa-aibes) is a settlement located in the ǁKaras Region of southern Namibia. It is situated south of Karasburg at the Homs River, close to the border with South Africa, and belongs to the Karasburg electoral constituency.\nFirst occupied by traders, hunters, and missionaries of different congregations, the hot springs from which the settlement's name is derived were first exploited at the beginning of the 20th century and are now being developed into a tourist attraction. Recently, uranium was discovered in the area.\nClimatically, Warmbad lies between the coastal desert and the Karoo. Winter frost occurs and very little rainfall (annual average: 96 millimetres (3.8 in))."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "warmbad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6709,
+    "place_id": "gn-3369179",
+    "input": {
+      "place": {
+        "place_id": "gn-3369179",
+        "name": "Caledon",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.22997,
+        "lon": 19.4265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caledon, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Caledon,_South_Africa",
+          "text": "Caledon, originally named Swartberg, is a town in the Overberg region in the Western Cape province of South Africa, located about 100 kilometres (62 mi) east of Cape Town next to mineral-rich hot springs. As of 2011 it had a population of 13,020. It is located in, and the seat of, the Theewaterskloof Local Municipality.\nThe town continues to be inhabited by Khoikhoi communities who, before the arrival of colonizing forces, were the wealthiest on this land.\nCaledon is situated on the N2 national route, 113 kilometres (70 mi) by road from central Cape Town. At Caledon the N2 is met by the R316 from Arniston and Bredasdorp, and the R320 from Hermanus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "caledon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6713,
+    "place_id": "gn-3473665",
+    "input": {
+      "place": {
+        "place_id": "gn-3473665",
+        "name": "Leme",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.9621,
+        "lon": -43.16831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leme, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Leme,_Rio_de_Janeiro",
+          "text": "Leme (Portuguese pronunciation: [ˈlẽmi], rudder) is an upper-middle-class neighborhood in the South Zone of the City of Rio de Janeiro, Brazil, next to Copacabana, Urca and Botafogo. The neighborhood takes its name from a nearby rock formation whose shape resembles the rudder of a ship.\nIn 1975 the hotel Le Méridien, one of the tallest buildings in the Leme beach, was built.  Le Méridien closed in 2007 and was sold in 2009 to Windsor Hotels for around R$170 million. After a refurbishment, it was reopened in January 2011 as the Windsor Atlantica Hotel.\nEvery year in the days leading up to New Year's on December 31 the traditional processions honoring Yemaja begin here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "leme",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6717,
+    "place_id": "gn-4558510",
+    "input": {
+      "place": {
+        "place_id": "gn-4558510",
+        "name": "Hartranft",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.98483,
+        "lon": -75.14712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hartranft, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Hartranft,_Philadelphia",
+          "text": "Hartranft is a neighborhood in the central part of North Philadelphia section of Philadelphia, Pennsylvania.\nHartranft is on the border of the predominantly Black central region of North Philadelphia and the predominantly Hispanic eastern section of North Philadelphia. Bounded by 6th Street to the east, Broad Street to the west, Allegheny Avenue to the north, and Cecil B. Moore Avenue to the south. Bordering neighborhoods are Fairhill to the north, West Kensington to the east, Cecil B. Moore to the west, and Ludlow to the south.\nThe neighborhood falls into the ZIP Codes 19122 and 19133.\nThe demolished Northern National Bank building was added to the National Register of Historic Places in 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hartranft",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6742,
+    "place_id": "gn-8555644",
+    "input": {
+      "place": {
+        "place_id": "gn-8555644",
+        "name": "Bondi Junction",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.89275,
+        "lon": 151.24723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bondi Junction",
+          "url": "https://en.wikipedia.org/wiki/Bondi_Junction",
+          "text": "Bondi Junction is an eastern suburb of Sydney, in the state of New South Wales, Australia. It is 6 kilometres east of the Sydney central business district and is part of the local government area of Waverley.\nBondi Junction is a largely commercial area which has undergone many changes since the late 20th century. There have been many major commercial and residential developments around the main street and surrounding area, notably a new bus/rail interchange and large shopping mall. Many of the original pubs have been maintained, notably, the Nelson Hotel, so named because of its location on Nelson Street. Bondi Beach is a neighbouring suburb to the east with its namesake beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "bondi junction",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bondi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "junction",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6747,
+    "place_id": "gn-1227037",
+    "input": {
+      "place": {
+        "place_id": "gn-1227037",
+        "name": "Tangalle",
+        "country": "Sri Lanka",
+        "subdivision": "Southern Province",
+        "lat": 6.02338,
+        "lon": 80.79738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangalle",
+          "url": "https://en.wikipedia.org/wiki/Tangalle",
+          "text": "Tangalle (Sinhala තංගල්ල [ˈtaŋɡalːə], Tamil: தங்காலை) (also known as Tangalla) is a large town in Hambantota District, Southern Province, Sri Lanka, governed by an Urban Council. It is one of the largest towns in southern province. It is located 195 km (121 mi) south of Colombo and 35 km (22 mi) east of Matara. It has a mild climate, in comparison to the rest of the district, and sandy beaches.\nTangalle is a regionally important fishing port, situated on one of the largest bays in Sri Lanka, which is protected from the ocean by an enclosing reef. It is a centre of tourism and a popular holiday destination on the south coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tangalle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6754,
+    "place_id": "gn-2156578",
+    "input": {
+      "place": {
+        "place_id": "gn-2156578",
+        "name": "Mount Martha",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.26667,
+        "lon": 145.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Martha, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Mount_Martha,_Victoria",
+          "text": "Mount Martha is a suburb on the Mornington Peninsula in Melbourne, Victoria, Australia, 50 kilometres (31 mi) south-east of Melbourne's Central Business District, located within the Shire of Mornington Peninsula local government area. Mount Martha recorded a population of 19,846 at the 2021 census.\nMount Martha is located on the southeastern shores of Port Phillip and offers a bathing beach. A boardwalk winds its way for more than 5 kilometres (3 mi) along the Balcombe Creek, its North beach mouth to the Briars Historic Park. The suburb's highest point bears the area's name and reaches 160 metres (520 ft). The peak was named in 1836 after Captain William Hobson's mother, Martha Jones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mount martha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6755,
+    "place_id": "gn-2167426",
+    "input": {
+      "place": {
+        "place_id": "gn-2167426",
+        "name": "Emerald",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -23.52296,
+        "lon": 148.15784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emerald, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Emerald,_Queensland",
+          "text": "Emerald is a town and locality in the Central Highlands Region, Queensland, Australia. Situated on the Nogoa River, Emerald lies approximately 270 kilometres west of Rockhampton and serves as major service centre for the region's extensive agricultural and mining industries. Emerald's climate is classified as subtropical, with hot summers and mild winters. The town is the headquarters for the Central Highlands Regional Council. In the 2021 census, the locality of Emerald had a population of 14,904.\nEmerald was founded as the terminus of the Central Western railway line in 1879, however this lasted only a year before subsequent lines were built to Springsure and Clermont leading to Emerald becoming a transport hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "emerald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6756,
+    "place_id": "gn-2174400",
+    "input": {
+      "place": {
+        "place_id": "gn-2174400",
+        "name": "Bowral",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.4775,
+        "lon": 150.4204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowral",
+          "url": "https://en.wikipedia.org/wiki/Bowral",
+          "text": "Bowral ( BOW-rəl) is the largest town in the Southern Highlands of New South Wales, Australia. It is 132 kilometres (82 mi) south-west of Sydney and 169 kilometres (105 mi) north-east of Canberra. It is the main business and entertainment precinct of the Wingecarribee Shire and the Southern Highlands. \nBowral once served as a rural summer retreat for the gentry of Sydney, resulting in the establishment of a number of estates and manor houses in the district. Bowral is often associated with the cricketer Sir Donald Bradman.\nBowral is close to several other historic towns, being 5 kilometres (3 mi) from Mittagong, 9 kilometres (6 mi) from both Moss Vale and Berrima."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "bowral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6791,
+    "place_id": "gn-5356521",
+    "input": {
+      "place": {
+        "place_id": "gn-5356521",
+        "name": "Hermosa Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.86224,
+        "lon": -118.39952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hermosa Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Hermosa_Beach,_California",
+          "text": "Hermosa Beach (Hermosa, Spanish for \"Beautiful\") is a beachfront city in Los Angeles County, California, United States. Its population was 19,728 at the 2020 U.S. census. The city is located in the South Bay region of the Greater Los Angeles area; it is one of the three Beach Cities. Hermosa Beach is bordered by the other two, Manhattan Beach to the north and Redondo Beach to the south and east.\nThe city's beach is popular for sunbathing, beach volleyball, surfing, paddleboarding, bars, cycling and running. The city itself extends only about 15 blocks from east to west and 40 blocks from north to south, with Pacific Coast Highway running down the middle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "hermosa beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hermosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

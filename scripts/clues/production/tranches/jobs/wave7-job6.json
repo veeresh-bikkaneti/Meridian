@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 6792,
+    "place_id": "gn-5515743",
+    "input": {
+      "place": {
+        "place_id": "gn-5515743",
+        "name": "Guymon",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.6828,
+        "lon": -101.48155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guymon, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Guymon,_Oklahoma",
+          "text": "Guymon ( GHY-mən) is a city in and the county seat of Texas County, in the panhandle of Oklahoma, United States. As of the 2020 census, the city population was 12,965, an increase of 13.3% from 11,442 in 2010, and represents more than half of the population of the county, along with being the largest city in the Oklahoma Panhandle. Cattle feedlots, corporate pork farms, and natural gas production dominate its economy, with wind energy production and transmission recently diversifying landowners' farms. Guymon was the only municipality in the state of Oklahoma in which the majority of the population was Hispanic as recorded in the 2010 and 2020 United States Census reports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "guymon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6803,
+    "place_id": "gn-750214",
+    "input": {
+      "place": {
+        "place_id": "gn-750214",
+        "name": "Büyükdere",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.16048,
+        "lon": 29.04154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Büyükdere, Sarıyer",
+          "url": "https://en.wikipedia.org/wiki/Büyükdere,_Sarıyer",
+          "text": "Büyükdere is a neighbourhood in the municipality and district of Sarıyer, Istanbul Province, Turkey. Its population is 8,586 (2022). It is situated on the European shore of the Bosphorus strait about 2 km (1.2 mi) southwest of Sarıyer. Its name means 'big stream' in Turkish, in reference to the river that used to flow into the Bosphorus here.\nA 14-kilometre-long (8.7 mi) major road, Büyükdere Avenue, starts south of Büyükdere, and runs inland as far as  Şişli.\nIn the 19th century Büyükdere, like neighbouring Tarabya, was a popular summer retreat for members of Istanbul's foreign and diplomatic community and it still has several churches and embassy buildings dating back to that period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "buyukdere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6807,
+    "place_id": "gn-1635814",
+    "input": {
+      "place": {
+        "place_id": "gn-1635814",
+        "name": "Atauro",
+        "country": "Timor-Leste",
+        "subdivision": "Dili Municipality",
+        "lat": -8.26667,
+        "lon": 125.60139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atauro",
+          "url": "https://en.wikipedia.org/wiki/Atauro",
+          "text": "Atauro (Portuguese: Ilha de Ataúro, Tetun: Illa Ataúru, Indonesian: Pulau Atauro), also known as Kambing Island (Indonesian: Pulau Kambing), is an island and municipality (Portuguese: Município Ataúro, Tetun: Munisípiu Atauro or Ata'uro) of Timor-Leste. Atauro is a small oceanic island situated north of Dili, on the extinct Wetar segment of the volcanic Inner Banda Arc, between the Indonesian islands of Alor and Wetar. The nearest island is the Indonesian island of Liran, 13.0 km (8.1 mi) to the northeast. At the 2015 census, it had 9,274 inhabitants.\nAtauro was one of the administrative posts (formerly subdistricts) of Dili Municipality until it became a separate municipality with effect from 1 January 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "atauro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6832,
+    "place_id": "gn-3183490",
+    "input": {
+      "place": {
+        "place_id": "gn-3183490",
+        "name": "Acqui Terme",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.67552,
+        "lon": 8.46934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acqui Terme",
+          "url": "https://en.wikipedia.org/wiki/Acqui_Terme",
+          "text": "Acqui Terme  (Italian pronunciation: [ˈakkwi ˈtɛrme]; Piedmontese: Àich [ˈɑjk]) is a city and comune (municipality) in the province of Alessandria, Piedmont, northern Italy. It is about 35 kilometres (22 mi) south-southwest of Alessandria.  It is one of the principal winemaking communes of the Italian DOCG wine Brachetto d'Acqui.\nThe city's hot sulphur springs have been famous since this was the Roman town of Aquae Statiellae; the ancient baths are referred to by Paulus Diaconus and the chronicler Liutprand of Cremona. In 1870 Giovanni Ceruti designed a small pavilion, known as La Bollente, for the spot at the centre of the town where the water temperature up to 75 °C (167 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "acqui terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "acqui",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6835,
+    "place_id": "gn-3362870",
+    "input": {
+      "place": {
+        "place_id": "gn-3362870",
+        "name": "Piketberg",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -32.90323,
+        "lon": 18.75704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piketberg",
+          "url": "https://en.wikipedia.org/wiki/Piketberg",
+          "text": "Piketberg (also sometimes spelt Piquetberg in the past) is a town in the Western Cape, South Africa, located about 80 km east of Saldanha Bay.  The original spelling of the name was \"Piquetberg\". The town is in the foothills of the Piketberg mountains, a range of low mountains formed from Table Mountain Sandstone.\nThe area around the mountains is conducive to the farming of wheat, while the area on top of the Piketberg Mountains range (called Piket-Bo-Berg), being cooler and generally frost-free, is suited to the farming of fruit and Rooibos Tea.  Piketberg has a large Dutch Reformed Church designed by the architect Carl Otto Hager in his trademark neo-Gothic style."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "piketberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6851,
+    "place_id": "gn-5359864",
+    "input": {
+      "place": {
+        "place_id": "gn-5359864",
+        "name": "Isla Vista",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.41333,
+        "lon": -119.86097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isla Vista, California",
+          "url": "https://en.wikipedia.org/wiki/Isla_Vista,_California",
+          "text": "Isla Vista (English:  EYE-luh VIS-tuh; Spanish: [ˈisla ˈβista], lit. 'island view') is an unincorporated community in Santa Barbara County, California, United States. As of 2020 census, the community had a population of 15,500. For statistical purposes, the United States Census Bureau has defined the community as a census-designated place (CDP). The majority of residents are college students at the University of California, Santa Barbara, or Santa Barbara City College. The beachside community of Isla Vista lies on a flat plateau about 30 feet (9 m) in elevation, separated from the beach by a bluff.\nIsla Vista enjoys a Mediterranean climate and often has slightly less precipitation than Santa Barbara and Goleta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "isla vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "isla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6854,
+    "place_id": "gn-5828648",
+    "input": {
+      "place": {
+        "place_id": "gn-5828648",
+        "name": "Jackson",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 43.47993,
+        "lon": -110.76243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jackson, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Jackson,_Wyoming",
+          "text": "Jackson is a resort town in Teton County, Wyoming, United States. The population was 10,760 at the 2020 census, and was estimated at 10,680 in 2024. It is Teton County's only incorporated municipality and its county seat, and it is the largest incorporated town in Wyoming. Jackson is the principal town of the Jackson, WY-ID Micropolitan Statistical Area, which includes Teton County in Wyoming and Teton County in Idaho. The town is often called Jackson Hole, which is the name of the valley in which it is located. Jackson is a popular tourist destination due to its proximity to the ski resorts Jackson Hole Mountain, Snow King Mountain, and Grand Targhee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "jackson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6855,
+    "place_id": "gn-6176421",
+    "input": {
+      "place": {
+        "place_id": "gn-6176421",
+        "name": "Wasaga Beach",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.5168,
+        "lon": -80.01637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wasaga Beach",
+          "url": "https://en.wikipedia.org/wiki/Wasaga_Beach",
+          "text": "Wasaga Beach (or simply Wasaga) is a town in Simcoe County, Ontario, Canada. Situated along the longest freshwater beach in the world, it is a popular summer tourist destination. It is located at the southern end of Nottawasaga Bay (a sub-bay of Georgian Bay) approximately 150 km (93 mi) north of Toronto and about 40 km (25 mi) northwest of Barrie. To the west, Collingwood and The Blue Mountains also attract visitors much of the year. The town is situated along a very long sandy beach partly between the bay and the Nottawasaga River. The beaches are part of Wasaga Beach Provincial Park; the park area totals 168 hectares (420 acres)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "wasaga beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wasaga",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6883,
+    "place_id": "gn-2648273",
+    "input": {
+      "place": {
+        "place_id": "gn-2648273",
+        "name": "Gosforth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55,
+        "lon": -1.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gosforth",
+          "url": "https://en.wikipedia.org/wiki/Gosforth",
+          "text": "Gosforth is an area of Newcastle upon Tyne, in Tyne and Wear, England, situated north of the city centre. It constituted a separate urban district of Northumberland from 1895 until 1974 before officially merging with the city of Newcastle upon Tyne. In 2001, it had a population of 23,620.\nThe Ouseburn divides Gosforth from High Heaton and Longbenton to the east, while the smaller Craghall Burn forms the boundary with Jesmond and the Town Moor to the south. Kenton and Coxlodge lie to the west. There are four electoral wards on Newcastle City Council that include parts of Gosforth: Dene and South Gosforth, Fawdon and West Gosforth, Gosforth, and Parklands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "gosforth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6899,
+    "place_id": "gn-323559",
+    "input": {
+      "place": {
+        "place_id": "gn-323559",
+        "name": "Arpaçbahşiş",
+        "country": "Türkiye",
+        "subdivision": "Mersin",
+        "lat": 36.64552,
+        "lon": 34.35077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arpaçbahşiş",
+          "url": "https://en.wikipedia.org/wiki/Arpaçbahşiş",
+          "text": "Arpaçbahşiş is a neighborhood within the municipality and district of Erdemli, Mersin Province, Turkey, with a population of 7,285 as of 2022. Prior to the administrative reorganization of 2013, it was classified as a town (belde). Currently, Arpaçbahşiş serves as a summer resort area, primarily attracting Turkish tourists. Its coastal location offers a shoreline that draws seasonal visitors seeking a local retreat. In the wake of the earthquake in Kahramanmaraş, many individuals affected by the disaster have begun to reside in the area during the winter months, with some transforming their vacation properties into primary residences. Additionally, in recent years, there has been a notable increase in residents from Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "arpacbahsis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6900,
+    "place_id": "gn-3668025",
+    "input": {
+      "place": {
+        "place_id": "gn-3668025",
+        "name": "Silvia",
+        "country": "Colombia",
+        "subdivision": "Cauca Department",
+        "lat": 2.61557,
+        "lon": -76.38261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silvia, Cauca",
+          "url": "https://en.wikipedia.org/wiki/Silvia,_Cauca",
+          "text": "Silvia is a town and municipality in the Cauca Department, Colombia.  It is often visited as a weekend getaway by residents of Cali, which has a much hotter climate.  The area is populated by many people of Guambiano descent, who maintain their traditional ways of life in the area surrounding Silvia.\nThere are many fine bakeries and inexpensive restaurants in town, most within half a kilometer of the large public square.  In the last decade, the large trees that formerly grew on the square were removed due to damages their roots were causing, and the square was renovated to include more seating, and replanted with a greater variety of vegetation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "silvia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6903,
+    "place_id": "gn-4562275",
+    "input": {
+      "place": {
+        "place_id": "gn-4562275",
+        "name": "Willow Street",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.97927,
+        "lon": -76.27635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willow Street, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Willow_Street,_Pennsylvania",
+          "text": "Willow Street is an unincorporated community and census-designated place (CDP) in Lancaster County, Pennsylvania, United States. The population was 7,578 at the 2010 census. In the early part of the 20th century, the main thoroughfare in town was lined with willow trees on both sides for the length of the town, hence the community's name. As time passed and the town grew, the road was widened and sidewalks were installed, which required the trees be removed. Only a few of the original trees remain to this day. One tall willow tree was situated behind Kendig Square Plaza, but it was downed during a wind storm during late February/early March 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "willow street",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "willow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "street",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6904,
+    "place_id": "gn-4940134",
+    "input": {
+      "place": {
+        "place_id": "gn-4940134",
+        "name": "Hull",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.30204,
+        "lon": -70.90782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hull, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Hull,_Massachusetts",
+          "text": "Hull is a town in Plymouth County, Massachusetts, United States, located on a peninsula at the southern edge of Boston Harbor. Its population was 10,072 at the 2020 census.  Hull is the smallest town by land area in Plymouth County and the eleventh smallest in the state.  However, its population density is nearly four times that of Massachusetts as a whole.\nHull is home to the popular resort community of Nantasket Beach and has been the summer home to several luminaries throughout the years, including Calvin Coolidge and former Boston mayor John F. Fitzgerald (also known as \"Honey Fitz\"), the father of Rose Kennedy and grandfather of John F. Kennedy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hull",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6905,
+    "place_id": "gn-5108707",
+    "input": {
+      "place": {
+        "place_id": "gn-5108707",
+        "name": "Bellmore",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.66871,
+        "lon": -73.52707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellmore, New York",
+          "url": "https://en.wikipedia.org/wiki/Bellmore,_New_York",
+          "text": "Bellmore is a hamlet and census-designated place (CDP) in Nassau County, New York, United States. The population according to the 2024 census is 15,937. Bellmore is located on the south shore of Long Island 6 miles (10 km) north of Jones Beach State Park, approximately 27 miles (43 km) east of Manhattan, and 10 miles (16 km) east of the Nassau-Queens (New York City) Line.\nBellmore, along with North Bellmore, are referred to collectively as \"The Bellmores\". The part of the latter area south of Merrick Road (or possibly south of Sunrise Highway) is sometimes called \"South Bellmore\".\nBellmore serves as a suburb of New York City on Long Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bellmore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6918,
+    "place_id": "gn-725586",
+    "input": {
+      "place": {
+        "place_id": "gn-725586",
+        "name": "Yakoruda",
+        "country": "Bulgaria",
+        "subdivision": "Blagoevgrad",
+        "lat": 42.02528,
+        "lon": 23.68417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakoruda",
+          "url": "https://en.wikipedia.org/wiki/Yakoruda",
+          "text": "Yakoruda (Bulgarian: Якоруда [jɐkoˈrudɐ]) is a Bulgarian town located in the southwestern part of the country. A part of the Blagoevgrad Province, it is the seat of Yakuroda Municipality which is the north-easternmost in the province. The town lies in the Rhodope Mountains, along the Mesta River, 26 km west of the town of Velingrad. Yakoruda was proclaimed a town on 9 September 1964, having previously been officially classified as a village.\nA plurality of the residents are Muslim Bulgarians (Pomaks), the rest being for the most part Eastern Orthodox.\nNotable natives are Survivor BG season one runner-up Ahmed Shuganov, Minister of Labour and Social Policy Emiliya Maslarova, and Dr."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "yakoruda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6922,
+    "place_id": "gn-1007476",
+    "input": {
+      "place": {
+        "place_id": "gn-1007476",
+        "name": "Dullstroom",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.41672,
+        "lon": 30.10609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dullstroom",
+          "url": "https://en.wikipedia.org/wiki/Dullstroom",
+          "text": "Dullstroom, also known as Emnothweni, is a small town in Mpumalanga province, South Africa. The town lies 35 kilometres (22 miles) north of Belfast and some 53 kilometres (33 miles) south-west of Lydenburg on the R540 road.\nAlong with Barkly East and Underberg, it is one of South Africa's premier flyfishing destinations. The town features the highest railway station in South Africa at 2,077 metres (6,814 feet) above sea level as well as at the foot of De Berg, the highest point in the province at 2,332 metres (7,651 feet).  Dullstroom's location on the Highveld plateau is the reason that its climate is so different from the surrounding areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "dullstroom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6925,
+    "place_id": "gn-1512372",
+    "input": {
+      "place": {
+        "place_id": "gn-1512372",
+        "name": "Yangiobod",
+        "country": "Uzbekistan",
+        "subdivision": "Tashkent Region",
+        "lat": 41.11919,
+        "lon": 70.09406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangiobod",
+          "url": "https://en.wikipedia.org/wiki/Yangiobod",
+          "text": "Yangiobod (Uzbek: Yangiobod) is a city located in the Angren municipality of Tashkent Region, Uzbekistan. Its population is 8,900 (2016).\nA secret town during the Soviet Union because of the uranium mine present, these days no uranium is mined anymore and the town is known as a summer holiday resort for locals from Tashkent. A couple of kilometers from the town there is a mineral water spring which is mainstream in the town and different urban areas.\nIn 2021 preparations for the environmental remediation at the former mine, and also at Charkesar, started with the assistance of a €2 million grant from the European Bank for Reconstruction and Development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "yangiobod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6953,
+    "place_id": "gn-308220",
+    "input": {
+      "place": {
+        "place_id": "gn-308220",
+        "name": "Kemer",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.59778,
+        "lon": 30.56056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemer",
+          "url": "https://en.wikipedia.org/wiki/Kemer",
+          "text": "Kemer is a seaside resort, municipality and district of Antalya Province, Turkey. Its area is 412 km2, and its population is 49,383 (2022). It is on the Mediterranean coast, 43 km (27 mi) west of the city of Antalya, on the Turkish Riviera.\nKemer is on the Gulf of Antalya, 53 km (33 mi) of sea coast with the skirts of the western Taurus Mountains behind. The coast has the typical Mediterranean hot, dry weather and warm sea. Until the early 1980s this was a quiet rural district, but today the town of Kemer and coastal villages in the district play a very important part in tourism in Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kemer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6959,
+    "place_id": "gn-3164931",
+    "input": {
+      "place": {
+        "place_id": "gn-3164931",
+        "name": "Valdobbiadene",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.89689,
+        "lon": 11.98245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valdobbiadene",
+          "url": "https://en.wikipedia.org/wiki/Valdobbiadene",
+          "text": "Valdobbiadene (Italian: [ˌvaldobˈbjaːdene]; Venetian: Valdobiàden) is a town and comune (municipality) in the province of Treviso, Veneto, Italy.\nThe saint Venantius Fortunatus was born in the town in the 6th century.\nValdobbiadene is a wine growing area: located below the Alpine-Dolomite areas of Veneto, the climate allows the cultivation of the Glera variety of grape. The Conegliano Valdobbiadene area is the home of the best Prosecco, an extra dry sparkling white wine. Prosecco brands that derive from this area include  Altaneve, Bisol, Mionetto, Col Vetoraz, Coda, Valdo and others. On 7 July 2019, Le Colline del Prosecco di Conegliano e Valdobbiadene was inscribed as a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "valdobbiadene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6973,
+    "place_id": "gn-4746457",
+    "input": {
+      "place": {
+        "place_id": "gn-4746457",
+        "name": "Belle Haven",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.78539,
+        "lon": -77.06303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belle Haven, Fairfax County, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Belle_Haven,_Fairfax_County,_Virginia",
+          "text": "Belle Haven is a census-designated place (CDP) in Fairfax County, Virginia, United States. Nearby CDPs are Huntington (northwest), Groveton (southwest) and Fort Hunt (south). The population of Belle Haven was 6,851 at the 2020 census.\nThe CDP is located just south of Old Town Alexandria and bounded on the west by Richmond Highway (U.S. 1) and on the east by the Potomac River. It encompasses Belle Haven, a wealthy subdivision dating from the 1920s, and several adjoining neighborhoods. Some, particularly New Alexandria and Belle View, are among the lowest-lying residential areas of Fairfax County, and sustained extensive flood damage from storms including 2003's Hurricane Isabel and 1972's Hurricane Agnes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "belle haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
