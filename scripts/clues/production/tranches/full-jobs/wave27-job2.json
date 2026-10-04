@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 5260,
+    "attempt": 5221,
+    "place_id": "gn-2511449",
+    "input": {
+      "place": {
+        "place_id": "gn-2511449",
+        "name": "San Antonio Abad",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.61767,
+        "lon": -0.99665
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio Abad, Cartagena",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_Abad,_Cartagena",
+          "text": "San Antonio Abad is a district of the Spanish municipality Cartagena. It is located in the south of the territory, has an area of 9.738 km2 and a population of 45,335.\nThe district has a coastal area in its south-west and a cave and paleonthologic site named Cueva de los Aviones is occurs in San Antonio Abad.\nAccording to the Instituto Nacional de Estadística, there are three main neighbourhoods in the district: Barrio Peral, San Antonio Abad and Barrio de la Concepción. San Antonio Abad is in the north-east and consists of four neighbourhoods: Urbanización Media Sala, which is the one in the most north and is home to 1640 people; Urbanización Mediterráneo, where 5793 people live; Urbanización Nueva Cartagena (literally, \"city new new city new\"), which is inhabited by 3398 people and San Antonio Abad, which is the most in the south and has a population of 13,448. Barrio de la Concepción is located in the east and consists of Barrio de la Concepción, where 4,053 live and Barriada de Villalba, which has a population of 1,021. Barrio Peral is in the north-east end and is home to 15,805 people.\nThe northern part of the district is in an urban continuity with the main city (Cartagena). The eastern part is also united with the main city, but in a lesser extent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio abad",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abad",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5261,
+    "attempt": 5222,
+    "place_id": "gn-3014867",
+    "input": {
+      "place": {
+        "place_id": "gn-3014867",
+        "name": "Granville",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 48.83792,
+        "lon": -1.59714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Granville, Manche",
+          "url": "https://en.wikipedia.org/wiki/Granville,_Manche",
+          "text": "Granville (French pronunciation: [ɡʁɑ̃.vil] ; Norman: Graunville) is a commune in the Manche department of Normandy, France. The chef-lieu of the canton of Granville and seat of the Communes of Granville, Terre et Mer, it is a seaside resort and health resort of Mont Saint-Michel Bay, at the end of the Côte des Havres, a former cod-fishing port and the first shellfish port of France. It is sometimes nicknamed \"Monaco of the North\" by virtue of its location on a rocky promontory.\nThe town was founded by a vassal of William the Conqueror on land occupied by the Vikings in the 11th century. The old privateer city and fortification for the defence of Mont Saint-Michel became a seaside resort in the 19th century which was frequented by many artists and equipped with a golf course and a horse racing course.\nHome of the Dior family of industrialists, an important commune that absorbed the village of Saint-Nicolas-près-Granville in 1962, port and airport of South Manche, it has also been a Douzelage city since 1991, twinned with 20 European cities. Administratively, the islands of Chausey, the French Channel Islands, which include a small harbour, are part of the commune of Granville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "granville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5263,
+    "attempt": 5223,
+    "place_id": "gn-4363990",
+    "input": {
+      "place": {
+        "place_id": "gn-4363990",
+        "name": "North Potomac",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.08289,
+        "lon": -77.26498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Potomac, Maryland",
+          "url": "https://en.wikipedia.org/wiki/North_Potomac,_Maryland",
+          "text": "North Potomac is a census-designated place and unincorporated area in Montgomery County, Maryland, United States. It is located less than 5 miles (8.0 km) north of the Potomac River, and is about 20 miles (32 km) from Washington, D.C. It has a population of 23,790 as of 2020.\nThe region's land was originally used for growing tobacco, which was replaced by wheat and dairy farming after the soil became depleted. The Chesapeake and Ohio Canal was used by local farmers to ship their grain (or flour made from the grain at the local mills), and two former canal locks are located less than 5 miles (8.0 km) away in the Chesapeake and Ohio Canal National Historical Park. In addition, infrastructure remains for what was one of the state's leading dairy farms during the first half of the 20th century.\nNorth Potomac did not get an identity of its own until 1989, when the United States Post Office allowed the use of the North Potomac name for what is mostly a collection of housing sub-divisions, farms, and wooded parks. The United States Census Bureau listed a North Potomac in 1970 but not 1980. In 2000, it began recognizing North Potomac as a census designated place. Today, the community benefits from its proximity to workplaces such as the Shady Grove Hospital area and the I-270 Technology Corridor. Washington, D.C. is accessible by automobile or public transportation. The median household income is nearly $160,000, and nearly half of the eligible residents have a graduate or professional degree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "north potomac",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "potomac",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5264,
+    "attempt": 5224,
+    "place_id": "gn-5102615",
+    "input": {
+      "place": {
+        "place_id": "gn-5102615",
+        "name": "Phillipsburg",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.69371,
+        "lon": -75.19018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phillipsburg, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Phillipsburg,_New_Jersey",
+          "text": "Phillipsburg is a town located along the Delaware River that is the most populous municipality in Warren County, in the U.S. state of New Jersey. It is part of the Allentown-Bethlehem-Easton, PA-NJ metropolitan statistical area. As of the 2020 United States census, the town's population was 15,249, an increase of 299 (+2.0%) from the 2010 census count of 14,950, which in turn reflected a decline of 216 (−1.4%) from the 15,166 counted in the 2000 census.\nThe Norfolk Southern Railway's Lehigh Line, formerly the mainline of the Lehigh Valley Railroad with a mix of mainline trackage combined long leased to the Central Railroad of New Jersey by its builder Lehigh Coal & Navigation Company, runs through Phillipsburg and then across the Delaware River into Easton, Pennsylvania. The Belvidere Delaware Railroad was leased in 1871 and later acquired by the Pennsylvania Railroad, connecting the lower Poconos to Trenton, New Jersey, and Philadelphia.\nPhillipsburg is located 19.3 miles (31.1 km) northeast of Allentown, 78.9 miles (127.0 km) north of Philadelphia, and 70.1 miles (112.8 km) west of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "phillipsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5265,
+    "attempt": 5225,
+    "place_id": "gn-5128490",
+    "input": {
+      "place": {
+        "place_id": "gn-5128490",
+        "name": "New Dorp",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.57399,
+        "lon": -74.11598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Dorp, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/New_Dorp,_Staten_Island",
+          "text": "New Dorp ( NEW-dorp) is a neighborhood on the South Shore of Staten Island, New York City, United States. New Dorp is bounded by Mill Road on the southeast, Tysens Lane on the southwest, Amboy and Richmond Roads on the northwest, and Bancroft Avenue on the northeast. It is adjacent to Oakwood to the southwest, Todt Hill to the northwest, Dongan Hills and Grant City, and Midland Beach and Miller Field to the southeast. New Dorp Beach, bordering to the east, is often listed on maps as a separate neighborhood from Mill Road to the shore of Lower New York Bay, but is generally considered to be a part of New Dorp.\nOne of the earliest European settlements in the New York City area, New Dorp was founded by Dutch settlers from the New Netherland colony, and the name is an anglicization of Nieuw Dorp, meaning \"New Village\" in Dutch. It was historically one of the most important towns on Staten Island, becoming a part of New York City in 1898 as part of the Borough of Richmond. In the 1960s New Dorp ceased to be a distinct town during New York City's suburbanization, where rapid housing development on Staten Island saw the town added to the city conurbation. Despite this, today New Dorp remains one of the main commercial and transport centers on Staten Island.\nNew Dorp is often associated with the Vanderbilt family, who had a notable presence in the area and many of whom are buried in the neighborhood at the Moravian Cemetery, the largest and oldest active cemetery on Staten Island.\nNew Dorp is part of Staten Island Community District 2 and its ZIP Code is 10306. New Dorp is patrolled by the 122nd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "new dorp",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dorp",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5266,
+    "attempt": 5226,
+    "place_id": "gn-5234141",
+    "input": {
+      "place": {
+        "place_id": "gn-5234141",
+        "name": "Brattleboro",
+        "country": "United States",
+        "subdivision": "Vermont",
+        "lat": 42.85092,
+        "lon": -72.55787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brattleboro, Vermont",
+          "url": "https://en.wikipedia.org/wiki/Brattleboro,_Vermont",
+          "text": "Brattleboro (), originally Brattleborough, is a town in Windham County, Vermont, United States, located about 10 miles (16 km) north of the Massachusetts state line at the confluence of Vermont's West River and the Connecticut River. With a 2022 Census population of 12,106, it is the most populous municipality abutting Vermont's eastern border with New Hampshire, which is the Connecticut River.\nThe town has been important to the history of Vermont, acting as a gateway for trade on both the Connecticut River and subsequent road and train infrastructure. Moreover, the Whetstone Brook allowed the development of several mill industries that relied on water power. The town rose to national and international recognition because of several major industries in the town during the 19th century: several bookbinding companies, including Brattleboro Typographic Company which produced bibles, and Estey Organ, one of the largest manufacturers of pipe organs in the world. As both industries shrank in the early 20th century, the town came to rely more on its role as an economic hub for more rural communities and Vermont's tourism industry.\nThere are satellite campuses of two colleges in Brattleboro: Community College of Vermont, and Vermont Technical College. Located in Brattleboro are the New England Center for Circus Arts, Vermont Jazz Center, and the Brattleboro Retreat, a mental health and addictions hospital. Notable annual events include Strolling of the Heifers and the Brattleboro Literary Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "brattleboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5267,
+    "attempt": 5227,
+    "place_id": "gn-7287910",
+    "input": {
+      "place": {
+        "place_id": "gn-7287910",
+        "name": "Fetcham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28879,
+        "lon": -0.35582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fetcham",
+          "url": "https://en.wikipedia.org/wiki/Fetcham",
+          "text": "Fetcham is a suburban village in the Mole Valley district, in Surrey, England west of the town of Leatherhead, on the other side of the River Mole and has a mill pond, springs and an associated nature reserve.  The housing, as with adjacent Great Bookham, sits on the lower slopes of the North Downs north of Polesden Lacey (NT).  Fetcham Grove has Leatherhead and the village's main leisure centre and football club, between the two settlements. Fetcham has two short parades of shops and services, several sports teams and parks and a small number of large pubs and food premises.\nNeighbouring Bookham and Leatherhead have railway stations and a junction of the M25 London Orbital Motorway is a 3-mile (4.8-km) journey from it passing alongside the River Mole beyond a brief upland made up of most of Fetcham's remaining farms and wooded Great Bookham Common demarcating Fetcham's northern border.  The northern few square miles and the larger North Downs are protected Green Belt, forming a buffer between Stoke D'Abernon (the south of Cobham post town) and Dorking respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "fetcham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5268,
+    "attempt": 5228,
+    "place_id": "gn-2521620",
+    "input": {
+      "place": {
+        "place_id": "gn-2521620",
+        "name": "Argamasilla de Alba",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.12917,
+        "lon": -3.09247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Argamasilla de Alba",
+          "url": "https://en.wikipedia.org/wiki/Argamasilla_de_Alba",
+          "text": "Argamasilla de Alba is a municipality in the Province of Ciudad Real, Castile-La Mancha, Spain. It has a population of 6,791.\nAccording to local legend, Don Quixote author Miguel de Cervantes was held prisoner here, and refers to the municipality in the prologue of Don Quixote Part I, making a joke about imprisonment – \"engendered in a jail\" – because the word \"argamasilla\" is Spanish for \"mortar\". The text talks about it as the place where Don Quixote is buried, and that the \"Academicians of Argamasilla\" meet at the gravesite.\nContrary to the foundation of the joke, Argamasilla de Alba has never had a group of academicians working there, and modern Cervantes scholars believe this is a reference to his well-documented imprisonment in the Cárcel Real of Seville. José María Casasayas, founder of the Asociación de Cervantes, delivered a paper in 1999 in which he proposed that the town in Part I of the novel was Argamasilla de Alba, but in Part II, internal evidence suggests it was Argamasilla de Calatrava, a confusion deliberately created by Cervantes.\nThe town's tourist and cultural office is located in a rebuilt house, the \"Casa de Medrano\", which contains beneath the \"Cave of Medrano\", in which Cervantes' imprisonment allegedly took place. In the nineteenth century, Juan Eugenio Hartzenbusch had a printing press set up in the cave and printed there an edition of Don Quixote. In keeping with the action of the novel's \"Academicians of Argamasilla\", the Asociación de Cervantistas held its annual meeting in Argamasilla de Alba in 1995, and returned for a meeting in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "argamasilla de alba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "argamasilla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5269,
+    "attempt": 5229,
+    "place_id": "gn-3679660",
+    "input": {
+      "place": {
+        "place_id": "gn-3679660",
+        "name": "La Calera",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.72069,
+        "lon": -73.96926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Calera, Cundinamarca",
+          "url": "https://en.wikipedia.org/wiki/La_Calera,_Cundinamarca",
+          "text": "La Calera is a municipality and town of Colombia in the Guavio Province, part of the department of Cundinamarca.\nLa Calera is a common weekend destination, mainly for the many restaurants, as it is approximately 18 kilometres (11 mi) over land from Bogotá, the capital city of Colombia. La Calera is located in the Eastern Ranges of the Colombian Andes, east of the capital and overlooking part of it. La Calera borders Guasca, Sopó and Chía in the north, Guasca and Junín in the east, Bogotá in the west and Choachí and Fómeque in the south.\nSituated between 2,600 and 3,000 meters above sea level, the area encompasses both cold climate zones and páramo (high-altitude tundra). Its economy is diverse, including:\n\nTraditional agriculture (potatoes, corn, cubios, carrots, etc.)\nLivestock farming (cattle, horses, sheep, goats), trout farming\nLimestone and sand mining\nFormer cement production (Cementos Samper, relocated in 1998), now operated by Cemex\nBottled water production (Manantial Water, by The Coca-Cola Company)\nWithin the municipality lies the San Rafael Reservoir, a key water source for Bogotá's aqueduct system. It also provides access to the Chuza Reservoir, which is fed by the Chingaza Lagoon in the municipality of Fómeque—all part of the water supply subsystem for Bogotá and nearby municipalities.\nTourism plays a significant role thanks to access to the Chingaza National Natural Park, various scenic viewpoints, clubs along the Bogotá–La Calera highway, and countryside vacation homes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "la calera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "calera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5270,
+    "attempt": 5230,
+    "place_id": "gn-2634843",
+    "input": {
+      "place": {
+        "place_id": "gn-2634843",
+        "name": "Waltham Abbey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.687,
+        "lon": -0.00421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waltham Abbey",
+          "url": "https://en.wikipedia.org/wiki/Waltham_Abbey",
+          "text": "Waltham Abbey ( WAWL-thəm-AB-ee) is a suburban town and civil parish in the Epping Forest District of Essex, within the metropolitan and urban area of London, England, 13.5 miles (21.7 km) north-east of Charing Cross. Situated in the Lea Valley, the town lies on the Greenwich Meridian between the River Lea in the west and Epping Forest in the east, with large sections forming part of the Metropolitan Green Belt.\nThe town borders Chingford to the south; Loughton, Theydon Bois and Buckhurst Hill to the east; Cheshunt, Waltham Cross and Enfield to the west; and the rural areas of Nazeing and Epping Upland to the north. As well as the main built-up area, it covers the areas of Claverhambury, Fishers Green, High Beach, Holyfield, Lippitts Hill, Sewardstone, Sewardstonebury and Upshire. At the 2021 census, it had a population of 22,859.\nThe town is named and renowned for its former abbey, the last in England to be dissolved, now the Abbey Church of Waltham Holy Cross and St Lawrence—a scheduled ancient monument and the town's parish church. A place of worship since the 7th century, it became a place of pilgrimage following the Legend of the Holy Cross in the 11th century, and was rebuilt and re-founded by King Harold Godwinson, the last Anglo-Saxon king of England, in 1060. It is believed to be Harold's final resting place after his death at the Battle of Hastings in 1066. Open to the public as Waltham Abbey Gardens, the grounds of the abbey and Cornmill Meadows are maintained by the Lee Valley Regional Park Authority. Along the town's eastern edge is much of Epping Forest, maintained by the City of London Corporation; entirely within it is the village of High Beach. In the south is Gilwell Park, which since 1919 has formed an important site for the worldwide Scout movement. Following the course of the River Lea along the town's western boundary with Hertfordshire and historic Middlesex is the Lee Valley Regional Park, where the Lee Valley White Water Centre hosted the canoe slalom events of the London 2012 Olympic Games. For over 300 years, the Royal Gunpowder Mills on the Millhead Stream were in operation, where many of the processes used in the explosives industry were invented and developed; it today forms a scheduled ancient monument site with many listed buildings, and is a site of special scientific interest.\nHistorically an ancient parish named Waltham Holy Cross in the Waltham hundred of Essex, it became a local government district in 1850, and was granted urban district status in 1894. The town was granted a charter to host a regular market by Richard I in 1189, and it remains a market town. Whilst the use of the name Waltham Abbey for the town dates back to the 16th century at the earliest, it never officially had that name until 1974, when the successor parish covering the former Waltham Holy Cross Urban District was named Waltham Abbey. It was included in the Metropolitan Police District in 1840, and the London postal district upon its inception in 1856. It formed part of the review area for the Royal Commission on Local Government in Greater London, but did not become part of the Greater London administrative area in 1965. Its administrative headquarters have been at Waltham Abbey Town Hall since 1904. The town gives its name to the American city of Waltham in Middlesex County, Massachusetts (on the outskirts of Boston), and is twinned with the German town of Hörstel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 584
+    },
+    "banned_terms": [
+      {
+        "term": "waltham abbey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "waltham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abbey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5271,
+    "attempt": 5231,
+    "place_id": "gn-2653121",
+    "input": {
+      "place": {
+        "place_id": "gn-2653121",
+        "name": "Chiswick",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.49271,
+        "lon": -0.25801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiswick",
+          "url": "https://en.wikipedia.org/wiki/Chiswick",
+          "text": "Chiswick (  CHIZ-ik) is a district in West London, split between the London boroughs of Hounslow and Ealing. It contains Hogarth's House, the former residence of the 18th-century English artist William Hogarth, Chiswick House, a neo-Palladian villa regarded as one of the finest in England and Fuller's Brewery, London's largest and oldest brewery. In a meander of the River Thames used for competitive and recreational rowing, with several rowing clubs on the river bank, the finishing post for the Boat Race is just downstream of Chiswick Bridge.\nOld Chiswick was an ancient parish in the county of Middlesex, with an agrarian and fishing economy beside the river; from the Early Modern period, the wealthy built imposing riverside houses on Chiswick Mall. Having good communications with London, Chiswick became a popular country retreat and part of the suburban growth of London in the late 19th and early 20th centuries. It was made the Municipal Borough of Brentford and Chiswick in 1932 and part of Greater London in 1965, when it merged into the London Borough of Hounslow. Modern Chiswick is an affluent area which includes the early garden suburb Bedford Park, Grove Park, the Glebe Estate, Strand-on-the-Green and tube stations Chiswick Park, Turnham Green, Gunnersbury and Stamford Brook, as well as the Gunnersbury Triangle local nature reserve. Some parts of Bedford Park and Acton Green are in the Chiswick W4 postcode area but the London Borough of Ealing. The main shopping and dining centre is Chiswick High Road.\nChiswick Roundabout is the start of the North Circular Road (A406). At Hogarth Roundabout, the Great West Road from central London becomes the M4 motorway, while the Great Chertsey Road (A316) runs south-west, becoming the M3 motorway.\nPeople who have lived in Chiswick include the poets Alexander Pope and W. B. Yeats, the Italian poet and revolutionary Ugo Foscolo, the painters Vincent van Gogh and Camille Pissarro, the novelist E. M. Forster, the rock musicians Pete Townshend, John Entwistle, and Phil Collins, the stage director Peter Brook, and the actress Imogen Poots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "chiswick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5273,
+    "attempt": 5232,
+    "place_id": "gn-8349067",
+    "input": {
+      "place": {
+        "place_id": "gn-8349067",
+        "name": "High Wycombe",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.94444,
+        "lon": 116.0034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "High Wycombe, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/High_Wycombe,_Western_Australia",
+          "text": "High Wycombe () is a suburb of Perth, Western Australia, within the City of Kalamunda. High Wycombe lies east of the Perth CBD at the base of the Darling Scarp (commonly referred to as the foothills). Formerly part of Maida Vale, the suburb was officially declared on 2 June 1978; its name, which was first used in 1958 by a subdivider, Western Agencies, refers to the town in Buckinghamshire where one of the partners in the firm was born.\nHigh Wycombe is directly east of Perth Airport, west of Maida Vale, north of Forrestfield, and south of the industrial suburb of Hazelmere.\nHigh Wycombe is a large suburb in area, with its main population centred on roads that connect from Newburn Road, and is bounded by Kalamunda Road to the north, Dundas Road to the west, Maida Vale Road to the south, and Roe Highway to the east. The suburb's growth is mainly in this area, however the estate of Jacaranda Springs, which is based on the northern side of Kalamunda Road, is also experiencing growth. A sparsely populated area around Milner Road is also part of the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "high wycombe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "high",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wycombe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5274,
+    "attempt": 5233,
+    "place_id": "gn-5122520",
+    "input": {
+      "place": {
+        "place_id": "gn-5122520",
+        "name": "Jamaica",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69149,
+        "lon": -73.80569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamaica, Queens",
+          "url": "https://en.wikipedia.org/wiki/Jamaica,_Queens",
+          "text": "Jamaica is a neighborhood in the New York City borough of Queens. Jamaica is bordered by Hollis, Queens Village, St. Albans, and Cambria Heights to the east; South Jamaica, Rochdale Village, John F. Kennedy International Airport, and Springfield Gardens to the south; Laurelton and Rosedale to the southeast; Richmond Hill, South Ozone Park, and Aqueduct Racetrack to the west and southwest; Briarwood to the northwest; and Kew Gardens Hills, Jamaica Hills, and Jamaica Estates to the north.\nJamaica may get its name from Yameco, a corruption of a word for \"beaver\" in the Lenape language spoken by the Native Americans who lived in the area at the time of first European contact.  The liquid \"y\" sound of English is spelled with a \"j\" in Dutch, the language of the first people to write about the area; the English retained this Dutch spelling, but, after repeated reading and speaking of \"Jamaica\", slowly replaced the liquid sound with the hard \"j\" of the English pronunciation of the name today. \nJamaica was settled under Dutch rule in 1656. It was originally called Rustdorp. Under English rule, Jamaica became the center of the \"Town of Jamaica\"; the name is of Lenape origin and wholly unrelated to that of the country. It was the first county seat of Queens County, holding that title from 1683 to 1788, and was the first incorporated village on Long Island. When Queens was incorporated into the City of Greater New York in 1898, both the town of Jamaica and the village of Jamaica were dissolved, but the neighborhood of Jamaica regained its role as county seat.\nJamaica is the location of several government buildings such as Queens Civil Court, the civil branch of the Queens County Supreme Court, the Queens County Family Court and the Joseph P. Addabbo Federal Building, home to the Social Security Administration's Northeastern Program Service Center. The U.S. Food and Drug Administration's Northeast Regional Laboratory as well as the New York District Office are located in Jamaica. Jamaica Center, the area around Jamaica Avenue, is a major commercial center. The New York Racing Association, based at Aqueduct Racetrack in South Ozone Park, lists its official address as Jamaica. Central Jamaica once housed the Jamaica Racetrack, now the massive Rochdale Village housing development. John F. Kennedy International Airport and the hotels nearby are also located in Jamaica. The neighborhood is located in Queens Community District 12. It is patrolled by the New York City Police Department's 103rd and 113th Precincts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 414
+    },
+    "banned_terms": [
+      {
+        "term": "jamaica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5275,
+    "attempt": 5234,
+    "place_id": "gn-1529452",
+    "input": {
+      "place": {
+        "place_id": "gn-1529452",
+        "name": "Hoxtolgay",
+        "country": "China",
+        "subdivision": "Xinjiang",
+        "lat": 46.51872,
+        "lon": 86.00214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoxtolgay",
+          "url": "https://en.wikipedia.org/wiki/Hoxtolgay",
+          "text": "Hoxtolgay or Heshituoluogai (Oirat: χoʃ tolɣæ 'twin peaks', Chinese: 和什托洛盖镇 Héshítuōluògài Zhèn, Uyghur: Хоштолгай) is a town in Hoboksar Mongol Autonomous County, Xinjiang Uygur Autonomous Region, PR China. It is located at 46°34′N 85°58′E, about 200 miles north of Ürümqi in the Dzungaria Basin. Hoxtolgay is an oasis town with an area of 6684 km² and a population of 22,000.\nAccording to the local government, the town's population consists of 8,426 urban residents (i.e., domiciled in the town proper), 4,914 rural residents (i.e., in the rural areas under the town's administration), 4,950 members of the military, and 3,650 floating population (i.e., temporary residents, officially domiciled elsewhere).\nSituated in Gurbantünggüt Desert, 30 miles WNW of a point listed as the farthest point from the sea (at 46°16.8′N 86°40.2′E) by the Guinness Book of World Records, Hoxtolgay may qualify as the town most remote from any (sea) coastline, roughly 2646 kilometres from the Arctic Ocean  and a similar distance from the Bay of Bengal and the Arabian Sea. (See Continental Pole of Inaccessibility for other candidates).\nThe area is rich in mineral resources. Besides oil and coal, salt, limestone, quartz sand, and bentonite are also found here.\nProven coal reserves are estimated at 30 billion metric tons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "hoxtolgay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5276,
+    "attempt": 5235,
+    "place_id": "gn-2638909",
+    "input": {
+      "place": {
+        "place_id": "gn-2638909",
+        "name": "Rye",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.95114,
+        "lon": 0.7337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rye, East Sussex",
+          "url": "https://en.wikipedia.org/wiki/Rye,_East_Sussex",
+          "text": "Rye is a town and civil parish in the Rother district of East Sussex, England, two miles (three kilometres) from the English Channel at the confluence of three rivers: the Rother, the Tillingham and the Brede. In the mid-twelfth century, it was an important member of the mediaeval Cinque Ports confederation, it was at the head of an embayment of the English Channel, and almost entirely surrounded by the sea. Over the subsequent centuries, the coastline has moved further away due to a combination of natural silting up from storm damage, changes in the flow of the River Rother, and tidal changes, along with deliberate land reclamation from the sea.\nAt the 2011 census, Rye had a population of 4,773. Its historical association with the sea has included providing ships for the service of the Crown in time of war, and being involved in smuggling. The notorious Hawkhurst Gang used its ancient inns The Mermaid Inn and The Olde Bell Inn, which are said to be connected to each other by a secret passageway.\nThose historic roots and its charm make it a tourist destination, with hotels, guest houses, B&Bs, tea rooms, and restaurants. Rye has a small fishing fleet, and Rye Harbour has facilities for yachts and other vessels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "rye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5277,
+    "attempt": 5236,
+    "place_id": "gn-6620339",
+    "input": {
+      "place": {
+        "place_id": "gn-6620339",
+        "name": "Karratha",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -20.73765,
+        "lon": 116.84629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karratha, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Karratha,_Western_Australia",
+          "text": "Karratha is a city in the Pilbara region of Western Australia, adjoining the port of Dampier. Located about 140 kilometres (87 mi) east-southeast of the site of three nuclear weapons tests by the British (Operation Hurricane in 1952 and Operation Mosaic in 1956), it was established in 1968 to accommodate the processing and exportation workforce of the Hamersley Iron mining company and, in the 1980s, the petroleum and liquefied natural gas operations of the Woodside-operated North West Shelf Venture located on Murujuga. As of the 2021 census, Karratha had an urban population of 17,013. The city's name comes from the cattle station of the same name, which derives from a word in a local Aboriginal language meaning \"good country\" or \"soft earth\". More recently, Ngarluma people have indicated the name may actually relate to an early interpretation of Gardarra, stemming from the sacred site for the whale, located in the Karratha area, called Gardarrabuga. The city is the seat of government of the City of Karratha, a local government area covering the surrounding region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "karratha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5278,
+    "attempt": 5237,
+    "place_id": "gn-978327",
+    "input": {
+      "place": {
+        "place_id": "gn-978327",
+        "name": "Matatiele",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -30.34357,
+        "lon": 28.81161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matatiele",
+          "url": "https://en.wikipedia.org/wiki/Matatiele",
+          "text": "Matatiele is a town located in the northern part of  the Eastern Cape Province of South Africa. According to the South African National Census of 2011, its 12,466 residents (1,113.44 per km2) and 4,107 households (366.83 per km2) make Matatiele the largest populated town in the Matatiele Local Municipality.\nMatatiele's area of 11.20 square kilometres (4.32 sq mi) – tucked in the shadows of the Drakensberg Mountains – is predominantly farmland, where 100% organic red meat is on offer, and tourism is a primary source of income. As one of the top 12 towns among South Africa's popular tourist attractions Route 56, Matatiele provides many activities for fishers, hikers, bikers, bird watchers, etc. Moreover, the Matatiele Museum (a former Dutch Reformed Church that opened in 1993) – displays dinosaur fossils, San peoples (also known as the Bushmen), missionaries, and town's history from its 19th century gun runners and smugglers to a quaint town filled with friendly locals serving authentic Xhosa cuisine. The majority of the town's inhabitants speak a dialect of Xhosa called Hlubi.\nMatatiele is popular with upscale families looking to live in a small town with renowned schools and facilities. Matatiele is also a gateway to the Kingdom of Lesotho, which is less than a thirty minutes away from the town. Matatiele is the location of a field office of Conservation South Africa, which participates in catchment-management work linked to the Umzimvubu Catchment Partnership Programme in the upper Mzimvubu River basin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "matatiele",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5279,
+    "attempt": 5238,
+    "place_id": "gn-4016734",
+    "input": {
+      "place": {
+        "place_id": "gn-4016734",
+        "name": "Bucerías",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 20.75821,
+        "lon": -105.3362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bucerías, Nayarit",
+          "url": "https://en.wikipedia.org/wiki/Bucerías,_Nayarit",
+          "text": "Bucerías meaning \"Divers town\" (\"diving\"), is a small Mexican beach resort town in the state of Nayarit on a stretch of Pacific coast known as the Riviera Nayarit, on and in the Bay and municipality of Banderas, between La Cruz de Huanacaxtle and Nuevo Nayarit. Its former name was Santa Julia de las Tablas.\nIn the 2020 census it had a population of 16,161 residents (seasonal influxes double that number) and is a typical town of the region with cobblestone streets, the main square, church, and many services for visiting foreigners, and features a wide array of restaurants. It has an uninterrupted white sand beach that continues north and south for a total of more than 29 kilometres (18 miles) and the city sits at an elevation of 27 metres (89 feet).\nBucerías is bisected by the Arroyo del Indio, a mountain run-off that remains dry most of the year. The Arroyo also serves as an unimproved roadbed under Fed 200 overpasses and can be navigated by car far up into the foothills. The half of Bucerías north of Fed 200 mostly consists of citizens; the other half south of Fed 200 beachward consists of primarily foreign residents, both permanent and part-time. Once a quaint fishing village incorporated in the 1930s, Bucerías has become a quaint tourist town since the 1980s, when primarily Canadian residents began coming for extended stays with RVs and fifth wheels; Canadians remain a very large part of the seasonal population however, Americans are moving to the city in increasing numbers with the addition of several condominium projects . The boom of all-inclusive hotels to the south in Nuevo Nayarit—a development extending from the north end of Puerto Vallarta—has driven building in Bucerías as well, although in a more muted way. Buildings rarely exceed seven floors, and the units are a condominium, rather than hotel style.\nEach January the town celebrates Our Lady of Peace (La Virgen de la Paz), who is the patron of the local Catholic church. There is a large and vibrant street bazaar featuring traditional regional art and textiles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 347
+    },
+    "banned_terms": [
+      {
+        "term": "bucerias",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5280,
+    "attempt": 5239,
+    "place_id": "gn-4906500",
+    "input": {
+      "place": {
+        "place_id": "gn-4906500",
+        "name": "Portage Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.95781,
+        "lon": -87.76506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portage Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Portage_Park,_Chicago",
+          "text": "Portage Park is one of the 77 community areas of Chicago in Illinois, United States, located on the northwest side of Chicago. Portage Park is bordered by the community areas of Jefferson Park and Forest Glen to the north, Dunning and the suburb of Harwood Heights to the west, Irving Park  to the east and Belmont-Cragin to the south.\nThe area is notable for its Six Corners outdoor shopping district, centered at the intersection of Irving Park Road, Cicero Avenue and the diagonal Milwaukee Avenue, the Portage Theater and for its namesake - Portage Park. The name of the park was taken from the major portage linking the Des Plaines and Chicago rivers along what is today Irving Park Road. The area was so swampy that in wet weather, Native Americans and trappers were easily able to paddle through the area in either direction without leaving their canoes. In those days, the Des Plaines was perhaps the most significant way to the Illinois, and then on to the Mississippi (and to return).\nPortage Park has the largest Polish community in the Chicago Metropolitan Area according to the 2000 census. Portage Park is home to the Polish American Association, the Polish Jesuit Millennium. One of the area's parks is named Chopin Park after Frédéric Chopin, Poland's most famous composer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "portage park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "portage",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5281,
+    "attempt": 5240,
+    "place_id": "gn-6091314",
+    "input": {
+      "place": {
+        "place_id": "gn-6091314",
+        "name": "Notre-Dame-de-Grâce",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.47675,
+        "lon": -73.61432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Notre-Dame-de-Grâce",
+          "url": "https://en.wikipedia.org/wiki/Notre-Dame-de-Grâce",
+          "text": "Notre-Dame-de-Grâce (French: [nɔtʁə dam də ɡʁɑs], locally [nɔtʁ̥œ̈ dam dœ̈ ɡʁɑːs], lit. 'Our Lady of Grace'), commonly known as NDG, is a residential neighbourhood of Montreal in the city's West End, with a population of 68,152 (2021). An independent municipality until annexed by the City of Montreal in 1910, NDG is today one half of the borough of Côte-des-Neiges–Notre-Dame-de-Grâce. It comprises two wards, Loyola to the west and Notre-Dame-de-Grâce to the east. NDG is bordered by four independent enclaves; its eastern border is shared with the City of Westmount, Quebec, to the north and west it is bordered by the cities of Montreal West, Hampstead and Côte-Saint-Luc. NDG plays a pivotal role in serving as the commercial and cultural hub for Montreal's predominantly English-speaking West End, with Sherbrooke Street West running the length of the community as the main commercial artery. The community is roughly bounded by Claremont Avenue to the east, Côte-Saint-Luc Road to the north, Brock Avenue in the west, and Highway 20 and the Saint-Jacques Escarpment to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "notre dame de grace",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "notre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dame",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grace",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

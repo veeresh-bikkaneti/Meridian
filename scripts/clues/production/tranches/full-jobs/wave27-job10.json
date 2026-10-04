@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5423,
+    "attempt": 5381,
+    "place_id": "gn-13512545",
+    "input": {
+      "place": {
+        "place_id": "gn-13512545",
+        "name": "South Granville",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.2602,
+        "lon": -123.13946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Granville, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/South_Granville,_Vancouver",
+          "text": "Established in 1997, South Granville (or less commonly \"Uptown\") is an upscale business improvement area (BIA) and neighbourhood south of Vancouver's downtown core, centred along Granville Street and bordered by the neighbourhoods of Kitsilano, Fairview and Shaughnessy.\nSeparated from Downtown by False Creek, the area runs along Granville Street from the south side of the Granville Street Bridge up to 16th Ave, where storefronts are replaced by the residences and hedges of Shaughnessy.\n1907 has been decided as the unofficial birth year of the neighbourhood. In that year Richard Marpole drew up plans for Shaughnessy Heights, the Canadian Pacific Railway's newest subdivision south of 16th Ave, pitched as an alternative to the then-upscale West End (\"Blueblood Alley\"). This is now known as \"First Shaughnessy\", or simply Shaughnessy. That same year, what was once Centre Street was given its present name, Granville Street, as the portion north of the bridge already bore that name. In 2007, the South Granville BIA commemorated the neighbourhood's centennial by encasing a state-of-the-art, stainless steel time capsule in concrete and stone under the entrance of the historic Stanley Theatre.\nAs well as being a fast-growing neighbourhood of residences, shops and restaurants, South Granville is home to a vibrant arts and culture scene. The neighbourhood contains a strip, between Broadway and the foot of the Granville Bridge, known as \"Gallery Row\" which is home to a number of art galleries: Bau-Xi Gallery, Douglas Reynolds Gallery, Ian Tan Gallery, Petley Jones Gallery, Uno Langmann. The South Granville Gallery Association (SGGA) represents the leading fine art galleries on Gallery Row. Further south, the neighbourhood is home to the historic Stanley Theatre, built in 1931. Once a popular cinema in its early days, the Stanley Theatre is now the stage of the Arts Club Theatre Company and the Industrial Alliance Stage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "south granville",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "granville",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5424,
+    "attempt": 5382,
+    "place_id": "gn-2641589",
+    "input": {
+      "place": {
+        "place_id": "gn-2641589",
+        "name": "Newquay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.41557,
+        "lon": -5.07319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newquay",
+          "url": "https://en.wikipedia.org/wiki/Newquay",
+          "text": "Newquay ( NEW-kee; Cornish: Tewynblustri [tɛʊɪnˈblʏstriː] ) is a town on the north coast in Cornwall, England, United Kingdom. It is a civil parish, seaside resort, regional centre for aerospace industries with an airport and a spaceport, and a fishing port on the North Atlantic coast, approximately 12 miles (19 km) north of Truro and 20 miles (32 km) west of Bodmin.\nThe town is bounded to the south by the River Gannel and its associated salt marsh, and to the north-east by the Porth Valley. The western edge of the town meets the Atlantic at Fistral Bay. The town has been expanding inland (south) since the former fishing village of New Quay began to grow in the second half of the nineteenth century.\nAt the 2021 census the population of the parish was 23,626 and the population of the built up area as defined by the Office for National Statistics was 24,545."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "newquay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5425,
+    "attempt": 5383,
+    "place_id": "gn-2644707",
+    "input": {
+      "place": {
+        "place_id": "gn-2644707",
+        "name": "Ledbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.03639,
+        "lon": -2.42635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ledbury",
+          "url": "https://en.wikipedia.org/wiki/Ledbury",
+          "text": "Ledbury is a market town and civil parish in the county of Herefordshire, England, lying east of Hereford, and west of the Malvern Hills. Its population was 9,109 at the 2021 UK census.\nIt has a significant number of Tudor-style timber-framed structures, in particular along Church Lane and High Street. One of the most outstanding is Ledbury Market Hall, built in 1617, located in the town centre. Other notable buildings include the parish church of St Michael and All Angels, the Painted Room (containing 16th-century frescoes), the Old Grammar School, the Barrett-Browning memorial clock tower (designed by Brightwen Binyon and opened in 1896 to house the library until 2015), nearby Eastnor Castle and the St Katherine's Hospital site. Founded c. 1231, this is a rare surviving example of a hospital complex, with hall, chapel, a Master's House (fully restored and opened in March 2015 to house the Library), almshouses and a timber-framed barn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "ledbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5426,
+    "attempt": 5384,
+    "place_id": "gn-2648215",
+    "input": {
+      "place": {
+        "place_id": "gn-2648215",
+        "name": "Grangemouth",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.01141,
+        "lon": -3.72183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grangemouth",
+          "url": "https://en.wikipedia.org/wiki/Grangemouth",
+          "text": "Grangemouth (Scots: Grangemooth; Scottish Gaelic: Inbhir Ghrainnse, pronounced [ˈiɲɪɾʲ ˈɣɾaiɲʃə]) is a town in the Falkirk council area in the central belt of Scotland. Historically part of the county of Stirlingshire, the town lies in the Forth Valley, on the banks of the Firth of Forth, three miles (five kilometres) east of Falkirk, five miles (eight kilometres) west of Bo'ness and 13 miles (21 km) south-east of Stirling. Grangemouth had a resident population of 16,016 in 2022, indicating a decrease from the 2011 census, being 17,373.\nGrangemouth's original growth as a town relied mainly on its geographical location. Originally a bustling port, trade flowed through the town with the construction of the Forth and Clyde Canal in the 18th century. Nowadays, the economy of Grangemouth is focused primarily on the large petrochemical industry of the area which includes the oil refinery, owned by Ineos, one of the largest of its kind in Europe. Residents of the town are known as Portonians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "grangemouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5427,
+    "attempt": 5385,
+    "place_id": "gn-2861914",
+    "input": {
+      "place": {
+        "place_id": "gn-2861914",
+        "name": "Nördlingen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.85122,
+        "lon": 10.48868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nördlingen",
+          "url": "https://en.wikipedia.org/wiki/Nördlingen",
+          "text": "Nördlingen (German: [ˈnœʁtlɪŋən] ; Alemannic German: Nearle or Nerle) is a town in the Donau-Ries district, in Swabia, Bavaria, Germany, with a population of approximately 20,674. It is located approximately 115 km (71 mi) east of Stuttgart, and 145 km (90 mi) northwest of Munich. It was built in an impact crater 15 million years old and 25 km (16 mi) in diameter—the Nördlinger Ries—formed by a meteorite which hit the earth with an estimated speed of 70,000 km/h, and left the area riddled with an estimated 72,000 tons of micro-diamonds.\nNördlingen was first mentioned in recorded history in 898. The town was the location of two battles during the Thirty Years' War, which took place between 1618 and 1648. Today it is one of very few towns in Germany that still have completely intact city walls, joining the ranks of Rothenburg ob der Tauber, Dinkelsbühl and Berching, all of them in Bavaria.\nAnother attraction in the town is Saint George's Church's 90-metre (300 ft) steeple, called \"Daniel\", which is made of a suevite impact breccia that contains shocked quartz. Other notable buildings are the town hall (which dates to the 13th century), St. Salvator church and the Spital, a former medieval hospital. The Ries crater museum is located in the well-preserved medieval tanners' quarter.\nThe city is home to several other museums, such as the Bavarian Railway Museum, the Nördlingen city museum (Stadtmuseum), the city wall museum (Stadtmauermuseum) and Augenblick museum. The latter has panoramas, magic lanterns, silent films, barrel organs, pianolas, music boxes, and gramophones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "nordlingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5428,
+    "attempt": 5386,
+    "place_id": "gn-3092638",
+    "input": {
+      "place": {
+        "place_id": "gn-3092638",
+        "name": "Lwówek Śląski",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.11074,
+        "lon": 15.58582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lwówek Śląski",
+          "url": "https://en.wikipedia.org/wiki/Lwówek_Śląski",
+          "text": "Lwówek Śląski ([ˈlvuvɛk ˈɕlɔ̃skʲi] ; formerly Lwów; German: Löwenberg in Schlesien) is a town in the Lower Silesian Voivodeship in south-western Poland. Situated on the Bóbr River, Lwówek Śląski is about 30 kilometres (19 miles) NNW of Jelenia Góra and has a population of about 9,000 inhabitants. It is the administrative seat of Lwówek County and of the municipality Gmina Lwówek Śląski.\nFounded in the 13th century, it was granted town rights in 1217, which became a model of municipal rights for a number of towns in southern Poland, including Cieszyn and Oświęcim, and from 1281 to 1286 it was a local Ducal seat of the Piast dynasty. Its prosperity came from the exploitation of gold and silver deposits, and after their depletion it was a center for cloth and linen making. Lwówek has also been a brewing center since the 13th century, with \"Browar Lwówek\" brewery being the oldest company in Poland.\nLwówek Śląski is called the Agate Capital of Poland, and hosts the annual Lwówek Agate Summer, the largest mineralogical event in Poland, every second weekend of July."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "lwowek slaski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lwowek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slaski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5429,
+    "attempt": 5387,
+    "place_id": "gn-4184845",
+    "input": {
+      "place": {
+        "place_id": "gn-4184845",
+        "name": "Brunswick",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 31.15013,
+        "lon": -81.49147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brunswick, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Brunswick,_Georgia",
+          "text": "Brunswick ( BRUN-zwik) is a city in and the county seat of Glynn County in the U.S. state of Georgia. As the primary urban and economic center of the lower southeast portion of Georgia, it is the second-largest urban area on the Georgia coastline after Savannah and contains the Brunswick Old Town Historic District. At the 2020 U.S. census, the population of the city proper was 15,210; the Brunswick metropolitan area's population as of 2020 was 113,495.\nEstablished as \"Brunswick\" after the German Duchy of Brunswick–Lüneburg, the ancestral home of the House of Hanover, the municipal community was incorporated as a city in 1856. Throughout its history, Brunswick has served as an important port city; in World War II, for example, it served as a strategic military location with an operational base for escort blimps and a shipbuilding facility for the U.S. Maritime Commission. Since then, its port has served numerous economic purposes.\nBrunswick supports a progressive economy largely based on tourism and logistics, with a metropolitan GDP of $3.9 billion as of 2013. The Port of Brunswick, one of Georgia's two seaports, handles approximately 10 percent of all U.S. roll-on/roll-off trade—third in the U.S., behind the ports of Los Angeles and Newark. The headquarters of the Federal Law Enforcement Training Center is located 5 miles (8 km) north of the central business district of the city and is adjacent to Brunswick Golden Isles Airport, which provides commercial air service to the area. Brunswick is also home to the College of Coastal Georgia, enrolling over 3,000 students.\nBrunswick is located on a harbor of the Atlantic Ocean, approximately 40 mi (60 km) north of Florida and 80 mi (130 km) south of South Carolina. Brunswick is bordered on the west by Oglethorpe Bay, the East River, and the Turtle River. It is bordered on the south by the Brunswick River and on the east by the Atlantic Intracoastal Waterway in the Mackay River, which separates it from the Golden Isles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "brunswick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5430,
+    "attempt": 5388,
+    "place_id": "gn-5113481",
+    "input": {
+      "place": {
+        "place_id": "gn-5113481",
+        "name": "Coney Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.57788,
+        "lon": -73.99403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coney Island",
+          "url": "https://en.wikipedia.org/wiki/Coney_Island",
+          "text": "Coney Island is a neighborhood and entertainment area in the southwestern section of the New York City borough of Brooklyn. The neighborhood is bounded by Brighton Beach to its east, Lower New York Bay to the south and west, and Gravesend to the north and includes the subsection of Sea Gate on its west. The Coney Island peninsula consists of Coney Island proper, Sea Gate, Brighton Beach, and Manhattan Beach. Coney Island was formerly an actual island, the westernmost in the Outer Barrier on the southern shore of Long Island, but in the early 20th century it became connected to the rest of Long Island by land fill.\nThe origin of Coney Island's name is disputed, but the area was originally part of the colonial town of Gravesend. By the mid-19th century it had become a seaside resort, and by the late 19th century, amusement parks had also been built at the location. The attractions reached a historical peak during the first half of the 20th century. However, they declined in popularity after World War II and, following years of neglect, several structures were torn down. Various redevelopment projects were proposed for Coney Island in the 1970s through the 2000s, though most of these were not carried out. The area was revitalized with the opening of the venue now known as Maimonides Park in 2001 and several amusement rides starting in the 2010s.\nConey Island had around 32,000 residents as of the 2020 United States census. The neighborhood is ethnically diverse, and the neighborhood's poverty rate of 27% is slightly higher than that of the city as a whole. \nConey Island is part of Brooklyn Community District 13, and its primary ZIP Code is 11224. It is patrolled by the 60th Precinct of the New York City Police Department. Fire services are provided by the New York City Fire Department's Engine 245/Ladder 161/Battalion 43 and Engine 318/Ladder 166. Politically, Coney Island is represented by the New York City Council's 47th District. The area is well served by the New York City Subway and local bus routes, and contains several public elementary and middle schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "coney island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coney",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5431,
+    "attempt": 5389,
+    "place_id": "gn-5133271",
+    "input": {
+      "place": {
+        "place_id": "gn-5133271",
+        "name": "Queens Village",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72677,
+        "lon": -73.74152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queens Village, Queens",
+          "url": "https://en.wikipedia.org/wiki/Queens_Village,_Queens",
+          "text": "Queens Village is a mostly residential middle class neighborhood in the eastern part of the New York City borough of Queens. It is bound by Hollis to the west, Cambria Heights to the south, Bellerose, Queens and Elmont, Nassau County to the east, and Oakland Gardens to the north.\nShopping in the community is located along Braddock Avenue, Hillside Avenue, Hempstead Avenue, Jamaica Avenue (NY 25), Francis Lewis Boulevard, and Springfield Boulevard. Located just east of Queens Village, in Elmont, Nassau County, is the Belmont Park race track.\nClose to the neighborhood are Cunningham Park and Alley Pond Park, as well as the historic Long Island Motor Parkway (LIMP), home of the turn of the century racing competition, the Vanderbilt Cup. The LIMP was built by William Kissam Vanderbilt, a descendant of the family that presided over the New York Central Railroad and Western Union; it is now part of the Brooklyn–Queens Greenway.\nQueens Village is located in Queens Community District 13 and its ZIP Codes are 11427, 11428, and 11429. It is patrolled by the New York City Police Department's 105th Precinct. Politically, Queens Village is represented by the New York City Council's 23rd District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "queens village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "queens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5432,
+    "attempt": 5390,
+    "place_id": "gn-2148955",
+    "input": {
+      "place": {
+        "place_id": "gn-2148955",
+        "name": "South Melbourne",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.83333,
+        "lon": 144.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Melbourne",
+          "url": "https://en.wikipedia.org/wiki/South_Melbourne",
+          "text": "South Melbourne is an inner suburb in Melbourne, Victoria, Australia, 3 kilometres (1.9 mi) south of Melbourne's Central Business District, located within the City of Port Phillip local government area. South Melbourne recorded a population of 11,548 at the 2021 census.\nHistorically known as Emerald Hill, South Melbourne was one of the first of Melbourne's suburbs to adopt full municipal status and is one of Melbourne's oldest suburban areas, notable for its well preserved Victorian era streetscapes.\nThe current boundaries are complex. Starting at the east end of Dorcas Street, it runs along the rear of properties on St Kilda Road, then south along Albert Road, north up Canterbury Road, along the rear of the north side of St Vincent Place, zigzags west along St Vincent Street, then north up Pickles Street. There is then an arm of former industrial land to the west between Boundary Road, the freeway and Ferrars Street. It then runs along Market Street to Kingsway, then up Dorcas Street to St Kilda Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "south melbourne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melbourne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5433,
+    "attempt": 5391,
+    "place_id": "gn-2634569",
+    "input": {
+      "place": {
+        "place_id": "gn-2634569",
+        "name": "Wells",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.20794,
+        "lon": -2.64896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wells, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Wells,_Somerset",
+          "text": "Wells () is a cathedral city and civil parish in Somerset, England. It is located on the southern edge of the Mendip Hills, 22 miles (35 km) south-west of Bath, 23 miles (37 km) south of Bristol, and 24 miles (39 km) north-east of Taunton. At the 2021 census, the population of the parish was 11,145 and the population of the built-up area, which extends into the neighbouring parish of St Cuthbert Out, was 12,105.\nWells has held city status since medieval times, because of the presence of Wells Cathedral. Often described as England's smallest city, it is actually the second smallest to the City of London in area and population, but unlike London it is not part of a larger urban agglomeration.\nWells takes its name from three holy wells dedicated to Saint Andrew that lie within the grounds of the Bishop's Palace and cathedral and supply water to the marketplace. A small Roman settlement surrounded them, which grew in importance and size under the Anglo-Saxons when King Ine of Wessex founded a minster church there in 704. The community became a trading centre based on cloth making and Wells is notable for its 17th-century involvement in both the English Civil War and the Monmouth Rebellion. In the 19th century, transport infrastructure improved with stations on three different railway lines. However, following the Beeching axe in 1964 the city has been without a railway link.\nThe cathedral and the associated religious and medieval architectural history provide much of the employment. The city has a variety of sporting and cultural activities and houses several schools including The Blue School, a state coeducational comprehensive school that was founded in 1641, and the private Wells Cathedral School, which was founded possibly as early as 909 and is one of the five established musical schools for school-age children in the United Kingdom. Wells's historic architecture has led to the city being used as a shooting location for numerous films and television programmes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "wells",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5434,
+    "attempt": 5392,
+    "place_id": "gn-2641945",
+    "input": {
+      "place": {
+        "place_id": "gn-2641945",
+        "name": "Murton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.81812,
+        "lon": -1.39036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murton, County Durham",
+          "url": "https://en.wikipedia.org/wiki/Murton,_County_Durham",
+          "text": "Murton is a village and civil parish in County Durham, England, eight miles (13 km) east of the city of Durham and six miles (9.7 km) south of Sunderland. It had a population of 4,534, which rose to 7,676 at the 2011 Census.\nIt was originally a rural agricultural hamlet called Morton, but the discovery of coal beneath its fields in the 19th century transformed it into an industrial community. 'Morton became known as Murton Colliery or Murton-in-the-Whins following the sinking of the pit in 1838 by South Hetton Coal Company, and the village was a productive coal mining community for more than a century. The pit employed more than 1000 men at its peak and featured in a Picture Post article showing the 'vesting' of the mine at nationalisation in 1947.\nThe village had the South East Durham Cooperative Bakery and a Northern Bus Company garage as added sources of jobs. In 1955 a by-product works for coal was established for the production mainly of coke. The mine and other employment opportunities closed in the 1990s along with many other County Durham mines and since 2003 the old spoil heaps are covered by retail outlet development Dalton Park, bringing much-needed new employment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "murton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5435,
+    "attempt": 5393,
+    "place_id": "gn-2653256",
+    "input": {
+      "place": {
+        "place_id": "gn-2653256",
+        "name": "Chepstow",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.64087,
+        "lon": -2.67683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chepstow",
+          "url": "https://en.wikipedia.org/wiki/Chepstow",
+          "text": "Chepstow (Welsh: Cas-gwent) is a town and community in Monmouthshire, Wales, adjoining the border with Gloucestershire, England.  It is located on the tidal River Wye, about 2 miles (3 km) above its confluence with the River Severn, and adjoining the western end of the Severn Bridge.  It is the easternmost settlement in Wales, situated 16 miles (26 km) east of Newport, 28 miles (45 km) east-northeast of Cardiff, 18 miles (29 km) northwest of Bristol and 110 miles (180 km) west of London.\nChepstow Castle, situated on a clifftop above the Wye and the old bridge, is often cited as the oldest surviving stone castle in Britain.  The castle was established by William FitzOsbern immediately after the Norman Conquest, and was extended in later centuries before becoming ruined after the Civil War.  A Benedictine priory was also established within the walled town, which was the centre of the Marcher lordship of Striguil.  The port of Chepstow became noted in the Middle Ages for its imports of wine, and also became a major centre for the export of timber and bark, from nearby woodland in the Wye Valley and Forest of Dean.  In the late eighteenth century the town was a focus of early tourism as part of the \"Wye Tour\", and the tourist industry remains important.  Other important industries included shipbuilding – one of the First World War National Shipyards was established in the town – and heavy engineering, including the prefabrication of bridges and wind turbine towers.  Chepstow is also well known for its racecourse, which has hosted the Welsh National each year since 1949.\nThe town had a population of 12,350 at the 2011 census, decreasing to 11,900 (rounded to the nearest 100) at the 2021 census. It is served by the M48 motorway, and its accessibility to the cities of Bristol, Newport and Cardiff means it has a large number of commuters.  It is administered as part of Monmouthshire County Council, and is within the Monmouthshire UK parliamentary constituency and Monmouth Senedd constituency.  Chepstow is on the western bank of the Wye, while adjoining villages on the eastern bank of the river, Tutshill and Sedbury, are in England. The population of the built-up area including these villages was 15,600 in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "chepstow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5436,
+    "attempt": 5394,
+    "place_id": "gn-2737640",
+    "input": {
+      "place": {
+        "place_id": "gn-2737640",
+        "name": "Miranda do Douro",
+        "country": "Portugal",
+        "subdivision": "Bragança",
+        "lat": 41.49692,
+        "lon": -6.27308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miranda do Douro",
+          "url": "https://en.wikipedia.org/wiki/Miranda_do_Douro",
+          "text": "Miranda do Douro (Portuguese: [miˈɾɐ̃dɐ ðu ˈðo(w)ɾu] ; Mirandese: Miranda de l Douro, [miˈɾãda ð(ə) ɫ̩ ˈdowɾʊ]), officially the City of Miranda do Douro (Portuguese: Cidade de Miranda do Douro; Mirandese: Cidade de Miranda de l Douro), is a city and a municipality in the district of Bragança, northeastern Portugal. The population in 2011 was 7,482, in an area of 487.18 km2. The town proper had a population of 1,960 in 2001. Nicknamed Cidade Museu (\"Museum City\") of the Trás-os-Montes region, it is located 86 kilometres from Bragança, preserving many of its medieval and Renaissance-era traditions and architecture. It is the main municipality where the Mirandese language survives within the Tierra de Miranda cultural region, which enjoys official status in Portugal, in addition to cultural and historical discontinuity with the rest of the Portuguese state. The town is located on the border with Spain, with the Douro River separating the two countries. The nearest town in Spain is Zamora.\nThe present mayor is Artur Manuel Rodrigues Nunes (Socialist). The municipal holiday is on 10 July."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "miranda do douro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "miranda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "douro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5437,
+    "attempt": 5395,
+    "place_id": "gn-2759687",
+    "input": {
+      "place": {
+        "place_id": "gn-2759687",
+        "name": "Appingedam",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.32167,
+        "lon": 6.85833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Appingedam",
+          "url": "https://en.wikipedia.org/wiki/Appingedam",
+          "text": "Appingedam (Dutch: [ˌɑpɪŋəˈdɑm] ; Gronings: n Daam [n̩ˈdaːm]) is a city and former municipality in the northeastern Netherlands. Although there is no certainty as to the exact age of Appingedam, historical research demonstrates that the place in which the city would eventually be built had been inhabited for over a millennium. Specifically, the area in which the earliest traces of human settlements have been reported is the Wierde, a quarter located in the northern part of the city centre. Today, a narrow, winding street by the same name runs along the waterfront as a living testimony to the times gone by. The characteristic landmarks of the old Wierde are still recognisable today: the historical East-West Canal, called “Diep,” dug to the south of the Wierde, diked on both sides, still defines the unique layout of the downtown Appingedam.\nLittle is known about the exact age and origin of the name of Appingedam. It came into existence on the banks of the Delf, the present Damsterdiep, around 1200. The name originates from a dam built in the Appe or Apt. In 1327, Appingedam received city rights from the free Frisians of the Upstalboom near the East Frisian city of Aurich. Appingedam and Aurich still have friendly liaisons via a partnership called the Städtepartnerschaft or stedenband, in German and Dutch respectively. Appingedam is located in the region Fivelingo, which in the Middle Ages was a part of Frisia.\nIn the Late Middle Ages, Appingedam, being a seaport, was an important trading competitor to Groningen. When Groningen received the staple right, Appingedam rapidly lost its trading position. Later on Delfzijl outstripped Appingedam with its newer and bigger seaport.\nNowadays Appingedam still looks indispensable as a small city. Many original medieval premises can be found in the centre. The most famous sight is the hanging kitchens above the Damsterdiep. Appingedam was home to the Appingedammer Bronsmotorenfabriek that produced large ship's engines for the shipyards in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 323
+    },
+    "banned_terms": [
+      {
+        "term": "appingedam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5438,
+    "attempt": 5396,
+    "place_id": "gn-3020996",
+    "input": {
+      "place": {
+        "place_id": "gn-3020996",
+        "name": "Douarnenez",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.09542,
+        "lon": -4.32904
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Douarnenez",
+          "url": "https://en.wikipedia.org/wiki/Douarnenez",
+          "text": "Douarnenez (Breton pronunciation: [duarˈnẽːnɛs], French: [dwaʁnəne]; meaning douar (land) an enez (the island) or land of the island), is a commune in the French department of Finistère, region of Brittany, northwestern France.\nIt is located at the mouth of the Pouldavid River, an estuary on the southern shore of Douarnenez Bay in the Atlantic Ocean, 25 kilometres (16 mi) north-west of Quimper. The population, 14,068 in 2023, has declined since the mid-20th century because of jobs lost from declines in the fishing industry. But it still has fish canning facilities (sardines and mackerel) although sardine fishing, for which the town became famous, has fallen off in recent years.\nDouarnenez has a growing tourist industry, with numerous visitors attracted annually to its pleasant location and warm climate, and also because of its marinas, maritime museum, regattas and sandy beaches. The island of Tristan off Douarnenez can be reached by foot at low tide. It is linked to the legend of Tristan and Iseult from the times of King Arthur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "douarnenez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5439,
+    "attempt": 5397,
+    "place_id": "gn-3397963",
+    "input": {
+      "place": {
+        "place_id": "gn-3397963",
+        "name": "Ilha de Itamaracá",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.74778,
+        "lon": -34.82556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilha de Itamaracá",
+          "url": "https://en.wikipedia.org/wiki/Ilha_de_Itamaracá",
+          "text": "Ilha de Itamaracá (Central northeastern portuguese pronunciation: [ˈijɐ di itɐmɐɾɐˈka]) is a tropical island and municipality in Pernambuco, Brazil on the Atlantic Ocean. Itamaracá means \"stone shaker\" in Tupi, from the words itá (\"stone\") and mbara'ká (\"shaker\").  It is separated from the mainland by the Canal de Santa Cruz, a salt water channel both mouths of which are on the Atlantic Ocean, and is connected to the mainland by a long road bridge.\nItamaracá has a total area of 66.68 square kilometres (25.75 mi2) and had an estimated population of 26,672 inhabitants in 2020 according to IBGE. This is up from 16,000 in 2007, and reflects the increasing popularity of the island as a residential (rather than touristic) destination. It is located in the metropolitan area of Recife, the capital city of Pernambuco state, about an hour from Recife International Airport. The main activities of the population are fishing and, increasingly, tourism. Recife is located about 38 kilometres (24 mi) to the south whereas Olinda, another important town of Pernambuco and also UNESCO World Heritage, is 30 kilometres (19 mi) to the south. It was awarded city status on 1 January 1959.\nAbout two thirds of the island is covered in protected natural rain forest ('Mata Atlantica'), with most human occupation and development occupying a narrow strip along the ocean front white sandy beaches, that stretch for around 12 km (7.5 miles) along the eastern coast. These beaches are protected by a reef 3 km (2 miles) off the coast, that encircles the island on the ocean side, making the island waters shallow, safe, and warm. Year round temperatures typically vary in a narrow range of 26-31C (79-88F), with the rainy season (occasional heavy rains, not monsoon) in May to July. Building regulations since 1995 have limited the number of floors in buildings to 2, resulting in a complete absence of high-rise apartment complexes, and no industry is allowed on the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "ilha de itamaraca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ilha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "itamaraca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5440,
+    "attempt": 5398,
+    "place_id": "gn-4172383",
+    "input": {
+      "place": {
+        "place_id": "gn-4172383",
+        "name": "Sebring",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.49559,
+        "lon": -81.44091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sebring, Florida",
+          "url": "https://en.wikipedia.org/wiki/Sebring,_Florida",
+          "text": "Sebring ( SEE-bring) is a city in and the county seat of Highlands County, Florida, United States. It is nicknamed \"The City on the Circle\", in reference to Circle Drive, the center of the Sebring Downtown Historic District.  As of 2022 United States Census estimates, the population is 11,379 up from 10,729 at the 2020 census. \nSebring became a popular development and tourist destination of the 1920s, hailed as the \"Coral Gables of Central Florida\". Many grandiose Mediterranean buildings of that time period still exist within the city, the most notable being the Harder Hall Hotel and Resort. The broader Sebring metropolitan area had a population estimate of 105,618 in 2022; the disparity in population between the city proper and the metropolitan area is due to the relatively small size of the annexed area of the city, with most all of the landmass west of Lake Jackson technically in unincorporated Highlands County.\nSebring is centered around Lake Jackson, with the Downtown Historic District directly on the waterfront. Due to its Florida scrub terrain, Lake Jackson has natural white sand beaches, and is a popular boating and swimming destination. Sebring is the home of the Sebring International Raceway, best known as the host of the 12 Hours of Sebring, an annual WeatherTech SportsCar Championship race that attracts fans and teams from around the world. Nearby Highlands Hammock State Park is a popular attraction, and was the first state park created in Florida. The city features a large 1768-acre airfield, the Sebring Regional Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "sebring",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5441,
+    "attempt": 5399,
+    "place_id": "gn-4501931",
+    "input": {
+      "place": {
+        "place_id": "gn-4501931",
+        "name": "Glassboro",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.70289,
+        "lon": -75.11184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glassboro, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Glassboro,_New_Jersey",
+          "text": "Glassboro is a borough within Gloucester County, in the U.S. state of New Jersey, within the Philadelphia metropolitan area. As of the 2020 United States census, the borough's population was 23,149, its highest decennial count ever and an increase of 4,570 (+24.6%) from the 18,579 recorded at the 2010 census, which in turn had reflected a decline of 489 (−2.6%) from the 19,068 counted in the 2000 census. Much of the recent and projected growth in Glassboro have been attributed to the growth trajectory of Rowan University, founded in 1923 and formerly known as Glassboro State College. Glassboro and surrounding Gloucester County constitute part of South Jersey.\nWhat is now Glassboro was originally formed as a township by an act of the New Jersey Legislature on March 11, 1878, from portions of Clayton Township. Portions of the township were taken to form Elk Township (April 17, 1891) and Pitman (May 24, 1905). Glassboro was incorporated as a borough on March 18, 1920, replacing Glassboro Township. The borough was named for its glass industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "glassboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5442,
+    "attempt": 5400,
+    "place_id": "gn-5097017",
+    "input": {
+      "place": {
+        "place_id": "gn-5097017",
+        "name": "Cranford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.65844,
+        "lon": -74.29959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cranford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Cranford,_New_Jersey",
+          "text": "Cranford is a township in Union County, in the U.S. state of New Jersey, located 18 miles (29 km) southwest of New York City. As of the 2020 United States census, the township's population was 23,847, an increase of 1,222 (+5.4%) from the 2010 census count of 22,625, which in turn reflected an increase of 47 (+0.2%) from the 22,578 counted in the 2000 census.\nNJ Transit rail service is available at the Cranford station, along the Raritan Valley Line, with service to Newark Penn Station and to New York Penn Station in via Midtown Direct. It is part of the New York metropolitan area.\nCranford was incorporated as a township by an act of the New Jersey Legislature on March 14, 1871, from portions of the Townships of Clark, Linden, Springfield Township, Union Township and Westfield. Portions of the township were taken to form Garwood (in 1903) and Kenilworth (in 1907). The township's name is said to derive from the Crane family, including John Crane, who built a mill in 1720 along the Rahway River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "cranford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

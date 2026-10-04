@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 5323,
+    "attempt": 5281,
+    "place_id": "gn-7870917",
+    "input": {
+      "place": {
+        "place_id": "gn-7870917",
+        "name": "Little Portugal",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.64663,
+        "lon": -79.42956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Portugal, Toronto",
+          "url": "https://en.wikipedia.org/wiki/Little_Portugal,_Toronto",
+          "text": "Little Portugal (also known as Portugal Village; Portuguese: Pequeno Portugal or, Aldeia Portugal) is a neighbourhood and ethnic enclave in Toronto, Ontario, Canada. It is located west of downtown in the \"Old\" City of Toronto. It is bound on the west by Lansdowne Avenue, on the north by College Street, on the east by Ossington Avenue and on the south by the GO Transit and Union Pearson Express railway tracks. The area is mainly residential, with Portuguese businesses along Dundas Street West and College Street. The area west of Dufferin Street was a part of the former Town of Brockton. The sub area bounded by Dufferin Street on the west, Dundas Street on the north, Ossington Avenue on the east and Queen Street on the south is also known as \"Beaconsfield Village\" dating back to the days of the sub-division of lots in the area around Beaconsfield Avenue, named after British Prime Minister Benjamin Disraeli who given the title Lord Beaconsfield by Queen Victoria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "little portugal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "portugal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5324,
+    "attempt": 5282,
+    "place_id": "gn-911300",
+    "input": {
+      "place": {
+        "place_id": "gn-911300",
+        "name": "Kazungula",
+        "country": "Zambia",
+        "subdivision": "Southern Province",
+        "lat": -17.79356,
+        "lon": 25.27473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kazungula",
+          "url": "https://en.wikipedia.org/wiki/Kazungula",
+          "text": "Kazungula is a small border town in Zambia, lying on the north bank of the Zambezi River about 70 kilometres (45 mi) west of Livingstone on the M10 Road.\nAt Kazungula, the territories of four countries (Zambia, Botswana, Zimbabwe, and Namibia) come close to meeting at a quadripoint.  It has now been agreed that the international boundaries contain two tripoints joined by a short line roughly 150 metres (490 ft) long forming a boundary between Zambia and Botswana, now crossed by the Kazungula Bridge. The ever-shifting river channels and the lack of any agreements addressing the issue before 2000 led to some uncertainty in the past as to whether or not a quadripoint legally existed. Thus, Botswana and Zambia share a border of about 150 metres (490 ft) at the confluence of the Chobe River and the Zambezi River, between Impalila Island, the extreme tip of Namibia's Caprivi Strip and Zimbabwe.\nThe Chobe River, which divides Namibia and Botswana, enters the Zambezi near Kazungula. Kazungula is an important trade destination to both Zambia and Botswana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "kazungula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5325,
+    "attempt": 5283,
+    "place_id": "gn-3531793",
+    "input": {
+      "place": {
+        "place_id": "gn-3531793",
+        "name": "Calkiní",
+        "country": "Mexico",
+        "subdivision": "Campeche",
+        "lat": 20.37056,
+        "lon": -90.05083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calkiní",
+          "url": "https://en.wikipedia.org/wiki/Calkiní",
+          "text": "Calkiní (Yucatec Maya: \"throat of the sun\") is a city in the Mexican state of Campeche. It is situated at the northern tip of the state, on the central western coast the Yucatán Peninsula. It serves as the municipal seat for the surrounding municipality of the same name. As of 2010, the city of Calkiní had a population of 14,934.\nCalkini's San Luis Obispo or San Luis Calkiní church was founded in 1549 by the Franciscan Fray Diego de Villalpando as a mission and constructed on the base of the main ceremonial Mayan structure located on the site, thus ensuring both handily available building materials and a natural predisposition of the soon-to-be-converted Mayan population to gravitate towards this sacred place.\nIts strategic location halfway between Campeche and Merida made it both the head mission for the Franciscans in the region by 1588 and the second-largest town in the entire province of Yucatan, which then encompassed all three current states on the Yucatan peninsula.\nToday, it is a pretty town with many colorful facades and a manicured central plaza, and a popular stop for meandering tourists when traveling between Merida and Campeche or to nearby Isla Arena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "calkini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5326,
+    "attempt": 5284,
+    "place_id": "gn-3699095",
+    "input": {
+      "place": {
+        "place_id": "gn-3699095",
+        "name": "Cajabamba",
+        "country": "Peru",
+        "subdivision": "Cajamarca Department",
+        "lat": -7.61667,
+        "lon": -78.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cajabamba, Peru",
+          "url": "https://en.wikipedia.org/wiki/Cajabamba,_Peru",
+          "text": "Cajabamba is a town in Northern Peru and is the capital of the province of Cajabamba, in the region of Cajamarca.\nOn the 19th of March, 1888, painter José Sabogal was born in Cajabamba. The José Sabogal Dieguez Quick Painting Contest is held annually in Cajabamba.\n\nThe Day of the Virgin of the Rosary, or the Virgen de Rosario Festival, has been held annually in Cajabamba since 1668. The festival start with a mass on the first Sunday of October, and the 10-day celebration includes fireworks, local arts, and traditional dances.The province of Cajabamba was founded by the friars of the Order of Hermits of the Great Father Saint Augustine, who, having been sent from Spain by King Charles V with the permission of Pope Paul III, arrived in this region in 1533. The \"Three Juans,\" a trio of friars named Juan de San Pedro, Juan del Canto, and Juan Ramirez settled on the right bank of the Los Ojos de Lanla spring. As part of their mission to colonize the area, the friars reorganized the Huarangas, small groups of scattered people who gathered for work. With the reorginization of the Huarangas, they founded the town of San Nicolás de Tolentino de Cajabamba and built a mission chapel where the Santa Ana General Cemetery currently stands. In 1837, José de la Mar gave Cajabamba the title of Villa. Two years later, Agustín Gamarra granted it the title Always faithful city of Cajabamba. On January 2, 1850, the region was elevated to the status of province. In 1861, the construction of the current Main Church was completed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "cajabamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5327,
+    "attempt": 5285,
+    "place_id": "gn-5101125",
+    "input": {
+      "place": {
+        "place_id": "gn-5101125",
+        "name": "Metuchen",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.54316,
+        "lon": -74.3632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Metuchen, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Metuchen,_New_Jersey",
+          "text": "Metuchen ( mə-TUTCH-ən) is a suburban borough in Middlesex County in the U.S. state of New Jersey. The borough is a commuter town of New York City, located in the heart of the Raritan Valley region within the New York Metropolitan area. The borough, along with Edison (which completely surrounds Metuchen), is a regional commercial hub for Central New Jersey. The borough is 6 miles (9.7 km) northeast of New Brunswick, 17 miles (27 km) southwest of Newark, 20 miles (32 km) southwest of Jersey City, and 22 miles (35 km) southwest of Manhattan. As of the 2020 United States census, the borough's population was 15,049, an increase of 1,475 (+10.9%) from the 2010 census count of 13,574, which in turn had reflected an increase of 734 (+5.7%) from the 12,840 counted at the 2000 census.\nMetuchen was incorporated as a borough by an act of the New Jersey Legislature on March 20, 1900, from portions of Raritan Township (Since renamed to Edison). Metuchen's Main Street won Great American Main Street of the Year in 2023. Metuchen is nicknamed The Brainy Borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "metuchen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5328,
+    "attempt": 5286,
+    "place_id": "gn-5101848",
+    "input": {
+      "place": {
+        "place_id": "gn-5101848",
+        "name": "Newton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.05815,
+        "lon": -74.75267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Newton,_New_Jersey",
+          "text": "Newton, officially the Town of Newton, is an incorporated municipality in and the county seat of Sussex County in the U.S. state of New Jersey, situated approximately 60 miles (97 km) northwest of New York City. As of the 2020 United States census, the town's population was 8,374, its highest decennial population ever, an increase of 377 (+4.7%) from the 2010 census count of 7,997, which in turn reflected a decrease of 247 (−3.0%) from the 8,244 counted in the 2000 census.\nOne of 15 municipalities in the state organized as a town, the municipal government operates under a council-manager structure provided by the Faulkner Act, or Optional Municipal Charter Law. Newton was incorporated by an act of the New Jersey Legislature on April 11, 1864, from portions of Newton Township, which was also partitioned to create Andover Township and Hampton Township, and was then dissolved. Additional land was acquired from Andover Township in 1869 and 1927, and from Fredon Township in 1920."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5329,
+    "attempt": 5287,
+    "place_id": "gn-6169661",
+    "input": {
+      "place": {
+        "place_id": "gn-6169661",
+        "name": "Tsawwassen",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.01667,
+        "lon": -123.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tsawwassen",
+          "url": "https://en.wikipedia.org/wiki/Tsawwassen",
+          "text": "Tsawwassen (English:   tə-WAH-sən; Halkomelem: sc̓əwaθən) is a suburban, mostly residential community on a peninsula in the southwestern corner of the City of Delta in British Columbia, Canada. It provides the only road access to the American territory on the southern tip of the peninsula of the same name, the community of Point Roberts, Washington, via 56th Street. It is also the location of Tsawwassen Ferry Terminal, part of the BC Ferries, built in 1959 to provide foot-passenger and motor vehicle access from the Lower Mainland to the southern part of Vancouver Island and the southern Gulf Islands. Because Tsawwassen touches a shallow bank (Roberts Bank), the ferry terminal is built at the southwestern end of a 3 km (1.9 mi) causeway (part of Highway 17) that juts into the Strait of Georgia. Boundary Bay Airport, a major training hub for local and international pilots which also provides local airplane and helicopter service, is ten minutes away. The Roberts Bank Superport is also nearby.\nTo the northwest of the community are the lands of Tsawwassen First Nation (\"TFN\"), a people of Coast Salish ancestry who have used this land since at least 200 B.C. Having been \"stripped of their lands, rights and resources\" by European colonizers throughout the 19th century, and in accordance with a 2009 treaty with British Columbia, their territory now consists of approximately 724 ha (1,790 acres) of treaty settlement land, bounded by the Strait of Georgia on the west, the 2600 block to the north, the 4800 block to the east, and the 1200 block to the south. While also part of TFN lands, the 92-lot residential subdivision of Stahaken was leased for use by the (then) Tsawwassen Indian Reserve to Staheken Developments Ltd. in 1989 for a 99-year term. It was then developed in a partnership between Stahaken Development Ltd. and the Municipality of Delta. As such it is commonly thought of and serviced in the same manner as other subdivisions in the community of Tsawwassen. Stahaken residents are represented by the Stahaken Homeowners Association."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "tsawwassen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5330,
+    "attempt": 5288,
+    "place_id": "gn-13286804",
+    "input": {
+      "place": {
+        "place_id": "gn-13286804",
+        "name": "Brook Farm",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.28859,
+        "lon": -71.16303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brook Farm",
+          "url": "https://en.wikipedia.org/wiki/Brook_Farm",
+          "text": "Brook Farm, also called the Brook Farm Institute of Agriculture and Education or the Brook Farm Association for Industry and Education, was a utopian experiment in communal living in the United States in the 1840s. It was founded by former Unitarian minister George Ripley and his wife Sophia Ripley at the Ellis Farm in West Roxbury, Massachusetts (nine miles outside of downtown Boston), in 1841 and was inspired in part by the ideals of transcendentalism, a religious and cultural philosophy based in New England. Founded as a joint stock company, it promised its participants a portion of the farm's profits in exchange for an equal share of the work. Brook Farmers believed that by sharing the workload, they would have ample time for leisure and intellectual pursuits.\nLife on Brook Farm was based on balancing labor and leisure while working together for the community's benefit. Each member could choose whatever work they found most appealing and all were paid equally, including women. Revenue came from farming and from selling handmade products like clothing, as well as fees paid by the farm's many visitors. The main source of income was the school, which was overseen by Mrs. Ripley. A preschool, primary school, and a college preparatory school attracted children internationally and each child was charged for an education. Adult education was also offered.\nThe community was never financially stable and had difficulty profiting from its agricultural pursuits. By 1844, the Brook Farmers adopted a societal model based on the socialist concepts of Charles Fourier and began publishing The Harbinger as an unofficial journal promoting Fourierism. Following his vision, the community began building an ambitious structure called the Phalanstery. When the uninsured building burned down, the community was financially devastated and never recovered. It was fully closed by 1847. Despite the commune's failure, many Brook Farmers looked back on their experience favorably. The commune's critics included Charles Lane, founder of another utopian community, Fruitlands. Nathaniel Hawthorne was a founding member of Brook Farm, though not a strong adherent of the community's ideals. He later fictionalized his experience in his novel The Blithedale Romance (1852).\nAfter Brook Farm closed, the property was operated for most of the next 130 years by a Lutheran organization, first as an orphanage, and then a treatment center and school. Fire destroyed the Transcendentalists' buildings over the years. In 1988, the State of Massachusetts acquired 148 acres (60 ha) of the farm, which is now operated by the Massachusetts Department of Conservation and Recreation as a historic site. Brook Farm was one of Massachusetts's first sites to be listed on the National Register of Historic Places and be designated a National Historic Landmark. In 1977, the Boston Landmarks Commission designated Brook Farm a Boston Landmark, the city's highest recognition for historic sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 464
+    },
+    "banned_terms": [
+      {
+        "term": "brook farm",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brook",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "farm",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5331,
+    "attempt": 5289,
+    "place_id": "gn-2646507",
+    "input": {
+      "place": {
+        "place_id": "gn-2646507",
+        "name": "Houston",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.86859,
+        "lon": -4.55201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Houston, Renfrewshire",
+          "url": "https://en.wikipedia.org/wiki/Houston,_Renfrewshire",
+          "text": "Houston ( HOO-stən; Scots: Houstoun; Scottish Gaelic: Cille Pheadair) is a village in the council area of Renfrewshire and the larger historic county of the same name in the west central Lowlands of Scotland.\nHouston lies within the Gryffe Valley on the banks of the River Gryffe 6 miles (10 km) north-west of Paisley and is the largest settlement in the civil parish of Houston and Killellan, which covers the neighbouring village of Crosslee and a number of smaller settlements in the villages' rural hinterland.\nThe village grew around a 16th-century castle and parish church dedicated to Saint Peter, which gave the area its former name of Kilpeter (Cille Pheadair in Scottish Gaelic). The present-day old village dates mainly back to the 18th century and was a planned community, replacing earlier buildings. Historically, the economy was based around agriculture and, in common with a number of other Renfrewshire villages, cotton weaving. The old village was designated as a conservation area in 1968.\nFrom the middle of the 20th century, a larger area of residential settlement expanded the village into nearby areas such as the more upmarket Craigends, removing the open country between Houston and Crosslee. These additions to the village have expanded its population considerably, changing its character chiefly to a dormitory settlement for nearby Glasgow and Paisley with a largely service-based economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "houston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5332,
+    "attempt": 5290,
+    "place_id": "gn-3109982",
+    "input": {
+      "place": {
+        "place_id": "gn-3109982",
+        "name": "Santa Coloma de Farners",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.86667,
+        "lon": 2.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Coloma de Farners",
+          "url": "https://en.wikipedia.org/wiki/Santa_Coloma_de_Farners",
+          "text": "Santa Coloma de Farners (Catalan pronunciation: [ˈsantə kuˈlomə ðə fəɾˈnes]) is a spa town and capital of the comarca of the Selva, in \nCatalonia, Spain, and of the judicial district of Santa Coloma.\nIt is situated on the edge of the Selva Depression and of the Guilleries. The local economy is mainly commercial, given the status of the town as capital of the comarca, although summer tourism, agriculture and forestry products also contribute. The urban centre is to the north and west of the main modern communication routes, although the C-253 road links the town with the main N-II route and the AP-7 autopista and to the Renfe railway station at Sils (10 km). The GE-533 runs through the northern part of the municipality, linking it with Vic to the west and with Riudellots de la Selva, Vilobí d'Onyar and Girona-Costa Brava Airport \nto the east.\nThe town dates from at least 898, when the church is mentioned for the first time. Destroyed during the course of the Magyar invasion of 942, it was rebuilt in 950. During the Middle Ages it was under the ecclesiastical control of the Monastery of Sant Pere Cercada and the civil control of Farners Castle. A market was established by a charter of King Peter IV of Aragon in 1334, and an independent barony was created in the 15th century, held by the Vilademany family.\nIn the town of Santa Coloma, notable monuments include the Gothic Church of Santa Coloma (whose current structure dates from the 14th century), the Plaça de Farners and the Thermal Baths of Orion (Balneari Termes-Orion). The 12th-century castle is six kilometres to the west of the urban centre (within the municipal boundaries): the adjoining Santuari de la Mare de Déu de Farners (Sanctuary of the Mother of God) houses a noted state of Mary, the mother of Jesus. The Roman-styled Monastery of Sant Pere Cercada is three kilometres further on from the castle.\nSanta Coloma has always played an important role with regard to forests, being an area of intensive production and of considerable political influence with regard to the regional forest policy. It is host to the Catalan Forestry House, where the most representative forestry-related organisations of Catalonia share offices: the Consorci Forestal de Catalunya, one of the oldest agrarian organisations of Catalonia, representing the interests of the private forest owners, the Fundació Boscos, a private foundation dedicated to the dissemination of cultural and educational values around forests, ARCMED, the federation of Mediterranean foresters, an organisation represented in Brussels to represent over 600.000 forest owners from 7 Mediterranean countries, and the leading forestry research centre of Catalonia, the Forest Sciences Centre of Catalonia (CTFC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 446
+    },
+    "banned_terms": [
+      {
+        "term": "santa coloma de farners",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coloma",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "farners",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5333,
+    "attempt": 5291,
+    "place_id": "gn-5570065",
+    "input": {
+      "place": {
+        "place_id": "gn-5570065",
+        "name": "Red Bluff",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.17849,
+        "lon": -122.23583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Red Bluff, California",
+          "url": "https://en.wikipedia.org/wiki/Red_Bluff,_California",
+          "text": "Red Bluff is a city in and the county seat of Tehama County, California, United States. Its population was 14,710 at the 2020 census, up from 14,076 at the 2010 census.\nIt is located 131 miles (211 kilometers) north of Sacramento, 31 mi (50 km) south of Redding, and it is bisected by Interstate 5. Red Bluff is situated on the banks of the upper Sacramento River where a Historic Chinatown District was established on October 29, 2022. As early as 1852, four years after the first contingent of Chinese arrived in California to work the gold mines during the California Gold Rush, a Chinatown was created to serve the growing population arriving at the last steamboat stop known as Head of Navigation in Red Bluff, California. Located in the northernmost part of California’s Central Valley, the city marks the northern end of a vast contiguously cultivated area that extends all the way to Bakersfield, 400 mi (640 km) to the south. Mildly rugged terrain, used as rangeland, separates Red Bluff from the next crop areas to the north in Cottonwood.\nIt was originally known as Leodocia, but was renamed to Covertsburg in 1853, then its current name in 1854. Located at the head of navigation on the Sacramento River, the town flourished in the mid- to late 19th century as a landing point for miners heading to the Trinity County gold fields and later as a temporary terminus for the Southern Pacific Railroad's northward expansion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "red bluff",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "red",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bluff",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5334,
+    "attempt": 5292,
+    "place_id": "gn-5976783",
+    "input": {
+      "place": {
+        "place_id": "gn-5976783",
+        "name": "Hope",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.38299,
+        "lon": -121.44144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hope, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Hope,_British_Columbia",
+          "text": "Hope is a district municipality at the confluence of the Fraser and Coquihalla rivers in the province of British Columbia, Canada. Hope is at the eastern end of both the Fraser Valley and the Lower Mainland region, and is at the southern end of the Fraser Canyon. To the east, over the Cascade Mountains, is the Interior region, beginning with the Similkameen Country on the farther side of the Allison Pass in Manning Park.\nLocated 154 kilometres (96 mi) east of Vancouver, Hope is at the southern terminus of the Coquihalla Highway and the western terminus of the Crowsnest Highway, locally known as the Hope-Princeton (Highways 5 and 3, respectively), where they merge with the Trans-Canada Highway (Highway 1). Hope is at the eastern terminus of Highway 7. As it lies at the eastern end of the Fraser Valley in the windward Cascade foothills, the town gets very high amounts of rain and cloud cover – particularly throughout the autumn and winter.\nHope is a member municipality of the Fraser Valley Regional District which provides certain municipal services to unincorporated settlements and rural areas.\nThe District of Hope includes Hope (the previous Town of Hope) and surrounding areas, including the communities of Kawkawa Lake, Silver Creek, Flood, and Lake of the Woods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "hope",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5335,
+    "attempt": 5293,
+    "place_id": "gn-650744",
+    "input": {
+      "place": {
+        "place_id": "gn-650744",
+        "name": "Kruununhaka",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.17174,
+        "lon": 24.9566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kruununhaka",
+          "url": "https://en.wikipedia.org/wiki/Kruununhaka",
+          "text": "Kruununhaka (Finnish: [ˈkruːnunˌhɑkɑ]; Swedish: Kronohagen, often nicknamed \"Krunika\", \"Krunikka\" or \"Kruna\") is a neighbourhood of Helsinki, the capital of Finland. As of 31 December 2024 there were about 7400 inhabitants in Kruununhaka and as of 31 December 2022 there were about 9100 jobs. Kruununhaka is bordered by the street Unioninkatu to the west and the Pohjoisesplanadi street on the Helsinki Market Square to the south, in other directions it is bordered by water.\nThe name \"Kruununhaka\" (literally \"pasture of the Crown\") comes from a pasture for horses for the artillery of the Crown that used to be located near the current Rauhankatu street. Up to the early 18th century it used to be located slightly outside the city proper, but nowadays almost the entirety of the urban area of Helsinki at the time is said to be included in Kruununhaka.\nKruununhaka became the area next to the harbour and the center, when Helsinki was moved from the earlier location in the mid-1660s. From the very beginning, the residents included city and state officials.\nMany buildings of the University of Helsinki are also situated in Kruununhaka.  The area has become known for its vintage shops.\nA central part of Kruununhaka is the Helsinki Senate Square built in the Empire style as well as the area between the Pohjoisesplanadi and Aleksanterinkatu streets. Kruununhaka is a district of valuable institutions. The Helsinki Cathedral, the main building of the Bank of Finland, the Presidential Palace, the Government Palace, the old Helsinki town hall, the Helsinki City Hall, the House of the Estates, the House of Nobility, the House of Sciences, many famous law bureaus and buildings of the city centre campus of the University of Helsinki are located there. The Sibelius gymnasium school, one of the most famous schools in Finland is located on the Liisankatu street. The eastern shore of Kruununhaka is called Pohjoisranta. Pohjoisranta contains the Pohjoissatama boat pier and a short connection to the refreshment area of Tervasaari."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "kruununhaka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5336,
+    "attempt": 5294,
+    "place_id": "gn-11778104",
+    "input": {
+      "place": {
+        "place_id": "gn-11778104",
+        "name": "Castle Vale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.51879,
+        "lon": -1.79683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castle Vale",
+          "url": "https://en.wikipedia.org/wiki/Castle_Vale",
+          "text": "Castle Vale is a housing estate located between Erdington, Minworth and Castle Bromwich. Currently Castle Vale makes up the Castle Vale Ward of Birmingham City Council which is part of Erdington constituency (having previously been part of Hodge Hill constituency until recent times), 6 miles (9 km) northeast of Birmingham city centre in England. The area has an approximate population of 10,000 people and has a distinctly modern residential character stemming from its history as a postwar overspill estate.\nThe area was originally known as Berwood, from the Saxon 'Bearu' meaning 'the woods'. Historically being a boggy and wooded area, the area remained undeveloped for most of its history until the deforestation practices of Edward Darcy in the 17th century and the construction of the Birmingham and Fazeley Canal in the 18th century. In the 20th century, the land became the site for the first aeroplane take-off in Birmingham which led to a long aviation history being associated with the area. Castle Bromwich Aerodrome was established on the site and operated from 1914 to 1960, being a major airfield in both World Wars and also having industrial importance as the testing facility for locally manufactured aeroplanes and the location for the British Industries Fair. Despite being steeped in aviation history, Castle Vale became infamous from the 1970s onwards as a large scale example of a failed postwar overspill estate, which suffered from poor construction and maintenance, social deprivation and high levels of crime. The area became the focus of a targeted regeneration initiative, led by the Castle Vale Housing Action Trust (CVHAT) from 1993 to 2005, where the estate witnessed the demolition of many of its housing stock and facilities, the refurbishment of remaining properties, and the construction of new housing and facilities along with the remodelling of the estate, funded both privately and publicly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "castle vale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5337,
+    "attempt": 5295,
+    "place_id": "gn-2266442",
+    "input": {
+      "place": {
+        "place_id": "gn-2266442",
+        "name": "Mértola",
+        "country": "Portugal",
+        "subdivision": "Beja",
+        "lat": 37.64304,
+        "lon": -7.6611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mértola",
+          "url": "https://en.wikipedia.org/wiki/Mértola",
+          "text": "Mértola (Portuguese pronunciation: [ˈmɛɾtulɐ] ), officially the Town of Mértola (Portuguese: Vila de Mértola), is a town and municipality in southeastern Portuguese Alentejo near the Spanish border. In 2021, the population of the municipality was 6,206, in an area of approximately 1,292.87 square kilometres (499.18 mi2): it is the sixth-largest municipality in Portugal. Meanwhile, it is the second-lowest population centre by density with approximately 5.62 persons/1 square kilometre (0.39 mi2) (second to the adjacent Alcoutim).\nThe seat of the municipality is the town of Mértola, which had around 2500 inhabitants at the time of the 2021 census, located on a hill over the Guadiana River. Its strategic location made it an important fluvial commercial port in Classical Antiquity, through the period of Umayyad conquest of Hispania: Mértola's main church (the Church of Nossa Senhora da Anunciação) was the only medieval mosque to have survived the period in Portugal.\nIn 2017 Mértola started the process to become a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "mertola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5338,
+    "attempt": 5296,
+    "place_id": "gn-2644679",
+    "input": {
+      "place": {
+        "place_id": "gn-2644679",
+        "name": "Lees",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53794,
+        "lon": -2.07302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lees, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Lees,_Greater_Manchester",
+          "text": "Lees is a town in the Metropolitan Borough of Oldham, Greater Manchester, England, amongst the Pennines east of the River Medlock, 1.8 miles (2.9 km) east of Oldham, and 8.2 miles (13.2 km) northeast of Manchester.\nIn the 14th century, when John de Leghes was a retainer of the local Lord of the manor, Lees was a conglomeration of hamlets, ecclesiastically linked with the township of Ashton-under-Lyne. Farming was the main industry of this rural area, with locals supplementing their incomes by hand-loom weaving in the domestic system. At the beginning of the 19th century, Lees had obtained a reputation for its mineral springs; ambitions to develop a spa town were thwarted by an unplanned process of urbanisation caused by the rise of textile manufacture during the Industrial Revolution.\nLees expanded into a mill town in the late 19th century, on the back of neighbouring Oldham's boom in cotton spinning. Lees Urban District had eleven cotton mills at its manufacturing zenith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "lees",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5339,
+    "attempt": 5297,
+    "place_id": "gn-4500653",
+    "input": {
+      "place": {
+        "place_id": "gn-4500653",
+        "name": "Barrington",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.86484,
+        "lon": -75.05517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrington, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Barrington,_New_Jersey",
+          "text": "Barrington is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,075, an increase of 92 (+1.3%) from the 2010 census count of 6,983, which in turn reflected a decline of 101 (-1.4%) from the 7,084 counted in the 2000 census.\nThe area became known as \"Barrington\" in the 1880s, when William Simpson, one of the partners that developed the area, chose the name from his home in Great Barrington, Massachusetts.\nBarrington was incorporated as a borough on March 27, 1917, from portions of the now-defunct Centre Township, based on the results of a referendum held on April 17, 1917. Portions of the borough were taken on March 24, 1926, to form Lawnside.\nThe borough had the 30th-highest property tax rate in New Jersey, with an equalized rate of 4.069% in 2020, compared to 3.470% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "barrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5340,
+    "attempt": 5298,
+    "place_id": "gn-4503316",
+    "input": {
+      "place": {
+        "place_id": "gn-4503316",
+        "name": "Northfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.37039,
+        "lon": -74.55015
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Northfield,_New_Jersey",
+          "text": "Northfield is a city in Atlantic County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 8,434, a decrease of 190 (−2.2%) from the 2010 census count of 8,624, which in turn reflected an increase of 899 (+11.6%) from the 7,725 counted in the 2000 census.\nNorthfield was founded by Jeremiah Leeds; he has a gravestone at Oxford Circle, but it is not certain that he was buried there. Northfield was incorporated as a city by an act of the New Jersey Legislature on March 21, 1905, from portions of Egg Harbor Township. A portion of Egg Harbor Township was transferred to Northfield in 1931, and then reverted to Egg Harbor Township in 1933.\nThe city calls itself the \"Gateway to the Shore\", just over the bridge from the beaches, and is located about 7 miles (11 km) west of Atlantic City, bordering the municipalities of Pleasantville, Egg Harbor Township and Linwood. Geographically, the city, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "northfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5341,
+    "attempt": 5299,
+    "place_id": "gn-4503351",
+    "input": {
+      "place": {
+        "place_id": "gn-4503351",
+        "name": "Ocean City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.27762,
+        "lon": -74.5746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ocean_City,_New_Jersey",
+          "text": "Ocean City is a city in Cape May County, in the U.S. state of New Jersey. It is the principal city of the Ocean City metropolitan statistical area, which encompasses all of Cape May County, and is part of the Philadelphia metropolitan area. It is part of the South Jersey region of the state.\nAs of the 2020 United States census, the city's population was 11,229, a decrease of 472 (−4.0%) from the 2010 census count of 11,701, which in turn reflected a decline of 3,677 (−23.9%) from the 15,378 counted in the 2000 census. In summer months, with an influx of tourists and second homeowners, there are estimated to be 115,000 to 130,000 within the city's borders.\nOcean City originated as a borough by an act of the New Jersey Legislature on May 3, 1884, from portions of Upper Township, based on results from a referendum on April 30, 1884, and was reincorporated as a borough on March 31, 1890. Ocean City was incorporated as a city, its current government form, on March 25, 1897. The city is named for its location on the Atlantic Ocean.\nKnown as a family-oriented seaside resort, Ocean City has not allowed the sale of alcoholic beverages within its limits since its founding in 1879, offering miles of guarded beaches, a boardwalk that stretches for 2.5 miles (4.0 km), and a downtown shopping and dining district. The city earned $5.9 million in revenue from beach tags in 2025, the highest of any municipality in the state.\nTravel Channel rated Ocean City as the Best Family Beach of 2005. It was ranked the third-best beach in New Jersey in the 2008 Top 10 Beaches Contest sponsored by the New Jersey Marine Sciences Consortium. In the 2009 Top 10 Beaches Contest sponsored by NJ.com, Ocean City ranked first."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "ocean city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5342,
+    "attempt": 5300,
+    "place_id": "gn-4885186",
+    "input": {
+      "place": {
+        "place_id": "gn-4885186",
+        "name": "Blue Island",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.65726,
+        "lon": -87.68005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blue Island, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Blue_Island,_Illinois",
+          "text": "Blue Island is a city in Cook County, Illinois, United States, 16 miles (26 km) south of Chicago's Loop. Blue Island is adjacent to the city of Chicago and shares its northern boundary with that city's Morgan Park neighborhood. The population was 22,558 at the 2020 United States census.\nBlue Island was established in the 1830s as a way station for settlers traveling on the Vincennes Trace, and the settlement prospered because it was conveniently situated a day's journey outside of Chicago. In 1884, Alfred T. Andreas observed, \"The location of Blue Island Village is a beautiful one. Nowhere about Chicago is there to be found a more pleasant and desirable resident locality.\"\nSince its founding, the city has been an important commercial center in the south Cook County region, although its position in that respect has been eclipsed in recent years as other significant population centers developed around it and the region's commercial resources became spread over a wider area. In addition to its broad long-standing industrial base, the city enjoyed notable growth in the 1840s during the construction of the feeder canal (now the Calumet Sag Channel) for the Illinois and Michigan Canal and as the center of a large brick-making industry beginning in the 1850s, which eventually gave Blue Island the status of brick-making capital of the world. Beginning in 1883, Blue Island was also host to the car shops of the Rock Island Railroad. Blue Island was home to several breweries, who used the east side of the hill to store their product before the advent of refrigeration, until the Eighteenth Amendment made these breweries illegal in 1919. A large regional hospital and two major clinics are also located in the city.\nAlthough initially settled by \"Yankee\" stock, Blue Island has been the point of entry for many of America's immigrants, beginning in the 1840s with the arrival of a large German population that remained a prominent part of the city's ethnic makeup for many years. By 1850, half of Blue Island's population was either foreign-born or the children of foreign-born residents. Later, significant groups came from Italy, Poland, Sweden and Mexico.\nThe city is one of eleven incorporated areas in Illinois to have been designated by the White House as a \"Preserve America\" community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 379
+    },
+    "banned_terms": [
+      {
+        "term": "blue island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blue",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

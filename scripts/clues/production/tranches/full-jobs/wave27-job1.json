@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 5240,
+    "attempt": 5201,
+    "place_id": "gn-3878431",
+    "input": {
+      "place": {
+        "place_id": "gn-3878431",
+        "name": "Ñuñoa",
+        "country": "Chile",
+        "subdivision": "Santiago Metropolitan",
+        "lat": -33.44735,
+        "lon": -70.58279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ñuñoa",
+          "url": "https://en.wikipedia.org/wiki/Ñuñoa",
+          "text": "Ñuñoa (Spanish pronunciation: [ɲuˈɲo.a]; from Mapudungun Ñuñohue, \"place of yellow flowers\") is a commune located in the northeastern sector of Santiago, the capital of Chile. Bordered by Providencia to the north and west, Macul to the south, and Peñalolén and La Reina to the east, it covers an area of 16.9 km2 (6.5 sq mi) and had a population of 241,467 as of the 2024 census. It is the oldest municipality in the traditional east end of Santiago, having been formally established on May 6, 1894.\nÑuñoa exerts influence at the national level in media, politics, education, architecture, sport, entertainment, the arts, and gastronomy, and is considered one of the most culturally diverse communes in Chile. According to the 2021 Urban Life Quality Index (ICVU), it ranked fourth among all communes in the country for quality of life. The commune has seen rapid population growth — from 163,511 inhabitants in 2002 to 241,467 in 2024, a 47% increase — driven by its desirability among urban professionals and a major real estate boom following the inauguration of Line 3 of the Santiago Metro along Avenida Irarrázaval in 2019.\nNotable landmarks include the Estadio Nacional, Chile's largest sports complex, which served as a venue for the 1962 FIFA World Cup and, during the military dictatorship, as a detention center under Augusto Pinochet; the As-Salam Mosque, the only mosque in Santiago; and the bohemian neighborhoods of Plaza Ñuñoa and Barrio Italia. The commune is also home to major university campuses, including the Campus Juan Gómez Millas of the University of Chile."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "nunoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5241,
+    "attempt": 5202,
+    "place_id": "gn-5119218",
+    "input": {
+      "place": {
+        "place_id": "gn-5119218",
+        "name": "Great Neck",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80066,
+        "lon": -73.72846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Neck, New York",
+          "url": "https://en.wikipedia.org/wiki/Great_Neck,_New_York",
+          "text": "Great Neck is a region contained within Nassau County, New York, on Long Island, which covers a peninsula on the North Shore and includes nine incorporated villages, among them Great Neck, Great Neck Estates, Great Neck Plaza, Kings Point, and Russell Gardens, and a number of unincorporated areas, as well as an area south of the peninsula near Lake Success and North New Hyde Park. The incorporated village of Great Neck had a population of 9,989 at the 2010 census, while the larger Great Neck area comprises a residential community of some 40,000 people in nine villages and hamlets in the town of North Hempstead, of which Great Neck is the northwestern quadrant. Great Neck has five ZIP Codes (11020–11024), which are united by a park district. As well as the ZIP code (11040) which represents the part of North New Hyde Park zoned into GNPS, It is also connected with the library district, and a school district which the core five ZIP Codes also share privileges.\nThe hamlets are census-designated places that consolidate various unincorporated areas. They are statistical entities and are not recognized locally. However, there are locally recognized neighborhoods within the hamlet areas, such as Harbor Hills, Saddle Rock Estates, University Gardens, and Manhasset. The Manhasset neighborhood (in ZIP Code 11030) is not considered part of Great Neck. The part of the hamlet of Manhasset that is considered part of Great Neck includes the Great Neck Manor neighborhood. Great Neck Gardens is featured on many maps as a name of one such hamlet, even as the name is seldom used by local residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "great neck",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "neck",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5242,
+    "attempt": 5203,
+    "place_id": "gn-6240088",
+    "input": {
+      "place": {
+        "place_id": "gn-6240088",
+        "name": "Kaiti",
+        "country": "New Zealand",
+        "subdivision": "Gisborne",
+        "lat": -38.66824,
+        "lon": 178.03021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaiti, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Kaiti,_New_Zealand",
+          "text": "Kaiti (Puhi-kai-iti) is a suburb and historic area of Gisborne in New Zealand's Gisborne District. Situated on the eastern bank of the Tūranganui River, it contains several of the most historically significant sites in Tūranganui-a-Kiwa, including Titirangi, Puhi Kai Iti / Cook Landing Site, and much of the former Kaiti Block, one of the earliest Native Land Court title investigations undertaken in the district.\nKaiti has long been a centre of settlement for the descendants of Ruapani and forms part of the customary rohe of Rongowhakaata, Te Aitanga-a-Māhaki and their constituent hapū, including Ngāi Tāwhiri, Te Whānau-a-Iwi, Ngāi Te Kete and Ngāti Oneone.\nDuring the Native Land Court investigations into the Kaiti Block, the customary interests advanced on behalf of Ngāti Oneone were traced principally through descent from Ruapani and his grandchildren Kahunoke and Te Nonoikura, including their descendants Tutekohe and Rongomaiwaiata. Contemporary claims identifying Ngāti Oneone primarily through Ngāti Porou whakapapa reflect a more recent interpretation that was not advanced during the nineteenth-century title investigations.\nIn October 1769, Kaitī became the setting for the first recorded encounters between Māori and the crew of James Cook. The district was already a long-established centre of settlement and customary authority, and the events that followed marked the beginning of sustained contact between the peoples of Tūranganui-a-Kiwa and Europeans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "kaiti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5243,
+    "attempt": 5204,
+    "place_id": "gn-5099087",
+    "input": {
+      "place": {
+        "place_id": "gn-5099087",
+        "name": "Hillsdale",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.0026,
+        "lon": -74.04042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillsdale, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hillsdale,_New_Jersey",
+          "text": "Hillsdale is a borough in the northern portion of Bergen County, in the U.S. state of New Jersey, within the New York City metropolitan area. As of the 2020 United States census, the borough's population was 10,143, a decrease of 76 (−0.7%) from the 2010 census count of 10,219, which in turn reflected an increase of 132 (+1.3%) from the 10,087 counted in the 2000 census.\nThe populated area today known as Hillsdale took form in the mid-to-late 19th century as land speculators, led by David P. Patterson, developed subdivisions to profit from the coming of the Hackensack and New York Railroad (later New Jersey and New York Railroad). The area was incorporated as Hillsdale Township on March 25, 1898, from portions of Washington Township, which had, in turn, been set off from Harrington Township in 1840. Portions of the township were taken on April 30, 1906, to create the township of River Vale. Hillsdale was reincorporated as a borough by an act of the New Jersey Legislature on March 2, 1923, subject to approval which came in a referendum held on April 24, 1923. The borough's name derives from its location in a \"dale among the hills\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "hillsdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5244,
+    "attempt": 5205,
+    "place_id": "gn-2518249",
+    "input": {
+      "place": {
+        "place_id": "gn-2518249",
+        "name": "El Plan",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.65,
+        "lon": -1.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Plan, Cartagena",
+          "url": "https://en.wikipedia.org/wiki/El_Plan,_Cartagena",
+          "text": "El Plan is a district of the Spanish municipality Cartagena. It is located in the east of the western half of the municipality, has an area of 13.165 km2, and was inhabited by 36,080 people in 2020.\nThe localities of the district are La Guía, which is in the north-west and is home to 122 people; Polígono de Santa Ana, where 7154 live; El Plan, which is inhabited by 220 people; Los Gabatos, which is placed in the south-western quarter and has a population of 5626, Barriada Hispanoamérica, which is also located in the south-western quarter and is home to 3865 people; Los  Dolores, which is placed in the southern half and is inhabited by 7751 people; Urbanización Castillitos, which is located in the south and has a population of 1384 people; Los Barreros, which is also placed in the south and is home to 7030 people and Barriada Cuatro Santos, which is placed in the south-east end and is inhabited by 2573 people.\nThe district is in an urban continuity with the main city and the northern neighbourhoods of San Antonio Abad district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "el plan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5245,
+    "attempt": 5206,
+    "place_id": "gn-5103256",
+    "input": {
+      "place": {
+        "place_id": "gn-5103256",
+        "name": "Ridgefield Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85704,
+        "lon": -74.02153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ridgefield Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ridgefield_Park,_New_Jersey",
+          "text": "Ridgefield Park is a village in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the village's population was 13,224, an increase of 495 (+3.9%) from the 2010 census count of 12,729, which in turn reflected a decline of 144 (−1.1%) from the 12,873 counted in the 2000 census. Of the 564 municipalities in the state, Ridgefield Park is one of only four with a village type of government, though it operates a Walsh Act (city commission) form of government. Of the four New Jersey villages, Loch Arbour also uses the commission form of government, while Ridgewood operates under the council-manager form, and the Township of South Orange Village operates under a special charter form with many characteristics of village government.\nRidgefield Park was formed as a village on June 15, 1892, within Ridgefield Township, based on the results of a referendum passed on June 6, 1892. Overpeck Township was formed on March 23, 1897, to be coextensive with Ridgefield Park village, and was created within Ridgefield Township for the purpose of administering a Board of Education. Portions of the village gained in both 1921 and 1926 were taken from Bogota and Teaneck. On May 31, 1938, Overpeck Township became Ridgefield Park Township. The village was named for the area's terrain.\nThe village's Fourth of July Parade, first established in 1894, is said to be the longest continuously celebrated such event in New Jersey and one of the oldest in the country. The village eliminated its July 4 fireworks in 2009, citing the $50,000 cost amid a difficult economy, but has restored the tradition since then."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "ridgefield park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ridgefield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5246,
+    "attempt": 5207,
+    "place_id": "gn-6072350",
+    "input": {
+      "place": {
+        "place_id": "gn-6072350",
+        "name": "Merritt",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.11225,
+        "lon": -120.7942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merritt, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Merritt,_British_Columbia",
+          "text": "Merritt is a city in the Nicola Valley of the south-central Interior of British Columbia, Canada. It is 270 km (170 mi) northeast of Vancouver. Situated at the confluence of the Nicola and Coldwater rivers, it is the first major community encountered after travelling along Phase One of the Coquihalla Highway and acts as the gateway to all other major highways to the B.C. Interior. The city developed in 1893 when part of the ranches owned by William Voght, Jesus Garcia, and John Charters were surveyed for a town site.\nOnce known as Forksdale, the community adopted its current name in 1906 in honour of mining engineer and railway promoter William Hamilton Merritt III. The 24-square-kilometre (9.3 sq mi) city limits consist of the community, a number of civic parks, historical sites, an aquatic centre, a local arena, a public library (which is a branch of the Thompson-Nicola Regional District Library System) and a civic centre. Merritt has dozens of bronzed hand prints of country music stars who have been in the city for the former annual Merritt Mountain Music Festival displayed throughout town. Merritt is also home to a local radio station, a weekly newspaper and the Nicola Valley Institute of Technology campus. Nearby, there are four provincial parks, numerous lakes, and several recreational trails. As the gateway between BC's Lower Mainland and Okanagan regions, Merritt is known as a key destination for festivals, events, and bountiful outdoor recreation.\nHighway 5, and Highway 97C intersect at Merritt with Highway 97C East connecting the city to Kelowna and Penticton, Highway 97C Northwest to Logan Lake, Highway 8 to Spences Bridge and Lillooet, Highway 5A South to Princeton, Highway 5A North to Kamloops, Highway 5 South to Hope, and Highway 5 North to Kamloops. Merritt's economy is dominated by the primary industries of forestry, tourism, and service."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "merritt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5247,
+    "attempt": 5208,
+    "place_id": "gn-11551053",
+    "input": {
+      "place": {
+        "place_id": "gn-11551053",
+        "name": "East Sheen",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46291,
+        "lon": -0.26844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Sheen",
+          "url": "https://en.wikipedia.org/wiki/East_Sheen",
+          "text": "East Sheen, also known as Sheen, is a suburb in south-west London in the London Borough of Richmond upon Thames.\nIts long high street has shops, offices, restaurants, cafés, pubs and suburban supermarkets and is also the economic hub for Mortlake of which East Sheen was once a manor. This commercial thoroughfare, well served by public transport, is the Upper Richmond Road West which connects Richmond to Putney. Central to this street is The Triangle, a traffic island with a war memorial and an old milestone dating from 1751, marking the 10 miles (16 km) distance to Cornhill in the City of London.\nThe main railway station serving the area, Mortlake, is centred 300 metres (980 ft) north of this. Sheen has a mixture of low-rise and mid-rise buildings and it has parks and open spaces including its share of Richmond Park, accessed via Sheen Gate; Palewell Common, which has a playground, playing fields, tennis courts and a pitch and putt course; and East Sheen Common which is owned by the National Trust and leads into Bog Gate, another gate of Richmond Park.\nSheen Lane runs south from the junction of Mortlake High Street and Lower Richmond Road, over the level crossing at Mortlake station and the crossroads at Upper Richmond Road West, and up the hill to East Sheen Gate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "east sheen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sheen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5248,
+    "attempt": 5209,
+    "place_id": "gn-2524928",
+    "input": {
+      "place": {
+        "place_id": "gn-2524928",
+        "name": "Corleone",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.81338,
+        "lon": 13.3017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corleone",
+          "url": "https://en.wikipedia.org/wiki/Corleone",
+          "text": "Corleone (Italian: [korleˈoːne]; Sicilian: Cunigghiuni [kʊnɪɟˈɟuːnɪ] or Curliuni [kʊɾlɪˈuːnɪ]) is a town and comune of roughly 11,158 inhabitants in the Metropolitan City of Palermo, in Sicily, Southern Italy.\nThe town is located in the central part of the Sicilian region, in a mountainous inland area at 542 meters (1,778 ft) above the sea level, protected by a crown of carbonate rock promontories; Rocca di Maschi, Castello Soprano and Castello Sottano. The municipality has an area of 22,912 hectares (56,620 acres) with a population density of 49 inhabitants per square kilometer. \nThe area on which Corleone stands has an ancient history, with the first human settlements dating back to the first phase of the Neolithic, in the 6th millennium BC. \nThe town's altitude and its location in a valley surrounded by hills halfway between Palermo and Agrigento gave Corleone a defensive and strategic advantage over the centuries. In fact, its position allowed to control important communication routes between the coastal areas and the Sicilian hinterland, and the natural protections fortified its defense. \nThere are several historical theories regarding the origins of the town's foundation. One of the most accredited sources dates it back to the 9th century AD, during the Muslim rule of Sicily. However, archaeological excavations conducted in the late 1990s show that the urban layout dates back to earlier times. According to some sources, the town was founded by Ancient Greek colonists and was a polis called Schera. Recent finds suggest the original layout dates back to prehistoric times.\nCorleone was a central place in the history of Cosa Nostra, the Sicilian Mafia, which established itself in Sicily as a rural phenomenon in the late 19th century. The Mafia arose from the growing power of the gabellotti, individuals who had obtained concessions on lands belonging to the Sicilian aristocracy thanks to the abolition of feudal privileges in 1812, which caused the Sicilian nobles to abandon the countryside and return to the cities. The gabellotti paid to administer the lands, then divided them into lots and subleased them to peasants and laborers, who were treated like serfs, and their claims were violently repressed with the help of bandits. The institutional weakness following the Unification of Italy in 1861 allowed this new organization, formed by the union of landed exploiters and the rural criminals, and which would ultimately become the Mafia, to gain ever greater control over the rural areas.    \nThe Corleone Mafia Family originated in the early 20th century and was most likely founded by Angelo Gagliano, a Corleone native with a criminal record and known for his violent nature, who later became the first boss of Corleone. Like other mafia clans, the Corleone Family was originally made up of gabellotti and cattle thieves.   \nThe trade unionist and later mayor of Corleone, Bernandino Verro, firmly opposed the advance of the Mafia and fought hard to ensure respect for farmers' rights, agricultural cooperation, and the fair redistribution of landed estates. In 1915, he was killed by an unidentified hitman, on the orders of the mafia boss Angelo Gagliano, who had already attempted to assassinate him in 1910. Verro was the first mayor killed by the Sicilian Mafia.    \nAfter World War II, trade unionist Placido Rizzotto led a peasant movement in Corleone for the occupation of uncultivated lands, in order to counter the power of the Mafia and its land-owning management of the territory. This made him a target for the town's clans, particularly for clan leader Michele Navarra, who saw the trade unionist as a threat to his power and control. Rizzotto was kidnapped and assassinated on March 10, 1948. A local shepherd boy, Giuseppe Letizia, was also killed. He had accidentally witnessed the murder, becoming an inconvenient eyewitness for the mafia. \nIn the 1960s, the Corleone Mafia family became increasingly powerful under the leadership of Luciano Leggio, who stood out for his ruthless ways. The Corleonesi, an alliance of Mafia families led by Corleone mafiosi, led Cosa Nostra in the 1980s and was the most violent faction ever to take control of the organization.  \nCorleone is also the birthplace of several fictional characters in Mario Puzo's 1969 novel The Godfather, including the eponymous Don Vito (Andolini) Corleone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 697
+    },
+    "banned_terms": [
+      {
+        "term": "corleone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5249,
+    "attempt": 5210,
+    "place_id": "gn-2636749",
+    "input": {
+      "place": {
+        "place_id": "gn-2636749",
+        "name": "Stowmarket",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.18893,
+        "lon": 0.99774
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stowmarket",
+          "url": "https://en.wikipedia.org/wiki/Stowmarket",
+          "text": "Stowmarket ( STOH-mar-kət) is a market town and civil parish in the Mid Suffolk district of Suffolk, England, on the A14 trunk road between Bury St Edmunds to the west and Ipswich to the southeast. The town lies on the Great Eastern Main Line (GEML) between Diss and Needham Market, and lies on the River Gipping, which is joined by its tributary, the River Rat, to the south of the town.\nThe town takes its name from the Old English word stōw meaning \"principal place\", and was granted a market charter in 1347 by Edward III. A bi-weekly market is still held there today on Thursday and Saturday.\nThe population of the town has increased from around 6,000 in 1981 to around 21,000 in 2021 with the mighty lime tree cafe situated at the heart of it , with considerable further development planned for the town and surrounding villages as part of an area action plan. It is the largest town in the Mid Suffolk district and is represented in Parliament by the MP for Bury St Edmunds and Stowmarket, currently Peter Prinsley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "stowmarket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5250,
+    "attempt": 5211,
+    "place_id": "gn-5105433",
+    "input": {
+      "place": {
+        "place_id": "gn-5105433",
+        "name": "Tinton Falls",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.30428,
+        "lon": -74.10042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tinton Falls, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Tinton_Falls,_New_Jersey",
+          "text": "Tinton Falls is a borough in Monmouth County, in the U.S. state of New Jersey. Located within the heart of the Jersey Shore region, the borough is a commercial hub of Central Jersey (it is the site of the Jersey Shore Premium Outlets and different corporate headquarters) and is an established bedroom suburb of New York City, in the New York metropolitan area. As of the 2020 United States census, the borough's population was 19,181, an increase of 1,289 (+7.2%) from the 2010 census count of 17,892, which in turn reflected an increase of 2,839 (+18.9%) from the 15,053 counted in the 2000 census.\nThe borough was formed as New Shrewsbury by an act of the New Jersey Legislature on August 15, 1950, based on the results of a referendum held on July 18, 1950, after breaking away from Shrewsbury Township. It was renamed \"Tinton Falls\" in 1975, to avoid postal errors. The name came from Lewis Morris's plantation, Tinton Manor (which employed free white workers and slaves) as it featured a gristmill, making it one of New Jersey's earliest bustling mill towns. The borough is home to the highest waterfall on New Jersey's coastal plain, from which the aforementioned mill generated power."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "tinton falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tinton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5251,
+    "attempt": 5212,
+    "place_id": "gn-8541977",
+    "input": {
+      "place": {
+        "place_id": "gn-8541977",
+        "name": "Dubai International Financial Centre",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.2106,
+        "lon": 55.27787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubai International Financial Centre",
+          "url": "https://en.wikipedia.org/wiki/Dubai_International_Financial_Centre",
+          "text": "The Dubai International Financial Centre (DIFC) is a special economic zone in Dubai covering 110 ha (272 acres), established in 2004 as a financial hub for companies operating throughout the Middle East, Africa, and South Asia (MEASA) markets.\nDIFC is regulated by the Dubai Financial Services Authority, an independent regulator exclusive to the zone, and by its own court system, DIFC Courts, separate from the Emirate of Dubai's legal system and that of the federal government of the UAE. DIFC follows the common law framework and operates in English.\nDIFC is one of Dubai's independent free zones; it offers companies 100% ownership without the need for a local partner. The freezone houses financial institutions, and wealth funds in addition to retail and hotel space dedicated to the free zones.\nDIFC offers clients a 50-year guarantee of zero taxes on corporate income and profits, complemented by the UAE's network of double taxation treaties.\nIt was reported in 2022 that DIFC had a 19% annual increase in non-financial firms, bringing the total number of international companies, family businesses, and corporate service providers to over 3,000.\nDuring the 2026 Iran war, a building in DIFC was damaged by debris from a drone attack."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "dubai international financial centre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dubai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "international",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "financial",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5252,
+    "attempt": 5213,
+    "place_id": "gn-3129231",
+    "input": {
+      "place": {
+        "place_id": "gn-3129231",
+        "name": "Astorga",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.45879,
+        "lon": -6.05601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astorga, Spain",
+          "url": "https://en.wikipedia.org/wiki/Astorga,_Spain",
+          "text": "Astorga (Spanish: [asˈtoɾɣa] , Estorga in the Leonese dialect of Maragatería) is a municipality and city in Spain, located in the Province of León, within the autonomous community of Castile and León. Situated at the transition between the Páramo Leonés and the Montes de León, it serves as a central hub for the regions of Maragatería, La Cepeda, and the Ribera del Órbigo. The city is the seat of one of Spain's oldest and most extensive dioceses, with jurisdiction over half of the province of León and parts of the provinces of Ourense and Zamora. It is also the head of the judicial district number 5 of the province of León.\nFounded as a Roman military camp for the Legio X Gemina in the late 1st century BC, it soon transitioned into a civilian settlement known as Asturica Augusta and became the capital of the Conventus Asturum. It developed as a key communication hub in northwestern Iberia and enjoyed prosperity during the first two centuries of the Common Era due to gold mining, earning the description vrbs magnifica from Pliny the Elder. By the mid-3rd century, it likely became an episcopal see, with Basílides as its first bishop. Following the barbarian invasions, it was part of the Kingdom of the Suebi and was captured by Muslim forces under Tariq in 714, though it was reconquered by the Asturian monarchy later that century. In the late 10th century, it faced repeated Muslim assaults led by Almanzor.\nFrom the 11th century, bolstered by the Way of St. James, the city experienced gradual development, with the Church playing a prominent role. In 1465, Henry IV of Castile granted Álvaro Pérez Osorio, Count of Trastámara, Lord of Villalobos, and Castroverde, the title of Marquis of Astorga, transitioning the city from a free status to a feudal condition. In the early 19th century, Astorga suffered the consequences of the French occupation and was among the first cities to rise against the French, with a revolt of peasants and laborers on May 2, 1808. French forces entered the city on December 31 of that year, and the city changed hands multiple times until the French surrendered on August 17, 1812.\nBetween the mid-19th century and early 20th century, significant industrial growth occurred, driven by the arrival of the railway and the rise of the chocolate industry. This industry, alongside other food sectors such as confectionery and meat processing, remains active, though the local economy primarily relies on the service sector, with administration, commerce, and cultural tourism as key pillars. The latter is supported by the city's rich historical-artistic heritage, including the cathedral, the Episcopal Palace, the town hall, and the Roman ergastula, all designated as Cultural Heritage Sites. Astorga is also a stop on the Way of St. James and a starting point for the Vía de la Plata.\nThe most notable celebrations include the carnivals—held the first weekend after Ash Wednesday—the Holy Week, declared a Fiesta of National Tourist Interest, the Astures and Romans festival, recognized as a Festival of Regional Tourist Interest, and, intermittently, the Zuiza procession honoring the Clavijo banner and the procession of the Virgin of Castrotierra, brought from its sanctuary 17 kilometers away during drought years.\nIn 2015, during the UNESCO approval of the extension of the Camino de Santiago in Spain to \"Routes of Santiago de Compostela: Camino Francés and Routes of Northern Spain,\" Spain submitted a \"Retrospective Inventory - Associated Components,\" listing Astorga with associated elements under numbers 1708 to 1772."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 582
+    },
+    "banned_terms": [
+      {
+        "term": "astorga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5253,
+    "attempt": 5214,
+    "place_id": "gn-5100776",
+    "input": {
+      "place": {
+        "place_id": "gn-5100776",
+        "name": "Mahwah",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.08871,
+        "lon": -74.14376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mahwah, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mahwah,_New_Jersey",
+          "text": "Mahwah is the northernmost and largest municipality by geographic area (26.19 square miles (67.8 km2)) in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 25,487, a decrease of 403 (−1.6%) from the 2010 census count of 25,890, which in turn reflected an increase of 1,828 (+7.6%) from the 24,062 counted in the 2000 census. The name \"Mahwah\" is derived from the Lenape language word \"mawewi\" which means \"Meeting Place\" or \"Place Where Paths Meet\".\nThe area that is now Mahwah was originally formed as Hohokus Township on April 9, 1849, from portions of the former Franklin Township (now Wyckoff). While known as Hohokus Township, territory was taken to form Orvil Township (on January 1, 1886; remainder of township is now Waldwick), Allendale (November 10, 1894), Upper Saddle River (November 22, 1894), and Ramsey (March 10, 1908). On November 7, 1944, the area was incorporated by an act of the New Jersey Legislature as the Township of Mahwah, based on the results of a referendum held that day, replacing Hohokus Township. New Jersey Monthly magazine ranked Mahwah as its ninth best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "mahwah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5254,
+    "attempt": 5215,
+    "place_id": "gn-7281603",
+    "input": {
+      "place": {
+        "place_id": "gn-7281603",
+        "name": "Manchester City Centre",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48097,
+        "lon": -2.24555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manchester city centre",
+          "url": "https://en.wikipedia.org/wiki/Manchester_city_centre",
+          "text": "Manchester city centre is the central business district of Manchester, England, within the confines of Great Ancoats Street, A6042 Trinity Way, and A57(M) Mancunian Way, which collectively form the inner ring road. The City Centre ward had a population of 17,861 at the 2011 census.\nManchester city centre evolved from the civilian vicus of the Roman fort of Mamucium, on a sandstone bluff near the confluence of the rivers Medlock and Irwell. This became the township of Manchester during the Middle Ages, and was the site of the Peterloo Massacre of 1819. Manchester was granted city status in 1853, after the Industrial Revolution, from which the city centre emerged as the global centre of the cotton trade which encouraged its \"splendidly imposing commercial architecture\" during the Victorian era, such as the Royal Exchange, the Corn Exchange, the Free Trade Hall, and the Great Northern Warehouse. After the decline of the cotton trade and the Manchester Blitz, the city centre suffered economic decline during the mid-20th century, but the CIS Tower ranked as the tallest building in the UK when completed in 1962.\nThe city centre acts as the transport interchange for Greater Manchester and over 7 million people live within an hour's drive of it. The 1996 Manchester bombing provided the impetus for the redevelopment of the city centre and an upturn in retail, leisure, offices and urban living. The economy of the city centre is built primarily on retail and services, accounting for nearly 40% of grade-A city centre office space outside London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "manchester city centre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manchester",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5255,
+    "attempt": 5216,
+    "place_id": "gn-2798573",
+    "input": {
+      "place": {
+        "place_id": "gn-2798573",
+        "name": "Eupen",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.6279,
+        "lon": 6.03647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eupen",
+          "url": "https://en.wikipedia.org/wiki/Eupen",
+          "text": "Eupen (German: [ˈɔʏpn̩] , French: [øpɛn] , Dutch: [ˈøːpə(n)] ; Ripuarian: Ööpe [ˈøːpə]; Walloon: Neyåw [nɛjɑːw]; former French: Néau [neo]) is the capital of the German-speaking Community of Belgium and is a city and municipality in the Belgian province of Liège, 15 kilometres (9 miles) from the German border (Aachen), from the Dutch border (Maastricht) and from the \"High Fens\" nature reserve (Ardennes). The town is also the capital of the Euroregion Meuse-Rhine.\nFirst mentioned in 1213 as belonging to the Duchy of Limburg, possession of Eupen passed to Brabant, Burgundy, the Holy Roman Empire, and France before being given in 1815 to Prussia, which became part of the new German Empire in 1871. In 1919, after the First World War, the Treaty of Versailles transferred Eupen and the nearby municipality of Malmedy from Germany to Belgium.\nGerman remains the official language in Eupen (also spoken in the form of the Eupen dialect), and the city serves as the capital for Belgium's German-speaking Community. The city has a small university, the Autonome Hochschule Ostbelgien, offering bachelor's degrees in Education and Nursing. In 2010, Eupen's association football team, K.A.S. Eupen, became the first club from the German-speaking Community to play in the Belgian Pro League.\nOn 1 January 2006, Eupen had a total population of 18,248 (8,892 males and 9,356 females). The total area is 103.74 km2 (40.05 sq mi) which gives a population density of 175.90 inhabitants per km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "eupen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5256,
+    "attempt": 5217,
+    "place_id": "gn-4916118",
+    "input": {
+      "place": {
+        "place_id": "gn-4916118",
+        "name": "West Town",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.89381,
+        "lon": -87.67493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Town, Chicago",
+          "url": "https://en.wikipedia.org/wiki/West_Town,_Chicago",
+          "text": "West Town is one of the 77 community areas of Chicago in Illinois, United States, located on the northwest of the Loop.\nMuch of this area was historically part of Polish Downtown, along Western Avenue, which was then the city's western boundary. West Town was a collection of several distinct neighborhoods and the most populous community area until it was surpassed by Near West Side in the 1960s.\nThe boundaries of the community area are the Chicago River to the east, the Union Pacific railroad tracks to the south, the former railroad tracks on Bloomingdale Avenue to the North, and an irregular western border to the west that includes the grand city park called Humboldt Park. Humboldt Park is also the name of the community area to West Town's west, Logan Square is to the north, Near North Side to the east, and Near West Side to the south. The collection of neighborhoods in West Town along with the neighborhoods of Bucktown and the eastern portion of Logan Square have been referred to by some media as the \"Near Northwest Side\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "west town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5257,
+    "attempt": 5218,
+    "place_id": "gn-6559641",
+    "input": {
+      "place": {
+        "place_id": "gn-6559641",
+        "name": "Las Gabias",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.13548,
+        "lon": -3.67029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Gabias",
+          "url": "https://en.wikipedia.org/wiki/Las_Gabias",
+          "text": "Las Gabias (commonly referred to as Gabia) is a Spanish city and municipality located in the central southern part of the Vega of Granada, in the province of Granada, in the autonomous community of Andalusia, approximately 8 km from the provincial capital of Granada. It borders the municipalities of Vegas del Genil, Cúllar Vega, Churriana de la Vega, Alhendín, La Malahá, Chimeneas and Santa Fe. Las Gabias includes the localities of \"Gabia Grande\", the municipal capital, and \"Gabia Chica\" that were a unified with the region in 1973, in addition to the annexation of Híjar, Los Llanos, Pedro Verde and San Javier. The name may have originated from Hisn Caviar, which means \"military tower\", in allusion to the one that still exists in Gabia Grande.  It is one of the most populous municipalities in Spain as well as one of the youngest, with the median age of inhabitants being only 34.3 years of age. In 2016, the population of Las Gabias surpassed 20,000, making it the third most populous municipality in the Granada Metropolitan Area, surpassed only by Granada and Armilla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "las gabias",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gabias",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5258,
+    "attempt": 5219,
+    "place_id": "gn-3181189",
+    "input": {
+      "place": {
+        "place_id": "gn-3181189",
+        "name": "Calimera",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.24948,
+        "lon": 18.27982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calimera",
+          "url": "https://en.wikipedia.org/wiki/Calimera",
+          "text": "Calimera (Griko: Καλημέρα lit. \"good morning\") is a small town of 6,753 inhabitants (2021) in the Grecìa Salentina area of the Salento peninsula in Italy, located between Gallipoli and Otranto. It belongs to the province of Lecce.\nThe inhabitants of Calimera, alongside Italian, also speak Griko, a Greek dialect. The language, folklore, traditions and history of Calimera, like those of the eight other cities in the area called \"Salentine Greece\", reveal significant Greek influences over the course of time, presumably from the time of the Byzantine control, or even the ancient Magna Graecia colonisation in the 8th century BCE.\nIn the park, there is a small monument containing an ancient Attic burial stone, given by the city of Athens to Calimera in 1960. At the top of this monument is a motto, referring to the burial stone: \"Zeni su en ise ettù sti Kalimera\" (in Greek script: Τσένη 'σού 'εν είσαι ετού στη Καλημέρα), meaning \"You are not a stranger here in Calimera\", which underlines the close relationship and common origins of Calimera with the rest of Greek civilisation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "calimera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5259,
+    "attempt": 5220,
+    "place_id": "gn-7498240",
+    "input": {
+      "place": {
+        "place_id": "gn-7498240",
+        "name": "West Jerusalem",
+        "country": "Israel",
+        "subdivision": "Jerusalem",
+        "lat": 31.78199,
+        "lon": 35.21961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Jerusalem",
+          "url": "https://en.wikipedia.org/wiki/West_Jerusalem",
+          "text": "West Jerusalem or Western Jerusalem (Hebrew: מַעֲרַב יְרוּשָׁלַיִם, Ma'aráv Yerushaláyim; Arabic: القدس الغربية, al-Quds al-Ġarbiyyah) is the section of Jerusalem that was controlled by Israel at the end of the 1948 Arab–Israeli War. As the city was divided by the Green Line (Israel's erstwhile de facto border, established by the 1949 Armistice Agreements), West Jerusalem was formally delineated as the counterpart to East Jerusalem, which was controlled by Jordan. Though Israel has controlled the entirety of Jerusalem since the 1967 Arab–Israeli War, the boundaries of West Jerusalem and East Jerusalem remain internationally recognized as de jure due to their significance to the process of determining the status of Jerusalem, which has been among the primary points of contention in the Arab–Israeli conflict and the Israeli–Palestinian conflict. With certain exceptions, undivided Jerusalem is not internationally recognized as the sovereign territory of either Israel or the State of Palestine. However, recognition of Israeli sovereignty over only West Jerusalem is more widely accepted as a plausible diplomatic position, as the United Nations regards East Jerusalem as part of the Israeli-occupied West Bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "west jerusalem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jerusalem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
