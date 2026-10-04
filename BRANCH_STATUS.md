@@ -14,12 +14,12 @@ Verify-before-merge pattern. **Do NOT merge. Do NOT open a PR.** Push nothing to
 - [x] Worktree from `origin/feat/geodetective-clues` @ `aab506b` (remote == local); tree clean
 - [x] `public/loop/clues/` holds 388 JSON files; `scripts/clues/` has prompt, validator, schema, production/, tests
 
-## Dispatched crews (all running)
-- [ ] Crew 1 — data integrity: counts (388 files, manifest 388, 229+91+68), locked-file hashes, zero `src/` diff
-- [ ] Crew 2 — independent leak scan over 1,940 published texts; adjudicate raw hits
-- [ ] Crew 3 — quote provenance: own stratified ~40-set sample, verbatim checks, tier sourcing, reading level, fabrication
-- [ ] Crew 4 — flagged sets verdicts (12 sets: accept/flag/reject with reasons)
-- [ ] Crew 5 — gates: clue suites, `npm test`, `tsc`, card gate, `build:pages`
+## Crew reports received
+- [x] Crew 1 — data integrity: ALL VERIFIED. 388 files (0–387 contiguous), manifest 388, 229+91+68 reconciled from raw records (pairwise intersections 0); prompt sha256 matches `7f19d3c5…` and is byte-identical to Veeresh's approved FINAL; validator `scripts/clues/production/validate-production.mjs` sha256 matches `22c01959…`; zero `src/` changes vs merge-base (1,614 files: scripts/ + public/loop/clues/ + BRANCH_STATUS.md only)
+- [ ] Crew 2 — leak scan (running)
+- [ ] Crew 3 — quote provenance (running)
+- [ ] Crew 4 — flagged sets (running)
+- [ ] Crew 5 — gates (running)
 
 ## Pending
 - [ ] Synthesize into final verdict (VERIFIED / NEEDS WORK) + merge recommendation
