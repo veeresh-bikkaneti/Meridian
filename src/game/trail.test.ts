@@ -276,14 +276,14 @@ test("seenStoreFor uses a day-independent key and migrates v1 entries", () => {
     // Legacy v1 day-keyed entries from the old per-day scheme.
     backing.set("meridian:seen:v1:2026-09-29:globe:globe", JSON.stringify(["a"]));
     backing.set("meridian:seen:v1:2026-09-30:globe:globe", JSON.stringify(["b"]));
-    const store = seenStoreFor("globe", "globe");
+    const store = seenStoreFor("globe", "globe", "medium");
     assert.deepEqual(store.read(), []);
     store.write(["x", "y"]);
     // The surviving v1 history is unioned into v2 (not dropped), so today's
     // places keep their no-repeat protection across the upgrade.
     assert.deepEqual(store.read(), ["x", "y", "a", "b"]);
     assert.equal(
-      backing.get("meridian:seen:v2:globe:globe"),
+      backing.get("meridian:seen:v2:globe:globe:medium"),
       JSON.stringify(["x", "y", "a", "b"]),
     );
     // ...and the legacy v1 keys were pruned after migration.
@@ -292,9 +292,9 @@ test("seenStoreFor uses a day-independent key and migrates v1 entries", () => {
       "legacy v1 keys pruned",
     );
     // A later "day" reads the same persistent history.
-    assert.deepEqual(seenStoreFor("globe", "globe").read(), ["x", "y", "a", "b"]);
+    assert.deepEqual(seenStoreFor("globe", "globe", "medium").read(), ["x", "y", "a", "b"]);
     // Other editions/regions are independent.
-    assert.deepEqual(seenStoreFor("country", "in").read(), []);
+    assert.deepEqual(seenStoreFor("country", "in", "medium").read(), []);
   } finally {
     if (prev === undefined) delete g.localStorage;
     else g.localStorage = prev;
@@ -322,12 +322,12 @@ test("v1 migration routes each entry to its own edition/region", () => {
   try {
     backing.set("meridian:seen:v1:2026-09-30:country:in", JSON.stringify(["mumbai"]));
     backing.set("meridian:seen:v1:not-a-day", JSON.stringify(["junk"]));
-    backing.set("meridian:seen:v2:country:in", JSON.stringify(["delhi"]));
-    seenStoreFor("globe", "globe").write(["x"]);
+    backing.set("meridian:seen:v2:country:in:medium", JSON.stringify(["delhi"]));
+    seenStoreFor("globe", "globe", "medium").write(["x"]);
     // country:in's v2 history is the union of its existing v2 ids and the
     // migrated v1 ids; globe's history is untouched.
-    assert.deepEqual(seenStoreFor("country", "in").read(), ["delhi", "mumbai"]);
-    assert.deepEqual(seenStoreFor("globe", "globe").read(), ["x"]);
+    assert.deepEqual(seenStoreFor("country", "in", "medium").read(), ["delhi", "mumbai"]);
+    assert.deepEqual(seenStoreFor("globe", "globe", "medium").read(), ["x"]);
     assert.ok(
       ![...backing.keys()].some((k) => k.startsWith("meridian:seen:v1:")),
       "legacy v1 keys pruned",
@@ -500,4 +500,129 @@ test("the dealer deals famous places earlier on average (weighted end-to-end)", 
     earlyCount >= 20,
     `expected famous in first 3 for >= 20/40 seeds, got ${earlyCount}`,
   );
+});
+
+/** Fake localStorage harness for the band-scoping tests below. */
+function withFakeStorage(run: (backing: Map<string, string>) => void): void {
+  const backing = new Map<string, string>();
+  const fakeStorage = {
+    getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      backing.set(k, v);
+    },
+    removeItem: (k: string) => {
+      backing.delete(k);
+    },
+    get length() {
+      return backing.size;
+    },
+    key: (i: number) => [...backing.keys()][i] ?? null,
+  };
+  const g = globalThis as { localStorage?: unknown };
+  const prev = g.localStorage;
+  g.localStorage = fakeStorage;
+  try {
+    run(backing);
+  } finally {
+    if (prev === undefined) delete g.localStorage;
+    else g.localStorage = prev;
+  }
+}
+
+test("seen history is scoped per difficulty band (no cross-band leakage)", () => {
+  withFakeStorage((backing) => {
+    seenStoreFor("state", "arkansas", "easy").write(["a", "b"]);
+    assert.deepEqual(seenStoreFor("state", "arkansas", "easy").read(), ["a", "b"]);
+    assert.deepEqual(seenStoreFor("state", "arkansas", "medium").read(), []);
+    assert.deepEqual(seenStoreFor("state", "arkansas", "hard").read(), []);
+    assert.equal(
+      backing.get("meridian:seen:v2:state:arkansas:easy"),
+      JSON.stringify(["a", "b"]),
+    );
+    // No unscoped key is ever created by the band-scoped stores.
+    assert.ok(!backing.has("meridian:seen:v2:state:arkansas"));
+  });
+});
+
+test("pre-band history migrates lazily into the first touched band and is pruned", () => {
+  withFakeStorage((backing) => {
+    // The key written by builds before the difficulty picker.
+    backing.set("meridian:seen:v2:state:arkansas", JSON.stringify(["x", "y"]));
+    const store = seenStoreFor("state", "arkansas", "easy");
+    // Migrates on first read...
+    assert.deepEqual(store.read(), ["x", "y"]);
+    // ...lands under the band key, and the legacy key is pruned.
+    assert.equal(
+      backing.get("meridian:seen:v2:state:arkansas:easy"),
+      JSON.stringify(["x", "y"]),
+    );
+    assert.ok(!backing.has("meridian:seen:v2:state:arkansas"));
+    // A second band starts fresh — the legacy history is claimed once.
+    assert.deepEqual(seenStoreFor("state", "arkansas", "medium").read(), []);
+    // And a later touch does not resurrect or duplicate anything.
+    assert.deepEqual(seenStoreFor("state", "arkansas", "easy").read(), ["x", "y"]);
+  });
+});
+
+test("one band's dealt history never shrinks another band's pool (repeat-mode regression)", () => {
+  withFakeStorage(() => {
+    // Overlapping bands, like the real easy(1-2)/medium(2-4) tier bands.
+    const easy = [{ id: "e1" }, { id: "e2" }, { id: "e3" }];
+    const medium = [{ id: "e2" }, { id: "e3" }, { id: "m1" }, { id: "m2" }];
+    const mediumStore = () => seenStoreFor("state", "ark", "medium");
+    const easyStore = () => seenStoreFor("state", "ark", "easy");
+
+    // Grind PART of medium (2 of 4 dealt).
+    const mRun = poolForNewRun(medium, mediumStore());
+    const dealt = medium.filter((p) => mRun.poolIds.includes(p.id));
+    const dealer = createDealer(dealt, 7, mediumStore());
+    dealer.at(0);
+    dealer.at(1);
+    dealer.markDealtThrough(1);
+    assert.equal(mediumStore().read().length, 2);
+
+    // Opening easy afterwards still sees the WHOLE easy band — medium's
+    // history does not shrink it (this was the repeat-mode bug).
+    const eRun = poolForNewRun(easy, easyStore());
+    assert.deepEqual(
+      eRun.poolIds.slice().sort(),
+      ["e1", "e2", "e3"],
+      "easy pool must stay whole regardless of medium history",
+    );
+
+    // Exhaust the easy band: the cycle reset clears ONLY easy's history.
+    const eDealer = createDealer(easy, 9, easyStore());
+    for (let i = 0; i < 3; i++) eDealer.at(i);
+    eDealer.markDealtThrough(2);
+    const eRun2 = poolForNewRun(easy, easyStore());
+    assert.equal(eRun2.poolIds.length, 3, "easy starts a fresh full cycle");
+
+    // Medium's partial history survived easy's reset untouched.
+    const mRun2 = poolForNewRun(medium, mediumStore());
+    assert.equal(
+      mRun2.poolIds.length,
+      2,
+      "medium still excludes its 2 dealt places after easy's cycle reset",
+    );
+  });
+});
+
+test("legacy v1 entries route to the medium band and the unscoped key folds in", () => {
+  withFakeStorage((backing) => {
+    backing.set("meridian:seen:v1:2026-09-30:country:in", JSON.stringify(["mumbai"]));
+    backing.set("meridian:seen:v2:country:in", JSON.stringify(["delhi"]));
+    // Any write triggers the v1 sweep; v1 lands in the medium band.
+    seenStoreFor("globe", "globe", "medium").write(["x"]);
+    // Reading the band folds the pre-band unscoped key in after the v1
+    // entries arrived, so the order is [v1..., legacy...].
+    assert.deepEqual(seenStoreFor("country", "in", "medium").read(), [
+      "mumbai",
+      "delhi",
+    ]);
+    assert.ok(!backing.has("meridian:seen:v2:country:in"));
+    assert.ok(
+      ![...backing.keys()].some((k) => k.startsWith("meridian:seen:v1:")),
+      "legacy v1 keys pruned",
+    );
+  });
 });

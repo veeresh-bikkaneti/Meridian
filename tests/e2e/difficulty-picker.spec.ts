@@ -22,7 +22,7 @@ import type { Page } from "playwright/test";
  * - reload-resume keeps the run's chosen tier and its dealt question.
  *
  * Determinism: the no-repeat seen store (localStorage
- * `meridian:seen:v2:<edition>:<regionId>`) is pre-seeded with every pool id
+ * `meridian:seen:v2:<edition>:<regionId>:<band>`) is pre-seeded with every pool id
  * EXCEPT a small kept set of known-tier chunk places, so the kept places
  * are dealt first. Kept ids and their tiers come from the same source files
  * the app ships, so the seeding can never silently diverge from the app's
@@ -72,8 +72,9 @@ async function seedSeenExcept(
   regionId: string,
   keepIds: string[],
   allIds: string[],
+  choice: "easy" | "medium" | "hard" = "medium",
 ): Promise<void> {
-  const key = `${SEEN_PREFIX}${edition}:${regionId}`;
+  const key = `${SEEN_PREFIX}${edition}:${regionId}:${choice}`;
   const seen = allIds.filter((id) => !keepIds.includes(id));
   expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
   for (const k of keepIds) {
@@ -221,7 +222,7 @@ test("an Easy run deals only tier 1–2 places", async ({ page }) => {
   expect(keep, "need five known tier 1–2 globe places").toHaveLength(5);
 
   await page.goto(APP);
-  await seedSeenExcept(page, "globe", "globe", keep, allIds);
+  await seedSeenExcept(page, "globe", "globe", keep, allIds, "easy");
   await pickDifficulty(page, "Easy");
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expectAim(page);
@@ -252,7 +253,7 @@ test("a Hard run deals tier 4–5 places", async ({ page }) => {
   expect(keep, "need five known tier 4–5 globe places").toHaveLength(5);
 
   await page.goto(APP);
-  await seedSeenExcept(page, "globe", "globe", keep, allIds);
+  await seedSeenExcept(page, "globe", "globe", keep, allIds, "hard");
   await pickDifficulty(page, "Hard");
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expectAim(page);
@@ -318,6 +319,70 @@ test("resume after reload keeps the chosen tier and its dealt question", async (
   expect(after.difficultyChoice).toBe("easy");
   expect(after.index).toBe(before.index);
   expect(await readLiveQuestion(page)).toBe(beforeQuestion);
+
+  expectCleanConsole(errors);
+});
+
+test("a Medium grind does not shrink the Easy pool (band-isolation check)", async ({
+  page,
+}) => {
+  // NOTE on what this test proves: it seeds the medium BAND key, which only
+  // exists post-fix, so it verifies the fixed isolation invariant rather
+  // than failing on the old shared-history code. The unit test
+  // "one band's dealt history never shrinks another band's pool" in
+  // trail.test.ts is the true regression guard (it exercises poolForNewRun
+  // against a shared store the way pre-fix production behaved).
+  const errors = collectErrors(page);
+  // Arkansas chunk, Easy band = tiers 1–2.
+  const chunks = chunkPlaces("arkansas");
+  const easyChunkIds = chunks
+    .filter((p) => p.difficulty === 1 || p.difficulty === 2)
+    .map((p) => p.id);
+  const allChunkIds = chunks.map((p) => p.id);
+  expect(easyChunkIds.length, "Arkansas needs a real Easy band").toBeGreaterThan(10);
+
+  await page.goto(APP);
+  // Simulate a heavy Medium grind: every chunk place marked seen on the
+  // MEDIUM band's history (the bands overlap on tier 2, like real play).
+  await page.evaluate(
+    ([k, ids]: [string, string[]]) => localStorage.setItem(k, JSON.stringify(ids)),
+    [`${SEEN_PREFIX}state:arkansas:medium`, allChunkIds] as [string, string[]],
+  );
+
+  await pickDifficulty(page, "Easy");
+  await page.getByRole("button", { name: "Choose a state" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  await page.getByRole("button", { name: "Arkansas" }).click();
+  await expectAim(page);
+
+  // The run's pool is the FULL Easy band — the medium history must not
+  // shrink it. (Before the fix the pool collapsed to the one surviving
+  // place and the dealer cycled it: repeat mode.)
+  const poolIds = (await page.evaluate(
+    (k) => JSON.parse(sessionStorage.getItem(k) ?? "null").poolIds as string[],
+    RUN_KEY,
+  )) as string[];
+  for (const id of easyChunkIds) {
+    expect(poolIds, `Easy pool keeps chunk place ${id}`).toContain(id);
+  }
+  expect(poolIds.length).toBeGreaterThanOrEqual(easyChunkIds.length);
+
+  // Behaviorally: six questions, six unique places — no repeats.
+  const dealt: string[] = [];
+  for (let i = 0; i < 6; i++) {
+    await commitMiss(page);
+    dealt.push((await readDropPlaceId(page)) as string);
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  }
+  expect(new Set(dealt).size, `no repeats in 6 questions, got ${dealt}`).toBe(6);
+
+  // Easy play never touched the medium band's history.
+  const mediumSeen = (await page.evaluate(
+    (k) => JSON.parse(localStorage.getItem(k) ?? "[]") as string[],
+    `${SEEN_PREFIX}state:arkansas:medium`,
+  )) as string[];
+  expect(mediumSeen.length).toBe(allChunkIds.length);
 
   expectCleanConsole(errors);
 });

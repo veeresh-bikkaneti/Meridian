@@ -313,14 +313,25 @@ export async function commitPin(
   x: number,
   y: number,
 ): Promise<{ phase: string | null; committedAt: number }> {
-  // The tile watchdog can fire on slow machines, and the reveal only plays
-  // over healthy tiles (tile failure shows the card at once). Dismiss the
-  // overlay as a user would, then wait for tiles to be ready.
-  await dismissTileOverlayIfPresent(page);
+  // The tile watchdog can fire on slow/flaky networks, and the reveal only
+  // plays over healthy tiles (tile failure shows the card at once). The
+  // overlay + Retry button is the designed UX for this, so retry the load
+  // the way a user on a flaky connection would: up to 3 attempts before
+  // treating it as a real failure. This tolerates the VM's flaky tile
+  // network without masking a production regression — a genuinely broken
+  // tile pipeline still fails the test after the retries are exhausted.
   const map = page.locator(".satellite-map");
-  await expect
-    .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-    .toBe("ready");
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await dismissTileOverlayIfPresent(page);
+    try {
+      await expect
+        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
+        .toBe("ready");
+      break;
+    } catch (err) {
+      if (attempt === 2) throw err;
+    }
+  }
   await page.mouse.click(x, y);
   await expect(dropButton(page)).toBeEnabled();
   await dropButton(page).click();
