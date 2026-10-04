@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 1150,
+    "attempt": 1141,
+    "place_id": "gn-4692559",
+    "input": {
+      "place": {
+        "place_id": "gn-4692559",
+        "name": "Frisco",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.15067,
+        "lon": -96.82361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frisco, Texas",
+          "url": "https://en.wikipedia.org/wiki/Frisco,_Texas",
+          "text": "Frisco is a city in Collin and Denton counties in the U.S. state of Texas. It is part of the Dallas–Fort Worth metroplex (DFW) and about 25 miles (40 km) from both Dallas Love Field and Dallas/Fort Worth International Airport. Its population was 200,509 in the 2020 U.S. census.\nFrisco was the fastest-growing city in the United States in 2017, and also from 2000 to 2009. In the late 1990s, the northern DFW suburban development tide hit the northern border of Plano and spilled into Frisco, sparking rapid growth into the 2000s. Like many of the cities in Dallas's northern exurbs, Frisco serves as a bedroom community for professionals who work in DFW. Since 2003, Frisco has received the designation Tree City USA from the National Arbor Day Foundation.\nThe United States Census Bureau defines an urban area of northern Dallas-area suburbs that are separated from the Dallas–Fort Worth urban area, with McKinney and Frisco as the principal cities: the McKinney–Frisco, Texas, urban area had a population of 504,803 as of the 2020 census, ranked 83rd in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "frisco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1151,
+    "attempt": 1142,
+    "place_id": "gn-5475352",
+    "input": {
+      "place": {
+        "place_id": "gn-5475352",
+        "name": "Las Cruces",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 32.31232,
+        "lon": -106.77834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Cruces, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Las_Cruces,_New_Mexico",
+          "text": "Las Cruces (; Spanish: [las 'kruses]; lit. 'the crosses') is a city in Doña Ana County, New Mexico, United States, and its county seat. The population was 111,385 at the 2020 census, making it the second-most populous city in New Mexico, and the largest in both Doña Ana County and southern New Mexico. It is the principal city of the Las Cruces metropolitan statistical area, which encompasses all of Doña Ana County and had an estimated 230,000 residents in 2024. The city is also part of the larger El Paso–Las Cruces combined statistical area.\nLas Cruces is the economic and geographic center of the Mesilla Valley, the agricultural region on the floodplain of the Rio Grande, which extends from Radium Springs to the west side of El Paso, Texas. The Organ Mountains, 10 miles (16 km) to the east, are dominant in the city's landscape, along with the Doña Ana Mountains, Robledo Mountains, and Picacho Peak. Las Cruces lies 225 mi (362 km) south of Albuquerque, 42 mi (68 km) northwest of El Paso, and 41 mi (66 km) north of the Mexico–United States border.\nThe city's major employer is the federal government at nearby White Sands Test Facility and White Sands Missile Range. Spaceport America, which has corporate offices in Las Cruces, operates from 55 mi (89 km) to the north; it has completed several successful crewed, suborbital flights. The city is also the headquarters for Virgin Galactic, the world's first company to offer suborbital spaceflights. Las Cruces is the home of New Mexico State University, New Mexico's only land-grant university."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "las cruces",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruces",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1152,
+    "attempt": 1143,
+    "place_id": "gn-618577",
+    "input": {
+      "place": {
+        "place_id": "gn-618577",
+        "name": "Bender",
+        "country": "Moldova",
+        "subdivision": "Bender Municipality",
+        "lat": 46.83158,
+        "lon": 29.47671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bender, Moldova",
+          "url": "https://en.wikipedia.org/wiki/Bender,_Moldova",
+          "text": "Bender ([benˈder], Moldovan Cyrillic: Бендер) or Bendery (Russian: Бендеры, [bʲɪnˈdɛrɨ]; Ukrainian: Бендери), also known as Tighina, is a city within the internationally recognized borders of Moldova under de facto control of the unrecognized Pridnestrovian Moldavian Republic (Transnistria) (PMR) since 1992. It is located on the western bank of the river Dniester in the historical region of Bessarabia. It is the second-largest city in Transnistria, and the fourth-largest city in Moldova.\nTogether with its suburb Proteagailovca, the city forms a municipality, which is separate from Transnistria (as an administrative unit of Moldova) according to Moldovan law. Bender is located in the buffer zone established at the end of the 1992 War of Transnistria. While the Joint Control Commission has overriding powers in the city, Transnistria has de facto administrative control.\nThe fortress of Tighina was one of the important historic fortresses of the Principality of Moldova until 1812."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "bender",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1153,
+    "attempt": 1144,
+    "place_id": "gn-683506",
+    "input": {
+      "place": {
+        "place_id": "gn-683506",
+        "name": "Bucharest",
+        "country": "Romania",
+        "subdivision": "Bucharest",
+        "lat": 44.43225,
+        "lon": 26.10626
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bucharest",
+          "url": "https://en.wikipedia.org/wiki/Bucharest",
+          "text": "Bucharest (Romanian: București [bukuˈreʃtʲ] ) is the capital and largest city of Romania. The metropolis stands on the River Dâmbovița in south-eastern Romania. Its population is officially estimated at 1.71 million residents within a greater metropolitan area of 2.33 million residents, which makes Bucharest the fifteenth-largest city in Europe. The city has an area of 239 km2 (92 sq mi), while the metropolitan area covers 1,803 km2 (696 sq mi). The city proper is administratively known as the \"Municipality of Bucharest\" (Romanian: Municipiul București), and has the same administrative level as that of a national county, being further subdivided into six sectors, each governed by a local mayor. Bucharest is a major cultural, political and economic hub, the country's seat of government, and the capital of the Muntenia region. It is an enclave completely surrounded by Ilfov County.\nBucharest was first mentioned in 1459, and became a centre of Wallachian commerce and governance in the 16th and 17th centuries. The city became the capital of the Romanian United Principalities in 1862, and boomed after the 1881 founding of the Romanian Kingdom. In the following decades, the city became known for its cosmopolitanism and eclectic architecture, being nicknamed \"Paris of the East\". However, it was severely damaged in the Second World War. Under the Socialist Republic of Romania, the city again grew massively in population and area, and new developments were characterised by socialist architecture and planning, particularly Nicolae Ceaușescu's program of systematization. In recent years, the city has been experiencing an economic and cultural boom. It is one of the fastest-growing high-tech cities in Europe. In 2016, the historical city centre was listed as \"endangered\" by the World Monuments Watch.\nBucharest is by far the most populous city of Romania, having reached one million inhabitants in the 1940s. In 2017, Bucharest was the European city with the highest growth of tourists who stay over night, according to the Mastercard Global Index of Urban Destinations. In 2018 and 2019, Bucharest ranked as the European destination with the highest potential for development according to the same study.\nEconomically, Bucharest is the most prosperous city in Romania and the richest capital and city in the region, having surpassed Budapest since 2017. The city has a number of large convention facilities, educational institutes, cultural venues, traditional \"shopping arcades\" and recreational areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 387
+    },
+    "banned_terms": [
+      {
+        "term": "bucharest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1154,
+    "attempt": 1145,
+    "place_id": "gn-724443",
+    "input": {
+      "place": {
+        "place_id": "gn-724443",
+        "name": "Košice",
+        "country": "Slovakia",
+        "subdivision": "Košice Region",
+        "lat": 48.71441,
+        "lon": 21.25802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Košice",
+          "url": "https://en.wikipedia.org/wiki/Košice",
+          "text": "Košice is the largest city in eastern Slovakia. It is situated on the river Hornád at the eastern reaches of the Slovak Ore Mountains, near the border with Hungary and Ukraine. With a population of approximately 230,000, Košice is the second-largest city in Slovakia, after the capital Bratislava.\nBeing the economic and cultural centre of eastern Slovakia, Košice is the seat of the Košice Region and Košice Self-governing Region, it belongs to the Košice-Prešov agglomeration, and is home to the Slovak Constitutional Court, three universities, various dioceses, and many museums, galleries, and theatres. In 2013, Košice was the European Capital of Culture, together with Marseille, France. Košice is an important industrial centre of Slovakia, and the U. S. Steel Košice steel mill is the largest employer in the city. The town has extensive railway connections and an international airport.\nThe city has a preserved historical centre which is the largest among Slovak towns. There are heritage protected buildings in Gothic, Renaissance, Baroque, and Art Nouveau styles with Slovakia's largest church: the Cathedral of St. Elizabeth. The long main street, rimmed with aristocratic palaces, Catholic churches, and townsfolk's houses, is a thriving pedestrian zone with boutiques, cafés, and restaurants. The city is known as the first settlement in Europe to be granted its own coat of arms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "kosice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1155,
+    "attempt": 1146,
+    "place_id": "gn-990930",
+    "input": {
+      "place": {
+        "place_id": "gn-990930",
+        "name": "Kimberley",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -28.73226,
+        "lon": 24.76232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kimberley, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Kimberley,_South_Africa",
+          "text": "Kimberley  (Khoekhoe: ǃ’Ās; Tswana: Kimbali) is the capital and largest city of the Northern Cape province of South Africa. It is located about 110 km (68 mi) east of the confluence of the Vaal and Orange Rivers. The city has considerable historical significance because of its diamond-mining past and the siege during the Second Boer War. British businessmen Cecil Rhodes and Barney Barnato made their fortunes in Kimberley, and Rhodes also established the De Beers diamond company in the early days of the mining town.\nOn 2 September 1882, Kimberley became the first city in the Southern Hemisphere and the second in the world after Philadelphia, in the United States, to install electric street lighting. The first stock exchange in Africa was built in Kimberley as early as 1881."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "kimberley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1156,
+    "attempt": 1147,
+    "place_id": "gn-1221874",
+    "input": {
+      "place": {
+        "place_id": "gn-1221874",
+        "name": "Dushanbe",
+        "country": "Tajikistan",
+        "subdivision": "Dushanbe",
+        "lat": 38.53575,
+        "lon": 68.77905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dushanbe",
+          "url": "https://en.wikipedia.org/wiki/Dushanbe",
+          "text": "Dushanbe is the capital and largest city of Tajikistan.  As of February 2023, Dushanbe had a population of 1,228,400, with this population being largely Tajik. Until 1929, the city was known in Russian as Dyushambe, and from 1929 to 1961 as Stalinabad, after Joseph Stalin. Dushanbe is located in the Hisar Valley, bounded by the Hisar Range in the north and east and the Babatag, Aktau, Rangontau and Karatau mountains in the south, and has an elevation of 750–930 m. The city is divided into four districts: Ismail Samani, Avicenna, Ferdowsi, and Shah Mansur.\nIn ancient times, what is now or is close to modern Dushanbe was settled by various empires and peoples, including Mousterian tool-users, various neolithic cultures, the Achaemenid Empire, Greco-Bactria, the Kushan Empire, and Hephthalites. In the Middle Ages, more settlements began near modern-day Dushanbe such as Hulbuk and its famous palace. From the 17th to early 20th century, Dushanbe grew into a market village controlled at times by the Beg of Hisor, Balkh, and finally Bukhara, before being conquered by the Russian Empire. Dushanbe was captured by the Bolsheviks in 1922, and the town was made the capital of the Tajik Autonomous Soviet Socialist Republic in 1924, which commenced Dushanbe's development and rapid population growth that continued until the Tajik Civil War. After the war, the city became capital of an independent Tajikistan and continued its growth and development into a modern city, today home to many international conferences.\nMuch of Dushanbe's education system dates from Soviet times and has a legacy of state control; today the largest university in Dushanbe, the Tajik National University, is funded by the government. Dushanbe International Airport is the primary airport serving the city. Other forms of transport include the trolleybus system dating from 1955, the small rail system, and the roads that traverse the city. Dushanbe's electricity is primarily hydroelectric, produced by the Nurek Dam, and the aging water system dates from 1932. Tajikistan's healthcare system is concentrated in Dushanbe, meaning that the major hospitals of the country are in the city. The city makes up 20% of Tajikistan's GDP and has large industrial, financial, retail, and tourism sectors. Parks and main sights of the city include Victory Park, Rudaki Park, the Tajikistan National Museum, the Dushanbe Flagpole, and the Tajikistan National Museum of Antiquities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 386
+    },
+    "banned_terms": [
+      {
+        "term": "dushanbe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1157,
+    "attempt": 1148,
+    "place_id": "gn-1260086",
+    "input": {
+      "place": {
+        "place_id": "gn-1260086",
+        "name": "Patna",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.59408,
+        "lon": 85.13563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Patna",
+          "url": "https://en.wikipedia.org/wiki/Patna",
+          "text": "Patna (Hindi: Paṭanā, pronounced [ˈpəʈnaː] ), historically known as Pāṭaliputra, is the capital and largest city of the Indian state of Bihar. According to the United Nations, as of 2026, Patna had a population of 3.33 million, making it the 19th largest city in India. Covering 250 square kilometres (97 sq mi) and over 2.5 million people, its urban agglomeration is the 18th largest in India. Patna also serves as the seat of Patna High Court. The Buddhist, Hindu and Jain pilgrimage centres of Vaishali, Rajgir, Nalanda, Bodh Gaya and Pawapuri are nearby and Patna City is a sacred city for Sikhs as the tenth Sikh Guru, Guru Gobind Singh was born here. The modern city of Patna is mainly on the southern bank of the river Ganges. The city also straddles the rivers Son, Gandak and Punpun. The city is approximately 35 kilometres (22 mi) in length and 16 to 18 kilometres (9.9 to 11.2 mi) wide.\nOne of the oldest continuously inhabited places in the world, Patna was founded in 490 BCE by the king of Magadha. Ancient Patna, known as Pataliputra, was the capital of the Magadha Empire throughout the Haryanka, Nanda, Mauryan, Shunga, Gupta, and Pala dynasties. Pataliputra was a seat of learning and fine arts. It was home to many astronomers and scholars including Aryabhata, Vātsyāyana and Chanakya. During the Maurya period (around 300 BCE) its population was about 400,000. Patna served as the seat of power, and political and cultural centre of the Indian subcontinent during the Maurya and Gupta empires. With the fall of the Gupta Empire, Patna lost its glory. The British revived it again in the 17th century as a centre of international trade. Following the partition of Bengal presidency in 1912, Patna became the capital of Bihar and Orissa Province.\nUntil the 19th century, it was a major trading and commercial hub in India. After independence there were a few downturns but its economy was still stable. After the separation of Jharkhand from Bihar, it lost its glory. As per the Directorate of Economics and Statistics (Government of Bihar), Nominal GDP of Patna District was estimated at INR 63,176.55 crores in 2011-12. As of 2011-12, Patna already recorded per capita gross domestic product of ₹1,08,657, way ahead of many other Indian cities and state capitals. Using figures for assumed average annual growth, Patna is the 21st fastest growing city in the world and 5th fastest growing city in India according to a study by the City Mayors Foundation. Patna registered an average annual growth of 3.72% during 2006–2010. As of 2011-12, the GDP per capita of Patna is ₹1,08,657, and its GDP growth rate is 7.29 per cent. In June 2009, the World Bank ranked Patna second in India (after Delhi) for ease of starting a business."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 467
+    },
+    "banned_terms": [
+      {
+        "term": "patna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1158,
+    "attempt": 1149,
+    "place_id": "gn-1636884",
+    "input": {
+      "place": {
+        "place_id": "gn-1636884",
+        "name": "Magelang",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.47056,
+        "lon": 110.21778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magelang",
+          "url": "https://en.wikipedia.org/wiki/Magelang",
+          "text": "Magelang (Javanese: ꦩꦒꦼꦭꦁ) is one of six cities in Central Java, Indonesia, that are administratively independent of the regencies in which they lie geographically. Each of these cities is governed by a mayor rather than a bupati. Magelang City covers an area of 18.56 km2 and had a population of 118,227 at the 2010 census and 121,526 at the 2020 census; the official estimate as of mid 2025 was 129,043 (comprising 63,823 males and 65,220 females). It is geographically located in the middle of the Magelang Regency, between Mount Merbabu and Mount Sumbing in the south of the province, and lies 43 km north of Yogyakarta, 15 km north of Mungkid (the administrative centre of Magelang Regency) and 75 km south of Semarang (the capital of Central Java)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "magelang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1159,
+    "attempt": 1150,
+    "place_id": "gn-173576",
+    "input": {
+      "place": {
+        "place_id": "gn-173576",
+        "name": "Latakia",
+        "country": "Syria",
+        "subdivision": "Latakia",
+        "lat": 35.53125,
+        "lon": 35.79088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Latakia",
+          "url": "https://en.wikipedia.org/wiki/Latakia",
+          "text": "Latakia (; Arabic: اللَّاذِقِيَّة, romanized: al-Lāḏiqiyya;  Syrian pronunciation: [el.laːdˈʔɪjje]), officially Lattakia, is the principal port city of Syria and capital city of the Latakia Governorate located on the Mediterranean coast. Historically, it has also been known as Laodicea in Syria or Laodicea ad Mare. In addition to serving as a port, the city is a significant manufacturing center for surrounding agricultural towns and villages. According to a 2023 estimate, the population of the city is 709,000, its population greatly increased as a result of the Syrian Revolution, which led to an influx of internally displaced persons from rebel held areas. It is the 5th-largest city in Syria after Aleppo, Damascus, Homs and Hama. Cape Apostolos Andreas, the north-eastern tip of Cyprus, is about 109 kilometres (68 mi) away.\nAlthough the site of the city has been inhabited since the 2nd millennium BC, the city was founded as a Greek city in the 4th century BC under the rule of the Greek Seleucid Empire. Latakia was subsequently ruled by the Romans and Byzantines, followed by the Rashiduns, Umayyads and Abbasids during the 7th–10th centuries AD. Byzantine ruling groups frequently attacked the city, periodically recapturing it before losing it again to Arab powers, particularly the Fatimids. Afterward, Latakia was ruled successively by the Seljuk Turks, Crusaders, Ayyubids, Mamluks, and the Ottomans. Following World War I, Latakia was assigned to the French mandate of Syria, in which it served as the capital of the autonomous territory of the Alawites. This autonomous territory became the Alawite State in 1922, proclaiming its independence a number of times until reintegrating into Syria in 1944."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "latakia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1160,
+    "attempt": 1151,
+    "place_id": "gn-1791121",
+    "input": {
+      "place": {
+        "place_id": "gn-1791121",
+        "name": "Changde",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 29.03205,
+        "lon": 111.69844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Changde",
+          "url": "https://en.wikipedia.org/wiki/Changde",
+          "text": "Changde (Chinese: 常德; pinyin: Chángdé; traditional Chinese: 常德  [ʈʂʰǎŋ.tɤ̌]) is a prefecture-level city in the northwest of Hunan province, People's Republic of China. Changde, known as \"Wuling\" in ancient times, is located on the west side of Dongting Lake in the south of the Yangtze River, at the foot of Wuling Mountain. It is historically known as \"the throat of Sichuan and Guizhou, and the gateway to Yunnan and Guizhou\". In addition to the urban districts, Changde also administers the county-level city of Jinshi and six counties. Changde is adjacent to Dongting Lake to the east, the city of Yiyang to the south, Wuling and Xuefeng Mountains to the west, and Hubei province to the north.\nThe area has been inhabited by humans since around 8,000 years ago. In that time, the city has changed names several times, but it has been known as Changde since the 12th century. The city is well known for the Battle of Changde during the Second Sino-Japanese War (1937–45) and the atrocities committed then by the Imperial Japanese Army.\nIn the past decade, the city has seen a massive construction boom. New highrises have sprung up, roads were rebuilt and new schools, parks and museums have opened. Locals and tourists often visit the Changde Poetry Wall, covered in a variety of poems mostly from ancient China. The wall stretches for 3 kilometres (1.9 mi) along the Yuan River downtown and functions as a flood wall. It is listed in the Guinness Book of World Records as the longest wall with engraved arts in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "changde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1161,
+    "attempt": 1152,
+    "place_id": "gn-1799722",
+    "input": {
+      "place": {
+        "place_id": "gn-1799722",
+        "name": "Nantong",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 32.03028,
+        "lon": 120.87472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nantong",
+          "url": "https://en.wikipedia.org/wiki/Nantong",
+          "text": "Nantong is a prefecture-level city in southeastern Jiangsu province, China. Located on the northern bank of the Yangtze River, near the river mouth. Nantong is a vital river port bordering Yancheng to the north; Taizhou to the west; Suzhou, Wuxi and Shanghai to the south across the river; and the East China Sea to the east. Its population was 7,726,635 as of the 2020 census, 3,766,534 of whom lived in the built-up area made up of three urban districts.\nOn September 26, 2004, the first World Metropolitan Development Forum was held in Nantong. In 2005, Nantong had a GDP growth of 15.4%, the highest growth rate in Jiangsu province, and in 2016 Nantong's GDP had a total of about 675 billion yuan, ranking 21st in the whole country.\nAlthough the city took a blow from the economic depression of the 1930s, as well as the Japanese occupation of the 1930s and 40s, Nantong has remained an important center for the textile industry. Because of its deepwater harbor and connections to inland navigational canals, it was one of 14 port cities opened to foreign investment in recent Chinese economic reforms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "nantong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1162,
+    "attempt": 1153,
+    "place_id": "gn-1805298",
+    "input": {
+      "place": {
+        "place_id": "gn-1805298",
+        "name": "Jinzhou",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 39.1,
+        "lon": 121.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinzhou, Dalian",
+          "url": "https://en.wikipedia.org/wiki/Jinzhou,_Dalian",
+          "text": "Jinzhou District (simplified Chinese: 金州区; traditional Chinese: 金州區; pinyin: Jīnzhōu Qū; lit. 'golden prefecture') is one of the seven districts of Dalian, Liaoning province, People's Republic of China. It is located about 20 kilometres (12 mi) northeast of the city centre and faces the Bohai Sea to the west as well as the Korea Bay to the east and has a longer history than Dalian itself, and used to be a thriving walled city where the officials of this area were dispatched from the central government. Recently, it is again a thriving town, having Dalian Development Area within its area as well as becoming a bedroom community to downtown Dalian. Its area is 1,352.54 square kilometres (522.22 sq mi) and its permanent population as of 2020 is 1,545,491."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "jinzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1163,
+    "attempt": 1154,
+    "place_id": "gn-2035966",
+    "input": {
+      "place": {
+        "place_id": "gn-2035966",
+        "name": "Longjing",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 42.77131,
+        "lon": 129.42307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longjing, Jilin",
+          "url": "https://en.wikipedia.org/wiki/Longjing,_Jilin",
+          "text": "Longjing (simplified Chinese: 龙井; traditional Chinese: 龍井; pinyin: Lóngjǐng; Chosŏn'gŭl: 룡정; Hangul: 룽징) is a county-level city in the Yanbian Korean Autonomous Prefecture, south-eastern Jilin province, China. It lies on the Tumen River, opposite the North Korean city Hoeryong. Longjing is \"the birthplace of Chinese Korean folk culture, the area in China where Korean people live most concentratedly and where Korean folk culture is best preserved.\"\nIts population is approximately \"167,000, including 110,800 Koreans, accounting for 66.4% of the total population.\" It borders Yanji and Tumen City on the northeast, Helong to the southwest, and Antu County in the southwest. The border length is 142.5 kilometres (88.5 mi).\nLongjing covers an area of 2,208.0 km2, with a forest coverage rate of 71.5%. It is rich in natural resources. \"There are 1,072 species of wild economic plants in 124 families, including 186 species of precious medicinal plants. Wild economic animals include black bear, wild boar, Siberian roe deer, Rana chensinensis, etc.\" Longjing is famous for producing rice, Pyrus pyrifolia, Matsutake, red sun-cured tobacco, Yanbian cattle, and fine-wool sheep. It has the largest orchard in Asia - \"万亩果园/10,000 Mu Orchard\" (One \"mu\" is equal to 666.67 m2), the largest bear breeding base in China - \"东方熊乐园/Oriental Bear Paradise\" and the \"吉林天佛指山国家级自然保护区/Jilin Tianfozhishan National Nature Reserve\" which aims to protect Matsutake, Pinus densiflora and its ecosystem. \nThere is a \"朝鲜族民俗博物馆/Korean Folklore Museum\" in Longjing, with a total construction area of 24,800 m2. The museum building covers an area of 2,200 m2. There are more than 3,000 Korean folk cultural relics in its collection, as well as more than 800 ancient historical relics and modern cultural relics. Among them, there are 53 \"national-grade relics\". \nYun Dong-ju studied in Longjing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "longjing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1164,
+    "attempt": 1155,
+    "place_id": "gn-233299",
+    "input": {
+      "place": {
+        "place_id": "gn-233299",
+        "name": "Ibanda",
+        "country": "Uganda",
+        "subdivision": "Western Region",
+        "lat": -0.13398,
+        "lon": 30.49616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ibanda",
+          "url": "https://en.wikipedia.org/wiki/Ibanda",
+          "text": "Ibanda is a town in the Western Region of Uganda. It is the main political, administrative, and commercial centre of Ibanda District and the site of the district headquarters. It started way back in the 1990s and was elevated from a trading centre to a town board, town council and in 2016 it was granted the municipality status. The Municipal Council has three Divisions of Kagongo, Bisheshe and Bufunda with 21 wards of Kyaruhanga, Bufunda, Nyamirima, Nsasi, Kayenje, Kashangura, Rwenshuri, Kigarama, Rugazi, Rwobuzizi, Kakatsi, Bugarama, Karangara, Kabaare, Kanyansheko, Nyakatookye, Kyeikucu, Kikoni, Kagongo, Ruyonza and Katongore ward. Ibanda Municipal Council has over 230 villages.\nIbanda Municipal council commenced its operations on 1 July 2016 after being elevated from a Town Council and other sub counties that were annexed to. (Bisheshe Sub County, Nsasi, Part of Nyabuhikye Sub County and Kashangura)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "ibanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1165,
+    "attempt": 1156,
+    "place_id": "gn-2639912",
+    "input": {
+      "place": {
+        "place_id": "gn-2639912",
+        "name": "Preston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.76282,
+        "lon": -2.70452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Preston, Lancashire",
+          "url": "https://en.wikipedia.org/wiki/Preston,_Lancashire",
+          "text": "Preston ( ) is a city on the north bank of the River Ribble in Lancashire, England. The city is the administrative centre of the county of Lancashire and the wider City of Preston local government district. Preston and its surrounding district obtained city status in 2002, becoming England's 50th city in the 50th year of Queen Elizabeth II's reign. Preston had a population of 147,835 at the 2021 census, the City of Preston district 156,411 in 2023 and the Preston Built-up Area 313,322. The Preston Travel To Work Area had a population of 420,661 in 2011, compared with 354,000 at the previous census. The south bank of the Ribble is part of the Preston urban area, although it forms the South Ribble borough that is administratively separate.\nPreston and its surrounding area have provided evidence of ancient Roman activity, largely in the form of a Roman road that led to a camp at Walton-le-Dale. The Angles established Preston; its name is derived from the Old English meaning \"priest's settlement\" and in the Domesday Book is recorded as \"Prestune\". In the Middle Ages, Preston was a parish and township in the hundred of Amounderness and was granted a Guild Merchant charter in 1179, giving it the status of a market town. Textiles have been produced since the mid-13th century when locally produced wool was woven in people's houses. Flemish weavers who settled in the area in the 14th century helped develop the industry.\nIn the early-18th century, Edmund Calamy described Preston as \"a pretty town with an abundance of gentry in it, commonly called Proud Preston\". Sir Richard Arkwright, inventor of the spinning frame, was born in the town. The most rapid period of growth and development coincided with the industrialisation and expansion of textile manufacturing. Preston was a boomtown of the Industrial Revolution, becoming a densely populated engineering centre, with large industrial plants. The town's textile sector fell into terminal decline from the mid-20th century and Preston has subsequently faced similar challenges to other post-industrial northern towns, including deindustrialisation, economic deprivation and housing issues. In the 21st century, tertiary education and the defence industry have been major employment sectors.\nThe demonym for residents of the city is \"Prestonian\". Preston is the seat of both Lancashire County Council and Preston City Council, it houses the main campus of the University of Lancashire and is home to Preston North End F.C.."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 400
+    },
+    "banned_terms": [
+      {
+        "term": "preston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1166,
+    "attempt": 1157,
+    "place_id": "gn-2656192",
+    "input": {
+      "place": {
+        "place_id": "gn-2656192",
+        "name": "Basingstoke",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.26249,
+        "lon": -1.08708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Basingstoke",
+          "url": "https://en.wikipedia.org/wiki/Basingstoke",
+          "text": "Basingstoke ( BAY-zing-stohk) is a town in Hampshire, situated in south-central England across a valley at the source of the River Loddon on the western edge of the North Downs. It is the largest settlement in Hampshire without city status. It is located 30 miles (48 km) north-east of Southampton, 48 miles (77 km) south-west of London, 27 miles (43 km) west of Guildford, 22 miles (35 km) south of Reading and 20 miles (32 km) north-east of the county town and former capital Winchester. According to the 2021 population estimate, the town had a population of 107,642. It is part of the borough of Basingstoke and Deane and part of the parliamentary constituency of Basingstoke.\nBasingstoke is an old market town and was mentioned in Domesday Book. At the start of the Second World War, the population was little more than 13,000, and it remained a small market town until the early 1960s. It still has a regular market, but is now larger than Hampshire County Council's definition of a market town.\nBasingstoke became an important economic centre during the Second World War.  It expanded further in the mid-1960s as a result of an agreement between London County Council and Hampshire County Council. It was developed rapidly along with various other towns in the United Kingdom, in order to accommodate part of the London 'overspill' as perceived under the Greater London Plan in 1944.\nIt now houses the UK headquarters of Motorola, The Automobile Association, De La Rue, Sun Life Financial, ST Ericsson, Barracuda Networks, Eli Lilly and Company, FCB Halesway part of FCB, BNP Paribas Leasing Solutions (the leasing arm of BNP Paribas in the UK) and Sony Professional Solutions. It is also the location of the European headquarters of the TaylorMade Golf Company. Other industries include IT, telecommunications, insurance and electronics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "basingstoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1167,
+    "attempt": 1158,
+    "place_id": "gn-2950159",
+    "input": {
+      "place": {
+        "place_id": "gn-2950159",
+        "name": "Berlin",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.52437,
+        "lon": 13.41053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berlin",
+          "url": "https://en.wikipedia.org/wiki/Berlin",
+          "text": "Berlin is the capital and largest city of Germany. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union (EU). The metropolis is also one of the states of Germany, being the third-smallest state in the country by area. Berlin is surrounded by the state of Brandenburg, bordering Brandenburg's capital Potsdam to the southwest. The urban area of Berlin has a population of 4.5 million, making it the second most populous in Germany after the Ruhr. The Berlin-Brandenburg capital region has around 6.2 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest metropolitan region by GDP in the EU. Berlin is a global city of culture, politics, media and science.\nBerlin was built along the banks of the Spree river, which flows into the Havel in the western borough of Spandau. First documented in the 13th century and at the crossing of two important historic trade routes, Berlin was designated the capital of the Margraviate of Brandenburg (1417–1701), Kingdom of Prussia (1701–1918), German Empire (1871–1918), Weimar Republic (1919–1933), and Nazi Germany (1933–1945). Berlin served as a scientific, artistic, and philosophical hub during the Age of Enlightenment, Neoclassicism, and the German revolutions of 1848–1849. During the Gründerzeit, an industrialization-induced economic boom triggered a rapid population increase in Berlin. Berlin in the 1920s was the third-largest city in the world by population.\nAfter World War II and following Berlin's occupation, the city was split into West Berlin and East Berlin, divided by the Berlin Wall. East Berlin was declared the capital of East Germany, while Bonn became the West German capital. Following German reunification in 1990, Berlin once again became the capital of all of Germany. Due to its geographic location and history, Berlin has been called \"the heart of Europe\". Its economy is based on high tech and the service sector, encompassing a diverse range of creative industries, startup companies, research facilities, and media corporations. Berlin serves as a continental hub for air and rail traffic and has a complex public transportation network. Tourism in Berlin makes the city a popular global destination.\nBerlin is home to several universities, such as the Humboldt University of Berlin, Technische Universität Berlin, the Berlin University of the Arts and the Free University of Berlin. The Berlin Zoological Garden is the most visited zoo in Europe. Babelsberg Studio is the world's first large-scale movie studio complex, and there are many films set in Berlin. Berlin is home to three UNESCO World Heritage Sites: Museum Island, the Palaces and Parks of Potsdam and Berlin, and the Berlin Modernism Housing Estates. Other landmarks include the Brandenburg Gate, the Reichstag building, Potsdamer Platz, the Memorial to the Murdered Jews of Europe, and the Berlin Wall Memorial. Berlin has numerous museums, galleries, and libraries. The city includes lakes in the western and southeastern boroughs, the largest of which is Müggelsee. About 1/3 of the city's area is composed of forests, parks and gardens, rivers, canals, and lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 506
+    },
+    "banned_terms": [
+      {
+        "term": "berlin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1168,
+    "attempt": 1159,
+    "place_id": "gn-2998286",
+    "input": {
+      "place": {
+        "place_id": "gn-2998286",
+        "name": "Limoges",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.83362,
+        "lon": 1.24759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limoges",
+          "url": "https://en.wikipedia.org/wiki/Limoges",
+          "text": "Limoges ( lih-MOHZH, US also  lee-, French: [limɔʒ] ; Occitan: Lemòtges, locally Limòtges [liˈmɔdzei̯]) is a city and commune, and the prefecture of the Haute-Vienne department in west-central France. It was the administrative capital of the former Limousin region. Situated on the first western foothills of the Massif Central, Limoges is crossed by the river Vienne, of which it was originally the first ford crossing point.\nThe second most populated town in the Nouvelle-Aquitaine region after Bordeaux, a university town, an administrative centre and intermediate services with all the facilities of a regional metropolis, it has an urban area of 323,494 inhabitants in 2022. The inhabitants of the city are called the Limougeauds.\nFounded around 10 BC under the name of Augustoritum, it became an important Gallo-Roman city. During the Middle Ages Limoges became a large city, strongly marked by the cultural influence of the Abbey of Saint-Martial, where the Dukes of Aquitaine were invested and crowned. From the 12th century onwards, its enamels were exported throughout the Christian world. In 1765, during the industrial revolution, the discovery of a deposit of kaolin in the Saint-Yrieix-la-Perche region enabled the development of the Limoges porcelain industry. It is sometimes nicknamed \"the red city\" or \"the Rome of socialism\" because of its tradition of voting on the left and the workers' events it experienced from the 19th to the beginning of the 20th century.\nSince the 1990s, the city has had a basketball club, Limoges CSP, which has won several French championships and the European championship in 1993. Because of its heritage policy, it has held the label \"City of Art and History\" since 2008. Economic activities include butchering, electrical equipment for the building industry, and luxury goods. It is home to porcelain houses and art workshops working with enamel or stained glass. This craft expertise led it to join the UNESCO Creative Cities Network in 2017 in the thematic category \"Crafts and Popular Arts\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 323
+    },
+    "banned_terms": [
+      {
+        "term": "limoges",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1169,
+    "attempt": 1160,
+    "place_id": "gn-308988",
+    "input": {
+      "place": {
+        "place_id": "gn-308988",
+        "name": "Karşıyaka",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.45772,
+        "lon": 27.1142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karşıyaka",
+          "url": "https://en.wikipedia.org/wiki/Karşıyaka",
+          "text": "Karşıyaka (Turkish: [kaɾʃɯˈjaka]) is a municipality and district of İzmir Province, Turkey. Its area is 51 km2, and its population is 346,264 (2022). The district extends for twelve kilometres along the northern and eastern coastline of the tip of the Gulf of İzmir. Its centre is at a distance of 6 km (4 mi) to the north from the traditional centre of İzmir, which is Konak Square in Konak at the opposite coast. Karşıyaka's district area neighbours the district areas of Menemen to the north, Bornova to the east and Çiğli to the west. Besides being an active venue of commerce, culture and educational activities and tourism, Karşıyaka also has an urban culture centred on the sports club Karşıyaka SK, which commands a large and passionate fan base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "kars yaka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kars",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yaka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

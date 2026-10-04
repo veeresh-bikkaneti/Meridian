@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 1010,
+    "attempt": 1001,
+    "place_id": "gn-649360",
+    "input": {
+      "place": {
+        "place_id": "gn-649360",
+        "name": "Lahti",
+        "country": "Finland",
+        "subdivision": "Paijat-Hame",
+        "lat": 60.98267,
+        "lon": 25.66151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahti",
+          "url": "https://en.wikipedia.org/wiki/Lahti",
+          "text": "Lahti (Finnish pronunciation: [ˈlɑhti], lit. 'bay'; Swedish: Lahtis) is a city in Finland and the regional capital of Päijät-Häme. It is located in the Finnish Lakeland. The population of Lahti is approximately 122,000, while the sub-region has a population of approximately 205,000. It is the 9th most populous municipality in Finland, and the sixth most populous urban area in the country.\nLahti is situated on a bay at the southern end of lake Vesijärvi about 100 kilometres (60 mi) north-east of the capital city Helsinki, 38 kilometres (24 mi) south-west of Heinola and 74 kilometres (46 mi) east of Hämeenlinna, the capital of the region of Kanta-Häme. Lahti is situated at the intersection of Highway 4 (between Helsinki and Jyväskylä) and Highway 12 (between Tampere and Kouvola), which are the most significant main roads of Lahti. Its neighboring municipalities are Asikkala, Heinola, Hollola, Iitti and Orimattila.\nLahti is a long-time pioneering city in environmental sustainability, dating back to as early as 1990 and before. The European Commission has named Lahti as the European Green Capital of 2021. Lahti is also the headquarters of the Salpausselkä UNESCO Global Geopark, one of 4 UNESCO Geoparks in Finland; Salpausselkä was added to the list of over 170 UNESCO Global Geoparks in the world in 2022. In January 2026, the British newspaper The Guardian highlighted Lahti as one of its readers' favorite travel destinations in the Nordic countries, praising its good transport connections from Helsinki, charming little cafes and \"quiet, down-to-earth people\". \nThe coat of arms of the city depicts a train wheel surrounded by flames. It refers to the Riihimäki–Saint Petersburg railway, which had a decisive influence on the birth of the city at its crossroads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "lahti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1011,
+    "attempt": 1002,
+    "place_id": "gn-1052373",
+    "input": {
+      "place": {
+        "place_id": "gn-1052373",
+        "name": "Beira",
+        "country": "Mozambique",
+        "subdivision": "Sofala",
+        "lat": -19.84361,
+        "lon": 34.83889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beira, Mozambique",
+          "url": "https://en.wikipedia.org/wiki/Beira,_Mozambique",
+          "text": "Beira (Portuguese pronunciation: [ˈbejɾɐ]) is the capital and largest city of Sofala Province, in the central region of Mozambique. \nBeira is where the Pungwe River meets the Indian Ocean. It is the fourth-largest city by population in Mozambique, after Maputo, Matola and Nampula. Beira had a population of 397,368 in 1997, which grew to 530,604 in 2019. A coastal city, it holds the regionally significant Port of Beira, which acts as a gateway for both the central interior portion of the country as well as the land-locked nations of Zimbabwe, Zambia and Malawi.\nOriginally called Chiveve after a local river, it was renamed Beira to honour the Portuguese Crown prince Dom Luís Filipe (titled Prince of Beira, itself referring to the traditional Portuguese province of Beira), who had visited Mozambique in the early 20th century. It was first developed by the Portuguese Mozambique Company in the 19th century, supplanting Sofala as the country's main port. It was then directly developed by the Portuguese colonial government from 1947 until Mozambique gained its independence from Portugal in 1975. Beira is the second largest seaport for international cargo transportation to Mozambique after Maputo. In March 2019, the city was heavily damaged by Cyclone Idai, destroying up to 90% of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "beira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1012,
+    "attempt": 1003,
+    "place_id": "gn-1636544",
+    "input": {
+      "place": {
+        "place_id": "gn-1636544",
+        "name": "Manado",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 1.48218,
+        "lon": 124.84892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manado",
+          "url": "https://en.wikipedia.org/wiki/Manado",
+          "text": "Manado (Indonesian pronunciation: [maˈnado], Minahasan: Wenang) is the capital city of the Indonesian province of North Sulawesi.  It is the second largest city in Sulawesi after Makassar, with the 2020 census giving a population of 451,916, and the official estimates for mid 2025 showing 462,658 inhabitants (232,553 males and 230,105 females), distributed over a land area of 162.35 km2. The Manado metropolitan area had a population of 1,377,815 as of mid 2023. The city is situated on the Bay of Manado, and is surrounded by a mountainous area.\nManado is among Indonesia's top-five tourism priorities and Bunaken National Park is one of the city's most famous tourist attractions. Tunan Waterfall in Talawaan village and Mount Tumpa are some of the many attractions for visitors who like to take Manado city tour especially to natural places.  The city is served by Sam Ratulangi International Airport, which connects Manado with various domestic destinations, as well as international destinations in East Asia and Southeast Asia. The city is also known for its Christian-majority population, and holds the country's biggest Christmas celebration annually. It is also recognised as one of the most tolerant and peaceful cities in Indonesia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "manado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1013,
+    "attempt": 1004,
+    "place_id": "gn-1801180",
+    "input": {
+      "place": {
+        "place_id": "gn-1801180",
+        "name": "Maoming",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 21.66625,
+        "lon": 110.91364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maoming",
+          "url": "https://en.wikipedia.org/wiki/Maoming",
+          "text": "Maoming, alternately romanized as Mowming, (Maoming Yue: [mɐu22 mɪŋ21]) is a prefecture-level city located in southwestern Guangdong province, China. Facing the South China Sea to the city's south, Maoming borders Zhanjiang to the west, Yangjiang to the east, and Yunfu to the northeast, and is 362 kilometers (225 mi) from the province's capital Guangzhou and 121 kilometers (75 mi) from Zhanjiang. The Maoming Port is a Grade I port that handled 16.8 million tons of cargo in 2007. Refined oil and aquatic products are the major export products from the city. Major export destinations include Hong Kong, Macao and ASEAN member nations.\nAs of the 2020 census, Maoming had a population of 6,174,050 inhabitants, 2,539,148 of whom live in the built-up (or metro) area, which includes 2 urban districts (Maonan and Dianbai) largely being conurbated. The city's birth rate is 11.04‰, and its GDP (2012) was RMB 195.118 billion (US$31.81billion), up by 10.6% over the previous year. According to government sources, Maoming's GDP ranked 7th among Guangdong's 21 cities, and ranked 79th among China's 656 cities in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "maoming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1014,
+    "attempt": 1005,
+    "place_id": "gn-1802238",
+    "input": {
+      "place": {
+        "place_id": "gn-1802238",
+        "name": "Loudi",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.73444,
+        "lon": 111.99444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loudi",
+          "url": "https://en.wikipedia.org/wiki/Loudi",
+          "text": "Loudi (Chinese: 娄底; pinyin: Lóudǐ) is a prefecture-level city located in central Hunan province, China. It is situated about 110 km (68 mi) southwest of the provincial capital of Changsha and is considered to be a small- to medium-sized city within the province. According to the 2010 Census, the population of Loudi is of 3,785,627 inhabitants in an area of 8,117 km2 (3,134 sq mi).The geographical coordinates are 111°56′—112°03′ east longitude and 27°41′—27°47′ north latitude. With superior geographical location and convenient transportation, it has been the main strategic hinterland of Hunan Province and a key point connecting north and south and east and west since ancient times.In 2007, the city was named China's top ten livable cities by Chinese Cities Brand Value Report, which was released at the 2007 Beijing Summit of China Cities Forum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "loudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1015,
+    "attempt": 1006,
+    "place_id": "gn-1804540",
+    "input": {
+      "place": {
+        "place_id": "gn-1804540",
+        "name": "Langfang",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 39.52079,
+        "lon": 116.71471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langfang",
+          "url": "https://en.wikipedia.org/wiki/Langfang",
+          "text": "Langfang is a prefecture-level city of Hebei Province, China, and was known as Tianjin Prefecture until 1973. It was renamed Langfang Prefecture after Tianjin became a municipality and finally upgraded into a prefecture-level city in 1988. Langfang is located approximately midway between Beijing and Tianjin. At the 2020 census, the population of Langfang was 5,464,087, of whom 1,147,591 lived in the built-up (or metro) area made of Guangyang and Anci districts; its total area is around 6,417.28 km2 (2,477.73 sq mi). At the end of 2024, the registered population of the city was 4.972 million, and the resident population of the city was 5.469 million at the end of the year. Langfang borders Baoding to the southwest, Cangzhou to the south (both prefecture-level cities of Hebei), Beijing to the north and Tianjin to the east. Sanhe City and Dachang Hui County are now conurbated with Beijing, so that they form part of the same built-up area. Langfang is the smallest prefecture-level city of Hebei Province by land area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "langfang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1016,
+    "attempt": 1007,
+    "place_id": "gn-1816705",
+    "input": {
+      "place": {
+        "place_id": "gn-1816705",
+        "name": "Beihai",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 21.48349,
+        "lon": 109.11549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beihai",
+          "url": "https://en.wikipedia.org/wiki/Beihai",
+          "text": "Beihai (Chinese: 北海; pinyin: Běihǎi; Postal romanization: Pakhoi) is a prefecture-level city in the south of Guangxi, People's Republic of China. Its status as a seaport on the north shore of the Gulf of Tonkin has granted it historical importance as a port of international trade for Guangxi, Hunan, Hubei, Sichuan, Guizhou, and Yunnan. Between 2006 and 2020, Beihai was predicted to be the world's fastest growing city. Beihai has a large shipyard, but most of the money generated in the city is derived from trade.\nIn addition, it governs the small islands of Weizhou and Xieyang, and is directly west of Leizhou Peninsula. At the end of 2024, the city's resident population is 1.91,700, of which 1.169 million are urban residents, accounting for 61.52% of the resident population (urbanization rate of the resident population)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "beihai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1017,
+    "attempt": 1008,
+    "place_id": "gn-232422",
+    "input": {
+      "place": {
+        "place_id": "gn-232422",
+        "name": "Kampala",
+        "country": "Uganda",
+        "subdivision": "Central Region",
+        "lat": 0.31628,
+        "lon": 32.58219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kampala",
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "text": "Kampala (UK: , US:  ) is the capital and largest city of Uganda. The city proper has a population of 1,797,722 (2024 census) and is divided into the five political divisions of Kampala Central, Kawempe, Makindye, Nakawa, and Rubaga.\nKampala's metropolitan area consists of the city proper and the neighboring Wakiso District, Mukono District, Mpigi District, Buikwe District and Luweero District. It has a rapidly growing population that is estimated at 6,709,900 people in 2019, in an area of 8,451.9 km2 (3,263.3 square miles). Other estimates put the size of the metropolitan area at around four million people.\nIn 2015, this metropolitan area generated an estimated nominal GDP of $13.8 billion (constant US dollars of 2011), which was more than half of Uganda's GDP for that year, indicating the importance of Kampala to Uganda's economy.\nIn 2018, Kampala was among the fastest-growing cities in Africa, with an annual population growth rate of 4.03 percent.  American consulting firm Mercer has regularly ranked Kampala as East Africa's best city to live in, ahead of Nairobi and Kigali."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "kampala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1018,
+    "attempt": 1009,
+    "place_id": "gn-2634491",
+    "input": {
+      "place": {
+        "place_id": "gn-2634491",
+        "name": "West Bromwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.51868,
+        "lon": -1.9945
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Bromwich",
+          "url": "https://en.wikipedia.org/wiki/West_Bromwich",
+          "text": "West Bromwich (  BROM-itch), commonly known as West Brom, is a market town in the borough of Sandwell, in the county of the West Midlands, England. Historically part of Staffordshire, it is around 5 miles west of Birmingham, what stands between them is the Sandwell Valley. West Bromwich is part of the area known as the Black Country, in terms of geography, cultures and dialect. West Bromwich had a population of 103,112 in the 2021 Census.\nInitially a rural village, West Bromwich's growth corresponded with that of the Industrial Revolution, owing to the area's natural richness in ironstone and coal, as well as its proximity to canals and railway branches. It led to the town becoming a centre for coal mining, brick making, the iron industry and metal trades such as nails, springs and guns. The town's primary economy developed into the engineering, manufacturing and the automotive industry through the early 20th century. During the Second World War, West Bromwich experienced bombing from the German Luftwaffe. It also suffered heavily during recessions in the mid 1970s, early 1980s and late 2000s.\nThe town is known for its football club West Bromwich Albion, who have played in the town since the club's formation in 1878. It is also home to parts of Sandwell Valley Country Park and Sandwell Valley RSPB nature reserve.\nIt has Wednesbury to the north-west, Walsall in the north, Birmingham to the east, Smethwick to the south-east, Oldbury to the south, and Tipton to the west. The town borders Handsworth, Birmingham in the south-east through Holyhead road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "west bromwich",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bromwich",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1019,
+    "attempt": 1010,
+    "place_id": "gn-2935517",
+    "input": {
+      "place": {
+        "place_id": "gn-2935517",
+        "name": "Dortmund",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.51494,
+        "lon": 7.466
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dortmund",
+          "url": "https://en.wikipedia.org/wiki/Dortmund",
+          "text": "Dortmund (German: [ˈdɔʁtmʊnt] ; Westphalian: Düörpm [ˈdyːœɐ̯pm̩]) is the third-largest city in North Rhine-Westphalia, after Cologne and Düsseldorf, and the ninth-largest city in Germany. With a population of 614,495 inhabitants, it is the largest city (by area and population) of the Ruhr as well as the largest city of Westphalia. It lies on the Emscher and Ruhr rivers (tributaries of the Rhine) in the Rhine-Ruhr Metropolitan Region, the second biggest metropolitan region by GDP in the European Union, and is the administrative, commercial, and cultural centre of the eastern Ruhr. Dortmund is the second-largest city in the Low German dialect area, after Hamburg.\nFounded around 882, Dortmund became an Imperial Free City. Throughout the 13th to 14th centuries, it was the \"chief city\" of the Rhine, Westphalia, and the Netherlands Circle of the Hanseatic League. During the Thirty Years' War, the city was destroyed and decreased in significance until the onset of industrialisation. The city then became one of Germany's most important coal, steel, and beer centres. It was one of the most heavily bombed cities in Germany during World War II. The devastating bombing raids of 12 March 1945 destroyed 98% of the buildings in the inner city. Involving more than 1,110 aircraft, the raids were the largest targeting a single city during World War II. Today, around 30% of the city's buildings date from before the war.\nSince the collapse of its century-long steel and coal industries, the region has adapted and shifted to high-technology biomedical technology, micro systems technology, and also services. Other key sectors include retail, leisure and the visitor economy, creative industries, and logistics. With its central station and airport, the third-busiest in North Rhine-Westphalia, Dortmund is an important transport junction for the surrounding Ruhr area as well as the Benelux countries. Dortmund Port is the largest canal port in Europe and has a connection to important seaports on the North Sea.\nDortmund is home to several institutions of higher education, including the Technical University of Dortmund, the Dortmund University of Applied Sciences and Arts, and the International School of Management. The city's cultural institutions include the Museum Ostwall, Museum of Art and Cultural History, and German Football Museum, as well as theatres and music venues like the Theater Dortmund or the Dortmund Opera House. Nearly half the municipal territory consists of waterways, woodland, agriculture, and green spaces with spacious parks such as Westfalenpark and Rombergpark. This stands in a stark contrast with nearly a hundred years of extensive coal mining and steel milling in the past, which created a rich Gründerzeit architectural heritage. Borussia Dortmund is one of the most successful German football clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 440
+    },
+    "banned_terms": [
+      {
+        "term": "dortmund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1020,
+    "attempt": 1011,
+    "place_id": "gn-3088171",
+    "input": {
+      "place": {
+        "place_id": "gn-3088171",
+        "name": "Poznań",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.40692,
+        "lon": 16.92993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poznań",
+          "url": "https://en.wikipedia.org/wiki/Poznań",
+          "text": "Poznań (Polish: [ˈpɔznaj̃] or [ˈpɔznaɲ] ; German: Posen [ˈpoːzn̩] ; Latin: Posnania) is a city on the River Warta in west Poland, within the Greater Poland region. The city is an important cultural and business center with customs such as Saint John's Fair (Jarmark Świętojański), traditional Saint Martin's croissants, and a local dialect. Among its most important heritage sites are the Renaissance Old Town, Town Hall and Poznań Cathedral.\nPoznań is the fifth-largest city in Poland. As of 2023, the city's population is 540,146, while the Poznań metropolitan area (Metropolia Poznań) comprising Poznań County and several other communities is inhabited by over 1.029 million people. It is one of four historical capitals of medieval Poland and the ancient capital of the Greater Poland region, currently the administrative capital of the province called Greater Poland Voivodeship.\nPoznań is a center of trade, sports, education, technology and tourism. It is an important academic site, with about 130,000 students and Adam Mickiewicz University, the third largest Polish university. The city serves as the seat of the oldest Polish diocese, now being one of the most populous Catholic archdioceses in the country. The city also hosts the Poznań International Fair, the biggest industrial fair in Poland and one of the largest in Europe. The city's other renowned landmarks include the National Museum, Grand Theatre, Fara Church and the Imperial Castle.\nPoznań is classified as a Gamma− global city by the Globalization and World Cities Research Network. According to several rankings it is one of the most business-friendly cities in Poland. It also ranks highly in safety and healthcare quality. The city of Poznań has also, many times, won the prize awarded by \"Superbrands\" for a very high quality city brand. In 2012, Poznań's Art and Business Centre \"Stary Browar\" won a competition organised by National Geographic Traveler and was given the first prize as one of the seven \"New Polish Wonders\". Companies headquartered in the city include energy provider Enea, e-commerce company Allegro and convenience store chain Żabka.\nThe official patron saints of Poznań are Saint Peter and Paul of Tarsus, the patrons of the cathedral. Martin of Tours – the patron of the main street Święty Marcin – is also regarded as one of the patron saints of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "poznan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1021,
+    "attempt": 1012,
+    "place_id": "gn-3185728",
+    "input": {
+      "place": {
+        "place_id": "gn-3185728",
+        "name": "Durrës",
+        "country": "Albania",
+        "subdivision": "Durrës County",
+        "lat": 41.32355,
+        "lon": 19.45469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durrës",
+          "url": "https://en.wikipedia.org/wiki/Durrës",
+          "text": "Durrës ( DUURR-əs, Albanian: [ˈdurəs]; Albanian definite form: Durrësi) is the second most populous city of the Republic of Albania and seat of Durrës County and Durrës Municipality. It is one of Albania's oldest continuously inhabited cities, with roughly 2,500 years of recorded history. It is located on a flat plain along the Albanian Adriatic Sea Coast between the mouths of the Erzen and Ishëm at the southeastern corner of the Adriatic Sea. Durrës's climate is profoundly influenced by a seasonal Mediterranean climate.\nDurrës was founded under the name of Epidamnos around the 7th century BC, by ancient Greek colonists from Corinth and Corcyra in cooperation with the Taulantii, a local Illyrian tribe. Also known as Dyrrachium, Durrës developed as it became an integral part of the Roman Empire and its successor the Byzantine Empire. The Via Egnatia started in the city and led east across the fields, lowlands and highlands of the Balkan Peninsula to Constantinople.\nIn the Middle Ages, Durrës was contested between Bulgarians, Venetians, local Albanian noble families, and the Ottoman Empire. The Ottomans ultimately prevailed, ruling the city for more than 400 years from 1501 until 1912. Following the Albanian Declaration of Independence, the city served as the capital of the Principality of Albania for a short period of time. Subsequently, it was annexed by the Kingdom of Italy in the interwar period and was occupied by Nazi Germany during World War II. Durrës experienced a strong expansion in its demography and economic activity under the People's Socialist Republic of Albania.\nThe transport connections, concentration of economic institutions and industrial tradition underlie Durrës's leading economic position in Albania. It is served by the Port of Durrës, one of the largest on the Adriatic Sea, which connects the city to other neighbouring countries. Its most considerable attraction is the Amphitheatre of Durrës that is included on the Albanian tentative list for designation as a UNESCO World Heritage Site. Once having a capacity for 20,000 people, it is the largest amphitheatre in the Balkan Peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "durres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1022,
+    "attempt": 1013,
+    "place_id": "gn-5391295",
+    "input": {
+      "place": {
+        "place_id": "gn-5391295",
+        "name": "Salinas",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.67774,
+        "lon": -121.6555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salinas, California",
+          "url": "https://en.wikipedia.org/wiki/Salinas,_California",
+          "text": "Salinas (; Spanish for \"Salt Flats\") is a city in and the county seat of Monterey County, California, United States. With a population of 163,542 in the 2020 Census, Salinas is the most populous city in Monterey County. Salinas is an urban area located along the eastern limits of the Monterey Bay Area, lying just south of the San Francisco Bay Area and 10 miles (16 km) southeast of the mouth of the Salinas River. The city is located at the mouth of the Salinas Valley, about eight miles (13 km) from the Pacific Ocean, and it has a climate more influenced by the ocean than the interior.\nSalinas serves as the main business, governmental, and industrial center of the region. The marine climate is ideal for the floral industry, grape vineyards, and vegetable growers. Salinas is known as the \"Salad Bowl of the World\" for its large, vibrant agriculture industry.\nIt was the hometown of writer and Nobel laureate John Steinbeck (1902–1968), who set many of his stories in the Salinas Valley and Monterey. Salinas has a high Hispanic proportion, which at 79.6%, is the highest proportion of Hispanic Americans out of any city in California, and 8th largest overall in the nation. The city also has a sizable Asian-American population, with a large and historic Filipino population. The city once also had the second-largest Chinatown in the nation behind only San Francisco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "salinas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1023,
+    "attempt": 1014,
+    "place_id": "gn-691650",
+    "input": {
+      "place": {
+        "place_id": "gn-691650",
+        "name": "Ternopil",
+        "country": "Ukraine",
+        "subdivision": "Ternopil",
+        "lat": 49.55404,
+        "lon": 25.59067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ternopil",
+          "url": "https://en.wikipedia.org/wiki/Ternopil",
+          "text": "Ternopil, known until 1944 mostly as Tarnopol, is a city in western Ukraine, located on the banks of the Seret River. Ternopil is one of the major cities of Western Ukraine and the historical regions of Galicia and Podolia. The population of Ternopil was estimated at 225,004 (2022 estimate).\nFounded as a border fortress of the Kingdom of Poland, the city remained property of several noble families and became an important centre of trade, but suffered from numerous attacks by Turks, Tatars and Zaporozhian Cossacks. After a period of decline, it saw a new period of development in the 19th century thanks to its role as a transit location between the Austrian monarchy and Russian Empire. During the early 20th century Ternopil was the only city in Galicia where Ukrainians were more numerous than Poles. During and immediately after World War I the city experienced periods of Russian, Ukrainian and Soviet rule, before being incorporated by Interwar Poland. During the Second World War Ternopil was occupied by Soviet and German troops and suffered severe damage. In the aftermath of the war, it was incorporated into the Ukrainian Soviet Socialist Republic, a member republic of the USSR. Since 1991 Ternopil has been part of independent Ukraine.\nThe city is the administrative center of Ternopil Oblast (region), as well as of surrounding Ternopil Raion (district) within the oblast. It hosts the administration of Ternopil urban hromada, one of the hromadas of Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "ternopil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1024,
+    "attempt": 1015,
+    "place_id": "gn-911148",
+    "input": {
+      "place": {
+        "place_id": "gn-911148",
+        "name": "Kitwe",
+        "country": "Zambia",
+        "subdivision": "Copperbelt",
+        "lat": -12.80243,
+        "lon": 28.21323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kitwe",
+          "url": "https://en.wikipedia.org/wiki/Kitwe",
+          "text": "Kitwe is the third largest city in terms of infrastructure development (after Lusaka and Ndola) and second largest city in terms of size and population (after Lusaka) in Zambia. With a population of 661,901 as of the 2022 census, Kitwe is one of the most developed commercial and industrial areas in the nation, alongside Ndola and Lusaka. It has a complex of mines on its north-western and western edges.\nKitwe is located in the Copperbelt Province and is made up of townships and suburban areas including Parklands, Riverside, Buchi, Chimwemwe, Kwacha, Nkana East, Nkana West, Garneton, Ndeke, Miseshi, Wusakile, Mindolo, Chachacha and Race Course, to mention a few. The city is sometimes referred to as Kitwe-Nkana. Nkana is derived from the name of Senior Chief Nkana of the Lamba speaking people of the Copperbelt Province. His area covers the towns of Kitwe, Mufulira, Kalulushi and Chambishi.\nKitwe has both private and public schools which include Lechwe School, Mpelembe Secondary School, Kitwe Boys Secondary School, Parklands Secondary School, Mukuba Secondary School, Nkana Trust School and Helen Kaunda Secondary School. It is also home to Zambia's second highest learning institution, namely The Copperbelt University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "kitwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1025,
+    "attempt": 1016,
+    "place_id": "gn-1215502",
+    "input": {
+      "place": {
+        "place_id": "gn-1215502",
+        "name": "Banda Aceh",
+        "country": "Indonesia",
+        "subdivision": "Aceh",
+        "lat": 5.54167,
+        "lon": 95.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banda Aceh",
+          "url": "https://en.wikipedia.org/wiki/Banda_Aceh",
+          "text": "Banda Aceh ( BUN-duh-AH-cheh; Acehnese: Banda Acèh, Jawoe: بند اچيه) is the capital and largest city in the province of Aceh, Indonesia. It is located on the island of Sumatra and has an elevation of 35 metres (115 ft). The city covers an area of 61.36 square kilometers (23.69 sq mi) and had a population of 223,446 people at the 2010 Census, rising to 252,899 at the 2020 Census. The official estimate as of 2025 was 267,962 (comprising 134,451 males and 133,511 females).\nBanda Aceh is located on the northwestern tip of Indonesia at the mouth of the Aceh River. Banda Aceh itself is a semi-enclave within Aceh Besar Regency, as Banda Aceh is surrounded by Aceh Besar to the south, east, and west, while it borders with the Andaman Sea to the north-west. Many suburbs of the city have developed in adjacent districts of Acah Besar Regency beyond the city limits.\nThe city was originally established as Bandar Aceh Darussalam and served as the capital and hub for the Sultanate of Aceh upon its foundation in the late 15th century. Later its name was changed to Bandar Aceh Darussalam, and thereafter became popularly known as Banda Aceh. The first part of the name comes from the Persian bandar (بندر) meaning \"port\" or \"haven\". The city is also dubbed the \"port to Mecca,\" or the \"porch of Mecca\" (Indonesian: Serambi Mekkah) in reference to the days when hajj pilgrims travelled by sea from Indonesia and would make a stopover in the city before continuing their journey to Mecca.\nBanda Aceh was long at the center of protracted conflicts between the Acehnese and foreign powers, including the Portuguese, the Dutch, the Japanese, and the Indonesian government. The city rose to international prominence in the aftermath of the Indian Ocean earthquake on 26 December 2004, which struck off the western coast of Sumatra. Banda Aceh was the closest major city to the earthquake's epicenter, which lay 249 kilometers (155 miles) off the coast. It suffered great damage in the earthquake and further damage when a tsunami struck shortly afterwards. Around 60,000 people in the city died as a result and many more were injured.\nThe aftermath of the tsunami saw a cessation of conflict between the government and the Free Aceh Movement, as well as an increase in domestic and international aid. Consequently, the city itself has seen major modernization and reconstruction over the past two decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "banda aceh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "banda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aceh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1026,
+    "attempt": 1017,
+    "place_id": "gn-1280849",
+    "input": {
+      "place": {
+        "place_id": "gn-1280849",
+        "name": "Kashgar",
+        "country": "China",
+        "subdivision": "Xinjiang",
+        "lat": 39.46718,
+        "lon": 75.98675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kashgar",
+          "url": "https://en.wikipedia.org/wiki/Kashgar",
+          "text": "Kashgar (Uyghur: قەشقەر, romanised: Qeshqer), also known as Kashi (Chinese: 喀什; pinyin: Kāshí), is a city in the Tarim Basin region of southern Xinjiang, China. It is one of the westernmost cities of China, located near the country's border with Kyrgyzstan and Tajikistan. For over 2,000 years, Kashgar has been a strategically important oasis on the Silk Road linking China with Central Asia, the Middle East, and Europe. It is one of the oldest continuously inhabited cities in the world and has a population of 711,300 people (as of 2019). Kashgar's urban area covers 15 km2 (5.8 sq mi), although its administrative area extends over 555 km2 (214 sq mi).\nAt the convergence point of widely varying cultures and empires, Kashgar has been under the rule of the Chinese, Turkic, Mongol and Tibetan empires. The city has also been the site of a number of battles between various groups of people on the steppes.\nNow administered as a county-level city, Kashgar is the administrative centre of Kashgar Prefecture, which has an area of 162,000 km2 (63,000 sq mi) and a population of approximately 4 million as of 2010. Kashgar was declared a Special Economic Zone in 2010; it is the only city in western China with this designation. Kashgar also forms a terminus of the Karakoram Highway, the reconstruction of which is considered a major part of the multibillion-dollar China–Pakistan Economic Corridor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "kashgar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1027,
+    "attempt": 1018,
+    "place_id": "gn-1514879",
+    "input": {
+      "place": {
+        "place_id": "gn-1514879",
+        "name": "Khujand",
+        "country": "Tajikistan",
+        "subdivision": "Sughd",
+        "lat": 40.28256,
+        "lon": 69.62216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khujand",
+          "url": "https://en.wikipedia.org/wiki/Khujand",
+          "text": "Khujand, sometimes spelled Khodjent and formerly known as Leninabad from 1936 to 1991, is the second-largest city of Tajikistan and the capital of its northernmost Sughd province.\nKhujand is one of the oldest cities in Central Asia, dating back about 2,500 years to the Persian Empire. Situated on the Syr Darya river at the mouth of the Fergana Valley, Khujand was a major city along the ancient Silk Road. After being captured by Alexander the Great in 329 BC, it was renamed Alexandria Eschate and has since been part of various empires in history, including the Umayyad Caliphate (8th century), the Mongol Empire (13th century) and the Russian Empire (19th century). Today, the majority of its population are ethnic Tajiks and the city is close to the present borders of both Uzbekistan and Kyrgyzstan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "khujand",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1028,
+    "attempt": 1019,
+    "place_id": "gn-1630634",
+    "input": {
+      "place": {
+        "place_id": "gn-1630634",
+        "name": "Probolinggo",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.7543,
+        "lon": 113.2159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Probolinggo",
+          "url": "https://en.wikipedia.org/wiki/Probolinggo",
+          "text": "Probolinggo (Indonesian: Kota Probolinggo, Madurese: Kottha Prabâlingghâ, Javanese: Kuthå Pråbålinggå) is a city on the north coast of East Java province, Indonesia. It covers an area of 55.197 sq. km, and had a population of 217,062 at the 2010 census and 239,649 at the 2020 census; the official estimate as at mid 2025 was 244,849 (comprising 121,678 males and 123,171 females). It is surrounded on the landward side by Probolinggo Regency of which it was formerly the capital, but it is now a separate administration.\nLike most of northern East Java, the city has a large Madurese population in addition to many ethnically Javanese people, other smaller communities includes Chinese and Arabs. It is located on one of the major highways across Java, and has a harbor that is heavily used by fishing vessels.\nUnder the Dutch East Indies colonial administration, especially in the 19th century, Probolinggo was a lucrative regional center for refining and exporting sugar, and sugar remains an important product of the area.\nThe city is famous for its mangoes, locally called mangga manalagi. Strong dry-season winds from July to September, the angin gending, help the mango trees pollinate and are sometimes credited with being the source of the area's quality fruit. The city formerly produced grapes as well, but few grapes are grown in the area now.\nThe motto of the city is Bestari which is an abbreviation of bersih (cleanliness), sehat (healthy), tertib (orderly), aman (safe), rapi (neat), and indah (beautiful)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "probolinggo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1029,
+    "attempt": 1020,
+    "place_id": "gn-1733432",
+    "input": {
+      "place": {
+        "place_id": "gn-1733432",
+        "name": "Kota Kinabalu",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.9749,
+        "lon": 116.0724
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kota Kinabalu",
+          "url": "https://en.wikipedia.org/wiki/Kota_Kinabalu",
+          "text": "Kota Kinabalu (Malaysian: [ˈkota kinaˈbalu]; previously Jesselton), colloquially referred to as KK, is the state capital of Sabah, Malaysia. It is also the capital of the Kota Kinabalu District as well as the West Coast Division of Sabah. The city is located on the northwest coast of Borneo facing the South China Sea. The Tunku Abdul Rahman National Park lies to its west and Mount Kinabalu, which gave the city its name, is located to its east. Kota Kinabalu has a population of 452,058 according to the 2010 census; when the adjacent Penampang and Tuaran districts are included, the metro area has a combined population of 628,725. The 2020 Census revealed an increase in the municipal population to 500,421, while the wider area including the Penampang and Putatan districts had a population of 731,406.\nHistorically, the Kadazandusuns called the area by the name of Dondoung. In the 15th century, the area was under the influence of Bruneian Empire. In the 19th century, the British North Borneo Chartered Company (NBCC) first set up a settlement near the Gaya Island. However, it was destroyed by fire in 1897 by a local rebel leader named Mat Salleh. In July 1899, the place located opposite to the Gaya Island was identified as a suitable place for settlements. Development in the area was started soon after that; and the place was named \"Api-api\" before it was renamed after Sir Charles Jessel, the vice-chairman of NBCC, as Jesselton. Jesselton became a major trading port in the area, and was connected to the North Borneo Railway. Jesselton was largely destroyed during World War II. The Japanese occupation of Jesselton provoked several local uprisings, notably the Jesselton Revolt, but they were eventually defeated by the Japanese. After the war, NBCC was unable to finance the high cost of reconstructions and the place was ceded to the British Crown Colony. The British Crown declared Jesselton as the new capital of North Borneo in 1946 and started to rebuild the town. After the formation of Malaysia, North Borneo was renamed as Sabah. In 1967, Jesselton was renamed as Kota Kinabalu, Kota being the Malay word for City and Kinabalu after the nearby Mount Kinabalu. Kota Kinabalu was granted city status in 2000.\nKota Kinabalu is often known as KK both in Malaysia and internationally. It is a major tourist destination and a gateway for travellers visiting Sabah and Borneo. Kinabalu Park is located about 90 kilometres from the city and there are many other tourist attractions in and around the city. Kota Kinabalu is also one of the major industrial and commercial centres of East Malaysia. These two factors combine to make Kota Kinabalu one of the fastest-growing cities in Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 451
+    },
+    "banned_terms": [
+      {
+        "term": "kota kinabalu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kota",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kinabalu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1050,
+    "attempt": 1041,
+    "place_id": "gn-1703320",
+    "input": {
+      "place": {
+        "place_id": "gn-1703320",
+        "name": "Malabon",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.67333,
+        "lon": 120.93972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malabon",
+          "url": "https://en.wikipedia.org/wiki/Malabon",
+          "text": "Malabon, officially the City of Malabon (Filipino: Lungsod ng Malabon), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 389,929 people. Located just north of the city of Manila, Malabon is primarily residential, industrial and one of the most densely populated cities in the metropolis, having a total land area of 15.96 square kilometers (6.16 sq mi)\nMalabon is part of the sub-region of Metro Manila informally called CAMANAVA, an area which derives its name from the first syllable of its component cities: Caloocan, Malabon, Navotas, and Valenzuela. Caloocan lies to the south and east, Navotas to the west, and Valenzuela to the north. Malabon also borders the town of Obando in the province of Bulacan to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "malabon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1051,
+    "attempt": 1042,
+    "place_id": "gn-1833747",
+    "input": {
+      "place": {
+        "place_id": "gn-1833747",
+        "name": "Ulsan",
+        "country": "South Korea",
+        "subdivision": "Ulsan",
+        "lat": 35.53722,
+        "lon": 129.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulsan",
+          "url": "https://en.wikipedia.org/wiki/Ulsan",
+          "text": "Ulsan (Korean: 울산; pronounced [uɭ.s͈an]), officially the Ulsan Metropolitan City, is South Korea's seventh-largest metropolitan city and the eighth-largest city overall, with a population of over 1.1 million inhabitants. It is located in the south-east of the country, neighboring Busan to the south and facing Gyeongju to the north.\nUlsan is the industrial powerhouse of South Korea, forming the heart of the Ulsan Industrial District. It has the world's largest automobile assembly plant, operated by the Hyundai Motor Company; the world's largest shipyard, operated by Hyundai Heavy Industries; and the world's third-largest oil refinery, owned by SK Energy. In 2020, Ulsan had a GDP per capita of $65,352, the highest of any region in South Korea.\nUlsan is the city that built the first automobile hydrogen charging station in the country in 2009. In addition, the first hydrogen ship charging station in the country was installed in Jangsaengpo Port in 2021. Currently, the Ulsan Green Hydrogen Town project, a hydrogen city that supplies hydrogen by connecting the city and a hydrogen power plant, is in progress. In December 2016, 10 Hyundai ix35 FCEVs, the first hydrogen fuel cell taxis in the country, entered test operation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "ulsan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1052,
+    "attempt": 1043,
+    "place_id": "gn-2034312",
+    "input": {
+      "place": {
+        "place_id": "gn-2034312",
+        "name": "Ulanhot",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 46.08333,
+        "lon": 122.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulanhot",
+          "url": "https://en.wikipedia.org/wiki/Ulanhot",
+          "text": "Ulanhot is a county-level city and the administrative center of Hinggan League in the east of Inner Mongolia, China. Formerly known as Wangin Süm, the city became the first capital of Inner Mongolia, the first autonomous region in China, on 1 May 1947, until the regional capital moved to Zhangjiakou in late December 1949; the regional capital moved again in June 1952 to Hohhot, which remains the capital to this day.\nThe city is connected to Baicheng, Jilin by the Baicheng–Arxan railway (Chinese: 白阿铁路), which runs through the pass south of Ulanhot. China's National Highway 302 runs from Tumen, Jilin to Ulanhot. In the 7918 Network of Highways it will be on the route from Hunchun to Ulanhot. The city is also served by Ulanhot Yilelite Airport (ICAO code ZBUL, IATA code HLH). Routes flown by Air China and Hainan Airlines connect Ulanhot with Beijing Capital International Airport and Hohhot.\nJust outside the city is a tomb from the Yuan dynasty and a temple dedicated to Genghis Khan. The temple was constructed in 1940. In the year 2002 it received funds for significant expansion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "ulanhot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1053,
+    "attempt": 1044,
+    "place_id": "gn-2038067",
+    "input": {
+      "place": {
+        "place_id": "gn-2038067",
+        "name": "Chifeng",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 42.26833,
+        "lon": 118.96361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chifeng",
+          "url": "https://en.wikipedia.org/wiki/Chifeng",
+          "text": "Chifeng is a prefecture-level city in Southeastern Inner Mongolia, People's Republic of China. It borders Xilin Gol League to the north and west, Tongliao to the northeast, Chaoyang (Liaoning) to the southeast and Chengde (Hebei) to the south. The city has a total administrative area of 90,275 km2 (34,855 sq mi) and as of the 2020 census, had a population of 4,035,967 inhabitants (4,341,245 in 2010). However, 1,175,391 of those residents lived in the built-up (or metro) area made of the 2 urban districts of Hongshan and Songshan, as Yuanbaoshan is not conurbated yet. However, a large part of Songshan district is still rural and Yuanbaoshan district a de facto separate town 27 kilometers away from the core district of Chifeng. The city was the administrative center of the previous Ju Ud League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "chifeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1054,
+    "attempt": 1045,
+    "place_id": "gn-2618425",
+    "input": {
+      "place": {
+        "place_id": "gn-2618425",
+        "name": "Copenhagen",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.67594,
+        "lon": 12.56553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Copenhagen",
+          "url": "https://en.wikipedia.org/wiki/Copenhagen",
+          "text": "Copenhagen (Danish: København [kʰøpm̩ˈhɑwˀn] ) is the capital and most populous city of Denmark, with an urban population of 1.4 million. The city is situated mainly on the island of Zealand (Sjælland), with a smaller part on the island of Amager. Copenhagen is separated from Malmö, Sweden, by the Øresund strait. The Øresund Bridge connects the two cities by rail and road.\nSettled as a Viking fishing village in the 10th century in the vicinity of what is now Gammel Strand, Copenhagen became the capital of Denmark in the early 15th century. During the 16th century, the city served as the de facto capital of the Kalmar Union and the seat of the Union's monarchy, which governed most of the modern-day Nordic region as part of a Danish confederation with Sweden and Norway. The city flourished as the cultural and economic centre of Scandinavia during the Renaissance. By the 17th century, it had become a regional centre of power, serving as the heart of the Danish government and military. During the 18th century, Copenhagen suffered a devastating plague outbreak and urban conflagrations. Major redevelopment included the construction of the prestigious district of Frederiksstaden and the establishment of cultural institutions such as the Royal Theatre and the Royal Academy of Fine Arts. The city became the centre of the Danish slave trade during this period. In 1807, the city was bombarded by a British fleet during the Napoleonic Wars, before the Danish Golden Age brought a Neoclassical look to Copenhagen's architecture. After World War II, the Finger Plan fostered the development of housing and businesses along the five urban railway routes emanating from the city centre.\nSince the turn of the 21st century, Copenhagen has seen strong urban and cultural development, facilitated by investment in its institutions and infrastructure. The city is the cultural, economic, and governmental centre of Denmark; it is one of the major financial centres of Northern Europe with the Copenhagen Stock Exchange. Copenhagen's economy has developed rapidly in the service sector, especially through initiatives in information technology, pharmaceuticals, and clean technology. Since the completion of the Øresund Bridge, Copenhagen has increasingly integrated with the Swedish province of Scania and its largest city, Malmö, forming the Øresund Region. With several bridges connecting the various districts, the cityscape is characterised by parks, promenades, and waterfronts. Copenhagen's landmarks, such as Tivoli Gardens, The Little Mermaid statue, the Amalienborg and Christiansborg palaces, Rosenborg Castle, Frederik's Church, Børsen, and many museums, restaurants, and nightclubs are significant tourist attractions.\nCopenhagen is home to the University of Copenhagen, the Technical University of Denmark, Copenhagen Business School, and the IT University of Copenhagen. The University of Copenhagen, founded in 1479, is the oldest university in Denmark. Copenhagen is home to the football clubs F.C. Copenhagen and Brøndby IF. The annual Copenhagen Marathon was established in 1980. Copenhagen is one of the most bicycle-friendly cities in the world. Movia is a public mass transit company serving all of eastern Denmark except Bornholm. The Copenhagen Metro, launched in 2002, serves central Copenhagen. Additionally, the Copenhagen S-train, the Lokaltog (private railway), and the Coast Line network serve and connect central Copenhagen to outlying boroughs. Serving roughly 2.7 million passengers a month, Copenhagen Airport, Kastrup, is the busiest airport in the Nordic countries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 544
+    },
+    "banned_terms": [
+      {
+        "term": "copenhagen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1055,
+    "attempt": 1046,
+    "place_id": "gn-2641181",
+    "input": {
+      "place": {
+        "place_id": "gn-2641181",
+        "name": "Norwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.62783,
+        "lon": 1.29834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norwich",
+          "url": "https://en.wikipedia.org/wiki/Norwich",
+          "text": "Norwich (  NORR-ij, -⁠itch) is a cathedral city and district in Norfolk, England, of which it is the county town. It lies by the River Wensum, about 100 mi (160 km) north-east of London, 40 mi (64 km) north of Ipswich and 65 mi (105 km) east of Peterborough. The population of the Norwich City Council local authority area was estimated to be 144,000 in 2021, which was an increase from 143,135 in 2019. The wider Norwich built-up area had a population of 213,166 at the 2011 United Kingdom census.\nNorwich is the seat of the see of the Diocese of Norwich. For much of the second millennium, from medieval to just before industrial times, Norwich was one of the most prosperous and largest towns in England; it was second only to London. Today, it is the largest settlement in East Anglia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "norwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1056,
+    "attempt": 1047,
+    "place_id": "gn-2945024",
+    "input": {
+      "place": {
+        "place_id": "gn-2945024",
+        "name": "Braunschweig",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.26594,
+        "lon": 10.52673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braunschweig",
+          "url": "https://en.wikipedia.org/wiki/Braunschweig",
+          "text": "Braunschweig (German: [ˈbʁaʊnʃvaɪk] ) or Brunswick (English:  BRUN-zwik; from Low German Brunswiek, local dialect: Bronswiek [ˈbrɔˑnsviːk]) is a city in Lower Saxony, Germany, north of the Harz Mountains at the farthest navigable point of the river Oker, which connects it to the North Sea via the rivers Aller and Weser. In 2025, it had a population of 255,500. The  Braunschweig-Wolfsburg-Salzgitter region had 1.02 million residents including the cities Wolfsburg and Salzgitter. It is the second largest urban center in Lower Saxony after Hanover. The urban agglomeration of Braunschweig had a population of 551,000 with over 40% having a migration background, making it the most diverse urban agglomeration in the whole state. The city consists of 42.2% immigrants (approximately 108,278) with a high number of migrants coming from other European countries, Asia and Africa. 73% of the Germans residing in Braunschweig come from different parts of the country, particularly North Rhine Westphalia, Hessen and the former states of East Germany. The city has one of the highest integrated proportions of migrants in the nation, having nearly 8 out of 10 people with migration background speak German on a daily basis. Braunschweig is considered an important regiopolis. It is one of the largest regiopolitan cities in Northern Germany and the largest regiopolis in Lower Saxony. The city is seen as a major hub within the region due to it having multiple characteristics of a metropolitan city on a smaller scale or in a comparative amount to other metropolitan cities in Germany.\n144 km² (49 sq. mi.) of the city's area is made up of greenspaces such as parks and forests. Braunschweig has a population density of 5 323 per km² (13 787 per sq. mi.) excluding the green areas because only about 48 km² (25½ sq. mi.) of the total area is properly urban, making it quite a dense city and one of the densest cities by urban core density. Many districts of the city have a density over 4,450 people per square kilometer (11,525 per sq. mi.) such as Weststadt, Innenstadt, Westliches Ringgebiet, Nordstadt, or Östliches Ringgebiet. The densest quarter of the city is Hagenquarter with a population of 7,528, being 0.25 km² and a density of 30,112 per km².  followed by the south side of Westliches Ringgebiet (South of cyriaksring) with a population of 8,436 and an area of 0.31 km², a density of 27,213 ; Kultviertel, being 0.26 km² and having 5,233 residents makes the quarter's density 20,127 per km²; Emsviertel(Weststadt) having 5,023 residents, and area of 0.33km2 making the density 15,221 and Schwarzer Berg with 0.45 km² of area and a population of 4,800 and a density of 10,667. Due to the city's limited urban core and efforts in preserving green spaces, 81% of the residential buildings are multi-storey apartments limiting 74% of the flats with a space below 100 square meters (1000 sq. ft.). The city is constructing more residential areas within city limits so that by 2030 the population increases by 15.000 from 2014.\nA powerful and influential centre of commerce in medieval Germany, Brunswick was a member of the Hanseatic League from the 13th until the 17th century. It was the capital city of three successive states: the Principality of Brunswick-Wolfenbüttel (1269–1432, 1754–1807, and 1813–1814), the Duchy of Brunswick (1814–1918), and the Free State of Brunswick (1918–1946).\nToday, Brunswick is the second-largest city in Lower Saxony and a major centre of scientific research and development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 570
+    },
+    "banned_terms": [
+      {
+        "term": "braunschweig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1057,
+    "attempt": 1048,
+    "place_id": "gn-2990999",
+    "input": {
+      "place": {
+        "place_id": "gn-2990999",
+        "name": "Nancy",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.68439,
+        "lon": 6.18496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nancy, France",
+          "url": "https://en.wikipedia.org/wiki/Nancy,_France",
+          "text": "Nancy is the prefecture of the northeastern French department of Meurthe-et-Moselle, located in the Grand Est region (in the historical region of Lorraine). The city is situated on the left bank of the Meurthe. The metropolitan area of Nancy had a population of 508,793 inhabitants as of 2021, making it the 16th-largest functional urban area in France and the largest in Lorraine. The population of the city of Nancy proper is 104,387 (2022).\nThe origins of the city date back to the 11th century, when a fortified town was established by Gerard, Duke of Lorraine. Nancy developed into the ducal seat of the Duchy of Lorraine, a position it held until the duchy was annexed by France under King Louis XV in 1766 and replaced by a province, with Nancy maintained as capital. The city's Old Town (Vieille Ville), centred around the Ducal Palace of Nancy, reflects this long history, while the 18th century Ville-Neuve bears witness to a period of ambitious urban planning under Stanislaus I of Poland. His patronage produced some of the city's most notable monuments, including the Place Stanislas, a large square built between 1752 and 1756 by architect Emmanuel Héré, today inscribed on the UNESCO World Heritage List.\nFollowing its rise to prominence in the Age of Enlightenment, it was nicknamed the \"capital of Eastern France\" in the late 19th century. Nancy became an important industrial and cultural hub in the 19th and early 20th centuries, especially during the Art Nouveau period. The École de Nancy, a collective of artists and architects led by figures such as Émile Gallé and Victor Prouvé, made the city a centre of innovation in decorative arts and design. Its legacy is still visible today in numerous buildings, glassworks, and collections.\nIn the present day, Nancy is a regional centre for culture, science, and education. It hosts the University of Lorraine, one of the largest French universities. With the Centre Hospitalier Régional Universitaire de Brabois, the conurbation is home to one of the main health centres in Europe, renowned for its innovations in surgical robotics. Notable cultural institutions include the Musée des Beaux-Arts de Nancy and the Opéra national de Lorraine. The motto of the city is Non inultus premor (Latin for 'I am not injured unavenged') — a reference to the thistle, which is a symbol of Lorraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "nancy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1058,
+    "attempt": 1049,
+    "place_id": "gn-3182164",
+    "input": {
+      "place": {
+        "place_id": "gn-3182164",
+        "name": "Bergamo",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.69601,
+        "lon": 9.66721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergamo",
+          "url": "https://en.wikipedia.org/wiki/Bergamo",
+          "text": "Bergamo ( BUR-gə-moh; Italian: [ˈbɛrɡamo] ; Bergamasque: Bèrghem [ˈbɛrɡɛm] ) is a city in Lombardy region of northern Italy. The seat of the province of Bergamo, it is located approximately 40 km (25 mi) northeast of Milan, and about 30 km (19 mi) from the alpine lakes Como and Iseo and 70 km (43 mi) from Garda and Maggiore. The Bergamo Alps (Alpi Orobie) begin immediately north of the city.\nWith a population of 120,629 as of 2026, Bergamo is the 4th-largest city in Lombardy and the 34th-largest in Italy. The metropolitan area of Bergamo extends beyond the administrative city limits, spanning over a densely urbanized area with slightly fewer than 500,000 inhabitants. The Bergamo metropolitan area is itself part of the broader Milan metropolitan area, home to more than eight million people.\nThe city of Bergamo is composed of an old walled core, known as Città Alta ('Upper Town'), nestled within a system of hills, and the modern expansion in the plains below. The upper town is encircled by massive Venetian defensive systems that have been a UNESCO World Heritage Site since 9 July 2017.\nBergamo has good links to other cities in Italy via the motorway A4 which connects Milan, Verona, and Venice. The city is served by Il Caravaggio International Airport, the third-busiest airport in Italy with 12.3 million passengers in 2017. Bergamo is the second most visited city in Lombardy after Milan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "bergamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1059,
+    "attempt": 1050,
+    "place_id": "gn-323777",
+    "input": {
+      "place": {
+        "place_id": "gn-323777",
+        "name": "Antalya",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.90812,
+        "lon": 30.69556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antalya",
+          "url": "https://en.wikipedia.org/wiki/Antalya",
+          "text": "Antalya is one of the largest cities in Turkey and the capital of Antalya Province, the fifth-most populous province. Recognized as the \"capital of tourism\" in Turkey and a pivotal part of the Turkish Riviera, Antalya sits on Anatolia's southwest coast, flanked by the Taurus Mountains. The urban population of the city is around 1.5 million, with a provincial population of 2,722,103.\nThe city was formerly known as Attaleia, founded around 200 BC by King Attalus II of Pergamon. Attaleia was soon conquered by the Romans. Roman rule saw the city thrive, including the construction of several new monuments, such as Hadrian's Gate, and the flourishing of nearby ancient cities such as Patara, Xanthos and Myra in the Lycia region; Perga, Aspendos and Side in Pamphylia; and Sagalassos, Antioch and Termessos in Pisidia. These cities were already significant centers before Roman influence. Antalya has changed hands in history several times, including the Seljuk Empire in 1207 and the Ottoman Empire in 1391. Ottoman rule brought relative peace and stability for the next five hundred years. The city was occupied by Italy for three years in the aftermath of World War I, but was returned to Turkey during the Turkish War of Independence.\nWhile the city itself only has modest elevation changes, Antalya has high mountains in all directions to its interior. With moisture being trapped, the local climate thus has high winter rainfall, while the interior bay setting results in very hot summers for a coastal city.\nThe city is Turkey's biggest international sea resort on the Turkish Riviera. Large-scale development and governmental funding has made it a prime destination for tourists. Antalya is currently the fourth-most visited city in the world, trailing behind only Istanbul, London, and Dubai, attracting more than 16.5 million foreign visitors in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "antalya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1060,
+    "attempt": 1051,
+    "place_id": "gn-359796",
+    "input": {
+      "place": {
+        "place_id": "gn-359796",
+        "name": "Suez",
+        "country": "Egypt",
+        "subdivision": "Suez",
+        "lat": 29.97371,
+        "lon": 32.52627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suez",
+          "url": "https://en.wikipedia.org/wiki/Suez",
+          "text": "Suez is a seaport city in north-eastern Egypt, located on the north coast of the Gulf of Suez on the Red Sea, near the southern terminus of the Suez Canal. The city is the capital and largest city of the Suez Governorate. The modern city of Suez is a successor of the ancient Egyptian city of Clysma, a major Red Sea port and a center of monasticism.\nRailway lines and highways connect the city with Cairo, Port Said, and Ismailia. Suez has a petrochemical plant, and its oil refineries have pipelines carrying the finished product to Cairo. These are represented in the flag of the governorate: the blue background refers to the sea, the gear refers to Suez's status as an industrial governorate, and the flame refers to the petroleum firms of Suez. The city has three ports: the Suez Port (Port Tewfik), al-Adabiya, and al-Zaytiya, and extensive port facilities. Together, the three cities form the Suez metropolitan area, located mostly in Africa with a small portion in Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "suez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1061,
+    "attempt": 1052,
+    "place_id": "gn-3598655",
+    "input": {
+      "place": {
+        "place_id": "gn-3598655",
+        "name": "Chichicastenango",
+        "country": "Guatemala",
+        "subdivision": "Quiché",
+        "lat": 14.94333,
+        "lon": -91.11116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chichicastenango",
+          "url": "https://en.wikipedia.org/wiki/Chichicastenango",
+          "text": "Chichicastenango, also known as Santo Tomás Chichicastenango, is a town, with a population of 71,394 (2018 census), and the municipal seat for the surrounding municipality of the same name in the El Quiché department of Guatemala. \nSituated on a high-altitude plateau of the Guatemalan Highlands at an elevation of 1,965 metres (6,447 ft). above sea level, the town historically served as a vital K'iche' Maya ceremonial and regional center. It is notably recognized as the historic location where the original manuscript of the Popol Vuh, the sacred narrative of the K'iche' people, was preserved and transcribed in the early 18th century. The Spanish conquistadors named the town Tzitzicaztenanco (meaning \"place of nettles\") using the Nahuatl language of their Tlaxcalan allies, replacing its original K'iche' name, Chaviar.\nChichicastenango is a K'iche' Maya cultural centre. According to the 2012 census, 98.5% of the municipality's population is indigenous Mayan K'iche. Of the population, 21% speak only K'iche, 71% speak both K'iche and Spanish, and the remaining 8% speak only Spanish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "chichicastenango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1062,
+    "attempt": 1053,
+    "place_id": "gn-361291",
+    "input": {
+      "place": {
+        "place_id": "gn-361291",
+        "name": "Hurghada",
+        "country": "Egypt",
+        "subdivision": "Red Sea",
+        "lat": 27.25738,
+        "lon": 33.81291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hurghada",
+          "url": "https://en.wikipedia.org/wiki/Hurghada",
+          "text": "Hurghada (; Arabic: الغردقة al-Ġhardaqah, Egyptian Arabic pronunciation: [el ɣæɾˈdæʔæ]) is a coastal city that serves as the largest city and capital of the Red Sea Governorate of Egypt. Hurghada has grown from a small fishing village to one of the largest resort destinations along the Red Sea coast, stretching close to 40 km.\nThe city is bordered to the north by Ras Gharib, to the south by Safaga, to the east by the Red Sea coast, and to the west by the Red Sea Mountains. The city's nearest airport is Hurghada International Airport. Hurghada contains the islands of Giftun, Umm Qamar, Magawish, Abu Ramada, Abu Minqar, Fanadir, and Shadwan. The Hurghada metropolitan area is home to popular resort cities and towns that include El Gouna, Sahl Hasheesh, Soma Bay, and Makadi Bay. Its main districts are El Dahar, El Saqqala, and El Ahyaa.\nThe city by itself is famous for its large and luxurious hotels. As of 2024, Hurghada attracts over 9 million visitors annually, making it one of the most visited cities in Egypt and consistently ranking among the world's top tourist destinations and the third best nature destination in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "hurghada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1063,
+    "attempt": 1054,
+    "place_id": "gn-3621849",
+    "input": {
+      "place": {
+        "place_id": "gn-3621849",
+        "name": "San José",
+        "country": "Costa Rica",
+        "subdivision": "San José",
+        "lat": 9.93388,
+        "lon": -84.08489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San José, Costa Rica",
+          "url": "https://en.wikipedia.org/wiki/San_José,_Costa_Rica",
+          "text": "San José (Spanish: [saŋ xoˈse]; meaning \"Saint Joseph\") is the capital and largest city of Costa Rica, and the capital of San José Province. It is in the center of the country, in the mid-west of the Central Valley. San José is Costa Rica's seat of national government, focal point of political and economic activity, and major transportation hub. San José is simultaneously one of Costa Rica's cantons, with its municipal land area covering 44.62 square kilometers (17.23 square miles) and having within it an estimated population of 352,381 people in 2022. Together with several other cantons of the central valley, including Alajuela, Heredia and Cartago, it forms the country's Greater Metropolitan Area, with an estimated population of over 2 million in 2017. The city is named in honor of Joseph of Nazareth.\nFounded in 1736 by order of Cabildo de León, the population of San José rose during the 18th century through the use of colonial planning. It has historically been a city of strategic importance, having been the capital of Costa Rica three times. More than a million people pass through it daily. It is home to the Museo Nacional de Costa Rica, the National Theater of Costa Rica, and La Sabana Metropolitan Park. Juan Santamaría International Airport serves the city.\nSan José is notable among Latin American cities for its high quality of life, security, level of globalization, environmental performance, public service, and recognized institutions. In 2012, San José was one of the safest and least violent cities in the region. It is considered a \"Beta-\" global city by GaWC. San José joined the UNESCO Global Network of Learning Cities in 2016  and is also recognized as a \"Design City\" by UNESCO."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1064,
+    "attempt": 1055,
+    "place_id": "gn-3633009",
+    "input": {
+      "place": {
+        "place_id": "gn-3633009",
+        "name": "Maracaibo",
+        "country": "Venezuela",
+        "subdivision": "Zulia",
+        "lat": 10.64232,
+        "lon": -71.61089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maracaibo",
+          "url": "https://en.wikipedia.org/wiki/Maracaibo",
+          "text": "Maracaibo ( MARR-ə-KY-boh, Spanish: [maɾaˈkajβo] ; Wayuu: Marakaaya) is a city and municipality in northwestern Venezuela, located on the western shore of the strait that connects Lake Maracaibo to the Gulf of Venezuela. It is the capital of Zulia and is the  second-largest city proper in Venezuela, after the national capital, Caracas. The city has an estimated population of 1,752,602, with the metropolitan area estimated at 2,727,957 as of 2019. Maracaibo is commonly nicknamed \"Spanish: La Tierra del Sol Amada\" (The Beloved Land of the Sun).\nMaracaibo is considered the economic center of western Venezuela due to the petroleum industry that developed along the shores of Lake Maracaibo. It is sometimes referred to as the \"First City of Venezuela\" for being the first city in Venezuela to adopt various public services, including electricity. The city is also linked to the origin of the country's name, as it is located near the lake from which the name \"Venezuela\" allegedly derives.\nEarly settlements in the region were inhabited by Arawakan-speaking and Kalina peoples. The founding of Maracaibo is disputed, with unsuccessful attempts made in 1529 by Captain Ambrosio Ehinger and in 1569  by Captain Alonso Pacheco. The city was eventually founded in 1574 as \"Nueva Zamora de la Laguna de Maracaibo\" by Captain Pedro Maldonado. It became a key transshipment point for inland settlements after Gibraltar, located at the head of the lake, was destroyed by pirates in 1669. Permanent settlement did not occur until the early 17th century. The discovery of petroleum in 1917 led to rapid population growth due to migration.\nMaracaibo is served by La Chinita International Airport, and is connected to the rest of the country by the General Rafael Urdaneta Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "maracaibo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1065,
+    "attempt": 1056,
+    "place_id": "gn-377039",
+    "input": {
+      "place": {
+        "place_id": "gn-377039",
+        "name": "Port Sudan",
+        "country": "Sudan",
+        "subdivision": "Red Sea",
+        "lat": 19.61745,
+        "lon": 37.21644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Sudan",
+          "url": "https://en.wikipedia.org/wiki/Port_Sudan",
+          "text": "Port Sudan (Arabic: بور سودان, romanized: Būr Sūdān, Beja: Bar'uut) is a major port city on the Red Sea in eastern Sudan, and the capital of Red Sea State. Port Sudan is Sudan's main seaport and the source of 90% of the country's international trade. The population of Port Sudan was estimated in the 2008 Census of Sudan to be 394,561 people.\nPort Sudan has historically been a centre for commercial activity, particularly in the shipping industry. \nFrom April 2023 to January 2026, the Sudanese government largely operated from Port Sudan as a result of intense fighting in the capital city Khartoum in the ongoing civil war, leading to it being described as a de facto capital of the country. Port Sudan also emerged as a refuge for internally displaced persons in Sudan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "port sudan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sudan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1066,
+    "attempt": 1057,
+    "place_id": "gn-5387428",
+    "input": {
+      "place": {
+        "place_id": "gn-5387428",
+        "name": "Richmond",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.93576,
+        "lon": -122.34775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, California",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_California",
+          "text": "Richmond is a city in western Contra Costa County, California, United States. The city was incorporated on August 3, 1905, and has a city council. Located in the San Francisco Bay Area's East Bay region, Richmond borders San Pablo, Albany, El Cerrito and Pinole in addition to the unincorporated communities of North Richmond, Hasford Heights, Kensington, El Sobrante, Bayview-Montalvin Manor, Tara Hills, and East Richmond Heights, and for a short distance San Francisco on Red Rock Island in the San Francisco Bay.\nRichmond is one of two cities, the other being San Rafael, that sits on the shores of both San Francisco Bay and San Pablo Bay. Its population was 116,448 as of the 2020 United States census making it the second largest city in the United States named Richmond after Richmond, Virginia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1067,
+    "attempt": 1058,
+    "place_id": "gn-542420",
+    "input": {
+      "place": {
+        "place_id": "gn-542420",
+        "name": "Krasnodar",
+        "country": "Russia",
+        "subdivision": "Krasnodar Krai",
+        "lat": 45.04534,
+        "lon": 38.98178
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krasnodar",
+          "url": "https://en.wikipedia.org/wiki/Krasnodar",
+          "text": "Krasnodar, formerly Yekaterinodar (until 1920), is the largest city and the administrative centre of Krasnodar Krai, Russia. The city stands on the Kuban River in southern Russia, with a population of 1,154,885 residents, and up to 1.263 million residents in the Urban Okrug. In the past decade Krasnodar has experienced rapid population growth, rising to become the tenth-largest city in Russia, and the largest city in southern Russia, as well as the Southern Federal District.\nThe city originated in 1793 as a fortress built by the Cossacks, and became a trading center for southern Russia. The city sustained heavy damage in World War II but was rebuilt and renovated after the war. Krasnodar is a major economic hub in southern Russia; In 2012, Forbes named Krasnodar the best city for business in Russia. Krasnodar is home to numerous sights, including the Krasnodar Stadium. Its main airport is Krasnodar International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "krasnodar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1068,
+    "attempt": 1059,
+    "place_id": "gn-613607",
+    "input": {
+      "place": {
+        "place_id": "gn-613607",
+        "name": "Kutaisi",
+        "country": "Georgia",
+        "subdivision": "Imereti",
+        "lat": 42.26791,
+        "lon": 42.69459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kutaisi",
+          "url": "https://en.wikipedia.org/wiki/Kutaisi",
+          "text": "Kutaisi ( koo-TY-see; Georgian: ქუთაისი pronounced [ˈkʰut̪ʰais̪i] ) is a city in the Imereti region of the Republic of Georgia. One of the oldest continuously inhabited cities in the world, it is the third-largest city in Georgia after Tbilisi and Batumi with a population of 160,971 as of 2025. It lies 221 kilometres (137 miles) west of Tbilisi, on the Rioni River, and is the capital of Imereti.\nHistorically one of the major cities of Georgia, Kutaisi served as the political center of Colchis in the Middle Ages as the capital of the Kingdom of Abkhazia and Kingdom of Georgia and later as the capital of the Kingdom of Imereti. From October 2012 to December 2018, Kutaisi was the seat of the Parliament of Georgia as an effort to decentralize the Georgian government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "kutaisi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1069,
+    "attempt": 1060,
+    "place_id": "gn-710735",
+    "input": {
+      "place": {
+        "place_id": "gn-710735",
+        "name": "Chernihiv",
+        "country": "Ukraine",
+        "subdivision": "Chernihiv Oblast",
+        "lat": 51.50541,
+        "lon": 31.28656
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chernihiv",
+          "url": "https://en.wikipedia.org/wiki/Chernihiv",
+          "text": "Chernihiv (Ukrainian: Чернігів, IPA: [tʃerˈn⁽ʲ⁾iɦiu̯] ; Russian: Чернигов, romanized: Chernigov, IPA: [tɕɪrˈnʲiɡəf]) is a city and municipality in northern Ukraine, which serves as the administrative center of Chernihiv Oblast and Chernihiv Raion within the oblast. Chernihiv's population is 282,747 (2022 estimate).\nOriginally a tribal centre of Siverians, in the 9th century Chernihiv was incorporated into the Rus' state, becoming its second most important city after Kyiv. Between the 11th and 13th century it served as the centre of an eponymous principality and a bishopric. Chernihiv's role as an important cultural and religious centre of Rus' is signified by numerous churches preserved from that era. Following the Tatar invasion the city lost its leading role in Siveria and was eventually incorporated by the Grand Duchy of Lithuania, but suffered from Tatar and Muscovite attacks. During most of the 16th century Chernihiv was part of the Tsardom of Moscow, but in 1618 was transferred to Poland and served as a centre of a voivodeship. In 1623 the city was awarded with Magdeburg Law.\nChernihiv experienced a new rise in its importance following its incorporation into the Cossack Hetmanate. During the late 17th and early 18th century the city served as a major cultural centre of Ukraine, and many of its structures were rebuilt in Ukrainian Baroque style. In 1700 a collegium was established in the city. Following the Hetanate's disbandment, in 1782 Chernihiv became part of an eponymous viceroyalty, which was later transformed into Chernigov Governorate. In the Russian Empire it functioned as a centre of administration, trade and crafts. During that period Chernihiv became a hotspot of culture, science and publishing. During the 19th century the city housed a Ukrainian autonomist circle and saw the emergence of a radical Hromada movement. Among its notable inhabitants was the Ukrainian writer Mykhailo Kotsiubynsky.\nAfter the February Revolution a Free Cossack militia was formed in Chernihiv, and it came under control of the Ukrainian Central Rada. After the end of the Russian Civil War the city became the centre of an eponymous region as part of Soviet Ukraine, one of republics of the Soviet Union. Under Soviet rule Chernihiv underwent rapid industrialization. Severely damaged during World War II, in its aftermath the city was rebuilt according to a new plan. During the Russian invasion of Ukraine in 2022 Chernihiv was designated as a Hero City of Ukraine by the Ukrainian government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 397
+    },
+    "banned_terms": [
+      {
+        "term": "chernihiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

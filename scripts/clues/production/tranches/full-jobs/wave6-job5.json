@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 1090,
+    "attempt": 1081,
+    "place_id": "gn-3171058",
+    "input": {
+      "place": {
+        "place_id": "gn-3171058",
+        "name": "Piacenza",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 45.05242,
+        "lon": 9.69342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piacenza",
+          "url": "https://en.wikipedia.org/wiki/Piacenza",
+          "text": "Piacenza (Italian: [pjaˈtʃɛntsa] ; Piacentino: Piaṡëinsa [pi.aˈzəi̯sɐ]; Latin: Placentia) is a city and comune (municipality) in the Emilia-Romagna region of Northern Italy, and the capital of the eponymous province. As of 2022, Piacenza is the ninth largest city in the region by population, with more than 102,000 inhabitants.\nThe westernmost major city of the region of Emilia-Romagna, it has strong relations with Lombardy, with which it borders, and in particular with Milan. It was defined by Leonardo da Vinci as a \"Land of passage\" in his Codex Atlanticus, by virtue of its crucial geographical location. This strategic location would significantly influence the history of Piacenza.\nPiacenza integrates characteristics of the nearby Ligurian and Piedmontese territories with a prevalent Lombard influence, favored by communications with the nearby metropolis, which attenuates its Emilian footprint.\nPiacenza is located at a major crossroads at the intersection of Route E35/A1 between Bologna and Milan, and Route E70/A21 between Brescia and Turin. Piacenza is also at the confluence of the Trebbia, draining the northern Apennine Mountains, and the River Po, draining to the east.\nPiacenza hosts three universities, Università Cattolica del Sacro Cuore, Polytechnic University of Milan and the University of Parma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "piacenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1091,
+    "attempt": 1082,
+    "place_id": "gn-3462377",
+    "input": {
+      "place": {
+        "place_id": "gn-3462377",
+        "name": "Goiânia",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -16.67861,
+        "lon": -49.25389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goiânia",
+          "url": "https://en.wikipedia.org/wiki/Goiânia",
+          "text": "Goiânia ( goy-AH-nee-ə; Brazilian Portuguese: [ɡo(j)ˈjɐniɐ]) is the capital and largest city of the Brazilian state of Goiás. With a population of 1,536,097, it is the second-largest city in the Central-West Region and the 10th-largest in the country. Its metropolitan area has a population of 2,890,418, making it the 12th-largest in Brazil. With an area of approximately 739 square kilometres (285 square miles), it has a continuous geography with few hills and lowlands, with flat lands in most of its territory, especially the Meia Ponte River, in addition to Botafogo and Capim Puba streams.\nGoiânia has its origins as a planned city, founded on October 24, 1933, by then Governor Pedro Ludovico to serve as the new state capital and administrative center. Before this, the state capital was the town of Goiás.\nIt is the second most populous city in the Central-West Region, only surpassed by the country's capital Brasília, located about 200 kilometers (120 miles) from Goiânia. The city is an important economic hub of the region and is considered a strategic center for such areas as industry, medicine, fashion and agriculture. Goiânia has previously been described as having the largest green area per inhabitant in Brazil and the second-most in the world, after Edmonton, Alberta, Canada. With rapid population growth and urban expansion, satellite imagery shows the majority of the green area is now at the periphery of its sprawling city limits, and the per-capita green area claim may need to be reviewed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "goiania",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1092,
+    "attempt": 1083,
+    "place_id": "gn-3662762",
+    "input": {
+      "place": {
+        "place_id": "gn-3662762",
+        "name": "Porto Velho",
+        "country": "Brazil",
+        "subdivision": "Rondônia",
+        "lat": -8.76194,
+        "lon": -63.90389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto Velho",
+          "url": "https://en.wikipedia.org/wiki/Porto_Velho",
+          "text": "Porto Velho (Portuguese pronunciation: [ˈpoʁtu ˈvɛʎu], Old Port) is the capital of the Brazilian state of Rondônia, in the upper Amazon River basin. The population is 460,434 people (as of the IBGE 2022 estimation). Located on the border of Rondônia and the state of Amazonas, the town is an important trading center for cassiterite, the mining of tin, which represents the most important economic activity in the region, as well as a transportation and communication center. It is on the eastern shore of the Madeira River, one of the main tributaries of the Amazon River. It is also Rondônia's largest city, and the largest state capital of Brazil by area.\nThe municipality occupies most of the border between Amazonas and Rondônia, and is both the westernmost and northernmost city in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "porto velho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1093,
+    "attempt": 1084,
+    "place_id": "gn-4471025",
+    "input": {
+      "place": {
+        "place_id": "gn-4471025",
+        "name": "High Point",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.95569,
+        "lon": -80.00532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "High Point, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/High_Point,_North_Carolina",
+          "text": "High Point is a city in Guilford County, North Carolina, located south and southwest of Greensboro, inside the Piedmont Triad region of the U.S. state of North Carolina. Outskirts of High Point also extends into Randolph, Davidson, and Forsyth counties. The city was of a total population of 114,059 at the 2020 census. High Point is the ninth-most populous city in North Carolina, the third-largest city in the Piedmont Triad, and the 259th-most populous city in the U.S.\nMajor industries in High Point include furniture, textiles, and bus manufacturing. The official slogan of the city is \"North Carolina's International City\" due to the semi-annual High Point Furniture Market that attracts 100,000 exhibitors and buyers from around the world. It is home to High Point University, a private Methodist-affiliated institution founded in 1924.\nThe incumbent mayor of High Point is Cyril Jefferson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "high point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "high",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1094,
+    "attempt": 1085,
+    "place_id": "gn-5074472",
+    "input": {
+      "place": {
+        "place_id": "gn-5074472",
+        "name": "Omaha",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.25626,
+        "lon": -95.94043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omaha, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/Omaha,_Nebraska",
+          "text": "Omaha is the most populous city in the U.S. state of Nebraska. It is located in the Midwestern United States along the Missouri River, about 10 mi (15 km) north of the mouth of the Platte River. Omaha had a population of 486,051 at the 2020 census, and with a 2025 population estimate of 488,797, it is the 42nd-most populous U.S. city. The eight-county Omaha–Council Bluffs metropolitan area extending into Iowa has approximately 1 million residents, the 55th-largest metropolitan area in the U.S. It is the county seat of Douglas County.\nOmaha's pioneer period began in 1854, when the city was founded along the Missouri River by speculators from neighboring Council Bluffs, Iowa. It originally comprised a crossing called Lone Tree Ferry earning the city its nickname, the \"Gateway to the West\". Omaha introduced this new West to the world in 1898, when it played host to the World's Fair, dubbed the Trans-Mississippi Exposition. During the 19th century, Omaha's central location in the United States spurred the city to become an important national transportation hub. Throughout the rest of the 19th century, the transportation and jobbing sectors were important in the city, along with its railroads and breweries. In the 20th century, the Omaha Stockyards, once the world's largest, and its meatpacking plants gained international prominence.\nOmaha is home to the headquarters of four Fortune 500 companies: Berkshire Hathaway, Kiewit Corporation, Mutual of Omaha, and Union Pacific Corporation. Other companies headquartered in the city include First National Bank of Omaha, Gallup, Inc., Green Plains, Intrado, Valmont Industries, Werner Enterprises, WoodmenLife, and three of the nation's ten largest architecture and engineering firms (DLR Group, HDR, Inc., and Leo A Daly). Notable cultural institutions include the Henry Doorly Zoo and Aquarium, Old Market, Durham Museum, Lauritzen Gardens, and the annual College World Series. Modern Omaha inventions include the Reuben sandwich;\ncake mix, developed by Duncan Hines; center-pivot irrigation; Raisin Bran; the first ski lift in the U.S.; the Top 40 radio format, which was first used in the U.S. at KOWH Radio; and the TV dinner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "omaha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1095,
+    "attempt": 1086,
+    "place_id": "gn-5385955",
+    "input": {
+      "place": {
+        "place_id": "gn-5385955",
+        "name": "Rancho Cucamonga",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.1064,
+        "lon": -117.59311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rancho Cucamonga, California",
+          "url": "https://en.wikipedia.org/wiki/Rancho_Cucamonga,_California",
+          "text": "Rancho Cucamonga ( RAN-choh KOO-kə-MUNG-gə) is a city located just south of the foothills of the San Gabriel Mountains and Angeles National Forest in the Inland Empire region of San Bernardino County, California, United States. About 37 mi (60 km) east of Downtown Los Angeles, Rancho Cucamonga is the 28th most populous city in California. The city's seal, which centers on a cluster of grapes, alludes to the city's agricultural history including wine-making. The city's proximity to major transportation hubs, airports, and highways has attracted the business of several large corporations, including Coca-Cola, Frito-Lay, Big Lots, Mercury Insurance Group, Southern California Edison, and Amphastar Pharmaceuticals.\nThe city had a population of 174,453 according to the 2020 United States census.\nThe Jack Benny Program popularized the city's name, in particular the word Cucamonga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "rancho cucamonga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rancho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cucamonga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1096,
+    "attempt": 1087,
+    "place_id": "gn-5799625",
+    "input": {
+      "place": {
+        "place_id": "gn-5799625",
+        "name": "Kent",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.38093,
+        "lon": -122.23484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kent, Washington",
+          "url": "https://en.wikipedia.org/wiki/Kent,_Washington",
+          "text": "Kent is a city in King County, Washington, United States. It is part of the Seattle metropolitan area and had a population of 136,588 as of the 2020 census. The population was estimated at 134,871 in 2025, making it the fourth-most populous municipality in greater Seattle and the sixth-most populous in Washington. The city is connected to Seattle, Bellevue, and Tacoma via State Route 167 in addition to Interstate 5, Sounder commuter rail, and commuter buses.\nIncorporated in 1890, Kent is the second-oldest incorporated city in the county, after the county seat of Seattle. It is generally divided into three areas: West Hill (mixed residential and commercial along Interstate 5), Valley (primarily industrial and commercial with some medium-density residential; significant parkland along the Green River), and East Hill (primarily residential with retail)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1097,
+    "attempt": 1088,
+    "place_id": "gn-6066513",
+    "input": {
+      "place": {
+        "place_id": "gn-6066513",
+        "name": "Markham",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.86682,
+        "lon": -79.2663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Markham, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Markham,_Ontario",
+          "text": "Markham () is a city in York Region, Ontario, Canada. It is approximately 30 km (19 mi) northeast of Downtown Toronto. In the 2021 Census, Markham had a population of 338,503, which ranked it the largest in York Region, fourth largest in the Greater Toronto Area (GTA), and 16th largest in Canada.\nThe city gained its name from the first Lieutenant-Governor of Upper Canada, John Graves Simcoe (in office 1791–1796), who named the area after his friend, William Markham, the Archbishop of York from 1776 to 1807.\nIndigenous people lived in the area of present-day Markham for thousands of years before Europeans arrived in the area. The first European settlement in Markham occurred when William Berczy, a German artist and developer, led a group of approximately sixty-four German families to North America. While they planned to settle in New York, disputes over finances and land tenure led Berczy to negotiate with Simcoe for 26,000 ha (64,000 acres) in what would later become Markham Township in 1794. Since the 1970s, Markham rapidly shifted from being an agricultural community to an industrialized municipality due to urban sprawl from neighbouring Toronto. Markham changed its status from town to city on July 1, 2012.\nAs of 2013, tertiary industry mainly drives Markham. As of 2010, \"business services\" employed the largest proportion of workers in Markham – nearly 22% of its labour force.\nThe city also has over 1,000 technology and life-sciences companies, with IBM as the city's largest employer. Several multinational companies have their Canadian headquarters in Markham, including: Honda Canada, Hyundai, Advanced Micro Devices,\nJohnson & Johnson, General Motors, Avaya, IBM, Motorola, Oracle, Toshiba, Toyota Financial Services, Huawei, Honeywell, General Electric and Scholastic Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "markham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1098,
+    "attempt": 1089,
+    "place_id": "gn-98854",
+    "input": {
+      "place": {
+        "place_id": "gn-98854",
+        "name": "Nasiriyah",
+        "country": "Iraq",
+        "subdivision": "Dhi Qar",
+        "lat": 31.05799,
+        "lon": 46.25726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nasiriyah",
+          "url": "https://en.wikipedia.org/wiki/Nasiriyah",
+          "text": "Nasiriyah (UK:  NAZ-irr-EE-ə, US:  NAH-sirr-; Arabic: ٱلنَّاصِرِيَّة, romanized: an-Nāṣiriyya, BGN: An Nāşirīyah, IPA: [ænnɑːsˤɪˈrɪjjæ]), also spelled Nassiriya or Nasiriya, is a city in Iraq, the capital of the Dhi Qar Governorate. It lies on the lower Euphrates, about 360 km (225 miles) south-southeast of Baghdad, near the ruins of the ancient city of Ur, as well as the recently established Ur Tourist City located adjacent to the archaeological site. Its population in 2024 was about 700,000, making it the ninth-largest city in Iraq. It had a diverse population of Muslims, Mandaeans and Jews in the early 20th century; today its inhabitants are predominantly Shia Muslims.\nNasiriyah was founded by the Muntafiq tribe in the late 19th century during the era of Ottoman Iraq. It has since become a major hub for transportation. Nasiriyah is the center of a date-growing area. The city's cottage industries include boat-building, carpentry and silver working. The city museum has a large collection of Sumerian, Assyrian, Babylonian, and Abbasid artifacts. The ruins of the ancient cities of Ur and Larsa are nearby and the Euphrates merges with the Tigris for the final time about 10 kilometres from the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "nasiriyah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1099,
+    "attempt": 1090,
+    "place_id": "gn-1645524",
+    "input": {
+      "place": {
+        "place_id": "gn-1645524",
+        "name": "Depok",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.4,
+        "lon": 106.81861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Depok",
+          "url": "https://en.wikipedia.org/wiki/Depok",
+          "text": "Depok is a landlocked city in West Java province. It is located directly south of Jakarta, and it is the third largest urban center in the Greater Jakarta metropolitan area after Jakarta and Bekasi, covering an area of about 199.91 km2. It is known as a center of education and commerce. The city had a population of 1,738,600 at the 2010 census and 2,056,400 at the 2020 census; the official estimate for mid 2024 was 2,163,635 (comprising 1,088,759 males and 1,074,876 females), resulting in a density of about 10,823 people per km2. Depok became an independent city on 20 April 1999, having previously been part of Bogor Regency. It is the second most populous suburban city in Indonesia after Bekasi, and among the ten most populous suburban cities in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "depok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1100,
+    "attempt": 1091,
+    "place_id": "gn-1806466",
+    "input": {
+      "place": {
+        "place_id": "gn-1806466",
+        "name": "Guangyuan",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 32.44201,
+        "lon": 105.823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guangyuan",
+          "url": "https://en.wikipedia.org/wiki/Guangyuan",
+          "text": "Guangyuan (simplified Chinese: 广元; traditional Chinese: 廣元; pinyin: Guǎngyuán; Wade–Giles: Kuang-yüan) is a prefecture-level city in Sichuan Province, China, bordering the provinces of Shaanxi to the northeast and Gansu to the northwest. Guangyuan City is located on the northern edge of the Sichuan Basin, on the upper reaches of the Jialing River, and is the junction of Sichuan, Shaanxi and Gansu provinces. The city has a population of 2,305,657 as of the 2020 census. By the end of 2024, the registered population of the city will be 2,893,700. Among them, the urban population is 814,800 and the rural population is 2.078,800, accounting for 28.2% and 71.8% of the total population respectively.\nLocated roughly between the provincial capitals Chengdu, Lanzhou, Xi'an and Chongqing municipality, it is considered the northern gateway to Sichuan. It is an ancient city, notable for its relics and tombs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "guangyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1101,
+    "attempt": 1092,
+    "place_id": "gn-2036389",
+    "input": {
+      "place": {
+        "place_id": "gn-2036389",
+        "name": "Jixi",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.29322,
+        "lon": 130.96217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jixi",
+          "url": "https://en.wikipedia.org/wiki/Jixi",
+          "text": "Jixi (simplified Chinese: 鸡西; traditional Chinese: 雞西; pinyin: Jīxī) is a city in southeastern Heilongjiang Province, People's Republic of China. At the 2020 census, 1,502,060 people resided within its administrative area of 22,488.47 square kilometres (8,682.85 sq mi) and 560,118 in its built-up (or metro) area made up of 3 out of 6 urban districts (including Jiguan, Hengshan and Chengzihe). By the end of 2024, the total registered population of the city is 1,593,200, of which the urban population is 1,006 million. Jixi is on the Muling River about 30 km (19 mi) from the border with Russia's Primorsky Krai and 120 km (75 mi) from Lake Xingkai. The mayor of Jixi is Zhang Changrong (张常荣) since June 2015. The area is one of the important coal mining bases in China. A crater on asteroid 253 Mathilde was named after the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "jixi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1102,
+    "attempt": 1093,
+    "place_id": "gn-2188164",
+    "input": {
+      "place": {
+        "place_id": "gn-2188164",
+        "name": "Lower Hutt",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.21667,
+        "lon": 174.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lower Hutt",
+          "url": "https://en.wikipedia.org/wiki/Lower_Hutt",
+          "text": "Lower Hutt (Māori: Te Awa Kairangi ki Tai) is a city in the Wellington Region of New Zealand. Administered by the Hutt City Council, it is one of the four cities that constitute the Wellington metropolitan area.\nIt is New Zealand's sixth most populous city, with a population of 114,200. The total area administered by the council is 376.4 km2 (145 sq mi) around the lower half of the Hutt Valley and along the eastern shores of Wellington Harbour, of which 78.54 km2 (30 sq mi) is urban. It is separated from the city of Wellington by the harbour, and from Upper Hutt by the Taita Gorge.\nLower Hutt is unique among New Zealand cities, as the name of the council does not match the name of the city it governs. Special legislation has since 1991 given the council the name \"Hutt City Council\", while the name of the place itself remains \"Lower Hutt City\". This name has led to confusion, as Upper Hutt is administered by a separate city council, the Upper Hutt City Council. The entire Hutt Valley includes both Lower and Upper Hutt cities. Lower Hutt is also often simply called \"the Hutt\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "lower hutt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lower",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hutt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1103,
+    "attempt": 1094,
+    "place_id": "gn-2293538",
+    "input": {
+      "place": {
+        "place_id": "gn-2293538",
+        "name": "Abidjan",
+        "country": "Côte d’Ivoire",
+        "subdivision": "Abidjan Autonomous District",
+        "lat": 5.35444,
+        "lon": -4.00167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abidjan",
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "text": "Abidjan ( AB-ih-JAHN, French: [abidʒɑ̃] ; N'ko: ߊߓߌߖߊ߲߬) is the seat of government, largest city and former capital of Ivory Coast. As of the 2021 census, Abidjan's population was 6.3 million, which is 21.5 percent of the overall population of the country, making it the sixth most populous city proper in Africa, after Lagos, Cairo, Kinshasa, Dar es Salaam, and Johannesburg. A cultural crossroads of West Africa, Abidjan is characterised by a high level of industrialisation and urbanisation. It is the most populous French-speaking city in West Africa.\nThe city expanded quickly after the construction of a new wharf in 1931, followed by its designation as the capital city of the then-French colony in 1933. The completion of the Vridi Canal in 1951 enabled Abidjan to become an important sea port. Abidjan remained the capital of Ivory Coast after its independence from France in 1960. In 1983, the city of Yamoussoukro was designated as the official political capital of Ivory Coast. However, Abidjan has officially been designated as the \"economic capital\" of the country, because it is the largest city in the country and the centre of its economic activity. Many political institutions and all foreign embassies continue to be located in Abidjan as well. The Abidjan Autonomous District, which encompasses the city and some of its suburbs, is one of the 14 districts of Ivory Coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "abidjan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1104,
+    "attempt": 1095,
+    "place_id": "gn-2339631",
+    "input": {
+      "place": {
+        "place_id": "gn-2339631",
+        "name": "Hadejia",
+        "country": "Nigeria",
+        "subdivision": "Jigawa State",
+        "lat": 12.45347,
+        "lon": 10.04115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hadejia",
+          "url": "https://en.wikipedia.org/wiki/Hadejia",
+          "text": "Haɗejiya ()  (also Haɗeja, previously Biram) is a Hausa town in eastern Jigawa State, northern Nigeria.  Hadejia lies between latitude 12.4506N and longitude 10.0404E. It shares boundary with Kiri Kasama Local Government to the east, Mallam Maɗori Local Government from to the north, and Auyo Local Government to the west. The Hadejia Local Government consist of eleven (11) political wards, namely: Atafi, Dubantu, Gagulmari, Kasuwar Ƙofa, Kasuwar Kuda, Matsaro, Majema, Rumfa, Sabon Garu, Ƴankoli and Yayari. Inhabitants are dominantly Hausa, Fulani and Kanuri with some other groups such as Tiv, Yoruba, Igbo, Igala etc. The dominant occupation of the inhabitants is crop-farming and animal rearing which a considerable percentage, engaged in trading, fishing and services including civil service. The people of Haɗeja are largely Muslims, although some follow indigenous belief systems.  The town lies to the north of the Hadejia River, and is upstream from the Hadejia-Nguru wetlands. Hadejia is an internationally important ecological and sensitive zone.\nHadejia was once known as Biram, and is referred to as one of the \"seven true Hausa states\" (Hausa Bakwai), because it was ruled by the descendants of the Hausa mythological figure Bayajidda and his second wife, Daurama. By 1810, during the Fulani War, the Hausa rulers of the Hausa Bakwai had all been overcome by the Fulani. Haɗeja had been transformed into an emirate two years earlier, in 1808. In 1906 Haɗeja resisted British occupation, under the then Emir (Muhammadu Mai-Shahada). Haɗejiya was absorbed into Jigawa State in 1991 from Kano State.\nThe Haɗeja is home to majorly 4 tertiary institutions, which are: Binyaminu Usman Polytechnic Hadejia, School of Nursing Hadejia, National Teachers Institutes Hadejia Study Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "hadejia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1105,
+    "attempt": 1096,
+    "place_id": "gn-2634677",
+    "input": {
+      "place": {
+        "place_id": "gn-2634677",
+        "name": "Watford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.65531,
+        "lon": -0.39602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Watford",
+          "url": "https://en.wikipedia.org/wiki/Watford",
+          "text": "Watford ( ) is a town and non-metropolitan district with borough status in Hertfordshire, England, 15 miles (24 km) northwest of Central London, on the banks of the River Colne.\nInitially a small market town, the creation of the Grand Junction Canal during the Industrial Revolution encouraged the construction of paper-making mills, print works, and breweries. While industry has declined in Watford, its location near London and transport links have attracted several companies to site their headquarters in the town. Cassiobury Park is a public park that was once the manor estate of the Earls of Essex.\nThe town developed next to the River Colne on land belonging to St Albans Abbey. In the 12th century, a charter was granted allowing a market, and the building of St Mary's Church began. The town grew partly due to travellers going to Berkhamsted Castle and the royal palace at Kings Langley. A mansion was built at Cassiobury in the 16th century. This was partly rebuilt in the 17th century and another country house was built at The Grove.\n\nThe Grand Junction Canal in 1798 and the London and Birmingham Railway in 1837 resulted in Watford's rapid growth, with paper-making mills such as John Dickinson at Croxley, influencing the development of printing in the town. Two brewers, Benskins and Sedgwicks, amalgamated and flourished in the town until their closure in the late 20th century. Hertfordshire County Council designates Watford to be a major sub-regional centre. Several head offices are based in Watford. International conferences and sporting events have also taken place in Watford, including the 2006 World Golf Championship, the 2013 Bilderberg Conference and the 2019 NATO summit which all took place at The Grove.\nWatford became an urban district under the Local Government Act 1894 and a municipal borough by grant of a charter in 1922. The borough, which had 102,246 inhabitants in the 2021 census (up from 90,301 inhabitants at the 2011 census, an increase of 13.23%), is separated from Greater London to the south by Three Rivers District. Watford Borough Council is the local authority with the Mayor of Watford as its head – one of only 13 directly elected local authority mayors in England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 365
+    },
+    "banned_terms": [
+      {
+        "term": "watford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1106,
+    "attempt": 1097,
+    "place_id": "gn-2641598",
+    "input": {
+      "place": {
+        "place_id": "gn-2641598",
+        "name": "Newport",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.58774,
+        "lon": -2.99835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newport, Wales",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Wales",
+          "text": "Newport (Welsh: Casnewydd [kasˈnɛwɨð]) is a city and county borough in Wales, on the River Usk near its confluence with the Severn Estuary, approximately 12 mi (19 km) northeast of Cardiff. The population grew significantly between the 2011 and the 2021 census, increasing from 145,700 to 159,587, the largest growth of any unitary authority in Wales. Newport is the third-largest principal authority with city status in Wales and the sixth most populous overall. Newport became a unitary authority in 1996 and forms part of the Cardiff–Newport metropolitan area, and the Cardiff Capital Region.\nNewport has been a port since the Middle Ages, originating with the construction of Newport Castle by the Normans. The town eventually outgrew the earlier Roman settlement of Caerleon, located just upstream and now incorporated into the city. Newport received its first charter in 1314. The town experienced significant growth during the 19th century, as its port became a major hub for coal exports from the eastern South Wales Valleys. For a time, Newport was the largest coal-exporting port in Wales, until Cardiff surpassed it in the mid-1800s. Newport was also the site of the last large-scale armed insurrection in Great Britain, the Newport Rising of 1839.\nIn the 20th century, Newport's docks declined in significance, but the town remained a vital hub for manufacturing and engineering. More recently, its economy has benefitted from its location within the high-technology M4 corridor, with expanding aerospace and semiconductor industries. Newport was granted city status in 2002. The Celtic Manor Resort, located in the city, hosted the Ryder Cup in 2010 and the NATO summit in 2014. While the urban core is well developed, Newport also includes rural areas, with several villages of notable archaeological interest. Newport Cathedral, the seat of the Anglican Bishop of Monmouth, serves as the cathedral for the Diocese of Monmouth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "newport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1107,
+    "attempt": 1098,
+    "place_id": "gn-2642607",
+    "input": {
+      "place": {
+        "place_id": "gn-2642607",
+        "name": "Middlesbrough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.57623,
+        "lon": -1.23483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middlesbrough",
+          "url": "https://en.wikipedia.org/wiki/Middlesbrough",
+          "text": "Middlesbrough (  MID-əlz-brə), colloquially known as Boro, is a port town and unitary authority of North Yorkshire, located in North East England.  Situated on the southern bank of the River Tees, Middlesbrough forms part of the Borough of Middlesbrough, the Teesside built-up area and the Tees Valley. The town is governed by the Middlesbrough Council unitary authority, which is divided into twenty wards, as part of the Tees Valley Combined Authority along with Darlington, Hartlepool, Redcar and Cleveland, and Stockton-on-Tees. In 2021, it had a population of 148,215.\nThere was a priory at the site from 686 until 1537, but no urban settlement until Joseph Pease selected it as the site for the Stockton and Darlington Railway in 1829. After this, it rapidly grew into a major centre of iron production. By the mid-1870s, it produced one third of the United Kingdom's pig iron output and was known as Ironopolis. Steel production, ship building, and the chemical industry were also major industries. Since World War II, these industries have declined in major fashion, but Teesport and the Wilton International industrial site remain major employers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "middlesbrough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1108,
+    "attempt": 1099,
+    "place_id": "gn-2792413",
+    "input": {
+      "place": {
+        "place_id": "gn-2792413",
+        "name": "Liège",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.63373,
+        "lon": 5.56749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liège",
+          "url": "https://en.wikipedia.org/wiki/Liège",
+          "text": "Liège (, lee-EZH, lee-AYZH; French: [ljɛʒ] ; Walloon: Lîdje [liːtʃ]; Dutch: Luik [lœyk] ; German: Lüttich [ˈlʏtɪç] ) is a city and municipality in the Belgian region of Wallonia, and the capital of the eponymous province. The city is situated in the valley of the Meuse, in the east of Belgium, not far from borders with the Netherlands (Maastricht is about 33 km (20.5 mi) to the north) and Germany (Aachen is about 53 km (32.9 mi) north-east). In Liège, the Meuse meets the river Ourthe. The city is part of the sillon industriel, the former industrial backbone of Wallonia. It is still the principal economic and cultural centre of the region.\nThe municipality consists of the following sections (sub-municipalities): Liège proper, Angleur, Bressoux, Chênée, Glain, Grivegnée, Jupille-sur-Meuse, Rocourt, and Wandre. In January 2026, Liège had 198,102 inhabitants. The metropolitan area, including the outer commuter zone, covers an area of 1,879 km2 (725 sq mi) and had a total population of 749,110 on 1 January 2008. This includes a total of 52 municipalities, such as Herstal and Seraing. Liège ranks as the third most populous urban area in Belgium, after Brussels and Antwerp, and the fourth most populous municipality after Antwerp, Ghent and Charleroi. The city is part of the Euregio Meuse-Rhine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "liege",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1109,
+    "attempt": 1100,
+    "place_id": "gn-2972328",
+    "input": {
+      "place": {
+        "place_id": "gn-2972328",
+        "name": "Toulon",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.12442,
+        "lon": 5.92836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toulon",
+          "url": "https://en.wikipedia.org/wiki/Toulon",
+          "text": "Toulon (UK: , US: ; French: [tulɔ̃] ; Provençal: Tolon (classical norm), Touloun (Mistralian norm), pronounced [tuˈlun]) is a city in the Provence-Alpes-Côte d'Azur region of southeastern France. Located on the French Riviera at the eastern extremity of the Gulf of Lion, it formed part of the historical region of Provence. The city functions as the prefecture of the Var department.\nToulon had a population of 179,116 people (2023), making it France's 12th-largest city, and third most populous French city on the Mediterranean, after Marseille and Nice. It is the centre of a metropolitan area with 591,135 inhabitants (2023), the fourteenth largest in France by population.  \nToulon is an important centre for naval construction, fishing, winemaking, and the manufacture of aeronautical equipment, armaments, maps, paper, tobacco, printing, shoes, and electronic equipment.\nThe military port of Toulon is the major naval centre on France's Mediterranean coast, home of the French aircraft carrier Charles de Gaulle and her battle group. The French Mediterranean Fleet is based in Toulon. The 1793 siege took place during the Federalist revolts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "toulon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

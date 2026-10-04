@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1070,
+    "attempt": 1061,
+    "place_id": "gn-728193",
+    "input": {
+      "place": {
+        "place_id": "gn-728193",
+        "name": "Plovdiv",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.15387,
+        "lon": 24.75001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plovdiv",
+          "url": "https://en.wikipedia.org/wiki/Plovdiv",
+          "text": "Plovdiv (Bulgarian: Пловдив, pronounced [ˈpɫɔvdif]) is the second-largest city in Bulgaria and the most populous city in the Bulgarian part of the historic region of Thrace, located 144 km (93 miles) southeast of the capital Sofia. It is considered the oldest European continually inhabited city, having been inhabited since c. 6,000 BCE. It had a population of 329,489 as of 2024 and 540,000 in its greater metropolitan area. An important economic, transport, cultural, and educational hub of Bulgaria, Plovdiv was the European Capital of Culture in 2019, and joined the UNESCO Global Network of Learning Cities in 2016.\nPlovdiv is in a fertile region of south-central Bulgaria on the two banks of the Maritsa River. The city has historically developed on seven syenite hills, some of which are 250 metres (820 feet) high. Because of these hills, Plovdiv is often referred to in Bulgaria as \"The City of the Seven Hills\". There is evidence of habitation in the area dating back to the 6th millennium BC, when the first Neolithic settlements were established. The city was subsequently a Thracian settlement named Pulpudeva, later being conquered and ruled also by Persians, Ancient Macedonians, Celts, Romans, Byzantines, Goths, Huns, Bulgarians, Thraco-Romans, Bulgars, Slavic tribes, Crusaders, and Ottoman Turks.\nPhilippopolis (Greek: Φιλιππούπολις) was founded as a polis by the father of Alexander the Great, Philip the Great (r. 359–336 BC), the king of ancient Macedonia, settling there both Thracians and 2,000 Macedonians (Greeks) in 342 BC. Control of the city alternated between the Macedonian kingdom and the Thracian Odrysian kingdom during the Hellenistic period; the Macedonian king Philip V (r. 221–179 BC) reoccupied the city in 183 BC and his successor Perseus (r. 179–168 BC) held the city with the Odrysians until the Roman Republic conquered the Macedonian kingdom in 168 BC. Philippopolis became the capital of the Roman province of Thracia. The city was at the centre of the road network of inland Thrace, and the strategic Via Militaris was crossed by several other roads at the site, leading to the Danube, the Aegean Sea, and the Black Sea. The Roman emperor Marcus Aurelius (r. 161–180 AD) built a new wall around the city.\nIn Late Antiquity, Philippopolis was an important stronghold, but was sacked in 250 during the Crisis of the Third Century, after the Siege of Philippopolis by the Goths led by Cniva. After this the settlement contracted, though it remained a major city, with the city walls rebuilt and new Christian basilicas and Roman baths constructed in the 4th century. The city was again sacked by the Huns in 441/442, and the walls were again rebuilt. Roman Philippopolis resisted another attack, by the Avars in the 580s, after the walls were renewed yet again by Justinian the Great (r. 527–565).\nIn the Middle Ages, Philippopolis fell to the Bulgars of the First Bulgarian Empire in 863, during the reign of Boris I (r. 852–889), having been briefly abandoned by the Christian inhabitants in 813 during a dispute with the khan Krum (r. c. 803 – 814). During the Byzantine–Bulgarian wars, the emperor Basil the Bulgar-Slayer (r. 960–1025) used Philippopolis as a major strategic fortification, governed by the protospatharios Nikephoros Xiphias. In the middle 11th century, the city was attacked by the Pechenegs, who occupied it briefly around 1090. The city continued to prosper, with the walls restored in the 12th century, during which the historian and politician Niketas Choniates was its governor and the physician Michael Italikos was its metropolitan bishop.\nAccording to the Latin historian of the Fourth Crusade, Geoffrey of Villehardouin, Philippopolis was the third largest city in the Byzantine Empire, after Constantinople (Istanbul) and Thessalonica (Thessaloniki). It suffered damage from the armies passing through the city during the Crusades as well as from sectarian violence between the Eastern Orthodox and the Armenian Orthodox and Paulician denominations. The city was destroyed by Kaloyan of Bulgaria (r. 1196–1207) in 1206 and rebuilt thereafter. In 1219, the city became the capital of the Crusader Duchy of Philippopolis, part of the Latin Empire. The Second Bulgarian Empire recovered the city in 1263, but lost it to Byzantine control before recapturing it in 1323. The Ottoman Empire conquered Philippopolis (Turkish: Filibe) in 1363 or 1364. During the 500 years of Ottoman rule, Filibe served as one of the important commercial and transportation nodes in the Ottoman Balkans. It also played a role as an administrative centre of various sanjaks and eyalets.\nOn 4 January 1878, at the end of the Russo-Turkish War (1877–1878), Plovdiv was taken away from Ottoman rule by the Russian army. It remained within the borders of Bulgaria until July of the same year, when it became the capital of the autonomous Ottoman region of Eastern Rumelia. In 1885, Plovdiv and Eastern Rumelia joined Bulgaria.\nThere are many preserved ruins such as the ancient Plovdiv Roman theatre, a Roman odeon, a Roman aqueduct, the Plovdiv Roman Stadium, the archaeological complex Eirene, and others. Plovdiv is host to a huge variety of cultural events such as the International Fair Plovdiv, the international theatrical festival \"A stage on a crossroad\", the TV festival \"The golden chest\", and many more novel festivals, such as Night/Plovdiv in September, Kapana Fest, and Opera Open. The oldest American educational institution outside the United States, the American College of Sofia, was founded in Plovdiv in 1860 and later moved to Sofia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 896
+    },
+    "banned_terms": [
+      {
+        "term": "plovdiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1071,
+    "attempt": 1062,
+    "place_id": "gn-1033356",
+    "input": {
+      "place": {
+        "place_id": "gn-1033356",
+        "name": "Nampula",
+        "country": "Mozambique",
+        "subdivision": "Nampula",
+        "lat": -15.11646,
+        "lon": 39.2666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nampula",
+          "url": "https://en.wikipedia.org/wiki/Nampula",
+          "text": "Nampula [nɐ̃ˈpulɐ] is the capital city of Nampula Province in Northern Mozambique. With a population of 743,125 (2017 census), it is the third-largest city in Mozambique after Maputo and Matola. The city is located in the interior of Nampula Province, approximately 200 kilometers from the coast and is surrounded by plains and rocky outcrops. The city is a major regional centre for the entire Northern region of Mozambique, as well as parts of Central Mozambique and border areas of Malawi and Tanzania. \nThe city links the port city of Nacala with land-locked Southern African countries, particularly Malawi through a road and railway line. The city has a small international airport connecting to Nairobi in Kenya, Johannesburg in South Africa, Dar-es-Salaam in Tanzania and is a hub for local transport in northern Mozambique. Nampula is the centre of business in Northern Mozambique, benefitting from highly productive agricultural areas, proximity to the Nacala Development Corridor, and a fast-growing city population. \nNampula is home to the Mozambican National Ethnographic Museum, several markets, cathedrals, mosques, universities, training institutes and schools. The city is diverse, with the native eMakhuwa population being the largest group but with a visible Indian, European (dominantly Portuguese), Chinese, Lebanese, Somali, and Nigerian population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "nampula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1072,
+    "attempt": 1063,
+    "place_id": "gn-105299",
+    "input": {
+      "place": {
+        "place_id": "gn-105299",
+        "name": "Jizan",
+        "country": "Saudi Arabia",
+        "subdivision": "Jazan Region",
+        "lat": 16.88917,
+        "lon": 42.55111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jizan",
+          "url": "https://en.wikipedia.org/wiki/Jizan",
+          "text": "Jizan (Arabic: جيزان, romanized: Jīzān) is a city and the capital of Jazan Province, which lies in the southwest corner of Saudi Arabia. Jizan is situated on the coast of the Red Sea and serves a large agricultural heartland that has a population of 173,919 as of 2022 and over 1.4 million, in the whole Jizan region. The city has a regional airport as well as the Jizan seaport. The area is noted for its high-quality production of fruits such as mangoes, figs, papayas, plums, and coffee.\nJizan has one of the largest megaprojects market in the kingdom with significant infrastructure projects worth many billions of dollars. Saudi Aramco is building the 400,000-bpd Jazan Refinery with associated terminal facilities on the Red Sea near the city, scheduled for completion in late 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "jizan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1073,
+    "attempt": 1064,
+    "place_id": "gn-1070940",
+    "input": {
+      "place": {
+        "place_id": "gn-1070940",
+        "name": "Antananarivo",
+        "country": "Madagascar",
+        "subdivision": "Analamanga",
+        "lat": -18.91368,
+        "lon": 47.53613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antananarivo",
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "text": "Antananarivo (Malagasy: [antananaˈrivʷ]; French: Tananarive, pronounced [tananaʁiv]), also known by its colonial shorthand form Tana (pronounced [tana]), is the capital and largest city of Madagascar. The administrative area of the city, known as Antananarivo-Renivohitra (\"Antananarivo-Mother Hill\" or \"Antananarivo-Capital\"), is the capital of Analamanga region. \nThe city sits at 1,280 m (4,199 ft) above sea level in the center of the island, making it the highest national capital by elevation among the island countries. It has been the country's largest population center since at least the 18th century. The Presidency, National Assembly, Senate, and Supreme Court are located there, as are 21 diplomatic missions and the headquarters of many national and international businesses and non-governmental organizations. It has more universities, nightclubs, art venues, and medical services than any other city on the island. Several national and local sports teams, including the championship-winning national rugby team, the Makis, are based here.\nAntananarivo was historically the capital of the Merina people, who continue to form the majority of the city's 1,274,225 (2018 census) inhabitants. The surrounding urban areas have a total metropolitan population approaching three million. All eighteen Malagasy ethnic groups, as well as residents of Chinese, Indian, European, and other origins, are represented in the city. It was founded circa 1610, when the Merina King Andrianjaka (1612–1630) expelled the Vazimba inhabitants of the village of Analamanga. Declaring it the site of his capital, Andrianjaka built a rova (fortified royal dwelling) that expanded to become the royal palaces of the Kingdom of Imerina. The city retained the name Analamanga until the reign of King Andriamasinavalona (1675–1710), who renamed it Antananarivo (\"City of the Thousand\") in honor of Andrianjaka's soldiers.\nThe city served as the capital of the Kingdom of Imerina until 1710 when Imerina split into four warring quadrants. Antananarivo became the capital of the southern quadrant until 1794, when King Andrianampoinimerina of Ambohimanga captured the province and restored it as the capital of a united Kingdom of Imerina, also bringing neighboring ethnic groups under Merina control. These conquests continued under his son, Radama I, who eventually controlled over two-thirds of the island, leading him to be considered the King of Madagascar by European diplomats. Antananarivo remained the island's capital after Madagascar was colonized by the French in 1897, and after independence in 1960.\nThe city is currently managed by the Commune Urbaine d'Antananarivo (CUA). Limited funds and mismanagement have hampered consecutive CUA efforts to manage overcrowding and traffic, waste management, pollution, security, public water and electricity, and other challenges linked to explosive population growth. Major historic landmarks and attractions in the city include the reconstructed royal palaces and the Andafiavaratra Palace, the tomb of Rainiharo, Tsimbazaza Zoo, Mahamasina Stadium, Lake Anosy, four 19th-century martyr churches, and the Museum of Art and Archaeology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 460
+    },
+    "banned_terms": [
+      {
+        "term": "antananarivo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1074,
+    "attempt": 1065,
+    "place_id": "gn-1169825",
+    "input": {
+      "place": {
+        "place_id": "gn-1169825",
+        "name": "Multan",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.19679,
+        "lon": 71.47824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Multan",
+          "url": "https://en.wikipedia.org/wiki/Multan",
+          "text": "Multan is a city in the Punjab province of Pakistan. Located along the eastern bank of the Chenab River, it is the sixth-largest city in the country; and serves as the administrative headquarters of its eponymous division and district. A major cultural, religious and economic centre of the Punjab region, Multan is one of the oldest continuosly inhabited cities in Asia, with a history stretching deep into antiquity.\nThe ancient town was besieged by Alexander the Great during the Mallian campaign in 326 BCE. Later it was conquered by the Umayyad military commander Muhammad bin Qasim in 712 CE after the conquest of Sindh. In the 9th century, it became capital of the Emirate of Multan. The region came under the rule of Ghaznavid and the Delhi sultanates in the medieval period. In 1445, it became capital of Langah Sultanate. Multan Subah, formed after reforms of Akbar in 1580, was one of the largest provinces of the Mughal Empire. The Sikh Empire ruled over Multan from 1818 till 1849 when it was captured by the British after a lengthy siege.\nThe city was among the most important trading centres of South Asia with strong ties to Iran, Central Asia and the rest of Persianate and Muslim world. A great centre of knowledge and learning during the medieval period, Multan attracted a multitude of Sufi mystics in the 11th and 12th centuries, earning the city the sobriquet \"City of Saints.\" Multan, along with the nearby city of Uch, is known for its large number of Sufi shrines dating from that era."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "multan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1075,
+    "attempt": 1066,
+    "place_id": "gn-1178338",
+    "input": {
+      "place": {
+        "place_id": "gn-1178338",
+        "name": "Gilgit",
+        "country": "Pakistan",
+        "subdivision": "Gilgit-Baltistan",
+        "lat": 35.91869,
+        "lon": 74.31245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gilgit",
+          "url": "https://en.wikipedia.org/wiki/Gilgit",
+          "text": "Gilgit (; Shina: گِلیٗت IPA: [ɡi˧.leː˨˦t̪]; Urdu: گِلْگِت IPA: [ˈɡɪlɡɪt̪]) is the capital and most-populous city in Pakistani-administered territory of Gilgit-Baltistan in the disputed Kashmir region. It is located in the broad Gilgit Valley near the confluence of Gilgit and Hunza rivers. Gilgit is a major tourist destination in Pakistan, serving as a hub for trekking and mountaineering expeditions in the Karakoram mountain range of northern Pakistan.\nGilgit was once a major centre for Buddhism; it was an important stop on the ancient Silk Road, and today serves as a major junction along the Karakoram Highway with road connections to Kashgar in China as well as the Pakistani cities of Skardu, Chitral, Peshawar, and Islamabad. The economic activity is mainly focused on agriculture, with wheat, maize, and barley as the main crops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "gilgit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1076,
+    "attempt": 1067,
+    "place_id": "gn-1632654",
+    "input": {
+      "place": {
+        "place_id": "gn-1632654",
+        "name": "Pangkalpinang",
+        "country": "Indonesia",
+        "subdivision": "Bangka–Belitung Islands",
+        "lat": -2.12914,
+        "lon": 106.11377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pangkalpinang",
+          "url": "https://en.wikipedia.org/wiki/Pangkalpinang",
+          "text": "Pangkalpinang, colloquially written as Pangkal Pinang, also known as Pin-kong in Hakka, is the capital and largest city of the Bangka Belitung Islands Province in Indonesia. It is located on Bangka Island's east coast, the city is divided into seven districts (kecamatan), sub-divided into 42 urban villages (kelurahan).\nIt covers an area of 89.40 square kilometres (34.52 sq mi) and it had a population of 174,838 at the 2010 Census and 218,568 at the 2020 Census; the official estimate as at mid 2025 was 233,466 (comprising 118,226 males and 115,240 females). The city's average population density was about 2,233 per square kilometre in mid 2025. The Rangkui River divides the city into two parts, and Jalan Merdeka is its geographic center.\nPangkalpinang's population consists largely of ethnic Malays and Hakka Chinese people. There are also smaller immigrant communities of other ethnic groups, such as Batak, Bugis and Minangkabau. Landmarks in the city include the Timah Museum, Jamik Mosque, Fuk Tet Che Chinese temple, the Cathedral of St. Joseph, the Bangka Botanical Garden, and the Pasir Padi beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "pangkalpinang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1077,
+    "attempt": 1068,
+    "place_id": "gn-1633070",
+    "input": {
+      "place": {
+        "place_id": "gn-1633070",
+        "name": "Palembang",
+        "country": "Indonesia",
+        "subdivision": "South Sumatra",
+        "lat": -2.91673,
+        "lon": 104.7458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palembang",
+          "url": "https://en.wikipedia.org/wiki/Palembang",
+          "text": "Palembang (Indonesian pronunciation: [paˈlɛmbaŋ] , Palembang: Pelémbang, Jawi: ڤليمبڠ) is the capital city of the Indonesian province of South Sumatra. The city proper covers 348.34 square kilometres (134.49 square miles) on both banks of the Musi River in the eastern lowlands of southern Sumatra. It had a population of 1,668,848 at the 2020 Census; the official estimate as at mid 2025 was 1,829,745 (comprising 915,952 males and 913,793 females). Palembang is the second most populous city in Sumatra, after Medan, and the twelfth most populous city in Indonesia.\nThe Palembang metropolitan area has an estimated population of more than 2.7 million in 2025. It comprises the city and parts of regencies surrounding the city, including Banyuasin Regency (11 administrative districts), Ogan Ilir Regency (seven districts), and Ogan Komering Ilir Regency (four districts).\nPalembang was the capital of Srivijaya, a Buddhist kingdom that ruled much of the western Indonesian Archipelago and controlled many maritime trade routes, including the Strait of Malacca.\nPalembang was incorporated into the Dutch East Indies in 1825 after the abolition of the Palembang Sultanate. It was chartered as a city on 1 April 1906.\nPalembang was the host city of the 2011 Southeast Asian Games and the 2018 Asian Games along with Jakarta. The first light rail system in Indonesia was operated in Palembang in July 2018.\nThe city attracted 2,011,417 tourists in 2017, including 9,850 foreign tourists. Traffic jams, floods, slums, pollution, and peatland fire are problems in Palembang.\nThe city of Neiva in Colombia is the antipode of Palembang. Palembang and Neiva are the only pair of antipodal cities in the world where both cities have a population of above 300,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "palembang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1078,
+    "attempt": 1069,
+    "place_id": "gn-1689395",
+    "input": {
+      "place": {
+        "place_id": "gn-1689395",
+        "name": "San Jose del Monte",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.81389,
+        "lon": 121.04528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Jose del Monte",
+          "url": "https://en.wikipedia.org/wiki/San_Jose_del_Monte",
+          "text": "San Jose del Monte (SJDM), officially the City of San Jose del Monte (Tagalog: Lungsod ng San José del Monte; Tagalog pronunciation: [ˌsɐn hoˌsɛ dɛl ˈmonte]), is a component city in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 685,688 people, making it the largest local government unit within the province of Bulacan and Central Luzon, and the 18th most populated city in the Philippines.\nIt was proclaimed as a component city on 10 September 2000, through Republic Act No. 8797. Its conversion into a highly urbanized city was by virtue of Proclamation No. 1057 issued by President Rodrigo Duterte on 4 December 2020; the conversion was rejected on a referendum held on 30 October 2023, by the voters of Bulacan including the concerned city.\nSan José del Monte derived its name from Saint Joseph, whose statue was found in a veritable forest. The hunters called it as such, which means “Saint Joseph of the Mountain” in Spanish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "san jose del monte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1079,
+    "attempt": 1070,
+    "place_id": "gn-1790254",
+    "input": {
+      "place": {
+        "place_id": "gn-1790254",
+        "name": "Xiaogan",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 30.92689,
+        "lon": 113.92221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiaogan",
+          "url": "https://en.wikipedia.org/wiki/Xiaogan",
+          "text": "Xiaogan (Chinese: 孝感; pinyin: Xiàogǎn) is a prefecture-level city in east-central Hubei province, People's Republic of China, some 60 kilometres (37 mi) northwest of the provincial capital of Wuhan. According to the 2020 census, its population totaled 4,270,371, of whom 988,479 lived in the built-up (or metro) area of Xiaonan District.\nThe city name Xiaogan, meaning Filial Piety Moves Tian (Chinese: 孝行感天), is from the story of Dong Yong, who sold himself for his father's funeral, in The Twenty-four Filial Exemplars.\nThe Sheshui River originates in Xiaogan's Dawu County. On the third day of the third month of the lunar calendar, many in Wuhan eat 'di cai zhu ji dan' (地菜煮鸡蛋) which is supposed to prevent illness in the coming year. This practice is related to a story involving Shennong in Xiaogan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "xiaogan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1080,
+    "attempt": 1071,
+    "place_id": "gn-1797658",
+    "input": {
+      "place": {
+        "place_id": "gn-1797658",
+        "name": "Jinjiang",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 24.81978,
+        "lon": 118.57415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinjiang, Quanzhou",
+          "url": "https://en.wikipedia.org/wiki/Jinjiang,_Quanzhou",
+          "text": "Jinjiang City (Chinese: 晋江市; pinyin: Jìnjiāng; Pe̍h-ōe-jī: Chìn-kang) is a county-level city under Quanzhou City, Fujian Province, China. It is located in the southeastern part of the province (Minnan), on the right or south bank of the Jin River, across from Quanzhou's urban district of Fengze and Licheng. Jinjiang also borders the Taiwan Strait of the East China Sea to the south, and Quanzhou's other county-cities of Shishi and Nan'an to the east and west, respectively. It has an area of 721.7 square kilometres (278.6 sq mi) and a population of 2,061,551 as of 2020.\nJinjiang has the only extant Manichean temple in China (Cao'an temple) and is near the eastern end of the world's longest estimated straight-line (great circle) path over land, at 11,241 km (6,985 mi), ending near Sagres, Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "jinjiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1081,
+    "attempt": 1072,
+    "place_id": "gn-1808926",
+    "input": {
+      "place": {
+        "place_id": "gn-1808926",
+        "name": "Hangzhou",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.29365,
+        "lon": 120.16142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hangzhou",
+          "url": "https://en.wikipedia.org/wiki/Hangzhou",
+          "text": "Hangzhou is the capital and most populous city of Zhejiang province, China, situated at the intersection of the southern terminus of the Grand Canal and the head of Hangzhou Bay. Renowned as one of the Eight Ancient Capitals of China, Hangzhou is celebrated for its cultural heritage and its West Lake.\nEstablished as a county seat in 221 BC, Hangzhou later served as the capital of the Wuyue Kingdom (923–997) and the Southern Song dynasty (1138–1276). The city has three UNESCO World Heritage Sites: the West Lake Cultural Landscape, the Grand Canal, and the Archaeological Ruins of Liangzhu City.\nHangzhou is designated as a sub-provincial city and is part of the Yangtze River Delta. Hangzhou ranked ninth in GDP among mainland Chinese cities and 14th internationally according to the Global Innovation Index. The city hosts the headquarters of Alibaba Group, Ant Group, DeepSeek, Geely, and NetEase. According to the Nature Index, it ranks 10th globally in scientific research output."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "hangzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1082,
+    "attempt": 1073,
+    "place_id": "gn-1848354",
+    "input": {
+      "place": {
+        "place_id": "gn-1848354",
+        "name": "Yokohama",
+        "country": "Japan",
+        "subdivision": "Kanagawa",
+        "lat": 35.43333,
+        "lon": 139.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yokohama",
+          "url": "https://en.wikipedia.org/wiki/Yokohama",
+          "text": "Yokohama (Japanese: 横浜; pronounced [jokohama] ) is the second-largest city in Japan by population as well as by area, and the country's most populous municipality. It is the capital and most populous city in Kanagawa Prefecture, with a population of 3.7 million in 2023. The population was the same in 2026, but steadily decreased over 2025. It lies on Tokyo Bay, south of Tokyo, in the Kantō region of the main island of Honshu. Yokohama is also the major economic, cultural, and commercial hub of the Greater Tokyo Area along the Keihin Industrial Zone.\nYokohama was one of the cities to open for trade with the West following the end of the policy of seclusion in 1859, and has since been known as a cosmopolitan port city, after Kobe opened in 1853. Yokohama developed rapidly as Japan's prominent port city following the end of Japan's relative isolation in the mid-19th century and is today one of its major ports along with Kobe, Osaka, Nagoya, Fukuoka, Tokyo and Chiba.\nYokohama is the largest port city and high tech industrial hub in the Greater Tokyo Area and the Kantō region. The city proper is headquarters to companies such as Isuzu, Nissan, JVCKenwood, Keikyu, Koei Tecmo, Sotetsu and Bank of Yokohama. Famous landmarks in Yokohama include Minato Mirai 21, Nippon Maru Memorial Park, Yokohama Chinatown, Motomachi Shopping Street, Yokohama Marine Tower, Yamashita Park, and Ōsanbashi Pier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "yokohama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1083,
+    "attempt": 1074,
+    "place_id": "gn-1859171",
+    "input": {
+      "place": {
+        "place_id": "gn-1859171",
+        "name": "Kobe",
+        "country": "Japan",
+        "subdivision": "Hyōgo",
+        "lat": 34.6913,
+        "lon": 135.183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kobe",
+          "url": "https://en.wikipedia.org/wiki/Kobe",
+          "text": "Kobe ( KOH-beh; Japanese: 神戸, romanized: Kōbe, pronounced [koꜜː.be] ), officially Kobe City (神戸市, Kōbe-shi; [koː.beꜜ.ɕi]), is the capital city of Hyōgo Prefecture, Japan. With a population of around 1.5 million, Kobe is Japan's seventh-largest city and the third-largest port city after Tokyo and Yokohama. It is located in the Kansai region, which makes up the southern side of the main island of Honshū, on the north shore of Osaka Bay. It is part of the Keihanshin metropolitan area along with Osaka and Kyoto. The Kobe city centre is located about 35 km (22 mi) west of Osaka and 70 km (43 mi) southwest of Kyoto.\nThe earliest written records regarding the region come from the Nihon Shoki, which describes the founding of the Ikuta Shrine by Empress Jingū in AD 201. For most of its history, the area was never a single political entity, even during the Tokugawa period, when the port was controlled directly by the Tokugawa shogunate. Kobe did not exist in its current form until its founding in 1889. Its name comes from Kanbe (神戸; an archaic title for supporters of the city's Ikuta Shrine). Kobe became one of Japan's designated cities in 1956.\nKobe was one of the cities to open for trade with the West following the 1853 end of the policy of seclusion and has retained its cosmopolitan character ever since with a rich architectural heritage dating back to the Meiji era. While the 1995 Great Hanshin earthquake diminished some of Kobe's prominence as a port city, it remains Japan's fourth-busiest container port. Companies headquartered in Kobe include ASICS, Kawasaki Heavy Industries, and Kobe Steel, while over 100 international corporations have their Asian or Japanese headquarters in the city, including Eli Lilly and Company, Procter & Gamble, Boehringer Ingelheim, and Nestlé. The city is the point of origin and namesake of Kobe beef, the home of Kobe University, and the site of one of Japan's most famous hot spring resorts, Arima Onsen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "kobe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1084,
+    "attempt": 1075,
+    "place_id": "gn-1859307",
+    "input": {
+      "place": {
+        "place_id": "gn-1859307",
+        "name": "Kitakyushu",
+        "country": "Japan",
+        "subdivision": "Fukuoka",
+        "lat": 33.85181,
+        "lon": 130.85034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kitakyushu",
+          "url": "https://en.wikipedia.org/wiki/Kitakyushu",
+          "text": "Kitakyushu (北九州市, Kitakyūshū-shi; Japanese pronunciation: [kʲi̥.ta.kʲɯꜜː.ɕɯː, kʲi̥.ta.kʲɯː.ɕɯꜜː.ɕi]) is a city in Fukuoka Prefecture, Japan. In 2019, Kitakyushu had an estimated population of 940,978, making it the second-largest city in Fukuoka Prefecture and on the island of Kyushu, after the city of Fukuoka. It is one of Japan's 20 designated cities, one of three on Kyushu, and is divided into seven wards.\nSited at the northern tip of Kyushu, Kitakyushu was formed in 1963 from a merger of municipalities centered on the historic city of Kokura; its name means \"North Kyushu\". It is located on the Kanmon Straits which separate Kyushu from Honshu, and faces the city of Shimonoseki in Yamaguchi Prefecture. Kitakyushu and Shimonoseki are connected by numerous transport links including the Kanmon Bridge and the Kanmon Tunnels (Roadway, Railway, and Shin-Kanmon).\nKitakyushu's Urban Employment Area forms part of the Fukuoka-Kitakyushu Greater Metropolitan Region, which, with a population of 5,738,977 (2005–2006), is the largest metropolitan area in Japan west of the Keihanshin region. The city is known as one of Japan's foremost industrial areas, centred on the historic Yahata Steel Works, which is now a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "kitakyushu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1085,
+    "attempt": 1076,
+    "place_id": "gn-2220957",
+    "input": {
+      "place": {
+        "place_id": "gn-2220957",
+        "name": "Yaoundé",
+        "country": "Cameroon",
+        "subdivision": "Centre",
+        "lat": 3.86667,
+        "lon": 11.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yaoundé",
+          "url": "https://en.wikipedia.org/wiki/Yaoundé",
+          "text": "Yaoundé (UK: ; US: , French pronunciation: [ja.unde]) is the capital city of Cameroon. It has a population of more than 2.8 million, which makes it the second-largest city in the country after the port city Douala. It lies in the Centre Region of the nation at an elevation of about 750 metres (2,500 ft) above sea level.\nThe outpost of Epsumb or Jeundo was founded between the Nyong and Sanaga rivers at the northern edge of the area's forests in 1887 by German explorers as a trading base for rubber and ivory. A military garrison was built in 1895 which enabled further colonization. After Imperial Germany's defeat in World War I, France held eastern Cameroon as a mandate, and Yaoundé was chosen to become the capital of the colony in 1922.\nDouala remained the more important settlement, but Yaoundé saw rapid growth and continued as the seat of government for the Republic of Cameroon upon its independence in 1960. Most of Yaoundé's economy is still centred on the administrative structure but major industries in Yaoundé include tobacco, dairy products, beer, clay, glass goods and timber. The city has many striking monuments and buildings, such as the Presidential Palace and Palais des Congrès."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "yaounde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1086,
+    "attempt": 1077,
+    "place_id": "gn-2503826",
+    "input": {
+      "place": {
+        "place_id": "gn-2503826",
+        "name": "Biskra",
+        "country": "Algeria",
+        "subdivision": "Biskra",
+        "lat": 34.85038,
+        "lon": 5.72805
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biskra",
+          "url": "https://en.wikipedia.org/wiki/Biskra",
+          "text": "Biskra (Arabic: بسكرة, romanized: Biskra, Tamazight: ⴱⵉⵙⴽⵔⴰ, romanized: Biksra) is the main city of  Zibans region and administratively capital city of Biskra Province in Algeria. In 2007, its population was recorded as 307,987. Biskra is located in northeastern Algeria, about 248 miles (399 km) from Algiers, 71 miles (114 km) southwest of Batna and 137 miles (220 km) north of Touggourt. It is nicknamed \"The Queen of the Zibans\", \"The Door of the Desert\" or \"The Saharan Nice\" because of its location at the beginning of the Sahara Desert. Due to its geographical location, its climate and natural resources, particularly farming, Biskra has always been a crossroad between the cities in the north and south. It has seen the passage of several civilizations, from the Romans and the Arabs to the French.\nIn 1844, Biskra became a French garrison, which saw fighting during rebellions in 1849 and 1871.\nCurrently the city of Biskra has 28 neighborhoods, including the three principal neighborhoods of Korra, City 60 Logements, and Equipment Zones. It is in the southern part of the Algerian rail system, and has become a popular winter resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "biskra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1087,
+    "attempt": 1078,
+    "place_id": "gn-2636531",
+    "input": {
+      "place": {
+        "place_id": "gn-2636531",
+        "name": "Sunderland",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.90465,
+        "lon": -1.38222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunderland",
+          "url": "https://en.wikipedia.org/wiki/Sunderland",
+          "text": "Sunderland ( ) is a port city in the county of Tyne and Wear in North East England. It is a port at the mouth of the River Wear on the North Sea, approximately 10 miles (16 km) south-east of Newcastle upon Tyne. It is the most populous settlement in the Wearside conurbation and the second-most populous settlement, after Newcastle. It is the administrative centre of the wider Metropolitan Borough of Sunderland.\nThe centre of the modern city is an amalgamation of three settlements founded in the Anglo-Saxon era: Monkwearmouth, on the north bank of the Wear, and Sunderland and Bishopwearmouth on the south bank. Monkwearmouth contains St Peter's Church, which was founded in 674 and formed part of Monkwearmouth–Jarrow Abbey, a significant centre of learning in the seventh and eighth centuries. Sunderland was a fishing settlement and later a port, being granted a town charter in 1179. The city traded in coal and salt, also developing a shipbuilding industry in the fourteenth century and a glassmaking industry in the seventeenth century.\nSunderland was once known as 'the largest shipbuilding town in the world' and made a quarter of all of the world's ships in its yards. Following the decline of its traditional industries in the late 20th century, the area became an automotive building centre. In 1992, the borough of Sunderland was granted city status. Sunderland was historically a part of County Durham, it was incorporated into the ceremonial county of Tyne and Wear in 1974.\nLocals are sometimes known as Mackems, a term which came into common use in the 1970s. Its use and acceptance by residents, particularly among the older generations, is not universal. The term is also applied to the Sunderland dialect, which shares similarities with the other North-East England dialects."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 295
+    },
+    "banned_terms": [
+      {
+        "term": "sunderland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1088,
+    "attempt": 1079,
+    "place_id": "gn-2647425",
+    "input": {
+      "place": {
+        "place_id": "gn-2647425",
+        "name": "Harrow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.57835,
+        "lon": -0.33208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harrow, London",
+          "url": "https://en.wikipedia.org/wiki/Harrow,_London",
+          "text": "Harrow () is a town in Greater London, England, and serves as the principal settlement of the London Borough of Harrow. The eastern part of the town, by Northwick Park Hospital, crosses the London Borough of Brent border. Harrow lies about 9.5 miles (15.3 km) north-west of Charing Cross and 5.4 miles (8.7 km) south of Watford. In 2022, the town and localities had an estimated population of 117,651, whereas the wider borough (which also contains Pinner and Stanmore) had a population of 261,185.\nThe original settlement was at Harrow on the Hill, atop the 408 feet (124 m) Harrow Hill. The modern town centre of Harrow developed at the foot of the hill, in an area historically called Greenhill, following the opening of Harrow-on-the-Hill station on the Metropolitan Railway in 1880. Harrow became the unofficial \"capital\" of the Metroland suburbia in the early 20th century. Harrow & Wealdstone station on the West Coast Main Line had opened in 1837, but was more distant from Harrow, lying 1.5 miles (2.4 km) north of the hill. Workers were drawn to the area by the opening of several factories in Wealdstone; Harrow was the base of the large Kodak factory, used for the manufacture of photographic materials and R&D, which was in operation for more than a century.\nHistorically in the hundred of Gore in the county of Middlesex, Harrow became part of Greater London in 1965. Today, the historic area is distinguished as Harrow on the Hill and is a conservation area with listed buildings of Georgian architecture and home to Harrow School, one of the seven major boys' boarding schools in England as defined by the Public Schools Act 1868. The modern-day town meanwhile is an established commercial centre of outer north-west London and houses a campus of the University of Westminster."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "harrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1089,
+    "attempt": 1080,
+    "place_id": "gn-2651621",
+    "input": {
+      "place": {
+        "place_id": "gn-2651621",
+        "name": "Dagenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55,
+        "lon": 0.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dagenham",
+          "url": "https://en.wikipedia.org/wiki/Dagenham",
+          "text": "Dagenham () is a town in East London, England, within the London Borough of Barking and Dagenham. Dagenham is centred 11+1⁄2 miles (19 kilometres) east of Charing Cross.\nIt was historically a rural parish in the Becontree Hundred of Essex, stretching from Hainault Forest in the north to the River Thames in the south. Dagenham remained mostly undeveloped until 1921, when the London County Council began construction of the large Becontree housing estate. The population significantly increased as people moved to the new housing in the early 20th century, with the parish of Dagenham becoming Dagenham Urban District in 1926 and the Municipal Borough of Dagenham in 1938. In 1965 Dagenham became part of Greater London when most of the historic parish become part of the London Borough of Barking and Dagenham.\nDagenham was chosen as a location for industrial activity and is perhaps most famous for being the location of the Ford Dagenham motor car plant where the Ford sewing machinists strike of 1968 took place. Following the decline of industry, the southern part of Dagenham adjacent to the River Thames forms part of the London Riverside section of the Thames Gateway redevelopment area, with a new district of Beam Park under construction on the former site of Ford Dagenham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "dagenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
