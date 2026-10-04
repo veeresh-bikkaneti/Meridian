@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 10215,
+    "place_id": "gn-5242889",
+    "input": {
+      "place": {
+        "place_id": "gn-5242889",
+        "name": "White River Junction",
+        "country": "United States",
+        "subdivision": "Vermont",
+        "lat": 43.64896,
+        "lon": -72.31926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "White River Junction, Vermont",
+          "url": "https://en.wikipedia.org/wiki/White_River_Junction,_Vermont",
+          "text": "White River Junction is an unincorporated village and census-designated place (CDP) in the town of Hartford in Windsor County, Vermont, United States. The population was 2,528 at the 2020 census, up from 2,286 in 2010, making it the largest community within the town of Hartford.\nThe village includes the White River Junction Historic District, a historic district listed on the National Register of Historic Places in 1980 and whose boundaries increased in 2002. The historic district reflects the urban architecture of the area from the late 19th century and early 20th century. The district is bounded by the Central Vermont railroad tracks, Gates Street, and South Main Street. It includes at least 29 contributing and non-contributing buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "white river junction",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "white",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "junction",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10220,
+    "place_id": "gn-634973",
+    "input": {
+      "place": {
+        "place_id": "gn-634973",
+        "name": "Tammisalo",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.19226,
+        "lon": 25.06671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tammisalo",
+          "url": "https://en.wikipedia.org/wiki/Tammisalo",
+          "text": "Tammisalo (Swedish: Tammelund) is a neighbourhood (number 44) and an island in eastern part of Helsinki, Finland. The population of Tammisalo is approximately 2,200 and its area is 0.73 square kilometres (0.28 square miles). The nearest districts are Herttoniemi, Roihuvuori and Laajasalo. In the Viking era the coastal waterway from Sweden to Arab world went between Tammisalo and the continent along Porolahti bay.\nA particularly remarkable building in the low-rise suburb of Tammisalo is the 5-storey house called Tammelund, designed by architect Antti Rantanen (1935), which in terms of its proportions and number of windows (over 100), is regarded as a \"miniature skyscraper\". Tammisalo is also renowned for housing projects designed by famous modernist architect Timo Penttilä."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "tammisalo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10232,
+    "place_id": "gn-4843215",
+    "input": {
+      "place": {
+        "place_id": "gn-4843215",
+        "name": "Somers",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.98537,
+        "lon": -72.4462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somers, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Somers,_Connecticut",
+          "text": "Somers ( SUM-ərss) is a town in Tolland County, Connecticut, United States. The town is part of the Capitol Planning Region. The population was 10,255 at the 2020 census. The town center is listed by the U.S. Census Bureau as a census-designated place (CDP). In 2007, Money Magazine listed Somers 53rd on its \"100 Best Places to Live\", based on \"economic opportunity, good schools, safe streets, things to do and a real sense of community.\"\nBordering Massachusetts, Somers is considered part of the city of Springfield NECTA. Somers is 13 miles (21 km) southeast of Springfield and considered more oriented toward it  than the city of Hartford, which lies 22 miles (35 km) to the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "somers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10242,
+    "place_id": "gn-2655348",
+    "input": {
+      "place": {
+        "place_id": "gn-2655348",
+        "name": "Blewbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5688,
+        "lon": -1.23261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blewbury",
+          "url": "https://en.wikipedia.org/wiki/Blewbury",
+          "text": "Blewbury is a village and civil parish at the foot of the Berkshire Downs section of the North Wessex Downs about 4 miles (6.4 km) south of Didcot, 14 miles (23 km) south of Oxford and 50 miles (80 km) west of London. It was part of Berkshire until the 1974 boundary changes transferred it to Oxfordshire. The 2011 Census recorded the parish's population as 1,581.  \nA number of springs rise at the foot of the escarpment of the downs. Some springs feed a small lake called the Watercress Beds, where watercress used to be grown. From here and elsewhere tributaries feed the Mill Brook which carries the water to the river Thames at Wallingford."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "blewbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10243,
+    "place_id": "gn-2895582",
+    "input": {
+      "place": {
+        "place_id": "gn-2895582",
+        "name": "Itterbeck",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.50618,
+        "lon": 6.80354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itterbeck",
+          "url": "https://en.wikipedia.org/wiki/Itterbeck",
+          "text": "Itterbeck in the district of Grafschaft Bentheim in Lower Saxony is an old farming community that has developed into an independent community with almost 1,800 inhabitants (2005). Itterbeck belongs to the Joint Community (Samtgemeinde) of Uelsen, whose administrative seat is in the like-named community.\nThe name Itterbeck springs from the brook that runs through the community, called the Itter. The Itterbeck landscape is marked by heath, woods and cultivated moorland. In the outlying centre of Egge is found an Evangelical Reformed chapel that belongs to the parish of Uelsen. Worth seeing are the nature reserve and Flora Fauna Habitat Itterbecker Heide (heath) and the Egger Riese (“Egge Giant”), an ice-age glacial erratic several metres high."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "itterbeck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10250,
+    "place_id": "gn-5134800",
+    "input": {
+      "place": {
+        "place_id": "gn-5134800",
+        "name": "Sag Harbor",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.99788,
+        "lon": -72.29258
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sag Harbor, New York",
+          "url": "https://en.wikipedia.org/wiki/Sag_Harbor,_New_York",
+          "text": "Sag Harbor is an incorporated village in Suffolk County, New York, United States, in the towns of Southampton and East Hampton on eastern Long Island. The village developed as a working port on Gardiners Bay. The population was 2,772 at the time of the 2020 census.\nThe entire business district is listed as the historic Sag Harbor Village District on the National Register of Historic Places. A major whaling and shipping port in the 19th century, by the end of this period and in the 20th century, it became a destination for wealthy people who summered there.\nSag Harbor is about three-fifths in Southampton and two-fifths in East Hampton; the town boundary being Division Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "sag harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sag",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10261,
+    "place_id": "gn-2661712",
+    "input": {
+      "place": {
+        "place_id": "gn-2661712",
+        "name": "Arosa",
+        "country": "Switzerland",
+        "subdivision": "Grisons",
+        "lat": 46.77793,
+        "lon": 9.67621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arosa",
+          "url": "https://en.wikipedia.org/wiki/Arosa",
+          "text": "Arosa is a town and a municipality in the Plessur Region in the canton of the Grisons in Switzerland. It is both a summer and a winter tourist resort.\nOn 1 January 2013, the former municipalities of Calfreisen, Castiel, Langwies, Lüen, Molinis, Peist and St. Peter-Pagig merged into the municipality of Arosa.\nAt the end of 2013 the Arosa ski resort was linked with Lenzerheide by cable-car, creating the new ski resort of Arosa Lenzerheide; since that change, transport passes have been valid in both resorts.\nThe resort is known throughout Switzerland for its famous ice hockey team, the EHC Arosa which used to be one of the most successful teams in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "arosa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10266,
+    "place_id": "gn-3866035",
+    "input": {
+      "place": {
+        "place_id": "gn-3866035",
+        "name": "Alto Río Senguer",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -45.04188,
+        "lon": -70.82338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alto Río Senguer",
+          "url": "https://en.wikipedia.org/wiki/Alto_Río_Senguer",
+          "text": "Alto Río Senguer, or Alto Río Senguerr, is a town in Chubut Province, Argentina, located along the northern bank of the Senguerr River (the Spanish word for “river” is “rio”). It is the head town of the Río Senguer Department, and was formally founded on September 1, 1943.  However, the first permanent dwelling on the site was built around 1915 by a German-born settler, for whom the village used to be named Schultz Pass.\nThe village of Aldea Apeleg is a few miles north.  To the west, the landscape of the Patagonian Andes includes forests, snowy mountains, and lakes including Fontana and La Plata.  To the south are extensive plains without trees, called “pampas”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "alto rio senguer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "senguer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10267,
+    "place_id": "gn-3980866",
+    "input": {
+      "place": {
+        "place_id": "gn-3980866",
+        "name": "Turicato",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.05411,
+        "lon": -101.41979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turicato",
+          "url": "https://en.wikipedia.org/wiki/Turicato",
+          "text": "Turicato is a municipality in the Mexican state of Michoacán. Turicato comes from the word \"turicata\" that refers to a parasite that lives mainly in areas where there is cattle.\nThe municipality represents 2.62% of total land in the state. It is in the region known as \"Tierra Caliente\", or hot land, because during the dry season the region gets really hot. Most notably in the month of May you can see temperatures rise to more than 110 degrees Fahrenheit.[1] During the rainy season in the summer, the land converts to a very lush green forest region with streams running throughout the municipality.\n\nIt is a rural municipality in an area with rolling hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "turicato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10291,
+    "place_id": "gn-6122675",
+    "input": {
+      "place": {
+        "place_id": "gn-6122675",
+        "name": "River John",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 45.75015,
+        "lon": -63.04866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "River John, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/River_John,_Nova_Scotia",
+          "text": "River John is an unincorporated community in Pictou County, Nova Scotia, Canada.\nIt is located near the mouth of the River John on the Northumberland Strait, halfway between Pictou and Tatamagouche near the boundary with Colchester County. It is on Nova Scotia Trunk 6 and the designated tourist route, the Sunrise Trail.\nRiver John was colonized by Europeans during the 18th century and its port and the proximity of plentiful timber led to the development of a small shipbuilding industry.\nThe local economy is based on the seasonal industries of fishing, agriculture, and tourism. The area is a popular summer cottage location for residents of Halifax and other urban areas in the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "river john",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "john",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10295,
+    "place_id": "gn-2070176",
+    "input": {
+      "place": {
+        "place_id": "gn-2070176",
+        "name": "Halls Creek",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -18.22485,
+        "lon": 127.66647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halls Creek, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Halls_Creek,_Western_Australia",
+          "text": "Halls Creek is a town situated in the east Kimberley region of Western Australia. It is located between the towns of Fitzroy Crossing and Turkey Creek (Warmun) on the Great Northern Highway.  It is the only sizable town for 600 kilometres (370 mi) on the Highway.\nHalls Creek is also the northern end of the Canning Stock Route, which runs 1,850 kilometres (1,150 mi) through the Great Sandy Desert until the southern end of the route at Wiluna.\nThe town functions as a major hub for the local Indigenous population and as a support centre for cattle stations in the area.\nHalls Creek is the administration centre for Halls Creek Shire Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "halls creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "halls",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10297,
+    "place_id": "gn-2636250",
+    "input": {
+      "place": {
+        "place_id": "gn-2636250",
+        "name": "Taplow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53299,
+        "lon": -0.68682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taplow",
+          "url": "https://en.wikipedia.org/wiki/Taplow",
+          "text": "Taplow is a village and civil parish in Buckinghamshire, England. It sits on the left bank of the River Thames, facing Maidenhead in the neighbouring county of Berkshire, with Cippenham and Burnham to the east. It is the south-westernmost settlement in Buckinghamshire.\nThe village features a Grade II listed mock-medieval church, the parish church of St Nicholas, as well as a school of the same name. Taplow railway station, on the Great Western Main Line and Elizabeth line, serves the village, with services to London Paddington, Heathrow, through Central London, Reading and Oxford. There are two conservation areas in the parish, the Taplow Village Conservation Area and the Taplow Riverside Conservation Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "taplow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10300,
+    "place_id": "gn-2653910",
+    "input": {
+      "place": {
+        "place_id": "gn-2653910",
+        "name": "Campsall",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.61917,
+        "lon": -1.18002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campsall",
+          "url": "https://en.wikipedia.org/wiki/Campsall",
+          "text": "Campsall is a village in the civil parish of Norton, in the Doncaster district, in the county of South Yorkshire, England. It lies 7 miles (11 km) to the north-west of Doncaster, at an elevation of around 50 feet above sea level. The village contains Campsall Country Park. The village falls within the Norton & Askern ward of Doncaster Council and the House of Commons constituency of Doncaster North. The Parish is situated on the “Magnesian Limestone Belt”, a landscape feature formed by a narrow north–south trending escarpment. The Magnesian Limestone Belt is typified by well drained and fertile soils, which were ideal for agriculture and the establishment of settlements like Campsall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "campsall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10303,
+    "place_id": "gn-2962440",
+    "input": {
+      "place": {
+        "place_id": "gn-2962440",
+        "name": "Moycullen",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.33783,
+        "lon": -9.18002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moycullen",
+          "url": "https://en.wikipedia.org/wiki/Moycullen",
+          "text": "Moycullen (Irish: Maigh Cuilinn) is a village situated in the Gaeltacht  region of  County Galway, Ireland, about 10 km (7 mi) northwest of Galway city. It is near Lough Corrib, on the N59 road to Oughterard and Clifden, in Connemara. Moycullen is now a satellite town of Galway, with some residents commuting to the city for work, school, and business. The population increased by 33.7% from the 2016 census, reaching 2,279 in 2022.\nAlthough Moycullen and its hinterland are classified as a ‘Gaeltacht’ area, the language has not been the local vernacular for many years. Moycullen falls under a Category C Gaeltacht Area due to its low percentage of daily Irish speakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "moycullen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10309,
+    "place_id": "gn-5127364",
+    "input": {
+      "place": {
+        "place_id": "gn-5127364",
+        "name": "Montour Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.3473,
+        "lon": -76.84524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montour Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Montour_Falls,_New_York",
+          "text": "Montour Falls is a village located in Schuyler County, New York, United States. The population was 2,714 at the time of the 2020 census. A waterfall at the end of West Main Street gives the village its name. The name \"Montour\" is derived from Queen Catharine Montour, a prominent Native American woman of Seneca Indian heritage who lived at the village site in the 18th century.\nThe boundaries defining the Village of Montour Falls occur mostly within the Town of Montour, but a small part lies within the Town of Dix.  The village is located approximately twenty miles north of Elmira, New York and three miles south of Watkins Glen, New York."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "montour falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montour",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10311,
+    "place_id": "gn-5338703",
+    "input": {
+      "place": {
+        "place_id": "gn-5338703",
+        "name": "Colma",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.67688,
+        "lon": -122.45969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colma, California",
+          "url": "https://en.wikipedia.org/wiki/Colma,_California",
+          "text": "Colma (Ohlone for 'springs') is a small incorporated town in San Mateo County, California, United States, on the San Francisco Peninsula in the San Francisco Bay Area. The population was 1,507 at the 2020 census. The town was founded as a necropolis in 1924.\nWith most of Colma's land dedicated to cemeteries, the population of the dead—not specifically known but speculated to be around 1.5 million—outnumbers that of the living by a ratio of nearly a thousand to one. This has led to Colma being called \"the City of the Silent\" and has given rise to a humorous motto, formerly featured on the city's website: \"It's great to be alive in Colma\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "colma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10322,
+    "place_id": "gn-2067565",
+    "input": {
+      "place": {
+        "place_id": "gn-2067565",
+        "name": "Lobethal",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.90455,
+        "lon": 138.87477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lobethal",
+          "url": "https://en.wikipedia.org/wiki/Lobethal",
+          "text": "Lobethal  is a town in the Adelaide Hills area of South Australia. It is located in the Adelaide Hills Council local government area, and is nestled on the banks of a creek between the hills and up the sides of the valley. It was once the centre of the Adelaide Hills wool processing industry, which continued until around 1950. The mill buildings are now used by a number of cottage industry and handcraft businesses. At the 2016 census, Lobethal had a population of 2,135.\nThe town is famed during the Christmas season for its display of Christmas lights and decorations, which have attracted visitors from around the state since the 1950s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "lobethal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10324,
+    "place_id": "gn-2657829",
+    "input": {
+      "place": {
+        "place_id": "gn-2657829",
+        "name": "Aberdour",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.05417,
+        "lon": -3.30058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aberdour",
+          "url": "https://en.wikipedia.org/wiki/Aberdour",
+          "text": "Aberdour ( ; Scots: , Scottish Gaelic: Obar Dhobhair) is a scenic and historic village on the south coast of Fife, Scotland. It is on the north shore of the Firth of Forth, looking south to the island of Inchcolm and its Abbey, and to Leith and Edinburgh beyond. According to the 2011 census, the village has a population of 1,633.\nThe village's winding High Street lies a little inland from the coast. Narrow lanes run off it, providing access to the more hidden parts of the village and the shoreline itself. The village nestles between the bigger coastal towns of Burntisland to the east and Dalgety Bay to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "aberdour",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10326,
+    "place_id": "gn-3055568",
+    "input": {
+      "place": {
+        "place_id": "gn-3055568",
+        "name": "Balatonföldvár",
+        "country": "Hungary",
+        "subdivision": "Somogy County",
+        "lat": 46.85255,
+        "lon": 17.88123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balatonföldvár",
+          "url": "https://en.wikipedia.org/wiki/Balatonföldvár",
+          "text": "Balatonföldvár (Hungarian pronunciation: [ˈbɒlɒtoɱføldvaːr], German: Földwahr) is a popular resort town in Somogy County, Hungary, on the southern side of Lake Balaton, approximately 120 km (75 mi) southwest from Budapest and about 23 km (14 mi) southwest from Siófok, the \"capital of Balaton\". Balatonföldvár is a frequently visited tourist destination among Hungarians and foreign guests (especially Germans and Austrians) because of its natural beauties (like the loess hill and the big flowery parks), historical heritages (such as the Celtic path, the old mansions and villas) or its countless leisure opportunities. The town offer several water sport (sailing, windsurfing, fishing, rowing etc.) and mainland sport (beach volleyball, bicycle pathes, football etc.) activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "balatonfoldvar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10332,
+    "place_id": "gn-3172380",
+    "input": {
+      "place": {
+        "place_id": "gn-3172380",
+        "name": "Narbolia",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.04784,
+        "lon": 8.57552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narbolia",
+          "url": "https://en.wikipedia.org/wiki/Narbolia",
+          "text": "Narbolia (Sardinian: Narabuìa) is a comune (municipality) in the Province of Oristano in the Italian region Sardinia, located about 100 kilometres (62 mi), northwest of Cagliari and about 15 kilometres (9 mi), north of Oristano. As of 31 December 2016, it had a population of 1,784 and an area of 40.5 square kilometres (15.6 mi2).\nThis comune is famous in Sardinia for the \"Zippole\"; a typical food for carnival in Italian \"carnevale\". There is an 18-hole golf course set in the pine forest with a five star hotel with a beach 6 kilometres (4 mi) long.\nNarbolia borders the following municipalities: Cuglieri, Riola Sardo, San Vero Milis, Seneghe, Milis, Putzu Idu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "narbolia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

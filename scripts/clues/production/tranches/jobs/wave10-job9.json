@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 10432,
+    "place_id": "gn-3163859",
+    "input": {
+      "place": {
+        "place_id": "gn-3163859",
+        "name": "Zoagli",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.33668,
+        "lon": 9.2668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zoagli",
+          "url": "https://en.wikipedia.org/wiki/Zoagli",
+          "text": "Zoagli (Ligurian: Zoagi) is a comune (municipality) in the Metropolitan City of Genoa in the Italian region Liguria, located about 30 kilometres (19 mi) southeast of Genoa.  Zoagli is a popular destination during all seasons of the year by tourists from all over the world.  It is located in the Gulf of Tigullio section of the Italian Riviera, between Chiavari and Rapallo.\nThe municipality is also known for its silk fabrics exported around the world and its cliff paths (creuze and mule tracks) that run along the Mediterranean Sea connecting Zoagli to its nearby villages: San Pietro di Rovereto, San Pantaleo, Semorile, St. Ambrose, and St. Martin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "zoagli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10433,
+    "place_id": "gn-3180510",
+    "input": {
+      "place": {
+        "place_id": "gn-3180510",
+        "name": "Carimate",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.70659,
+        "lon": 9.10751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carimate",
+          "url": "https://en.wikipedia.org/wiki/Carimate",
+          "text": "Carimate (Brianzöö: Carimaa [kariˈmaː]) is a comune (municipality) in the Province of Como in the Italian region Lombardy, located about 25 kilometres (16 mi) north of Milan and about 13 kilometres (8 mi) south of Como. As of 9 September 2025, it had a population of 4,366 and an area of 5.2 square kilometres (2.0 mi2).\nThe municipality of Carimate contains the frazioni (subdivisions, mainly villages and hamlets) Cascina Valle-Stazione di Carimate and Montesolaro.\nCarimate borders the following municipalities: Cantù, Cermenate, Figino Serenza, Lentate sul Seveso, Novedrate.\nCarimate is served by Carimate railway station. One of the landmarks is the hotel and former castle, Castello di Carimate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "carimate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10437,
+    "place_id": "gn-638915",
+    "input": {
+      "place": {
+        "place_id": "gn-638915",
+        "name": "Röykkä",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.48767,
+        "lon": 24.64937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Röykkä",
+          "url": "https://en.wikipedia.org/wiki/Röykkä",
+          "text": "Röykkä (Finnish pronunciation: [ˈrøy̯kːæ]) is a village located in the Nurmijärvi municipality of Finland, near the border of Vihti municipality. It is fourth largest village in the municipality after Klaukkala, Rajamäki and Nurmijärvi's church village. The population is about 1,600.\nLake Sääksi, which is Finland's largest spring water lake, is located northside to the village, and there is Kotolahti, also known as \"Little-Sääski\" and \"Röykänranta\", which is a popular beach in Röykkä. There is also smaller Lake Vaaksi near to the village. On the northern shore of Lake Sääksi is the private tomb of the daughter of Kytäjä Manor's host, known as the \"Tomb of Love\" (Rakkaudenhauta)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "roykka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10449,
+    "place_id": "gn-2657562",
+    "input": {
+      "place": {
+        "place_id": "gn-2657562",
+        "name": "Aldbourne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48098,
+        "lon": -1.61827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aldbourne",
+          "url": "https://en.wikipedia.org/wiki/Aldbourne",
+          "text": "Aldbourne  ( AWLD-born) is a village and civil parish about 6 miles (10 km) north-east of Marlborough, Wiltshire, England. It is in a valley on the south slope of the Lambourn Downs – part of the North Wessex Downs Area of Outstanding Natural Beauty. From here an unnamed winterbourne flows south to join the River Kennet 4 miles (6 km) away near Ramsbury. The 2011 Census recorded the parish population as 1,833. The parish includes the hamlets of Upper Upham and Woodsend and part of the hamlet of Preston, which straddles the boundary with Ramsbury. The village of Snap became deserted in the early 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "aldbourne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10457,
+    "place_id": "gn-3712636",
+    "input": {
+      "place": {
+        "place_id": "gn-3712636",
+        "name": "Cerro Punta",
+        "country": "Panama",
+        "subdivision": "Chiriquí Province",
+        "lat": 8.85217,
+        "lon": -82.57363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerro Punta, Chiriquí",
+          "url": "https://en.wikipedia.org/wiki/Cerro_Punta,_Chiriquí",
+          "text": "Cerro Punta is a city and corregimiento in Tierras Altas District, Chiriquí Province, Panama. Cerro Punta is located in Panama's western highlands at an altitude of 2,000 metres (6,600 ft), just south of the Continental Divide. The climate, like the rest of Panama, is tropical with a short dry season and rainy season that extends about 9 – 10 months of the year.  Night time temperatures are often cool due to Cerro Punta's relatively high elevation.  During the 1970s much of the land was used for cultivating strawberries; households also maintained small mixed-vegetable gardens.  The village can be reached by traveling north from the Pan-American highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "cerro punta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cerro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "punta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10465,
+    "place_id": "gn-8349290",
+    "input": {
+      "place": {
+        "place_id": "gn-8349290",
+        "name": "Montrose",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.82895,
+        "lon": 147.24735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montrose, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Montrose,_Tasmania",
+          "text": "Montrose is a residential locality in the local government area (LGA) of Glenorchy in the Hobart LGA region of Tasmania. It is situated approximately 1 kilometre (0.62 mi) north of the town of Glenorchy. The 2021 census recorded a population of 2,313 for the state suburb of Montrose.\nMontrose is located adjacent to Rosetta, with which it shares a historical connection through colonial-era orchards and mid-20th-century industrial development. The suburb features the Montrose Foreshore Community Park, a recreational area along the River Derwent, offering walking trails, playgrounds, and access to wetlands.\nThe area includes Montrose Bay High School, which serves students from Glenorchy and surrounding suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "montrose",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10476,
+    "place_id": "gn-3071173",
+    "input": {
+      "place": {
+        "place_id": "gn-3071173",
+        "name": "Malé Leváre",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.5,
+        "lon": 16.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malé Leváre",
+          "url": "https://en.wikipedia.org/wiki/Malé_Leváre",
+          "text": "Malé Leváre (Hungarian: Kislévárd) is a village and municipality in western Slovakia in Malacky District in the Bratislava region, near the border with Austria.\nIt was mentioned for the first time in deed from the year 1377, issued by the king Louis I. of Hungary. Village is dominated by renaissance, baroque rebuilt Roman Catholic church of Assumption of the Holy Virgin. In the area of the village there is also a baroque chapel, and bunkers, which were built as part of Czechoslovak border fortification in 1938. During the Cold War, the Iron Curtain was leading near the village and the border was guarded by soldiers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "male levare",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "male",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "levare",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10483,
+    "place_id": "gn-6154159",
+    "input": {
+      "place": {
+        "place_id": "gn-6154159",
+        "name": "Springdale",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 49.49995,
+        "lon": -56.06492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springdale, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/Springdale,_Newfoundland_and_Labrador",
+          "text": "Springdale is a town in Newfoundland and Labrador, Canada, which had a population of 2,965 people in 2021, up from 2,764 in the Canada 2006 Census. The community is located on the Northwestern shores of Hall's Bay in Central Newfoundland, near the mouth of Indian River.\nOne of the largest towns in north-central Newfoundland, the town hosts the Springdale Braves (male) and the Springdale Bravettes (female) hockey teams. They also host the Springdale Bluefins swim team. The town has a small harbour, a hospital, and many recreational facilities. These facilities include a hockey rink, curling club, skatepark, tennis courts, a soccer pitch and softball field."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "springdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10500,
+    "place_id": "gn-2833989",
+    "input": {
+      "place": {
+        "place_id": "gn-2833989",
+        "name": "Bansin",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.97089,
+        "lon": 14.14265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bansin",
+          "url": "https://en.wikipedia.org/wiki/Bansin",
+          "text": "Bansin forms the westernmost part of the seaside resort town of Heringsdorf in Mecklenburg-Western Pomerania, Germany, on the east coast of Usedom island, about five miles by rail northwest of Świnoujście. Bansin is one of the most popular resorts on the German Baltic shore as part of the Heringsdorf municipality.\nBesides the sandy beaches at the Baltic Sea coast, Bansin is close to the lakes Schloonsee, Schmollensee, Gothensee, as well as Grosser and Kleiner Krebssee.\nThe German Emperor Wilhelm II visited Bansin several times for vacation. One of the famous people who owned a summer home in Bansin was the astronomer Friedrich Simon Archenhold."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "bansin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10508,
+    "place_id": "gn-4178694",
+    "input": {
+      "place": {
+        "place_id": "gn-4178694",
+        "name": "Woodlawn Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.38825,
+        "lon": -86.9908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodlawn Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Woodlawn_Beach,_Florida",
+          "text": "Woodlawn Beach is a census-designated place on the Santa Rosa Sound in Santa Rosa County, Florida, United States surrounded by the older Midway CDP. The population was 2,741 at the 2020 census, and it is part of the Pensacola—Ferry Pass—Brent, Florida Metropolitan Statistical Area.\nWoodlawn Beach lies south of U.S. Highway 98 between Nantahala Beach Road (CR 191C) and Conover Cove. The area includes the Woodlawn Beach Middle School, Woodlawn Beach Boat Ramp, and Gulf Breeze Zoo. Citizens of Woodlawn Beach often consider themselves to be part of the larger communities of Navarre or Gulf Breeze.  The ZIP Code for Woodlawn Beach is 32563."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "woodlawn beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodlawn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10510,
+    "place_id": "gn-4953382",
+    "input": {
+      "place": {
+        "place_id": "gn-4953382",
+        "name": "Truro",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.99344,
+        "lon": -70.04975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Truro, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Truro,_Massachusetts",
+          "text": "Truro () is a town on Cape Cod in Massachusetts, comprising two villages: Truro and North Truro.  Located slightly more than 100 miles (160 km) by road from Boston, it is a summer vacation community just south of the northern tip of Cape Cod, in an area known as the \"Outer Cape\". English colonists named it after Truro in Cornwall, United Kingdom.\nThe historic Wampanoag Native American people called the area Pamet or Payomet.  Their language was part of the large Algonquian family.  This name was adopted for the Pamet River and the harbor area around the town center known as the Pamet Roads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "truro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10528,
+    "place_id": "gn-2644135",
+    "input": {
+      "place": {
+        "place_id": "gn-2644135",
+        "name": "Llandeilo",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.88459,
+        "lon": -3.99154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llandeilo",
+          "url": "https://en.wikipedia.org/wiki/Llandeilo",
+          "text": "Llandeilo (Welsh pronunciation: [ɬanˈdeilɔ] ) is a town and community in Carmarthenshire, Wales, situated where the River Towy is crossed by the A483 on a 19th-century stone bridge. At the 2021 census the community had a population of 1,784. It is adjacent to the westernmost point of the Brecon Beacons National Park. The town is served by Llandeilo railway station on the Heart of Wales Line.\nIn 2021, The Sunday Times called the town one of the top six places to live in Wales. The newspaper praised the town as a ‘sophisticated shopping destination and a great showcase for local arts and crafts’."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "llandeilo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10538,
+    "place_id": "gn-3903391",
+    "input": {
+      "place": {
+        "place_id": "gn-3903391",
+        "name": "Tarabuco",
+        "country": "Bolivia",
+        "subdivision": "Chuquisaca Department",
+        "lat": -19.18168,
+        "lon": -64.91517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarabuco",
+          "url": "https://en.wikipedia.org/wiki/Tarabuco",
+          "text": "Tarabuco is a Bolivian town in the department of Chuquisaca, capital of the Yamparáez Province and seat of Tarabuco Municipality. It is best known as the home of the Yampara culture. Its people host the Pujllay festival in March each year.  Members of the local indigenous community gather for Mass, parade in their colorful traditional costumes, drink plenty of chicha, and celebrate.\nEach Sunday, a colourful and vibrant open-air market attracts locals and tourists alike.  Many people wear traditional Yampara costumes, which not only preserve their identity but also advertise their location of origin within the area to others within the Tarabuco area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "tarabuco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10542,
+    "place_id": "gn-5532924",
+    "input": {
+      "place": {
+        "place_id": "gn-5532924",
+        "name": "Van Horn",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.04029,
+        "lon": -104.83073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van Horn, Texas",
+          "url": "https://en.wikipedia.org/wiki/Van_Horn,_Texas",
+          "text": "Van Horn is a town in and the county seat of Culberson County, Texas, United States. According to the 2020 census, Van Horn had a population of 1,941, down from 2,063 in the  2010 census and 2,435 at the 2000 census. Van Horn's official newspaper is The Van Horn Advocate. The town is the westernmost incorporated community in the United States that uses the Central Time Zone, located at the same longitude as Cheyenne, Wyoming, and Colorado Springs, Colorado. Its earliest sunset in the beginning of December is the latest among incorporated towns in the United States, occurring no earlier than 5:56 pm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "van horn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "horn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10545,
+    "place_id": "gn-676245",
+    "input": {
+      "place": {
+        "place_id": "gn-676245",
+        "name": "Herăști",
+        "country": "Romania",
+        "subdivision": "Giurgiu County",
+        "lat": 44.21174,
+        "lon": 26.35903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herăști",
+          "url": "https://en.wikipedia.org/wiki/Herăști",
+          "text": "Herăști is a commune located in Giurgiu County, Muntenia, Romania. It is composed of two villages, Herăști and Miloșești. Until 2004, these were part of Hotarele Commune, when they were split off to form a separate commune.\nThe commune is located about 35 km (22 mi) southeast of downtown Bucharest via route DN4, at the border between Giurgiu County and Călărași County. On the southern border of the commune flows the Argeș River, from west to east.\nAccording to the 2011 census, the commune had a population of 2,369; the majority of the inhabitants were Romanians (76.15%), with a minority of Roma (19.29%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "herasti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10550,
+    "place_id": "gn-779554",
+    "input": {
+      "place": {
+        "place_id": "gn-779554",
+        "name": "Honningsvåg",
+        "country": "Norway",
+        "subdivision": "Finnmark",
+        "lat": 70.98209,
+        "lon": 25.97037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Honningsvåg",
+          "url": "https://en.wikipedia.org/wiki/Honningsvåg",
+          "text": "Honningsvåg  is the northernmost town in mainland  Norway. It is located in Nordkapp Municipality in Finnmark county. Honningsvåg was declared a city in 1996, despite its small population. The 1.04-square-kilometre (260-acre) town has a population of 2,245 (2023), which gives it a population density of 2,159 inhabitants per square kilometre (5,590/sq mi).\nHonningsvåg is situated at a bay on the southeastern side of the large island of Magerøya, while the famous North Cape and its visitor center are on the northern side of the island.  Honningsvåg is a port of call for Hurtigruten Coastal Express and cruise ships, especially in the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "honningsvag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10553,
+    "place_id": "gn-1736370",
+    "input": {
+      "place": {
+        "place_id": "gn-1736370",
+        "name": "Rantau Panjang",
+        "country": "Malaysia",
+        "subdivision": "Kelantan",
+        "lat": 6.0219,
+        "lon": 101.9767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rantau Panjang",
+          "url": "https://en.wikipedia.org/wiki/Rantau_Panjang",
+          "text": "Rantau Panjang (Kelantanese: Ghata Panjey; Jawi: رنتاو ڤنجڠ) is a mukim (subdistrict/commune) and also a parliamentary constituency in Pasir Mas District, Kelantan, Malaysia, located next to the Thai border. \nThe town of Su-ngai Kolok is situated adjacent to Rantau Panjang on the Thai side of the border, right across the Golok River. Both towns are linked via the Rantau Panjang-Sungai Golok Bridge, popularly known as the Harmony Bridge (Malay: Jambatan Muhibbah).\nAlong with Pengkalan Kubor on the South China Sea coast, Rantau Panjang is a popular place for duty-free shopping. In that respect, Rantau Panjang depends heavily on domestic and Thai tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "rantau panjang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rantau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "panjang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10554,
+    "place_id": "gn-2067333",
+    "input": {
+      "place": {
+        "place_id": "gn-2067333",
+        "name": "Lyndoch",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.60124,
+        "lon": 138.89094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lyndoch, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Lyndoch,_South_Australia",
+          "text": "Lyndoch  is a town in Barossa Valley, located on the Barossa Valley Highway between Gawler and Tanunda, 58 km northeast of Adelaide. The town has an elevation of 175m and an average rainfall of 560.5mm. It is one of the oldest towns in South Australia.\nThe town is now primarily a service centre for the surrounding grape and wine industry and a dormitory town with a significant number of local residents commuting to the city of Adelaide each day for employment.\nLyndoch is in the Barossa Council. It is in the state electoral district of Schubert and the federal Division of Barker."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lyndoch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10557,
+    "place_id": "gn-2637962",
+    "input": {
+      "place": {
+        "place_id": "gn-2637962",
+        "name": "Shipdham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.62923,
+        "lon": 0.88577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shipdham",
+          "url": "https://en.wikipedia.org/wiki/Shipdham",
+          "text": "Shipdham is a village and civil parish in the Breckland district, in Norfolk, England, approximately 5 miles (8.0 km) south-south-west of Dereham. In the 2001 census the parish had a population of 2,145 in 899 households, falling at the 2011 Census to a population of 2,057 in 899 households.  It covers an area of 18.69 km2 (7.22 sq mi).\nIt is also known to be the longest village in Norfolk.\nThe villages name means 'flock of sheep homestead/village'.\nThe River Yare rises to the east of the village and flows east, while the River Wissey rises to the north and flows westwards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "shipdham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10583,
+    "place_id": "gn-11980004",
+    "input": {
+      "place": {
+        "place_id": "gn-11980004",
+        "name": "Johnston Square",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.30348,
+        "lon": -76.60624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johnston Square, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Johnston_Square,_Baltimore",
+          "text": "Johnston Square is a neighborhood in central Baltimore, Maryland located east of the Fallsway and west of the Oliver neighborhood, bordered by Greenmount Cemetery at the north and Eager Street at the south.\nThe neighborhood contains Johnston Square Elementary School, and two parks: Johnston Square Park and Ambrose Kennedy Park. It is one of five neighborhoods whose Urban Renewal Plans are included in the East Baltimore Revitalization Plan. The neighborhood contains portions of the Baltimore City Correctional Facilities and its residents are mostly low income African-American families. It has been used as a filming location on the HBO drama The Wire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "johnston square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "johnston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

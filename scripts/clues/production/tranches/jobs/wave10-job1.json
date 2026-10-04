@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 9558,
+    "place_id": "gn-2747792",
+    "input": {
+      "place": {
+        "place_id": "gn-2747792",
+        "name": "Ruurlo",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.08833,
+        "lon": 6.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruurlo",
+          "url": "https://en.wikipedia.org/wiki/Ruurlo",
+          "text": "Ruurlo (Dutch: [ˈryːrloː]) is a village and former municipality in the province of Gelderland in the eastern part of the Netherlands.\nThe town has a station on the Zutphen to Winterswijk railway line, and is served by trains every half-hour in both directions. In the evening and during Sundays and holidays, there is an hourly service.\nRuurlo Castle lies just outside the town and is a popular place for weddings. The castle was used as the town hall until 1 January 2005, when the municipality Ruurlo merged with the municipalities of Borculo, Neede and Eibergen into the municipality of Berkelland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ruurlo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9578,
+    "place_id": "gn-5947708",
+    "input": {
+      "place": {
+        "place_id": "gn-5947708",
+        "name": "Elkford",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.01529,
+        "lon": -114.92348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elkford",
+          "url": "https://en.wikipedia.org/wiki/Elkford",
+          "text": "Elkford is a district municipality in the southeast region of the Canadian province of British Columbia in the Rocky Mountain range. It is 32 km (20 mi) north of the junction at Sparwood, on provincial Highway 43. Outdoor recreational activities take place in Elkford throughout the year. Elkford hosts an annual festival called Wildcat Days during the last weekend of June.\nThe town and area have many kilometres of horse riding, hiking, snowmobiling and cross country ski trails, and a ski hill, Wapiti, run by Elkford resident volunteers. The Elkford Aquatic Centre has a competition-size pool, hot tub and sauna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "elkford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9592,
+    "place_id": "gn-2193687",
+    "input": {
+      "place": {
+        "place_id": "gn-2193687",
+        "name": "Awakeri",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -38,
+        "lon": 176.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Awakeri",
+          "url": "https://en.wikipedia.org/wiki/Awakeri",
+          "text": "Awakeri is a village located southwest of Whakatāne in the Bay of Plenty region of New Zealand's North Island. It is located in a farming and fruit-growing area, has basic amenities and a primary school for students aged 5 to 13, and is best known for nearby hot springs.\nAwakeri is located at the junction of State Highways 2 and 30 on the route of SH 2 from Edgecumbe to Tāneatua and the route of SH 30 from Whakatāne to Te Teko, and the two highways run together briefly through the village.\nThe New Zealand Ministry for Culture and Heritage gives a translation of \"ditch\" or \"trench\" for Awakeri.\nThe Tāneatua Branch railway line also passes through the town, it was disused, however a tourist rail operator has recently leased a section of the branch line from KiwiRail and is opening a rail cart operation. Passenger train services ran through Awakeri and were provided by the Taneatua Express train from 1928 until 7 February 1959, when the steam-hauled carriage train was replaced by an 88-seater railcar service that terminated before Awakeri, in Te Puke."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "awakeri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9593,
+    "place_id": "gn-10171214",
+    "input": {
+      "place": {
+        "place_id": "gn-10171214",
+        "name": "Sentosa",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.24969,
+        "lon": 103.83119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sentosa",
+          "url": "https://en.wikipedia.org/wiki/Sentosa",
+          "text": "Sentosa Island (IPA:  sen-TOH-sə), known mononymously as Sentosa, is an island located off the southern coast of Singapore's main island. The island is separated from the main island of Singapore by a channel of water, the Keppel Harbour, and is adjacent to Pulau Brani, a smaller island wedged between Sentosa and the main island.\nThe island is developed and managed by the Sentosa Development Corporation (SDC), a statutory board established on 1 September 1972 under the purview of the Singapore Ministry of Trade and Industry.\nFormerly used as a British military base and afterwards as a Japanese prisoner-of-war camp, the island was renamed Sentosa in the 1970s to become a popular tourist destination. It is now home to a popular resort that receives up to 25 million visitors per year. Attractions include a 2.5 km (1.6 mi) long sheltered beach, Madame Tussauds Singapore, an extensive cable car network, Fort Siloso, two golf courses, 14 hotels as well as the Resorts World Sentosa, which features the Universal Studios Singapore theme park and one of Singapore's two casinos, the other being in Marina Bay Sands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "sentosa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9601,
+    "place_id": "gn-3515582",
+    "input": {
+      "place": {
+        "place_id": "gn-3515582",
+        "name": "San Martín Tilcajete",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.85991,
+        "lon": -96.69547
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Martín Tilcajete",
+          "url": "https://en.wikipedia.org/wiki/San_Mart%C3%ADn_Tilcajete",
+          "text": "San Martín Tilcajete is a town and municipality located about 23 kilometres (14 mi) from the city of Oaxaca, in the state of Oaxaca, in the south of Mexico.\nIt is part of the Ocotlán District in the south of the Valles Centrales Region\nThe municipality is small and rural with all but seven of its 1,631 residents living in the town (as of the 2005 Mexican Census). It is a traditional and historically Zapotec village. The Zapotec language was lost three generations ago, but the municipal government falls under the legal category of \"traditional uses and customs\" based on ancient community norms.  The community is best known for its production of \"alebrijes,\" which are wood carvings of real or fantastic creatures painted in bright colors and intricate patterns.\nAn early name for the area was Zapotitlán, referring to the large number of black sapote trees that were in the area; however, these trees are rare today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "san martin tilcajete",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tilcajete",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9602,
+    "place_id": "gn-2972607",
+    "input": {
+      "place": {
+        "place_id": "gn-2972607",
+        "name": "Tignes",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.49604,
+        "lon": 6.92463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tignes",
+          "url": "https://en.wikipedia.org/wiki/Tignes",
+          "text": "Tignes (French pronunciation: [tiɲ]) is a commune in the Tarentaise Valley, in the Savoie department in the Rhône-Alpes region in south-eastern France, known for the highest skiable area and the longest ski season in Europe. It is located in the Savoie region with good transport links in and out of Lyon, Geneva and Chambéry.\nIt is widely known as a snow sure ski resort, with neighbouring Val d'Isère it forms the Tignes – Val d'Isère ski area. The proximity of two resorts has a continuous link between the ski areas, and as a result a single ski-able area of 300km piste.\nTignes was the freestyle skiing venue for the 1992 Winter Olympics, co-host city for the 1992 Winter Paralympics and host of the Winter X Games. This, coupled with the year round skiing, season length and large number of ski parks/slalom runs has cemented Tignes as the go to training ground for snow sport athletes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "tignes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9614,
+    "place_id": "gn-2704114",
+    "input": {
+      "place": {
+        "place_id": "gn-2704114",
+        "name": "Husum",
+        "country": "Sweden",
+        "subdivision": "Västernorrland",
+        "lat": 63.33333,
+        "lon": 19.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Husum, Sweden",
+          "url": "https://en.wikipedia.org/wiki/Husum,_Sweden",
+          "text": "Husum is a locality situated in Örnsköldsvik Municipality, Västernorrland County, Sweden with 1,647 inhabitants in 2010.\nIt is located close to the northern entrance to the High Coast. It has an active sports club in Husums IF (ice hockey, soccer, wrestling, ski jumping, cross-country skiing, orienteering, etc.), and a very active entrepreneurial spirit with many small local businesses, including a famous bakery. The Husum Big Band, a wind instrument orchestra that dates back to the early 1900s, is still active - playing in concerts both locally and regionally. The Grundsunda Framtidsgrupp is an association formed in 1995 to promote the interests of the local inhabitants.\nThe Husum Paper mill and Sulphate pulp mill is the main employer in the area, and has been a significant influence on the municipality since it was founded in 1919 by Mo och Domsjö AB (\"Modo\" for short, see also Modo Hockey)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "husum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9636,
+    "place_id": "gn-4502649",
+    "input": {
+      "place": {
+        "place_id": "gn-4502649",
+        "name": "Laurel Springs",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.82011,
+        "lon": -75.00628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laurel Springs, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Laurel_Springs,_New_Jersey",
+          "text": "Laurel Springs is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 1,978, an increase of 70 (+3.7%) from the 2010 census count of 1,908, which in turn reflected a decline of 62 (−3.1%) from the 1,970 counted in the 2000 census.\nLaurel Springs was incorporated as a borough by an act of the New Jersey Legislature on April 2, 1913, from portions of Clementon Township, based on the results of a referendum held on May 1, 1913. The borough was named for its therapeutic springs situated in laurel groves.\nIn 2021, the borough had the 11th-highest property tax rate in New Jersey, with an equalized rate of 4.803% in 2020, compared to 3.470% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "laurel springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laurel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9640,
+    "place_id": "gn-2622854",
+    "input": {
+      "place": {
+        "place_id": "gn-2622854",
+        "name": "Dybbøl",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 54.91079,
+        "lon": 9.73601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dybbøl",
+          "url": "https://en.wikipedia.org/wiki/Dybb%C3%B8l",
+          "text": "Dybbøl is a small town with a population of 2,272 (1 January 2026) in the southeastern corner of South Jutland, Denmark. It is located around 6 km (3.7 mi) west of Sønderborg. It is mainly known for being the site of a famous last stand battle in 1864.\nDuring the Second Schleswig War in 1864, the Danish Army withdrew from the traditional fortified defence line, the Dannevirke (after waters and marshes which supported its flanks froze solid in a hard winter), and marched for Dybbøl to find a more defensible position. Although much artillery was abandoned and the evacuation was executed through a snow-laden north gale in winter, the army arrived almost intact. It entrenched itself at the Dybbøl trenches, which became the scene of the siege and subsequent Battle of Dybbøl (7 April – 18 April 1864)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "dybb l",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dybb",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9644,
+    "place_id": "gn-5911745",
+    "input": {
+      "place": {
+        "place_id": "gn-5911745",
+        "name": "Burns Lake",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 54.22972,
+        "lon": -125.76084
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burns Lake",
+          "url": "https://en.wikipedia.org/wiki/Burns_Lake",
+          "text": "Burns Lake is a rural village in the north-western-central interior of British Columbia, Canada, incorporated in 1923.  The village had a population of 1,659 as of the 2021 Census.\nThe village is known for its rich First Nations heritage, and for its network of mountain biking trails, which have received acclaim by becoming Canada's first IMBA Ride Centre. In winter, cross country skiing trails and snowmobile wilderness trails are created. Burns Lake is located in the midst of a large networks of lakes called the Lakes District, with fishing and hunting year round, and water activities in the summer months.\nThere are two First Nations reserves that are part of the town, and another four nearby, making it one of the few communities in the province that have almost equal populations of persons of native or European descent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "burns lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burns",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9646,
+    "place_id": "gn-4504761",
+    "input": {
+      "place": {
+        "place_id": "gn-4504761",
+        "name": "Wenonah",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.79456,
+        "lon": -75.14879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenonah, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wenonah,_New_Jersey",
+          "text": "Wenonah is a borough in Gloucester County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 2,283, an increase of five people (+0.2%) from the 2010 census count of 2,278, which in turn reflected a decline of 39 (−1.7%) from the 2,317 counted in the 2000 census. It is located approximately 10 miles (16 km) south of Philadelphia, the nation's sixth-most populous city.\nWenonah was established as a borough by the New Jersey Legislature on March 10, 1883, from portions of Deptford Township, based on the results of a referendum that was held two days earlier. The borough was named for the mother of Hiawatha in Henry Wadsworth Longfellow's poem The Song of Hiawatha.\nIt is a dry town where alcohol cannot be bought or sold legally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "wenonah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9647,
+    "place_id": "gn-5425911",
+    "input": {
+      "place": {
+        "place_id": "gn-5425911",
+        "name": "Idaho Springs",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.74249,
+        "lon": -105.51361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idaho Springs, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Idaho_Springs,_Colorado",
+          "text": "Idaho Springs is a  statutory city in Clear Creek County, Colorado, United States. Located in Clear Creek Canyon in the mountains upstream from Golden, it lies some 30 miles (50 km) west of Denver.\nAs of the 2020 United States census, Idaho Springs had a population of 1,782,  making it the most populous municipality in the county.  \nFounded in 1859 by prospectors during the early days of the Pike's Peak Gold Rush, the town was at the center of the region's mining district throughout the late nineteenth century. The Argo Tunnel drained and provided access to many lodes of ore between Idaho Springs and Central City. During the late twentieth century, the town evolved into a tourist center along U.S. Highway 6 and U.S. Highway 40, which ascend Clear Creek Canyon through the historic mining district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "idaho springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "idaho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9650,
+    "place_id": "gn-4424956",
+    "input": {
+      "place": {
+        "place_id": "gn-4424956",
+        "name": "Durant",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 33.07513,
+        "lon": -89.85453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durant, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Durant,_Mississippi",
+          "text": "Durant is a city near the central eastern border of Holmes County, Mississippi, United States, and Big Black River. The town was founded in 1858 as a station on the Mississippi Central Railroad, later part of the Illinois Central. Durant was named for Louis Durant, a Choctaw chief who had lived on this site before the United States undertook Indian Removal in the 1830s, forcing him and most of the Choctaw to Indian Territory west of the Mississippi River.\nAs of the 2020 census, Durant had a population of 2,231.\nAbout 3 miles away is the Castalian Springs Hotel, believed in 2020 to be the only surviving such spa structure in the state. A dozen mineral springs resorts were identified in the Works Progress Administration (WPA) Guide to Mississippi (1938), written during the Great Depression."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "durant",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9653,
+    "place_id": "gn-8349096",
+    "input": {
+      "place": {
+        "place_id": "gn-8349096",
+        "name": "Samson",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.06996,
+        "lon": 115.7977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samson, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Samson,_Western_Australia",
+          "text": "Samson is a suburb of Perth, Western Australia in the City of Fremantle. Samson is bounded by South Street to the north, Stock Road to the west, Winterfold Road to the south, South Street to the north and east no further than Rushby and McMahon Ways.\nThe suburb comprises fewer than 40 streets and 800 homes. \nThe suburb of Samson was named after the Samson family who have been prominent in the Fremantle area for two centuries, including Sir Frederick Samson who served as mayor for over 20 years. The first notable Samson, Lionel Samson arrived in Fremantle in 1829 and started Lionel Samson and Sons that together with R.C. Sadleir Pty Limited became the Lionel Samson Sadleirs Group in 2012.\nSamson is the easternmost neighbourhood of Fremantle and the most recent residential development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "samson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9666,
+    "place_id": "gn-2637008",
+    "input": {
+      "place": {
+        "place_id": "gn-2637008",
+        "name": "Starcross",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.62734,
+        "lon": -3.44797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Starcross",
+          "url": "https://en.wikipedia.org/wiki/Starcross",
+          "text": "Starcross  is a village with a 2021 census recorded population of 1,694 situated on the west shore of the Exe Estuary in Teignbridge in the English county of Devon.  The village is popular in summer with leisure craft, and is home to one of the United Kingdom's oldest sailing clubs.\nThe A379 road and the London to Penzance railway line both run through the village along the banks of the estuary. Starcross railway station is situated on the railway, and the Starcross to Exmouth Ferry, a small passenger ferry, operates across the estuary to Exmouth.\nA notable feature of Starcross is the Italianate pumping engine house, the best surviving building from Brunel's unsuccessful Atmospheric Railway. The enterprise is commemorated in the Atmospheric Railway pub located opposite the present-day railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "starcross",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9667,
+    "place_id": "gn-4835032",
+    "input": {
+      "place": {
+        "place_id": "gn-4835032",
+        "name": "Glenville",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.03538,
+        "lon": -73.65985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenville, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Glenville,_Connecticut",
+          "text": "Glenville is a neighborhood and census-designated place in the town of Greenwich in Fairfield County, Connecticut, United States. As of the 2020 census, Glenville had a population of 2,762. It is located in the western part of Greenwich at the falls of the Byram River, which provided waterpower when this was a mill village. The area is home to Glenville Elementary school, Western Civic Center and a volunteer fire station, the Glenville Fire Department.\nThe town of Greenwich is one political and taxing body, but consists of several distinct sections or neighborhoods, such as Banksville, Byram, Cos Cob, Glenville, Mianus,  Old Greenwich, Riverside and Greenwich (sometimes referred to as central, or downtown, Greenwich). Of these neighborhoods, three (Cos Cob, Old Greenwich, and Riverside) have separate postal names and ZIP codes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "glenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9671,
+    "place_id": "gn-3531206",
+    "input": {
+      "place": {
+        "place_id": "gn-3531206",
+        "name": "Chalcatzingo",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.68898,
+        "lon": -98.77462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chalcatzingo",
+          "url": "https://en.wikipedia.org/wiki/Chalcatzingo",
+          "text": "Chalcatzingo is a Mesoamerican archaeological site in the Valley of Morelos (municipality of Jantetelco) dating from the Formative Period of Mesoamerican chronology. The site is well known for its extensive array of Olmec-style monumental art and iconography.  Located in the southern portion of the Central Highlands of Mexico, Chalcatzingo is estimated to have been settled as early as 1500 BCE.  The inhabitants began to produce and display Olmec-style art and architecture around 900 BCE. At its height between 700 BCE and 500 BCE, Chalcatzingo's population is estimated at between five hundred and a thousand people. By 500 BCE it had gone into decline. The climate in Morelos is generally warmer and more humid than the rest of the Highlands. The Chalcatzingo center covers roughly 100 acres (0.40 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "chalcatzingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9672,
+    "place_id": "gn-4372398",
+    "input": {
+      "place": {
+        "place_id": "gn-4372398",
+        "name": "Violetville",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.26761,
+        "lon": -76.67441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Violetville, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Violetville,_Baltimore",
+          "text": "Violetville (also known as the Village of Violetville) is a neighborhood in Southwest Baltimore, Maryland and Baltimore County. The community is characterized by its \"well-kept 1950s and 60s era rowhouses and older farmhouses that date back to the turn of the previous century.\"\nIn 1958, the community united to form a strong and feisty community association.  Filbert Field (what is currently known as Violetville Park) was established and various recreational programs were created. Violetville became known for its intense Little League competition, for outspoken members of its community association, and for an enthusiasm for outdoor Christmas lights.  In the spring, a parade and street fair celebrate the beginning of the Little League and softball seasons.\nVioletville was named \"Best Neighborhood in Baltimore\" by the City Paper in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "violetville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9681,
+    "place_id": "gn-719396",
+    "input": {
+      "place": {
+        "place_id": "gn-719396",
+        "name": "Karcsa",
+        "country": "Hungary",
+        "subdivision": "Borsod-Abaúj-Zemplén",
+        "lat": 48.3113,
+        "lon": 21.80537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karcsa",
+          "url": "https://en.wikipedia.org/wiki/Karcsa",
+          "text": "Karcsa is a village in Borsod-Abaúj-Zemplén county, Hungary, that dates back to the time of the Hungarian settlement (late 9th century). There is a 1000-year-old graveyard in the neighboring town Karos and archaeological discoveries confirm this. The village is well known for its Romanesque church built probably around 1000 after the Huns converted to Christianity.\nKarcsa was situated in what was north-central Hungary from the founding of the country until 1920, when the Treaty of Trianon split Hungary, depriving it of 70% of its territory and leaving 60% of its people in surrounding countries. Now it is a border town on the northern Hungarian border with Slovakia.\nKarcsa has a small lake which is quite popular with fishermen and campers in summer and for skating in winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "karcsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9683,
+    "place_id": "gn-2132606",
+    "input": {
+      "place": {
+        "place_id": "gn-2132606",
+        "name": "Samarai",
+        "country": "Papua New Guinea",
+        "subdivision": "Milne Bay Province",
+        "lat": -10.61038,
+        "lon": 150.66207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samarai",
+          "url": "https://en.wikipedia.org/wiki/Samarai",
+          "text": "Samarai is an island and former administrative capital in Milne Bay Province, Papua New Guinea.\nThe island is historically significant as the site of a trading port and stop-over between Australia and East Asia. Samarai town was established on the island and at its height was the second largest after Port Moresby in the Territory of Papua.\nThe town of Samarai was ordered to be destroyed by the British during World War II, fearing Japanese occupation. Although rebuilt after the war, and functioning as provincial headquarters until 1968, economic changes meant that Samarai did not fully regain its regional status and it has since largely fallen into disrepair. The island was declared a National Historical Heritage Island by the government of Papua New Guinea in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "samarai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

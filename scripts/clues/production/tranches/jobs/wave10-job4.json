@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 9909,
+    "place_id": "gn-1270743",
+    "input": {
+      "place": {
+        "place_id": "gn-1270743",
+        "name": "Gulmarg",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 34.05363,
+        "lon": 74.38188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gulmarg",
+          "url": "https://en.wikipedia.org/wiki/Gulmarg",
+          "text": "Gulmarg (also known as Gulmarag, lit. 'meadow of flowers' in Kashmiri) is a hill station and a notified area committee in Baramulla district of the Indian union territory of Jammu and Kashmir. It is located in the Indian-administered part of Kashmir, close to the Line of Control that serves as the de facto border between India and Pakistan. It is in the Pir Panjal Range in the Western Himalayas within the boundaries of the Gulmarg Wildlife Sanctuary. Gulmarg is situated at an altitude of 2,650 m (8,690 ft), and is a popular tourist and skiing destination in the Kashmir Valley.\nKnown as Gaurimarg (meaning \"path of goddess Gauri\") to the locals, it was renamed as Gulmarg by Yousuf Shah Chak, who ruled Kashmir from 1579 to 1586. The place served as a summer and recreational retreat during the Mughal rule in the 17th century, and British Raj in the 19th and early 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "gulmarg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9915,
+    "place_id": "gn-2657029",
+    "input": {
+      "place": {
+        "place_id": "gn-2657029",
+        "name": "Arnside",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.20179,
+        "lon": -2.83374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arnside",
+          "url": "https://en.wikipedia.org/wiki/Arnside",
+          "text": "Arnside is a village and civil parish in Westmorland and Furness, Cumbria, England. It is historically part of Westmorland, near the border with Lancashire, England. The Lake District National Park is located a few miles north. Travelling by road, Arnside is 10 miles (16 km) to the south of Kendal, 25.3 miles (40.7 km) to the east of Ulverston, 35.2 miles (56.6 km) to the east of Barrow-in-Furness, 13 miles (21 km) to the north of Lancaster and 14.3 miles (23.0 km) to the east of Grange-over-Sands. In the 2001 census the parish had a population of 2,301, increasing at the 2011 census to 2,334 but falling to 2,233 in the 2021 census.\nIt faces the estuary of the River Kent on the northeastern corner of Morecambe Bay, within the Arnside and Silverdale Area of Outstanding Natural Beauty and is overlooked by Arnside Knott, a hill that rises out of the estuary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "arnside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9917,
+    "place_id": "gn-11979998",
+    "input": {
+      "place": {
+        "place_id": "gn-11979998",
+        "name": "Hollins Market",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28733,
+        "lon": -76.63319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hollins Market",
+          "url": "https://en.wikipedia.org/wiki/Hollins_Market",
+          "text": "Hollins Market is the name of the oldest existing public market building in the city of Baltimore, Maryland. It is a contributing property to the Union Square-Hollins Market Historic District.\nThe market, located at 26 South Arlington Ave, just west of downtown Baltimore, runs the length of the 1100 block of Hollins St between South Arlington and South Carrollton Avenues. In 1829 the city granted the petition of a piano manufacturer named Joseph Newman  and his brother Elias Newman, who together in 1842 founded Newman & Bros., (of whose pianos two are in the inventory of the Smithsonian), to erect a  market house at their own expense  on land donated by banker George B. Dunbar. That structure blew down in a windstorm in 1838; the market was rebuilt and opened the following year. The market was expanded in 1864  through a $23,000 appropriation by the city  to construct the Italianate addition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "hollins market",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hollins",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "market",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9919,
+    "place_id": "gn-3028440",
+    "input": {
+      "place": {
+        "place_id": "gn-3028440",
+        "name": "Cassel",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.80109,
+        "lon": 2.48527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cassel, Nord",
+          "url": "https://en.wikipedia.org/wiki/Cassel,_Nord",
+          "text": "Cassel (French pronunciation: [kasɛl] ; Dutch: Kassel) is a commune in the Nord department in northern France. Built on a prominent hill overlooking French Flanders, the town has existed since Roman times. It was developed by the Romans into an important urban centre and was the focus of a network of roads, which are still in use today, that converge on the hill. After the fall of the Roman Empire, Cassel became an important fortified stronghold for the rulers of Flanders which was repeatedly fought over before finally being annexed to France in the 17th century. It was the headquarters of Marshal Ferdinand Foch during part of the First World War. In 1940, during the German invasion of France, Cassel was the scene of a fierce three-day battle between British forces (led in part by Major Ronald Cartland, MP) and German forces which resulted in much of the town being destroyed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "cassel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9920,
+    "place_id": "gn-4353084",
+    "input": {
+      "place": {
+        "place_id": "gn-4353084",
+        "name": "Derwood",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.11733,
+        "lon": -77.16109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derwood, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Derwood,_Maryland",
+          "text": "Derwood is an unincorporated area and census-designated place in east-central Montgomery County, Maryland, United States. It lies just north of Rockville, southeast of Gaithersburg, southwest of Olney, and northwest of the greater Silver Spring area.  Derwood was originally \"Deer Park\" and was then \"Deer Wood\" before getting its current name.\nThe unincorporated area of Derwood includes the neighborhoods of Derwood Heights, Derwood Station, Mill Creek Towne, Needwood Estates, Muncaster Manor, Muncaster View, Hollybrooke, Granby Woods, Park Overlook, Preserve at Rock Creek, Redland Crossing, Candlewood Park, Cashell Estates, Avery Forest, Avery Lodge, Avery Village, Bowie Mill Estates, Bowie Mill Park, Winters Run, Redland Station, Rolling Knolls, Emory Grove, and Shady Grove Crossing, but the census-designated place consists of a far smaller area.\nBetween 2009 and 2011, Maryland Route 200 (also known as the Intercounty Connector or ICC) was constructed directly through central Derwood, affecting Cashell Estates and areas near Shady Grove Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "derwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9923,
+    "place_id": "gn-2634881",
+    "input": {
+      "place": {
+        "place_id": "gn-2634881",
+        "name": "Walkern",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.91888,
+        "lon": -0.12758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walkern",
+          "url": "https://en.wikipedia.org/wiki/Walkern",
+          "text": "Walkern  is a village and civil parish in the East Hertfordshire district of Hertfordshire, England. It lies in the valley of the River Beane, about 3 miles (5 km) east of the centre of Stevenage, its post town. At the 2021 census, the parish had a population of 1,491.\nThe village has several shops, including a convenience store, a hair and beauty salon, a craft shop, a shop that features homestyle products, a tea shop, a drum shop, a petrol station and Walkern Gallery near the White Lion public house. Other pubs include the Yew Tree. The village also has a primary school, doctors' surgery, recreation ground and a range of seasonal clubs; according to the time of year there is cricket, football and many other clubs based in the Walkern Sports and Community Centre towards the end of the village near the War Memorial and opposite a former watermill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "walkern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9926,
+    "place_id": "gn-765274",
+    "input": {
+      "place": {
+        "place_id": "gn-765274",
+        "name": "Maniowy",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.45976,
+        "lon": 20.26454
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maniowy",
+          "url": "https://en.wikipedia.org/wiki/Maniowy",
+          "text": "Maniowy [maˈɲɔvɨ] is a village in southern Poland situated in the Lesser Poland Voivodeship about 19 kilometres (12 mi) east of Nowy Targ and 71 km (44 mi) south of the regional capital Kraków. It has been the seat of the district of Gmina Czorsztyn since 1993.\nLocated on the southern slopes of the Gorce Mountains, new Maniowy was built in 1970-1980s after having been moved to a higher altitude, from an area upon which Lake Czorsztyn now stretches. The history of the old village reached back to at least 1326 when it was founded during the colonisation of the Podhale region. The present village has a modern architecture of houses with several large buildings (for example Saint Nicholas Church and the gym hall) and is inhabited by over 2000 people. Neighbouring forests, mountains, lake, ski lifts and national parks are tourist attractions in each season of the year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "maniowy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9927,
+    "place_id": "gn-2829569",
+    "input": {
+      "place": {
+        "place_id": "gn-2829569",
+        "name": "Stamsried",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.26755,
+        "lon": 12.53051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stamsried",
+          "url": "https://en.wikipedia.org/wiki/Stamsried",
+          "text": "Stamsried is a village and municipality in the district of Cham in the Upper Palatinate region of Bavaria, Germany, near the Czech border. It is also located in the Roman Catholic diocese of Regensburg. Stamsried has a population of 2,319 as of June 2004 and an area of 4,343 hectares (43.43 square kilometers; 16.77 square miles) which includes surrounding countryside outside the built up area of the village itself, the population density is 53.4 persons per square kilometer (138 persons/mi2). Stamsried is located 456 meters (1,496 feet) above sea level and contains rolling hills as high as 600 meters (2,000 feet).\nStamsried is located near the Upper Bavarian Forest Nature Park and therefore tourism makes up a portion of its economy as shown by the number of small hotels and \"pensions\" or bed and breakfasts. Sites of interest within Stamsried itself include the Catholic parish church of St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "stamsried",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9928,
+    "place_id": "gn-4460364",
+    "input": {
+      "place": {
+        "place_id": "gn-4460364",
+        "name": "Cherokee",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.47427,
+        "lon": -83.31487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cherokee, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Cherokee,_North_Carolina",
+          "text": "Cherokee  (Cherokee: ᏣᎳᎩ, romanized: Tsalagi) is a census-designated place (CDP) in Swain and Jackson counties in Western North Carolina, United States, within the Qualla Boundary land trust. Cherokee is located in the Oconaluftee River Valley around the intersection of U.S. Routes 19 and 441. As of the 2020 census, the CDP had a population of 2,195. It is the capital of the federally recognized Eastern Band of Cherokee Indians, one of three recognized Cherokee tribes and the only one in North Carolina.\nThe community also serves as a tourist destination, with numerous campgrounds, motels, and hotels serving visitors to the Great Smoky Mountains National Park, with a major entrance to the park lying within the community. The Cherokee Historical Association runs the Oconaluftee Indian Village, a living-history museum, as well as the popular outdoor drama Unto These Hills, and is associated with the Museum of the Cherokee People."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "cherokee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9936,
+    "place_id": "gn-2661247",
+    "input": {
+      "place": {
+        "place_id": "gn-2661247",
+        "name": "Caux",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.43241,
+        "lon": 6.93855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caux, Switzerland",
+          "url": "https://en.wikipedia.org/wiki/Caux,_Switzerland",
+          "text": "Caux (Montreux) is a small village in the Canton of Vaud, Switzerland which is part of the Montreux municipality. It looks out over Lake Geneva from an altitude of 1000 meters.\nOverlooked by the Rochers de Naye summit (2000 meters), the Caux area was traditionally used only by cattle farmers. Late in the 19th century, local riviera hotels owners from Montreux and Territet became aware of the touristic potential of the Caux Mount. Simple inns came first, then the massive Caux Grand-Hôtel (1893), and finally, the spectacular Caux Palace Hotel (1902), masterpiece of Swiss architect Eugène Jost, gave Caux an international status, attracting the wealthiest and most famous guests including Empress Sissi of Austria-Hungary, Lord Robert Baden-Powell, Sacha Guitry, Edgar Wallace, prince Ibn Saud, future king of Saudi Arabia, John D. Rockefeller and the maharajah of Baroda.\nWorld War I prematurely killed the Caux luxury hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "caux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9939,
+    "place_id": "gn-2634218",
+    "input": {
+      "place": {
+        "place_id": "gn-2634218",
+        "name": "Wetheral",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.88401,
+        "lon": -2.83327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetheral",
+          "url": "https://en.wikipedia.org/wiki/Wetheral",
+          "text": "Wetheral is a village, civil parish and electoral ward in the historic county of Cumberland but now in the ceremonial county of Cumbria, England. At the 2001 census, the population of the Wetheral Ward was 4,039,  The civil parish of Wetheral is slightly larger, with a population of 6,293 at the 2021 census.\nWetheral stands high on a bank overlooking a gorge in the River Eden.  Parts of the riverbank here are surrounded by ancient woodlands, including Wetheral Woods, owned by the National Trust.  Formerly a small ferryboat operated to the village of Great Corby on the opposite bank, and an iron ring can still be found attached to the rocks on the Great Corby side of the river where the ferry would tie up.\nThe place-name 'Wetheral' is first attested in the Register of  Wetheral Priory circa 1100 AD, where it appears as Wetherhala."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "wetheral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9943,
+    "place_id": "gn-4101456",
+    "input": {
+      "place": {
+        "place_id": "gn-4101456",
+        "name": "Bethel Heights",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.21424,
+        "lon": -94.12937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethel Heights, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Bethel_Heights,_Arkansas",
+          "text": "Bethel Heights was a city in Benton County, Arkansas, United States. Always a small, sparsely populated community, the region coalesced around a school named Bethel in the late 19th century but did not incorporate until 1967 to avoid annexation by larger neighboring communities. The town offered police and fire protection and wastewater service to residents, but sent students to Springdale Public Schools and purchased water from Springdale Water Utilities. By the 21st century, Northwest Arkansas was gaining population rapidly, and Bethel Heights reincorporated as a city and grew from a population of 714 in 2000 to 2,372 at the 2010 census. As of the 2020 census, Bethel Heights had a population of 3,015. Growth put pressure on the city's subsurface discharge wastewater treatment system, and following a series of wastewater treatment plant violations, voters dissolved the city and completely annexed into Springdale in August 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "bethel heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bethel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9955,
+    "place_id": "gn-2067890",
+    "input": {
+      "place": {
+        "place_id": "gn-2067890",
+        "name": "Laverton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -28.62531,
+        "lon": 122.3994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laverton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Laverton,_Western_Australia",
+          "text": "Laverton, originally known as British Flag, is a town in the Goldfields region of Western Australia, and the centre of administration for the Shire of Laverton. The town of Laverton is located at the western edge of the Great Victoria Desert, 957 kilometres (595 mi) north-northeast of the state capital, Perth, and 124 kilometres (77 mi) east-northeast of the town of Leonora, with an elevation of 461 metres (1,512 ft).\nAbout 20% of the population is of Aboriginal descent. The area is semi-arid, with a mean annual rainfall of 233 millimetres (9.2 in). It is also quite warm, with mean daily maximum temperatures ranging from 17 °C (62 °F) in July to 36 °C (97 °F) in January.\nLaverton is the westernmost town on the Outback Way – a proposed highway which goes through the Northern Territory to Winton in outback Queensland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "laverton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9956,
+    "place_id": "gn-2648162",
+    "input": {
+      "place": {
+        "place_id": "gn-2648162",
+        "name": "Great Bentley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.85333,
+        "lon": 1.06379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Bentley",
+          "url": "https://en.wikipedia.org/wiki/Great_Bentley",
+          "text": "Great Bentley is a village and civil parish in the Tendring district of north east Essex, England, located seven miles east of Colchester. The village is scattered round an extensive level or common, of 43 acres (17 ha), on the eastern side of the vale of a rivulet, seven miles (11 km) east-south-east of Colchester.  This common is the second largest village green in the United Kingdom, at a size of 43 acres (17 ha), behind Duncan Down, and has won 'Essex Village of the Year' and 'Daily Telegraph/Calor Gas Village of the Year' awards.\nThe parish has an area of 3,188 acres (12.90 km2) and extends southward to Flag Creek, a tidal creek that connects with the Colne, near Brightlingsea. It includes the hamlets of Aingers Green and South Heath.  At the 2021 census the parish had a population of 2,517."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "great bentley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bentley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9960,
+    "place_id": "gn-11001688",
+    "input": {
+      "place": {
+        "place_id": "gn-11001688",
+        "name": "Hockley Heath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.35294,
+        "lon": -1.77816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hockley Heath",
+          "url": "https://en.wikipedia.org/wiki/Hockley_Heath",
+          "text": "Hockley Heath is a village and civil parish within the Metropolitan Borough of Solihull, West Midlands, England. The village is to the south of the West Midlands conurbation, 12 miles (19 km) south-east of Birmingham 5.5 miles (8.9 km) from Solihull town centre and 13 miles (21 km) north of Stratford-upon-Avon. Hockley Heath is in the Arden area and borders Warwickshire and the District of Stratford-on-Avon to the south, with some parts of the village on either side of the border. It incorporates the hamlet of Nuthurst, and has a history dating back to the year 705 AD as a wood owned by Worcester Cathedral. The 2011 Census gives the population of Hockley Heath civil parish as 2,038. Today the village serves commuters to both London and Birmingham via local transport connections, and is the home of the Vintage Sports-Car Club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "hockley heath",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hockley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heath",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9961,
+    "place_id": "gn-11980085",
+    "input": {
+      "place": {
+        "place_id": "gn-11980085",
+        "name": "Washington Hill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.29152,
+        "lon": -76.59467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Washington Hill, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Washington_Hill,_Baltimore",
+          "text": "Washington Hill is a neighborhood in Baltimore, Maryland, United States. It is north of Fells Point, south of Johns Hopkins Hospital, east of Old Town and Jonestown and west of Butchers Hill. It is bounded by Fayette Street, Washington Street, Lombard Street, and Central Avenue. The neighborhood surrounds Broadway (formerly known as Market Street in Colonial times) running north from Fells Point to terminate at East North Avenue and is named for the now-defunct Washington Medical College later known as the Church Home and Hospital on Broadway where famed writer/poet Edgar Allan Poe was taken to die in 1849 after being found comatose in a downtown Baltimore street. In the median strip of Broadway is a statue of seven-term mayor of Baltimore, Ferdinand Claiborne Latrobe.\nCity Springs School, a charter school for the Baltimore Curriculum Project, is located in Washington Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "washington hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "washington",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9962,
+    "place_id": "gn-2646716",
+    "input": {
+      "place": {
+        "place_id": "gn-2646716",
+        "name": "Holmfirth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.56968,
+        "lon": -1.78777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holmfirth",
+          "url": "https://en.wikipedia.org/wiki/Holmfirth",
+          "text": "Holmfirth () is a town in the Metropolitan Borough of Kirklees, West Yorkshire, England. It is located 6 miles (9.7 km) south of Huddersfield and 14 miles (23 km) west of Barnsley; the boundary of the Peak District National Park is 2 miles (3.2 km) to the south-west. The town is sited on the A635 and A6024 roads in the Holme Valley, at the confluence of the River Holme and Ribble. It mostly consists of stone-built cottages nestled on the eastern slopes of the Pennine hills. \nHistorically part of the West Riding of Yorkshire, Holmfirth was a centre for pioneering film-making by Bamforth & Co., which later switched to the production of saucy seaside postcards. Between 1973 and 2010, Holmfirth and the Holme Valley became well known as the filming location of the BBC's situation comedy Last of the Summer Wine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "holmfirth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9964,
+    "place_id": "gn-3124727",
+    "input": {
+      "place": {
+        "place_id": "gn-3124727",
+        "name": "Comillas",
+        "country": "Spain",
+        "subdivision": "Cantabria",
+        "lat": 43.38603,
+        "lon": -4.29162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comillas",
+          "url": "https://en.wikipedia.org/wiki/Comillas",
+          "text": "Comillas is a small township and municipality in the northern reaches of Spain, in the autonomous community of Cantabria. The Marquessate of Comillas, a fiefdom of Spanish nobility, holds ceremonial office in the seat of power at a small castle which overlooks the town. The Comillas Pontifical University was housed here before it moved to Madrid, and the old university buildings are among the finest examples of architecture in the town. Besides this, there are many notable medieval and baroque buildings.\nFrom the second half of the 19th century, the Spanish royal family started spending their summers in Comillas, and so did a large part of the Spanish nobility, whose many descendants still frequent the town every summer. As a result, Comillas left an imprint of architectural relics such as palaces and monuments designed by renowned Catalan artists in particular, i.e."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "comillas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9969,
+    "place_id": "gn-2648079",
+    "input": {
+      "place": {
+        "place_id": "gn-2648079",
+        "name": "Great Horkesley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.93821,
+        "lon": 0.87551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Horkesley",
+          "url": "https://en.wikipedia.org/wiki/Great_Horkesley",
+          "text": "Great Horkesley is a village and civil parish in the City of Colchester district of Essex, England, approximately 3 miles north of Colchester. At the 2021 census the parish had a population of 2,697.\nHorkesley is located in what is known as \"Horkesley Heath\", which is a combination of two villages: Great Horkesley and, to the north,  Little Horkesley which is an entirely different Parish. Horkesley is a modern name for the original Saxon name of \"Horkaslay\" which means \"farm land for herds\" (mainly sheep) though now it has many fields growing a variety of crops from corn to hemp. A few years ago an archaeological dig was made in woods on Coach Road, where a Bronze Age bronze smelting pit was found. Much Of Great Horkesley was a marsh, with very boggy ground, until it was drained by farmers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "great horkesley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "horkesley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9987,
+    "place_id": "gn-2644594",
+    "input": {
+      "place": {
+        "place_id": "gn-2644594",
+        "name": "Letham",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.62683,
+        "lon": -2.7706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Letham, Angus",
+          "url": "https://en.wikipedia.org/wiki/Letham,_Angus",
+          "text": "Letham (Scots pronunciation: [ˈlɛθəm]) is a village in Angus, Scotland.\nLetham is the largest village in Angus, with a population of nearly 2,000. Situated 17 miles (27 km) from Dundee, 5 miles (8.0 km) from Forfar, 10 miles (16 km) from Arbroath and 10 miles (16 km) from Carnoustie.\nThere are some shops, including two groceries, one of which incorporates the Post Office and newsagent, a primary school, a bakery, a hairdresser, a take-away restaurant, a former hotel which now only functions as bar, the Commercial Inn and a co-operative craft shop named Hand Pict. The village is part of the parish of Letham, Dunnichen and Kirkden.\nIn and around the village is an extensive pattern of green paths which are kept cut by a group of volunteers, giving the village many and varied places to walk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "letham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

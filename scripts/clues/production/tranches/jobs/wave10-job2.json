@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 9684,
+    "place_id": "gn-2651422",
+    "input": {
+      "place": {
+        "place_id": "gn-2651422",
+        "name": "Deepcut",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.30513,
+        "lon": -0.71016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deepcut",
+          "url": "https://en.wikipedia.org/wiki/Deepcut",
+          "text": "Deepcut is a village in the borough of Surrey Heath in Surrey, England, approximately 28 mi (45 km) southwest of central London. The nearest towns are Camberley, Surrey (3 mi (4.8 km) to the north) and Farnborough, Hampshire (3 mi (4.8 km) to the west). Deepcut is named after the excavations required for the building of the Basingstoke Canal during the 1790s, although the village dates primarily from the early 20th century.\nDeepcut was the location of the Princess Royal Barracks and its predecessors from 1906 until the barracks was decommissioned after closure was announced in 2013.\nThe nearest railway stations are Frimley on the line between Ascot and Aldershot, Farnborough North on the North Downs Line and Farnborough (Main) on the South West Main Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "deepcut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9691,
+    "place_id": "gn-5095335",
+    "input": {
+      "place": {
+        "place_id": "gn-5095335",
+        "name": "Avon-by-the-Sea",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.19234,
+        "lon": -74.01597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avon-by-the-Sea, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Avon-by-the-Sea,_New_Jersey",
+          "text": "Avon-by-the-Sea (often called simply Avon; pronunciation: , AH-von) is a borough in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 1,933, an increase of 32 (+1.7%) from the 2010 census count of 1,901, which in turn reflected a decline of 343 (−15.3%) from the 2,244 counted in the 2000 census.\nAvon-by-the-Sea was incorporated as a borough by an act of the New Jersey Legislature on March 23, 1900, from portions of Neptune City. The borough was named for Avon, England, or for the Avon Inn, a hotel constructed in 1883.\nIn 2010, Forbes.com listed Avon-by-the-Sea as 232nd in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $989,212."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "avon by the sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "avon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "by",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9705,
+    "place_id": "gn-4234985",
+    "input": {
+      "place": {
+        "place_id": "gn-4234985",
+        "name": "Cairo",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 37.00533,
+        "lon": -89.17646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cairo, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Cairo,_Illinois",
+          "text": "Cairo (, KAIR-oh, sometimes , KAY-roh) is the southernmost city in the U.S. state of Illinois and the county seat of Alexander County. A river city, Cairo has the lowest elevation of any location in Illinois and is the state's only city to be surrounded by levees. The city is named after Egypt's capital on the Nile and is located in the river-crossed area of Southern Illinois. It is coterminous with Cairo Precinct.\nCairo is located at the confluence of the Ohio and Mississippi rivers, two of the largest rivers in North America, by discharge, and is near the Cache River complex, a Wetland of International Importance. Settlement began in earnest in the 1830s, and busy river boat traffic expanded through the 1850s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "cairo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9711,
+    "place_id": "gn-3987673",
+    "input": {
+      "place": {
+        "place_id": "gn-3987673",
+        "name": "San Antonio de las Alazanas",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 25.27135,
+        "lon": -100.57875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio de las Alazanas",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_de_las_Alazanas",
+          "text": "San Antonio de las Alazanas is a settlement located in the municipality of Arteaga, in the southeast of the Mexican state of Coahuila. It is located in the Sierra Madre Oriental range at a height of 2,180 meters (7,150 ft) above sea level.\nThis town is famous for its apple and quince plantations, with these fruits the villagers prepare fruit liquors, jams, sweets and other products.\nIt is situated in a valley rounded by huge mountains full of pines and has a mild weather that makes it the ideal place for tourism. Near San Antonio de las Alazanas you can find Monterreal and Mesa de las Tablas.\nOther tourist attractions are the Mummy Museum and the traditional Apple Fair celebrated each September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio de las alazanas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alazanas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9716,
+    "place_id": "gn-5113196",
+    "input": {
+      "place": {
+        "place_id": "gn-5113196",
+        "name": "Cold Spring",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.42009,
+        "lon": -73.95458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cold Spring, New York",
+          "url": "https://en.wikipedia.org/wiki/Cold_Spring,_New_York",
+          "text": "Cold Spring is a village in the town of Philipstown in Putnam County, New York, United States. The population was 1,986 at the 2020 census. It borders the smaller village of Nelsonville and the hamlets of Garrison and North Highlands. The central area of the village is on the National Register of Historic Places as the Cold Spring Historic District due to its many well-preserved 19th-century buildings, constructed to accommodate workers at the nearby West Point Foundry, a Registered Historic Place. The town is the birthplace of General Gouverneur K. Warren, who was an important figure in the Union Army during the Civil War. \nCommuter service to New York City is available via the Cold Spring train station, served by Metro-North Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "cold spring",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cold",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9718,
+    "place_id": "gn-5952121",
+    "input": {
+      "place": {
+        "place_id": "gn-5952121",
+        "name": "Fenelon Falls",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.53342,
+        "lon": -78.74957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fenelon Falls",
+          "url": "https://en.wikipedia.org/wiki/Fenelon_Falls",
+          "text": "Fenelon Falls is a village in Ontario, Canada, part of the city of Kawartha Lakes. Nicknamed the \"Jewel of the Kawarthas,\" it has a population of 2,500 permanent inhabitants, which swells in the summer due to tourism and holiday cottages. Fenelon Falls is home to lock 34 on the Trent-Severn Waterway between Sturgeon Lake and Cameron Lake. It is primarily a tourist town and therefore is most active during the summer season. The main street of Fenelon Falls is called Colborne Street.\nThe eponymous falls are hidden from plain view, because the main road crosses over the river just upstream; however, the falls are easily viewed from a nearby restaurant or from a path on the north bend of the Fenelon River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "fenelon falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fenelon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9720,
+    "place_id": "gn-2971074",
+    "input": {
+      "place": {
+        "place_id": "gn-2971074",
+        "name": "Val-d'Isère",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.45142,
+        "lon": 6.97455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Val-d'Isère",
+          "url": "https://en.wikipedia.org/wiki/Val-d'Is%C3%A8re",
+          "text": "Val-d'Isère (French pronunciation: [val dizɛʁ], literally Valley of Isère; Arpitan: Laval; Italian: Val d'Isero) is a commune of the Tarentaise Valley, in the Savoie department (Auvergne-Rhône-Alpes region) in southeastern France. It lies 5 km (3 mi) from the border with Italy. It is on the border of the Vanoise National Park created in 1963, with good transport links in and out of Lyon, Geneva and Chambéry.\nDuring the Albertville 1992 Winter Olympics, the Face de Bellevarde was the site of the men's downhill race. Other alpine skiing events held during those games included men's giant slalom and alpine combined. Val d'Isère regularly hosts World Cup alpine events, usually for the men in early December, and hosted the World Championships in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "val d isere",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "val",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "isere",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9730,
+    "place_id": "gn-2782052",
+    "input": {
+      "place": {
+        "place_id": "gn-2782052",
+        "name": "Bad Ischl",
+        "country": "Austria",
+        "subdivision": "Upper Austria",
+        "lat": 47.71109,
+        "lon": 13.61893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Ischl",
+          "url": "https://en.wikipedia.org/wiki/Bad_Ischl",
+          "text": "Bad Ischl (Austrian German [baːt ˈɪʃl̩]) is a spa town in Austria. It lies in the southern part of Upper Austria, at the river Traun in the centre of the Salzkammergut region. The town consists of the Katastralgemeinden Ahorn, Bad Ischl, Haiden, Jainzen, Kaltenbach, Lauffen, Lindau, Pfandl, Perneck, Reiterndorf and Rettenbach. It is connected to the village of Strobl by the river Ischl, which drains from the Wolfgangsee, and to the Traunsee, into which the stream empties. It is home to the Kaiservilla, summer residence of Austro-Hungarian monarchs Emperor Franz Joseph I and Empress Elisabeth. In 2024, Bad Ischl was one of the European Capitals of Culture – the third city in Austria after Graz (2003) and Linz (2009)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bad ischl",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ischl",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9742,
+    "place_id": "gn-2192093",
+    "input": {
+      "place": {
+        "place_id": "gn-2192093",
+        "name": "Coromandel",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -36.7611,
+        "lon": 175.49634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coromandel, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Coromandel,_New_Zealand",
+          "text": "Coromandel, (Māori: Kapanga) also called Coromandel Town to distinguish it from the wider district, is a town on the Coromandel Harbour, on the western side of the Coromandel Peninsula, which is in the North Island of New Zealand. It is 75 kilometres east of the city of Auckland, although the road between them, which winds around the Firth of Thames and Hauraki Gulf coasts, is 190 km long. The population was 1,780 as of June 2025.\nThe town was named after HMS Coromandel, which sailed into the harbour in 1820. At one time Coromandel Harbour was a major port serving the region's gold mining and kauri industries.  Today, the town's main industries are tourism and mussel farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "coromandel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9754,
+    "place_id": "gn-5177082",
+    "input": {
+      "place": {
+        "place_id": "gn-5177082",
+        "name": "Windham",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.23506,
+        "lon": -81.04926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windham, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Windham,_Ohio",
+          "text": "Windham is a village in eastern Portage County, Ohio, United States. The population was 1,666 at the 2020 census. In 1942, the U.S. government chose Windham as the site of an army camp for workers at the newly built Ravenna Arsenal. As a result, Windham experienced the largest increase in population of any municipality in the nation over the 1940s, at 1,148.7%.\nWindham is officially considered part of Akron metropolitan area; however, it is slightly closer to Youngstown than Akron and significantly closer to Warren at 12.8 miles (20.6 km) away, even closer than the county seat of Ravenna. Due to this, the village also positions itself in relation to cities in the Mahoning Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "windham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9756,
+    "place_id": "gn-2636408",
+    "input": {
+      "place": {
+        "place_id": "gn-2636408",
+        "name": "Sway",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.78685,
+        "lon": -1.60294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sway, Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Sway,_Hampshire",
+          "text": "Sway is a village and civil parish in Hampshire in the New Forest national park in England. The civil parish was formed in 1879, when lands were taken from the extensive parish of Boldre. The village has shops and pubs, and a railway station on the South West Main Line from Weymouth and Bournemouth to Southampton and London Waterloo. It is the site of Sway Tower, a 66-metre (217 ft) concrete folly built in the 19th century. The outbuildings of the Grade II listed Forest Heath House are used as artist studios and exhibition space by the charity SPUDWorks.\nSway is on the southern edge of the woodland and heathland of the New Forest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9757,
+    "place_id": "gn-2698293",
+    "input": {
+      "place": {
+        "place_id": "gn-2698293",
+        "name": "Kvidinge",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 56.13386,
+        "lon": 13.04678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kvidinge",
+          "url": "https://en.wikipedia.org/wiki/Kvidinge",
+          "text": "Kvidinge is a locality situated in Åstorp Municipality, Skåne County, Sweden with 1,854 inhabitants in 2010.\n\n \nIt is famous as the death site of Charles August, Crown Prince of Sweden in 1810. Crown Prince was inspecting the Scanian Hussar Regiment troops on its training ground Kvidinge Heath at Kvidinge when a dizzy spell caused him to fall from his horse, where he died of a heart attack. Crown Prince Charles John (later King Karl XIV Johan) proposed that a memorial to the incident would be raised. City architect Carl Christoffer Gjörwell was commissioned to design the monument, which was completed in 1826. The monument was destroyed by a lightning strike on 23 June 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "kvidinge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9758,
+    "place_id": "gn-3042824",
+    "input": {
+      "place": {
+        "place_id": "gn-3042824",
+        "name": "Visegrád",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.78526,
+        "lon": 18.9709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visegrád, Hungary",
+          "url": "https://en.wikipedia.org/wiki/Visegr%C3%A1d,_Hungary",
+          "text": "Visegrád (Hungarian: [ˈviʃɛɡraːd]; German: Plintenburg; Slovak: Vyšehrad) is a castle town in Pest County, Hungary. It is north of Budapest on the right bank of the Danube in the Danube Bend. It had a population of 1,864 in 2010. The town is the site of the remains of the Early Renaissance summer palace of King Matthias Corvinus of Hungary and a medieval citadel. The town was also the site of a meeting on 15 February 1991 between the President of the Czech and Slovak Federative Republic, Václav Havel, the President of the Republic of Poland, Lech Wałęsa, and the Prime Minister of the Republic of Hungary, József Antall which founded the titular Visegrád group."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "visegrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9768,
+    "place_id": "gn-8858769",
+    "input": {
+      "place": {
+        "place_id": "gn-8858769",
+        "name": "Tenochtitlán",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.80917,
+        "lon": -96.91611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tenochtitlán, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Tenochtitl%C3%A1n,_Veracruz",
+          "text": "Tenochtitlán is a municipality in the Mexican state of Veracruz, and the name of the main township which serves as the seat of the municipal government. It is located in the foothills of the Sierra Madre, with the township lying at an altitude of approximately 900 m (2953 ft) above mean sea level.\nIn the year 2000 census, the municipality reported a total population of slightly over 5600 people. The same census also revealed that the municipality had no hotels, no restaurants, no cafeterias, no bars, and no discothèques or night-clubs.\nThe town and the municipality are both named after Tenochtitlan, the capital of the Aztec Empire prior to the Spanish conquest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tenochtitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9780,
+    "place_id": "gn-2718271",
+    "input": {
+      "place": {
+        "place_id": "gn-2718271",
+        "name": "Dalarö",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.13306,
+        "lon": 18.40639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalarö",
+          "url": "https://en.wikipedia.org/wiki/Dalar%C3%B6",
+          "text": "Dalarö is a locality situated in Haninge Municipality, Stockholm County, Sweden with 1,199 inhabitants in 2010.\nIt is situated south-east of Stockholm and is part of Metropolitan Stockholm and serves as a recreational summer spot for Stockholmers. At the beginning of the year 2004, the automobile company Volvo used the town for the unconventional The Mystery of Dalarö advertising campaign.\nDalarö is Haninge Municipality's oldest locality, originally an old maritime pilot and customs community. Today Dalarö is largely characterized by the developments which were added in the late 1800s, when the area became a popular summer resort for Stockholmers. Dalarö has long been home to Swedish high society's seaside houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "dalaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9785,
+    "place_id": "gn-5688106",
+    "input": {
+      "place": {
+        "place_id": "gn-5688106",
+        "name": "Bottineau",
+        "country": "United States",
+        "subdivision": "North Dakota",
+        "lat": 48.82723,
+        "lon": -100.4457
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bottineau, North Dakota",
+          "url": "https://en.wikipedia.org/wiki/Bottineau,_North_Dakota",
+          "text": "Bottineau is a city in and the county seat of Bottineau County, North Dakota, United States. Located just over ten miles (16 km) south of the Canada–United States border. The population was 2,194 as of the 2020 census, and was estimated at 2,152 in 2025.\nThe city is home to Dakota College at Bottineau. Attractions in Bottineau include the Bottineau Winter Park and \"Tommy Turtle,\" the world's largest turtle, which has become a landmark for the city. Built in 1978 and thirty feet (9 m) in height, the fiberglass turtle is located in the eastern half of the city and was built as a symbol for the nearby Turtle Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bottineau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9789,
+    "place_id": "gn-6620428",
+    "input": {
+      "place": {
+        "place_id": "gn-6620428",
+        "name": "Danby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.46606,
+        "lon": -0.91073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danby, North Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Danby,_North_Yorkshire",
+          "text": "Danby is a village and civil parish in the county of North Yorkshire, England. According to the 2011 UK census, Danby parish had a population of 1,411, a reduction on the 2001 UK census figure of 1,515. The statistician Karl Pearson spent a lot of time there.\nDanby is located within the North York Moors National Park and is home to Danby Lodge, the Moors' National Park Centre. Danby Lodge is an official Dark Sky site.\nDanby is served by a rail network between Middlesbrough and Whitby as well as East Yorkshire's summer seasonal Moors Explorer bus, which links Danby and the surrounding villages with Malton, Beverley and Hull."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "danby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9801,
+    "place_id": "gn-4671174",
+    "input": {
+      "place": {
+        "place_id": "gn-4671174",
+        "name": "Archer City",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.59566,
+        "lon": -98.62561
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Archer City, Texas",
+          "url": "https://en.wikipedia.org/wiki/Archer_City,_Texas",
+          "text": "Archer City is a city in and the county seat of Archer County, Texas, United States. The city lies at the junction of State Highway 79 and State Highway 25. It is located 25 miles (40 km) south of Wichita Falls, and is part of the Wichita Falls metropolitan statistical area. Its population was 1,601 at the 2020 census. Archer City is notable as a filming location for the motion picture The Last Picture Show (1971) and its sequel Texasville (1990), both based upon novels written by Archer City native Larry McMurtry.\nThe city is named for Branch Tanner Archer, a commissioner for the Republic of Texas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "archer city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "archer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9803,
+    "place_id": "gn-6209526",
+    "input": {
+      "place": {
+        "place_id": "gn-6209526",
+        "name": "Twizel",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -44.25842,
+        "lon": 170.10063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Twizel",
+          "url": "https://en.wikipedia.org/wiki/Twizel",
+          "text": "Twizel () is the largest town in the Mackenzie District, in the Canterbury Region of the South Island of New Zealand. The town was founded in 1968 to house construction workers on the Upper Waitaki Hydroelectric Scheme. Today, Twizel is a service and tourist town for visitors to the area. It has a resident population of 1,790  (June 2025); during the summer, holidaymakers nearly triple the town's population.\nNearby Lake Ruataniwha supports rowing, sailing and water skiing. Twizel is 37 km (29 minutes drive) east of Lake Ōhau village, 30 km (20 minutes drive) north of Omarama and 60 km (42 minutes drive) south of Lake Tekapo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "twizel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9820,
+    "place_id": "gn-4976383",
+    "input": {
+      "place": {
+        "place_id": "gn-4976383",
+        "name": "Readfield",
+        "country": "United States",
+        "subdivision": "Maine",
+        "lat": 44.38785,
+        "lon": -69.96672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Readfield, Maine",
+          "url": "https://en.wikipedia.org/wiki/Readfield,_Maine",
+          "text": "Readfield ( REED-field) is a town in Kennebec County, Maine, United States. The population was 2,597 at the 2020 census. Readfield is home to the Kents Hill School, a preparatory school, Maranacook Community Schools, public schools for the district, a few summer camps, and the annual Readfield Heritage Days. A popular recreation spot in central Maine, the town contains nine lakes and ponds, including Maranacook Lake, and is part of the Winthrop Lakes Region. The town of Readfield was previously named Pond Town. Readfield is included in the Augusta, Maine micropolitan and included in the Lewiston-Auburn, Maine metropolitan New England City and Town Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "readfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
