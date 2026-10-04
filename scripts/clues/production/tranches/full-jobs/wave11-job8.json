@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2157,
+    "attempt": 2141,
+    "place_id": "gn-2647303",
+    "input": {
+      "place": {
+        "place_id": "gn-2647303",
+        "name": "Hawarden",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.18478,
+        "lon": -3.02578
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawarden",
+          "url": "https://en.wikipedia.org/wiki/Hawarden",
+          "text": "Hawarden ( ; Welsh: Penarlâg) is a village and community in Flintshire, Wales. It is part of the Deeside conurbation on the Wales-England border and is home to Hawarden Castle. In the 2011 census the ward of the same name had a population of 1,887, whereas the community of the same name, which also includes Ewloe (which also has a castle) Mancot and Aston had a population of 13,920.\nThe scenic wooded Hawarden Park abuts the clustered settlement in the south. Hawarden Bridge consists of distribution and industrial business premises beyond Shotton/Queensferry and the Dee. The west of the main street is called The Highway, its start marked by the crossroads with a fountain in the middle, near which are public houses, some with restaurants.\nThe village is 7 miles (11 km) from Chester. In 2014 it was named in The Sunday Times' annual Best Places To Live list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "hawarden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2158,
+    "attempt": 2142,
+    "place_id": "gn-3122826",
+    "input": {
+      "place": {
+        "place_id": "gn-3122826",
+        "name": "Esplugues de Llobregat",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.37732,
+        "lon": 2.08809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esplugues de Llobregat",
+          "url": "https://en.wikipedia.org/wiki/Esplugues_de_Llobregat",
+          "text": "Esplugues de Llobregat (Catalan pronunciation: [əsˈpluɣəz ðə ʎuβɾəˈɣat]) is a municipality of the Barcelona metropolitan area. Formerly in the Barcelonès, since 1990 it has been part of the comarca of Baix Llobregat. During recent decades, Esplugues has evolved from a predominantly industrial town to a more diverse service area while still preserving its cultural and historical identity.\nEsplugues de Llobregat is known for its hitoric quarter, one of the oldest urban areas in the Baix Llobregat comarca. The Carrer de Montserrat runs through the architectural complex created by sculptor Xavier Corberó between 1968 and 2017. The Can Cortada manor house was the residence of Rafael d'Amat i de Cortada, Baron of Maldà, author of Calaix de Sastre, an important work of late 18th-century Catalan literature.  The municipality also contains several parks and green spaces, including Parc de la Solidaritat, Parc dels Torrents and Parc de Can Vidalet. Sant Pere Màrtir, located within Collserola range, overlooks the municipality and the surrounding area. \nThe German School of Barcelona, La Miranda, the Highlands School and the American School of Barcelona are located in town and attract wealthy expatriate families. Due to its proximity to the Camp Nou stadium, many famous people reside in Esplugues, including the footballers Gerard Piqué, Andrés Iniesta, Lamine Yamal, and Dani Alves, the motorcycle racer Sete Gibernau, and the former World Number 1 tennis player Arantxa Sánchez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "esplugues de llobregat",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "esplugues",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llobregat",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2159,
+    "attempt": 2143,
+    "place_id": "gn-3174530",
+    "input": {
+      "place": {
+        "place_id": "gn-3174530",
+        "name": "Lucca",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.84369,
+        "lon": 10.50447
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucca",
+          "url": "https://en.wikipedia.org/wiki/Lucca",
+          "text": "Lucca ( LOO-kə; Italian: [ˈlukka] ) is a city and comune in Tuscany, Central Italy, on the Serchio River, in a fertile plain. \nThe city has a population of about 89,000, while its province has a population of 383,957. Lucca is known as an Italian \"Città d'arte\" (City of Art) from its almost intact Renaissance-era city walls and its very well preserved historic center, where, among other buildings and monuments, are located the Piazza dell'Anfiteatro, which has its origins in the second half of the 1st century A.D., the Guinigi Tower, a 45-metre-tall (150 ft) tower that dates from the 14th century  and the Cathedral of San Martino.\nThe city is the birthplace of numerous world-class composers, including Giacomo Puccini, Alfredo Catalani, and Luigi Boccherini."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "lucca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2160,
+    "attempt": 2144,
+    "place_id": "gn-3374725",
+    "input": {
+      "place": {
+        "place_id": "gn-3374725",
+        "name": "Cidade Velha",
+        "country": "Cape Verde",
+        "subdivision": "Ribeira Grande de Santiago",
+        "lat": 14.91531,
+        "lon": -23.60527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cidade Velha",
+          "url": "https://en.wikipedia.org/wiki/Cidade_Velha",
+          "text": "Cidade Velha ([siˈdadɨ ˈvɛʎɐ], Portuguese for \"old city\", also: Santiago de Cabo Verde) is a city in the southern part of the island of Santiago, Cape Verde. Founded in 1462 by Portuguese traders, it is the oldest settlement in Cape Verde and its former capital. Once called Ribeira Grande by the Portuguese colonists, they changed its name to Cidade Velha in the late 18th century after relocating the capital to Praia. It is the seat of the Ribeira Grande de Santiago municipality.\nLocated on an island off Africa's northwest coast, this town was the first European colonial settlement in the tropics. Some of the meticulously planned original design of the site is still intact, including a royal fortress, two churches and a 16th-century town square. Today, Cidade Velha is an Atlantic shipping stop and centre for Creole culture. The city became a UNESCO World Heritage Site and is designated in 2009 as one of the Seven Wonders of Portuguese Origin in the World."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "cidade velha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cidade",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2161,
+    "attempt": 2145,
+    "place_id": "gn-3436177",
+    "input": {
+      "place": {
+        "place_id": "gn-3436177",
+        "name": "Balcarce",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -37.84638,
+        "lon": -58.25549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balcarce, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Balcarce,_Buenos_Aires",
+          "text": "San José de Balcarce (shortened to Balcarce) is a city in Buenos Aires Province (Argentina) about 51 km (32 mi) west of Mar del Plata with a population of approx 44,064 (2010 census). It is the head town of the Balcarce Partido (District of Balcarce). The UN/LOCODE is ARBCA.\nThe city is famous as the birthplace of Formula One legend Juan Manuel Fangio and today houses the Museo Juan Manuel Fangio (\"Juan Manuel Fangio\" Museum) and the Autódromo Juan Manuel Fangio, a motorsports circuit.\nThe town hall, cemetery portal and slaughterhouse were all designed by the architect Francisco Salamone, and contain elements of Art Deco style. Built in the late 1930s, these buildings were some of the first examples of modern architecture in rural Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "balcarce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2162,
+    "attempt": 2146,
+    "place_id": "gn-3532592",
+    "input": {
+      "place": {
+        "place_id": "gn-3532592",
+        "name": "Atlixco",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 18.90815,
+        "lon": -98.43613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atlixco",
+          "url": "https://en.wikipedia.org/wiki/Atlixco",
+          "text": "Atlixco (Nahuatl pronunciation: [aːˈt͡ɬiːʃko] ) is a city in the Mexican state of Puebla. It is a regional industrial and commercial center but economically it is much better known for its production of ornamental plants and cut flowers. The city was founded early in the colonial period, originally under the jurisdiction of Huejotzingo, but eventually separated to become an independent municipality. The municipality has a number of notable cultural events, the most important of which is the El Huey Atlixcayotl, a modern adaptation of an old indigenous celebration. This event brings anywhere from 800 to 1,500 participants from all over the state of Puebla to create music, dance, and other cultural and artistic performances. Atlixco joined the UNESCO Global Network of Learning Cities in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "atlixco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2163,
+    "attempt": 2147,
+    "place_id": "gn-3834601",
+    "input": {
+      "place": {
+        "place_id": "gn-3834601",
+        "name": "Tartagal",
+        "country": "Argentina",
+        "subdivision": "Salta",
+        "lat": -22.51682,
+        "lon": -63.8056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tartagal, Salta",
+          "url": "https://en.wikipedia.org/wiki/Tartagal,_Salta",
+          "text": "Tartagal (Spanish pronunciation: [taɾtaˈɣal]) is a tropical city in northern Argentina, in the province of Salta. It is located in the northeast of the province, within the General José de San Martín Department, of which it is the capital. It is located in the Yungas jungle, at the foot of the sub-Andean mountain ranges to the west and the Salta plains to the east. This location gives it a wide variety of flora and fauna, and its territory is home to eight indigenous communities. It stands out for the large density of large trees in its streets and squares, such as mangoes, algarrobos and lapachos. It is one of the few places in the world where the green macaw is not extinct in the wild.\nDue to its economy, it is the third most important city in the province, after Orán. It stands out as a center for oil and gas extraction, and also has strong activity in the forestry and agricultural sectors.\nIt is located 365 km from the provincial capital, Salta, 57 km from the border with Bolivia (so it is considered a border city), 103 km from the border with Paraguay, and 1736 km from Buenos Aires. Tartagal is connected to the rest of the province and the country through National Route 34, National Route 86 and through the General Mosconi airport, although the latter does not receive commercial flights at present.\nTartagal houses a regional headquarters of the National University of Salta and the Catholic University of Salta. It also has learning centers from the Siglo 21 and Blas Pascal universities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "tartagal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2164,
+    "attempt": 2148,
+    "place_id": "gn-5134295",
+    "input": {
+      "place": {
+        "place_id": "gn-5134295",
+        "name": "Rome",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.21285,
+        "lon": -75.45573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rome, New York",
+          "url": "https://en.wikipedia.org/wiki/Rome,_New_York",
+          "text": "Rome is a city in Oneida County, New York, United States, located in the central part of the state. The population was 32,127 at the 2020 census. Rome is one of two principal cities in the Utica–Rome Metropolitan Statistical Area, which lies in the \"Leatherstocking Country\" made famous by James Fenimore Cooper's Leatherstocking Tales, set in frontier days before the American Revolutionary War. Rome is in New York's 21st congressional district.\nThe city developed at an ancient portage site of Native Americans, including the historic Iroquois nations. This portage continued to be strategically important to Europeans, who also used the main 18th and 19th-century waterways, based on the Mohawk and Hudson rivers, that connected New York City and the Atlantic seaboard to the Great Lakes. The original European settlements developed around fortifications erected in the 1750s to defend the portage, in particular the British Fort Stanwix (1758) built in New York.\nFollowing the American Revolution, the settlement began to grow with the construction of the Rome Canal in 1796, to connect Wood Creek (leading to Lake Ontario) and the headwaters of the Mohawk River. In the same year the state created the Town of Rome as a section of Oneida County. For a time, the small community next to the canal was informally known as Lynchville, after the original owner of the property, the prominent wine merchant Dominick Lynch.\nThe New York State Legislature converted the Town of Rome into a city on February 23, 1870. The residents have called Rome the City of American History."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "rome",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2165,
+    "attempt": 2149,
+    "place_id": "gn-5344157",
+    "input": {
+      "place": {
+        "place_id": "gn-5344157",
+        "name": "Dublin",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.70215,
+        "lon": -121.93579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dublin, California",
+          "url": "https://en.wikipedia.org/wiki/Dublin,_California",
+          "text": "Dublin is a suburban city of the East Bay in California, United States. It is located within the Amador Valley of Alameda County's Tri-Valley region. It is located along the north side of Interstate 580 at the intersection with Interstate 680, roughly 35 miles (56 km) east of downtown San Francisco, 23 miles (37 km) east of downtown Oakland, and 31 miles (50 km) north of downtown San Jose.\nThe name \"Dublin\" is in reference to the city of Dublin, Ireland, because of the large number of Irish who lived in the area. The post office formally adopted the name in the 1890s. The area was first called Alamilla Springs, named after a spring located near the modern intersection of Dublin Boulevard and Dougherty Road. Another explanation suggests that the name may have developed from local references at the crossroads, either to a pair of inns known as the “Double Inns,” or to wagon drivers who would “double” their teams of horses before climbing a nearby hill.\nIts population was 72,589 as of the 2020 census, which had grown from 46,063 in 2010. In 2013, Dublin was the second fastest-growing city in the state of California, behind only Santa Clarita. In 2019, census data showed Dublin as one of the fastest-growing cities in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "dublin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2166,
+    "attempt": 2150,
+    "place_id": "gn-5352214",
+    "input": {
+      "place": {
+        "place_id": "gn-5352214",
+        "name": "Gilroy",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.00578,
+        "lon": -121.56828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gilroy, California",
+          "url": "https://en.wikipedia.org/wiki/Gilroy,_California",
+          "text": "Gilroy is a city in Santa Clara County, California, United States, south of the San Francisco Bay Area.  It had a population of 59,520 as of the 2020 census.\nGilroy's origins lie in the village of San Ysidro, which developed in the early 19th century from Rancho San Ysidro. This land had been granted to Californio ranchero Ygnacio Ortega in 1809. Following Ygnacio's death in 1833, his daughter Clara Ortega de Gilroy and son-in-law John Gilroy inherited the largest portion of the rancho, and began developing the settlement.\nWhen the town was incorporated in 1868, it was renamed in honor of John Gilroy, a Scotsman who had emigrated to California in 1814, naturalized as a Mexican citizen, adopted the Spanish language, and converted to Catholicism. These changes made him eligible to own land in this area of the Spanish Empire. In the process, he took the name Juan Bautista Gilroy.\nGilroy is known for its garlic crop and the Gilroy Garlic Festival, and is nicknamed the \"Garlic Capital of the World\". It is also known for boutique wine production, as part of the Santa Clara Valley AVA, mostly consisting of family vineyards around the base of the Santa Cruz Mountains to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "gilroy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2167,
+    "attempt": 2151,
+    "place_id": "gn-5786899",
+    "input": {
+      "place": {
+        "place_id": "gn-5786899",
+        "name": "Bellingham",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.75955,
+        "lon": -122.48822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellingham, Washington",
+          "url": "https://en.wikipedia.org/wiki/Bellingham,_Washington",
+          "text": "Bellingham ( BEL-ing-ham) is a city in and the county seat of Whatcom County in the U.S. state of Washington. It lies 21 miles (34 km) south of the Canada–United States border, between Vancouver, British Columbia, 52 miles (84 km) to the northwest and Seattle 90 miles (140 km) to the south.\nThe population was 91,482 at the 2020 census, and estimated to be 94,720 in 2023. It is the site of Western Washington University, Bellingham International Airport, and the southern terminus of the Alaska Marine Highway. Bellingham is the northernmost city with a population of more than 90,000 people in the contiguous United States.\nThe area around Bellingham Bay, named in 1792 by George Vancouver, is the ancestral home of several Coast Salish groups. European settlement in modern-day Bellingham began in the 1850s and several coal mining towns grew in later years. The city of Bellingham was incorporated in 1903 through the consolidation of several settlements, among them Fairhaven. Local industries shifted away from coal in the mid-20th century; the industrial areas on the Bellingham waterfront have undergone redevelopment into a mixed-use neighborhood since the 2000s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "bellingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2168,
+    "attempt": 2152,
+    "place_id": "gn-5800317",
+    "input": {
+      "place": {
+        "place_id": "gn-5800317",
+        "name": "Lake Stevens",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.0151,
+        "lon": -122.06374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Stevens, Washington",
+          "url": "https://en.wikipedia.org/wiki/Lake_Stevens,_Washington",
+          "text": "Lake Stevens is a city in Snohomish County, Washington, United States, that is named for the lake it surrounds. It is located 6 miles (9.7 km) east of Everett and borders the cities of Marysville to the northwest and Snohomish to the south. The city's population was 35,630 at the 2020 census.\nThe lake was named in 1859 for territorial governor Isaac Stevens and was originally home to the Skykomish in the Pilchuck River basin. The first modern settlement on Lake Stevens was founded at the northeastern corner of the lake in 1889. It was later sold to the Rucker Brothers, who opened a sawmill in 1907 that spurred early growth in the area, but closed in 1925 after the second of two major fires. The Lake Stevens area then became a resort community before developing into a commuter town in the 1960s and 1970s.\nLake Stevens was incorporated as a city in 1960, following an exodus of businesses from the downtown area to a new shopping center. The city has since grown through annexations to encompass most of the lake, including the original shopping center, and quadrupled in population from 2000 to 2010. A revitalized downtown area is planned alongside new civic buildings in the 2020s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "lake stevens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stevens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2169,
+    "attempt": 2153,
+    "place_id": "gn-6232064",
+    "input": {
+      "place": {
+        "place_id": "gn-6232064",
+        "name": "Manurewa",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -37.0182,
+        "lon": 174.88019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manurewa",
+          "url": "https://en.wikipedia.org/wiki/Manurewa",
+          "text": "Manurewa (Māori pronunciation: [manʉɾɛwa]) is a suburb in South Auckland, New Zealand, located 6 km (3.7 mi) south of Manukau Central, and 26 km (16 mi) southeast of the Auckland City Centre. It is home to the Auckland Botanic Gardens, which receives over a million visitors a year. Manurewa has a high proportion of non-European ethnicities, making it one of the most multi-cultural suburbs in New Zealand. Employment for many is at the many companies of nearby Wiri, Papakura, and at the steel mill at Glenbrook.\nThe area has been inhabited since at least the 13th century, and has cultural significance for Ngāti Te Ata Waiohua. Manurewa developed as a rural community after the Manurewa railway station opened in 1875, becoming a borough in 1937. The area saw suburban growth in the 1950s and 1960s, and became a shopping hub when Southmall Manurewa opened in 1967."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "manurewa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2170,
+    "attempt": 2154,
+    "place_id": "gn-1651555",
+    "input": {
+      "place": {
+        "place_id": "gn-1651555",
+        "name": "Ambarawa",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.26333,
+        "lon": 110.3975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambarawa",
+          "url": "https://en.wikipedia.org/wiki/Ambarawa",
+          "text": "Ambarawa is a town and an administrative district (kecamatan) of the Semarang Regency, located between the cities of Semarang and Salatiga in Central Java Province of Indonesia. Administratively, it is bordered by the districts of Banyubiru to the south, Jambu to the west, Bandungan to the north, and Bawen to the east.\nDuring colonial times, Ambarawa was an important railway hub connecting through regions in Java as far as Yogyakarta and Magelang.  The Semarang-Ambarawa-Magelang line was fully operational until 1977. It is the site of the Indonesian Railway Museum (Museum Kereta Api Ambarawa), which features a section of rack railway between Ambarawa to Bedono on the former Ambarawa-Magelang mainline. The 19th-century Fort Willem I penitentiary complex and military barrack is also located in Ambarawa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ambarawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2171,
+    "attempt": 2155,
+    "place_id": "gn-2634021",
+    "input": {
+      "place": {
+        "place_id": "gn-2634021",
+        "name": "Whitstable",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3607,
+        "lon": 1.0257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitstable",
+          "url": "https://en.wikipedia.org/wiki/Whitstable",
+          "text": "Whitstable ( ) is a town in the Canterbury district, on the north coast of Kent, England, at the convergence of the Swale and the Greater Thames Estuary, five miles (eight kilometres) north of Canterbury and two miles (three kilometres) west of Herne Bay. In 2021 it had a population of 32,196.\nThe town, formerly known as Whitstable-on-Sea, was famous for oysters, collected from beds beyond the low water mark from Roman times until the mid-20th century. The annual Whitstable Oyster Festival takes place during the summer.\nIn 1830, the Canterbury and Whitstable Railway, one of the earliest passenger services, opened. In 1832, the company built a harbour and extended the line to handle coal and other bulk cargos for the City of Canterbury. The railway has closed, but the harbour still plays an important role in the town's economy. The railway route is now a cycle path which leads to Canterbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "whitstable",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2172,
+    "attempt": 2156,
+    "place_id": "gn-2654728",
+    "input": {
+      "place": {
+        "place_id": "gn-2654728",
+        "name": "Bridlington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.08306,
+        "lon": -0.19192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridlington",
+          "url": "https://en.wikipedia.org/wiki/Bridlington",
+          "text": "Bridlington is a seaside town and civil parish in the East Riding of Yorkshire, England. It is on the Holderness part (Flamborough Head to the Humber estuary) of the Yorkshire Coast by the North Sea. The town is about 28 miles (45 km) north of Hull and 34 miles (55 km) east of York. The stream called Gypsey Race flows through the town and enters the North Sea at the harbour.\nThe Priory Church of St Mary and the associated Bayle (or gate) are Grade I listed buildings on the site of an Augustinian Priory. As a sea-fishing port, the town is known for shellfish, and is the largest lobster port in Europe, with over 300 tonnes of the crustaceans landed there each year. It has been termed the \"Lobster Capital of Europe\". Alongside manufacturing, retail and service firms, its main trade is summer tourism. It holds one of the UK's coastal weather stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "bridlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2173,
+    "attempt": 2157,
+    "place_id": "gn-2656406",
+    "input": {
+      "place": {
+        "place_id": "gn-2656406",
+        "name": "Banbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.0632,
+        "lon": -1.34222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banbury",
+          "url": "https://en.wikipedia.org/wiki/Banbury",
+          "text": "Banbury is an historic market town and civil parish on the River Cherwell in Oxfordshire, officially part of South East England.\nBanbury is a significant commercial and retail centre for the surrounding area of north Oxfordshire and southern parts of Warwickshire and Northamptonshire which are predominantly rural. Banbury's main industries are motorsport, car components, electrical goods, plastics, food processing and printing. Banbury is home to the Jacobs Douwe Egberts factory which was previously the world's largest coffee-producing facility, built in 1964. The town is famed for Banbury cakes, a spiced sweet pastry.\nBanbury is located 64 miles (103 km) north-west of London, 37 miles (60 km) south-east of Birmingham, 27 miles (43 km) south-east of Coventry and 22 miles (35 km) north-northwest of Oxford. The parish had a population of 54,335 at the 2021 Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "banbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2174,
+    "attempt": 2158,
+    "place_id": "gn-3084826",
+    "input": {
+      "place": {
+        "place_id": "gn-3084826",
+        "name": "Starogard Gdański",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 53.96396,
+        "lon": 18.52638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Starogard Gdański",
+          "url": "https://en.wikipedia.org/wiki/Starogard_Gda%C5%84ski",
+          "text": "Starogard Gdański (Polish pronunciation: [staˈrɔɡard ˈɡdaj̃skʲi] ; until 1950: Starogard; formerly German: Preußisch Stargard) is a city in Pomeranian Voivodeship in northern Poland with 48,328 inhabitants (2004). Starogard is the capital of Starogard County.\nFounded in the Middle Ages, Starogard is a city with various heritage sights including medieval defensive walls and towers. It was the location of the sejmik (local parliament) of the Pomeranian Voivodeship in the early modern period. In the late modern period, it was an important center of Polish resistance against the Germanisation policies of Prussia following the Partitions of Poland. Starogard is home to one of the oldest vodka factories in Poland, one of the largest and oldest psychiatric hospitals in Poland and notable basketball club SKS Starogard Gdański. Starogard is the second biggest city of the ethnocultural region of Kociewie (after Tczew). It is considered the capital of Kociewie, and as such it hosts the Museum of Kociewie Land, devoted to the history of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "starogard gdanski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "starogard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gdanski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2175,
+    "attempt": 2159,
+    "place_id": "gn-3472311",
+    "input": {
+      "place": {
+        "place_id": "gn-3472311",
+        "name": "Amparo",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.70111,
+        "lon": -46.76444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amparo, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Amparo,_S%C3%A3o_Paulo",
+          "text": "Amparo is a Brazilian municipality in the state of São Paulo. The population is of 72,677 (2020 est.) in an area of 445 km2 (172 sq mi). \nThe city is part of the \"Water-Circuit\", a cluster of towns in São Paulo state which are famous for natural fountains and water wells. One of the main events in the city is the Winter Festival, when some stages are set over the main plaza and presentations are scheduled for the whole month of July. A variety of music bands and artists are invited to the city, from sertanejo (a Brazilian form of country music) and heavy metal to Ballet. Although the event is more dedicated to the city local residents, it attracts tourists from other regions.\nAmparo is located about 50 kilometers from Campinas and 120 kilometers from São Paulo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "amparo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2176,
+    "attempt": 2160,
+    "place_id": "gn-4019869",
+    "input": {
+      "place": {
+        "place_id": "gn-4019869",
+        "name": "Abasolo",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.45031,
+        "lon": -101.53011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abasolo, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Abasolo,_Guanajuato",
+          "text": "Abasolo is a Mexican city (and municipality) located in the Southwest region of the state of Guanajuato. The municipality has an area of 601.73 square kilometres (1.98% of the surface of the state), and is bordered to the north by Pueblo Nuevo and Valle de Santiago, to the south by the state of Michoacán and Huanímaro, and to the west by Pénjamo and Cuerámaro. The municipality had 79,093 inhabitants according to the 2005 census. The city was estimated to have 28,100 inhabitants in 2020.\nIn pre-Columbian times the area was known as Cuitzeo or \"Place of skunks (Lugar de Zorrillos)\", by the mostly Purépecha inhabitants.\nAbasolo is named after José Mariano Abasolo, a Mexican patriot and leader of Mexico's war of independence against Spain.\nThe municipal president of Abasolo and its many smaller outlying communities is Job Eduardo Gallardo Santellano. \nThe archaeological site of Peralta is located near Abasolo, east of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "abasolo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
