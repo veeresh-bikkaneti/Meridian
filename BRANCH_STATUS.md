@@ -45,3 +45,15 @@ export function pinCompareLine(player: ResolvedPin | null, truth: ResolvedPin | 
 - Conflicts resolved: `package.json` (kept both `tier-filter.test.ts` and `reverse-geocode.test.ts` in the test list), `BRANCH_STATUS.md` (kept this branch's status).
 - Post-rebase fix: `result-card.test.ts` mock Run gained required `difficultyChoice: "medium"` (new required field from the difficulty merge).
 - Gates re-verified: tsc clean, 530/530 unit green.
+
+## E2E on rebased branch (2026-10-04)
+- `reveal-pin-compare.desktop.spec.ts`: 4/4 green across runs (one full run
+  3/4 + targeted re-run of the tile-flaked same-state test → green).
+- Post-rebase fix: seeded first globe deal moved Colombia → Hungary
+  (difficulty-tiers fame-weighted dealer); spec expectation updated.
+- Remaining flakes are environmental (satellite-tile CDN "failed", camera
+  settle timeouts under VM load) in setup steps, never in feature
+  assertions; gap-view-reveal verified identical to baseline aa69434
+  (same single pre-existing camera-timing failure on both).
+- Gates: tsc clean, 530/530 unit green, lint-cards GATE PASSED,
+  build:pages green.
