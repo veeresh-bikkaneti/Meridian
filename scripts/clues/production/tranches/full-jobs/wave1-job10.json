@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 185,
+    "attempt": 181,
+    "place_id": "gn-4560349",
+    "input": {
+      "place": {
+        "place_id": "gn-4560349",
+        "name": "Philadelphia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.95238,
+        "lon": -75.16362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Philadelphia",
+          "text": "Philadelphia (  FIL-ə-DEL-fee-ə), colloquially referred to as Philly, is the most populous city in the U.S. state of Pennsylvania and the sixth-most populous city in the United States. Its population was 1.60 million at the 2020 census and estimated at 1.57 million in 2025. The Philadelphia metropolitan area, also known as the Delaware Valley, is located in both the Mid-Atlantic and northeastern United States; home to 6.33 million residents, it is the nation's ninth-largest metropolitan area. Philadelphia is known for its culture, cuisine, and history, maintaining contemporary influence in technology and business, sports, and music.\nPhiladelphia was founded in 1682 by William Penn, an English Quaker and advocate of religious freedom, and served as the capital of the colonial era Province of Pennsylvania. It then played a vital role during the American Revolution and Revolutionary War. It served as the central meeting place for the nation's Founding Fathers in hosting the First Continental Congress (1774) and the Second Continental Congress, during which the Founders formed the Continental Army, elected George Washington as its commander, and adopted the Declaration of Independence on July 4, 1776. During the Revolutionary War's Philadelphia campaign, the city fell to the British Army, which occupied Philadelphia for nine months from September 1777 to June 1778. Following the end of the Revolutionary War, the U.S. Constitution was ratified at the Philadelphia Convention. Philadelphia remained the largest U.S. city until 1790, and it served as the nation's first capital from May 10, 1775, until December 12, 1776, and on four subsequent occasions until 1800, when construction of the new national capital in Washington, D.C. was completed.\nWith 17 four-year universities and colleges in the city, Philadelphia is one of the nation's leading centers for higher education and academic research. As of 2023, the Philadelphia metropolitan area had a gross metropolitan product of US$557.6 billion and is home to 13 Fortune 500 corporate headquarters. Metropolitan Philadelphia ranks as one of the nation's Big Five tech venture capital hubs, facilitated by its proximity central to both the financial ecosystems of New York City and the regulatory environment of Washington, D.C. Metropolitan Philadelphia is also a biotechnology hub and has garnered the nickname \"Cellicon Valley\" for its central role in the development of immunotherapies to treat different cancers. The Philadelphia Stock Exchange, owned by Nasdaq since 2008, is the nation's oldest stock exchange and a global leader in options trading. 30th Street Station, an important national railway crossroads, is the third-busiest Amtrak rail hub in the U.S., handling over 5.5 million passengers in 2025. In part aided by its central Mid-Atlantic U.S. geolocation, Philadelphia International Airport has become the largest transatlantic hub for American Airlines. The city's multimodal transportation and logistics infrastructure also includes the expanding PhilaPort seaport, and Interstate 95, the spine of the north–south highway axis linking the cities of the U.S. Eastern Seaboard.\nPhiladelphia has a culturally and philanthropically active LGBTQ+ community. The city has also played an influential historic and ongoing role in the development and evolution of American music, especially R&B, soul, and rock. The city hosts more outdoor sculptures and murals than any other city in the nation. Fairmount Park, when combined with adjacent Wissahickon Valley Park in the same watershed, has an area of 2,052 acres (830 ha), representing one of the nation's largest urban parks and the world's 55th largest. With five professional sports teams and one of the nation's most loyal and passionate fan bases, Philadelphia is often ranked as the nation's best city for professional sports fans.\nPhiladelphia is a city of many firsts, including the nation's first library (1731), hospital (1751), medical school (1765), national capital (1774), university (by some accounts) (1779), central bank (1781), stock exchange (1790), zoo (1874), and business school (1881). Philadelphia hosts 67 National Historic Landmarks, including Independence Hall. From the city's 17th century founding through the present, Philadelphia has been the birthplace of or home to many prominent and influential Americans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 656
+    },
+    "banned_terms": [
+      {
+        "term": "philadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 186,
+    "attempt": 182,
+    "place_id": "gn-7279746",
+    "input": {
+      "place": {
+        "place_id": "gn-7279746",
+        "name": "Noida",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.58,
+        "lon": 77.33
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noida",
+          "url": "https://en.wikipedia.org/wiki/Noida",
+          "text": "Noida, short for New Okhla Industrial Development Authority, is a city located in Gautam Buddha Nagar district in the Indian state of Uttar Pradesh. It is a part of the National Capital Region (NCR). Situated in the floodplain region between the Yamuna and the Hindon rivers, the city was established in 1976, and is regarded as one of the most systematically planned cities in India. It was designed under the NCR planning strategy to decentralise growth from Delhi. The Gautam Buddha Nagar District, which includes the cities of Noida, Greater Noida and YEIDA City contributes, over 10% to the Uttar Pradesh GSDP, more than 2.5 times the state capital district of Lucknow, which contributes 4%.\nNoida is frequently ranked as one of India's greenest cities, boasting over 50% green cover, including botanical gardens and biodiversity parks. The city emphasises sustainable development, green corridors, and high-quality landscaping. As per provisional reports of Census of India, the population of Noida in 2011 was 642,381. The city is managed and maintained by the New Okhla Industrial Development Authority (NOIDA). The district's administrative headquarters are in the nearby city of Greater Noida. The city is a part of the Noida (Vidhan Sabha) constituency and Gautam Buddha Nagar (Lok Sabha) constituency. Noida was ranked as the \"Best City in Uttar Pradesh\" in the \"Best City Awards\" conducted by ABP News in 2015. It is also ranked the cleanest city in medium category cities (cities with a population of 300,000 to 1,000,000) and 4th cleanest city among cities with less than 1,000,000 people.\nNoida is a prominent IT hub of India, for several software development companies, such as Microsoft, Arm Holdings, HCL, Samsung and Barclays. The city has evolved into a prominent economic engine, owing to concentrations of information technology firms, electronics assembly, automotive production, logistics facilities and news broadcasting houses. As of August 2025, Noida accommodates approximately 11,000 industrial units. Noida is the leading mobile manufacturing hub in India, home to the Samsung, Xiaomi, Google Pixel, Vivo and OPPO, collectively responsible for over 60% of India's mobile production. A new planned city, Greater Noida extensions further expand capacity with new SEZs and tech parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 359
+    },
+    "banned_terms": [
+      {
+        "term": "noida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 187,
+    "attempt": 183,
+    "place_id": "gn-747158",
+    "input": {
+      "place": {
+        "place_id": "gn-747158",
+        "name": "Fatih",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.0225,
+        "lon": 28.94083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fatih",
+          "url": "https://en.wikipedia.org/wiki/Fatih",
+          "text": "Fatih (Turkish pronunciation: [ˈfaːtih]) or the Historical peninsula (in Turkish: Tarihi Yarımada),  is a municipality and district of Istanbul Province, Turkey. Its area is 15 km2 (5.8 sq mi), and its population is 368,227 as of 2022. It is home to almost all of the provincial authorities (including the mayor's office, police headquarters, metropolitan municipality and tax office) but not the courthouse. It encompasses the historical peninsula, coinciding with old Constantinople. In 2009, the district of Eminönü, which had been a separate municipality located at the tip of the peninsula, was once again remerged into Fatih because of its small population. Fatih is bordered by the Golden Horn to the north and the Sea of Marmara to the south, while the Western border is demarked by the Theodosian wall and the east by the Bosphorus Strait."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "fatih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 188,
+    "attempt": 184,
+    "place_id": "gn-1253986",
+    "input": {
+      "place": {
+        "place_id": "gn-1253986",
+        "name": "Udaipur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.58584,
+        "lon": 73.71346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Udaipur",
+          "url": "https://en.wikipedia.org/wiki/Udaipur",
+          "text": "Udaipur (Hindi: IPA: [ʊdəjpʊɾ], ) (ISO 15919: Udayapura) is a city in the north-western Indian state of Rajasthan, about 415 km (258 mi) south of the state capital Jaipur. It serves as the administrative headquarters of Udaipur district. It is the historic capital of the kingdom of Mewar in the former Rajputana Agency. It was founded in 1559 by Udai Singh II of the Sisodia clan of Rajputs, when he shifted his capital from the city of Chittorgarh to Udaipur after Chittorgarh was besieged by Akbar. It remained as the capital city till 1818 when Mewar became a British princely state, and thereafter the Mewar province became a part of Rajasthan when India gained independence in 1947. It is also known as the City of Lakes, as it is surrounded by five major artificial lakes.\nThe city is located in the southernmost part of Rajasthan near the Gujarat border. To its west is the Aravalli Range, which separates it from the Thar Desert. It is placed close to the median point between two major Indian metro cities, around 660km from Delhi and 800km from Mumbai. Besides, connectivity with Gujarat ports gives Udaipur a strategic geographical advantage. Udaipur is well connected with nearby cities and states by means of road, rail and air transportation facilities. The city is served by the Maharana Pratap Airport. Common languages spoken include Mewari, Rajasthani, Hindi and English.\nDubbed \"the most romantic spot on the continent of India\" by British administrator James Tod, Udaipur is a tourist destination and is known for its history, culture, scenic locations and the Rajput-era palaces. It has seven lakes surrounding the city. Five of the major lakes, namely Fateh Sagar Lake, Lake Pichola, Swaroop Sagar Lake, Rangsagar, and Doodh Talai Lake, have been included under the restoration project of the National Lake Conservation Plan (NLCP) of the Government of India. Besides lakes, Udaipur is also known for its historic forts and palaces, museums, galleries, natural locations and gardens, architectural temples, as well as traditional fairs, festivals and structures. Due to the several lakes present here, it is one of several cities in Asia that are sometimes called the \"Venice of the East\". Udaipur's economy is primarily driven by tourism, though minerals, marble processing, chemical manufacturing and development, electronic manufacturing and the handicraft industry are also contributors. Udaipur hosts several state and regional public offices, including offices of Director of Mines and Geology, Commissioner of Excise, Commissioner of Tribal Area Development, and Rajasthan State Mines and Mineral Corporation Limited, as well as major private companies like Hindustan Zinc Limited. Udaipur is rising as an educational hub as well, with 5 universities, 14 colleges and more than 160 high schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 448
+    },
+    "banned_terms": [
+      {
+        "term": "udaipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 189,
+    "attempt": 185,
+    "place_id": "gn-1583992",
+    "input": {
+      "place": {
+        "place_id": "gn-1583992",
+        "name": "Da Nang",
+        "country": "Vietnam",
+        "subdivision": "Da Nang City",
+        "lat": 16.06778,
+        "lon": 108.22083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Da Nang",
+          "url": "https://en.wikipedia.org/wiki/Da_Nang",
+          "text": "Da Nang (Vietnamese: Đà Nẵng, pronounced [ɗa˨˩ naŋ˨˩˦ˀ], also written unspaced as Danang), is the fourth largest city in Vietnam by population and the second largest by geographical area and located in the South Central Coast and Central Highlands. As one of the country's nine centrally-governed city, it falls under the administration of the central government. Da Nang's port and its location on National Route 1 and the North–South Railway makes it a transport hub. APEC 2017 was hosted in Da Nang. Da Nang has a Human Development Index of 0.800 (very high), ranking fifth among all municipalities and provinces of Vietnam. \nThe city was known as Cửa Hàn (Hàn River Estuary) during Đại Việt period when it was a small settlement, and as Tourane (or Turon) during French colonial rule between 1884 and 1945. Before 1997, the city was part of Quang Nam–Da Nang province. On 1 January 1997, Da Nang was separated from Quảng Nam province to become one of the centrally controlled municipalities. Da Nang is designated as a first class city. In a proposal announced in April 2025, which came into force starting 1 July that year, the new Da Nang city was formed by reabsorbing Quảng Nam whilst maintaining its political and administrative centres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "da nang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 190,
+    "attempt": 186,
+    "place_id": "gn-1692565",
+    "input": {
+      "place": {
+        "place_id": "gn-1692565",
+        "name": "Pulilan",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.90167,
+        "lon": 120.84917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pulilan",
+          "url": "https://en.wikipedia.org/wiki/Pulilan",
+          "text": "Pulilan, officially the Municipality of Pulilan (Tagalog: Bayan ng Pulilan, Kapampangan: Balen ning Pulilan), is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 111,384 people.\nThe town is famous for its Carabao Festival where carabaos are paraded and kneel as they pass through San Isidro Labrador Parish Church, in honor to the town's patron saint, San Isidro Labrador.\nMany years ago, Pulilan was primarily a little-known rural town in the northern part of Bulacan where its economy heavily dependent on farming and poultry raising. Most of the population committed their entire lives on farming as their livelihood. Today, the town is moving towards commercialization and industrialization as it is becoming one of the major growth-rate area and center of commerce and industry in the province.\nBecause of the major economic growth, due to presence of commercial establishments, real estates, industrial plants and major road projects. Pulilan has experienced increased in the total gross income in the past few years. The town's income in year 2016 was P323.86 million, an increase of P69.27 million from its previous income in 2014. It surpass the income of fifteen municipalities in \nBulacan such as San Miguel, Bocaue, Plaridel, Hagonoy and Calumpit.\nWith the continuous expansion of Metro Manila, Pulilan is part of Manila's built-up area which reaches San Ildefonso, Bulacan at its northernmost part."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "pulilan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 191,
+    "attempt": 187,
+    "place_id": "gn-1714201",
+    "input": {
+      "place": {
+        "place_id": "gn-1714201",
+        "name": "Dumaguete",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.30646,
+        "lon": 123.30769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumaguete",
+          "url": "https://en.wikipedia.org/wiki/Dumaguete",
+          "text": "Dumaguete, officially the City of Dumaguete (Tagalog: [dʊmɐˈgɛtɛ]; Cebuano: Dakbayan sa Dumaguete; Filipino: Lungsod ng Dumaguete), is a component city and capital of the province of Negros Oriental, Philippines. According to the 2024 census, it has a population of 142,171 people. It is the most populous city and the smallest city by land area in Negros Oriental, as well as one of the two regional centers in Negros Island Region (the other one is Bacolod).\nDumaguete is a university city with four large universities and several colleges, attracting students from the province and across the country, mostly from the Visayas and Mindanao. The city is best known for Silliman University, the first Protestant and American university in the country and in Asia. Schools in Dumaguete include 18 public elementary schools and 10 public high schools.\nIn 2025, Dumaguete City has been designated as the country's first UNESCO Creative City of Literature.\nDumaguete is bounded by the towns of Bacong, Sibulan, and Valencia. The power source of the city comes from the geothermal power plant in Valencia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "dumaguete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 192,
+    "attempt": 188,
+    "place_id": "gn-1732811",
+    "input": {
+      "place": {
+        "place_id": "gn-1732811",
+        "name": "Kluang",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 2.03046,
+        "lon": 103.31689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kluang",
+          "url": "https://en.wikipedia.org/wiki/Kluang",
+          "text": "Kluang, formerly spelled Keluang, is a town and the district capital of Kluang District, Johor, Malaysia. Founded in 1915 by the British as the administrative capital for central Johor, Kluang is situated in the central geographical core of the state and lies within a 90-minute drive of major urban hubs across Johor.\nCombined with neighboring Batu Pahat, central Johor encompasses a total market catchment exceeding 700,000 residents. Throughout the 20th century, Kluang's agricultural economy transitioned from natural rubber cultivation to large-scale palm oil production. In recent decades, it has developed a major organic farming sector alongside ecotourism destinations such as Zenxin Organic Park, UK Agro Farm, and Kahang Organic Eco Rice Farm. The district also houses a significant industrial base, particularly in ceramic tile manufacturing, earning it a reputation as the \"tile capital of Malaysia\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "kluang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 193,
+    "attempt": 189,
+    "place_id": "gn-2666199",
+    "input": {
+      "place": {
+        "place_id": "gn-2666199",
+        "name": "Uppsala",
+        "country": "Sweden",
+        "subdivision": "Uppsala",
+        "lat": 59.85882,
+        "lon": 17.63889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uppsala",
+          "url": "https://en.wikipedia.org/wiki/Uppsala",
+          "text": "Uppsala ( up-SAH-lə; Swedish: [ˈɵ̂pːˌsɑːla] ; archaically spelled Upsala) is the capital of Uppsala County and the fourth-largest city in Sweden, after Stockholm, Gothenburg, and Malmö. It had 177,074 inhabitants in 2019.\nLocated 71 km (44 mi) north of the capital Stockholm, it is also the seat of Uppsala Municipality. Since 1164, Uppsala has been the ecclesiastical centre of Sweden, being the seat of the Archbishop of the Church of Sweden. Uppsala is home to Scandinavia's largest cathedral – Uppsala Cathedral, which was the frequent site of the coronation of the Swedish monarch until the late 19th century.\nUppsala Castle, built by King Gustav Vasa, served as one of the royal residences of the Swedish monarchs, and was expanded several times over its history, making Uppsala the secondary capital of Sweden during its greatest extent. Today, it serves as the residence of the Governor of Uppsala County.\nFounded in 1477, Uppsala University is the oldest centre of higher education in Scandinavia. Among the many scholars associated with the city are Anders Celsius, inventor of the centigrade temperature scale that now bears his name, and Carl Linnaeus, the father of taxonomy.\nOther Uppsala residents include filmmaker Ingmar Bergman, diplomat Dag Hammarskjöld, chemists Jöns Jacob Berzelius and Svante Arrhenius, actress Viveca Lindfors, and singer Malena Ernman."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "uppsala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 194,
+    "attempt": 190,
+    "place_id": "gn-3547398",
+    "input": {
+      "place": {
+        "place_id": "gn-3547398",
+        "name": "Matanzas",
+        "country": "Cuba",
+        "subdivision": "Matanzas Province",
+        "lat": 23.04388,
+        "lon": -81.58284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matanzas",
+          "url": "https://en.wikipedia.org/wiki/Matanzas",
+          "text": "Matanzas (Latin American Spanish: [maˈtansas]; Lucumi: Ayá Áta) is the capital of the Cuban province of Matanzas. Known for its poets, culture, and Afro-Cuban folklore, it is located on the northern shore of the island of Cuba, on the Bay of Matanzas (Spanish Bahia de Matanzas), 102 kilometres (63 mi) east of the capital Havana and 32 kilometres (20 mi) west of the resort town of Varadero.\nMatanzas is called the City of Bridges, for the seventeen bridges that cross the three rivers that traverse the city (Rio Yumuri, San Juan, and Canimar). For this reason it was referred to as the \"Venice of Cuba.\" It was also called \"La Atenas de Cuba\" (\"The Athens of Cuba\") for its poets.\nMatanzas is known as the birthplace of the music and dance traditions danzón and rumba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "matanzas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 195,
+    "attempt": 191,
+    "place_id": "gn-3838583",
+    "input": {
+      "place": {
+        "place_id": "gn-3838583",
+        "name": "Rosario",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.94682,
+        "lon": -60.63932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosario",
+          "url": "https://en.wikipedia.org/wiki/Rosario",
+          "text": "Rosario, officially the Autonomous City of Rosario, is a city in central Argentina, in the south of the province of Santa Fe. Located 300 km (186 mi) northwest of Buenos Aires on the west bank of the Paraná River, it is the country's third-most populous city after Buenos Aires and Córdoba. With a growing and important metropolitan area, Greater Rosario has an estimated population of 1,750,000 as of 2020. One of its main attractions includes the neoclassical, Art Nouveau, and Art Deco architecture that has been preserved in hundreds of residences, houses and public buildings. The city is also famous for being the birthplace of revolutionary Marxist Che Guevara and footballer Lionel Messi.\nRosario is the head city of the Rosario Department and is located at the heart of the major industrial corridor in Argentina. The city is a major railroad terminal and the shipping center for north-eastern Argentina. Ships reach the city via the Paraná River, which allows the existence of a 10-metre-deep (34 ft) port. The Port of Rosario is subject to silting and must be dredged periodically. Exports include wheat, flour, hay, linseed and other vegetable oils, corn, sugar, lumber, meat, hides, and wool. Manufactured goods include flour, sugar, meat products, and other foodstuffs. The Rosario-Victoria Bridge, opened in 2003, spans the Paraná River, connecting Rosario with the city of Victoria, across the Paraná Delta. The city plays a critical role in agricultural commerce, and thus finds itself at the center of a continuing debate over taxes levied on big-ticket agricultural goods such as soy.\nAlong with Paraná, Rosario is one of the few Argentine cities that cannot point to a particular individual as its founder. The city's patron is the \"Virgin of the Rosary\", whose feast day is 7 October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "rosario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 196,
+    "attempt": 192,
+    "place_id": "gn-5336899",
+    "input": {
+      "place": {
+        "place_id": "gn-5336899",
+        "name": "Chula Vista",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.64005,
+        "lon": -117.0842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chula Vista, California",
+          "url": "https://en.wikipedia.org/wiki/Chula_Vista,_California",
+          "text": "Chula Vista ( CHOO-lə VIST-ə; Spanish for 'Beautiful/Pretty View', Spanish pronunciation: [ˈtʃula ˈβista] ) is a city in San Diego County, California, United States. It is the second-most populous city in the San Diego metropolitan area, the seventh-most populous city in Southern California, the 15th-most populous city in the state of California, and the 81st-most populous city in the United States. The population was 275,487 as of the 2020 census, up from 243,916 as of the 2010 census. It is located in the South Bay, about halfway—7.5 miles (12.1 km)—between the two downtowns of the San Diego–Tijuana region. Chula Vista is named for its scenic location between San Diego Bay and coastal mountain foothills.\nThe area, along with San Diego, was inhabited by the Kumeyaay before contact from the Spanish, who later claimed the area. In 1821, Chula Vista became part of the newly declared Mexican Empire, which reformed as the First Mexican Republic two years later. California became part of the United States in 1848 as a result of the Mexican–American War, and was admitted to the union as a state in 1850.\nFounded in the early 19th century and incorporated in October 1911, fast population growth has recently been observed in the city. The city is home to the Chula Vista Elite Athlete Training Center, Sesame Place San Diego, North Island Credit Union Amphitheatre, Chula Vista Marina, and the Living Coast Discovery Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "chula vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 197,
+    "attempt": 193,
+    "place_id": "gn-1856177",
+    "input": {
+      "place": {
+        "place_id": "gn-1856177",
+        "name": "Nagasaki",
+        "country": "Japan",
+        "subdivision": "Nagasaki",
+        "lat": 32.75,
+        "lon": 129.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagasaki",
+          "url": "https://en.wikipedia.org/wiki/Nagasaki",
+          "text": "Nagasaki (長崎, Nagasaki; Japanese pronunciation: [na.ɡaꜜ.sa.kʲi, na.ŋa-], lit. 'Long Cape'), officially Nagasaki City (長崎市, Nagasaki-shi; [na.ɡa.sa.kʲi̥ꜜ.ɕi, na.ɡa.saꜜ.kʲi̥.ɕi, na.ŋa-]), is the capital and the largest city of Nagasaki Prefecture on the island of Kyushu in Japan.\nFounded by the Portuguese, the port of Nagasaki became the sole port used for trade with the Portuguese and Dutch during the 16th through 19th centuries. The Hidden Christian Sites in the Nagasaki Region have been recognized and included in the UNESCO World Heritage Sites list. Part of Nagasaki was home to a major Imperial Japanese Navy base during the First Sino-Japanese War and Russo-Japanese War. Near the end of World War II, the American atomic bombings of Hiroshima and Nagasaki made Nagasaki the second city in the world to experience a nuclear attack. The city was later rebuilt.\nAs of February 1, 2024, Nagasaki has an estimated population of 392,281, and a population density of 966 people per km2. The total area is 405.86 km2 (156.70 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "nagasaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 198,
+    "attempt": 194,
+    "place_id": "gn-2562305",
+    "input": {
+      "place": {
+        "place_id": "gn-2562305",
+        "name": "Valletta",
+        "country": "Malta",
+        "subdivision": "Valletta",
+        "lat": 35.89968,
+        "lon": 14.5148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valletta",
+          "url": "https://en.wikipedia.org/wiki/Valletta",
+          "text": "Valletta ( ; Maltese: il-Belt Valletta, lit. 'the city [of] Valletta', pronounced [ɪlˈbɛlt vɐˈlːɛtːɐ]), also known as Città Umilissima (transl. the Humblest City), is the capital city of Malta and one of its 68 council areas. Located between the Grand Harbour to the east and Marsamxett Harbour to the west, its population as of 2021 was 5,157. As Malta's capital city, it is a commercial centre for shopping, bars, dining, and café life. It is also the southernmost capital of Europe, and, at just 0.61 square kilometres (0.24 sq mi), it is the European Union's smallest capital city.\nValletta's 16th-century buildings were constructed by the Knights Hospitaller. The city was named after the Frenchman Jean Parisot de Valette, who succeeded in defending the island against an Ottoman invasion during the Great Siege of Malta. The city is Baroque in character, with elements of Mannerist, Neo-Classical, and Modern architecture, though the Second World War left major scars on the city, particularly the destruction of the Royal Opera House. The city was officially recognised as a World Heritage Site by UNESCO in 1980. The city has 320 monuments, all within an area of 0.55 square kilometres (0.21 sq mi), making it one of the most concentrated historic areas in the world. Sometimes called an \"open-air museum\", Valletta was chosen as the European Capital of Culture for 2018. Valletta was also listed as the sunniest city in Europe in 2016.\nThe city is noted for its fortifications, consisting of bastions, curtains and cavaliers, along with the beauty of its Baroque palaces, gardens and churches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "valletta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 200,
+    "attempt": 195,
+    "place_id": "gn-3632308",
+    "input": {
+      "place": {
+        "place_id": "gn-3632308",
+        "name": "Mérida",
+        "country": "Venezuela",
+        "subdivision": "Mérida",
+        "lat": 8.57899,
+        "lon": -71.16922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mérida, Mérida",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9rida,_M%C3%A9rida",
+          "text": "Mérida, officially known as Santiago de los Caballeros de Mérida, is the capital of the municipality of Libertador and the state of Mérida, and is one of the main cities of the Venezuelan Andes. It was founded in 1558 by Captain Juan Rodríguez Suárez, forming part of Nueva Granada, but later became part of the Captaincy General of Venezuela and played an active role in the War of Independence.\nThe capital city's population is 199,878 inhabitants, and the metropolitan area (including the municipalities of Libertador, Campo Elías, Sucre, and Santos Marquina) reaches 392,751 people (2011 census). The city accounts for 24% of the total population of Mérida State. It is home to the University of Los Andes and the Archdiocese of Mérida. It also has the highest and longest cable car in the world. It is the largest student and tourist center of western Venezuela. The mass transit system (Trolebús Mérida) is available as a means of tourist transport.\nThis city sits on a plateau nestled in the valley of the Chama River, which runs from end to end. The city of Mérida is located at an altitude of 1,600 metres (5,200 feet). Visible from the city is the country's highest summit Pico Bolívar, with an altitude of 4,981 metres (16,342 feet)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "merida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 201,
+    "attempt": 196,
+    "place_id": "gn-4006702",
+    "input": {
+      "place": {
+        "place_id": "gn-4006702",
+        "name": "Ensenada",
+        "country": "Mexico",
+        "subdivision": "Baja California",
+        "lat": 31.87149,
+        "lon": -116.60071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ensenada",
+          "url": "https://en.wikipedia.org/wiki/Ensenada",
+          "text": "Ensenada ('inlet', pronounced [enseˈnaða]) is a city in Ensenada Municipality, Baja California, situated on the Pacific Coast of Mexico. Located on Bahía de Todos Santos, the city had a population of 279,765 in 2018, making it the third-largest city in Baja California. The city is an important international trade center and home to the Port of Ensenada, the second-busiest port in Mexico. Ensenada is a major tourist destination, owing to its warm climate and proximity to the Pacific Ocean, and is commonly known as La Cenicienta del Pacífico (\"The Cinderella of the Pacific\").\nEnsenada was founded in 1882, when the small community of Rancho Ensenada de Santos was made the regional capital for the northern partition of the Baja California Territory. The city grew significantly with the proliferation of mines in the surrounding mountains. While the Mexican Revolution curtailed much of Ensenada's expansion, the onset of Prohibition in the United States transformed the city into a popular tourist destination for Americans seeking entertainment and alcohol. Ensenada's reputation as a resort town was cemented by the 1950s and 1960s, which saw a construction boom and the city's rise in international prominence outside of North America.\nToday, Ensenada is a major economic and cultural hub for Baja California. The city is home to numerous universities, like the Ensenada Institute of Technology and the Autonomous University of Baja California, Ensenada. Ensenada is an important biotechnology hub and is home to numerous research institutions, like the Ensenada Center for Scientific Research. The city is a member of the UNESCO Creative Cities Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "ensenada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 202,
+    "attempt": 197,
+    "place_id": "gn-5392900",
+    "input": {
+      "place": {
+        "place_id": "gn-5392900",
+        "name": "Santa Ana",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74557,
+        "lon": -117.86783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Ana, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Ana,_California",
+          "text": "Santa Ana (Spanish for 'Saint Anne') is a city in and the county seat of Orange County, California, United States. Located in the Greater Los Angeles region of Southern California, the city's population was 310,227 at the 2020 census. As of 2023, Santa Ana is the third most populous city in Orange County (after Anaheim and Irvine), the 14th-most populous city in California, and the 65th most populous city in the United States. Santa Ana is a major regional economic and cultural hub for the Orange Coast.\nIn 1810, the Spanish governor of California granted Rancho Santiago de Santa Ana to José Antonio Yorba. Following the Mexican War of Independence, the Yorba family rancho was enlarged, becoming one of the largest and most valuable in the region and home to a diverse Californio community. Following the American Conquest of California, the rancho was sold to the Sepúlveda family, who subsequently lost their land claim. In 1869, William H. Spurgeon then purchased the rancho and formally founded the modern city of Santa Ana.\nApproximately four-fifths Hispanic or Latino, Santa Ana has been characterized by The New York Times as the \"face of a new California, a state where Latinos have more influence in everyday life—electorally, culturally and demographically—than almost anywhere else in the country.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "santa ana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 203,
+    "attempt": 198,
+    "place_id": "gn-5729485",
+    "input": {
+      "place": {
+        "place_id": "gn-5729485",
+        "name": "Gresham",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.49818,
+        "lon": -122.43148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gresham, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Gresham,_Oregon",
+          "text": "Gresham ( GRESH-əm) is a city in the Willamette Valley, Located in Multnomah County in the U.S. state of Oregon, bordered by Portland to the northwest and partially in the southwest. It was first settled in the early 1850s by the Powell brothers. It remained unincorporated until 1905; it was named after Walter Quintin Gresham, an American Civil War general and United States Secretary of State.\nThe early economy of the city was primarily supported by agriculture, and by the mid-20th century, the city saw a population boom, increasing from 4,000 residents to more than 10,000 between 1960 and 1970. The population was 114,247 at the 2020 census, making it the second most populous city in the county and the fourth-most populous city in Oregon. Gresham is an economic center for eastern Multnomah County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gresham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 204,
+    "attempt": 199,
+    "place_id": "gn-610611",
+    "input": {
+      "place": {
+        "place_id": "gn-610611",
+        "name": "Aktobe",
+        "country": "Kazakhstan",
+        "subdivision": "Aktobe",
+        "lat": 50.27969,
+        "lon": 57.20718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aktobe",
+          "url": "https://en.wikipedia.org/wiki/Aktobe",
+          "text": "Aktobe (Kazakh: Ақтөбе, romanized: Aqtöbe, pronounced [ɑqtɵbʲé] ; Russian: Актобе) is a major city in western Kazakhstan, located on the river Ilek. It serves as the administrative center of the Aktobe Region and is an important cultural, economic, and industrial hub. As of 2023, the city had a population of 560,820, making it the fourth-largest city in Kazakhstan, and the largest in the western part of the country. It covers an expansive area of approximately 428.469 km2 and is strategically located to serve as a regional center for trade and commerce.\nAktobe is known for its natural resources, with two significant water reservoirs, Aktobe and Sazdy, supplying the city and surrounding areas. The city's economy is driven primarily by industries such as coal mining, metallurgy, and the extraction and processing of oil and gas. These industries have contributed to Aktobe's growth, transforming it into a vital center for energy production and heavy industry in Kazakhstan.\nAktobe's infrastructure has developed alongside its industrial growth. It is well-connected by road and rail to other major cities in Kazakhstan and neighboring countries. The city is undergoing rapid urbanization, with plans for further expansion and development. The agglomeration of Aktobe and surrounding settlements is expected to increase significantly in the coming years, with a projected population of around 1.3 million people. In addition to its industrial significance, Aktobe is a growing cultural center. It hosts a variety of cultural events and its educational institutions, including universities and technical schools, have contributed to its development as a center for higher learning and innovation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "aktobe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 205,
+    "attempt": 200,
+    "place_id": "gn-1267579",
+    "input": {
+      "place": {
+        "place_id": "gn-1267579",
+        "name": "Kashipur",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.21399,
+        "lon": 78.95693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kashipur, Uttarakhand",
+          "url": "https://en.wikipedia.org/wiki/Kashipur,_Uttarakhand",
+          "text": "Kashipur (Hindi: Kāshīpur [kaːʃiːpʊr]) is a city of Udham Singh Nagar district in the Indian state of Uttarakhand, and one of its seven subdivisions. Located in the western part of Udham Singh Nagar district, it is Kumaun's third most populous city and the sixth most populous in Uttarakhand. Its ancient name was \"Govisana\". According to the 2011 Census of India, the population is 121,623 for the city of Kashipur and 283,136 for Kashipur Tehsil. Kashipur also has IIM Kashipur, one of the thirteen Indian Institutes of Managements the government has set up during the Eleventh Five-year Plan.\nHistorically part of Kumaun, Kashipur is named after Kashinath Adhikari, the founder of the township and governor of the pargana, one of the officers of the Chand Kings of Kumaun in the 16th and 17th centuries. Kashipur remained under the rule of Chand Kings until the latter half of eighteenth century until Nand Ram, the then governor of Kashipur, became practically independent.\nKashipur was ceded to British in 1801, after which, it played a major role in the conquest of Kumaon during the Anglo-Gorkha war in 1815. After Kumaun was ceded to the British under the Treaty of Sugauli, Kashipur became the headquarters of Terai district in the Kumaon division. The Municipality of Kashipur was established in 1872, and was upgraded to a Municipal Corporation on 26 January 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "kashipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
