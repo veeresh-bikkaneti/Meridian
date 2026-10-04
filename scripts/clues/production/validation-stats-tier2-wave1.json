@@ -1,21 +1,13 @@
 {
   "attempted": 200,
-  "accepted": 53,
-  "workerRejected": 92,
-  "validatorRejected": 55,
+  "accepted": 94,
+  "workerRejected": 106,
+  "validatorRejected": 0,
   "malformedWorkerRejections": 0,
-  "validatorReasonHistogram": {
-    "QUOTE_UNTRACEABLE": 216,
-    "ALIAS_UNSOURCED": 1,
-    "READING_LEVEL": 231,
-    "NAME_LEAK": 5,
-    "SENTENCE_TOO_LONG": 1,
-    "SOURCE_ARTICLE_UNKNOWN": 5,
-    "CONTENT_BANNED": 1
-  },
+  "validatorReasonHistogram": {},
   "workerRejectionTierHistogram": {
-    "history": 18,
-    "climate": 72,
+    "history": 23,
+    "climate": 81,
     "giveaway": 1,
     "hook": 1
   },

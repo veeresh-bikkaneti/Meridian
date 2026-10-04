@@ -93,3 +93,34 @@ tranches/tier2-repairs/wave<W>-repair.jsonl; coordinator swaps them
 into the wave out files by place_id and re-folds until
 validatorRejected = 0.
 
+
+## WAVE 1 — COMPLETE, pending milestone-1 reviewer certification
+Fold (shipped validator, final): attempted 200, accepted 94,
+workerRejected 106, validatorRejected 0, malformed 0, pipeline issues [].
+Worker/conversion rejection tiers: climate 81, history 23, giveaway 1, hook 1.
+Pre-repair fold was 53 accepted / 55 validator-rejected; repair loop:
+mechanical answer-field repair (from input place), verbatim quote-span
+repair (62 quotes), then coordinator hand repairs in batches A-K
+(each record locally validated before applying). 14 records converted
+to honest fail-closed rejections during repair: San Pedro gn-1688749,
+Paarl gn-3363094, Zipaquirá gn-3665542 (no section extract in input —
+worker-cited climate sections did not exist); Ladysmith gn-984998,
+Fatih gn-747158 (same class); Richardson gn-4722625, Balneário
+Camboriú gn-3471039, Pulilan gn-1692565, Cabo San Lucas gn-3985710,
+Arnhem gn-2759661 (leads contain no founding/defining-event history);
+Gorzów gn-3098722 (bare Köppen label only), Blackburn gn-2655524
+(generic British-Isles pattern), Kumbo gn-2229748 (no section in
+input), Kluang gn-1732811 (geography section = landscape only).
+Victoria gn-6174041 + Detroit gn-4990729 tier-2 quotes CONFIRMED
+fabricated (job-5 worker flag) — replaced with verbatim section spans.
+Assembly: union records-tier2.jsonl accepted 323 (229 + 94);
+public/loop manifest size 323; assembler leak scan 0 hits / 1,615
+clue texts. Pool remaining after wave 1: 7,597.
+Repair-worker channel verdict: 3 spawned repair workers produced
+cross-contaminated/wrong-file output (quotes rotated across places) —
+discarded wholesale; 2 echo-gated canaries echoed perfectly but the
+two-phase gate stranded them before repairs. All wave-1 repairs were
+therefore coordinator-authored + locally validated; the independent
+reviewer still certifies the milestone.
+Wave-2 jobs are already built (10 x 20, pool ranks 218-425, committed
+8dcffe2) with inputs at .scratch/geodetective/tier2-inputs-wave2.jsonl.
