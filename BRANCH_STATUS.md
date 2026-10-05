@@ -1,20 +1,34 @@
-# BRANCH_STATUS.md — fix/gis-review-gaps
+# BRANCH_STATUS.md — feat/admin1-narrow-7
 
-**Branch:** `fix/gis-review-gaps` off `origin/main` @ `fab222e`
-**Worktree:** `~/workspace/meridian-worktrees/gis-gaps`
-**Mission:** Implement the two P0 gaps from the GIS Analyst map review (2026-10-05). Game code only. Veeresh merges.
+**Branch:** `feat/admin1-narrow-7` off `origin/main` @ `ea3117b`
+**Worktree:** `~/workspace/meridian-worktrees/admin1-narrow`
+**Mission:** Admin-1 NARROW scope — 7 countries ONLY (EG/FR/DE/IT/JP/MX/GB). Global scope explicitly REJECTED (Veeresh, 2026-10-05). Spec: `docs/admin1-gap-ticket.md` §7. Veeresh merges.
 
-## Scope (from gis-analyst-map-review.md)
-- [x] **P0-1 — Legend lies about color.** DONE 2026-10-05 (senior-developer + brand-guardian). **Brand Guardian decision:** the answer mark goes gold `#f2c14e` — the long-standing legend text ("gold is the true spot") wins; gold is the app's proven region-highlight color (region-highlight.ts `GOLD`, satellite-map highlight), verified visible on satellite imagery, and the diamond answer glyph stays distinct from the region boundary stroke — no symbology redesign. Changed `--map-answer` in all 4 theme blocks of `src/styles.css` (dark/light/paper/night: `#8fb8c6`/`#1d4e63` → `#f2c14e`) + the fallback in `src/map/colors.ts`; legend text untouched. Gates: `tsc --noEmit` clean · `npm test` 587/587 · `lint-cards` GATE PASSED · `build:pages` green · runtime browser check: built app resolves `--map-answer` to `#f2c14e` (real Chromium, /opt/meta-chromium). E2E honesty note: full reveal spec files flaked on VM infrastructure ("Couldn't load satellite imagery" tile-stub failures + tab crashes in test setup) — identical code failed then passed across reruns; all observed failures were setup/infra, zero assertion failures on card text, pin lines, or colors. PR #58 Your-pin regression assertions untouched and passing where the harness cooperated.
-- [x] **P0-2 — Bearing on the reveal.** DONE (2026-10-05). Misses now teach direction as well as magnitude: the miss headline reads "457 km northeast of your pin" (UX crews approved Veeresh's reference shape verbatim — kid-readable compass words; "your pin" anchors it to the player's action). `initialBearing()` did not exist — implemented pure/no-I/O in `src/game/geo.ts` alongside `distanceKm`, plus `windName8()` 8-wind snap (boundaries round up; null on coincident points → fail-closed to legacy "{dist} off"). Integration is miss-only in `ResultCard`'s `done` block (hit `story` block untouched), all three editions via the single card; `formatDistance` untouched; `data-testid="miss-headline"` added. Gates: `npx tsc --noEmit` ✓ · `npm test` 595/595 ✓ (11 new: 8 geo + 3 card) · `lint-cards.mjs` GATE PASSED ✓ · `build:pages` ✓. Real-browser E2E (live Chromium, built artifact): new `tests/e2e/reveal-bearing.desktop.spec.ts` 3/3 ✓ — country miss asserts the exact wind word against live screen geometry, state miss + hit (no bearing on hits), globe miss; `reveal-pin-compare` 4/4 ✓ (PR #58 lines); `gap-view-reveal` desktop 3/3 + reduced 2/2 ✓ (updated headline assertions); `reload-reveal` ✓. Honest caveats: `result-card-dismiss` + `reveal-your-pin-country-globe` go red in this VM on tile-network/watchdog/preload timeouts (load avg 13, renderer crashes observed) — every failure signature is in tile-status/overlay/preload assertions, none in bearing/pin-compare copy; also fixed a pre-existing data-zoom harness race in the gap-view specs (intro dive can outlast the shared settle check — now waits for the documented post-dive "2").
-- [x] **Ticket-3 — Admin-1 data gap** (scoped ticket, NO implementation this run): delivered as `docs/admin1-gap-ticket.md`. Measured: 1.2 MB / 116 features (AU 9, BR 27, CA 13, CN 31, IN 36), 121 props/feature (119 dead). Gameplay gap = exactly 7 countries (EG/FR/DE/IT/JP/MX/GB); map-context gap is global. Sources sized from published specs (no downloads): NE 50m full 2.22 MB (public domain, coverage unverified — Step 0 for impl crew), NE 10m 38.84 MB, GeoBoundaries gbOpen per-country simplified (7 countries ≈ 9.9 MB raw, mixed per-file licenses incl. ODbL/Etalab), GADM disqualified (no-redistribution license). Joint recommendation: narrow scope (7 countries) as lazy per-country chunks mirroring `loadRegionChunk`; PR #58 fallbacks stay. **Veeresh decision needed:** narrow vs global scope; if global, source (NE 10m→50m vs GeoBoundaries); bundled-data rule check.
-- [ ] **Handoff-4 — GeoDetective between-guess shading** belongs to the edition build (Multi-Agent Systems Architect coordinator). Confirm handoff; do not implement here.
+## Scope decisions (crew-lead calls, flagged for Veeresh in the PR)
+- **Step 0:** NE 50m full file (2,325,694 B, SHA256 pinned in build script) covers exactly 9 countries (AU BR CA CN ID IN RU US ZA) — all 7 gap countries MISSING (the in-code "only 9 countries" comment was correct).
+- **Source for the 7:** NE 10m → simplify (public domain, zero license bookkeeping), NOT GeoBoundaries (deviation from the ticket's §5 recommendation, which assumed partial coverage; all-7-missing makes the mixed licenses + ODbL share-alike a worse trade). Documented in `scripts/build-admin1.mjs`.
+- New chunks are TopoJSON (task-literal, repo convention); the legacy 5-country file stays GeoJSON, property-stripped in place.
+- One merged `boundary-admin1` layer (US folded in); `preloadAdmin1ForCountry` targeted top-up; PR #58 "near <city>" fallback stays as the fail-closed path.
 
-## Review loop — CLEAN (2026-10-05)
-- Review crew (code-reviewer + software-architect + SRE): all 5 dimensions PASS — correctness (bearing math independently verified, all 8 winds + boundaries + degenerate cases; legend/mark agree in all 4 themes), CLEAN/DDD/SOLID (pure `initialBearing`/`windName8` in `src/game/geo.ts`, no layer smearing), security (no new deps/network/secrets), deploy safety (build green, content-hashed CSS, cache-safe), no regressions (PR #58 Your-pin lines intact, story block byte-identical).
-- **ZERO BLOCKERS — signed off.** 4 tech-debt items logged (windName8 array hoist, antipodal epsilon guard, duplicated E2E helper, package.json test glob) — non-blocking.
-- Gates: tsc clean, 595/595 tests, card gate PASSED, build green, real-browser E2E on reveal paths.
+## Done
+- [x] **Step 0** (2026-10-05): downloaded NE 50m once from `nvkelso/natural-earth-vector` (genuine repo, byte size matches GitHub metadata); counted 294 features / 9 iso_a2; EG/FR/DE/IT/JP/MX/GB all missing. SHA256 `69a0e06e…c426b9` pinned in the build script. Raw files live in /tmp only — never committed.
+- [x] **Build script** `scripts/build-admin1.mjs` (checked in, deterministic): verifies NE 10m SHA256 (`22d0e3ad…958185da62fb5`, 40,726,851 B) fail-closed → per-feature adaptive Douglas-Peucker to ≈300 verts/feature (genuine 50m measures 108–1084, typically 130–260) → slim `{name, iso_a2, bbox}` → TopoJSON (topojson-server@3.0.1, OSV clean, quantization 1e4) → `src/map/data/admin1/<iso2>.json`. Includes a **build-time verification gate** (decodes every chunk: feature counts, finite bboxes, valid closed rings, every vertex inside its padded bbox) — caught 2 real bugs during development (doubly-nested Polygons; per-feature vs global quantization pad).
+- [x] **Data outputs:** 7 chunks ≈ 531 KB total TopoJSON (eg 36 KB, fr 118 KB, de 55 KB, it 134 KB, jp 80 KB, mx 107 KB, gb 142 KB); legacy `ne-50m-admin-1.json` 1.2 MB → 808 KB (119 dead properties killed, geometry byte-identical). 17 capital/border pin probes resolve correctly (Paris→"Paris", Berlin→"Berlin", Roma, Tokyo, Al Qahirah, Distrito Federal, Westminster…).
+- [x] **Code:** `reverse-geocode.ts` — `preloadAdmin1ForCountry` (fail-closed cache + retry eviction, unknown iso2 → null), `admin1ChunkIso2ForRegion`, bbox pre-filter in `admin1At` (us-atlas bboxes computed at load via d3 geoBounds; NE lists carry bbox); `boundary-bands.ts` — one merged `boundary-admin1` layer (partial-failure tolerant, cache evicted for retry); `game-app.tsx` — 10s tick also warms the played country's chunk. PR #58 fallback untouched.
+- [x] **Unit tests:** 42/42 green (reverse-geocode: chunk loader idempotency/fail-closed/schema/pin resolution/pin-compare; boundary-bands: merged layer, 738-feature multi-country source, idempotency, no-labels).
+- [x] **tsc --noEmit** clean.
+- [x] **Attribution:** all-NE public domain — no attribution change needed (confirmed, nothing non-PD vendored).
+
+## Pending
+- [ ] Full `npm test` (only the 2 touched suites run so far)
+- [ ] `node scripts/lint-cards.mjs` gate
+- [ ] `npm run build:pages` + verify dist chunk layout → SW runtime-caching coverage for `/Meridian/assets/*` chunks (offline = country-lines fallback, never a hang)
+- [ ] Real-browser Playwright E2E on the built artifact: France + Japan country editions (classic pin-compare line), Italy classic-path update + aborted-chunk fallback test (PR #58 fail-closed proof), existing reveal specs regression
+- [ ] Self-review (code-reviewer + software-architect + SRE): zero blockers
+- [ ] Ticket `docs/admin1-gap-ticket.md` §7 checklist update
+- [ ] Open PR (target main) — NEVER merge; Veeresh merges
 
 ## Rules
-- Stage named files only. Push early and often. Never break State/Country/Globe editions — the PR #58 Your-pin lines are regression-tested.
+- Stage named files only. Push early and often. Never break State/Country/Globe editions — PR #58 Your-pin lines are regression-tested.
 - Learning outcomes first. No labels on the map — ever.
+- Genuine NE source only; pinned hashes; no build-time network in CI; nothing fetched at runtime.

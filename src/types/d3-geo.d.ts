@@ -17,6 +17,8 @@ declare module "d3-geo" {
 
   export function geoArea(object: unknown): number;
   export function geoContains(object: unknown, point: LonLat): boolean;
+  /** Bounding box [[west, south], [east, north]] in degrees. */
+  export function geoBounds(object: unknown): [[number, number], [number, number]];
   export function geoOrthographic(): GeoProjection;
   export function geoMercator(): GeoProjection;
   export function geoAlbersUsa(): GeoProjection;

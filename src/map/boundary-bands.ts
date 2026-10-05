@@ -4,16 +4,18 @@
  * As the user zooms, context boundaries switch by band:
  *   z < 3          → continent outlines (Natural Earth land-110m)
  *   3 ≤ z < 6      → country boundaries (Natural Earth countries-50m)
- *   z ≥ 6          → state/province boundaries (US states-10m + NE admin-1
- *                    for AU/BR/CA/CN/IN) PLUS country boundaries (so regions
- *                    without admin-1 data still show context)
+ *   z ≥ 6          → state/province boundaries (one merged `boundary-admin1`
+ *                    layer: US states-10m + NE 50m AU/BR/CA/CN/IN + the 7
+ *                    narrow-scope chunks EG/FR/DE/IT/JP/MX/GB) PLUS country
+ *                    boundaries (so regions without admin-1 data still show
+ *                    context)
  *
  * Design constraints (Veeresh, 2026-09-30):
  * - NO text labels at any zoom/mode — naming things is the game.
  * - Boundaries are subtle context only; the quiz region highlight stays
  *   dominant (gold, 4.5px). Boundary lines are thin gray, rendered beneath
  *   the highlight layers.
- * - Zero-cost data: all bundled (world-atlas, us-atlas, vendored NE 50m).
+ * - Zero-cost data: all bundled (world-atlas, us-atlas, vendored NE).
  * - Reduced-motion: bands render statically, no animated transitions.
  *
  * The module is pure except for the MapLibre paint calls and the memoized
@@ -21,11 +23,14 @@
  * paint functions are idempotent — calling paintBoundaryBand with the same
  * band twice is a no-op, and switching bands removes the old layers.
  *
- * Data provenance: ne-50m-admin-1.json vendored from
- * https://github.com/nvkelso/natural-earth-vector (public domain),
- * geojson/ne_50m_admin_1_states_provinces.geojson, filtered to AU/BR/CA/CN/IN
- * (116 features, 1.2MB). The 50m admin-1 dataset only includes 9 countries
- * total; the others fall back to country boundaries.
+ * Data provenance (all public domain, Natural Earth):
+ * - ne-50m-admin-1.json: nvkelso/natural-earth-vector,
+ *   geojson/ne_50m_admin_1_states_provinces.geojson, filtered to
+ *   AU/BR/CA/CN/IN (116 features), property-stripped to {name, iso_a2}.
+ * - admin1/<iso2>.json (eg/fr/de/it/jp/mx/gb): built by
+ *   scripts/build-admin1.mjs from ne_10m_admin_1_states_provinces.geojson
+ *   (the 50m file covers only 9 countries — Step-0 verified 2026-10-05),
+ *   simplified to 50m-equivalent density, TopoJSON.
  */
 
 import type { Map } from "maplibre-gl";
@@ -53,13 +58,11 @@ export function bandForZoom(zoom: number): BoundaryBand {
 // Layer IDs (prefixed to avoid collisions with the region highlight).
 const CONTINENTS_LAYER_ID = "boundary-continents";
 const COUNTRIES_LAYER_ID = "boundary-countries";
-const US_STATES_LAYER_ID = "boundary-us-states";
-const NE_ADMIN1_LAYER_ID = "boundary-ne-admin1";
+const ADMIN1_LAYER_ID = "boundary-admin1";
 
 const CONTINENTS_SOURCE_ID = "boundary-src-continents";
 const COUNTRIES_SOURCE_ID = "boundary-src-countries";
-const US_STATES_SOURCE_ID = "boundary-src-us-states";
-const NE_ADMIN1_SOURCE_ID = "boundary-src-ne-admin1";
+const ADMIN1_SOURCE_ID = "boundary-src-admin1";
 
 // Subtle gray — visible against the starfield/satellite, but never
 // competing with the gold quiz highlight.
@@ -91,20 +94,18 @@ async function paintBoundaryBandAsync(map: Map, band: BoundaryBand): Promise<voi
       want.add(COUNTRIES_LAYER_ID);
       ensureLineLayer(map, COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID, await getCountries50m());
     } else {
-      // Admin1 band: US states + NE admin-1 for 5 countries, PLUS country
-      // boundaries so regions without admin-1 data (e.g. France, Japan)
-      // still show context. The country layer is cached from the countries
-      // band, so this is cheap.
+      // Admin1 band: one merged boundary-admin1 layer (US states + NE 50m
+      // 5-country + the 7 narrow-scope chunks) PLUS country boundaries so
+      // regions without admin-1 data still show context. The country layer
+      // is cached from the countries band, so this is cheap.
       want.add(COUNTRIES_LAYER_ID);
-      want.add(US_STATES_LAYER_ID);
-      want.add(NE_ADMIN1_LAYER_ID);
+      want.add(ADMIN1_LAYER_ID);
       ensureLineLayer(map, COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID, await getCountries50m());
-      ensureLineLayer(map, US_STATES_SOURCE_ID, US_STATES_LAYER_ID, await getUsStates10m());
-      ensureLineLayer(map, NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID, await getNeAdmin1());
+      ensureLineLayer(map, ADMIN1_SOURCE_ID, ADMIN1_LAYER_ID, await getAdmin1Merged());
     }
 
     // Remove layers for bands we're not showing.
-    for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, US_STATES_LAYER_ID, NE_ADMIN1_LAYER_ID]) {
+    for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, ADMIN1_LAYER_ID]) {
       if (!want.has(id) && map.getLayer(id)) {
         map.removeLayer(id);
       }
@@ -113,8 +114,7 @@ async function paintBoundaryBandAsync(map: Map, band: BoundaryBand): Promise<voi
     for (const [sourceId, layerId] of [
       [CONTINENTS_SOURCE_ID, CONTINENTS_LAYER_ID],
       [COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID],
-      [US_STATES_SOURCE_ID, US_STATES_LAYER_ID],
-      [NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID],
+      [ADMIN1_SOURCE_ID, ADMIN1_LAYER_ID],
     ] as const) {
       if (!want.has(layerId) && map.getSource(sourceId)) {
         map.removeSource(sourceId);
@@ -130,10 +130,10 @@ async function paintBoundaryBandAsync(map: Map, band: BoundaryBand): Promise<voi
  * Removes all boundary layers and sources. Called on map teardown.
  */
 export function clearBoundaryBands(map: Map): void {
-  for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, US_STATES_LAYER_ID, NE_ADMIN1_LAYER_ID]) {
+  for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, ADMIN1_LAYER_ID]) {
     if (map.getLayer(id)) map.removeLayer(id);
   }
-  for (const id of [CONTINENTS_SOURCE_ID, COUNTRIES_SOURCE_ID, US_STATES_SOURCE_ID, NE_ADMIN1_SOURCE_ID]) {
+  for (const id of [CONTINENTS_SOURCE_ID, COUNTRIES_SOURCE_ID, ADMIN1_SOURCE_ID]) {
     if (map.getSource(id)) map.removeSource(id);
   }
 }
@@ -223,4 +223,85 @@ function getNeAdmin1(): Promise<FeatureCollection<Geometry>> {
     );
   }
   return neAdmin1Promise;
+}
+
+/** ISO2 codes with a vendored admin1 chunk (lowercase, matches filenames). */
+const ADMIN1_CHUNK_ISO2 = ["eg", "fr", "de", "it", "jp", "mx", "gb"] as const;
+
+function getAdmin1Chunk(iso2: string): Promise<FeatureCollection<Geometry>> {
+  return import(`./data/admin1/${iso2}.json`, { with: { type: "json" } }).then((mod) => {
+    const topo = mod.default as unknown as { objects: { admin1: unknown } };
+    return feature(topo, topo.objects.admin1) as unknown as FeatureCollection<Geometry>;
+  });
+}
+
+function toFeatures(
+  data: FeatureCollection<Geometry> | Feature<Geometry>,
+): Feature<Geometry>[] {
+  const asCollection = data as FeatureCollection<Geometry>;
+  return Array.isArray(asCollection.features) ? asCollection.features : [data as Feature<Geometry>];
+}
+
+// --- Merged admin-1 source -------------------------------------------
+//
+// One `boundary-admin1` layer for the whole admin-1 band: US states +
+// the NE 50m 5-country file + the 7 narrow-scope chunks, merged into a
+// single GeoJSON source. Chunks load in parallel; a failed part is left
+// out of this paint but the merged cache is evicted so the next zoomend
+// retries it (the country-context layer paints regardless — fail closed).
+
+let admin1MergedPromise: Promise<FeatureCollection<Geometry>> | null = null;
+
+function getAdmin1Merged(): Promise<FeatureCollection<Geometry>> {
+  if (!admin1MergedPromise) {
+    admin1MergedPromise = buildAdmin1Merged().catch((err) => {
+      // Total failure: evict so the next zoomend retries; the band's
+      // outer catch no-ops this paint (country lines still show).
+      admin1MergedPromise = null;
+      throw err;
+    });
+  }
+  return admin1MergedPromise;
+}
+
+async function buildAdmin1Merged(): Promise<FeatureCollection<Geometry>> {
+  const settled = await Promise.allSettled([
+    // us-atlas features carry no iso_a2 — tag them so the merged source
+    // has a uniform schema (shallow copies; the cached originals stay
+    // untouched for any other consumer).
+    getUsStates10m().then((data) =>
+      toFeatures(data).map((f) => ({
+        ...f,
+        properties: { ...(f.properties as object), iso_a2: "US" },
+      })),
+    ),
+    getNeAdmin1().then(toFeatures),
+    ...ADMIN1_CHUNK_ISO2.map((iso) => getAdmin1Chunk(iso).then(toFeatures)),
+  ]);
+  const features: Feature<Geometry>[] = [];
+  let ok = 0;
+  for (const s of settled) {
+    if (s.status === "fulfilled") {
+      ok += 1;
+      features.push(...s.value);
+    }
+  }
+  if (ok === 0) throw new Error("admin1: every source failed");
+  if (ok < settled.length) {
+    // Partial merge: paint what loaded now, but evict the cache so the
+    // next zoomend retries the failed parts (see the assignment dance in
+    // getAdmin1Merged — this runs before the outer promise settles).
+    admin1MergedPromise = null;
+  }
+  return { type: "FeatureCollection", features };
+}
+
+/** Test seam: feature count of the merged admin-1 source. */
+export async function admin1MergedFeatureCountForTests(): Promise<number> {
+  return (await getAdmin1Merged()).features.length;
+}
+
+/** Test seam: drop the merged cache so tests can observe fresh loads. */
+export function clearAdmin1MergedCacheForTests(): void {
+  admin1MergedPromise = null;
 }

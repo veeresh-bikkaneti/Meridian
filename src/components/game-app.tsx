@@ -3,7 +3,7 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
-import { preloadAdmin1Boundaries } from "@/game/reverse-geocode";
+import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import {
   clearRunAfterUncleanShutdown,
   handlePageHide,
@@ -716,8 +716,15 @@ export function GameApp() {
         // "idle" fires while tiles are still in flight). resolvePin fails
         // closed to country-only until the cache populates. Fire-and-forget:
         // preloadAdmin1Boundaries is specified non-throwing.
+        // Country editions with a vendored admin-1 chunk (EG/FR/DE/IT/JP/
+        // MX/GB) warm just that chunk on the same tick — the reveal's
+        // pin-compare line can then name departments/provinces instead of
+        // falling back to the "near <city>" line. Null for other editions:
+        // no fetch attempted.
         window.setTimeout(() => {
           void preloadAdmin1Boundaries();
+          const chunkIso2 = admin1ChunkIso2ForRegion(regionId);
+          if (chunkIso2) void preloadAdmin1ForCountry(chunkIso2);
         }, 10000);
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
