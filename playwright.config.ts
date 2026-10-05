@@ -163,7 +163,6 @@ export default defineConfig({
       testMatch: /question-card-header\.spec\.ts/,
     },
     {
-<<<<<<< HEAD
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
     },
