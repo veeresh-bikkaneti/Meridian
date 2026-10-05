@@ -91,6 +91,6 @@ here consumes main's production content; no game code touches clue content.
   `day.ts` (UTC index math + `?loop-date=` seam), `evaluate.ts` (input
   ranking/index), `guess-input.tsx` (combobox), `LoopScreen.tsx` (screen)
 - `scripts/build-loop.mjs` — data pipeline (seed verification, name
-  index, manifest); `scripts/build-loop.test.mjs` — 19 pipeline tests
-- `public/loop/` — `manifest.json`, `names.json` (119,045-entry guess
-  index), `clues/{index}.json`
+  index, manifest); `scripts/build-loop.test.mjs` — 11 pipeline tests
+- `public/loop/` — `manifest.json`, `names.json` (119,038-entry guess
+  index, built by `build-loop.mjs`), `clues/{index}.json`

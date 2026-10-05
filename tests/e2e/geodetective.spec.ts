@@ -5,8 +5,8 @@ import { serveBuiltArtifact } from "./helpers";
  * GeoDetective Phase 3 deploy-gate E2E.
  *
  * Deterministic days via the `?loop-date=` seam (inert in production):
- *   2026-10-03 -> clue 5 -> New York (geonames:5128581)
- *   2026-10-04 -> clue 6 -> London   (geonames:2643743)
+ *   2026-10-03 -> clue 218 -> Ankara (geonames:323786)
+ *   2026-10-04 -> clue 219 -> Tarija (geonames:3903320)
  *
  * The built Pages artifact is served from disk (see helpers.ts); the loop
  * data (manifest, clues, names index) ships in dist/client/loop/.
@@ -51,17 +51,17 @@ test("loop-date seam pins the day; UTC date header matches", async ({ page }) =>
 test("win path: clues unlock in order, correct guess wins, share text formats", async ({
   page,
 }) => {
-  await openLoop(page, "2026-10-03"); // New York
+  await openLoop(page, "2026-10-03"); // Ankara
 
   // Clue 1 visible; clue 2 locked before any guess.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toContainText(
-    "Five boroughs",
+    "capital of Turkey",
   );
   await expect(page.getByRole("article", { name: /Clue 2: Climate \(locked\)/ })).toContainText(
     "Unlocks after your next guess.",
   );
 
-  // Wrong guess 1: Paris. Far from New York -> red square in share.
+  // Wrong guess 1: Paris. Far from Ankara -> red square in share.
   await guess(page, "paris");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   await expect(
@@ -82,9 +82,9 @@ test("win path: clues unlock in order, correct guess wins, share text formats", 
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   expect(await guessCount(page)).toBe(1);
 
-  // Correct guess: New York City.
-  await guess(page, "new york");
-  await expect(page.getByRole("heading", { name: "New York City, New York, United States" })).toBeVisible();
+  // Correct guess: Ankara.
+  await guess(page, "ankara");
+  await expect(page.getByRole("heading", { name: "Ankara, Türkiye" })).toBeVisible();
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
   await expect(page.getByText("Solved in 2 guesses.")).toBeVisible();
 
@@ -122,7 +122,7 @@ test("reload mid-game restores the day state", async ({ page }) => {
 test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async ({
   page,
 }) => {
-  await openLoop(page, "2026-10-04"); // London
+  await openLoop(page, "2026-10-04"); // Tarija
 
   for (const q of ["paris", "tokyo", "sydney", "cairo", "new york"]) {
     await guess(page, q);
@@ -131,19 +131,19 @@ test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async 
   await expect(page.getByText("Out of guesses")).toBeVisible();
   // The giveaway clue (tier 5) is revealed and names the landmark.
   await expect(page.getByRole("article", { name: /Clue 5: Giveaway/ })).toContainText(
-    "Big Ben",
+    "Central Valley",
   );
   // The answer is looked up from the guess index on a loss.
   await expect(
-    page.getByRole("heading", { name: "London, United Kingdom" }),
+    page.getByRole("heading", { name: "Tarija, Bolivia" }),
   ).toBeVisible({ timeout: 15_000 });
   // No locked cards remain on a finished day.
   await expect(page.getByText("Unlocks after your next guess.")).toHaveCount(0);
 
   const share = page.locator("pre", { hasText: "meridian geodetective" });
   await expect(share).toContainText("meridian geodetective October 4");
-  // Proximity-graded: Paris is <500 km from London (yellow), the rest far (red).
-  await expect(share).toContainText(/🟨🟥🟥🟥🟥 not solved/);
+  // Proximity-graded: all five guesses are >2000 km from Tarija (red).
+  await expect(share).toContainText(/🟥🟥🟥🟥🟥 not solved/);
 });
 
 test("unknown guess consumes nothing; no-match message is friendly", async ({ page }) => {
