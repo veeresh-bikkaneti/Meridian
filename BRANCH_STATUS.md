@@ -19,7 +19,18 @@
 - [x] Pushed to origin (commit c705e7d)
 
 ## In progress
-- [ ] E2E: pin-compare line in country AND globe editions; state unchanged (standing Meridian E2E gate — design §4.3: `tests/e2e/reveal-pin-compare.desktop.spec.ts`, `EXPECTED_BAHIA_LINE` preserved by the classic fallback)
+- [x] E2E: pin-compare line in country AND globe editions; state unchanged — DONE 2026-10-04 (E2E crew):
+  - Existing `tests/e2e/reveal-pin-compare.desktop.spec.ts`: 4/4 green, no regressions — `EXPECTED_BAHIA_LINE` ("Your pin: Bahia · True spot: Hungary") still passes via the classic fallback; ocean/hit/state cases unchanged.
+  - New `tests/e2e/reveal-your-pin-country-globe.desktop.spec.ts`: 6/6 green, plus a 3× repeat run (18/18 green, 0 flakes, 10.1 min):
+    1. country (Italy): Sardinia pin (forced Sassari Q1, recorded settled spot) + Calabria truth (forced Catanzaro Q1) → `Your pin: near <town>, Sardinia · True spot: Catanzaro, Calabria`
+    2. country (India): Maharashtra pin (forced Mumbai Q1) + Karnataka truth (forced Bengaluru Q1, Easy band) → `Your pin: near <town>, Maharashtra · True spot: Bengaluru, Karnataka` — never silently dropped (Veeresh's working reference)
+    3. globe: Sevilla pin + Debrecen (Hungary) truth (Easy band) → `Your pin: near <town>, Andalusia, Spain · True spot: Debrecen, Hajdú-Bihar, Hungary` — country suffixes on both sides
+    4. country (Italy): ocean pin (probed (1360,780)) → NO line, fail-closed, card otherwise identical
+    5. country (Italy): hit via commitHit → NO pin-compare line
+    6. state (Nebraska): regression → `Right state, wrong town!` byte-identical
+  - Determinism: seen-store seeding (`meridian:seen:v2:<edition>:<regionId>:<band>` = all pool ids except target, from the shipped chunk JSON + starters.ts) forces Q1; two-run pattern (record pin spot in run A, tap it in run B after sessionStorage.clear() + fresh boot — a plain reload would restore run A); waitForSpotSettle covers the globe intro dive.
+  - Probe learnings (baked into the spec): (a) seedSeenExcept + commitHit burns exhaust the band into the "You cleared Medium" modal — the hit test uses an unseeded run; (b) integer-rounded tap points can resolve to a neighboring pool town (Sevilla tap → "Alcalá de Guadaira") — pin-town assertions are regex-relaxed, regions/suffixes exact; (c) (1360,780) is mid-ocean at the Italy camera (phase done, no line).
+  - Standing Meridian E2E gate: SATISFIED for this fix (design §4.3).
 
 ## Pending
 - [ ] Technical-architect review (APPROVE, no blockers) + tone/docs review (APPROVE)
