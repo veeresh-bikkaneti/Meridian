@@ -221,10 +221,11 @@ export function ResultCard({
   }, [phase, dismissed, place?.name]);
 
   // Pin-compare line for the miss card: names BOTH locations ("Your pin:
-  // near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria").
-  // In country/globe editions the nearest-place fallback fills the gap
-  // where vendored admin-1 data is missing (IT/FR); in state edition and
-  // on any gate failure the classic line renders unchanged. Fail closed —
+  // Brazil · True spot: Angola" in globe; "Your pin: near Cagliari,
+  // Sardinia · True spot: Reggio di Calabria, Calabria" in country).
+  // In country edition the nearest-place fallback fills the gap where
+  // vendored admin-1 data is missing (IT/FR); in state edition and on any
+  // gate failure the classic line renders unchanged. Fail closed —
   // null renders exactly as today (no line). Computed whenever a pin and
   // place exist; only rendered in the done (miss) block below — the hit
   // card never shows it.
@@ -405,10 +406,10 @@ export function ResultCard({
               <p
                 data-testid="miss-subscript"
                 className="text-xs leading-relaxed text-white/70"
-                title={`White pin is your guess · gold is the true spot. ${storyLede}`}
+                title={`Your pin is your guess · the gold mark is the true spot. ${storyLede}`}
               >
                 <span className="text-white/60">
-                  White pin is your guess · gold is the true spot.
+                  Your pin is your guess · the gold mark is the true spot.
                 </span>
                 <br />
                 <span className="mt-1 block text-sm leading-relaxed text-white/85">
