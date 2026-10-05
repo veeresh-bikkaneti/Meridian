@@ -323,6 +323,25 @@ quiet VM. Lesson: anchor Playwright CLI file filters (`"name\.spec\.ts$"`)
 — an unanchored filter can match the worktree directory in the absolute
 path.
 
+## T12 quiet re-run verdict — GREEN (2026-10-05, E2E crew)
+
+Full suite on `d56aeff`, serialized through the VM-wide E2E lock, `--workers=1`,
+`--disable-dev-shm-usage`, fresh `npm run build:pages` (buildId d56aeff):
+- **130/130 passed.** First run: 128 passed / 2 failed in ~1h. The 2 failures were
+  both the same interaction-timeout flake (drop-pin button never enabled within
+  10–15s after `page.mouse.click` — before any game assertion):
+  `question-labels.spec.ts:118` (globe 'Oia, South Aegean, Greece') and
+  `difficulty-picker.spec.ts:244` (Hard run deals tier 4–5).
+- **One retry through the lock: both passed (2/2 in 1.4m).** Classified
+  environmental (VM interaction latency), not assertion failures — no app code
+  touched, no spec changes.
+- Evidence: `e2e-quiet.log` (full run), `e2e-retry.log` (retry), both in the
+  worktree. Temp `playwright.quiet.config.ts` deleted after the run.
+- T11's 4 deterministic spec-bug failures (fixed in `2d64162`) did not recur;
+  T11's environmental failures (Target crashed) did not recur under the lock.
+
+T12 (PR) is unblocked: E2E is GREEN.
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
