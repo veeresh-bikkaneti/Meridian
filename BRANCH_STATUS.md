@@ -21,7 +21,9 @@
 
 ## Follow-up crew (2026-10-05) — main integration + finish job
 - [x] **Veeresh RATIFIED the NE 10m source deviation** (2026-10-05) — no rework, proceed as built.
-- [x] Merged `origin/main` (PR #61 first-run tutorial, `0aeac14`) into `feat/admin1-narrow-7` — one conflict (BRANCH_STATUS.md, kept admin1 version), game-app.tsx + tutorial files auto-merged. Post-merge: `tsc --noEmit` clean, `npm test` **613/613 green**, `node scripts/lint-cards.mjs` GATE PASSED.
+- [x] Merged `origin/main` (PR #61 first-run tutorial, `0aeac14`) into `feat/admin1-narrow-7` — one conflict (BRANCH_STATUS.md, kept admin1 version), game-app.tsx + tutorial files auto-merged (10 s admin-1 warm tick intact). Post-merge: `tsc --noEmit` clean, `npm test` **613/613 green**, `node scripts/lint-cards.mjs` GATE PASSED, `npm run build:pages` green (buildId 3f6b600).
+- [x] **E2E finding → spec fix (not an app bug):** first locked run of `admin1-narrow.desktop.spec.ts` failed 2/2. Root-caused via traces/screenshots: the specs asserted the bare classic pin-compare format ("Your pin: Ōsaka · True spot: Tokyo") which NEVER renders in country editions — the shipped, unit-tested behavior is PR #58's detail line ("Your pin: near Tsuruhashi, Osaka · True spot: Tokyo, Tokyo"; the "near" qualifier is unconditional per the honesty rule, locked in reverse-geocode.test.ts + result-card.test.ts). The Japan screenshot also proved the JP chunk works (gold prefecture boundaries rendering). Specs fixed to assert regions + the "near" qualifier (same style as the Italy aborted-chunk test); same fix applied to the Italy classic test in `reveal-your-pin-country-globe.desktop.spec.ts`. PR #58 untouched per the standing directive.
+- [~] France test also hit a tile-network stall (map never framed France, tiles stuck "Loading satellite imagery..." — Japan passed the identical flow right after): treated as a flake, one retry queued.
 
 ## Pending
 - [x] Full `npm test` — 613/613 green post-main-merge
