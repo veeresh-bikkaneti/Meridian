@@ -13,7 +13,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
-import { pinCompareLine, resolvePin } from "@/game/reverse-geocode";
+import { revealPinLine } from "@/game/reverse-geocode";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -157,6 +157,7 @@ export function ResultCard({
   onDismissedChange,
   onContinue,
   growthLine,
+  poolPlaces,
 }: {
   run: Run;
   place: Starter | null;
@@ -179,6 +180,14 @@ export function ResultCard({
    * and sits below it, small. Null when the flag is off.
    */
   growthLine?: string | null;
+  /**
+   * The full dealing pool (the same array reference the parent already
+   * holds — no copy, no extra memory). Feeds the nearest-place fallback
+   * for the "Your pin" line in country/globe editions. Absent/empty →
+   * nearestPoolPlace returns null → the classic pinCompareLine line
+   * renders. Safe default.
+   */
+  poolPlaces?: Starter[];
 }) {
   const reduced = usePrefersReducedMotion();
   const aiSports = useAiSportsTeams(place);
@@ -212,16 +221,26 @@ export function ResultCard({
   }, [phase, dismissed, place?.name]);
 
   // Pin-compare line for the miss card: names BOTH locations ("Your pin:
-  // Nebraska · True spot: District of Columbia"). Fail closed — null renders
-  // exactly as today (no line). Computed whenever a pin and place exist;
-  // only rendered in the done (miss) block below — the hit card never shows it.
+  // near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria").
+  // In country/globe editions the nearest-place fallback fills the gap
+  // where vendored admin-1 data is missing (IT/FR); in state edition and
+  // on any gate failure the classic line renders unchanged. Fail closed —
+  // null renders exactly as today (no line). Computed whenever a pin and
+  // place exist; only rendered in the done (miss) block below — the hit
+  // card never shows it.
+  // NOTE: poolPlaces is the full dealing pool passed by reference (no copy).
+  // The nearest-match scan must not allocate new module-level data — Safari
+  // jetsam budget (see design §7). Keep this prop a pass-through reference.
   const pinLine = useMemo(() => {
     if (!drop || !place) return null;
-    return pinCompareLine(
-      resolvePin(drop.lat, drop.lon),
-      resolvePin(place.lat, place.lon),
-    );
-  }, [drop, place]);
+    return revealPinLine({
+      edition: run.edition,
+      playerLat: drop.lat,
+      playerLon: drop.lon,
+      truth: place,
+      pool: poolPlaces ?? [],
+    });
+  }, [drop, place, run.edition, poolPlaces]);
 
   if (dismissed) {
     // Dismissing the card must never strand the run: the restore pill keeps

@@ -1,6 +1,6 @@
 # BRANCH_STATUS.md — feat/geodetective-clues (GeoDetective clue-set production)
 
-**Branch:** `feat/geodetective-clues` · **Base:** `origin/main` @ `650065e` (rebased 2026-10-04 in build-plan T2; earlier bases: `de9b7a8` for Phase 2, `3c32085` for Phase 1)
+**Branch:** `feat/geodetective-clues` · **Base:** `origin/main` @ `e96e016` (merged 2026-10-05 to resolve PR #59's BRANCH_STATUS.md conflict; earlier bases: `650065e` for T2 rebase 2026-10-04, `de9b7a8` for Phase 2, `3c32085` for Phase 1 — PR #58 reveal-your-pin merged to main in between)
 **Worktree:** `~/workspace/meridian-worktrees/geodetective-clues`
 **Mission:** Produce ≥365 validated 5-tier clue sets for GeoDetective's curated famous-place pool — content pipeline only. Deliverable = this branch: clue JSONs in `public/loop/clues/`, composer + validator scripts with tests, and a validation report. No merge, no PR — Veeresh decides. The human-reviewed gate stays Veeresh's (expect sampling review).
 
