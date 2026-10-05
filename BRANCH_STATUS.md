@@ -5,10 +5,16 @@
 **Mission:** Two Veeresh-approved items (2026-10-05): (1) globe-edition symmetric country-level pin-compare naming; (2) pin-legend copy rewrite. Veeresh merges.
 
 ## Scope
-- [ ] **Item 1 — Globe naming: symmetric country-level.** DONE <date> (frontend-developer + ux-architect + code-reviewer). `revealPinLine` globe branch now returns `Your pin: {playerCountry} · True spot: {truthCountry}` (e.g. "Your pin: Brazil · True spot: Angola") — admin-1 and the "near <city>" detail path are not used in globe. City-level "near Cuiabá" naming PARKED (not built) — backlog note at `docs/globe-naming-followup.md`. State edition byte-identical (regression lock); country edition detail path untouched.
-- [ ] **Item 2 — Pin legend rewrite.** DONE <date>. Miss-subscript legend (visible text + `title`) now reads "Your pin is your guess · the gold mark is the true spot." — no pin recolor (per decision).
-- [ ] **Gates:** `tsc --noEmit` · `npm test` · `lint-cards` GATE PASSED · `build:pages` · Playwright E2E on changed paths (reveal-pin-compare, reveal-your-pin-country-globe, reveal-bearing, gap-view-reveal, result-card-dismiss + state-story legend assertions).
-- [ ] **Self-review:** code-reviewer + software-architect — ZERO BLOCKERS required before report.
+- [x] **Item 1 — Globe naming: symmetric country-level.** DONE 2026-10-05 (frontend-developer + ux-architect + code-reviewer). `revealPinLine` globe branch now returns `Your pin: {playerCountry} · True spot: {truthCountry}` (e.g. "Your pin: Brazil · True spot: Angola") — admin-1 and the "near <city>" detail path are not used in globe. City-level "near Cuiabá" naming PARKED (not built) — backlog note at `docs/globe-naming-followup.md`. State edition byte-identical (regression lock); country edition detail path untouched.
+- [x] **Item 2 — Pin legend rewrite.** DONE 2026-10-05. Miss-subscript legend (visible text + `title`) now reads "Your pin is your guess · the gold mark is the true spot." — no pin recolor (per decision).
+- [~] **Gates:** `tsc --noEmit` CLEAN · `npm test` 595/595 PASS · `lint-cards` GATE PASSED · `build:pages` GREEN · Playwright E2E (locked, `--workers=1`, `--disable-dev-shm-usage` local config): 20/21 passed on changed paths; 1 flake under triage — "country (Italy): ocean pin — no line, fail closed" got phase "story" instead of "done" (fixed tap point (1360,780) landed ~130 km from the true spot, inside the ~144 km country hit radius — a camera-geometry flake in the harness, not the app; my diff touches only card copy and cannot move the camera or change hit detection). Single-test re-run queued under the VM-wide E2E lock.
+- [x] **Self-review:** code-reviewer + software-architect — clean: globe branch is fail-closed (null → no line), truth country funnels through the question-label funnel with a coordinate fallback, no new deps/I-O, comments document the parked decision. ZERO BLOCKERS in the code.
+
+## Infra notes (2026-10-05)
+- VM: 7.7 GB RAM, zero swap, /dev/shm 794 MB. Parent infra rule: ALL E2E via `flock ~/workspace/.e2e.lock`, `--workers=1`, Chromium `--disable-dev-shm-usage` in a LOCAL test config (`playwright.local.config.ts`, untracked — do not commit).
+- Deviation: /tmp is a 512 MB tmpfs at 89% used (not 7.3 GB disk), so the run sets `TMPDIR=/home/hatch/workspace/.pw-tmp` (86 GB free) — Chromium's shm fallback honors TMPDIR.
+- node_modules: worktree had none; symlinked `../gap-view-reveal/node_modules` (no downloads, no audit needed).
+- The first (unlocked) E2E attempt was killed mid-run when the infra rule arrived; the locked re-run is the gate of record.
 
 ## Rules
 - Stage named files only. Push early and often. No regressions: PR #58 Your-pin lines (country/state), PR #60 bearing headline, gold mark, all editions.
