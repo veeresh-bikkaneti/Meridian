@@ -14,7 +14,7 @@
   - `src/game/reverse-geocode.ts` (ADD ONLY — `pinCompareLine`/`resolvePin` untouched): `NEAREST_PLACE_MAX_KM = 100`, `PoolPlace`/`NearestPoolPlace`/`PlayerPinDetail` types, `nearestPoolPlace()` (haversine scan, same-territory numeric-key gate, 100 km cap, fail-closed), `RevealPinLineInput`/`revealPinLine()` (state → classic byte-identical; country/globe → "near <city>, <state>" detail with country suffixes; gate failure → classic)
   - `src/components/game-app.tsx`: passes `poolPlaces={places}` (full dealing pool, not banded) to ResultCard
   - `src/components/result-card.tsx`: optional `poolPlaces?: Starter[]` prop; pinLine memo now calls `revealPinLine()`; miss-only rendering unchanged
-- [x] India regression lock (Veeresh's working reference): Mumbai/Pune-verified test asserts both locations named, never dropped — detail supersedes classic there ("Your pin: near Mumbai, Maharashtra · True spot: Bengaluru, Karnataka"); classic reference path independently asserted ("Your pin: Maharashtra · True spot: Karnataka")
+- [x] India regression lock (Veeresh's working reference): Mumbai/Bengaluru-verified test asserts both locations named, never dropped — detail supersedes classic there ("Your pin: near Mumbai, Maharashtra · True spot: Bengaluru, Karnataka"); classic reference path independently asserted ("Your pin: Maharashtra · True spot: Karnataka")
 - [x] Gates (all four, BUILD crew ran them 2026-10-04): `npx tsc --noEmit` clean · `npm test` 584/584 green (36 suites) · `node scripts/lint-cards.mjs` → GATE PASSED · `npm run build:pages` green
 - [x] Pushed to origin (commit c705e7d)
 
