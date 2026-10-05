@@ -22,7 +22,7 @@
 - [x] Gates: `npx tsc --noEmit` ✓, `npm test` 606/606 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (buildId 3570943).
 - [~] Playwright E2E `tests/e2e/tutorial.spec.ts` on the built artifact: first locked run 3/4 — the failure caught a REAL bug (see below), fixed; re-run queued behind 3 sibling suites on the VM-wide `~/workspace/.e2e.lock` (infra rule 2026-10-05: lock + `--workers=1` + `--disable-dev-shm-usage` via local /tmp config, repo config untouched).
 - [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on every viewport (top-center would cover Paris); overlay hidden on summary; Escape closes the beat-3 dialog; rules-of-hooks fix in TutorialOverlay; **E2E-found bug: `TUTORIAL_PLACE_ID` was `"eiffel"` but starter ids are `${regionId}-${slug}` → `"france-eiffel"`; the tour silently asked "Poulx, Occitanie". Fixed + unit test anchors the id to the real starter.**
-- [ ] PR opened (target main) — Veeresh merges. Open after final E2E green.
+- [x] PR opened (target main) — Veeresh merges: https://github.com/veeresh-bikkaneti/Meridian/pull/61 — **do not merge until the E2E re-run is green** (noted in the PR body).
 
 ## Rules
 - Stage named files only. Push early and often. Existing features must not regress (boot path, edition picker, all editions, PR #58/60 reveal behavior, PWA/service worker).
