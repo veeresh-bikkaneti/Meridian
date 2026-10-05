@@ -19,8 +19,10 @@
 - [x] `src/components/tutorial-overlay.tsx` — invite banner + 3 beat overlays (dismissible, pointer-transparent beats 1–2, kid reading age ~10).
 - [x] `src/components/game-app.tsx` — tutorial state in GameApp; `openRun` tutorial opt (single-place France pool, no history/banking/learning side effects); restore guard drops a persisted tour; beat 1→2 effect; card "Next place" → beat 3; invite on the top-level menu.
 - [x] `tests/e2e/tutorial.spec.ts` + playwright `tutorial` project — invite, dismiss persistence, full 3-beat tour, beat-1 skip, reload-mid-tour, post-tour playability.
-- [ ] Gates: `npx tsc --noEmit` ✓, `npm test` 605/605 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (pre-review-fixes; rebuilding), Playwright E2E on the built artifact.
-- [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on phones; overlay hidden on summary; Escape closes the beat-3 dialog; hooks-rule fix in TutorialOverlay.
+- [x] Gates: `npx tsc --noEmit` ✓, `npm test` 606/606 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (buildId 3570943).
+- [~] Playwright E2E `tests/e2e/tutorial.spec.ts` on the built artifact: first locked run 3/4 — the failure caught a REAL bug (see below), fixed; re-run queued behind 3 sibling suites on the VM-wide `~/workspace/.e2e.lock` (infra rule 2026-10-05: lock + `--workers=1` + `--disable-dev-shm-usage` via local /tmp config, repo config untouched).
+- [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on every viewport (top-center would cover Paris); overlay hidden on summary; Escape closes the beat-3 dialog; rules-of-hooks fix in TutorialOverlay; **E2E-found bug: `TUTORIAL_PLACE_ID` was `"eiffel"` but starter ids are `${regionId}-${slug}` → `"france-eiffel"`; the tour silently asked "Poulx, Occitanie". Fixed + unit test anchors the id to the real starter.**
+- [ ] PR opened (target main) — Veeresh merges. Open after final E2E green.
 
 ## Rules
 - Stage named files only. Push early and often. Existing features must not regress (boot path, edition picker, all editions, PR #58/60 reveal behavior, PWA/service worker).
