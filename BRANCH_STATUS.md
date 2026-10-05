@@ -1,28 +1,22 @@
-# BRANCH_STATUS.md — feat/first-run-tutorial
+# BRANCH_STATUS.md — fix/globe-naming-pin-legend
 
-**Branch:** `feat/first-run-tutorial` off `origin/main` @ `ea3117b`
-**Worktree:** `~/workspace/meridian-worktrees/tutorial`
-**Mission:** First-run 3-beat tutorial (game-review improvement #2 in the table, approved by Veeresh 2026-10-05 as "first-run tutorial"). Veeresh merges.
+**Branch:** `fix/globe-naming-pin-legend` off `origin/main` @ `ea3117b`
+**Worktree:** `~/workspace/meridian-worktrees/globe-pin-legend`
+**Mission:** Two Veeresh-approved items (2026-10-05): (1) globe-edition symmetric country-level pin-compare naming; (2) pin-legend copy rewrite. Veeresh merges.
 
-## Design (spec: game-review-recommendations.md, improvement #2)
-- 3 beats, kid reading age ~10, skimmable, ADHD-friendly. Core verb (tap the map) within 30 seconds.
-- Beat 1: aim-phase coachmark — tap the map, easy famous place (Eiffel Tower, Paris; curated tier-1 starter with an authored hook).
-- Beat 2: reveal feedback — distance + "closer = more points" + every place tells its story.
-- Beat 3: ends on a hook — "One place, one pin, one story. 100,000+ places to discover."
-- Dismissible, NEVER blocks play: inline invitation banner on the menu (one tap still starts a game); every beat skippable; "seen" persisted client-side (localStorage `meridian.tutorialSeen`).
-- Tour = isolated practice round: France country run with a single-place pool; no session banking, no learning record, no no-repeat-history pollution; reload mid-tour lands on the menu (sentinel pool check).
-- No-labels policy holds; fail-closed everywhere.
+## Scope
+- [x] **Item 1 — Globe naming: symmetric country-level.** DONE 2026-10-05 (frontend-developer + ux-architect + code-reviewer). `revealPinLine` globe branch now returns `Your pin: {playerCountry} · True spot: {truthCountry}` (e.g. "Your pin: Brazil · True spot: Angola") — admin-1 and the "near <city>" detail path are not used in globe. City-level "near Cuiabá" naming PARKED (not built) — backlog note at `docs/globe-naming-followup.md`. State edition byte-identical (regression lock); country edition detail path untouched.
+- [x] **Item 2 — Pin legend rewrite.** DONE 2026-10-05. Miss-subscript legend (visible text + `title`) now reads "Your pin is your guess · the gold mark is the true spot." — no pin recolor (per decision).
+- [x] **Gates (all green 2026-10-05):** `tsc --noEmit` CLEAN · `npm test` 595/595 PASS · `lint-cards` GATE PASSED · `build:pages` GREEN · Playwright E2E on changed paths (locked, `--workers=1`, `--disable-dev-shm-usage` local config, against the built artifact): **21/21 PASS** — reveal-pin-compare (4/4 incl. new "Your pin: Brazil · True spot: Hungary"), reveal-your-pin-country-globe (6/6 incl. new "Your pin: Spain · True spot: Hungary"), reveal-bearing, gap-view-reveal desktop + reduced (new legend copy asserted), result-card-dismiss, state-story (legend title selector).
+- [x] **Flake triage (closed):** "country (Italy): ocean pin — no line, fail closed" failed once in the full run (phase "story" not "done": the fixed tap point (1360,780) landed ~130 km from the true spot, inside the ~144 km country hit radius — camera-geometry variance in the harness, not the app; my diff touches only card copy and cannot move the camera or change hit detection). Isolated re-run under the lock: PASS (29.8s). Root-caused, not deleted; zero assertion failures on changed copy in any run.
+- [x] **Self-review:** code-reviewer + software-architect — clean: globe branch is fail-closed (null → no line), truth country funnels through the question-label funnel with a coordinate fallback, no new deps/I-O, comments document the parked decision. ZERO BLOCKERS in the code.
 
-## Status
-- [x] `src/game/tutorial.ts` — seen-flag storage helpers (fail-closed), practice-round constants, `isTutorialRunPool` sentinel.
-- [x] `src/game/tutorial.test.ts` — 10 unit tests (green); wired into `npm test`.
-- [x] `src/components/tutorial-overlay.tsx` — invite banner + 3 beat overlays (dismissible, pointer-transparent beats 1–2, kid reading age ~10).
-- [x] `src/components/game-app.tsx` — tutorial state in GameApp; `openRun` tutorial opt (single-place France pool, no history/banking/learning side effects); restore guard drops a persisted tour; beat 1→2 effect; card "Next place" → beat 3; invite on the top-level menu.
-- [x] `tests/e2e/tutorial.spec.ts` + playwright `tutorial` project — invite, dismiss persistence, full 3-beat tour, beat-1 skip, reload-mid-tour, post-tour playability.
-- [x] Gates: `npx tsc --noEmit` ✓, `npm test` 606/606 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (buildId 3570943).
-- [~] Playwright E2E `tests/e2e/tutorial.spec.ts` on the built artifact: first locked run 3/4 — the failure caught a REAL bug (see below), fixed; re-run queued behind 3 sibling suites on the VM-wide `~/workspace/.e2e.lock` (infra rule 2026-10-05: lock + `--workers=1` + `--disable-dev-shm-usage` via local /tmp config, repo config untouched).
-- [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on every viewport (top-center would cover Paris); overlay hidden on summary; Escape closes the beat-3 dialog; rules-of-hooks fix in TutorialOverlay; **E2E-found bug: `TUTORIAL_PLACE_ID` was `"eiffel"` but starter ids are `${regionId}-${slug}` → `"france-eiffel"`; the tour silently asked "Poulx, Occitanie". Fixed + unit test anchors the id to the real starter.**
-- [x] PR opened (target main) — Veeresh merges: https://github.com/veeresh-bikkaneti/Meridian/pull/61 — **do not merge until the E2E re-run is green** (noted in the PR body).
+## Infra notes (2026-10-05)
+- VM: 7.7 GB RAM, zero swap, /dev/shm 794 MB. Parent infra rule: ALL E2E via `flock ~/workspace/.e2e.lock`, `--workers=1`, Chromium `--disable-dev-shm-usage` in a LOCAL test config (`playwright.local.config.ts`, untracked — do not commit).
+- Deviation: /tmp is a 512 MB tmpfs at 89% used (not 7.3 GB disk), so the run sets `TMPDIR=/home/hatch/workspace/.pw-tmp` (86 GB free) — Chromium's shm fallback honors TMPDIR.
+- node_modules: worktree had none; symlinked `../gap-view-reveal/node_modules` (no downloads, no audit needed).
+- The first (unlocked) E2E attempt was killed mid-run when the infra rule arrived; the locked re-run is the gate of record.
 
 ## Rules
-- Stage named files only. Push early and often. Existing features must not regress (boot path, edition picker, all editions, PR #58/60 reveal behavior, PWA/service worker).
+- Stage named files only. Push early and often. No regressions: PR #58 Your-pin lines (country/state), PR #60 bearing headline, gold mark, all editions.
+- Learning outcomes first. No labels on the map — ever.

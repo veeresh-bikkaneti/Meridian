@@ -358,19 +358,17 @@ describe("result-card — pin-compare line (reveal)", () => {
     );
   });
 
-  it("globe edition renders the detail line with country suffixes", () => {
+  it("globe edition renders the symmetric country-level line", () => {
     setPinScenario(
       { admin1: null, country: "Italy" },
       { admin1: null, country: "Italy" },
-      "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
+      "Your pin: Italy · True spot: Italy",
     );
     const html = renderCard("done", "globe");
     assert.ok(html.includes('data-testid="pin-compare-line"'));
     assert.ok(
-      html.includes(
-        "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-      ),
-      "globe detail line must carry the country suffix on both sides",
+      html.includes("Your pin: Italy · True spot: Italy"),
+      "globe line must name the country on both sides, never admin-1 or 'near <city>'",
     );
   });
 

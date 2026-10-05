@@ -47,7 +47,7 @@ test("miss: state-edition result card shows the place story, not just the score"
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 10_000 });
 
   // The miss branch renders the story lede paragraph.
-  const storyPara = card.locator('p[title^="White pin is your guess"] span').last();
+  const storyPara = card.locator('p[title^="Your pin is your guess"] span').last();
   await expect(storyPara).toBeVisible({ timeout: 5_000 });
   const text = (await storyPara.textContent()) ?? "";
   expect(
