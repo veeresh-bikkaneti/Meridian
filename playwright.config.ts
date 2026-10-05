@@ -163,15 +163,20 @@ export default defineConfig({
       testMatch: /question-card-header\.spec\.ts/,
     },
     {
-<<<<<<< HEAD
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
     },
     {
       name: "tutorial",
       testMatch: /tutorial\.spec\.ts/,
-      use: { viewport: { width: 1440, height: 900 } },
->>>>>>> origin/main
+      // Reduced motion: the map's intro dive becomes an instant jump-to,
+      // so the France framing is settled deterministically before the
+      // tour's practice tap is sampled. The tutorial UI itself has no
+      // motion-dependent behavior.
+      use: {
+        viewport: { width: 1440, height: 900 },
+        reducedMotion: "reduce",
+      },
     },
   ],
   reporter: [

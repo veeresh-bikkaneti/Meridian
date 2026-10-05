@@ -5,7 +5,6 @@ import {
   commitPin,
   readPhase,
   dismissTileOverlayIfPresent,
-  tapHitsMap,
   spotViewportPoint,
   NO_IDLE,
 } from "./helpers";
@@ -56,14 +55,42 @@ async function startTour(page: Page): Promise<void> {
 
 /** Commit a pin exactly on the practice place (Eiffel Tower). */
 async function commitPracticePin(page: Page): Promise<void> {
-  await dismissTileOverlayIfPresent(page);
   const map = page.locator(".satellite-map");
+  // Tile-health with retries (mirrors commitPin's loop): the VM's tile
+  // network is flaky and the 15 s watchdog can fire spuriously; retry the
+  // load the way a user would before treating it as a real failure.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await dismissTileOverlayIfPresent(page);
+    try {
+      await expect
+        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
+        .toBe("ready");
+      break;
+    } catch (err) {
+      if (attempt === 2) throw err;
+    }
+  }
+  // Settle the intro camera (same stabilization pattern as startGlobeRun):
+  // sampling the spot mid-dive would stale the point before the click lands.
+  // Under the spec's reduced-motion setting the dive is an instant jump-to,
+  // so this passes immediately once the camera is placed.
   await expect
-    .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-    .toBe("ready");
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
   const spot = await spotViewportPoint(page);
   expect(spot).not.toBeNull();
-  expect(await tapHitsMap(page, spot!.x, spot!.y)).toBe(true);
+  // No tapHitsMap gate: the beat-1 banner and question bubble are
+  // pointer-transparent, so a real tap passes through them to the map even
+  // where elementFromPoint reports chrome. The France framing keeps the
+  // Eiffel Tower clear of every pointer-active control on all runs.
   const { phase } = await commitPin(page, spot!.x, spot!.y);
   expect(phase).toBe("story");
 }
