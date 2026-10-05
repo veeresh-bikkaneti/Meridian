@@ -61,6 +61,17 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags } from "@/lib/flags";
 import {
+  TUTORIAL_EDITION,
+  TUTORIAL_PLACE_ID,
+  TUTORIAL_REGION_ID,
+  TUTORIAL_REGION_NAME,
+  hasSeenTutorial,
+  isTutorialRunPool,
+  markTutorialSeen,
+  type TutorialBeat,
+} from "@/game/tutorial";
+import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
+import {
   emptyLearningStore,
   growthLineFor,
   growthSummary,
@@ -631,6 +642,14 @@ export function GameApp() {
   // on the home screen after the idle kill.
   const [idleWarn, setIdleWarn] = useState(false);
   const [idleEndedNote, setIdleEndedNote] = useState(false);
+  // First-run tutorial: null when inactive, otherwise the current beat
+  // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
+  // by GameApp so the menu invitation, the run, and the cleanup paths all
+  // share one source of truth; Play/PlayLoaded only render from it.
+  const [tutorial, setTutorial] = useState<TutorialBeat | null>(null);
+  // The menu invitation is shown at most once per page load; the
+  // localStorage seen-flag persists the decision across visits.
+  const [inviteDismissed, setInviteDismissed] = useState(false);
   // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
@@ -677,6 +696,7 @@ export function GameApp() {
     }
     setRun(null);
     setMenu(null);
+    setTutorial(null);
     replaceSession(null);
     setIdleWarn(false);
     setIdleEndedNote(true);
@@ -718,6 +738,20 @@ export function GameApp() {
       setReady(true);
       return;
     }
+    // A persisted tutorial practice round never resumes: the tour is a
+    // single-place practice round, so resuming it would recycle the same
+    // place forever with no tutorial UI (beat state is in-memory only).
+    // Drop it and land on the menu — the invitation is already marked
+    // seen, so the player simply starts a real game.
+    let resumable = saved;
+    if (resumable && isTutorialRunPool(resumable.poolIds)) {
+      try {
+        sessionStorage.removeItem(RUN_KEY);
+      } catch {
+        // Storage blocked; treating it as absent is enough.
+      }
+      resumable = null;
+    }
     const now = Date.now();
     const dateKey = trailDate();
     const savedSession = readSession();
@@ -728,11 +762,11 @@ export function GameApp() {
       setReady(true);
       return;
     }
-    if (saved) {
+    if (resumable) {
       const today = {
-        edition: saved.edition,
-        regionId: saved.regionId,
-        regionName: saved.regionName,
+        edition: resumable.edition,
+        regionId: resumable.regionId,
+        regionName: resumable.regionName,
         dateKey,
         // A changed difficulty choice never resumes: switching bands starts
         // a fresh run instead.
@@ -743,8 +777,8 @@ export function GameApp() {
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
-      if (isResumable(saved, today)) {
-        const restored = resumeRun(saved, today);
+      if (isResumable(resumable, today)) {
+        const restored = resumeRun(resumable, today);
         commit(restored);
         ensureSession(restored);
       }
@@ -771,7 +805,10 @@ export function GameApp() {
       // The celebration's replay/promotion buttons always pass it: the
       // just-finished run (phase "done") is resumable, so resumeRun would
       // return it unchanged and the replay would never restart.
-      opts?: { fresh?: boolean },
+      // `tutorial` starts the isolated first-run practice round: a single
+      // fixed famous place, no seen-history side effects, no cleared-mode
+      // backstop — the tour is unscored practice, never a real run.
+      opts?: { fresh?: boolean; tutorial?: boolean },
     ) => {
       setStarting({ regionName });
       setStartError(null);
@@ -781,21 +818,34 @@ export function GameApp() {
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
         // pool is built. Fail-closed: an empty band yields an empty pool,
-        // never a widened one.
-        const banded = filterByTier(places, choice);
-        const { poolIds, prevLastId, cycleCompleted } = poolForRunStart(banded, edition, regionId, choice);
-        // Cleared-mode backstop: a completed cycle at run start means the
-        // band was fully played through. If it was already celebrated, the
-        // new cycle begins silently (retire the mark); if not — a clear
-        // from before this feature existed, or a crash before the
-        // celebration — celebrate immediately instead of silently
-        // repeating. One celebration per clear: the mark is set either way.
-        if (cycleCompleted) {
-          if (wasClearedCelebrated(edition, regionId, choice)) {
-            clearClearedMark(edition, regionId, choice);
-          } else {
-            markClearedCelebrated(edition, regionId, choice);
-            setCleared({ edition, regionId, regionName, choice });
+        // never a widened one. The tutorial bypasses banding entirely: its
+        // pool is the single fixed practice place, so the tour always asks
+        // the same easy famous question regardless of picker choice — and
+        // poolForRunStart is skipped so the tour never touches (or wipes)
+        // the band's persistent no-repeat history.
+        let poolIds: string[];
+        let prevLastId: string | null;
+        if (opts?.tutorial) {
+          poolIds = [TUTORIAL_PLACE_ID];
+          prevLastId = null;
+        } else {
+          const banded = filterByTier(places, choice);
+          const started = poolForRunStart(banded, edition, regionId, choice);
+          poolIds = started.poolIds;
+          prevLastId = started.prevLastId;
+          // Cleared-mode backstop: a completed cycle at run start means the
+          // band was fully played through. If it was already celebrated, the
+          // new cycle begins silently (retire the mark); if not — a clear
+          // from before this feature existed, or a crash before the
+          // celebration — celebrate immediately instead of silently
+          // repeating. One celebration per clear: the mark is set either way.
+          if (started.cycleCompleted) {
+            if (wasClearedCelebrated(edition, regionId, choice)) {
+              clearClearedMark(edition, regionId, choice);
+            } else {
+              markClearedCelebrated(edition, regionId, choice);
+              setCleared({ edition, regionId, regionName, choice });
+            }
           }
         }
         // A celebration replay/promotion starts FRESH: at the onContinue
@@ -806,14 +856,24 @@ export function GameApp() {
         // in-progress run) — `fresh` is opt-in only, and isResumable's
         // semantics are deliberately unchanged (other flows depend on them).
         const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
-        const next = opts?.fresh
-          ? startRun(today, poolIds, prevLastId)
-          : resumeRun(readRun(), today, poolIds, prevLastId);
+        // The tutorial practice round always starts fresh (it is never a
+        // resumed run) and arms beat 1; any other run clears tutorial state
+        // (e.g. a normal run started after an idle-killed tour).
+        const next =
+          opts?.tutorial || opts?.fresh
+            ? startRun(today, poolIds, prevLastId)
+            : resumeRun(readRun(), today, poolIds, prevLastId);
         commit(next);
         // Switching editions keeps the session (and its score) alive: a new
         // session starts only when none is live.
         ensureSession(next);
         setMenu(null);
+        setTutorial(opts?.tutorial ? 1 : null);
+        if (opts?.tutorial) {
+          // The tour run started: the invitation has been handled, whether
+          // or not the player finishes the tour.
+          markTutorialSeen();
+        }
         // Warm the admin-1 boundary cache during play so it's ready by reveal.
         // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
         // map mount starves the tile requests (net::ERR_ABORTED) and flips
@@ -889,6 +949,39 @@ export function GameApp() {
     setMenu(null);
     startReview();
   }, [startReview]);
+
+  /**
+   * First-run tutorial handlers. The invitation marks the tour seen whether
+   * the player takes it or dismisses it — it is shown at most once ever.
+   * endTutorial tears down a practice round and returns to the menu: the
+   * tour run is removed from storage (it must never resume — see
+   * isTutorialRunPool), and the player keeps a clean menu.
+   */
+  const onTakeTour = useCallback(() => {
+    // The seen-flag is marked inside openRun once the tour run actually
+    // starts: a failed chunk load leaves the invitation for next visit
+    // instead of silently consuming it. inviteDismissed hides it for this
+    // page load either way.
+    setInviteDismissed(true);
+    void openRun(TUTORIAL_EDITION, TUTORIAL_REGION_ID, TUTORIAL_REGION_NAME, difficultyChoice, {
+      tutorial: true,
+    });
+  }, [openRun, difficultyChoice]);
+  const onDismissInvite = useCallback(() => {
+    markTutorialSeen();
+    setInviteDismissed(true);
+  }, []);
+  const endTutorial = useCallback(() => {
+    clearDrop();
+    try {
+      sessionStorage.removeItem(RUN_KEY);
+    } catch {
+      // Storage blocked; the in-memory run is dropped below regardless.
+    }
+    setRun(null);
+    setTutorial(null);
+    setMenu(null);
+  }, []);
 
   // Bank one scored place into the session (exactly-once: called only from
   // the pin-commit path, which appends exactly one result per commit).
@@ -1009,6 +1102,9 @@ export function GameApp() {
           onRun={commit}
           onBankPlace={bankScoredPlace}
           onEndGame={handleEndGame}
+          tutorial={tutorial}
+          onTutorialAdvance={setTutorial}
+          onTutorialEnd={endTutorial}
           onEditions={() => {
             // Back to the picker WITHOUT ending the game: the session (and
             // its score) stays alive across the edition switch.
@@ -1187,6 +1283,10 @@ export function GameApp() {
     );
   }
 
+  // The first-run tutorial invitation: an inline banner on the top-level
+  // menu only. It never blocks play — every edition button stays one tap
+  // away — and it appears at most once ever (the seen-flag persists).
+  const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
     <Choose
@@ -1197,6 +1297,11 @@ export function GameApp() {
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
+      tutorialInvite={
+        showTutorialInvite ? (
+          <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />
+        ) : null
+      }
       notice={
         <>
           {idleNotice}
@@ -1225,6 +1330,7 @@ function Choose({
   notice,
   difficultyChoice,
   onDifficultyChoice,
+  tutorialInvite,
 }: {
   onState: () => void;
   onCountry: () => void;
@@ -1236,10 +1342,12 @@ function Choose({
   notice?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
+  tutorialInvite?: ReactNode;
 }) {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       {notice}
+      {tutorialInvite}
       <header>
         <p className="flex items-center gap-2 text-sm text-muted">
           <Compass className="size-5" aria-hidden="true" />
@@ -1464,6 +1572,9 @@ function Play({
   onReviewDeck,
   onCleared,
   celebrationOpen,
+  tutorial,
+  onTutorialAdvance,
+  onTutorialEnd,
 }: {
   run: Run;
   session: Session | null;
@@ -1496,6 +1607,12 @@ function Play({
    * the dialog (the dialog's own handler), never the result card beneath.
    */
   celebrationOpen: boolean;
+  /** First-run tutorial beat (null when inactive); owned by GameApp. */
+  tutorial: TutorialBeat | null;
+  /** Advance the tutorial to a beat. */
+  onTutorialAdvance: (beat: TutorialBeat) => void;
+  /** Skip/finish the tutorial: tear down the practice round. */
+  onTutorialEnd: () => void;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -1589,6 +1706,9 @@ function Play({
       onCleared={onCleared}
       celebrationOpen={celebrationOpen}
       reviewEntries={reviewEntries}
+      tutorial={tutorial}
+      onTutorialAdvance={onTutorialAdvance}
+      onTutorialEnd={onTutorialEnd}
     />
   );
 }
@@ -1607,6 +1727,9 @@ function PlayLoaded({
   onCleared,
   celebrationOpen,
   reviewEntries,
+  tutorial,
+  onTutorialAdvance,
+  onTutorialEnd,
 }: {
   run: Run;
   places: Starter[];
@@ -1642,6 +1765,12 @@ function PlayLoaded({
    * question context.
    */
   reviewEntries: DeckEntry[] | null;
+  /** First-run tutorial beat (null when inactive); owned by GameApp. */
+  tutorial: TutorialBeat | null;
+  /** Advance the tutorial to a beat. */
+  onTutorialAdvance: (beat: TutorialBeat) => void;
+  /** Skip/finish the tutorial: tear down the practice round. */
+  onTutorialEnd: () => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -1716,12 +1845,20 @@ function PlayLoaded({
     });
   }, [place, review, reviewEntry, run.edition, run.regionId, collisionCounts]);
   // Record dealt places into the no-repeat history as the run advances.
-  // Review sessions skip this: the deck queue is the dealing order, and the
-  // review namespace must never pollute real regions' histories.
+  // Skipped for review sessions and the tutorial practice round: the deck
+  // queue is the dealing order (and the review namespace must never pollute
+  // real regions' histories), and the tour must not pollute the France
+  // band's persistent history with its practice place.
   useEffect(() => {
-    if (review) return;
+    if (review || tutorial) return;
     dealer.markDealtThrough(run.index);
-  }, [dealer, review, run.index]);
+  }, [dealer, review, run.index, tutorial]);
+  // Tutorial beat 1 → 2: the pin was committed (phase left "aim"), so the
+  // reveal feedback takes over. Any later phase change is a real run's
+  // business — tutorial is already 2 or 3 by then.
+  useEffect(() => {
+    if (tutorial === 1 && run.phase !== "aim") onTutorialAdvance(2);
+  }, [tutorial, run.phase, onTutorialAdvance]);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -1991,9 +2128,11 @@ function PlayLoaded({
     onRun(nextRun);
     // Bank the scored place into the session exactly once: dropPin appends
     // exactly one result per aim-phase commit, so the length check guards
-    // the (unreachable here) no-op path. Review sessions never bank: the
-    // session's totals and streaks are untouched by practice.
-    if (nextRun.results.length > bankedBefore) {
+    // the (unreachable here) no-op path. Skipped for the tutorial practice
+    // round — the tour is unscored practice. Review sessions record their
+    // learning record and deck sync below but never bank into the session's
+    // totals and streaks.
+    if (!tutorial && nextRun.results.length > bankedBefore) {
       if (!review) {
         onBankPlace({
           edition: run.edition,
@@ -2064,6 +2203,15 @@ function PlayLoaded({
         }
       }
     }
+  }
+
+  function onTutorialCardAdvance() {
+    // The tutorial practice round has no "next place" (its single-place
+    // pool would recycle the same question): the card's Next place button
+    // and the beat-2 "Got it" button both advance the tour to the closing
+    // hook instead.
+    setCardDismissed(true);
+    onTutorialAdvance(3);
   }
 
   function onContinue() {
@@ -2401,7 +2549,7 @@ function PlayLoaded({
           empty={places.length === 0}
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
-          onContinue={onContinue}
+          onContinue={tutorial ? onTutorialCardAdvance : onContinue}
           // Full dealing pool (not the banded subset): the nearest-place
           // fallback for the "Your pin" line scans it for the closest
           // same-territory place. Same array reference — no copy.
@@ -2414,6 +2562,25 @@ function PlayLoaded({
               ? growthLineFor(learningStore?.records[place.id]?.attempts ?? [])
               : null
           }
+        />
+      ) : null}
+      {/* First-run tutorial beats. Beats 1–2 float over the map without
+          intercepting taps (the overlay is pointer-transparent except its
+          own buttons); beat 3 is the closing dialog. The tour never reaches
+          the summary phase (its card advance goes to beat 3 instead), and
+          the overlay stays out of the way if it ever does. */}
+      {tutorial !== null && run.phase !== "summary" ? (
+        <TutorialOverlay
+          beat={tutorial}
+          distanceKm={drop?.distanceKm ?? null}
+          hit={
+            run.results.length > 0
+              ? run.results[run.results.length - 1]!.hit
+              : false
+          }
+          onSkip={onTutorialEnd}
+          onGotIt={() => onTutorialAdvance(3)}
+          onFinish={onTutorialEnd}
         />
       ) : null}
       {run.phase === "summary" && summary ? (

@@ -163,8 +163,15 @@ export default defineConfig({
       testMatch: /question-card-header\.spec\.ts/,
     },
     {
+<<<<<<< HEAD
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
+    },
+    {
+      name: "tutorial",
+      testMatch: /tutorial\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+>>>>>>> origin/main
     },
   ],
   reporter: [

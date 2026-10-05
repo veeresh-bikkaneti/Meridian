@@ -96,7 +96,7 @@ test("miss: the gap view frames pin + spot; card leads with distance, subscript,
   // 2-line explanatory subscript: legend + story lede.
   const subscript = card.getByTestId("miss-subscript");
   await expect(subscript).toBeVisible();
-  await expect(subscript).toContainText("White pin is your guess");
+  await expect(subscript).toContainText("Your pin is your guess");
   // The place story and its source.
   await expect(card.getByRole("link")).toBeVisible();
 
