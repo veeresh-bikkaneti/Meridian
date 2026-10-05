@@ -609,7 +609,6 @@ export function GameApp() {
     setIdleEndedNote(true);
   }, [replaceSession]);
 
-
   useEffect(() => {
     // Crash-loop breaker: a normal unload (reload, tab close, navigation)
     // fires pagehide; a jetsam/WebKit process kill never does. The flag
@@ -764,6 +763,11 @@ export function GameApp() {
         ensureSession(next);
         setMenu(null);
         setTutorial(opts?.tutorial ? 1 : null);
+        if (opts?.tutorial) {
+          // The tour run started: the invitation has been handled, whether
+          // or not the player finishes the tour.
+          markTutorialSeen();
+        }
         // Warm the admin-1 boundary cache during play so it's ready by reveal.
         // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
         // map mount starves the tile requests (net::ERR_ABORTED) and flips
@@ -806,7 +810,10 @@ export function GameApp() {
    * isTutorialRunPool), and the player keeps a clean menu.
    */
   const onTakeTour = useCallback(() => {
-    markTutorialSeen();
+    // The seen-flag is marked inside openRun once the tour run actually
+    // starts: a failed chunk load leaves the invitation for next visit
+    // instead of silently consuming it. inviteDismissed hides it for this
+    // page load either way.
     setInviteDismissed(true);
     void openRun(TUTORIAL_EDITION, TUTORIAL_REGION_ID, TUTORIAL_REGION_NAME, difficultyChoice, {
       tutorial: true,
@@ -2181,8 +2188,9 @@ function PlayLoaded({
       {/* First-run tutorial beats. Beats 1–2 float over the map without
           intercepting taps (the overlay is pointer-transparent except its
           own buttons); beat 3 is the closing dialog. The tour never reaches
-          the summary phase (its card advance goes to beat 3 instead). */}
-      {tutorial !== null ? (
+          the summary phase (its card advance goes to beat 3 instead), and
+          the overlay stays out of the way if it ever does. */}
+      {tutorial !== null && run.phase !== "summary" ? (
         <TutorialOverlay
           beat={tutorial}
           distanceKm={drop?.distanceKm ?? null}

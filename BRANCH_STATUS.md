@@ -18,10 +18,9 @@
 - [x] `src/game/tutorial.test.ts` — 10 unit tests (green); wired into `npm test`.
 - [x] `src/components/tutorial-overlay.tsx` — invite banner + 3 beat overlays (dismissible, pointer-transparent beats 1–2, kid reading age ~10).
 - [x] `src/components/game-app.tsx` — tutorial state in GameApp; `openRun` tutorial opt (single-place France pool, no history/banking/learning side effects); restore guard drops a persisted tour; beat 1→2 effect; card "Next place" → beat 3; invite on the top-level menu.
-- [ ] `tests/e2e/tutorial.spec.ts` + playwright project entry — invite, dismiss persistence, full tour, skip, reload-mid-tour, post-tutorial playability.
-- [ ] Gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`, Playwright E2E on the built artifact.
-- [ ] Self-review (code-reviewer + UX hats) — zero blockers.
-- [ ] PR opened (target main) — Veeresh merges.
+- [x] `tests/e2e/tutorial.spec.ts` + playwright `tutorial` project — invite, dismiss persistence, full 3-beat tour, beat-1 skip, reload-mid-tour, post-tour playability.
+- [ ] Gates: `npx tsc --noEmit` ✓, `npm test` 605/605 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (pre-review-fixes; rebuilding), Playwright E2E on the built artifact.
+- [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on phones; overlay hidden on summary; Escape closes the beat-3 dialog; hooks-rule fix in TutorialOverlay.
 
 ## Rules
 - Stage named files only. Push early and often. Existing features must not regress (boot path, edition picker, all editions, PR #58/60 reveal behavior, PWA/service worker).

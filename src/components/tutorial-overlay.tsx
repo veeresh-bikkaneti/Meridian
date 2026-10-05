@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { useEffect } from "react";
 import { formatDistance } from "@/game/geo";
 import type { TutorialBeat } from "@/game/tutorial";
 
@@ -67,6 +68,8 @@ export function TutorialInvite(props: {
 function FloatingBanner(props: {
   testId: string;
   label: string;
+  /** Extra positioning classes (beat 1 dodges the question bubble on phones). */
+  positionClass?: string;
   children: JSX.Element;
 }): JSX.Element {
   return (
@@ -74,7 +77,9 @@ function FloatingBanner(props: {
       data-testid={props.testId}
       role="status"
       aria-label={props.label}
-      className="pointer-events-none absolute inset-x-3 top-16 z-40 mx-auto max-w-md"
+      className={`pointer-events-none absolute inset-x-3 z-40 mx-auto max-w-md ${
+        props.positionClass ?? "top-16"
+      }`}
     >
       <div className={cardClass}>{props.children}</div>
     </div>
@@ -105,7 +110,20 @@ export function TutorialOverlay(props: {
   /** Beat 3 → back to the menu. */
   onFinish: () => void;
 }): JSX.Element {
-  if (props.beat === 3) {
+  const { beat, onFinish } = props;
+  // Escape closes the closing dialog like the primary button does. The
+  // hook lives at the top level (never conditional): beat changes 2 → 3
+  // across renders of this same component instance.
+  useEffect(() => {
+    if (beat !== 3) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onFinish();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [beat, onFinish]);
+
+  if (beat === 3) {
     return (
       <div
         data-testid="tutorial-beat-3"
@@ -187,7 +205,13 @@ export function TutorialOverlay(props: {
   }
 
   return (
-    <FloatingBanner testId="tutorial-beat-1" label="Tutorial: how to play">
+    <FloatingBanner
+      testId="tutorial-beat-1"
+      label="Tutorial: how to play"
+      // On phones the question bubble occupies the top-left; park the
+      // coachmark above the Drop pin pill instead of covering the bubble.
+      positionClass="top-16 max-sm:top-auto max-sm:bottom-24"
+    >
       <>
         <p className="text-lg font-semibold">
           <span role="img" aria-hidden="true">
