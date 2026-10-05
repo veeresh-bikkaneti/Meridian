@@ -171,7 +171,7 @@ test("reduced motion: miss is a jump cut — the card appears immediately", asyn
     /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
   );
   await expect(card.getByTestId("miss-subscript")).toContainText(
-    "White pin is your guess",
+    "Your pin is your guess",
   );
   await expect(card.getByRole("link")).toBeVisible();
 
