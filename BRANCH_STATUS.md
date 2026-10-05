@@ -60,10 +60,56 @@ UNCOMMITTED in the working tree as the baseline for the follow-up.
 
 ## Next crew (steps 6–7 + full gates)
 
-- [ ] **Step 6 — Re-pin the E2E spec**: compute `loopDayIndex(date, 387)` for pinned `?loop-date=` values against main's real clue files; rewrite expected clue text, reveal headings, share-text assertion.
-- [ ] **Step 7 — GameApp wiring**: rewrite against main's current `Choose()`/`GameApp` — 4th card, `loopOpen` state, early-return `<LoopScreen/>` outside the run machine. Forward-port README GeoDetective section (387-file wording).
-- [ ] **Step 8 — Quality gates**: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`, Playwright E2E incl. geodetective specs (register the `geodetective` project *alongside* main's list, don't replace).
+- [x] **Step 6 — Re-pin the E2E spec** (commit `bbc649a`): pinned `?loop-date=`
+  values re-indexed under `% 387` against main's real clue files —
+  2026-10-03 → clue 218 → Ankara (`geonames:323786`), 2026-10-04 → clue 219
+  → Tarija (`geonames:3903320`). Expected clue text, reveal headings, and
+  share-text emoji strips recomputed from the clue files + names index
+  (Paris→Ankara 2,598 km → red; all five loss-path guesses >2,000 km from
+  Tarija → all red). `?loop-date=` seam still rejects malformed/rollover
+  dates (unit-covered in `day.test.ts`). `geodetective.reduced.spec.ts`
+  needed no changes (target-independent assertions).
+- [x] **Step 7 — GameApp wiring** (commit `bbc649a`): rewritten against
+  main's current `Choose()`/`GameApp` — 4th edition card (GeoDetective,
+  "Solve today's mystery"), `loopOpen` state via `readLoopOpen`/
+  `writeLoopOpen`, early-return `<LoopScreen/>` placed after the run return
+  and before chunk-loading (an in-progress run takes precedence; otherwise
+  the flag wins), all outside the run machine. Card grid `md:grid-cols-3` →
+  `sm:grid-cols-2 lg:grid-cols-4` so the 4th card sits balanced (2×2 below
+  lg). Regression: purely additive — imports, one state var, one flag-guarded
+  early return, one new Choose prop/card; State/Country/Globe paths flow
+  identically when `loopOpen` is false. README GeoDetective section
+  forward-ported with 387-file wording; `docs/geodetective.md` file map
+  corrected (11 pipeline tests, 119,038-entry index from `build-loop.mjs`).
+- [x] **Step 8 — Quality gates** (commit `f06b47b`, 2026-10-05):
+  - `npx tsc --noEmit` — clean.
+  - `npm test` — src suite 632/632 green; scripts suite 462/463 with the
+    **1 known-red**: `production loop targets are guessable by their own
+    names` (`AssertionError: La Ceiba missing from names.json`) — the step-5
+    dedupe shadowing, Veeresh's decision pending. All else green.
+  - `node scripts/lint-cards.mjs` — GATE PASSED (124,690 records:
+    8,797 hooked / 115,893 hook-missing / 0 legacy).
+  - `npm run build:pages` — green; `dist/client/loop/` ships manifest
+    `size:387`, 387 clue files, `names.json` (buildId `bbc649a`).
+  - Playwright E2E vs the built artifact — `geodetective` project registered
+    **alongside** main's 26 projects (regex routing verified:
+    `geodetective.spec.ts` → geodetective, `geodetective.reduced.spec.ts` →
+    existing `reduced`): 7/7 geodetective tests green (win path, loss path,
+    reload-restore, explicit-leave, namespacing, seam header, no-match),
+    4/4 reduced-project tests green (incl. the geodetective reduced-motion
+    spec + 3 pre-existing reduced specs, still passing — existing features
+    unaffected).
 - [ ] **Step 9 — Ship incrementally** (Veeresh): wave 1 = ported mode; names.json weight mitigations are a later wave only if field data warrants.
+
+## Commit log (this branch)
+
+- `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
+- `b26766c` port(geodetective): verbatim mode code (T8 step 2)
+- `920763c` port(geodetective): surgical hunks (T8 step 3)
+- `585bfb9` port(geodetective): split build-loop.mjs (T8 step 4)
+- `d3af1f7` docs: BRANCH_STATUS.md — T8 steps 1-4 done, step 5 assertion failed
+- `bbc649a` port(geodetective): T8 step 6 re-pin E2E specs; step 7 GameApp wiring + docs
+- `f06b47b` chore(geodetective): T8 step 8 — register geodetective E2E project; BRANCH_STATUS gates
 
 ## Rules
 

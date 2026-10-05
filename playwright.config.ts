@@ -153,6 +153,10 @@ export default defineConfig({
       name: "question-card-header",
       testMatch: /question-card-header\.spec\.ts/,
     },
+    {
+      name: "geodetective",
+      testMatch: /geodetective\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
