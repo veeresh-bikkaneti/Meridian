@@ -607,7 +607,9 @@ export function SatelliteMap(props: {
     // Resolve the atlas entry once per map instance. The polygon feeds the
     // highlight; camera math (settle framing, max bounds, big-miss) uses the
     // game's regions.ts box — the established game truth — because the
-    // atlas DTO's naive bounds span the dateline for Alaska.
+    // atlas DTO's naive bounds span the dateline for Alaska, and its naive
+    // center lands in the Atlantic for France (overseas departments). The
+    // center MUST be recomputed from the game box whenever it is provided.
     let dto: RegionGeometryDTO | null = lookupRegion(getRegionIndex(), props.regionName);
     if (!dto && props.bounds) {
       const [west, south, east, north] = props.bounds;
@@ -619,7 +621,14 @@ export function SatelliteMap(props: {
         polygonCoords: { type: "MultiPolygon", coordinates: [] as number[][][][] },
       };
     }
-    if (dto && props.bounds) dto = { ...dto, bounds: props.bounds };
+    if (dto && props.bounds) {
+      const [west, south, east, north] = props.bounds;
+      dto = {
+        ...dto,
+        bounds: props.bounds,
+        center: [(west + east) / 2, (south + north) / 2],
+      };
+    }
     dtoRef.current = dto;
 
     // Design §8: the restore path re-opens mid-SPACE. Projection and
