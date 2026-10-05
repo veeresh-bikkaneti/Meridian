@@ -295,13 +295,3 @@ async function buildAdmin1Merged(): Promise<FeatureCollection<Geometry>> {
   }
   return { type: "FeatureCollection", features };
 }
-
-/** Test seam: feature count of the merged admin-1 source. */
-export async function admin1MergedFeatureCountForTests(): Promise<number> {
-  return (await getAdmin1Merged()).features.length;
-}
-
-/** Test seam: drop the merged cache so tests can observe fresh loads. */
-export function clearAdmin1MergedCacheForTests(): void {
-  admin1MergedPromise = null;
-}
