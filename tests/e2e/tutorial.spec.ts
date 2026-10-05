@@ -55,13 +55,25 @@ async function startTour(page: Page): Promise<void> {
 
 /** Commit a pin exactly on the practice place (Eiffel Tower). */
 async function commitPracticePin(page: Page): Promise<void> {
-  await dismissTileOverlayIfPresent(page);
   const map = page.locator(".satellite-map");
-  await expect
-    .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-    .toBe("ready");
+  // Tile-health with retries (mirrors commitPin's loop): the VM's tile
+  // network is flaky and the 15 s watchdog can fire spuriously; retry the
+  // load the way a user would before treating it as a real failure.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await dismissTileOverlayIfPresent(page);
+    try {
+      await expect
+        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
+        .toBe("ready");
+      break;
+    } catch (err) {
+      if (attempt === 2) throw err;
+    }
+  }
   // Settle the intro camera (same stabilization pattern as startGlobeRun):
   // sampling the spot mid-dive would stale the point before the click lands.
+  // Under the spec's reduced-motion setting the dive is an instant jump-to,
+  // so this passes immediately once the camera is placed.
   await expect
     .poll(
       async () => {
