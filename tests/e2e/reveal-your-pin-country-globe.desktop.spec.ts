@@ -1,5 +1,4 @@
 import { test, expect } from "playwright/test";
-import { readFileSync } from "node:fs";
 import type { Page } from "playwright/test";
 import {
   serveBuiltArtifact,
@@ -12,6 +11,14 @@ import {
   dismissTileOverlayIfPresent,
   spotViewportPoint,
   tapHitsMap,
+  poolIds,
+  seedSeenExcept,
+  freshBoot,
+  pickBand,
+  startCountryRun,
+  readQuestion,
+  waitForSpotSettle,
+  waitForAdmin1Chunk,
 } from "./helpers";
 
 /**
@@ -53,118 +60,6 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-const SEEN_PREFIX = "meridian:seen:v2:";
-const APP = "http://127.0.0.1:4123/Meridian/?idle-ms=3600000";
-
-/** All place ids in the built chunk for a region. */
-function chunkIds(regionId: string): string[] {
-  const d = JSON.parse(
-    readFileSync(`src/game/data/geonames/chunks/${regionId}.json`, "utf8"),
-  ) as { places: { id: string }[] };
-  return d.places.map((p) => p.id);
-}
-
-/** Curated starter ids for one edition+region (id = `${regionId}-${slug}`). */
-function curatedIds(edition: string, regionId: string): string[] {
-  const src = readFileSync("src/game/starters.ts", "utf8");
-  const out: string[] = [];
-  const re =
-    /place\(\s*\n\s*"(\w+)",\s*\n\s*"([a-z0-9-]+)",\s*\n\s*"([a-z0-9-]+)",/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(src)) !== null) {
-    if (m[1] === edition && m[2] === regionId) out.push(`${m[2]}-${m[3]}`);
-  }
-  return out;
-}
-
-function poolIds(edition: string, regionId: string): string[] {
-  return [...curatedIds(edition, regionId), ...chunkIds(regionId)];
-}
-
-/** Mark every pool place seen except the target, so it is dealt first. */
-async function seedSeenExcept(
-  page: Page,
-  edition: string,
-  regionId: string,
-  keepId: string,
-  allIds: string[],
-  band: "easy" | "medium" | "hard" = "medium",
-): Promise<void> {
-  const key = `${SEEN_PREFIX}${edition}:${regionId}:${band}`;
-  const seen = allIds.filter((id) => id !== keepId);
-  expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
-  expect(allIds, `target ${keepId} must be in the pool`).toContain(keepId);
-  await page.evaluate(
-    ([k, ids]: [string, string[]]) =>
-      localStorage.setItem(k, JSON.stringify(ids)),
-    [key, seen] as [string, string[]],
-  );
-}
-
-/** Fresh boot that cannot restore a previous run from sessionStorage. */
-async function freshBoot(page: Page): Promise<void> {
-  await page.evaluate(() => sessionStorage.clear()).catch(() => {});
-  await page.goto(APP);
-}
-
-async function pickBand(page: Page, band: "Easy" | "Medium" | "Hard"): Promise<void> {
-  await page
-    .getByRole("group", { name: "How do you want to grow your map today?" })
-    .getByRole("button", { name: band })
-    .click();
-}
-
-async function startCountryRun(page: Page, country: string): Promise<void> {
-  await page.getByRole("button", { name: "Choose a country" }).click();
-  await expect(page.getByRole("heading", { name: "Country" })).toBeVisible();
-  await page.getByRole("button", { name: country }).click();
-  await dismissTileOverlayIfPresent(page);
-  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 60_000 });
-  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 60_000 });
-  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
-}
-
-async function startGlobeRun(page: Page): Promise<void> {
-  await page.getByRole("button", { name: "Play the globe" }).click();
-  await dismissTileOverlayIfPresent(page);
-  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 60_000 });
-  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 60_000 });
-  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
-}
-
-/** Current question from the aim live region ("Find X."). */
-async function readQuestion(page: Page): Promise<string> {
-  const live = page.locator('p.sr-only[aria-live="polite"]');
-  await expect(live).toContainText(/^Find .+\.$/, { timeout: 15_000 });
-  return ((await live.textContent()) ?? "").trim();
-}
-
-/**
- * Wait until the truth's screen point stops moving between reads: the
- * camera (including the globe intro dive) has settled. Returns the settled
- * point.
- */
-async function waitForSpotSettle(page: Page): Promise<{ x: number; y: number }> {
-  let settled: { x: number; y: number } | null = null;
-  await expect
-    .poll(
-      async () => {
-        const a = await spotViewportPoint(page);
-        if (!a) return null;
-        await page.waitForTimeout(800);
-        const b = await spotViewportPoint(page);
-        if (!b) return null;
-        if (a.x === b.x && a.y === b.y) {
-          settled = b;
-          return `${b.x},${b.y}`;
-        }
-        return null;
-      },
-      { timeout: 30_000 },
-    )
-    .not.toBeNull();
-  return settled!;
-}
 
 // Forced questions (id | name | subdivision | difficulty band).
 const SASSARI_ID = "gn-3167096"; // Sassari, Sardinia — medium (2)
@@ -181,9 +76,11 @@ const DEBRECEN_ID = "gn-721472"; // Debrecen, Hajdú-Bihar, HU — easy (1)
  */
 const ITALY_OCEAN_PT = { x: 1360, y: 780 };
 
-test("country (Italy): Sardinia pin, Calabria truth — the card names both", async ({
+test("country (Italy): Sardinia pin, Calabria truth — the card names both provinces", async ({
   page,
 }) => {
+  // admin1-narrow: Italy now ships a vendored admin-1 chunk (NE 10m), so the
+  // classic pin-compare path names both provinces once the chunk loads.
   const allIds = poolIds("country", "italy");
 
   // Run A: force Sassari (Sardinia) first; record its settled screen point.
@@ -197,6 +94,44 @@ test("country (Italy): Sardinia pin, Calabria truth — the card names both", as
   // Sassari -> Catanzaro is ~700 km, far outside the ~144 km country hit
   // radius: a guaranteed miss.
   await freshBoot(page);
+  await seedSeenExcept(page, "country", "italy", CATANZARO_ID, allIds, "medium");
+  await startCountryRun(page, "Italy");
+  expect(await readQuestion(page)).toBe("Find Catanzaro, Calabria.");
+  await waitForSpotSettle(page);
+  // The 10 s warm tick fires preloadAdmin1ForCountry("it"); the card's
+  // pin-compare line is computed once at commit, so the chunk must be in
+  // before the pin drops.
+  await waitForAdmin1Chunk(page, "it");
+
+  const { phase } = await commitPin(page, sardPin.x, sardPin.y);
+  expect(phase).toBe("done");
+
+  const card = resultCard(page);
+  await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
+  const line = card.getByTestId("pin-compare-line");
+  await expect(line).toBeVisible({ timeout: 15_000 });
+  // NE 10m province names, probed against the built chunk (not assumed).
+  await expect(line).toHaveText("Your pin: Sassari · True spot: Catanzaro");
+});
+
+test("country (Italy): aborted admin-1 chunk falls back to the 'near' line", async ({
+  page,
+}) => {
+  // Fail-closed proof for the PR #58 fallback: with the IT chunk
+  // unreachable, resolvePin degrades to country-only and the card must
+  // still name the pin honestly ("near <city>") instead of dropping it.
+  const allIds = poolIds("country", "italy");
+
+  // Run A: record Sassari's settled screen point (chunk not needed).
+  await freshBoot(page);
+  await seedSeenExcept(page, "country", "italy", SASSARI_ID, allIds, "medium");
+  await startCountryRun(page, "Italy");
+  const sardPin = await waitForSpotSettle(page);
+
+  // Run B: abort the IT admin-1 chunk before the run starts. page.route
+  // outranks the spec's context-level catch-all (registered later wins).
+  await freshBoot(page);
+  await page.route(/\/assets\/it-[A-Za-z0-9_-]+\.js$/, (route) => route.abort());
   await seedSeenExcept(page, "country", "italy", CATANZARO_ID, allIds, "medium");
   await startCountryRun(page, "Italy");
   expect(await readQuestion(page)).toBe("Find Catanzaro, Calabria.");
