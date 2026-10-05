@@ -92,5 +92,5 @@ here consumes main's production content; no game code touches clue content.
   ranking/index), `guess-input.tsx` (combobox), `LoopScreen.tsx` (screen)
 - `scripts/build-loop.mjs` — data pipeline (seed verification, name
   index, manifest); `scripts/build-loop.test.mjs` — 11 pipeline tests
-- `public/loop/` — `manifest.json`, `names.json` (119,038-entry guess
+- `public/loop/` — `manifest.json`, `names.json` (119,039-entry guess
   index, built by `build-loop.mjs`), `clues/{index}.json`
