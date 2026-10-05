@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2621,
+    "attempt": 2601,
+    "place_id": "gn-3468893",
+    "input": {
+      "place": {
+        "place_id": "gn-3468893",
+        "name": "Brumado",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -14.20361,
+        "lon": -41.66528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brumado",
+          "url": "https://en.wikipedia.org/wiki/Brumado",
+          "text": "Brumado (Portuguese: [bɾuˈma.du] ) is a Brazilian municipality in the interior of Bahia, in the Northeast region of the country, precisely in the Center-South mesoregion of the State, in the homonymous microregion to the do municipality name, to the do 555 kilometers from Salvador, state capital. Its territorial area is 2 207,612 square kilometers, the headquarters's area occupying 2 174 square kilometers, have altitude of 454 meters. According to data from the Brazilian Institute of Geography and Statistics (IBGE), in 2023 its population was estimated at 70 268 inhabitants. The Human Development Index (HDI) is 0.656 (average).\nA survey by the Federation of Industries of Rio de Janeiro State (FIRJAN) found that Brumado is considered to be the sixth most developed municipality in Bahia, based on the FIRJAN Municipal Development Index (IFDM 2013) published in 2015. A query made exclusively by Urban Systems, in January 2016, for Exame Magazine, concluded that the city is among the 100 best in Brazil to invest, ranking 84th in the ranking, totaling 2 306 points. A study carried out by IBGE, in 2012, concluded that of the 64 602 inhabitants from the time, 50 899 were literate, 31 747 were men and 32 855 were women. The per capita income was R$12,144.11, and in distribution between rural and urban areas, in the private households in the rural area, it was R$217.00, and in the urban area it was R$333.33. The fleet of motor vehicles such as road transport, including motorcycles, as well as tractors and trucks totaled 31 000.\nThe city is known as \"the Mining Capital\" in Bahia, because it has a large amount of minerals in its subsoil, which is the basis of its economy, and has large mining companies that carry out their extractive activities in Serra das Éguas (in English, something like \"Ridge of the Mares\"), which, by the way, also is one of the tourist points of the mountainous landscapes of the Municipality.\nBrumado shares boundaries with the Municipalities of Livramento de Nossa Senhora, Dom Basílio, Aracatu, Rio de Contas, Malhada de Pedras, Tanhaçu, Ituaçu, Rio do Antônio, Lagoa Real and Caraíbas. For making border with the Municipality of Rio de Contas along the river with thew same name, consequently also makes border with the Chapada Diamantina. The city has a privileged location allied to other benefits, such as important crossroad such as the State highways BA-262 and BA-148 and federal highway BR-030, also counting on the Centro-Atlântica Railroad (FCA)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 411
+    },
+    "banned_terms": [
+      {
+        "term": "brumado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2622,
+    "attempt": 2602,
+    "place_id": "gn-3572375",
+    "input": {
+      "place": {
+        "place_id": "gn-3572375",
+        "name": "Freeport",
+        "country": "Bahamas",
+        "subdivision": "Freeport",
+        "lat": 26.53333,
+        "lon": -78.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freeport, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/Freeport,_Bahamas",
+          "text": "Freeport is a city, district and free trade zone on the island of Grand Bahama in the northwest part of The Bahamas. In 1955, Wallace Groves, a Virginian financier with lumber interests in Grand Bahama, was granted 20,000 hectares (50,000 acres) of pineyard with substantial areas of swamp and scrubland by the Bahamian government with a mandate to economically develop the area. Freeport has grown to become the second most populous city in The Bahamas.\nThe main airport serving the city is the Grand Bahama International Airport, which receives domestic flights from various islands of The Bahamas as well as several international flights from the United States, Italy, and Canada. Freeport is also served by domestic Bahamian ferry services to other islands, and an international ferry connection to Miami.\nThe Grand Bahama Port Authority (GBPA) operates the free trade zone, under the Hawksbill Creek Agreement signed in August 1955 whereby the Bahamian government agreed that businesses located in the Freeport area would pay no taxes before 1980, later extended to 2054. The area of the land grants within which the Hawksbill Creek Agreement applies has been increased to 56,000 hectares (138,000 acres)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "freeport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2623,
+    "attempt": 2603,
+    "place_id": "gn-6543862",
+    "input": {
+      "place": {
+        "place_id": "gn-6543862",
+        "name": "Villeneuve-d'Ascq",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.61669,
+        "lon": 3.16664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villeneuve-d'Ascq",
+          "url": "https://en.wikipedia.org/wiki/Villeneuve-d'Ascq",
+          "text": "Villeneuve-d'Ascq (French pronunciation: [vilnœvdask]; Picard: Neuvile-Ask) is a commune in the Nord department in northern France. With more than 60,000 inhabitants and 50,000 students, it is one of the main cities of the Lille metropolitan area (Métropole Européenne de Lille) and the largest in area (27.46 km2) after the city of Lille itself. It is also one of the main cities of the Hauts-de-France region.\nBuilt up owing to the merger between the former communes of Ascq, Annappes and Flers-lez-Lille, Villeneuve-d'Ascq is a new town and the cradle of the first automatic metro system in the world (VAL).\nVilleneuve-d'Ascq is nicknamed the 'green technopole' thanks to the implantation of many researchers, including two campuses of the University of Lille and many graduate engineering schools, and companies in a pleasant living environment. Owing to its activity centres, its Haute Borne European scientific park and two shopping malls, Villeneuve-d'Ascq is one of the main economic spots of the Hauts-de-France region; multinational corporations such as Bonduelle, Cofidis and Decathlon have their head office there.\nOutside its academic, scientific and business facilities, Villeneuve-d'Ascq is known for its sporting events, boasting two stadiums (Stade Pierre-Mauroy and Stadium Lille Métropole) and some top division sports teams, its museums, e.g. the Lille Métropole Museum of Modern, Contemporary and Outsider Art), its green spaces, and its facilities for disabled people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "villeneuve d ascq",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villeneuve",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ascq",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2624,
+    "attempt": 2604,
+    "place_id": "gn-6697380",
+    "input": {
+      "place": {
+        "place_id": "gn-6697380",
+        "name": "Putrajaya",
+        "country": "Malaysia",
+        "subdivision": "Putrajaya",
+        "lat": 2.93527,
+        "lon": 101.69112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Putrajaya",
+          "url": "https://en.wikipedia.org/wiki/Putrajaya",
+          "text": "Putrajaya (Malay pronunciation: [ˌputraˈd͡ʒaja, ˌputrəˈd͡ʒajə] ), officially the Federal Territory of Putrajaya (Malay: Wilayah Persekutuan Putrajaya), is the administrative centre of Malaysia. The seat of the federal government of Malaysia was moved in 1999 from Kuala Lumpur to Putrajaya because of overcrowding and congestion, whilst the seat of the judiciary of Malaysia was later moved to Putrajaya in 2003. Kuala Lumpur remains as Malaysia's national capital city per the constitution and is still the seat of the head of state (Yang di-Pertuan Agong) and the national legislature (Parliament of Malaysia), as well as being the country's commercial and financial centre.\nThe establishment of Putrajaya was the idea of Prime Minister Mahathir Mohamad and Mayor of Kuala Lumpur Elyas Omar. First thought of in the 1990s, Putrajaya was envisioned to be \"a laboratory for a new form of electronic government\" that would emphasize new adoption of and investment in internet, media, and digital communications. The development of Putrajaya began in August 1995 and was completed at an estimated cost of US$8.1 billion. On 1 February 2001, Putrajaya became Malaysia's third federal territory, after Kuala Lumpur in 1974 and Labuan in 1984. Putrajaya is enclaved within the state of Selangor, on the central west coast of Peninsular Malaysia. It is also a part of MSC Malaysia, a special economic zone that covers the Klang Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "putrajaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2625,
+    "attempt": 2605,
+    "place_id": "gn-1720561",
+    "input": {
+      "place": {
+        "place_id": "gn-1720561",
+        "name": "Calapan",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 13.4117,
+        "lon": 121.1803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calapan",
+          "url": "https://en.wikipedia.org/wiki/Calapan",
+          "text": "Calapan, officially the City of Calapan (Filipino: Lungsod ng Calapan), is a component city and the capital of the province of Oriental Mindoro, Philippines. According to the 2024 census, it has a population of 148,558 people, making it the most populous settlement in the entire island of Mindoro.\nCalapan is the regional and administrative center of the MIMAROPA region as well as its second largest city in the region, after Puerto Princesa in Palawan. It is the only city on the island of Mindoro and one of only two cities in MIMAROPA.\nThe city also serves as the primary center of commerce, industry, transportation, communication, religious activities, and education in the province of Oriental Mindoro.\nThe city serves as a primary gateway to Oriental Mindoro, a role enhanced by the Strong Republic Nautical Highway (SRNH) network. Its main maritime hub, the Port of Calapan, is the busiest seaport on Mindoro Island and is located 45 minutes to 3 hours from the Batangas International Port via ferry or roll-on/roll-off (RORO) vessels. Additionally, the port features the largest passenger terminal building in the Philippines and records the highest passenger volume in the region, catering to millions of travelers annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "calapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2626,
+    "attempt": 2606,
+    "place_id": "gn-3177700",
+    "input": {
+      "place": {
+        "place_id": "gn-3177700",
+        "name": "Cuneo",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.39071,
+        "lon": 7.54828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuneo",
+          "url": "https://en.wikipedia.org/wiki/Cuneo",
+          "text": "Cuneo (Italian: [ˈkuːneo] ; Piedmontese: Coni [ˈkʊni]; Occitan: Coni [ˈkuni]; French: Coni [kɔni]) is a city and comune (municipality) in the region of Piedmont in northern Italy, the capital of the province of Cuneo, the 4th-largest of Italy's provinces by area. With a population of 55,747, it is the 5th most populous city in Piedmont.\nIt is located at an elevation of 550 metres (1,800 ft) in the south-west of Piedmont, at the confluence of the rivers Stura and Gesso.\nCuneo borders the municipalities of Beinette, Borgo San Dalmazzo, Boves, Busca, Caraglio, Castelletto Stura, Centallo, Cervasca, Morozzo, Peveragno, Tarantasca and Vignolo.\nIt is located near six mountain passes:\n\nColle della Maddalena at 1,996 metres (6,549 ft)\nColle di Tenda at 1,871 metres (6,138 ft) – Tunnel of Tenda at 1,300 metres (4,300 ft), 3 kilometres (1.9 mi) long\nColle del Melogno at 1,027 metres (3,369 ft)\nColle San Bernardo at 957 metres (3,140 ft)\nColle di Nava at 934 metres (3,064 ft)\nColle di Cadibona at 459 metres (1,506 ft)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "cuneo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2627,
+    "attempt": 2607,
+    "place_id": "gn-5563397",
+    "input": {
+      "place": {
+        "place_id": "gn-5563397",
+        "name": "Eureka",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.80207,
+        "lon": -124.16367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eureka, California",
+          "url": "https://en.wikipedia.org/wiki/Eureka,_California",
+          "text": "Eureka ( yuurr-EE-kə; Wiyot: Jaroujiji; Hupa: dahwilahłding; Karok: Uuth) is a city in and the county seat of Humboldt County, located on the North Coast of California. The city is located on U.S. Route 101 on the shores of Humboldt Bay, 270 miles (435 km) north of San Francisco and 100 miles (161 km) south of the Oregon border. At the 2020 census, the population of the city was 26,512 and the population of the greater Eureka area was 48,119.\nEureka is the largest coastal city between San Francisco and Portland, Oregon, and the westernmost city of more than 25,000 residents in the 48 contiguous states. The proximity to the sea causes the city to have a maritime climate with very small annual temperature differences and seasons mainly being defined by the rainy winters and dry summers, whereas nearby inland areas are much hotter in summer. It is the regional center for government, health care, trade, and the arts on the North Coast north of the San Francisco Bay Area. Greater Eureka, one of California's major commercial fishing ports, is the location of the largest deep-water port between San Francisco and Coos Bay, a stretch of about 500 miles (805 km).\nThe headquarters of both the Six Rivers National Forest and the North Coast Redwoods District of the California State Parks System are in Eureka. As entrepôt for hundreds of lumber mills that once existed in the area, the city played a leading role in the historic West Coast lumber trade. The entire city is a state historic landmark, which has hundreds of significant Victorian homes, including the nationally recognized Carson Mansion, and the city has retained its original 19th-century commercial core as a nationally recognized Old Town Historic District. Eureka is home to California's oldest zoo, the Sequoia Park Zoo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "eureka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2628,
+    "attempt": 2608,
+    "place_id": "gn-2265464",
+    "input": {
+      "place": {
+        "place_id": "gn-2265464",
+        "name": "Oeiras",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69105,
+        "lon": -9.31085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oeiras, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Oeiras,_Portugal",
+          "text": "Oeiras (locally [ɔˈɐjɾɐʃ] ) is a town and municipality in the western part of Lisbon metropolitan area, located within the Portuguese Riviera, in continental Portugal. The municipality is part of the urban agglomeration of Lisbon and the town of Oeiras is about 16 km from Lisbon downtown. The population in 2011 was 172,120 living in an area of 45.88 km2, making the municipality the fifth-most densely populated in Portugal.\nOeiras is an important economic hub, being one of the most highly developed municipalities of Portugal and Europe. It has the highest GDP per capita in the country, being also the second highest-ranking municipality (immediately after Lisbon) in terms of purchasing power as well as the second highest-ranking in the country as far as tax collection is concerned. These economic indicators also reflect the education level of its inhabitants, as Oeiras is the municipality with the highest concentration of population by tertiary education attainment in the country, their entrepreneurial prowess and the economically liberal mindset of Oeiras' society in general. It also has the lowest unemployment rate in the Lisbon area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "oeiras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2629,
+    "attempt": 2609,
+    "place_id": "gn-3445299",
+    "input": {
+      "place": {
+        "place_id": "gn-3445299",
+        "name": "Veranópolis",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.93611,
+        "lon": -51.54944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Veranópolis",
+          "url": "https://en.wikipedia.org/wiki/Veranópolis",
+          "text": "Veranópolis is a municipality in the state of Rio Grande do Sul, Brazil.  As of 2020, the estimated population was 26,533.\nVeranópolis, like most of its neighbouring towns, is known as one of the cities with highest standards of living in Brazil. The city is also known for being home to one of the largest gun exporters in Brazil, E.R. Amantino, which produces several hunting rifles marketed in the United States by Stoeger Industries, and some models of combat shotguns for the Brazilian Army and São Paulo City Metropolitan Guard.\nThe city also is a big name in energy production, with the biggest Brazilian non-governmental biodiesel plant, Oleoplan S.A with an authorized capacity of 1.050.000 liters per day (277 380.655 US gallons per day) and a power plant that supplies 130MV (Monte Claro Plant) of hydroelectricity, due to the large river (Rio das Antas) and the landscape of highlands.\nVeranópolis is also home of the Veranópolis Esporte Clube (VEC), a well known soccer team in the state's soccer league.\nThe town also hosts a small sports airclub which serves as a local airport for the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "veranopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2630,
+    "attempt": 2610,
+    "place_id": "gn-4351383",
+    "input": {
+      "place": {
+        "place_id": "gn-4351383",
+        "name": "Chillum",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.96372,
+        "lon": -76.99081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillum, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Chillum,_Maryland",
+          "text": "Chillum is an unincorporated area and census-designated place in Prince George's County, Maryland, United States, bordering Washington, D.C., and Montgomery County.\nIn addition to being its own unincorporated neighborhood, Chillum is also a census-designated place covering a larger area than the Chillum neighborhood. As of the 2010 census, the Chillum CDP included Chillum, as well as the adjacent unincorporated communities of Avondale, Carole Highlands, Green Meadows, and Lewisdale.  The population was 36,039 at the 2020 census.\nChillum, the neighborhood, is contained between the Northwest Branch Anacostia River to the east, East West Highway (MD 410) and Sligo Creek to the north, New Hampshire Avenue (MD 650) to the west, and Eastern Avenue NE to the south. Chillum borders the adjacent communities of Avondale, Green Meadows, and Carole Highlands in Prince George's County as well as the city of Takoma Park in Montgomery County, and the Riggs Park (also known as \"Lamond Riggs\"), Queens Chapel, and North Michigan Park neighborhoods of Northeast Washington D.C. Actor Jonathan Banks is from Chillum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "chillum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2631,
+    "attempt": 2611,
+    "place_id": "gn-5096699",
+    "input": {
+      "place": {
+        "place_id": "gn-5096699",
+        "name": "Clifton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85843,
+        "lon": -74.16376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clifton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Clifton,_New_Jersey",
+          "text": "Clifton is a city in Passaic County, in the U.S. state of New Jersey. Criss-crossed by several major highways, the city is a regional commercial hub for North Jersey, and bedroom suburb of New York City, in the New York Metropolitan Area. As of the 2020 United States Census, the city retained its position as the state's 11th-most-populous municipality, just behind tenth-ranked Trenton, and well ahead of Cherry Hill in twelfth place, with a population of 90,296, reflecting an overall increase of 6,160 (+7.3%) from the 2010 census count of 84,136, which in turn reflected an overall increase of 5,464 (+6.9%) from the 78,672 counted in the 2000 census. The Population Estimates Program calculated a population of 88,461 for 2023, making Clifton the 394th-most populous municipality in the nation.\nClifton was incorporated as a city by an act of the New Jersey Legislature on April 26, 1917, replacing Acquackanonk Township, based on the results of a referendum held two days earlier. Clifton is listed under five different ZIP codes. 07011, 07012, 07013, 07014, and 07015. Clifton has been named as one of the best cities to live in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "clifton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2632,
+    "attempt": 2612,
+    "place_id": "gn-1260040",
+    "input": {
+      "place": {
+        "place_id": "gn-1260040",
+        "name": "Pattukkottai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.42358,
+        "lon": 79.31949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pattukkottai",
+          "url": "https://en.wikipedia.org/wiki/Pattukkottai",
+          "text": "Pattukkottai   is a major town in Thanjavur district in the Indian state of Tamil Nadu and also important town in Delta districts and Commercial town of Thanjavur, Thiruvarur and Pudukkottai district Coastal areas. The town came to prominence throughout Southern India after the construction of the fort by Vanaji Pandithar, a feudatory of the Thanjavur Maratha ruler Shahuji I in 1686–87. The recorded history of Pattukkottai is known from the 17th century and has been ruled, at different times, by the Thanjavur Marathas and the British. It is the headquarters of the Pattukkottai taluk of Thanjavur district and is one of the two municipalities in the district.\nPattukkottai comes under the Pattukkottai assembly constituency which elects a member to the Tamil Nadu Legislative Assembly once every five years and it is a part of the Thanjavur (Lok Sabha constituency) which elects its Member of Parliament (MP) once in five years. The town is administered by the Pattukkottai municipality, which covers an area of 21.83 km2 (8.43 sq mi). As of 2011, the town had a population of 73,135. The town is a part of the fertile Cauvery delta region, but the fishery is the major occupation. Roadways and railways are the major mode of transportation to Pattukkottai and the nearest international airport is Tiruchirapalli Airport, located 100 km (62 mi) away from the town, in the city of Tiruchirappalli."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "pattukkottai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2633,
+    "attempt": 2613,
+    "place_id": "gn-2185018",
+    "input": {
+      "place": {
+        "place_id": "gn-2185018",
+        "name": "Palmerston North",
+        "country": "New Zealand",
+        "subdivision": "Manawatu-Wanganui",
+        "lat": -40.35636,
+        "lon": 175.61113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmerston North",
+          "url": "https://en.wikipedia.org/wiki/Palmerston_North",
+          "text": "Palmerston North (; Māori: Te Papa-i-Oea, colloquially known as Palmerston or Palmy) is a city in the North Island of New Zealand and the seat of the Manawatū-Whanganui region. Located in the eastern Manawatū Plains, the city is near the north bank of the Manawatū River, 35 km (22 mi) from the river's mouth, and 12 km (7 mi) from the end of the Manawatū Gorge, about 140 km (87 mi) north of the capital, Wellington. Palmerston North is the country's eighth-largest urban area, with an urban population of 81,200  (June 2025). The estimated population of Palmerston North city is 90,500  (June 2025).\nThe official limits of the city take in rural areas to the south, north-east, north-west and west of the main urban area, extending to the Tararua Ranges and including the town of Ashhurst at the mouth of the Manawatū Gorge and the villages of Bunnythorpe and Longburn in the north and west, respectively. The city covers a land area of 395 square kilometres (98,000 acres).\nThe city's location was once little more than a clearing in a forest and occupied by small communities of Māori, who called it Papa-i-Oea, believed to mean \"How beautiful it is\". In the mid-19th century, it was settled by Europeans—originally by Scandinavians and, later, British settlers. On foundation, the British settlement was bestowed the name Palmerston, in honour of Viscount Palmerston, a former British Prime Minister. The suffix North was added in 1871 to distinguish the settlement from Palmerston in the South Island. Today, the name is often informally shortened to \"Palmy\".\nEarly Palmerston North relied on public works and sawmilling. The west coast railway was built in 1886, linking the town to Wellington, and Palmerston North benefited from a booming pastoral farming industry. Since the early 20th century, Linton Military Camp, Palmerston North Hospital, and the establishment of Massey University (in 1927) have reduced the dependence on farming due to an increase in skilled workers. Popular attractions include Te Manawa (a museum and art gallery that includes the New Zealand Rugby Museum), and several performing arts venues."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "palmerston north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palmerston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2634,
+    "attempt": 2614,
+    "place_id": "gn-3392775",
+    "input": {
+      "place": {
+        "place_id": "gn-3392775",
+        "name": "Pau dos Ferros",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -6.10917,
+        "lon": -38.20444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pau dos Ferros",
+          "url": "https://en.wikipedia.org/wiki/Pau_dos_Ferros",
+          "text": "Pau dos Ferros is a Brazilian municipality in the interior of the state of Rio Grande do Norte, in the Northeast Region of Brazil. Covering an area of 260 km², it is located 389 km from Natal, the state capital. Emancipated from Portalegre in the 19th century, the name refers to a tree, likely an oiticica, which, due to its large size, provided shade and served as a resting place for cowboys who passed through the area, marking their brands with iron on the trunks of these trees, thus initiating the region's settlement.\nAs the main city of the Alto Oeste region, its population in the 2022 census was 30,479 inhabitants, according to the Brazilian Institute of Geography and Statistics (IBGE), making it the 18th most populous municipality in Rio Grande do Norte. However, due to the city's regional hub influence, which extends to over thirty neighboring municipalities, approximately 50,000 people pass through the municipal seat daily.\nThe municipality boasts several historical and cultural attractions, including the Dr. Pedro Diógenes Fernandes Public Reservoir, which supplies the city's water, and the Nossa Senhora da Conceição Church, built in 1738 and established as a parish church in 1756. Additionally, the Obelisk at Praça Monsenhor Caminha was erected to commemorate the centenary of political emancipation and the bicentenary of the parish. Cultural highlights include the Intermunicipal Fair of Education, Culture, Tourism, and Business of Alto Oeste Potiguar (FINECAP), a significant cultural and economic exposition, and the festivities honoring the patron saint Our Lady of the Immaculate Conception, held from late November to early December."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "pau dos ferros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ferros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2635,
+    "attempt": 2615,
+    "place_id": "gn-11612326",
+    "input": {
+      "place": {
+        "place_id": "gn-11612326",
+        "name": "Tatsuno",
+        "country": "Japan",
+        "subdivision": "Hyōgo",
+        "lat": 34.83184,
+        "lon": 134.54338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tatsuno, Hyōgo",
+          "url": "https://en.wikipedia.org/wiki/Tatsuno,_Hyōgo",
+          "text": "Tatsuno (たつの市, Tatsuno-shi) is a city in Hyōgo Prefecture, Japan. As of 31 May 2022, the city had an estimated population of 74,414 in 31119 households and a population density of 6200 persons per km2. The total area of the city is 210.87 square kilometres (81.42 sq mi).\nThe city's name is spelled \"たつの\", using hiragana, but the name of Tatsuno Station uses the kanji characters \"竜野\", while the historic name for the place uses the characters \"龍野.\" According to the Harima no Kuni Fudoki, the origin of the name \"Tatsuno\" was that upon the death of Nomi no Sukune in Ibo District (now in the city of Tatsuno), many came from Izumo and used rock from the Ibo River to make a grave, standing stones in a row on the plain. Thus, it was called \"立野\", with characters meaning \"stand\" and \"plain\", from which it is thought to have changed to \"龍野\". Nomi no Sukune Shrine is located at the place said to be his grave."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "tatsuno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2636,
+    "attempt": 2616,
+    "place_id": "gn-2549263",
+    "input": {
+      "place": {
+        "place_id": "gn-2549263",
+        "name": "Essaouira",
+        "country": "Morocco",
+        "subdivision": "Marrakesh-Safi",
+        "lat": 31.5125,
+        "lon": -9.77
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Essaouira",
+          "url": "https://en.wikipedia.org/wiki/Essaouira",
+          "text": "Essaouira ( ESS-ə-WEER-ə; Arabic: الصويرة, romanized: aṣ-Ṣawīra), known until the 1960s as Mogador (Arabic: موغادور, romanized: Mūghādūr, or موݣادور, Mūgādūr), is a port city in the western Moroccan region of Marrakesh-Safi, on the Atlantic coast. It has 77,966 inhabitants as of 2014.\nThe foundation of the city of Essaouira was the work of the Moroccan 'Alawid sultan Mohammed bin Abdallah, who made an original experiment by entrusting it to several architects in 1760, in particular Théodore Cornut and Ahmed al-Inglizi, who designed the city using French captives from the failed French expedition to Larache in 1765, and with the mission of building a city adapted to the needs of foreign merchants. Once built, it continued to grow and experienced a golden age and exceptional development, becoming the country's most important commercial port but also its diplomatic capital between the end of the 18th century and the first half of the 19th century.\nThe Medina of Essaouira was designated by the UNESCO a World Heritage Site in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "essaouira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2637,
+    "attempt": 2617,
+    "place_id": "gn-2652696",
+    "input": {
+      "place": {
+        "place_id": "gn-2652696",
+        "name": "Coatbridge",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.86216,
+        "lon": -4.02469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coatbridge",
+          "url": "https://en.wikipedia.org/wiki/Coatbridge",
+          "text": "Coatbridge (; Scots: Cotbrig or Coatbrig) is a town in North Lanarkshire, Scotland, about 8+1⁄2 miles (14 kilometres) east of Glasgow city centre, set in the central Lowlands. It had a population of 42,264 in 2022. Along with neighbouring town Airdrie, Coatbridge forms the area known as the Monklands (population approximately 90,000 including outlying settlements), often considered to be part of the Greater Glasgow urban area – although officially they have not been included in population figures since 2016 due to small gaps between the Monklands and Glasgow built-up areas.\nIn the last years of the 18th century, the area developed from a loose collection of hamlets into the town of Coatbridge. The town's development and growth have been intimately connected with the technological advances of the Industrial Revolution, and in particular with the hot blast process. Coatbridge was a major Scottish centre for iron works and coal mining during the 19th century and was then described as 'the industrial heartland of Scotland' and the 'Iron Burgh'.\nCoatbridge also had a notorious reputation for air pollution and the worst excesses of industry. However, by the 1920s, coal seams were exhausted and the iron industry in Coatbridge was in rapid decline. After the Great Depression, the Gartsherrie ironwork was the last remaining iron works in the town. One publication has commented that in modern-day Coatbridge \"coal, iron and steel have all been consigned to the heritage scrap heap\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "coatbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2638,
+    "attempt": 2618,
+    "place_id": "gn-2658761",
+    "input": {
+      "place": {
+        "place_id": "gn-2658761",
+        "name": "Schaffhausen",
+        "country": "Switzerland",
+        "subdivision": "Schaffhausen",
+        "lat": 47.69732,
+        "lon": 8.63493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schaffhausen",
+          "url": "https://en.wikipedia.org/wiki/Schaffhausen",
+          "text": "Schaffhausen (Swiss Standard German: [ʃafˈhaʊzn̩] ; Alemannic German: Schafuuse), historically known in English as Shaffhouse, is a town with historic roots, a municipality in northern Switzerland, and the capital of the canton of the same name; it has an estimated population of 37,000 as of December 2018. It is located on the shore of the High Rhine; it is one of four Swiss towns located entirely on the northern side of the Rhine, along with Neuhausen am Rheinfall, the historic Neunkirch, and medieval Stein am Rhein.\nThe largely pedestrianised old town has two preserved medieval gate towers and many fine Renaissance era buildings decorated with exterior frescos, sculptures and a total of 171 oriel windows (more than any other Swiss town). The old canton fortress, the Munot, overlooks the old town. Schaffhausen railway station is a junction of Swiss and German railway lines. One of the lines connects the town with the nearby Rhine Falls in Neuhausen am Rheinfall, Europe's largest waterfall and a popular tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "schaffhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2639,
+    "attempt": 2619,
+    "place_id": "gn-2957773",
+    "input": {
+      "place": {
+        "place_id": "gn-2957773",
+        "name": "Altenburg",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.98763,
+        "lon": 12.43684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altenburg",
+          "url": "https://en.wikipedia.org/wiki/Altenburg",
+          "text": "Altenburg (German pronunciation: [ˈaltn̩ˌbʊʁk] ) is a city in Thuringia, Germany, located 40 kilometres (25 miles) south of Leipzig, 90 kilometres (56 miles) west of Dresden and 100 kilometres (62 miles) east of Erfurt. It is the capital of the Altenburger Land district and part of a polycentric old-industrial textile and metal production region between Gera, Zwickau and Chemnitz with more than 1 million inhabitants, while the city itself has a population of 33,000. Today, the city and its rural county is part of the Central German Metropolitan Region.\nAltenburg was first mentioned in 976 and later became one of the first German cities within former Slavic area, east of the Saale river (as part of the medieval Ostsiedlung movement). The emperor Frederick Barbarossa visited Altenburg several times between 1165 and 1188, hence the town is named a Barbarossa town today. Since the 17th century, Altenburg was the residence of different Ernestine duchies, of whom the Saxe-Altenburg persisted until the end of monarchy in Germany in 1918. Industrialization reached Altenburg and the region quite early in the first half of the 19th century and flourished until the Great Depression around 1930. Economic malaise set in while Altenburg was in East Germany and continued after German reunification in 1990, evidenced by a decline in population, high unemployment and house vacancy rates.\nThe main sights of Altenburg are the castle, the Lindenau-Museum, the historic city center (most buildings are from early-modern origin) and the Gründerzeit architecture around the center. The popular German card game Skat was developed in Altenburg during the 1810s and the founder of the famous Brockhaus Enzyklopädie, Friedrich Arnold Brockhaus, lived and worked in Altenburg between 1810 and 1817.\nAltenburg lies in the flat and fertile landscape of Osterland on the Pleiße river in the very east of Thuringia, next to the neighboring federal state of Saxony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "altenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2640,
+    "attempt": 2620,
+    "place_id": "gn-3035681",
+    "input": {
+      "place": {
+        "place_id": "gn-3035681",
+        "name": "Avignon",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.94834,
+        "lon": 4.80892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avignon",
+          "url": "https://en.wikipedia.org/wiki/Avignon",
+          "text": "Avignon (, US also , French: [aviɲɔ̃] ; Provençal: Avinhon (Classical norm) or Avignoun (Mistralian norm), IPA: [aviˈɲun]; Latin: Avenio) is the prefecture of the Vaucluse department in the Provence-Alpes-Côte d'Azur region of southern France. Located on the left bank of the river Rhône, the commune has a population of 92,188 (2023), with about 16,000 (estimate from Avignon's municipal services) living in the ancient town centre enclosed by its medieval walls. \nBetween 1309 and 1377, during the Avignon Papacy, seven successive popes resided in Avignon and in 1348 Pope Clement VI bought the town from Joanna I of Naples. Papal control persisted until 1791 when during the French Revolution it became part of France. This is why Avignon is also known as La Cité des Papes ('The City of the Popes').\nThe city is the capital of the Vaucluse department and is one of the constituent municipalities in the Vaucluse and the Gard of the urban agglomeration of Grand Avignon with a combined population of 199,932 (2023).\nThe historic centre is one of the few cities in France to have preserved its mediaeval city walls and includes the Palais des Papes, Avignon Cathedral and the Pont d'Avignon. Due to its architectural and cultural importance during the 14th and 15th centuries, it was listed by UNESCO as a World Heritage Site in 1995. The medieval monuments and the annual Festival d'Avignon – one of the world's largest festivals for performing arts – have helped to make the town a major centre for tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "avignon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,932 @@
+[
+  {
+    "rank": 342,
+    "place_id": "gn-4795467",
+    "input": {
+      "place": {
+        "place_id": "gn-4795467",
+        "name": "Charlotte Amalie",
+        "country": "U.S. Virgin Islands",
+        "subdivision": "Saint Thomas Island",
+        "lat": 18.3419,
+        "lon": -64.9307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlotte Amalie, U.S. Virgin Islands",
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+          "text": "Charlotte Amalie ( SHAR-lət ə-MAH-lee(-ə); Danish: [ʃɑˈlʌtʰə ɑˈmɑːljə]), on Saint Thomas, is the capital and largest town of the U.S. Virgin Islands. It is on the island's southern shore at the head of Charlotte Amalie Harbor. The town is known for its historic sites, Danish colonial architecture, harbor, and shopping. In 2020, it had a population of 8,194, making it the most densely populated town in the U.S. Virgin Islands.\nIt has a deep-water harbor that was once a haven for pirates (including Blackbeard) and is now one of the busiest ports of call for cruise ships in the Caribbean. About 1.5 million cruise ship passengers land there annually, and hundreds of ferries and yachts pass by each week. Protected by Hassel Island, the harbor has docking and fueling facilities, machine shops, and shipyards and was a U.S. submarine base until 1966."
+        },
+        {
+          "article": "Charlotte Amalie, U.S. Virgin Islands (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands#Climate",
+          "text": "Charlotte Amalie has a tropical savanna climate (Köppen Aw), characterized by very warm to hot temperatures year‑round and relatively low rainfall. The annual mean temperature is approximately , with average monthly highs ranging from about and average monthly lows around .\nNighttime temperatures remain relatively high throughout the year, contributing to the city’s reputation as one of the hottest inhabited settlements under U.S. jurisdiction. While some sources describe Charlotte Amalie as the hottest inhabited location in the United States, no comprehensive climatological study has definitively ranked all inhabited locations to confirm this.\nThe city receives modest rainfall, averaging around per year, with a wetter season from May through November and a drier period from December through April. Rainfall amounts and seasonal distribution are consistent with a tropical savanna climate.\nAccording to WeatherSpark, Charlotte Amalie averages relatively few rainy days for a tropical climate, with the driest months from January to April typically seeing only about 3–5 days with measurable rainfall each, and the wettest months of September and October averaging around 10–11 rainy days. Overall, most months receive fewer than 10 days of rain, making precipitation less frequent than is typical for many tropical areas."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 195,
+      "leadWords": 142,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its island southern shore location, deep-water harbour, pirate history, and cruise ships, but describes no climate mechanism, extreme, or paradox and no seasonal weather pattern",
+      "priorMissing": "A verbatim-traceable climate mechanism, extreme, or paradox for this town in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "charlotte amalie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charlotte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amalie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 343,
+    "place_id": "gn-4942618",
+    "input": {
+      "place": {
+        "place_id": "gn-4942618",
+        "name": "Lowell",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.63342,
+        "lon": -71.31617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lowell, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Lowell,_Massachusetts",
+          "text": "Lowell ( ) is a city in Massachusetts, United States. Alongside Cambridge, it is one of the two traditional seats of Middlesex County. With an estimated population of 115,554 in 2020, it was the fifth most populous city in Massachusetts as of the last census, and the third most populous in the Boston metropolitan statistical area. The city is also part of a smaller Massachusetts statistical area, called Greater Lowell, and of New England's Merrimack Valley region.\nIncorporated in 1826 to serve as a mill town, Lowell was named after Francis Cabot Lowell, a local figure in the Industrial Revolution. The city became known as the cradle of the American Industrial Revolution because of its textile mills and factories. Many of Lowell's historic manufacturing sites were later preserved by the National Park Service to create Lowell National Historical Park. During the Cambodian genocide (1975–1979), the city took in an influx of refugees, leading to a Cambodia Town and America's second-largest Cambodian-American population.\nLowell is home to two institutions of higher education. UMass Lowell, part of the University of Massachusetts system, has three campuses in the city. Middlesex Community College's two campuses are in Lowell and in the town of Bedford, Massachusetts.  Arts facilities in the city include the Whistler House Museum of Art, the Merrimack Repertory Theatre, the Lowell Memorial Auditorium, and Sampas Pavilion.  In sports, the city has a long tradition of boxing, hosting the annual New England Golden Gloves boxing tournament.  The city has a baseball stadium, Edward A. LeLacheur Park, and a multipurpose indoor sports arena, the Tsongas Center, both of which have hosted collegiate and minor-league professional sports teams. Cawley Stadium, home of the Lowell High School Red Raiders, also played host to the Boston Patriots during their first season."
+        },
+        {
+          "article": "Lowell, Massachusetts (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lowell,_Massachusetts#Climate",
+          "text": "Lowell features a four-season Humid continental climate, with long and very cold winters, which typically experience an average of snowfall, with the highest ever recorded seasonal snowfall being in the winter of 2014–2015. Summers are hot and humid, and of average length, while autumn and spring are brief transition periods between the two. On average, temperature in Lowell ranges from in the summer months, and between in the winter months, with the yearly average being ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 76,
+      "leadWords": 294,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its 1826 incorporation as a mill town, its textile factories, and its role in the Industrial Revolution, but describes no climate mechanism, extreme, or paradox and no seasonal weather pattern",
+      "priorMissing": "A verbatim-traceable climate mechanism, extreme, or paradox for this city in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lowell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 344,
+    "place_id": "gn-910111",
+    "input": {
+      "place": {
+        "place_id": "gn-910111",
+        "name": "Livingstone",
+        "country": "Zambia",
+        "subdivision": "Southern Province",
+        "lat": -17.84194,
+        "lon": 25.85425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livingstone, Zambia",
+          "url": "https://en.wikipedia.org/wiki/Livingstone,_Zambia",
+          "text": "Livingstone is a city in Southern Province, Zambia. Lying 10 km (6 mi) to the north of the Zambezi River, it is a tourist attraction due to its proximity to the Victoria Falls and its road and rail connections to Victoria Falls, Zimbabwe, the resort town on the opposite side of the falls. A historic British colonial city, its present population was listed at 177,393 inhabitants at the 2022 census. It is named after David Livingstone, the Scottish explorer and missionary who was the first European to explore the area. From 1911 until 1935, it served as the first capital of Northern Rhodesia. From 1907 to 2011, when replaced by Choma, Livingstone was the capital of Zambia's Southern Province."
+        },
+        {
+          "article": "Livingstone, Zambia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Livingstone,_Zambia#Climate",
+          "text": "Livingstone has a hot semi-arid climate (Köppen: BSh) with hot and rainy wet seasons and very hot pre-wet seasons and mild dry seasons with large temperature differences between day and night."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 31,
+      "leadWords": 119,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its location north of the Zambezi River, its closeness to a famous waterfall, and its years as a colonial capital, but describes no climate mechanism, extreme, or paradox and no seasonal weather pattern",
+      "priorMissing": "A verbatim-traceable climate mechanism, extreme, or paradox for this city in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "livingstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 345,
+    "place_id": "gn-1168021",
+    "input": {
+      "place": {
+        "place_id": "gn-1168021",
+        "name": "Pindi Bhattian",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.89844,
+        "lon": 73.27339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pindi Bhattian",
+          "url": "https://en.wikipedia.org/wiki/Pindi_Bhattian",
+          "text": "Pindi Bhattian (Punjabi, Urdu: پِنڈى بھٹياں) is a city and the administrative headquarters of Pindi Bhattian Tehsil, Hafizabad District in Punjab, Pakistan. It is famous for being the birthplace of the 16th-century Punjabi folk hero, Dulla Bhatti, who led a revolt against the Mughal rule in the Punjab.\nCommercially, Pindi Bhattian lies at the heart of Punjab and North Pakistan. Pindi Bhattian is connected through the M2 motorway to major cities like Lahore, Sheikhupura, Islamabad, and Peshawar. Through M3, Pindi Bhattian is connected with Faisalabad, Multan and connecting to major cities of Baluchistan and Sindh like Karachi. E3 (Expressway) is being upgraded to connect Sialkot via Wazirabad, whereas Pindi Bhattian is also connected to Hafizabad, Gujranwala, and Daska. On the western side it is connected to a major city like Jhang, Sargodha, and Mianwali. Mianwali being the main city of the Western CPEC route would be another commercial hub that will connect KPK and Punjab. The prominent villages in surrounding Pindi Bhattian are Ghubrika, Macho Nikka (Officers Valley), Mustafabad, Kot Nakka, Shah Behlol, Kaseesay, Thatha Jahid Amir wala, Nauthen, Khuram Chorera, Thatha Khero Matmal, Bahuman (Crescent Bahümán Limited), Thathi Behlol Pur, Tahli Goraya, Dhalkey, Sabat Shah, Par Ghusroo, Chokerian (village of Kharal families). Castes of Pindi Bhattian are Bhatti, Goraya, Kharal, Khatri, Sial and Tarar."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 215,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its central Punjab location, motorway links, and its fame as the birthplace of a 16th-century folk hero, but describes no climate mechanism, extreme, or paradox and no seasonal weather pattern",
+      "priorMissing": "A verbatim-traceable climate mechanism, extreme, or paradox for this city in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pindi bhattian",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pindi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bhattian",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 346,
+    "place_id": "gn-1185099",
+    "input": {
+      "place": {
+        "place_id": "gn-1185099",
+        "name": "Sylhet",
+        "country": "Bangladesh",
+        "subdivision": "Sylhet Division",
+        "lat": 24.89904,
+        "lon": 91.87198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sylhet",
+          "url": "https://en.wikipedia.org/wiki/Sylhet",
+          "text": "Sylhet is a metropolitan city in the northeastern region of Bangladesh. It serves as the administrative centre for both the Sylhet District and the Sylhet Division. The city is situated on the banks of the Surma River and, as of 2025, the metro area population of Sylhet is estimated to be 1,033,000, reflecting a 3.4% increase from 2024.\nSylhet is known for its tea plantations and natural scenery. Sylhet is famous for the Ratargul Swamp Forest, one of the few freshwater swamp forests in Bangladesh. The region has been inhabited since ancient times, and since the city's establishment in the 14th century has been ruled by various dynasties including the Mughals, the British, and the Nawabs of Bengal. The city is also home to several important landmarks, such as one of the Islamic sites in Bangladesh, the Shah Jalal Dargah, which attracts thousands of pilgrims annually. \nSylhet is one of the most economically important cities in Bangladesh after Dhaka and Chittagong. A major commercial and financial centre, Sylhet is home to several multinational companies and industries, including the tea industry, which generates a significant amount of revenue for the city. Sylhet has diverse transport infrastructure, with a modern airport, railway station, and bus terminals that connect it to other parts of the country. The city also has several educational institutions, including Sylhet Agricultural University, Shahjalal University of Science and Technology, MAG Osmani Medical College and Sylhet Cadet College."
+        },
+        {
+          "article": "Sylhet (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sylhet#Geography_and_climate",
+          "text": "Sylhet is located in the northeastern region of Bangladesh within the Sylhet Division, the Sylhet District, and Sylhet Sadar Upazila. Sylhet has a typical Bangladeshi tropical monsoon climate (Köppen Am) bordering on a humid subtropical climate (Cwa) at higher elevations. The rainy season runs from April to October, and is generally hot and humid with heavy showers and thunderstorms almost every day. The shorter dry season runs from November to February, with very warm and fairly clear weather. Nearly 80% of the annual average rainfall of occurs between May and September.\nGeologically, the region is complex and diverse; higher-elevation regions date partly to the Plio-Miocene age. Available limestone deposits in different parts of the region suggest that the whole area was under the ocean in the Oligo-Miocene. In the last 150 years, three major earthquakes have hit the city with magnitude of at least 7.5 on the Richter Scale, most recently in 1918."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 153,
+      "leadWords": 238,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it mentions only tea plantations, natural scenery, and a freshwater swamp forest, with no place-specific weather explanation",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sylhet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 348,
+    "place_id": "gn-2805753",
+    "input": {
+      "place": {
+        "place_id": "gn-2805753",
+        "name": "Wuppertal",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.25627,
+        "lon": 7.14816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuppertal",
+          "url": "https://en.wikipedia.org/wiki/Wuppertal",
+          "text": "Wuppertal (German pronunciation: [ˈvʊpɐtaːl] ; lit. 'Wupper Dale') is a city in North Rhine-Westphalia, in western Germany, with a population of 355,000. Wuppertal is the seventh-largest city in North Rhine-Westphalia and 17th-largest in Germany. It was founded in 1929 by the merger of Elberfeld, Barmen, Ronsdorf, Cronenberg and Vohwinkel, and was initially called \"Barmen-Elberfeld\" before adopting its present name in 1930. It is the capital and largest city of the Bergisches Land.\nThe city straddles the densely populated banks of the River Wupper, a tributary of the Rhine. Wuppertal is located between the Ruhr area to the north, Düsseldorf to the west, and Cologne to the southwest, and over time has grown together with Solingen, Remscheid and Hagen. The city is known for its steep slopes, its woods and parks, and for being the greenest city in Germany, with two-thirds green space of the total municipal area.\nThe Wupper Valley was, along with the Ore Mountains and before the Ruhr, the first highly industrialized region of Germany, which resulted in the construction of the Wuppertal Suspension Railway in the then independent cities of Elberfeld and Barmen. The increasing demand for coal from the textile mills and blacksmith shops from those cities encouraged the expansion of the nearby Ruhr. Wuppertal still is a major industrial centre, being home to industries such as textiles, metallurgy, chemicals, pharmaceuticals, electronics, automobiles, rubber, vehicles and printing equipment. Aspirin originates from Wuppertal, patented in 1897 by Bayer, as does the Vorwerk Kobold vacuum cleaner. The Wuppertal Institute and the European Institute for International Economic Relations are located in the city. Barmen was the birthplace of Friedrich Engels.\nDue to the city's length, the Bergish varieties of the Limburgish language called Platt are spoken in its western communities like Vohwinkel, but not in the city's eastern communities like Langerfeld where the Southern varieties of Westphalian language are spoken and the city is called Wupperdaal by locals."
+        },
+        {
+          "article": "Wuppertal (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Wuppertal#Geography",
+          "text": "Wuppertal is located in the Bergisches Land region of North Rhine-Westphalia. The city is situated in the valley of the Wupper river, which flows through the city from east to west and is a tributary of the Rhine. Wuppertal is characterised by its steep hills and narrow valleys, giving the city a distinctive topography.\nWuppertal spans an area of 168.41 square kilometers (65.02 sq mi), with elevations ranging from 100 meters (330 ft) above sea level in the river valleys to over 350 meters (1,150 ft) in the surrounding uplands. The highest point is the Lichtscheid hill at 350 meters (1,148 ft). Wuppertal is bordered by several municipalities, including Solingen, Remscheid, Hagen, and Ennepe-Ruhr-Kreis.\nThe city's unique geography led to the development of the Wuppertal Schwebebahn (Wuppertal Suspension Railway), an elevated monorail that follows the course of the Wupper river through much of the city. The surrounding landscape is marked by mixed forests, agricultural land, and numerous parks, including the and the Botanischer Garten Wuppertal.\nWuppertal is part of the Rhine-Ruhr metropolitan region, one of the largest population centres in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 181,
+      "leadWords": 319,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; it describes steep slopes, woods, parks, and being the greenest city in Germany, none of which is sourced weather information",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wuppertal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 349,
+    "place_id": "gn-298117",
+    "input": {
+      "place": {
+        "place_id": "gn-298117",
+        "name": "Van",
+        "country": "Türkiye",
+        "subdivision": "Van",
+        "lat": 38.49457,
+        "lon": 43.38323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van, Turkey",
+          "url": "https://en.wikipedia.org/wiki/Van,_Turkey",
+          "text": "Van is a city in eastern Turkey's Van Province, on the eastern shore of Lake Van. It is the capital and largest city of Van Province.\nVan has a long history as a major urban area. It has been a large city since the first millennium BCE, initially as Tushpa, the capital of the kingdom of Urartu from the 9th century BCE to the 6th century BCE, and later as the center of the Armenian kingdom of Vaspurakan. Turkic presence in Van and in the rest of Anatolia started as a result of Seljuk victory at the Battle of Malazgirt (1071) against the Byzantine Empire.\nVan was densely populated by Armenians until the Armenian genocide in the 1910s. Today, it is mostly inhabited by Kurds."
+        },
+        {
+          "article": "Van, Turkey (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Van,_Turkey#Climate",
+          "text": "Van has a Mediterranean-influenced humid continental climate (Köppen: Dsa, Trewartha: Dc) with cold, snowy winters and very warm, dry summers. Precipitation can be observed for the majority of the year, with a slight peak during spring and autumn, and a brief dry summer from July to September."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 47,
+      "leadWords": 125,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives only the eastern-shore lake location and long political history",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "van",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 350,
+    "place_id": "gn-3526683",
+    "input": {
+      "place": {
+        "place_id": "gn-3526683",
+        "name": "Iztapalapa",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.35529,
+        "lon": -99.06224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iztapalapa",
+          "url": "https://en.wikipedia.org/wiki/Iztapalapa",
+          "text": "Iztapalapa () is a borough (demarcación territorial) in Mexico City located on the eastern side of the city. The borough is named after and centered on the formerly independent municipality of Iztapalapa (officially Iztapalapa de Cuitláhuac). The rest is made up of a number of other communities which are governed by the city of Iztapalapa.\nWith a population of 1,835,486 as of 2020, Iztapalapa is the most populous borough of Mexico City as well as the second-most populous municipality in the country, after Tijuana. Over 90% of the territory is urbanized, with its green space mostly in parks. Over the past 40 years, Iztapalapa transformed from a rural area primarily dedicated to agriculture to a densely populated borough. This was the result of a large influx of people who settled in the borough from other parts of the country, starting in the 1970s. Most of the population is employed in commerce, services and industry.\nIztapalapa remains afflicted by high levels of economic deprivation, and a significant number of its residents lack access to clean drinking water. Iztapalapa has one of the highest rates of violent crime in Mexico City. Combatting homicides and drug trafficking remain a major issue for local authorities. \nThe borough is home of one of Mexico City's major cultural events, the annual Passion Play in which 450 borough residents participate and about 2 million attend as spectators."
+        },
+        {
+          "article": "Iztapalapa (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Iztapalapa#Elevation_and_climate",
+          "text": "The borough has an average elevation of asl and extends over firm land and what was former lake bed of Lake Texcoco. Some of the firm land is alluvial plain but most of it are elevations such as the Cerro de la Estrella ( asl), Peñón Viejo or Peñon del Marqués ( asl), and the Sierra de Santa Catalina, which contains the Cerro Tecuatzi ( asl), Cerro Tetecón ( asl), and the Guadalupe Borrego ( asl), ( asl); and Yuhualixqui ( asl) volcanoes.\nThe climate of the area is divided into four zones. One consists of a warm wet climate with temperatures above in the coldest months. Another is a temperate wet climate with temperatures between in the coldest months. One has a relatively dry climate with a range of temperatures, and the last consists of a cold climate with average temperature not exceeding . Most of the area falls into the temperate category and all receive most of their rainfall in the summer and early fall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Elevation and climate",
+      "sectionWords": 167,
+      "leadWords": 230,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes urbanisation, population, deprivation, crime, and the annual Passion Play, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "iztapalapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 351,
+    "place_id": "gn-5577147",
+    "input": {
+      "place": {
+        "place_id": "gn-5577147",
+        "name": "Fort Collins",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.58526,
+        "lon": -105.08442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Collins, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Fort_Collins,_Colorado",
+          "text": "Fort Collins is a home rule city in Larimer County, Colorado, United States, and serves as the county seat and most populous municipality of the county. It is the fourth-most populous city in Colorado with a population of 169,810 in the 2020 census, while the Fort Collins, CO Metropolitan Statistical Area has an estimated 375,000 residents.\nSituated on the Cache La Poudre River along the Colorado Front Range, Fort Collins is located 60 mi (97 km) north of the Colorado State Capitol in Denver and is a major city of the Front Range Urban Corridor. It is a prominent college town, home to Colorado State University, a public research university and the second-largest university by enrollment in Colorado."
+        },
+        {
+          "article": "Fort Collins, Colorado (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Fort_Collins,_Colorado#Climate",
+          "text": "Fort Collins has a cold semi-arid climate (Köppen climate classification 'BSk'). Its climate is characterized by warm to hot summers and long and moderately cold winters (with frequent warm spells due to downslope winds, and somewhat less common intervals of severe cold). The average temperature in December, the coldest month, is . Annual snowfall averages , and can occur from early September through the end of May. Average precipitation overall is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 72,
+      "leadWords": 118,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives only the Cache La Poudre River and Front Range location and its university",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fort collins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "collins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 352,
+    "place_id": "gn-667268",
+    "input": {
+      "place": {
+        "place_id": "gn-667268",
+        "name": "Sibiu",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.8,
+        "lon": 24.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sibiu",
+          "url": "https://en.wikipedia.org/wiki/Sibiu",
+          "text": "Sibiu ( see-BEW, pronounced [siˈbiw], German: Hermannstadt [ˈhɛʁmanʃtat], Hungarian: Nagyszeben, Latin: Cibinium, Transylvanian Saxon: Härmeschtat or Hermestatt) is a city in central Romania, situated in the historical region of Transylvania. Located some 275 km (171 mi) north-west of Bucharest, the city straddles the Cibin River, a tributary of the Olt River. Now the seat of Sibiu County, between 1692 and 1791 and 1849–65, Sibiu was the capital of the Principality of Transylvania. Until 1876, the Hecht house in Sibiu served as the seat of the Transylvanian Saxon University.\nNicknamed The Town with Eyes for the eyebrow dormers on many old buildings, the town is a popular tourist destination. It is known for its culture, history, cuisine, and architecture.\nSeveral fortified villages near Sibiu, such as Biertan and Valea Viilor, were inscribed as a UNESCO World Heritage Site in 1993 under the collective listing \"Villages with Fortified Churches in Transylvania\". Separately, in 2004, the historical center of Sibiu was added to Romania's tentative list of UNESCO World Heritage Sites, but has not yet been officially inscribed. It was later designated the European Capital of Culture in 2007, alongside Luxembourg City. In 2008, Forbes ranked Sibiu as \"Europe's 8th-most idyllic place to live\". In 2019, Sibiu was named the European Region of Gastronomy and hosted a European Union summit. In 2021, it also hosted the European Wandering Capital event, the continent’s most prominent hiking and eco-tourism gathering.\nSibiu is also known nationally and internationally for its Christmas market. Renowned personalities include Transylvanian Saxon scientists Conrad Haas and Hermann Oberth, who were both pioneers of rocketry.\nAs of 2021 census, the city has a population of 134,309, making it the 15th most populous city in Romania. The proposed Sibiu metropolitan area has a population of 267,170. The town also administers the village of Păltiniș, a ski resort located 35 kilometres to the southwest.\nDuring the High and Late Middle Ages, Sibiu was the most important cultural and administrative centre of the Transylvanian Saxons. It is called Härmeschtat in their local dialect, which is close to Luxembourgish, from which it primarily descended during the Ostsiedlung."
+        },
+        {
+          "article": "Sibiu (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sibiu#Climate",
+          "text": "Sibiu's climate is humid continental (Köppen: Dfb), with average temperatures of . The average precipitation is , and there are about 120 days of hard frost annually. Sibiu experiences 56 days per year with fog and 1.5 days with hail."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 40,
+      "leadWords": 351,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes the Cibin River location, history, tourism, and culture, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sibiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 354,
+    "place_id": "gn-964420",
+    "input": {
+      "place": {
+        "place_id": "gn-964420",
+        "name": "Gqeberha",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.96109,
+        "lon": 25.61494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gqeberha",
+          "url": "https://en.wikipedia.org/wiki/Gqeberha",
+          "text": "Gqeberha (English:  keb-AIR-khə, Xhosa: [ᶢǃʱɛ̀ɓéːxà]), also known as Port Elizabeth and colloquially P.E., is a major seaport and the most populous city in the Eastern Cape province of South Africa. It is the seat of the Nelson Mandela Bay Metropolitan Municipality, South Africa's second-smallest metropolitan municipality by area. It is the sixth-most populous city in South Africa and is the cultural, economic and financial hub of the Eastern Cape.\nGqeberha was founded in 1820 as Port Elizabeth by Sir Rufane Donkin, who was the governor of the Cape at the time. He named it after his wife, Elizabeth, who had died in India. The Donkin Memorial in the central business district of the city bears testament to that. It was established by the government of the Cape Colony when 4,000 British colonists settled in Algoa Bay to strengthen the border region between the Cape Colony and the Xhosa. It is nicknamed \"The Friendly City\" or \"The Windy City\". In 2019, the Eastern Cape Geographical Names Committee recommended that Port Elizabeth be renamed Gqeberha, after the Xhosa and Southern Khoe name for the Baakens River that flows through the city. The city's name change was officially gazetted on 23 February 2021.\nLocated on the western portion of Algoa Bay along the southeastern coast of South Africa, the city lies 770 km east of Cape Town. It is east of the Garden Route and faces the Indian Ocean. It covers 251 square kilometers of the Nelson Mandela Bay metropolitan area, and is administered by South Africa's sixth-largest metropolitan municipality. The city's warm oceanic climate ranks it among the top cities in the world for pleasant year-round weather. The city is known for many blue-flag beaches along the city's urban coastline; its popularity as an international and local holiday destination; and its rich and diverse cultural heritage. It is a gateway city for the Eastern Cape's adventure, outdoor and African big five game safari tourism."
+        },
+        {
+          "article": "Gqeberha (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gqeberha#Climate",
+          "text": "Under the Köppen climate classification, the city has an oceanic climate (Cfb), and under the Trewartha climate classification, the city has a subtropical climate (Cfbl). The area lies between the winter rainfall, Mediterranean climate zones of the Western Cape and the summer rainfall regions of eastern South Africa. Winters are cool but mild and summers are warm but considerably less humid and hot than more northerly parts of South Africa's east coast. The climate is very even throughout the year with extreme heat or moderate cold rare."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 87,
+      "leadWords": 322,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only a warm oceanic climate classification and pleasant year-round weather, plus a windy nickname, with no verbatim mechanism, extreme, or paradox; a bare classification is not enough",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the warm oceanic classification in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gqeberha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 355,
+    "place_id": "gn-1185056",
+    "input": {
+      "place": {
+        "place_id": "gn-1185056",
+        "name": "Abbottabad",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.1463,
+        "lon": 73.21168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbottabad",
+          "url": "https://en.wikipedia.org/wiki/Abbottabad",
+          "text": "Abbottabad is a city and the capital of the Hazara Division in the Pakistani province of Khyber Pakhtunkhwa. It also serves as the headquarters of its eponymous tehsil (subdistrict) and district. According to the 2023 census, Abbottabad had a population of 234,395. The city is located about 120 km (75 mi) north of the Islamabad–Rawalpindi area and 150 km (95 mi) east of Peshawar, at an elevation of about 1,256 m (4,121 ft).\nAbbottabad was founded in 1853 during British rule and was named after James Abbott, the first deputy commissioner of Hazara. It developed as a cantonment and administrative centre in the colonial period, later becoming part of the North-West Frontier Province and then Khyber Pakhtunkhwa. Parts of the city are administered as Abbottabad Cantonment, while the wider urban area also includes municipal administration.\nThe city is associated with education, healthcare, tourism and military institutions. It is home to institutions such as Ayub Medical College and the Abbottabad campus of COMSATS University Islamabad, while the Pakistan Military Academy is located at nearby Kakul. Abbottabad also serves as a market and transit centre for surrounding areas of the Hazara region and as a base for travel to nearby hill stations and destinations in northern Pakistan, including the Galyat region and the Kaghan Valley."
+        },
+        {
+          "article": "Abbottabad (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Abbottabad#Climate",
+          "text": "Abbottabad has a humid subtropical climate under the Köppen climate classification. Climate-Data.org gives Abbottabad an average annual temperature of and average annual rainfall of . Average temperatures are lowest in January and highest in June. Rainfall occurs throughout the year, with the highest monthly totals in July and August during the summer monsoon period."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 54,
+      "leadWords": 213,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives only location relative to Islamabad and Peshawar, founding in 1853, and education, tourism, and military institutions",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "abbottabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 356,
+    "place_id": "gn-1784853",
+    "input": {
+      "place": {
+        "place_id": "gn-1784853",
+        "name": "Zhaoqing",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.04893,
+        "lon": 112.46091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhaoqing",
+          "url": "https://en.wikipedia.org/wiki/Zhaoqing",
+          "text": "Zhaoqing (Chinese: 肇庆), alternately romanized as Shiuhing, is a prefecture-level city in Guangdong, China. As of the 2020 census, its population was 4,113,594, with 1,553,109 living in the built-up (or metro) area made of Duanzhou, Dinghu and Gaoyao. The prefectural seat—except the Seven Star Crags—is fairly flat, but thickly forested mountains lie just outside its limits. Numerous rice paddies and aquaculture ponds are found on the outskirts of the city. Sihui and the southern districts of the prefecture are considered part of the Pearl River Delta.\nFormerly one of the most important cities in southern China, Zhaoqing lost its importance during the Qing dynasty and is now primarily known for tourism and as a provincial \"college town\". Residents from Guangzhou, Shenzhen, and the other cities of the Pearl River Delta often visit it for weekend excursions. It is also a growing manufacturing center."
+        },
+        {
+          "article": "Zhaoqing (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Zhaoqing#Climate",
+          "text": "The city has a monsoon-influenced humid subtropical climate (Köppen climate classification Cfa). The yearly average temperature is , and annual precipitation is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 23,
+      "leadWords": 143,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes flat land, forested mountains, rice paddies, and ponds, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zhaoqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 357,
+    "place_id": "gn-2338400",
+    "input": {
+      "place": {
+        "place_id": "gn-2338400",
+        "name": "Ijebu Ode",
+        "country": "Nigeria",
+        "subdivision": "Ogun State",
+        "lat": 6.81944,
+        "lon": 3.91731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ijebu Ode",
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "text": "Ijebu-Ode () is a city and Local government area in Ogun State, South West Nigeria, close to the A121 highway. The city is located 110 km by road northeast of Lagos; it is within 100 km (62 mi) of the Atlantic Ocean in the eastern part of Ogun State and possesses a warm tropical climate.\nAccording to the Britannica, by the 16th century, it was established as the chief town, and since pre-colonial times it has been the capital of the Ijebu kingdom. There are around 2,119,221 Ijebus around south-west Nigeria, in Lagos and Ogun states. It has an estimated population of 394,246(2024). It is home to Sungbo's Eredo one of the largest ramparts in West Africa.\nAs with most Ijebus, people from Ijebu Ode have a nationwide reputation of being natural entrepreneurs, The primary cultural food is \"Ikokore\"."
+        },
+        {
+          "article": "Ijebu Ode (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode#Climate",
+          "text": "Ijebu Ode has a tropical savanna climate (Köppen: Aw)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 9,
+      "leadWords": 139,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only that the place possesses a warm tropical climate, a bare classification with no mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the warm tropical classification in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ijebu ode",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ijebu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ode",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 358,
+    "place_id": "gn-2692969",
+    "input": {
+      "place": {
+        "place_id": "gn-2692969",
+        "name": "Malmö",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.60587,
+        "lon": 13.00073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmö",
+          "url": "https://en.wikipedia.org/wiki/Malm%C3%B6",
+          "text": "Malmö is the third-largest city in Sweden, after Stockholm and Gothenburg, and the seventh-largest city in the Nordic region. Located on the Öresund strait on the southwestern coast of Sweden, it is the largest city in Scania, with a municipal population of 365,644 in 2024, and is the gubernatorial seat of Skåne County. Malmö received its city privileges in 1353, and today Malmö's metropolitan region is home to over 700,000 people. \nMalmö is the site of Sweden's only fixed direct link to continental Europe, the Öresund Bridge, completed in 2000. The bridge connects Sweden to Denmark, and carries both road and rail traffic. The Öresund Region, which includes Malmö and Copenhagen, is home to four million people.   \nThe city was one of the earliest and most-industrialised in Scandinavia, and the birthplace of several of Scandinavia's largest industrial groups, such as Kockums, Skanska, and Scania AB. The city has undergone a major transformation in the 21st century, and today, Malmö is characterised by many small and medium-sized companies in biotech, logistics, IT, construction, and real estate markets. It also is home to Malmö University and other higher education facilities. \nMalmö contains many historic buildings and parks, and is a commercial centre for the western part of Scania. It is home to Malmö FF, the Swedish football club with the most Allsvenskan titles, and the only Nordic club to have reached the final of the European Cup. It is also home to women's football club FC Rosengård, the most successful club in the Damallsvenskan.\nThe city was Sweden's fastest-growing in 2020, and the population increased by 3,800 inhabitants during 2021. As of 2024, almost half the municipal population of Malmö had a foreign background with the city being home to people from 187 different countries. Malmö's population is expected to increase by about 29,000 new residents by 2035 with a total 395,000 residents, and a population of 500,000 by 2050.\nMalmö has a mild climate for its latitude and, normally, average high temperatures remain above freezing in winter, with prolonged snow cover being rare."
+        },
+        {
+          "article": "Malmö (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Malm%C3%B6#Climate",
+          "text": "with the old water tower]]\nMalmö, like the rest of southern Sweden, has an oceanic climate (Cfb). Despite its northern location, the climate is mild compared to other locations at similar latitudes, mainly because of the influence of the Gulf Stream and also its westerly position on the Eurasian landmass. Owing to its northern latitude, daylight lasts 17 hours 31 minutes in midsummer, but only around seven hours in midwinter. According to data from 2002 to 2014 Falsterbo, to the south of the city, received an annual average of 1,895 hours of sunshine while Lund, to the north, received 1,803 hours. The sunshine data in the weather box is based on the data for Falsterbo.\nSummers are mild with average high temperatures of and lows of around . Heat waves during the summer arise occasionally. Winters are fairly cold and windy, with temperatures steady between , but it rarely drops below .\nRainfall is light to moderate throughout the year with 169 wet days. Snowfall occurs mainly in December through March, but snow covers do not remain for a long time, and some winters are free of snow."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 188,
+      "leadWords": 342,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only a mild-climate label for its latitude and average winter high temperatures above freezing with rare prolonged snow; average temperatures and a mild label do not qualify, and no mechanism, extreme, or paradox is described",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond mild average winter temperatures in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "malmo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 359,
+    "place_id": "gn-2972191",
+    "input": {
+      "place": {
+        "place_id": "gn-2972191",
+        "name": "Tours",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.39484,
+        "lon": 0.70398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tours",
+          "url": "https://en.wikipedia.org/wiki/Tours",
+          "text": "Tours ( TOOR; French: [tuʁ] ) is the largest city in the region of Centre-Val de Loire, France. It is the prefecture of the department of Indre-et-Loire. The commune of Tours had 138,668 inhabitants as of 2022 while the population of the whole metropolitan area was 526,370.\nTours sits on the lower reaches of the Loire, between Orléans and the Atlantic coast. Formerly named Caesarodunum by its founder, Roman Emperor Augustus, it possesses one of the largest amphitheaters of the Roman Empire, the Tours Amphitheatre. Known for the Battle of Tours in 732 AD, it is a National Sanctuary with connections to the Merovingians and the Carolingians, with the Capetians making the kingdom's currency the Livre tournois. Saint Martin and Gregory of Tours were from Tours. Tours was once part of Touraine, a former province of France. Tours was the first city of the silk industry. It was taken by Louis XI, as the royal capital under the Valois Kings with its Loire castles and city of art with the School of Tours. The prefecture was partially destroyed during the French Wars of Religion in the late 16th century and again during the Second World War in June 1940.\nThe historical centre of Tours is listed as a UNESCO World Heritage Site, and the city is also home to the Vieux-Tours, a patrimonial site. The garden city has a green heritage and its urban landscape has been strongly influenced by its natural space. The historic city is nicknamed the \"White and Blue City\" and \"Le Petit Paris\". The city is a university city with more than 30,000 students in 2019. Tours is a popular culinary city with specialties such as rillettes, rillons, Touraine vineyards, AOC Sainte-Maure-de-Touraine cheeses and nougats. The city is also the end-point of the annual Paris–Tours cycle race. The region, due to its history and culture, has always been a place of birth or home to many personalities and international sporting events."
+        },
+        {
+          "article": "Tours (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tours#Climate",
+          "text": "Tours has an oceanic climate that is mild for such a northern latitude. Summers are influenced by its inland position, resulting in frequent days of or warmer, whereas winters are kept mild by Atlantic air masses. The entire valley between Orléans and Angers is famous for its fabulous châteaux, most of them Renaissance (over 600 between Orléans and Angers)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 59,
+      "leadWords": 325,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes the Loire location, Roman and medieval history, silk, and food specialities, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tours",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 360,
+    "place_id": "gn-3037854",
+    "input": {
+      "place": {
+        "place_id": "gn-3037854",
+        "name": "Amiens",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.9,
+        "lon": 2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amiens",
+          "url": "https://en.wikipedia.org/wiki/Amiens",
+          "text": "Amiens (English:  or  AM-ee-ənz; French: [amjɛ̃] ; Picard: Anmien, Anmiens or Anmyin) is a city and commune in northern France, located 120 km (75 mi) north of Paris and 100 km (62 mi) southwest of Lille. With 136,449 inhabitants (2023), it is the prefecture of the Somme department in the Hauts-de-France region. A central landmark of the city is Amiens Cathedral, the largest Gothic cathedral in France. Amiens also has one of the largest university hospitals in France, with a capacity of 1,200 beds. The author Jules Verne lived in Amiens from 1871 until his death in 1905, and served on the city council for 15 years. Amiens is the birthplace of current French president Emmanuel Macron.\nThe town was fought over during both World Wars, suffering significant damage, and was repeatedly occupied by both sides. The 1918 Battle of Amiens was the opening phase of the Hundred Days Offensive which directly led to the Armistice with Germany. The Royal Air Force heavily bombed the town during the Second World War. In the aftermath, the city was rebuilt according to Pierre Dufau's plans with wider streets to ease traffic congestion. These newer structures were primarily built of brick, concrete and white stone with slate roofs. The architect Auguste Perret designed the Gare d'Amiens train station and nearby Tour Perret.\nAmiens has an important historical and cultural heritage, on which a significant amount of tourism is based. Apart from the cathedral, there are the hortillonnages, the Jules Verne House, the Tour Perret, the Musée de Picardie, the zoo, and the Saint-Leu and Saint-Maurice neighborhoods. A total of 60 monuments are listed in the inventory of monuments historiques, over 1600 places and monuments listed in the general inventory of cultural heritage, and 187 objects listed in the inventory of monuments historiques. During December, the town hosts the largest Christmas market in northern France. It is known for a few local foods, including \"macarons d'Amiens\", almond paste biscuits; \"tuiles amienoises\", chocolate and orange curved biscuits; \"pâté de canard d'Amiens\", duck pâté in pastry; \"la ficelle Picarde\", an oven-baked cheese-topped crêpe; and \"flamiche aux poireaux\", a puff pastry tart made with leeks and cream."
+        },
+        {
+          "article": "Amiens (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Amiens#Climate",
+          "text": "Amiens has the typical oceanic climate of the north of France, with relatively mild winters, cool summers, and rainfall well distributed throughout the year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 360,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes location north of Paris, the cathedral, wartime damage, and local foods, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "amiens",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 361,
+    "place_id": "gn-3727135",
+    "input": {
+      "place": {
+        "place_id": "gn-3727135",
+        "name": "Croix-des-Bouquets",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.57677,
+        "lon": -72.22625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Croix-des-Bouquets",
+          "url": "https://en.wikipedia.org/wiki/Croix-des-Bouquets",
+          "text": "Croix-des-Bouquets (, French pronunciation: [kʁwa de bukɛ]; Haitian Creole: Kwadèbouke or Kwadèboukè)  is a commune in the Ouest department of Haiti. It is located 12.9 kilometers (8.0 mi) to the northeast of Haiti's capital city, Port-au-Prince. Originally located on the shore, it was relocated inland after the 1770 Port-au-Prince earthquake. With a population density of 52,000/km2 (130,000/sq mi), Croix-des-Bouquets is one of the most densely populated cities in the world.\nCroix-des-Bouquets was founded in 1749 by Royal Decree. Legend has it that the city takes its name from a tradition that had the Spaniards passing to deposit bouquets of flowers at the foot of a large cross that was on the land where the city was built. Croix des Bouquets pursues a tradition of beauty through the sculpture of iron, and the village of Noailles is at the heart of this tradition specifically in ode to Haitian artist and sculptor Georges Liautaud."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 152,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives location near the capital, relocation after the 1770 earthquake, founding in 1749, and iron sculpture, and a one-off earthquake is not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "croix des bouquets",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "croix",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bouquets",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 362,
+    "place_id": "gn-5402405",
+    "input": {
+      "place": {
+        "place_id": "gn-5402405",
+        "name": "Thousand Oaks",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.17056,
+        "lon": -118.83759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thousand Oaks, California",
+          "url": "https://en.wikipedia.org/wiki/Thousand_Oaks,_California",
+          "text": "Thousand Oaks is the second-largest city in Ventura County, California, located in the northwestern part of Greater Los Angeles. Approximately 15 miles (24 km) from the city of Los Angeles and 40 miles (64 km) from Downtown Los Angeles, it is named after the many oak trees present in the area.\nThe city forms the central populated core of the Conejo Valley. Thousand Oaks was incorporated in 1964 and has since expanded to the west and east. Two-thirds of the master-planned community surrounding Westlake and most of Newbury Park were annexed by the city during the late 1960s and 1970s. The Los Angeles County–Ventura County line forms the city's eastern border with the city of Westlake Village. The population was 126,966 at the 2020 census, up from 126,683 at the 2010 census."
+        },
+        {
+          "article": "Thousand Oaks, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Thousand_Oaks,_California#Climate",
+          "text": "The region experiences a warm-summer Mediterranean climate (Csa in the Köppen climate classification). Vegetation is typical of Mediterranean environments, with chaparral and grasses on the hillsides and numerous western valley oaks. Its elevation ranges from about 500 to 900 feet (excluding the mountains and hills). The area has slightly cooler temperatures than the surrounding areas, as it receives cooler air from the ocean through various hill and mountain passes. On March 10 and 11, 2006, snow fell on the peak of Boney Mountain, the first snow to fall in the area in about 20 years. Snow also fell on Boney Peak on December 17 and 18, 2008.\nIn line with the rest of coastal California, temperatures at solar noon tend to fluctuate between during summer, and rarely drop below during winter.\nThe Newbury Park portion of Thousand Oaks has the coolest summer weather with highs averaging about 80 degrees compared to 90 degrees for central Thousand Oaks."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 157,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes location in Greater Los Angeles, oak trees, incorporation in 1964, and later annexations, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "thousand oaks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thousand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oaks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 363,
+    "place_id": "gn-702550",
+    "input": {
+      "place": {
+        "place_id": "gn-702550",
+        "name": "Lviv",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.83826,
+        "lon": 24.02324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lviv",
+          "url": "https://en.wikipedia.org/wiki/Lviv",
+          "text": "Lviv (German: Lemberg,Polish: Lwów; ) is the fifth-largest city in Ukraine, as well as the largest city in the western part of the country, with a population of 723,403 (2025 estimate). It serves as the administrative center of Lviv Oblast and Lviv Raion, and is one of the main cultural centers of Ukraine. The city also hosts the administration of Lviv urban hromada. Lviv was named after Leo I of Galicia, the eldest son of Daniel, King of Ruthenia. During its history the city has had several names.\nIn the 14th century, Lviv emerged as the heart of the historical regions of Red Ruthenia and Galicia, superseding other historic cities such as Halych, Chełm, Belz, and Przemyśl. It was the capital of the Kingdom of Galicia–Volhynia from 1272 to 1340, when it went to King Casimir III the Great of Poland in a war of succession. In 1356, Casimir the Great granted it town rights. From 1434, it was the regional capital of the Ruthenian Voivodeship in the Kingdom of Poland. In 1772, after the First Partition of Poland, the city became the capital of the Habsburg semiautonomous Polish-dominated Kingdom of Galicia and Lodomeria. Between 1918 and 1939, the city was the heart of the Lwów Voivodeship in the Second Polish Republic. During this period the city's culture and industry flourished, as did its academic institutions, such as the Lwów School of Mathematics, the Lwów Historical School, and the Lwów School of Economics. After the German-Soviet invasion of Poland in 1939, Lwów was annexed by the Soviet Union. It survived Soviet and German occupations during World War II largely unscathed. In February 1946, the city became a part of the Ukrainian Soviet Socialist Republic, having lost an estimated 80-90% of its prewar population. In 1991, with the dissolution of the Soviet Union, Lviv stayed part of Ukraine.\nThe historical heart of the city has cobblestone streets and an assortment of Renaissance, Baroque, Neoclassicist and Art Nouveau architecture; it is listed on the UNESCO World Heritage List. It is listed as an endangered site due to the Russian invasion of Ukraine.\nLviv has a number of industries and institutions of higher education, such as Lviv University and Lviv Polytechnic. The city is also the home of multiple cultural institutions, including the Academic Symphony Orchestra of the Lviv Philharmonic and the Lviv Theatre of Opera and Ballet."
+        },
+        {
+          "article": "Lviv (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lviv#Climate",
+          "text": "Lviv's climate is humid continental (Köppen climate classification Dfb) with cold winters and warm summers. The average temperatures are in January and in July. The average annual rainfall is with the maximum in summer. Mean sunshine duration per year at Lviv is about 1,804 hours."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 45,
+      "leadWords": 395,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives long political and cultural history and architecture, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lviv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

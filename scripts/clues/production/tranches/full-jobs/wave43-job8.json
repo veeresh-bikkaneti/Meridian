@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 8599,
+    "attempt": 8541,
+    "place_id": "gn-2653550",
+    "input": {
+      "place": {
+        "place_id": "gn-2653550",
+        "name": "Castleside",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.83429,
+        "lon": -1.87849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castleside",
+          "url": "https://en.wikipedia.org/wiki/Castleside",
+          "text": "Castleside is a village in County Durham, England.\n It is situated a short distance to the south-west of Consett. Castleside is covered by the civil parish of Healeyfield.The village centre is located on the main A68 road which runs between Edinburgh and Darlington and the village crossroads allow easy access to Consett via the A692 to the east via Moorside, and the North Pennines and Stanhope via an unclassified road to the west via Waskerley crossing Waskerley Moor.  To the northeast lie other small villages called Moorside and The Grove.\nRowley sits to the south on the A68 and Allensford is situated to the north on the same road. Muggleswick is 3 miles to the north west as, a bit further at 5 miles, is Derwent Reservoir and Edmundbyers.\nThe parish church, dedicated to St John, was designed by Ewan Christian and is a reproduction of a church he had seen and admired while on holiday in Switzerland. The church was consecrated on 7 March 1867.\n\nThere was a Wesleyan Chapel at Watergate, Castleside, which was erected in 1805. The chapel was extended in 1877 and closed in 1970. A Primitive Methodist chapel was erected in 1843 on the Consett Road, and extended in 1884. It closed in the 1990s and is now a residence.\nIn the nearby dwelling of Wharnley Burn is a 14th-century cottage and was home to the moss trooper Thomas Raw (d. 1714). He was buried in a field near his home believing he could not be buried in a church. In the early 1860s the grave was opened and the grave slab removed, supposedly to Satley.   The dwelling shares the name with Wharnley Burn (also called Watergate Burn) that runs along the south west side of Castleside in a steep valley containing Castleside Woods. The burn or stream continues northwest before joining the River Derwent west of Allensford just after Wharnley Burn Waterfall.\n\nThe A692 road to Consett, running north east, leads to the small villages of Moorside and The Grove. \nMoorside is a large post-World War II housing estate. It was originally the lands of Consett Park mentioned in 1352  as \"half of the manor of Conkesbeved, excepting the park of Conkesheved [now Consett Park]\". (Conkesheved being the name for Consett). The manor of Consett and the park of Consett seem to have been two separate entities. The \"park of Consett\", in 1437, was leased to Henry Vasey. It is unclear who held the lands later, however in the 1850s Consett Park had been owned by the Rippon family for over 200 years, acquired in 1635 by Charles Rippon.\nA row of terraced housing was built (1896–1900) on the brow of the hill and called Consett Park Terrace. The housing estate was built after the Second World War with the streets named after English counties. A second phase of building took places in the 1950s including the building of a Roman Catholic church, St Pius X, built in 1954 to designs by the local architect Anthony Joseph Rossi (1916–1971). The church was demolished in 2009 and replaced by a smaller church in the same year. As part of the 1950s building phase, the buildings of Consett Park were demolished. They were located near the intersection of Sussex Road and Surrey Crescent.\nA light industrial estate was established in 1950 in the Castleside/Moorside area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 559
+    },
+    "banned_terms": [
+      {
+        "term": "castleside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8600,
+    "attempt": 8542,
+    "place_id": "gn-2756787",
+    "input": {
+      "place": {
+        "place_id": "gn-2756787",
+        "name": "Dirksland",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.74917,
+        "lon": 4.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dirksland",
+          "url": "https://en.wikipedia.org/wiki/Dirksland",
+          "text": "Dirksland (Dutch pronunciation: [ˈdɪr(ə)kslɑnt] ) is a village and former municipality on Goeree-Overflakkee Island in the western Netherlands, in the province of South Holland. The former municipality had a population of about 8,000 in 2007, and covered an area of about 74 km2 of which about 19 km2 was water. The former municipality of Dirksland also included the communities of Herkingen, and Melissant. On 1 January 2013, Dirksland merged with Goedereede, Middelharnis, and Oostflakkee into the new municipality of Goeree-Overflakkee.\nThe North Sea flood of 1953 did not have as much of a destructive effect on Dirksland as the rest of the island, because Dirksland is somewhat higher. Dirksland is the largest of the three communities within the former municipality and also has the only hospital on Goeree-Overflakkee island. The Van Weel-Bethesda Hospital is one of the smallest in the country. Dirksland can be recognized from a distance by the tallest water tower in the country. The towns are agriculturally focused and have several campgrounds for people who prefer a bit of rest over the busy Ouddorp area but still want to be close to shore. Dirksland has an inland harbor with a newly restored gate complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "dirksland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8601,
+    "attempt": 8543,
+    "place_id": "gn-2867274",
+    "input": {
+      "place": {
+        "place_id": "gn-2867274",
+        "name": "Mylau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.61861,
+        "lon": 12.26535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mylau",
+          "url": "https://en.wikipedia.org/wiki/Mylau",
+          "text": "Mylau (German pronunciation: [ˈmyːlaʊ] ) is a town and a former municipality in the Vogtlandkreis district, in the Free State of Saxony, Germany with about 2600 citizens. Since 1 January 2016 it is part of the town Reichenbach im Vogtland. It is situated in the valleys of the river Göltzsch and the Raumbach, a stream flowing from Reichenbach im Vogtland that is locally known as the Soap Stream (German: Seifenbach) because of the textile painting factories that had been built by its banks. The town lies 6 km southeast of Greiz, and 20 km southwest of Zwickau. Mylau has the smallest area of any town (\"Stadt\") in what was formerly East Germany, although there are 10 towns in what was formerly West Germany that are even smaller in area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "mylau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8602,
+    "attempt": 8544,
+    "place_id": "gn-310200",
+    "input": {
+      "place": {
+        "place_id": "gn-310200",
+        "name": "Karaburun",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.6364,
+        "lon": 26.51094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karaburun",
+          "url": "https://en.wikipedia.org/wiki/Karaburun",
+          "text": "Karaburun is a municipality and district of İzmir Province, in western Turkey. Its area is 421 km2, and its population is 12,200 (2022). The district area roughly corresponds to the peninsula of the same name (Karaburun Peninsula) which spears north of the tourism resorts of neighboring Çeşme and its dependencies and west of the city of İzmir. In fact, the district area is one of the westernmost points of Anatolia. Karaburun town is situated close to the northern tip of the peninsula and checks the entry of the Gulf of İzmir with the town of Foça, another important tourism resort, across the waters. The district's administrative zone is bordered by the districts of Çeşme and Urla to the south and faces the Greek island of Chios to the west.\nThe Karaburun region is comparatively much less visited than Çeşme located in its south, its rate of urbanization at 20 per cent is the lowest across İzmir Province, although it provides an anticlimax to its southern neighbor and the associated attractions especially for those who want to escape the trails of mass tourism. The coasts of the peninsula have beautiful bays and pebble or sand beaches, many as yet largely undiscovered by outsiders, although there is one German vacation village slightly to the north of the district center. Taken as a whole, in contrast with Çeşme, agriculture, fishing and livestock breeding, instead of tourism, remain the principal drivers of the district's economy. Karaburun's flora and fauna present particularities distinguishing it from the Anatolian mainland. Karaburun's name echoes in Turkey a very high variety of flower breeds present across its area, and especially narcissus and hyacinth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "karaburun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8603,
+    "attempt": 8545,
+    "place_id": "gn-3170274",
+    "input": {
+      "place": {
+        "place_id": "gn-3170274",
+        "name": "Ponte dell'Olio",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.86762,
+        "lon": 9.64433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponte dell'Olio",
+          "url": "https://en.wikipedia.org/wiki/Ponte_dell'Olio",
+          "text": "Ponte dell'Olio (Piacentino: Al Pont da l'Oli [ɐl ˈpoŋt dɐ ˈlɔli]) is a comune (municipality) in the province of Piacenza, in the Italian region of Emilia-Romagna, located about 22 kilometres (14 mi) south of Piacenza, about 85 kilometres (53 mi) south of Milan and about 160 kilometres (99 mi) northwest of Bologna. As of 31 December 2004, it had a population of 4,917 and an area of 44.0 square kilometres (17.0 mi2).\nAmong the sites is the Castello di Riva located next to the river Nure. The castle is privately owned and undergoing restoration.\nThe municipality of Ponte dell'Olio contains the frazioni (subdivisions, mainly villages and hamlets) Folignano, Torrano, Zaffignano, Castione, Sarmata, Monte Santo, Biana, and Cassano.\nPonte dell'Olio borders the following municipalities: Bettola, Gropparello, San Giorgio Piacentino, Vigolzone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "ponte dell olio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "olio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8604,
+    "attempt": 8546,
+    "place_id": "gn-3516654",
+    "input": {
+      "place": {
+        "place_id": "gn-3516654",
+        "name": "Siltepec",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.55676,
+        "lon": -92.32251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siltepec",
+          "url": "https://en.wikipedia.org/wiki/Siltepec",
+          "text": "Siltepec is a town and municipality in the Mexican state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 38,143, up from 32,457 as of 2005. It covered an area of 685.6 km2 (265 sq mi).\nThe area and population of the municipality have since been reduced, after the western portions of its territory were split off to form the municipalities of Capitán Luis Ángel Vidal in 2017 and Honduras de la Sierra in 2019.\nAs of 2010, the town of Siltepec had a population of 3,400. Other than the town of Siltepec, the municipality had 201 localities, the largest of which (with 2010 populations in parentheses) were: Libertad Ventanas (1,283), El Palmar Grande (1,127), and Vega del Rosario (1,014), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "siltepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8605,
+    "attempt": 8547,
+    "place_id": "gn-3695465",
+    "input": {
+      "place": {
+        "place_id": "gn-3695465",
+        "name": "La Unión",
+        "country": "Peru",
+        "subdivision": "Huánuco Department",
+        "lat": -9.82702,
+        "lon": -76.80199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Unión, Huánuco",
+          "url": "https://en.wikipedia.org/wiki/La_Unión,_Huánuco",
+          "text": "La Unión is a town in central Peru, capital of the province Dos de Mayo in the region Huánuco. The city lies over the Vizcarra River and is divided between two of the nine districts of the province, La Unión on the right bank and Ripán on the left bank. It has a regional hospital. Close to the city, over a flat highland or meseta (12,000 feet over sea level) is the old famed Inca city called Wanuku Pampa, Wanuku Marka or Wanuku Viejo. The most important festival is by the end of July and it is called \"La Fiesta del Sol\".\nDuring the Inca period, the town saw the relocation of the mitmakuna, later referred to as mitimaes by the Spanish, under the state’s policy of population resettlement. Named Aguamiro (Quechua for textile factory) for its association with textiles, these relocated groups became part of the resource and production network of the provincial capital of Wanuko. This focus on textiles persisted into the colonial era, when the town became a center for obrajes.\nAfter independence, the growth and conurbation of Aguamiro with Ripán (Quechua ripa, meaning small, with the possessive/affirming suffix -n) led to the city being renamed La Unión by law on February 5, 1875, symbolizing their union. However, Aguamiro and Ripán maintain administrative independence within their respective districts. Today, Aguamiro (La Unión) is the seat of government for the La Unión district, while Ripán serves as the capital of its own namesake district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "la union",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8606,
+    "attempt": 8548,
+    "place_id": "gn-5123109",
+    "input": {
+      "place": {
+        "place_id": "gn-5123109",
+        "name": "Kaser",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.12121,
+        "lon": -74.06709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaser, New York",
+          "url": "https://en.wikipedia.org/wiki/Kaser,_New_York",
+          "text": "Kaser (English pronunciation: /ˈkeɪzəɹ/  or /ˈkɑːsəɹ/ from Yiddish: כּתר, romanized: keser, lit. 'crown') is a village in the town of Ramapo, Rockland County, New York, United States. The village is completely surrounded by the hamlet of Monsey. As of the 2020 United States census, the village population was 5,491.\nKaser is a village with a population consisting almost entirely of Hasidic Jews of the Viznitz denomination. A total of 4% of Kaser's population claims Romanian ancestry, making Kaser the most Romanian census place in the United States.\nThe village is the most densely populated municipality in New York State according to the 2010 census, being the only incorporated place in the state with a higher population density than New York City, and the 5th most in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "kaser",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8607,
+    "attempt": 8549,
+    "place_id": "gn-5662190",
+    "input": {
+      "place": {
+        "place_id": "gn-5662190",
+        "name": "Libby",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 48.38829,
+        "lon": -115.556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Libby, Montana",
+          "url": "https://en.wikipedia.org/wiki/Libby,_Montana",
+          "text": "Libby is a city in northwestern Montana, United States and the county seat of Lincoln County. The population was 2,775 at the 2020 census.\nLibby suffered from the area's contamination from nearby vermiculite mines contaminated with particularly fragile asbestos, leading to the town's inclusion in the United States Environmental Protection Agency's National Priorities List status in 2002 and Public Health Emergency event in 2009. Most risk was reduced by 2015.\nLocal natural features, such as the Kootenai Falls, have attracted tourism to the area and have been featured in movies, such as Always (1989), The River Wild (1994) and The Revenant (2015). There is a public school district and a public library, and the town is in-district for Flathead Valley Community College, which operates the Lincoln County Campus there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "libby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8608,
+    "attempt": 8550,
+    "place_id": "gn-6244913",
+    "input": {
+      "place": {
+        "place_id": "gn-6244913",
+        "name": "Waitangirua",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.11827,
+        "lon": 174.8802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waitangirua",
+          "url": "https://en.wikipedia.org/wiki/Waitangirua",
+          "text": "Waitangirua is a suburb of Porirua City approximately 22km north of Wellington in New Zealand.\nWaitangirua was established during the 1960s, almost exclusively as a Government housing development for New Zealand's burgeoning working class immigrant population.  As such the ethnic demographic of Waitangirua at the time of establishment comprising primarily Pacific Island, Scottish, Indian, Irish, English and Chinese as well as Māori.  Many of the original settling families still live in Waitangirua today.\nThe hilly suburb until the late 90s was almost semi-rural surrounded by farmland with Whitby to the North East, Pauatahanui Inlet and Estuary further to the North, and the Belmont hills and Hutt Valley to the East.\nThe diverse multi-racial nature of Waitangirua makes for a colourful community dominated by a vibrant and exuberant youth culture.\nSeveral scenes from the Taika Waititi film Eagle vs Shark were shot on location in Waitangirua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "waitangirua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8609,
+    "attempt": 8551,
+    "place_id": "gn-684680",
+    "input": {
+      "place": {
+        "place_id": "gn-684680",
+        "name": "Bistra",
+        "country": "Romania",
+        "subdivision": "Alba County",
+        "lat": 46.3782,
+        "lon": 23.10081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bistra, Alba",
+          "url": "https://en.wikipedia.org/wiki/Bistra,_Alba",
+          "text": "Bistra (German: Bistrau; Hungarian: Bisztra) is a commune located in Alba County, Transylvania, Romania. It has a population of 4,340 as of 2021. It is composed of 35 villages: Aronești, Bălești, Bălești-Cătun, Bârlești, Bistra, Cheleteni, Ciuldești, Crețești, Dâmbureni, Dealu Muntelui, Durăști, Gănești, Gârde, Hodișești, Hudricești, Lipaia, Lunca Largă, Lunca Merilor, Mihăiești, Nămaș, Novăcești, Perjești, Poiana, Poiu, Rătitiș, Runcuri, Sălăgești, Ștefanca, Țărănești, Tolăcești, Tomnatec, Trișorești, Vârși-Rontu, Vârșii Mari, and Vârșii Mici.\nThe commune is situated in the northwest corner of Alba County. It covers a surface of 138 km2 (53 sq mi) (about 1.8% of the total area of the county), making it the largest commune in Romania by surface area. Bistra is crossed from West to East for a length of 7 km (4.3 mi) by the Arieș River. It is surrounded to the SE by the Trascău Mountains, the SW by the Metaliferi Mountains and to the NE by the Gilău Mountains, with Muntele Mare as the highest peak, at 1,826 m (5,991 ft)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "bistra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8610,
+    "attempt": 8552,
+    "place_id": "gn-733286",
+    "input": {
+      "place": {
+        "place_id": "gn-733286",
+        "name": "Belovo",
+        "country": "Bulgaria",
+        "subdivision": "Pazardzhik",
+        "lat": 42.21395,
+        "lon": 24.01733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belovo, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Belovo,_Bulgaria",
+          "text": "Belovo (Bulgarian: Белово [ˈbɛɫovo]) is a town in South West Bulgaria. It is the seat of Belovo Municipality. It is located in Pazardzhik Province, where the Yadenitsa flows into the Maritsa river, at the foot of three mountain ranges (Rila, Rhodopes and Sredna Gora), on the western end of the Thracian Plain.\nBelovo town as a municipal center is surrounded by the villages of Akandzhievo, Gabrovitsa, Golyamo Belovo, Dabravite, Menekyovo, Momina Klisura, and Sestrimo.\nWith the construction of the railway line Istanbul — Belovo by Baron Hirsch's company in 1873, Belovo became the most important center of wood and wood processing in the Balkans during the 19th century. Today the international road and the railway from West Europe through Belgrade and Sofia to Istanbul are passing through the town. The Belovo paper mill produces toilet paper and other disposable paper products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "belovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8611,
+    "attempt": 8553,
+    "place_id": "gn-756474",
+    "input": {
+      "place": {
+        "place_id": "gn-756474",
+        "name": "Tymbark",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.72859,
+        "lon": 20.32539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tymbark",
+          "url": "https://en.wikipedia.org/wiki/Tymbark",
+          "text": "Tymbark [ˈtɨmbark] is a village in southern Poland, some 80 km (50 mi) south-east of Kraków, population 2,400 (2004 data).\nTymbark was granted city rights in 1357 by King Casimir III of Poland. The town's original name was Jodłowa Góra (literally: firry mountain), but as the majority of first burghers came from German lands, the name was soon Germanised as Tannenberg, which gave origin to the current one, used from about the 16th century. Tymbark lost the city status in 1934; now it is the administrative centre of Gmina Tymbark.\nIn 1936 the Podhalańska Fruit and Vegetable Cooperative was established in Tymbark, which developed into a successful business. The cooperative was nationalised in 1950, reprivatised in 1995 and  now operates as Tymbark S.A., producing fruit preserves, drinks and juices.\nTymbark is twinned with Whaley Bridge in England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "tymbark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8612,
+    "attempt": 8554,
+    "place_id": "gn-779303",
+    "input": {
+      "place": {
+        "place_id": "gn-779303",
+        "name": "Kirkenes",
+        "country": "Norway",
+        "subdivision": "Finnmark",
+        "lat": 69.72706,
+        "lon": 30.04578
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkenes",
+          "url": "https://en.wikipedia.org/wiki/Kirkenes",
+          "text": "Kirkenes (Norwegian: [ˈçɪ̂rkəneːs] ), known as Girkonjárga in Northern Sami (pronounced [ˈkir̥ː.ko.ˌɲaːrːka]) and Kirkkoniemi in Kven, is a town in Sør-Varanger Municipality in Finnmark county, in the far northeastern part of Norway. The town lies on a peninsula along the Bøkfjorden, an arm of the large Varangerfjorden, and is located just a few kilometres from the Norway–Russia border.\nThe 2.29-square-kilometre (570-acre) town has a population (2023) of 3,404 and a population density of 1,486 inhabitants per square kilometre (3,850/sq mi). When the neighbouring suburban villages of Hesseng, Skytterhusfjellet, Sandnes and Bjørnevatn are all included with Kirkenes, the urban area reaches a population of almost 8,000.\nAlthough Kirkenes is the Norwegian town closest to the Russian border, the town of Vardø to its north is located further east in Norway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "kirkenes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8613,
+    "attempt": 8555,
+    "place_id": "gn-8348374",
+    "input": {
+      "place": {
+        "place_id": "gn-8348374",
+        "name": "Yarralumla",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.2998,
+        "lon": 149.10585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yarralumla, Australian Capital Territory",
+          "url": "https://en.wikipedia.org/wiki/Yarralumla,_Australian_Capital_Territory",
+          "text": "Yarralumla () is an inner south suburb of Canberra, the capital city of Australia. Located approximately 3 km (2 mi) south-west of the city, Yarralumla extends along the south-west bank of Lake Burley Griffin from Scrivener Dam to Commonwealth Avenue.\nIn 1828, Henry Donnison, a Sydney merchant, was granted a lease on the western side of West Ridge, part of which is now Western Park. In 1832, he named his property Yarralumla, adopted from the name for an area some 35km to the west surrounding the Goodradigbee River. It is thought the area, spelt 'Yarrowlumla', was so named by local Aboriginal people, translated to English as \"echo mountain\". In 1881, the estate was bought by Frederick Campbell, grandson of Robert Campbell who had built a house at nearby Duntroon. Frederick completed the construction of a large, gabled, brick house on his property in 1891 that now serves as the site of Government House, the official residence of the Governor-General of Australia. Campbell's house replaced an elegant, Georgian-style homestead, the main portions of which were erected from local stone in the 1830s. Among the old Yarralumla homestead's most notable occupants were Sir Terence Aubrey Murray, who owned Yarralumla sheep station from 1837 to 1859, Augustus Onslow Manby Gibbes, who owned the property from 1859 to 1881, and Augustus' father Colonel John George Nathaniel Gibbes (1787–1873).\nThe modern suburb of Yarralumla was gazetted by the government in 1928 and as of 2021 was home to approximately 3,120 people and many diplomatic missions. Notable locations include Lennox Gardens, the Albert Hall and the Hotel Canberra. Parliament House and The Lodge lie just outside its boundary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "yarralumla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8614,
+    "attempt": 8556,
+    "place_id": "gn-2155710",
+    "input": {
+      "place": {
+        "place_id": "gn-2155710",
+        "name": "Narromine",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.23121,
+        "lon": 148.24052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narromine",
+          "url": "https://en.wikipedia.org/wiki/Narromine",
+          "text": "Narromine (/næroʊmaɪn/; Wiradjuri: Ngarrumayin) is a rural Australian town located approximately 40 kilometres (25 mi) west of Dubbo in the Orana region of New South Wales. The town is at the centre of Narromine Shire. The 2021 census recorded a population of 3,507.  Narromine holds strong historical ties to the Australian Military, as it was the location of RAAF No.19 Inland Aircraft Fuel Depot (IAFD) during World War II. The base contributed to the preparation of troops through a training organisation known as the Empire Air Training Scheme (EATS). The town was one of twelve locations for the No.5 Elementary Flying Training School RAAF in 1940.\nThe town and its district was formed on traditional Wiradjuri country, one of the largest Indigenous populations in central New South Wales. The Macquarie River passes through the town. The Mitchell Highway, named after the early explorer Sir Thomas Mitchell, is the main road from Dubbo to the West and also passes through Narromine. Prior to settlement in the early 1800s, Wiradjuri tribes occupied much of the land between Wambool/Wambuul (renamed the Macquarie River by late settlers), the Kalar (the Lachlan River) and the Murrumbidgerie (Murrumbidgee River). In December 2021, the NSW government restored its traditional name and formally assigned the name Wambuul to the riverbed of the Macquarie River. The term Wambuul means 'winding river' in Wiradjuri language and both names are recognised with equal status.\nNarromine district has a history of flooding, with the largest flood recorded in 1926. Multiple plant and animal species are found within the Narromine district and is home to many iconic Australian species. Situated in the Murray-Darling Basin region, Narromine's agricultural land is used for many dryland and irrigated agricultural activities. Although Narromine is one of the main growing regions for cotton in the Central West district of New South Wales, the production of beans, wheat and grain, as well as livestock products including wool, mutton, lamb and beef are all common. The Burrendong Dam has facilitated irrigation schemes that have greatly aided local agriculture in the town and its surrounding districts. The town's rural history has organically bought tourism to the area, with the Narromine Aviation Museum, Aero Club and Mungery Picnic Races being highlight attractions. Rugby teams are represented by the Narromine Jets and Narromine Gorillas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 381
+    },
+    "banned_terms": [
+      {
+        "term": "narromine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8615,
+    "attempt": 8557,
+    "place_id": "gn-2637110",
+    "input": {
+      "place": {
+        "place_id": "gn-2637110",
+        "name": "Stalham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.77079,
+        "lon": 1.51783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stalham",
+          "url": "https://en.wikipedia.org/wiki/Stalham",
+          "text": "Stalham is a market town and civil parish on the River Ant in the English county of Norfolk, in East Anglia. It covers an area of 2.82 mi2 (7.3 km2) and had a population of 2,951 in 1,333 households at the 2001 census, the population increasing to 3,149 at the 2011 Census. It lies within the Norfolk Broads, about 15 miles (24 km) north-east of Norwich on the A149 road.\nFor the purposes of local government, it falls within the district of North Norfolk. The parts of the parish lying adjacent to the river fall into the executive area of the Broads Authority.\nThe name Stalham derives from the Old English stallhām meaning 'village with a fishing pool' or perhaps stallhamm meaning 'hemmed-in land with a fishing pool'.\nStalham was served by a railway station until it was closed in 1959. The nearest railway station is now Worstead.\nThrough the 1960s Stalham's economy sank from a reduction of the agricultural labour force as a result of improvements in agricultural technology. Beginning in the 1970s, though, housing developments attracted people who took up residence in Stalham but worked elsewhere.\nThe Museum of the Broads moved to Stalham in 2000 and is situated on Stalham Staithe. It \"aims to bring the history of the Broads alive for locals and visitors to Norfolk\" and is open to the public throughout the summer.\nIn 2002 Tesco built a supermarket in Stalham, with considerable controversy, with many residents fearing that it would \"kill the high street\". Despite this, the High Street contains a wide range of independent traders."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "stalham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8616,
+    "attempt": 8558,
+    "place_id": "gn-2640045",
+    "input": {
+      "place": {
+        "place_id": "gn-2640045",
+        "name": "Porthmadog",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.92924,
+        "lon": -4.13137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porthmadog",
+          "url": "https://en.wikipedia.org/wiki/Porthmadog",
+          "text": "Porthmadog (Welsh: [pɔrθˈmadɔɡ] ), originally Portmadoc until 1972 and known locally as Port, is a coastal town and community in the Eifionydd area of Gwynedd, Wales, and the historic county Caernarfonshire. It lies 5 miles (8 km) east of Criccieth, 11 miles (18 km) south-west of Blaenau Ffestiniog, 25 miles (40 km) north of Dolgellau and 20 miles (32 km) south of Caernarfon. The community population was 4,185 in the 2011 census and was put at 4,134 in 2019. It grew in the 19th century as a port for local slate, but as trade declined it continued as a shopping and tourism centre, being close to Snowdonia National Park and the Ffestiniog Railway. The 1987 National Eisteddfod was held there. It includes nearby Borth-y-Gest, Morfa Bychan and Tremadog."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "porthmadog",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8617,
+    "attempt": 8559,
+    "place_id": "gn-2652585",
+    "input": {
+      "place": {
+        "place_id": "gn-2652585",
+        "name": "Colerne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43833,
+        "lon": -2.2628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colerne",
+          "url": "https://en.wikipedia.org/wiki/Colerne",
+          "text": "Colerne is a village and civil parish in north Wiltshire, England. The village is about 3.5 miles (6 km) west of the town of Corsham and 7 miles (11 km) northeast of the city of Bath. It has an elevated and exposed position, 545 feet (166 m) above sea level, and overlooks the Box valley to the south (where Brunel's Box Tunnel is).\nThe parish includes the hamlets of Eastrip and Thickwood. It is bounded to the west by a stretch of the Fosse Way Roman road, which forms the county boundary with Gloucestershire, and to the east by the Bybrook River. Part of the northern boundary is the Doncombe Brook, a tributary of the Bybrook, and part of the southern boundary is the Lid Brook, another tributary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "colerne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8618,
+    "attempt": 8560,
+    "place_id": "gn-2748085",
+    "input": {
+      "place": {
+        "place_id": "gn-2748085",
+        "name": "Rijsoord",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.85083,
+        "lon": 4.59583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rijsoord",
+          "url": "https://en.wikipedia.org/wiki/Rijsoord",
+          "text": "Rijsoord is a village in the Dutch province of South Holland. It is located about 10 km southeast of the city of Rotterdam, in the municipality of Ridderkerk.\n\nRijsoord was a separate municipality until 1855, when it merged with Ridderkerk. Between 1846 and 1855, it was named \"Rijsoort en Strevelshoek\" after a merger with the smaller municipality of Strevelshoek. The current village is largely located north of the Waaltje (little Waal) river, outside the area of the former municipality.\nThe village had its day in history on 15 May 1940, when the Dutch Commander-in-Chief General Henri Winkelman had to sign the surrender to the German invaders, after four days of fighting in World War II. The formality took place in a school building in Rijsoord, now a museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "rijsoord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

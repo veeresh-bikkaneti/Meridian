@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7853,
+    "attempt": 7801,
+    "place_id": "gn-3126466",
+    "input": {
+      "place": {
+        "place_id": "gn-3126466",
+        "name": "Capellades",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.53005,
+        "lon": 1.68651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capellades",
+          "url": "https://en.wikipedia.org/wiki/Capellades",
+          "text": "Capellades (Catalan pronunciation: [kəpəˈʎaðəs]) is a town in Catalonia, Spain, located in the south of the comarca of Anoia, some sixty metres above the Anoia river where it cuts through the Catalan Coastal Range. The C-15 trunk road from Vilafranca del Penedès and the FGC railway line R6 from Martorell and Barcelona run along the river valley below the town on their way to Igualada. It is about one hour from Barcelona by car, bus or train.\nCapellades is known for the manufacture of paper since the seventeenth century. A paper manufacturer in Capellades (established in 1714) specialised today in producing security paper is the oldest company in Spain. In the town there is also a Museum of Paper (Molí-Museu Paperer) housed in a converted papermill.\nThere is a small amount of agriculture, both irrigated (market gardening) and non-irrigated (cereals, grapes, almonds), although the territory of the municipality is small. Textile and ceramic manufacture and tourism during the summer also contribute to the local economy. Munich (sport shoes) has its headquarters in Capellades.\nThe site has been inhabited since the Middle Paleolithic era (50000 years BP), and an archeological site just below the modern town, known locally as the Abric Romaní, is open to the public."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "capellades",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7854,
+    "attempt": 7802,
+    "place_id": "gn-485516",
+    "input": {
+      "place": {
+        "place_id": "gn-485516",
+        "name": "Sviyazhsk",
+        "country": "Russia",
+        "subdivision": "Tatarstan Republic",
+        "lat": 55.77329,
+        "lon": 48.66051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sviyazhsk",
+          "url": "https://en.wikipedia.org/wiki/Sviyazhsk",
+          "text": "Sviyazhsk (Russian: Свия́жск; Tatar: Зөя) is a rural locality (a selo) in the Republic of Tatarstan, Russia, located at the confluence of the Volga and Sviyaga Rivers. It is often referred to as an island since the 1955 construction of the Kuybyshev Reservoir downstream at Tolyatti, but it is in fact connected to the mainland by a causeway. \nIn 2017 the Assumption Cathedral and Monastery were added to the list of UNESCO World Heritage Sites.\nSviyazhsk was founded in 1551 as a fortress, which was built within four weeks from parts made in Uglich and transported down the Volga. It became a military base of the Russian army during the siege of Kazan (1552).\nSince the 18th century, Sviyazhsk served as a center of an uyezd. In 1920–1927, it was a center of Sviyazhsky Kanton; in 1927–1931—the administrative center of Sviyazhsky District. In 1932, it was demoted to rural status.\nFor 20 years the NKVD ran a prison and camp in the town. In the mid-1990s remains of some of the dead or executed prisoners were buried in the grounds of the Monastery of the Assumption and a monument (later greatly improved) was raised over them. \nThere is a school and a club in Sviyazhsk, as well as a monastery associated with the name of Macarius of Unzha.\nSviyazhsk railway station is located 6 kilometers (3.7 mi) west of the island and is linked with Sviyazhsk proper by a highway running along a causeway.\nAnother way to get there is by a boat from the port of Kazan. In summer every day at 08:30 a fast boat departs at pier 8, and at 09:00 a slow boat. Tickets can be bought on the spot near the kassa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "sviyazhsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7855,
+    "attempt": 7803,
+    "place_id": "gn-5181063",
+    "input": {
+      "place": {
+        "place_id": "gn-5181063",
+        "name": "Boalsburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.77562,
+        "lon": -77.7925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boalsburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Boalsburg,_Pennsylvania",
+          "text": "Boalsburg is an unincorporated community and census-designated place (CDP) in Harris Township, Centre County, Pennsylvania, United States, with a small portion of its northwest corner extending into College Township. It is part of the State College, Pennsylvania Metropolitan Statistical Area. The population was 3,722 at the 2010 census. The village claims to be the birthplace of Memorial Day. However, that claim was brought into question by Bellware and Gardiner in their book, The Genesis of the Memorial Day Holiday in America, in 2014. In their book, Bellware and Gardiner point out that the Boalsburg story was first published in 1904, forty years after the fact with no indication that General Logan drew inspiration from any activities in Boalsburg and no evidence that it started the holiday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "boalsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7856,
+    "attempt": 7804,
+    "place_id": "gn-6137733",
+    "input": {
+      "place": {
+        "place_id": "gn-6137733",
+        "name": "Sainte-Anne-de-Bellevue",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.40618,
+        "lon": -73.9456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sainte-Anne-de-Bellevue",
+          "url": "https://en.wikipedia.org/wiki/Sainte-Anne-de-Bellevue",
+          "text": "Sainte-Anne-de-Bellevue (/sənt æn də bɛlvjuː/, French pronunciation: [sɛ̃t an də bɛlvy]) is an on-island suburb located at the western tip of the Island of Montreal in southwestern Quebec, Canada. It is the second oldest community in Montreal's West Island, having been founded as a parish in 1703. The oldest, Dorval, was founded in 1667.\nPoints of interest include the Sainte-Anne-de-Bellevue Canal (a National Historic Site of Canada), the Sainte-Anne Veterans' Hospital, the Morgan Arboretum, and the L'Anse-à-l'Orme Nature Park.  Sainte-Anne-de-Bellevue is also home to John Abbott College and McGill University's Macdonald Campus, which includes the J. S. Marshall Radar Observatory and the Canadian Aviation Heritage Centre as well as about 2 square kilometres (0.77 sq mi) of farmland which separates the small town from neighbouring Baie-d'Urfé."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "sainte anne de bellevue",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "anne",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bellevue",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7857,
+    "attempt": 7805,
+    "place_id": "gn-2615242",
+    "input": {
+      "place": {
+        "place_id": "gn-2615242",
+        "name": "Padborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 54.82657,
+        "lon": 9.36247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padborg",
+          "url": "https://en.wikipedia.org/wiki/Padborg",
+          "text": "Padborg (German: Pattburg) is a southern Danish border town with a population of 4,263 (1 January 2026) located on the border with Germany. It is the location where both the E45 motorway, a railway and the historic Danish Army Road, hærvejen, cross the border.\nLocated a few kilometres northwest of Schleswig's historic commercial centre, Flensburg, Padborg was a small settlement when the region returned to Danish rule in 1920 following a plebiscite, but grew rapidly in size after the establishment of the current border. It is a transport centre and railway town. When the border was established in 1920, the originally planned border line was moved c. 200 metres south of Padborg in order to allow construction of the railway station and a customs office.\nPadborg is well known in Denmark for its motorsport ring, Padborg Park, and the head offices of the large discount chain Fleggaard.\nPadborg has a broad based transport industry with most of the largest European transport companies having local offices.\nPadborg is located in Aabenraa municipality. Until 31 December 2006 it belonged to Bov municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "padborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7858,
+    "attempt": 7806,
+    "place_id": "gn-2641577",
+    "input": {
+      "place": {
+        "place_id": "gn-2641577",
+        "name": "Scone",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.41942,
+        "lon": -3.40507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scone, Perth and Kinross",
+          "url": "https://en.wikipedia.org/wiki/Scone,_Perth_and_Kinross",
+          "text": "Scone ( ; Scottish Gaelic: Sgàin; Scots: Scone) is a town in Perth and Kinross, Scotland. The medieval town of Scone, which grew up around the monastery and royal residence, was abandoned in the early 19th century when the residents were removed and a new palace was built on the site by the Earl of Mansfield. Hence the modern town of Scone, and the medieval settlement of Old Scone, can often be distinguished.\nBoth sites lie in the historical province of Gowrie, as well as the old county of Perthshire. Old Scone was the historic capital of the Kingdom of Scotland. In the Middle Ages it was an important royal centre, used as a royal residence and as the coronation site of the kingdom's monarchs. Around the royal site grew the town of Perth and the Abbey of Scone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "scone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7859,
+    "attempt": 7807,
+    "place_id": "gn-2644917",
+    "input": {
+      "place": {
+        "place_id": "gn-2644917",
+        "name": "Langley Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.79979,
+        "lon": -1.67005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langley Park, County Durham",
+          "url": "https://en.wikipedia.org/wiki/Langley_Park,_County_Durham",
+          "text": "Langley Park is a village in County Durham, England. The historic city of Durham lies 4 miles (6.4 km) to the east.\nThe village has a wide variety of shops and amenities and is also home to Diggerland, where children of all ages can take control of a variety of heavy machinery and take rides over the former colliery ground on bulldozers and Land Rovers.  The village has a primary school which includes nursery, reception, infant and junior classes.\nThe Lanchester Valley Railway Path runs along the northern edge of Langley Park on the site of the disused Consett Iron Works railway line. It is designated as National Route 14 on the Sustrans National Cycle Network which runs from Haswell, via Durham City, to Consett.\nLangley Park has grown steadily in recent years and has benefited from the influx of new residents, who are attracted to the village by the construction of several housing developments.  Current housing projects are underway on the site of the former Kings Picture house and Hilltop View and plans are in hand to construct houses on the current site of Anderson & Young coachworks.\nThe River Browney, which flows to the north of the village, has recovered from the effects of contamination caused by a century of local industry and is fished regularly both by anglers and by otters, who have made a return to the river in recent years.\nThere are Commonwealth War Graves in the cemetery of the Anglican church, All Saints in Langley Park, which is also the only grave of the unknown soldier outside London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "langley park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "langley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7860,
+    "attempt": 7808,
+    "place_id": "gn-2650572",
+    "input": {
+      "place": {
+        "place_id": "gn-2650572",
+        "name": "Eaglesham",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.74119,
+        "lon": -4.27459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eaglesham",
+          "url": "https://en.wikipedia.org/wiki/Eaglesham",
+          "text": "Eaglesham ( EE-gəl-səm or  EE-gəl-shəm) is a village in East Renfrewshire, Scotland, situated about 10 miles (16 km) south of Glasgow, 3 miles (5 km) southeast of Newton Mearns and south of Clarkston, and 4 miles (6.4 km) southwest of East Kilbride.\nThe 2011 census revealed that the village had 3,114 occupants, down 13 from the 2001 census (3,127). Eaglesham is distinctive in being built around the Orry, a triangular park area of common land about 1⁄3 mile (540 m) in length, interspersed with trees and divided in the centre by the Eaglesham Burn. The ancient seat of the Earls of Eglinton. In the 17th century Eaglesham was a small market town. Today's village was founded in 1769 by Alexander Montgomerie, 10th Earl of Eglinton. It had at one time handloom weaving and a cotton-mill. Many of its buildings are category B or C listed buildings, and the planned village area is a conservation area. Eaglesham was designated Scotland's first outstanding conservation area in 1960. It is likely that here has been a place of worship since the 5th or 6th centuries.\nThe village is an example of an early Scottish planned village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "eaglesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7861,
+    "attempt": 7809,
+    "place_id": "gn-3167249",
+    "input": {
+      "place": {
+        "place_id": "gn-3167249",
+        "name": "Santo Stefano Belbo",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.71023,
+        "lon": 8.23269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santo Stefano Belbo",
+          "url": "https://en.wikipedia.org/wiki/Santo_Stefano_Belbo",
+          "text": "Santo Stefano Belbo is a comune (municipality) in the Province of Cuneo in the Italian region Piedmont, located 60 km (37 mi) southeast of Turin and 60 km (37 mi) northeast of Cuneo.\nIt is the birthplace of 20th century author Cesare Pavese. On its hill are a medieval castle and a Benedictine convent, most likely built on the ruins of a temple of Jupiter. The medieval village of Santo Stefano Belbo stands between the Langhe hills. In the early fourteenth century it was first a fiefdom of the Marquises of Monferrato, then the Marchesi of Saluzzo, and then the family of Scarampi. The town was often in dispute, demonstrated by an ancient medieval tower, destroyed in the war between Spain and Austria in 1600.\nThe economy of Santo Stefano Belbo relies mainly on the production of wine, especially the Moscato d'Asti and Asti Spumante."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "santo stefano belbo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stefano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "belbo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7862,
+    "attempt": 7810,
+    "place_id": "gn-3527006",
+    "input": {
+      "place": {
+        "place_id": "gn-3527006",
+        "name": "Huaquechula",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 18.77116,
+        "lon": -98.5446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huaquechula",
+          "url": "https://en.wikipedia.org/wiki/Huaquechula",
+          "text": "Huaquechula is a town in Huaquechula Municipality located in state of Puebla in central Mexico. The settlement dates back at least as far as 1110 CE although its center has moved to twice to its current location. Since its founding, it has been an agricultural community, today raising crops such as peanuts, corn and sorghum, although there are some handcrafts as well. The town is known for its traditions related to the Feast of the Cross, but even more so for its “cabo del año” altars on Day of the Dead, which are dedicated to family members who have died during the previous year. These have been declared a cultural heritage of the state of Puebla and bring tourists to the town, mostly from Puebla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "huaquechula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7863,
+    "attempt": 7811,
+    "place_id": "gn-5969185",
+    "input": {
+      "place": {
+        "place_id": "gn-5969185",
+        "name": "Halfmoon Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.51289,
+        "lon": -123.9087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halfmoon Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Halfmoon_Bay,_British_Columbia",
+          "text": "Halfmoon Bay (xwilkway in she shashishalhem) is a small community in British Columbia, Canada, within the shíshálh swiya (the lands, birthplace, or \"Territory\" of the shíshálh Nation), and Electoral Area B of the Sunshine Coast Regional District. The population consists of approximately 2,800 people, including a large number of seasonal residents. The community is named for the large scalloped bay on which it sits, which is sheltered by South Thormanby Island and Vancouver Island.\nThe community can be accessed via Redrooffs Road, so-named after a popular local resort which once featured a cluster of cabins, all with red roofs. Some homes are also located off Highway 101.\nHalfmoon Bay Elementary School, the community's only elementary school, has 200–300 students ranging from kindergarten to grade seven. The school performs extremely well for one of its size, achieving BC Foundation Skills Assessment (FSA) scores above those of many private schools. Halfmoon Bay secondary students may choose to attend one of the three local high schools: Pender Harbour Secondary, Chatelech Secondary, and Elphinstone Secondary.\nHalfmoon Bay was once named Priestland Bay after the Priestland family who settled in the area in 1899. Its present-day English name comes from the shape of the bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "halfmoon bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "halfmoon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7864,
+    "attempt": 7812,
+    "place_id": "gn-6167983",
+    "input": {
+      "place": {
+        "place_id": "gn-6167983",
+        "name": "Tottenham",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.02437,
+        "lon": -79.80553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tottenham, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Tottenham,_Ontario",
+          "text": "Tottenham is a small community located in southern Simcoe County, Ontario, Canada south of Beeton and Alliston; all three were amalgamated in 1991 into the single Town of New Tecumseth. It takes its name from its first postmaster, Alexander Totten. The Tottenham Conservation Area is a recreational facility in the village, which is also famous for its annual event, the Tottenham Bluegrass Festival.  There is also a restored steam train that is a tourist attraction, taking passengers to Beeton and back. Tottenham is home to four schools (two public, two Christian): Tottenham Public School, Tecumseth South Central Public School, Father F.X. O'Reilly School, and Saint Thomas Aquinas Catholic Secondary School.\nThe town was ravaged by a fire in 1895, which began at the McKinney foundry. Eighty structures were destroyed, including the foundry and a Methodist church. Despite warnings in 1884 that the town needed a fire engine, none had been purchased. To combat the 1895 fire, the town of Allandale sent its fire engine, preventing further spread of the fire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "tottenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7865,
+    "attempt": 7813,
+    "place_id": "gn-729174",
+    "input": {
+      "place": {
+        "place_id": "gn-729174",
+        "name": "Medkovets",
+        "country": "Bulgaria",
+        "subdivision": "Montana",
+        "lat": 43.62403,
+        "lon": 23.16876
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Medkovets",
+          "url": "https://en.wikipedia.org/wiki/Medkovets",
+          "text": "Medkovets (Bulgarian: Медковец, pronounced [mɛtˈkɔvɛt͡s]; also transliterated Medkovec or Medkovetz) is a village in northwestern Bulgaria, part of Montana Province. It is the administrative centre of the homonymous Medkovets Municipality, which lies in the northern part of Montana Province.\nThe area around Medkovets has been inhabited since prehistoric times, as proven using archaeological evidence. The village itself was founded no later than the first half of the 18th century, with the name being derived from the word med (\"honey\") according to popular etymology. In the 1830s, Medkovets took part in organized struggle against the Ottoman rule of Bulgaria. The first school in the village, a monastical school, was opened in 1821, while a secular school was founded in 1845, when Ivan Kulin was knez (\"mayor\"). The Church of Saint Paraskeva was built in 1859, with the iconostasis carved by the Bulgarian masters Filipovi from the region of Debar, Vardar Macedonia.\nA notable native is Andrey Ivanov (\"Andrey the Priest\"), a communist revolutionary who played an active part in the September Uprising of 1923 and was hanged by the authorities. His feats were mentioned in Geo Milev's expressionist poem Septemvri. \nClimite\nMedkovets is in a Subtropical Climite, featuring cool winterns and hot summmers. The avarage temperature is 21C. The avarage summer high is 36C, with the highest one recorded being 45.1C."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "medkovets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7866,
+    "attempt": 7814,
+    "place_id": "gn-8219837",
+    "input": {
+      "place": {
+        "place_id": "gn-8219837",
+        "name": "Tura Beach",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -36.86358,
+        "lon": 149.93027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tura Beach, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Tura_Beach,_New_South_Wales",
+          "text": "Tura Beach is a suburb of Merimbula, on the South Coast of New South Wales, Australia, in the Bega Valley Shire local government area. It lies approximately 6 km north of Merimbula. At the 2016 census, Tura Beach had a population of 3,158 people with a median age of 57 years, 19 years greater than that of the overall Australian population.\nTura Beach was originally developed by AVJennings in the early 1980s and was the first purpose-built integrated golf course and housing development in Australia.\nThe Tura Beach Country Club is set high on a coastal hill overlooking the golf course, headland and ocean. It is home to both men's and ladies' golf clubs, men's and women's bowling clubs and the Tura Beach Tennis Club.  Much of the course is surrounded by natural bushland.\nThe original Tura Beach Shopping Centre is located at the corner of Tura Beach Drive and Golf Circuit.  It currently accommodates a Chinese restaurant, bakery, bridge club, garden centre, gymnasium, hairdresser salon, op shop, pool and spa shop, Tura Marrang Library and Community Centre and the U3A centre for the Merimbula area.  A medical centre is located near the shopping centre along Golf Circuit. Sanananda Park Retirement Village accommodates up to 66 people and is located opposite the shopping centre on Tura Beach Drive.\nIn addition to the original shopping centre, a new Tura Beach Shopping Centre was opened in 2010 at the intersection of Sapphire Coast Drive and Tura Beach Drive.\nThe Tura Beach Flora Reserve is located at the corner of Nolan Drive and High Crescent. The Flora Reserve was established in 1992 to ensure that a small remnant of the coastal environment would be preserved as the area north of Merimbula began to transform due to residential development. The Reserve is representative of typical open Eucalypt forest on sandy coastal soil. The sub-canopy comprises a mixed stand of casuarinas, banksias, acacias and hakeas with mixed stands of ti-tree and paperbark in moist areas. There is a diverse understory of heathland shrubs, herbs and grasses including several species of regional interest, most notably the Merimbula Starhair (Astrotricha Wallagaraugh) which is listed as an endangered species in NSW. Management of the Reserve is carried out by a Council-appointed committee of local residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "tura beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tura",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7867,
+    "attempt": 7815,
+    "place_id": "gn-2179702",
+    "input": {
+      "place": {
+        "place_id": "gn-2179702",
+        "name": "Wakefield",
+        "country": "New Zealand",
+        "subdivision": "Tasman District",
+        "lat": -41.4,
+        "lon": 173.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakefield, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Wakefield,_New_Zealand",
+          "text": "Wakefield (Māori: Tiraweke or Wekipira) is a settlement in the Tasman District of New Zealand's South Island, located about 25km south west of Nelson.\nThe settlement began in 1843 as Pitfure, but the name was changed to Wakefield a short time later. It may have been named after the birthplace of one of its original settlers, who was from Wakefield in Yorkshire. It may have also been named after Captain Arthur Wakefield, who led the expedition that first established Nelson City and Province. Arthur Wakefield was killed in the Wairau Affray, which may have helped confirm the change of name from Pitfure to Wakefield.\nWakefield comes under the responsibility of the Tasman District Council, which has its offices in the nearby town of Richmond. It is part of the West Coast-Tasman general electorate.\nSt John's Church in 120 Edward Street, built in 1846, is New Zealand's second oldest surviving church. It is registered by Heritage New Zealand as a Category I heritage structure, with registration number 40. The church was designed by Marianne Reay and is considered the first European building designed by a woman in New Zealand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "wakefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7868,
+    "attempt": 7816,
+    "place_id": "gn-2640600",
+    "input": {
+      "place": {
+        "place_id": "gn-2640600",
+        "name": "Park Street",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.71667,
+        "lon": -0.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park Street, Hertfordshire",
+          "url": "https://en.wikipedia.org/wiki/Park_Street,_Hertfordshire",
+          "text": "Park Street is a small village in Hertfordshire, England. It is on the southern outskirts of St Albans, around 2 miles (3.2 km) south of the city centre, and is separated from the rest of the city's contiguous built-up area by a buffer to the north.  \nPark Street has a petrol station, several tyre and automotive service businesses and two food-serving public houses; it is of late and initially disparate medieval origin. The village is also home to the penultimate station on the Abbey Line from Watford Junction, which opened in 1858.\nPark Street is also a larger local government ward (the largest settlement of which is How Wood and which includes part of Bricket Wood). The area falls within the Metropolitan Green Belt.  Residents are mainly employed in nearby cities; east of the street in Frogmore is a substantial business centre and light industrial estate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "park street",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "street",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7869,
+    "attempt": 7817,
+    "place_id": "gn-2657775",
+    "input": {
+      "place": {
+        "place_id": "gn-2657775",
+        "name": "Aboyne",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.07546,
+        "lon": -2.78023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aboyne",
+          "url": "https://en.wikipedia.org/wiki/Aboyne",
+          "text": "Aboyne (Scots: Abyne, Scottish Gaelic: Abèidh) is a village on the edge of the Highlands in Aberdeenshire, Scotland, on the River Dee, approximately 30 miles (48 km) west of Aberdeen. It has a swimming pool at Aboyne Academy,  all-weather tennis courts, a bowling green and is home to the oldest 18 hole golf course on Royal Deeside.  Aboyne Castle and the Loch of Aboyne are nearby.\nAboyne has many businesses, including a Co-Op supermarket, several hairdressers, a butcher, a newsagent, an Indian restaurant and a post office. Originally, there was a railway station in the village, but it was closed on 18 June 1966. The station now contains some shops and the tunnel running under the village is now home to a firearms club. The market-day in Aboyne was known as Fèill Mhìcheil (Scottish Gaelic for \"Michael's Fair\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "aboyne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7870,
+    "attempt": 7818,
+    "place_id": "gn-2662830",
+    "input": {
+      "place": {
+        "place_id": "gn-2662830",
+        "name": "Vingåker",
+        "country": "Sweden",
+        "subdivision": "Södermanland",
+        "lat": 59.0433,
+        "lon": 15.87374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vingåker",
+          "url": "https://en.wikipedia.org/wiki/Ving%C3%A5ker",
+          "text": "Vingåker () is a locality and the seat of Vingåker Municipality, Södermanland County, Sweden with 4,282 inhabitants in 2010. It is located 50 kilometres (31 mi) by road from the nearest larger city Örebro and 80 kilometres (50 mi) north-west of county seat Nyköping.\nIt was partly built in the English garden of Säfstaholm, a large estate which until 1855 was home to philanthropist and art collector Gustaf Trolle-Bonde. The estate is nowadays owned by the municipality and contains an art museum with yearly exhibitions during the summer.\nThe town's expansion began in 1862 when a railway station was opened along the western main line (Västra Stambanan, which runs from Stockholm to Gothenburg). The station remained in operation until 1971, but reopened in 2003.\nThe town is the birthplace of Gunnar Helén, former chairman of the Liberal Party, and former Swedish Prime Minister Göran Persson.\nA transit center for refugees from Norway during World War II was located in the manor of Kjesäter, now a public high school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "vingaker",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7871,
+    "attempt": 7819,
+    "place_id": "gn-2758326",
+    "input": {
+      "place": {
+        "place_id": "gn-2758326",
+        "name": "Brielle",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.90167,
+        "lon": 4.1625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brielle",
+          "url": "https://en.wikipedia.org/wiki/Brielle",
+          "text": "Brielle (pronounced [ˈbrilə] ), also called Den Briel in Dutch and Brill in English, is a town and historic seaport in the western Netherlands, in the province of South Holland, on the north side of the island of Voorne-Putten, at the mouth of the New Maas. The former municipality covered an area of 31.14 km2 (12.02 sq mi) of which 3.59 km2 (1.39 sq mi) was water. In 2021 its population was 17,439.\nThe former municipality of Brielle also included the communities of Vierpolders and Zwartewaal.\nOn 1 January 2023, the municipality of Brielle merged with Hellevoetsluis and Westvoorne into the new municipality of Voorne aan Zee.\nBrielle, New Jersey was named after Brielle by the Dutch colonists of New Jersey, originally New Netherland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "brielle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7872,
+    "attempt": 7820,
+    "place_id": "gn-2929122",
+    "input": {
+      "place": {
+        "place_id": "gn-2929122",
+        "name": "Eschede",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.73494,
+        "lon": 10.2354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eschede",
+          "url": "https://en.wikipedia.org/wiki/Eschede",
+          "text": "Eschede (German pronunciation: ['ɛʃədə]) is a municipality in the district of Celle, in Lower Saxony, Germany. Situated approximately 15 km (10 miles) northeast of Celle, Eschede lies at the border of the Südheide Nature Park, a protected area of large forests and heaths. Today around 20 small villages are part of the \"Gemeinde Eschede\".\nIn 1975, the largest forest fire in the history of Germany destroyed vast tracts of forests in the area. The place is also known for the 1998 Eschede train disaster, in which an ICE 1 train crashed, killing 101 and making it the worst German rail accident since the Second World War.\nThe painter Albert König (1881–1944) was born in Eschede, and the \"Albert-König-Museum\" can be visited in Unterlüß nearby.\nEschede was the seat of the former Samtgemeinde (\"collective municipality\") of Eschede."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "eschede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

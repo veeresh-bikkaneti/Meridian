@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 6145,
+    "attempt": 6101,
+    "place_id": "gn-2521928",
+    "input": {
+      "place": {
+        "place_id": "gn-2521928",
+        "name": "Almagro",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 38.88941,
+        "lon": -3.71131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almagro, Ciudad Real",
+          "url": "https://en.wikipedia.org/wiki/Almagro,_Ciudad_Real",
+          "text": "Almagro (Spanish pronunciation: [alˈmaɣɾo]) is a town and municipality situated in Ciudad Real province, in the autonomous community of Castile-La Mancha, Spain. A tourist destination, Almagro is designated a Conjunto histórico, a type of conservation area.\nAlmagro lies within small Paleozoic mountain ranges, with some reserves of shallow creeks, including the Pellejero and de Cuetos. It also lies within a volcanic zone (Cerro de la Yezosa), which lies upon a quartzite massif. It makes the zone particularly unique, together with that of the zones of Olot and Cabo de Gata, in the sense that it is one of the few important zones of volcanic origin in the Iberian Peninsula. An International Festival of Classical Theater has also been celebrated here annually since 1978."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "almagro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6146,
+    "attempt": 6102,
+    "place_id": "gn-2634842",
+    "input": {
+      "place": {
+        "place_id": "gn-2634842",
+        "name": "Waltham Cross",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.68602,
+        "lon": -0.03575
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waltham Cross",
+          "url": "https://en.wikipedia.org/wiki/Waltham_Cross",
+          "text": "Waltham Cross is a town in the Borough of Broxbourne, Hertfordshire, England, located 12 miles (19 km) north of central London. In the south-eastern corner of Hertfordshire, it borders Cheshunt to the north, Waltham Abbey to the east, and Enfield to the south.\nHistorically part of the ancient parish of Cheshunt in the Hertford hundred of Hertfordshire, the town once formed its southern part. Waltham Cross formed a separate ecclesiastical parish in 1855, whilst remaining part of the Cheshunt civil parish. The parish of Cheshunt was granted urban district status in 1894, and merged with that of Hoddesdon to form the Borough of Broxbourne in 1974.\nThe town has a modest commercial centre, with a pedestrianised High Street and an indoor shopping centre. The Waltham Cross post town stretches to the neighbouring town of Cheshunt and a small part of Enfield. It is named after the Eleanor cross which stands in its centre, one of twelve constructed on the orders of King Edward I following the death of his wife Eleanor of Castile in 1290. Only three of the original crosses remain intact, including the Waltham cross and two more in the Northamptonshire villages of Geddington and Hardingstone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "waltham cross",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "waltham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cross",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6147,
+    "attempt": 6103,
+    "place_id": "gn-2648120",
+    "input": {
+      "place": {
+        "place_id": "gn-2648120",
+        "name": "Driffield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.00613,
+        "lon": -0.44495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Driffield",
+          "url": "https://en.wikipedia.org/wiki/Driffield",
+          "text": "Driffield, also known as Great Driffield (neighbouring Little Driffield), is a market town and civil parish in the East Riding of Yorkshire, England. The civil parish is formed by the town of Driffield and the village of Little Driffield. By road, it is 53 miles (85 km) north-east of Leeds, 29 miles (47 km) east of York and 23 miles (37 km) north of Hull.\nDriffield, being near the centre of the Yorkshire Wolds, is named The Capital of the Wolds.\nAt the 2021 census, Driffield parish had a population of 13,457, an slight increase on the 2011 UK census figure of 13,080.\nThe town was listed in the 2019 Sunday Times report on the Best Places to Live in northern England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "driffield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6148,
+    "attempt": 6104,
+    "place_id": "gn-2650769",
+    "input": {
+      "place": {
+        "place_id": "gn-2650769",
+        "name": "Dunblane",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.18843,
+        "lon": -3.96417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunblane",
+          "url": "https://en.wikipedia.org/wiki/Dunblane",
+          "text": "Dunblane (, Scottish Gaelic: Dùn Bhlàthain) is a historic cathedral town in the council area of Stirling, in central Scotland; it is inside the historic boundaries of the county of Perthshire. It is a commuter town, with many residents making use of good transport links to much of the Central Belt, including Glasgow and Edinburgh.\nThe town is built on the banks of the Allan Water (or River Allan), a tributary of the River Forth. Dunblane Cathedral is its most prominent landmark. It had a population of 8,114 at the 2001 census, which grew to 8,811 at the 2011 census; both of these figures were computed according to the 2010 definition of the locality. The population had later decreased to 8,798 in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "dunblane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6149,
+    "attempt": 6105,
+    "place_id": "gn-2652891",
+    "input": {
+      "place": {
+        "place_id": "gn-2652891",
+        "name": "Cleator Moor",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.52143,
+        "lon": -3.5159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cleator Moor",
+          "url": "https://en.wikipedia.org/wiki/Cleator_Moor",
+          "text": "Cleator Moor  is a town and civil parish in the Cumberland district of Cumbria, England. The parish was historically called Cleator. During the Industrial Revolution in the 19th century, the new settlement of Cleator Moor was built on the moorland to the north of Cleator village, based around mining and the iron industry. There was a significant influx of Irish immigrants in the latter half of the 19th century, leading to the colloquial title of Little Ireland. Cleator Moor grew to become the main settlement in the parish, which was formally renamed Cleator Moor in 1934. Cleator village remains part of the parish, and is now classed as part of the built up area of Cleator Moor by the Office for National Statistics.\nThe town stands below Dent Fell, and is on the 190 miles (310 km) Coast to Coast Walk that spans Northern England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "cleator moor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cleator",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6150,
+    "attempt": 6106,
+    "place_id": "gn-2655858",
+    "input": {
+      "place": {
+        "place_id": "gn-2655858",
+        "name": "Berkhamsted",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.7604,
+        "lon": -0.56528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berkhamsted",
+          "url": "https://en.wikipedia.org/wiki/Berkhamsted",
+          "text": "Berkhamsted (  BUR-kəm-sted) is a market town in Hertfordshire, England. Located in the Bulbourne Valley, it is 26 miles (42 km) north-west of London and had a population of 21,245 at the 2021 census. The town is a civil parish within the borough of Dacorum, which is based in the neighbouring large new town of Hemel Hempstead. Berkhamsted, along with the adjoining village of Northchurch, is surrounded by countryside and the Chiltern Hills, an Area of Outstanding Natural Beauty.\nBerkhamsted was first mentioned in 970 AD and was recorded as a burbium (ancient borough) in the Domesday Book in 1086. A (now ruined) motte-and-bailey Norman castle was built shortly after the Norman Conquest and remained a royal possession and residence for four centuries. In the 13th and 14th centuries, the town was a wool trading centre, with a busy local market. The oldest-known extant jettied timber-framed building in Great Britain, built between 1277 and 1297, survives as a shop on the town's high street.\nThe town's literary connections include the 17th-century hymnist and poet William Cowper, the 18th-century writer Maria Edgeworth and the 20th-century novelist Graham Greene. Arts institutions in the town include The Rex (a well regarded independent cinema) and the British Film Institute's National Archive at King's Hill, which is one of the world's largest film and television archives. Schools in the town include Berkhamsted School, a co-educational boarding independent school (founded in 1541 by John Incent, Dean of St Paul's Cathedral); Ashlyns School, a state school, whose history began as the Foundling Hospital established in London by Thomas Coram in 1742; and Ashridge Executive Education, a business school offering degree courses, which occupies the Grade I listed neo-Gothic Ashridge House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "berkhamsted",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6151,
+    "attempt": 6107,
+    "place_id": "gn-2738348",
+    "input": {
+      "place": {
+        "place_id": "gn-2738348",
+        "name": "Leça da Palmeira",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.191,
+        "lon": -8.70027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leça da Palmeira",
+          "url": "https://en.wikipedia.org/wiki/Leça_da_Palmeira",
+          "text": "Leça da Palmeira (Portuguese pronunciation: [ˈlɛsɐ ðɐ palˈmɐjɾɐ]) is a civil parish in the Portuguese city of Matosinhos north of the Leça river. It was merged with the parish of Matosinhos in 2013, forming Matosinhos e Leça da Palmeira. It was restored in 2025. The parish covers 5.97 square kilometres (2.31 mi2) and had 18,502 inhabitants in the 2011 census.\n\nIts cultural heritage includes the Fort of Leça da Palmeira, Leça Lighthouse and religious monuments such as Corpo Santo, Santana, and Boa Nova churches. The parish includes three spaces designed by renowned Portuguese architects, Piscinas de Marés, a public pool by the beach, and Boa Nova Tea House, both designed by Siza Vieira and Quinta da Conceição Municipal Park designed by Fernando Távora.\nIn sport, the parish includes a football club, Leça FC, and a basketball club, Grupo Desportivo de Basquete de Leça."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "leca da palmeira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "leca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palmeira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6152,
+    "attempt": 6108,
+    "place_id": "gn-2746748",
+    "input": {
+      "place": {
+        "place_id": "gn-2746748",
+        "name": "Stein",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.96917,
+        "lon": 5.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stein, Limburg",
+          "url": "https://en.wikipedia.org/wiki/Stein,_Limburg",
+          "text": "Stein (Dutch pronunciation: [ˈstɛin] , Limburgish: [ˈstɛjn]) is a municipality and a town in the southeastern Netherlands. The municipality had a population of 24,875 in 2021 and covers an area of 22.80 km2 (8.80 sq mi) of which 1.72 km2 (0.66 sq mi) is water.\nThe municipality of Stein makes part of the region of South Limburg and lies between the city of Geleen in the east and Beek in the southeast, and lies furthermore west of interchange Kerensheide and the chemical industries of Chemelot. To the west lies the Belgian border, across the Meuse river. In comparison to other cities and villages in the area, Stein is fairly big. It is also the capital city of the municipality with the same name. It has i.a. three Roman Catholic churches, an abandoned mediaeval castle, and a port to the Juliana Canal which used to be the second largest inland port in all of Europe.\nOn 29 October 2009, the shopping mall of Stein suffered a severe fire. As a result of the calamity, the town subsequently lost 40 shops, 2 banks, 1 restaurant and 6 houses. The adjacent, iconic, 11-story apartment building 'De Stevel', remained intact."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "stein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6153,
+    "attempt": 6109,
+    "place_id": "gn-2786697",
+    "input": {
+      "place": {
+        "place_id": "gn-2786697",
+        "name": "Sint-Gillis-bij-Dendermonde",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.01905,
+        "lon": 4.11146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Gillis-bij-Dendermonde",
+          "url": "https://en.wikipedia.org/wiki/Sint-Gillis-bij-Dendermonde",
+          "text": "Sint-Gillis-bij-Dendermonde (French: Saint-Gilles-lez-Termonde) is a part of the municipality of Dendermonde in the Denderstreek in East Flanders in Belgium, a typical agricultural village in the Dendervallei near the junction of the railroads to Ghent, Mechelen and Brussels. It was formerly known as Zwijveke.\nSint-Gillis-bij-Dendermonde is birthplace to poet Emmanuel Hiel (1834 - 1894) and literature historian Wies Moens (1898 - 1982).\nEvery year, on the first Sunday of September, a parade of flower-covered floats, built in the different districts, is held in Sint-Gillis-bij-Dendermonde.\nOn 23 January 2009, a man attacked a children's daycare centre in the village, killing at least three people and wounding as many as twenty.  Italian singer Luciano Ligabue dedicated to the victims a song, Quando mi vieni a prendere? (Dendermonde 23/01/09) inserted in his 2010 album, Arrivederci, Mostro!."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "sint gillis bij dendermonde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gillis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bij",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dendermonde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6154,
+    "attempt": 6110,
+    "place_id": "gn-2965529",
+    "input": {
+      "place": {
+        "place_id": "gn-2965529",
+        "name": "Celbridge",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.34165,
+        "lon": -6.54419
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Celbridge",
+          "url": "https://en.wikipedia.org/wiki/Celbridge",
+          "text": "Celbridge (; Irish: Cill Droichid [ˌciːl̠ʲ ˈd̪ˠɾˠeːdʲ], historically anglicised Kildrought) is a town and townland on the River Liffey in County Kildare, Ireland. It is 23 km (14 mi) west of Dublin. Both a local centre and a commuter town within the Greater Dublin Area, it is located at the intersection of the R403 and R405 regional roads. As of the 2022 census, Celbridge was the third largest town in County Kildare by population, with 20,601 residents.\nThe origins of Celbridge can be traced to a 7th-century ecclesiastical settlement founded by St Mochua, known as Cill Droichid (\"church of the bridge\"), being anglicised to Celbridge after 1714. The present town developed around this ecclesiastical settlement, with significant expansion occurring from the 18th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "celbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6155,
+    "attempt": 6111,
+    "place_id": "gn-2988447",
+    "input": {
+      "place": {
+        "place_id": "gn-2988447",
+        "name": "Parthenay",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 46.64832,
+        "lon": -0.24672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parthenay",
+          "url": "https://en.wikipedia.org/wiki/Parthenay",
+          "text": "Parthenay (French: [paʁtənɛ] ; Poitevin: Partenaes) is an ancient fortified town and commune in the Deux-Sèvres department of the Nouvelle-Aquitaine region in western France. It is sited on a rocky spur that is surrounded on two sides by the River Thouet, and is the sub-prefecture of the Parthenay arrondissement.\nIt is situated some 40 km (25 mi) north of Niort, 50 km (31 mi) west of Poitiers, 120 km (75 mi) south-east of Nantes, and 350 km (220 mi) south-west of Paris.\nEach July, Parthenay hosts the Festival Ludique International de Parthenay, otherwise known as the Festival de Jeux or FLIP, in which the town's streets and squares are filled with games of many types. The shorter indoor FLIP d'hiver runs in November."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "parthenay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6156,
+    "attempt": 6112,
+    "place_id": "gn-301350",
+    "input": {
+      "place": {
+        "place_id": "gn-301350",
+        "name": "Seferihisar",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.1975,
+        "lon": 26.83881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seferihisar",
+          "url": "https://en.wikipedia.org/wiki/Seferihisar",
+          "text": "Seferihisar is a municipality and district of İzmir Province, Turkey. Its area is 375 km2, and its population is 60,914 (2024).  Seferihisar district area borders on other İzmir districts of Urla to the west and Menderes to the east, and touches İzmir's westernmost metropolitan district of Güzelbahçe in the north. Seferihisar town center is situated slightly inland at an altitude of 28 m and the urban area extends towards the Aegean Sea. The neighborhood Sığacık has its own port and made a name as a tourism resort. The wide area of the district center partly accounts for the high number of the population and an urbanization rate of only 51%, and the general impression observed is rather rural in some of its sections. Both the center town and the district as a whole preserves an overall outlook of a pleasant resort area bearing typical Aegean characteristics and it is estimated the population reaches the level of 150,000 people during the touristic season. Nevertheless, the district's economy is still largely based on agriculture, with the production of tangerines and satsumas standing out, and only increasingly on tourism, with the presence of several housing projects or vacation villages, pensioners opting to settle in the region due to its quiet charm and under the impetus of a university campus that is in phase of being built. At a distance of 45 km (28 mi) from İzmir center, (Konak), the connections with the metropolis are made easily, especially once reached the six-lane highway in Urla. Seferihisar is where the ancient city of Teos is located and its highly interesting await further research and discoveries. The district's literacy level is 99%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "seferihisar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6157,
+    "attempt": 6113,
+    "place_id": "gn-3034126",
+    "input": {
+      "place": {
+        "place_id": "gn-3034126",
+        "name": "Beaune",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.02413,
+        "lon": 4.83887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaune",
+          "url": "https://en.wikipedia.org/wiki/Beaune",
+          "text": "Beaune (French pronunciation: [bon] ; in Burgundian: Beane) is a town in eastern France widely considered the wine capital of Burgundy, in the Côte-d'Or department. It is between Lyon and Dijon. Beaune is one of France's key wine centers and a major hub of Burgundy wine production and business. The Hospices de Beaune's annual wine auction is the primary wine auction in France.\nThe town is surrounded by some of the world's most famous wine villages, such as Meursault or Puligny Montrachet, while the facilities and cellars of many producers, large and small, are in the historic center of Beaune itself, as they have been since Roman times. With a rich historical and architectural heritage, Beaune is considered the \"Capital of Burgundy wines\". It is an ancient town on a plain by the hills of the Côte d'Or, with features from pre-Roman and Roman eras through the medieval and Renaissance periods.\nBeaune is a walled city, with much of the battlements, ramparts, and moat having survived in good condition. The central \"old town\" within the walls is extensive. Historically Beaune is intimately connected with the Dukes of Burgundy.\nThe 15th-century Hospices de Beaune, in the town center, is one of Europe's best-preserved Renaissance buildings. Other landmarks in Beaune include the old market (les Halles), the Beffroi (clock tower), and the collegiate church of Notre Dame. Beaune is the main center of the region's \"Burgundian tile\" polychrome Renaissance roofing style. Because of its historical importance in wine production and the unique system of terroir in the region, the town of Beaune was inscribed on the UNESCO World Heritage List in 2015 as part of the Climats, terroirs of Burgundy site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "beaune",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6158,
+    "attempt": 6114,
+    "place_id": "gn-3037540",
+    "input": {
+      "place": {
+        "place_id": "gn-3037540",
+        "name": "Annecy-le-Vieux",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.91971,
+        "lon": 6.14393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annecy-le-Vieux",
+          "url": "https://en.wikipedia.org/wiki/Annecy-le-Vieux",
+          "text": "Annecy-le-Vieux (French pronunciation: [ansi lə vjø]; Arpitan: Ènneci l Vyu) was a former commune in the Haute-Savoie department in the Auvergne-Rhône-Alpes region in southeastern France. On 1 January 2017, it merged into the commune of Annecy.\nIt was the fourth-largest commune in Haute-Savoie in terms of population, and was located on the northeastern shore of Lake Annecy.  It was essentially a residential suburb of Annecy, being less than 3 km from its centre, and was sometimes known at the 16eme arrondissement of Annecy.\nThe last mayor of Annecy-le-Vieux was Bernard Accoyer, who served from 1989 until December 2016. A doctor by profession, he was also the député of the district and was President of the National Assembly of France from 2007 to 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "annecy le vieux",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "annecy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vieux",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6159,
+    "attempt": 6115,
+    "place_id": "gn-3072463",
+    "input": {
+      "place": {
+        "place_id": "gn-3072463",
+        "name": "Kutná Hora",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 49.94839,
+        "lon": 15.26816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kutná Hora",
+          "url": "https://en.wikipedia.org/wiki/Kutná_Hora",
+          "text": "Kutná Hora (Czech pronunciation: [ˈkutnaː ˈɦora] ; German: Kuttenberg) is a town in the Central Bohemian Region of the Czech Republic. It has about 22,000 inhabitants. The history of Kutná Hora is linked to silver mining, which made it a rich and rapidly developing town. The centre of Kutná Hora, including the Sedlec Abbey and the Sedlec Ossuary, was designated a UNESCO World Heritage Site in 1995 because of its outstanding architecture and its influence on subsequent architectural developments in other Central European city centres. The historic town centre is also protected as an urban monument reservation, the fourth largest in the Czech Republic.\nThe large concentration of monuments and its inclusion on the UNESCO list make Kutná Hora a significant tourist destination. The town's sacral monuments are among the most important and most visited monuments in the Czech Republic. In addition to tourism, the town's economy also includes industry, which is represented by production of tobacco products and the electrical engineering industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "kutna hora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kutna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6160,
+    "attempt": 6116,
+    "place_id": "gn-3084440",
+    "input": {
+      "place": {
+        "place_id": "gn-3084440",
+        "name": "Strzegom",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.96264,
+        "lon": 16.35006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strzegom",
+          "url": "https://en.wikipedia.org/wiki/Strzegom",
+          "text": "Strzegom [ˈstʂɛɡɔm] (German: Striegau) is a town in Świdnica County, Lower Silesian Voivodeship, in south-western Poland. It is the seat of the Gmina Strzegom administrative district (gmina).\nStrzegom is one of the oldest towns in Lower Silesia, with a settlement dating back to Antiquity. In the Middle Ages Strzegom became the seat of a castellan and a centre for clothmaking, linen-making and brewing, and since the early modern period it became known for granite mining, to which it owes the title of the \"capital of Polish granite\". The town has a number of precious heritage sites, most notably the Basilica of Saints Peter and Paul, one of the most outstanding examples of Gothic architecture in Poland, listed as a Historic Monument of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "strzegom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6161,
+    "attempt": 6117,
+    "place_id": "gn-3108487",
+    "input": {
+      "place": {
+        "place_id": "gn-3108487",
+        "name": "Súria",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.83333,
+        "lon": 1.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Súria",
+          "url": "https://en.wikipedia.org/wiki/Súria",
+          "text": "Súria (Catalan pronunciation: [ˈsuɾiə]) is a municipality in the comarca of the Bages in Catalonia. It is situated in the valley of the Cardener river between Manresa and Cardona. The area is best known for its deposits of potassium salts, which are exploited commercially and exported with trucks directly to all around the European continent or served to Martorell to receive chemical treatment by a dedicated railway line (there are passenger rail services between Martorell and Manresa, but there are none between Manresa and Súria, separated only by 14.3 km of distance). The Old Town, at the foot of the castle, has preserved much of its medieval structure. The municipality is linked to Manresa and to Cardona and Solsona by the C-1410 road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "suria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6162,
+    "attempt": 6118,
+    "place_id": "gn-3145080",
+    "input": {
+      "place": {
+        "place_id": "gn-3145080",
+        "name": "Nærbø",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.66546,
+        "lon": 5.63788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nærbø",
+          "url": "https://en.wikipedia.org/wiki/Nærbø",
+          "text": "Nærbø is the largest village in Hå Municipality in Rogaland county, Norway. The village is located in the district of Jæren, about half-way between the town of Bryne and the village of Varhaug. The village sits about 38 kilometres (24 mi) south of Norway's fourth largest city, Stavanger. The village was the administrative centre of the old Nærbø Municipality from 1894 until 1964 when it was merged into Hå Municipality.\nThe 3.15-square-kilometre (780-acre) village has a population (2025) of 7,736 and a population density of 2,456 inhabitants per square kilometre (6,360/sq mi).\nThe Sørlandet Line, traditionally the Jæren Line, runs through the village, with the Jæren Commuter Rail service stopping at Nærbø Station, while the intercity service is accessible from nearby Bryne Station. County Road 44 passes west of the village.\nThe area around Nærbø is one of the most important agricultural areas of Norway with almost half of the land in the municipality being used for agricultural purposes. The area is sometimes referred to as the breadbasket of Norway because of its large agricultural sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "n rb",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "n",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rb",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6163,
+    "attempt": 6119,
+    "place_id": "gn-3458507",
+    "input": {
+      "place": {
+        "place_id": "gn-3458507",
+        "name": "Lindóia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.52306,
+        "lon": -46.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindóia",
+          "url": "https://en.wikipedia.org/wiki/Lindóia",
+          "text": "Lindóia is a municipality in the state of São Paulo, Brazil.\n\nLindóia is one of 11 municipalities considered spas by the State of São Paulo, in that it fulfills certain prerequisites set by state law. That status ensures those municipalities a special budget from the state for the promotion of regional tourism. Also, the municipality acquires the right to add its name next to the title of Hidromineral, the term by which it is known by both municipal officials and the state.\nLindóia is considered the Brazilian \"National Capital of Mineral Water\", as 40% of all bottled water consumed in Brazil comes from Lindóia. Bottlers in Lindóia include Lindoya Premium, Lindoya Bioleve, Lindoya Summer, Lindoya Life, Lindoya Original, Lindoya Joia, and Lindoya Genuine. These companies are allowed to take Lindoya in their packaging for demonstration of the origin of mineral water."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "lindoia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6164,
+    "attempt": 6120,
+    "place_id": "gn-3690431",
+    "input": {
+      "place": {
+        "place_id": "gn-3690431",
+        "name": "Aguadas",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 5.61161,
+        "lon": -75.45624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguadas, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Aguadas,_Caldas",
+          "text": "Aguadas is a town and municipality in the Colombian department of Caldas.  It is bordered to the north by Abejorral, to the east by Sonsón, to the southeast by Salamina, to the south by Pacora, to the west by Caramanta and Valparaiso, and to the northwest by La Pintada. The municipality of Aguadas, located in the northern part of the department, was founded in 1808 by José Narciso Estrada.  In addition to the fame of Aguadeño hats (sombrero aguadeño), which are very similar to palm-straw Panama hats (also known as iraca in Colombia).  Aguadas offers visitors its historic center, which was declared a national monument in 1982.  It has a temperate climate thanks to the variety of climates ranging from warm to moor.\nAnother of its main attractions is the National Festival of the Colombian Pasillo (Festival Nacional del Pasillo Colombiano), an annual event that has earned recognition for Aguadas as the capital of the Colombian Pasillo.\nLocated along the Colombian coffee growing axis, the historic center of Aguadas was made part of the \"Coffee Cultural Landscape\" UNESCO World Heritage Site in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "aguadas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

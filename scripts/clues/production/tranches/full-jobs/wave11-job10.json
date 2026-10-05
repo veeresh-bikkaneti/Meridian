@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 2198,
+    "attempt": 2181,
+    "place_id": "gn-3034640",
+    "input": {
+      "place": {
+        "place_id": "gn-3034640",
+        "name": "Bastia",
+        "country": "France",
+        "subdivision": "Corsica",
+        "lat": 42.70219,
+        "lon": 9.45123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bastia",
+          "url": "https://en.wikipedia.org/wiki/Bastia",
+          "text": "Bastia (UK:  BA(H)SS-tyə, US:  BA(H)SS-tee-ə, bahss-TEE-; French: [bastja] , Italian: [baˈstiːa]; Corsican: Bastìa [baˈsti.a]) is a commune in the department of Haute-Corse, Corsica, France. It is in the northeast of the island of Corsica at the base of Cap Corse. It also has the second-highest population of any commune on the island after Ajaccio and is the capital of the Bagnaja region and of the department.\nBastia is the principal port of the island and its principal commercial town and is known for its wines. The inhabitants of the commune are known as Bastiais or Bastiaises. The commune has been awarded three flowers by the National Council of Towns and Villages in Bloom in the Competition of cities and villages in Bloom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "bastia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2199,
+    "attempt": 2182,
+    "place_id": "gn-3186952",
+    "input": {
+      "place": {
+        "place_id": "gn-3186952",
+        "name": "Zadar",
+        "country": "Croatia",
+        "subdivision": "Zadar",
+        "lat": 44.11578,
+        "lon": 15.22514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zadar",
+          "url": "https://en.wikipedia.org/wiki/Zadar",
+          "text": "Zadar (US:  ZAH-dar, Croatian: [zâdar] ), historically known as Zara (from Venetian and Italian, pronounced [ˈdzaːra]; see also other names), is the oldest continuously inhabited city in Croatia. It is situated on the Adriatic Sea, at the northwestern part of Ravni Kotari region. Zadar serves as the seat of Zadar County and of the wider northern Dalmatian region. The city proper covers 25 km2 (9.7 sq mi) with a population of 75,082 in 2011, making it the second-largest city in Dalmatia and the fifth-largest in the country.\nZadar traces its origins to the 9th century BC as a settlement of the Illyrian tribe of the Liburnians, called Iader. In 59 BC, it was renamed Iadera (Jadera) when it became a Roman municipium. In 48 BC, it became a Roman colony. During Roman rule, Zadar acquired the characteristics of a traditional ancient Roman city, with a regular street grid, a public square (forum), and an elevated capitolium with a temple. After the fall of the Western Roman Empire in 476 AD, Zadar became the capital of the Byzantine Theme of Dalmatia.\nAt the beginning of the 9th century, Zadar briefly came under Frankish rule. In 998, the city swore allegiance to Doge Pietro II Orseolo and became a vassal of the Republic of Venice. In 1186, it placed itself under the protection of the Hungarian King Béla III. In the Middle Ages, Zadar's population was predominantly Romance and the Dalmatian language was spoken, later largely replaced with related Venetian, which would remain the principal language spoken in the city until the 20th century.\nIn 1202, during the Fourth Crusade, the Venetians, with the help of the Crusaders, reconquered and plundered Zadar. The Kingdom of Hungary gained control of the city following the Treaty of Zadar in 1358, when it was taken by King Louis I. In 1409, King Ladislaus of Naples sold Dalmatia back to Venice, and Zadar became the de facto capital of Venetian Dalmatia. When the Ottoman Empire conquered the Dalmatian Hinterland in the early 16th century, the city became an important stronghold safeguarding Venetian trade in the Adriatic, as well as the administrative and cultural center of Venetian possessions in Dalmatia. This fostered an environment in which art and literature could flourish, and between the 15th and 17th centuries Zadar came under the influence of the Renaissance, producing many important Italian Renaissance figures such as Giorgio Ventura and Giovanni Francesco Fortunio, who wrote the first Italian grammar, as well as many Croatian writers, including Petar Zoranić, Brne Krnarutić, Juraj Baraković, and Šime Budinić, who wrote in the Croatian language. After the fall of the Venetian Republic in 1797, Zadar briefly came under French administration as part of the Illyrian Provinces. From 1815 to 1918 it served as the capital of the Kingdom of Dalmatia, a crown land of the Austrian Empire (and later Austria-Hungary). Throughout the 19th century, the city became one of the centres of the Illyrian movement amid the growing polarisation and politicisation of ethnic identities between Croats and Dalmatian Italians, the latter forming a majority of Zadar's citizens.\nUnder the Treaty of Rapallo in 1920, Zadar became part of the Kingdom of Italy. During World War II, it was bombed by the Allies and witnessed the evacuation of its ethnic Italian population. The Partisans captured the city on 1 November 1944, and in 1947 it officially became part of the Socialist Republic of Croatia (a federal constituent republic of Yugoslavia). It was then repopulated by new settlers, mainly from the surrounding islands and from the hinterland. After the breakup of Yugoslavia, in 1991 Zadar became part of the Republic of Croatia.\nToday, Zadar is a historical center of Dalmatia, Zadar County's principal political, cultural, commercial, industrial, educational, and transportation centre. Zadar is also the episcopal see of the Archdiocese of Zadar. Because of its rich history and cultural heritage, Zadar is today one of the most popular tourist destinations in Croatia, named the \"entertainment center of the Adriatic\" by The Times and \"Croatia's new capital of cool\" by The Guardian.\nUNESCO's World Heritage Site list included the fortified city of Zadar as part of the Venetian Works of Defence between the 16th and 17th centuries: Stato da Terra – Western Stato da Mar in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 710
+    },
+    "banned_terms": [
+      {
+        "term": "zadar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2200,
+    "attempt": 2183,
+    "place_id": "gn-3362349",
+    "input": {
+      "place": {
+        "place_id": "gn-3362349",
+        "name": "Robertson",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.80342,
+        "lon": 19.88537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Robertson, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Robertson,_South_Africa",
+          "text": "Robertson is a town in the Western Cape Province of South Africa, known as the valley of wine and roses, at the heart of the wine route - Route 62.\nFounded in 1853 and named after Dr William Robertson, a Scottish Dutch Reformed Church minister.\nSituated in the fertile Robertson Valley, farming and wagon building were the town's original industries. However, after the Second Anglo-Boer War of 1899, the wagon building industry collapsed when the railways took over the transport of all goods.\nRobertson subsequently became famous for its ostrich farming, but this industry collapsed as well shortly after World War I, and the farmers of the area turned to wine and fruit farming. Later, several successful racehorse stud farms were founded. Agriculture remains the mainstay of the town's economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "robertson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2201,
+    "attempt": 2184,
+    "place_id": "gn-3439297",
+    "input": {
+      "place": {
+        "place_id": "gn-3439297",
+        "name": "Caazapá",
+        "country": "Paraguay",
+        "subdivision": "Caazapá",
+        "lat": -26.1966,
+        "lon": -56.36786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caazapá",
+          "url": "https://en.wikipedia.org/wiki/Caazap%C3%A1",
+          "text": "Caazapá (Spanish pronunciation: [ka(a)saˈpa]) is a city in Paraguay, founded in 1607 by Friar Luis de Bolaños. It is located in the Caazapá District and is the capital of the Caazapá Department. There are five neighborhoods called \"Barrios\" in the city: The main one is called the Barrio San Pablo, and the other 4 are Barrio Santa Teresita, Barrio San Blás, Barrio San Antonio, and Barrio San Roque-within which is the original Chapel, built by Franciscans during the Spanish rule in Paraguay. The Franciscan mission at Caazapá was an important event in Paraguayan cultural heritage.\nSome attractions are the Church, the Ykua Bolaños (Bolaños lagoon) and the Museum Juan Bernardo that contains the cross in which missionary Juan Bernardo Colman was executed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "caazapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2202,
+    "attempt": 2185,
+    "place_id": "gn-3815324",
+    "input": {
+      "place": {
+        "place_id": "gn-3815324",
+        "name": "Huamantla",
+        "country": "Mexico",
+        "subdivision": "Tlaxcala",
+        "lat": 19.31451,
+        "lon": -97.9252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huamantla",
+          "url": "https://en.wikipedia.org/wiki/Huamantla",
+          "text": "Huamantla (Spanish: [waˈmantla] ) is a small city in the municipality of the same name in the eastern half of the Mexican state of Tlaxcala. The area has a long indigenous history, but the city itself was not founded until the early colonial period, in the 1530s. It is mostly agricultural but it is best known for its annual homage to an image of the Virgin Mary called Our Lady of Charity. This includes a month of festivities, the best known of which are the \"night no one sleeps\" when residents create six km of \"carpets\" on the streets made from colored sawdust, flowers and other materials. The other is the \"Huamantlada\" a running of the bulls similar to that in Pamplona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "huamantla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2203,
+    "attempt": 2186,
+    "place_id": "gn-4059102",
+    "input": {
+      "place": {
+        "place_id": "gn-4059102",
+        "name": "Dothan",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 31.22323,
+        "lon": -85.39049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dothan, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Dothan,_Alabama",
+          "text": "Dothan is a city in and the county seat of Houston County in the U.S. state of Alabama. A slight portion of the city extends into Dale and Henry counties. It had a population of 71,258 at the 2020 census, making it Alabama's eighth-largest city by population and the 5th largest in Alabama by total area. It is near the state's southeastern corner, about 20 miles (32 km) west of Georgia and 16 miles (26 km) north of Florida. It is named after the biblical city of Dothan.\nDothan is the principal city of the Dothan, Alabama metropolitan area, which encompasses all of Geneva, Henry, and Houston counties; the small portion in Dale County is part of the Ozark Micropolitan Statistical Area. Together they form the Dothan-Ozark Combined Statistical Area. Coffee County and its Enterprise micropolitan area was originally combined as a statistical area with both Dothan and Ozark as well, but is now split off as its own statistical area by the US Census Bureau. Together they form the Alabama portion of the Wiregrass region, of which Dothan is that portion's largest city. The combined population of the entire Dothan metropolitan area in 2020 was 151,007. The city is the main transportation and commercial hub for a significant part of southeastern Alabama, southwest Georgia, and nearby portions of the Florida Panhandle. Since approximately one-fourth of the U.S. peanut crop is produced nearby, much of it processed in the city, Dothan is known as \"The Peanut Capital of the World\". It also hosts the annual National Peanut Festival at the Peanut Festival Fairgrounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "dothan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2204,
+    "attempt": 2187,
+    "place_id": "gn-4190581",
+    "input": {
+      "place": {
+        "place_id": "gn-4190581",
+        "name": "Dalton",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.7698,
+        "lon": -84.97022
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalton, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Dalton,_Georgia",
+          "text": "Dalton is a city and the county seat of Whitfield County, Georgia, United States. It is also the principal city of the Dalton Metropolitan Statistical Area, which encompasses all of Murray and Whitfield counties.\nAs of the 2020 census, the city had a population of 34,417 people; the city's metro area was 124,837. Dalton is located just off Interstate 75 in the foothills of the Blue Ridge Mountains in northwest Georgia and is the second-largest city in northwest Georgia, after Rome.\nDalton is home to many of the nation's floor-covering manufacturers, primarily those producing carpet, rugs, and vinyl flooring. It is home to the Dalton Convention Center, which showcases the Georgia Athletic Coaches' Hall of Fame and hosts a variety of events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "dalton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2205,
+    "attempt": 2188,
+    "place_id": "gn-4924198",
+    "input": {
+      "place": {
+        "place_id": "gn-4924198",
+        "name": "Noblesville",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.04559,
+        "lon": -86.0086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noblesville, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Noblesville,_Indiana",
+          "text": "Noblesville is a city in and the county seat of Hamilton County, Indiana, United States, a part of the north Indianapolis suburbs along the White River. The population was 69,604 at the 2020 census, making it the state's 10th most populous city, up from 14th in 2010. The city is part of Delaware, Fall Creek, Noblesville, and Wayne townships.\nNoblesville is home to Ruoff Music Center (formerly Klipsch Music Center and Deer Creek Music Center), the Indianapolis metro area's primary outdoor music venue. Since its opening in 1989, the nearly 25,000-seat amphitheater has been a popular stop for many touring musicians, consistently ranking first (or in the top three) among outdoor music venues in the world, for ticket sales, according to Pollstar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "noblesville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2206,
+    "attempt": 2189,
+    "place_id": "gn-5164903",
+    "input": {
+      "place": {
+        "place_id": "gn-5164903",
+        "name": "North Ridgeville",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.38949,
+        "lon": -82.01903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Ridgeville, Ohio",
+          "url": "https://en.wikipedia.org/wiki/North_Ridgeville,_Ohio",
+          "text": "North Ridgeville is a city located along the eastern border of Lorain County, Ohio, United States. The city's population was 35,280 as of the 2020 census. A part of the Cleveland metropolitan area, North Ridgeville is the fastest-growing city in northern Ohio. It has been ranked the 13th safest city in the United States and the safest in Ohio.\nLocated 8 miles (13 km) from Cleveland Hopkins International Airport, and 18 miles (29 km) west of downtown Cleveland, North Ridgeville is the third-largest city in Lorain County and the 37th most populous city in Ohio. North Ridgeville is home to a 350,000 square foot Riddell Sports Group production and distribution center, where National Football League and NCAA helmets and pads are produced. It is also home to a campus of Lorain County Community College and a branch of University Hospitals Cleveland Medical Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "north ridgeville",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridgeville",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2207,
+    "attempt": 2190,
+    "place_id": "gn-5356451",
+    "input": {
+      "place": {
+        "place_id": "gn-5356451",
+        "name": "Hercules",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.01714,
+        "lon": -122.28858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hercules, California",
+          "url": "https://en.wikipedia.org/wiki/Hercules,_California",
+          "text": "Hercules is a city in western Contra Costa County, California, United States. Situated along the coast of San Pablo Bay, it is located in the eastern region of the San Francisco Bay Area, approximately 10 miles (16 km) north of Berkeley. As of the 2020 census, its population was 26,016, according to the United States Census Bureau. The site of Hercules was first developed in 1881 as a manufacturing facility of the California Powder Works for the production of its patented dynamite formulation, Hercules powder. In 1882, the Hercules Powder Company was incorporated and assumed responsibility for the Hercules site. It was one of several explosive manufacturers that were active along the Pinole shoreline in the late 19th to the mid-20th century. The small company town that grew up near the facility subsequently became known as \"Hercules\", and was incorporated at the end of 1900. Starting in the 1970s, Hercules was heavily redeveloped as suburban bedroom community that lies along the I-80 corridor in Western Contra Costa County. It has a very ethnically diverse population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "hercules",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2208,
+    "attempt": 2191,
+    "place_id": "gn-5423573",
+    "input": {
+      "place": {
+        "place_id": "gn-5423573",
+        "name": "Grand Junction",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.06387,
+        "lon": -108.55065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Junction, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Grand_Junction,_Colorado",
+          "text": "Grand Junction is a home rule municipality that is the county seat of and the largest city in Mesa County, Colorado, United States. Grand Junction's population was 65,560 at the 2020 United States census, making it the most populous city in western Colorado and the 17th most populous Colorado municipality overall.\nAs western Colorado's largest city, Grand Junction is the economic and cultural center of the Western Slope region. The city is a transportation hub, situated at the convergence of Interstate 70, U.S. Highway 50 and U.S. Highway 6. Grand Junction is also home to Colorado Mesa University, enrolling nearly 10,000 students annually.\nThe city is the anchor of the Grand Junction metropolitan area, home to over 162,000 residents as of 2025. It is located in the heart of the Grand Valley, a large Colorado River valley stretching over 30 miles (48 km) east-to-west and 5 miles (8.0 km) north-to-south. Grand Junction comprises the largest urban center between Denver and Salt Lake City, as well as the most densely populated area and the only metropolitan area in Colorado outside of the Front Range Urban Corridor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "grand junction",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "junction",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2209,
+    "attempt": 2192,
+    "place_id": "gn-5802570",
+    "input": {
+      "place": {
+        "place_id": "gn-5802570",
+        "name": "Marysville",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.05176,
+        "lon": -122.17708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marysville, Washington",
+          "url": "https://en.wikipedia.org/wiki/Marysville,_Washington",
+          "text": "Marysville is a city in Snohomish County, Washington, United States, part of the Seattle metropolitan area. The city is located 35 miles (56 km) north of Seattle, adjacent to Everett on the north side of the Snohomish River delta. It is the second-largest city in Snohomish County after Everett, with a population of 70,714 at the time of the 2020 U.S. census. As of 2015, Marysville was also the fastest-growing city in Washington state, growing at an annual rate of 2.5 percent.\nMarysville was established in 1872 as a trading post by James P. Comeford, but was not populated by other settlers until 1883. After the town was platted in 1885, a period of growth brought new buildings and industries to Marysville. In 1891, Marysville was incorporated and welcomed the completed Great Northern Railway. Historically, the area has subsisted on lumber and agrarian products; the growth of strawberry fields in Marysville led to the city being nicknamed the \"Strawberry City\" in the 1920s.\nThe city experienced its first wave of suburbanization in the 1970s and 1980s, resulting in the development of new housing and commercial areas. Between 1980 and 2000, the population of Marysville increased fivefold. In the early 2000s, annexations of unincorporated areas to the north and east expanded the city to over 20 square miles (52 km2) and brought the population over 60,000.\nMarysville is oriented north–south along Interstate 5, bordering the Tulalip Indian Reservation to the west, and State Route 9 to the east. Mount Pilchuck, whose 5,300-foot-high (1,600 m) peak can be seen from various points in the city, appears in the city's flag and seal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "marysville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2210,
+    "attempt": 2193,
+    "place_id": "gn-8440759",
+    "input": {
+      "place": {
+        "place_id": "gn-8440759",
+        "name": "Bagru",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.81067,
+        "lon": 75.54702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagru",
+          "url": "https://en.wikipedia.org/wiki/Bagru",
+          "text": "Bagru is a town and a municipality in Jaipur district (Tehsil Sanganer) in the state of Rajasthan, India. It is located approximately 32 km southwest of Jaipur, along the Jaipur-Ajmer Road.This is the city of Jugal Darbar. Where every year a huge Lakkhi fair of Jugal Darbar is organized.There is an old school named Government Senior Secondary School (that is now changed to Mahatma Gandhi Government School) established in 1933 and it has Bagru's Oldest Tree (Tamarind Tree) in it planted by its King. Here is a ground known as Baag (Dussehra Ground) (because it was a garden of Bagru's King), where Dasshera mela held every year. There is a lot to see and know here. People are very enthusiastic and helpful.\nThere is a very ancient temple of Jugal Darbar here which is even older than the establishment of Bagru. Apart from this, there are other ancient and worth seeing temples like Pal Wale Balaji Temple, Sawa Ki Bagichi Wale Balaji, Tejaji Temple, Bhomiya Ji Temple etc.Bagru is also a best example of communal harmony where Hindu and Muslim communities have been living and celebrating festivals together for many years. There are also mosques and dargahs here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "bagru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2211,
+    "attempt": 2194,
+    "place_id": "gn-967106",
+    "input": {
+      "place": {
+        "place_id": "gn-967106",
+        "name": "Oudtshoorn",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.60047,
+        "lon": 22.19955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oudtshoorn",
+          "url": "https://en.wikipedia.org/wiki/Oudtshoorn",
+          "text": "Oudtshoorn (, Afrikaans pronunciation: [ˈœutsˌɦuərən]) is a town in the Western Cape province of South Africa, located between the Swartberg mountains to the north and the Outeniqua Mountains to the south. Dubbed the \"ostrich capital of the world\", Oudtshoorn is known for its ostrich-feather booms, during 1865–1870 and 1900–1914. With approximately 60,000 inhabitants, it is the largest town in the Klein Karoo region. The town's economy is primarily reliant on the ostrich farming and tourism industries. Oudtshoorn is home to the world's largest ostrich population, with a number of specialised ostrich breeding farms, such as the Safari Show Farm and the Highgate Ostrich Show Farm, as stated by Pierre D. Toit.\nBhongolethu is a township 10 km (6 mi) east of Oudtshoorn. Derived from Xhosa, its name means \"our pride\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "oudtshoorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2212,
+    "attempt": 2195,
+    "place_id": "gn-1166164",
+    "input": {
+      "place": {
+        "place_id": "gn-1166164",
+        "name": "Sanghar",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 26.04694,
+        "lon": 68.94917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanghar",
+          "url": "https://en.wikipedia.org/wiki/Sanghar",
+          "text": "Sanghar (Sindhi: سانگھڙ; Urdu: سانگھڑ English: Sānghar) is a city in Sanghar District, Sindh, Pakistan. Sanghar is the headquarters of Sanghar District and Sanghar Taluka (a subdivision of the district). The driving distance of Sangher from Karachi is 267 kilometers (166 miles). It has road links with Hyderabad, Nawabshah, Mirpur Khas, Khairpur, Sukkur, Karachi and other major cities of Sindh.\nThe surrounding area consists chiefly of semiarid land, a part of the great Thar Desert, and some cropped areas irrigated by the Mithrao Canal system, which feeds from the Indus River. It is located in an agricultural area where rice, wheat, and cotton are mainly grown, but it is also home to several cotton-textile factories and is a local market town.\nThe population of the city is 74,112 (2023). This is the third most populous city of Sanghar district after Tando Adam and Shahdadpur.\nIt is not known when Sanghar was founded. However, it was a small village with a population of few hundred. It is generally believed that Sanghar was named after a pious fisherwoman Mai Sanghar. During the British rule in India, the population of this village increased and it grew in a small town. When Sindh was separated from the Bombay Presidency in 1935, Sanghar earned the title of Taluka. In 1954 it was given the status of District Headquarter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "sanghar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2213,
+    "attempt": 2196,
+    "place_id": "gn-1722032",
+    "input": {
+      "place": {
+        "place_id": "gn-1722032",
+        "name": "Cabadbaran",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 9.12261,
+        "lon": 125.53549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabadbaran",
+          "url": "https://en.wikipedia.org/wiki/Cabadbaran",
+          "text": "Cabadbaran, officially the City of Cabadbaran (Cebuano: Dakbayan sa Cabadbaran), is a  component city and de jure capital of the province of Agusan del Norte, Philippines. According to the 2024 census, it has a population of 82,343 people.\nFounded in 1894, the city rose from its Spanish period beginnings to become the premier town of Agusan del Norte. Its rich cultural heritage is evident in its preserved colonial period houses and its archaeological collections.\nOn August 16, 2000, the seat of provincial government was transferred from Butuan to Cabadbaran through Republic Act 8811, although the provincial government still holds office in Butuan, pending the actual transfer of provincial offices to the new capital. Cabadbaran was officially declared a city in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "cabadbaran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2214,
+    "attempt": 2197,
+    "place_id": "gn-2511619",
+    "input": {
+      "place": {
+        "place_id": "gn-2511619",
+        "name": "Sagunto",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.68333,
+        "lon": -0.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sagunto",
+          "url": "https://en.wikipedia.org/wiki/Sagunto",
+          "text": "Sagunto, in Spanish, or Sagunt, in Valencian (officially: Sagunt / Sagunto, historically: Morvedre), is a city and municipality of Spain, located in the province of Valencia, Valencian Community. It belongs to the modern fertile comarca of Camp de Morvedre. It is located approximately 30 km (19 mi) north of Valencia city center and lies on the Costa de Valencia on the Mediterranean Sea.\nIt is best known for the remains of the ancient Iberian and Roman city of Saguntum. The siege of Saguntum in 219 BC was the trigger of the Second Punic War between the Carthaginians and the Romans.\nThe municipality includes three differentiated urban nuclei: Ciutat Vella (Sagunt / Sagunto), Grau Vell and Puerto de Sagunto (Port de Sagunt). Over half of the population lives in the coastal settlement of Puerto de Sagunto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "sagunto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2216,
+    "attempt": 2198,
+    "place_id": "gn-2655672",
+    "input": {
+      "place": {
+        "place_id": "gn-2655672",
+        "name": "Billericay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.62867,
+        "lon": 0.41963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Billericay",
+          "url": "https://en.wikipedia.org/wiki/Billericay",
+          "text": "Billericay (  BIL-ə-RIK-ee) is a historic market town and civil parish in the Borough of Basildon, Essex, England. It lies 23 miles (37 km) east of the City of London. At the 2021 census, the parish had a population of 28,562 and the built-up area was 34,075.\nThe town was founded in the 13th century by the Abbot of West Ham, in his Manor of Great Burstead. During the Peasants’ Revolt of 1381, the Essex rebels were defeated in a battle with Richard II's forces in the Battle of Billericay. In 1620, four local people were on board the Mayflower as it sailed to Massachusetts, to establish the first English settlement in what would become the north of the United States. The town has long taken a pride in this connection; many businesses and other organisations use the name Mayflower, with the town council and other local organisations using it as their emblem."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "billericay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2217,
+    "attempt": 2199,
+    "place_id": "gn-2747063",
+    "input": {
+      "place": {
+        "place_id": "gn-2747063",
+        "name": "Sneek",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 53.03297,
+        "lon": 5.6589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sneek",
+          "url": "https://en.wikipedia.org/wiki/Sneek",
+          "text": "Sneek (Dutch pronunciation: [sneːk] ; West Frisian: Snits [snɪts]) is a city southwest of Leeuwarden and the seat of the former municipality of Sneek in the province of Friesland, Netherlands. As of 2011 it is the seat of the municipality of Súdwest-Fryslân (Southwest Friesland). The city had approximately 34,850 inhabitants in January 2024.\nSneek is situated in Southwest Friesland, close to the Sneekermeer, and is well known for its canals, the Waterpoort (Watergate, the symbol of the city), and watersports (hosting the annual Sneekweek, the largest sailing event on inland European waterways). Sneek is one of the Friese elf steden (\"Eleven cities of Friesland\"). The city is very important in the southwestern part of Friesland (called the Zuidwesthoek, or Southwest Corner)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "sneek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2218,
+    "attempt": 2200,
+    "place_id": "gn-2781503",
+    "input": {
+      "place": {
+        "place_id": "gn-2781503",
+        "name": "Bregenz",
+        "country": "Austria",
+        "subdivision": "Vorarlberg",
+        "lat": 47.50311,
+        "lon": 9.7471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bregenz",
+          "url": "https://en.wikipedia.org/wiki/Bregenz",
+          "text": "Bregenz (German: [ˈbʁeːɡɛnts] ; Vorarlbergian: Breagaz [ˈb̥rea̯ɡ̊ats]) is the capital of Vorarlberg, the westernmost state of Austria. The city lies on the east and southeast shores of Lake Constance, the third-largest freshwater lake in Central Europe (river Rhine), between Switzerland in the west and Germany in the northwest and big forests in the east - the Bregenzerwald.\nBregenz is located on a plateau falling in a series of terraces to the lake at the foot of Pfänder mountain. It is a junction of the arterial roads from the Rhine valley to the German Alpine foothills, with cruise ship services on Lake Constance.\nIt is famous for the annual summer music festival Bregenzer Festspiele, as well as the dance festival Bregenzer Spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "bregenz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

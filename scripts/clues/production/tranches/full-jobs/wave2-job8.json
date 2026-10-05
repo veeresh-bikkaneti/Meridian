@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 346,
+    "attempt": 341,
+    "place_id": "gn-1185099",
+    "input": {
+      "place": {
+        "place_id": "gn-1185099",
+        "name": "Sylhet",
+        "country": "Bangladesh",
+        "subdivision": "Sylhet Division",
+        "lat": 24.89904,
+        "lon": 91.87198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sylhet",
+          "url": "https://en.wikipedia.org/wiki/Sylhet",
+          "text": "Sylhet is a metropolitan city in the northeastern region of Bangladesh. It serves as the administrative centre for both the Sylhet District and the Sylhet Division. The city is situated on the banks of the Surma River and, as of 2025, the metro area population of Sylhet is estimated to be 1,033,000, reflecting a 3.4% increase from 2024.\nSylhet is known for its tea plantations and natural scenery. Sylhet is famous for the Ratargul Swamp Forest, one of the few freshwater swamp forests in Bangladesh. The region has been inhabited since ancient times, and since the city's establishment in the 14th century has been ruled by various dynasties including the Mughals, the British, and the Nawabs of Bengal. The city is also home to several important landmarks, such as one of the Islamic sites in Bangladesh, the Shah Jalal Dargah, which attracts thousands of pilgrims annually. \nSylhet is one of the most economically important cities in Bangladesh after Dhaka and Chittagong. A major commercial and financial centre, Sylhet is home to several multinational companies and industries, including the tea industry, which generates a significant amount of revenue for the city. Sylhet has diverse transport infrastructure, with a modern airport, railway station, and bus terminals that connect it to other parts of the country. The city also has several educational institutions, including Sylhet Agricultural University, Shahjalal University of Science and Technology, MAG Osmani Medical College and Sylhet Cadet College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "sylhet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 347,
+    "attempt": 342,
+    "place_id": "gn-2451478",
+    "input": {
+      "place": {
+        "place_id": "gn-2451478",
+        "name": "Ségou",
+        "country": "Mali",
+        "subdivision": "Ségou",
+        "lat": 13.44032,
+        "lon": -6.25947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ségou",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A9gou",
+          "text": "Ségou (French pronunciation: [seɡu]; Bambara: ߛߋߜ߭ߎ߫, Segu) is a town and an urban commune in south-central Mali that lies 235 kilometres (146 mi) northeast of Bamako on the right bank of the River Niger. The town is the capital of the Ségou Cercle and the Ségou Region. With 130,690 inhabitants in 2009, it is the fifth-largest town in Mali. \nIn the middle of the 19th century there were four villages with the name of Ségou spread out over a distance of around 12 km (7.5 mi) along the right bank of the river. They were, starting from the most upstream, Ségou-Koro (Old Ségou), Ségou-Bougou, Ségou-Koura (New Ségou) and Ségou-Sikoro. The present town is on the site of Ségou-Sikoro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "segou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 348,
+    "attempt": 343,
+    "place_id": "gn-2805753",
+    "input": {
+      "place": {
+        "place_id": "gn-2805753",
+        "name": "Wuppertal",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.25627,
+        "lon": 7.14816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuppertal",
+          "url": "https://en.wikipedia.org/wiki/Wuppertal",
+          "text": "Wuppertal (German pronunciation: [ˈvʊpɐtaːl] ; lit. 'Wupper Dale') is a city in North Rhine-Westphalia, in western Germany, with a population of 355,000. Wuppertal is the seventh-largest city in North Rhine-Westphalia and 17th-largest in Germany. It was founded in 1929 by the merger of Elberfeld, Barmen, Ronsdorf, Cronenberg and Vohwinkel, and was initially called \"Barmen-Elberfeld\" before adopting its present name in 1930. It is the capital and largest city of the Bergisches Land.\nThe city straddles the densely populated banks of the River Wupper, a tributary of the Rhine. Wuppertal is located between the Ruhr area to the north, Düsseldorf to the west, and Cologne to the southwest, and over time has grown together with Solingen, Remscheid and Hagen. The city is known for its steep slopes, its woods and parks, and for being the greenest city in Germany, with two-thirds green space of the total municipal area.\nThe Wupper Valley was, along with the Ore Mountains and before the Ruhr, the first highly industrialized region of Germany, which resulted in the construction of the Wuppertal Suspension Railway in the then independent cities of Elberfeld and Barmen. The increasing demand for coal from the textile mills and blacksmith shops from those cities encouraged the expansion of the nearby Ruhr. Wuppertal still is a major industrial centre, being home to industries such as textiles, metallurgy, chemicals, pharmaceuticals, electronics, automobiles, rubber, vehicles and printing equipment. Aspirin originates from Wuppertal, patented in 1897 by Bayer, as does the Vorwerk Kobold vacuum cleaner. The Wuppertal Institute and the European Institute for International Economic Relations are located in the city. Barmen was the birthplace of Friedrich Engels.\nDue to the city's length, the Bergish varieties of the Limburgish language called Platt are spoken in its western communities like Vohwinkel, but not in the city's eastern communities like Langerfeld where the Southern varieties of Westphalian language are spoken and the city is called Wupperdaal by locals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "wuppertal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 349,
+    "attempt": 344,
+    "place_id": "gn-298117",
+    "input": {
+      "place": {
+        "place_id": "gn-298117",
+        "name": "Van",
+        "country": "Türkiye",
+        "subdivision": "Van",
+        "lat": 38.49457,
+        "lon": 43.38323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van, Turkey",
+          "url": "https://en.wikipedia.org/wiki/Van,_Turkey",
+          "text": "Van is a city in eastern Turkey's Van Province, on the eastern shore of Lake Van. It is the capital and largest city of Van Province.\nVan has a long history as a major urban area. It has been a large city since the first millennium BCE, initially as Tushpa, the capital of the kingdom of Urartu from the 9th century BCE to the 6th century BCE, and later as the center of the Armenian kingdom of Vaspurakan. Turkic presence in Van and in the rest of Anatolia started as a result of Seljuk victory at the Battle of Malazgirt (1071) against the Byzantine Empire.\nVan was densely populated by Armenians until the Armenian genocide in the 1910s. Today, it is mostly inhabited by Kurds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "van",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 350,
+    "attempt": 345,
+    "place_id": "gn-3526683",
+    "input": {
+      "place": {
+        "place_id": "gn-3526683",
+        "name": "Iztapalapa",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.35529,
+        "lon": -99.06224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iztapalapa",
+          "url": "https://en.wikipedia.org/wiki/Iztapalapa",
+          "text": "Iztapalapa () is a borough (demarcación territorial) in Mexico City located on the eastern side of the city. The borough is named after and centered on the formerly independent municipality of Iztapalapa (officially Iztapalapa de Cuitláhuac). The rest is made up of a number of other communities which are governed by the city of Iztapalapa.\nWith a population of 1,835,486 as of 2020, Iztapalapa is the most populous borough of Mexico City as well as the second-most populous municipality in the country, after Tijuana. Over 90% of the territory is urbanized, with its green space mostly in parks. Over the past 40 years, Iztapalapa transformed from a rural area primarily dedicated to agriculture to a densely populated borough. This was the result of a large influx of people who settled in the borough from other parts of the country, starting in the 1970s. Most of the population is employed in commerce, services and industry.\nIztapalapa remains afflicted by high levels of economic deprivation, and a significant number of its residents lack access to clean drinking water. Iztapalapa has one of the highest rates of violent crime in Mexico City. Combatting homicides and drug trafficking remain a major issue for local authorities. \nThe borough is home of one of Mexico City's major cultural events, the annual Passion Play in which 450 borough residents participate and about 2 million attend as spectators."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "iztapalapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 351,
+    "attempt": 346,
+    "place_id": "gn-5577147",
+    "input": {
+      "place": {
+        "place_id": "gn-5577147",
+        "name": "Fort Collins",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.58526,
+        "lon": -105.08442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Collins, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Fort_Collins,_Colorado",
+          "text": "Fort Collins is a home rule city in Larimer County, Colorado, United States, and serves as the county seat and most populous municipality of the county. It is the fourth-most populous city in Colorado with a population of 169,810 in the 2020 census, while the Fort Collins, CO Metropolitan Statistical Area has an estimated 375,000 residents.\nSituated on the Cache La Poudre River along the Colorado Front Range, Fort Collins is located 60 mi (97 km) north of the Colorado State Capitol in Denver and is a major city of the Front Range Urban Corridor. It is a prominent college town, home to Colorado State University, a public research university and the second-largest university by enrollment in Colorado."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "fort collins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "collins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 352,
+    "attempt": 347,
+    "place_id": "gn-667268",
+    "input": {
+      "place": {
+        "place_id": "gn-667268",
+        "name": "Sibiu",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.8,
+        "lon": 24.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sibiu",
+          "url": "https://en.wikipedia.org/wiki/Sibiu",
+          "text": "Sibiu ( see-BEW, pronounced [siˈbiw], German: Hermannstadt [ˈhɛʁmanʃtat], Hungarian: Nagyszeben, Latin: Cibinium, Transylvanian Saxon: Härmeschtat or Hermestatt) is a city in central Romania, situated in the historical region of Transylvania. Located some 275 km (171 mi) north-west of Bucharest, the city straddles the Cibin River, a tributary of the Olt River. Now the seat of Sibiu County, between 1692 and 1791 and 1849–65, Sibiu was the capital of the Principality of Transylvania. Until 1876, the Hecht house in Sibiu served as the seat of the Transylvanian Saxon University.\nNicknamed The Town with Eyes for the eyebrow dormers on many old buildings, the town is a popular tourist destination. It is known for its culture, history, cuisine, and architecture.\nSeveral fortified villages near Sibiu, such as Biertan and Valea Viilor, were inscribed as a UNESCO World Heritage Site in 1993 under the collective listing \"Villages with Fortified Churches in Transylvania\". Separately, in 2004, the historical center of Sibiu was added to Romania's tentative list of UNESCO World Heritage Sites, but has not yet been officially inscribed. It was later designated the European Capital of Culture in 2007, alongside Luxembourg City. In 2008, Forbes ranked Sibiu as \"Europe's 8th-most idyllic place to live\". In 2019, Sibiu was named the European Region of Gastronomy and hosted a European Union summit. In 2021, it also hosted the European Wandering Capital event, the continent’s most prominent hiking and eco-tourism gathering.\nSibiu is also known nationally and internationally for its Christmas market. Renowned personalities include Transylvanian Saxon scientists Conrad Haas and Hermann Oberth, who were both pioneers of rocketry.\nAs of 2021 census, the city has a population of 134,309, making it the 15th most populous city in Romania. The proposed Sibiu metropolitan area has a population of 267,170. The town also administers the village of Păltiniș, a ski resort located 35 kilometres to the southwest.\nDuring the High and Late Middle Ages, Sibiu was the most important cultural and administrative centre of the Transylvanian Saxons. It is called Härmeschtat in their local dialect, which is close to Luxembourgish, from which it primarily descended during the Ostsiedlung."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "sibiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 353,
+    "attempt": 348,
+    "place_id": "gn-757026",
+    "input": {
+      "place": {
+        "place_id": "gn-757026",
+        "name": "Tarnów",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 50.01381,
+        "lon": 20.98698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarnów",
+          "url": "https://en.wikipedia.org/wiki/Tarn%C3%B3w",
+          "text": "Tarnów (Polish pronunciation: [ˈtarnuf] ) is a city in southeastern Poland with 105,922 inhabitants and a metropolitan area population of 269,000 inhabitants. The city is situated in the Lesser Poland Voivodeship. It is a major rail junction, located on the strategic east–west connection from Lviv to Kraków, and two additional lines, one of which links the city with the Slovak border.\nTarnów is known for its traditional Polish architecture, which was influenced by people  that  lived in the area, most notably Poles, Germans, and Austrians. The Old Town, featuring 16th century tenements, houses and defensive walls, has been preserved. Tarnów is also the warmest city of Poland, with the highest long-term mean annual temperature in the whole country.\nCompanies headquartered in the city include Poland's largest chemical industry company Grupa Azoty and defence industry company ZMT. The city is currently subdivided into 16 districts and is a member of the Association of Polish Cities (Związek Miast Polskich)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "tarnow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 354,
+    "attempt": 349,
+    "place_id": "gn-964420",
+    "input": {
+      "place": {
+        "place_id": "gn-964420",
+        "name": "Gqeberha",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.96109,
+        "lon": 25.61494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gqeberha",
+          "url": "https://en.wikipedia.org/wiki/Gqeberha",
+          "text": "Gqeberha (English:  keb-AIR-khə, Xhosa: [ᶢǃʱɛ̀ɓéːxà]), also known as Port Elizabeth and colloquially P.E., is a major seaport and the most populous city in the Eastern Cape province of South Africa. It is the seat of the Nelson Mandela Bay Metropolitan Municipality, South Africa's second-smallest metropolitan municipality by area. It is the sixth-most populous city in South Africa and is the cultural, economic and financial hub of the Eastern Cape.\nGqeberha was founded in 1820 as Port Elizabeth by Sir Rufane Donkin, who was the governor of the Cape at the time. He named it after his wife, Elizabeth, who had died in India. The Donkin Memorial in the central business district of the city bears testament to that. It was established by the government of the Cape Colony when 4,000 British colonists settled in Algoa Bay to strengthen the border region between the Cape Colony and the Xhosa. It is nicknamed \"The Friendly City\" or \"The Windy City\". In 2019, the Eastern Cape Geographical Names Committee recommended that Port Elizabeth be renamed Gqeberha, after the Xhosa and Southern Khoe name for the Baakens River that flows through the city. The city's name change was officially gazetted on 23 February 2021.\nLocated on the western portion of Algoa Bay along the southeastern coast of South Africa, the city lies 770 km east of Cape Town. It is east of the Garden Route and faces the Indian Ocean. It covers 251 square kilometers of the Nelson Mandela Bay metropolitan area, and is administered by South Africa's sixth-largest metropolitan municipality. The city's warm oceanic climate ranks it among the top cities in the world for pleasant year-round weather. The city is known for many blue-flag beaches along the city's urban coastline; its popularity as an international and local holiday destination; and its rich and diverse cultural heritage. It is a gateway city for the Eastern Cape's adventure, outdoor and African big five game safari tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "gqeberha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 355,
+    "attempt": 350,
+    "place_id": "gn-1185056",
+    "input": {
+      "place": {
+        "place_id": "gn-1185056",
+        "name": "Abbottabad",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.1463,
+        "lon": 73.21168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbottabad",
+          "url": "https://en.wikipedia.org/wiki/Abbottabad",
+          "text": "Abbottabad is a city and the capital of the Hazara Division in the Pakistani province of Khyber Pakhtunkhwa. It also serves as the headquarters of its eponymous tehsil (subdistrict) and district. According to the 2023 census, Abbottabad had a population of 234,395. The city is located about 120 km (75 mi) north of the Islamabad–Rawalpindi area and 150 km (95 mi) east of Peshawar, at an elevation of about 1,256 m (4,121 ft).\nAbbottabad was founded in 1853 during British rule and was named after James Abbott, the first deputy commissioner of Hazara. It developed as a cantonment and administrative centre in the colonial period, later becoming part of the North-West Frontier Province and then Khyber Pakhtunkhwa. Parts of the city are administered as Abbottabad Cantonment, while the wider urban area also includes municipal administration.\nThe city is associated with education, healthcare, tourism and military institutions. It is home to institutions such as Ayub Medical College and the Abbottabad campus of COMSATS University Islamabad, while the Pakistan Military Academy is located at nearby Kakul. Abbottabad also serves as a market and transit centre for surrounding areas of the Hazara region and as a base for travel to nearby hill stations and destinations in northern Pakistan, including the Galyat region and the Kaghan Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "abbottabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 356,
+    "attempt": 351,
+    "place_id": "gn-1784853",
+    "input": {
+      "place": {
+        "place_id": "gn-1784853",
+        "name": "Zhaoqing",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.04893,
+        "lon": 112.46091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhaoqing",
+          "url": "https://en.wikipedia.org/wiki/Zhaoqing",
+          "text": "Zhaoqing (Chinese: 肇庆), alternately romanized as Shiuhing, is a prefecture-level city in Guangdong, China. As of the 2020 census, its population was 4,113,594, with 1,553,109 living in the built-up (or metro) area made of Duanzhou, Dinghu and Gaoyao. The prefectural seat—except the Seven Star Crags—is fairly flat, but thickly forested mountains lie just outside its limits. Numerous rice paddies and aquaculture ponds are found on the outskirts of the city. Sihui and the southern districts of the prefecture are considered part of the Pearl River Delta.\nFormerly one of the most important cities in southern China, Zhaoqing lost its importance during the Qing dynasty and is now primarily known for tourism and as a provincial \"college town\". Residents from Guangzhou, Shenzhen, and the other cities of the Pearl River Delta often visit it for weekend excursions. It is also a growing manufacturing center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "zhaoqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 357,
+    "attempt": 352,
+    "place_id": "gn-2338400",
+    "input": {
+      "place": {
+        "place_id": "gn-2338400",
+        "name": "Ijebu Ode",
+        "country": "Nigeria",
+        "subdivision": "Ogun State",
+        "lat": 6.81944,
+        "lon": 3.91731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ijebu Ode",
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "text": "Ijebu-Ode () is a city and Local government area in Ogun State, South West Nigeria, close to the A121 highway. The city is located 110 km by road northeast of Lagos; it is within 100 km (62 mi) of the Atlantic Ocean in the eastern part of Ogun State and possesses a warm tropical climate.\nAccording to the Britannica, by the 16th century, it was established as the chief town, and since pre-colonial times it has been the capital of the Ijebu kingdom. There are around 2,119,221 Ijebus around south-west Nigeria, in Lagos and Ogun states. It has an estimated population of 394,246(2024). It is home to Sungbo's Eredo one of the largest ramparts in West Africa.\nAs with most Ijebus, people from Ijebu Ode have a nationwide reputation of being natural entrepreneurs, The primary cultural food is \"Ikokore\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "ijebu ode",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ijebu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ode",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 358,
+    "attempt": 353,
+    "place_id": "gn-2692969",
+    "input": {
+      "place": {
+        "place_id": "gn-2692969",
+        "name": "Malmö",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.60587,
+        "lon": 13.00073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmö",
+          "url": "https://en.wikipedia.org/wiki/Malm%C3%B6",
+          "text": "Malmö is the third-largest city in Sweden, after Stockholm and Gothenburg, and the seventh-largest city in the Nordic region. Located on the Öresund strait on the southwestern coast of Sweden, it is the largest city in Scania, with a municipal population of 365,644 in 2024, and is the gubernatorial seat of Skåne County. Malmö received its city privileges in 1353, and today Malmö's metropolitan region is home to over 700,000 people. \nMalmö is the site of Sweden's only fixed direct link to continental Europe, the Öresund Bridge, completed in 2000. The bridge connects Sweden to Denmark, and carries both road and rail traffic. The Öresund Region, which includes Malmö and Copenhagen, is home to four million people.   \nThe city was one of the earliest and most-industrialised in Scandinavia, and the birthplace of several of Scandinavia's largest industrial groups, such as Kockums, Skanska, and Scania AB. The city has undergone a major transformation in the 21st century, and today, Malmö is characterised by many small and medium-sized companies in biotech, logistics, IT, construction, and real estate markets. It also is home to Malmö University and other higher education facilities. \nMalmö contains many historic buildings and parks, and is a commercial centre for the western part of Scania. It is home to Malmö FF, the Swedish football club with the most Allsvenskan titles, and the only Nordic club to have reached the final of the European Cup. It is also home to women's football club FC Rosengård, the most successful club in the Damallsvenskan.\nThe city was Sweden's fastest-growing in 2020, and the population increased by 3,800 inhabitants during 2021. As of 2024, almost half the municipal population of Malmö had a foreign background with the city being home to people from 187 different countries. Malmö's population is expected to increase by about 29,000 new residents by 2035 with a total 395,000 residents, and a population of 500,000 by 2050.\nMalmö has a mild climate for its latitude and, normally, average high temperatures remain above freezing in winter, with prolonged snow cover being rare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 342
+    },
+    "banned_terms": [
+      {
+        "term": "malmo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 359,
+    "attempt": 354,
+    "place_id": "gn-2972191",
+    "input": {
+      "place": {
+        "place_id": "gn-2972191",
+        "name": "Tours",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.39484,
+        "lon": 0.70398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tours",
+          "url": "https://en.wikipedia.org/wiki/Tours",
+          "text": "Tours ( TOOR; French: [tuʁ] ) is the largest city in the region of Centre-Val de Loire, France. It is the prefecture of the department of Indre-et-Loire. The commune of Tours had 138,668 inhabitants as of 2022 while the population of the whole metropolitan area was 526,370.\nTours sits on the lower reaches of the Loire, between Orléans and the Atlantic coast. Formerly named Caesarodunum by its founder, Roman Emperor Augustus, it possesses one of the largest amphitheaters of the Roman Empire, the Tours Amphitheatre. Known for the Battle of Tours in 732 AD, it is a National Sanctuary with connections to the Merovingians and the Carolingians, with the Capetians making the kingdom's currency the Livre tournois. Saint Martin and Gregory of Tours were from Tours. Tours was once part of Touraine, a former province of France. Tours was the first city of the silk industry. It was taken by Louis XI, as the royal capital under the Valois Kings with its Loire castles and city of art with the School of Tours. The prefecture was partially destroyed during the French Wars of Religion in the late 16th century and again during the Second World War in June 1940.\nThe historical centre of Tours is listed as a UNESCO World Heritage Site, and the city is also home to the Vieux-Tours, a patrimonial site. The garden city has a green heritage and its urban landscape has been strongly influenced by its natural space. The historic city is nicknamed the \"White and Blue City\" and \"Le Petit Paris\". The city is a university city with more than 30,000 students in 2019. Tours is a popular culinary city with specialties such as rillettes, rillons, Touraine vineyards, AOC Sainte-Maure-de-Touraine cheeses and nougats. The city is also the end-point of the annual Paris–Tours cycle race. The region, due to its history and culture, has always been a place of birth or home to many personalities and international sporting events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "tours",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 360,
+    "attempt": 355,
+    "place_id": "gn-3037854",
+    "input": {
+      "place": {
+        "place_id": "gn-3037854",
+        "name": "Amiens",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.9,
+        "lon": 2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amiens",
+          "url": "https://en.wikipedia.org/wiki/Amiens",
+          "text": "Amiens (English:  or  AM-ee-ənz; French: [amjɛ̃] ; Picard: Anmien, Anmiens or Anmyin) is a city and commune in northern France, located 120 km (75 mi) north of Paris and 100 km (62 mi) southwest of Lille. With 136,449 inhabitants (2023), it is the prefecture of the Somme department in the Hauts-de-France region. A central landmark of the city is Amiens Cathedral, the largest Gothic cathedral in France. Amiens also has one of the largest university hospitals in France, with a capacity of 1,200 beds. The author Jules Verne lived in Amiens from 1871 until his death in 1905, and served on the city council for 15 years. Amiens is the birthplace of current French president Emmanuel Macron.\nThe town was fought over during both World Wars, suffering significant damage, and was repeatedly occupied by both sides. The 1918 Battle of Amiens was the opening phase of the Hundred Days Offensive which directly led to the Armistice with Germany. The Royal Air Force heavily bombed the town during the Second World War. In the aftermath, the city was rebuilt according to Pierre Dufau's plans with wider streets to ease traffic congestion. These newer structures were primarily built of brick, concrete and white stone with slate roofs. The architect Auguste Perret designed the Gare d'Amiens train station and nearby Tour Perret.\nAmiens has an important historical and cultural heritage, on which a significant amount of tourism is based. Apart from the cathedral, there are the hortillonnages, the Jules Verne House, the Tour Perret, the Musée de Picardie, the zoo, and the Saint-Leu and Saint-Maurice neighborhoods. A total of 60 monuments are listed in the inventory of monuments historiques, over 1600 places and monuments listed in the general inventory of cultural heritage, and 187 objects listed in the inventory of monuments historiques. During December, the town hosts the largest Christmas market in northern France. It is known for a few local foods, including \"macarons d'Amiens\", almond paste biscuits; \"tuiles amienoises\", chocolate and orange curved biscuits; \"pâté de canard d'Amiens\", duck pâté in pastry; \"la ficelle Picarde\", an oven-baked cheese-topped crêpe; and \"flamiche aux poireaux\", a puff pastry tart made with leeks and cream."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "amiens",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 361,
+    "attempt": 356,
+    "place_id": "gn-3727135",
+    "input": {
+      "place": {
+        "place_id": "gn-3727135",
+        "name": "Croix-des-Bouquets",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.57677,
+        "lon": -72.22625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Croix-des-Bouquets",
+          "url": "https://en.wikipedia.org/wiki/Croix-des-Bouquets",
+          "text": "Croix-des-Bouquets (, French pronunciation: [kʁwa de bukɛ]; Haitian Creole: Kwadèbouke or Kwadèboukè)  is a commune in the Ouest department of Haiti. It is located 12.9 kilometers (8.0 mi) to the northeast of Haiti's capital city, Port-au-Prince. Originally located on the shore, it was relocated inland after the 1770 Port-au-Prince earthquake. With a population density of 52,000/km2 (130,000/sq mi), Croix-des-Bouquets is one of the most densely populated cities in the world.\nCroix-des-Bouquets was founded in 1749 by Royal Decree. Legend has it that the city takes its name from a tradition that had the Spaniards passing to deposit bouquets of flowers at the foot of a large cross that was on the land where the city was built. Croix des Bouquets pursues a tradition of beauty through the sculpture of iron, and the village of Noailles is at the heart of this tradition specifically in ode to Haitian artist and sculptor Georges Liautaud."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "croix des bouquets",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "croix",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bouquets",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 362,
+    "attempt": 357,
+    "place_id": "gn-5402405",
+    "input": {
+      "place": {
+        "place_id": "gn-5402405",
+        "name": "Thousand Oaks",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.17056,
+        "lon": -118.83759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thousand Oaks, California",
+          "url": "https://en.wikipedia.org/wiki/Thousand_Oaks,_California",
+          "text": "Thousand Oaks is the second-largest city in Ventura County, California, located in the northwestern part of Greater Los Angeles. Approximately 15 miles (24 km) from the city of Los Angeles and 40 miles (64 km) from Downtown Los Angeles, it is named after the many oak trees present in the area.\nThe city forms the central populated core of the Conejo Valley. Thousand Oaks was incorporated in 1964 and has since expanded to the west and east. Two-thirds of the master-planned community surrounding Westlake and most of Newbury Park were annexed by the city during the late 1960s and 1970s. The Los Angeles County–Ventura County line forms the city's eastern border with the city of Westlake Village. The population was 126,966 at the 2020 census, up from 126,683 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "thousand oaks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thousand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oaks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 363,
+    "attempt": 358,
+    "place_id": "gn-702550",
+    "input": {
+      "place": {
+        "place_id": "gn-702550",
+        "name": "Lviv",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.83826,
+        "lon": 24.02324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lviv",
+          "url": "https://en.wikipedia.org/wiki/Lviv",
+          "text": "Lviv (German: Lemberg,Polish: Lwów; ) is the fifth-largest city in Ukraine, as well as the largest city in the western part of the country, with a population of 723,403 (2025 estimate). It serves as the administrative center of Lviv Oblast and Lviv Raion, and is one of the main cultural centers of Ukraine. The city also hosts the administration of Lviv urban hromada. Lviv was named after Leo I of Galicia, the eldest son of Daniel, King of Ruthenia. During its history the city has had several names.\nIn the 14th century, Lviv emerged as the heart of the historical regions of Red Ruthenia and Galicia, superseding other historic cities such as Halych, Chełm, Belz, and Przemyśl. It was the capital of the Kingdom of Galicia–Volhynia from 1272 to 1340, when it went to King Casimir III the Great of Poland in a war of succession. In 1356, Casimir the Great granted it town rights. From 1434, it was the regional capital of the Ruthenian Voivodeship in the Kingdom of Poland. In 1772, after the First Partition of Poland, the city became the capital of the Habsburg semiautonomous Polish-dominated Kingdom of Galicia and Lodomeria. Between 1918 and 1939, the city was the heart of the Lwów Voivodeship in the Second Polish Republic. During this period the city's culture and industry flourished, as did its academic institutions, such as the Lwów School of Mathematics, the Lwów Historical School, and the Lwów School of Economics. After the German-Soviet invasion of Poland in 1939, Lwów was annexed by the Soviet Union. It survived Soviet and German occupations during World War II largely unscathed. In February 1946, the city became a part of the Ukrainian Soviet Socialist Republic, having lost an estimated 80-90% of its prewar population. In 1991, with the dissolution of the Soviet Union, Lviv stayed part of Ukraine.\nThe historical heart of the city has cobblestone streets and an assortment of Renaissance, Baroque, Neoclassicist and Art Nouveau architecture; it is listed on the UNESCO World Heritage List. It is listed as an endangered site due to the Russian invasion of Ukraine.\nLviv has a number of industries and institutions of higher education, such as Lviv University and Lviv Polytechnic. The city is also the home of multiple cultural institutions, including the Academic Symphony Orchestra of the Lviv Philharmonic and the Lviv Theatre of Opera and Ballet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 395
+    },
+    "banned_terms": [
+      {
+        "term": "lviv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 364,
+    "attempt": 359,
+    "place_id": "gn-750516",
+    "input": {
+      "place": {
+        "place_id": "gn-750516",
+        "name": "Bolu",
+        "country": "Türkiye",
+        "subdivision": "Bolu",
+        "lat": 40.73583,
+        "lon": 31.60611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolu",
+          "url": "https://en.wikipedia.org/wiki/Bolu",
+          "text": "Bolu is a city in northern Turkey, and administrative center of the Bolu Province and of Bolu District, located on the highway between Istanbul and Ankara. Its population as of 2021 was 184,682.\nThe city has been governed by mayor Tanju Özcan (CHP) since local elections in 2019. It was the site of Ancient Claudiopolis and has also been called Eskihisar (\"old fortress\") (and as such has several Turkish namesakes).\nThe old highway (D-100) between Ankara and Istanbul climbs over Mount Bolu, while the new motorway (E-80) passes through Mount Bolu Tunnel, a little distance from the town. It is situated at 742 m (2,434 ft) above sea level on the southern slopes of a bare hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "bolu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 365,
+    "attempt": 360,
+    "place_id": "gn-2309527",
+    "input": {
+      "place": {
+        "place_id": "gn-2309527",
+        "name": "Malabo",
+        "country": "Equatorial Guinea",
+        "subdivision": "Bioko Norte",
+        "lat": 3.75578,
+        "lon": 8.78166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malabo",
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "text": "Malabo ( mə-LAH-boh, Spanish: [maˈlaβo] ; formerly Santa Isabel [ˈsantajsaˈβel] ) is a city in Equatorial Guinea, located in the province of Bioko Norte. It is located on the north coast of the island of Bioko (Bube: Etulá, historically known as Fernando Pó by the Europeans). In 2018, the city had a population of approximately 297,000 inhabitants.\nSpanish is the official language of the city and of the country as well, but Pichinglis is also used as a language of wider communication across Bioko island, including Malabo.\nMalabo is the oldest city in Equatorial Guinea and served as its former capital. Ciudad de la Paz became the new capital of Equatorial Guinea on 2 January 2026. The institutions of governance of Equatorial Guinea began the process of locating to Ciudad de la Paz in February 2017. The designation as capital would be returned many times, finally becoming permanent on 20 June 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "malabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

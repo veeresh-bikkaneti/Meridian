@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 487,
+    "attempt": 481,
+    "place_id": "gn-3181913",
+    "input": {
+      "place": {
+        "place_id": "gn-3181913",
+        "name": "Bolzano",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.49067,
+        "lon": 11.33982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolzano",
+          "url": "https://en.wikipedia.org/wiki/Bolzano",
+          "text": "Bolzano, also known as Bozen (see § Names), is the capital city of South Tyrol, officially the province of Bolzano/Bozen, in northern Italy. The city has a population of 108,245. Bolzano is the largest city in South Tyrol and the third-largest in historical Tyrol. The greater metro area has about 250,000 inhabitants and is one of the urban centres within the Alps.\nBolzano is the seat of the Free University of Bozen-Bolzano, where lectures and seminars are held in Italian, German, and English. The city is also home to the Italian Army's Alpini High Command (COMALP) and some of its combat and support units. In the 2020 version of the annual ranking of quality of life in Italian cities, Bolzano was jointly ranked first for quality of life alongside Bologna. In 2023, the city was named a UNESCO City of Music, joining UNESCO's Creative Cities Network.\nAlong with other Alpine towns in South Tyrol, Bolzano engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention. The Convention aims to promote and achieve sustainable development in the Alpine Arc. Consequently, Bolzano was awarded Alpine Town of the Year 2009. Bolzano is considered a bridge between Northern Europe and Southern Europe due to the three spoken languages in South Tyrol (Italian, German, and Ladin) and the confluence of the Italian and German-Austrian cultures."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "bolzano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 488,
+    "attempt": 482,
+    "place_id": "gn-721472",
+    "input": {
+      "place": {
+        "place_id": "gn-721472",
+        "name": "Debrecen",
+        "country": "Hungary",
+        "subdivision": "Hajdú-Bihar",
+        "lat": 47.53167,
+        "lon": 21.62444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Debrecen",
+          "url": "https://en.wikipedia.org/wiki/Debrecen",
+          "text": "Debrecen is Hungary's second-largest city, after Budapest, the regional centre of the Northern Great Plain region and the seat of Hajdú-Bihar County. A city with county rights, it was the largest Hungarian city in the 18th century and it is one of the Hungarian people's most important cultural centres. Debrecen was also the capital city of Hungary during the revolution in 1848–1849. During the revolution, the dethronement of the Habsburg dynasty was declared in the Reformed Great Church. The city also served as the capital of Hungary by the end of World War II in 1944–1945. It is home to the University of Debrecen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "debrecen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 489,
+    "attempt": 483,
+    "place_id": "gn-738927",
+    "input": {
+      "place": {
+        "place_id": "gn-738927",
+        "name": "Tekirdağ",
+        "country": "Türkiye",
+        "subdivision": "Tekirdağ",
+        "lat": 40.9781,
+        "lon": 27.51101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tekirdağ",
+          "url": "https://en.wikipedia.org/wiki/Tekirda%C4%9F",
+          "text": "Tekirdağ (pronounced [teˈciɾdaː]) is a city in northwestern Turkey. It is the seat of Tekirdağ Province and Süleymanpaşa District. It is located on the north coast of the Sea of Marmara, in the region of East Thrace. The city forms the urban part of the Süleymanpaşa district, with a population of 186,421 in 2022.\nTekirdağ is a commercial centre with a harbour for agricultural products (the harbour is being expanded to accommodate a new rail link to the main freight line through Thrace). It is also home to Martas and the BOTAŞ Terminal, both of them important for trade activities in the Marmara Region. The town's best known product remains Tekirdağ rakı although it is also known for its cherries, celebrated with a festival every June.\nThe proximity of the Greek and Bulgarian borders means that there are honorary consulates for both countries in Tekirdağ.\nFerries from Tekirdağ sail to the nearby Marmara Islands during the summer.\nThe nearest airport is Tekirdağ Çorlu Airport (TEQ) although there are many more flights to Istanbul Airport (IST)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "tekirdag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 490,
+    "attempt": 484,
+    "place_id": "gn-890422",
+    "input": {
+      "place": {
+        "place_id": "gn-890422",
+        "name": "Gweru",
+        "country": "Zimbabwe",
+        "subdivision": "Midlands Province",
+        "lat": -19.45,
+        "lon": 29.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gweru",
+          "url": "https://en.wikipedia.org/wiki/Gweru",
+          "text": "Gweru, historically known as Gwelo, is the capital city of Zimbabwe's Midlands Province. Founded in 1894 as a military outpost by Leander Starr Jameson. the settlement grew from an area originally called \"The Steep Place\" by the Ndebele people, a reference to the high banks of the Gweru River. It achieved municipal status in 1914 and was declared a city in 1971.\nAs of the 2022 Zimbabwe census, Gweru has a population of 121,712 in the Rural district and 161,292 in the Urban district. The city serves as a regional hub for agriculture, particularly beef cattle ranching, crop farming and commercial gardening for export. In addition to its economic role, Gweru is an educational centre home to institutions such as Midlands State University, Mkoba Teachers College and Gweru Polytechnic. The city is nicknamed the City of Progress."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "gweru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 491,
+    "attempt": 485,
+    "place_id": "gn-1183880",
+    "input": {
+      "place": {
+        "place_id": "gn-1183880",
+        "name": "Bahawalpur",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 29.39779,
+        "lon": 71.6752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bahawalpur",
+          "url": "https://en.wikipedia.org/wiki/Bahawalpur",
+          "text": "Bahawalpur (Urdu: بہاول پور; Urdu pronunciation: [bəɦɑːwəlˈpuːɾ]) is a city in Punjab, Pakistan. It is the 13th most populous city of Pakistan and 8th most populous of Punjab. Bahawalpur is the capital of Bahawalpur Division.\nFounded in 1748 by the Daudpotra family of Sindh, Bahawalpur was the capital of the former princely state of Bahawalpur, ruled by the Nawabs of Bahawalpur until 1955. The Nawabs left a rich architectural legacy, and Bahawalpur is known for its monuments dating from that period. The city lies at the edge of the Cholistan Desert, and serves as the gateway to the nearby Lal Suhanra National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "bahawalpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 492,
+    "attempt": 486,
+    "place_id": "gn-1276070",
+    "input": {
+      "place": {
+        "place_id": "gn-1276070",
+        "name": "Bathinda",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.20747,
+        "lon": 74.93893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathinda",
+          "url": "https://en.wikipedia.org/wiki/Bathinda",
+          "text": "Bathinda (Punjabi pronunciation: [bəʈʰɪ˩˥ɳɖä]) is a city and municipal corporation in Punjab, India. The city is the administrative headquarters of Bathinda district. It is located in northwestern India in the Malwa region, 227 km (141 mi) west of the capital city of Chandigarh and is the fifth largest city of Punjab. It is the second cleanest city in Punjab after Mohali.\nBathinda is home to the Maharaja Ranjit Singh Punjab Technical University, Central University of Punjab and AIIMS Bathinda. The city is also home to two modern thermal power plants, Guru Nanak Dev Thermal Plant and Guru Hargobind Thermal Plant at Lehra Mohabbat. Also located in the city is a fertiliser plant, two cement plants (Ambuja Cements and UltraTech Cement Limited), a large army cantonment, an air force station, a zoo, and a historic Qila Mubarak fort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "bathinda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 493,
+    "attempt": 487,
+    "place_id": "gn-1502026",
+    "input": {
+      "place": {
+        "place_id": "gn-1502026",
+        "name": "Krasnoyarsk",
+        "country": "Russia",
+        "subdivision": "Krasnoyarsk Krai",
+        "lat": 56.03742,
+        "lon": 92.93136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krasnoyarsk",
+          "url": "https://en.wikipedia.org/wiki/Krasnoyarsk",
+          "text": "Krasnoyarsk is the largest city and administrative centre of Krasnoyarsk Krai, Russia. It is situated along the Yenisey River, and is the second-largest city in Siberia after Novosibirsk, with a population of over 1.1 million. Krasnoyarsk is an important junction of the renowned Trans-Siberian Railway, and is one of the largest producers of aluminum in the country. The city is known for its natural landscape; author Anton Chekhov judged Krasnoyarsk to be the most beautiful city in Siberia. The Stolby Nature Sanctuary is located 10km south of the city. Krasnoyarsk is a major educational centre in Siberia, and hosts the Siberian Federal University. In 2019, Krasnoyarsk was the host city of the 2019 Winter Universiade, the third hosted in Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "krasnoyarsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 494,
+    "attempt": 488,
+    "place_id": "gn-1712531",
+    "input": {
+      "place": {
+        "place_id": "gn-1712531",
+        "name": "Guiguinto",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.83333,
+        "lon": 120.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guiguinto",
+          "url": "https://en.wikipedia.org/wiki/Guiguinto",
+          "text": "Guiguinto, officially the Municipality of Guiguinto (Tagalog: Bayan ng Guiguinto),  is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 118,173 people.\nIt is the birthplace of composer Constancio de Guzman, known for writing songs like \"Maalaala Mo Kaya\". It also houses the Immaculate Conception Seminary, a Diocesan Seminary of the Diocese of Malolos located in barangay Tabe. The appellation “Guiguinto” literally translates to “Gold” (ginto for Tagalog, gintu for Kapampangan) for the early conquistadores came and saw this town on a harvest season when it lushes in golden rice stalks against the sun."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "guiguinto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 495,
+    "attempt": 489,
+    "place_id": "gn-1732750",
+    "input": {
+      "place": {
+        "place_id": "gn-1732750",
+        "name": "Masai",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.4907,
+        "lon": 103.8788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Masai, Johor",
+          "url": "https://en.wikipedia.org/wiki/Masai,_Johor",
+          "text": "Masai is an area in Pasir Gudang, Johor Bahru District, Johor, Malaysia, and is the oldest neighbourhood of the city of Johor Bahru.  It is located 25 km (15.53 mi) from the Johor Bahru city centre. Masai is located on Jalan Masai Lama (Johor state route J10) which leads to Kong Kong, a fishing village along Johor River. It is also accessible via the Pasir Gudang Highway.\nMany pre-war buildings are still well preserved. Masai, like many of the towns in the Johor Bahru district, catered to the rural population of farmers and rubber plantation workers throughout the early and mid 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "masai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 496,
+    "attempt": 490,
+    "place_id": "gn-1860672",
+    "input": {
+      "place": {
+        "place_id": "gn-1860672",
+        "name": "Kamakura",
+        "country": "Japan",
+        "subdivision": "Kanagawa",
+        "lat": 35.31085,
+        "lon": 139.54698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamakura",
+          "url": "https://en.wikipedia.org/wiki/Kamakura",
+          "text": "Kamakura (鎌倉, Kamakura; [ka̠ma̠kɯ̟ɾa̠] ), officially Kamakura City (鎌倉市, Kamakura-shi), is a city of Kanagawa Prefecture in Japan. It is located in the Kantō region on the island of Honshu. The city has an estimated population of 172,929 (1 September 2020) and a population density of 4,359 people per km2 over the total area of 39.67 km2 (15.32 sq mi). Kamakura was designated as a city on 3 November 1939.\nKamakura was Japan's de facto capital when it was the seat of the Kamakura shogunate from 1185 to 1333, established by Minamoto no Yoritomo. It was the first military government in Japan's history. After the downfall of the shogunate, Kamakura saw a temporary decline. However, during the Edo period, it regained popularity as a tourist destination among the townspeople of Edo. Despite suffering significant losses of historical and cultural assets due to the Great Kantō Earthquake in 1923, Kamakura continues to be one of the major tourist attractions in the Kantō region, known for its historical landmarks such as Tsurugaoka Hachimangū and the Great Buddha of Kamakura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "kamakura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 497,
+    "attempt": 491,
+    "place_id": "gn-2346615",
+    "input": {
+      "place": {
+        "place_id": "gn-2346615",
+        "name": "Buguma",
+        "country": "Nigeria",
+        "subdivision": "Rivers State",
+        "lat": 4.73614,
+        "lon": 6.86236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buguma",
+          "url": "https://en.wikipedia.org/wiki/Buguma",
+          "text": "Buguma () is a large town in Rivers State, Nigeria. It is the headquarters of the Asari-Toru Local Government Area and base of the Kalabari Kingdom, a Nigerian traditional state.\nThe town has an official post office and a big set of commercial fish ponds set up by the state government. The current mayor, popularly addressed as chairman, of the LGA, which Buguma City is the headquarters, is Hon. Onengiyeofori George \nIt is also home to the great King Amachree of the Kalabari kingdom.\nIn 1983, Buguma was designated a city by the Government of Melford Okilo and that status subsists to date."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "buguma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 498,
+    "attempt": 492,
+    "place_id": "gn-350203",
+    "input": {
+      "place": {
+        "place_id": "gn-350203",
+        "name": "Rosetta",
+        "country": "Egypt",
+        "subdivision": "Beheira",
+        "lat": 31.39951,
+        "lon": 30.41718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosetta",
+          "url": "https://en.wikipedia.org/wiki/Rosetta",
+          "text": "Rosetta ( roh-ZET-ə) or Rashid (Arabic: رشيد, romanized: Rašīd, IPA: [ɾɑˈʃiːd]; Coptic: ϯⲣⲁϣⲓⲧ, romanized: ti-Rashit) is a port city of the Nile Delta, 65 km (40 mi) east of Alexandria, in Egypt's Beheira governorate. The Rosetta Stone was discovered in nearby Fort Julien in 1799.\nFounded around the 9th century on the site of the ancient town of Bolbitine, Rosetta boomed with the decline of Alexandria following the Ottoman conquest of Egypt in 1517, only to wane in importance after Alexandria's revival. During the 19th century, it was a popular British tourist destination, known for its Ottoman mansions, citrus groves and relative cleanliness."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "rosetta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 499,
+    "attempt": 493,
+    "place_id": "gn-81302",
+    "input": {
+      "place": {
+        "place_id": "gn-81302",
+        "name": "Tobruk",
+        "country": "Libya",
+        "subdivision": "Al Butnan",
+        "lat": 32.08963,
+        "lon": 23.95385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tobruk",
+          "url": "https://en.wikipedia.org/wiki/Tobruk",
+          "text": "Tobruk ( tə-BRUUK, toh-BRUUK; Arabic: طبرق, romanized: Ṭubruq; Italian: Tobruch) is a port city on Libya's eastern Mediterranean coast, near the border with Egypt. It is the capital of the Butnan District (formerly Tobruk District) and has a population of 120,000 (2011 est.).\n\nTobruk was the site of an ancient Greek colony and, later, of a Roman fortress guarding the frontier of Cyrenaica. Over the centuries, Tobruk also served as a waystation along the coastal caravan route. By 1911, Tobruk had become an Italian military post. \nDuring World War II, Allied forces, mainly the Australian 6th Division, took Tobruk on 22 January 1941. The Australian 9th Division (\"The Rats of Tobruk\") pulled back to Tobruk to avoid encirclement after actions at Er Regima and Mechili and reached Tobruk on 9 April 1941. There prolonged fighting followed, against  a siege by German and Italian forces.\nAlthough the siege was lifted by Operation Crusader in November 1941, a renewed offensive by Axis forces under Erwin Rommel the following year resulted in Tobruk being captured in June 1942. It was held by the Axis forces until November 1942, when it was recaptured by the Allies. \nRebuilt after World War II, Tobruk was later expanded during the 1960s to include a port terminal linked by an oil pipeline to the Sarir oil field.\nKing Idris of Libya had his palace at Bab Zaytun. Tobruk was traditionally a stronghold of the Senussi royal dynasty and one of the first to rebel against Muammar Gaddafi in the Arab Spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "tobruk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 500,
+    "attempt": 494,
+    "place_id": "gn-952747",
+    "input": {
+      "place": {
+        "place_id": "gn-952747",
+        "name": "Standerton",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -26.93366,
+        "lon": 29.24152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Standerton",
+          "url": "https://en.wikipedia.org/wiki/Standerton",
+          "text": "Standerton is a large commercial and agricultural town lying on the banks of the Vaal River in Mpumalanga, South Africa, which specialises in cattle, dairy, maize and poultry farming. The town was established in 1876 and named after Boer leader Commandant Adriaan H. Stander, the original owner of the farm where the town was built. During the First Boer War a British garrison in the town was besieged by the Boers for three months. General Jan Smuts won this seat during elections and went on to assist in setting up the League of Nations. Standerton is the seat of the Lekwa Local Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "standerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 501,
+    "attempt": 495,
+    "place_id": "gn-1718722",
+    "input": {
+      "place": {
+        "place_id": "gn-1718722",
+        "name": "Capas",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.33117,
+        "lon": 120.5898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capas",
+          "url": "https://en.wikipedia.org/wiki/Capas",
+          "text": "Capas, officially the Municipality of Capas (Kapampangan: Balen ning Capas;  \nTagalog: Bayan ng Capas), is a municipality in the province of Tarlac, Philippines. According to the 2024 census, it has a population of 162,724 people.\nIt is one of the richest towns in the province. The town also consists of numerous subdivisions and exclusive villages.\nCapas is known as the “Tourism Capital of Tarlac.\" Apart from being known as the final site of the infamous Bataan Death March, it is also known for Mount Pinatubo treks, where thousands of mountaineers and visitors go. The town has some industrial factories like the PilMiCo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "capas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 502,
+    "attempt": 496,
+    "place_id": "gn-2395914",
+    "input": {
+      "place": {
+        "place_id": "gn-2395914",
+        "name": "Abomey-Calavi",
+        "country": "Benin",
+        "subdivision": "Atlantique",
+        "lat": 6.44852,
+        "lon": 2.35566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abomey-Calavi",
+          "url": "https://en.wikipedia.org/wiki/Abomey-Calavi",
+          "text": "Abomey-Calavi [a.bɔ.mɛ.ka.la.vi] is a city, arrondissement, and commune located in the Atlantique Department of Benin. It is now essentially a suburb of Cotonou and at its closest it begins approximately 18 km from the city centre of Cotonou. The main cities of the commune are Abomey-Calavi itself and Godomey to the south. The commune covers an area of 650 square kilometres and as at the May 2013 Census had a population of 655,965 people. Projected to be the eleventh fastest growing city on the African continent between 2020 and 2025, with a 5.27% growth.\nThe city is home to a constituent monarchy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "abomey calavi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abomey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calavi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 503,
+    "attempt": 497,
+    "place_id": "gn-3674453",
+    "input": {
+      "place": {
+        "place_id": "gn-3674453",
+        "name": "Montería",
+        "country": "Colombia",
+        "subdivision": "Córdoba",
+        "lat": 8.75081,
+        "lon": -75.87823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montería",
+          "url": "https://en.wikipedia.org/wiki/Monter%C3%ADa",
+          "text": "Montería (Spanish pronunciation: [monteˈɾi.a]) is a municipality and city located in northern Colombia and the capital of the Department of Córdoba. The city is located 50 km (31 mi) away from the Caribbean sea, by the Sinú River. The city and region are known for their distinct cultural heritages, which include a blend of mainly colonial Spanish descendants, Indigenous Zenú peoples, Crypto-Jews, and more recently, Middle East immigrants. The city is home to the Sombrero Vueltiao, a national symbol; and is the home of Porro folklore music. The city has an inland seaport connected to the Caribbean Sea by the Sinú River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "monteria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 504,
+    "attempt": 498,
+    "place_id": "gn-4719457",
+    "input": {
+      "place": {
+        "place_id": "gn-4719457",
+        "name": "Plano",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.01984,
+        "lon": -96.69889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plano, Texas",
+          "url": "https://en.wikipedia.org/wiki/Plano,_Texas",
+          "text": "Plano ( PLAY-noh; Spanish for 'flat surface') is a city in the U.S. state of Texas, where it is the largest city in Collin County. A small portion of Plano is located in Denton County. Plano is one of the principal suburbs of the Dallas–Fort Worth metroplex. With a population of 285,494 at the 2020 census, it is the ninth most-populous city in Texas, and, respectively, the 74th most populous city in the United States.\nPlano serves as an important hub of the economy of Dallas. It is home to the headquarters of Frito-Lay, JCPenney, Pizza Hut, and Toyota Motor North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "plano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 505,
+    "attempt": 499,
+    "place_id": "gn-5352423",
+    "input": {
+      "place": {
+        "place_id": "gn-5352423",
+        "name": "Glendale",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.14251,
+        "lon": -118.25508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glendale, California",
+          "url": "https://en.wikipedia.org/wiki/Glendale,_California",
+          "text": "Glendale is a city located primarily in the Verdugo Mountains region, with a small portion in the San Fernando Valley of Los Angeles County, in the U.S. state of California. It is located about 10 miles (16 km) north of Downtown Los Angeles.\nAs of 2025, Glendale had a Census-estimated population of 187,823 making it the 4th-most populous city in Los Angeles County and the 24th-most populous city in California.\nGlendale—along with neighboring Burbank and nearby Hollywood—has served as a major production center for the American film industry, and especially animation, and is home to Disneytoon Studios, Marvel Animation, and DreamWorks Animation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "glendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 506,
+    "attempt": 500,
+    "place_id": "gn-6094578",
+    "input": {
+      "place": {
+        "place_id": "gn-6094578",
+        "name": "Oshawa",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.90012,
+        "lon": -78.84957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oshawa",
+          "url": "https://en.wikipedia.org/wiki/Oshawa",
+          "text": "Oshawa is a city in Ontario, Canada, on the Lake Ontario shoreline. It lies in Southern Ontario, approximately 60 kilometres (37 mi) east of downtown Toronto. It is commonly viewed as the eastern anchor of the Greater Toronto Area and of the Golden Horseshoe. It is the largest municipality in the Regional Municipality of Durham. The name Oshawa originates from the Ojibwa term aazhawe, meaning \"the crossing place\" or just \"a cross\".\nFounded in 1876 as the McLaughlin Carriage Company by Robert McLaughlin, and then McLaughlin Motors Ltd by his son, Sam, General Motors of Canada's headquarters are located in the city. The automotive industry was the inspiration for Oshawa's previous mottos: \"The City that Motovates Canada\", and \"The City in Motion\". The lavish home of the automotive company's founder, Parkwood Estate, is also located in the city.\nOnce recognized as the sole \"Automotive Capital of Canada\", Oshawa is now considered to be an education and health sciences hub, although General Motors still plays a significant role in the city's economy. After having been closed for about two  years, the Oshawa car assembly plant reopened in 2021, when the first Canadian-made Chevy Silverado was completed. GM invested C$1.3 billion into plant retooling. Prior to reopening, GM said that the site would continue to be used for autonomous vehicle testing and production of vehicle stampings and other sub-assemblies.\nPost-secondary institutions and a satellite family medicine program in Oshawa include Durham College, Trent University Durham, Ontario Tech University, and Queen's University Lakeridge Health MD Family Medicine Program. Key labour force sectors include healthcare, retail trade, and educational services. In 2016, Oshawa was the sixth best place in Canada to find full-time employment based on data from StatsCan.\nDowntown Oshawa is identified as an Urban Growth Centre in the Government of Ontario's Places to Grow initiative. More than 5,000 people work and more than 2,400 university students study in the downtown core. The downtown is a prominent centre for entertainment and sporting events (Regent Theatre and Tribute Communities Centre), food (50+ restaurants and cafes), and culture (The Robert McLaughlin Gallery and Canadian Automotive Museum). Oshawa is home to a Regional Innovation Centre and offers start-up facilities for entrepreneurs and small businesses. Co-working offices are also located in the downtown area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "oshawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

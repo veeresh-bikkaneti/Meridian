@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 7753,
+    "attempt": 7701,
+    "place_id": "gn-3801621",
+    "input": {
+      "place": {
+        "place_id": "gn-3801621",
+        "name": "San Antonino Castillo Velasco",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.80144,
+        "lon": -96.68262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonino Castillo Velasco",
+          "url": "https://en.wikipedia.org/wiki/San_Antonino_Castillo_Velasco",
+          "text": "San Antonino Castillo Velasco is a town and municipality located south of the city of Oaxaca, in the Mexican state of Oaxaca. \nIt is part of the Ocotlán District in the south of the Valles Centrales Region\nIts population is less than 5,000, but it was the scene of a number of violent confrontations in the 2000s.  The town is known for its crafts, especially fine embroidery and items made with a flower known as flor inmortal (\"immortal flower\"), so called because it does not lose its color when it is dried.  The name San Antonino is in honor of Anthony of Padua, who is the town's patron saint.   “Castillo Velasco” (sometimes “Castillo Velazco”) was added  in honor of José María Castillo Velasco, who was born here in 1820 and played important roles in the Reform War and French Intervention in Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "san antonino castillo velasco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonino",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castillo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velasco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7754,
+    "attempt": 7702,
+    "place_id": "gn-6692734",
+    "input": {
+      "place": {
+        "place_id": "gn-6692734",
+        "name": "Pennington",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -30.36847,
+        "lon": 30.7025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pennington, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Pennington,_South_Africa",
+          "text": "Pennington is a small coastal town on the south coast of KwaZulu-Natal, South Africa. Apart from a large sugarcane and dairy farming industry, it also hosts scores of holiday makers who flock to the seaside during the December holidays.\n\nIt is named after an English family named Pennington, who began farming here in the late 19th century. Sir Frank Reynolds, the sugar magnate, bought part of the farm and developed a country home which he called Umdoni Park after the mdoni (water myrtle) trees in the area. Sir Frank built a seaside residence for South African prime ministers as a sign of his admiration for the first premier of the Union, General Louis Botha. King George VI of Britain was offered use of this home when his health was failing in 1952, and was planning to visit it just before he died.\nThe town is set on a hillside looking down onto the Indian Ocean.\nThe railway runs between the town and the beach (as it does all the way along this coast from Durban to Port Shepstone), but trains are few and cause little problem for visitors.\nThe area is well served with roads as the N2 motorway runs down from Durban, connecting with the airport and passing Pennington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "pennington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7755,
+    "attempt": 7703,
+    "place_id": "gn-2144127",
+    "input": {
+      "place": {
+        "place_id": "gn-2144127",
+        "name": "Wentworth Falls",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.71033,
+        "lon": 150.37534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wentworth Falls, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Wentworth_Falls,_New_South_Wales",
+          "text": "Wentworth Falls (postcode: 2782) is a town in the Blue Mountains region of New South Wales, situated approximately 100 kilometres (62 mi) west of the Sydney central business district, and about 8 kilometres (5.0 mi) east of Katoomba, Australia on the Great Western Highway, with a Wentworth Falls railway station on the Main Western line. The town is at an elevation of 867 metres (2,844 ft) AHD. At the 2016 census, Wentworth Falls had a population of 6,076.\nWentworth Falls hosts several festivals and events, including the Wentworth Falls Autumn Festival in April, the Wentworth Falls Public School Art and Craft Show in October and the Task Force 72 Annual Regatta in either November or December. Wentworth Falls is home to WFCC or Wentworth Falls Cricket Club. Established in 1892 it is one of the Blue Mountains' longest serving cricket clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "wentworth falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wentworth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7756,
+    "attempt": 7704,
+    "place_id": "gn-2172618",
+    "input": {
+      "place": {
+        "place_id": "gn-2172618",
+        "name": "Campbell",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.28907,
+        "lon": 149.15382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campbell, Australian Capital Territory",
+          "url": "https://en.wikipedia.org/wiki/Campbell,_Australian_Capital_Territory",
+          "text": "Campbell is a suburb of Canberra, Australian Capital Territory, Australia. Covering an area to the South East of the central business district, Campbell sits at the base of Mount Ainslie and is bounded to the south east by the Mount Pleasant Nature Reserve. At the 2021 census, Campbell had a population of 6,564 people.\nThe suburb of Campbell is named after Robert Campbell, the owner of Duntroon station on which Campbell is now located. Many buildings built by Robert Campbell and his family are still standing around Canberra, including Blundell's Cottage, St John the Baptist Church, Reid, Duntroon House (now part of RMC Duntroon) and Yarralumla House (now Government House).\nLocated in Campbell are the Australian War Memorial, Royal Military College, Duntroon, the Australian Defence Force Academy, and the former corporate headquarters of the CSIRO, which is awaiting demolition and redevelopment.  Also with addresses in the suburb are the 'Ainslie Village' accommodation centre for people with special needs and the Campbell Park Offices.\nSchools located in the suburb include Campbell High School, Saint Thomas More's Primary School, Campbell Primary School and Canberra Grammar Northside Infant School.\nDaley Park is a small park located on Ferdinand Street featuring mature native trees, open lawn areas, and a small playground. The park is named in honour of Geoff Daley, beloved member of the community and a lifelong resident of Campbell."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "campbell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7757,
+    "attempt": 7705,
+    "place_id": "gn-3008020",
+    "input": {
+      "place": {
+        "place_id": "gn-3008020",
+        "name": "Lamotte-Beuvron",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.602,
+        "lon": 2.02837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lamotte-Beuvron",
+          "url": "https://en.wikipedia.org/wiki/Lamotte-Beuvron",
+          "text": "Lamotte-Beuvron (French pronunciation: [lamɔt bøvʁɔ̃]) is a town and commune of about 5000 inhabitants in the Loir-et-Cher department of Centre-Val de Loire, France.\nThe French Federal Equestrian Park, one of the largest in Europe, is based in Lamotte-Beuvron. Each July, the Federal Equestrian Park hosts the French Pony Championship, in which more than 15,000 participants compete. It also houses the permanent offices of the French Equestrian Federation and, since 2009, the Bureau of the National Association of the French Riding Pony.\nThe town is the birthplace of the Tarte Tatin dessert, an upside-down apple pastry named after the Tatin sisters, who created it at their Hôtel Tatin, across the street from the Lamotte-Beuvron railway station.\nLamotte-Beuvron's motto is \"Hill yesterday, Mountain tomorrow\" (« Motte hier, Mont demain ») which expresses the confidence of the residents in the expansion of the city.\nLamotte-Beuvron is the \"sister city\" of Paris, Kentucky in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "lamotte beuvron",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lamotte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beuvron",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7758,
+    "attempt": 7706,
+    "place_id": "gn-3362482",
+    "input": {
+      "place": {
+        "place_id": "gn-3362482",
+        "name": "Riebeek West",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.35045,
+        "lon": 18.87019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riebeek West",
+          "url": "https://en.wikipedia.org/wiki/Riebeek_West",
+          "text": "Riebeek West (Afrikaans: Riebeek-Wes) is a small town situated about 75 km north-east of Cape Town and 5 km north of its twin town Riebeek Kasteel in the Swartland area of the Western Cape, South Africa.\n\nThe Riebeek Valley would have been known to indigenous Khoi people, but was first described by a party of Cape Dutch explorers under the leadership of Pieter Cruythoff in 1661. The mountain, Riebeeck's Kasteel Berg (Riebeeck's Castle Mountain) was named after then Cape commander Jan van Riebeeck by this expedition and the settlements along the eastern slope of the mountain later derived their names from it.  In translation from Dutch to Afrikaans the letter c in Riebeeck was dropped.  The first settlers arrived in the area in the early 18th century.  Riebeek West was established as a parish of the Dutch Reformed Church in 1858.   \nRiebeek West was the birthplace of two successive South African prime ministers.  General Jan Christiaan Smuts was born on the farm Bovenplaats, two km north of Riebeek West on 24 May 1870. He served two terms as prime minister, from 1920 to 1924 as head of the South African Party and again from 1939 to 1948 as head of the United Party. With the general election of 1948, Riebeek West became a political hotbed with the leaders of the two main contesting parties both being from the village.  Daniel François Malan was born on the farm Allesverloren, which abuts the town on the southern side, on 22 May 1874.  In 1948 his National Party defeated the incumbent United Party under Smuts and Malan became prime minister until 1954.\nToday there is a cement factory on Bovenplaats, but the house in which Smuts grew up is preserved as a national monument.  Allesverloren has become a renowned wine estate with a restaurant.\nThe Riebeek Valley is known for its wheat, wines, and more recently, olives. It is popular for tourism, arts and crafts, and retirement.  The Olive Festival is held annually early in May and the Berg River Canoe Marathon passes there in July. \nThe form Riebeek-Wes is preferred for official purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "riebeek west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "riebeek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7759,
+    "attempt": 7707,
+    "place_id": "gn-4354797",
+    "input": {
+      "place": {
+        "place_id": "gn-4354797",
+        "name": "Fells Point",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28261,
+        "lon": -76.5933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fells Point",
+          "url": "https://en.wikipedia.org/wiki/Fells_Point",
+          "text": "Fells Point is a historic waterfront neighborhood in southeastern Baltimore, Maryland, established around 1763 along the north shore of the Baltimore Harbor and the Northwest Branch of the Patapsco River. Located 1.5 miles east of Baltimore's downtown central business district, Fells Point is known for its maritime history and character.\nThe neighborhood has numerous antique, music, and other stores, restaurants, coffee bars, a municipal markethouse with individual stalls, and over 120 pubs.\nAcross its 250-year history, Fells Point has hosted large immigrant communities, including Irish, Germans, Jews, Poles, Ukrainians, Russians, Czechs, and Slovaks. Since the 1970s, middle- to upper-middle-income residents have increasingly adopted the area, restoring and preserving historic homes and businesses. Sometimes now called \"Spanish Town,\" Upper Fells Point to the north along Broadway has gained a sizable Latino community, primarily Mexican and Central American immigrants, mostly since the 1980s.\nThis Fells Point waterfront is an upscale residential area and tourist destination featuring first rate hotels and restaurants.  A short walk from the Inner Harbor, the neighborhood can be reached by foot, water taxi barges, bus or car. It is one of several areas in and around Baltimore listed on the National Register of Historic Places, (maintained by the National Park Service), the first designated from Maryland, and is one of the first registered historic districts in the United States to combine two separate waterfront communities (along with Federal Hill to the southwest across the Patapsco River and the Harbor on the \"Old South Baltimore\" peninsula of \"Whetstone Point\" at Fort McHenry)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "fells point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fells",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7760,
+    "attempt": 7708,
+    "place_id": "gn-4888296",
+    "input": {
+      "place": {
+        "place_id": "gn-4888296",
+        "name": "Coal Valley",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.42865,
+        "lon": -90.46096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coal Valley, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Coal_Valley,_Illinois",
+          "text": "The village of Coal Valley is located in both Rock Island County and Henry County in the U.S. state of Illinois. The population was 3,873 at the time of the 2020 census, up from 3,743 at the 2010 census. It is mostly residential, housing families who work in or out of the greater Quad Cities Area and is considered a suburb. The students of the Rock Island County part of Coal Valley attend the Moline-Coal Valley School District, and in the Henry County portion, Orion Community Unit School District 223\nOakwood Country Club, located in Coal Valley, was host of the Hardee's Golf Classic from 1986 through 1994. The tournament was later renamed to \"John Deere Classic\" once sponsorship was taken over by Deere & Company. The tournament is now hosted at the TPC at Deere Run course in Silvis, Illinois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "coal valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7761,
+    "attempt": 7709,
+    "place_id": "gn-5101300",
+    "input": {
+      "place": {
+        "place_id": "gn-5101300",
+        "name": "Monmouth Beach",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.33039,
+        "lon": -73.98153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monmouth Beach, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Monmouth_Beach,_New_Jersey",
+          "text": "Monmouth Beach is a borough in Monmouth County, in the U.S. state of New Jersey, situated on the Jersey Shore in Central Jersey. As of the 2020 United States census, the borough's population was 3,174, a decrease of 105 (−3.2%) from the 2010 census count of 3,279, which in turn had reflected a decline of 316 (−8.8%) from the 3,595 counted at the 2000 census.\nThe area was first settled in 1668 and grew into a community with the arrival of the Long Branch and Sea Shore Railroad. Many early residents were professional fishermen with Norwegian backgrounds.\nMonmouth Beach was incorporated from portions of Ocean Township as a borough on March 9, 1906, by an act of the New Jersey Legislature.\nIn 2023, the average home price according to Zillow was $974,409, which was up by 1.4% from the previous year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "monmouth beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "monmouth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7762,
+    "attempt": 7710,
+    "place_id": "gn-6087704",
+    "input": {
+      "place": {
+        "place_id": "gn-6087704",
+        "name": "New Maryland",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.89662,
+        "lon": -66.68225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Maryland, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/New_Maryland,_New_Brunswick",
+          "text": "New Maryland is a village and suburban bedroom community of Fredericton in central New Brunswick, Canada; located directly south of Fredericton, south of Route 2 and Route 101. As of 2021, the population was 4,153, which means it is large enough to become a town. New Maryland, along with having one of the highest average household networth has a median household income of over $116,000, the highest of any municipality in New Brunswick and across all of Atlantic Canada.\nNew Maryland was officially incorporated as a village on June 1, 1991. Today the village is home to many businesses including a pub, pharmacy, post office, hairdressers, a vehicle repair shop, and two gas stations along with several more small businesses. New Maryland is also home to New Maryland Elementary School and multiple daycares which serve the village and its outlying areas. Virtually all of the residents now commute to Fredericton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "new maryland",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maryland",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7763,
+    "attempt": 7711,
+    "place_id": "gn-8348409",
+    "input": {
+      "place": {
+        "place_id": "gn-8348409",
+        "name": "Abbotsbury",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.8701,
+        "lon": 150.86119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbotsbury, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Abbotsbury,_New_South_Wales",
+          "text": "Abbotsbury is a suburb of Sydney, New South Wales, Australia 39 kilometres west of the Sydney central business district in the local government area of the City of Fairfield. Abbotsbury is part of the Greater Western Sydney region. Most of the suburb's estates were built in the late 1980s and early 1990s, although a few acres of undeveloped land in the north-west area was subdivided and developed in the early 2010s. \nThe western border of the suburb is delineated by a line of pine trees, which gives privacy to the homes backing onto the farmlands. Abbotsbury is best known for Calmsley Hill City Farm, which is located on the western side of the suburb. Abbotsbury is a leafy suburb due to the presence of Western Sydney Regional Park (part of Western Sydney Parklands), which features many picnic areas and shade trees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "abbotsbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7764,
+    "attempt": 7712,
+    "place_id": "gn-952523",
+    "input": {
+      "place": {
+        "place_id": "gn-952523",
+        "name": "Stella",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -26.55298,
+        "lon": 24.86683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stella, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Stella,_South_Africa",
+          "text": "Stella is a cattle farming town situated in North West Province of South Africa between Vryburg and Mafikeng.\nThe large salt pan on the outskirts of town, especially well known for the number of lions in the area, was visited by a number of early European travellers, including David Livingstone and Robert Moffat.\nThe first white people settled in the area in 1882, and the following year a fight broke out between the baTlhaping and the Korana under David Mossweu. A large number of white mercenaries fought on both sides of the conflict, and when the war ended they were given land to farm in return for their services. Under their leader, Van Niekerk, they proclaimed their area the Republic of Stellaland, after a comet which had been visible while the fighting was going on. Electricity was introduced only in 1973.\nThe Stella Beesfees (Cattle Festival) is held every year during October. The town has a high school, but this also houses the nursery and primary pupils."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "stella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7765,
+    "attempt": 7713,
+    "place_id": "gn-9985076",
+    "input": {
+      "place": {
+        "place_id": "gn-9985076",
+        "name": "Bedford",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.91132,
+        "lon": 115.8892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedford, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bedford,_Western_Australia",
+          "text": "Bedford is a suburb 6 kilometres (4 mi) north-east of the central business district (CBD) of Perth, the capital of Western Australia. Named after Frederick Bedford, the Governor of Western Australia from 1903 to 1909, the suburb is within the City of Bayswater local government area. It is predominantly a low density residential suburb consisting of single-family detached homes, with clusters of commercial buildings along Beaufort Street, Grand Promenade and Walter Road.\nBefore European settlement, the area was inhabited by the Mooro group of the Whadjuk Noongar people. The first major developments for the suburb occurred in the 1920s, when the extension of Beaufort Street and its associated tram service into the area triggered housing construction. Bedford Park was gazetted as a townsite in 1937, and major growth occurred following World War II, due to developments by the State Housing Commission. Today, Bedford is fully suburbanised.\nMajor roads that travel through or along the edge of the suburb are Beaufort Street, Coode Street, Grand Promenade and Walter Road. Major parks include Beaufort Park, RA Cook Reserve and Grand Promenade Reserve, which are used for various sports including Australian rules football, cricket and soccer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "bedford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7766,
+    "attempt": 7714,
+    "place_id": "gn-2169281",
+    "input": {
+      "place": {
+        "place_id": "gn-2169281",
+        "name": "Daylesford",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.34113,
+        "lon": 144.14256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daylesford, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Daylesford,_Victoria",
+          "text": "Daylesford is a town in the foothills of the Great Dividing Range, within the Shire of Hepburn, Victoria, Australia, approximately 114 kilometres north-west of Melbourne. First established in 1852 as a gold mining town, Daylesford had a population of 2,781 at the 2021 census.\nAs one of Australia's few spa towns, Daylesford is a notable tourist destination. The town's numerous spas, restaurants and galleries are popular alongside the many gardens and country-house-conversion styled bed and breakfasts.\nThe broader area around the town, including Hepburn Springs to the north, is known for its natural spring mineral spas and is the location of over 80 per cent of Australia's effervescent mineral water reserve.\nIt is also the filming location for the third season of The Saddle Club, the twenty first season of The Block and scenes from the 2004 film Love's Brother."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "daylesford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7767,
+    "attempt": 7715,
+    "place_id": "gn-3002271",
+    "input": {
+      "place": {
+        "place_id": "gn-3002271",
+        "name": "Le Rove",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.36987,
+        "lon": 5.25112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Rove",
+          "url": "https://en.wikipedia.org/wiki/Le_Rove",
+          "text": "Le Rove (French pronunciation: [lə ʁɔv]; Provençal: Lo Rove) is a seaside commune in the Bouches-du-Rhône department in the Provence-Alpes-Côte d'Azur region in Southern France.\nIt is located on the Côte Bleue just northwest of Marseille, neighbouring its 16th arrondissement within the larger Aix-Marseille-Provence Metropolis. It consists of a main village at Le Rove which houses the town hall, as well as a variety of hamlets and other settlements.\nThe Rove Tunnel, the world's longest canal tunnel at 7,120 metres (23,360 ft), has its southeastern entrance situated in Marseille near Le Rove, although a sizeable portion crosses the commune underground (from the Mediterranean towards the Étang de Berre), hence its name. It has been out of service since 1963.\nGeorges Rosso (1929–2025), the mayor of Le Rove, was the oldest mayor of any French city, at 93 years of age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "le rove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7768,
+    "attempt": 7716,
+    "place_id": "gn-616824",
+    "input": {
+      "place": {
+        "place_id": "gn-616824",
+        "name": "Balahovit",
+        "country": "Armenia",
+        "subdivision": "Kotayk",
+        "lat": 40.25153,
+        "lon": 44.60828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balahovit",
+          "url": "https://en.wikipedia.org/wiki/Balahovit",
+          "text": "Balahovit (Armenian: Բալահովիտ, also Romanized as Balaovit; formerly until 1968, Mgub, Mekhub, and Mehub) is a village in the Kotayk Province of Armenia. The majority of the early settlers of the village immigrated in 1828-29 from Khoy and Salmast in present-day Iran, while some of the immigrants came from Bulankh. It was renamed Balahovit in 1968 at the request of an Armenian-American group, after one of the eight cantons (gavar) of Sophene in Greater Armenia, of the same name. The community has a school, house of culture, and a first aid station, as well as the site of Yerevan Veterinary Institute's experimental station. Balahovit had a kindergarten, but it was closed in July 2004 due to the deteriorating conditions of the educational facility. The local economy is heavily dependent on agriculture, based primarily on grain farming, orchard cultivation, and cattle-breeding. Balahovit has a small minority of Kurds (including Yazidis) and Russians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "balahovit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7769,
+    "attempt": 7717,
+    "place_id": "gn-2647957",
+    "input": {
+      "place": {
+        "place_id": "gn-2647957",
+        "name": "Greenisland",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.70081,
+        "lon": -5.87479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenisland",
+          "url": "https://en.wikipedia.org/wiki/Greenisland",
+          "text": "Greenisland is a town in County Antrim, Northern Ireland. It lies 7 miles north-east of Belfast and 3 miles south-west of Carrickfergus. The town is on the coast of Belfast Lough and is named after a tiny islet to the west, the Green Island.\nIt is a semi-rural community located at the foot of Carn Hill , upon which stands the Knockagh Monument, a war memorial for those from County Antrim who died in the first and second world wars.\nThe town has two distinct areas, known locally as Upper Greenisland and Lower Greenisland after the upper Station Road and lower Station Road around which two parts are respectively located. Upper Greenisland stretches from Upper Road (B90) to the railway station at the bottom of Upper Station Road, includes Greenisland Primary School and features predominantly middle-class demographics and housing. Lower Greenisland runs from the railway station, down Station Road and ends at Shore Road (part of the A2 road). It features a large, predominantly Protestant working-class housing estate built during the 1950s and 1960s and includes Greenisland Library, Greenisland Community Centre, a number of churches, a small shopping parade at Glassillan Court and Silverstream Primary School. The village in its entirety stretches from the foot of the hill to the shore of Belfast Lough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "greenisland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7770,
+    "attempt": 7718,
+    "place_id": "gn-2651245",
+    "input": {
+      "place": {
+        "place_id": "gn-2651245",
+        "name": "Dingwall",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.59531,
+        "lon": -4.42721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dingwall",
+          "url": "https://en.wikipedia.org/wiki/Dingwall",
+          "text": "Dingwall (Scots: Dingwal, Scottish Gaelic: Inbhir Pheofharain [ˈiɲɪɾʲ ˈfjɔhəɾɛɲ]) is a historic market town and former royal burgh on the Cromarty Firth in Easter Ross in the Highlands of Scotland. It has enjoyed the status of royal burgh since the 13th century, and its local government is the Highland Council. The town has a population of 5,265 in 2022, and though today it lies inland, its topography used to be that of an east-coast harbour. At one time, it was a significant medieval port, a hub of foreign trading and customs collection. Dingwall’s medieval history affirms its status as an important country town and administrative centre, an extension perhaps of its history as a Viking settlement as evidenced by the Norse origin (Þingvǫllr) of its name.\nThe royal burgh is also the site of historic castles and clan skirmishes. Dingwall Castle was once the biggest castle north of Stirling. On the town's present-day outskirts lies Tulloch Castle, parts of which may date back to the 12th century. In 1411 the Battle of Dingwall is said to have taken place between the Clan Mackay and the Clan Donald."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "dingwall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7771,
+    "attempt": 7719,
+    "place_id": "gn-2822939",
+    "input": {
+      "place": {
+        "place_id": "gn-2822939",
+        "name": "Tharandt",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.98525,
+        "lon": 13.58035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tharandt",
+          "url": "https://en.wikipedia.org/wiki/Tharandt",
+          "text": "Tharandt (German: [ˈtaʁant] ) is a municipality in Saxony, Germany, situated on the Weißeritz, 13 km (8.1 mi) southwest of Dresden.\nIt has a Protestant Church and the oldest academy of forestry in Germany, founded as the Royal Saxon Academy of Forestry by Heinrich Cotta in 1811, together with its arboretum, the Forstbotanischer Garten Tharandt. In 2002, a severe flood destroyed many of the academy buildings and the library, including some of its more-than-500-year old books. The academy was rebuilt and today has about 650 students and is famous for its long traditions of educating students from all over the world in (tropical) forestry, resource management and sustainable land use.\nIn the early 20th century, Tharandt was a favorite summer resort of the people of Dresden, one of its principal charms being the magnificent beech woods which surround it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "tharandt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7772,
+    "attempt": 7720,
+    "place_id": "gn-3172208",
+    "input": {
+      "place": {
+        "place_id": "gn-3172208",
+        "name": "Norcia",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 42.79105,
+        "lon": 13.096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norcia",
+          "url": "https://en.wikipedia.org/wiki/Norcia",
+          "text": "Norcia (Italian: [ˈnɔrtʃa]), traditionally known in English by its Latin name of Nursia ( NUR-see-ə, NUR-sh(ee-)ə), is a town and comune (municipality) in the province of Perugia in southeastern Umbria, Italy. \nUnlike many ancient towns, it is located in a wide plain abutting the Monti Sibillini, a subrange of the Apennines with some of its highest peaks, near the Sordo River, a small stream that eventually flows into the Nera. The town is popularly associated with the Valnerina (the valley of the Nera). It is a member of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nThe area is known for its air and scenery, and is a base for mountaineering and hiking. It is also widely known for hunting, especially of the wild boar, and for sausages and ham made from wild boar and pork. In Italian, such products have been named after Norcia, and are known as norcineria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "norcia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

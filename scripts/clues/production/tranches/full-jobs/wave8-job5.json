@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1495,
+    "attempt": 1481,
+    "place_id": "gn-3817746",
+    "input": {
+      "place": {
+        "place_id": "gn-3817746",
+        "name": "Tepexpan",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.61387,
+        "lon": -98.9364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepexpan",
+          "url": "https://en.wikipedia.org/wiki/Tepexpan",
+          "text": "Tepexpan is the largest town in the Acolman municipality in the State of Mexico, Mexico. The population is 102,667. \nOne of the most interesting aspects of this town is the discovery of an early Mesoamerican skeleton commonly referred to as \"Tepexpan man\". Recent research tries to show that the skeleton was not that of a man but that of a woman. The woman was apparently trampled by a raging mastodon around 11,000 BCE. The proposition that Tepexpan Man was a woman has been advanced by one Mexican archaeologist based on DNA analysis. His peers at INAH have not accepted his conclusions and he has not submitted his analysis in a paper for peer review. Thus, until peer review confirms his work one must leave the matter as conjecture. Additional mammoth fossils from the Late Pleistocene show this site the nearby Santa Isabel Ixtapanto be mammoth kill sites. Mammoths were driven into bogs where they were severely slowed and eventually killed with fluted points as early as 9000 BCE or as late as 7000 BCE.   \nTepexpan can be considered one of the most important towns in the municipal region of Acolman.  It has many resources, among these: obsidian and pewter.\nTepexpan has a church named Santa Maria Magdalena, located near the central plaza. It is one oldest  of the region and it was built near the first years of the Spanish conquest.\nIt has five districts:\nAnahuac 1 Sección ( Tepexpan ) \nAnahuac II Sección ( Tepexpan ) \nChimalpa ( Tepexpan ) \nLos Reyes ( Tepexpan ) \nParaje El Faro"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "tepexpan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1496,
+    "attempt": 1482,
+    "place_id": "gn-425378",
+    "input": {
+      "place": {
+        "place_id": "gn-425378",
+        "name": "Bujumbura",
+        "country": "Burundi",
+        "subdivision": "Bujumbura Mairie",
+        "lat": -3.38193,
+        "lon": 29.36142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bujumbura",
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "text": "Bujumbura (French pronunciation: [buʒumbuʁa]; Kirundi pronunciation: [buʒuᵐbuɾa]), formerly Usumbura, is the economic capital, former political capital, largest city and main port of Burundi. It ships most of the country's chief export, coffee, as well as cotton and tin ore. Bujumbura was formerly the country's political capital. In late December 2018, Burundian president Pierre Nkurunziza announced that he would follow through on a 2007 promise to return Gitega its former political capital status, with Bujumbura remaining as economical capital and center of commerce. A vote in the Parliament of Burundi made the change official on 16 January 2019, and as of late 2025, the transition is still ongoing, having been estimated to end in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "bujumbura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1497,
+    "attempt": 1483,
+    "place_id": "gn-4281730",
+    "input": {
+      "place": {
+        "place_id": "gn-4281730",
+        "name": "Wichita",
+        "country": "United States",
+        "subdivision": "Kansas",
+        "lat": 37.69224,
+        "lon": -97.33754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wichita, Kansas",
+          "url": "https://en.wikipedia.org/wiki/Wichita,_Kansas",
+          "text": "Wichita ( , WITCH-ih-taw) is the most populous city in the U.S. state of Kansas and the county seat of Sedgwick County. As of the 2020 census, the population of the city was 397,532, and the Wichita metropolitan area had a population of 647,610. It is located in south-central Kansas along the Arkansas River.\nWichita began as a trading post on the Chisholm Trail in the 1860s and was incorporated as a city in 1870. It became a destination for cattle drives traveling north from Texas to Kansas railroads, earning it the nickname \"Cowtown\".  In 1875, Wyatt Earp served as a police officer in Wichita for about one year before going to Dodge City.\nIn the 1920s and 1930s, businessmen and aeronautical engineers established aircraft manufacturing companies in Wichita, including Beechcraft, Cessna, and Stearman Aircraft. The city became an aircraft production hub known as \"The Air Capital of the World\". Textron Aviation, Learjet, Airbus, and Boeing/Spirit AeroSystems continue to operate design and manufacturing facilities in Wichita, and the city remains a major center of the American aircraft industry. Several airports located within the city of Wichita include McConnell Air Force Base, Colonel James Jabara Airport, and Wichita Dwight D. Eisenhower National Airport, the largest airport in Kansas.\nAs an industrial hub, Wichita is a regional center of culture, media, and trade. It hosts several universities, large museums, theaters, parks, shopping centers, and entertainment venues, most notably Intrust Bank Arena and Century II.  The city's Old Cowtown Museum maintains historical artifacts and exhibits the city's early history.  Wichita State University (WSU) is the third-largest post-secondary institution in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "wichita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1498,
+    "attempt": 1484,
+    "place_id": "gn-5344994",
+    "input": {
+      "place": {
+        "place_id": "gn-5344994",
+        "name": "East Los Angeles",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.0239,
+        "lon": -118.17202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Los Angeles, California",
+          "url": "https://en.wikipedia.org/wiki/East_Los_Angeles,_California",
+          "text": "East Los Angeles, or East L.A., (El Este de Los Angeles in Spanish) is an unincorporated community in the Eastside of Los Angeles County, California, United States. It borders Monterey Park to the northeast; the City of Los Angeles to the north, west, and a small portion to the south. Commerce to the south, and Montebello to the southeast. California State Route 60 and Interstate 710 intersect through the community. According to the United States Census Bureau, East Los Angeles is designated as a census-designated place (CDP) for statistical purposes. The most recent data from the 2020 census reports a population of 118,786, reflecting a 6.1% decrease compared to the 2010 population of 126,496.\nThe concentration of Hispanic/Latino Americans is 95.16 percent, the highest of any large city or census-designated place in the United States outside of Puerto Rico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "east los angeles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angeles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1499,
+    "attempt": 1485,
+    "place_id": "gn-694423",
+    "input": {
+      "place": {
+        "place_id": "gn-694423",
+        "name": "Sevastopol",
+        "country": "Ukraine",
+        "subdivision": "Sevastopol City",
+        "lat": 44.60795,
+        "lon": 33.52134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sevastopol",
+          "url": "https://en.wikipedia.org/wiki/Sevastopol",
+          "text": "Sevastopol ( SEV-ə-STOH-pəl, sə-VAS-tə-pohl), sometimes written Sebastopol, is the largest city in Crimea and a major port on the Black Sea. Due to its strategic location and the navigability of the city's harbours, Sevastopol has been an important port and naval base throughout its history. Since the city's founding by Catherine the Great in 1783, it has been a major base for Russia's Black Sea Fleet. During the Cold War of the 20th century, it was a closed city. The total administrative area is 864 square kilometres (334 sq mi) and includes a significant amount of rural land. The urban population, largely concentrated around Sevastopol Bay, is 479,394, and the total population is 547,820.\nSevastopol, along with the rest of Crimea, is internationally recognised as part of Ukraine, and under the Ukrainian legal framework, it is administratively one of two cities with special status (the other being Kyiv). However, it has been occupied by Russia since 27 February 2014, before Russia annexed Crimea on 18 March 2014 and gave it the status of a federal city of Russia. Both Ukraine and Russia consider the city administratively separate from the Autonomous Republic of Crimea and the Republic of Crimea, respectively. The city's population has an ethnic Russian majority and a substantial minority of Ukrainians.\nSevastopol's unique naval and maritime features have been the basis for a robust economy. The city enjoys mild winters and moderately warm summers, characteristics that help make it a popular seaside resort and tourist destination, mainly for visitors from the former Soviet republics. The city is also an important centre for marine biology research. In particular, the military has studied and trained dolphins in the city for military use since the 1960s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "sevastopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1500,
+    "attempt": 1486,
+    "place_id": "gn-8629640",
+    "input": {
+      "place": {
+        "place_id": "gn-8629640",
+        "name": "Thoothukudi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 8.76735,
+        "lon": 78.13425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thoothukudi",
+          "url": "https://en.wikipedia.org/wiki/Thoothukudi",
+          "text": "Thoothukudi   (formerly called Tuticorin) is a port industrial city in Thoothukudi district in the Indian state of Tamil Nadu. It lies on the Coromandel Coast of the Bay of Bengal. The city is capital and headquarters of the district. According to the Confederation of Indian Industry, Thoothukudi has the second highest Human Development Index in Tamil Nadu, next to Chennai. Thoothukudi City serves as the headquarters of Tamilnad Mercantile Bank Limited, one of the leading private sector banks in India. Major educational establishments in the city include the Government Thoothukudi Medical College, Fisheries College and Research Institute, Tamil Nadu Maritime Academy, V.O. Chidambaram College, Kamaraj College, Anna University (Thoothukudi Campus), and Government Polytechnic College. The V.O. Chidambaranar Port Authority is one of the major ports in India. Thoothukudi is an emerging energy and industrial hub of South India.\nThoothukudi is known as \"Pearl City\" due to the pearl fishing carried out in the town. It is a commercial seaport that serves the inland cities of southern India and is one of the sea gateways of Tamil Nadu. It is also one of the major seaports in India, with a history dating back to the 6th century CE. The city is believed to be of significant antiquity and has been ruled, at different times, by the Early Pandyas, Medieval Cholas, Later Cholas, Later Pandyas, Ma'bar Sultanate, Tirunelveli Sultanate, Vijayanagar Empire, Madurai Nayaks, Chanda Sahib, Carnatic kingdom, Portuguese, Dutch, and the British. Thoothukudi was settled by the Portuguese, Dutch, and later the British East India Company.\nThe city is administered by the Thoothukudi Municipal Corporation, which covers an area of 353.07 km2 (136.32 sq mi) and had a population of 500,000 in 2024.The urban agglomeration had a population of 526,000 as of 2011. The majority of the people of the city are employed in salt pans, sea-borne trading, fishing, and tourism.\nThe 21 islands between Thoothukudi and Rameswaram shores in the Gulf of Mannar are noted as the first Marine Biosphere Reserve of India and have around 3600 species of flora and fauna. This protected area is called the Gulf of Mannar Marine National Park. Our Lady of the Snows Basilica festival is celebrated annually in August. This and the Shiva temple festivals, including Adi Amavasai, Sasti, and Chittirai chariot festivals, are the major festivals of the area. Roadways are the major mode of transport to Thoothukudi, while the city also has rail, air, and sea transport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "thoothukudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1501,
+    "attempt": 1487,
+    "place_id": "gn-11611632",
+    "input": {
+      "place": {
+        "place_id": "gn-11611632",
+        "name": "Fuchū",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.67452,
+        "lon": 139.48216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuchū, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Fuchū,_Tokyo",
+          "text": "Fuchū (府中市, Fuchū-shi) is a city located in the western portion of the Tokyo Metropolis, Japan. Fuchū serves as a regional commercial center and a commuter town for workers in central Tokyo. The city hosts large scale manufacturing facilities for Toshiba, NEC and Suntory, as well as the Bank of Japan's main computer operations center. Local sporting attractions include the Tokyo Racecourse and the training grounds of Top League rugby teams Toshiba Brave Lupus and Suntory Sungoliath.\nAs of 1 August 2025, the city had an estimated population of 264,534, and a population density of 8,989 persons per square kilometer. The total area of the city is 29.43 square kilometres (11.36 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "fuchu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1502,
+    "attempt": 1488,
+    "place_id": "gn-1784642",
+    "input": {
+      "place": {
+        "place_id": "gn-1784642",
+        "name": "Zhenjiang",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 32.21086,
+        "lon": 119.45508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhenjiang",
+          "url": "https://en.wikipedia.org/wiki/Zhenjiang",
+          "text": "Zhenjiang, alternately romanized as Chinkiang, is a prefecture-level city in Jiangsu Province, China. It lies on the southern bank of the Yangtze River near its intersection with the Grand Canal. It is opposite Yangzhou (to its north) and between Nanjing (to its west) and Changzhou (to its east). Zhenjiang was formerly the provincial capital of Jiangsu and remains as an important transportation hub. As of the 2020 census, its total population was 3,210,418 inhabitants whom 1,266,790 lived in the built-up (or metro) area made of the 3 urban districts. The town is best known both in China and abroad for Chinkiang vinegar, a fragrant black vinegar that is a staple of Chinese cooking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "zhenjiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1503,
+    "attempt": 1489,
+    "place_id": "gn-1787351",
+    "input": {
+      "place": {
+        "place_id": "gn-1787351",
+        "name": "Yangquan",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 37.8575,
+        "lon": 113.56333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangquan",
+          "url": "https://en.wikipedia.org/wiki/Yangquan",
+          "text": "Yangquan (simplified Chinese: 阳泉; traditional Chinese: 陽泉; pinyin: Yángquán [jǎŋtɕʰyǎn]) is a prefecture-level city in the east of Shanxi province, China, bordering Hebei province to the east. Known as \"Rippling Spring\" in ancient times, it lies on the eastern edge of the Loess Plateau and the western side of the Taihang Mountains. Yangquan occupies a total area of 4,452 square kilometres (1,719 sq mi). According to the 2020 census, Yangquan had a population of 1,318,505, of which 1,037,456 lived in the built-up (or metro) area consists of 3 urban districts plus Pingding County. Yangquan is a new industrial city in Shanxi province. It belongs to the warm temperate semi-humid continental monsoon climate zone. Yangquan City covers two counties and three districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "yangquan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1504,
+    "attempt": 1490,
+    "place_id": "gn-1800146",
+    "input": {
+      "place": {
+        "place_id": "gn-1800146",
+        "name": "Nanchong",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 30.79508,
+        "lon": 106.08473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanchong",
+          "url": "https://en.wikipedia.org/wiki/Nanchong",
+          "text": "Nanchong (Chinese: 南充; pinyin: Nánchōng; Wade–Giles: Nan-ch'ung; Sichuanese: lan2cong1) is a prefecture-level city in the northeast of Sichuan province, China, with an area of 12,479.96 km2 (4,818.54 sq mi). At the 2020 census it was home to 5,607,565 people, of whom 1,936,534 lived in the built-up (or 'metro') area made of three urban districts. It is the second most populated city of Sichuan Province, after Chengdu. The administrative center is Shunqing District. At the end of 2024, the resident population of the city was 5.489 million, a decrease of 22,000 from the previous year. The resident population of urban areas is 2.949 million, and the resident population of rural areas is 2.54 million. The urbanization rate of the resident population is 53.73%, an increase of 0.9 percentage points over the previous year. At the end of the year, the registered population of the city was 6.977 million, a decrease of 55,000 compared with the end of the previous year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "nanchong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1505,
+    "attempt": 1491,
+    "place_id": "gn-1805518",
+    "input": {
+      "place": {
+        "place_id": "gn-1805518",
+        "name": "Jining",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 35.405,
+        "lon": 116.58139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jining",
+          "url": "https://en.wikipedia.org/wiki/Jining",
+          "text": "Jining (Chinese: 济宁; pinyin: Jǐníng) is a prefecture-level city in southwestern Shandong province. It borders Heze to the southwest, Zaozhuang to the southeast, Tai'an to the northeast, and the provinces of Henan and Jiangsu to the northwest and south respectively. Jining, which is located directly to the north of Lake Nanyang (Chinese: 南阳湖; pinyin: Nányáng Hú), is today the northernmost city reachable by navigation on the Grand Canal of China making it an important inland port.\nIts population was 8,081,905 at the 2010 census, of whom 1,518,000 lived in the built-up (or metro) area made up of Rencheng urban district on 884 km2 (341 sq mi), Yanzhou district not being totally conurbated yet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "jining",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1506,
+    "attempt": 1492,
+    "place_id": "gn-1805987",
+    "input": {
+      "place": {
+        "place_id": "gn-1805987",
+        "name": "Jiaozuo",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 35.23925,
+        "lon": 113.23914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jiaozuo",
+          "url": "https://en.wikipedia.org/wiki/Jiaozuo",
+          "text": "Jiaozuo (Chinese: 焦作; pinyin: Jiāozuò [tɕjáʊ.tswô]; postal: Tsiaotso) is a prefecture-level city in the northwest of Henan province, China. Sitting on the northern bank of the Yellow River, it borders the provincial capital of Zhengzhou to the south, Xinxiang to the east, Jiyuan to the west, Luoyang to the southwest, and the province of Shanxi to the north. Jiaozuo is one of the core cities of the Central Plains urban agglomeration and a regional central city along the Shanxi–Henan border area.\nIts population was 3,590,700 as of the 2018 estimate whom 1,424,500 lived in the built-up area made of 4 urban districts (Jiefang, Shanyang, Zhongzhan and Macun) and Bo'ai County largely being urbanized."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "jiaozuo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1507,
+    "attempt": 1493,
+    "place_id": "gn-1860735",
+    "input": {
+      "place": {
+        "place_id": "gn-1860735",
+        "name": "Kakamigahara",
+        "country": "Japan",
+        "subdivision": "Gifu",
+        "lat": 35.41667,
+        "lon": 136.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kakamigahara",
+          "url": "https://en.wikipedia.org/wiki/Kakamigahara",
+          "text": "Kakamigahara (各務原市, Kakamigahara-shi) is a city located in southern Gifu Prefecture in Japan. As of 1 January 2019, the city had an estimated population of 148,225, and a population density of 1700 persons per km2, in 59,736 households. The total area of the city was 87.81 km2 (33.90 sq mi).\nSituated in the northern part of the Nōbi Plain, what is now Kakamigahara originally thrived as a post station on the Nakasendō highway connecting Edo with Kyoto, being called \"Unuma-juku\" at the time.  In more recent history, the city developed due to the JASDF Gifu base.  In addition, Kakamigahara grew as an industrial city and a commuter suburb of Gifu City and Nagoya.\nThe city of Kakamigahara has many large parks, the most notable among them being \"Kakamigahara Kōen\", which was originally made from a vacant lot owned by Gifu University.  A city planning policy of making Kakamigahara into a \"park city\" has been undertaken by the municipality, and in 2005, the city received the Green City Prize from the prime minister. Although the city was officially named Kakamigahara, it is also called Kakamihara, Kagamihara, or Kagamigahara by tradition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "kakamigahara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1508,
+    "attempt": 1494,
+    "place_id": "gn-2112539",
+    "input": {
+      "place": {
+        "place_id": "gn-2112539",
+        "name": "Iwaki",
+        "country": "Japan",
+        "subdivision": "Fukushima",
+        "lat": 37.05,
+        "lon": 140.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iwaki, Fukushima",
+          "url": "https://en.wikipedia.org/wiki/Iwaki,_Fukushima",
+          "text": "Iwaki (いわき市, Iwaki-shi) is a city located in Fukushima Prefecture, Japan. As of 1 August 2023, Iwaki had a population of 322,019 in 143,500 households, and a population density of 261 persons per km2. The total area of the city is 1,232.02 square kilometres (475.69 sq mi), making it the largest city in the prefecture and the 10th largest city in Japan (2010) in terms of area. Iwaki is a designated core city, and is also one of the growing number of cities written in hiragana. The present Iwaki City started as the merger of 14 smaller municipalities on October 1, 1966. Every year, Iwaki hosts the Taira Tanabata Festival from 6–8 August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "iwaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1509,
+    "attempt": 1495,
+    "place_id": "gn-2320576",
+    "input": {
+      "place": {
+        "place_id": "gn-2320576",
+        "name": "Umuahia",
+        "country": "Nigeria",
+        "subdivision": "Abia State",
+        "lat": 5.52491,
+        "lon": 7.49461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umuahia",
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "text": "Umuahia (, pronounced [ʊmʊaːhiaː]) is the capital city of Abia State in southeastern Nigeria. Umuahia is located along the rail road that lies between Port Harcourt to its south, and Enugu city to its north. Umuahia has a population of 359,230 according to the 2006 Nigerian census.\nUmuahia is renowned for being a railway and agricultural market center, which attracts traders and farmers from neighboring towns to sell their produce, such as yams, cassava, corn (maize), taro, citrus fruits, and palm oil and kernels. There are industries that help drive its economy, such as a brewery and a palm-oil-processing plant. Nigeria's National Root Crops Research Institute, at Umudike, is adjacent to the town. So also is the Michael Okpara University of Agriculture, Umudike (MOUAU). Umuahia also has several colleges including Trinity College (theological), Government College Umuahia, Holy Rosary Girls Secondary School and hospitals like the Federal Medical Centre, Umuahia (formerly Queen Elizabeth Hospital).\nUmuahia comprises two local government areas: Umuahia North and Umuahia South. These local governments are also composed of clans such as the Umuopara, Ibeku, Olokoro, Ubakala and Ohuhu communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "umuahia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1510,
+    "attempt": 1496,
+    "place_id": "gn-2410048",
+    "input": {
+      "place": {
+        "place_id": "gn-2410048",
+        "name": "Bo",
+        "country": "Sierra Leone",
+        "subdivision": "Southern Province",
+        "lat": 7.96472,
+        "lon": -11.73833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bo, Sierra Leone",
+          "url": "https://en.wikipedia.org/wiki/Bo,_Sierra_Leone",
+          "text": "Bo, also commonly referred to as Bo Town, is the second largest city in Sierra Leone by population (after Freetown) and the largest city in the Southern Province. It is the capital and administrative centre of Bo District. The city of Bo has a population of 223,075 based on 2021 national mid-term census estimates. It lies approximately 160 miles (250 km) east-southeast of Freetown, and about 40 miles (64 km) from Kenema. Bo is the leading financial, educational and economic centre of southern Sierra Leone..\nThe city of Bo is one of Sierra Leone's six municipalities and is locally governed by the directly elected Bo City Council, which is headed by a mayor. The Mayor and members of the Bo City Council are directly elected every four years in a municipal election. Kobba Musa, Bo's current mayor, was elected in 2023.\nThe city is the primary home of Njala University, the second largest university in Sierra Leone, after the Fourah Bay College. Bo is also home to the Bo Government Secondary School, commonly known as Bo School, which is one of the biggest and most prominent secondary schools in West Africa. The school has a history of producing some of Sierra Leone's most gifted students. The city is home to the Bo Stadium, the second largest stadium in Sierra Leone, and is mostly used for football matches.\nBo is one of the most ethnically diverse cities in Sierra Leone. The city is home to a significant population of many of Sierra Leone's ethnic groups, with no single ethnic group forming a majority. Bo is the principal home of the Mende people, who form the plurality of the city's population. As with most parts of Sierra Leone, the Krio language of the Sierra Leone Creole people is by far the most widely spoken language in Bo and is the primary means of communication in the city.\nThe city's population is religiously diverse, primarily among Muslims and Christians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "bo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1511,
+    "attempt": 1497,
+    "place_id": "gn-2640354",
+    "input": {
+      "place": {
+        "place_id": "gn-2640354",
+        "name": "Peterborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.57364,
+        "lon": -0.24777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peterborough",
+          "url": "https://en.wikipedia.org/wiki/Peterborough",
+          "text": "Peterborough (  PEE-tər-bər-ə, -⁠burr-ə) is a cathedral city in the City of Peterborough district in the ceremonial county of Cambridgeshire, England. The city is 74 miles (119 km) north of London, on the River Nene. As of the 2021 census, the Peterborough urban area had a population of 192,178, In 2023, the Peterborough City Council estimated the population of the wider district to be 219,510.\nHuman settlement in the area began before the Bronze Age, as can be seen at the Flag Fen archaeological site to the east of the city centre. There is evidence of Roman occupation. The Anglo-Saxon period saw the establishment of a monastery, Medeshamstede, which later became Peterborough Cathedral. In the 19th century, the population grew rapidly after the coming of the railway. The area became known for its brickworks and engineering. After the Second World War, industrial employment fell and growth was limited until Peterborough was designated a new town in the 1960s. The main economic sectors now are financial services and distribution.\nThe city was the administrative centre of the Soke of Peterborough in the historic county of Northamptonshire, until the Soke was abolished in 1965. From 1965 to 1974, it formed part of the short-lived county of Huntingdon and Peterborough and since then has been part of Cambridgeshire.\nThe cathedral city of Ely is 24 miles (39 km) east-southeast across the Fens and the university city of Cambridge is 30 miles (48 km) to the southeast. The local topography is flat and in places the land lies \nbelow sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "peterborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1512,
+    "attempt": 1498,
+    "place_id": "gn-2650752",
+    "input": {
+      "place": {
+        "place_id": "gn-2650752",
+        "name": "Dundee",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.46913,
+        "lon": -2.97489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dundee",
+          "url": "https://en.wikipedia.org/wiki/Dundee",
+          "text": "Dundee is the fourth-largest city in Scotland. The 2020 mid-year population estimate for the locality was \n148,210. It lies within the eastern central Lowlands on the north bank of the Firth of Tay, which feeds into the North Sea.\nUnder the name of Dundee City, it forms one of the 32 council areas used for local government in Scotland. Within the boundaries of the historic county of Angus, the city developed into a burgh in the late 12th century and established itself as an important east coast trading port. Rapid expansion was brought on by the Industrial Revolution, particularly in the 19th century when Dundee was the centre of the global jute industry. This, along with its other major industries, gave Dundee its epithet as the city of \"jute, jam and journalism\".\nWith the decline of traditional industry, the city has adopted a plan to regenerate and reinvent itself as a cultural centre. In pursuit of this, a £1 billion master plan to regenerate and to reconnect the Waterfront to the city centre started in 2001 and is expected to be completed within a 30-year period. The V&A Dundee – the first branch of the V&A to operate outside of London – is the main centrepiece of the waterfront project. Today, Dundee is promoted as \"One City, Many Discoveries\" in honour of Dundee's history of scientific activities and of the RRS Discovery, Robert Falcon Scott's Antarctic exploration vessel, which was built in Dundee and is now berthed at Discovery Point.\nDundee is an international research and development hub in technology, medicine and life sciences, with technological industries having arrived since the 1980s. Dundee was named as a \"City of the Future\" by Cognizant in 2021, the only UK city to be featured. Dundee is also a leading city in AI, cybersecurity, fintech and electric vehicles where the city has one of the largest fleets of electric vehicles in the country. The city was named as the electric vehicle capital of Europe in 2018, and it has continuously been branded as the electric vehicle capital of Scotland and the United Kingdom.\nIn 2014, Dundee was recognised by the United Nations as the UK's first UNESCO City of Design for its diverse contributions to fields including medical research, comics and video games. Since 2015, Dundee's international profile has risen. GQ magazine named Dundee the \"Coolest Little City in Britain\" in 2015 and The Wall Street Journal ranked Dundee at number 5 on its \"Worldwide Hot Destinations\" list for 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 417
+    },
+    "banned_terms": [
+      {
+        "term": "dundee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1513,
+    "attempt": 1499,
+    "place_id": "gn-2652053",
+    "input": {
+      "place": {
+        "place_id": "gn-2652053",
+        "name": "Crawley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.11303,
+        "lon": -0.18312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crawley",
+          "url": "https://en.wikipedia.org/wiki/Crawley",
+          "text": "Crawley (  KRAW-lee) is a town and borough in West Sussex, England. It is 28 miles (45 km) south of London, 18 miles (29 km) north of Brighton and Hove, and 32 miles (51 km) north-east of the county town of Chichester. Crawley covers an area of 17.36 square miles (44.96 km2) and had a population of 118,493 at the time of the 2021 Census. Southern parts of the borough lie immediately next to the High Weald National Landscape.\nThe area has been inhabited since the Stone Age, and was a centre of ironworking in the Iron Age and Roman times. The area was probably used by the kings of Sussex for hunting. Initially a clearing in the vast forest of the Weald, Crawley began as a settlement on the boundary of two of the sub-regions particular to Sussex, known as Rapes, the Rape of Bramber and the Rape of Lewes. Becoming a market town in 1202, Crawley developed slowly, serving the surrounding villages in the Weald. In the medieval period, its location on the main road from London to the port of Shoreham helped the town to grow; and when Brighton became a fashionable seaside town in the 18th century, the passing trade encouraged the development of coaching inns. A rail link to London and Brighton opened in 1841, encouraging further development.\nAfter World War II, the British Government planned to move large numbers of people and jobs out of London and into new towns around South East England. The New Towns Act 1946 (9 & 10 Geo. 6. c. 68) designated Crawley as the site of one of these. A master plan was developed for the establishment of new residential, commercial, industrial and civic areas, and rapid development greatly increased the size and population of the town over a few decades. The town expanded further in 1974 to include Gatwick Airport, Britain's second busiest international airport and, in 2024, the tenth busiest in Europe.\nThe town contains 14 residential neighbourhoods radiating out from the core of the old market town, and separated by main roads and railway lines. The nearby communities of Ifield, Pound Hill and Three Bridges were absorbed into the new town at various stages in its development. Established in 2019, the south-western suburb of Kilnwood Vale lies outside of the borough boundary in the neighbouring district of Horsham. Economically, the town has developed into the main centre of industry and employment between London and Brighton. Its large industrial area supports manufacturing and service companies, many of them connected with the airport. The commercial and retail sectors continue to expand. In the late 20th century and early 21st century, the town has attracted a diverse and multicultural population. It is home to about two-thirds of the UK's population of Chagossians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 464
+    },
+    "banned_terms": [
+      {
+        "term": "crawley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1514,
+    "attempt": 1500,
+    "place_id": "gn-288764",
+    "input": {
+      "place": {
+        "place_id": "gn-288764",
+        "name": "Bawshar",
+        "country": "Oman",
+        "subdivision": "Muscat",
+        "lat": 23.57769,
+        "lon": 58.39982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bawshar",
+          "url": "https://en.wikipedia.org/wiki/Bawshar",
+          "text": "Bawshar (Arabic: بوشر Bawšar) is one of the provinces of Muscat, in northeastern Oman. The province borders wilayat Muttrah in the east and wilayat Seeb in the west, it overlooks the Sea of Oman to the north. It contains several archaeological sites and the Qurm Nature Reserve Ramsar site.\nAccording to the 2010 National Census, the population of wilayat Bawshar was 192,235 spread over its 43 villages and towns. The most noteworthy of these are Al Khuwair, Sultan Qaboos City, Al Ghubra, Al Adheeba, Ghala, Al Sarooj, Bowsher Al Qadima, Al Ansab Sanab, Al Hamam, Al Awabi, and Al Misfah. One of the biggest supermarkets of Oman resides here which is Lulu Hypermarket. which is now merged with the Grand Mall Muscat.\nSchools in Bawshar include:\n\nThe International School of Oman\nIn conjunction with the Muscat Grand Mall, there are a number of other shopping malls in the area. These include:\n\nThe Panorama Mall\nAvenues Mall\nThe Mall of Oman which has opened in September 2021 and is currently the largest Mall in Oman."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "bawshar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

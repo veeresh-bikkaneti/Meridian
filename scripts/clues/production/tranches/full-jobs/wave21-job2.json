@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 4051,
+    "attempt": 4021,
+    "place_id": "gn-1831732",
+    "input": {
+      "place": {
+        "place_id": "gn-1831732",
+        "name": "Banlung",
+        "country": "Cambodia",
+        "subdivision": "Ratanakiri",
+        "lat": 13.73939,
+        "lon": 106.98727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banlung",
+          "url": "https://en.wikipedia.org/wiki/Banlung",
+          "text": "Banlung (Khmer: បានលុង, Banlŭng [ɓaːnluŋ]) is the capital of Ratanakiri Province in northeastern Cambodia, and is  636 kilometres from the Cambodian capital of Phnom Penh. Ratanakiri Province borders Vietnam and Laos.  Banlung had been previously known as Banlung district before it officially gained town status. The town has a population of around 17,000 and the surrounding district has a population of 23,888.\nThe town became the capital of Ratanakiri Province in 1979, following the fall of the Khmer Rouge. The capital was moved from Veun Sai to Banlung in order to facilitate trade with Vietnam  (prior to Veun Sai, the capital was Lumphat). Prior to 1979, Banlung was known as Labansiek.\nIt is a relatively lively commercial centre; people from surrounding villages often come to the town market to sell their goods.\nThree kilometres west of Banlung are the Katieng Waterfalls, where Ratnakiri's last elephants are covered by a conservation programme operated by the Airavata Elephant Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "banlung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4052,
+    "attempt": 4022,
+    "place_id": "gn-2179670",
+    "input": {
+      "place": {
+        "place_id": "gn-2179670",
+        "name": "Whanganui",
+        "country": "New Zealand",
+        "subdivision": "Manawatu-Wanganui",
+        "lat": -39.93333,
+        "lon": 175.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whanganui",
+          "url": "https://en.wikipedia.org/wiki/Whanganui",
+          "text": "Whanganui, also spelt Wanganui, is a city in the Manawatū-Whanganui region of New Zealand. The city is located on the west coast of the North Island at the mouth of the Whanganui River, New Zealand's longest navigable waterway. Whanganui is the 19th most-populous urban area in New Zealand and the second-most-populous in Manawatū-Whanganui, with a population of 42,800 as of June 2025.\nWhanganui is the ancestral home of Te Āti Haunui-a-Pāpārangi and other Whanganui Māori tribes. The New Zealand Company began to settle the area in 1840, establishing its second settlement after Wellington. In the early years, most European settlers came via Wellington. Whanganui greatly expanded in the 1870s, and freezing works, woollen mills, phosphate works and wool stores were established in the town. Today, much of Whanganui's economy relates directly to the fertile and prosperous farming hinterland.\nLike several New Zealand urban areas, it was officially designated a city until an administrative reorganisation in 1989, and is now run by Whanganui District Council. In 2021 it was added to the Design Cities (UNESCO), becoming the only city of design to be located in New Zealand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "whanganui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4053,
+    "attempt": 4023,
+    "place_id": "gn-2521710",
+    "input": {
+      "place": {
+        "place_id": "gn-2521710",
+        "name": "Antequera",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.01938,
+        "lon": -4.56123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antequera",
+          "url": "https://en.wikipedia.org/wiki/Antequera",
+          "text": "Antequera (Spanish pronunciation: [anteˈkeɾa]) is a city and municipality in the Comarca de Antequera, province of Málaga, part of the Spanish autonomous community of Andalusia. It is known as \"the heart of Andalusia\" (el corazón de Andalucía) because of its central location among Málaga, Granada, Córdoba, and Seville. The Antequera Dolmens Site is a UNESCO World Heritage site.\nIn 2011, Antequera had a population of 41,854. It covers an area of 749.34 km2 with a population density of 55.85 inhabitants/km2, and is situated at an altitude of 575 meters. There is also a very small town named \"Gloriano\" in the bottom of Antequera. Antequera is the most populous city in the interior of the province and the largest in area. It is the twenty-second largest in Spain. The city is located 45 km from Málaga and 115 km from Córdoba. The cities are connected by a high-speed train and the A-45 motorway. Antequera is 160 km from Seville and 102 km from Granada, which is connected by motorway A-92 and high-speed rail.\nDue to its strategic position in transport and communications, with four airports located approximately one hour away and the railway running from the Port of Algeciras, Antequera is emerging as an important centre of transportation logistics, with several industrial parks, and the new Logistics Centre of Andalusia (Centro Logístico de Andalucía). In addition, the Vega de Antequera, watered by the river Guadalhorce, is a fertile agricultural area that provides cereals, olive oil, and vegetables in abundance.\nThe nearby natural reserve of El Torcal, famous for its unstable limestone rocks, forms one of the most important karst landscapes in Europe. It has an extensive archaeological and architectural heritage, highlighted by the dolmens of Menga, Viera, and El Romeral, and numerous churches, convents, and palaces from different periods and in different styles. Antequera played a role in the rise of Andalusian nationalism: it was the site of the drafting of the Federal Constitution of Antequera in 1883, and also of the so-called Pact of Antequera in 1978, which led to the achievement of autonomy for Andalusia. It was considered as a possible headquarters of the Andalusian government, but lost the vote in favor of Seville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 365
+    },
+    "banned_terms": [
+      {
+        "term": "antequera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4054,
+    "attempt": 4024,
+    "place_id": "gn-2618415",
+    "input": {
+      "place": {
+        "place_id": "gn-2618415",
+        "name": "Køge",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.45802,
+        "lon": 12.18214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Køge",
+          "url": "https://en.wikipedia.org/wiki/Køge",
+          "text": "Køge (Danish pronunciation: [ˈkʰøː(j)ə], older spelling Kjøge) is a Danish seaport on the coast of Køge Bugt (Bay of Køge) 39 km southwest of Copenhagen. It is the principal town and seat of Køge Municipality, Region Zealand, Denmark. In 2026, the urban area had a population of 38,840.\nThe natural harbour and strategic location have given Køge a long history as a market town. Today, that past is evident in a well-preserved old town centre with many half-timbered houses.\nKøge is located in the Copenhagen metropolitan area and is connected to downtown Copenhagen by the E line of the S-train commuter rail system. Køge is also on the Copenhagen-Ringsted Line that was opened in June 2019. The new line positioned Køge as a central hub in Denmark's transport system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "k ge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ge",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4055,
+    "attempt": 4025,
+    "place_id": "gn-2647428",
+    "input": {
+      "place": {
+        "place_id": "gn-2647428",
+        "name": "Harrogate",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.99078,
+        "lon": -1.5373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harrogate",
+          "url": "https://en.wikipedia.org/wiki/Harrogate",
+          "text": "Harrogate () is a spa town and civil parish in North Yorkshire, England, historically part of the West Riding of Yorkshire. Visitor attractions include Bettys tea rooms, RHS Harlow Carr gardens and the Royal Pump Room Museum, which explores the town's spa heritage. The Yorkshire Dales National Park and Nidderdale AONB are 13 miles (21 km) from the town centre.\nIn the 17th century, Harrogate grew out of two smaller settlements, High Harrogate and Low Harrogate. For three consecutive years (2013–2015), polls voted the town as \"the happiest place to live\" in Britain. Harrogate spa water contains iron, sulphur, and common salt (NaCl). The town became known as 'The English Spa' in the Georgian era, after its waters were discovered in the 16th century. In the 17th and 18th centuries, its chalybeate waters (containing iron) were a popular health treatment, and the influx of wealthy but sickly visitors contributed significantly to the wealth of the town.\n\nHarrogate railway station and Harrogate bus station in the town centre provide transport connections. Leeds Bradford Airport is 10 miles (16 km) southwest of Harrogate. The main roads through the town are the A61, connecting Harrogate to Leeds and Ripon, and the A59, connecting the town to York and Skipton. Harrogate is also connected to Wetherby and the A1(M) by the A661, while the A658 from Bradford forms a bypass around the south of the town. Harrogate had a population of 73,576 at the 2011 UK census; the built-up area comprising Harrogate and nearby Knaresborough had a population of 89,060, while the figure for the much wider Borough of Harrogate, comprising Harrogate, Knaresborough, Ripon, as well as a number of smaller settlements and a large rural area, was 157,869.\nThe town motto is Arx celebris fontibus, which means \"a citadel famous for its springs\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "harrogate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4056,
+    "attempt": 4026,
+    "place_id": "gn-2648773",
+    "input": {
+      "place": {
+        "place_id": "gn-2648773",
+        "name": "Gateshead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.96209,
+        "lon": -1.60168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gateshead",
+          "url": "https://en.wikipedia.org/wiki/Gateshead",
+          "text": "Gateshead () is a town in the Gateshead Metropolitan Borough of Tyne and Wear, England. It is on the River Tyne's southern bank. At the 2021 census, the population was 196,151.\nHistorically part of County Durham, under the Local Government Act 1888 the town was made a county borough, meaning it was administered independently of the county council.\nThe town's attractions include the twenty-metre-tall Angel of the North sculpture on the town's southern outskirts, The Glasshouse International Centre for Music and the Baltic Centre for Contemporary Art. The town shares the Millennium Bridge, Tyne Bridge and multiple other bridges with Newcastle upon Tyne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "gateshead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4057,
+    "attempt": 4027,
+    "place_id": "gn-2660594",
+    "input": {
+      "place": {
+        "place_id": "gn-2660594",
+        "name": "Glarus",
+        "country": "Switzerland",
+        "subdivision": "Glarus",
+        "lat": 47.04057,
+        "lon": 9.06804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glarus",
+          "url": "https://en.wikipedia.org/wiki/Glarus",
+          "text": "Glarus (Swiss Standard German: [ˈɡlaːrʊs] ; Alemannic German: Glaris; French: Glaris [ɡlaʁis]; Italian: Glarona; Romansh: Glaruna) is the capital of the canton of Glarus in Switzerland. Since 1 January 2011, the municipality of Glarus incorporates the former municipalities of Ennenda, Netstal and Riedern.\nGlarus lies on the river Linth between the foot of the Glärnisch (part of the Schwyzer Alps) to the west and the Schilt (Glarus Alps) to the east. Very few buildings built before the fire of 1861 remain. Wood, textile, and plastics, as well as printing, are the dominant industries. The symbol of the city is the neo-Romanesque city church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "glarus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4058,
+    "attempt": 4028,
+    "place_id": "gn-2675397",
+    "input": {
+      "place": {
+        "place_id": "gn-2675397",
+        "name": "Solna",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.36004,
+        "lon": 18.00086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solna",
+          "url": "https://en.wikipedia.org/wiki/Solna",
+          "text": "Solna (Swedish: Solna kommun or Solna stad, IPA: [ˈsôːlna]), also known as Solna Municipality, is a municipality in central Stockholm County, Sweden, located just north of Stockholm City Centre. Its seat is located in the town of Solna, which is a part of the Stockholm urban area. Solna is one of the wealthiest municipalities in Sweden.\nThe municipality is part of Metropolitan Stockholm. None of the area is considered rural, which is unusual for Swedish municipalities, which normally are of mixed rural/urban character. Solna is the third-smallest municipality in Sweden in terms of area, after nearby Sundbyberg, as well as Burlöv, Scania County.\nSolna borders Stockholm Municipality to the south, southeast, and northwest; Sundbyberg Municipality to the west; Sollentuna Municipality to the north; and Danderyd Municipality to the northeast. The boundary with Danderyd Municipality is delineated by the Stocksundet strait.\nThere are two parishes in Solna Municipality: Råsunda (population 29,677) and Solna (population 28,317). Solna Parish once included parts of present-day City of Stockholm.\nSolna is divided into eight traditional parts with no administrative functions: Bergshamra, Haga, Hagalund, Huvudsta, Järva, Råsunda, Skytteholm and Ulriksdal. The largest districts are Råsunda, Hagalund and Huvudsta, with the Solna Centrum in between them.\nWith few exceptions, Solna's built-up areas have a suburban character, but there are also several large parks and Strawberry Arena, Sweden's new national football stadium adjacent to the Solna railway station of Stockholm commuter rail.\nThe final matches of both the 1958 FIFA (men's) World Cup and the 1995 FIFA Women's World Cup were played at Råsunda Stadium, the national football stadium from 1937 to 2012 (demolished in 2013).\nSolna has attracted a wide range of businesses and authorities, making it a major place of work in Greater Stockholm. Among the most important employers are the medical university Karolinska Institutet and the Karolinska University Hospital. The European Centre for Disease Prevention and Control (ECDC) and the Stockholm International Peace Research Institute (SIPRI) are also located in Solna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "solna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4059,
+    "attempt": 4029,
+    "place_id": "gn-2744549",
+    "input": {
+      "place": {
+        "place_id": "gn-2744549",
+        "name": "Wierden",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.35917,
+        "lon": 6.59306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wierden",
+          "url": "https://en.wikipedia.org/wiki/Wierden",
+          "text": "Wierden (Dutch pronunciation: [ˈʋiːrdə(n)] ; Tweants: Wierdn) is a town and a municipality in the eastern Netherlands, in the province of Overijssel.\nThe municipality of Wierden also includes the following towns, villages and townships: \nEnter, Hoge Hexel, IJpelo, Notter, Rectum, and Zuna.\nThe municipality has 10 primary schools and 1 secondary school. There are 2 soccer clubs, 2 tennis clubs and 1 volleyball club, this is only the top of the clubs. The village has 3 cemeteries of which, only one is currently in use. The mayor is Doret Tigchelaar-van Oene, who is also the chair of the board of mayor and aldermen.\nIn midsummer, the locally known, 3-day festival \"WieZo\" is held. It starts on a Thursday and ends on Saturday. Every night there are 2 musical acts on the Binnenhof. On Saturday there is also the Wiezoloop. For some years the Wiezoloop has become an independent event, separate from the Wiezo, and is held the same year about 1 month earlier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "wierden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4060,
+    "attempt": 4030,
+    "place_id": "gn-2750325",
+    "input": {
+      "place": {
+        "place_id": "gn-2750325",
+        "name": "Nieuwegein",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.02917,
+        "lon": 5.08056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nieuwegein",
+          "url": "https://en.wikipedia.org/wiki/Nieuwegein",
+          "text": "Nieuwegein (Dutch pronunciation: [ˌniu.əˈɣɛin] ) is a municipality and city in the Dutch province of Utrecht. It is bordered on the north by the city of Utrecht, the provincial capital. It is separated from Vianen to the south by the river Lek and borders on IJsselstein in the southwest and Houten in the east. Nieuwegein has 64,606 inhabitants as of 1 December 2021.\nSeveral national sports federations are housed in Nieuwegein, including the NeVoBo (volleyball), KNZB (swimming), NBb (basketball) and KNCB (cricket).\nThere are three main secondary schools in the city, including the Anna van Rijn College, Oosterlicht College and the Cals College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nieuwegein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4061,
+    "attempt": 4031,
+    "place_id": "gn-2758998",
+    "input": {
+      "place": {
+        "place_id": "gn-2758998",
+        "name": "Beverwijk",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.48333,
+        "lon": 4.65694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beverwijk",
+          "url": "https://en.wikipedia.org/wiki/Beverwijk",
+          "text": "Beverwijk (Dutch pronunciation: [ˌbeːvərˈʋɛik] ) is an industrial port city in the Netherlands, in the province of North Holland. The town is located about 20 kilometres (12 mi) northwest of Amsterdam in the Randstad metropolitan area, north of the North Sea Canal very close to the North Sea coast. A railway tunnel and two motorway tunnels cross the canal between Beverwijk and the nearby city of Haarlem on the south side of the canal. \nIn 1652, a town called Beverwyck was founded in the Dutch colony of New Netherland. That town would become the city of Albany, the state capital of New York."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "beverwijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4062,
+    "attempt": 4032,
+    "place_id": "gn-2803073",
+    "input": {
+      "place": {
+        "place_id": "gn-2803073",
+        "name": "Arlon",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 49.68333,
+        "lon": 5.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arlon",
+          "url": "https://en.wikipedia.org/wiki/Arlon",
+          "text": "Arlon (French pronunciation: [aʁlɔ̃] ; Walloon: Årlon; Dutch: Aarlen [ˈaːrlə(n)] ; Luxembourgish: Arel [ˈaːʀəl] ) is a city and municipality of Wallonia, and the capital of the province of Luxembourg in Belgium. With a population of just over 28,000, it is the smallest provincial capital in Belgium. \nArlon is also the capital of its cultural region: the Arelerland (Land of Arlon in Luxembourgish).\nThe municipality consists of the following sub-municipalities: Arlon proper, Autelbas, Bonnert, Guirsch, Heinsch, and Toernich. Other population centers include: Autelhaut, Clairefontaine, Fouches, Frassem, Freylange, Hachy, Heckbous, Rosenberg, Sampont, Schoppach, Sesselich, Seymerich, Stehnen, Sterpenich, Stockem, Udange, Viville, Waltzing,  Weyler, and Wolberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "arlon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4063,
+    "attempt": 4033,
+    "place_id": "gn-294098",
+    "input": {
+      "place": {
+        "place_id": "gn-294098",
+        "name": "Nazareth",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 32.70087,
+        "lon": 35.29719
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nazareth",
+          "url": "https://en.wikipedia.org/wiki/Nazareth",
+          "text": "Nazareth is the largest city in the Northern District of Israel. In 2024 its population was 75,704. Known as \"the Arab capital of Israel\", Nazareth serves as a cultural, political, religious, economic and commercial center for the Arab citizens of Israel. The inhabitants are predominantly Arabs, of whom 69% are Muslim and 31% Christian. The city also commands immense religious significance, deriving from its status as the hometown of Jesus, the central figure of Christianity and a prophet in Islam and the Baháʼí Faith.\nFindings unearthed in the neighboring Qafzeh Cave show that the area around Nazareth was populated in the prehistoric period. Nazareth was a Jewish village during the Roman and Byzantine periods, and is described in the New Testament as the childhood home of Jesus. It became an important city during the Crusades after Tancred established it as the capital of the Principality of Galilee. The city declined under Mamluk rule, and following the Ottoman conquest, the city's Christian residents were expelled, only to return once Fakhr ad-Dīn II granted them permission to do so. In the 18th century, Daher al-Umar transformed Nazareth into a large town by encouraging immigration to it. The city grew steadily during the late 19th and early 20th centuries, when European powers invested in the construction of churches, monasteries, educational and health facilities.\nSince late antiquity, Nazareth has been a center of Christian pilgrimage, with many shrines commemorating biblical events. The Church of the Annunciation is considered one of the largest Christian sites of worship in the Middle East. It contains the Grotto of the Annunciation, where, according to Catholic tradition, angel Gabriel appeared to Mary and announced that she would conceive and bear Jesus. According to Greek Orthodox belief, the same event took place at the Greek Orthodox Church of the Annunciation, also known as the Church of Saint Gabriel. Other important churches in Nazareth include the Synagogue Church, St. Joseph's Church, the Mensa Christi Church, and the Basilica of Jesus the Adolescent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "nazareth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4064,
+    "attempt": 4034,
+    "place_id": "gn-2955272",
+    "input": {
+      "place": {
+        "place_id": "gn-2955272",
+        "name": "Aschaffenburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.97704,
+        "lon": 9.15214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aschaffenburg",
+          "url": "https://en.wikipedia.org/wiki/Aschaffenburg",
+          "text": "Aschaffenburg (German pronunciation: [aˈʃafn̩bʊʁk] ; Hessian: Aschebersch, pronounced [ˈaʒəˌbɛːʃ]) is a town in northwest Bavaria, Germany. The town of Aschaffenburg, despite being its administrative seat, is not part of the district of Aschaffenburg.\nAschaffenburg belonged to the Archbishopric of Mainz for more than 800 years. The town is located at the westernmost border of Lower Franconia and separated from the central and eastern part of the Regierungsbezirk (administrative region) by the Spessart hills, whereas it opens towards the Rhine-Main plain in the west and the north-west. Therefore, the inhabitants speak neither Bavarian nor East Franconian but rather a local version of Rhine Franconian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "aschaffenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4065,
+    "attempt": 4035,
+    "place_id": "gn-3012621",
+    "input": {
+      "place": {
+        "place_id": "gn-3012621",
+        "name": "Ivry-sur-Seine",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.81568,
+        "lon": 2.38487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivry-sur-Seine",
+          "url": "https://en.wikipedia.org/wiki/Ivry-sur-Seine",
+          "text": "Ivry-sur-Seine (French pronunciation: [ivʁi syʁ sɛn]; lit. 'Ivry-on-Seine') or simply Ivry is a commune in the Val-de-Marne department in the southeastern suburbs of Paris, France. It is located 5.3 km (3+1⁄4 mi) from the centre of Paris.\nParis's main Asian district, the Quartier Asiatique in the 13th arrondissement, borders the commune and now extends into the northern parts of Ivry. Asian commercial activity, especially Chinese and Vietnamese, has greatly increased in Ivry-sur-Seine during the past two decades. The commune contains one of the highest concentrations of Vietnamese in France, who began settling in the city in the late 1970s after the Vietnam War.\nPolitically, Ivry-sur-Seine has historically demonstrated strong electoral support for the French Communist Party (PCF). Between 1925 and today (except for the period of German occupation in World War II), the office of mayor was held by just four individuals: Georges Marrane, Jacques Laloë, Pierre Gosnat and Philippe Bouyssou, all members of the Communist Party.\nIvry-sur-Seine is twinned with Bishop Auckland in County Durham, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "ivry sur seine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ivry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4066,
+    "attempt": 4036,
+    "place_id": "gn-3077244",
+    "input": {
+      "place": {
+        "place_id": "gn-3077244",
+        "name": "Děčín",
+        "country": "Czechia",
+        "subdivision": "Ústí nad Labem Region",
+        "lat": 50.78215,
+        "lon": 14.21478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Děčín",
+          "url": "https://en.wikipedia.org/wiki/Děčín",
+          "text": "Děčín (Czech pronunciation: [ˈɟɛtʃiːn]; German: Tetschen) is a city in the Ústí nad Labem Region of the Czech Republic. It has about 46,000 inhabitants. It is the seventh largest municipality in the country by area. It is located near the border with Germany, at the confluence of the Elbe and Ploučnice rivers, on the border of two protected landscape areas.\nDěčín is an important traffic junction of land, rail and water transport. The city first developed due to the importance of the Elbe River as a transport route and, from the mid-19th century, due to the important railway connection between Prague and Germany. Secondary and higher education in the city is focused on transport. Tourism is also important for Děčín's economy. The main tourist destinations in Děčín include Děčín Castle and Děčín Zoo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "decin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4067,
+    "attempt": 4037,
+    "place_id": "gn-3156529",
+    "input": {
+      "place": {
+        "place_id": "gn-3156529",
+        "name": "Fredrikstad",
+        "country": "Norway",
+        "subdivision": "Østfold",
+        "lat": 59.2181,
+        "lon": 10.9298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fredrikstad",
+          "url": "https://en.wikipedia.org/wiki/Fredrikstad",
+          "text": "Fredrikstad (Norwegian: [ˈfrɛ̀drɪkstɑ] ; previously Frederiksstad; literally \"Fredrik's Town\") is a port city and municipality in Østfold county, Norway. The administrative centre of the municipality is the city of Fredrikstad.\nThe city of Fredrikstad was founded in 1567 by King Frederick II, and established as a municipality on 1 January 1838 (see formannskapsdistrikt). The rural municipality of Glemmen was merged with Fredrikstad on 1 January 1964. The rural municipalities of Borge, Onsøy, Kråkerøy, and Rolvsøy were merged with Fredrikstad on 1 January 1994.\nThe city straddles the river Glomma where it meets the Skagerrak, about 20 kilometres (12 mi) from the Swedish border. Along with neighboring Sarpsborg, Fredrikstad forms the fifth largest city in Norway: Fredrikstad/Sarpsborg. As of 31 December 2024, according to Statistics Norway, these two municipalities have a total population of 146,001 with 85,862 in Fredrikstad and 60,139 in Sarpsborg.\nFredrikstad was built at the mouth of Glomma as a replacement after Sarpsborg (15 kilometres (9 miles) upstream) was burnt down by the Swedish Army in the 1500s. Some of the citizens stayed behind and rebuilt their old town at its original site and got their city status back in 1839.\nThe city centre is on the west bank of the Glomma, while the old town on the east bank is Northern Europe's best preserved fortified town.\nFredrikstad used to have a large sawmill industry and was an important harbour for timber export, then later on shipbuilding, until the main yard was closed in 1988. The main industries are currently various chemical plants and other light industry.\nIn 2005, Fredrikstad was the final host port for the Tall Ships' Race, attracting thousands to the city. In 2019, it was the first host port.\nIn 2017, Fredrikstad won the national award for most attractive city. The award is given yearly by the Norwegian government on the basis of social, economic and environmental factors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "fredrikstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4068,
+    "attempt": 4038,
+    "place_id": "gn-3202641",
+    "input": {
+      "place": {
+        "place_id": "gn-3202641",
+        "name": "Cetinje",
+        "country": "Montenegro",
+        "subdivision": "Cetinje",
+        "lat": 42.39063,
+        "lon": 18.91417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cetinje",
+          "url": "https://en.wikipedia.org/wiki/Cetinje",
+          "text": "Cetinje (Montenegrin Cyrillic: Цетиње, pronounced [t͡sětiɲe]) is a town in Montenegro. It is the former royal capital (Montenegrin: prijestonica / приjестоница) of Montenegro and is the location of several national institutions, including the official residence of the president of Montenegro.\nAccording to the 2023 census, the town had a population of 12,460 while the Cetinje Municipality had 14,465 residents. Cetinje is the centre of Cetinje Municipality. The city rests on a small karst plain surrounded by limestone mountains, including Mount Lovćen, the legendary mountain in Montenegrin historiography. Cetinje was founded in the 15th century and became a cradle of the culture of Montenegro. Its status as the honorary capital of Montenegro is due to its heritage as a long-serving former capital of Montenegro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "cetinje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4069,
+    "attempt": 4039,
+    "place_id": "gn-3384482",
+    "input": {
+      "place": {
+        "place_id": "gn-3384482",
+        "name": "Brokopondo",
+        "country": "Suriname",
+        "subdivision": "Brokopondo District",
+        "lat": 5.05594,
+        "lon": -54.98043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brokopondo",
+          "url": "https://en.wikipedia.org/wiki/Brokopondo",
+          "text": "Brokopondo (Eastern Maroon Creole: Bokopondo or Bookopondo) is the capital town of the Brokopondo District, Suriname. It is located on the west shore of the Suriname river, just north of the Afobaka dam, 105 kilometers (65 miles) south-east of Suriname capital city of Paramaribo. Brokopondo can be reached via the Avobakaweg from Paranam to Afobaka.\nNearby is a granite monument made by sculptor Jo Rens, displaying two men: one standing with a parrot and one sitting and writing. It is meant to symbolize the past and the future. There is also a large beach next to the Suriname river near the city centre. Demographically, the largest ethnic group of Brokopondo are the Maroons.\nThe Brokopondo Development Plan has designated the town of Brokopondo as one of the two major centres in the region - the other being Brownsweg - with a focus on tourism. There is a large beach next to the Suriname river near the city centre called Anani Beach. Additional developments will be a proper city centre, a bus station, a large hotel with at least 200 beds, and a centre for cultural studies.\nBrokopondo is home to a Medische Zending healthcare centre, hotel, school, and police station. In 2014, multi functional centre was opened. On 10 January 2020, a waste incinerator was installed.\nA growing concern is the activity of gold prospectors who not only poison the rivers with mercury, but are digging away the edge of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "brokopondo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4070,
+    "attempt": 4040,
+    "place_id": "gn-3386213",
+    "input": {
+      "place": {
+        "place_id": "gn-3386213",
+        "name": "Touros",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.19889,
+        "lon": -35.46083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Touros",
+          "url": "https://en.wikipedia.org/wiki/Touros",
+          "text": "Touros (lit. \"bulls\") is a municipality in Rio Grande do Norte, Brazil. It is known as \"Brazil's Corner\" because it is located at the northeast corner of the country, being the closest South American city to Africa (2,841 km (1534 knots) from Kabrousse in southwestern Senegal). Touros has many varieties of fish, and there is a nearby seawater basin in the ocean formed by banks of coral.\nBordering municipalities include Rio do Fogo to the southeast, Pureza to the south, João Câmara to the southwest, Parazinho further to the west and São Miguel do Gostoso to the northwest.\nTouros is near Rio Carnaubinha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "touros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

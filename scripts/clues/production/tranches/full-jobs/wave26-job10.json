@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5220,
+    "attempt": 5181,
+    "place_id": "gn-5101873",
+    "input": {
+      "place": {
+        "place_id": "gn-5101873",
+        "name": "North Arlington",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.78843,
+        "lon": -74.1332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Arlington, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Arlington,_New_Jersey",
+          "text": "North Arlington is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 16,457, an increase of 1,065 (+6.9%) from the 2010 census count of 15,392, which in turn reflected an increase of 211 (+1.4%) from the 15,181 counted in the 2000 census.\nAs the site of Holy Cross Cemetery, which has interred almost 290,000 individuals since its establishment in 1915, and with another Jewish cemetery including several thousand more burials, North Arlington has almost 20 times more dead people than living, with more burials than the living population of Newark, the state's largest city. Holy Cross has an average of 2,600 interments each year, of which about 65% are burials, with the remainder split between entombment in mausoleums or crypts and burial of cremated remains. Expansion of the mausoleum will bring its capacity to nearly 36,000 interments, with the cemetery's total capacity of about 750,000 expected to last past the year 2090. The cemetery covers 208 acres (84 ha) and was assessed at $185 million, though its non-profit status means that the municipality generates no tax revenue from a property that covers almost an eighth of the borough's land area.\nNorth Arlington was ranked eighth by Money magazine on its list of \"Best Places to Live 2017\", which cited the borough's healthy economy, affordable homes and a high quality of life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 204,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "north arlington",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arlington",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5221,
+    "attempt": 5182,
+    "place_id": "gn-3031277",
+    "input": {
+      "place": {
+        "place_id": "gn-3031277",
+        "name": "Bougival",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.86223,
+        "lon": 2.14148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bougival",
+          "url": "https://en.wikipedia.org/wiki/Bougival",
+          "text": "Bougival (French pronunciation: [buʒival] ) is a suburban commune in the Yvelines department in the Île-de-France region in northern France. It is 15.3 km (9.5 mi) west from the centre of Paris, on the left bank of the Seine, on the departmental border with Hauts-de-Seine.\nAs the site where many of the Impressionists (including Claude Monet, Alfred Sisley, Berthe Morisot and Pierre-Auguste Renoir) painted country scenes along the Seine, the town today hosts a series of six historical placards, known as the \"Impressionists Walk\", at locations from which the noted painters depicted the scenes of Bougival. It is part of the Pays des Impressionnistes.\nBougival is also noted as the site of the former Machine de Marly, a sprawling, complicated hydraulic pumping device that began supplying the massive quantity of water required by the fountains at Palace of Versailles in the late 17th century.  Considered one of the foremost engineering accomplishments of its era, the cacophonous, breakdown-prone apparatus comprised fourteen waterwheels (approximately 38 feet in diameter) driven by the current of the Seine — in turn powering more than 250 pumps, delivering water up a 500-foot vertical rise through a series of pumping stations, holding tanks, reservoirs, pipes and mechanical linkages.  In use until 1817, the machine was subsequently updated, replaced with another pumping building in 1858 and finally replaced by an electrical generator in 1963.  The building itself remained until 1968. Remnants are visible today at the riverbank.\nIn Bougival, Georges Bizet composed the opera Carmen at his home on Rue Ivan Tourguenievf on the Seine, close to where Russian novelist and playwright Ivan Turgenev had a dacha built, named Les Frênes (current-day Villa Viardot). A local monument commemorates the Montgolfier brothers, pioneers of flight; the commune hosts the annual Festival of Bougival et des Coteaux de Seine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 201,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "bougival",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5222,
+    "attempt": 5183,
+    "place_id": "gn-3527720",
+    "input": {
+      "place": {
+        "place_id": "gn-3527720",
+        "name": "Espita",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 21.01062,
+        "lon": -88.30672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espita, Yucatán",
+          "url": "https://en.wikipedia.org/wiki/Espita,_Yucatán",
+          "text": "Espita is a town in Espita Municipality, Yucatán (Mexico) located on the Litoral Oriente (East Coast) or Region I of Yucatan. It has an average height of 27 meters and is located at a distance of 165 km from the Merida City, 80 km from Izamal, 58 km from Chichen Itza, 49 km from Valladolid, 35 km from Ekʼ Balam and 27 km from Tizimín.\nDuring pre-Hispanic times, the site where the town stands today was part of the province of the cupules, where later, with the arrival of the Spanish, was founded the present town and established the encomienda system in 1549. Since colonization vast buildings were built, among which stands the church dedicated to Saint Joseph. In the nineteenth century, the town housed some of the most important maize haciendas in the state, due to its booming economy and the impulse to culture, Espita was considered one of the cultural centers of the Yucatan, and he was known by the nickname of \"The Athens of Yucatan\". Towards the second half of the twentieth century, the town experienced a decline in its development due in large part to the closure of the haciendas and the consequent decline of its economy.\nToday Espita is the fourth most populous town in the eastern of Yucatan, only after Valladolid, Tizimín and Chemax.\nIn 2023, Espita was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 201,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "espita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5223,
+    "attempt": 5184,
+    "place_id": "gn-2640496",
+    "input": {
+      "place": {
+        "place_id": "gn-2640496",
+        "name": "Penarth",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.4386,
+        "lon": -3.17342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penarth",
+          "url": "https://en.wikipedia.org/wiki/Penarth",
+          "text": "Penarth ( pen-ARTH, Welsh: [pɛnˈarθ]) is a town and community in the Vale of Glamorgan, Wales, approximately three miles (five kilometres) south of Cardiff city centre on the west shore of the Severn Estuary at the southern end of Cardiff Bay.\nPenarth is a seaside resort in the Cardiff Urban Area, and the second largest town in the Vale of Glamorgan, next only to the administrative centre of Barry.\nDuring the Victorian era Penarth was a highly popular holiday destination, promoted nationally as \"The Garden by the Sea\", and was packed by visitors from the Midlands and the West Country as well as day trippers from the South Wales valleys, mostly arriving by train. Today, the town, with its traditional seafront, continues to be a regular summer holiday destination (predominantly for older visitors), but their numbers are much lower than was common from Victorian times until the 1960s, when cheap overseas package holidays were introduced.\nAlthough the number of holiday visitors has greatly declined, the town retains a substantial retired population, representing over 24% of residents, but Penarth is now predominantly a dormitory town for Cardiff commuters. The town's population was recorded as 20,396 in the 2001 United Kingdom census. The built-up area had a population of 27,226, but this figure does not include nearby suburb Dinas Powys.\nThe town retains extensive surviving Victorian and Edwardian architecture in many traditional parts of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "penarth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5224,
+    "attempt": 5185,
+    "place_id": "gn-6690989",
+    "input": {
+      "place": {
+        "place_id": "gn-6690989",
+        "name": "Bethnal Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52718,
+        "lon": -0.06109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethnal Green",
+          "url": "https://en.wikipedia.org/wiki/Bethnal_Green",
+          "text": "Bethnal Green is an area in London, England, and is located in the London Borough of Tower Hamlets. It is in east London and part of the East End. The area emerged from the small settlement which developed around the Green, much of which survives today as Bethnal Green Gardens, beside Cambridge Heath Road. By the 16th century the term applied to a wider rural area, the Hamlet of Bethnal Green, which subsequently became a Parish, then a Metropolitan Borough before merging with neighbouring areas to become the north-western part of the new Tower Hamlets.\nEconomic focus shifted from mainstream farming produce for the City of London – through highly perishable goods production (market gardening), weaving, dock and building work and light industry – to a high proportion of commuters to city businesses, public sector/care sector roles, construction, courier businesses and home-working digital and creative industries. Identifiable slums in the maps of Booth in Life and Labour of the People in London (3 editions, 1889–1903) were in large part cleared before the aerial bombardment of the Second World War which accelerated clearance of many tightly packed terraces of small houses to be replaced with green spaces and higher-rise social housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "bethnal green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bethnal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5225,
+    "attempt": 5186,
+    "place_id": "gn-6930127",
+    "input": {
+      "place": {
+        "place_id": "gn-6930127",
+        "name": "Bairro Alto",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.7119,
+        "lon": -9.14411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bairro Alto",
+          "url": "https://en.wikipedia.org/wiki/Bairro_Alto",
+          "text": "Bairro Alto (Portuguese pronunciation: [ˈbajʁu ˈaltu]; literally: Upper District) is a central district of the city of Lisbon, the Portuguese capital. Unlike many of the civil parishes of Lisbon, this region can be commonly explained as a loose association of neighbourhoods, with no formal local political authority but social and historical significance to the urban community of Lisbon and of Portugal as a whole.\nThe bairro or \"neighbourhood\" resulted from urban expansion in the 16th century, forming outside the walls of the historical city, and is characterized by an almost orthogonal tract (developing from two phases of distinct urbanization).\nIt is a fundamental quarter of Lisbon, organized into a hierarchical scheme of roads and lanes: the roads, the structural axis, run perpendicular to the river; and the lanes, or secondary axis, cut parallel to the river. The matrix of allotments reflects the persistent use of the medieval layout; the division and multiplication of this module had its origin in the variations of the architectural typology. The space constructed is dominated by living spaces implanted in long narrow lots, three to four storeys in height, with asymmetric facades consisting of windows along the various storeys and staircases along the lateral flanks. Although less representative, the Pombaline-era buildings are common, essentially introducing modifications to the level of the façade's composition. Although there are many typological variations to the facade designs, certain elements are repeated, such as the corners, bay and sill windows, eaves and attics, securing a homogeneous urbanized front."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "bairro alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bairro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5226,
+    "attempt": 5187,
+    "place_id": "gn-8436473",
+    "input": {
+      "place": {
+        "place_id": "gn-8436473",
+        "name": "Financial District",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.70789,
+        "lon": -74.00857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Financial District, Manhattan",
+          "url": "https://en.wikipedia.org/wiki/Financial_District,_Manhattan",
+          "text": "The Financial District of Lower Manhattan, also known as FiDi, is a neighborhood located on the southern tip of Manhattan in New York City. It is bounded by the West Side Highway on the west, Chambers Street and City Hall Park on the north, Brooklyn Bridge on the northeast, the East River to the southeast, and South Ferry and the Battery on the south.\nThe City of New York was created in the modern-day Financial District in 1624, and the neighborhood roughly overlaps with the boundaries of the New Amsterdam settlement in the late 17th century. The district comprises the offices and headquarters of many of the city's major financial institutions, including the New York Stock Exchange and the Federal Reserve Bank of New York. Anchored on Wall Street in the Financial District, New York City has been called both the leading financial center and the most economically powerful city of the world, and the New York Stock Exchange is the world's largest stock exchange by total market capitalization. Several other major exchanges have or had headquarters in the Financial District, including the New York Mercantile Exchange, NASDAQ, the New York Board of Trade, and the former American Stock Exchange.\nThe Financial District is part of Manhattan Community District 1, and its primary ZIP Codes are 10004, 10005, 10006, 10007, and 10038. It is patrolled by the 1st Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "financial district",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "financial",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "district",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5227,
+    "attempt": 5188,
+    "place_id": "gn-2639888",
+    "input": {
+      "place": {
+        "place_id": "gn-2639888",
+        "name": "Princes Risborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.72549,
+        "lon": -0.83144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Princes Risborough",
+          "url": "https://en.wikipedia.org/wiki/Princes_Risborough",
+          "text": "Princes Risborough ( ) is a market town and civil parish in Buckinghamshire, England; it is located about 8 miles (13 km) south of Aylesbury, 9 miles (14 km) northwest of High Wycombe, and 7 miles (11 km) south of Thame. It lies at the foot of the Chiltern Hills, at the north end of a gap or pass through the Chilterns; the south end of which is at West Wycombe. The A4010 road follows this route from West Wycombe through the town and then on to Aylesbury.\nHistorically, it was both a manor and an ecclesiastical parish, of the same extent as the manor, which comprised the present ecclesiastical parish of Princes Risborough (excluding Ilmer) and also the present ecclesiastical parish of Lacey Green, which became a separate parish in the 19th century. It was long and narrow (a \"strip parish\"), taking in land below the Chiltern scarp, the slope of the scarp itself and also land above the scarp extending into the Chiltern hills. The manor and the parish extended from Longwick in the north through Alscot, the town of Princes Risborough, Loosley Row and Lacey Green to Speen and Walters Ash in the south.\nSince 1934, the civil parish of Princes Risborough (formerly the same as the ecclesiastical parish) has included the town of Princes Risborough, the village of Monks Risborough (but not the outlying parts) and part of Horsenden but has excluded Longwick. It is within the Wycombe district of Buckinghamshire and operates as a town council within Wycombe district.\nThe town is overlooked by the Whiteleaf Cross, a chalk cross carved into the hillside that's just northeast of the town. Though the cross itself lies just above the village with the same name, the landmark is located within the area of Monks Risborough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "princes risborough",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "princes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "risborough",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5228,
+    "attempt": 5189,
+    "place_id": "gn-2644367",
+    "input": {
+      "place": {
+        "place_id": "gn-2644367",
+        "name": "Littleborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.64413,
+        "lon": -2.09581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Littleborough, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Littleborough,_Greater_Manchester",
+          "text": "Littleborough ( LIT-əl-bər-ə) is a town in the Metropolitan Borough of Rochdale, Greater Manchester, England, in the upper Roch Valley by the foothills of the South Pennines, 3 miles (4.8 km) northeast of Rochdale and 13 miles (20.9 km) northeast of Manchester; Milnrow and the M62 motorway are to the south, and the rural uplands of Blackstone Edge to the east. According to the 2001 census, Littleborough, and its suburbs of Calderbrook, Shore and Smithy Bridge, had a population of 13,807.\nWithin the boundaries of the historic county of Lancashire, Littleborough and its surroundings have provided evidence of Neolithic, Celtic, Roman and Anglo-Saxon activity in the area. During the Middle Ages, Littleborough was a hamlet in the manor of Hundersfield, parish of Rochdale and part of the Salford Hundred. It was focused upon the junction of two ancient routes over the Pennines – one of which may have been a Roman road — that joined to cross the River Roch. By 1472, Littleborough consisted of a chapel, a cluster of cottages, and an inn, and its inhabitants were broadly farmers who were spurred to weave wool by merchants who passed between the markets at Rochdale and Halifax. When cotton was introduced as a base to make textiles, Littleborough experienced an influx of families, mostly from the neighbouring West Riding of Yorkshire. Affluent homes and estates were established on Littleborough's fringes.\nIn the late 18th century, the low-altitude Summit Gap between Littleborough and Walsden was approved as the best route over the Pennines for the Rochdale Canal and the Manchester to Leeds railway; Hollingworth Lake was built at Littleborough's south side as a feeder reservoir to regulate the waters of the canal. This infrastructure encouraged industrialists to modify Littleborough's traditional handloom cloth workshops with a mechanised form of textile production. Attracted to the area's natural resources and modern infrastructure, coal mining, engineering ventures and increasingly large textile mills contributed to Littleborough's population growth and urbanisation, sealing its status as a mill town. Local government reforms established the Littleborough Urban District in 1894 which was governed by its own district council until its abolition in 1974.\nBy the mid-20th century, imports of cheaper foreign goods prompted the gradual deindustrialisation of Littleborough, but its commercial diversity allowed it to repel the ensuing economic depression experienced elsewhere in North West England. Subsumed into the Metropolitan Borough of Rochdale in 1974, Littleborough endures as a commuter town with a distinct community; its Civic Trust works to preserve and enhance its historic character, and societies exist to use the surrounding countryside for water-skiing, horse riding and other recreational activities. Littleborough's stone-built town centre is designated as a Conservation Area for its special architectural qualities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 448
+    },
+    "banned_terms": [
+      {
+        "term": "littleborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5229,
+    "attempt": 5190,
+    "place_id": "gn-1636990",
+    "input": {
+      "place": {
+        "place_id": "gn-1636990",
+        "name": "Maba",
+        "country": "Indonesia",
+        "subdivision": "North Maluku",
+        "lat": 0.7007,
+        "lon": 128.29197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maba, Indonesia",
+          "url": "https://en.wikipedia.org/wiki/Maba,_Indonesia",
+          "text": "Maba is a town in Kota Maba District, one of the ten administrative districts (kecamatan) in East Halmahera Regency, North Maluku Province of Indonesia. The town (\"Maba Sangaji\" or \"Gotowasi\") covers an area of 354.52 km2 and had a population of 2,405 at the mid 2024 estimates. It is the administrative centre for Kota Maba District as well as for East Halmahera Regency.\nIn all, there are five districts in the Maba area which together comprise the southeastern half of the regency (and of the northeastern peninsula of Halmahera Island, together with that portion of the southeastern peninsula within the regency); altogether they cover a land area of 3,662.22 km2, with 49,419 inhabitants in mid 2024.\nThe most southerly of the five is South Maba District (Kecamatan Maba Selatan), which lies entirely on the southeastern peninsula of Halmahera Island, but also includes 23 small islands in Buli Bay or the Gulf of Buli (the large inlet from the Halmahera Sea which separates the northeastern and southeastern peninsulas of Halmahera), and is composed of nine villages (desa), all sharing the postcode of 97861. They are listed with their areas and their populations as at mid 2024.\n\nKota Maba District, which includes the town of Maba, is mainly situated on the southeastern peninsula. It also includes several small islands in Buli Bay, and is composed of six towns and villages (desa), all sharing the postcode of 97862. They are listed from south to north with their areas and their populations as at mid 2024.\n\nMaba District (not to be confused with Kota Maba District described above) is situated to the north of Kota Maba District on the southern coast of the northeastern peninsula of Halmahera Island. It also includes several small islands in Buli Bay (notably the islands of Pulau Batuso, Pulau Gee and Pulau So) and is composed of ten towns and villages (desa), all sharing the postcode of 97860. They are listed from south to north with their areas and their populations as at mid 2024. Its administrative centre is the town of Buli, formerly Boeli. Most of the people in Buli are Christian and about a third of the population is Muslim.\n\nThe next, north of Maba District, is Central Maba District (Kecamatan Maba Tengah), which lies entirely on the northeastern peninsula of Halmahera Island, and is composed of twelve villages (desa), all sharing the postcode of 97863. They are listed with their areas and their populations as at mid 2024.\n\nThe most northerly of the five is North Maba District (Kecamatan Maba Utara), which also lies entirely on the northeastern peninsula of Halmahera Island, and is composed of ten villages (desa), all sharing the postcode of 97864. They are listed with their areas and their populations as at mid 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 195,
+      "fullExtractWords": 462
+    },
+    "banned_terms": [
+      {
+        "term": "maba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5230,
+    "attempt": 5191,
+    "place_id": "gn-2171168",
+    "input": {
+      "place": {
+        "place_id": "gn-2171168",
+        "name": "Coburg",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.75,
+        "lon": 144.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coburg, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Coburg,_Victoria",
+          "text": "Coburg is an inner-northern suburb of Melbourne, in Victoria, Australia, 8 km (5.0 mi) north of the Melbourne central business district. It is mainly a part of the City of Merri-bek local government area, with a handful of properties on its eastern boundary in the City of Darebin. The population of Coburg at the 2021 census was 26,574.\nKnown for its large Lebanese, Greek and Italian populations, Coburg is famously culturally diverse, with its primary shopping stretch, Sydney Rd, being known across Melbourne for its variety of storefronts, ranging from the suburb's specialty; kebab shops, cafés, Greek and Italian style patisseries, to grocery stores and delis of different cultures.\nSince European settlement, the area became known as Pentridge (named after Pentridge, Dorset), Coburg was surveyed by Robert Hoddle in 1837–1838 and a 132-hectare (327-acre) reservation for a village was established, served by two district roads: Bell St West and what would be called Sydney Road. In an effort by the council to separate the broader area's reputation from the already infamous HM Prison Pentridge, the area became known as Coburg in 1870, and was later formally proclaimed as the Shire of Coburg in 1874.\nCoburg's boundaries are Gaffney Street and Murray Road in the north, Elizabeth Street and Merri Creek in the east, Moreland Road in the South and Melville Road, Devon Avenue, Sussex Street and West Street in the west. Coburg is designated one of 26 Principal Activity Centres in the Melbourne 2030 Metropolitan Strategy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 194,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "coburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5231,
+    "attempt": 5192,
+    "place_id": "gn-4349594",
+    "input": {
+      "place": {
+        "place_id": "gn-4349594",
+        "name": "Brooklyn",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.23039,
+        "lon": -76.60219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklyn, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn,_Baltimore",
+          "text": "Brooklyn is one of the southernmost neighborhoods in Baltimore, Maryland. It is located near Anne Arundel County along Governor Ritchie Highway which is also Maryland Route 2. Its main roads are South Hanover Street, Potee Street, East Patapsco Avenue, Sixth Street, Tenth Street, and West Bay Avenue which borders the neighboring Curtis Bay community to the east, running through Bay Brook Park, which separates the two. South Hanover Street also serves as the dividing line between east–west streets in Brooklyn, as Charles Street (which acts as the east–west divider from downtown north to the city line) does not exist here.\nOften mistaken for the similarly-named Brooklyn Park area, Brooklyn shares the 21225 ZIP Code with the greater Brooklyn Park area, which is across the Baltimore City Line in northern Anne Arundel County, and the community of Cherry Hill to the west and northwest across the western branch of the Patapsco River across the Hanover Street Bridge.\nTo the northeast, along the shoreline of the Patapsco River are the former residential communities of Fairfield and Wagner's Point (also known as East Brooklyn), which were \"islands of houses\" surrounded by the belt of river-front heavy industry. During the construction of the 1955–1957 Baltimore Harbor Tunnel of Interstate 895 (Maryland), another smaller residential island neighborhood of Masonville was purchased and razed for the highway construction. In the past decade these two communities of Fairfield and Wagner's Point have been also bought out and razed. Brooklyn is within the Baltimore City limits, and Brooklyn Park and Brooklyn Heights, along with the smaller neighboring communities of Arundel Village, Arundel Gardens, Pumphrey, and Roland Terrace, are in northern Anne Arundel County.\nBrooklyn is the location of the John R. Hargrove, Sr. District Court Building, located right off of Patapsco Avenue. There are many industrial facilities in the region, mainly shipping ports, rail yards, and oil tanks. Many car imports come through this area, which is at the south end of the Harbor Tunnel that runs off I-895."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 194,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5232,
+    "attempt": 5193,
+    "place_id": "gn-4896728",
+    "input": {
+      "place": {
+        "place_id": "gn-4896728",
+        "name": "Hyde Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.7942,
+        "lon": -87.59394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hyde Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Hyde_Park,_Chicago",
+          "text": "Hyde Park is a neighborhood in and one of the 77 municipally recognized community areas of Chicago, Illinois, United States. It is on the South Side of the city, located on and near the shore of Lake Michigan, 7 miles (11 km) south of the Loop.\nHyde Park is home to the University of Chicago and several seminaries and graduate schools of theology: Catholic Theological Union, the Lutheran School of Theology at Chicago, the Chicago Theological Seminary, and McCormick Theological Seminary (in addition to, UChicago's own Divinity School). The Griffin Museum of Science and Industry and two of Chicago's four historic sites listed in the original 1966 National Register of Historic Places—Chicago Pile-1, the world's first artificial nuclear reactor, and Robie House—are also in the neighborhood. In the early 21st century, Hyde Park received national attention for its association with U.S. president Barack Obama, who, before running for president, was a Senior Lecturer for twelve years at the University of Chicago Law School, an Illinois state senator representing the area, and U.S. senator from Illinois. The Barack Obama Presidential Center is in Jackson Park, on its border with Hyde Park.\nHyde Park's boundaries and subdivisions have several local definitions. The community area's formal boundaries are 51st Street (signed locally as Hyde Park Boulevard) on the north, Midway Plaisance on the south, Washington Park on the west, and Lake Michigan on the east. Another local definition considers a section to the north between 47th Street and Hyde Park Boulevard to be in Hyde Park, although this area is, according to municipal boundaries, the southern half of the Kenwood community area. As such, it is often called \"South Kenwood\". Hyde Park and South Kenwood are also sometimes collectively termed \"Hyde Park-Kenwood\" (as in the name of the epoynmous Historic District, for example). Meanwhile, the portion of Hyde Park that lies between the Illinois Central Railroad tracks and the lake is usually referred to as \"East Hyde Park\" and is usually also taken to include  \"Indian Village\", the small southeastern corner of Kenwood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 190,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "hyde park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hyde",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5233,
+    "attempt": 5194,
+    "place_id": "gn-1733353",
+    "input": {
+      "place": {
+        "place_id": "gn-1733353",
+        "name": "Papar",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.73333,
+        "lon": 115.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papar, Malaysia",
+          "url": "https://en.wikipedia.org/wiki/Papar,_Malaysia",
+          "text": "Papar (Malay: Pekan Papar) is the capital of the Papar District in the West Coast Division of Sabah, Malaysia. Its population was estimated to be around 124,420 in 2010, which is divided between Bruneian Malay (particularly in the villages of Benoni, Buang Sayang, Bongawan, Kampung Laut, Kelanahan, Takis, Kimanis and Kinarut), Kadazan-Dusun (concentrated in the villages of Rampazan, Limbahau, Kinarut, Kopimpinan, Lakut, Mondolipau, Kinuta, Bungug, Padawan, Koiduan, Ulu Kimanis, Sumbiling and Limputung), and Bajau (mostly in the villages of Pengalat Besar, Pengalat Kecil, Kawang, Kuala, Sg Padang and Beringgis). There is also a sizeable Chinese minority (including those of mixed-race or Sino-Native origin), predominantly of the Hakka subgroup, as well as smaller numbers of other races. The town is located 38 kilometres south of the state capital of Kota Kinabalu, with the Papar railway station in the town becoming one of the main stops of the Sabah State Railway.\nThe Papar area is characterised by low-lying coastal areas which extend inland towards the Crocker Range. Such land was traditionally used for growing rice, and the flat paddy fields once common in the district may have given it its name. Despite the rapid expansion of Kota Kinabalu, the district is still dominated by paddy fields, which are largely worked by natives, and fruit orchards, most of which belong to the ethnic Chinese minority. The town itself occupies the southern banks of the Papar River not far from the sea. There are also areas of tidal wetland that are home to mangrove trees and saltwater palm or nipah. Both banks are connected by two steel-concrete bridges, one (with a railway bridge) connecting directly into the town itself, and another much farther upriver (on the old Kota Kinabalu-Papar road) leading into the paddy plantation hamlets. The town has seen considerable growth in recent years but still preserves some of its older buildings and features. Important architectural features which can be seen in the Papar town includes the District Office, Papar Public Library, Papar Public Park, New Papar Market, OKK Mahali Park (which constitutes a large part of the new town), Salleh Sulong Hall and a new bigger Papar Community Hall which also hosts a weekly wet market on its compounds, a sports complex with a field, a stand and a gymnasium, and the new train station, which doubles as a bus and minivan station which serves the Kota Kinabalu-Papar-Beaufort route.\nThe well-known Shaw Brothers film company once operated Papar's sole cinema, called New Gaiety. It closed in the 1990s; however, a nearby street is still named Jalan Cinema (\"Cinema Road\") after the now-defunct theatre. Despite repair and refurbishment over the years, the Papar railway bridge looks much as it did in the Second World War. It featured in Allied plans to retake North Borneo from the Japanese Army. References to it and the Papar River can be found in reports on the  Agas and Semut covert intelligence operations, and later in the Stallion and Oboe 6 attack plans.\nPapar is a major hub for the proselytisation of Islam on the west coast of Sabah, owing to its large Muslim community. The district's first mosque was built near the Kampung Laut \narea around 1890. It is now known as the Masjid Daerah Papar (Papar District Mosque). Other mosques in the district include the Masjid Pekan Bongawan (Bongawan Town Mosque) and Masjid Haji Mohammad Yaakob (Haji Mohammad Yaakob Mosque), located in Bongawan and Beringgis respectively. Beside the Muslim population, the Christian population has been estimated to have grown to about half of the total population in 2016. There are three Catholic churches and one Eastern Orthodox Church in the town centre, namely, St. Joseph which is located in Papar town, The Holy Rosary Church in Limbahau, St. Paul Parish in Jalan Kelatuan Gadong and St. Patrick Kinuta together with other Christian denominations such as Basel, Anglican, Seventh-Day Adventist (SDA) and Borneo Evangelical Church (Sidang Injil Borneo - SIB). A number of Chinese temples are also located around the district and town centre with the presence of many Chinese population there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 675
+    },
+    "banned_terms": [
+      {
+        "term": "papar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5234,
+    "attempt": 5195,
+    "place_id": "gn-3463251",
+    "input": {
+      "place": {
+        "place_id": "gn-3463251",
+        "name": "Floresta Azul",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -14.86,
+        "lon": -39.65972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Floresta Azul",
+          "url": "https://en.wikipedia.org/wiki/Floresta_Azul",
+          "text": "Floresta Azul is a municipality in the state of Bahia in the North-East region of Brazil. The estimated population in 2020 of this quaint municipality is 10,575 residents.\nDeclaration of Incorporation to the Brazilian State\n\"The Municipality of Floresta Azul assumes an indissoluble union with the State of Bahia and the Federative Republic of Brazil, constituted within the democratic State of law, within the sphere of local government, aiming, in its territorial area and with potential, its broad development, building a free, just and solidary community based on: Autonomy, Citizenship, Dignity of the Human Person, In the values of Work and Free Initiative, in Political pluralism. All power emanates from the People and in their name is exercised by their elected representatives or directly represented under the terms of the Organic Law, the State Constitution and the Federal Constitution.\"\nLeadership\nThe first elected mayor of Floresta Azul was Themistocles Matos, or \"Teta\" Matos as he preferred to be called. Matos served as mayor from 1963 to 1966. Prior to his election, Matos administered the region for nearly 12 years and played a crucial role in developing the young town. By petitioning to have the town incorporated into the nation and recognized by the state, the administration of Floresta Azul became eligible to receive state and federal sponsorship for public service initiatives. You will find multiple streets, schools, and churches named after his family and other members of governance.\nWhen it was time to pass the torch, Abidias Pedro dos Santos assumed office from 1967 to 1970. Santos was well known in the region, as he also simultaneously served as the mayor to the neighboring city, Itabuna.\nRaimundo Silva Cardoso served one of the longest official terms in Floresta Azul, holding office in: 1971–1972, 1977–1982 and 1997–2000. In his near 13 years in office, Cardoso is remembered for his charm and efforts to develop the neighborhood of \"Coquinhos\" – a neighborhood that was historically economically depressed.\nMarcelino Guilherme Santana served in office from 1973 to 1976, and is most noted for the creation of Manuel Saturnino Square. This square, named after a popular good samaritan in the community. This square sits at the heart of the town, and is a common place for lovers to stroll and children to play in.\nZely Teixeira de Carvalho also served between the reign of Raimundo Silva Cardoso, between the years of 1983 to 1988. Carvalho was known as \"Mineirao\", which is a demonym for someone who is from the state of Minas Gerais. Given his popularity – he beat his opponents by a landslide during elections. However, his 6-year mandate was cut short when a tragic accident took his life. He was succeeded by Antonio \"Goiaba\" Jose do Rosario. Antonio Jose do Rosario served from 1986 to 1988 and was previously the Vice Mayor of Zely Teixeira de Carvalho. His administration is noted for living in the shadow of his predecessors memory.\nIn 1988, Floresta Azul elected its first female mayor. Liete Carvalho Farias served in office from 1989 to 1992. Her presence in office was a stride for gender progress in the small town.\nRaimundo Salvio's administration began in 2001 and lasted till 2004. He was the tenth mayor of the small town and he died one year after the end of his term.\nCarlos Amilton Oliveira Santos is remembered as the notorious mayor of Floresta Azul, commonly known as \"Garrafão\" – which translates to big bottle, a nod to his vices. He served a total of 6 years (1993–1996 to 2005–2008) and his mandate was marred by corruption scandals. It was revealed that his administration was pocketing public funds when town employees exposed that they hadn't received their paychecks for more than 15 months. His troubled record was enough to make him a major sought after by the law and ousted by the resident population. In his second term, the small town was plastered all over national newspapers in a scandal expose over the lending practices of Banco Matone. Multiple reports and judicial measures have ensured that he does not return to hold public office.\nSanda Maisa Balduino Cardoso Marcelino previously served as the secretary of healthy in the municipality of Floresta Azul from 1997 to 2000. She is an alumna of the Catholic University of Salvador (class of 1988) and has been an active philanthropist in the town. Dr. Sandra has a long history of providing services to the community of Floresta Azul, especially the most needy. She is lauded for never refusing treatment due to a patient's inability to pay, and is known for looking after everyone.  The Dr. Sandra is still the mayor of Floresta Azul.  Her vision is to service the population with first-rate education, active social assistance, youth sports, clean streets and avenues, restoring squares, paving streets and most importantly, developing the local economy. Dr. Sandra is in constant search for investments and alternatives for the municipality.\nEconomy\nHistorically, the early settlers of southern Bahia were lured by the climate of the Mata Atlantica and the lush green forests. Moreover, the region became synonymous with Cacau and Brazilian Cherry Wood, locally known as Jatoba. The name of the town translates to \"Blue Florest\" which refers to the deep colors of its flora. Today there are 2,180 rural properties in the Municipality of Floresta Azul, with approximately 5,000 inhabitants living in the countryside, and 960 properties producing only Cocoa. The estimated quantity of production is approximately 60,000 arrobas produced per year. Moreover, an estimated 540 properties are exclusively for Livestock, with a total herd of 25,000 cattle. It is believed that approximately 20,200 cattle are distributed for consumption per month and 4,800 cows are used in the production of milk, with a monthly collection that reaches 90,000 liters.\nReligion\nWhile Brazil is a predominantly catholic country, the rise of Protestantism gained traction in the second half of the 20th century. Floresta Azul has not one, but two Seventh-Day Adventist Churches. There is the Seventh-Day Adventist Church of Teta Matos, built under the Themistocles Matos Administration, and the Seventh-Day Adventist Church II. Given the lack of communication, transportation, and sectarian literature between established American Seventh Day Adventist Communities and rural Brazilian ones, some local historians speculate that the presence of Sabbatarianism in the inlands of Brazil predates the arrival of the millerate, American-bred, Seventh-day Adventism and perhaps, denotes the presence of Marranos in the local community, that practiced in isolation till they had an entity to congregate under."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 1079
+    },
+    "banned_terms": [
+      {
+        "term": "floresta azul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "floresta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "azul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5235,
+    "attempt": 5196,
+    "place_id": "gn-6156102",
+    "input": {
+      "place": {
+        "place_id": "gn-6156102",
+        "name": "Steinbach",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 49.52579,
+        "lon": -96.68451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steinbach, Manitoba",
+          "url": "https://en.wikipedia.org/wiki/Steinbach,_Manitoba",
+          "text": "Steinbach ( ) (Plautdietsch: /ˈʃtɛinbaχ/) is the third-largest city in the province of Manitoba, Canada, and with a population of 17,806, the largest community in the Eastman region. The city, located about 58 km (36 mi) southeast of the provincial capital of Winnipeg, is bordered by the Rural Municipality of Hanover to the north, west, and south, and the Rural Municipality of La Broquerie to the east. Steinbach was first settled by Plautdietsch-speaking Mennonites from Ukraine in 1874, whose descendants continue to have a significant presence in the city today. Steinbach is found on the eastern edge of the Canadian Prairies, while Sandilands Provincial Forest is a short distance east of the city.\nSteinbach's economy has traditionally been focused around agriculture; however, as the regional economic hub of southeastern Manitoba, Steinbach now has a trading area population of about 50,000 people and significant employment in the financial and insurance services industry, automobile sales, tourism, retail, and manufacturing. The city had a population growth of 11.1% between 2016 and 2021 and has gained national recognition as an immigration destination of Canada and a model for immigrant integration in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "steinbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5236,
+    "attempt": 5197,
+    "place_id": "gn-5095617",
+    "input": {
+      "place": {
+        "place_id": "gn-5095617",
+        "name": "Berkeley Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.68343,
+        "lon": -74.44265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berkeley Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Berkeley_Heights,_New_Jersey",
+          "text": "Berkeley Heights is a township in Union County, New Jersey, United States, on a ridge in north central New Jersey, Berkeley Heights is a commuter town of New York City, in the Raritan Valley region and also bordering both Morris and Somerset counties in the Passaic Valley region. As of the 2020 United States census the township's population was 13,285, an increase of 102 (+0.8%) from the 2010 census count of 13,183, which in turn reflected a decline of 224 (−1.7%) from the 13,407 counted in the 2000 census.\nThe township was originally incorporated as New Providence Township by the New Jersey Legislature on November 8, 1809, from portions of Springfield Township, while the area was still part of Essex County. New Providence Township became part of the newly formed Union County at its creation on March 19, 1857. Portions of the township were taken on March 23, 1869, to create Summit, and on March 14, 1899, to form the borough of New Providence. On November 6, 1951, the name of the township was changed to Berkeley Heights, based on the results of a referendum held that day. The township was named for John Berkeley, 1st Baron Berkeley of Stratton, one of the founders of the Province of New Jersey.\nThe township has been ranked as one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, township residents had a median household income of $147,614, ranked 15th in the state among municipalities with more than 10,000 residents, almost double the statewide median of $76,475.\nThe township was listed as the fifth safest place in New Jersey as well as the ninth safest municipality in the nation according to a 2022 crime statistic compilation from Safewise.com."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 291
+    },
+    "banned_terms": [
+      {
+        "term": "berkeley heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "berkeley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5237,
+    "attempt": 5198,
+    "place_id": "gn-7870895",
+    "input": {
+      "place": {
+        "place_id": "gn-7870895",
+        "name": "Roncesvalles",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.64887,
+        "lon": -79.45016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roncesvalles, Toronto",
+          "url": "https://en.wikipedia.org/wiki/Roncesvalles,_Toronto",
+          "text": "Roncesvalles (  RON-sə-svaylz), also known as Roncesvalles Village or Roncy Village, is a neighbourhood in the city of Toronto, Ontario, Canada, centred on Roncesvalles Avenue, a north–south street leading from the intersection of King and Queen Streets to the south, north to Dundas Street West, a distance of roughly 1.7 kilometres. It is located east of High Park, north of Lake Ontario, in the Taiaiako’n—Parkdale—High Park federal riding, the Parkdale–High Park provincial riding and the municipal Ward 4. Its informal boundaries are High Park to the west, Bloor Street West to the north, Lake Ontario/Queen Street West to the south and Lansdowne Avenue/rail corridor to the east. Originally known as \"Howard Park\", most of this area was formerly within the boundaries of Parkdale and Brockton villages and was annexed into Toronto in the 1880s.\nCulturally, the area is known as the centre of the Polish-Canadian community in Toronto with prominent Polish institutions, businesses and St Casimir's Catholic Church located on Roncesvalles Avenue. The businesses along Roncesvalles have formed the Roncesvalles Village Business Improvement Area and hold the largest Polish Festival in North America, which takes place every September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "roncesvalles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5238,
+    "attempt": 5199,
+    "place_id": "gn-2651706",
+    "input": {
+      "place": {
+        "place_id": "gn-2651706",
+        "name": "Cumnock",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.45445,
+        "lon": -4.26644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumnock",
+          "url": "https://en.wikipedia.org/wiki/Cumnock",
+          "text": "Cumnock (Scottish Gaelic: Cumnag) is a town and former civil parish located in East Ayrshire, Scotland. The town sits at the confluence of the Glaisnock Water and the Lugar Water. There are three neighbouring housing estates which lie just outside the town boundaries, Craigens, Logan and Netherthird, with the former ironworks settlement of Lugar also just outside the town, contributing to a population of around 13,000 in the immediate locale. A new housing development, Knockroon, was granted planning permission on 9 December 2009 by East Ayrshire Council.\nThe 2011 UK Census revealed that the Ayr, Carrick and Cumnock constituency, of which Cumnock is part, had an above-average unemployment rate at 5.6% compared to the Scottish average of 4.8%, with a significant proportion of residents living in local authority housing at 20.2% compared to the Scottish average of 13.2%. The constituency also had a high proportion of retired people and Church of Scotland Protestants at the Census relative to elsewhere in Scotland, with 19% of those living in the constituency retired (14.9% across Scotland) and 43.3% of constituents recognising their religion as Church of Scotland (32.4% across Scotland). 90% of residents identified their ethnicity as White British, with 99% recognising their ethnicity as White. \nThe town is home to the Robert Burns Academy, a new educational campus housing the main Robert Burns Academy secondary school following the merger of Cumnock Academy and Auchinleck Academy, Lochnorris Primary School and Cherry Trees Early Childhood Centre. The campus is the largest educational establishment in Scotland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "cumnock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5239,
+    "attempt": 5200,
+    "place_id": "gn-3446550",
+    "input": {
+      "place": {
+        "place_id": "gn-3446550",
+        "name": "Tibagi",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.50944,
+        "lon": -50.41361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tibagi",
+          "url": "https://en.wikipedia.org/wiki/Tibagi",
+          "text": "Tibagi is a municipality in the state of Paraná in the Southern Region of Brazil.\nSecond largest municipality of Paraná in land, Tibagi expands over an area of over 200 square kilometres (77 sq mi). With the vast territory, its economy is based on agriculture and it is considered the largest wheat producer in Brazil and also stands out as one of the largest producers in the cultivation of grains such as corn, beans and soybeans.\nTourism is among the largest economic strengths, hosting a traditional Brazilian Carnival celebration, and geographic features including the Iapó River and the Guartelá Canyon -- considered to be the 6th largest canyon in the world -- alongside rivers, waterfalls, and hills. For these features Tibagi is a preferred destination for many extreme sports fans who like rafting, mountain climbing, parasailing and others.\nTibagi has humid subtropical climate (Köppen: Cfb), in colder months, it reaches 18°C, and a cool summer with the average temperature of the hottest month below 22°C.\nThe municipality contains the 799-hectare (1,970-acre) Guartelá State Park, created in 1992 to protect the scenic Guartelá Canyon of the Iapó River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "tibagi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

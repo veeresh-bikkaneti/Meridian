@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6286,
+    "attempt": 6241,
+    "place_id": "gn-700700",
+    "input": {
+      "place": {
+        "place_id": "gn-700700",
+        "name": "Mospyne",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 47.89012,
+        "lon": 38.06381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mospyne",
+          "url": "https://en.wikipedia.org/wiki/Mospyne",
+          "text": "Mospyne (Ukrainian: Моспине, pronounced [ˈmɔspɪne] ; Russian: Моспино, romanized: Mospino) is a city in the Proletarskyi District of Donetsk urban hromada, Donetsk Raion, Donetsk Oblast in Ukraine, 8 km (26,000 ft) southeast of Donetsk. The population is estimated as 10,471 (2022 estimate) while the population in 2001 was recorded as 11,736. Since 2014, the city has been under the control of the self-declared Donetsk People's Republic. The city's area is 13.93 km2 (5.38 sq mi).\nWith the Mospyne railway station, the city serves as a junction for freight and passenger trains. The city belongs to the Donetsk-Makiivka urban agglomeration within the Donets Coal Basin and lies on the Hruzka river (a tributary of the Kalmius which flows into the Azov sea). There are also several small rivers within the area of the city. The city has 267 m2 (2,870 sq ft) of green space per capita. The average temperature in January is −6.5 °C (20.3 °F) while in July it's +22 °C (72 °F). There is 500 mm (20 in) of precipitation per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "mospyne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6287,
+    "attempt": 6242,
+    "place_id": "gn-704204",
+    "input": {
+      "place": {
+        "place_id": "gn-704204",
+        "name": "Lyman",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.99012,
+        "lon": 37.80843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lyman, Ukraine",
+          "url": "https://en.wikipedia.org/wiki/Lyman,_Ukraine",
+          "text": "Lyman (Ukrainian: Лиман, IPA: [lɪˈmɑn] ; Russian: Лиман, romanized: Liman), formerly known as Krasnyi Lyman (Ukrainian: Красний Лиман; Russian: Красный Лиман, romanized: Krasnyy Liman; lit. 'Red Liman') from 1925 to 2016, is a city in Donetsk Oblast, Ukraine.\nUntil 2016 it also served as the administrative center of Lyman Raion, though administratively it was not part of the raion and incorporated as a city of oblast significance. It still serves as the administrative center of Lyman urban hromada and is part of Kramatorsk Raion. The population was 20,066 (2022 estimate), down from 28,172 in 2001.\nThe city is located in the historic region of Sloboda Ukraine. It had its origins in a military settlement established by Ukrainian Cossacks in c. 1667. It grew to become a city following the construction of a railway station, and became a key railway hub in the region.\nDuring the Russo-Ukrainian War, the city has seen several battles. The first was the battle of Krasnyi Lyman in 2014, between Ukrainian government forces and Russian proxies loyal to the breakaway Donetsk People's Republic, which was won by Ukrainian forces. It remained under government control throughout the remainder of the war in Donbas, and was renamed to its historic name Lyman in 2016 as part of decommunization in Ukraine.\nDuring the Russian invasion of Ukraine in 2022, Lyman has been a scene of heavy fighting. It was captured by the Russian military in May 2022, before being recaptured by Ukrainian forces in October 2022. The city has been nearly destroyed by the 2022 fighting, and most of the population has fled."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "lyman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6288,
+    "attempt": 6243,
+    "place_id": "gn-8029814",
+    "input": {
+      "place": {
+        "place_id": "gn-8029814",
+        "name": "Summer Hill",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.89146,
+        "lon": 151.13825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summer Hill, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Summer_Hill,_New_South_Wales",
+          "text": "Summer Hill is a suburb of Sydney, in the state of New South Wales, Australia. Summer Hill is located 7 kilometres west of the Sydney central business district, in the local government area of the Inner West Council.\nSummer Hill is a primarily residential suburb of Sydney's Inner West, adjoining two of Sydney's major arterial roads, Parramatta Road and Liverpool Road. The first land grant was made in 1794 to former convict and jailor Henry Kable, and the suburb began growing following the opening of the railway station on the Main Suburban railway line, in 1879.\nBy the 1920s, the suburb had become relatively upper class, with large estates and mansions built throughout the suburb. Some of these still exist today. Following a transition to a working-class suburb in the mid-20th century, when many of the large estates were demolished or subdivided, the suburb today has a \"village\" character and a mix of medium-density apartment blocks and federation houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "summer hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "summer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6289,
+    "attempt": 6244,
+    "place_id": "gn-8437716",
+    "input": {
+      "place": {
+        "place_id": "gn-8437716",
+        "name": "Dirceu Arcoverde",
+        "country": "Brazil",
+        "subdivision": "Piauí",
+        "lat": -9.34251,
+        "lon": -42.43425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dirceu Arcoverde",
+          "url": "https://en.wikipedia.org/wiki/Dirceu_Arcoverde",
+          "text": "Dirceu Arcoverde is a municipality in the state of Piauí in the Northeast region of Brazil.\nIt is a city of medium development of the State of Piauí semiarid region and is situated in the south of the Serra da Capivara National Park. The population is very small and most of the residents live in the countryside extensions. In the urban region has just over 2,500 inhabitants.\nThe municipal seat, the city of Dirceu Arcoverde or Bom Jardim - as it is affectionately called by local residents, is at an altitude of 740 meters (2,430 ft) above sea level and is considered one of the urban areas at higher altitude in the state of Piauí.\nThe weather is warm and seasonal. Summer and fall are humid and rainy seasons, as the winter and spring are dry and no rainfall stations. The average annual temperature is 75.2 °F (24.0 °C) and late spring is the hottest period of the year.\nThe largest natural and cultural heritage of the city are living landscapes of Serra Brothers and religious chapel of Senhor do Bonfim, with over a century of history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "dirceu arcoverde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dirceu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arcoverde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6290,
+    "attempt": 6245,
+    "place_id": "gn-884798",
+    "input": {
+      "place": {
+        "place_id": "gn-884798",
+        "name": "Mvurwi",
+        "country": "Zimbabwe",
+        "subdivision": "Mashonaland Central",
+        "lat": -17.03333,
+        "lon": 30.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mvurwi",
+          "url": "https://en.wikipedia.org/wiki/Mvurwi",
+          "text": "Mvurwi, originally known as Umvukwesi, is a town in Mashonaland Central province in Zimbabwe.\nSome of Mvurwi's schools include Holy Rosary Primary and Secondary School, Mvurwi Primary and High School and Umvukwesi Primary School which is one of the town's most elite learning facilities and produces noteworthy results.\nPreviously, it fell within the breadbasket region (from Banket - Shamva) where much of foodstuffs and the golden leaf were being produced.  Majority of Mvurwians are small scale farmers who rely on the agro-based economy.  The industry sector has to be improved in future, currently it has got Delta Beverage brewing company and Mashonaland Tobacco Sales to mention a few.\nChiote/ Pembi Falls and Galiva are dams surrounding the borders of the town. It is still developing in terms of infrastructure.  It has other government offices such as R.G and major referral hospitals.\nIt was accorded town status styled as Mvurwi Town Council, on 22 February 2010, and is a dynamic, growing urban authority in Mashonaland Central Province. Previously, a service centre under Mazowe RDC, the Town has transformed into a critical agricultural and trading hub, and a diverse population of +/- 16000. \nIt is surrounded by farms and is conducive for farming that is essential for food production of the country.  Currently, the area is developing rapidly with locations such as Kurai, Kurai Extension, Mbizi, Suoguru among others.  Through Devolution of resources by the government, saw it impetus to built the Tobacco Markerts in the area to serve the community at large ths improving the socio-economic activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "mvurwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6291,
+    "attempt": 6246,
+    "place_id": "gn-932341",
+    "input": {
+      "place": {
+        "place_id": "gn-932341",
+        "name": "Mount Moorosi",
+        "country": "Lesotho",
+        "subdivision": "Quthing",
+        "lat": -30.2731,
+        "lon": 27.87076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Moorosi",
+          "url": "https://en.wikipedia.org/wiki/Mount_Moorosi",
+          "text": "Mount Moorosi (or Moorosi's Mountain) is a mountain in the Drakensberg mountain range on the banks of the Orange River in southern Lesotho. It acquired the name Moorosi's Mountain after Moorosi, the Chief of a local tribe, who, after committing acts deemed to hostile to the Cape Colonial administration, fortified himself on the mountain. A Royal Engineer who was posted to the mountain after the siege began stated that: \"Moorosi's Mountain is an isolated kopje, rising steeply on the south bank of the Orange River, about 1,500 feet, and connected with the range on the south by a low narrow nek.\"\nFor actions during the siege three Victoria Crosses were awarded to British troops: Peter Brown, Edmund Hartley and Robert Scott."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mount moorosi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moorosi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6292,
+    "attempt": 6247,
+    "place_id": "gn-1105727",
+    "input": {
+      "place": {
+        "place_id": "gn-1105727",
+        "name": "Kwamhlanga",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -25.43001,
+        "lon": 28.71218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "KwaMhlanga",
+          "url": "https://en.wikipedia.org/wiki/KwaMhlanga",
+          "text": "KwaMhlanga is a town in the Nkangala district municipality of the Mpumalanga province in South Africa. It is the spiritual home of the Ndebele tribe that settled here in the early 18th century.\nKwaMhlanga is 73 km or an hour's drive from the country’s capital, Pretoria on the R573 road.\nThis town developed into the administrative centre for the local government, and now houses the government administration for the North Western Region of the Mpumalanga Province.\nTo the north of KwaMhlanga, on the R568 road near the village of Klipfontein, is located the Manala Royal Kraal; the Ndzundza Mabhoko Royal Kraal is situated further north at Weltevreden. By special arrangement, both of these kraals can be visited by small groups."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "kwamhlanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6293,
+    "attempt": 6248,
+    "place_id": "gn-1263707",
+    "input": {
+      "place": {
+        "place_id": "gn-1263707",
+        "name": "Manipal",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 13.35,
+        "lon": 74.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manipal",
+          "url": "https://en.wikipedia.org/wiki/Manipal",
+          "text": "Manipal (Kannada: [mɐɳipaːlɐ]) is a suburb and town within Udupi, in coastal Karnataka, India. Manipal is located five kilometres away from the centre of Udupi City, in Udupi District, Karnataka (state) in south western India. It is administered by the Udupi City Municipality. The suburb is located in coastal Karnataka, 62 km north of Mangalore and 8 km east of the Arabian Sea. From its location on a plateau, at an altitude of about 75 metres above sea level, it commands a panoramic view of the Arabian Sea to the west and the Western Ghats to the east. Manipal has a tropical climate with moderate to heavy rainfall during the monsoon season, making it lush and green throughout the year.\nHome to the Manipal Academy of Higher Education, the town attracts more than twenty-five thousand students every year, hence most of the population consists of students or university staff. There are numerous spots throughout the suburb that attract students from nearby Mangalore and Udupi such as End Point, Manipal Lake, Malpe Beach, and Peacock Point. The city owes its development to Manipal Academy of Higher Education for converting this into a student city. It is called \"Campus Town\" by the locals.\nA regional information technology hub, Manipal has one of the highest densities of professional and graduates in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "manipal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6294,
+    "attempt": 6249,
+    "place_id": "gn-1284225",
+    "input": {
+      "place": {
+        "place_id": "gn-1284225",
+        "name": "Zalun",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Ayeyarwady",
+        "lat": 17.47941,
+        "lon": 95.55924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zalun",
+          "url": "https://en.wikipedia.org/wiki/Zalun",
+          "text": "Zalun (Burmese: ဇလွန်မြို့) is a town in Hinthada District in Ayeyawady Region in Myanmar and the principal town of Zalun Township. Zalun is located on the west bank of the Irrawaddy River and is subdivided into five wards. The main town area is in north Lammadaw ward and Nyaunbin Zay ward. Santan and South Lammadaw make up the other populated wards, with the last ward, Kanna Ward, stretching along the river, primarily consisting of warehousing, commercial and industrial uses.\nA well-known religious site in Zalun is the Pyitawpyan Pagoda (Burmese: ပြည်တော်ပြန်ဘုရားကြီး), which houses an old Buddha image created by Sanda Thuriya of Dhanyawadi in Arakan. During the Konbaung dynasty's conquest of Arakan, the image was taken to the royal capital. During colonial times, the image was looted, along with other religious and valuable artefacts and taken to Bombay, but was returned in 1859 to Burma, where the boat transporting it was lost after some flooding on the river. The image was being recovered near Zalun, on a sandbank and taken by locals to the pagoda, which was renamed Pyitawpyan meaning \"return to the kingdom\". Other important sites in Zalun include Buddha Andaw and U Thila Stupa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "zalun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6295,
+    "attempt": 6250,
+    "place_id": "gn-1725799",
+    "input": {
+      "place": {
+        "place_id": "gn-1725799",
+        "name": "Baybay",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.6785,
+        "lon": 124.8006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baybay",
+          "url": "https://en.wikipedia.org/wiki/Baybay",
+          "text": "Baybay (IPA: [baɪ'baɪ]), officially the City of Baybay (Cebuano: Dakbayan sa Baybay; Waray: Syudad han Baybay), is a  component city in the province of Leyte, Philippines. In the 2024 census, it has a population of 114,708 people.\nWith an area of 45,934 hectares (460 km2; 180 sq mi), it is the second largest city in the province after Ormoc. Formerly, Baybay was the biggest town in Leyte in terms of population and second in terms of land area, after Abuyog. The Baybay language, a Visayan language distinct from both Waray and Cebuano, is spoken in the city itself.\nBaybay houses a major port on the central west coast of Leyte, where ferries leave for and from Cebu and other islands. It has also the Baybay Public Terminal, serving routes from Tacloban, Ormoc, Maasin, Manila, Davao City, and other towns in Leyte, Southern Leyte, and Samar.\nGenerally an agricultural city, the common means of livelihood are farming and fishing. Some are engaged in hunting and in forestal activities. The most common crops grown are rice, corn, abaca, root crops, fruits, and vegetables. Various cottage industries can also be found in Baybay such as bamboo and rattan craft, ceramics, dress-making, fiber craft, food preservation, mat weaving, metal craft, and Philippine furniture manufacturing and other related activities.\nIt is the home of the Visayas State University, one of the leading schools in Southeast Asia on agricultural research, and was called as \"Resort University.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "baybay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6296,
+    "attempt": 6251,
+    "place_id": "gn-1735262",
+    "input": {
+      "place": {
+        "place_id": "gn-1735262",
+        "name": "Tanah Rata",
+        "country": "Malaysia",
+        "subdivision": "Pahang",
+        "lat": 4.46361,
+        "lon": 101.3763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanah Rata",
+          "url": "https://en.wikipedia.org/wiki/Tanah_Rata",
+          "text": "Tanah Rata is a town located in Cameron Highlands, Pahang, Malaysia. The name \"tanah rata\" means flat ground in Malay and it refers to the relatively flat area on which the town is located amidst this highland region. It has an elevation of 1,440 metres (4,720 ft).\nIt is the largest town in the Cameron Highlands region and contains many facilities and amenities, including the district council, banks and ATMs, the main Police Station of Cameron Highlands and the main hospital in Cameron Highlands. There is a taxi station and a bus station for travel to other parts of Cameron Highlands, as well as to Ipoh and to Kuala Lumpur. There are also backpacker inns and hotels at various prices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tanah rata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tanah",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6297,
+    "attempt": 6252,
+    "place_id": "gn-1785412",
+    "input": {
+      "place": {
+        "place_id": "gn-1785412",
+        "name": "Zhabei",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.25861,
+        "lon": 121.45972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhabei",
+          "url": "https://en.wikipedia.org/wiki/Zhabei",
+          "text": "Zhabei, formerly romanized as Chapei, is a neighborhood and a former district of Shanghai with a land area of 29.26 km2 (11.30 sq mi) and a resident population of 847,300 as of 2013. It is the location of the Shanghai railway station, one of the main railway stations of Shanghai. On November 4, 2015, Zhabei was merged into the smaller but more central Jing'an District.\nHistorically, the district has been highly populated with working class residents. However, due to the shift in the structure of industries and increasing number of immigrants from outside Shanghai, partly due to its reasonable real estate price (compared to its counterparts such as Putuo and Hongkou), the district has become increasingly appealing to city residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "zhabei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6298,
+    "attempt": 6253,
+    "place_id": "gn-2166584",
+    "input": {
+      "place": {
+        "place_id": "gn-2166584",
+        "name": "Fitzroy",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.79839,
+        "lon": 144.97833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fitzroy, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Fitzroy,_Victoria",
+          "text": "Fitzroy is an inner-city suburb in Melbourne, Victoria, Australia, three kilometres (two miles) northeast of the Melbourne central business district, located within the City of Yarra local government area. Fitzroy recorded a population of 10,431 at the 2021 census.\nPlanned as Melbourne's first suburb in 1839, it later became one of the city's first areas to gain municipal status, in 1858, then known as Fitz Roy. It occupies Melbourne's smallest and most densely populated area outside the CBD, just 100 ha.\nFitzroy is known as a cultural hub, particularly for its live music scene and street art, and is the main home of the Melbourne Fringe Festival. Its commercial heart is Brunswick Street, one of Melbourne's major retail, culinary strips. the intersection of Smith and Gurtrude street has become a nightlife hub, especially for queer venues and events.\nLong associated with the working class, Fitzroy has undergone waves of urban renewal and gentrification since the 1980s and today is home to a wide variety of socio-economic groups, featuring both some of the most expensive rents in Melbourne and one of its largest public housing complexes, Atherton Gardens.\nIts built environment is diverse and features some of the finest examples of Victorian era architecture in Melbourne. Much of the suburb is a historic preservation precinct, with many individual buildings and streetscapes covered by Heritage Overlays. The most recent changes to Fitzroy are mandated by the Melbourne 2030 Metropolitan Strategy, in which both Brunswick Street and nearby Smith Street are designated for redevelopment as Activity centres.\nThe suburb was named after Sir Charles Augustus FitzRoy, the Governor of New South Wales from 1846 to 1855. It is bordered by Alexandra Parade (north), Victoria Parade (south), Smith Street (east) and Nicholson Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "fitzroy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6299,
+    "attempt": 6254,
+    "place_id": "gn-2171000",
+    "input": {
+      "place": {
+        "place_id": "gn-2171000",
+        "name": "Collingwood",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.80253,
+        "lon": 144.98872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collingwood, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Collingwood,_Victoria",
+          "text": "Collingwood is an inner-city suburb in Melbourne, Victoria, Australia, 3 km north-east of the Melbourne central business district, located within the City of Yarra local government area. Collingwood recorded a population of 9,179 at the 2021 census.\nThe area now known as Collingwood is thought to have been named Yálla-birr-ang by the Wurundjeri people, the original Indigenous inhabitants of the area. Following colonisation, the suburb was named in 1842 after Baron Collingwood or an early hotel which bore his name. Collingwood is one of the oldest suburbs in Melbourne and is bordered by Smith Street, Alexandra Parade, Hoddle Street and Victoria Parade.\nCollingwood is notable for its historical buildings, with many nineteenth century dwellings, shops and factories still in use. Its major thoroughfare Smith Street, is one of Melbourne's major nightlife and retail strips, and has been voted the coolest street in the world. A former industrial suburb, Collingwood is now considered one of Melbourne's gay villages and houses a number of creative arts businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "collingwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6300,
+    "attempt": 6255,
+    "place_id": "gn-2525095",
+    "input": {
+      "place": {
+        "place_id": "gn-2525095",
+        "name": "Castellammare del Golfo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.02653,
+        "lon": 12.88183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castellammare del Golfo",
+          "url": "https://en.wikipedia.org/wiki/Castellammare_del_Golfo",
+          "text": "Castellammare del Golfo (Italian: [kaˌstɛllamˈmaːre del ˈɡolfo]; Sicilian: Casteḍḍammari [kaˌstɛɖɖamˈmaːɾɪ]; Latin: Emporium Segestanorum or Emporium Aegestensium) is a town and municipality in the Trapani Province of Sicily. The name can be translated as \"Sea Fortress on the Gulf\", stemming from the medieval fortress in the harbor. The nearby body of water conversely takes its name from the town, and is known as Gulf of Castellammare.\nHeading upwards from its marina/harbour called \"Cala Marina\", with many restaurants and bars, the urban plan is made of steps and winding streets that lead to Piazza Petrolo in one direction or towards the main central gardens, where the town center lies with many shops, cafes and restaurants. The main street is called Corso Garibaldi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "castellammare del golfo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castellammare",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "golfo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6301,
+    "attempt": 6256,
+    "place_id": "gn-2635609",
+    "input": {
+      "place": {
+        "place_id": "gn-2635609",
+        "name": "Toton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.90779,
+        "lon": -1.25848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toton",
+          "url": "https://en.wikipedia.org/wiki/Toton",
+          "text": "Toton  is a large suburban village in the Borough of Broxtowe in Nottinghamshire, England. It forms part of the built-up area of Beeston, which in turn forms part of the wider Nottingham Urban Area. The population of the electoral ward of Toton and Chilwell Meadows was 7,298 in the 2001 census; it increased to 8,238 at the 2011 census.\nUntil 1974, Toton was part of Beeston and Stapleford Urban District, having been in Stapleford Rural District until 1935. The border with Derbyshire lies immediately to the west.\nToton adjoins the Chetwynd Barracks (also known as Chilwell Depot), which forms a boundary to the east; the Erewash Valley railway line and Toton traction maintenance depot form a boundary to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "toton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6302,
+    "attempt": 6257,
+    "place_id": "gn-2641637",
+    "input": {
+      "place": {
+        "place_id": "gn-2641637",
+        "name": "Newhaven",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.79693,
+        "lon": 0.05545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newhaven",
+          "url": "https://en.wikipedia.org/wiki/Newhaven",
+          "text": "Newhaven is a port town in the Lewes district of East Sussex, England, lying at the mouth of the River Ouse.\nThe town developed during the Middle Ages as the nearby port of Seaford began drying up, forcing a new port to be established. A sheltered harbour was built in the mid-16th century, and a breakwater in the late 18th, to provide continued access to the sea. Newhaven increased in importance following the arrival of the railway in 1847, and regular cross-Channel ferry services to Dieppe. Though these have been reduced in the 21st century, Newhaven still provides regular ferry services and continues to be used as an important freight terminal. In 2021 the parish had a population of 12,854."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "newhaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6303,
+    "attempt": 6258,
+    "place_id": "gn-2654480",
+    "input": {
+      "place": {
+        "place_id": "gn-2654480",
+        "name": "Broxburn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.93415,
+        "lon": -3.47133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broxburn",
+          "url": "https://en.wikipedia.org/wiki/Broxburn",
+          "text": "Broxburn (Scottish Gaelic: Srath Bhroc, pronounced [ˈs̪ɾa ˈvɾɔʰk]) is a town in West Lothian, Scotland. It is 12 miles (19 km) from the West End of Edinburgh, 5 miles (8.0 km) from Edinburgh Airport and 5 miles (8.0 km) to the north of Livingston. Originally a village known as Easter Strathbock in the medieval period, by 1600, the village had become known as Broxburn. The area developed rapidly during the Victorian era as a result of industrialisation related to shale oil extraction. While much of the industry in the area is now diminished, the town has continued to grow following new residential development, resulting in Broxburn forming a conurbation with neighbouring Uphall. It lies just to the south of Winchburgh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "broxburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6304,
+    "attempt": 6259,
+    "place_id": "gn-2694560",
+    "input": {
+      "place": {
+        "place_id": "gn-2694560",
+        "name": "Ljungby",
+        "country": "Sweden",
+        "subdivision": "Kronoberg",
+        "lat": 56.83324,
+        "lon": 13.94082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ljungby",
+          "url": "https://en.wikipedia.org/wiki/Ljungby",
+          "text": "Ljungby (Swedish: [ˈjɵ̂ŋːbʏ] ) is the central locality of Ljungby Municipality, Kronoberg County, Sweden, with 15,785 inhabitants in 2015.\nLjungby was instituted in 1829 as a köping, or market town, and did not become a municipality of its own when the first local government acts took effect in 1863, but retained part of the surrounding rural municipality of the same name. In 1936 Ljungby got the title stad, Swedish for Town or City. Since 1971 Ljungby is the seat of Ljungby Municipality.\nMuch of the town center was destroyed in the city fire of 1953. At the time of the rebuilding, International Style architecture was used, characterized locally by the Hotel Terazza and adjacent structures, which still remains controversial locally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "ljungby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6306,
+    "attempt": 6260,
+    "place_id": "gn-2745301",
+    "input": {
+      "place": {
+        "place_id": "gn-2745301",
+        "name": "Voorschoten",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.1275,
+        "lon": 4.44861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voorschoten",
+          "url": "https://en.wikipedia.org/wiki/Voorschoten",
+          "text": "Voorschoten (Dutch pronunciation: [ˈvoːrsxoːtə(n)] ) is a town and municipality in the western Netherlands, in the province of South Holland. It is a smaller town in the Randstad, enclosed by the cities of Leiden, Wassenaar and Leidschendam-Voorburg. The municipality covers an area of 11.56 km2 (4.46 sq mi) of which 0.42 km2 (0.16 sq mi) is covered by water.\nThe town is relatively affluent, and the majority of Voorschoten's population are commuters, generally to either the Hague or Leiden. Despite the fact that it is situated in one of the most densely populated areas in the Netherlands, and, indeed, the world, the town retains a strong, independent identity and village-like atmosphere. Several buildings of historical importance are situated in Voorschoten. For example, the old Castle Duivenvoorde, and the Manor Vredenhof – rebuilt by Dirck Jansz Graeff, and until the 18th century in the hands of the De Graeff family – are located in or near Voorschoten.\nThe town's proximity to the Hague, as well as the presence of the British School in the Netherlands in the town, and the American School of the Hague in nearby Wassenaar, means that Voorschoten has a large community of expatriates, particularly British nationals.\nFloris V of Holland granted Voorschoten market rights in 1282.\nIn recent years, the settlement has seen considerable expansion, with the addition of several new areas of housing, such as Starrenburg, Krimwijk II and, most recently, Voorsche Park. The town benefits from excellent sporting and recreational facilities, including hockey, football and baseball clubs, a tennis club, a swimming pool and a golf course. There are a number of churches located throughout the town, the two most striking of which are the main church, located in Voorschoten's historic centre, and the St. Laurentius Church, located in the north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "voorschoten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

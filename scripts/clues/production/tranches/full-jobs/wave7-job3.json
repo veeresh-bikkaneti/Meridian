@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 1253,
+    "attempt": 1241,
+    "place_id": "gn-1734705",
+    "input": {
+      "place": {
+        "place_id": "gn-1734705",
+        "name": "Kuala Terengganu",
+        "country": "Malaysia",
+        "subdivision": "Terengganu",
+        "lat": 5.3302,
+        "lon": 103.1408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuala Terengganu",
+          "url": "https://en.wikipedia.org/wiki/Kuala_Terengganu",
+          "text": "Kuala Terengganu (Malaysian pronunciation: [ˈkuˈala ˈtəˈrəŋˈganu] ; Terengganu Malay: Kole Tranung), colloquially referred to as KT, is the administrative, economic and royal city of the state of Terengganu, Malaysia. Kuala Terengganu is also the seat of Kuala Terengganu District. It is also the only royal capital among the nine royal states of the country to bear its state's name. Kuala Terengganu is located about 440 kilometres (270 mi) northeast of Kuala Lumpur on the East Coast of Peninsular Malaysia. The city is situated at the estuary of Terengganu River, facing the South China Sea.\nAs a district, Kuala Terengganu is the smallest in terms of area, but it and Kuala Nerus District that together form the city area has the largest population in Terengganu. The city population was 406,317 in 2010 and declined to 375,424 in 2020. City status was awarded to Kuala Terengganu with the title Bandaraya Warisan Pesisir Air (English: Waterfront Heritage City) on 1 January 2008.\nBesides being a major political and economic centre to the state, the city is also the main gateway to many of the state's tourist destinations. The attractions in and around the city include Kampung Cina, Pasar Besar Kedai Payang, Terengganu State Museum, and Batu Buruk Beach. Even though the city is not spared from modernity and development, Kuala Terengganu still retains strong Malay influences that are intermixed with other cultures from its long history as a port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "kuala terengganu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kuala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terengganu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1254,
+    "attempt": 1242,
+    "place_id": "gn-1814906",
+    "input": {
+      "place": {
+        "place_id": "gn-1814906",
+        "name": "Chongqing",
+        "country": "China",
+        "subdivision": "Chongqing",
+        "lat": 29.56026,
+        "lon": 106.55771
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chongqing",
+          "url": "https://en.wikipedia.org/wiki/Chongqing",
+          "text": "Chongqing is a provincial-level direct-administered municipality in Southwestern China. It is one of the four direct-administered municipalities of China and the only one located inland. \nThe municipality covers a large geographical area roughly the size of Austria, which includes several disjunct urban areas in addition to Chongqing proper. Due to its classification, the municipality of Chongqing is the largest city proper in the world by population, though it is not the most populous urban area.\nThe municipality of Chongqing is the only Chinese city with a resident population of over 30 million, but that number includes its large rural population. In 2020, Chongqing surpassed Shanghai as China's largest municipality by urban population and, as of 2024, it had an urban population of 23.01 million. The municipality contains 26 districts, eight counties, and four autonomous counties.\nThe city served as the wartime capital of the Republic of China (ROC) during the Second Sino-Japanese War (1937–1945). On 14 March 1997, the current municipality was separated from the surrounding province of Sichuan, with the goal of furthering development in the central and western parts of the country.\nChongqing is one of China's national central cities. It is a connection in the Yangtze River Economic Belt and a base for the country's Belt and Road Initiative. Chongqing Jiangbei International Airport is the second-busiest airport in China, and is one of the top 50 busiest airports in the world. The city's monorail system is the world's longest and busiest, with 70 stations—the most of any system. It is the headquarters of  Changan Automobile, one of the \"Big Four\" car manufacturers in China. As of 2023, the city hosts 12 foreign representations, the fifth-most in China, behind Beijing, Shanghai, Guangzhou, and Chengdu. It is one of the top 35 cities globally by scientific research output, and the municipality is home to several notable universities, including Chongqing University, Southwest University, and Chongqing University of Posts and Telecommunications."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 320
+    },
+    "banned_terms": [
+      {
+        "term": "chongqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1255,
+    "attempt": 1243,
+    "place_id": "gn-1842225",
+    "input": {
+      "place": {
+        "place_id": "gn-1842225",
+        "name": "Gumi",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangbuk-do",
+        "lat": 36.1136,
+        "lon": 128.336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gumi, South Korea",
+          "url": "https://en.wikipedia.org/wiki/Gumi,_South_Korea",
+          "text": "Gumi (Korean: 구미; Korean pronunciation: [ku.mi]) is the second largest and most densely populated city in North Gyeongsang Province, South Korea. It is located on the Nakdong River, halfway between Daegu and Gimcheon, also lies on the Gyeongbu Expressway and Gyeongbu Line railway which are the principal traffic routes of the country.\nThe city is an industrial centre of the country with many companies, including Samsung Electronics, LG Electronics, LG Display, having a manufacturing presence and R&D Centres there.\nThe primary industries are electronics and IT Manufacturing such as smartphones, tablet computers, 5G and 6G networking equipment, semiconductors, OLED and other displays, carbonated fibres, rubber, plastic and metal products. In Gumi, 1,772 companies employ over 80,000 workers. It is the largest scale in Korea. In 2009, the city exported the largest amount in the country and accounted for 96.9% of trade surplus of South Korea in 2000 to 2009.\nThe birthplace of South Korean president Park Chung Hee is in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "gumi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1256,
+    "attempt": 1244,
+    "place_id": "gn-184622",
+    "input": {
+      "place": {
+        "place_id": "gn-184622",
+        "name": "Nakuru",
+        "country": "Kenya",
+        "subdivision": "Nakuru County",
+        "lat": -0.30719,
+        "lon": 36.07225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nakuru",
+          "url": "https://en.wikipedia.org/wiki/Nakuru",
+          "text": "Nakuru, sometimes referred to as Nakuru City, is the capital and largest city of Nakuru County, Kenya. As of 2019, Nakuru had an urban population of 570,674. The city lies along the Nairobi–Nakuru Highway, 160 kilometres (99 mi) from Nairobi, the capital city of Kenya. In December 2021, Nakuru City became the fourth urban area in Kenya to be assigned the status of \"city\".\nBy virtue of being within Nakuru County, the city is variously considered to be part of either the Mount Kenya region or the Great Rift Valley region, although neither region is an official administrative nor governmental subdivision of Kenya. Nakuru City is the largest urban area (by population) of both the Mount Kenya region and the Great Rift Valley region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "nakuru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1257,
+    "attempt": 1245,
+    "place_id": "gn-2637487",
+    "input": {
+      "place": {
+        "place_id": "gn-2637487",
+        "name": "Southampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.90395,
+        "lon": -1.40428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southampton",
+          "url": "https://en.wikipedia.org/wiki/Southampton",
+          "text": "Southampton is a port city and unitary authority in Hampshire, England. It is located approximately 80 miles (130 km) southwest of London, 20 miles (32 km) west of Portsmouth, and 20 miles (32 km) southeast of Salisbury. Southampton had a population of 248,922 at the 2021 census, making it one of the most populous cities in southern England.\nSouthampton forms part of the larger South Hampshire conurbation which includes the city of Portsmouth and the boroughs of Havant, Eastleigh, Fareham and Gosport. A major port, and close to the New Forest, Southampton lies at the northernmost point of Southampton Water, at the confluence of the River Test and Itchen, with the River Hamble joining to the south. Southampton is classified as a Medium-Port City.\nSouthampton was the departure point for the RMS Titanic and home to 500 of the people who died in the sinking. The Spitfire was built in the city, and Southampton has a strong association with the Mayflower, being the departure point before the vessel was forced to return to Plymouth. In the past century the city was one of Europe's main ports for ocean liners. More recently, Southampton is the home port of some of the largest cruise ships in the world. The Cunard Line maintains a regular transatlantic service to New York from the city. Southampton is also one of the largest retail destinations in the South of England.\nSouthampton was heavily bombed during the Second World War during what was known as the Southampton Blitz. It was one of the major embarkation points for D-Day. In the Middle Ages Southampton was where troops left England for the Battle of Agincourt. It was itself raided by French pirates, leading to the construction of the fortified town walls, many of which still stand today. Jane Austen also lived in Southampton for a number of years. In 1964, the town of Southampton acquired city status, becoming the City of Southampton.\nSome notable employers in the city include the University of Southampton, Ordnance Survey, BBC South, Associated British Ports, and Carnival UK."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "southampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1258,
+    "attempt": 1246,
+    "place_id": "gn-2640101",
+    "input": {
+      "place": {
+        "place_id": "gn-2640101",
+        "name": "Poole",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.71429,
+        "lon": -1.98458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poole",
+          "url": "https://en.wikipedia.org/wiki/Poole",
+          "text": "Poole ( ) is a coastal town, seaport on the south coast of England and civil parish in the Bournemouth, Christchurch and Poole unitary authority area in Dorset, England. The town is 21 miles (34 km) east of Dorchester and adjoins Bournemouth to the east. The town had an estimated population of 143,418 in 2024, making it the second-largest town in the ceremonial county of Dorset. Together with Bournemouth and Christchurch, the conurbation has a total population of 400,196 as of the 2021 census.\nThe settlement dates back to before the Iron Age. The earliest recorded use of the town's name was in the 12th century when the town began to emerge as an important port, prospering with the introduction of the wool trade. Later, the town had important trade links with North America and, at its peak during the 18th century, it was one of the busiest ports in Britain. In the Second World War, Poole was one of the main departing points for the Normandy landings.\nPoole is a tourist resort, attracting visitors with its large natural harbour, history, the Lighthouse arts centre and Blue Flag beaches. The town has a commercial port with cross-Channel freight and passenger ferry services, which connect with the Channel Islands of Jersey and Guernsey, as well as the French port town of Saint-Malo, Brittany.\nThe headquarters of the Royal National Lifeboat Institution (RNLI) is in Poole, and the Royal Marines have a base in the town's harbour. Despite their names, Poole is the home of Arts University Bournemouth, the Bournemouth Symphony Orchestra and a significant part of Bournemouth University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "poole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1259,
+    "attempt": 1247,
+    "place_id": "gn-2646914",
+    "input": {
+      "place": {
+        "place_id": "gn-2646914",
+        "name": "High Wycombe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.62907,
+        "lon": -0.74934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "High Wycombe",
+          "url": "https://en.wikipedia.org/wiki/High_Wycombe",
+          "text": "High Wycombe, often referred to as Wycombe (  WIK-əm), is a market town in Buckinghamshire, England. Lying in the valley of the River Wye surrounded by the Chiltern Hills, it is 29 miles (47 km) west-northwest of Charing Cross in London, 13 miles (21 km) south-southeast of Aylesbury, 23 miles (37 km) southeast of Oxford, 15 miles (24 km) northeast of Reading and 8 miles (13 km) north of Maidenhead.\nAccording to the 2021 United Kingdom census, High Wycombe's built up area has a population of 83,535, making it the largest town in the ceremonial county of Buckinghamshire. There has been a market held in the High Street since at least the Middle Ages. The market is currently held on Tuesday, Friday and Saturday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "high wycombe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "high",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wycombe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1260,
+    "attempt": 1248,
+    "place_id": "gn-2867714",
+    "input": {
+      "place": {
+        "place_id": "gn-2867714",
+        "name": "Munich",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.13743,
+        "lon": 11.57549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munich",
+          "url": "https://en.wikipedia.org/wiki/Munich",
+          "text": "Munich (German: München [ˈmʏnçn̩] , Bavarian: Minga [ˈmɪŋ(ː)ɐ] ) is the capital and most populous city of the German state of Bavaria. As of 30 November 2024, its population was 1,604,384, making it the third most-populous city in Germany after Berlin and Hamburg. Munich is the largest city in Germany that is not a state of its own, and it ranks as the 11th-largest city in the European Union (EU). The metropolitan area has around 3 million inhabitants, and the broader Munich Metropolitan Region is home to about 6.2 million people. It is the third largest metropolitan region by GDP in the EU. Munich is located on the river Isar north of the Alps. It is the seat of the Upper Bavarian administrative region. With 4,800 people per km2, Munich is Germany's most densely populated municipality. It is also the second-largest city in the Bavarian dialect area after Vienna.\nThe first record of Munich dates to 1158. The city has played an important role in Bavarian and German history. During the Reformation, it remained a Catholic stronghold. Munich became the capital of the Kingdom of Bavaria in 1806 and developed as a centre for arts, architecture, culture, and science. The House of Wittelsbach ruled until 1918, when the German revolution of 1918–1919 ended their reign and saw the short-lived Bavarian Soviet Republic. In the 1920s, Munich became a centre of political movements, including the rise of the Nazi Party. The city was known as the \"Capital of the Movement\". During World War II, Munich was heavily bombed, but much of its historic architecture has since been restored. After the war, the city's population and economy grew rapidly. Munich hosted the 1972 Summer Olympics and the 1974 FIFA World Cup final.\nMunich is a major centre for science, technology, finance, innovation, business, and tourism. It has a high standard of living, ranking first in Germany and third worldwide in the 2018 Mercer survey. It was named the world's most liveable city by Monocle's Quality of Life Survey 2018. Munich is the wealthiest city in the EU by GDP per capita among cities with over one million inhabitants and is among the most expensive German cities for real estate and rents. In 2023, 30.1% of residents were foreigners, and 19.4% were German citizens with a migration background from abroad. Munich's economy is based on high tech, automobiles, the service sector, information technology, biotechnology, engineering, and electronics. Multinational companies such as BMW, Siemens, Allianz SE, and Munich Re are headquartered there. The city has two research universities and many scientific institutions. Munich is known for its architecture, cultural venues, sports events, exhibitions, and the annual Oktoberfest, the world's largest Volksfest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 447
+    },
+    "banned_terms": [
+      {
+        "term": "munich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1261,
+    "attempt": 1249,
+    "place_id": "gn-3088825",
+    "input": {
+      "place": {
+        "place_id": "gn-3088825",
+        "name": "Płock",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.54682,
+        "lon": 19.70638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Płock",
+          "url": "https://en.wikipedia.org/wiki/Płock",
+          "text": "Płock (pronounced [pwɔt͡sk] ), officially the Ducal Capital City of Płock, is a city in central Poland, on the Vistula river, in the Masovian Voivodeship. According to the data provided by GUS on 31 December 2021, there were 116,962 inhabitants in the city.\nPłock is a seat of the county (powiat) in the west of the Masovian Voivodeship. From 1079 to 1138 it was the capital of Poland. The Cathedral Hill (Wzgórze Tumskie), along with Płock Castle and the Catholic Cathedral containing the sarcophagi of some Polish monarchs, is listed as a Historic Monument of Poland. It was the main city and administrative center of Mazovia in the Middle Ages before the rise of Warsaw, and later it remained a royal city of Poland. It is the cultural, academic, scientific, administrative and transportation center of the west and north Masovian region. Płock is the seat of the Roman Catholic Diocese of Płock, one of the oldest dioceses in the country, founded in the 11th century, and it is also the global headquarters for the Mariavite Church. Poland's oldest school and largest oil refinery are located in Płock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "p ock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "p",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1262,
+    "attempt": 1250,
+    "place_id": "gn-3093692",
+    "input": {
+      "place": {
+        "place_id": "gn-3093692",
+        "name": "Legnica",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.21006,
+        "lon": 16.1619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Legnica",
+          "url": "https://en.wikipedia.org/wiki/Legnica",
+          "text": "Legnica (Polish: [lɛɡˈɲit͡sa] ; German: Liegnitz, [ˈliːɡnɪts] ; Czech: Lehnice) is a city in southwestern Poland, in the central part of Lower Silesia, on the Kaczawa River and the Czarna Woda. As well as being the seat of the county, since 1992 the city has been the seat of the Diocese of Legnica. As of 2023, Legnica had a population of 97,300 inhabitants.\nThe city was first referenced in chronicles dating from the year 1004, although previous settlements could be traced back to the 7th century. The name \"Legnica\" was mentioned in 1149 under High Duke of Poland Bolesław IV the Curly. Legnica was most likely the seat of Bolesław and it became the residence of the dukes of Legnica from 1248 until 1675. Legnica is a city over which the Piast dynasty reigned the longest, for about 700 years, from the time of ruler Mieszko I of Poland after the creation of the Polish state in the 10th century, until 1675 and the death of the last Piast duke George William. Legnica is one of the historical burial sites of Polish monarchs and consorts.\nLegnica became renowned for the fierce battle that took place at Legnickie Pole near the city on 9 April 1241 during the first Mongol invasion of Poland, which ended in the defeat of the Polish-led Christian coalition by the Mongols.\nLegnica is an economic, cultural and academic centre in Lower Silesia, together with Wrocław. The city is renowned for its varied architecture, spanning from early medieval to modern period, and its partially reconstructed Old Town with the Piast Castle, one of the largest in Poland. According to the Foreign direct investment ranking (FDI) from 2016, Legnica is one of the most progressive high-income cities in the Silesian region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "legnica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1263,
+    "attempt": 1251,
+    "place_id": "gn-3101950",
+    "input": {
+      "place": {
+        "place_id": "gn-3101950",
+        "name": "Bytom",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.34802,
+        "lon": 18.93282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bytom",
+          "url": "https://en.wikipedia.org/wiki/Bytom",
+          "text": "Bytom (Polish pronunciation: [ˈbɨtɔm] ; Silesian: Bytōm, Bytōń, German: Beuthen O.S.) is a city in Upper Silesia, in southern Poland. Located in the Silesian Voivodeship, the city is 7 km (4 mi) northwest of Katowice, the regional capital.\nIt is one of the oldest cities in the Upper Silesia, and the former seat of the Piast dukes of the Duchy of Bytom. Until 1532, it was in the hands of the Piast dynasty, then it belonged to the Hohenzollern dynasty. After 1623 it was a state country in the hands of the Donnersmarck family. From 1742 to 1945 the town was within the borders of Prussia and Germany, and played an important role as an economic and administrative centre of the local industrial region. Until the outbreak of World War II, it was the main centre of national, social, cultural and publishing organisations fighting to preserve Polish identity in Upper Silesia. In the interbellum and during World War II, local Poles and Jews faced persecution by Germany.\nAfter the war, decades of the Polish People's Republic were characterized by a constant emphasis on the development of heavy industry, which deeply polluted and degraded Bytom. After 1989, the city experienced a socio-economic decline. The population has also been rapidly declining since 1999. However, it is an important place in the cultural, entertainment, and industrial map of the region. Bytom is home to the Silesian Opera, the Upper Silesian Museum, and part of the Tarnowskie Góry Lead-Silver-Zinc Mine and its Underground Water Management System, a UNESCO World Heritage Site and Historic Monument of Poland. The city is also known as the home of Polonia Bytom, a successful football and ice hockey club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "bytom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1264,
+    "attempt": 1252,
+    "place_id": "gn-3108288",
+    "input": {
+      "place": {
+        "place_id": "gn-3108288",
+        "name": "Tarragona",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.11905,
+        "lon": 1.24544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarragona",
+          "url": "https://en.wikipedia.org/wiki/Tarragona",
+          "text": "Tarragona is a city and municipality in Catalonia, Spain. It is the capital and largest town of Tarragonès county, the Camp de Tarragona region and the province of Tarragona. Geographically, it is located on the Costa Daurada area on the Mediterranean shore, around the mouth of the Francolí.\nDeveloped in a favorable location on a coastal hill by ancient Romans in the context of the Second Punic War near a previous Iberian settlement, Tarraco eventually became the gateway for Roman control of the Iberian Peninsula. It served as the capital, successively, of the provinces of Hispania Citerior and Hispania Tarraconensis and also became a bishopric seat. Urban continuity is presumed to have been the norm in the 8th century following its integration into Al-Andalus. The Camp de Tarragona later turned into a borderland, and the city was abandoned by Muslims by the mid 10th century. Early Christian repopulation of the city and its hinterland in the 12th century took the form of an autonomous principality, before its 1173 full integration into the Principality of Catalonia and the Crown of Aragon.\nThe Archaeological Complex of Tàrraco is a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "tarragona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1265,
+    "attempt": 1253,
+    "place_id": "gn-3171728",
+    "input": {
+      "place": {
+        "place_id": "gn-3171728",
+        "name": "Padua",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.40797,
+        "lon": 11.88586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padua",
+          "url": "https://en.wikipedia.org/wiki/Padua",
+          "text": "Padua ( PAD-ew-ə; Italian: Padova [ˈpaːdova] ; Venetian: Pàdova, Pàdoa or Pàoa) is a city and comune (municipality) in the autonomous region of Veneto in northern Italy, and the capital of the province of Padua. The city lies on the banks of the river Bacchiglione, 40 kilometres (25 miles) west of Venice and 29 km (18 miles) southeast of Vicenza. With a population of 208,202 as of 2026, Padua is the 3rd-largest city in Veneto. It is also the economic and communications hub of the area. Padua is sometimes included, with Venice and Treviso, in the Padua–Treviso–Venice metropolitan area (PATREVE), which has a population of around 2,600,000.\nBesides the Bacchiglione, the Brenta River, which once ran through the city, still touches the northern districts. Its agricultural setting is the Venetian Plain. To the city's south west lies the Euganaean Hills, which feature in poems by Lucan, Martial, Petrarch, Ugo Foscolo, and Percy Bysshe Shelley. Padua has two UNESCO World Heritage List entries: its Botanical Garden, which is the world's oldest, and its 14th-century frescoes, situated in buildings in the city centre such as the Scrovegni Chapel.\nPadua is home to one of the oldest universities in the world, the University of Padua, founded in 1222, where Galileo Galilei and Nicolaus Copernicus taught or studied. In 1610, Galileo observed the moons of Jupiter through a homemade telescope in Padua, marking the second phase of the Copernican Revolution. Today, the university has around 72,000 students and has a profound impact on the city's recreational, artistic and economic activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "padua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1266,
+    "attempt": 1254,
+    "place_id": "gn-3448744",
+    "input": {
+      "place": {
+        "place_id": "gn-3448744",
+        "name": "São José",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.61528,
+        "lon": -48.6275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José, Santa Catarina",
+          "url": "https://en.wikipedia.org/wiki/São_José,_Santa_Catarina",
+          "text": "São José is a city in Santa Catarina, Brazil. It is approximately 5 km from and encircles the continental section of Florianópolis.\nThe municipality of São José, located in Grande Florianópolis, is the fourth oldest in Santa Catarina and was colonized on October 26, 1750, by 182 Azorean couples, from the islands of Pico, Terceira, São Jorge, Faial, Graciosa and São Miguel. In 1829, it received the first nucleus of German colonization of the State.\nRapid development, coupled with population growth and economic power, meant that, on March 1, 1833, through the Resolution of the President of the Province, Feliciano Nunes Pires, São José passed from parish to village (municipality) and, in May 1856, through Provincial Law No. 415, was elevated to the city.\nNot being very touristy in nature, unlike Florianópolis, São José has attracted industries such as telecommunication equipment, textiles, and food processing.\nThe main district of São José are Kobrasol and the Historic Centre.\nSão José is ranked 21st on the HDI in Brazil.\nThe major BR-101 highway passes through São José, making the city a gateway to Florianópolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1267,
+    "attempt": 1255,
+    "place_id": "gn-3457001",
+    "input": {
+      "place": {
+        "place_id": "gn-3457001",
+        "name": "Mogi das Cruzes",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.52278,
+        "lon": -46.18833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mogi das Cruzes",
+          "url": "https://en.wikipedia.org/wiki/Mogi_das_Cruzes",
+          "text": "Mogi das Cruzes (Portuguese pronunciation: [moˈʒi] or [muˈʒi das ˈkɾuzis]) is a municipality in the state of São Paulo, Brazil, located within the metropolitan region of the state capital of the city of São Paulo. The population is 451,505 (2022 census) in an area of 713 km2. It is located 40 km to the east of the city of São Paulo. It was founded in 1560 by the bandeirantes.  The sprawling municipality, which includes many rural areas, is the easternmost arm of São Paulo conburbation (built up area) seen on satellite images.  César de Souza and Brás Cubas districts are considered the suburban core, center of town and a city within the municipality in a horizontal line east of the built-up area of Suzano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mogi das cruzes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mogi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruzes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1268,
+    "attempt": 1256,
+    "place_id": "gn-3467467",
+    "input": {
+      "place": {
+        "place_id": "gn-3467467",
+        "name": "Canoas",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.91778,
+        "lon": -51.18361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canoas",
+          "url": "https://en.wikipedia.org/wiki/Canoas",
+          "text": "Canoas (Portuguese pronunciation: [kaˈnoɐs]) is a municipality in the state of Rio Grande do Sul, Brazil, forming part of the Greater Porto Alegre area. It is the largest municipality of the metropolitan region of Porto Alegre and the third largest municipality of Rio Grande do Sul. Officially declared a city on June 27, 1939, after its separation from São Sebastião do Caí and Gravataí, Canoas derives its name from the historical crafting of canoes in the area. It is the second largest city in the Porto Alegre metropolitan area, with the third-largest population and the third-highest GDP in the state. It is also ranked as the 79th most populous city in Brazil.\nCanoas is an industrial and educational hub, drawing residents from surrounding municipalities. It hosts a campus of the Federal Institute of Rio Grande do Sul and several universities including Ulbra, UniRitter, Universidade La Salle, and IPUC. The city is positioned at an elevation of 8 meters (26 ft) above sea level, and is distinguished by the Gravataí and Sinos rivers that traverse its landscape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "canoas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1269,
+    "attempt": 1257,
+    "place_id": "gn-3469058",
+    "input": {
+      "place": {
+        "place_id": "gn-3469058",
+        "name": "Brasília",
+        "country": "Brazil",
+        "subdivision": "Federal District",
+        "lat": -15.77972,
+        "lon": -47.92972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brasília",
+          "url": "https://en.wikipedia.org/wiki/Brasília",
+          "text": "Brasília ( brə-ZIL-ee-ə; Brazilian Portuguese: [bɾaˈziliɐ, bɾaˈziljɐ] ) is the capital city of Brazil and the Federal District. Located in the Brazilian Highlands in the country's Central-West region, it was founded by President Juscelino Kubitschek on 21 April 1960, to replace Rio de Janeiro as the national capital. Brasília is Brazil's third-most populous city after São Paulo and Rio de Janeiro, with a population of 2.8 million. Among major Latin American cities, it has the highest GDP per capita.\nBrasília is a planned city developed by Lúcio Costa, Oscar Niemeyer, and Joaquim Cardozo in 1956 in a scheme to move the capital from Rio de Janeiro to a more central location, which was chosen through a committee. The landscape architect was Roberto Burle Marx. The city's design divides it into numbered blocks as well as sectors for specified activities, such as the Hotel Sector, the Banking Sector, the Commercial Sector, and the Embassy Sector. Brasília was inscribed as a UNESCO World Heritage Site in 1987 due to its modernist architecture and uniquely artistic urban planning. It was named \"City of Design\" by UNESCO in October 2017 and has been part of the Creative Cities Network since then.\nIt is notable for its white-colored, modern architecture, designed by Oscar Niemeyer. All three branches of Brazil's federal government are located in the city: executive, legislative and judiciary. Brasília also hosts 124 foreign embassies. The city's international airport connects it to all other major Brazilian cities and some international destinations, and it is the third-busiest airport in Brazil. It was one of the main host cities of the 2014 FIFA World Cup and hosted some of the football matches during the 2016 Summer Olympics; it also hosted the 2013 FIFA Confederations Cup.\nLaid out in the shape of an airplane, its \"fuselage\" is the Monumental Axis, a pair of wide avenues flanking a large park. In the \"cockpit\" is Praça dos Três Poderes, named for the 3 branches of government surrounding it. Brasília has a unique legal status, as it is an administrative region rather than a municipality like other cities in Brazil. The name \"Brasília\" is often used as a synonym for the Federal District as a whole, which is divided into 35 administrative regions, one of which (Plano Piloto) includes the area of the originally planned city and its federal government buildings. The entire Federal District is considered by IBGE to make up Brasília's city area, and the local government considers the entirety of the district plus 12 neighboring municipalities in the state of Goiás to be its metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 429
+    },
+    "banned_terms": [
+      {
+        "term": "brasilia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1270,
+    "attempt": 1258,
+    "place_id": "gn-3522307",
+    "input": {
+      "place": {
+        "place_id": "gn-3522307",
+        "name": "Orizaba",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.85195,
+        "lon": -97.09957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orizaba",
+          "url": "https://en.wikipedia.org/wiki/Orizaba",
+          "text": "Orizaba (Spanish: [oɾiˈsaβa] , Nahuatl: Ahuilizapan, Otomi: Mbo'ñu) is a city and municipality in the Mexican state of Veracruz. It is located 20 km west of its sister city Córdoba, and is adjacent to Río Blanco and Ixtaczoquitlán, on Federal Highways 180 and 190. The city had a 2020 census population of 120,500 and is almost coextensive with its small municipality, with only a few small areas outside the city. The municipality, with an area of 27.97 km2 (10.799 sq mi), had a population of 123,182. While the metropolitan area of Orizaba has a population of 462,261 as 2020.\nIn 2015, Orizaba earned the designation of Pueblo Mágico from Mexico's federal government and celebrated the 10-year anniversary of this designation in October of 2025. The Pueblo Mágico program grants this designation to towns that offer visitors \"cultural richness, historical relevance, cuisine, art crafts, and great hospitality.\"\nIn the town of Ixhuatlancillo north of Orizaba, and in a large mountainous area to the south (the Sierra de Zongolica), live many thousands of people who speak a variant of Nahuatl which is often called Orizaba Nahuatl (ISO code nlv)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "orizaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1271,
+    "attempt": 1259,
+    "place_id": "gn-3631412",
+    "input": {
+      "place": {
+        "place_id": "gn-3631412",
+        "name": "Ocumare del Tuy",
+        "country": "Venezuela",
+        "subdivision": "Miranda",
+        "lat": 10.1182,
+        "lon": -66.77513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocumare del Tuy",
+          "url": "https://en.wikipedia.org/wiki/Ocumare_del_Tuy",
+          "text": "Ocumare del Tuy is a city located in Miranda State in northern Venezuela, the shire town of the Lander Municipality. Located around 30 kilometres (19 mi) from the capital Caracas, The city is noted for its warm and clear weather, with year-round sunshine and 60 days of rainfall annually, and an average temperature that ranges from 64 to 83 °F (18 to 28 °C), but with relatively low humidity.\nOcumare del Tuy has a population of around 197,952 (2016), mainly dedicated to agriculture (cocoa, coffee, sugar cane) and livestock farming (pigs, but also cattle), with leafy forest and meadows.\nOcumare del Tuy was the capital of the state of Miranda between 1904 and 1928, when it moved to Petare and later to Los Teques."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ocumare del tuy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocumare",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tuy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1272,
+    "attempt": 1260,
+    "place_id": "gn-4391812",
+    "input": {
+      "place": {
+        "place_id": "gn-4391812",
+        "name": "Independence",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 39.09112,
+        "lon": -94.41551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Independence, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Independence,_Missouri",
+          "text": "Independence is a city mostly in, and one of two county seats of, Jackson County, Missouri, United States. It is a satellite city of Kansas City, Missouri, and is the largest suburb on the Missouri side of the Kansas City metropolitan area. In 2020, it had a total population of 123,011, making it the fifth-most populous city in Missouri. A small part of the city extends into Clay County.\nIndependence is known as the \"Queen City of the Trails\" because it was a point of departure for the California, Oregon, and Santa Fe Trails. It is the hometown of U.S. President Harry S. Truman, and houses the Harry S. Truman Presidential Library and Museum and the gravesites of Truman and First Lady Bess Truman. It is sacred to the Latter Day Saint movement, as the site of Joseph Smith's 1831 Temple Lot, and several Mormon denominations are headquartered in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "independence",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

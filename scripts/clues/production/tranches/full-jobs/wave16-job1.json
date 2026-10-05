@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 3023,
+    "attempt": 3001,
+    "place_id": "gn-2790595",
+    "input": {
+      "place": {
+        "place_id": "gn-2790595",
+        "name": "Mouscron",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.74497,
+        "lon": 3.20639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mouscron",
+          "url": "https://en.wikipedia.org/wiki/Mouscron",
+          "text": "Mouscron (French pronunciation: [mukʁɔ̃] ; Dutch and West Flemish: Moeskroen, Dutch pronunciation: [muˈskrun] ; Picard and Walloon: Moucron) is a municipality and city of Wallonia located in the Belgian province of Hainaut, along the border with the French city of Tourcoing, which is part of the Lille metropolitan area.\nThe municipality consists of the following districts: Dottignies, Herseaux, Luingne, and Mouscron. In accordance with the national law, the municipality offers facilities for the Dutch speaking minority. Kortrijk, in Flanders, is located just to the north of Mouscron.\nThe city substantially grew during the 19th and early 20th century with the development of the textile industry in the north of France. The symbol of the city is the Hurlu: a character representing Protestant activists, who plundered the countryside during the Wars of Religion (16th century)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "mouscron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3024,
+    "attempt": 3002,
+    "place_id": "gn-2990970",
+    "input": {
+      "place": {
+        "place_id": "gn-2990970",
+        "name": "Nanterre",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.89198,
+        "lon": 2.20675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanterre",
+          "url": "https://en.wikipedia.org/wiki/Nanterre",
+          "text": "Nanterre (; French: [nɑ̃tɛʁ] ) is the prefecture of the Hauts-de-Seine department in the western suburbs of Paris, France. It is located some 11 km (6.8 mi) northwest of the centre of Paris.  As of 2023, the population of the commune was 97,783.\nThe eastern part of Nanterre, bordering the communes of Courbevoie and Puteaux, contains a small part of the La Défense business district of Paris and some of the tallest buildings in the Paris region. Because the headquarters of many major corporations are located in La Défense, the court of Nanterre is well known in the media for the number of high-profile lawsuits and trials that take place in it. The city of Nanterre also includes the Paris West University Nanterre La Défense, one of the largest universities in the Paris region.\nInhabitants are called Nanterrien(ne)s or Nanterrois(es)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "nanterre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3025,
+    "attempt": 3003,
+    "place_id": "gn-3086024",
+    "input": {
+      "place": {
+        "place_id": "gn-3086024",
+        "name": "Siemianowice Śląskie",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.32738,
+        "lon": 19.02901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siemianowice Śląskie",
+          "url": "https://en.wikipedia.org/wiki/Siemianowice_Śląskie",
+          "text": "Siemianowice Śląskie (Polish pronunciation: [ɕɛmjanɔˈvit͡sɛ ˈɕlɔ̃skʲɛ]; German: Siemianowitz-Laurahütte; Silesian: Śymjanowice) also known as Siemianowice is a city in Upper Silesia in southern Poland, near Katowice, in the core of the Metropolis GZM - a metropolis with a population of 2 million people and is located in the Silesian Highlands, on the Brynica river (tributary of the Vistula).\nIt is situated in the Silesian Voivodeship since its formation in 1999, previously in Katowice Voivodeship, and before then in the Autonomous Silesian Voivodeship. Siemianowice is one of the cities of the 2.7 million conurbation, the Katowice urban area, at the heart of the greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the city is 65,684 (2021). Siemianowice Śląskie borders six cities: Piekary Śląskie, Chorzów, Czeladź, Będzin, Wojkowice, and the voivodeship capital Katowice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "siemianowice slaskie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "siemianowice",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slaskie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3026,
+    "attempt": 3004,
+    "place_id": "gn-3140321",
+    "input": {
+      "place": {
+        "place_id": "gn-3140321",
+        "name": "Sandnes",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.85244,
+        "lon": 5.73521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandnes",
+          "url": "https://en.wikipedia.org/wiki/Sandnes",
+          "text": "Sandnes (pronounced [ˈsɑ̂nːeːs] ) is a city and municipality in Rogaland, Norway and a suburb of Stavanger. It lies immediately south of Stavanger (the 4th largest municipality in Norway), and together the Stavanger/Sandnes area is the third-largest urban area in Norway. The urban city of Sandnes lies in the extreme western part of the vast municipality and it makes up about 5% of the total land area of the municipality.\nThe western part of the municipality is very urbanized while the eastern part of the municipality is very rural. The municipality is divided into 13 boroughs and the administrative centre is located in the borough of Trones og Sentrum, a borough in the city. There are several villages in the rural parts of the municipality including Hommersåk, Høle, Foss-Eikeland, Stokka, Forsand, Lysebotn, and Vatne.\nThe 1,040.61-square-kilometre (401.78 sq mi) municipality is the 109th largest by area out of the 357 municipalities in Norway. Sandnes Municipality is the 11th most populous municipality in Norway with a population of 85,785 in 2026. The municipality's population density is 82.4 inhabitants per square kilometre (213/sq mi) and its population has increased by 12.8% over the previous 10-year period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "sandnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3027,
+    "attempt": 3005,
+    "place_id": "gn-3164630",
+    "input": {
+      "place": {
+        "place_id": "gn-3164630",
+        "name": "Velletri",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.68573,
+        "lon": 12.77753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Velletri",
+          "url": "https://en.wikipedia.org/wiki/Velletri",
+          "text": "Velletri (Italian: [velˈleːtri]; Latin: Velitrae; Volscian: Velester) is an Italian comune in the Metropolitan City of Rome, approximately 40 km to the southeast of the city centre, located in the Alban Hills, in the region of Lazio, central Italy. Neighbouring communes are Rocca di Papa, Lariano, Cisterna di Latina, Artena, Aprilia, Nemi, Genzano di Roma, and Lanuvio. Its motto is: Est mihi libertas papalis et imperialis ('Liberty of pope and empire is given to me').\nVelletri was an ancient city of the Volsci tribe. Legendarily it came into conflict with the Romans during the reign of Ancus Marcius, the fourth king of Rome; then again in the fifth and fourth centuries BCE, during the early Roman Republic. Velletri was also the home of the Octavii, the paternal family of the first Roman Emperor Augustus. In the Middle Ages, it was one of the few \"free cities\" in Lazio and central Italy. It was the site of two historic battles in 1744 and 1849. During the Second World War, it was at the centre of fierce fighting between the Germans and the allies in 1944 after the Anglo-American landing at Anzio.\nToday, Velletri is home to a circuit court and a prison, in addition to several colleges and high schools. It is the terminus of the Rome-Velletri railway, inaugurated by Pius IX in 1863, and is one of the centers the Via Appia Nuova (modern Appian Way) passes through."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "velletri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3028,
+    "attempt": 3006,
+    "place_id": "gn-3434141",
+    "input": {
+      "place": {
+        "place_id": "gn-3434141",
+        "name": "Ensenada",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.86074,
+        "lon": -57.91238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ensenada, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Ensenada,_Buenos_Aires",
+          "text": "Ensenada  (Spanish pronunciation: [enseˈnaða]) is a city and port in Buenos Aires Province, Argentina, located around the Ensenada de Barragán. It has 31,031 inhabitants as per the 2001 census [INDEC]. It is the capital of Ensenada Partido, and\ntogether with Berisso Partido they are the main suburbs of the Gran La Plata conurbation around the provincial capital of La Plata.\nThe port of Ensenada carries grain and beef exports, as well as industrial shipments. The volume traded has been recently growing at the expense of the Buenos Aires port, located 60 km to the north-west.\nAs Buenos Aires city authorities are considering repurposing the port of Buenos Aires as a passenger-only facility, the volume at Ensenada (as well as that of the ports in Campana and Bahía Blanca) is slated to experience further growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "ensenada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3029,
+    "attempt": 3007,
+    "place_id": "gn-3446077",
+    "input": {
+      "place": {
+        "place_id": "gn-3446077",
+        "name": "Três Pontas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.36667,
+        "lon": -45.5125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Três Pontas",
+          "url": "https://en.wikipedia.org/wiki/Três_Pontas",
+          "text": "Três Pontas (Portuguese pronunciation: [ˈtɾes ˈpõtas], Three Tips) is a municipality located in southern Minas Gerais state, Brazil. The municipality has about 57,000 inhabitants and a population density of 78.12 inhabitants/km2. The road MG-167 is the only paved road that passes through the city, but the Rodovia Fernão Dias (BR-381), is less than 50 km from the city centre passing through Varginha. Almost all streets of the urban zone are paved, and water and sewage services are provided to all residents. \nThe municipality does not have a rugged relief (the average elevation is 900m), and there are only three areas in which the altitude reaches 1100m above sea level. One of them is the Serra de Três Pontas (Three Tips Mountain), a place known in the region for its distinctive shape and natural environment. The streams Araras and Espera are the main water courses that pass through the municipality, and flow into the Furnas Dam. The rivers Verde and Sapucaí pass on the southern boundary and flow into the Furnas Dam as well. The Municipality is located on the basin of the Grande River.\nThe suave climate favors the growth of coffee, the main economic wealth of the city; it is known as one of the largest producers of coffee in Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "tres pontas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pontas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3030,
+    "attempt": 3008,
+    "place_id": "gn-3600340",
+    "input": {
+      "place": {
+        "place_id": "gn-3600340",
+        "name": "Villa de San Antonio",
+        "country": "Honduras",
+        "subdivision": "Comayagua Department",
+        "lat": 14.32594,
+        "lon": -87.61351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de San Antonio",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_San_Antonio",
+          "text": "Villa de San Antonio is a municipality in the Honduran department of Comayagua.\nThe municipality consists of a casco urbano (main town), with approximately 7,000 residents, and a large number of 'aldeas' or villages, which bring the municipality's entire population to 17,000.  The town is located 20 minutes by car from the department capitals of Comayagua and La Paz, and 90 minutes from Tegucigalpa.  Principal economic activities include farming, factory work, and construction.  The 'casco urbano' contains two kindergartens, two elementary schools, and one middle-high school, where students may study for diplomas in 'bachillerato' (liberal arts) or 'comercio.' There are two orphanages within the 'casco urbano;' the independent Hogar Tierra Santa and the Hogar San Antonio, affiliated with the Catholic charity Apufran.  There is a health center staffed by a doctor and two nurses.  The municipality of Villa de San Antonio was founded in 1537, the same year as the nearby city of Comayagua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "villa de san antonio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3031,
+    "attempt": 3009,
+    "place_id": "gn-3839479",
+    "input": {
+      "place": {
+        "place_id": "gn-3839479",
+        "name": "Rafaela",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -31.25285,
+        "lon": -61.49078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rafaela",
+          "url": "https://en.wikipedia.org/wiki/Rafaela",
+          "text": "Rafaela is a city in Argentina, located in the central-west region of the Santa Fe Province. It serves as the head of the Castellanos Department and is the third most populous and significant urban center in the province, following Rosario and the provincial capital, Santa Fe. The city is known as \"The Pearl of the West\" due to its natural, cultural, and architectural beauty. According to the socio-economic survey report by ICEDeL, the city's statistical institute, Rafaela had an estimated population of 111,000 in 2022.\nThe city was named by its founder, Guillermo Lehmann, in honor of Rafaela Rodríguez de Egusquiza, the wife of his friend and business partner, Félix Egusquiza, who were the original owners of the area.\nRafaela is located in the central-western part of Santa Fe province, along National Route 34. It is situated 96 km northwest of Santa Fe city, 234 km from Rosario, 292 km from Córdoba, and 530 km from Buenos Aires. Additionally, its strategic location facilitates trade routes to the ports of the Pacific Ocean due to its proximity to National Route 19.\nEconomically, Rafaela stands out for its metalworking and dairy industry, being at the heart of the country's largest and richest dairy basin, making it a principal economic capital. The city is considered a \"Gateway to the World\" due to its industrial connections with most American, European, Far Eastern, and Asia Minor countries.\nCulturally, Rafaela is known as the \"Capital of Theater\" because of its numerous historic theaters such as the Centro Ciudad de Rafaela, with its Juan B. Lasserre Hall dating back to 1932, and the Sociedad Italiana. It also hosts cultural centers like Centro Cultural La Máscara, established in 1996, amphitheaters, and exhibition halls. Most notably, Rafaela is renowned for its traditional and acclaimed Theater Festival, held annually since 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "rafaela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3032,
+    "attempt": 3010,
+    "place_id": "gn-4153071",
+    "input": {
+      "place": {
+        "place_id": "gn-4153071",
+        "name": "Deerfield Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.31841,
+        "lon": -80.09977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deerfield Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Deerfield_Beach,_Florida",
+          "text": "Deerfield Beach is a city in Broward County, Florida, United States. Located 40 miles (64 km) north of Miami, it is a principal city in the Miami metropolitan area in South Florida, which was home to 6.14 million people in 2020. As of the 2020 census, its population was 86,859, making it the 10th-largest city in Broward County and the 13th-largest city in the Miami metropolitan area. The Hillsboro River and the city of Boca Raton border the city to the north, the Atlantic Ocean to the east, Coconut Creek to the west, and Pompano Beach to the south.\nThe city's contemporary history dates back to the late 19th century, with the construction of the Florida East Coast Railway in 1896, built by Henry Flagler. The city's first post office was established in 1898. On June 11, 1925, the city was incorporated as the Town of Deerfield. The city grew very rapidly in the mid-20th century, particularly between 1950 and 1980, as new neighborhoods were built. The city has continued to grow since, and as of 2024, it has an estimated population of 90,507.\nThe city is known for its beaches and pier on Deerfield Beach Island, as well as its parks, particularly the botanical gardens of the Deerfield Beach Arboretum and Quiet Waters Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "deerfield beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "deerfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3033,
+    "attempt": 3011,
+    "place_id": "gn-5025219",
+    "input": {
+      "place": {
+        "place_id": "gn-5025219",
+        "name": "Eden Prairie",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.85469,
+        "lon": -93.47079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eden Prairie, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Eden_Prairie,_Minnesota",
+          "text": "Eden Prairie is a city in Hennepin County, Minnesota, United States. It had a population of 64,198 at the 2020 census, making it the 16th-largest city in the state. The city is adjacent to the north bank of the Minnesota River, upstream from its confluence with the Mississippi River, about 12 miles (19 km) southwest of downtown Minneapolis.\nSet in the Twin Cities' second ring suburbs, the community was designed as a mixed-income city model and is home to numerous commercial firms, including the headquarters of SuperValu, C.H. Robinson Worldwide, Winnebago Industries, Starkey Hearing Technologies, Lifetouch Inc., SABIS, and MTS Systems Corporation. It contains the Eden Prairie Center mall and is the hub of SouthWest Transit, providing public transportation to three adjacent suburbs. The television stations KMSP and WFTC are based in Eden Prairie. The nonprofit news organization Eden Prairie Local News (EPLN) also serves the community.\nThe area features numerous municipal and regional parks, conservation areas, multi-purpose trails, and recreational facilities. There are more than 170 miles (270 km) of multi-use trails, 2,250 acres (9 km2) of parks, and 1,300 acres (5 km2) of open space. Popular recreational areas include Staring Lake, Lake Riley, Purgatory Creek, Miller Park, Round Lake, and the Minnesota River Bluffs Regional Trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "eden prairie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eden",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prairie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3034,
+    "attempt": 3012,
+    "place_id": "gn-5655240",
+    "input": {
+      "place": {
+        "place_id": "gn-5655240",
+        "name": "Great Falls",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 47.50024,
+        "lon": -111.30081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Falls, Montana",
+          "url": "https://en.wikipedia.org/wiki/Great_Falls,_Montana",
+          "text": "Great Falls is the third most populous city in the U.S. state of Montana and the county seat of Cascade County. The population was 60,442 according to the 2020 census. The city covers an area of 22.9 square miles (59 km2) and is the principal city of the Great Falls, Montana, Metropolitan Statistical Area, which encompasses all of Cascade County. The Great Falls MSA's population was 84,414 according to the 2020 census.\nA cultural, commercial and financial center in the central part of the state, Great Falls is located just east of the Rocky Mountains and is bisected by the Missouri River. It is 180 miles (290 km) from the eastern entrance to Glacier National Park in northern Montana, and 264 miles (425 km) from Yellowstone National Park in southern Montana and northern Wyoming. Interstate 15, which runs north-south, services the city.\nGreat Falls is named for a series of five waterfalls located on the Missouri River north and east of the city. The Lewis and Clark Expedition of 1805–1806 was forced to portage around a 10-mile (16 km) stretch of the river in order to bypass the falls; the company spent 31 days in the area, performing arduous labor to make the portage. Three of the waterfalls, known as Black Eagle, Rainbow and the Great Falls (or the Big Falls), are among the sites of five hydroelectric dams in the area, giving the city its moniker, \"The Electric City\". Other nicknames for Great Falls include \"The River City\" and \"Western Art Capital of the World\". The city is also home to two military installations: Malmstrom Air Force Base east of the city, which is the community's largest employer; and the Montana Air National Guard to the west, adjacent to Great Falls International Airport. The federally recognized Little Shell Tribe of Chippewa Indians of Montana are located in Great Falls.\nGreat Falls is a popular tourist destination in Montana, with one million overnight visitors annually, who spend an estimated $185 million while visiting, according to the Great Falls Montana Tourism group. Among Montana cities, Great Falls boasts the greatest number of museums, with 10, including the Lewis and Clark Interpretive Center near Giant Springs and the C. M. Russell Museum and Original Log Cabin Studio on the city's north side. Great Falls was the largest city in Montana from 1951 to 1970, when it was eclipsed by Billings in the 1970 census; Missoula assumed second place in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 408
+    },
+    "banned_terms": [
+      {
+        "term": "great falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3035,
+    "attempt": 3013,
+    "place_id": "gn-612890",
+    "input": {
+      "place": {
+        "place_id": "gn-612890",
+        "name": "Mtskheta",
+        "country": "Georgia",
+        "subdivision": "Mtskheta-Mtianeti",
+        "lat": 41.84514,
+        "lon": 44.71875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mtskheta",
+          "url": "https://en.wikipedia.org/wiki/Mtskheta",
+          "text": "Mtskheta (Georgian: მცხეთა [mt͡sʰχetʰa] ) is a city in the region of Mtskheta-Mtianeti, Georgia. It is one of the oldest continuously inhabited cities in the world. It is located approximately 20 km (12 mi) north of Tbilisi, at the confluence of the Kura and Aragvi rivers. Currently a small provincial capital, for nearly a millennium until the 5th century AD, Mtskheta was a large fortified city and a significant economic and political center of the Kingdom of Iberia.\nDue to the historical significance of the town and its several outstanding churches and cultural monuments, the \"Historical Monuments of Mtskheta\" became a UNESCO World Heritage Site in 1994. As the birthplace and one of the most vibrant centers of Christianity in Georgia, Mtskheta was declared the \"Holy City\" by the Georgian Orthodox Church in 2014.\nIn 2016, the Historical Monuments of Mtskheta were placed by UNESCO under Enhanced Protection, a mechanism established by the 1999 Second Protocol to the 1954 Hague Convention for the Protection of Cultural Property in the Event of Armed Conflict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "mtskheta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3036,
+    "attempt": 3014,
+    "place_id": "gn-1264138",
+    "input": {
+      "place": {
+        "place_id": "gn-1264138",
+        "name": "Malout",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.21121,
+        "lon": 74.4818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malout",
+          "url": "https://en.wikipedia.org/wiki/Malout",
+          "text": "Malout is a town, just outside of Muktsar Sahib city in the Muktsar district of the Indian state of Punjab. It is in the southern Punjab \"cotton belt\", where production per kilometer is one of the highest in India. Malout is on NH-354 and NH-9 and NH-7, which connects Fazilka to New Delhi. The boundaries of Haryana and Rajasthan are 30 kilometres (19 mi) and 65 kilometres (40 mi), respectively, from the town. Malout is 55 kilometres (34 mi) from the border with Pakistan, and has been affected by military incidents. Malout dates back several centuries and is closely associated with the Jaat Godara's (Chaudhary), who were among the earliest settlers and played a foundational role in establishing the town through their philanthropic contribution and influence leading to the major formation of Malout. \n\nThe name Malout is believed to derive from the words “Mal” (goods or wealth) and “Out” (outpost), reflecting its early role as a trading centre on the ancient route between Multan and Delhi during British Raj.”"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "malout",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3037,
+    "attempt": 3015,
+    "place_id": "gn-1280517",
+    "input": {
+      "place": {
+        "place_id": "gn-1280517",
+        "name": "Nagqu",
+        "country": "China",
+        "subdivision": "Tibet",
+        "lat": 31.47678,
+        "lon": 92.05729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagqu",
+          "url": "https://en.wikipedia.org/wiki/Nagqu",
+          "text": "Nagqu (also Naqu, Nakchu,  or Nagchu; Tibetan: ནག་ཆུ།, Wylie: Nag-chu, ZWPY: Nagqu; Chinese: 那曲; lit. 'black river') is a prefecture-level city in the north of the Autonomous Prefecture of Tibet. On May 7, 2018, the former Nagqu Prefecture was officially declared the sixth prefecture-level city in Tibet after Lhasa, Shigatse, Chamdo, Nyingchi and Shannan. The regional area, covering an area of 450,537 km2 (173,953 sq mi),  is bordered by Bayingolin and Hotan Prefectures of Xinjiang to the north, Haixi, Yushu Prefectures of Qinghai and Chamdo to the east, Nyingchi, Lhasa and Shigatse to the south, Ngari Prefecture to the west. As of the 2010 census, it had a population of 462,381. Since its official establishment in 2018, it is the largest prefecture-level city by area in the world, being slightly larger than Sweden. According to the population sampling survey, the resident population of the city by the end of 2024 will be 514,300.\nNagqu contains 89 townships, 25 towns, and 1,283 villages. The main city of Nagqu is along the China National Highway 109, 330 kilometres (210 mi) northeast of Lhasa. Amdo, Nyainrong and Xainza are other towns of note. Extremely rich in water resources, with 81% of Tibet's lakes, covering a total area of over 30,000 square kilometres (12,000 sq mi), it contains lakes such as Namtso, Siling Lake and rivers such as Dangqu.\nEvery August (the sixth month in the Tibetan calendar), Nagqu hosts the Kyagqen Horse Race, a major event locally attracting tens of thousands of herdsmen to participate in horseracing and archery contests."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "nagqu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3038,
+    "attempt": 3016,
+    "place_id": "gn-146412",
+    "input": {
+      "place": {
+        "place_id": "gn-146412",
+        "name": "Kyrenia",
+        "country": "Cyprus",
+        "subdivision": "Keryneia",
+        "lat": 35.33634,
+        "lon": 33.31729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kyrenia",
+          "url": "https://en.wikipedia.org/wiki/Kyrenia",
+          "text": "Kyrenia is a city on the northern coast of Cyprus, noted for its historic harbour and castle. It is under the control of Northern Cyprus.\nWhile there is evidence showing that the wider region of Kyrenia has been populated before, Greek myths suggest Kyrenia was founded by the Achaeans Cepheus and Praxandrus who ended up there after the Trojan War. The heroes named the new city after their hometown Kyrenia in Achaea, Greece.\nAs the town grew prosperous, the Romans established the foundations of its castle in the 1st century AD. Kyrenia grew in importance after the 9th century due to the safety offered by the castle, and played a pivotal role under Lusignan rule as the city never capitulated. The castle was most recently modified by the Venetians in the 15th century. The city surrendered to the Ottoman Empire in 1571.\nThe city's population was almost equally divided between Muslims and Christians in 1831, with a slight Muslim majority. However, with the advent of British rule, many Turkish Cypriots fled to Anatolia, and the town came to be predominantly inhabited by Greek Cypriots. While the city suffered little intercommunal violence, its Greek Cypriot inhabitants, numbering around 2,650, fled or were forcefully displaced in the wake of the Turkish invasion in 1974. Currently, the city is populated by Turkish Cypriots, mainland Turkish settlers, and British expats, with a municipal population of 33,207.\nKyrenia is a cultural and economical centre, described as the tourism capital of Northern Cyprus. It is home to numerous hotels, nightlife and a port. It hosts an annual culture and arts festival with hundreds of participating artists and performers and is home to three universities with a student population around 14,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "kyrenia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3039,
+    "attempt": 3017,
+    "place_id": "gn-2111677",
+    "input": {
+      "place": {
+        "place_id": "gn-2111677",
+        "name": "Narutō",
+        "country": "Japan",
+        "subdivision": "Chiba",
+        "lat": 35.6,
+        "lon": 140.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narutō, Chiba",
+          "url": "https://en.wikipedia.org/wiki/Narutō,_Chiba",
+          "text": "Narutō (成東町, Narutō-machi) was a town located in Sanbu District, Chiba Prefecture, Japan.\nNarutō Town was established on April 1, 1889 within Musha District. Musha District became part of Sanbu District from April 1, 1897. On October 1, 1954 Narutō expanded through the annexation of the neighboring villages of Ōtomi and Nangō, and the village of Midorimi on July 1, 1955.\nOn March 27, 2006, Narutō, along with the towns of Matsuo and Sanbu, and the village of Hasunuma (all from Sanbu District), was merged to create the city of Sanmu, and thus no longer exists as an independent municipality.\nAs of November 1, 2005, (the last census data prior to the merger) the town had an estimated population of 24,677 and a population density of 525 inhabitants per square kilometer (1,360/sq mi). The total area was 47.02 km2 (18.15 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "naruto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3040,
+    "attempt": 3018,
+    "place_id": "gn-2268339",
+    "input": {
+      "place": {
+        "place_id": "gn-2268339",
+        "name": "Faro",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.01869,
+        "lon": -7.92716
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faro, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Faro,_Portugal",
+          "text": "Faro, officially the City of Faro, is a city and a municipality in southern Portugal. It is the capital of both the Algarve region and the Faro District, as well as the southernmost city on the Portuguese mainland. Faro municipality covers an area of 202.57 km2 (78.21 sq mi) and, as of 2024, had 70,347 inhabitants, making it the second most populous municipality in the Algarve after Loulé. The city proper had 46,299 inhabitants in 2021, the largest urban population in the region. Faro lies on the shore of the Ria Formosa lagoon, a protected nature reserve and hosts the region’s international airport and university.\nFounded as Ossonoba in antiquity, Faro was a settlement during the Phoenician and Roman periods and later served as a Moorish port known as Santa Maria Ibn Harun. It became part of the Kingdom of Portugal in 1249 and was elevated to city status in 1540. Since 1756, following the devastation of the Lisbon earthquake, Faro has been the administrative capital of the Algarve.\nThe municipalities of Faro, Olhão and Loulé, due to their proximity, shared infrastructure and commuter links can be considered an intermunicipal community with a population of 191,563 inhabitants as of 2024. A bus rapid transit system connecting this community is under development to connect these municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "faro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3041,
+    "attempt": 3019,
+    "place_id": "gn-2349276",
+    "input": {
+      "place": {
+        "place_id": "gn-2349276",
+        "name": "Asaba",
+        "country": "Nigeria",
+        "subdivision": "Delta",
+        "lat": 6.19824,
+        "lon": 6.73187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asaba",
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "text": "Asaba (Igbo: Ahaba) is the capital of Delta State, Nigeria. A rapidly growing urban area, it is located on the western bank of the Niger River and serves as the seat of the Oshimili South Local Government Area and Delta State Capital Territory. Asaba had a population of 149,603 as at the 2006 census, and a fast growing metropolitan population today of over half a million people.\n\nIn some respects, Asaba and neighboring Onitsha in Anambra State form a continuous metropolitan region. The First and Second Niger bridges traverse the boundary between Delta and Anambra with the Niger's relatively centralized location in this region marking it as the geopolitical border between Eastern and Western Nigeria.\nIn October 2023, Asaba joined the UNESCO Creative Cities Network and was named a UNESCO City of Film."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "asaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3042,
+    "attempt": 3020,
+    "place_id": "gn-2509509",
+    "input": {
+      "place": {
+        "place_id": "gn-2509509",
+        "name": "Vila-real",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.9383,
+        "lon": -0.10087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila-real",
+          "url": "https://en.wikipedia.org/wiki/Vila-real",
+          "text": "Vila-real, also known in Spanish as Villarreal, is a town and municipality in the province of Castellón which is part of the Valencian Community in the east of Spain.\nThe town is located at 42 m above sea level, 7 km to the south of the province's capital, Castellón de la Plana. Vila-real is separated from Castellón by the Millars River. It has 51,367 inhabitants (2010 data), most of them living in the urban area that covers about 10.7% of its comarca's 55.4 km2 surface. Ranked by population, it is the second-largest city in the province (after the capital), and fifteenth in the Valencian Community.\nThe town was founded with royal status by King James I of Aragon in 1274 during his campaign to regain Muslim territory in present-day Valencia during the Reconquista. It later became an agricultural centre for orange cultivation, and more recently a centre for the ceramics industry.\nThe city is the birthplace of Francisco de Asís Tárrega y Eixea (1852–1909) who was a Spanish composer and classical guitarist of the Romantic period. He is also the composer of Gran Vals, an excerpt of which was used in a popular Nokia ringtone. In modern times Vila-real is well known for its football club that bears the city's name, a club that, in spite of the city's small size, has won the Europa League, reached the semi-finals of the Champions League (twice) and has since finished amongst the top clubs in Spain on several occasions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "vila real",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "real",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

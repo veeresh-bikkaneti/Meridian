@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 5624,
+    "attempt": 5581,
+    "place_id": "gn-11962404",
+    "input": {
+      "place": {
+        "place_id": "gn-11962404",
+        "name": "Morumbi",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.59632,
+        "lon": -46.70802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morumbi, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Morumbi,_São_Paulo",
+          "text": "Morumbi (Brazilian Portuguese: [moɾũˈbi]) is one of the richest neighborhoods in São Paulo and is a district of the city of São Paulo belonging to the subprefecture of Butantã, in the southwestern part of the city. A common folk etymology attributes its name to the mixed Portuguese and Tupi phrase morro obi, which would mean \"green hill\", but this is disputed. On December 29, 2022, Brazilian football star Pele died at the age of 82 in Morumbi.\nMorumbi is between 9 and 15 km (5.6 and 9.3 mi) away from São Paulo's downtown. It has boundaries with the districts of Vila Sônia, Campo Limpo, Vila Andrade, Itaim Bibi, Pinheiros, and Butantã. Within Morumbi, the neighborhoods of Vila Progredior, Caxingüi, Jardim Guedala, Cidade Jardim, Real Parque, Vila Morumbi, Paineiras do Morumbi, Jardim Panorama, Jardim Sílvia, Vila Tramontano and Paraisópolis are found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "morumbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5625,
+    "attempt": 5582,
+    "place_id": "gn-1691538",
+    "input": {
+      "place": {
+        "place_id": "gn-1691538",
+        "name": "Romblon",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 12.57513,
+        "lon": 122.27081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Romblon",
+          "url": "https://en.wikipedia.org/wiki/Romblon",
+          "text": "Romblon (, rom-BLOHN, Tagalog: [ɾomˈblon]), officially the Province of Romblon (Filipino: Lalawingan/Probinsya ng Romblon), is an archipelagic province of the Philippines located in the Mimaropa region. It is also at the crossroads of two island groups: Visayas and Luzon. Its main components include Romblon, an archipelagic municipality of the same name that also serves as the provincial capital; Tablas, the largest island, covering nine municipalities (including Odiongan, the largest municipality in the province); Sibuyan with its three towns; as well as the smaller island municipalities of Corcuera, Banton, Concepcion, and San Jose. The province lies south of Marinduque and Quezon, east of Oriental Mindoro, north of Aklan and Capiz, and west of Masbate. According to the 2020 census, it has a total population of 308,985.\nRomblon was inhabited by aboriginal Filipinos prior to the arrival of the Spanish in 1569. Archaeological artifacts recovered by the National Museum in 1936 indicate that the aborigines of Romblon had a rich and advanced culture. During Spanish colonial rule, Romblon was initially administered under the province of Arevalo (Iloilo) until 1716, when it was transferred to the jurisdiction of the newly created province of Capiz. With the arrival of the Americans in 1901, Romblon was declared a province and placed under civilian rule. It lost its provincial status for a short while between 1907 and 1945, but regained it in 1946, just after World War II.\nThe inhabitants of Romblon are divided into three ethnolinguistic groups: Romblomanon, Onhan and Asi. These groups occupy specific islands in the province and have their own language and customs. Romblomanon is mainly spoken in the town of Romblon, in all of the three towns of Sibuyan Island, and the town of San Agustin in Tablas. Onhan is mainly spoken in the municipalities in the southern part of Tablas (Alcantara, Looc, Ferrol, Santa Fe, San Andres, and Santa Maria), as well as in the island municipality of San Jose. The northwestern part of Tablas Island (in Odiongan and Calatrava, as well as the islands municipalities of Corcuera, Banton, and Concepcion), speaks the Asi language.\nThe province relies on agriculture, particularly rice and copra farming as well as fishing, for its livelihood. It also has a lucrative marble industry due to an abundance of Italian-quality marble, hence, its moniker as the \"Marble Capital of the Philippines.\" The islands of the province have a number of white sand beaches, diving spots, mountains and rainforests that tourists visit. Sibuyan island is an ecotourism destination, having been dubbed by some as \"the Galápagos of Asia\" because it has remained in isolation from the rest of the world since its formation.\nSeveral enterprises outside Romblon purchase the province’s marble for processing and distribution. Among these is Morales Ocsebio Investment Holdings, Ent., whose primary business, M Memorial & Monument Works, specializes in marble and granite monuments, memorials, and other stonework services. By sourcing marble from Romblon, the company contributes indirectly to the province’s marble-based economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 490
+    },
+    "banned_terms": [
+      {
+        "term": "romblon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5626,
+    "attempt": 5583,
+    "place_id": "gn-2078907",
+    "input": {
+      "place": {
+        "place_id": "gn-2078907",
+        "name": "Bicton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.02778,
+        "lon": 115.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bicton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bicton,_Western_Australia",
+          "text": "Bicton is an affluent riverside suburb of Perth, Western Australia, located 10 kilometres (6.2 mi) south-west of the central business district. The suburb is mostly residential, and falls within the City of Melville local government area. Bicton borders the Swan River to the north, with the northern third of the suburb taken up by a Class-A reserve at Point Walter.\nOriginally settled in the 1830s, when a large vineyard was established, Bicton was mainly rural until the subdivision of the former Bicton Racecourse, beginning in 1919. Further subdivisions of the Castle Hill area in 1921 established the suburb as a middle-class area of Fremantle. Bicton underwent further expansion after the conclusion of World War II. Now with a large demographic of business owners and high net worth individuals, Bicton is considered one of the most affluent riverside suburbs in Perth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "bicton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5627,
+    "attempt": 5584,
+    "place_id": "gn-2180320",
+    "input": {
+      "place": {
+        "place_id": "gn-2180320",
+        "name": "Waikanae",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -40.88333,
+        "lon": 175.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waikanae",
+          "url": "https://en.wikipedia.org/wiki/Waikanae",
+          "text": "Waikanae (English:  , Māori pronunciation: [ˈwaikaˈnae] ) is a town on the Kāpiti Coast, 60 km (37 mi) north of the Wellington, New Zealand. The name is a Māori word meaning \"waters\" (wai) \"of the grey mullet\".\nThe area surrounding the town is notable for its 2.4-kilometre-long (1.5 mi) beach, the Waikanae River estuary, the Kapiti Marine Reserve, and Kapiti Island, which lies 4 km (2.5 mi) offshore in the Tasman Sea. The town is considered one of the top retirement destinations in the Wellington Region, because of it having year-round mild temperatures, moderate rainfall, and less wind than Wellington.\nThe town is 8 km (5.0 mi) northeast of Paraparaumu, and 15 km (9.3 mi) southwest of Ōtaki. The Waikanae railway station is the northernmost station in the Metlink passenger rail network, linking with Wellington railway station in Central Wellington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "waikanae",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5628,
+    "attempt": 5585,
+    "place_id": "gn-2351657",
+    "input": {
+      "place": {
+        "place_id": "gn-2351657",
+        "name": "Ahoada",
+        "country": "Nigeria",
+        "subdivision": "Rivers State",
+        "lat": 5.0828,
+        "lon": 6.64981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahoada",
+          "url": "https://en.wikipedia.org/wiki/Ahoada",
+          "text": "Ahoada (Ehuda) is a city in Orashi Region of Rivers State, Nigeria, located northwest of Port Harcourt. In Ahoada, the Ekpeye language is majorly spoken, though there are other languages in Ahoada like: Engenni, Ogba, and Ikwerre. In Ahoada it is only Ekpeye language and it's variation that is mostly spoken.\nAhoada is divided into two local government areas; the Ahoada East, with its headquarters in Ahoada city, and Ahoada West having its headquarters at Akinima administratively. It has been the administrative headquarters of Old Ahoada division in the pre-independence era with Ogba, Egbema, Engenni, Abua-Odual, Etche, Omuma, Obio-Akpor, Ikwerre and some area within Port Harcourt. According to the National Population Commission Census (NPCC) in 2006, the population in Ahoada was 583,900 that is; 233,700 for Ahoada East and 350,200 for Ahoada West and projected to be 700,680 in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "ahoada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5629,
+    "attempt": 5586,
+    "place_id": "gn-2636719",
+    "input": {
+      "place": {
+        "place_id": "gn-2636719",
+        "name": "Stranraer",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 54.90234,
+        "lon": -5.02731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stranraer",
+          "url": "https://en.wikipedia.org/wiki/Stranraer",
+          "text": "Stranraer (Scottish Gaelic: An t-Sròn Reamhar [ən̪ˠˌt̪ʰɾɔːn ˈɾãũ.əɾ]; Scots: Stranrawer), also known as the Toon or the Cleyhole, is a town in Dumfries and Galloway, Scotland, on Loch Ryan and the northern side of the isthmus joining the Rhins of Galloway to the mainland. Stranraer is Dumfries and Galloway's second-largest town, with a population of 9,751 in 2022.\nStranraer is the administrative centre for the Wigtownshire area of Dumfries and Galloway. It was formerly a ferry port, connecting Scotland with Belfast and Larne in Northern Ireland; the service was transferred to nearby Cairnryan in 2011. It lies 87 miles (140 km) south-west of Glasgow, 52 miles (84 km) south-west of Ayr and 72 miles (116 km) west of Dumfries.\nThe town's English name comes from its Scottish Gaelic counterpart An t-Sròn Reamhar, meaning \"the broad headland\" or \"the fat nose\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "stranraer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5630,
+    "attempt": 5587,
+    "place_id": "gn-2642302",
+    "input": {
+      "place": {
+        "place_id": "gn-2642302",
+        "name": "Montrose",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.71683,
+        "lon": -2.46695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montrose, Angus",
+          "url": "https://en.wikipedia.org/wiki/Montrose,_Angus",
+          "text": "Montrose ( mun-TROHZ; Scottish Gaelic: Mon Rois [mɔn ˈrˠɔʃ]) is an historic coastal town and former royal burgh in Angus, Scotland. It is situated 28 miles (45 kilometres) north of Dundee and 37 miles (60 kilometres) south of Aberdeen, Montrose lies between the mouths of the North and South Esk rivers. It is the northernmost coastal town in Angus and developed as a natural harbour that traded in skins, hides, and cured salmon in medieval times.\nWith a population of 11,251 in 2022, it makes it the third most-populous settlement in Angus. The town functions as a port, but the major employer is GlaxoSmithKline, which was saved from closure in 2006. The skyline of Montrose is dominated by the 220-foot (67 m) steeple of Old and St Andrew's Church, designed by James Gillespie Graham and built between 1832 and 1834.\nMontrose is a town with a wealth of architecture, and is a centre for international trade. It is an important commercial port for the oil and gas industry. It is known for its wide thoroughfare and high street, which\nleads to picturesque closes containing secluded gardens. The town has a view of a tidal lagoon, Montrose Basin, which is considered a nature reserve of international importance. It is the largest inland salt water basin in the UK, and an important habitat for the mute swan. Just outside Montrose is the 18th-century House of Dun, designed by the Scottish architect William Adam and built in 1730 for David Erskine, Lord Dun, 13th Laird of Dun."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "montrose",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5631,
+    "attempt": 5588,
+    "place_id": "gn-2646272",
+    "input": {
+      "place": {
+        "place_id": "gn-2646272",
+        "name": "Ilkley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.92449,
+        "lon": -1.82326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilkley",
+          "url": "https://en.wikipedia.org/wiki/Ilkley",
+          "text": "Ilkley is a spa town and civil parish in the City of Bradford in West Yorkshire, in Northern England. Historically part of the West Riding of Yorkshire, Ilkley civil parish includes the adjacent village of Ben Rhydding and is part of the Ilkley and Addingham ward within the City of Bradford. Approximately 12 miles (19 km) north of Bradford and 17 miles (27 km) north-west of Leeds, the town lies mainly on the south bank of the River Wharfe in Wharfedale, one of the Yorkshire Dales.\nIlkley's spa town heritage and surrounding countryside make tourism an important local industry. The town centre is characterised by Victorian architecture, wide streets and floral displays. Ilkley Moor, to the south of the town, is the subject of a folk song, often described as the unofficial anthem of Yorkshire, \"On Ilkla Moor Baht 'at\". The song's words are written in Yorkshire dialect: its title translated is \"On Ilkley Moor without a hat\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "ilkley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5632,
+    "attempt": 5589,
+    "place_id": "gn-2647359",
+    "input": {
+      "place": {
+        "place_id": "gn-2647359",
+        "name": "Hassocks",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.92814,
+        "lon": -0.16617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hassocks",
+          "url": "https://en.wikipedia.org/wiki/Hassocks",
+          "text": "Hassocks is a village and civil parish in the Mid Sussex District of West Sussex, England. Its name is believed to derive from the tufts of grass found in the surrounding fields.\nLocated approximately 7 miles (11 km) north of Brighton, with a population of 8,319, the area now occupied by Hassocks was just a collection of small houses and a coaching house until the 19th century, when work started on the London to Brighton railway.\nUntil 2000 the site fell in two parishes, Clayton and Keymer; Hassocks was only the name of the postal district. It is said that with the advent of the railway in 1841 the two parish councils were given the opportunity of naming the new station but could not agree, and eventually the London, Brighton & South Coast Railway chose the station name 'Hassocks Gate'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "hassocks",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5633,
+    "attempt": 5590,
+    "place_id": "gn-2651930",
+    "input": {
+      "place": {
+        "place_id": "gn-2651930",
+        "name": "Cromer",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.93123,
+        "lon": 1.29892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cromer",
+          "url": "https://en.wikipedia.org/wiki/Cromer",
+          "text": "Cromer ( KROH-mər) is a coastal town and civil parish on the north coast of the North Norfolk district of the county of Norfolk, England. It is 23 miles (37 kilometres) north of Norwich, 9 miles (14 km) northwest of North Walsham and 4 miles (6 kilometres) east of Sheringham on the North Sea coastline.\nThe local government authorities are North Norfolk District Council, whose headquarters is on Holt Road in the town, and Norfolk County Council, based in Norwich. The civil parish has an area of 4.66 km2 (1+13⁄16 sq mi) and at the 2011 census had a population of 7,524.\nThe town is notable as a traditional tourist resort and for the Cromer crab, which forms the major source of income for local fishermen. The motto Gem of the Norfolk Coast is highlighted on the town's road signs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "cromer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5634,
+    "attempt": 5591,
+    "place_id": "gn-2652239",
+    "input": {
+      "place": {
+        "place_id": "gn-2652239",
+        "name": "Countesthorpe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.55379,
+        "lon": -1.14526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Countesthorpe",
+          "url": "https://en.wikipedia.org/wiki/Countesthorpe",
+          "text": "Countesthorpe is a large village and civil parish in the Leicestershire district of Blaby, with a population of 6,393 (2001 census, falling slightly to 6,377 at the 2011 census.   It lies to the south of Leicester, and is about 6 miles (9.7 km) from the city centre, but only two miles south of the suburb of South Wigston. Nearby places are Blaby and South Wigston to the north, Kilby to the east, Peatling Magna and Willoughby Waterleys to the south, and Broughton Astley, Cosby and Whetstone to the west.\nThe name Countesthorpe originates from the 11th century when the area was part of the marriage dowry of the Countess Judith, niece of William the Conqueror. The 'thorpe' part of the name is a variant of the Middle English word thorp, meaning hamlet or small village.\nThe parish church of St. Andrew was started in 1220 by the family of Lord William of Ludbrook. It was restored in 1840 and again in 1907. The 14th-century tower still remains.\nThe village has three public houses: The Axe and Square, The Bull's Head and The Railway. Another public house, the King William IV was turned into a Tesco Express in 2013. Magna 73 of the Leicestershire Senior League are an association football team who play just north of the village.\nThe village is twinned with the town of Mennecy in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "countesthorpe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5635,
+    "attempt": 5592,
+    "place_id": "gn-2654141",
+    "input": {
+      "place": {
+        "place_id": "gn-2654141",
+        "name": "Buxton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.25741,
+        "lon": -1.90982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buxton",
+          "url": "https://en.wikipedia.org/wiki/Buxton",
+          "text": "Buxton is a spa town in the borough of High Peak, Derbyshire, in the East Midlands region of England. It is England's highest market town, sited at some 1,000 feet (300 m) above sea level. It lies close to Cheshire to the west and Staffordshire to the south, on the edge of the Peak District National Park. In 1974, the municipal borough merged with other nearby boroughs, including Glossop, to form the local government district and borough of High Peak. \nThe town population was 20,048 at the 2021 Census (down from 21,108 at the 2011 Census). Sights include Poole's Cavern, a limestone cavern; St Ann's Well, fed by a geothermal spring bottled by Buxton Natural Mineral Water (owned by Nestle); and many historic buildings, including John Carr's restored Buxton Crescent, Henry Currey's Buxton Baths and Frank Matcham's Buxton Opera House. The Devonshire Campus of the University of Derby occupies historic premises. Buxton is twinned with Oignies in France and Bad Nauheim in Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "buxton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5636,
+    "attempt": 5593,
+    "place_id": "gn-2786700",
+    "input": {
+      "place": {
+        "place_id": "gn-2786700",
+        "name": "Sint-Genesius-Rode",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.74645,
+        "lon": 4.35754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Genesius-Rode",
+          "url": "https://en.wikipedia.org/wiki/Sint-Genesius-Rode",
+          "text": "Sint-Genesius-Rode (Dutch: [sɪnt xeːˌneːzijʏs ˈroːdə] ; French: Rhode-Saint-Genèse [ʁɔd sɛ̃ ʒənɛz] ) is a municipality in the province of Flemish Brabant, in the Flemish region of Belgium. The municipality only comprises the town of Sint-Genesius-Rode proper, and lies between Brussels and Waterloo in Wallonia. On January 1, 2008, Sint-Genesius-Rode had a total population of 18,021. The total area is 22.77 km2 (8.79 sq mi), which gives a population density of 791/km2 (2,050/sq mi). It borders the Brussels-Capital Region and is essentially a suburb of the city, contiguous with the Prince d'Orange neighbourhood (Uccle), and was a component of the short-lived Arrondissement of Brussels-Periphery. While the Brussels-Capital Region does not have a direct border with Wallonia, the shortest distance between the two is at Sint-Genesius-Rode municipality, with around 4 kilometres (2.5 mi) separating Prince d'Orange and Waterloo along the N5 road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "sint genesius rode",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "genesius",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rode",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5637,
+    "attempt": 5594,
+    "place_id": "gn-3026303",
+    "input": {
+      "place": {
+        "place_id": "gn-3026303",
+        "name": "Châteaubriant",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.71675,
+        "lon": -1.37643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Châteaubriant",
+          "url": "https://en.wikipedia.org/wiki/Châteaubriant",
+          "text": "Châteaubriant (French: [ʃɑtobʁijɑ̃] ; Breton: Kastell-Briant; Gallo: Châtiaoberiant) is a town in western France, about 350 km (220 mi) southwest of Paris, and one of the three sous-préfectures of the Loire-Atlantique department. Châteaubriant is also situated in the historical and cultural region of Brittany, and it is the capital of the Pays de la Mée.\nA part of the traditional province of Brittany, Châteaubriant also lies on the threshold of Anjou, and it was an important stronghold in northwestern France during the Middle Ages. The town appeared during the 11th century, around a castle and a priory. A fair, which still exists, was also founded in 1050. Châteaubriant played a certain role during the Mad War between France and Brittany and became a significant cultural centre in the 16th century, when the Renaissance château was built in the medieval fortress.\nThe town is situated between Nantes and Rennes, and tends to be economically oriented towards the latter. The medieval fair and cattle market are still important for the local economy, but Châteaubriant also developed a metallurgical industry during the 19th century, and then plastics manufacturing during the 20th century.\nChâteaubriant is noteworthy for the Château de Châteaubriant, which combines a large medieval castle and a Renaissance palace. The town also has an 11th-century church and a medieval town centre, with half-timbered houses and remains of city walls. During the Second World War, Châteaubriant had a concentration camp, and it is known in France for the 27 hostages who were shot there in 1941."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "chateaubriant",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5638,
+    "attempt": 5595,
+    "place_id": "gn-3091293",
+    "input": {
+      "place": {
+        "place_id": "gn-3091293",
+        "name": "Murowana Goślina",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.57463,
+        "lon": 17.00933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murowana Goślina",
+          "url": "https://en.wikipedia.org/wiki/Murowana_Goślina",
+          "text": "Murowana Goślina ([murɔˈvana ɡɔˈɕlʲina]) is a town in Poznań County in western Poland, with 10,287 inhabitants (2024). The Trojanka stream flows through northern and western parts of the town, reaching the river Warta a few kilometres to the west.\nThe town is divided into two main parts – the older part of the town to the north, centred on the market square and St. James' church, and the modern estate of Zielone Wzgórza to the south, consisting mainly of blocks of flats and houses built since 1983.\nMurowana Goślina is also the seat of the municipality called Gmina Murowana Goślina, which has a total population of 16,864 (2019) and covers an area of 172 square kilometres (66 sq mi). The area around Murowana Goślina contains many lakes and forest areas, particularly within the protected area called Puszcza Zielonka Landscape Park. The region is popular with holiday-makers and day-trippers.\nIt is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "murowana goslina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "murowana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "goslina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5639,
+    "attempt": 5596,
+    "place_id": "gn-3114566",
+    "input": {
+      "place": {
+        "place_id": "gn-3114566",
+        "name": "Palamós",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.84843,
+        "lon": 3.12912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palamós",
+          "url": "https://en.wikipedia.org/wiki/Palamós",
+          "text": "Palamós i Sant Joan (Catalan pronunciation: [pələˈmos i ˈsan ʒuˈan]) is a resort town and municipality in the Mediterranean Costa Brava, located in the comarca of Baix Empordà, in the province of Girona, Catalonia, Spain. Palamós i Sant Joan is located at the northern end of a large bay. The town is by-passed by the C31 which connects the coastal towns of the central Costa Brava with Girona. Palafrugell lies 8.5 kilometres (5.3 mi) to the north and Castell-Platja d'Aro 7 kilometres (4.3 mi) to the south. The town is a popular tourist destination in the summer along the Costa Brava, the coastline which spans the Northern part of Catalonia up to the French border. \nPalamós i Sant Joan is a staging point on the GR 92 long distance footpath, which runs the length of the Mediterranean coast of Spain. Stage 8, to the north, follows the cliffs to the beach at La Fosca before taking an inland route to Calella de Palafrugell and then following the coast again through Llafranc, Tamariu and Fornells de Mar to the next staging point at Begur, a distance of 23.0 kilometres (14.3 mi). Stage 9, to the south, follows the beachfront promenade to Sant Antoni de Calonge and then the coast through Platja d'Aro and S'Agaró to the next staging point at Sant Feliu de Guíxols, a distance of 16.8 kilometres (10.4 mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "palamos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5640,
+    "attempt": 5597,
+    "place_id": "gn-3181471",
+    "input": {
+      "place": {
+        "place_id": "gn-3181471",
+        "name": "Brusciano",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.92237,
+        "lon": 14.42386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brusciano",
+          "url": "https://en.wikipedia.org/wiki/Brusciano",
+          "text": "Brusciano is a municipality in the Metropolitan City of Naples, in Italy, on the slopes of Mount Vesuvius.\nSituated inland north-east of Naples, 10 miles from center city, the ancient village of rural vocation has developed along the way National Puglia, in the stretch that connects the east of the capital and Pomigliano d'Arco and  Nola.\nIts territory in the middle of the plain bell sits in the shadow of the area Vesuvius, is between the slopes of Monte Somma and the plain of Acerra is crossed by Regi Lagni. Has a particular geological origin: ash, lava and volcanic tuff resulting from the Vesuvius formed the substrate on which it was formed on local soil. The surface layer shows a depth of order few meters, with a particular composition of elements and sandy-clay mixed with volcanic ash, lava and pumice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "brusciano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5641,
+    "attempt": 5598,
+    "place_id": "gn-3433959",
+    "input": {
+      "place": {
+        "place_id": "gn-3433959",
+        "name": "Federación",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -30.99114,
+        "lon": -57.91789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Federación, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Federación,_Entre_Ríos",
+          "text": "Federación is a city in the northeast of the province of Entre Ríos, Argentina. It has 16,658 inhabitants as per the 2010 census [INDEC]. It lies on the provincial and international border with Uruguay, by the reservoir of the Salto Grande Dam, on the right-hand (western) banks of the Uruguay River, about 45 km upstream from the city of Concordia and 265 km from the provincial capital Paraná, near National Route 14.\n\nThe original town was a ranch and waypost, named Mandisoví, created in 1777, which grew into a prosperous village but fell then to civil strife. A new town of Mandisoví was founded in a close location by Colonel Manuel Antonio Urdinarrain, who commanded the area, under the orders of the caudillo Justo José de Urquiza. Urdinarrain notified Urquiza about the new town and asked him to name it. Urquiza chose the name Pueblo de la Federación (Town [or People] of the Federation).\nIn 1974 the citizens of Federación underwent another relocation, as the latest settlement near the Uruguay River was to be flooded by the waters of Salto Grande. The city was demolished and reconstructed in two years. The new Federación was formally inaugurated in 1979 by de facto President, military dictator Jorge Rafael Videla.\nThe local economy is based on citrus crops and the timber industry (the city has 22 sawmills), besides small-scale beekeeping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "federacion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5642,
+    "attempt": 5599,
+    "place_id": "gn-3598131",
+    "input": {
+      "place": {
+        "place_id": "gn-3598131",
+        "name": "Melchor de Mencos",
+        "country": "Guatemala",
+        "subdivision": "Petén",
+        "lat": 17.06606,
+        "lon": -89.15229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melchor de Mencos",
+          "url": "https://en.wikipedia.org/wiki/Melchor_de_Mencos",
+          "text": "Melchor de Mencos is a municipality in the Petén Department of Guatemala with a population of 23,813. It is situated on the eastern border with Belize, and is the only major border crossing from Guatemala to Belize. \nThe city was established in April 1960.  It is named after Sergeant Major Melchor de Mencos y Varón, who in 1754 journeyed with a tiny contingent of Spanish colonial troops from what is now Antigua, Guatemala to the coast of present-day Belize, there to combat English \"pirates\" who had settled that region and established a self-governing community. A large signboard-map at the border crossing between Benque Viejo del Carmen and Melchor depicts Belize as Guatemala's eastern province, consistent with Guatemala's ongoing claim.\nLarge numbers of its young people attend secondary school across the border in Belize, seeking the competitive benefits of English-language fluency.  They can be seen when dropped off on weekday mornings at the Guatemalan end of the pedestrian border crossing, walking through, and boarding the same school buses at the Belizean end, from there to be transported onward to their secondary schools in Benque Viejo del Carmen, Melchor's twin city across the border in Belize, or further afield.\nTensions along the border heightened in the autumn of 2014, following the shooting (presumably by a Guatemalan engaged in illegal exploitation of Belizean timber or other resources) at a major archaeological site in the Cayo District.\nPrior to their relocation in 1989, Melchor de Mencos was home to the two training centres of the Guatemalan Army's elite Kaibiles special operations force.  The Guatemalan army still maintains a major unit encamped adjacent to the border in Melchor. \nThe Maya archaeological site of La Blanca is located within the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "melchor de mencos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "melchor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mencos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5643,
+    "attempt": 5600,
+    "place_id": "gn-3673269",
+    "input": {
+      "place": {
+        "place_id": "gn-3673269",
+        "name": "Palestina",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 5.02053,
+        "lon": -75.62219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palestina, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Palestina,_Caldas",
+          "text": "Palestina is a town in the south central region of the state of Caldas, Colombia. Located in the Triangle of Coffee Area, with a culture and tradition related to the colonization of Antioquia and the coffee growing. Because of this, the historic center of the town and surrounding rural areas were named part of the \"Coffee Cultural Landscape\" UNESCO World Heritage Site in 2011.  \nPalestina's airport \"Aeropuerto del Café\", enables export cargo especially given the proximity to the city of Manizales (important industrial center), the diversity of agriculture and agribusiness in its area of influence – municipalities comprising the departments of Risaralda, Caldas, Quindio and the north of Valle del Cauca.\nThis town has very different climatic zones, because its territory is from the banks of the Cauca River, to the county seat located at the top of the mountain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "palestina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

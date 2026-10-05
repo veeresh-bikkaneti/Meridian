@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 467,
+    "attempt": 461,
+    "place_id": "gn-2328811",
+    "input": {
+      "place": {
+        "place_id": "gn-2328811",
+        "name": "Nkpor",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.15038,
+        "lon": 6.83042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nkpor",
+          "url": "https://en.wikipedia.org/wiki/Nkpor",
+          "text": "Nkpor  is a town in Idemili North local government area of Anambra state. The town of Nkpor had an estimated population of 109,377 in 2007.\nIt is attached to the much larger city of Onitsha to the west,  Oze to the north, Ogidi and Umuoji to the east, and Obosi to the south. The name 'Nkpor' is derived from the adulteration of the Igbo word nkpogho meaning 'repositioning,’ and pronounced Nkpọọ in Nkpor dialect of Idemmili. Nkpor is known for its farming prowess. There is a maize known as ‘akpu aka Nkpor’ because of its robust yield and is reminiscent of Nkpor men who are often muscular. In ancient times, a rich man is known in Nkpor for his rich yam barn and the number of animals in his pen. An average Nkpor indigene does not buy foodstuff in the market, and does not deny his visitors food. Nkpor is a traditional Community that worshiped the God of their ancestors like Idemmili before the advent of Christianity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "nkpor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 468,
+    "attempt": 462,
+    "place_id": "gn-267008",
+    "input": {
+      "place": {
+        "place_id": "gn-267008",
+        "name": "Tyre",
+        "country": "Lebanon",
+        "subdivision": "South Governorate",
+        "lat": 33.27333,
+        "lon": 35.19389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tyre, Lebanon",
+          "url": "https://en.wikipedia.org/wiki/Tyre,_Lebanon",
+          "text": "Tyre is a city in Lebanon, and one of the oldest continuously inhabited cities in the world. It was one of the earliest Phoenician metropolises and the legendary birthplace of Europa, her brothers Cadmus and Phoenix, and Carthage's founder Dido (Elissa). The city has many ancient sites, including the Tyre Hippodrome, and was added as a whole to the list of UNESCO World Heritage Sites in 1984. The historian Ernest Renan described it as \"a city of ruins, built out of ruins\".\nTyre is the fifth-largest city in Lebanon after Beirut, Tripoli, Sidon, and Baalbek. It is the capital of the Tyre District in the South Governorate. There were approximately 200,000 inhabitants in the Tyre urban area in 2016, including many refugees, as the city hosts three of the twelve Palestinian refugee camps in Lebanon: Burj El Shimali, El Buss, and Rashidieh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "tyre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 469,
+    "attempt": 463,
+    "place_id": "gn-2772400",
+    "input": {
+      "place": {
+        "place_id": "gn-2772400",
+        "name": "Linz",
+        "country": "Austria",
+        "subdivision": "Upper Austria",
+        "lat": 48.30639,
+        "lon": 14.28611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linz",
+          "url": "https://en.wikipedia.org/wiki/Linz",
+          "text": "Linz ( LIHNTS; Austrian German: [lɪnts] ; Czech: Linec [ˈlɪnɛt͡s]) is the capital of Upper Austria and third-largest city in Austria. Located on the river Danube, the city is in the far north of Austria, 30 km (19 mi) south of the border with Czechia. As of 1 January 2024, the city has a population of 214,064. It is the seventh-largest of all cities on the river Danube.\nThe area of present-day Linz was the site of the Roman settlement of Lentia. Linz was first documented in medieval sources and developed as a commercial and administrative centre within the Duchy of Austria and later the Habsburg monarchy. During the 19th and 20th centuries, the city underwent significant industrialisation, including the establishment and expansion of steel and chemical production facilities. The city's economy subsequently diversified, with services, higher education, and research institutions becoming important components of local economic activity.\nLinz is home to several universities, museums, and annual festivals. In 2009, the city was designated a European Capital of Culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "linz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 470,
+    "attempt": 464,
+    "place_id": "gn-303195",
+    "input": {
+      "place": {
+        "place_id": "gn-303195",
+        "name": "Osmaniye",
+        "country": "Türkiye",
+        "subdivision": "Osmaniye",
+        "lat": 37.07417,
+        "lon": 36.24778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osmaniye",
+          "url": "https://en.wikipedia.org/wiki/Osmaniye",
+          "text": "Osmaniye (pronounced [osˈmaːnije]) is a city on the eastern edge of the Çukurova plain in southern Turkey. It is the seat of Osmaniye Province and Osmaniye District. Its population is 252,186 (2022).\nBacked by the foothills of the Nur Mountains, Osmaniye lay on one of the old Silk Roads and was always a place of strategic importance since it straddled the main route between Anatolia and the Middle East.\nOsmaniye lies at the centre of a rich agricultural region watered by the Ceyhan river and known for growing peanuts. During the intensely hot summers many residents escape either to the Mediterranean coast or into the Nur mountains. The yayla of Zorkun is a particularly popular mountain retreat.\nOsmaniye is strongly associated with Devlet Bahçeli, the leader of the MHP, who was its member of parliament for many years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "osmaniye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 471,
+    "attempt": 465,
+    "place_id": "gn-3604251",
+    "input": {
+      "place": {
+        "place_id": "gn-3604251",
+        "name": "Olanchito",
+        "country": "Honduras",
+        "subdivision": "Yoro Department",
+        "lat": 15.48131,
+        "lon": -86.57415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olanchito",
+          "url": "https://en.wikipedia.org/wiki/Olanchito",
+          "text": "Olanchito is a municipality in the department of Yoro, Honduras, and a town with a population of 49,750 as of 2023. The municipality was founded in 1530 and comprises 70 villages, approximately 300 hamlets, and a population of 124,286. It is located 107 miles (172 km) northeast of Tegucigalpa, the country's capital. Olanchito operates in the Central Time Zone, with a UTC offset of -6 hours. The city is the birthplace of many popular figures of Honduran literature such as Ramón Amaya Amador, whose manuscripts, collection of books, writing table, and ashes are located in Olanchito. Known locally as the Civic City, Olanchito's main industry is agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "olanchito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 472,
+    "attempt": 466,
+    "place_id": "gn-3666645",
+    "input": {
+      "place": {
+        "place_id": "gn-3666645",
+        "name": "Tuluá",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 4.08484,
+        "lon": -76.19548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuluá",
+          "url": "https://en.wikipedia.org/wiki/Tulu%C3%A1",
+          "text": "Tuluá (Spanish pronunciation: [tuluˈa]), is a city located in the heart of Valle del Cauca, Colombia. A major industrial and commercial center, it is the region's fourth-largest city after Cali—the department capital—Palmira and Buenaventura. Founded around 1741 by Juan de Lemos y Aguirre, it has a population of approximately 178,000. It is also known as the Corazón del Valle (meaning 'The Heart of Valle'), as La Villa de Céspedes ('Town of Céspedes', named after the naturalist Juan María Céspedes) and Tierra Fácil ('Easy Land' in the native language).\nIt is well known throughout Colombia and many parts of South America as a major center of salsa dancing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "tulua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 473,
+    "attempt": 467,
+    "place_id": "gn-479123",
+    "input": {
+      "place": {
+        "place_id": "gn-479123",
+        "name": "Ulyanovsk",
+        "country": "Russia",
+        "subdivision": "Ulyanovsk",
+        "lat": 54.32824,
+        "lon": 48.38657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulyanovsk",
+          "url": "https://en.wikipedia.org/wiki/Ulyanovsk",
+          "text": "Ulyanovsk, known as Simbirsk until 1924, is a city and the administrative center of Ulyanovsk Oblast, Russia, located on the Volga River 705 kilometers (438 mi) east of Moscow. Ulyanovsk has been the only Russian UNESCO City of Literature since 2015.\nThe city was the birthplace of Vladimir Lenin (born Ulyanov), for whom it was renamed after his death in 1924; and of Alexander Kerensky, the leader of the Russian Provisional Government which Lenin overthrew during the October Revolution of 1917. It is also famous for its writers such as Ivan Goncharov, Nikolay Yazykov and Nikolay Karamzin, and for painters such as Arkady Plastov and Nikas Safronov."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ulyanovsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 474,
+    "attempt": 468,
+    "place_id": "gn-99135",
+    "input": {
+      "place": {
+        "place_id": "gn-99135",
+        "name": "Kufa",
+        "country": "Iraq",
+        "subdivision": "Najaf",
+        "lat": 32.05114,
+        "lon": 44.44017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kufa",
+          "url": "https://en.wikipedia.org/wiki/Kufa",
+          "text": "Kufa (Arabic: الْكُوفَة \"al-Kūfah\"), also spelled Kufah, is a city in Iraq, about 170 kilometres (110 mi) south of Baghdad, and 10 kilometres (6.2 mi) northeast of Najaf. It is located on the banks of the Euphrates River. The estimated population in 2003 was 110,000. Along with Najaf, Karbala, Mashhad, Kadhimiya, Samarra and Qom, Kufa is a holy city in Shia Islam. \nThe city was founded in 638 CE (17 AH) during the reign of the second Rashidun caliph, Umar. The Great Mosque of Kufa was home to Ali, the cousin and son-in-law of the Islamic prophet Muhammad, the first Shia Imam and the fourth Rashidun caliph. The mosque is also the site where he was assassinated. Kufa was the final capital of his caliphate. \nThe mosque also contains the shrine of Muslim ibn Aqil, his companion Hani ibn Urwa, and the revolutionary, Al-Mukhtar.  Kufa was also the founding capital of the Abbasid Caliphate. During the Islamic Golden Age, it was home to the grammarians of Kufa. Kufic script is named for the city. Keffiyehs are sometimes mistakenly thought to have originated from Kufa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "kufa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 475,
+    "attempt": 469,
+    "place_id": "gn-1183460",
+    "input": {
+      "place": {
+        "place_id": "gn-1183460",
+        "name": "Bannu",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 32.98527,
+        "lon": 70.60403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bannu",
+          "url": "https://en.wikipedia.org/wiki/Bannu",
+          "text": "Bannu (Urdu: بنوں, romanized: bannū̃, pronounced [bənːũː] ), also called Bani Gul or Bani (Pashto: باني, romanized: bānī, pronounced [ˈbɑni] ) is a city located on the Kurram River in southern Khyber Pakhtunkhwa, Pakistan. It is the capital of Bannu Division. Bannu's residents are primarily members of the Banuchi tribe and speak Banuchi (Baniswola), a dialect of Pashto which is similar to the distinct Waziristani dialect. The residents regardless of their tribes are commonly called Banusi, Banuchi or Banisi.\nThe major industries of Bannu are cloth weaving, sugar mills and the manufacturing of cotton fabrics, machinery and equipment. It is famous for its weekly Jumma fair. The district forms a basin drained by the Kurram and Gambila (or Tochi) rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bannu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 476,
+    "attempt": 470,
+    "place_id": "gn-1606250",
+    "input": {
+      "place": {
+        "place_id": "gn-1606250",
+        "name": "Si Racha",
+        "country": "Thailand",
+        "subdivision": "Chon Buri",
+        "lat": 13.17283,
+        "lon": 100.93159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Si Racha",
+          "url": "https://en.wikipedia.org/wiki/Si_Racha",
+          "text": "Si Racha (Thai: ศรีราชา, pronounced [sǐː rāːt͡ɕʰāː]) is a subdistrict and town in Thailand on the east coast of the Gulf of Thailand, about 120 km (75 mi) southeast of Bangkok in Si Racha district, Chonburi province. \nThe town is the center of the Si Racha district, the ninth-largest urban city area in Thailand. Si Racha is in the industrial Eastern Seaboard zone, along with Pattaya, Laem Chabang, and Chonburi. It is also part of the Pattaya-Chonburi Metropolitan Area, a conurbation with a population of 999,092 people.\nSi Racha is known as the birthplace of the popular hot sauce, Sriracha, which is named after the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "si racha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "si",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "racha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 477,
+    "attempt": 471,
+    "place_id": "gn-3003603",
+    "input": {
+      "place": {
+        "place_id": "gn-3003603",
+        "name": "Le Mans",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 48.0021,
+        "lon": 0.20251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Mans",
+          "url": "https://en.wikipedia.org/wiki/Le_Mans",
+          "text": "Le Mans (; French: [lə mɑ̃] ) is a city in northwestern France on the Sarthe River where it meets the Huisne. Traditionally the capital of the province of Maine, it is now the capital of the Sarthe department and the seat of the Roman Catholic diocese of Le Mans. Le Mans is a part of the Pays de la Loire region.\nIts inhabitants are called Manceaux (male) and Mancelles (female). Since 1923, the city has hosted the 24 Hours of Le Mans, the world's oldest active endurance sports car race. The event is among the most attended and prestigious motor sports events in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "le mans",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mans",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 478,
+    "attempt": 472,
+    "place_id": "gn-3398352",
+    "input": {
+      "place": {
+        "place_id": "gn-3398352",
+        "name": "Igarassu",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.83417,
+        "lon": -34.90639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Igarassu, Pernambuco",
+          "url": "https://en.wikipedia.org/wiki/Igarassu,_Pernambuco",
+          "text": "Igarassu (Central northeastern portuguese pronunciation: [iɡɐɾɐˈsu]) (or IgaraçuA) is a city in the Brazilian state of Pernambuco. It is the second-oldest city of the country and is situated on the north coast of the metropolitan region of Recife, approximately 32 kilometres (20 mi). It stands as one of the earliest European settlements in Brazil and is the site of the oldest church in the country, the Church of Saints Cosme and Damião, built in 1535. Igarassu is home to numerous colonial-period historic structures. The historic center of the city was designated a national monument by the National Institute of Historic and Artistic Heritage (IPHAN) in 1972."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "igarassu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 479,
+    "attempt": 473,
+    "place_id": "gn-3455070",
+    "input": {
+      "place": {
+        "place_id": "gn-3455070",
+        "name": "Paranaguá",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.51626,
+        "lon": -48.52537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paranaguá",
+          "url": "https://en.wikipedia.org/wiki/Paranagu%C3%A1",
+          "text": "Paranaguá (Tupi, 'Great Round Sea') is a city in the state of Paraná in Brazil. Founded in 1648, it is Paraná's oldest city. It is known for the Port of Paranaguá, which serves as both the sea link for Curitiba, 110 kilometres (68 mi) to the west and the capital of Paraná, and as one of the largest ports of Brazil.\nAs of 2022 Census, the city has an estimated population of 145,829 and a population density of 169.92 persons per km2, making it the tenth most populated city in the state of Paraná. The total area of the city is 826.674 km2 (319.18 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "paranagua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 480,
+    "attempt": 474,
+    "place_id": "gn-5331835",
+    "input": {
+      "place": {
+        "place_id": "gn-5331835",
+        "name": "Burbank",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.18084,
+        "lon": -118.30897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burbank, California",
+          "url": "https://en.wikipedia.org/wiki/Burbank,_California",
+          "text": "Burbank is a city in the southeastern end of the San Fernando Valley in Los Angeles County, California, United States. Located 7 miles (11 km) northwest of downtown Los Angeles, Burbank had a population of 102,988 as of 2025. The city was named after David Burbank, who established a sheep ranch there in 1867. Burbank consists of two distinct areas: a downtown/foothill section, in the foothills of the Verdugo Mountains, and the flatland section.\nLocated about six miles northeast of Hollywood, Burbank is a major center of the American media and entertainment industry and is commonly known as the \"Media Capital of the World\". Warner Bros. Entertainment and The Walt Disney Company are headquartered in Burbank, while Nickelodeon Animation Studio, 20th Century Studios, The Burbank Studios, Cartoon Network Studios and other major entertainment companies maintain offices, studios or production facilities there. The CW broadcast television network is also based in the city. Burbank's association with television  was reinforced through the recurring joke \"beautiful downtown Burbank\" popularized by Rowan & Martin's Laugh-In and later referenced on The Tonight Show Starring Johnny Carson, both of which were taped at NBC's former studios. The Hollywood Burbank Airport was the location of Lockheed's Skunk Works, which produced some of the most secret and technologically advanced airplanes, including the U-2 spy planes. Burbank is home to a 456,000-square-foot IKEA store, which was the largest IKEA location in the United States when it opened in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "burbank",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 481,
+    "attempt": 475,
+    "place_id": "gn-1275901",
+    "input": {
+      "place": {
+        "place_id": "gn-1275901",
+        "name": "Bhiwandi",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.30023,
+        "lon": 73.05881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhiwandi",
+          "url": "https://en.wikipedia.org/wiki/Bhiwandi",
+          "text": "Bhiwandi  () is a city in the Thane district of Maharashtra, India. It is located 20 kilometres (12 mi) northeast of Mumbai, and 15 km (9.3 mi) northeast of the city of Thane. The city is a part of the Mumbai Metropolitan Region.\nBhiwandi is a commercial city and a major trade centre that connects Mumbai and the rest of India through the Mumbai–Agra Highway. It is known for its textile industry, though in recent years, the economic downturn has forced the closure of a large portion of the sector.\nBhiwandi lies in the Konkani coastal lowland, a region known for its hills and streams. The city houses the tehsil headquarters of Bhiwandi, and it is administered by the Bhiwandi-Nizampur City Municipal Corporation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bhiwandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 482,
+    "attempt": 476,
+    "place_id": "gn-1884178",
+    "input": {
+      "place": {
+        "place_id": "gn-1884178",
+        "name": "Gwangyang",
+        "country": "South Korea",
+        "subdivision": "Jeollanam-do",
+        "lat": 34.9414,
+        "lon": 127.69569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwangyang",
+          "url": "https://en.wikipedia.org/wiki/Gwangyang",
+          "text": "Gwangyang (Korean: 광양; Korean pronunciation: [kwaŋ.jaŋ]) is a city in Jeonnam-Gwangju, South Korea. Gwangyang is the home of POSCO's Gwangyang Steel Works, the largest facility of its kind in the world. \nThe city is also home to K League Classic football side Jeonnam Dragons.\nGwangyang is at the centre of development for the Gwangyang Bay Area Free Economic Zone (GFEZ), the third-largest among the six free economic zones of South Korea, covering 92.7 square kilometers. The Free Economic Zone focus on port container handling, steel production, shipbuilding as well as leisure facilities. The area has become a mega business hub, exploiting its accessibility to China.\nFamous people from Gwangyang include National Intelligence Service head Kim Seung-kew. To the north of the city is the county of Gurye, to the east along the Seomjin River is the county of Hadong in Gyeongsangnam-do, and to the south is the Gwangyang Bay. Mountains in the city include Baegunsan (백운산, 1,217m), to the south is Gayasan (가야산, 497m) and Gubonghwasan (구봉화산, 473m). Baegunsan is the second-highest mountain in Jeonnam-Gwangju with the exception of Jirisan (지리산, 1,915 m).\nThe average yearly temperature is 13.7 °C (56.7 °F), the average in January is 0.1 °C (32.2 °F), and the average in July is 27.8 °C (82.0 °F). The average yearly precipitation is 1,296 mm (51.02 in)\nAs of October 14, 2007, plans are being set up and a referendum is being planned for a merging of the cities of Yeosu, Suncheon and Gwangyang into a new metropolitan city, taking advantage of the Gwangyang Bay Free Economic Zone, Yeosu's Expo 2012 bid and port facilities, Suncheon's educational institutes and Gwangyang's POSCO plant.[1]"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "gwangyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 483,
+    "attempt": 477,
+    "place_id": "gn-2038087",
+    "input": {
+      "place": {
+        "place_id": "gn-2038087",
+        "name": "Chengde",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 40.9519,
+        "lon": 117.95883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chengde",
+          "url": "https://en.wikipedia.org/wiki/Chengde",
+          "text": "Chengde, formerly known as Jehol and Rehe, is a prefecture-level city in Hebei province, situated about 225 kilometres (140 mi) northeast of Beijing. It is best known as the site of the Mountain Resort, a vast imperial garden and palace formerly used by the Qing emperors as summer residence. Its local dialect is also known for being the closest to Standard Chinese. The permanent resident population is approximately 3,473,200 in 2017. At the end of 2024, the total resident population of the city was 3,285,700, a decrease of 16,500 from the end of the previous year. The urbanization rate of the resident population is 59.77%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "chengde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 484,
+    "attempt": 478,
+    "place_id": "gn-2427123",
+    "input": {
+      "place": {
+        "place_id": "gn-2427123",
+        "name": "N'Djamena",
+        "country": "Chad",
+        "subdivision": "N’Djaména",
+        "lat": 12.10672,
+        "lon": 15.0444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "N'Djamena",
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "text": "N'Djamena (English:   ən-jah-MAY-nə) is the capital and largest city of Chad. It is also a Special Status Province, divided into 10 districts or arrondissements.\nOriginally called Fort-Lamy, it was founded in 1910 by the French during their colonization of Central Africa. The city was renamed N'Djamena in 1975, reflecting its local Chadian heritage. Throughout its history, N'Djamena has grown from a small trading hub into the political and economic center of Chad, playing a vital role in the country's development. Its strategic location near the borders of Cameroon and Nigeria has historically made it an important crossroads for trade and cultural exchange in the region.\nN'Djamena is situated on the Chari River in the southwestern part of Chad, near Lake Chad. The city lies within a semi-arid region characterized by a hot climate with a distinct dry season. Its location on the river provides vital water resources for agriculture and daily life, although the surrounding landscape is largely flat and arid. The city's proximity to Lake Chad also influences its climate and ecology, making it an important area for both local agriculture and regional trade. The geography of N'Djamena has shaped its development as a key urban center in Chad, with its strategic position contributing to its historical and economic significance.\nThe city serves as the centre of economic activity in Chad. Meat, fish and cotton processing are the chief industries, and it is a regional market for livestock, salt, dates, and grains.\nIt is a port city located at the confluence of the Logone River with the Chari River, forming a transborder agglomeration with the city of Kousséri (in Cameroon), capital of the Department of Logone-et-Chari, which is on the west bank of both rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "n djamena",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "n",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "djamena",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 485,
+    "attempt": 479,
+    "place_id": "gn-916095",
+    "input": {
+      "place": {
+        "place_id": "gn-916095",
+        "name": "Kabwe",
+        "country": "Zambia",
+        "subdivision": "Central Province",
+        "lat": -14.4469,
+        "lon": 28.44644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabwe",
+          "url": "https://en.wikipedia.org/wiki/Kabwe",
+          "text": "Kabwe is the capital of the Zambian Central Province and the Kabwe District, with a population estimated at 288,598 at the 2022 census. Named Broken Hill until 1966, it was founded when lead and zinc deposits were discovered in 1902. Kabwe also has a claim to being the birthplace of Zambian politics as it was an important political centre during the colonial period.\nKabwe is an important transportation, farming and university centre. Kabwe is becoming a major agricultural hub for the country is the headquarters for Zambia Railways and prison services. Additionally the mining industry has been important to the economic development of the region. However, because of the exceptional contamination of the city with lead and other toxins, and the effects of these on local children's health, a March 2022 report by the UN Special Rapporteur on Human Rights and the Environment identified the town as a sacrifice zone for industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "kabwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 486,
+    "attempt": 480,
+    "place_id": "gn-1167648",
+    "input": {
+      "place": {
+        "place_id": "gn-1167648",
+        "name": "Qadirpur Ran",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.29184,
+        "lon": 71.67164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qadirpur Ran",
+          "url": "https://en.wikipedia.org/wiki/Qadirpur_Ran",
+          "text": "Qadirpur Ran (Urdu: قادِرپُور راں) is a town in the Multan District of Punjab, Pakistan. The town has fourteen wards and three Union Councils: Qadirpur Ran City, Sharqi and Gharbi.\nThe most commonly spoken language here is Saraiki. While the Raan caste is dominant, other communities such as Ansari, Gazar, Thaheem, Khichi, Khral and Awan also reside there. \nQadirpur Ran is located on the Lahore–Multan Highway in a fertile agricultural area known for its mangoes and citrus (oranges), which are among its main crops and are exported outside the region. A canal called the Sindhai Canal passes through or near the town, aiding irrigation. The main roads in the town include Tatypur Road, Riazabad Road, Mattital Road, Khanewal–Multan Road and Hospital Road.\nThe name Qadirpur Ran originates from the Raan tribe (or caste). According to local lore, during the British colonial period, a British officer was impressed by the strength and presence of the Raan clan in the area and ordered that the land be recognized as theirs up to the limits of their grazing. Over time, the area became known as Ran (Raan) and the Raan family’s influence solidified. Even today, many of the leading landowners, politicians, and social figures belong to branches of the Raan family.\nPolitically, the town is split into two major groups: Mazhar Raan Group and Muhammad Hassan Raan Group. The Mazhar Raan group currently holds the MPA seat through Malik Wasif Mazhar Raan, who is recognized as a prominent leader of his group and the area.\nAmong past notable personalities is Malik Mazhar Abbas Raan (1953–2019), who served multiple terms as a Member of the Provincial Assembly of Punjab. His funeral was held in Qadirpur Ran, attended by many dignitaries. \nEducation is a growing priority in Qadirpur Ran. The following institutions are known to exist there:\nGovernment Graduate College Qadirpur Ran (a public college) \nThe Educators Qadir Pur Ranwan Campus (private campus) \nEducator Laureate is also mentioned locally as an educational institution (though detailed official records are harder to find)\nGovernment Associate College (Boys / Co-education) is reported to exist, with co-education being introduced in some parts\n\nBesides formal schools and colleges, many private coaching centers and tuition academies operate in the town. Locals also report that several of the youth have gone on to become engineers, doctors, and government employees. According to local sources, the literacy rate in Qadirpur Ran is estimated to be around 65%. \nThe town also produces professionals in various fields. For example, doctors such as Dr. Javeed, Dr. Shabir, Dr. Ramzan, Dr. Majeed, Dr. Zafar Bhukari and Dr. Zaheer are among well-known medical practitioners in the area.  In education, many science teachers from the Government Higher Secondary School Qadirpur Ran. \nCricket is the most popular sport in the town, followed by football and tennis. \nEconomically, the town is growing quickly: many medical stores, pharmacies, banks and commercial companies have opened. A large bazaar acts as its main marketplace. The town also has all the infrastructure expected of a Tehsil, including offices such as NADRA, Passport Office, Rescue 1122, and the Land Record / Arazi Center. The housing society Rahat Garden City Qadirpur Ran is a modern residential development, and the DHA Fatima Jinnah Gate lies adjacent to the town, further increasing its importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 544
+    },
+    "banned_terms": [
+      {
+        "term": "qadirpur ran",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "qadirpur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ran",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

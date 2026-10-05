@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 3225,
+    "attempt": 3201,
+    "place_id": "gn-4703384",
+    "input": {
+      "place": {
+        "place_id": "gn-4703384",
+        "name": "Kingsville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 27.51587,
+        "lon": -97.85611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingsville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Kingsville,_Texas",
+          "text": "Kingsville is a city in the southern region of the U.S. state of Texas and the county seat of Kleberg County. Located on the U.S. Route 77 corridor between Corpus Christi and Harlingen, Kingsville is the principal city of the Kingsville Micropolitan Statistical Area, which is part of the larger Corpus Christi-Kingsville Combined Statistical Area. The population was 25,402 at the 2020 census, and in 2022 the U.S. Census Bureau estimated the population at 24,833.\nNamed in honor of Richard King, the city was founded to provide infrastructure for the adjacent King Ranch, as well as serve as the headquarters of the newly founded St. Louis, Brownsville and Mexico Railway. In 1904, the first tracks were laid and the first buildings constructed for the planned city. In 1911, the city was incorporated. It is home to Texas A&M University-Kingsville, a member of the Texas A&M University System, and Naval Air Station Kingsville, one of the U.S. Navy's two locations for jet aviation training."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "kingsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3226,
+    "attempt": 3202,
+    "place_id": "gn-4936159",
+    "input": {
+      "place": {
+        "place_id": "gn-4936159",
+        "name": "Fall River",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.70149,
+        "lon": -71.15505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fall River, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Fall_River,_Massachusetts",
+          "text": "Fall River is a city in Bristol County, Massachusetts, United States. Fall River's population was 94,000 at the 2020 United States census, making it the tenth-largest city in the state, and the second-largest municipality in the county behind New Bedford. It abuts the Rhode Island state line with Tiverton, Rhode Island, to its south.\nLocated along the eastern shore of Mount Hope Bay at the mouth of the Taunton River, the city gained recognition during the 19th century as a leading textile manufacturing center in the United States. While the textile industry has long since moved on, its impact on the city's culture and landscape is still prominent. Fall River's official motto is \"We'll Try\", dating back to the aftermath of the Great Fire of 1843. Nicknamed The Scholarship City after Irving Fradkin founded Dollars for Scholars there in 1958, mayor Jasiel Correia introduced the \"Make It Here\" slogan as part of a citywide rebranding effort in 2017.\nFall River is known for the Lizzie Borden case, the Fall River cult murders, Portuguese culture, its numerous 19th-century textile mills and Battleship Cove, home of the world's largest collection of World War II naval vessels (including the battleship USS Massachusetts). Fall River has its city hall located over an interstate highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "fall river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3227,
+    "attempt": 3203,
+    "place_id": "gn-4937230",
+    "input": {
+      "place": {
+        "place_id": "gn-4937230",
+        "name": "Framingham",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.27926,
+        "lon": -71.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Framingham, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Framingham,_Massachusetts",
+          "text": "Framingham ( ) is a city in the Commonwealth of Massachusetts, United States. Incorporated in 1700, it is located in Middlesex County and the MetroWest subregion of the Greater Boston metropolitan area. The city proper covers 25 square miles (65 km2) with a population of 72,362 in 2020, making it the 14th most populous municipality in Massachusetts. Residents voted in favor of adopting a charter to transition from a representative town meeting system to a mayor–council government in April 2017, and the municipality transitioned to city status on January 1, 2018. Before it transitioned, it had been the largest town by population in Massachusetts.\nThe city has one of the largest Brazilian American populations in the United States, with a considerable Brazilian presence since the 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "framingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3228,
+    "attempt": 3204,
+    "place_id": "gn-5102578",
+    "input": {
+      "place": {
+        "place_id": "gn-5102578",
+        "name": "Perth Amboy",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.50677,
+        "lon": -74.26542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perth Amboy, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Perth_Amboy,_New_Jersey",
+          "text": "Perth Amboy is a historic waterfront city in northeastern Middlesex County, in the U.S. state of New Jersey, within the New York metropolitan area. As of the 2020 census, the city's population was 55,436. Perth Amboy is known as the \"City by the Bay\", referring to its location adjoining Raritan Bay.\nThe earliest residents of the area were the Lenape Native Americans, who called the point on which the city lies \"Ompoge\". Perth Amboy was settled in 1683 by Scottish colonists and was called \"New Perth\" after James Drummond, 4th Earl of Perth; the native name was eventually corrupted and the two names were merged. Perth Amboy was formed by Royal charter in 1718, and the New Jersey Legislature reaffirmed its status in 1784, after independence. The city was a capital of the Province of New Jersey from 1686 to 1776. During the mid-1800s, the Industrial Revolution and immigration grew the city, developing a variety of neighborhoods which residents from a diverse range of ethnicities lived in. The city developed into a resort town for the Raritan Bayshore near it, but the city has grown in other industries since its redevelopment starting in the 1990s. Its residents are mostly Hispanic.\nPerth Amboy borders the Arthur Kill and features a historic waterfront. The Perth Amboy Ferry Slip was once an important ferry slip on the route south from New York City; it was added to the National Register of Historic Places in 1978. The Raritan Yacht Club, one of the oldest yacht clubs in the United States, is located in the city. Perth Amboy is connected to the Staten Island borough of New York City via the Outerbridge Crossing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 278
+    },
+    "banned_terms": [
+      {
+        "term": "perth amboy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "perth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amboy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3229,
+    "attempt": 3205,
+    "place_id": "gn-980595",
+    "input": {
+      "place": {
+        "place_id": "gn-980595",
+        "name": "Mafikeng",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -25.86522,
+        "lon": 25.64421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mafikeng",
+          "url": "https://en.wikipedia.org/wiki/Mafikeng",
+          "text": "Mafikeng (Tswana for \"Place of Rocks\"), officially known as Mahikeng and alternatively known as Mafeking (, US also ), is the capital city of the North West province of South Africa. It was also the capital of the Bechuanaland Protectorate (modern Botswana) until 1965, despite being located outside the protectorate.\nClose to South Africa's border with Botswana, Mafikeng is 1,400 km (870 mi) northeast of Cape Town and 260 km (160 mi) west of Johannesburg. In 2001 it had a population of 49,300. In 2007 Mafikeng was reported to have a population of 250,000, of which the CBD constituted between 69,000 and 75,000. It is built on the open veld at an elevation of 1,500 m (4,921 ft), by the banks of the Upper Molopo River. The Madibi goldfields are some 15 kilometres (9+1⁄2 miles) south of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "mafikeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3230,
+    "attempt": 3206,
+    "place_id": "gn-1273992",
+    "input": {
+      "place": {
+        "place_id": "gn-1273992",
+        "name": "Chopda",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 21.24578,
+        "lon": 75.29946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chopda",
+          "url": "https://en.wikipedia.org/wiki/Chopda",
+          "text": "Chopda or Chopra is a city and municipal council in the Jalgaon district in the state of Maharashtra, India.\nChopda is a town and one of the Tehsils constituting 119 villages in the Jalgaon district in Maharashtra, India. It is located at 21.25°N 75.18°E﻿ / 21.25; 75.18 and has an average elevation of 190 meters (623.36 feet). The town is situated on the banks of the Ratnavati River and is linked by roads to the rest of the Jalgaon district, which also borders with Districts like Dhule (Maharashtra), Khargone and Barwani in Madhya Pradesh. The Tapi, one of the major rivers in India, is approximately 10 km away from Chopda.\nPopular events to experience in Chopda are Rath Yatra, Shravan Somvar Jatra, and Ganpati Visarjan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "chopda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3231,
+    "attempt": 3207,
+    "place_id": "gn-1880744",
+    "input": {
+      "place": {
+        "place_id": "gn-1880744",
+        "name": "Bukit Timah",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.328,
+        "lon": 103.791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukit Timah",
+          "url": "https://en.wikipedia.org/wiki/Bukit_Timah",
+          "text": "Bukit Timah (IPA:  BUUK-it TEE-mah), often abbreviated as Bt Timah, is a planning area and residential estate located in the westernmost part of the Central Region of Singapore. Bukit Timah lies roughly 10 kilometres (6.2 mi) from the Central Business District, bordering the Central Water Catchment to the north, Bukit Panjang to the northwest, Queenstown to the south, Tanglin to the southeast, Clementi to the southwest, Novena to the east and Bukit Batok to the west. It is further split into eight subzones, namely Anak Bukit, Coronation Road, Farrer Court, Hillcrest, Holland Road, Leedon Park, Swiss Club and Ulu Pandan.\nOwing to its prime location, Bukit Timah has one of the densest clusters of luxury condominiums and landed property in Singapore, with little public housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bukit timah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bukit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "timah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3232,
+    "attempt": 3208,
+    "place_id": "gn-1882033",
+    "input": {
+      "place": {
+        "place_id": "gn-1882033",
+        "name": "MacPherson",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.32713,
+        "lon": 103.88413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "MacPherson, Singapore",
+          "url": "https://en.wikipedia.org/wiki/MacPherson,_Singapore",
+          "text": "MacPherson is a neighbourhood located within the district of Geylang in the Central Region of Singapore. Its location roughly corresponds to the identically titled subzone in the Geylang Planning Area and is approximately sandwiched between the neighbourhoods of Aljunied and Paya Lebar. MacPherson largely consists of various public housing estates centred on Circuit Road and an industrial area. The Pelton Canal runs through the neighbourhood, which separates a private housing estate off MacPherson Road, and the public housing estate along Circuit Road.\nMany residents in MacPherson are from the older generation, as the area was one of the first major public housing projects developed between the 1950s to 1970s. As a result, the majority of facilities in MacPherson are designed to be wheelchair and elderly-friendly. Nevertheless, in recent years, multiple built-to-order (BTO) public housing developments have been constructed, such as MacPherson Spring and MacPherson Weave, which are geared towards newly established young families.\nThe neighbourhood is served by MacPherson Community Club, operated by the People's Association (PA) with Residents' Committee (RCs) and Neighbourhood Committees (NCs) scattered around the entire neighbourhood. These organisations facilitate various programmes to promote community involvement and interaction among residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "macpherson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3233,
+    "attempt": 3209,
+    "place_id": "gn-2127515",
+    "input": {
+      "place": {
+        "place_id": "gn-2127515",
+        "name": "Wakkanai",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 45.40944,
+        "lon": 141.67389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakkanai",
+          "url": "https://en.wikipedia.org/wiki/Wakkanai",
+          "text": "Wakkanai (稚内市, Wakkanai-shi; Ainu: ヤㇺワッカナィ Yam-wakka-nay meaning \"cold water river\" or more literally \"cold river valley\") is a city located in Sōya Subprefecture, Hokkaido, Japan. Wakkanai is the capital of Sōya Subprefecture. Situated approximately 1,100 km north of Tokyo and 270 km north of Sapporo, it is the northernmost municipality under Japanese administration following the loss of Karafuto (present-day Sakhalin) and the Kuril Islands, with Benten-jima being the northernmost point under Japanese control.\nWakkanai started as the Matsumae Domain's trading post with the Ainu people in 1685. Edo-period explorer Mamiya Rinzō set sail for his famous Karafuto expedition from the settlement. After Japan regained Karafuto following its victory in the Russo-Japanese War in 1905, Wakkanai rose to prominence as a gateway to this reclaimed territory. Two railway lines, the Tempoku and Sōya lines, extended to Wakkanai, and the Chihaku ferry carried passengers further north to Ōdomari in Karafuto. This improved transport network enabled the commercial digging of local coal mines, which had remained untouched due to their remote location.\nAfter the Second World War, Wakkanai lost its status as the gateway to Japan's northern frontier. All coal mines in the area were closed by the 1970s, and Wakkanai's primary industries shifted to fishing, dairy farming, and tourism. The city's population peaked at 55,464 in 1975. The Tempoku Line, which connected Wakkanai to Otoineppu via the coastal town of Hamatonbetsu, was discontinued in 1989. In 1995, the ferry route between Wakkanai and Sakhalin was reestablished for the first time since 1945 but ceased operations in 2015 due to low demand. Today, ferry routes connect the city to the islands of Rishiri and Rebun.\nAs of 31 July 2024, the city had an estimated population of 30,590 in 17150 households, and a  population density of 40 persons per km2. The total area of the city is 761.42 km2 (293.99 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "wakkanai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3234,
+    "attempt": 3210,
+    "place_id": "gn-2168305",
+    "input": {
+      "place": {
+        "place_id": "gn-2168305",
+        "name": "Dubbo",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.24295,
+        "lon": 148.60484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubbo",
+          "url": "https://en.wikipedia.org/wiki/Dubbo",
+          "text": "Dubbo ( DUB-oh; Wiradjuri: Dhubu) is a city in the Orana Region of New South Wales, Australia. It is the largest population centre in the Orana region, with a population of 43,516 at June 2021.\nThe city is located at the intersection of the Newell, Mitchell, and Golden highways. Dubbo officially became a city in 1966. Dubbo is located roughly 275 m (902 ft) above sea level, 303 km (188 mi) north-west of Sydney (400 km (249 mi) by road) and is a major road and rail freight hub to other parts of New South Wales. It is linked by national highways north to Brisbane and Charleville, south towards Melbourne and Canberra, east to Sydney, Newcastle and Gosford and west to Broken Hill and Adelaide.\nDubbo is included in the rainfall and weather forecast region for the Central West Slopes and in the Central West Slopes and Plains division of the Bureau of Meteorology forecasts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "dubbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3235,
+    "attempt": 3211,
+    "place_id": "gn-2171085",
+    "input": {
+      "place": {
+        "place_id": "gn-2171085",
+        "name": "Coffs Harbour",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.29626,
+        "lon": 153.11351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coffs Harbour",
+          "url": "https://en.wikipedia.org/wiki/Coffs_Harbour",
+          "text": "Coffs Harbour, locally nicknamed Coffs, is a coastal city on the Mid North Coast of New South Wales, Australia, 529 km (329 mi) north of Sydney, and 390 km (240 mi) south of Brisbane. It is one of the largest urban centres on the North Coast, with a population of 78,759 as per 2021 census.\nThe Gumbaynggirr people are the Traditional Custodians of Coffs Harbour and the surrounding area, and have lived there for many thousands of years.\nCoffs Harbour's economy was once based on timber and agriculture. Over recent decades, tourism has become an increasingly important industry for the city. Once part of a region known as the Bananacoast, today the tourist city is part of a wider region known as the Coffs Coast.\nThe city has a campus of Southern Cross University, and a campus of Rural Faculty of Medicine University of New South Wales, a public and a private hospital, several radio stations, and three major shopping centres. Coffs Harbour is near numerous national parks, including a marine national park.\nThere are regular passenger flights each day to Sydney, Melbourne and Brisbane departing from Coffs Harbour Airport. Coffs Harbour is also accessible by road, by NSW TrainLink, and by regular bus services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "coffs harbour",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coffs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbour",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3236,
+    "attempt": 3212,
+    "place_id": "gn-2524907",
+    "input": {
+      "place": {
+        "place_id": "gn-2524907",
+        "name": "Cosenza",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.2989,
+        "lon": 16.25307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cosenza",
+          "url": "https://en.wikipedia.org/wiki/Cosenza",
+          "text": "Cosenza (Italian: [koˈzɛntsa] ; Cosentian: Cusenza, [kuˈsɛndza]) is a city and comune (municipality) located in the region of Calabria in southern Italy. The city has a population of 63,240, making it the 5th-largest city in Calabria, while the urban area counts more than 250,000 inhabitants. It is the capital of the province of Cosenza, which has a population of more than 700,000.\nThe ancient town is the seat of the Cosentian Academy, one of the oldest academies of philosophical and literary studies in Italy and Europe. To this day, Cosenza remains a cultural hub, with several museums, monuments, theatres and libraries. The modern city is the centre of an urban agglomeration including, among others, the municipality of Rende, where the University of Calabria is located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "cosenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3237,
+    "attempt": 3213,
+    "place_id": "gn-2634725",
+    "input": {
+      "place": {
+        "place_id": "gn-2634725",
+        "name": "Warwick",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.28333,
+        "lon": -1.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warwick",
+          "url": "https://en.wikipedia.org/wiki/Warwick",
+          "text": "Warwick (  WORR-ik) is a market town, civil parish and the county town of Warwickshire in the Warwick District in England, adjacent to the River Avon. It is 9 miles (14 km) south of Coventry, and 19 miles (31 km) south-east of Birmingham. It is adjoined with Leamington Spa and Whitnash.\nWarwick has ancient origins and an array of historic buildings, notably from the Medieval, Stuart and Georgian eras. It was a major fortified settlement from the early Middle Ages, the most notable relic of this period being Warwick Castle, a major tourist attraction. Much was destroyed in the Great Fire of Warwick in 1694 and then rebuilt with fine 18th century buildings, such as the Collegiate Church of St Mary and the Shire Hall. The population was estimated at 36,665 at the 2021 Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "warwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3238,
+    "attempt": 3214,
+    "place_id": "gn-2635269",
+    "input": {
+      "place": {
+        "place_id": "gn-2635269",
+        "name": "Tynemouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.01788,
+        "lon": -1.42559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tynemouth",
+          "url": "https://en.wikipedia.org/wiki/Tynemouth",
+          "text": "Tynemouth () is a coastal town in the metropolitan borough of North Tyneside, in Tyne and Wear, England. Historically the easternmost town in Northumberland, it is located on the north side of the mouth of the River Tyne, hence its name. It is eight miles (13 kilometres) east-northeast of Newcastle upon Tyne. The medieval Tynemouth Priory and Castle stand on a headland overlooking both the mouth of the river and the North Sea, with the town centre lying immediately west of the headland.\nUntil 1974, the town was a county borough which included the nearby town of North Shields.\nAt the 2021 census the Tynemouth built-up area as defined by the Office for National Statistics (which also includes North Shields) had a population of 60,605. The population of Tynemouth itself at the 2021 census was 10,256."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "tynemouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3239,
+    "attempt": 3215,
+    "place_id": "gn-2639381",
+    "input": {
+      "place": {
+        "place_id": "gn-2639381",
+        "name": "Rickmansworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.63898,
+        "lon": -0.47718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rickmansworth",
+          "url": "https://en.wikipedia.org/wiki/Rickmansworth",
+          "text": "Rickmansworth () is a town in south-west Hertfordshire, England, located approximately 17 miles (27 km) north-west of central London, 5 miles (8 km) south-west of Watford and inside the perimeter of the M25 motorway. The town is mainly to the north of the Grand Union Canal (formerly the Grand Junction Canal) and the River Colne.\nRickmansworth is the administrative seat of the Three Rivers District Council; the confluence of the River Chess and the River Gade with the Colne in Rickmansworth inspired the district's name. The enlarged Colne flows south to form a major tributary of the River Thames. \nThe town is served by the Metropolitan line of the London Underground and by Chiltern Railways of the National Rail network, between London Marylebone and Aylesbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "rickmansworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3240,
+    "attempt": 3216,
+    "place_id": "gn-2646504",
+    "input": {
+      "place": {
+        "place_id": "gn-2646504",
+        "name": "Hove",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.83088,
+        "lon": -0.1672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hove",
+          "url": "https://en.wikipedia.org/wiki/Hove",
+          "text": "Hove ( HOHV) is a seaside location in East Sussex, England. Alongside Brighton, it is one of the two main parts of the city of Brighton and Hove.\nOriginally a fishing village surrounded by open farmland, it grew rapidly in the 19th century in response to the development of its eastern neighbour Brighton; by the Victorian era it was a fully developed town with borough status. Neighbouring parishes such as Aldrington and Hangleton were annexed in the late 19th and early 20th centuries. The neighbouring urban district of Portslade was merged with Hove in 1974. In 1997, as part of local government reform, the borough merged with Brighton to form the Borough of Brighton and Hove; this unitary authority was granted city status in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "hove",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3241,
+    "attempt": 3217,
+    "place_id": "gn-2650798",
+    "input": {
+      "place": {
+        "place_id": "gn-2650798",
+        "name": "Dumfries",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.06959,
+        "lon": -3.61139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumfries",
+          "url": "https://en.wikipedia.org/wiki/Dumfries",
+          "text": "Dumfries (  dum-FREESS; from Scottish Gaelic: Dùn Phris [ˌt̪un ˈfɾʲiʃ]) is a market town and former royal burgh in Dumfries and Galloway, Scotland, near the mouth of the River Nith on the Solway Firth, 25 miles (40 km) from the Anglo-Scottish border. Dumfries is the county town of the historic county of Dumfriesshire.\nBefore becoming King of Scots, Robert the Bruce killed his rival John Comyn III of Badenoch at Greyfriars Kirk in the town in 1306. The Young Pretender had his headquarters here towards the end of 1745. In World War II, the Norwegian armed forces in exile in Britain largely consisted of a brigade in Dumfries.\nDumfries is nicknamed Queen of the South; this is also the name of the town's football club. People from Dumfries are known colloquially in Scots language as Doonhamers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "dumfries",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3242,
+    "attempt": 3218,
+    "place_id": "gn-2834498",
+    "input": {
+      "place": {
+        "place_id": "gn-2834498",
+        "name": "Schweinfurt",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.04937,
+        "lon": 10.22175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schweinfurt",
+          "url": "https://en.wikipedia.org/wiki/Schweinfurt",
+          "text": "Schweinfurt ( SHVYNE-foort, German: [ˈʃvaɪnfʊʁt] ; lit. 'Swine Ford') is a city in the district of Lower Franconia in Bavaria, Germany. It is the administrative centre of the surrounding district (Landkreis) of Schweinfurt and a major industrial, cultural and educational hub. The urban agglomeration has 100,200 (2018) and the city's catchment area, including the Main-Rhön region and parts of South Thuringia, 759,000 inhabitants.\nSchweinfurt was first documented in 791 and is one of the oldest cities in Bavaria. Around 1000 the Margraves of Schweinfurt controlled large parts of northern Bavaria. From the 12th century until 1802 Schweinfurt was a Free imperial city within the Holy Roman Empire; around 1700 it became a centre of humanist activity, and in 1770 the city's 250-year industrial history began.\nDuring World War II, the Americans suffered their biggest air defeat over Schweinfurt in the Second Raid on Schweinfurt (Black Thursday). On 11 April 1945, the US Army invaded the city. During the Cold War, the 1945 founded USAG Schweinfurt had the highest concentration of US combat units in the Federal Republic of Germany. In the northwest of Schweinfurt, an American town emerged, with a complete civil infrastructure including all kinds of shops for 12,000 Americans, soldiers and civilians. Until the withdrawal of the US Army at Schweinfurt in 2014, a total of about 100,000 US soldiers were stationed in the town.\nFollowing German Reunification in 1990, Schweinfurt has become an important traffic hub in the centre of Germany. It has the highest employment density (2015) and the third highest gross domestic product per inhabitant of Germany (2014). The world's largest bearing group SKF, the second largest Schaeffler, the second largest automotive supplier in the world ZF Friedrichshafen and the DAX group Fresenius Medical Care have their largest plants in Schweinfurt.\nSome important inventions have their origin in Schweinfurt: the pedal bike by Philipp Moritz Fischer (1853) as well as the freewheel (1889) and the coaster brake (1903) by Ernst Sachs. In 1652, the oldest permanently existing natural-scientific academy in the world was founded in Schweinfurt, the German National Academy of Sciences Leopoldina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "schweinfurt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3243,
+    "attempt": 3219,
+    "place_id": "gn-2940213",
+    "input": {
+      "place": {
+        "place_id": "gn-2940213",
+        "name": "Celle",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.62264,
+        "lon": 10.08047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Celle",
+          "url": "https://en.wikipedia.org/wiki/Celle",
+          "text": "Celle (German pronunciation: [ˈtsɛlə] ) is a town and capital of the district of Celle in Lower Saxony, in north-central Germany. The town is situated on the banks of the river Aller, a tributary of the Weser, and has a population of about 71,000. Celle is the southern gateway to the Lüneburg Heath, has a castle (Schloss Celle) built in the Renaissance and Baroque styles and a picturesque old town centre (the Altstadt) with more than 400 timber-framed houses, making Celle one of the most remarkable members of the German Timber-Frame Road. From 1378 to 1705 Celle was the official residence of the Lüneburg branch of the dukes of Brunswick-Lüneburg (House of Welf), who had been banished from their original ducal seat by its townsfolk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "celle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3244,
+    "attempt": 3220,
+    "place_id": "gn-2994798",
+    "input": {
+      "place": {
+        "place_id": "gn-2994798",
+        "name": "Meaux",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.96014,
+        "lon": 2.87885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meaux",
+          "url": "https://en.wikipedia.org/wiki/Meaux",
+          "text": "Meaux (French pronunciation: [mo] ) is a commune on the river Marne in the Seine-et-Marne department in the Île-de-France region in the metropolitan area of Paris, France. It is 41.1 km (25.5 mi) east-northeast of the centre of Paris.\nMeaux is, with Provins, Torcy and Fontainebleau, one of the four subprefectures (sous-préfectures) of the department of Seine-et-Marne, Melun being the prefecture. In France a subprefecture is the chef-lieu (the seat or administrative capital) of an arrondissement: Meaux is the subprefecture of the arrondissement of Meaux. It is also the chef-lieu of a smaller administrative division: the canton of Meaux. Finally, since its creation in 2003, Meaux has been the centre and the main town of an agglomeration community, the Communauté d'agglomération du Pays de Meaux."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "meaux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

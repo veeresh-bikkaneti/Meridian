@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5200,
+    "attempt": 5161,
+    "place_id": "gn-994804",
+    "input": {
+      "place": {
+        "place_id": "gn-994804",
+        "name": "Indwe",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -31.46667,
+        "lon": 27.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indwe",
+          "url": "https://en.wikipedia.org/wiki/Indwe",
+          "text": "Indwe is a small town in Chris Hani District Municipality near Dordrecht in the Eastern Cape province of South Africa.\nThe town is situated between Dordrecht and Elliot on the R56 road. It was founded in 1896 as a centre for coal-mining activities which started in 1867, and attained municipal status in 1898. It takes its name from the Indwe River, named after the blue crane (Anthropoides paradiseus, Xhosa: iNdwe), which occurred there in great numbers.\nIndwe is a small town surrounded by a number of farms with a large number of merino sheep and cattle ranchers in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "indwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5201,
+    "attempt": 5162,
+    "place_id": "gn-1692184",
+    "input": {
+      "place": {
+        "place_id": "gn-1692184",
+        "name": "Quiapo",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6,
+        "lon": 120.9833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quiapo, Manila",
+          "url": "https://en.wikipedia.org/wiki/Quiapo,_Manila",
+          "text": "Quiapo ([ˈkjaːpɔʔ]) is a district of the city of Manila, in the National Capital Region of the Philippines. Known as the “Old Downtown of Manila\", the district’s most famous landmark is Quiapo Church, a minor basilica enshrining Asia's most sacred Black Nazarene image, which has been processed every January in the historic district, attracting millions of devotees from all over the country and region. The historic district is also dotted with numerous heritage sites, ranging from ancestral and heritage houses such as those in Hidalgo Street, museums, art galleries, libraries, historic places of worship such as churches and mosques, historic cinemas, as well as historic parks and streets, many of which have been run over by informal settlers and the construction of shanty houses, as well as buildings built by corporations. Many historic sites were destroyed by both the Japanese and American colonizers during World War II without compensation or aid for reconstruction, while some post-war sites were demolished by certain corporations. In recent years, various heritage organizations, experts, and lawmakers have pushed for the re-vitalization of Quiapo as a heritage zone, including the rebuilding of lost heritage structures, the revamping of modern structures to fit the historic district's original aesthetics, as well as the planting of trees and plants and the refurnishing of streets to make the district more safe, walkable, and climate-adaptive.\nGeographically located at the very center of the City of Manila, Quiapo is bounded by the Pasig River and Estero de San Miguel to the south, San Miguel district to the east, the districts of Sampaloc and Santa Cruz and Recto Avenue to the north, and the Santa Cruz district and Rizal Avenue to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 280,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "quiapo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5202,
+    "attempt": 5163,
+    "place_id": "gn-5098698",
+    "input": {
+      "place": {
+        "place_id": "gn-5098698",
+        "name": "Guttenberg",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.79205,
+        "lon": -74.00375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guttenberg, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Guttenberg,_New_Jersey",
+          "text": "Guttenberg ( GUT-ən-burg) is a town in the northern part of Hudson County, in the U.S. state of New Jersey. In the 2020 Census, it was the most densely populated incorporated municipality in the United States, as well as one of the most densely populated municipalities worldwide, with 57,116 inhabitants per square mile (22,053/km2) of land area. Only four blocks wide north to south, Guttenberg has been variously ranked as the ninth-smallest municipality in the state (based on data from the U.S. Census Bureau) or as the state's seventh-smallest municipality (based on data from the New Jersey Department of Environmental Protection).\nAs of the 2020 United States census, the town's population was 12,017, an increase of 841 (+7.5%) from the 2010 census count of 11,176, which in turn reflected an increase of 369 (+3.4%) from the 10,807 counted in the 2000 census. As of the 2010 Census, almost one-fifth of the town's population resided in the Galaxy Towers, a trio of residential skyscrapers overlooking the Hudson River.\nThe current population growth and density in Guttenberg represents a significant change since 1983, when it was described by The New York Times, as \"an old community of two-story row houses, small stores and light industry.\" Based on data from the 2017 Population Estimates Program showing that the town had a population density of 58,800 inhabitants per square mile (22,700/km2), the highest in the state, Dave Sheingold of Northjersey.com described Guttenberg as \"America's most crowded place\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 243,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "guttenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5203,
+    "attempt": 5164,
+    "place_id": "gn-5096133",
+    "input": {
+      "place": {
+        "place_id": "gn-5096133",
+        "name": "Caldwell",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.83982,
+        "lon": -74.27654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caldwell, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Caldwell,_New_Jersey",
+          "text": "Caldwell is a borough located in northwestern Essex County, in the U.S. state of New Jersey, about 16 miles (26 km) west of New York City and 6 miles (9.7 km) north-west of Newark, the state's most populous city. As of the 2020 United States census, the borough's population was 9,027, an increase of 1,205 (+15.4%) from the 2010 census count of 7,822, which in turn reflected an increase of 238 (+3.1%) from the 7,584 counted in the 2000 census.\nCaldwell was incorporated as a borough by an act of the New Jersey Legislature on February 10, 1892, from portions of Caldwell Township (now Fairfield Township), based on the results of a referendum held on the previous day. In 1981, the borough's name was changed to the \"Township of the Borough of Caldwell\", as one of seven Essex County municipalities to pass a referendum to become a township, joining four municipalities that had already made the change, of what would ultimately be more than a dozen Essex County municipalities to reclassify themselves as townships in order take advantage of federal revenue sharing policies that allocated townships a greater share of government aid to municipalities on a per capita basis. Effective January 26, 1995, it again became a borough.\nGrover Cleveland, the 22nd and 24th President of the United States and the first president to serve two nonconsecutive terms, was born in Caldwell on March 18, 1837. His father, the Rev. Richard Falley Cleveland, was pastor of the First Presbyterian Church. The Grover Cleveland birthplace—the church's former manse—is now a museum and is open to the public.\nThough today the Caldwell area is considered to be a suburb of both Newark and New York City, the area originally developed as its own individual, self-contained community and economy rather than as urban sprawl from a larger city. When it was formed, miles of woods separated downtown Caldwell from Newark or any of its developing suburbs.\nNew Jersey Monthly magazine ranked Caldwell as its third-best place to live in its 2010 rankings of the \"Best Places To Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 236,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "caldwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5204,
+    "attempt": 5165,
+    "place_id": "gn-6178582",
+    "input": {
+      "place": {
+        "place_id": "gn-6178582",
+        "name": "West End",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.28333,
+        "lon": -123.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West End, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/West_End,_Vancouver",
+          "text": "The West End is a neighbourhood in Vancouver, British Columbia, Canada, located between the Coal Harbour neighbourhood and the financial and central business districts of Downtown Vancouver to the east, Stanley Park to the northwest, the English Bay to the west, and Kitsilano to the southwest across the False Creek opening.\nThe West End is not to be confused with the West Side (which denotes the western half of the non-downtown part of Vancouver city to the south) or West Vancouver (\"West Van\"), a separate municipality (conversely, and to the confusion of some, \"East Van\", \"the East End\", and \"the East Side\" all denote East Vancouver). Conversely to the West End, sometimes “the East End” can be used to refer to the Eastern End of Downtown aka the Downtown Eastside.\nThe definition of the \"official neighbourhood\" of the West End, according to the city, is the area west of Burrard Street, east of Lost Lagoon, and south of West Georgia Street. Historically the term originated and remains used by Vancouverites to refer to everything from Burrard Street to Stanley Park, including the Stanley Park Neighbourhood west of Denman Street and the Coal Harbour Neighbourhood. Coal Harbour Neighbourhood is officially designated as west of Burrard and to the north of West Georgia, although the newly built areas between West Pender Street and the waterfront are expressly \"Coal Harbour\" and not considered part of the West End."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 235,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "west end",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "end",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5205,
+    "attempt": 5166,
+    "place_id": "gn-5119383",
+    "input": {
+      "place": {
+        "place_id": "gn-5119383",
+        "name": "Greenpoint",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72371,
+        "lon": -73.95097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenpoint, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Greenpoint,_Brooklyn",
+          "text": "Greenpoint is the northernmost neighborhood in the New York City borough of Brooklyn. It is bordered on the southwest by Williamsburg at Bushwick Inlet Park and McCarren Park; on the southeast by the Brooklyn–Queens Expressway and East Williamsburg; on the north by Newtown Creek and the neighborhood of Long Island City in Queens; and on the west by the East River. The neighborhood has a large Polish immigrant and Polish-American community, containing many Polish restaurants, markets, and businesses, and it is often referred to as \"Little Poland\".\nOriginally farmland—many of the farm owners' family names, such as Meserole (Messerole) and Calyer, are current street names—the residential core of Greenpoint was built on parcels divided during the Industrial Revolution and late 19th century, with rope factories and lumber yards lining the East River to the west, while the northeastern section along the Newtown Creek through East Williamsburg became an industrial maritime area.\nGreenpoint has long held a reputation of being a working class and immigrant neighborhood, and it initially attracted families and workers with its abundance of factory jobs, heavy industry and manufacturing, shipbuilding, and longshoreman or dock work. Since the early 2000s, a building boom in the neighborhood has made the neighborhood increasingly a center of nightlife and gentrification, and a 2005 rezoning enabled the construction of high density residential buildings on the East River waterfront. There have also been efforts to reclaim the rezoned East River waterfront for recreational use and also to extend a continuous promenade into the Newtown Creek area.\nGreenpoint is part of Brooklyn Community District 1, and its primary ZIP Code is 11222. It is patrolled by the 94th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 226,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "greenpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5206,
+    "attempt": 5167,
+    "place_id": "gn-2514868",
+    "input": {
+      "place": {
+        "place_id": "gn-2514868",
+        "name": "Los Alcázares",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.74425,
+        "lon": -0.85041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Alcázares",
+          "url": "https://en.wikipedia.org/wiki/Los_Alcázares",
+          "text": "Los Alcázares (Spanish: [los alˈkaθaɾes]) is a municipality and a coastal spa town and former fishing village on the western side of the Mar Menor in the autonomous community and province of Murcia, southeastern Spain.\nThe Mar Menor (little sea) belongs to three other municipalities: San Javier, San Pedro del Pinatar and Cartagena and is Europe's largest saltwater lagoon. Connected to the adjacent Mediterranean sea by several channels, the Mar Menor has a surface area of almost 20 km2 and the fact that it is typically 2-4 degrees warmer than the Mediterranean, makes it a very popular destination for sailing, windsurfing, kiteboarding and other water sports enthusiasts.\nLos Alcazares has a resident population (2018) of 15,674 which rises to over 100,000 during the peak tourist summer holiday season.\nOn 13 October 1983, the town was granted municipal autonomy, in respect of which it holds an annual week-long celebration featuring live music, shows, windsurfing competitions and firework displays.\nBesides the annual celebration of municipal autonomy, like many Spanish towns and cities, Los Alcazares also plays host to numerous fiestas and festivals throughout the year, including a large medieval market at the end of every March, and during the last two weeks in August, 'La Huerta' an international folklore festival and feast in celebration of the region's status as the market garden of Spain.\nLos Alcazares was used as a location for the 2008 movie of Ernest Hemingway's posthumous novel The Garden of Eden, starring Jack Huston, Richard E. Grant and Mena Suvari. A partly disused historic military air base at the southern end of the town was also used for location filming for the 2010 war movie, Green Zone featuring Matt Damon, Greg Kinnear and Jason Isaacs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 222,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "los alcazares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alcazares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5207,
+    "attempt": 5168,
+    "place_id": "gn-3175960",
+    "input": {
+      "place": {
+        "place_id": "gn-3175960",
+        "name": "Grado",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.67774,
+        "lon": 13.40323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grado, Friuli Venezia Giulia",
+          "url": "https://en.wikipedia.org/wiki/Grado,_Friuli_Venezia_Giulia",
+          "text": "Grado (Venetian: Gravo; Friulian: Grau; Slovene: Gradež; Latin: Gradus) is a town and comune (municipality) of 8,064 residents in the Regional decentralization entity of Gorizia in the north-eastern Italian region of Friuli-Venezia Giulia, located on an island and adjacent peninsula of the Adriatic Sea between Venice and Trieste. \nThe territory of the municipality of Grado extends between the mouth of the Isonzo and the Adriatic Sea and the Grado Lagoon, and covers an area of about 90 square kilometers between Porto Buso and Fossalon. Characteristic of the lagoon is the presence of the casoni, which are simple houses with thatched roofs used in the past by the fishermen of Grado, who remained in the lagoon for a long time, returning to the island of Grado only during the colder period of the year. \nOnce mainly a fishing centre, today it is a popular tourist destination, known commonly as L'Isola del Sole (\"The Island of the Sun\"). It is also famous because it is a spa town; from 1873 a maritime hospice for children called Ospizio Marino wanted by the doctor Giuseppe Barellai was established on the island, because the climate and the environment of the island are a good place for the treatment of some childhood diseases. Subsequently, Grado was the chosen destination for marine thermal treatments, especially by the Austrian population. Together with Marano Lagunare, it is the centre of the Marano-Grado Lagoon, which is famous for its uncontaminated nature. \nGrado is the birthplace of Biagio Marin, a poet who sang about the island in the local Venetian dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 222,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "grado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5208,
+    "attempt": 5169,
+    "place_id": "gn-3123504",
+    "input": {
+      "place": {
+        "place_id": "gn-3123504",
+        "name": "El Escorial",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.58254,
+        "lon": -4.12846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Escorial",
+          "url": "https://en.wikipedia.org/wiki/El_Escorial",
+          "text": "The Royal Site of San Lorenzo de El Escorial (Spanish: Monasterio y Sitio de El Escorial en Madrid), also called Monasterio de El Escorial (Spanish pronunciation: [el eskoˈɾjal]) or simply El Escorial, is a historical residence of the king of Spain located in the town of San Lorenzo de El Escorial, 2.06 kilometres (1.28 mi) up the valley (4.1 km [2.5 mi] road distance) from the town of El Escorial and about 45 kilometres (28 mi) northwest of the Spanish capital Madrid. Built between 1563 and 1584 by order of King Philip II (who reigned 1556–1598), El Escorial is the largest Renaissance building in the world. It is one of the Spanish royal sites and functions as a monastery, basilica, royal palace, pantheon, library, museum, university, school, and hospital.\nEl Escorial consists of two architectural complexes of great historical and cultural significance: the royal monastery itself and La Granjilla de La Fresneda, a royal hunting lodge and monastic retreat about five kilometres (3.1 mi) away. These sites have a dual nature: during the 16th and 17th centuries, they were places in which the power of the Spanish monarchy and the ecclesiastical predominance of the Catholic religion in Spain found a common architectural manifestation. El Escorial was both a Spanish royal palace and a monastery. Established with a community of Hieronymite monks, it has become a monastery of the Order of Saint Augustine. It also contained a boarding school, now the Real Colegio de Alfonso XII, still in operation.\nPhilip II engaged the Spanish architect Juan Bautista de Toledo to be his collaborator in the building of the complex at El Escorial. Toledo had spent the greater part of his career in Rome, where he had worked on St. Peter's Basilica, and in Naples serving the king's viceroy, whose recommendation brought him to the king's attention. Philip appointed him architect-royal in 1559, and, together, they designed El Escorial as a monument to Spain's role as a center of the Christian world.\nOn 2 November 1984, UNESCO declared The Royal Seat of San Lorenzo of El Escorial a World Heritage Site. It is a popular tourist attraction, often visited by day-trippers from Madrid—more than 500,000 visitors come to El Escorial every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 214,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "el escorial",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "escorial",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5209,
+    "attempt": 5170,
+    "place_id": "gn-3595783",
+    "input": {
+      "place": {
+        "place_id": "gn-3595783",
+        "name": "Esquipulas",
+        "country": "Guatemala",
+        "subdivision": "Chiquimula",
+        "lat": 14.56571,
+        "lon": -89.35166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esquipulas",
+          "url": "https://en.wikipedia.org/wiki/Esquipulas",
+          "text": "Esquipulas (Nahuatl: Isquitzuchil, \"place where flowers abound\"), officially Municipality of Esquipulas, whose original name was Yzquipulas, is a town, with a population of 18,667 (2018 census), and a municipality located in the department of Chiquimula, in eastern Guatemala. Esquipulas' main attraction is the beautiful Black Christ located in the Basilica of Esquipulas, making the town an important place of Catholic pilgrimage for Central America. It is also one of the most important towns of the country and one that has had the most economic and cultural growth.\nIn 2002, it was registered on UNESCO's tentative World Heritage list.\nThe city is a tourist attraction due to its ecological and religious importance. It is the most visited city and town across eastern Guatemala and the second most visited in the country, surpassed only by the City of Guatemala, visited annually by approximately four to five million tourists and devout Catholics, this due to its important and varied religious resorts and distributed in the 495 km2, the smallest city visited by Pope John Paul II in 1996 which entitled him recognition as Capital Central to the Faith, whose recognition is currently known as to this city, which was also visited by Teresa of Calcutta, hosted the Esquipulas Peace Accords during the mid-1980s. The Basilica of Esquipulas headquarters in Central Catholic Faith is the first wonder of Guatemala competition held by the Industrial Bank on November 26, 2008.\nIn 1987 the Trifinio Biosphere Reserve was created to protect the unique flora and fauna in the region.\nThe territory comprises an area of 495 km2, distributed in 20 villages, 123 sub villages, one town and two villas which are Timushán and Chanmagua, with a total population of 53,556 (2018 census); with the town of Esquipulas having a population of 18,667 which represents 35% of the total population of the municipality. Esquipulas is located 222 kilometers from Guatemala City, 9.5 kilometers from the border with the Republic of Honduras and 45 kilometers from the city of Chiquimula, bordering the municipalities of Olopa, Jocotán and the department Camotán Chiquimula to the north and the municipality of Metapan, El Salvador to the south. To the east it meets the departments of Copán and Ocotepeque, Honduras and to the west, the municipality of Concepción Las Minas and the Resume Chiquimula department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 210,
+      "fullExtractWords": 383
+    },
+    "banned_terms": [
+      {
+        "term": "esquipulas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5210,
+    "attempt": 5171,
+    "place_id": "gn-8555994",
+    "input": {
+      "place": {
+        "place_id": "gn-8555994",
+        "name": "Shalateen",
+        "country": "Egypt",
+        "subdivision": "Red Sea",
+        "lat": 23.13235,
+        "lon": 35.59094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shalateen",
+          "url": "https://en.wikipedia.org/wiki/Shalateen",
+          "text": "Shalateen (Arabic: شلاتين‏ Šalatayn, Egyptian Arabic: [ʃælæˈtiːn]; also spelled Shalatin and Shalatayn) is the biggest town in the Halaib Triangle, a disputed territory claimed  by Egypt. It is  520 km (320 mi) south of Hurghada and is controlled as the administrative center (markaz) of all Egyptian territory up to the border between Egypt and Sudan, including the villages of:\n\nAbu Ramad, 125 km (78 mi) to the southeast;\nHalaib, 165 km (103 mi) to the southeast;\nRas Hadarba 200 km (120 mi) to the southeast. Ras Hadarba or Cape Hadarba lies on the shores of the Red Sea to the southeast of the city of Halayib and to the east of mount Hadarba from which it takes its name. The village of Ras Hadarba lies just north of the borders between Egypt and the Sudan which run along the 22 degree north parallel of latitude;\nMarsa Hameera, 40 km (25 mi) to the north; and\nAbrak, 90 km (56 mi) to the west.\nThe first three of the above towns (Abu Ramad, Halayib and Ras Hadarba) are located within the disputed Hala'ib Triangle.\nThe population of Shalateen is estimated at 23,554 people and is inhabited by the Bisharin (Al Bishareya) and Ababda (Al Ababda) sub tribes of the Beja people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 210,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "shalateen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5211,
+    "attempt": 5172,
+    "place_id": "gn-6620363",
+    "input": {
+      "place": {
+        "place_id": "gn-6620363",
+        "name": "Moodiesburn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.91501,
+        "lon": -4.08331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moodiesburn",
+          "url": "https://en.wikipedia.org/wiki/Moodiesburn",
+          "text": "Moodiesburn is a village in Scotland, located 8 miles (13 kilometres) northeast of Glasgow, in the North Lanarkshire council area. It is situated on the north side of the A80 road and between the M73 and M80 motorways which converge nearby. Moodiesburn does not directly adjoin any other settlements, though the contiguous villages of Chryston and Muirhead are located a short distance to the west (the boundary being the Strathkelvin railway path) with Stepps just beyond, while outer parts of Cumbernauld lie to the east; however, its centre is about 5 miles (8 kilometres) from Moodiesburn.\nThe village's economic standing greatly declined in the latter half of the 20th century, following the Auchengeich mining disaster and the disintegration of local employment. In the early 21st century the economic demographic of the population has improved; good transport links enable a significant proportion of the population travel to Glasgow or nearby large towns for employment in the professional and commercial sphere.\nThe village is also located near several historical and cultural landmarks, including the Antonine Wall, a UNESCO World Heritage Site that was built by the Romans in the 2nd century AD. The area is popular with hikers and outdoor enthusiasts due to its scenery and proximity to the Scottish countryside."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 209,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "moodiesburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5212,
+    "attempt": 5173,
+    "place_id": "gn-3032326",
+    "input": {
+      "place": {
+        "place_id": "gn-3032326",
+        "name": "Blanzy",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 46.70012,
+        "lon": 4.38833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blanzy",
+          "url": "https://en.wikipedia.org/wiki/Blanzy",
+          "text": "Blanzy (French pronunciation: [blɑ̃zi] ) is a commune in the Saône-et-Loire department in the region of Bourgogne-Franche-Comté in eastern France.\nThe area covered by Blanzy has been inhabited since prehistory, but remained sparsely populated until the 19th century, when the mining of the resources in the Saône-et-Loire coal basin took on new importance and became industrialized—notably through the founding of the neighboring commune of Montceau-les-Mines in 1856.\nDeeply linked to the fate of its mines, it saw a significant number of miners join the town to find employment. For a good part of the 19th century, the town was politically, religiously, and economically controlled by the Chagot family, owners of the Blanzy Mining Company who strongly promoted Catholicism, relying notably on the clergy to monitor the miners. It is estimated that between the 1850s and the period of the troubles, about twenty years, more than 400 adult and children miners died in the mine.\nThis situation ended during the Montceau-les-Mines troubles (1878-1885), when the miners of the town and region joined anarchism in large numbers, making the mining basin a center of anarchism in France, particularly through the Black Band, one or more secret anarchist organizations of miners operating in the region and carrying out numerous attacks.\nFollowing the closure of the mines throughout the 20th century, the town has diversified economically."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "blanzy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5213,
+    "attempt": 5174,
+    "place_id": "gn-4502904",
+    "input": {
+      "place": {
+        "place_id": "gn-4502904",
+        "name": "Margate City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.32789,
+        "lon": -74.50349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margate City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Margate_City,_New_Jersey",
+          "text": "Margate City is a city situated on the Jersey Shore on Absecon Island, within Atlantic County, in the U.S. state of New Jersey, on the Atlantic Ocean shoreline. As of the 2020 United States census, the city's population was 5,317, a decrease of 1,037 (−16.3%) from the 2010 census count of 6,354, which in turn had reflected a decline of 1,839 (−22.4%) from the 8,193 counted in the 2000 census. Geographically, the city, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area.\nThe city is located on Absecon Island, which stretches for 8.1 miles (13.0 km) and is also home of Atlantic City and Ventnor City to the northeast, and Longport on the southwest. The city stretches about eight blocks from the Atlantic Ocean to the bay at most points in town. Margate is a popular Jersey Shore destination, especially during the summer, and is the home of Lucy the Elephant, a 65-foot (20 m)-tall wooden and metal-clad elephant recognized as America’s Oldest Surviving Roadside Attraction and declared a National Historic Landmark in 1976, and of Marven Gardens, of Monopoly board game fame."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "margate city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "margate",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5214,
+    "attempt": 5175,
+    "place_id": "gn-5105127",
+    "input": {
+      "place": {
+        "place_id": "gn-5105127",
+        "name": "Summit",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.71562,
+        "lon": -74.36468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summit, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Summit,_New_Jersey",
+          "text": "Summit is the northernmost city of Union County, in the U.S. state of New Jersey, located within the New York metropolitan area. Situated on a ridge in northern–central New Jersey, the city is located within the Raritan Valley and Rahway Valley regions, and also borders both Essex and Morris counties in the Passaic Valley region. Summit is a commercial hub and commuter town for New York City. As of the 2020 United States census, the city's population was 22,719, an increase of 1,262 (+5.9%) from the 2010 census count of 21,457, which in turn reflected an increase of 326 (+1.5%) from the 21,131 counted in the 2000 census.\nOriginally incorporated as Summit Township by an act of the New Jersey Legislature on March 23, 1869, from portions of New Providence Township (now Berkeley Heights) and Springfield Township, Summit was reincorporated as a city on March 8, 1899.\nPossible derivations of Summit's name include its location atop the Second Watchung Mountain; the Summit Lodge, the house to which jurist James Kent moved in 1837 and which stands today at 50 Kent Place Boulevard; and to a local sawmill owner who granted passage to the Morris and Essex Railroad for a route to \"the summit of the Short Hills\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "summit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5215,
+    "attempt": 5176,
+    "place_id": "gn-5138371",
+    "input": {
+      "place": {
+        "place_id": "gn-5138371",
+        "name": "Sleepy Hollow",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.08565,
+        "lon": -73.85847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sleepy Hollow, New York",
+          "url": "https://en.wikipedia.org/wiki/Sleepy_Hollow,_New_York",
+          "text": "Sleepy Hollow is a village in the town of Mount Pleasant in Westchester County, New York, United States, in the New York metropolitan area.\nThe village is located on the east bank of the Hudson River, approximately 28 miles (45 km) north of Midtown Manhattan in New York City, and is served by the Philipse Manor stop on the Metro-North Hudson Line. To the south of Sleepy Hollow is the village of Tarrytown, and to the north and east are unincorporated parts of Mount Pleasant. The population of the village at the 2020 census was 9,986.\nOriginally incorporated as North Tarrytown in the late 19th century as a way to draft off Tarrytown's success during the Industrial Revolution, the village adopted its current name in 1996, some three and a half centuries after the first Dutch settlers called the area \"Slapershaven\" or \"Sleepers' Harbor.\"\nThe village is known internationally through The Legend of Sleepy Hollow, an 1820 short story by Washington Irving about the local area and its infamous specter, the Headless Horseman. Irving lived in the area and is buried in Sleepy Hollow Cemetery, where numerous other notable people are buried, while real-life inspirations for his characters are interred in the adjacent Old Dutch Burying Ground. \nOwing to The Legend, as well as the village's roots in early American history and folklore, Sleepy Hollow is considered by some to be one of the \"most haunted places in the world\". Despite this designation, Sleepy Hollow has also been called \"one of the safest places to live in the United States\". Today, the village \"thrives as a symbol of Americana, drawing tens of thousands each fall to its haunted hayrides, lantern-lit cemetery tours, pumpkin festivals, and theatrical reimaginings of Irving’s famous tale.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 291
+    },
+    "banned_terms": [
+      {
+        "term": "sleepy hollow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sleepy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hollow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5216,
+    "attempt": 5177,
+    "place_id": "gn-1273847",
+    "input": {
+      "place": {
+        "place_id": "gn-1273847",
+        "name": "Colva",
+        "country": "India",
+        "subdivision": "Goa",
+        "lat": 15.27976,
+        "lon": 73.92285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colva",
+          "url": "https://en.wikipedia.org/wiki/Colva",
+          "text": "Colva  (Portuguese: Colvá) is a  coastal village situated in the Salcete taluka, in South Goa district, of Goa state on the west coast of the Indian subcontinent. Colva Beach (Portuguese: Praia de Colvá) spans about 2.5 km (1.6 mi) along a sandy coastline of approximately 25 km (16 mi) extending from Bogmalo in the north to Cabo de Rama in the south.\nThe village had significant importance to the Portuguese, local (Gancars) noble chardó (Kshatriya) Feudal Lords and was the retreat for Goa's high, elite and aristocratic society, who would come to Colvá for their mudança (change of air), to enjoy the private beach of the then Roiz family. Today the Portuguese area is dotted with the past elite houses and modern villas, including many ruins from more than 300 years. On weekends, huge crowds of tourists, visitors from around the world as well as local Indians, enjoy the sunset and various activities. The beach is particularly busy in October, when hordes of religious pilgrims come and visit Colvá Church, called Igreja de Nossa Senhora das Mercês (Church of Our Lady of Mercy), that was founded in AD 1630 by the Roiz family and the crown of the statue of our Lady has their family initials. The church was later modified in the eighteenth century which is located at the village square. The 1630 church construction was funded by the Roiz family, the Jesuits and the Gancars of Colluá.\nThe local people (now called: native Colvakars) brought to Colvá by their then ruling Lords and masters (called Bhatkars). These working class local people (called Mundkars lived on the land of their respected Bhatkars) have mainly been fisherfolk in majority since the mid-16th century. Other working class (curumbins, jornaleiros) were carpenters, massons, coconut pluckers (render/padekar), field/rice cultivation labourers, bakers (poder), etc... These included gentile converts as well as migrants from various Portuguese territories in the Indian subcontinent, overseas territories such as Angola, Mozambique, Brazil, etc. as well as Portugal itself that mixed and created the diversity of today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 206,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "colva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5217,
+    "attempt": 5178,
+    "place_id": "gn-5106615",
+    "input": {
+      "place": {
+        "place_id": "gn-5106615",
+        "name": "Wyckoff",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.00954,
+        "lon": -74.17292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wyckoff, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wyckoff,_New_Jersey",
+          "text": "Wyckoff   is a township in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 16,585, a decrease of 111 (−0.7%) from the 2010 census count of 16,696, which in turn reflected an increase of 188 (+1.1%) from the 16,508 counted in the 2000 census.\nAs of the 2010 census, Wyckoff ranked 55th in highest-household income places in the United States with a population of at least 10,000 at $103,614. Statewide, Wyckoff ranked 41st among New Jersey locations by per capita income, with a per capita money income of $49,375 as of 1999, an increase of 49.1% from the $33,124 recorded in 1989.\nFrom the mid-18th century, what is now Wyckoff was a community within Franklin Township, formed on June 1, 1797, when Saddle River Township (now Saddle Brook) was split, which consisted of most of northern Bergen County west of the Saddle River. Starting in the 1840s, several new municipalities were created from portions of Franklin Township (Pompton Township on April 10, 1797, Hohokus Township (now Mahwah) on April 9, 1849, and Ridgewood Township on March 30, 1876; remaining now the Village of Ridgewood), so that today what is now Wyckoff borders eight different communities. Wyckoff was formed as a township by an act of the New Jersey Legislature on November 2, 1926, replacing Franklin Township, based on the results of a referendum held that day. Portions of Wyckoff were ceded to Midland Park based on the results of a referendum held on June 9, 1931.\nThough there is no solid historical evidence for any of the various theories, the most commonly given origin for the name Wyckoff, which was the origin accepted by the township committee when the municipality was established, is that the name is from the Lenape word wickoff, meaning \"high ground\", or that it is from wickok, meaning \"water\".  However, similarly named Wyckoff Heights in New York City is named after the Wyckoff family, who settled in the New York/New Jersey area when both states were part of the Dutch colony of New Netherlands. Other sources ascribe the name to Wicaugh in Malpas, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 206,
+      "fullExtractWords": 359
+    },
+    "banned_terms": [
+      {
+        "term": "wyckoff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5218,
+    "attempt": 5179,
+    "place_id": "gn-2732547",
+    "input": {
+      "place": {
+        "place_id": "gn-2732547",
+        "name": "Vila Nova de Famalicão",
+        "country": "Portugal",
+        "subdivision": "Braga",
+        "lat": 41.40797,
+        "lon": -8.51978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Nova de Famalicão",
+          "url": "https://en.wikipedia.org/wiki/Vila_Nova_de_Famalicão",
+          "text": "Vila Nova de Famalicão (Portuguese pronunciation: [ˈvilɐ ˈnɔvɐ ðɨ fɐmɐliˈkɐ̃w] ), also known as Famalicão, is a Portuguese town in the Braga District and the sub-region of Vale do Ave. The population of Vila Nova was created in 1205 with the charter given by the King Sancho I. The municipality was created in 1835 as a detachment from Barcelos and was elevated to the category of “Vila” with the charter given by the Queen D. Maria II. In 1985, approved by National Assembly, Vila Nova de Famalicão was elevated to the category of \"city\". The inhabitants of Famalicão are called Famalicenses.\nThe city is the south entrance of the Minho province and the last reference of the Minho province for whoever comes from the North of Portugal and the Spanish region of Galicia. Since ancestral times, its privileged location has been a motivation for the passage and fixation of other people who left marks of their ways and culture in the territory, still easily found nowadays. The municipality is bordered by Braga to the north, by Guimarães to the east, by Santo Tirso and Trofa to the south, by Vila do Conde and Póvoa de Varzim to the west and by Barcelos to the northwest. Due to its privileged location, Famalicão is currently served by a network of modern roads, with one of the most important motorway junctions of the country – A3 (Porto – Vigo) and A7 (Guimarães – Póvoa de Varzim), as well as a train service with direct connections to Braga, Guimarães, Porto, Vigo, Coimbra, Lisbon and Algarve.\nBecause of this strategic positioning, Famalicão is today mentioned as one of the main cultural, commercial and industrial centres of the country. The strength of its diverse industry and socio-economic dynamics are prominent features at national and international level. Vila Nova de Famalicão hosts the headquarters of some of the largest and best companies in the country in various industry sectors, with its maximum strength in the textile and clothing, automotive, agrofood and metal-mechanics sectors, giving it the 3rd place in the most exporting municipalities of the country and one of the major industrial economies in the North.\nLand of the writer Camilo Castelo Branco, whose house-museum is part of a network of 13 museums, which includes the Portuguese Centre of Surrealism, the National Railway Museum – Lousado Museum Centre, and the Textile Industry Museum – Ave Basin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 399
+    },
+    "banned_terms": [
+      {
+        "term": "vila nova de famalicao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "famalicao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5219,
+    "attempt": 5180,
+    "place_id": "gn-5142036",
+    "input": {
+      "place": {
+        "place_id": "gn-5142036",
+        "name": "Upper West Side",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.78705,
+        "lon": -73.97542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upper West Side",
+          "url": "https://en.wikipedia.org/wiki/Upper_West_Side",
+          "text": "The Upper West Side (UWS) is a neighborhood in the borough of Manhattan in New York City. It is bounded by Central Park on the east, the Hudson River on the west, West 59th Street to the south, and West 110th Street to the north. The Upper West Side is adjacent to the neighborhoods of Hell's Kitchen to the south, Columbus Circle to the southeast, and Morningside Heights to the north.\nLike the Upper East Side on the opposite side of Central Park, the Upper West Side is an affluent, primarily residential area with many of its residents working in commercial areas of Midtown and Lower Manhattan. Like the Museum Mile district on the Upper East Side, the Upper West Side is considered one of Manhattan's cultural and intellectual hubs, with Columbia University and Barnard College located just to the north of the neighborhood, the American Museum of Natural History located near its center, the New York Institute of Technology in the Columbus Circle proximity, and Lincoln Center for the Performing Arts and Fiorello H. LaGuardia High School located at the south end.\nThe Upper West Side is part of Manhattan Community District 7, and its primary ZIP Codes are 10023, 10024, 10025, and 10069. It is patrolled by the 20th and 24th Precincts of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "upper west side",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "upper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "side",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

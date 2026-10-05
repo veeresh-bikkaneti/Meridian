@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4716,
+    "attempt": 4681,
+    "place_id": "gn-5112493",
+    "input": {
+      "place": {
+        "place_id": "gn-5112493",
+        "name": "Chestnut Ridge",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.08426,
+        "lon": -74.0557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chestnut Ridge, New York",
+          "url": "https://en.wikipedia.org/wiki/Chestnut_Ridge,_New_York",
+          "text": "Chestnut Ridge is a village in the town of Ramapo, Rockland County, New York, United States, located north of the state of New Jersey, east of Airmont, south of Spring Valley, and west of Nanuet. The population was 10,505 at the 2020 census.\nChestnut Ridge was incorporated in 1986. Prior to 1986, Chestnut Ridge was an unincorporated area within the town of Ramapo often referred to as \"South Spring Valley\" (its fire district), as many postal addresses carried the Spring Valley designation. In April 2020, mayor Rosario Presti appointed Chaim Rose to fill a vacancy on the village board of trustees; Rose thus became the first Hasidic member of the board since the village was incorporated in 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "chestnut ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chestnut",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4717,
+    "attempt": 4682,
+    "place_id": "gn-5174870",
+    "input": {
+      "place": {
+        "place_id": "gn-5174870",
+        "name": "Upper Sandusky",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.82728,
+        "lon": -83.28131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upper Sandusky, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Upper_Sandusky,_Ohio",
+          "text": "Upper Sandusky is a city in and the county seat of Wyandot County, Ohio, United States, along the upper Sandusky River. The city lies approximately 59 miles (95 km) south of Toledo and 62 miles (100 km) north of Columbus. The population was 6,698 at the 2020 census.\nThe city was founded in 1843 and named for an earlier Wyandot village of the same name, which was located nearby. Despite what its name may suggest, Upper Sandusky is actually about 55 miles (89 km) southwest of the city of Sandusky. It was named \"Upper\" because it is located near the headwaters of the Sandusky River, which flows downriver through the city of Sandusky and empties into Lake Erie."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "upper sandusky",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "upper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sandusky",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4718,
+    "attempt": 4683,
+    "place_id": "gn-5718492",
+    "input": {
+      "place": {
+        "place_id": "gn-5718492",
+        "name": "Cedar Mill",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.52484,
+        "lon": -122.81093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cedar Mill, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Cedar_Mill,_Oregon",
+          "text": "Cedar Mill is a suburb in the Portland, Oregon metropolitan area of the United States; it is a census-designated place and an unincorporated community in Washington County, north of U.S. Route 26 and west of the Willamette Stone. It received its name from a sawmill on Cedar Mill Creek, which cut Western Redcedars that were once the dominant tree in the area. The mill's pond was near the intersection of 119th and Cornell Road, and could still be seen into the 1960s, although the mill itself had ceased operating in 1891. The name was established in 1874 with the opening of a U.S. post office named Cedar Mill. As of the 2020 census, the community population was 17,259."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "cedar mill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cedar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4719,
+    "attempt": 4684,
+    "place_id": "gn-5942798",
+    "input": {
+      "place": {
+        "place_id": "gn-5942798",
+        "name": "Drumheller",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.46171,
+        "lon": -112.71011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drumheller",
+          "url": "https://en.wikipedia.org/wiki/Drumheller",
+          "text": "Drumheller () is a town on the Red Deer River in the badlands of east-central Alberta, Canada. It is located 110 kilometres (68 mi) northeast of Calgary and 97 kilometres (60 mi) south of Stettler. The Drumheller portion of the Red Deer River valley, often referred to as Dinosaur Valley, has an approximate width of 2 kilometres (1.2 mi) and an approximate length of 28 kilometres (17 mi).\nDrumheller was named after Samuel Drumheller, who, after purchasing the homestead of Thomas Patrick Greentree, had it surveyed into the original Drumheller townsite and put lots on the market in 1911. Also in 1911, Samuel Drumheller started coal mining operations near the townsite.\nDrumheller got a railway station in 1912. It was then incorporated as a village on 15 May 1913, a town on 2 March 1916, and a city on 3 April 1930. Over a 15-year period, Drumheller's population increased 857% from 312 in 1916 to 2,987 in 1931 shortly after becoming a city.\nDrumheller boomed until the end of the Second World War when coal lost most of its value.\nThe City of Drumheller amalgamated with the Municipal District of Badlands No. 7 on 1 January 1998, to form the current Town of Drumheller. Some of the reasons the two municipalities amalgamated included Badlands No. 7 having more in common with Drumheller than other surrounding rural municipalities and both were experiencing similar planning and development issues due to their locations within the Red Deer River valley. The amalgamated municipality opted for town status rather than city status so that highways within would remain the responsibility of the Province of Alberta. As a result of the amalgamation, Drumheller became Alberta's largest town in terms of land area at 107.93 square kilometres (41.67 sq mi).\nThe 1998 amalgamation resulted in Drumheller absorbing six hamlets that were previously under the jurisdiction of the Municipal District of Badlands No. 7—Cambria, East Coulee, Lehigh, Nacmine, Rosedale and Wayne. Drumheller also previously absorbed the hamlets of Bankview, Midlandvale (Midland), Newcastle and North Drumheller during annexations while under city status. Bankview and Midland were annexed in 1964 and 1972 respectively, while Newcastle and North Drumheller were both annexed in 1967. Other localities within Drumheller, either absorbed through past annexations or its eventual amalgamation with Badlands No. 7, include Aerial, Eladesor, Kneehill, Rosedale Station, Western Monarch (Atlas) and Willow Creek.\nIn total, Drumheller has absorbed at least 13 other communities in its history, some of which are now recognized as neighbourhoods or districts within the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 418
+    },
+    "banned_terms": [
+      {
+        "term": "drumheller",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4720,
+    "attempt": 4685,
+    "place_id": "gn-5965812",
+    "input": {
+      "place": {
+        "place_id": "gn-5965812",
+        "name": "Greater Napanee",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.25012,
+        "lon": -76.94944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greater Napanee",
+          "url": "https://en.wikipedia.org/wiki/Greater_Napanee",
+          "text": "Greater Napanee is a town in southeastern Ontario, Canada, approximately 45 kilometres (28 mi) west of Kingston and the county seat of Lennox and Addington County. It is located on the eastern end of the Bay of Quinte. Greater Napanee municipality was created on January 1, 1998, by the amalgamation of the Town of Napanee with Adolphustown Township, North Fredericksburg Township and South Fredericksburg Township, and Richmond Township. Greater Napanee is co-extensive with the original Lennox County.\nThe town is home to the Allan Macpherson House, a historic 1826 property that is now a museum. Macpherson was a major in the Lennox militia, operated the town's grist and saw mills, as well as the distillery and general store. He served as post master and land agent, operated the first local printing press and helped fund the establishment of many local schools and churches. The home sits on the banks of the Napanee River, which runs through the town.\nThe main streets are Dundas Street (east–west) and Centre Street (north–south). Dundas Street is part of former provincial Highway #2, also known as Kingston Road, and travels through downtown from Toronto in the west and onward to Kingston in the east. Centre Street travels through the centre of the town from the modern commercial area close to Highway 401 to the downtown and onwards, as County Road 8 to Lake Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "greater napanee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "greater",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "napanee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4721,
+    "attempt": 4686,
+    "place_id": "gn-730013",
+    "input": {
+      "place": {
+        "place_id": "gn-730013",
+        "name": "Kozloduy",
+        "country": "Bulgaria",
+        "subdivision": "Vratsa",
+        "lat": 43.77691,
+        "lon": 23.73001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kozloduy",
+          "url": "https://en.wikipedia.org/wiki/Kozloduy",
+          "text": "Kozloduy (Bulgarian: Козлодуй pronounced [kozɫoˈduj]) is a town in northwest Bulgaria, located in Vratsa Province, on the Danube River. The city was liberated from Ottoman rule on 23 November 1877 by the Romanian Army under the command of the Imperial Russian Army. Kozloduy is best known for the Kozloduy Nuclear Power Plant, Bulgaria's only (as of January 2018) nuclear power plant, which is located nearby, as well as the second largest Bulgarian Danubian island, Kozloduy Island. The city is also known for the ship Radetzky, the boat in which the poet and revolutionary Hristo Botev and with 200 others crossed the Danube River in a final attempt to gather an army and liberate Bulgaria from the Ottoman Empire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "kozloduy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4722,
+    "attempt": 4687,
+    "place_id": "gn-1275775",
+    "input": {
+      "place": {
+        "place_id": "gn-1275775",
+        "name": "Boothapandi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 8.26586,
+        "lon": 77.44606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boothapandi",
+          "url": "https://en.wikipedia.org/wiki/Boothapandi",
+          "text": "Boothapandi (also known as Boothapandy) is a panchayat town in Kanyakumari district  in the state of Tamil Nadu, India.\nThe town spans an area of around 5 km2 with Thittuvilai, Thuvarancaud, Arasankuzhi, Andithoppu, Mannadi, Saattupudoor, Seethapal and Manathittai as its sub-villages. The places situated in the vicinity of the town include Azhagiapandiapuram to the northwest, Esanthimangalam to the southwest, Thalakudi to the southeast and Aralvaimozhi to the east.\nIt is the headquarters of Thovalai taluk, one of the four taluks of Kanyakumari district. The village has a sub-register office, taluk office, police station, higher secondary school and court.\nIt was named after the presence of the Bhoothalingaswamy Temple (Bhoothapandi), which is famous for its sculptures and architecture. The surrounding area is green and fertile. The town lies about 11 kilometres (7 miles) north of Nagercoil and its views of the Western Ghats attract many tourists and photographers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "boothapandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4723,
+    "attempt": 4688,
+    "place_id": "gn-13353870",
+    "input": {
+      "place": {
+        "place_id": "gn-13353870",
+        "name": "Southampton Parish",
+        "country": "Bermuda",
+        "subdivision": "Southampton",
+        "lat": 32.25164,
+        "lon": -64.85474
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southampton Parish, Bermuda",
+          "url": "https://en.wikipedia.org/wiki/Southampton_Parish,_Bermuda",
+          "text": "Southampton Parish is one of the nine parishes of Bermuda. It is named for Henry Wriothesley, 3rd Earl of Southampton (1573-1624).\nIt is located in the southwest of the island chain, occupying all of the western part of the main island, except for the westernmost tip (which is part of Sandys Parish). It includes the chain's southernmost point, and its north coast comprises much of the coast of the Little Sound (an arm of the Great Sound, the large expanse of water which dominates the geography of western Bermuda). in the east it is joined to Warwick Parish. As with most of Bermuda's parishes, it covers just over 2.3 square miles (about 6.0 km2 or 1500 acres). It had a population of 6,421 in 2016.\nNatural features in Southampton include Church Bay, Horseshoe Bay, Riddell's Bay, Turtle Bay, and Whale Bay,\nOther notable features of Southampton include the Whale Bay Fort, and Gibbs Hill Lighthouse, which stands on the chain's highest point."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "southampton parish",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southampton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parish",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4724,
+    "attempt": 4689,
+    "place_id": "gn-2523938",
+    "input": {
+      "place": {
+        "place_id": "gn-2523938",
+        "name": "Pachino",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.71522,
+        "lon": 15.09019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pachino",
+          "url": "https://en.wikipedia.org/wiki/Pachino",
+          "text": "Pachino (Italian pronunciation: [paˈkiːno]; Sicilian: Pachinu [paˈciːnʊ]) is a town and comune in the Province of Syracuse, Sicily (Italy). The name derives from the Latin word bacchus, which is the Roman god of wine, and the word vinum, which means wine in Latin; originally the town was named Bachino which eventually was changed to Pachino when, in Sicily, Italian became the official spoken and written language.\nIt was founded in 1760 by the nobles Starrabba, princes of Giardinelli and marquises of Rudinì, on the hill of the feud of Scibini, where a preexisting tower was built in 1494. \nPachino was invaded in 1943 by the British 8th Army as a part of the allied invasion of Sicily."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "pachino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4725,
+    "attempt": 4690,
+    "place_id": "gn-2641942",
+    "input": {
+      "place": {
+        "place_id": "gn-2641942",
+        "name": "Musselburgh",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.9417,
+        "lon": -3.04991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Musselburgh",
+          "url": "https://en.wikipedia.org/wiki/Musselburgh",
+          "text": "Musselburgh (; Scots: Musselburrae; Scottish Gaelic: Baile nam Feusgan) is a historic coastal town in East Lothian, Scotland, on the shore of the Firth of Forth. The town sits at the mouth of the River Esk, approximately 5 miles (8 km) east of Edinburgh, 46 miles (74 km) east of Glasgow, and 91 miles (146 km) south-southwest of Aberdeen. It is the largest settlement in East Lothian, with a population of 21,479 in 2022. \nMusselburgh is nicknamed the \"Honest Toun\" and is believed to be the oldest existing town in Scotland, with history dating back to the Roman era. The town is home to Queen Margaret University and Musselburgh Links, one of the world's oldest golf courses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "musselburgh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4726,
+    "attempt": 4691,
+    "place_id": "gn-2919765",
+    "input": {
+      "place": {
+        "place_id": "gn-2919765",
+        "name": "Glücksburg",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 54.83503,
+        "lon": 9.55218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glücksburg",
+          "url": "https://en.wikipedia.org/wiki/Gl%C3%BCcksburg",
+          "text": "Glücksburg (German pronunciation: [ˈɡlʏksˌbʊʁk] ; Danish: Lyksborg) is a small town northeast of Flensburg in the district of Schleswig-Flensburg, in Schleswig-Holstein, Germany.\nIt is situated on the south side of the Flensborg Fjord, an inlet of the Baltic Sea, approx. 10 km northeast of Flensburg. The town was originally the home of the family Schleswig-Holstein-Sonderburg-Glücksburg (or simply Glücksburg), members of which have reigned in the past in Greece and several northern German states. Members of the family still reign in Denmark and Norway since 1863 and 1905 respectively, and have reigned in the United Kingdom and the 14 other Commonwealth realms since the accession of Charles III in 2022.\n\nGlücksburg was home to a German Navy base. Among the facilities at the base was the transmitter, callsign DHJ58. DHJ58, situated at 54° 50'N and  9° 32' E, ceased its transmissions on longwave frequency 68.9 kHz in 2002 and in 2004 its longwave antenna was disassembled."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "glucksburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4727,
+    "attempt": 4692,
+    "place_id": "gn-2997395",
+    "input": {
+      "place": {
+        "place_id": "gn-2997395",
+        "name": "Lourdes",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.09461,
+        "lon": -0.04611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lourdes",
+          "url": "https://en.wikipedia.org/wiki/Lourdes",
+          "text": "Lourdes (, also US: , French: [luʁd] ; Occitan: Lorda [ˈluɾðɔ]) is a market town situated in the Pyrenees. It is part of the Hautes-Pyrénées department in the Occitanie region in southwestern France. Prior to the mid-19th century, the town was best known for its Château fort, a fortified castle that rises up from a rocky escarpment at its center.\nIn 1858, Lourdes rose to prominence in France and abroad due to the Marian apparitions to the peasant girl Bernadette Soubirous (later canonized a saint by the Catholic Church for her virtuous life). Shortly thereafter, the city and its Sanctuary of Our Lady of Lourdes became among the world's most important sites for pilgrimage and religious tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "lourdes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4728,
+    "attempt": 4693,
+    "place_id": "gn-3127889",
+    "input": {
+      "place": {
+        "place_id": "gn-3127889",
+        "name": "Boiro",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.64725,
+        "lon": -8.88459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boiro",
+          "url": "https://en.wikipedia.org/wiki/Boiro",
+          "text": "Boiro is a municipality in the province of A Coruña in the autonomous community of Galicia in northwestern Spain. It is located in the comarca of Barbanza. Boiro has an area of 86.58 km2.\nBoiro was where the controversial assisted suicide of quadriplegic Ramón Sampedro took place. The town was later used as a setting for the 2004 film Mar Adentro, chronicling Sampedro's later life.\nBoiro is also well known for local tourists that come from inner Spain to enjoy the milder climate and landscape, most notably the Barbanza mountain chain, Praia de Barraña (which lies close to the town center), and Carragueiros and Mañóns beaches (one in O Castro parish and the other in Abanqueiro parish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "boiro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4729,
+    "attempt": 4694,
+    "place_id": "gn-3178019",
+    "input": {
+      "place": {
+        "place_id": "gn-3178019",
+        "name": "Correggio",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.76737,
+        "lon": 10.78345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Correggio, Emilia-Romagna",
+          "url": "https://en.wikipedia.org/wiki/Correggio,_Emilia-Romagna",
+          "text": "Correggio (Reggiano: Curèṡ) is a town and comune in the Province of Reggio Emilia, in the Emilia-Romagna region of Italy, in the Po valley. As of 31 March 2026 Correggio had an estimated population of 25,223.\nIts patron saint is Quirinus of Sescia, to whom the Basilica of San Quirino is dedicated.\nIt was the seat of Veronica Gambara (1485–1550), a noted politician poet who ruled the principality after the death of her husband Giberto X, Count of Correggio, from 1518 to 1550.\nIt is the birthplace of the Renaissance painter Antonio Allegri, who was called \"il Correggio\" from the name of his town. The French poet Tugdual Menon resided in Correggio for much of his life.\nIt is also the birthplace of composer Bonifazio Asioli, Venetian School composer Claudio Merulo, rock singer Luciano Ligabue, educator Loris Malaguzzi, who developed the Reggio Emilia approach, 1908 Summer Olympics marathon runner Dorando Pietri, and novelist Pier Vittorio Tondelli."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "correggio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4730,
+    "attempt": 4695,
+    "place_id": "gn-3526601",
+    "input": {
+      "place": {
+        "place_id": "gn-3526601",
+        "name": "Jalpan de Serra",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 21.21745,
+        "lon": -99.47183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jalpan de Serra",
+          "url": "https://en.wikipedia.org/wiki/Jalpan_de_Serra",
+          "text": "Jalpan de Serra (Spanish: [ˈxalpan de ˈsera] ) is a city in Jalpan de Serra Municipality located in the north of the Mexican state of Querétaro. It is located in the heart of an important ecological zone called the Sierra Gorda. It is also the site two of five Franciscan missions, including the first one, to have been built in the mid-18th century, and declared a World Heritage Site in 2003. The municipality is also home to a small but important indigenous group called the Pame. However, the municipality has been losing population since the mid-20th century even though recent events such as the town being named a Pueblo Mágico have worked to create a tourism industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "jalpan de serra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jalpan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "serra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4731,
+    "attempt": 4696,
+    "place_id": "gn-3660573",
+    "input": {
+      "place": {
+        "place_id": "gn-3660573",
+        "name": "Archidona",
+        "country": "Ecuador",
+        "subdivision": "Napo",
+        "lat": -0.9095,
+        "lon": -77.80772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Archidona, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Archidona,_Ecuador",
+          "text": "Archidona is a colonial town, founded in 1560, north of Tena, Ecuador in the Napo Province. Archidona still serves as one of the region's main missionary outposts. It's also a business and social center for the small Kichwa communities in the vicinity. \nArchidona's festivals attract people from all around and several times throughout the year there are Kichwa beauty and culture pageants, in which contestants, drawn from the many Kichwa communities in the area, compete for the title of \"Queen of the Kichwa\". The pageants are a unique opportunity to hear Kichwa spoken and sung and to see some very old dances and customs. There are several eliminatory rounds and the finale is usually held in April. During these pageants, one or two fairs usually come to town. There are rides and food stands, lasting several weeks. There is also an open market held in the streets, making it difficult to drive for the few cars in the town. However, the market provides all kinds of amazing things from hand-made cloths to traditional food.   \n\nArchidona also has several churches because of the strong Catholic influence in the country. The most popular church is simply known as Iglesia de Archidona. There is a baptist church as well, near the edge of town. It was run by American missionaries for over 10 years, until 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "archidona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4732,
+    "attempt": 4697,
+    "place_id": "gn-3868988",
+    "input": {
+      "place": {
+        "place_id": "gn-3868988",
+        "name": "Tucapel",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -37.29079,
+        "lon": -71.94929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tucapel",
+          "url": "https://en.wikipedia.org/wiki/Tucapel",
+          "text": "Tucapel is a town and commune in the Bío Bío Province, Bío Bío Region, Chile. It was once a region of Araucanía named for the Tucapel River.  The name of the region derived from the rehue and aillarehue of the Moluche people of the area between the Lebu and the Lleulleu Rivers, who were famed for their long resistance to the Spanish in the Arauco War. Tucapel is also the name of a famous leader from that region in the first resistance against the Spanish mentioned in Alonso de Ercilla's epic poem La Araucana. Formerly belonging to the Ñuble Province, in the Yungay Department. Near the town of Tucapel is the Plaza de San Diego de Tucapel. The capital of the commune is the town of Huépil, moving the municipality from Tucapel in 1967. In Mapudungun the name Huépil means \"To seize or to take by force\".\nThe main economic activities of the commune are commerce, agriculture and forestry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "tucapel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4733,
+    "attempt": 4698,
+    "place_id": "gn-4006081",
+    "input": {
+      "place": {
+        "place_id": "gn-4006081",
+        "name": "Galeana",
+        "country": "Mexico",
+        "subdivision": "Nuevo León",
+        "lat": 24.82528,
+        "lon": -100.07601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galeana, Nuevo León",
+          "url": "https://en.wikipedia.org/wiki/Galeana,_Nuevo_Le%C3%B3n",
+          "text": "Galeana is both a municipality and a city in the Mexican state of Nuevo León. It is named after Hermenegildo Galeana, a lieutenant involved in the country's movement towards independence. Galeana shares borders with the states of Coahuila, San Luis Potosí and Zacatecas to the west. With the municipalities of Aramberri and Doctor Arroyo to the south; Rayones to the north; and with Linares, Montemorelos, Rayones and Iturbide to the east. Galeana is the largest municipality in the state, totaling 7,154.6 km2 (2,762.4 sq mi); however, it is thinly populated with only 38,930 inhabitants, resulting in a population density of 0.18 persons per square kilometer. Galeana, the municipal seat, is the best developed town in the region. It has services such as hospitals, accommodations, restaurants, bars and the largest drink distributor in the zone. However, it remains as a low per-capita income city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "galeana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4734,
+    "attempt": 4699,
+    "place_id": "gn-4046332",
+    "input": {
+      "place": {
+        "place_id": "gn-4046332",
+        "name": "Henderson",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.15322,
+        "lon": -94.79938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henderson, Texas",
+          "url": "https://en.wikipedia.org/wiki/Henderson,_Texas",
+          "text": "Henderson is a city and the county seat of Rusk County, Texas, United States. Its population was 13,271 at the 2020 census. Henderson is named for James Pinckney Henderson, the first governor of Texas.\nThe city has functioned as a major crossroads in Northeast Texas over the last two centuries. Several major highways pass through the business district of the town, including U.S. Route 259, Texas State Highway 64, U.S. Route 79, Texas State Highway 43, and Texas State Highway 42.\nAnnual events in the city of Henderson include the Heritage Syrup Festival in November, celebrating the East Texas tradition of sorghum syrup making, and the East Texas Sacred Harp Convention in August featuring shape note music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "henderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4735,
+    "attempt": 4700,
+    "place_id": "gn-4350327",
+    "input": {
+      "place": {
+        "place_id": "gn-4350327",
+        "name": "Canton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28039,
+        "lon": -76.56663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canton, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Canton,_Baltimore",
+          "text": "Canton is a historic waterfront neighborhood in Baltimore, Maryland, United States. The neighborhood is along Baltimore's outer harbor in the southeastern section of the city, roughly 2 miles (3 km) east of Baltimore's downtown district and next to or near the neighborhoods of Patterson Park, Fell's Point, Highlandtown, and Brewers Hill.\nCanton is considered one of Baltimore's trendiest and vibrant neighborhoods, known for its family-friendly community, urban lifestyle and hot spot for the social scene. The inclusive neighborhood continues to see rapid growth as more development opportunities come into the area. Since the late 1990s, the neighborhood has undergone significant gentrification and has been ranked the 16th most-gentrified zip code in the nation from 2000 to 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "canton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

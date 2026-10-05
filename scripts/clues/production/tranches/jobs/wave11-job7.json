@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 346,
+    "place_id": "gn-1185099",
+    "input": {
+      "place": {
+        "place_id": "gn-1185099",
+        "name": "Sylhet",
+        "country": "Bangladesh",
+        "subdivision": "Sylhet Division",
+        "lat": 24.89904,
+        "lon": 91.87198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sylhet",
+          "url": "https://en.wikipedia.org/wiki/Sylhet",
+          "text": "Sylhet is a metropolitan city in the northeastern region of Bangladesh. It serves as the administrative centre for both the Sylhet District and the Sylhet Division. The city is situated on the banks of the Surma River and, as of 2025, the metro area population of Sylhet is estimated to be 1,033,000, reflecting a 3.4% increase from 2024.\nSylhet is known for its tea plantations and natural scenery. Sylhet is famous for the Ratargul Swamp Forest, one of the few freshwater swamp forests in Bangladesh. The region has been inhabited since ancient times, and since the city's establishment in the 14th century has been ruled by various dynasties including the Mughals, the British, and the Nawabs of Bengal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sylhet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 347,
+    "place_id": "gn-2451478",
+    "input": {
+      "place": {
+        "place_id": "gn-2451478",
+        "name": "Ségou",
+        "country": "Mali",
+        "subdivision": "Ségou",
+        "lat": 13.44032,
+        "lon": -6.25947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ségou",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A9gou",
+          "text": "Ségou (French pronunciation: [seɡu]; Bambara: ߛߋߜ߭ߎ߫, Segu) is a town and an urban commune in south-central Mali that lies 235 kilometres (146 mi) northeast of Bamako on the right bank of the River Niger. The town is the capital of the Ségou Cercle and the Ségou Region. With 130,690 inhabitants in 2009, it is the fifth-largest town in Mali. \nIn the middle of the 19th century there were four villages with the name of Ségou spread out over a distance of around 12 km (7.5 mi) along the right bank of the river. They were, starting from the most upstream, Ségou-Koro (Old Ségou), Ségou-Bougou, Ségou-Koura (New Ségou) and Ségou-Sikoro. The present town is on the site of Ségou-Sikoro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "segou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 348,
+    "place_id": "gn-2805753",
+    "input": {
+      "place": {
+        "place_id": "gn-2805753",
+        "name": "Wuppertal",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.25627,
+        "lon": 7.14816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuppertal",
+          "url": "https://en.wikipedia.org/wiki/Wuppertal",
+          "text": "Wuppertal (German pronunciation: [ˈvʊpɐtaːl] ; lit. 'Wupper Dale') is a city in North Rhine-Westphalia, in western Germany, with a population of 355,000. Wuppertal is the seventh-largest city in North Rhine-Westphalia and 17th-largest in Germany. It was founded in 1929 by the merger of Elberfeld, Barmen, Ronsdorf, Cronenberg and Vohwinkel, and was initially called \"Barmen-Elberfeld\" before adopting its present name in 1930. It is the capital and largest city of the Bergisches Land.\nThe city straddles the densely populated banks of the River Wupper, a tributary of the Rhine. Wuppertal is located between the Ruhr area to the north, Düsseldorf to the west, and Cologne to the southwest, and over time has grown together with Solingen, Remscheid and Hagen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "wuppertal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 349,
+    "place_id": "gn-298117",
+    "input": {
+      "place": {
+        "place_id": "gn-298117",
+        "name": "Van",
+        "country": "Türkiye",
+        "subdivision": "Van",
+        "lat": 38.49457,
+        "lon": 43.38323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van, Turkey",
+          "url": "https://en.wikipedia.org/wiki/Van,_Turkey",
+          "text": "Van is a city in eastern Turkey's Van Province, on the eastern shore of Lake Van. It is the capital and largest city of Van Province.\nVan has a long history as a major urban area. It has been a large city since the first millennium BCE, initially as Tushpa, the capital of the kingdom of Urartu from the 9th century BCE to the 6th century BCE, and later as the center of the Armenian kingdom of Vaspurakan. Turkic presence in Van and in the rest of Anatolia started as a result of Seljuk victory at the Battle of Malazgirt (1071) against the Byzantine Empire.\nVan was densely populated by Armenians until the Armenian genocide in the 1910s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "van",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 350,
+    "place_id": "gn-3526683",
+    "input": {
+      "place": {
+        "place_id": "gn-3526683",
+        "name": "Iztapalapa",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.35529,
+        "lon": -99.06224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iztapalapa",
+          "url": "https://en.wikipedia.org/wiki/Iztapalapa",
+          "text": "Iztapalapa () is a borough (demarcación territorial) in Mexico City located on the eastern side of the city. The borough is named after and centered on the formerly independent municipality of Iztapalapa (officially Iztapalapa de Cuitláhuac). The rest is made up of a number of other communities which are governed by the city of Iztapalapa.\nWith a population of 1,835,486 as of 2020, Iztapalapa is the most populous borough of Mexico City as well as the second-most populous municipality in the country, after Tijuana. Over 90% of the territory is urbanized, with its green space mostly in parks. Over the past 40 years, Iztapalapa transformed from a rural area primarily dedicated to agriculture to a densely populated borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "iztapalapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 351,
+    "place_id": "gn-5577147",
+    "input": {
+      "place": {
+        "place_id": "gn-5577147",
+        "name": "Fort Collins",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.58526,
+        "lon": -105.08442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Collins, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Fort_Collins,_Colorado",
+          "text": "Fort Collins is a home rule city in Larimer County, Colorado, United States, and serves as the county seat and most populous municipality of the county. It is the fourth-most populous city in Colorado with a population of 169,810 in the 2020 census, while the Fort Collins, CO Metropolitan Statistical Area has an estimated 375,000 residents.\nSituated on the Cache La Poudre River along the Colorado Front Range, Fort Collins is located 60 mi (97 km) north of the Colorado State Capitol in Denver and is a major city of the Front Range Urban Corridor. It is a prominent college town, home to Colorado State University, a public research university and the second-largest university by enrollment in Colorado."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "fort collins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "collins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 352,
+    "place_id": "gn-667268",
+    "input": {
+      "place": {
+        "place_id": "gn-667268",
+        "name": "Sibiu",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.8,
+        "lon": 24.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sibiu",
+          "url": "https://en.wikipedia.org/wiki/Sibiu",
+          "text": "Sibiu ( see-BEW, pronounced [siˈbiw], German: Hermannstadt [ˈhɛʁmanʃtat], Hungarian: Nagyszeben, Latin: Cibinium, Transylvanian Saxon: Härmeschtat or Hermestatt) is a city in central Romania, situated in the historical region of Transylvania. Located some 275 km (171 mi) north-west of Bucharest, the city straddles the Cibin River, a tributary of the Olt River. Now the seat of Sibiu County, between 1692 and 1791 and 1849–65, Sibiu was the capital of the Principality of Transylvania. Until 1876, the Hecht house in Sibiu served as the seat of the Transylvanian Saxon University.\nNicknamed The Town with Eyes for the eyebrow dormers on many old buildings, the town is a popular tourist destination. It is known for its culture, history, cuisine, and architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sibiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 354,
+    "place_id": "gn-964420",
+    "input": {
+      "place": {
+        "place_id": "gn-964420",
+        "name": "Gqeberha",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.96109,
+        "lon": 25.61494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gqeberha",
+          "url": "https://en.wikipedia.org/wiki/Gqeberha",
+          "text": "Gqeberha (English:  keb-AIR-khə, Xhosa: [ᶢǃʱɛ̀ɓéːxà]), also known as Port Elizabeth and colloquially P.E., is a major seaport and the most populous city in the Eastern Cape province of South Africa. It is the seat of the Nelson Mandela Bay Metropolitan Municipality, South Africa's second-smallest metropolitan municipality by area. It is the sixth-most populous city in South Africa and is the cultural, economic and financial hub of the Eastern Cape.\nGqeberha was founded in 1820 as Port Elizabeth by Sir Rufane Donkin, who was the governor of the Cape at the time. He named it after his wife, Elizabeth, who had died in India. The Donkin Memorial in the central business district of the city bears testament to that."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "gqeberha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 355,
+    "place_id": "gn-1185056",
+    "input": {
+      "place": {
+        "place_id": "gn-1185056",
+        "name": "Abbottabad",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.1463,
+        "lon": 73.21168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbottabad",
+          "url": "https://en.wikipedia.org/wiki/Abbottabad",
+          "text": "Abbottabad is a city and the capital of the Hazara Division in the Pakistani province of Khyber Pakhtunkhwa. It also serves as the headquarters of its eponymous tehsil (subdistrict) and district. According to the 2023 census, Abbottabad had a population of 234,395. The city is located about 120 km (75 mi) north of the Islamabad–Rawalpindi area and 150 km (95 mi) east of Peshawar, at an elevation of about 1,256 m (4,121 ft).\nAbbottabad was founded in 1853 during British rule and was named after James Abbott, the first deputy commissioner of Hazara. It developed as a cantonment and administrative centre in the colonial period, later becoming part of the North-West Frontier Province and then Khyber Pakhtunkhwa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "abbottabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 356,
+    "place_id": "gn-1784853",
+    "input": {
+      "place": {
+        "place_id": "gn-1784853",
+        "name": "Zhaoqing",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.04893,
+        "lon": 112.46091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhaoqing",
+          "url": "https://en.wikipedia.org/wiki/Zhaoqing",
+          "text": "Zhaoqing (Chinese: 肇庆), alternately romanized as Shiuhing, is a prefecture-level city in Guangdong, China. As of the 2020 census, its population was 4,113,594, with 1,553,109 living in the built-up (or metro) area made of Duanzhou, Dinghu and Gaoyao. The prefectural seat—except the Seven Star Crags—is fairly flat, but thickly forested mountains lie just outside its limits. Numerous rice paddies and aquaculture ponds are found on the outskirts of the city. Sihui and the southern districts of the prefecture are considered part of the Pearl River Delta.\nFormerly one of the most important cities in southern China, Zhaoqing lost its importance during the Qing dynasty and is now primarily known for tourism and as a provincial \"college town\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "zhaoqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 358,
+    "place_id": "gn-2692969",
+    "input": {
+      "place": {
+        "place_id": "gn-2692969",
+        "name": "Malmö",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.60587,
+        "lon": 13.00073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmö",
+          "url": "https://en.wikipedia.org/wiki/Malm%C3%B6",
+          "text": "Malmö is the third-largest city in Sweden, after Stockholm and Gothenburg, and the seventh-largest city in the Nordic region. Located on the Öresund strait on the southwestern coast of Sweden, it is the largest city in Scania, with a municipal population of 365,644 in 2024, and is the gubernatorial seat of Skåne County. Malmö received its city privileges in 1353, and today Malmö's metropolitan region is home to over 700,000 people. \nMalmö is the site of Sweden's only fixed direct link to continental Europe, the Öresund Bridge, completed in 2000. The bridge connects Sweden to Denmark, and carries both road and rail traffic. The Öresund Region, which includes Malmö and Copenhagen, is home to four million people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "malmo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 359,
+    "place_id": "gn-2972191",
+    "input": {
+      "place": {
+        "place_id": "gn-2972191",
+        "name": "Tours",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.39484,
+        "lon": 0.70398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tours",
+          "url": "https://en.wikipedia.org/wiki/Tours",
+          "text": "Tours ( TOOR; French: [tuʁ] ) is the largest city in the region of Centre-Val de Loire, France. It is the prefecture of the department of Indre-et-Loire. The commune of Tours had 138,668 inhabitants as of 2022 while the population of the whole metropolitan area was 526,370.\nTours sits on the lower reaches of the Loire, between Orléans and the Atlantic coast. Formerly named Caesarodunum by its founder, Roman Emperor Augustus, it possesses one of the largest amphitheaters of the Roman Empire, the Tours Amphitheatre. Known for the Battle of Tours in 732 AD, it is a National Sanctuary with connections to the Merovingians and the Carolingians, with the Capetians making the kingdom's currency the Livre tournois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "tours",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 360,
+    "place_id": "gn-3037854",
+    "input": {
+      "place": {
+        "place_id": "gn-3037854",
+        "name": "Amiens",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.9,
+        "lon": 2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amiens",
+          "url": "https://en.wikipedia.org/wiki/Amiens",
+          "text": "Amiens (English:  or  AM-ee-ənz; French: [amjɛ̃] ; Picard: Anmien, Anmiens or Anmyin) is a city and commune in northern France, located 120 km (75 mi) north of Paris and 100 km (62 mi) southwest of Lille. With 136,449 inhabitants (2023), it is the prefecture of the Somme department in the Hauts-de-France region. A central landmark of the city is Amiens Cathedral, the largest Gothic cathedral in France. Amiens also has one of the largest university hospitals in France, with a capacity of 1,200 beds. The author Jules Verne lived in Amiens from 1871 until his death in 1905, and served on the city council for 15 years. Amiens is the birthplace of current French president Emmanuel Macron."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "amiens",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 361,
+    "place_id": "gn-3727135",
+    "input": {
+      "place": {
+        "place_id": "gn-3727135",
+        "name": "Croix-des-Bouquets",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.57677,
+        "lon": -72.22625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Croix-des-Bouquets",
+          "url": "https://en.wikipedia.org/wiki/Croix-des-Bouquets",
+          "text": "Croix-des-Bouquets (, French pronunciation: [kʁwa de bukɛ]; Haitian Creole: Kwadèbouke or Kwadèboukè)  is a commune in the Ouest department of Haiti. It is located 12.9 kilometers (8.0 mi) to the northeast of Haiti's capital city, Port-au-Prince. Originally located on the shore, it was relocated inland after the 1770 Port-au-Prince earthquake. With a population density of 52,000/km2 (130,000/sq mi), Croix-des-Bouquets is one of the most densely populated cities in the world.\nCroix-des-Bouquets was founded in 1749 by Royal Decree. Legend has it that the city takes its name from a tradition that had the Spaniards passing to deposit bouquets of flowers at the foot of a large cross that was on the land where the city was built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "croix des bouquets",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "croix",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bouquets",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 362,
+    "place_id": "gn-5402405",
+    "input": {
+      "place": {
+        "place_id": "gn-5402405",
+        "name": "Thousand Oaks",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.17056,
+        "lon": -118.83759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thousand Oaks, California",
+          "url": "https://en.wikipedia.org/wiki/Thousand_Oaks,_California",
+          "text": "Thousand Oaks is the second-largest city in Ventura County, California, located in the northwestern part of Greater Los Angeles. Approximately 15 miles (24 km) from the city of Los Angeles and 40 miles (64 km) from Downtown Los Angeles, it is named after the many oak trees present in the area.\nThe city forms the central populated core of the Conejo Valley. Thousand Oaks was incorporated in 1964 and has since expanded to the west and east. Two-thirds of the master-planned community surrounding Westlake and most of Newbury Park were annexed by the city during the late 1960s and 1970s. The Los Angeles County–Ventura County line forms the city's eastern border with the city of Westlake Village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "thousand oaks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thousand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oaks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 363,
+    "place_id": "gn-702550",
+    "input": {
+      "place": {
+        "place_id": "gn-702550",
+        "name": "Lviv",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.83826,
+        "lon": 24.02324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lviv",
+          "url": "https://en.wikipedia.org/wiki/Lviv",
+          "text": "Lviv (German: Lemberg,Polish: Lwów; ) is the fifth-largest city in Ukraine, as well as the largest city in the western part of the country, with a population of 723,403 (2025 estimate). It serves as the administrative center of Lviv Oblast and Lviv Raion, and is one of the main cultural centers of Ukraine. The city also hosts the administration of Lviv urban hromada. Lviv was named after Leo I of Galicia, the eldest son of Daniel, King of Ruthenia. During its history the city has had several names.\nIn the 14th century, Lviv emerged as the heart of the historical regions of Red Ruthenia and Galicia, superseding other historic cities such as Halych, Chełm, Belz, and Przemyśl."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "lviv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 364,
+    "place_id": "gn-750516",
+    "input": {
+      "place": {
+        "place_id": "gn-750516",
+        "name": "Bolu",
+        "country": "Türkiye",
+        "subdivision": "Bolu",
+        "lat": 40.73583,
+        "lon": 31.60611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolu",
+          "url": "https://en.wikipedia.org/wiki/Bolu",
+          "text": "Bolu is a city in northern Turkey, and administrative center of the Bolu Province and of Bolu District, located on the highway between Istanbul and Ankara. Its population as of 2021 was 184,682.\nThe city has been governed by mayor Tanju Özcan (CHP) since local elections in 2019. It was the site of Ancient Claudiopolis and has also been called Eskihisar (\"old fortress\") (and as such has several Turkish namesakes).\nThe old highway (D-100) between Ankara and Istanbul climbs over Mount Bolu, while the new motorway (E-80) passes through Mount Bolu Tunnel, a little distance from the town. It is situated at 742 m (2,434 ft) above sea level on the southern slopes of a bare hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "bolu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 365,
+    "place_id": "gn-2309527",
+    "input": {
+      "place": {
+        "place_id": "gn-2309527",
+        "name": "Malabo",
+        "country": "Equatorial Guinea",
+        "subdivision": "Bioko Norte",
+        "lat": 3.75578,
+        "lon": 8.78166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malabo",
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "text": "Malabo ( mə-LAH-boh, Spanish: [maˈlaβo] ; formerly Santa Isabel [ˈsantajsaˈβel] ) is a city in Equatorial Guinea, located in the province of Bioko Norte. It is located on the north coast of the island of Bioko (Bube: Etulá, historically known as Fernando Pó by the Europeans). In 2018, the city had a population of approximately 297,000 inhabitants.\nSpanish is the official language of the city and of the country as well, but Pichinglis is also used as a language of wider communication across Bioko island, including Malabo.\nMalabo is the oldest city in Equatorial Guinea and served as its former capital. Ciudad de la Paz became the new capital of Equatorial Guinea on 2 January 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "malabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 366,
+    "place_id": "gn-2637433",
+    "input": {
+      "place": {
+        "place_id": "gn-2637433",
+        "name": "Southend-on-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53782,
+        "lon": 0.71433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southend-on-Sea",
+          "url": "https://en.wikipedia.org/wiki/Southend-on-Sea",
+          "text": "Southend-on-Sea ( ), commonly referred to as Southend (), is a coastal city and unitary authority area in south-eastern Essex, England. It lies on the north side of the Thames Estuary, 40 miles (64 km) east of central London. It is bordered to the north by Rochford and to the west by Castle Point. The city is one of the most densely populated places in the country outside of London. It is home to the longest pleasure pier in the world, Southend Pier, while London Southend Airport is located to the north of the city centre.\nSouthend-on-Sea originally consisted of a few fishermen's huts and a farm at the southern end of the village of Prittlewell."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "southend on sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southend",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 367,
+    "place_id": "gn-3530757",
+    "input": {
+      "place": {
+        "place_id": "gn-3530757",
+        "name": "Cholula",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.06406,
+        "lon": -98.30352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cholula, Puebla",
+          "url": "https://en.wikipedia.org/wiki/Cholula,_Puebla",
+          "text": "Cholula (Spanish: [tʃoˈlula] , officially Cholula de Rivadavia; Mezquital Otomi: Mä'ragi), is a city and district located in the metropolitan area of Puebla, Mexico. Cholula is best known for its Great Pyramid, with the Iglesia de Nuestra Señora de los Remedios sanctuary on top, as well as its numerous churches.\nThe city and district of Cholula are divided into two: San Pedro Cholula and San Andrés Cholula. Surrounding the city proper are a number of more rural communities which belong to the municipalities of San Andrés and San Pedro. The city itself is divided into eighteen neighborhoods or barrios, each with a patron saint.\nThis division has pre-Hispanic origins as does the division into two municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "cholula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

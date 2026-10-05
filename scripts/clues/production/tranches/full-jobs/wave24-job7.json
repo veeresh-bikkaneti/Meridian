@@ -1,0 +1,847 @@
+[
+  {
+    "rank": 4756,
+    "attempt": 4721,
+    "place_id": "gn-2971154",
+    "input": {
+      "place": {
+        "place_id": "gn-2971154",
+        "name": "Vaison-la-Romaine",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 44.23896,
+        "lon": 5.07461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaison-la-Romaine",
+          "url": "https://en.wikipedia.org/wiki/Vaison-la-Romaine",
+          "text": "Vaison-la-Romaine (French pronunciation: [vɛzɔ̃ la ʁɔmɛn]; lit. 'Vaison-the-Roman'; Occitan: Veisoun) is a commune in the Vaucluse department in the Provence-Alpes-Côte d'Azur region in southeastern France.\nIts inhabitants are called the Vaisonnais. It has 6,237 residents (17,386 for the Communauté de Communes). \nLabeled the \"Plus Beaux Détours de France\" and \"Petites Cités de Caractère\", it is known for it rich Roman ruins, including a large theater and a unique single-arch bridge, its two cathedrals, as well as its medieval town (Haute-Ville) and urban palaces. \nIt is also famous for its Provençal market, one of the oldest and most important in Provence, with nearly 500 merchants in the summer season - authorized by Pope Sixtus IV in 1483. Located near vineyards with appellations, it is the central town of the Vaison Ventoux Provence tourist region. \nVaison-la-Romaine is also renowned for its art scene. It has four theaters and many exhibition spaces and galleries. It hosts cultural events, including the international Vaison Danses festival, as well as polyphonic singing festivals, which have helped it earn the label \"European Choral City\". Many writers, painters and actors live in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "vaison la romaine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vaison",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "romaine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4757,
+    "attempt": 4722,
+    "place_id": "gn-3078837",
+    "input": {
+      "place": {
+        "place_id": "gn-3078837",
+        "name": "Brandýs nad Labem-Stará Boleslav",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 50.18709,
+        "lon": 14.66326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brandýs nad Labem-Stará Boleslav",
+          "url": "https://en.wikipedia.org/wiki/Brand%C3%BDs_nad_Labem-Star%C3%A1_Boleslav",
+          "text": "Brandýs nad Labem-Stará Boleslav (Czech pronunciation: [ˈbrandiːs ˈnad labɛm ˈstaraː ˈbolɛslaf]; German: Brandeis and Altbunzlau) is an administratively united pair of towns in Prague-East District in the Central Bohemian Region of the Czech Republic. It has about 21,000 inhabitants and it is the second largest Czech united pair of towns after Frýdek-Místek. It is located on the Elbe River in the Central Elbe Table.\nStará Boleslav is known as an important pilgrimage site, which is the oldest in Bohemia. The historic centres of both Brandýs nad Labem and Stará Boleslav are well preserved and are protected as two urban monument zones. There are many valuable monuments and four of them are protected as national cultural monuments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "brandys nad labem stara boleslav",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brandys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "labem",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boleslav",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4758,
+    "attempt": 4723,
+    "place_id": "gn-3119979",
+    "input": {
+      "place": {
+        "place_id": "gn-3119979",
+        "name": "La Bañeza",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.30026,
+        "lon": -5.89772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Bañeza",
+          "url": "https://en.wikipedia.org/wiki/La_Ba%C3%B1eza",
+          "text": "La Bañeza (Spanish pronunciation: [la βaˈɲeθa]) is a municipality located in the province of León, Castile and León, Spain. According to the 2010 census (INE), the municipality had a population of 11,050 inhabitants.\nIt is the capital of the region of Tierra de La Bañeza.\nLocated in a region originally inhabited by the Astures population its territory was a part of Conventus Asturum during the Roman times. The city was founded in the 9th century by conde Gatón from two small villages San Pedro de Périx and Bani Eiza. La Bañeza hosted a marquis in the modern age and, in the end of the 19th century, was transformed by the arrival of the railroad in 1896. A year earlier, in 1895, Queen Regent Maria Christina of Austria gives the title of city.\nTourist attractions include the churches of San Salvador and Santa María, as well as several celebrations during the year, of which some of the more important are the Carnivals, Holy Week, and the motorbike race in August, the La Bañeza Grand Prix, one of the last urban motor-races in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "la baneza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baneza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4759,
+    "attempt": 4724,
+    "place_id": "gn-3842621",
+    "input": {
+      "place": {
+        "place_id": "gn-3842621",
+        "name": "Oncativo",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.9134,
+        "lon": -63.68214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oncativo",
+          "url": "https://en.wikipedia.org/wiki/Oncativo",
+          "text": "Oncativo is a city in the province of Córdoba, Argentina. It has 13,180 inhabitants as per the 2010 census [INDEC]. It is located near the center of the province, 76 km south-southeast from the provincial capital Córdoba City and 64 north-northwest from Villa María, by National Route 9.\nAlthough the town had no official foundation, it is considered that it began with the arrival of the railway line and especially with the opening for public use of the train station of the Ferrocarril Central Argentino, 1 September 1869.\nThe area of the present-day city was the stage of the Battle of Oncativo, between the forces of generals Juan Facundo Quiroga and José María Paz, in 1830."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "oncativo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4760,
+    "attempt": 4725,
+    "place_id": "gn-3988169",
+    "input": {
+      "place": {
+        "place_id": "gn-3988169",
+        "name": "Salinas de Hidalgo",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 22.62795,
+        "lon": -101.71417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salinas de Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Salinas_de_Hidalgo",
+          "text": "Salinas de Hidalgo, also known as Salinas del Peñón Blanco, is a small town located in the northwestern part of the Mexican state of San Luis Potosí. It is the seat of the municipality of Salinas.\nIt attracts a variety of tourists because of its historical contents, and quality of being. It is believed that at one time it used to belong to the colonial state Zacatecas, but even today, people still argue whether it was.  It is a municipal seat surrounded by ranches and places that seem of interest because of its mass in culture, and religious values. Salinas is also known for its beautiful mountain range outside on the eastern part of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "salinas de hidalgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salinas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hidalgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4761,
+    "attempt": 4726,
+    "place_id": "gn-4474527",
+    "input": {
+      "place": {
+        "place_id": "gn-4474527",
+        "name": "Knightdale",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.78765,
+        "lon": -78.48056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knightdale, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Knightdale,_North_Carolina",
+          "text": "Knightdale is a town in Wake County, North Carolina, United States. As of the 2020 census, Knightdale has a population of 19,435, up from 11,401 in 2010. The U.S. Census Bureau estimates the town's population to be 17,843, as of July 1, 2019. Knightdale's population grew 10.4% from 2010 to 2013, making it the second fastest-growing community in the Research Triangle region for that time period.\nNamed for Henry Haywood Knight, a local Wake County landowner who donated land to found a railroad depot, the town was incorporated in 1927.  By the 1960s, the economic center of town migrated from the area around the rail depot to U.S. Highway 64, which ran north of downtown Knightdale.  Since 1990, the community has experienced a significant population boom, getting its own high school in 2004, and a new freeway bypass in 2006.  Since 2010, several new shopping centers have sprung up along Business U.S. 64 (Knightdale Boulevard), the main thoroughfare through town.  A large destination park, Knightdale Station Park, opened in 2013 just to the east of the old downtown area as part of a revitalization effort, the park was expanded in 2018 to add an amphitheater. Interstate 540 passes directly through the town before its eastern terminus at Interstate 87, while Interstate 87 (in concurrency with US 64) travels along a southern freeway bypass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "knightdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4762,
+    "attempt": 4727,
+    "place_id": "gn-5097801",
+    "input": {
+      "place": {
+        "place_id": "gn-5097801",
+        "name": "Fairview",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.8126,
+        "lon": -73.99903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairview, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Fairview,_New_Jersey",
+          "text": "Fairview is a borough located in Bergen County, in the U.S. state of New Jersey. According to the 2020 United States census, the borough's population was 15,025, an increase of 1,190 (+8.6%) from the 2010 census count of 13,835, which in turn reflected an increase of 580 (+4.4%) from the 13,255 counted in the 2000 census.\nFairview was formed on December 19, 1894, from portions of Ridgefield Township, based on the results of a referendum held the previous day. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The borough is named for its view of the Hackensack River valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "fairview",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4763,
+    "attempt": 4728,
+    "place_id": "gn-5100155",
+    "input": {
+      "place": {
+        "place_id": "gn-5100155",
+        "name": "Lake Hiawatha",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.8826,
+        "lon": -74.38154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Hiawatha, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lake_Hiawatha,_New_Jersey",
+          "text": "Lake Hiawatha is an unincorporated community and census-designated place (CDP) located within Parsippany–Troy Hills Township in Morris County, in the U.S. state of New Jersey. The U.S. Postal Service serves the community as ZIP Code 07034. As of the 2020 census, the population was 10,194.\nLake Hiawatha was named after Hiawatha, a 16th-century Native American leader and peacemaker, as evident by plaques on the gazebo on Beverwyck Road, the name of its park, and in the name and emblem of its fire department. However, its name was likely inspired by the popularity of The Song of Hiawatha, an 1855 poem by Henry Wadsworth Longfellow which has little to no correlation with the historical figure of Hiawatha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "lake hiawatha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hiawatha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4764,
+    "attempt": 4729,
+    "place_id": "gn-5101766",
+    "input": {
+      "place": {
+        "place_id": "gn-5101766",
+        "name": "New Milford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.9351,
+        "lon": -74.01903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Milford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/New_Milford,_New_Jersey",
+          "text": "New Milford is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 16,923, an increase of 582 (+3.6%) from the 2010 census count of 16,341, which in turn reflected a decline of 59 (−0.4%) from the 16,400 counted in the 2000 census.\nNew Milford was authorized to be incorporated as a borough on March 11, 1922, from what remained of Palisades Township, subject to approval in a referendum (which took place on April 18, 1922). With the creation of New Milford, Palisades Township (which had been created in 1871) was dissolved. The borough is believed to have been named for Milford, Pennsylvania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "new milford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "milford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4765,
+    "attempt": 4730,
+    "place_id": "gn-6141900",
+    "input": {
+      "place": {
+        "place_id": "gn-6141900",
+        "name": "Scarborough Village",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.73899,
+        "lon": -79.22124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scarborough Village",
+          "url": "https://en.wikipedia.org/wiki/Scarborough_Village",
+          "text": "Scarborough Village is a neighbourhood in Toronto, Ontario, Canada, located in the larger namesake Scarborough district. It was one of the earliest settlements in the former township of Scarborough with the distinction of being the site of the township's first post office. Despite this, it was not the town centre from where the later (and now defunct) City of Scarborough grew, with mass urbanization of the former municipality actually having begun as spillover growth from the old City of Toronto at Birch Cliff in the district's southwestern extremity. Today, the neighbourhood is composed of private and public housing, apartment complexes, schools, a few condominiums, and strip mall plazas. The neighbourhood lies along the Scarborough Bluffs escarpment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "scarborough village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "scarborough",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4766,
+    "attempt": 4731,
+    "place_id": "gn-6180961",
+    "input": {
+      "place": {
+        "place_id": "gn-6180961",
+        "name": "White Rock",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.02049,
+        "lon": -122.79507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "White Rock, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/White_Rock,_British_Columbia",
+          "text": "White Rock is a city in the Metro Vancouver Regional District, British Columbia, Canada. It is bordered by Semiahmoo Bay to the south and is surrounded on three sides by Surrey. To the southeast across a footbridge lies the Semiahmoo First Nation, which is within the borders of Surrey. Semiahmoo Bay and the Southern Gulf Islands in the Strait of Georgia are also to the south.\nWhite Rock is named for a large white boulder on its beach near the promenade, a glacial erratic that migrated south during the last glaciation. The 486-ton granite boulder was kept white by shellfish-eating seabirds whose guano covered the rock so much that 19th-century sailors used it as a beacon. It is now kept white through monthly applications of white paint by the city parks department and has been a graffiti target. The White Rock Pier is located nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "white rock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "white",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4767,
+    "attempt": 4732,
+    "place_id": "gn-6232324",
+    "input": {
+      "place": {
+        "place_id": "gn-6232324",
+        "name": "West Harbour",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8182,
+        "lon": 174.61019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Harbour, Auckland",
+          "url": "https://en.wikipedia.org/wiki/West_Harbour,_Auckland",
+          "text": "West Harbour is a suburb of Auckland, located to the west of the Auckland isthmus and CBD. It is named for its location on the western side of the Waitematā Harbour. West Harbour is under the governance of Auckland Council after the amalgamation of district councils in 2010.\nLocal features include many public reserves (the most prominent being Luckens Reserve, which in 2014 received a basketball court), tennis courts, two local primary schools, West Harbour School and Marina View School, a Church, and farm land. West Harbour is home to Hobsonville Marina, a large marina catering to around 600 boats and yachts, which was part of the route the Royal Family took during their 2014 visit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "west harbour",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbour",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4768,
+    "attempt": 4733,
+    "place_id": "gn-6325529",
+    "input": {
+      "place": {
+        "place_id": "gn-6325529",
+        "name": "Montmagny",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.98043,
+        "lon": -70.55493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montmagny, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Montmagny,_Quebec",
+          "text": "Montmagny (French pronunciation: [mɔ̃maɲi] ) is a city in the Montmagny Regional County Municipality within the Chaudière-Appalaches region of Quebec, Canada. It is the county seat and had a population, as of the 2021 Canadian census, of 10,999.\nThe city is on the south shore of the St. Lawrence River, 80 kilometres (50 mi) east of Quebec City, and was founded more than 350 years ago. It is Canada's Snow Goose Capital, and festivals include the International Accordion Festival in September and the Festival of the Snow Geese in October.\nThe city was named after Charles de Montmagny, the first to have the title of governor of New France; Samuel de Champlain was commander in chief.\nMontmagny was the county seat of the former Montmagny County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "montmagny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4769,
+    "attempt": 4734,
+    "place_id": "gn-6544103",
+    "input": {
+      "place": {
+        "place_id": "gn-6544103",
+        "name": "Horta-Guinardó",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.41849,
+        "lon": 2.1677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horta-Guinardó",
+          "url": "https://en.wikipedia.org/wiki/Horta-Guinard%C3%B3",
+          "text": "Horta-Guinardó (Catalan pronunciation: [ˈɔɾtə ɣinərˈdo], Spanish: [ˈoɾta ɣinaɾˈðo]) is the name of one of the districts of Barcelona, located in its north-eastern corner. It is named after two very heterogeneous areas of the city, Horta and El Guinardó, which together cover a large area of 11.92 km2, amounting to 11.9% of the total area of the city.\nA former municipality that eventually became part of the city in the late 19th century, it is bordered by five out of ten districts of Barcelona (Gràcia, Nou Barris, Eixample, Sant Andreu and Sant Martí), and by two other municipalities of the metropolitan area (Sant Cugat and Cerdanyola del Vallès). It underwent a rapid urbanisation process from the 1950s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "horta guinardo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "horta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guinardo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4770,
+    "attempt": 4735,
+    "place_id": "gn-12048339",
+    "input": {
+      "place": {
+        "place_id": "gn-12048339",
+        "name": "Barkingside",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.58131,
+        "lon": 0.0686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barkingside",
+          "url": "https://en.wikipedia.org/wiki/Barkingside",
+          "text": "Barkingside is an area in Ilford, in the London Borough of Redbridge. It includes the major road junction of Fullwell Cross, which also gives its name to the locality near that roundabout. The area is situated 10.6 miles (17km) north east of Charing Cross. Prior to 1965, it formed part of the borough of Ilford in the historic county of Essex.\nBarkingside is chiefly known for the children's charity Barnardo's, which was founded there in 1866, and still has its headquarters there. Some of the oldest buildings in Barkingside include the Barnardo's chapel, the Edwardian railway station (in 1948 transferred from LNER to London Underground's Central Line), and Holy Trinity Church, which dates from 1840. Barkingside is notable for its concentration of east London's Jewish population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "barkingside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4771,
+    "attempt": 4736,
+    "place_id": "gn-1254709",
+    "input": {
+      "place": {
+        "place_id": "gn-1254709",
+        "name": "Tezu",
+        "country": "India",
+        "subdivision": "Arunachal Pradesh",
+        "lat": 27.91256,
+        "lon": 96.12882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tezu",
+          "url": "https://en.wikipedia.org/wiki/Tezu",
+          "text": "Tezu is a census town and the headquarters of Lohit district in the Indian state of Arunachal Pradesh. It is the fifth largest town in Arunachal Pradesh and one of its most developed.\nTezu is one of the 60 constituencies of Legislative Assembly of Arunachal Pradesh. The current MLA (2024) of Tezu constituency is Mahesh Chai, who defeated NPEP'S Karikho Kri with 2805 votes in the 2024 general election.\nThe town  is known for its plain lands, dense forested areas, riverine and gorging rivers. Due to its close proximity to the hilly areas of Mishmi Hills, The town also serves as the main logistical hub for the transportation of goods and commuter to Anjaw district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tezu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4772,
+    "attempt": 4737,
+    "place_id": "gn-2145875",
+    "input": {
+      "place": {
+        "place_id": "gn-2145875",
+        "name": "Tumut",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.30642,
+        "lon": 148.21818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tumut",
+          "url": "https://en.wikipedia.org/wiki/Tumut",
+          "text": "Tumut () is a town in the Riverina region of New South Wales, Australia, situated on the banks of the Tumut River.\nTumut sits on the north-west foothills of the Snowy Mountains and is located on the traditional lands of the Wiradjuri, Wolgalu and Ngunnawal Aboriginal peoples.\nTumut is often referred to as the 'gateway to the snowy' Snowy Mountains Scheme. The former Tumut Shire was administered from offices located in the town. Tumut is approximately 410 kilometres (250 mi) south-west of Sydney and 525 kilometres (330 mi) north-east of Melbourne.\nTumut is home to a number of historic buildings, including an Anglican church designed by Edmund Blacket and a Courthouse designed by James Barnet. Many of the pubs in the town have been in use from the mid to late 1800s.\nEarly settlers established many European deciduous trees throughout the area. The stand of Poplars, Elm and Willow, amongst others, create a well renowned display of colour over autumn. Tumut celebrates this with the yearly Festival of the Falling Leaf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "tumut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4773,
+    "attempt": 4738,
+    "place_id": "gn-2633571",
+    "input": {
+      "place": {
+        "place_id": "gn-2633571",
+        "name": "Royal Wootton Bassett",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5419,
+        "lon": -1.9045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royal Wootton Bassett",
+          "url": "https://en.wikipedia.org/wiki/Royal_Wootton_Bassett",
+          "text": "Royal Wootton Bassett , formerly Wootton Bassett, is a market town and civil parish in Wiltshire, England, with a population of 13,570 at the 2021 census. In the north of the county, it lies 6 miles (10 km) to the west of the town of Swindon and 10 miles (16 km) northeast of Calne.\nThe town was granted royal patronage in March 2011 by Elizabeth II in recognition of its role in the early-21st-century military funeral repatriations, which passed through the town. The honour was officially conferred in a ceremony on 16 October 2011 and was the first royal patronage to be conferred upon a town (as distinct from a borough or county) since 1909."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "royal wootton bassett",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wootton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bassett",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4774,
+    "attempt": 4739,
+    "place_id": "gn-2647097",
+    "input": {
+      "place": {
+        "place_id": "gn-2647097",
+        "name": "Henlow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.03021,
+        "lon": -0.28599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henlow",
+          "url": "https://en.wikipedia.org/wiki/Henlow",
+          "text": "Henlow is a village and civil parish in the Central Bedfordshire district of the county of Bedfordshire, England, about 11 miles (18 km) south-east of the county town of Bedford. The name Henlow is believed to derive from the old English henna hlaw, meaning in old English \"hill of birds\" or “hill frequented by birds”.\nAt the 2011 census the population of the village was 2,253, and 3,815 for the parish. Since 2023, Henlow has been in the parliamentary constituency of Hitchin.\nHenlow is home to Henlow Hurricanes FC. Despite being surrounded by much bigger clubs - Henlow Hurricanes FC have been hugely successful. 2023-24 U14 Division 1 winners and 2024-25 U14 Division 2 winners.\nHenlow Hurricanes FC took their name from the Hawker Hurricane which was assembled at nearby RAF Henlow during WWII."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "henlow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4775,
+    "attempt": 4740,
+    "place_id": "gn-2647297",
+    "input": {
+      "place": {
+        "place_id": "gn-2647297",
+        "name": "Hawick",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.42273,
+        "lon": -2.78666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawick",
+          "url": "https://en.wikipedia.org/wiki/Hawick",
+          "text": "Hawick (  HOYK;  Scots: Haaick; Scottish Gaelic: Hamhaig) is a market town in the Scottish Borders council area and historic county of Roxburghshire in the east Southern Uplands of Scotland. It is 10 miles (16.1 km) south-west of Jedburgh and 8.9 miles (14.3 km) south-south-east of Selkirk. It is one of the furthest towns from the sea in Scotland, in the heart of Teviotdale, and is the biggest town in Roxburghshire. The town is at the confluence of the Slitrig Water with the River Teviot. It had a population of 13,512 in 2022.\nThe town was formally established in the 16th century, but was previously the site of historic settlement going back hundreds of years. By the late 17th century, the town began to grow significantly, especially during the Industrial Revolution and Victorian era as a centre for the production of textiles, with a focus on knitting and weaving, involving materials such as tweed and cashmere. By the late 20th century, textile production had declined but the town remains an important regional centre for shopping, tourism and services. Hawick's architecture is distinctive in that it has many sandstone buildings with slate roofs. The town has several museums, parks and heritage sites. The town hosts the annual Alchemy Film and Moving Image Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "hawick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

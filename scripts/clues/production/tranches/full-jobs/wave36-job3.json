@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 7091,
+    "attempt": 7041,
+    "place_id": "gn-3487963",
+    "input": {
+      "place": {
+        "place_id": "gn-3487963",
+        "name": "Yallahs",
+        "country": "Jamaica",
+        "subdivision": "Saint Thomas Parish",
+        "lat": 17.8748,
+        "lon": -76.56245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yallahs",
+          "url": "https://en.wikipedia.org/wiki/Yallahs",
+          "text": "Yallahs is a town on the southeastern coast of Jamaica in the parish of St Thomas, home to 10,274 residents. The town, which was documented as “Yealoth” in a 1662 census, may have derived its name from Captain Yallahs, a privateer from 1671, or vice versa. Another theory suggests that the name Yallahs could have originated from the Spanish word ‘yalos’, meaning ‘frost’, as the high white cliffs in the area might give the impression of frost.\nIn 1822, Yallahs was chosen as the site for the first Baptist church in Jamaica. Despite initial setbacks, Rev. Joshua Tinson established both a church and a school in 1828. The Yallahs River, a vital source of fresh water for the neighboring City of Kingston and Saint Andrew Parish, supplies residents via the Yallahs Pipeline. The city, which hosts a variety of Christian denominations, also contributes to the mining industry through gravel extraction along the Yallahs River bank. The St. Thomas Parish Council, located in the parish’s capital town, Morant Bay, governs the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "yallahs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7092,
+    "attempt": 7042,
+    "place_id": "gn-3504951",
+    "input": {
+      "place": {
+        "place_id": "gn-3504951",
+        "name": "Guaymate",
+        "country": "Dominican Republic",
+        "subdivision": "La Romana",
+        "lat": 18.58793,
+        "lon": -68.97867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guaymate",
+          "url": "https://en.wikipedia.org/wiki/Guaymate",
+          "text": "Guaymate is a municipality in La Romana province of the Dominican Republic. It is situated in the middle of Yuma Region, found approximately 20 kilometers from the city of La Romana in the eastern region of the country. It became a municipality on February 27, 1963, and continues to be part of the province of La Romana. La Romana Province.\nToday, with its unique characteristics, Guaymate prepares to awake from the dream in which it has slept for many years. Guaymate continues to expand, and thanks to land made available by the mayor and other city authorities, the northern part of town has experienced some significant growth.\nAccording to many, the name Guaymate originated from the name of a tree that was very common in the mountains of the region. The name of the tree was guamate. The first inhabitants of the town decided to add the letter \"y\" between the \"a\" and the \"m\", and the name Guaymate was born. Let it known that this is only a legend, and that as it happens with many names, the true origin of the name may never be known. The name Guaymate was accepted when the town became part of the province of La Romana.\nGuaymate has been the birthplace of many outstanding baseball players. Surnames such as Quezada and De Aza, could be identified as having their roots in Guaymate.\nToday Guaymate has many shopping places where laborers from the Central Romana (a sugar cane refinery) go to do their shopping. Every weekend people come to town to do their weekly shopping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "guaymate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7093,
+    "attempt": 7043,
+    "place_id": "gn-3532576",
+    "input": {
+      "place": {
+        "place_id": "gn-3532576",
+        "name": "Atotonilco de Tula",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.00731,
+        "lon": -99.22012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atotonilco de Tula",
+          "url": "https://en.wikipedia.org/wiki/Atotonilco_de_Tula",
+          "text": "Atotonilco de Tula is a city that serves as the municipal seat for one of the 84 municipalities of Hidalgo.  It is located in the southwestern part of the Mexican state of Hidalgo. The municipality lies at a southern pass leading out of the Mezquital Valley, approximately 86 kilometers north of Mexico City and about 180 km northeast of the state capital, Pachuca de Soto. \nThe name comes from Nahuatl and means \"place of hot springs\"; in the Otomi language, it is called Padehe. The municipality covers an area of 31 km2 (12 sq mi). As of the 2010 census, it had a total population of 31,078. It is now part of the Tula de Allende built-up (or metropolitan) area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "atotonilco de tula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "atotonilco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7094,
+    "attempt": 7044,
+    "place_id": "gn-3590449",
+    "input": {
+      "place": {
+        "place_id": "gn-3590449",
+        "name": "San Antonio La Paz",
+        "country": "Guatemala",
+        "subdivision": "El Progreso",
+        "lat": 14.75888,
+        "lon": -90.28485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio La Paz",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_La_Paz",
+          "text": "San Antonio La Paz (Spanish pronunciation: [san anˈtonjo la pas]) is a town and municipality in the El Progreso department of Guatemala. The municipality is situated at 1240 metres above sea level and covers an area of 146 km2. San Antonio has improved in the past couple of years. San Antonio has two pharmacies and many doctors. Each house in San Antonio has a little of room that is sort of a forest of a little plantation for growing corn, coffee, beans, and other plants. There are trees all over San Antonio of all kind of fruit, apples, mangos, bananas, jocotes, oranges, lemons, limes, and other fruit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7095,
+    "attempt": 7045,
+    "place_id": "gn-3669929",
+    "input": {
+      "place": {
+        "place_id": "gn-3669929",
+        "name": "San Estanislao",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 10.39833,
+        "lon": -75.15111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Estanislao, Bolívar",
+          "url": "https://en.wikipedia.org/wiki/San_Estanislao,_Bolívar",
+          "text": "San Estanislao is a town and municipality located in the Bolívar Department, northern Colombia.\nSan Estanislao is also informally known as Arenal by the locals, Arenal is Spanish for \"sand\", which earned its nickname in result that the town accumulates high amounts of sand during rain and wind.  A mission was established on the present site in 1650.  Access to the town can be challenging as the roads that access the town are unpaved and often water-logged after long periods of rain. Inhabitants of San Estanislao generally support themselves through family farms yielding a variety of produce and meat products, which are they often trade amongst themselves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "san estanislao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estanislao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7096,
+    "attempt": 7046,
+    "place_id": "gn-3685432",
+    "input": {
+      "place": {
+        "place_id": "gn-3685432",
+        "name": "Cumbal",
+        "country": "Colombia",
+        "subdivision": "Nariño",
+        "lat": 0.90875,
+        "lon": -77.79145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumbal",
+          "url": "https://en.wikipedia.org/wiki/Cumbal",
+          "text": "Cumbal is a town and municipality in the Nariño Department, Colombia.\nHistorically it is said that in 1529 the chief Cumbe founded a town with the name \"Pavas\" located at the foot of the Cumbal volcano, between the Blanco river and the Riochiquito gorge. Its inhabitants belonged to the grassland ethnic group. In the year 1547, its name was changed to Cumbal in honor of its founder. On December 14, 1923, due to a series of earthquakes that that area suffered, this settlement disappeared. The population was refounded on July 20, 1924, in another place and its municipal erection was carried out by Ordinance 59 of 1925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "cumbal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7097,
+    "attempt": 7047,
+    "place_id": "gn-3706567",
+    "input": {
+      "place": {
+        "place_id": "gn-3706567",
+        "name": "Las Cumbres",
+        "country": "Panama",
+        "subdivision": "Panamá",
+        "lat": 9.09211,
+        "lon": -79.53895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Cumbres",
+          "url": "https://en.wikipedia.org/wiki/Las_Cumbres",
+          "text": "Las Cumbres is a corregimiento in Panamá District, Panamá Province, Panama, with a population of 32,867 as of 2010. Its population as of 1990 was 56,547; its population as of 2000 was 92,519. Neighborhoods in this sector include Villa Campestre, El Lago, Las Cumbrecitas, Las Glorietas, San Andrés, Altavista, El Rocio, Las Lajas, Gonzalillo, Villa Grecia, and Colonial Las Cumbres. \nLas Cumbres is a rural community north of Panama City, developed by businessman Louis Martinz in the 1950s. It is at an average altitude of 1,050 feet (320 m), giving the neighborhood a more temperate, cooler environment. Two lakes were constructed for recreation and selective water supply. The neighborhood evolved with middle-class families, to include many prominent members of Panamanian society such as scientists, doctors, engineers, businesspersons, and politicians. The community has been encroached upon by poverty-stricken neighborhoods, losing some of the charm. The Las Cumbres community still maintains much of its original charm and attractions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "las cumbres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cumbres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7098,
+    "attempt": 7048,
+    "place_id": "gn-3815701",
+    "input": {
+      "place": {
+        "place_id": "gn-3815701",
+        "name": "Chilón",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 17.10604,
+        "lon": -92.27302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilón",
+          "url": "https://en.wikipedia.org/wiki/Chilón",
+          "text": "Chilón is a town and municipality in the Mexican state of Chiapas in southern Mexico. It covers an area of 2490 km2.\nAs of 2010, the municipality had a total population of 111,554, up from 77,686 as of 2005.\nAs of 2010, the town of Chilón had a population of 7,368. Other than the town of Chilón, the municipality had 703 localities, the largest of which (with 2010 populations in parentheses) were: Bachajón (5,063), classified as urban, and Guaquitepec (2,868), Tzajalá (2,529), San Jerónimo Tulijá (1,859), Alán-Sac'jún (1,632), San Antonio Bulujib (1,206), Tacuba Nueva (1,189), El Mango (1,141), Chiquinival (1,101), and Santiago Pojcol (1,001), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "chilon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7099,
+    "attempt": 7049,
+    "place_id": "gn-3983636",
+    "input": {
+      "place": {
+        "place_id": "gn-3983636",
+        "name": "Santiago Ixcuintla",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.81109,
+        "lon": -105.20842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago Ixcuintla",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Ixcuintla",
+          "text": "Santiago de Ixcuintla is a municipality and a municipal seat in the western Mexican state of Nayarit.  The municipal population was 93,981 inhabitants (census of 2020) with the municipal seat having a population of 25,241. The area of the municipality was 1,831.92 square kilometers.  It is located at 21º48'40\" N and 105º12'23\" W.\nThe most important population centers are the municipal seat, Santiago Ixcuintla, with 18,169 inhabitants; Villa Hidalgo with 11,175, La Presa with 3,932, Yago with 3,919, Pozo de Ibarra with 3,342 and Villa Juárez with 3,158.  Forty-six percent of the population lives in these communities.\nMuch of the land is only slightly above sea level.  Lagoons make up the western section where two important rivers, the Río Grande de Santiago and the Río San Pedro, enter the sea.  In the east, the land gradually rises to form the foothills of the Sierra Madre Occidental.  The municipal seat of Santiago is situated at approximately 30 meters above sea level.\nThe economy is based on agriculture and small manufacturing industries. The main crops are tobacco, citrus fruits, beans, watermelon, chile, mangoes, bananas, and coffee.   Santiago is one of the most important tobacco-producing regions of the country.  Fishing along the coast and in the many lagoons is also important.\nOn July 11, 1991, a sounding rocket was launched at Santiago Ixcuintla for solar research during a solar eclipse.\nThere is an unexploited touristic potential in the area due to the vast inland waters making up the Marismas Nacionales.  This protected area consists of a vast network of brackish coastal lagoons, mangrove swamps, mudflats, and marshes. It is fed by the Río Acaponeta and tributary streams, including the delta of the Río San Pedro.  On one of the lagoons lies the island village of Mexcaltitlán, accessible only by small boat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "santiago ixcuintla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ixcuintla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7100,
+    "attempt": 7050,
+    "place_id": "gn-3991170",
+    "input": {
+      "place": {
+        "place_id": "gn-3991170",
+        "name": "Queréndaro",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.81007,
+        "lon": -100.88508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queréndaro",
+          "url": "https://en.wikipedia.org/wiki/Queréndaro",
+          "text": "Queréndaro is a municipality in the Mexican state of Michoacán. The word Queréndaro is of Chichimeca origin and means \"place of rocks\", from the great rock in the municipality known as \"La Peña Rajada\". It contains a cave with paintings that date from the pre-Hispanic era. \nIt is a township and municipality dedicated to agriculture, fishing, cattle breeding and bread making. The municipality produces corn, wheat, sorghum, various species of chili pepper, beans, barley, alfalfa, and chickpeas, among others. It is recognized regionally for its Feria del Chile (Feast of the Chili Pepper), which is the main celebration of the municipality, celebrating the founding of the town.\nQueréndaro is composed of other small towns or communities, including Pueblo Viejo and Rio de Parras, the two larger communities also referred to as tenencias. The other communities include El Castillo, Milpillas, San Miguel Las Cuevas, El Rincon de Zetina, San Jose De La Cumbre, La Estancia, San Antonio Tiradores, each having a population from 250 to 1,000 individuals. Other smaller towns like Ojo de Agua Grande, Colonia Eusebio Luna (El Zocalo), El Panteon de las Agujas, El Nopal, Ojo de Agua Chico (Ojo de Agua Chiquito), Jauja, and Dolores have between 10 and 249 inhabitants. Numerous other small towns have fewer than 100 persons. The primary occupations are agriculture, fishing, cattle, pig, horse, and sheep raising."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "querendaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7101,
+    "attempt": 7051,
+    "place_id": "gn-4387496",
+    "input": {
+      "place": {
+        "place_id": "gn-4387496",
+        "name": "Fulton",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 38.84671,
+        "lon": -91.94796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fulton, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Fulton,_Missouri",
+          "text": "Fulton is the largest city in and the county seat of Callaway County, Missouri, United States. Located about 22 miles (35 km) northeast of Jefferson City and the Missouri River and 20 miles (32 km) east of Columbia, the city is part of the Jefferson City, Missouri, Metropolitan Statistical Area. The population was 12,600 at the 2020 census. The city is home to two universities, Westminster College and William Woods University; the Missouri School for the Deaf; the Fulton State Hospital; and the Fulton Reception and Diagnostic Center state prison. Missouri's only nuclear power plant, the Callaway Plant is located 13 miles (21 km) southeast of Fulton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "fulton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7102,
+    "attempt": 7052,
+    "place_id": "gn-4822764",
+    "input": {
+      "place": {
+        "place_id": "gn-4822764",
+        "name": "South Charleston",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 38.36843,
+        "lon": -81.69957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Charleston, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/South_Charleston,_West_Virginia",
+          "text": "South Charleston is a city in Kanawha County, West Virginia, United States. It is located to the west of the state capital of Charleston. The population was 13,639 at the 2020 census. It was established in 1906, but not incorporated until 1917. The Criel Mound built by the Adena culture is adjacent to the city's downtown business district.\nIt is home to the Charleston Ordnance Center, a former naval munitions factory established for use in World War I.\nThe city is serviced by Interstate 64, U.S. Route 60, U.S. Route 119, West Virginia Route 601 and West Virginia Route 214, and is adjacent to the Kanawha River. The city is serviced by the Kanawha Valley Regional Transportation Authority bus system. A general aviation airfield, Mallory Airport, is located off Chestnut Street, approximately two miles south of U.S. Route 60, with the nearest commercial aviation service being at Yeager Airport in Charleston.  South Charleston serves as the headquarters to the West Virginia Division of Natural Resources and the West Virginia State Police."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "south charleston",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "charleston",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7103,
+    "attempt": 7053,
+    "place_id": "gn-4835395",
+    "input": {
+      "place": {
+        "place_id": "gn-4835395",
+        "name": "Greenwich",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.02649,
+        "lon": -73.62846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenwich, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Greenwich,_Connecticut",
+          "text": "Greenwich ( GREN-itch) is a town in southwestern Fairfield County, Connecticut, United States. As of the 2020 census, it had a population of 63,518. It is the largest town on Connecticut's Gold Coast. Greenwich is the location of many hedge funds and financial services firms due to its residential setting and proximity to Manhattan.\nGreenwich is a principal community of the Bridgeport–Stamford–Norwalk–Danbury metropolitan statistical area, which comprises all of Fairfield County, and is part of both the greater New York metropolitan area and the Western Connecticut Planning Region. The town is the southwesternmost municipality in both the State of Connecticut and the six-state region of New England. The town is named after Greenwich, a royal borough of London in the United Kingdom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "greenwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7104,
+    "attempt": 7054,
+    "place_id": "gn-5098745",
+    "input": {
+      "place": {
+        "place_id": "gn-5098745",
+        "name": "Hackettstown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85399,
+        "lon": -74.82906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hackettstown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hackettstown,_New_Jersey",
+          "text": "Hackettstown is a town in Warren County, in the U.S. state of New Jersey. It is perhaps best known as the home to the US headquarters of Mars, Inc. As of the 2020 United States census, the town's population was 10,248, an increase of 524 (+5.4%) from the 2010 census count of 9,724, which in turn reflected a decline of 679 (−6.5%) from the 10,403 counted in the 2000 census.\nHackettstown was incorporated as a town by an act of the New Jersey Legislature on March 9, 1853, from portions of Independence Township. Portions of territory were exchanged with Mansfield Township in 1857, 1860, 1872 and 1875."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hackettstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7105,
+    "attempt": 7055,
+    "place_id": "gn-5100764",
+    "input": {
+      "place": {
+        "place_id": "gn-5100764",
+        "name": "Madison Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.4515,
+        "lon": -74.30792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madison Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Madison_Park,_New_Jersey",
+          "text": "Madison Park is an unincorporated community and census-designated place (CDP) in Old Bridge Township, Middlesex County, New Jersey, United States. As of the 2020 census, the CDP's population was 8,050, up from 7,144 in 2010. The name \"Madison Park\" comes from Madison Township, the original name for Old Bridge Township from 1869 until 1975.\nMadison Park is the name of a residential development constructed in 1955–1956 by Herbert J. Kendall. The original development is located west of U.S. Route 9 and is bounded by Bordentown Avenue, Cheesequake Road, and Ernston Road. The western side of Madison Park is served by ZIP Code 08859 for Parlin, New Jersey. Madison Park has a fire department (District 4 Old Bridge Township), a volunteer first aid squad, and a school all located within the development. All of the streets in the development are named after prominent universities, with Princeton Road as an oval interior road connecting to the entire development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "madison park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "madison",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7106,
+    "attempt": 7056,
+    "place_id": "gn-5144097",
+    "input": {
+      "place": {
+        "place_id": "gn-5144097",
+        "name": "Westmere",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.69119,
+        "lon": -73.86873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westmere, New York",
+          "url": "https://en.wikipedia.org/wiki/Westmere,_New_York",
+          "text": "Westmere is a hamlet in the town of Guilderland, Albany County, New York, United States. Since the 1970 Census, a census-designated place (CDP) has been established with the name of Westmere for tabulating the population of what the census has defined as the boundaries for Westmere. As of the 2020 census, Westmere had a population of 7,560. It is a suburb of the neighboring city of Albany. U.S. Route 20 (Western Avenue) bisects the community and is the major thoroughfare and main street. Along Western Avenue are numerous strip malls, shopping plazas, and commercial buildings, with residential use on the side streets to the north and south. Crossgates Mall, the Capital District's largest shopping mall, is in Westmere's northeastern corner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "westmere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7107,
+    "attempt": 7057,
+    "place_id": "gn-5323371",
+    "input": {
+      "place": {
+        "place_id": "gn-5323371",
+        "name": "Alondra Park",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.88946,
+        "lon": -118.33091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alondra Park, California",
+          "url": "https://en.wikipedia.org/wiki/Alondra_Park,_California",
+          "text": "Alondra Park (), also known as El Camino Village, is an unincorporated community and census designated place (CDP) in the South Bay region of Los Angeles County, California, United States. It is the unincorporated area north of  Alondra Community Regional Park and El Camino College. It is east of Lawndale, south of Hawthorne, west of Gardena, and north of Torrance. Manhattan Beach Boulevard and Crenshaw Boulevard are the two major cross streets in the area. The population was 8,569 at the 2020 census, down from 8,592 at the 2010 census.  There is an official Alondra Park Post Office of the U.S. Postal Service in nearby Gardena, California.  Urbanized cement-lined Dominguez Creek bisects a portion of Alondra Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "alondra park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alondra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7108,
+    "attempt": 7058,
+    "place_id": "gn-5325327",
+    "input": {
+      "place": {
+        "place_id": "gn-5325327",
+        "name": "Avenal",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.00412,
+        "lon": -120.12903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avenal, California",
+          "url": "https://en.wikipedia.org/wiki/Avenal,_California",
+          "text": "Avenal (Spanish for \"Oat field\") is a city in Kings County, California, United States. Avenal is located 35 miles (56 km) southwest of Hanford, at an elevation of 807 ft (246 m). It is part of the Hanford-Corcoran metropolitan area (MSA Code 25260), which encompasses all of Kings County. In area, it is the fourth-largest city in Kings County. As of the 2020 census, Avenal had a population of 13,696, which includes inmates at the Avenal State Prison, the first prison actively solicited by a community in the state of California. Many of the remaining residents largely either work at the prison or in the agriculture industry. The prison provides approximately 1,000 jobs to residents. The California Department of Finance estimated that Avenal's population was 13,496 on July 1, 2019. As of that date, Avenal State Prison held 4,165 inmates, which was about 32% of the total population of Avenal. Inmates are counted as city residents by both the United States census and the California Department of Finance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "avenal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7109,
+    "attempt": 7059,
+    "place_id": "gn-5326561",
+    "input": {
+      "place": {
+        "place_id": "gn-5326561",
+        "name": "Bay Point",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.02909,
+        "lon": -121.96163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bay Point, California",
+          "url": "https://en.wikipedia.org/wiki/Bay_Point,_California",
+          "text": "Bay Point, formerly West Pittsburg and originally Bella Vista, is a census-designated place located in the East Bay region of the San Francisco Bay Area in Contra Costa County, California, United States. Bay Point is just west of Pittsburg and northeast of Concord on the southern shore of Suisun Bay. The population of Bay Point was 23,896 as of 2020. The Pittsburg/Bay Point Station of the Bay Area Rapid Transit (BART) rail system is located adjacent to Bay Point in Pittsburg. The community is traversed by State Route 4, the California Delta Highway, a controlled-access road. Being unincorporated, Bay Point does not have its own police department. The community is policed by the California Highway Patrol and the Contra Costa County Sheriff's Office. The ZIP Code is 94565, and the area code is 925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "bay point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7110,
+    "attempt": 7060,
+    "place_id": "gn-5761287",
+    "input": {
+      "place": {
+        "place_id": "gn-5761287",
+        "name": "Wilsonville",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.29984,
+        "lon": -122.77371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilsonville, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Wilsonville,_Oregon",
+          "text": "Wilsonville is a city in Clackamas and Washington counties in the U.S. state of Oregon. Founded with the name Boones Landing for the Boones Ferry that crossed the Willamette River, the community became Wilsonville in 1880. The city was incorporated in 1969 with a population of approximately 1,000. The population was 26,664 at the 2020 census and was estimated to be 27,895 in 2024.\nLocated within the Portland metropolitan area, the city also includes the planned communities of Charbonneau on the south side of the river and Villebois on the western edge. Wilsonville is bisected by Interstate 5 and includes I-5's Boone Bridge over the Willamette River. Public transportation is provided by the city-owned South Metro Area Regional Transit, which connects to the Portland-based TriMet through TriMet's WES Commuter Rail and by bus at the Tualatin Park & Ride. The public school districts are the West Linn-Wilsonville and Canby school districts, and the only traditional high school is Wilsonville High School. Clackamas Community College and Oregon Tech have satellite campuses in the city.\nWilsonville has a council-manager form of government and operates its own library, public works, and parks and recreation department. Fire and police protection are contracted out to other regional government agencies. The city is home to several technology companies including Siemens Digital Industries Software, along with Stream Global Services, the largest employer in the city. Wilsonville contains many distribution and manufacturing buildings adjacent to Interstate 5, such as regional distribution facilities for Coca-Cola and Rite Aid. Retail centers include Argyle Square on the north and the Town Center Shopping Center to the south. Media in Wilsonville consists of the Portland area broadcast stations, regional newspapers, and the local Wilsonville Spokesman newspaper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "wilsonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

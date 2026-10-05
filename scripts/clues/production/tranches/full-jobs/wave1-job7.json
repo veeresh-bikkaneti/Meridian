@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 124,
+    "attempt": 121,
+    "place_id": "gn-2516548",
+    "input": {
+      "place": {
+        "place_id": "gn-2516548",
+        "name": "Huelva",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.26638,
+        "lon": -6.94004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huelva",
+          "url": "https://en.wikipedia.org/wiki/Huelva",
+          "text": "Huelva (US:  WHEL-və, Spanish: [ˈwelβa] , locally [ˈɡweɾβa]) is a municipality of Spain and the capital of the province of Huelva, in the autonomous community of Andalusia. Located in the southwest of the Iberian Peninsula, it sits between the estuaries of the Odiel and Tinto rivers on the Atlantic coast of the Gulf of Cádiz. According to the 2010 census, the city had a population of 149,410.\nWhile the existence of an earlier pre-Phoenician settlement within the current urban limits since c. 1250 BC has been tentatively defended by scholars, Phoenicians established a stable colony roughly by the 9th century BC. Modern economic activity conformed to copper and pyrite extraction upstream funded by British capital and to the role of its port, as well as with the later development of a petrochemical industry.\nHuelva is home to Recreativo de Huelva, the oldest football club in Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "huelva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 125,
+    "attempt": 122,
+    "place_id": "gn-5379439",
+    "input": {
+      "place": {
+        "place_id": "gn-5379439",
+        "name": "Ontario",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.06334,
+        "lon": -117.65089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ontario, California",
+          "url": "https://en.wikipedia.org/wiki/Ontario,_California",
+          "text": "Ontario is a city in southwestern San Bernardino County, California, United States, 35 miles (56 km) east of downtown Los Angeles and 23 miles (37 km) west of downtown San Bernardino, the county seat. Located in the western part of the Inland Empire metropolitan area, it lies just east of Los Angeles County and is part of the Los Angeles metropolitan area. As of the 2020 census, the city had a population of 175,265.\nThe city is home to Ontario International Airport, which is the 8th-busiest airport in the United States by cargo carried, as of 2026. Ontario handles the mass of freight traffic between the ports of Los Angeles and Long Beach and the rest of the country.\nIt takes its name from the Ontario Model Colony development established in 1882 by the Canadian engineer George Chaffey and his brothers, William Chaffey and Charles Chaffey. They named the settlement after their home province of Ontario, Canada's most populous province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "ontario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 126,
+    "attempt": 123,
+    "place_id": "gn-5405380",
+    "input": {
+      "place": {
+        "place_id": "gn-5405380",
+        "name": "Vallejo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.10409,
+        "lon": -122.25664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vallejo, California",
+          "url": "https://en.wikipedia.org/wiki/Vallejo,_California",
+          "text": "Vallejo ( və-LAY-(h)oh; Spanish pronunciation: [baˈʎexo] ) is a city in Solano County, California, United States, and the second largest city in the North Bay region of the Bay Area. Located on the shores of San Pablo Bay, the city had a population of 126,090 at the 2020 United States census. Vallejo is home to the Cal Poly Maritime Academy, Touro University California, and Six Flags Discovery Kingdom.\nVallejo is named after Mariano Guadalupe Vallejo, the famed Californio general and statesman. The city was founded in 1851 on General Vallejo's Rancho Suscol to serve as the capital city of California, which it was from 1852 to 1853, after which the Californian government moved to neighboring Benicia, named in honor of Vallejo's wife Benicia Carrillo de Vallejo. The Mare Island Naval Shipyard was founded in 1854, and defined Vallejo's economy until the turn of the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "vallejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 127,
+    "attempt": 124,
+    "place_id": "gn-5881791",
+    "input": {
+      "place": {
+        "place_id": "gn-5881791",
+        "name": "Abbotsford",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.05798,
+        "lon": -122.25257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbotsford, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Abbotsford,_British_Columbia",
+          "text": "Abbotsford (, A-buts-furd) is a city in British Columbia next to the Canada–United States border, Greater Vancouver, and the Fraser River. With a census population of 153,569 people (2021), it is the most populous municipality in the province outside metropolitan Vancouver. Abbotsford–Mission has the third-highest proportion of visible minorities among census metropolitan areas in Canada, after the Greater Toronto Area and the Greater Vancouver CMA. It is home to Tradex, the University of the Fraser Valley, and Abbotsford International Airport.\nAs of the 2021 census, it is the largest municipality of the Fraser Valley Regional District and the fifth-largest municipality of British Columbia. The Abbotsford–Mission metropolitan area of around 195,726 inhabitants as of the 2021 census is the 23rd-largest census metropolitan area in Canada. It has also been named by Statistics Canada as Canada's most generous city in terms of charitable donations for nine consecutive years.\nThe community of 375.55 square kilometres (145.00 sq mi) is the largest city by area in British Columbia. The municipality's southern boundary is the Canada–United States border. In Canada, it is bordered by the Township of Langley to the west, the City of Mission to the north, and the City of Chilliwack to the east. Abbotsford borders the town of Sumas, Washington, to the south. Much of Abbotsford has views of Mount Baker (to the southeast, in Washington) and the Coast Mountains (to the north)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "abbotsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 128,
+    "attempt": 125,
+    "place_id": "gn-111822",
+    "input": {
+      "place": {
+        "place_id": "gn-111822",
+        "name": "Yazd",
+        "country": "Iran",
+        "subdivision": "Yazd Province",
+        "lat": 31.89722,
+        "lon": 54.3675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yazd",
+          "url": "https://en.wikipedia.org/wiki/Yazd",
+          "text": "Yazd (Persian: یزد; [jæzd] ) is a city in the Central District of Yazd County, Yazd province, Iran, serving as capital of the province, the county, and the district. At the 2016 census, its population was 529,673. Since 2017, the historical city of Yazd is recognized as a World Heritage Site by UNESCO.\nBecause of generations of adaptations to its desert surroundings, Yazd is known for its Persian architecture. It is nicknamed the \"City of Windcatchers\" (شهر بادگیرها Shahr-e Badgirha) from its many examples. It is also very well known for its Zoroastrian fire temples, ab anbars (cisterns), qanats (underground channels), yakhchals (coolers), Persian handicrafts, handwoven cloth (Persian termeh), silk weaving, Persian cotton candy, and its time-honored confectioneries. Yazd is also known as City of Bicycles, because of its early adoption of cycling, and its boasting the highest number of bicycles per capita in Iran. It is reported that bicycle culture in Iran originated in Yazd as a result of contact with European visitors and tourists in the nineteenth century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "yazd",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 129,
+    "attempt": 126,
+    "place_id": "gn-1842030",
+    "input": {
+      "place": {
+        "place_id": "gn-1842030",
+        "name": "Gunpo",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.3675,
+        "lon": 126.94694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gunpo",
+          "url": "https://en.wikipedia.org/wiki/Gunpo",
+          "text": "Gunpo (Korean: 군포; Korean pronunciation: [kun.pʰo]), formerly romanized as Kunp'o, is a city in Gyeonggi Province, South Korea. It is south of Seoul and in the Seoul National Capital Area. It borders Anyang to the north, Uiwang to the east, and Ansan to the south and west, and is connected to its neighbors and to Seoul by lines 1 and 4 of the Seoul Metropolitan Subway. Gunpo is also home to three stops on the Gyeongbu Line, a national railway that links it to the rest of the country. Although 73.2% of the city is greenspace, owing largely to Surisan and various smaller mountains, Gunpo is home to over 286,000 residents in several urban areas. The city's downtown core is Sanbon New Town, a commercial hub which centers on a pedestrian \"street of culture\" that Gunpo has designated as one of its eight scenic locations.\nGunpo was promoted from town to city in 1989 due to the rapid urban and industrial growth of Seoul, and large-scale housing projects were immediately begun. Hansei University, a Christian institute of post-secondary learning, is in the city, as are forty-four other public schools and a number of private academies. With eighty-three percent of its citizens holding public library memberships, Gunpo touts itself as a book-reading city, and it also promotes itself as being environmentally friendly and in harmony with nature. Its residents include 2010 Olympic figure skating gold medalist Yuna Kim, who grew up in Gunpo after moving there at the age of six. Sightseeing locations around the city include the Banwol reservoir and the Royal Azaleas Hill, and Surisan is a hiking destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "gunpo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 130,
+    "attempt": 127,
+    "place_id": "gn-3665542",
+    "input": {
+      "place": {
+        "place_id": "gn-3665542",
+        "name": "Zipaquirá",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 5.02208,
+        "lon": -74.00481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zipaquirá",
+          "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+          "text": "Zipaquirá (Spanish pronunciation: [sipakiˈɾa]) is a municipality and city of Colombia in the department of Cundinamarca. Its neighboring municipalities are Cogua and Nemocón to the north; Tabio, Cajicá and Sopó to the south, Tocancipá and Gachancipá to the east and Pacho and Subachoque to the west.\nIts seat of municipal government is 49 kilometers from the national capital Bogotá. It is part of the Greater Bogotá Metropolitan Area, and is the capital of the Sabana Centro province. It is also the headquarters of the diocese of the same name and that includes much of the Department of Cundinamarca, extending to the centre of Bogotá, the region of Rionegro, the Ubaté Valley, and the region of Guavio.\nThe city is primarily known for its Salt Cathedral, an underground church built inside a salt mine in a tunnel made as result of the excavation of the salinas. Zipaquirá has historic architecture, and the old city centre is a tourist attraction. Its main square is surrounded by old buildings in the Spanish Colonial style. This small city can be reached by train from Bogotá."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "zipaquira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 131,
+    "attempt": 128,
+    "place_id": "gn-4155966",
+    "input": {
+      "place": {
+        "place_id": "gn-4155966",
+        "name": "Fort Lauderdale",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.12231,
+        "lon": -80.14338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Lauderdale, Florida",
+          "url": "https://en.wikipedia.org/wiki/Fort_Lauderdale,_Florida",
+          "text": "Fort Lauderdale () is a coastal city located in the U.S. state of Florida, 30 miles (48 km) north of Miami along the Atlantic Ocean. It is the seat of government of and most populous city in Broward County with a population of 182,760 at the 2020 census, making it the tenth-most populous city in Florida. After Miami and Hialeah, Fort Lauderdale is the third-most populous city in the Miami metro area, which had a population of 6,166,488 in 2019.\nBuilt in 1838 and first incorporated in 1911, Fort Lauderdale is named after a series of forts built by the United States during the Second Seminole War. The forts took their name from Major William Lauderdale (1782–1838), younger brother of Lieutenant Colonel James Lauderdale. Development of the city did not begin until 50 years after the forts were abandoned at the end of the conflict. Three forts named \"Fort Lauderdale\" were constructed, including the first at the fork of the New River, the second at Tarpon Bend on the New River between the present-day Colee Hammock and Rio Vista neighborhoods, and the third near the site of the Bahia Mar Marina.\nKnown as the \"Venice of America\", Fort Lauderdale has 165 miles of inland waterways across the city. In addition to tourism, Fort Lauderdale has a diversified economy including marine, manufacturing, finance, insurance, real estate, high technology, avionics/aerospace, film, and television production. The city is a popular tourist destination with an average year-round temperature of 75.5 °F (24.2 °C) and 3,000 hours of sunshine per year. Greater Fort Lauderdale, encompassing all of Broward County, hosted more than 13 million overnight visitors in 2018. Nearly four million cruise passengers annually pass through its Port Everglades, making it the world's third-busiest cruise port. With over 50,000 registered yachts and 100 marinas, Fort Lauderdale is also known as the \"yachting capital of the world.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "fort lauderdale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lauderdale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 132,
+    "attempt": 129,
+    "place_id": "gn-5511077",
+    "input": {
+      "place": {
+        "place_id": "gn-5511077",
+        "name": "Reno",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 39.52963,
+        "lon": -119.8138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reno, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Reno,_Nevada",
+          "text": "Reno (, REE-noh) is a city in the northwest section of the U.S. state of Nevada, along the Nevada–California border. It is the county seat and most populous city of Washoe County. Sitting in the High Eastern Sierra foothills, in the Truckee River valley, on the eastern side of the Sierra Nevada, it is about 23 miles (37 km) northeast of Lake Tahoe. Reno is the 78th most populous city in the United States, the third most populous city in Nevada, and the most populous in Nevada outside the Las Vegas Valley. It is known as \"The Biggest Little City in the World\" and had a population of 264,165 at the 2020 census.\nThe city is named after Civil War Union major general Jesse L. Reno, who was killed in action during the American Civil War at the Battle of South Mountain, on Fox's Gap.\nThe downtowns of Reno and neighboring city Sparks reside in a valley known as the Truckee Meadows, which is sometimes colloquially used as a name for the entire metro area. However, the Reno–Sparks metropolitan area (MSA), the second-largest in Nevada, comprises all of Washoe, Lyon and Storey Counties. In addition, Reno is part of a combined statistical area that includes Carson City, Douglas County and parts of Placer and Nevada Counties in California.\nFor much of the 20th century, Reno saw a significant number of people seeking to take advantage of Nevada's relatively lax divorce laws and the city gained a national reputation as a divorce mill. Today, Reno is a tourist destination known for its casino gambling and proximity to Lake Tahoe and the Sierra Nevada. The city is also home to the University of Nevada at Reno, the state's second-largest university by enrollment and the flagship campus of the University of Nevada system.\nReno was for decades the most populous city in Nevada, before it ceded this place to Las Vegas, with the 1960 census being the first US census where Las Vegas had more residents than Reno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "reno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 133,
+    "attempt": 130,
+    "place_id": "gn-1252948",
+    "input": {
+      "place": {
+        "place_id": "gn-1252948",
+        "name": "Warangal",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 18,
+        "lon": 79.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warangal",
+          "url": "https://en.wikipedia.org/wiki/Warangal",
+          "text": "Warangal (Telugu: [ʋɐrɐŋɡɐl] ), also known as Orugallu, is a city in the Indian state of Telangana and the district headquarters of Warangal district. It is the second largest city in Telangana with a population of 811,844 per 2011 Census of India, and spreading over an 406 km2 (157 sq mi). \nWarangal served as the capital of the Kakatiya dynasty which was established in 1163. The monuments left by the Kakatiyas include fortresses, lakes, temples and stone gateways which, in the present, helped the city to become a popular tourist attraction. The Kakatiya Kala Thoranam was included in the emblem of Telangana by the state government and Warangal is also touted as the cultural capital of Telangana.\nIt is one of eleven cities in the country to have been chosen for the Heritage City Development and Augmentation Yojana scheme by the Government of India. It was also selected as a smart city in the \"fast-track competition\", which makes it eligible for additional investment to improve urban infrastructure and industrial opportunities under the Smart Cities Mission.\nUNESCO has included Warangal in its Global Network of Learning Cities (GNLC) in recognition of the city's outstanding efforts to make lifelong learning a reality for all at the local level.\nThe three urban cities: Kazipet, Hanamkonda and Warangal are together known as Warangal Tri-City. The three cities are connected by the National Highway 163 (Hyderabad–Bhuvanagiri–Warangal–Bhopalpatnam). The major stations are Kazipet Junction railway station and Warangal railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "warangal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 134,
+    "attempt": 131,
+    "place_id": "gn-1274746",
+    "input": {
+      "place": {
+        "place_id": "gn-1274746",
+        "name": "Chandigarh",
+        "country": "India",
+        "subdivision": "Chandigarh",
+        "lat": 30.73629,
+        "lon": 76.7884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chandigarh",
+          "url": "https://en.wikipedia.org/wiki/Chandigarh",
+          "text": "Chandigarh is a city and union territory in northwestern India, serving as a shared capital for the states of Punjab and Haryana. Situated near the foothills of the Shivalik range of Himalayas, it borders Haryana to the east and Punjab in the remaining directions. Chandigarh constitutes the bulk of the Chandigarh Capital Region or Greater Chandigarh, which also includes the adjacent satellite cities of Panchkula in Haryana and Mohali in Punjab. It is located 260 km (162 miles) northwest of New Delhi and 229 km (143 miles) southeast of Amritsar and 104 km (64 miles) southwest of Shimla.\nChandigarh became one of the earliest planned cities in post-independence India and is internationally known for its architecture and urban design. The master plan of the city was prepared by Le Corbusier, which built upon earlier plans created by architect Maciej Nowicki and the Albert Mayer. Most of the government buildings and housing in the city were designed by a team headed by Le Corbusier and architects Jane Drew and Maxwell Fry. Chandigarh's Capitol Complex—as part of a global ensemble of Le Corbusier's buildings—was declared a World Heritage Site by UNESCO at the 40th session of the World Heritage Conference in July 2016.\nChandigarh has grown greatly since its initial construction, and has also driven the development of Mohali and Panchkula; the tri-city metropolitan area has a combined population of over 1,611,770. The city has one of the highest per capita incomes in the country. The union territory has the third-highest Human Development Index among Indian states and territories. In 2015, a survey by LG Electronics ranked it as the happiest city in India on the happiness index. In 2015, an article published by the BBC identified Chandigarh as one of the few master-planned cities in the world to have succeeded in terms of combining monumental architecture, cultural growth, and modernisation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "chandigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 135,
+    "attempt": 132,
+    "place_id": "gn-1624725",
+    "input": {
+      "place": {
+        "place_id": "gn-1624725",
+        "name": "Tarakan",
+        "country": "Indonesia",
+        "subdivision": "North Kalimantan",
+        "lat": 3.31332,
+        "lon": 117.59152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarakan",
+          "url": "https://en.wikipedia.org/wiki/Tarakan",
+          "text": "Tarakan is an island and co-extensively the sole city within the Indonesian province of North Kalimantan. The island city is the largest urban area in North Kalimantan population-wise and is located in northern Borneo, midway along the coast of the province. The city boundaries are co-extensive with the island (including a couple of small islands off the coast of the Tarakan Barat District). Once a major oil-producing region during the colonial period, Tarakan had great strategic importance during the Pacific War and was among the first Japanese targets early in the conflict. It is the sole city within the Indonesian province of North Kalimantan (established in 2012). According to Statistics Indonesia, the city had a population of 193,370 at the 2010 Census and 242,786 inhabitants at the 2020 Census; the official estimate as at mid 2024 was 255,310 (comprising 132,175 males and 123,135 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "tarakan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 136,
+    "attempt": 133,
+    "place_id": "gn-1627549",
+    "input": {
+      "place": {
+        "place_id": "gn-1627549",
+        "name": "Serang",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.11528,
+        "lon": 106.15417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serang",
+          "url": "https://en.wikipedia.org/wiki/Serang",
+          "text": "Serang (Indonesian: Kota Serang, Indonesian pronunciation: ['seraŋ], Javanese: ꦱꦺꦫꦁ; Sundanese: ᮞᮦᮛᮀ) is a city and the capital of Banten province and was formerly also the administrative center of Serang Regency in Indonesia (the Regency's capital is now at Ciruas). The city is located towards the north of Banten province, on the island of Java; the north part of the city (Kasemen District) contains the coast zone facing onto Banten Bay, and includes the historical site of Old Banten, after which the province is named. Before Banten province was formed in 2000, Serang city was part of West Java province.\nSerang has a tropical rainforest climate, with no dry season month. It faces the Java Sea, which is home to the Thousand Islands.\nSerang had a population of 576,961 in the 2010 census, making it the third most populous city in the province of Banten. The 2020 Census gave a total of 692,101; the official estimate as of mid-2023 was 735,651. Serang is located approximately 15 km from the border of Jabodetabek (the Jakarta Metropolitan Area), and is sometimes considered as amalgamated with Greater Jakarta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "serang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 137,
+    "attempt": 134,
+    "place_id": "gn-2212775",
+    "input": {
+      "place": {
+        "place_id": "gn-2212775",
+        "name": "Sabha",
+        "country": "Libya",
+        "subdivision": "Sabha District",
+        "lat": 27.03766,
+        "lon": 14.42832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabha, Libya",
+          "url": "https://en.wikipedia.org/wiki/Sabha,_Libya",
+          "text": "Sabha or Sebha  (Arabic: سَبْهَا, romanized: Sabhā) is an oasis city in southwestern Libya, approximately 640 kilometres (400 mi) south of Tripoli. It was historically the capital of the Fezzan region and the Fezzan-Ghadames Military Territory and is the capital of the Sabha District. Sabha Air Base, south of the city, is a Libyan Air Force installation that is home to multiple MiG-25 aircraft.\nSabha was where the erstwhile ruler of Libya, Muammar Gaddafi, grew up and received secondary education and where he also later became involved in political activism. After the Libyan Civil War and the resultant instability in the country, Sabha reportedly grew in importance as a slave auctioning town. However, an investigation by the National Commission for Human Rights in Libya (NCHRL) revealed that while there was illegal slavery, reports were exaggerated, as slave auctions were rare and not made public. The city was seized by forces loyal to the Libyan National Army (LNA) and its leader Khalifa Haftar in January 2019, but some politicians in the area switched their loyalty to the Government of National Accord (GNA) in May 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "sabha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 138,
+    "attempt": 135,
+    "place_id": "gn-2655524",
+    "input": {
+      "place": {
+        "place_id": "gn-2655524",
+        "name": "Blackburn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.75,
+        "lon": -2.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn",
+          "url": "https://en.wikipedia.org/wiki/Blackburn",
+          "text": "Blackburn ( ) is an industrial town and the administrative centre of the Blackburn with Darwen borough, in Lancashire, England. The town lies north of the West Pennine Moors on the southern edge of the Ribble Valley, 8 miles (13 km) east of Preston and 21 miles (34 km) north-north-west of Manchester. Blackburn is at the centre of the wider unitary authority area along with the town of Darwen. It is the second-largest town in Lancashire, after Blackpool.\nAt the 2021 census, Blackburn had a population of 124,983, while the wider borough of Blackburn with Darwen had a population of 154,922; 30.8% of the population of the town were people of ethnic backgrounds other than White British.\nA former mill town, Blackburn has been the site of textile production since the mid-13th century, when wool was woven in people's houses in the domestic system. Flemish weavers who settled in the area in the 14th century helped to develop the woollen cottage industry. The most rapid period of growth and development in Blackburn's history coincided with the industrialisation and expansion of textile manufacturing.\nBlackburn's textile sector fell into decline from the mid-20th century and subsequently faced similar challenges to other post-industrial northern towns, including deindustrialisation, economic deprivation and housing problems. The town has had significant investment and redevelopment since 1958 through government funding and the European Regional Development Fund."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 139,
+    "attempt": 136,
+    "place_id": "gn-3441575",
+    "input": {
+      "place": {
+        "place_id": "gn-3441575",
+        "name": "Montevideo",
+        "country": "Uruguay",
+        "subdivision": "Montevideo Department",
+        "lat": -34.90328,
+        "lon": -56.18816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montevideo",
+          "url": "https://en.wikipedia.org/wiki/Montevideo",
+          "text": "Montevideo (, US also ; Spanish: [monteβiˈðeo] ) is the capital and largest city of Uruguay. As of the 2023 census, the city proper has a population of 1,287,452, making up about 36.8% of the country's total population, in an area of 201 square kilometers (78 sq mi). Montevideo is situated on the southern coast of the country, on the northeastern bank of the Río de la Plata.\nA Portuguese garrison was established at the site of modern-day Montevideo in November 1723. The Portuguese garrison was expelled in February 1724 by a Spanish soldier, Bruno Mauricio de Zabala, as a strategic move amidst the Spanish-Portuguese dispute over the platine region. There is no official document establishing the foundation of the city, but the \"Diario\" of Bruno Mauricio de Zabala officially mentions the date of 24 December 1726 as the foundation, corroborated by presential witnesses. The complete independence from Buenos Aires as a real city was not reached until 1 January 1730. It was also under brief British rule in 1807, but eventually the city was retaken by Spanish  criollos who defeated the British invasions of the River Plate. Montevideo is the seat of the administrative headquarters of Mercosur and ALADI, Latin America's leading trade blocs, a position that has entailed comparisons to the role of Brussels in Europe.\nThe 2019 Mercer report on quality of life rated Montevideo first in Latin America, a rank the city has consistently held since 2005. As of 2010, Montevideo was the 19th largest city economy in the continent and 9th highest income earner among major cities. In 2022, it has a projected GDP of $53.9 billion, with a per capita of $30,148. In 2018, it was classified as a beta global city, ranking eighth in Latin America and 84th in the world. Montevideo hosted every match during the first FIFA World Cup in 1930. It has been described as a \"vibrant, eclectic place with a rich cultural life\", and \"a thriving tech center and entrepreneurial culture\".\nThe city features historic European architecture and is considered one of the cities with the most art deco influence. It is the hub of commerce and higher education in Uruguay as well as its chief port and financial hub, anchoring a metropolitan area with a population of around 2 million."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 382
+    },
+    "banned_terms": [
+      {
+        "term": "montevideo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 140,
+    "attempt": 137,
+    "place_id": "gn-4722625",
+    "input": {
+      "place": {
+        "place_id": "gn-4722625",
+        "name": "Richardson",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.94818,
+        "lon": -96.72972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richardson, Texas",
+          "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+          "text": "Richardson is a city in Dallas and Collin counties in the U.S. state of Texas. As of the 2020 United States census, the city had a total population of 119,469. Richardson is an inner suburb of the city of Dallas.\nIt is home to the University of Texas at Dallas and the Telecom Corridor, with a high concentration of telecommunications companies. More than 5,000 businesses have operations within Richardson's 28 square miles (73 km2), including many of the world's largest telecommunications and networking companies, such as AT&T, Verizon, Cisco Systems, Samsung, ZTE, MetroPCS, Texas Instruments, Qorvo, and Fujitsu. Richardson's largest employment base is provided by the insurance industry, with Blue Cross and Blue Shield of Texas's headquarters, a regional hub for the insurance company GEICO, regional offices for UnitedHealth Group#UnitedHealthcare, and one of State Farm Insurance's three national regional hubs located in the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "richardson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 141,
+    "attempt": 138,
+    "place_id": "gn-629634",
+    "input": {
+      "place": {
+        "place_id": "gn-629634",
+        "name": "Brest",
+        "country": "Belarus",
+        "subdivision": "Brest",
+        "lat": 52.10894,
+        "lon": 23.71749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brest, Belarus",
+          "url": "https://en.wikipedia.org/wiki/Brest,_Belarus",
+          "text": "Brest, formerly Brest-Litovsk (1600s–1923) and Brest-on-the-Bug (1923–1939), is a city in south-western Belarus at the border with Poland opposite the Polish town of Terespol, where the Bug and Mukhavets rivers meet, making it a border town. It serves as the administrative center of Brest Region and Brest District, though it is administratively separated from the district. As of 2026, it has a population of 347,138.\nBrest is one of the oldest cities in Belarus and a historical site for many cultures, as it hosted important historical events, such as the Union of Brest and Treaty of Brest-Litovsk. Furthermore, the Brest Fortress was recognized by the Soviet Union as a Hero Fortress in honour of the defense of Brest Fortress in June 1941.\nIn the High Middle Ages, the city often passed between Poland, the principalities of Kievan Rus', and the Grand Duchy of Lithuania. From the Late Middle Ages, the city was part of Lithuania, which later became a part of the Polish–Lithuanian Commonwealth from 1569. In 1795, it was incorporated into the Russian Empire with the Third Partition of Poland. After the Polish-Soviet War, the city became part of the Second Polish Republic. In 1939, the city was captured by Nazi Germany during the invasion of Poland and then transferred to the Soviet Union per the German–Soviet Frontier Treaty. In 1941, it was retaken by the Germans during Operation Barbarossa. In 1944, it was retaken by the Soviet Red Army during the Lublin–Brest offensive. The city was part of the Byelorussian SSR, and since the breakup of the Soviet Union in 1991, Brest has been part of independent Belarus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "brest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 142,
+    "attempt": 139,
+    "place_id": "gn-984998",
+    "input": {
+      "place": {
+        "place_id": "gn-984998",
+        "name": "Ladysmith",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.55874,
+        "lon": 29.77896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ladysmith, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+          "text": "Ladysmith, officially known as uMnambithi since 2024, is a town that serves as the seat of both the Alfred Duma Local Municipality and the Uthukela District Municipality in KwaZulu-Natal, South Africa. It lies 230 kilometres (140 mi) north-west of Durban and 365 kilometres (227 mi) south-east of Johannesburg. Important industries in the area include food processing, textiles, and tyre production.\nThe town was named after Juana María de los Dolores de León Smith, also known as \"Lady Smith,\" the Spanish wife of Sir Harry Smith, the Governor of the Cape Colony from 1847–1852. It held strategic importance during the Second Boer War when, after numerous small skirmishes, it was besieged by Boer forces on 2 November 1899. After three British attempts to relieve the defenders and one Boer attempt to take the town all failed, the siege was eventually broken on 28 February 1900. Both Winston Churchill and Mahatma Gandhi were present at the siege, the former as a war correspondent and the latter as a stretcher-bearer.\nIn 1900, the unincorporated town of Oyster Harbour on the east coast of Vancouver Island, British Columbia, Canada, was renamed Ladysmith by James Dunsmuir in honour of the lifting of the siege of Ladysmith.\n\nIn 2023, it was proposed for Ladysmith to be renamed to uMnambithi. The name change officially took place in March 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "ladysmith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 143,
+    "attempt": 140,
+    "place_id": "gn-4221552",
+    "input": {
+      "place": {
+        "place_id": "gn-4221552",
+        "name": "Savannah",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.08354,
+        "lon": -81.09983
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savannah, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+          "text": "Savannah is a city in and the county seat of Chatham County, Georgia, United States. Established in 1733 on the Savannah River, it is the oldest city in the state, and was the capital of the colonial Province of Georgia and later the first state capital of Georgia. A strategic port city in the American Revolution and during the American Civil War, Savannah today is an industrial center and an important Atlantic seaport. The city is the most populous in the Coastal Georgia region and the fifth-most populous in the state as a whole, with a population of 147,780 at the 2020 census and an estimated 149,440 in 2025. The Savannah metropolitan area, with about 438,000 residents in 2025, is the third-largest metro area in the state.\nSavannah attracts millions of visitors each year to its cobblestone streets, parks, and notable historic buildings. These include the birthplace of Juliette Gordon Low (founder of the Girl Scouts of the USA), the Georgia Historical Society (the oldest continually operating historical society in the South), the Telfair Academy of Arts and Sciences (one of the South's first public museums), the First African Baptist Church (one of the oldest African-American Baptist congregations in the United States), Temple Mickve Israel (the third-oldest synagogue in the U.S.), and the Central of Georgia Railway roundhouse complex (the oldest standing antebellum rail facility in the U.S., now a museum and visitor center).\nSavannah's downtown area, which includes the Savannah Historic District, its 22 parklike squares, and the Savannah Victorian Historic District, is one of the largest National Historic Landmark Districts in the U.S., designated by the federal government in 1966. Downtown Savannah largely retains the founder James Oglethorpe's original town plan, a design known as the Oglethorpe Plan. \nDuring the 1996 Summer Olympics hosted by Atlanta, Savannah held sailing competitions in the nearby Wassaw Sound."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "savannah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

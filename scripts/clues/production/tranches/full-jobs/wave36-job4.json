@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 7111,
+    "attempt": 7061,
+    "place_id": "gn-5803457",
+    "input": {
+      "place": {
+        "place_id": "gn-5803457",
+        "name": "Mill Creek",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.8601,
+        "lon": -122.2043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mill Creek, Washington",
+          "url": "https://en.wikipedia.org/wiki/Mill_Creek,_Washington",
+          "text": "Mill Creek is a city in Snohomish County, Washington, United States. It is located south of Everett and northeast of Lynnwood, approximately 20 miles (32 km) northeast of Seattle. The city has a population of 20,926 as of the 2020 census. The city lies along State Route 527 and North Creek, a tributary of the Sammamish River, on the east side of Interstate 5.\nThe city is one of the highest-income suburbs in the Seattle metropolitan area and was originally a planned community conceived in the 1970s. The planned development was centered around a country club and golf course, with other development occurring nearby in later phases. It was incorporated as a city in 1983, shortly after the completion of the first phase of development, and underwent major population growth due to continued suburban development and annexation of nearby areas. The city's downtown area is centered around the Mill Creek Town Center, a mixed-use lifestyle center and retail complex that opened in 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "mill creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7112,
+    "attempt": 7062,
+    "place_id": "gn-6074143",
+    "input": {
+      "place": {
+        "place_id": "gn-6074143",
+        "name": "Milliken",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.82499,
+        "lon": -79.29872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milliken, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Milliken,_Ontario",
+          "text": "Milliken and Milliken Mills are neighbourhoods in the cities of Toronto and Markham. Milliken is situated in the north west section of Scarborough, whereas Milliken Mills is situated in the south-central portions of Markham. The neighbourhoods are centered on Kennedy Road and Steeles Avenue, the latter street serving as the boundary between the cities of Markham and Toronto.\nA large percentage of residents own their homes, which are primarily single family detached homes. As the majority of the homes present were built when the farming left the area in the 1980s, there are many two storied houses with garages, typical of the time of building and affordability."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "milliken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7113,
+    "attempt": 7063,
+    "place_id": "gn-6114862",
+    "input": {
+      "place": {
+        "place_id": "gn-6114862",
+        "name": "Qualicum Beach",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.34783,
+        "lon": -124.44231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qualicum Beach",
+          "url": "https://en.wikipedia.org/wiki/Qualicum_Beach",
+          "text": "Qualicum Beach () is a town located on Vancouver Island, British Columbia, Canada. In the 2021 census, it had a population of 9,303. It is situated at the foot of Mount Arrowsmith, along the Salish Sea on Vancouver Island's northeastern coast.\nQualicum Beach's natural environment and proximity to Victoria and Vancouver have made it a tourist destination, with cottages along the coast. The community is mostly of retirement age, with the oldest average population in Canada with a median age of 65.9 in 2016.\nQualicum Beach is served by the coast-spanning Island Highway, the Island Rail Corridor, a local airport, and a nearby ferry to Lasqueti Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "qualicum beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "qualicum",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7114,
+    "attempt": 7064,
+    "place_id": "gn-6119448",
+    "input": {
+      "place": {
+        "place_id": "gn-6119448",
+        "name": "Renfrew",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.46681,
+        "lon": -76.68272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Renfrew, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Renfrew,_Ontario",
+          "text": "Renfrew is a town on the Bonnechere River in Renfrew County, Ontario, Canada. Located one hour west of Ottawa in Eastern Ontario, Renfrew is the fourth largest town in the county after Petawawa, Pembroke and Arnprior. The town is a small transportation hub connecting Highway 60 and Highway 132 with the Trans-Canada Highway which included the town's main street before the Hwy 17 bypass was built. Renfrew is also known historically for its role in the formation of the National Hockey League. It lies about 5 kilometres from the Quebec border, about 10 kilometres by road. Today a plant in Renfrew makes most of Canada’s hockey tape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "renfrew",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7115,
+    "attempt": 7065,
+    "place_id": "gn-6127681",
+    "input": {
+      "place": {
+        "place_id": "gn-6127681",
+        "name": "Rosemère",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.63338,
+        "lon": -73.79919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosemère",
+          "url": "https://en.wikipedia.org/wiki/Rosemère",
+          "text": "Rosemère (French pronunciation: [ʁozmɛʁ]) is an affluent suburb of Montreal, in southwestern Quebec, Canada on the north shore of the Rivière des Mille Îles in the Thérèse-De Blainville Regional County Municipality. The town is noted for its green look, due to the high density of trees. Some wooded areas in the town have been left intact as the town has grown around them. Homes are mostly upscale, varying from renovated cottages to unique character homes. It is almost entirely residential, with no significant industries.  Boulevard Curé-Labelle, the town's main commercial artery, is lined up by suburban shops and shopping malls, the largest of which is Place Rosemère.\nIts most famous resident is likely Alexandre Bilodeau, who became the first Canadian athlete to win an Olympic gold medal on Canadian soil. He won the men's moguls event at the 2010 Winter Olympics in Vancouver, British Columbia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "rosemere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7116,
+    "attempt": 7066,
+    "place_id": "gn-6136777",
+    "input": {
+      "place": {
+        "place_id": "gn-6136777",
+        "name": "Rutland",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.89977,
+        "lon": -119.38567
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rutland, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Rutland,_British_Columbia",
+          "text": "Rutland is a neighbourhood of the City of Kelowna in the Okanagan region of the Southern Interior of British Columbia, Canada, located on the northeast edge of the city's core. Nearby neighbourhoods include Dilworth, Belgo, Black Mountain, Toovey Heights, Hall Road, Ellison, Central City, and Southeast Kelowna. It is a member of the Osoyoos Division Yale Land District.\nRutland is Kelowna's largest neighbourhood by far. Rutland has a population of 34,800 and the median age is 39.2. The neighbourhood is mostly residential, but also has a thriving business community and Kelowna City council is working with community groups to make plans for revitalisation of Rutland Town Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "rutland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7117,
+    "attempt": 7067,
+    "place_id": "gn-617381",
+    "input": {
+      "place": {
+        "place_id": "gn-617381",
+        "name": "Slobozia",
+        "country": "Moldova",
+        "subdivision": "Transnistria",
+        "lat": 46.72927,
+        "lon": 29.70446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Slobozia, Moldova",
+          "url": "https://en.wikipedia.org/wiki/Slobozia,_Moldova",
+          "text": "Slobozia (Romanian pronunciation: [sloboˈzi.a]), also known as Slobodzeya (Russian: Слободзея; Ukrainian: Слободзея), is a city in the Republic of Moldova under the de facto control of the unrecognized Transnistria. It is the seat of the Slobozia District of Transnistria.\nSlobozia is located in the southern part of Transnistria, south of Tiraspol. It had a population of 18,748 at the census in 1989, and 16,062 at the census in 2004. The population of the city is mostly made up of ethnic Moldovans (46%) and Russians (41%), while Ukrainians are an important minority (11%).\nThe name of the city comes from the Romanian \"slobozie\", meaning \"a tax-free colony (village)\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "slobozia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7118,
+    "attempt": 7068,
+    "place_id": "gn-661352",
+    "input": {
+      "place": {
+        "place_id": "gn-661352",
+        "name": "Alavus",
+        "country": "Finland",
+        "subdivision": "South Ostrobothnia",
+        "lat": 62.58333,
+        "lon": 23.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alavus",
+          "url": "https://en.wikipedia.org/wiki/Alavus",
+          "text": "Alavus (Swedish: Alavo) is a town and municipality of Finland in the province of Western Finland. Part of the South Ostrobothnia region, it is located 52 kilometres (32 mi) southeast of Seinäjoki, 138 kilometres (86 mi) north of Tampere and 319 kilometres (198 mi) north of Helsinki. The town has a population of 10,634 (31 December 2025) and covers an area of 1,151.46 square kilometres (444.58 sq mi) of which 52.31 km2 (20.20 sq mi) is water. The population density is 9.78 inhabitants per square kilometre (25.3/sq mi). Neighbouring municipalities are Alajärvi, Kuortane, Seinäjoki, Virrat and Ähtäri.\nAgriculture and forestry employ a significant share of the population. Most of the industry in Alavus is related to construction: materials, design and contractors. Alavus has 60 lakes with 324 kilometres (201 mi) of shoreline. The town is unilingually Finnish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "alavus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7119,
+    "attempt": 7069,
+    "place_id": "gn-6694788",
+    "input": {
+      "place": {
+        "place_id": "gn-6694788",
+        "name": "Whiston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.41997,
+        "lon": -2.78907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whiston, Merseyside",
+          "url": "https://en.wikipedia.org/wiki/Whiston,_Merseyside",
+          "text": "Whiston is a town and civil parish within the Metropolitan Borough of Knowsley in Merseyside, England. It is located 8 miles (10 km) east of Liverpool. The population was 13,629 in 2001, increasing to 14,263 in 2011.\nWhiston is a town and civil parish in the Metropolitan Borough of Knowsley, Merseyside, England, located to the east of Liverpool. It borders the neighbouring towns and villages of Prescot, Huyton, Tarbock and Rainhill, and is best known as the home of Whiston Hospital, one of the largest teaching hospitals in North West England.\nThe creation of a new village within the town, Halsnead Garden Village, was approved in 2017. It will host over 1,500 homes, a primary school, a park, and various community facilities. Construction is estimated to cost around £270 million."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "whiston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7120,
+    "attempt": 7070,
+    "place_id": "gn-670467",
+    "input": {
+      "place": {
+        "place_id": "gn-670467",
+        "name": "Plopeni",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.04955,
+        "lon": 25.95202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plopeni",
+          "url": "https://en.wikipedia.org/wiki/Plopeni",
+          "text": "Plopeni (Romanian pronunciation: [ploˈpenʲ]) is a town in Prahova County, Muntenia, Romania, with a population of 6,709 as of 2021.\nThe town is situated at the northern edge of the Wallachian Plain, at an altitude of 240 m (790 ft), on the right bank of the Teleajen River. It is located in the central part of Prahova County, 15 km (9.3 mi) north of the county seat, Ploiești.\nPlopeni is crossed by county road DJ102, which connects it to Păulești and Ploiești, where it meets national road DN1B. The Plopeni train station serves the CFR Line 306, which starts at Ploiești South station and ends in Slănic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "plopeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7121,
+    "attempt": 7071,
+    "place_id": "gn-698131",
+    "input": {
+      "place": {
+        "place_id": "gn-698131",
+        "name": "Ovruch",
+        "country": "Ukraine",
+        "subdivision": "Zhytomyr Oblast",
+        "lat": 51.3274,
+        "lon": 28.80165
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ovruch",
+          "url": "https://en.wikipedia.org/wiki/Ovruch",
+          "text": "Ovruch (Ukrainian: Овруч, IPA: [ˈɔu̯rʊtʃ] ) is a city in Korosten Raion, Zhytomyr Oblast, northern Ukraine.\nIt was first mentioned as Vruchiy in 977. It was the capital city of the Drevlians in the 10th century, later conquered by the Mongol Empire in the 13th century, then later part of the Grand Duchy of Lithuania. In the 16th century it became part of Poland, as a royal city. After the second partition of Poland in 1793 it became part of the Russian Empire, and then part of Ukraine. Until 2020, it was the administrative center of the former Ovruch Raion, until it was merged into Korosten Raion. It has a population of approximately 15,250 (2022 estimate), and is home to the Ovruch air base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ovruch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7122,
+    "attempt": 7072,
+    "place_id": "gn-7261029",
+    "input": {
+      "place": {
+        "place_id": "gn-7261029",
+        "name": "Casa de Oro-Mount Helix",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.76397,
+        "lon": -116.96877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casa de Oro-Mount Helix, California",
+          "url": "https://en.wikipedia.org/wiki/Casa_de_Oro-Mount_Helix,_California",
+          "text": "Casa de Oro-Mount Helix is a census-designated place (CDP) in the East County region of San Diego County, California. As of the 2020 census, Casa de Oro-Mount Helix had a population of 19,576.\nThe CDP encompasses several unincorporated neighborhoods east of La Mesa and south of El Cajon, principally the communities of Mount Helix and Casa de Oro. Much of the area lies within the County of San Diego’s Valle de Oro Community Planning Area, which identifies Casa de Oro, Mount Helix, Vista Grande Hills, and Rancho San Diego as neighborhoods within the planning area.\"Valle de Oro Community Plan\". County of San Diego. Planning & Development Services. Retrieved August 23, 2026. County planning documents also refer collectively to the “Mt. Helix/Casa de Oro Area”, with lower-density residential development extending from the Casa de Oro area northward onto the slopes of Mount Helix.\"Valle de Oro Community Plan\" (PDF). County of San Diego. Planning & Development Services. Retrieved August 23, 2026.\nMount Helix developed during the early 20th century as a semi-rural residential community characterized by orchards, large homesites, and estate properties. Developer Ed Fletcher acquired Mount Helix and developed it as an exclusive residential community.\"God's Garden: A History of the Point Loma Theosophical Community\". The Journal of San Diego History. San Diego History Center. Fall 1985. Retrieved August 23, 2026. The area’s large and irregular hillside lots subsequently attracted custom residential development and contributed to a diverse architectural landscape, including Spanish and Mediterranean Revival, Hacienda and California Ranch, Mid-century Modern, and other custom residential styles. The community is also characterized by winding roads, mature landscaping, prominent rock outcroppings, and low-density residential development.\"Valle de Oro Community Plan\" (PDF). County of San Diego. Planning & Development Services. Retrieved August 23, 2026.\nPostal addresses within the CDP vary by location, with residents using La Mesa, Spring Valley, and El Cajon mailing addresses. Postal designations do not necessarily correspond to County community-planning boundaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "casa de oro mount helix",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "helix",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7123,
+    "attempt": 7073,
+    "place_id": "gn-728108",
+    "input": {
+      "place": {
+        "place_id": "gn-728108",
+        "name": "Pomorie",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.56326,
+        "lon": 27.62986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pomorie",
+          "url": "https://en.wikipedia.org/wiki/Pomorie",
+          "text": "Pomorie (Bulgarian: Поморие [poˈmɔriɛ]), historically known as Anchialos (Bulgarian: Анхиало, Greek: Αγχίαλος), is a town and seaside resort in southeastern Bulgaria, located on a narrow rocky peninsula in Burgas Bay on the southern Bulgarian Black Sea Coast.\nIt is situated in Burgas Province, 20,5 km away from the city of Burgas and 18 km from the Sunny Beach resort. The ultrasaline lagoon Lake Pomorie, the northernmost of the Burgas Lakes, lies in the immediate proximity. The town is the administrative centre of the eponymous Pomorie Municipality.\nPomorie is an ancient city and today is an important tourist destination. As of 2020, it had a population of 13,926."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pomorie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7124,
+    "attempt": 7074,
+    "place_id": "gn-731818",
+    "input": {
+      "place": {
+        "place_id": "gn-731818",
+        "name": "Dulovo",
+        "country": "Bulgaria",
+        "subdivision": "Silistra",
+        "lat": 43.81667,
+        "lon": 27.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dulovo, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Dulovo,_Bulgaria",
+          "text": "Dulovo (Bulgarian: Дулово [ˈduɫovo], Turkish: Akkadınlar, lit. \"White women\"; Romanian: Accadânlar) is a town in Silistra Province in northeastern Bulgaria, in the Ludogorie region. As the administrative centre of the homonymous Dulovo Municipality, it is the third largest town in the province after Silistra and Tutrakan. As of December 2009, the town had a population of 6,621.\nDulovo, then a village, was first mentioned in an Ottoman document of 1573 as \"Akkadınlar\", meaning \"White Women\". Even before the Liberation of Bulgaria in 1878, it had a mixed population of Bulgarians (settlers from the region of Preslav) and Turks, which is still reflected in the ethnic composition today. Following the Second Balkan War, Bulgaria was forced to cede it to Romania along with all of Southern Dobruja. It was also a district centre of Durostor County under Romanian rule. The village was given back to Bulgaria according to the Treaty of Craiova of 1940. In 1942, it acquired its present name (in honour of the early medieval Bulgarian Dulo clan, with the Bulgarian placename suffix –ovo). On 30 January 1960, Dulovo was granted town status."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "dulovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7125,
+    "attempt": 7075,
+    "place_id": "gn-7932624",
+    "input": {
+      "place": {
+        "place_id": "gn-7932624",
+        "name": "Blackburn",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81901,
+        "lon": 145.15326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Blackburn,_Victoria",
+          "text": "Blackburn is a suburb of Melbourne, Victoria, Australia, 16 kilometres (9.9 mi) east of Melbourne's Central Business District, located within the City of Whitehorse local government area. Blackburn recorded a population of 14,478 at the 2021 census.\nThe origin of the name Blackburn is not certain, but may have been after an early settler or James Blackburn, who designed Yan Yean Reservoir.\nBlackburn is bounded in the west by Middleborough Road, in the north by Springfield Road, in the east by an irregular line along streets to the east of Blackburn Lake Sanctuary - known as the Bellbird area  - and in the south by Canterbury Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7126,
+    "attempt": 7076,
+    "place_id": "gn-8349019",
+    "input": {
+      "place": {
+        "place_id": "gn-8349019",
+        "name": "Bertram",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.24369,
+        "lon": 115.84572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bertram, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bertram,_Western_Australia",
+          "text": "Bertram is a suburb of Perth, Western Australia, located within the City of Kwinana. Bertram derives its name from the family name of a Group Settler of the 1920s who owned land in the area. It was established as a locality name on 17 December 1998.\nBertram has seen a recent spate of growth with the development of a small shopping centre, the opening of the Mandurah railway line with a station in the suburb and continued land releases within the Belgravia Central estate.\nThe local public school is Bertram Primary School that first opened in 2007 with 250 students. It is an Official Apple Distinguished School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "bertram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7127,
+    "attempt": 7077,
+    "place_id": "gn-847517",
+    "input": {
+      "place": {
+        "place_id": "gn-847517",
+        "name": "Mellunmäki",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.23751,
+        "lon": 25.11552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mellunmäki",
+          "url": "https://en.wikipedia.org/wiki/Mellunmäki",
+          "text": "Mellunmäki (Swedish: Mellungsbacka) (Slang: Meltsi) has been a quarter of eastern Helsinki, Finland since 1946.\nSerious construction of Mellunmäki began in 1950 and the area was originally designed for 7,000 residents. Today in 2023 there are almost 9,000 people living in the area.\nMellunmäki provides several essential services such as four grocery stores, three kiosks, four hairdressers, two physiotherapists, three restaurants, a 24/7 gym, and two nursing homes. More services can be found one metro station away in Kontula Kontula or in Itäkeskus (Itis) shopping mall three metro stations away.\nThe metro station of Mellunmäki, the last stop on the line, is the world's northernmost metro station. Many new homes are being built in the area, so the population is expected to increase significantly.\n\nSeveral bus connections and subway access exist in the area. The closest notable neighbours are Kontula, Vesala, Länsimäki (a district of Vantaa), Vuosaari, and Vartioharju."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "mellunmaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7128,
+    "attempt": 7078,
+    "place_id": "gn-11184586",
+    "input": {
+      "place": {
+        "place_id": "gn-11184586",
+        "name": "Pathsala",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 26.51143,
+        "lon": 91.18017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pathsala",
+          "url": "https://en.wikipedia.org/wiki/Pathsala",
+          "text": "Pathsala is a town in the Bajali District in Assam, India, with a population of nearly 11.5 thousand (according to the 2011 census) and an area of 2.74 square kilometres.\nBajali is a newly formed district of the Indian state of Assam, carved out of the district of Barpeta. It was formed on 10 August 2020 by the government order of former Assam Chief Minister Sarbananda Sonowal. On 31 December 2022, the district was merged with the existing Barpeta district and again On 25 August 2023, Assam Chief Minister Himanta Biswa Sarma announced the decision to recreate the merged district of Bajali from its original districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "pathsala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7129,
+    "attempt": 7079,
+    "place_id": "gn-11203927",
+    "input": {
+      "place": {
+        "place_id": "gn-11203927",
+        "name": "Wild Rose",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.4708,
+        "lon": -113.38119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wild Rose, Edmonton",
+          "url": "https://en.wikipedia.org/wiki/Wild_Rose,_Edmonton",
+          "text": "Wild Rose is a residential neighbourhood located in The Meadows area of southeast Edmonton, Alberta. The neighbourhood is located just south of the RioCan Meadows .\nIt is a relatively newer neighbourhood with 86% of the residences being built after 1990 according to the 2001 federal census.\nThe neighbourhood has one school, Father Michael Troy Catholic Junior High School, operated by the Edmonton Catholic School District.\nThe neighbourhood is bounded on the east by 17 Street, on the west by 34 Street and on the north by 38 Avenue. The southern boundary with Silver Berry follows an irregular east–west line that follows the Mill Creek Ravine. The area includes a section of neighbourhood that was referred to as “Meadowbrook”. You can still see some signage to this day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "wild rose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wild",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7130,
+    "attempt": 7080,
+    "place_id": "gn-11962456",
+    "input": {
+      "place": {
+        "place_id": "gn-11962456",
+        "name": "Vartiokylä",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.21799,
+        "lon": 25.09569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vartiokylä",
+          "url": "https://en.wikipedia.org/wiki/Vartiokylä",
+          "text": "Vartiokylä (Swedish: Botby) is a district in the East Helsinki area of Helsinki, the capital of Finland. Its name is derived from the ruins of an eleventh-century fortress on the Linnanvuori hill in Vartioharju, one of Vartiokylä's subdivisions. The working population of Helsinki started building their houses in the area after the completion of Uusi Porvoontie, a road to the downtown, in the 1930s. Vartiokylä became a part of Helsinki in 1946. Larger-scale construction of suburban housing estates, such as Puotila, started in the 1960s. During the next decade, the building of Itäkeskus began, and it became the largest service centre for Vartiokylä and East Helsinki.\nPublic transport in the area relies heavily on the Helsinki Metro. The stations of Itäkeskus, Myllypuro and Puotila service the neighbourhood. Several bus lines serve the areas not within walking distance of the stations. Two major highways, Itäväylä and Kehä I, intersect in Vartiokylä."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "vartiokyla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

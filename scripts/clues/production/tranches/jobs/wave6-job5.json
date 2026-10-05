@@ -1,0 +1,712 @@
+[
+  {
+    "rank": 5610,
+    "place_id": "gn-2653298",
+    "input": {
+      "place": {
+        "place_id": "gn-2653298",
+        "name": "Chatteris",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.45624,
+        "lon": 0.05236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chatteris",
+          "url": "https://en.wikipedia.org/wiki/Chatteris",
+          "text": "Chatteris ( ) is a market town and civil parish in the Fenland district of Cambridgeshire, England, situated in the Fens between Huntingdon, March and Ely. The town is in the North East Cambridgeshire parliamentary constituency.\nThe parish of Chatteris is large, covering 6,099 hectares, and for much of its history was a raised island in the low-lying wetland of the Fens. Mentioned in the Domesday Book of 1086, the town has evidence of settlement from the Neolithic period. After several fires in the 18th and 19th centuries, the majority of the town's housing dates from the late Victorian period onwards, with the tower of the parish church the only medieval building remaining.\nFollowing the draining of the Fens, beginning in the 17th century and completed in the 19th century, the town's economy has been based on agriculture and related industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "chatteris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5613,
+    "place_id": "gn-3667323",
+    "input": {
+      "place": {
+        "place_id": "gn-3667323",
+        "name": "Tello",
+        "country": "Colombia",
+        "subdivision": "Huila Department",
+        "lat": 3.06694,
+        "lon": -75.13778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tello, Huila",
+          "url": "https://en.wikipedia.org/wiki/Tello,_Huila",
+          "text": "Tello is a town and municipality in the Huila Department, Colombia. It is characterized by its extensive plain between the Magdalena River and the foot of the Cordillera Oriental mountain range up to its peaks, with the Fortalecillas and Villavieja rivers located nearby. Its territorial extension is 589 km², its altitude is 575 meters above sea level and its climate is warm with an average temperature of 26°C.\nIt has a population of 14,536 inhabitants according to the DANE projection for 2019. The urban area of the municipality is located in the northeast part of the department (Sub-North Region). Its economy is based on agricultural production and livestock activity. Fruits such as grapes and bananas, from which 91% of the total output is produced in the department, stimulate its economy, which is considered the basis of the development of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "tello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5617,
+    "place_id": "gn-4955259",
+    "input": {
+      "place": {
+        "place_id": "gn-4955259",
+        "name": "Weston",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.36676,
+        "lon": -71.30311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weston, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Weston,_Massachusetts",
+          "text": "Weston is a town in Middlesex County, Massachusetts, United States, located approximately 15 miles (24 km) west of Boston. At the time of the 2020 United States census, the population of Weston was 11,851.\nWeston was incorporated in 1713, and protection of the town's historic resources is driven by the Weston Historical Commission\nand Weston Historical Society. The town has one Local Historic District, 10 National Register Districts, 26 Historic Areas, and seven houses individually listed on the National Register of Historic Places.\nWeston's predominance as a residential community is reflected in its population density, which is among the lowest of Boston's suburbs near or within Route 128. More than 2,000 acres, or 18 percent of the town's total acreage, have been preserved as parks, fields, wetlands, and forests, with 90 miles of trails for hiking, horseback riding, and cross-country skiing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "weston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5621,
+    "place_id": "gn-585568",
+    "input": {
+      "place": {
+        "place_id": "gn-585568",
+        "name": "Mardakan",
+        "country": "Azerbaijan",
+        "subdivision": "Baki",
+        "lat": 40.49182,
+        "lon": 50.14292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mardakan",
+          "url": "https://en.wikipedia.org/wiki/Mardakan",
+          "text": "Mardakan (Azerbaijani: Mərdəkan, pronounced [mæɾdæˈkɑn]) is a settlement and municipality in Khazar Rayon of Baku, Azerbaijan, located on the coast of the Caspian Sea, with a population of 32,084. It's positioned on the eastern Absheron Peninsula, about 30 km away from downtown Baku, and just 10 km from Heydar Aliyev International Airport, bounded by Shuvalan to the east, Qala to the south, and Shagan to the west. It also borders Bina in the south-west, and Buzovna to the north-west. Mardakan is the third largest settlement in Khazar Rayon by population, and one of the most populated municipalities in the country. It is considered to be the center of the Khazar Rayon, with the district's office being located in the settlement.\nWidely regarded and known across the peninsula as a resort town, Mardakan attracts thousands of visitors every year during the summertime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "mardakan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5626,
+    "place_id": "gn-2078907",
+    "input": {
+      "place": {
+        "place_id": "gn-2078907",
+        "name": "Bicton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.02778,
+        "lon": 115.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bicton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bicton,_Western_Australia",
+          "text": "Bicton is an affluent riverside suburb of Perth, Western Australia, located 10 kilometres (6.2 mi) south-west of the central business district. The suburb is mostly residential, and falls within the City of Melville local government area. Bicton borders the Swan River to the north, with the northern third of the suburb taken up by a Class-A reserve at Point Walter.\nOriginally settled in the 1830s, when a large vineyard was established, Bicton was mainly rural until the subdivision of the former Bicton Racecourse, beginning in 1919. Further subdivisions of the Castle Hill area in 1921 established the suburb as a middle-class area of Fremantle. Bicton underwent further expansion after the conclusion of World War II. Now with a large demographic of business owners and high net worth individuals, Bicton is considered one of the most affluent riverside suburbs in Perth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "bicton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5627,
+    "place_id": "gn-2180320",
+    "input": {
+      "place": {
+        "place_id": "gn-2180320",
+        "name": "Waikanae",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -40.88333,
+        "lon": 175.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waikanae",
+          "url": "https://en.wikipedia.org/wiki/Waikanae",
+          "text": "Waikanae (English:  , Māori pronunciation: [ˈwaikaˈnae] ) is a town on the Kāpiti Coast, 60 km (37 mi) north of the Wellington, New Zealand. The name is a Māori word meaning \"waters\" (wai) \"of the grey mullet\".\nThe area surrounding the town is notable for its 2.4-kilometre-long (1.5 mi) beach, the Waikanae River estuary, the Kapiti Marine Reserve, and Kapiti Island, which lies 4 km (2.5 mi) offshore in the Tasman Sea. The town is considered one of the top retirement destinations in the Wellington Region, because of it having year-round mild temperatures, moderate rainfall, and less wind than Wellington.\nThe town is 8 km (5.0 mi) northeast of Paraparaumu, and 15 km (9.3 mi) southwest of Ōtaki. The Waikanae railway station is the northernmost station in the Metlink passenger rail network, linking with Wellington railway station in Central Wellington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "waikanae",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5634,
+    "place_id": "gn-2652239",
+    "input": {
+      "place": {
+        "place_id": "gn-2652239",
+        "name": "Countesthorpe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.55379,
+        "lon": -1.14526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Countesthorpe",
+          "url": "https://en.wikipedia.org/wiki/Countesthorpe",
+          "text": "Countesthorpe is a large village and civil parish in the Leicestershire district of Blaby, with a population of 6,393 (2001 census, falling slightly to 6,377 at the 2011 census.   It lies to the south of Leicester, and is about 6 miles (9.7 km) from the city centre, but only two miles south of the suburb of South Wigston. Nearby places are Blaby and South Wigston to the north, Kilby to the east, Peatling Magna and Willoughby Waterleys to the south, and Broughton Astley, Cosby and Whetstone to the west.\nThe name Countesthorpe originates from the 11th century when the area was part of the marriage dowry of the Countess Judith, niece of William the Conqueror. The 'thorpe' part of the name is a variant of the Middle English word thorp, meaning hamlet or small village.\nThe parish church of St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "countesthorpe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5635,
+    "place_id": "gn-2654141",
+    "input": {
+      "place": {
+        "place_id": "gn-2654141",
+        "name": "Buxton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.25741,
+        "lon": -1.90982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buxton",
+          "url": "https://en.wikipedia.org/wiki/Buxton",
+          "text": "Buxton is a spa town in the borough of High Peak, Derbyshire, in the East Midlands region of England. It is England's highest market town, sited at some 1,000 feet (300 m) above sea level. It lies close to Cheshire to the west and Staffordshire to the south, on the edge of the Peak District National Park. In 1974, the municipal borough merged with other nearby boroughs, including Glossop, to form the local government district and borough of High Peak. \nThe town population was 20,048 at the 2021 Census (down from 21,108 at the 2011 Census). Sights include Poole's Cavern, a limestone cavern; St Ann's Well, fed by a geothermal spring bottled by Buxton Natural Mineral Water (owned by Nestle); and many historic buildings, including John Carr's restored Buxton Crescent, Henry Currey's Buxton Baths and Frank Matcham's Buxton Opera House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "buxton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5639,
+    "place_id": "gn-3114566",
+    "input": {
+      "place": {
+        "place_id": "gn-3114566",
+        "name": "Palamós",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.84843,
+        "lon": 3.12912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palamós",
+          "url": "https://en.wikipedia.org/wiki/Palamós",
+          "text": "Palamós i Sant Joan (Catalan pronunciation: [pələˈmos i ˈsan ʒuˈan]) is a resort town and municipality in the Mediterranean Costa Brava, located in the comarca of Baix Empordà, in the province of Girona, Catalonia, Spain. Palamós i Sant Joan is located at the northern end of a large bay. The town is by-passed by the C31 which connects the coastal towns of the central Costa Brava with Girona. Palafrugell lies 8.5 kilometres (5.3 mi) to the north and Castell-Platja d'Aro 7 kilometres (4.3 mi) to the south. The town is a popular tourist destination in the summer along the Costa Brava, the coastline which spans the Northern part of Catalonia up to the French border. \nPalamós i Sant Joan is a staging point on the GR 92 long distance footpath, which runs the length of the Mediterranean coast of Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "palamos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5645,
+    "place_id": "gn-3937733",
+    "input": {
+      "place": {
+        "place_id": "gn-3937733",
+        "name": "Jauja",
+        "country": "Peru",
+        "subdivision": "Junin",
+        "lat": -11.77584,
+        "lon": -75.49656
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jauja",
+          "url": "https://en.wikipedia.org/wiki/Jauja",
+          "text": "Jauja (Shawsha Wanka Quechua: Sausa, Shawsha or Shausha, formerly in Spanish Xauxa, with pronunciation of \"x\" as \"sh\") is a city and capital of Jauja Province in Peru. It is situated in the fertile Mantaro Valley, 45 kilometres (28 mi) to the northwest of Huancayo (the capital of Junín Region), at an altitude of 3,400 metres (11,200 ft). Its population in 2015 was 15,432.\nJauja, which flourished for a short time, was once the capital of Spanish Peru, prior to the founding of Lima as the new capital. Its name is referenced in the popular Spanish expression país de Jauja, which literally means \"country of Jauja\", but is used figuratively to mean a \"never never land\" or a \"land of milk and honey\". The town, with a laid back ambiance and salubrious climate, has narrow streets with houses painted blue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "jauja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5647,
+    "place_id": "gn-4364312",
+    "input": {
+      "place": {
+        "place_id": "gn-4364312",
+        "name": "Ocean City",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.3365,
+        "lon": -75.08491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean City, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Ocean_City,_Maryland",
+          "text": "Ocean City, officially the Town of Ocean City, is an Atlantic resort city in Worcester County, Maryland, along the East Coast of the United States. The population was 6,844 in the 2020 U.S. census, although during summer weekends the city hosts between 320,000 and 345,000 vacationers, and up to eight million visitors annually. During the summer, Ocean City becomes the second most populated municipality in Maryland, after Baltimore. It is part of the Salisbury metropolitan area as defined by the United States Census Bureau.\nDuring peak vacation season, the city gains over 1,000 seasonal police officers, along with additional firefighters and other workers. Numerous events take place within the town during the shoulder-season, including Sunfest, Springfest, Bike Week, Cruisin' Weekend, Winterfest of Lights, and Reach the Beach, which take place on the Boardwalk and the Roland E. Powell Convention Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "ocean city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5650,
+    "place_id": "gn-5111412",
+    "input": {
+      "place": {
+        "place_id": "gn-5111412",
+        "name": "Canarsie",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64372,
+        "lon": -73.90069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canarsie, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Canarsie,_Brooklyn",
+          "text": "Canarsie ( kə-NAR-see) is a mostly residential neighborhood in the southeastern portion of Brooklyn, New York City. Canarsie is bordered on the east by Fresh Creek Basin, East 108th Street, and Louisiana Avenue, on the north by Linden Boulevard, on the west by Ralph Avenue, on the southwest by Paerdegat Basin, and on the south by Jamaica Bay. It is adjacent to the neighborhoods of East Flatbush to the west, Flatlands and Bergen Beach to the southwest, Starrett City to the east, East New York to the northeast, and Brownsville to the north.\nThe area near Canarsie was originally settled by the Canarse Native Americans. The community's name is adapted from a Lenape word meaning \"fenced area\". After European settlement, Canarsie was initially a fishing community, but became a popular summer resort in the late 19th and early 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "canarsie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5653,
+    "place_id": "gn-645765",
+    "input": {
+      "place": {
+        "place_id": "gn-645765",
+        "name": "Muhos",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 64.80798,
+        "lon": 25.99314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muhos",
+          "url": "https://en.wikipedia.org/wiki/Muhos",
+          "text": "Muhos is a municipality of northern Finland. It is located in the province of Oulu half an hour's drive (35 km) on route 22 from the city of Oulu, the capital of Northern Finland, and is part of the Northern Ostrobothnia region. The municipality has a population of 8,767 (31 December 2025) and covers an area of 797.26 square kilometres (307.82 sq mi) of which 13.78 km2 (5.32 sq mi) is water. The population density is 11.17 inhabitants per square kilometre (28.9/sq mi).\nThe river Oulujoki flows through the town and its countryside, with the wide open plains of Ostrobothnia on the south side of the river and the forested hills of Kainuu on the northern side.\nLocated in Muhos is the Pyhäkoski hydro-electric power plant which was commissioned in 1949 and has the highest fall in Finland (32.4 m)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "muhos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5654,
+    "place_id": "gn-6545243",
+    "input": {
+      "place": {
+        "place_id": "gn-6545243",
+        "name": "Bayswater",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51116,
+        "lon": -0.18426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayswater",
+          "url": "https://en.wikipedia.org/wiki/Bayswater",
+          "text": "Bayswater is an area in the City of Westminster. It is a built-up district with a population density of 17,500 per square kilometre, and is located between Kensington Gardens to the south, Paddington to the north-east, and Notting Hill to the west.\nMuch of Bayswater was built in the 1800s, and consists of streets and garden squares lined with Victorian stucco terraces; some of which have been subdivided into flats. Other key developments include the Grade II listed 650-flat Hallfield Estate, designed by Berthold Lubetkin and Sir Denys Lasdun, and Queensway and Westbourne Grove, its busiest high streets, with a mix of independent, boutique and chain retailers and restaurants.\nBayswater is also one of London's most cosmopolitan areas: a diverse local population is augmented by a high concentration of hotels. In addition to the English, there are many other nationalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "bayswater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5659,
+    "place_id": "gn-2642483",
+    "input": {
+      "place": {
+        "place_id": "gn-2642483",
+        "name": "Milnrow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.61115,
+        "lon": -2.11266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milnrow",
+          "url": "https://en.wikipedia.org/wiki/Milnrow",
+          "text": "Milnrow is a town within the Metropolitan Borough of Rochdale, in Greater Manchester, England. It lies on the River Beal at the foothills of the South Pennines, and forms a continuous urban area with Rochdale. It is 2 miles (3.2 km) east of Rochdale town centre, 10 miles (16.1 km) north-northeast of Manchester, and spans from Windy Hill in the east to the Rochdale Canal in the west. Milnrow is adjacent to junction 21 of the M62 motorway, and includes the village of Newhey, and hamlets at Tunshill and Ogden.\nHistorically in Lancashire, Milnrow during the Middle Ages was one of several hamlets in the township of Butterworth and parish of Rochdale. The settlement was named by the Anglo-Saxons, but the Norman conquest of England resulted in its ownership by minor Norman families, such as the Schofields and Cleggs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "milnrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5668,
+    "place_id": "gn-4845823",
+    "input": {
+      "place": {
+        "place_id": "gn-4845823",
+        "name": "Willimantic",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.71065,
+        "lon": -72.20813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willimantic, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Willimantic,_Connecticut",
+          "text": "Willimantic is a census-designated place located in Windham, Connecticut, United States. Previously organized as a city and later as a borough, Willimantic is currently one of two tax districts within the Town of Windham. Willimantic is located within Windham County and the Southeastern Connecticut Planning Region. Known as \"Thread City\" for the American Thread Company's mills along the Willimantic River, it was a center of the textile industry in the 19th century. Originally incorporated as a city in 1893, it entered a period of decline after the Second World War, culminating in the mill's closure and the city's reabsorption into the town of Windham in the 1980s.\nWillimantic was populated by a series of ethnic groups migrating to the city to find work at the mills, originally Western European and French Canadian immigrants, later Eastern Europeans and Puerto Ricans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "willimantic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5673,
+    "place_id": "gn-5887470",
+    "input": {
+      "place": {
+        "place_id": "gn-5887470",
+        "name": "Val-des-Sources",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.76678,
+        "lon": -71.9324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Val-des-Sources",
+          "url": "https://en.wikipedia.org/wiki/Val-des-Sources",
+          "text": "Val-des-Sources (French pronunciation: [val de suʁs]), meaning \"Valley of the Springs\", formerly known as Asbestos (pronounced [asbɛstɔs]), is a town on the Nicolet River in the Estrie (Eastern Townships) region of southeastern Quebec, Canada. The town is the seat of Les Sources Regional County Municipality, formerly known as the Asbestos Regional County Municipality. The town covers an area of 30.25 square kilometres (11.68 mi2), including land acquired due to the merger of the City of Asbestos with the Municipality of Trois-Lacs on December 8, 1999.\nAt the 2021 census, 7,088 people resided in the town. It is situated in the centre of a square formed by the cities of Drummondville, Sherbrooke and Victoriaville, and the Nicolet River to the north.\nDue to the negative connotations of the name Asbestos, discussions took place around whether the town should be renamed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "val des sources",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "val",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sources",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5677,
+    "place_id": "gn-8348559",
+    "input": {
+      "place": {
+        "place_id": "gn-8348559",
+        "name": "Eastlakes",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.93196,
+        "lon": 151.21214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastlakes",
+          "url": "https://en.wikipedia.org/wiki/Eastlakes",
+          "text": "Eastlakes is a suburb of Sydney, in the state of New South Wales, Australia. Eastlakes is located 8 kilometres south of the Sydney central business district, in the local government area of the Bayside Council, Eastlakes is mostly residential with a shopping centre located at Evans Avenue. The residential portion of the suburb falls in the Inner South being west of the Eastern Distributor while the non-residential side of the suburb consisting of The Lakes Golf Course and Botany Dams is east of the Eastern Distributor falling within the Eastern Suburbs, south-east of the CBD.\nThere is a new shopping centre which opened in 2021 built across the road from the current shopping centre. Now that the new one is complete the current one will be redeveloped in the future. Golf courses also take up part of the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "eastlakes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5682,
+    "place_id": "gn-2638595",
+    "input": {
+      "place": {
+        "place_id": "gn-2638595",
+        "name": "Sanderstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33591,
+        "lon": -0.07778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanderstead",
+          "url": "https://en.wikipedia.org/wiki/Sanderstead",
+          "text": "Sanderstead  is a village and medieval-founded church parish at the southern end of Croydon in south London, England, within the London Borough of Croydon, and formerly in the historic county of Surrey, until 1965. It takes in Purley Downs and Sanderstead Plantation, an area of woodland that includes the second-highest point in London. Sanderstead sits above a dry valley at the edge of the built-up area of Greater London. Cementing its secular identity from the late 19th century until abolition in 1965 it had a civil parish council. The community had a smaller farming-centred economy until the mid 19th century.\nAll Saints' Church's construction began in about 1230 followed by great alterations and affixing of monuments including a poem attributed to John Dryden, the first Poet Laureate nationally; it is protected under UK law as Grade I listed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "sanderstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5684,
+    "place_id": "gn-2655136",
+    "input": {
+      "place": {
+        "place_id": "gn-2655136",
+        "name": "Boston Spa",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.90419,
+        "lon": -1.34523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boston Spa",
+          "url": "https://en.wikipedia.org/wiki/Boston_Spa",
+          "text": "Boston Spa is a village and civil parish in the Leeds Metropolitan District in West Yorkshire, England. Situated 3 miles (5 km) south of Wetherby, Boston Spa is on the south bank of the River Wharfe across from Thorp Arch. According to the 2001 census, the parish had a population of 4,006 rising to 4,079 in the 2011 census.\nThe village grew in the 18th century around sulphur springs that briefly made it a spa town. Today it is best known for its association with the British Library, whose principal storage and document-supply campus, holding the majority of the United Kingdom's national collection, adjoins the village to the north-east at Thorp Arch and is known as the library's Boston Spa site.\nIt sits in the Wetherby ward of Leeds City Council and the Wetherby and Easingwold parliamentary constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "boston spa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

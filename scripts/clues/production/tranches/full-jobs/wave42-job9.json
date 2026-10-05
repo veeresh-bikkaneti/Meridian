@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 8419,
+    "attempt": 8361,
+    "place_id": "gn-2519221",
+    "input": {
+      "place": {
+        "place_id": "gn-2519221",
+        "name": "Corral de Almaguer",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.75987,
+        "lon": -3.16452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corral de Almaguer",
+          "url": "https://en.wikipedia.org/wiki/Corral_de_Almaguer",
+          "text": "Corral de Almaguer is a Spanish municipality of Toledo province, in the autonomous community of Castile-La Mancha. Its population is 5,549 and its surface is 329 km², with a density of 16.9 people/km².\nThe mayor of Corral de Almaguer is Juliana Fernández de la Cueva Lominchar of the ruling Partido Popular.\nIn the 2004 Spanish General Election the Partido Popular got 56.0% of the vote in Corral de Almaguer, the Partido Socialista Obrero got 39.1% and Izquierda Unida got 2.8%.\nThe Romero family of New Mexico, which at one point was one of the most powerful families in colonized New Mexico is from this region of Spain. The Romero family traces its lineage to Bartolomé Romero (1530–1567) who was born in Corral de Almaguer, whilst his grandson, Matias Romero de Robledo (abt 1590s-1648) was born en route to New Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "corral de almaguer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "corral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "almaguer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8420,
+    "attempt": 8362,
+    "place_id": "gn-2649076",
+    "input": {
+      "place": {
+        "place_id": "gn-2649076",
+        "name": "Fremington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.06955,
+        "lon": -4.1366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fremington, Devon",
+          "url": "https://en.wikipedia.org/wiki/Fremington,_Devon",
+          "text": "Fremington is a large village, civil parish and former manor in North Devon, England, the historic centre of which is situated three miles (5 km) west of Barnstaple. The village lies between the south bank of the tidal estuary of the River Taw and a small inlet of that river known as Fremington Pill. The parish is surrounded clockwise from the north by the parishes of Heanton Punchardon, Ashford, West Pilton, Barnstaple, Tawstock, Horwood, Lovacott and Newton Tracey, and Instow.\nFremington Quay was formerly a port on the River Taw, one-half mile (800 m) north of the village centre. Fremington was formerly a borough which sent members to Parliament in the reign of King Edward III (1327–77). The parish includes the neighbouring former hamlets (greatly expanded in the 20th century) of Bickington to the east and Yelland to the west. It has many public woodland and even coastal walks.\nFremington, Bickington and Yelland, all on the B3223 main road from Barnstaple to Instow have, according to Hoskins (1959), been spoilt by almost uninterrupted ribbon-building to provide housing for commuters to Barnstaple, but some old houses survive near the parish church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "fremington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8421,
+    "attempt": 8363,
+    "place_id": "gn-2658240",
+    "input": {
+      "place": {
+        "place_id": "gn-2658240",
+        "name": "Unterseen",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.6853,
+        "lon": 7.84722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Unterseen",
+          "url": "https://en.wikipedia.org/wiki/Unterseen",
+          "text": "Unterseen (Swiss Standard German pronunciation: [ˈʊntərˌzeːən]) is a historic town and a municipality in the Interlaken-Oberhasli administrative district in the canton of Bern in Switzerland.\nUnterseen is a german calque of the latin name Interlaken (meaning \"between the lakes\"), and is located on the flat area on the eastern shore of Lake Thun between the two creek Lombach below the Chienberg to the north and the Aare to the south, which both flow into Lake Thun. The historic town however is mainly found at the northern bank of the Aare, which flows here from Lake Brienz to Lake Thun (therefore lower lake). Just across the Aare is the town of Interlaken. Both municipalities are located on the flat alluvial land among steep mountains, which is also called the Bödeli.\nUnterseen belongs to the Small Agglomeration Interlaken with 23,300 inhabitants (2014).\nAlong with Interlaken, Unterseen is an important tourist center in the Bernese Highlands, and from the town one can see the mountains Eiger, Mönch and Jungfrau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "unterseen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8422,
+    "attempt": 8364,
+    "place_id": "gn-3018835",
+    "input": {
+      "place": {
+        "place_id": "gn-3018835",
+        "name": "Fayence",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.6257,
+        "lon": 6.69531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fayence",
+          "url": "https://en.wikipedia.org/wiki/Fayence",
+          "text": "Fayence (French pronunciation: [fajɑ̃s]; Occitan: Faiença) is a commune in the Var department in the Provence-Alpes-Côte d'Azur region in Southeastern France.\nFayence is one of a series of \"perched villages\" overlooking the plain between the southern Alps and the Esterel massif, which borders the Mediterranean Sea between Cannes and Saint-Raphaël. The village is located on the road to Mons, which later on joins the Route Napoléon linking Nice to Grenoble through the Alps.\nSome high-standing resorts have settled nearby the village in the recent years: the Domaine de Terre Blanche at Tourrettes and Domaine de Fayence attract a foreign clientele. The village contains a primary school (École de la Ferrage) and a junior high school (Collège Marie Mauron). The Aérodrome de Fayence-Tourettes is one of the most active in Europe for gliding; it hosts the Provence Côte d'Azur Aeronautical Association."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "fayence",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8423,
+    "attempt": 8365,
+    "place_id": "gn-3121397",
+    "input": {
+      "place": {
+        "place_id": "gn-3121397",
+        "name": "Gironella",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.03433,
+        "lon": 1.88019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gironella",
+          "url": "https://en.wikipedia.org/wiki/Gironella",
+          "text": "Gironella (Catalan pronunciation: [ʒiɾuˈneʎə]) is a municipality in the comarca of the Berguedà in Catalonia, Spain. It is situated in the left bank of the Llobregat river to the south of Berga. The local economy is traditionally based on cotton spinning and textile manufacture, although tourism is now more important: the company towns or \"colonies\" of workers houses surround the cotton mills are of historical interest. The town is served by the C-16 road to Berga and the Cadí tunnel. Gironella, which has numerous stores, bars, and schools, is an important economic center for the smaller towns around it, such as Olvan, Sagàs or Casserres.\nThe town is mentioned in a well-known traditional Catalan song, A Gironella or Cançó de Gironella, in which a young man laments being rejected by his beloved and being forced to leave the town behind."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "gironella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8424,
+    "attempt": 8366,
+    "place_id": "gn-5101417",
+    "input": {
+      "place": {
+        "place_id": "gn-5101417",
+        "name": "Morris Plains",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82177,
+        "lon": -74.48099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morris Plains, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Morris_Plains,_New_Jersey",
+          "text": "Morris Plains is a borough in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,153, an increase of 621 (+11.2%) from the 2010 census count of 5,532, which in turn reflected an increase of 296 (+5.7%) from the 5,236 counted in the 2000 census.\nMorris Plains was incorporated as a borough by an act of the New Jersey Legislature on March 15, 1926, from portions of Hanover Township, based on the results of a referendum held on April 15, 1926. The borough's name comes from Lewis Morris, colonial governor of New Jersey.\nMorris Plains serves as a bedroom community, with many residents traveling to work in New York City. The Morristown Line of NJ Transit provides commuters with direct access to New York Penn Station and Hoboken Terminal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "morris plains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morris",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8425,
+    "attempt": 8367,
+    "place_id": "gn-5124642",
+    "input": {
+      "place": {
+        "place_id": "gn-5124642",
+        "name": "Little Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.0434,
+        "lon": -74.8596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Little_Falls,_New_York",
+          "text": "Little Falls is a city in Herkimer County, New York, United States. The population was 4,605 at the time of the 2020 census, which is the second-smallest city population in the state, ahead of only the city of Sherrill. The city is built on both sides of the Mohawk River, at a point at which rapids had impeded travel upriver. Transportation through the valley was improved by construction of the Erie Canal, completed in 1825 and connecting the Great Lakes with the Hudson River.\nThe city is located at the northeastern corner of the town of Little Falls and is east of Utica.\nLittle Falls has a picturesque location on the slope of a narrow and rocky defile, through which the Mohawk River falls 45 feet (14 m) in less than a mile (1.6 km), forming a number of cascades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "little falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8426,
+    "attempt": 8368,
+    "place_id": "gn-6118417",
+    "input": {
+      "place": {
+        "place_id": "gn-6118417",
+        "name": "Red Lake",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 51.01678,
+        "lon": -93.82736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Red Lake, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Red_Lake,_Ontario",
+          "text": "Red Lake is a municipality with town status in the Canadian province of Ontario, located 535 km (332 mi) northwest of Thunder Bay and less than 100 kilometres (62 mi) from the Manitoba border. The municipality consists of six small communities (Balmertown, Cochenour, Madsen, McKenzie Island, Red Lake, and Starratt-Olsen) and had a population of 4,094 people in the 2021 Canadian census.\nRed Lake is an enclave within Unorganized Kenora District. The municipality was formed on 1 July 1998, when the former incorporated townships of Golden and Red Lake were merged along with a small portion of Unorganized Kenora District.\nThe name of the town comes from a local legend telling of two men from the Ojibwe tribe who stumbled across a large moose. The men proceeded to kill the moose, the blood of which drained into a nearby lake. The blood turned the lake's waters red in colour, ultimately giving the area its name.  The name appears on the Bouchette map of 1875, and was officially approved on 7 December 1909."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "red lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "red",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8427,
+    "attempt": 8369,
+    "place_id": "gn-2183794",
+    "input": {
+      "place": {
+        "place_id": "gn-2183794",
+        "name": "Ramarama",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -37.15,
+        "lon": 174.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramarama, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Ramarama,_New_Zealand",
+          "text": "Ramarama, previously known as Sheppards Bush, is a small community at the far south of the Auckland Region in New Zealand's North Island, located just to the north of the Bombay Hills (a point commonly regarded as the most southern part of the Auckland region).  Ramarama has an off-ramp at exit 466 on the motorway south of Auckland.  The suburb is effectively sliced in two by the motorway, this section of which was constructed in 1978.\nThe main settlement of Ramarama contains a convenience store and several small businesses. Most of the land in the area is made up of market gardens, farms and lifestyle blocks as would be expected from the entirely rural region in which it is located.  There are several floral/garden/nursery businesses with large glasshouses and a number of poultry/egg producing farms in the surrounding area.\nRamarama is named after ramarama, a small tree with leaves that can cure bruises if crushed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "ramarama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8428,
+    "attempt": 8370,
+    "place_id": "gn-2466499",
+    "input": {
+      "place": {
+        "place_id": "gn-2466499",
+        "name": "Sidi el Hani",
+        "country": "Tunisia",
+        "subdivision": "Sousse Governorate",
+        "lat": 35.67139,
+        "lon": 10.31583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sidi El Hani",
+          "url": "https://en.wikipedia.org/wiki/Sidi_El_Hani",
+          "text": "Sidi El Hani (or Sidi Al-Hani) (سيدي الهاني) is a town and commune in the Sousse Governorate, Tunisia located at 35.67n, 10.30e. As of 2004 it had a population of 3,058.  It gives its name to the largest lake of the governorate, a natural salt lake or salt pan (sabkha) in dry seasons, the Sebkhet de Sidi El Hani which is shared with between one and two other areas depending on precipitation and its maximum extent forms the official boundary with part of a third, Monastir Governorate.  The town is 30 km south-west of the coast, its straightest connection being by Tunisian Railways, with a secondary connection by road, the P12 road which is a principal road to Kairouan from the A1 a few kilometres to the east. it is 19 km from Kairouan and 26 km from Raqqada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "sidi el hani",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sidi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hani",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8429,
+    "attempt": 8371,
+    "place_id": "gn-2633710",
+    "input": {
+      "place": {
+        "place_id": "gn-2633710",
+        "name": "Woburn Sands",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.01579,
+        "lon": -0.64982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woburn Sands",
+          "url": "https://en.wikipedia.org/wiki/Woburn_Sands",
+          "text": "Woburn Sands () is a town that straddles the border between Buckinghamshire and Bedfordshire in England, and is part of the Milton Keynes urban area. The larger part of the town is in Woburn Sands civil parish, which is in the City of Milton Keynes, The built-up area of the town extends continuously to include much of the neighbouring parishes of Aspley Guise and Aspley Heath (in Central Bedfordshire), with no natural boundaries to set them apart. The meandering boundary between Buckinghamshire and Bedfordshire means the Lower and Middle Schools that serve all of the town are both in Aspley Guise CP. Bedfordshire Police and Thames Valley Police both deal with law enforcement issues in the town. At the 2021 Census, the population of the civil parish (only) was 3.646. The population of the contiguous built-up area was 4,310."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "woburn sands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woburn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8430,
+    "attempt": 8372,
+    "place_id": "gn-2654515",
+    "input": {
+      "place": {
+        "place_id": "gn-2654515",
+        "name": "Broughshane",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.8926,
+        "lon": -6.20899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broughshane",
+          "url": "https://en.wikipedia.org/wiki/Broughshane",
+          "text": "Broughshane ( brə-SHAYN, formerly spelt Brughshane, from Irish Bruach Sheáin) is a large village in County Antrim, Northern Ireland. It is 3.5 miles (5.6 km) northeast of Ballymena and 13.8 miles (22.2 km) north of Antrim, on the A42 road. It is part of Mid and East Antrim District Council and had a population of 3,067 people in the 2021 census.\nIts name comes from the Irish for \"Shane's dwelling\", and seemingly refers to a castle of Shane mac Brian O'Neill, ruler of the Gaelic territory of Lower Clannaboy from 1595 to 1617, which formerly stood on the north side of the village street. The nearby pub, The Thatch Inn, has a thatched roof and is a Grade B+ listed building.\nBroughshane is known as the 'Garden Village of Ulster' with the motto 'People, Plants and Pride growing Together'.  In 2018, the village won Channel Four's 'UK Village of the Year'. It has won Ulster in Bloom, Britain in Bloom and Entente Florale (Europe in Bloom).  In 2007 and again in 2012, the village won 'Champion of Champions' award in the Britain in Bloom competition. It has also won the All Ireland Tidy Town Award.\nVolunteers have established in the area around the village pond, a wildlife area which has some of every species of swan and many rare types of geese etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "broughshane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8431,
+    "attempt": 8373,
+    "place_id": "gn-2780207",
+    "input": {
+      "place": {
+        "place_id": "gn-2780207",
+        "name": "Eisenerz",
+        "country": "Austria",
+        "subdivision": "Styria",
+        "lat": 47.543,
+        "lon": 14.887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eisenerz",
+          "url": "https://en.wikipedia.org/wiki/Eisenerz",
+          "text": "Eisenerz (German pronunciation: [ˈaɪzn̩ˌʔeːɐ̯ts]; \"Iron ore\") is a market place and old mining town in the Austrian state of Styria, 68 mi (109 km). northwest of Graz by rail. It is situated in the deep Erzbach Valley, dominated on the east by the Pfaffenstein 1,871 m (6,138 ft), on the west by the Kaiserschild 2,084 m (6,837 ft), and on the south by the Erzberg 1,465 m (4,806 ft). It has a medieval fortified church, a Gothic edifice founded by Rudolph of Habsburg in the 13th century and rebuilt in the 16th century.\nAt the turn of the past century the Erzberg (Ore Mountain) furnished such rich ore that it was quarried in the open air like stone, in the summer months. There is documentary evidence of the mines having been worked as far back as the 12th century. They afforded employment to two or three thousand hands in summer and about half as many in winter, and yielded some 800,000 tons of iron per annum. \nDuring World War II, a subcamp of Mauthausen concentration camp, \"KZ-Außenlager Gsollgraben\", was located adjacent the Erzberg, in the village Gsollgraben. Its precise location and dimensions could be reconstructed for the first time in 2020, under the supervision of an interdisciplinary team of scholars at TU Graz. The subcamp provided slave labour for local industry. \nEisenerz was connected with the mines by the Erzberg Railway, a bold piece of engineering work, fourteen miles (23 km) long, constructed on the Abt's rack-and-pinion system. It passed through the pastoral scenery, before descending to Vordernberg, a center of the iron trade situated on the south side of the Erzberg. Eisenerz then possessed, in addition, twenty-five furnaces, which produce iron, and particularly steel, of high quality. Today the Erzberg is home to motocross races, called the Erzberg Rodeo.\n\nEisenerz is also the home of the independent record label Napalm Records, which is mainly focused on heavy metal and hard rock. While founded in 1992 in Eisenerz, the company has since become a prominent label in the metal scene, and today operates branch offices in Berlin and New York.\nA few miles northwest of Eisenerz stands Leopoldstein Castle, and near it Leopoldstein Lake. This lake, with its dark green water at an elevation of 2,028 feet (618 m), and surrounded on all sides by high peaks, is not large and has a depth of 100 ft (30 m)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 399
+    },
+    "banned_terms": [
+      {
+        "term": "eisenerz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8432,
+    "attempt": 8374,
+    "place_id": "gn-2936259",
+    "input": {
+      "place": {
+        "place_id": "gn-2936259",
+        "name": "Donaustauf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.03258,
+        "lon": 12.20459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donaustauf",
+          "url": "https://en.wikipedia.org/wiki/Donaustauf",
+          "text": "Donaustauf (German pronunciation: [ˈdoːnaʊʃtaʊf]) is a market town in Bavaria, 5 km (3 mi) east of Regensburg at the foothills of the Bavarian Forest. The ruins of a medieval castle, presumably erected between 914 and 930, tower above the small town. Situated nearby on a hill rising from the Danube is the imposing Teutonic temple of fame, Walhalla, a costly reproduction of the Parthenon in Athens. The Walhalla was commissioned by Ludwig I, King of Bavaria, and inaugurated on 18 October 1842.\nDonaustauf had been a fief in the Duchy of Bavaria, but in 1710 it was transferred to Bishopric of Regensburg. In 1803 it joined the newly formed Principality of Regensburg, but just 7 years later, at the Treaty of Paris it was returned to Bavaria, which, in turn, endowed it to the princes of Thurn and Taxis. In 1899, the princely house was elevated to a dukedom, receiving the title of Duke of Wörth and Donaustauf.\nMaximilian Karl, Prince of Thurn and Taxis and his family, who liked the romantic scenery of Donaustauf, moved to the newly constructed Donaustauf palace in 1843, which, however, was completely destroyed during a blaze on 4 March 1880."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "donaustauf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8433,
+    "attempt": 8375,
+    "place_id": "gn-3170456",
+    "input": {
+      "place": {
+        "place_id": "gn-3170456",
+        "name": "Poggio Mirteto",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.26763,
+        "lon": 12.68837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poggio Mirteto",
+          "url": "https://en.wikipedia.org/wiki/Poggio_Mirteto",
+          "text": "Poggio Mirteto is a comune (municipality) is situated in the Tiber Valley area of the region of Latium, Italy. Administratively Poggio Mirteto is in the province of Rieti (formerly part of the province of Perugia) and geographically this municipality is about 45 kilometres (28 mi) northeast of Rome and about 20 kilometres (12 mi) southwest of Rieti.\nAccording to Giuseppe Marocco's 1833 book  the name Poggio Mirteto means the \"knoll with plenty of Myrtus plants\" because in its territory there would be plenty of Myrtus plants (called mirto in Italian, which is where the adjective mirteto comes from) and the old town was built on a knoll which in Italian is translated with the toponym Poggio.\nPoggio Mirteto Cathedral, formerly seat of its own bishops, became the episcopal see of the Bishop of the Suburbicarian Diocese of Sabina-Poggio Mirteto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "poggio mirteto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "poggio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mirteto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8434,
+    "attempt": 8376,
+    "place_id": "gn-3170717",
+    "input": {
+      "place": {
+        "place_id": "gn-3170717",
+        "name": "Pignola",
+        "country": "Italy",
+        "subdivision": "Basilicate",
+        "lat": 40.57412,
+        "lon": 15.78295
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pignola",
+          "url": "https://en.wikipedia.org/wiki/Pignola",
+          "text": "Pignola is an Italian town in the province of Potenza in Basilicata. It borders to the east with Anzi, to the south-west with Abriola, to the west with Tito and to the north with Potenza. The Pignolese territory extends for 55.51 km2 and has an altitude ranging from 700 m of Pantano-Petrucco to 927 m of the inhabited center, up to 1476 m of Mount Serranetta which represents the highest point of the Pignolese territory. It has 6,962 inhabitants.\nThe municipality includes fourteen hamlets: Masseria Coviello, Campo di Giorgio, Molino di Capo, Mulino di Piede, Pantano, Petrucco, Piancardillo, Ponte Mallardo, Pozzillo, Rifreddo, Sciffra, Serra San Marco, Tora, Tuorno, and is divided into two parts: the historic center upstream, and the Pantano, near the lake of the same name and the WWF oasis. The area is of high seismic hazard. The area is mainly wooded and there are numerous streams that feed the Basento; there are also numerous drinking springs but not noteworthy for the small amount of water. A few steps from the hamlet of Pantano at 770 m above sea level, there is a lake, Lake Pantano di Pignola, protected by a nature reserve and originating from an ancient swamp reclaimed in the first half of the twentieth century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "pignola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8435,
+    "attempt": 8377,
+    "place_id": "gn-4008868",
+    "input": {
+      "place": {
+        "place_id": "gn-4008868",
+        "name": "El Oro de Hidalgo",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.80272,
+        "lon": -100.13081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Oro de Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/El_Oro_de_Hidalgo",
+          "text": "El Oro is one of 125 municipalities in the State of Mexico within the United Mexican States. The municipal seat is the town of El Oro de Hidalgo. The name El Oro (Spanish: [el ˈoɾo] ) means \"the gold\" in  Spanish. It has subsequently been given an alternative Nahuatl name of \"Teocuitlatl\", meaning \"sacred excrement\" (referring to gold). Its seal, in the form of an Aztec glyph, contains elements referring to gold and to caves, of which there are many in the municipality.\nThe municipality is located in the northwest of the State of Mexico, 96 km from the state capital of Toluca, and is bounded by the municipalities of Temascalcingo to the north, Jocotitlán to the east, San Felipe del Progreso and San José del Rincón to the south, and by the state of Michoacán to the west. As of 2005, the municipal seat with the formal name of El Oro de Hidalgo had a population of 5,797, and the municipality of El Oro had a population of 31,847. While the settlement made its name as a major gold- and silver-mining town from the 17th to the early 20th centuries, the mines have since been tapped out and the town is turning to tourism for economic development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "el oro de hidalgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hidalgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8436,
+    "attempt": 8378,
+    "place_id": "gn-4794641",
+    "input": {
+      "place": {
+        "place_id": "gn-4794641",
+        "name": "Woodstock",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.88178,
+        "lon": -78.50584
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodstock, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Woodstock,_Virginia",
+          "text": "Woodstock is a town in and the county seat of Shenandoah County, Virginia, United States. As of the 2020 census, Woodstock had a population of 5,807. Woodstock comprises 3.2 square miles of incorporated area of the town and is located along the \"Seven Bends\" of the North Fork of the Shenandoah River. While some tourism references list Woodstock as the fourth oldest town in Virginia, the area was sparsely settled and perhaps platted in 1752 or shortly thereafter, but the town was actually established by charter in 1761. While there are a number of Virginia towns closer to the eastern seaboard that claim earlier founding dates, Woodstock was one of the first towns west of the Blue Ridge Mountains.\nMassanutten Military Academy is located in Woodstock, as is the former location  of the Sigma Sigma Sigma sorority's national headquarters. Woodstock is also home to the River Bandits of the Valley Baseball League, Shenandoah County Public Schools central campus, and the Shenandoah County Fairgrounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "woodstock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8437,
+    "attempt": 8379,
+    "place_id": "gn-662994",
+    "input": {
+      "place": {
+        "place_id": "gn-662994",
+        "name": "Vicovu de Jos",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.9,
+        "lon": 25.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vicovu de Jos",
+          "url": "https://en.wikipedia.org/wiki/Vicovu_de_Jos",
+          "text": "Vicovu de Jos (German: Unter Wikow or Unterwikow) is a commune located in Suceava County, Bukovina, Romania. It is composed of a single village, Vicovu de Jos.\nThe commune lies in the hilly area of the Bukovinian Subcarpathians, on the right bank of the Suceava River. It is located in the northern part of the county, 57 km (35 mi) northeast of its capital, Suceava, only a few miles from the Romania–Ukraine border. It borders on the north-west with Vicovu de Sus, on the north with Bilca and the Obcina Mare mountains, on the west with Putna, on the south with Voitinel, and on the east with Gălănești.\nVicovu de Jos is situated at the intersection of national roads DN2E and DN2H. The railway station serves the CFR Line 500, which connects Bucharest with the Ukrainian border near Chernivtsi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "vicovu de jos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vicovu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8438,
+    "attempt": 8380,
+    "place_id": "gn-699015",
+    "input": {
+      "place": {
+        "place_id": "gn-699015",
+        "name": "Nove Davydkovo",
+        "country": "Ukraine",
+        "subdivision": "Zakarpattia",
+        "lat": 48.44079,
+        "lon": 22.6229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nove Davydkovo",
+          "url": "https://en.wikipedia.org/wiki/Nove_Davydkovo",
+          "text": "Nove Davydkovo (Ukrainian: Нове Давидково, Hungarian: Újdávidháza, Russian: Новое Давыдково) is a small farming village in the suburbs of Mukachevo in Zakarpattia Oblast (province) of western Ukraine. \nIt lies in a plain beneath the Palanok Castle near the foothills of the Carpathian Mountains. Historically, it was part of the Kingdom of Hungary from the 11th century until 1918, when it was called Uj-Dávidháza, meaning \"David's new home.\" It was located in Bereg megyé (county) and Munkácsi járás (district). It then became part of Czechoslovakia (1918-1938), when the region was referred to as Podkarpatská Rus (Sub-Carpathia), and the town was called Nové Davidkovo. The region reverted to Hungary during World War II, and then was annexed to the Soviet Union, in 1945, until Ukrainian independence in 1991. Today, it is part of Mukachevo Raion and the Zakarpattia Oblast of Ukraine.\nOther spellings/names for Nove Davydkovo are: Novoye Davydkovo, Nove Davydkove and Nowe Dawydkowo. In Yiddish, it was referred to as Greis Davidkif.\nNove Davydkovo is located about 4 miles West of Mukacheve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "nove davydkovo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nove",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "davydkovo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

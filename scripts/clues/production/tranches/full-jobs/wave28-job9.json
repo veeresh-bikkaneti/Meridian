@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5604,
+    "attempt": 5561,
+    "place_id": "gn-5141365",
+    "input": {
+      "place": {
+        "place_id": "gn-5141365",
+        "name": "Tribeca",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71538,
+        "lon": -74.00931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tribeca",
+          "url": "https://en.wikipedia.org/wiki/Tribeca",
+          "text": "Tribeca ( try-BEK-ə), originally written as TriBeCa, is a neighborhood in Lower Manhattan in New York City.  Its name is a syllabic abbreviation of \"Triangle Below Canal\". The \"triangle\" (more accurately a quadrilateral) is bounded by Canal Street, West Street, Broadway, and Chambers Street.  By the 2010s, a common marketing tactic was to extend Tribeca's southern boundary to either Vesey or Murray Streets to increase the appeal of property listings.\nThe neighborhood began as farmland, then was a residential neighborhood in the early 19th century, before becoming a mercantile area centered on produce, dry goods, and textiles, and then transitioning to artists and then actors, models, entrepreneurs, and other celebrities. The neighborhood is home to the Tribeca Festival, which was created in response to the September 11 attacks, to reinvigorate the neighborhood and downtown after the destruction caused by the terrorist attacks.\nTribeca is part of Manhattan Community District 1, and its primary ZIP Codes are 10007 and 10013. It is patrolled by the 1st Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "tribeca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5605,
+    "attempt": 5562,
+    "place_id": "gn-6332428",
+    "input": {
+      "place": {
+        "place_id": "gn-6332428",
+        "name": "East Harlem",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.79472,
+        "lon": -73.9425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Harlem",
+          "url": "https://en.wikipedia.org/wiki/East_Harlem",
+          "text": "East Harlem, also known as Spanish Harlem or El Barrio, and formerly Italian Harlem, is a neighborhood of Upper Manhattan in New York City, north of the Upper East Side and bounded by 96th Street to the south, Fifth Avenue to the west, and the East and Harlem Rivers to the east and north. Despite its name, it is generally not considered to be a part of Harlem proper, but it is one of the neighborhoods included in Greater Harlem.\nThe neighborhood has one of the largest Hispanic communities in New York City, mostly Puerto Ricans, as well as Dominicans, Salvadorans, Cubans, and Mexicans. The community is notable for its contributions to Latin freestyle and salsa music. East Harlem also includes the remnants of a once-predominant Italian community, or Italian Harlem. The Chinese population has increased dramatically in East Harlem since 2000.\nEast Harlem has historically suffered from many social issues, such as a high crime rate, the highest jobless rate in New York City, teenage pregnancy, AIDS, drug abuse, homelessness, and an asthma rate five times the national average. It has the second-highest concentration of public housing in the United States, behind Brownsville, Brooklyn. East Harlem is undergoing some gentrification, and in 2016 the city considered rezoning the area.\nEast Harlem is part of Manhattan Community District 11, and its primary ZIP Codes are 10029 and 10035. It is patrolled by the 23rd and 25th Precincts of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "east harlem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harlem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5606,
+    "attempt": 5563,
+    "place_id": "gn-1244596",
+    "input": {
+      "place": {
+        "place_id": "gn-1244596",
+        "name": "Hatton",
+        "country": "Sri Lanka",
+        "subdivision": "Central Province",
+        "lat": 6.8916,
+        "lon": 80.5955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hatton, Sri Lanka",
+          "url": "https://en.wikipedia.org/wiki/Hatton,_Sri_Lanka",
+          "text": "Hatton (Sinhala: හැටන්, Tamil: ஹட்டன்) is a major town in the Nuwara Eliya District of Central Province, Sri Lanka, governed by the Hatton-Dickoya Urban Council. Hatton is a major centre of the Sri Lankan tea industry.\nHatton is one of the busiest cities in the hill country of Sri Lanka and is colloquially known as the tea capital of the country, as it is the central point for most upcountry tea growing regions, such as Maskeliya, Talawakelle, Bogawantalawa and Dickoya.\nHatton is located approximately 112 km (70 mi) southeast of Colombo and 72 km (45 mi) south of Kandy, at an elevation of 1,271 m (4,170 ft) above sea level.\nHatton was founded during the British colonial times in order to serve the coffee plantations and latter tea estates. The name of the town refers to the village in Aberdeenshire, Scotland. A number of the surrounding tea estates are also named after Scottish villages.\nHatton serves as a gateway to Adam's Peak (Sri Pada) and Sinharaja Forest Reserve, but is better known for its Ceylon tea plantations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "hatton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5607,
+    "attempt": 5564,
+    "place_id": "gn-1819064",
+    "input": {
+      "place": {
+        "place_id": "gn-1819064",
+        "name": "Quarry Bay",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Eastern District",
+        "lat": 22.28768,
+        "lon": 114.2135
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quarry Bay",
+          "url": "https://en.wikipedia.org/wiki/Quarry_Bay",
+          "text": "Quarry Bay is an area beneath Mount Parker in the Eastern District of Hong Kong Island, in Hong Kong. Quarry Bay is bordered by Sai Wan Ho to the east, Mount Parker to the south, North Point to the west, and Victoria Harbour to the north.\nQuarry Bay is a residential and business district in Hong Kong. One Island East, the seventh tallest building in Hong Kong, is located in Quarry Bay. Some government departments such as the Accounting and Financial Reporting Council have relocated their offices from Central and Wan Chai to Quarry Bay over the years, and some multinational companies have their offices located in the district, such as Ernst & Young, BNP Paribas, LVMH and Boston Consulting Group, etc. Cityplaza and Kornhill Plaza, being one of the largest shopping malls on Hong Kong Island is at Quarry Bay.\nWith dense population as well as developed economic and commercial activities in the district, Quarry Bay has a considerable traffic demand. It is one of the transportation hubs in Hong Kong. There are two MTR stations in the district, being Quarry Bay Station and Taikoo Station. Quarry Bay Station is the intersection of the Island line and Tseung Kwan O line. Other transportation means in the district include buses, minibuses, and trams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "quarry bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quarry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5608,
+    "attempt": 5565,
+    "place_id": "gn-2155858",
+    "input": {
+      "place": {
+        "place_id": "gn-2155858",
+        "name": "Nambucca Heads",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.64318,
+        "lon": 153.00884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nambucca Heads",
+          "url": "https://en.wikipedia.org/wiki/Nambucca_Heads",
+          "text": "Nambucca Heads is a town on the Mid North Coast of New South Wales, Australia in the Nambucca Valley. It is located on a ridge, north of the estuary of the Nambucca River near the Pacific Highway. Its population at the 2021 census was 6,668 (6,314 in the 2016 census and 6,220 in the 2011 census), including 5,220 (78.3%) Australian–born persons; followed by 262 (3.9%) English people, 86 (1.3%) New Zealand people, 36 (0.5%) Scottish people, 33 (0.5%) German people, and 32 (0.5%) Filipino people. and 672 (10.1%) indigenous persons.\nThe place name is derived from an Gumbaynggirr word Ngambagabaga. Clement Hodgkinson asked two Ngamba men what the name of the area was they responded to Nyambagabaga as the spot they were standing was a bend in the river where a Ngamba giant was speared in the leg in the Dreaming. This location is the Foreshore Caravan Park now. Ngamba is a subsection of Gumbaynggirr Nation & Baga Baga means Knee. This was later interpreted as Nambucca. It is a popular holiday and retirement destination.\nThe town is located on the North Coast railway line, and is served by the three daily NSW TrainLink services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "nambucca heads",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nambucca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heads",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5609,
+    "attempt": 5566,
+    "place_id": "gn-2322552",
+    "input": {
+      "place": {
+        "place_id": "gn-2322552",
+        "name": "Takum",
+        "country": "Nigeria",
+        "subdivision": "Benue State",
+        "lat": 7.26667,
+        "lon": 9.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takum",
+          "url": "https://en.wikipedia.org/wiki/Takum",
+          "text": "Takum   is a town and Local Government Area of Taraba State, Nigeria. It was created out of Wukari local government in June 1976. Takum borders the Republic of Cameroon in the south, Ussa Local Government to the west, Donga Local Government to the north, District within Takum are Angwan Dutse, Angwa Abuja, Tikari, Fadama, Gahwetun, Akenten, Acha Nyim, Chanchanji (Peva), Sufa, Shimta, Kufi, Muji, Akenten, Lufu, Kashimbilla, Kpaasan, Likam, Bete, Malumshe, Jidu, Tampwa, Dumse, Nyayirim, Liji, Shibong Igbang, Barki Lissa, Acha Sarka, Sabon Gida Yukuben etc.\nTakum LGA is divided into eleven electoral wards namely: Bete, Chanchanji, Dutse, Fete, Gahweton, Kashimbila, Manya, Rogo, Shibong, Tikari, Yukuben                      \nMajor tribes are the Kuteb, Ichen, Kpanzon, Tiv, Chamba, Uhumkhigi and Hausa.\nTakum is under the Traditional leadership of The Ukwe of Takum Rimamnyang Habu Ahmadu II.\nThe postal code of the area is 671."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "takum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5610,
+    "attempt": 5567,
+    "place_id": "gn-2653298",
+    "input": {
+      "place": {
+        "place_id": "gn-2653298",
+        "name": "Chatteris",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.45624,
+        "lon": 0.05236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chatteris",
+          "url": "https://en.wikipedia.org/wiki/Chatteris",
+          "text": "Chatteris ( ) is a market town and civil parish in the Fenland district of Cambridgeshire, England, situated in the Fens between Huntingdon, March and Ely. The town is in the North East Cambridgeshire parliamentary constituency.\nThe parish of Chatteris is large, covering 6,099 hectares, and for much of its history was a raised island in the low-lying wetland of the Fens. Mentioned in the Domesday Book of 1086, the town has evidence of settlement from the Neolithic period. After several fires in the 18th and 19th centuries, the majority of the town's housing dates from the late Victorian period onwards, with the tower of the parish church the only medieval building remaining.\nFollowing the draining of the Fens, beginning in the 17th century and completed in the 19th century, the town's economy has been based on agriculture and related industry. Due to its proximity to Cambridge, Huntingdon and Peterborough, the town has emerged as a commuter town. The town had a population of 11,011 at the time of the United Kingdom Census 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "chatteris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5611,
+    "attempt": 5568,
+    "place_id": "gn-2733488",
+    "input": {
+      "place": {
+        "place_id": "gn-2733488",
+        "name": "Torre de Moncorvo",
+        "country": "Portugal",
+        "subdivision": "Bragança",
+        "lat": 41.17454,
+        "lon": -7.05364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torre de Moncorvo",
+          "url": "https://en.wikipedia.org/wiki/Torre_de_Moncorvo",
+          "text": "Torre de Moncorvo (European Portuguese pronunciation: [ˈtoʁɨ ðɨ mõˈkoɾvu] ), officially the Town of Torre de Moncorvo (Portuguese: Vila de Torre de Moncorvo), is a town and municipality in the district of Bragança in northern Portugal. In 2021, the municipality had 6,826 inhabitants, in an area of 531.56 square kilometres (205.24 mi2), while the town had 2,612 inhabitants. Notably, in 2013, the municipality recorded  the lowest birth rate in Portugal, 2.5 births per thousand inhabitants.\nSituated along the Douro River valley in the historical Trás-os-Montes region, Torre de Moncorvo has medieval origins tied to its strategic frontier location during the Reconquista. The municipality includes 13 civil parishes and hosts several heritage sites, including medieval town walls and religious buildings. Torre de Moncorvo’s cultural heritage reflects a diverse history, including a once significant Jewish community with autonomous jurisdiction in the medieval period. The town’s annual municipal holiday is celebrated on March 19.\nTorre de Moncorvo's economy is primarily driven by the public sector and services connected to agricultural activity. The municipality's largest crops are olives, almonds and vineyards. The municipality also hosts one of Europe’s largest iron ore deposits, historically central to the local economy and employment. Recent efforts to restart mining were halted, as of 2025, due to concession cancellation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "torre de moncorvo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "torre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moncorvo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5612,
+    "attempt": 5569,
+    "place_id": "gn-3117041",
+    "input": {
+      "place": {
+        "place_id": "gn-3117041",
+        "name": "Meco",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.55274,
+        "lon": -3.32894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meco, Spain",
+          "url": "https://en.wikipedia.org/wiki/Meco,_Spain",
+          "text": "Meco (Spanish: [ˈmeko] ) is a municipality in the eastern part of the Autonomous Community of Madrid, (Spain). In 2006, Meco had a population of 11,094 (Spanish National Statistics Institute).\nThe town is located to the north of the River Henares, in the comarca of La Campiña del Henares, and also in one of the two natural sub-comarcas that make up the Comarca de Alcalá, La Campiña del Henares, characterized by vast grain fields and gentle hills. It is 8 km to the north of the metropolitan area of Alcalá de Henares and 4 km from the University of Alcalá. It provides residences for the university and also is part of the Henares Industrial Corridor.\nOn the east, Meco borders the municipalities of Azuqueca de Henares and Villanueva de la Torre, of Guadalajara, and also the autonomous community of Castile-La Mancha. It can be reached by the Royal Cattle Track of Galiana or Riojana, and by the last section of the Henares Canal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "meco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5613,
+    "attempt": 5570,
+    "place_id": "gn-3667323",
+    "input": {
+      "place": {
+        "place_id": "gn-3667323",
+        "name": "Tello",
+        "country": "Colombia",
+        "subdivision": "Huila Department",
+        "lat": 3.06694,
+        "lon": -75.13778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tello, Huila",
+          "url": "https://en.wikipedia.org/wiki/Tello,_Huila",
+          "text": "Tello is a town and municipality in the Huila Department, Colombia. It is characterized by its extensive plain between the Magdalena River and the foot of the Cordillera Oriental mountain range up to its peaks, with the Fortalecillas and Villavieja rivers located nearby. Its territorial extension is 589 km², its altitude is 575 meters above sea level and its climate is warm with an average temperature of 26°C.\nIt has a population of 14,536 inhabitants according to the DANE projection for 2019. The urban area of the municipality is located in the northeast part of the department (Sub-North Region). Its economy is based on agricultural production and livestock activity. Fruits such as grapes and bananas, from which 91% of the total output is produced in the department, stimulate its economy, which is considered the basis of the development of the region. It is known as \"El Viñedo del Huila\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "tello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5614,
+    "attempt": 5571,
+    "place_id": "gn-3888523",
+    "input": {
+      "place": {
+        "place_id": "gn-3888523",
+        "name": "Hualqui",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -36.97266,
+        "lon": -72.93559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hualqui",
+          "url": "https://en.wikipedia.org/wiki/Hualqui",
+          "text": "Hualqui (Spanish pronunciation: [ˈ(g)walki]) is a Chilean city and commune in the Concepción Province, Biobio Region.  It is also part of the Greater Concepcion conurbation, although it maintains a rural profile.  It had a population of 24,333 inhabitants according to the 2017 census.\nIts name comes from the Moluche Aillarehue and rehue of Hualqui that existed there at the beginning of the Conquest of Chile. In 1577, the Royal Governor of Chile Rodrigo de Quiroga erected a small fort of Hualqui on the Biobío River 23 km (14 mi) from the city of Concepcion and 24 km (15 mi) to the northwest of Talcamávida at the site of the modern city and over time a small settlement grew around it.  In the beginning of 1756 Governor Manuel de Amat y Juniet erected a town there, named San Juan Bautista de Gualqui.  It served as capital to the Corregimiento de Puchacay and then Partido de Puchacay until 1799."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "hualqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5615,
+    "attempt": 5572,
+    "place_id": "gn-4502690",
+    "input": {
+      "place": {
+        "place_id": "gn-4502690",
+        "name": "Linwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.33984,
+        "lon": -74.57516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Linwood,_New_Jersey",
+          "text": "Linwood is a city in Atlantic County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 6,971, a decrease of 121 (−1.7%) from the 2010 census count of 7,092, which in turn reflected a decline of 80 (−1.1%) from the 7,172 counted in the 2000 census.\nLinwood was originally incorporated as a borough by an act of the New Jersey Legislature on February 20, 1889, from portions of Egg Harbor Township, based on the results of a referendum held the previous day. Linwood was reincorporated as a city on April 27, 1931. The area had been called Leedsville until 1880, when a post office was being established. The United States Postal Service insisted that the name had to be changed as it conflicted with an existing post office elsewhere in the state. Among the names proposed and considered by local residents were \"Brinola\", \"Geneva\", \"Pearville\" and \"Viola\", with \"Linwood\" ultimately chosen.\nGeographically, the city, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "linwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5616,
+    "attempt": 5573,
+    "place_id": "gn-4911863",
+    "input": {
+      "place": {
+        "place_id": "gn-4911863",
+        "name": "South Chicago",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.73977,
+        "lon": -87.55425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Chicago, Chicago",
+          "url": "https://en.wikipedia.org/wiki/South_Chicago,_Chicago",
+          "text": "South Chicago, formerly known as Ainsworth, is one of the 77 community areas of Chicago in Illinois, United States.\nThis chevron-shaped community is one of Chicago's 16 lakefront neighborhoods near the southern rim of Lake Michigan 10 miles south of downtown. A working-class neighborhood, it is bordered by East 79th Street on the north, South Chicago Avenue (the Chicago Skyway) on the southwest, a small stretch of East 95th Street on the south. With the Calumet River on the community's southeast side, South Chicago can be considered the gateway to the Calumet Region and one of the four Chicago neighborhoods (East Side, Hegewisch and South Deering) that are considered by the locals as part of Chicago's Southeast Side. The Southeast Side is a description that the city itself continues to resist, including this neighborhood with all of Chicago's South Side communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "south chicago",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chicago",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5617,
+    "attempt": 5574,
+    "place_id": "gn-4955259",
+    "input": {
+      "place": {
+        "place_id": "gn-4955259",
+        "name": "Weston",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.36676,
+        "lon": -71.30311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weston, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Weston,_Massachusetts",
+          "text": "Weston is a town in Middlesex County, Massachusetts, United States, located approximately 15 miles (24 km) west of Boston. At the time of the 2020 United States census, the population of Weston was 11,851.\nWeston was incorporated in 1713, and protection of the town's historic resources is driven by the Weston Historical Commission\nand Weston Historical Society. The town has one Local Historic District, 10 National Register Districts, 26 Historic Areas, and seven houses individually listed on the National Register of Historic Places.\nWeston's predominance as a residential community is reflected in its population density, which is among the lowest of Boston's suburbs near or within Route 128. More than 2,000 acres, or 18 percent of the town's total acreage, have been preserved as parks, fields, wetlands, and forests, with 90 miles of trails for hiking, horseback riding, and cross-country skiing. Thirty-seven scenic roads, as defined by Massachusetts law, maintain the town's aesthetic value and historical significance, affording Weston a semi-rural ambiance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "weston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5618,
+    "attempt": 5575,
+    "place_id": "gn-5106817",
+    "input": {
+      "place": {
+        "place_id": "gn-5106817",
+        "name": "Airmont",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.10093,
+        "lon": -74.11625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Airmont, New York",
+          "url": "https://en.wikipedia.org/wiki/Airmont,_New_York",
+          "text": "Airmont ( ) is a village in the town of Ramapo, Rockland County, New York, United States, located north of the state of New Jersey, east of Suffern, south of Montebello, and west of Chestnut Ridge. The population was 10,166 at the 2020 census.\nThe village of Airmont, incorporated in 1991, is a consolidation of the hamlets of Tallman, Airmont and South Monsey. Joseph Berger of The New York Times wrote in a 1997 article that Airmont was one of several Ramapo villages formed \"to preserve the sparse Better Homes and Garden [sic] ambiance that attracted them to Rockland County.\" In 2005, Peter Applebome of The New York Times said that Airmont was \"slapped around enough by the courts to be something other than a virginal player in any discrimination case\" since it ran into legal resistance to its development laws."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "airmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5619,
+    "attempt": 5576,
+    "place_id": "gn-5119211",
+    "input": {
+      "place": {
+        "place_id": "gn-5119211",
+        "name": "Great Kills",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.55427,
+        "lon": -74.15153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Kills, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Great_Kills,_Staten_Island",
+          "text": "Great Kills is a neighborhood within the borough of Staten Island in New York City. It is located on the island's South Shore, and according to many local geographers, it is the South Shore's northernmost community. It is bordered by Richmondtown to the north, Bay Terrace to the east, Eltingville to the west, and Great Kills Harbor to the south.\nKill is an archaic Dutch word with various popular translations, including \"creek\" and \"channel\". Indeed, many small streams dot the neighborhood, and the name can be interpreted as meaning that a great number of such streams can be found there.\nAs of 2021, the neighborhood is represented in the New York State Senate by Great Kills resident Andrew Lanza, in the New York State Assembly by Michael Reilly and Michael Tannousis, and in the New York City Council by Joseph Borelli.  All four are members of the Republican Party.\nGreat Kills is part of Staten Island Community District 3, and its ZIP Codes are 10308 and a small part of 10306. The neighborhood is patrolled by the 122nd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "great kills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5620,
+    "attempt": 5577,
+    "place_id": "gn-5336017",
+    "input": {
+      "place": {
+        "place_id": "gn-5336017",
+        "name": "Charter Oak",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.10306,
+        "lon": -117.84589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charter Oak, California",
+          "url": "https://en.wikipedia.org/wiki/Charter_Oak,_California",
+          "text": "Charter Oak is an unincorporated community and census-designated place (CDP) in the San Gabriel Valley of Los Angeles County, California, approximately 26 miles (42 km) east of downtown Los Angeles.  The population was 9,739 at the 2020 census, up from 9,310 at the 2010 census.\nCharter Oak is located in the eastern San Gabriel Valley, situated along Arrow Highway between Covina to the south, Glendora to the north and San Dimas to the east.  Residents tend to refer to the CDP portion as the \"unincorporated part of Covina\", or simply as \"Covina\".\nOriginally a small agricultural settlement (primarily citrus orchards) centered on the intersection of Arrow Highway and Bonnie Cove Avenue, population growth greatly expanded the area recognized as \"Charter Oak\".  In the 1960s, it evolved into a \"bedroom community\" suburb of Los Angeles and commercial agriculture is nearly gone.\nToday, the generally accepted boundaries of historical Charter Oak are I-210 to the north, Valley Center Avenue to the east, Covina Hills Road to the south and Grand Avenue to the west, corresponding to the boundaries of Charter Oak Unified School District. However, the actual CDP area is notably smaller in the present day. This places a large part of the area historically and colloquially known as Charter Oak within the modern-day city limits of Covina and Glendora."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "charter oak",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charter",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5621,
+    "attempt": 5578,
+    "place_id": "gn-585568",
+    "input": {
+      "place": {
+        "place_id": "gn-585568",
+        "name": "Mardakan",
+        "country": "Azerbaijan",
+        "subdivision": "Baki",
+        "lat": 40.49182,
+        "lon": 50.14292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mardakan",
+          "url": "https://en.wikipedia.org/wiki/Mardakan",
+          "text": "Mardakan (Azerbaijani: Mərdəkan, pronounced [mæɾdæˈkɑn]) is a settlement and municipality in Khazar Rayon of Baku, Azerbaijan, located on the coast of the Caspian Sea, with a population of 32,084. It's positioned on the eastern Absheron Peninsula, about 30 km away from downtown Baku, and just 10 km from Heydar Aliyev International Airport, bounded by Shuvalan to the east, Qala to the south, and Shagan to the west. It also borders Bina in the south-west, and Buzovna to the north-west. Mardakan is the third largest settlement in Khazar Rayon by population, and one of the most populated municipalities in the country. It is considered to be the center of the Khazar Rayon, with the district's office being located in the settlement.\nWidely regarded and known across the peninsula as a resort town, Mardakan attracts thousands of visitors every year during the summertime. It is praised for its beaches, a generally pleasant climate, and an abundance of recreational establishments. It occupies a portion of the northern part of the Khazar Rayon, although the municipality's territory was adjusted multiple times throughout its history. Mardakan was granted the status of a settlement in 1936. In 1933, Shagan village was incorporated into the Mardakan municipal council, however, Shagan was separated in 1945, only to be reunited with Mardakan in 1948. Finally, in 1994, Shagan once again became independent and was granted the status of a settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "mardakan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5622,
+    "attempt": 5579,
+    "place_id": "gn-698929",
+    "input": {
+      "place": {
+        "place_id": "gn-698929",
+        "name": "Novi Petrivtsi",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 50.62677,
+        "lon": 30.44281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novi Petrivtsi",
+          "url": "https://en.wikipedia.org/wiki/Novi_Petrivtsi",
+          "text": "Novi Petrivtsi (Ukrainian: Нові Петрівці) is a large village located just north of Kyiv, in Vyshhorod Raion, Kyiv Oblast, Ukraine. Today it is the administrative seat of the Petrivtsi rural hromada, one of the hromadas of Ukraine.\nJust outside the village lies the Mezhyhirya Residence, the former private residence of ousted Ukrainian President Viktor Yanukovych and epicenter of a corruption scandal during his time as prime minister. After Yanukovych fled Ukraine in the wake of the Revolution of Dignity, the complex was converted into a museum. Yanukovych was last seen publicly in the village of Novi Petrivsi before he disappeared from Ukraine around 2:00am on 22 February 2014, when local residents heard helicopters take off and saw two armored personnel carriers leave the area.\nA water reservoir of the Kyiv Hydro-Accumulating Power Station is located to the south of Novi Petrivtsi. Further south lies the city of Vyshhorod, which is adjacent to Kyiv.\nA training facility of the Internal Troops of Ukraine is also located near the village. It is currently being used to train new recruits for the National Guard of Ukraine.\nOn March 16, 2022 an apartment in Novi Petrivtsi was hit by a Russian airstrike, causing the structure to collapse. A two-year old boy was trapped under the debris and died soon after being rescued."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "novi petrivtsi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "novi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "petrivtsi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5623,
+    "attempt": 5580,
+    "place_id": "gn-709075",
+    "input": {
+      "place": {
+        "place_id": "gn-709075",
+        "name": "Partenit",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.578,
+        "lon": 34.34464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Partenit",
+          "url": "https://en.wikipedia.org/wiki/Partenit",
+          "text": "Partenit (Ukrainian: Партенiт, Russian: Партенит, Crimean Tatar: Partenit, Ancient Greek: Παρθένιον) is a seaside urban-type settlement under the administrative jurisdiction of the town of regional significance of Alushta in the southern part of the Autonomous Republic of Crimea (in Yalta Municipality), a territory recognized by a majority of countries as part of Ukraine and since 2014 occupied and incorporated by Russia as the Republic of Crimea. Population: 6,193 (2014 Census).\nLying just east of a mountain which Turkish speakers named Ayu Dağ (Russian: Медведь-гора; which means Bear Mountain), Partenit is on a fairly flat coastal plot of land, although the elevation quickly rises the further away one goes from the sea. Much of the architecture of the city is in the Soviet realist style. The current permanent-resident population is largely Russian and Ukrainian, with a significant influx of Tatars and Armenians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "partenit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

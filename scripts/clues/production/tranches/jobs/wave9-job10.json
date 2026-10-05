@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 9460,
+    "place_id": "gn-2634553",
+    "input": {
+      "place": {
+        "place_id": "gn-2634553",
+        "name": "Welwyn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.8331,
+        "lon": -0.21359
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welwyn",
+          "url": "https://en.wikipedia.org/wiki/Welwyn",
+          "text": "Welwyn   is a village and civil parish in Hertfordshire, England. The parish also includes the nearby villages and settlements of Digswell, Mardley Heath and Oaklands. The village is sometimes referred to as Old Welwyn or Welwyn Village, to distinguish it from the much newer and larger settlement of Welwyn Garden City, about a mile to the south.  Welwyn Garden City residents often refer to their town as Welwyn, causing them to call the village by the name of Old Welwyn to make a distinction.  Residents of the village usually refer to it as Welwyn, or sometimes Welwyn Village to make a distinction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "welwyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9466,
+    "place_id": "gn-3091961",
+    "input": {
+      "place": {
+        "place_id": "gn-3091961",
+        "name": "Międzyzdroje",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.92921,
+        "lon": 14.45097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Międzyzdroje",
+          "url": "https://en.wikipedia.org/wiki/Międzyzdroje",
+          "text": "Międzyzdroje (pronounced ['mʲɛnd͡zɨˈzdrɔjɛ] ; German: Misdroy), historically known as Misdroy in English, is a city and a seaside resort in northwestern Poland on the island of Wolin on the Baltic coast. The city is located in the West Pomeranian Voivodeship, and is the seat of Gmina Międzyzdroje. In 2016, it was inhabited by around 5,500 people.\nThe town is often referred to as The Pearl of the Baltic. It is situated between wide sandy beaches with high cliffs and the forests of the Woliński National Park (which includes a bison reserve). Międzyzdroje has a spa climate and is rich in tourist services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "miedzyzdroje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9469,
+    "place_id": "gn-3380402",
+    "input": {
+      "place": {
+        "place_id": "gn-3380402",
+        "name": "Saint-Georges",
+        "country": "French Guiana",
+        "subdivision": "Guyane",
+        "lat": 3.88857,
+        "lon": -51.80243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Georges, French Guiana",
+          "url": "https://en.wikipedia.org/wiki/Saint-Georges,_French_Guiana",
+          "text": "Saint-Georges (French pronunciation: [sɛ̃ ʒɔʁʒ] ; French Guianese Creole: Senjòrj; sometimes unofficially called Saint-Georges-de-l'Oyapock; Portuguese: São Jorge do Oiapoque) is a commune of French Guiana, an overseas region and department of France located in South America. It lies on the Oyapock River (which forms the border with Brazil), opposite the Brazilian town of Oiapoque. The town contains a town hall, a French Foreign Legion detachment, and some hotels (the main ones being Le Tamarin, Coz Calè and the Chez Modestine). Saint-Georges has been one of the three sub-prefectures of French Guiana and the seat of the Arrondissement of Saint-Georges since October 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "saint georges",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "georges",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9471,
+    "place_id": "gn-3489464",
+    "input": {
+      "place": {
+        "place_id": "gn-3489464",
+        "name": "Moneague",
+        "country": "Jamaica",
+        "subdivision": "Saint Ann Parish",
+        "lat": 18.27556,
+        "lon": -77.11177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moneague",
+          "url": "https://en.wikipedia.org/wiki/Moneague",
+          "text": "Moneague is a small town in Saint Ann, Jamaica on the main road between Kingston and Ocho Rios.\n\nIn the colonial days, the town prospered as a stopover for the rich English on their journey.\nMoneague is the location of the Jamaica Defence Force Moneague Training Camp originally developed by the British for the West India Regiment. This facility includes an airstrip.\nThe main attractions in the town are Moneague College (which is housed in the former colonial-era Moneague Hotel) and Moneague Lake. In 2006, the lake became the subject of headline news as it flooded its banks, destroying much local property."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "moneague",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9475,
+    "place_id": "gn-5307460",
+    "input": {
+      "place": {
+        "place_id": "gn-5307460",
+        "name": "Oracle",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.61091,
+        "lon": -110.77093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oracle, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Oracle,_Arizona",
+          "text": "Oracle is a census-designated place (CDP) in Pinal County, Arizona, United States. The population was 3,686 at the 2010 Census, falling to 3,051 at the 2020 Census.\nOracle State Park is adjacent. The Arizona Trail passes through the Park and community.\nOracle is the gateway to the road up the north face of Mount Lemmon, which starts off of American Avenue and currently offers a secondary route to the top. Prior to the construction of the Catalina Highway on the opposite side of the Santa Catalina range, the Oracle Control Road was the only road access to the mountain community of Summerhaven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "oracle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9477,
+    "place_id": "gn-5430023",
+    "input": {
+      "place": {
+        "place_id": "gn-5430023",
+        "name": "Manitou Springs",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 38.85971,
+        "lon": -104.9172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manitou Springs, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Manitou_Springs,_Colorado",
+          "text": "Manitou Springs is a home rule municipality located at the foot of Pikes Peak in western El Paso County, Colorado, United States. The town was founded for its natural mineral springs. The downtown area continues to be of interest to travelers, particularly in the summer, with many shops and restaurants, as well as a creekside city park. The main road through the center of town was one of the direct paths to the base of Pikes Peak. Barr Trail, which winds its way up Pikes Peak, is accessible from town. The subdivision Crystal Hills was added to the municipality in the 1960s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "manitou springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manitou",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9487,
+    "place_id": "gn-9972467",
+    "input": {
+      "place": {
+        "place_id": "gn-9972467",
+        "name": "North Warrandyte",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.72924,
+        "lon": 145.21574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Warrandyte",
+          "url": "https://en.wikipedia.org/wiki/North_Warrandyte",
+          "text": "North Warrandyte is a suburb of Melbourne, Victoria, Australia, 25 km north-east of Melbourne's Central Business District, located within the Shire of Nillumbik local government area. North Warrandyte recorded a population of 3,027 at the 2021 census.\nLocated in the bushy hills north of the Yarra River, North Warrandyte is separated from its southern neighbour Warrandyte by the river, as well as Municipal Boundaries, CFA Brigade (Country Fire Authority) Boundaries and Suburb Boundaries, yet the two exist as interlocked communities as though those boundaries didn't exist. Winding roads amongst the tree tops and unmade local streets are abundant in the small suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "north warrandyte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "warrandyte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9496,
+    "place_id": "gn-2635877",
+    "input": {
+      "place": {
+        "place_id": "gn-2635877",
+        "name": "Thurston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.25244,
+        "lon": 0.80749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thurston, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Thurston,_Suffolk",
+          "text": "Thurston is a village and a parish in Suffolk situated about 4 miles (6 km) east of Bury St Edmunds and 10 miles (16 km) west of Stowmarket.\nIn mid-2005, Thurston's estimated population was 3,260, making it one of the larger communities in the area, falling slightly to 3,232 at the 2011 Census.\nThurston railway station opened in 1846 and is still operating today. The village also has a frequent bus service to neighbouring towns, including Bury St Edmunds. The village is located under 2 miles (3 km) from the A14 and under 40 miles (64 km) from the M11 motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "thurston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9507,
+    "place_id": "gn-3013766",
+    "input": {
+      "place": {
+        "place_id": "gn-3013766",
+        "name": "Haute-Goulaine",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.19904,
+        "lon": -1.43012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haute-Goulaine",
+          "url": "https://en.wikipedia.org/wiki/Haute-Goulaine",
+          "text": "Haute-Goulaine (French pronunciation: [ot ɡulɛn] ; Gallo: Hautt-Góleinn, Breton: Gorre-Goulen) is a commune in the Loire-Atlantique department in western France. The commune is located near Nantes. Historically, the commune was part of Brittany.\nThe chateau de Goulaine is one of the tourist sites that can be visited in the commune. Henri IV of France (king from 1589 to 1610) made the seigneury of Goulaine a marquisate in favour of Gabriel de Goulaine, husband of Marguerite de Bretagne.\nOn 22 October 1941, six of the 16 hostages shot in Nantes following the attack on Karl Hotz were buried in the Haute-Goulaine cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "haute goulaine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "haute",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "goulaine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9515,
+    "place_id": "gn-3518732",
+    "input": {
+      "place": {
+        "place_id": "gn-3518732",
+        "name": "Ánimas Trujano",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.98913,
+        "lon": -96.71358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ánimas Trujano, Oaxaca",
+          "url": "https://en.wikipedia.org/wiki/Ánimas_Trujano,_Oaxaca",
+          "text": "Animas Trujano is a town and municipality in Oaxaca in south-western Mexico. The municipality covers an area of 6.7 km2, and it is part of the Centro District in the Valles Centrales region. Its climate is warm most of the time, and the municipal area has a diversity of both animal and plant species. As of 2005, the municipality had a total population of 3,189, the majority of them being Catholic. Approximately 69 people speak an indigenous language, according to the 2005 INEGI census. The origin of the name \"Animas Trujano\" dates to the times of the Mexican War of Independence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "animas trujano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "animas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trujano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9520,
+    "place_id": "gn-3981432",
+    "input": {
+      "place": {
+        "place_id": "gn-3981432",
+        "name": "Todos Santos",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 23.44688,
+        "lon": -110.22308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Todos Santos, Baja California Sur",
+          "url": "https://en.wikipedia.org/wiki/Todos_Santos,_Baja_California_Sur",
+          "text": "Todos Santos (Spanish: [ˈtoðos ˈsantos] ; \"All Saints\") is a small coastal town in the foothills of Mexico's Sierra de la Laguna Mountains, on the Pacific coast side of the Baja California Peninsula, about an hour's drive north of Cabo San Lucas on Highway 19 and an hour's drive southwest from La Paz. Todos Santos is located at the Tropic of Cancer in the municipality of La Paz. The population was 7,185 at the census of 2020. It is the second-largest town in the municipality. The town is known for its historical significance, surfing, a regionally pleasurable climate, and the arts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "todos santos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "todos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9522,
+    "place_id": "gn-4337049",
+    "input": {
+      "place": {
+        "place_id": "gn-4337049",
+        "name": "Pierre Part",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 29.9652,
+        "lon": -91.20316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pierre Part, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Pierre_Part,_Louisiana",
+          "text": "Pierre Part (French: Ville de Pierre Part) is a census-designated place (CDP) in Assumption Parish, Louisiana, United States. As of the 2020 census, Pierre Part had a population of 3,024. With 39.3 percent of the population speaking French at home, Pierre Part was the most francophone town in the United States (by percentage) outside of Maine in the 2000 census. Pierre Part is known locally for its prominent French influence and ancestry, which have become significant aspects of its contemporary local culture. Situated near Lake Verret, Pierre Part is a popular local destination for water sports and fishing during the summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "pierre part",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pierre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "part",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9527,
+    "place_id": "gn-4934753",
+    "input": {
+      "place": {
+        "place_id": "gn-4934753",
+        "name": "Dennis Port",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.65845,
+        "lon": -70.12863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dennis Port, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Dennis_Port,_Massachusetts",
+          "text": "Dennis Port (or Dennisport) is a census-designated place (CDP) in the town of Dennis in Barnstable County, Cape Cod, Massachusetts, United States. As of the 2020 census, Dennis Port had a population of 3,487.\nThe Swan Pond River and Upper County Road demarcate Dennis Port's western border with West Dennis. The village of West Harwich lies directly to Dennis Port's east, with the border demarcated by the median of Division Street. To the north of Dennis Port is South Dennis. Like other villages along Nantucket Sound, Dennis Port features warm-water beaches, like Haigis Beach, Sea Street Beach, and Glendon Road Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "dennis port",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dennis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9528,
+    "place_id": "gn-5118990",
+    "input": {
+      "place": {
+        "place_id": "gn-5118990",
+        "name": "Gowanda",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.46312,
+        "lon": -78.93587
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gowanda, New York",
+          "url": "https://en.wikipedia.org/wiki/Gowanda,_New_York",
+          "text": "Gowanda (Seneca: Dzogöwödih) is a village in western New York,  United States. It lies partly in Erie County and partly in Cattaraugus County. The population was 2,513 at the 2020 census. The name is derived from a local Seneca language term meaning \"almost surrounded by hills\" or \"a valley among the hills\". The Erie County portion of Gowanda is part of the Buffalo-Niagara Falls metropolitan area, while the Cattaraugus County portion is part of the Olean micropolitan statistical area.\nThe village is partly in the Town of Collins in Erie County and partly in the Town of Persia in Cattaraugus County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "gowanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9529,
+    "place_id": "gn-5290912",
+    "input": {
+      "place": {
+        "place_id": "gn-5290912",
+        "name": "Cornville",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 34.7178,
+        "lon": -111.92154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cornville, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Cornville,_Arizona",
+          "text": "Cornville is an unincorporated community in Yavapai County, Arizona, United States. The population as of the 2010 United States census was 3,280, down from 3,335 at the 2000 census. For statistical purposes, the United States Census Bureau has defined Cornville as a census-designated place (CDP) that includes the communities of Cornville and Page Springs.\nCornville and Page Springs are rapidly growing suburban areas that serve as bedroom communities for nearby Sedona and Cottonwood. Both communities are located along Oak Creek, a tributary of the Verde River. Lower Oak Creek has been designated an Important Bird Area by the National Audubon Society."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "cornville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9531,
+    "place_id": "gn-563601",
+    "input": {
+      "place": {
+        "place_id": "gn-563601",
+        "name": "Dzhubga",
+        "country": "Russia",
+        "subdivision": "Krasnodar Krai",
+        "lat": 44.3211,
+        "lon": 38.7073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dzhubga",
+          "url": "https://en.wikipedia.org/wiki/Dzhubga",
+          "text": "Dzhubga (Russian: Джу́бга; Adyghe: Жьыбгъэ, Ẑəbġă which means \"Wind\"; Ukrainian: Джубга) is a seaside resort situated 57 km west of Tuapse in Krasnodar Krai, Russia.\nDzhubga is the starting point of the M27 highway. It is connected to the region's capital, Krasnodar, by a 108-kilometre-long (67 mi) highway that runs northward, passing through Adygeysk and Goryachy Klyuch. \nIn June 2007, Eni and Gazprom disclosed the South Stream project whereby a 900-kilometre-long (560 mi) offshore natural gas pipeline with annual capacity of 31 cubic kilometers is planned to cross the Black Sea from Dzhubga to Varna, en route to Italy and Austria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "dzhubga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9532,
+    "place_id": "gn-5955902",
+    "input": {
+      "place": {
+        "place_id": "gn-5955902",
+        "name": "Fort Nelson",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 58.80533,
+        "lon": -122.7002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Nelson, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Fort_Nelson,_British_Columbia",
+          "text": "Fort Nelson is a community in northeast British Columbia, Canada, within the Northern Rockies Regional Municipality (NRRM). It held town status prior to 6 February 2009, when it amalgamated with the former Northern Rockies Regional District to form the NRRM, becoming its administrative centre. The NRRM is the first regional municipality in the province.\nThe community lies east of the northern Rocky Mountains in the Peace River region along the Alaska Highway at Mile 300. The town is approximately a four hour drive from the nearest urban centre, Fort St. John, but could potentially take six hours under winter driving conditions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "fort nelson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nelson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9533,
+    "place_id": "gn-5984000",
+    "input": {
+      "place": {
+        "place_id": "gn-5984000",
+        "name": "Iroquois Falls",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 48.76688,
+        "lon": -80.68307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iroquois Falls",
+          "url": "https://en.wikipedia.org/wiki/Iroquois_Falls",
+          "text": "Iroquois Falls is a town in Northern Ontario, Canada, with a population of 4,418 at the 2021 Canadian census.\nThe town centre lies 11 kilometres (6.8 mi) east of Highway 11 on the banks of the Abitibi River, west of Lake Abitibi. Timmins, one of the largest cities in northern Ontario, is approximately 70 kilometres (43 mi) to the southwest. The following communities are also within the municipal boundaries: Monteith, Nellie Lake, and Porquis Junction.\nIroquois Falls' primary industry was a large mill producing newsprint and commercial printing papers.  In December 2014, the owner, Resolute Forest Products, announced its permanent closure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "iroquois falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "iroquois",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9548,
+    "place_id": "gn-2173976",
+    "input": {
+      "place": {
+        "place_id": "gn-2173976",
+        "name": "Broadford",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.20276,
+        "lon": 145.04837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broadford, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Broadford,_Victoria",
+          "text": "Broadford is a town in central Victoria, Australia. At the 2021 census, Broadford had a population of 4,076. The town is the headquarters of the Shire of Mitchell local government area and is approximately 73 kilometres (50 mi) north of the state capital, Melbourne.\nBroadford lies on the major transport routes between Melbourne and Sydney. The town is bypassed to the east by the Hume Freeway and the railway line linking the two cities passes through Broadford. Broadford is located on the banks of Sunday Creek, a tributary of the Goulburn River and is set amongst dramatic central Victorian scenery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "broadford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9555,
+    "place_id": "gn-2652546",
+    "input": {
+      "place": {
+        "place_id": "gn-2652546",
+        "name": "Colnbrook",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48384,
+        "lon": -0.52142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colnbrook",
+          "url": "https://en.wikipedia.org/wiki/Colnbrook",
+          "text": "Colnbrook is a village in the Slough district in Berkshire, England. It lies within the historic boundaries of Buckinghamshire, and straddles two distributaries of the Colne, the Colne Brook and Wraysbury River. These two streams have their confluence just to the southeast of the village. Colnbrook is centred 3 miles (4.8 km) southeast of the Slough town centre, 4 miles (6.4 km) east of Windsor, and 19 miles (31 km) west of central London.\nColnbrook forms the greater part of the civil parish of Colnbrook with Poyle (see also Poyle). Junctions of the M4 and M25 are near the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "colnbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

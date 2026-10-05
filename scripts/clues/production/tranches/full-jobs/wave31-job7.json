@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 6165,
+    "attempt": 6121,
+    "place_id": "gn-3980833",
+    "input": {
+      "place": {
+        "place_id": "gn-3980833",
+        "name": "Tuzantla",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.20289,
+        "lon": -100.56679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuzantla",
+          "url": "https://en.wikipedia.org/wiki/Tuzantla",
+          "text": "Tuzantla is a municipality in the eastern part of the Mexican state of Michoacán. The municipality has an area of 1,018.49 square kilometres (1.73% of the surface of the state) and is bordered to the north by the municipalities of Jungapeo and Hidalgo, to the east by Juárez and Susupuato, to the south by Tiquicheo and the state of Guerrero, and to the west by Tiquicheo and Tzitzio. The municipality had a population of 15,302 inhabitants according to the 2005 census.  Its municipal seat is the city of the same name. \nIn Pre-Columbian times, the area was inhabited by Nahuas, but was conquered by the Purépecha Empire. Its name, Tuzantla, is a word of Nahuatl origin that means \"Place where gophers are abundant\". Its Purépecha name was either Cusaro or Ocumo (also spelled Hocumu or Ucumu), the latter meaning \"Otomi\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "tuzantla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6166,
+    "attempt": 6122,
+    "place_id": "gn-4167102",
+    "input": {
+      "place": {
+        "place_id": "gn-4167102",
+        "name": "Orange Park",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.16607,
+        "lon": -81.70648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orange Park, Florida",
+          "url": "https://en.wikipedia.org/wiki/Orange_Park,_Florida",
+          "text": "Orange Park is a town in Clay County, Florida, United States. As a suburb of Jacksonville in neighboring Duval County, it is formally a part of the Jacksonville, Florida Metropolitan Statistical Area. The population was 9,089 at the 2020 census, up from 8,412 from the 2010 census. while the Town of Orange Park is only 5.32 sq mi large, Orange Park is the designated city on all addresses for all homes and businesses within the zip codes 32065 and 32073, which includes Lakeside, Bellair-Meadowbrook Terrace and Oakleaf Plantation.\nThe town's name reflects the hope of its founders for a fruit-growing industry, but their crops were destroyed in the Great Freeze of 1894–1895. Despite recovery elsewhere, the crops never came back to Orange Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "orange park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6167,
+    "attempt": 6123,
+    "place_id": "gn-4352681",
+    "input": {
+      "place": {
+        "place_id": "gn-4352681",
+        "name": "Cumberland",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.65287,
+        "lon": -78.76252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumberland, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Cumberland,_Maryland",
+          "text": "Cumberland is a city in Allegany County, Maryland, United States, and its county seat. The city had a population of 19,075 at the 2020 census. Located on the Potomac River, Cumberland is a regional business and commercial center for Western Maryland and the Potomac Highlands of West Virginia. It is the primary city of the Cumberland micropolitan area, which had 95,044 residents in 2020.\nHistorically, Cumberland was known as the \"Queen City\" as it was once the second largest in the state. Because of its strategic location on what became known as the Cumberland Road through the Appalachians, after the American Revolution it served as a historical outfitting and staging point for westward emigrant trail migrations throughout the first half of the 1800s. In this role, it supported the settlement of the Ohio Country and the lands in that latitude of the Louisiana Purchase. It also became an industrial center, served by major roads, railroads, and the Chesapeake and Ohio Canal, which connected Cumberland to Washington, D.C., and is now a national historical park. Interstate 68 bisects the town.\nIndustry declined after World War II, leading urban, business, and technological development in the state to be concentrated in eastern coastal cities. The Cumberland micropolitan area is one of the poorest in the United States, ranking 707th out of 935 metropolitan and micropolitan areas in per capita income, according to the 2023 American Community Survey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "cumberland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6168,
+    "attempt": 6124,
+    "place_id": "gn-4370890",
+    "input": {
+      "place": {
+        "place_id": "gn-4370890",
+        "name": "Takoma Park",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.97789,
+        "lon": -77.00748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takoma Park, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Takoma_Park,_Maryland",
+          "text": "Takoma Park is a city in Montgomery County, Maryland, United States. It is a suburb of Washington, D.C., and part of the Washington metropolitan area. Founded in 1883 and incorporated in 1890, Takoma Park, informally called \"Azalea City\", is a Tree City USA and a nuclear-free zone. A planned commuter suburb, it is situated along the Metropolitan Branch of the historic Baltimore and Ohio Railroad, just northeast of Washington, D.C., and it shares a border and history with the adjacent Washington, D.C. neighborhood of Takoma. It is governed by an elected mayor and six elected councilmembers, who form the city council, and an appointed city manager, under a council-manager style of government. The city's population was 17,629 at the 2020 United States census.\nSince 2013, residents of Takoma Park can vote in municipal elections when they turn sixteen. It was the first city in the United States to extend voting rights to 16- and 17-year-olds in city elections. Since then, the City of Hyattsville has followed suit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "takoma park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "takoma",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6169,
+    "attempt": 6125,
+    "place_id": "gn-4571722",
+    "input": {
+      "place": {
+        "place_id": "gn-4571722",
+        "name": "Bluffton",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 32.23715,
+        "lon": -80.86039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bluffton, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Bluffton,_South_Carolina",
+          "text": "Bluffton is a town in southern Beaufort County, South Carolina, United States. The population as of the 2020 census was 27,716, an increase of over 120% since the 2010 census, making it the 17th-most populous municipality and one of the fastest growing municipalities in South Carolina. It is primarily located around U.S. Route 278 between Hilton Head Island and Interstate 95. Bluffton is a principal town within the Hilton Head Island metropolitan area.\nThe Lowcountry town's original one square mile area, now known as Old Town, is situated on a bluff along the May River. After the Tariff of 1842, Bluffton became a hotbed of separatist sentiment, which in turn led to a protest against federal taxes called the Bluffton Movement in 1844. Even though the movement quickly died out, it somewhat contributed to the secession movement that led to South Carolina being the first state to leave the Union. In the Antebellum Period, Bluffton became a popular location for wealthy merchants and plantation owners. During the Civil War, two thirds of the town was destroyed by fire during the Union's Bluffton Expedition on June 4, 1863."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "bluffton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6170,
+    "attempt": 6126,
+    "place_id": "gn-5107464",
+    "input": {
+      "place": {
+        "place_id": "gn-5107464",
+        "name": "Astoria",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.77205,
+        "lon": -73.93014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astoria, Queens",
+          "url": "https://en.wikipedia.org/wiki/Astoria,_Queens",
+          "text": "Astoria is a neighborhood in the western portion of the New York City borough of Queens. Astoria is bounded by the East River to the west and north and is adjacent to four other Queens neighborhoods: Long Island City to the southwest, Sunnyside to the southeast, and Woodside and East Elmhurst to the east. As of 2024, Astoria has an estimated population of 198,608.\nThe Astoria area was originally inhabited by Native Americans known to Europeans as the Mespat or Maspeth tribe. European settlement began in the seventeenth century, notably by Englishman William Hallett and his wife Elizabeth Fones, leading to its original name of Hallett’s Cove. Stephen Halsey, known as the father of Astoria, expanded and improved the settlement in the 1830s. The village was incorporated in 1839 and named after fur tycoon John Jacob Astor.\nDuring the second half of the 19th century, economic and commercial growth brought increased immigration. Astoria and several other surrounding villages were incorporated into Long Island City in 1870, which in turn was incorporated into the City of Greater New York in 1898. Commercial activity continued through the 20th century, with the area being a center for filmmaking and industry. Astoria is one of the most ethnically diverse neighborhoods in Queens.\nAstoria is colloquially referred to by several nicknames: \"Actoria,\" highlighting the neighborhood's significant population of actors, drawn by its proximity to the Kaufman Astoria Studios, Silvercup Studios, and the Theater District; \"The People's Republic of Astoria\", referencing the neighborhood's reputation as a progressive political hub that by 2023 had become the only district in the United States to elect Democratic Socialists of America representatives at municipal, state, and federal levels; and \"The Big Apple's Fruit Basket,\" due to the thousands of fruit trees, particularly fig trees, cultivated in local yards.\nAstoria is located in Queens Community District 1, and is patrolled by the New York City Police Department's 114th Precinct.  Politically, Astoria is represented by the New York City Council's 22nd, 25th, and 26th districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "astoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6171,
+    "attempt": 6127,
+    "place_id": "gn-5138950",
+    "input": {
+      "place": {
+        "place_id": "gn-5138950",
+        "name": "South Ozone Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.6701,
+        "lon": -73.81902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Ozone Park",
+          "url": "https://en.wikipedia.org/wiki/South_Ozone_Park",
+          "text": "South Ozone Park is a neighborhood in the southwestern section of the New York City borough of Queens. It is just north of John F. Kennedy International Airport, between Aqueduct Racetrack to the west and the Van Wyck Expressway to the east. Adjacent neighborhoods include Ozone Park to the west; Richmond Hill to the north; Jamaica, South Jamaica, and Springfield Gardens to the east; and Howard Beach and Old Howard Beach to the southwest.\nRockaway Boulevard is South Ozone Park's main business strip. There is also a high concentration of small businesses along Liberty Avenue, which is also one of South Ozone Park's main source of revenue.\nSouth Ozone Park is located in Queens Community District 10 and its ZIP Code is 11420. It is patrolled by the New York City Police Department's 106th Precinct. Politically, South Ozone Park is represented by the New York City Council's 28th and 32nd Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "south ozone park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ozone",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6172,
+    "attempt": 6128,
+    "place_id": "gn-5402535",
+    "input": {
+      "place": {
+        "place_id": "gn-5402535",
+        "name": "Tiburon",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.87354,
+        "lon": -122.45664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiburon, California",
+          "url": "https://en.wikipedia.org/wiki/Tiburon,_California",
+          "text": "Tiburon ( TIB-ər-on; Spanish: Tiburón, [tiβuˈɾon]) is an incorporated town in Marin County, California, United States. It is located on the Tiburon Peninsula, which reaches south into the San Francisco Bay. It shares a ZIP code (94920) with the smaller incorporated city of Belvedere (formerly a separate island), which occupies the southwestern part of the peninsula and is contiguous with Tiburon. Tiburon is bordered by Corte Madera to the north and Mill Valley to the west, but is otherwise mostly surrounded by the bay. Besides Belvedere and Tiburon, much of the peninsula is unincorporated, including portions of the north side and the communities of Strawberry and Paradise Cay.\nThe population of Tiburon was 9,146 at the 2020 census and has 6,600 registered voters. Belvedere and Tiburon share a post office, library, and recreation agency.\nThe city's name derives from the Spanish word tiburón, which means \"shark\". The name was first given to the peninsula on which the city is situated, and probably inspired by the prevalence of locally native leopard sharks in the surrounding waters. Tiburon was formerly the southern terminus of the San Francisco and North Pacific Railroad (subsequently the Northwestern Pacific Railroad), which transported freight for transfer to barges for shipping to cities around San Francisco Bay. It is now a commuter and tourist town, linked by fast ferry services to San Francisco and with a concentration of restaurants and clothes shops. It is the nearest mainland point to Angel Island and a regular ferry service connects to the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "tiburon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6173,
+    "attempt": 6129,
+    "place_id": "gn-5463237",
+    "input": {
+      "place": {
+        "place_id": "gn-5463237",
+        "name": "Corrales",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 35.23782,
+        "lon": -106.60669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corrales, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Corrales,_New_Mexico",
+          "text": "Corrales is a village in southern Sandoval County, New Mexico, United States. First farmed by Tiquex Pueblo people, chosen due to its proximity to the Rio Grande, as documented by Hispano farmers of Nuevo México in the late 1500s. Despite being a part of the Albuquerque metropolitan area, the village maintains its rural character, while also being surrounded by the cities of Albuquerque and Rio Rancho. As of the 2020 census, Corrales had a population of 8,493.\nThe Rio Grande Bosque on the eastern edge of the village provides refuge for native animals and plants, and ancient Pueblo and Hispano acequias continue to be maintained by the United States Department of Agriculture's Natural Resources Conservation Service and the Middle Rio Grande Conservancy District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "corrales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6174,
+    "attempt": 6130,
+    "place_id": "gn-55223",
+    "input": {
+      "place": {
+        "place_id": "gn-55223",
+        "name": "Las Khorey",
+        "country": "Somalia",
+        "subdivision": "Sanaag",
+        "lat": 11.1595,
+        "lon": 48.1967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Khorey",
+          "url": "https://en.wikipedia.org/wiki/Las_Khorey",
+          "text": "Las Qoray (Somali: Laasqoray, Arabic: لاسقُرَى Lāsqoray) is a historic coastal town in the Sanaag region of Somalia.\nBBC reported in 2021, \"The Navy or Somalia Coast Guard is one of the military departments of Somalia, operating on the coast of Somaliland in Las Qoray, Zeila and Berbera.\" Somaliland National TV (SLNTV) reported in its September 2023 broadcast that Las Qoray is a territory of Somaliland. Hiiraan Online reported in a January 2024 article, \"Las Qoray is outside Hargeisa's control.\" Andrew Palmer, CEO of the maritime consultancy Idarat Ltd, describes Las Qoray as \"on the north coast of Puntland\" in 2014. Awet Tewelde Weldemichael, an associate professor at Queen's University, wrote in his book \"Puntland coast between Las Qoray and Hafun\" in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "las khorey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "khorey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6175,
+    "attempt": 6131,
+    "place_id": "gn-614575",
+    "input": {
+      "place": {
+        "place_id": "gn-614575",
+        "name": "Gardabani",
+        "country": "Georgia",
+        "subdivision": "Kvemo Kartli",
+        "lat": 41.45967,
+        "lon": 45.08988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gardabani",
+          "url": "https://en.wikipedia.org/wiki/Gardabani",
+          "text": "Gardabani (Georgian: გარდაბანი) is a city of 11,650 residents (2021) in the valley or plain of the same name, in the southern Georgian region of Kvemo Kartli and is the administrative centre of the Gardabani Municipality. It is located 34 kilometres (21 mi) southeast of capital Tbilisi and 10 kilometres (6.2 mi) from Rustavi in the Kvemo Kartli Plain at an elevation of 300 metres (980 ft) above sea level. Until 1947 Gardabani was known as Karayazi (Azerbaijani: Qarayazı) and the city status was granted in 1969, after a thermal power plant was built for Tbilisi in the 1960s causing rapid growth. Since then more plower plants have been built and the city nowadays supplies almost all thermally generated electricity in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "gardabani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6176,
+    "attempt": 6132,
+    "place_id": "gn-6232237",
+    "input": {
+      "place": {
+        "place_id": "gn-6232237",
+        "name": "Mount Eden",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.88158,
+        "lon": 174.76204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Eden",
+          "url": "https://en.wikipedia.org/wiki/Mount_Eden",
+          "text": "Mount Eden is a suburb in Auckland, New Zealand, whose name honours George Eden, 1st Earl of Auckland. It is 4 kilometres (2.5 mi) south of the Central Business District (CBD). Mt Eden Road winds its way around the side of Mount Eden Domain and continues to weave back and forth as it descends into the valley; it runs south from Eden Terrace to Three Kings. Mt Eden village centre is located roughly between Valley Road and Grange Road. The domain is accessible on foot from many of the surrounding streets, and by vehicle from Mt Eden Road. The central focus of the suburb is Maungawhau / Mount Eden, a dormant volcano whose summit is the highest natural point on the Auckland isthmus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mount eden",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eden",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6177,
+    "attempt": 6133,
+    "place_id": "gn-6534274",
+    "input": {
+      "place": {
+        "place_id": "gn-6534274",
+        "name": "Valderice",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.04005,
+        "lon": 12.61505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valderice",
+          "url": "https://en.wikipedia.org/wiki/Valderice",
+          "text": "Valderice (Sicilian: Valdèrici) is a town and comune in North-Western Sicily, Italy, administratively part of the province of Trapani.  The city is located in the inland, close to the provincial capital city of Trapani, but includes also a seaside frazione, Bonagia, in its territory.\nPreviously called Paparella, the comune was created following the division of the comune of Monte San Giuliano, which had contained Erice, Custonaci and Buseto Palizzolo, as well as Valderice. It is the chief comune of the five Elimo-ericini communi and the most populous of them; it is the eighth most populous comune in the province.\nValderice contains several scenic areas: hills, wooded areas, beaches, sea-cliffs, and countryside. There are three beach resorts: Bonagia, Lido Valderice, and Rio Forgia beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "valderice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6178,
+    "attempt": 6134,
+    "place_id": "gn-660325",
+    "input": {
+      "place": {
+        "place_id": "gn-660325",
+        "name": "Ekenäs",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 59.97359,
+        "lon": 23.43389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ekenäs, Finland",
+          "url": "https://en.wikipedia.org/wiki/Ekenäs,_Finland",
+          "text": "Ekenäs (Finland Swedish: [ˈeːkeneːs] ; Finnish: Tammisaari [ˈtɑmːisɑːri]) is a town and former municipality in Finland that was formed by the merger of the former municipalities of Snappertuna and Tenala with the town of Ekenäs. It was then merged with Pohja and Karis to form the new municipality of Raseborg on 1 January 2009. Ekenäs is in the province of Southern Finland, and is part of the Uusimaa (Swedish: Nyland) region. The town had a population of 14,754 (as of 31 December 2008) and covered a land area of 726.73 square kilometres (280.59 sq mi). The population density was 20.30 inhabitants per square kilometre (52.6/sq mi). The town is bilingual, with the majority being Swedish speakers (81%), and the minority Finnish speakers (17%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ekenas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6179,
+    "attempt": 6135,
+    "place_id": "gn-6691235",
+    "input": {
+      "place": {
+        "place_id": "gn-6691235",
+        "name": "Heywood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.59245,
+        "lon": -2.21941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heywood, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Heywood,_Greater_Manchester",
+          "text": "Heywood is a town in the Metropolitan Borough of Rochdale, Greater Manchester, England, on the south bank of the River Roch, 2 miles (3.2 km) east of Bury, 4 miles (6.4 km) southwest of Rochdale, and 8 miles (12.9 km) north of Manchester. Middleton lies to the south, whilst to the north is the Cheesden Valley, open moorland, and the Pennines.\nThe Anglo-Saxons cleared the densely wooded area, dividing it into heys or fenced clearings. In the Middle Ages, Heywood formed a chapelry in the township, around Heywood Hall, a manor house owned by a family with that surname. Farming was the main industry of a sparsely populated rural area. The population supplemented their incomes by hand-loom woollen weaving in the domestic system.\nThe factory system in the town can be traced to a spinning mill in the late 18th century. Following the introduction of textile manufacture during the Industrial Revolution, Heywood developed into a mill town and coal mining district. A period of \"extraordinary growth of the cotton-trade\" in the mid 19th century was so quick and profound that there was \"an influx of strangers causing a very dense population\". The town became a municipal borough in 1881. Imports of foreign cotton goods in the mid-20th century precipitated the decline of Heywood's textile and mining industries, resulting in a more diverse industrial base. The town was well respected for the quality of its cotton goods. The Queen Mother once visited Heywood in the very early 1900s to admire the cotton in its factories. Cotton from Heywood cotton mills was used to create the dress that she wore for her 50th birthday celebration speech.\nHeywood is close to junction 19 of the M62 motorway, which provides transport links for the large distribution parks in the south of the town. The 1860s-built 188-foot (57 m) tall Parish Church of St Luke the Evangelist dominates the town centre and skyline. Heywood was the birthplace of Peter Heywood, the magistrate who aided the discovery of the Gunpowder Plot, whose family seat was Heywood Hall. Heywood has a station on the East Lancashire heritage railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "heywood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6180,
+    "attempt": 6136,
+    "place_id": "gn-725213",
+    "input": {
+      "place": {
+        "place_id": "gn-725213",
+        "name": "Beloslav",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.18717,
+        "lon": 27.70352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beloslav",
+          "url": "https://en.wikipedia.org/wiki/Beloslav",
+          "text": "Beloslav (Bulgarian: Белослав [bɛɫoˈsɫaf]) is a small industrial town in Varna Province, Northeastern Bulgaria, located 19 km away to the west from Varna downtown and Bulgarian Black Sea coast.  It is the administrative centre of the homonymous Beloslav Municipality. As of December 2009, the town had a population of 7,937.  Beloslav is located along the eastern edge of Lake Beloslav and on both sides of the canal connecting it with Lake Varna.  The two parts of town are connected by a vehicle and passenger ferry across the canal.  A road bridge is to be built in the near future over the canal east of town carrying a bypass of the E87 international highway now passing through downtown Varna via the Asparuhov most bridge.\nBeloslav is an ancient settlement populated probably about 12,000 years ago.  The first settlers inhabited the cave near today's town, where 12,000-year-old items were found.  Around the 5th century BC the Thracians settled in the region.  The town was also known as Krushevo, Gebedzhe (Turkish: Gebece), Belovo, and Belevo. The Ottoman name is still used today in certain situations.\nBeloslav is a transportation and industrial hub of national significance, part of the Varna-Devnya Industrial Complex. Transportation facilities include the railway and ro-ro ferry terminal with lines to Ukraine, Russia and Georgia served by the Sindel-razpredelitelna marshalling yard, the seaports of Varna Power Plant and LesPort of the Port of Varna complex, and a couple of railway stations. The largest (1320 MW capacity plus an 880 MW natural gas-fueled installation under development) thermal power plant in the nation, TEC Varna, part of the CEZ Group, and the Terem Flotski Arsenal shipbuilding/repair yard, comprising also an Oceanic-Creations facility, are located just east of town. TEC Varna materialized the largest cash privatization deal in the nation after 1989.\nBeloslav is an old centre of artistic glassblowing and fireproof glassmaking and currently supplies glass vials to international pharmaceutical companies. In 2007, development of a new business and logistics centre started on the site of a former glass factory; it will also include two new manufacturing facilities and a port terminal for handling natural gas condensate, and will create a total of 2,000 jobs. The northeastern industrial park also contains several construction operations.\nBeloslav is the seat of a municipality, which also includes the following villages:\n\nEzerovo\nRazdelna\nStrashimirovo"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 387
+    },
+    "banned_terms": [
+      {
+        "term": "beloslav",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6181,
+    "attempt": 6137,
+    "place_id": "gn-7315210",
+    "input": {
+      "place": {
+        "place_id": "gn-7315210",
+        "name": "Sun Village",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.55952,
+        "lon": -117.95676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sun Village, California",
+          "url": "https://en.wikipedia.org/wiki/Sun_Village,_California",
+          "text": "Sun Village is an unincorporated community and census-designated place (CDP) in Los Angeles County, California, United States. It is in the eastern Antelope Valley at an elevation of 2,723 feet (830 m). The center of Sun Village may be considered to be Palmdale Boulevard and 87th Street East as noted at the Los Angeles County Assessors office. As of the 2020 census the population of Sun Village was 12,345, up from 11,565 at the 2010 census.\nSun Village has been awarded federal, state, and county grants for the community based on this Avenue U boundary. There is a movement from the Sun Village Town Council to rebrand the area with the Sun Village name, which fell out of popularity in the early 1980s. New road signage erected around 2011 now labels Sun Village as a unique community. \nIn 2007, the Sun Village and Littlerock town councils formed a Community Standard District together, and it was approved by the Los Angeles County Board of Supervisors.\nOn September 3, 2014, officials from Sun Village and the city of Palmdale gathered at the Palmdale City Council Chamber to sign a Memorandum of Understanding (MOU) in which Palmdale removed its sphere of influence from Sun Village.\nSun Village residents, as in many other Antelope Valley communities, take part in local pageants and parades. The community operates its own local chamber of commerce and town council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "sun village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6182,
+    "attempt": 6138,
+    "place_id": "gn-732280",
+    "input": {
+      "place": {
+        "place_id": "gn-732280",
+        "name": "Devnya",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.22222,
+        "lon": 27.56944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Devnya",
+          "url": "https://en.wikipedia.org/wiki/Devnya",
+          "text": "Devnya (Bulgarian: Девня [ˈdɛvnʲɐ]) is a town in Varna Province, Northeastern Bulgaria, located about 25 km away to the west from the city of Varna and The Black Sea Coast. It is the administrative centre of the homonymous Devnya Municipality. As of December 2009, the town had a population of 8,383.\n\nIt lies at the western shore of Lake Beloslav in the northeastern end of the Devnya Valley and along the southern slopes of the Dobruja Plateau, in the close proximity to the Black Sea. Two rivers, Devnya and Provadiya, empty into the lake nearby. The landscape is mostly karst with 30 karst springs with a debit of 3700 litres per second used for water supply for Devnya, Varna and the local industries. One of the largest springs, feeding a pool, is open for visitors. Along the river mouths there are extensive wetlands once rich in fish and crabs but now polluted by industrial waste.\nLocal landmarks include Roman remains of ancient Marcianopolis, including an amphitheatre and the Mosaics Museum, featuring some exquisite Roman mosaics [1] in situ, and Pobiti Kamani (\"stone forest\"), a rock phenomenon to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "devnya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6183,
+    "attempt": 6139,
+    "place_id": "gn-739838",
+    "input": {
+      "place": {
+        "place_id": "gn-739838",
+        "name": "Selimpaşa",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.05526,
+        "lon": 28.36778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selimpaşa",
+          "url": "https://en.wikipedia.org/wiki/Selimpaşa",
+          "text": "Selimpaşa, known in Byzantine times as Epibates (sometimes as Epivates or Epibatos; Greek: Επιβάτες), is a neighbourhood in the municipality and district of Silivri, Istanbul Province, in the European part of Turkey. Its population is 23,378 (2022). It was an independent municipality until it was merged into the municipality of Silivri in 2008.\nThe town is located on the northwestern coast of the Marmara Sea, 50 km (31 mi) west of Istanbul and 13 km (8.1 mi) east from Silivri on the highway D.100. \nThe town is the native place of the 10th-century Orthodox saint St Paraskevi and was populated mostly by Greeks until the population exchange in the 1920s. Most of these Greeks then founded the town of Neoi Epivates near Thessaloniki.\nSelimpaşa today is a summer resort with long sandy beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "selimpasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6184,
+    "attempt": 6140,
+    "place_id": "gn-1220962",
+    "input": {
+      "place": {
+        "place_id": "gn-1220962",
+        "name": "Murghob",
+        "country": "Tajikistan",
+        "subdivision": "Gorno-Badakhshan",
+        "lat": 38.17023,
+        "lon": 73.96674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murghob",
+          "url": "https://en.wikipedia.org/wiki/Murghob",
+          "text": "Murghob (Tajik: Мурғоб) or Murghab (Russian: Мургаб, Murgab, from the Persian word margh-ab, meaning 'prairie river') is the capital of Murghob District in the Pamir Mountains of Gorno-Badakhshan, Tajikistan. With a population of just under 7,500, Murghob is the only significant town in the eastern half of Gorno-Badakhshan. It is the highest town in Tajikistan (and of the former Soviet Union) at 3,650 meters above sea level. It is where the Pamir Highway crosses the Bartang river.\nThe Pamir Highway goes north to Sary-Tash and on to Osh in Kyrgyzstan and southwest to the region's capital Khorugh. Another road goes east over the Kulma Pass to the Karakoram Highway in China connecting to Tashkurgan to the south and Kashgar to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "murghob",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

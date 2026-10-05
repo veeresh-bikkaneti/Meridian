@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 5463,
+    "attempt": 5421,
+    "place_id": "gn-2155386",
+    "input": {
+      "place": {
+        "place_id": "gn-2155386",
+        "name": "Newtown",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.89835,
+        "lon": 151.17754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newtown, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Newtown,_New_South_Wales",
+          "text": "Newtown, a suburb of Sydney's inner west, is located approximately four kilometres south-west of the Sydney central business district, straddling the local government areas of the City of Sydney and Inner West Council in the state of New South Wales, Australia.\nKing Street is the main street of Newtown and centre of commercial and entertainment activity. The street follows the spine of a long ridge that rises up near the University of Sydney and extends to the south, becoming the Princes Highway at its southern end.\nEnmore Road branches off King Street towards the suburb of Enmore at Newtown Bridge, where the road passes over the Main Suburban railway line at Newtown railway station.\nEnmore Road and King Street together comprise 9.1 kilometres of over 600 shopfronts. The main shopping strip of Newtown is the longest and most complete commercial precinct of the late Victorian and Federation period in Australia. \nKing Street is often referred to as \"Eat Street\" in the media due to the large number of cafés, pubs and restaurants of various cultures. Cafés, restaurants and galleries can also be found in the streets surrounding King Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "newtown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5464,
+    "attempt": 5422,
+    "place_id": "gn-2619154",
+    "input": {
+      "place": {
+        "place_id": "gn-2619154",
+        "name": "Kalundborg",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.67954,
+        "lon": 11.08864
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalundborg",
+          "url": "https://en.wikipedia.org/wiki/Kalundborg",
+          "text": "Kalundborg (Danish: [kʰælɔnˈpɒˀ]) is a Danish city with a population of 16,466 (1 January 2026), the main town of the municipality of the same name and the site of its municipal council. It is situated on the northwestern coast of the largest Danish island, Zealand (or Sjælland in Danish), on the opposite, eastern side of which lies the capital Copenhagen, 110 km (68 mi) away.\nKalundborg is famous as the location of a large broadcasting facility, the Kalundborg Transmitter. The city was also home to the largest coal-fired power station in Denmark, the Asnæs Power Station, which started its transition to biomass in 2017.\nKalundborg is mainly a trading and industrial town, but is also well known for its five-spired Church of Our Lady, which is closely associated with King Valdemar I and the Archbishop Absalon. The church itself is said to have been built by Absalon's brother, Esbern Snare.\nKalundborg is also the traditional seat of the aristocratic Lerche family. Their stately home, Lerchenborg, the best example of rococo architecture in Denmark, can be seen in the town's outskirts.\nFerries connect Kalundborg westward to the island of Samsø."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "kalundborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5465,
+    "attempt": 5423,
+    "place_id": "gn-2638081",
+    "input": {
+      "place": {
+        "place_id": "gn-2638081",
+        "name": "Sheerness",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.44042,
+        "lon": 0.76252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sheerness",
+          "url": "https://en.wikipedia.org/wiki/Sheerness",
+          "text": "Sheerness () is a port town and civil parish beside the mouth of the River Medway on the north-west corner of the Isle of Sheppey in north Kent, England. With a population of 13,249, it is the second largest town on the island after the nearby town of Minster which has a population of 16,738.\nSheerness began as a fort built in the 16th century to protect the River Medway from naval invasion. In 1665 plans were first laid by the Navy Board for Sheerness Dockyard, a facility where warships might be provisioned and repaired. The site was favoured by Samuel Pepys, then Clerk of the Acts of the navy, for shipbuilding over Chatham inland. After the raid on the Medway in 1667, the older fortification was strengthened; in 1669 a Royal Navy dockyard was established in the town, where warships were stocked and repaired until its closure in 1960.\nBeginning with the construction of a pier and a promenade in the 19th century, Sheerness acquired the added attractions of a seaside resort. Industry retains its important place in the town and the Port of Sheerness is one of the United Kingdom's leading car and fresh produce importers. The town is the site of one of the UK's first co-operative societies and also of the world's first multi-storey buildings with a rigid metal frame."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "sheerness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5466,
+    "attempt": 5424,
+    "place_id": "gn-2820973",
+    "input": {
+      "place": {
+        "place_id": "gn-2820973",
+        "name": "Trossingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.07667,
+        "lon": 8.64409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trossingen",
+          "url": "https://en.wikipedia.org/wiki/Trossingen",
+          "text": "Trossingen (German pronunciation: [ˈtʁɔsɪŋən] ; Swabian: Drossinge) is a town in Baden-Württemberg, Germany. It is situated in a region called Baar, between the Swabian Alb and the Black Forest. Stuttgart is about an hour away, Lake Constance about half an hour, and the source of the river Danube can be reached in about twenty minutes by car.\nTrossingen is renowned as a \"music town\". Although it has only nearly 17,000 inhabitants as of December 31, 2018, the town is home to the renowned 'University of Music Trossingen' [1] (with its famous Early Music department), which is one of Baden-Württemberg's five state conservatories, and there are several other institutions specializing in musical education, like the 'Bundesakademie für musikalische Jugendbildung' [2] and the 'Hohner Konservatorium' [3].\n\nIn 1830 Christian Messner from Trossingen, a cloth maker and weaver, copied a harmonica brought to Trossingen by his next door neighbor, a clockmaker from Vienna. This was the beginning of musical instrument production in the town. Messner was so successful at making such instruments that eventually his brother and some relatives also started making harmonicas. From 1840 on his nephew Christian Weiss started working on his own, so by 1855 there were two registered businesses - Christian Messner & Co. and Württ. Harmonikafabrik Ch. Weiss. Trossingen is not the home of the world's oldest existent harmonica manufacturer, C.A. Seydel Sohne, founded in 1847, which is based in the town of Klingenthal/Sachsen.\nIn 1857 the Matthias Hohner company was founded. Today, Hohner harmonicas and accordions are well known all over the world. Trossingen also houses the German Harmonica Museum.\nTrossingen has a historic railway: the Trossinger Eisenbahn.\nAt the edge of town, in a former clay quarry, were found several dozen skeletons, both complete and partial, of the prosauropod dinosaur Plateosaurus engelhardti during excavations in the early 20th century. The local museum Auberlehaus houses several original bones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "trossingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5467,
+    "attempt": 5425,
+    "place_id": "gn-2905706",
+    "input": {
+      "place": {
+        "place_id": "gn-2905706",
+        "name": "Herrieden",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.23779,
+        "lon": 10.5035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herrieden",
+          "url": "https://en.wikipedia.org/wiki/Herrieden",
+          "text": "Herrieden (German pronunciation: [hɛˈʁiːdn̩] ) is a town in the district of Ansbach and situated in the Middle Franconia region of Bavaria, Germany. It lies along the upper Altmühl river, about 9 km (6 mi) southwest of the city of Ansbach, 47 km southwest of the city of Nürnberg, 95 km east of Heilbronn and 144 km northwest of Munich.\nIt is part of a community association with the nearby municipalities of Aurach, Burgoberbach, and Leutershausen.\nHerrieden is located close to the A6 autobahn between Nürnberg and Heilbronn. Herrieden is administratively over the large towns of Neunstetten to the north, Rauenzell to the east and Elbersroth to the southwest. Other villages administratively under Herrieden include Birkach, Bittelhof, Böckau, Brünst, Buschhof, Esbach, Gimpertshausen, Gräbenwinden, Heuberg, Höfstetten, Hohenberg, Lammelbach, Lattenbuch, Leibelbach, Leuckersdorf, Leutenbuch, Limbach, Manndorf, Mühlbruck, Niederdombach, Oberschönbronn, Regmannsdorf, Rös, Roth, Sauerbach, Schernberg, Schönau, Seebronn, Sickersdorf, Stadel, Stegbruck, Steinbach, Velden and Winn.\nThe first recorded settlement of Herrieden was a monastery called Hasenried (Latin Nazaruda) in 782."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "herrieden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5468,
+    "attempt": 5426,
+    "place_id": "gn-2961896",
+    "input": {
+      "place": {
+        "place_id": "gn-2961896",
+        "name": "Rathmines",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.32028,
+        "lon": -6.26333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rathmines",
+          "url": "https://en.wikipedia.org/wiki/Rathmines",
+          "text": "Rathmines (; Irish: Ráth Maonais, meaning 'ringfort of Maonas') is an inner suburb on the Southside of Dublin in Ireland. It begins at the southern side of the Grand Canal and stretches along the Rathmines Road as far as Rathgar to the south, Ranelagh to the east, and Harold's Cross to the west. It is situated in the city's D06 postal district.\nRathmines is a commercial and social hub and was well known across Ireland as \"Flatland\"—an area where subdivided large Georgian and Victorian houses provided rented accommodation to newly arrived junior civil servants and third-level students from outside the city from the 1930s. However, in more recent times, Rathmines has diversified its housing stock and many historic houses formerly divided into often tiny flats and bedsits have in a process of gentrifying been re-amalgamated into single-family homes. Rathmines gained a reputation as a \"Dublin Belgravia\" in the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "rathmines",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5469,
+    "attempt": 5427,
+    "place_id": "gn-3591750",
+    "input": {
+      "place": {
+        "place_id": "gn-3591750",
+        "name": "Panajachel",
+        "country": "Guatemala",
+        "subdivision": "Sololá",
+        "lat": 14.74185,
+        "lon": -91.15676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panajachel",
+          "url": "https://en.wikipedia.org/wiki/Panajachel",
+          "text": "Panajachel (Spanish pronunciation: [pa.na.xaˈtʃel], Pana) is a town in the southwestern part of the Guatemalan Highlands, less than 140 kilometres (90 mi) from Guatemala City, in the department of Sololá. It serves as the administrative centre for the surrounding municipality of the same name. The elevation is 1,597 metres (5,240 ft). The population in the 2018 census was 15,077.  \nGeographically situated on an alluvial delta formed by the Panajachel River \"San Francisco\" along the northeastern shore of Lake Atitlán, the town lies within a volcanic basin flanked by the Atitlán, Tolimán, and San Pedro volcanoes. It serves as a primary regional transport hub and economic center within the Sololá Department, facilitating waterborne access to surrounding Tz'utujil and Kaqchikel Maya settlements across the endorheic lake, becoming a center for the tourism industry of the area as it provides a base for visitors crossing the lake to visit other towns and villages.\n\"Panajachel\" derives from the Kaqchikel language and roughly translates to \"place of the Matasanos,\" the white sapote fruit tree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "panajachel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5470,
+    "attempt": 5428,
+    "place_id": "gn-3616726",
+    "input": {
+      "place": {
+        "place_id": "gn-3616726",
+        "name": "San Juan del Sur",
+        "country": "Nicaragua",
+        "subdivision": "Rivas Department",
+        "lat": 11.25292,
+        "lon": -85.87049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan del Sur",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_del_Sur",
+          "text": "San Juan del Sur is a municipality and coastal town on the Pacific Ocean, in the Rivas department in southwest Nicaragua. It is located 140 kilometres (87 mi) south of Managua. San Juan del Sur is popular among surfers and is a vacation spot for many Nicaraguan families and foreign tourists.\nIts population is approximately 15,553, consisting largely of families engaged in fishing, tourism or food and beverage industry and foreigners from the United States, Canada and Europe. While the local economy  was, for many years, based on fishing and shipping, it has shifted towards tourism  in the last 20 years. In October 2002, to mark the city's 150th anniversary, it was formally designated the \"Port of San Juan del Sur\" and a \"Tourism City of Nicaragua.\"\nSan Juan del Sur, set beside a crescent-shaped bay, was a popular resting place for gold prospectors headed to California in the 1850s. Correspondingly, San Juan del Sur served as a hub for Cornelius Vanderbilt Lines.\nA statue of the Christ of the Mercy sits above town on the northern end of the bay. The Mirador del Cristo de la Misericordia sits on one of the highest points on the bay and is one of the tallest Jesus statues in the world.\nThe town is near the site where Survivor: Nicaragua and Survivor: Redemption Island were filmed. Those seasons aired in 2010 and 2011, respectively. The 29th U.S. Survivor season, Survivor: San Juan del Sur (2014), was also filmed there, as was Season 30, Survivor: Worlds Apart, which aired in 2015. San Juan del Sur has become a hot spot for international surfing competition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "san juan del sur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5471,
+    "attempt": 5429,
+    "place_id": "gn-4004026",
+    "input": {
+      "place": {
+        "place_id": "gn-4004026",
+        "name": "Jerécuaro",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.15112,
+        "lon": -100.51052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jerécuaro",
+          "url": "https://en.wikipedia.org/wiki/Jerécuaro",
+          "text": "Jerécuaro is a Mexican city (and municipality) located in the lowlands of the state of Guanajuato. The municipality has an area of 828.3 square kilometres (2.7% of the surface of the state) and is bordered to the north by Apaseo el Alto, to the east by Coroneo and the state of Querétaro, to the south by Tarandacuao, to the southwest with Acámbaro, and to the northwest with Tarimoro.  The municipality had 55,311 inhabitants according to the 2005 census. The municipal president of Jerécuaro and its many smaller outlying communities is C.Jaime García Cardona.\nJerécuaro Township is located south of the state of Guanajuato. Its boundaries are defined as follows:\nNorth : Apaseo el Alto\nSouth : Tarandacuao\nEast: Coroneo\nWest: Tarimoro\nNorthwest: Tarimoro\nNortheast : Querétaro \nSouthwest: Acambaro\nSoutheast: Michoacán\nJerécuaro is connected to major cities of the entity that will provide optimal geographic location for business and tourist activities.\nThe various roads to cities of great importance to the municipality placed in a prime strategic location for investment:"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "jerecuaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5472,
+    "attempt": 5430,
+    "place_id": "gn-5105300",
+    "input": {
+      "place": {
+        "place_id": "gn-5105300",
+        "name": "Tenafly",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.92538,
+        "lon": -73.96292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tenafly, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Tenafly,_New_Jersey",
+          "text": "Tenafly ( ) is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 15,409, an increase of 921 (+6.4%) from the 2010 census count of 14,488, which in turn reflected an increase of 682 (+4.9%) from the 13,806 counted in the 2000 census. Tenafly is a suburb of New York City.\nThe borough has been one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, Tenafly residents had a median household income of $153,381, ranked 13th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475.\nTenafly was incorporated as a borough on January 24, 1894, by an act of the New Jersey Legislature from portions of the now-defunct Palisades Township, based on the results of a referendum held the previous day. The borough was the first formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. Portions of Palisades Township were acquired based on legislation approved on April 8, 1897."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "tenafly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5473,
+    "attempt": 5431,
+    "place_id": "gn-5116093",
+    "input": {
+      "place": {
+        "place_id": "gn-5116093",
+        "name": "East Village",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72927,
+        "lon": -73.98736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Village, Manhattan",
+          "url": "https://en.wikipedia.org/wiki/East_Village,_Manhattan",
+          "text": "The East Village is a neighborhood on the East Side of Lower Manhattan. It is roughly defined as the area east of the Bowery and Third Avenue, south of 14th Street, and north of Houston Street. The East Village contains three subsections: Alphabet City, in reference to the single-letter-named avenues east of First Avenue; Little Ukraine (Ukrainian Village), near Second Avenue and 6th and 7th Streets; and the Bowery, located around the street of the same name.\nThe present-day East Village was originally occupied by the Lenape Native people, and was then divided into plantations by Dutch settlers. During the early 19th century, the East Village contained many of the city's most opulent estates. By the middle of the century, it grew to include a large immigrant population – including what was once referred to as Manhattan's Little Germany – and was considered part of the nearby Lower East Side. By the late 1960s, many artists, musicians, students and hippies began to move into the area, and the East Village gained its own identity. Since at least the 2000s, gentrification has changed the character of the neighborhood.\nThe East Village is part of Manhattan Community District 3, and its primary ZIP Codes are 10003 and 10009. It is patrolled by the 9th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "east village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5474,
+    "attempt": 5432,
+    "place_id": "gn-5140538",
+    "input": {
+      "place": {
+        "place_id": "gn-5140538",
+        "name": "Tarrytown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.07621,
+        "lon": -73.85875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarrytown, New York",
+          "url": "https://en.wikipedia.org/wiki/Tarrytown,_New_York",
+          "text": "Tarrytown is a village in the town of Greenburgh in Westchester County, New York, United States, in the New York metropolitan area. It is located on the eastern bank of the Hudson River, approximately 25 miles (40 km) north of Midtown Manhattan in New York City, and is served by a stop on the Metro-North Hudson Line. To the north of Tarrytown is the village of Sleepy Hollow (formerly North Tarrytown). The Tappan Zee Bridge (officially, Mario Cuomo Bridge) crosses the Hudson River at Tarrytown, carrying the New York State Thruway (Interstates 87 and 287) to South Nyack, Rockland County and points in Upstate New York. The population was 11,860 at the 2020 census.\nHistorically, the name \"Tarrytown\" was applied to a wider area around the village, including the neighboring communities of what is now Sleepy Hollow, Pocantico Hills, and Eastview; Sleepy Hollow was once considered a suburb of Tarrytown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "tarrytown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5475,
+    "attempt": 5433,
+    "place_id": "gn-6317272",
+    "input": {
+      "place": {
+        "place_id": "gn-6317272",
+        "name": "Ilha Comprida",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -24.74111,
+        "lon": -47.54
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilha Comprida",
+          "url": "https://en.wikipedia.org/wiki/Ilha_Comprida",
+          "text": "Ilha Comprida (Portuguese for \"Long Island\") is a municipality in the state of São Paulo in Brazil. Stretching southwest along the Atlantic coast of the state, it is coextensive with the barrier island of Ilha Comprida, the longest of its kind in the state (74 kilometres [46 mi]). The municipality was founded in 1993 after the merger of the parts of Ilha Comprida that belonged to the city of Cananéia with the sections of the island that were administered by the city of Iguape.\nThe Ilha Comprida has an average annual temperature of 24 °C. The population is 13,419 (2022) in an area of 196.567km2. The island is covered by the Ilha Comprida Environmental Protection Area, which defines zoning and allowable land use in an effort to reduce environmental damage from human occupation. The municipality contains 55% of the 455-hectare (1,120-acre) Guará Area of Relevant Ecological Interest, created in 2008. It is part of the Iguape-Cananéia-Paranaguá estuary lagoon complex.\nDue to its importance and because it is completely located in an environmental protection area, Ilha Comprida was declared a Biosphere Reserve by UNESCO. It preserves the last dunes in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "ilha comprida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ilha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "comprida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5476,
+    "attempt": 5434,
+    "place_id": "gn-2142316",
+    "input": {
+      "place": {
+        "place_id": "gn-2142316",
+        "name": "Yeppoon",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -23.12683,
+        "lon": 150.74406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yeppoon",
+          "url": "https://en.wikipedia.org/wiki/Yeppoon",
+          "text": "Yeppoon () is a coastal town and locality in the Shire of Livingstone, Queensland, Australia, situated on the traditional lands of the Darumbal people, who are the Indigenous custodians and Native Title holders of the Rockhampton and Capricorn Coast region. The town name \"Yeppoon\" derives from a Darumbal word yappun, meaning \"place where the waters meet\". Yeppoon is renowned for its beaches, tropical climate, and the islands out on the bay. Located 41 kilometres (25 mi) from the city of Rockhampton, Yeppoon is the seat of the Shire of Livingstone and the principal town on the Capricorn Coast, a string of seaside communities stretching more than 150 kilometres (93 mi) from north to south. The beaches and shallow coves provide a destination both for tourists and retirees settling down in Central Queensland. Offshore, there are 27 islands including Great Keppel Island which is 20 kilometres (12 mi) from Yeppoon. In the 2021 census, the locality of Yeppoon had a population of 7,037 people; this does not include any neighbouring suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "yeppoon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5477,
+    "attempt": 5435,
+    "place_id": "gn-2166144",
+    "input": {
+      "place": {
+        "place_id": "gn-2166144",
+        "name": "Frankston",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.14458,
+        "lon": 145.12291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frankston, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Frankston,_Victoria",
+          "text": "Frankston (  FRANK-stən) is a suburb in Melbourne, Victoria, Australia. Located 39 km (24 mi) south-east of the Melbourne central business district, it is in the local government area of the City of Frankston and serves as its administrative and activity centres.\nPositioned on the eastern shoreline of Port Phillip, Frankston became a popular seaside destination of Melbourne in the 1880s. Its beach continues to be one of the most frequented in Victoria, and is recognised as one of the cleanest in Australia. Due to its proximity to the north of the eponymous wine and tourism region, the suburb is also referred to as the \"gateway to the Mornington Peninsula\".\nThe traditional custodians of the lands on which Frankston is situated are the Boonwurrung people of the Kulin nation, to which it was an important source of fish and meeting place of the Mayone-bulluk clan for around 40,000 years. Colonisation of the area by Europeans began at approximately the same time as the foundation of Melbourne in 1835 and started as an informal fishing outpost supplying the growing settlement. It was formally established in 1854, when official land sales for a new village first took place on 29 May, and has subsequently given its name to its broader local government area since 1893.\nNeighbourhood areas within the suburb are Frankston Central, Frankston East, Frankston Heights, Karingal, Long Island, Mount Erin and Olivers Hill. At the 2021 census, Frankston had a population of 37,331. Its demonym is Frankstonian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "frankston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5478,
+    "attempt": 5436,
+    "place_id": "gn-2184943",
+    "input": {
+      "place": {
+        "place_id": "gn-2184943",
+        "name": "Papatowai",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -46.56069,
+        "lon": 169.47068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papatowai",
+          "url": "https://en.wikipedia.org/wiki/Papatowai",
+          "text": "Papatowai (Māori: Papatōwai) is a small settlement in the Catlins ward of the Clutha District of the southeastern South Island of New Zealand. The settlement is situated half-way between the cities of Dunedin and Invercargill, on the Pacific coast close to the mouth of the Tahakopa River. There is a permanent population of around 40 people, but with most of the houses in the town being holiday homes (locally known as \"cribs\") the population rises significantly during holiday seasons, particularly around New Year's Day and Easter.\nThe Ministry for Culture and Heritage gives a translation of \"tōwai tree flat\" for Papatōwai.\nPapatowai is surrounded by native podocarp forest and there are numerous walks in the area to waterfalls, and sand beaches in addition to bushwalks. There is also a walk to an archaeological site where it is possible to see middens left by early Māori inhabitants of the area. In the past, the bones of moa have also been found here. In addition to its scenery, Papatowai is home to the Lost Gypsy Gallery, which attracts international visitors.\nThe Papatowai Challenge, a 15.5-kilometre (9.6 mi) bush and beach run and walk, has been held annually since 1998, usually on the first weekend in March. It attracts between 300 and 400 people each year. Peake’s Kitchen, a food truck at a local store, was the \"supreme winner\" in a nationwide hamburger competition in 2025.\nPapatowai is also known for its big wave surfing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "papatowai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5479,
+    "attempt": 5437,
+    "place_id": "gn-2408250",
+    "input": {
+      "place": {
+        "place_id": "gn-2408250",
+        "name": "Kailahun",
+        "country": "Sierra Leone",
+        "subdivision": "Eastern Province",
+        "lat": 8.2789,
+        "lon": -10.573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kailahun",
+          "url": "https://en.wikipedia.org/wiki/Kailahun",
+          "text": "Kailahun is the capital of Kailahun District in the Eastern Province of Sierra Leone. Kailahun is a major business and commercial center of Kailahun District. The population was 13,108 in the 2004 census, a 2006 estimate of 18,411 [link removed] and a current estimate of about 30,411. Kailahun lies in the far east of Sierra Leone, approximately 200 miles east of Freetown (320 miles by road), about 51 miles north east of Kenema (75 miles by road), and near the border of Liberia.[2]\nKailahun is a trade center, and is one of the major towns in the Eastern Province of Sierra Leone. The population of Kailahun is largely from the Mende ethnic group. As with most parts of Sierra Leone, the Krio language of the Sierra Leone Creole people is by far the most widely spoken language in Kailahun and is the primary means of communication in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "kailahun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5480,
+    "attempt": 5438,
+    "place_id": "gn-2511330",
+    "input": {
+      "place": {
+        "place_id": "gn-2511330",
+        "name": "Sant Joan d'Alacant",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.40148,
+        "lon": -0.43623
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Joan d'Alacant",
+          "url": "https://en.wikipedia.org/wiki/Sant_Joan_d'Alacant",
+          "text": "Sant Joan d'Alacant, in Valencian (known in Spanish as San Juan de Alicante), or simply Sant Joan (or San Juan), is a town and municipality belonging to Alicante (Alacant) metropolitan area, in the southeast of Valencian Community, Spain. It is the geographic centre of the Old Garden of Alicante. Its limits are with the settled areas of Alicante (7 km), Mutxamel (1 km) and El Campello (3 km). It is within the Alicante metropolitan area and shares the same fire department and metro services.  Its population growth is due to its function as a bedroom community, as well as in recent years, its isolation from tourist areas, its cultural and academic activities, and because has part of the campus of the University Miguel Hernández of Elche (Elx). It comprises two zones: the town of Sant Joan (Sant Joan Poble) and Benimagrell, which is now joined through its urban expansion.\nAs of the register of 2023, the population is 25,275."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "sant joan d alacant",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "alacant",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5481,
+    "attempt": 5439,
+    "place_id": "gn-2518842",
+    "input": {
+      "place": {
+        "place_id": "gn-2518842",
+        "name": "Dolores",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.14002,
+        "lon": -0.77088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolores, Spain",
+          "url": "https://en.wikipedia.org/wiki/Dolores,_Spain",
+          "text": "Dolores (Spanish pronunciation: [doˈloɾes]) is a town located in the comarca of Vega Baja del Segura in southern Alicante province, Spain. The town is in the heart of the Segura huerta (vegetable garden) about 10 km (6.2 mi) from the nearest beaches in La Marina and Guardamar. Dolores is readily accessible from the Autovia del Mediterráneo motorway and a new motorway from Elche, and is about 20 minutes away from the Alicante international airport. The town has a population of 7427, an area of 18.25 km2 (7.05 sq mi), and the average monthly temperature varies between 16 °C (61 °F) in December–January and 28 °C (82 °F) in July–August.\nThe most important monument is the 18th-century church, with sculptures by Salcillo and Roque Lopez. The two most important fiestas in Dolores are the Feria de Agosto (August Fair) in early August; and the Fiesta de la Virgen, in mid-September. The Feria de Agosto is one of the more important fairs of Spain, and it features a Spanish Horse Contest. More than 1,500 horses are shown each year in all sorts of games and activities. Cattle and dog contests are also held at the fair. The Fiesta de la Virgen includes a carriage parade, the running of the \"vaca toposa\" (a variety of a small, aggressive cow), and the procession to honor the Virgen de los Dolores (Virgin of Sorrows), the patron saint of the village.\nThe typical cuisine of Dolores takes advantage of the fresh vegetables available in the area (artichokes, beans), and also includes plenty of meat and seafood. The most typical dish is \"cocido con pelotas\", which includes meatballs and potato and chickpea stew. There are also many fresh fruits such as melons, watermelons, oranges, and apricots. An open-air market is held every Friday morning where the local produce is sold.\nHousing in Dolores is relatively affordable, and substantially cheaper than in the nearby beach areas. On November 25, 2005, the Municipal government of Dolores approved the development of a 1.6 km2 area -Dolores Golf- to accommodate 2,664 new housing units, which also includes a 580,000 m2 (145 acre) golf course. The new development was modified afterwards, and is now fully consistent with the regional government (Generalitat Valenciana) requirements. The improved Dolores Golf plan was approved on March 26, 2007, with the agreement of the two main political forces in Dolores -People's Party (P.P.) and the Socialist Party (P.S.O.E)- which, together, accounted for some 92 percent of the votes in the May 2007 local elections. [1]. The revised plan was finally approved by the Conselleria de Urbanismo (regional government) on March 27, 2008.[2] [3].  The development is expected to be completed over the next few years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 448
+    },
+    "banned_terms": [
+      {
+        "term": "dolores",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5482,
+    "attempt": 5440,
+    "place_id": "gn-2612204",
+    "input": {
+      "place": {
+        "place_id": "gn-2612204",
+        "name": "Struer",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.49205,
+        "lon": 8.59397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Struer",
+          "url": "https://en.wikipedia.org/wiki/Struer",
+          "text": "Struer is the main town of the kommune of Struer, Region Midtjylland, Denmark with a population of 9,840 (1 January 2026).\nThe town of Struer owes its growth to the railroad, which arrived in 1865 with Jutland's first railroad line from Århus/Randers over Viborg to Skive and Struer. Before its arrival Struer was a little town, that primarily functioned as a harbour for the residents of Holstebro; but after its arrival the town grew explosively into a big town, and eventually became one of Denmark's most important railway connection points. Although the station has been expanded several times, the central part of the wellmaintained building is one of Denmark's oldest stations. One of the oldest station buildings now house the administration and science labs of Struer statsgymnasium, one of the few Danish schools that offer the International Baccalaureate program.\nStruer received privileged status as a merchant town in 1917.\nUntil the end of the 1960s Struer station served as the headquarters for the central West Jutland administration of DSB, Danske Statsbaner (\"Danish State Railways\"). More than 300 DSB employees still work in Struer today.\nBang & Olufsen, Denmark's only radio/TV manufacturer today, is the town's most important business, and they employ almost a third of the town's population. The business started  in 1925 in Svend Olufsen's old family farm, Quistrup, just south of the town. At the Struer Museum, there is a new large exhibition, where old and new B&O products are displayed together with many pieces of famous Danish design furniture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "struer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

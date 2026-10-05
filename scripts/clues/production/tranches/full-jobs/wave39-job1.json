@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 7653,
+    "attempt": 7601,
+    "place_id": "gn-3986985",
+    "input": {
+      "place": {
+        "place_id": "gn-3986985",
+        "name": "San Francisco de los Romo",
+        "country": "Mexico",
+        "subdivision": "Aguascalientes",
+        "lat": 22.07209,
+        "lon": -102.27216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Francisco de los Romo",
+          "url": "https://en.wikipedia.org/wiki/San_Francisco_de_los_Romo",
+          "text": "San Francisco de los Romo is a municipality and city in the Mexican state of Aguascalientes. The city of San Francisco de los Romo serves as the municipal seat for the surrounding municipality of San Francisco de los Romo.\nIt is located in the middle of the Aguascalientes Valley, at 20 km towards north from the state capital Aguascalientes; it adjoins with the municipalities of Pabellón de Arteaga and Asientos to the north, Jesús María to the west, and Aguascalientes to the south-east. The city, which is the state's sixth-largest community, is located at the northwest corner of the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "san francisco de los romo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "romo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7654,
+    "attempt": 7602,
+    "place_id": "gn-4134716",
+    "input": {
+      "place": {
+        "place_id": "gn-4134716",
+        "name": "Van Buren",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 35.43676,
+        "lon": -94.34827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van Buren, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Van_Buren,_Arkansas",
+          "text": "Van Buren ( van BURE-ən) is the second-largest city in the Fort Smith, Arkansas–Oklahoma Metropolitan Statistical Area and the county seat of Crawford County, Arkansas, United States. The city is located directly northeast of Fort Smith at the Interstate 40 – Interstate 540 junction. The city was incorporated in 1845 and as of the 2020 census had a population of 23,218, ranking it as the state's 21st largest city. According to 2023 population estimates from the U.S. Census Bureau, Van Buren’s population is 24,138.  With a 4% growth rate from 2020 to 2023, Van Buren is Arkansas’s eighth-fastest growing city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "van buren",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "buren",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7655,
+    "attempt": 7603,
+    "place_id": "gn-4305504",
+    "input": {
+      "place": {
+        "place_id": "gn-4305504",
+        "name": "Radcliff",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 37.84035,
+        "lon": -85.94913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radcliff, Kentucky",
+          "url": "https://en.wikipedia.org/wiki/Radcliff,_Kentucky",
+          "text": "Radcliff is a city in Hardin County, Kentucky, in the United States. The population was around 23,042 as of the 2020 Census, up from 21,692 from the 2010 census.\nIts economy is largely dominated by the adjacent U.S. Army base Fort Knox and by the nearby city of Elizabethtown. Radcliff's population previously fluctuated greatly depending on the deployments of the units at the base, but the BRAC reorganization of 2005, and the quartering of the U.S. Army's Human Resources Command to Fort Knox has created a larger and more stable population. Radcliff is a home-rule class city under Kentucky law."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "radcliff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7656,
+    "attempt": 7604,
+    "place_id": "gn-4535414",
+    "input": {
+      "place": {
+        "place_id": "gn-4535414",
+        "name": "Durant",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 33.99399,
+        "lon": -96.37082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durant, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Durant,_Oklahoma",
+          "text": "Durant () is a city in and the county seat of Bryan County, Oklahoma, United States. Its population was 18,589 in the 2020 census. It is the home of the headquarters of the Choctaw Nation, and is the largest settlement on the reservation, ranking ahead of McAlester and Poteau.  The city was founded by Dixon Durant, a Choctaw who lived in the area, after the Missouri–Kansas–Texas Railroad came through the Indian Territory in the early 1870s. It became the county seat of Bryan County in 1907 after Oklahoma statehood.  The city is officially known as the Magnolia Capital of Oklahoma.  Durant is home to Southeastern Oklahoma State University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "durant",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7657,
+    "attempt": 7605,
+    "place_id": "gn-4697616",
+    "input": {
+      "place": {
+        "place_id": "gn-4697616",
+        "name": "Highland Park",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.83346,
+        "lon": -96.79195
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Highland Park, Texas",
+          "url": "https://en.wikipedia.org/wiki/Highland_Park,_Texas",
+          "text": "Highland Park is a town in central Dallas County, Texas, United States, with a population estimated to be 8,719 in 2022, dropping from the previously recorded 8,864 in 2020. It is located between the Dallas North Tollway and U.S. Route 75 (North Central Expressway), 4 miles (6 km) north of downtown Dallas.\nHighland Park is bordered on the south, east and west by Dallas and on the north by the city of University Park. Highland Park and University Park together comprise the Park Cities, an enclave of Dallas. Highland Park has been referred to as \"a 2.2-square-mile residential island city\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "highland park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "highland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7658,
+    "attempt": 7606,
+    "place_id": "gn-4930010",
+    "input": {
+      "place": {
+        "place_id": "gn-4930010",
+        "name": "Beacon Hill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.35871,
+        "lon": -71.06783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beacon Hill, Boston",
+          "url": "https://en.wikipedia.org/wiki/Beacon_Hill,_Boston",
+          "text": "Beacon Hill is a historic neighborhood in Boston, Massachusetts, United States. It is also the location of the Massachusetts State House. The term \"Beacon Hill\" is used locally as a metonym to refer to the state government or the General Court itself, much like Washington, D.C.'s Capitol Hill does at the federal level.\nA bastion of \"Old Money\" Boston Brahmins, Federal-style rowhouses, narrow streets and brick sidewalks run through the neighborhood, which is generally regarded as one of the more desirable and expensive in Boston. As of the 2010 U.S. Census, the population of Boston's Beacon Hill neighborhood was 9,023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "beacon hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beacon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7659,
+    "attempt": 7607,
+    "place_id": "gn-4951591",
+    "input": {
+      "place": {
+        "place_id": "gn-4951591",
+        "name": "Southborough",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.30565,
+        "lon": -71.52451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southborough, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Southborough,_Massachusetts",
+          "text": "Southborough is a town in Worcester County, Massachusetts, United States. It incorporates the villages of Cordaville, Fayville, and Southville. Its name is often informally shortened to Southboro, a usage seen on many area signs and maps. At the 2020 census, its population was 10,450 in 3,542 households.\nAs of 2021, 43% of land use was residential, with 35% open space, including one-tenth of the town's area that is flooded by the Sudbury Reservoir. Light industrial land use is concentrated along main roads, primarily Massachusetts Route 9, and there are several small business districts in the villages and along Route 9."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "southborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7660,
+    "attempt": 7608,
+    "place_id": "gn-4952487",
+    "input": {
+      "place": {
+        "place_id": "gn-4952487",
+        "name": "Swansea",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.74816,
+        "lon": -71.18977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swansea, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Swansea,_Massachusetts",
+          "text": "Swansea is a town in Bristol County in southeastern Massachusetts, United States.\nIt is located at the mouth of the Taunton River, just west of Fall River, 47 miles (76 km) south of Boston, and 12 miles (19 km) southeast of Providence, Rhode Island. The population was 17,144 at the 2020 census. The villages of Hortonville, Barneyville and Ocean Grove are located in the town.\nSwansea is a part of the South Coast region of Massachusetts which encompasses the cities and towns that surround Buzzards Bay (excluding the Elizabeth Islands, Bourne and Falmouth), Mount Hope Bay and the Sakonnet River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "swansea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7661,
+    "attempt": 7609,
+    "place_id": "gn-5117663",
+    "input": {
+      "place": {
+        "place_id": "gn-5117663",
+        "name": "Fort Hamilton",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.61872,
+        "lon": -74.0332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Hamilton",
+          "url": "https://en.wikipedia.org/wiki/Fort_Hamilton",
+          "text": "Fort Hamilton is a United States Army installation in the southwestern corner of the New York City borough of Brooklyn, surrounded by the communities of Bay Ridge and Dyker Heights. It is one of several posts that are part of the region which is headquartered by the Military District of Washington. Its mission is to provide the New York metropolitan area with military installation support for the Army National Guard and the United States Army Reserve. The original fort was completed in 1831, with major additions made in the 1870s and 1900s. About half of the original fort defenses remains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "fort hamilton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamilton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7662,
+    "attempt": 7610,
+    "place_id": "gn-5126550",
+    "input": {
+      "place": {
+        "place_id": "gn-5126550",
+        "name": "Melrose",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.82455,
+        "lon": -73.91041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melrose, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Melrose,_Bronx",
+          "text": "Melrose is a residential neighborhood in the southwestern section of the New York City borough of the Bronx. It adjoins the business and onetime theater area known as The Hub. Melrose is rectangular-shaped, being bordered by Saint Anns Avenue on the east, 149th Street on the south, Park Avenue on the west, and 163rd Street to the north. Melrose Avenue and Third Avenue are the primary thoroughfares through Melrose.\nThe neighborhood is part of Bronx Community Board 1, and its ZIP Codes include 10451, 10455, and 10456. The area is patrolled by the New York City Police Department's 40th Precinct. New York City Housing Authority (NYCHA) property in the area is patrolled by P.S.A. 7 at 737 Melrose Avenue.\nPredominantly German American in the 19th century, it was home to Haffen Brewing Company. Then the German population waned, especially post-World War II. The neighborhood until the 1960s was mostly Irish and Italian. It is now primarily Latino.\nGrupo TACA operates a Bronx-area TACA Satellite at 570 Melrose Avenue. Melrose is considered part of the socioeconomic South Bronx."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "melrose",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7663,
+    "attempt": 7611,
+    "place_id": "gn-5143066",
+    "input": {
+      "place": {
+        "place_id": "gn-5143066",
+        "name": "Walden",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.5612,
+        "lon": -74.18848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walden, New York",
+          "url": "https://en.wikipedia.org/wiki/Walden,_New_York",
+          "text": "Walden is the largest of three villages of the town of Montgomery in Orange County, New York, United States. The population was 6,818 at the 2020 census. It has the ZIP Code 12586 and the 778 telephone exchange within the 845 area code. Walden is part of the Kiryas Joel–Poughkeepsie–Newburgh metropolitan area as well as the larger New York metropolitan area.\nThe precursor to the village began in the early 18th century as a mill town along the Wallkill River. One miller, Jacob Walden, was so successful the village that incorporated in the mid-19th century took its name from him. Later, it would be the village's three knife manufacturers that brought it growth and prosperity. They are gone today, but other industrial concerns remain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "walden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7664,
+    "attempt": 7612,
+    "place_id": "gn-5146089",
+    "input": {
+      "place": {
+        "place_id": "gn-5146089",
+        "name": "Ashtabula",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.86505,
+        "lon": -80.78981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashtabula, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Ashtabula,_Ohio",
+          "text": "Ashtabula ( ASH-tə-BYU-lə) is the most populous city in Ashtabula County, Ohio, United States. It lies at the mouth of the Ashtabula River on to Lake Erie, 53 miles (85 km) northeast of Cleveland. The city had 17,975 people at the 2020 census. Like many other cities in the Rust Belt, it has lost population because of a decline in industrial jobs since the 1960s. It is part of the Cleveland metropolitan area.\nIn the middle of the 19th century, the city was an important destination on the Underground Railroad as refugee slaves took ships across Lake Erie to Canada. In the late 19th century, the city became a major coal port on Lake Erie. Coal and iron were shipped here, the latter from the Mesabi Range in Minnesota. The city attracted immigrants from Finland, Sweden, and Italy in the industrial period. Ashtabula hosts an annual Blessing of the Fleet Celebration, usually in late May or early June. As part of the celebration, a religious procession and prayer service is held at Ashtabula Harbor. The city was the site of the FinnFestUSA in 2007, a celebration of Finnish Americans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "ashtabula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7665,
+    "attempt": 7613,
+    "place_id": "gn-5194868",
+    "input": {
+      "place": {
+        "place_id": "gn-5194868",
+        "name": "Indiana",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.62146,
+        "lon": -79.15253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indiana, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Indiana,_Pennsylvania",
+          "text": "Indiana is a borough in Indiana County, Pennsylvania, United States, and its county seat. The population was 14,044 at the 2020 census. It is the principal city of the Indiana, Pennsylvania micropolitan area, about 46 miles (74 km) northeast of Pittsburgh. It is a part of the greater Pittsburgh–New Castle–Weirton combined statistical area, as well as the Johnstown and Pittsburgh media markets.\nThe borough and the region as a whole promote itself as the \"Christmas Tree Capital of the World\" because the national Christmas Tree Growers Association was founded there. There are still many Christmas tree farms in the area. The largest employer in the borough today is Indiana University of Pennsylvania, the second-largest of 14 PASSHE schools in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "indiana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7666,
+    "attempt": 7614,
+    "place_id": "gn-5197159",
+    "input": {
+      "place": {
+        "place_id": "gn-5197159",
+        "name": "Lansdale",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.2415,
+        "lon": -75.28379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lansdale, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lansdale,_Pennsylvania",
+          "text": "Lansdale is a borough in Montgomery County, Pennsylvania, United States. It is a densely populated commuter town, with many residents traveling daily to Philadelphia using SEPTA Regional Rail's Lansdale/Doylestown Line. In the year 1900, 2,754 people lived here; in 1910, 3,551; and in 1940, 9,316 people were inhabitants of Lansdale. The population was 18,773 at the 2020 census and estimated at 18,986 in 2025\nLansdale is the center of the North Penn Valley, a region which includes the surrounding townships and boroughs. It is located 27 miles (43 km) southeast of Allentown and 21 miles (34 km) north of Philadelphia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lansdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7667,
+    "attempt": 7615,
+    "place_id": "gn-5325372",
+    "input": {
+      "place": {
+        "place_id": "gn-5325372",
+        "name": "Avocado Heights",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.03612,
+        "lon": -117.99118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avocado Heights, California",
+          "url": "https://en.wikipedia.org/wiki/Avocado_Heights,_California",
+          "text": "Avocado Heights () is an unincorporated community and census-designated place (CDP) in the San Gabriel Valley of Los Angeles County, California, United States. It is almost entirely surrounded by the City of Industry with only a small strip of unincorporated Los Angeles County separating it from South El Monte. It is in close proximity to both the Pomona (SR-60) and San Gabriel (I-605) freeways. To the west is the San Gabriel River and the California Country Club. Avocado Heights is approximately 15 miles (24 km) from the downtown Los Angeles Civic Center. The population was 13,317 at the 2020 census.\nA significant portion of Avocado Heights remains equestrian and semi-rural, with many homes on lots of 0.5 acres 21,780 square feet (2,023 m2) or more. The proximity of polluting industries in what became the City of Industry, as well as the Puente Hills Landfill, suppressed property values throughout the post-World War II era—discouraging the development that transformed most of the San Gabriel Valley into a relatively densely developed suburban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "avocado heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "avocado",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7668,
+    "attempt": 7616,
+    "place_id": "gn-5795440",
+    "input": {
+      "place": {
+        "place_id": "gn-5795440",
+        "name": "Gig Harbor",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.32926,
+        "lon": -122.58013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gig Harbor, Washington",
+          "url": "https://en.wikipedia.org/wiki/Gig_Harbor,_Washington",
+          "text": "Gig Harbor (Lushootseed: txʷaalqəɬ) is the name of both a bay on Puget Sound and a city on its shore in Pierce County, Washington. The population was 12,029 at the 2020 census.\nGig Harbor bills itself as \"the Maritime City\" and maintains a strong connection to its maritime heritage. Due to its close access to several state and city parks, and historic waterfront that includes boutiques and fine dining, it has become a popular tourist destination. Gig Harbor is located along State Route 16, about 6 mi (9.7 km) from its origin at Interstate 5, over the Tacoma Narrows Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "gig harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gig",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7669,
+    "attempt": 7617,
+    "place_id": "gn-5945566",
+    "input": {
+      "place": {
+        "place_id": "gn-5945566",
+        "name": "Eastern Passage",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.61685,
+        "lon": -63.48199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastern Passage, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Eastern_Passage,_Nova_Scotia",
+          "text": "Eastern Passage is an unincorporated suburban community in Halifax Regional Municipality Nova Scotia, Canada.\nEastern Passage has historically been tied to the fishing industry. Its waterfront has several small wharves and piers.  The construction of CFB Shearwater, a military air base, at the northern boundary of the community during World War I, and the construction of the Imperial Oil (later Esso), Texaco (later Ultramar) oil refineries, the Volvo Halifax Assembly plant and automobile import/export facility following World War II redefined the local economy.  New highway connections have resulted in the majority of area residents commuting to Downtown Halifax or Dartmouth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "eastern passage",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eastern",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "passage",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7670,
+    "attempt": 7618,
+    "place_id": "gn-6147439",
+    "input": {
+      "place": {
+        "place_id": "gn-6147439",
+        "name": "Sidney",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.64964,
+        "lon": -123.40262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sidney, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Sidney,_British_Columbia",
+          "text": "Sidney is a town located at the northern end of the Saanich Peninsula, on Vancouver Island in the province of British Columbia. It is one of the thirteen Greater Victoria municipalities. It has a population of approximately 11,583. Sidney is located just east of Victoria International Airport, and about 6 km (4 mi) south of BC Ferries' Swartz Bay Terminal. The town is also the only Canadian port-of-call in the Washington State Ferries system, with ferries running from Sidney to the San Juan Islands and Anacortes. Sidney is located along Highway 17, which bisects the town from north to south. It is generally considered part of the Victoria metropolitan area.\nThe town west of Highway 17 (also called Patricia Bay Highway, locally abbreviated as the Pat Bay Highway) has a mixture of single-family residences and light industry. The majority of the town is located east of Highway 17. Single-family units are also present east of the highway, but the eastern sector also has many condominium-type buildings, plus most of the service and retail outlets. The island-studded Haro Strait, part of the Salish Sea, forms Sidney's eastern boundary. There is a large boating and marine industry in the area, ranging from marinas to boatbuilders and marine suppliers.\nSidney takes its name from nearby Sidney Island. In 1859, Captain George Henry Richards named that island for Frederick W. Sidney, who like Richards served in the survey branch of the Royal Navy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "sidney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7671,
+    "attempt": 7619,
+    "place_id": "gn-616974",
+    "input": {
+      "place": {
+        "place_id": "gn-616974",
+        "name": "Alaverdi",
+        "country": "Armenia",
+        "subdivision": "Lori",
+        "lat": 41.09766,
+        "lon": 44.67316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alaverdi, Armenia",
+          "url": "https://en.wikipedia.org/wiki/Alaverdi,_Armenia",
+          "text": "Alaverdi (Armenian: Ալավերդի, Armenian pronunciation: [ɑlɑvɛɾˈdi], Greek: Αλαβερντί), is a city and municipal community in the Lori Province at the northeastern part of Armenia, near the border with Georgia. It is located at the only direct rail link between Armenia and Georgia. Situated at the bottom of the Debed river gorge, Alaverdi is an important commercial and industrial centre in northern Armenia.\nAs of the 2022 census, the population of the town is 12,152, down from 12,243 reported in 2011 and 26,300 reported in 1989. Currently, the town has an approximate population of 11,000 as per the 2016 official estimate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "alaverdi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7672,
+    "attempt": 7620,
+    "place_id": "gn-6316607",
+    "input": {
+      "place": {
+        "place_id": "gn-6316607",
+        "name": "Bom Jesus do Tocantins",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -5.05139,
+        "lon": -48.60889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bom Jesus do Tocantins, Pará",
+          "url": "https://en.wikipedia.org/wiki/Bom_Jesus_do_Tocantins,_Pará",
+          "text": "Bom Jesus do Tocantins is a municipality located in the Brazilian state of Pará. Its population was 17,118 (2020), and its area is 2,816.425 km2. The municipality was founded on May 10, 1988, after separating from São João do Araguaia city. Located in the Microregion of Paragominas, it is the second least populated municipality of the microregion.\nThe districts of Bom Jesus do Tocantins, Vila São Raimundo and Vila Carne do Sul are part of the municipality. There is an Indian reservation in the municipality, named Mãe Maria, inhabited by the Gavião people, which are the Kyikatejê and Parkatejê villages.\nGavião Kyikatejê Futebol Clube is the football club based in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "bom jesus do tocantins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jesus",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tocantins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

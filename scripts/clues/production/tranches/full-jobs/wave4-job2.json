@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 628,
+    "attempt": 621,
+    "place_id": "gn-3130616",
+    "input": {
+      "place": {
+        "place_id": "gn-3130616",
+        "name": "Alcalá de Henares",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.48205,
+        "lon": -3.35996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alcalá de Henares",
+          "url": "https://en.wikipedia.org/wiki/Alcalá_de_Henares",
+          "text": "Alcalá de Henares (Spanish pronunciation: [alkaˈla ðe eˈnaɾes] ) is a Spanish municipality of the Community of Madrid. Housing is primarily located on the north bank of the Henares. As of 2018, it has a population of 193,751, making it the region's third-most populated municipality.\nPredated by earlier hilltop settlements (oppida) and the primitive Complutum on the left bank of the Henares, the new Roman settlement of Complutum was founded in the mid 1st century on the right bank (north) river meadow, becoming a bishopric seat in the 5th century. One of the several Muslim citadels in the Middle March of al-Andalus (hence the name Alcalá, a derivative of the Arabic term for citadel) was established on the left bank, while, after the Christian conquest culminated c. 1118, the bulk of the urban nucleus returned to the right bank. For much of the late middle-ages and the early modern period before becoming part of the province of Madrid, Alcalá de Henares was a seigneurial estate of the archbishops of Toledo. Under patronage of Francisco Jiménez de Cisneros, Alcalá was transformed into a college town in the 16th century in the wake of the creation of the University of Alcalá.\nIts historical centre is one of UNESCO's World Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "alcala de henares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alcala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "henares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 629,
+    "attempt": 622,
+    "place_id": "gn-3394682",
+    "input": {
+      "place": {
+        "place_id": "gn-3394682",
+        "name": "Mossoró",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.1875,
+        "lon": -37.34417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mossoró",
+          "url": "https://en.wikipedia.org/wiki/Mossoró",
+          "text": "Mossoró (Portuguese pronunciation: [mosoˈɾɔ]) is a Brazilian municipality in the interior of the state of Rio Grande do Norte, recognized as the capital of the Brazilian semi-arid region. Covering an area of approximately 2,100 square kilometres (810 sq mi), it is the largest municipality in the state by area, located 281 kilometers from the state capital, Natal. With a population of 264,577 inhabitants according to the 2022 demographic census, it ranks as the second most populous city in Rio Grande do Norte, after the capital, the most populous in the state's interior, and the 108th in Brazil.\nSituated between two state capitals, Natal and Fortaleza, both connected by the BR-304 highway that bypasses the municipality, Mossoró is one of the main cities in the Northeast's interior and is experiencing significant economic and infrastructural growth. It is one of the most attractive cities in Brazil for investments. The municipality is one of Brazil's largest producers of onshore oil, and its economy is notably driven by irrigated horticulture, largely oriented toward export.\nEmancipated from Assu in 1852, the municipality's history is marked by significant events, including the abolition of slavery in 1883, five years before the Lei Áurea, the first female vote in Brazil, and the historic resistance against the bandit group led by Lampião in 1927. A cultural hub of Rio Grande do Norte, Mossoró is also prominent in business tourism. Annual festivities attract numerous tourists, such as the Mossoró Cidade Junina, one of Brazil's largest June festivals, and the Auto da Liberdade, the country's largest open-air theatrical performance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "mossoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 630,
+    "attempt": 623,
+    "place_id": "gn-3985344",
+    "input": {
+      "place": {
+        "place_id": "gn-3985344",
+        "name": "San Miguel de Allende",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.91528,
+        "lon": -100.74389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Miguel de Allende",
+          "url": "https://en.wikipedia.org/wiki/San_Miguel_de_Allende",
+          "text": "San Miguel de Allende (Spanish pronunciation: [sam miˈɣel de aˈʎende]) is the principal city in the municipality of San Miguel de Allende, located in the far eastern part of Guanajuato, Mexico. A part of the Bajío region, the town lies 274 km (170 mi) from Mexico City, 86 km (53 mi) from Querétaro and 97 km (60 mi) from the state capital of Guanajuato. The town's name derives from a 16th-century friar, Juan de San Miguel, and a martyr of Mexican Independence, Ignacio Allende, who was born in a house facing the central plaza. San Miguel de Allende was a critical epicenter during the historic Chichimeca War (1540–1590) when the Chichimeca held back the Spanish Empire during the initial phases of European colonization. Today, an old section of the town is part of a proclaimed World Heritage Site, attracting thousands of tourists and new residents from abroad every year.\nAt the beginning of the 20th century, the town was in danger of becoming a ghost town after an influenza pandemic. Gradually, its Baroque/Neoclassical colonial structures were \"discovered\" by foreign artists who moved in and began art and cultural institutes such as the Instituto Allende and the Escuela de Bellas Artes. This gave the town a reputation, attracting artists such as David Alfaro Siqueiros, who taught painting.\nThis drew foreign art students, especially former US soldiers studying on the G.I. Bill after World War II. Since then, the town has attracted a significant number of foreigners from the US, Canada and Europe, shifting the area's economy from agriculture and industry to commerce that caters to tourists and retired foreign residents.\nThe United Nations Educational, Scientific and Cultural Organization (UNESCO) designated the Protective town of San Miguel and the Sanctuary of Jesús Nazareno de Atotonilco as a World Heritage Site in 2008. The area of designation includes part of the town of San Miguel de Allende and part of the town of Atotonilco, which is about 14 kilometers north. The World Heritage Site is highlighted by a core zone of 43 hectares in San Miguel de Allende's well-preserved historic center, filled with buildings from the 17th and 18th centuries. The other part of the World Heritage Site, the Sanctuary of Atotonilco, has a core zone of .75 hectares surrounded by a buffer zone of about 4.5 hectares."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 385
+    },
+    "banned_terms": [
+      {
+        "term": "san miguel de allende",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miguel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "allende",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 631,
+    "attempt": 624,
+    "place_id": "gn-2036662",
+    "input": {
+      "place": {
+        "place_id": "gn-2036662",
+        "name": "Huludao",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 40.75243,
+        "lon": 120.83552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huludao",
+          "url": "https://en.wikipedia.org/wiki/Huludao",
+          "text": "Huludao (Chinese: 葫芦岛; pinyin: Húludǎo), formerly known as Jinxi (锦西) until 1994, is a coastal prefecture-level city in southwestern Liaoning province, People's Republic of China.  Its name literally means \"Gourd Island\", referring to the fiddle-shaped contour of the peninsula (\"half-island\" in Chinese), which resembles a bottle gourd, at the city's Longgang District. It has a total area of 10,582 km2 (4,086 sq mi) and as of the 2020 census a population of 2,434,194 of whom 1,252,660 inhabitants lived in the built-up (or metro) area made of the 2 urban districts and Xingcheng City largely being conurbated.\nLocated on the northwestern shore of the Liaodong Bay, Huludao is one of the three principal cities (along with Jinzhou and Hebei province's Qinhuangdao) in the Liaoxi Corridor, and is Northeast China's gateway through the Shanhai Pass into North China.  It borders Jinzhou to the northeast, Chaoyang to the north, and Qinhuangdao to the southwest, as well as sharing maritime boundaries with Yingkou and Dalian to the east and southeast across the bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "huludao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 632,
+    "attempt": 625,
+    "place_id": "gn-3687925",
+    "input": {
+      "place": {
+        "place_id": "gn-3687925",
+        "name": "Cali",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 3.43054,
+        "lon": -76.5199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cali",
+          "url": "https://en.wikipedia.org/wiki/Cali",
+          "text": "Santiago de Cali (Spanish pronunciation: [sanˈtjaɣo ðe ˈkali]), or Cali, is the capital of the Valle del Cauca department, and the most populous city in southwest Colombia, with an estimated 2.3 million residents in 2026. The city spans 560.3 km2 (216.3 sq mi) with 120.9 km2 (46.7 sq mi) of urban area, making Cali the second-largest city in the country by area and the third most populous. Cali is the main urban and economic center in the south of the country, and has one of Colombia's fastest-growing economies. The city was founded on 25 July 1536 by the Spanish explorer Sebastián de Belalcázar.\nAs a sporting center for Colombia, it was the host city for the 1971 Pan American Games. Cali also hosted the 1992 World Wrestling Championships, the 2013 edition of the World Games, the UCI Track Cycling World Championships in 2014, the World Youth Championships in Athletics in 2015 as well as the inaugural Junior Pan American Games in 2021 and the 2022 World Athletics U20 Championships."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "cali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 633,
+    "attempt": 626,
+    "place_id": "gn-598098",
+    "input": {
+      "place": {
+        "place_id": "gn-598098",
+        "name": "Klaipėda",
+        "country": "Lithuania",
+        "subdivision": "Klaipėda County",
+        "lat": 55.7068,
+        "lon": 21.13912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Klaipėda",
+          "url": "https://en.wikipedia.org/wiki/Klaipėda",
+          "text": "Klaipėda ( CLAY-ped-ə; Lithuanian: [ˈklˠɐɪ̯ˑpʲeːdˠɐ] ; German: Memel) is a city in Lithuania on the Baltic Sea coast. It is the third-largest city in Lithuania, the fifth-largest city in the Baltic states, the capital of Klaipėda County, the only major seaport in the country and the busiest port in the Baltic states.\nThe city has a diverse recorded history, partially due to the combined regional importance of the usually ice-free port at the mouth of the river Akmena-Danė. It was situated in Lithuania Minor and successively belonged to the State of the Teutonic Order, the Duchy of Prussia (at times under the suzerainty of the Polish–Lithuanian Commonwealth), the Kingdom of Prussia and the German Empire, within which it was the northernmost big city until it was placed under French occupation in 1919. From 1923, the city was part of Lithuania until its annexation by Nazi Germany in 1939, and after World War II it was part of the Lithuanian Soviet Socialist Republic. Klaipėda has remained within Lithuania since 1944.\nThe urban zone of Klaipėda expanded well into the suburbs, which sprang up around the city and surrounded it from three sides. These are partly integrated with the city (city bus lines, city water supply, etc.), and the majority of inhabitants of these suburbs work in Klaipėda. According to data from the Department of Statistics, there are  233,091 permanent inhabitants (as of July 2026) in the Klaipėda city and Klaipėda district municipalities combined (up from 212,302 in 2020). As of 2025, the population of Klaipėda city is 160,885 people. Popular seaside resorts found close to Klaipėda are Neringa to the south on the Curonian Spit, and Palanga to the north.\nThe city is also known for the annual Klaipėda Sea Festival and a nearby Lithuanian Sea Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "klaipeda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 634,
+    "attempt": 627,
+    "place_id": "gn-1264154",
+    "input": {
+      "place": {
+        "place_id": "gn-1264154",
+        "name": "Malappuram",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 11.04199,
+        "lon": 76.08154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malappuram",
+          "url": "https://en.wikipedia.org/wiki/Malappuram",
+          "text": "Malappuram (also Malapuram) (Malayalam: [mɐlɐpːurɐm] ) is a city in Kerala and the headquarters of the Malappuram district in Kerala, India. As per 2011 census of India, Malappuram city (Malappuram municipality + outgrowths) spread over an area of 58.20 km2 (22.47 sq mi) with a population of 101,386 and population density of 1,742/km2 (4,510/sq mi). The first municipality in the district formed in 1970, Malappuram serves as the administrative headquarters of Malappuram district. Divided into 40 electoral wards, the municipality has a population density of 2,027 per square kilometre (5,250 per square mile). \nAccording to the 2011 census, the Malappuram metropolitan area is the fourth largest urban agglomeration in Kerala after Kochi, Calicut, and Thrissur urban areas and the 25th largest in India with a total population of 3 million. It is the fastest growing city in the world with a 44.1% urban growth between 2015 and 2020 as per the survey conducted by Economist Intelligence Unit (EIU) based on the urban area growth during January 2020. Malappuram is situated 47 km southeast of Calicut and 90 km northwest of Palakkad. It is the first Indian municipal body to provide free Wi-Fi connectivity to its entire residents. Malappuram is also the first Indian municipal body to achieve the International Organization for Standardization certificate. It is also the first complaint-free municipality in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "malappuram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 635,
+    "attempt": 628,
+    "place_id": "gn-1646034",
+    "input": {
+      "place": {
+        "place_id": "gn-1646034",
+        "name": "Citeureup",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.48556,
+        "lon": 106.88194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Citeureup",
+          "url": "https://en.wikipedia.org/wiki/Citeureup",
+          "text": "Citeureup is a town and an administrative district (Indonesian: kecamatan) in the Bogor Regency, West Java, Indonesia. It is a suburb to Jakarta, and is part of its metropolitan region,  Jakarta Raya. It is also one of the districts that lies in between the city of Depok, and the city of Bogor.\nCiteureup District originally covered a larger area, but on 26 May 1999 the southern half of the district was split away to create a separate Babakan Madang District. The reduced district covers an area of 68.30 km2, and had a population of 198,380 at the 2010 Census and 214,668 at the 2020 Census; the official estimate as at mid 2024 was 228,820 (comprising 116,903 males and 111,917 females). The administrative centre is at the town of Puspanegara, and the district is sub-divided into two towns (kelurahan) - Puspanegara and Karang Asem Barat - and twelve villages (desa), all sharing the postcode of 16811, as listed below with their areas and populations as at mid 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "citeureup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 636,
+    "attempt": 629,
+    "place_id": "gn-1845759",
+    "input": {
+      "place": {
+        "place_id": "gn-1845759",
+        "name": "Cheonan",
+        "country": "South Korea",
+        "subdivision": "Chungcheongnam-do",
+        "lat": 36.8065,
+        "lon": 127.1522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheonan",
+          "url": "https://en.wikipedia.org/wiki/Cheonan",
+          "text": "Cheonan (Korean: 천안; Korean pronunciation: [tɕʰʌ.nan] ) is the largest and most densely populated city of South Chungcheong Province, South Korea, and the third largest city in the Hoseo region after Daejeon and Cheongju. Cheonan borders Gyeonggi Province (Pyeongtaek and Anseong) in the north, North Chungcheong Province (Jincheon County and Cheongju) to the east and southeast, Sejong to the south and Asan and Gongju to the west and southwest.\nCheonan has been called \"the core city of [the] nation\" due to its location 83.6 km (51.9 mi) south of the national capital, Seoul, in the northeast corner of South Chungcheong, serving as a transportation hub to the Seoul Capital Area and surrounding regions. Cheonan is connected to various freeways and railways including the National Highways 1 and 21, the Expressways 1-Gyeongbu and 25-Honam, and the city's Korail station serves the Gyeongbu Line and the Janghang Line, with services of the KTX. Cheonan is one of the furthest places from Seoul connected to the Seoul Subway Line 1."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "cheonan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 637,
+    "attempt": 630,
+    "place_id": "gn-2929670",
+    "input": {
+      "place": {
+        "place_id": "gn-2929670",
+        "name": "Erfurt",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.97734,
+        "lon": 11.03536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erfurt",
+          "url": "https://en.wikipedia.org/wiki/Erfurt",
+          "text": "Erfurt (German pronunciation: [ˈɛʁfʊʁt] ) is the capital and largest city of the Central German state of Thuringia, with a population of around 216,000. It lies in the wide valley of the River Gera, in the southern part of the Thuringian Basin, north of the Thuringian Forest, and in the middle of a line of the six largest Thuringian cities (Thüringer Städtekette), stretching from Eisenach in the west, via Gotha, Erfurt, Weimar and Jena, to Gera in the east. Together with Kassel and Göttingen, it is one of the cities with more than 100,000 inhabitants lying closest to the geographic centre of Germany. Erfurt is 100 km (62 mi) south-west of Leipzig, 250 km (155 mi) north-east of Frankfurt, 300 km (186 mi) south-west of Berlin and 400 km (249 mi) north of Munich.\nErfurt's old town is one of the best preserved medieval city centres in Germany. The Gera is spanned by the Merchants' Bridge (Krämerbrücke), one of the rare bridges with houses built on it. On the Erfurt Cathedral Hill is the ensemble of Erfurt Cathedral—which houses the world's largest free-swinging medieval bell—and St Severus' Church. Petersberg Citadel is one of the largest and best preserved town fortresses in Central Europe. Erfurt's Old Synagogue is the oldest intact synagogue in Europe, and together with the Erfurt Mikveh, which was only rediscovered in 2007, and the Stone House, forms the UNESCO World Heritage Site Jewish-Medieval Heritage of Erfurt.\nThe city's economy is based on agriculture, horticulture and microelectronics. Its central location has made it a logistics hub for Germany and central Europe. Erfurt hosts the second-largest trade fair in eastern Germany (after Leipzig), as well as the public television children's channel KiKa. The city is on the Via Regia, a medieval trade and pilgrims' road network. Erfurt Main Station is the junction of the Nuremberg–Erfurt and the Erfurt–Leipzig/Halle high-speed lines with the Halle–Bebra railway.\nErfurt was first mentioned in 742, as Saint Boniface founded the diocese. Although the town did not belong to any of the Thuringian states politically, it quickly became the economic centre of the region and was a member of the Hanseatic League. It was part of the Electorate of Mainz during the Holy Roman Empire, and became part of the Kingdom of Prussia in 1802. From 1949 until 1990 Erfurt was part of the German Democratic Republic (East Germany).\nThe University of Erfurt was founded in 1379, making it the first university to be established within the geographic area which constitutes modern Germany. It closed in 1816 and was re-established in 1994. Martin Luther (1483–1546) was its most famous student, studying there from 1501 before entering St Augustine's Monastery in 1505. Other noted Erfurters include the medieval philosopher and mystic Meister Eckhart (c. 1260–1328), the Baroque composer Johann Pachelbel (1653–1706) and the sociologist Max Weber (1864–1920)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 471
+    },
+    "banned_terms": [
+      {
+        "term": "erfurt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 638,
+    "attempt": 631,
+    "place_id": "gn-3652941",
+    "input": {
+      "place": {
+        "place_id": "gn-3652941",
+        "name": "Portoviejo",
+        "country": "Ecuador",
+        "subdivision": "Manabí",
+        "lat": -1.05764,
+        "lon": -80.45145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portoviejo",
+          "url": "https://en.wikipedia.org/wiki/Portoviejo",
+          "text": "Portoviejo (Spanish pronunciation: [poɾtoˈβjexo]), also known as San Gregorio de Portoviejo, is a city in Ecuador, and the capital of the Province of Manabí, located  about 30 km (19 mi) from the Pacific coast. It is still known as the city of the \"Royal Tamarind Trees\" due to the former Tamarind plantations in the area.\nIt serves as the main political and economical centre of the Portoviejo River valley, which also includes the cantons of Santa Ana and Rocafuerte, where about 110 km2 (42 square miles) are cultivated every year.\nThe city, which was affected by economic crisis in the eighties and nineties, is now recovering but severe budget limitations and a huge unemployment rate present difficulties for local authorities.\nFounded on March 12, 1535, it is one of the oldest cities in Ecuador and is the eighth largest of the country.\nPortoviejo is important for the cultivation of coffee, cattle and fishing and has a thriving agricultural-processing industry, with good road connections to Quito and Guayaquil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "portoviejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 639,
+    "attempt": 632,
+    "place_id": "gn-5392171",
+    "input": {
+      "place": {
+        "place_id": "gn-5392171",
+        "name": "San Jose",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.33939,
+        "lon": -121.89496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Jose, California",
+          "url": "https://en.wikipedia.org/wiki/San_Jose,_California",
+          "text": "San Jose, officially the City of San José (  SAN hoh-ZAY, -⁠SAY; Spanish: [saŋ xoˈse]), is the most populous city in the San Francisco Bay Area and Northern California, and the 13th-most populous in the United States, with an estimated 989,814 residents as of 2025. The city's metropolitan area is home to nearly two million people, while the broader combined statistical area (the fifth-largest in the United States) has a population of over nine million. Located in Santa Clara Valley on the southern shore of San Francisco Bay, San Jose covers an area of 179.97 sq mi (466.1 km2) and is the county seat of Santa Clara County.\nBefore the arrival of the Spanish, the area around San Jose was long inhabited by the Tamien nation of the Ohlone people. San Jose was founded on November 29, 1777, as the Pueblo de San José de Guadalupe, the first city founded in the Californias. It became a part of Mexico in 1821 after the Mexican War of Independence. Following the U.S. Conquest of California during the Mexican–American War, the territory was ceded to the United States in 1848. After California achieved statehood two years later, San Jose served as the state's first capital. San Jose experienced an economic boom after World War II, with a rapid population growth and aggressive annexation of nearby communities in the 1950s and 1960s. The rapid growth of the technology industry in Silicon Valley further accelerated the city's transition from an agricultural center to an urbanized metropolitan area, prompting Mayor Tom McEnery to adopt San Jose's current motto, \"Capital of Silicon Valley\", in 1988. Results of the 1990 U.S. census indicated that San Jose had surpassed San Francisco in population. By the early 2000s, the San Jose Metropolitan Area was California's fastest-growing metropolitan economy.\nToday, San Jose is notable for its innovation, cultural diversity, affluence, and sunny and mild Mediterranean climate. Major companies including Cisco, eBay, Adobe, PayPal, NetApp, Cadence, and Zoom maintain their headquarters in San Jose. One of the wealthiest major metropolitan areas in the world, the San Jose area was ranked in 2017 as having the third-highest GDP per capita (after Zurich and Oslo) and the fifth-most expensive housing market. The city is home to one of the world's largest overseas Vietnamese populations, a Hispanic community that makes up over 30% of the city's residents, historic ethnic enclaves such as Japantown and Little Portugal, and the largest Sikh Gurdwara outside of India.\nEducational and cultural institutions in San Jose include San Jose State University, Children's Discovery Museum of San Jose, the Tech Interactive, the San Jose Museum of Art, Winchester Mystery House, the Japanese American Museum of San Jose, Movimiento de Arte y Cultura Latino Americana, the Viet Museum, Rosicrucian Egyptian Museum, Hayes Mansion, San Jose Municipal Rose Garden, and the San Jose Center for the Performing Arts. Two major league sports teams, the San Jose Sharks and the San Jose Earthquakes, play their home games in San Jose. San Jose International Airport is the third-busiest airport in Northern California. VTA's rail and bus networks, together with Amtrak, ACE, BART, and Caltrain services, connect San Jose to the broader region through hubs such as Diridon Station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 533
+    },
+    "banned_terms": [
+      {
+        "term": "san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 640,
+    "attempt": 633,
+    "place_id": "gn-7799991",
+    "input": {
+      "place": {
+        "place_id": "gn-7799991",
+        "name": "New Cairo",
+        "country": "Egypt",
+        "subdivision": "Cairo",
+        "lat": 30.03,
+        "lon": 31.47
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Cairo",
+          "url": "https://en.wikipedia.org/wiki/New_Cairo",
+          "text": "New Cairo is a modern satellite city within the Cairo Governorate of Egypt and the metropolitan area of Greater Cairo, whose formation was first initiated by a presidential decree in 1995 during the presidency of former Egyptian President Hosni Mubarak.\nAdministratively, it is officially part of the Eastern Area of Cairo city, but like all new settlements in Egypt, it is directly governed by the New Urban Communities Authority (NUCA).\nThe city was established in 2000 as part of Egypt's strategic effort to alleviate the chronic congestion of Greater Cairo by decentralising population and economic activity.  As of 2024, New Cairo covered  99,814 acres (40,393 Ha), and is made up of a mix of residential neighbourhoods, commercial centres, and institutional zones. It is home to several gated communities, private universities, malls, international schools, and corporate headquarters, positioning it as a hub for Cairo’s upper and elite classes. Its development reflects Egypt’s broader neoliberal urban planning strategies, aimed at attracting private investments and promoting modern and western lifestyles.\nAccording to the 2017 census, New Cairo's three qisms (police districts) had a combined population of 297,387 residents (also see population section below). The city could eventually host a population of 5 million. When compared to 6th of October, also built with the hopes of alleviating the strain on Cairo, more homes are being rented out in New Cairo. New Cairo has attracted both praise and criticism. While it is seen as a model for modern urban expansion, it is also scrutinised for social exclusivity and limited accessibility for lower-income classes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "new cairo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cairo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 641,
+    "attempt": 634,
+    "place_id": "gn-1265683",
+    "input": {
+      "place": {
+        "place_id": "gn-1265683",
+        "name": "Kumbakonam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.96209,
+        "lon": 79.39124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kumbakonam",
+          "url": "https://en.wikipedia.org/wiki/Kumbakonam",
+          "text": "Kumbakonam or Kudanthai is a city municipal corporation in the Thanjavur district, Tamil Nadu, India. Located 40 km (25 mi) from Thanjavur and 282 km (175 mi) from Chennai and it is the headquarters of the Kumbakonam taluk. It is the second-largest city in the district after Thanjavur and is bounded by two rivers: the Kaveri to the north and Arasalar to the south. Kumbakonam is known as temple city due to its high concentration of Hindu shrines and it hosts Mahamaham festival every 12 years, attracting pilgrims from all over the country.\nKumbakonam dates back to the Sangam period and was historically ruled by the Early Cholas, Pallavas, Mutharaiyars, Medieval Cholas, Later Cholas, Pandyas, the Vijayanagara Empire, the Madurai and Thanjavur Nayaks and the Thanjavur Marathas. It was the seat of medieval Cholas between the 7th and 8th centuries CE. During the British Raj, the city developed into a major center for Hindu scholarship and Western education, earning the name, the \"Cambridge of South India\". Kumbakonam was initially constituted as a municipality in 1866, it was upgraded to a municipal corporation on 24 August 2021 and comprises 48 wards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "kumbakonam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 642,
+    "attempt": 635,
+    "place_id": "gn-1797318",
+    "input": {
+      "place": {
+        "place_id": "gn-1797318",
+        "name": "Qujing",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 25.48333,
+        "lon": 103.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qujing",
+          "url": "https://en.wikipedia.org/wiki/Qujing",
+          "text": "Qujing (Chinese: 曲靖; pinyin: Qūjìng) is a prefecture-level city in the east of Yunnan province, China, bordering Guizhou province to the north and east and the Guangxi Zhuang Autonomous Region to the south; thus, it was called \"Key between Yunnan and Guizhou\" (滇黔锁钥) and \"Throat of Yunnan\" (云南咽喉) in the past. It is part of the Central Yunnan Metropolitan Region plan (滇中城市群规划) in effect for 2016–49. Its administrative population is 6,047,000 according to a 2015 estimate, of whom, 1,408,500 reside in the metro area, which contains Qilin District, Zhanyi District and Malong District. The city's resident population at the end of 2024 is 5.634 million. During the 11th National Five-Year Plan period, the government of Qujing planned to develop the city into the \"big city at the origin of the Pearl River\" (珠江源大城市) in the following decades, including increasing the built-up urban area to past 100 km2 (39 sq mi) and the urban population to surpass 1 million by 2020, the second in Yunnan, after Kunming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "qujing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 643,
+    "attempt": 636,
+    "place_id": "gn-1802940",
+    "input": {
+      "place": {
+        "place_id": "gn-1802940",
+        "name": "Puning",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.31072,
+        "lon": 116.16869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puning",
+          "url": "https://en.wikipedia.org/wiki/Puning",
+          "text": "Puning (simplified Chinese: 普宁; traditional Chinese: 普寧; pinyin: Pǔníng; Teochew: Pou2 leng5), officially Puning City, is a county-level city located in eastern Guangdong, China, under the administration of Jieyang. Nevertheless, its administrative power in economic matters is comparable to that of prefecture-level cities. Puning is geographically situated on the west rim of Chaoshan Plain, leaning against the stretching branch of the Lianhua Mountains at its southwest border, and 90 percent of its territory sits on the south of the Tropic of Cancer. The city has a population of 2.5089 million under its household registration system hukou, marking the largest in all county-level cities in China. Puning's downtown residents amount to 581,900, behind Yiwu, while the entire city's resident population of 1.9986 million is second to cities Kunshan and Jinjiang. It is concurrently the ancestral hometown of 1.95 million overseas Chinese people and 1.4 million 'returned overseas Chinese people' (overseas Chinese who 'returned' to China and/or regained Chinese citizenship) and family members of  the overseas Chinese people.\nPuning, having been a key trade hub in eastern Guangdong, was upgraded from county to city status in 1993. It is one of the first 'Chinese textile cities' and where the project 'Chinese TCM Cities' was first launched. Textile and apparel and medicine industries are local pillars, topping or coming second in Guangdong county economies since 2003. It also entered the list of the One Hundred Best Counties and Cities for Health Industry in 2020 by Xiaokang series of Qiushi magazine.\nHistorically, Puning was one of the eight counties of Chaoshan. In the mid-1900s, the Hakka region, which was historically part of the Huizhou Prefecture, was incorporated into Puning's territory. Subsequently, the city also welcomed back 'returned overseas Chinese' and 'family members of overseas Chinese' due to the political situation in Southeast Asia. The cultures of the various clans formed the multilingual, multicultural landscape of Puning, where customs and traditions differ across the towns and villages. It is recognised as a Chinese Folk Culture Art Village by the Ministry of Culture, China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "puning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 644,
+    "attempt": 637,
+    "place_id": "gn-2082600",
+    "input": {
+      "place": {
+        "place_id": "gn-2082600",
+        "name": "Jayapura",
+        "country": "Indonesia",
+        "subdivision": "Papua",
+        "lat": -2.53371,
+        "lon": 140.71813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jayapura",
+          "url": "https://en.wikipedia.org/wiki/Jayapura",
+          "text": "Jayapura (formerly Hollandia (1910–1962), Kota Baru (1962–1963), Soekarnopura (1963–1968)) is the capital and largest city of the Indonesian province of Papua on the island of New Guinea. It is situated on the northern coast of the island and covers an area of 835.48 km2 (322.58 sq mi). The city borders the Pacific Ocean and Yos Sudarso Bay to the north, the country of Papua New Guinea to the east, Keerom Regency to the south, and Jayapura Regency to the west.\nWith a population of 410,852 according to the official estimates for mid 2024 (comprising 218,356 males and 192,416 females), Jayapura is the second most populous city in the entire island of New Guinea, after Port Moresby, the capital of Papua New Guinea. During the 2010–2020 decade it was also the fastest-growing city in Indonesia, with the population increasing by 55.23% between 2010 and 2020. \nJayapura is the fourth largest city by economy in Eastern Indonesia—after Makassar, Denpasar, and Manado—with an estimated 2016 GDP at Rp19.48 trillion. Jayapura has a very high Human Development Index (HDI) at 0.801."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "jayapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 645,
+    "attempt": 638,
+    "place_id": "gn-2326016",
+    "input": {
+      "place": {
+        "place_id": "gn-2326016",
+        "name": "Onitsha",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.14978,
+        "lon": 6.78569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Onitsha",
+          "url": "https://en.wikipedia.org/wiki/Onitsha",
+          "text": "Onitsha  (Igbo: Ọ̀nị̀chà Mmílí or simply Ọ̀nị̀chà) is a city on the eastern bank of the Niger River, in Anambra State, Nigeria. Onitsha along with various cities and towns in southern Anambra State, northern Imo State and neighboring Delta State on the western bank of the Niger River, form a continuous metropolitan area.\nAs of 2016, the greater Onitsha area had an estimated population of around eight million people in central and southern Anambra state extending into neighboring Delta state to the west and Imo state to the south. Spread across parts of these three states, the greater Onitsha area is regarded as one of the largest metropolitan areas in Nigeria by both population and landmass. The continuous urban sprawl or conurbation of greater Onitsha spreads across several separate cities and their satellite towns and suburbs including Asaba, Obosi, Ogidi, Oba, Ogbaru, Nnewi, the Anambra State capital Awka down to Orlu in Imo State. As of 2025, Onitsha city proper has an estimated population of 5,628,000.\nThe indigenous people of Onitsha are Igbo and speak the Igbo language with Onitsha being the largest urban area and commercial hub of the Igboland region of Nigeria, the Igbo people's indigenous homeland. The Onitsha people are referred to as Ndi Onicha in Igbo. English and Nigerian Pidgin English are also widely spoken. Although the population is largely Igbo, there are many other ethnic groups in the Onitsha area mainly from other Nigerian ethnicities indigenous to the southeast of the country due to Onitsha's position as an economic hub in the region.\nAccording to Africapolis, the greater Onitsha metropolis will be regarded as one of the most densely populated areas in the world by 2050. In 2023, McKinsey predicted that the greater Onitsha metropolis area will double in human development by 2045 with the current expansion rate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "onitsha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 646,
+    "attempt": 639,
+    "place_id": "gn-2947416",
+    "input": {
+      "place": {
+        "place_id": "gn-2947416",
+        "name": "Bochum",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.48165,
+        "lon": 7.21648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bochum",
+          "url": "https://en.wikipedia.org/wiki/Bochum",
+          "text": "Bochum (, BOHKH-uum; US:  -⁠əm; German: [ˈboːxʊm] ; Westphalian: Baukem) is a city in North Rhine-Westphalia. With a population of 372,348 (April 2023), it is the sixth-largest city (after Cologne, Düsseldorf, Dortmund, Essen and Duisburg) in North Rhine-Westphalia, the most populous German federal state, and the 16th-largest city in Germany. On the Ruhr Heights (Ruhrhöhen) hill chain, between the rivers Ruhr to the south and Emscher to the north (tributaries of the Rhine), it is the second largest city of Westphalia after Dortmund, and the fourth largest city of the Ruhr after Dortmund, Essen and Duisburg. It lies at the centre of the Ruhr, Germany's largest urban area, in the Rhine-Ruhr Metropolitan Region, the second biggest metropolitan region by GDP in the European Union, and belongs to the region of Arnsberg. There are nine institutions of higher education in the city, most notably the Ruhr University Bochum (Ruhr-Universität Bochum), one of the ten largest universities in Germany, and the Bochum University of Applied Sciences (Hochschule Bochum)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "bochum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 647,
+    "attempt": 640,
+    "place_id": "gn-3030300",
+    "input": {
+      "place": {
+        "place_id": "gn-3030300",
+        "name": "Brest",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.39029,
+        "lon": -4.48628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brest, France",
+          "url": "https://en.wikipedia.org/wiki/Brest,_France",
+          "text": "Brest (French pronunciation: [bʁɛst] , Breton: [bʀest] ) is a port city in the French department of Finistère, Brittany. Located in a sheltered bay not far from the western tip of a peninsula and the western extremity of metropolitan France, Brest is an important harbour and the second largest French military port after Toulon. The city is located on the western edge of continental France with 142,346 inhabitants (2023), Brest forms Western Brittany's largest metropolitan area (with a population of 381,115), ranking third behind Nantes and Rennes in Brittany, and the 26th most populous city in France (2023); moreover, Brest provides services to the one million inhabitants of Western Brittany. Although Brest is by far the largest city in Finistère, the préfecture (administrative seat) of the department is in the much smaller town of Quimper.\nThe history of Brest during the Middle Ages is the history of its castle. By the early modern period, however, Brest had become a military harbour, which Richelieu established in 1631. Brest subsequently grew around its arsenal until the second part of the 20th century. Heavily damaged by Allied bombing raids during World War II, the city centre was completely rebuilt after the war. At the end of the 20th century and the beginning of the 21st century, the deindustrialization of the city was followed by the development of the service sector. Nowadays, Brest is an important university town with 23,000 students. Besides a multidisciplinary university, the University of Western Brittany, Brest and its surrounding area possess several prestigious French elite schools such as École Navale (the French Naval Academy), Télécom Bretagne and the Superior National School of Advanced Techniques of Brittany (ENSTA Bretagne, formerly ENSIETA). Brest is also an important research centre, mainly focused on the sea, with among others the largest Ifremer (French Research Institute for Exploitation of the Sea) centre, le Cedre (Centre of Documentation, Research and Experimentation on Accidental Water Pollution) and the French Polar Institute.\nBrest's history since the 17th century has been linked to the sea: the Académie de Marine (Naval Academy) was founded in 1752 in this city. The aircraft carrier Charles de Gaulle was built there. Every four years, Brest hosts the international festival of the sea, boats and sailors: it is a meeting of old riggings from around the world (Les Tonnerres de Brest)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 388
+    },
+    "banned_terms": [
+      {
+        "term": "brest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

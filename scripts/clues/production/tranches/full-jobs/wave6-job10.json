@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 1191,
+    "attempt": 1181,
+    "place_id": "gn-3518135",
+    "input": {
+      "place": {
+        "place_id": "gn-3518135",
+        "name": "San Pablo de las Salinas",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.66658,
+        "lon": -99.09477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pablo de las Salinas",
+          "url": "https://en.wikipedia.org/wiki/San_Pablo_de_las_Salinas",
+          "text": "San Pablo de las Salinas is an exclave and the second-largest colonia in Tultitlán Municipality in the State of Mexico, Mexico. The neighborhood is part of the Mexico City metropolitan area and had a 2010 census population of 189,453 inhabitants, or 36.15% of the municipal population. The town lies near the northern tip of Mexico City. It is the third-largest locality in Mexico that is not a municipal seat (after Ojo de Agua, Tecámac Municipality, and Buenavista, also in Tultitlán Municipality). \nThe neighborhood of Granjas San Pablo was founded in 1957, the first family that moved to Granjas San Pablo was Don Antonio Lopez-Araiza y Padilla and her wife Consuelo Villegas de Araiza, Daughters Guillermina Araiza Garcia, Nancy Araiza Martinez, Abel Araiza, Antonio Araiza y Carlos Araiza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "san pablo de las salinas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pablo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salinas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1192,
+    "attempt": 1182,
+    "place_id": "gn-3672110",
+    "input": {
+      "place": {
+        "place_id": "gn-3672110",
+        "name": "Pitalito",
+        "country": "Colombia",
+        "subdivision": "Huila Department",
+        "lat": 1.85371,
+        "lon": -76.05071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pitalito",
+          "url": "https://en.wikipedia.org/wiki/Pitalito",
+          "text": "Pitalito is a Colombian town and municipality located in southern Department of Huila, Colombia near the Magdalena River Valley, 188 km from Huila's capital, Neiva. It is located in \"The Valley of Laboyos\" and is the second most populated municipality in the Department of Huila, with a population of 128,630. Pitalito is considered the largest producer of coffee in Colombia. Being at the epicenter of the coffee producing District of Bruselas, the town has become a notable coffee-growing area within Colombia. On several occasions, it has been awarded with the \"Cup of Excellence\", for producing the best coffee in the country.\nThe boundaries are Timaná, Elias and Saladoblanco to the North, Palestina to the south, Isnos and San Agustín to the west, and Acevedo to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "pitalito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1193,
+    "attempt": 1183,
+    "place_id": "gn-3996069",
+    "input": {
+      "place": {
+        "place_id": "gn-3996069",
+        "name": "Mexicali",
+        "country": "Mexico",
+        "subdivision": "Baja California",
+        "lat": 32.62781,
+        "lon": -115.45446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mexicali",
+          "url": "https://en.wikipedia.org/wiki/Mexicali",
+          "text": "Mexicali (English:  ; Spanish: [mexiˈkali] ; Yue Chinese: 墨西加利)  is the capital city of the Mexican state of Baja California. The city, which abuts the Mexico–United States border and the U.S. city of Calexico, California, is the seat of the Mexicali Municipality.  It has a population of 689,775, according to the 2010 census, while the Calexico–Mexicali metropolitan area is home to a combined population of 1,000,000. Mexicali is a regional economic and cultural hub for the border region of The Californias.\nMexicali was founded at the turn of the 20th century, when the region's agricultural economy experienced a boom. The city rapidly expanded throughout the 20th century, owing to the proliferation of maquiladoras in the city, making the economy more interconnected with businesses from across the border. Today, Mexicali is a major manufacturing center and an emerging tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "mexicali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1194,
+    "attempt": 1184,
+    "place_id": "gn-4945121",
+    "input": {
+      "place": {
+        "place_id": "gn-4945121",
+        "name": "New Bedford",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.63526,
+        "lon": -70.92701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Bedford, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/New_Bedford,_Massachusetts",
+          "text": "New Bedford is a city in Bristol County, Massachusetts, United States. It is located on the Acushnet River in what is known as the South Coast region, abutting Buzzards Bay. At the 2020 census, New Bedford had a population of 101,079, making it the state's ninth-largest city and the largest of the South Coast region. It is the second-largest city in the Providence metropolitan area and included in the greater Boston combined statistical area.\nUp through the 17th century, the area was the territory of the Wampanoag Indians. English colonists bought the land on which New Bedford would later be built from the Wampanoag in 1652, and the original colonial settlement that would later become the city was founded by English Quakers in the late 17th century. The town of New Bedford itself was officially incorporated in 1787.\nDuring the first half of the 19th century, New Bedford was one of the world's most important whaling ports. At its economic height during this period, New Bedford was the wealthiest city in North America per capita. New Bedford was also a center of abolitionism at this time. The city attracted many freed or escaped African-American slaves, including Frederick Douglass, who lived there from 1838 until 1841. The city also served as a setting in Herman Melville's 1851 novel Moby-Dick. From 1876 to 1900, New Bedford served as the initial home port for the Revenue Cutter School of Instruction, the precursor of the United States Coast Guard Academy.\nNew Bedford Harbor remains known for its fishing fleet and accompanying seafood industry, which as of 2019 generated the highest annual value of any fishing port in the United States. The city is also home to the New Bedford Whaling Museum and New Bedford Whaling National Historical Park. The city is also known for its high concentration of Portuguese Americans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "new bedford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bedford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1195,
+    "attempt": 1185,
+    "place_id": "gn-5373900",
+    "input": {
+      "place": {
+        "place_id": "gn-5373900",
+        "name": "Modesto",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.6391,
+        "lon": -120.99688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Modesto, California",
+          "url": "https://en.wikipedia.org/wiki/Modesto,_California",
+          "text": "Modesto ( mə-DESS-toh; Spanish pronunciation: [moˈðesto]; Spanish for \"modest\") is the county seat of and the largest city in Stanislaus County, California, United States. With a population of 218,069 according to 2022 U.S. Census Bureau estimates, it is the 19th-most populous city in California.\nModesto is located in the Central Valley region, 68 miles (109 km) south of Sacramento and 90 miles (140 km) north of Fresno.  Distances from other places include: 40 miles (64 km) north of Merced, California, 92 miles (148 km) east of San Francisco, 66 miles (106 km) west of Yosemite National Park, and 24 miles (39 km) south of Stockton.\nThe city, in the San Joaquin Valley, is surrounded by rich farmland. Stanislaus County ranks sixth among California counties in farm production. It is home to Gallo Family Winery, the largest family-owned winery in the United States.\nModesto has been often honored as a Tree City USA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "modesto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1196,
+    "attempt": 1186,
+    "place_id": "gn-747323",
+    "input": {
+      "place": {
+        "place_id": "gn-747323",
+        "name": "Esenyurt",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.02697,
+        "lon": 28.67732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esenyurt",
+          "url": "https://en.wikipedia.org/wiki/Esenyurt",
+          "text": "Esenyurt (Turkish: [eˈsɛnjuɾt]) is a municipality and district of Istanbul Province, Turkey. Its area is 43 km2, and its population is 983,571 (2022). Located in the European side of Istanbul, Esenyurt borders with Avcılar and Lake Küçükçekmece on the east, Büyükçekmece on the west, Başakşehir, Arnavutköy and TEM road on the north and Beylikdüzü and E-5 motorway on the south.\nWith the construction boom of large residential complexes in the area in the past few years, Esenyurt benefited from a major development. It now has four cultural centres, which are Esenyurt Cultural Centre, Saadetdere Cultural Centre, Yenikent Cultural Centre and Yunus Balta Cultural Centre. Four parks built in Esenyurt  (Recep Tayyip Erdoğan Park, Şehitler Park, Gaziler Park and Kadir Topbaş Park) are also situated among the complexes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "esenyurt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1197,
+    "attempt": 1187,
+    "place_id": "gn-101732",
+    "input": {
+      "place": {
+        "place_id": "gn-101732",
+        "name": "Unaizah",
+        "country": "Saudi Arabia",
+        "subdivision": "Al-Qassim Region",
+        "lat": 26.1,
+        "lon": 44
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Unaizah",
+          "url": "https://en.wikipedia.org/wiki/Unaizah",
+          "text": "Unaizah (Arabic: عنيزة ʿUnaizah) or officially The Governorate of Unaizah (also spelled Onaizah, Onizah, or Unayzah; Arabic: محافظة عنيزة Muḥāfiẓat ʿUnaizah) is a Saudi Arabian city in the Al Qassim Province. It lies south of the province capital Buraydah and north of Riyadh, the capital of the Kingdom of Saudi Arabia. It is the second largest city in Al-Qassim Province with a population of 184,600 (2022 census).\nHistorically, Unaizah was an important stopping point for Muslim pilgrims coming from Mesopotamia (now Iraq) and Persia (now Iran) on their way to Makkah. Many historians believe that Unaizah was inhabited hundreds of years before the spread of Islam, citing its reference in numerous poems from some of the most important poets of pre-Islamic Arabia such as Imru' al-Qais."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "unaizah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1198,
+    "attempt": 1188,
+    "place_id": "gn-1256523",
+    "input": {
+      "place": {
+        "place_id": "gn-1256523",
+        "name": "Shillong",
+        "country": "India",
+        "subdivision": "Meghalaya",
+        "lat": 25.56892,
+        "lon": 91.88313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shillong",
+          "url": "https://en.wikipedia.org/wiki/Shillong",
+          "text": "Shillong (English:  , Khasi: [ʃɨlːɔːŋ]), the capital of Meghalaya, India, is a hill station and the headquarters of the East Khasi Hills district. It is the 330th most populous city in India, with a population of 143,229 according to the 2011 census. It is said that the rolling hills around the town reminded the British of Scotland. Hence, they would refer to it as the \"Scotland of the East\".\nShillong has steadily grown in size since it was designated the civil station of the Khasi and Jaintia Hills by the British in 1864. In 1874, with the formation of Assam as the Chief Commissioner's Province, Shillong was chosen as the headquarters of the new administration due to its convenient location between the Brahmaputra and Surma valleys. Another reason was that the climate of Shillong was much cooler than that of tropical India. Shillong remained the capital of undivided Assam until the creation of the new state of Meghalaya on 21 January 1972, when Shillong became the Meghalaya's capital, and Assam moved its capital to Dispur in Guwahati."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "shillong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1199,
+    "attempt": 1189,
+    "place_id": "gn-1680102",
+    "input": {
+      "place": {
+        "place_id": "gn-1680102",
+        "name": "Valenzuela",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.7,
+        "lon": 120.9667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valenzuela, Metro Manila",
+          "url": "https://en.wikipedia.org/wiki/Valenzuela,_Metro_Manila",
+          "text": "Valenzuela (, Tagalog pronunciation: [balen'swela]; Latin American Spanish pronunciation: [balenˈswela] , Spanish pronunciation: [balenˈθwela] ), officially the City of Valenzuela (Filipino: Lungsod ng Valenzuela), is a highly urbanized city in the National Capital Region of the Philippines. As of the 2024 census, Valenzuela has 725,173 residents, making it one of the most densely populated cities in the Philippines.\nValenzuela ranks as the 7th-most populous city in the National Capital Region and is the 11th-most populous city in the Philippines. Located approximately 14 kilometers (8.7 mi) north of Manila, it is categorized as a highly urbanized, first-class city under the Republic Acts No. 7160 and 8526, which are based on categories of income classification and population. It is located on the island of Luzon, and is landlocked. The city is bordered to the north by the province of Bulacan; to the east by Caloocan and Quezon City; and to the southwest by Malabon. It also shares a boundary with Malabon along the Tullahan River. The city covers a land area of 45.75 km2 (17.66 sq mi) and has a predominantly Tagalog population.\nValenzuela began as the town of Polo, established in 1623 following its separation from Meycauayan, Bulacan. The 1899 Battle of Malinta, during the Philippine–American War, was fought in Polo. In 1960, President Carlos P. Garcia ordered the split of Polo's southern barangays to form another town named Valenzuela, after Pío Valenzuela, a physician and member of the Katipunan, a secret society that fought against the colonial government of Spain. However, in 1963, the split was revoked by President Diosdado Macapagal after political disagreements, and the merged town retained the name Valenzuela. In 1975, Valenzuela was moved from the province of Bulacan to Metro Manila, became the only area in the modern National Capital Region that was neither part of Spanish-era Manila, American-era Rizal province, nor the wartime City of Greater Manila and the modern borders of Valenzuela were established pursuant to its city charter when it became a highly urbanized city on December 30, 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "valenzuela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1200,
+    "attempt": 1190,
+    "place_id": "gn-1707267",
+    "input": {
+      "place": {
+        "place_id": "gn-1707267",
+        "name": "Lapu-Lapu City",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 10.31028,
+        "lon": 123.94944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lapu-Lapu City",
+          "url": "https://en.wikipedia.org/wiki/Lapu-Lapu_City",
+          "text": "Lapu-Lapu, officially the City of Lapu-Lapu (Cebuano: Dakbayan sa Lapu-Lapu; Filipino: Lungsod ng Lapu-Lapu), is a highly urbanized city in the Central Visayas region of the Philippines. According to the 2024 census, it has a population of 497,813 people.\nIt was formerly known as Opon, which was changed to its present name in 1961. It is one of the cities that make up Metro Cebu in the Philippines. It is located in the province of Cebu, administratively independent from the province, but grouped under Cebu by the Philippine Statistics Authority (PSA) and also the second most populous city of that province and in Central Visayas after the capital city of Cebu.\nThe second busiest airport in the Philippines, Mactan–Cebu International Airport, is located in Lapu-Lapu City. It opened in 1966 and serves as a hub for Philippine Airlines, and as an operating base for Cebu Pacific and Philippines AirAsia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "lapu lapu city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lapu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1201,
+    "attempt": 1191,
+    "place_id": "gn-1806535",
+    "input": {
+      "place": {
+        "place_id": "gn-1806535",
+        "name": "Huzhou",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.8703,
+        "lon": 120.0933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huzhou",
+          "url": "https://en.wikipedia.org/wiki/Huzhou",
+          "text": "Huzhou (Chinese: 湖州; pinyin: Húzhōu, ; Huzhou dialect: ghou² cieu¹) is a prefecture-level city in northern Zhejiang province (Hangzhou–Jiaxing–Huzhou Plain, China). Lying south of Lake Tai, it borders Jiaxing to the east, Hangzhou to the south, and the provinces of Anhui and Jiangsu to the west and north respectively.\nHuzhou is on the south bank of Taihu Lake, which it is named after. It has a history of more than 2,300 years. It governs Wuxing and Nanxun districts and three counties of Deqing, Changxing and Anji, with a total area of 5,818 square kilometers. As of the 2020 census, its population was 3,367,579 inhabitants, of whom 1,015,937 lived in the built-up (or metro) area made of Wuxing District as Nanxun District was not yet being conurbated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "huzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1202,
+    "attempt": 1192,
+    "place_id": "gn-1809498",
+    "input": {
+      "place": {
+        "place_id": "gn-1809498",
+        "name": "Guilin",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 25.28022,
+        "lon": 110.29639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guilin",
+          "url": "https://en.wikipedia.org/wiki/Guilin",
+          "text": "Guilin (Chinese: 桂林 Standard Zhuang: Gveilinz), formerly romanized as Kweilin, is a prefecture-level city in the northeast of China's Guangxi Zhuang Autonomous Region. It is situated on the west bank of the Li River and borders Hunan to the north. Its name means \"forest of sweet osmanthus\", owing to the large number of fragrant sweet osmanthus trees located in the region. The city has long been renowned for its scenery of karst topography.\nGuilin is one of China's most popular tourist destinations. A famous Chinese saying about the landscape of Guilin is \"Guilin's scenery is the best in the world.\" (Chinese: 桂林山水甲天下) The State Council of China has designated Guilin a National Famous Historical and Cultural City, doing so in the first edition of the list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "guilin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1203,
+    "attempt": 1193,
+    "place_id": "gn-1843491",
+    "input": {
+      "place": {
+        "place_id": "gn-1843491",
+        "name": "Iksan",
+        "country": "South Korea",
+        "subdivision": "Jeollabuk-do",
+        "lat": 35.94389,
+        "lon": 126.95444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iksan",
+          "url": "https://en.wikipedia.org/wiki/Iksan",
+          "text": "Iksan (Korean: 익산; Korean pronunciation: [ik̚.s͈an]) is a city and major railway junction in North Jeolla Province, South Korea.\nThe city center and railway junction was formerly called \"Iri\" (Korean: 이리시; Hanja: 裡里市), but merged with Iksan County (Iksan-gun) in 1995.\nThe railway junction is located at the point where Jeolla and Janghangs meet the Honam Line and the Honam HSR and is served by frequent train service to/from Seoul, Daejeon, Gwangju, Mokpo, Jeonju, Suncheon, and Yeosu.\nJeonbuk National University Iksan campus (before, it was Iksan National College), the Won Buddhism Graduate School, Wonkwang Health Science College, and Wonkwang University are all located in Iksan.\nThis city is called \"The City of Jewelry\". The Iksan Jewelry Museum opened in May 2002 next to a Dinosaur museum.\nIn late November 2006, Korean authorities quarantined a farm in Iksan and began culling poultry and livestock within a 3-kilometer radius to contain an outbreak of the H5N1 bird flu virus.\nLocal tradition includes the story of Seodong and Seonhwa, which was broadcast from 2005 to 2006 as \"Sedongyo\" and is also dramatized in the 'Paradise in Autumn Festival.'\nFestivals with various themes are held in Iksan, all reflecting local history and culture. These include:\n\n10,000,000 Chrysanthemum Festival (held in October/November)\nIksan Jewelry Expo\nSeodong Festival\nStone Culture Festival\nAnthem: Song of Citizens of Iksan\nIksan's population is 269,429 as of January 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "iksan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1204,
+    "attempt": 1194,
+    "place_id": "gn-2033536",
+    "input": {
+      "place": {
+        "place_id": "gn-2033536",
+        "name": "Yakeshi",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 49.28333,
+        "lon": 120.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakeshi",
+          "url": "https://en.wikipedia.org/wiki/Yakeshi",
+          "text": "Yakeshi (Mongolian: ᠶᠠᠭᠰᠢ ᠬᠣᠲᠠ; Chinese: 牙克石) is a county-level city of Hulunbuir, Inner Mongolia, China.\nYakeshi has a population of 391,627 and an area of 27,590 square kilometres (10,650 sq mi). It is situated next to the Hailar River 70 kilometres (43 mi) east of Hailar District, the seat of Hulunbuir, and on the north side of the Greater Khingan Range.\nThe city's economy is based on forestry industry, wood products, traditional Chinese medicines, gold, coal, iron, copper, wheat, rapeseed farming, sheep raising and dairy industries.\nIn 2008 several major players in the automobile industry established car testing facilities in Yakeshi. As part of the Electronic stability control (ESC)-development for new cars, special prototype cars are tested under winter conditions on frozen lakes and special snow-tracks. The first such test facilities were set up in the city by the German automobile supplier Robert Bosch GmbH whose development center for the Chinese car market is in Suzhou in Eastern China.\nThe city is connected by rail to Harbin and Hailar, and the nearest airport is in Hailar.\nThe original name for the city, Xuguit Banner, came from the Mongolian word for the area. Its name was changed to Yakeshi in 1983 when it was designated a county-level city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "yakeshi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1205,
+    "attempt": 1195,
+    "place_id": "gn-2328765",
+    "input": {
+      "place": {
+        "place_id": "gn-2328765",
+        "name": "Nnewi",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.01962,
+        "lon": 6.91729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nnewi",
+          "url": "https://en.wikipedia.org/wiki/Nnewi",
+          "text": "Nnewi () is a commercial and industrial city in Anambra State, southeastern Nigeria. It is the second largest city in Anambra state after Onitsha. Nnewi as a metropolitan area has two Local Government Areas, which are Nnewi North and Nnewi South, all centred around the Nnewi town. Even Ekwusigo local government area is now part of Nnewi urban area, as urbanization continues to spread from Nnewi to neighbouring communities. Nnewi town which is the only town in Nnewi North, comprises four villages: Otolo, Uruagu, Umudim, and Nnewichi. Nnewi had been the centre of economics and commerce, being at a time the fastest growing industrial city east of the Niger, being the home of many industries such as The Ibeto Group, the Chicason Group, and Cutix Cables. The first indigenous car manufacturing plant in Nigeria is located in the city while the first wholly Made-in-Nigeria motorcycle, the 'NASENI M1' was manufactured in Nnewi.\nIn 2019, the population of Nnewi was estimated at more than 900,000 people. As of January 2024, Nnewi had an estimated population of 1,301,000. The city spans over 520 square kilometres (200 sq mi) in Anambra State. As of 2005, Nnewi Metropolitan Area and its satellite towns are home to nearly 2.5 million residents. Dimensionally, Nnewi has an edge over all other units, it was recognized by the 1953 census figures as the largest inland town of all others in the Eastern states of Nigeria.\nNnewi was projected to be the twelfth fastest growing city on the African continent between 2020 and 2025, with a 5.18% growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "nnewi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1206,
+    "attempt": 1196,
+    "place_id": "gn-2530335",
+    "input": {
+      "place": {
+        "place_id": "gn-2530335",
+        "name": "Tangier",
+        "country": "Morocco",
+        "subdivision": "Tanger-Tetouan-Al Hoceima",
+        "lat": 35.76727,
+        "lon": -5.79975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangier",
+          "url": "https://en.wikipedia.org/wiki/Tangier",
+          "text": "Tangier, also called Tangiers, is a city in northwestern Morocco, on the coasts of the Mediterranean Sea and the Atlantic Ocean. The city is the capital of the Tangier-Tetouan-Al Hoceima region, as well as the Tangier-Assilah Prefecture of Morocco.\nMany civilisations and cultures have influenced the history of Tangier, starting from before the 10th century BCE. Originating as a strategic Phoenician town and trading centre, Tangier has been a nexus for many cultures. In 1923, it became an international zone managed by colonial powers and became a destination for many European and American diplomats, spies, bohemians, writers and businessmen. That status came to an end with Moroccan independence, in phases between 1956 and 1960.\nBy the early 21st century, Tangier is undergoing rapid development and modernisation. Projects include tourism projects along the bay, a modern business district called Tangier City Centre, an airport terminal, and a football stadium. Tangier's economy is benefiting greatly from the Tanger-Med port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "tangier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1207,
+    "attempt": 1197,
+    "place_id": "gn-2639996",
+    "input": {
+      "place": {
+        "place_id": "gn-2639996",
+        "name": "Portsmouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.79899,
+        "lon": -1.09125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portsmouth",
+          "url": "https://en.wikipedia.org/wiki/Portsmouth",
+          "text": "Portsmouth (  PORTS-məth) is a port city and unitary authority in Hampshire, England. Most of Portsmouth is located on Portsea Island off the south coast of England in the Solent, making Portsmouth the only city in England not located primarily on the mainland. The city is located 22 miles (35 km) south-east of Southampton, 50 miles (80 km) west of Brighton and Hove, and 74 miles (119 km) south-west of London. With a population last recorded at 208,100, it is the most densely populated city in the United Kingdom. Portsmouth forms part of the South Hampshire urban area with Gosport, Fareham, Havant, Eastleigh and Southampton.\nPortsmouth's history can be traced to Roman times and it has contained a significant Royal Navy dockyard and base for centuries. Portsmouth was founded c. 1180 by Anglo-Norman merchant Jean de Gisors in the south-west area of Portsea Island, a location now known as Old Portsmouth. Around this time, de Gisors ordered the construction of a chapel dedicated to St Thomas Becket. This became a parish church by the 14th century. Portsmouth was established as a town with a royal charter on 2 May 1194. The city is home to the first drydock ever built. It was constructed on the orders of Henry VII in 1496.\nPortsmouth has the world's oldest dry dock currently in use, \"The Great Stone Dock\"; originally built in 1698, rebuilt in 1769 and presently known as \"No.5 Dock\". The world's first mass production line was established at the naval base's Block Mills which produced pulley blocks for the Royal Navy. By the early-19th century, Portsmouth was the most heavily fortified city in the world, and was considered \"the world's greatest naval port\" at the height of the British Empire throughout Pax Britannica. By 1859, a ring of defensive land and sea forts, known as the Palmerston Forts, had been built around Portsmouth in anticipation of an invasion from continental Europe.\nPortsmouth achieved city status on 21 April 1926. During the Second World War the city was bombed extensively in the Portsmouth Blitz, which resulted in the deaths of 930 people, and it was a pivotal embarkation point for the D-Day landings.  In 1982 a British task force departed from Portsmouth to serve in the Falklands War. HMY Britannia was formerly based in Portsmouth and oversaw the transfer of Hong Kong in 1997, after which Britannia was retired from royal service, decommissioned and relocated to Leith as a museum ship.\nHMNB Portsmouth is an operational Royal Navy base and is home to two thirds of the UK's surface fleet. The base has long had the nickname Pompey, which it shares with the wider city of Portsmouth and Portsmouth Football Club. The naval base also contains the National Museum of the Royal Navy and Portsmouth Historic Dockyard, which has a collection of historic warships, including the Mary Rose, Lord Nelson's flagship, HMS Victory (the world's oldest naval ship still in commission), and HMS Warrior, the Royal Navy's first ironclad warship.\nThe former HMS Vernon shore establishment has been redeveloped into a large retail outlet destination known as Gunwharf Quays which opened in 2001. Portsmouth is among the few British cities with two cathedrals: the Anglican Cathedral of St Thomas and the Roman Catholic Cathedral of St John the Evangelist. The waterfront and Portsmouth Harbour are dominated by the Spinnaker Tower, one of the United Kingdom's tallest structures at 560 feet (170 m).\nSouthsea is Portsmouth's seaside resort, which was named after Southsea Castle. Southsea has two piers; Clarence Pier amusement park and South Parade Pier. The world's only regular hovercraft service operates from Southsea Hoverport to Ryde on the Isle of Wight. Southsea Common is a large open-air public recreation space which serves as a venue for a wide variety of annual events.\nThe city has several mainline railway stations that connect to London Victoria and London Waterloo amongst other lines in southern England. Portsmouth International Port is a commercial cruise ship and ferry port for international destinations. The port is the second busiest in the United Kingdom after Dover, handling around three million passengers a year. The city formerly had its own airport, Portsmouth Airport, until its closure in 1973. The University of Portsmouth enrolled 23,000 students.\nPortsmouth is the birthplace of notable people such as author Charles Dickens, engineer Isambard Kingdom Brunel, former Prime Minister James Callaghan, actor Peter Sellers and author-journalist Christopher Hitchens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 734
+    },
+    "banned_terms": [
+      {
+        "term": "portsmouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1208,
+    "attempt": 1198,
+    "place_id": "gn-2645425",
+    "input": {
+      "place": {
+        "place_id": "gn-2645425",
+        "name": "Kingston upon Hull",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.7446,
+        "lon": -0.33525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingston upon Hull",
+          "url": "https://en.wikipedia.org/wiki/Kingston_upon_Hull",
+          "text": "Kingston upon Hull, or simply Hull, is a port city and unitary authority area in the East Riding of Yorkshire, England. It lies upon the River Hull at its confluence with the Humber Estuary, 25 miles (40 km) inland from the North Sea.  It is a tightly bounded city which excludes the majority of its suburbs; with a population of 273,257 (2025), it is the fourth-largest city in the Yorkshire and the Humber region. The built-up area has a population of 436,300.\nHull has more than 800 years of seafaring history and is known as Yorkshire's maritime city. The town of Wyke on Hull was founded late in the 12th century by the monks of Meaux Abbey as a port from which to export their wool. Renamed Kings-town upon Hull in 1299, Hull had been a market town, military supply port, trading centre, fishing and whaling centre and industrial metropolis.\nHull was an early theatre of battle in the English Civil Wars. Its 18th-century Member of Parliament, William Wilberforce, took a prominent part in the abolition of the slave trade in Britain.\nThe city offers a variety of museums and art galleries, a city centre marina and historic old town, notable architecture, and a thriving arts scene. Due to Hull's growing appeal as an outdoor film location, particularly for period dramas using the Old Town's historic streets and buildings, plans for a purpose-built film studio complex have been approved by Hull City Council. The £3m complex could open by the end of 2025. The city has earned the nickname \"Hullywood\" in recent years, after productions including The Crown, Enola Holmes 2, The Personal History of David Copperfield, Victoria and Blitz have been filmed in the city.\nIn 2017, it was the UK City of Culture and hosted the Turner Prize at the city's Ferens Art Gallery. Other notable landmarks in the city are the Minster, the tidal surge barrier, the Paragon Interchange and The Deep, Hull's award-winning aquarium. Areas of the town centre include the old town (including its museum quarter) and the marina. The University of Hull\nwas founded in 1927 and had over 16,000 students in 2022. Rugby league football teams include clubs Hull F.C. and Hull Kingston Rovers. The city's association football club is Hull City (Premier League). Hull RUFC and Hull Ionians both play in the National League 2 North of rugby union.\nThe city came 2nd in the Time Out list of the 15 best places to visit in the UK in 2024, with the guide commenting that the city has got \"The Deep, an enormous aquarium with 3,000 species, a picturesque old town which survived the city's relentless WWII bombings, and lots of up and coming indie art galleries like Ground and Artlink. Don't sleep on Hull\". In 2016, it was named as one of the top 10 cities in the world to visit by Rough Guides alongside cities such as Seoul, Vancouver, Amsterdam and Reykjavik. In 2017, the city was featured in The Sunday Times Best Places to Live Guide and in 2024 was named as one of the UK's most \"up and coming\" places to move to. However, Kingston upon Hull has been ranked as one of the most deprived cities in the UK and the fourth most deprived local authority in the country. The city also has a lower than average life expectancy than the majority of the UK."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 568
+    },
+    "banned_terms": [
+      {
+        "term": "kingston upon hull",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kingston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "upon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hull",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1209,
+    "attempt": 1199,
+    "place_id": "gn-3044774",
+    "input": {
+      "place": {
+        "place_id": "gn-3044774",
+        "name": "Székesfehérvár",
+        "country": "Hungary",
+        "subdivision": "Fejér",
+        "lat": 47.18995,
+        "lon": 18.41034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Székesfehérvár",
+          "url": "https://en.wikipedia.org/wiki/Székesfehérvár",
+          "text": "Székesfehérvár (Hungarian: [ˈseːkɛʃfɛheːrvaːr] ; German: Stuhlweißenburg [ʃtuːlˈvaɪsn̩bʊʁk] ; Latin: Alba Regia; Croatian: Stolni Biograd; Serbian: Стони Београд, romanized: Stoni Beograd; Slovak: Stoličný Belehrad), known colloquially as Fehérvár (lit. 'white castle'), is a city in central Hungary, and the country's ninth-largest city. It is the regional capital of Central Transdanubia, and the centre of Fejér County and Székesfehérvár District. The area is an important rail and road junction between Lake Balaton and Lake Velence.\nSzékesfehérvár, a royal residence (székhely), as capital of the Kingdom of Hungary, held a central role in the Middle Ages. As required by the Doctrine of the Holy Crown, the first kings of Hungary were crowned and buried here. Significant trade routes led to the Balkans and Italy, and to Buda and Vienna. Historically the city has come under Ottoman and Habsburg control, and was known in many languages by translations of \"white castle\" – Croatian: Biograd, Slovak: Belehrad, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "szekesfehervar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1210,
+    "attempt": 1200,
+    "place_id": "gn-3083829",
+    "input": {
+      "place": {
+        "place_id": "gn-3083829",
+        "name": "Szczecin",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.42894,
+        "lon": 14.55302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Szczecin",
+          "url": "https://en.wikipedia.org/wiki/Szczecin",
+          "text": "Szczecin, historically known in English as Stettin, is the capital and largest city of the West Pomeranian Voivodeship in northwestern Poland. Located near the Baltic Sea and the German border, it is a major seaport, the largest city of northwestern Poland, and seventh-largest city of Poland. As of 31 December 2022, the population was 391,566.\nSzczecin is located on the Oder River, south of the Szczecin Lagoon and the Bay of Pomerania. The city is situated along the southwestern shore of Dąbie Lake, on both sides of the Oder and on several large islands between the western and eastern branches of the river. It is also surrounded by dense forests, shrubland and heaths, chiefly the Wkrzańska Heath shared with Germany (Ueckermünde) and the Szczecin Landscape Park. Szczecin is adjacent to the town of Police and is the urban centre of the Szczecin agglomeration, an extended metropolitan area that includes communities in the German states of Brandenburg and Mecklenburg-Western Pomerania.\nThe city's recorded history began in the 8th century as a Lechitic Pomeranian stronghold, built at the site of the Ducal Castle. In the 10th century, Szczecin first became part of the emerging Polish state. In the following centuries it was the capital of the Duchy of Pomerania ruled by the local House of Griffin, which at various times was under the suzerainty of Poland, the Duchy of Saxony, the Holy Roman Empire and Denmark. In 1630, the city came under the control of the Swedish Empire and became in 1648 the capital of Swedish Pomerania until 1720, when it was acquired by Prussia. Following World War II the city became part of Poland again in accordance with the Potsdam Agreement, resulting in a nearly complete population exchange. Szczecin was the site of large Polish protests in 1970 and 1980. In 1980, the first agreement between the protesters and the communist regime was signed in Szczecin, which paved the way for the creation of Solidarity, which contributed to the fall of communism.\nSzczecin is the administrative and industrial centre of West Pomeranian Voivodeship and is the site of the University of Szczecin, Pomeranian Medical University, Maritime University, West Pomeranian University of Technology, Szczecin Art Academy, and the see of the Szczecin-Kamień Catholic Archdiocese. From 1999 onwards, Szczecin has served as the site of the headquarters of NATO's Multinational Corps Northeast. The city was a candidate for the European Capital of Culture in 2016. Its chief landmarks include the Szczecin Cathedral, the Ducal Castle, the National Museum and the Szczecin Philharmonic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 419
+    },
+    "banned_terms": [
+      {
+        "term": "szczecin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

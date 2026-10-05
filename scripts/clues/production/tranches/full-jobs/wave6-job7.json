@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 1130,
+    "attempt": 1121,
+    "place_id": "gn-4459467",
+    "input": {
+      "place": {
+        "place_id": "gn-4459467",
+        "name": "Cary",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.79154,
+        "lon": -78.78112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cary, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Cary,_North_Carolina",
+          "text": "Cary is a town in Wake, Chatham, and Durham counties in the U.S. state of North Carolina and is part of the Raleigh-Cary, NC Metropolitan Statistical Area. According to the 2020 census, its population was 174,721, making it the seventh-most populous municipality in North Carolina, and the 146th-most populous in the United States. In 2023, the town's population had increased to 180,010.\nCary began as a railroad village and became known as an educational center in the late 19th and early 20th centuries. In April 1907, Cary High School became the first state-funded public high school in North Carolina. The creation of the nearby Research Triangle Park in 1959 resulted in Cary's population doubling in a few years, tripling in the 1970s, and doubling in both the 1980s and 1990s. Cary is now the location of technology companies, including SAS Institute, the world's largest privately held software company.\nIn Cary, 68.4% of adults hold a bachelor's degree or higher, which is higher than the state average. In 2021, it was identified as the safest mid-sized place to live in the United States, based on 2019 FBI data. It also has a median household income of $113,782, higher than the county average of $88,471 or the state average of $60,516."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "cary",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1131,
+    "attempt": 1122,
+    "place_id": "gn-5809844",
+    "input": {
+      "place": {
+        "place_id": "gn-5809844",
+        "name": "Seattle",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.60621,
+        "lon": -122.33207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seattle",
+          "url": "https://en.wikipedia.org/wiki/Seattle",
+          "text": "Seattle (  see-AT-əl) is the most populous city in the U.S. state of Washington and the Pacific Northwest region of North America. It is the 18th-most populous city in the United States with a population of 784,777 in 2025, while the Seattle metropolitan area at over 4.15 million residents is the 15th-most populous metropolitan area in the nation. The city is the county seat of King County, the most populous county in Washington. Seattle's growth rate of 21.1% between 2010 and 2020 made it one of the country's fastest-growing large cities.\nSeattle is situated on an isthmus between Puget Sound, an inlet of the Pacific Ocean, and Lake Washington. It is the northernmost major city in the United States, located about 100 miles (160 km) south of the Canadian border. A gateway for trade with the Asia-Pacific region, the Port of Seattle is the fourth-largest port in North America in terms of container handling as of 2021.\nThe Seattle area has been inhabited by Native Americans (such as the Duwamish, who had at least 17 villages around Elliott Bay) for at least 4,000 years before the arrival of the first permanent European settlers. Arthur A. Denny and his group of travelers, subsequently known as the Denny Party, arrived from Illinois via Portland, Oregon, on the schooner Exact at Alki Point on November 13, 1851. The settlement was moved to the eastern shore of Elliott Bay in 1852 and named \"Seattle\" in honor of Chief Seattle, a prominent 19th-century leader of the local Duwamish and Suquamish tribes. Seattle has relatively high populations of Native Americans as well as Americans with strong Asian, African, and European ancestry, and, as of 2015, has the fifth-highest percentage of residents who identify as LGBT among major metropolitan areas in the U.S. (4.8 percent).\nLogging was Seattle's first major industry, but by the late 19th century the city had become a commercial and shipbuilding center as a gateway to Alaska during the Klondike Gold Rush. The city grew after World War II, partly due to the local company Boeing, which established Seattle as a center for its manufacturing of aircraft. Beginning in the 1980s, the Seattle area developed into a technology center; Microsoft established its headquarters in the region. Alaska Airlines is based at Seattle–Tacoma International Airport in nearby SeaTac. The rise of new software, biotechnology, and Internet companies led to an economic revival, which increased the city's population by almost 50,000 between 1990 and 2000.\nThe culture of Seattle is heavily defined by its significant musical history. Between 1918 and 1951, nearly 24 jazz nightclubs existed along Jackson Street, from the current Chinatown/International District to the Central District. The jazz scene nurtured the early careers of Ernestine Anderson, Ray Charles, Quincy Jones, and others. In the late 20th and early 21st centuries, the city was the origin of several rock artists and bands, including the Foo Fighters, Heart, and Jimi Hendrix, and the subgenre of grunge and its pioneering bands, including Alice in Chains, Nirvana, Pearl Jam, and Soundgarden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 504
+    },
+    "banned_terms": [
+      {
+        "term": "seattle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1132,
+    "attempt": 1123,
+    "place_id": "gn-5992500",
+    "input": {
+      "place": {
+        "place_id": "gn-5992500",
+        "name": "Kingston",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.22976,
+        "lon": -76.48098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingston, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Ontario",
+          "text": "Kingston is a city in Ontario, Canada, on the northeastern end of Lake Ontario. It is at the beginning of the St. Lawrence River and at the mouth of the Cataraqui River, the south end of the Rideau Canal. Kingston is located between the Prince Edward County and Thousand Islands tourist regions, and is nicknamed the \"Limestone City\" because it has many heritage buildings constructed using local limestone.\nGrowing European exploration in the 17th century and the desire for the Europeans to establish a presence close to local Native occupants to control trade led to the founding of a French trading post and military fort at a site known as \"Cataraqui\" (generally pronounced  ka-tə-ROK-way) in 1673. The outpost, called Fort Cataraqui, and later Fort Frontenac, became a focus for settlement. After the Conquest of New France (1759–1763), the site of Kingston was relinquished to the British. Cataraqui was renamed Kingston after the British took possession of the fort, and Loyalists began settling the region in the 1780s.\nKingston was named the first capital of the United Province of Canada on February 10, 1841. While its time as a capital city was short and ended in 1844, the community has remained an important military installation. The city is a regional centre of education and health care, being home to a major university, a large vocational college, and three major hospitals.\nKingston was the county seat of Frontenac County until 1998. Kingston is now a separate municipality from the County of Frontenac. Kingston is the largest municipality in southeastern Ontario and Ontario's 10th largest metropolitan area. John A. Macdonald, the first prime minister of Canada, lived in Kingston."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "kingston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1133,
+    "attempt": 1124,
+    "place_id": "gn-760778",
+    "input": {
+      "place": {
+        "place_id": "gn-760778",
+        "name": "Radom",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 51.40253,
+        "lon": 21.14714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radom",
+          "url": "https://en.wikipedia.org/wiki/Radom",
+          "text": "Radom is a city in east-central Poland, located approximately 100 kilometres (62 miles) south of the capital, Warsaw. It is situated on the Mleczna River in the Masovian Voivodeship. Radom is the sixteenth-largest city in Poland and the second-largest in its province with a population of 191,819 (31.12.2025).\nRadom is a city with over a 1000 years of history. It was a royal city of Poland and a significant center of administration, having served as the seat of the Polish Crown Council which ratified the Pact of Vilnius and Radom between Lithuania and Poland in 1401, and the seat of the Crown Treasure Tribunal, the supreme audit institution of Poland in the early modern period. The Nihil novi and Łaski's Statute were adopted by the Sejm in Radom in 1505. The city contains a preserved medieval urban layout with heritage architecture in various styles, including Gothic, Baroque and Neoclassical, and several museums. It was a center of the June 1976 protests. Despite being part of the Masovian Voivodeship, the city historically belongs to Lesser Poland.\nThe city is home to the biennial Radom Air Show, the largest air show in the country, held during the last weekend of August. \"Radom\" is also the popular unofficial name for a semiautomatic FB Vis pistol, which was produced from 1935 to 1944 by Radom's Łucznik Arms Factory. The city continues to produce military firearms for the Polish Armed Forces.\nThe international Radom Jazz Festival and the International Gombrowicz Theater Festival are held in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "radom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1134,
+    "attempt": 1125,
+    "place_id": "gn-118743",
+    "input": {
+      "place": {
+        "place_id": "gn-118743",
+        "name": "Rasht",
+        "country": "Iran",
+        "subdivision": "Gilan Province",
+        "lat": 37.27611,
+        "lon": 49.58862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rasht",
+          "url": "https://en.wikipedia.org/wiki/Rasht",
+          "text": "Rasht (Persian: رشت; [ɾæʃt] ) is a city in the Central District of Rasht County, Gilan province, Iran, serving as the capital of the province, the county, and the district. Known as the \"City of Silver Rain\" (Shahr-e Bārān Ha-ye Noghre i), Rasht has, throughout Iran’s history, served as a border city, earning the historical nickname \"Dār al-Marz Rasht\" or \"Rasht on the Border\". With a population of 679,995 in 2016, it is the most populous city in northern Iran.\nRasht is the largest city on Iran's Caspian Sea coast. Due to being between the coast and the mountains, the local environment is rainy with a humid subtropical climate. It also has a temperate rainforest to its south, in contrast to the rest of Iran, which is mostly arid.\nIt is a major trade center between Caucasia, Russia, and Iran, using the port of Bandar-e Anzali. Rasht is also a major tourist center with the resort of Masouleh in the adjacent mountains and the beaches of Caspian as some of the major attractions.\nHistorically, Rasht was a major transport and business center which connected Iran to Russia and the rest of Europe, and because of this it was known as the \"Gate of Europe\". The city has a history that goes back to the 13th century, but its modern history dates back to the Safavid era during which Rasht was a major center of the silk trade with numerous textile workshops. In 2015, this city joined the network of creative cities of the world as a creative gastronomy city under the supervision of UNESCO.\nSome of the famous neighbourhoods of Rasht include Golsar, Safsar, Kordmahaleh and Khamiran."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "rasht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1135,
+    "attempt": 1126,
+    "place_id": "gn-1266049",
+    "input": {
+      "place": {
+        "place_id": "gn-1266049",
+        "name": "Kota",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 25.18254,
+        "lon": 75.83907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kota, Rajasthan",
+          "url": "https://en.wikipedia.org/wiki/Kota,_Rajasthan",
+          "text": "Kota (Hindi pronunciation: [ko.ʈɐ] ), previously known as Kotah, is the third-largest city of the western Indian state of Rajasthan. It is located about 230 km (143 mi) south of the state capital, Jaipur, on the banks of the Chambal River. As of 2024, with a population of over 1.5 million, it is the third most populous city in Rajasthan, after Jaipur and Jodhpur. It is also India's first and world's second traffic signal free city after Bhutan's capital Thimphu. It serves as the administrative headquarters for the Kota district and Kota division. It was founded as a walled city in the 14th century in the erstwhile Bundi state and became the capital of the princely state of Kota in 1625, following the separation of the Bundi and the Kota state. Kota is renowned for its coaching institutes for engineering and medical entrance exams, such as JEE and NEET. Each year, over 200,000 students move to Kota to prepare for these competitive exams.\nIn addition to several monuments, Kota is known for its palaces and gardens. The city was included among 98 Indian cities for the Smart Cities Mission initiated by the Indian Prime Minister Narendra Modi in 2015 and was listed at 67th place after the results of the first round were released. Afterward, the top 20 cities were further selected for funding in the immediate financial year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "kota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1136,
+    "attempt": 1127,
+    "place_id": "gn-1272051",
+    "input": {
+      "place": {
+        "place_id": "gn-1272051",
+        "name": "Eluru",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.71311,
+        "lon": 81.10437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eluru",
+          "url": "https://en.wikipedia.org/wiki/Eluru",
+          "text": "Eluru ( AY-loo-roo) is a city and the district headquarters of Eluru district in the Indian state of Andhra Pradesh, Historically known as Ellore\". It is one of the 14 municipal corporations in the state and the mandal headquarters of Eluru mandal in the Eluru revenue division. Situated on the banks of the Tammileru River, Eluru is strategically positioned in the southeastern part of Andhra Pradesh. It was historically known as Helapuri. As of 2011 Census of India, the city had a population of 214,414, where as Eluru Urban Development Authority has a population around 2,760,160, reflecting its status as a major urban centre. The city's historical significance dates back to the second century CE, with evidence of its ancient roots found in various archaeological sites and historical records. Eluru was a prominent town under the rule of the Qutub Shahis, who governed the region in the 16th century. It came under the control of the Mughal Empire in the 17th century as the empire expanded its influence across South India. The town later became part of the Nawab of Hyderabad's dominions in the 18th century. During British India, Eluru was incorporated into the Madras Presidency and made capital for Northern Circars in the early 19th century. The British established administrative and infrastructural developments in the town, shaping its modern identity.\nThe city came into headlines after the outbreak in 2020, which was a significant event that drew national attention. The incident involved a mysterious illness that affected hundreds of people, leading to widespread concern and a major public health response. It is situated in the Krishna River Delta region, and is known for its fertile agricultural lands. The city is intersected by various rivers and canals. Kolleru Lake, one of the largest inland freshwater lakes in India is located within a few kilometers from the city.\nEluru has made significant contributions to Indian film and arts through several notable personalities like L. V. Prasad, Silk Smitha, Sekhar Kammula etc. The city plays a crucial role in regional commerce, Eluru is renowned primarily for its pile carpets, though it also manufactures textiles and leather goods. Additionally, the city serves as a key trade hub for fresh water fish, lemon, rice, oilseeds, tobacco, and sugar. Located on the Golden Quadrilateral, the city is well-connected by road, rail, and airways. Alluri Sitarama Raju Stadium, situated in Eluru, is a prominent sports venue named after the celebrated Indian freedom fighter Alluri Sitarama Raju. Eluru's educational landscape includes several notable institutions, such as ASRAM Medical college, Sir C.R. Reddy Educational Institutions, etc, which contribute to the city's reputation as a centre for learning."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 439
+    },
+    "banned_terms": [
+      {
+        "term": "eluru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1137,
+    "attempt": 1128,
+    "place_id": "gn-1513064",
+    "input": {
+      "place": {
+        "place_id": "gn-1513064",
+        "name": "Olmaliq",
+        "country": "Uzbekistan",
+        "subdivision": "Tashkent Region",
+        "lat": 40.84472,
+        "lon": 69.59833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olmaliq",
+          "url": "https://en.wikipedia.org/wiki/Olmaliq",
+          "text": "Olmaliq (Uzbek: Olmaliq / Олмалиқ) is a district-level city (2021 pop 133,400) in the Tashkent Region of central Uzbekistan, approximately 65 km east of Tashkent. It is located at latitude 40° 50' 41N; longitude  69° 35' 54E; at an altitude of 585 meters.\nOlmaliq is a company town developed by the Soviet Union in the 1930s, to exploit local reserves of copper, lead, zinc, gold, silver and barite. The town contains several enormous smelting facilities and related industries operated today by JSC Almalyk MMC, one of the largest mining-metallurgical enterprises in Uzbekistan.\nThe smelter operations have extensively contaminated Almalyk, which is considered one of the most polluted places on earth. The air has high concentrations of sulfuric acid fumes and the ground has hundreds of tons of toxic waste.  The Uzbek government has resisted calls to close the plant, arguing that the country's economy cannot afford to do so: The plant employs around 25,000 residents of the city, and accounts for a substantial share of the region's economy.  However, in January 2005 the government announced plans to clean up the area, with a target of 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "olmaliq",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1138,
+    "attempt": 1129,
+    "place_id": "gn-1721281",
+    "input": {
+      "place": {
+        "place_id": "gn-1721281",
+        "name": "Cabuyao",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.2726,
+        "lon": 121.1262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabuyao",
+          "url": "https://en.wikipedia.org/wiki/Cabuyao",
+          "text": "Cabuyao (Tagalog: [kɐˈbujaʊ]), officially the City of Cabuyao (Filipino: Lungsod ng Cabuyao), is a component city in the province of Laguna, Philippines. According to the 2025 census, it has a population of 365,202 people.\nIt used to be known as the \"richest municipality in the Philippines\" due to the large populace of migrants working in the town's industrial estates. Companies such as Nestlé Philippines, Asia Brewery, Inc., San Miguel Corporation, Tanduay Distillers, Inc., Wyeth Philippines, Inc., Procter & Gamble Philippines, Light Industry and Science Park of the Philippines and Mapúa Malayan Colleges Laguna have established factories or are located in Cabuyao.\nBy virtue of Republic Act No. 10163, the municipality of Cabuyao was converted to a component city after the ratification of a plebiscite held on August 4, 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "cabuyao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1139,
+    "attempt": 1130,
+    "place_id": "gn-1732752",
+    "input": {
+      "place": {
+        "place_id": "gn-1732752",
+        "name": "Johor Bahru",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.4655,
+        "lon": 103.7578
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johor Bahru",
+          "url": "https://en.wikipedia.org/wiki/Johor_Bahru",
+          "text": "Johor Bahru (JB) is the capital city of the Malaysian state of Johor. It is the core city of Johor Bahru District, Malaysia's second-largest district by population and economy. For the city proper, Johor Bahru had a population of 858,118 in 2020, making it Malaysia's largest state capital city by population. It is located at the southern end of the Malay Peninsula, bordering the city-state of Singapore.\nAs a major financial and business centre in Malaysia, Johor Bahru is Malaysia's second best-performing city behind only Kuala Lumpur, in terms of economic competitiveness, prosperity, and ease of doing business, according to the World Bank. It has the third highest quality of life in ASEAN, after Singapore and Kuala Lumpur, with the fastest urbanisation growth and internet speed among Malaysian cities. As one of the world's 100 most visited cities, Johor Bahru has the busiest land border crossing globally, via the Johor-Singapore Causeway, KTM Intercity and the future RTS Link to Singapore. Johor Bahru is served by Senai International Airport and the world's 15th-busiest port, Tanjung Pelepas.\nDuring the reign of Sultan Abu Bakar between 1886 and 1895, the city witnessed modernisation from a fishing village, with the construction of administrative centres, offices, schools, and railways to Woodlands, Singapore. Japanese forces occupied Johor Bahru during the Pacific War. Johor Bahru thus became the post-war cradle of Malay nationalism, forming a major political party, UMNO at the Istana Besar in 1946. Granted city status in 1994, Johor Bahru is currently part of the Johor-Singapore Special Economic Zone and Iskandar Malaysia, the nation's largest special economic zone by investment value."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "johor bahru",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "johor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bahru",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1140,
+    "attempt": 1131,
+    "place_id": "gn-1808722",
+    "input": {
+      "place": {
+        "place_id": "gn-1808722",
+        "name": "Hefei",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 31.86389,
+        "lon": 117.28083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hefei",
+          "url": "https://en.wikipedia.org/wiki/Hefei",
+          "text": "Hefei is the capital of Anhui province, China. A prefecture-level city, it is the political, economic, and cultural center of Anhui. Its population was 9,369,881 as of the 2020 census. Its built-up (or metro) area is made up of four urban districts plus Feidong, Feixi and Changfeng counties being urbanized, and was home to 7,754,481 inhabitants. Located in the central portion of the province, it borders Huainan to the north, Chuzhou to the northeast, Wuhu to the southeast, Tongling to the south, Anqing to the southwest and Lu'an to the west. A natural hub of communications, Hefei is situated to the north of Chao Lake and stands on a low saddle crossing the northeastern extension of the Dabie Mountains, which forms the divide between the Huai and Yangtze rivers.\nThe present-day city dates from the Song dynasty. Before World War II, Hefei remained essentially an administrative centre and the regional market for the fertile plain to the south. It has gone through a growth in infrastructure in recent years. Hefei is the location of Experimental Advanced Superconducting Tokamak, an experimental superconducting tokamak magnetic fusion energy reactor.\nHefei is a leading world city for scientific research, ranking at 12th globally, 8th in the Asia-Pacific, and 7th in China (behind Beijing, Shanghai, Nanjing, Guangzhou, Wuhan and Hangzhou), as tracked by the Nature Index in 2025. The city is represented by several major universities, including the University of Science and Technology of China, Hefei University of Technology, Anhui University, Anhui Agricultural University and Anhui Medical University. Notably, the University of Science and Technology of China is one of the top 100 comprehensive public research universities in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "hefei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1141,
+    "attempt": 1132,
+    "place_id": "gn-1835329",
+    "input": {
+      "place": {
+        "place_id": "gn-1835329",
+        "name": "Daegu",
+        "country": "South Korea",
+        "subdivision": "Daegu",
+        "lat": 35.87028,
+        "lon": 128.59111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daegu",
+          "url": "https://en.wikipedia.org/wiki/Daegu",
+          "text": "Daegu (Korean: 대구; [tɛ.ɡu]), formerly spelled Taegu and officially Daegu Metropolitan City (대구광역시), is a city in southeastern South Korea. It is the third-largest urban agglomeration in South Korea after Seoul and Busan; the fourth-largest metropolitan city in the nation with over 2.3 million residents, and the second-largest city after Busan in the Yeongnam region in southeastern South Korea. Daegu and the surrounding North Gyeongsang Province are often referred to as Daegu-Gyeongbuk, with a total population of over 5 million.\nDaegu is located in south-eastern Korea about 80 km (50 mi) from the coast, near the Geumho River and its mainstream, Nakdong River in Gyeongsang Province. The Daegu basin is the central plain of the Yeongnam region. In ancient times, the Daegu area was part of the proto-kingdom Jinhan. Subsequently, Daegu came under the control of the Silla Kingdom, which unified the Korean Peninsula. During the Joseon period, the city was the capital of Gyeongsang Province, one of the traditional eight provinces of the country.\nDaegu was an economic motor of Korea during the 1960s–1980s period. The humid subtropical climate of Daegu is ideal for producing high-quality apples, thus the nickname, \"Apple City\". Daegu is also known as \"Textile City\", as textiles used to be the main industry of the city. With the establishment of the Daegu-Gyeongbuk Free Economic Zone, Daegu currently focuses on fostering fashion and high-tech industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "daegu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1142,
+    "attempt": 1133,
+    "place_id": "gn-1850147",
+    "input": {
+      "place": {
+        "place_id": "gn-1850147",
+        "name": "Tokyo",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.6895,
+        "lon": 139.69171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Tokyo",
+          "text": "Tokyo, officially the Tokyo Metropolis, is the capital and most populous city of Japan. The population of the city proper was over 14 million as of 2023. The Greater Tokyo Area, which includes Tokyo and parts of six neighboring prefectures, is the third-most populous metropolitan area in the world, with 33 million residents as of 2025.\nLying at the head of Tokyo Bay, Tokyo is part of the Kantō region, on the central coast of Honshu, Japan's largest island. It is Japan's economic center and the seat of the Japanese government and the Emperor of Japan. The Tokyo Metropolitan Government administers Tokyo's central 23 special wards, which formerly made up Tokyo City; various commuter towns and suburbs in its western area; and two outlying island chains, the Tokyo Islands. Although most of the world recognizes Tokyo as a city, since 1943 its governing structure has been more akin to that of a prefecture, with an accompanying Governor and Assembly taking precedence over the smaller municipal governments that make up the metropolis. Special wards in Tokyo include Chiyoda, the site of the National Diet Building and the Tokyo Imperial Palace; Shinjuku, the city's administrative center; and Shibuya, a hub of commerce and business.\nTokyo, originally known as Edo, rose to political prominence in 1603 when it became the seat of the Tokugawa shogunate, and by the mid-18th century, Edo had evolved from a small fishing village into one of the largest cities in the world, with a population surpassing one million. After the Meiji Restoration (1868), the imperial capital in Kyoto was moved to Edo, and the city was renamed Tokyo (lit. 'Eastern Capital'). Tokyo was greatly damaged by the 1923 Great Kantō earthquake and by Allied bombing raids during World War II. Beginning in the late 1940s, Tokyo underwent rapid reconstruction and expansion, which fueled the Japanese economic miracle, in which Japan's economy became the second-largest in the world at the time, behind that of the United States. As of 2025, Tokyo is home to 26 of the world's 500 largest companies, as listed in the annual Fortune Global 500.\nTokyo was the first city in Asia to host the Summer Olympics and Paralympics, in 1964, and also hosted in 2021. It hosted three G7 summits in 1979, 1986, and 1993. Tokyo is an international hub of research and development and an academic center, with several major universities, including the University of Tokyo, the top-ranking university in Japan. Tokyo Station is the central hub for the Shinkansen, the country's high-speed railway network, and the city's Shinjuku Station is the world's busiest train station. Tokyo Skytree is the world's tallest tower. The Tokyo Metro Ginza Line, which opened in 1927, is the oldest underground metro line in Asia.\nTokyo's nominal gross domestic output was 120.2 trillion yen (US$887.9 billion) in FY2022 and accounted for 21.2% of Japan's economic output, which converts to 8.43 million yen or US$62,291 per capita. Including the Greater Tokyo Area, Tokyo is the second-largest metropolitan economy in the world after New York, with a 2022 gross metropolitan product estimated at US$2.08 trillion. Although Tokyo's status as a leading global financial hub has diminished with the Lost Decades since the 1990s, when the Tokyo Stock Exchange (TSE) was the world's largest, with a market capitalization about 1.5 times that of the NYSE, Tokyo is still a leading financial hub, and the TSE remains among the world's top five major stock exchanges. Tokyo is categorized as an Alpha+ city by the Globalization and World Cities Research Network. It ranked 14th in the 2024 edition of the Global Livability Ranking, and has been ranked as the safest city in the world by the Economist Intelligence Unit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 616
+    },
+    "banned_terms": [
+      {
+        "term": "tokyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1143,
+    "attempt": 1134,
+    "place_id": "gn-2038432",
+    "input": {
+      "place": {
+        "place_id": "gn-2038432",
+        "name": "Baotou",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 40.6516,
+        "lon": 109.84389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baotou",
+          "url": "https://en.wikipedia.org/wiki/Baotou",
+          "text": "Baotou is the second-largest city by urban population in Inner Mongolia, China. Governed as a prefecture-level city, its built-up (or metro) area within its five urban districts is home to 2,261,089 people while the total population is 2,709,378 as of the 2020 census.\nBaotou's southern border is delineated by the Yellow River. The city's namesake, literally translating to \"place with deer\", is Mongolian, bringing about the nickname of \"Lucheng\" (Chinese: 鹿城; pinyin: Lùchéng), meaning \"City of Deer\". Alternatively, Baotou is known as the \"City of Steel in the Grasslands\" (草原钢城; Cǎoyuán Gāngchéng), since steel was a major industry in the city which is built on the Mongolian grassland and contains a large grassland park. Today, Baotou mines and refines over half of the rare-earth minerals produced in the world. This has led to environmental contamination near the industrial sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "baotou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1144,
+    "attempt": 1135,
+    "place_id": "gn-209228",
+    "input": {
+      "place": {
+        "place_id": "gn-209228",
+        "name": "Mbuji-Mayi",
+        "country": "Congo - Kinshasa",
+        "subdivision": "East Kasai",
+        "lat": -6.13603,
+        "lon": 23.58979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mbuji-Mayi",
+          "url": "https://en.wikipedia.org/wiki/Mbuji-Mayi",
+          "text": "Mbuji-Mayi (known until end-1962 as Bakwanga) is a city and the capital of Kasai-Oriental Province in the south-central Democratic Republic of Congo. It is thought to be the second largest city in the country, after the capital Kinshasa and ahead of Lubumbashi, Kisangani and Kananga, though its exact population is not known. Estimates range from a 2010 CIA World Factbook estimated population of 1,480,000 to as many as 3,500,000 estimated by the United Nations in 2008.\nMbuji-Mayi lies in Luba country on the Mbuji-Mayi River. The name Mbuji-Mayi comes from the local language, Tshiluba, and translates as \"Goat-Water,\" a name deriving from the great number of goats in the region. Despite its large population, the city remains remote, having little connection to surrounding provinces or to Kinshasa and Lubumbashi. However, Mbuji-Mayi is the traditional centre of industrial diamond mining in Congo, being located on top of one of the largest known deposits in the world. Air travel is provided through the Mbuji Mayi Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "mbuji mayi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mbuji",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mayi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1145,
+    "attempt": 1136,
+    "place_id": "gn-2513076",
+    "input": {
+      "place": {
+        "place_id": "gn-2513076",
+        "name": "Orihuela",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.08483,
+        "lon": -0.94401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orihuela",
+          "url": "https://en.wikipedia.org/wiki/Orihuela",
+          "text": "Orihuela (historically also known in Valencian as Oriola) is a city and municipality located at the foot of the Sierra de Orihuela mountains in the province of Alicante, Valencian Community, Spain. The city is in one of the Spanish-speaking areas of the Valencian Community.\nThe city of Orihuela had a population of 33,943 inhabitants at the beginning of 2013. The municipality has an area of 367.19 km2, and stretches all the way down to the Mediterranean coast, west of Torrevieja, and had a total population of 92,000 inhabitants at the beginning of 2013. This includes not only the city of Orihuela, but also the coastal tourist development hub (urbanización turística) of Dehesa de Campoamor with 33,277 inhabitants (2013) and a few other villages.\nThe river Segura flows through Orihuela. The city was settled by Romans who called it Orcelis and subsequently Aurariola (Latin: \"breeze\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "orihuela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1146,
+    "attempt": 1137,
+    "place_id": "gn-2929567",
+    "input": {
+      "place": {
+        "place_id": "gn-2929567",
+        "name": "Erlangen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.59099,
+        "lon": 11.00783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erlangen",
+          "url": "https://en.wikipedia.org/wiki/Erlangen",
+          "text": "Erlangen (German pronunciation: [ˈɛʁlaŋən] ) is a Middle Franconian city in Bavaria, Germany. It is the seat of the administrative district Erlangen-Höchstadt (former administrative district Erlangen), and with 120,839 inhabitants (as of 30 June 2026), it is the smallest of the eight major cities (Großstadt) in Bavaria. The number of inhabitants exceeded the threshold of 100,000 in 1974, making Erlangen a major city according to the statistical definition officially used in Germany.\nTogether with Nuremberg, Fürth, and Schwabach, Erlangen forms one of the three metropolises in Bavaria. With the surrounding area, these cities form the European Metropolitan Region of Nuremberg, one of 11 metropolitan areas in Germany. The cities of Nuremberg, Fürth, and Erlangen also form a triangle on a map, which represents the heartland of the Nuremberg conurbation.\nAn element of the city that goes back a long way in history, but is still noticeable, is the settlement of Huguenots after the Revocation of the Edict of Nantes in 1685. Today, many aspects of daily life in the city are dominated by the Friedrich Alexander University Erlangen-Nuremberg and the Siemens technology group."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "erlangen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1147,
+    "attempt": 1138,
+    "place_id": "gn-324190",
+    "input": {
+      "place": {
+        "place_id": "gn-324190",
+        "name": "Alanya",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.54375,
+        "lon": 31.99982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alanya",
+          "url": "https://en.wikipedia.org/wiki/Alanya",
+          "text": "Alanya ( ə-LAHN-yə; Turkish pronunciation: [aˈɫanja] ), formerly Alaiye, is a beach resort city, a municipality and district of Antalya Province, Turkey. It is on the southern coast of Turkey, in the country's Mediterranean Region, 133 kilometres (83 mi) east of the city of Antalya. Its area is 1,577 km2, and its population is 364,180 (2022). The city proper has 189,222 inhabitants (2022).\nBecause of its natural strategic position on a small peninsula into the Mediterranean Sea below the Taurus Mountains, Alanya has been a local stronghold for many Mediterranean-based empires, including the Ptolemaic, Seleucid, Roman, Byzantine, and Ottoman Empires. Alanya's greatest political importance came in the Middle Ages, with the Seljuk Sultanate of Rûm under the rule of Alaeddin Kayqubad I, from whom the city derives its name. His building campaign resulted in many of the city's landmarks, such as the Kızıl Kule (Red Tower), Tersane (Shipyard), and Alanya Castle.\nThe Mediterranean climate, natural attractions, and historic heritage make Alanya a popular destination for tourism, and responsible for nine percent of Turkey's tourism sector and thirty percent of foreign purchases of real estate in Turkey. Tourism has risen since 1958 to become the dominant industry in the city, resulting in a corresponding increase in city population. Warm-weather sporting events and cultural festivals take place annually in Alanya. In 2014 Mayor Adem Murat Yücel, of the Nationalist Movement Party unseated Hasan Sipahioğlu, of the Justice and Development Party, who had previously led the city since 1999. Adem Murat Yücel has served two terms as the Mayor of Alanya, first elected in 2014 and then elected for a second time in 2019. In March 31st 2024 Turkish local elections Osman Tarık Özçelik of the Republican People's Party has been elected as the new Mayor of Alanya, making an historic mark as the Republican People's Party was able to win an election in the city after 74 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 316
+    },
+    "banned_terms": [
+      {
+        "term": "alanya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1148,
+    "attempt": 1139,
+    "place_id": "gn-3995402",
+    "input": {
+      "place": {
+        "place_id": "gn-3995402",
+        "name": "Morelia",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.70078,
+        "lon": -101.18443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morelia",
+          "url": "https://en.wikipedia.org/wiki/Morelia",
+          "text": "Morelia (Spanish pronunciation: [moˈɾelja]; from 1545 to 1828 known as Valladolid; Otomi: Mänxuni) is the capital and most populous city of the Mexican state of Michoacán. Situated in the Guayangareo Valley in the north-central part of the state, it is the municipal seat of the municipality of Morelia. The main pre-Hispanic cultures here were the Purépecha and the Matlatzinca, but no major cities were founded in the valley during this time. The Spanish took control of the area in the 1520s. The Spanish under Viceroy Antonio de Mendoza founded a settlement here in 1541 with the name of Valladolid, which became rival to the nearby city of Pátzcuaro for dominance in Michoacán. In 1580, this rivalry ended in Valladolid's favor, and it became the capital of the viceregal province. After the Mexican War of Independence, the city was renamed Morelia in honor of José María Morelos, who hailed from the city. In 1991, the city was declared a UNESCO World Heritage Site for its well-preserved historical buildings and layout of the historic center. It is tradition to name people born on September 30 after the city.\nThe city population in 2020 was 743,275 inhabitants. The municipality had 849,053 inhabitants, and the Metropolitan Area, composed of Morelia, Tarímbaro, and Charo municipalities, had 988,704 inhabitants, according to the XIV Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "morelia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1149,
+    "attempt": 1140,
+    "place_id": "gn-4393217",
+    "input": {
+      "place": {
+        "place_id": "gn-4393217",
+        "name": "Kansas City",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 39.09973,
+        "lon": -94.57857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kansas City, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Kansas_City,_Missouri",
+          "text": "Kansas City, abbreviated KC or KCMO, is the largest city in the U.S. state of Missouri by both population and area. It is located on the Missouri River at its confluence with the Kansas River, within Jackson, Clay, Platte and Cass counties. It is the 37th-most populous city in the United States and sixth-most populous city in the Midwest, with a population of 508,090 at the 2020 census. The Kansas City metropolitan area, which straddles the Missouri–Kansas state line, is the 31st-most populous metropolitan area in the nation, at 2.25 million residents. \nKansas City was founded in the 1830s as a port on the Missouri and Kansas rivers. On June 1, 1850, the town of Kansas was incorporated; soon afterwards, a region designated as the Kansas Territory was established. Confusion between the city and the territory of Kansas ensued, so the name Kansas City was assigned to distinguish the city from the territory. The city's growth was closely tied to westward expansion, as railroads and the Kansas City Stockyards established it as a major transportation and livestock center.\nSituated along Missouri's western border with Kansas, Kansas City encompasses 319.03 square miles (826.3 km2), making it the 25th-largest U.S. city by area. It is one of the two county seats of Jackson County, alongside Independence. The city is known for landmarks and districts including the River Market, 18th and Vine, and Country Club Plaza. It is internationally recognized for Kansas City jazz, its extensive system of fountains, the Kansas City Chiefs and Kansas City Royals sports franchises, and regional cuisine including Kansas City-style barbecue and strip steak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "kansas city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kansas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 4172,
+    "attempt": 4141,
+    "place_id": "gn-1173920",
+    "input": {
+      "place": {
+        "place_id": "gn-1173920",
+        "name": "Khewra",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.6491,
+        "lon": 73.01059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khewra, Jhelum",
+          "url": "https://en.wikipedia.org/wiki/Khewra,_Jhelum",
+          "text": "Khewra (Punjabi / Urdu: کھیوڑہ) is the second most populated city of Jhelum District and a neighboring city of Pind Dadan Khan in Jhelum District, Punjab, Pakistan. The city is administratively subdivided into two union councils and is the location of the Khewra Salt Mine. The population of Khewra city is about 35,000 (or 80,000).\nKhewra city is also known as \"The Kingdom of Salt\" because of its rock salt which is 98% pure and natural source of salt in Pakistan. Khewra Salt Mine is the second largest salt mine in the world, after Sifto Salt Mines in Ontario, Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "khewra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4173,
+    "attempt": 4142,
+    "place_id": "gn-1259896",
+    "input": {
+      "place": {
+        "place_id": "gn-1259896",
+        "name": "Perambalur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.23333,
+        "lon": 78.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perambalur",
+          "url": "https://en.wikipedia.org/wiki/Perambalur",
+          "text": "Perambalur is a Selection Grade Municipality is located in the heart of Tamil Nadu and is 267 kilometers South of the capital city of Chennai. The district covers an area of 1,757 square kilometers, located between 10.54' and 11.30' degrees of Northern latitude and 78.40' and 79.30' degrees of Eastern longitude. There are no coastal lines in this inland district.\nThe District has the Vellar River in the North and well-marked natural divisions.\nThe most important irrigation resource is groundwater, accessed through tube wells and wells. Paddy, groundnut, sugarcane, millet, and cashew are the major crops grown in the district. Perambalur accounts for about 24% of the small onion produced in Tamil Nadu and holds first place in state production.\nAs per the 2011 Census, the total population of the Perambalur District is 5,65,223. The density of the population in the district is 321 per sq. Km\nThere is a set of 11th-century Buddha statues around the villages of Perambalur called Perambalur Buddhas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "perambalur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4174,
+    "attempt": 4143,
+    "place_id": "gn-1269655",
+    "input": {
+      "place": {
+        "place_id": "gn-1269655",
+        "name": "Itanagar",
+        "country": "India",
+        "subdivision": "Arunachal Pradesh",
+        "lat": 27.08694,
+        "lon": 93.60987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itanagar",
+          "url": "https://en.wikipedia.org/wiki/Itanagar",
+          "text": "Itanagar (, Hindi: [iːʈaːnəɡəɾ] ) is the capital and largest town of the Indian state of Arunachal Pradesh. The seat of Arunachal Pradesh Legislative Assembly, the seat of government of Arunachal Pradesh, and the seat of Gauhati High Court permanent bench at Naharlagun are all in Itanagar. Being the hub of all the major economic bases, Itanagar, along with the adjacent town of Naharlagun, comprises the administrative region of the Itanagar Capital Complex Region. This stretches from the Itanagar Municipal limit at Chandranagar Town, until Nirjuli Town, and is a major hub of cultural, economic, fashion, education and recreational activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "itanagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4175,
+    "attempt": 4144,
+    "place_id": "gn-1272694",
+    "input": {
+      "place": {
+        "place_id": "gn-1272694",
+        "name": "Dhubri",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 26.01856,
+        "lon": 89.98564
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhubri",
+          "url": "https://en.wikipedia.org/wiki/Dhubri",
+          "text": "Dhubri is a city and the administrative centre of Dhubri district in the Indian state of Assam. It is an old town on the bank of the Brahmaputra River, with historical significance. In 1883, the town was first constituted as a municipal board under the British regime.  It is situated about 277.4 kilometres (172 mi) west from Dispur, the state capital of Assam.\nThe town is also an important commercial centre and had a busy river port, particularly for jute. Dhubri is called the \"Land of Rivers\" as it is covered on three sides by the Brahmaputra and Gangadhar rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "dhubri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4176,
+    "attempt": 4145,
+    "place_id": "gn-12750575",
+    "input": {
+      "place": {
+        "place_id": "gn-12750575",
+        "name": "Bangsar",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.12945,
+        "lon": 101.67004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangsar",
+          "url": "https://en.wikipedia.org/wiki/Bangsar",
+          "text": "Bangsar is a residential suburb on the outskirts of Kuala Lumpur, lying about 4 kilometres (2.5 mi) south-west of the city centre. It is part of the Lembah Pantai parliamentary constituency. Bangsar is administered by Dewan Bandaraya Kuala Lumpur (DBKL), unlike other townships in the Klang Valley such as Petaling Jaya and Subang Jaya which have their municipal councils. Neighbourhood residents' associations and business councils play a part in communicating with the local authority, but they exercise no legal or administrative power. Malays make up most of the population at 61%, followed by the Chinese at 24%, Indians at 15%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "bangsar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4177,
+    "attempt": 4146,
+    "place_id": "gn-1278871",
+    "input": {
+      "place": {
+        "place_id": "gn-1278871",
+        "name": "Ambad",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.61301,
+        "lon": 75.78906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambad",
+          "url": "https://en.wikipedia.org/wiki/Ambad",
+          "text": "Ambad is a town with a municipal council in Jalna district  in the state of Maharashtra, India. Ambad is notable for its temple dedicated to the Hindu goddess Matsyodari. In October of each year, devotees of the goddess gather in Ambad for the Hindu festival of Dashahara. A local tradition claims that the name \"Ambad\" was given to this city by a Hindu Raja named Ambarisha. According to this tradition, Raja Ambarisha would worship the goddess on a rock hill which resembled a fish. Because of this fish-shaped rock hill, the goddess was named Matsyodari (\"in the stomach of fish\").  The temple was constructed by Ahilya Devi Holkar, who also has developed Ambad by constructing Pushkarini and Kavandi (water reservoirs). Ambad is the second most populous town in district of Jalna. Ambad also has a Government Polytechnic College which is one of the only two Government Polytechnic Colleges located in Jalna district along with Government Polytechnic, Jalna. Ambad municipal council is convened at Court Road.\n\nAmbad is also famous for its \"Dattajayanti Sangeet Mahotsav\" celebrations. The festival was started in 1923 by Pandit Bappasaheb Jalgaonkar. His son the Pandit Govindrao Jalgaonkar continued the tradition and gave it a broader appeal among masses. The festival is purely based on Indian classical music.\n\nIn the middle of the city, there's an old temple of Lord Ram where a beautiful idol of the deity was established in the 18th century by the saint and devotee, Sri Ramanand Maharaj of Gondi. Since then, people worship the Lord Ram regularly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "ambad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4178,
+    "attempt": 4147,
+    "place_id": "gn-1608452",
+    "input": {
+      "place": {
+        "place_id": "gn-1608452",
+        "name": "Nan",
+        "country": "Thailand",
+        "subdivision": "Nan",
+        "lat": 18.78378,
+        "lon": 100.77899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nan, Thailand",
+          "url": "https://en.wikipedia.org/wiki/Nan,_Thailand",
+          "text": "Nan (Northern Thai: ᨶᩣ᩠᩵ᨶ; Thai: น่าน, pronounced [nâːn]) is a town in northern Thailand. It is 688 km (428 mi) north of Bangkok. It is in the centre of Nan province which bears its name, and of which it is the former administrative capital. It covers tambon Nai Wiang and parts of tambon Pha Sing of Mueang Nan district, an area of 7.60 km2 (2.93 sq mi) divided into 30 chumchon. In 2010 it had a population of 21,333 spread along the Nan River's right bank. Nan is a small city, primarily devoted to commercial, administrative, educational, and hospital activities. The old heart of the city, where Wat Phumin, the national museum and other tourist attractions are found, is being restored."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "nan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4179,
+    "attempt": 4148,
+    "place_id": "gn-1626459",
+    "input": {
+      "place": {
+        "place_id": "gn-1626459",
+        "name": "Suai",
+        "country": "Timor-Leste",
+        "subdivision": "Cova Lima",
+        "lat": -9.31286,
+        "lon": 125.25648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suai",
+          "url": "https://en.wikipedia.org/wiki/Suai",
+          "text": "Suai is a city in Timor-Leste, in Suai Subdistrict. It has a population of 9,866 and is located 138 kilometres (86 mi) to the southwest of Dili, the national capital. Suai is the capital of the Cova Lima District, which is in the southwest of the country. It is located just a few kilometers from the Timor Sea, on the south side of the island.\nSuai was the location of the Suai Church Massacre in September 1999. It was one of a number of massacres perpetrated by a pro-Indonesia militia in the time of the Indonesian withdrawal of East Timor.\nFollowing the events of 1999, Suai entered into a friendship program with the City of Port Phillip, a bayside municipality south of Melbourne, Australia. Together they are working towards assisting the community of Suai recover.\nSuai is served by Suai Airport which was expanded in 2017. The Suai Referral Hospital is located in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "suai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4180,
+    "attempt": 4149,
+    "place_id": "gn-1666596",
+    "input": {
+      "place": {
+        "place_id": "gn-1666596",
+        "name": "Donggang",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 22.46515,
+        "lon": 120.44927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donggang, Pingtung",
+          "url": "https://en.wikipedia.org/wiki/Donggang,_Pingtung",
+          "text": "Donggang Township or Tungkang Township (Chinese: 東港鎭) is an urban township in west-central Pingtung County, Taiwan.  Located on Taiwan's western coastline, along the Taiwan Strait, it has one of Taiwan's largest fishing harbors. Dapeng Bay with its national scenic area is just south of Donggang. \nThe town also hosts Donglong Temple (Chinese: 東隆宮; pinyin: Dōnglóng Gōng; Pe̍h-ōe-jī: Tang-liông-kiong), which is dedicated to \"Lord Wen\" (Chinese: 溫王爺; pinyin: Wēn Wángyé; Pe̍h-ōe-jī: Un-ông-iâ. The word Wen is pronounced the same as \"plague\" in both Hokkien and Mandarin Chinese) and is known for its triannual ceremony of \"burning lord's boat\" (burning plague boat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "donggang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4181,
+    "attempt": 4150,
+    "place_id": "gn-1818550",
+    "input": {
+      "place": {
+        "place_id": "gn-1818550",
+        "name": "Tiu Keng Leng",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.29853,
+        "lon": 114.25115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiu Keng Leng",
+          "url": "https://en.wikipedia.org/wiki/Tiu_Keng_Leng",
+          "text": "Tiu Keng Leng (Chinese: 調景嶺), less commonly known as Rennie's Mill, is an area of Hong Kong in the Sai Kung District adjacent to Junk Bay (Tseung Kwan O).\nThe area was formerly a refugee village housing former Kuomintang officials, followers, other refugees, and families who escaped to Hong Kong from mainland China after the establishment of the People's Republic of China (PRC); however, the original Tiu Keng Leng village was cleared before Hong Kong's sovereignty transfer to the PRC in 1997, and nowadays Tiu Keng Leng has been thoroughly redeveloped as part of the Tseung Kwan O New Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "tiu keng leng",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tiu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "keng",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leng",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4182,
+    "attempt": 4151,
+    "place_id": "gn-2070998",
+    "input": {
+      "place": {
+        "place_id": "gn-2070998",
+        "name": "Geraldton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -28.77897,
+        "lon": 114.61459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geraldton",
+          "url": "https://en.wikipedia.org/wiki/Geraldton",
+          "text": "Geraldton (/ˈd͡ʒɛɹəltən/, JER-əl-tən; Wajarri: Jambinu, Wilunyu: Jambinbirri) is a coastal city in the Mid West region of Western Australia, 424 kilometres (263 mi) north of the state capital, Perth.\nAs of the 2021 census, Geraldton had an urban population of 38,595. Geraldton is the seat of government for the City of Greater Geraldton, which also incorporates the town of Mullewa, Walkaway and large rural areas previously forming the shires of Greenough and Mullewa.\nThe Port of Geraldton is a major west coast seaport. Geraldton is an important service and logistics centre for regional mining, fishing, wheat, sheep and tourism industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "geraldton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4183,
+    "attempt": 4152,
+    "place_id": "gn-2184904",
+    "input": {
+      "place": {
+        "place_id": "gn-2184904",
+        "name": "Paraparaumu",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -40.91667,
+        "lon": 175.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paraparaumu",
+          "url": "https://en.wikipedia.org/wiki/Paraparaumu",
+          "text": "Paraparaumu is a town in the south-western North Island of New Zealand. It lies on the Kāpiti Coast, 51 kilometres (32 mi) north of the nation's capital city, Wellington. It is also known to residents as Pram or Paraparam.\nLike other towns in the area, it has a partner settlement at the coast called Paraparaumu Beach, which is directly opposite Kapiti Island. The two towns form part of the Kāpiti Coast District. Together with nearby Raumati Beach and Raumati South, Paraparaumu serves in part as a commuter town for people working in Wellington City and the wider Wellington metropolitan area. Inland behind Paraparaumu is the Maungakotukutuku area.\nThe village of Lindale is just north of the Paraparaumu town centre. It began as a tourist and agricultural centre, but later gained a reputation for cheese and the Lindale Barnyard petting farm.\nThe old State Highway 1 and the Kāpiti Line section of the North Island Main Trunk railway both pass through Lindale. The railway line was formerly owned by the Wellington and Manawatu Railway Company, and construction of the line was completed when the ends from Wellington and Longburn (Palmerston North) met near Lindale in Otaihanga in 1886. There were proposals to extend the commuter train service operated by Transdev Wellington to a new station at Lindale, subject to Wellington Regional Council funding, but these were dropped when electrification for the commuter service was extended from Paraparaumu to Waikanae.\nThe majority of shops are located close to the town centre in the Coastlands Mall, close to the train station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "paraparaumu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4184,
+    "attempt": 4153,
+    "place_id": "gn-2297141",
+    "input": {
+      "place": {
+        "place_id": "gn-2297141",
+        "name": "Nsawam",
+        "country": "Ghana",
+        "subdivision": "Eastern",
+        "lat": 5.80893,
+        "lon": -0.35026
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nsawam",
+          "url": "https://en.wikipedia.org/wiki/Nsawam",
+          "text": "Nsawam is a town in south Ghana and is the capital of the Nsawam-Adoagyire Municipal District, a district in the country's Eastern Region. The town's main ethnic group is Akan, followed by Ga and then Ewe. Nsawam is controlled by Nsawam-Adoagyire Municipal District (ASMD). As of 2013, Nsawam has a population of 44,522. Nsawam is situated on the main railway between Accra and Kumasi and the highway to Kumasi. The Densu River, which acts as a border between Nsawam and Adoagyiri, is the main source of water for both domestic and industrial purposes for people in Nsawam and its environs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "nsawam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4185,
+    "attempt": 4154,
+    "place_id": "gn-2445553",
+    "input": {
+      "place": {
+        "place_id": "gn-2445553",
+        "name": "Dogondoutchi",
+        "country": "Niger",
+        "subdivision": "Dosso Region",
+        "lat": 13.6403,
+        "lon": 4.02649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dogondoutchi",
+          "url": "https://en.wikipedia.org/wiki/Dogondoutchi",
+          "text": "Dogondoutchi (\"High Hill\", also nicknamed Doutchi) is a commune in Niger. It is located about 300 km east of the capital Niamey and 40 km from the Nigerian border. It lies on national route 1 which links the capital to the towns of Maradi and Zinder to the east and the RN25 heading to north to Tahoua, Agadez and Arlit.\nThe limits of the Dogondoutchi district are roughly those of the ancient region of the Arewa. Since 2008, Dogondoutchi is the administrative centre of the surrounding Dogondoutchi department which carries the same name. It is part of the Dosso Region. The population is near 70,000 distributed over the urban centre with near 40,000, 17 villages lying 5 to 30 km from the centre and 5 Fula tribes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "dogondoutchi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4186,
+    "attempt": 4155,
+    "place_id": "gn-2562598",
+    "input": {
+      "place": {
+        "place_id": "gn-2562598",
+        "name": "Safi",
+        "country": "Malta",
+        "subdivision": "Safi",
+        "lat": 35.83306,
+        "lon": 14.48486
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Safi, Malta",
+          "url": "https://en.wikipedia.org/wiki/Safi,_Malta",
+          "text": "Safi (Maltese: Ħal Safi) is a village in the Western Region of Malta, bordering Żurrieq and Kirkop. The population of Safi was 3,324 in July 2024. This included 1,714 males and 1,610 females; 2,985 Maltese nationals and 339 foreign nationals.\nThe formation of the village, as known today, goes back to the Punic-Roman period: the Ta' Ġawhar Tower, a round Punic-Roman tower in the village, was probably built at the time of the Punic Wars. The village of Ħal Safi is surrounded by four other major villages. Farmers and peasants used to interact on their way back home from work. After a niche was erected, people began to settle, a new village started to form and expanded over the years.\nIn 1417, the village was already recorded as being named Ħal Safi. According to 1419 records of the Standing Army (id-Dejma), between eighty and ninety people were considered as village residents. The job occupations of the period were based on primary economic functions, mainly rearing animals and agriculture.\nThe origin of the village's name is uncertain. Some historians believe that the name derived from the pure (Maltese: safi) air of the area, others insist it is due to its similarity to the City of Safi in Morocco, and others say the name came about since none of the residents were contaminated during an epidemic infection that hit vast zones in Malta. However, the most considered-reputable origin is that the village is named after a family with the surname Safi, as with numerous other Maltese Villages, especially those beginning with Ħal such as  Attard, Balzan, Luqa, etc. The coat-of-arms, a horizontal light-blue stripe on a silver background, and the motto, Sine Macula, emphasize the meaning of the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "safi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4187,
+    "attempt": 4156,
+    "place_id": "gn-2562629",
+    "input": {
+      "place": {
+        "place_id": "gn-2562629",
+        "name": "Qormi",
+        "country": "Malta",
+        "subdivision": "Qormi",
+        "lat": 35.87601,
+        "lon": 14.472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qormi",
+          "url": "https://en.wikipedia.org/wiki/Qormi",
+          "text": "Qormi (Maltese: Ħal Qormi, [ħɐl ˈʔɔrmɪ], locally [ħɐl ˈʔʊrmɪ]), also known by its title Città Pinto, is a city in the Southern Region of Malta, southwest of Valletta in the centre of the island. It had a population of 16,324 (as of March 2018), making it Malta's fifth-largest city. The population of Qormi was 19,752 in July 2024. This included 10,664 males and 9,088 females; 15,727 Maltese nationals and 4,025 foreign nationals.\nQormi has two parishes, one dedicated to Saint George and one to Saint Sebastian. It contains two valleys: Wied il-Kbir (The Large Valley) and Wied is-Sewda (Black Valley). Its bordering towns are Marsa, Luqa, Żebbuġ, Siġġiewi, Ħamrun, Birkirkara, Attard, Santa Venera and Balzan.\nElder inhabitants of Qormi speak a broad Qormi Dialect, which is now in decline."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "qormi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4188,
+    "attempt": 4157,
+    "place_id": "gn-2653144",
+    "input": {
+      "place": {
+        "place_id": "gn-2653144",
+        "name": "Chippenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46,
+        "lon": -2.12472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chippenham",
+          "url": "https://en.wikipedia.org/wiki/Chippenham",
+          "text": "Chippenham is a market town and civil parish in north-west Wiltshire, England. It lies 13 miles (21 km) north-east of Bath, 86 miles (138 km) west of London and is near the Cotswolds Area of Outstanding Natural Beauty. The town was established on a crossing of the River Avon, where some form of settlement is believed to have existed since before Roman times. It was a royal vill and probably a royal hunting lodge, under Alfred the Great. The town continued to grow when the Great Western Railway arrived in 1841. In 2021 the parish had a population of 36,548."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "chippenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4189,
+    "attempt": 4158,
+    "place_id": "gn-2890473",
+    "input": {
+      "place": {
+        "place_id": "gn-2890473",
+        "name": "Kirchheim unter Teck",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.64683,
+        "lon": 9.45378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirchheim unter Teck",
+          "url": "https://en.wikipedia.org/wiki/Kirchheim_unter_Teck",
+          "text": "Kirchheim unter Teck (German pronunciation: [ˈkɪʁçhaɪm ʔʊntɐ ˈtɛk], lit. 'Kirchheim under Teck'; Swabian: Kircha) is a town in Baden-Württemberg, Germany, in the district of Esslingen. It is located on the small river Lauter, a tributary of the Neckar. It is 10 km (6 miles) near the Teck castle, approximately 35 kilometres (22 miles) southeast of Stuttgart. It is the fourth city in the Esslingen district, forming a district centre for the surrounding communities.\nSince 1 April 1956, Kirchheim unter Teck has the status of Große Kreisstadt. The city forms a Verwaltungsgemeinschaft (administrative community) with the neighbouring municipalities Dettingen and Notzingen.  Kirchheim unter Teck was also, for several centuries, seat of the Oberamt (Oa.) Kirchheim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "kirchheim unter teck",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kirchheim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "unter",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "teck",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4190,
+    "attempt": 4159,
+    "place_id": "gn-2929671",
+    "input": {
+      "place": {
+        "place_id": "gn-2929671",
+        "name": "Erftstadt",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.81481,
+        "lon": 6.79387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erftstadt",
+          "url": "https://en.wikipedia.org/wiki/Erftstadt",
+          "text": "Erftstadt (German pronunciation: [ˈɛʁftˌʃtat] ) is a town located about 20 km south-west of Cologne in the Rhein-Erft-Kreis, state of North Rhine-Westphalia, Germany. It was created in July 1969 by the merger of the town Lechenich and the municipalities Dorweiler, Erp, Pingsheim, Bliesheim, Kierdorf, Liblar, Dirmerzheim, Gymnich, Borr, Friesheim, Niederberg and Wissersheim. The name of the town derives from the river that flows through it, the Erft.\nIn 1977, the RAF held their hostage, Hanns-Martin Schleyer, captive in a flat in Liblar for about a month.\nA landslide during the 2021 European floods led to the collapse of several houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "erftstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4191,
+    "attempt": 4160,
+    "place_id": "gn-2931574",
+    "input": {
+      "place": {
+        "place_id": "gn-2931574",
+        "name": "Eisenach",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.9807,
+        "lon": 10.31522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eisenach",
+          "url": "https://en.wikipedia.org/wiki/Eisenach",
+          "text": "Eisenach (German pronunciation: [ˈaɪzənax] ) is a town in Thuringia, Germany with 42,000 inhabitants, 50 kilometres (31 miles) west of Erfurt, 70 km (43 miles) southeast of Kassel and 150 km (93 miles) northeast of Frankfurt. It is the main urban centre of western Thuringia, and bordering northeastern Hessian regions, is near the former Inner German border. A major attraction is Wartburg castle, which has been a UNESCO World Heritage Site since 1999.\nEisenach was an early capital of Thuringia in the 12th and 13th centuries. St. Elizabeth lived at the court of the Ludowingians here between 1211 and 1228. Later Martin Luther came to Eisenach and translated the Bible into German. In 1685 Johann Sebastian Bach was born here. During the early modern period Eisenach was a residence of the Ernestine Wettins and was visited by numerous representatives of Weimar classicism like Johann Wolfgang Goethe. In 1869 the SDAP, one of the two precursors of the Social Democratic Party of Germany (SPD), was founded in Eisenach.\nCar production is an important industry in Eisenach. The Automobilwerk Eisenach was founded in 1896. In the German Democratic Republic the Wartburg was produced here, before the factory was acquired by Opel in 1990.\nEisenach is on the Hörsel river, a tributary of the Werra between the Thuringian Forest in the south, the Hainich mountains in the north-east, and the East Hesse Highlands in the north-west. Since January 2021 it has been part of the Wartburgkreis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "eisenach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

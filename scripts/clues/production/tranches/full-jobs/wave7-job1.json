@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1211,
+    "attempt": 1201,
+    "place_id": "gn-3378644",
+    "input": {
+      "place": {
+        "place_id": "gn-3378644",
+        "name": "Georgetown",
+        "country": "Guyana",
+        "subdivision": "Demerara-Mahaica",
+        "lat": 6.80448,
+        "lon": -58.15527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Georgetown, Guyana",
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "text": "Georgetown is the capital and largest city of Guyana. It is situated in Demerara-Mahaica, region 4, on the Atlantic Ocean coast, at the mouth of the Demerara River. It is nicknamed the \"Garden City of the Caribbean\". It is the retail, administrative, and financial services centre of the country, and the city accounts for a large portion of Guyana's GDP. The city recorded a population of 125,683 as of 2022 census.\nAll executive departments of Guyana's government are located in the city, including Parliament Building, Guyana's Legislative Building and the Court of Appeals, Guyana's highest judicial court. The State House (the official residence of the head of state), as well as the offices and residence of the head of government, are both located in the city. The Secretariat of the international organization known as the Caribbean Community (CARICOM), with 15 member-states and five associate partners, is also based in Georgetown.\nGeorgetown is also known for its British and Dutch colonial influenced architecture, including the tall painted-timber St. George's Cathedral and the iconic Stabroek Market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "georgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1212,
+    "attempt": 1202,
+    "place_id": "gn-3397277",
+    "input": {
+      "place": {
+        "place_id": "gn-3397277",
+        "name": "João Pessoa",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -7.115,
+        "lon": -34.86306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "João Pessoa, Paraíba",
+          "url": "https://en.wikipedia.org/wiki/João_Pessoa,_Paraíba",
+          "text": "João Pessoa ( ZHWOWN pə-SOH-ə; Portuguese: [ʒuˈɐ̃w peˈsoɐ]) is a port city in northeastern Brazil. It is the largest city and capital of the state of Paraíba, with an estimated population of 888,679 (as of 2024). It is located on the right bank of the Paraíba do Norte river.\nThe new \"Estação Ciência, Cultura e Artes\" (Science, Culture and Art Station), located at the most eastern point of the Americas (Ponta do Seixas), is an educational and cultural institution as well as a national landmark. The complex, inaugurated in 2008, was created by Brazilian architect Oscar Niemeyer and is one of his final projects.\nThe capital of Paraíba received the title of Creative City by UNESCO in 2017, appointing João Pessoa as \"Brazilian city of handicrafts\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "joao pessoa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pessoa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1213,
+    "attempt": 1203,
+    "place_id": "gn-3461859",
+    "input": {
+      "place": {
+        "place_id": "gn-3461859",
+        "name": "Guaratinguetá",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.81639,
+        "lon": -45.1925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guaratinguetá",
+          "url": "https://en.wikipedia.org/wiki/Guaratinguetá",
+          "text": "Guaratinguetá is a municipality in the state of São Paulo in Brazil. It is part of the Metropolitan Region of Vale do Paraíba e Litoral Norte. The population is 118,044 (2022 Census) in an area of 752.64 km2. It is located in the region of Vale do Paraíba; prominent individuals from the area include Saint Frei Galvão, Brazilian President Rodrigues Alves and the cardiologist Dr Euryclides de Jesus Zerbini. The name of the city derives from the words in the Tupi language:  gûyra (heron), tinga (white) and etá (many), resulting in Gûyrating'etá (meeting of white herons).\nThe municipality contains part of the 292,000-hectare (720,000-acre) Mananciais do Rio Paraíba do Sul Environmental Protection Area, created in 1982 to protect the sources of the Paraíba do Sul river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "guaratingueta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1214,
+    "attempt": 1204,
+    "place_id": "gn-4012176",
+    "input": {
+      "place": {
+        "place_id": "gn-4012176",
+        "name": "Culiacán",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 24.80209,
+        "lon": -107.39421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culiacán",
+          "url": "https://en.wikipedia.org/wiki/Culiacán",
+          "text": "Culiacán, officially Culiacán Rosales, is the capital and largest city of Sinaloa in northwestern Mexico. Located within the Culiacán Municipality, the city was founded on 29 September 1531, by the Spanish conquistadors Lázaro de Cebreros and Nuño Beltrán de Guzmán. It was originally named \"Villa de San Miguel\", in honor of its patron saint Michael the Archangel.\nAs of the 2020 census, Culiacán had an estimated population of 808,416, making it the 21st most populous city in Mexico. Its metropolitan area, with a population of 1,003,530, was the 17th most populous metropolitan area in Mexico.\nThe city sits in a valley on the slopes of the Sierra Madre Occidental, at the confluence of the Tamazula and Humaya Rivers, where both join to form the Culiacán River. 55 meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "culiacan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1215,
+    "attempt": 1205,
+    "place_id": "gn-5178127",
+    "input": {
+      "place": {
+        "place_id": "gn-5178127",
+        "name": "Allentown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.60843,
+        "lon": -75.49018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allentown, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Allentown,_Pennsylvania",
+          "text": "Allentown is a city in eastern Pennsylvania, United States. The county seat of Lehigh County, it is the third-most populous city in Pennsylvania, with a population of 125,845 as of the 2020 census. It is also the most populous city in the Lehigh Valley metropolitan area, which had a population of 861,899 and was the 68th-most populous metropolitan area in the nation as of 2020.\nFounded in 1762, Allentown is located on the Lehigh River, a 109-mile-long (175 km) tributary of the Delaware River. It is the largest of three adjacent cities, including Bethlehem and Easton in Lehigh and Northampton counties, in the Lehigh Valley region. Allentown is located 48 miles (77 km) north of Philadelphia and 78 miles (126 km) west of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "allentown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1216,
+    "attempt": 1206,
+    "place_id": "gn-5325738",
+    "input": {
+      "place": {
+        "place_id": "gn-5325738",
+        "name": "Bakersfield",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.37329,
+        "lon": -119.01871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bakersfield, California",
+          "url": "https://en.wikipedia.org/wiki/Bakersfield,_California",
+          "text": "Bakersfield is a city in and the county seat of Kern County, California, United States. The city covers about 151 sq mi (390 km2) near the southern end of the San Joaquin Valley, which is located in the Central Valley region.\nBakersfield's population in the 2020 Census was 403,455, making it the 47th-most populous city in the United States and the 9th-most populous in California. The Bakersfield–Delano Metropolitan Statistical Area, which includes all of Kern County, had a 2020 census population of 909,235, making it the 62nd largest metropolitan area in the United States.\nBakersfield is a significant hub for both agriculture and energy production. Kern County is California's most productive oil-producing county and the fourth most productive agricultural county by value in the United States. Industries in and around Bakersfield include natural gas and other energy extraction, mining, petroleum refining, distribution, food processing, and corporate regional offices. The city is the birthplace of the country music genre known as the Bakersfield sound."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "bakersfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1217,
+    "attempt": 1207,
+    "place_id": "gn-5516233",
+    "input": {
+      "place": {
+        "place_id": "gn-5516233",
+        "name": "Amarillo",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 35.222,
+        "lon": -101.8313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amarillo, Texas",
+          "url": "https://en.wikipedia.org/wiki/Amarillo,_Texas",
+          "text": "Amarillo ( AM-ə-RIL-oh; Spanish for \"yellow\") is a city in the U.S. state of Texas and the county seat of Potter County, though most of the southern half of the city extends into Randall County. It is the 17th-most populous city in Texas and the most populous city in the Texas panhandle. The estimated population of Amarillo was 203,729 as of 2024, comprising nearly half of the panhandle's population. The Amarillo metropolitan area had an estimated population of 308,297 as of 2020.\nThe city of Amarillo, originally named Oneida, is situated in the Llano Estacado region. The availability of the railroad and freight service provided by the Fort Worth and Denver Railway contributed to the city's growth as a cattle-marketing center in the late 19th century.\nAmarillo was once the self-proclaimed \"Helium Capital of the World\" for having one of the country's most productive helium fields. The city is also known as \"The Yellow Rose of Texas\" (as the city takes its name from the Spanish word for yellow), \"Yellow City\" for its name, and \"Rotor City, USA\" for its V-22 Osprey hybrid aircraft assembly plant. Amarillo operates one of the largest meat-packing areas in the United States. Pantex, the only nuclear weapons assembly and disassembly facility in the country, is also a major employer, with the location of this facility giving rise to the nickname \"Bomb City\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "amarillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1218,
+    "attempt": 1208,
+    "place_id": "gn-602150",
+    "input": {
+      "place": {
+        "place_id": "gn-602150",
+        "name": "Umeå",
+        "country": "Sweden",
+        "subdivision": "Västerbotten",
+        "lat": 63.82842,
+        "lon": 20.25972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umeå",
+          "url": "https://en.wikipedia.org/wiki/Umeå",
+          "text": "Umeå (Swedish: [ˈʉ̌ːmɛɔ] , locally: [ˈʉ̌ːmɛ] ; Finnish and Meänkieli: Uumaja; Ume Sámi: Ubmeje) is a city in northeast Sweden. It is the seat of Umeå Municipality and the capital of Västerbotten County.\nSituated on the Ume River, Umeå is the largest locality in Norrland and the thirteenth largest in Sweden, with a wider municipal population of 132,235 inhabitants in the beginning of 2023. When Umeå University was established in 1965, growth accelerated, and the amount of housing has doubled in 30 years from 1980 to 2010. As of 2018, Umeå was gaining around 1,000 inhabitants per year and the municipality plans for having 200,000 inhabitants by 2050. The projection of municipality size in 2050 has, however, been questioned as an overestimation in an independent study.\nUmeå is a university town and centre of education, technical and medical research in northern Sweden. The two universities located in the city, Umeå University and one of the three main branches of SLU, host around 40,000 enrolled students, which corresponds to around 30% of the total population. CRISPR gene editing was developed by researchers, headed by Emmanuelle Charpentier at Umeå University, being awarded the 2020 Nobel Prize in Chemistry. Umeå was the European Capital of Culture during 2014, along with Riga in Latvia. Umeå is certified by the EarthCheck Sustainable Destinations program.\nAs of 2026, honorary consulates from twelve countries are located in Umeå: Denmark (since 1848), Finland (since 1921), Norway (since 1963), France (since 1989), the Republic of Seychelles (since 2001), Iceland (since 2002), Italy (since 2012), Lithuania (since 2012), Latvia (1939–1940; and again since 2014); and Estonia, the United Kingdom and Spain.\nUmeå's municipality sees wide international cooperation  within its involvement with twin towns and sister cities; which can be defined by its purpose of encouraging the exchange of experience and promote friendship at an international scale. Umeå currently has five twin towns and sister cities; with a foundational core being three Nordic twin cities since 1953: Harstad (town), Norway, Helsingør, Denmark, and Vaasa, Finland. With the remaining two sister cities being Saskatoon, Canada and Würzburg, Germany.\nUmeå has been a member of International Cities of Refuge Network (ICORN) since 2016, one of 25 safe-cities within Sweden. There are currently 89 sanctuaries worldwide and since 2006 it has allowed more than 350 persecuted cultural practitioners to take safe-heaven in one of them. \nThe city has also been the home of Rally Sweden since 2022, one of the annual World Rally Championship (WRC) stages; and the only WRC stage taking place on snow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 421
+    },
+    "banned_terms": [
+      {
+        "term": "umea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1219,
+    "attempt": 1209,
+    "place_id": "gn-6146143",
+    "input": {
+      "place": {
+        "place_id": "gn-6146143",
+        "name": "Sherbrooke",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.40008,
+        "lon": -71.89908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sherbrooke",
+          "url": "https://en.wikipedia.org/wiki/Sherbrooke",
+          "text": "Sherbrooke ( SHUR-bruuk, Quebec French: [ʃɛʁˈbʁʊk]) is a city in southern Quebec, Canada. It is at the confluence of the Saint-François and Magog rivers in the heart of the Estrie administrative region. The city is coextensive with a territory equivalent to a regional county municipality (TE) and census division (CD) of the same name. With 172,950 residents at the Canada 2021 Census, it is the sixth-largest city in the province and the 30th-largest in Canada. The Sherbrooke Census Metropolitan Area had 227,398 inhabitants, making it the fourth-largest metropolitan area in Quebec and 19th in Canada.\nSherbrooke is the primary economic, political, cultural, and institutional centre of Estrie, and was given its nickname as the Queen of the Eastern Townships at the beginning of the 20th century.\nThere are eight educational institutions in the city educating 40,000 students and employing 11,000 people, 3,700 of whom are professors, teachers and researchers. The direct economic effect of these institutions exceeds one billion dollars. The proportion of university students is 10.32 students per 100 inhabitants, giving Sherbrooke the largest concentration of students in Quebec.\nSherbrooke rose as a manufacturing centre in the 1800s, and today the service sector is prominent.\nThe Sherbrooke region is surrounded by mountains, rivers, and lakes. There are several ski hills nearby and various regional tourist attractions. Mont-Bellevue Park, a large park in the city, is used for downhill skiing.\nThe city was named in 1818 for John Coape Sherbrooke, a governor general of British North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "sherbrooke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1220,
+    "attempt": 1210,
+    "place_id": "gn-625144",
+    "input": {
+      "place": {
+        "place_id": "gn-625144",
+        "name": "Minsk",
+        "country": "Belarus",
+        "subdivision": "Minsk City",
+        "lat": 53.90019,
+        "lon": 27.56653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minsk",
+          "url": "https://en.wikipedia.org/wiki/Minsk",
+          "text": "Minsk (Belarusian: Мінск, Russian: Минск, Belarusian and Russian: [mʲinsk] ) is the capital and largest city of Belarus, located on the Svislach and the now subterranean Nyamiha rivers. As the capital, Minsk has a special administrative status in Belarus and is the administrative centre of Minsk region and Minsk district. As of 2026, it has a population of about two million, making Minsk the 11th-most populous city in Europe. Minsk is one of the administrative capitals of the Commonwealth of Independent States (CIS) and the Eurasian Economic Union (EAEU).\nFirst mentioned in 1067, Minsk became the capital of the Principality of Minsk, an appanage of the Principality of Polotsk, before being annexed by the Grand Duchy of Lithuania in 1242. It received town privileges in 1499. From 1569, it was the capital of Minsk Voivodeship, an administrative division of the Polish–Lithuanian Commonwealth. It was part of the territories annexed by the Russian Empire in 1793, as a consequence of the Second Partition of Poland. From 1919 to 1991, after the Russian Revolution, Minsk was the capital of the Byelorussian Soviet Socialist Republic, which became a republic of the Soviet Union in 1922. Following the dissolution of the Soviet Union, Minsk became the capital of the newly independent Republic of Belarus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "minsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1221,
+    "attempt": 1211,
+    "place_id": "gn-6822153",
+    "input": {
+      "place": {
+        "place_id": "gn-6822153",
+        "name": "Uruma",
+        "country": "Japan",
+        "subdivision": "Okinawa",
+        "lat": 26.37609,
+        "lon": 127.85908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uruma",
+          "url": "https://en.wikipedia.org/wiki/Uruma",
+          "text": "Uruma (うるま市, Uruma-shi) is a city located in Okinawa Prefecture, Japan. The modern city of Uruma was established on April 1, 2005, when the cities of Gushikawa and Ishikawa were merged with the towns of Katsuren and Yonashiro (both from Nakagami District). As of 1 October 2020, the city has an estimated population of 125,303 and a population density of 1,500 people per km2. The total area is 86.00 km2. The city covers part of the east coast of the south of Okinawa Island, the Katsuren Peninsula, and the eight Yokatsu Islands. The Yokatsu Islands include numerous sites important to the Ryukyuan religion, and the city as a whole has numerous historical sites, including: Katsuren Castle, Agena Castle, and Iha Castle and the Iha Shell Mound. It is home to the largest venue for Okinawan bullfighting. The Mid-Sea Road, which crosses the ocean and connects the Yokatsu Islands to the main island of Okinawa, is now a symbol of Uruma.\nUruma is noted for its role in hosting large-scale refugee camps and the initial organization of local government of Okinawa  immediately after the Battle of Okinawa in 1945. As such the city is considered the home of the starting point of the restoration of civil life in Okinawa immediately after the end of World War II. United States maintains four military bases in Uruma, some of which span other municipalities in Okinawa: Kadena Ammunition Storage Area, Camp McTureous, Camp Courtney, and White Beach Naval Facility. The bases cover 12.97% of the total area of the city. Two controversies have surrounded American military bases in Uruma: the 1959 Okinawa F-100 crash which killed and injured numerous students and residents, and the transport of Agent Orange via the White Beach Naval Facility for testing in Okinawa in the early 1960s as part of the classified Project AGILE."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "uruma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1222,
+    "attempt": 1212,
+    "place_id": "gn-1170880",
+    "input": {
+      "place": {
+        "place_id": "gn-1170880",
+        "name": "Mardan",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.19794,
+        "lon": 72.04965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mardan",
+          "url": "https://en.wikipedia.org/wiki/Mardan",
+          "text": "Mardān is a city in the Mardan District of Khyber Pakhtunkhwa province of Pakistan. Located in the Valley of Peshawar, Mardan is the second largest city of Khyber Pakhtunkhwa (only after Peshawar). It is a fast growing city that experienced a population boom in the latter half of the 20th century.\nAround 1800 BCE, the area around Mardan was part of the homeland of the Gandhara grave culture. Rock edicts of the ancient Indian King Ashoka in the nearby Shahbaz Garhi, written in the right-to-left Kharosthi script, dates from the Mauryan period (mid-200s BCE) and represent the earliest irrefutable evidence of writing in South Asia. The nearby Takht-i-Bahi has remains of an ancient Buddhist monastery was listed as a UNESCO World Heritage Site in 1980."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "mardan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1223,
+    "attempt": 1213,
+    "place_id": "gn-1258315",
+    "input": {
+      "place": {
+        "place_id": "gn-1258315",
+        "name": "Rourkela",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 22.22496,
+        "lon": 84.86414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rourkela",
+          "url": "https://en.wikipedia.org/wiki/Rourkela",
+          "text": "Rourkela (Odia: [ɾauɾɔkela] ) officially Raurkela is a planned city located in the northern district Sundargarh of Odisha, India. It is a Tier-2 city and the third-largest city in Odisha after Bhubaneswar and Cuttack. It is situated about 328 kilometres (204 mi) west of the state capital Bhubaneswar and is surrounded by a range of hills and encircled by the rivers  Koel, Sankha, and Brahmani. The city is also popularly known as Ispat Nagar and Steel City of Odisha.\nThe town has one of the largest integrated steel plants set up with German collaboration Known as Rourkela Steel Plant, of Steel Authority of India Limited (SAIL). It also has one of the premier national level technical institute known as National Institutes of Technology (NIT Rourkela). Every year, on 3 March Rourkela Day has been celebrated. The city has been selected as smart city in the third phase of the National Smart Cities Mission on 20 September 2016, which is to drive economic growth and improve the quality of life of people by enabling local area development. Rourkela has been declared India's Fastest Moving City (East Zone 2–10 Lakh). Rourkela is third largest city of Odisha state and categorised as a Tier-2 city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "rourkela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1225,
+    "attempt": 1214,
+    "place_id": "gn-1567069",
+    "input": {
+      "place": {
+        "place_id": "gn-1567069",
+        "name": "Tân An",
+        "country": "Vietnam",
+        "subdivision": "Tay Ninh",
+        "lat": 10.53589,
+        "lon": 106.41366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tân An",
+          "url": "https://en.wikipedia.org/wiki/Tân_An",
+          "text": "Tân An is a former provincial city and capital of the former Long An province in Mekong Delta region of Vietnam. It was upgraded from town status to city status on 26 August 2009. The population of Tân An is 165,214 as of 2009, with an area of 81.79 km2.\nTân An is in the south-west of Ho Chi Minh City, 47 km away from the city centre and bordered to the north by Thủ Thừa district, to the east by Tân Trụ district and Châu Thành district and to the west and south-west by Tiền Giang province. Ward 1 is the economic, political and cultural center of the city.\nTân An is the political, cultural, economic, scientific and technological center of Long An province. The township is in the development of the Southern Key Economic Region, and the economic gateway to the provinces of the Mekong River Delta, with the main river and road traffic, National Highway 1A, National Highway 62 and Vàm Cỏ Tây river, flowing through the center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "tan an",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1226,
+    "attempt": 1215,
+    "place_id": "gn-1626542",
+    "input": {
+      "place": {
+        "place_id": "gn-1626542",
+        "name": "Sorong",
+        "country": "Indonesia",
+        "subdivision": "Southwest Papua",
+        "lat": -0.87956,
+        "lon": 131.26104
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorong",
+          "url": "https://en.wikipedia.org/wiki/Sorong",
+          "text": "Sorong is the largest city and the capital of the Indonesian province of Southwest Papua. The city is located on the western tip of the island of New Guinea with its only land borders being with Sorong Regency. It is the gateway to Indonesia's Raja Ampat Islands, species rich coral reef islands in an area considered the heart of the world's coral reef biodiversity.  It also is the logistics hub for Indonesia's thriving eastern oil and gas frontier. Sorong experienced rapid growth during the decade from 2010, and further growth is anticipated as Sorong becomes linked by road to other frontier towns in Papua's Bird's Head Peninsula. The official estimate of population as of mid 2024 was 286,028 - comprising 150,236 males and 135,729 females. The suburban area of Sorong city contains tropical rainforest and mangrove forest that has increasingly become popular as ecotourism attractions especially for birdwatching or wildlife watching."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "sorong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1227,
+    "attempt": 1216,
+    "place_id": "gn-1636308",
+    "input": {
+      "place": {
+        "place_id": "gn-1636308",
+        "name": "Manokwari",
+        "country": "Indonesia",
+        "subdivision": "West Papua",
+        "lat": -0.86291,
+        "lon": 134.06402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manokwari",
+          "url": "https://en.wikipedia.org/wiki/Manokwari",
+          "text": "Manokwari is the capital and largest town of the Indonesian province of West Papua. It is one of only seven provincial capitals of Indonesia without a city status. It is also the administrative seat of Manokwari Regency. Under proposals under consideration by the Indonesian Parliament, it was planned to split Manokwari town off from the regency and turn it into a separate city; however this process has been suspended in the light of the Government moratorium since 2013 on the creation of new regencies and cities. The majority of Manokwari residents are Christians and the town is one of the seats of the Roman Catholic Diocese of Manokwari–Sorong. The town was formerly known by Europeans as Dory, Doréry or Dorey, referring to the Doreri Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "manokwari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1228,
+    "attempt": 1217,
+    "place_id": "gn-1651531",
+    "input": {
+      "place": {
+        "place_id": "gn-1651531",
+        "name": "Ambon",
+        "country": "Indonesia",
+        "subdivision": "Maluku",
+        "lat": -3.69583,
+        "lon": 128.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambon, Maluku",
+          "url": "https://en.wikipedia.org/wiki/Ambon,_Maluku",
+          "text": "Ambon (Indonesian pronunciation: [ˈambɔn]; formerly Dutch: Amboina) is the capital and largest city of the Indonesian province of Maluku. This city is also known as Ambon Manise, which means \"beautiful\" or \"pretty\" Ambon in the Ambonese language. It covers a land area of 359.45 square kilometres (138.78 sq mi), and had a population of 331,254 at the 2010 Census and 347,288 at the 2020 Census; the official estimate as of mid 2024 was 357,289. The city is divided into five administrative districts (kecamatan) – namely Nusaniwe, Sirimau, Teluk Ambon (Ambon Bay), Baguala (officially Teluk Ambon Baguala) and Leitimur Selatan (South Leitimur). Known as Indonesia's music city, Ambon became the first city in Southeast Asia to be recognised as the UNESCO City of Music in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "ambon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1229,
+    "attempt": 1218,
+    "place_id": "gn-1720508",
+    "input": {
+      "place": {
+        "place_id": "gn-1720508",
+        "name": "Calasiao",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.0111,
+        "lon": 120.36
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calasiao",
+          "url": "https://en.wikipedia.org/wiki/Calasiao",
+          "text": "Calasiao, officially the Municipality of Calasiao (Pangasinan: Baley na Calasiao; Ilocano: Ili ti Calasiao; Tagalog: Bayan ng Calasiao),  is a municipality in the province of Pangasinan, Philippines. According to the 2024 census, it has a population of 100,686 people.\nToday, Calasiao is known as a first class, highly commercialized municipality and is strategically located at the heart of Pangasinan. It consists of 24 barangays and 31 sitios across a total land area of 4,836 hectares. Being a town adjacent to the city of Dagupan, the municipality's economic activities are fed by the demand in Dagupan as the town increasingly becomes an important satellite commercial hub for the immediate area. In terms of delicacy, Calasiao's flagship product is the native rice cake known as Puto Calasiao."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "calasiao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1230,
+    "attempt": 1219,
+    "place_id": "gn-1797945",
+    "input": {
+      "place": {
+        "place_id": "gn-1797945",
+        "name": "Qingyuan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.7,
+        "lon": 113.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qingyuan",
+          "url": "https://en.wikipedia.org/wiki/Qingyuan",
+          "text": "Qingyuan, formerly romanized as Tsingyun, is a prefecture-level city in northern Guangdong province, China, on the banks of the Bei or North River. During the 2020 census, its total population was 3,969,473, out of whom 1,738,424 lived in the built-up (or metro) area made of urbanized Qingcheng and Qingxin districts. The primary spoken language is Cantonese. Covering 19,015 km2 (7,342 sq mi), Qingyuan is Guangdong's largest prefecture-level division by land area, and it borders Guangzhou and Foshan to the south, Shaoguan to the east and northeast, Zhaoqing to the south and southwest, and Hunan province and Guangxi Zhuang Autonomous Region to the north. The urban core is surrounded by mountainous areas but is directly connected with Guangzhou and the Pearl River Delta by Highway 107."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "qingyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1231,
+    "attempt": 1220,
+    "place_id": "gn-1805540",
+    "input": {
+      "place": {
+        "place_id": "gn-1805540",
+        "name": "Jingzhou",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 30.35028,
+        "lon": 112.19028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jingzhou",
+          "url": "https://en.wikipedia.org/wiki/Jingzhou",
+          "text": "Jingzhou (Chinese: 荆州; pinyin: Jīngzhōu) is a prefecture-level city in southern Hubei province, China, located on the banks of the Yangtze River. Its total residential population was 5,231,180 according to the 2020 census, 1,068,291 of whom resided in the built-up (or metro) area comprising two urban districts.\nJingzhou's central urban area has grown out of Shashi City and Jingzhou Town (historically also known as Jiangling); their names were preserved in the names of Shashi District and Jingzhou District, which include the city's historical center, as well as Jiangling County, which administers the suburban areas of the larger historical area of Jiangling. The name \"Shashi\" also remains in the names of a number of local facilities, such as Jingzhou Shashi Airport and a railway freight station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jingzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

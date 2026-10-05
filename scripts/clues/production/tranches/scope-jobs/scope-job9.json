@@ -1,0 +1,907 @@
+[
+  {
+    "rank": 6654,
+    "band": 5,
+    "place_id": "gn-4943097",
+    "input": {
+      "place": {
+        "place_id": "gn-4943097",
+        "name": "Marblehead",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.5001,
+        "lon": -70.85783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marblehead, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Marblehead,_Massachusetts",
+          "text": "Marblehead is a coastal New England town in Essex County, Massachusetts, United States, along the North Shore. Its population was 20,441 at the 2020 census.  The town lies on a small peninsula that extends into the northern part of Massachusetts Bay.  Attached to the town is a near island, known as Marblehead Neck, connected to the mainland by a narrow isthmus.  Marblehead Harbor, protected by shallow shoals and rocks from the open sea, lies between the mainland and the Neck.  Beside the Marblehead town center, two other villages lie within the town: the Old Town, which was the original town center, and Clifton, which lies along the border with the neighboring town of Swampscott.\nA town with roots in commercial fishing and yachting, Marblehead was a major shipyard and is often referred to as the birthplace of the American Navy, a title sometimes disputed with nearby Beverly. Marblehead was once the fishing capital of Massachusetts. It is also the origin of Marine Corps Aviation. Three US Navy ships have been named USS Marblehead. A center of recreational boating, Marblehead has long been a popular sailing, kayaking and fishing destination, with several yacht clubs established in the late 19th century.\nIt is home to the Marblehead Light, Fort Sewall, Little Harbor, Mass Audubon's Marblehead Neck Wildlife Sanctuary, Crocker Park, and Devereux Beach. Archibald Willard's famous painting The Spirit of '76 currently resides in Abbot Hall.  Much of the Old Town is protected by the Marblehead Historic District.\nMarblehead is also home of the Marblehead Men's Softball League, which was established in 1939 and is the oldest and longest standing adult softball league in the world."
+        },
+        {
+          "article": "Marblehead, Massachusetts (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Marblehead,_Massachusetts#Climate",
+          "text": "According to the Köppen Climate Classification system, Marblehead has a humid continental climate or an oceanic climate, abbreviated \"Cfb\" or \"Dfb\" on climate maps. The hottest temperature recorded in Marblehead was on July 23, 2011, and June 24, 2025, while the coldest temperature recorded was on February 4, 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 49,
+      "leadWords": 274,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers peninsula and harbour geography, fishing and yachting history, navy claims, and landmarks; a harbour sheltered by shoals and rocks is not climate, and no climate mechanism, extreme, record, seasonal rhythm, or paradox is stated",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "marblehead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6657,
+    "band": 5,
+    "place_id": "gn-5110918",
+    "input": {
+      "place": {
+        "place_id": "gn-5110918",
+        "name": "Bushwick",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69427,
+        "lon": -73.91875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bushwick, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Bushwick,_Brooklyn",
+          "text": "Bushwick is a neighborhood in the northern part of the New York City borough of Brooklyn. It is bound by the neighborhood of Ridgewood, Queens, to the northeast; Williamsburg to the northwest; the cemeteries of Highland Park to the southeast; and Bedford–Stuyvesant to the south and southwest.\nThe town was first founded by the Dutch as Boswijck during the Dutch colonization of the Americas in the 17th century. In the 19th century, the neighborhood became a community of German immigrants and their descendants. The 20th century saw an influx of Italian immigrants and Italian-Americans up to the 1980s. By the late 20th century, the neighborhood became predominantly Hispanic as another wave of immigrants arrived. Formerly Brooklyn's 18th Ward, the neighborhood was once an independent town and has undergone various territorial changes throughout its history.\nBushwick is part of Brooklyn Community District 4, and its primary ZIP Codes are 11206, 11207, 11221, and 11237. It is patrolled by the 83rd Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 34th and 37th Districts."
+        },
+        {
+          "article": "Bushwick, Brooklyn (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Bushwick,_Brooklyn#Geography",
+          "text": "map of Brooklyn, highlighting the location of Bushwick in red]]\nBushwick's borders largely overlap those of Brooklyn Community Board 4, which is delineated by Flushing Avenue on the north, Broadway on the southwest, the border with Queens to the northeast, and the Cemetery of the Evergreens on the southeast. The industrial area north of Flushing Avenue, east of Bushwick Avenue, and south of Grand Street is commonly considered to be either East Williamsburg or part of Bushwick, occasionally with the modifier \"Industrial Bushwick\".\nThe town of Bushwick—which, along with Brooklyn and Bedford, became incorporated as the city of Brooklyn on January 1, 1854—included present-day Williamsburg and Greenpoint. Prior to the merger, in the early 19th century, residential development in the area had begun when the new district of Williamsburg was laid out in western Bushwick. Williamsburg was incorporated in 1827 and officially severed from Bushwick in 1839. Now part of Brooklyn Community District 1, the area of East Williamsburg is nevertheless considered by some to be part of Bushwick.\nFor its entry on Bushwick–Ridgewood, the American Institute of Architects' AIA Guide to New York City uses the area bounded by the Cemetery Belt on the south, Bushwick Avenue on the west (save for a short distance between Bushwick Avenue's northern terminus and the Brooklyn–Queens Expressway, where Woodpoint Road and Kingsland Avenue are the western boundaries), the Brooklyn–Queens Expressway on the north, and the Brooklyn–Queens border on the east—thus including the industrial area north of Flushing Avenue and east of Bushwick Avenue.\nThe centroid, or geographic center, of New York City is located on Stockholm Street in Bushwick, on the block between Wyckoff and St. Nicholas Avenues."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 276,
+      "leadWords": 181,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers Brooklyn boundaries, Dutch founding as Boswijck, and successive German, Italian, and Hispanic immigration waves, plus ward and precinct details; it contains no climate content at all",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bushwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6785,
+    "band": 5,
+    "place_id": "gn-3899680",
+    "input": {
+      "place": {
+        "place_id": "gn-3899680",
+        "name": "Andacollo",
+        "country": "Chile",
+        "subdivision": "Coquimbo Region",
+        "lat": -30.23449,
+        "lon": -71.08534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andacollo",
+          "url": "https://en.wikipedia.org/wiki/Andacollo",
+          "text": "Andacollo (Spanish pronunciation: [an.da.ˈko.ʝo], from quechua anta, copper, gold; coya, queen) is a city and commune in the Elqui Province, Coquimbo Region, Chile. It is one of Chile's oldest and best known pilgrimage centers with Our Lady of Andacollo attracting thousands of devotees and tourists each year. \nEconomically, Andacollo is the central town of a mining district dominated by medium-scale mining. There are gold placers and gold mineralizations within felsic volcanic rock in its vicinity. The large open-pit copper mine Carmen de Andacollo lies next to the town and most of its workers live in the town.\nAndacollo has the first project in Chile of reforestation aided by the creation of technosols. The project has been carried out on top of old mine tailings in the vicinity of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a pilgrimage centre drawing thousands of devotees, gold and copper mining, and a reforestation project using technosols on old mine tailings, but states no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "any climate content in the extract: a mechanism, extreme, record, seasonal rhythm, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "andacollo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6821,
+    "band": 5,
+    "place_id": "gn-2644501",
+    "input": {
+      "place": {
+        "place_id": "gn-2644501",
+        "name": "Limavady",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.05045,
+        "lon": -6.95074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limavady",
+          "url": "https://en.wikipedia.org/wiki/Limavady",
+          "text": "Limavady (; from Irish  Léim an Mhadaidh 'leap of the dog') is a market town in County Londonderry, Northern Ireland, with Binevenagh as a backdrop. Lying  17 miles (27 km) east of Derry and 14 miles (23 km) southwest of Coleraine, Limavady had a population of 11,279 people at the 2021 Census. In the 40 years between 1971 and 2011, Limavady's population nearly doubled. Limavady is within Causeway Coast and Glens Borough.\nFrom 1988 to 2004, a total of 1,332 dwellings were built in the town, mainly at Bovally along the southeastern edge of the town. The large industrial estate at Aghanloo is 2 miles (3 km) north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 111,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives town location under a mountain backdrop, population growth, housing, and an industrial estate, with no climate mechanism, extreme, record, seasonal rhythm, or paradox.",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "limavady",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6880,
+    "band": 5,
+    "place_id": "gn-2613887",
+    "input": {
+      "place": {
+        "place_id": "gn-2613887",
+        "name": "Skanderborg",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.03434,
+        "lon": 9.93177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skanderborg",
+          "url": "https://en.wikipedia.org/wiki/Skanderborg",
+          "text": "Skanderborg is a town in Skanderborg Municipality, Denmark. It is situated on the north and north eastern brinks of Skanderborg Lake and there are several smaller ponds and bodies of water within the city itself, like Lillesø, Sortesø, Døj Sø and the swampy boglands of Eskebæk Mose. Just north of the town on the other side of Expressway E45, is the archaeologically important Illerup Ådal. Over time, the town has grown into a suburb of Aarhus to the north east, connected by the urban areas of Stilling, Hørning and Hasselager.\nSkanderborg is home to a population of 20,370 (1 January 2026), out of Skanderborg Municipality's total population of 66,352 (2026)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 110,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a town on the brinks of a lake with smaller ponds and boglands, an archaeological valley nearby, and growth into a suburb of Aarhus, but lakes and bogs alone describe no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "Place-specific climate mechanism, weather extreme, record, or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "skanderborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7001,
+    "band": 5,
+    "place_id": "gn-11592272",
+    "input": {
+      "place": {
+        "place_id": "gn-11592272",
+        "name": "Vale of Leven",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.97132,
+        "lon": -4.57928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vale of Leven",
+          "url": "https://en.wikipedia.org/wiki/Vale_of_Leven",
+          "text": "The Vale of Leven (Scottish Gaelic: Magh Leamhna) is an area of West Dunbartonshire, Scotland, comprising the valley of the River Leven. It historically formed the core of the region of Lennox.\nGeographically, the Vale runs from Loch Lomond in the north to Dumbarton in the south, where the River Leven empties into the Clyde. However, the name is often applied specifically to the urban area towards the north of the valley, consisting of a number of communities. These were historically separate villages but have expanded into one conurbation. The largest of these communities is the town of Alexandria, which sits on the west bank of the Leven. Alexandria is connected to the village of Renton to the south and to the village of Balloch to the north. Across the river from Alexandria is Bonhill, which is connected to Jamestown to the north. The combined population of these areas in 2020 was approximately 22,000.\nThe area's name lends itself to Alexandria's local football club, Vale of Leven F.C.; the secondary school, Vale of Leven Academy; the Vale of Leven District General Hospital; and other local organisations."
+        },
+        {
+          "article": "Vale of Leven (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Vale_of_Leven#Geography",
+          "text": "The Vale is bounded on the east by the Kilpatrick Hills, while the hills to the west form a minor offshoot of the Scottish Highlands, comprising Ben Bouie, Mount Mallow and Carman Muir. The valley was shaped by glacial action associated with the last glacial period in Britain, the Loch Lomond Readvance. While the valley itself is mostly sedimentary and metamorphic, the surrounding hills are composed of 340 million year old igneous rock from the carboniferous. Notably, Dumbarton Rock consists of the remnants of a volcanic plug formed during the same period."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 92,
+      "leadWords": 186,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a river valley from a famed loch to the sea, its merged villages and a ball club, but never mentions weather, seasons, or climate at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "vale of leven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7014,
+    "band": 5,
+    "place_id": "gn-2525041",
+    "input": {
+      "place": {
+        "place_id": "gn-2525041",
+        "name": "Cefalù",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.03856,
+        "lon": 14.02285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cefalù",
+          "url": "https://en.wikipedia.org/wiki/Cefalù",
+          "text": "Cefalù (Italian: [tʃefaˈlu]; Sicilian: Cifalù), classically known as Cephaloedium (Ancient Greek: Κεφαλοίδιον, romanized: Kephaloídion), is a city and comune in the Italian Metropolitan City of Palermo, located on the Tyrrhenian coast of Sicily about 70 km (43 mi) east of the provincial capital and 185 km (115 mi) west of Messina. The town, with its population of just under 14,000, is one of the major tourist attractions in the region. Despite its size, every year it attracts millions of tourists from all parts of Sicily, and also from all over Italy and Europe. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\")."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 108,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only Tyrrhenian coast of Sicily location, classical name, population, and tourist appeal, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "A place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cefalu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7016,
+    "band": 5,
+    "place_id": "gn-2640351",
+    "input": {
+      "place": {
+        "place_id": "gn-2640351",
+        "name": "Peterhead",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.50517,
+        "lon": -1.78435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peterhead",
+          "url": "https://en.wikipedia.org/wiki/Peterhead",
+          "text": "Peterhead (; Scottish Gaelic: Ceann Phàdraig, Scots: Peterheid ) is a town in Aberdeenshire, Scotland.  It is the largest settlement in the council area, with a population of 19,791 at the 2022 Census. It is the busiest fishing port in the United Kingdom for total landings by UK vessels, according to a 2019 survey.\nPeterhead sits at the easternmost point in mainland Scotland. It is often referred to as The Blue Toun (locally spelled \"The Bloo Toon\") and locals are known as Bloo Touners. They are also referred to as blue mogganers (locally spelled \"bloomogganners\"), supposedly from the blue worsted moggans or stockings that the fishermen originally wore."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 108,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only easternmost mainland Scotland location, busiest UK fishing port status, and local nickname from fishermen's blue stockings, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "A place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "peterhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7070,
+    "band": 5,
+    "place_id": "gn-2656970",
+    "input": {
+      "place": {
+        "place_id": "gn-2656970",
+        "name": "Ashby-de-la-Zouch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.74632,
+        "lon": -1.4732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashby-de-la-Zouch",
+          "url": "https://en.wikipedia.org/wiki/Ashby-de-la-Zouch",
+          "text": "Ashby-de-la-Zouch (), also spelled Ashby de la Zouch and commonly shortened to Ashby, is a market town and civil parish in the North West Leicestershire district of Leicestershire, England, near to the Derbyshire and Staffordshire borders. Its population at the 2021 census was 16,491. Ashby de la Zouch Castle was an important fort in the 15th to 17th centuries. During the 19th century, the town's main industry was ribbon manufacturing.\nThe civil parish includes the hamlets of Shellbrook to the west and Boundary to the north-west. Swadlincote, Burton upon Trent, Melbourne and Coalville are within 10 miles (16 km), with Derby 12 miles (19 km) due north. It lies at the heart of the National Forest, 24 miles (39 km) south of the Peak District National Park, on the A42 between Tamworth and Nottingham."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 134,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a market town near county borders, a castle that was an important fort from the 1400s to the 1600s, ribbon making in the 1800s and a place at the heart of a national forest, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ashby de la zouch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ashby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zouch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7075,
+    "band": 5,
+    "place_id": "gn-2798276",
+    "input": {
+      "place": {
+        "place_id": "gn-2798276",
+        "name": "Florennes",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.25127,
+        "lon": 4.60636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florennes",
+          "url": "https://en.wikipedia.org/wiki/Florennes",
+          "text": "Florennes (French pronunciation: [flɔ.ʁɛn]; Walloon: Florene) is a municipality of Wallonia located in the province of Namur, Belgium. As of 1 January 2006, Florennes has a total population of 10,754. The total area is 133.55 km2 which gives a population density of 81 inhabitants per km2.\nThe municipality consists of the following districts: Corenne, Flavion, Florennes, Hanzinelle, Hanzinne, Hemptinne, Morialmé, Morville, Rosée, Saint-Aubin and Thy-le-Bauduin.\nFlorennes hosts Florennes Air Base, a Belgian military airfield which is the home base for F-16 Fighting Falcon jets.\nThe first week-end of every July, Florennes is a large festival due to the folk walk with a couple of thousand valorous walkers.\nCyclists Firmin Lambot, who won the Tour de France in 1919 and in 1922 and Léon Scieur, who won the Tour in 1921, were born in Florennes.\nThe village was formerly the site of Florennes Abbey, dissolved during the French Revolution and since entirely demolished."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 152,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a Wallonia municipality and its districts, an air base home to fighter jets, a folk walk each July, two Tour de France winners born there and a lost abbey; a July walk date is not a seasonal weather rhythm and no climate mechanism, extreme, record or paradox is described",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "florennes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7089,
+    "band": 5,
+    "place_id": "gn-3408577",
+    "input": {
+      "place": {
+        "place_id": "gn-3408577",
+        "name": "São João da Baliza",
+        "country": "Brazil",
+        "subdivision": "Roraima",
+        "lat": 0.95,
+        "lon": -59.91181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São João da Baliza",
+          "url": "https://en.wikipedia.org/wiki/São_João_da_Baliza",
+          "text": "São João da Baliza (Brazilian Portuguese pronunciation: [ˈsɐ̃w ʒuˈɐ̃w da baˈlizɐ]) is a municipality located in the southeast of the state of Roraima in Brazil. Its population is 8.858 (2022) and its area is 4,284 km2. São João da Baliza was first settled in 1974 after the BR-210 highway made the area accessible. It was called São João, because three of the initial settlers were called João. Da Baliza refers to a stream near the town, Igarapé Baliza, which itself comes from the Portuguese word baliza, meaning a ranging rod. It gained this name when a surveyor lost a ranging rod near the stream during highway construction. It became an independent municipality in 1982."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a municipality in the south-east of a northern Brazil state, first settled in 1974 after a highway made the area reachable, made independent in 1982 and named for early settlers and a nearby stream, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sao joao da baliza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "baliza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7094,
+    "band": 5,
+    "place_id": "gn-3590449",
+    "input": {
+      "place": {
+        "place_id": "gn-3590449",
+        "name": "San Antonio La Paz",
+        "country": "Guatemala",
+        "subdivision": "El Progreso",
+        "lat": 14.75888,
+        "lon": -90.28485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio La Paz",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_La_Paz",
+          "text": "San Antonio La Paz (Spanish pronunciation: [san anˈtonjo la pas]) is a town and municipality in the El Progreso department of Guatemala. The municipality is situated at 1240 metres above sea level and covers an area of 146 km2. San Antonio has improved in the past couple of years. San Antonio has two pharmacies and many doctors. Each house in San Antonio has a little of room that is sort of a forest of a little plantation for growing corn, coffee, beans, and other plants. There are trees all over San Antonio of all kind of fruit, apples, mangos, bananas, jocotes, oranges, lemons, limes, and other fruit."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 107,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a Guatemala town and municipality in El Progreso, its height above the sea, area, doctors and pharmacies, and home plots growing corn, coffee, beans, and fruit; it states no climate mechanism, extreme, record, or seasonal rhythm",
+      "priorMissing": "place-specific climate mechanism, weather extreme or record, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7189,
+    "band": 5,
+    "place_id": "gn-5261852",
+    "input": {
+      "place": {
+        "place_id": "gn-5261852",
+        "name": "Marinette",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 45.09998,
+        "lon": -87.63066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marinette, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Marinette,_Wisconsin",
+          "text": "Marinette is a city in Marinette County, Wisconsin, United States, and its county seat. The population was 11,119 at the 2020 census. It is located on the south bank of the Menominee River at its mouth on Green Bay, part of Lake Michigan; to the north is Stephenson Island, part of the city preserved as a park.\nMenominee, Michigan, is across the Menominee River to the north, and the cities are connected by three bridges. Menominee and Marinette are sometimes described as the \"twin cities\" of the Menominee River. Marinette is the principal city of the Marinette micropolitan area, which includes parts of Wisconsin and Michigan. During the lumbering boom of the late 19th century, Marinette became the tenth-largest city in Wisconsin, reaching a peak population of 16,195 in 1900."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a city and county seat on the south bank of the Menominee River where it meets Green Bay, its twin-city link across the river, and its peak size during the late-1800s lumber boom; it states no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, record or superlative, seasonal rhythm, or paradox verbatim in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "marinette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7221,
+    "band": 5,
+    "place_id": "gn-2639091",
+    "input": {
+      "place": {
+        "place_id": "gn-2639091",
+        "name": "Rotherhithe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5,
+        "lon": -0.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotherhithe",
+          "url": "https://en.wikipedia.org/wiki/Rotherhithe",
+          "text": "Rotherhithe ( RODH-ər-hydhe) is a district of South London, England, and part of the London Borough of Southwark. It is on the south bank of a bend in the Thames, facing Wapping, Shadwell and Limehouse on the north bank, with the Isle of Dogs to the east. It borders Bermondsey to the west and Deptford to the south-east. The district is a part of the Docklands area.\nRotherhithe has a long history as a port, with Elizabethan shipyards and working docks until the 1970s. In the 1980s, the area along the river was redeveloped as housing through a mix of warehouse conversions and new-build developments. The Jubilee line was extended to the area in 1999, giving fast connections to the West End and to Canary Wharf; the East London underground line was converted to part of the London Overground network in 2010, which provides easy access to the City of London. As a result, Rotherhithe is now a gentrifying residential and commuter area, with urban regeneration progressing around Deal Porter Square at Canada Water; a new town centre with restaurant and retail units, as well as new residential developments, is emerging here around the existing freshwater dock and transport hub.\nRotherhithe is 4.5 km (2.8 mi) east of London's centre point at Charing Cross."
+        },
+        {
+          "article": "Rotherhithe (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Rotherhithe#Geography",
+          "text": "Rotherhithe is joined to the north bank of the Thames by three tunnels. The Thames Tunnel to Wapping was the first underwater tunnel in the world. Built by the Brunels, and originally intended to carry cross-river freight, it became a pedestrian tunnel due to the money running out to build the necessary ramps for vehicle traffic. It was used as a railway tunnel from 1869, and is now part of the London Overground network, which on 27 April 2010 started running trains on the route of the former East London Line. The later Rotherhithe Tunnel (opened 1908) carries a two-lane road to Limehouse. The Jubilee line extension (opened 1999) has a railway tunnel to Canary Wharf in the Isle of Dogs.\nParts of Rotherhithe Street were at one time or another called Jamaica Street, Lavender Street, Low Queen Street, Queen Street, Redriff Wall, Redriff, Rotherhithe Wall, Shipwright Street and Trinity Street.\nIn 1702 Edward Swallow built a shipyard near what is now Lavender Street. John Whetstone took over in 1709, Robert Inwood in 1756 and Job Cockshott in the early 1800s, when it was divided into Lavender Dock and Lavender Wharf. In 1862 William Walker re-amalgamated the dock and wharf, but in 1870 they were separated. From 1865 John and William Walker built clippers and W. Walker & Co, who had a dry dock on the Thames bank from 1869, built 17 ships there between 1866 and 1882. James Turner built ships there from 1873 to 1886, followed by John Medhurst until at least 1890.\nThe legacy of the Surrey Commercial Docks continues to influence local toponymy. Dalton Cross, the area surrounding the junction of Redriff Road and Quebec Way, is believed to be named after the intersecting railway lines that once ran between timber ponds owned by the prominent Dalton family, who were active in the area's timber trade during the docklands' operational years."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 315,
+      "leadWords": 214,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers only position on a bend in the Thames, port and dock history, housing redevelopment and transport extensions, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, record or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rotherhithe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7253,
+    "band": 5,
+    "place_id": "gn-3591060",
+    "input": {
+      "place": {
+        "place_id": "gn-3591060",
+        "name": "Puerto San José",
+        "country": "Guatemala",
+        "subdivision": "Escuintla",
+        "lat": 13.92216,
+        "lon": -90.81906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto San José",
+          "url": "https://en.wikipedia.org/wiki/Puerto_San_José",
+          "text": "Puerto San José, also known as Port of San José, is a town on Guatemala's Pacific Ocean coast,  in the department of Escuintla. It has a population of 23,887 (2018 census), making it the largest town on the nation's Pacific coast. \nFor centuries it served as the Pacific port for Guatemala, but was superseded in the 20th century by Puerto Quetzal, four kilometres to the east. The Puerto Quetzal complex is the major employer in the district. \nThe local tourist industry caters largely to weekenders from Guatemala City. San José Airport has been refurbished lately and is now the official alternate airport for Guatemala City."
+        },
+        {
+          "article": "Puerto San José (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Puerto_San_José#Climate",
+          "text": "Puerto San José has a tropical savanna climate (Köppen: Aw) with a wet season from May to October, and a dry season from November to April."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 26,
+      "leadWords": 105,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only a Pacific coast location in Escuintla, a long role as the country Pacific port before a newer port to the east took over, weekend tourists, and an alternate airport; no climate mechanism, extreme, record, seasonal rhythm, or paradox is stated",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "puerto san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7273,
+    "band": 5,
+    "place_id": "gn-636242",
+    "input": {
+      "place": {
+        "place_id": "gn-636242",
+        "name": "Sörnäinen",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.18643,
+        "lon": 24.96506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sörnäinen",
+          "url": "https://en.wikipedia.org/wiki/Sörnäinen",
+          "text": "Sörnäinen (Swedish: Sörnäs; Sörkkä or Sörkka in Helsinki slang) is a neighbourhood in the city of Helsinki, Finland.\nSörnäinen is located a little more than one kilometre north from the coastal centre of Helsinki, near the district of Hakaniemi. The east side of Sörnäinen borders the sea.\nSörnäinen used to be primarily an industrial district with many shipping companies and warehouses, however, nowadays it is a thriving urban area divided into four districts: Vilhonvuori, Kalasatama, Sompasaari and Hanasaari. It also has two metro stations: Sörnäinen metro station and Kalasatama metro station in the Kalasatama quarter.\nThe headquarters of Senate Properties (Senaatti-kiinteistöt) is located in Sörnäinen. Also the Helsinki Prison is located there."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 112,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only a neighbourhood in Helsinki in Finland, a short distance from the coastal centre, a sea border on one side, a past as an industrial district with shipping firms and warehouses, four quarters, two metro stations, a Senate Properties headquarters, and a prison; no climate mechanism, extreme, record, seasonal rhythm, or paradox is stated",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sornainen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7305,
+    "band": 5,
+    "place_id": "gn-2642910",
+    "input": {
+      "place": {
+        "place_id": "gn-2642910",
+        "name": "Matlock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.13838,
+        "lon": -1.5556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matlock, Derbyshire",
+          "url": "https://en.wikipedia.org/wiki/Matlock,_Derbyshire",
+          "text": "Matlock is the county town of Derbyshire, England. It is in the south-eastern part of the Peak District, with the National Park directly to the west.  The spa resort of Matlock Bath is immediately south of the town as well as Cromford lying further south still. The civil parish of Matlock Town had a population in the 2021 UK census of 10,000.\nMatlock is 9 miles (14 km) south-west of Chesterfield and in close reach of the cities of Derby (19 miles), Sheffield (20 miles) and Nottingham (29 miles). Matlock is within the Derbyshire Dales district and is the headquarters of Derbyshire County Council."
+        },
+        {
+          "article": "Matlock, Derbyshire (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Matlock,_Derbyshire#Geography",
+          "text": "Natural physical features\nThe main physical features of the Matlock area are the hills and watercourses. The height of the town (above mean level) varies from 91m at Causeway Lane (in the valley bottom) to 203m at the top of Wellington Street. Matlock is overlooked by Riber Castle at 260m from the south-east and by Masson Hill at 339m from the south-west. The first human settlement in the area was in what is now known as Old Matlock or Matlock Green. This was where the Bentley Brook joined the River Derwent. When the town grew in the late 19th century, the town spread up the steep hillsides to the north-east of the narrow valley bottom.\nVarious industries made use of the natural features:\nThe underlying bedrock was quarried and mined.\nThe watercourses were harnessed to power corn mills, cloth mills, and other mills.\nThe hillside thermal spring water gave rise to the hydros.\nThe natural features also constrained transport links:\nIn the Derwent gorge below High Tor, the present-day A6 (Dale Road) was squeezed in beside the river.\nFrom the south, the Midland Railway reached Matlock Station via a series of short tunnels constructed under the limestone of the gorge.\nA cable tramway was constructed to tackle the very steep Bank Road (see above).\nGeology\n, Germany]]\nThe geology of the Matlock area is extremely complex. Broadly speaking, the Derwent valley bottom forms a boundary between the sandstones and gritstones of the Dark Peak to the north-east and the limestones of the White Peak to the south-west. There are igneous intrusions into the limestones to the south-west.\nThis geology has been exploited by the quarrying and mining industries. The sandstones and gritstones have been quarried as building materials (e.g. at Bentley Brook Quarries) and the limestones for building materials and the manufacture of lime (e.g. at Harvey Dale Quarries). The igneous intrusions gave rise to valuable minerals which have been mined (e.g. in the Bonsall area), particularly for lead. A very rare lead halide mineral called Matlockite was first discovered at nearby Bage Mine in the early 1800s, and is named after the town.\nThe route of the River Derwent downstream (south) of Matlock is especially interesting to geologists in that it has cut its way through a limestone gorge below High Tor (120m above river level), rather than follow the \"simpler\" way to the east. It is thought that landslips and/or glaciation may have had an influence over how the present route of the river was established.\nNearby places\nThe Dimple\nThe area on the western edge of the town, bounded on the north and east by Old Hackney Lane, Hurds Hollow, and Dimple Road, and on the south by Bakewell Road, is named as Dimple, on the Ordnance Survey map.\nFlooding\nThe Derwent has occasionally flooded, including during November 2019 when large areas of England were affected. This flood in particular claimed one life: that of Matlock's former high sheriff, Annie Hall, who was swept away by the water and subsequently drowned, aged 69. This flood also caused damage to many of Matlock's businesses, including the local Wetherspoons, which was forced to close due to the damages and later reopened as Ostello Lounge, part of the Lounges group, in March 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 543,
+      "leadWords": 104,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract states only county-town status, position at the edge of the national park, distances to larger cities, and council headquarters role; it contains no climate mechanism, extreme, record, seasonal weather rhythm, or paradox.",
+      "priorMissing": "any stated climate mechanism, extreme, record, seasonal weather rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "matlock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7382,
+    "band": 5,
+    "place_id": "gn-3085826",
+    "input": {
+      "place": {
+        "place_id": "gn-3085826",
+        "name": "Skarszewy",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.06911,
+        "lon": 18.44416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skarszewy",
+          "url": "https://en.wikipedia.org/wiki/Skarszewy",
+          "text": "Skarszewy [skarˈʂɛvɨ] (German: Schöneck in Westpreußen) is a town in Starogard Gdański County, Pomeranian Voivodeship, northern Poland. It is located within the ethnocultural region of Kociewie in the historic region of Pomerania, 40 kilometres (25 miles) south of Gdańsk. Population: 6 809 (30 June 2005). It is the seat of the urban-rural administrative district Gmina Skarszewy.\nFounded in the medieval period, Skarszewy is a former royal town of Poland, which served as the capital of the Pomeranian Voivodeship from 1613 to 1772. The old town is enclosed by remains of 14th-century stone walls and its landmarks include the Gothic parish Church of St. Michael the Archangel with well-preserved Baroque furnishings, a preserved market square and a medieval castle of Knights Hospitaller, which in the early modern period housed a court in which Józef Wybicki, the author of the lyrics of the Polish national anthem, studied law. In 2005 the town was given the title the Pearl of Pomerania."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the town's medieval founding, its years as a regional capital, its walls, church, and castle, but contains no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "skarszewy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7390,
+    "band": 5,
+    "place_id": "gn-3194199",
+    "input": {
+      "place": {
+        "place_id": "gn-3194199",
+        "name": "Odžak",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 45.02461,
+        "lon": 18.32107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odžak",
+          "url": "https://en.wikipedia.org/wiki/Odžak",
+          "text": "Odžak is a town and municipality located in Posavina Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is situated in the northern part of Bosnia and Herzegovina, near the river Sava, 10 km (6.2 mi) from the border with Croatia. The name is derived from Turkish Ocak, during its time as a frontier town of the Ottoman Empire, and means \"fireplace\" in Turkish and \"chimney\" in modern Bosnian.\nThe town of Odžak is notable for being the battlegrounds of the last battle in Europe of World War II, fought between the Croatian Ustaše and Yugoslav Partisans."
+        },
+        {
+          "article": "Odžak (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Odžak#Geography",
+          "text": "The Odžak municipality is located in northern Bosnia and Herzegovina, in a triangle enclosed to the east by the lowest part of the Bosna river, to the north by the Sava river, and to the southwest by the Vučjak mountain. The northern border of the municipality coincides with the state borders of Bosnia and Herzegovina and the Republic of Croatia. To the east of Odžak is the municipality of Bosanski Šamac, to the south the municipality of Modriča, and to the west the municipality of Vukosavlje. The area of the municipality is predominantly flat, with slight undulations on the slopes of Vučjak in the western part. The highest point of the Odžak municipality is Kadar peak, which is located at 204 meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 125,
+      "leadWords": 103,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the town in the north near the river Sava and the Croatian border, its Turkish name origin, and the last battle of World War II in Europe, but contains no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "odzak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7417,
+    "band": 5,
+    "place_id": "gn-5931074",
+    "input": {
+      "place": {
+        "place_id": "gn-5931074",
+        "name": "Cowansville",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.20008,
+        "lon": -72.74913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cowansville",
+          "url": "https://en.wikipedia.org/wiki/Cowansville",
+          "text": "Cowansville is a city in the Estrie region of Quebec, Canada, and the administrative seat of the Brome-Missisquoi Regional County Municipality. It lies on the Yamaska South-East River and Lac Davignon, about 20 kilometres (12 mi) north of the United States border. Its population was 15,234 in the 2021 Canadian census.\nJacob Ruiter settled at the site in 1798 and built a flour mill and sawmill there two years later. Cowansville was incorporated as a village in 1876 and received city status in 1931. Bruck Silk Mills opened in 1922 and became one of the city's largest industrial employers during the 20th century."
+        },
+        {
+          "article": "Cowansville (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Cowansville#Geography",
+          "text": "Cowansville has a land area of 46.87 km². The Yamaska South-East River crosses the municipality and flows through Lac Davignon, an artificial reservoir near the centre of the city.\nLac Davignon covers 1.05 km² and has about 9 km of shoreline. Its average depth is 3.6 m and its maximum depth is 9.2 m. Work on the dam began in 1965, and the new reservoir was in place by 1966. It was officially named Lac Davignon in 1971, after Abbé Davignon, the founding priest of Sainte-Thérèse-de-l'Enfant-Jésus parish. The reservoir supplies Cowansville with drinking water and is also used for recreation.\nThe MRC's landscape classification places Cowansville near the transition between the Appalachian foothills and the ridges-and-trenches landscape extending south toward Dunham and Frelighsburg."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 123,
+      "leadWords": 103,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a location on a river and lake north of the United States border, settlement in 1798, mills and later silk mills, but contains no climate mechanism, extreme, record, seasonal rhythm or paradox.",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, record, seasonal rhythm or paradox in the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "cowansville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

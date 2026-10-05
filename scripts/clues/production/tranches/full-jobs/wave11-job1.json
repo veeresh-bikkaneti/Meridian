@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 2017,
+    "attempt": 2001,
+    "place_id": "gn-3706208",
+    "input": {
+      "place": {
+        "place_id": "gn-3706208",
+        "name": "Las Tablas",
+        "country": "Panama",
+        "subdivision": "Los Santos Province",
+        "lat": 7.7665,
+        "lon": -80.27798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Tablas, Los Santos",
+          "url": "https://en.wikipedia.org/wiki/Las_Tablas,_Los_Santos",
+          "text": "Las Tablas (Spanish pronunciation: [las ˈta.βlas]) is the capital of the Panamanian province of Los Santos, with a population of 9,255 as of 2010. It is located a few kilometres inland from the Gulf of Panama on the Azuero Peninsula. Las Tablas is a recognised national centre of Panamanian folk: Art, music, gastronomy, architecture, culture and literature. Belisario Porras, the only Panamanian president to serve three terms, was from Las Tablas.\n\nIt is known for a lively yearly Carnival, in which the city splits into two competing factions, \"Calle Arriba\" (Uptown, literally \"Street Above\") and \"Calle Abajo\" (Downtown / Street Below), both centred on two streets of the same name. Each faction will have a carnival queen, a parade, fireworks, music, a decorated plaza, food stands, presentations, concerts, surveys, games, contests, etc., all attempting to overpower the other faction's efforts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "las tablas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tablas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2018,
+    "attempt": 2002,
+    "place_id": "gn-4145381",
+    "input": {
+      "place": {
+        "place_id": "gn-4145381",
+        "name": "Wilmington",
+        "country": "United States",
+        "subdivision": "Delaware",
+        "lat": 39.74595,
+        "lon": -75.54659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilmington, Delaware",
+          "url": "https://en.wikipedia.org/wiki/Wilmington,_Delaware",
+          "text": "Wilmington is the most populous city in the U.S. state of Delaware. It lies at the confluence of the Christina River and Brandywine Creek, near where the Christina flows into the Delaware River. \nThe population was 70,898 at the 2020 census. It is the county seat of New Castle County and one of the major cities in the Philadelphia metropolitan area.\nFirst settled by Swedish settlers in 1638, the modern city of Wilmington was built on the site of Fort Christina, which was the first Swedish settlement in North America, and Kristinehamn, which was planned to be the capital of New Sweden. Control of the area shifted before it was formally incorporated as the Village of Willingtown in 1731, then later granted Borough Charter within the Delaware Colony as Wilmington in 1739, named after Spencer Compton, 1st Earl of Wilmington. Throughout the 18th and 19th centuries, Wilmington developed as an industrial hub with industries in shipbuilding, milling, and later chemical manufacturing, largely influenced by DuPont. Its modern economy is focused on national banking and finance institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "wilmington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2019,
+    "attempt": 2003,
+    "place_id": "gn-2331939",
+    "input": {
+      "place": {
+        "place_id": "gn-2331939",
+        "name": "Lokoja",
+        "country": "Nigeria",
+        "subdivision": "Kogi State",
+        "lat": 7.79688,
+        "lon": 6.74048
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lokoja",
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "text": "Lokoja () is a city in central Nigeria. It lies at the confluence of the Niger and Benue rivers and is the capital city of Kogi State.\nWhile the Bassa Nge, Yoruba (primarily the Oworo, who are a subgroup of the Yoruba) and Nupe are indigenous to the area, other ethnic groups in Nigeria, including the Kupa-Nupe, Hausa, Ebira, Igala, Igbo, Bini/Edo, and Tiv have recently established themselves. Lokoja is projected to be the third fastest growing city on the African continent between 2020 and 2025, with a 5.93% growth rate.\nIt was listed as a second class township by the 1917 township ordinance of the colonial administration, indicating that Lokoja is an old city. Lokoja was founded in 1857 by William Balfour Baikie, a British explorer, who established a trading post on the banks of the Niger River. The city's strategic location made it an important center for trade and commerce in the region. Lokoja is a city with a rich history, cultural significance, and economic importance. Its strategic location and natural beauty make it a popular destination for tourists and investors alike."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "lokoja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2020,
+    "attempt": 2004,
+    "place_id": "gn-2834282",
+    "input": {
+      "place": {
+        "place_id": "gn-2834282",
+        "name": "Schwerin",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.62937,
+        "lon": 11.41316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwerin",
+          "url": "https://en.wikipedia.org/wiki/Schwerin",
+          "text": "Schwerin (German: [ʃveˈʁiːn] ) is the capital and second-largest city of the northeastern German state of Mecklenburg-Vorpommern as well as of the region of Mecklenburg, after Rostock. It has around 96,000 inhabitants, and is thus the least populous of all German state capitals.\nSchwerin is located on the southwestern shore of Lake Schwerin (Schweriner See), the second-largest lake of the Mecklenburg Lake Plateau after the Müritz, and there are eleven other lakes within Schwerin's city limits. The city is surrounded by the district of Northwestern Mecklenburg to the north, and the district of Ludwigslust-Parchim to the south. Schwerin and the two surrounding districts form the eastern outskirts of the Hamburg Metropolitan Region.\nSchwerin was first mentioned in 1018 as Zuarina and was granted city rights in 1160 by Henry the Lion, thus it is the oldest city of Mecklenburg-Vorpommern. As main residence of the House of Mecklenburg, a dynasty with Slavic roots also known as the Obotrites, Schwerin has served as the capital of all Mecklenburger states since the Duchy of Mecklenburg in 1379. After the abolition of states in East Germany, it served as the capital of the District of Schwerin from 1952 to 1990 and since German reunification, it has served as the capital of the (re-)founded Mecklenburg-Vorpommern.\nThe romantic Schwerin Palace, situated on Castle Island between Lake Schwerin and Castle Lake, known for its golden dome, the Castle Church, the throne room, and the Niklot statue; used to be the seat of the dukes and grand dukes of Mecklenburg-Schwerin, and since 1990, it has served as the seat of the state parliament of Mecklenburg-Vorpommern. Schwerin's silhouette is completed by the towers of Schwerin Cathedral, St Paul's Church and St Nicholas' Church. Because of only minor damage in World War II, the city has a largely intact building structure, both in the Altstadt (Old Town) and Schelfstadt (Reed City) quarters.\nMajor industries and employers include high technology, machine building, healthcare, government agencies, railway supply, consumer goods and tourism. There is a regional airport in Parchim, southeast of the city, while Hamburg Airport serves as the city's main airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "schwerin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2021,
+    "attempt": 2005,
+    "place_id": "gn-3589626",
+    "input": {
+      "place": {
+        "place_id": "gn-3589626",
+        "name": "San Pedro Sacatepéquez",
+        "country": "Guatemala",
+        "subdivision": "San Marcos",
+        "lat": 14.96807,
+        "lon": -91.76172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro Sacatepéquez, San Marcos",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_Sacatep%C3%A9quez,_San_Marcos",
+          "text": "San Pedro Sacatepéquez (Spanish pronunciation: [sam ˈpeðɾo sakateˈpekes]) is a city, with a population of 49,589 (2018 census), and a municipality in the San Marcos department of Guatemala. The municipality covers an area of 114 km2 at an altitude of 2330 metres and has a population of 79,158 (2018 census).\nThe city of San Pedro was named after Saint Peter Apostle, and a rooster is the official mascot. People born in the City are known as \"Shecanos\" because of a local pastry \"sheca\" that is famous throughout Guatemala. The City is located en route to the city of Quetzaltenango in a valley called La Ermita y la Esmeralda and is directly adjacent to the city of San Marcos. There is a strong rivalry with the capital city of the province of San Marcos that has existed from its beginnings. This rivalry manifests itself mostly at sporting events with some events unfortunately turning violent. San Pedro is thought by some to be the real capitol of the department because for many years the majority of businesses were located there as opposed to San Marcos however, universities, private schools and a military school are within San Marcos. The area as a whole is also known for its sweaters and warm clothing. It has a large market near the town square. The Mayan population wears some of the most colorful typical garments in the country usually bright yellows, greens and blues. The indigenous population in San Marcos speaks both the ancient Mayan language Ma'am and Spanish"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro sacatepequez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sacatepequez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2022,
+    "attempt": 2006,
+    "place_id": "gn-4005270",
+    "input": {
+      "place": {
+        "place_id": "gn-4005270",
+        "name": "Guanajuato",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.01858,
+        "lon": -101.2591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Guanajuato",
+          "text": "Guanajuato, officially the Free and Sovereign State of Guanajuato, is one of the 32 states that make up the Federal Entities of Mexico. It is divided into 46 municipalities and its capital city is Guanajuato.\nIt is located in central Mexico and is bordered by the states of Jalisco to the west, Zacatecas to the northwest, San Luis Potosí to the north, Querétaro to the east, and Michoacán to the south. It covers an area of 30,608 km2 (11,818 sq mi). The state is home to several historically important cities, especially those along the \"Bicentennial Route\", which retraces the path of Miguel Hidalgo y Costilla's insurgent army at the beginning of the Mexican War of Independence. This route begins at Dolores Hidalgo, and passes through the Sanctuary of Atotonilco, San Miguel de Allende, Celaya, and the capital of Guanajuato. Other important cities in the state include León, the state's biggest city, Salamanca, and Irapuato. The first town established by the Spaniards in Guanajuato is Acámbaro while the first to be named a city is Salvatierra.\nGuanajuato is between the arid north of the country and the lusher south, and is geographically part of the Trans-Mexican Volcanic Belt, the Mexican Plateau. It was initially settled by the Spanish in the 1520s due to mineral deposits found around the city of Guanajuato, but areas such as the Bajío region also became important for agriculture and livestock. Mining and agriculture were the mainstays of the state's economy, but have since been eclipsed by the secondary sector. Guanajuato has particularly seen growth in the automotive industry. The name Guanajuato comes from Purépecha kuanhasï juáta (or in older spelling \"quanax huato\"), which means \"frog hill\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "guanajuato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2023,
+    "attempt": 2007,
+    "place_id": "gn-787487",
+    "input": {
+      "place": {
+        "place_id": "gn-787487",
+        "name": "Ohrid",
+        "country": "North Macedonia",
+        "subdivision": "Ohrid",
+        "lat": 41.11701,
+        "lon": 20.80175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ohrid",
+          "url": "https://en.wikipedia.org/wiki/Ohrid",
+          "text": "Ohrid (Macedonian: Охрид [ˈɔxrit] ) is a city in North Macedonia and is the seat of the Ohrid Municipality. It is the largest city on Lake Ohrid and the eighth-largest city in the country, with it recording a population of over 38,000 inhabitants as of 2021. Ohrid is known for once having 365 churches, one for each day of the year, and has been referred to as the \"Jerusalem of the Balkans\". The city is rich in picturesque houses and monuments, and tourism is predominant. It is located southwest of Skopje, west of Resen and Bitola. In 1979 and in 1980, respectively, Ohrid and Lake Ohrid were accepted as Cultural and Natural World Heritage Sites by UNESCO. Ohrid is one of only 40 sites that are part of UNESCO's World Heritage that are Cultural as well as Natural sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "ohrid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2024,
+    "attempt": 2008,
+    "place_id": "gn-1263659",
+    "input": {
+      "place": {
+        "place_id": "gn-1263659",
+        "name": "Mannargudi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.66626,
+        "lon": 79.45064
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mannargudi",
+          "url": "https://en.wikipedia.org/wiki/Mannargudi",
+          "text": "Mannargudi (Tamil pronunciation: [mannaːrgɯɖi]) is a town in Thiruvarur district in the Indian state of Tamil Nadu. It is the headquarters of the Mannargudi taluk. The town is located at a distance of 28 km (17 mi) from the district headquarters Thiruvarur, 12 km from Needamangalam, 36 km from Kumbakonam, 40 km from Thanjavur, and 310 km (190 mi) from the state capital Chennai. Mannargudi is known for the Rajagopalaswamy temple, a prominent Vaishnavite shrine.\nMannargudi was founded as an agraharam village by the Medieval Cholas during the 7th century A.D. The town was subsequently ruled by various dynasties including the Chola king Rajadhiraja Chola (1018–1054 CE), Vijayanagar Empire, Delhi Sultanate, Thanjavur Nayaks, Thanjavur Marathas and the British Empire. Mannargudi was a part of the erstwhile Tanjore district until India's independence in 1947 and Thanjavur district until 1991. It subsequently became a part of the newly formed Tiruvarur district. The town is known for agriculture, metal working and weaving. The region around Mannargudi has considerable mineral deposits.\nMannargudi is administered by a municipality established in 1866. As of 2011, the municipality covered an area of 11.55 km2 (4.46 mi2) and has a population of 67,999. Mannargudi comes under the Mannargudi assembly constituency which elects a member to the Tamil Nadu Legislative Assembly once every five years and it is a part of the Thanjavur constituency which elects its Member of Parliament (MP) once in five years. Roadways are the major mode of transportation to the town and it also has rail connectivity. The nearest seaport, Nagapattinam Port, is located 52 km (32 mi) from Mannargudi, while the nearest airport, Tiruchirappalli International Airport, is located 97 km (60 mi) from the town. Mannargudi is a fifth largest town in delta region after Thanjavur, Kumbakonam, Thiruvarur and Nagapattinam"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "mannargudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2025,
+    "attempt": 2009,
+    "place_id": "gn-2712414",
+    "input": {
+      "place": {
+        "place_id": "gn-2712414",
+        "name": "Gävle",
+        "country": "Sweden",
+        "subdivision": "Gävleborg",
+        "lat": 60.67452,
+        "lon": 17.14174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gävle",
+          "url": "https://en.wikipedia.org/wiki/G%C3%A4vle",
+          "text": "Gävle ( YEV-lay or YEV-lə; Swedish: [ˈjɛ̌ːvlɛ] ) is a city in Sweden, the seat of Gävle Municipality and the capital and largest city of Gävleborg County. It had 86534 inhabitants in 2023, which makes it the 13th-most-populated city in Sweden. It is the oldest city in Norrland, having received its charter in 1446 from Christopher of Bavaria and lying around 14 kilometres (8.7 mi) northwest of Dalälven, the traditional boundary line between Norrland and Svealand. The location of the city also gives it a milder climate than that of most other cities in Norrland.\nIn recent years, the city has received much international attention due to its large Yule Goat figure made of straw – the Gävle Goat. The goat is erected in December each year and is often subsequently vandalized, usually by being set on fire. The goat has now become a symbol for the city and is being used for various marketing purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "gavle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2026,
+    "attempt": 2010,
+    "place_id": "gn-3436199",
+    "input": {
+      "place": {
+        "place_id": "gn-3436199",
+        "name": "Azul",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -36.77803,
+        "lon": -59.85848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azul, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Azul,_Buenos_Aires",
+          "text": "Azul (Spanish pronunciation: [aˈsul], English: \"blue\", for the stream Azul, which flows through the area) is the head city of the Azul Partido, located at the center of the Buenos Aires Province in Argentina, 300 km south of Buenos Aires. It has 63,000 inhabitants as per the 2001 census [INDEC]  .\n\nIts principal, goods-producing economic activities are agriculture and the raising of cattle for meat and leather exports. Home to a dynamic services sector, over 2,000 commercial businesses are registered in the city.\n\nThe town was founded on December 16, 1832, following Governor Juan Manuel de Rosas' orders for the construction of a fort, San Serapio Mártir del Arroyo Azul, to guard against indigenous raids. Subsequent land grants led to the development of a stable community, and in 1895, Azul was formally declared a town by provincial authorities. The local cathedral, Nuestra Señora del Rosario, was consecrated in 1906. \n\nThe town's cemetery portal and main slaughterhouse were both designed by architect Francisco Salamone, and contain elements of Art Deco style. Built in the late 1930s, these buildings were some of the first examples of modern architecture in rural Argentina. The town was the scene of an attack on outlying Army barracks by far-left ERP militants on January 19, 1974, the most violent assault of its kind in the country up to that point.\nAzul is home to the schools of Agronomy and Law of the National University of Central Buenos Aires. The Teatro Español, founded in the city in 1897, is among the most important of the central pampas area, and in 1992, hosted the Bolshoi Ballet.\nThe Miguel de Cervantes Festival is held there every spring since 2007, and Casa Ronco, an antiquarian library and museum, maintains the country's best collections relating to the noted Spanish writer. Casa Ronco is named after the collector Bartolomé Ronco. Azul was declared Argentina's \"City of Cervantes\" by UNESCO in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "azul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2027,
+    "attempt": 2011,
+    "place_id": "gn-3436714",
+    "input": {
+      "place": {
+        "place_id": "gn-3436714",
+        "name": "Villarrica",
+        "country": "Paraguay",
+        "subdivision": "Guairá",
+        "lat": -25.74946,
+        "lon": -56.43518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villarrica, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Villarrica,_Paraguay",
+          "text": "Villarrica del Espíritu Santo (Spanish pronunciation: [ˌbiʎaˈrika ðel esˈpiɾitu ˈsanto]), is a city in Paraguay. Located in the middle of the Eastern Region of Paraguay, it is the capital and most populous city of Guairá Department.\nVilarrica is located to the center west of Guairá and is bordered to the east by the towns of Mbocayaty, Yataity, Independencia, Ñumí and Garay, to the west by Itapé and Félix Pérez, and to the south by San Salvador and Borja.\nFounded in 1570 by Sevillian Ruy Díaz de Melgarejo, it is one of the oldest settlements in Paraguay. Nevertheless, the original foundation site was located within the extinct Spanish province of Guayra in what is now the state of Parana in Brazil. The residents of Villarrica were forced to relocate seven times during a timespan of more than 100 years. These relocations were mainly caused by the repeated attacks from the neighbouring Portuguese bandeirantes but also by political and economic issues. They were finally settled in its current location near Ybytyruzu hills in 1683. As a result, the city got the nickname of \"Wandering City\".\nAfter the end of the Paraguayan War in 1870, Villarrica experienced rapid economic and demographic growth, becoming the second most important city in Paraguay after the capital Asuncion. The city continues to be a well-known cultural hub today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "villarrica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2028,
+    "attempt": 2012,
+    "place_id": "gn-3574194",
+    "input": {
+      "place": {
+        "place_id": "gn-3574194",
+        "name": "Marabella",
+        "country": "Trinidad & Tobago",
+        "subdivision": "San Fernando",
+        "lat": 10.30618,
+        "lon": -61.44671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marabella",
+          "url": "https://en.wikipedia.org/wiki/Marabella",
+          "text": "Marabella is a town in southern Trinidad, located between San Fernando (to the south) and Pointe-à-Pierre (to the north).  Early 19th-century maps highlighted it as Marabella Junction because of the railway intersection to Williamsville and other central areas.\nMarabella was home to the Union Park Turf Club (a horse racing venue) later converted to the Manny Ramjohn Stadium, one of the five major stadiums in Trinidad and Tobago, the others being the Ato Boldon, Larry Gomes, Hasley Crawford and the Dwight Yorke Stadium.\nNicknamed \"The City that Never Sleeps,\" the city is always active, as its nightlife of food vending and bars goes almost 24/7. Marabella provides a melting-pot for the wide ethnic groups to \"lime\" and \"ole talk\".\nMarabella's location near the Solomon Hochoy highway and Southern Main Road makes accessibility to all parts of Trinidad easy. This accessibility combined with its commercial infrastructure makes Marabella a prime residential area. Today it is referred to as the \"Commercial Hub of Southern Trinidad\".\nMarabella, like many other middle-class neighbourhoods in Trinidad, does have a contingent of its population living below the poverty line in areas such as Bay Road and \"The Old Train Line\".  Marabella is also known for its highly skilled sports personnel, including Horace Tuitt (track and field)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "marabella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2029,
+    "attempt": 2013,
+    "place_id": "gn-4588718",
+    "input": {
+      "place": {
+        "place_id": "gn-4588718",
+        "name": "Myrtle Beach",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 33.68906,
+        "lon": -78.88669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myrtle Beach, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Myrtle_Beach,_South_Carolina",
+          "text": "Myrtle Beach is a resort city in Horry County, South Carolina, United States. It is located in the center of a long and continuous 60-mile (97 km) stretch of beach known as the \"Grand Strand” in the northeastern part of the state, on the East Coast of the United States. Its year-round population was 35,682 as of the 2020 census, making it the 13th-most populous city in South Carolina.\nMyrtle Beach is one of the major centers of tourism in South Carolina and the United States. The city's warm subtropical climate, miles of beaches, 86 golf courses, and 1,800 restaurants attract over 20 million visitors each year, making Myrtle Beach one of the most visited destinations in the country.\nLocated along the historic King's Highway (modern day US 17), the region was once home to the Waccamaw people. During the colonial period, the Whither family settled in the area, and a prominent local waterway, Wither's Swash, is named in their honor. Originally called alternately \"New Town\" or \"Withers\", the area was targeted for development as a resort community by Franklin Burroughs, whose sons completed a railroad to the beach and the first inn, Seaside Inn. His widow named the new community Myrtle Beach after the local wax-myrtle shrubs.\nThe Myrtle Beach area is one of the fastest growing metropolitan areas in the country, with an estimated population of 479,426 in 2024. More than 104,000 people moved to the area over eight years, representing a nearly 28% growth in population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "myrtle beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "myrtle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2030,
+    "attempt": 2014,
+    "place_id": "gn-4922388",
+    "input": {
+      "place": {
+        "place_id": "gn-4922388",
+        "name": "Kokomo",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.48643,
+        "lon": -86.1336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kokomo, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Kokomo,_Indiana",
+          "text": "Kokomo (  KOH-kə-moh) is a city in and the county seat of Howard County, Indiana, United States. As of the 2020 census, Kokomo had a population of 59,604. It is the principal city of the Kokomo metropolitan area, which includes all of Howard County, and it is the largest city and regional center for the North Central Indiana region consisting of ~225,000 people across six counties anchored by the city of Kokomo. The city is located approximately 60 miles (97 km) north of Indianapolis and 85 miles (137 km) south of South Bend, Indiana.\nNamed for the Miami Ma-Ko-Ko-Mo who was called \"Chief Kokomo\", Kokomo first benefited from the legal business associated with being the county seat. Before the Civil War, it was connected with Indianapolis and then the Eastern cities by railroad, which resulted in sustained growth. Substantial growth came after the discovery of large natural gas reserves, which produced an economic boom in the mid-1880s. Among the businesses which the boom attracted was the fledgling automobile industry. A significant number of technical and engineering innovations were developed in Kokomo, particularly in automobile production, and, as a result, Kokomo became known as the \"City of Firsts.\" A substantial portion of Kokomo's employment still depends on the automobile industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "kokomo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2031,
+    "attempt": 2015,
+    "place_id": "gn-5768233",
+    "input": {
+      "place": {
+        "place_id": "gn-5768233",
+        "name": "Rapid City",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 44.08054,
+        "lon": -103.23101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rapid City, South Dakota",
+          "url": "https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota",
+          "text": "Rapid City is a city in and the county seat of Pennington County, South Dakota, United States. It is located on the eastern slope of the Black Hills in western South Dakota and was named after Rapid Creek, where the settlement developed. It is the second-most populous city in the state (after Sioux Falls) with a population of 74,703 as of the 2020 census. The Rapid City metropolitan area has 156,000 residents.\nKnown as the \"Gateway to the Black Hills\" and the \"City of Presidents\" because of the life-size bronze president statues downtown, Rapid City is split by a low mountain ridge that divides the city's western and eastern parts, called ‘The Gap.’ Ellsworth Air Force Base is on the city's outskirts. Camp Rapid, part of the South Dakota Army National Guard, is in the city's western part.\nRapid City is home to such attractions as Art Alley, Dinosaur Park, the City of Presidents walking tour, Chapel in the Hills, Storybook Island, and Main Street Square. The historic \"Old West\" town of Deadwood is nearby. In the neighboring Black Hills are the tourist attractions of Mount Rushmore, the Crazy Horse Memorial, Custer State Park, Wind Cave National Park, Jewel Cave National Monument, The Mammoth Site and the museum at the Black Hills Institute of Geological Research. To the city's east is Badlands National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "rapid city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rapid",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2032,
+    "attempt": 2016,
+    "place_id": "gn-705135",
+    "input": {
+      "place": {
+        "place_id": "gn-705135",
+        "name": "Konotop",
+        "country": "Ukraine",
+        "subdivision": "Sumy",
+        "lat": 51.23251,
+        "lon": 33.2004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konotop",
+          "url": "https://en.wikipedia.org/wiki/Konotop",
+          "text": "Konotop is a city in northeastern Ukraine located in Sumy Oblast. Konotop serves as the administrative center of Konotop Raion within the oblast. Its population before the Russian invasion of Ukraine was approximately 83,543 (2022 estimate), making it the second-largest city in Sumy Oblast.\nKonotop is believed to have been settled in 1634, with the granting of the settlement to a Polish nobleman. A fortress was then built on the site of the settlement, which led to the city being the site of numerous battles in the late 1600s, such as the Battle of Konotop and the Battle of Konotop (1668), after it was seized by the Cossack Hetmanate. The Cossacks then ruled the city for decades until 1764, when the Hetmanate was incorporated into the Little Russia Governorate of the Russian Empire, and later the Chernigov Governorate. The city would then rapidly grow, shifting from agricultural work to relying on railroad work, as multiple important railway lines started running through the city in the late 1800s. After the October Revolution, it was claimed by the Ukrainian SSR after a change of hands in 1919, and was annexed into the Soviet Union in 1922. The city was then devastated by World War II, where it was the site of a prisoner of war camp for captured Soviets, with an estimated 30,000 people dying in the city in total during this time. After gradually recovering, the \"Chervonyi Metalist\" electromechanical plant took on a greater role in the city's economy, and after the collapse of the Soviet Union the city became part of a newly independent Ukraine. In 2022, as part of the northern front of the Russian invasion, the city briefly came under siege in February 2022, although by April all Russians left the entire raion. Since then, the city has been under full Ukrainian control.\nKonotop has historically been an important railway centre in Sumy Oblast, although the industry has since then shifted to aircraft repair and the manufacturing of internal combustion engines. Cultural landmarks include the Shukhov Water Tower and memorials to the Battle of Konotop and Kazimir Malevich. The city is also well known more recently for its association with the witches of Konotop, which started with the novella The Witch of Konotop in 1833 and has since been adapted into multiple plays and films. The main museums of the city are the O. M. Lazarevsky Konotop Regional Studies Museum, the Mikhail  Dragomirov Estate Museum, and the Konotop Aviation Museum. The city is home to the association football club FC Shakhtar Konotop, which plays in the Sumy Oblast Football Championships, with their home ground being at Yunist Stadium. The city is also home to multiple institutions of higher education, most of which are branches of Sumy State University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 460
+    },
+    "banned_terms": [
+      {
+        "term": "konotop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2033,
+    "attempt": 2017,
+    "place_id": "gn-762909",
+    "input": {
+      "place": {
+        "place_id": "gn-762909",
+        "name": "Ostrołęka",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 53.08621,
+        "lon": 21.57566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ostrołęka",
+          "url": "https://en.wikipedia.org/wiki/Ostro%C5%82%C4%99ka",
+          "text": "Ostrołęka (Polish: [ɔstrɔˈwɛŋka] ; Yiddish: אסטראלענקע, romanized: Ostrolenka) is a small city in northeastern Poland on the Narew river, about 120 km (75 mi) northeast of Warsaw, with a population of 51,012 (2021) and an area of 33.46 square kilometres (12.92 sq mi). It is the capital of both Ostrołęka County and Ostrołęka City County in the Masovian Voivodeship.\nOstrołęka was founded as a medieval stronghold that grew into an important royal city in northern Mazovia, which prospered from crafts and trade. The city was the site of several battles and skirmishes throughout history. Ostrołęka is a local railroad junction with four lines stemming from Ostrołęka railway station: eastwards to Łapy and Białystok, southwestwards to Tłuszcz and Warsaw, northwards to Wielbark and Olsztyn, and southwards to Małkinia Górna. Ostrołęka is a local centre of culture and light industry. The Ostrołęka Power Station is located in Ostrołęka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "ostro eka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ostro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2034,
+    "attempt": 2018,
+    "place_id": "gn-1628926",
+    "input": {
+      "place": {
+        "place_id": "gn-1628926",
+        "name": "Same",
+        "country": "Timor-Leste",
+        "subdivision": "Manufahi",
+        "lat": -9.00417,
+        "lon": 125.64861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Same, Timor-Leste",
+          "url": "https://en.wikipedia.org/wiki/Same,_Timor-Leste",
+          "text": "Same (Portuguese pronunciation: [ˈsamɛ]) is a city in the Same administrative post in the interior of Timor-Leste, 81 kilometres (50 mi) south of Dili, the national capital. Same has a population of 7,413 and is the capital of Manufahi municipality, which was known as Same District in Portuguese Timor.\nDuring the Portuguese colonial period, the district was named after Same, its capital. In the time of the Estado Novo, the place in Vila Filomeno da Câmara was renamed after the former governor of Portuguese Timor Filomeno da Câmara de Melo Cabral.\nAfter Timor-Leste's independence from Indonesia, the town was almost completely destroyed by Indonesian militias A rebuilding project called Friends of Same is currently helping rebuild the city, along with UN envoys. During the 2006 East Timorese crisis, the Battle of Same took place in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "same",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2035,
+    "attempt": 2019,
+    "place_id": "gn-2635042",
+    "input": {
+      "place": {
+        "place_id": "gn-2635042",
+        "name": "Uxbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5489,
+        "lon": -0.48211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uxbridge",
+          "url": "https://en.wikipedia.org/wiki/Uxbridge",
+          "text": "Uxbridge () is a suburban town in west London, England, and the administrative headquarters of the London Borough of Hillingdon, 15.4 miles (24.8 km) northwest of Charing Cross. Uxbridge formed part of the parish of Hillingdon in the county of Middlesex. As part of the suburban growth of London in the 20th century it expanded and increased in population, becoming a municipal borough in 1955, and part of Greater London in 1965.\nAttempted negotiations between King Charles I and the Parliamentary Army during the English Civil War took place at a public house called the Crown and Treaty. RAF Uxbridge houses the Battle of Britain Bunker, from where the air defence of the south-east of England was coordinated during the Battle of Britain especially from its No. 11 Group Operations Room, also used during the D-Day landings.\nToday the town serves as a significant retail and commercial centre; it also houses Brunel University London as well as a campus of Buckinghamshire New University. A part of the town which has large converted flour mills adjoins Buckinghamshire, the boundary being the River Colne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "uxbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2036,
+    "attempt": 2020,
+    "place_id": "gn-2655351",
+    "input": {
+      "place": {
+        "place_id": "gn-2655351",
+        "name": "Bletchley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.99334,
+        "lon": -0.73471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bletchley",
+          "url": "https://en.wikipedia.org/wiki/Bletchley",
+          "text": "Bletchley is a constituent town of Milton Keynes, a city in Buckinghamshire, England. It gives its name to a larger census  \"built-up area\" that occupies the south-west of the city and which is divided by the West Coast Main Line railway between the civil parishes of Bletchley & Fenny Stratford and West Bletchley, together with a fragment of Stoke Hammond CP. At the 2021 census, the population of this wider area was 45,010.  \nBletchley and Fenny Stratford CP, which includes its commercial  centre, consists of two towns with one town council. West Bletchley, which includes its pre-railways village centre, has a parish council. The latter is best known for Bletchley Park, the headquarters of Britain's World War II codebreaking organisation and now a major tourist attraction; the National Museum of Computing is also located in the park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "bletchley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

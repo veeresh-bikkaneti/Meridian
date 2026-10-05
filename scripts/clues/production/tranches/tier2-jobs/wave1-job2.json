@@ -1,0 +1,927 @@
+[
+  {
+    "rank": 23,
+    "place_id": "gn-5525577",
+    "input": {
+      "place": {
+        "place_id": "gn-5525577",
+        "name": "Lubbock",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.57786,
+        "lon": -101.85517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lubbock, Texas",
+          "url": "https://en.wikipedia.org/wiki/Lubbock,_Texas",
+          "text": "Lubbock ( LUB-ək) is a city in the U.S. state of Texas and the county seat of Lubbock County. With a population of 257,141 at the 2020 census (estimated at 273,071 in 2025), Lubbock is the 10th-most populous city in Texas and the 84th-most populous in the United States. The city is in the northwestern part of the state, in the Great Plains region, an area known historically and geographically as the Llano Estacado, and ecologically is part of the southern end of the High Plains, lying at the economic center of the Lubbock metropolitan area, which had an estimated population of 367,109 in 2024.\nLubbock's nickname, \"Hub City\", derives from it being the economic, educational, and healthcare hub of the multicounty region, located north of the Permian Basin and south of the Texas Panhandle, commonly called the South Plains. The area is the largest contiguous cotton-growing region in the world and is heavily dependent on water from the Ogallala Aquifer for irrigation. Lubbock is home to Texas Tech University, the sixth-largest college by enrollment in the state."
+        },
+        {
+          "article": "Lubbock, Texas (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lubbock,_Texas#Climate",
+          "text": "Lubbock has a cool semi-arid climate (Köppen classification BSk). On average, Lubbock receives of rain and of snow per year.\nIn 2013, Lubbock was named the \"Toughest Weather City\" in America according to the Weather Channel.\nSummers are hot, with 92 afternoons on average of + highs and 13.3 afternoons of + highs, with lows of + on 30 mornings. Lubbock is the 10th-windiest city in the US with an average wind speed of . The highest recorded temperature was on June 27, 1994.\nWinter afternoons in Lubbock are typically sunny and mild, but mornings are cold, with temperatures usually dipping below freezing, and as the city is in USDA Plant Hardiness Zone 7, lows reaching occur on 1.5 mornings and 4.5 afternoons occur where the temperature fails to rise above freezing. The lowest recorded temperature was on February 8, 1933.\nLubbock can experience severe thunderstorms during the spring, and occasionally the summer. The risk of tornadoes and very large hail exists during the spring in particular, as Lubbock sits on the far southwestern edge of Tornado Alley."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 178,
+      "leadWords": 178,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Great Plains location, cotton growing and dependence on Ogallala Aquifer water for irrigation but states no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lubbock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 24,
+    "place_id": "gn-3405870",
+    "input": {
+      "place": {
+        "place_id": "gn-3405870",
+        "name": "Belém",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -1.45583,
+        "lon": -48.50444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belém",
+          "url": "https://en.wikipedia.org/wiki/Bel%C3%A9m",
+          "text": "Belém (Brazilian Portuguese: [beˈlẽj̃]; Portuguese for 'Bethlehem'; initially called Nossa Senhora de Belém do Grão-Pará, in English Our Lady of Bethlehem of Great Pará), often called Belém of Pará, is the capital and largest city of the state of Pará in the North of Brazil. It is the gateway to the Amazon River with a busy port, airport, and bus/coach station. Belém lies approximately 100 km (62.1 miles) upriver from the Atlantic Ocean, on the Pará River, which is part of the greater Amazon River system, separated from the larger part of the Amazon delta by Ilha de Marajó (Marajo Island). With an estimated population of 1,398,531 people — or 2,491,052, considering its metropolitan area — it is the 12th most populous city in Brazil, as well as the 16th by economic relevance. It is the second largest in the North Region, second only to Manaus, in the state of Amazonas.\nFounded in 1616 by the Kingdom of Portugal, Belém was the first European colony on the Amazon but did not become part of Brazil until 1775. The newer part of the city has modern buildings and skyscrapers. The colonial portion retains the charm of tree-filled squares, churches and traditional blue tiles. The city has a rich history and architecture from colonial times. Recently, it witnessed a skyscraper boom.\nBelém is also known as the Metropolis of the Brazilian Amazon region or the Cidade das Mangueiras (City of Mango Trees) due to the vast number of those trees found in the city. Brazilians often refer to the city as Belém do Pará (\"Belém of Pará\") rather than just Belém, a reference to an earlier name for the city, Santa Maria de Belém do Grão Pará (\"Saint Mary of Bethlehem of Great Pará\"), and also to differentiate it from a number of other towns called Belém in Brazil, as well as the city of Bethlehem in the West Bank of Palestine. It is named after Santa Maria de Belém in Lisbon, also better known by its shortened name, Belém.\nBelém is served by Belém International Airport, which connects the city with the rest of Brazil and other cities in South America, North America (United States) and Europe (Lisbon). The city is also home to the Federal University of Pará and the State University of Pará."
+        },
+        {
+          "article": "Belém (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bel%C3%A9m#Climate",
+          "text": "Belém has a tropical rainforest climate (Köppen: Af) more subject to the Intertropical Convergence Zone than the maritime trade winds, and with no cyclones; that is, a true equatorial climate. In all 12 months of the year, the city on average sees more than 60 mm of rainfall, so the city has no true dry season month. However, Belém features noticeably wetter and drier seasons. The wetter season spans from December through May, while the drier season covers the remaining six months of the year. Like many cities with a tropical rainforest climate, average temperatures vary little throughout the course of the year, generally hovering around 26.5 degrees Celsius. Due to its location in the Amazon, tropical rainforest is the natural vegetation in and around the city."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 127,
+      "leadWords": 384,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Amazon gateway location, 1616 founding and mango trees but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "belem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 25,
+    "place_id": "gn-5400075",
+    "input": {
+      "place": {
+        "place_id": "gn-5400075",
+        "name": "Sunnyvale",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.36883,
+        "lon": -122.03635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunnyvale, California",
+          "url": "https://en.wikipedia.org/wiki/Sunnyvale,_California",
+          "text": "Sunnyvale () is a city in the Santa Clara Valley in northwestern Santa Clara County, California, United States.\nSunnyvale lies along the historic El Camino Real and Highway 101 and is bordered by the San Francisco Bay to the north, Moffett Federal Airfield and NASA Ames Research Center to the northwest, Mountain View to the northwest, Los Altos to the southwest, Cupertino to the south, and Santa Clara to the east. A small section of the border near Sunnyvale Baylands Park meets the city of San Jose (specifically the Alviso region) to the east and north.\nSunnyvale's population was 155,805 at the 2020 census, making it the second most populous city in the county (after San Jose) and the seventh most populous city in the San Francisco Bay Area.\nAs one of the major cities that make up California's high-tech area known as Silicon Valley, Sunnyvale is the birthplace of the video game industry, the former location of Atari's headquarters. Many technology companies are headquartered in Sunnyvale and many more operate there, including several aerospace/defense companies.\nSunnyvale was also the home to Onizuka Air Force Station, often called \"the Blue Cube\" because of the color and shape of its windowless main building. The facility, previously known as Sunnyvale Air Force Station, was named for the deceased Space Shuttle Challenger astronaut Ellison Onizuka. It served as an artificial satellite control facility of the U.S. military until August 2010 and has since been decommissioned and demolished.\nSunnyvale is one of the few California municipalities to have a single unified Department of Public Safety, where all personnel are trained as firefighters, police officers, and EMTs so that they can respond to an emergency in any of those roles."
+        },
+        {
+          "article": "Sunnyvale, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sunnyvale,_California#Climate",
+          "text": "Like most of the San Francisco Bay Area, Sunnyvale has a warm-summer Mediterranean climate (Köppen Csb), with short, cool, wet winters and long, warm, very dry summers. Average daytime summer temperatures are in the high 70s or low 80s, and during the winter, average daytime high temperatures rarely stay below . Snowfall is rare, but on January 21, 1962, and February 5, 1976, measurable snowfall occurred in Sunnyvale and most of the San Francisco Bay Area. Sunnyvale was briefly hit by tornadoes in 1951 and 1998, but they are extremely rare."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 91,
+      "leadWords": 285,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Santa Clara Valley location, borders, tech industry and air force station history but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sunnyvale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 26,
+    "place_id": "gn-2038120",
+    "input": {
+      "place": {
+        "place_id": "gn-2038120",
+        "name": "Chaoyang",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.57028,
+        "lon": 120.45861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chaoyang, Liaoning",
+          "url": "https://en.wikipedia.org/wiki/Chaoyang,_Liaoning",
+          "text": "Chaoyang (Chinese: 朝阳市; pinyin: Cháoyáng) is a prefecture-level city in western Liaoning province, People's Republic of China.\nWith a vast land area of almost 20,000 square kilometres (7,700 sq mi), it is by area the largest prefecture-level city in Liaoning, and borders on Hebei province and the Inner Mongolia Autonomous Region to the west.\nThe area under Chaoyang's jurisdictional control is split up into two counties (Jianping, Chaoyang), two urban districts (Longcheng, Shuangta), two county-level cities (Beipiao, Lingyuan), and the Harqin Left Wing Mongolian Autonomous County. The total regional population is 3 million, while the urban centre where the government office is located has a population of 430,000 and forms the core of Chaoyang.\nKnown as China's 'fossil city', many important paleontological discoveries have been made in Chaoyang, and the Harqin region is the oldest currently known prehistoric site in northern China. Two of the most remarkable Early Cretaceous birds known to date were recovered in the vicinity of the Jiufotang Formation rocks and named Longipteryx chaoyangensis and Sapeornis chaoyangensis in reference to the city."
+        },
+        {
+          "article": "Chaoyang, Liaoning (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chaoyang,_Liaoning#Geography_and_climate",
+          "text": "Chaoyang has a rather dry, monsoon-influenced humid continental climate/semi-arid climate (Köppen climate classification: Dwa/BSk), with cold but very dry winters, and hot, humid summers; spring and autumn are relatively brief. The monthly 24-hour average temperature ranges from in January to in July, for an annual average of . A majority of the annual rainfall occurs in July and August alone. Due to the aridity, diurnal temperature variation is large, especially during spring and autumn, and averages annually. With monthly percent possible sunshine ranging from 50% in July to 71% in January, the city averages 2,748 hours of bright sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 100,
+      "leadWords": 175,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives western Liaoning location, districts and fossil discoveries but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 27,
+    "place_id": "gn-1797873",
+    "input": {
+      "place": {
+        "place_id": "gn-1797873",
+        "name": "Huai'an",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 33.58861,
+        "lon": 119.01917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huai'an",
+          "url": "https://en.wikipedia.org/wiki/Huai'an",
+          "text": "Huai'an, formerly Huaiyin, is a prefecture-level city in Jiangsu in Eastern China. As of 2020, the built-up area (metro) of its 3 central urban districts had 2,544,767 inhabitants and the prefecture-level city as a whole had 4,556,230 inhabitants.\nLong an important regional center, Huai'an lies on and is named for the Huai River, the historical boundary between northern and southern Chinese culture. Once much closer to the East China Sea, it now lies in the middle of Jianghuai, the vast alluvial plain created by silt from the Huai and the Yellow River, which flowed nearby for centuries prior to the massive floods in the mid-19th century which returned it to its old course north of Shandong. Huai'an is known as the birthplace of Han Xin, a famed general who helped found the Han dynasty and overwhelm Xiang Yu in the Chu-han Contention; Wu Cheng'en, the Ming dynasty author of Journey to the West; and Zhou Enlai, a prominent Communist leader who served as premier of the PRC from 1949 until his death in 1976."
+        },
+        {
+          "article": "Huai'an (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Huai'an#Climate",
+          "text": "The climate in Huai'an is mild, generally warm and temperate. Winters are much drier than summers. Its Köppen climate classification is Cwa: humid subtropical climate with dry winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 28,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Jiangsu location, alluvial plain formed by river silt and historic floods, and famous births, but no climate mechanism, extreme, paradox or seasonal rhythm; river flooding history is not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "huai an",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "huai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 28,
+    "place_id": "gn-3190261",
+    "input": {
+      "place": {
+        "place_id": "gn-3190261",
+        "name": "Split",
+        "country": "Croatia",
+        "subdivision": "Split-Dalmatia",
+        "lat": 43.50891,
+        "lon": 16.43915
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Split, Croatia",
+          "url": "https://en.wikipedia.org/wiki/Split,_Croatia",
+          "text": "Split (; Croatian: [splît] ) is the second-largest city in Croatia, after the capital Zagreb, situated on the eastern shore of the Adriatic Sea. As the administrative seat of Split-Dalmatia County and the largest city on the Croatian coast, it serves as a key economic, cultural, and transportation hub for the region. Developed around the historic core of Diocletian's Palace and extending across a central peninsula toward its surrounding suburbs and hinterland, Split combines a continuous urban tradition spanning more than seventeen centuries with a contemporary role as one of Croatia's leading tourist destinations. The city itself has a population of over 160,000, while the metropolitan area encompasses approximately 310,000 inhabitants.\nThe city was founded as the Greek colony of Aspálathos (Ancient Greek: Ἀσπάλαθος) in the 3rd or 2nd century BCE on the coast of the Illyrian Dalmatae, and in 305 CE, it became the site of the Palace of the Roman emperor Diocletian. It became a prominent settlement around 650 when it succeeded the ancient capital of the Roman province of Dalmatia, Salona. After the sack of Salona by the Avars and Slavs, the fortified Palace of Diocletian was settled by Roman refugees. Soon after, Split became a Byzantine city. Later it drifted into the sphere of the Republic of Venice and the Kingdom of Croatia. For much of the High and Late Middle Ages, Split enjoyed autonomy as a free city of the Dalmatian city-states, caught in the middle of a struggle between Venice and Croatia for control over the Dalmatian cities.\nVenice eventually prevailed and, during the early modern period, Split remained a Venetian city, a heavily fortified outpost surrounded by Ottoman territory. Its hinterland was won from the Ottomans in the Morean War of 1699, and in 1797, as Venice fell to Napoleon, the Treaty of Campo Formio rendered the city to the Habsburg monarchy. In 1805, the Peace of Pressburg added it to the Napoleonic Kingdom of Italy and in 1806 it was included in the French Empire, becoming part of the Illyrian Provinces in 1809. After being occupied in 1813, it was eventually granted to the Austrian Empire following the Congress of Vienna, where the city remained a part of the Austrian Kingdom of Dalmatia until the dissolution of Austria-Hungary in 1918 and the creation of Yugoslavia. In World War II, the city was annexed by Italy, then liberated by the Partisans after the Italian capitulation in 1943. It was then re-occupied by Germany, which granted it to its puppet Independent State of Croatia (NDH). The city was liberated again by the Partisans in 1944, and was included in the post-war Socialist Yugoslavia, as part of the People's Republic of Croatia. In 1991, Croatia seceded from Yugoslavia amid the Croatian War of Independence.\nToday, Split is a major transportation hub and a popular tourist destination attracting over one million visitors annually. Its historic core, a UNESCO World Heritage Site since 1979, reflects the city's continuous urban life from late antiquity to the present. The Port of Split is one of the busiest passenger ports in the Mediterranean and serves as a key gateway to the southern Adriatic islands, while the University of Split reinforces the city's role as a major educational and research centre. The city gained additional international recognition when it hosted the 1979 Mediterranean Games and 1990 European Athletics Championships."
+        },
+        {
+          "article": "Split, Croatia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Split,_Croatia#Climate",
+          "text": "Split has a hot-summer Mediterranean climate (Köppen climate classification: Csa), that is bordering closely on a humid subtropical climate (Köppen climate classification: Cfa). It experiences hot, moderately dry summers and mild, wet winters, which can occasionally feel cold, because of a strong northern wind, termed bura.\nJanuary is the coldest month, with an average low temperature around . July is the hottest month, with an average high temperature around . Average annual rainfall is around . November is the wettest month, with a precipitation total of nearly and 12 rainy days. July is the driest month, with a precipitation total of around . Snow is usually rare, though in February 2012, during cold wave in Europe, Split received a record snowfall of , which caused major problems with traffic. Split receives more than 2,698 sunshine hours annually.\nIn July 2017, Croatian firefighters battled to control a forest fire along the Adriatic coast that damaged and destroyed buildings in villages around the city of Split.\nThe highest temperature ever recorded in the city was 40.2 °C (104.36 °F) on 12 August 2026. At Split Airport (Resnik), a temperature of 42.2 °C (108.0 °F) was recorded on 2 August 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 198,
+      "leadWords": 558,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Adriatic coast location and long political history from Greek colony to modern Croatia but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "split",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 29,
+    "place_id": "gn-3454857",
+    "input": {
+      "place": {
+        "place_id": "gn-3454857",
+        "name": "Passo Fundo",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.26278,
+        "lon": -52.40667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Passo Fundo",
+          "url": "https://en.wikipedia.org/wiki/Passo_Fundo",
+          "text": "Passo Fundo is a municipality in the north of the southern Brazilian state of Rio Grande do Sul. It is named after its river. It's the tenth largest city in the state with an estimated population of 204,722 inhabitants living in a total municipal area of 780 km2.\nPasso Fundo is a city well known because of the singer, composer and filmmaker Vitor Mateus Teixeira, better known as Teixeirinha, he was born in the city of Rolante in Rio Grande do Sul, and adopted the city of Passo Fundo as his own, the singer liked a lot from the city, in 1960 he composed the song \"Gaúcho de Passo Fundo\", which was very successful and made Passo Fundo become a known city throughout Brazil. Teixeirinha composed two more songs in homage to the city of Passo Fundo, they are \"Saudades de Passo Fundo\" (1963) and \"Passo Fundo do Coração\" (1973), as well as producing and starring in a film set in the city, a film called \"O Gaucho de Passo Fundo\", released in 1978."
+        },
+        {
+          "article": "Passo Fundo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Passo_Fundo#Climate",
+          "text": "Lying near latitude 28° South at an elevation of , Passo Fundo has a humid subtropical climate. The annual mean temperature is with highs of in January and in July and lows of in January and in July. Winters can be slightly cool with temperatures below , frequent frosts and occasional snowfalls. Rainfall is spread out throughout the year with September receiving the highest amount of and May receiving the lowest amount of . Humidity is around 70% every month.\nin Passo Fundo.|320x320px]]"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 83,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives northern Rio Grande do Sul location and the singer Teixeirinha's songs and film about the city but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "passo fundo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "passo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fundo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 30,
+    "place_id": "gn-4005539",
+    "input": {
+      "place": {
+        "place_id": "gn-4005539",
+        "name": "Guadalajara",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.67738,
+        "lon": -103.34749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadalajara",
+          "url": "https://en.wikipedia.org/wiki/Guadalajara",
+          "text": "Guadalajara ( GWAH-də-lə-HAR-ə, Spanish: [ɡwaðalaˈxaɾa] ) is the capital and most populous city of the western Mexican state of Jalisco, as well as the most densely populated municipality in Jalisco. According to the 2020 census, the city has a population of 1,385,629 people, making it the 8th most populous city in Mexico, while the Guadalajara metropolitan area has a population of 5,268,642, making it the third-largest metropolitan area in the country and the twenty-second largest metropolitan area in the Americas. Guadalajara has the second-highest population density in Mexico with over 10,361 people per km2, surpassed only by Mexico City. Within Mexico, Guadalajara is a center of business, arts and culture, technology and tourism; as well as the economic center of the Bajío region. It usually ranks among the 100 most productive and globally competitive cities in the world. It is home to numerous landmarks, including the Guadalajara Cathedral, Degollado Theatre, the Templo Expiatorio, the UNESCO World Heritage site Hospicio Cabañas, and the San Juan de Dios Market—the largest indoor market in Latin America.\nA settlement was established in the region of Guadalajara in early 1532 by Cristóbal de Oñate, a Basque conquistador in the expedition of Nuño Beltrán de Guzmán. The settlement was renamed and moved several times before assuming the name Guadalajara after the birthplace of Guzmán and ending up at its current location in the Atemajac Valley in 1542.  On November 8, 1539, the Holy Roman Emperor Charles V had granted a coat of arms and the title of city to the new town and established it as the capital of the Kingdom of Nueva Galicia, part of the Viceroyalty of New Spain. After 1572, the Royal Audiencia of Guadalajara, previously subordinate to Mexico City, became the only authority in New Spain with autonomy over Nueva Galicia, owing to rapidly growing wealth in the kingdom following the discovery of silver. By the 18th century, Guadalajara had taken its place as Mexico's second largest city, following mass colonial migrations in the 1720s and 1760s. During the Mexican War of Independence, independence leader Miguel Hidalgo y Costilla established Mexico's first revolutionary government in Guadalajara in 1810. The city flourished during the Porfiriato (1876–1911), with the advent of the Industrial Revolution, but its growth was hampered significantly during the Mexican Revolution (1910–1920). In 1929, the Cristero War ended within the confines of the city, when President Plutarco Elías Calles proclaimed the Grito de Guadalajara. The city saw continuous growth throughout the rest of the 20th century, attaining a metro population of 1 million in the 1960s and surpassing 3 million in the 1990s.\nGuadalajara is a Gamma+ global city, and one of Mexico's most important cultural centers. It is home to numerous mainstays of Mexican culture, including Mariachi, Tequila, and Birria and hosts numerous notable events, including the Guadalajara International Film Festival, one of the most important film festivals in Latin America, and the Guadalajara International Book Fair, the largest book fair in the Americas. The city was the American Capital of Culture in 2005 and has hosted numerous global events, including matches of the 1970, 1986, and 2026 FIFA World Cups, the 1st Ibero-American Summit in 1991, and the 2011 Pan American Games. The city is home to numerous universities and research institutions, including the University of Guadalajara and the Universidad Autónoma de Guadalajara, two of the highest-ranked universities in Mexico."
+        },
+        {
+          "article": "Guadalajara (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guadalajara#Climate",
+          "text": "Under the Köppen climate classification, Guadalajara has a humid subtropical climate (Cwa), a temperate climate that is quite close to a tropical climate, featuring dry warm winters and wet, mildly hot summers. Guadalajara's climate is influenced by its high altitude and the general seasonality of precipitation patterns in western North America.\nAlthough the temperature is warm year-round, Guadalajara has strong seasonal variation in precipitation. The northward movement of the Inter-Tropical Convergence Zone brings a great deal of rain in the summer months, whereas, for the rest of the year, the climate is rather dry, although daily rainfall records in each dry season month range from to . The extra moisture during the wet months moderates the temperatures, resulting in cooler days and nights during this period. The highest temperatures are usually reached in May averaging , but can reach up to just before the onset of monsoon season. March tends to be the driest month and July the wettest, with an average of of rain, over a quarter of the annual average of about .\nDuring the summer, afternoon storms are very common and can sometimes bring hail flurries to the city, especially toward late August or September. Winters are relatively warm despite the city's altitude, with January daytime temperatures reaching about and nighttime temperatures about . However, the outskirts of the city (generally those close to the Primavera Forest) experience on average cooler temperatures than the city itself. There, temperatures around can be recorded during the coldest nights. Frost may also occur during the coldest nights, but temperatures rarely fall below in the city, making it an uncommon phenomenon. Cold fronts in winter can sometimes bring light rain to the city for several days in a row. Snowfall is extraordinarily rare, with the last recorded one occurring in December 1997, which was the first time in 116 years, as it had previously last fallen in 1881."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 317,
+      "leadWords": 561,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Jalisco capital location, landmarks and history from 1532 settlement onward but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "guadalajara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 31,
+    "place_id": "gn-463829",
+    "input": {
+      "place": {
+        "place_id": "gn-463829",
+        "name": "Zelenograd",
+        "country": "Russia",
+        "subdivision": "Moscow",
+        "lat": 55.9825,
+        "lon": 37.18139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zelenograd",
+          "url": "https://en.wikipedia.org/wiki/Zelenograd",
+          "text": "Zelenograd (Russian: Зеленоград, IPA: [zʲɪlʲɪnɐˈgrat], lit. 'green city') is a city and administrative okrug of Moscow, Russia. The city of Zelenograd and the territory under its jurisdiction form the Zelenogradsky Administrative Okrug (ZelAO), an exclave located within Moscow Oblast, 37 kilometers (23 mi) north-west of central Moscow, along the M10 highway. Zelenograd is the smallest administrative okrug of Moscow by area, the second-lowest by population, and the largest Moscow exclave by area and by population within Moscow Oblast. Zelenograd, if it were a separate settlement, would be the fifth-largest city in Moscow Oblast and one of the 100 largest cities of Russia. Before the expansion of the territory of Moscow in 2012, Zelenograd occupied second place among the administrative okrugs of Moscow, second only to the Eastern Administrative Okrug, in terms of the share of greenery in its total area (approximately 30%).\n\nZelenograd was founded in 1958 as a new town in the Soviet Union, and developed as a center of electronics, microelectronics and the computer industry known as the \"Soviet/Russian Silicon Valley\". It remains an important center of electronics in Russia. The city color is green and its emblematic animal is the squirrel."
+        },
+        {
+          "article": "Zelenograd (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Zelenograd#Geography",
+          "text": "The Skhodnya River originates near the village of Alabushevo (one of settlements, which are under Zelenograd jurisdiction) and forms two ponds within the precincts of city—Small and Large City Pond.\nAdministrative divisions\nZelenogradsky Administrative Okrug is divided into five districts:\nMatushkino (), previously District #1: 1st, 2nd, and 4th microdistricts, North Industrial Zone\nSavyolki (), previously District #2: 3rd, 5th, 6th and 7th microdistricts, East Utility Zone, Nazar'evo village\nStaroye Kryukovo (), previously District #3: 8th and 9th microdistricts, South Industrial Zone, north part of Malino settlement\nSilino (), previously District #4: 10th, 11th, and 12th microdistricts, West and Alabushevo Industrial Zones\nKryukovo (): 14th-23rd microdistricts (21st one is scheduled only), Andreevka Utility Zone, Malino Industrial Zone, south part of Malino settlement, Kamenka, Kutuzovo, Novo-Malino, and Rozhki villages\nThe first four districts (about 2/3 area and population) are unofficially formed Old City, and Kryukovo District (separated by Saint Petersburg – Moscow Railway) is unofficially named New City. The most of postal address in city has no name of street or square—the most of buildings have only 3- or 4-digit number: the first one or two digits are number of microdistrict, the last two ones are number of building within microdistrict borders. There is no 13th microdistrict in Zelenograd."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 208,
+      "leadWords": 194,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Moscow exclave location 37 km north-west of central Moscow, 1958 founding and electronics industry, plus share of greenery, but no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zelenograd",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 32,
+    "place_id": "gn-1795940",
+    "input": {
+      "place": {
+        "place_id": "gn-1795940",
+        "name": "Shantou",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.35489,
+        "lon": 116.67876
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shantou",
+          "url": "https://en.wikipedia.org/wiki/Shantou",
+          "text": "Shantou, alternately romanized as Swatow and sometimes known as Santow, is a prefecture-level city on the eastern coast of Guangdong, China, with a total population of 5,502,031 as of the 2020 census (5,391,028 in 2010) and an administrative area of 2,248.39 square kilometres (868.11 sq mi). However, its built-up (or metro) area is much bigger with 12,543,024 inhabitants including Rongcheng and Jiedong districts, Jiexi county and Puning city in Jieyang plus all of Chaozhou city largely conurbated. This is de facto the 5th built-up area in mainland China between Hangzhou-Shaoxing (13,035,026 inhabitants), Xi'an-Xianyang (12,283,922 inhabitants) and Tianjin (11,165,706 inhabitants).\nShantou, a city significant in 19th-century Chinese history as one of the treaty ports established for Western trade and contact, was one of the original special economic zones of China established in the 1980s, but did not blossom in the manner that cities such as Shenzhen, Xiamen and Zhuhai did. However, it remains eastern Guangdong's economic centre, and is home to Shantou University, which is under the provincial Project 211 program in Guangdong."
+        },
+        {
+          "article": "Shantou (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Shantou#Climate",
+          "text": "Shantou has a monsoon-influenced humid subtropical climate (Köppen Cwa), with short, mild to warm winters, and long, hot, humid summers. Winter begins sunny and dry but becomes progressively wetter and cloudier. Spring is generally overcast, while summer brings the heaviest rains of the year though is much sunnier; there are 8.2 days annually with of rainfall. Autumn is sunny and dry. The monthly 24-hour average temperature ranges from in January to in July, and the annual mean is . The annual rainfall is around , about 60% of which occurs from May to August. With monthly percent possible sunshine ranging from 28% in March to 58% in July and October, the city receives 1,979 hours of bright sunshine annually. Extremes since 1951 have ranged from on 29 December 1991 (unofficial record of was set on 18 January 1893) to on 11 July and August 8, 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 146,
+      "leadWords": 172,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives eastern Guangdong coast location, treaty port history and 1980s special economic zone status but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "shantou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 33,
+    "place_id": "gn-3645213",
+    "input": {
+      "place": {
+        "place_id": "gn-3645213",
+        "name": "Coro",
+        "country": "Venezuela",
+        "subdivision": "Falcón",
+        "lat": 11.40769,
+        "lon": -69.67822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coro, Venezuela",
+          "url": "https://en.wikipedia.org/wiki/Coro,_Venezuela",
+          "text": "Coro is the capital of Falcón State and the second oldest city in Venezuela (after Cumaná). It was founded on July 26, 1527, by Juan de Ampíes as Santa Ana de Coro. It was historically known as Neu-Augsburg (from 1528 to 1546) by the German Welsers, and Coro by the Spanish colonizers and Venezuelans, the city and buildings were built during the Spanish Empire. It is established at the south of the Paraguaná Peninsula in a coastal plain, flanked by the Médanos de Coro National Park to the north and the Sierra de Coro to the south, at a few kilometers from its port (La Vela de Coro) in the Caribbean Sea at a point equidistant between the Ensenada de La Vela and Golfete de Coro.\nIt has a wide cultural tradition that comes from being the urban settlement founded by the Spanish conquerors who colonized the interior of the continent. As Neu-Augsburg, it was the first German colony in the Americas under the Welser family of Augsburg (from 1528 to 1546). It was then the first capital of the Spanish Captaincy General of Venezuela (1546–1578) and head of the first bishop founded in South America in 1531. The precursor movement of the independence and of vindication of the dominated classes in Venezuela originated in this region; it is also considered to be the cradle of the Venezuelan federalist movement in the republican era.\nThanks to the city's history, culture and its well-preserved Colonial architecture, \"Coro and its port La Vela\" was designated in 1993 as a World Heritage Site by UNESCO. Since 2005 it is on the UNESCO's List of World Heritage in Danger."
+        },
+        {
+          "article": "Coro, Venezuela (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Coro,_Venezuela#Climate",
+          "text": "Due to its extremely high potential evapotranspiration, Coro has a hot semi-arid climate (Köppen: BSh) despite receiving an average of approximately of rainfall per year over 50.1 precipitation days. Humidity remains at a similar level year-round. The highest rainfall occurs between October and December, while March is the driest month. The average temperature is , with minimum temperatures of and maximum . The city is sunny, averaging over 3100 hours of sunshine a year, with January being the sunniest month. Coro has never recorded a temperature below ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 88,
+      "leadWords": 275,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives coastal plain location south of the Paraguana Peninsula near the Caribbean Sea and colonial history from 1527 but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "coro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 34,
+    "place_id": "gn-2800866",
+    "input": {
+      "place": {
+        "place_id": "gn-2800866",
+        "name": "Brussels",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.85045,
+        "lon": 4.34878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brussels",
+          "url": "https://en.wikipedia.org/wiki/Brussels",
+          "text": "Brussels, officially the Brussels-Capital Region, is a region of Belgium comprising 19 municipalities, including the City of Brussels, which is the capital of Belgium. The Brussels-Capital Region is located in the central portion of the country. It is a part of both the French Community of Belgium and the Flemish Community, and is separate from the Flemish Region (Flanders), within which it forms an enclave, and the Walloon Region (Wallonia), located less than 4 km (2.5 mi) south.\nBrussels grew from a small rural settlement on the river Senne to become an important city-region in Europe. Since the end of the Second World War, it has been a major centre for international politics and home to numerous international organisations, politicians, diplomats and civil servants. Brussels is the de facto capital of the European Union, as it hosts a number of principal EU institutions, including its administrative-legislative, executive-political, and legislative branches (though the judicial branch is located in Luxembourg, and the European Parliament meets for a minority of the year in Strasbourg). Because of this, its name is sometimes used metonymically to describe the EU and its institutions. The secretariat of the Benelux and the headquarters of NATO are also located in Brussels.\nBrussels is the most densely populated region in Belgium, and although it has the highest GDP per capita, it has the lowest disposable household income. The Brussels Region covers 162 km2 (63 sq mi) and has a population of over 1.2 million. Its five times larger metropolitan area comprises over 2.5 million people, which makes it the largest in Belgium. It is also part of a large diamond-shaped conurbation, extending towards the cities of Ghent, Antwerp and Leuven, as well as the province of Walloon Brabant, in total home to over 5 million people. As Belgium's economic capital and a top financial centre in Western Europe with Euronext Brussels, Brussels is classified as an Alpha- global city. It is also a national and international hub for rail, road and air traffic, and is sometimes considered, together with Belgium, as Europe's geographic, economic and cultural crossroads. The Brussels Metro is the only rapid transit system in Belgium. In addition, both its airport and railway stations are the busiest in the country.\nHistorically Dutch-speaking, Brussels saw a language shift to French from the late 19th century. Since its creation in 1989, the Brussels-Capital Region has been officially bilingual in French and Dutch, although French is the majority language and lingua franca. Brussels is also increasingly becoming multilingual. English is spoken widely and many migrants and expatriates speak other languages as well. The Region is governed by the Dilliès government, a broad bilingual coalition of seven parties.\nBrussels is known for its cuisine and gastronomic offer (including its local waffle, its chocolate, its French fries and its numerous types of beers), as well as its historical and architectural landmarks; some of them are registered as UNESCO World Heritage Sites. Principal attractions include its historic Grand-Place/Grote Markt (main square), Manneken Pis, the Atomium, and cultural institutions such as La Monnaie/De Munt and the Museums of Art and History. Due to its long tradition of Belgian comics, Brussels is also hailed as a capital of the comic strip."
+        },
+        {
+          "article": "Brussels (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Brussels#Climate",
+          "text": "Brussels experiences an oceanic climate (Köppen: Cfb) with warm summers and cool winters. Proximity to coastal areas influences the area's climate by sending marine air masses from the Atlantic Ocean. Nearby wetlands also ensure a maritime temperate climate. On average (based on measurements in the period 1981–2010), there are approximately 135 days of rain per year in the Brussels-Capital Region. Snowfall is infrequent, averaging 17 days per year. The city also often experiences violent thunderstorms in the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 79,
+      "leadWords": 535,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives central Belgium location on the river Senne, EU and NATO role, language history and landmarks but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "brussels",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 35,
+    "place_id": "gn-3173331",
+    "input": {
+      "place": {
+        "place_id": "gn-3173331",
+        "name": "Modena",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.64783,
+        "lon": 10.92539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Modena",
+          "url": "https://en.wikipedia.org/wiki/Modena",
+          "text": "Modena (UK: , US: ; Italian: [ˈmɔːdena] ; Modenese: Mòdna [ˈmɔdnɐ]; Etruscan: Mutna; Latin: Mutina) is a city and comune (municipality) on the south side of the Po Valley, in the Province of Modena, in the region of Emilia-Romagna in northern Italy. With a population of 184,361 as of 2026, it is the 20th-largest city in Italy.\nA town, and seat of an archbishop, it is known for its car industry since the factories of the famous Italian upper-class sports car makers Ferrari, De Tomaso, Lamborghini, Pagani and Maserati are, or were, located there and all, except Lamborghini, (having their factory in Sant'Agata Bolognese), have headquarters in the city or nearby. One of Ferrari's cars, the 360 Modena, was named after the town itself. Ferrari's production plant and Formula One team Scuderia Ferrari are based in Maranello south of the city.\nThe University of Modena, founded in 1175 and expanded by Francesco II d'Este in 1686, focuses on economics, medicine and law, and is the second oldest athenaeum in Italy. Italian military officers are trained at the Military Academy of Modena, and partly housed in the Baroque Ducal Palace. The Biblioteca Estense houses historical volumes and 3,000 manuscripts. The Cathedral of Modena, the Torre della Ghirlandina and Piazza Grande are a UNESCO World Heritage Site since 1997. Modena is also known in culinary circles for its production of balsamic vinegar.\nFamous Modenesi include Mary of Modena, the Queen consort of England and Scotland; operatic tenor Luciano Pavarotti and soprano Mirella Freni, born in Modena itself; Enzo Ferrari, eponymous founder of the Ferrari motor company; Catholic priest Gabriele Amorth; chef Massimo Bottura; comics artist Franco Bonvicini; the band Modena City Ramblers and singer-songwriter Francesco Guccini, who lived here for several decades."
+        },
+        {
+          "article": "Modena (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Modena#Climate",
+          "text": "Modena has a humid subtropical climate, with continental influences. It has an average annual precipitation of . Summers are hot and winters are cool, with snowfall. This climate is described by the Köppen climate classification as Cfa."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 37,
+      "leadWords": 290,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Po Valley location in northern Italy, car industry, university, cathedral and balsamic vinegar but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "modena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 36,
+    "place_id": "gn-3448439",
+    "input": {
+      "place": {
+        "place_id": "gn-3448439",
+        "name": "São Paulo",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.5475,
+        "lon": -46.63611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Paulo",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo",
+          "text": "São Paulo (; Portuguese: [sɐ̃w ˈpawlu] ; Portuguese for 'Saint Paul') is the capital and largest city of the state of São Paulo. The largest city in Brazil, it is also the most populous city in South America, the Americas, and in both the Western and Southern Hemispheres. The city exerts international influence in commerce, finance, culture, gastronomy, arts, fashion, technology, entertainment and media, having been listed by UNESCO's Creative Cities Network as a \"City of Film\" and the title of \"World Capital of Gastronomy\", and by the Globalization and World Cities Research Network (GaWC) as an alpha global city. It is the largest urban area by population outside Asia and the most populous Portuguese-speaking city in the world. The city is named after Paul the Apostle and people from the capital city are known as paulistanos (while paulistas refers to people from the state of São Paulo more generally). \nFounded in 1554 by Jesuit priests, São Paulo is one of the oldest continuously inhabited cities on the American continents. It played a strategic role during the Brazilian colonial period, serving as the center and starting point for the expeditions of the Paulista bandeirantes (pioneers) settlers for the territorial and economic expansion of the country; however, its economic opulence was consolidated during the Brazilian coffee cycle in the mid-19th century. From that period onward, it became the stage for landmark events in Brazilian history, such as the Cry of Ipiranga, the Modern Art Week, the 1932 Revolution, and the Diretas Já (Direct Elections Now) movement. In the 20th century, industrialisation consolidated its role as the main national economic hub, which made the city a cosmopolitan melting pot, home to the largest Arab, Italian, and Japanese diasporas in the world, with ethnic enclaves like Bixiga, Bom Retiro, and Liberdade, and people from more than 200 other countries. The city's metropolitan area, Greater São Paulo, is home to more than 20 million inhabitants and ranks as the most populous in Brazil and one of the most populous in the world. The process of conurbation between the metropolitan areas around Greater São Paulo also created the São Paulo Macrometropolis, the first megalopolis in the Southern Hemisphere, with more than 30 million inhabitants.\nSão Paulo is the largest urban economy in Latin America and one of the world's major financial centres, representing around 10% of the Brazilian GDP and just over a third of São Paulo state's GDP (the only Brazilian city to surpass the 1 trillion reais mark in GDP). The city is the headquarters of B3, the largest stock exchange of Latin America by market capitalization, and has several financial districts, mainly in the areas around Paulista, Faria Lima and Berrini avenues. Home to 63% of established multinationals in Brazil and the source of around one third of the Brazilian scientific production, São Paulo is among the top 50 science and technology clusters in the world. Its main university, the University of São Paulo, is often considered the best in Brazil and Latin America, while the city is regularly ranked as one of the best cities in the world to be a university student in the QS World University Rankings. The metropolis is also home to several of the tallest skyscrapers in Brazil, including the Alto das Nações, Platina 220, Figueira Altos do Tatuapé, Mirante do Vale, Edifício Itália, Altino Arantes Building, North Tower and many others. It is the state capital with the best basic sanitation, the second-most developed, according to the FIRJAN Municipal Development Index (2025), the sixth in the Social Progress Index (IPS) in Brazil, and the ninth most wooded in the country, which earned it the international titles of \"Tree City of the World\" from the United Nations (UN) and \"Ibero-American Green Capital\", in addition to recognition from Guinness World Records for the \"largest food security program in the world\".\nThe place of origin and/or disseminator of countless artistic, cultural, and gastronomic expressions, such as the caipira culture and cuisine, sertanejo music, Brazilian hip-hop and rock, and samba paulista, and the culinary matrix of creations like bauru, beirute, calabresa, coxinha, dadinho, parmegiana, pastel de feira, and picanha, the city is one of the main cultural, gastronomic, and entertainment hubs in the world. It is home to monuments, parks, and museums, such as the Latin American Memorial, Ibirapuera Park, São Paulo Museum of Art, Pinacoteca, Cinemateca, Itaú Cultural, Museum of Ipiranga, Catavento Museum, Football Museum, Museum of the Portuguese Language, and the Museum of Image and Sound. São Paulo also holds notable cultural events like the São Paulo Art Biennial, São Paulo Fashion Week, Lollapalooza, Primavera Sound, Comic Con Experience and the São Paulo Gay Pride Parade, the largest LGBT event in the world. São Paulo has also hosted many sporting events such as the 1950 and 2014 FIFA World Cups, the 1963 Pan American Games, the São Paulo Indy 300 and the NFL Brazil Games, in addition to hosting the annual Brazilian Grand Prix of Formula One and the Saint Silvester Road Race."
+        },
+        {
+          "article": "São Paulo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo#Climate",
+          "text": "incidents amongst Brazilian state capitals ]]\nThe climate of São Paulo is characterised as humid subtropical climate (Köppen: Cfa, bordering on Cwa). In summer (January through March), the mean low temperature is about and the mean high temperature is near . In winter, temperatures tend to range between . The record high temperature was on 17 October 2014 and the lowest on 25 June 1918. The highest accumulated rainfall in 24 hours was on December 21, 1988, followed by on January 25, 2025, and on May 25, 2005. The summer is hot and rainy. Autumn and spring are transitional seasons. Winter is mild, but still the coldest season, with cloudiness around town and frequent polar air masses. Frosts occur sporadically in regions further away from the center, in some winters throughout the city.\nRainfall is abundant, annually averaging . It is especially common in the warmer months averaging in January and decreases in winter, averaging . Neither São Paulo nor the nearby coast has ever been hit by a tropical cyclone and tornadic activity is uncommon. During late winter, especially August, the city experiences the phenomenon known as \"veranico\" or \"verãozinho\" (\"little summer\"), which consists of hot and dry weather, sometimes reaching temperatures well above .\nRelatively cool summer days are fairly common when persistent winds blow from the ocean, with daily highs sometimes remaining below 20 °C (68 °F) and lows often falling below 15 °C (59 °F). Conversely, spring and summer can become extremely hot during heat waves, with temperatures reaching around 34 °C (93 °F). In areas with a higher density of skyscrapers and less tree cover, such as Paulista Avenue, temperatures can feel as high as 39 °C (102 °F). During the summer of 2014, São Paulo experienced a heat wave lasting nearly four weeks, with temperatures exceeding 30 °C (86 °F) and peaking at 36 °C (97 °F). Driven in part by deforestation, groundwater pollution, and climate change, the city is increasingly susceptible to drought and water scarcity."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 333,
+      "leadWords": 835,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Brazil's largest city status, 1554 Jesuit founding, coffee cycle, industry and cultural events but contains no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sao paulo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paulo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 38,
+    "place_id": "gn-1226260",
+    "input": {
+      "place": {
+        "place_id": "gn-1226260",
+        "name": "Trincomalee",
+        "country": "Sri Lanka",
+        "subdivision": "Eastern Province",
+        "lat": 8.5778,
+        "lon": 81.2289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trincomalee",
+          "url": "https://en.wikipedia.org/wiki/Trincomalee",
+          "text": "Trincomalee (English: ; Tamil: திருக்கோணமலை, romanized: Tirukkōṇamalai, IPA: [t̪iɾukːoːɳɐmɐlɛi̯]; Sinhala: ත්‍රිකුණාමළය, romanized: Trikuṇāmaḷaya, IPA: [t̪rikunaːmələjə]), also known historically as Gokanna and Gokarna, is the administrative headquarters of the Trincomalee District and major resort port city of Eastern Province, Sri Lanka. Located on the east coast of the island overlooking the Trincomalee Harbour, Trincomalee has been one of the main centres of Sri Lankan Tamil speaking culture on the island for nearly a millennium. With a population of 99,135, the city is built on a peninsula of the same name, which divides its inner and outer harbours. It is home to the famous Koneswaram temple from where it developed and earned its historic Tamil name Thirukonamalai. The town is home to other historical monuments such as the Bhadrakali Amman Temple, Trincomalee, the Trincomalee Hindu Cultural Hall and, opened in 1897, the Trincomalee Hindu College. Trincomalee is also the site of the Trincomalee railway station and an ancient ferry service to Jaffna and the south side of the harbour at Muttur.\nTrincomalee was made into a fortified port town following the Portuguese conquest of the Jaffna kingdom, changing hands between the Danish in 1620, the Dutch, the French following a battle of the American Revolutionary War and the British in 1795, being absorbed into the British Ceylon state in 1815. The city's architecture shows some of the best examples of interaction between native and European styles. Attacked by the Japanese as part of the Indian Ocean raid during World War II in 1942, the city and district were affected after Sri Lanka gained independence in 1948, when the political relationship between Tamil and Sinhalese people deteriorated, erupting into civil war. It is home to major naval and air force bases at the Trincomalee Garrison. The city also has the largest Dutch fort on the island.\nThe Trincomalee Bay, bridged by the Mahavilli Ganga River to the south, the historical \"Gokarna\" in Sanskrit, means \"Cow's Ear\", akin to other sites of Siva worship across the Indian subcontinent. Uniquely, Trincomalee is a Pancha Ishwaram, a Paadal Petra Sthalam, a Maha Shakta pitha and Murugan Tiruppadai of Sri Lanka; its sacred status to the Hindus has led to it being declared \"Dakshina-Then Kailasam\" or \"Mount Kailash of the South\" and the \"Rome of the Pagans of the Orient\". The harbour is renowned for its large size and security; unlike any other in the Indian Ocean, it is accessible in all weathers to all craft. It has been described as the \"finest harbour in the world\" and by the British, \"the most valuable colonial possession on the globe, as giving to our Indian Empire a security which it had not enjoyed from elsewhere\"."
+        },
+        {
+          "article": "Trincomalee (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Trincomalee#Climate",
+          "text": "Trincomalee features a tropical wet and dry climate (As) under the Köppen climate classification. The city features a dry season from April through August and a wet season for the remainder of the year. The city sees on average roughly of precipitation annually. Average temperatures in Trincomalee range from around in December and January to approximately during the warmest months of the year from April through September. Extreme temperatures in the city range from on 9 December 2022 to on 13 May 1890."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 83,
+      "leadWords": 447,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives east coast Sri Lanka port location, temple and harbour history; its statement that the harbour is accessible in all weathers describes harbour security, not a place climate mechanism, extreme, paradox or seasonal rhythm",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "trincomalee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 40,
+    "place_id": "gn-1690039",
+    "input": {
+      "place": {
+        "place_id": "gn-1690039",
+        "name": "San Fernando",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.03425,
+        "lon": 120.68445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fernando, Pampanga",
+          "url": "https://en.wikipedia.org/wiki/San_Fernando,_Pampanga",
+          "text": "San Fernando, officially the City of San Fernando (Kapampangan: Ciudad/Lakanbalen ning San Fernandu; Filipino: Lungsod ng San Fernando), is a component city and capital of the province of Pampanga, Philippines. According to the 2024 census, it has a population of 377,534 people.\nThe city is named after King Ferdinand VI of Spain and placed under the patronage of Saint Ferdinand III of Castile and León, whose feast is celebrated every May 30. Popularly known as the \"Christmas Capital of the Philippines\", the city holds the annual Giant Lantern Festival every December where large parol are displayed in competition. CNN has hailed the city as 'Asia's Christmas capital'.\nThe city is known as the birthplace of José Abad Santos, the 5th chief justice of the Supreme Court of the Philippines and briefly served as the acting president of the Commonwealth of the Philippines during World War II.\nIt is one of the two provincial capital cities named San Fernando, the other being San Fernando, La Union in Ilocos Region."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 168,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Pampanga capital status, naming after King Ferdinand VI, Giant Lantern Festival every December and a famous chief justice, but no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san fernando",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 41,
+    "place_id": "gn-2038632",
+    "input": {
+      "place": {
+        "place_id": "gn-2038632",
+        "name": "Anshan",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.12361,
+        "lon": 122.99
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anshan",
+          "url": "https://en.wikipedia.org/wiki/Anshan",
+          "text": "Anshan (Chinese: 鞍山; pinyin: Ānshān) is an inland prefecture-level city in central-southeast Liaoning province, People's Republic of China, about 92 kilometres (57 mi) south of the provincial capital Shenyang. As of the 2020 census, it was Liaoning's third most populous city with a population of 3,325,372 people, over an area of about 9,270 km2 (3,580 sq mi) spanning 133 km (83 mi) from east to west. Its built-up area encompassing the 4 Anshan urban districts (1,543,696 inhabitants), the 4 out of 5 urban Liaoyang districts (796,962 inhabitants, Gongchangling not being conurbated yet) and Liaoyang county largely being conurbated, was home to 2,712,789 inhabitants in 2020.\nThe city's name came from the horse saddle-like shape of a nearby mountain south of the city, which can be seen on the left (west) about five minutes before the northbound train arrives at Anshan railway station.  Anshan is home to the Anshan Iron and Steel Group, one of the largest steel producers in China.  Anshan is sister city with Sheffield, United Kingdom.\nAnshan holds one-third of the world's supply of talcum and a quarter of the world's reserves of magnesite.  Anshan also produced the largest ever jade stone, now a local tourist attraction carved as a Buddha statue."
+        },
+        {
+          "article": "Anshan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Anshan#Climate",
+          "text": "Anshan has a monsoon-influenced humid continental climate (Köppen Dwa) characterised by hot, humid summers, due to the monsoon, and rather long, cold, and arid winters, due to the Siberian anticyclone. The four seasons here are distinctive. Nearly half of the annual rainfall occurs in July and August. The monthly 24-hour average temperatures ranges from in January to in July, while the annual mean is . Sunshine is generous and amounts to 2,595.4 hours annually, while relative humidity averages 55%, ranging from 44% in April to 71% in July and August. Extreme temperatures have ranged from up to ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 98,
+      "leadWords": 204,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives inland central-southeast Liaoning location south of Shenyang, steel industry, talc and magnesite reserves and a giant jade stone, but no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "anshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 42,
+    "place_id": "gn-3168070",
+    "input": {
+      "place": {
+        "place_id": "gn-3168070",
+        "name": "San Marino",
+        "country": "San Marino",
+        "subdivision": "San Marino",
+        "lat": 43.93667,
+        "lon": 12.44639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Marino",
+          "url": "https://en.wikipedia.org/wiki/San_Marino",
+          "text": "San Marino, officially the Republic of San Marino, is a landlocked country in Southern Europe, completely surrounded by Italy. Located on the northeastern slopes of the Apennine Mountains, it is the larger of two microstates within the Italian Peninsula, the other being Vatican City. San Marino is the fifth-smallest country in the world, with a land area of just over 61 square kilometres (24 sq mi) and a population of 34,042 as of 2025 which in 2026 dropped to 33,559. Its capital, the City of San Marino, sits atop Monte Titano, while its largest settlement is Dogana, in the municipality of Serravalle. San Marino claims to have been founded in AD 301 and to be the oldest extant sovereign state, and the oldest constitutional republic. It is named after Saint Marinus, a legendary stonemason from the Roman island of Rab (in present-day Croatia), who is said to have fled persecution under Emperor Diocletian to have established a monastic community on Monte Titano, where he built a small chapel. The country has a rare constitutional structure: the Grand and General Council, a democratically elected legislature, selects two heads of state, the Captains Regent, every six months. They are chosen from opposing political parties, and serve concurrently with equal powers and preside over several institutions of state, including the Grand and General Council. Only the Federal Council of Switzerland follows this same structure, except with some modifications due to its immensely larger size.   \nSan Marino is a member of the Council of Europe and uses the euro as its official currency, but is not part of the European Union. The official language is Italian, although the traditional regiolect is Sammarinese, a dialect of Romagnol. Its economy is based on finance, industry, services, retail, and tourism, and it ranks among the wealthiest countries in the world by GDP (PPP) per capita. It hosts the Parliamentary Assembly of the Mediterranean. San Marino was also the first currently-existing state to abolish the death penalty (in 1865), although it had not actually been used since the 1400s.  In 2025 San Marino was ranked 29th on the Human Development Index."
+        },
+        {
+          "article": "San Marino (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/San_Marino#Climate",
+          "text": "San Marino has a humid subtropical climate (Köppen climate classification: Cfa), with some continental influences. It has warm to hot summers and cool winters, typical of inland areas of the central Italian Peninsula. Precipitation is scattered throughout the year with no real dry month. Snowfalls are common and heavy almost every winter, especially above of elevation."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 56,
+      "leadWords": 353,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives landlocked Southern Europe location surrounded by Italy on the Apennine slopes, AD 301 founding claim and Captains Regent system, but no climate mechanism, extreme, paradox, seasonal rhythm or weather record",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san marino",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marino",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 43,
+    "place_id": "gn-1486209",
+    "input": {
+      "place": {
+        "place_id": "gn-1486209",
+        "name": "Yekaterinburg",
+        "country": "Russia",
+        "subdivision": "Sverdlovsk Oblast",
+        "lat": 56.85733,
+        "lon": 60.61529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yekaterinburg",
+          "url": "https://en.wikipedia.org/wiki/Yekaterinburg",
+          "text": "Yekaterinburg, alternatively romanized as Ekaterinburg and formerly known as Sverdlovsk (1924–1991), is a city and the administrative centre of Sverdlovsk Oblast and the Ural Federal District, Russia. The city is located on the Iset River between the Volga-Ural region and Siberia, with a population of roughly 1.5 million residents, up to 2.2 million residents in the urban agglomeration. Yekaterinburg is the fourth most populous city in Russia, the largest city in the Ural Federal District, and one of Russia's main cultural and industrial centres. Yekaterinburg has been dubbed the \"third capital of Russia\", as it is ranked third by the size of its economy, culture, transportation and tourism, behind Moscow and Saint Petersburg.\nYekaterinburg was founded on 18 November 1723 and named after the Orthodox name of Catherine I – Russian: Екатерина I, romanized: Yekaterina I – , the wife of Russian Emperor Peter the Great. The city served as the mining capital of the Russian Empire as well as a strategic connection between Europe and Asia. In 1781, Catherine the Great gave Yekaterinburg the status of a district town of Perm Province, and built the historical Siberian Route through the city. Yekaterinburg became a key city to Siberia, which had rich resources. \nIn the late 19th century, Yekaterinburg became one of the centres of revolutionary movements in the Urals. During the Russian Civil War, it was the site of the murder of the Romanov family. In 1924, after the Russian SFSR founded the Soviet Union, the city was renamed Sverdlovsk after the Bolshevik leader Yakov Sverdlov. During the Soviet era, a tram network was completed in 1929 and Sverdlovsk and its surroundings were turned into a heavy industry powerhouse. The Sverdlovsk Metro opened in April 1991, and in September 1991 the city returned to its historical name.\nYekaterinburg is one of Russia's most important economic centres and was one of the host cities of the 2018 FIFA World Cup. In the 21st century, the city has experienced an economic and population boom, which resulted in some of the tallest skyscrapers of Russia being located in the city. Yekaterinburg is home to the headquarters of the Central Military District of the Russian Armed Forces, as well as the presidium of the Ural Branch of the Russian Academy of Sciences.\nYekaterinburg is famous for its constructivist architecture, and is also considered the \"Russian capital of street art\"."
+        },
+        {
+          "article": "Yekaterinburg (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Yekaterinburg#Climate",
+          "text": "The city possesses a humid continental climate (Dfb) under the Köppen climate classification, featuring warm summers and cold winters. It is characterised by sharp variability in weather conditions, with well-marked seasons. The Ural Mountains, despite their insignificant height, block air from the west, from the European part of Russia. As a result, the Central Urals are open to the invasion of cold arctic air and continental air from the West Siberian Plain. Equally, warm air masses from the Caspian Sea and the deserts of Central Asia can freely penetrate from the south. Therefore, the weather in Yekaterinburg is characterised by sharp temperature fluctuations and weather anomalies: in winter, from frost at −40 °C to thaw and rain; in summer, from frosts to temperatures above .\nВремя_года_(весна).jpg|Spring in Yekaterinburg\nВремя_года_(лето).jpg|Summer in Yekaterinburg\nВремя_года_(осень).jpg|Autumn in Yekaterinburg\nВремя_года_(зима).jpg|Winter in Yekaterinburg\nThe distribution of precipitation is determined by the circulation of air masses, relief, and air temperatures. The main part of the precipitation is brought by cyclones with a western air mass transfer, that is, from the European part of Russia, while their average annual amount is 601 mm. The maximum falls on a warm season, during which about 60–70% of the annual amount falls. For the winter period is characterized by snow cover with an average capacity of 40–50 cm. The aridity index is equal to 1.\nThe average temperature in January is . The record minimum temperature is (6 January 1915);\nThe average July temperature is . The record maximum temperature is (11 July 2023);\nThe average annual temperature is ;\nThe average annual wind speed is ;\nThe average annual humidity is 75%;\nThe average annual precipitation is ;"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 278,
+      "leadWords": 396,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location on the Iset River between the Volga-Ural region and Siberia but states no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "yekaterinburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 44,
+    "place_id": "gn-5811696",
+    "input": {
+      "place": {
+        "place_id": "gn-5811696",
+        "name": "Spokane",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.65966,
+        "lon": -117.42908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spokane, Washington",
+          "url": "https://en.wikipedia.org/wiki/Spokane,_Washington",
+          "text": "Spokane (  spoh-KAN; Spokane: sƛ̓x̌etkʷ) is a city in and the county seat of Spokane County in the U.S. state of Washington. It lies along the Spokane River, adjacent to the Selkirk Mountains and west of the Rocky Mountain foothills, 110 miles (180 km) south of the Canadian border, twenty miles (30 km) west of the Idaho state line, 279 miles (449 km) southwest of Calgary, and 280 miles (450 km) east of Seattle, via I-90.\nSpokane is the most populous city in eastern Washington and the second-most populous city in all of Washington (after Seattle), with a population of 228,989 at the 2020 census, while the Spokane metropolitan area has an estimated 605,000 residents.\nSpokane is the economic and cultural center of the Inland Northwest. It is known as the birthplace of Father's Day, and locally by the nickname of \"Lilac City\". Officially, Spokane goes by the nickname of Hooptown USA, due to Spokane's annual hosting of the Spokane Hoopfest, the world's largest 3-on-3 basketball tournament. The city and the wider Inland Northwest area are served by Spokane International Airport, 5 miles (8 km) west of Downtown Spokane, which is located near another airfield at Fairchild Air Force Base.\nThe first people to live in the area, the Spokane tribe (their name meaning \"children of the sun\" in Salishan), lived off plentiful game. David Thompson explored the area with the westward expansion and establishment of the North West Company's Spokane House in 1810. This trading post was the first long-term European settlement in Washington. Completion of the Northern Pacific Railway in 1881 brought many settlers from America to the Spokane area. The same year it was officially incorporated as a city under the name of Spokane Falls (it was re-incorporated under its current name ten years later). In the late 19th century, gold and silver were discovered in the Inland Northwest. The local economy depended on mining, timber, and agriculture until the 1980s. Spokane hosted the first environmentally themed World's fair at Expo '74.\nMany of the downtown area's older Romanesque Revival-style buildings were designed by architect Kirtland Cutter after the Great Spokane Fire of 1889, which damaged much of the downtown commercial district. The city is also home to the Riverfront and Manito parks, the Smithsonian-affiliated Northwest Museum of Arts and Culture, the Davenport Hotel, and the Fox and Bing Crosby theaters. The Cathedral of Our Lady of Lourdes is the seat of the Roman Catholic Diocese of Spokane, and the Cathedral of St. John the Evangelist serves as that of the Episcopal Diocese of Spokane. The Spokane Washington Temple in the east of the county serves the Church of Jesus Christ of Latter-day Saints. Gonzaga University was established in 1887 by the Jesuits, and the private Presbyterian Whitworth University was founded three years later and moved to north Spokane in 1914.\nIn sports, the region's professional and semi-professional sports teams include the Spokane Indians in Minor League Baseball, the Spokane Chiefs in the Western Hockey League, the Spokane Velocity in USL League One, and a women's first division team Spokane Zephyr FC in USL Super League. The Gonzaga Bulldogs collegiate basketball team competes at the Division I level. As of 2010, Spokane's major daily newspaper, The Spokesman-Review, had a daily circulation of over 76,000."
+        },
+        {
+          "article": "Spokane, Washington (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Spokane,_Washington#Climate",
+          "text": "from wildfire smoke and Rayleigh scattering]]\nSpokane has a warm-summer humid continental climate (Dsb under the Köppen classification), a rare climate due to its elevation and significant winter precipitation; Spokane, however, is adjacent to and sometimes even classified as a warm-summer Mediterranean climate (Csb) because the average temperature for the coldest month is over ,\nThe area typically has a warm, arid climate during the summer months, bracketed by short spring and fall seasons. On average, the warmest month is July and the coolest month is December; July averages , while December averages . As a result of the rain shadow effect of the Cascades, the Spokane area has average annual precipitation, less than half of Seattle's . Precipitation peaks in December, and summer is the driest time of the year. The Rockies shield Spokane from some of the winter season's coldest air masses traveling southward across Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 148,
+      "leadWords": 547,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river, mountain and border geography with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "spokane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

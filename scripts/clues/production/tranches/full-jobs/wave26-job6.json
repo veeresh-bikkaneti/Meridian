@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 5140,
+    "attempt": 5101,
+    "place_id": "gn-5126246",
+    "input": {
+      "place": {
+        "place_id": "gn-5126246",
+        "name": "Mattydale",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.09784,
+        "lon": -76.1452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mattydale, New York",
+          "url": "https://en.wikipedia.org/wiki/Mattydale,_New_York",
+          "text": "Mattydale is a hamlet (and census-designated place) in Onondaga County, New York, United States. As of the 2020 census, Mattydale had a population of 6,296.\nMattydale is a community in the northeast part of the town of Salina and is a northern suburb of Syracuse.\nMattydale was named for the farm of Frank Matty.\nAlthough born in nearby Chittenango, New York, Wizard of Oz author L. Frank Baum spent much of his childhood on the site of Roxboro Road Middle School. He later moved to the Sports-O-Rama roller rink site on the first plank road in the country known as Route 11.  Freethought Trail says, \"The yellowish hemlock wood of the plank road may have been an inspiration for the Yellow Brick Road\".  A vacant lot since the Sports-O-Rama skating rink was torn down in 2015, the site previously featured two roadhouses after the Baum family residence. Built in succession following fires, the last roadhouse/hotel succumbed to blazes in 1957 and the final fire in 1958."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "mattydale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5141,
+    "attempt": 5102,
+    "place_id": "gn-5155207",
+    "input": {
+      "place": {
+        "place_id": "gn-5155207",
+        "name": "Fremont",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.35033,
+        "lon": -83.12186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fremont, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Fremont,_Ohio",
+          "text": "Fremont is a city in Sandusky County, Ohio, United States, and its county seat. It is located along the Sandusky River about 35 miles (56 km) southeast of Toledo and 25 miles (40 km) west of Sandusky. The population was 15,930 at the 2020 census.\nThe city was the home of Rutherford B. Hayes, who served as President of the United States from 1877 to 1881. The Rutherford B. Hayes Presidential Center was the first presidential library and is one of the focal points of the city. The National Arbor Day Foundation has designated Fremont as a Tree City USA since 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "fremont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5142,
+    "attempt": 5103,
+    "place_id": "gn-5527953",
+    "input": {
+      "place": {
+        "place_id": "gn-5527953",
+        "name": "Pampa",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 35.53616,
+        "lon": -100.95987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pampa, Texas",
+          "url": "https://en.wikipedia.org/wiki/Pampa,_Texas",
+          "text": "Pampa (from the Quechua: pampa, meaning \"plain\") is a city in Gray County, Texas, United States. Its population was 16,867 as of the 2020 census. Pampa is the county seat of Gray County and is the principal city of the Pampa micropolitan statistical area, which includes both Gray and Roberts Counties. Pampa is named after the Pampas Lowlands in Argentina, Uruguay, and southern Brazil.\nEach year in August, Pampa hosts the Top o' Texas Rodeo, which brings competitors from Texas and the surrounding states to Gray County. The White Deer Land Company Museum, which showcases ranching exhibits, is located in downtown Pampa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "pampa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5143,
+    "attempt": 5104,
+    "place_id": "gn-6145668",
+    "input": {
+      "place": {
+        "place_id": "gn-6145668",
+        "name": "Shediac",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.21981,
+        "lon": -64.54107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shediac",
+          "url": "https://en.wikipedia.org/wiki/Shediac",
+          "text": "Shediac (official name in both French and English; Shédiac is colloquial French) is a town in Westmorland County, New Brunswick known as the \"Lobster Capital of the World\". It hosts an annual festival every July which promotes its ties to lobster fishing. At the western entrance to the town is a 90-ton sculpture called The World's Largest Lobster. It is believed that chiac, a well-known Acadian French patois, was named after Shediac.\nSince its founding it has expanded several times, most recently in 2023, when it annexed all or part of four local service districts. Revised census figures have not been released. In modern times, the town has been described as an extended suburb of Moncton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "shediac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5144,
+    "attempt": 5105,
+    "place_id": "gn-667091",
+    "input": {
+      "place": {
+        "place_id": "gn-667091",
+        "name": "Sinaia",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.35,
+        "lon": 25.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sinaia",
+          "url": "https://en.wikipedia.org/wiki/Sinaia",
+          "text": "Sinaia (Romanian pronunciation: [siˈnaja]) is a town and a mountain resort in Prahova County, Romania. It is situated in the historical region of Muntenia. The town was named after the Sinaia Monastery of 1695, around which it was built. The monastery, in turn, is named after the Biblical Mount Sinai. King Carol I of Romania also built his summer residence, Peleș Castle, in Sinaia in the late nineteenth century.\nSinaia is about 65 kilometres (40 miles) northwest of Ploiești and 48 kilometres (30 miles) south of Brașov, in a mountainous area on the Prahova River valley, just east of the Bucegi Mountains. The town's altitude varies between 767 to 860 metres (2,516 to 2,822 feet) above sea level.\nThe city is a popular destination for hiking and winter sports, especially downhill skiing. Among the tourist landmarks, the most important are Peleș Castle, Pelișor Castle, Sinaia Monastery, Sinaia Casino, Sinaia train station, and the Franz Joseph and Saint Anne Cliffs. Sinaia was also the summer residence of the Romanian composer George Enescu, who stayed at the Luminiș villa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "sinaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5145,
+    "attempt": 5106,
+    "place_id": "gn-1262073",
+    "input": {
+      "place": {
+        "place_id": "gn-1262073",
+        "name": "Naldurg",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 17.81667,
+        "lon": 76.28182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naldurg",
+          "url": "https://en.wikipedia.org/wiki/Naldurg",
+          "text": "Naldurg is a historic city and municipal council located in the Dharashiv district of the state of Maharashtra, India. It is known for its prominent Naldurg Fort, one of the most impressive medieval forts in the region, built during the Bahmani and Adil Shahi periods. Situated near the confluence of the Bori river, Naldurg holds strategic and historical significance due to its fortifications, architecture, and cultural heritage. The city serves as a local administrative and commercial hub, with agriculture and small-scale industries forming the backbone of its economy. It is well-connected to major cities like Solapur and Dharashiv through road networks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "naldurg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5146,
+    "attempt": 5107,
+    "place_id": "gn-1719251",
+    "input": {
+      "place": {
+        "place_id": "gn-1719251",
+        "name": "Candon",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 17.19472,
+        "lon": 120.45167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Candon",
+          "url": "https://en.wikipedia.org/wiki/Candon",
+          "text": "Candon, officially the City of Candon (Ilocano: Siudad ti Candon; Filipino: Lungsod ng Candon), is a  component city in the province of Ilocos Sur, Philippines. According to the 2024 census, it has a population of 61,315 people. Thus, surpassing the provincial capital Vigan as the most populated city in the province.\nDubbed the \"Tobacco Capital of the Philippines\", the city is the country's largest producer of Virginia tobacco.\nThe town is known for making the world's heaviest and largest kalamay, a sweet and viscous snack made from sticky rice, coconut milk, and sugar. This city also has a rich historical background. In its legends, the name of the city is derived from the legendary \"kandong\" tree which is almost extinct in the area. Its patron saint is John of Sahagún whose feast day is celebrated on June 12.\nCandon is the center of the 2nd district of Ilocos Sur and also the most populous city in that province. Government district offices are all located in the city, supporting more than 100,000 residents in terms of commercial and industrial services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "candon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5147,
+    "attempt": 5108,
+    "place_id": "gn-2759356",
+    "input": {
+      "place": {
+        "place_id": "gn-2759356",
+        "name": "Bedum",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.30083,
+        "lon": 6.60278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedum",
+          "url": "https://en.wikipedia.org/wiki/Bedum",
+          "text": "Bedum (Dutch: [ˈbeːdʏm] ; Gronings: Beem [beɪ̯m]) is a former municipality and a town in the northeastern Netherlands. Populated by an unknown number of inhabitants (data missing) in 2021, Bedum is one of the larger of Groningen's several satellite towns. On 1 January 2019 it merged with the municipalities of De Marne, Eemsmond and Winsum to form the new municipality Het Hogeland.\nBedum is the site of three supermarkets, several pubs, and a leaning church tower, dubbed \"the leaning tower of Bedum\". Footballer Arjen Robben was born in Bedum (23 January 1984). \nBedum has a railway station - Bedum railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bedum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5148,
+    "attempt": 5109,
+    "place_id": "gn-2782480",
+    "input": {
+      "place": {
+        "place_id": "gn-2782480",
+        "name": "Ansfelden",
+        "country": "Austria",
+        "subdivision": "Upper Austria",
+        "lat": 48.20969,
+        "lon": 14.29004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ansfelden",
+          "url": "https://en.wikipedia.org/wiki/Ansfelden",
+          "text": "Ansfelden is a town in the Austrian state of Upper Austria. The rivers Traun and Krems run  through the municipality. The town is perhaps best known for being the birthplace of the composer and organist Anton Bruckner.\nAnsfelden has two museums, the Anton Bruckner Museum and a museum of musical instruments.\nIn the town's coat of arms, granted on October 28, 1985, the wavy stripe represents the two rivers, the organ pipes the organist and composer Bruckner, and the cog-wheel the town's paper-mills and other older industries.\nBetween 1945 and 1964, the DP Camp Haid was located in the district Haid. The city is twinned with the city of Condega in Nicaragua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "ansfelden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5149,
+    "attempt": 5110,
+    "place_id": "gn-2783308",
+    "input": {
+      "place": {
+        "place_id": "gn-2783308",
+        "name": "Zedelgem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.14236,
+        "lon": 3.1368
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zedelgem",
+          "url": "https://en.wikipedia.org/wiki/Zedelgem",
+          "text": "Zedelgem (Dutch pronunciation: [ˈzeːdəlɣɛm]; West Flemish: Zillegem [ˈzɛləɦæm]) is a municipality located in the Belgian province of West Flanders. The municipality comprises the villages of Aartrijke, Loppem, Veldegem and Zedelgem proper. On January 1, 2019, Zedelgem had a total population of 22,813. The total area is 60.34 km2 (23.30 sq mi) which gives a population density of 378/km2 (980/sq mi).\nZedelgem and the surrounding area was home to prisoner-of-war camps towards the end of World War II. Although the camp was disbanded and prisoners released after the war, the site remained military domain until 1994. It is now a nature park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "zedelgem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5150,
+    "attempt": 5111,
+    "place_id": "gn-2799412",
+    "input": {
+      "place": {
+        "place_id": "gn-2799412",
+        "name": "Diepenbeek",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.90769,
+        "lon": 5.41875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diepenbeek",
+          "url": "https://en.wikipedia.org/wiki/Diepenbeek",
+          "text": "Diepenbeek (Dutch pronunciation: [ˈdipə(m)beːk] ; Limburgish: Diepenbik) is a municipality located in the Belgian province of Limburg near Hasselt. On January 1, 2012, Diepenbeek had a total population of 18,337. Its total area is 41.19 km2 (15.90 sq mi) which gives a population density of 430 inhabitants per square kilometre (1,100 inhabitants/mi2).\nThe municipality includes the communities and hamlets of Bijenberg, het Crijt, Dorpheide, Keizel, Lutselus, Pampert, Piannesberg, Reitje, Rooierheide, Rozendaal, and Zwartveld.\nIt is home to Hasselt University, although the University also has buildings in Hasselt itself. The Limburg Science Park is also located on the university campus in Diepenbeek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "diepenbeek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5151,
+    "attempt": 5112,
+    "place_id": "gn-2858964",
+    "input": {
+      "place": {
+        "place_id": "gn-2858964",
+        "name": "Oberstdorf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.40724,
+        "lon": 10.27939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oberstdorf",
+          "url": "https://en.wikipedia.org/wiki/Oberstdorf",
+          "text": "Oberstdorf (German pronunciation: [ˈoːbɐstˌdɔʁf] ; Low Alemannic: Oberschdorf) is a  municipality located in the Allgäu region of the Bavarian Alps of southern Germany. It is the southernmost settlement in Germany and, as one of its highest towns, is known for its skiing and hiking parks.\nAt the center of Oberstdorf is a church whose tall spire serves as a landmark for navigating around town. The summits of the Nebelhorn and Fellhorn provide dramatic panoramic views of the Alps. The Nebelhorn can be reached via a large cable car. Visitors can ride a unique diagonal elevator to the top of the Heini-Klopfer-Skiflugschanze."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "oberstdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5152,
+    "attempt": 5113,
+    "place_id": "gn-3028431",
+    "input": {
+      "place": {
+        "place_id": "gn-3028431",
+        "name": "Cassis",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.21571,
+        "lon": 5.53855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cassis",
+          "url": "https://en.wikipedia.org/wiki/Cassis",
+          "text": "Cassis (French pronunciation: [kasi]; Provençal: Cassís) is a commune situated east of Marseille in the department of Bouches-du-Rhône in the Provence-Alpes-Côte d'Azur region, whose coastline is known in English as the French Riviera, in Southern France.\nIt is a popular tourist destination, famous for its cliffs (falaises) and the sheltered inlets called calanques. The wines of Cassis are white and rosé, and not to be confused with crème de cassis, a specialty of Burgundy which takes its name from blackcurrants (cassis), not the commune. It is a filming location featured in The French Connection, notably for heroin smuggler Alain Charnier's house."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "cassis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5153,
+    "attempt": 5114,
+    "place_id": "gn-3061284",
+    "input": {
+      "place": {
+        "place_id": "gn-3061284",
+        "name": "Dvůr Králové nad Labem",
+        "country": "Czechia",
+        "subdivision": "Hradec Králové Region",
+        "lat": 50.43172,
+        "lon": 15.81402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dvůr Králové nad Labem",
+          "url": "https://en.wikipedia.org/wiki/Dv%C5%AFr_Kr%C3%A1lov%C3%A9_nad_Labem",
+          "text": "Dvůr Králové nad Labem (Czech pronunciation: [ˈdvuːr ˈkraːlovɛː ˈnad labɛm], German: Königinhof an der Elbe) is a town in Trutnov District in the Hradec Králové Region of the Czech Republic. It has about 15,000 inhabitants. The town is located in the valley of the Elbe River.\nIn the Middle Ages, Dvůr Králové nad Labem was a dowry town, administered by the Bohemian queens. The historic town centre is well preserved and is protected as an urban monument zone. Dvůr Králové nad Labem is known for the Safari Park Dvůr Králové, one of the largest and most visited zoos in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "dvur kralove nad labem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dvur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kralove",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "labem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5154,
+    "attempt": 5115,
+    "place_id": "gn-3087281",
+    "input": {
+      "place": {
+        "place_id": "gn-3087281",
+        "name": "Reda",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.60528,
+        "lon": 18.34717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reda, Poland",
+          "url": "https://en.wikipedia.org/wiki/Reda,_Poland",
+          "text": "Reda ([ˈrɛda]; Kashubian: Réda; formerly German: Rheda) is a town on the Reda River in northern Poland, in the Kashubia region in Pomerania, with approx. 28,000 inhabitants. It is part of Wejherowo County, Pomeranian Voivodeship.\nIt is part of the Little Kashubian Tricity urban area, along with Wejherowo (which it borders in the west), and Rumia (which it borders in the south). The urban area is adjacent to the Tricity, which along with other surrounding areas form an agglomeration home to over 1 million residents on the Baltic coast of Gdańsk Bay. Well-developed railways and highways connect Reda to the Tricity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "reda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5155,
+    "attempt": 5116,
+    "place_id": "gn-311704",
+    "input": {
+      "place": {
+        "place_id": "gn-311704",
+        "name": "İdil",
+        "country": "Türkiye",
+        "subdivision": "Şırnak",
+        "lat": 37.33481,
+        "lon": 41.88944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İdil",
+          "url": "https://en.wikipedia.org/wiki/%C4%B0dil",
+          "text": "İdil (Syriac: ܐܙܟ, romanized: Azakh, or Beth Zabday, Kurdish: Hezex, Arabic: آزخ, romanized: Azekh) is a city and seat of the İdil District of the Şırnak Province in Turkey. It is located in the historical region of Tur Abdin. The town had a population of 30,271 in 2021 and is composed of Kurds of the Domanan, Dorikan, Harunan, Meman and Omerkan tribes. The town was once home to a large number of Assyrians/Syriacs, however, only a few families remain today.\nIn the city, there is a Syriac Orthodox Church of the Mother of God (Arabic: كنيسة العذراء, Turkish: Meryem Ana Kilisesi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "idil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5156,
+    "attempt": 5117,
+    "place_id": "gn-3179024",
+    "input": {
+      "place": {
+        "place_id": "gn-3179024",
+        "name": "Certaldo",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.54768,
+        "lon": 11.03924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Certaldo",
+          "url": "https://en.wikipedia.org/wiki/Certaldo",
+          "text": "Certaldo (Italian pronunciation: [tʃerˈtaldo]) is a town and comune (municipality) of Tuscany, Italy, in the Metropolitan City of Florence, located in the middle of Valdelsa. It is about 35 kilometres (22 mi) southwest of the Florence Cathedral (50 minutes by rail and 35 minutes by car from the city), and 40 minutes by rail north of Siena.\nIt was home to the family of Giovanni Boccaccio, author of the Decameron, who was possibly born and died at his home in Certaldo, being buried there in 1375. It is also the birthplace of actor Ernesto Calindri and of football manager Luciano Spalletti."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "certaldo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5157,
+    "attempt": 5118,
+    "place_id": "gn-3354540",
+    "input": {
+      "place": {
+        "place_id": "gn-3354540",
+        "name": "Omaruru",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -21.42403,
+        "lon": 15.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omaruru, Namibia",
+          "url": "https://en.wikipedia.org/wiki/Omaruru,_Namibia",
+          "text": "Omaruru is a town in the Erongo Region of central Namibia. The town has 14,000 inhabitants and encompasses 352 square kilometres (136 sq mi) of land. It is situated near Mount Erongo, on the usually dry Omaruru River. It is located on the main paved road from Swakopmund to Otjiwarongo. The name in the Otjiherero language means 'bitter milk', as Herero cattle herds used to graze on the local bush that turned their milk bitter.\nOmaruru is known for its annual festival where the Herero people commemorate their past local chiefs, its winery, and for the dinosaur footprints at nearby Otjihaenamparero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "omaruru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5158,
+    "attempt": 5119,
+    "place_id": "gn-3454628",
+    "input": {
+      "place": {
+        "place_id": "gn-3454628",
+        "name": "Peçanha",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -18.54861,
+        "lon": -42.55694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peçanha",
+          "url": "https://en.wikipedia.org/wiki/Pe%C3%A7anha",
+          "text": "Peçanha is a municipality in the state of Minas Gerais in the Southeast region of Brazil. Peçanha is located 130mi(210km) northeast of Belo Horizonte. The municipality holds a population of 17,863 as of 2025, 68% of which identify as mixed/other, followed by white people at 21% and Afro-Brazilians at 11%. The town is named for João Peçanha Falcão, who founded the town in 1758 under the name Santo Antônio do Peçanha. It was made into its own municipality in 1881, taking the name Suaçuí before returning to its first name in 1887. In 1911, the municipality took on the name Peçanha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "pecanha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5159,
+    "attempt": 5120,
+    "place_id": "gn-3514278",
+    "input": {
+      "place": {
+        "place_id": "gn-3514278",
+        "name": "Yecapixtla",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.88333,
+        "lon": -98.865
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yecapixtla",
+          "url": "https://en.wikipedia.org/wiki/Yecapixtla",
+          "text": "Yecapixtla (Nahuatl languages: Yecapixtlān Nahuatl pronunciation: [jekaˈpiʃt͡ɬaːn]) is a town and municipality located in the northeast of the state of Morelos in central Mexico. Yecapixtla means, Land of men and women with sharp noses. The town is home to one of the monastery complexes associated with the Monasteries on the Slopes of Popocatépetl World Heritage Site. Yecapixtla is famously known for its beef, cecina (cured dry meat).\nThe population of the municipality is 52,651 according to the 2015 census. The town was hit hard by the September 19, 2017 Puebla earthquake, in which two people died and the church was damaged."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "yecapixtla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

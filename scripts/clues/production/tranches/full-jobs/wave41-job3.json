@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 8095,
+    "attempt": 8041,
+    "place_id": "gn-4930907",
+    "input": {
+      "place": {
+        "place_id": "gn-4930907",
+        "name": "Bolton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.43343,
+        "lon": -71.60784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Bolton,_Massachusetts",
+          "text": "Bolton is a town in Worcester County, Massachusetts, United States. Bolton is in central Massachusetts, located 25 miles west-northwest of downtown Boston along Interstate 495. It is within Greater Boston and MetroWest regions. The population was 5,665 at the 2020 census.\nSettled in the 1600s and incorporated in 1738, the town is still home to many farms and apple orchards, along with the well-known Nashoba Valley Winery and The International Golf Club, which has hosted several major tournaments. The Bolton Flats Wildlife Management Area is largely located in the town near the Nashua River and Still River as well as many other parks and conservation areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "bolton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8096,
+    "attempt": 8042,
+    "place_id": "gn-5098904",
+    "input": {
+      "place": {
+        "place_id": "gn-5098904",
+        "name": "Haworth",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.96093,
+        "lon": -73.99014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haworth, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Haworth,_New_Jersey",
+          "text": "Haworth (English pronunciation: /ˈhɑːwəɹθ/ ) is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 3,343, a decrease of 39 (−1.2%) from the 2010 census count of 3,382, which in turn reflected a decline of 8 (−0.2%) from the 3,390 counted in the 2000 census.\nHaworth was formed by an act of the New Jersey Legislature on February 24, 1904, from portions of both Dumont borough and Harrington Township. The borough was named for the historic village of Haworth, England.\nIn September 2012, Business Insider named Haworth the third-best suburb in America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "haworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8097,
+    "attempt": 8043,
+    "place_id": "gn-5127353",
+    "input": {
+      "place": {
+        "place_id": "gn-5127353",
+        "name": "Montgomery",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.52759,
+        "lon": -74.23682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montgomery, New York",
+          "url": "https://en.wikipedia.org/wiki/Montgomery,_New_York",
+          "text": "Montgomery is a town in Orange County, New York, United States. Located roughly 60 miles (97 km) northwest of New York City, the town of Montgomery is a historical and cultural hub of the Hudson Valley region and has been a steadily growing outer-ring commuter suburb within the New York metropolitan area. As of the 2020 census, the population was listed as 23,322.\nThe town was named in the honor of Richard Montgomery, an American Revolutionary War general killed in 1775 at the Battle of Quebec. The northern town line is contiguous with the Ulster County border. Montgomery is immediately west of the town of Newburgh. Within its borders are three villages, one eponymous, as well as Walden and most of Maybrook."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "montgomery",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8098,
+    "attempt": 8044,
+    "place_id": "gn-5334320",
+    "input": {
+      "place": {
+        "place_id": "gn-5334320",
+        "name": "Carmel-by-the-Sea",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.55524,
+        "lon": -121.92329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carmel-by-the-Sea, California",
+          "url": "https://en.wikipedia.org/wiki/Carmel-by-the-Sea,_California",
+          "text": "Carmel-by-the-Sea (), commonly known simply as Carmel, is a city in Monterey County, California, located on the Central Coast of California. As of the 2020 census, the city had a population of 3,220, down from 3,722 at the 2010 census. Situated on the Monterey Peninsula, Carmel is a tourist destination, known for its natural scenery and artistic history.\nThe Spanish founded a settlement in 1771, when Mission San Carlos Borromeo de Carmelo was relocated by St. Junípero Serra from Monterey. Mission Carmel served as the headquarters of the Californian mission system, until the Mexican secularization act of 1833, when the area was divided into rancho grants. The settlement was largely abandoned by the U.S. Conquest of California in 1848 and stayed undeveloped until Santiago J. Duckworth built a summer colony in 1888. When the Carmel Development Company was formed in 1902, Carmel became an art colony and seaside resort, which incorporated in 1916."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "carmel by the sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carmel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "by",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8099,
+    "attempt": 8045,
+    "place_id": "gn-6177178",
+    "input": {
+      "place": {
+        "place_id": "gn-6177178",
+        "name": "Wawa",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 47.98877,
+        "lon": -84.77411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wawa, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Wawa,_Ontario",
+          "text": "Wawa is a township in the Canadian province of Ontario in the Algoma District. Formerly known as the Township of Michipicoten, named after a nearby river of that name, the township was officially renamed in 2007 for its largest and best-known community of Wawa, located on the western shores of Wawa Lake. The lake's original name was Wawungonk, meaning \"place of clear water\" or \"hills covered in clear snow\".\nThis area was first developed for fur trading. In the late 19th century, both gold and iron ore were found and mined, leading to the region's rise as the steel industry developed in Sault Ste. Marie, Ontario. From 1900 to 1918 the Helen Mine had the highest production of iron ore of any mine in Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "wawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8100,
+    "attempt": 8046,
+    "place_id": "gn-10055413",
+    "input": {
+      "place": {
+        "place_id": "gn-10055413",
+        "name": "Kallaroo",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.79098,
+        "lon": 115.75298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kallaroo, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Kallaroo,_Western_Australia",
+          "text": "Kallaroo is one of the four 'Whitfords' suburbs in Perth that resulted from the Western Australian Government rezoning large areas of coastal land for development in 1969.\nKallaroo was chosen as a suburb name in 1970 and is an Aboriginal word meaning ‘road to the water’. The suburb is home to one primary school, Springfield Primary School, which was named after the original housing estate. The school was established in 1972, with four demountable classrooms and 179 students. A permanent school was built for the 1973 educational year with six classrooms in the main building. Also in the construction was an administrative  and library buildings. The new school oval was sand and limestone rocks for the first year and after many student injuries, a new grassed oval was ready for the 1974 educational year.\nStreet names in the Kallaroo are predominantly after shipwrecks, including famous West Australian shipwrecks, such as the Batavia.\nThe land west of Dampier Avenue was developed during the mid-late 1980s and, although part of Kallaroo, is known as Northshore, in reference to the project name of the housing estate.\nIn late 2024, Springfield Primary School began work on its $19.4 million redevelopment which will see new state of the art facilities, classrooms and education spaces. The project is slated for completion in 2028, with the school operating as normal during this work."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "kallaroo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8101,
+    "attempt": 8047,
+    "place_id": "gn-1703518",
+    "input": {
+      "place": {
+        "place_id": "gn-1703518",
+        "name": "Mainit",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 9.535,
+        "lon": 125.52306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mainit",
+          "url": "https://en.wikipedia.org/wiki/Mainit",
+          "text": "Mainit, officially the Municipality of Mainit (Surigaonon: Lungsod nan Mainit; Cebuano: Lungsod sa Mainit; Tagalog: Bayan ng Mainit), is a municipality in the province of Surigao del Norte, Philippines. According to the 2024 census, it has a population of 29,205 people.\nIt is situated on the north shore of Lake Mainit in the north-eastern part of Mindanao. The word \"mainit\" literally means \"hot\". The other local term for \"mainit\" is \"mapaso.\" Mainit is home to a hot spring, the Mapaso Wellness Resort frequented by locals and visitors from nearby towns and provinces. It is regarded that Mainit got its name from this hot sulfuric spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mainit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8102,
+    "attempt": 8048,
+    "place_id": "gn-2509605",
+    "input": {
+      "place": {
+        "place_id": "gn-2509605",
+        "name": "Villa de Don Fadrique",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.61505,
+        "lon": -3.21915
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de Don Fadrique",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_Don_Fadrique",
+          "text": "La Villa de Don Fadrique is a town and municipality in the province of Toledo, Spain. The town is named after Fadrique Alfonso of Castile who conceded the  \"Carta-Puebla\" (the document reporting the foundation of the town and granting the special privileges to it) on April 25, 1343. Prior to that date the small group of houses was under Corral de Almaguer administration.\nAccording to the official data, La Villa de Don Fadrique has a total population of 4,214 inhabitants and a surface of 83 km². The population density was 49/km², in 2001. The economy of the town is based on doors manufacturing and agriculture.\nLa Villa de don Fadrique is in the southeast of the Toledo province between Cigüela and Riánsares rivers. Buildings of interest are Nuestra Señora de la Asunción church, built in classical style, and Laras House.\nThe mayor of La Villa de Don Fadrique is Mr. Juan Agustín González Checa of the ruling Partido Socialista Obrero. The Partido Socialista Obrero has 4 municipal councillors while the Partido Popular has 4 and  Izquierda Unida has 3.\nIn the 2004 Spanish General Election the Partido Popular got 40.2% of the vote in La Villa de Don Fadrique, the Partido Socialista Obrero got 37.4% and Izquierda Unida got 21.0%.\nThis municipality was a stronghold of the Spanish Communist Party, (PCE) before the Spanish Civil War and some revolutionary riots took place in 1932 which required the intervention of the Guardia Civil. Because of this background it was even known as \"Little Russia\" during the Cold War years. Currently, it continues to be a regional stronghold of Izquierda Unida, which follows the traditions of PCE."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "villa de don fadrique",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "don",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fadrique",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8103,
+    "attempt": 8049,
+    "place_id": "gn-2641828",
+    "input": {
+      "place": {
+        "place_id": "gn-2641828",
+        "name": "Needham Market",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.1555,
+        "lon": 1.0516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Needham Market",
+          "url": "https://en.wikipedia.org/wiki/Needham_Market",
+          "text": "Needham Market is a historic market town in the Mid Suffolk district of Suffolk, England, set in the Gipping Valley. Nearby villages include Barking, Darmsden, Badley and Creeting St Mary. The town is located on the south and west side of the A14 trunk road, between Ipswich to the south and Stowmarket to the north; it is also sited on the Great Eastern Main Line, with the Needham Lake and the River Gipping being just east of the railway station. As of the 2021–2022 United Kingdom censuses, the town had a population of 4,700 residents. The town of Needham, Massachusetts, was named after Needham Market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "needham market",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "needham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "market",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8104,
+    "attempt": 8050,
+    "place_id": "gn-2757095",
+    "input": {
+      "place": {
+        "place_id": "gn-2757095",
+        "name": "De Rijp",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.55667,
+        "lon": 4.84583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "De Rijp",
+          "url": "https://en.wikipedia.org/wiki/De_Rijp",
+          "text": "De Rijp is a village and former island in the Dutch province of North Holland. It is a part of the municipality of Alkmaar, and lies about 10 km northwest of Purmerend, between the Schermer and the Beemster polders. Before the poldering of the lakes surrounding it, De Rijp was famous for its herring industry. Today it is known for its characteristic rijksmonuments, which include some of the oldest wooden houses of North Holland.\nDe Rijp was a separate municipality until 1970, when it merged with Graft.\nThe statistical area \"De Rijp\", which also can include the surrounding countryside, has a population of around 4020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "de rijp",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rijp",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8105,
+    "attempt": 8051,
+    "place_id": "gn-2869488",
+    "input": {
+      "place": {
+        "place_id": "gn-2869488",
+        "name": "Moosbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.58909,
+        "lon": 12.41036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moosbach, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Moosbach,_Bavaria",
+          "text": "Moosbach ( MOHS-bahkh; German: Moosbach [ˈmoːsbax] ; Bavarian: Moosboch [ˈmoːsbɔx]) is a municipality in the district of Neustadt an der Waldnaab in the Free State of Bavaria, Germany. Covering an area of 63.74 square kilometers, it has a population of approximately 1,050 inhabitants as of the 2011 census. Located within the Upper Palatine Forest near the Czech border, Moosbach is known for its natural landscapes and historical significance, including former iron ore mining on Eisenberg mountain and a Cold War-era Bundeswehr radar station. The municipality is part of the larger Upper Palatinate region and is governed by Mayor Armin Bulenda (CSU) for the 2020–2026 term."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "moosbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8106,
+    "attempt": 8052,
+    "place_id": "gn-3115252",
+    "input": {
+      "place": {
+        "place_id": "gn-3115252",
+        "name": "Òdena",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.6,
+        "lon": 1.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Òdena",
+          "url": "https://en.wikipedia.org/wiki/%C3%92dena",
+          "text": "Òdena (Catalan pronunciation: [ˈɔðənə]) is a municipality in the comarca of the Anoia in Barcelona province, Catalonia, \nSpain. It is situated in the centre of the Òdena Basin, on the side of a small hill. The remains of Òdena castle with \nits octagonal tower are at the top of the hill. The town is served by the C-241 road from Igualada to Manresa, \nand the main N-II road from Barcelona to Lleida runs through the municipality.\nThe Igualada-Òdena Aerodrome is located at the south of the Òdena municipality. The airdrome is home to the Aerosport airshow that takes place every year in April or May. In 2009 it was officially elected by the Catalan government to be converted into a corporate usage airfield. The current 900 metre runway will be extended to 1500 metres and new hangars will be built for sportive and corporate aviation. Ultramagic, the world's second largest manufacturer of hot air balloons, has its headquarters at the Igualada-Òdena aerodrome."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "odena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8107,
+    "attempt": 8053,
+    "place_id": "gn-3173392",
+    "input": {
+      "place": {
+        "place_id": "gn-3173392",
+        "name": "Minori",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.6503,
+        "lon": 14.62684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minori, Campania",
+          "url": "https://en.wikipedia.org/wiki/Minori,_Campania",
+          "text": "Minori (Campanian: Minure; originally Rheginna Minor) is a comune on the Amalfi Coast in the Province of Salerno, Campania, southern Italy. Together with the other towns of the coast, it was inscribed as a UNESCO World Heritage Site in 1997.\nA summer retreat of the Roman aristocracy, as attested by the remains of a patrician villa dating from the 1st century, the town today is a popular tourist destination known for its scenery and culinary tradition. For the latter it is sometimes called the \"City of Taste\" (Città del gusto), and for its mild climate the \"Eden of the Amalfi Coast\" (Eden della Costiera amalfitana)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "minori",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8108,
+    "attempt": 8054,
+    "place_id": "gn-324294",
+    "input": {
+      "place": {
+        "place_id": "gn-324294",
+        "name": "Alaçatı",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.28246,
+        "lon": 26.37459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alaçatı",
+          "url": "https://en.wikipedia.org/wiki/Ala%C3%A7at%C4%B1",
+          "text": "Alaçatı is a neighbourhood in the municipality and district of Çeşme, İzmir Province, Turkey. Its population is 10,386 (2022). Before the 2013 reorganisation, it was a town (belde). It is on the Western coast of Turkey, often noted for its architecture, vineyards, windmills, and sea.\nAlaçatı is one of the most traditional towns in Turkey, it is famed for its former Greek village with stone houses, narrow streets, boutique hotels and restaurants with tables on the streets. The area is also home to the Alaçatı yacht marina and the famous Port Alaçatı development, created by the French architect Francois Spoerry and his son, Yves Spoerry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "alacat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8109,
+    "attempt": 8055,
+    "place_id": "gn-4158296",
+    "input": {
+      "place": {
+        "place_id": "gn-4158296",
+        "name": "Heathrow",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.76333,
+        "lon": -81.37225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heathrow, Florida",
+          "url": "https://en.wikipedia.org/wiki/Heathrow,_Florida",
+          "text": "Heathrow is a census-designated place and an unincorporated suburban community in Seminole County, Florida, United States. Heathrow is on the I-4 Corridor in Central Florida, 19 miles northeast of Orlando and 38 miles southwest of Daytona Beach. \nHeathrow comprises a master-planned, private, gated residential community of approximately 2,200 homes, which is also called Heathrow, and the Heathrow International Business Center, an office park. Heathrow was founded in 1985 by Jeno Paulucci, a food business entrepreneur. The area had been a source of celery used in making his Chun King Foods American Chinese style food. As of the 2020 census, Heathrow had a population of 6,806. Heathrow is home to the national headquarters of the American Automobile Association (AAA).\nHeathrow is part of the Orlando–Kissimmee–Sanford Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "heathrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8110,
+    "attempt": 8056,
+    "place_id": "gn-4185553",
+    "input": {
+      "place": {
+        "place_id": "gn-4185553",
+        "name": "Byron",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.65376,
+        "lon": -83.75963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Byron, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Byron,_Georgia",
+          "text": "Byron is a city located primarily in Peach County, Georgia, United States. A small portion of the city also extends into parts of Houston and Crawford counties. As of the 2020 census, Byron had a population of 5,702. The city is in the Warner Robins metropolitan statistical area.\nByron was home to the Middle Georgia Raceway, an auto racetrack that hosted NASCAR races and the filming of TV commercials and a feature movie. From July 3–5, 1970, in a field next to the raceway, the Atlanta International Pop Festival was held, which was the largest gathering in Georgia history until the 1996 Olympics in Atlanta. On September 15, 2012, an official Georgia Historical Society marker was placed near the raceway site to commemorate the festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "byron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8111,
+    "attempt": 8057,
+    "place_id": "gn-4459298",
+    "input": {
+      "place": {
+        "place_id": "gn-4459298",
+        "name": "Carolina Shores",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 33.90101,
+        "lon": -78.58057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carolina Shores, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Carolina_Shores,_North_Carolina",
+          "text": "Carolina Shores is a town in Brunswick County, North Carolina, United States. As of the 2020 census, Carolina Shores had a population of 4,588. It is part of the Wilmington, NC Metropolitan Statistical Area.\nThe town was incorporated in 1998 after a split from the town of Calabash, which came as the result of years of disagreement over \"sewer, garbage collection and sign restrictions\". The town limits of Carolina Shores currently interlock with those of Calabash. Sharing the name of the local country club, \"Carolina Shores\" could be considered a misnomer since the town does not have a \"shore\" with any large body of water."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "carolina shores",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carolina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shores",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8112,
+    "attempt": 8058,
+    "place_id": "gn-5527870",
+    "input": {
+      "place": {
+        "place_id": "gn-5527870",
+        "name": "Ozona",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.71017,
+        "lon": -101.20067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ozona, Texas",
+          "url": "https://en.wikipedia.org/wiki/Ozona,_Texas",
+          "text": "Ozona is an unincorporated community and census-designated place (CDP) that serves as the county seat of Crockett County, Texas, United States. The population was 2,663 at the time of the 2020 census. Ozona is the only Census Bureau–recognized community in Crockett County, which is named for Colonel Davy Crockett, a hero of the Alamo.\n\nOzona was known as \"Powell Well\", after land surveyor E. M. Powell, when it was founded in 1891. In 1897, it was renamed \"Ozona\" for the high quantity of its open air, or \"ozone\". A flood in 1954 killed 16 people and destroyed about half of the homes in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "ozona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8114,
+    "attempt": 8059,
+    "place_id": "gn-6694299",
+    "input": {
+      "place": {
+        "place_id": "gn-6694299",
+        "name": "Walkerton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.13023,
+        "lon": -81.15309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walkerton, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Walkerton,_Ontario",
+          "text": "Walkerton is a town in the municipality of Brockton, Bruce County, Ontario, Canada. It is the site of Brockton's municipal offices and is the county seat. Walkerton is located on the Saugeen River, at the junction of Highway 9 and the former Provincial Highway 4 and is 75 kilometres (47 mi) southwest of Owen Sound, 44 kilometres east of Kincardine, 10 kilometres west of Hanover, and 10 kilometres north of Mildmay. As of 2021, the town had 4,724 people in the community.\nOn January 1, 1999, Walkerton became part of the Municipality of Brockton. The town is notable for the 2000 Walkerton E. coli outbreak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "walkerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8115,
+    "attempt": 8060,
+    "place_id": "gn-8348281",
+    "input": {
+      "place": {
+        "place_id": "gn-8348281",
+        "name": "Singleton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.44403,
+        "lon": 115.75725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Singleton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Singleton,_Western_Australia",
+          "text": "Singleton is an outer suburb of Perth, the capital city of Western Australia, located entirely within the City of Rockingham local government area. It is the southernmost suburb of the Perth metropolitan area and is actually closer to the regional city Mandurah than either the Perth central business district or Rockingham. The area is under development near the school, Singleton Primary, and near the main oval, Laurie Stanford Reserve. There is a petrol service station, a small shopping centre, and a school.\nThe suburb was named after Captain Francis Singleton, who arrived in the area in 1839 and became a substantial landholder in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "singleton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

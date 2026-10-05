@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 6085,
+    "attempt": 6041,
+    "place_id": "gn-3081636",
+    "input": {
+      "place": {
+        "place_id": "gn-3081636",
+        "name": "Wojkowice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.36509,
+        "lon": 19.03652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wojkowice",
+          "url": "https://en.wikipedia.org/wiki/Wojkowice",
+          "text": "Wojkowice [vɔi̯kɔˈvʲit͡sɛ] is a town in the Silesian Voivodeship in southern Poland, located in the Dąbrowa Basin, near Katowice. Wojkowice is located in the Silesian Highlands, on the Brynica river (tributary of the Vistula), and historically belongs to Lesser Poland. Its name comes from ancient Polish given name Wojek, which might have been a diminutive of Wojslaw. Several other locations in Poland have been named in a similar fashion – Wojslawice, Wojkowo, Wojkow, Wojkowa.\nThe town used to be in Katowice Voivodeship, but has been part of the Silesian Voivodeship since the formation of the voivodeship in 1999. Wojkowice is one of the cities of the 2.7 million conurbation – Katowice urban area and within a greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the town is 8,927 (2019)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "wojkowice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6086,
+    "attempt": 6042,
+    "place_id": "gn-3173124",
+    "input": {
+      "place": {
+        "place_id": "gn-3173124",
+        "name": "Monselice",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.239,
+        "lon": 11.74984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monselice",
+          "url": "https://en.wikipedia.org/wiki/Monselice",
+          "text": "Monselice (Italian pronunciation: [monˈseːlitʃe]; Venetian: Monséłexe [moŋˈseɰeze]) is a town and municipality (comune) located in northeastern Italy, in the Veneto region, in the province of Padua about 20 kilometres (12 mi) southwest of the city of Padua, at the southern edge of the Euganean Hills (Colli Euganei).\n\nMonselice is the most picturesque town I have seen in Italy. It has an old ruin of a castle upon the hill and thence commands a beautiful and extraordinary view. It lies in the wide plain – a dead level – whereon Ferrara, Bologna, Rovigo, Este, Padua stand and even Venice we could dimly see in the horizon rising with her tiara of proud towers. What a walk and what a wide delightful picture. To Venice 38 miles.\nRalph Waldo Emerson Journals (31 May 1833)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "monselice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6087,
+    "attempt": 6043,
+    "place_id": "gn-3456642",
+    "input": {
+      "place": {
+        "place_id": "gn-3456642",
+        "name": "Mozarlândia",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -14.74472,
+        "lon": -50.57056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mozarlândia",
+          "url": "https://en.wikipedia.org/wiki/Mozarlândia",
+          "text": "Mozarlândia is a municipality in north-central Goiás state, Brazil.\nIt is located in the Valley of the Araguaia River, 300 kilometers from the state capital, Goiânia, and is served by highways GO-164 and GO-334.\nThe distance to Goiânia is 313 km.  Highway connections are made by GO-070 / Goianira / Inhumas / Itaberaí / BR-070 / Goiás / GO-164 / Araguapaz / GO-347.\nIt forms its northern boundary with the municipality of Nova Crixás; its western boundary with Aruanã; its southern boundary with Araguapaz; and its eastern boundary with Crixás.\nThe main rivers that bathe the municipality are the Rio Tesouras and Rio do Peixe, besides the streams (córregos) of Alagadinho, Alagado, São João, Fogueira, Barreirinho, do Gato, Lagoinha, do Buriti, do Manoel and Muquém. Because of the flat topography near the main rivers, there are places that have a rich formation in lakes: Landi, Lolito, Pedra, Correia, da Onça, da Mãe, Redondo, Cabaça and many others. The mountains that stand out are  Constantino,  Pimenta, Pouso Alto,  Jiripoca,  Tombador and Bananal and the hills of São João and Engano.\nThe European history of this town began in 1952 when the surveyors Pedro Leite da Silva, Mozart de Andrade Mota, and  Edgar de Alencar Mota set up camp near the confluence of the Barreirinho and Fogueira rivers, to survey the land for an agricultural colony called \"Barreirinho e São João\".  Mota bought land and created lots to build a settlement.  In 1954 the first hut was built and soon other settlers arrived form the state of Minas Gerais.  The first name was \"Barreirinho\".   In 1956 working together the settlers opened a road to Nova América so they could get their agricultural products to market.  In 1958 Barreirinho became a district in the municipality of Goiás, the name changing to Mozarlândia, in homage to Mozart Andrade Mota who had distributed land to settlers and ranchers who wanted to stay in the area.  Mota was mayor for two terms and in his administrations he carried out important works, like the building of the city hall, the public jail, and two plazas.  He donated land to schools, churches, the city hall, the aerodrome, and the cemetery.  He brought electricity and built the first schools.  He died in 1993 remembered by his fellow citizens in the name of the town where he lived.\nIn January 2005 the Mayor was João Soares de Oliveira and the Vice-mayor was Mailton de Oliveira Souza.  The city council had 9 members and there were 10,258 eligible voters in 2007.\nIn 2007 the population density was 7.57 inhabitants/km2.  In 2007 the urban population was 10,832 and the rural population was 2,291.  The population has increased by more than 3,000 people since 1980.  From 1996 to 2007 the geometric population increase was 2.33.%.\nWith an economy based on cattle raising, Mozarlândia has one of the largest packing houses in the country.  The biggest exporter of meat from Brazil and the second in Latin America, the Frigorífico Bertin, installed two years ago in the town, has the capacity to slaughter 1,500 head per day.  The meat is exported to Egypt, United States, Chile, and Iran.  Flour, meat, bone, and blood are all processed.  The leather is sent in a natural state to a tanner in São Luís de Montes Belos.\nIn 2007 there were 10 industrial units and 152 retail units in the city.     The banking sector was represented by three banks. In 2007 there were 952 automobiles.  The sector employing more workers was the transformation industry with 1,222 workers, followed by commerce with 344 workers (IBGE data from 2005).\n\nFarms: 332\nTotal agricultural Area:  414,016 hectares\nPermanent Planted Area: 192 hectares\nTemporary Planted Area: 47,268 hectares\nNatural Pasture: 266,565 hectares\nWoodland and Forest: 93,960 hectares\nWorkers related to the farm owner: 533\nWorkers not related to the farm owner: 333  (IBGE)\nCattle herd: 176,580 head (2006)\nMain crops: rice (60 hectares), rubber (81 hectares), and corn (300 hectares). (All data are from IBGE 2006)\nIn 2007 there were 2 hospitals (1 private) with 33 beds and 2 walk-in health clinics.  The infant mortality rate was 28.8 in every 1,000 live births in 2000, which was below the national rate of 35.0 in the same year.  In 2006 the school system had 9 schools, 72 classrooms, 136 teachers, and 3,787 students.  Included were 2 middle schools, one public and one private.  There were no institutions of higher learning.  IN 2000 the adult literacy rate was 84.2%, below the national average of 86.4% in the same year.\nOne of the most awaited yearly events is the Agro-cattle Exposition, which occurs in August.  An average of 15,000 visitors come to the town for the four days the festivities last.\nThe score on the Municipal Human Development Index was 0.768.  This was a state ranking of 41 (out of 242 municipalities) and a national ranking of 1,372 (out of 5,507 municipalities).  On the Seplan Economic Development Index of 2001 the ranking was 92 out of 246 municipalities. See Seplan.  On the Seplan Social Development Index of 2000 the ranking was 149 out of 246 municipalities.  See Seplan"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 852
+    },
+    "banned_terms": [
+      {
+        "term": "mozarlandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6088,
+    "attempt": 6044,
+    "place_id": "gn-3598804",
+    "input": {
+      "place": {
+        "place_id": "gn-3598804",
+        "name": "Chajul",
+        "country": "Guatemala",
+        "subdivision": "Quiché",
+        "lat": 15.48523,
+        "lon": -91.0352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chajul",
+          "url": "https://en.wikipedia.org/wiki/Chajul",
+          "text": "Chajul (Spanish pronunciation: [tʃaˈxul]; full name San Gaspar Chajul) is a town and municipality in the Guatemalan department of El Quiché. Chajul is part of the Ixil Community, along with San Juan Cotzal and Santa María Nebaj. The Ixil region is isolated by beautiful mountains and has maintained its rich Ixil Maya traditions and language. Chajul, Nebaj, and Cotzal make up the Ixil Region in the Department of Quiché in the Western Highlands of Guatemala. Having been at the heart of the 36-year civil war, Chajul experiences post-war challenges such as emotional trauma, land displacement, and fragmented families. Additionally, unemployment is high, large families live in one-room adobe houses with open cooking fires, opportunities for women are scarce, and family- and gender-based violence are common. The community has a corn-based agricultural economy in which adults struggle daily to feed their families and the average income is $1–3 per day. A 2002 study revealed that less than 1% of children graduate from high school (5% from middle school) as they are forced to leave school at a young age to help support the family household, leaving 75% of the adult population illiterate. Chajul further suffers from common preventable health concerns, such as respiratory illness, intestinal disease, tuberculosis, malnutrition, and death during childbirth. Eighty percent of the Chajul population lives in poverty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "chajul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6089,
+    "attempt": 6045,
+    "place_id": "gn-3838506",
+    "input": {
+      "place": {
+        "place_id": "gn-3838506",
+        "name": "Rufino",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -34.26237,
+        "lon": -62.71128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rufino, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Rufino,_Santa_Fe",
+          "text": "Rufino is a city in the province of Santa Fe, Argentina. It has 19,211 inhabitants as per the 2022 census [INDEC]. It lies on the southwest of the province, 260 km (162 mi) from the main metropolitan area of the province Greater Rosario,416 km (258 mi) from the provincial capital Santa Fe, near the borders with Córdoba (west) and Buenos Aires (south), on the intersection of National Routes 33 and 7.\nThe town was founded by Gerónimo Segundo Rufino in 1886, as the railway line that linked Diego de Alvear, Santa Fe, to Villa Mercedes, San Luis, was inaugurated. The plans for the new town were approved by the governorship of Santa Fe on 29 March 1889, which is acknowledged as the  official foundation date."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "rufino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6090,
+    "attempt": 6046,
+    "place_id": "gn-4501265",
+    "input": {
+      "place": {
+        "place_id": "gn-4501265",
+        "name": "Clayton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.66011,
+        "lon": -75.09212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clayton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Clayton,_New_Jersey",
+          "text": "Clayton is a borough in Gloucester County, New Jersey, United States. As of the 2020 United States census, the borough's population was 8,807, an increase of 628 (+7.7%) from the 2010 census count of 8,179, which in turn reflected an increase of 1,040 (+14.6%) from the 7,139 counted in the 2000 census.\nJacob Fisler purchased much of the area that is now Clayton, acquiring 6,500 acres (2,600 ha) of land after the American Revolutionary War. A settlement named Fislertown developed and grew to 36 families by 1812. A glass factory was established in Clayton in the 1850s by one of Fisler's descendants, which contributed to Fislertown's growth.\nWhat is now Clayton was formed as Clayton Township on February 5, 1858, from portions of Franklin Township. Portions of the township were later taken on March 11, 1878, to form Glassboro Township. Clayton was formed as a borough by the New Jersey Legislature on May 9, 1887, from portions of Clayton Township. The remainder of Clayton Township was absorbed by the Clayton on April 14, 1908, and the township was dissolved. Clayton is part of the South Jersey region of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "clayton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6091,
+    "attempt": 6047,
+    "place_id": "gn-4501306",
+    "input": {
+      "place": {
+        "place_id": "gn-4501306",
+        "name": "Collingswood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.91817,
+        "lon": -75.07128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collingswood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Collingswood,_New_Jersey",
+          "text": "Collingswood is a borough in Camden County, in the U.S. state of New Jersey, located 5 miles (8.0 km) east of Center City Philadelphia. As of the 2020 United States census, the borough's population was 14,186, an increase of 260 (+1.9%) from the 2010 census count of 13,926, which in turn reflected a decline of 400 (−2.8%) from the 14,326 counted in the 2000 census.\nOwing in part to its Quaker history, Collingswood was founded as a dry town where alcohol cannot be sold, however restaurant patrons are permitted to bring their own wine and beer to consume. In July 2015, the town introduced an ordinance that allows craft breweries to operate in the town but not serve food. The ordinance passed in August 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "collingswood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6092,
+    "attempt": 6048,
+    "place_id": "gn-4558327",
+    "input": {
+      "place": {
+        "place_id": "gn-4558327",
+        "name": "Grays Ferry",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.93511,
+        "lon": -75.19212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grays Ferry, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Grays_Ferry,_Philadelphia",
+          "text": "Grays Ferry, also known as Gray's Ferry, is a neighborhood in South Philadelphia, Pennsylvania, United States, bounded (roughly) by 25th Street on the east, the Schuylkill River on the west, Vare Avenue on the south, and Grays Ferry Avenue on the north.  The section of this neighborhood west of 34th Street is also known as Forgotten Bottom.\nGrays Ferry shares borders with Southwest Center City to the north, Point Breeze to the east, and Girard Estate to the south. Grays Ferry is across from where Mill Creek debouches at about 43rd street.\nGrays Ferry was historically one of the largest enclaves of Irish Americans in the city, and while there are still many Irish left, it is now home to a majority African American population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "grays ferry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grays",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ferry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6093,
+    "attempt": 6049,
+    "place_id": "gn-5100972",
+    "input": {
+      "place": {
+        "place_id": "gn-5100972",
+        "name": "Maywood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.9026,
+        "lon": -74.06181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maywood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Maywood,_New_Jersey",
+          "text": "Maywood is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 10,080, an increase of 525 (+5.5%) from the 2010 census count of 9,555, which in turn reflected an increase of 32 (+0.3%) from the 9,523 counted in the 2000 census.\nMaywood was incorporated as a borough on June 29, 1894, from portions of Midland Township, based on the results of a referendum held that day. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The borough's name came from the name of a station established in the area by the New Jersey Midland Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "maywood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6094,
+    "attempt": 6050,
+    "place_id": "gn-5380883",
+    "input": {
+      "place": {
+        "place_id": "gn-5380883",
+        "name": "Palos Verdes Estates",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.80105,
+        "lon": -118.39245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palos Verdes Estates, California",
+          "url": "https://en.wikipedia.org/wiki/Palos_Verdes_Estates,_California",
+          "text": "Palos Verdes Estates is a coastal city in Los Angeles County, California, United States, situated on the Palos Verdes Peninsula and neighboring Rancho Palos Verdes and Rolling Hills Estates. The city was master-planned by the noted American landscape architect and planner Frederick Law Olmsted Jr. The city is located along the Southern California coastline of the Pacific Ocean.\nThe population was 13,347 at the 2020 census, a slight decrease from its  2010 population of 13,438. Palos Verdes Estates is one of the wealthiest cities in the United States, and was ranked as \"California's richest suburb\" in 2025. The 90274 ZIP code (covering the cities of Palos Verdes Estates and Rolling Hills) is considered some of the most exclusive and expensive neighborhoods in the United States. The city is also known for its high-performing school district, hiking trails, and oceanfront properties. The city is also notable for the century-old Palos Verdes Homeowners Association (PVHA), which controls architectural quality within the city via the PVHA Art Jury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "palos verdes estates",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verdes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estates",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6095,
+    "attempt": 6051,
+    "place_id": "gn-6139417",
+    "input": {
+      "place": {
+        "place_id": "gn-6139417",
+        "name": "Salmon Arm",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.69981,
+        "lon": -119.26907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salmon Arm",
+          "url": "https://en.wikipedia.org/wiki/Salmon_Arm",
+          "text": "Salmon Arm is a city in the Columbia Shuswap Regional District of the Southern Interior of the Canadian province of British Columbia that has a population of 19,432 (2021). Salmon Arm was incorporated as a municipal district on May 15, 2005. The city of Salmon Arm separated from the district in 1912, but was downgraded to a village in 1958. The city of Salmon Arm once again reunited with the District Municipality in 1970. Salmon Arm once again became a city in 2005, and is now the location of the head offices of the Columbia-Shuswap Regional District. It is a tourist town in the summer, connected to all 4 arms of Shuswap Lake, with many beaches, numerous golf courses, camping facilities, and house boat rentals. Salmon Arm is home to the longest wooden freshwater wharf in North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "salmon arm",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salmon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arm",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6096,
+    "attempt": 6052,
+    "place_id": "gn-640803",
+    "input": {
+      "place": {
+        "place_id": "gn-640803",
+        "name": "Pudasjärvi",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 65.38333,
+        "lon": 26.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pudasjärvi",
+          "url": "https://en.wikipedia.org/wiki/Pudasjärvi",
+          "text": "Pudasjärvi (Finnish pronunciation: [ˈpudɑsˌjærʋi]) is a town and a municipality of Finland. It is located in the province of Oulu and is part of the Northern Ostrobothnia region, 87 kilometres (54 mi) northeast of the city of Oulu and 130 kilometres (81 mi) southwest of the town of Kuusamo. The town has a population of 7,168 (31 December 2025) and covers an area of 5,867.23 square kilometres (2,265.35 sq mi) of which 228.67 km2 (88.29 sq mi) is water. The population density is 1.27 inhabitants per square kilometre (3.3/sq mi). In terms of area, Pudasjärvi is the second largest township in Finland (as of 2006, Rovaniemi is the largest) and one of the largest in the world. It's also one of the most sparsely inhabited.\nPudasjärvi is famed for its nature, and is the home of the southernmost fell area in Finland, Syöte. The oldest dated rock formations within the European Union can be found in Siuruankylä, Pudasjärvi. The trondhjemite gneiss is aged 3,500 million years.\nTwo Finnish melodic death metal bands, Kalmah and Eternal Tears of Sorrow formed in Pudasjärvi.\nThe Big Dipper and the bear of the Pudasjärvi's coat of arms are based on the old seal of the parish keeper. The coat of arms was designed by Gustaf von Numers, and the Pudasjärvi town council approved it at its meeting on August 2, 1950. The Ministry of the Interior approved the coat of arms for use on September 26 of the same year.\nPudasjärvi has been compared to the city of Roswell, New Mexico due to its UFO sightings; many sightings were made in the municipality and its surrounding areas in the late 1960s and early 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "pudasjarvi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6097,
+    "attempt": 6053,
+    "place_id": "gn-6544416",
+    "input": {
+      "place": {
+        "place_id": "gn-6544416",
+        "name": "Vecindario",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 27.84636,
+        "lon": -15.44455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vecindario",
+          "url": "https://en.wikipedia.org/wiki/Vecindario",
+          "text": "Vecindario is a town in the municipality of Santa Lucía de Tirajana in the south-eastern part of the island of Gran Canaria, in the Province of Las Palmas, in the Canary Islands. The population of Vecindario was estimated at 80 235 inhabitants in the 2023 census. Its current president is D. Francisco José García López.\nVecindario is located in the coastal area of the municipality of Santa Lucia de Tirajana being the 3rd in population of the island and the 5th of the archipelago. Its population centres are El Doctoral, San Pedro Mártir, La Paredilla, La Cerruda, Hoya Pavón, San Rafael, El Canario, Casa Pastores, Cruce de Sardina, Sardina, La Vereda, Los Llanos and Balos. Vecindario has an estimated population of almost 80 235 inhabitants. It is located about 35 km from Las Palmas de Gran Canaria, the capital of the island, 15 km from the airport of Gran Canaria and another 15 km from Maspalomas, the main tourist area of the island.\nVecindario is the nerve centre of the south-eastern conurbation of Gran Canaria, consisting mainly of the coastal neighbourhoods of the municipalities of Santa Lucía de Tirajana, Agüimes and Ingenio, which are all on the island of Gran Canaria. Other towns in this conurbation, which has around 120,000 inhabitants, are Cruce de Arinaga, Playa de Arinaga (Agüimes) and Carrizal (Ingenio).\nAgriculture was the main economic activity of Vecindario until the last quarter of the twentieth century for the production of tomatoes and other vegetables for export, when the service sector (especially trade) became predominant. At present, Vecindario is the largest urban open-air shopping centre on the island of Gran Canaria, together with the C.C. Atlántico and others of lesser importance such as C.C. Mercacentro, C.C. La Ciel and C.C. Avenida."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 292
+    },
+    "banned_terms": [
+      {
+        "term": "vecindario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6098,
+    "attempt": 6054,
+    "place_id": "gn-766307",
+    "input": {
+      "place": {
+        "place_id": "gn-766307",
+        "name": "Lidzbark Warmiński",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.12588,
+        "lon": 20.57954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lidzbark Warmiński",
+          "url": "https://en.wikipedia.org/wiki/Lidzbark_Warmiński",
+          "text": "Lidzbark Warmiński ([ˈlʲid͡zbarɡ varˈmʲiɲskʲi] ; German: Heilsberg, [ˈhaɪlsbɛʁk] ), often shortened to Lidzbark, is a historical town located within the Warmian-Masurian Voivodeship, in northern Poland. It is the capital of Lidzbark County.\nLidzbark Warmiński was once the capital of Warmia and formerly its largest town. Lidzbark itself was a religious and cultural center, for which it was known as the Pearl of Warmia. For a long period of time it was under the control of the Warmian Bishops and it was also a major economic center, only resigning its importance to the nearby city of Braniewo.\nThe Warmian Bishop's Castle is considered to be a great artistic and historical value in the world and has been recognised as a Historic Monument by the Polish government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "lidzbark warminski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lidzbark",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "warminski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6099,
+    "attempt": 6055,
+    "place_id": "gn-773357",
+    "input": {
+      "place": {
+        "place_id": "gn-773357",
+        "name": "Dęblin",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.55912,
+        "lon": 21.84829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dęblin",
+          "url": "https://en.wikipedia.org/wiki/Dęblin",
+          "text": "Dęblin [ˈdɛmblʲin]  is a town at the confluence of Vistula and Wieprz rivers, in Lublin Voivodeship, Poland. Dęblin is the part of the agglomeration with adjacent towns of Ryki and Puławy, which together have over 100,000 inhabitants. The population of the town itself is 13,669 (December 2025). Dęblin is part of the historic region of Lesser Poland. Since 1927 it has been the home of the chief Polish Air Force Academy (Polish: Lotnicza Akademia Wojskowa), and as such Dęblin is one of the most important places associated with aviation in Poland. The town is also a key railroad junction, located along the major Warsaw – Kyiv line, with two additional connections stemming from Dęblin – one westwards to Radom, and another one northeast to Łuków."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "deblin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6100,
+    "attempt": 6056,
+    "place_id": "gn-8740793",
+    "input": {
+      "place": {
+        "place_id": "gn-8740793",
+        "name": "Jirapur",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 24.0214,
+        "lon": 76.3764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jirapur",
+          "url": "https://en.wikipedia.org/wiki/Jirapur",
+          "text": "Jirapur is a town and a nagar panchayat in Rajgarh district in the Indian state of Madhya Pradesh. In 2022 Janpad Panchayat election held across Madhya Pradesh, Congress won the election and secure position as a Janpad Adhyaksh under the leadership of Khilchipur vidhayak Shri Kunwer Hajarilal Dangi ji Ji (currently MLA of Khilchipur constituency (2023-2028)). He put all the efforts to win this election and doing great work for Khilchipur constituency. He won 2023 assembly election of Madhya Pradesh with huge margin of 14000+ votes by defeating Priyavart Singh of Congress (Inc) candidate.\nJirapur is a Tehsil and belongs to Bhopal Division. It is located 39 km towards west from district headquarters Rajgarh, 158 km from the state capital of Bhopal from the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jirapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6101,
+    "attempt": 6057,
+    "place_id": "gn-11205637",
+    "input": {
+      "place": {
+        "place_id": "gn-11205637",
+        "name": "Lallmatie",
+        "country": "Mauritius",
+        "subdivision": "Mauritius",
+        "lat": -20.01839,
+        "lon": 57.58017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lallmatie",
+          "url": "https://en.wikipedia.org/wiki/Lallmatie",
+          "text": "Lallmatie is a village in Mauritius located in the western part of Flacq District. It occupies a latitude around -20.1897222 and a longitude around 57.6611111. It has a density of 793.5/km2 (2,055/sq mi) and a total population of around 11,910 inhabitants. Lallmatie is one of the most developed villages in Mauritius and has wide natural resources which include vast sugarcane fields, dense forests and rivers.\nThe village is sub divided into three plots—which include the Metropolitan area known as Royal Road Lallmatie—the residential area and—the flora and fauna area known as Giroday Road Lallmatie which consists of forest, sugar cane field and waterfall.\nChristianity, Catholic, Islam are practiced by Lallmatian but the most dominating religion is Hinduism, around 83% of Lallmatian are Hindu Mauritian. The official language are English and French which is used for administration while Mauritian Creole is highly used for communication, but some inhabitants also speak their vernacular languages which include French, Mauritian Creole, English and Bhojpuri.\nLallmatie has one secondary institution named Manilal Doctor State Secondary School which is a girl state college and two primary institutions called Jawaharlall Nehru Government School and Sookdeo Bissoondoyal Government School. The primary source of transportation of the village are bus and taxi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "lallmatie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6102,
+    "attempt": 6058,
+    "place_id": "gn-12048420",
+    "input": {
+      "place": {
+        "place_id": "gn-12048420",
+        "name": "Regent's Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53003,
+        "lon": -0.16193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Regent's Park",
+          "url": "https://en.wikipedia.org/wiki/Regent's_Park",
+          "text": "The Regent's Park is one of the Royal Parks of London. It occupies 410 acres (170 ha) in north-west Inner London, administratively split between the City of Westminster and the Borough of Camden (and historically between Marylebone and Saint Pancras parishes). In addition to its large central parkland and ornamental lake, it contains various structures and organizations both public and private, generally on its periphery, including Regent's University and London Zoo.\nWhat is now Regent's Park came into possession of the Crown upon the dissolution of the monasteries in the 1500s, and was used for hunting and tenant farming. In the 1810s, the Prince Regent proposed turning it into a pleasure garden. The park was designed by John Nash and James and Decimus Burton. Its construction was financed privately by James Burton after the Crown Estate rescinded its pledge to do so, and included development on the periphery of aristocratic townhouses and expensive terrace dwellings. The park is Grade I listed on the Register of Historic Parks and Gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "regent s park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "regent",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6103,
+    "attempt": 6059,
+    "place_id": "gn-13561226",
+    "input": {
+      "place": {
+        "place_id": "gn-13561226",
+        "name": "Shwe Kokko",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Kayin State",
+        "lat": 16.82082,
+        "lon": 98.53085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shwe Kokko",
+          "url": "https://en.wikipedia.org/wiki/Shwe_Kokko",
+          "text": "Shwe Kokko Myaing (Burmese: ရွှေကုက္ကိုမြိုင်; lit. 'golden raintree forest', Eastern Pwo Karen: ထိက်တုဂ်ဓံင့်), commonly known as Shwe Kokko (Burmese: ရွှေကုက္ကို, Chinese: 水沟谷; pinyin: Shuǐgōugǔ, Jyutping: seoi2 gau1 guk1), is a town in Myawaddy Township, Myawaddy District in the Kayin State of south-east Myanmar. Shwe Kokko lies on the left (western) bank of the Moei River (Thaungyin River), facing Thailand to the east. The town is located 20 kilometres (12 mi) north of Myawaddy. In recent years, Shwe Kokko has evolved into an organized crime and human trafficking hub, due to the Burmese government's limited reach and oversight in this remote area. Chinese-led development projects in Shwe Kokko, including Yatai New City, have been involved in illegal gambling, human trafficking, extortion, and cyber scam operations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "shwe kokko",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shwe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kokko",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6104,
+    "attempt": 6060,
+    "place_id": "gn-167444",
+    "input": {
+      "place": {
+        "place_id": "gn-167444",
+        "name": "Majdal Shams",
+        "country": "Syria",
+        "subdivision": "Quneitra",
+        "lat": 33.27029,
+        "lon": 35.7716
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Majdal Shams",
+          "url": "https://en.wikipedia.org/wiki/Majdal_Shams",
+          "text": "Majdal Shams (Arabic: مجدل شمس; Hebrew: מג'דל שמס) is a predominantly Druze town in the Golan Heights region, Quneitra Governorate, Syria. Under Israeli occupation since 1967, it is located in the southern foothills of Mount Hermon. In 2024 it had a population of  11,264.\nMajdal Shams played a significant role in the Great Syrian Revolt of 1925–1927 that was led by Druze leader Sultan al-Atrash, who is commemorated by several monuments in the city. Beginning in the 1930s, Majdal Shams became involved in political developments in nearby Mandatory Palestine, and supported the Arab Palestinians during the 1948 Arab–Israeli War.\nSince the Six-Day War in 1967, Majdal Shams along with the broader Golan Heights have been under Israeli occupation, and were effectively annexed in 1981.  The move was recognized by the United States in 2019, after having been lobbied by Israeli officials.\nMajdal Shams is the largest of the four remaining Syrian Druze communities in the Israeli-occupied territories of Golan Heights, the other three being Ein Qiniyye, Mas'ade, and Buq'ata. While the Golan Heights and Mount Hermon  are administratively joined, they differ geologically and geographically, with their boundary being marked by the Sa'ar Stream; Majdal Shams and Ein Qiniyye sit on limestone on the Hermon side, while Buq'ata and Mas'ade are on the Golan side, which is characterized by black volcanic rock (i.e., basalt)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "majdal shams",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "majdal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shams",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

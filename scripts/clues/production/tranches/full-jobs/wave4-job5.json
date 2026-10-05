@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 688,
+    "attempt": 681,
+    "place_id": "gn-3564124",
+    "input": {
+      "place": {
+        "place_id": "gn-3564124",
+        "name": "Cienfuegos",
+        "country": "Cuba",
+        "subdivision": "Cienfuegos Province",
+        "lat": 22.14681,
+        "lon": -80.4481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cienfuegos",
+          "url": "https://en.wikipedia.org/wiki/Cienfuegos",
+          "text": "Cienfuegos (Latin American Spanish: [sjeɱˈfweɣos]), capital of Cienfuegos Province, is a city on the southern coast of Cuba. It is located about 250 km (160 mi) from Havana and has a population of 178,368 in 2022. Since the late 1960s, Cienfuegos has become one of Cuba's main industrial centers, especially in the energy and sugar sectors. The city is dubbed La Perla del Sur (Pearl of the South). Despite being known as an industrial city of factories and various power plants (including a never completed nuclear plant), and the name Cienfuegos literally translating to \"one hundred fires\" (cien, \"one hundred\"; fuegos, \"fires\"), the city actually takes its name from the surname of Asturian-born José Cienfuegos Jovellanos, Captain General of Cuba (1816–19).\nBetween the end of the 19th century and the beginning of the 20th century, the city was settled by many Spaniards, mainly Catalans and Asturians who amassed fortunes as businessmen in different branches, some of them in the sugar industry. They became rich during their stay in Cuba, and they commissioned many of the most emblematic buildings of Cienfuegos that remain today (See also: Indiano). Another well known resident was the Irish-born John O’Bourke who had ten children on the island, three of whom were Cuban independence fighters from the Spanish crown: the mestizos Juan O'Bourke y Palacio, Rafael O’Bourke y Borroto, and Don Miguel O’Bourke y Ramos. There were also artistic personalities born in Cuba who have contributed to the cultural history of the city.\nIn 2005, UNESCO inscribed the Urban Historic Centre of Cienfuegos on the World Heritage List, citing Cienfuegos as the best extant example of early 19th century Spanish Enlightenment influence on urban planning. The downtown area contains six buildings from 1819–50, 327 buildings from 1851 to 1900, and 1188 buildings from the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "cienfuegos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 689,
+    "attempt": 682,
+    "place_id": "gn-4004898",
+    "input": {
+      "place": {
+        "place_id": "gn-4004898",
+        "name": "Hermosillo",
+        "country": "Mexico",
+        "subdivision": "Sonora",
+        "lat": 29.08874,
+        "lon": -110.96677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hermosillo",
+          "url": "https://en.wikipedia.org/wiki/Hermosillo",
+          "text": "Hermosillo (Latin American Spanish: [eɾmoˈsiʝo] ), formerly called Pitic (as in Santísima Trinidad del Pitic and Presidio del Pitic), is the capital and largest city of the northwestern Mexican state of Sonora, and the municipal seat of the municipality of Hermosillo. It also is the primary economic center for the state and the region. According to the 2020 census, the city has a population of 936,263, making it the 18th largest city in Mexico. The recent increase in the city's population is due to expanded industrialization, especially within the automotive industry.\nIn 2013 and 2018, Hermosillo was ranked as one of the top cities in Mexico for quality of life by the Strategic Communications Cabinet of the Mexican Federal Government.\nHermosillo was also ranked in 2016 as the seventh most competitive city in the country according to the Mexican Institute for Competitiveness (IMCO), based on factors such as its economic diversification, geographical location, access to education, government, innovation and international relations. The major manufacturing sector has been the production of automobiles since the 1980s. It is one of the richest cities in Mexico by GDP per capita.\nHermosillo has a subtropical hot desert climate (BWh). Temperatures have been as high as 49.5 °C (121.1 °F) in the summer months, making it one of the hottest cities in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "hermosillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 690,
+    "attempt": 683,
+    "place_id": "gn-4684888",
+    "input": {
+      "place": {
+        "place_id": "gn-4684888",
+        "name": "Dallas",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.78306,
+        "lon": -96.80667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dallas",
+          "url": "https://en.wikipedia.org/wiki/Dallas",
+          "text": "Dallas is a city in the U.S. state of Texas. Located in northern Texas, it is the ninth-most populous city in the United States and third-most populous city in Texas, with a population of 1.3 million at the 2020 census. Along with the city of Fort Worth, Dallas anchors the Dallas–Fort Worth metroplex, the fourth-most populous metropolitan area in the U.S. and the most populous metropolitan area in Texas, at 8.5 million people. Dallas is a core city of the largest metropolitan area in the Southern U.S. and the largest inland metropolitan area in the U.S. that lacks any navigable link to the sea. It is the seat of Dallas County, covering nearly 386 square miles (1,000 km2) and extending into Collin, Denton, Kaufman, and Rockwall counties.\nBoth Dallas and Fort Worth were initially developed as a product of the construction of major railroad lines through the area allowing access to cotton, cattle, and later oil in North and East Texas. The construction of the Interstate Highway System reinforced Dallas's prominence as a transportation hub, with four major interstate highways converging in the city and a fifth interstate loop around it. Dallas then developed as a strong industrial and financial center and a major inland port, due to the convergence of major railroad lines, interstate highways, and the construction of Dallas Fort Worth International Airport, one of the largest and busiest airports in the world. In addition, Dallas Area Rapid Transit (DART) operates rail and bus transit services throughout the city and its surrounding suburbs.\nDominant sectors of its diverse economy include defense, financial services (such as traditional banking, investment banking, private equity, and venture capital), information technology, telecommunications, and transportation. The Dallas–Fort Worth metroplex hosts 23 Fortune 500 companies, the second-most in Texas and fourth-most in the United States, and 11 of those companies are located within Dallas city limits. Over 41 colleges and universities are located within its metropolitan area, which is the most of any metropolitan area in Texas. The city has a population from a myriad of ethnic and religious backgrounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 345
+    },
+    "banned_terms": [
+      {
+        "term": "dallas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 691,
+    "attempt": 684,
+    "place_id": "gn-6173331",
+    "input": {
+      "place": {
+        "place_id": "gn-6173331",
+        "name": "Vancouver",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.24966,
+        "lon": -123.11934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Vancouver",
+          "text": "Vancouver is a major city in Western Canada, located in the Lower Mainland region of British Columbia. As the most populous city in the province, the 2021 Canadian census recorded 662,248 people in the city, up from 631,486 in 2016. The Greater Vancouver area had a population of 2.6 million in 2021, making it the third-largest metropolitan area in Canada after Toronto and Montreal. The region, together with the Fraser Valley, makes up the Lower Mainland, which has a total population of over 3 million. Vancouver has the highest population density in Canada, with over 5,700 inhabitants per square kilometre (15,000/sq mi), and the fourth highest in North America (after New York City, San Francisco, and Mexico City).\nVancouver is one of the most ethnically and linguistically diverse cities in Canada: 49.3 percent of its residents are not native English speakers, 47.8 percent are native speakers of neither English nor French, and 54.5 percent of residents belong to visible minority groups. It has been consistently ranked one of the most liveable cities in Canada and in the world. In terms of housing affordability, Vancouver is also one of the most expensive cities in Canada and in the world. Vancouverism is the city's urban planning design philosophy.\nIndigenous settlement of Vancouver began more than 10,000 years ago and included the Squamish, Musqueam, and Tsleil-Waututh (Burrard) peoples. The beginnings of the modern city, which was originally named Gastown, grew around the site of a makeshift tavern on the western edges of Hastings Mill that was built on July 1, 1867, and owned by proprietor Gassy Jack. The Gastown steam clock marks the original site. Gastown then formally registered as a townsite named Granville, Burrard Inlet. The city was renamed \"Vancouver\" in 1886 through a deal with the Canadian Pacific Railway. The Canadian Pacific transcontinental railway was extended to the city by 1887. The city's large natural seaport on the Pacific Ocean became a vital link in the trade between Asia-Pacific, East Asia, Europe, and Eastern Canada.\nVancouver has hosted many international conferences and events, including the 1954 Commonwealth Games, UN Habitat I, Expo 86, APEC Canada 1997, the World Police and Fire Games in 1989 and 2009, matches and the finals of the 2015 FIFA Women's World Cup, several matches of the 2026 FIFA World Cup, and the 2010 Winter Olympics and Paralympics which were held in Vancouver and Whistler, a resort community 125 km (78 mi) north of the city. In 1969, Greenpeace was founded in Vancouver. The city became the permanent home of TED conferences in 2014.\nAs of 2016, the Port of Vancouver is the fourth-largest port by tonnage in the Americas, the busiest and largest port in Canada, and the most diversified port in North America. While forestry remains its largest industry, Vancouver is well known as an urban centre surrounded by nature, making tourism its second-largest industry. Major film production studios in Vancouver and nearby Burnaby have turned Greater Vancouver and nearby areas into one of the largest film production centres in North America, earning it the nickname \"Hollywood North\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 513
+    },
+    "banned_terms": [
+      {
+        "term": "vancouver",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 692,
+    "attempt": 685,
+    "place_id": "gn-709717",
+    "input": {
+      "place": {
+        "place_id": "gn-709717",
+        "name": "Donetsk",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.023,
+        "lon": 37.80224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donetsk",
+          "url": "https://en.wikipedia.org/wiki/Donetsk",
+          "text": "Donetsk (UK: , US:  dən-; Ukrainian: Донецьк [doˈnɛtsʲk] ; Russian: Донецк [dɐˈnʲetsk] ), formerly known as Aleksandrovka, Yuzivka (or Hughesovka), Stalin, and Stalino, is an industrial city in eastern Ukraine located on the Kalmius River in Donetsk Oblast, which is currently occupied by Russia as the capital of the Donetsk People's Republic. The population was estimated at 901,645 (2022 estimate) in the city core, with over 2 million in the metropolitan area (2011). According to the 2001 census, Donetsk was the fifth-largest city in Ukraine.\nAdministratively, Donetsk has been the centre of Donetsk Oblast, while historically, it is the unofficial capital and largest city of the larger economic and cultural Donets Basin (Donbas) region. Donetsk is adjacent to another major city, Makiivka, and along with other surrounding cities forms a major urban sprawl and conurbation in the region. Donetsk has been a major economic, industrial and scientific centre of Ukraine with a high concentration of heavy industries and a skilled workforce. The density of heavy industries (predominantly steel production, chemical industry, and coal mining) determined the city's challenging ecological situation. In 2012, a UN report ranked Donetsk among the world's fastest depopulating cities.\nThe original settlement was first mentioned as Aleksandrovka in 1779. In 1869, the Welsh businessman John Hughes founded a steel plant and several coal mines in the region, and the town was named Hughesovka or Yuzovka (Юзовка) in recognition of his role (\"Yuz\" being a Russian-language approximation of Hughes). During Soviet times, the city's steel industry expanded. In 1924, Yuzovka was renamed Stalin. In 1929, Stalin was renamed Stalino, and in 1932, the city became the centre of the Donetsk region. Renamed Donetsk in 1961, the city today remains a centre for coal mining and for the steel industry.\nSince April 2014, Donetsk and its surrounding areas have been one of the major sites of fighting in the ongoing Russo-Ukrainian War, as pro-Russian separatist forces battle against Ukrainian military forces for control of the city and surrounding areas. Throughout the war, the city of Donetsk has been administered by the pro-Russian separatist forces as the center of the Donetsk People's Republic (DPR), with outlying territories of the Donetsk region divided between the two sides. Donetsk International Airport became the epicenter of the war in 2014 with almost a year-long battle.\nAs of June 2026, Russia has full control of the city, with Ukrainian and Russian forces still in combat near the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "donetsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 693,
+    "attempt": 686,
+    "place_id": "gn-1785294",
+    "input": {
+      "place": {
+        "place_id": "gn-1785294",
+        "name": "Anyang",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 36.096,
+        "lon": 114.38278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anyang",
+          "url": "https://en.wikipedia.org/wiki/Anyang",
+          "text": "Anyang (simplified Chinese: 安阳; traditional Chinese: 安陽; pinyin: Ānyáng; [án.jǎŋ]) is a prefecture-level city in Henan, China. The northernmost city in Henan, it borders Puyang to the east, Hebi and Xinxiang to the south, and the provinces of Shanxi and Hebei to its west and north respectively. Anyang had a total population of 5,477,614 as of the 2020 census, 2,675,523 of whom lived in the built-up (or metro) area made of four urban districts and Anyang and Tangyin counties, now largely agglomerated with the city proper.\nAnyang is the location of the ancient city of Yin, which was the capital of the Shang dynasty and the first stable capital of China. As the ancient capital of the Seven Dynasties and one of the birthplaces of Chinese civilization, Anyang is rich in historical and cultural resources and has a number of world-class and national historical sites. At the end of 1986, it was recognized as a national historical and cultural city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "anyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 694,
+    "attempt": 687,
+    "place_id": "gn-212730",
+    "input": {
+      "place": {
+        "place_id": "gn-212730",
+        "name": "Kisangani",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Tshopo",
+        "lat": 0.51528,
+        "lon": 25.19099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisangani",
+          "url": "https://en.wikipedia.org/wiki/Kisangani",
+          "text": "Kisangani (), formerly Stanleyville (Dutch: Stanleystad), is the capital of Tshopo Province, located on the Congo River in the eastern part of the central Congo Basin in the Democratic Republic of the Congo. It is the country's fifth-most populous urban area, with an estimated population of 1,602,144 as of 2016, and the largest of the cities in the tropical woodlands of the Congo. \nGeographically, Kisangani is flanked by Banalia Territory to the north, Bafwasende to the east, Ubundu Territory to the south, and is bordered by both Opala and Isangi Territories to the west. The city spans an area of 1,910 square kilometres (740 sq mi) and is situated within the equatorial forest plain at coordinates 0°30' north latitude and 25°20' east longitude, just 80 kilometres (50 mi) from the equator. Kisangani is located approximately 2,100 kilometres (1,300 mi) from the mouth of the Congo River, making it the furthest navigable point upstream.\nKisangani is administratively divided into six communes. Five communes—Kabondo, Kisangani, Makiso, Mangobo, and Tshopo—are strategically situated on the right bank, while the Lubunga commune is on the left bank.\nKisangani is the nation's most important inland port after Kinshasa, an important commercial hub point for river and land transportation and a major marketing and distribution centre for the north-eastern part of the country. It has been the commercial capital of the northern Congo since the late 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "kisangani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 695,
+    "attempt": 688,
+    "place_id": "gn-2347059",
+    "input": {
+      "place": {
+        "place_id": "gn-2347059",
+        "name": "Birnin Kebbi",
+        "country": "Nigeria",
+        "subdivision": "Kebbi",
+        "lat": 12.45389,
+        "lon": 4.1975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birnin Kebbi",
+          "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi",
+          "text": "Birnin Kebbi is a city located in northwestern Nigeria It is the capital city of Kebbi State and headquarters of the Gwandu Emirate. As at 2007 the city had an estimated population of 125,594 people.\nKebbi is mostly a Hausa and Fulani state, with Islam as the major religion.\nFormerly it was the capital of the Kebbi Emirate, which relocated to Argungu after the conquest by Gwandu in 1831. The town remained the capital of Kebbi until 1805, when it was burned in the Fulani jihad (“holy war”) by Abdullahi dan Fodio, a brother of the jihad leader and later Emir of Gwandu. After Birnin Kebbi was incorporated into the Fulani Emirate of Gwandu, it was eclipsed in political importance by Gwandu (Gando) town, 30 miles (48 km) east, and as a caravan and riverside market centre by Jega, 20 miles (32 km) southeast, which lay at the head of navigation on the Zamfara River, a tributary of the Sokoto. Ironically, while Argungu (48 km or 30 miles northeast) became the traditional seat of the king of Kebbi in 1827, Birnin Kebbi served as the Gwandu emirate headquarters after Emir Haliru was inaugurated there in 1906. Birnin Kebbi became the capital of the newly created Nigerian state of Kebbi in 1991.\nAlthough Birnin Kebbi has declined as a river port because of silting as well as political conditions, it now serves as a collecting point for peanuts (groundnuts) and rice and as a major local market centre in millet, sorghum, rice, fish, goats, and cattle. It is the site of a state polytechnic college and a government rice-research station. Its Hausa and Fulani inhabitants are Muslims. Birnin Kebbi is also a Local government area with a population of 366,200 (2016 est.)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 291
+    },
+    "banned_terms": [
+      {
+        "term": "birnin kebbi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "birnin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kebbi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 696,
+    "attempt": 689,
+    "place_id": "gn-2468369",
+    "input": {
+      "place": {
+        "place_id": "gn-2468369",
+        "name": "Gabès",
+        "country": "Tunisia",
+        "subdivision": "Gabès Governorate",
+        "lat": 33.88146,
+        "lon": 10.0982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gabès",
+          "url": "https://en.wikipedia.org/wiki/Gabès",
+          "text": "Gabès ( GAH-bess, UK also  GAH-biss; Arabic: قابس, romanized: Qābis; Tunisian Arabic: ڨابس, romanized: Gābis, pronounced [ˈɡɛːbɪs] ), is the capital of the Gabès Governorate in Tunisia. Situated on the coast of the Gulf of Gabès, the city has a population of 167,863, making it the 6th largest city in Tunisia. Located 327 km southeast of Tunis and 113 km from Sfax, Gabès lies at the delta of the Wadi Qabis, which originates 10 kilometers upstream at Ras al-Oued and serves as its primary water source.  \nHistorically, the town was a Carthaginian settlement known as Tacapae before falling under Roman control. It was later ruined during the 7th-century Arab invasion but was recovered by Sidi Boulbaba, a revered companion of the Prophet Muhammad and a patron of the town. Although it experienced decline under the Ottomans, Gabès saw significant growth under French rule from 1881 to 1955, with the development of key infrastructure, including a railway, road network, and port. During World War II, the city served as the headquarters for Germany's Afrika Korps until British and French forces retook it in 1943.\nToday, Gabès is a thriving commercial hub and oasis, with industries spanning fishing, agriculture, textiles, cement, brick manufacturing, and petrochemicals. Tourism also contributes to its economy, making it an important center in southern Tunisia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "gabes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 697,
+    "attempt": 690,
+    "place_id": "gn-2686657",
+    "input": {
+      "place": {
+        "place_id": "gn-2686657",
+        "name": "Örebro",
+        "country": "Sweden",
+        "subdivision": "Örebro",
+        "lat": 59.27412,
+        "lon": 15.2066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Örebro",
+          "url": "https://en.wikipedia.org/wiki/Örebro",
+          "text": "Örebro ( UR-ə-BROO; Swedish: [œrɛˈbruː] ) is the seventh-largest city in Sweden, the seat of Örebro Municipality, and capital of Örebro County. It is situated by the Närke Plain, near the lake Hjälmaren, a few kilometers inland along the small river Svartån, and has a population of approximately 126,000 in the city proper. It is one of the largest inland hubs of the country, and a major logistic and commercial operating site.\nÖrebro is home to Örebro University, a major university hospital, a medieval castle, the water park Gustavsvik as well as several large shopping malls and the Oset and Rynningeviken Nature Reserve adjacent to lake Hjälmaren.\nÖrebro is a trade and logistics city with a strategic location 200 km from Stockholm, 330 km from Oslo and 280 km from Gothenburg. The city is served by Örebro Airport 10 km (6 mi) southwest of the city, and by Örebro Central Station, serviced by the Mälaren Line and Western Main Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "orebro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 698,
+    "attempt": 691,
+    "place_id": "gn-2735943",
+    "input": {
+      "place": {
+        "place_id": "gn-2735943",
+        "name": "Porto",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.1485,
+        "lon": -8.61097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto",
+          "url": "https://en.wikipedia.org/wiki/Porto",
+          "text": "Porto, also known in English as Oporto, is the second largest city in Portugal, after Lisbon. It is the capital of the Porto District and one of the Iberian Peninsula's major urban areas. Porto city proper, which is the entire municipality of Porto, is small compared to its metropolitan area, with an estimated population of 273,476 people in a municipal area of 41.42 km2 (16 sq mi). As of 2025, the Porto metropolitan area has around 1.9 million people in an area of 2,395 km2 (925 sq mi), making it the second-largest urban area in Portugal. It is recognized as a global city with a Gamma + rating from the Globalization and World Cities Research Network.\nOn the Douro River estuary in northern Portugal, Porto is one of the oldest European centers, and its core was named a World Heritage Site by UNESCO in 1996, as the Historic Centre of Porto, Luiz I Bridge and Monastery of Serra do Pilar. The historic area is also a National Monument of Portugal. The western part of its urban area extends to the coastline of the Atlantic Ocean. Settlement dates back to the 2nd century BC, when it was an outpost of the Roman Republic. Its combined Celtic-Latin name, Portus Cale, has been referred to as the origin of the name Portugal, based on transliteration and oral evolution from Latin.\nPort wine, one of Portugal's most famous exports, is named after Porto, as the metropolitan area, and in particular the cellars of Vila Nova de Gaia, were responsible for the packaging, transport, and export of fortified wine. Porto is on the Portuguese Way path of the Camino de Santiago. Livraria Lello uses timed entry, while several port wine cellars in Vila Nova de Gaia offer guided tours and tastings. In 2023, Porto was named City of the Year by Food and Travel magazine. In 2024, the city was named World's Leading Seaside Metropolitan Destination at the World Travel Awards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 699,
+    "attempt": 692,
+    "place_id": "gn-2821164",
+    "input": {
+      "place": {
+        "place_id": "gn-2821164",
+        "name": "Trier",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.75565,
+        "lon": 6.63935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trier",
+          "url": "https://en.wikipedia.org/wiki/Trier",
+          "text": "Trier ( TREER, German: [tʁiːɐ̯] ; Luxembourgish: Tréier [ˈtʀɜɪ̯ɐ] ), formerly and traditionally known in English as Trèves ( TREV, French: [tʁɛv] ) and Triers (see also names in other languages), is a city on the banks of the Moselle in Germany. It lies in a valley between low vine-covered hills of red sandstone in the west of the state of Rhineland-Palatinate, near the border with Luxembourg and within the Moselle wine region.\nFounded by the Romans in the late 1st century BC as Augusta Treverorum (\"The City of Augustus among the Treveri\"), Trier is considered Germany's oldest city. It is also the oldest seat of a bishop north of the Alps. Trier was one of the four capitals of the Roman Empire during the Tetrarchy period in the late 3rd and early 4th centuries. In the Middle Ages, the archbishop-elector of Trier was an important prince of the Church who controlled land from the French border to the Rhine. The archbishop-elector of Trier also had great significance as one of the seven electors of the Holy Roman Empire. Because of its significance during the Roman and Holy Roman empires, several monuments and cathedrals within Trier are listed as a UNESCO World Heritage Site.\nWith an approximate population of 110,000, Trier is the fourth-largest city in its state, after Mainz, Ludwigshafen, and Koblenz. The nearest major cities are Luxembourg City (50 km or 31 mi to the southwest), Saarbrücken (80 kilometres or 50 miles southeast), and Koblenz (100 km or 62 mi northeast).\nThe University of Trier, the administration of the Trier-Saarburg district and the seat of the ADD (Aufsichts- und Dienstleistungsdirektion), which until 1999 was the borough authority of Trier, and the Academy of European Law (ERA) are all based in Trier. It is one of the five \"central places\" of the state of Rhineland-Palatinate. Along with Luxembourg, Metz and Saarbrücken, fellow constituent members of the QuattroPole union of cities, it is central to the greater region encompassing Saar-Lor-Lux (Saarland, Lorraine and Luxembourg), Rhineland-Palatinate, and Wallonia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "trier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 700,
+    "attempt": 693,
+    "place_id": "gn-298806",
+    "input": {
+      "place": {
+        "place_id": "gn-298806",
+        "name": "Turgutlu",
+        "country": "Türkiye",
+        "subdivision": "Manisa",
+        "lat": 38.49533,
+        "lon": 27.6997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turgutlu",
+          "url": "https://en.wikipedia.org/wiki/Turgutlu",
+          "text": "Turgutlu, also known as Kasamba (Cassaba or Casaba) is a municipality and district of Manisa Province, Turkey Magnesia on the Maeander. Its area is 549 km2, and its population is 175,401 (2022). Its elevation is 68 m (223 ft).\nThe present name derives from the name of the Turkish clan of \"Turghudlu\" (also cited as \"Turgut\" or \"Turgutoğlu\"), recorded as having provided the main support to the Beylik of Karaman during their time of existence  and mentioned in historical records as an important political entity as late as the 18th century Iran. Their settlement in Turgutlu region is thought to have taken place some time in the 15th century at the same time as the Ottoman unification of Anatolia which resulted in the demise of Karamanids. That nearby Manisa was the center where Ottoman shahzades (crown princes) received their education must have placed the clan once again in a non-negligible position in their relations this time with the Ottoman dynasty.\nThe term Casaba for melons derived from the name of the city, an echo of its 18th-19th century Greek past when it was an important regional trade center and hub, located in the middle of a fertile alluvial plain and with access to outside markets through nearby İzmir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "turgutlu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 701,
+    "attempt": 694,
+    "place_id": "gn-13118244",
+    "input": {
+      "place": {
+        "place_id": "gn-13118244",
+        "name": "Mandaluyong",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.57837,
+        "lon": 121.03522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandaluyong",
+          "url": "https://en.wikipedia.org/wiki/Mandaluyong",
+          "text": "Mandaluyong (  mən-dah-LOO-yong; Tagalog pronunciation: [mɐndɐˈlujoŋ]), officially the City of Mandaluyong (Filipino: Lungsod ng Mandaluyong, Tagalog pronunciation: [luŋˈsod nɐŋ mɐndɐˈlujoŋ]), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 465,902 people.\nLocated directly east of Manila, Mandaluyong was originally the barrio of San Felipe Neri under the jurisdiction of Santa Ana de Sapa. It became a separate municipality within the province of Tondo (later Manila) in 1841 and was annexed to the province of Rizal in 1901, briefly serving as the latter's provincial capital in 1904. The municipality was officially renamed Mandaluyong in 1931 during the American colonial period and became part of the City of Greater Manila from 1942 to 1945 and finally Metro Manila upon the region's establishment in 1975. It was granted cityhood in 1994, becoming the first municipality in Metro Manila to be converted into a city since the region's establishment.\nMandaluyong is home to part of Ortigas Center, one of Metro Manila's principal central business districts, which it shares with Pasig. It is also the site of the headquarters of the Asian Development Bank, Banco de Oro, and San Miguel Corporation. The city is bordered by Manila, San Juan, Quezon City, Pasig, Taguig, and Makati, and is the fourth-smallest city in the Philippines by land area, covering 11.26 km2 (4.35 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "mandaluyong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 702,
+    "attempt": 695,
+    "place_id": "gn-2033196",
+    "input": {
+      "place": {
+        "place_id": "gn-2033196",
+        "name": "Zhangjiakou",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 40.78341,
+        "lon": 114.87139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhangjiakou",
+          "url": "https://en.wikipedia.org/wiki/Zhangjiakou",
+          "text": "Zhangjiakou (), also known as Kalgan and by several other names, is a prefecture-level city in northwestern Hebei province in Northern China, bordering Beijing to the southeast, Inner Mongolia to the north and west, and Shanxi to the southwest. In 2020, its population was 4,118,908 inhabitants, with an area of 36,861.56 square kilometres (14,232.33 sq mi), divided into 17 counties and districts. The built-up (or metro) area, made of Qiaoxi, Qiaodong, Chongli, Xuanhua, Xiahuayuan Districts, is largely conurbated, with 1,413,861 inhabitants in 2020 in an area of 5,266 km2 (2,033 sq mi). In 2024, the registered population of the whole region is 208.896 million.\nSince ancient times, Zhangjiakou has been a stronghold of military significance and vied for by multiple sides, hence it is nicknamed the Northern Gate of Beijing. Due to its strategic position on several important transport arteries, it is a critical node for travel between Hebei and Inner Mongolia and connecting northwest China, Mongolia, and Beijing. Dajingmen, an important gate and junction of the Great Wall of China, is located here.\nIn the south, Zhangjiakou is largely cultivated for agricultural use. In the north, Bashang is a part of the Mongolian plateau and dominated by grasslands. The forest coverage reaches 37%, earning Zhangjiakou the title of National Forest City. According to the Ministry of Environmental Protection, Zhangjiakou has the freshest air and the least PM 2.5 pollution of all Chinese cities north of the Yellow River. Zhangjiakou also possesses 4.6% of China's wind energy resources, and the city ranks second in solar energy use. Zhangjiakou was one of the host cities at the 2022 Winter Olympics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "zhangjiakou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 703,
+    "attempt": 696,
+    "place_id": "gn-2267057",
+    "input": {
+      "place": {
+        "place_id": "gn-2267057",
+        "name": "Lisbon",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.72509,
+        "lon": -9.1498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lisbon",
+          "url": "https://en.wikipedia.org/wiki/Lisbon",
+          "text": "Lisbon (  LIZ-bən; Portuguese: Lisboa [liʒˈβoɐ] ) is the capital and most populous city of Portugal, with an estimated population of 658,236 as of 2025, within its administrative limits and 3,353,000 within the metropolis, as of 2025. The city lies on the Atlantic Ocean in the western part of the Iberian Peninsula, fronting the northern shore of the River Tagus.  The western portion of its metro area, the Portuguese Riviera, hosts the westernmost point of Continental Europe, culminating at Cabo da Roca.\nLisbon is one of the oldest cities in the world and the second-oldest European capital city (after Athens), predating other modern European capitals by centuries. Settled by pre-Celtic tribes and later founded and civilised by the Phoenicians, Julius Caesar made it a municipium called Felicitas Julia, adding the term to the name Olisipo. After the fall of the Roman Empire, it was ruled by a series of Germanic tribes from the 5th century, most notably the Visigoths. Later it was captured by the Moors in the 8th century. In 1147, Afonso Henriques conquered the city and in 1255, it became Portugal's capital, replacing Coimbra. It has since been the political, economic, and cultural centre of the country.\nAs the political centre of the country, Lisbon hosts the government, Assembly of the Republic, Supreme Court of Justice, Armed Forces and residence of the head of state. It is also the centre of Portuguese diplomacy, with ambassadors from 86 countries residing in the city, as well as representations from Taiwan and Palestine. About 3.35 million people live in the Lisbon metropolitan area, which extends beyond the city's administrative area, making it the third largest metropolitan area in the Iberian Peninsula (after Madrid and Barcelona) as well as figuring amongst the 10 most populous urban areas in the European Union. It represents approximately 28% of the country's population.\nLisbon is recognised as an alpha− level global city because of its importance in finance, commerce, fashion, media, entertainment, arts, international trade, education, and tourism. Lisbon is amongst the two Portuguese cities (the other being Porto) to be recognised as a global city, and it is also home to three companies in the Global 2000 (EDP Group, Galp Energia and Jerónimo Martins). Lisbon is one of the major economic centres in Europe, with a growing financial sector, with PSI-20 being part of Euronext, the largest centre for debt and funds listings in the world. The Lisbon region has a higher GDP PPP per capita than any other region in Portugal, US$179 billion or $61,713 per capita. The city is the 40th richest city in the world by gross earnings. Most of the headquarters of multinational corporations in Portugal are located in the Lisbon area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 451
+    },
+    "banned_terms": [
+      {
+        "term": "lisbon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 704,
+    "attempt": 697,
+    "place_id": "gn-2624886",
+    "input": {
+      "place": {
+        "place_id": "gn-2624886",
+        "name": "Aalborg",
+        "country": "Denmark",
+        "subdivision": "North Denmark",
+        "lat": 57.048,
+        "lon": 9.9187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aalborg",
+          "url": "https://en.wikipedia.org/wiki/Aalborg",
+          "text": "Aalborg or Ålborg ( AHL-borg, US also  AWL-; Danish: [ˈʌlˌpɒˀ] ) is Denmark's fourth largest city (behind Copenhagen, Aarhus, and Odense) with a population of 119,862 (1 July 2022) in the town proper and an urban population of 143,598 (1 July 2022). As of 1 July 2022, the Municipality of Aalborg had a population of 221,082, making it the third most populous in the country after the municipalities of Copenhagen (capital) and Aarhus. Eurostat and OECD have used a definition for the metropolitan area of Aalborg (referred to as a \"functional urban area\"), which includes all municipalities in the province (Danish: landsdel) of North Jutland (Danish: Nordjylland), with a total population of 594,323 as of 1 July 2022.\nBy road Aalborg is 64 kilometres (40 mi) southwest of Frederikshavn, and 118 kilometres (73 mi) north of Aarhus. The distance to Copenhagen is 412 kilometres (256 mi) by road without using ferries.\nThe earliest settlements date to around AD 700. Aalborg's position at the narrowest point on the Limfjord made it an important harbour during the Middle Ages, and later a large industrial centre. Architecturally, the city is known for its half-timbered mansions built by its prosperous merchants. Budolfi Church, now a cathedral, dates from the end of the 14th century and Aalborghus Castle, a royal residence, was built in 1550. Today, Aalborg is a city in transition from a working-class industrial area to a knowledge-based community. A major exporter of grain, cement, and liquors, its business interests include Siemens Gamesa Renewable Energy, Alfa Laval, and Aalborg Portland. These companies have become global producers of wind turbine rotors, marine boilers, and cement.\nWith its theatres, symphony orchestra, opera company, performance venues, and museums such as Aalborg Historical Museum and the Aalborg Museum of Modern Art, Aalborg is an important cultural hub. The Aalborg Carnival, held at the end of May, is one of the largest festivals in Scandinavia, attracting some 100,000+ people annually. The town's major university is Aalborg University (often abbreviated to AAU), founded in 1974, which has more than 20,000 students (as of 2018). AAU is also North Jutland's largest university. The University College of Northern Denmark (UCN) is one of seven new regional organisations while the Royal School of Library and Information Science (RSLIS) provides higher education in library and information science. Trænregimentet, the Danish regiment for army supply and emergency medical personnel, is also in Aalborg. Aalborg University Hospital, the largest in the north of Jutland, was founded in 1881.\nThe football club Aalborg BK, established in 1885 and based at Nordjyske Arena, won the Danish Superliga in the 1994–95 season, the 1998–99 season, the 2007–08 season, and the 2013–14 season. Other sports associations include the ice hockey club Aalborg Pirates, the men's handball team Aalborg Håndbold, the rugby club Aalborg RK, and Aalborg Cricket Club. Aalborg Railway Station, on John F. Kennedys Plads has connected the city to Randers and the south since 1869. Aalborg Airport is just 6 kilometres (3.7 mi) northwest of the city centre.\nA 2014 survey by the European Commission found that the citizens of Aalborg are the most satisfied people in Europe with their city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 524
+    },
+    "banned_terms": [
+      {
+        "term": "aalborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 705,
+    "attempt": 698,
+    "place_id": "gn-3689147",
+    "input": {
+      "place": {
+        "place_id": "gn-3689147",
+        "name": "Barranquilla",
+        "country": "Colombia",
+        "subdivision": "Atlántico",
+        "lat": 10.96854,
+        "lon": -74.78132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barranquilla",
+          "url": "https://en.wikipedia.org/wiki/Barranquilla",
+          "text": "Barranquilla (; Latin American Spanish: [baraŋˈkiʝa] ) is the capital district of the Atlántico department in Colombia. It is located near the Caribbean Sea and is the largest city and third port in the Caribbean coast region; as of 2018, it had a population of 1,206,319, making it Colombia's fourth-most populous city after Bogotá, Medellín, and Cali.\nBarranquilla lies strategically next to the delta of the Magdalena River, 7.5 km (4.7 mi) (originally 25 km (16 mi) before rapid urban growth) from its mouth at the Caribbean Sea, serving as a port for river and maritime transportation within Colombia. It is also the main economic center of the Atlántico department in Colombia. The city is the core of the Barranquilla metropolitan area, with a population of over 2 million, which also includes the municipalities of Soledad, Galapa, Malambo, and Puerto Colombia.\nBarranquilla was legally established as a town on April 7, 1813, although it dates from at least 1629. It grew into an important port, serving as a haven for immigrants from Europe, especially during and immediately following World War I and World War II, when waves of additional immigrants from the Middle East and Asia arrived. Barranquilla became Colombia's main port, and with its level of industrialization and modernity, it earned the nickname \"Colombia's Golden Gate\" (Spanish: La Puerta de Oro de Colombia). In the 1940s, Barranquilla was the second-largest city in Colombia and one of the most modern cities in the Caribbean and in South America; later local administrations, due to widespread corruption in their ranks, brought about a decline in the standard of living. As government investment increased in other Colombian cities, Barranquilla's national position was eclipsed.\nBarranquilla has hosted the 2018 Central American and Caribbean Games. The city is home to one of the most important folk and cultural festivals of Colombia, the Carnival of Barranquilla, which was declared a National Cultural Heritage by the Congress of Colombia in 2001 and recognized by UNESCO in 2003.\nErnesto Cortissoz International Airport, built in Barranquilla in 1919, was the first airport in South America. The city is served by domestic and international flights and was Avianca's first hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "barranquilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 706,
+    "attempt": 699,
+    "place_id": "gn-7289169",
+    "input": {
+      "place": {
+        "place_id": "gn-7289169",
+        "name": "Tri-Cities",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.2454,
+        "lon": -119.19617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tri-Cities, Washington",
+          "url": "https://en.wikipedia.org/wiki/Tri-Cities,_Washington",
+          "text": "The Tri-Cities are three closely linked cities (Kennewick, Pasco, and Richland) at the confluence of the Yakima, Snake, and Columbia Rivers in the U.S. state of Washington. Located in the Columbia Basin of Eastern Washington, the cities border one another, making the Tri-Cities seem like one uninterrupted mid-sized city. The three cities function as the center of the Tri-Cities metropolitan area, which consists of Benton and Franklin counties. The Tri-Cities urban area includes the city of West Richland, the census-designated places (CDP) of West Pasco and Finley, as well as the CDP of Burbank, despite the latter being located in Walla Walla County.\nThe official 2023 estimate of the Tri-Cities MSA population is 314,253, a more than 24% increase from 2010, while the combined population of the three principal cities themselves was 228,482 according to 2023 estimates from the United States Census Bureau.\nTri-Cities Airport is located in Pasco and provides the region with commercial and private air service. Pasco is the seat of Franklin County, while the other two cities are located in Benton County. In 2010, Kiplinger rated the Tri-Cities among the Top 10 best places to raise a family, and CNN/Money ranked the Tri-Cities one of the top 10 best bets for gains in housing value, due to its relatively stable economic conditions since the early 2000s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "tri cities",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tri",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cities",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 707,
+    "attempt": 700,
+    "place_id": "gn-1699076",
+    "input": {
+      "place": {
+        "place_id": "gn-1699076",
+        "name": "Muntinlupa",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.39028,
+        "lon": 121.0475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muntinlupa",
+          "url": "https://en.wikipedia.org/wiki/Muntinlupa",
+          "text": "Muntinlupa (Tagalog: [mʊntɪnˈlupɐ]), officially the City of Muntinlupa (Filipino: Lungsod ng Muntinlupa), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 552,225 people.\nIt is bordered on the north by Taguig, to the northwest by Parañaque, by Bacoor and Las Piñas to the west, to the southwest by Dasmariñas, by San Pedro to the south, and by Laguna de Bay, the largest lake in the country, to the east. From high above, the city of Muntinlupa has many large, green patches, which is unusual for Metro Manila. Because of these green patches, Muntinlupa earned the name \"Emerald City\" by the tourism establishment and also known as the \"Gateway to Calabarzon\" as it is the southernmost city of the National Capital Region.\nMuntinlupa is known as the location of the national insular penitentiary, the New Bilibid Prison, where the country's most dangerous criminals are incarcerated. This was relocated from its old site in Santa Cruz, Manila. Before the prison's relocation in the 1930s, Muntinlupa was mainly dedicated to fishing and farming.\nAyala Alabang Village, one of the country's largest and most expensive residential communities, is also located in Muntinlupa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "muntinlupa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

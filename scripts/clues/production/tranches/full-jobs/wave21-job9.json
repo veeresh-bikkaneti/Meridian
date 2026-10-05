@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 4192,
+    "attempt": 4161,
+    "place_id": "gn-2959686",
+    "input": {
+      "place": {
+        "place_id": "gn-2959686",
+        "name": "Achern",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.63115,
+        "lon": 8.07607
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Achern",
+          "url": "https://en.wikipedia.org/wiki/Achern",
+          "text": "Achern (German pronunciation: [ˈaxɐn] ; Low Alemannic: Achre) is a city in Western Baden-Württemberg, Germany. It is located approximately 18 km southwest of Baden-Baden and 19 km northeast of Offenburg.  Achern is the fourth largest town in the district of Ortenau (Ortenaukreis), after Offenburg, Lahr / Black Forest and Kehl.\nAs subsequent to the district reform in the 1970s the population passed the 20,000 mark, Achern requested to be awarded the status of Große Kreisstadt.  The status was granted by the State government effective January 1, 1974.  Achern collaborates with the communities of Lauf, Sasbach, and Sasbachwalden in administrative matters.\nBesides Achern itself, the municipality includes the boroughs of Fautenbach, Gamshurst, Großweier, Mösbach, Oberachern, Önsbach, Sasbachried and Wagshurst."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "achern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4193,
+    "attempt": 4162,
+    "place_id": "gn-2990189",
+    "input": {
+      "place": {
+        "place_id": "gn-2990189",
+        "name": "Noisy-le-Grand",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.84979,
+        "lon": 2.56266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noisy-le-Grand",
+          "url": "https://en.wikipedia.org/wiki/Noisy-le-Grand",
+          "text": "Noisy-le-Grand (French pronunciation: [nwazi lə ɡʁɑ̃] ; lit. 'Noisy-the-Great') or simply Noisy is a commune in the eastern outer suburbs of Paris, France.\nIt is located 15.2 km (9.4 mi) from the centre of Paris, on the left bank of the Marne in Seine-Saint-Denis on the departmental border with both Val-de-Marne and Seine-et-Marne. The commune of Noisy-le-Grand is part of the sector of Porte de Paris, one of the four sectors of the \"new town\" of Marne-la-Vallée.\nSome of the postmodern architecture in the commune has been used as a shooting location in movies including Brazil and The Hunger Games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "noisy le grand",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "noisy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4194,
+    "attempt": 4163,
+    "place_id": "gn-3026108",
+    "input": {
+      "place": {
+        "place_id": "gn-3026108",
+        "name": "Châtenay-Malabry",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.76507,
+        "lon": 2.26655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Châtenay-Malabry",
+          "url": "https://en.wikipedia.org/wiki/Châtenay-Malabry",
+          "text": "Châtenay-Malabry (French pronunciation: [ʃatnɛ malabʁi] ) is a commune in the southwestern suburbs of Paris. It is located 10.8 km (6.7 mi) from the center of Paris.\nThe French writer Chateaubriand lived in the estate Vallée-aux-Loups at Châtenay-Malabry. The Garden City in the Butte Rouge, the Cité Jardins, is one of the earliest examples of housing at moderated rents (HLM).\nChâtenay was the location of École Centrale Paris, of the Faculty of Pharmacy of the University of Paris-Sud and is the location of French national laboratory of doping detection. It is also the home of the Arboretum de la Vallée-aux-Loups. The high-speed LGV Atlantique crosses the city through a tunnel covered by a park called Coulée verte (greenway).\nFrom 31 December 2002, it was part of the Agglomeration community of Hauts de Bièvre, which merged into the Métropole du Grand Paris in January 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "chatenay malabry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chatenay",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malabry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4195,
+    "attempt": 4164,
+    "place_id": "gn-304612",
+    "input": {
+      "place": {
+        "place_id": "gn-304612",
+        "name": "Menemen",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.60754,
+        "lon": 27.06938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menemen",
+          "url": "https://en.wikipedia.org/wiki/Menemen",
+          "text": "Menemen (Turkish: [meˈnemæn]) is a municipality and district of İzmir Province, Turkey. Its area is 573 km2, and its population is 200,904 (2022). The district extends on a fertile plain formed by the alluvial soil carried by the Gediz River. Adjacent districts are, from east to west; Aliağa and Foça to the north and Bornova, Karşıyaka and Çiğli to the south. Menemen district has a 27 km (17 mi) long coastline in the west and neighbors Manisa Province to the east. The town of Menemen is located at a distance of 35 km (22 mi) from İzmir center (Konak Square)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "menemen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4196,
+    "attempt": 4165,
+    "place_id": "gn-3063548",
+    "input": {
+      "place": {
+        "place_id": "gn-3063548",
+        "name": "Ústí nad Labem",
+        "country": "Czechia",
+        "subdivision": "Ústí nad Labem Region",
+        "lat": 50.6607,
+        "lon": 14.03227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ústí nad Labem",
+          "url": "https://en.wikipedia.org/wiki/Ústí_nad_Labem",
+          "text": "Ústí nad Labem (Czech pronunciation: [ˈuːsciː nad ˈlabɛm] ; German: Aussig) is a city in the northwest of the Czech Republic. It has about 90,000 inhabitants and is the capital of the Ústí nad Labem Region. The city is located at the confluence of the Elbe and Bílina rivers. Together with Chomutov, Teplice, Most and Děčín, Ústí nad Labem forms the Ústí nad Labem-Chomutov agglomeration with about 550,000 inhabitants.\nÚstí nad Labem was founded in the 12th century and became a royal town in 1249. However, its size and importance only grew significantly thanks to industrialisation in the 19th century. The city is a major industrial centre with a tradition in the chemical industry. It is both an active river port on the Elbe and an important railway junction. The city is a natural regional centre of education and home to the Jan Evangelista Purkyně University in Ústí nad Labem.\nAmong the main landmarks of Ústí nad Labem are the Střekov Castle and the Church of the Assumption of the Virgin Mary with a leaning tower. A major tourist destination is the Ústí nad Labem Zoo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "usti nad labem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "usti",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "labem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4197,
+    "attempt": 4166,
+    "place_id": "gn-307657",
+    "input": {
+      "place": {
+        "place_id": "gn-307657",
+        "name": "Kırıkhan",
+        "country": "Türkiye",
+        "subdivision": "Hatay",
+        "lat": 36.49939,
+        "lon": 36.35755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kırıkhan",
+          "url": "https://en.wikipedia.org/wiki/Kırıkhan",
+          "text": "Kırıkhan is a municipality and district of Hatay Province, Turkey. Its area is 715 km2, and its population is 121,028 (2022). The town stands at the intersection of the route between İskenderun and Aleppo, and the major north-south road between Antakya and Kahramanmaraş. As of 2014, over 35,000 Syrians live in Kırıkhan, an increase from the May 2013 number of 30,000.\nThe district’s major religious and touristic site is the Beyazid-i Bestami Külliyesi (Complex) on Darb-ı Sak Castle at Alabeyli village, which contains the tomb or maqam of Bayazid Bastami. The ruined medieval Crusader castle Trapessac is situated near Kırıkhan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "k r khan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "khan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4198,
+    "attempt": 4167,
+    "place_id": "gn-3120514",
+    "input": {
+      "place": {
+        "place_id": "gn-3120514",
+        "name": "Huesca",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 42.13615,
+        "lon": -0.4087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huesca",
+          "url": "https://en.wikipedia.org/wiki/Huesca",
+          "text": "Huesca (Spanish: [ˈweska]; Aragonese: Uesca) is a city in north-eastern Spain, within the autonomous community of Aragon. It was the capital of the Kingdom of Aragon between 1096 and 1118. It is also the capital of the Spanish province of the same name and of the comarca of Hoya de Huesca. In 2009, it had a population of 52,059, almost a quarter of the total population of the province. The city is one of the smallest provincial capitals in Spain.\nHuesca celebrates its main festival, the Fiestas de San Lorenzo, in honor of Saint Lawrence, from 9 to 15 August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "huesca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4199,
+    "attempt": 4168,
+    "place_id": "gn-316411",
+    "input": {
+      "place": {
+        "place_id": "gn-316411",
+        "name": "Doğubayazıt",
+        "country": "Türkiye",
+        "subdivision": "Ağrı",
+        "lat": 39.54694,
+        "lon": 44.08417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doğubayazıt",
+          "url": "https://en.wikipedia.org/wiki/Doğubayazıt",
+          "text": "Doğubayazıt (Kurdish: Bazîd; Armenian: Պայազատ, romanized: Payazat or Դարոյնք, Daruynk) is a town in Ağrı Province of Turkey, near the border with Iran. Its elevation is 1625 m. It is the seat of Doğubayazıt District. Its population is 80,061 (2021). Also known as Kurdava, the town was the capital of the self-declared Republic of Ararat, a short-lived Kurdish state centered in the Ağrı Province. Demographic research has identified Doğubayazıt as a predominantly Kurdish-speaking city: a public health study by Bakiray Küçükkaya and Erbaydar (2012) noted that \"the mother tongue of the majority of the population is Kurdish\" in the district. Demographic studies of Kurdish-majority provinces in Turkey have consistently included Doğubayazıt (in Ağrı Province) among areas with high concentrations of Kurdish speakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "dogubayaz t",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dogubayaz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "t",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4200,
+    "attempt": 4169,
+    "place_id": "gn-3170631",
+    "input": {
+      "place": {
+        "place_id": "gn-3170631",
+        "name": "Piscinola",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.89299,
+        "lon": 14.23394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piscinola",
+          "url": "https://en.wikipedia.org/wiki/Piscinola",
+          "text": "Piscinola is a northern quarter of Naples, Italy, with a population of ca. 20,000. It is bordered to the north by the Scampia district, north-west with the municipality of Mugnano of Naples, on the west by the Chiaiano district, to the south with the district of San Carlo all'Arena and east with the district Miano.\nWith the Marianella neighborhood and adjacent neighborhoods Chiaiano and Scampia, Piscinola constitutes, since 2005, the 8th municipality of Naples.\nAn autonomous municipality until 1866, since its annexation to the City of Naples, Piscinola has also been known as one of the suppressed municipalities of Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "piscinola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4201,
+    "attempt": 4170,
+    "place_id": "gn-3436311",
+    "input": {
+      "place": {
+        "place_id": "gn-3436311",
+        "name": "Apóstoles",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -27.91421,
+        "lon": -55.75355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apóstoles",
+          "url": "https://en.wikipedia.org/wiki/Apóstoles",
+          "text": "Apóstoles is a city in the province of Misiones, Argentina. It has 40,858 inhabitants as per the 2001 census [INDEC], and is the seat of government of Apóstoles Department. It is located on the southwest of the province, 60 km south from the provincial capital Posadas and 27 km from the international Argentina–Brazil border.\nApóstoles is the National Capital of yerba mate, and hosts an annual festival dedicated to this plant, the basis of the popular mate infusion.\nThe town was established as a Jesuit reduction in 1652. The first wave of immigrants, mainly Polish and Ukrainian, arrived in 1897. The municipality was officially created on 28 November 1913."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "apostoles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4202,
+    "attempt": 4171,
+    "place_id": "gn-3441243",
+    "input": {
+      "place": {
+        "place_id": "gn-3441243",
+        "name": "Paysandú",
+        "country": "Uruguay",
+        "subdivision": "Paysandú Department",
+        "lat": -32.3171,
+        "lon": -58.08072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paysandú",
+          "url": "https://en.wikipedia.org/wiki/Paysandú",
+          "text": "Paysandú (Spanish pronunciation: [pajsanˈdu]) is the capital and most populous city of the Paysandú Department in western Uruguay. Located on the banks of the Uruguay River, it is the country's fourth-largest city and a vital cultural and economic hub, with agriculture, tourism, and manufacturing serving as key industries.\nLocated in the southwestern part of the department, across from the Argentine city of Colón in Entre Ríos Province, it was founded in the mid-18th century and is known as the La Heroica (Spanish for 'The Heroic City') for its rich history, particularly its resistance during the Siege of Paysandú in 1864-65."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "paysandu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4203,
+    "attempt": 4172,
+    "place_id": "gn-3444848",
+    "input": {
+      "place": {
+        "place_id": "gn-3444848",
+        "name": "Xanxerê",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.87694,
+        "lon": -52.40417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xanxerê",
+          "url": "https://en.wikipedia.org/wiki/Xanxerê",
+          "text": "Xanxerê (Portuguese pronunciation: [ʃɐ̃.ʃeˈɾe]) is a city in Santa Catarina, southern Brazil. Italian and German are the mainstream cultures, having been brought by immigrants in the early 20th century through the migration of the \"gauchos\".\nThe city is one of the main production centers of maize in Brazil and serves as an important industrial, commercial and service center for western Santa Catarina. It is located in a key position for trades via Mercosul.\nXanxerê is the headquarters of the Association of Cities of Alto Irani (AMAI), composed of 17 \"municípios\".\nOn April 20, 2015, a destructive tornado hit the city. Many homes and businesses were severely damaged or destroyed, two people died, and another 120 were injured. The tornado was rated F3 on the Fujita Scale, according meteorologists. At least 2,600 homes were damaged or destroyed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "xanxere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4204,
+    "attempt": 4173,
+    "place_id": "gn-3456368",
+    "input": {
+      "place": {
+        "place_id": "gn-3456368",
+        "name": "Naviraí",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso do Sul",
+        "lat": -23.065,
+        "lon": -54.19056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naviraí",
+          "url": "https://en.wikipedia.org/wiki/Naviraí",
+          "text": "Naviraí is a municipality located in the Brazilian state of Mato Grosso do Sul. Its population was 55,689 (2020) and its area is 3,194 km2.\nFounded in 1952 and emancipated in 1963, Naviraí until the 1950s was just a field uninhabited. It was then that began to arrive by plane and by boat and the first settlers in 1955 with the construction of the road linking the Golden Ashland, began to develop more speed. Known as the Capital of Southern Cone, Naviraí has traced urban plan with pathways that convert the center to the periphery, with a format of cobweb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "navirai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4205,
+    "attempt": 4174,
+    "place_id": "gn-3520994",
+    "input": {
+      "place": {
+        "place_id": "gn-3520994",
+        "name": "Puerto Escondido",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 15.86275,
+        "lon": -97.06835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Escondido",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Escondido",
+          "text": "Puerto Escondido (English: \"Hidden Port\") is a Mexican city-port and tourist center in the municipality of San Pedro Mixtepec Distrito 22 in the state of Oaxaca. Prior to the 1930s, there was no town. The bay had been used as a port intermittently to ship coffee, but there was no permanent settlement due to the lack of potable water. The name \"Puerto Escondido\" had roots in the legend of a woman who escaped her captors and hid there. The Nahuatl word for this area was Zicatela, meaning \"place of large thorns\". Today, it refers to the area's most famous beach.\nPuerto Escondido is one of the most important tourist attractions on the Oaxacan coast. It caters to a more downscale and eclectic clientele than neighboring Huatulco, mostly surfers, backpackers and Mexican families.  The main attractions are the beaches: Zicatela Beach hosts major surfing competitions, while other beaches have gentle waves. A large lagoon area to the west of the town is popular for fishing and birdwatching."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "puerto escondido",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "escondido",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4206,
+    "attempt": 4175,
+    "place_id": "gn-3902949",
+    "input": {
+      "place": {
+        "place_id": "gn-3902949",
+        "name": "Tiquipaya",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.33801,
+        "lon": -66.21579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiquipaya",
+          "url": "https://en.wikipedia.org/wiki/Tiquipaya",
+          "text": "Tiquipaya is a town in the Cochabamba Department in central Bolivia. It is the seat of the Tiquipaya Municipality, the third municipal section of the Quillacollo Province. It is known as the \"city of flowers\". The town hosts many dairy farmers and is known as a well visited and productive zone with surprising climatic diversity due to valleys, high plains, and sub-tropical regions. Prior to the Bolivian National Revolution of 1952, most of Tiquipaya was an estate or latifundio finca owned by the family of Petronila Zeballos Terrazas (1833–1918). Her brother Angel Maria Zeballos served as the bishop of Cochabamba.  Her husband was Salvador Cabero Rollano (1825–1883), a medical doctor and one of the founders of the Hospital Viedma, the first general hospital in Cochabamba.  Modern day descendants of Dr. Cabero include Fernando Gonzalez Sfeir and Mohammed Mostajo-Radji.\nToday, the town is home to the Universidad del Valle (UNIVALLE) that helps in the economy of the region as a result of the services required. Around 2% of the population of Tiquipaya was born in a foreign country. Most of them are students from Brasil. In April 2010, Tiquipaya was the host city for the World People's Conference on Climate Change and the Rights of Mother Earth. In the fall of 2016, Malia Obama, daughter of United States president Barack Obama, lived with a host family in Tiquipaya while she pursued a cultural immersion program sponsored by the educational tourism company Where There Be Dragons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "tiquipaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4207,
+    "attempt": 4176,
+    "place_id": "gn-3980174",
+    "input": {
+      "place": {
+        "place_id": "gn-3980174",
+        "name": "Villagrán",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.51364,
+        "lon": -100.99636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villagrán, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Villagrán,_Guanajuato",
+          "text": "Villagrán is a Mexican city (and municipality) located in the state of Guanajuato. With an area of 125.4 square kilometres, Villagrán accounts for 0.41% of the surface of the state.  It is bordered to the north by Santa Cruz de Juventino Rosas, to the east by Celaya, to the south by Cortazar, and to the west by Salamanca. The municipality had a population of 65,791 according to the 2020 census.  Located in the fertile Bajío, the economy of the Villagran\nis heavily based on agriculture and ranching.\nThe municipal president of the city and its microregions is Armando Torrecilas Mejía."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "villagran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4208,
+    "attempt": 4177,
+    "place_id": "gn-4175437",
+    "input": {
+      "place": {
+        "place_id": "gn-4175437",
+        "name": "Titusville",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.61222,
+        "lon": -80.80755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Titusville, Florida",
+          "url": "https://en.wikipedia.org/wiki/Titusville,_Florida",
+          "text": "Titusville is a city in and the county seat of Brevard County, Florida, United States.  As of the 2020 census, the population of the city was 48,789, up from 43,761 at the 2010 census. Titusville is located along the Indian River, west of Merritt Island and Kennedy Space Center, and south-southwest of Canaveral National Seashore. It is a principal city of the Palm Bay-Melbourne-Titusville, Florida metropolitan statistical area.\nA secondary, de facto county seat was established beginning in 1989, at Viera, Florida, in the geographic center of the county, to better serve the more populous southern portion of the county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "titusville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4209,
+    "attempt": 4178,
+    "place_id": "gn-4885955",
+    "input": {
+      "place": {
+        "place_id": "gn-4885955",
+        "name": "Buffalo Grove",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.15141,
+        "lon": -87.95979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buffalo Grove, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Buffalo_Grove,_Illinois",
+          "text": "Buffalo Grove is a village in Lake and Cook Counties in the U.S. state of Illinois. A suburb of Chicago, it lies about 30 miles (50 km) northwest of Downtown Chicago and 20 miles (32 km) north of O'Hare International Airport.  As of the 2020 Census, Buffalo Grove has a population of 43,212. It totals 9.6 square miles (25 km2) of land, with the northern three-quarters in Lake County and the southern quarter in Cook County. Roads in the village, such as Lake Cook Road and Illinois Route 83, converge on I-294. It is part of the Chicago metropolitan area.\nBefore European colonization, Native American Potawatomi tribes inhabited the present area. The name \"Buffalo Grove\" comes from the English translation of the Potawatomi name for Buffalo Creek, which flows through some of the village. Initial Homesteaders sold their land to agricultural Catholic German immigrants, who established St. Mary's Church and a school. The area remained small and rural in character until housing developers began building single-family houses after the Korean War. After being incorporated in 1958, Buffalo Grove experienced a population boom for the rest of the 20th century. The village hosted a 50th Anniversary Celebration in 2008.\nThe village features dozens of recreational facilities, parks, and festivals, including a months-long Farmers' market, two golf courses, and the popular \"Buffalo Grove Days\". Buffalo Grove has an elected council-manager government with home rule status. The local government's public works department is nationally accredited. Economically, residents work in health care, education, and professional services, while businesses in the village employ 20,000 daytime workers in 10 million square feet of commercial and industrial space. The population of the village has been stagnant since the early 2000s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "buffalo grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "buffalo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4210,
+    "attempt": 4179,
+    "place_id": "gn-5046997",
+    "input": {
+      "place": {
+        "place_id": "gn-5046997",
+        "name": "Shakopee",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.79802,
+        "lon": -93.5269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shakopee, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Shakopee,_Minnesota",
+          "text": "Shakopee ( SHAH-kə-pee) (Dakota language: Tinta Ottonwe) is a city in and the county seat of Scott County, Minnesota, United States. It is southwest of Minneapolis. Sited on the south bank bend of the Minnesota River, Shakopee and nearby suburbs comprise the southwest portion of Minneapolis-Saint Paul, the nation's 16th-largest metropolitan area, with 3.7 million people. The population was 43,698 at the 2020 census.\nThe riverbank's Shakopee Historic District contains burial mounds built by prehistoric cultures. In the 18th century, Chief Shakopee II of the Mdewakanton Dakota established his village on the east end of this area, near the water. Trading led to the city's establishment in the 19th century. Shakopee boomed as a commerce exchange site between river and rail at Murphy's Landing.\nShakopee was once an isolated city in the Minnesota River Valley, but by the 1960s its economy was tied to that of the expanding metropolitan area. Significant growth as a bedroom community occurred after U.S. Highway 169 was realigned in 1996 toward the new Bloomington Ferry Bridge.\nThe city is known for the Valleyfair amusement park and the Canterbury Park racetrack."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "shakopee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4211,
+    "attempt": 4180,
+    "place_id": "gn-5097672",
+    "input": {
+      "place": {
+        "place_id": "gn-5097672",
+        "name": "Englewood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.89288,
+        "lon": -73.97264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Englewood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Englewood,_New_Jersey",
+          "text": "Englewood is a city in Bergen County, in the U.S. state of New Jersey. It is part of the New York metropolitan area. Englewood was incorporated as a city by an act of the New Jersey Legislature on March 17, 1899, from portions of Ridgefield Township and the remaining portions of Englewood Township. As of the 2020 United States census, the city's population was 29,308, its highest decennial count ever and an increase of 2,161 (+8.0%) from the 2010 census count of 27,147, which in turn reflected an increase of 944 (+3.6%) from the 26,203 counted in the 2000 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "englewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

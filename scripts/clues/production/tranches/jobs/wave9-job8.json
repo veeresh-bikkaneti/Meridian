@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 9260,
+    "place_id": "gn-8260052",
+    "input": {
+      "place": {
+        "place_id": "gn-8260052",
+        "name": "Pontyclun",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.52162,
+        "lon": -3.39145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontyclun",
+          "url": "https://en.wikipedia.org/wiki/Pontyclun",
+          "text": "Pontyclun (or Pont-y-clun) is a town and community located in the county borough of Rhondda Cynon Taf, Wales.\nPontyclun translates from the Welsh language as 'bridge [over] the River Clun', the Clun being a tributary of the River Ely that runs through Pontyclun. A bridge crosses the Afon Clun just above its confluence with the Ely.\nThe town is served by Pontyclun railway station on the South Wales Main Line. It has its own local rugby, football, bowls and petanque clubs.\nThe town falls under the remit of Pontyclun Town Council, which represents the communities of Brynsadler, Castell y Mwnws, Groes-faen, Miskin, Mwyndy, Pontyclun, Talygarn, and Ynysddu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pontyclun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9262,
+    "place_id": "gn-1015850",
+    "input": {
+      "place": {
+        "place_id": "gn-1015850",
+        "name": "Brandvlei",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -30.46532,
+        "lon": 20.48659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brandvlei",
+          "url": "https://en.wikipedia.org/wiki/Brandvlei",
+          "text": "Brandvlei is a small town in the Karoo region of the Northern Cape, South Africa. This is where a 19th-century trekboer called Ou Brand settled. Brand camped at this spot at the Sakrivier, a dry river bed, which only occasionally had water after good rains – and which typically result in flash floods. The settlement was cut in two by such a flood in 1961. After it was recovered, a municipality was formed in 1962.\nThis Brandvlei is located in the Bushmanland, also known as the Thirst Land, Dorsland in Afrikaans and should not be confused with the Brandvlei south of Worcester in the Western Cape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "brandvlei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9267,
+    "place_id": "gn-2263905",
+    "input": {
+      "place": {
+        "place_id": "gn-2263905",
+        "name": "Ribeira Brava",
+        "country": "Portugal",
+        "subdivision": "Madeira",
+        "lat": 32.67483,
+        "lon": -17.06288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribeira Brava, Madeira",
+          "url": "https://en.wikipedia.org/wiki/Ribeira_Brava,_Madeira",
+          "text": "Ribeira Brava (Portuguese pronunciation: [ʁiˈβɐjɾɐ ˈβɾavɐ] ; lit. 'Angry River') is a municipality on the island of Madeira, in the Portuguese Autonomous Region of Madeira. It is located along the southern coast (approximately centre), and is west of Câmara de Lobos and the regional capital Funchal, south of São Vicente, and east of Ponta do Sol. The population in 2011 was 13,375, in an area of 65.41 km2.\nThe municipality gained its name due to its river, which translates as \"angry river\". In rainy seasons, the river had an extremely strong and powerful current, that often wreaked havoc over the entire eight kilometres of the route."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ribeira brava",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ribeira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brava",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9273,
+    "place_id": "gn-2639270",
+    "input": {
+      "place": {
+        "place_id": "gn-2639270",
+        "name": "Roche",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.40808,
+        "lon": -4.83373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roche, Cornwall",
+          "url": "https://en.wikipedia.org/wiki/Roche,_Cornwall",
+          "text": "Roche (; Cornish: Tregarrek, meaning homestead of the rock) is a civil parish and village in mid-Cornwall, England, United Kingdom. The village gets its name from the 20-metre (66-foot) high Roche Rock,  a quartz-schorl outcrop east of the village. Roche is the Norman-French word for Rock. The parish population at the 2011 census including Belowda, Bilberry, Carbis, Coldvreath and Criggan is 3,381, and the ward population at the same census was 3,867.\nNearby are the towns of Bodmin and St Austell, as well as the Eden Project. The civil servant Charles Knight was born in Roche and Liberal Democrat Member of Parliament Matthew Taylor retired there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "roche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9277,
+    "place_id": "gn-2650184",
+    "input": {
+      "place": {
+        "place_id": "gn-2650184",
+        "name": "Eglinton",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.01667,
+        "lon": -7.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eglinton, County Londonderry",
+          "url": "https://en.wikipedia.org/wiki/Eglinton,_County_Londonderry",
+          "text": "Eglinton is a village in County Londonderry, Northern Ireland. It lies 5.5 miles (8.9 km) east-north-east of Derry, to which it serves as a sleeper village, and 9.5 miles (15.3 km) west-south-west of Limavady. It resides within Derry and Strabane district. The City of Derry Airport, also known as Eglinton Aerodrome and formerly as Londonderry Eglinton Airport, lies a short distance from the village.\nEglinton still has an elegant church, former market house, trees around a green and four oaks which started life in Windsor Great Park.  The River Muff flows through the village with the afforested Muff Glen being situated just south of the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "eglinton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9289,
+    "place_id": "gn-3144110",
+    "input": {
+      "place": {
+        "place_id": "gn-3144110",
+        "name": "Norheimsund",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 60.37089,
+        "lon": 6.14562
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norheimsund",
+          "url": "https://en.wikipedia.org/wiki/Norheimsund",
+          "text": "Norheimsund is the administrative centre of Kvam Municipality in Vestland county, Norway. The village is located on the northern side of the Hardangerfjord, about 80 kilometres (50 mi) from the city of Bergen. The village of Øystese lies about 4 kilometres (2.5 mi) to the northeast and the village of Vikøy lies about 3 kilometres (1.9 mi) southeast of Norheimsund. The village of Steine is a suburb, immediately to the west of Norheimsund. \nThe 1.98-square-kilometre (490-acre) village has a population (2025) of 2,366 and a population density of 1,195 inhabitants per square kilometre (3,100/sq mi).\nNorheimsund has a lot of tourist traffic, especially in the summers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "norheimsund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9290,
+    "place_id": "gn-3177629",
+    "input": {
+      "place": {
+        "place_id": "gn-3177629",
+        "name": "Deliceto",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.22289,
+        "lon": 15.38447
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deliceto",
+          "url": "https://en.wikipedia.org/wiki/Deliceto",
+          "text": "Deliceto (Irpinian: Delecìte) is a small town and comune   in the province of Foggia, from which it is 40.3 kilometres (25.0 mi), in the Apulia region of southeast Italy. Adjacent towns are Ascoli Satriano (to the east); Bovino, Castelluccio dei Sauri (to the north and the north-west); Sant'Agata di Puglia (to the south); Candela (to the south-east); Accadia (to the south-west).\nDeliceto rises on the peak of a hill, surrounded by woods and streams. The municipality's territory lies between 207 and 951 metres (679 and 3,120 ft) above sea level. Its name is due to the Latin expression \"Deo licet\", i.e. \"It is alright to God\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "deliceto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9291,
+    "place_id": "gn-3181799",
+    "input": {
+      "place": {
+        "place_id": "gn-3181799",
+        "name": "Borgofranco d'Ivrea",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.51636,
+        "lon": 7.85865
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borgofranco d'Ivrea",
+          "url": "https://en.wikipedia.org/wiki/Borgofranco_d'Ivrea",
+          "text": "Borgofranco d'Ivrea is a comune (municipality) in the Metropolitan City of Turin in the Italian region Piedmont, about 50 kilometres (31 mi) north of Turin.\nBorgofranco d'Ivrea borders the following municipalities: Settimo Vittone, Andrate, Nomaglio, Brosso, Quassolo, Chiaverano, Montalto Dora, and Lessolo.\nThe \"Balmetti\"\nCharacteristic of this area of Canavese, these are natural cavities in the mountain, adapted over the centuries by the inhabitants to cellars and food storage, where the temperature is constant thanks to the circulation of air caused by complex natural geothermal phenomena. The term balmetti (balmit in the Canavese variant of the Piedmontese language) derives from balma, meaning shelter under rock, cave."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "borgofranco d ivrea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borgofranco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ivrea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9296,
+    "place_id": "gn-5203634",
+    "input": {
+      "place": {
+        "place_id": "gn-5203634",
+        "name": "North East",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 42.21561,
+        "lon": -79.83422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North East, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/North_East,_Pennsylvania",
+          "text": "North East is a borough in North East Township, Erie County, Pennsylvania, United States, 14 miles (23 km) northeast of Erie. Its name comes from its position in the northeastern corner of Erie County, despite being near the extreme northwest of Pennsylvania. The population was 4,114 at the 2020 census, down from 4,294 in 2010. Fruit growing was an early economic endeavor, and is still to this day, as this is a popular area especially for cherries and grapes. There is an annual Cherry Festival in the summer and an annual Wine Country Harvest Festival in autumn. It is part of the Erie Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "north east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9298,
+    "place_id": "gn-5378481",
+    "input": {
+      "place": {
+        "place_id": "gn-5378481",
+        "name": "Oak View",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.4,
+        "lon": -119.30011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oak View, California",
+          "url": "https://en.wikipedia.org/wiki/Oak_View,_California",
+          "text": "Oak View is an unincorporated community in Ventura County, California, United States. The community is located along the Ventura River in a narrow valley between the towns of Casitas Springs (south) and Mira Monte (north). Lake Casitas and the community of Ojai are also nearby. At the 2020 census, the population of Oak View was 6,215, making it the third largest community between Ojai and the city of Ventura. For statistical purposes, the United States Census Bureau has defined Oak View as a census-designated place (CDP). The census definition of the area may not precisely correspond to local understanding of the area with the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "oak view",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "view",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9301,
+    "place_id": "gn-6355019",
+    "input": {
+      "place": {
+        "place_id": "gn-6355019",
+        "name": "Peguera",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.53751,
+        "lon": 2.44806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peguera",
+          "url": "https://en.wikipedia.org/wiki/Peguera",
+          "text": "Peguera (translation from Catalan:  \"oven tar\"; and the spelling on official road signs) is a tourist town in the municipality of Calvià on the island of Majorca (Mallorca in Spanish and Catalan), part of the Spanish autonomous community of the Balearic Islands. It has three large beaches and hundreds of hotels, hostels and apartments. The population is approximately 3,988 inhabitants. The town's name refers to the oven tar produced in this area from the pitch of pine tree resin.\nPaguera, an alternative spelling apparently used locally, is a beach resort in the very southwest of Majorca in Spain. It is part of the municipality of Calvia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "peguera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9312,
+    "place_id": "gn-2183620",
+    "input": {
+      "place": {
+        "place_id": "gn-2183620",
+        "name": "Raumati Beach",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -40.91667,
+        "lon": 174.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raumati Beach",
+          "url": "https://en.wikipedia.org/wiki/Raumati_Beach",
+          "text": "Raumati Beach is a beach community on the Kāpiti Coast of New Zealand's North Island; located 60km north-west of Wellington, and about 2 km north of Raumati South. It is immediately to the south-west of the larger town of Paraparaumu. The Maungakotukutuku area is located immediately behind Raumati.\n\"Raumati\" is the Māori language word for \"summer\".\nFollowing the laying out of Raumati Beach as a seaside resort in 1908, the first general store was built in Raumati Beach in 1919.\nThe town has many landmarks including Kāpiti College, in which Peter Jackson (New Zealand filmmaker) and Christian Cullen (Rugby Union footballer) received their education, St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "raumati beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "raumati",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9313,
+    "place_id": "gn-2191913",
+    "input": {
+      "place": {
+        "place_id": "gn-2191913",
+        "name": "Darfield",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.48333,
+        "lon": 172.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darfield, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Darfield,_New_Zealand",
+          "text": "Darfield is a town in the Selwyn District of the South Island of New Zealand. It is 35 kilometres west of Christchurch and has a population of 3,590 as of June 2025.\nDarfield is the main town between Christchurch and the West Coast region. It is often called \"The township under the nor'west arch\" in reference to a characteristic weather phenomenon that often creates an arch of cloud in an otherwise clear sky to the west of the township. This is caused by the condensation of water particles channelled upwards over the Southern Alps.\nDarfield lies in the Malvern district's arable and pastoral farming area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "darfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9314,
+    "place_id": "gn-2269494",
+    "input": {
+      "place": {
+        "place_id": "gn-2269494",
+        "name": "Castro Verde",
+        "country": "Portugal",
+        "subdivision": "Beja",
+        "lat": 37.69828,
+        "lon": -8.08581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castro Verde",
+          "url": "https://en.wikipedia.org/wiki/Castro_Verde",
+          "text": "Castro Verde (European Portuguese pronunciation: [ˈkaʃtɾu ˈveɾðɨ] ) is a municipality of the Alentejo region of Portugal (in the historic district of Beja). The population in 2011 was 7,276, in an area of 569.44 km2. Castro Verde is situated in the Baixo Alentejo subregion, within a territory known locally as the Campo Branco (English: White Plains).\nThe municipality can be recognized by the local municipal markers along its borders, that appear within its borders to denote its reference as A Window on the Plains; municipal markers appear as stylized house profiles, with an exaggerated window that allows the visitor to see through into the panorama."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "castro verde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9319,
+    "place_id": "gn-2783271",
+    "input": {
+      "place": {
+        "place_id": "gn-2783271",
+        "name": "Zepperen",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.82139,
+        "lon": 5.24769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zepperen",
+          "url": "https://en.wikipedia.org/wiki/Zepperen",
+          "text": "Zepperen is a village and a former municipality. It is part of the municipality of Sint-Truiden in the province of Limburg in Belgium.\nThis village developed in the northern, humid part of Haspengouw close to the stream Melsterbeek. This rivulet starts about 15 kilometers to the south near the border between Flanders and Wallonia and merges with the river Gete near Geetbets.\nTraces of the prehistoric and Roman occupation were found alongside this river and alongside the Eigenbeek in the northern part of Zepperen.\nThe name of the village, in his Latin form ‘Septimburias’ or seven cabins, was first mentioned in the late 8th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "zepperen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9323,
+    "place_id": "gn-3022947",
+    "input": {
+      "place": {
+        "place_id": "gn-3022947",
+        "name": "Courseulles-sur-Mer",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.33027,
+        "lon": -0.45612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Courseulles-sur-Mer",
+          "url": "https://en.wikipedia.org/wiki/Courseulles-sur-Mer",
+          "text": "Courseulles-sur-Mer (French pronunciation: [kuʁsœl syʁ mɛʁ] , lit. 'Courseulles on Sea'), commonly known as Courseulles, is a commune in the Calvados department, Normandy, northwestern France. Until 1957, the town's name was simply Courseulles. It lies 3 km west of Bernières-sur-Mer and 18 km north of Caen.\nIt is a popular tourist destination not only with locals but also with international visitors who come to tour the Normandy landing beaches. The population of the town can reach 15,000 people in the summer months owing to the numerous summer homes, owned for the most part by Parisians. The town is split in two by the river Seulles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "courseulles sur mer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "courseulles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9327,
+    "place_id": "gn-3181164",
+    "input": {
+      "place": {
+        "place_id": "gn-3181164",
+        "name": "Caluso",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.30466,
+        "lon": 7.89101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caluso",
+          "url": "https://en.wikipedia.org/wiki/Caluso",
+          "text": "Caluso is a comune (municipality) in the Metropolitan City of Turin in the Italian region Piedmont, located about 30 kilometres (19 mi) northeast of Turin.\nCaluso borders the following municipalities: San Giorgio Canavese, Candia Canavese, Barone Canavese, Mazzè, Foglizzo, Montanaro, and Chivasso.\nThe peculiar geographical position and the particular climate of the area favor the production of white wines, most notably the \"Erbaluce di Caluso\" and the \"Caluso Passito\". The town is the seat of the Enoteca Regionale dei Vini della Provincia di Torino (Regional Wine Cellar of the Province of Turin) and of the State Professional Institute for Agriculture and the Environment \"Carlo Ubertini\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "caluso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9328,
+    "place_id": "gn-3188326",
+    "input": {
+      "place": {
+        "place_id": "gn-3188326",
+        "name": "Vela Luka",
+        "country": "Croatia",
+        "subdivision": "Dubrovnik-Neretva",
+        "lat": 42.96333,
+        "lon": 16.7225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vela Luka",
+          "url": "https://en.wikipedia.org/wiki/Vela_Luka",
+          "text": "Vela Luka (pronounced [ʋela luka] ) is a small town and the only settlement in the eponymous municipality in Dubrovnik-Neretva County in southern Dalmatia, Croatia. The town is located on the western side of the island of Korčula at the bottom of a wide bay which has many indented coves. Vela Luka developed at the beginning of the 19th century in a deep sheltered bay. Its name means \"big harbour\" in Croatian chakavian. Inhabitants of the Island of Korčula and Pelješac often refer to it simply as \"Luka\" (the port/harbour). It has several hotels and a medical centre called Kalos (for rheumatic disorders and rehabilitation)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "vela luka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vela",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9331,
+    "place_id": "gn-4203316",
+    "input": {
+      "place": {
+        "place_id": "gn-4203316",
+        "name": "Jonesboro",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.5215,
+        "lon": -84.35381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jonesboro, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Jonesboro,_Georgia",
+          "text": "Jonesboro () is a city in and the county seat of Clayton County, Georgia, United States. The population was 4,235 in 2020.\nThe city's name was originally spelled Jonesborough. During the American Civil War, the final skirmish in the Atlanta campaign was fought here south of Atlanta, cutting off the city and forcing the mayor of Atlanta to surrender at Marietta in early September 1864. The final fall of Atlanta in the Battle of Jonesborough ended up being a decisive point in the nation's history, propelling Abraham Lincoln to re-election two months later, and continuing the war until the Confederacy finally surrendered the following year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "jonesboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9348,
+    "place_id": "gn-759839",
+    "input": {
+      "place": {
+        "place_id": "gn-759839",
+        "name": "Ryn",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 53.9377,
+        "lon": 21.54642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ryn",
+          "url": "https://en.wikipedia.org/wiki/Ryn",
+          "text": "Ryn [rɨn] (German: Rhein) is a town in northeastern Poland located 19 km (12 mi) southwest of Giżycko, in the Warmian-Masurian Voivodeship, in Masuria. It had a population of 3,062 inhabitants as of December 31, 2004.\nRyn is located between Lake Ryn and Lake Ołów. Among the notable landmarks of the town are a former Ordensburg castle of the Teutonic Knights (erected ca. 1337) and a 19th-century Dutch windmill. Below the castle in the center of the town, a subterranean channel connects the Matussek pond, a shoaled bay of Lake Ołów, with Lake Ryn and the pond of a mill built by the Teutonic Knights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "ryn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

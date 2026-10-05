@@ -1,0 +1,717 @@
+[
+  {
+    "rank": 3266,
+    "place_id": "gn-2268406",
+    "input": {
+      "place": {
+        "place_id": "gn-2268406",
+        "name": "Évora",
+        "country": "Portugal",
+        "subdivision": "Évora",
+        "lat": 38.56587,
+        "lon": -7.90405
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Évora",
+          "url": "https://en.wikipedia.org/wiki/Évora",
+          "text": "Évora, officially the Most Noble and Ever Loyal City of Évora, is a city and a municipality in Portugal. It has 53,591 inhabitants (2021), in an area of 1,307.08 square kilometers (504.67 mi2). It is considered the historic capital of the Alentejo region and serves as the seat of the Évora District.\nDue to its well-preserved old town centre, still partially enclosed by medieval walls, and many monuments dating from various historical periods, including a Roman Temple, Évora is a UNESCO World Heritage Site since 1986.\nDue to its inland position, Évora is one of Portugal's hottest cities in the summer, frequently subject to heatwaves.\nÉvora is ranked number two in the Portuguese most livable cities survey of living conditions published yearly by Expresso."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "evora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3269,
+    "place_id": "gn-2520709",
+    "input": {
+      "place": {
+        "place_id": "gn-2520709",
+        "name": "Burriana",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.88901,
+        "lon": -0.08499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burriana, Castellón",
+          "url": "https://en.wikipedia.org/wiki/Burriana,_Castellón",
+          "text": "Burriana, in Spanish, or Borriana, in Valencian (officially Borriana / Burriana), is a town and municipality in eastern Spain, in the province of Castellón, part of the Valencian Community. Its population exceeds 35,000.\nThe town is located by the Mediterranean Sea, at the lowest region of the Plana Baixa, surrounded by orange tree fields watered by the Millars River.\nIt has about 15 km of coastline, including Burriana's principal beach \"El Arenal\", one of the most attractive spots, especially during the summer. \"El Arenal\" has about 2 km of seashore, has been awarded the blue flag, which recognizes its magnificent sand and water thanks to the treatments carried out by the city council.\nThe seaside is 1.5 km from the center of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "burriana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3271,
+    "place_id": "gn-2635785",
+    "input": {
+      "place": {
+        "place_id": "gn-2635785",
+        "name": "Tipton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.52956,
+        "lon": -2.06773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tipton",
+          "url": "https://en.wikipedia.org/wiki/Tipton",
+          "text": "Tipton is an industrial Black Country town in the metropolitan borough of Sandwell, in the county of the West Midlands, England. It had a population of 38,777 at the 2011 UK census. It is located northwest of Birmingham and southeast of Wolverhampton, and is also contiguous with Darlaston, Dudley, Wednesbury and Bilston.\nIt incorporates the surrounding villages and suburbs of Tipton Green, Ocker Hill, Dudley Port, Horseley Heath and Great Bridge.\nHistorically within Staffordshire and briefly Worcestershire, Tipton was an urban district until 1938, when it became a municipal borough. Much of the borough was transferred into West Bromwich County Borough in 1966, but parts of the old borough were absorbed into an expanded Dudley borough and the newly created County Borough of Warley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "tipton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3273,
+    "place_id": "gn-2646004",
+    "input": {
+      "place": {
+        "place_id": "gn-2646004",
+        "name": "Isleworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47518,
+        "lon": -0.34246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isleworth",
+          "url": "https://en.wikipedia.org/wiki/Isleworth",
+          "text": "Isleworth (  EYE-zəl-wəth) is a suburban town in the London Borough of Hounslow, west London, England.  Its main retail street London Road becomes Hounslow High Street and adjoining Treaty Centre for shopping centre only a few hundred metres away from its westernmost point. No physical signs mark this boundary, which reflects how Isleworth contained the east of Hounslow, originally.\nIsleworth sits west of the River Thames and its tributary the River Crane and the original area of settlement, alongside the Thames, is known as Old Isleworth. The northwest corner of the town, bordering on Osterley to the north and Lampton to the west, is known as Spring Grove.  Both postally and historically Osterley is part of Isleworth, however it has its own tube station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "isleworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3274,
+    "place_id": "gn-2651984",
+    "input": {
+      "place": {
+        "place_id": "gn-2651984",
+        "name": "Cricklewood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5567,
+        "lon": -0.21549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cricklewood",
+          "url": "https://en.wikipedia.org/wiki/Cricklewood",
+          "text": "Cricklewood is a town in North West London, England, in the London Boroughs of Barnet and Brent. The Crown pub, now the Clayton Crown Hotel, is a local landmark and lies 5 miles (8 km) north-west of Charing Cross.\nCricklewood was a small rural hamlet around Edgware Road, the Roman road which was later called Watling Street and which forms the boundary of the two boroughs that share Cricklewood. The area urbanised after the arrival of the surface and underground railways in nearby Willesden Green in the 1870s. The shops on Cricklewood Broadway, as Edgware Road is known here, contrast with quieter surrounding streets of largely late-Victorian, Edwardian, and 1930s housing. The area has strong links with Ireland due to a sizeable Irish population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "cricklewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3294,
+    "place_id": "gn-5598538",
+    "input": {
+      "place": {
+        "place_id": "gn-5598538",
+        "name": "Lewiston",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 46.41655,
+        "lon": -117.01766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewiston, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Lewiston,_Idaho",
+          "text": "Lewiston is a city in and the county seat of Nez Perce County, Idaho, United States, in the state's north central region. It is the third-largest city in the northern Idaho region, behind Post Falls and Coeur d'Alene, and the twelfth-largest in the state. Lewiston is the principal city of the Lewiston, ID-WA Metropolitan Statistical Area, which includes all of Nez Perce County and Asotin County, Washington. As of the 2020 census, the population of Lewiston was 34,203, up from 31,894 in 2010.\nLewiston is located at the confluence of the Snake River and Clearwater River, thirty miles (50 km) upstream and southeast of the Lower Granite Dam. Dams and locks on the Snake and Columbia Rivers make Lewiston reachable by some ocean-going vessels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "lewiston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3296,
+    "place_id": "gn-6138121",
+    "input": {
+      "place": {
+        "place_id": "gn-6138121",
+        "name": "Sainte-Thérèse",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.63922,
+        "lon": -73.82757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sainte-Thérèse, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Sainte-Thérèse,_Quebec",
+          "text": "Sainte-Thérèse (French pronunciation: [sɛ̃t teʁɛz]) is an off-island suburb northwest of Montreal, in southwestern Quebec, Canada, in the Thérèse-De Blainville Regional County Municipality.\nThe town is mostly known as a home for heavy industry, but it is also a centre of recreational and tourist activities. It is near the southern limit of a web of cross-country ski trails which meander through the Laurentides. Heading north, it is possible to undertake several nature-filled days of skiing towards major resort centres such as Mont-Tremblant.\nDuring the summer, many of the ski trails are used as dedicated bicycle paths, making it possible to undertake day-long or week-long cycling excursions through unspoiled areas, from one resort area to another, without sharing the right of way with motorized vehicles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "sainte therese",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "therese",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3318,
+    "place_id": "gn-3875070",
+    "input": {
+      "place": {
+        "place_id": "gn-3875070",
+        "name": "Pucón",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -39.28223,
+        "lon": -71.95427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pucón",
+          "url": "https://en.wikipedia.org/wiki/Pucón",
+          "text": "Pucón (Mapudungun: \"entrance to the cordillera\") is a Chilean city and commune administered by the municipality of Pucón. It is located in the Province of Cautín, Araucanía Region, 100 km to the southeast of Temuco and 780 km to the south of Santiago. It is on the eastern shore of Lake Villarrica, and Villarrica volcano is located roughly 17 km to the south.\nPucón's location by a lake and volcano, along with its relatively stable climate, especially in summer, make it a popular destination for tourists. It offers a variety of sports and activities for tourists, including water skiing, snow skiing, backpacking, white water rafting and kayaking, horse back riding, natural hot springs, zip line rides, skydiving and guided ascents of Villarrica volcano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "pucon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3322,
+    "place_id": "gn-4362344",
+    "input": {
+      "place": {
+        "place_id": "gn-4362344",
+        "name": "Middle River",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.33427,
+        "lon": -76.43941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middle River, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Middle_River,_Maryland",
+          "text": "Middle River is an unincorporated community and census-designated place in Baltimore County, Maryland, United States. The population was 33,203 at the 2020 census. A Middle River Train Station first appeared on the 1877 G.M. Hopkins & Co Baltimore County Map and by 1898 had a designated Post Office and modest street grid. The town expanded during the 1930s and 1940s and established the \"Aero Acres\" housing community which borders the railroad tracks and Martin Blvd. to serve as housing for people working at the Martin Aerospace Company. For this development, the architecture firm of Skidmore, Owings & Merrill designed gable-roofed Cape Cod houses with dimensions of 24 feet (7.3 m) by 28 feet (8.5 m), featuring large commercial-style windows in their principal rooms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "middle river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "middle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3326,
+    "place_id": "gn-5847486",
+    "input": {
+      "place": {
+        "place_id": "gn-5847486",
+        "name": "Kailua",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.40241,
+        "lon": -157.74054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kailua, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kailua,_Hawaii",
+          "text": "Kailua (English:  kye-LOO-ə, Hawaiian: [kɐjˈluwə]) is a census-designated place (CDP) in Honolulu County, Hawaii, United States. It lies in the Koʻolaupoko District of the island of Oʻahu on the windward coast at Kailua Bay. It is in the judicial district and the ahupua'a named Ko'olaupoko. It is 12 miles (19 km) northeast of Honolulu – over Nu‘uanu Pali.\nIn the Hawaiian language Kailua means \"two seas\" or \"two currents\", a contraction of the words kai (meaning \"sea\" or \"sea water\") and ʻelua (meaning \"two\"); it is so named because of the two former fishponds in the district (Kawainui and Kaʻelepulu) or the two currents that run through Kailua Bay.\nKailua is primarily a residential community, with a centralized commercial district along Kailua Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "kailua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3331,
+    "place_id": "gn-7799998",
+    "input": {
+      "place": {
+        "place_id": "gn-7799998",
+        "name": "El Shorouk",
+        "country": "Egypt",
+        "subdivision": "Cairo",
+        "lat": 30.13806,
+        "lon": 31.61556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Shorouk",
+          "url": "https://en.wikipedia.org/wiki/El_Shorouk",
+          "text": "El-Shorouk (Arabic: الشروق  pronounced [eʃʃʊˈɾuːʔ, eʃʃɪˈɾuːʔ], \"the Sunrise\") is a satellite city in the Eastern Area of Cairo, Egypt, also spelt Elshorouk. El Shorouk is considered as an extension for Heliopolis (Masr El Gedida). The two areas are mostly residential and are characterized by a limited number of malls and projects that would otherwise cause street congestion, unlike Nasr City and New Cairo which attracts investments and has lots of malls causing streets congestion. As a \"new city\" it is administered by the New Urban Communities Authority (NUCA).\nShorouk is one of the third-generation new cities, established by presidential decree 325/1995, allocating 11,000 acres (4,500 ha) of public land to NUCA, in addition to further allocations totalling 53,000 acres (21,000 ha) by 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "el shorouk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shorouk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3333,
+    "place_id": "gn-899825",
+    "input": {
+      "place": {
+        "place_id": "gn-899825",
+        "name": "Petauke",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -14.24117,
+        "lon": 31.31975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petauke",
+          "url": "https://en.wikipedia.org/wiki/Petauke",
+          "text": "Petauke is a town and seat of Petauke District located in the Eastern Province of Zambia.\nPetauke is 400 km east of Lusaka, the capital city of Zambia, just off the Great East Road. The main spoken language of the 14,000 residents is Nsenga.\nMost telecommunication is by two local radio stations; Radio PASME, 91.3 and Radio Explorers, 88.1fm, which cover up to 120 km; mainly used by local businessmen, political leaders and traditional chiefs to disseminate their information.\nThe town is situated in an agricultural area; farmers produce maize, cotton, sunflower, groundnut, soya beans and many other crops. Industries include two cotton ginneries, one roofing industry, a number of small scale maize millers and cooking-oil refiners, three breweries, and small scale saw-mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "petauke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3340,
+    "place_id": "gn-2357163",
+    "input": {
+      "place": {
+        "place_id": "gn-2357163",
+        "name": "Nouna",
+        "country": "Burkina Faso",
+        "subdivision": "Boucle du Mouhoun",
+        "lat": 12.72939,
+        "lon": -3.86305
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouna",
+          "url": "https://en.wikipedia.org/wiki/Nouna",
+          "text": "Nouna is a town, with a population of 32,428 (2019), located in the Province of Kossi in Burkina Faso. It is the capital of the Province.  Nouna is a fairly developed town that boasts electricity, running water, land-line telephones, and cellular phones.  It also has a high school, bank, post office, mayor's office, and several hotels.\nAccording to the legend, the town of Nouna was founded by an elder of the Dafin ethnic group, who having spotted a water source in the wilderness, exclaimed \"N'nouna diara!\" (I am happy!), and that is how the place came to be called \"Nouna\".\nNouna is located on the line of separation between Samo (or Samogo) territory to the east and Dafin territory to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "nouna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3343,
+    "place_id": "gn-284899",
+    "input": {
+      "place": {
+        "place_id": "gn-284899",
+        "name": "Jericho",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.86667,
+        "lon": 35.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jericho",
+          "url": "https://en.wikipedia.org/wiki/Jericho",
+          "text": "Jericho ( JERR-ik-oh; Arabic: أريحا, romanized: Arīḥā, IPA: [ʔaˈriːħaː] ; Hebrew: יְרֵחוֹ, romanized: Yərīḥō) is a city in the West Bank, Palestine, and the capital of the Jericho Governorate. The city is located in the Jordan Valley, with the Jordan River to the east and Jerusalem to the west.\nJericho is among the oldest cities in the world. Archaeologists have unearthed the remains of more than 20 successive settlements in Jericho, the first of which dates back 11,000 years (to 9000 BCE), almost to the very beginning of the Holocene epoch of the Earth's history. Copious springs in and around the city have attracted human habitation for thousands of years. Jericho is described in the Bible as the \"city of palm trees\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "jericho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3346,
+    "place_id": "gn-2994144",
+    "input": {
+      "place": {
+        "place_id": "gn-2994144",
+        "name": "Meudon",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.81381,
+        "lon": 2.235
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meudon",
+          "url": "https://en.wikipedia.org/wiki/Meudon",
+          "text": "Meudon (French pronunciation: [mødɔ̃] ) is a French commune located in the Hauts-de-Seine department in the Île-de-France region, on the left bank of the Seine. It is located 9.1 km (5.7 mi) from the center of Paris.\nThe city is covered by the Meudon Domanial Forest that accounts for half of its surface, a rarity in the close suburbs of Paris. Also, the city presents many significant grades and contains the geographic high point of the innermost Paris suburbs.\nThe city is mainly known for its forest and its observatory, that specializes in astrophysics and observation of the sun, but has also been home to celebrities such as Auguste Rodin, Richard Wagner, Louis Ferdinand Céline, Pascal Manoukian, Ambroise Paré and Armande Béjart."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "meudon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3349,
+    "place_id": "gn-3184935",
+    "input": {
+      "place": {
+        "place_id": "gn-3184935",
+        "name": "Lezhë",
+        "country": "Albania",
+        "subdivision": "Lezhë County",
+        "lat": 41.78361,
+        "lon": 19.64361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lezhë",
+          "url": "https://en.wikipedia.org/wiki/Lezhë",
+          "text": "Lezhë (Albanian: [ˈlɛʒə], Albanian definite form: Lezha) is a city in the Republic of Albania and seat of Lezhë County and Lezhë Municipality. It is one of Albania's oldest continuously inhabited cities, with roughly 2,400 years of recorded history.\nOne of the main strongholds of the Labeatai, the earliest of the fortification walls of Lezhë are of typical Illyrian construction and are dated to the late 4th century BC. Lezhë was one of the main centres of the Illyrian kingdom. During the conflicts with Macedon, it was captured by Philip V becoming the Macedonian outlet to the Adriatic Sea. The city was later recovered by the Illyrians. It was subjected to Rome after the Roman-Illyrian wars and the fall of Gentius' realm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "lezhe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3352,
+    "place_id": "gn-3991347",
+    "input": {
+      "place": {
+        "place_id": "gn-3991347",
+        "name": "Puerto Peñasco",
+        "country": "Mexico",
+        "subdivision": "Sonora",
+        "lat": 31.31716,
+        "lon": -113.53799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Peñasco",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Peñasco",
+          "text": "Puerto Peñasco is a small city located in Puerto Peñasco Municipality in the northwest of the Mexican state of Sonora, 100 kilometres (62 mi) from the border with the U.S. state of Arizona. According to the 2020 census, it has a population of 62,689 inhabitants. It is located on the northern shores of the Sea of Cortez on the small strip of land that joins the Baja California Peninsula with the rest of Mexico. The area is part of the Altar Desert, one of the driest and hottest areas of the larger Sonoran Desert.\nSince the late 1990s, there has been a push to develop the area for tourism. It is now one of the most important tourist destinations in northern Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "puerto penasco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "penasco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3362,
+    "place_id": "gn-1723893",
+    "input": {
+      "place": {
+        "place_id": "gn-1723893",
+        "name": "Borongan",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.60806,
+        "lon": 125.43194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borongan",
+          "url": "https://en.wikipedia.org/wiki/Borongan",
+          "text": "Borongan, officially the City of Borongan (Waray: Siyudad han Borongan;  Filipino: Lungsod ng Borongan), is a  component city and capital of the province of Eastern Samar, Philippines. According to the 2024 census, it has a population of 71,431 people.\nIt is the most populous LGU in Eastern Samar and it is also nicknamed as the \"City of the Golden Sunrise/Sunshine\" and aspiring to be the \"King City of the East\". Its cityhood was settled by the Supreme Court of the Philippines when it decided with finality on April 12, 2007, the constitutionality of its city charter, Republic Act 9394, which conferred upon and elevated the status of the municipality of Borongan into a component city of the province of Eastern Samar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "borongan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3367,
+    "place_id": "gn-2754394",
+    "input": {
+      "place": {
+        "place_id": "gn-2754394",
+        "name": "Hengelo",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.26583,
+        "lon": 6.79306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hengelo",
+          "url": "https://en.wikipedia.org/wiki/Hengelo",
+          "text": "Hengelo (Dutch: [ˈɦɛŋəloː] ; Tweants: Hengel) is a city in the eastern part of the Netherlands, in the Twente region, in the province of Overijssel. It is part of a larger urban area that also includes Enschede, Borne, Almelo and Oldenzaal.\nDue to its geomorphology, being situated relatively low in the landscape, Hengelo is a place where streams converge. By consequence, it became a crossroad, inhabited early on in history, which has made it into an infrastructural hub and an industrial centre today. For the 19th century industry, water was needed for bleaching textile, while factories also needed water for their steam engines, and for cooling. Over time, Hengelo became known as metaalstad, for its machine factories and electrical engineering companies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "hengelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3368,
+    "place_id": "gn-2790869",
+    "input": {
+      "place": {
+        "place_id": "gn-2790869",
+        "name": "Mons",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.45413,
+        "lon": 3.95229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mons, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Mons,_Belgium",
+          "text": "Mons (French: [mɔ̃s] ; German and Dutch: Bergen, Dutch pronunciation: [ˈbɛrɣə(n)] ; Walloon and Picard: Mont) is a city and municipality of Wallonia, and the capital of the province of Hainaut, Belgium.\nMons was made into a fortified city by Count Baldwin IV of Hainaut in the 12th century. The population grew quickly, trade flourished, and several commercial buildings were erected near the Grand-Place. In 1814, King William I of the Netherlands increased the fortifications, following the fall of the First French Empire. The Industrial Revolution and coal mining made Mons a centre of heavy industry. In 1830, Belgium gained its independence and the decision was made to dismantle the fortifications, allowing the creation of large boulevards and other urban projects."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mons",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

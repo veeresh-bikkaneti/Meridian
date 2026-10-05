@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 6829,
+    "attempt": 6781,
+    "place_id": "gn-3133904",
+    "input": {
+      "place": {
+        "place_id": "gn-3133904",
+        "name": "Tromsdalen",
+        "country": "Norway",
+        "subdivision": "Troms",
+        "lat": 69.65,
+        "lon": 19.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tromsdalen",
+          "url": "https://en.wikipedia.org/wiki/Tromsdalen",
+          "text": "Tromsdalen (Norwegian) or Romssavággi (Northern Sami) is an urban neighborhood in the city of Tromsø which is in Tromsø Municipality in Troms county, Norway.  It is located just to the east of the city centre on the mainland along the coast of the Tromsøysundet strait. The 5.13-square-kilometre (1,270-acre) village has a population (2023) of 18,202 and a population density of 3,548 inhabitants per square kilometre (9,190/sq mi).\nThe urban area encompasses a good portion of the valley in which it is located.  Tromsdalen, which literally means Troms valley, is connected to the island of Tromsøya by the Tromsø Bridge. The European route E8 highway runs through the northern part of Tromsdalen. The Tromsdalselva river flows through the valley.  The Arctic Cathedral is located here.\nPopular attractions in Tromsdalen are the Arctic Cathedral and the Fjellheisen aerial tramway to the top of a nearby fell; the tramway ends at an elevation of 420 metres (1,380 ft) where the view is stunning.  The mountain Tromsdalstinden is located at the eastern end of Tromsdalen and reaches an elevation of 1,238 metres (4,062 ft).  The climb to the top of this mountain is very popular with the Tromsø residents, since mountain climbing equipment is not needed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "tromsdalen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6830,
+    "attempt": 6782,
+    "place_id": "gn-3167751",
+    "input": {
+      "place": {
+        "place_id": "gn-3167751",
+        "name": "San Salvo",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.04413,
+        "lon": 14.73335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Salvo",
+          "url": "https://en.wikipedia.org/wiki/San_Salvo",
+          "text": "San Salvo (Abruzzese: Sàndë Sàlvë) is a comune and town in the Province of Chieti in the Abruzzo region of Italy. It is the last Abruzzo town on the Adriatic coast before entering the Molise Region.\nSan Salvo is divided into two major urban areas: San Salvo city and San Salvo Marina.\nOn the top of its seaside touristic and agricultural resources, San Salvo has a large industrial park which hosts glass-related business organizations.\nSan Salvo is 52 miles from Abruzzo Airport and the closest hospital is in Vasto, 13 mile drive distance. The nearest train station is just outside city limits, Vasto-S. Salvo Station, approximately 2.6 miles from city center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "san salvo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salvo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6831,
+    "attempt": 6783,
+    "place_id": "gn-3170272",
+    "input": {
+      "place": {
+        "place_id": "gn-3170272",
+        "name": "Pontedera",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.66141,
+        "lon": 10.63067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontedera",
+          "url": "https://en.wikipedia.org/wiki/Pontedera",
+          "text": "Pontedera  (Italian: [ponteˈdɛːra]; Latin: Pons Herae) is an Italian comune with a population of 30,070, located in the province of Pisa, Tuscany, central Italy.\nThe town is located 20 km (12 miles) from Pisa and 50 km (31 miles) from Florence.\nIt houses the headquarters of the Piaggio company, the Castellani winery and  the Amedei premium artisan chocolate factory.\nPontedera is in the Arno Valley at the confluence of the Era River and the Arno River. Its territory is also crossed by the Scolmatore dell'Arno canal, and by the Roglio, a tributary of the Era. There is also a small lake, in the frazione of La Rotta, known as Braccini lake.\nThe football team in the town is called U.S. Città di Pontedera, and they currently play in Serie C. Another notable attraction is the church of Santissimo Crocifisso."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "pontedera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6832,
+    "attempt": 6784,
+    "place_id": "gn-3183490",
+    "input": {
+      "place": {
+        "place_id": "gn-3183490",
+        "name": "Acqui Terme",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.67552,
+        "lon": 8.46934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acqui Terme",
+          "url": "https://en.wikipedia.org/wiki/Acqui_Terme",
+          "text": "Acqui Terme  (Italian pronunciation: [ˈakkwi ˈtɛrme]; Piedmontese: Àich [ˈɑjk]) is a city and comune (municipality) in the province of Alessandria, Piedmont, northern Italy. It is about 35 kilometres (22 mi) south-southwest of Alessandria.  It is one of the principal winemaking communes of the Italian DOCG wine Brachetto d'Acqui.\nThe city's hot sulphur springs have been famous since this was the Roman town of Aquae Statiellae; the ancient baths are referred to by Paulus Diaconus and the chronicler Liutprand of Cremona. In 1870 Giovanni Ceruti designed a small pavilion, known as La Bollente, for the spot at the centre of the town where the water temperature up to 75 °C (167 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "acqui terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "acqui",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6833,
+    "attempt": 6785,
+    "place_id": "gn-3200930",
+    "input": {
+      "place": {
+        "place_id": "gn-3200930",
+        "name": "Tomislavgrad",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.71849,
+        "lon": 17.22515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tomislavgrad",
+          "url": "https://en.wikipedia.org/wiki/Tomislavgrad",
+          "text": "Tomislavgrad (Serbian Cyrillic: Томиславград, pronounced [tǒmislaʋgrâːd]), also known by its former name Duvno (Cyrillic: Дувно, pronounced [dǔːʋno]), is a town and the seat of the Municipality of Tomislavgrad in Canton 10 of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. As of 2013, it has a population of 5,587 inhabitants.\nIn the Roman times, it was known as Delminium. During the Middle Ages when it was part of Croatia and Bosnia, the town was known as Županjac. This name remained until 1928 when it was changed to Tomislavgrad. In 1946, communist authorities changed the name again to Duvno, and in 1990, the name was returned to Tomislavgrad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "tomislavgrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6834,
+    "attempt": 6786,
+    "place_id": "gn-323930",
+    "input": {
+      "place": {
+        "place_id": "gn-323930",
+        "name": "Altınekin",
+        "country": "Türkiye",
+        "subdivision": "Konya",
+        "lat": 38.30778,
+        "lon": 32.86861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altınekin",
+          "url": "https://en.wikipedia.org/wiki/Altınekin",
+          "text": "Altınekin is a municipality and district of Konya Province, Turkey. Its area is 1,312 km2, and its population is 14,289 (2022). Its original name was Zıvarık until the İnönü government changed its name in 1963, giving it the name of one of Zıvarık's plateaus, Altınekin (\"golden crop\"), named as such because of the land's fertility.\nThe town is near the ancient Roman city of Pegella.\nDuring the medieval period under the Seljuk Turks, the town prospered as it lay on the Ankara–Konya trade route, the Seljuks building a caravanserai (known as the Zıvarık Han) in the 14th century, along with a wooden mosque. Both of these are in good condition today.\nCrimean Tatar refugees from Bağçasaray, Crimea were settled in the town in the early 1900s. The town became known thereafter for its fertile sugar beet production.\nAfter the proclamation of the republic in 1923, courthouses and other public institutions were built in the town. The town sent a member of parliament to the Grand National Assembly, Ali Fırat. The İnönü government of the 1960s, besides changing the town's name, also downgraded the town's status and made it a subdistrict of the neighboring Cihanbeyli, perhaps as retaliation against Fırat's opposition to İnönü's leftist government. The government also removed the public services and moved them to Cihanbeyli. This forced the townspeople to make the trek there for basic necessities like registering births and obtaining identification cards. The government also neglected the upkeep of the historical caravanserai and mosque in town. The new highways built under this and succeeding governments also modified the ancient Ankara–Konya trade route to bypass the town, depriving its economy of the trade's benefits.\nPublic services were not restored until the conservative government of Turgut Özal in the 1980s, the grateful town giving his name to the new Turgut Özal Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "alt nekin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nekin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6835,
+    "attempt": 6787,
+    "place_id": "gn-3362870",
+    "input": {
+      "place": {
+        "place_id": "gn-3362870",
+        "name": "Piketberg",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -32.90323,
+        "lon": 18.75704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piketberg",
+          "url": "https://en.wikipedia.org/wiki/Piketberg",
+          "text": "Piketberg (also sometimes spelt Piquetberg in the past) is a town in the Western Cape, South Africa, located about 80 km east of Saldanha Bay.  The original spelling of the name was \"Piquetberg\". The town is in the foothills of the Piketberg mountains, a range of low mountains formed from Table Mountain Sandstone.\nThe area around the mountains is conducive to the farming of wheat, while the area on top of the Piketberg Mountains range (called Piket-Bo-Berg), being cooler and generally frost-free, is suited to the farming of fruit and Rooibos Tea.  Piketberg has a large Dutch Reformed Church designed by the architect Carl Otto Hager in his trademark neo-Gothic style."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "piketberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6836,
+    "attempt": 6788,
+    "place_id": "gn-3458591",
+    "input": {
+      "place": {
+        "place_id": "gn-3458591",
+        "name": "Lima Duarte",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.8425,
+        "lon": -43.79306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lima Duarte, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Lima_Duarte,_Minas_Gerais",
+          "text": "Lima Duarte is a municipality in the state of Minas Gerais, Brazil. It has a population of 16,724 inhabitants (2020) and a total area of 848 square kilometres (327 mi2) and lies at an elevation of 860 metres (2,822 ft) in the foothills of the Mantiqueira Mountains. It was given city status in 1881.\nIt is 330 kilometres (210 mi) from the state capital, Belo Horizonte, and is part of the Zona da Mata, a region whose economic and cultural center is Juiz de Fora. It is connected with this city by highway BR-267.\nIbitipoca state park is situated within the municipality about 25 kilometres (16 mi) from the city center.\nAverage maximum temperature: 28 °C (82 °F);\nAverage minimum temperature: 10 °C (50 °F)\nMost of the municipality is drained by the Paraíba do Sul River.  The most important river is the Rio do Peixe, a tributary of the Paraibuna.\nThe name of the city has no connection to the famous Brazilian actor Lima Duarte, but was in homage to Conselheiro José Rodrigues de Lima Duarte, political leader from Barbacena, who in the nineteenth century was Minister of the Navy and a Senator of the Empire.\nThe city's economy is mainly based on tourism and the dairy industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "lima duarte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "duarte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6837,
+    "attempt": 6789,
+    "place_id": "gn-3529886",
+    "input": {
+      "place": {
+        "place_id": "gn-3529886",
+        "name": "Cunduacán",
+        "country": "Mexico",
+        "subdivision": "Tabasco",
+        "lat": 18.06557,
+        "lon": -93.17302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cunduacán",
+          "url": "https://en.wikipedia.org/wiki/Cunduacán",
+          "text": "Cunduacán is a municipality in the central portion of the Mexican state of Tabasco. It is located at about 18°4'0\"North, 93°10'0\"West.\nIt is located in the Grijalva River Region, Chontalpa subregion. Its name originates from the Mayan cum-ua-cán, which means \"place of pots of corn and serpents\", which is also the name of the city which is the municipal seat of the municipality. It is made up of 10 villages, 31 ranches (rancherías), 59 ejidos and 13 colonias. The town had a 2005 census population of 81,392 inhabitants (the sixth-largest community in the state after Villahermosa, Cárdenas, and Comalcalco, Huimanguillo, and Macuspana), while the municipality had a population of 112,036  (www.inegi.gob.mx). The municipality has an area of 1,017 km2 (393 sq mi), the eighth in the state in terms of geographical coverage and corresponding to 2.54% of the total area of the state. To the North are the municipalities of Comalcalco and Jalpa de Méndez, to the East are the municipalities of Nacajuca and Centro, to the South is the municipality of Centro and the State of Chiapas, and to the West is the municipality of Cárdenas. Geophysically the municipality is completely flat, as it is part of the coastal plain. Its hydrography consists of the rivers Mezcalapa, which marks its southern border with the municipalities of Centro, Samaria, Guayabal, Cucuyulapa, Barí, Cunduacán and Tular; and the lagoons of Cucuyulapa and Ballona.  The state's Universidad Juarez Autonoma de Tabasco has various centers in Cunduacán."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "cunduacan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6838,
+    "attempt": 6790,
+    "place_id": "gn-3617069",
+    "input": {
+      "place": {
+        "place_id": "gn-3617069",
+        "name": "Río Blanco",
+        "country": "Nicaragua",
+        "subdivision": "Matagalpa Department",
+        "lat": 12.93435,
+        "lon": -85.22354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Blanco, Nicaragua",
+          "url": "https://en.wikipedia.org/wiki/Río_Blanco,_Nicaragua",
+          "text": "Río Blanco is a town and a municipality in the Matagalpa Department of Nicaragua. In 1836, a settler by the name of Arthur Morgan conquered the land and created a new hideout for the Van Der Linde Gang. Shortly after, they were peacefully removed by the Clone Troopers of a nearby Hamlet. After leaving the region for an estimated 37 years, they returned and started a successful tea kettle business on the side of a nearby river in an adobe. In 2013 they filed for bankruptcy, and left the region. Many in Río Blanco actually believe the business was an urban legend, as no proof of the business has been found. The lack of information could be due to the flooding of the underground sacrificial chambers, which housed all town documents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "rio blanco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blanco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6839,
+    "attempt": 6791,
+    "place_id": "gn-3727055",
+    "input": {
+      "place": {
+        "place_id": "gn-3727055",
+        "name": "Dame-Marie",
+        "country": "Haiti",
+        "subdivision": "Grand'Anse",
+        "lat": 18.56107,
+        "lon": -74.42167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dame-Marie, Haiti",
+          "url": "https://en.wikipedia.org/wiki/Dame-Marie,_Haiti",
+          "text": "Dame-Marie (French pronunciation: [dam maʁi] ; Haitian Creole: Dam Mari) is a small seaside commune located on the western tip of Haiti, in the arrondissement of Anse-d'Hainault, in the Grand'Anse department of Haiti.  The municipality's population according to the 2015 census is 38,747 inhabitants. Unlike other cities in Haiti, nearly all the roads in Dame Marie are paved. Dame Marie is relatively well-developed and has an association for most of the existing trades and professions.  Agriculture and fishing are the economic mainstays in the community. The land and sea do offer much potential, but profit margins are barely beyond sustenance due to outmoded equipment, lack of proper storage and poor transportation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "dame marie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dame",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6840,
+    "attempt": 6792,
+    "place_id": "gn-3983820",
+    "input": {
+      "place": {
+        "place_id": "gn-3983820",
+        "name": "Santa Rosa Jáuregui",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 20.7421,
+        "lon": -100.44783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa Jáuregui",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa_Jáuregui",
+          "text": "Santa Rosa Jáuregui is one of seven boroughs of the municipality Santiago de Querétaro. It has 16,966 inhabitants, and is located at 1950 meters above sea level. The borough is the largest of the municipality of Querétaro in terms of surface, covering its northern half, though it is the smallest in terms of population. There are fifty three rural and urban settlements, besides the borough of Santa Rosa.\nIf Santa Rosa were a municipality, it would be ranked 4th in the state in terms of population (after Querétaro, San Juan del Río, and Corregidora) and 14th in terms of  area. It is considered the cradle of \"carnitas\" (deep fried pork meat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa jauregui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jauregui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6841,
+    "attempt": 6793,
+    "place_id": "gn-4013130",
+    "input": {
+      "place": {
+        "place_id": "gn-4013130",
+        "name": "Comala",
+        "country": "Mexico",
+        "subdivision": "Colima",
+        "lat": 19.32374,
+        "lon": -103.7609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comala",
+          "url": "https://en.wikipedia.org/wiki/Comala",
+          "text": "Comala (Spanish: [koˈmala] ) is a town and municipality located in the Mexican state of Colima, near the state capital of Colima, being the northernmost and second smallest municipality in Colima behind Villa de Álvarez. It has been nicknamed the \"White Village of America\" as the façades of the buildings in town have all been painted white since the 1960s. The historic center of the town was declared a Historic Monument Zone and the town became a Pueblo Mágico in 2002. It is the municipal seat of the Comala Municipality, the local governing authority for over 400 other communities, including the former Nogueras Hacienda, the home of artist Alejandro Rangel Hidalgo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "comala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6842,
+    "attempt": 6794,
+    "place_id": "gn-4343327",
+    "input": {
+      "place": {
+        "place_id": "gn-4343327",
+        "name": "Terrytown",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 29.91021,
+        "lon": -90.03257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Terrytown, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Terrytown,_Louisiana",
+          "text": "Terrytown is an unincorporated community and census-designated place (CDP) in Jefferson Parish, Louisiana, United States. It is on the \"Westbank\" (to the south) of the Mississippi River. It is a suburb within the New Orleans–Metairie–Kenner metropolitan statistical area. The population was 23,319 at the 2010 census, and 25,278 in 2020.\nTerrytown was opened to a media tour on March 5, 1960, showcasing the newest of concepts in home construction at the time, with the original homes having all plumbing in one wall. The community was opened to the public and considered founded on March 6, 1960, by subdivision developer Paul Kapelow, who named the town after his first daughter, Terry Kapelow. Terrytown includes Oakwood Center, a major shopping mall in the New Orleans metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "terrytown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6843,
+    "attempt": 6795,
+    "place_id": "gn-4356165",
+    "input": {
+      "place": {
+        "place_id": "gn-4356165",
+        "name": "Glassmanor",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.819,
+        "lon": -76.99859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glassmanor, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Glassmanor,_Maryland",
+          "text": "Glassmanor is an unincorporated community and census-designated place in Prince George's County, Maryland, United States. As of the 2020 census, it had a population of 18,430. In the 1990 and 2000 censuses, the United States Census Bureau had placed Glassmanor and the adjacent community of Oxon Hill in the \"Oxon Hill-Glassmanor\" census-designated place for statistical purposes. Glassmanor was last delineated separately in 1980, when the CDP recorded a population of 7,751.\nThe original Glassmanor apartments were built circa 1950 by the Glassman company, just outside the border of southeast Washington. In the mid-1950s, the Eastover shopping center was built across the highway, followed by other adjoining apartment projects in the 1960s. U.S. Senator George McGovern, who was the Democratic Party's presidential candidate in 1972, lived briefly in Glassmanor while a freshman congressman. The area has undergone tremendous demographic and social changes since that time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "glassmanor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6844,
+    "attempt": 6796,
+    "place_id": "gn-4530801",
+    "input": {
+      "place": {
+        "place_id": "gn-4530801",
+        "name": "Bixby",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.94204,
+        "lon": -95.88332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bixby, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Bixby,_Oklahoma",
+          "text": "Bixby is a city in Tulsa and Wagoner counties in the U.S. state of Oklahoma; it is a suburb of Tulsa. Its population was 28,609 at the 2020 census and 20,884 in the 2010 census, an increase of 36.99 percent In 2010, Bixby became the 19th largest city in Oklahoma. It is nicknamed \"The Garden Spot of Oklahoma\" for its rich agrarian heritage. Although it is one of the fastest-growing communities in Oklahoma, it remains a sod-growing center and a popular location for purchasing fresh vegetables. The per capita income of $36,257 is the highest in the Tulsa metropolitan area and is more than 50 percent higher than the state average."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "bixby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6845,
+    "attempt": 6797,
+    "place_id": "gn-4771808",
+    "input": {
+      "place": {
+        "place_id": "gn-4771808",
+        "name": "Martinsville",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.69153,
+        "lon": -79.87254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martinsville, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Martinsville,_Virginia",
+          "text": "Martinsville is an independent city in the Commonwealth of Virginia in the United States. As of the 2020 census, its population was 13,485. A community of both Southside and Southwest Virginia, it is the county seat of Henry County, although the two are separate jurisdictions. The Bureau of Economic Analysis combines the city of Martinsville with Henry County for statistical purposes.\nMartinsville is the principal city of the Martinsville micropolitan statistical area, which includes the communities and towns of Axton, Bassett, Chatmoss, Collinsville, Fieldale, Horsepasture, Laurel Park, Oak Level, Sandy Level, Stanleytown, Villa Heights, Spencer, and Ridgeway. The Martinsville Micropolitan Area has a population of 63,765 as of the 2020 census.\nThe round-end oval Martinsville Speedway, the shortest track in the NASCAR Cup Series at 0.526 miles (847 m) and one of the first paved \"speedways\", is located just outside the city near the town of Ridgeway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "martinsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6846,
+    "attempt": 6798,
+    "place_id": "gn-493316",
+    "input": {
+      "place": {
+        "place_id": "gn-493316",
+        "name": "Shushary",
+        "country": "Russia",
+        "subdivision": "St.-Petersburg",
+        "lat": 59.80917,
+        "lon": 30.38167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shushary, Saint Petersburg",
+          "url": "https://en.wikipedia.org/wiki/Shushary,_Saint_Petersburg",
+          "text": "Shushary (Russian: Шуша́ры, from Finnish Suosaari, \"marshy island\") is a municipal settlement in Pushkinsky District of the federal city of St. Petersburg, Russia, located on the slopes of the Pulkovo Heights.  Population:  22,652 (2010 census); 15,843 (2002 census); 4,789 (1989 Soviet census).\nShushary gained importance in 1838 as the location of the first railway siding in the Russian Empire and one of the first railway stations in the country.  A living-history steam-engine museum chronicles the town's long association with the Russian Railways.\nIn the beginning of the 21st century, Shushary was transformed into an industrial area comprising automotive plants such as Toyota, General Motors (now owned by Hyundai), and Magna International."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "shushary",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6847,
+    "attempt": 6799,
+    "place_id": "gn-5127536",
+    "input": {
+      "place": {
+        "place_id": "gn-5127536",
+        "name": "Morris Heights",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.84982,
+        "lon": -73.91986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morris Heights, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Morris_Heights,_Bronx",
+          "text": "Morris Heights is a residential neighborhood located in the West Bronx. Its boundaries, starting from the north and moving clockwise are: West Burnside Avenue to the north, Jerome Avenue to the east, the Cross Bronx Expressway to the south, and the Harlem River to the west. University Avenue is the primary thoroughfare through Morris Heights.\nThe neighborhood is part of Bronx Community Board 5, and its ZIP Codes include 10452 and 10453. The area is patrolled by the New York City Police Department's 46th Precinct. New York City Housing Authority (NYCHA) property in the area is patrolled by P.S.A. 7 at 737 Melrose Avenue in the Melrose section of the Bronx."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "morris heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morris",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6848,
+    "attempt": 6800,
+    "place_id": "gn-5133858",
+    "input": {
+      "place": {
+        "place_id": "gn-5133858",
+        "name": "Ridgewood",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.7001,
+        "lon": -73.90569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ridgewood, Queens",
+          "url": "https://en.wikipedia.org/wiki/Ridgewood,_Queens",
+          "text": "Ridgewood is a neighborhood in the New York City borough of Queens.  It borders the Queens neighborhoods of Maspeth to the north, Middle Village to the east, and Glendale to the southeast, as well as the Brooklyn neighborhoods of Bushwick to the southwest and East Williamsburg to the west. Historically, the neighborhood straddled the Queens-Brooklyn boundary.\nThe etymology of Ridgewood's name is disputed, but it may have referred to Ridgewood Reservoir, the local geography, or a road. The British settled Ridgewood in the 17th century, while the Dutch settled nearby Bushwick. The adjacent settlements led to decades of disputes over the boundary, which later became the border between Queens and Brooklyn. Bushwick was developed rapidly in the 19th century, but Ridgewood remained sparsely populated until the early 20th century, when rowhouses were built for its rapidly growing, predominantly German population. Ridgewood has become more ethnically diverse since the mid-20th century. Large parts of the neighborhood are national and city historic districts.\nRidgewood is patrolled by the New York City Police Department's 104th Precinct. It is represented by the New York City Council's 30th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "ridgewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

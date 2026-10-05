@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2083,
+    "place_id": "gn-5928065",
+    "input": {
+      "place": {
+        "place_id": "gn-5928065",
+        "name": "Cornwall",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.01809,
+        "lon": -74.72815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cornwall, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Cornwall,_Ontario",
+          "text": "Cornwall is a city in Eastern Ontario, Canada, situated where the provinces of Ontario and Quebec and the U.S. state of New York converge. It is Ontario's easternmost city. Although it is the seat of the United Counties of Stormont, Dundas and Glengarry, Cornwall is administered independently from the county.\nCornwall is named after the English Duchy of Cornwall; the city's coat of arms is based on that of the duchy with its colours reversed and the addition of a \"royal tressure,\" a Scottish symbol of royalty.\nIt is the urban centre for the surrounding communities of Long Sault and Ingleside to the west; the Mohawk Territory of Akwesasne to the south; St. Andrews West and Avonmore to the north; and Glen Walter, Martintown, Apple Hill, Williamstown, and Lancaster to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "cornwall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2096,
+    "place_id": "gn-3369129",
+    "input": {
+      "place": {
+        "place_id": "gn-3369129",
+        "name": "Ceres",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.36889,
+        "lon": 19.31095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceres, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Ceres,_South_Africa",
+          "text": "Ceres is the administrative centre and largest town of the Witzenberg Local Municipality in the Western Cape Province of South Africa. Ceres serves as a regional centre for the surrounding towns of Wolseley, Tulbagh, Op-die-Berg and Prince Alfred Hamlet. It is situated in the Warmbokkeveld (English: \"warm antelope field\") Valley about 170 km north-east of Cape Town. Ceres is located at the north-eastern entrance to Michell's Pass and was the old route north between Cape Town and Johannesburg, which was later replaced by the N1 highway, which traverses the Breede River Valley to the south.\nNamed after the Roman goddess of agriculture, Ceres, a name which is fitting as the valley in which the town is situated is extremely fertile and is a major producer of South Africa's deciduous fruit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "ceres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2097,
+    "place_id": "gn-3533389",
+    "input": {
+      "place": {
+        "place_id": "gn-3533389",
+        "name": "Actopan",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.26896,
+        "lon": -98.94216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Actopan, Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Actopan,_Hidalgo",
+          "text": "Actopan (from Nahuatl: Ātocpan 'thick, humid and fertile land') is a Mexican city, head of the municipality of Actopan in the state of Hidalgo. Actopan is widely known for its gastronomy, especially for ximbo and barbacoa, as well as for the Church and ex-convent of San Nicolás de Tolentino.\nThe city is located north of Mexico City, from which it is 120 km away, and only 37 km from the city of Pachuca de Soto, the capital of the state of Hidalgo. It is located within the geographical region known as Mezquital Valley. According to the results of the 2020 Population and Housing Census of INEGI, the town has a population of 32,276 inhabitants, which represents 52.91% of the municipal population.\nThe city was a settlement of the Otomi people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "actopan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2098,
+    "place_id": "gn-4369596",
+    "input": {
+      "place": {
+        "place_id": "gn-4369596",
+        "name": "Silver Spring",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.99067,
+        "lon": -77.02609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silver Spring, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland",
+          "text": "Silver Spring is a census-designated place (CDP) in southeastern Montgomery County, Maryland, United States, near Washington, D.C. Although officially unincorporated, it is an edge city. As of 2026, the population is around 84,593, making it the 6th most populated city in Maryland.\nDowntown Silver Spring, located next to the northern tip of Washington, D.C., is the oldest and most urbanized area of Silver Spring, surrounded by several inner suburban residential neighborhoods inside the Capital Beltway. Many mixed-use developments combining retail, residential, and office space have been built since 2004.\nSilver Spring takes its name from a mica-flecked spring discovered there in 1840 by Francis Preston Blair, who subsequently bought much of the area's surrounding land. Acorn Park, south of downtown, is believed to be the site of the original spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "silver spring",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2107,
+    "place_id": "gn-2562280",
+    "input": {
+      "place": {
+        "place_id": "gn-2562280",
+        "name": "Xagħra",
+        "country": "Malta",
+        "subdivision": "Ix-Xagħra",
+        "lat": 36.05003,
+        "lon": 14.26421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xagħra",
+          "url": "https://en.wikipedia.org/wiki/Xag%C4%A7ra",
+          "text": "Xagħra (Maltese: Ix-Xagħra) is an administrative unit of Malta on the island of Gozo. It is one of the earliest inhabited parts of Gozo, being home to the Ġgantija megalithic temples, which date back to 3600 BC, and the Xagħra Stone Circle. Natural underground features such as Xerri's Grotto and Ninu's Cave are located in this town, along with Calypso's Cave, which overlooks the red sandy beach of Ramla Bay. It is the second-largest town in Gozo, with a population of 5,161 according to the 2021 census, and it is located northeast of Victoria, the capital of Gozo.\nXagħra is a popular tourist destination due to its historical heritage and lively Victory Square. Thousands of visitors flock to Ramla Bay in summer and to the temples all year round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "xag ra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "xag",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ra",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2120,
+    "place_id": "gn-1282601",
+    "input": {
+      "place": {
+        "place_id": "gn-1282601",
+        "name": "Tursunzoda",
+        "country": "Tajikistan",
+        "subdivision": "Republican Subordination",
+        "lat": 38.51271,
+        "lon": 68.23163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tursunzoda",
+          "url": "https://en.wikipedia.org/wiki/Tursunzoda",
+          "text": "Tursunzoda (Tajik: Турсунзода; also Tursunzade from Russian: Турсунзаде) is a city in western Tajikistan, known for its aluminium smelting plant TadAZ.  It is located 60 km west of Dushanbe (40 km west of Hisor), near the border with Uzbekistan.  It is near several rivers, Shirkent and Karatag immediately to the west and east of the city, and Kofarnihon further east. Its population is estimated at 55,700 for the city proper and 298,800 for the city with the outlying communities (2020). Its population was given as 40,600 in the 1989 census, falling to 39,000 in 2000, and estimated at 37,000 in 2006.\nThe city has two television stations, TV-REGAR and TV-TADAZ, two newspapers, Aluminiy Tojikiston and Regar, and a radio station.\nTursunzoda is home to football club Regar-TadAZ Tursunzoda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "tursunzoda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2123,
+    "place_id": "gn-304013",
+    "input": {
+      "place": {
+        "place_id": "gn-304013",
+        "name": "Mut",
+        "country": "Türkiye",
+        "subdivision": "Mersin",
+        "lat": 36.64389,
+        "lon": 33.43885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mut, Mersin",
+          "url": "https://en.wikipedia.org/wiki/Mut,_Mersin",
+          "text": "Mut is a municipality and district of Mersin Province, Turkey. Its area is 2,718 km2, and its population is 62,874 (2022).\nMut is a rural district at the foot of the Sertavul Pass on the road over the Taurus Mountains from Ankara and Konya to the Mediterranean coast at Anamur or Silifke. Mut is known for its special apricot variety, Mut şekerparesi, and a statue of a girl carrying a basket of them stands at the entrance to the town. The summer is hot and the people of Mut retreat to high meadows (so called yayla) even further up the mountainside. The forests up here are home to wild boar, and the Gezende reservoir on the Ermenek River is a welcome patch of blue in this dry district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "mut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2124,
+    "place_id": "gn-3073803",
+    "input": {
+      "place": {
+        "place_id": "gn-3073803",
+        "name": "Karlovy Vary",
+        "country": "Czechia",
+        "subdivision": "Carlsbad Region",
+        "lat": 50.23271,
+        "lon": 12.87117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlovy Vary",
+          "url": "https://en.wikipedia.org/wiki/Karlovy_Vary",
+          "text": "Karlovy Vary (Czech pronunciation: [ˈkarlovɪ ˈvarɪ] ; German: Karlsbad, formerly also spelled Carlsbad in English) is a spa city in the Karlovy Vary Region of the Czech Republic. It has about 49,000 inhabitants. It is located at the confluence of the Ohře and Teplá rivers.\nKarlovy Vary is named after Charles IV, Holy Roman Emperor and the King of Bohemia, who founded the city in the 14th century. The site of numerous hot springs, the city grew into a spa resort in the 19th century and was a popular destination for the European aristocracy and other luminaries. Karlovy Vary's rapid growth was brought to an end by the outbreak of World War I. After the Velvet Revolution in 1989, Karlovy Vary once again became a major tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "karlovy vary",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "karlovy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vary",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2126,
+    "place_id": "gn-4115412",
+    "input": {
+      "place": {
+        "place_id": "gn-4115412",
+        "name": "Hot Springs",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 34.5037,
+        "lon": -93.05518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hot Springs, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Hot_Springs,_Arkansas",
+          "text": "Hot Springs is a resort city in the state of Arkansas, United States, and the county seat of Garland County. The city is located in the Ouachita Mountains among the U.S. Interior Highlands, and is set among several natural hot springs for which the city is named. As of the 2020 United States census, the city had a population of 37,930, making it the eleventh-most populous city in Arkansas.\nThe center of Hot Springs is the oldest federal reserve in the United States, today preserved as Hot Springs National Park. The hot spring water has been popularly believed for centuries to possess healing properties, and was a subject of legend among several Native American tribes. Following federal protection in 1832, the city developed into a successful spa town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "hot springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2127,
+    "place_id": "gn-4525353",
+    "input": {
+      "place": {
+        "place_id": "gn-4525353",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.92423,
+        "lon": -83.80882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Ohio",
+          "text": "Springfield is a city in Clark County, Ohio, United States, and its county seat. It is located in southwestern Ohio along the Mad River, Buck Creek, and Beaver Creek, about 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. The city had a total population of 58,662 at the 2020 census, while the Springfield metropolitan area had 136,001 residents.\nSpringfield is home to Wittenberg University, a liberal arts college, and Clark State College, a community college. The Little Miami Scenic Trail, a paved rail-trail that is nearly 80 mi (130 km) long, extends from the Buck Creek Scenic Trail head in Springfield south to Newtown, Ohio. Buck Creek State Park and its Clarence J. Brown reservoir are located at the city limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2137,
+    "place_id": "gn-2320920",
+    "input": {
+      "place": {
+        "place_id": "gn-2320920",
+        "name": "Uga",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 5.93576,
+        "lon": 7.0793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uga, Anambra State",
+          "url": "https://en.wikipedia.org/wiki/Uga,_Anambra_State",
+          "text": "Uga is a town in Aguata Local Government Area  of Anambra State, Nigeria. It is 13 km South East of Igbo-Ukwu, 12 km South of Ekwulobia, and 45 km South of Awka, the Anambra State Capital. It has four (4) communities namely : Umueze, Oka, Umuoru and Awarasi. It has recognised landmarks and tourist attractions such as the \"Obizi Uga\", a natural spring and a spectacular scenery which was the site of an ancient tale in the Uga oral tradition. Uga is the site of an annual traditional celebration known as the \"OBUOFOR\" festival held every 26 December. Uga has one of the largest markets in the Aguata local government area known as \"ORIE\" which supports the economic activities of the local community and other surrounding towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "uga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2143,
+    "place_id": "gn-2645972",
+    "input": {
+      "place": {
+        "place_id": "gn-2645972",
+        "name": "Jarrow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.98036,
+        "lon": -1.48423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jarrow",
+          "url": "https://en.wikipedia.org/wiki/Jarrow",
+          "text": "Jarrow ( or ) is a town in South Tyneside in the county of Tyne and Wear, England. Historically in County Durham, it is on the south bank of the River Tyne, about three miles (five kilometres) from the east coast. It is home to the southern portal of the Tyne Tunnel and six miles (ten kilometres) North of Sunderland. At the 2021 census the Jarrow built up area as defined by the Office for National Statistics had a population of 29,470.\nIn the eighth century, St Paul's Monastery in Jarrow (now Monkwearmouth–Jarrow Abbey) was the home of the Venerable Bede, who is regarded as the greatest Anglo-Saxon scholar and the father of English history. The town is part of the historic County Palatine of Durham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "jarrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2144,
+    "place_id": "gn-3652758",
+    "input": {
+      "place": {
+        "place_id": "gn-3652758",
+        "name": "Puerto Baquerizo Moreno",
+        "country": "Ecuador",
+        "subdivision": "Galápagos",
+        "lat": -0.90172,
+        "lon": -89.61021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Baquerizo Moreno",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Baquerizo_Moreno",
+          "text": "Puerto Baquerizo Moreno (Spanish pronunciation: [ˈpweɾto βakeˈɾiso moˈɾeno]) is the capital of Galápagos Province, Ecuador. It is located on the southwestern coast of San Cristóbal, the easternmost island in the archipelago, and is the capital of San Cristóbal Canton. It was founded by General Villamil Playas in the mid-19th century, and takes its name from President Alfredo Baquerizo (1859–1951). Today, fishing is the main activity of the locals, but tourism is on the increase along the waterfront with numerous hotels and shops.\n\nThe town has a cathedral, a post office, police station, a hospital, and a branch of the Universidad San Francisco de Quito. It also contains the Centro de Interpretación of the Galápagos National Park, which was established in 1988, and a natural history museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "puerto baquerizo moreno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "baquerizo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moreno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2153,
+    "place_id": "gn-1732672",
+    "input": {
+      "place": {
+        "place_id": "gn-1732672",
+        "name": "Tanjong Malim",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 3.681,
+        "lon": 101.5198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanjong Malim",
+          "url": "https://en.wikipedia.org/wiki/Tanjong_Malim",
+          "text": "Tanjong Malim, or Tanjung Malim, is a town in Muallim District, Perak, Malaysia. It is approximately 70 km (43 mi) north of Kuala Lumpur and 120 km south of Ipoh via the North–South Expressway. It lies on the Perak-Selangor state border, with Sungai Bernam serving as the natural divider.\n\"Tanjong Malim\" usually refers to the territory under administration of Tanjong Malim District Council or Majlis Daerah Tanjong Malim (MDTM), which includes the smaller towns adjacent to the town such as Proton City, Behrang, Behrang 2020, Sungkai and Slim River. \"Tanjong Malim\" is also referred to the Old Town and New Town divided by the KTM Komuter rail at its heart. Tanjong Malim is home to the main campus of the Sultan Idris Education University (UPSI)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "tanjong malim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tanjong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2155,
+    "place_id": "gn-2633842",
+    "input": {
+      "place": {
+        "place_id": "gn-2633842",
+        "name": "Windsor",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48333,
+        "lon": -0.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Berkshire",
+          "text": "Windsor is a historic town in the Royal Borough of Windsor and Maidenhead in Berkshire, England. It is home to Windsor Castle, one of the official residences of the British monarch. The town is located 21.8 miles (35.1 km) west of Charing Cross in central London, 5.8 miles (9.3 km) southeast of Maidenhead, and 15.8 miles (25.4 km) east of the modern county town of Reading. It lies immediately south of the River Thames, which forms its boundary with the smaller and historic town of Eton. The village of Old Windsor, just over 2 miles (3 km) to the south, predates what is now called Windsor by, possibly, 300 years. Until 1974, Windsor was sometimes officially referred to as New Windsor to distinguish the two."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2165,
+    "place_id": "gn-5344157",
+    "input": {
+      "place": {
+        "place_id": "gn-5344157",
+        "name": "Dublin",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.70215,
+        "lon": -121.93579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dublin, California",
+          "url": "https://en.wikipedia.org/wiki/Dublin,_California",
+          "text": "Dublin is a suburban city of the East Bay in California, United States. It is located within the Amador Valley of Alameda County's Tri-Valley region. It is located along the north side of Interstate 580 at the intersection with Interstate 680, roughly 35 miles (56 km) east of downtown San Francisco, 23 miles (37 km) east of downtown Oakland, and 31 miles (50 km) north of downtown San Jose.\nThe name \"Dublin\" is in reference to the city of Dublin, Ireland, because of the large number of Irish who lived in the area. The post office formally adopted the name in the 1890s. The area was first called Alamilla Springs, named after a spring located near the modern intersection of Dublin Boulevard and Dougherty Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "dublin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2171,
+    "place_id": "gn-2634021",
+    "input": {
+      "place": {
+        "place_id": "gn-2634021",
+        "name": "Whitstable",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3607,
+        "lon": 1.0257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitstable",
+          "url": "https://en.wikipedia.org/wiki/Whitstable",
+          "text": "Whitstable ( ) is a town in the Canterbury district, on the north coast of Kent, England, at the convergence of the Swale and the Greater Thames Estuary, five miles (eight kilometres) north of Canterbury and two miles (three kilometres) west of Herne Bay. In 2021 it had a population of 32,196.\nThe town, formerly known as Whitstable-on-Sea, was famous for oysters, collected from beds beyond the low water mark from Roman times until the mid-20th century. The annual Whitstable Oyster Festival takes place during the summer.\nIn 1830, the Canterbury and Whitstable Railway, one of the earliest passenger services, opened. In 1832, the company built a harbour and extended the line to handle coal and other bulk cargos for the City of Canterbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "whitstable",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2175,
+    "place_id": "gn-3472311",
+    "input": {
+      "place": {
+        "place_id": "gn-3472311",
+        "name": "Amparo",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.70111,
+        "lon": -46.76444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amparo, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Amparo,_S%C3%A3o_Paulo",
+          "text": "Amparo is a Brazilian municipality in the state of São Paulo. The population is of 72,677 (2020 est.) in an area of 445 km2 (172 sq mi). \nThe city is part of the \"Water-Circuit\", a cluster of towns in São Paulo state which are famous for natural fountains and water wells. One of the main events in the city is the Winter Festival, when some stages are set over the main plaza and presentations are scheduled for the whole month of July. A variety of music bands and artists are invited to the city, from sertanejo (a Brazilian form of country music) and heavy metal to Ballet. Although the event is more dedicated to the city local residents, it attracts tourists from other regions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "amparo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2182,
+    "place_id": "gn-6243926",
+    "input": {
+      "place": {
+        "place_id": "gn-6243926",
+        "name": "Blenheim",
+        "country": "New Zealand",
+        "subdivision": "Marlborough",
+        "lat": -41.51603,
+        "lon": 173.9528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blenheim, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Blenheim,_New_Zealand",
+          "text": "Blenheim ( BLEN-im; Māori: Waiharakeke) is the most populous town in the region of Marlborough, in the north east of the South Island of New Zealand. It has an estimated population of 29,800 as of June 2025. The surrounding Marlborough wine region is well known as the centre of the New Zealand wine industry. It enjoys one of New Zealand's sunniest climates, with warm, relatively dry summers and cool, crisp winters.\nBlenheim is named after the Battle of Blenheim (1704) in the War of the Spanish Succession, where troops led by John Churchill, 1st Duke of Marlborough defeated a combined French and Bavarian force. The New Zealand Ministry for Culture and Heritage gives a translation of \"flax stream\" for the town's Māori name, Waiharakeke."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "blenheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2184,
+    "place_id": "gn-2953395",
+    "input": {
+      "place": {
+        "place_id": "gn-2953395",
+        "name": "Bad Nauheim",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.36463,
+        "lon": 8.73859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Nauheim",
+          "url": "https://en.wikipedia.org/wiki/Bad_Nauheim",
+          "text": "Bad Nauheim (German pronunciation: [baːt ˈnaʊhaɪm] ) is a spa town in Wetteraukreis, Hesse, Germany.\nAs of 2020, Bad Nauheim has a population of 32,493. The town is approximately 35 kilometres (22 mi) north of Frankfurt am Main, on the east edge of the Taunus mountain range. It is a world-famous resort, noted for its salt springs, which are used to treat heart and nerve diseases. A Nauheim (or \"effervescent\") bath, named after Bad Nauheim, is a type of spa bath through which carbon dioxide is bubbled. This bath was one of several types of hydrotherapy used at the Battle Creek Sanitarium and it was also used at the Maurice Bathhouse in Bathhouse Row in the early 1900s during the heyday of hydrotherapy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bad nauheim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nauheim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 5080,
+    "attempt": 5041,
+    "place_id": "gn-4333811",
+    "input": {
+      "place": {
+        "place_id": "gn-4333811",
+        "name": "Morgan City",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 29.69937,
+        "lon": -91.20677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morgan City, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Morgan_City,_Louisiana",
+          "text": "Morgan City is a city in St. Mary Parish, Louisiana, United States, located in the Acadiana region. The population was 10,813 in the 2024 census.\nMorgan City sits on the banks of the Atchafalaya River near its intersection with the Intracoastal Waterway. The town was originally named \"Tiger Island\" by surveyors appointed by U.S. Secretary of War John Calhoun, because of a particular type of wild cat seen in the area. It was later changed for a time to \"Brashear City\", named after Walter Brashear, a prominent Kentucky physician who had purchased large tracts of land and acquired numerous sugar mills in the area.  It was incorporated in 1860.\nMorgan City, and all of St. Mary Parish, is included in the Lafayette-Opelousas-Morgan City CSA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "morgan city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morgan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5081,
+    "attempt": 5042,
+    "place_id": "gn-4358701",
+    "input": {
+      "place": {
+        "place_id": "gn-4358701",
+        "name": "Hunt Valley",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.49983,
+        "lon": -76.64108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hunt Valley, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Hunt_Valley,_Maryland",
+          "text": "Hunt Valley is an unincorporated community in Baltimore County, Maryland, United States, near the site of the Maryland Hunt Cup Steeplechase. It lies just north of the city of Baltimore, along York Road (Maryland Route 45), parallel to Interstate 83. The nearby Loch Raven Reservoir is an important landmark and drinking water resource. Its surrounding forested watershed is one of three reservoirs (along with Prettyboy and Liberty Reservoirs) established for the City of Baltimore. Hunt Valley is located at a latitude of 39.5° North and longitude of 76.7° West.  It is served by the Cockeysville post office, and is also a neighbor of Timonium.  A satellite campus of the Community College of Baltimore County, one of the three supplemental campuses of CCBC, uses a leased building located at 11101 McCormick Road, a business park in Hunt Valley, Maryland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "hunt valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hunt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5082,
+    "attempt": 5043,
+    "place_id": "gn-4502103",
+    "input": {
+      "place": {
+        "place_id": "gn-4502103",
+        "name": "Haddonfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.8915,
+        "lon": -75.03767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haddonfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Haddonfield,_New_Jersey",
+          "text": "Haddonfield is a borough located in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 12,550, an increase of 957 (+8.3%) from the 2010 census count of 11,593, which in turn reflected a decline of 66 (−0.6%) from the 11,659 counted in the 2000 census.\nHaddonfield was incorporated by an act of the New Jersey Legislature on April 6, 1875, within portions of Haddon Township following a referendum on the same day. The borough became an independent municipality in 1894. The borough was named for Elizabeth Haddon, an early settler of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "haddonfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5083,
+    "attempt": 5044,
+    "place_id": "gn-4912013",
+    "input": {
+      "place": {
+        "place_id": "gn-4912013",
+        "name": "South Shore",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.76198,
+        "lon": -87.57783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Shore, Chicago",
+          "url": "https://en.wikipedia.org/wiki/South_Shore,_Chicago",
+          "text": "South Shore is one of the 77 community areas of Chicago in Illinois, United States. Located on the city's South Side, the area is named for its location along the city's southern lakefront. Although South Shore has seen a greater than 40% decrease in residents since Chicago's population peaked in the 1950s, the area remains one of the most densely populated neighborhoods on the South Side. The community benefits from its location along the waterfront, its accessibility to Lake Shore Drive, and its proximity to major institutions and attractions such as the University of Chicago, the Museum of Science and Industry, and Jackson Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "south shore",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shore",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5084,
+    "attempt": 5045,
+    "place_id": "gn-4927746",
+    "input": {
+      "place": {
+        "place_id": "gn-4927746",
+        "name": "Wabash",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.79782,
+        "lon": -85.82054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wabash, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Wabash,_Indiana",
+          "text": "Wabash is a city in Noble Township, Wabash County, Indiana, United States. As of the 2020 census, Wabash had a population of 10,440. The city is situated along the Wabash River and is the county seat of Wabash County.\nWabash is notable as claiming to be the first electrically lighted city in the world, which was inaugurated on March 31, 1880. However, closer inspection of the reference shows only the court house grounds were lighted. It is also home to the historic Eagles Theatre, Paradise Spring Treaty Grounds (1826), the Wabash and Erie Canal, Presbyterian Church (1880), and Disciples of Christ Christian Church (1865)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "wabash",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5085,
+    "attempt": 5046,
+    "place_id": "gn-5127359",
+    "input": {
+      "place": {
+        "place_id": "gn-5127359",
+        "name": "Monticello",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.65565,
+        "lon": -74.68933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monticello, New York",
+          "url": "https://en.wikipedia.org/wiki/Monticello,_New_York",
+          "text": "Monticello (  MON-tiss-EL-oh) is a village located in Thompson, Sullivan County, within the Catskills region of New York, United States. It is the seat for the town of Thompson, and the county seat of Sullivan County. The population was 7,173 at the 2020 census. The village was named after the residence of Thomas Jefferson.\nThe village is located in the central part of Thompson, adjacent to New York Route 17 and 17B. Monticello is the largest village in the county in both population and area. It is roughly located at the half-way point between Binghamton, New York and New York City along NY 17."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "monticello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5086,
+    "attempt": 5047,
+    "place_id": "gn-5363943",
+    "input": {
+      "place": {
+        "place_id": "gn-5363943",
+        "name": "La Jolla",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.84727,
+        "lon": -117.2742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Jolla",
+          "url": "https://en.wikipedia.org/wiki/La_Jolla",
+          "text": "La Jolla (  la HOY-uh, Latin American Spanish: [la ˈxoʝa]) is a neighborhood in San Diego, California, occupying 7 miles (11 km) of coastline along the Pacific Ocean.\nLa Jolla is located 12 miles (19 km) north of downtown San Diego and 45 miles (72 km) south of the Orange County line. The neighborhood's border borders Pacific Beach to the south and extends along the shoreline north to include Torrey Pines State Natural Reserve ending at Del Mar.\nLa Jolla is home to the University of California, San Diego, Birch Aquarium, Scripps Institution of Oceanography, Scripps Research, and the Salk Institute for Biological Studies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "la jolla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jolla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5087,
+    "attempt": 5048,
+    "place_id": "gn-5784154",
+    "input": {
+      "place": {
+        "place_id": "gn-5784154",
+        "name": "Vernal",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.45552,
+        "lon": -109.52875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vernal, Utah",
+          "url": "https://en.wikipedia.org/wiki/Vernal,_Utah",
+          "text": "Vernal is the county seat of and the largest city in Uintah County, Utah, approximately 175 miles (280 km) east of Salt Lake City and 20 miles (32 km) west of the Colorado border. As of the 2020 census, the city population was 10,079. The population has since grown to 10,432 as of the 2022 population estimate.\nVernal is home to the Vernal Temple of The Church of Jesus Christ of Latter-day Saints and one of the nine statewide regional campuses of Utah State University. The city serves as a gateway to the nearby Dinosaur National Monument, Flaming Gorge, and the Uinta Mountain Range."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "vernal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5088,
+    "attempt": 5049,
+    "place_id": "gn-5836898",
+    "input": {
+      "place": {
+        "place_id": "gn-5836898",
+        "name": "Rock Springs",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 41.58746,
+        "lon": -109.2029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rock Springs, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Rock_Springs,_Wyoming",
+          "text": "Rock Springs is a city in Sweetwater County, Wyoming, United States. The population was 23,526 at the 2020 census, making it the fifth-most populous city in the U.S. state of Wyoming, and the most populous city in Sweetwater County. Rock Springs is the principal city of the Rock Springs micropolitan statistical area, which has a population of 37,975.\nRock Springs is the site of Western Wyoming Community College and Wyoming's Big Show, a yearly event with a carnival and concerts which is held at the Sweetwater County Events Complex. Rock Springs is located in an energy-rich region with many oil and natural gas wells."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "rock springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5089,
+    "attempt": 5050,
+    "place_id": "gn-5856050",
+    "input": {
+      "place": {
+        "place_id": "gn-5856050",
+        "name": "Hōlualoa",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 19.61979,
+        "lon": -155.94831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hōlualoa, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/H%C5%8Dlualoa,_Hawaii",
+          "text": "Hōlualoa (Hawaiian for 'long sled course') is a census-designated place (CDP) in the North Kona District of Hawaii County, Hawaii, United States. The population was 8,538 at the 2010 census, up from 6,107 at the 2000 census.\nHōlualoa's boundaries were altered significantly for the 2020 census. The western portion of the CDP near the coast became part of the neighboring Kailua-Kona CDP, while the eastern portion of Kailua-Kona became part of Hōlualoa. This reduced Holualoa's population to 2,994.\nHarold Sakata, best known for his portrayal of the villain Oddjob in the 1964 James Bond film Goldfinger, was born here in 1920 as Toshiyuki Sakata. Sakata was also a medalist at the 1948 Summer Olympics for America"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "holualoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5090,
+    "attempt": 5051,
+    "place_id": "gn-6316399",
+    "input": {
+      "place": {
+        "place_id": "gn-6316399",
+        "name": "Antônio Cardoso",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.43528,
+        "lon": -39.11972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antônio Cardoso",
+          "url": "https://en.wikipedia.org/wiki/Ant%C3%B4nio_Cardoso",
+          "text": "Antônio Cardoso is a municipality in the state of Bahia in the Northeast region of Brazil. Its name is a tribute to Colonel Antônio Cardoso de Sousa (1848–1932), the former owner of extensive properties and a figure with political and economic power. A namesake grandson was the first mayor of the municipality. The occupation of the territory of Antônio Cardoso began in the 17th century, with Jesuits who built a chapel in honor of Saint Stephen. The former inhabitants were the Paiaiá indigenous people. As of 2022, its population was divided into 55% Black, 40% Pardo, 4.9% White, and 0.1% Indigenous and 0.1% Asian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "antonio cardoso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cardoso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5091,
+    "attempt": 5052,
+    "place_id": "gn-7257902",
+    "input": {
+      "place": {
+        "place_id": "gn-7257902",
+        "name": "Fort Belvoir",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.7119,
+        "lon": -77.14589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Belvoir",
+          "url": "https://en.wikipedia.org/wiki/Fort_Belvoir",
+          "text": "Fort Belvoir ( BEL-vwar) is a United States Army installation and a census-designated place (CDP) in Fairfax County, Virginia, United States. It was developed on the site of the former Belvoir plantation, seat of the prominent Fairfax family for whom Fairfax County was named.  It was known as Camp A. A. Humphreys from 1917 to 1935.\nFort Belvoir is home to a number of significant United States military organizations. With nearly twice as many workers as the Pentagon, Fort Belvoir is the largest employer in Fairfax County. Fort Belvoir comprises three geographically distinct areas: the main base, Davison Army Airfield, and Fort Belvoir North."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "fort belvoir",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "belvoir",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5092,
+    "attempt": 5053,
+    "place_id": "gn-954161",
+    "input": {
+      "place": {
+        "place_id": "gn-954161",
+        "name": "Somerset East",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.72173,
+        "lon": 25.58804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somerset East",
+          "url": "https://en.wikipedia.org/wiki/Somerset_East",
+          "text": "Somerset East, officially KwaNojoli since 2023, is a small historic town in the Blue Crane Route Local Municipality in the Eastern Cape, South Africa. It was founded by Lord Charles Somerset in 1825.\nThe area surrounding the modern town has had numerous names over the years. Hintsani, a Khoikhoi chief named the area Nojoli. As colonial influence moved further east, it was named Agter Bruintjies Hoogte, Somerset Farm, Somerset, Somerset East, and recently the town was renamed KwaNojoli.\nSomerset East, at the foot of the Bosberg Mountains (Xhosa: Intaba kaNojoli), is known for its natural environment and for its provincial heritage sites and buildings. The forested, mountainous backdrop frames the town, with a number of hiking trails in the wooded Bosberg Nature Reserve. The area is a bird-watching destination, with other outdoor activities including trout fishing (rainbow and brown trout), malaria-free safari and hunting trips. The Somerset East Golf Club, one of the oldest in the country, was formally opened in 1897.  The present course has 9 holes located at the foot of the Bosberg.\nNotable buildings and monuments in the town include the Old Wesleyan Chapel, which houses the Somerset East Museum, and the Officers' Mess, which houses the largest permanent exhibition of paintings by the South African artist Walter Battiss. The Dutch Reformed Church congregation is the fourth oldest in the Eastern Cape. The Somerset East War Memorial also called the Delville Wood War Memorial is located at the western entrance to the town. \nAnnual events include the Biltong Festival, the Bruintjieshoogte Marathon, the Bruintjieshoogte Cycle Fest, the Walter Battiss Art Festival, as well as the Somerset East Agricultural show."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "somerset east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "somerset",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5093,
+    "attempt": 5054,
+    "place_id": "gn-978677",
+    "input": {
+      "place": {
+        "place_id": "gn-978677",
+        "name": "Marquard",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.66449,
+        "lon": 27.43048
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marquard",
+          "url": "https://en.wikipedia.org/wiki/Marquard",
+          "text": "Marquard is a small farming town in the Free State province of South Africa that serves Winburg in the northwest. The town was set up in 1905 by an influential Dutch Reform minister, JJ Marquard, with the help of Christoffel Cornelis Froneman, the commandant of the Orange Free State. It was established on the farm Varschfontein and attained municipal status in the same year.\nMarquard is 169 kilometers east north-east of Bloemfontein and 45 kilometers south-west of Senekal. The town was named after J J T Marquard, minister of the Dutch Reformed Church in Winburg, who had pleaded for the establishment of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "marquard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5094,
+    "attempt": 5055,
+    "place_id": "gn-1261968",
+    "input": {
+      "place": {
+        "place_id": "gn-1261968",
+        "name": "Nandgaon",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 27.71102,
+        "lon": 77.38653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nandgaon, Uttar Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Nandgaon,_Uttar_Pradesh",
+          "text": "Nandgaon is a historical town and a nagar panchayat in Mathura district in the Indian state of Uttar Pradesh. Nandgaon is a religious centre in Braj region.\nThe town is named after Nandi, the bull of Shiva, and was formerly called Nandigrāma. The hill in the town was formerly known as Nandīśvar or Rudraparvata, and was considered to be Śiva-svarūpa (Shiva's own form). Before the sixteenth century, the town was not associated with Krishna. Since then, due to its proximity to Barsana (birthplace of Radha) and a false etymology linking the town to Nanda, Krishna's father, the town has become associated with Krishna.\nThe Nandarāyajī kā Mandira at the peak of the hill houses identical images of Krishna and Balarama flanked by Nanda and Yashoda. The current temple was built in the mid-eighteenth century by Rūp Siṁh, a Sinsinwar Jat. Surrounding the town are several tanks and ponds associated with events from Krishna's life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "nandgaon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5095,
+    "attempt": 5056,
+    "place_id": "gn-1695262",
+    "input": {
+      "place": {
+        "place_id": "gn-1695262",
+        "name": "Panglao",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.57806,
+        "lon": 123.74583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panglao, Bohol",
+          "url": "https://en.wikipedia.org/wiki/Panglao,_Bohol",
+          "text": "Panglao, officially the Municipality of Panglao (Cebuano: Munisipalidad sa Panglao; Tagalog: Bayan ng Panglao), is a municipality in the province of Bohol, Philippines. According to the 2024 census, it has a population of 41,760 people.\nPanglao has educational institutions, including the San Agustin Academy (Panglao), Lourdes National High School, the Cristal e-College and elementary schools located in every barangay (including the Panglao Central Elementary School). It is also home to Bohol–Panglao International Airport that serves as Bohol's primary airport, replacing Tagbilaran Airport in November 2018.\nThe town of Panglao, Bohol celebrates its fiesta on August 27–28, to honor the town patron San Agustin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "panglao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5096,
+    "attempt": 5057,
+    "place_id": "gn-2511287",
+    "input": {
+      "place": {
+        "place_id": "gn-2511287",
+        "name": "San Miguel De Abona",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.09826,
+        "lon": -16.61708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Miguel de Abona",
+          "url": "https://en.wikipedia.org/wiki/San_Miguel_de_Abona",
+          "text": "San Miguel de Abona is a town and a municipality in the southern part of the island of Tenerife, one of the Canary Islands, and part of the province of Santa Cruz de Tenerife, Spain. The TF-1 motorway passes through the southern part of the municipality.\nThe population is 16,099 (2013), its area is 42.04 km2.\nIn the south of the municipality, on the coastline, lies the golf course and holiday/residential village of Golf del Sur. Also on the coast is Amarilla Golf & Country Club. Golf del Sur has hosted several professional golf tournaments including the Tenerife Open, the Tenerife Ladies Open."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "san miguel de abona",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miguel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abona",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5097,
+    "attempt": 5058,
+    "place_id": "gn-2641435",
+    "input": {
+      "place": {
+        "place_id": "gn-2641435",
+        "name": "Northallerton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.33901,
+        "lon": -1.43243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northallerton",
+          "url": "https://en.wikipedia.org/wiki/Northallerton",
+          "text": "Northallerton ( nor-THAL-ər-tən) is a market town and civil parish in North Yorkshire, England. It is near the River Wiske in the Vale of Mowbray and had a population of 16,832 in 2011. Northallerton is an administrative centre for York and North Yorkshire Combined Authority and North Yorkshire Council.\nThere has been a settlement at Northallerton since Roman times. That grew in importance from the 11th century when King William II gifted land there to the Bishop of Durham, and it became an important religious centre. The Battle of the Standard fought nearby in 1138 involved the death of up to 12,000 Scots.\nNorthallerton was an important stopping point for coaches on the road between Edinburgh and London until the arrival of the railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "northallerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5098,
+    "attempt": 5059,
+    "place_id": "gn-2737639",
+    "input": {
+      "place": {
+        "place_id": "gn-2737639",
+        "name": "Mirandela",
+        "country": "Portugal",
+        "subdivision": "Bragança",
+        "lat": 41.48739,
+        "lon": -7.18695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mirandela",
+          "url": "https://en.wikipedia.org/wiki/Mirandela",
+          "text": "Mirandela (Portuguese pronunciation: [miɾɐ̃ˈdɛlɐ] ), officially the City of Mirandela (Portuguese: Cidade de Mirandela), is a city and a municipality in northeastern Portugal. The city itself is contained by the Mirandela parish, which had a population of 11,397. The population of the municipality in 2021 was 21,384, in an area of 658.96 km2. Mirandela is famous for its cuisine, particularly the alheiras. A round of the European Jetski Championship is held on the Tua River every Summer. The city has two campuses of higher education institutions - one belonging to the public Bragança Polytechnic Institute and one belonging to the private Instituto Piaget."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "mirandela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5099,
+    "attempt": 5060,
+    "place_id": "gn-2758547",
+    "input": {
+      "place": {
+        "place_id": "gn-2758547",
+        "name": "Boskoop",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.075,
+        "lon": 4.65556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boskoop",
+          "url": "https://en.wikipedia.org/wiki/Boskoop",
+          "text": "Boskoop (Dutch pronunciation: [ˈbɔskoːp] ) is a town in the province of South Holland. It was a separate municipality until it merged into Alphen aan den Rijn in 2014. The town had a population of 15,050 in 2012 and covers an area of 7.29 km2 (2.81 sq mi) of which 1.39 km2 (0.54 sq mi) is water. It's the world's biggest joined floriculture area.\nBoskoop is famous for its nurseries, particularly woody plant and perennial nurseries, of which some 774 are situated on long stretches of land, divided by narrow canals. Before World War II almost all transport was conducted using narrow boats. A few exceptionally high footbridges crossing some of the broader (main) canals remain from these days. Between the World Wars the transition was made from fruit culture to decorative garden plants and trees. As a source of technical knowledge about the art of growing decorative plants, Boskoop remains world-renowned and unique.\nThe name \"Boskoop\" has been given to an apple cultivar (Belle de Boskoop) which is widely distributed in the Low Countries, to a grape variety (Boskoop Glory) and also to a variety of Calluna (Boskoop) and Weigela (Boskoop Glory) and blackcurrant (\"Boskoop Giant\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "boskoop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

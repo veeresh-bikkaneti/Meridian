@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 3811,
+    "attempt": 3781,
+    "place_id": "gn-3186906",
+    "input": {
+      "place": {
+        "place_id": "gn-3186906",
+        "name": "Zagorje ob Savi",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Zagorje ob Savi",
+        "lat": 46.13179,
+        "lon": 14.99694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zagorje ob Savi",
+          "url": "https://en.wikipedia.org/wiki/Zagorje_ob_Savi",
+          "text": "Zagorje ob Savi (pronounced [zaˈɡóːɾjɛ ɔp ˈsàːʋi] ; German: Sagor, Seger an der Sau) is a town in the Central Sava Valley in central Slovenia. It is the seat of the Municipality of Zagorje ob Savi. It is located in the valley of Medija Creek, a minor left tributary of the Sava River, 52 km (32 mi) east of the capital city Ljubljana, 36 km (22 mi) southwest of Celje, and 6 km (4 mi) west of Trbovlje. The area is part of the traditional region of Upper Carniola. The entire municipality is now included in the Central Sava Statistical Region. The town is home to about 7,000 people. It includes the hamlets of Toplice (German: Töplitz) and Podvine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "zagorje ob savi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zagorje",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ob",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "savi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3812,
+    "attempt": 3782,
+    "place_id": "gn-3467718",
+    "input": {
+      "place": {
+        "place_id": "gn-3467718",
+        "name": "Campo Magro",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.36861,
+        "lon": -49.45139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campo Magro",
+          "url": "https://en.wikipedia.org/wiki/Campo_Magro",
+          "text": "Campo Magro is a town and suburb of Curitiba in the state of Paraná, Brazil. It is a very young municipality, and its economy is growing around the road that links Curitiba to Castro, known as \"Estrada do Cerne\", a two way road.  As of 2020, the estimated population was 29,740.\nEcotourism is a flourishing industry but its inconsistent growth has encouraged the inhabitants of the city to seek employment at Curitiba.\nA very important source of income to the town are monthly payments from the federal and state governments for potable water provided to Curitiba.\nCuritiba is expanding towards Campo Magro and is attracting real estate investment activity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "campo magro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "magro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3813,
+    "attempt": 3783,
+    "place_id": "gn-3467791",
+    "input": {
+      "place": {
+        "place_id": "gn-3467791",
+        "name": "Campo Bom",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.67889,
+        "lon": -51.05333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campo Bom",
+          "url": "https://en.wikipedia.org/wiki/Campo_Bom",
+          "text": "Campo Bom is a town located in the valley of the Sinos River, in the State of Rio Grande do Sul, Brazil. It belongs to the Greater Porto Alegre area.\nThe city is known as \"The little giant of the valley\", and it has a diversified industrial economy, including automotive, metallurgical, chemical, pottery and glass industries. Due to its initial development to the footwear sector it is known, along with its neighbour Novo Hamburgo, as the \"national shoemaking capital\". The town exports to several countries, including Portugal, China, Germany and the United States.\nIt is one of the most developed cities throughout the State of Rio Grande do Sul. Education, health, leisure and quality of life in the city are references in the Country. The town was also the first city in Brazil to offer free Internet available to 100% of the population and the first dedicated bicycle path in South America built in 1977 having now over 22,000 metres in total, of which 8,000 metres surrounds the city's centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "campo bom",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3814,
+    "attempt": 3784,
+    "place_id": "gn-3520064",
+    "input": {
+      "place": {
+        "place_id": "gn-3520064",
+        "name": "Salina Cruz",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.17535,
+        "lon": -95.19424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salina Cruz",
+          "url": "https://en.wikipedia.org/wiki/Salina_Cruz",
+          "text": "Salina Cruz is a major seaport on the Pacific coast of the Mexican state of Oaxaca. It is the state's fourth-largest city and is the municipal seat of the municipality of the same name.  \nIt is part of the Tehuantepec District in the west of the Istmo Region.\nThe city had a 2020 census population of 76,660, while its municipality, with an area of 131.9 km2 (50.9 sq mi) had a population of 84,438, the state's fifth-largest municipality in population.\nThe port was developed in the late 19th century due to its location at the southern terminus of the Tren Interoceánico, which carried freight across the Isthmus of Tehuantepec."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "salina cruz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3815,
+    "attempt": 3785,
+    "place_id": "gn-3522164",
+    "input": {
+      "place": {
+        "place_id": "gn-3522164",
+        "name": "Palenque",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 17.50914,
+        "lon": -91.98125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palenque",
+          "url": "https://en.wikipedia.org/wiki/Palenque",
+          "text": "Palenque (Spanish pronunciation: [pa'leŋke]; Yucatec Maya: Bàakʼ [ɓaːkʼ]), also anciently known in the Itzaʼ language as Lakamha (\"big water\" or \"big waters\"), was a Maya city-state in southern Mexico that perished in the 8th century. The Palenque ruins date from ca. 226 BC to ca. 799 AD. After its decline, it was overgrown by the jungle of cedar, mahogany, and sapodilla trees, but has since been excavated and restored. It is located near the Usumacinta River in the Mexican state of Chiapas, about 130 km (81 mi) south of Ciudad del Carmen,  150 meters (490 ft) above sea level. It is adjacent to the modern town of Palenque, Chiapas. It averages a humid 26 °C (79 °F) with roughly 2,160 millimeters (85 in) of rain a year.\nPalenque is a medium-sized site, smaller than Tikal, Chichen Itza, or Copán, but it contains some of the finest architecture, sculpture, roof comb and bas-relief carvings that the Maya produced. Much of the history of Palenque has been reconstructed from reading the hieroglyphic inscriptions on the many monuments; historians now have a long sequence of the ruling dynasty of Palenque in the 5th century and extensive knowledge of the city-state's rivalry with other states such as Calakmul and Toniná. The most famous ruler of Palenque was Kʼinich Janaabʼ Pakal, or Pacal the Great, whose tomb has been found and excavated in the Temple of the Inscriptions. By 2005, the discovered area covered up to 2.5 km2 (0.97 sq mi), but it is estimated that less than 10% of the total area of the city is explored, leaving more than a thousand structures still covered by jungle. Palenque received 920,470 visitors in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "palenque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3816,
+    "attempt": 3786,
+    "place_id": "gn-3575051",
+    "input": {
+      "place": {
+        "place_id": "gn-3575051",
+        "name": "Arima",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Borough of Arima",
+        "lat": 10.63737,
+        "lon": -61.28228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arima",
+          "url": "https://en.wikipedia.org/wiki/Arima",
+          "text": "Arima, officially The Royal Chartered Borough of Arima is the easternmost and second largest in area of the three boroughs of Trinidad and Tobago. It is geographically adjacent to Sangre Grande and Arouca at the south central foothills of the Northern Range. To the south is the Caroni–Arena Dam. Coterminous with the Town of Arima since 1888, the borough of Arima is the fourth-largest municipality in population in the country (after Port of Spain, Chaguanas and San Fernando). The census estimated it had 33,606 residents in 2011.\nIn 1887, the town petitioned Queen Victoria for municipal status as part of the celebration for the Golden Jubilee of Queen Victoria. This was granted in the following year, and Arima became a Royal Borough on 1 August 1888. Historically the third-largest town of Trinidad and Tobago, Arima is fourth since Chaguanas became the largest town in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "arima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3817,
+    "attempt": 3787,
+    "place_id": "gn-3816721",
+    "input": {
+      "place": {
+        "place_id": "gn-3816721",
+        "name": "Tonalá",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.09007,
+        "lon": -93.7546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonalá, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Tonalá,_Chiapas",
+          "text": "Tonalá is a municipality in the state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 84,594, up from 78,438 as of 2005. It covers an area of 1853 km2.\nAs of 2010, the city of Tonalá had a population of 35,322. Other than the city of Tonalá, the municipality had 960 localities, the largest of which (with 2010 populations in parentheses) were: Paredón (6,126), Tres Picos (4,403), Cabeza de Toro (3,413), classified as urban, and Manuel Ávila Camacho (Ponte Duro) (1,778), Ignacio Ramírez (1,689), Huizachal (1,421), Doctor Belisario Domínguez (La Barra) (1,043), San Luqueño (1,016), and Morelos (Mojarras) (1,010), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "tonala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3818,
+    "attempt": 3788,
+    "place_id": "gn-3866496",
+    "input": {
+      "place": {
+        "place_id": "gn-3866496",
+        "name": "Aguilares",
+        "country": "Argentina",
+        "subdivision": "Tucuman",
+        "lat": -27.4315,
+        "lon": -65.61465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguilares, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Aguilares,_Argentina",
+          "text": "Aguilares is a city in the south of the Tucumán Province, Argentina. It is the largest urban area in the Rio Chico Department, as well as the department seat.\nLocated 85 km (53 mi) south of the provincial capital, San Miguel de Tucumán, the city extends along route 38, and between the Medinas River (in the north) and the Barrientos Creek (in the south).\nLike many cities in Argentina, there are many plazas and parks where people enjoy mate. In the main plaza there is a church (see the above picture) to one side of the plaza facing west. Surrounding the plaza there are many small stores and cafes. On special holidays or events, these plazas become the center of celebrations or fairs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "aguilares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3819,
+    "attempt": 3789,
+    "place_id": "gn-4480125",
+    "input": {
+      "place": {
+        "place_id": "gn-4480125",
+        "name": "Mooresville",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.58486,
+        "lon": -80.81007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mooresville, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Mooresville,_North_Carolina",
+          "text": "Mooresville is a town located in the southwestern section of Iredell County, North Carolina, United States, and is a part of the Charlotte metropolitan area. The population was 50,193 at the 2020 census, making it the most populous municipality in Iredell County. It is located approximately 25 miles (40 km) north of Charlotte.\nMooresville is best known as the home of many NASCAR racing teams and drivers, along with an IndyCar team and its drivers, as well as racing technology suppliers, which has earned the town the nickname \"Race City USA\". Also located in Mooresville is the corporate headquarters of Lowe's Corporation and Universal Technical Institute's NASCAR Technical Institute."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "mooresville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3820,
+    "attempt": 3790,
+    "place_id": "gn-4646571",
+    "input": {
+      "place": {
+        "place_id": "gn-4646571",
+        "name": "Oak Ridge",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.01036,
+        "lon": -84.26964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oak Ridge, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Oak_Ridge,_Tennessee",
+          "text": "Oak Ridge is a city in Anderson and Roane counties in the eastern part of the U.S. state of Tennessee, about 25 miles (40 km) west of downtown Knoxville. Oak Ridge's population was 31,402 at the 2020 census. It is part of the Knoxville Metropolitan Area. Oak Ridge's nicknames include the Atomic City, the Secret City, and the City Behind a Fence.\nIn 1942, the U.S. government forcibly purchased nearly 60,000 acres (240 km2) of farmland in the Clinch River valley for the development of a planned city supporting 75,000 residents. It was constructed with assistance from architectural and engineering firm Skidmore, Owings & Merrill, from 1942 to 1943. Oak Ridge was established in 1942 as a production site for the Manhattan Project—the massive American, British, and Canadian operation that developed the atomic bomb. Oak Ridge National Laboratory, Y-12 National Security Complex, and several private nuclear and scientific facilities are still in Oak Ridge, and scientific and technological development plays a crucial role in its economy and culture. In 2016, the element tennessine was named for Tennessee, in recognition of the role Oak Ridge and other institutions in the state played in its discovery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "oak ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3821,
+    "attempt": 3791,
+    "place_id": "gn-5811456",
+    "input": {
+      "place": {
+        "place_id": "gn-5811456",
+        "name": "South Hill",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.14121,
+        "lon": -122.27012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Hill, Washington",
+          "url": "https://en.wikipedia.org/wiki/South_Hill,_Washington",
+          "text": "South Hill is a census-designated place (CDP) in Pierce County, Washington, United States. The population was 64,708 at the 2020 census. Located immediately south of Puyallup, the area primarily consists of suburban housing and shopping with several retail shopping centers, residential neighborhoods, and apartment complexes throughout. Because South Hill is unincorporated, its addresses are part of the Puyallup \"postal city\" or ZCTA.\nThe area was first settled in the 1880s after a military road was built through the area in the 1850s. Several logging camps, farms, and hunting grounds sprouted up as the area was settled. It also was the main route to the towns of Kapowsin and Eatonville. Population growth was slow until after World War II, when roads improved and people could commute to nearby Tacoma, Fort Lewis, and Seattle.\nMost commercial areas are located along the main thoroughfare, Meridian Avenue (State Route 161). Major neighborhoods include Manorwood, Sunrise (Sunrise Master Association), Lipoma Firs, Silvercreek, and Gem Heights. There are also a few popular public parks: Bradley Lake Park, South Hill Community Park/Nathan Chapman Memorial Trail and Wildwood Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "south hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3822,
+    "attempt": 3792,
+    "place_id": "gn-6232008",
+    "input": {
+      "place": {
+        "place_id": "gn-6232008",
+        "name": "Papatoetoe",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.9682,
+        "lon": 174.84019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papatoetoe",
+          "url": "https://en.wikipedia.org/wiki/Papatoetoe",
+          "text": "Papatoetoe is a suburb in Auckland, New Zealand. It is the largest suburb in Auckland by population and is located to the northwest of Manukau Central, and 18 kilometres (11 mi) southeast of Auckland CBD.\nPapatoetoe was traditionally an important area for Tāmaki Māori, who used a waka portage between the Tāmaki River and Waokauri Creek to reach the Manukau Harbour, as an alternative to the Ōtāhuhu portage to the north. The area developed as a farming community in the 19th century, and grew significantly in the 1950s and 1960s after the Auckland Southern Motorway was constructed. Papatoetoe is now known for its significant population of Indian New Zealanders."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "papatoetoe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3823,
+    "attempt": 3793,
+    "place_id": "gn-1122747",
+    "input": {
+      "place": {
+        "place_id": "gn-1122747",
+        "name": "Tarinkot",
+        "country": "Afghanistan",
+        "subdivision": "Oruzgan",
+        "lat": 32.62998,
+        "lon": 65.87806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarinkot",
+          "url": "https://en.wikipedia.org/wiki/Tarinkot",
+          "text": "Tarinkot or Terinkot is a city in south-central Afghanistan, serving as the capital of Uruzgan Province. It is within the jurisdiction of Tarinkot District and has an estimated population of 127,095 people. Majority of its residents are Pashto-speaking ethnic Pashtuns. The current mayor of the city is Mawlawi Abdul Rasheed Hidayatullah. \nTarinkot sits at 1,317 m (4,321 ft) above sea level, and is connected by a road network with Kandahar to the south, Nili in Daikundi Province to the north, and Malistan in Ghazni Province to the northeast.\nThe majority of land in the district is classified as non built-up (69%) of which agriculture is practiced over 67%. Residential land accounts for 47% of built-up land. The Tarinkot Airport is located within the municipal boundaries, constituting the second largest built-up land use (24%). The Uruzgan University is also located in Tarinkot.\nDuring the August 2021 Taliban offensive, all Afghan National Security Forces under then-President Ashraf Ghani surrendered to the Taliban. Tarinkot continues to be one of the least developed populated places in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "tarinkot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3824,
+    "attempt": 3794,
+    "place_id": "gn-1224085",
+    "input": {
+      "place": {
+        "place_id": "gn-1224085",
+        "name": "Wattala",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.98918,
+        "lon": 79.89167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wattala",
+          "url": "https://en.wikipedia.org/wiki/Wattala",
+          "text": "Wattala (Sinhala: වත්තල, Tamil: வத்தளை) is a large suburb in Gampaha, Western Province, Sri Lanka. It is situated around 9 km (5.6 mi) northeast of Colombo, on the A3 highway between Colombo and Negombo. \nPeople from all walks of life live in this area. The traditional fisher folk, large sections of the working class, many types of white collar workers, a fair number of professionals and even some richer folk live here. Churches, Buddhist temples, Hindu temples, mosques, schools of various grades and many private dispensaries are spread throughout the area. Though it is a majority Roman Catholic area, people of many faiths live here in peaceful coexistence. A sizable population also exists of minority Tamils and a smaller percentage of Muslims. There has been no record of any violence used by one faith group or racial group against another.\nReligious composition in Wattala DS Division according to 2012 census data is as follows Roman Catholics 79,334-45.20%, Buddhists 52,405-29.86%, Hindus 22,782-12.98%, Muslims 11,407-6.50%, Other Christians 9,453-5.39%, Others 144-0.08%.\nThis area also produces many migrant workers. Almost all families produce one or more persons who go abroad for employment. The migrant workers also bring back income and therefore have an influence in creating new trends in the society.\nWattala has become a popular area for living and buying property and has recently become the 3rd most popular city for house searches, according to property website LankaPropertyWeb.com"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "wattala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3825,
+    "attempt": 3795,
+    "place_id": "gn-1252795",
+    "input": {
+      "place": {
+        "place_id": "gn-1252795",
+        "name": "Yanam",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.73308,
+        "lon": 82.21364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yanam",
+          "url": "https://en.wikipedia.org/wiki/Yanam",
+          "text": "Yanam (Telugu: [jaːnaːw̃]) (previously Yanaon, (French: [janaɔ̃])) is a town located in the Yanam district in Puducherry, India. It has a population of 35,000 and is entirely surrounded by Andhra Pradesh. It was formerly a French colony for nearly 200 years, and, though united with India in 1954, is still sometimes known as \"French Yanam\". It possesses a blend of French culture and the Telugu culture, nicknamed Frelugu. During French rule, the Tuesday market (Marché du mardi or Maṃgaḷavaram Saṃta) at Yanam was popular among the Telugu people in the Madras Presidency, who visited Yanam to buy foreign and smuggled goods during Yanam People's Festival held in January."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "yanam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3826,
+    "attempt": 3796,
+    "place_id": "gn-1267776",
+    "input": {
+      "place": {
+        "place_id": "gn-1267776",
+        "name": "Kargil",
+        "country": "India",
+        "subdivision": "Ladakh",
+        "lat": 34.55765,
+        "lon": 76.12622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kargil",
+          "url": "https://en.wikipedia.org/wiki/Kargil",
+          "text": "Kargil (English: /ˈkɑrɡɪl/ KAR-ghil, Hindi: [kaːɾɡɪl]) or Kargyil is a city and headquarter of the eponymous district, tehsil, and community development block of Indian-administered Ladakh in the disputed Kashmir region. It is the joint capital of Ladakh, an Indian-administered union territory, and the headquarters of the Kargil district. It is the second-largest urban centre in Ladakh after Leh. Kargil is located 204 kilometres (127 mi) east of Srinagar in Jammu and Kashmir, and 234 kilometres (145 mi) to the west of Leh. It is on the bank of the Suru River near its confluence with the Wakha Rong River, the latter providing the most accessible route to Leh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "kargil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3827,
+    "attempt": 3797,
+    "place_id": "gn-1272508",
+    "input": {
+      "place": {
+        "place_id": "gn-1272508",
+        "name": "Dispur",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 26.13564,
+        "lon": 91.80069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dispur",
+          "url": "https://en.wikipedia.org/wiki/Dispur",
+          "text": "Dispur (, Assamese: [ˈdispuɹ] ) is the capital of the Indian state of Assam and is a suburb of Guwahati.\nIt became the capital in 1973, when Shillong the erstwhile capital, became the capital of the state of Meghalaya that was carved out of Assam.\nDispur was a small village when it was made the capital of Assam. People from different parts of Assam migrated and settled in and around Dispur, quickly converting the rural area into a densely populated zone. As the year progressed, the city of Guwahati expanded, Dispur was integrated into the Greater Guwahati city.\nDispur is the seat of power of Government of Assam. The Assam Secretariat (Janata Bhawan) building is located in Dispur along with the Assam Legislative Assembly House, MLA Hostels and the State Emergency Operations Centre. The Assam Trunk road and the G S road pass through Dispur. To the south of Dispur lies the theologically important site of Basistha Ashram and the Shankardev Kalakshetra, a cultural centre created in the 1990s. Next to Dispur is the township of Jatia.\nThe Guwahati Tea Auction Centre, one of the busiest tea trading facilities in the world, is located in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "dispur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3828,
+    "attempt": 3798,
+    "place_id": "gn-1521368",
+    "input": {
+      "place": {
+        "place_id": "gn-1521368",
+        "name": "Baikonur",
+        "country": "Kazakhstan",
+        "subdivision": "Baikonur",
+        "lat": 45.61667,
+        "lon": 63.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baikonur",
+          "url": "https://en.wikipedia.org/wiki/Baikonur",
+          "text": "Baikonur is a city in Kazakhstan on the northern bank of the Syr Darya river. It is currently leased and administered by the Russian Federation until 2050. It was constructed to serve the Baikonur Cosmodrome with administrative offices and employee housing. During the Soviet period, the town was known as Leninsk, and was sometimes referred to as Zvezdograd (Russian: Звездоград, lit. 'Star City'). It was officially renamed Baikonur by Russian president Boris Yeltsin on December 20, 1995.\nThe Russian controlled area is an ellipse measuring 90 kilometres (56 mi) east to west by 85 km (53 mi) north to south, with the cosmodrome situated at the area's centre.\nForeign visitors and tourists can visit the cosmodrome and city but need to obtain a specific permit from Roscosmos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "baikonur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3829,
+    "attempt": 3799,
+    "place_id": "gn-2461993",
+    "input": {
+      "place": {
+        "place_id": "gn-2461993",
+        "name": "El Marsa",
+        "country": "Western Sahara",
+        "subdivision": "Western Sahara",
+        "lat": 27.09611,
+        "lon": -13.41583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Marsa, Western Sahara",
+          "url": "https://en.wikipedia.org/wiki/El_Marsa,_Western_Sahara",
+          "text": "El Marsa (Arabic: المرسى) is a port city in Moroccan-occupied Western Sahara.\nAccording to the Moroccan authorities, El Marsa belongs to Laayoune Province in the region of Laâyoune-Sakia El Hamra. Its population in 2024 is 28,848, the second-largest in the province (behind the regional capital El Aaiún) and third in the region. It has a seaport on the Atlantic Ocean and therefore is also known as Laayoune Plage (El Aaiún Beach). The town also has a hospital.\nEl Marsa is to the west of El Aaiún, on the N1, Morocco's main highway, which also goes into the Western Sahara, where it is the last settlement south until Boujdour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "el marsa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marsa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3830,
+    "attempt": 3800,
+    "place_id": "gn-2518770",
+    "input": {
+      "place": {
+        "place_id": "gn-2518770",
+        "name": "Écija",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.5422,
+        "lon": -5.0826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Écija",
+          "url": "https://en.wikipedia.org/wiki/Écija",
+          "text": "Écija (Spanish pronunciation: [ˈeθixa]) is a city and municipality of Spain belonging to the province of Seville, in the autonomous community of Andalusia. It is in the countryside, 85 km east of the city of Seville. According to the 2008 census, Écija had a total population of 40,100 inhabitants, ranking as the fifth most populous municipality in the province. The river Genil, the main tributary of the river Guadalquivir, runs through the city.\nThe economy of Écija is based on agriculture (olives, cereals and vegetables), cattle (cows and horses) and textile industry.\nThe most distinctive feature of the urban landscape of Écija are the city's Baroque bell towers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ecija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 3851,
+    "attempt": 3821,
+    "place_id": "gn-5213681",
+    "input": {
+      "place": {
+        "place_id": "gn-5213681",
+        "name": "State College",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.79339,
+        "lon": -77.86
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "State College, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/State_College,_Pennsylvania",
+          "text": "State College is a borough and the largest settlement in Centre County, Pennsylvania, United States. It is the largest borough in Pennsylvania, with a population of 40,501 as of the 2020 census. State College and the surrounding townships are collectively known as Happy Valley, which is part of the larger Nittany Valley. State College and the nearby city of DuBois anchor the State College–DuBois combined statistical area which includes all of Centre and Clearfield counties.\nSeveral indigenous groups inhabited the State College area prior to European colonization. In 1855, ironmaster James Irvin offered 200 acres of land around the Centre Furnace for the construction of an agricultural school. Despite its isolation, the Nittany Valley was chosen to be the home of the Farmers' High School of Pennsylvania in part due to its soil fertility. State College would officially become a borough in 1896, and would continue to grow alongside the university throughout the 20th century. The area was nicknamed \"Happy Valley\" for its economic resilience during the Great Depression. State College was also largely unaffected by the Great Recession, leading to a construction boom in the 21st century.\nMajor cultural institutions include the Palmer Museum of Art, the State Theatre, Schlow Library, and the Bryce Jordan Center. State College is home to University Park, which hosts Beaver Stadium, the second-largest stadium in the Western Hemisphere. The State College Spikes play for the MLB Draft League at Medlar Field. Public transport in the borough is operated by the Centre Area Transportation Authority. The State College Regional Airport connects the area to larger international airline hubs.\nGoverned by a home rule charter, State College largely votes for the Democratic Party, with Ezra Nanes serving as mayor since 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "state college",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "state",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "college",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3852,
+    "attempt": 3822,
+    "place_id": "gn-5340175",
+    "input": {
+      "place": {
+        "place_id": "gn-5340175",
+        "name": "Covina",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09001,
+        "lon": -117.89034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Covina, California",
+          "url": "https://en.wikipedia.org/wiki/Covina,_California",
+          "text": "Covina () is a city in the San Gabriel Valley region of Los Angeles County, California, United States, about 22 miles (35 km) east of downtown Los Angeles.\nThe population was 51,268 according to the 2020 census, up from 47,796 at the 2010 census.\nCovina is bordered by West Covina, to its south and west side. Irwindale lies to the west, as well as the unincorporated area of Vincent, and the city of Baldwin Park. Azusa and Glendora are to the north, the unincorporated community of Charter Oak to the northeast, San Dimas to the east, the unincorporated area of Ramona and city of Pomona to the southeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "covina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3853,
+    "attempt": 3823,
+    "place_id": "gn-5393212",
+    "input": {
+      "place": {
+        "place_id": "gn-5393212",
+        "name": "Santa Monica",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.01949,
+        "lon": -118.49138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Monica, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Monica,_California",
+          "text": "Santa Monica (Spanish: Santa Mónica, lit. 'Saint Monica') is a city in Los Angeles County, California, United States. It is situated along Santa Monica Bay on California's South Coast. As of the 2020 census, Santa Monica had a population of 93,076. Santa Monica is a popular resort town, owing to its climate, beaches, and hospitality industry. It has a diverse economy, hosting headquarters of companies such as Hulu, Activision Blizzard, Universal Music Group, Game Show Network, Starz Entertainment, Lionsgate Studios, Illumination, Snap Inc., and The Recording Academy.\nSanta Monica traces its history to Rancho San Vicente y Santa Mónica, granted in 1839 to the Sepúlveda family of California. The rancho was later sold to John P. Jones and Robert Baker, who, in 1875, along with his Californio heiress wife Arcadia Bandini de Stearns Baker, founded Santa Monica, which incorporated as a city in 1886. The city developed into a seaside resort during the late 19th and early 20th centuries, with the creation of tourist attractions such as Palisades Park, the Santa Monica Pier, Ocean Park, and the Hotel Casa del Mar. It is bounded by the City of Los Angeles on all sides except for the western part, which is bordered by the Pacific Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "santa monica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3854,
+    "attempt": 3824,
+    "place_id": "gn-5816605",
+    "input": {
+      "place": {
+        "place_id": "gn-5816605",
+        "name": "Yakima",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.60207,
+        "lon": -120.5059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakima, Washington",
+          "url": "https://en.wikipedia.org/wiki/Yakima,_Washington",
+          "text": "Yakima ( or ) is a city in and the county seat of Yakima County, Washington, United States, and the state's 11th most populous city. As of the 2020 census, the city had a total population of 96,968 and a metropolitan population of 256,728. The unincorporated suburban areas of West Valley and Terrace Heights are considered a part of greater Yakima.\nYakima is about 60 miles (100 kilometers) southeast of Mount Rainier in Washington. It is situated in the Yakima Valley, a productive agricultural region noted for apple, wine, and hop production. As of 2011, the Yakima Valley produces 77% of all hops grown in the United States. The name Yakima originates from the Yakama Nation Native American tribe, whose reservation is located south of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "yakima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3855,
+    "attempt": 3825,
+    "place_id": "gn-6317499",
+    "input": {
+      "place": {
+        "place_id": "gn-6317499",
+        "name": "Machadinho d'Oeste",
+        "country": "Brazil",
+        "subdivision": "Rondônia",
+        "lat": -9.44389,
+        "lon": -61.98139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Machadinho d'Oeste",
+          "url": "https://en.wikipedia.org/wiki/Machadinho_d'Oeste",
+          "text": "Machadinho d'Oeste is a municipality located in the Brazilian state of Rondônia. Its population was 40,867 (2020) and its area is 8,509 km2.\nThe municipality contains part of the 346,861-hectare (857,110-acre) Jaru Biological Reserve, a fully protected conservation unit created in 1984.\nIt also contains 13% of the Campos Amazônicos National Park, a 961,318 hectares (2,375,470 acres) protected area created in 2006 that protects an unusual enclave of cerrado vegetation in the Amazon rainforest.\nThe municipality contains 78% of the Angelim Extractive Reserve and 79% of the Ipê Extractive Reserve.\nIt also contains the Castanheira, Freijó, Garrote, Itaúba, Jatobá, Maracatiara, Massaranduba, Mogno, Piquiá, Roxinho and Sucupira extractive reserves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "machadinho d oeste",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "machadinho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oeste",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3856,
+    "attempt": 3826,
+    "place_id": "gn-687997",
+    "input": {
+      "place": {
+        "place_id": "gn-687997",
+        "name": "Pivdenne",
+        "country": "Ukraine",
+        "subdivision": "Odesa",
+        "lat": 46.62472,
+        "lon": 31.10182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pivdenne, Odesa Oblast",
+          "url": "https://en.wikipedia.org/wiki/Pivdenne,_Odesa_Oblast",
+          "text": "Pivdenne (Ukrainian: Південне, IPA: [piu̯ˈdɛnːe] ), formerly known as Yuzhne (Южне, IPA: [ˈjuʒne] ; from Russian for 'Southern'), is a port city in Odesa Raion, Odesa Oblast of south-western Ukraine. Pivdenne hosts the administration of Pivdenne urban hromada, one of the hromadas of Ukraine. It is situated on the country's Black Sea coast. Population: 32,677 (2022 estimate).\nInitially created as a settlement of the Odesa Portside Plant in the Small Adzhalyk Estuary, since 1981 it was transformed into a suburb of Odesa within the Suvorovsky District of the city. From the Southern Marine Terminal of the city port, the Odesa–Brody pipeline takes its beginning towards the Western Ukraine.\nUntil 18 July 2020, Yuzhne was incorporated as a city of oblast significance. In July 2020, as part of the administrative reform of Ukraine, which reduced the number of raions of Odesa Oblast to seven, the city of Yuzhne was merged into newly established Odesa Raion.\nThe city's port Pivdennyi is an internationally important oil terminal, and one of Ukraine's top three ports, with Odesa and Chornomorsk. These three nearby port cities have grown into a single conurbation, and Pivdenne is considered a satellite of Odesa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "pivdenne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3857,
+    "attempt": 3827,
+    "place_id": "gn-1062842",
+    "input": {
+      "place": {
+        "place_id": "gn-1062842",
+        "name": "Maevatanana",
+        "country": "Madagascar",
+        "subdivision": "Betsiboka",
+        "lat": -16.95,
+        "lon": 46.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maevatanana",
+          "url": "https://en.wikipedia.org/wiki/Maevatanana",
+          "text": "Maevatanana is an urban municipality in Madagascar. The city is in the central-north part of the island, at the Ikopa River, and is connected by the national road RN 4 to Antananarivo and Mahajanga. The altitude is low and as it is located far from the coast, temperatures tend to be high. The city belongs to the district of Maevatanana, which is a part of Betsiboka Region. Maevatanana is the capital of the Betsiboka region, and the population of the commune was estimated to be approximately 24,000 in 2001 commune census.\nIn addition to primary schooling the town offers secondary education at both junior and senior levels. Maevatanana hosts the annex of the University Institute of Management and Administration (IUGM) of the University of Mahajanga.\nThe town has a permanent court and hospital. The majority 60% of the population of the commune are farmers, while an additional 7% receive their livelihood from raising livestock. The most important crops are rice and tobacco; also sweet potatoes are an important agricultural product. Industry and services provide employment for 5% and 15% of the population, respectively. Additionally fishing employs 13% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "maevatanana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3858,
+    "attempt": 3828,
+    "place_id": "gn-1225018",
+    "input": {
+      "place": {
+        "place_id": "gn-1225018",
+        "name": "Vavuniya",
+        "country": "Sri Lanka",
+        "subdivision": "Northern Province",
+        "lat": 8.7514,
+        "lon": 80.4971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vavuniya",
+          "url": "https://en.wikipedia.org/wiki/Vavuniya",
+          "text": "Vavuniya (Tamil: வவுனியா, romanized: Vavuniyā, Sinhala: වවුනියාව, romanized: Vavuniyāva) is a city in Vavuniya District in the Northern Province of Sri Lanka. The municipality is administered by a Municipal Council. The town has been known since ancient times, but being a heavily forested area, less than 100,000 people lived in the entire district before the Sri Lankan Civil War. The city is situated as a border town that divides the Tamil and Sinhalese population. To the south of the city are the Sinhalese population, and to the north are the Tamil population. The city has a large population of Tamils, Muslims, and a significant number of Sinhalese. In the early days, Vavuniya was known as Vanni due to the abundance of Vanni Trees. The Security Forces Headquarters - Wanni is located in Vavuniya."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "vavuniya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3859,
+    "attempt": 3829,
+    "place_id": "gn-1272607",
+    "input": {
+      "place": {
+        "place_id": "gn-1272607",
+        "name": "Diglipur",
+        "country": "India",
+        "subdivision": "Andaman and Nicobar",
+        "lat": 13.26667,
+        "lon": 93
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diglipur",
+          "url": "https://en.wikipedia.org/wiki/Diglipur",
+          "text": "Diglipur (sometimes spelled Diglipore) is the largest town of North Andaman Island, in the Andaman Archipelago, India. It is located on the southern side of Aerial Bay, at 43 metres (141 feet) above sea level, 298 kilometres (185 miles) north of Port Blair.  It is crossed by the Kalpong River, the only river of the Andaman islands. Saddle Peak, the highest point in the archipelago, lies about 10 km to the south. Diglipur is also a county (tehsil) of the North and Middle Andaman District of the Andaman and Nicobar Islands union territory. Its area is 884 km2, and its population was 42,877 people as of 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "diglipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3860,
+    "attempt": 3830,
+    "place_id": "gn-13353684",
+    "input": {
+      "place": {
+        "place_id": "gn-13353684",
+        "name": "Hupari",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 16.61667,
+        "lon": 74.40442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hupari",
+          "url": "https://en.wikipedia.org/wiki/Hupari",
+          "text": "Hupari is a town governed by a Municipal Council in the Kolhapur district of the Indian state of Maharashtra. It is located in Hatkanangle taluka.\nHupari is widely known as the \"Silver City\" due to its strong traditional base in silver ornament manufacturing. The town has a long-standing heritage of skilled artisans who specialise in crafting a variety of silver jewellery and decorative items. A significant portion of the local population is engaged in this industry, making Hupari one of the prominent centres for silver ornament production in India.\nThe silver industry in Hupari is largely based on family-run businesses, where craftsmanship is passed down through generations. The town produces items such as anklets, chains, bangles, and traditional ornaments that are supplied to markets across India.\nHupari is also home to the temple of Shri Ambabai (Mahalaxmi), which is an important religious site for local residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "hupari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3861,
+    "attempt": 3831,
+    "place_id": "gn-1587406",
+    "input": {
+      "place": {
+        "place_id": "gn-1587406",
+        "name": "Hoàn Lão",
+        "country": "Vietnam",
+        "subdivision": "Quang Tri",
+        "lat": 17.58436,
+        "lon": 106.53425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoàn Lão",
+          "url": "https://en.wikipedia.org/wiki/Hoàn_Lão",
+          "text": "Hoàn Lão is a commune of Quảng Trị, is located about 13 km north of Đồng Hới.\nOn June 16, 2025, the Standing Committee of the National Assembly issued Resolution No. 1680/NQ-UBTVQH15 on the reorganization of commune-level administrative units in Quảng Trị Province in 2025. Accordingly, Hoàn Lão Township, together with Trung Trạch Commune, Đại Trạch Commune, Tây Trạch Commune, and Hòa Trạch Commune, were merged to form a new commune named Hoàn Lão Commune.\nThe commune (xã) is located about 30 km east of Phong Nha-Kẻ Bàng National Park a UNESCO Heritage Site.\nHoàn Lão covers 5,70 km2 and had a population of 7,372 in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hoan lao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hoan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3862,
+    "attempt": 3832,
+    "place_id": "gn-1636670",
+    "input": {
+      "place": {
+        "place_id": "gn-1636670",
+        "name": "Maliana",
+        "country": "Timor-Leste",
+        "subdivision": "Bobonaro",
+        "lat": -8.99167,
+        "lon": 125.21972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maliana",
+          "url": "https://en.wikipedia.org/wiki/Maliana",
+          "text": "Maliana is a city in Timor-Leste, 149 kilometers southwest of Dili, the national capital. It has a population of 22,000. It is the capital of the district of Bobonaro and Maliana Subdistrict, and is located just a few kilometers from the border with Indonesia. It is also the see city of the Roman Catholic Diocese of Maliana, which was formed by Pope Benedict XVI with territory taken from the Roman Catholic Diocese of Dili.\nMaliana an important agriculture sector, especially rice production. The majority of Maliana's population is heavily dependent on agriculture for their livelihoods, this is because rice became the preferred staple food among many Timorese. Most of the population are farmers cultivating rice and maize. During Indonesian occupation, Maliana became a rice barn town to support other districts in East Timor, and export to other places in Western Timor of Indonesia.\nMaliana has seven villages consisting of Lahomea, Holsa, Ritabou, Odomau, Raifun, Tapo-Memo and Saburai. There are two main sources of water irrigation that supply water to paddy fields such Bulobu River, Nunura River, Malibaka and Bui Pira river. Bunak and Kemak are the native dialects of Maliana but most people understand and speak Tetum.\nMaliana had one of the preferred schools during Portuguese occupation, known as Collegio Infante sagres. This was under a catholic mission and many East Timor educated people have graduated from this senior high School.\nThe citizens of Maliana were instrumental to the Australian army between 1999 and 2001, during the UNTAET operation. Employed as \"Locally Employed Civilians\" by a small contingent from the 110th Signals Squadron, the people of Maliana provided domestic support, as well as local intelligence regarding the threat of Indonesian militia to the soldiers and civilian contractors working in the area.\nAustralian newsman Greg Shackleton and his colleagues (the \"Balibo Five\") filed news reports from Maliana (then in Portuguese Timor) shortly before their fateful trip to Balibo in October, 1975."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 320
+    },
+    "banned_terms": [
+      {
+        "term": "maliana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3863,
+    "attempt": 3833,
+    "place_id": "gn-1733782",
+    "input": {
+      "place": {
+        "place_id": "gn-1733782",
+        "name": "Labuan",
+        "country": "Malaysia",
+        "subdivision": "Labuan",
+        "lat": 5.28028,
+        "lon": 115.2475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Labuan",
+          "url": "https://en.wikipedia.org/wiki/Labuan",
+          "text": "Labuan (), officially the Federal Territory of Labuan (Malay: Wilayah Persekutuan Labuan), is an island federal territory of Malaysia. It includes Labuan Island and six smaller islands off the coast of the state of Sabah in East Malaysia. Labuan's capital is Victoria, which is best known as an offshore financial centre offering international financial and business services via Labuan IBFC since 1990, as well as being an offshore support hub for deepwater oil and gas activities in the region. It is also a tourist destination for people travelling through Sabah, nearby Bruneians, and scuba divers. The name Labuan derives from the Malay word labuhan, which means 'harbour'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "labuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3864,
+    "attempt": 3834,
+    "place_id": "gn-1835895",
+    "input": {
+      "place": {
+        "place_id": "gn-1835895",
+        "name": "Seosan",
+        "country": "South Korea",
+        "subdivision": "Chungcheongnam-do",
+        "lat": 36.78167,
+        "lon": 126.45222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seosan",
+          "url": "https://en.wikipedia.org/wiki/Seosan",
+          "text": "Seosan (Korean: 서산; Korean pronunciation: [sʰʌ.san])  is a city in South Chungcheong Province, South Korea, with a population of roughly 175,000 according to the 2017 census. Located at the northwestern end of South Chungcheong Province, it is bounded by Dangjin, Naepo New Town, Yesan-gun and Hongseong-gun on the east, Taean-gun and the Yellow Sea on the west, 125 km (78 mi) south of Seoul, 159 km (99 mi) northwest of Daejeon and 34 km (21 mi) northwest of Naepo New Town. Seosan is the hub of transportation on the west coast where the Seohaean Expressway, Daejeon-Dangjin Expressway, and National Highways No. 29, 32, 38, and 45 intersect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "seosan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3865,
+    "attempt": 3835,
+    "place_id": "gn-2160517",
+    "input": {
+      "place": {
+        "place_id": "gn-2160517",
+        "name": "Launceston",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -41.43876,
+        "lon": 147.13467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Launceston, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Launceston,_Tasmania",
+          "text": "Launceston ( LON-sess-tən) is a city in the north of Tasmania, Australia, at the confluence of the North Esk and South Esk rivers where they become the River Tamar (kanamaluka). As of 2021, the Launceston urban area has a population of 90,953. Launceston is the second most populous city in Tasmania after the state capital, Hobart. As of 2020, Launceston is the 18th largest city in Australia. Launceston is the fifth-largest inland city and the ninth-largest non-capital city in Australia. Launceston is regarded as the most livable regional city, and was one of the most popular regional cities to move to in Australia from 2020 to 2021. Launceston was named Australian Town of the Year in 2022.\nSettled by Europeans in March 1806, Launceston is one of Australia's oldest cities and it has many historic buildings. Like many places in Australia, it was named after a town in the United Kingdom – in this case, Launceston, Cornwall. Launceston also had the first use of anaesthetic in the Southern Hemisphere, it was the first Australian city to have underground sewers, and it was the first Australian city to be lit by hydroelectricity. The city has a maritime climate with four distinct seasons and is appreciably warmer than the south of the island during summer. Local government is split between the City of Launceston, Meander Valley and West Tamar Councils."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "launceston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3866,
+    "attempt": 3836,
+    "place_id": "gn-2265326",
+    "input": {
+      "place": {
+        "place_id": "gn-2265326",
+        "name": "Paço de Arcos",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69569,
+        "lon": -9.29143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paço de Arcos",
+          "url": "https://en.wikipedia.org/wiki/Paço_de_Arcos",
+          "text": "Paço de Arcos (European Portuguese pronunciation: [ˈpasu ð(i) ˈaɾkuʃ]) is a locality of Oeiras. In 2013, the parish of Paço de Arcos merged into the new parish Oeiras e São Julião da Barra, Paço de Arcos e Caxias. The population in 2011 was 15,315, in an area of 3.39 km2. It was elevated to town by a decree on December 7, 1926.\nIts name comes from the Palácio dos Arcos located at the entrance to the village, where king D. Manuel I of Portugal watched Vasco da Gama's caravels leave for India. Nowadays, the Portuguese maritime academy – Escola Náutica Infante D. Henrique – is based there. It's also the base of the private business jet company NetJets Europe.\nPaço de Arcos is where Quinta da Fonte is located, one of the biggest office parks in Europe, being the home of companies such as DLL Group, Hewlett-Packard, among others.\nThe town is featured in Robert Wilson's 1999 novel A Small Death in Lisbon, as both the residence of the main character, Inspector José \"Zé\" Coelho, and where a body is found.\nItems of interest in the locality include Lime kilns (Portuguese: Fornos de Cal) dating back to the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "paco de arcos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arcos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3867,
+    "attempt": 3837,
+    "place_id": "gn-2338401",
+    "input": {
+      "place": {
+        "place_id": "gn-2338401",
+        "name": "Ijebu-Jesa",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.68287,
+        "lon": 4.81769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ijebu-Jesa",
+          "url": "https://en.wikipedia.org/wiki/Ijebu-Jesa",
+          "text": "Ijebu-Jesa (), also spelled Ijebu-Ijesa and historically known as Ijebu-Ere, is a town in Osun State, Nigeria. It is the headquarters of Oriade Local Government Area, which recorded a population of 148,379 at the 2006 census. The town lies in Ijesaland, in the rainforest belt of eastern Osun State, about 8 kilometres (5.0 mi) north of Ilesa and 128 kilometres (80 mi) east of Ibadan. Its traditional ruler holds the title of Elegboro.\nIjebu-Jesa traces its founding to Agigiri, held in local tradition to be the senior brother of the Owa Obokun of Ilesa. Ibadan sacked the town in the mid-19th century during its wars in Ijesaland. The Elegboro stool was filled in 2017 after a disputed succession. The town has a grammar school founded in 1955 and a private polytechnic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ijebu jesa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ijebu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jesa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3868,
+    "attempt": 3838,
+    "place_id": "gn-2388036",
+    "input": {
+      "place": {
+        "place_id": "gn-2388036",
+        "name": "Bossangoa",
+        "country": "Central African Republic",
+        "subdivision": "Ouham",
+        "lat": 6.49263,
+        "lon": 17.45518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bossangoa",
+          "url": "https://en.wikipedia.org/wiki/Bossangoa",
+          "text": "Bossangoa is the capital of Ouham, one of the 20 prefectures of the Central African Republic. The town has a population of 36,478 (2003 census). It is located 303 km (189 mi) north of the country's capital, Bangui. The Ouham River passes through Bossangoa and on through a number of waterfalls east of the city before turning north to join the Chari River in Chad.\nThe Mandjia, the third most populous ethnic group in the Central African Republic, are concentrated in Bossangoa. Along with the Baya, a closely related group, the Mandjia are important historically for their resistance to invasion by various Muslim powers to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "bossangoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3869,
+    "attempt": 3839,
+    "place_id": "gn-2395261",
+    "input": {
+      "place": {
+        "place_id": "gn-2395261",
+        "name": "Bassila",
+        "country": "Benin",
+        "subdivision": "Donga",
+        "lat": 9.00814,
+        "lon": 1.6654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bassila",
+          "url": "https://en.wikipedia.org/wiki/Bassila",
+          "text": "Bassila [ba.si.la] is a town, arrondissement, and commune located in the Donga Department of Benin. The commune covers an area of 5,661 square kilometres and as of 2013 had a population of 130,770 people.\nThe RNIE 3 highway of Benin passes through the town of Bassila and the commune. The main ethnic groups in the commune are in the order of significance: Yoruba/Nagot who are the native dwellers, as well as smaller migrant communities of Anii and Tem people otherwise known as 'Kotokoli'. The Nagots historically migrated from Nigeria during a westward Yoruba expansion. The town of Bassila is largely Anii, and is the largest Anii-speaking village.  Given that Bassila is located in proximity to the border with Togo, a significant proportion of the population are of Togolese origin (Anii and Kotokoli migrants).\nBassila is the second largest arrondissement in Benin  by land area.\nMont Sokbaro, widely cited as the highest point of Benin, lies in Bassila commune, on the border with Togo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "bassila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3870,
+    "attempt": 3840,
+    "place_id": "gn-2428216",
+    "input": {
+      "place": {
+        "place_id": "gn-2428216",
+        "name": "Massenya",
+        "country": "Chad",
+        "subdivision": "Chari-Baguirmi",
+        "lat": 11.40345,
+        "lon": 16.17037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massenya",
+          "url": "https://en.wikipedia.org/wiki/Massenya",
+          "text": "Massenya (Arabic: ماسينيا) is a small town located in the central-western part of Chad. It is the capital of the Chari-Baguirmi province and of the department of Baguirmi. Founded in the first half of the 16th century, Massenya was also the historical capital of the Kingdom of Baguirmi and the seat of the Mbang, or Sultan. \nIt lies in the northwest of the Massenya Plain, an important wetland in the Sahel, which has been under the protection of the Ramsar Convention since 2008, and also located on the banks of the Chari River. The town is served by Massenya Airport.\nThe town is divided into three districts. The Bagirmi district hosts the main market and the residence of the Bagirmi mbang. The Haussa district was founded by the Arab religious leader Gombo Mahamat Oumar Abakar, a close friend of Mbang Gaourang from Nigeria, who became the imam of the great mosque until his death. The Sara district contains the administrative buildings. The population is made up of various communities, including Sara, Fula, Bagirmi, Arab, Wadaï, Hadjarai, Bulala, Hausa, and Kanuri people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "massenya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

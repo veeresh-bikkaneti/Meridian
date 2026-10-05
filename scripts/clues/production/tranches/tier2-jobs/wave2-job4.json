@@ -1,0 +1,927 @@
+[
+  {
+    "rank": 279,
+    "place_id": "gn-1172451",
+    "input": {
+      "place": {
+        "place_id": "gn-1172451",
+        "name": "Lahore",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.558,
+        "lon": 74.35071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahore",
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "text": "Lahore is the capital and largest city of the Pakistani province of Punjab. It is the second-largest city in Pakistan, after Karachi, and 27th largest in the world, with a population of over 14 million. Lahore is one of country's major industrial, educational and economic hubs, and is considered the historic capital and cultural centre of the wider Punjab region.\nThe site of the city has been inhabited for over two millennia, although Lahore itself rose to prominence in the late 10th century. At times Lahore has served as the capital of several empires, including the Odi Shahi dynasty, Ghaznavid Empire and Delhi Sultanate. It was one of the principal cities in the Mughal Empire, being its capital city during the reign of Akbar. During this period, it was one of the largest cities in the world. In the 18th century Lahore fell into a period of decay while being contested among the Durranis and the Sikhs; it regained some of its former grandeur when it became capital of the Sikh Kingdom of Lahore in the early 19th century. It was annexed by the East India Company in 1849 and became the capital of Punjab Province. Lahore was central to the independence movements of British India, with the city being the site of both the Declaration of Indian Independence and the resolution for the establishment of Pakistan. It suffered rioting during the partition of British India in 1947. Following the independence of Pakistan, Lahore remained the capital of Punjab province.\nLahore is located in central-eastern Punjab, along the Ravi River, and has a strong cultural and political influence over the country being capital of its most populated province. It is considered a major socially liberal, progressive, and cosmopolitan city in the country. It is a UNESCO City of Literature and major centre for Pakistan's publishing industry, and is as such a foremost centre of Pakistan's literary scene. The city is also a major centre of education, with some of the country's leading universities based there. Lahore is home to Pakistan's Punjabi film industry, and is a major centre of Qawwali music. The city hosts a significant portion of Pakistan's tourism industry, with major attractions including the Walled City, the Badshahi and Wazir Khan mosques, as well as several Sikh and Sufi shrines. Lahore is also home to the Lahore Fort and Shalimar Gardens, both of which are UNESCO World Heritage Sites."
+        },
+        {
+          "article": "Lahore (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lahore#Climate",
+          "text": "Lahore has a hot semi-arid climate (Köppen climate classification BSh), bordering on a humid subtropical climate. The hottest month is June, where temperatures routinely exceed . The monsoon season starts in late June, and the wettest months are July, August and September. with heavy rainfalls and evening thunderstorms with the possibility of cloudbursts and flash floods. The coolest month is January, with dense fog.\nThe city's record high temperature was , recorded on 5 June 2003. On 10 June 2007, a temperature of was recorded; this was in the shade, and the meteorological office recording the figure reported a heat index in direct sunlight of . The highest rainfall in a 24-hour period is , recorded on 1 August 2024.\nAccording to the World Air Quality Report 2024, Lahore is one of the world's most polluted cities."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 137,
+      "leadWords": 401,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Punjab location along the Ravi River and long imperial history but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lahore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 280,
+    "place_id": "gn-2949186",
+    "input": {
+      "place": {
+        "place_id": "gn-2949186",
+        "name": "Bielefeld",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 52.03333,
+        "lon": 8.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bielefeld",
+          "url": "https://en.wikipedia.org/wiki/Bielefeld",
+          "text": "Bielefeld (German pronunciation: [ˈbiːləfɛlt] ) is a city in the Ostwestfalen-Lippe region in the north-east of North Rhine-Westphalia, Germany. With a population of 342,952, it is also the most populous city in the administrative region (Regierungsbezirk) of Detmold and the 18th largest city in Germany.\nThe historical centre of the city is situated in the Ravensberg Basin north of the Teutoburg Forest hill range, but modern Bielefeld extends across the range and further south into the flat Westphalian Basin. The city is situated on the Hermannsweg, a hiking trail that runs for 156 km along the ridges of the Teutoburg Forest.\nBielefeld is home to a significant number of internationally operating companies, including Dr. Oetker, DMG Mori (former Gildemeister), Möller Group, Goldbeck and Schüco. It has a university and several technical colleges (Fachhochschulen). Bielefeld is also known for the Bethel Foundation."
+        },
+        {
+          "article": "Bielefeld (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bielefeld#Climate",
+          "text": "Bielefeld has an oceanic climate (Köppen: Cfb; Trewartha: Dobk). The average annual high temperature is , the annual low temperature is , and the annual precipitation is .\nThe Alzey weather station has recorded the following extreme values:\nIts highest temperature was on 25 July 2019.\nIts lowest temperature was on 13 February 2021.\nIts greatest annual precipitation was in 2023.\nIts least annual precipitation was in 2018.\nThe longest annual sunshine was 1,918.3 hours in 2022.\nThe shortest annual sunshine was 1,418.4 hours in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 86,
+      "leadWords": 141,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location north of the Teutoburg Forest, companies and university facts but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bielefeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 281,
+    "place_id": "gn-298299",
+    "input": {
+      "place": {
+        "place_id": "gn-298299",
+        "name": "Uşak",
+        "country": "Türkiye",
+        "subdivision": "Uşak",
+        "lat": 38.67351,
+        "lon": 29.4058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uşak",
+          "url": "https://en.wikipedia.org/wiki/U%C5%9Fak",
+          "text": "Uşak (Turkish pronunciation: [ˈuʃak]) is a city in the interior part of the Aegean Region of Turkey. It is the seat of Uşak Province and Uşak District. Its population is 236,366 (2022).\nUşak is located 210 km (130 mi) from İzmir, the region's principal metropolitan center and port city. Benefiting from its location at the crossroads of the Central Anatolian plateau and the coastal Aegean Region, and from a climate and agricultural production incorporating elements of both of these zones, Uşak has also traditionally had a strong industrial base. Uşak was the first city in Turkey to have an urban electricity network, and the first city where a collective labor relations agreement was signed, during the Ottoman era, between leather industry employees and workers. It was here that the first factory of Republican Turkey, a sugar refinery, was set up through a private sector initiative among local businessmen. The tradition of industriousness continues today around two industrial zones."
+        },
+        {
+          "article": "Uşak (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/U%C5%9Fak#Climate",
+          "text": "Uşak has a Mediterranean (Köppen: Csa) or an oceanic climate (Trewartha: Doak), with cool, wet, regularly snowy winters and hot, dry summers.\nHighest recorded temperature: on 18 August 2023 Lowest recorded temperature: on 5 January 1942"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 36,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only says its climate incorporates elements of both the Central Anatolian plateau and coastal Aegean zones, a vague hybrid label with no mechanism, extreme, or paradox verbatim-traceable to the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond a two-zone climate label"
+    },
+    "banned_terms": [
+      {
+        "term": "usak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 282,
+    "place_id": "gn-3583361",
+    "input": {
+      "place": {
+        "place_id": "gn-3583361",
+        "name": "San Salvador",
+        "country": "El Salvador",
+        "subdivision": "San Salvador Department",
+        "lat": 13.68935,
+        "lon": -89.18718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Salvador",
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "text": "San Salvador (Spanish pronunciation: [san salβaˈðoɾ]) is the capital and largest city of El Salvador and of its eponymous department. It is the country's largest agglomeration, serving as the country's political, cultural, educational and financial center. The municipality of San Salvador has 525,990 inhabitants (2024). The Metropolitan Area of San Salvador, which comprises the capital itself and 13 of its municipalities, has a population of 2,404,097. The urban area of San Salvador has a population of 1,600,000 inhabitants.\nThe city is home to the Consejo de Ministros de El Salvador (Council of Ministries of El Salvador), the Legislative Assembly of El Salvador, the Supreme Court of El Salvador, and other governmental institutions, as well as the official residence of the president of El Salvador. San Salvador is located in the Salvadoran highlands, surrounded by volcanoes and prone to earthquakes. The city is also home to the Roman Catholic Archdiocese of San Salvador, as well as many Protestant branches of Christianity, including Evangelicals, Baptists, and Pentecostals, and the restorationist Christian sect the Church of Jesus Christ of Latter-day Saints.\nSan Salvador has been the host city for regional and international sporting, political, and social events. It hosted the Central American and Caribbean Games in 1935, 2002, and in 2023 and the Central American Games in 1977 and 1994, as well as the Miss Universe pageant in 1975 and in 2023. San Salvador was also the host city of the 18th Ibero-American Summit in 2008, the most important sociopolitical event in the Spanish and Portuguese sphere. The Central American Integration System has its headquarters in San Salvador."
+        },
+        {
+          "article": "San Salvador (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/San_Salvador#Climate",
+          "text": "San Salvador has a tropical wet and dry climate under the Köppen climate classification, and enjoys very warm to hot weather all year round, with daily mean temperatures of . Its average elevation of causes the city to experience slightly cooler temperatures in the mornings, higher solar radiation, and greater diurnal air temperature variation (particularly during the dry season) than nearby cities at sea level such as Acajutla. Its weather cools from the months of November through February due to seasonal winds of the dry season. During these months one can expect a daily mean of . The hottest months of the year are April and May, during the transition from the dry season (November to April), to the rainy season (May to October). In April and May average maximum temperatures reach . The highest reading ever recorded was , the lowest was . The highest dew point was and the lowest . Thunderstorms occur almost daily during the rainy season, mostly in the afternoon and through the night—by morning the sky clears and the days are usually sunny until the afternoon storms."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 183,
+      "leadWords": 265,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives highlands location surrounded by volcanoes and prone to earthquakes, which is geology not climate, and states no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san salvador",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salvador",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 283,
+    "place_id": "gn-3654667",
+    "input": {
+      "place": {
+        "place_id": "gn-3654667",
+        "name": "Loja",
+        "country": "Ecuador",
+        "subdivision": "Loja",
+        "lat": -3.99313,
+        "lon": -79.20422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loja, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Loja,_Ecuador",
+          "text": "Loja (Spanish pronunciation: [ˈlo.xa]), formerly Loxa and fully City of the Immaculate Conception of Loja (Spanish: Ciudad de la Inmaculada Concepción de Loja), is the capital of Ecuador's Loja Province. It is located in the Cuxibamba valley in the south of the country, sharing borders with the provinces of Zamora-Chinchipe and other cantons of the province of Loja. Loja holds a rich tradition in the arts, and for this reason is known as the Music and Cultural Capital of Ecuador. The city is home to two major universities.\nThe city has a population of about 203,000, and is situated 2060 m (6758 ft) above sea level. It has a mild Andean climate, ranging between 16 and 30 °C.\nThe Pan-American Highway runs past Loja."
+        },
+        {
+          "article": "Loja, Ecuador (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Loja,_Ecuador#Climate",
+          "text": "Loja has a mild Andean climate, generally warm during the days and colder and often wetter at night. The average temperature is . June and July brings an eastern drizzle with the trade winds, and is referred to as the \"windy season.\" Due to its valley location, the city is often misty in the morning with general absence of sunshine, clearing off towards the afternoon."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 65,
+      "leadWords": 124,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only says it has a mild Andean climate ranging between 16 and 30 degrees C; a mild label and temperature range alone do not qualify, with no mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond a mild-climate label and temperature range"
+    },
+    "banned_terms": [
+      {
+        "term": "loja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 284,
+    "place_id": "gn-5139568",
+    "input": {
+      "place": {
+        "place_id": "gn-5139568",
+        "name": "Staten Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.56233,
+        "lon": -74.13986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Staten_Island",
+          "text": "Staten Island  ( STAT-ən) is the southernmost of the five boroughs of New York City. It is separated from New Jersey by the Arthur Kill and the Kill Van Kull and from the rest of New York by New York Bay. With a population of 495,747 in the 2020 census, Staten Island is the least populated borough but the third largest in land area at 58.5 sq mi (152 km2). It is the least densely populated and most suburban borough of the city. The borough is coextensive with Richmond County, one of the 62 counties of New York state, and includes the southernmost point of the state.\nOriginally home to Lenape Native Americans, the island was settled by Dutch colonists in the 17th century. When the British took over, Richmond County became one of the 12 original counties of New York. Staten Island became one of the five boroughs of New York City during consolidation in 1898. Always called Staten Island (anglicized from the original Dutch Staaten Eylandt), the borough was legally the Borough of Richmond until 1975, when its name was officially changed to Borough of Staten Island. Staten Island has sometimes been called \"the forgotten borough\" by inhabitants who feel neglected by the city government and the media. It has also been referred to as the \"borough of parks\" due to its 12,300 acres of protected parkland and over 170 parks.\nThe North Shore—especially the neighborhoods of St. George, Tompkinsville, Clifton, and Stapleton—is the island's most urban area. It includes the St. George Historic District and the St. Paul's Avenue-Stapleton Heights Historic District, both of which feature large Victorian houses. The East Shore is home to the 2+1⁄2-mile (4-kilometer) FDR Boardwalk, the world's fourth-longest boardwalk. The South Shore, site of the 17th-century Dutch and French Huguenot settlement, developed rapidly beginning in the 1960s and 1970s and is now very suburban. The West Shore has the island's fewest residents and the most industrial development.\nMotor traffic can reach the borough from Brooklyn by the Verrazzano–Narrows Bridge and from New Jersey by the Outerbridge Crossing, Goethals Bridge, and Bayonne Bridge. Staten Island has Metropolitan Transportation Authority (MTA) bus lines and one MTA rapid transit line, the Staten Island Railway, which runs from the ferry terminal at St. George to Tottenville. Staten Island is the only borough not connected to the New York City Subway system. The free Staten Island Ferry connects the borough to Manhattan across New York Harbor, providing views of the Statue of Liberty, Ellis Island, and Lower Manhattan."
+        },
+        {
+          "article": "Staten Island (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Staten_Island#Geography",
+          "text": ".]]\nAccording to the U.S. Census Bureau, Richmond County has a total area of , of which is land and (43%) is water. It is the third-smallest county in New York by land area and fourth-smallest by total area.\nAlthough Staten Island is a borough of New York City, the island is geographically part of New Jersey. Staten Island is separated from Long Island by the Narrows and from mainland New Jersey by the Arthur Kill and the Kill Van Kull. Staten Island is positioned at the center of New York Bight, a sharp bend in the shoreline between New Jersey and Long Island. The region is considered vulnerable to sea-level rise. On October 29, 2012, the island experienced severe damage and loss of life along with the destruction of many homes during Hurricane Sandy.\nIn addition to the main island, the borough and county also include several small uninhabited islands:\nThe Isle of Meadows (at the mouth of Fresh Kills)\nPrall's Island (in the Arthur Kill)\nShooters Island (in Newark Bay; part of it is in New Jersey)\nSwinburne Island (in Lower New York Bay)\nHoffman Island (in Lower New York Bay)\nThe highest point on the island, the summit of Todt Hill, elevation , is also the highest point in the five boroughs, as well as the highest point on the Atlantic coastal plain south of Great Blue Hill in Massachusetts and the highest point on the coast proper south of Maine's Camden Hills. Ward's Point in the neighborhood of Tottenville is the southernmost point in the state of New York.\nStaten Island is the only borough in New York City that does not share a land border with another borough (Marble Hill in Manhattan is contiguous with the Bronx). The borough has a land border with Elizabeth and Bayonne, New Jersey, on uninhabited Shooters Island. It has several maritime borders with New Jersey communities, such as Perth Amboy, Cliffwood Beach section of Old Bridge, Union Beach, and Keansburg.\n; the deer may be part of a 40-large herd in Clay Pit Ponds State Park Preserves.]]\nWildlife\nStaten Island is home to a large and diverse population of wildlife. Wildlife found on Staten Island include white-tailed deer (which have increased from a population of 24 in 2008 to 2,000 in 2017 due to a hunting ban and a lack of predators), as well as hundreds of species of birds including bald eagles, turkey, hawks, egrets and ring-necked pheasants. Staten Island is home to Atlantic horseshoe crabs, cottontail rabbits, opossums, raccoons, garter snakes, red-eared slider turtles, newts, spring peeper frogs, leopard frogs, fox, box turtles, skunks, northern snapping turtles and common snapping turtles. In 2014 a new species of frog, the Atlantic Coast Leopard Frog (Lithobates kauffeldi), was described from Staten Island.\nParkland\nStaten Island includes thousands of acres of federal, state, and local park land, including the \"greenbelt\" and \"blue belt\" park systems and the Gateway National Recreation Area, in addition to hundreds of acres of private wooded areas. The National Park Service maintains full-time wildland firefighters to patrol Staten Island sites in wildfire brush trucks.\nThe parks on Staten Island are managed by various state, federal, and local agencies.\nFive sites are part of the Gateway National Recreation Area, managed by the U.S. National Park Service and patrolled by the United States Park Police:\nGreat Kills Park\nMiller Field\nFort Wadsworth\nHoffman Island\nSwinburne Island\nTwo New York State parks are managed by the New York State Office of Parks, Recreation and Historic Preservation:\nMount Loretto Unique Area\nClay Pit Ponds State Park Preserve\nNew York State Park Police officers patrol these parks and the surrounding streets.\nof State Forests, state wildlife management areas, and Wetlands are managed by the New York State Department of Environmental Conservation:\nSaint Francis Woodland\nButler Manor Woods\nArden Heights Woods\nTodt Hill Woods\nNorth Mount Loretto State Forest\nLemon Creek Tidal Wetland Wildlife Management Area\nBlosers Wetland Wildlife Management Area\nGoethal Pond Wetland\nBridge Creek Tidal Wetland\nOld Place Creek Tidal Wetland\nOakwood Beach Wetland\nSharrotts Shoreline Natural Resource Area\nSawmill Creek Wetland\nThe of NYS Department of Environmental Conservation land throughout the island are patrolled by New York State Department of Environmental Conservation Police officers and one NYS DEC Forest Ranger, who has the dual task of law enforcement and fire suppression.\nThe New York City Department of Parks and Recreation manages 156 parks including:\nConference House Park\nWillowbrook Park\nGraniteville Quarry Park\nSilver Lake Park\nClove Lakes Park\nThe Fresh Kills Landfill was the world's largest landfill before closing in 2001, although it was temporarily reopened that year to receive debris from the September 11 attacks. The landfill is being redeveloped as Freshkills Park, an area devoted to restoring habitat. The park will become New York City's second-largest public park when completed.\nAdjacent counties\nNew Jersey\nHudson County — north and northeast\nUnion County — northwest\nMiddlesex County — west and southwest\nMonmouth County — south\nNew York\nKings County — east\nNew York County — northeast"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 838,
+      "leadWords": 421,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives borough location across the bay from the rest of New York City, Dutch settlement and bridges but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "staten island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "staten",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 286,
+    "place_id": "gn-1260341",
+    "input": {
+      "place": {
+        "place_id": "gn-1260341",
+        "name": "Parbhani",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.26855,
+        "lon": 76.77081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parbhani",
+          "url": "https://en.wikipedia.org/wiki/Parbhani",
+          "text": "Parbhani (parbhani, Marathi pronunciation: [pəɾbʰəɳiː] ) is a city in Maharashtra state of India. It is the administrative headquarters of Parbhani District. Parbhani is one of the largest cities in Marathwada region. Parbhani is around 200 kilometres (120 mi) away from regional headquarters of Aurangabad while it is 491 km (305 mi) away from the state capital Mumbai.\nAlong with the entire Marathwada region, Parbhani was a part of the erstwhile Nizam State; later a part of Hyderabad State; after reorganization of states in 1956 it became a part of the then-Bombay state; since 1960, it has been part of the present Maharashtra state.\nParbhani is home to Vasantrao Naik Marathwada Agricultural University, which is one of only four agriculture universities in Maharashtra. Moreover, Parbhani also has an annual festival at Turabul Haq Dargah, which attracts lakhs of tourists each year. Parbhani is named after Goddess Prabhavati."
+        },
+        {
+          "article": "Parbhani (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Parbhani#Climate",
+          "text": "Parbhani's climate is classified as tropical. The Köppen-Geiger climate classification is Aw. When compared with winter, the summers have much more rainfall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 22,
+      "leadWords": 147,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives regional location, past state affiliations, an agricultural university, and a shrine festival, but states no climate mechanism, extreme, seasonal rhythm, record, or paradox",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "parbhani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 287,
+    "place_id": "gn-1275971",
+    "input": {
+      "place": {
+        "place_id": "gn-1275971",
+        "name": "Bhilai",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.20919,
+        "lon": 81.4285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhilai",
+          "url": "https://en.wikipedia.org/wiki/Bhilai",
+          "text": "Bhilai is a city in Durg district of the Indian state of Chhattisgarh, in east-central India. Along with its twin city, Durg, the urban agglomeration of Durg-Bhilai Nagar has a population of more than a million, making it the second most populous urban area in Chhattisgarh, after Raipur. The Bhilai metropolis contains three municipal corporations: Bhilai Municipal Corporation, Bhilai Charoda Municipal Corporation and, Risali Municipal Corporation.\nBhilai is a major industrial and educational hub of central India. The city is home to several industries, including Bhilai Steel Plant, Jaypee Cement, Orient Cement, NSPCL Bhilai Power Plant, Steel Authority of India, FSNL, and ACC Cement. The city is home to the Indian Institute of Technology Bhilai, as well as the Bhilai Institute of Technology. Risali is an emerging urban hub with its own municipal corporation.\nThe city also has the state's oldest zoo, Maitri Bagh."
+        },
+        {
+          "article": "Bhilai (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bhilai#Climate",
+          "text": "Owing to its proximity to the Tropic of Cancer, Bhilai has a tropical climate. There are three main seasons: summer, monsoon, and winter. The average annual temperature in Bhilai is 26.6 °C and the city receives an average rainfall of 1188 mm in a year. Summers usually last from May to June, followed by monsoons in July and August. The town receives the bulk of rainfall in July, with an average rainfall of 352mm. There is little rainfall during the winters, with November being the driest month of the year.\nDurg Bhilai has been ranked 29th best \"National Clean Air City\" (under Category 1 >10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 109,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives east-central India location, steel and cement industries, institutes, and a zoo, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bhilai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 288,
+    "place_id": "gn-1689286",
+    "input": {
+      "place": {
+        "place_id": "gn-1689286",
+        "name": "San Juan",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6,
+        "lon": 121.0333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan, Metro Manila",
+          "url": "https://en.wikipedia.org/wiki/San_Juan,_Metro_Manila",
+          "text": "San Juan, officially the City of San Juan (Filipino: Lungsod ng San Juan), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 134,312 people. It is located in Metro Manila's approximate geographical center, and is the country's smallest city by land area.\nThe city is known historically for the site of the first battle of the Katipunan, the organization which led the 1896 Philippine Revolution against the Spanish Empire. Notable landmarks today such as the Pinaglabanan Shrine and heritage homes are located in the city. Other locations include Greenhills and Santolan Town Plaza, making the city a major shopping hub with a range of upscale, boutique, and bargain retail."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives central Metro Manila location, smallest-city-by-area status, a revolution battle site, shrine, and shopping areas, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san juan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 289,
+    "place_id": "gn-1689510",
+    "input": {
+      "place": {
+        "place_id": "gn-1689510",
+        "name": "San Jose",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 12.35275,
+        "lon": 121.06761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Jose, Occidental Mindoro",
+          "url": "https://en.wikipedia.org/wiki/San_Jose,_Occidental_Mindoro",
+          "text": "San Jose, officially the Municipality of San Jose (Tagalog: Bayan ng San Jose),  is a municipality in the province of Occidental Mindoro, Philippines. According to the 2024 census, it has a population of 143,495 people.\nSan Jose has the province's largest commercial port and airport, the most banking, business, dining and commercial establishments in Occidental Mindoro, and has become a center of trade in the Mimaropa region. Its major local and international exports include rice, salt and processed milkfish. It was ranked 13th in \"overall competitiveness\" among Philippine local government units in the 2017 Cities and Municipalities Competitiveness Index (CMCI).\nIn pre-colonial times, it was named Pandurucan by the indigenous Mangyans after the local river, before later renamed for its patron saint, St. Joseph, the husband of Mary."
+        },
+        {
+          "article": "San Jose, Occidental Mindoro (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/San_Jose,_Occidental_Mindoro#Climate",
+          "text": "San Jose has a tropical monsoon climate (Köppen climate classification Am). The average annual temperature is 27.5 °C. The warmest month of the year is May, with an average temperature of 28.9 °C. January has the lowest average temperature of the year, at 26.5 °C. The average annual rainfall is 3126 mm. The driest month is March, with 8 mm of rainfall. With an average of 714 mm, the most precipitation falls in July."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 74,
+      "leadWords": 128,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives provincial port, airport, trade, rice, salt, and milkfish exports, plus an earlier indigenous name, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 290,
+    "place_id": "gn-1785738",
+    "input": {
+      "place": {
+        "place_id": "gn-1785738",
+        "name": "Yuncheng",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 35.02306,
+        "lon": 110.99278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yuncheng",
+          "url": "https://en.wikipedia.org/wiki/Yuncheng",
+          "text": "Yuncheng (simplified Chinese: 运城; traditional Chinese: 運城) is the southernmost prefecture-level city in Shanxi province, People's Republic of China. It borders Linfen and Jincheng municipalities to the north and east, and Henan (Luoyang and Jiyuan to the east, Sanmenxia to the south) and Shaanxi (Weinan) provinces to the east, south and west, respectively. As of the 2020 census, its population was 4,774,508 inhabitants (5,134,779 in 2010), of whom 928,334 (680,036 in 2010) lived in the built-up (or metro) area made of Yanhu District. One can note than Pinglu County, 205,080 inhabitants in the south, is now part of Sanmenxia built-up (or metro) area.\nYuncheng is a city that was born and prospered from salt. It is named after the \"City of Salt Luck\". The city is historically associated with the Yuncheng Salt Lake (运城盐湖), one of the largest natural salt lakes in China, which has been exploited for thousands of years and provided a crucial economic foundation for the region. In ancient times, the salt from Yuncheng was an important source of revenue and even influenced regional trade routes, making the city a strategic economic center. Due to its geographical location, Yuncheng also serves as a gateway connecting Shanxi with Henan and Shaanxi, making it an important transportation and cultural hub in the Yellow River basin.\nThe city is served by Yuncheng Yanhu International Airport, several national highways, and high-speed railway lines, which further strengthen its role as a regional transport node."
+        },
+        {
+          "article": "Yuncheng (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Yuncheng#Climate",
+          "text": "Yuncheng has a continental, monsoon-influenced semi-arid climate (Köppen BSk), with four distinct seasons. Due to its southerly location and position to the north of the Zhongtiao Mountains, allowing for downsloping when winds are from the south, it is among the warmest locales in the province. Winters are cold and very dry, while summers are hot and humid. Monthly mean temperatures range from in January to in July, and the annual mean is . Over 60% of the annual rainfall occurs from June to September.The average frost-free period across the city is between 188 and 238 days. With monthly percent possible sunshine ranging from 45% in March to 54% in May and July, the city receives 2,219 hours of bright sunshine annually, low by Shanxi standards and North China."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 128,
+      "leadWords": 242,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives southern Shanxi borders, a large natural salt lake exploited for thousands of years, and transport links, but salt production is not climate and no weather mechanism, extreme, or paradox is stated",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "yuncheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 291,
+    "place_id": "gn-191245",
+    "input": {
+      "place": {
+        "place_id": "gn-191245",
+        "name": "Kisumu",
+        "country": "Kenya",
+        "subdivision": "Kisumu County",
+        "lat": -0.10221,
+        "lon": 34.76171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisumu",
+          "url": "https://en.wikipedia.org/wiki/Kisumu",
+          "text": "Kisumu ( kee-SOO-moo) is the third-largest city in Kenya located in the Lake Victoria area in the former Nyanza Province. It is the second-largest city in the Lake Victoria Basin after Kampala. The city has a population of 438,588 according to the recent 2026 population estimates. The metro region, including Maseno and Ahero, had a population of 6,771 (Maseno) and 11,801 (Ahero) people respectively, totaling to a combined population of 457,160 people, according to the 2019 Kenya Population and Housing Census which was conducted by the Kenya National Bureau of Statistics.\nIn addition to its political importance, the city is a significant industrial and commercial centre in Kenya. It is also home to a number of higher-education institutions and a sizeable academic community. The city has been undergoing efforts to rejuvenate its downtown and Lower Town areas, including improvements to the lakefront, measures to reduce congestion on major streets, and initiatives to make streets more pedestrian-friendly.\nCulturally, Kisumu serves as the centre of the Luo people of East Africa. It was the most prominent urban centre in the pre-colonial and post-colonial period. It remains prominent in the modern era for natives of the Kavirondo region. It was briefly renamed Port Florence, before its name was reverted back.\nThe city serves as the capital of Kisumu County and was the immediate former capital of now-defunct Nyanza Province. \nIt is an important link in the trade route between Lake Victoria and Mombasa because of its water and rail connections. It is also the chief terminus for the agricultural produce of Nyanza and Western regions. Kisumu International Airport has regular flights to Nairobi and other neighbouring cities such as Mombasa.  According to the United Nations, Kisumu is now recognized as a key city and a \"Millennium City\" – the first of its kind in the world and also in East Africa.\nKisumu's elevation is 1,131 m (3,711 ft) and is about 320 km (200 mi) northwest of Nairobi, on the shores of Lake Victoria. It lies at the northeastern edge of the Winam Gulf, a long, shallow arm that protrudes from the main body of Lake Victoria. Kisumu is 24 km (15 mi) south of the equator and has, due to its elevation, moderate temperatures.\nThe metropolitan region comprises the city and its suburbs and satellite towns of Maseno, Kondele, and Ahero."
+        },
+        {
+          "article": "Kisumu (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kisumu#Climate",
+          "text": "Kisumu features a tropical rainforest climate with no true dry season and significant rainfall year-round. January is the driest month while the month of April receives the most rainfall. The average temperature is 22.9 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 35,
+      "leadWords": 389,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract's only temperature content is moderate temperatures attributed to elevation; under the run adjudication average or moderated temperature statements alone do not qualify, and no extreme, seasonal rhythm, record, or fuller mechanism is stated",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism beyond moderate temperatures, or a stated extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kisumu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 292,
+    "place_id": "gn-2036113",
+    "input": {
+      "place": {
+        "place_id": "gn-2036113",
+        "name": "Liaoyang",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.27194,
+        "lon": 123.17306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liaoyang",
+          "url": "https://en.wikipedia.org/wiki/Liaoyang",
+          "text": "Liaoyang (Chinese: 辽阳; pinyin: Liáoyáng) is a prefecture-level city of east-central Liaoning province, China, situated on the Taizi River. It is approximately one hour south of Shenyang, the provincial capital, by car. Liaoyang is home to Liaoning University's College of Foreign Studies and a number of vocational colleges. The city hosts a limited number of professional basketball and volleyball games in a modern sports facility. According to the latest statistics in 2020, the age distribution of the population in Liaoyang is as follows: 0–14 years old account for 9.83% of the population; 15–59 years old account for 62.26% of the population; 60 years old and above account for 27.91% of the population; 65 years old and above account for 19.46% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a river location south of the provincial capital, colleges, sports, and population age shares, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "liaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 293,
+    "place_id": "gn-2210554",
+    "input": {
+      "place": {
+        "place_id": "gn-2210554",
+        "name": "Sirte",
+        "country": "Libya",
+        "subdivision": "Surt",
+        "lat": 31.20892,
+        "lon": 16.58866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sirte",
+          "url": "https://en.wikipedia.org/wiki/Sirte",
+          "text": "Sirte (; Arabic: سِرْت, ), also spelled Sirt, Surt, Sert or  Syrte, is a city in Libya. It is located south of the Gulf of Sirte, almost right in the middle between Tripoli and Benghazi. It is known for its battles, ethnic groups and loyalty to former Libyan ruler Muammar Gaddafi. Due to developments in the First Libyan Civil War, it was briefly the capital of Libya from 1 September to 20 October 2011 as Tripoli's successor after the city's fall. The settlement was established in the early 20th century by the Italians, at the site of a 19th-century fortress built by the Ottomans. It grew into a city after World War II.\nContrary to popular belief, Sirte was not Muammar Gaddafi's birthplace. Gaddafi's birthplace was in a village 20 km south of Sirte, which is called Qasr Abu Hadi. The inhabitants of this village were farmers. Just a few significant people from the Gaddafi tribe, of whom some were born in Sirte, were appointed to government roles during the time of the Libyan Arab Jamahiriya until the NATO-led invasion of Libya in 2011. Sirte was favoured by the Gaddafi government. The city was the final major stronghold of Gaddafi loyalists in the civil war and Gaddafi was killed there by rebel forces on 20 October 2011 after sustaining major injury caused by French Air Force Bombs discharged as part of the NATO intervention. During the battle, Sirte was left almost completely in ruins, with many buildings destroyed or damaged. Six months after the civil war, almost 60,000 inhabitants, more than 70 percent of the pre-war population, had returned."
+        },
+        {
+          "article": "Sirte (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sirte#Climate",
+          "text": "Sirte has a hot arid climate (Köppen: BWh) with hot, dry summers and mild, somewhat rainy winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 17,
+      "leadWords": 269,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a coastal location between two larger Libyan cities, civil-war battles, a former ruler's death there in 2011, and an early-20th-century settlement, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sirte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 294,
+    "place_id": "gn-2634910",
+    "input": {
+      "place": {
+        "place_id": "gn-2634910",
+        "name": "Wakefield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.68331,
+        "lon": -1.49768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakefield",
+          "url": "https://en.wikipedia.org/wiki/Wakefield",
+          "text": "Wakefield is a cathedral city in West Yorkshire, England, located on the River Calder. The city had a population of 109,766 in the 2021 census, up from 99,251 in the 2011 census. The city is the administrative centre of the wider Metropolitan Borough of Wakefield, which had a 2025 population of 369,450, the 26th most populous district in England. It is part of the West Yorkshire Built-up Area and the Yorkshire and the Humber region.\nIn 1888, it gained city status due to its cathedral. The city has a town hall and is home to the county hall, which was the former administrative centre of the city's county borough and metropolitan borough as well as county town for the West Riding of Yorkshire.\nThe Battle of Wakefield took place in the Wars of the Roses, and the city changed hands between the two sides in the Civil War. Wakefield became an important market town and centre for wool, exploiting its position on the navigable River Calder to become an inland port. In the 18th century, Wakefield traded in corn, coal and textiles."
+        },
+        {
+          "article": "Wakefield (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Wakefield#Geography",
+          "text": "Wakefield is south-east of Leeds and south-west of York on the eastern edge of the Pennines in the lower Calder Valley. The city centre is sited on a low hill on the north bank of the River Calder close to a crossing place where it is spanned by the 14th-century, nine-arched, stone Chantry Bridge and a reinforced concrete bridge built in 1929–1930. It is at the junction of major north–south routes to Sheffield, Leeds and Doncaster and west–east routes to Huddersfield, Dewsbury and Pontefract.\nWakefield is within the area of the Nottinghamshire, Derbyshire & Yorkshire coalfield and lies on the middle coal measures and sandstones laid down in the Carboniferous period.\nWakefield includes the former outlying villages of Alverthorpe, Thornes, Sandal, Portobello, Belle Vue, Agbrigg, Lupset, Kettlethorpe and Flanshaw. In the 2011 Census, Newton Hill, Outwood, Stanley and Wrenthorpe were counted as parts of Wakefield, having been classified separately in the 2001 Census.\nNeighbouring towns and places"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 157,
+      "leadWords": 182,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a river location in West Yorkshire, cathedral city status from 1888, a Wars of the Roses battle, and wool, corn, coal, and textile trade, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wakefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 295,
+    "place_id": "gn-2991214",
+    "input": {
+      "place": {
+        "place_id": "gn-2991214",
+        "name": "Mulhouse",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 47.75205,
+        "lon": 7.32866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mulhouse",
+          "url": "https://en.wikipedia.org/wiki/Mulhouse",
+          "text": "Mulhouse is a French city of the European Collectivity of Alsace (Haut-Rhin department, in the Grand Est region of France). It is near the border with Switzerland and Germany. It is the largest city in Haut-Rhin and second largest in Alsace after Strasbourg.\nMulhouse is known for its museums, especially the Cité de l'Automobile (also known as the Musée national de l'automobile, 'National Museum of the Automobile') and the Cité du Train (also known as Musée Français du Chemin de Fer, 'French Museum of the Railway'), respectively the largest automobile and railway museums in Europe. An industrial town nicknamed \"the French Manchester\", Mulhouse is also the main seat of the Upper Alsace University, where the secretariat of the European Physical Society is found."
+        },
+        {
+          "article": "Mulhouse (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Mulhouse#Climate",
+          "text": "Mulhouse's climate is temperate oceanic (Köppen: Cfb), but its location further away from the ocean gives the city colder winters with some snow, and often hot and humid summers, in comparison with the rest of France."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 36,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a location near the Swiss and German borders, large automobile and railway museums, and an industrial nickname, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mulhouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 296,
+    "place_id": "gn-3451138",
+    "input": {
+      "place": {
+        "place_id": "gn-3451138",
+        "name": "Rio Grande",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -32.035,
+        "lon": -52.09861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Grande, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Rio_Grande,_Rio_Grande_do_Sul",
+          "text": "Rio Grande (lit. 'Great River') is a municipality (município) and one of the oldest cities in the Brazilian state of Rio Grande do Sul. It was the state capital from 1835 to 1845. It is the most important port city in the state and has one of the most important maritime ports in Brazil.\nThe city is named after a nearby channel which indirectly connects the Lagoa dos Patos, to the northeast, and Lagoa Mirim, to the west, with the Atlantic Ocean. The municipality is bordered by Santa Vitória do Palmar on the south and Pelotas on the north, which lies across the São Gonçalo Channel.\nThe city built up its wealth over the course of its long history of strong industrial movements. Today it is still one of the richest cities in Rio Grande do Sul, mainly because of its port, the second busiest in Brazil, and its refinery, which processes Ipiranga petroleum.\nThe city is served by Rio Grande Airport."
+        },
+        {
+          "article": "Rio Grande, Rio Grande do Sul (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Rio_Grande,_Rio_Grande_do_Sul#Climate",
+          "text": "The climate of Rio Grande is humid subtropical and mild, with a strong oceanic influence and relatively cool winters, warm summers and regular precipitation all year. The average temperature in the city is and the average annual precipitation is . The hottest month is January, with an average temperature of . The coldest month is July, with an average temperature of , but due to intense winds in the city, the wind chill temperature frequently drops to ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 78,
+      "leadWords": 162,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a southern Brazilian port, a channel linking two lagoons to the Atlantic, state-capital years 1835 to 1845, and refinery wealth, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rio grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 297,
+    "place_id": "gn-3663517",
+    "input": {
+      "place": {
+        "place_id": "gn-3663517",
+        "name": "Manaus",
+        "country": "Brazil",
+        "subdivision": "Amazonas",
+        "lat": -3.10194,
+        "lon": -60.025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manaus",
+          "url": "https://en.wikipedia.org/wiki/Manaus",
+          "text": "Manaus (Portuguese: [maˈnaws, mɐ-] ) is the capital and largest city of the Brazilian state of Amazonas. It is the seventh-largest city in Brazil, with an estimated 2024 population of 2,279,686 distributed over a land area of about 11,401 km2 (4,402 sq mi). Located at the east centre of the state, the city is the centre of the Manaus metropolitan area and the largest metropolitan area in the North Region of Brazil by urban landmass. It is situated near the confluence of the Negro and Amazon rivers. It is one of the two cities in the Amazon rainforest with a population of over 1 million people, alongside Belém.\nThe city was founded in 1669 as the Fort of São José do Rio Negro. It was elevated to a town in 1832 with the name of \"Manaus\", an altered spelling of the indigenous Manaós peoples, and legally transformed into a city on October 24, 1848, with the name of Cidade da Barra do Rio Negro, Portuguese for \"The City of the Margins of the Black River\". On September 4, 1856, it returned to the name \"Manaus\".\nManaus is located in the center of the Amazon rainforest, and home to the National Institute of Amazonian Research, being the most important center for scientific studies in the Amazon region and for international sustainability issues. It was known at the beginning of the century as Heart of the Amazon and City of the Forest. Its main economic engine is the Industrial Park of Manaus, a Free Economic Zone. The city has a free port and an international airport. Its manufactures include electronics, chemical products, and soap; there are distilling and ship construction industries. Manaus exports Brazil nuts, rubber, jute, and rosewood oil. It has a cathedral, the Amazon Theatre opera house, zoological and botanical gardens, an eco-park, and regional and native peoples museums.\nThe Solimões and Negro rivers meet just east of Manaus and join to form the Amazon River (using the Brazilian definition of the river; elsewhere, Solimões is considered the upper part of the Amazon). Rubber made it the richest city in South America during the late 1800s. Rubber helped Manaus earn its nickname, the Paris of the Tropics. Many wealthy European families settled in Manaus and brought their love for sophisticated European art, architecture, and culture with them. Manaus was one of the twelve Brazilian host cities of the 2014 World Cup, as well as one of the six hosts of football matches at the 2016 Summer Olympics."
+        },
+        {
+          "article": "Manaus (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Manaus#Climate",
+          "text": "Manaus has a tropical monsoon climate (Am) according to the Köppen climate classification system, just dry enough in its driest month to not be a tropical rainforest climate, with the average annual compensated temperature of and high air humidity, with a rainfall index around annually. The seasons are relatively well-defined concerning rain: July to September is relatively dry, and December to May (summer and autumn) is very rainy. Summer and autumn are colder than winter and spring (June to November). Thunderstorms are frequent every day in the summer (December to February), but they can occur at any time of the year. There have been occasional occurrences of hail in the city.\nDue to the city's proximity to the equator, the heat is constant in the local climate. There are no cold days in winter (June to August); instead, winter is hotter than summer. Periodically, very intense polar air masses occur in the South-Central part of Brazil and in the southwest of the Amazon, and have some effect on the city, as occurred in August 1955. But although they are rare, they influence the climate, causing the temperature to drop to or below. The proximity to the forest usually avoids extremes of heat and makes the city wet.\nAccording to the National Institute of Meteorology (INMET), the highest temperature registered in the city was in 2015, and the lowest was in 1989.\nOn November 26, 2009, a case of acid rain was recorded in Manaus. Air pollution, caused in large part by the accumulation of smoke from burning, associated with the sulfur dioxide emitted by cars, was the cause of this phenomenon. Although the incidence of acid rain is common in some Brazilian capitals where there is a great concentration of cars, in Manaus (and other cities of the Amazonas) the situation is aggravated by the prolonged period of drought with the smoke from forest fires."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 315,
+      "leadWords": 417,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract locates the city in the rainforest near where two rivers meet and gives rubber-era history, but states no rainfall, heat, or other weather mechanism, extreme, seasonal rhythm, record, or paradox; rainforest location alone is only an implied classification",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "manaus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 298,
+    "place_id": "gn-379003",
+    "input": {
+      "place": {
+        "place_id": "gn-379003",
+        "name": "El Obeid",
+        "country": "Sudan",
+        "subdivision": "North Kordofan",
+        "lat": 13.18421,
+        "lon": 30.21669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Obeid",
+          "url": "https://en.wikipedia.org/wiki/El_Obeid",
+          "text": "El Obeid (Arabic: الأُبَيِّض, romanized: al-ʔubayyiḍ, lit. 'the white' ), also romanized as Al-Ubayyid, is the capital of the state of North Kordofan, in Sudan. It is located within the Sheikan locality and under the former administrative structure within Sheikan District. El Obeid is an important commercial and transport centre linking western Sudan with the eastern parts of the country. The city is known for its trade in gum arabic, millet, oilseeds and livestock, and has a railway terminus, major roads and El Obeid Airport.\nEl Obeid prospered as a caravan stop under the Musaba’at Kingdom before the Egyptians founded the modern city in 1821. It was destroyed and abandoned during the  Mahdist period, then rebuilt after Anglo-Egyptian forces took control in 1899. Its growth accelerated following the construction of a railway to Khartoum and Port Sudan between 1909 and 1912.\nSince the outbreak of the Sudanese civil war in April 2023, El Obeid has been repeatedly besieged and attacked by the Rapid Support Forces. The conflict has caused shortages of essential goods, civilian casualties and large-scale displacement. As of July 2026, an estimated 563,000 residents and 105,000 internally displaced persons were living in the city."
+        },
+        {
+          "article": "El Obeid (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/El_Obeid#Climate",
+          "text": "El Obeid has a hot semi-desert climate (Köppen: BSh), bordering upon a hot desert climate (BWh), despite receiving over of rain, owing to the extremely high potential evapotranspiration. Temperatures are coolest in December and January and are hottest from April to June. A wet season lasts from June to September with moderate rainfall and relatively high humidity. The period from November to April is almost completely dry, with very low humidity."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 71,
+      "leadWords": 196,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a North Kordofan capital, gum arabic and livestock trade, a modern founding by Egyptians in 1821, rebuilding in 1899, and a railway, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "el obeid",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "obeid",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 299,
+    "place_id": "gn-5505411",
+    "input": {
+      "place": {
+        "place_id": "gn-5505411",
+        "name": "Henderson",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 36.0397,
+        "lon": -114.98194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henderson, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Henderson,_Nevada",
+          "text": "Henderson is a city in Clark County, Nevada, United States, about 16 miles (26 km) southeast of  Las Vegas. It is the 2nd most populous city in Nevada, after Las Vegas, with 317,610 residents as of the 2020 census. The city is part of the Las Vegas Valley metropolitan area.\nHenderson has an extensive system of outdoor recreation facilities, including over 220 miles (350 km) of trails and 72 parks.\nIncorporated in 1953, Henderson was originally known for its role in magnesium production during World War II. Since then, it has grown rapidly through the development of master planned communities starting with the large Green Valley neighborhood, redevelopment and reinvestment after the PEPCON disaster, and the city government's historically proactive planning and management."
+        },
+        {
+          "article": "Henderson, Nevada (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Henderson,_Nevada#Climate",
+          "text": "Henderson is classified as having a hot desert climate (BWh) in the Köppen climate classification. It has mild winters and hot summers. Snow can occasionally fall in the winter. The monsoon can bring storms in the summer, which can cause flash flooding and thunderstorms. The hottest month is July and the coldest month is December. On average there are 292 clear days per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 64,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a location southeast of Las Vegas, trails and parks, incorporation in 1953, and wartime magnesium production, but contains no climate information at all",
+      "priorMissing": "A verbatim-traceable place-specific climate mechanism, extreme, seasonal rhythm, record, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "henderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

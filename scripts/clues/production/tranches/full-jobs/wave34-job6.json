@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 6749,
+    "attempt": 6701,
+    "place_id": "gn-1272629",
+    "input": {
+      "place": {
+        "place_id": "gn-1272629",
+        "name": "Digboi",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.39321,
+        "lon": 95.61839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Digboi",
+          "url": "https://en.wikipedia.org/wiki/Digboi",
+          "text": "Digboi (IPA: ˈdɪgˌbɔɪ) is a city and a Digboi Municipal Corporation in Tinsukia district in the north-eastern part of the state of Assam, India.\nCrude oil was discovered here in late 19th century and first oil well was dug in 1866. Digboi is known as the Oil City of Assam where the first oil well in Asia was drilled. The first refinery was started here as early as 1901. Digboi has the oldest oil well in operation in India. With a significant number of British professionals working for Assam Oil Company until the decade following independence of India, Digboi had a well-developed infrastructure and a number of bungalows unique to the town. It has an eighteen holes golf course as part of the Digboi Club. It has guest houses and tourist residential apartments laid to promote tourism in upper Assam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "digboi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6750,
+    "attempt": 6702,
+    "place_id": "gn-13118448",
+    "input": {
+      "place": {
+        "place_id": "gn-13118448",
+        "name": "Masdar City",
+        "country": "United Arab Emirates",
+        "subdivision": "Abu Dhabi",
+        "lat": 24.43208,
+        "lon": 54.61582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Masdar City",
+          "url": "https://en.wikipedia.org/wiki/Masdar_City",
+          "text": "Masdar City (Arabic: مدينة مصدر, romanized: Madīnat Maṣdar, lit. 'source city') is an urban community in Abu Dhabi, the capital of the United Arab Emirates. It was built by Masdar, a subsidiary of the state-owned Mubadala Investment Company, with the majority of seed capital provided by the government of Abu Dhabi.\nLaunched in 2006 as a $22 billion state-funded project to construct \"the world's most sustainable eco-city\" by 2016, the start date for the project has since been delayed indefinitely. By 2023, only 15,000 people lived and worked in Masdar City (of whom 5,000 were residents), and the community covered less than a sixth of the area it was intended to cover."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "masdar city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "masdar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6751,
+    "attempt": 6703,
+    "place_id": "gn-1860653",
+    "input": {
+      "place": {
+        "place_id": "gn-1860653",
+        "name": "Kanbara",
+        "country": "Japan",
+        "subdivision": "Shizuoka",
+        "lat": 35.11738,
+        "lon": 138.60687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanbara, Shizuoka",
+          "url": "https://en.wikipedia.org/wiki/Kanbara,_Shizuoka",
+          "text": "Kanbara (蒲原町, Kanbara-chō) was a town located in Ihara District, Shizuoka Prefecture, Japan.\nAs of March 1, 2006, the town had an estimated population of 12,777 and a density of 870 persons per km2. The total area was 14.69 km2.\nOn March 31, 2006, Kanbara was merged into the Shimizu-ku Ward of the expanded city of Shizuoka and thus no longer exists as an independent municipality.\nDuring the Edo period, Kanbara developed as Kanbara-juku, a post station on the Tōkaidō highway connecting Edo with Kyoto. From the Meiji period onward, Kanbara became an industrial town in Shizuoka Prefecture, with aluminum smelters from Nippon Light Metals Company predominating until been closed in 2014. It was the last remaining aluminum smelter in Japan, having survived on cheap hydro-electric power after all other smelters in Japan were closed in 1975-1987 period.\nThe town was served by Kambara Station on the Tōkaidō Main Line railway and by an interchange on the Tōmei Expressway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kanbara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6752,
+    "attempt": 6704,
+    "place_id": "gn-2111704",
+    "input": {
+      "place": {
+        "place_id": "gn-2111704",
+        "name": "Namie",
+        "country": "Japan",
+        "subdivision": "Fukushima",
+        "lat": 37.48333,
+        "lon": 141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Namie, Fukushima",
+          "url": "https://en.wikipedia.org/wiki/Namie,_Fukushima",
+          "text": "Namie (浪江町, Namie-machi) is a town located in Fukushima Prefecture, Japan. As of 29 February 2020 the town has a population of 1,238 in 794 households, although the official registered population was 17,114 in 6853 households. The total area of the town is 223.14 square kilometres (86.15 sq mi).\nThe town was evacuated as a result of the Fukushima Daiichi nuclear disaster—being directly downwind from the power plant—and was within the exclusion zone set up in response to the disaster. Following ongoing clean-up efforts, Namie's business district and town hall have reopened, but access to more heavily contaminated western parts of the town remains restricted as decontamination continues to be carried out."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "namie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6753,
+    "attempt": 6705,
+    "place_id": "gn-2151682",
+    "input": {
+      "place": {
+        "place_id": "gn-2151682",
+        "name": "Rhodes",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.82663,
+        "lon": 151.0881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rhodes, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Rhodes,_New_South_Wales",
+          "text": "Rhodes is an Inner West suburb of Sydney, in the state of New South Wales, Australia. Rhodes is located 12 kilometres west of the Sydney central business district, in the local government area of the City of Canada Bay. It was formerly part of Concord Municipality until a merger with Drummoyne Council to form Canada Bay in December 2000. \nRhodes sits on a peninsula between Bray Bay and Homebush Bay, on the southern bank of the Parramatta River and is located about 3 kilometres from Sydney Olympic Park.\nSince 2016, Rhodes has been connected to the residential suburb of Wentworth Point, on the western side of Homebush Bay, by the Bennelong Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "rhodes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6754,
+    "attempt": 6706,
+    "place_id": "gn-2156578",
+    "input": {
+      "place": {
+        "place_id": "gn-2156578",
+        "name": "Mount Martha",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.26667,
+        "lon": 145.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Martha, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Mount_Martha,_Victoria",
+          "text": "Mount Martha is a suburb on the Mornington Peninsula in Melbourne, Victoria, Australia, 50 kilometres (31 mi) south-east of Melbourne's Central Business District, located within the Shire of Mornington Peninsula local government area. Mount Martha recorded a population of 19,846 at the 2021 census.\nMount Martha is located on the southeastern shores of Port Phillip and offers a bathing beach. A boardwalk winds its way for more than 5 kilometres (3 mi) along the Balcombe Creek, its North beach mouth to the Briars Historic Park. The suburb's highest point bears the area's name and reaches 160 metres (520 ft). The peak was named in 1836 after Captain William Hobson's mother, Martha Jones.\nIt marks the start of the Selwyn fault, a geological formation that runs to the eastern Dandenong Ranges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "mount martha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6755,
+    "attempt": 6707,
+    "place_id": "gn-2167426",
+    "input": {
+      "place": {
+        "place_id": "gn-2167426",
+        "name": "Emerald",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -23.52296,
+        "lon": 148.15784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emerald, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Emerald,_Queensland",
+          "text": "Emerald is a town and locality in the Central Highlands Region, Queensland, Australia. Situated on the Nogoa River, Emerald lies approximately 270 kilometres west of Rockhampton and serves as major service centre for the region's extensive agricultural and mining industries. Emerald's climate is classified as subtropical, with hot summers and mild winters. The town is the headquarters for the Central Highlands Regional Council. In the 2021 census, the locality of Emerald had a population of 14,904.\nEmerald was founded as the terminus of the Central Western railway line in 1879, however this lasted only a year before subsequent lines were built to Springsure and Clermont leading to Emerald becoming a transport hub. The town's development accelerated in the 1980s onwards, primarily due to its proximity to the Bowen Basin coalfields, leading to rapid population growth and urban expansion. \nEmerald's economy is diverse, encompassing agriculture, mining, and renewable energy. The Central Highlands is known for its fertile soils; its agricultural products include cotton, grain, citrus, grape, and sunflower cultivation. Emerald is also an important freight and logistics hub for Central Queensland, being the site of north Australia's first inland port. The town is served by the Emerald Airport.\nLocated just south of Emerald, the Fairbairn Dam, creates Lake Maraboon, one of Australia's largest artificial lakes its capacity is approximately three times larger than Sydney Harbour. Spanning up to 150 square kilometres when full, the lake is a popular destination for water sports, fishing, and camping. Emerald is also a tourist destination to access the Carnarvon National Park and Carnarvon Gorge, one of Australia's most iconic wilderness landscapes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "emerald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6756,
+    "attempt": 6708,
+    "place_id": "gn-2174400",
+    "input": {
+      "place": {
+        "place_id": "gn-2174400",
+        "name": "Bowral",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.4775,
+        "lon": 150.4204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowral",
+          "url": "https://en.wikipedia.org/wiki/Bowral",
+          "text": "Bowral ( BOW-rəl) is the largest town in the Southern Highlands of New South Wales, Australia. It is 132 kilometres (82 mi) south-west of Sydney and 169 kilometres (105 mi) north-east of Canberra. It is the main business and entertainment precinct of the Wingecarribee Shire and the Southern Highlands. \nBowral once served as a rural summer retreat for the gentry of Sydney, resulting in the establishment of a number of estates and manor houses in the district. Bowral is often associated with the cricketer Sir Donald Bradman.\nBowral is close to several other historic towns, being 5 kilometres (3 mi) from Mittagong, 9 kilometres (6 mi) from both Moss Vale and Berrima. The suburb of East Bowral and the village of Burradoo are nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "bowral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6757,
+    "attempt": 6709,
+    "place_id": "gn-2268358",
+    "input": {
+      "place": {
+        "place_id": "gn-2268358",
+        "name": "Famões",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.78804,
+        "lon": -9.21033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Famões",
+          "url": "https://en.wikipedia.org/wiki/Famões",
+          "text": "Famões is a former civil parish in the municipality of Odivelas, Portugal. In 2013, the parish merged into the new parish Pontinha e Famões. Administratively, the parish of Famões was de-annexed from the neighboring parish of Odivelas on 25 August 1989, and later elevated to the status of town, on 19 April 2001.\nToday, it continues to be part of the municipality of Odivelas, after existing as a parish in the municipality of Loures (it was annexed to Odivelas on 19 November 1998). Ecclesiastically, the religious parish of Famões belongs to the vicarage of Loures-Odivelas, in the Diocese of Lisbon, its organ is Nossa Senhora do Rosário (Our Lady of the Rosary)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "famoes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6758,
+    "attempt": 6710,
+    "place_id": "gn-2393947",
+    "input": {
+      "place": {
+        "place_id": "gn-2393947",
+        "name": "Grand-Popo",
+        "country": "Benin",
+        "subdivision": "Mono",
+        "lat": 6.28036,
+        "lon": 1.82251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand-Popo",
+          "url": "https://en.wikipedia.org/wiki/Grand-Popo",
+          "text": "Grand-Popo [gʁɑ̃.pɔ.po] is a town, arrondissement, and commune in the Mono Department of south-western Benin. The commune covers an area of 289 square kilometres and as at the 2013 Census had a population of 57,636 people.\n\nThe term \"Grand-Popo\" is a European exonym for the ancient town and kingdom of \"Hulagan\" (Great Hula).  The  Hula/Xwla/Phla people that once dominated the Togo-Benin coast traditionally regarded Great Hula as their ancestral town of common origin.   It is unclear why Europeans began calling it Popo rather than Hula. It may come from a generic Yoruba term \"popo\" for peoples to their \"west\", which was subsequently borrowed by the Portuguese to refer to the Hula/Phla specifically.  An alternative theory connects the \"Popo\" term to an ancient ruler called Kpokpo of Tado (an Aja town in the interior), which the Europeans may have confused with Hulagan. \nThe town grew around the slave trade, but coastal erosion has now destroyed most of the old town. The town is now a centre for voodoo and home to a Finnish-African cultural centre, Villa Karo. The town's main industry is fishing.\nThe town inspired the name of the French electronic music duo Grand Popo Football Club, as well as the name of the iPad application creator Grand Popo LLC."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "grand popo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "popo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6759,
+    "attempt": 6711,
+    "place_id": "gn-2636670",
+    "input": {
+      "place": {
+        "place_id": "gn-2636670",
+        "name": "Streetly",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.58333,
+        "lon": -1.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Streetly",
+          "url": "https://en.wikipedia.org/wiki/Streetly",
+          "text": "Streetly is an area in the county of West Midlands, England which lies around 7 miles (11 km) to the north of Birmingham City Centre. It is uniquely located within the borders of Birmingham, Lichfield and Walsall district authorities, and is part of the West Midlands conurbation. It is adjacent to, New Oscott, Great Barr, Four Oaks, Little Aston and Aldridge.\nStreetly is a semi-rural district, lying close to many farms and is separated from Walsall by open fields and the North Birmingham green belt. The local area includes Sutton Park of which Streetly has its own dedicated gate. Streetly is part of the Birmingham metropolitan area and the Birmingham Urban Area.\nBus services provide links to Birmingham, Walsall and Sutton Coldfield. Most are operated by National Express West Midlands.\nThe area was served by trains on the Sutton Park Line. However while the line remains open for freight,  Streetly railway station closed in 1965 and the nearest station now is in Four Oaks railway station on the opposite side of Sutton Park. There are plans to open a new station on the Sutton Park Line in 2027 adjacent to the old Aldridge railway station which will be slightly closer than the Four Oaks railway station. Initially trains will run to Walsall but there are also tentative plans for the Wrexham, Shropshire & Midlands Railway to operate services to London along the Sutton Park Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "streetly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6760,
+    "attempt": 6712,
+    "place_id": "gn-2637310",
+    "input": {
+      "place": {
+        "place_id": "gn-2637310",
+        "name": "Tidworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23142,
+        "lon": -1.66324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tidworth",
+          "url": "https://en.wikipedia.org/wiki/Tidworth",
+          "text": "Tidworth is a garrison town and civil parish in south-east Wiltshire, England, on the eastern edge of Salisbury Plain. Lying on both sides of the A338 about 3+1⁄2 miles (5.6 km) north of the A303 primary route, the town is approximately 8 miles (13 km) west of Andover, 12 miles (19 km) south of Marlborough, and 13 miles (21 km) north by north-east of Salisbury. The population of the parish at the 2011 census was approximately 10,600.\nOriginally two villages – North Tidworth and South Tidworth – the modern town is dominated by Tidworth Camp, a large British Army site. Swinton Barracks, another Army site, is in the west of the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tidworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6761,
+    "attempt": 6713,
+    "place_id": "gn-2637330",
+    "input": {
+      "place": {
+        "place_id": "gn-2637330",
+        "name": "Southsea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.78351,
+        "lon": -1.09071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southsea",
+          "url": "https://en.wikipedia.org/wiki/Southsea",
+          "text": "Southsea is a seaside resort and a geographic area of Portsmouth, Portsea Island in the ceremonial county of Hampshire, England. Southsea is located 1.8 miles (2.8 km) to the south of Portsmouth's inner city-centre. \nSouthsea began as a fashionable 19th-century Victorian seaside resort named Croxton Town, after a Mr Croxton who owned the land. As the resort grew, it adopted the name of nearby Southsea Castle, a seafront fort constructed in 1544 to help defend the Solent and approaches to Portsmouth Harbour.\nIn 1879, South Parade Pier was opened by Princess Edward of Saxe-Weimar in Southsea. The pier began operating a passenger steamer service across the Solent to the Isle of Wight. This service gave rise to the idea of linking Southsea and its pier to Portsmouth's railway line, and for tourists to bypass the busy town of Portsmouth and its crowded harbour. East Southsea railway station, along with the Southsea Railway and Fratton railway station were jointly opened on 1 July 1885 by Lady Ada Mary Willis (née Neeld), wife of General Sir George Willis, the Lieutenant Governor of Portsmouth.\nSouthsea subsequently grew into a dense residential suburb and large, distinct commercial and entertainment area, separate from the town of Portsmouth up until Southsea and the whole of Portsea Island were incorporated into the town borough of Portsmouth in 1904.\nDue to declining use and World War I, the Southsea Railway line and its East Southsea station were closed on 6 August 1914. To maintain Southsea's tourism, the Southsea station name was moved and merged with Portsmouth's main town centre railway station in 1925, officially becoming known as Portsmouth & Southsea railway station. A year later in 1926, Portsmouth was granted official city status, while its main railway station retained its \"Portsmouth & Southsea\" name, which has led many non-locals and visitors to wrongly assume that Southsea is still a separate town near to Portsmouth.\nThe areas of Southsea surrounding Albert Road, Palmerston Road, and Osborne Road contain many bars, restaurants and independent shops. Palmerston Road is the main High Street of Southsea and contains various shops and restaurants, as well as the local library, and Southsea Community Cinema and Arts Centre. Albert Road is a distinct street containing shopping and cultural venues, which include The Wedgewood Rooms, and the Kings Theatre, a regional theatre built in 1907.\nSouthsea retains its own post town status (PO4 and PO5), even though the actual town of Southsea was merged into Portsmouth in 1904."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 412
+    },
+    "banned_terms": [
+      {
+        "term": "southsea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6762,
+    "attempt": 6714,
+    "place_id": "gn-2638219",
+    "input": {
+      "place": {
+        "place_id": "gn-2638219",
+        "name": "Selsey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.73501,
+        "lon": -0.78979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selsey",
+          "url": "https://en.wikipedia.org/wiki/Selsey",
+          "text": "Selsey () is a seaside town and civil parish, about eight miles (13 km) south of Chichester, West Sussex, England.\nSelsey lies at the southernmost point of the Manhood Peninsula, almost cut off from mainland Sussex by the sea. It is in the Chichester district and is bounded to the west by Bracklesham Bay, to the north by Broad Rife,  to the east by Pagham Harbour and terminates in the south at Selsey Bill. There are significant rock formations beneath the sea off both of its coasts, named the Owers rocks and Mixon rocks. Coastal erosion has been an ever-present problem for Selsey. In 2011 the parish had a population of 10,737.\nThe B2145 is the only road in and out of the town crossing a bridge over the water inlet at Pagham Harbour at a point known as \"the ferry\". At one time Selsey was inaccessible at flood tide, and a boat was stationed at the ferry to take horses and passengers to and from Sidlesham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "selsey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6763,
+    "attempt": 6715,
+    "place_id": "gn-2642116",
+    "input": {
+      "place": {
+        "place_id": "gn-2642116",
+        "name": "Mountain Ash",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.68361,
+        "lon": -3.38008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain Ash, Rhondda Cynon Taf",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Ash,_Rhondda_Cynon_Taf",
+          "text": "Mountain Ash (Welsh: Aberpennar) is a town and former community in the Cynon Valley, within the County Borough of Rhondda Cynon Taf, Wales, with a population of 11,230 at the 2011 Census, estimated in 2019 at 11,339. It includes the districts and villages of Cefnpennar, Cwmpennar, Caegarw, Darranlas, Fernhill, Glenboi and Newtown, all within the historic county boundaries of Glamorgan. Aberdare lies about 4.5 miles (7.2 km) north-west, Cardiff 19 miles (31 km) south-east, and Penrhiwceiber a mile to the south-east. It divides into two communities (civil parishes): West covers the town centre and the districts of Miskin, Darranlas, Fernhill and Glenboi, and East the districts of Cefnpennar, Cwmpennar, Caegarw and Newtown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mountain ash",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ash",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6764,
+    "attempt": 6716,
+    "place_id": "gn-2642999",
+    "input": {
+      "place": {
+        "place_id": "gn-2642999",
+        "name": "Marple",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.39452,
+        "lon": -2.06292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marple, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Marple,_Greater_Manchester",
+          "text": "Marple is a town in the Metropolitan Borough of Stockport, Greater Manchester, England. It is on the River Goyt, 9 miles (14 km) south-east of Manchester, 9 miles (14 km) north of Macclesfield and 4 miles (6 km) south-east of Stockport. At the 2021 census, the built up area had a population of 12,970.\nIt lies within the historic county boundaries of Cheshire (although its district Marple Bridge was historically partially in Derbyshire), and became part of Greater Manchester in 1974. The town lies along the Peak Forest Canal, which contains the Marple Lock Flight and Marple Aqueduct. The Roman Lakes, to the south-east of the town centre, attracts anglers and walkers. The town is served by two railway stations: Marple and Rose Hill Marple, providing access to the rail network in Greater Manchester, a direct line to Sheffield and beyond. It is also close to the Middlewood Way, a shared use path following the former Macclesfield, Bollington and Marple Railway line south from Rose Hill to Macclesfield."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "marple",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6765,
+    "attempt": 6717,
+    "place_id": "gn-2645821",
+    "input": {
+      "place": {
+        "place_id": "gn-2645821",
+        "name": "Kenley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.32643,
+        "lon": -0.10111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenley",
+          "url": "https://en.wikipedia.org/wiki/Kenley",
+          "text": "Kenley is a suburb within the London Borough of Croydon. It is located 13 miles (21 km) south of Charing Cross and within the southern boundary of London, England. Surrounded by the Metropolitan Green Belt on three sides, it includes the large open spaces of Kenley Common and Kenley Aerodrome. Kenley was part of the ancient parish of Coulsdon in the county of Surrey and was connected to central London by rail in 1856. As the population of the area was growing, it became part of Coulsdon and Purley Urban District in 1915 and has formed part of Greater London since 1965. At the 2011 Census, Kenley had a population of 14,966."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "kenley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6766,
+    "attempt": 6718,
+    "place_id": "gn-2648356",
+    "input": {
+      "place": {
+        "place_id": "gn-2648356",
+        "name": "Golborne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.47693,
+        "lon": -2.59651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Golborne",
+          "url": "https://en.wikipedia.org/wiki/Golborne",
+          "text": "Golborne (pronounced  GOHL-born) is a town in the Metropolitan Borough of Wigan, in Greater Manchester, England. It lies 5 miles (8.0 km) south-south-east of Wigan, 6 miles (9.7 km) north-east of Warrington and 14 miles (22.5 km) to the west of the city of Manchester. Along with the neighbouring village of Lowton, it recorded a population of 24,041.\nWithin the boundaries of the historic county of Lancashire and being situated across the A580 East Lancashire Road, Golborne owed most of its historic growth to mining and textile manufacturing; however, these industries have since declined. There was also significant agricultural activity, with many farms still belonging to the families who originally owned them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "golborne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6767,
+    "attempt": 6719,
+    "place_id": "gn-2649609",
+    "input": {
+      "place": {
+        "place_id": "gn-2649609",
+        "name": "Fazeley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.61443,
+        "lon": -1.6985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fazeley",
+          "url": "https://en.wikipedia.org/wiki/Fazeley",
+          "text": "Fazeley is a small industrial town and civil parish in the Lichfield District of Staffordshire, England, slightly southwest of Tamworth. The civil parish includes Mile Oak and the hamlet of Bonehill, and at the 2021 census had a population of 4,616. Fazeley forms part of the Tamworth built-up area.\nIt sits astride the junction of the Birmingham and Fazeley Canal and Coventry Canal; at Fazeley Junction are a couple of multi storey mills. Fazeley is also adjacent to Drayton Manor, formerly the home of Robert Peel and now a theme park and zoo.\nFazeley is also the home of Coton Green Football Club, located on the border of the Drayton Bassett parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "fazeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6768,
+    "attempt": 6720,
+    "place_id": "gn-2650646",
+    "input": {
+      "place": {
+        "place_id": "gn-2650646",
+        "name": "Duntocher",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.92437,
+        "lon": -4.41545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duntocher",
+          "url": "https://en.wikipedia.org/wiki/Duntocher",
+          "text": "Duntocher (Scottish Gaelic: Dùn Tòchair or Druim Tòchair) is a village in West Dunbartonshire, Scotland. It has an estimated population of 6,850. The etymology of the name of the village indicates that its name means \"the fort on the causeway\".\nDuntocher has effectively become a northern suburb of the nearby town of Clydebank, as have neighbouring Hardgate and Faifley. Duntocher expanded due to housebuilding by Clydebank Burgh Council after the Second World War, although the area was never formally absorbed into the burgh. When burghs were abolished by local government reorganisation in 1975, however, Duntocher was included in the larger Clydebank District, which existed until the creation of West Dunbartonshire in 1997. Further housing was built by the Wimpey firm in the late 1960s and early 1970s, on what had been green belt land. Along with Faifley and Hardgate, Duntocher falls within West Dunbartonshire's Kilpatrick ward with a combined population of 12,719 in 2011.\nAt one time this was the most north westerly point on the Glasgow Corporation Transport tram system, trams operating from here via Hardgate to Clydebank, and at times, on to Partick depot.\nDuntocher historically had several cotton and corn mills, driven by the Duntocher Burn which is the traditional boundary between Duntocher and neighbouring village Hardgate.\nThe Antonine Wall also runs through the village, and ancient Roman fortifications are still visible in the local Goldenhill Park. Lottery funding is to provide funds for a children's playpark at Goldenhill. Sir George Macdonald wrote about the findings at Duntocher.\nDuntocher has a Roman Catholic church – St. Mary's, a United Free Church of Scotland – Duntocher West, and a Church of Scotland – Duntocher Trinity. The village also has one Roman Catholic primary school – St Mary's and one non-denominational, Carleith Primary School.\nThe village has a main street (Dumbarton Road) which acts as the main focal point for village activity. The majority of the villages shops and pubs, the cafe and the local churches and village halls are located along or very close to a small stretch of this road\nThe village is at the southern edge of the Kilpatrick Hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "duntocher",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

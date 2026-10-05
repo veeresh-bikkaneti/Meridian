@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 3717,
+    "place_id": "gn-1626183",
+    "input": {
+      "place": {
+        "place_id": "gn-1626183",
+        "name": "Sumber",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.76028,
+        "lon": 108.48306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumber, Cirebon",
+          "url": "https://en.wikipedia.org/wiki/Sumber,_Cirebon",
+          "text": "Sumber (Sundanese: ᮞᮥᮙ᮪ᮘᮨᮁ; Javanese: ꦯꦸꦩ꧀ꦧꦺꦂ) is a district which serves as the regency seat of the Cirebon Regency of West Java, Indonesia. It is divided into 14 villages which are listed as follows:\n\nThe first 12 of these 14 are classed as urban kelurahan (Babakan occupying 1.38 km2, Sumber 2.50 km2, Perbutulan 0.53 km2, Kaliwadas 1.76 km2, Pasalakan 1.62 km2, Watubelah 1.93 km2, Pejambon 1.44 km2, Gegunung 1.72 km2, Kemantren 0.75 km2, Sendang 0.74 km2, Tukmudal 2.30 km2 and Kenanga 1.86 km2), while the remaining 2 are classed as rural desa and are situated in the south of the district (Matangaji with an area of 2.48 km2 and Sidawangi 4.64 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "sumber",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3736,
+    "place_id": "gn-4566103",
+    "input": {
+      "place": {
+        "place_id": "gn-4566103",
+        "name": "Luquillo",
+        "country": "Puerto Rico",
+        "subdivision": "Luquillo",
+        "lat": 18.37245,
+        "lon": -65.71655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luquillo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Luquillo,_Puerto_Rico",
+          "text": "Luquillo (Spanish pronunciation: [luˈkiʎo]) is a town and municipality of Puerto Rico located in the northeast coast, northwest of Fajardo; and east of Rio Grande. Luquillo is spread over 5 barrios and Luquillo Pueblo (the downtown area and the administrative center of the city). It lends its name to the Sierra de Luquillo, where El Yunque National Forest is located. It is part of the Fajardo Metropolitan Statistical Area.\nThe city of Luquillo is 26 square miles and it sits on 12 miles of Atlantic coastline. It is nestled between the blue waters of the Atlantic and the El Yunque National Forest, a rainforest, giving it a diverse and unique ecology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "luquillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3741,
+    "place_id": "gn-5398277",
+    "input": {
+      "place": {
+        "place_id": "gn-5398277",
+        "name": "Spring Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.74477,
+        "lon": -116.99892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Valley, San Diego County, California",
+          "url": "https://en.wikipedia.org/wiki/Spring_Valley,_San_Diego_County,_California",
+          "text": "Spring Valley is a census-designated place (CDP) in the East County region of San Diego County, California. The population was 30,998 at the 2020 census, up from 28,205 at the 2010 census.\nFrom 1970 through 1990, Spring Valley included what is now the La Presa CDP to the south; La Presa is still popularly considered to be a part of Spring Valley. Extended definitions of Spring Valley may also include the Casa de Oro neighborhood to the north, which belongs to the Casa de Oro-Mount Helix CDP. Locations in both La Presa and Casa de Oro use Spring Valley addresses.\nSpring Valley is served by the 91977 and 91978 ZIP Codes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "spring valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3745,
+    "place_id": "gn-8740373",
+    "input": {
+      "place": {
+        "place_id": "gn-8740373",
+        "name": "Laitumkhrah",
+        "country": "India",
+        "subdivision": "Meghalaya",
+        "lat": 25.57067,
+        "lon": 91.89771
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laitumkhrah",
+          "url": "https://en.wikipedia.org/wiki/Laitumkhrah",
+          "text": "Laitumkhrah (Khasi: lait meaning \"free\" and umkhrah which is the name of a river Umkhrah) is a census town in Shillong, Meghalaya, India. The name of the place basically means a place where the river \"Umkhrah\" originates from making its name aptly suited.\nFrom Laitumkhrah there are three roads connecting Happy Valley (Them Basuk), Umpling & New Colony. The area is one of the costlier areas in Shillong but staying here itself is an experience. Laitumkhrah is filled with old historical buildings but with constant development in the area, most of the older buildings have been replaced with modern buildings. This place is relatively cold compared to other places of Shillong."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "laitumkhrah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3748,
+    "place_id": "gn-1734418",
+    "input": {
+      "place": {
+        "place_id": "gn-1734418",
+        "name": "Padang Serai",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 5.51307,
+        "lon": 100.55356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padang Serai",
+          "url": "https://en.wikipedia.org/wiki/Padang_Serai",
+          "text": "Padang Serai (literal meaning: lemongrass field) is a little town in Kulim District, Kedah, Malaysia.\nThe sleepy hollow, surrounded by oil palm plantations and the nearby Kulim High-tech Industrial Zone has 56 percent Malay, 23 percent Indians and 12 percent Chinese voters.\nThere are few villages such as Kampong Guar Lobak, Kg Terat Batu, Kg Teluk Binu, Kg\nSidam Kiri, Kg Sidam Kanan, Kg Sentosa, Permatang Durian and some estates like Ladang Bukit Selarong, Ladang Henrietta, Ladang Nagalilit.  Labu Besar is 20km away.\nPadang Serai is famous with its \"Pekan Ahad\" or Sunday's Market. Pasar Pagi Padang Serai Located 3132, Jalan Mahsuri 3J, Taman Mahsuri, 09400 Padang Serai, Kedah, Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "padang serai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "padang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "serai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3752,
+    "place_id": "gn-2204582",
+    "input": {
+      "place": {
+        "place_id": "gn-2204582",
+        "name": "Labasa",
+        "country": "Fiji",
+        "subdivision": "Northern",
+        "lat": -16.4332,
+        "lon": 179.36451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Labasa",
+          "url": "https://en.wikipedia.org/wiki/Labasa",
+          "text": "Labasa (Fijian pronunciation: [lamˈbasa] , Hindi: लम्बासा) is a town in Fiji with a population of 28,500 at the 2010 census.\nLabasa is located in Macuata Province, in the north-eastern part of the island of Vanua Levu, and is the largest town on the island. The town itself is located on a delta formed by three rivers – the Wailevu, the Labasa (after which the town is named), and the Qawa.\nThe township (unlike in the past) is now less dependent on the sugar industry. The farmers' market offers seasonal produce and seafood. The main street is lined with small family-run businesses, supermarkets and restaurants offering a lively pedestrian thoroughfare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "labasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3778,
+    "place_id": "gn-4755280",
+    "input": {
+      "place": {
+        "place_id": "gn-4755280",
+        "name": "Danville",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.58597,
+        "lon": -79.39502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danville, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Danville,_Virginia",
+          "text": "Danville is an independent city in the Commonwealth of Virginia in the United States. The city is located in the Southside Virginia region and on the fall line of the Dan River.\nThe city was a center of tobacco production and was an area of Confederate activity during the American Civil War, due to its strategic location on the Richmond and Danville Railroad. In April 1865, Danville briefly served as the third and final capital of the Confederacy before its surrender later that year.\nDanville has maintained a black majority population since the Reconstruction era. During this time, the city was represented politically by black members of the Readjuster Party."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "danville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3784,
+    "place_id": "gn-6177869",
+    "input": {
+      "place": {
+        "place_id": "gn-6177869",
+        "name": "Welland",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.98342,
+        "lon": -79.24958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welland",
+          "url": "https://en.wikipedia.org/wiki/Welland",
+          "text": "Welland is a city in the Regional Municipality of Niagara in Southern Ontario, Canada. As of 2021, it had a population of 55,750.\nThe city is in the centre of Niagara and located within a half-hour driving distance to Niagara Falls, Niagara-on-the-Lake, St. Catharines, and Port Colborne. It has been traditionally known as the place where rails and water meet, referring to the railways from Buffalo to Toronto and Southwestern Ontario, and the waterways of Welland Canal and Welland River, which played a great role in the city's development. The city has developed on both sides of the Welland River and Welland Canal, which connects Lake Erie and Lake Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "welland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3845,
+    "place_id": "gn-3652584",
+    "input": {
+      "place": {
+        "place_id": "gn-3652584",
+        "name": "Puyo",
+        "country": "Ecuador",
+        "subdivision": "Pastaza Province",
+        "lat": -1.49156,
+        "lon": -78.00337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puyo, Pastaza",
+          "url": "https://en.wikipedia.org/wiki/Puyo,_Pastaza",
+          "text": "Puyo (Spanish pronunciation: [ˈpuʝo]), also known as El Puyo, is the capital of Pastaza, a province in Ecuador. Puyo is located at an altitude of approximately 950 metres above sea level by the Puyo River, a tributary of the Pastaza River, which eventually leads into the Amazon River. True to its name, derived from the Kichwa word for \"cloudy\", the local climate is a wet one and the weather is often overcast.\nPuyo was founded in 1899. Located between Baños, and the Amazonian cities of Tena and Macas, Puyo is the commercial, cultural and political capital of the region. In late 2006, the city had approximately 25,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "puyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3853,
+    "place_id": "gn-5393212",
+    "input": {
+      "place": {
+        "place_id": "gn-5393212",
+        "name": "Santa Monica",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.01949,
+        "lon": -118.49138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Monica, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Monica,_California",
+          "text": "Santa Monica (Spanish: Santa Mónica, lit. 'Saint Monica') is a city in Los Angeles County, California, United States. It is situated along Santa Monica Bay on California's South Coast. As of the 2020 census, Santa Monica had a population of 93,076. Santa Monica is a popular resort town, owing to its climate, beaches, and hospitality industry. It has a diverse economy, hosting headquarters of companies such as Hulu, Activision Blizzard, Universal Music Group, Game Show Network, Starz Entertainment, Lionsgate Studios, Illumination, Snap Inc., and The Recording Academy.\nSanta Monica traces its history to Rancho San Vicente y Santa Mónica, granted in 1839 to the Sepúlveda family of California."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "santa monica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3854,
+    "place_id": "gn-5816605",
+    "input": {
+      "place": {
+        "place_id": "gn-5816605",
+        "name": "Yakima",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.60207,
+        "lon": -120.5059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakima, Washington",
+          "url": "https://en.wikipedia.org/wiki/Yakima,_Washington",
+          "text": "Yakima ( or ) is a city in and the county seat of Yakima County, Washington, United States, and the state's 11th most populous city. As of the 2020 census, the city had a total population of 96,968 and a metropolitan population of 256,728. The unincorporated suburban areas of West Valley and Terrace Heights are considered a part of greater Yakima.\nYakima is about 60 miles (100 kilometers) southeast of Mount Rainier in Washington. It is situated in the Yakima Valley, a productive agricultural region noted for apple, wine, and hop production. As of 2011, the Yakima Valley produces 77% of all hops grown in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "yakima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3855,
+    "place_id": "gn-6317499",
+    "input": {
+      "place": {
+        "place_id": "gn-6317499",
+        "name": "Machadinho d'Oeste",
+        "country": "Brazil",
+        "subdivision": "Rondônia",
+        "lat": -9.44389,
+        "lon": -61.98139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Machadinho d'Oeste",
+          "url": "https://en.wikipedia.org/wiki/Machadinho_d'Oeste",
+          "text": "Machadinho d'Oeste is a municipality located in the Brazilian state of Rondônia. Its population was 40,867 (2020) and its area is 8,509 km2.\nThe municipality contains part of the 346,861-hectare (857,110-acre) Jaru Biological Reserve, a fully protected conservation unit created in 1984.\nIt also contains 13% of the Campos Amazônicos National Park, a 961,318 hectares (2,375,470 acres) protected area created in 2006 that protects an unusual enclave of cerrado vegetation in the Amazon rainforest.\nThe municipality contains 78% of the Angelim Extractive Reserve and 79% of the Ipê Extractive Reserve.\nIt also contains the Castanheira, Freijó, Garrote, Itaúba, Jatobá, Maracatiara, Massaranduba, Mogno, Piquiá, Roxinho and Sucupira extractive reserves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "machadinho d oeste",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "machadinho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oeste",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3857,
+    "place_id": "gn-1062842",
+    "input": {
+      "place": {
+        "place_id": "gn-1062842",
+        "name": "Maevatanana",
+        "country": "Madagascar",
+        "subdivision": "Betsiboka",
+        "lat": -16.95,
+        "lon": 46.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maevatanana",
+          "url": "https://en.wikipedia.org/wiki/Maevatanana",
+          "text": "Maevatanana is an urban municipality in Madagascar. The city is in the central-north part of the island, at the Ikopa River, and is connected by the national road RN 4 to Antananarivo and Mahajanga. The altitude is low and as it is located far from the coast, temperatures tend to be high. The city belongs to the district of Maevatanana, which is a part of Betsiboka Region. Maevatanana is the capital of the Betsiboka region, and the population of the commune was estimated to be approximately 24,000 in 2001 commune census.\nIn addition to primary schooling the town offers secondary education at both junior and senior levels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "maevatanana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3867,
+    "place_id": "gn-2338401",
+    "input": {
+      "place": {
+        "place_id": "gn-2338401",
+        "name": "Ijebu-Jesa",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.68287,
+        "lon": 4.81769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ijebu-Jesa",
+          "url": "https://en.wikipedia.org/wiki/Ijebu-Jesa",
+          "text": "Ijebu-Jesa (), also spelled Ijebu-Ijesa and historically known as Ijebu-Ere, is a town in Osun State, Nigeria. It is the headquarters of Oriade Local Government Area, which recorded a population of 148,379 at the 2006 census. The town lies in Ijesaland, in the rainforest belt of eastern Osun State, about 8 kilometres (5.0 mi) north of Ilesa and 128 kilometres (80 mi) east of Ibadan. Its traditional ruler holds the title of Elegboro.\nIjebu-Jesa traces its founding to Agigiri, held in local tradition to be the senior brother of the Owa Obokun of Ilesa. Ibadan sacked the town in the mid-19th century during its wars in Ijesaland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ijebu jesa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ijebu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jesa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3870,
+    "place_id": "gn-2428216",
+    "input": {
+      "place": {
+        "place_id": "gn-2428216",
+        "name": "Massenya",
+        "country": "Chad",
+        "subdivision": "Chari-Baguirmi",
+        "lat": 11.40345,
+        "lon": 16.17037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massenya",
+          "url": "https://en.wikipedia.org/wiki/Massenya",
+          "text": "Massenya (Arabic: ماسينيا) is a small town located in the central-western part of Chad. It is the capital of the Chari-Baguirmi province and of the department of Baguirmi. Founded in the first half of the 16th century, Massenya was also the historical capital of the Kingdom of Baguirmi and the seat of the Mbang, or Sultan. \nIt lies in the northwest of the Massenya Plain, an important wetland in the Sahel, which has been under the protection of the Ramsar Convention since 2008, and also located on the banks of the Chari River. The town is served by Massenya Airport.\nThe town is divided into three districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "massenya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3873,
+    "place_id": "gn-2639268",
+    "input": {
+      "place": {
+        "place_id": "gn-2639268",
+        "name": "Rochester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38764,
+        "lon": 0.50546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rochester, Kent",
+          "url": "https://en.wikipedia.org/wiki/Rochester,_Kent",
+          "text": "Rochester ( ROTCH-iss-tər) is a port town in the unitary authority of Medway, in Kent, England. It is at the lowest bridging point of the River Medway, about 30 miles (50 km) east-southeast of London. The town forms a conurbation with neighbouring towns Chatham, Rainham, Strood and Gillingham. Rochester was a city until losing its status as one in 1998 following the forming of Medway and failing to protect its status as a city, the first city to do so in the history of the United Kingdom. There have been ongoing campaigns to reinstate the city status for Rochester. In 2011 it had a population of 62,982."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "rochester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3878,
+    "place_id": "gn-3026467",
+    "input": {
+      "place": {
+        "place_id": "gn-3026467",
+        "name": "Chartres",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 48.44685,
+        "lon": 1.48925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chartres",
+          "url": "https://en.wikipedia.org/wiki/Chartres",
+          "text": "Chartres (French pronunciation: [ʃaʁtʁ] ) is the prefecture of the Eure-et-Loir department in the Centre-Val de Loire region in France. It is located about 90 km (56 mi) southwest of Paris. As of 2023, there were 171,665 inhabitants in the metropolitan area of Chartres (as defined by the INSEE), 38,324 of whom lived in the city (commune) of Chartres proper.\nChartres is famous worldwide for the Chartres Cathedral. Mostly constructed between 1193 and 1250, this Gothic cathedral is in an exceptional state of preservation. The majority of the original stained glass windows are intact, while the architecture has seen only minor changes since the early 13th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "chartres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3884,
+    "place_id": "gn-3530886",
+    "input": {
+      "place": {
+        "place_id": "gn-3530886",
+        "name": "Chilapa de Álvarez",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.59444,
+        "lon": -99.17719
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilapa de Álvarez",
+          "url": "https://en.wikipedia.org/wiki/Chilapa_de_Álvarez",
+          "text": "Chilapa de Álvarez, informally known as Chilapa, is a town located in the municipality of Chilapa de Álvarez in the Mexican state of Guerrero. The town is located approximately 54 kilometers east of the state capital Chilpancingo. \nChilapa is noted for its large Saturday tianguis, or Aztec market, and its crafts. Local culinary specialities of Chilapa include pozole, chalupas, pan de chilapa bread, and homemade mezcal. The municipal cathedral has a mechanical figurine of Juan Diego, who appears at a window in the cathedral spire and drops rose petals onto the plaza below.\nEvery August 15, a festival called Tigrada is held on the streets of Chilapa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "chilapa de alvarez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chilapa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alvarez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3893,
+    "place_id": "gn-946257",
+    "input": {
+      "place": {
+        "place_id": "gn-946257",
+        "name": "Ulundi",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.33523,
+        "lon": 31.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulundi",
+          "url": "https://en.wikipedia.org/wiki/Ulundi",
+          "text": "Ulundi, also known as Mahlabathini, is a town which lies under the Ulundi Local Municipality in the Zululand District Municipality. At one time the capital of the Zulu Kingdom in South Africa and later the capital of the Bantustan of KwaZulu, Ulundi now lies in KwaZulu-Natal Province (of which, from 1994 to 2004, it alternated with Pietermaritzburg as the provincial capital). Ulundi's 2025 population is now estimated at 31,185. In 2001, the population of Ulundi was 23,649. Ulundi has grown by 4,647 in the last year, which represents a 1.16% annual change. The town now includes Ulundi Airport, a three-star hotel, and some museums amongst its sights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ulundi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3899,
+    "place_id": "gn-1735199",
+    "input": {
+      "place": {
+        "place_id": "gn-1735199",
+        "name": "Sungai Besar",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.6746,
+        "lon": 100.9867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungai Besar",
+          "url": "https://en.wikipedia.org/wiki/Sungai_Besar",
+          "text": "Sungai Besar (Jawi: سوڠاي بسر) is the  principal town of Sabak Bernam District, Selangor, Malaysia.\nSungai Besar's population is estimated to be around 23,000 of which 43% are within 20 to 55 years old. From that total, around 73 percent are Malays (Banjar, Jawa, and Kampar descents), Chinese (23%) and Indian (3.5%).\nMajority of its people are working as farmers and fisherman, as well as working in coconut, paddy planting, and palm oil plantations. The town becomes the centre of administration for Sabak Bernam district as many government offices and local authority centre are located there.\n\nThe small village of Sungai Lias is within the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "sungai besar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sungai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "besar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

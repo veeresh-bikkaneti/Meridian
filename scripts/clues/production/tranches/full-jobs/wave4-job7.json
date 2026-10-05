@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 728,
+    "attempt": 721,
+    "place_id": "gn-2994160",
+    "input": {
+      "place": {
+        "place_id": "gn-2994160",
+        "name": "Metz",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.11911,
+        "lon": 6.17269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Metz",
+          "url": "https://en.wikipedia.org/wiki/Metz",
+          "text": "Metz ( METS; French: [mɛs] ; Latin: Divodurum Mediomatricorum, then Mettis) is a city in northeast France located at the confluence of the Moselle and the Seille rivers. Metz is the prefecture of the Moselle department and the seat of the parliament of the Grand Est region. Located near the tripoint along the junction of France, Germany and Luxembourg, the city forms a central part of the European Greater Region and the SaarLorLux euroregion.\nMetz has a rich 3,000-year history, having variously been a Celtic oppidum, an important Gallo-Roman city, the Merovingian capital of Austrasia, the birthplace of the Carolingian dynasty, a cradle of the Gregorian chant, and one of the oldest republics in Europe. The city has been steeped in French culture, but has been strongly influenced by German culture due to its location and history.\nBecause of its historical, cultural and architectural background, Metz has been submitted on France's UNESCO World Heritage Tentative List. The city features noteworthy buildings such as the Gothic Saint-Stephen Cathedral with its largest expanse of stained-glass windows in the world, the Basilica of Saint-Pierre-aux-Nonnains being the oldest church in France, its Imperial Station Palace displaying the apartment of the German Kaiser, or its Opera House, the oldest one working in France. Metz is home to some world-class venues including the Arsenal Concert Hall and the Centre Pompidou-Metz museum.\nA basin of urban ecology, Metz gained its nickname of The Green City (French: La Ville Verte), as it has extensive open grounds and public gardens. The historic city centre is one of the largest commercial pedestrian areas in France.\nA historic garrison town, Metz is the economic heart of the Lorraine region, specialising in information technology and automotive industries. Metz is home to the University of Lorraine, Georgia Tech Europe, and a centre for applied research and development in the materials sector, notably in metallurgy and metallography, the heritage of the Lorraine region's past in the iron and steel industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "metz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 729,
+    "attempt": 722,
+    "place_id": "gn-3109981",
+    "input": {
+      "place": {
+        "place_id": "gn-3109981",
+        "name": "Santa Coloma de Gramenet",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.45152,
+        "lon": 2.2081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Coloma de Gramenet",
+          "url": "https://en.wikipedia.org/wiki/Santa_Coloma_de_Gramenet",
+          "text": "Santa Coloma de Gramenet (Catalan: [ˈsantə kuˈlomə ðə ɣɾəməˈnɛt]; Spanish: Santa Coloma de Gramanet, no longer official), informally simply known as Santa Coloma, and formerly as Gramenet de Besòs (Spanish: Gramanet del Besós) between 1936 and 1939, is a municipality in Barcelonès county, in Catalonia, Spain. It is situated on the south-east side of the coastal range, with the Puig Castellar (299 m) as its highest point, on the left bank of the Besòs river: the municipalities of Sant Adrià de Besòs and Badalona separate it from the coast. It is the ninth most populated city in Catalonia.\nThe area has been inhabited since at least the Iberic period, and the remains of an Iberic village have been found on \nPuig Castellar. The artefacts are housed in a museum in La Torre Balldovina, a building dating from the 18th century.\nOther notable buildings include the renaissance palace of La Torre Pallaresa and the noucentista\nClínica Mental.\nIn November 2008, the city made worldwide news by installing solar panels on top of crypts in the local cemetery, in an effort to help fight climate change."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "santa coloma de gramenet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coloma",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gramenet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 730,
+    "attempt": 723,
+    "place_id": "gn-3165926",
+    "input": {
+      "place": {
+        "place_id": "gn-3165926",
+        "name": "Taranto",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.46438,
+        "lon": 17.24707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taranto",
+          "url": "https://en.wikipedia.org/wiki/Taranto",
+          "text": "Taranto (Italian: [ˈtaːranto] ; Tarantino: Tarde), historically also called Tarent in English, is a coastal city in Apulia, Southern Italy. It is the capital of the province of Taranto, serving as an important commercial port as well as the main base of the Italian navy. With a population of 185,112 as of 2026, Taranto is the second-largest city in Apulia.\nFounded by Spartans in the 8th century BC during the period of Greek colonisation, Taranto was among the most important poleis in Magna Graecia, becoming a cultural, economic and military power that gave birth to philosophers, strategists, writers and athletes such as Archytas, Aristoxenus, Livius Andronicus, Heracleides, Iccus, Cleinias, Leonidas, Lysis and Sosibius. By 500 BC, the city was among the largest in the world, with an estimated population of up to 300,000. The seven-year rule of Archytas marked the apex of its development and recognition of its hegemony over other Greek colonies of southern Italy.\nDuring the Norman period, it became the capital of the Principality of Taranto, which covered almost all of the heel of Apulia.\nTaranto is now the third-largest continental city in southern Italy (south of Rome, roughly the southern half of the Italian peninsula), with well-developed steel and iron foundries, oil refineries, chemical works, naval shipyards and food-processing factories. Taranto was the host city of the 2026 Mediterranean Games.\nThe islets of S. Pietro and S. Paolo (St. Peter and St. Paul), collectively known as the Cheradi Islands, protect the bay, called Mar Grande (Big Sea), where the commercial port is located. Taranto is known for the large population of dolphins and other cetaceans living near these islands. Another bay, called Mar Piccolo (Little Sea), is formed by the peninsula of the old city and is a popular location for fishing and mussel farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "taranto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 731,
+    "attempt": 724,
+    "place_id": "gn-1687801",
+    "input": {
+      "place": {
+        "place_id": "gn-1687801",
+        "name": "Santiago",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 16.68808,
+        "lon": 121.5487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago, Isabela",
+          "url": "https://en.wikipedia.org/wiki/Santiago,_Isabela",
+          "text": "Santiago, officially the City of Santiago (Ilocano: Siudad ti Santiago; Ibanag: Siudad nat Santiago; Gaddang: Siudad na Santiago; Filipino: Lungsod ng Santiago), is an  independent component city in the Cagayan Valley region of the Philippines. According to the 2024 census, it has a population of 150,313 people.\nIt is formerly known as Carig during the time of the Spanish, it is located between the southwestern part of Isabela and the northwestern boundary of Quirino in northeastern Luzon island of the Philippines. It is the gateway to the vast plains of Cagayan Valley.\nDespite being statistically grouped by the Philippine Statistics Authority and geographically located within the boundaries of the province of Isabela, as well as part of the province's 4th District, Santiago is administratively and legally independent from the province, in accordance with Section 25 of the Local Government Code. It is also the second most populous city in Isabela after the capital city, Ilagan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 732,
+    "attempt": 725,
+    "place_id": "gn-1697018",
+    "input": {
+      "place": {
+        "place_id": "gn-1697018",
+        "name": "Ormoc",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.00639,
+        "lon": 124.6075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ormoc",
+          "url": "https://en.wikipedia.org/wiki/Ormoc",
+          "text": "Ormoc (IPA: [ʔoɾˈmok]), officially the City of Ormoc (Cebuano: Dakbayan sa Ormoc; Waray: Syudad han Ormoc; Filipino: Lungsod ng Ormoc), is an independent component city in the Eastern Visayas region of the Philippines. According to the 2024 census, it has a population of 238,545 inhabitants, making it the second most-populous city in the province of Leyte after the provincial capital of Tacloban. Ormoc City is the economic, cultural, commercial and transportation hub of western Leyte.\nOrmoc is an independent component city, not subject to regulation from the Provincial Government of Leyte. However, the city is part of the 4th Congressional District of Leyte together with Albuera, Kananga, Merida, Palompon and Isabel, and statistically grouped under the province by the Philippine Statistics Authority. On November 8, 2013, the city was extensively damaged by Super Typhoon Yolanda (Haiyan), having previously suffered severe destruction and loss of life in 1991 from torrential flooding during Tropical Storm Uring (Thelma)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "ormoc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 733,
+    "attempt": 726,
+    "place_id": "gn-1880348",
+    "input": {
+      "place": {
+        "place_id": "gn-1880348",
+        "name": "Punggol",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.41444,
+        "lon": 103.90694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Punggol",
+          "url": "https://en.wikipedia.org/wiki/Punggol",
+          "text": "Punggol (IPA:  PONG-gohl) is a planning area and new town situated on the Tanjong Punggol peninsula in the North-East Region of Singapore. The town directly borders Sengkang to the south and shares riverine boundaries with the planning area of Seletar to the west and Pasir Ris to the east. Bounding the town to the north and north-east is the Straits of Johor, with Coney Island included as a part of the Punggol planning area.\nUnder the Punggol 21 initiative, there were initial plans in the 1990s to turn the area into an extensive residential town, and development started in 1998. However, the plan slowed throughout the 2000s due to the Asian financial crisis in 1997 and financial troubles within the construction industry in 2003, before construction development resumed during the late 2010s and the 2020s.\nIn 2007, a new initiative, the Punggol 21 Plus plan, was introduced to redevelop the area into a waterfront town. This led to the development of Punggol Waterway, Singapore's largest man-made waterway. Punggol is further divided into 7 subzones: Coney Island, Matilda, Northshore, Punggol Canal, Punggol Field, Punggol Town Centre and Waterway East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "punggol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 734,
+    "attempt": 727,
+    "place_id": "gn-2655095",
+    "input": {
+      "place": {
+        "place_id": "gn-2655095",
+        "name": "Bournemouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.72048,
+        "lon": -1.8795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bournemouth",
+          "url": "https://en.wikipedia.org/wiki/Bournemouth",
+          "text": "Bournemouth (  BORN-məth) is a coastal resort town and civil parish in the Bournemouth, Christchurch and Poole unitary authority area, in the ceremonial county of Dorset, on the south coast of England. At the 2021 census, the built-up area had a population of 196,455, making it the largest town in Dorset. \nPreviously an uninhabited heathland, visited only by fishermen and occasional smugglers, a health resort was founded in the area by Lewis Tregonwell in 1810. After the Ringwood, Christchurch and Bournemouth Railway opened in 1870, Bournemouth grew into an important resort town, which today attracts over five million visitors annually for its coastline and nightlife.\nThe town is a population centre within the South East Dorset conurbation and is known for its seven-mile stretch of golden sand, with well-known spots including Alum Chine Beach, Durley Chine Beach, and Bournemouth Central Beach. The shoreline continues westward and gradually merges into the affluent Sandbanks area and Poole. Alongside tourism, financial services now play a significant role in the local economy.\nThe town centre is notable for its Victorian architecture. St Peter's Church features a 202-foot (62 m) spire and is one of three Grade I listed churches in the borough. The town has an events venue and a concert hall, the Bournemouth International Centre (BIC) and Pavilion Theatre respectively. Bournemouth is also home to the Premier League football club, AFC Bournemouth, and to Bournemouth University, which has a growing reputation in fields such as media, business and health."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "bournemouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 735,
+    "attempt": 728,
+    "place_id": "gn-3086586",
+    "input": {
+      "place": {
+        "place_id": "gn-3086586",
+        "name": "Rybnik",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.09713,
+        "lon": 18.54179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rybnik",
+          "url": "https://en.wikipedia.org/wiki/Rybnik",
+          "text": "Rybnik (Polish pronunciation: [ˈrɨbɲik] ; Silesian: Rybńik, Ribńich; German: Reibnig) is a city in southern Poland, in the Silesian Voivodeship, around 38 km (24 mi) southwest of Katowice, the region's capital, and around 19 km (12 mi) from the Czech border. It is one of the major cities of the Katowice-Ostrava metropolitan area with a population of 5.3 million and the main city of the so-called Subregion Zachodni, previously also known as the Rybnik Coal Area. The city currently has a population of 122,026 inhabitants as of December 31, 2025.\nRybnik is the center of commerce, business, transportation and culture for the southwestern part of the Silesian Voivodeship, a consolidated city-county and the seat of a separate suburban Rybnik county. Rybnik is particularly recognized for its contributions to music, with the Szafrankowie School of Music musicians such as Henryk Górecki or Lidia Grychtołówna, among others. It is also a seat of the Rybnik Philharmonic Orchestra.\nThe name Rybnik derives from an old Slavic word rybnik, meaning a pond (Czech language still uses it, while in Polish the modern word is staw), which was located in the place of the current market square. In the Middle Ages, three settlements merged into one town, with a Magdeburg rights location dating back to 1308. Fishing, trade and artistry were the main industries. Rybnik's development accelerated in late 19th century upon discovery of rich coal fields, and continued until the 1980s. Since the 1990s, the city attempts to diversify its economy with commerce, health care and business industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "rybnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 736,
+    "attempt": 729,
+    "place_id": "gn-3877949",
+    "input": {
+      "place": {
+        "place_id": "gn-3877949",
+        "name": "Osorno",
+        "country": "Chile",
+        "subdivision": "Los Lagos Region",
+        "lat": -40.57395,
+        "lon": -73.13348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osorno, Chile",
+          "url": "https://en.wikipedia.org/wiki/Osorno,_Chile",
+          "text": "Osorno (Mapuche: Chauracavi) is a city and commune in southern Chile and capital of Osorno Province in the Los Lagos Region. It had a population of 145,475, as of the 2002 census. It is located 945 kilometres (587 mi) south of the national capital of Santiago, 105 kilometres (65 mi) north of the regional capital of Puerto Montt and 260 kilometres (160 mi) west of the Argentine city of San Carlos de Bariloche, connected via International Route 215 through the Cardenal Antonio Samoré Pass. It is a gateway for land access to the far south regions of Aysén and Magallanes, which would otherwise be accessible only by sea or air from the rest of the country.\nLocated at the confluence of the Rahue and Damas Rivers, Osorno is the main service centre of agriculture and cattle farming in the northern Los Lagos Region. The city's cultural heritage is shaped by Huilliche, Spanish, and German influences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "osorno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 737,
+    "attempt": 730,
+    "place_id": "gn-685826",
+    "input": {
+      "place": {
+        "place_id": "gn-685826",
+        "name": "Baia Mare",
+        "country": "Romania",
+        "subdivision": "Maramureş",
+        "lat": 47.65729,
+        "lon": 23.56808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baia Mare",
+          "url": "https://en.wikipedia.org/wiki/Baia_Mare",
+          "text": "Baia Mare (US:  BAH-yə MAR-ə, Romanian: [ˈbaja ˈmare] ; Hungarian: Nagybánya; German: Frauenbach; Latin: Rivulus Dominarum) is a city in northwestern Romania, the capital and largest municipality of Maramureș County. It lies on the Săsar River and serves as an important economic, cultural, and educational centre of the historical region of Maramureș, a subregion of Transylvania.\nLocated south of the Igniș Mountains and Gutin Mountains, Baia Mare is situated approximately 600 kilometres (370 miles) northwest of Bucharest, 70 kilometres (43 miles) from the border with Hungary, and 50 kilometres (31 miles) from the border with Ukraine. According to the 2021 Romanian census, Baia Mare had a population of 108,759 inhabitants, making it one of the largest cities in northern Romania.\nThe municipality administers four villages: Blidari (Kőbánya), Firiza (Felsőfernezely) and Valea Neagră (Feketepatak).\nSimon Hollósy, a young Hungarian painter, taught new Western European techniques in his Baia Mare studio, influencing many artists of the region.\nBaia Mare was designated as the Romanian Youth Capital between 2 May 2018 and 1 May 2019. It is also considered the greenest municipality in Romania, offering about 133 square metres of green space per inhabitant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "baia mare",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mare",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 738,
+    "attempt": 731,
+    "place_id": "gn-1254388",
+    "input": {
+      "place": {
+        "place_id": "gn-1254388",
+        "name": "Tiruchirappalli",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.8155,
+        "lon": 78.69651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiruchirappalli",
+          "url": "https://en.wikipedia.org/wiki/Tiruchirappalli",
+          "text": "Thiruchchirappalli (Tamil pronunciation: [ˈt̪iɾɯtːʃiɾapːaɭːi] ), also known as Tiruchchi or Trichy or historically known as Trichinopoly, is a major tier II city in the Indian state of Tamil Nadu and the administrative headquarters of Tiruchirappalli district. The city is credited with being the most livable and cleanest city in all of Tamil Nadu, as well as the fifth safest city for women in India. It is the fourth largest urban agglomeration in the state. Located 322 kilometres (200 mi) south of Chennai and 374 kilometres (232 mi) north of Kanyakumari, Tiruchirappalli sits almost at the geographic centre of Tamil Nadu. The Cauvery Delta begins 16 kilometres (9.9 mi) west of the city where the Kaveri river splits into two, forming the island of Srirangam which is now incorporated into the Tiruchirappalli City Municipal Corporation. The city occupies an area of 168.23 square kilometres (64.95 sq mi) and had a population of 916,857 in 2011.\nTiruchirappalli's recorded history begins under Chola rule in the 3rd century BC. The city has also been ruled by the Mutharayars, Pallavas, Pandyas, Vijayanagar Empire, Nayak Dynasty, the Carnatic state and the British. The most prominent historical monuments in Tiruchirappalli include the Rockfort at Teppakulam, the Ranganathaswamy temple at Srirangam dedicated to the reclining form of the God Vishnu, serving as the largest functioning temple in the world, and the Jambukeswarar Temple at Thiruvanaikaval, which is also the largest temple for the God Shiva in the world. The archaeologically important town of Uraiyur, capital of the Early Cholas, is now a neighbourhood in Tiruchirappalli. The city played a critical role in the Carnatic Wars (1746–1763) between the British and French East India companies.\nThe city is an important educational centre in the state of Tamil Nadu, and houses nationally recognized institutions such as National Institute of Technology - Tiruchirapalli (NIT-T), Indian Institute of Management (IIM), Indian Institute of Information Technology (IIIT), Tamil Nadu National Law University (NLU), Government Medical College. Industrial units such as Bharat Heavy Electricals Limited (BHEL), Golden Rock Railway Workshop, Ordnance Factory Tiruchirappalli (OFT) and High Energy Projectile Factory (HEPF) have their factories in the city. The presence of a large number of energy equipment manufacturing units in and around the city has earned it the title of \"Energy Equipment and Fabrication Capital of India\".  It is one of the few towns and cities in List of AMRUT Smart cities in Tamil Nadu selected for AMRUT Schemes  from central government and the developmental activities are taken care by government of Tamil Nadu.\nTiruchirappalli is internationally recognized for the brand of cheroot known as the Trichinopoly cigar, which was exported in large quantities to the United Kingdom during the 19th century.\nA major road and railway hub in the state, the city is served by the Tiruchirappalli International Airport (TRZ) which operates direct flights to the Middle East (Dubai, Saudi Arabia) and Southeast Asia (Singapore, Malaysia)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 482
+    },
+    "banned_terms": [
+      {
+        "term": "tiruchirappalli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 739,
+    "attempt": 732,
+    "place_id": "gn-1633034",
+    "input": {
+      "place": {
+        "place_id": "gn-1633034",
+        "name": "Palu",
+        "country": "Indonesia",
+        "subdivision": "Central Sulawesi",
+        "lat": -0.90833,
+        "lon": 119.87083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palu",
+          "url": "https://en.wikipedia.org/wiki/Palu",
+          "text": "Palu, officially known as the City of Palu (Indonesian: Kota Palu; pronounced [ˌkot̪a ˈpalu]), is the capital and largest city of Central Sulawesi Province in Indonesia. Palu is located on the northwestern coast of Sulawesi at the mouth of the long Palu River, whose extensive valley stretches far to the south (including the Lore Lindu National Park). It borders Donggala Regency to the north and west, Parigi Moutong Regency to the east, and Sigi Regency to the south. The city boundaries encompass a land area of 395.06 km2 (152.53 sq mi). According to the 2020 Indonesian census, Palu had a population of 373,218, making it the third-most populous city on the island after Makassar and Manado; the official estimate as at mid 2025 was 400,055 (comprising 200,490 males and 199,565 females). Palu is the center of finance, government, and education in Central Sulawesi, as well as one of several major cities on the island. The city hosts the province's main port, its biggest airport, and most of its public universities.\nPalu is located in Palu Bay; it was initially a small agricultural town until it was selected to become the capital of the newly created province of Central Sulawesi in 1953. Palu is sited on the Palu-Koro Fault and is frequently struck by earthquakes, such as the 2018 Sulawesi earthquake. According to Indonesia's National Disaster Management Agency, the 2018 earthquake caused \"the largest natural soil liquefaction phenomenon in the world\". Much of the city's infrastructure was destroyed and large swathes of land were rendered uninhabitable, prompting the local government to plan to relocate the city to a safer location instead of rebuilding in the same place."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "palu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 740,
+    "attempt": 733,
+    "place_id": "gn-1647866",
+    "input": {
+      "place": {
+        "place_id": "gn-1647866",
+        "name": "Bukittinggi",
+        "country": "Indonesia",
+        "subdivision": "West Sumatra",
+        "lat": -0.30907,
+        "lon": 100.37055
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukittinggi",
+          "url": "https://en.wikipedia.org/wiki/Bukittinggi",
+          "text": "Bukittinggi (Minangkabau: Bukiktinggi, Jawi: بوكيت تيڠڬي, formerly Dutch: Fort de Kock) is the third largest city in West Sumatra, Indonesia, with a population of 111,312 in 2010 and 121,028 in 2020. The official estimate as of mid 2025 lists a population of 125,920 (consisting of 62,809 males and 63,111 females). The city covers an area of 24.84 km2. It is located in the Minangkabau Highlands, 90 km by road from the West Sumatran capital city of Padang. The city is completely surrounded by the Agam Regency (Bukittinggi was its regency seat until 1998), making it an enclave within the regency, and it is located at 0°18′20″S 100°22′9″E, near the volcanoes Mount Singgalang (inactive) and Mount Marapi (still active). At 930 m above sea level, the city has a cool climate with temperatures between 16.1° to 24.9 °C.\nBukittinggi used to be known as Fort de Kock and was once dubbed as 'Parijs van Sumatera'. The city was the capital of Indonesia during the Emergency Government of the Republic of Indonesia (PDRI). Before it became the capital of PDRI, the city was a centre of government at the time of the Dutch East Indies and during the Japanese colonial period.\nBukittinggi is also known as a leading tourist city in West Sumatra. It is twinned with Seremban in Negeri Sembilan, Malaysia. The Jam Gadang, a clock tower located in the heart of the city, is a symbol for the city and a well-visited tourist spot in the city.\nThe city is the birthplace of Mohammad Hatta, Indonesian co-proclamator and Assaat, then Indonesian (acting) president. Koto Gadang, a village in the southwest of the city, produces an abundance of statesmen, ministers, doctors, economist, artist and scholars who make great contribution to Indonesia, including Sutan Sjahrir, Agus Salim, Bahder Djohan, Rohana Kudus, Emil Salim, and Dr. Syahrir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "bukittinggi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 741,
+    "attempt": 734,
+    "place_id": "gn-2337765",
+    "input": {
+      "place": {
+        "place_id": "gn-2337765",
+        "name": "Ila Orangun",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 8.01714,
+        "lon": 4.90421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ila Orangun",
+          "url": "https://en.wikipedia.org/wiki/Ila_Orangun",
+          "text": "Ìlá Òràngún (or Ila) is an ancient The paramount ruler of the town is the Orangun of Ila, who is supported in traditional administration by the Obaala of Ila-Orangun, the Prime Minister and second-in-command of the kingdom. * The  Obaala of Ila-Orangun holds the office of the most senior High Chief and Chairman of the Council of Chiefs, historically serving as the second-in-command and executing regency powers during an interregnum.\ncity in Osun State, Nigeria, that was the capital of an ancient city-state of the same name in the Igbomina area of Yorubaland in south-western Nigeria. Ìlá Òràngún is more populous than its sister-city, Òkè-Ìlá Òràngún, a town located about 7.5 miles (12 km) to the northeastern corner of Osun State. The latitude and longitude coordinates of Ila Orangun are 8.019116 and 4.901962 respectively. According to the information obtained from GeoNames geographical database, the population of Ila Orangun in Osun State, Nigeria is 179,192.\nIt is the headquarters of the Ila Local Government Area. In addition to Ila Orangun, other towns and villages in Ila Local Government Area include Abalagemo, Aba Ododo, Ajaba, Alagbede, Ayetoro Obaaro, Edemosi, Ejigbo-Orangun, Gaa Fulani, Oyi Ayegunle and so on. There are as much as over 200 compounds in the ancient city.\nThe people of Ila speak the distinctive dialect of the Yoruba language called Igbomina (or Igbonna). A common traditional profession of the indigenes of the town is palm-wine tapping. This profession is referenced in one of the most popular songs and common sayings about the town of Ila. The proverb Ila 'o l'oogun, emu l'oogun Ila means \"Ila has no special medicine or magical preparations other than palm-wine\". A folk song also says Ila ni mi, ise mi o le/ti mo ba wa l'orun ope bi 'ofusia' ni i ri, which translates into English as \"I am a citizen of Ila, my profession is very easy; if I am on top of a palm tree, I feel like I am upstairs in a multi-storey building.\" \n\nIla-Orangun is the home of the Osun state College of Education, The Police Training College and Federal University of Health Sciences] The African Heritage Research Library was established in 1988.\nThe ancient town also has a Mobile Police Training School\nThe name of the present Orangun (King) of Ila Orangun is Oba Abdul Wahab Olukayode Oyedotun Bibiire I."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "ila orangun",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orangun",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 742,
+    "attempt": 735,
+    "place_id": "gn-2646458",
+    "input": {
+      "place": {
+        "place_id": "gn-2646458",
+        "name": "Huddersfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.64904,
+        "lon": -1.78416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huddersfield",
+          "url": "https://en.wikipedia.org/wiki/Huddersfield",
+          "text": "Huddersfield is a town in the Metropolitan Borough of Kirklees, West Yorkshire, England. It is the administrative centre and largest settlement in the Kirklees district, in the foothills of the Pennines. The River Holme's confluence into the similar-sized Colne is to the south of the town centre, which then flows into the Calder in the north-eastern outskirts of the town.\nThe rivers around the town provided soft water required for textile treatment in large weaving sheds; this made it a prominent mill town with an economic boom in the early part of the Victorian era Industrial Revolution. The town centre has much neoclassical Victorian architecture; an example is its railway station, a Grade I listed building described by John Betjeman as \"the most splendid station façade in England.\" It won the Europa Nostra award for architecture.\nThe town hosts the University of Huddersfield and three colleges: Greenhead College, Kirklees College and Huddersfield New College. It is the birthplace of rugby league with the local team, Huddersfield Giants, playing in the Super League. It also has a professional football team, Huddersfield Town, that currently competes in the EFL League One, as well as two Rugby Union clubs: Huddersfield R.U.F.C. and Huddersfield YM RUFC. Notable people include Labour former British Prime Minister Harold Wilson and film star James Mason.\nThe town has been classed under Yorkshire, the West Riding of Yorkshire and West Yorkshire for statistics throughout its history. The town's population in 2021 was 141,692; it is in the West Yorkshire Built-up Area. The town is 14 miles (23 km) south-west of Leeds, 12 miles (19 km) west of Wakefield, 23 miles (37 km) north-west of Sheffield and 24 miles (39 km) north-east of Manchester."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "huddersfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 743,
+    "attempt": 736,
+    "place_id": "gn-3470279",
+    "input": {
+      "place": {
+        "place_id": "gn-3470279",
+        "name": "Bauru",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.31472,
+        "lon": -49.06056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bauru",
+          "url": "https://en.wikipedia.org/wiki/Bauru",
+          "text": "Bauru (Portuguese pronunciation: [bawˈɾu]) is a Brazilian municipality located in the interior of São Paulo state, recognized as the most populous city in the Central-West region of São Paulo. It is one of the 19 municipalities comprising the Bauru Immediate Geographic Region, which is one of four immediate regions within the Bauru Intermediate Geographic Region, encompassing a total of 48 municipalities.\nSituated northwest of the state capital, Bauru is approximately 326 km away and covers an area of 667.684 km². According to the IBGE's Census of 2022, the city had an estimated population of 379,146 inhabitants, making it the 18th most populous municipality in São Paulo.\nFounded in 1896, Bauru experienced significant population growth due to the March to the West, a government initiative under Getúlio Vargas to promote development and settlement in Brazil's central region. In the early 20th century, the city's infrastructure expanded with the arrival of the railway and, later, highways. Coffee cultivation became prominent in the early 1900s, but Bauru transitioned into an industrialized city, aligning with Brazil's national industrialization starting in the 1930s. Industry, alongside the service sector, is the primary source of municipal revenue, contributing to Bauru's 68th highest GDP in Brazil. Since the 1950s, sugarcane production has gained prominence in agriculture.\nSeveral highways, including Marechal Rondon, Comandante João Ribeiro de Barros, Cesário José de Carvalho, and Engenheiro João Batista Cabral Renno, connect Bauru to various municipalities in São Paulo. The city is a critical hub for air, road, and rail transport. Beyond its economic significance, Bauru is a key cultural center in its region. The Bauru Municipal Botanical Garden and the Bauru Forest Garden are vital environmental preservation areas, while the Celina Lourdes Alves Neves Municipal Theater, the Bauru Cultural Center, and the Bauru Automobile Club are notable urban landmarks. The Municipal Culture Secretariat oversees cultural projects and events, enriching Bauru's cultural life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "bauru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 744,
+    "attempt": 737,
+    "place_id": "gn-3516266",
+    "input": {
+      "place": {
+        "place_id": "gn-3516266",
+        "name": "Tapachula",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 14.90541,
+        "lon": -92.25891
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tapachula",
+          "url": "https://en.wikipedia.org/wiki/Tapachula",
+          "text": "Tapachula de Córdova y Ordóñez, simply known as Tapachula, is a municipality located in the far south of the state of Chiapas, Mexico, near the Guatemalan border and the Pacific Ocean. Economically, it is one of the most important cities in Chiapas; as capital of the agriculturally-rich Soconusco region, Tapachula also serves as a key port for trade between Mexico and Central America. The area was originally inhabited by the Mam, as a region under the control of the Mam state of Xelaju, but was first established as a city by the Aztecs in the 13th century. Most of its economic importance has come since the late 19th century, with the establishment of coffee plantations. This practice initiated a steady stream of migration and immigration into the area, which continues to this day, and has left the city with a significant Asian and German cultural presence. There is a large Mayan and Nahua population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "tapachula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 745,
+    "attempt": 738,
+    "place_id": "gn-3907584",
+    "input": {
+      "place": {
+        "place_id": "gn-3907584",
+        "name": "Potosí",
+        "country": "Bolivia",
+        "subdivision": "Potosí Department",
+        "lat": -19.58361,
+        "lon": -65.75306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potosí",
+          "url": "https://en.wikipedia.org/wiki/Potosí",
+          "text": "Potosí, known as Villa Imperial de Potosí in the colonial period, is the capital city and a municipality of the Department of Potosí in Bolivia. It is one of the highest cities in the world at a nominal 4,067 m (13,343 ft). \nDiego Huallpa, an indigenous prospector, is traditionally credited with the discovery of the Cerro Rico in 1545, which led to the founding and rapid growth of Potosí due to its extraordinary silver wealth.\nFor centuries, it was the location of the Spanish colonial silver mint. A considerable amount of the city's colonial architecture has been preserved in the historic center of the city, which—along with the globally important Cerro Rico de Potosí—are part of a designated UNESCO World Heritage Site.\nPotosí lies at the foot of the Cerro de Potosí—sometimes referred to as the Cerro Rico (\"rich mountain\")—a mountain popularly conceived of as being \"made of\" silver ore that dominates the city. The Cerro Rico is the reason for Potosí's historical importance since it was the major supply of silver for the Spanish Empire until Guanajuato in Mexico surpassed it in the 18th century. At the turn of the 16th/17th centuries, it was the second largest city in the world, after London.\nThe silver was taken by llama and mule train to the Pacific coast, shipped north to Panama City, and carried by mule train across the isthmus of Panama to Nombre de Dios or Portobelo, whence it was taken to Spain on the Spanish treasure fleets. Some of the silver also made its way east to Buenos Aires, via the Rio de la Plata, or to Acapulco, Mexico, where it was sent via the Manila Galleons to buy Asian products. Cerro de Potosí's peak is 4,824 m (15,827 ft) above sea level.\nToday, Potosí continues to be an important mining center, and is the largest urban center in the Department of Potosí. A growing city, Potosí is now famous for its well-preserved colonial architecture, and unusual geographic setting as one of the highest cities in the world. It features a rare cold highland climate, and is marked by its long dry period, and short but strong wet season. While famous for its dominance as a mining center in early Spanish colonial history, Potosí still sits at one of the largest silver deposit systems in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "potosi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 746,
+    "attempt": 739,
+    "place_id": "gn-415189",
+    "input": {
+      "place": {
+        "place_id": "gn-415189",
+        "name": "Aden",
+        "country": "Yemen",
+        "subdivision": "Aden",
+        "lat": 12.77957,
+        "lon": 45.03852
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aden",
+          "url": "https://en.wikipedia.org/wiki/Aden",
+          "text": "Aden is an ancient port city in the southern part of the Arabian peninsula, on the north coast of the Gulf of Aden, positioned near the eastern approach to the Red Sea, and has been the de facto capital of the internationally recognized government of Yemen since 2014. It is approximately 170 km (110 mi) east of the Strait of Bab al-Mandab. With its strategic location on the coastline, Aden serves as a gateway between the Red Sea and the Arabian Sea, making it a crucial maritime hub connecting Africa, Asia, and the Middle East.\nIn 2026, Aden had a population estimated at 1,194,160, making it one of the largest cities in Yemen. It is the capital and principal part of Aden Governorate, encompassing eight districts. During the colonial period, the name Aden referred to the area along the north coast of the gulf, encompassing Tawahi, Mualla, Crater, and much of Khor Maksar district. The western harbour peninsula, known as Little Aden, now falls within the Al Buraiqeh district.\n\nThe city and surrounding area were under the British Empire from 1839 until independence in 1967. Before gaining independence, Aden comprised distinct sectors: Crater, the original port; Ma'alla, the modern port; Tawahi, formerly \"Steamer Point\"; and Gold Mohur resorts. Khormaksar, on the isthmus connecting Aden to the mainland, hosts diplomatic missions, Aden University's main offices, and Aden International Airport. On the mainland, sectors include Sheikh Othman, an old oasis area; Al-Mansura, a British-planned town; and Madinat ash-Sha'b (formerly Madinat al-Ittihad), the former capital of the South Arabian Federation, now the location of a large power/desalination facility and additional Aden University faculties.\nAden encloses the eastern side of a vast natural harbour that constitutes the modern port. Little Aden was developed as the site of the oil refinery and tanker port. Both were established and operated by British Petroleum until they were turned over to South Yemeni government ownership and control in 1978.\nAden was the capital of South Yemen from 1967 until that state's union with North Yemen in 1990. It has been the temporary capital of the internationally recognized government of Yemen since the Houthi takeover of Sanaa in the start of the Yemeni civil war in 2014, hosting some members of the Cabinet of Yemen mainly in al-Maashiq Palace. It was also the seat of the secessionist Southern Transitional Council from 2018 to 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 395
+    },
+    "banned_terms": [
+      {
+        "term": "aden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 747,
+    "attempt": 740,
+    "place_id": "gn-6169141",
+    "input": {
+      "place": {
+        "place_id": "gn-6169141",
+        "name": "Trois-Rivières",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.34515,
+        "lon": -72.5477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trois-Rivières",
+          "url": "https://en.wikipedia.org/wiki/Trois-Rivières",
+          "text": "Trois-Rivières (French: [tʁwɑ ʁivjɛʁ], Canadian French: [tʁwɔ ʁivjaɛ̯ʁ] ; lit. 'Three Rivers') is a city in the Mauricie administrative region of Quebec, Canada. It is located at the confluence of the Saint-Maurice and Saint Lawrence rivers, on the north shore of the Saint Lawrence River across from the city of Bécancour. It is part of the densely populated Quebec City–Windsor Corridor and is approximately halfway between Montreal and Quebec City. Trois-Rivières is the economic and cultural hub of the Mauricie region. The settlement was founded by French colonists on July 4, 1634, as the second permanent settlement in New France, after Quebec City in 1608.\nThe name of Trois-Rivières, which dates from the end of the 16th century, was used by French explorers in reference to the three channels in the Saint-Maurice River formed at its mouth with the Saint Lawrence, as it is divided by two islands, Potherie (Île Caron) and Île Saint-Quentin. The city occupies a location near where Jacques Cartier, in a 1535 trip along the St. Lawrence, stopped to plant a cross on Saint-Quentin island.\nTrois-Rivières is also the name of a territory equivalent to a regional county municipality (TE) of Quebec, coextensive with the city of Trois-Rivières. Its geographical code is 371. Together with the regional county municipality of Les Chenaux, it forms the census division (CD) of Francheville (37). The municipalities within Les Chenaux and the former municipalities that were amalgamated into Trois-Rivières formerly constituted the regional county municipality of Francheville. Trois-Rivières is the seat of the judicial district of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "trois rivieres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trois",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rivieres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 7820,
+    "place_id": "gn-6173001",
+    "input": {
+      "place": {
+        "place_id": "gn-6173001",
+        "name": "Val-David",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.03338,
+        "lon": -74.21592
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Val-David",
+          "url": "https://en.wikipedia.org/wiki/Val-David",
+          "text": "Val-David is a village of more than 5,500 inhabitants in the Laurentian Mountains about 80 kilometres (50 mi) north of Montreal, Quebec, Canada. Attracting about 100,000 tourists a year, Val-David is predominantly francophone with a small anglophone minority.\nThe village is known for its food scene and artistic and hippie character. Several renowned and amateur artists, writers and dancers live and have lived in Val-David, including Québécois poet Gaston Miron, jazz bassist Charlie Biddle, and singer-songwriter Alan Gerber.\nVal-David is also a centre for much outdoor recreational activity as its 2,000-acre (8.1 km2) Parc Dufresne is the most popular rock-climbing destination in eastern Canada. Other features include the Parc Linéaire Le P'tit Train du Nord, a 200 kilometres (120 mi) bike trail, and groomed cross-country ski and snowshoe trails in winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "val david",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "val",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "david",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7821,
+    "place_id": "gn-666509",
+    "input": {
+      "place": {
+        "place_id": "gn-666509",
+        "name": "Solca",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.7,
+        "lon": 25.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solca",
+          "url": "https://en.wikipedia.org/wiki/Solca",
+          "text": "Solca (German: Solka; Polish: Solka; Hungarian: Szolka) is a town in Suceava County, northeastern Romania. It is situated in the historical regions of Bukovina and Western Moldavia. Solca is the smallest town in the county and the third-smallest town in Romania overall, with a population of 2,405 inhabitants, according to the 2021 census. Its name is derived from that of the river flowing through it, in turn derived from Slavic sol (\"salt\") – in reference to the area's salty springs. Solca is known for its high quality air, for being a former spa, and for the eponymous beer brand that was manufactured here in its own factory (which was opened in 1810) until 2004 (the brand was subsequently acquired by Bermas and since then the Solca beer is produced in Suceava)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "solca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7824,
+    "place_id": "gn-732145",
+    "input": {
+      "place": {
+        "place_id": "gn-732145",
+        "name": "Dolna Banya",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.31093,
+        "lon": 23.76459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolna Banya",
+          "url": "https://en.wikipedia.org/wiki/Dolna_Banya",
+          "text": "Dolna Banya, also Dolna Banja or Dolna Bania (Bulgarian: Долна баня) is a town located in Sofia Province in southwestern Bulgaria. 75 km from Sofia and Plovdiv, Dolna Banya is located in the Kostenets–Dolna Banya Valley by the north-eastern slopes of the Rila Mountains, 18 and 30 km respectively from the ski resorts of Borovets and Samokov. Dolna Banya is a resort town, known for its hot mineral waters, with temperatures of 56.3 C. The area surrounding the town is largely agricultural, and there are skiing and hiking trails in the nearby mountains.\nDolna Banya is a small, lively town. The square has a vegetable market, bakery, and two bars. The inside of the town's Bulgarian Orthodox church is covered in murals, and the churchyard located next to a stream."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "dolna banya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dolna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "banya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7825,
+    "place_id": "gn-10055383",
+    "input": {
+      "place": {
+        "place_id": "gn-10055383",
+        "name": "Joondanna",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.90767,
+        "lon": 115.84233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joondanna, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Joondanna,_Western_Australia",
+          "text": "Joondanna is a suburb in Perth, Western Australia. Its local government area is the City of Stirling.\nThere is a Catholic church, St Denis, and a small Catholic primary school, St Denis School, named after the church.\nJoondanna is named after a farm said to be owned by an early settler in the area.\nJoondanna Heights was the first declared township in the Perth Road District (now the City of Stirling) - the Government Gazette of 17 November 1939 described its boundaries as Balcatta Beach Road (now North Beach Drive, Tuart Hill), Main Street, Wanneroo Road, and what was then the City of Perth boundary (Green Street, now the City of Vincent boundary). Joondanna's neighbouring suburbs are Yokine, Coolbinia, North Perth, Mount Hawthorn, Glendalough, Osborne Park, and Tuart Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "joondanna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7863,
+    "place_id": "gn-5969185",
+    "input": {
+      "place": {
+        "place_id": "gn-5969185",
+        "name": "Halfmoon Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.51289,
+        "lon": -123.9087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halfmoon Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Halfmoon_Bay,_British_Columbia",
+          "text": "Halfmoon Bay (xwilkway in she shashishalhem) is a small community in British Columbia, Canada, within the shíshálh swiya (the lands, birthplace, or \"Territory\" of the shíshálh Nation), and Electoral Area B of the Sunshine Coast Regional District. The population consists of approximately 2,800 people, including a large number of seasonal residents. The community is named for the large scalloped bay on which it sits, which is sheltered by South Thormanby Island and Vancouver Island.\nThe community can be accessed via Redrooffs Road, so-named after a popular local resort which once featured a cluster of cabins, all with red roofs. Some homes are also located off Highway 101.\nHalfmoon Bay Elementary School, the community's only elementary school, has 200–300 students ranging from kindergarten to grade seven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "halfmoon bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "halfmoon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7868,
+    "place_id": "gn-2640600",
+    "input": {
+      "place": {
+        "place_id": "gn-2640600",
+        "name": "Park Street",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.71667,
+        "lon": -0.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park Street, Hertfordshire",
+          "url": "https://en.wikipedia.org/wiki/Park_Street,_Hertfordshire",
+          "text": "Park Street is a small village in Hertfordshire, England. It is on the southern outskirts of St Albans, around 2 miles (3.2 km) south of the city centre, and is separated from the rest of the city's contiguous built-up area by a buffer to the north.  \nPark Street has a petrol station, several tyre and automotive service businesses and two food-serving public houses; it is of late and initially disparate medieval origin. The village is also home to the penultimate station on the Abbey Line from Watford Junction, which opened in 1858.\nPark Street is also a larger local government ward (the largest settlement of which is How Wood and which includes part of Bricket Wood). The area falls within the Metropolitan Green Belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "park street",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "street",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7869,
+    "place_id": "gn-2657775",
+    "input": {
+      "place": {
+        "place_id": "gn-2657775",
+        "name": "Aboyne",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.07546,
+        "lon": -2.78023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aboyne",
+          "url": "https://en.wikipedia.org/wiki/Aboyne",
+          "text": "Aboyne (Scots: Abyne, Scottish Gaelic: Abèidh) is a village on the edge of the Highlands in Aberdeenshire, Scotland, on the River Dee, approximately 30 miles (48 km) west of Aberdeen. It has a swimming pool at Aboyne Academy,  all-weather tennis courts, a bowling green and is home to the oldest 18 hole golf course on Royal Deeside.  Aboyne Castle and the Loch of Aboyne are nearby.\nAboyne has many businesses, including a Co-Op supermarket, several hairdressers, a butcher, a newsagent, an Indian restaurant and a post office. Originally, there was a railway station in the village, but it was closed on 18 June 1966. The station now contains some shops and the tunnel running under the village is now home to a firearms club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "aboyne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7870,
+    "place_id": "gn-2662830",
+    "input": {
+      "place": {
+        "place_id": "gn-2662830",
+        "name": "Vingåker",
+        "country": "Sweden",
+        "subdivision": "Södermanland",
+        "lat": 59.0433,
+        "lon": 15.87374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vingåker",
+          "url": "https://en.wikipedia.org/wiki/Ving%C3%A5ker",
+          "text": "Vingåker () is a locality and the seat of Vingåker Municipality, Södermanland County, Sweden with 4,282 inhabitants in 2010. It is located 50 kilometres (31 mi) by road from the nearest larger city Örebro and 80 kilometres (50 mi) north-west of county seat Nyköping.\nIt was partly built in the English garden of Säfstaholm, a large estate which until 1855 was home to philanthropist and art collector Gustaf Trolle-Bonde. The estate is nowadays owned by the municipality and contains an art museum with yearly exhibitions during the summer.\nThe town's expansion began in 1862 when a railway station was opened along the western main line (Västra Stambanan, which runs from Stockholm to Gothenburg). The station remained in operation until 1971, but reopened in 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "vingaker",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7872,
+    "place_id": "gn-2929122",
+    "input": {
+      "place": {
+        "place_id": "gn-2929122",
+        "name": "Eschede",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.73494,
+        "lon": 10.2354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eschede",
+          "url": "https://en.wikipedia.org/wiki/Eschede",
+          "text": "Eschede (German pronunciation: ['ɛʃədə]) is a municipality in the district of Celle, in Lower Saxony, Germany. Situated approximately 15 km (10 miles) northeast of Celle, Eschede lies at the border of the Südheide Nature Park, a protected area of large forests and heaths. Today around 20 small villages are part of the \"Gemeinde Eschede\".\nIn 1975, the largest forest fire in the history of Germany destroyed vast tracts of forests in the area. The place is also known for the 1998 Eschede train disaster, in which an ICE 1 train crashed, killing 101 and making it the worst German rail accident since the Second World War.\nThe painter Albert König (1881–1944) was born in Eschede, and the \"Albert-König-Museum\" can be visited in Unterlüß nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "eschede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7874,
+    "place_id": "gn-5716833",
+    "input": {
+      "place": {
+        "place_id": "gn-5716833",
+        "name": "Burns",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 43.58626,
+        "lon": -119.0541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burns, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Burns,_Oregon",
+          "text": "Burns is a city in and the county seat of Harney County, in the U.S. state of Oregon. According to the 2020 census, the population was 2,730. Burns and the nearby city of Hines are home to about 60 percent of the people in the sparsely populated county, by area the largest in Oregon and the tenth largest in the United States.\nThe Burns–Hines region has a high-desert climate but was much wetter in the recent geologic past. The Harney Basin was the largest of many depressions in which lakes formed in southeastern Oregon during the late Pleistocene. Remnants of an ancient lake that reached as far north as Burns are at the center of the Malheur National Wildlife Refuge, south of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "burns",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7877,
+    "place_id": "gn-174884",
+    "input": {
+      "place": {
+        "place_id": "gn-174884",
+        "name": "Jermuk",
+        "country": "Armenia",
+        "subdivision": "Vayots Dzor",
+        "lat": 39.83948,
+        "lon": 45.67112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jermuk",
+          "url": "https://en.wikipedia.org/wiki/Jermuk",
+          "text": "Jermuk (Armenian: Ջերմուկ) is a mountain spa town and the centre of the Jermuk Municipality of the Vayots Dzor Province in southern Armenia, at a road distance of 53 km (33 mi) east of the provincial capital Yeghegnadzor. It was considered one of the popular destinations for medical tourism in the Soviet Union.\nJermuk is known for its hot springs and mineral water brands bottled in the town. It is attractive for its fresh air, waterfall, artificial lakes, walking trails, the surrounding forests and mineral water pools. The town is being redeveloped to become a modern center of tourism and health services. It is also being set up to become a major chess centre, with numerous chess international tournaments scheduled in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "jermuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7882,
+    "place_id": "gn-7932379",
+    "input": {
+      "place": {
+        "place_id": "gn-7932379",
+        "name": "HafenCity",
+        "country": "Germany",
+        "subdivision": "Hamburg",
+        "lat": 53.54156,
+        "lon": 9.99328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "HafenCity",
+          "url": "https://en.wikipedia.org/wiki/HafenCity",
+          "text": "HafenCity (German pronunciation: [ˈhaːfn̩ˌsɪti] ) is a quarter in the borough of Hamburg-Mitte, Hamburg, Germany. It is located on the Elbe river island Grasbrook, on the former Port of Hamburg area. It was formally established in 2008 and also includes the historical Speicherstadt area, which since 2015 is an UNESCO World Heritage Site with the adjacent Kontorhausviertel. The main landmark of the HafenCity is the Elbphilharmonie concert hall.\nIn a narrower sense, HafenCity Hamburg is a project of urban regeneration where the \"greater Grasbrook\" area of the former Hamburg free port is being revitalised with new hotels, shops, office buildings, and residential areas. The project is considered the largest urban redevelopment project in Europe by landmass, at approximately 2.2 square kilometres (220 ha)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "hafencity",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7885,
+    "place_id": "gn-2168309",
+    "input": {
+      "place": {
+        "place_id": "gn-2168309",
+        "name": "Drysdale",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.17237,
+        "lon": 144.56988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drysdale, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Drysdale,_Victoria",
+          "text": "Drysdale is a rural township near Geelong, Victoria, Australia, located on the Bellarine Peninsula. The town has an approximate population of over 3,700. Drysdale forms part of an urban area, along with nearby Clifton Springs, that had an estimated population of 13,494 at June 2016.\nA popular youth music and performing arts venue, affectionately labelled 'The Potato Shed' is located in the back of Drysdale. The industrial size venue is the site of 'Battle of The Bands', a yearly music festival which has seen a number of local bands make a name for themselves in a popular setting.\nDrysdale has several primary and high schools, including Saint Ignatius College, the senior campus of Bellarine Secondary College, and a campus of Christian College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "drysdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7891,
+    "place_id": "gn-5988442",
+    "input": {
+      "place": {
+        "place_id": "gn-5988442",
+        "name": "Juniper Ridge",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.66667,
+        "lon": -120.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juniper Ridge",
+          "url": "https://en.wikipedia.org/wiki/Juniper_Ridge",
+          "text": "Juniper Ridge is a community located in the city of Kamloops, British Columbia. It is situated at the south-east end of the city on a hillside south of the South Thompson River. There is a convenience store at the entrance to the community, and the area is serviced by an elementary school.  It is accessible only by one road, Highland Rd.: however, a formerly washed out dirt road has been refilled allowing emergency access to the Rose Hill area.  Most of the streets in this neighbourhood are named after rivers in the province, such as:\nSkeena, Nechako, Omineca, Babine, Coldwater, etc. Tennis courts, an ice rink with bright lighting, and a dog park are located at the local community centre, Juniper Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "juniper ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juniper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7911,
+    "place_id": "gn-5795991",
+    "input": {
+      "place": {
+        "place_id": "gn-5795991",
+        "name": "Granite Falls",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.08399,
+        "lon": -121.96874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Granite Falls, Washington",
+          "url": "https://en.wikipedia.org/wiki/Granite_Falls,_Washington",
+          "text": "Granite Falls is a city in Snohomish County, Washington, United States. It is located between the Pilchuck and Stillaguamish rivers in the western foothills of the Cascade Range, northeast of Lake Stevens and Marysville. The city is named for a waterfall north of downtown on the Stillaguamish River, also accessible via the Mountain Loop Highway. As of the 2020 census, Granite Falls had a population of 4,450.\nThe site of Granite Falls was originally a portage for local Coast Salish tribes prior to the arrival of American settlers. The settlement was founded in 1883 and prospered after the discovery of gold and silver in the Monte Cristo mines located east of Granite Falls on the Everett and Monte Cristo Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "granite falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "granite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7915,
+    "place_id": "gn-3203970",
+    "input": {
+      "place": {
+        "place_id": "gn-3203970",
+        "name": "Blagaj",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.25892,
+        "lon": 17.88815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blagaj, Mostar",
+          "url": "https://en.wikipedia.org/wiki/Blagaj,_Mostar",
+          "text": "Blagaj (Serbian Cyrillic: Благај) is a historic village and protected heritage site in Bosnia and Herzegovina. It is located in the south-eastern region of the Mostar basin, in the Herzegovina-Neretva Canton. It stands at the edge of Bišće plain and is one of the most valuable mixed urban and rural built environments in Bosnia and Herzegovina, distinguished from other similar built environments in its urban layout. Blagaj was most likely named for its mild weather patterns since blaga in Bosnian means \"mild\".\nBlagaj is situated at the spring of the Buna river and a historical tekija (Dervish monastery). The Blagaj Tekija was built around 1520, with elements of Ottoman architecture and Mediterranean style and is considered a national monument."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "blagaj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7916,
+    "place_id": "gn-3516148",
+    "input": {
+      "place": {
+        "place_id": "gn-3516148",
+        "name": "Tecolutla",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 20.48049,
+        "lon": -97.01309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tecolutla",
+          "url": "https://en.wikipedia.org/wiki/Tecolutla",
+          "text": "Tecolutla is a town and municipality located on the Tecolutla River on the eastern coast of the state of Veracruz in Mexico. It has the closest beaches to Mexico City, and much of its economy is based on tourism, as it is only a four- or five-hour drive from the capital. It is the northern end of a tourist corridor along the Gulf of Mexico called the \"Emerald Coast,\" which extends down to the city of Veracruz.\nTecolutla's biggest attraction is its natural settings of wetlands with estuaries, canals and mangroves associated with the river. The town is known for the \"Tecolutla Monster,\"—probably a dead whale—that was washed ashore in 1969. Its remains are kept at the Marine Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tecolutla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7918,
+    "place_id": "gn-3676477",
+    "input": {
+      "place": {
+        "place_id": "gn-3676477",
+        "name": "Lloró",
+        "country": "Colombia",
+        "subdivision": "Chocó",
+        "lat": 5.49786,
+        "lon": -76.5476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lloró",
+          "url": "https://en.wikipedia.org/wiki/Llor%C3%B3",
+          "text": "Lloró is a municipality and town in the Chocó Department, Colombia. It claims the second world record for highest average annual precipitation with 12,717 mm (501 in), after López de Micay, which holds an also disputed record with 12,892.4 mm (508 in). The official record is held by Mawsynram, India. The rainfall data was measured in its Agricultural Farm, managed by the University of Bogotá, between 1952 and 1989. If accurate, that would make it the wettest place in the world. Although “lloró” is the 3rd person singular preterite tense of the Spanish verb “llorar” (to cry) which may colloquially be compared to rain, this similarity is merely incidental; the town is named for Gioró, a pre-Columbian indigenous chief."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lloro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7920,
+    "place_id": "gn-5321390",
+    "input": {
+      "place": {
+        "place_id": "gn-5321390",
+        "name": "Window Rock",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 35.68057,
+        "lon": -109.05259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Window Rock, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Window_Rock,_Arizona",
+          "text": "Window Rock, known in Navajo as Tségháhoodzání (pronounced [tsʰéɰáhòːtsání]), is a city and census-designated place that serves as the capital of the Navajo Nation, the largest Native American tribe by both land and tribal enrollment. The capital lies in Apache County, and is within the boundaries of the St. Michaels Chapter, adjacent to the Arizona and New Mexico state line. Window Rock is the site of the Navajo Nation governmental campus, which contains the Navajo Nation Council, Navajo Nation Supreme Court, the offices of the Navajo Nation President and Vice President, and many Navajo government buildings.\nWindow Rock's population was 2,500 at the 2020 census. It is estimated to reach around 20,000 during weekdays when tribal offices are open."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "window rock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "window",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7925,
+    "place_id": "gn-2513713",
+    "input": {
+      "place": {
+        "place_id": "gn-2513713",
+        "name": "Molvízar",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.78592,
+        "lon": -3.60783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Molvízar",
+          "url": "https://en.wikipedia.org/wiki/Molv%C3%ADzar",
+          "text": "Molvízar is a small town and municipality located in the province of Granada, in Spain.  Between 1905 and 2005, the population has ranged between 1500 and 3500 inhabitants.  It is located in the foothills of the mountains of southern Spain, approximately five kilometres from the Costa Tropical coast.\nAgriculture is a large part of its economy, with an increasing contribution from European tourism, with visitors attracted by its year-round temperate weather.\nLocals celebrate the patron saint, Santa Ana, on July 26, during which the town puts forth a traditional representation of \"Moros y Cristianos\" (Moors and Christians), which commemorates the Reconquista expulsion of the Moors from Spain. The city is also the birthplace of anarchist revolutionary Antonio Ramón."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "molvizar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

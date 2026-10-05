@@ -1,0 +1,842 @@
+[
+  {
+    "rank": 5664,
+    "attempt": 5621,
+    "place_id": "gn-3514684",
+    "input": {
+      "place": {
+        "place_id": "gn-3514684",
+        "name": "Villa Corzo",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.18463,
+        "lon": -93.26802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Corzo",
+          "url": "https://en.wikipedia.org/wiki/Villa_Corzo",
+          "text": "Villa Corzo is a city and municipality in the Mexican state of Chiapas in southern Mexico. The city of Villa Corzo (the municipal seat is located at (16 ° 11'N 93 ° 16'W / 16,183, 93,267 and 580 meters.)\nAs of 2010, the municipality had a total population of 74,477, up from 68,685 as of 2005. It covers an area of 4,026.7 km2.\nAs of 2010, the city of Villa Corzo had a population of 10,841. Other than the city of Villa Corzo, the municipality had 1,985 localities, the largest of which (with 2010 populations in parentheses) were: El Parral (10,865), San Pedro Buenavista (8,969), Revolución Mexicana (7,989), Valle Morelos (3,328), Nuevo Vicente Guerrero (2,906), classified as urban, and Jericó (Porvenir) (2,467), 1ro. de Mayo (2,381), Emiliano Zapata (1,496), Manuel Ávila Camacho (1,362), and Monterrey (1,086), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "villa corzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5665,
+    "attempt": 5622,
+    "place_id": "gn-3840104",
+    "input": {
+      "place": {
+        "place_id": "gn-3840104",
+        "name": "Puerto Deseado",
+        "country": "Argentina",
+        "subdivision": "Santa Cruz",
+        "lat": -47.75131,
+        "lon": -65.89674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Deseado",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Deseado",
+          "text": "Puerto Deseado, originally called Port Desire, is a city and a fishing port of 16,747 inhabitants (at the 2022 Census), which serves as the capital of the Deseado Department in Santa Cruz Province of Argentina, situated on the estuary of the Deseado River.\nIt was named Port Desire by the privateer Thomas Cavendish in 1586 after the name of his ship, and later became known by the Spanish translation of the name. Today, the straggly town has a couple of pleasant squares, a former railway station and two museums, one with a collection of indigenous artifacts and one at the seafront with relics from the sloop of war HMS Swift which sank in 1770, recovered after its wreck was discovered in the port in 1982. The coast boasts spectacular scenery and colonies of marine wildlife close to the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "puerto deseado",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "deseado",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5666,
+    "attempt": 5623,
+    "place_id": "gn-3928245",
+    "input": {
+      "place": {
+        "place_id": "gn-3928245",
+        "name": "Santiago de Surco",
+        "country": "Peru",
+        "subdivision": "Lima region",
+        "lat": -12.13588,
+        "lon": -77.00742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago de Surco",
+          "url": "https://en.wikipedia.org/wiki/Santiago_de_Surco",
+          "text": "Santiago de Surco (Spanish: [sãnˈtja.ɣo ð̞e ˈsuɾ.ko]; lit. 'Santiago of Surco'), commonly known simply as Surco, is a district of Lima, Peru. It is bordered on the north with the district of Ate Vitarte and La Molina; on the east with San Juan de Miraflores, on the west with San Borja, Surquillo, Miraflores and Barranco, and on the south with Chorrillos.\nDue to its relatively large area, it is a very heterogeneous district, having inhabitants belonging to all socio-economic levels.\nThe district is recognised for its green spaces. The northern parts of Santiago de Surco, which are close to the districts of La Molina and San Borja, are known as Monterrico, Chacarilla and Casuarinas. They are considerably more developed than the southern side of the district, having more upper-class housing and all four major shopping centers of the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "santiago de surco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "surco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5667,
+    "attempt": 5624,
+    "place_id": "gn-4244967",
+    "input": {
+      "place": {
+        "place_id": "gn-4244967",
+        "name": "Mount Carmel",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 38.41088,
+        "lon": -87.76142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Carmel, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Mount_Carmel,_Illinois",
+          "text": "Mount Carmel is a city in and the county seat of Wabash County, Illinois, United States. At the time of the 2020 census, the population was 7,015, and it is the largest city in the county. The next largest town in Wabash County is Allendale, with the population of 458.\nLocated at the confluence of the Wabash, Patoka, and White rivers, Mount Carmel borders both Gibson and Knox counties of Indiana. A small community known informally as East Mount Carmel sits near the mouth of the Patoka River on the opposite (Gibson County) side of the Wabash River from Mount Carmel. Mount Carmel is 5 miles (8.0 km) northeast of the Forest of the Wabash, a National Natural Landmark within Beall Woods State Park and about a mile north-northeast of one of its main employers, the Gibson Generating Station. Mount Carmel is also the home of Wabash Valley College, part of the Community College System of Eastern Illinois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "mount carmel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carmel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5668,
+    "attempt": 5625,
+    "place_id": "gn-4845823",
+    "input": {
+      "place": {
+        "place_id": "gn-4845823",
+        "name": "Willimantic",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.71065,
+        "lon": -72.20813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willimantic, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Willimantic,_Connecticut",
+          "text": "Willimantic is a census-designated place located in Windham, Connecticut, United States. Previously organized as a city and later as a borough, Willimantic is currently one of two tax districts within the Town of Windham. Willimantic is located within Windham County and the Southeastern Connecticut Planning Region. Known as \"Thread City\" for the American Thread Company's mills along the Willimantic River, it was a center of the textile industry in the 19th century. Originally incorporated as a city in 1893, it entered a period of decline after the Second World War, culminating in the mill's closure and the city's reabsorption into the town of Windham in the 1980s.\nWillimantic was populated by a series of ethnic groups migrating to the city to find work at the mills, originally Western European and French Canadian immigrants, later Eastern Europeans and Puerto Ricans. Architecturally, it is known for its collection of Victorian-era houses and other buildings in the hill section, the Romanesque Revival town hall and several crossings of the Willimantic River, including the Willimantic Footbridge and the \"Frog Bridge\". It is home to Eastern Connecticut State University and the Windham Textile and History Museum. As of 2020, Willimantic had a population of 18,149 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "willimantic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5669,
+    "attempt": 5626,
+    "place_id": "gn-4903363",
+    "input": {
+      "place": {
+        "place_id": "gn-4903363",
+        "name": "Near South Side",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.8567,
+        "lon": -87.62477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Near South Side, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Near_South_Side,_Chicago",
+          "text": "The Near South Side is one of the 77 community areas of Chicago in Illinois, United States, just south of the downtown central business district, the Loop.\nThe Near South Side's boundaries are as follows: North—Roosevelt Road (1200 S); South—26th Street; West—Chicago River between Roosevelt and 18th Street, Clark Street between 18th Street and Cermak Road, Federal between Cermak Road and the Stevenson Expressway just south of 25th Street, and Clark Street again between the Stevenson and 26th Street; and East—Lake Michigan.\nAlong Lake Shore Drive, the Near South Side includes some of Chicago's best-known structures: Soldier Field, home of the NFL's Chicago Bears; McCormick Place, Chicago's primary convention center; the Museum Campus, which contains the Field Museum, the Shedd Aquarium, and the Adler Planetarium; and Northerly Island. The area is currently undergoing a major residential and mixed-use redevelopment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "near south side",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "near",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "side",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5670,
+    "attempt": 5627,
+    "place_id": "gn-5101244",
+    "input": {
+      "place": {
+        "place_id": "gn-5101244",
+        "name": "Milltown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.45622,
+        "lon": -74.44321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milltown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Milltown,_New_Jersey",
+          "text": "Milltown is a borough in Middlesex County, in the U.S. state of New Jersey. The borough is nestled within the heart of the Raritan Valley region, with Lawrence Brook (a Raritan river tributary) flowing through the center of the community. As of the 2020 United States census, the borough's population was 7,037, an increase of 144 (+2.1%) from the 2010 census count of 6,893, which in turn reflected a decrease of 107 (−1.5%) from the 7,000 counted in the 2000 census.\nMilltown was incorporated as a borough by an act of the New Jersey Legislature on January 29, 1889, from portions of North Brunswick, based on the results of a referendum held three days earlier. The borough was reincorporated by resolution of the borough council on May 2, 1896. A portion of East Brunswick Township was annexed in 1902. Originally known as Bergen's Mill, named for Jacob I. Bergen who owned the grist mill, the name is believed to have become \"Milltown\" from residents \"going to the mill in town\".\nAs of the 2000 Census, the center of population for New Jersey was located in Milltown, at Milltown Road, just east of the New Jersey Turnpike (see map of location). Based on the results of the 2010 census, the center of population had shifted to East Brunswick."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "milltown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5671,
+    "attempt": 5628,
+    "place_id": "gn-5103503",
+    "input": {
+      "place": {
+        "place_id": "gn-5103503",
+        "name": "Roselle Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.66455,
+        "lon": -74.26431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roselle Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Roselle_Park,_New_Jersey",
+          "text": "Roselle Park is a borough in Union County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 13,967, an increase of 670 (+5.0%) from the 2010 census count of 13,297, which in turn reflected an increase of 16 (+0.1%) from the 13,281 counted in the 2000 census.\nRoselle Park was incorporated as a borough by an act of the New Jersey Legislature on March 22, 1901, from portions of Union Township. Roselle Park's name is derived from the Roselle Land Improvement Company, which was created in 1866 to lay out a community around the Mulford Station on the Central Railroad of New Jersey. The name \"Roselle\" is said to have been based on the company's founder, John Conklin Rose or from John Pierre Roselle, a friend of the railroad's president."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "roselle park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "roselle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5672,
+    "attempt": 5629,
+    "place_id": "gn-5106351",
+    "input": {
+      "place": {
+        "place_id": "gn-5106351",
+        "name": "Westwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.99121,
+        "lon": -74.03264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Westwood,_New_Jersey",
+          "text": "Westwood (known as \"The Hub of the Pascack Valley\") is a borough in Bergen County, in the U.S. state of New Jersey. Westwood is part of the New York metropolitan area. Many of its residents regularly commute to New York City for work and leisure, many using public transportation. As of the 2020 United States census, the borough's population was 11,282, an increase of 374 (+3.4%) from the 2010 census count of 10,908, which in turn reflected a decline of 91 (−0.8%) from the 10,999 counted in the 2000 census.\nWestwood was officially incorporated as a borough on May 8, 1894, from portions of Washington Township, early during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. Isaac D. Bogert served as the first mayor of the borough. In April 1909, Westwood was enlarged through the annexation of the \"Old Hook\" section of the borough of Emerson, and on September 24, 1957, portions of the borough were exchanged with Emerson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "westwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5673,
+    "attempt": 5630,
+    "place_id": "gn-5887470",
+    "input": {
+      "place": {
+        "place_id": "gn-5887470",
+        "name": "Val-des-Sources",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.76678,
+        "lon": -71.9324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Val-des-Sources",
+          "url": "https://en.wikipedia.org/wiki/Val-des-Sources",
+          "text": "Val-des-Sources (French pronunciation: [val de suʁs]), meaning \"Valley of the Springs\", formerly known as Asbestos (pronounced [asbɛstɔs]), is a town on the Nicolet River in the Estrie (Eastern Townships) region of southeastern Quebec, Canada. The town is the seat of Les Sources Regional County Municipality, formerly known as the Asbestos Regional County Municipality. The town covers an area of 30.25 square kilometres (11.68 mi2), including land acquired due to the merger of the City of Asbestos with the Municipality of Trois-Lacs on December 8, 1999.\nAt the 2021 census, 7,088 people resided in the town. It is situated in the centre of a square formed by the cities of Drummondville, Sherbrooke and Victoriaville, and the Nicolet River to the north.\nDue to the negative connotations of the name Asbestos, discussions took place around whether the town should be renamed. A municipal referendum held in October 2020 selected Val-des-Sources as the new name. The change came into effect on December 15, 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "val des sources",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "val",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sources",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5674,
+    "attempt": 5631,
+    "place_id": "gn-642673",
+    "input": {
+      "place": {
+        "place_id": "gn-642673",
+        "name": "Pargas",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.30672,
+        "lon": 22.30097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pargas",
+          "url": "https://en.wikipedia.org/wiki/Pargas",
+          "text": "Pargas (Finnish: Parainen) is a town and municipality of Finland, in the Archipelago Sea, the biggest archipelago in the world by the number of islands, 50,000. The big limestone mine in Pargas is the base of the main industry and except for the central parts, the municipality is still mostly rural.\nPargas is located in Åboland in the province of Western Finland and is part of the Southwest Finland region. It was created as Väståboland on 1 January 2009 in Southwest Finland, when the municipalities of Pargas, Nagu, Korpo, Houtskär and Iniö were merged into a single municipality.\nThe municipality has a population of 14,712 (31 December 2025) and covers an area of 5,548.17 square kilometres (2,142.16 sq mi) of which 4,666.46 km2 (1,801.73 sq mi) is water. The population density is 16.64 inhabitants per square kilometre (43.1/sq mi).\nPargas is a bilingual municipality with Finnish and Swedish as its official languages. The population consists of 42% Finnish speakers, 53% Swedish speakers, and 5% speakers of other languages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "pargas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5675,
+    "attempt": 5632,
+    "place_id": "gn-652305",
+    "input": {
+      "place": {
+        "place_id": "gn-652305",
+        "name": "Klaukkala",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.38244,
+        "lon": 24.751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Klaukkala",
+          "url": "https://en.wikipedia.org/wiki/Klaukkala",
+          "text": "Klaukkala (Finnish: [ˈklɑu̯kːɑlɑ]; Swedish: Klövskog, Finland Swedish: [ˈkløːvskuːɡ]) is the southern-most urban area (Finnish: taajama) of the Nurmijärvi municipality in Uusimaa, Finland, located near Lake Valkjärvi. It is the largest urban area in Nurmijärvi, and despite the fact that it officially has the status of a village, it is often mistakenly thought to be a separate town due to its size and structure. In the 2010s, Klaukkala's urban area grew to be part of the larger Helsinki urban area.\nKlaukkala has a population of over 20,000 and is the fastest-growing area of Nurmijärvi; almost half of the total population of the municipality lives in Klaukkala. Its population began to rise in the 1960s, when it surpassed the church village of Nurmijärvi. In the 1970s, Klaukkala also grew larger than Rajamäki, which until then was the largest of Nurmijärvi's villages. At that time, Klaukkala's population was over 2,500. Klaukkala has significant migration mainly from the Helsinki conurbation, being a rural village a half-hour's drive away from the Helsinki centre, it especially attracts families with children. Unfortunately, due to the enormous population growth, the village is also infamous for its growing traffic, which causes local problems at the mornings and afternoons.\nIn the early 2000s, many detached houses were built in Klaukkala, but the situation has changed as up to three-quarters of the new houses are apartment, terraced and semi-detached houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "klaukkala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5676,
+    "attempt": 5633,
+    "place_id": "gn-8030162",
+    "input": {
+      "place": {
+        "place_id": "gn-8030162",
+        "name": "West Hills",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.19731,
+        "lon": -118.64398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Hills, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/West_Hills,_Los_Angeles",
+          "text": "West Hills is a neighborhood in the western San Fernando Valley region of the city of Los Angeles, California. It is bordered by mountain ranges to the west and the Los Angeles neighborhoods of Chatsworth to the north, Canoga Park to the east, and Woodland Hills to the south.\nThe neighborhood was formerly the home of many Native American tribes, and during the early Spanish and Mexican era was part of the Mission San Fernando Rey de España. In the American era, West Hills was part of Owensmouth, which was renamed Canoga Park in 1930. Current-day Canoga Park and current-day West Hills were both known as Canoga Park. In 1987, the city of Los Angeles gave approval for the western portion of Canoga Park to split from the rest of Canoga Park, officially creating the neighborhood of West Hills.\nSeveral city parks are to be found within West Hills. The area is highly residential; there are some religious establishments and a few commercial areas in the community. Two private high schools are among the 16 total schools within West Hills. High school students in West Hills who do not attend a private high school may typically attend the public high school in Canoga Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "west hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5677,
+    "attempt": 5634,
+    "place_id": "gn-8348559",
+    "input": {
+      "place": {
+        "place_id": "gn-8348559",
+        "name": "Eastlakes",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.93196,
+        "lon": 151.21214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastlakes",
+          "url": "https://en.wikipedia.org/wiki/Eastlakes",
+          "text": "Eastlakes is a suburb of Sydney, in the state of New South Wales, Australia. Eastlakes is located 8 kilometres south of the Sydney central business district, in the local government area of the Bayside Council, Eastlakes is mostly residential with a shopping centre located at Evans Avenue. The residential portion of the suburb falls in the Inner South being west of the Eastern Distributor while the non-residential side of the suburb consisting of The Lakes Golf Course and Botany Dams is east of the Eastern Distributor falling within the Eastern Suburbs, south-east of the CBD.\nThere is a new shopping centre which opened in 2021 built across the road from the current shopping centre. Now that the new one is complete the current one will be redeveloped in the future. Golf courses also take up part of the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "eastlakes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5678,
+    "attempt": 5635,
+    "place_id": "gn-12156860",
+    "input": {
+      "place": {
+        "place_id": "gn-12156860",
+        "name": "Pelmo Park-Humberlea",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.71752,
+        "lon": -79.52828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pelmo Park-Humberlea",
+          "url": "https://en.wikipedia.org/wiki/Pelmo_Park-Humberlea",
+          "text": "Pelmo Park-Humberlea is a neighbourhood in Toronto, Ontario, Canada. It is located north-west of the central core, in the former suburb of North York. Many of the neighbourhoods in this quadrant of the city can aptly be described as family neighbourhoods with access to parks, green space and a slower pace than found closer to downtown.\nAs its name implies, it is composed of two geographic areas, the first being the Pelmo Park area which is bordered by the 401 to the north, Woodward Avenue to the south, Jane Street to the east and the CNR rail tracks to the west. The second area, Humberlea, is centred on Weston Road and bordered by Sheppard Avenue west to the north, Oak Street to the south, the CNR rail tracks to the east and the Humber River to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "pelmo park humberlea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pelmo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "humberlea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5679,
+    "attempt": 5636,
+    "place_id": "gn-13118054",
+    "input": {
+      "place": {
+        "place_id": "gn-13118054",
+        "name": "Kota Samarahan",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 1.46031,
+        "lon": 110.48821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kota Samarahan",
+          "url": "https://en.wikipedia.org/wiki/Kota_Samarahan",
+          "text": "Kota Samarahan, formerly known as Muara Tuang, is a town and the administrative seat of the Samarahan District in Samarahan Division, Sarawak, Malaysia. It is also a satellite town for Kuching due to its proximity to the city part of Greater Kuching area. The Sarawak government position Kota Samarahan as the medical and education hub of the state. Kota Samarahan can be considered \nas the 'heart' of Malay/Muslims in Sarawak (in addition to Kuching) which forms approximately over 54% of the population, thus make it as another \"Putrajaya\" version of Sarawak.\nThe Kota Samarahan Municipal Council (MPKS) exercises local authority over Samarahan and Asajaya districts, as well as Sadong Jaya subdistrict.\nAs of 2024, the Kota Samarahan town has a total population of 29,395, and the population of all towns managed by Kota Samarahan Municipal Council is 76,940."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "kota samarahan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kota",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "samarahan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5680,
+    "attempt": 5637,
+    "place_id": "gn-2473525",
+    "input": {
+      "place": {
+        "place_id": "gn-2473525",
+        "name": "Mezzouna",
+        "country": "Tunisia",
+        "subdivision": "Sidi Bouzid Governorate",
+        "lat": 34.57758,
+        "lon": 9.84193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mezzouna",
+          "url": "https://en.wikipedia.org/wiki/Mezzouna",
+          "text": "Mezzouna (Arabic: المزونة) is a town and commune in the Sidi Bou Zid Governorate, Tunisia. As of 2004, it had a population of 6,101.\nMezzouna is located at the eastern end of the mountainous mountain range Gafsa, at the foot of the Jebel Neguelet culminating at 411 meters.\nAttached to the governorate of Sidi Bouzid, it constitutes a municipality with 7,390 inhabitants in 2014, it is also the capital of a delegation of 33,979 inhabitants.\nIt is in a crossroads position between the Sfax-Gafsa axis (RN14 road) and the axis that connects Sidi Bouzid, capital of the governorate, and Skhira on the Gulf of Gabes (forty kilometers to the southeast).\nLocated on the final stretch of the pipeline carrying oil from Algeria to the oil port of Skhira, it owned the largest plastics plant, the Mezzouna Plastic Complex.\nThe Bouhedma National Park is located about twenty kilometers southwest in the Jebel Bouhedma"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "mezzouna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5681,
+    "attempt": 5638,
+    "place_id": "gn-2623181",
+    "input": {
+      "place": {
+        "place_id": "gn-2623181",
+        "name": "Christianshavn",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.67383,
+        "lon": 12.59541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Christianshavn",
+          "url": "https://en.wikipedia.org/wiki/Christianshavn",
+          "text": "Christianshavn (lit. '[King] Christian's Harbour') is a neighbourhood in Copenhagen, Denmark. Part of the Indre By district, it is located across several artificial islands between the islands of Zealand and Amager, and separated from the rest of the city centre by the Inner Harbour. It was founded in the early 17th century by Christian IV as part of his extension of the fortifications of Copenhagen. Originally, it was laid out as an independent privileged merchant's town inspired by Dutch cities, but it was soon incorporated into Copenhagen proper. Dominated by canals, it is the part of Copenhagen with the most nautical atmosphere.\nFor much of the 20th century a working-class neighbourhood, Christianshavn developed a more bohemian reputation in the 1970s and it is now a fashionable, diverse and lively part of the city with its own distinctive personality. Businessmen, students, artists, hippies and traditional families with children live side by side.\nAdministratively, Christianshavn has been part of Indre By since 2007, but it still has its own local council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "christianshavn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5682,
+    "attempt": 5639,
+    "place_id": "gn-2638595",
+    "input": {
+      "place": {
+        "place_id": "gn-2638595",
+        "name": "Sanderstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33591,
+        "lon": -0.07778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanderstead",
+          "url": "https://en.wikipedia.org/wiki/Sanderstead",
+          "text": "Sanderstead  is a village and medieval-founded church parish at the southern end of Croydon in south London, England, within the London Borough of Croydon, and formerly in the historic county of Surrey, until 1965. It takes in Purley Downs and Sanderstead Plantation, an area of woodland that includes the second-highest point in London. Sanderstead sits above a dry valley at the edge of the built-up area of Greater London. Cementing its secular identity from the late 19th century until abolition in 1965 it had a civil parish council. The community had a smaller farming-centred economy until the mid 19th century.\nAll Saints' Church's construction began in about 1230 followed by great alterations and affixing of monuments including a poem attributed to John Dryden, the first Poet Laureate nationally; it is protected under UK law as Grade I listed. Sanderstead station is at the foot of the dry valley and has frequent, fast trains to East Croydon, connected to a range of London terminals and interchanges. Sanderstead is claimed to an origin of the English Sanders surname, noting at least four separate geographical clusters formed by the 19th century, two of which were by 1881 far more populous.\nSanderstead's Interwar growth coincided with the electrification of the Southern Railway leaving largely a suburban community of households having at least one commuter to central London or Croydon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "sanderstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5683,
+    "attempt": 5640,
+    "place_id": "gn-2640140",
+    "input": {
+      "place": {
+        "place_id": "gn-2640140",
+        "name": "Ponders End",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.6445,
+        "lon": -0.04652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponders End",
+          "url": "https://en.wikipedia.org/wiki/Ponders_End",
+          "text": "Ponders End is the southeasternmost part of Enfield, north London, England, around Hertford Road west of the River Lee Navigation. It became industrialised through the 19th century, similarly to the Lea Valley in neighbouring Edmonton and Brimsdown, with manufacturing giving way to warehousing in the late 20th century. The area features much social housing, with streets also lined with suburban terraced housing from the 19th and early 20th centuries.\nAs a result of immigration, the area has become the most ethnically diverse part of Enfield: the majority of the population had an ethnic minority background at the 2011 census. As of 2021 the area was undergoing large-scale regeneration, and the high-rise Alma Road Estate was being demolished and redeveloped, and the new Electric Quarter development was being completed. Ponders End had a population of 14,101 as of 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "ponders end",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponders",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "end",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

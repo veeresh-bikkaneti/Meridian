@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 2192,
+    "place_id": "gn-1003953",
+    "input": {
+      "place": {
+        "place_id": "gn-1003953",
+        "name": "Fort Beaufort",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.77477,
+        "lon": 26.63376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Beaufort",
+          "url": "https://en.wikipedia.org/wiki/Fort_Beaufort",
+          "text": "Fort Beaufort (Xhosa: iBhofolo), officially renamed KwaMaqoma in March 2023, is a town in the Amatole District of South Africa's Eastern Cape Province, and had a population of 25,668 in 2011. The town was established in 1837 and became a municipality in 1883. The town lies at the confluence of the Kat River and Brak River between the Keiskamma and Great Fish Rivers. KwaMaqoma serves as a mini-'dormitory' for academic staff and students of Fort Hare University, based in the nearby town of Alice, and is also close to Sulphur Springs.\nIt is also the birthplace of South African politician and anti-apartheid activist who is also the first Premier of the Eastern Cape Raymond Mhlaba and his former first wife Joyce Meke."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "fort beaufort",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2205,
+    "place_id": "gn-4924198",
+    "input": {
+      "place": {
+        "place_id": "gn-4924198",
+        "name": "Noblesville",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.04559,
+        "lon": -86.0086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noblesville, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Noblesville,_Indiana",
+          "text": "Noblesville is a city in and the county seat of Hamilton County, Indiana, United States, a part of the north Indianapolis suburbs along the White River. The population was 69,604 at the 2020 census, making it the state's 10th most populous city, up from 14th in 2010. The city is part of Delaware, Fall Creek, Noblesville, and Wayne townships.\nNoblesville is home to Ruoff Music Center (formerly Klipsch Music Center and Deer Creek Music Center), the Indianapolis metro area's primary outdoor music venue. Since its opening in 1989, the nearly 25,000-seat amphitheater has been a popular stop for many touring musicians, consistently ranking first (or in the top three) among outdoor music venues in the world, for ticket sales, according to Pollstar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "noblesville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2215,
+    "place_id": "gn-2546917",
+    "input": {
+      "place": {
+        "place_id": "gn-2546917",
+        "name": "Ifrane",
+        "country": "Morocco",
+        "subdivision": "Fes-Meknes",
+        "lat": 33.52666,
+        "lon": -5.11019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ifrane",
+          "url": "https://en.wikipedia.org/wiki/Ifrane",
+          "text": "Ifrane is a city in the Middle Atlas region of northern Morocco. With an approximate population of 13,558, the capital of Ifrane Province in the region of Fès-Meknès is located at an elevation of more than 1,650 m (5,410 ft). The city is known for its heavy snowfall and is one of Morocco’s prominent mountain tourism destinations.\nThe modern town of Ifrane was established by the French administration in 1929 during the protectorate era for their administration due to its Alpine climate. Ifrane was conceived as a \"hill station\" or colonial type of settlement. It is a resort town set high up in the mountains so that Europeans could find relief from the summer heat of the interior plains of Morocco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ifrane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2218,
+    "place_id": "gn-2781503",
+    "input": {
+      "place": {
+        "place_id": "gn-2781503",
+        "name": "Bregenz",
+        "country": "Austria",
+        "subdivision": "Vorarlberg",
+        "lat": 47.50311,
+        "lon": 9.7471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bregenz",
+          "url": "https://en.wikipedia.org/wiki/Bregenz",
+          "text": "Bregenz (German: [ˈbʁeːɡɛnts] ; Vorarlbergian: Breagaz [ˈb̥rea̯ɡ̊ats]) is the capital of Vorarlberg, the westernmost state of Austria. The city lies on the east and southeast shores of Lake Constance, the third-largest freshwater lake in Central Europe (river Rhine), between Switzerland in the west and Germany in the northwest and big forests in the east - the Bregenzerwald.\nBregenz is located on a plateau falling in a series of terraces to the lake at the foot of Pfänder mountain. It is a junction of the arterial roads from the Rhine valley to the German Alpine foothills, with cruise ship services on Lake Constance.\nIt is famous for the annual summer music festival Bregenzer Festspiele, as well as the dance festival Bregenzer Spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "bregenz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2229,
+    "place_id": "gn-3571971",
+    "input": {
+      "place": {
+        "place_id": "gn-3571971",
+        "name": "Lucaya",
+        "country": "Bahamas",
+        "subdivision": "Freeport",
+        "lat": 26.53333,
+        "lon": -78.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucaya, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/Lucaya,_Bahamas",
+          "text": "Lucaya is a suburb of Freeport, Bahamas, a city on the island of Grand Bahama, approximately 105 mi (160 km) east-northeast of Fort Lauderdale, Florida, together with Freeport it forms the second largest city in the Bahamas. Lucaya's primary industry is tourism.\nMajor hotels and attractions in the resort are the Our Lucaya resort, which includes both The Radisson and Reef Village properties, Pelican Bay Hotel and the UNEXSO (UNderwater EXplorers SOciety) dive charter operation.\nUNEXSO was the first destination dive charter business in the world and now features a dolphinarium as well as a variety of SCUBA diving charters including shark feeding dives.\nPort Lucaya is a popular spring break destination with the socializing centering on Count Basie Square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "lucaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2237,
+    "place_id": "gn-5815342",
+    "input": {
+      "place": {
+        "place_id": "gn-5815342",
+        "name": "Wenatchee",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.42346,
+        "lon": -120.31035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenatchee, Washington",
+          "url": "https://en.wikipedia.org/wiki/Wenatchee,_Washington",
+          "text": "Wenatchee ( wen-ACH-ee) is the county seat of and the most populous city in Chelan County, Washington, United States. The population was 35,508 as of the 2020 census. The city lies at the confluence of the Columbia and Wenatchee rivers near the eastern foothills of the Cascade Range in north-central Washington. Wenatchee is on the west side of the Columbia River in Chelan County, across from the city of  East Wenatchee in Douglas County.\nThe city was named for the Wenatchi, a Native American tribe that inhabited the area around the confluence at the time of European-American contact. The name is a Sahaptin word that means \"river which comes [or whose source is] from canyons\" or \"robe of the rainbow\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "wenatchee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2244,
+    "place_id": "gn-2562247",
+    "input": {
+      "place": {
+        "place_id": "gn-2562247",
+        "name": "Marsaxlokk",
+        "country": "Malta",
+        "subdivision": "Marsaxlokk",
+        "lat": 35.84214,
+        "lon": 14.54296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marsaxlokk",
+          "url": "https://en.wikipedia.org/wiki/Marsaxlokk",
+          "text": "Marsaxlokk (Maltese pronunciation: [mɐrsɐʃˈlɔk]) is a small, traditional fishing village in the Southern Region of Malta. It has a harbour, and is a tourist attraction known for its views, fishing and history. The village is also known for the Marsaxlokk Market, which is mainly a large fish market which takes place along the seafront on Sundays, and a tourist market during all other days of the week. Inhabited and well-known since antiquity, Marsaxlokk was used as a port by Phoenicians, Carthaginians and also has the remains of a Roman-era harbour. Originally a part of the city of Żejtun, the fishing village became a separate parish in the late nineteenth century.\nThe population of Marsaxlokk was 4,206 in July 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "marsaxlokk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2246,
+    "place_id": "gn-3690654",
+    "input": {
+      "place": {
+        "place_id": "gn-3690654",
+        "name": "Yurimaguas",
+        "country": "Peru",
+        "subdivision": "Loreto",
+        "lat": -5.90181,
+        "lon": -76.12234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yurimaguas",
+          "url": "https://en.wikipedia.org/wiki/Yurimaguas",
+          "text": "Yurimaguas is a port town in the Loreto Region of the northeastern Peruvian Amazon. Historically associated with the Mainas missions, the culturally diverse town is affectionately known as the \"Pearl of the Huallaga\" (Perla del Huallaga). Yurimaguas is located at the confluence of the majestic Huallaga and Paranapura Rivers in the steamy rainforests of northeastern Peru. It is the capital of both Alto Amazonas Province and Yurimaguas District, and had a population estimated at  62,903 inhabitants (2017).\nWith a long and illustrious history, Yurimaguas is a tourist destination, especially during the August 15 annual Catholic festival of the Assumption. Long dominated by the presence of the Church, the town is  home to the Apostolic Vicariate of Yurimaguas, Loreto Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "yurimaguas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2247,
+    "place_id": "gn-4204230",
+    "input": {
+      "place": {
+        "place_id": "gn-4204230",
+        "name": "LaGrange",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.03929,
+        "lon": -85.03133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "LaGrange, Georgia",
+          "url": "https://en.wikipedia.org/wiki/LaGrange,_Georgia",
+          "text": "LaGrange is a city in and the county seat of Troup County, Georgia, United States. The population of the city was estimated to be 30,858 in 2020 by the U.S. Census Bureau. It is the principal city of the LaGrange, Georgia Micropolitan Statistical Area, which is included in the Atlanta-Sandy Springs-Gainesville, Georgia-Alabama (part) combined statistical area. It is about 60 miles (97 km) southwest of Atlanta and located in the foothills of the Georgian Piedmont.\nLaGrange is home to LaGrange College, the oldest private college in the state. Started as a girls' academy, it has been affiliated since the late 19th century with the Methodist Church, and what is now the North Georgia Conference of the United Methodist Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lagrange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2252,
+    "place_id": "gn-2521088",
+    "input": {
+      "place": {
+        "place_id": "gn-2521088",
+        "name": "Benidorm",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.53816,
+        "lon": -0.13098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benidorm",
+          "url": "https://en.wikipedia.org/wiki/Benidorm",
+          "text": "Benidorm is a city and municipality in the province of Alacant / Alicante, Valencian Community, on the Mediterranean coast of Spain.\nKnown as the \"New York of the Mediterranean\", Benidorm has been a tourist destination within Spain since 1925, when its port was extended and the first hotels were built, although it was only in the 1950s that it became renowned as a summer destination for people from inland Spain, especially Madrid.\nToday, Benidorm is known for its hotel industry, beaches and skyscrapers, and receives as many tourists from abroad as from Spain, chiefly from the United Kingdom. Benidorm has a permanent population of 77,211 inhabitants, making it the fifth-most populous and ninth-largest city in the Valencian Community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "benidorm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2256,
+    "place_id": "gn-5370082",
+    "input": {
+      "place": {
+        "place_id": "gn-5370082",
+        "name": "Manhattan Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.88474,
+        "lon": -118.41091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manhattan Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Manhattan_Beach,_California",
+          "text": "Manhattan Beach is a city in southwestern Los Angeles County, California, United States, on the Pacific coast south of El Segundo, west of Hawthorne, and north of Redondo Beach and Hermosa Beach. As of the 2020 census, the population was 35,506.\nTogether with Hermosa Beach and Redondo Beach, it forms the three Beach Cities within the South Bay region of Los Angeles County. The community is known for a long beach stretching approximately 2.1 miles (3.4 km) and roughly 450 feet (140 m) wide. The climate is moderate because of Manhattan Beach's proximity to the Pacific Ocean, with an average year-round high temperature of 69.1 °F (20.6 °C) and an average year-round low of 56.4 °F (13.6 °C)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "manhattan beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manhattan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2257,
+    "place_id": "gn-5806253",
+    "input": {
+      "place": {
+        "place_id": "gn-5806253",
+        "name": "Parkland",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.15538,
+        "lon": -122.43401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkland, Washington",
+          "url": "https://en.wikipedia.org/wiki/Parkland,_Washington",
+          "text": "Parkland is a census-designated place (CDP) in Pierce County, Washington. The population was 35,803 at the time of the 2010 census and had grown to 38,623 as of the 2020 census. It is an unincorporated suburb of the city of Tacoma and is home to Pacific Lutheran University.\nParkland borders most of Tacoma's southern cutoff at 96th St, and borders with much of the northern cutoff of Spanaway, Washington, at 152nd St (or Military Rd E).\nThe most influential motorway is State Route 7/Pacific Ave, which travels north and south, and leads from Interstate 5 in Tacoma all the way to Mount Rainier. Pacific Ave is also a main commercial corridor through much of the county, including Parkland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "parkland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2258,
+    "place_id": "gn-691179",
+    "input": {
+      "place": {
+        "place_id": "gn-691179",
+        "name": "Truskavets",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.28067,
+        "lon": 23.50365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Truskavets",
+          "url": "https://en.wikipedia.org/wiki/Truskavets",
+          "text": "Truskavets (Ukrainian: Трускавець, IPA: [trʊskɐˈwɛtsʲ] ; Polish: Truskawiec) is a city in Drohobych Raion, western Ukraine's Lviv Oblast (region), near the border with Poland. It hosts the administration of Truskavets urban hromada, one of the hromadas of Ukraine. The population is approximately 28,287 (2022 estimate).\nTruskavets is famous for its mineral springs, which have made it one of Ukraine's great resorts. For most visitors the primary goal is consuming the various 'local waters.' The most famous is the naphtha and sulfur-scented, slightly saline 'Naftusia.' The town lies in a little valley in the Carpathian foothills and is easily reached from Lviv by bus or train. The vast majority of tourists who come to Truskavets are Ukrainian or Belarusian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "truskavets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2259,
+    "place_id": "gn-727447",
+    "input": {
+      "place": {
+        "place_id": "gn-727447",
+        "name": "Sandanski",
+        "country": "Bulgaria",
+        "subdivision": "Blagoevgrad",
+        "lat": 41.56667,
+        "lon": 23.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandanski",
+          "url": "https://en.wikipedia.org/wiki/Sandanski",
+          "text": "Sandanski (Bulgarian: Сандански [sɐnˈdanski]; Greek: Σαντάνσκι, formerly known as Sveti Vrach, Bulgarian: Свети Врач, until 1947) is a town and a recreation center in southwestern Bulgaria, part of Blagoevgrad Province. Named after the Macedonian Bulgarian revolutionary Yane Sandanski, it is situated in Sandanski–Petrich Valley at the foot of the Pirin Mountains, along the banks of the Sandanska Bistritsa River. Sandanski is about 20 km away from the Bulgaria-Greece border and 100 km away from the Aegean Sea.\nThe town has a convenient location, a mild to warm climate (with the highest average annual temperature in the country, +16°C) and a relatively high concentration of thermal water springs, which all make it a popular destination for relaxation and recreation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sandanski",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2273,
+    "place_id": "gn-3175532",
+    "input": {
+      "place": {
+        "place_id": "gn-3175532",
+        "name": "Imperia",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 43.88917,
+        "lon": 8.03933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imperia",
+          "url": "https://en.wikipedia.org/wiki/Imperia",
+          "text": "Imperia (pronounced [imˈpɛːrja] ; Ligurian: Inpêia [iŋˈpeːja] or Inpéria) is a coastal city and comune in the region of Liguria, Italy. It is the capital of the Province of Imperia, and historically it was capital of the Intemelia district of Liguria. Benito Mussolini created the city of Imperia on 21 October 1923 by combining Porto Maurizio and Oneglia, as well as the surrounding village communes of Piani, Caramagna Ligure, Castelvecchio di Santa Maria Maggiore, Borgo Sant'Agata, Costa d'Oneglia, Poggi, Torrazza, Moltedo and Montegrazie.\nImperia is well known for the cultivation of flowers and olives, and is a popular summer destination for visitors. The local Piscina Felice Cascione indoor pool has hosted numerous national and international aquatics events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "imperia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2274,
+    "place_id": "gn-3197896",
+    "input": {
+      "place": {
+        "place_id": "gn-3197896",
+        "name": "Kolašin",
+        "country": "Montenegro",
+        "subdivision": "Opština Kolašin",
+        "lat": 42.82229,
+        "lon": 19.51653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kolašin",
+          "url": "https://en.wikipedia.org/wiki/Kola%C5%A1in",
+          "text": "Kolašin (Cyrillic: Колашин, pronounced [kɔlǎʃin]) is a town in northern Montenegro. It has a population of 2,418 (2023 census). Kolašin is the centre of Kolašin Municipality (population 9,949) and an unofficial centre of Morača region, named after Morača River. Kolašin is also a centre of winter tourism and pearl of Northern Montenegro. Kolašin is full of hotels and apartments for rent during the skiing season, but last years town is also very crowded during summer because of famous mountains around Bjelasica, Sinjajevina and Komovi, hiking destinations, relaxing ambience, pleasant summer temperatures during the hottest days of the summer and numerous sports events. In 2023, Kolasin hosted the MOSI Games and gathered around 2,000 athletes in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "kolasin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2281,
+    "place_id": "gn-6180550",
+    "input": {
+      "place": {
+        "place_id": "gn-6180550",
+        "name": "Whitehorse",
+        "country": "Canada",
+        "subdivision": "Yukon",
+        "lat": 60.71611,
+        "lon": -135.05375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitehorse",
+          "url": "https://en.wikipedia.org/wiki/Whitehorse",
+          "text": "Whitehorse is the capital of Yukon, and the largest city in Northern Canada. It was incorporated in 1950 and is located at kilometre 1426 (Historic Mile 918) on the Alaska Highway in southern Yukon. Whitehorse's downtown and Riverdale areas occupy both shores of the Yukon River, which rises in British Columbia and meets the Bering Sea in Alaska. The city was named after the White Horse Rapids for their resemblance to the mane of a white horse.\nBecause of the city's location in the Whitehorse valley and relative proximity to the Pacific Ocean, the climate tends to be milder. At this latitude, winter days are short and summer days have up to about 19 hours of daylight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "whitehorse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2282,
+    "place_id": "gn-7874216",
+    "input": {
+      "place": {
+        "place_id": "gn-7874216",
+        "name": "Santa Teresa",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.91769,
+        "lon": -43.18812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Teresa, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Santa_Teresa,_Rio_de_Janeiro",
+          "text": "Santa Teresa (Portuguese pronunciation: [ˈsɐ̃tɐ teˈɾezɐ]) is a neighborhood in the city of Rio de Janeiro, Brazil. It is located on top of the Santa Teresa hill, by the centre of Rio, and is famous for its winding, narrow streets which are a favourite spot for artists and tourists.\nThe neighborhood originated around the Santa Teresa Convent, built in the 1750s on the Desterro hill. At the end of the 19th and early 20th century it was an upper class borough, as testified by its many opulent villas. Santa Teresa ceased being an upper-class neighbourhood long ago, but it has been revived as a fashionable hotspot. It is home to several artists and art studios and galleries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "santa teresa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "teresa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2284,
+    "place_id": "gn-171451",
+    "input": {
+      "place": {
+        "place_id": "gn-171451",
+        "name": "Binnish",
+        "country": "Syria",
+        "subdivision": "Idlib",
+        "lat": 35.95664,
+        "lon": 36.7138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binnish",
+          "url": "https://en.wikipedia.org/wiki/Binnish",
+          "text": "Binnish (Arabic: بِنِّش, romanized: Binniš, also spelled Binsh) is a city in northwestern Syria, administratively belonging to the Idlib Governorate, located just east of Idlib. Nearby localities include Kafriya and Maarrat Misrin to the northwest, al-Fu'ah to the north,  Ta'um and Taftanaz to the northeast, Afs to the southeast and Sarmin to the south. According to the Syria Central Bureau of Statistics (CBS), Binnish had a population of 52,000 in the 2011 census. Its inhabitants are predominantly Sunni Muslim.\nThe city is situated on a hill. The city name Binnish is mentioned in the Tablets of Ebla 2400 BC. The city is famous for olive, vine and fig trees besides its varied crops of all kinds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "binnish",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2290,
+    "place_id": "gn-4168773",
+    "input": {
+      "place": {
+        "place_id": "gn-4168773",
+        "name": "Plant City",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.01888,
+        "lon": -82.11469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plant City, Florida",
+          "url": "https://en.wikipedia.org/wiki/Plant_City,_Florida",
+          "text": "Plant City is an incorporated city in Hillsborough County, Florida, United States, approximately midway between Brandon and Lakeland along Interstate 4. It is part of the Tampa Bay area. The population was 39,764 at the 2020 census.\nDespite many thinking it was named for flora grown at plant nurseries (especially vegetables and fruits, as well as tropical houseplants) in its subtropical Gulf Coast climate, it was named after prominent railroad developer Henry B. Plant (see Plant System).\nPlant City is known as the winter strawberry capital of the world and hosts the annual Florida Strawberry Festival in the late winter (usually in February or early March), which is attended by people from all over the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "plant city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

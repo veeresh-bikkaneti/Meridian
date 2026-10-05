@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3347,
+    "attempt": 3321,
+    "place_id": "gn-3053163",
+    "input": {
+      "place": {
+        "place_id": "gn-3053163",
+        "name": "Esztergom",
+        "country": "Hungary",
+        "subdivision": "Komárom-Esztergom",
+        "lat": 47.7928,
+        "lon": 18.74148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esztergom",
+          "url": "https://en.wikipedia.org/wiki/Esztergom",
+          "text": "Esztergom (Hungarian pronunciation: [ˈɛstɛrɡom] ; German: Gran; Slovak: Ostrihom) is a city with county rights in northern Hungary, 46 kilometres (29 miles) northwest of the capital Budapest. It lies in Komárom-Esztergom County, on the right bank of the river Danube, which forms the border with Slovakia there. Esztergom was the capital of Kingdom of Hungary from the 10th until the mid-13th century when King Béla IV of Hungary moved the royal seat to Buda.\nEsztergom is the seat of the prímás (see Primate) of the Catholic Church in Hungary, and the former seat of the Constitutional Court of Hungary. The city has a Christian Museum with the largest ecclesiastical collection in Hungary. Its cathedral, Esztergom Basilica, is the largest church in Hungary. Near the Basilica there is a campus of the Pázmány Péter Catholic University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "esztergom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3348,
+    "attempt": 3322,
+    "place_id": "gn-3164376",
+    "input": {
+      "place": {
+        "place_id": "gn-3164376",
+        "name": "Vigevano",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.31407,
+        "lon": 8.85437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vigevano",
+          "url": "https://en.wikipedia.org/wiki/Vigevano",
+          "text": "Vigevano (Italian: [viˈdʒɛːvano, -ˈdʒeː-]; Western Lombard: Avgevan) is a comune (municipality) in the province of Pavia, in the Italian region of Lombardy. A historic art town, it is also renowned for shoemaking and is one of the main centres of Lomellina, a rice-growing agricultural district. Vigevano received the honorary title of city with a decree of Duke Francis II Sforza on 2 February 1532. It is famed for its Renaissance Piazza Ducale in the centre of the town. It is also known for the Rassegna Litteraria di Vigevano (Literary Review of Vigevano), an annual cultural event celebrating literature and the arts, which honours two distinguished personalities from the world of culture every year with the National Prize and the International Career Prize."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "vigevano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3349,
+    "attempt": 3323,
+    "place_id": "gn-3184935",
+    "input": {
+      "place": {
+        "place_id": "gn-3184935",
+        "name": "Lezhë",
+        "country": "Albania",
+        "subdivision": "Lezhë County",
+        "lat": 41.78361,
+        "lon": 19.64361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lezhë",
+          "url": "https://en.wikipedia.org/wiki/Lezhë",
+          "text": "Lezhë (Albanian: [ˈlɛʒə], Albanian definite form: Lezha) is a city in the Republic of Albania and seat of Lezhë County and Lezhë Municipality. It is one of Albania's oldest continuously inhabited cities, with roughly 2,400 years of recorded history.\nOne of the main strongholds of the Labeatai, the earliest of the fortification walls of Lezhë are of typical Illyrian construction and are dated to the late 4th century BC. Lezhë was one of the main centres of the Illyrian kingdom. During the conflicts with Macedon, it was captured by Philip V becoming the Macedonian outlet to the Adriatic Sea. The city was later recovered by the Illyrians. It was subjected to Rome after the Roman-Illyrian wars and the fall of Gentius' realm. Lezhë was the site of the League of Lezhë where Skanderbeg united the Albanian lords in the fight against the Ottoman Empire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "lezhe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3350,
+    "attempt": 3324,
+    "place_id": "gn-3190813",
+    "input": {
+      "place": {
+        "place_id": "gn-3190813",
+        "name": "Sisak",
+        "country": "Croatia",
+        "subdivision": "Sisak-Moslavina",
+        "lat": 45.46608,
+        "lon": 16.37748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sisak",
+          "url": "https://en.wikipedia.org/wiki/Sisak",
+          "text": "Sisak (pronounced [sǐːsak]; also known by other alternative names) is a city in central Croatia, spanning the confluence of the Kupa, Sava and Odra rivers, 57 km (35 mi) southeast of the Croatian capital Zagreb, and is usually considered to be where the Posavina (Sava basin) begins, with an elevation of 99 m. The city's total population in 2021 was 40,185 of which 27,886 live in the urban settlement (naselje).\nSisak is the administrative centre of the Sisak-Moslavina County, Croatia's biggest river port and a centre of river shipping industry (Dunavski Lloyd). It lies on the D36 state road and the Zagreb-Sisak-Novska railway. Sisak is a regional economic, cultural and historical center. The largest oil refinery in Croatia is located in Sisak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sisak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3351,
+    "attempt": 3325,
+    "place_id": "gn-3894426",
+    "input": {
+      "place": {
+        "place_id": "gn-3894426",
+        "name": "Coyhaique",
+        "country": "Chile",
+        "subdivision": "Aysén",
+        "lat": -45.57524,
+        "lon": -72.06619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coyhaique",
+          "url": "https://en.wikipedia.org/wiki/Coyhaique",
+          "text": "Coyhaique (Spanish pronunciation: [koˈʝajke]), also spelled Coihaique in Patagonia, is the capital city of both the Coyhaique Province and the Aysén Region of Chile. Founded by settlers in 1929, it is a young city. Until the twentieth century, Chile showed little interest in exploiting the remote Aisén region. It lies east of the Andes mountain range, in Chilean Patagonia, at an average altitude of 310 m above sea level, at the confluence of the Simpson and Coyhaique rivers. \nThe city was founded on October 12, 1929 under the name Baquedano, in honor of the Chilean general Manuel Baquedano. Its name was changed to the current one in 1934 to distinguish it from another locality of the same name in the Antofagasta Region. Its establishment aimed to facilitate the colonization of the area, as well as to support the operations of the Sociedad Industrial de Aysén, which had maintained its facilities in the locality since 1906—currently protected as a National Historic Monument.\nShortly after its founding, the city experienced rapid growth, becoming a municipality in 1948 and the regional capital in 1974, within the framework of the regionalization process promoted by the military dictatorship.\nIts communal territory covers more than 7,000 km² and includes the localities of Balmaceda, El Blanco, Villa Ortega, Villa Frei, Valle Simpson, Alto Baguales, Ñirehuao, and Lago Largo, among others. Within its urban area are located the headquarters of the Regional Government of Aysén and the regional council, the Regional Presidential Delegate, the Court of Appeals, as well as the corresponding regional ministerial secretariats and the main public services.\nThe city is connected to the rest of the region by various roads, mainly the Carretera Austral, opened in the 1980s—and to the rest of Chile via Balmaceda Airport, which handles almost all of Aysén’s air traffic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "coyhaique",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3353,
+    "attempt": 3326,
+    "place_id": "gn-4736476",
+    "input": {
+      "place": {
+        "place_id": "gn-4736476",
+        "name": "The Woodlands",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.15799,
+        "lon": -95.48938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "The Woodlands, Texas",
+          "url": "https://en.wikipedia.org/wiki/The_Woodlands,_Texas",
+          "text": "The Woodlands is a special-purpose district and census-designated place in the U.S. state of Texas. The Woodlands is primarily located in Montgomery County, with portions extending into Harris County, within the Greater Houston metropolitan area. The population was 114,436 at the 2020 census. \nThe Woodlands area is governed by The Woodlands Township, an organization that provides municipal services and is administered by an elected board of directors. The United States Census Bureau defines an urban area separate from the Houston urban area with The Woodlands as a principal city: The Woodlands–Conroe urban area had a population of 402,454 in 2020, making it the 103rd-largest in the United States.\nThe Woodlands is located 28 miles (45 km) north of Houston along Interstate 45. Though it began as an exurban development and a bedroom community, it has also attracted corporations and has several corporate campuses, most notably Occidental Petroleum Corporation,  Chevron Phillips Chemical, Huntsman Corporation, Woodforest National Bank, Baker Hughes, McKesson Specialty Health, and Halliburton. The community won a Special Award for Excellence in 1994 from the Urban Land Institute."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "the woodlands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodlands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3354,
+    "attempt": 3327,
+    "place_id": "gn-4910713",
+    "input": {
+      "place": {
+        "place_id": "gn-4910713",
+        "name": "Schaumburg",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.03336,
+        "lon": -88.08341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schaumburg, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Schaumburg,_Illinois",
+          "text": "Schaumburg ( SHAWM-burg) is a village in Cook and DuPage counties in the U.S. state of Illinois. At the 2020 census, the population was 78,723, making Schaumburg the most populous incorporated village in the United States. Schaumburg is around 26 miles (42 km) northwest of downtown Chicago and 10 miles (16 km) northwest of O'Hare International Airport.\nSchaumburg's transition from a rural community to a suburban city began with Alfred Campanelli's first large-scale suburban-style development in 1959 and Woodfield Mall's opening in 1971. Schaumburg is bordered by Hoffman Estates and Palatine to the north, Inverness in northwest, Streamwood to the west, Hanover Park to the southwest, Roselle to the south, Elk Grove Village to the southeast, and Rolling Meadows to the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "schaumburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3355,
+    "attempt": 3328,
+    "place_id": "gn-5106292",
+    "input": {
+      "place": {
+        "place_id": "gn-5106292",
+        "name": "West New York",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.78788,
+        "lon": -74.01431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West New York, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/West_New_York,_New_Jersey",
+          "text": "West New York is a town in the northern part of Hudson County, in the U.S. state of New Jersey, situated upon the New Jersey Palisades. As of the 2020 United States census, the town's population was 52,912, an increase of 3,204 (+6.4%) from the 2010 census count of 49,708, which in turn reflected an increase of 3,940 (+8.6%) from the 45,768 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated that the city's population was 51,981 in 2022.\nWith more than 52,800 inhabitants per square mile (20,400/km2) of land according to the 2010 census, West New York was the second-most densely populated municipality in the United States, among places with a population above 50,000, behind neighboring Union City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "west new york",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "york",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3356,
+    "attempt": 3329,
+    "place_id": "gn-5374406",
+    "input": {
+      "place": {
+        "place_id": "gn-5374406",
+        "name": "Monterey Park",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.06251,
+        "lon": -118.12285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monterey Park, California",
+          "url": "https://en.wikipedia.org/wiki/Monterey_Park,_California",
+          "text": "Monterey Park is a city in the western San Gabriel Valley region of Los Angeles County, California, United States, approximately seven miles (11 km) east of the Downtown Los Angeles civic center. It is bordered by Alhambra, East Los Angeles, Montebello and Rosemead. The city's motto is \"Pride in the past, Faith in the future.\"\nMonterey Park is part of a cluster of cities (Alhambra, Arcadia, Temple City, Rosemead, San Marino, and San Gabriel in the west San Gabriel Valley) with a growing Asian American population. According to the 2020 Census, the city had a total population of 61,096. Monterey Park has consistently ranked as one of the country's best places to live due to its schools, growing economy, and central location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "monterey park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "monterey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3357,
+    "attempt": 3330,
+    "place_id": "gn-5386785",
+    "input": {
+      "place": {
+        "place_id": "gn-5386785",
+        "name": "Redondo Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.84918,
+        "lon": -118.38841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redondo Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Redondo_Beach,_California",
+          "text": "Redondo Beach (Redondo, Spanish for 'round') is a coastal city in Los Angeles County, California, United States, located in the South Bay region of the Greater Los Angeles area. It is one of three adjacent beach cities along the southern portion of Santa Monica Bay. The population was 71,576 at the 2020 census, up from 66,748 in 2010.\nRedondo Beach was originally part of the 1784 Rancho San Pedro Spanish land grant that later became the South Redondo area. The primary attractions include Municipal Pier and the sandy beach, popular with tourists and a variety of sports enthusiasts. The Southern terminus of the Metro Rail K Line (formerly the Western Terminus of the Metro Rail C Line) is in North Redondo Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "redondo beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "redondo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3358,
+    "attempt": 3331,
+    "place_id": "gn-5604045",
+    "input": {
+      "place": {
+        "place_id": "gn-5604045",
+        "name": "Pocatello",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 42.8713,
+        "lon": -112.44553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pocatello, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Pocatello,_Idaho",
+          "text": "Pocatello ( ) is the county seat of and the largest city in Bannock County, with a small portion on the Fort Hall Indian Reservation in neighboring Power County, containing the city's airport. It is the principal city of the Pocatello metropolitan area, which encompasses all of Bannock County in the southeastern part of the U.S. state of Idaho.\nAs of the 2020 census, the population of Pocatello was 56,320. Pocatello is the 6th most populous city in the state, just behind Caldwell.\nThe city is at an elevation of 4,462 feet (1,360 m) above sea level and it sits on the Portneuf River in the Snake River Plain ecoregion. Pocatello covers a land area of 33.36 square miles (86.4 square kilometers).\nPocatello is the home of Idaho State University and the manufacturing facilities of Amy's Kitchen and ON Semiconductor Corporation; it is served by the Pocatello Regional Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "pocatello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3359,
+    "attempt": 3332,
+    "place_id": "gn-6156855",
+    "input": {
+      "place": {
+        "place_id": "gn-6156855",
+        "name": "Stittsville",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.2501,
+        "lon": -75.91606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stittsville",
+          "url": "https://en.wikipedia.org/wiki/Stittsville",
+          "text": "Stittsville is a suburban community, part of the Canadian capital of Ottawa, Ontario. It is within the former Goulbourn Township. A part of the National Capital Region, Stittsville is immediately to the southwest of Kanata, adjacent to Richmond and about 20 km (12 mi) west of Downtown Ottawa. The urban part of the community corresponds to Stittsville Ward on Ottawa City Council and has been represented by Glen Gower since 2018. As of 2021, Stittsville ward had a population of 40,889.\nThree school boards are represented in the area: Ottawa Catholic School Board, Ottawa-Carleton District School Board and Centre-East French Catholic School Board; Sacred Heart Catholic High School, Frederick Banting Secondary Alternate Program and École secondaire catholique Paul-Desmarais are the high schools.\nStittsville is home to multiple municipal services: Ottawa Fire Services' station 81, Ottawa Police Service 211 Huntmar station, the Stittsville branch of the Ottawa Public Library. It also has a branch of ServiceOntario.\nFounded in 1854, the original location of the village was centred around Carp Road and Hazeldean Road; this area is now called Old Stittsville. In 1870, the Carleton Country Fire destroyed most of the buildings in the community. Villagers rebuilt around the newly constructed Canadian Pacific Railway. In 1990, the line was decommissioned, and its path is now part of the Trans-Canada Trail, running perpendicular to Stittsville Main Street, along Abbott Street East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "stittsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3360,
+    "attempt": 3333,
+    "place_id": "gn-1229989",
+    "input": {
+      "place": {
+        "place_id": "gn-1229989",
+        "name": "Point Pedro",
+        "country": "Sri Lanka",
+        "subdivision": "Northern Province",
+        "lat": 9.81667,
+        "lon": 80.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Point Pedro",
+          "url": "https://en.wikipedia.org/wiki/Point_Pedro",
+          "text": "Point Pedro, also known as Paruthithurai (Tamil: பருத்தித்துறை, romanized: Paruttittuṟai; Sinhala: පේදුරු තුඩුව, romanized: Pēduru Tuḍuva) is a town, located in Jaffna District, Sri Lanka, at the northernmost point of the island.\nCotton is produced around Point Pedro in the fertile calcic red latosol soils. The eastern coast of Point Pedro forms a 3 mile wide, 20 mile long beach with sand dunes up to 100 feet high, extending to Thalayady. The porous soil has a water table deep underground with an estimated one billion litres of fresh water. The Boxing Day tsunami of 2004 raised the salt content of the ground water. The tsunami destroyed parts of the town and submerged some parts with seawater up to 4 feet deep.\nThe town came briefly under the control of the Tamil Tigers (LTTE) during the early 1990s, until the Sri Lankan Army recaptured it in 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "point pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3361,
+    "attempt": 3334,
+    "place_id": "gn-1270947",
+    "input": {
+      "place": {
+        "place_id": "gn-1270947",
+        "name": "Gobichettipalayam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.45496,
+        "lon": 77.4422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gobichettipalayam",
+          "url": "https://en.wikipedia.org/wiki/Gobichettipalayam",
+          "text": "Gobichettipalayam (Tamil: [koːbitɕtɕeʈʈippaːɭaɪjam]) is a town and municipality in Erode district of the Indian state of Tamil Nadu. It is the administrative headquarters of Gobichettipalayam taluk. It is situated close to the centre of the South Indian Peninsula at 213 m (699 ft) above sea level, straddled by the Eastern Ghats. It is located 35 km (22 mi) from the district headquarters Erode, 44 km (27 mi) from Tiruppur and 80 km (50 mi) from Coimbatore. Agriculture and textile industries are major contributors to the economy of the town.\nThe town is a part of Gobichettipalayam constituency that elects its member to the Tamil Nadu legislative assembly and the Tirupur constituency that elects its member of parliament to the Lok Sabha. The town is administered by Gobichettipalayam Municipality, which was established in 1949. Gobichettipalayam has a population of 59,523 as per the 2011 census. It is known as \"Mini Kollywood\" because of the film production that takes place here and many films in Tamil and other languages have been shot here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "gobichettipalayam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3362,
+    "attempt": 3335,
+    "place_id": "gn-1723893",
+    "input": {
+      "place": {
+        "place_id": "gn-1723893",
+        "name": "Borongan",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.60806,
+        "lon": 125.43194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borongan",
+          "url": "https://en.wikipedia.org/wiki/Borongan",
+          "text": "Borongan, officially the City of Borongan (Waray: Siyudad han Borongan;  Filipino: Lungsod ng Borongan), is a  component city and capital of the province of Eastern Samar, Philippines. According to the 2024 census, it has a population of 71,431 people.\nIt is the most populous LGU in Eastern Samar and it is also nicknamed as the \"City of the Golden Sunrise/Sunshine\" and aspiring to be the \"King City of the East\". Its cityhood was settled by the Supreme Court of the Philippines when it decided with finality on April 12, 2007, the constitutionality of its city charter, Republic Act 9394, which conferred upon and elevated the status of the municipality of Borongan into a component city of the province of Eastern Samar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "borongan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3363,
+    "attempt": 3336,
+    "place_id": "gn-1734577",
+    "input": {
+      "place": {
+        "place_id": "gn-1734577",
+        "name": "Kamunting",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.88333,
+        "lon": 100.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamunting",
+          "url": "https://en.wikipedia.org/wiki/Kamunting",
+          "text": "Kamunting (Malay pronunciation: /Kemunting/) is a town in Larut, Matang and Selama District, Perak, Malaysia. It is the biggest satellite town of Taiping.\nDuring the Malayan Emergency between 1948 and 1960, Kamunting was the site of a major British/Commonwealth military base, there being a large garrison for the 28th Commonwealth Independent Infantry Brigade and also one of the three British Military Hospitals (BMHs) in Malaya. Between Taiping and Kamunting is one of the main Military Cemeteries in Malaya. Over the many years of the conflict against the Communist terrorists, thousands of British, Australian, New Zealand, Fijian and Gurkha troops lived - and died - in and around Kamunting and Taiping.\nKamunting houses the main bus station (Kamunting Raya) for Taiping town. Soon the Taiping train station will relocate there too. It has a weekly night market every Saturday night near the bus station that sells all sorts of local fresh produce and food stuffs. There are also fruit sellers along the road leading to the Kamunting bus stops which sell seasonal fruits like durian and mangosteens. It also connects Taiping to the North–South Expressway via the northern exit.\nMajor tourist spot is Bukit Jana, which has a waterfall and streams off the range of Bukit Larut. The Bukit Jana Golf & Country Club is also situated nearby. Plans for Taiping sports centre, which includes a 15000-seater stadium, indoor venues and extreme sports site, are still under consideration."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "kamunting",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3364,
+    "attempt": 3337,
+    "place_id": "gn-201830",
+    "input": {
+      "place": {
+        "place_id": "gn-201830",
+        "name": "Muhanga",
+        "country": "Rwanda",
+        "subdivision": "Southern Province",
+        "lat": -2.02269,
+        "lon": 29.70691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muhanga",
+          "url": "https://en.wikipedia.org/wiki/Muhanga",
+          "text": "Muhanga (former Gitarama, renamed in 2006) is a city in Rwanda, in the Muhanga District, in Southern Province. The city is situated 5,945 feet (1,812 m) above sea level.\nThough officially part of the Southern Province, Muhanga is geographically located in central Rwanda, approximately 45 kilometres (28 mi) by road southwest of Kigali, Rwanda's capital and largest city. This location lies approximately 85 kilometres (53 mi), north of Kibeho, in Nyaruguru District, the southernmost district in Southern Province. The provincial headquarters at Nyanza in Nyanza District lie about 40 kilometres (25 mi), by road, directly south of Muhanga. \nThe city is known as an industrial and minerals processing hub in Rwanda, and is one of three satellite cities in the country. As one of Rwanda's largest cities and its close proximity to Kigali, it is a popular secondary city and target of the government's regional growth strategy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "muhanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3365,
+    "attempt": 3338,
+    "place_id": "gn-2562260",
+    "input": {
+      "place": {
+        "place_id": "gn-2562260",
+        "name": "Żebbuġ",
+        "country": "Malta",
+        "subdivision": "Iż-Żebbuġ",
+        "lat": 36.07187,
+        "lon": 14.23705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Żebbuġ, Gozo",
+          "url": "https://en.wikipedia.org/wiki/Żebbuġ,_Gozo",
+          "text": "Żebbuġ (Maltese: Iż-Żebbuġ) is a village and an administrative unit of Malta, in the northwest coast of the island of Gozo. It is located close to Għarb and Għasri and is built on two hilltop plateaus, Ta' Abram and Ix-Xagħra taż-Żebbuġ. The fishing port and tourist resort of Marsalforn lies within the Żebbuġ Council. The village has a population of 2,956 (as of March 2014), which makes it the fifth largest in Gozo, after Xewkija.\nWith an area of 7.6 km2, Żebbuġ is the largest local council in Gozo by land area. The word Żebbuġ means \"wild olive trees\", a crop for which the village used to be noted, although nowadays very few olive trees remain on the slopes of Żebbuġ. The village is also well known for its fine lacework and its nearby coastal beauty spots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "zebbug",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3366,
+    "attempt": 3339,
+    "place_id": "gn-2638678",
+    "input": {
+      "place": {
+        "place_id": "gn-2638678",
+        "name": "Sale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.42519,
+        "lon": -2.32443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sale, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Sale,_Greater_Manchester",
+          "text": "Sale is a town in the Metropolitan Borough of Trafford  of Greater Manchester, England. It lies on the south bank of the River Mersey, 2 miles (3 km) south of Stretford, 3 miles (5 km) north-east of Altrincham and 5 miles (8 km) south-west of Manchester. Sale lies within the historic county boundaries of Cheshire and became part of Greater Manchester in 1974. At the 2021 census, the Sale built-up area, as defined by the Office for National Statistics, had a population of 62,550.\nEvidence of Stone Age, Roman and Anglo-Saxon activity has previously been discovered locally. Sale was historically a rural township in the parish of Ashton upon Mersey; its fields and meadows were used for crop and cattle farming. By the 17th century, Sale had a cottage industry manufacturing garthweb, the woven material from which horses' saddle girths were made.\nThe Bridgewater Canal reached the town in 1765, stimulating Sale's urbanisation. The arrival of the railway in 1849 triggered Sale's growth as an important town and place for people who wanted to travel to and from Manchester, leading to an influx of middle class residents; by the end of the 19th century, the town's population had more than tripled. Agriculture gradually declined as service industries boomed.\nSale became a separate ecclesiastical parish from Ashton upon Mersey in 1856 and a separate civil parish in 1866. It was administered as a local government district from 1867, which became an urban district in 1894. In 1930, Sale Urban District absorbed Ashton upon Mersey, and in 1935 it was raised to the status of a municipal borough. The borough of Sale was abolished in 1974, becoming part of the metropolitan borough of Trafford in Greater Manchester.\nSince then, Sale has continued to thrive as one of the main urban centres of Trafford due to its proximity to the M60 motorway and the connections to Manchester and other areas by the Manchester Metrolink network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "sale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3367,
+    "attempt": 3340,
+    "place_id": "gn-2754394",
+    "input": {
+      "place": {
+        "place_id": "gn-2754394",
+        "name": "Hengelo",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.26583,
+        "lon": 6.79306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hengelo",
+          "url": "https://en.wikipedia.org/wiki/Hengelo",
+          "text": "Hengelo (Dutch: [ˈɦɛŋəloː] ; Tweants: Hengel) is a city in the eastern part of the Netherlands, in the Twente region, in the province of Overijssel. It is part of a larger urban area that also includes Enschede, Borne, Almelo and Oldenzaal.\nDue to its geomorphology, being situated relatively low in the landscape, Hengelo is a place where streams converge. By consequence, it became a crossroad, inhabited early on in history, which has made it into an infrastructural hub and an industrial centre today. For the 19th century industry, water was needed for bleaching textile, while factories also needed water for their steam engines, and for cooling. Over time, Hengelo became known as metaalstad, for its machine factories and electrical engineering companies. In addition, salt mining developed into an important industry too, which also led to the production of chemical derivatives. \nDue to its strategical importance, Hengelo was bombed during World War II. Afterwards, a reconstruction plan was developed that made it into a modern city, partly at the cost of still remaining historical structures. Well-known Dutch planners and architects have left their traces inside and outside the city. Among their most notable efforts are several residential areas, being inspired by the principles of the garden city movement. Due to the vicinity of University of Twente and ArtEZ University of Arts, in Enschede, many students and graduates have come to live and work in Hengelo. Besides economic growth, this has also contributed to the city's development in regard to arts and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "hengelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

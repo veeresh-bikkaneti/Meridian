@@ -1,0 +1,712 @@
+[
+  {
+    "rank": 223,
+    "place_id": "gn-704147",
+    "input": {
+      "place": {
+        "place_id": "gn-704147",
+        "name": "Kremenchuk",
+        "country": "Ukraine",
+        "subdivision": "Poltava",
+        "lat": 49.06253,
+        "lon": 33.40484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kremenchuk",
+          "url": "https://en.wikipedia.org/wiki/Kremenchuk",
+          "text": "Kremenchuk is an city in central Ukraine which stands on the banks of the Dnieper River. The city serves as the administrative center of Kremenchuk Raion and Kremenchuk urban hromada within Poltava Oblast. Its population is approximately 215,271 (2022 estimate), making it the second-largest city in Poltava Oblast and the 31st largest city in Ukraine. In 2001, the Ukrainian government included the city in the list of historical settlements.\nKremenchuk is believed to have been founded in 1571, when a fortress was nominally established in the city after the signing of the Union of Lublin. Despite this, the area remained depopulated for decades afterward until 1635, when French engineer Guillaume Le Vasseur de Beauplan actually built a small fortress for Kremenchuk, which was the year the city was granted Magdeburg law rights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kremenchuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 224,
+    "place_id": "gn-727523",
+    "input": {
+      "place": {
+        "place_id": "gn-727523",
+        "name": "Ruse",
+        "country": "Bulgaria",
+        "subdivision": "Ruse",
+        "lat": 43.84872,
+        "lon": 25.9534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruse, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Ruse,_Bulgaria",
+          "text": "Ruse (also transliterated as Rousse, Russe; Bulgarian: Русе [ˈrusɛ]) is the sixth-largest city in Bulgaria. Ruse is in the northeastern part of the country, on the right bank of the Danube, opposite the Romanian city of Giurgiu, approximately 67 km (42 mi) south of Bucharest, Romania's capital, 172 km (107 mi) from Varna, and 249 km (155 mi) from the capital Sofia. Thanks to its location and its railway and road bridge over the Danube (Danube or Friendship Bridge), it is the most significant Bulgarian river port, serving an important part of the international trade of the country. It is the 12th-largest of all cities on the river Danube.\nRuse is known for its 19th- and 20th-century Neo-Baroque and Neo-Rococo architecture, which attracts many tourists. It is often called the Little Vienna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "ruse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 225,
+    "place_id": "gn-1298824",
+    "input": {
+      "place": {
+        "place_id": "gn-1298824",
+        "name": "Yangon",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Yangon",
+        "lat": 16.80528,
+        "lon": 96.15611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangon",
+          "url": "https://en.wikipedia.org/wiki/Yangon",
+          "text": "Yangon, also romanized in English as Rangoon,  is the capital city of the Yangon Region and the largest city of Myanmar. Yangon was the capital city of Myanmar until 2005 and served as such until 2006, when the military government relocated the administrative functions to the purpose-built capital city of Naypyidaw in north central Myanmar. With over five million people, Yangon is Myanmar's most populous city and its most important commercial centre.\nYangon boasts the largest number of colonial-era buildings in Southeast Asia, and has a unique colonial-era urban core that is remarkably intact. The colonial-era commercial core is centred around the Sule Pagoda, which is reputed to be over 2,000 years old. The city is also home to the gilded Shwedagon Pagoda – Myanmar's most sacred and famous Buddhist pagoda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "yangon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 226,
+    "place_id": "gn-1522203",
+    "input": {
+      "place": {
+        "place_id": "gn-1522203",
+        "name": "Kokshetau",
+        "country": "Kazakhstan",
+        "subdivision": "Aqmola",
+        "lat": 53.28414,
+        "lon": 69.39364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kokshetau",
+          "url": "https://en.wikipedia.org/wiki/Kokshetau",
+          "text": "Kokshetau, formerly known as Kokchetav, between 1868 and 1993, is a lakeside city in northern Kazakhstan and the capital of Akmola Region. It stretches along the southern shore of Lake Kopa, lying in the north of Kokshetau Hills, a northern subsystem of the Kokshetau Uplands (Saryarka) and the southern edge of the Ishim Steppe. It is named after Mount Kokshe.\nKokshetau is the 17th-most populous city in Kazakhstan, the 4th-most populous city in northern part of the country, and the largest city in Akmola Region. It was the administrative center of Kokshetau Region (oblast) from 1944 to 1991 as part of the Soviet Union and from 1991 as part of Kazakhstan to 1997 when it was abolished. It is also situated at the junction of the Trans-Kazakhstan and South Siberian railways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "kokshetau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 228,
+    "place_id": "gn-2210247",
+    "input": {
+      "place": {
+        "place_id": "gn-2210247",
+        "name": "Tripoli",
+        "country": "Libya",
+        "subdivision": "Tripoli",
+        "lat": 32.88743,
+        "lon": 13.18733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tripoli, Libya",
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "text": "Tripoli, historically known as Tripoli-of-the-West, is the capital and largest city of Libya, with a population of about 3.246 million people in 2021. It is located in the northwest of Libya on the edge of the desert, on a point of rocky land projecting into the Mediterranean Sea and forming a bay. It includes the port of Tripoli and the country's largest commercial and manufacturing center. It is also the site of the University of Tripoli.\nTripoli was founded in the 7th century BC by the Phoenicians, who gave it the Libyco-Berber name Oyat (Punic: 𐤅𐤉‬‬𐤏‬𐤕, romanized: Wyʿt), before passing into the hands of the Greek rulers of Cyrenaica as Oea (Ancient Greek: Ὀία, romanized: Oía). Due to the city's long history, there are many sites of archeological significance in Tripoli."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "tripoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 229,
+    "place_id": "gn-3515062",
+    "input": {
+      "place": {
+        "place_id": "gn-3515062",
+        "name": "Tulancingo",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.08055,
+        "lon": -98.36831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulancingo",
+          "url": "https://en.wikipedia.org/wiki/Tulancingo",
+          "text": "Tulancingo (officially Tulancingo de Bravo, for Nicolás Bravo; Otomi: Ngu̱hmu) is the second-largest city in the Mexican state of Hidalgo. It is located in the southeastern part of the state and also forms one of the 84 municipalities of Hidalgo, as well as the Archdiocese of Tulancingo. Located 93 km from Mexico City, this area is the most important wool textile producer in the country and was home to El Santo, Mexico's most famous lucha libre wrestler, and to Gabriel Vargas (cartoonist), author of the popular cartoon La Familia Burrón. It is also home to the Huapalcalco archeological site, which was the forerunner to the Teotihuacan civilization. The name derives from the Nahuatl words \"tule\" and \"tzintle\" which mean \"in or behind the reeds.\" This is confirmed by its Aztec glyph."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "tulancingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 230,
+    "place_id": "gn-94824",
+    "input": {
+      "place": {
+        "place_id": "gn-94824",
+        "name": "Karbala",
+        "country": "Iraq",
+        "subdivision": "Karbala",
+        "lat": 32.61603,
+        "lon": 44.02488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karbala",
+          "url": "https://en.wikipedia.org/wiki/Karbala",
+          "text": "Karbala is a major city in Iraq, and the capital of Karbala Governorate. With a population of around 800,000 people in 2024, Karbala is the second-largest city in central Iraq, after Baghdad. The city is located a few miles east of Lake Milh, also known as Razzaza Lake. With presence of the Imam Husayn and Al-Abbas Shrines, Karbala is a profoundly holy city in Shia Islam. It is one of the main political, spiritual, and cultural hubs of Shia Islam. The city was the location of the Battle of Karbala, where Husayn, grandson of the Islamic prophet Muhammad and the third Shia Imam, was massacred alongside most of his family by the forces of the Umayyad caliph Yazid in 680 CE. Karbala went on to become an important center of pilgrimage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "karbala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 231,
+    "place_id": "gn-1173491",
+    "input": {
+      "place": {
+        "place_id": "gn-1173491",
+        "name": "Kohat",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 33.58196,
+        "lon": 71.44929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kohat",
+          "url": "https://en.wikipedia.org/wiki/Kohat",
+          "text": "Kohat (Urdu and Hindko: کوہاٹ; Pashto: کوهاټ) is a city in Pakistan that serves as the capital of the Kohat District in Khyber Pakhtunkhwa province. With a population of over 220,000 people, the city is the fourth most populous in Khyber Pakhtunkhwa and the 35th most populous in Pakistan. Kohat's immediate environs were the site of frequent armed skirmishes between British colonial forces and local tribesmen in the mid to late 19th century. The city is centred on a British-era fort, various bazaars, and a military cantonment. Pashto and the Kohati dialect of Hindko are the main languages spoken in Kohat.\nThe city of Kohat is also the namesake of and largest city in the Kohat Division, being over four times larger than the second-largest city in the division, Karak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "kohat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 233,
+    "place_id": "gn-1271715",
+    "input": {
+      "place": {
+        "place_id": "gn-1271715",
+        "name": "Gandhinagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 23.21667,
+        "lon": 72.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gandhinagar",
+          "url": "https://en.wikipedia.org/wiki/Gandhinagar",
+          "text": "Gandhinagar (Gujarati: gāndhīnagara, pronounced [ˈɡɑːndʱinəɡəɾ(ə)] ) in India is the capital of the state of Gujarat and of Gandhinagar district. Gandhinagar is located approximately 23 kilometres (14 mi) north of Ahmedabad, on the west central point of the industrial corridor between the megacities of Delhi and Mumbai.\nGandhinagar lies on the west bank of the Sabarmati River, about 545 kilometres (339 mi) north of Mumbai and 901 kilometres (560 mi) southwest of Delhi. \nThe Akshardham temple is located in Gandhinagar. There was a determination to make Gandhinagar a purely Indian enterprise, partly because the state of Gujarat was the birthplace of Mahatma Gandhi. For this reason, the planning was done by two Indian town planners: Prakash M Apte and H. K. Mewada, who had apprenticed with Le Corbusier in Chandigarh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "gandhinagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 235,
+    "place_id": "gn-1278130",
+    "input": {
+      "place": {
+        "place_id": "gn-1278130",
+        "name": "Avadi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.1147,
+        "lon": 80.10981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avadi",
+          "url": "https://en.wikipedia.org/wiki/Avadi",
+          "text": "Avadi (Tamil: [aːʋaɖi]) is a City in Chennai metropolitan area, Thiruvallur district, Tamil Nadu, India. Its the headquarters of Avadi City Police, Avadi City Corporation and Avadi Taluk located within the Thiruvallur district of Tamil Nadu, India. Situated at about 22 kilometres (14 mi) from Chennai Central Railway Station and 24 kilometres (15 mi) from It's district headquarters Tiruvallur and 58 kilometres  (36 mi) from Another Railway Junction Arrakonam. Avadi is surrounded by major defence establishments and is home to various universities and engineering colleges. The neighborhood is served by Avadi Railway Station of the Chennai Suburban Railway and just 7 km from the upcoming Karayanchavadi Metro of Chennai Metro Rail . As of 2011, Avadi had a population of 345,996, which is 10th most populous place in Tamil Nadu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "avadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 236,
+    "place_id": "gn-162183",
+    "input": {
+      "place": {
+        "place_id": "gn-162183",
+        "name": "Ashgabat",
+        "country": "Turkmenistan",
+        "subdivision": "Ashgabat",
+        "lat": 37.95,
+        "lon": 58.38333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashgabat",
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "text": "Ashgabat is the capital and largest city of Turkmenistan. It lies between the Karakum Desert and the Köpetdag mountain range in Central Asia, approximately 50 km (30 mi) away from the Iran-Turkmenistan border. The city has a population of 1,030,063 (2022 census).\n\nThe city was founded in 1881 on the basis of an Ahal Teke tribal village, and made the capital of the Turkmen Soviet Socialist Republic in 1924 when it was known as Poltoratsk. Much of the city was destroyed by the 1948 Ashgabat earthquake, but has since been extensively rebuilt under the rule of Saparmyrat Nyýazow's \"White City\" urban renewal project, resulting in monumental projects sheathed in costly white marble. The Soviet-era Karakum Canal runs through the city, carrying waters from the Amu Darya from east to west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "ashgabat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 237,
+    "place_id": "gn-346030",
+    "input": {
+      "place": {
+        "place_id": "gn-346030",
+        "name": "Zefta",
+        "country": "Egypt",
+        "subdivision": "Gharbia",
+        "lat": 30.7142,
+        "lon": 31.24425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zefta",
+          "url": "https://en.wikipedia.org/wiki/Zefta",
+          "text": "Zefta (Egyptian Arabic: زفتى  pronounced [ˈzeftæ], Coptic: ⲍⲉⲃⲉⲑⲉ Zevethe) is an Egyptian city in the Nile Delta, within the Gharbia governorate, and is the capital of the Zefta center. It is across the Nile from Mit Ghamr city of Ad Daqahliyah governorate. It has around 114,983 inhabitants.\nZefta is known for its notable involvement in the 1919 Egyptian Revolution against British occupation. In March 1919, residents of the town, led by lawyer Youssef El-Guindy, declared Zefta a self-governing republic, an event later referred to as the \"Republic of Zefta.\" The group took control of key facilities, including the police station, railway station, and telegraph office, and established a local council to manage the town’s affairs. A newspaper was also published under the republic’s name to communicate developments to the public."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "zefta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 239,
+    "place_id": "gn-3946083",
+    "input": {
+      "place": {
+        "place_id": "gn-3946083",
+        "name": "Callao",
+        "country": "Peru",
+        "subdivision": "Callao",
+        "lat": -12.05162,
+        "lon": -77.13452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Callao",
+          "url": "https://en.wikipedia.org/wiki/Callao",
+          "text": "Callao (Spanish pronunciation: [kaˈʝa.o]) is a seaside city and constitutional province in Peru. Located next to the Pacific Ocean, it forms part of the Lima metropolitan area alongside Lima province. Its autonomous status dates back to 1836, when it was declared a Littoral Province of the Peru–Bolivian Confederation, after which it was declared a Constitutional Province by the government of Ramón Castilla in 1857.\nCallao is Peru's chief seaport and home to its main airport, Jorge Chávez International Airport. Founded in 1537 by the Spaniards, the city has a long naval history as one of the main ports in Spanish America and the Pacific, having been a vital Spanish town of the Viceroyalty of Peru. Central Callao is about 15 km (9.3 mi) west of the Historic Centre of Lima."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "callao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 240,
+    "place_id": "gn-726848",
+    "input": {
+      "place": {
+        "place_id": "gn-726848",
+        "name": "Stara Zagora",
+        "country": "Bulgaria",
+        "subdivision": "Stara Zagora",
+        "lat": 42.43205,
+        "lon": 25.64262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stara Zagora",
+          "url": "https://en.wikipedia.org/wiki/Stara_Zagora",
+          "text": "Stara Zagora (Bulgarian: Стара Загора, pronounced [ˈstarɐ zɐˈɡɔrɐ]) is a city in Bulgaria, and the administrative capital of Stara Zagora Province. It is located in the Upper Thracian Plain, near the cities of Kazanlak, Plovdiv, and Sliven. Its population is 121,582 making it the fifth largest city of Bulgaria.\nThe city has had different names previously, including Beroe, Borui, Irenepolis, Eski Zagra, Augusta Traiana, etc. The earliest traces of civilisation date back to the 7th millennium BC. Some scholars believe that the ancient Thracian city of Beroe was located on the present site of Stara Zagora. In 1968, Neolithic dwellings from the mid-6th millennium BC were discovered in the town, which are the best preserved and richest collection in Europe of its kind and have been turned into a museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "stara zagora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zagora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 241,
+    "place_id": "gn-1735161",
+    "input": {
+      "place": {
+        "place_id": "gn-1735161",
+        "name": "Kuala Lumpur",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.1412,
+        "lon": 101.68653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuala Lumpur",
+          "url": "https://en.wikipedia.org/wiki/Kuala_Lumpur",
+          "text": "Kuala Lumpur (KL), officially the Federal Territory of Kuala Lumpur, is the capital city and a federal territory of Malaysia. It is the most populous city in the country, covering an area of 243 km2 (94 sq mi) with a population of 2,111,536 as of 2026. Greater Kuala Lumpur, which itself includes the Klang Valley, is an urban agglomeration of 8.81 million people as of 2024. It is among the fastest growing metropolitan regions in Southeast Asia, in terms of both population and economic development.\nThe city serves as the cultural, financial, tourism, political and economic centre of Malaysia. It is also home to the Malaysian parliament (consisting of the Dewan Rakyat and the Dewan Negara) and the Istana Negara, the official residence of the monarch (Yang di-Pertuan Agong)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "kuala lumpur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kuala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lumpur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 242,
+    "place_id": "gn-1793346",
+    "input": {
+      "place": {
+        "place_id": "gn-1793346",
+        "name": "Tangshan",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 39.64381,
+        "lon": 118.18319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangshan",
+          "url": "https://en.wikipedia.org/wiki/Tangshan",
+          "text": "Tangshan (Chinese: 唐山; pinyin: Tángshān) is a coastal, industrial prefecture-level city in the northeast of Hebei province. It is located in the eastern part of Hebei Province and the northeastern part of the North China Plain. It is located in the central area of the Bohai Rim and serves as the main traffic corridor to the Northeast. The city faces the Bohai Sea in the south, the Yan Mountains in the north, Qinhuangdao across the Luan River to the east, and Tianjin to the west.\nMuch of the city's development is thanks to the industrialization, beginning in 1870, when Kailuan Group established coal mines in the region. It is the birthplace of China's first standard-gauge railway, the first railway plant, the first steam locomotive, and the first cement factory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "tangshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 243,
+    "place_id": "gn-250441",
+    "input": {
+      "place": {
+        "place_id": "gn-250441",
+        "name": "Amman",
+        "country": "Jordan",
+        "subdivision": "Amman",
+        "lat": 31.95522,
+        "lon": 35.94503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amman",
+          "url": "https://en.wikipedia.org/wiki/Amman",
+          "text": "Amman is the capital and the largest city of Jordan, and the country's economic, political, and cultural center. With a population of five million as of 2026, Amman is Jordan's primate city and is the largest city in the Levant region, the seventh-largest city in the Arab world, and the eighth-largest metropolitan area in the Middle East.\nSettlement in Amman dates to the 8th millennium BC at 'Ain Ghazal, home to the world's oldest human statues. During the Iron Age, Rabat Aman was the capital of the Ammonite Kingdom. In the 3rd century BC, the city was conquered by the Greeks and renamed Philadelphia, later part of the Nabataean, and the Roman realms. In the 7th century, Philadelphia was conquered by the Rashidun Caliphate, who restored its original name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "amman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 244,
+    "place_id": "gn-3194828",
+    "input": {
+      "place": {
+        "place_id": "gn-3194828",
+        "name": "Mostar",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.34333,
+        "lon": 17.80806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mostar",
+          "url": "https://en.wikipedia.org/wiki/Mostar",
+          "text": "Mostar (pronounced [mǒstaːr] ) is a city and the administrative centre of Herzegovina-Neretva Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina, and the historical capital of Herzegovina.\nMostar is situated on the Neretva River and is the fifth-largest city in the country. It was named after the bridge keepers (mostari) who guarded the Stari Most (Old Bridge) over the Neretva during the Ottoman era. The Old Bridge, a UNESCO World Heritage Site, commissioned by Suleiman the Magnificent in the 16th century, is one of Bosnia and Herzegovina's most visited landmarks, and is considered an exemplary piece of Islamic architecture in the Balkans. Mostar was also the capital of the predominantly Croat proto-state known as the Croatian Republic of Herzeg-Bosnia during the Bosnian War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "mostar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 245,
+    "place_id": "gn-3461879",
+    "input": {
+      "place": {
+        "place_id": "gn-3461879",
+        "name": "Guarapuava",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.39048,
+        "lon": -51.46541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guarapuava",
+          "url": "https://en.wikipedia.org/wiki/Guarapuava",
+          "text": "Guarapuava is a municipality in the state of Paraná in Brazil. It is the largest municipality in that state by area. Considered a regional development hub with a strong influence on neighboring municipalities, it is also part of a railroad junction of national importance called the Mercosur corridor, between the municipalities of Foz do Iguaçu and Curitiba. It is the richest agribusiness municipality in the state of Paraná.\nGuarapuava is located at 25°23'36\" S and 51°27'19\" W. The region is known as the centre of the state of Paraná, in the third plateau, also called the Plateau of Guarapuava. Discovered by the Portuguese in 1770, and founded in 1810, the city's name derives from tupi guarani, meaning place of Maned wolves sound (Maned wolves are called lobos-guará in Portuguese)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "guarapuava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 247,
+    "place_id": "gn-3584257",
+    "input": {
+      "place": {
+        "place_id": "gn-3584257",
+        "name": "Santa Tecla",
+        "country": "El Salvador",
+        "subdivision": "La Libertad Department",
+        "lat": 13.67741,
+        "lon": -89.28335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Tecla, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Santa_Tecla,_El_Salvador",
+          "text": "Santa Tecla (Spanish pronunciation: [ˈsanta ˈtekla]), formerly known as Nueva San Salvador (\"New San Salvador\"), is a city and a municipality in the La Libertad department of El Salvador. It is the capital of the department of La Libertad.\nThe city was named after Saint Thecla, a saint of the early Christian Church and a reported follower of Paul of Tarsus in the 1st century AD. She is not mentioned in the New Testament, but the earliest record of her comes from the apocryphal Acts of Paul and Thecla, probably composed in the early 2nd century.\nSanta Tecla is situated at the southern foot of the San Salvador Volcano and is a part of the San Salvador metropolitan area. The municipality of Antiguo Cuscatlán sits on its eastern border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "santa tecla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tecla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

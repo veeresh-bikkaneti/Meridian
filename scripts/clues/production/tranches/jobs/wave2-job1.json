@@ -1,0 +1,687 @@
+[
+  {
+    "rank": 201,
+    "place_id": "gn-4006702",
+    "input": {
+      "place": {
+        "place_id": "gn-4006702",
+        "name": "Ensenada",
+        "country": "Mexico",
+        "subdivision": "Baja California",
+        "lat": 31.87149,
+        "lon": -116.60071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ensenada",
+          "url": "https://en.wikipedia.org/wiki/Ensenada",
+          "text": "Ensenada ('inlet', pronounced [enseˈnaða]) is a city in Ensenada Municipality, Baja California, situated on the Pacific Coast of Mexico. Located on Bahía de Todos Santos, the city had a population of 279,765 in 2018, making it the third-largest city in Baja California. The city is an important international trade center and home to the Port of Ensenada, the second-busiest port in Mexico. Ensenada is a major tourist destination, owing to its warm climate and proximity to the Pacific Ocean, and is commonly known as La Cenicienta del Pacífico (\"The Cinderella of the Pacific\").\nEnsenada was founded in 1882, when the small community of Rancho Ensenada de Santos was made the regional capital for the northern partition of the Baja California Territory. The city grew significantly with the proliferation of mines in the surrounding mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "ensenada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 213,
+    "place_id": "gn-5350734",
+    "input": {
+      "place": {
+        "place_id": "gn-5350734",
+        "name": "Fremont",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.54827,
+        "lon": -121.98857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fremont, California",
+          "url": "https://en.wikipedia.org/wiki/Fremont,_California",
+          "text": "Fremont () is a city in Alameda County, California, United States. Located in the East Bay region of the Bay Area, Fremont has a population of 230,504 as of 2020, making it the fourth most populous city in the Bay Area, behind San Jose, San Francisco, and Oakland. It is the closest East Bay city to the high-tech Silicon Valley network of businesses, and has a strong tech industry presence. The city's largest employer is a Tesla manufacturing plant, employing 25,000 people as of 2024.\nThe city's origins lie in the community that arose around Mission San José, founded in 1797 by the Spanish under Padre Fermín Lasuén. Fremont was incorporated on January 23, 1956, when the former towns of Mission San José, Centerville, Niles, Irvington, and Warm Springs unified into one city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "fremont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 227,
+    "place_id": "gn-2111149",
+    "input": {
+      "place": {
+        "place_id": "gn-2111149",
+        "name": "Sendai",
+        "country": "Japan",
+        "subdivision": "Miyagi",
+        "lat": 38.26667,
+        "lon": 140.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sendai",
+          "url": "https://en.wikipedia.org/wiki/Sendai",
+          "text": "Sendai (仙台市, Sendai-shi; [seꜜn.dai, sen.daꜜi.ɕi] ) is the capital city of Miyagi Prefecture and the largest city in the Tōhoku region. As of 1 August 2023, the city had a population of 1,098,335 in 539,698 households, making it the twelfth most populated city in Japan.\nThe modern city was founded in 1600 by the daimyō Date Masamune. It is nicknamed the City of Trees (杜の都, Mori no Miyako); there are Japanese zelkova trees lining many of the main thoroughfares such as Jōzenji Street (定禅寺通, Jōzenji dōri) and Aoba Street (青葉通, Aoba dōri).\nIn the summer, the Sendai Tanabata Festival, the largest Tanabata festival in Japan, is held. In winter, the trees are decorated with thousands of lights for the Pageant of Starlight (光のページェント, Hikari no pējento), lasting through most of December."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "sendai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 232,
+    "place_id": "gn-119505",
+    "input": {
+      "place": {
+        "place_id": "gn-119505",
+        "name": "Qazvin",
+        "country": "Iran",
+        "subdivision": "Qazvin Province",
+        "lat": 36.26877,
+        "lon": 50.0041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qazvin",
+          "url": "https://en.wikipedia.org/wiki/Qazvin",
+          "text": "Qazvin (Persian: قزوین; ; IPA: [ɢæzˈviːn] ) is a city in the Central District of Qazvin County, Qazvin province, Iran, serving as capital of the province, the county, and the district. It is the largest city in the province.\nQazvin was a capital of the Safavid Empire for over forty years (1555–1598) and nowadays is known as the calligraphy capital of Iran. It is famous for its traditional confectioneries (like Baghlava), carpet patterns, poets, political newspaper and Pahlavi influence on its accent.\nLocated in 150 km (93 mi) northwest of Tehran, in the Qazvin Province, it is at an altitude of about 1,800 m (5,900 ft) above sea level. Due to its position at the south of the rugged Alborz range called KTS Atabakiyam, its climate is cold but dry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "qazvin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 234,
+    "place_id": "gn-1273802",
+    "input": {
+      "place": {
+        "place_id": "gn-1273802",
+        "name": "Cuddalore",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.75617,
+        "lon": 79.76693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuddalore",
+          "url": "https://en.wikipedia.org/wiki/Cuddalore",
+          "text": "Cuddalore, also spelt as Kadalur ( ), is a heavy industries hub, port city, and headquarters of the Cuddalore District in the Indian state of Tamil Nadu. Situated 5.3 km south of Puducherry (union territory), the city was an important port city  during the British Raj. Cuddalore district is famous for Pichavaram Mangrove Forest.\nWhile the early history of Cuddalore remains unclear, the city first rose to prominence during the Pallavas' and Medieval Cholas' reign. After the fall of the Cholas, the town was ruled by various dynasties like Pandyas, Vijayanagar Empire, Madurai Nayaks, Thanjavur Nayaks, Thanjavur Marathas, Tipu Sultan, the French and the British Empire. Cuddalore was also a theatre of conflict in the Seven Years' War, witnessing the Battle of Cuddalore in 1758 between the French and British."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "cuddalore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 238,
+    "place_id": "gn-3682281",
+    "input": {
+      "place": {
+        "place_id": "gn-3682281",
+        "name": "Funza",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.71638,
+        "lon": -74.21195
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Funza",
+          "url": "https://en.wikipedia.org/wiki/Funza",
+          "text": "Funza (Spanish pronunciation: [ˈfunsa]) is a municipality and town of Colombia in the Western Savanna Province, of the department of Cundinamarca. Funza is situated on the Bogotá savanna, the southwestern part of the Altiplano Cundiboyacense with the urban centre at an altitude of 2,548 metres (8,360 ft). In Funza the La Florida wetland, part of the wetlands of Bogotá, a remnant of the Pleistocene Lake Humboldt, still exists. The town is part of the Metropolitan Area of Bogotá and borders Madrid and Tenjo in the north, Mosquera in the south, Madrid in the west and Cota and the locality Engativá of the capital Bogotá in the east. The eastern boundary is formed by the Bogotá River. Funza is the site of the former main settlement Bacatá of the Muisca Confederation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "funza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 246,
+    "place_id": "gn-3566067",
+    "input": {
+      "place": {
+        "place_id": "gn-3566067",
+        "name": "Camagüey",
+        "country": "Cuba",
+        "subdivision": "Camagüey",
+        "lat": 21.38083,
+        "lon": -77.91694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camagüey",
+          "url": "https://en.wikipedia.org/wiki/Camag%C3%BCey",
+          "text": "Camagüey (Spanish pronunciation: [kamaˈ(ɣ)wej]) is a city and municipality in central Cuba and is the nation's third-largest city with more than 333,000 inhabitants. It is the capital of the Camagüey Province.\nIt was founded as Santa María del Puerto del Príncipe in 1514, by Spanish colonists on the northern coast and moved inland in 1528, to the site of a Taino village named Camagüey. It was one of the seven original settlements (villas) founded in Cuba by the Spanish. After Henry Morgan burned the city in the 17th century, it was redesigned like a maze so attackers would find it hard to move around inside the city.\nThe symbol of the city of Camagüey is the clay pot or tinajón, used to capture rain water and keep it fresh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "camaguey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 249,
+    "place_id": "gn-5780026",
+    "input": {
+      "place": {
+        "place_id": "gn-5780026",
+        "name": "Provo",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.23384,
+        "lon": -111.65853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Provo, Utah",
+          "url": "https://en.wikipedia.org/wiki/Provo,_Utah",
+          "text": "Provo ( PROH-voh) is a city in and the county seat of Utah County, Utah, United States. It is 43 miles (69 km) south of Salt Lake City along the Wasatch Front, and lies between the cities of Orem to the north and Springville to the south. With a population at the 2020 census of 115,162, Provo is the fourth-largest city in Utah and the principal city in the Provo-Orem-Lehi metropolitan area, which had a population of 526,810 at the 2010 census. It is Utah's second-largest metropolitan area after Salt Lake City.\nProvo is the home to Brigham Young University (BYU), a private higher education institution operated by The Church of Jesus Christ of Latter-day Saints (LDS Church). Provo also has the LDS Church's largest Missionary Training Center (MTC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "provo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 268,
+    "place_id": "gn-6986104",
+    "input": {
+      "place": {
+        "place_id": "gn-6986104",
+        "name": "Zhongshan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.52306,
+        "lon": 113.37912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhongshan",
+          "url": "https://en.wikipedia.org/wiki/Zhongshan",
+          "text": "Zhongshan (Chinese: 中山 [ʈʂʊ́ŋ ʂán]), alternately romanized via Cantonese as Jungsaan, is a prefecture-level city in the south of the Pearl River Delta in Guangdong province, China. As of the 2020 census, the whole city with 4,418,060 inhabitants is now part of the Guangzhou–Shenzhen conurbation with 65,565,622 inhabitants. The city-core subdistricts used to be called Shiqi or Shekki (Chinese: 石岐).\nZhongshan is one of the few Chinese cities to be named after a person. It was originally named Xiangshan (香山, \"Fragrant Mountain\"; Cantonese: Heung-saan), but was renamed in 1925 in honor of Sun Yat-sen, who is known in China as \"Sun Zhongshan\". Sun, a local of the area, was the founding father of the Republic of China who is also regarded positively by the People's Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "zhongshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 278,
+    "place_id": "gn-890299",
+    "input": {
+      "place": {
+        "place_id": "gn-890299",
+        "name": "Harare",
+        "country": "Zimbabwe",
+        "subdivision": "Harare",
+        "lat": -17.82772,
+        "lon": 31.05337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harare",
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "text": "Harare ( hə-RAR-eh) is the capital and largest city of Zimbabwe. The city proper has an area of 982.3 km2 (379.3 sq mi), a population of 1,849,600 as of the 2022 census, and an estimated 2,487,209 people in its metropolitan province. The city is situated in north-eastern Zimbabwe in the country's Mashonaland region. Harare Metropolitan Province incorporates the city and the municipalities of Chitungwiza, Epworth and Ruwa. The city sits on a plateau at an elevation of 1,483 metres (4,865 feet) above sea level, and its climate falls into the subtropical highland category.\nThe city was founded in 1890 by the Pioneer Column, a small military force of the British South Africa Company, and was named Fort Salisbury after the British Prime Minister Lord Salisbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "harare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 281,
+    "place_id": "gn-298299",
+    "input": {
+      "place": {
+        "place_id": "gn-298299",
+        "name": "Uşak",
+        "country": "Türkiye",
+        "subdivision": "Uşak",
+        "lat": 38.67351,
+        "lon": 29.4058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uşak",
+          "url": "https://en.wikipedia.org/wiki/U%C5%9Fak",
+          "text": "Uşak (Turkish pronunciation: [ˈuʃak]) is a city in the interior part of the Aegean Region of Turkey. It is the seat of Uşak Province and Uşak District. Its population is 236,366 (2022).\nUşak is located 210 km (130 mi) from İzmir, the region's principal metropolitan center and port city. Benefiting from its location at the crossroads of the Central Anatolian plateau and the coastal Aegean Region, and from a climate and agricultural production incorporating elements of both of these zones, Uşak has also traditionally had a strong industrial base. Uşak was the first city in Turkey to have an urban electricity network, and the first city where a collective labor relations agreement was signed, during the Ottoman era, between leather industry employees and workers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "usak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 283,
+    "place_id": "gn-3654667",
+    "input": {
+      "place": {
+        "place_id": "gn-3654667",
+        "name": "Loja",
+        "country": "Ecuador",
+        "subdivision": "Loja",
+        "lat": -3.99313,
+        "lon": -79.20422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loja, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Loja,_Ecuador",
+          "text": "Loja (Spanish pronunciation: [ˈlo.xa]), formerly Loxa and fully City of the Immaculate Conception of Loja (Spanish: Ciudad de la Inmaculada Concepción de Loja), is the capital of Ecuador's Loja Province. It is located in the Cuxibamba valley in the south of the country, sharing borders with the provinces of Zamora-Chinchipe and other cantons of the province of Loja. Loja holds a rich tradition in the arts, and for this reason is known as the Music and Cultural Capital of Ecuador. The city is home to two major universities.\nThe city has a population of about 203,000, and is situated 2060 m (6758 ft) above sea level. It has a mild Andean climate, ranging between 16 and 30 °C.\nThe Pan-American Highway runs past Loja."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "loja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 285,
+    "place_id": "gn-5403022",
+    "input": {
+      "place": {
+        "place_id": "gn-5403022",
+        "name": "Torrance",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.83585,
+        "lon": -118.34063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrance, California",
+          "url": "https://en.wikipedia.org/wiki/Torrance,_California",
+          "text": "Torrance is a city in the Los Angeles metropolitan area in southwestern Los Angeles County, California, United States, founded in 1912, neighboring Redondo Beach, Rolling Hills Estates, Palos Verdes Estates, Lomita, Gardena, Lawndale, and Alondra Park, as well as the Los Angeles neighborhoods of Harbor City and Harbor Gateway. The city is part of what is known as the South Bay region. \nTorrance has a moderate year-round climate with average rainfall of 12 inches (300 mm) per year. Torrance has one and a half miles (2.4 km) of beachfront abutting Santa Monica Bay and 30 parks. It is the birthplace of the American Youth Soccer Organization (AYSO). The population was 147,067 at the 2020 census, decreasing by 5.1% to an estimated 139,576 in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "torrance",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 293,
+    "place_id": "gn-2210554",
+    "input": {
+      "place": {
+        "place_id": "gn-2210554",
+        "name": "Sirte",
+        "country": "Libya",
+        "subdivision": "Surt",
+        "lat": 31.20892,
+        "lon": 16.58866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sirte",
+          "url": "https://en.wikipedia.org/wiki/Sirte",
+          "text": "Sirte (; Arabic: سِرْت, ), also spelled Sirt, Surt, Sert or  Syrte, is a city in Libya. It is located south of the Gulf of Sirte, almost right in the middle between Tripoli and Benghazi. It is known for its battles, ethnic groups and loyalty to former Libyan ruler Muammar Gaddafi. Due to developments in the First Libyan Civil War, it was briefly the capital of Libya from 1 September to 20 October 2011 as Tripoli's successor after the city's fall. The settlement was established in the early 20th century by the Italians, at the site of a 19th-century fortress built by the Ottomans. It grew into a city after World War II.\nContrary to popular belief, Sirte was not Muammar Gaddafi's birthplace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "sirte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 297,
+    "place_id": "gn-3663517",
+    "input": {
+      "place": {
+        "place_id": "gn-3663517",
+        "name": "Manaus",
+        "country": "Brazil",
+        "subdivision": "Amazonas",
+        "lat": -3.10194,
+        "lon": -60.025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manaus",
+          "url": "https://en.wikipedia.org/wiki/Manaus",
+          "text": "Manaus (Portuguese: [maˈnaws, mɐ-] ) is the capital and largest city of the Brazilian state of Amazonas. It is the seventh-largest city in Brazil, with an estimated 2024 population of 2,279,686 distributed over a land area of about 11,401 km2 (4,402 sq mi). Located at the east centre of the state, the city is the centre of the Manaus metropolitan area and the largest metropolitan area in the North Region of Brazil by urban landmass. It is situated near the confluence of the Negro and Amazon rivers. It is one of the two cities in the Amazon rainforest with a population of over 1 million people, alongside Belém.\nThe city was founded in 1669 as the Fort of São José do Rio Negro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "manaus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 311,
+    "place_id": "gn-1255634",
+    "input": {
+      "place": {
+        "place_id": "gn-1255634",
+        "name": "Srinagar",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 34.08565,
+        "lon": 74.80555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Srinagar",
+          "url": "https://en.wikipedia.org/wiki/Srinagar",
+          "text": "Srinagar is a city in Indian-administered  Jammu and Kashmir in the disputed Kashmir region. It is the largest city and summer capital of Jammu and Kashmir, which is an Indian-administered union territory. It lies in the Kashmir Valley along the banks of the Jhelum River, and the shores of Dal Lake and Anchar Lakes, between the Hari Parbat and Shankaracharya hills. The city is known for its natural environment, various gardens, waterfronts and houseboats. It is also known for traditional Kashmiri handicrafts like the Kashmir shawl (made of pashmina and cashmere wool), papier-mâché, wood carving, carpet weaving, and jewel making, as well as for dried fruits. It is the second-largest metropolitan area in the Himalayas (after Kathmandu, the capital of Nepal)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "srinagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 318,
+    "place_id": "gn-379555",
+    "input": {
+      "place": {
+        "place_id": "gn-379555",
+        "name": "El Fasher",
+        "country": "Sudan",
+        "subdivision": "Northern Darfur",
+        "lat": 13.62793,
+        "lon": 25.34936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Fasher",
+          "url": "https://en.wikipedia.org/wiki/El_Fasher",
+          "text": "El Fasher (also alternatively rendered as Al-Fashir; Arabic: الفاشر, romanized: al-Fāshir) is a city in western Sudan. It serves as the capital of the North Darfur State, is located in the Darfur region of Sudan, and is 195 kilometres (121 mi) northeast of Nyala. A historical caravan post, El Fasher is located at an elevation of about 700 metres (2,300 ft). The city serves as an agricultural marketing point for the cereals and fruits grown in the surrounding region. El Fasher is linked by road to both Geneina and Umm Keddada.\nThe city was the site of a major siege during the ongoing Sudanese civil war, which lasted 18 months, before falling to the Rapid Support Forces (RSF) in October 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "el fasher",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fasher",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 320,
+    "place_id": "gn-5037649",
+    "input": {
+      "place": {
+        "place_id": "gn-5037649",
+        "name": "Minneapolis",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.97997,
+        "lon": -93.26384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minneapolis",
+          "url": "https://en.wikipedia.org/wiki/Minneapolis",
+          "text": "Minneapolis is a city in Hennepin County, Minnesota, United States, and its county seat. With a population of 429,954 as of the 2020 census, it is the state's most populous city. Located in the state's center near the eastern border, it occupies both banks of the Upper Mississippi River and adjoins Saint Paul, the state capital of Minnesota. Minneapolis, Saint Paul, and the surrounding area are collectively known as the Twin Cities, a metropolitan area with 3.69 million residents. Minneapolis is built on an artesian aquifer on relatively flat terrain and is known for cold, snowy winters and hot, humid summers. Nicknamed the \"City of Lakes\", Minneapolis is abundant in water, with thirteen lakes, wetlands, the Mississippi River, creeks, and waterfalls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "minneapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 324,
+    "place_id": "gn-2035265",
+    "input": {
+      "place": {
+        "place_id": "gn-2035265",
+        "name": "Qiqihar",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 47.33922,
+        "lon": 123.96154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qiqihar",
+          "url": "https://en.wikipedia.org/wiki/Qiqihar",
+          "text": "Qiqihar (also spelled Tsitsihar) is the second-largest city in the Heilongjiang province of China, in the west central part of the province. The built-up (or metro) area made up of Longsha, Tiefeng and Jianhua districts had 959,787 inhabitants, while the total population of the prefecture-level city was shrinking to 4,067,489 as of the 2020 census (5,367,003 as of 2010). In 2024, the total registered population of the city will be 5.06 million. Among them, the rural population is 3.165 million. These are mainly Han Chinese, though the city is also home to thirty-four minorities including Manchus, Daur, and Mongols. Numerous wetlands are close to Qiqihar, including the Zhalong Nature Reserve, famous in China for being home to numerous red-crowned cranes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "qiqihar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 328,
+    "place_id": "gn-3352136",
+    "input": {
+      "place": {
+        "place_id": "gn-3352136",
+        "name": "Windhoek",
+        "country": "Namibia",
+        "subdivision": "Khomas Region",
+        "lat": -22.55941,
+        "lon": 17.08323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windhoek",
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "text": "Windhoek (; Afrikaans: [ˈvəntɦuk] ; German: [ˈvɪnthʊk] ) is the capital and largest city of Namibia. It is located in central Namibia on the Khomas Highland plateau area, at around 1,700 m (5,600 ft) above sea level in the  geographical centre of the country. The population was 486,186 in 2023, and growing, due to migration from other regions in Namibia.\nWindhoek is the economic, political, and cultural centre of the country where most Namibian enterprises, governmental bodies, educational and cultural institutions are located.\nThe city developed at the site of a hot spring known to the local pastoral tribes. It developed after Jonker Afrikaner, Captain of the Orlam, settled there in 1840 and built a stone church for his community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "windhoek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

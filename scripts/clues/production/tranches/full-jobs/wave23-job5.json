@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4516,
+    "attempt": 4481,
+    "place_id": "gn-2641913",
+    "input": {
+      "place": {
+        "place_id": "gn-2641913",
+        "name": "Nailsea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43239,
+        "lon": -2.75847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nailsea",
+          "url": "https://en.wikipedia.org/wiki/Nailsea",
+          "text": "Nailsea is a town and civil parish in North Somerset, England, 8 miles (13 km) southwest of Bristol, and 11 miles (18 km) northeast of Weston-super-Mare. The nearest village is Backwell, which lies south of Nailsea on the opposite side of the Bristol to Exeter railway line. Nailsea had a population of 15,539 in the 2021 census.\nThe town was an industrial centre based on coal mining and glass manufacture, which have now been replaced by service industries. The surrounding North Somerset Levels has wildlife habitats including the Tickenham, Nailsea and Kenn Moors Site of Special Scientific Interest and Bucklands Pool/Backwell Lake local nature reserve. Nailsea is close to the M5 motorway and Bristol Airport, and its railway station, Nailsea & Backwell, has services operated by the Great Western Railway.\nSecondary education is provided by Nailsea School (rebuilt in 2009), and primary education by St Francis School, Grove Junior School, Kingshill School and Golden Valley. Churches include the 14th-century Holy Trinity Church and Christ Church, which was built in 1843."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "nailsea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4517,
+    "attempt": 4482,
+    "place_id": "gn-2655378",
+    "input": {
+      "place": {
+        "place_id": "gn-2655378",
+        "name": "Blandford Forum",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.86073,
+        "lon": -2.16174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blandford Forum",
+          "url": "https://en.wikipedia.org/wiki/Blandford_Forum",
+          "text": "Blandford Forum ( BLAN-fərd) is a market town in Dorset, England, on the River Stour, 13 miles (21 km) north-west of Poole. It had a population of 10,607 at the 2021 census.\nThe town is notable for its Georgian architecture, the result of rebuilding after a major fire in 1731; it was assisted by an Act of Parliament and a donation by George II, to designs by local architects John and William Bastard.\nThe town's economy is based on a mix of the service sector and light industry. Blandford Camp, a military base, is on the hills 2 miles (3 km) north-east of the town. It is the base of the Royal Corps of Signals, the communications wing of the British Army, and the site of the Royal Signals Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "blandford forum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blandford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4518,
+    "attempt": 4483,
+    "place_id": "gn-2661039",
+    "input": {
+      "place": {
+        "place_id": "gn-2661039",
+        "name": "Davos",
+        "country": "Switzerland",
+        "subdivision": "Grisons",
+        "lat": 46.80429,
+        "lon": 9.83723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Davos",
+          "url": "https://en.wikipedia.org/wiki/Davos",
+          "text": "Davos (UK: , US: ; German: [daˈfoːs] or [daˈvoːs] ; Romansh: ; Old Italian: Tavate) is an Alpine resort town and municipality in the Prättigau/Davos Region in the canton of the Grisons, Switzerland. It has a permanent population of 10,832 (2020). Davos is located on the Landwasser river, in the Rhaetian Alps, between the Plessur and Albula Ranges.\nThe municipality covers nearly the entire valley of the Landwasser, and the centre of population, economic activity and administration is two adjacent villages, Davos Dorf (engl.: Davos Village) and Davos Platz (Davos Place), which are 1,560 m (5,120 ft) above sea level.\nDavos gained prominence in the 19th century as a mountain health resort. Since 1971, it has hosted the World Economic Forum, an annual meeting of global political and corporate leaders. With its long history of winter sports, Davos also has one of Switzerland's largest ski resorts and hosts the international Spengler Cup, an ice hockey tournament, every December."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "davos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4519,
+    "attempt": 4484,
+    "place_id": "gn-3123399",
+    "input": {
+      "place": {
+        "place_id": "gn-3123399",
+        "name": "Elorrio",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.12924,
+        "lon": -2.54056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elorrio",
+          "url": "https://en.wikipedia.org/wiki/Elorrio",
+          "text": "Elorrio is a town and a municipality located in the eastern part of the province of Biscay, in the Basque Country, in northern Spain. As of 2017, it has a population of 7,307 inhabitants. It covers an area of 37.20 square kilometers and has a population density of 193.58 people per square kilometer. It holds the medieval title of Most Loyal and Noble Villa (Spanish: Muy Noble y Muy Leal Villa).\nElorrio was founded in 1356 by the Infante Tello Alfonso of Castile, who was the 20th Lord of Biscay, near the elizate of Saint Agustín of Etxebarria (Basque: San Agustin Etxebarria; Spanish: San Agustín de Echevarría). Historically, San Agustin Etxebarria was part of the medieval County of Durango, and Elorrio remains part of the comarca (local region) of Durangaldea. In 1630, Elorrio annexed Saint Agustín of Etxebarria, which today is a ward of Elorrio. Elorrio had municipal representation in the medieval Juntas Generales.\nThe town has been affected by its main economic activity: the industrial sector. It is also renowned for its rich architectural heritage, being listed as a Conjunto histórico by the Ministry of Culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "elorrio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4520,
+    "attempt": 4485,
+    "place_id": "gn-3179781",
+    "input": {
+      "place": {
+        "place_id": "gn-3179781",
+        "name": "Cassino",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.48581,
+        "lon": 13.82835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cassino",
+          "url": "https://en.wikipedia.org/wiki/Cassino",
+          "text": "Cassino (Italian pronunciation: [kasˈsiːno]) is a comune in the province of Frosinone at the southern end of the region of Lazio. It is the southernmost city of the so-called \"Latin Valley\".\nIt is located at the foot of Monte Cairo near the confluence of the Gari and Liri rivers and on the via Casilina between Rome and Naples. The city is best known as the site of the Abbey of Montecassino and the Battle of Monte Cassino during World War II, which resulted in huge Allied and German casualties, as well as the nearly total destruction of the town itself. It is also home to the University of Cassino and Southern Lazio.\n\nCassino has a population of 35,969 as of July 2017, making it the second-largest town in the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "cassino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4521,
+    "attempt": 4486,
+    "place_id": "gn-4517586",
+    "input": {
+      "place": {
+        "place_id": "gn-4517586",
+        "name": "Marietta",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.41535,
+        "lon": -81.45484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marietta, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Marietta,_Ohio",
+          "text": "Marietta is a city in Washington County, Ohio, United States, and its county seat. It is located in southeastern Ohio at the confluence of the Muskingum and Ohio Rivers, 11 miles (18 km) northeast of Parkersburg, West Virginia. As of the 2020 census, Marietta has a population of 13,385 people. It is the principal city of the Marietta micropolitan area, which includes all of Washington County, and is the second-largest city in the Parkersburg–Marietta–Vienna combined statistical area.\nFounded in 1788 by pioneers to the Ohio Country, Marietta was the first permanent U.S. settlement in the newly established Northwest Territory, created in 1787, and what would later become the state of Ohio. It is named after Marie Antoinette, then Queen of France, in honor of French aid in the American Revolution. The area was inhabited by various native tribes of the Hopewell tradition, who built the Marietta Earthworks, a complex more than 1,500 years old, whose Great Mound and other major monuments were preserved by the earliest settlers in parks such as Mound Cemetery. Since 1835 the city has been home to Marietta College, a private, nonsectarian liberal arts school with approximately 1,200 students. Leading up to the American Civil War, the city was a station on the Underground Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "marietta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4522,
+    "attempt": 4487,
+    "place_id": "gn-4947597",
+    "input": {
+      "place": {
+        "place_id": "gn-4947597",
+        "name": "Plymouth",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.95844,
+        "lon": -70.66726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plymouth, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Plymouth,_Massachusetts",
+          "text": "Plymouth (  PLIM-əth; historically also spelled as Plimouth and Plimoth) is a town in and the county seat of Plymouth County, Massachusetts, United States. Located in Greater Boston, the town holds a place of great prominence in American history, folklore, and culture, and is known as \"America's Hometown\". Plymouth was the site of the colony founded in 1620 by the Mayflower Pilgrims, where New England was first established. It is the oldest municipality in New England and one of the oldest in the United States. The town has served as the location of several prominent events, one of the more notable being the First Thanksgiving feast. Plymouth served as the capital of Plymouth Colony from its founding in 1620 until the colony's merger with the Massachusetts Bay Colony in 1691. The English explorer John Smith named the area Plymouth (after the city in South West England) and the region 'New England' during his voyage of 1614 (the accompanying map was published in 1616). It was a later coincidence that, after an aborted attempt to make the 1620 trans-Atlantic crossing from Southampton, the Mayflower finally set sail for America from Plymouth, England.\nPlymouth is located approximately 40 miles (64 km) south of Boston in a region known as the South Shore. Throughout the 19th century, the town thrived as a center of rope making, fishing, and shipping, and was home to the Plymouth Cordage Company, formerly the world's largest rope making company. It continues to be an active port, but today its major industry is healthcare and social services. The town is served by Plymouth Municipal Airport and contains the Pilgrim Hall Museum, the oldest continually operating museum in the United States. It is the largest municipality in Massachusetts by area, and the largest in southern New England. The population was 61,217 at the 2020 U.S. census. It is one of two seats of Plymouth County, the other being Brockton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "plymouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4523,
+    "attempt": 4488,
+    "place_id": "gn-5017822",
+    "input": {
+      "place": {
+        "place_id": "gn-5017822",
+        "name": "Bemidji",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 47.47356,
+        "lon": -94.88028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bemidji, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Bemidji,_Minnesota",
+          "text": "Bemidji (  bə-MIJ-ee) is a city in and the county seat of Beltrami County, Minnesota, United States. The population was 14,574 as of the 2020 census, and was estimated at 15,770 in 2025, making it the largest commercial center between Grand Forks, North Dakota and Duluth.\nAs a central city for three Indian reservations, Bemidji is the site of many Native American services, including the Indian Health Service. Near Bemidji are the Red Lake Indian Reservation, White Earth Indian Reservation, and the Leech Lake Indian Reservation. Bemidji lies on the southwest shore of Lake Bemidji, the northernmost lake feeding the Mississippi River; it is nicknamed \"The First City on the Mississippi\". Bemidji is also the self-proclaimed \"curling capital\" of the U.S. and the alleged birthplace of the legendary Paul Bunyan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "bemidji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4524,
+    "attempt": 4489,
+    "place_id": "gn-5131692",
+    "input": {
+      "place": {
+        "place_id": "gn-5131692",
+        "name": "Plattsburgh",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 44.69949,
+        "lon": -73.45291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plattsburgh, New York",
+          "url": "https://en.wikipedia.org/wiki/Plattsburgh,_New_York",
+          "text": "Plattsburgh is a city in and the county seat of Clinton County, New York, United States, situated on the north-western shore of Lake Champlain. The population was 19,841 at the 2020 census. The population of the surrounding (and separately incorporated) Town of Plattsburgh was 11,886 as of the 2020 census, making the combined population of Plattsburgh to be 31,727.  Plattsburgh lies just to the northeast of Adirondack Park, immediately outside of the park boundaries. It is the second largest community in the North Country region (after Watertown), and serves as the main commercial hub for the sparsely populated northern Adirondack Mountains. The explorer Samuel de Champlain was the first ever recorded European that sailed into Champlain Valley and later claimed the region as a part of New France in 1609.\nPlattsburgh was the site of the amphibious Battle of Plattsburgh in the War of 1812, a key American victory that marked the end of hostilities in the Northern United States. It has been an important military outpost for much of its history, from hosting one of the largest Citizens' Military Training Camps prior to World War I, and Plattsburgh Air Force Base, the east coast center of operations for the Strategic Air Command during much of the Cold War period. The conversion of the base to a civilian airport in the 1990s resulted from the Base Realignment and Closure process during the wind down of the Cold War, and today it serves as a hub for economic development for the region. The city was named one of the Financial Times Top 10 Micro Cities of the Future several times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "plattsburgh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4525,
+    "attempt": 4490,
+    "place_id": "gn-5308305",
+    "input": {
+      "place": {
+        "place_id": "gn-5308305",
+        "name": "Payson",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 34.23087,
+        "lon": -111.32514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Payson, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Payson,_Arizona",
+          "text": "Payson (Navajo: Ndzistsooí) is a town in northern Gila County, Arizona, United States. Due to Payson's location being very near to the geographic center of Arizona, it has been called \"The Heart of Arizona.\" Payson is also considered part of the colloquially defined Northern Arizona region, and the town serves as a gateway to the vast wilderness of the Colorado Plateau. The town is surrounded by the Tonto National Forest, the largest of the six national forests in Arizona—and the ninth largest national forest in the United States.\nPayson boasts a lively festival calendar, including The World's Oldest Continuous Rodeo established in 1884, as well as the Arizona State Old Time Fiddlin' Championship, which celebrates the area's musical heritage.\nAs of the 2020 census, the population of Payson was 16,361."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "payson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4526,
+    "attempt": 4491,
+    "place_id": "gn-5328041",
+    "input": {
+      "place": {
+        "place_id": "gn-5328041",
+        "name": "Beverly Hills",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.07362,
+        "lon": -118.40036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beverly Hills, California",
+          "url": "https://en.wikipedia.org/wiki/Beverly_Hills,_California",
+          "text": "Beverly Hills is a city in Los Angeles County, California, United States. It is located southwest of the Hollywood Hills, approximately 12.2 miles (19.6 km) northwest of downtown Los Angeles. The city's land area totals 5.71 square miles (14.8 km2) and (together with the neighboring smaller city of West Hollywood to the east) is entirely surrounded by the city of Los Angeles. According to the 2020 census, the city has a population of 32,701, marking a decrease of 1,408 from the 2010 census count of 34,109.\nIn American popular culture, Beverly Hills has been known as an affluent suburb within Greater Los Angeles, which corresponds to higher property values and taxes in the area. The city is well known for its Rodeo Drive shopping district that includes many designer brands. Throughout its history, the city has been home to many celebrities. It is noted for numerous hotels and resorts, including the Beverly Hilton and the Beverly Hills Hotel. The city has been featured in many movies, television series, music, and media, in the United States and internationally.\nAfter its initial settlement in 1828, Beverly Hills was originally a primarily agricultural community centered around Rancho Rodeo de las Aguas, a Mexican-era rancho grant. Beverly Hills was first incorporated as a city in September 1914 by a group of investors who had failed to find oil but found water instead, and eventually decided to develop it into a town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "beverly hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beverly",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4527,
+    "attempt": 4492,
+    "place_id": "gn-5697939",
+    "input": {
+      "place": {
+        "place_id": "gn-5697939",
+        "name": "North Platte",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.12389,
+        "lon": -100.76542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Platte, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/North_Platte,_Nebraska",
+          "text": "North Platte is a city in and the county seat of Lincoln County, Nebraska, United States. It is located in the west-central part of the state, along Interstate 80, at the confluence of the North and South Platte Rivers forming the Platte River. The population was 23,390 at the 2020 census, making it the 11th most populous city in Nebraska.\nNorth Platte is a railroad town; Union Pacific Railroad's large Bailey Yard is located within the city. Today, North Platte is served only by freight trains, but during World War II, the city was known for the North Platte Canteen, a volunteer organization serving food to millions of traveling soldiers.\nNorth Platte is the principal city of the North Platte Micropolitan Statistical Area, which includes Lincoln, Logan, and McPherson counties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "north platte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "platte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4528,
+    "attempt": 4493,
+    "place_id": "gn-1791351",
+    "input": {
+      "place": {
+        "place_id": "gn-1791351",
+        "name": "Wuchang",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 30.54314,
+        "lon": 114.30068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuchang, Wuhan",
+          "url": "https://en.wikipedia.org/wiki/Wuchang,_Wuhan",
+          "text": "Wuchang is one of 13 urban districts of the prefecture-level city of Wuhan, the capital of Hubei Province, China. It is the oldest of the three cities that merged into modern-day Wuhan, and stood on the right (southeastern) bank of the Yangtze River, opposite the mouth of the Han River. The two other cities, Hanyang and Hankou, were on the left (northwestern) bank, separated from each other by the Han River.\nThe name \"Wuchang\" remains in common use for the part of urban Wuhan south of the Yangtze River. Administratively, however, it is split between several districts of the City of Wuhan. The historic center of Wuchang lies within the modern Wuchang District, which has an area of 82.4 square kilometres (31.8 sq mi) and a population of 1,102,188. Other parts of what is colloquially known as Wuchang are within Hongshan District (south and south-east) and Qingshan District (north-east). Presently, on the right bank of the Yangtze, it borders the districts of Qingshan (for a very small section) to the northeast and Hongshan to the east and south; on the opposite bank it borders Jiang'an, Jianghan and Hanyang.\nOn 10 October 1911, the New Army stationed in the city started the Wuchang Uprising, a turning point of the Xinhai Revolution that overthrew the Qing dynasty and established the Republic of China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "wuchang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4529,
+    "attempt": 4494,
+    "place_id": "gn-2267538",
+    "input": {
+      "place": {
+        "place_id": "gn-2267538",
+        "name": "Grândola",
+        "country": "Portugal",
+        "subdivision": "Setúbal",
+        "lat": 38.17718,
+        "lon": -8.56675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grândola",
+          "url": "https://en.wikipedia.org/wiki/Gr%C3%A2ndola",
+          "text": "Grândola (pronounced [ˈɡɾɐ̃dulɐ] , locally [ˈɡɾɐ̃dʷɫɐ]) is a town (vila) and municipality in Setúbal District in Portugal. The population in 2021 was 13,822, in an area of 825.94 square kilometres (318.90 mi2). Besides the town of Grândola, it includes areas such as Tróia (part of Carvalhal parish), a peninsula between the Atlantic Ocean and the Sado River, and the popular summer resort of Melides. The municipality also features the Serra de Grândola mountain range and its coastline is partly within the Comporta region.\nGrândola is known for inspiring the song \"Grândola, Vila Morena\" by José Afonso, which became an iconic symbol during the Carnation Revolution. The song was used as the second, secret radio broadcast signal on the 25th of April 1974, confirming that the military coup was underway. Its airing just after midnight following \"E depois do adeus\" on Rádio Renascença, marked the start of the revolution.\nThe municipal holiday is October 22, the anniversary of Grândola's first foral (charter). The current mayor of Grândola is Luís Vital Alexandre from the Socialist Party (PS)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "grandola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4530,
+    "attempt": 4495,
+    "place_id": "gn-2619650",
+    "input": {
+      "place": {
+        "place_id": "gn-2619650",
+        "name": "Hundested",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.96397,
+        "lon": 11.85044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hundested",
+          "url": "https://en.wikipedia.org/wiki/Hundested",
+          "text": "Hundested is a town with a population of 8,609 (1 January 2026) and a former municipality (Danish, kommune) in Region Hovedstaden in the northern part of the island of Zealand (Sjælland) in eastern Denmark.\nThe former municipality is surrounded by water on three sides: to the north is the Kattegat, to the west is the channel leading into the Isefjord, and to the south is Roskilde Fjord and the channel leading into it from the Isefjord.\nThe area is characterized by sand and dunes, especially on its northern side facing the Kattegat, but also found in the central areas and in the south. Kikhavn on the northern side of the peninsula, not far to the east of the town of Hundested, is the oldest fishing village in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "hundested",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4531,
+    "attempt": 4496,
+    "place_id": "gn-2639104",
+    "input": {
+      "place": {
+        "place_id": "gn-2639104",
+        "name": "Rosyth",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.03689,
+        "lon": -3.438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosyth",
+          "url": "https://en.wikipedia.org/wiki/Rosyth",
+          "text": "Rosyth   (Scottish Gaelic: Ros Fhìobh) is a town and Garden City in Fife, Scotland, on the coast of the Firth of Forth.\nScotland's first Garden City, Rosyth is part of the Greater Dunfermline Area and is located 3 miles south of Dunfermline city centre and 10 miles northwest of Edinburgh city centre. To the west of Rosyth lies Limekilns and to the east lies Inverkeithing.\nRosyth was founded along with the finished construction of Rosyth Dockyard in March 1916, built as a naval base for World War I battleships to protect the North Sea. Rosyth played a key role in World War II defending the North Sea especially during the German occupation of Norway. It was then redeveloped to maintain submarines and serve as a port and business park.\nRosyth is near the narrowest crossing point of the Firth of Forth, so has long been strategically important, evidenced by the 15th century Rosyth Castle. Rosyth is home to 12 Historic Scotland listed buildings as well as sections of long distance footpaths the Fife Coastal Path and the Fife Pilgrim Way.\nToday, Rosyth is a suburban commuter town of Edinburgh and Dunfermline. Rosyth Railway Station is on the Fife Circle Line and the town is bypassed by the M90 motorway. Rosyth has a population of 13,570 (2020), making the town the 5th largest in Fife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "rosyth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4532,
+    "attempt": 4497,
+    "place_id": "gn-2991153",
+    "input": {
+      "place": {
+        "place_id": "gn-2991153",
+        "name": "Muret",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.45998,
+        "lon": 1.32541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muret",
+          "url": "https://en.wikipedia.org/wiki/Muret",
+          "text": "Muret (French pronunciation: [myʁɛ] ; in Gascon Occitan Murèth) is a commune in the Haute-Garonne department, of which it is a subprefecture, in the Occitanie region of southwestern France. Its inhabitants are called Muretains.\nIt is an outer suburb of the city of Toulouse, even though it is not in the region of Toulouse Métropole, which it has declined to join. It lies southwest of Toulouse and is the largest component of the intercommunality of Le Muretain Agglo.\nMuret is generally known for the Battle of Muret (1213) and as the birthplace of the Renaissance humanist Muretus (1526–1585) and of Clément Ader (1841–1925), inventor and aviation pioneer. It is also the birthplace of the Niel family from which Adolphe Niel, Marshal of France and Minister of War, was derived."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "muret",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4533,
+    "attempt": 4498,
+    "place_id": "gn-5097349",
+    "input": {
+      "place": {
+        "place_id": "gn-5097349",
+        "name": "Dunellen",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.58927,
+        "lon": -74.47182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunellen, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Dunellen,_New_Jersey",
+          "text": "Dunellen () is a borough in Middlesex County, in the U.S. state of New Jersey. It is located within the Raritan Valley region of central New Jersey. As of the 2020 United States census, the borough's population was 7,637, an increase of 410 (+5.7%) from the 2010 census count of 7,227, which in turn had reflected an increase of 404 (+5.9%) from the 6,823 counted at the 2000 census.\nDunellen was formed as a borough by an act of the New Jersey Legislature on October 28, 1887, when it broke away from Piscataway Township, based on the results of a referendum held on March 23, 1886. Dunellen's incorporation was confirmed on April 15, 1914. The borough was named for the Dunellen station of the Central Railroad of New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "dunellen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4534,
+    "attempt": 4499,
+    "place_id": "gn-5099057",
+    "input": {
+      "place": {
+        "place_id": "gn-5099057",
+        "name": "Highland Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.49594,
+        "lon": -74.42432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Highland Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Highland_Park,_New_Jersey",
+          "text": "Highland Park is a borough in Middlesex County, in the central region of the U.S. state of New Jersey, in the New York City metropolitan area. The borough is located on the northern banks of the Raritan River, in the Raritan Valley region. As of the 2020 United States census, the borough's population was 15,072, an increase of 1,090 (+7.8%) from the 2010 census count of 13,982, which in turn had reflected a decline of 17 (−0.1%) from the 13,999 counted at the 2000 census.\nHighland Park was formed as a borough by an act of the New Jersey Legislature on March 15, 1905, when it broke away from what was then known as Raritan Township (present-day Edison). The borough was named for its location above the Raritan River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "highland park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "highland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4535,
+    "attempt": 4500,
+    "place_id": "gn-5130081",
+    "input": {
+      "place": {
+        "place_id": "gn-5130081",
+        "name": "Oswego",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.45535,
+        "lon": -76.5105
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oswego, New York",
+          "url": "https://en.wikipedia.org/wiki/Oswego,_New_York",
+          "text": "Oswego ( oss-WEE-goh,  Onondaga: Deyoʼswé·geʼ ) is a city in and the county seat of Oswego County, New York, United States. The population was 16,921 at the 2020 census. Oswego is situated at the mouth of the Oswego River on the southeastern shore of Lake Ontario in Upstate New York, about 40 miles (64 km) northwest of Syracuse and 74 miles (119 km) east-northeast of Rochester by road. The city promotes itself as \"The Port City of Central New York\".\nThe first European settlement at Oswego was a British trading post established in 1722, and it was first incorporated as a village in 1828 before becoming a city in 1848. British forces briefly captured the city during the War of 1812, but were defeated nearby later that same month. The canalization of the Oswego River was a major boon to Oswego, attracting settlement and investment; this was later bolstered by its status as a rail hub for much of the 19th and 20th centuries, though this status had begun to decline by the 1940s. During World War II, Fort Ontario was the site of the only Jewish refugee camp in the United States. Today, the city's economy is primarily based around manufacturing and services.\nOswego is governed by a mayor, currently Republican Rob Corradino, and a city council. The city is located within the Syracuse metropolitan area, and is also inside Syracuse's broader media market. It is bordered by the towns of Oswego, Minetto, and Scriba to the west, south, and east, respectively; and by Lake Ontario to the north. Oswego Speedway is a nationally known automobile racing facility. The State University of New York at Oswego (SUNY Oswego) is located just outside the city in the town of Oswego, on the shores of Lake Ontario, and is a major force in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "oswego",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

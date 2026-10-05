@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2480,
+    "attempt": 2461,
+    "place_id": "gn-2701713",
+    "input": {
+      "place": {
+        "place_id": "gn-2701713",
+        "name": "Karlskrona",
+        "country": "Sweden",
+        "subdivision": "Blekinge",
+        "lat": 56.16156,
+        "lon": 15.58661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlskrona",
+          "url": "https://en.wikipedia.org/wiki/Karlskrona",
+          "text": "Karlskrona (UK: , US: , Swedish: [kaɭsˈkrûːna] ) is a locality and the seat of Karlskrona Municipality, Blekinge County, Sweden with a population of 66,675 in 2018. It is also the capital of Blekinge County. Karlskrona is known as Sweden's only baroque city and is host to Sweden's largest naval base and the headquarters of the Swedish Coast Guard.\nHistorically, the city has been home to a German minority, thus enabling the formation of a German Congregational church. It also counted Jewish people in its population.\nIn 1998, parts of the city, including the Karlskrona Naval Base, were declared a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "karlskrona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2481,
+    "attempt": 2462,
+    "place_id": "gn-2835537",
+    "input": {
+      "place": {
+        "place_id": "gn-2835537",
+        "name": "Schwabach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.33047,
+        "lon": 11.02346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwabach",
+          "url": "https://en.wikipedia.org/wiki/Schwabach",
+          "text": "Schwabach (German pronunciation: [ˈʃvaːbax] ) is a German city of about 40,000 inhabitants near Nuremberg in the centre of the region of Franconia in the north of Bavaria. Together with the neighboring cities of Nuremberg, Fürth and Erlangen, Schwabach forms one of the three metropolitan areas in Bavaria. The city is an autonomous administrative district (kreisfreie Stadt). Schwabach is also the name of the river which runs through the city prior to joining the Rednitz.\nSchwabach is famous for its crafts made of gold, particularly gold foil. In 2004, Schwabach celebrated this tradition with an anniversary festival, marking \"500 years gold foil in Schwabach\".\nAround 1500, a local typesetter developed the \"Schwabacher\" font. This font was used for printing the first Bible in German, which had been worked out by Martin Luther."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "schwabach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2482,
+    "attempt": 2463,
+    "place_id": "gn-2960276",
+    "input": {
+      "place": {
+        "place_id": "gn-2960276",
+        "name": "Mersch",
+        "country": "Luxembourg",
+        "subdivision": "Mersch",
+        "lat": 49.75055,
+        "lon": 6.10627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mersch",
+          "url": "https://en.wikipedia.org/wiki/Mersch",
+          "text": "Mersch (French pronunciation: [mɛʁʃ], German pronunciation: [mɛʁʃ]; Luxembourgish: Miersch [ˈmiːɐ̯ʃ] ) is a commune and town in central Luxembourg, situated in the canton of the same name. It is situated at the confluence of the rivers Alzette, Mamer and Eisch.\nAs of 2023, the town of Mersch, which lies in the centre of the commune, has a population of 5,093.  Other towns within the commune include Beringen, Berschbach, Moesdorf, Pettingen, Reckange, Rollingen, and Schoenfels.\nMersch is the home of the National Literature Centre, Luxembourg's national literary archive.  The town is the site of one of the six regional headquarters of the Grand Ducal Police.\nMersch Castle is one of the castles belonging to the Valley of the Seven Castles. Located in the centre of the town, its history goes back to the 13th century. Today the castle houses the administrative offices of the local commune.\nSome 3 kilometres (2 mi) north of Mersch, Pettingen Castle in the village of Pettingen is one of the best preserved fortified castles in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "mersch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2483,
+    "attempt": 2464,
+    "place_id": "gn-320995",
+    "input": {
+      "place": {
+        "place_id": "gn-320995",
+        "name": "Bodrum",
+        "country": "Türkiye",
+        "subdivision": "Muğla",
+        "lat": 37.03833,
+        "lon": 27.42917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodrum",
+          "url": "https://en.wikipedia.org/wiki/Bodrum",
+          "text": "Bodrum (Turkish pronunciation: [ˈbodɾum]) is a town and district of Muğla Province in Turkey. It is a port town at the entrance to the Gulf of Gökova. Known in ancient times as Halicarnassus, the town was once home to the Mausoleum at Halicarnassus, also known as the tomb of Mausolus, one of the Seven Wonders of the Ancient World.\nThe town was founded by Dorian Greeks. It later fell under Persian rule and became the capital of the satrapy of Caria. Mausolus ruled Caria from here, and after his death in 353 BC, his wife Artemisia built a tomb, called the Mausoleum, for him. Macedonian forces laid siege to the city and captured it in 334 BC. After Alexander's death, the city passed to successive Hellenistic rulers and was briefly an independent kingdom until 129 BC, when it came under Roman rule. A series of natural disasters and repeated pirate attacks wreaked havoc on the area, and the city lost its importance by the time of the Byzantine era. The Knights Hospitaller arrived in 1402 and used the remains of the Mausoleum as a quarry to build Bodrum Castle. After the conquest of Rhodes by Suleiman the Magnificent in 1522, the town fell under Ottoman control as the Knights Hospitaller relocated to Europe.\nBy the 20th century, the town's economy was mainly based on fishing and sponge diving, but tourism has become the main industry in Bodrum since the late 20th century. The abundance of visitors has also contributed to Bodrum's retail and service industry. Milas–Bodrum Airport and Kos International Airport are the main airports that serve the town. The port has ferries to other nearby Turkish and Greek ports and islands, Kos being the most important. Most of the public transportation in the town is based on local share taxis and buses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "bodrum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2484,
+    "attempt": 2465,
+    "place_id": "gn-3438819",
+    "input": {
+      "place": {
+        "place_id": "gn-3438819",
+        "name": "Coronel Oviedo",
+        "country": "Paraguay",
+        "subdivision": "Caaguazú Department",
+        "lat": -25.44613,
+        "lon": -56.43928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coronel Oviedo",
+          "url": "https://en.wikipedia.org/wiki/Coronel_Oviedo",
+          "text": "Coronel Oviedo (Spanish pronunciation: [koɾoˈnel oˈβjeðo]), locally known as Oviedo, is a city in east-central Paraguay. It is the capital of the Caaguazú Department, about 150 kilometers east of Asunción, and was founded in 1758.\nThe city has a population of about 52,400 (2006 Estimate) and is the hometown of former president Nicanor Duarte Frutos.  Coronel Oviedo is an important transit point, as it lies halfway between Asunción and Ciudad del Este.  In addition, it sits at the intersection of highways Ruta 2, Ruta 7 and Ruta 8.\nThe moniker for the city is the \"Capital of Work\" or capital de trabajo in Spanish.\nThe original name of the city at the time of its founding was \"Nuestra Señora del Rosario de Ajos\" or \"Our Lady of the Rosary of Garlic\", as the cultivation of garlic was a prominent local cash crop and formed a significant base for trade in the city. In 1931, the government of Paraguay changed the name of the city to Coronel Oviedo in memory of Cnel Florentin Oviedo, hero of the War of the Triple Alliance. After the war, Oviedo settled in Ajos and lived there until his death in 1935. \nThe city is the seat of the Roman Catholic Diocese of Coronel Oviedo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "coronel oviedo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coronel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oviedo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2485,
+    "attempt": 2466,
+    "place_id": "gn-4110486",
+    "input": {
+      "place": {
+        "place_id": "gn-4110486",
+        "name": "Fayetteville",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.06258,
+        "lon": -94.15743
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fayetteville, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Fayetteville,_Arkansas",
+          "text": "Fayetteville ( FAY-ət-vil) is a city in Washington County, Arkansas, United States, and its county seat. The population was 93,949 at the 2020 census, and was estimated at 106,623 in 2025, making it the second-most populous city in Arkansas and the most populous city in Northwest Arkansas. Fayetteville is on the outskirts of the Boston Mountains, within the Ozarks. It is included in the three-county Northwest Arkansas metropolitan area, with 546,725 residents in 2020.\nNamed after Fayetteville, Tennessee, from which many settlers had come, Fayetteville, Arkansas, was incorporated on November 3, 1836. It is home to the University of Arkansas, the state's flagship university. When classes are in session, thousands of students on campus change up the pace of the city. Thousands of Arkansas Razorbacks alumni and fans travel to Fayetteville to attend football, basketball, and baseball games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "fayetteville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2486,
+    "attempt": 2467,
+    "place_id": "gn-5001929",
+    "input": {
+      "place": {
+        "place_id": "gn-5001929",
+        "name": "Midland",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.61558,
+        "lon": -84.24721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midland, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Midland,_Michigan",
+          "text": "Midland is a city in the state of Michigan and is the county seat of Midland County. The population was 42,547 at the 2020 census. It is the principal city of the Midland metropolitan statistical area, part of the larger Saginaw-Midland-Bay City combined statistical area. The city is bordered by Midland Township, though the two are administered separately.\nMidland is located at the confluence of Chippewa and Tittabawassee rivers in Central Michigan. The city is home to the headquarters of Dow Chemical Company, one of the largest chemical producers in the world, which was founded by Herbert Henry Dow in the city in 1897. The city is also home to Midland Center for the Arts and Northwood University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "midland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2487,
+    "attempt": 2468,
+    "place_id": "gn-5258957",
+    "input": {
+      "place": {
+        "place_id": "gn-5258957",
+        "name": "La Crosse",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.80136,
+        "lon": -91.23958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Crosse, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/La_Crosse,_Wisconsin",
+          "text": "La Crosse (  lə-KROSS) is a city in La Crosse County, Wisconsin, United States, and its county seat. Positioned alongside the Mississippi River, La Crosse is the most populous city on Wisconsin's western border. The population was 52,680 at the 2020 census. The La Crosse–Onalaska metropolitan area has an estimated 140,000 residents.\nLa Crosse serves as a regional educational, medical, manufacturing, and transportation hub for Western Wisconsin producing a gross domestic product (GDP) of $10.1 billion for the La Crosse–Onalaska metropolitan area as of 2023. Home to the University of Wisconsin–La Crosse, Viterbo University, and Western Technical College, the city has nearly 20,000 students. The La Crosse area is home to the headquarters or regional offices of Kwik Trip, Organic Valley, Mayo Clinic, Gundersen Health System, Gensler, La Crosse Technology, City Brewing Company, and Trane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "la crosse",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crosse",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2488,
+    "attempt": 2469,
+    "place_id": "gn-684802",
+    "input": {
+      "place": {
+        "place_id": "gn-684802",
+        "name": "Bârlad",
+        "country": "Romania",
+        "subdivision": "Vaslui County",
+        "lat": 46.23175,
+        "lon": 27.66907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bârlad",
+          "url": "https://en.wikipedia.org/wiki/B%C3%A2rlad",
+          "text": "Bârlad (Romanian pronunciation: [bɨrˈlad] ) is a city in Vaslui County, Romania. It lies on the banks of the river Bârlad, which waters the high plains of Western Moldavia.\nAt Bârlad the railway from Iași diverges, one branch skirting the river Siret, the other skirting the Prut; both reunite at Galați. Along with a maze of narrow and winding streets, Bârlad features several notable modern buildings, including the hospital administered by the Saint Spiridion Foundation of Iași. In the vicinity of the city are the ruins of a Roman camp.\nThe city is the birthplace of Romanian Domnitor (Ruler) and diplomat Alexandru Ioan Cuza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "barlad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2489,
+    "attempt": 2470,
+    "place_id": "gn-1263862",
+    "input": {
+      "place": {
+        "place_id": "gn-1263862",
+        "name": "Mandi",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 31.71194,
+        "lon": 76.93273
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandi, Himachal Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Mandi,_Himachal_Pradesh",
+          "text": "Mandi (formerly known as Mandav Nagar) is a major city and a municipal corporation in Mandi District in the Indian state of Himachal Pradesh. It serves as the headquarters of Mandi District and Zonal Headquarters of central zone including districts namely Kullu, Bilaspur, and Hamirpur. In the 2011 Indian census, Mandi had a population of 26,422. Mandi district is currently the 4th largest economy in the state. Mandi has the second highest sex ratio in the state - 1,013 females per 1,000 males.\nMandi was established in 1527 by Ajbar Sen, as the seat of the Mandi State, a princely state till 1948. Foundation of the town was laid on the establishment of Himachal Pradesh in early 1948. Today, it is widely known for the International Mandi Shivaratri Fair. Mandi is also the first heritage city of Himachal Pradesh. It also has the remains of old palaces and notable examples of 'colonial' architecture. Mandi has some of the oldest buildings of Himachal Pradesh, including Victoria Bridge, built in 1877.\nIt is situated 145 kilometres (90 mi) north of the state capital, Shimla in the north-west Himalayas at an average altitude of 880 m (2,890 ft) Mandi is connected to the city Pathankot through National Highway 154 and to Manali and Chandigarh through National Highway 5. Mandi is approximately 163 km (101 mi) from Chandigarh, the nearest major city, and 395 km (245 mi) from New Delhi, the national capital.\nAs a tourist place, Mandi is often referred to as \"Varanasi of Hills\" or \"Choti Kashi\" or \"Kashi of Himachal\". Mandi is also the starting point for the Prashar lake trek. From Mandi, trekkers go to Bagi village, which serves as the base village for Prashar lake. Indian Institute of Technology (IIT) Mandi is a premier institute located 15 kilometres (9.3 mi) from Mandi town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "mandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2490,
+    "attempt": 2471,
+    "place_id": "gn-1278580",
+    "input": {
+      "place": {
+        "place_id": "gn-1278580",
+        "name": "Anjangaon",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 21.16516,
+        "lon": 77.3091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anjangaon",
+          "url": "https://en.wikipedia.org/wiki/Anjangaon",
+          "text": "Anjangaon is a city and a municipal council in Amravati district in the state of Maharashtra, India. Anjangaon City got the status of Municipal Council in 1930. It is the first municipal council established in Amravati district and the second biggest council as well. Anjangaon Surji Tehsil was established in 1981. It is technically made up of two main zones, Anjangaon and Surji, on either side of Shahanur River, and is called Anjangaon-Surji in combination. It is called a \"Banana Hub of Vidarbha\" as it is a large producer of bananas and a hub of medicinal plants - Piper longum and Safed musali.\nAnjangaon is located at 21.1641°N 77.3159°E﻿ / 21.1641; 77.3159. It has an average elevation of 374 metres (1227 feet)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "anjangaon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2491,
+    "attempt": 2472,
+    "place_id": "gn-1608232",
+    "input": {
+      "place": {
+        "place_id": "gn-1608232",
+        "name": "Nong Khai",
+        "country": "Thailand",
+        "subdivision": "Nong Khai",
+        "lat": 17.87847,
+        "lon": 102.742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nong Khai",
+          "url": "https://en.wikipedia.org/wiki/Nong_Khai",
+          "text": "Nong Khai (Thai: เทศบาลเมืองหนองคาย, RTGS: Thetsaban Mueang Nong Khai; Lao: ໜອງຄາຍ) is a city in northeast Thailand. It is the capital of Nong Khai province. Nong Khai city is located in Mueang Nong Khai district.\nNong Khai lies on the Mekong River, near the site of the First Thai–Lao Friendship Bridge, spanning the river to Laos. The bridge, a major tourist attraction, was largely funded as a gift to the Lao government from the Australian government. It is the road and railway gateway to the Lao capital, Vientiane, 25 kilometres (16 mi) upriver, on the north bank opposite Thailand's Si Chiang Mai district. Construction of a rail spur to Thanaleng outside Vientiane was begun early-2007 and opened 5 March 2009.\nNong Khai is 626 km (389 mi) north of Bangkok by road and 60 km (37 mi) north of Udon Thani."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "nong khai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "khai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2492,
+    "attempt": 2473,
+    "place_id": "gn-1720464",
+    "input": {
+      "place": {
+        "place_id": "gn-1720464",
+        "name": "Calauan",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.14989,
+        "lon": 121.3152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calauan",
+          "url": "https://en.wikipedia.org/wiki/Calauan",
+          "text": "Calauan (IPA: [kɐˈlaː.wɐn]), officially the Municipality of Calauan (Tagalog: Bayan ng Calauan), is a municipality in the province of Laguna, Philippines. The municipality has a land area of 65.40 square kilometers (25.25 mi2), which constitutes 2.4% of Laguna's total area. According to the 2024 census, it has a population of 89,670 people.\nCalauan is known for its pineapple production, which is part of its local economy. The town is known for the Pineapple Festival, which is celebrated in May. It also offers serene destinations like the Field of Faith in Barangay Lamot 2 and the Isdaan Floating Restaurant located along the Calamba–Pagsanjan Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "calauan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2493,
+    "attempt": 2474,
+    "place_id": "gn-202572",
+    "input": {
+      "place": {
+        "place_id": "gn-202572",
+        "name": "Ndera",
+        "country": "Rwanda",
+        "subdivision": "Kigali",
+        "lat": -1.9495,
+        "lon": 30.1697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ndera",
+          "url": "https://en.wikipedia.org/wiki/Ndera",
+          "text": "Ndera is one of the 15 sectors that make up the district of Gasabo found in kigali city.  \nIt is about 15 kilometres (9.3 mi) from the capital.\nThe sector is popular due to the location of  Ndera Neuropsychiatric Teaching Hospital (Caraes Ndera) which is the referral hospital for neuropsychiatric disorders,. which was established in 1968 but received its first patients in 1972 \nThe hospital re-opened in August 1994, and began treating people who had been traumatized by the recent Rwandan genocide. \nAs of 2008, it treated about 2,500 patients monthly.\nNdera sector is also a home to the minor seminary of St. Vincent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "ndera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2494,
+    "attempt": 2475,
+    "place_id": "gn-2467898",
+    "input": {
+      "place": {
+        "place_id": "gn-2467898",
+        "name": "Grombalia",
+        "country": "Tunisia",
+        "subdivision": "Nabeul Governorate",
+        "lat": 36.59894,
+        "lon": 10.50032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grombalia",
+          "url": "https://en.wikipedia.org/wiki/Grombalia",
+          "text": "Grombalia is a Tunisian city located in the Nabeul Governorate. At the 2014 census, its population was 24,336, while the population of the municipality was 67,475. It is the birthplace of former president Moncef Marzouki.\nGrombalia is located at an elevation of 102 meters above sea level and spans an area of 815.5 hectares. Its Latin name, \"Hukulumbarros,\" translates to \"traveling pigeon.\" Notably, Grombalia is characterized by its fertile lands and strategic geographical position in Cap Bon, making it a significant gateway to the region. Moreover, it is considered a suburb of Tunis due to its proximity and connections to the capital city.\nGrombalia has two sister cities. Fort Smith, Arkansas, United States and Cisterna, Italy.\nGrombalia is principally known for grape farming and have a grape vine statue at the city center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "grombalia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2495,
+    "attempt": 2476,
+    "place_id": "gn-2521738",
+    "input": {
+      "place": {
+        "place_id": "gn-2521738",
+        "name": "Andújar",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 38.03922,
+        "lon": -4.05077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andújar",
+          "url": "https://en.wikipedia.org/wiki/And%C3%BAjar",
+          "text": "Andújar (Spanish pronunciation: [anˈduxaɾ]) is a Spanish municipality of 35,619 people (2024) in the province of Jaén, in Andalusia.  The municipality is divided by the Guadalquivir River.  The northern part of the municipality is where the Natural Park of the Sierra de Andújar is situated.  To the south are agricultural fields and countryside.  The city proper located on the right bank of the Guadalquivir and the Madrid-Córdoba railway. In the past, Andújar was widely known for its porous earthenware jars, called alcarrazas or botijos, which keep water cool in the hottest weather, and were manufactured from a whitish clay found in the neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "andujar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2496,
+    "attempt": 2477,
+    "place_id": "gn-2562946",
+    "input": {
+      "place": {
+        "place_id": "gn-2562946",
+        "name": "Gżira",
+        "country": "Malta",
+        "subdivision": "Il-Gżira",
+        "lat": 35.90583,
+        "lon": 14.48806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gżira",
+          "url": "https://en.wikipedia.org/wiki/G%C5%BCira",
+          "text": "Gżira (Maltese: Il-Gżira) is a town in the Eastern Region of Malta. It is located between Msida and Sliema, also bordering on Ta' Xbiex. It has a population of 12,504 according to NSO 2024 figures. The word Gżira means \"island\" in Maltese, and the town is named after Manoel Island which lies to the east of Gżira, between the Sliema peninsula and Valletta. The seafront of Gżira has views of the walled city of Valletta, which is illuminated at night, forming a backdrop to Manoel Island, the yacht marina and a seafront public garden. The hamlet of Kappara is located close to Gżira. The Orpheum Theatre is located in Gżira."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "gzira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2497,
+    "attempt": 2478,
+    "place_id": "gn-2643266",
+    "input": {
+      "place": {
+        "place_id": "gn-2643266",
+        "name": "Macclesfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.26023,
+        "lon": -2.12564
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Macclesfield",
+          "url": "https://en.wikipedia.org/wiki/Macclesfield",
+          "text": "Macclesfield () is a market town and civil parish in the unitary authority of Cheshire East, Cheshire, England. It is sited on the River Bollin and the edge of the Cheshire Plain, with Macclesfield Forest to its east; the town lies 16 miles (26 km) south of Manchester and 38 miles (61 km) east of Chester.\nBefore the Norman Conquest, Macclesfield was held by Edwin, Earl of Mercia and was assessed at £8. The medieval town grew up on the hilltop around what is now St Michael's Church. It was granted a municipal charter in 1261. Macclesfield Grammar School was founded in 1502. The town had a silk-button industry from at least the middle of the 17th century and became a major silk-manufacturing centre from the mid-18th century. The Macclesfield Canal was constructed in 1826–31. \nHovis breadmakers were another Victorian employer; modern industries include pharmaceuticals, such as Astra Zeneca. Multiple mill buildings are still standing and several of the town's museums explore the local silk industry. Other landmarks include Georgian buildings such as the Town Hall and former Sunday School; St Alban's Church, designed by Augustus Pugin; and the Arighi Bianchi furniture shop.\nAt the 2021 census the population of the parish was 52,496 and the population of the built up area was 54,345. A person from the town is referred to as a Maxonian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "macclesfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2498,
+    "attempt": 2479,
+    "place_id": "gn-2643567",
+    "input": {
+      "place": {
+        "place_id": "gn-2643567",
+        "name": "Loughborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.76667,
+        "lon": -1.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loughborough",
+          "url": "https://en.wikipedia.org/wiki/Loughborough",
+          "text": "Loughborough (  LUF-bər-ə) is a market town in the Charnwood borough of Leicestershire, England. It is the administrative centre of Charnwood Borough Council and, in the United Kingdom 2021 census, the town's built-up area had a population of 64,884. The area has been represented since 2024 by Labour Party MP Jeevun Sandher.\nIt is the second largest settlement in the county after Leicester; it lies close to the Nottinghamshire border and is located near Leicester, Nottingham and Derby. It is notable for its university, marketplace and fair. Loughborough is home to the world's largest, and the UK's only, bell foundry, John Taylor Bellfounders."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "loughborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2499,
+    "attempt": 2480,
+    "place_id": "gn-3103709",
+    "input": {
+      "place": {
+        "place_id": "gn-3103709",
+        "name": "Bełchatów",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.36883,
+        "lon": 19.35671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bełchatów",
+          "url": "https://en.wikipedia.org/wiki/Be%C5%82chat%C3%B3w",
+          "text": "Bełchatów ([bɛu̯ˈxatuf] ) is a city in central Poland, with a population of 55,583, as of December 2021. It is located in Łódź Voivodeship, 160 kilometres (99 miles) southwest of Warsaw.\nThe Elektrownia Bełchatów, located in Bełchatów, is the largest coal fueled power plant in Europe and the fifth largest in the world. It produces 27–28 TWh of electricity per year, or 20% of the total power generation in Poland. 8,000 people work directly for the company that runs the coal mine and electricity plants.\nThe city is also known for the successful volleyball club Skra Bełchatów and local krówki (traditional Polish candy)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "be chatow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "be",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "chatow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

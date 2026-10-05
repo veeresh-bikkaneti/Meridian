@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 8284,
+    "place_id": "gn-4501066",
+    "input": {
+      "place": {
+        "place_id": "gn-4501066",
+        "name": "Cape May",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 38.93511,
+        "lon": -74.90601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cape May, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Cape_May,_New_Jersey",
+          "text": "Cape May, sometimes referred to as Cape May City, is a  city and seaside resort located at the southern tip of Cape May Peninsula in Cape May County in the U.S. state of New Jersey. Located on the Atlantic Ocean near the mouth of the Delaware Bay, it is one of the country's oldest vacation resort destinations. The city, and all of Cape May County, is part of the Ocean City metropolitan statistical area, and is part of the Philadelphia metropolitan area. It is the southernmost municipality in New Jersey, and is part of the South Jersey region of the state.\nAs of the 2020 United States census, the city's resident population was 2,768, a decrease of 839 (−23.3%) from the 2010 census count of 3,607, which in turn reflected a decline of 427 (−10.6%) from the 4,034 counted in the 2000 census. In the summer, Cape May's population is expanded by as many as 40,000 to 50,000 visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "cape may",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cape",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "may",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8288,
+    "place_id": "gn-653708",
+    "input": {
+      "place": {
+        "place_id": "gn-653708",
+        "name": "Katajanokka",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.16587,
+        "lon": 24.97133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katajanokka",
+          "url": "https://en.wikipedia.org/wiki/Katajanokka",
+          "text": "Katajanokka (Finnish: [ˈkɑtɑjɑˌnokːɑ]; Swedish: Skatudden) is a neighbourhood of Helsinki, Finland, with around 5,000 inhabitants in 2023. The district is located adjacent to the immediate downtown area, though in the first major town plan for Helsinki from the mid-18th century, the area fell outside the fortifications planned to encircle the city.\nOriginally, Katajanokka was a headland of the Helsinki peninsula but is now technically an island, as a small canal was dug across the base of the headland in the 19th century. There are four bridges across the canal connecting Katajanokka with the Helsinki Market Square and Aleksanterinkatu area in mainland Helsinki.\nBuildings in Katajanokka include the former Katajanokka prison (now a Tribute Portfolio hotel by Marriott), the Uspenski Cathedral, the Katajanokka Casino, Wanha Satama, the Stora Enso head office designed by Alvar Aalto, the building of the Ministry for Foreign Affairs and the Katajanokka Terminal used by Viking Line. Katajanokka forms a central part of the South Harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "katajanokka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8294,
+    "place_id": "gn-2991630",
+    "input": {
+      "place": {
+        "place_id": "gn-2991630",
+        "name": "Morzine",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.18149,
+        "lon": 6.70664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morzine",
+          "url": "https://en.wikipedia.org/wiki/Morzine",
+          "text": "Morzine (French pronunciation: [mɔʁzin]; Arpitan: Morzena), alternatively known as Morzine-Avoriaz (pronounced [mɔʁzin avɔʁja]), is an alpine commune on the Swiss border in the Haute-Savoie department in the Auvergne-Rhône-Alpes region in Southeastern France.\nIt is located in the French-Swiss Chablais historical area, south-southeast of Évian-les-Bains and just west of Champéry in Valais. The town of Morzine is situated in the French Alps' Vallée d'Aulps (Aulps Valley), which stretches from Morzine to La Vernaz in the northwest.\nA traditional market town in the heart of the Portes du Soleil, Morzine is dominated by chalets spread across a river gorge, bordered by partially wooded slopes which provide skiing even in poor weather conditions. Situated at an altitude of about 1,000 m, it is one of the most northerly of the French Alpine resorts, weatherwise benefiting from the Mont Blanc microclimate. The locality enjoys panoramic mountain views and modern ski facilities, as well as hotels and restaurants in the town itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "morzine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8295,
+    "place_id": "gn-3179680",
+    "input": {
+      "place": {
+        "place_id": "gn-3179680",
+        "name": "Castel Gandolfo",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.74875,
+        "lon": 12.64975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castel Gandolfo",
+          "url": "https://en.wikipedia.org/wiki/Castel_Gandolfo",
+          "text": "Castel Gandolfo (UK: , US: , Italian: [kaˈstɛl ɡanˈdɔlfo]; Latin: Castrum Gandulphi), colloquially known as Castello in the Castelli Romani dialects, is a small town located 25 km (16 mi) southeast of Rome, in the Italian region of Lazio. Situated on a hilltop in the Alban Hills with panoramic views of Lake Albano, Castel Gandolfo is home to approximately 8,900 residents and is renowned as one of Italy's most scenic towns. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nWithin the town's boundaries lies the Apostolic Palace of Castel Gandolfo, which has served as the summer residence and vacation retreat for most popes since 1626.  Although the palace is located within the boundaries of Castel Gandolfo, it holds an extraterritorial status as one of the properties of the Holy See and is not under Italian jurisdiction. It has been transformed into a museum and is now open to the public."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "castel gandolfo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gandolfo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8297,
+    "place_id": "gn-8604999",
+    "input": {
+      "place": {
+        "place_id": "gn-8604999",
+        "name": "Hill Air Force Base",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 41.11118,
+        "lon": -111.97712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hill Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Hill_Air_Force_Base",
+          "text": "Hill Air Force Base (IATA: HIF, ICAO: KHIF, FAA LID: HIF) is a major U.S. Air Force (USAF) base located in Davis County, Utah, just south of the city of Ogden, and bordering the Cities of Layton, Clearfield, Riverdale, Roy, and Sunset with its largest border immediately adjacent to Clearfield and Layton. It is about 30 miles (48 km) north of Salt Lake City. The base was named in honor of Major Ployer Peter Hill of the U.S. Army Air Corps, who died in 1935 test-flying NX13372, the original Model 299 prototype of the B-17 Flying Fortress bomber. As of 2018, Hill AFB is the sixth-largest employer in the state of Utah.\nHill AFB is the home of the Air Force Materiel Command's (AFMC) Ogden Air Logistics Complex (OO-ALC) which is the worldwide manager for a wide range of aircraft, engines, missiles, software, avionics, and accessories components. The OO-ALC is part of the Air Force Sustainment Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "hill air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8300,
+    "place_id": "gn-2656531",
+    "input": {
+      "place": {
+        "place_id": "gn-2656531",
+        "name": "Ballycastle",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.20444,
+        "lon": -6.24298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballycastle, County Antrim",
+          "url": "https://en.wikipedia.org/wiki/Ballycastle,_County_Antrim",
+          "text": "Ballycastle (from Irish Baile an Chaistil, meaning 'town of the castle') is a small seaside town in County Antrim, Northern Ireland. It is on the north-easternmost coastal tip of Ireland, in the Antrim Coast and Glens Area of Outstanding Natural Beauty.\nBallycastle lies at roughly the midpoint of the Causeway Coastal Route and is a gateway to both the Glens of Antrim and the North Coast. With a number of attractions on the town's doorstep such as the Giant's Causeway, Carrick-a-Rede Rope Bridge and the Dark Hedges it is a popular destination and stopping point for tourists. The town also benefits from a sweeping bay and beach on its eastern side, with views to Fair Head and Knocklayde mountain dominating the landscape.\nThe town has been recognised on a number of occasions by The Sunday Times on their \"Best Places To Live\" list, and has been previously crowned the overall regional winner for Northern Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "ballycastle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8302,
+    "place_id": "gn-727329",
+    "input": {
+      "place": {
+        "place_id": "gn-727329",
+        "name": "Shabla",
+        "country": "Bulgaria",
+        "subdivision": "Dobrich",
+        "lat": 43.53983,
+        "lon": 28.53429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shabla",
+          "url": "https://en.wikipedia.org/wiki/Shabla",
+          "text": "Shabla (Bulgarian: Шабла [ˈʃabɫɐ]) is a town and seaside resort in northeastern Bulgaria, administrative centre of the Shabla Municipality part of Dobrich Province. Shabla municipality includes the following villages: Bojanovo, Chernomortsi, Durankulak, Ezerets, Gorichane, Gorun, Granichar, Krapets, Prolez, Smin, Staevtsi, Tvarditsa, Tyulenovo, Vaklino, and Zahari Stoyanovo. As of December 2009, the town itself had a population of 3,586 inhabitants. It is situated on the Bulgarian Black Sea Coast in the vicinity of the salt-water Lake Shabla and Bulgaria's easternmost point, Cape Shabla.\nShabla has an extensive white sand beach and was a popular destination for Eastern Bloc tourism until the fall of Communism. The beach itself is located some 5 km from the town (shuttle service in summer) via a road constructed under the EU Phare programme \nOn the main town beach there is a large car park and many old bungalows next to a large restaurant that serves today's tourists in the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "shabla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8304,
+    "place_id": "gn-2953482",
+    "input": {
+      "place": {
+        "place_id": "gn-2953482",
+        "name": "Badenweiler",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.80223,
+        "lon": 7.67236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Badenweiler",
+          "url": "https://en.wikipedia.org/wiki/Badenweiler",
+          "text": "Badenweiler (German pronunciation: [ˈbaːdn̩ˌvaɪlɐ]; High Alemannic: Badewiler) is a health resort and spa in the Breisgau-Hochschwarzwald district of Baden-Württemberg, Germany, historically in the Markgräflerland. It is 28 kilometers by road and rail from Basel, 10 kilometers from the French border, and 20 kilometers from Mulhouse. The nearest big city on the German side of the border is Freiburg, about 30 kilometers away. Badenweiler lies at the western edge of the Black Forest. It is sheltered by the Blauen, 1,164 metres (3,819 feet), and the climate is excellent. Its parish (Evangelical) church (1897) was built at the foot of an 11th-century castle which belonged to the margraves of Baden and was destroyed by the French during the wars of Louis XV.\nMany visitors come to Badenweiler for the warm mineral springs, with temperatures of 21 °C (70 °F), others for its whey cure, and still others on account of its equable climate and picturesque surroundings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "badenweiler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8307,
+    "place_id": "gn-3183318",
+    "input": {
+      "place": {
+        "place_id": "gn-3183318",
+        "name": "Albinea",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.62859,
+        "lon": 10.61024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albinea",
+          "url": "https://en.wikipedia.org/wiki/Albinea",
+          "text": "Albinea (Reggiano: Albinèa or La Fôla) is a comune (municipality) in the Province of Reggio Emilia in the Italian region Emilia-Romagna, located about 60 kilometres (37 mi) west of Bologna and about 10 kilometres (6 mi) southwest of Reggio nell'Emilia.\n\nA document shows that in 980 Holy Roman Emperor Otto II recognized the existence and rights of the ancient Pieve (parish church) of Albinea. From 1070 it was a possession of the bishops of Reggio, who also had a place here. Later, from 1412, it was a fief of the Manfredi family, who held it until 1730.\nAlbinea borders the following municipalities: Quattro Castella, Reggio Emilia, Scandiano, Vezzano sul Crostolo, Viano.\nAlbinea was for the most part of its history a rural village; nowadays, a landscape, between the plains and the lowest hills of the Apennines, a nice climate, and the opportunities of a developed centre have made Albinea an elegant and comfortable place."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "albinea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8309,
+    "place_id": "gn-542681",
+    "input": {
+      "place": {
+        "place_id": "gn-542681",
+        "name": "Krasnaya Polyana",
+        "country": "Russia",
+        "subdivision": "Krasnodar Krai",
+        "lat": 43.67952,
+        "lon": 40.20403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krasnaya Polyana, Sochi, Krasnodar Krai",
+          "url": "https://en.wikipedia.org/wiki/Krasnaya_Polyana,_Sochi,_Krasnodar_Krai",
+          "text": "Krasnaya Polyana (Russian: Кра́сная Поля́на, IPA: [ˈkrasnəjə pɐˈlʲanə]; Abkhaz: Гәбаадәы, Gwbaadwy; Adyghe: Ӏаткъуадж, ‘atquaj, Greek: Κράσναγια Πολιάνα) is an urban locality (an urban-type settlement) in Krasnopolyansky Settlement Okrug, which is under the administrative jurisdiction of Adlersky City District of the City of Sochi in Krasnodar Krai, Russia. Population:  4,598 (2010 census); 3,969 (2002 census); 3,300 (1989 Soviet census).\nLocated in the Western Caucasus, it is home to the new Rosa Khutor alpine ski resort, with a base elevation of 560 meters (1,840 ft) along the Mzymta River, 39 kilometers (24 mi) from its influx into the Black Sea in Adlersky City District of Sochi. The lift-served summit climbs to 2,320 meters (7,610 ft), giving a vertical drop of over a mile at 1,760 meters (5,770 ft). The resort hosted the Alpine and Nordic events of the 2014 Winter Olympics in Sochi, having previously hosted World Cup alpine events from February 2012, two years earlier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "krasnaya polyana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "krasnaya",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "polyana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8311,
+    "place_id": "gn-1726064",
+    "input": {
+      "place": {
+        "place_id": "gn-1726064",
+        "name": "Batuan",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.7808,
+        "lon": 124.1484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batuan, Bohol",
+          "url": "https://en.wikipedia.org/wiki/Batuan,_Bohol",
+          "text": "Batuan, officially the Municipality of Batuan (Cebuano: Lungsod sa Batuan; Tagalog: Bayan ng Batuan),  is a  municipality in the province of Bohol, Philippines. According to the 2024 census, it has a population of 14,423 people.\nBatuan covers a total area of 7,908 hectares (19,540 acres) comprising fifteen barangays as per the Municipal Comprehensive Development Plan for 1983–1992. However, a certification of the land area of Batuan, issued by ARED for operations, DENR Regional Office Region No. 7 Cebu City on 26 November 2001 at the instance of the LGU in connection with its Comprehensive Land Use Plan (CLUP) preparation work, showed a land area of only 4,878 hectares (12,050 acres), but that included only eleven barangays and excluded four—Quirino, Aloja, Behind the Clouds and Garcia.\nLocated within the province's tourist area, Batuan is the gateway to the Chocolate Hills, being only about 3 kilometres (1.9 mi) from the Chocolate Hills complex in Carmen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "batuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8315,
+    "place_id": "gn-2511331",
+    "input": {
+      "place": {
+        "place_id": "gn-2511331",
+        "name": "Sant Joan de Labritja",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.07891,
+        "lon": 1.51397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Joan de Labritja",
+          "url": "https://en.wikipedia.org/wiki/Sant_Joan_de_Labritja",
+          "text": "Sant Joan de Labritja (Balearic Catalan: [ˈsaɲ ʒuˈan də ləˈbɾidʒə], Spanish: San Juan Bautista) is a village and municipality of the Balearic Islands on northern Ibiza. Among others, the resorts of Portinatx and Cala de Sant Vicent are located there. The actual village of Sant Joan is a quiet street, dominated by an imposing Christian church, and is the meeting point of Sant Joan de Labritja Municipal Council. One may find several small cafés and restaurants, as well as a taxi rank, outside the Municipal Council building and the local office of the Guardia Civil, the Spanish Civil Guard. Towards the west of the village is the origin of the Torrent de Labritja, a tributary of the Riu de Santa Eulària, the Balearic Island's only constant-flowing river, although the Torrent only contains water during the winter months; throughout the tourist season, the stream is a dry river bed full of green vegetation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "sant joan de labritja",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "labritja",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8317,
+    "place_id": "gn-2971259",
+    "input": {
+      "place": {
+        "place_id": "gn-2971259",
+        "name": "Uzerche",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.42462,
+        "lon": 1.56341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uzerche",
+          "url": "https://en.wikipedia.org/wiki/Uzerche",
+          "text": "Uzerche (French pronunciation: [yzɛʁʃ]; Occitan: Usercha) is a commune in the Corrèze department in the Nouvelle-Aquitaine region of central France.\nIn 1787, the English writer Arthur Young described the town as \"the pearl of the Limousin\" because of its picturesque setting. Built on a defensible rocky outcrop in an oxbow of the river Vézère, and located at a medieval crossroads, Uzerche has a long cultural heritage. Under Pepin the Short, the city was the seat of an influential abbey and a seneschal. Uzerche still has many castles, hotels, and other buildings displaying turrets built by the Uzechoise nobility, thus adding weight to the saying \"He who owns a house in Uzerche has a castle in the Limousin.\" In 1996 Uzerche was awarded \"village étape\" status and, since 2010, has been listed among the towns of France to be worthy of a \"plus beaux détour\".\nThe commune is listed as a Village étape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "uzerche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8318,
+    "place_id": "gn-3003713",
+    "input": {
+      "place": {
+        "place_id": "gn-3003713",
+        "name": "Le Lavandou",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.137,
+        "lon": 6.366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Lavandou",
+          "url": "https://en.wikipedia.org/wiki/Le_Lavandou",
+          "text": "Le Lavandou (pronounced [lə lavɑ̃du]; Occitan: Lo Lavandor) is a seaside resort town and commune in the Var department in the Provence-Alpes-Côte d'Azur region in Southeastern France. Le Lavandou derives its name either from the flower lavender (lavanda in Provençal) that is prevalent in the area, or more prosaically from the local form of the Occitan name for lavoir, lavandor (for lavador, a public place for washing clothes).\nThe (then) village is where the famous popular song A Nightingale Sang in Berkeley Square was written in the summer of 1939. The words were by Eric Maschwitz and the music by Manning Sherwin, with its title \"stolen\" from a story by Michael Arlen. The song had its first performance in a local bar, where the melody was played on piano by Sherwin with the help of the resident saxophonist. Maschwitz sang the words while holding a glass of wine, but nobody seemed impressed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "le lavandou",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lavandou",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8320,
+    "place_id": "gn-3520260",
+    "input": {
+      "place": {
+        "place_id": "gn-3520260",
+        "name": "Río Frío de Juárez",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.35336,
+        "lon": -98.67057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Frío de Juárez",
+          "url": "https://en.wikipedia.org/wiki/Río_Frío_de_Juárez",
+          "text": "Río Frío de Juárez, originally Río Frío (Cold River), a Mexican populated place, is located in the municipality of Ixtapaluca in the State of Mexico.  Río Frío de Juárez is located at the highest point on the highway between Mexico City to Puebla de Zaragoza being located at the top of the pass on the historic road between the two cities.\nRio Frio de Juárez, is located near the far eastern border of the State of Mexico, almost on the border of the State of Puebla, at an altitude of 3,000 meters above sea level.  It is located on the main roads of the Federal Highway 150D and Mexico-Puebla Highway 190 or Mexico-Puebla Highway.\nThe results of the Census of Population and Housing 2005 conducted by the National Institute of Statistics and Geography state that the total population of Rio Frio is 5,272 and that there are 2,620 men and 2,655 women."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "rio frio de juarez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juarez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8329,
+    "place_id": "gn-5854535",
+    "input": {
+      "place": {
+        "place_id": "gn-5854535",
+        "name": "Waimānalo Beach",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.33407,
+        "lon": -157.70003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waimānalo Beach, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Waimānalo_Beach,_Hawaii",
+          "text": "Waimānalo Beach is a census-designated place (CDP) located in the City & County of Honolulu, in the District of Koʻolaupoko, on the island of Oʻahu in the U.S. state of Hawaiʻi.  This small windward community is located near the eastern end of the island, and the climate is dry. As of the 2020 census, the CDP had a population of 4,823. This neighborhood is close to, but somewhat separate from Waimānalo, although the two form a single community.\nWaimānalo Beach (the town) lies along the eastern half of Waimānalo Beach (the beach), with an overall length of nearly 5.5 mi (8.9 km), the longest stretch of sandy shoreline on Oʻahu. Waimānalo Beach has sparse commercial development along Kalanianaole Highway, and is noteworthy for its local flavor and proximity to Makapuʻu Beach and Sea Life Park, which lie closer to Makapuʻu Point at the east end of the island of Oʻahu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "waimanalo beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "waimanalo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8334,
+    "place_id": "gn-3024932",
+    "input": {
+      "place": {
+        "place_id": "gn-3024932",
+        "name": "Cintegabelle",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.31386,
+        "lon": 1.53146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cintegabelle",
+          "url": "https://en.wikipedia.org/wiki/Cintegabelle",
+          "text": "Cintegabelle (French pronunciation: [sɛ̃tɡabɛl]; Occitan: Senta Gabèla, Occitan pronunciation: ['sentɔ ga'βɛlɔ]) is a commune in the Haute-Garonne department in southwestern France. Historically and culturally, the commune is in the Aganaguès region or Ariège plain, sometimes called lower Ariège, or Ariège foothills.\nExposed to an altered oceanic climate, it is mainly drained by the Ariège River and its tributary, the Hers, which flows into the Ariège within its boundaries. Various small rivers irrigate the commune, such as the Galage, the Jade, the Calers stream, the Aure de Canté, the Cornus stream, and the Palanquelle stream. The commune boasts a remarkable natural heritage: a Natura 2000 site (\"Garonne, Ariège, Hers, Salat, Pique, and Neste\"), a protected area (\"Garonne, Ariège, Hers Vif, and Salat\"), and six natural areas of ecological, faunal, and floristic interest.\nCintegabelle is a rural commune with 2,994 inhabitants in 2022, having experienced a significant population increase since 1975."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "cintegabelle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8343,
+    "place_id": "gn-6691030",
+    "input": {
+      "place": {
+        "place_id": "gn-6691030",
+        "name": "Coolock",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.3887,
+        "lon": -6.19998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coolock",
+          "url": "https://en.wikipedia.org/wiki/Coolock",
+          "text": "Coolock (Irish: An Chúlóg, meaning 'the little corner') is a large suburban area, centred on a village, on Dublin city's Northside in Ireland. Coolock is crossed by the Santry River, a prominent feature in the middle of the district, with a linear park and ponds. The Coolock suburban area encompasses parts of three Dublin postal districts: Dublin 5, Dublin 13 and Dublin 17.\nThe extensive civil parish of Coolock takes in the land between the Tonlegee Road (as far as Donaghmede) and the Malahide Road, as well as the lands on either side of the Malahide Road between Darndale and Artane, and the lands either side of the Oscar Traynor Road on the approach to Santry.\nCoolock is also the name of the historical barony which accounts for most of north Dublin city, from the coast as far as Phoenix Park, and stretching north as far as Swords."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "coolock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8358,
+    "place_id": "gn-2994404",
+    "input": {
+      "place": {
+        "place_id": "gn-2994404",
+        "name": "Méribel",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.41497,
+        "lon": 6.565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Méribel",
+          "url": "https://en.wikipedia.org/wiki/Méribel",
+          "text": "Méribel (French pronunciation: [meʁibɛl]) is a ski resort in the Tarentaise Valley in the French Alps. Méribel refers to three neighbouring villages in the Les Allues commune of the Savoie department of France, near the town of Moûtiers (45.401°N 6.5655°E﻿ / 45.401; 6.5655), called Méribel Centre, Méribel-Mottaret and Méribel Village. The villages are within Vanoise National Park and a part of the Les Trois Vallées interlinked ski system.\nMéribel Les Allues is a ski resort that was developed adjacent to the traditional hamlet of Morel, with its centre situated at about 1400 metres above sea level. It was founded by a Scotsman, Major Peter Lindsay, who was looking for a new site for winter sports away from the ski resorts of Austria and Germany, because of the growing strength of the Nazi regime. In 1936, he visited the town of Les Allues for the first time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "meribel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8362,
+    "place_id": "gn-4012593",
+    "input": {
+      "place": {
+        "place_id": "gn-4012593",
+        "name": "Creel",
+        "country": "Mexico",
+        "subdivision": "Chihuahua",
+        "lat": 27.75281,
+        "lon": -107.63472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Creel, Chihuahua",
+          "url": "https://en.wikipedia.org/wiki/Creel,_Chihuahua",
+          "text": "Creel (Spanish pronunciation: [ˈkɾil]) is a town in the Sierra Tarahumara (part of the Sierra Madre Occidental) of the Mexican state of Chihuahua. It is the second-largest town (after San Juanito) in the municipality of Bocoyna. It is located some 175 kilometres (109 mi) to the southwest of the state capital, Chihuahua City. At the census of 2010, it had a population of 5,026, down from 5,338 as of 2005. It is notable for being inhabited mostly by Native Americans of the Rarámuri ethnic group, and the use of their native language is widespread in the population in daily life and public events such as church masses.\nCreel was historically a logging town, although tourism has become the primary job source over the last 20 years because it is close to the Copper Canyon as well as Basaseachic Falls, one of the highest waterfalls in Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "creel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

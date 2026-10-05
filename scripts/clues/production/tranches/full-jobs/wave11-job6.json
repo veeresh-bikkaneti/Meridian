@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2117,
+    "attempt": 2101,
+    "place_id": "gn-5280854",
+    "input": {
+      "place": {
+        "place_id": "gn-5280854",
+        "name": "Wheeling",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 40.06396,
+        "lon": -80.72091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wheeling, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Wheeling,_West_Virginia",
+          "text": "Wheeling is a city in Ohio and Marshall counties in the U.S. state of West Virginia. The county seat of Ohio County, it lies along the Ohio River in the foothills of the Appalachian Mountains within the state's northern panhandle. It is the fifth-most populous city in West Virginia and the most populous city in the northern panhandle with a population of 27,062 at the 2020 census. The Wheeling metropolitan area had 139,513 residents in 2020.\nWheeling was settled in 1769 on land contested between the Province of Pennsylvania and Colony of Virginia, and later grew to become Virginia's largest city west of the Appalachian Mountains. During the American Civil War, it was the host of the Wheeling Conventions which led to the separation of West Virginia from Virginia. Wheeling was the state capital of West Virginia from 1861 to 1870, and again from 1875 to 1885.\nWheeling became a manufacturing center in the late nineteenth century due to its location along major transportation routes, including the Ohio River, National Road, and the Baltimore and Ohio Railroad. After the decline of heavy industry and subsequent population loss following World War II, its major industries now include healthcare, education, legal services, entertainment and tourism, and energy. The city is located about 60 miles (97 km) west of Pittsburgh and 120 miles (190 km) east of Columbus via Interstate 70."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "wheeling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2118,
+    "attempt": 2102,
+    "place_id": "gn-564719",
+    "input": {
+      "place": {
+        "place_id": "gn-564719",
+        "name": "Dubna",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 56.74049,
+        "lon": 37.18648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubna",
+          "url": "https://en.wikipedia.org/wiki/Dubna",
+          "text": "Dubna (Russian: Дубна́, IPA: [dʊbˈna]) is a town in Moscow Oblast, Russia, 45 miles (72 km) east of Tver and 69 miles (111 km) north of Moscow. It has a status of naukograd (i.e. town of science), being home to the Joint Institute for Nuclear Research, an international nuclear physics research center and one of the largest scientific foundations in the country. It is also home to MKB Raduga, a defense aerospace company specializing in design and production of missile systems, as well as to the Russia's largest satellite communications center owned by Russian Satellite Communications Company. The modern town was developed in the middle of the 20th century and town status was granted to it in 1956. Population:  70,663 (2010 census); 60,951 (2002 census); 65,805 (1989 Soviet census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "dubna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2119,
+    "attempt": 2103,
+    "place_id": "gn-5778755",
+    "input": {
+      "place": {
+        "place_id": "gn-5778755",
+        "name": "Murray",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.66689,
+        "lon": -111.88799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murray, Utah",
+          "url": "https://en.wikipedia.org/wiki/Murray,_Utah",
+          "text": "Murray () is a city situated on the Wasatch Front in the core of Salt Lake Valley in the U.S. state of Utah. Named for territorial governor Eli Murray, the city had a population of 50,637 as of the 2020 United States Census.\nMurray shares borders with Taylorsville, Holladay, South Salt Lake, Millcreek and West Jordan, Utah. Once teeming with heavy industry, Murray's industry mix has now shifted significantly toward healthcare, retail, and professional, scientific, and technical services. Known for its central location in Salt Lake County, Murray has been called the Hub of Salt Lake County.\nUnlike most of its neighboring communities which use unified civic services, Murray operates its own police, fire, power, water, library, and parks and recreation departments and also has its own school district. While maintaining many of its own services, Murray has one of the lowest city tax rates in the state.\nThousands of people each year visit Murray City Park for organized sports and its wooded areas. Murray is home to the Intermountain Medical Center, a medical campus that is also Murray's largest employer. Murray has been designated a Tree City USA since 1977."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "murray",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2120,
+    "attempt": 2104,
+    "place_id": "gn-1282601",
+    "input": {
+      "place": {
+        "place_id": "gn-1282601",
+        "name": "Tursunzoda",
+        "country": "Tajikistan",
+        "subdivision": "Republican Subordination",
+        "lat": 38.51271,
+        "lon": 68.23163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tursunzoda",
+          "url": "https://en.wikipedia.org/wiki/Tursunzoda",
+          "text": "Tursunzoda (Tajik: Турсунзода; also Tursunzade from Russian: Турсунзаде) is a city in western Tajikistan, known for its aluminium smelting plant TadAZ.  It is located 60 km west of Dushanbe (40 km west of Hisor), near the border with Uzbekistan.  It is near several rivers, Shirkent and Karatag immediately to the west and east of the city, and Kofarnihon further east. Its population is estimated at 55,700 for the city proper and 298,800 for the city with the outlying communities (2020). Its population was given as 40,600 in the 1989 census, falling to 39,000 in 2000, and estimated at 37,000 in 2006.\nThe city has two television stations, TV-REGAR and TV-TADAZ, two newspapers, Aluminiy Tojikiston and Regar, and a radio station.\nTursunzoda is home to football club Regar-TadAZ Tursunzoda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "tursunzoda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2121,
+    "attempt": 2105,
+    "place_id": "gn-1608900",
+    "input": {
+      "place": {
+        "place_id": "gn-1608900",
+        "name": "Maha Sarakham",
+        "country": "Thailand",
+        "subdivision": "Maha Sarakham",
+        "lat": 16.18483,
+        "lon": 103.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maha Sarakham",
+          "url": "https://en.wikipedia.org/wiki/Maha_Sarakham",
+          "text": "Maha Sarakham (มหาสารคาม) is the capital city of Maha Sarakham province in Thailand's northeastern (Isan) region. Sarakham, as it is known to its inhabitants, is in a rice-growing area on the southern Khorat plain, straddling the Chi River. Mahasarakham is 475 km northeast of Bangkok and 73 km southeast of Khon Kaen.\nThe city has long been known as a regional education centre, the so-called \"Taxila of Isan\" (taking this name from the ancient Hindu centre of learning). It is home to six colleges, as well as Mahasarakham University (MSU) and Maha Sarakham Rajabhat University. Sarakham has the feel of a student town with the younger, more cosmopolitan population much in evidence in the downtown campus area and near MSU's second campus seven kilometres away at Kham Riang.\nFor a time Mahasarakham ranked with Sisaket as among the poorest cities in Isan. This is changing, partly under the influence of the rapidly growing student population. Today Maha Sarakham possesses two cinemas, a modern department store and market. There has been extensive building, especially on the eastern fringes of the city.\nMaha Sarakham has no railway station or airport, and the main transport links are via express bus, or by road connections to the airports in Khon Kaen and Roi Et. Recently the road link south was upgraded and is now mainly dual carriageway highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "maha sarakham",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sarakham",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2122,
+    "attempt": 2106,
+    "place_id": "gn-284315",
+    "input": {
+      "place": {
+        "place_id": "gn-284315",
+        "name": "Bethlehem",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.70487,
+        "lon": 35.20376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethlehem",
+          "url": "https://en.wikipedia.org/wiki/Bethlehem",
+          "text": "Bethlehem is a city in the West Bank, Palestine, located about ten kilometres (six miles) south of Jerusalem, and the capital of the Bethlehem Governorate. It had a population of 28,591 people, as of 2017. The city's economy is strongly linked to tourism, especially during the Christmas period, when Christians embark on a pilgrimage to the Church of the Nativity, which is revered as the location of the birth of Jesus.\nA possible first mention of Bethlehem is in the Amarna correspondence of ancient Egypt, dated to 1350–1330 BCE, although that reading is uncertain. In the Hebrew Bible, the period of the Israelites is described; it identifies Bethlehem as the birthplace of David. In the New Testament, the city is identified as the birthplace of Jesus of Nazareth. Under the Roman Empire, the city of Bethlehem was destroyed by Hadrian, but later rebuilt by Constantine the Great, who commissioned the Church of the Nativity in 327 CE. In 529, the Church of the Nativity was heavily damaged by Samaritans involved in the Samaritan revolts; following the victory of the Byzantine Empire, it was rebuilt by Justinian I.\nLater, during the rule of several Caliphates, Bethlehem became part of Jund Filastin in 637. Muslims continued to rule the city until 1099, when it was conquered by the Crusaders, who replaced the local Christian Greek Orthodox clergy with Catholic ones. In the mid-13th century, Bethlehem's walls were demolished by the Mamluk Sultanate. However, they were rebuilt by the Ottoman Empire in the 16th century when it came to control the region. After the dissolution of the Ottoman Empire at the end of World War I, Bethlehem was part of Mandatory Palestine until 1948, and later of the West Bank that was annexed by Jordan following the 1948 Arab–Israeli War. During the 1967 Six-Day War, Bethlehem was occupied by Israel along with the rest of the West Bank. Since the Oslo Accords between Israel and the Palestinian National Authority, Bethlehem has been designated as part of Area A of the West Bank, nominally rendering it as being under Palestinian control, but it remains under Israeli occupation. Movement around the city is limited due to the Israeli West Bank barrier.\nHistorically, it was a city of Arab Christians, who made up about 86% of the population in 1950, although in 2022, The Times reported that this community had dwindled about 20%, with a large majority of Arab Muslims."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "bethlehem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2123,
+    "attempt": 2107,
+    "place_id": "gn-304013",
+    "input": {
+      "place": {
+        "place_id": "gn-304013",
+        "name": "Mut",
+        "country": "Türkiye",
+        "subdivision": "Mersin",
+        "lat": 36.64389,
+        "lon": 33.43885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mut, Mersin",
+          "url": "https://en.wikipedia.org/wiki/Mut,_Mersin",
+          "text": "Mut is a municipality and district of Mersin Province, Turkey. Its area is 2,718 km2, and its population is 62,874 (2022).\nMut is a rural district at the foot of the Sertavul Pass on the road over the Taurus Mountains from Ankara and Konya to the Mediterranean coast at Anamur or Silifke. Mut is known for its special apricot variety, Mut şekerparesi, and a statue of a girl carrying a basket of them stands at the entrance to the town. The summer is hot and the people of Mut retreat to high meadows (so called yayla) even further up the mountainside. The forests up here are home to wild boar, and the Gezende reservoir on the Ermenek River is a welcome patch of blue in this dry district. The dam has a hydro-electric power station built in Romania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "mut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2124,
+    "attempt": 2108,
+    "place_id": "gn-3073803",
+    "input": {
+      "place": {
+        "place_id": "gn-3073803",
+        "name": "Karlovy Vary",
+        "country": "Czechia",
+        "subdivision": "Carlsbad Region",
+        "lat": 50.23271,
+        "lon": 12.87117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlovy Vary",
+          "url": "https://en.wikipedia.org/wiki/Karlovy_Vary",
+          "text": "Karlovy Vary (Czech pronunciation: [ˈkarlovɪ ˈvarɪ] ; German: Karlsbad, formerly also spelled Carlsbad in English) is a spa city in the Karlovy Vary Region of the Czech Republic. It has about 49,000 inhabitants. It is located at the confluence of the Ohře and Teplá rivers.\nKarlovy Vary is named after Charles IV, Holy Roman Emperor and the King of Bohemia, who founded the city in the 14th century. The site of numerous hot springs, the city grew into a spa resort in the 19th century and was a popular destination for the European aristocracy and other luminaries. Karlovy Vary's rapid growth was brought to an end by the outbreak of World War I. After the Velvet Revolution in 1989, Karlovy Vary once again became a major tourist destination.\nKarlovy Vary is the most visited spa town in the Czech Republic. It is also known for the Karlovy Vary International Film Festival, which is among the leading film events of Europe. In 2021, the city became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\" because of its spas and architecture from the 18th through 20th centuries. The historic city centre with the spa cultural landscape is well preserved and is protected as an urban monument reservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "karlovy vary",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "karlovy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vary",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2125,
+    "attempt": 2109,
+    "place_id": "gn-3515504",
+    "input": {
+      "place": {
+        "place_id": "gn-3515504",
+        "name": "Tizimín",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 21.14304,
+        "lon": -88.15188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tizimín",
+          "url": "https://en.wikipedia.org/wiki/Tizim%C3%ADn",
+          "text": "Tizimín  is a city located in the Tizimín Municipality in the Mexican state of Yucatán. It is situated in the Coastal Zone of the same state.\nIt has an average elevation of 20 meters (66 ft) and is located 1,492 km (927 mi) from Mexico City, 167 km (104 mi) from the state capital city, Merida, Yucatan, 54 km (34 mi) from Rio Lagartos, 50 km (31 mi) from Valladolid, Yucatan, 36 km (22 mi) from Ek' Balam; and 27 km (17 mi) from Espita.\nThe city is known for its traditional fair celebrating the Biblical Magi, held in late December and early January. It is also a major Mexican handcraft market, offering rebozos, huipils, tablecloths, jewelry and guayaberas. This fair gives the city its nickname,  \"King's City\".\nIn 2010, it was the second most populous city in eastern Yucatan, after Valladolid, Yucatán. It was also the third largest city and fourth most populous in the state overall. Currently, it is the leading producer of beef cattle in the state of Yucatan, and serves as the central urban service provider for the northeastern region of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "tizimin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2126,
+    "attempt": 2110,
+    "place_id": "gn-4115412",
+    "input": {
+      "place": {
+        "place_id": "gn-4115412",
+        "name": "Hot Springs",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 34.5037,
+        "lon": -93.05518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hot Springs, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Hot_Springs,_Arkansas",
+          "text": "Hot Springs is a resort city in the state of Arkansas, United States, and the county seat of Garland County. The city is located in the Ouachita Mountains among the U.S. Interior Highlands, and is set among several natural hot springs for which the city is named. As of the 2020 United States census, the city had a population of 37,930, making it the eleventh-most populous city in Arkansas.\nThe center of Hot Springs is the oldest federal reserve in the United States, today preserved as Hot Springs National Park. The hot spring water has been popularly believed for centuries to possess healing properties, and was a subject of legend among several Native American tribes. Following federal protection in 1832, the city developed into a successful spa town. Incorporated January 10, 1851, the city has been home to Major League Baseball spring training, illegal gambling, speakeasies, and gangsters such as Al Capone, Charles \"Lucky\" Luciano, Frank Costello, and Bugs Moran. It also features the childhood home of the 42nd U.S. President, Bill Clinton. One of the largest Pentecostal denominations in the United States, the Assemblies of God, traces its beginnings to Hot Springs, as do horse racing at Oaklawn Park and the Army and Navy Hospital.\nMuch of Hot Springs' history is preserved by various government entities. Hot Springs National Park is maintained by the National Park Service and includes Bathhouse Row, which preserves the eight historic bathhouse buildings and gardens along Central Avenue. Downtown Hot Springs is preserved as the Central Avenue Historic District, listed on the National Register of Historic Places. The city also contains dozens of historic hotels and motor courts, built during the Great Depression in the Art Deco style. Due to the popularity of the thermal waters, Hot Springs benefited from rapid growth during a period when many cities saw a sharp decline in building—much like Miami's Art Deco districts. As a result, Hot Springs's architecture is a key part of the city's blend of cultures, including a reputation as a tourist town and a Southern city. Also a destination for the arts, Hot Springs hosts the Hot Springs Music Festival, Hot Springs Documentary Film Festival, and the Valley of the Vapors Independent Music Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "hot springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2127,
+    "attempt": 2111,
+    "place_id": "gn-4525353",
+    "input": {
+      "place": {
+        "place_id": "gn-4525353",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.92423,
+        "lon": -83.80882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Ohio",
+          "text": "Springfield is a city in Clark County, Ohio, United States, and its county seat. It is located in southwestern Ohio along the Mad River, Buck Creek, and Beaver Creek, about 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. The city had a total population of 58,662 at the 2020 census, while the Springfield metropolitan area had 136,001 residents.\nSpringfield is home to Wittenberg University, a liberal arts college, and Clark State College, a community college. The Little Miami Scenic Trail, a paved rail-trail that is nearly 80 mi (130 km) long, extends from the Buck Creek Scenic Trail head in Springfield south to Newtown, Ohio. Buck Creek State Park and its Clarence J. Brown reservoir are located at the city limits.\nBeginning around 2018, Springfield became home to a large Haitian immigrant community, estimated at 15,000 to 20,000 people by 2024. That year, false claims that Haitian immigrants were eating pets spread nationally during the presidential campaign, drawing international attention to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2128,
+    "attempt": 2112,
+    "place_id": "gn-4832294",
+    "input": {
+      "place": {
+        "place_id": "gn-4832294",
+        "name": "Revere",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.40843,
+        "lon": -71.01199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Revere, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Revere,_Massachusetts",
+          "text": "Revere (, locally ) is a city in Suffolk County, Massachusetts. Located approximately 5 miles (8.0 km) northeast of Downtown Boston, Revere is the terminus of the MBTA Blue Line, with three stations located within the city: Wonderland, Revere Beach, and Beachmont. The city borders Massachusetts Bay, and was the site of the Battle of Chelsea Creek. Revere Beach, a three mile (4.8 km) stretch of beach on the city's eastern coast, is the oldest public beach in the United States.\nRevere is one of the oldest communities in the United States. Originally known as Rumney Marsh, in reference to the 600-acre salt marsh located within the Saugus and Pines River Inlet, present-day Revere was part of Boston from 1632 until 1739, when it became part of Chelsea. Revere and neighboring, present-day Winthrop separated from Chelsea and were established as the town of North Chelsea in 1846. In 1852, part of North Chelsea was established as the town of Winthrop. What remained of North Chelsea was renamed in 1871 for Paul Revere, a Revolutionary War patriot and the eponymous subject of  Henry Wadsworth Longfellow's 1861 poem, \"Paul Revere's Ride\". In 1914, the Town of Revere voted to become a city. It was incorporated as the City of Revere with the inauguration of its first mayor on January 4, 1915. As of the 2020 census, the city had a population of 62,186 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "revere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2129,
+    "attempt": 2113,
+    "place_id": "gn-568595",
+    "input": {
+      "place": {
+        "place_id": "gn-568595",
+        "name": "Chernyakhovsk",
+        "country": "Russia",
+        "subdivision": "Kaliningrad Oblast",
+        "lat": 54.63345,
+        "lon": 21.81557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chernyakhovsk",
+          "url": "https://en.wikipedia.org/wiki/Chernyakhovsk",
+          "text": "Chernyakhovsk (Russian: Черняхо́вск; German: Insterburg; Lithuanian: Įsrutis; Polish: Wystruć) is a town in Kaliningrad Oblast, Russia, and the administrative center of Chernyakhovsky District. With a population of 35,705 as of 2023, it is the third-largest city of the Kaliningrad Oblast (behind Kaliningrad and Sovetsk).\nIt is located at the confluence of the Instruch and Angrapa rivers, which unite to become the Pregolya river below Chernyakhovsk.\nFounded in 1337, it is one of the main towns of the region of Lithuania Minor. It was formerly inhabited by Lithuanians, Germans, Poles, Scots and French. It was the location of a German-operated prisoner-of-war camp for Allied POWs during World War II. It has a number of preserved heritage sights, including the ruins of two medieval castles and a historic stud farm. It hosts the Chernyakhovsk Air Base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "chernyakhovsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2130,
+    "attempt": 2114,
+    "place_id": "gn-945945",
+    "input": {
+      "place": {
+        "place_id": "gn-945945",
+        "name": "Upington",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -28.44776,
+        "lon": 21.25612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upington",
+          "url": "https://en.wikipedia.org/wiki/Upington",
+          "text": "Upington (Khoekhoe: ǁKhara hais) is a town founded in 1873 and located in the Northern Cape province of South Africa, on the banks of the Orange River. The town was originally called Olyvenhoutsdrift ('Olive wood drift'), due to the abundance of olive wood trees in the area, but later renamed after Sir Thomas Upington, Attorney-General and then Prime Minister of the Cape. It originated as a mission station established in 1871 and run by Reverend Christiaan Schröder. The mission station now houses the Kalahari Orange Museum. The museum is also the home of a donkey statue, which recognises the enormous contribution that this animal made to the development of the region during the pioneering days of the 19th century.\nThe elevation of Upington is 2,742 feet (835 metres). It is the closest large centre to the Augrabies Falls (arguably the greatest of South African waterfalls) and the Kgalagadi Transfrontier Park. The landscape is very arid but the soil is fertile and crops such as fruit are grown in irrigated fields. The area is best known for its export-quality grapes, raisins and wines, which are cultivated on the rich flood plains of the Orange River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "upington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2131,
+    "attempt": 2115,
+    "place_id": "gn-12522807",
+    "input": {
+      "place": {
+        "place_id": "gn-12522807",
+        "name": "Byasanagar",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 20.95569,
+        "lon": 86.12643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Byasanagar",
+          "url": "https://en.wikipedia.org/wiki/Byasanagar",
+          "text": "Byasanagar or Vyasanagar is a town and a municipality in Jajapur district in the state of Odisha, India. It is also colloquially known as Jajpur Road.  It is home to an industrial belt and hosts several steel manufacturing companies, including Neelachal Ispat Nigam Limited, MESCO, Tata Steel, and Jindal Steel. According to district officials, there are around 14 major companies and several small companies in the vicinity of the town. The town is also home to some eminent people in Odisha, including P. C. Ghadei (Ex-Finance Minister), the late Ashok Das (earlier MLA), Ram Chandra Khuntia (Congress), political leader Giridhari Barik (BJD), Priti Ranjan Ghadei (MLA), actor Akash Dasnayak, his actress aunt Anita Dash, and actress Naina Das. It is part of the Korei Vidhan Sabha constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "byasanagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2132,
+    "attempt": 2116,
+    "place_id": "gn-1263532",
+    "input": {
+      "place": {
+        "place_id": "gn-1263532",
+        "name": "Margherita",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.28482,
+        "lon": 95.66796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margherita, Assam",
+          "url": "https://en.wikipedia.org/wiki/Margherita,_Assam",
+          "text": "Margherita (IPA: ˌmɑːgəˈrɪtə) is a census town in Tinsukia district in the Indian state of Assam. The sub-district town is surrounded by hills, tea gardens, forests and the Dihing River. It has a golf course at the foot of the hills and a small stream running through. Although considered to be a small town, Margherita has several hospitals and educational institutions and is regularly frequented by visitors on account of it being the last proper town of Upper Assam. The name Margherita actually derives from the Italian queen and dates back to the late 19th century as a token appreciation for the Italian Chief Engineer of a rail section Chevalier R Paganini who supervised the construction. Margherita was known for its collieries much developed by the British.  Coal India Ltd has the biggest industrial plant here. The town is also known as Coal Queen as it is famous for coal business. Apart from this there are other industrial plants like Kitply and Tata Tea (amalgamated plantations), along with minor plywood industries and tea gardens. Margherita has Tea Estates of the Williamson Magor Group (McLeod Russel India Limited). Namdang Tea Estate, Dirok Tea Estate, Dehing Tea Estate, Bogapani Tea Estate and Margherita Tea Estate are the 5 famous estates of the McLeod Russel India Limited Group situated at the sub division Margherita. McLeod Russel India Limited is one of the largest tea producers in Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "margherita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2133,
+    "attempt": 2117,
+    "place_id": "gn-1272396",
+    "input": {
+      "place": {
+        "place_id": "gn-1272396",
+        "name": "Dongargarh",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.18893,
+        "lon": 80.75459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dongargarh",
+          "url": "https://en.wikipedia.org/wiki/Dongargarh",
+          "text": "Dongargarh is a town and municipality in Rajnandgaon District in the state of Chhattisgarh, India and the site of the Bambleshwari Temple and Chandragiri Jain Temple. A prominent pilgrim destination in Rajnandgaon District, the city lies about 35 kilometres (22 mi) west from Rajnandgaon, 67 kilometres (42 mi) west from Durg and 132 kilometres (82 mi) east from Bhandara which are situated on National Highway 6. Featuring majestic mountains and ponds, Dongargarh is derived from the words: Dongarh meaning 'mountains' and garh meaning 'fort'. \nThe Maa Bamleshwari Devi Temple, situated on a 1,600 feet (490 m) high hilltop, is a popular landmark. It is of great spiritual importance and several legends are associated with this shrine too. Another prominent shrine in the vicinity is Chhoti Bamleshwari Temple. Devotees flock these temples during Navratri. Shivji Temple and temples dedicated to Lord Hanuman are also located here. The ropeway is an added attraction and is the only passenger ropeway in Chhattisgarh. A severe accident occurred in 2016 when the ropeway broke and fell down killing several people.\nThe town is known for religious Harmony and has considerable population of Buddhists, Sikhs, Christians and Jains apart from Hindus.A 30 feet high statue of Budhha situated at the hilltop of the Pragyagiri hill is another attraction of the town. This is visible from the all the 06 major hills of the town. In addition to these, A Jain temple is also being constructed  on a hill known as Chandragiri with the blessings of Jain saint Acharya Shri Vidyasagar Ji Maharaaj. The temple is specially recognized for an ancient statue of the Teerthankara god Chandraprabhuji. One of the biggest gurudwaras in the state is also located in the heart of the city managed by the Sikh society which also run Khalsa Public School, one of the biggest schools in the town. Dongargarhs oldest and most beautiful Roman Catholic church (Sacred Heart Church) is situated just near the railway station as well as there is a tall and beautiful Calvary hill near the railway colony which has a huge cross on the tip of the hill which can be seen from a far distance during the day. Every year a huge crowd of devotees Christians and other Religions gather here during the month of April for the way of the cross marking the Crucifixion of Jesus Christ as well as to get his blessings.\nThe nearest airport Swami Vivekanand Airport is at Raipur, 110 kilometres (68 mi) away while the nearest railhead is Dongargarh Railway Station. Dongargarh has good road communication and buses and taxis are available from Rajnandgaon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 433
+    },
+    "banned_terms": [
+      {
+        "term": "dongargarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2134,
+    "attempt": 2118,
+    "place_id": "gn-1275389",
+    "input": {
+      "place": {
+        "place_id": "gn-1275389",
+        "name": "Bodh Gaya",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 24.69808,
+        "lon": 84.9869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodh Gaya",
+          "url": "https://en.wikipedia.org/wiki/Bodh_Gaya",
+          "text": "Bodh Gayā is a religious site and place of pilgrimage associated with the Mahabodhi Temple complex, situated in the Gaya district in the Indian state of Bihar. It is famous for being the place where Gautama Buddha is said to have attained enlightenment (Pali: bodhi) under what became known as the Bodhi Tree. Since antiquity, Bodh Gayā has remained the object of pilgrimage and veneration for Buddhists. Archaeological finds, including sculptures, show that the site was in use by Buddhists since the Maurya period. \nFor Buddhists, Bodh Gayā is the most important of the four main pilgrimage sites related to the life of Gautama Buddha, the other three being Kushinagar, Lumbini, and Sarnath. In 2002, Mahabodhi Temple, located in Bodh Gayā, became a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "bodh gaya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bodh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gaya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2135,
+    "attempt": 2119,
+    "place_id": "gn-1725983",
+    "input": {
+      "place": {
+        "place_id": "gn-1725983",
+        "name": "Bauang",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.53083,
+        "lon": 120.33306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bauang",
+          "url": "https://en.wikipedia.org/wiki/Bauang",
+          "text": "Bauang, officially the Municipality of Bauang (Ilocano: Ili ti Bauang; Pangasinan: Baley na Bauang; Filipino: Bayan ng Bauang), is a municipality in the province of La Union, Philippines. According to the 2024 census, it has a population of 77,670 people.\nThe municipality is recognized as the \"Fruit Basket and Beach Capital of the North,\" known for its pristine beaches, which remain a popular destination for swimming, as well as its cultivation of grapes and guapples.\n\nIn the annals of Philippine literature and history, Bauang holds significance as the birthplace of the renowned literary figure and World War II martyr, Manuel Arguilla. The municipality is strategically located along the MacArthur Highway, with a key junction connecting to Naguilian Road, one of the main routes leading to Baguio City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "bauang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2136,
+    "attempt": 2120,
+    "place_id": "gn-192859",
+    "input": {
+      "place": {
+        "place_id": "gn-192859",
+        "name": "Kerugoya",
+        "country": "Kenya",
+        "subdivision": "Kirinyaga County",
+        "lat": -0.49887,
+        "lon": 37.28031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerugoya",
+          "url": "https://en.wikipedia.org/wiki/Kerugoya",
+          "text": "Kerugoya  is the largest town in Kirinyaga County, located 10 kilometres east of Karatina and 40 kilometres west of Embu.\nIt is situated in the former Kirinyaga district. Travel directions by road from Nairobi is through Thika Road past Thika, Kenol and Makuyu (along the Thika Road). The road leads through Makutano until Sagana town, where a road branches off the East towards Kagio town up to Kirinyaga University branching North towards the town.\nYou can also drive through the Plains of Mwea branching east at Makutano, famous for the largest rice irrigation scheme in Eastern Africa, passing numerous communes inhabited by the Kikuyu, majority of whom practise Subsistence farming.\nKerugoya town mostly serves as an urban area to the inhabitants of Kangaita, Kimunye, Kagumo and Karia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "kerugoya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

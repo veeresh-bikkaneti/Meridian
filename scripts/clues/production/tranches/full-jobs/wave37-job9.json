@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 7412,
+    "attempt": 7361,
+    "place_id": "gn-5505963",
+    "input": {
+      "place": {
+        "place_id": "gn-5505963",
+        "name": "Incline Village",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 39.2513,
+        "lon": -119.97297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Incline Village, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Incline_Village,_Nevada",
+          "text": "Incline Village is an upmarket census-designated place (CDP) on the north shore of Lake Tahoe in Washoe County, Nevada, United States. As of the 2020 census, Incline Village had a population of 9,462. It is part of the Reno−Sparks Metropolitan Statistical Area. Until the 2010 census, the CDP Crystal Bay, Nevada was counted jointly with Incline Village. It is governed by the Incline Village General Improvement District (IVGID), a quasi-public agency that provides water, sewer, trash and recreation services for Incline Village and Crystal Bay, Nevada.\nSierra Nevada University, now The University of Nevada, Reno at Lake Tahoe,  is located in Incline Village. Incline Village is also home to Diamond Peak Ski Resort, which is owned by the community. Incline Village has some of the most expensive real estate in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "incline village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "incline",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7413,
+    "attempt": 7362,
+    "place_id": "gn-5727190",
+    "input": {
+      "place": {
+        "place_id": "gn-5727190",
+        "name": "Forest Grove",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.51984,
+        "lon": -123.11066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forest Grove, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Forest_Grove,_Oregon",
+          "text": "Forest Grove is a city in Washington County, Oregon, United States, 25 miles (40 km) west of Portland, within the Tualatin Valley. Originally a small farm town, it is now primarily a commuter town in the Portland metro area. Settled in the 1840s, the town was platted in 1850, then incorporated in 1872, making it the first city in Washington County.\nThe population was 26,225 at the 2020 census, an increase of 8% over 2010 figure (21,083).\nPacific University is located here. Old College Hall on campus, and nine other sites in the city, are listed on the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "forest grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7414,
+    "attempt": 7363,
+    "place_id": "gn-5853992",
+    "input": {
+      "place": {
+        "place_id": "gn-5853992",
+        "name": "Wahiawā",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.50279,
+        "lon": -158.02464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wahiawā, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Wahiawā,_Hawaii",
+          "text": "Wahiawā (Hawaiian pronunciation: [wəhijəˈvaː] ) is a census-designated place (CDP) in Honolulu County, Hawaii, United States, on the island of Oahu. It is in the Wahiawā District, on the plateau or \"central valley\" between the two volcanic mountains that bookend the island. In Hawaiian, wahi a wā means \"place of the wa people\". The population was 18,658 at the 2020 census.\nLakes and reservoirs are rare in Hawaii, and Wahiawā is unique in being surrounded on three sides by Lake Wilson (also known as Wahiawā Reservoir or Kaukonahua). The town must be reached by either of two bridges on Kamehameha Highway (State Rte. 80) across the reservoir's narrow north and south arms. Outside of the reservoir, the town used to be surrounded by military bases and agricultural fields, but development is making its way up from the increasingly urbanized southern portion of the central plain. Still, there are significant U.S. Army facilities in the area, including Schofield Barracks, Wheeler Army Airfield, and East Range, an Army training area extending into the hills south and east of town. Schofield Barracks alone is larger than Wahiawā CDP. Wahiawā is also home to the United States Navy's Naval Computer and Telecommunications Area Master Station Pacific and the housing community HMR.\nThe U.S. postal codes for Wahiawā are 96786 and 96857."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "wahiawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7415,
+    "attempt": 7364,
+    "place_id": "gn-5884467",
+    "input": {
+      "place": {
+        "place_id": "gn-5884467",
+        "name": "Amherst",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 45.83345,
+        "lon": -64.19874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amherst, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Amherst,_Nova_Scotia",
+          "text": "Amherst ( AM-urst) is a town in northwestern Nova Scotia, Canada, located at the northeast end of the Cumberland Basin, an arm of the Bay of Fundy, and 22 km (14 mi) south of the Northumberland Strait. The town sits on a height of land at the eastern boundary of the Isthmus of Chignecto and Tantramar Marshes, 3 km (1.9 mi) east of the interprovincial border with New Brunswick and 65 km (40 mi) southeast of the city of Moncton.  It is 60 km (37 mi) southwest of the New Brunswick abutment of the Confederation Bridge to Prince Edward Island at Cape Jourimain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "amherst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7416,
+    "attempt": 7365,
+    "place_id": "gn-590775",
+    "input": {
+      "place": {
+        "place_id": "gn-590775",
+        "name": "Lasnamäe",
+        "country": "Estonia",
+        "subdivision": "Harjumaa",
+        "lat": 59.4336,
+        "lon": 24.86017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lasnamäe",
+          "url": "https://en.wikipedia.org/wiki/Lasnamäe",
+          "text": "Lasnamäe is the most populous administrative district of Tallinn, the capital of Estonia. The district's population is about 119,000, the majority of which is Russian-speaking as a result of Soviet settlement policies. Local housing is mostly represented by 5–16 stories high panel blocks of flats, built in the 1970–1990s.\nThe district lies in the eastern part of Tallinn. In the east it is bordered by the Pirita River; in the north and northwest a limestone escarpment (part of the Baltic Klint) separates Lasnamäe from Pirita and Kesklinn. The district is situated on a flat limestone plateau that lies 30–52 m above sea level. The highest point in Lasnamäe is the Sõjamägi Hill at 54 m asl.\nLasnamäe can be divided into two distinct areas: the northern part is residential, while the southern part around Peterburi Road (Tallinn-Narva road, part of E20) and up to the border with Rae Parish is mainly industrial. Lennart Meri Tallinn Airport is also administratively located in Lasnamäe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "lasnamae",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7417,
+    "attempt": 7366,
+    "place_id": "gn-5931074",
+    "input": {
+      "place": {
+        "place_id": "gn-5931074",
+        "name": "Cowansville",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.20008,
+        "lon": -72.74913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cowansville",
+          "url": "https://en.wikipedia.org/wiki/Cowansville",
+          "text": "Cowansville is a city in the Estrie region of Quebec, Canada, and the administrative seat of the Brome-Missisquoi Regional County Municipality. It lies on the Yamaska South-East River and Lac Davignon, about 20 kilometres (12 mi) north of the United States border. Its population was 15,234 in the 2021 Canadian census.\nJacob Ruiter settled at the site in 1798 and built a flour mill and sawmill there two years later. Cowansville was incorporated as a village in 1876 and received city status in 1931. Bruck Silk Mills opened in 1922 and became one of the city's largest industrial employers during the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "cowansville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7418,
+    "attempt": 7367,
+    "place_id": "gn-6122758",
+    "input": {
+      "place": {
+        "place_id": "gn-6122758",
+        "name": "Riverview",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.05455,
+        "lon": -64.81597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverview, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Riverview,_New_Brunswick",
+          "text": "Riverview is a town in Albert County, New Brunswick, Canada. Riverview is located on the south side of the Petitcodiac River, across from the larger cities of Moncton and Dieppe. Riverview has an area of 34 square kilometres (13 sq mi), and a population density of 564.6 inhabitants per square kilometre (1,462/sq mi). Riverview's slogan is \"A Great Place To Grow\". With a population of 20,584 in 2021,\nRiverview is the largest town in New Brunswick, and despite being designated as a town it is the fifth-largest municipality in the province, being more populous than the cities of Edmundston, Bathurst, Campbellton, and Miramichi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "riverview",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7419,
+    "attempt": 7368,
+    "place_id": "gn-631254",
+    "input": {
+      "place": {
+        "place_id": "gn-631254",
+        "name": "Vörå",
+        "country": "Finland",
+        "subdivision": "Ostrobothnia",
+        "lat": 63.13607,
+        "lon": 22.25223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vörå",
+          "url": "https://en.wikipedia.org/wiki/Vörå",
+          "text": "Vörå (Finland Swedish: [ˈvœːro] ; Finnish: Vöyri; Finnish: [ˈʋøy̯ri]) is a municipality in Finland, located on the west coast of the country. Vörå is situated in Ostrobothnia, along the Gulf of Bothnia, about 30 kilometres (19 mi) east of Vaasa and about 90 kilometres (56 mi) southwest of Kokkola. The population of Vörå is approximately 6,000, while the sub-region has a population of approximately 112,000. It is the 149th most populous municipality in Finland.\nVörå is a bilingual municipality with Swedish and Finnish as its official languages. The population consists of 12% Finnish speakers, 81% Swedish speakers, and 7% speakers of other languages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "vora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7420,
+    "attempt": 7369,
+    "place_id": "gn-679167",
+    "input": {
+      "place": {
+        "place_id": "gn-679167",
+        "name": "Dofteana",
+        "country": "Romania",
+        "subdivision": "Bacău County",
+        "lat": 46.31667,
+        "lon": 26.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dofteana",
+          "url": "https://en.wikipedia.org/wiki/Dofteana",
+          "text": "Dofteana (Hungarian: Doftána) is a commune in Bacău County, Western Moldavia, Romania. It is composed of seven villages: Bogata (Bogáta), Cucuieți (Kukujéc), Dofteana, Hăghiac, Larga (Lárga), Seaca, and Ștefan Vodă.\nThe commune is situated around confluence between the Trotuș and Dofteana rivers. It was first attested in a document of 1436, issued by the hospodar Ștefăniță, who donated to his adviser Babor Plopescu six villages on the Trotuș and Tazlău valleys, one of which was Dofteana, called Dohtana in that period.\nAt the 2011 census, the commune had 9,346 inhabitants; of those for whom data were available, 98.6% were Romanians and 1.3% Roma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "dofteana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7421,
+    "attempt": 7370,
+    "place_id": "gn-6945765",
+    "input": {
+      "place": {
+        "place_id": "gn-6945765",
+        "name": "Arabianranta",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.20727,
+        "lon": 24.97956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arabianranta",
+          "url": "https://en.wikipedia.org/wiki/Arabianranta",
+          "text": "Arabianranta (Finnish: [ˈɑrɑbiɑnˌrɑntɑ]; Swedish: Arabiastranden; literally meaning the \"shore of Arabia\"), sometimes simply Arabia, is a residential part of Helsinki, Finland. It is bound by Vanhankaupunginlahti bay from east, and connects to neighboring boroughs of Vanhakaupunki in north, Hermanni in south and Toukola and Kumpula in west. It is part of the greater Toukola region.\nThe City of Helsinki requires all developers in the Arabianranta area to use 1-2% of the building investments of individual sites for works of art. This rule has been followed since the launching of development in the area 2000. Therefore, works of arts are visible around the district. Artists, designers and craftsmen put their stamp on buildings, objects and a communal spirit that gives energy.\nThe district is mainly divided into three hubs. The Hämeentie Factory District is the heart of the Arabia region where you can find an unbroken tradition of design. At the southern end of Arabia, there is the Toukolanranta (swe. Majstranden), which translates into English as May Beach. The present showcases of functional buildings were constructed in an area that was originally wasteland. Artist Johanna Hyrkäs has designed an art trail which combines the buildings and the art gardens. The district is easily accessible by bus and trams, it takes around 15 minutes to get to the city centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "arabianranta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7422,
+    "attempt": 7371,
+    "place_id": "gn-704573",
+    "input": {
+      "place": {
+        "place_id": "gn-704573",
+        "name": "Kozelets",
+        "country": "Ukraine",
+        "subdivision": "Chernihiv Oblast",
+        "lat": 50.91211,
+        "lon": 31.11664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kozelets",
+          "url": "https://en.wikipedia.org/wiki/Kozelets",
+          "text": "Kozelets (Ukrainian: Козелець, IPA: [kozeˈlɛt͡sʲ, koˈzɛlet͡sʲ]) is a rural settlement in Chernihiv Raion, Chernihiv Oblast, northern Ukraine. It hosts the administration of Kozelets settlement hromada, one of the hromadas of Ukraine. Population: 7,496 (2022 estimate).\nFirst mentioned in written documents in 1098, Kozelets enjoyed city rights starting from the mid-17th century, but lost that status after being designated as an urban-type settlement in 1924.\nNotable attractions in the city includes the Cathedral of the Nativity of the Blessed Virgin designed in the Ukrainian Baroque style by architects Ivan Hryhorovych-Barskyi and Andrei Kvasov. Kozelets also houses several local food industries, and a veterinary technicum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kozelets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7423,
+    "attempt": 7372,
+    "place_id": "gn-731670",
+    "input": {
+      "place": {
+        "place_id": "gn-731670",
+        "name": "Elhovo",
+        "country": "Bulgaria",
+        "subdivision": "Yambol",
+        "lat": 42.16667,
+        "lon": 26.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elhovo",
+          "url": "https://en.wikipedia.org/wiki/Elhovo",
+          "text": "Elhovo (Bulgarian: Елхово [ˈɛɫxovo]) is a Bulgarian town in Yambol Province, located on the left bank of the Tundzha river, between Strandzha and Sakar mountains. Second largest city in the region after Yambol, the city is located at 36 km from border checkpoint Lesovo – Hamzabeyli on the Bulgarian – Turkish border. Elhovo is the administrative center of Elhovo municipality, which includes 21 villages (municipalities). The city's population as of 15 March 2023, was 9422 inhabitants.\nThe town's name derives from the Bulgarian word for \"alder\" and the placename suffix -ovo. During the Ottoman rule it was known as Kızılağaç, also meaning \"alder\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "elhovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7424,
+    "attempt": 7373,
+    "place_id": "gn-738327",
+    "input": {
+      "place": {
+        "place_id": "gn-738327",
+        "name": "Uskumruköy",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.22034,
+        "lon": 29.02326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uskumruköy",
+          "url": "https://en.wikipedia.org/wiki/Uskumruköy",
+          "text": "Uskumruköy (literally mackerel village) is a neighbourhood in the municipality and district of Sarıyer, Istanbul Province, Turkey. Its population is 9,864 (2022). It is situated to the north of Belgrad Forest which is one of the most popular excursion areas of Istanbul citizens. It is 8 km (5 mi) west of Sarıyer centre and a suburb of Greater Istanbul.\nUskumruköy is an old village and the ruins of an observation tower around the village was probably built by Republic of Genoa in the Middle Ages. During Ottoman Empire era the village was a gathering place of the army prior to campaigns to west. The economy of the village used to depend on cattle breeding and woodchopping. But at the present, most of the village area was bought by the construction companies and modern houses for Istanbul residents are being built. According to muhtar there are about 2500 villas in the village area. On the other hand, new European quarters of Istanbul are planned to be built in a vast area which covers Uskumruköy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "uskumrukoy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7425,
+    "attempt": 7374,
+    "place_id": "gn-8299622",
+    "input": {
+      "place": {
+        "place_id": "gn-8299622",
+        "name": "Isle of Bute",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.83663,
+        "lon": -5.05586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isle of Bute",
+          "url": "https://en.wikipedia.org/wiki/Isle_of_Bute",
+          "text": "The Isle of Bute (Scots: Buit; Scottish Gaelic: Eilean Bhòid or An t-Eilean Bòdach), known as Bute (), is an island in the Firth of Clyde in Scotland. It is divided into highland and lowland areas by the Highland Boundary Fault.\nFormerly a constituent island of the larger County of Bute, it is now part of the council area of Argyll and Bute. Bute's resident population was 6,498 in 2011, a decline of just over 10% from the figure of 7,228 recorded in 2001 against a background of Scottish island populations as a whole growing by 4% to 103,702 for the same period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "isle of bute",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "isle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bute",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7426,
+    "attempt": 7375,
+    "place_id": "gn-8347960",
+    "input": {
+      "place": {
+        "place_id": "gn-8347960",
+        "name": "Wetherill Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.84277,
+        "lon": 150.90061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetherill Park",
+          "url": "https://en.wikipedia.org/wiki/Wetherill_Park",
+          "text": "Wetherill Park is a suburb in Greater Western Sydney, in the state of New South Wales, Australia. Wetherill Park is located 34 kilometres west of the Sydney central business district, in the local government area of the City of Fairfield. The area is 11.2 km2. Most residents live in the south-east corner, the larger portion of the suburb being an industrial area. \nWetherill Park sits on the southern border of Prospect Reservoir. Located partially in the suburb, the Smithfield-Wetherill Park Industrial Estate is the largest industrial estate in the southern hemisphere and is the centre of manufacturing and distribution in Greater Western Sydney. Despite its large industry area, Wetherill Park is listed as one of the five most leafiest suburbs in Sydney by the Domain Group (the only suburb in Western Sydney to be listed)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wetherill park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wetherill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7427,
+    "attempt": 7376,
+    "place_id": "gn-11549806",
+    "input": {
+      "place": {
+        "place_id": "gn-11549806",
+        "name": "la Guineueta",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.43884,
+        "lon": 2.16893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Guineueta, Barcelona",
+          "url": "https://en.wikipedia.org/wiki/La_Guineueta,_Barcelona",
+          "text": "La Guineueta (Catalan pronunciation: [lə ɣinəˈwɛtə]; \"The Little Vixen\") is one of the nine original neighbourhoods that gave name to the district Nou Barris (literally, nine neighbourhoods) in Barcelona. Despite its name, the district has 13 neighbourhoods.\nIts size is about 57 ha. located between Parc Central dels Nou Barris and Parc de la Guineueta, and between Plaça de Karl Marx and Plaça de Llucmajor. Modern construction in the area began in the 1950s, and was settled by migrants from other parts of Spain. Before then there were just a few abandoned vineyards and cereal fields and the ruins of an aqueduct.\nThe name of the neighbourhood means \"little fox\" in Catalan and was the name of a mas (a country house) of the area.\nThe area known as Guineueta Nova was renamed as Canyelles in the 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "la guineueta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guineueta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7428,
+    "attempt": 7377,
+    "place_id": "gn-1240723",
+    "input": {
+      "place": {
+        "place_id": "gn-1240723",
+        "name": "Kegalle",
+        "country": "Sri Lanka",
+        "subdivision": "Sabaragamuwa Province",
+        "lat": 7.2523,
+        "lon": 80.3436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kegalle",
+          "url": "https://en.wikipedia.org/wiki/Kegalle",
+          "text": "Kegalle (Sinhala: කෑගල්ල, romanized: Kǣgalla; Tamil: கேகாலை, romanized: Kēkālai) is a large town in Sabaragamuwa Province of Sri Lanka. It is located on the Colombo–Kandy road, approximately 78 km (48 mi) from Colombo, 40 km (25 mi) from Kandy, 32 km (20 mi) from Kurunegala and 46 km (29 mi) from Avissavella. It is the main town in the Kegalle District, which is one of two districts which comprise Sabaragamuwa Province. The town is governed by an Urban Council.\nKegalle has an agricultural based economy and mainly produces rubber. The surrounding area produces graphite, precious stones and agricultural products such as rice. It is the nearest town to the Pinnawala Elephant Orphanage, a major tourist attraction in the area, which is 13 km (8.1 mi) to the north-east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "kegalle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7429,
+    "attempt": 7378,
+    "place_id": "gn-1272985",
+    "input": {
+      "place": {
+        "place_id": "gn-1272985",
+        "name": "Dhanaula",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.28216,
+        "lon": 75.57341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhanaula",
+          "url": "https://en.wikipedia.org/wiki/Dhanaula",
+          "text": "Dhanaula is a town and a municipal council in Barnala district  in the state of Punjab, India.\nSituated 18 km west of Sangrur, Ranjit kaur Sodhi w/o Harwinder singh Sodhi is president of nagar council Dhanaula lies on the Sangrur-Barnala road. It is about 12 km from Barnala. Dhanaula was founded by Gurditta, eldest son of Taloka, in 1718 (1775 Bikrami). It was the capital of the erstwhile Princely State of Nabha until 1755 when Raja Hamir Singh founded Nabha town and made it the capital of the state. He also built a fort which now houses the police station of Dhanaula. A temple of Hanuman exists here. It is said that a man was digging a ditch and found an idol of Hanuman. A temple was constructed at that place, the idol was placed there, and the people began to worship it. Dhanaula is a town of temples.\nA fair known as Hanuman Mela is held in this temple on every Tuesday. Dhanaula is known the wooden toys that are sold in shops on the main road to Barnala. There is also a special hospital for mentally upset patients. Dhanaula also has a name and fame due to animal fairs which are organised by Punjab government on 11th and 27th of every month. Traders across the country come here for their animal business deals. There are two main Gurudwaras, Gurudwara Ramsar Sahib and Gurudwara Pathsahi Nauvin. Gurdawara Pathsahi Nauvin is historical, and it is believed that Ninth Guru, Guru Teg Bahadur Sahib, visited Dhanaula.\nIn 1941, Dhanaula had a population of 9,560."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "dhanaula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7430,
+    "attempt": 7379,
+    "place_id": "gn-1465828",
+    "input": {
+      "place": {
+        "place_id": "gn-1465828",
+        "name": "Perungudi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.96095,
+        "lon": 80.24094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perungudi",
+          "url": "https://en.wikipedia.org/wiki/Perungudi",
+          "text": "Perungudi is a neighbourhood of Chennai in the state of Tamil Nadu, India. It is situated about 10 kilometres (6.2 mi) south of Adyar. It is bordered on two sides by the Old Mahabalipuram Road and the Perungudi lake. It is situated on the Old Mahabalipuram IT Expressway right in middle of an Information Technology (IT) Estate. It is between Taramani and Thoraipakkam and parallel to Kottivakkam and Palavakkam in the East Coast Road (ECR Highway).\nThe suburb is inhabited by an equal mix of new migrants and descendants of some early clans who migrated to the area approximately 300 years ago. Perungudi is seeing heightened activities in recent years due to its strategic location. The population of Perungudi was approximately 8,000 in 2000 but has grown significantly in the years since then. Being in the IT Corridor of Chennai, Perungudi is increasingly being preferred as a residential locality by software engineers. Despite this significant growth, Perungudi lacks basic civic amenities such as underground storm and waste drainage system, piped potable water and good roads. This region has gained more importance owing to its location on the IT highway and proximity to city neighbourhoods like Palavakkam, Thiruvanmiyur, Adyar and Velachery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "perungudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7431,
+    "attempt": 7380,
+    "place_id": "gn-1585330",
+    "input": {
+      "place": {
+        "place_id": "gn-1585330",
+        "name": "Chợ Lớn",
+        "country": "Vietnam",
+        "subdivision": "Ho Chi Minh City (HCMC)",
+        "lat": 10.753,
+        "lon": 106.659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chợ Lớn",
+          "url": "https://en.wikipedia.org/wiki/Chợ_Lớn",
+          "text": "Chợ Lớn (Chinese: 堤岸), usually anglicized as \"Cholon\" in English sources, is an unofficial quarter of Ho Chi Minh City, Vietnam. Historically a city separate from Sài Gòn prior to its urbanization in the 1930s-1950s, the quarter has long been inhabited by Chinese people and is considered the largest Chinatown in the world by area.\nChợ Lớn lies on the west bank of the Saigon River, and spans across all of former District 5 and District 6. The quarter borders the former District 8 (along the Tàu Hủ Canal) to the south, and the former Districts 10 & 11 to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "cho lon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

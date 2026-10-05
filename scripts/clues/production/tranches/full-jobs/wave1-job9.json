@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 165,
+    "attempt": 161,
+    "place_id": "gn-3096880",
+    "input": {
+      "place": {
+        "place_id": "gn-3096880",
+        "name": "Kalisz",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 51.76109,
+        "lon": 18.09102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalisz",
+          "url": "https://en.wikipedia.org/wiki/Kalisz",
+          "text": "Kalisz (Polish: [ˈkaliʂ] ) is a city in central Poland, and the second-largest city in the Greater Poland Voivodeship, with 97,905 residents (December 2021). It is the capital city of the Kalisz Land. Situated on the Prosna river in the southeastern part of Greater Poland, the city forms a conurbation with the nearby towns of Ostrów Wielkopolski and Nowe Skalmierzyce.\nKalisz is one of the oldest cities in Poland and one of the two traditional capitals of Greater Poland (alongside Poznań). It has served as an important regional center in Poland since the Middle Ages as a provincial capital and notable royal city. It is one of the historical burial sites of medieval Polish monarchs and dukes of the Piast dynasty and the site of a number of significant events in Polish history as well as several battles. Since the 19th century it has been the center of an industrial district. It is the cultural, scientific, educational and administrative center of the eastern and southern Greater Poland region, and the seat of Roman Catholic Diocese of Kalisz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "kalisz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 166,
+    "attempt": 162,
+    "place_id": "gn-3835869",
+    "input": {
+      "place": {
+        "place_id": "gn-3835869",
+        "name": "Santiago del Estero",
+        "country": "Argentina",
+        "subdivision": "Santiago del Estero",
+        "lat": -27.80047,
+        "lon": -64.26285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago del Estero",
+          "url": "https://en.wikipedia.org/wiki/Santiago_del_Estero",
+          "text": "Santiago del Estero (Spanish pronunciation: [sanˈtjaɣo ðel esˈteɾo], Spanish for Saint-James-Upon-The-Lagoon) is the capital of Santiago del Estero Province in northern Argentina. It has a population of 252,192 inhabitants, (2010 census [INDEC]) making it the twelfth largest city in the country, with a surface area of 2,116 km2. It lies on the Dulce River and on National Route 9, at a distance of 1,042 km north-northwest from Buenos Aires. Estimated to be 455 years old, Santiago del Estero was the first city founded by Spanish settlers in the territory that is now Argentina. As such, it is nicknamed \"Madre de Ciudades\" (Mother of Cities). Similarly, it has been officially declared the \"mother of cities and cradle of folklore.\"\nThe city houses the National University of Santiago del Estero, founded in 1973, and the Universidad Católica, founded in 1960. Other points of interest include the city's Cathedral, the Santo Domingo Convent, and the Provincial Archeology Museum.\nThe Santiago del Estero Airport is located 6 kilometres north of the city, and has regular flights to Buenos Aires and San Miguel de Tucumán.\nThe climate is subtropical with cool dry winters and wet humid summers. It receives an average annual precipitation of 600 mm, and the climate is warm.\nSantiago del Estero and its surroundings are home to about 100,000 speakers of the local variety of Quechua, making it the southernmost outpost of the language of the Incas. It is one of the few indigenous languages surviving in modern Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "santiago del estero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 167,
+    "attempt": 163,
+    "place_id": "gn-4951788",
+    "input": {
+      "place": {
+        "place_id": "gn-4951788",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.10148,
+        "lon": -72.58981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Massachusetts",
+          "text": "Springfield is the most populous city in Hampden County, Massachusetts, United States, and its county seat. Springfield sits on the eastern bank of the Connecticut River near its confluence with three rivers: the western Westfield River, the eastern Chicopee River, and the eastern Mill River. At the 2020 census, the city's population was 155,929, making it the third most populous city in Massachusetts and the fourth most populous city in New England, after Boston, Worcester, and Providence. The Springfield metropolitan area, one of two metropolitan areas in Massachusetts (the other being Greater Boston), had a population of 699,162 in 2020.\nSpringfield was founded in 1636, the first Springfield in the New World. In the late 1700s, during the American Revolution, Springfield was designated by George Washington as the site of the Springfield Armory because of its central location.  Subsequently it was the site of Shays' Rebellion. The city would also play a pivotal role in the Civil War, as a stop on the Underground Railroad and home of abolitionist John Brown, widely known for his raid on Harpers Ferry, and for the Armory's manufacture of the famed \"Springfield rifles\" used ubiquitously by Union troops. Closing during the Lyndon B. Johnson administration, today the national park site features the largest collection of historic American firearms in the world.\nToday the city is the largest in western New England, and the urban, economic, and media capital of Massachusetts' section of the Connecticut River Valley, colloquially known as the Pioneer Valley. Springfield has several nicknames—\"The City of Firsts\", due to the many innovations developed there, such as the first American dictionary, the first American gas-powered automobile, and the first machining lathe for interchangeable parts; \"The City of Homes\", due to its Victorian residential architecture; and \"Hoop City\", as basketball was invented in Springfield in 1891 by Canadian James Naismith.\nHartford, the capital of Connecticut, lies 24 miles (39 km) south of Springfield on the western bank of the Connecticut River. The Hartford–Springfield region is known as the Knowledge Corridor because it hosts over 160,000 university students and over 32 universities and liberal arts colleges—the second-highest concentration of higher-learning institutions in the United States. The city of Springfield itself is home to Springfield College, Western New England University, American International College, and Springfield Technical Community College, among other higher educational institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 387
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 168,
+    "attempt": 164,
+    "place_id": "gn-499099",
+    "input": {
+      "place": {
+        "place_id": "gn-499099",
+        "name": "Samara",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.20767,
+        "lon": 50.13553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samara",
+          "url": "https://en.wikipedia.org/wiki/Samara",
+          "text": "Samara, known as Kuybyshev from 1935 to 1991, is the largest city and the administrative centre of Samara Oblast in Russia. It is sited at the confluence of the Volga and the Samara rivers. The city has a population of over 1.14 million residents, with up to 1.22 million residents in the urban agglomeration (not including Novokuybyshevsk, which is not conurbated). The city covers an area of 541.4 square kilometers (209.0 sq mi), and is the ninth-largest city and tenth-largest agglomeration in Russia, and the third-most populous city on the Volga and in the Volga Federal District.\nFormerly a closed city, Samara is now a large and important social, political, economic, industrial, and cultural centre in Russia and hosted the European Union—Russia Summit in May 2007. It has a continental climate characterised by hot summers and cold winters. The life of Samara's citizens has always been intrinsically linked to the Volga River, which has not only served as the main commercial thoroughfare of Russia throughout several centuries, but also has great visual appeal. Samara's riverfront is one of the main recreation sites for both local citizens and tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "samara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 169,
+    "attempt": 165,
+    "place_id": "gn-5907364",
+    "input": {
+      "place": {
+        "place_id": "gn-5907364",
+        "name": "Brampton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.68341,
+        "lon": -79.76633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brampton",
+          "url": "https://en.wikipedia.org/wiki/Brampton",
+          "text": "Brampton is the ninth most populous municipality in Canada and the regional seat of the Regional Municipality of Peel. It is also the third most populous city in the Greater Golden Horseshoe urban area, behind Toronto and Mississauga. Brampton is part of the Greater Toronto Area (GTA), located in the Canadian province of Ontario, and is a lower-tier municipality within the Peel Region. The City of Brampton is bordered by Vaughan to the east, Halton Hills to the west, Caledon to the north, Mississauga to the south, and Etobicoke (Toronto) to the southeast.\nNamed after the town of Brampton in Cumberland, England, Brampton was incorporated as a village in 1853 and as a town in 1873, and became a city in 1974. The modern City of Brampton was formed following an amalgamation of several surrounding townships and communities.\nThe city was once known as \"The Flower Town of Canada\", a title referring to its abundance of greenhouses and strong floriculture industry in the 1860s. It maintains the term \"Flower City\" as its slogan.\nDespite being built as a car-centric city, Brampton has a significant transit system, with a ridership of 49,200,800, or about 226,500 per weekday as of the second quarter of 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "brampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 170,
+    "attempt": 166,
+    "place_id": "gn-1254360",
+    "input": {
+      "place": {
+        "place_id": "gn-1254360",
+        "name": "Tirupati",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 13.63551,
+        "lon": 79.41989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tirupati",
+          "url": "https://en.wikipedia.org/wiki/Tirupati",
+          "text": "Tirupati ( Tiru-pa-ti) is a city in the Indian state of Andhra Pradesh and serves as the administrative headquarters of Tirupati district. It is known for its significant religious and cultural heritage, being home to the renowned Tirumala Venkateswara Temple, a major Hindu pilgrimage site, as well as other historic temples. The temple is one of the eight Svayam Vyakta Kshetras (self-manifested temples) dedicated to the deity Vishnu. Tirupati is situated 150 km from Chennai, 250 km from Bangalore, and 416 km from Vijayawada.\nTirupati is the second largest city in the Rayalaseema region, after Kurnool. According to the 2011 census of India, Tirupati had a population of 287,035, making it the ninth most populous city in Andhra Pradesh, while the larger urban agglomeration had a population of 459,985, ranking it the seventh largest in the state. The city functions as a municipal corporation and serves as the headquarters for  the Tirupati district, Tirumala Tirupati Devasthanams, Tirupati Urban, Tirupati Rural mandals, the Tirupati revenue division, the Andhra Pradesh Southern Power Distribution Company Limited (APSPDCL), and the Tirupati Urban Development Authority (TUDA).\nIn 2012–2013, Tirupati was recognised by India's Ministry of Tourism as the \"Best Heritage City\". Additionally, it was selected as one of the hundred Indian cities to be developed under the Smart Cities Mission, a Government of India initiative aimed at urban development and modernisation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "tirupati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 171,
+    "attempt": 167,
+    "place_id": "gn-1270583",
+    "input": {
+      "place": {
+        "place_id": "gn-1270583",
+        "name": "Gwalior",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.22983,
+        "lon": 78.17337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwalior",
+          "url": "https://en.wikipedia.org/wiki/Gwalior",
+          "text": "Gwalior (pronounced [ɡʋɑːlɪjəɾ] ) is the fourth largest city of the Indian state of Madhya Pradesh where it serves as the capital and the administrative headquarters of the eponymous district and division. It is an important cultural, industrial, sports and political centre. Known as the music city of India, it is home to the oldest musical gharana of the Indian subcontinent and of the earliest known epigraphical inscription that uses the number 0 (zero) as part of the Hindu numeral system. The grand historic city and its fortress have been ruled by several Indian kingdoms from the Alchon Huns to the Gurjara Pratihara and Kachchhapaghata dynasties. Later it fell into the hands of the Delhi Sultanate before passing on to their vassals, the Tomars.\nThe Mughal Empire conquered the city and its fortress in the 16th century. Following the decline of the empire, the city fell into the hands of Jat rulers, then to the British East India Company in 1730. The Scindia Dynasty of the Maratha Empire took control of the city in the early 18th century.\nGwalior was one of the major locations of the Sepoy Mutiny. Prior to Indian independence, the Kingdom of Gwalior remained a princely state of the British Raj with the Scindia as rulers and the city became the winter capital of the Central India Agency. Gwalior was a premier twenty-one Gun Salute State  along with Hyderabad, Mysore, Jammu and Kashmir and Baroda.\nPost Independence, the city became the capital of the short-lived state of Madhya Bharat, now part of the larger state of Madhya Pradesh. Located in its northern part, it is one of the counter-magnet cities hosting many administrative offices of the Chambal division including the state and national headquarters of several organisations, commissions and boards and is surrounded by industrial and commercial zones of neighbouring districts, Malanpur, Bhind, Banmore, Morena.\n\nGwalior occupies a strategic location in the historical Gird region. Surrounded by high rocky hills, the city is situated in the valley in the Ganga-Yamuna Drainage Basin. The city's metropolitan area includes Lashkar, Old City (Fort City), Gwalior West, Gwalior East, Greater Gwalior, and Morar Cantonment.\nGwalior is one of the cities selected under the central government's flagship Smart Cities Mission and startup centre programmes.\nOne of UNESCO's cities of Music as part of the world creative cities network, Gwalior's identity is strongly associated with its rich musical, artistic traditions and vibrant culture, making it one of India's most touristic cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 410
+    },
+    "banned_terms": [
+      {
+        "term": "gwalior",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 172,
+    "attempt": 168,
+    "place_id": "gn-2656173",
+    "input": {
+      "place": {
+        "place_id": "gn-2656173",
+        "name": "Bath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3751,
+        "lon": -2.36172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bath, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Bath,_Somerset",
+          "text": "Bath (RP: , locally [ba(ː)θ]) is a city in Somerset, England, known for and named after its Roman-built baths. The city became a UNESCO World Heritage Site in 1987, and was later listed as one of the \"Great Spa Towns of Europe\". Bath is in the valley of the River Avon, 97 miles (156 km) west of London and 11 miles (18 km) southeast of Bristol, and is the largest city and urban settlement in Somerset.\nThe city became a spa with the Latin name Aquae Sulis (\"the waters of Sulis\") c. 60 AD when the Romans built baths and a temple in the Avon valley, although hot springs were known even before then. Bath Abbey was founded in the 7th century and became a religious centre; the building was rebuilt in the 12th and 16th centuries. In the 17th century, claims were made for the curative properties of water from the springs, and Bath became popular as a spa town in the Georgian era. Georgian architecture, crafted from Bath stone, includes the Royal Crescent, Circus, Grand Pump Room, and the Assembly Rooms, where Beau Nash presided over the city's social life from 1705 until his death in 1761.\nMany of the streets and squares were laid out by John Wood, the Elder, and in the 18th century the city became fashionable and the population grew. Jane Austen lived in Bath in the early 19th century. Further building was undertaken in the 19th century and following the Bath Blitz in World War II. At the 2021 census, the population of the built-up area was 94,080.\nBath has over 6 million yearly visitors, making it one of the ten English cities visited most by overseas tourists. Attractions include the spas, canal boat tours, Royal Crescent, Bath Skyline, Parade Gardens, Sydney Gardens and Royal Victoria Park which hosts carnivals and seasonal events. Shopping areas include SouthGate shopping centre, the Corridor arcade and artisan shops at Walcot, Milsom, Stall and York Streets. There are theatres, including the Theatre Royal, as well as several museums including the Museum of Bath Architecture, the Victoria Art Gallery, the Museum of East Asian Art, the Herschel Museum of Astronomy, Fashion Museum, and the Holburne Museum. The city has two universities – the University of Bath and Bath Spa University – with Bath College providing further education. Sporting clubs from the city include Bath Rugby and Bath City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 400
+    },
+    "banned_terms": [
+      {
+        "term": "bath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 173,
+    "attempt": 169,
+    "place_id": "gn-3021372",
+    "input": {
+      "place": {
+        "place_id": "gn-3021372",
+        "name": "Dijon",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.31344,
+        "lon": 5.01391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dijon",
+          "url": "https://en.wikipedia.org/wiki/Dijon",
+          "text": "Dijon (UK: , US: ; French: [diʒɔ̃] ; Burgundian: Digion) is a city and the prefecture of the Côte-d'Or department of the Bourgogne-Franche-Comté region in eastern France. As of 2023, the population of the commune was 161,830, making it the most populous commune in Bourgogne-Franche-Comté.\nThe earliest archaeological finds within the city limits of Dijon date to the Neolithic period. Dijon later became a Roman settlement named Divio, located on the road between Lyon and Paris. The province was home to the Dukes of Burgundy from the early 11th until the late 15th century, and Dijon became a place of tremendous wealth and power, one of the great European centres of art, learning, and science.\nThe city has retained varied architectural styles from many of the main periods of the past millennium, including Capetian, Gothic, and Renaissance. Many still-inhabited townhouses in the city's central district date from the 18th century and earlier. Dijon's architecture is distinguished by, among other things, toits bourguignons (Burgundian polychrome roofs) made of glazed terracotta tiles of various colours arranged in geometric patterns.\nDijon holds an International and Gastronomic Fair every year in the northern-hemisphere autumn. Dijon also hosts every three years the international flower show Florissimo. Dijon has become famous for Dijon mustard, which originated in 1856, when Jean Naigeon of Dijon substituted verjuice, the acidic \"green\" juice of not-quite-ripe grapes, for vinegar in the traditional mustard recipe. Dijon is a green city with an important tertiary sector, as well as a regional economic centre with a diversified fabric, a traditional food-processing center (Dijon crême de cassis and kir, gingerbread, Lanvin chocolate...) and a renowned pharmaceutical sector.\nOn 4 July 2015, UNESCO registered the historical centre of the city as a World Heritage site, as one of the components of the \"Climats, terroirs of Burgundy\" site, because of its historical importance in regulating the system of wine production in Burgundy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "dijon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 174,
+    "attempt": 170,
+    "place_id": "gn-3098722",
+    "input": {
+      "place": {
+        "place_id": "gn-3098722",
+        "name": "Gorzów Wielkopolski",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 52.73371,
+        "lon": 15.22505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gorzów Wielkopolski",
+          "url": "https://en.wikipedia.org/wiki/Gorz%C3%B3w_Wielkopolski",
+          "text": "Gorzów Wielkopolski (Polish pronunciation: [ˈɡɔʐuv vjɛlkɔˈpɔlskʲi] ; formerly German: Landsberg an der Warthe), often simplified to Gorzów, is a city in western Poland, located on the Warta River. Alongside Zielona Góra, it is one of the two principal cities and seats of the Lubusz Voivodeship, with a population of 114,567 as of 30 June 2024.\nThe city has a history dating back to the 13th century and serves as a cultural, economic, and industrial hub in the region. Gorzów Wielkopolski is home to several historical landmarks, green spaces, and educational institutions, and is known for its strong tradition in speedway racing.\nAround Gorzów, there are two large forest areas: Gorzów Woods to the north, where the Barlinek-Gorzów Landscape Park is situated, and Noteć Woods to the southeast. The biggest oil fields in Poland are located near Gorzów."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "gorzow wielkopolski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gorzow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wielkopolski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 175,
+    "attempt": 171,
+    "place_id": "gn-7828758",
+    "input": {
+      "place": {
+        "place_id": "gn-7828758",
+        "name": "Saipan",
+        "country": "Northern Mariana Islands",
+        "subdivision": "Saipan",
+        "lat": 15.21233,
+        "lon": 145.7545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saipan, Northern Mariana Islands",
+          "url": "https://en.wikipedia.org/wiki/Saipan,_Northern_Mariana_Islands",
+          "text": "Saipan () is the largest island and capital of the Northern Mariana Islands, an unincorporated territory of the United States in the western Pacific Ocean. According to 2020 estimates by the United States Census Bureau, the population of Saipan was 43,385. Its people have been United States citizens since the 1980s. Saipan is one of the main homes of the Chamorro and the Carolinians, the indigenous people of the Mariana Islands.\nFrom the 17th century, the island experienced Spanish occupation and rule until the Spanish–American War of 1898, when Saipan was briefly occupied by the United States, before being formally sold to Germany. About 15 years of German rule were followed by 30 years of Japanese rule, which was ended by the Battle of Saipan, as the United States began to take control of the Philippine Sea. Following World War II, Saipan became part of the Trust Territory of the Pacific Islands, and was administered by the United States, along with the rest of the Northern Marianas. In 1978, Saipan formally joined the United States as part of the Commonwealth of the Northern Mariana Islands.\nToday, Saipan is home to about 90% of the population of the Northern Mariana Islands. It hosts many resorts, golf courses, beaches, nature sites, and World War II historical sites. The legislative and executive branches of Commonwealth government are located in the village of Capitol Hill on the island, while the judicial branch is headquartered in the village of Susupe. Since the entire island is organized as a single municipality, most publications designate Saipan as the Commonwealth's capital. As of 2025, Saipan's mayor is Ramon Camacho and the governor of the Northern Mariana Islands is David M. Apatang.\nSaipan was hit by Super Typhoon Yutu in 2018, which caused widespread damage. It was previously hit in 2015 by Super Typhoon Soudelor, causing extensive damage to houses and commercial property."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "saipan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 176,
+    "attempt": 172,
+    "place_id": "gn-1175864",
+    "input": {
+      "place": {
+        "place_id": "gn-1175864",
+        "name": "Jhelum",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.93448,
+        "lon": 73.73102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jhelum",
+          "url": "https://en.wikipedia.org/wiki/Jhelum",
+          "text": "Jhelum (also known as Jehlum) (; Punjabi / Urdu: جہلم) is a city on the western bank of the Jhelum River in Punjab, Pakistan. Located in northern Punjab, it is the capital of the Jhelum District. The city is nicknamed the \"City of Soldiers\" or \"Land of Martyrs and Warriors\" since many soldiers from the area served in the British Indian Army and later, the Pakistan Armed Forces, due to characterisation of Punjabi tribes as a 'martial race'.\nJhelum is several miles upstream from the site of the ancient Battle of the Hydaspes between the armies of Alexander III of Macedon and Porus. The location of the modern city of Jhelum could conceivably have been the site of the capital of Paurava. The name of the nearby city Bucephala commemorates the death of Alexander's horse, Bucephalus. Other notable areas nearby include the 16th-century Rohtas Fort and the Tilla Jogian complex of ancient temples. The ancient Grand Trunk Road passes through the city. According to the 2023 Pakistani census, the population of Jhelum was 312,426. Today, there are a number of industries in Jhelum, including a tobacco factory and wood, marble, glass and flour mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "jhelum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 177,
+    "attempt": 173,
+    "place_id": "gn-1267995",
+    "input": {
+      "place": {
+        "place_id": "gn-1267995",
+        "name": "Kanpur",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.46523,
+        "lon": 80.34975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanpur",
+          "url": "https://en.wikipedia.org/wiki/Kanpur",
+          "text": "Kanpur (/kɑːnˈpʊər/ , Hindi pronunciation: [kaːn̪.pʊɾ]), originally named Kanhapur and formerly anglicized as Cawnpore, is a large city in the Indian state of Uttar Pradesh. Founded by Rajput ruler Hindu Singh Chandel, Kanpur became one of the most important commercial and military stations of British Raj. \nThe city is home to historical monuments such as the Jajmau Ghat which dates back to the 17th century AD. Kanpur is also home to several historical sites such as the Kanpur Museum, Bhitargaon Temple, European Cemetery and Nanarao Park.\nIt is the 12th most populous city and the 11th most populous urban agglomeration in India (2011 census). Kanpur was an important British garrison town until 1947, when India gained independence. The urban district of Kanpur Nagar serves as the headquarters of the Kanpur division, Kanpur Range and Kanpur Zone.\nIt was the most populous urban city in the 2011 Indian census and the largest urban agglomeration in Uttar Pradesh, while the population of city and its suburbs were around 5 million, making it the eighth-most populous metropolitan area in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "kanpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 178,
+    "attempt": 174,
+    "place_id": "gn-1736309",
+    "input": {
+      "place": {
+        "place_id": "gn-1736309",
+        "name": "Alor Setar",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 6.12104,
+        "lon": 100.36014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alor Setar",
+          "url": "https://en.wikipedia.org/wiki/Alor_Setar",
+          "text": "Alor Setar (Kedah Malay: Loqstaq), known as Alor Star from 2003 to 2009, is the state capital of Kedah, Malaysia. It is the second-largest city in the state, after Sungai Petani, and one of the most important cities on the west coast of Peninsular Malaysia. It is home to the third-tallest tower in Malaysia, the Alor Setar Tower.\nIts location along the main travel corridor from Malaysia to Thailand has long made it a major transportation hub in the northern Malay Peninsula. Alor Setar sits along the country's longest expressway, located 430 km (270 mi) from Kuala Lumpur and 79 km (49 mi) north of George Town, Penang. From Thailand, the city is easily accessible via the Padang Besar–Sadao Highway, it is 51.8 km (32.2 mi) from Sadao and 106 km (66 mi) from Hat Yai.\nThe city was originally founded as Kota Setar in 1785. Owing to the long status as the capital of Kedah, Alor Setar is regarded as one of the core cultural centres for the Kedahan Malays. It is also among the key pioneer in the Malayan transportation history, the railway station was commissioned in 1915 followed by its airport in 1929.\nAlor Setar is home to the Central State Administration Centre and is the administrative centre of Kota Setar District. At present, the city covers a land area of 666 km2 (257 mi2), which is occupied by more than 400,000 inhabitants (as per the 2020 census). At the local-government level, Alor Setar is administered by the Alor Setar City Council.\nIt is the birthplace of two pivotal prime ministers of Malaysia; namely Tunku Abdul Rahman, the founding father of the nation (in office from 1957 to 1970) and Mahathir Mohamad, the country's longest-serving prime minister of 24 years (in office from 1981 to 2003, from 2018 to 2020)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "alor setar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "setar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 179,
+    "attempt": 175,
+    "place_id": "gn-2229748",
+    "input": {
+      "place": {
+        "place_id": "gn-2229748",
+        "name": "Kumbo",
+        "country": "Cameroon",
+        "subdivision": "North-West",
+        "lat": 6.2,
+        "lon": 10.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kumbo",
+          "url": "https://en.wikipedia.org/wiki/Kumbo",
+          "text": "Kumbo, also known as Kimbo, is the second-largest city in the North West Province of Cameroon and the capital of Bui Division. It lies about 2000m above sea level and is situated approximately 110 km away from Bamenda (the provincial capital of the North West Province), on the Bamenda Highlands Ring Road. Kumbo has a population of 80,212 (at the 2005 Census) and is split into three distinctive hilly settlements of Tobin, Mbveh, and Squares. The town is known for horse racing (Tobin Stadium ) and traditional medicine, and also for its palace (Nso Palace), a market and two hospitals (Shisong Hospital  & Banso Baptist Hospital ). Kumbo is the capital city of the Nso Kingdom of the Nso people. The lingua franca is Lamnso but\nPidgin,\nEnglish,\nOku,\nDjottin,\nFulfulde, French and\nHausa are spoken."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "kumbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 180,
+    "attempt": 176,
+    "place_id": "gn-2653261",
+    "input": {
+      "place": {
+        "place_id": "gn-2653261",
+        "name": "Cheltenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.90006,
+        "lon": -2.07972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheltenham",
+          "url": "https://en.wikipedia.org/wiki/Cheltenham",
+          "text": "Cheltenham ( CHELT-ən-əm) is a historic spa town and borough adjacent to the Cotswolds in Gloucestershire, England. Cheltenham became known as a health and holiday spa town resort following the discovery of mineral springs in 1716, and claims to be the most complete Regency town in Britain. It is directly northeast of Gloucester.\nThe town hosts several cultural festivals, often featuring nationally and internationally famous contributors and attendees: the Cheltenham Literature Festival, the Cheltenham Jazz Festival, the Cheltenham Science Festival, the Cheltenham Music Festival, the Cheltenham International Film Festival, the Cheltenham Cricket Festival and the Cheltenham Food & Drink Festival. In steeplechase horse racing, the Gold Cup is the main event of the Cheltenham Festival held every March. It is also home to a number of leading independent schools, including Cheltenham College and Cheltenham Ladies' College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "cheltenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 181,
+    "attempt": 177,
+    "place_id": "gn-2984114",
+    "input": {
+      "place": {
+        "place_id": "gn-2984114",
+        "name": "Reims",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.26526,
+        "lon": 4.02853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reims",
+          "url": "https://en.wikipedia.org/wiki/Reims",
+          "text": "Reims ( REEMZ; French: [ʁɛ̃s] ; also spelled Rheims in English) is the most populous city in the French department of Marne, and the 12th most populous city in France. The city lies 129 km (80 mi) northeast of Paris on the Vesle river, a tributary of the Aisne.\nFounded by the Gauls, Reims became a major city in the Roman Empire. Reims later played a prominent ceremonial role in French monarchical history as the traditional site of the coronation of the kings of France. The royal anointing was performed at the Cathedral of Reims, which housed the Holy Ampulla of chrism allegedly brought by a white dove at the baptism of Frankish king Clovis I in 496. For this reason, Reims is often referred to in French as la cité des sacres (\"the Coronation City\").\nReims is recognized for the diversity of its heritage, ranging from Romanesque to Art-déco. Reims Cathedral, the adjacent Palace of Tau, and the Abbey of Saint-Remi were listed together as a UNESCO World Heritage Site in 1991 because of their outstanding Romanesque and Gothic architecture and their historical importance to the French monarchy. Reims also lies on the northern edge of the Champagne wine region and is linked to its production and export."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "reims",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 182,
+    "attempt": 178,
+    "place_id": "gn-3660689",
+    "input": {
+      "place": {
+        "place_id": "gn-3660689",
+        "name": "Ambato",
+        "country": "Ecuador",
+        "subdivision": "Tungurahua Province",
+        "lat": -1.24908,
+        "lon": -78.61675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambato, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Ambato,_Ecuador",
+          "text": "Ambato (Spanish pronunciation: [amˈbato]; full form, San Juan de Ambato; Quechua: Ampatu Llaqta) is a city located in the central Andean valley of Ecuador. Lying on the banks of the Ambato River, the city also sits beneath several tall mountains. It is the capital city of the Tungurahua Province, situated at an elevation of 2,577 meters above sea level. It is variously nicknamed \"City of Flowers and Fruits\", \"Land of the Three Juans\", and \"Garden of Ecuador.\" Ambato's inhabitants are called Ambateños or Guaytambos (after a type of native peach that the valley is famous for producing). The current mayor of Ambato is Diana Caiza.\nThe city has been fully or partially destroyed by earthquakes several times in its history, most recently on August 5, 1949, when the city and its cathedral were almost completely devastated. The city was rebuilt in the following two years. In honour of the tenacity of their residents, Ambato celebrates \"The Festival of Fruits and Flowers\" during Carnival in February. Today, the Festival of Fruits and Flowers is one of the most important festivities in Ecuador.\nThe city is referred to as \"Land of the Three Juans\" as it was the birthplace of three notable Ecuadorians: Juan Montalvo, a noted essay writer of the 19th century, Juan León Mera, the author of the country's national anthem, and Juan Benigno Vela, a key figure in the Ecuadorian independence movement. The city is well known for its production of fruit, tanneries, food products and textiles.\nIt also serves as a major transportation hub, especially for travelers moving south on the Pan-American Highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "ambato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 183,
+    "attempt": 179,
+    "place_id": "gn-379252",
+    "input": {
+      "place": {
+        "place_id": "gn-379252",
+        "name": "Khartoum",
+        "country": "Sudan",
+        "subdivision": "Khartoum",
+        "lat": 15.55177,
+        "lon": 32.53241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "text": "Khartoum, also spelled Khartum, is the capital and most populous city of Sudan as well as Khartoum State. With an estimated population of 7.1 million people, Greater Khartoum is the largest urban area in Sudan.\nKhartoum is located at the confluence of the White Nile – flowing north from Lake Victoria – and the Blue Nile, flowing west from Lake Tana in Ethiopia. Divided by these two parts of the Nile, the Khartoum metropolitan area is a tripartite metropolis consisting of Khartoum proper and linked by bridges to Khartoum North (الخرطوم بحري al-Kharṭūm Baḥrī) and Omdurman (أم درمان Umm Durmān) to the west. The place where the two Niles meet is known as al-Mogran or al-Muqran (المقرن; English: \"The Confluence\").\nKhartoum was founded in 1821 by Muhammad Ali Pasha, north of the ancient city of Soba. In 1882, the British Empire took control of the Egyptian government, leaving the administration of Sudan in the hands of the Egyptians. At the outbreak of the Mahdist War, the British attempted to evacuate Anglo-Egyptian garrisons from Sudan but the Siege of Khartoum in 1884 resulted in the capture of the city by Mahdist forces and a massacre of the defending Anglo-Egyptian garrison. In 1898 it was reoccupied by British forces and was the seat of Anglo-Egyptian Sudan's government until 1956.\nIn 1956, the city was designated as the capital of an independent Sudan. Three hostages were killed during the attack on the Saudi Embassy in Khartoum in 1973.\nIn 2008, the Justice and Equality Movement engaged in combat in the city with the Sudanese Armed Forces as part of the War in Darfur. The Khartoum massacre occurred in 2019 during the Sudanese Revolution. Between 2023 and 2025, the city saw extensive combat during the civil war involving the armed forces and the Rapid Support Forces (RSF), affecting Khartoum International Airport and other critical sites. In 2025, the Sudanese armed forces recaptured Khartoum from the RSF, leaving widespread destruction.\nKhartoum is an economic and trade center in North Africa, with rail lines from Port Sudan and El Obeid. It is served by Khartoum International Airport with the New Khartoum International Airport under construction. Several national and cultural institutions are in Khartoum and its metropolitan area, including the National Museum of Sudan, the Khalifa House Museum, the University of Khartoum, and the Sudan University of Science and Technology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 393
+    },
+    "banned_terms": [
+      {
+        "term": "khartoum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 184,
+    "attempt": 180,
+    "place_id": "gn-3985710",
+    "input": {
+      "place": {
+        "place_id": "gn-3985710",
+        "name": "Cabo San Lucas",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 22.89088,
+        "lon": -109.91238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabo San Lucas",
+          "url": "https://en.wikipedia.org/wiki/Cabo_San_Lucas",
+          "text": "Cabo San Lucas (Spanish pronunciation: [ˈkaβo san ˈlukas], 'Saint Luke Cape'), also known simply as Cabo, is a resort city at the southern tip of the Baja California peninsula, in the Mexican state of Baja California Sur. As of the 2020 Census, the population of the city was 202,694. Cabo San Lucas and the neighboring San José del Cabo are collectively known as Los Cabos. Together, they form a metropolitan area of 351,111 inhabitants.\nRated as one of Mexico's top tourist destinations, Cabo San Lucas is known for its beaches, scuba diving locations, Balnearios, the sea arch El Arco de Cabo San Lucas, and marine life. The Los Cabos Corridor has become a heavily trafficked vacation destination for tourists, with numerous resorts and timeshares along the coast between Cabo San Lucas and San José del Cabo.\nThe waters around Cabo are home to a variety of marine wildlife including rays, sharks, mahi-mahi (dorado), and striped marlin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "cabo san lucas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lucas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

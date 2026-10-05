@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 7372,
+    "attempt": 7321,
+    "place_id": "gn-2661719",
+    "input": {
+      "place": {
+        "place_id": "gn-2661719",
+        "name": "Arlesheim",
+        "country": "Switzerland",
+        "subdivision": "Basel-Landschaft",
+        "lat": 47.49412,
+        "lon": 7.61979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arlesheim",
+          "url": "https://en.wikipedia.org/wiki/Arlesheim",
+          "text": "Arlesheim is a town and a municipality in the district of Arlesheim in the canton of Basel-Country in Switzerland. Its cathedral chapter seat, bishop's residence and cathedral are listed as a heritage site of national significance.\nThe cathedral has a Baroque organ built by the German builder Johann Andreas Silbermann, based in Alsace, in 1761. The instrument was restored by Metzler in 1959–1962, and is an example of the fusion of French and German organ building styles. It has been used in several recordings, including Lionel Rogg's recording of the complete organ works of J. S. Bach, for Harmonia Mundi France in 1970."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "arlesheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7373,
+    "attempt": 7322,
+    "place_id": "gn-2726576",
+    "input": {
+      "place": {
+        "place_id": "gn-2726576",
+        "name": "Älmhult",
+        "country": "Sweden",
+        "subdivision": "Kronoberg",
+        "lat": 56.55146,
+        "lon": 14.13827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Älmhult",
+          "url": "https://en.wikipedia.org/wiki/Älmhult",
+          "text": "Älmhult (Swedish pronunciation: [ˈɛ̂lmhɵlt] ) is a locality and the seat of Älmhult Municipality in Kronoberg County, Sweden, with a population of 17,950 as of 2024\nIt was in Älmhult that the first IKEA store was built. IKEA continues to have a large corporate presence there. A museum of IKEA's history, the IKEA Museum, opened in the town on 30 June 2016. It was constructed to present the history of IKEA. \nÄlmhult has a local gymnasium called Haganässkolan and an international school that goes up to Year 10.\nHaganässkolan is an International Baccalaureate-authorized school that offers the IB Diploma Programme since August 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "almhult",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7374,
+    "attempt": 7323,
+    "place_id": "gn-2756793",
+    "input": {
+      "place": {
+        "place_id": "gn-2756793",
+        "name": "Dinxperlo",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.86417,
+        "lon": 6.4875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinxperlo",
+          "url": "https://en.wikipedia.org/wiki/Dinxperlo",
+          "text": "Dinxperlo (Dutch: [ˈdɪŋkspərloː] ; Dutch Low Saxon: Dinsper) is a town and former municipality in the eastern Netherlands (Achterhoek region), situated directly at the Germany-Netherlands border.\nSince 1 January 2005, Dinxperlo has been part of the municipality of Aalten. Before 2005, Dinxperlo was a separate municipality, covering the town of Dinxperlo itself and the village of De Heurne.\nThe name of the village probably is derived from dingspel (justice court or area) and loo (wood). A popular explanation is that in the Middle Ages there was a court in the woods here. Dinxperlo used to have a coat of arms depicting Lady Justice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "dinxperlo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7375,
+    "attempt": 7324,
+    "place_id": "gn-2760123",
+    "input": {
+      "place": {
+        "place_id": "gn-2760123",
+        "name": "Aalten",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.925,
+        "lon": 6.58056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aalten",
+          "url": "https://en.wikipedia.org/wiki/Aalten",
+          "text": "Aalten (Dutch pronunciation: [ˈaːltə(n)] ) is a municipality and a town in the eastern Netherlands. The former municipalities of Bredevoort (1818) and Dinxperlo (2005) have been merged with Aalten.\nNotable inhabitants of Aalten include Angus Young, guitarist of the Australian rock band AC/DC, and Robert Gesink, a professional road bicycle racer.  During World War II, 51 of Aalten's 85 Jews were hidden by local non-Jews, and thereby survived the war. According to the War and Resistance Museum in Aalten, the village had the highest number of people in hiding during World War II. The village of approximately 13,000 residents hid some 2,500 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "aalten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7376,
+    "attempt": 7325,
+    "place_id": "gn-2789794",
+    "input": {
+      "place": {
+        "place_id": "gn-2789794",
+        "name": "Oostduinkerke",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.11565,
+        "lon": 2.68217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oostduinkerke",
+          "url": "https://en.wikipedia.org/wiki/Oostduinkerke",
+          "text": "Oostduinkerke (Dutch: [oːzˈdœyŋkɛrkə]; West Flemish: Ôostduunkerke; French: Ostdunkerque [ɔstdœ̃kɛʁk]) is a place on the southern west coast of Belgium, located in the province of West Flanders. Once a municipality of its own, Oostduinkerke now is a sub-municipality in the municipality of Koksijde.\nThe name Oostduinkerke translates as 'East Dunkirk'. The town originally shared its name with the city of Dunkirk in current-day France; therefore, in the 13th century, Oost- was added to its name to avoid confusion with its namesake further to the west.\nOostduinkerke lies amidst a dune area (approximately 2.4 km2; 1 sq. mi.), which is now a protected nature reserve. Oostduinkerke's sandy beach stretches from 250 to 700 metres (270 to 800 yards) at ebb-tide and extends over 30 km (20 miles), via De Panne to the beach of Dunkirk (France), which explains why Oostduinkerke is popular with sand yachters and parakarters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "oostduinkerke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7377,
+    "attempt": 7326,
+    "place_id": "gn-2899070",
+    "input": {
+      "place": {
+        "place_id": "gn-2899070",
+        "name": "Hörde",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.48371,
+        "lon": 7.5003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hörde",
+          "url": "https://en.wikipedia.org/wiki/Hörde",
+          "text": "Hörde (German pronunciation: [ˈhœʁdə]) is a Stadtbezirk (\"City District\") and also a Stadtteil (Quarter)  in the south of the city of Dortmund, in Germany.\nHörde is situated at 51°29' North, 7°30' West, and is at an elevation of 112 metres above mean sea level. It is situated in the southern part of Dortmund, a major town in the Ruhrgebiet.\nIt is made up of the areas of Wellinghofen, Höchsten, Benninghofen, Loh, Holzen, Sommerberg, Syburg, and Wichlinghofen, as well as Hörde itself. The region was formerly a heavy industry area, particularly for the production and working of steel.\nThe river Emscher flows through Hörde. It flows through the former \"Phoenix\" industrial park, which is currently being restored to a natural area. When finished, the Emscher will once again be a clean river, and there will be a lake (Phoenix-See)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "horde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7378,
+    "attempt": 7327,
+    "place_id": "gn-2961523",
+    "input": {
+      "place": {
+        "place_id": "gn-2961523",
+        "name": "Shankill",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.22611,
+        "lon": -6.12444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shankill, Dublin",
+          "url": "https://en.wikipedia.org/wiki/Shankill,_Dublin",
+          "text": "Shankill (Irish: Seanchill, meaning 'Old Church') is a suburb of Dublin, Ireland, on the southeast of County Dublin, close to the border with County Wicklow. It is in the local government area of Dún Laoghaire–Rathdown and had a population of 14,257 as of the 2016 census. It runs from the coast, between Loughlinstown and Bray, inland towards the foothills of the Dublin Mountains. Shankill borders Rathmichael, as well as Loughlinstown, Killiney, Ballybrack and Bray in County Wicklow. It is part of the civil parish of Rathmichael and contains the formerly separate district of Shanganagh, and in its southern parts, the locality of Crinken."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "shankill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7379,
+    "attempt": 7328,
+    "place_id": "gn-3013701",
+    "input": {
+      "place": {
+        "place_id": "gn-3013701",
+        "name": "Yutz",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.35571,
+        "lon": 6.1926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yutz",
+          "url": "https://en.wikipedia.org/wiki/Yutz",
+          "text": "Yutz (French pronunciation: [jyts]; German: Jeutz [jɔʏts]; Lorraine Franconian/Luxembourgish: Jäiz [jæːɪ̯ts] ) is a commune in the Moselle department in Grand Est in north-eastern France, close to the borders with both Luxembourg and Germany. It was created in 1971 by merging the former communes of Basse-Yutz and Haute-Yutz. Macquenom is also a part of the commune since 1810.\nThe town is located by the river Moselle where it borders with the city of Thionville. The famous Basse Yutz Flagons, considered by many to be the apogee of Celtic art, were found in the area. They now form part of the British Museum's collection.\nThe inhabitants are called Yussois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "yutz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7380,
+    "attempt": 7329,
+    "place_id": "gn-3018074",
+    "input": {
+      "place": {
+        "place_id": "gn-3018074",
+        "name": "Fontainebleau",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.40908,
+        "lon": 2.70177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fontainebleau",
+          "url": "https://en.wikipedia.org/wiki/Fontainebleau",
+          "text": "Fontainebleau ( FON-ten-bloh, US also  -⁠bloo, French: [fɔ̃tɛnblo] ) is a commune in the metropolitan area of Paris, France. It is located 55.5 kilometres (34.5 mi) south-southeast of the centre of Paris. Fontainebleau is a sub-prefecture of the Seine-et-Marne department, and it is the seat of the arrondissement of Fontainebleau. The commune has the largest land area in the Île-de-France region; it is the only one to cover a larger area than Paris itself. The commune is closest to Seine-et-Marne Prefecture Melun.\nFontainebleau, together with the neighbouring commune of Avon and three other smaller communes, form an urban area of 36,724 inhabitants (2018). This urban area is a satellite of Paris.\nFontainebleau is renowned for the scenic Forest of Fontainebleau, a popular destination for Parisians, as well as for the historic Château de Fontainebleau, which once belonged to the French monarchy. It is also the home of INSEAD, one of the world's leading business schools.\nInhabitants of Fontainebleau are called Bellifontains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "fontainebleau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7381,
+    "attempt": 7330,
+    "place_id": "gn-3069465",
+    "input": {
+      "place": {
+        "place_id": "gn-3069465",
+        "name": "Nové Město na Moravě",
+        "country": "Czechia",
+        "subdivision": "Vysocina",
+        "lat": 49.56144,
+        "lon": 16.07418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nové Město na Moravě",
+          "url": "https://en.wikipedia.org/wiki/Nové_Město_na_Moravě",
+          "text": "Nové Město na Moravě (Czech pronunciation: [ˈnovɛː ˈmɲɛsto ˈna moravjɛ] ; German: Neustadt in Mähren) is a town in Žďár nad Sázavou District in the Vysočina Region of the Czech Republic. It has about 9,700 inhabitants. Located in the Křižanov Highlands, Nové Město na Moravě is a winter sports resort, known primarily for hosting biathlon competitions.\nAmong the most important feudal owners of the town were the Pernštejn family, during whose rule in the 16th century the town experienced its greatest prosperity. The historic town centre with Renaissance, Baroque and Neoclassical houses is well preserved and is protected as an urban monument zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nove mesto na morave",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nove",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mesto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "na",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "morave",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7382,
+    "attempt": 7331,
+    "place_id": "gn-3085826",
+    "input": {
+      "place": {
+        "place_id": "gn-3085826",
+        "name": "Skarszewy",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.06911,
+        "lon": 18.44416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skarszewy",
+          "url": "https://en.wikipedia.org/wiki/Skarszewy",
+          "text": "Skarszewy [skarˈʂɛvɨ] (German: Schöneck in Westpreußen) is a town in Starogard Gdański County, Pomeranian Voivodeship, northern Poland. It is located within the ethnocultural region of Kociewie in the historic region of Pomerania, 40 kilometres (25 miles) south of Gdańsk. Population: 6 809 (30 June 2005). It is the seat of the urban-rural administrative district Gmina Skarszewy.\nFounded in the medieval period, Skarszewy is a former royal town of Poland, which served as the capital of the Pomeranian Voivodeship from 1613 to 1772. The old town is enclosed by remains of 14th-century stone walls and its landmarks include the Gothic parish Church of St. Michael the Archangel with well-preserved Baroque furnishings, a preserved market square and a medieval castle of Knights Hospitaller, which in the early modern period housed a court in which Józef Wybicki, the author of the lyrics of the Polish national anthem, studied law. In 2005 the town was given the title the Pearl of Pomerania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "skarszewy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7383,
+    "attempt": 7332,
+    "place_id": "gn-3087418",
+    "input": {
+      "place": {
+        "place_id": "gn-3087418",
+        "name": "Radzionków",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.40026,
+        "lon": 18.90232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radzionków",
+          "url": "https://en.wikipedia.org/wiki/Radzionków",
+          "text": "Radzionków ([raˈd͡ʑɔŋkuf]; Silesian: Radziōnkōw, Cidry, German: Radzionkau) is a town in Silesia in southern Poland, near Katowice. Outer town of the Metropolis GZM – metropolis with a population of 2 million. Located in the Silesian Highlands.\nIt is situated in the Silesian Voivodeship since its formation in 1999, previously in Katowice Voivodeship, and before then, of the Autonomous Silesian Voivodeship. In 1975–1997 it was a part of Bytom before it became a separate entity in 1998. Radzionków is one of the towns of the 2.7 million conurbation – Katowice urban area and within a greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the town is 16,826 (2019)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "radzionkow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7384,
+    "attempt": 7333,
+    "place_id": "gn-3126974",
+    "input": {
+      "place": {
+        "place_id": "gn-3126974",
+        "name": "Calonge",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.85869,
+        "lon": 3.07926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calonge",
+          "url": "https://en.wikipedia.org/wiki/Calonge",
+          "text": "Calonge (Catalan pronunciation: [kəˈlɔɲʒə]) is a municipality in the comarca of the Baix Empordà in Catalonia, Spain, on the coastline of the Costa Brava.\nThe town comprises two parts, a medieval hill village and modern seaside resort. The main urban centre and original village is about 4 km inland from the Bay of Sant Antoni. The towers and walls of Calonge castle date from the thirteenth century.\nSant Antoni de Calonge, a resort, lies on the coast between Sant Feliu de Guíxols and Palamós.\nThe two parts are connected by GI-660 which then leads north through Las Gavarres mountains\nto La Bisbal d'Empordà. The C-31, the main north–south route through the Costa Brava splits the two parts.\nSome of the bests campsites of the Costa Brava are located here, such as Cala Gogo, Treumal and International Calonge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "calonge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7385,
+    "attempt": 7334,
+    "place_id": "gn-3128272",
+    "input": {
+      "place": {
+        "place_id": "gn-3128272",
+        "name": "Benicàssim",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 40.05,
+        "lon": 0.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benicàssim",
+          "url": "https://en.wikipedia.org/wiki/Benicàssim",
+          "text": "Benicàssim, in Valencian (known in Spanish as Benicasim), is a municipality and beach resort located in the province of Castellón, on the Costa del Azahar in Spain. The Desert de les Palmes mountain range further inland shelters the town from the north wind.\nBenicàssim is located 13 km north of the town of Castellón de la Plana, at the north end of the Valencian Community. The town has a population of 18,991 (2021). Its economy is largely based on tourism; the town is well known for its beaches and its music festivals such as Festival Internacional de Benicàssim (FIB) and the Rototom Sunsplash."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "benicassim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7386,
+    "attempt": 7335,
+    "place_id": "gn-3134865",
+    "input": {
+      "place": {
+        "place_id": "gn-3134865",
+        "name": "Tananger",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.93618,
+        "lon": 5.5741
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tananger",
+          "url": "https://en.wikipedia.org/wiki/Tananger",
+          "text": "Tananger is a large village and urban area in Sola Municipality in Rogaland county, Norway.  The urban area is located on the west side of the Stavanger Peninsula between the North Sea and the Hafrsfjorden.  It lies about 10 kilometres (6.2 mi) southwest of the city centre of Stavanger. Tananger Chapel (from 1879) and Tananger Church (from 2002) are both located here.\nThe 4.12-square-kilometre (1,020-acre) village had a population (2016) of 6,528 and a population density of 1,584 inhabitants per square kilometre (4,100/sq mi). Since 2000, the population and area data for this village area has not been separately tracked by Statistics Norway. Tananger has grown significantly, more than doubling in size from 1980 until 2015. Since 1 January 2017, the urban area of Tananger has been included in the Stavanger/Sandnes urban area, so separate population statistics are no longer tracked."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "tananger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7387,
+    "attempt": 7336,
+    "place_id": "gn-3146463",
+    "input": {
+      "place": {
+        "place_id": "gn-3146463",
+        "name": "Mandal",
+        "country": "Norway",
+        "subdivision": "Agder",
+        "lat": 58.0274,
+        "lon": 7.45342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandal, Norway",
+          "url": "https://en.wikipedia.org/wiki/Mandal,_Norway",
+          "text": "Mandal (Norwegian: [mɑn.ˌdɑːl] ) is a town in Lindesnes Municipality in Agder county, Norway. Mandal is the fourth largest town in Agder as well as the administrative centre of Lindesnes Municipality. It is located at the mouth of the river Mandalselva at the southern end of the Mandalen valley. The 6.85-square-kilometre (1,690-acre) town has a population (2025) of 11,471 and a population density of 1,675 inhabitants per square kilometre (4,340/sq mi). The town is also a tourist destination, especially due to its Sjøsanden beach.\nIn Norway, Mandal is considered a by which can be translated as either a \"town\" or \"city\" in English. It received town status as a ladested in 1632 and in 1921 it was upgraded in status to a kjøpstad. Neither designation has any special status under the law anymore, but historically they did.\nThe town lies along the European route E39 highway, about 40 kilometres (25 mi) southwest of the town of Kristiansand and about 60 kilometres (37 mi) southeast of the town of Flekkefjord. Mandal has a few suburban villages lying just outside its borders such as Ime immediately to the east and Sånum to the southwest. The village of Krossen lies about 10 kilometres (6.2 mi) to the north, along the Mandalselva river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "mandal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7388,
+    "attempt": 7337,
+    "place_id": "gn-3166193",
+    "input": {
+      "place": {
+        "place_id": "gn-3166193",
+        "name": "Staranzano",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.80233,
+        "lon": 13.50226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Staranzano",
+          "url": "https://en.wikipedia.org/wiki/Staranzano",
+          "text": "Staranzano (Friulian and Bisiacco: Staranzan; Slovene: Štarancan) is a comune (municipality) in the Regional decentralization entity of Gorizia in the Italian region of Friuli-Venezia Giulia, located about 30 kilometres (19 mi) northwest of Trieste and about 15 kilometres (9 mi) southwest of Gorizia. As of 31 July 2025, it had a population of 7,133 and an area of 18.7 square kilometres (7.2 mi2).\nThe municipality of Staranzano contains the frazioni (boroughs) of Alberoni, Bistrigna, Dobbia, Lido di Staranzano, Quarantia, Villaraspa, Le Coloschie, Bosco Grande, Bonifica del Broncolo and Punta Sdobba.\nStaranzano borders the following municipalities: Grado, Monfalcone, Ronchi dei Legionari, San Canzian d'Isonzo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "staranzano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7389,
+    "attempt": 7338,
+    "place_id": "gn-3175497",
+    "input": {
+      "place": {
+        "place_id": "gn-3175497",
+        "name": "Inverigo",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.73795,
+        "lon": 9.21836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inverigo",
+          "url": "https://en.wikipedia.org/wiki/Inverigo",
+          "text": "Inverigo (Brianzöö: Inverigh [ĩʋeˈriːk]) is a comune (municipality) in the Province of Como in the Italian region Lombardy, located about 30 kilometres (19 mi) north of Milan and about 14 kilometres (9 mi) southeast of Como. As of 31 December 2004, it had a population of 8,209 and an area of 10.0 km2 (3.9 sq mi).\nThe municipality of Inverigo contains the frazioni (subdivisions, mainly villages and hamlets) Cremnago, Villa Romanò, and Romanò.\nInverigo borders the following municipalities: Alzate Brianza, Arosio, Brenna, Briosco, Carugo, Giussano, Lambrugo, Lurago d'Erba, Nibionno, Veduggio con Colzano.\nOutside the town is the eclectic structure of Villa La Rotonda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "inverigo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7390,
+    "attempt": 7339,
+    "place_id": "gn-3194199",
+    "input": {
+      "place": {
+        "place_id": "gn-3194199",
+        "name": "Odžak",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 45.02461,
+        "lon": 18.32107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odžak",
+          "url": "https://en.wikipedia.org/wiki/Odžak",
+          "text": "Odžak is a town and municipality located in Posavina Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is situated in the northern part of Bosnia and Herzegovina, near the river Sava, 10 km (6.2 mi) from the border with Croatia. The name is derived from Turkish Ocak, during its time as a frontier town of the Ottoman Empire, and means \"fireplace\" in Turkish and \"chimney\" in modern Bosnian.\nThe town of Odžak is notable for being the battlegrounds of the last battle in Europe of World War II, fought between the Croatian Ustaše and Yugoslav Partisans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "odzak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7391,
+    "attempt": 7340,
+    "place_id": "gn-3455277",
+    "input": {
+      "place": {
+        "place_id": "gn-3455277",
+        "name": "Pancas",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -19.225,
+        "lon": -40.85139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pancas",
+          "url": "https://en.wikipedia.org/wiki/Pancas",
+          "text": "Pancas is a Brazilian municipality in the state of Espírito Santo. Its population was 23,306 (2020) and its area is 838 km2. East Pomeranian, a dialect of Low German, has co-official status in Pancas.\nIt is situated on a tributary of the Doce River, in the northwest of the state. Locally it is known as a good spot for paragliding. The landscape around the town is distinguished by large numbers of granite inselbergs, and  Pedra Agulha (\"Needle Rock\") near the town is the second highest \"chaminé\" (high, vertical-sided granite rock) in Brazil - the highest being the famous Corcovado in Rio de Janeiro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "pancas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8378,
+    "attempt": 8321,
+    "place_id": "gn-712003",
+    "input": {
+      "place": {
+        "place_id": "gn-712003",
+        "name": "Bibrka",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.63921,
+        "lon": 24.29369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bibrka",
+          "url": "https://en.wikipedia.org/wiki/Bibrka",
+          "text": "Bibrka (Ukrainian: Бібрка, IPA: [ˈbibrkɐ] ; Polish: Bóbrka; Yiddish: בוברקא, romanized: Bubrka) is a city in western Ukraine, located in Lviv Raion of Lviv Oblast (region) about 29 km southeast of Lviv on H09. It hosts the administration of Bibrka urban hromada, one of the hromadas of Ukraine. The population is approximately 3,761 (2022 estimate).\nThe town has been ruled at various points by the Kingdom of Poland, Polish–Lithuanian Commonwealth, the Austrian Empire, the Kingdom of Galicia and Lodomeria, the Russian Empire, Poland, the Soviet Union, and is now part of the Lviv Oblast in Ukraine; as a result Bibrka has had several official and native names, including: Bóbrka (Polish), Bobrka (Russian), Prachnik (German), and Boiberik/Boyberke (Yiddish). The city has a population of 3,980.\nBibrka was the site of a Soviet prison and detention centre that detained Poles and others in the mid-20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bibrka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8379,
+    "attempt": 8322,
+    "place_id": "gn-10104047",
+    "input": {
+      "place": {
+        "place_id": "gn-10104047",
+        "name": "Old Woking",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.30215,
+        "lon": -0.54163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Old Woking",
+          "url": "https://en.wikipedia.org/wiki/Old_Woking",
+          "text": "Old Woking is a ward and the original settlement of the town and borough of Woking, Surrey, about 1.3 miles (2.1 km) southeast of the modern town centre.  It is bounded by the Hoe Stream to the north and the River Wey to the south and between Kingfield to the west and farmland to the east. The village has no dual carriageways or motorways, its main road is the A247, which connects Woking with Clandon Park and provides access to the A3. The village contains parts of Woking's two largest parks and two converted paper mills. The expanded village largely consists of semi-detached houses with gardens and covers an area of 224 hectares (550 acres).\nTo the east of Old Woking's developed cluster are the ruins of Woking Palace which was the local manor house and a royal dwelling throughout the Tudor dynasty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "old woking",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "old",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woking",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8380,
+    "attempt": 8323,
+    "place_id": "gn-2079695",
+    "input": {
+      "place": {
+        "place_id": "gn-2079695",
+        "name": "Fannie Bay",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -12.42275,
+        "lon": 130.83627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fannie Bay",
+          "url": "https://en.wikipedia.org/wiki/Fannie_Bay",
+          "text": "Fannie Bay is a middle/inner suburb of the city of Darwin, Northern Territory, Australia. It is the traditional country and waterways of the Larrakia people.\nSituated in the suburb is the Fannie Bay Gaol museum, Fannie Bay Race Track, Fannie Bay Oval the home of the Port Darwin FC and a monument to Ross Smith, captain of the Vickers Vimy, that on 10 December 1919, was the first aircraft to fly from England to Australia in less than 30 days.  Adjoining the suburb is the East Point Reserve, containing Lake Alexander, a Military Museum and gun emplacements from the Second World War.\nA great many places in the Northern Territory were named by John McDouall Stuart for members of the Chambers family, who sponsored his expeditions. Fannie Bay on the other hand was named by George Goyder after Fanny Carandini, an opera singer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "fannie bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fannie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8381,
+    "attempt": 8324,
+    "place_id": "gn-2521451",
+    "input": {
+      "place": {
+        "place_id": "gn-2521451",
+        "name": "Ayora",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.05852,
+        "lon": -1.05635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ayora",
+          "url": "https://en.wikipedia.org/wiki/Ayora",
+          "text": "Ayora (Valencian: Aiora) is a municipality in the comarca of Valle de Ayora in the Valencian Community, Spain. It lies in the inland part of the Valencian Community on the border of the provinces of Albacete and Alicante.\nThe Valley of Ayora runs between the mountain ranges of Sierra Palomera and Mugrón to the west, and Cortes de Pallás and the Caroig Peak. Its landscape consists of numerous forest tracks crossing the valleys and bordering the mountains. It contains a number of tourist attractions: the Cave of Don Juan, the Ayora Castle, the Parish church of Our Lady of the Ascension, Hermitages, the Iberian town of the Castellar of Meca, Cave paintings (Cueva de La Vieja), La Hunde and the rivers Cabriel and Júcar. The region contains a rich variety of fauna and flora and resembles a typical landscape of inland Mediterranean zones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "ayora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8382,
+    "attempt": 8325,
+    "place_id": "gn-2634095",
+    "input": {
+      "place": {
+        "place_id": "gn-2634095",
+        "name": "Whitehead",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.75371,
+        "lon": -5.70933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitehead, County Antrim",
+          "url": "https://en.wikipedia.org/wiki/Whitehead,_County_Antrim",
+          "text": "Whitehead is a small seaside town on the east coast of County Antrim, Northern Ireland, lying almost midway between the towns of Carrickfergus and Larne. It lies within the civil parishes of Templecorran and Islandmagee and the historic barony of Belfast Lower, and is part of Mid and East Antrim Borough Council. Before the Plantation of Ulster its name was recorded as both Whitehead and Kinbaine (from Irish  an Cionn Bán 'the white head').\nLocated at the base of Muldersleigh Hill, Whitehead lies in a small bay between the limestone cliffs of Whitehead and the black volcanic cliff of Blackhead, with the Blackhead Lighthouse on top, marking the entrance to the Belfast Lough. \nWhitehead is about 20 miles (32 km) from Belfast. On the opposite coast of Belfast Lough, the Copeland Islands, Bangor and part of the County Down coastline, are clearly visible.\nWhitehead had a population of 3,537 in the 2021 census. Whitehead sometimes known as 'The Town With No Streets', as there are no roadways with the suffix \"Street\" in their name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "whitehead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8383,
+    "attempt": 8326,
+    "place_id": "gn-2654747",
+    "input": {
+      "place": {
+        "place_id": "gn-2654747",
+        "name": "Bridge of Allan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.15402,
+        "lon": -3.94631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridge of Allan",
+          "url": "https://en.wikipedia.org/wiki/Bridge_of_Allan",
+          "text": "Bridge of Allan (Scots: Brig Allan, Scottish Gaelic: Drochaid Ailein), also known colloquially as Bofa, is a former spa town in the Stirling council area in Scotland, just north of the city of Stirling. \nOverlooked by the National Wallace Monument, it lies on the Allan Water, a northern tributary of the River Forth, built largely on the well-wooded slopes of the Westerton and Airthrey estates, sheltered by the Ochil Hills from the north and east winds. Most of the town is to the east of the river; the bridge is part of the A9, Scotland's longest road, while the railway line and the M9 pass to the west of the river. Bridge of Allan railway station is on the electrified Edinburgh to Dunblane Line and is accessible by train from Stirling in under 5 minutes as well as London in under six hours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "bridge of allan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "allan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8384,
+    "attempt": 8327,
+    "place_id": "gn-3170131",
+    "input": {
+      "place": {
+        "place_id": "gn-3170131",
+        "name": "Porretta Terme",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.16325,
+        "lon": 10.97432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porretta Terme",
+          "url": "https://en.wikipedia.org/wiki/Porretta_Terme",
+          "text": "Porretta Terme (Bolognese: Puràtta) is a spa town and frazione of the comune of Alto Reno Terme, in the Metropolitan City of Bologna, Emilia-Romagna, northern Italy. It lies in the upper valley of the Reno, in the Tuscan-Emilian Apennines, near the border with Tuscany.\nKnown since Roman times for its thermal springs, Porretta developed into one of the historic spa towns of northern Italy. It was an independent municipality until 31 December 2015, when it merged with Granaglione to form the new municipality of Alto Reno Terme.\nAlthough administratively Porretta Terme is a frazione of Alto Reno Terme, the built-up area of Porretta is continuous with neighbouring settlements across the Reno valley floor. On the right bank of the Reno, Berzantina belongs administratively to the municipality of Castel di Casio, while remaining closely connected with Porretta in the local geography of the valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "porretta terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porretta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8385,
+    "attempt": 8328,
+    "place_id": "gn-3177019",
+    "input": {
+      "place": {
+        "place_id": "gn-3177019",
+        "name": "Fiesole",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.80455,
+        "lon": 11.29487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fiesole",
+          "url": "https://en.wikipedia.org/wiki/Fiesole",
+          "text": "Fiesole (Italian pronunciation: [ˈfjɛːzole]) is a town and comune of the Metropolitan City of Florence in the Italian region of Tuscany, on a scenic height above Florence, 5 km (3 miles) northeast of that city. It has structures dating to Etruscan and Roman times.\nFounded in the seventh century BC as Vipsul, the city became one of the most important and earliest urban centres of the Etruscan civilisation. Since the fourteenth century, the city has always been considered a getaway for members of the upper class of Florence and, up to this day, Fiesole remains noted for its very expensive residential properties, just as well as its centuries-old villas and their formal gardens. The city is generally considered to be the wealthiest and most affluent suburb of Florence. In 2016, the city had the highest median family income in the whole of Tuscany.\nFiesole is a centre of higher education. The campus of the European University Institute is situated in the suburb and uses several historical buildings including the Badia Faesolina and the Villa Schifanoia. Additionally, the U.S. universities, Harvard, Georgetown, and Saint Mary's of Minnesota all maintain campuses at Fiesole."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "fiesole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8386,
+    "attempt": 8329,
+    "place_id": "gn-3219568",
+    "input": {
+      "place": {
+        "place_id": "gn-3219568",
+        "name": "Limana",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 46.10039,
+        "lon": 12.18552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limana",
+          "url": "https://en.wikipedia.org/wiki/Limana",
+          "text": "Limana (Venetian: Łimana) is a comune (municipality) in the province of Belluno in the Italian region of Veneto, located about 70 kilometres (43 miles) north of Venice and about 5 kilometres (3 miles) southwest of Belluno. As of 31 December 2010, it had a population of 5 027 and an area of 39.2 square kilometres (15.1 sq mi).\nLimana is situated in the middle of Valbelluna, at the foot of prealpi and in front of the dolomites massif, crossed by the river Piave in the north side.\nThe lower point is situated in the shore of the river at 320 metres (1,050 feet) above sea level, while the highest is on the top of Monte Pezza at 1,468 metres (4,816 feet).\nThe commune belongs to the mountain union called Val Belluna.\nLimana borders the following municipalities: Belluno, Revine Lago, Sedico, Trichiana, Vittorio Veneto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "limana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8387,
+    "attempt": 8330,
+    "place_id": "gn-5095847",
+    "input": {
+      "place": {
+        "place_id": "gn-5095847",
+        "name": "Bordentown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.14622,
+        "lon": -74.71183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bordentown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bordentown,_New_Jersey",
+          "text": "Bordentown is a city in Burlington County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 3,993, an increase of 69 (+1.8%) from the 2010 census count of 3,924, which in turn reflected a decline of 45 (−1.1%) from the 3,969 counted in the 2000 census.\nBordentown is located at the confluence of the Delaware River, Blacks Creek, and Crosswicks Creek. The latter is the border between Burlington and Mercer counties. Bordentown is the northernmost municipality in New Jersey that is a part of the Philadelphia metropolitan area. It sits about one-third of the distance from Center City, Philadelphia to Midtown Manhattan; it is located 5.8 miles (9.3 km) south of the state capital Trenton, 27 miles (43 km) northeast of Center City Philadelphia, and 54 miles (87 km) southwest of New York City.\nBordentown's first recorded European settlement was made in 1682 in what became known as Farnsworth's Landing and, after 1717, the town that had developed in the Provence of New Jersey was renamed to Borden's Town. After the American Revolution and the establishment of the New Jersey state government, Bordentown was incorporated with a borough government form by an act of its legislature on December 9, 1825, from portions within Chesterfield Township. It was reincorporated with a city government form on April 3, 1867, and it was separated from Chesterfield Township about 1877."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "bordentown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8389,
+    "attempt": 8331,
+    "place_id": "gn-6946746",
+    "input": {
+      "place": {
+        "place_id": "gn-6946746",
+        "name": "Penparcau",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.40333,
+        "lon": -4.07417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penparcau",
+          "url": "https://en.wikipedia.org/wiki/Penparcau",
+          "text": "Penparcau (Welsh pronunciation: [pɛnˈparkai̯]) is a village and electoral ward in Ceredigion, Wales, situated to the south of Aberystwyth.\nThe original village was a hamlet, but the building of extensive Art Deco style semi-detached social housing from the 1920s on transformed it. It lies in the shadow of the Celtic Iron Age hill fort of Pen Dinas, and between the sea at Tan Y Bwlch beach, the River Ystwyth and the  Rheidol. Penparcau has the only UNESCO Biosphere reserve in the Dyfi Biosphere. A section of the Wales Coast Path runs over Tan y Bwlch beach.\nThere is an Anglican church named after the Saint Anne, a Roman Catholic church named after the Welsh Martyrs, which is noted in \"Architecture of Wales, Carmarthenshire and Ceredigion\" and is home to a Lampedusa Cross, as well as two Methodist chapels and a Quaker meeting house. The recently closed Tollgate pub was named after the original tollgate that stood on the old toll road at the top of Penparcau and is now in St Fagans National History Museum near Cardiff.\nPenparcau has its own woodland, Coed Geufron run by the Woodland Trust and its own police station. Other amenities have included a post office, two supermarkets, a garage, holiday park and hotel and two fish and chip shops. Until late 2007, it also had its own travel agent.\nIn 2008, Penparcau played a part in the transition town movement in Wales when it hosted the \"Alternative Energy and Transport Festival\" in Neuadd Goffa, attended by the local MP and mayor. At the bottom of the valley, just below Penparcau, is a Welsh Government office building, designed to house more than 550 staff."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "penparcau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8390,
+    "attempt": 8332,
+    "place_id": "gn-726748",
+    "input": {
+      "place": {
+        "place_id": "gn-726748",
+        "name": "Straldzha",
+        "country": "Bulgaria",
+        "subdivision": "Yambol",
+        "lat": 42.6,
+        "lon": 26.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Straldzha",
+          "url": "https://en.wikipedia.org/wiki/Straldzha",
+          "text": "Straldzha (Bulgarian: Стралджа [ˈstraɫd͡ʒɐ]) is a small town in Yambol Province, southeastern Bulgaria, situated in the Sliven Valley. It is the administrative centre of the homonymous Straldzha Municipality. As of 2022, the town had a population of 6,199.\nThe municipality of Straldzha is home to 12,014 people at the end of 2016: 6,326 of whom live in the city of Straldzha and 5,688 in the villages. It has a relatively high crude birth rate of 13,8‰ and a very high fertility rate of 3,01 children per woman, nearly two times higher than the national rate of 1,54 children per woman (at the end of 2016). The reason for this high fertility rate is the large concentration of ethnic Roma people in the municipality of Straldzha (nearly one-fifth of the population belong to the Romani community, which is exceeding four times the national average).\nThe small town is a hub for agriculture and wine production. Many residents however go to work and study in bigger cities, or abroad, in search of more opportunity.\nDuring the communist regime, Straldzha was a growing town with many factories and workers from the nearby villages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "straldzha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8391,
+    "attempt": 8333,
+    "place_id": "gn-761437",
+    "input": {
+      "place": {
+        "place_id": "gn-761437",
+        "name": "Poronin",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.33781,
+        "lon": 20.00291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poronin",
+          "url": "https://en.wikipedia.org/wiki/Poronin",
+          "text": "Poronin (Polish pronunciation: [pɔˈrɔnin]) is a village in southern Poland. From 1999 it formed part of Tatra County of the Lesser Poland Voivodeship (it was previously in Nowy Sącz Voivodeship from 1975 to 1998).\nPoronin sits on the confluence of rivers Zakopianka and Poroniec, which gives rise to the river Biały Dunajec.\nIn the summers of 1913 and 1914 Vladimir Lenin and Nadezhda Krupskaya rented a holiday home in nearby Biały Dunajec and often stayed in a Poronin inn. The area formed part of Austria-Hungary at that time (as a result of the Partitions of Poland), and when World War I broke out in mid-1914 the Austrian authorities arrested Lenin on suspicion of spying for Russia (August 1914), but deported him to Switzerland soon after (September 1914).\nDuring 1947-1990 there used to be a Lenin Museum in Poronin and a statue of Lenin. The statue was transferred to the Socialist Realism Art Gallery (Polish: Galeria Sztuki Socrealizmu, also known as the \"Museum of Socialist Realism\") in the Kozłówka Palace complex in the Lublin Voivodeship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "poronin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8392,
+    "attempt": 8334,
+    "place_id": "gn-9258643",
+    "input": {
+      "place": {
+        "place_id": "gn-9258643",
+        "name": "Christies Beach",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.13876,
+        "lon": 138.47232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Christies Beach, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Christies_Beach,_South_Australia",
+          "text": "Christies Beach is a seaside suburb in the southern Adelaide metropolitan area, within the City of Onkaparinga. The area is scenic and hence popular with photographers as Witton Bluff provides a natural vantage point over the entire suburb and beyond.\nChristies Beach boasts a unique commercial strip running the entire length of Beach Road and is identified as a primary coastal node in the Adelaide Metropolitan area (Planning SA, 2007). Christies Beach also features one of the few remaining main road classified Esplanades in Metropolitan Adelaide, providing direct access to the beach on Gulf St Vincent.\nChristies Beach has its own postcode of 5165, and is adjacent to the suburbs of Christie Downs and Noarlunga Centre to the east, Port Noarlunga to the south, and O'Sullivan Beach to the north.\nOffshore from Christies Beach is Horseshoe Reef, which is exposed at low tide. A new artificial subtidal reef was constructed approximately 500 metres offshore from the mouth of Christies Creek in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "christies beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "christies",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8393,
+    "attempt": 8335,
+    "place_id": "gn-2175553",
+    "input": {
+      "place": {
+        "place_id": "gn-2175553",
+        "name": "Blackheath",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.63567,
+        "lon": 150.28318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackheath, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Blackheath,_New_South_Wales",
+          "text": "Blackheath (postcode: 2785) is a town located near the highest point of the Blue Mountains, between Katoomba and Mount Victoria in New South Wales, Australia. The town's altitude is about 1,065 m (3,494 ft) AHD and it is located about 120 km (75 mi) west north-west of Sydney, 11 km (6.8 mi) north-west of Katoomba, and about 30 km (19 mi) south-east of Lithgow.\nBlackheath has a vibrant artistic community and hosts two monthly markets – the Blackheath Growers Market and The Blackheath Community Market, as well as annual Christmas markets, antique markets and bimonthly craft markets. The town has many community activities, such as the Blackheath Philosophy Forum, which was founded in 2002 to arrange public discussion forums on philosophy and related topics.\nAs Blackheath has grown, more shops have appeared. Various shops from the late 1800s still stand in Blackheath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "blackheath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8394,
+    "attempt": 8336,
+    "place_id": "gn-2207252",
+    "input": {
+      "place": {
+        "place_id": "gn-2207252",
+        "name": "Hawthorne",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.46696,
+        "lon": 153.05779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawthorne, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Hawthorne,_Queensland",
+          "text": "Hawthorne is an inner-city suburb of the City of Brisbane, Queensland, Australia. \nCharacterised by its tree-lined avenues, traditional Queenslander homes, boutique shops, cinema precinct, and proximity to the Brisbane River, this upscale suburb is predominantly residential and forms part of the affluent 4171 postcode, along with Bulimba and Balmoral. \nHawthorne has been recognised by several publications as one of Brisbane's most desirable residential suburbs. Mint Equity's Best Suburbs to Live in Brisbane ranked Hawthorne first among Brisbane's eastern suburbs, highlighting its combination of traditional Queenslander and modern homes, proximity to the CBD, dining and entertainment options, schools, parks and access to the river. \nBrisbane Beacon similarly identified Bulimba and Hawthorne as its preferred suburbs for Brisbane's east side. The publication distinguished Hawthorne from neighbouring Bulimba as the quieter of the two suburbs, highlighting its leafy streets and comparatively lower levels of traffic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "hawthorne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8395,
+    "attempt": 8337,
+    "place_id": "gn-2519438",
+    "input": {
+      "place": {
+        "place_id": "gn-2519438",
+        "name": "Churra",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 38.0234,
+        "lon": -1.13292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Churra, Spain",
+          "url": "https://en.wikipedia.org/wiki/Churra,_Spain",
+          "text": "Churra is a hamlet belonging to the municipality of Murcia (Spain), with a municipal board. It is a semi-agricultural town, although in recent years it has opened its economy to industry, and especially the service sector (commerce), with two hypermarkets (Thader and Nueva Condomina). It had a population of 4,912 inhabitants (Instituto Nacional de Estadística (Spain) in 2004) and an area of 5.6 square kilometers. The distance to Murcia city center is 3.5 kilometers, served with a tram, and lies at an altitude of 57 meters above sea level.\nIt was founded during the Islamic domination around the ninth century and since then its history has always been closely linked to that of Murcia, becoming in this hamlet of the eighteenth century. There are vestiges of its history in the village, such as the New and Old Ditches and Torre Alcayna House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "churra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8396,
+    "attempt": 8338,
+    "place_id": "gn-3162682",
+    "input": {
+      "place": {
+        "place_id": "gn-3162682",
+        "name": "Åsgårdstrand",
+        "country": "Norway",
+        "subdivision": "Vestfold",
+        "lat": 59.34938,
+        "lon": 10.46948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Åsgårdstrand",
+          "url": "https://en.wikipedia.org/wiki/Åsgårdstrand",
+          "text": "Åsgårdstrand (historically spelled Aasgaardstrand) is a small port town in both Horten and Tønsberg municipalities in Vestfold county, Norway. The town is located along the shore of the Ytre Oslofjord, about 8 kilometres (5.0 mi) south of the town of Horten, about 10 kilometres (6.2 mi) to the north of the town of Tønsberg, and about 100 kilometres (62 mi) south of the capital city of Oslo. The villages of Borre and Skoppum both lie a short distance northwest of Åsgårdstrand.\n\nThe 1.47-square-kilometre (360-acre) town has a population (2023) of 2959 and a population density of 2,014 inhabitants per square kilometre (5,220/sq mi). Most of the town lies within Horten Municipality, but a 0.05-square-kilometre (12-acre) area of the town with 56 residents crosses over into the neighboring Tønsberg Municipality. \nThe village of Åsgårdstrand was established as a ladested (small town/seaport) in 1650. On 1 January 1838, the small town was established as a municipality (see formannskapsdistrikt law). On 1 January 1965, Åsgårdstrand was merged with Borre Municipality plus a small area of Sem Municipality to form the new Borre Municipality (the name was later changed to Horten Municipality). After the merger, Åsgårdstrand lost its status as a ladested (small town/seaport). On 1 January 2010, the council for Horten Municipality formally designated Åsgardstrand as a town (Norwegian: by).\nÅsgårdsstrand is a summer resort destination with a number of restored old homes. It is home to various cafés, galleries, and a beach. Edvard Munch’s former home is now owned by the municipality and open to the public. It is also home to Borre Kystled, a hiking trail which leads to Borre National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "asgardstrand",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8397,
+    "attempt": 8339,
+    "place_id": "gn-3526730",
+    "input": {
+      "place": {
+        "place_id": "gn-3526730",
+        "name": "Ixcateopan de Cuauhtémoc",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 18.50139,
+        "lon": -99.79139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ixcateopan de Cuauhtémoc",
+          "url": "https://en.wikipedia.org/wiki/Ixcateopan_de_Cuauhtémoc",
+          "text": "Ixcateopan de Cuauhtémoc is the head town of the municipality of Ixcateopan de Cuauhtémoc, located in isolated, rugged mountains in the northern part of the Mexican state of Guerrero.  According to tradition, it is the final resting place of Aztec Emperor Cuauhtémoc, whose alleged remains were found under the parish church here in the mid-20th century. This church has been converted into a museum with displays a number of pre-Hispanic artifacts, offerings left in honor of the emperor and the alleged remains of Cuauhtémoc himself. This has been refuted by later research and by a Judging Commission of the Mexican government in 1976.\nIxcateopan de Cuauhtémoc is located 36 km west of famous silver town of Taxco de Alarcón, traveling on the state highway. Unlike its neighbor, the vegetation surrounding Ixcateopan is forested with pine, red and white cedar, and walnut trees. Along the highway, there is a waterfall by the name of Cascada de Cacalotenango, which has a small chapel at the top. The distance between Ixcateopan and Chilpancingo, the capital of the state of Guerrero, is 180 km.\nThe explored archeological remains are located at the Ixcateopan (archaeological site).\nThe name Ixcateopan (sometimes spelled Ichcateopan) from the Nahuatl words “ichcacates” (or “ixcatle”) and “moteopan,” “teopan,” or  “teopancalli.” Most interpret the first word as meaning cotton and the second temple, leading to a translation of temple of cotton. However, some sources claim the real name of the area is Zompancuahuithli, and the name  was changed to Ixcateopan after the arrival of Cuauhtemoc's body and means (here is the temple/church). The glyph in the Mendoncino Codex for Ixcateopan reflects both interpretations, a cotton flower, a depiction of Cuauhtémoc and a pyramid. “De Cuauhtémoc” was added to Ixcateopan’s name by the Congress of the State of Guerrero in 1950.\nIn 2023, Ixcateopan de Cuauhtémoc was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "ixcateopan de cuauhtemoc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ixcateopan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuauhtemoc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8398,
+    "attempt": 8340,
+    "place_id": "gn-5099067",
+    "input": {
+      "place": {
+        "place_id": "gn-5099067",
+        "name": "Hightstown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.26955,
+        "lon": -74.52321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hightstown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hightstown,_New_Jersey",
+          "text": "Hightstown is a borough in Mercer County, in the U.S. state of New Jersey. Nestled within the Raritan Valley region, Hightstown is an historic, commercial, and cultural hub of Central New Jersey, along with being a diverse outer-ring commuter suburb of New York City in the New York Metropolitan Area. As of the 2020 United States census, the borough's population was 5,900, its highest decennial count ever and an increase of 406 (+7.4%) from the 5,494 recorded at the 2010 census, which in turn reflected an increase of 278 (+5.3%) from the 5,216 counted in the 2000 census.\nHightstown was incorporated as a borough by an act of the New Jersey Legislature on March 5, 1853, within portions of East Windsor Township. The borough became fully independent around 1894. Additional portions of East Windsor Township were annexed in 1913, 1915, and 1927. The traditional explanation is that the borough was named for John and Mary Hight, who established a tavern in the area in the 1750s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "hightstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

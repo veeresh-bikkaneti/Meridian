@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 2983,
+    "attempt": 2961,
+    "place_id": "gn-2747596",
+    "input": {
+      "place": {
+        "place_id": "gn-2747596",
+        "name": "Schiedam",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.91917,
+        "lon": 4.38889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schiedam",
+          "url": "https://en.wikipedia.org/wiki/Schiedam",
+          "text": "Schiedam (Dutch pronunciation: [sxiˈdɑm] ) is a town and municipality in the west of the Netherlands. It is located in the Rotterdam–The Hague metropolitan area, west of the city Rotterdam, east of the town Vlaardingen, and south of the city Delft. In the south, Schiedam is also connected to the village of Pernis via the Benelux tunnel.\nThe town's historical center is ringed with canals and contains the tallest windmill in the world.\nSchiedam is a centre for the production of jenever, including as the internationally renowned Ketel One; in French and English, the word schiedam (usually without a capital s-) refers to the town's jenever. This was the town's main industry during the early Industrial Revolution in the 18th and 19th century, a period to which it owed its former nickname \"Zwart Nazareth\"  (\"Black Nazareth\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "schiedam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2984,
+    "attempt": 2962,
+    "place_id": "gn-2758012",
+    "input": {
+      "place": {
+        "place_id": "gn-2758012",
+        "name": "Capelle aan den IJssel",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.92917,
+        "lon": 4.57778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capelle aan den IJssel",
+          "url": "https://en.wikipedia.org/wiki/Capelle_aan_den_IJssel",
+          "text": "Capelle aan den IJssel (Dutch pronunciation: [kaːˈpɛlə ʔaːn dən ˈɛisəl]  or [- də ˈʔɛi-]; transl. \"Capelle on the IJssel\") is a large town and municipality in the western Netherlands, in the province of South Holland. The municipality had a population of 67,319 in 2021, and covers an area of 15.40 km2 (5.95 sq mi), of which 1.26 km2 (0.49 sq mi) is water. It is situated on the eastern edge of Rotterdam, on the Hollandse IJssel river.\nThe town has what is probably the country's smallest museum, the Dief- en Duifhuisje (\"House of Thieves and Pigeons\"). Now a historical museum, it served as the prison for the castle of Capelle and is all that now remains of the 17th-century castle.\nOn opposing sides of the A16 motorway are two business parks called Rivium and Brainpark respectively. Companies based in the larger Rivium include Rockwell Automation, Pfizer Nederland, Sodexho Nederland, Royal Dutch Shell, Van Oord, and many more."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "capelle aan den ijssel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capelle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ijssel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2985,
+    "attempt": 2963,
+    "place_id": "gn-2835482",
+    "input": {
+      "place": {
+        "place_id": "gn-2835482",
+        "name": "Schwäbisch Gmünd",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.79947,
+        "lon": 9.79809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwäbisch Gmünd",
+          "url": "https://en.wikipedia.org/wiki/Schwäbisch_Gmünd",
+          "text": "Schwäbisch Gmünd (German pronunciation: [ˈʃvɛːbɪʃ ˈɡmʏnt] , until 1934: Gmünd; Swabian: Gmẽẽd or Gmend) is a city in the eastern part of the German state of Baden-Württemberg. With a population of around 60,000, the city is the second largest in the Ostalb district and the whole East Württemberg region after Aalen. The city is a Große Kreisstadt since 1956, i.e. a chief city under district administration; it was the administrative capital of its own rural district until the local government reorganisation on 1 January 1973.\nThere are some institutions of higher education in the city, most notably the Pädagogische Hochschule Schwäbisch Gmünd (University of Education Schwäbisch Gmünd) and the Landesgymnasium für Hochbegabte (State Highschool for gifted children).\nSchwäbisch Gmünd was a self-ruling free imperial city from the 13th century until its annexation to Württemberg in 1802."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "schwabisch gmund",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "schwabisch",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gmund",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2986,
+    "attempt": 2964,
+    "place_id": "gn-293619",
+    "input": {
+      "place": {
+        "place_id": "gn-293619",
+        "name": "Sderot",
+        "country": "Israel",
+        "subdivision": "Southern District",
+        "lat": 31.525,
+        "lon": 34.59693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sderot",
+          "url": "https://en.wikipedia.org/wiki/Sderot",
+          "text": "Sderot (Hebrew: שְׂדֵרוֹת, pronounced [sdeˈʁot], lit. 'boulevards'; Arabic: سديروت, sometimes Romanized as \"Sederot\") is a western Negev city and former development town in the Southern District of Israel. In 2024, it had a population of 37,239.\nSderot is located less than a mile from Gaza (the closest point is 840 m (2,760 ft)), and is notable for having been a major target of Qassam rocket attacks from the Gaza Strip. Between 2001 and 2008, rocket attacks on the city killed 13 people, wounded dozens, caused millions of dollars in damage and profoundly disrupted daily life. Although rocket fire subsided after the Gaza War (2008–09), the city has come under rocket attack on occasion since that time.\nIn 2024, Sderot was chosen to serve as a model for Israeli cities in the implementation of urban forestry ideas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "sderot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2987,
+    "attempt": 2965,
+    "place_id": "gn-3047896",
+    "input": {
+      "place": {
+        "place_id": "gn-3047896",
+        "name": "Mosonmagyaróvár",
+        "country": "Hungary",
+        "subdivision": "Győr-Moson-Sopron",
+        "lat": 47.86789,
+        "lon": 17.26994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosonmagyaróvár",
+          "url": "https://en.wikipedia.org/wiki/Mosonmagyaróvár",
+          "text": "Mosonmagyaróvár (Hungarian: [ˈmoʃonmɒɟɒroːvaːr]; German: Wieselburg-Ungarisch Altenburg; also known by other alternative names) is a town in Győr-Moson-Sopron County in northwestern Hungary. It lies close to both the Austrian and Slovak borders and has a population of 32,752 (as of 2015).\nMosonmagyaróvár used to be two separate towns, Magyaróvár (German: Ungarisch Altenburg, Slovak: Uhorský Starhrad) and Moson (German: Wieselburg, Slovak: Mošon). The town of Moson was the original capital of Moson County in the Kingdom of Hungary, but the county seat was moved to Magyaróvár during the Middle Ages. The two towns were combined in 1939, and by now almost all signs of dualism have disappeared, as the space between the two towns has become physically and culturally developed. Due to the name's length, Mosonmagyaróvár is also referred to as Óvár amongst locals and Moson by foreigners. The Hansági Museum is located in Mosonmagyaróvár."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "mosonmagyarovar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2988,
+    "attempt": 2966,
+    "place_id": "gn-3186084",
+    "input": {
+      "place": {
+        "place_id": "gn-3186084",
+        "name": "Berat",
+        "country": "Albania",
+        "subdivision": "Berat County",
+        "lat": 40.70583,
+        "lon": 19.95222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berat",
+          "url": "https://en.wikipedia.org/wiki/Berat",
+          "text": "Berat (pronounced [bɛˈɻat]; Albanian definite form: Berati) is the ninth most populous city of Albania and the seat of Berat County and Berat Municipality. By air, it is 71 kilometres (44 miles) north of Gjirokastër, 70 kilometres (43 miles) west of Korçë, 70 kilometres (43 miles) south of Tirana, and 33 kilometres (21 miles) east of Fier.\n\nBerat is located in the south of the country. It is surrounded by mountains and hills, including Tomorr on the east that was declared a national park. The river Osum (total length 161 km (100 mi)) runs through the city before it empties into the Seman within the Myzeqe Plain. The municipality of Berat was formed at the 2015 local government reform by the merger of the former municipalities Berat, Otllak, Roshnik, Sinjë, and Velabisht, that became municipal units. The seat of the municipality is the city Berat. The total population is 62,232 as of the 2023 census, in a total area of 421.6 km2 (162.8 sq mi).\nBerat, designated a UNESCO World Heritage Site in 2008, comprises a unique style of architecture with influences from several civilizations that have managed to coexist for centuries throughout the history. Like many cities in Albania, Berat comprises an old fortified city filled with churches and mosques painted with grandiose wealth of visible murals and frescos. Berat is one of the main cultural centres of the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "berat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2989,
+    "attempt": 2967,
+    "place_id": "gn-3944797",
+    "input": {
+      "place": {
+        "place_id": "gn-3944797",
+        "name": "Cerro de Pasco",
+        "country": "Peru",
+        "subdivision": "Pasco",
+        "lat": -10.66577,
+        "lon": -76.25309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerro de Pasco",
+          "url": "https://en.wikipedia.org/wiki/Cerro_de_Pasco",
+          "text": "Cerro de Pasco is a city in central Peru, located at the top of the Andean Mountains. It is the capital of both the Pasco Province and the Department of Pasco, and an important mining center of silver, copper, zinc and lead. At an elevation of 4,330 metres (14,210 ft), it is one of the highest cities in the world, and with a population of 58,899, it is the highest or the second highest city with over 50,000 inhabitants. The elevation reaches up to 4,380 metres (14,370 ft) in the Yanacancha area. The city has a very intense cold climate and it is connected by road and by rail (via Ferrocarril Central Andino) to the capital Lima, 300 kilometres (190 mi) away. Its urban area is formed by the districts of Chaupimarca, Yanacancha and Simón Bolívar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "cerro de pasco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cerro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pasco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2990,
+    "attempt": 2968,
+    "place_id": "gn-4082866",
+    "input": {
+      "place": {
+        "place_id": "gn-4082866",
+        "name": "Phenix City",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 32.47098,
+        "lon": -85.00077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phenix City, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Phenix_City,_Alabama",
+          "text": "Phenix City is a city in Lee and Russell counties in the U.S. state of Alabama, and the county seat of Russell County with northern and western parts crossing over into neighboring Lee County. As of the 2020 census, the population of the city was 38,817.\nPhenix City lies immediately west across the Chattahoochee River from Columbus, Georgia and observes Eastern Time on a de facto basis (in contrast to the rest of Alabama, which observes Central Time) due to Phenix City's strong economic ties to Columbus. Most of Phenix City is included in the Columbus Metropolitan Statistical Area, and the remainder is in Lee County and therefore included in the Auburn, Alabama Metropolitan Statistical Area. The entire city is part of the Columbus-Auburn-Opelika Combined Statistical Area.\nIn 2007, BusinessWeek named Phenix City the nation's no. 1 best affordable suburb to raise a family.  It is home to Chattahoochee Valley Community College, a public, two-year college with an acceptance rate of 100%.  Troy University has a satellite campus in Phenix City. It is also home to Phenix Lumber Company, which has been described as the deadliest workplace in the United States because of its high rate of accidents and safety violations.\nAs of 2023, the mayor is Eddie N. Lowe, the city's first black mayor elected by the public. The city manager, who holds the task of organizational matters, is Wallace Hunter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "phenix city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "phenix",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2991,
+    "attempt": 2969,
+    "place_id": "gn-640999",
+    "input": {
+      "place": {
+        "place_id": "gn-640999",
+        "name": "Pori",
+        "country": "Finland",
+        "subdivision": "Satakunta",
+        "lat": 61.48072,
+        "lon": 21.78518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pori",
+          "url": "https://en.wikipedia.org/wiki/Pori",
+          "text": "Pori (Finnish: [ˈpori]; Swedish: Björneborg [bjœːrneˈborj] ; Latin: Arctopolis) is a city in Finland and the regional capital of Satakunta. It is located on the west coast of the country, on the Gulf of Bothnia. The population of Pori is approximately 83,000, while the sub-region has a population of approximately 128,000. It is the 10th most populous municipality in Finland, and the eighth most populous urban area in the country.\nPori is located some 10 kilometres (6 mi) from the Gulf of Bothnia, on the estuary of the Kokemäki River, 110 kilometres (68 mi) west of Tampere, 140 kilometres (87 mi) north of Turku and 241 kilometres (150 mi) north-west of Helsinki, the capital of Finland. Pori covers an area of 2,062.00 square kilometres (796.14 sq mi) of which 870.01 km2 (335.91 sq mi) is water. The population density is 71.8/km2 (186/sq mi).\nPori was established in 1558 by Duke John, who later became King John III of Sweden. The municipality is unilingually Finnish. Pori was also once one of the main cities with Turku in the former Turku and Pori Province (1634–1997). The neighboring municipalities are Eurajoki, Kankaanpää, Kokemäki, Merikarvia, Nakkila, Pomarkku, Sastamala, Siikainen and Ulvila.\nPori is especially known nationwide for its Jazz Festival, Yyteri's sandy beaches, Kirjurinluoto, Porin Ässät ice hockey club, FC Jazz football club, which won two championships in the Veikkausliiga in the 1990s, and Pori Theater, which is the first Finnish-language theater in Finnish history. Pori is also known for its local street food called porilainen. During its history, the city of Pori has burned down nine times; only Oulu has burned more often, as many as ten times. The current coat of arms of Pori was confirmed for use by President P. E. Svinhufvud on December 11, 1931, and was later redrawn by Olof Eriksson. The city council reaffirmed the use of the redrawn version on October 27, 1959. The bear motif of the coat of arms comes from a 17th century seal and the motto, deus protector noster or \"God is our protector\", is also on the coat of arms of the city's founder, Duke John."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "pori",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2992,
+    "attempt": 2970,
+    "place_id": "gn-709611",
+    "input": {
+      "place": {
+        "place_id": "gn-709611",
+        "name": "Drohobych",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.35196,
+        "lon": 23.51121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drohobych",
+          "url": "https://en.wikipedia.org/wiki/Drohobych",
+          "text": "Drohobych (Ukrainian: Дрогобич [droˈɦɔbɪt͡ʃ] ; Polish: Drohobycz [drɔˈxɔbɨt͡ʂ] ; Yiddish: דראָהאָביטש, romanized: Drohobitsh) is a city in the south of Lviv Oblast, Ukraine. It is the administrative center of Drohobych Raion and hosts the administration of Drohobych urban hromada, one of the hromadas of Ukraine. In 1939–1941 and 1944–1959 it was the center of Drohobych Oblast.\nDrohobych was founded at the end of the eleventh century as an important trading post and transport node between Kievan Rus' and the lands to the West of Rus'. After extinction of the local Ruthenian dynasty and subsequent incorporation of the Kingdom of Galicia–Volhynia into the Polish Kingdom by 1349, from the fifteenth century the city developed as a mercantile and saltworks centre. Drohobych became part of the Habsburg Empire in 1772 after the first partition of the Polish–Lithuanian Commonwealth. In the mid-nineteenth century it became Europe's largest oil extraction center, which significantly contributed to its rapid development. In the renascent, interwar Poland it was the center of a county within the Lwów Voivodeship. As an outcome of World War II, the city was incorporated into the Ukrainian part of the Soviet Union, which in 1991 became the independent Ukraine.\nThe city was the birthplace of such well-known personalities as Elisabeth Bergner, Yuriy Drohobych (Kotermak), Ivan Franko and Bruno Schulz. The city has several oil refineries. The Drohobych saltworks are considered to be the oldest in Europe. The estimated population of Drohobych is 73,682 (2022 estimate), making it the second largest city in Lviv Oblast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "drohobych",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2993,
+    "attempt": 2971,
+    "place_id": "gn-763523",
+    "input": {
+      "place": {
+        "place_id": "gn-763523",
+        "name": "Nowy Targ",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.47783,
+        "lon": 20.03228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nowy Targ",
+          "url": "https://en.wikipedia.org/wiki/Nowy_Targ",
+          "text": "Nowy Targ [ˈnɔvɨ ˈtark] (Officially: Royal Free city of Nowy Targ, Yiddish: Naymark, Hungarian: Újvásár, Goral dialect: Nowy Torg [ˈnuɔvɨ 'tɔrg]) is a town in southern Poland, in the Lesser Poland Voivodeship. It is located in the Orava-Nowy Targ Basin at the foot of the Gorce Mountains, at the confluence of the Czarny Dunajec and the Biały Dunajec. It is the seat of the Nowy Targ County and the rural Gmina Nowy Targ, as well as the Tatra Euroregion.\nWith 33,293 inhabitants, Nowy Targ is the largest town and the historic capital of Podhale, as well as its main commercial, communication and industrial center.\nThe town has the Podhale State Vocational University and the highest located airport in Poland.\nEstablished before 1233, Nowy Targ received city rights on 22 June 1346 from King Casimir the Great. The historic architectural and urban complex of the town with a medieval market square has been preserved to this day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "nowy targ",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nowy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "targ",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2994,
+    "attempt": 2972,
+    "place_id": "gn-782061",
+    "input": {
+      "place": {
+        "place_id": "gn-782061",
+        "name": "Peshkopi",
+        "country": "Albania",
+        "subdivision": "Dibër County",
+        "lat": 41.685,
+        "lon": 20.42858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peshkopi",
+          "url": "https://en.wikipedia.org/wiki/Peshkopi",
+          "text": "Peshkopi (Albanian pronunciation: [pɛʃkɔpi]; Albanian definite form: Peshkopia) is a town located in the mountainous regions of northeastern Albania, in Dibër County. It is the capital of both the county (Albanian: qark) and the district (Albanian: rreth) of Dibër, and is the only county regional capital in Albania which does not share its name with its county. The population as of the 2023 census is 14,710.\nPeshkopi lies east of the Black Drin river, about 187 kilometres (116 mi) northeast of Tirana, the capital of Albania, and 20 kilometres (12 mi) from the Macedonian border. The town sits 651 metres (2,136 ft) above sea level. \nKnown for its thermal waters, year-round agriculture, and natural beauty, Peshkopi is also developing a reputation as tourism destination for outdoor activities such as hiking, camping, mountain biking, and rock climbing. The third tallest mountain in the Balkans, Mount Korabi, and the birthplace of Albania's national hero, Gjerg Kastrioti, are nearby heritages sites. The district also contains large mineral ore deposits such as chromium, sulfur, and marble. It is also an important industrial center in Albania, producing many agricultural products for Albania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "peshkopi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2995,
+    "attempt": 2973,
+    "place_id": "gn-933759",
+    "input": {
+      "place": {
+        "place_id": "gn-933759",
+        "name": "Ghanzi",
+        "country": "Botswana",
+        "subdivision": "Ghanzi",
+        "lat": -21.69785,
+        "lon": 21.64581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghanzi",
+          "url": "https://en.wikipedia.org/wiki/Ghanzi",
+          "text": "Ghanzi is a town in the middle of the Kalahari Desert the western part of the Republic of Botswana in southern Africa. The region is known within the country for its beef industry. In fact, Ghanzi farmers provide about 75% percent of national beef exports, according to the Botswana Meat Commission, primarily to the United Kingdom and the European Union.\nAt the time of the 2021 census, there are 21,420 people living in the town with another 6,900 nearby. Ghanzi is the administrative center of Ghanzi District and is considered the \"capital\" of the district, as it is the largest in terms of population and geographical measure. Ghanzi District measures 117,910 square kilometres (29,140,000 acres) and is bordered by Ngamiland to the north, Central District to the east, and Kgalagadi and Kweneg Districts to the south. Its western border is shared with Namibia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "ghanzi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2996,
+    "attempt": 2974,
+    "place_id": "gn-1702425",
+    "input": {
+      "place": {
+        "place_id": "gn-1702425",
+        "name": "Maluso",
+        "country": "Philippines",
+        "subdivision": "Autonomous Region in Muslim Mindanao",
+        "lat": 6.543,
+        "lon": 121.8753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maluso",
+          "url": "https://en.wikipedia.org/wiki/Maluso",
+          "text": "Maluso, officially the Municipality of Maluso (Tausūg: Dai'rah Lupah Maluso; Chavacano: Municipalidad de Maluso; Tagalog: Bayan ng Maluso), is a  municipality in the province of Basilan, Philippines. According to the 2024 census, it has a population of 66,817 people.\nIt is geographically located in the Province of Basilan, on the southwestern part of the island, near the Sulu group and Banguingui Isles. In terms of residents living in semi-urban areas, it ranks as the third most populous town after Isabela City and Lamitan City. Maluso is characterized by its beaches, rivers, and extensive mangrove areas. It is also home to diverse ethnolinguistic groups, including the Yakan, Iranun, Banguigui, and Tausug, who coexist with kolono communities from various parts of Luzon and the Visayas, many of whom migrated during the Commonwealth era and later settled permanently. Maluso is one of the core member of Western Basilan Alliance, a group of five municipalities consisted of Maluso, Hji. Muhtamad, Lantawan, Sumisip and Tabuan-Lasa LGUs, sponsored and capacitated by the Spanish government aid agency AECID-funded \"MILAB 2\" Project, in partnership with the Provincial Government of Basilan.\nOn July 1, 2022, it launched its flagship program, “Marayaw Maluso: Peace and Eco-Tourism Hub of Southern Philippines\", primarily focused on three major key areas: peace, environment and tourism. Maluso is home to Maluso River, locally known as “Subah Maluso”, historically tied with its humble beginnings centuries ago, and a known source of freshwater from European sailors and adventurers of the past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "maluso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2997,
+    "attempt": 2975,
+    "place_id": "gn-2096742",
+    "input": {
+      "place": {
+        "place_id": "gn-2096742",
+        "name": "Goroka",
+        "country": "Papua New Guinea",
+        "subdivision": "Eastern Highlands Province",
+        "lat": -6.085,
+        "lon": 145.38667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goroka",
+          "url": "https://en.wikipedia.org/wiki/Goroka",
+          "text": "Goroka is the capital of the Eastern Highlands Province of Papua New Guinea. It is a town of approximately 29,333 people (2021), 1,600 meters (5,200 feet) above sea level. It has an airport (in the centre of town) and is on the \"Highlands Highway\", about 285 km (177 mi) from Lae in Morobe province and 90 km (56 mi) from the nearby town of Kainantu also in the Eastern Highlands. Other nearby towns include Kundiawa in Simbu Province and Mount Hagen in Western Highlands Province. It has a mild climate, known as a \"perpetual Spring\".\nIt is the home of several national institutions: CRMF Christian Radio Missionary Fellowship, the PNG Institute of Medical Research, the National Film Institute, the Liturgical Catechetical Institute, the Melanesian Institute, the Raun Raun Theatre Company and the University of Goroka. Several NGOs also have presences there, including Oxfam and Save the Children. The town's largest hotel is the Bird of Paradise, owned by the Coral Seas Hotels chain, with several mid-sized motels and numerous smaller accommodation providers also operating.\nAs the provincial seat for the Eastern Highlands Province, Goroka provides several services such as the provincial court, the provincial Department of Motor Vehicles, and numerous major chain stores. Goroka, similar to Mount Hagen and Lae, is home to a developing middle class and presents a unique blend of urban and rural life. Many residents of the town and its suburbs (known as the \"blocks\") have migrated to the region in search of jobs and a better quality of life.\nCoffee is a common cash crop in the area; smaller industries include trout farms, pigs, bee keeping and food gardens (broccoli, kau kau or sweet potato, carrots, ginger and peanuts are examples of produce that grow well here; nearby Bena Bena is known for its pineapples). Goroka is also widely known for its bilum market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "goroka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2998,
+    "attempt": 2976,
+    "place_id": "gn-2262912",
+    "input": {
+      "place": {
+        "place_id": "gn-2262912",
+        "name": "Sintra",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.80097,
+        "lon": -9.37826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sintra",
+          "url": "https://en.wikipedia.org/wiki/Sintra",
+          "text": "Sintra (, Portuguese: [ˈsĩtɾɐ] ), officially the Town of Sintra (Portuguese: Vila de Sintra), is a town and municipality in the Greater Lisbon region of Portugal, located on the Portuguese Riviera. The population of the municipality in 2021 was 385,654, in an area of 319.23 square kilometres (123.26 sq mi). Sintra is one of the most urbanized and densely populated municipalities of Portugal. A major tourist destination famed for its picturesqueness, the municipality has several historic palaces, castles, scenic beaches, parks and gardens.\nThe area includes the Sintra-Cascais Nature Park through which the Sintra Mountains run. The historic center of the Vila de Sintra is famous for its 19th-century Romanticist architecture, historic estates and villas, gardens, and royal palaces and castles, which resulted in the classification of the town as a UNESCO World Heritage Site. Sintra's landmarks include the medieval Castle of the Moors, the romanticist Pena National Palace and the Portuguese Renaissance Sintra National Palace.\nSintra is one of the wealthiest municipalities in both Portugal and the Iberian Peninsula as a whole. It is home to one of the largest foreign expatriate communities along the Portuguese Riviera, and consistently ranks as one of the best places to live in Portugal. The ECB Forum on Central Banking, an annual event organised by the European Central Bank, is held in Sintra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "sintra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2999,
+    "attempt": 2977,
+    "place_id": "gn-250774",
+    "input": {
+      "place": {
+        "place_id": "gn-250774",
+        "name": "Aqaba",
+        "country": "Jordan",
+        "subdivision": "Aqaba",
+        "lat": 29.52667,
+        "lon": 35.00778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aqaba",
+          "url": "https://en.wikipedia.org/wiki/Aqaba",
+          "text": "Aqābaʾ ( AK-ə-bə, US also  AHK-; Arabic: الْعَقَبَة, romanized: al-ʿAqaba, pronounced [ælˈʕæqɑba, ælˈʕæɡæba]) is the only coastal city in Jordan and the largest and most populous city on the Gulf of Aqaba. Situated in southernmost Jordan, Aqaba is the administrative center of the Aqaba Governorate. The city had a population of 148,398 in 2015 and a land area of 375 square kilometres (144.8 sq mi).\nAqaba's location at the northeastern tip of the Red Sea between the continents of Asia and Africa has made its port important for millennia. The ancient city was called Elath, whose proximity to copper mines made it a regional hub for copper production and trade in the Chalcolithic period. Under Byzantine rule, Aela became a bishopric, and the Aqaba Church, the world's oldest known purpose-built Christian church, was constructed there. Following the Islamic conquest around AD 650, the city became known as Ayla and later became a Latin Catholic titular see. The name Aqaba did not come into use until the late medieval period. During the Great Arab Revolt, the prominent Battle of Aqaba saw joint Arab and British victory over Ottoman troops.\nAqaba's location next to Wadi Rum and Petra has made it one of the major tourist attractions in Jordan. The city is administered by the Aqaba Special Economic Zone Authority, which has turned Aqaba into a low-tax, duty-free city, attracting several tourist resort area like Ayla Oasis, Saraya Aqaba, Marsa Zayed, and Tala Bay. They are expected to turn the city into a major tourism hub in the region. However, industrial and commercial activities remain important, due to the strategic location of the city as the country's only seaport. \nThe city is served by the King Hussein International Airport, while the Port of Aqaba serves as Jordan's principal seaport and a gateway for other countries in the region. The city sits right across the border from Eilat, likewise Israel's only port on the Red Sea. After the 1994 Israel–Jordan peace treaty, there were plans and hopes of establishing a trans-border tourism and economic area, but few of those plans have become real."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "aqaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3000,
+    "attempt": 2978,
+    "place_id": "gn-2644411",
+    "input": {
+      "place": {
+        "place_id": "gn-2644411",
+        "name": "Lisburn",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.52337,
+        "lon": -6.03527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lisburn",
+          "url": "https://en.wikipedia.org/wiki/Lisburn",
+          "text": "Lisburn ( LIZ-burn, LISS-burn) is a cathedral city in Northern Ireland. It is 8 mi (13 km) southwest of Belfast city centre, on the River Lagan, which forms the boundary between County Antrim and County Down. First laid out in the 17th century by English and Welsh settlers, with the arrival of French Huguenots in the 18th century, the town developed as a global centre of the linen industry.\nIn 2002, as part of Elizabeth II's Golden Jubilee celebrations, the predominantly unionist borough was granted city status alongside the largely nationalist town of Newry. With a population of 51,447 in the 2021 Census, Lisburn was the third-largest city in Northern Ireland. In the 2016 reform of local government in Northern Ireland Lisburn was joined with the greater part of Castlereagh to form Lisburn and Castlereagh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "lisburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3001,
+    "attempt": 2979,
+    "place_id": "gn-2647570",
+    "input": {
+      "place": {
+        "place_id": "gn-2647570",
+        "name": "Hamilton",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.76667,
+        "lon": -4.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamilton, South Lanarkshire",
+          "url": "https://en.wikipedia.org/wiki/Hamilton,_South_Lanarkshire",
+          "text": "Hamilton (Scots: Hamiltoun; Scottish Gaelic: Baile Hamaltan [ˈpalə ˈhaməl̪ˠt̪ʰan]) is a town in South Lanarkshire, Scotland. It serves as the main administrative centre of the South Lanarkshire council area. It sits 10 miles (16 km) south-east of Glasgow, 37 miles (60 km) south-west of Edinburgh and 74 miles (120 km) north of Carlisle. It is situated on the south bank of the River Clyde at its confluence with the Avon Water. Hamilton is the county town of the historic county of Lanarkshire and is the location of the headquarters of the modern local authority of South Lanarkshire.\nThe town itself has a population of 55,157 in 2022, which makes it the 9th largest locality in Scotland, and anchors a defined settlement of 84,000 (including neighbouring Blantyre, Bothwell and Uddingston) which is the country's 8th largest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hamilton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3002,
+    "attempt": 2980,
+    "place_id": "gn-3107775",
+    "input": {
+      "place": {
+        "place_id": "gn-3107775",
+        "name": "Torrelavega",
+        "country": "Spain",
+        "subdivision": "Cantabria",
+        "lat": 43.34943,
+        "lon": -4.04785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrelavega",
+          "url": "https://en.wikipedia.org/wiki/Torrelavega",
+          "text": "Torrelavega (Asturian: Torlavega) is a municipality and important industrial and commercial hub in the single province Autonomous Community of Cantabria, northern Spain.\nIt is situated roughly 8 kilometres from the Cantabrian Coast and 27.5 kilometres from the capital of the Autonomous Community, Santander, halfway between the Principality of Asturias  and the Basque Country. The rivers Saja and Besaya flow through the city.\nIt is the capital of the comarca  (county, but with no administrative role) of Valle del Besaya which includes also composed of the municipalities of Suances, Polanco, Cartes, Los Corrales de Buelna, Cieza, Arenas de Iguña, Bárcena de Pie de Concha, Molledo, Anievas and San Felices de Buelna.\nTorrelavega is a regional centre for industry and transport, and its weekly livestock fair is famous in Spain. Its stadium is known as El Malecon. The Cave of Altamira, which contains prehistoric paintings, is about 10 kilometres northwest of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "torrelavega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

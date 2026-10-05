@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 7733,
+    "attempt": 7681,
+    "place_id": "gn-2060436",
+    "input": {
+      "place": {
+        "place_id": "gn-2060436",
+        "name": "Tennant Creek",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -19.6497,
+        "lon": 134.19147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tennant Creek",
+          "url": "https://en.wikipedia.org/wiki/Tennant_Creek",
+          "text": "Tennant Creek (Warumungu: Jurnkkurakurr) is a town in the Northern Territory of Australia. It is the seventh largest town in the Northern Territory, and is located on the Stuart Highway, just south of the intersection with the western terminus of the Barkly Highway. At the 2021 census, Tennant Creek had a population of 3,080 people, of whom 55% (1,707) identified as Indigenous.\nThe town is approximately 1,000 kilometres south of the capital of the Northern Territory, Darwin, and 500 kilometres north of Alice Springs. It is named after a nearby watercourse of the same name, and is the hub of the sprawling Barkly Tableland – vast elevated plains of black soil with golden Mitchell grass that cover more than 240,000 square kilometres. Tennant Creek is also near well-known attractions including the Devils Marbles, Mary Ann Dam, Battery Hill Mining Centre and the Nyinkka Nyunyu Culture Centre.\nThe Barkly Tableland runs east from Tennant Creek towards the Queensland border and is among the most important cattle grazing areas in the Northern Territory. Roughly the same size as the United Kingdom or New Zealand, the region consists largely of open grass plains and some of the world's largest cattle stations. It runs as far south as Barrow Creek, past Elliott to the north and west into the Tanami Desert.\nThe region encompasses the junction of two great highways, the Barkly and the Stuart, also known as the Overlander and Explorer's Ways. The Overlander's Way (Barkly Highway) retraces the original route of early stockmen who drove their cattle from Queensland through the grazing lands in the Northern Territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "tennant creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tennant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7734,
+    "attempt": 7682,
+    "place_id": "gn-2177207",
+    "input": {
+      "place": {
+        "place_id": "gn-2177207",
+        "name": "Balaclava",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.86667,
+        "lon": 145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balaclava, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Balaclava,_Victoria",
+          "text": "Balaclava is an inner suburb in Melbourne, Victoria, Australia, 7 km south-east of Melbourne's Central Business District, located within the City of Port Phillip local government area. Balaclava recorded a population of 5,392 at the 2021 census.\nBalaclava is located in the south-east of the city, in the St Kilda East area and is bounded by Inkerman Street to the north, Chapel Street to the west, Hotham Street to the east and Oak Grove and Los Angeles Court to the south. In terms of its cadastral division, Balaclava is in the parish of Prahran, within the County of Bourke\nThe suburb was named after the Battle of Balaclava that took place on 25 October 1854, during the Crimean War.\nWell-known comedian Graham Kennedy spent part of his childhood in Balaclava. After his death, the local council placed a commemorative plaque on the house where he lived.\nBalaclava is home to a large population of Melbourne's Orthodox Jewish Community, consisting of both Hasidic and non-Hasidic (Misnagdim or Yeshivish) Jews. Within its confines are a number of kosher restaurants and shops that cater to the local and broader Melbourne Haredi communities, as well as specialist Jewish Schools.\nBalaclava is also home to several popular restaurants and eaterys, including Melbourne's oldest fish and chip shop, Carlisle Seafood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "balaclava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7735,
+    "attempt": 7683,
+    "place_id": "gn-2640255",
+    "input": {
+      "place": {
+        "place_id": "gn-2640255",
+        "name": "Pitlochry",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.70514,
+        "lon": -3.73432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pitlochry",
+          "url": "https://en.wikipedia.org/wiki/Pitlochry",
+          "text": "Pitlochry (; Scottish Gaelic: Baile Chloichridh or Baile Chloichrigh) is a historic market town in the Perth and Kinross council area of Scotland, lying on the River Tummel. It is historically in the county of Perthshire, and had a population of 2,694 in 2022.\nIt is largely a Victorian town, which developed into a tourist resort after Queen Victoria and Prince Albert visited the area in 1842 and bought a highland estate at Balmoral, and the arrival of the railway in 1863. It remains a popular tourist resort today and is particularly known for its Pitlochry Festival Theatre, salmon ladder and as a centre for hillwalking, surrounded by mountains such as Ben Vrackie and Schiehallion. It is popular as a base for coach holidays. The town has retained many stone Victorian buildings, and the high street has an unusual period cast iron canopy over one side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "pitlochry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7736,
+    "attempt": 7684,
+    "place_id": "gn-3182943",
+    "input": {
+      "place": {
+        "place_id": "gn-3182943",
+        "name": "Aquileia",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.7683,
+        "lon": 13.36779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aquileia",
+          "url": "https://en.wikipedia.org/wiki/Aquileia",
+          "text": "Aquileia is a comune (municipality) in the Friuli-Venezia Giulia region of northeastern Italy. It is situated at the head of the Adriatic at the edge of the lagoons, about 10 kilometres (6 mi) from the sea, on the river Natiso (modern Natisone), the course of which has changed somewhat since the Roman era.\nIn classical antiquity, Aquileia was a major Roman city with an estimated population close to 100,000 in the 2nd century AD. Founded as a Roman military colony in 181 BC, Aquileia became the capital of the Augustan X region and a metropolitan center for early Christianity. During late antiquity, it was the first city in the Italian Peninsula to be sacked by Attila the Hun.\nToday, Aquileia is one of the most significant archaeological sites in northern Italy. Its ruins, including mosaics and an early Christian basilica, are a UNESCO World Heritage Site. Aquileia also holds historical importance as one of the former capitals of Friuli, with its coat of arms being the symbol of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "aquileia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7737,
+    "attempt": 7685,
+    "place_id": "gn-3515933",
+    "input": {
+      "place": {
+        "place_id": "gn-3515933",
+        "name": "Teotitlán del Valle",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 17.02963,
+        "lon": -96.51956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teotitlán del Valle",
+          "url": "https://en.wikipedia.org/wiki/Teotitl%C3%A1n_del_Valle",
+          "text": "Teotitlán del Valle is a small village and municipality located in the Tlacolula District in the east of the Valles Centrales Region, 31 km from the city of Oaxaca in the foothills of the Sierra Juárez mountains. It is part of the Tlacolula Valley district. It is known for its textiles, especially rugs, which are woven on hand-operated looms, from wool obtained from local sheep and dyed mainly with local, natural dyes. They combine historical Zapotec designs with contemporary designs such as reproductions of famous artists' work. Artists take commissions and participate in tours of family-owned workshops. The name Teotitlán comes from Nahuatl and means \"land of the gods.\" Its Zapotec name is Xaguixe, which means \"at the foot of the mountain.\" Established in 1465, it was one of the first villages founded by Zapotec peoples in this area and retains its Zapotec culture and language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "teotitlan del valle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "teotitlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7738,
+    "attempt": 7686,
+    "place_id": "gn-614891",
+    "input": {
+      "place": {
+        "place_id": "gn-614891",
+        "name": "Dmanisi",
+        "country": "Georgia",
+        "subdivision": "Kvemo Kartli",
+        "lat": 41.33183,
+        "lon": 44.20296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dmanisi",
+          "url": "https://en.wikipedia.org/wiki/Dmanisi",
+          "text": "Dmanisi (Georgian: დმანისი, romanized: dmanisi, pronounced [dmanisi], Azerbaijani: Başkeçid) is a town and archaeological site in the Kvemo Kartli region of Georgia approximately 93 km southwest of the nation's capital Tbilisi in the river valley of Mashavera. \nAbandoned in the 1700s, Bashkichet (Башкичети) was resettled in 1844 to 2000 by Russian sectarian Dukhobortsy exiled from Taurida Governorate. It was renamed Dmansi (Дманиси) from the ancient Mongol duman, meaning \"military or administrative unit\".   \nIt is the site of Dmanisi Hominid Skulls, which are dated to 1.8 million years ago, making them the earliest dated human remains in Eurasia. A series of skulls which had diverse physical traits, discovered at Dmanisi in the early 2000s, led to the hypothesis that many separate species in the genus Homo were in fact a single lineage. Also known as Skull 5, D4500 is the fifth skull to be discovered in Dmanisi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "dmanisi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7739,
+    "attempt": 7687,
+    "place_id": "gn-6184364",
+    "input": {
+      "place": {
+        "place_id": "gn-6184364",
+        "name": "Woodstock",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.15796,
+        "lon": -67.58377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodstock, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Woodstock,_New_Brunswick",
+          "text": "Woodstock is a town in Carleton County, New Brunswick, Canada on the Saint John River, 103 km (64 mi) upriver from Fredericton at the mouth of the Meduxnekeag River. It is near the Canada–United States border and Houlton, Maine and the intersection of Interstate 95 and the Trans-Canada Highway making it a transportation hub. It is also a service centre for the potato industry and for more than 26,000 people in the nearby communities of Hartland, Florenceville-Bristol, Centreville, Bath and Lakeland Ridges for shopping, employment and entertainment.\nWoodstock was possibly named after Woodstock, Oxfordshire. The name is Old English in origin, meaning a \"clearing in the woods\". New Brunswick historian William Francis Ganong believed the parish (and later town) was named in honour of Viscount Woodstock, a junior title of the Duke of Portland, Prime Minister of Great Britain when the Loyalists arrived in New Brunswick.\nOn 1 January 2023, Woodstock expanded in all directions, annexing all or part of six local service districts. Revised census figures have not been released."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "woodstock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7740,
+    "attempt": 7688,
+    "place_id": "gn-3488980",
+    "input": {
+      "place": {
+        "place_id": "gn-3488980",
+        "name": "Port Royal",
+        "country": "Jamaica",
+        "subdivision": "Kingston",
+        "lat": 17.93738,
+        "lon": -76.84062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Royal",
+          "url": "https://en.wikipedia.org/wiki/Port_Royal",
+          "text": "Port Royal (Jamaican Patois: Puot Rayal) is a small town located at the end of the Palisadoes, at the mouth of Kingston Harbour, in southeastern Jamaica.\nFounded in 1494 by the Spanish, it was once the largest and most prosperous city in the Caribbean, functioning as the centre of shipping and commerce in the Caribbean Sea by the latter half of the 17th century. It was destroyed by an earthquake on 7 June 1692 and its accompanying tsunami, leading to the establishment of Kingston, which would later become the capital and the most populated city in Jamaica. Severe hurricanes have regularly damaged the area. Another severe earthquake occurred in 1907.\nPort Royal became home port to English and Dutch government sponsored privateers who were encouraged to attack Spanish vessels, at a time when many European nations were reluctant to attack the powerful Spanish fleet directly. As a port city, it was notorious for its gaudy displays of wealth and loose morals, with the privateer crews spending their treasure in the many taverns, gambling houses, and brothels which catered to the sailors. When the British and Dutch governments officially abandoned the practice of issuing letters of marque to privateers against the Spanish treasure fleets and possessions in South America in the later 16th century, many of the crews turned pirate to allow themselves to maintain their plundering illegally. Port Royal effectively became a pirate republic, and they continued to use the city as their main base during the 17th century. Pirates from around the world congregated at Port Royal, coming from waters as far away as Madagascar. The town became notorious in folklore as \"the wickedest city on Earth\".\nAfter the 1692 disaster, Port Royal's commercial role was steadily taken over by the rapidly growing nearby town (and later, city) of Kingston. Plans were developed in 1999 to redevelop the small fishing town as a heritage tourism destination to serve cruise ships. The plan was to capitalize on Port Royal's unique and fascinating heritage, with archaeological findings from pre-colonial and privateering years as the basis of possible attractions.\nIn 2022, the village has 3,144 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "port royal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7741,
+    "attempt": 7689,
+    "place_id": "gn-4504857",
+    "input": {
+      "place": {
+        "place_id": "gn-4504857",
+        "name": "Wildwood Crest",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 38.97484,
+        "lon": -74.8335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wildwood Crest, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wildwood_Crest,_New_Jersey",
+          "text": "Wildwood Crest is a borough in Cape May County, in the U.S. state of New Jersey. The borough, and all of Cape May County, is part of the Ocean City metropolitan statistical area, and is part of the Philadelphia metropolitan area. As of the 2020 United States census, the borough's population was 3,101, a decrease of 169 (−5.2%) from the 2010 census count of 3,270, which in turn reflected a decline of 710 (−17.8%) from the 3,980 counted in the 2000 census.\nWildwood Crest was incorporated as a borough by an act of the New Jersey Legislature on April 6, 1910, from portions of Lower Township. The area of the borough was first developed by Philip Baker in the 1910s as a southern extension to the resort of Wildwood. The borough's name comes from Wildwood, which in turn was named for the area's wild flowers.\nIt is a dry town, where alcohol cannot be sold, affirmed by the results of a referendum held in 1940. Wildwood Crest joins  Cape May Point and Ocean City among municipalities in Cape May restricting the sale of alcohol. Adjoining Wildwood allows the sale of alcohol, including at bars on its boardwalk.\nThe borough was ranked the second-best beach in New Jersey in the 2008 \"Top 10 Beaches Contest\" sponsored by the New Jersey Marine Sciences Consortium. Wildwood Crest is one of five municipalities in the state that offer free public access to oceanfront beaches monitored by lifeguards, joining Atlantic City, North Wildwood, Wildwood and Upper Township's Strathmere section."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "wildwood crest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wildwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "crest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7742,
+    "attempt": 7690,
+    "place_id": "gn-2781361",
+    "input": {
+      "place": {
+        "place_id": "gn-2781361",
+        "name": "Bruckneudorf",
+        "country": "Austria",
+        "subdivision": "Burgenland",
+        "lat": 48.0197,
+        "lon": 16.778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bruckneudorf",
+          "url": "https://en.wikipedia.org/wiki/Bruckneudorf",
+          "text": "Bruckneudorf (Hungarian: Királyhida) is a small town in the district of Neusiedl am See in the federal state of Burgenland in Austria, neighbouring Bruck an der Leitha (\"Leitha Bridge\"). Its name means bridge new village, whereas the Hungarian version means royal bridge, and the royal refers to  King Francis I. Historically and geographically, Bruckneudorf represents the extension of the Austrian town of Bruck an der Leitha over the Austrian border into Hungary. This border, symbolised by the river Leitha, separated the Austrian Empire from the Kingdom of Hungary (Cisleithania and Transleithania). Its main current national significance derives from the Bruckneudorf military exercise ground of the Austrian federal army. Currently it is also the site of Bruck an der Leitha railway station, an important railway station near the borders with Hungary and Slovakia, a stop for nearly all the international trains that pass through it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bruckneudorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7743,
+    "attempt": 7691,
+    "place_id": "gn-5111427",
+    "input": {
+      "place": {
+        "place_id": "gn-5111427",
+        "name": "Canastota",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.07951,
+        "lon": -75.75074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canastota, New York",
+          "url": "https://en.wikipedia.org/wiki/Canastota,_New_York",
+          "text": "Canastota is a village within the town of Lenox in Madison County, New York, United States. The population was 4,556 at the 2020 census, down from 4,804 in 2010.\nThe village was incorporated in 1835, but was reorganized in 1870. Located along the banks of the Erie Canal, which was completed through the Mohawk River valley by 1825, Canastota was a vibrant trading and commercial town during the mid-nineteenth century for a wide agricultural area and an important stop between the cities of Rome and Syracuse.\nAlthough the section of the canal running through the village was abandoned by the 1920s, much of the section remains intact and is now part of the Old Erie Canal State Historic Park.\nThe village of Canastota is in the southern part of the town of Lenox and is the home to the International Boxing Hall of Fame."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "canastota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7744,
+    "attempt": 7692,
+    "place_id": "gn-362041",
+    "input": {
+      "place": {
+        "place_id": "gn-362041",
+        "name": "Abu Simbel",
+        "country": "Egypt",
+        "subdivision": "Aswan",
+        "lat": 22.3457,
+        "lon": 31.61624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abu Simbel",
+          "url": "https://en.wikipedia.org/wiki/Abu_Simbel",
+          "text": "Abu Simbel is a historic site comprising two massive rock-cut temples in the village of Abu Simbel (Arabic: أبو سمبل), Aswan Governorate, Upper Egypt, near the border with Sudan. It is located on the western bank of Lake Nasser, about 230 km (140 mi) southwest of Aswan (about 300 km (190 mi) by road). Its latitude of 22° 20′ 13″ N (22.3369 °N) is 1.0978°, which are 122 km (75.8 ml), south of the tropic of Cancer.\nThe twin temples were originally carved out of the mountainside in the 13th century BC, during the 19th Dynasty reign of the Pharaoh Ramesses II. Their huge external rock relief figures of Ramesses II have become iconic. His wife, Nefertari, and children can be seen in smaller figures by his feet. Sculptures inside the Great Temple commemorate Ramesses II's heroic leadership at the Battle of Kadesh.\nThe complex was relocated in its entirety in 1968 to higher ground to avoid it being submerged by Lake Nasser, the Aswan Dam reservoir. As part of the International Campaign to Save the Monuments of Nubia, an artificial hill was made from a domed structure to house the Abu Simbel Temples, under the supervision of a Polish archaeologist, Kazimierz Michałowski, from the Polish Centre of Mediterranean Archaeology University of Warsaw.\nThe Abu Simbel complex, and other relocated temples from Nubian sites such as Philae, Amada, Wadi es-Sebua, are part of the UNESCO World Heritage Site known as the Nubian Monuments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "abu simbel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "simbel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7745,
+    "attempt": 7693,
+    "place_id": "gn-730159",
+    "input": {
+      "place": {
+        "place_id": "gn-730159",
+        "name": "Koprivshtitsa",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.63333,
+        "lon": 24.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koprivshtitsa",
+          "url": "https://en.wikipedia.org/wiki/Koprivshtitsa",
+          "text": "Koprivshtitsa (Bulgarian: Копривщица, pronounced [koˈprifʃtit͡sɐ]], from the Bulgarian word коприва, kopriva, meaning \"nettle\") is a historic town in the Koprivshtitsa Municipality in Sofia Province, central Bulgaria, lying on the Topolnitsa River among the Sredna Gora mountains. It was one of the centres of the April uprising in 1876 and is known for its authentic Bulgarian architecture and for its folk music festivals, making it a tourist destination.\nKoprivshtitsa preserves the atmosphere of the Bulgarian National Revival period of the 19th century. The town is huddled in the mountain-folds, 111 km east of Sofia. The town has a number of architectural monuments from the period, 383 in all, most of which have been restored to their original appearance. Collections of ethnographical treasures, old weapons, National Revival works of art, fretwork, household weaves and embroidery, national costumes, and typical Bulgarian jewelry have also been preserved. It was here that the first shot of the April Uprising against the Ottoman domination was fired in 1876.\nSince 1965, the National Festival of Bulgarian Folklore takes place approximately every five years in Koprivshtitsa, gathering musicians, artists and craftsmen from across Bulgaria. Featuring thousands of performing artists in a pastoral setting in the hills above the town, the Koprivshtitsa festival is the only significant Bulgarian music event focusing on amateur performances. The majority of authentic Bulgarian village music records released during Communist rule were recorded in Koprivshtitsa by Balkanton during the 1970s and 1980s.\n\nAs of September 2009, the town has a population of 2,541 and the Deputy Mayor is Radka Lukanova Skenderova. Koprivshtitsa is located at 1,030m above sea level, at 42°38′N 24°21′E.\nThe anthem of the city is \"Beautiful, my forest\" with lyrics by Lyuben Karavelov and music by Georgi Goranov."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "koprivshtitsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7746,
+    "attempt": 7694,
+    "place_id": "gn-2160053",
+    "input": {
+      "place": {
+        "place_id": "gn-2160053",
+        "name": "Lithgow",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.4845,
+        "lon": 150.14903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lithgow, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lithgow,_New_South_Wales",
+          "text": "Lithgow is a city in the Central Tablelands of New South Wales, Australia and is the administrative centre of the City of Lithgow local government area. It is located in a mountain valley named Lithgow's Valley by John Oxley in honour of William Lithgow, the Auditor-General of the colony of New South Wales.\nLithgow is on the Great Western Highway, about 150 km (95 mi) west of Sydney, or via the old mountain route, Bells Line of Road, from Windsor. At June 2021 Lithgow had an urban population of 11,197.\nLithgow is surrounded by a varied landscape characterised by seven valleys which include national parks, one of which, the Blue Mountains National Park, is a World Heritage Area. The Wollemi National Park is home to the Jurassic-age tree the Wollemi Pine, which was found growing in a remote canyon in the park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "lithgow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7747,
+    "attempt": 7695,
+    "place_id": "gn-2402715",
+    "input": {
+      "place": {
+        "place_id": "gn-2402715",
+        "name": "Yonibana",
+        "country": "Sierra Leone",
+        "subdivision": "Northern Province",
+        "lat": 8.44347,
+        "lon": -12.23929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yonibana",
+          "url": "https://en.wikipedia.org/wiki/Yonibana",
+          "text": "Yonibana is a small rural town in Tonkolili District in the Northern Province of Sierra Leone. It is the centre of the Yoni Chiefdom The vast majority of its population are from the Temne ethnic group and small minority fula, the Temne language and krio language is widely spoken in the town. Yonibana lies approximately 28.2 miles to the district capital Magburaka and approximately 90 miles north-east of Freetown. \nThe town is best known for being home to its dynamic poro society   \nYonibana was connected to a branch line of the railroad in 1912. \nThe community is served by the Yonibana Secondary School, one of the oldest Secondary schools in Northern Sierra Leone, built in 1964. \nYonibana is the birthplace of Sierra Leone's minister of Health Haja Zainab Hawa Bangura; and Sierra Leone's former foreign minister from 2002 to 2007 Momodu Koroma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "yonibana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7748,
+    "attempt": 7696,
+    "place_id": "gn-2633481",
+    "input": {
+      "place": {
+        "place_id": "gn-2633481",
+        "name": "Writtle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.72906,
+        "lon": 0.42938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Writtle",
+          "url": "https://en.wikipedia.org/wiki/Writtle",
+          "text": "Writtle is a village and civil parish in the Chelmsford district of Essex, England. It lies 2 miles (3.2 km) west of the centre of Chelmsford. It has a traditional village green complete with duck pond and a Norman church, and was once described as \"one of the loveliest villages in England, with a ravishing variety of ancient cottages\". The village is now home to Writtle University College, one of the UK's oldest and largest land-based colleges and a partner institution of the University of Essex, the grounds of which once housed a Royal hunting lodge, later the possession of the De Brus and De Bohun families. At the 2021 census the parish had a population of 5,328.\nWrittle is sometimes claimed to be the birthplace of Robert the Bruce, as well as his father Robert de Brus, 6th Lord of Annandale. The claim is contested, but both men are known to have owned the manor of Writtle. From 1996 until 2017 Writtle hosted the annual southern V Festival within the grounds of Sir John Comyn's Hylands Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "writtle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7749,
+    "attempt": 7697,
+    "place_id": "gn-2660204",
+    "input": {
+      "place": {
+        "place_id": "gn-2660204",
+        "name": "Kaiseraugst",
+        "country": "Switzerland",
+        "subdivision": "Aargau",
+        "lat": 47.53966,
+        "lon": 7.72605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaiseraugst",
+          "url": "https://en.wikipedia.org/wiki/Kaiseraugst",
+          "text": "Kaiseraugst (Swiss German: Chhäiseraugscht) is a municipality in the district of Rheinfelden in the canton of Aargau in Switzerland. Located on the High Rhine, it is part of the Basel metropolitan region and borders Germany and the canton of Basel-Landschaft. It is named after the Ancient Roman city of Augusta Raurica whose ruins are nearby.  The prefix Kaiser- (\"imperial\") refers to the fact that from medieval times the town formed part of the Habsburg territory of Further Austria, as opposed to the neighbouring village of Augst, which was part of the Canton of Basel in the Old Swiss Confederacy.\nFounded as a Roman fort, Castrum Rauracense, around AD 300, Kaiseraugst has a rich history tied to its strategic position along the Rhine. Today, it is one of the fastest-growing residential and industrial centers in the region, hosting major companies like Hoffmann-La Roche. The municipality is also known for the abandoned Kaiseraugst Nuclear Power Plant project, which sparked significant environmental protests in the 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "kaiseraugst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7750,
+    "attempt": 7698,
+    "place_id": "gn-2960805",
+    "input": {
+      "place": {
+        "place_id": "gn-2960805",
+        "name": "Beggen",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.64506,
+        "lon": 6.12932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beggen",
+          "url": "https://en.wikipedia.org/wiki/Beggen",
+          "text": "Beggen (German pronunciation: [ˈbɛɡn̩]; Luxembourgish pronunciation: [ˈbæɡən] ) is a district in northern Luxembourg City, in southern Luxembourg. As of 31 December 2025, the district has a population of 3,844 inhabitants.\nThe district is the location of the 19th century Château de Beggen, built on the ruins of a former 18th century paper mill. In the 20th century, the château has served, successively, as the home of the director general of Luxembourg's notable steel company, ARBED, a base for both occupying Wehrmacht forces and, later, the liberating US troops during the Second World War, a hotel, an embassy of the Soviet Union, and currently, the embassy of the Russian Federation in Luxembourg.\nBeggen is home to FC Avenir Beggen, a historically successful football club that has struggled in the last years and now plays at level 3 in the Luxembourg football league."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "beggen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7751,
+    "attempt": 7699,
+    "place_id": "gn-2998330",
+    "input": {
+      "place": {
+        "place_id": "gn-2998330",
+        "name": "L'Île-Rousse",
+        "country": "France",
+        "subdivision": "Corsica",
+        "lat": 42.63371,
+        "lon": 8.93764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Île-Rousse",
+          "url": "https://en.wikipedia.org/wiki/L'%C3%8Ele-Rousse",
+          "text": "L'Île-Rousse (French pronunciation: [lil ʁus]; Corsican: Lìsula, [ˈlizula], or Isula Rossa, [ˈizula ˈrɔssa]; Italian: Isola Rossa, [ˈiːzola ˈrossa]; lit. 'Red Island') is a commune in the Haute-Corse department of France on the island of Corsica.\nIt was founded in 1758 by Pasquale Paoli to create a port that would not be in the hands of the Genoese (such as Calvi).  As Italian was until 1848 the administrative language of Corsica, the town was originally named Isola Rossa (Red Island) from the eponymous reddish color of a rocky islet that served as a natural harbor.\nAlong with Saint-Florent and Tox, it is one of only three communes in the département to have a French name — all the others have kept their Italian names despite the repeated demands of Corsican nationalists to change the names of all communes to their native Corsican names."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "l ile rousse",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ile",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rousse",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7752,
+    "attempt": 7700,
+    "place_id": "gn-3530916",
+    "input": {
+      "place": {
+        "place_id": "gn-3530916",
+        "name": "Chicxulub Pueblo",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 21.13709,
+        "lon": -89.51596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chicxulub Pueblo",
+          "url": "https://en.wikipedia.org/wiki/Chicxulub_Pueblo",
+          "text": "Chicxulub Pueblo (Yucatec Maya: Ch’ik Xulub, Mayan pronunciation: [t͡ʃʼik ʃuluɓ]) is a town, and surrounding municipality of the same name, in the Mexican state of Yucatán.\nAt the census of 2010, the town had a population of 4,080 people.\n\nChicxulub is most famous for being near the geographic center of the Chicxulub crater, an impact crater discovered by geologists on the Yucatán Peninsula and extending into the ocean. It was created by the impact some 66 million years ago of the Chicxulub impactor, an asteroid or comet which caused the Cretaceous–Paleogene extinction event, which led to the extinction of the non-avian dinosaurs, pterosaurs and other animals that dominated the Mesozoic. The coastal village (or puerto) of Chicxulub, in the neighboring municipality of Progreso, lies almost exactly on the geographic center of the crater.\nThe name Chicxulub is from the Yucatec Maya language. There is a small debate about the meaning of the name of the town. It may come from ch'íik xulub, which could mean \"place of the sharp horn,\" or \"place where the devil fell,\" or it may come from ch'ik xulub, which is \"the devil's flea.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "chicxulub pueblo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chicxulub",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pueblo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

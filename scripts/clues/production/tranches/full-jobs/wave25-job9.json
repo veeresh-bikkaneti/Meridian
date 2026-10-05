@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4999,
+    "attempt": 4961,
+    "place_id": "gn-636173",
+    "input": {
+      "place": {
+        "place_id": "gn-636173",
+        "name": "Sotkamo",
+        "country": "Finland",
+        "subdivision": "Kainuu",
+        "lat": 64.13333,
+        "lon": 28.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sotkamo",
+          "url": "https://en.wikipedia.org/wiki/Sotkamo",
+          "text": "Sotkamo is a municipality of Finland, located in the Kainuu region about 40 kilometres (25 mi) east of Kajaani, the capital of Kainuu. Vuokatti, in west of Sotkamo, is the most populous village in the municipality and also a popular skiing resort. Both Hiidenportti National Park and Tiilikkajärvi National Park are located in the municipality.\nThe municipality has a population of 10,161 (31 December 2025) and covers an area of 2,951.86 square kilometres (1,139.72 sq mi) of which 302.61 km2 (116.84 sq mi) is water. The population density is 3.84 inhabitants per square kilometre (9.9/sq mi).\nIn sports, Sotkamo is known for its pesäpallo team, Sotkamon Jymy. The Hiukka Stadium is the home field of Sotkamon Jymy, and its well-known competitor is Vimpelin Veto from Vimpeli, known as long-time arch-enemy of Sotkamon Jymy.\nOne of the major landmarks of Sotkamo is the sandy beach of Hiukka, which locates by the lake Iso Sapsojärvi, just beside the Sotkamo center. In Vuokatti ski center you can find the lake Nuasjärvi and the Vuokatti Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "sotkamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5000,
+    "attempt": 4962,
+    "place_id": "gn-643481",
+    "input": {
+      "place": {
+        "place_id": "gn-643481",
+        "name": "Oulunsalo",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 64.93456,
+        "lon": 25.41121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oulunsalo",
+          "url": "https://en.wikipedia.org/wiki/Oulunsalo",
+          "text": "Oulunsalo (former Swedish: Uleåsalo, now considered outdated by the Institute for the Languages of Finland) is a former municipality in the region of North Ostrobothnia, in Finland. It was founded in 1882 and merged into the city of Oulu on 1 January 2013, along with Haukipudas, Kiiminki and Yli-Ii. The municipality had a population of 9,746 (31 December 2012) and covered an area of 211.22 square kilometres (81.55 sq mi), of which 127.86 km2 (49.37 sq mi) is water. Its population density was 116.915/km2 (302.81/sq mi).\nOulu Airport is located in Oulunsalo.\nOulunsalo was one of the fastest-growing areas in Finland, among the other municipalities around Oulu.\nThe locality is unilingually Finnish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "oulunsalo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5001,
+    "attempt": 4963,
+    "place_id": "gn-663100",
+    "input": {
+      "place": {
+        "place_id": "gn-663100",
+        "name": "Vatra Dornei",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.35,
+        "lon": 25.36667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vatra Dornei",
+          "url": "https://en.wikipedia.org/wiki/Vatra_Dornei",
+          "text": "Vatra Dornei (Romanian pronunciation: [ˌvatra ˈdornej]; German: Dorna Watra; Hungarian: Dornavátra; Yiddish: דאָרנע, romanized: Dorne) is a city in Suceava County, north-eastern Romania. It is situated in the historical region of Bukovina and Western Moldavia. Vatra Dornei is the fifth largest urban settlement in the county, with a population of 12,578 inhabitants, according to the 2021 census. \nIt was declared a city in 2000, being the newest and smallest in the county. The city administers three villages: Argestru (German: Ardzestru), Roșu, and Todireni. Vatra Dornei is a well known spa and ski resort in the Carpathian Mountains and also is home to the historic Vatra Dornei Casino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "vatra dornei",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vatra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dornei",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5002,
+    "attempt": 4964,
+    "place_id": "gn-6693088",
+    "input": {
+      "place": {
+        "place_id": "gn-6693088",
+        "name": "Pasaia",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.3253,
+        "lon": -1.92707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasaia",
+          "url": "https://en.wikipedia.org/wiki/Pasaia",
+          "text": "Pasaia (Spanish: Pasajes) is a town and municipality located in the province of Gipuzkoa in the Basque Autonomous Community of northern Spain. It is a fishing community, commercial port, and the birthplace of the famous admiral Blas de Lezo and the fashion designer Paco Rabanne.\nPasaia lies approximately 5 kilometres (3.1 mi) east of San Sebastián's centre, lying at the foot of Mount Ulia and the Jaizkibel massif. The municipality numbers 16,056 inhabitants (as of 2008 estimates), clustering around the Bay of Pasaia in four nuclei, namely Pasai San Pedro, Pasai San Juan (or Donibane in Basque), Pasai Antxo, and Trintxerpe, with each part showing distinctive features."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pasaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5003,
+    "attempt": 4965,
+    "place_id": "gn-8533871",
+    "input": {
+      "place": {
+        "place_id": "gn-8533871",
+        "name": "Pembroke Parish",
+        "country": "Bermuda",
+        "subdivision": "Pembroke",
+        "lat": 32.30019,
+        "lon": -64.79204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pembroke Parish",
+          "url": "https://en.wikipedia.org/wiki/Pembroke_Parish",
+          "text": "Pembroke Parish is one of the nine parishes of Bermuda. It is named after English aristocrat William Herbert, 3rd Earl of Pembroke (1580–1630). Located in the central part of the island chain, it is home to Hamilton, the capital city of Bermuda, which functions as the administrative, commercial, and financial hub of the territory. This central location and the presence of the capital make Pembroke Parish a densely populated and economically vital area.\nThe economy of Bermuda is predominantly driven by international business, particularly reinsurance and financial services, which are largely concentrated in Hamilton. Tourism also plays a role, with various accommodations and attractions within the parish. Its geography is characterized by intricate coastlines and natural harbors, which have historically been crucial for maritime activities and continue to support its modern functions as a port and commercial center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "pembroke parish",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pembroke",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parish",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5004,
+    "attempt": 4966,
+    "place_id": "gn-1215468",
+    "input": {
+      "place": {
+        "place_id": "gn-1215468",
+        "name": "Barus",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 2.0106,
+        "lon": 98.3982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barus",
+          "url": "https://en.wikipedia.org/wiki/Barus",
+          "text": "Barus is a town and kecamatan (district) in Central Tapanuli Regency, North Sumatra Province, Sumatra,\nIndonesia. Historically, Barus was well known as a port town or kingdom on the western coast of Sumatra where it was a regional trade center from around the 7th or earlier until the 17th century. It was also known by other names, namely Fansur and possibly Barusai. The name Fansur or Pansur means \"spring of water\" or \"a place where water flows\" in the local Batak language. Barus was well known for its production of camphor.  In the 16th century, Barus became absorbed into the rising power of the Aceh Sultanate. The earliest known Malay poet Hamzah Fansuri may be from Barus as indicated by his name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "barus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5005,
+    "attempt": 4967,
+    "place_id": "gn-1252668",
+    "input": {
+      "place": {
+        "place_id": "gn-1252668",
+        "name": "Ziro",
+        "country": "India",
+        "subdivision": "Arunachal Pradesh",
+        "lat": 27.59497,
+        "lon": 93.83854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ziro",
+          "url": "https://en.wikipedia.org/wiki/Ziro",
+          "text": "Ziro is a town in and the district headquarters of the Lower Subansiri district of the Indian state of Arunachal Pradesh. The part of the town which is the centre of economic activities and where the administrative offices are located is called Hapoli, or locally known by the Apatanis as \"Hao-Polyang\". Ziro is home to the Apatani tribe. Ziro is included in the Tentative List for UNESCO's World Heritage Site for the Apatani cultural landscape. \nZiro is 115 km from the state capital, Itanagar, 112 km from North Lakhimpur in Assam and 96 km from Naharlagun railway station. Indian Air Force's ALG airstrip is at Ziro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ziro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5006,
+    "attempt": 4968,
+    "place_id": "gn-1268202",
+    "input": {
+      "place": {
+        "place_id": "gn-1268202",
+        "name": "Kamuthi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.40732,
+        "lon": 78.37337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamuthi",
+          "url": "https://en.wikipedia.org/wiki/Kamuthi",
+          "text": "Kamuthi also spelled Kamudi actually stands for Kavinmigu Mullai Thirunagar. Kamuthi is a Panchayat town in Ramanathapuram district in the Indian state of Tamil Nadu.\nKamuthi is known for being the home of the Kamuthi Solar Power Project, a large solar power plant.\nKamuthi town is situated in Ramanathapuram District, Tamil Nadu. The Kamuthi town has a population of 14754, male population is 7416 and female population is 7338 as per the Census 2011 data. Population of children under the age of 0-6 is 1514, male child population under the age of six is 766 and female child population under the age of six is 748. The total literacy rate of Kamuthi city is 88.56%, the male literacy rate is 93.8% and the female literacy rate is 83.28%. In Kamuthi the female sex ratio is 989 per 1000 male persons. Child sex ratio is 977 per 1000 male child under the age of six. The total number of households in Kamuthi is 3379."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "kamuthi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5007,
+    "attempt": 4969,
+    "place_id": "gn-1275692",
+    "input": {
+      "place": {
+        "place_id": "gn-1275692",
+        "name": "Bijbehara",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 33.79378,
+        "lon": 75.107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bijbehara",
+          "url": "https://en.wikipedia.org/wiki/Bijbehara",
+          "text": "Bijbehara (Urdu pronunciation: [biːd͡ʒbɪɦɑːɽɑː]), known as Vejibror (Kashmiri pronunciation: [ʋed͡ʒibroːr] or [ʋed͡ʒibʲoːr]) in Kashmiri, is a town and a municipal committee in Anantnag district of the Indian administered union territory of Jammu and Kashmir in the disputed Kashmir region. It is located on NH 44, and Jehlum bank. Bijbehara town is also known as \"Town of Chinars\" because of a number of Chinars there especially two Chinar gardens (Paadshaahi Bagh and Dara Shikoh Garden). Bijbehara is the home to oldest chinar tree in the region. The town is situated about 45 km (28 mi) from the summer capital of union territory of Jammu and Kashmir, Srinagar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "bijbehara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5008,
+    "attempt": 4970,
+    "place_id": "gn-1733874",
+    "input": {
+      "place": {
+        "place_id": "gn-1733874",
+        "name": "Beaufort",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.3473,
+        "lon": 115.7455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaufort, Malaysia",
+          "url": "https://en.wikipedia.org/wiki/Beaufort,_Malaysia",
+          "text": "Beaufort ( BOH-fərt) or in Sabahan colloquial spelling \"Bopot\" is the capital of the Beaufort District in the Interior Division of Sabah, Malaysia. It was named after former British Governor Leicester Paul Beaufort. Its population was estimated to be around 12,742 in 2010. It is about 90 kilometres south of Kota Kinabalu and about 167 kilometres north of Long Pasia (one of the famous tourist attractions in Interior Division). It has shophouses built high above the roads to avoid the periodic floods of the Padas River. The population of Beaufort is composed mainly of Bisaya, Brunei Malays, Kadazan-Dusuns, Lun Bawang/Lun Dayeh, Muruts and Chinese (mainly Hakkas). Bisaya are the majority ethnic, and the population is scattered around the town. Like other towns in Sabah such as Kota Kinabalu city (including Penampang), Tuaran, Papar, Tawau, Kudat and Tenom, Beaufort was one of the major initial Hakka population centres in Sabah and still has a large Hakka minority."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5009,
+    "attempt": 4971,
+    "place_id": "gn-2522971",
+    "input": {
+      "place": {
+        "place_id": "gn-2522971",
+        "name": "Taurianova",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.35525,
+        "lon": 16.01306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taurianova",
+          "url": "https://en.wikipedia.org/wiki/Taurianova",
+          "text": "Taurianova is a comune (municipality) in the Province of Reggio Calabria in the southern Italian region Calabria, located about 80 kilometres (50 mi) southwest of Catanzaro and about 40 kilometres (25 mi) northeast of Reggio Calabria.\nAs of 31 December 2004, it had a population of 15,933 and an area of 47.8 square kilometres (18.5 mi2).\nTaurianova borders the municipalities Cittanova, Molochio, Oppido Mamertina, Rizziconi, Terranova Sappo Minulio and Varapodio.\nThe municipality of Taurianova contains the frazioni (subdivisions, mainly villages and hamlets) San Martino, Amato, Pegara and Donna Livia.\nTaurianova is famous for handmade nougat.\nTaurianova was the location of a bloody ’ndrangheta war in 1991. Eight people were murdered in three days in May 1991 and one victim had his head cut off in front of his own butcher shop."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "taurianova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5010,
+    "attempt": 4972,
+    "place_id": "gn-2646814",
+    "input": {
+      "place": {
+        "place_id": "gn-2646814",
+        "name": "Hockley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.5,
+        "lon": -1.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hockley, West Midlands",
+          "url": "https://en.wikipedia.org/wiki/Hockley,_West_Midlands",
+          "text": "Hockley is a central inner-city district in the city of Birmingham, England. It lies about one mile (1.5 kilometres) northwest of the city centre, and is served by the Jewellery Quarter station. Birmingham's Jewellery Quarter continues to thrive in Hockley, and much of the original architecture and small artisan workshops have survived intact.\nHockley is the location of the Museum of the Jewellery Quarter and Birmingham Mint. Vittoria Street in Hockley is home to Birmingham Institute of Art and Design's Jewellery School, and The Big Peg arts & crafts workshop cluster is nearby. Housing in the area is generally characterised by well-built Victorian villas and terraces.\nThe Hockley Flyover murals at the \"Hockley flyover\" road interchange are an exemplary example of brutalist late-modernist concrete architecture and are grade II listed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "hockley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5011,
+    "attempt": 4973,
+    "place_id": "gn-2652995",
+    "input": {
+      "place": {
+        "place_id": "gn-2652995",
+        "name": "Cirencester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.71927,
+        "lon": -1.97145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cirencester",
+          "url": "https://en.wikipedia.org/wiki/Cirencester",
+          "text": "Cirencester (  SY-rən-SEST-ə, occasionally   SIS-it-ə) is a market town and civil parish in the Cotswold District of Gloucestershire, England. It lies on the River Churn, a tributary of the Thames. Cirencester is the eighth largest settlement in Gloucestershire and the largest town within the Cotswolds. It is the home of the Royal Agricultural University, the oldest agricultural college in the English-speaking world, founded in 1840. The town had a population of 20,229 in 2021. The town is 18 miles (29 km) north-west of Swindon, 18 miles (29 km) south-east of Gloucester, 37 miles (60 km) west of Oxford and 39 miles (63 km) north-east of Bristol.\nThe Roman name for the town was Corinium, which is thought to have been associated with the ancient British tribe of the Dobunni, having the same root word as the River Churn. The earliest known reference to the town was by Ptolemy in AD 150. The town's Corinium Museum has an extensive Roman collection."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "cirencester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5012,
+    "attempt": 4974,
+    "place_id": "gn-2738459",
+    "input": {
+      "place": {
+        "place_id": "gn-2738459",
+        "name": "Lamego",
+        "country": "Portugal",
+        "subdivision": "Viseu",
+        "lat": 41.09741,
+        "lon": -7.80991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lamego",
+          "url": "https://en.wikipedia.org/wiki/Lamego",
+          "text": "Lamego (European Portuguese: [lɐˈmeɣu] ; Proto-Celtic: *Lamecum) is a city and municipality in the Viseu District, in the Norte Region of the Douro in northern Portugal. Located on the shores of the Balsemão River, the municipality has a population of 26,691, in an area of 165.42 km2.\nWith origins before the Roman occupation of the Iberian Peninsula, Lamego is known for its historic city center, having a long history as a principal city of the former Trás-os-Montes e Alto Douro Province. Legend holds that the first Portuguese Cortes were held in Lamego, in 1143. The Roman Catholic Diocese of Lamego is based in the city center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "lamego",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5013,
+    "attempt": 4975,
+    "place_id": "gn-2748178",
+    "input": {
+      "place": {
+        "place_id": "gn-2748178",
+        "name": "Rhoon",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.8575,
+        "lon": 4.42222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rhoon",
+          "url": "https://en.wikipedia.org/wiki/Rhoon",
+          "text": "Rhoon is a village that borders the municipality of the city of Rotterdam, South Holland, the Netherlands.\nAccording to its history it was established in 1199 and was ruled by the lords of Duiveland. In the 14th century the village was struck by many floods.\nIn the last big flood, the North Sea flood of 1953, the Dutch government implemented the \"deltawerken\" (Delta Works). This is a large protection barrier of dikes and dams to keep the water of the North Sea out during high tides. In 1969 Rhoon also became part of this plan and a large dike was established around the island of IJsselmonde.\nRhoon is part of the island of IJsselmonde and situated in the south of this island.\nOn the lands outside the dikes is a small yacht marina on the banks of the river Oude Maas, and also a \"griend\" which is a tidal forest. The river Oude Maas has a tidal difference of around 1.2 meter in a twice daily cycle.\nSince 1 January 1985, the village has been part of the municipality of Albrandswaard together with Poortugaal.\nThe village has a connection to the city of Rotterdam by Rotterdam Metro line D, through Rhoon station.\nIn Rhoon is the Dutch Consulate General of Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "rhoon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5014,
+    "attempt": 4976,
+    "place_id": "gn-2867164",
+    "input": {
+      "place": {
+        "place_id": "gn-2867164",
+        "name": "Nagold",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.5498,
+        "lon": 8.72366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagold",
+          "url": "https://en.wikipedia.org/wiki/Nagold",
+          "text": "Nagold (German pronunciation: [ˈnaːɡɔlt] ) is a town in southwestern Germany, bordering the Northern Black Forest. It is located in the Landkreis (district) of Calw (Germany/Baden-Württemberg). Nagold is recorded for the first time in a historical document dating back to 786, specified as \"villa nagaltuna.\" Nagold is known for its ruined castle, Hohennagold Castle, and for its road viaduct. It takes its name from the river Nagold, which flows through the town.\nNagold has a beautiful city centre where half-timbered houses and modern architecture meet each other. The following small villages belong to the district of Nagold: Emmingen, Gündringen, Hochdorf, Iselshausen, Mindersbach, Pfrondorf, Schietingen and Vollmaringen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "nagold",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5015,
+    "attempt": 4977,
+    "place_id": "gn-2964403",
+    "input": {
+      "place": {
+        "place_id": "gn-2964403",
+        "name": "Enniscorthy",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 52.50083,
+        "lon": -6.55778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enniscorthy",
+          "url": "https://en.wikipedia.org/wiki/Enniscorthy",
+          "text": "Enniscorthy (Irish: Inis Córthaidh) is the second-largest town in County Wexford, Ireland. The town is located on the River Slaney and in close proximity to the Blackstairs Mountains and Ireland's longest beach, Curracloe.\nThe town's name may refer either to the \"Island of Corthaidh\" or the \"Island of Rocks\". The cathedral of the Roman Catholic Diocese of Ferns is located in the town as well as an array of other historical sites such as Enniscorthy Castle and the key battle site of the 1798 Rebellion.\nAt the 2022 census, the population of the urban area of Enniscorthy was 12,310. The town is twinned with Gimont, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "enniscorthy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5016,
+    "attempt": 4978,
+    "place_id": "gn-3101943",
+    "input": {
+      "place": {
+        "place_id": "gn-3101943",
+        "name": "Bytów",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.17057,
+        "lon": 17.49187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bytów",
+          "url": "https://en.wikipedia.org/wiki/Byt%C3%B3w",
+          "text": "Bytów (Polish: [ˈbɨtuf] ; Kashubian: Bëtowò; German: Bütow [ˈbyːtoː] ) is a town in the Gdańsk Pomerania region of northern Poland with 16,730 inhabitants as of December 2021. It is the capital of Bytów County in the Pomeranian Voivodeship.\nIn the early Middle Ages a fortified stronghold stood near the town. In 1346 as Bütow it obtained Kulm law rights from the Teutonic Order, which controlled it since 1329. During the Thirteen Years' War (1454–1466), the town was the site of heavy fighting and changed hands over time. Eventually, King Casimir IV Jagiellon granted the town to Eric II, Duke of Pomerania, as a perpetual fiefdom. After the Partitions of Poland, Bytów became part of the Kingdom of Prussia and later also Germany, within which it remained until the end of World War II. In the final stages of the war Bytów heavily shelled by the Red Army, and more than 55% of the buildings were destroyed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "bytow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5017,
+    "attempt": 4979,
+    "place_id": "gn-3121238",
+    "input": {
+      "place": {
+        "place_id": "gn-3121238",
+        "name": "Grado",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.38801,
+        "lon": -6.07433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grado, Asturias",
+          "url": "https://en.wikipedia.org/wiki/Grado,_Asturias",
+          "text": "Grado (Spanish pronunciation: [ˈɡɾaðo], commonly Grao; Asturian: Grau, and officially Grau/Grado) is a municipality in the Autonomous Community of the Principality of Asturias in Spain. It is bordered on the north by Candamo and Las Regueras, on the east by Proaza, Santo Adriano and Oviedo, on the south by Teverga and Yernes y Tameza, and on the west by Belmonte de Miranda and Salas.\nThe municipality's capital town, also with the same name, is famous for its markets, celebrated every Wednesday and Sunday. These markets, the oldest in Asturias, have their origin in the Middle Ages, when King Alfonso X the Wise granted Grado's town charter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "grado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5018,
+    "attempt": 4980,
+    "place_id": "gn-3181521",
+    "input": {
+      "place": {
+        "place_id": "gn-3181521",
+        "name": "Brisighella",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.22228,
+        "lon": 11.77358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brisighella",
+          "url": "https://en.wikipedia.org/wiki/Brisighella",
+          "text": "Brisighella (Romagnol: Brisighëla) is a comune (municipality) in the province of Ravenna, region of Emilia-Romagna, in Northeast Italy. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\n\nBrisighella borders the following municipalities: Casola Valsenio, Castrocaro Terme e Terra del Sole, Faenza, Forlì, Marradi, Modigliana, Palazzuolo sul Senio, Riolo Terme. It originates from a rocca castle ordered by Maghinardo Pagani and later expanded by Francesco Manfredi, lord of Faenza.\nIt is the birthplace of Dino Monduzzi (1922–2006), a cardinal of the Roman Catholic Church.\nThe final part of the novel The Gadfly by Ethel Lilian Voynich (1897) is set in Brisighella. This historical novel, now neglected in England or in the US, almost unknown in Italy, was popular in the second half of the 20th century, on the basis of a Marxist reconsideration of its plot, in the USSR, Communist countries in Eastern Europe, Mao Zedong's China, etc.\nBrisighella is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "brisighella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

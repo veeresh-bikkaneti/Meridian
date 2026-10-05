@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 890,
+    "attempt": 881,
+    "place_id": "gn-3513966",
+    "input": {
+      "place": {
+        "place_id": "gn-3513966",
+        "name": "Zumpango",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.7967,
+        "lon": -99.09946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zumpango",
+          "url": "https://en.wikipedia.org/wiki/Zumpango",
+          "text": "Zumpango is a municipality located in the northeastern part of the state of Mexico in Zumpango Region. It lies directly north of Mexico City within the Greater Mexico City urban area. The municipal seat, Zumpango de Ocampo, lies near Lake Zumpango, the last of the five interconnected lakes which covered much of the Valley of Mexico in the pre Hispanic period. The name Zumpango is derived from the Nahuatl word \"Tzompanco\" which means string of scalps.\nThe municipality is located in the northeast part of the State of Mexico, part of the state’s panhandle that extends over the north and down on the east side of the Federal District of Mexico City. The municipality has a territory of 244.08km2 and borders the municipalities of Tequixquiac, Hueypoxtla, Teoloyucan, Cuautitán, Nextlapan, Jaltenco, Tecámac,  Coyotepec and Huehuetoca as well as Tizayuca in the state of Hidalgo. Zumpango is considered to be part of the metropolitan area of Mexico City as part of the Cuautitlán-Texcoco zone north of the city proper. Zumpango is the location of the Felipe Ángeles International Airport, which was opened in 2022 to be the second commercial airport serving Greater Mexico City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "zumpango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 891,
+    "attempt": 882,
+    "place_id": "gn-4710178",
+    "input": {
+      "place": {
+        "place_id": "gn-4710178",
+        "name": "McKinney",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.19762,
+        "lon": -96.61527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McKinney, Texas",
+          "url": "https://en.wikipedia.org/wiki/McKinney,_Texas",
+          "text": "McKinney is a city in and the county seat of Collin County, Texas, United States. It is Collin County's third-largest city, after Plano and Frisco. A suburb of the Dallas–Fort Worth metroplex, McKinney is about 32 miles (51 km) north of Dallas.\nThe Census Bureau ranked McKinney as the nation's fourth fastest-growing large city from 2010 to 2019 and determined the city's 2020 population was 195,308. Based on Census Bureau estimates, as of July 2022 the city's population was 207,507, making it Texas's 15th-most populous city and the 99th most populous in the United States.\nThe Census Bureau defines an urban area of northern Dallas-area suburbs that are separated from the Dallas–Fort Worth urban area, with McKinney and Frisco as the principal cities; the McKinney–Frisco urban area had a population of 504,803 as of the 2020 census, ranked 83rd in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "mckinney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 892,
+    "attempt": 883,
+    "place_id": "gn-5391710",
+    "input": {
+      "place": {
+        "place_id": "gn-5391710",
+        "name": "San Bernardino",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.10834,
+        "lon": -117.28977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Bernardino, California",
+          "url": "https://en.wikipedia.org/wiki/San_Bernardino,_California",
+          "text": "San Bernardino (  SAN BUR-nə-DEE-noh; Spanish: [ˌsãm beɾ.naɾˈð̞i.no]) is a city in and the county seat of San Bernardino County, California, United States. Located in the Inland Empire region of Southern California, the city had a population of 222,101 in the 2020 census, making it the 18th–most populous city in California. The Riverside–San Bernardino metropolitan area at 4.74 million residents is the 12th-largest metropolitan area in the nation. San Bernardino is the economic, cultural, and political hub of the San Bernardino Valley, sharing that distinction for the wider Inland Empire with its twin city of Riverside.\nSan Bernardino was named in 1810, when Spanish priest Francisco Dumetz led an expedition through the area. In 1839, the Mexican government granted Californio ranchero José del Carmen Lugo the right to settle the area, which was formalized when he was granted Rancho San Bernardino in 1842. Following the American Conquest of California, the largely unsettled rancho was purchased by Mormon settlers who founded the town of San Bernardino in 1851, later incorporated as a city in 1854. After most of the Mormons left in 1857, the city grew significantly in the late 19th century as a commercial hub at the crossroads between Southern California and the American Southwest. Today, San Bernardino is an important hub for the Inland Empire and Southern California. The governments of El Salvador, Guatemala, and Mexico have established the metropolitan area's only consulates in the downtown area. Furthermore, the city's University District serves as a college town, as it is home to California State University, San Bernardino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "san bernardino",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bernardino",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 893,
+    "attempt": 884,
+    "place_id": "gn-1264733",
+    "input": {
+      "place": {
+        "place_id": "gn-1264733",
+        "name": "Lucknow",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.83928,
+        "lon": 80.92313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucknow",
+          "url": "https://en.wikipedia.org/wiki/Lucknow",
+          "text": "Lucknow (/ˈlʌknaʊ/  LUK-now; Hindi: Lakhanaū, pronounced [ˈləkʰnə.uː] ) is a metropolis and the second largest city of the Indian state of Uttar Pradesh where it serves as the capital and the administrative headquarters of the eponymous district and division. The city had a population of 2.8 million according to the 2011 census, making it the eleventh most populous city and the twelfth-most populous urban agglomeration of India. It is an important centre of education, commerce, aerospace, finance, pharmaceuticals, information technology, design, gastronomy, literature, arts, tourism, music, and poetry. Lucknow, along with Agra and Varanasi, forms the backbone of the Uttar Pradesh Heritage Arc.\nIn the 6th century BCE, Lucknow was part of Kosala, one of the 16 Mahajanapadas during the late Vedic period. The Nawabs of Lucknow acquired the name after the reign of the third Nawab, when Lucknow became their capital. In 1856, the East India Company moved its troops to the border, then annexed the state of Awadh, alleging maladministration. Awadh was placed under a chief commissioner. Lucknow was one of the major centres of the Indian Rebellion of 1857 and actively participated in India's independence movement, emerging as a strategically important North Indian city. The city witnessed some of the pivotal moments in the history of India including the first meeting of Mahatma Gandhi, Jawaharlal Nehru, and Muhammad Ali Jinnah during the 1916 Congress session, when the Lucknow Pact was signed.\nThere are many software and IT companies in the city. Lucknow is an emerging hub of automobile manufacturing. It has been the headquarters of the Central Command of the Indian Army. It is the home of several prominent educational and research institutes and universities, including the IIM Lucknow, the Indian Institute of Information Technology, Lucknow, AKTU and the Central Drug Research Institute. Lucknow is designated as a City of Gastronomy by UNESCO heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "lucknow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 894,
+    "attempt": 885,
+    "place_id": "gn-1278815",
+    "input": {
+      "place": {
+        "place_id": "gn-1278815",
+        "name": "Ambur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.79163,
+        "lon": 78.71644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambur",
+          "url": "https://en.wikipedia.org/wiki/Ambur",
+          "text": "Ambur is a major town in the Vellore division in the South Indian state of Tamil Nadu. It is recognised as one of India's major leather manufacturing and export hubs. Along with its twin town, Vaniyambadi (16 km to the West), Ambur is a part of the Vaniyambadi Revenue district, which accounts for a significant share of India's finished leather, leather garments, and footwear components shipped directly to international markets, including Europe and North America.\nHistorically, Ambur has remained a major town in the North Arcot district of the Madras Presidency (present-day Tamil Nadu). In 1989, the North Arcot district was bifurcated into Vellore and Tiruvannamalai districts, and Ambur remained part of the Vaniyambadi Taluk in the Vellore district. In 2009, Ambur taluk was formed by splitting major land areas from the neighbouring Vaniyambadi taluk and few parts from the Vellore taluk. Later in 2019, the Vellore district was further trifurcated into Ranipet, Tirupathur, and Vellore districts, with Ambur becoming part of Tirupathur district.\nAmbur is located on the banks of the Palar River between Chennai and Bangalore. Ambur has a sizeable leather industry, and is known for its spicy biryani and for the sweet, makkhenpeda. Ambur was the site of two major military actions in the 18th century. The first was the 1749 Battle of Ambur that opened the Second Carnatic War between the Arcot State and the Mughal Empire. In 1767, the siege of Ambur took place during the First Anglo-Mysore War, with local troops and a British force successfully resisting an attack by the Kingdom of Mysore and by the Hyderabad State."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "ambur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 895,
+    "attempt": 886,
+    "place_id": "gn-152224",
+    "input": {
+      "place": {
+        "place_id": "gn-152224",
+        "name": "Mwanza",
+        "country": "Tanzania",
+        "subdivision": "Mwanza",
+        "lat": -2.51667,
+        "lon": 32.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mwanza",
+          "url": "https://en.wikipedia.org/wiki/Mwanza",
+          "text": "Mwanza City (), also known as Rock City to the residents, is a port city and capital of Mwanza Region on the southern shore of Lake Victoria in north-western Tanzania. With an urban population of 1,104,521 and a population of 3,699,872 in the region (2022 census), it is Tanzania's second largest city, after Dar es Salaam. It is also the second largest city in the Lake Victoria basin after Kampala, Uganda and ahead of Kisumu, Kenya at least in population size. Within the East African community, Mwanza city is the fifth largest city after Dar es Salaam, Nairobi, Mombasa, and Kampala. It is slightly ahead of Kigali, Kisumu, and Bujumbura in the population of city proper limits.  Mwanza city is also the capital city of Mwanza Region, and is administratively divided into two municipal districts within that Region - Ilemela and Nyamagana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "mwanza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 896,
+    "attempt": 887,
+    "place_id": "gn-160196",
+    "input": {
+      "place": {
+        "place_id": "gn-160196",
+        "name": "Dodoma",
+        "country": "Tanzania",
+        "subdivision": "Dodoma",
+        "lat": -6.17221,
+        "lon": 35.73947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dodoma",
+          "url": "https://en.wikipedia.org/wiki/Dodoma",
+          "text": "Dodoma  (lit. 'It has sunk' in Gogo), officially Dodoma City (Jiji Kuu la Dodoma, in Swahili), is the capital city of Tanzania. With a population of 765,179 as per 2022 which is projected to reach 1,000,000 by the end of 2026 (given the current pace of relocation of government organizations and NGOs), it is also the administrative capital of both Dodoma Municipal Council and the entire Dodoma Region. In July 2024, Dodoma officially surpassed Arusha to become the third largest city in Tanzania on both infrastructure and population measures.\nIn 1974, the Tanzanian government announced that Tanzania's national capital would be moved from Dar es Salaam to Dodoma for social and economic reasons and to centralise the capital within the country. It became the official capital in 1996.\nMuch of Dodoma's initial design did not come to fruition until the 21st century. In May 2023, the national government under President Samia Suluhu unveiled the new State House in Dodoma in a historic event stamping the relocation of government duties to the city. As a result, Dar es Salaam has remained the commercial and maritime capital of Tanzania, while also retaining the state house Ikulu and a number of government functions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "dodoma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 897,
+    "attempt": 888,
+    "place_id": "gn-1627896",
+    "input": {
+      "place": {
+        "place_id": "gn-1627896",
+        "name": "Semarang",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -6.99306,
+        "lon": 110.42083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Semarang",
+          "url": "https://en.wikipedia.org/wiki/Semarang",
+          "text": "Semarang (Javanese: ꦏꦸꦛꦯꦼꦩꦫꦁ, Kutha Semarang) is the capital and largest city of Central Java province in Indonesia. It was a major port during the Dutch colonial era, and is still an important regional center and port today. The city has been named as the cleanest tourist destination in Southeast Asia by the ASEAN Clean Tourist City Standard (ACTCS) for 2020–2022.\nIt has an area of 373.78 km2 (144.32 sq mi) and had a population of 1,555,984 at the 2010 census and 1,653,524 at the 2020 census, making it Indonesia's ninth most populous city after Jakarta, Surabaya, Bekasi, Bandung, Medan, Depok, Tangerang and Palembang; the official population estimate as at mid 2025 was 1,722,421 (comprising 851,637 males and 870,784 females). The built-up urban area had 3,183,516 inhabitants at the 2010 census spread over two cities and 26 districts. The Semarang metropolitan area (a.k.a. Kedungsepur) has a population of over 6 million in 2020 (see Greater Semarang section). The population of the city is predominantly Javanese with significant Chinese presence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "semarang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 898,
+    "attempt": 889,
+    "place_id": "gn-1786731",
+    "input": {
+      "place": {
+        "place_id": "gn-1786731",
+        "name": "Qingzhou",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.69667,
+        "lon": 118.47972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qingzhou",
+          "url": "https://en.wikipedia.org/wiki/Qingzhou",
+          "text": "Qingzhou (Chinese: 青州; pinyin: Qīngzhōu) Wade–Giles: Tsing-chou, sometimes written as Ching-chow-fu, formerly Yidu County (Yitu, 益都县), is a county-level city, which is located in the west of the prefecture-level city of Weifang, in the central part of Shandong Province, China. Qingzhou is a dynamic industry city, and also grows a great number of farm products. The local government holds an open policy of introduction of foreign capital, and has established strong business relationships with more than fifty countries and regions.\nQingzhou's historical heritages were highly praised and celebrated. In 2008, the Qingzhou Museum was recognized by the State Administration of Cultural Heritage as one of the first branch of national first-class museums, making it the only county-level city to possess such a museum. In 2009, Qingzhou’s Zhaode Ancient Street (昭德古街) was included in the first list of \"China’s Historic and Cultural Streets\". On November 18, 2013, the State Council officially designated Qingzhou as a National Famous Historical and Cultural City. In 2017, the Ancient City of Qingzhou was rated as a national 5A-level tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "qingzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 899,
+    "attempt": 890,
+    "place_id": "gn-1791249",
+    "input": {
+      "place": {
+        "place_id": "gn-1791249",
+        "name": "Wuhai",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 39.68442,
+        "lon": 106.81583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuhai",
+          "url": "https://en.wikipedia.org/wiki/Wuhai",
+          "text": "Wuhai (Chinese: 乌海市; Mongolian: Üqai qota, Mongolian Cyrillic: Үхай хот) is a prefecture-level city and regional center in the Inner Mongolia Autonomous Region, China, and is by area the smallest prefecture-level division of the region. It is located on the Yellow River between the Gobi and Ordos deserts. Wuhai became a single city occupying both banks of the Yellow River with the amalgamation in 1976 of Wuda on the left (west) bank (then administrated by Bayan Nuur League) together with Haibowan on the right (east) bank (then administrated by Ikh Juu league). Wuhai is one of very few cities with an antipode which is not only on land (as opposed to open ocean), but which is another inhabited city; the antipode of Wuhai is almost exactly on the city of Valdivia, Chile. Football commentator and Television host Huang Jianxiang was born here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "wuhai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 900,
+    "attempt": 891,
+    "place_id": "gn-2023469",
+    "input": {
+      "place": {
+        "place_id": "gn-2023469",
+        "name": "Irkutsk",
+        "country": "Russia",
+        "subdivision": "Irkutsk Oblast",
+        "lat": 52.29566,
+        "lon": 104.29076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irkutsk",
+          "url": "https://en.wikipedia.org/wiki/Irkutsk",
+          "text": "Irkutsk is the largest city and administrative center of Irkutsk Oblast, Russia. With a population of 587,891 as of the 2010 Census, Irkutsk is the 25th-largest city in Russia by population, the fifth-largest in the Siberian Federal District, and one of the largest cities in Siberia.\nLocated in the south of the eponymous oblast, the city proper lies on the Angara River, a tributary of the Yenisei, about 850 kilometres (530 mi) to the south-east of Krasnoyarsk and about 520 kilometres (320 mi) north of Ulaanbaatar. The Trans-Siberian Highway (Federal M53 and M55 Highways) and Trans-Siberian Railway connect Irkutsk to other regions in Russia and Mongolia.\nMany distinguished Russians were sent into exile in Irkutsk for their part in the Decembrist revolt of 1825, and the city became an exile-post for the rest of the century. Some historic wooden houses still survive. When the railway reached Irkutsk, it had earned the nickname of \"The Paris of Siberia.\" The city was the center of bitter fighting in the Russian Civil War of 1918–20. Afterward, in the Soviet period, its architecture was dominated by the mandatory squared-up style. The city became a major centre of aircraft manufacture. The historic centre of Irkutsk is included in UNESCO's tentative list of World Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "irkutsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 901,
+    "attempt": 892,
+    "place_id": "gn-2462881",
+    "input": {
+      "place": {
+        "place_id": "gn-2462881",
+        "name": "Laayoune",
+        "country": "Western Sahara",
+        "subdivision": "Western Sahara",
+        "lat": 27.1418,
+        "lon": -13.18797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laayoune",
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "text": "Laayoune or El Aaiún (Arabic: العيون, al-ʕuyūn [alʕujuːn], Hassaniyya: [ˈləʕjuːn] , lit. 'The Springs') is the largest city of the disputed territory of Western Sahara, with a population of 262,791 in 2024. The city is the de jure capital of the Sahrawi Arab Democratic Republic, though it is under de facto Moroccan administration as occupied territory. The modern city is thought to have been founded by the Spanish captain Antonio de Oro in 1938. From 1958 it became the administrative capital of the Spanish Sahara, administered by the Governor General of Spanish West Africa.\nLaayoune is the capital of the Laâyoune-Sakia El Hamra region administered by Morocco, but it is still under the supervision of MINURSO, a UN mission.\nThe town is located south of the dry river of Saguia el-Hamra, where the old lower town built by Spanish colonists is located. The St. Francis of Assisi Cathedral was constructed during the Spanish period and is still active with a few Catholic missionaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "laayoune",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 902,
+    "attempt": 893,
+    "place_id": "gn-2636389",
+    "input": {
+      "place": {
+        "place_id": "gn-2636389",
+        "name": "Swindon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55797,
+        "lon": -1.78116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swindon",
+          "url": "https://en.wikipedia.org/wiki/Swindon",
+          "text": "Swindon ( ) is a town in Wiltshire, England. At the time of the 2021 census, the population of the built-up area was 224,942, making it the largest settlement in the county. Located at the northeastern edge of the South West England region, Swindon lies on the M4 corridor, 84 miles (135 km) to the west of London and 36 miles (57 km) to the east of Bristol. The Cotswolds lie just to the town's north and the North Wessex Downs lie just to the town's south. It is the centre of Swindon unitary authority.\nRecorded in the 1086 Domesday Book as Suindune, the arrival of the Great Western Railway in 1843 transformed it from a small market town of 2,500 into a thriving railway hub that would become one of the largest railway engineering complexes in the world at its peak. This brought with it pioneering amenities such as the UK's first lending library and a 'cradle-to-grave' healthcare centre that was later used as a blueprint for the NHS. Swindon's railway heritage can be primarily seen today with the Grade II listed Railway Village and STEAM Museum. The Swindon Designer Outlet is housed in the renovated former works, and the Brunel Shopping Centre is one of several places in Swindon that bear the name of the famous engineer generally acknowledged with bringing the railways to the town.\nDespite the subsequent decline and closure of its railway works, Swindon was one of the fastest growing towns in Europe post-war as its economy diversified, attracting large international companies, who made use of its burgeoning population and strategic transport links.\nMajor venues in the town include the Wyvern Theatre and the Mechanics' Institute. Lydiard Park has hosted festivals such as BBC Radio 1's Big Weekend, while the Swindon Mela, an all-day celebration of South Indian arts and culture, attracts up to 10,000 visitors a year. The ancient Ridgeway, known as Britain's oldest road, runs a few miles to Swindon's south, with Avebury, the largest megalithic stone circle in the world, and Uffington White Horse, Britain's oldest white horse figure, also nearby. Wiltshire's only professional football club, Swindon Town, have played in the Premier League in the 1993–94 season and won a major trophy, securing a famous giant-killing victory over Arsenal in the 1969 League Cup final. They currently play in League Two at the 15,000-seat County Ground in the town centre. Other sports in the town include Swindon Wildcats Ice Hockey and five-time British speedway champions the Swindon Robins."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 417
+    },
+    "banned_terms": [
+      {
+        "term": "swindon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 903,
+    "attempt": 894,
+    "place_id": "gn-2650839",
+    "input": {
+      "place": {
+        "place_id": "gn-2650839",
+        "name": "Dudley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.5,
+        "lon": -2.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dudley",
+          "url": "https://en.wikipedia.org/wiki/Dudley",
+          "text": "Dudley ( DUD-lee, locally [ˈdʊdləi̯]) is a market town in the West Midlands, England, 6 miles (9.7 km) southeast of Wolverhampton and 8 miles (13 km) northwest of Birmingham. Historically part of Worcestershire, the town is the administrative centre of the Metropolitan Borough of Dudley. In the 2011 census, it had a population of 79,379. The wider Metropolitan Borough had a population of 312,900. In 2014, the borough council adopted a slogan describing Dudley as the capital of the Black Country, a title by which it had long been informally known.\nOriginally a market town, Dudley was one of the birthplaces of the Industrial Revolution and grew into an industrial centre in the 19th century with its iron, coal, and limestone industries before their decline and the relocation of its commercial centre to the nearby Merry Hill Shopping Centre in the 1980s. Tourist attractions include Dudley Zoo and Castle, the 12th-century priory ruins, and the Black Country Living Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "dudley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 904,
+    "attempt": 895,
+    "place_id": "gn-2806654",
+    "input": {
+      "place": {
+        "place_id": "gn-2806654",
+        "name": "Wolfsburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.4236,
+        "lon": 10.77597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolfsburg",
+          "url": "https://en.wikipedia.org/wiki/Wolfsburg",
+          "text": "Wolfsburg (German: [ˈvɔlfsbʊʁk] ; Eastphalian: Wulfsborg) is the fifth-largest city in the German state of Lower Saxony. It lies on the river Aller, 75 kilometres (47 mi) east of Hanover and 230 kilometres (143 mi) west of Berlin.\nWolfsburg is famous as the location of Volkswagen AG's headquarters and, until it was overtaken by Tesla Gigafactory Texas in 2022, the world's biggest car plant. The Autostadt is a visitor attraction next to the Volkswagen factory that features the company's model range: Audi, Bentley, Ducati, Lamborghini, Porsche, SEAT, Škoda Auto and Volkswagen Commercial Vehicles. Wolfsburg is one of the few German cities built during the first half of the 20th century as a planned city. From its founding on 1 July 1938 as a home for workers producing the KdF-Wagen until 25 May 1945, the city was called Stadt des KdF-Wagens bei Fallersleben. In 1972, the population first exceeded 100,000. In 2019, the GRP was €188,453 per capita."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "wolfsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 905,
+    "attempt": 896,
+    "place_id": "gn-2861650",
+    "input": {
+      "place": {
+        "place_id": "gn-2861650",
+        "name": "Nuremberg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.45421,
+        "lon": 11.07752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuremberg",
+          "url": "https://en.wikipedia.org/wiki/Nuremberg",
+          "text": "Nuremberg ( NURE-əm-burg; German: Nürnberg [ˈnʏʁnbɛʁk] ; Mainfränkisch: Nämberch [ˈnɛmbɛrç]) is the second-largest city in the German state of Bavaria and the largest city in the cultural region of Franconia. Its 546,397 (2024) inhabitants make it the 13th-largest city in Germany. Situated on the Pegnitz, the city forms a continuous conurbation with the neighbouring cities of Fürth, Erlangen and Schwabach, with the built-up area comprising around 1.4 million inhabitants, while the larger Nuremberg Metropolitan Region has a population of approximately 3.6 million.\nFirst mentioned in 1050, Nuremberg developed around an imperial castle into one of the most important cities of the Holy Roman Empire. It became a Free Imperial City in the 13th century. Owing to its political significance, imperial diets were frequently held there, and the Imperial Regalia were kept in the city from 1424 until the end of the empire. During the Late Middle Ages and the Renaissance, Nuremberg was also a centre of art, publishing, and scientific innovation, and was associated with figures such as Albrecht Dürer, Martin Behaim, Johann Pachelbel, and Hans Sachs. In the 20th century, it became known as the site of the Nuremberg rallies and, after the Second World War, the Nuremberg trials.\nNuremberg is a major centre of transport, education, and commerce in northern Bavaria. It is served by Nuremberg Airport, the second-busiest airport in Bavaria. Institutions of higher education in Nuremberg include the University of Erlangen-Nuremberg, Germany's 11th-largest university, Technische Hochschule Nürnberg, Hochschule für Musik Nürnberg, and the newly founded University of Technology Nuremberg. Nürnberg Messe ranks among Germany's largest trade-fair and convention organisers.\nNuremberg is known for its well-preserved medieval heritage, including Nuremberg Castle, the Old Town, and the city walls. It is an important cultural centre, with institutions such as the Staatstheater Nürnberg and the Staatsphilharmonie Nürnberg. 1. FC Nürnberg is among Germany's most successful football clubs. Nuremberg was one of the host cities of the 2006 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "nuremberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 906,
+    "attempt": 897,
+    "place_id": "gn-2874225",
+    "input": {
+      "place": {
+        "place_id": "gn-2874225",
+        "name": "Mainz",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.98185,
+        "lon": 8.28008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mainz",
+          "url": "https://en.wikipedia.org/wiki/Mainz",
+          "text": "Mainz (German: [maɪnts] ; see below) is the capital and largest city of the German state of Rhineland-Palatinate, and with around 223,000 inhabitants, it is Germany's 35th-largest city. It lies in the Rhine-Main Metropolitan Region — Germany's second-largest metropolitan region after Rhine-Ruhr — which also encompasses the cities of Frankfurt am Main, Wiesbaden, Darmstadt, Offenbach am Main, and Hanau.\nMainz is located at the northern end of the Upper Rhine Plain, on the left bank of the Rhine. It is the largest city of Rhenish Hesse, a region of Rhineland-Palatinate that was historically part of Hesse, and is one of Germany's most important wine regions because of its mild climate. Mainz is connected to Frankfurt am Main by the Rhine-Main S-Bahn rapid transit system. Before 1945, Mainz had six boroughs on the other side of the Rhine (see: de:Rechtsrheinische Stadtteile von Mainz). Three have been incorporated into Wiesbaden (see: de:AKK-Konflikt), and three are now independent.\nMainz was founded as Castrum Mogontiacum by Roman general Nero Claudius Drusus in the 1st century BC on the northern frontier of the Roman Empire,  and became the capital of the Roman province of Germania Superior. The city was settled by the Franks from 459 on, and in the 8th century it became an important city within the Holy Roman Empire, as capital of the Electorate of Mainz and seat of the Archbishop-Elector of Mainz, the primate of Germany. Mainz Cathedral is one of the three Rhenish Imperial Cathedrals along with Speyer Cathedral and Worms Cathedral. Since the 12th century, Mainz was one of the ShUM-cities — a league formed by the cities of Speyer, Worms and Mainz — which are referred to as the cradle of Ashkenazi Jewish life and as the center of Jewish life during medieval times. The Jewish heritage of these cities is one of a kind, and has been declared the UNESCO World Heritage Site of \"ShUM Sites of Speyer, Worms and Mainz\". Mainz is the birthplace of Johannes Gutenberg, who invented the printing press and introduced letterpress printing to Europe, starting the global spread of the printing press. Mainz was heavily damaged in World War II; more than 30 air raids destroyed around half of the old town in the city centre, but many buildings were rebuilt post-war.\nLike most cities in the Rhineland, Mainz holds extensive carnival celebrations, which are known as the second-most important in Germany, after the celebrations in Cologne. The borough of Lerchenberg is the seat of ZDF (Zweites Deutsches Fernsehen, lit. \"Second German Television\"), the second-most important German public service television broadcaster, as well as of 3sat, another television broadcaster, that is jointly operated by public broadcasters from Germany (ARD and ZDF), Austria (ORF), and Switzerland (SRG SSR)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 454
+    },
+    "banned_terms": [
+      {
+        "term": "mainz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 907,
+    "attempt": 898,
+    "place_id": "gn-3068799",
+    "input": {
+      "place": {
+        "place_id": "gn-3068799",
+        "name": "Ostrava",
+        "country": "Czechia",
+        "subdivision": "Moravian-Silesian Region",
+        "lat": 49.83465,
+        "lon": 18.28204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ostrava",
+          "url": "https://en.wikipedia.org/wiki/Ostrava",
+          "text": "Ostrava (Czech pronunciation: [ˈostrava] ; Polish: Ostrawa, German: Ostrau) is a city in the north-east of the Czech Republic and the capital of the Moravian-Silesian Region. It has about 281,000 inhabitants. It lies near the border with Poland, at the confluences of four rivers: Oder, Opava, Ostravice and Lučina. Ostrava is the third largest city in the Czech Republic in terms of both population and area, the second largest city in the region of Moravia, and the largest city in the historical land of Czech Silesia. It straddles the border of the two historic lands of Moravia and Silesia. The wider conurbation — which also includes the towns of Bohumín, Havířov, Karviná, Orlová, Petřvald and Rychvald — is home to about 500,000 people, making it the largest urban area in the Czech Republic apart from the capital Prague.\nOstrava grew in importance due to its position at the heart of a major coalfield, becoming an important industrial engine of the Austrian empire. During the 20th century it was known as the \"steel heart\" of Czechoslovakia thanks to its status as a coal-mining and metallurgical centre, but since the Velvet Revolution (the fall of communism in 1989) it has undergone radical and far-reaching changes to its economic base. Industries have been thoroughly restructured, and the last coal was mined in the city in 1994. However, remnants of the city's industrial past are visible in the Lower Vítkovice area, a former coal-mining, coke production and ironworks complex in the city centre which retains its historic industrial architecture. Lower Vítkovice has applied for inclusion in the UNESCO World Heritage List.\nOstrava is home to various cultural facilities including theatres and galleries. Various cultural and sporting events take place in Ostrava throughout the year, including the Colours of Ostrava music festival, the Janáček May classical music festival, the Summer Shakespeare Festival and NATO Days. Ostrava is home to two public universities: the Technical University of Ostrava and the University of Ostrava. In 2014 Ostrava was a European City of Sport. The city co-hosted (with Prague) the Ice Hockey World Championships in 2004, 2015, and 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "ostrava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 908,
+    "attempt": 899,
+    "place_id": "gn-344979",
+    "input": {
+      "place": {
+        "place_id": "gn-344979",
+        "name": "Addis Ababa",
+        "country": "Ethiopia",
+        "subdivision": "Addis Ababa",
+        "lat": 9.02497,
+        "lon": 38.74689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Addis Ababa",
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+          "text": "Addis Ababa (  AD-iss AB-ə-bə; Amharic: አዲስ አበባ [adˈdis ˈaβəβa] , lit. 'new flower'; Oromo: Finfinnee, lit. 'fountain of hot mineral water') is the capital and largest city of Ethiopia. With an estimated population of 6,287,000 inhabitants as of 2025, it is the tenth largest city in Africa. At an elevation of 2,355 metres (7,726 ft), it is the fourth-highest capital city in the world and the highest capital in Africa. Addis Ababa is a highly developed and important cultural, artistic, financial and administrative center of Ethiopia.\nThe founding history of Addis Ababa dates back to the late 19th century by Menelik II, Negus of Shewa, in 1886 after finding Mount Entoto unpleasant two years prior. At the time, the city was a resort town; its large mineral spring abundance attracted nobilities of the empire and led them to establish permanent settlement. It also attracted many members of the working classes – including artisans and merchants – and foreign visitors. Menelik II then formed his imperial palace in 1887. Addis Ababa became the empire's capital in 1889, and subsequently international embassies were opened. Urban development began with the 20th century, without any prior planning.\nAddis Ababa saw a wide-scale economic boom in 1926 and 1927, and an increase in the number of buildings owned by the middle class, including stone houses filled with imported European furniture. The middle class also imported newly manufactured automobiles and expanded banking institutions. During the Italian occupation, urbanization and modernization steadily increased through a masterplan; it was hoped Addis Ababa would be a more \"colonial\" city, and this continued after the occupation. Subsequent master plans were designed by French and British consultants from the 1940s onwards, focusing on monuments, civic structures, satellite cities and the inner-city. Similarly, the later Italo-Ethiopian masterplan (also projected in 1986) concerned only urban structures and accommodation services, but was later adapted for the 2003 masterplan.\nAddis Ababa is a federally-chartered city in accordance with the Addis Ababa City Government Charter Proclamation No. 87/1997 in the FDRE Constitution. Called \"the political capital of Africa\" due to its historical, diplomatic, and political significance for the continent, Addis Ababa serves as the headquarters of major international organizations, such as the African Union and the United Nations Economic Commission for Africa.\nThe city lies a few kilometres west of the East African Rift, which splits Ethiopia into two, between the Nubian plate and the Somali plate. The city is surrounded by the Special Zone of Oromia, and is populated by people from different regions of Ethiopia. It is home to Addis Ababa University. The city has a high human development index, and is known for its vibrant culture, strong fashion scene, high civic and political involvement of younger people, a thriving arts scene, and for being the heart of a country with one of the fastest economic growth rates in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 478
+    },
+    "banned_terms": [
+      {
+        "term": "addis ababa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "addis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ababa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 909,
+    "attempt": 900,
+    "place_id": "gn-3454031",
+    "input": {
+      "place": {
+        "place_id": "gn-3454031",
+        "name": "Petrópolis",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.505,
+        "lon": -43.17861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petrópolis",
+          "url": "https://en.wikipedia.org/wiki/Petrópolis",
+          "text": "Petrópolis (Portuguese: [peˈtɾɔpolis, -pu-]) is a city of the estado (state) of central Rio de Janeiro, in southeastern Brazil, in a valley of the  Órgãos Mountains, 40 kilometres (25 mi) north of Rio de Janeiro city. According to the 2022 Brazilian census, Petrópolis municipality had a population of 278,881 inhabitants. Besides being the largest and most populous city in the Fluminense Mountain Region, the city also has the largest Gross Domestic Product and Human Development Index in the region.\nThe town's name (\"City of Peter\") honors Pedro II, the last Emperor of Brazil, who is entombed there at the Cathedral of Saint Peter of Alcantara. The city was the summer residence of the Brazilian Emperors and aristocrats in the 19th century, and was the official capital of the state of Rio de Janeiro during the First Brazilian Republic, between 1894 and 1902."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "petropolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

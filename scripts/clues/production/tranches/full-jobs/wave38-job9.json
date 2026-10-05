@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 7613,
+    "attempt": 7561,
+    "place_id": "gn-2332871",
+    "input": {
+      "place": {
+        "place_id": "gn-2332871",
+        "name": "Kwale",
+        "country": "Nigeria",
+        "subdivision": "Delta",
+        "lat": 5.70773,
+        "lon": 6.43402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwale, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Kwale,_Nigeria",
+          "text": "Kwale is an Ukwuani town in Delta State, Nigeria, located in the northern part of the state. The native language of the people is Ukwuani, an Igboid language.  It is the headquarters of Ndokwa West local government area.\nKwale is host to oil and gas companies, some of which have presence in different parts of the African city such as a gas flow facility which is situated at Ebedei nearby Umukwata area and another at Ebendo and Umusadege with a pipeline running from Aboh and river Ase creeks.\nThere are considerations about the establishment of modular refineries within the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "kwale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7614,
+    "attempt": 7562,
+    "place_id": "gn-2613345",
+    "input": {
+      "place": {
+        "place_id": "gn-2613345",
+        "name": "Smørumnedre",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.74232,
+        "lon": 12.30276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smørumnedre",
+          "url": "https://en.wikipedia.org/wiki/Smørumnedre",
+          "text": "Smørumnedre is a town and suburban area situated in Egedal Municipality in the northwestern outskirts of Copenhagen, Denmark and forms part of Copenhagen's urban area. The original village has merged with the neighbouring villages of Måløv in Ballerup Municipality and Jonstrup in Furesø Municipality to form an urban agglomeration with a population of 21,918 (1 January 2026). The small and relatively undisturbed village of Smørumovre (\"Upper Smørum\") is located about 500 metres to the west of Smørumnedre while Lille Smørum(\"Little Smørum\") refers to a group of scattered farms to the south. The three localities are collectively referred to as Smørum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "sm rumnedre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sm",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rumnedre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7615,
+    "attempt": 7563,
+    "place_id": "gn-2636005",
+    "input": {
+      "place": {
+        "place_id": "gn-2636005",
+        "name": "Thornaby-on-Tees",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.53333,
+        "lon": -1.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thornaby-on-Tees",
+          "url": "https://en.wikipedia.org/wiki/Thornaby-on-Tees",
+          "text": "Thornaby-on-Tees, commonly referred to as Thornaby, is a town and civil parish in North Yorkshire, England, 41 miles (66 km) north of York and 3.5 miles (5.6 km) south-east of Middlesbrough. On the south bank of the River Tees, Thornaby falls within the Borough of Stockton-on-Tees and the Tees Valley area. The parish had a population of 24,741 at the 2011 census.\nThe town was incorporated as a municipal borough in 1892, during the Victorian era. The borough was abolished in 1968 on the creation of the County Borough of Teesside. A civil parish called Thornaby was re-created in 1996.\nThe modern centre was built on the north eastern part of Thornaby airfield and lies 2 miles (3.2 km) south-east of Stockton-on-Tees and 4 miles (6.4 km) south-west of Middlesbrough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "thornaby on tees",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thornaby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tees",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7616,
+    "attempt": 7564,
+    "place_id": "gn-2638033",
+    "input": {
+      "place": {
+        "place_id": "gn-2638033",
+        "name": "Sherborne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.94599,
+        "lon": -2.51776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sherborne",
+          "url": "https://en.wikipedia.org/wiki/Sherborne",
+          "text": "Sherborne is a market town and civil parish in north-west Dorset, England. It is sited on the River Yeo, on the edge of the Blackmore Vale, 6 miles (9.7 km) east of Yeovil. The parish includes the hamlets of Nether Coombe and Lower Clatcombe. The A30 road, which connects London with Penzance, runs through the town. In the 2021 census the population of Sherborne was 10,361.\nSherborne's historic buildings include Sherborne Abbey, independent schools, its manor house and two castles: the ruins of a 12th-century fortified palace and the 16th-century mansion known as Sherborne Castle built by Sir Walter Raleigh. Much of the old town, including much of the abbey and many medieval and Georgian buildings, is built from distinctive honey-brown coloured Sherborne Stone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "sherborne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7617,
+    "attempt": 7565,
+    "place_id": "gn-2642567",
+    "input": {
+      "place": {
+        "place_id": "gn-2642567",
+        "name": "Midhurst",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.98559,
+        "lon": -0.74003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midhurst",
+          "url": "https://en.wikipedia.org/wiki/Midhurst",
+          "text": "Midhurst () is a market town and civil parish in the Chichester District in West Sussex, England. It lies on the River Rother, 20 miles (30 km) inland from the English Channel and 12 miles (19 km) north of Chichester.\nThe name Midhurst was first recorded in 1186 as Middeherst, meaning \"Middle wooded hill\", or \"(place) among the wooded hills\". It derives from the Old English words midd (adjective) or mid (preposition), meaning \"in the middle\", plus hyrst, \"a wooded hill\".\nThe Norman St. Ann's Castle dates from about 1120, although the foundations are all that can now be seen. The castle, the parish church of St. Mary Magdalene and St. Denis, together with South Pond, the former fish-pond for the castle, are the only three structures left from this early period. The parish church is the oldest building in Midhurst. Just across the River Rother, in the parish of Easebourne, is the ruin of the Tudor Cowdray House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "midhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7618,
+    "attempt": 7566,
+    "place_id": "gn-2643738",
+    "input": {
+      "place": {
+        "place_id": "gn-2643738",
+        "name": "London Colney",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.72453,
+        "lon": -0.29646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "London Colney",
+          "url": "https://en.wikipedia.org/wiki/London_Colney",
+          "text": "London Colney ( ) is a village and civil parish in Hertfordshire, England. It is located to the north of London, close to Junction 22 of the M25 motorway.\nIt is around 2.5 miles (4.0 km) south-east of St Albans city centre (and within said city's contiguous built-up area) and part of the City and District of St Albans. At the time of the 2011 census the population of London Colney ward was 9,507, increasing to 9,804 at the 2021 census. It is considered a satellite or dormitory village of St Albans, where some villagers travel to work and shop."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "london colney",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "london",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "colney",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7619,
+    "attempt": 7567,
+    "place_id": "gn-2649996",
+    "input": {
+      "place": {
+        "place_id": "gn-2649996",
+        "name": "Enfield Lock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.67086,
+        "lon": -0.02748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enfield Lock",
+          "url": "https://en.wikipedia.org/wiki/Enfield_Lock",
+          "text": "Enfield Lock is an area in the London Borough of Enfield, north London. It is approximately located east of the Hertford Road between Turkey Street and the Holmesdale Tunnel overpass, and extends to the River Lee Navigation, including Enfield Island Village. The locality gains its name from the lock on the River Lee Navigation. Today's Enfield Lock was rebuilt in 1922. The area forms part of the Lee Valley Park and the Enfield Lock Conservation Area. On its eastern boundary Enfield Lock has marshland formerly used as a testing site between the Royal Small Arms Factory and the Gunpowder Mills. Beyond this is the hamlet of Sewardstone and the boundary of Epping Forest. To the south is Brimsdown; to the north Waltham Cross; and to the west Bullsmoor and Freezywater. Enfield Lock forms part of the boundary of Greater London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "enfield lock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "enfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7620,
+    "attempt": 7568,
+    "place_id": "gn-2655210",
+    "input": {
+      "place": {
+        "place_id": "gn-2655210",
+        "name": "Bonnyrigg",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.87329,
+        "lon": -3.1051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonnyrigg",
+          "url": "https://en.wikipedia.org/wiki/Bonnyrigg",
+          "text": "Bonnyrigg is a town in Midlothian, Scotland, eight miles (13 kilometres) southeast of Edinburgh city centre, between the Rivers North and South Esk. The town had a population of 14,663 in the 2001 census, rising to 15,677 in the 2011 census, both figures being based on the 2010 definition of the locality, which, as well as Bonnyrigg and the adjacent settlement of Lasswade, includes Polton village, Poltonhall housing estate, and modern development at Hopefield. The estimated population as of 2018 was 18,120, the highest of any town in Midlothian. Along with Lasswade, Bonnyrigg is a twin town with Saint-Cyr-l'École, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "bonnyrigg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7621,
+    "attempt": 7569,
+    "place_id": "gn-2694529",
+    "input": {
+      "place": {
+        "place_id": "gn-2694529",
+        "name": "Ljungsbro",
+        "country": "Sweden",
+        "subdivision": "Östergötland",
+        "lat": 58.51667,
+        "lon": 15.5
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ljungsbro",
+          "url": "https://en.wikipedia.org/wiki/Ljungsbro",
+          "text": "Ljungsbro (Swedish pronunciation: [ˈjɵ̂ŋsbruː]) is a locality situated area in Linköping Municipality, Östergötland County, Sweden with 6,620 inhabitants in 2010. It is located about 15 kilometres (9.3 mi) from the city of Linköping.\nThrough Ljungsbro runs Motala ström (stream) and Göta Canal. In the stream are the power stations of Nykvarn and Malfors. Malfors has a height of drop of 28.3 metres (93 ft) and Nykvarn has one of 4.3 metres (14 ft), however, Nykvarn is no longer running. The canal can be crossed via a navigable aqueduct, Sweden's second after Håverud, but also via a bridge, Malforsbron (Malfors Bridge).\nLjungsbro Fritidscenter (leisure center) is located about 400 metres (1,300 ft) from the bridge. Here you can stay the night, train at gym or go swimming. There is also an indoors ice hockey rink.\nThe confectioners Cloetta is the largest industry in the area. On weekdays and Saturdays there is a popular market selling \"Kex\"-chocolate biscuit wafers and other chocolate products, which attracts many tourists.\nIn the centre lies the main health centre and shops, among other things there are opticians, libraries, a watchmaker, a company that sells and lays tiles and a tobacco shop. Many of the houses were built in the 1950s for the workers of the Cloetta factory.\nThere are two churches in the town, Allhelgonakyrkan and Filadelfiakyrkan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "ljungsbro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7622,
+    "attempt": 7570,
+    "place_id": "gn-2736657",
+    "input": {
+      "place": {
+        "place_id": "gn-2736657",
+        "name": "Paredes",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.20485,
+        "lon": -8.33147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paredes, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Paredes,_Portugal",
+          "text": "Paredes (European Portuguese pronunciation: [pɐˈɾeðɨʃ] ) is a city and a municipality in Porto District, in northern Portugal. The population in 2021 was 84,354, in an area of 156.76 square kilometres (60.53 mi2).\nCurrently, Paredes Municipality contains four cities: Paredes, Rebordosa, São Salvador de Lordelo and Gandra, being the Portuguese municipality with the most cities.\nParedes has a total of 18 parishes. The municipality is bordered on the north by the municipality of Paços de Ferreira, to the east by Lousada and Penafiel, to the southwest by Gondomar and to the west by Valongo. The municipality was created in 1836."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "paredes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7623,
+    "attempt": 7571,
+    "place_id": "gn-2745953",
+    "input": {
+      "place": {
+        "place_id": "gn-2745953",
+        "name": "Ulft",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.89,
+        "lon": 6.37778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulft",
+          "url": "https://en.wikipedia.org/wiki/Ulft",
+          "text": "Ulft (Dutch pronunciation: [ˈʏl(ə)ft]) is a town in Oude IJsselstreek in the Achterhoek area in the province of Gelderland, Netherlands.\nThe town has over 10,000 inhabitants and is the biggest town in the municipality Oude IJsselstreek.  Until 1 January 2005, Ulft was part of the municipality Gendringen.  At the municipal re-ordering in the Achterhoek, the municipalities Gendringen and Wisch joined to form the Oude IJsselstreek.\nUlft developed out of three hamlets: Ulft, Oer and De Pol. Oer is the northern part of Ulft and is called Oer because of the iron in the earth, which is called IJzeroer in Dutch. In Ulft an iron foundry called \"Diepenbrock en Reigers te Ulft\" (DRU) was founded. DRU moved some years ago to Duiven and is now located at Rijksweg A12. The old DRU-building now is the DRU 'Culture Factory' and holds a library, a theatre, a restaurant and an Iron museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "ulft",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7624,
+    "attempt": 7572,
+    "place_id": "gn-2749320",
+    "input": {
+      "place": {
+        "place_id": "gn-2749320",
+        "name": "Oostzaan",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.43917,
+        "lon": 4.87639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oostzaan",
+          "url": "https://en.wikipedia.org/wiki/Oostzaan",
+          "text": "Oostzaan (Dutch pronunciation: [oːstˈsaːn] ) is a municipality and a town in the Zaanstreek, Netherlands, in the province of North Holland. The municipality had a population of 9,689 in 2021. Oostzaan has a total area of 16.08 km2 (6.21 sq mi) of which 4.55 km2 (1.76 sq mi) is water.\nOostzaan—together with Westzaan and Assendelft—are considered the \"mother towns\" of the Zaanstreek (the region around the River Zaan), of which they are the three oldest towns. Oostzaan also played a role in the VOC and WIC shipping and shipbuilding.\n17th century Oostzaan was the home of the pirate Claes Compaen. Originally  a privateer for the Dutch Republic, he soon began to act as a pirate, capturing several hundred ships. A street in Oostzaan is named after him. \nThe town has a Reformed church with a cruciform groundplan, the Great Church (1760), which contains two ship models that recall the days when Oostzaan was an important sea-faring community. In the Oostzijderveld area of Oostzaan stands a windmill, De Windjager (The Wind Hunter)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "oostzaan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7625,
+    "attempt": 7573,
+    "place_id": "gn-2795801",
+    "input": {
+      "place": {
+        "place_id": "gn-2795801",
+        "name": "Heusden",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.02815,
+        "lon": 3.80425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heusden, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Heusden,_Belgium",
+          "text": "Heusden was a municipality located in the Belgian province of East Flanders.  In 1977 it merged with the municipality of Destelbergen, of which it is now part.\nIt was mentioned for the first time in the 11th century, by abbot Othejbold. Years after the invasion by the Norsemen, the municipality fell into the hands of the Lords of Heusden. Because of the marriage of Beatrix of Heusden with Zeger III (viscount of Ghent) in 1212, the seat of the viscountship of Ghent moved to Heusden. Until the end of the Ancien Régime Heusden stayed property of the viscounts of Ghent. In 1247 the Cistercian Abbey of Nieuwenbosch settled in Heusden. This cloister flourished until it was destroyed by the Iconoclasts in 1578. After this the sisters moved to Ghent. Because Heusden was a part of the belt of defence around Ghent, it was looted many times during the Middle Ages.\nThis rich history has resulted in a number of castles dotting the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "heusden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7626,
+    "attempt": 7574,
+    "place_id": "gn-2798652",
+    "input": {
+      "place": {
+        "place_id": "gn-2798652",
+        "name": "Ertvelde",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.17921,
+        "lon": 3.74722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ertvelde",
+          "url": "https://en.wikipedia.org/wiki/Ertvelde",
+          "text": "Ertvelde is a village of the  Belgian municipality of Evergem.\nEddy Wally used to have his legendary show venue in the village-centre, called \"Paris, Las Vegas\".\nThe Brouwerij Van Steenberge is located in Ertvelde.  The brewery produces Gulden Draak, a strong tripel ale.\nYou can also find historical things, like the 'Mottekasteel' and  a collection of materials used in WWI at the (old) local government.\nThe church is rebuilt after it was broken down by the Germans in WWII.'\nThey renovated a large part of the 'Motte castle Hoge Wal', now you can have a view over the 'Hoge Wal'.\nThe 'Hoge Wal' is a big parc with a Finnish path."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ertvelde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7627,
+    "attempt": 7575,
+    "place_id": "gn-2807265",
+    "input": {
+      "place": {
+        "place_id": "gn-2807265",
+        "name": "Wittichenau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.38496,
+        "lon": 14.24403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wittichenau",
+          "url": "https://en.wikipedia.org/wiki/Wittichenau",
+          "text": "Wittichenau (German, pronounced [vɪtɪçəˈnaʊ] ) or Kulow (Upper Sorbian, pronounced [ˈkulɔf] ) is a bilingual town in the district of Bautzen in the Free State of Saxony, Germany. It is situated on the river Schwarze Elster, 6 km south of Hoyerswerda.\nThis small municipality is situated in the heart of bilingual Lusatia region which was for long centuries part of the Bohemian Crown and was passed to Saxony in 1635. Wittichenau has 6,300 inhabitants of whom the Sorbian-speaking, Slavic Lusatian population compose about 35-40%; the other 60-65% speak German. It is part of the recognized Sorbian settlement area in Saxony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "wittichenau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7628,
+    "attempt": 7576,
+    "place_id": "gn-2837954",
+    "input": {
+      "place": {
+        "place_id": "gn-2837954",
+        "name": "Schmelz",
+        "country": "Germany",
+        "subdivision": "Saarland",
+        "lat": 49.43333,
+        "lon": 6.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schmelz",
+          "url": "https://en.wikipedia.org/wiki/Schmelz",
+          "text": "Schmelz (German pronunciation: [ʃmɛlts] ) is a municipality in the district of Saarlouis, in Saarland, Germany. It is situated approximately 15 km (9.3 mi) northeast of Saarlouis, and 25 km (16 mi) northwest of Saarbrücken.\nThe town of Schmelz (which translates to Glaze) is made of six municipalities, Schmelz itself – which consists of Außen and Bettingen – and Hüttersdorf, Limbach, Michelbach, Primsweiler, and Dorf im Bohnental.  These independent villages in the Saarlouis district date back to Roman times. A native of Schmelz would be called a Schmelzer as in a person from Berlin being referred to as a Berliner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "schmelz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7629,
+    "attempt": 7577,
+    "place_id": "gn-2871264",
+    "input": {
+      "place": {
+        "place_id": "gn-2871264",
+        "name": "Mickten",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.08271,
+        "lon": 13.70871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mickten",
+          "url": "https://en.wikipedia.org/wiki/Mickten",
+          "text": "Mickten (German pronunciation: [ˈmɪktn̩]) is a quarter (Stadtteil) of the city of Dresden, eastern Germany. It is part of the northwestern borough (Stadtbezirk) of Pieschen.\nThe historic village at the road to Leipzig north of the Elbe river was incorporated into Dresden in 1903. From 1990 a new commercial area between Mickten and the neighbouring Kaditz quarter was developed including the Elbe Park mall with numerous shops and a cinema. The infrastructure of Mickten was severely damaged by the 2002 Elbe floods.\nFrom 1946 Mickten had a football club called SG Mickten that merged with the Dresdner SC in 1954."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "mickten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7630,
+    "attempt": 7578,
+    "place_id": "gn-2873427",
+    "input": {
+      "place": {
+        "place_id": "gn-2873427",
+        "name": "Markdorf",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.71916,
+        "lon": 9.39028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Markdorf",
+          "url": "https://en.wikipedia.org/wiki/Markdorf",
+          "text": "Markdorf (German pronunciation: [ˈmaʁkdɔʁf] ) is a town in the Bodenseekreis district, in Baden-Württemberg, Southern Germany. It is situated near Lake Constance, 10 km northwest of Friedrichshafen. Georg Riedmann has been the mayor of Markdorf since 2013.\nMarkdorf was first mentioned in AD 817 and it was given city rights in 1250. It was host to the Church Council prior to that body being moved to Konstanz.\nMarkdorf, with its historic centre, lies beneath the Gehrenberg mountain, on the top of which is a 30m high climbable tower affording views over Lake Constance and the Swiss, Austrian and German Alps.\nOn 22 December 1939, the location was near to a major train accident which resulted in the deaths of 101 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "markdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7631,
+    "attempt": 7579,
+    "place_id": "gn-2909313",
+    "input": {
+      "place": {
+        "place_id": "gn-2909313",
+        "name": "Haßloch",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.36278,
+        "lon": 8.25806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haßloch",
+          "url": "https://en.wikipedia.org/wiki/Haßloch",
+          "text": "Haßloch (German pronunciation: [ˈhaslɔx]) is a large village in the Bad Dürkheim district in Rhineland-Palatinate, Germany. Unlike most municipalities in the district, it does not belong to any Verbandsgemeinde – a type of collective municipality. It lies near the Mannheim/Ludwigshafen built-up area. The municipality has grown out of a single centre and is thus sometimes styled “Germany’s biggest village”. Haßloch is the Bad Dürkheim district's biggest municipality, exceeding even the namesake district seat. The village has at its disposal well developed infrastructure with educational and shopping facilities; the region's surrounding centres can in the main be reached within 20 minutes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ha loch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ha",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "loch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7632,
+    "attempt": 7580,
+    "place_id": "gn-2930726",
+    "input": {
+      "place": {
+        "place_id": "gn-2930726",
+        "name": "Elsfleth",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.23748,
+        "lon": 8.45664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elsfleth",
+          "url": "https://en.wikipedia.org/wiki/Elsfleth",
+          "text": "Elsfleth (German pronunciation: [ˈɛlsˌfleːt] ) is a town in the district of Wesermarsch, Lower Saxony, Germany. It is situated at the confluence of the Hunte with the Weser, on the left bank of the Weser. \nIt has a school of navigation (university of applied sciences), a harbour and docks.\nElsfleth offers many recreational facilities even though it is a small town,. It is an ideal place for families that want to escape big cities and like outdoor activities that are not only limited to tennis and biking. A nearby beach area and sailing club \"SWE\" contribute to Elsfleth's maritime character. So does the tall ship club Großherzogin Elisabeth amicably called \"Lissi\". Nearby larger cities are Brake, Nordenham, Oldenburg, and Bremen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "elsfleth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

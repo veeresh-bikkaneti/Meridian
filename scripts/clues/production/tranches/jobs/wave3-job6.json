@@ -1,0 +1,717 @@
+[
+  {
+    "rank": 2293,
+    "place_id": "gn-6050177",
+    "input": {
+      "place": {
+        "place_id": "gn-6050177",
+        "name": "LaSalle",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.24481,
+        "lon": -83.06095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "LaSalle, Ontario",
+          "url": "https://en.wikipedia.org/wiki/LaSalle,_Ontario",
+          "text": "LaSalle is a town in Essex County, Ontario, Canada. It is a bedroom community of the City of Windsor, part of the Windsor Census Metropolitan Area, and located south of that city. LaSalle, along with Windsor, is the oldest French settlement area in Southwestern Ontario and the oldest continually-inhabited European settlement in Canada west of the Quebec border. The town was named for explorer René-Robert Cavelier, Sieur de La Salle.\nThe current Town of Lasalle was originally organized as the Township of Sandwich West in 1861 when Sandwich Township was divided into two parts. A portion of the township incorporated as the Town of Lasalle in 1924, but was dissolved in 1959 and rejoined Sandwich West."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "lasalle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2302,
+    "place_id": "gn-3571224",
+    "input": {
+      "place": {
+        "place_id": "gn-3571224",
+        "name": "West End",
+        "country": "Bahamas",
+        "subdivision": "West Grand Bahama",
+        "lat": 26.68711,
+        "lon": -78.97702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West End, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/West_End,_Bahamas",
+          "text": "West End (also referred to as \"Settlement Point\") is the oldest town and westernmost settlement on the Bahamian island of Grand Bahama. It is agreed by most academics and lawmakers that West End is the current capital of Grand Bahama, contrary to the popular belief that Freeport is the capital of the island. Yet however, some lawmakers continue to insist that Freeport City is the legitimate capital of Grand Bahama. It is also the third largest settlement in The Bahamas. There is one airport in West End, West End Airport, which serves mostly private aircraft. Since the 1950s, the settlement of West End has fluctuated with the rise and fall of the adjacent resort developments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "west end",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "end",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2304,
+    "place_id": "gn-4132093",
+    "input": {
+      "place": {
+        "place_id": "gn-4132093",
+        "name": "Springdale",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.18674,
+        "lon": -94.12881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springdale, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Springdale,_Arkansas",
+          "text": "Springdale is a city in Washington and Benton counties in the U.S. state of Arkansas. The population was 84,161 at the 2020 census, making it the fourth-most populous city in Arkansas. It is included in the three-county Northwest Arkansas metropolitan area, which had 546,725 residents in 2020.\nLocated on the Springfield Plateau deep in the Ozark Mountains, Springdale has long been an important industrial city for the region. In addition to several trucking companies, the city is home to the world headquarters of Tyson Foods, the world's largest meat- producing company.\nSpringdale has been experiencing a population boom in recent years, as indicated by a 133% growth in population between the 1990 and 2010 censuses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "springdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2316,
+    "place_id": "gn-3520235",
+    "input": {
+      "place": {
+        "place_id": "gn-3520235",
+        "name": "Rioverde",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 21.93115,
+        "lon": -99.99488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rioverde, San Luis Potosí",
+          "url": "https://en.wikipedia.org/wiki/Rioverde,_San_Luis_Potos%C3%AD",
+          "text": "Rioverde is a city and its surrounding municipality located in the south-central part of the state of San Luis Potosí, Mexico. It is the fifth-most populated city in the state, behind San Luis Potosí, Soledad de Graciano Sánchez, Ciudad Valles, and Matehuala. The city had a 2005 census population of 49,183, while the municipality, of which it serves as municipal seat, had a population of 85,945 and an area extent of 3,064 km2 (1,183 sq mi). The population of its metropolitan area, which includes the largest municipality of Ciudad Fernández, was 126,997.\nThe city is well known for its spring, called Media Luna. The city has been growing faster in the last four years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "rioverde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2317,
+    "place_id": "gn-4148677",
+    "input": {
+      "place": {
+        "place_id": "gn-4148677",
+        "name": "Boynton Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.52535,
+        "lon": -80.06643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boynton Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Boynton_Beach,_Florida",
+          "text": "Boynton Beach is a city in Palm Beach County, Florida, United States. It is situated about 57 miles (92 km) north of Miami. The 2020 census recorded a population of 80,380. Boynton Beach is located in the Miami metropolitan area, which was home to 6,138,333 people at the 2020 census. The city is named after Nathan Boynton, a Civil War major and Michigan politician who became one of the first settlers in the area in 1895. Boynton Beach is located north of Delray Beach, south of Hypoluxo and Lantana, and east of Golf, while the municipalities of Briny Breezes, Gulf Stream, Manalapan, and Ocean Ridge are located to the east across the Intracoastal Waterway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "boynton beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boynton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2320,
+    "place_id": "gn-4884192",
+    "input": {
+      "place": {
+        "place_id": "gn-4884192",
+        "name": "Batavia",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.85003,
+        "lon": -88.31257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batavia, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Batavia,_Illinois",
+          "text": "Batavia () is a city mainly in Kane County and partly in DuPage County in the U.S. state of Illinois. Located in the Chicago metropolitan area, it was founded in 1833 and is the oldest city in Kane County. Per the 2020 census, the population was 26,098.\nDuring the latter part of the 19th century, Batavia, home to six American-style windmill manufacturing companies, became known as \"The Windmill City\". Fermi National Accelerator Laboratory, a federal government-sponsored high-energy physics laboratory, where both the bottom quark and the top quark were first detected, is located just east of the city limits.\nBatavia is part of a vernacular region known as the Tri-City area, along with St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "batavia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2322,
+    "place_id": "gn-5326032",
+    "input": {
+      "place": {
+        "place_id": "gn-5326032",
+        "name": "Banning",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.92557,
+        "lon": -116.87641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banning, California",
+          "url": "https://en.wikipedia.org/wiki/Banning,_California",
+          "text": "Banning is a city in the Inland Empire region of Riverside County, California, United States. Its population was 29,505 as of the 2020 census, down from 29,603 at the 2010 census. It is situated in the San Gorgonio Pass, also known as Banning Pass. It is named for Phineas Banning, stagecoach line owner and the \"Father of the Port of Los Angeles.\"\nBanning shares geographic and regional features with its western neighbor, the city of Beaumont. Banning and Beaumont have been rapidly growing in size and population since the 1990s. Both cities are about 80 miles east of downtown Los Angeles and 30 miles west of Palm Springs, both connected by freeway and railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "banning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2331,
+    "place_id": "gn-2464041",
+    "input": {
+      "place": {
+        "place_id": "gn-2464041",
+        "name": "Zaghouan",
+        "country": "Tunisia",
+        "subdivision": "Zaghouan Governorate",
+        "lat": 36.40291,
+        "lon": 10.14292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaghouan",
+          "url": "https://en.wikipedia.org/wiki/Zaghouan",
+          "text": "Zaghouan or Zaghwan (Arabic: زغوان, romanized: Zaġwān, pronounced [zaʁˈwɛːn] ; Andalusian Arabic: إِسْطَوَان, romanized: Isṭawán) is a town in the northern half of Tunisia.\nSituated on a low ridge of the Dorsale Mountains, the town has a mild climate and presents a green aspect. Cold water from here was taken by the Zaghouan Aqueduct to Carthage. The town is famous for its roses, originally cultivated by Muslim refugees from Spain in the seventeenth century. The town is located around 60 km due south of Tunis and around 50 km inland (west) from the Gulf of Hammamet and has an estimated population of around 20,837 (2014). It is the capital of the Zaghouan Governorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "zaghouan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2348,
+    "place_id": "gn-2186313",
+    "input": {
+      "place": {
+        "place_id": "gn-2186313",
+        "name": "Napier",
+        "country": "New Zealand",
+        "subdivision": "Hawke's Bay Region",
+        "lat": -39.4926,
+        "lon": 176.91233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Napier, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Napier,_New_Zealand",
+          "text": "Napier ( NAY-pee-ər; Māori: Ahuriri) is a city in the Hawke's Bay region on the eastern coast of the North Island of New Zealand. It is a beachside city with a seaport, known for its sunny climate, esplanade lined with Norfolk pines, and extensive Art Deco architecture. For these attributes, Napier is sometimes romantically referred to as the \"Nice of the Pacific\".\nNapier is located on the territory of Ngāti Kahungunu, one of the country's largest iwi, and as a city has been shaped by nearly two centuries of migration. Its population is about 66,400 as of June 2025. About 18 km (11 mi) south of Napier is the city of Hastings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "napier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2349,
+    "place_id": "gn-2562501",
+    "input": {
+      "place": {
+        "place_id": "gn-2562501",
+        "name": "Sliema",
+        "country": "Malta",
+        "subdivision": "Tas-Sliema",
+        "lat": 35.91247,
+        "lon": 14.50175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sliema",
+          "url": "https://en.wikipedia.org/wiki/Sliema",
+          "text": "Sliema (Maltese: Tas-Sliema [tɐˈsːlɪːmɐ]) is a town located on the northeast coast of Malta in the Northern Harbour District. It is a major residential and commercial area and a centre for shopping, bars, dining, and café life. It is also the most densely populated town on the island.\nLining the coastline is a promenade known as the Sliema Front that has become the popular spot for joggers and walkers as well as a prolific meeting place for locals during the summer season. Sliema is also known for its numerous rocky beaches, water sports and hotels. The Strand in Sliema is a popular viewing spot for fireworks displays that take place in August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "sliema",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2351,
+    "place_id": "gn-3037456",
+    "input": {
+      "place": {
+        "place_id": "gn-3037456",
+        "name": "Antibes",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.58127,
+        "lon": 7.12487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antibes",
+          "url": "https://en.wikipedia.org/wiki/Antibes",
+          "text": "Antibes (, US also , French: [ɑ̃tib] ; Occitan: Antíbol [anˈtibu]) is a seaside resort city in the Alpes-Maritimes department in Provence-Alpes-Côte d'Azur, Southeastern France. It is located on the French Riviera between Cannes and Nice; it is the largest yachting harbour in Europe. In 2023, the commune had a population of 77,637, making it Alpes-Maritimes's second-most populated after Nice.\nIts cape, the Cap d'Antibes, along with Cap Ferrat in Saint-Jean-Cap-Ferrat to the northeast, are two major landforms in the area. The capes house the Hôtel du Cap-Eden-Roc and Grand-Hôtel du Cap-Ferrat respectively, widely considered two of the most exclusive hotels in the world. Culturally, Antibes is home to the Musée Picasso."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "antibes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2352,
+    "place_id": "gn-3364346",
+    "input": {
+      "place": {
+        "place_id": "gn-3364346",
+        "name": "Malmesbury",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.4608,
+        "lon": 18.72714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmesbury, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Malmesbury,_South_Africa",
+          "text": "Malmesbury is a town of approximately 80,000 inhabitants in the Western Cape province of South Africa, about 65 km north of Cape Town.\nThe town is the largest in the Swartland (‘black land’) which took its name from the renosterbos ('rhino bush'), an indigenous plant that turns black in the warm, dry summers. The area is especially known for its grain and wine cultivation as well as sheep and poultry farming.\nMalmesbury was named after Sir Lowry Cole's father-in-law, the Earl of Malmesbury. Settlers were encouraged to make their homes here because of a tepid sulphur chloride mineral spring that was renowned for curing rheumatism. The first farms were allocated in 1703."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "malmesbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2356,
+    "place_id": "gn-3650472",
+    "input": {
+      "place": {
+        "place_id": "gn-3650472",
+        "name": "Tulcán",
+        "country": "Ecuador",
+        "subdivision": "Carchi",
+        "lat": 0.8124,
+        "lon": -77.71709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulcán",
+          "url": "https://en.wikipedia.org/wiki/Tulc%C3%A1n",
+          "text": "\"Tulcan\" is also an alternative spelling of tulchan\nTulcán (Spanish pronunciation: [tulˈkan]) is the capital of the province of Carchi in Ecuador and the seat of Tulcán Canton. The population of the city of Tulcán was 56,719 in the 2022 census. Tulcán is known for its hot springs, deep wells,  3-acre topiary garden cemetery, the most elaborate topiary in the New World, created with Cupressus sempervirens by José Maria Azael Franco in 1936. The city is the highest in Ecuador, at 2,950 m (9,680 ft) above sea level, and it is located in the north of Andes Mountains in Ecuador, at 7 kilometres (4.3 mi) of the border between Ecuador and Colombia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tulcan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2357,
+    "place_id": "gn-3691582",
+    "input": {
+      "place": {
+        "place_id": "gn-3691582",
+        "name": "Talara",
+        "country": "Peru",
+        "subdivision": "Piura",
+        "lat": -4.57722,
+        "lon": -81.27194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talara",
+          "url": "https://en.wikipedia.org/wiki/Talara",
+          "text": "Talara is a city in the Talara Province of the Piura Region, in northwestern Peru. It is a port city on the Pacific Ocean with a population of 91,444 as of 2017. Its climate is hot and dry. Due to its oil reserves, and ability to produce aviation fuel, Talara hosted a United States air base during World War II. It was also one of two refueling stations for the Pacific Fleet. There were naval guns on the hills, and submarine nets in the harbor. The Ajax, Achilles and Exeter, three British destroyers, were refuelled there on their way around the Horn to catch the Graf Spee in Rio de la Plata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "talara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2361,
+    "place_id": "gn-776597",
+    "input": {
+      "place": {
+        "place_id": "gn-776597",
+        "name": "Augustów",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 53.84321,
+        "lon": 22.97979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augustów",
+          "url": "https://en.wikipedia.org/wiki/August%C3%B3w",
+          "text": "Augustów is a town in north-eastern Poland. It lies on the Netta River and the Augustów Canal. It is the seat of Augustów County and of Gmina Augustów in the Podlaskie Voivodeship. Augustów has an area of 80.90 square kilometres (31.24 square miles), and as of June 2022 it has a population of 29,305.\nSituated on the Netta River and six lakes Augustów is a popular summer resort town and an officially recognized spa town in Poland. Founded in the 16th century and named after King Sigismund II Augustus, Augustów is a former royal town and garrison town of Poland, and contains a preserved historic urban layout with a large market square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "augustow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2365,
+    "place_id": "gn-2068823",
+    "input": {
+      "place": {
+        "place_id": "gn-2068823",
+        "name": "Kalgoorlie",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -30.74614,
+        "lon": 121.4742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalgoorlie",
+          "url": "https://en.wikipedia.org/wiki/Kalgoorlie",
+          "text": "Kalgoorlie (/ˈkælˌɡʊːɹli/ kal-GOOR-LEE), also known as Kalgoorlie–Boulder, is a city in the Goldfields–Esperance region of Western Australia, located 595 km (370 mi) east-northeast of Perth at the end of the Great Eastern Highway. It is referred to as Kalgoorlie–Boulder as the surrounding urban area includes the historic townsite of Boulder and the local government area is the City of Kalgoorlie–Boulder.\nKalgoorlie–Boulder lies on the traditional lands of the Kapurn people. The city was established in 1893 during the Western Australian gold rushes. It soon replaced Coolgardie as the largest settlement on the Eastern Goldfields. Kalgoorlie is the ultimate destination of the Goldfields Water Supply Scheme and the Golden Pipeline Heritage Trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "kalgoorlie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2367,
+    "place_id": "gn-2657941",
+    "input": {
+      "place": {
+        "place_id": "gn-2657941",
+        "name": "Yverdon-les-Bains",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.77852,
+        "lon": 6.64115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yverdon-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/Yverdon-les-Bains",
+          "text": "Yverdon-les-Bains (French pronunciation: [ivɛʁdɔ̃ le bɛ̃] ) (called Eburodunum and Ebredunum during the Roman era; Arpitan: Invèrdon) commonly known as Yverdon, is a municipality in the district of Jura-Nord vaudois of the canton of Vaud in Switzerland. It is the seat of the district. The population of Yverdon-les-Bains, as of December 2020, was 29,955.\nYverdon is located in the heart of a natural setting formed by the Jura mountains, the plains of the Orbe, the hills of the Broye and Lake Neuchâtel. It is the second most important town in the Canton of Vaud. It is known for its thermal springs and is an important regional centre for commerce and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "yverdon les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yverdon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2369,
+    "place_id": "gn-3480908",
+    "input": {
+      "place": {
+        "place_id": "gn-3480908",
+        "name": "La Asunción",
+        "country": "Venezuela",
+        "subdivision": "Nueva Esparta",
+        "lat": 11.03333,
+        "lon": -63.86278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Asunción",
+          "url": "https://en.wikipedia.org/wiki/La_Asunci%C3%B3n",
+          "text": "La Asunción (Spanish pronunciation: [la asunˈsjon]) is a city in Venezuela. The capital of Nueva Esparta state (made up of three islands), it lies on Margarita Island in the Caribbean Sea, off the South American mainland. It is situated in a fertile valley surrounded by green hills, 6 miles (10 km) inland from the port of Porlamar, where a cooler climate exists. The city was founded in 1565 by Captain Pedro González Cervantes de Albornoz. It has an imposing backdrop of Santa Rosa Castle, also known as the Santa Rosa Fort, which was built to protect the city. The most important structures in the city are built around the Plaza Bolívar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "la asuncion",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "asuncion",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2405,
+    "place_id": "gn-2940512",
+    "input": {
+      "place": {
+        "place_id": "gn-2940512",
+        "name": "Butzbach",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.43395,
+        "lon": 8.67122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butzbach",
+          "url": "https://en.wikipedia.org/wiki/Butzbach",
+          "text": "Butzbach (German pronunciation: [ˈbʊtsbax] ) is a town in the Wetteraukreis district in Hessen, Germany. It is located approximately 16 km south of Gießen and 35 km north of Frankfurt am Main.\nIn 2007, the town hosted the 47th Hessentag state festival from 1 to 10 June.\nThe \"Landgrafenschloss\" (\"landgraves' castle\"), used by the United States Army until 1990, is now utilized by the city council. The so-called \"Roman Way Housing\" of the United States Army with more than 1,000 apartments was returned to the German government in October 2007 and has since been renovated and rented out to the public. The town's marketplace is enclosed by timber framing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "butzbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2411,
+    "place_id": "gn-8223971",
+    "input": {
+      "place": {
+        "place_id": "gn-8223971",
+        "name": "Kattumannarkoil",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.27631,
+        "lon": 79.55784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kattumannarkoil",
+          "url": "https://en.wikipedia.org/wiki/Kattumannarkoil",
+          "text": "Kattumannarkoil is a municipality town and taluk headquarters in Cuddalore district of the Indian state of Tamil Nadu. The Kattumannarkoil Town Panchayat was constituted in 1892 and falls under the administrative jurisdiction of Cuddalore District. The town covers an area of 19.425 km2. The town lies on the Chidambaram–Coimbatore Highway, 25 km southwest of Chidambaram, 25 km east of Srimushnam and 25 km northeast of Gangaikonda Cholapuram. The town is the birthplace of the Sri Vaishnava theologians (Acharya) Nathamuni and Yamunacharya. The town's derives from a local legend in which Lord Vishnu appeared as a  King (Mannan) to marry Mahalakshmi and instruct Nathamuni to propagate the Naalayira Divya Prabandham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kattumannarkoil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

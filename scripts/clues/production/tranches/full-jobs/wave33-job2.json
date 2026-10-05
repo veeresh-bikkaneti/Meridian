@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 6468,
+    "attempt": 6421,
+    "place_id": "gn-3154209",
+    "input": {
+      "place": {
+        "place_id": "gn-3154209",
+        "name": "Halden",
+        "country": "Norway",
+        "subdivision": "Østfold",
+        "lat": 59.12478,
+        "lon": 11.38754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halden",
+          "url": "https://en.wikipedia.org/wiki/Halden",
+          "text": "Halden (pronounced [ˈhɑ̀ɫdn̩] ), between 1665 and 1928 known as Fredrikshald, is both a town and a municipality in Østfold county, Norway. The municipality borders Sarpsborg to the northwest, Rakkestad to the north and Aremark to the east, as well as the Swedish municipalities Strömstad, Tanum and Dals-Ed respectively to the southwest, south and southeast.\nThe seat of the municipality, Halden is a border town located at the mouth of the Tista river on the Iddefjord, the southernmost border crossing between Norway and Sweden. The town of Halden is located about 120 km (75 mi) south of Oslo, 190 km (120 mi) north of Gothenburg, and 12 km (7.5 mi) west of the border crossing at Svinesund."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "halden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6469,
+    "attempt": 6422,
+    "place_id": "gn-333421",
+    "input": {
+      "place": {
+        "place_id": "gn-333421",
+        "name": "Kele",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 6.08333,
+        "lon": 38.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kele, Ethiopia",
+          "url": "https://en.wikipedia.org/wiki/Kele,_Ethiopia",
+          "text": "Kelle (ኬሌ) is a town in southern Ethiopia, and is the administrative center of the Amaro special woreda. Located in the Southern Nations, Nationalities, and Peoples Region southeast of Lake Abaya, this town has a latitude and longitude of 06°05′N 38°02′E with an altitude of 1424 meters above sea level. The name of this town, Kelle, comes from the   Koorete word; its meaning is stone cave; the concept of kella as a customs used for terracing, beautification of areas, means to defend during war as a coverage. Kelle was established in 1941 Gc. This town is totally covered by beautiful mountains and attractive agro forestery. Lo'oynido and Bewaye are the water feeding rivers that crosses the town.\nKelle is located 202 km south of Awassa and 474 km south of Addis Ababa, 60 kilometers west from the main Awassa-Moyale highway. The infrastructure of the town is in progressive change. There is an automatic telephone service, postal office and banking services. In 2005 Kelle is connected to the main hydroelectric power line and now gets 24 hours of electricity service. Kelle has hospital, college, hotels, restaurants, shops, health centers, private drug stores schools and clean and potable waters. The hospitality of the local resident very attractive.\nBased on figures from the Central Statistical Agency in 2007, Kelle has an estimated total population of 5,542 of whom 5,154 are men and 4,930 are women. The 1994 national census reported this town had a total population of 1,900 of whom 822 were men and 1,078 were women.\nBy 2018 the total numbers of residents are estimated 49,534."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "kele",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6470,
+    "attempt": 6423,
+    "place_id": "gn-3448455",
+    "input": {
+      "place": {
+        "place_id": "gn-3448455",
+        "name": "São Miguel do Araguaia",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -13.275,
+        "lon": -50.16278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Miguel do Araguaia",
+          "url": "https://en.wikipedia.org/wiki/São_Miguel_do_Araguaia",
+          "text": "São Miguel do Araguaia is a city in northwest Goiás state, Brazil. It is the northernmost municipality in Goiás, one of the largest too, and a major producer of cattle.\nSão Miguel is located in the São Miguel do Araguaia Microregion and is  one of the most distant cities from the state capital, Goiânia, which is 486 kilometers away. There are highway connections with Araguaçu, state of Tocantins, 63 kilometers to the north; Nova Crixás, 102 kilometers to the south; and Luiz Alves, 45 kilometers to the west, on the Araguaia River.\nHighway connections are made from Goiânia by GO-070 / Goianira / Inhumas / Itaberaí / BR-070 / Goiás / GO-164 / Araguapaz / Nova Crixás."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "sao miguel do araguaia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miguel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "araguaia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6471,
+    "attempt": 6424,
+    "place_id": "gn-3460599",
+    "input": {
+      "place": {
+        "place_id": "gn-3460599",
+        "name": "Itatiaiuçu",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.19667,
+        "lon": -44.42111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itatiaiuçu",
+          "url": "https://en.wikipedia.org/wiki/Itatiaiuçu",
+          "text": "Itatiaiuçu is a municipality in the state of Minas Gerais in the Southeast region of Brazil.\nNestled amidst the Ridge Mountains, on the slopes of the Sierra Itatiaiuçu in Metal Zone, the municipality with 267 square kilometers, whose main economic activity is the mining of iron. It is also great horticultural producer and also has beef and dairy cattle. In a temperate climate tending to the cold, the host city is 890 meters above sea level and is 70 kilometers from Belo Horizonte, located along the BR-381 (Fernão Dias Highway) connecting the Minas Gerais state to the state of São Paulo.\nThe municipality is divided into eight villages and two districts: Santa Terezinha de Minas and Pinheiros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "itatiaiucu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6472,
+    "attempt": 6425,
+    "place_id": "gn-3515438",
+    "input": {
+      "place": {
+        "place_id": "gn-3515438",
+        "name": "Tlalmanalco",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.20521,
+        "lon": -98.80115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlalmanalco",
+          "url": "https://en.wikipedia.org/wiki/Tlalmanalco",
+          "text": "Tlalmanalco is a municipality located in the far south-eastern part of the State of Mexico. The municipal seat and second largest town in the municipality is the town of Tlalmanalco de Velázquez  The name is from the Nahuatl language, meaning “flat area.” The municipality's seal shows flat land, with a pyramid on it, representing its pre-Hispanic history, surrounded by small mountains, which is how the area was represented in Aztec codices. The municipality is bordered by the municipalities of Chalco, Ixtapaluca, Cocotitlan, Temamatla, Tenango del Aire, Ayapango and Amecameca. It also shares a border with the neighboring state of Puebla. Much of the municipality borders the Iztaccihuatl-Popocatepetl National Park. For this reason, Iztaccihuatl volcano dominates the landscape. The town has been designated as a “Pueblo con Encanto” (Town with Charm) by the government of the State of Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "tlalmanalco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6473,
+    "attempt": 6426,
+    "place_id": "gn-3517970",
+    "input": {
+      "place": {
+        "place_id": "gn-3517970",
+        "name": "San Pedro Pochutla",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 15.74555,
+        "lon": -96.4657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro Pochutla",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_Pochutla",
+          "text": "San Pedro Pochutla is a city and municipality located in the south of Oaxaca state, in southeastern Mexico next to the Pacific Ocean and is the southernmost municipality in Oaxaca.\nIt is an important commercial, transportation and administrative hub for the Pochutla District in the east of the Costa Region.  Pochutla is located at the junction of coastal Highway 200 and Highway 175 to Oaxaca, with 175 functioning as the town's main thoroughfare. Its name means \"place of kapok trees (Ceiba pentandra)\",  and most of the city is built on a lakebed which was drained during the colonial period.  The municipality is best known as being the home of the oceanside communities of Puerto Ángel and Zipolite."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro pochutla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pochutla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6474,
+    "attempt": 6427,
+    "place_id": "gn-3674121",
+    "input": {
+      "place": {
+        "place_id": "gn-3674121",
+        "name": "Muzo",
+        "country": "Colombia",
+        "subdivision": "Boyacá",
+        "lat": 5.53528,
+        "lon": -74.10778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muzo",
+          "url": "https://en.wikipedia.org/wiki/Muzo",
+          "text": "Muzo (Spanish pronunciation: [ˈmuso]) is a town and municipality in the Western Boyacá Province, part of the department of Boyacá, Colombia. It is widely known as the world capital of emeralds for the mines containing the world's highest quality gems of this type. Muzo is situated at a distance of 178 kilometres (111 mi) from the departmental capital Tunja and 118 kilometres (73 mi) from the capital of the Western Boyacá Province, Chiquinquirá. The urban centre is at an altitude of 815 metres (2,674 ft) above sea level. Muzo borders Otanche and San Pablo de Borbur in the north, Maripí and Coper in the east, Quípama in the west and the department of Cundinamarca in the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "muzo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6475,
+    "attempt": 6428,
+    "place_id": "gn-3986088",
+    "input": {
+      "place": {
+        "place_id": "gn-3986088",
+        "name": "San José Iturbide",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.00022,
+        "lon": -100.3858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San José Iturbide",
+          "url": "https://en.wikipedia.org/wiki/San_José_Iturbide",
+          "text": "San José Iturbide is a Mexican city (and municipality) located in the Northeast region of the state of Guanajuato, within the Sierra Gorda range. It is named in honor of Saint Joseph and the first Emperor of Mexico, Agustín de Iturbide. The municipality has an area of 534.11 square kilometres (1.76% of the surface of the state) and is bordered to the north by San Luis de la Paz and Doctor Mora, to the east by Tierra Blanca, to the south by the state of Querétaro, and to the west by San Miguel de Allende. The municipality had a population of 54,661 inhabitants according to the 2005 census.\nThe municipal president of San José Iturbide is Arq. Jose Geronimo Robles Gutierrez"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "san jose iturbide",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iturbide",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6476,
+    "attempt": 6429,
+    "place_id": "gn-4360713",
+    "input": {
+      "place": {
+        "place_id": "gn-4360713",
+        "name": "Linthicum",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.20511,
+        "lon": -76.65275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linthicum, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Linthicum,_Maryland",
+          "text": "Linthicum is a census-designated place (CDP) and unincorporated community in Anne Arundel County, Maryland, United States. The population was 10,324 at the 2010 census. It is located directly north of Baltimore–Washington International Thurgood Marshall Airport (BWI). The location is designed \"Linthicum Heights\" by the U.S. Postal Service, with the zip code 21090.\nLinthicum has been traditionally divided into two distinct communities, each with its own community association and identity. These two communities, split by the Baltimore Beltway in 1957, are Linthicum and North Linthicum (or, alternatively, Linthicum-Shipley and North Linthicum.) Both communities developed as a result of their locations adjacent to the Baltimore and Annapolis Short Line railroad which brought commuters to the original truck farming community.\nAs a developed community, Linthicum began with the 1908 founding of the \"Linthicum Heights Company\", though a \"Linthicum\" or \"Linthicum's\" station on the 1887 Annapolis and Baltimore Short Line railroad existed at least as early as 1889. The community's name was from the area's primary land-owning family since an 1801 purchase by Abner Linthicum.\nThe Linthicum Heights Historic District was listed on the National Register of Historic Places in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "linthicum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6477,
+    "attempt": 6430,
+    "place_id": "gn-4439506",
+    "input": {
+      "place": {
+        "place_id": "gn-4439506",
+        "name": "Ocean Springs",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 30.41131,
+        "lon": -88.82781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean Springs, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Ocean_Springs,_Mississippi",
+          "text": "Ocean Springs is a city in Jackson County, Mississippi, United States, approximately 2 miles (3.2 km) east of Biloxi and west of Gautier. It is part of the Pascagoula metropolitan area. The population was 18,429 at the 2020 U.S. Census, down from 18,434 in 2010.\nThe town has a reputation as an arts community and is a popular tourist destination. The town was voted as a top 10 Happiest Seaside Town by Coastal Living in 2015 and was also voted as a top 10 Best Coastal Small Town by USA Today in 2022. Its historic and secluded down town area, with streets lined by live oak trees, is home to several art galleries, shops, restaurants, and bars.\nOcean Springs was the home town of the late Walter Inglis Anderson, a nationally renowned painter and muralist who drew inspiration from the natural coastal landscape and nearby barrier islands. The town hosts several festivals throughout the year, including its Peter Anderson Festival, one of the Southeast's premiere arts and crafts festivals.\nOcean Springs was severely damaged on August 29, 2005, by Hurricane Katrina, which destroyed many buildings along the shoreline, including the Ocean Springs Yacht Club, and the wooden replica of Fort Maurepas, and a local business owned by Luke Smith. Katrina's 28 ft (8.5 m) storm surge also destroyed the Biloxi Bay Bridge, which connected Biloxi to Ocean Springs. A new bridge was constructed and opened on November 1, 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "ocean springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6478,
+    "attempt": 6431,
+    "place_id": "gn-4493990",
+    "input": {
+      "place": {
+        "place_id": "gn-4493990",
+        "name": "Summerfield",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.20875,
+        "lon": -79.90476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summerfield, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Summerfield,_North_Carolina",
+          "text": "Summerfield is a town in Guilford County, North Carolina. As of the 2020 census, the population was 10,951.\nThe town is largely regarded as a suburb of Greensboro and as development has grown, the town has slowly transformed from a rural farming area into a bedroom community primarily from Northern transplants. It features a town hall, along Oak Ridge Road (aka NC 150), west of Battleground Avenue (aka US 220), as well as a shopping center east of Battleground Avenue and Auburn Road, located on the eastern portion of NC 150. Interstate 73 passes just west of the town's center, connecting with NC 150, and also connecting with US 158 in the northernmost part of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "summerfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6479,
+    "attempt": 6432,
+    "place_id": "gn-4504598",
+    "input": {
+      "place": {
+        "place_id": "gn-4504598",
+        "name": "Ventnor City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.34039,
+        "lon": -74.47737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ventnor City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ventnor_City,_New_Jersey",
+          "text": "Ventnor City is a city situated on the Jersey Shore on Absecon Island, within Atlantic County, in the U.S. state of New Jersey, on the Atlantic Ocean. As of the 2020 United States census, the city's population was 9,210, a decrease of 1,440 (−13.5%) from the 2010 census count of 10,650, which in turn reflected a decrease of 2,260 (−17.5%) from the 12,910 counted in the 2000 census. The city, and all of Atlantic County, is part of the Atlantic City–Hammonton metropolitan statistical area, which is part of the Philadelphia metropolitan area.\nVentnor City was incorporated as a city by an act of the New Jersey Legislature on March 17, 1903, from portions of Egg Harbor Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ventnor city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ventnor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6480,
+    "attempt": 6433,
+    "place_id": "gn-4579662",
+    "input": {
+      "place": {
+        "place_id": "gn-4579662",
+        "name": "Georgetown",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 33.37683,
+        "lon": -79.2945
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Georgetown, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_South_Carolina",
+          "text": "Georgetown is the third-oldest city in the U.S. state of South Carolina and the county seat of Georgetown County, in the Lowcountry. As of the 2020 census it had a population of 8,403, a decrease from the 2010 census of 9,163. Located on Winyah Bay at the confluence of the Black, Great Pee Dee, Waccamaw, and Sampit rivers, Georgetown is the second largest seaport in South Carolina, handling over 960,000 tons of materials a year, while Charleston is the largest.\nBeginning in the colonial era, Georgetown was the commercial center of an indigo- and rice-producing area. Rice replaced indigo as the chief commodity crop in the antebellum era. A timber industry also developed and sawmills were built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "georgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6481,
+    "attempt": 6434,
+    "place_id": "gn-460274",
+    "input": {
+      "place": {
+        "place_id": "gn-460274",
+        "name": "Dreiliņi",
+        "country": "Latvia",
+        "subdivision": "Riga",
+        "lat": 56.9438,
+        "lon": 24.24253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dreiliņi, Riga",
+          "url": "https://en.wikipedia.org/wiki/Dreiliņi,_Riga",
+          "text": "Dreiliņi is a newly built neighbourhood on the eastern edge of Riga, Latvia within the Vidzeme Suburb. It lies within the borders of Augusta Deglava, Baltinavas, Dzilnas and Ēvalda Valtera streets.\nSome country-style homes existed here (on Baltinavas street), but it was planned to expand this part of the city by building nine story concrete block apartments. Construction started in the late 1980s, but the first inhabitants only moved there in 2004. The buildings stood empty for more than 15 years, before the first part of this neighbourhood was finally completed in late 2006. Today, Dreiliņi is experiencing its 'second birth', as the Riga City Council has decided to build a new route for Augusta Deglava street. It is currently under construction, and it will pass directly near Dreiliņi, and will become a part of a planned Eastern motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "dreilini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6482,
+    "attempt": 6435,
+    "place_id": "gn-4951305",
+    "input": {
+      "place": {
+        "place_id": "gn-4951305",
+        "name": "South Boston",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.33343,
+        "lon": -71.04949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Boston",
+          "url": "https://en.wikipedia.org/wiki/South_Boston",
+          "text": "South Boston (colloquially known as Southie) is a densely populated neighborhood of Boston, Massachusetts, United States, located south and east of the Fort Point Channel and abutting Dorchester Bay. It has undergone several demographic transformations since being annexed to the city of Boston in 1804. The neighborhood, once primarily farmland, is popularly known by its twentieth century identity as a working class Irish Catholic community. Throughout the twenty-first century, the neighborhood has become increasingly popular with millennial professionals.\nSouth Boston contains Dorchester Heights, where George Washington forced British troops to evacuate during the American Revolutionary War. South Boston has undergone gentrification, and consequently, its real estate market has seen property values join the highest in the city. South Boston has also left its mark on history with Boston busing desegregation. South Boston is also home to the St. Patrick's Day Parade, a celebration of the Irish-American culture and the Evacuation Day observance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "south boston",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boston",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6483,
+    "attempt": 6436,
+    "place_id": "gn-5097315",
+    "input": {
+      "place": {
+        "place_id": "gn-5097315",
+        "name": "Dover",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.88399,
+        "lon": -74.5621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dover, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Dover,_New_Jersey",
+          "text": "Dover is a town in Morris County, in the U.S. state of New Jersey. Located on the Rockaway River, Dover is about 31 miles (50 km) west of New York City and about 23 miles (37 km) west of Newark, New Jersey. As of the 2020 United States census, the town's population was 18,460, its highest decennial census count ever and an increase of 303 (+1.7%) from the 2010 census count of 18,157, which in turn had reflected a decline of 31 (−0.2%) from the 18,188 counted at the 2000 census.\nDover is a majority minority community, with nearly 70% of the population as of the 2010 census identifying themselves as Hispanic, up from 25% in 1980."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "dover",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6484,
+    "attempt": 6437,
+    "place_id": "gn-5104504",
+    "input": {
+      "place": {
+        "place_id": "gn-5104504",
+        "name": "Secaucus",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.78955,
+        "lon": -74.05653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Secaucus, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Secaucus,_New_Jersey",
+          "text": "Secaucus ( SEE-kaw-kəs) is a town in Hudson County, New Jersey, United States. As of the 2020 census, the town's population was 22,181, an increase of 5,917 (+36.4%) from the 2010 census count of 16,264, which in turn reflected an increase of 333 (+2.1%) from the 15,931 counted in the 2000 census.\nLocated within the New Jersey Meadowlands, it is the most suburban of the county's municipalities, though large parts of the town are dedicated to light manufacturing, retail, and transportation uses, as well as protected areas.\nSecaucus is a derivation of the Algonquian words for \"black\" (seke or sukit) and \"snake\" (achgook; perhaps something like /axkuk/), or \"place of snakes\", or from sekakes, referring to snakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "secaucus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6485,
+    "attempt": 6438,
+    "place_id": "gn-5117549",
+    "input": {
+      "place": {
+        "place_id": "gn-5117549",
+        "name": "Fordham",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.85927,
+        "lon": -73.89847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fordham, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Fordham,_Bronx",
+          "text": "Fordham is a neighborhood located in the western Bronx, New York City. Fordham is roughly bordered by East 196th Street to the north, the Harlem River to the west, Fordham Road to the south, and Southern Boulevard to the east. The neighborhood's primary thoroughfares are Fordham Road and the Grand Concourse.\nFordham is located within Bronx Community Board 5 and Bronx Community Board 7, and its ZIP Codes include 10453, 10457, 10458, and 10468. Its main subway line is the IND Concourse Line (B and ​D trains), operating under the Grand Concourse, with the IRT Jerome Avenue Line (4 train) on its western border.  The area is patrolled by the New York City Police Department's 46th Precinct. New York City Housing Authority (NYCHA) property in the area is patrolled by P.S.A. 7 at 737 Melrose Avenue in the Melrose section of the Bronx. The neighborhood is home to the original, Rose Hill campus of Fordham University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "fordham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6486,
+    "attempt": 6439,
+    "place_id": "gn-5174830",
+    "input": {
+      "place": {
+        "place_id": "gn-5174830",
+        "name": "University Heights",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.49783,
+        "lon": -81.53735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "University Heights, Ohio",
+          "url": "https://en.wikipedia.org/wiki/University_Heights,_Ohio",
+          "text": "University Heights is a city in Cuyahoga County, Ohio, United States. The population was 13,914 as of the 2020 census. Located 8 miles (13 km) from downtown Cleveland, it is a suburb of the Cleveland metropolitan area.\nUniversity Heights is closely tied to neighboring Cleveland Heights, with the two sharing a school system, library system, post office and ZIP Code, some city services, and local media outlets. With about half the population under the age of 30, University Heights is home to one of the youngest communities in the region, including both students and families. It borders Beachwood to the east, Cleveland Heights to the west, South Euclid to the north and Shaker Heights to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "university heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "university",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6487,
+    "attempt": 6440,
+    "place_id": "gn-5221341",
+    "input": {
+      "place": {
+        "place_id": "gn-5221341",
+        "name": "Central Falls",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.89066,
+        "lon": -71.39228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Central Falls, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Central_Falls,_Rhode_Island",
+          "text": "Central Falls is a city in Providence County, Rhode Island, United States. The population was 22,583 at the 2020 census. With an area of only 1.29 square miles (3.3 km2), it is the smallest and most densely populated city in the smallest state, and the 23rd most densely populated incorporated place in the United States.\nIt is one of only four incorporated places in New England that have a higher population density than the city of Boston, ranking second, behind the Massachusetts city of Somerville, an inner suburb of Boston. The city takes its name from a waterfall on the Blackstone River.\nCentral Falls went into receivership in May 2010, then filed for bankruptcy in August 2011. After cutting jobs and services, it came out of bankruptcy in September 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "central falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "central",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

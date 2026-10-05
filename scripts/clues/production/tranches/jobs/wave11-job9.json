@@ -1,0 +1,692 @@
+[
+  {
+    "rank": 390,
+    "place_id": "gn-3177090",
+    "input": {
+      "place": {
+        "place_id": "gn-3177090",
+        "name": "Ferrara",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.83804,
+        "lon": 11.62057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferrara",
+          "url": "https://en.wikipedia.org/wiki/Ferrara",
+          "text": "Ferrara (; Italian: [ferˈraːra] ; Emilian: Fràra [ˈfraːra]) is a city and comune (municipality) in the region of Emilia-Romagna in northern Italy, capital of the province of Ferrara. As of 2026, with a population of 129,048, it is the 29th-largest city in Italy.\nIt is situated 44 kilometres (27 miles) northeast of Bologna, on the Po di Volano, a branch channel of the main stream of the Po River, located 5 km (3 miles) north. The town has broad streets and numerous palaces dating from the Renaissance, when it hosted the court of the House of Este. For its beauty and cultural importance, it has been designated by UNESCO as a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "ferrara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 391,
+    "place_id": "gn-3451668",
+    "input": {
+      "place": {
+        "place_id": "gn-3451668",
+        "name": "Resende",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.46889,
+        "lon": -44.44667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Resende, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Resende,_Rio_de_Janeiro",
+          "text": "Resende (Brazilian Portuguese pronunciation: [ʁeˈzẽdʒi]) is a municipality located in the Brazilian state of Rio de Janeiro. The population is 132,312 (2020 est.) in an area of 1094 km2. Resendense refers to people or things that come from or inhabit Resende. It is the oldest town in this region, which has boundaries with the state of São Paulo and Minas Gerais. It is an important industrial, automotive, metallurgical, and tourist center, and headquarters of the world's second-largest military complex, the Academia Militar das Agulhas Negras (AMAN). Resende is of national importance and houses the Nuclear Fuel Factory complex of the \"Indústrias Nucleares\" of Brasil (Brazilian Nuclear Factories), the only one able to enrich uranium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "resende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 392,
+    "place_id": "gn-3463237",
+    "input": {
+      "place": {
+        "place_id": "gn-3463237",
+        "name": "Florianópolis",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.59667,
+        "lon": -48.54917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florianópolis",
+          "url": "https://en.wikipedia.org/wiki/Florian%C3%B3polis",
+          "text": "Florianópolis (English:  FLOR-ee-ə-NOP-əl-iss, Brazilian Portuguese: [floɾiaˈnɔpolis]) is the capital and second largest city of the state of Santa Catarina, in the South Region of Brazil. The city encompasses Santa Catarina Island and surrounding small islands, as well as part of the mainland. It has a population of 537,211, according to the 2022 Brazilian census, the second-most populous city in the state (after Joinville), and the 39th in Brazil. The metropolitan area has an estimated population of 1,111,702, the 21st largest in the country. The city is known for having the country's third-highest Human Development Index score among all Brazilian cities (0.847).\nThe economy of Florianópolis is heavily based on information technology, tourism, and services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "florianopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 393,
+    "place_id": "gn-358840",
+    "input": {
+      "place": {
+        "place_id": "gn-358840",
+        "name": "Bilbeis",
+        "country": "Egypt",
+        "subdivision": "Sharqia",
+        "lat": 30.42039,
+        "lon": 31.56223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilbeis",
+          "url": "https://en.wikipedia.org/wiki/Bilbeis",
+          "text": "Bilbeis (Arabic: بلبيس pronounced [belˈbeːs]; Bohairic Coptic: Ⲫⲉⲗⲃⲉⲥ/Ⲫⲉⲗⲃⲏⲥ Phelbes/Phelbēs) is an ancient fortress city on the eastern edge of the southern Nile Delta in Egypt, the site of the ancient city and former bishopric of Phelbes and a Latin Catholic titular see. It is located 20 km from the city of 10th of Ramadan and roughly 50 km from the city of Cairo.\nThe city is small in size but densely populated, with over 407,300 residents. It also houses the Egyptian Air Force Academy complex, which contains the town's largest public school in Al-Zafer.\nCoptic tradition says that Bilbeis was one of the stopping places of the Holy Family during the Flight into Egypt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "bilbeis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 395,
+    "place_id": "gn-482283",
+    "input": {
+      "place": {
+        "place_id": "gn-482283",
+        "name": "Tolyatti",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.5303,
+        "lon": 49.3461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tolyatti",
+          "url": "https://en.wikipedia.org/wiki/Tolyatti",
+          "text": "Tolyatti or Togliatti, known before 1964 as Stavropol, is a city in Samara Oblast, Russia. It is the largest city in Russia which is neither the administrative center of a federal subject, nor the largest city of a subject. Population: 684,709 (2021 census); 719,632 (2010 census); 702,879 (2002 census); 630,543 (1989 Soviet census). The city is best known as the home of Russia's largest car manufacturer AvtoVAZ (Lada). For this reason, Tolyatti is often dubbed \"Russia's motor city\" or \"Russia's Motown\" (in reference to Detroit in the United States—the spiritual home of the American automotive industry). It was renamed after Italian communist politician Palmiro Togliatti in 1964, upon his death in the Soviet Union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "tolyatti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 396,
+    "place_id": "gn-5577592",
+    "input": {
+      "place": {
+        "place_id": "gn-5577592",
+        "name": "Greeley",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.42331,
+        "lon": -104.70913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greeley, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Greeley,_Colorado",
+          "text": "Greeley is the home rule city that is the county seat of, and the most populous municipality in, Weld County, Colorado United States. The city population was 108,795 at the 2020 United States census, an increase of 17.12% since the 2010 United States census. Greeley is the tenth most populous city in Colorado. Greeley is the principal city of the Greeley, CO Metropolitan Statistical Area and is a major city of the Front Range Urban Corridor. Greeley is located in northern Colorado and is situated 49 miles (79 km) north-northeast of the Colorado State Capitol in Denver. The city is a college town, home to the University of Northern Colorado and Aims Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "greeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 397,
+    "place_id": "gn-1174625",
+    "input": {
+      "place": {
+        "place_id": "gn-1174625",
+        "name": "Kasur",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.11866,
+        "lon": 74.45025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kasur",
+          "url": "https://en.wikipedia.org/wiki/Kasur",
+          "text": "Kasur (Punjabi / Urdu: قصور; Punjabi pronunciation: [ˈkɐsuːɾᵊ]; Urdu pronunciation: [ˈqəsuːɾ] also romanized as Qasūr; from pluralized Arabic word Qasr meaning \"palaces\" or \"forts\") is a city to the south of Lahore, in the Pakistani province of Punjab. The city serves as the headquarters of Kasur District. Kasur is the 16th largest city in Punjab and 24th largest in Pakistan, by population. It is also known for being the burial place of the 17th-century Sufi-poet Bulleh Shah. It is near the border with India, and borders the Lahore, Sheikhupura and Okara Districts of Punjab. The city is an aggregation of 26 fortified hamlets overlooking the alluvial valleys of the Beas and Sutlej rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "kasur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 398,
+    "place_id": "gn-1259005",
+    "input": {
+      "place": {
+        "place_id": "gn-1259005",
+        "name": "Raigarh",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.89764,
+        "lon": 83.3966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raigarh",
+          "url": "https://en.wikipedia.org/wiki/Raigarh",
+          "text": "Raigarh is a city in northern Chhattisgarh known as the 'Cultural capital of Chhattisgarh'; Raigarh is famous for its dance form “SUWA” (as Raigarh Gharana) and classical music; Raigarh is also known as Sanskritidhani.\nIt is also known for its coal reserves and power generation for the state and the country. With a population of just about 150,019 (2011) it is a rapidly growing industrial city. Raigarh is one of the major rice-producing districts in India.\nRich in culture and tradition, Raigarh City is the administrative headquarters of Raigarh district. Apart from its cultural heritage, the city of Raigarh is also known for its Kosa (a fine silk) and rich deposits of coal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "raigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 399,
+    "place_id": "gn-1262482",
+    "input": {
+      "place": {
+        "place_id": "gn-1262482",
+        "name": "Munger",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.37459,
+        "lon": 86.47455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munger",
+          "url": "https://en.wikipedia.org/wiki/Munger",
+          "text": "Munger, formerly spelt as Monghyr, is a twin city and a Municipal Corporation situated in the Indian state of Bihar. It is the administrative headquarters of Munger district and Munger Division. Munger was one of the major cities in Eastern India and undivided Bengal during Mughal period and British Raj. It is one of the major political, cultural, educational and commercial centers of Bihar and Eastern India. Munger is situated about 180 km (110 mi) east of capital city Patna, about 480 km (300 mi) west of Eastern India's largest city Kolkata and 1,200 km (750 mi) from country's capital New Delhi.\nHistorically, Munger is known for being an ancient seat of rule."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "munger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 400,
+    "place_id": "gn-1274040",
+    "input": {
+      "place": {
+        "place_id": "gn-1274040",
+        "name": "Chittorgarh",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.88963,
+        "lon": 74.62403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chittorgarh",
+          "url": "https://en.wikipedia.org/wiki/Chittorgarh",
+          "text": "Chittorgarh (Hindi pronunciation: [t͡ʃɪt̪ːɔːɽ.gəɽʱ] ; also Chitror or Chittor or Chittaurgarh) is a major city in the state of Rajasthan in western India. It lies on the Berach River, a tributary of the Banas, and is the administrative headquarters of Chittorgarh District. It was a major stronghold of the Rajput State of Medapata (modern Mewar). The city of Chittorgarh is located on the banks of the rivers Gambhiri and Berach.\nChittorgarh is home to the Chittor Fort, one of the largest forts in India and Asia. It was sacked thrice; first in 1303 by Alauddin Khalji, again in 1535 by Bahadur Shah of Gujarat, and lastly by the Mughal Emperor Akbar in 1568."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "chittorgarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 401,
+    "place_id": "gn-2033467",
+    "input": {
+      "place": {
+        "place_id": "gn-2033467",
+        "name": "Yanji",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 42.88825,
+        "lon": 129.50241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yanji",
+          "url": "https://en.wikipedia.org/wiki/Yanji",
+          "text": "Yanji (Chinese: 延吉; Korean: 연길 Yŏn'gil; alternately romanized as Yenki or Yenji) is a county-level city in the east of China's Jilin Province, and is the seat of the Yanbian Korean Autonomous Prefecture. Yanji City is located in the eastern part of Jilin Province. It is the seat of the government of Yanbian Korean Autonomous Prefecture and the political, economic and cultural center of the entire autonomous prefecture. Its population is approximately 400,000 of which a significant portion is ethnic Korean.  Yanji is a busy hub of transport and trade between China and North Korea. The city is home to Yanbian University, a comprehensive university and the only Project 211 university in Yanji."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yanji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 403,
+    "place_id": "gn-2651347",
+    "input": {
+      "place": {
+        "place_id": "gn-2651347",
+        "name": "Derby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.92277,
+        "lon": -1.47663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derby",
+          "url": "https://en.wikipedia.org/wiki/Derby",
+          "text": "Derby (  DAR-bee) is a cathedral city and unitary authority area on the River Derwent in Derbyshire, England. Derbyshire is named after Derby, which was its original county town. As a unitary authority, Derby is administratively independent from Derbyshire County Council. The population of Derby is 275,344 (2025).\nThe Romans established the town of Derventio, which was later captured by the Anglo-Saxons and then by the Vikings who made Djúra-bý one of the Five Boroughs of the Danelaw. Initially a market town, Derby grew rapidly in the industrial era and was home to Lombe's Mill, an early British factory and it contains the southern part of the Derwent Valley Mills World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "derby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 404,
+    "place_id": "gn-282615",
+    "input": {
+      "place": {
+        "place_id": "gn-282615",
+        "name": "Nablus",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 32.22111,
+        "lon": 35.25444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nablus",
+          "url": "https://en.wikipedia.org/wiki/Nablus",
+          "text": "Nablus ( NA(H)B-ləs) is a city in the West Bank, Palestine, and the capital of the Nablus Governorate. It is located approximately 49 kilometres (30 mi) north of Jerusalem, between Mount Ebal and Mount Gerizim with a population of 156,906. The city is a commercial and cultural centre of Palestine, home to An-Najah National University, one of the largest institutions of higher learning in Palestine, and the Palestine Stock Exchange. Nablus is under the administration of the Palestinian National Authority (PNA).\nNablus has been traditionally associated with the ancient city of Shechem. However, Shechem is now identified with the nearby site of Tell Balata in the Balata al-Balad suburb of the West Bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "nablus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 405,
+    "place_id": "gn-3557846",
+    "input": {
+      "place": {
+        "place_id": "gn-3557846",
+        "name": "Guanabacoa",
+        "country": "Cuba",
+        "subdivision": "Havana",
+        "lat": 23.12518,
+        "lon": -82.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guanabacoa",
+          "url": "https://en.wikipedia.org/wiki/Guanabacoa",
+          "text": "Guanabacoa is a colonial township in eastern Havana, Cuba, and one of the 15 municipalities (or boroughs) of the city. It is famous for its historical Santería and is home to the first African Cabildo in Havana. Guanabacoa was briefly the capital of Cuba in 1555 after Havana was attacked by French pirate Jacques de Sores. This gave rise to the Cuban saying \"Like putting Havana in Guanabacoa,\" which is used to describe trying to fit something too large into a space too small. Guanabacoa was the site of the Battle of Guanabacoa, a skirmish between British and Spanish troops as part of the larger Battle of Havana during the Seven Years' War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "guanabacoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 407,
+    "place_id": "gn-3981941",
+    "input": {
+      "place": {
+        "place_id": "gn-3981941",
+        "name": "Tepic",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.50733,
+        "lon": -104.89332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepic",
+          "url": "https://en.wikipedia.org/wiki/Tepic",
+          "text": "Tepic (Spanish pronunciation: [teˈpik] ) is the capital and largest city of the western Mexican state of Nayarit, as well as the seat of the Tepic Municipality.\nLocated in the central part of the state, it stands at an altitude of 915 metres (3,002 ft) above sea level, on the banks of the Río Mololoa and the Río Tepic, approximately 225 kilometres (140 mi) north-west of Guadalajara, Jalisco. Nearby are the volcanoes of San Juan, Las Navajas, and Sangangüey. Tepic is the primary urban center of this rich agricultural region; major crops include sugarcane, tobacco and citrus fruits.\nThe city was founded in 1531 as Villa del Espíritu Santo de la Mayor España."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "tepic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 408,
+    "place_id": "gn-5351247",
+    "input": {
+      "place": {
+        "place_id": "gn-5351247",
+        "name": "Fullerton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.87029,
+        "lon": -117.92534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fullerton, California",
+          "url": "https://en.wikipedia.org/wiki/Fullerton,_California",
+          "text": "Fullerton ( FUUL-ər-tən) is a city in northern Orange County, California, United States. As of the 2020 census, the city had a total population of 143,617.\nFullerton was founded in 1887. Historically, it was a center of agriculture, notably groves of Valencia oranges and other citrus crops, as well as petroleum extraction; transportation; and manufacturing. It is home to numerous higher educational institutions, particularly California State University, Fullerton and Fullerton College. From the mid-1940s through the late 1990s, Fullerton was home to a large industrial base made up of aerospace contractors, canneries, paper products manufacturers, and is considered to be the birthplace of the electric guitar, due in large part to Leo Fender."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "fullerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 409,
+    "place_id": "gn-5784549",
+    "input": {
+      "place": {
+        "place_id": "gn-5784549",
+        "name": "West Jordan",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.60967,
+        "lon": -111.9391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Jordan, Utah",
+          "url": "https://en.wikipedia.org/wiki/West_Jordan,_Utah",
+          "text": "West Jordan is a city in Salt Lake County, Utah, United States. It is a suburb of Salt Lake City. According to the 2020 Census, the city had a population of 116,961, placing it as the third most populous in the state. The city occupies the southwest end of the Salt Lake Valley at an elevation of 4,330 feet (1,320 m). Named after the nearby Jordan River, the limits of the city begin on the river's western bank and end in the eastern foothills of the Oquirrh Mountains, where Kennecott Copper Mine, the world's largest man-made excavation, is located.\nSettled in the mid-19th century, the city has developed into its own regional center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "west jordan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jordan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 410,
+    "place_id": "gn-944986",
+    "input": {
+      "place": {
+        "place_id": "gn-944986",
+        "name": "Vanderbijlpark",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.71171,
+        "lon": 27.83795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vanderbijlpark",
+          "url": "https://en.wikipedia.org/wiki/Vanderbijlpark",
+          "text": "Vanderbijlpark  is an industrial city with approximately 95,000 inhabitants, situated on the Vaal River in the south of Gauteng province, South Africa. The city is named after Hendrik van der Bijl, an electrical engineer and industrialist.\nVanderbijlpark is home to Vanderbijlpark Steel, previously part of the South African Iron and Steel Corporation (ISCOR), which subsequently became a subsidiary of the global company ArcelorMittal. With neighbouring cities Vereeniging and Sasolburg, it forms the Vaal Triangle, historically a major industrial region of South Africa. It is situated in the local municipality of Emfuleni and district municipality of Sedibeng.\nThe peri-urban black townships Boipatong, Muvango, Bophelong, Sebokeng, Evaton, Tshepiso and Sharpeville are close to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "vanderbijlpark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 411,
+    "place_id": "gn-1260476",
+    "input": {
+      "place": {
+        "place_id": "gn-1260476",
+        "name": "Panipat",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 29.38747,
+        "lon": 76.96825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panipat",
+          "url": "https://en.wikipedia.org/wiki/Panipat",
+          "text": "Panipat () is an industrial city, located 95 km north of Delhi and 169 km south of Chandigarh on NH-44 in Panipat district, Haryana, India. It is famous for three major battles fought in 1526, 1556 and 1761. The city is also known as 'city of weavers', 'textile city' and 'cast-off clothes capital' of the world. It is home to industries like wool and cotton milling, saltpetre refining and manufacture of glass, electrical appliances, and other products. The city is included in the list of critically polluted industrial areas in India. As in Dec 2009, the Comprehensive Environment Pollution Index (CEPI) of the city was 59.00, as against 88.50 of Ankaleshwar (Gujarat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "panipat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 412,
+    "place_id": "gn-1784130",
+    "input": {
+      "place": {
+        "place_id": "gn-1784130",
+        "name": "Zhoukou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 33.63333,
+        "lon": 114.63333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhoukou",
+          "url": "https://en.wikipedia.org/wiki/Zhoukou",
+          "text": "Zhoukou (Chinese: 周口; pinyin: Zhōukǒu; Wade–Giles: Chou-k’ou; postal: Chowkow) is a prefecture-level city in eastern Henan province, China. It borders Zhumadian to the southwest, Xuchang and Luohe to the west, Kaifeng to the northwest, Shangqiu to the northeast, and the province of Anhui on all other sides. As of the 2020 census, its population was 9,026,015 inhabitants. However, as of the 2018 estimation, 1,601,300 lived in the built-up (or metro) made up of Chuanhui district and the northern part of Shangshui county.\nThe history and geography of Zhoukou have made it a city. As the ancient capitals of Emperor Yao and the birthplace of Laozi, it carries a cultural heritage of China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "zhoukou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

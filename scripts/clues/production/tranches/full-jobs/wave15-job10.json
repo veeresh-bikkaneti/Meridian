@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 3003,
+    "attempt": 2981,
+    "place_id": "gn-3190941",
+    "input": {
+      "place": {
+        "place_id": "gn-3190941",
+        "name": "Šibenik",
+        "country": "Croatia",
+        "subdivision": "Šibenik-Knin",
+        "lat": 43.73429,
+        "lon": 15.8942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Šibenik",
+          "url": "https://en.wikipedia.org/wiki/Šibenik",
+          "text": "Šibenik (Croatian: [ʃîbeniːk] ) is a historic town in Croatia, located in central Dalmatia, where the river Krka flows into the Adriatic Sea. Šibenik is one of the oldest Croatian self-governing cities on the Adriatic, the capital and cultural, educational, administrative and economic center of Šibenik-Knin County, and is also the third-largest town in the Dalmatian region. As of 2021, the town has 31,115 inhabitants, while the municipality has 42,599 inhabitants.The seat is the Šibenik Diocese.\nIt was first mentioned on Christmas 1066 in a grant of Peter Krešimir IV, so it is also called \"Krešimir's Town\". Until the plague pandemic in 17th century it was the largest city on the entire eastern coast of the Adriatic. Šibenik was the de facto capital of the Socialist Republic of Croatia from December 1944 to May 1945. It is also significant as the place of foundation of the Croatian Navy.\nThe Cathedral of St. James is the most significant architectural achievement of the 15th and 16th centuries on the soil of Croatia. Due to its exceptional values, it was included in the UNESCO World Cultural Heritage List in 2000, which was joined on that list by the Fortress of St. Nicholas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "sibenik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3004,
+    "attempt": 2982,
+    "place_id": "gn-4153471",
+    "input": {
+      "place": {
+        "place_id": "gn-4153471",
+        "name": "Doral",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.81954,
+        "lon": -80.35533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doral, Florida",
+          "url": "https://en.wikipedia.org/wiki/Doral,_Florida",
+          "text": "Doral is a city in Miami-Dade County, Florida, United States. One of 34 municipalities in the county, it is a principal city in the Miami metropolitan area that is located 5 miles (8 km) west of Miami International Airport and 13 miles (21 km) west of Downtown Miami. Doral occupies 15 square miles (39 km2) bordered on the west by the Ronald Reagan Turnpike and the Florida Everglades, on the north by the town of Medley, on the east by the Palmetto Expressway and on the south by the Dolphin Expressway and the city of Sweetwater. The city is part of the Miami metropolitan area of South Florida. As of the 2020 census, Doral had a population of 75,874, up from 45,704 in 2010.\nDoral has operated under the mayor-council-manager form of government since incorporation. Policymaking and legislative authority are vested in a governing council consisting of the mayor and four other councilmembers. The council, which is elected at large, is responsible for passing ordinances and resolutions, adopting the annual budget, and appointing the city manager, city clerk and city attorney. The city manager is responsible for carrying out the council's policies and ordinances, overseeing the government's daily operations, and appointing the heads of various departments.\nFor a city of its size, Doral has many shops, financial institutions and businesses, especially importers and exporters, primarily because of its proximity to the airport. In 2008, Fortune Small Business and CNN Money ranked Doral 51st on a list of 100 cities with the best mix of business advantages and lifestyle appeal. The city was named a 2019 All-America City Award finalist and one of the \"Best Places to Live\" in 2018 by Money magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "doral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3005,
+    "attempt": 2983,
+    "place_id": "gn-4229476",
+    "input": {
+      "place": {
+        "place_id": "gn-4229476",
+        "name": "Warner Robins",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.61574,
+        "lon": -83.62664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warner Robins, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Warner_Robins,_Georgia",
+          "text": "Warner Robins (WRB; typically  wore-nur-RAW-bins) is a city in Houston and Peach Counties in the U.S. state of Georgia. It is the state's 11th-largest incorporated city, with a population of 85,830 according to the World Population Review.\nThe city is the main component of the Warner Robins metropolitan statistical area, including Houston, Peach, and Pulaski Counties, which had a census population of 201,469 in 2020. It is a component of the Macon–Warner Robins–Fort Valley combined statistical area, with an estimated 2018 population of 423,572. Robins Air Force Base, a U.S. Air Force maintenance and logistics complex that was founded as the Warner Robins Air Depot in 1942, is located east of the city limits. The base's expansion and the suburbanization of nearby Macon have led to the city's growth in the post-World War II era."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "warner robins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "warner",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "robins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3006,
+    "attempt": 2984,
+    "place_id": "gn-470546",
+    "input": {
+      "place": {
+        "place_id": "gn-470546",
+        "name": "Vyborg",
+        "country": "Russia",
+        "subdivision": "Leningradskaya Oblast'",
+        "lat": 60.70763,
+        "lon": 28.75283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vyborg",
+          "url": "https://en.wikipedia.org/wiki/Vyborg",
+          "text": "Vyborg (Russian: Выборг, IPA: [ˈvɨbərk]; Finnish: Viipuri, IPA: [ˈʋiːpuri]; Swedish: Viborg, IPA: [ˈvǐːbɔrj], Finland Swedish pronunciation: [ˈviːborj]) is a town and the administrative center of Vyborgsky District in Leningrad Oblast, Russia. It lies on the Karelian Isthmus near the head of Vyborg Bay, 130 km (81 miles) northwest of St. Petersburg, 245 km (152 miles) east of the Finnish capital Helsinki, and 38 km (24 miles) south of Russia's border with Finland, where the Saimaa Canal enters the Gulf of Finland. The most recent census population of Vyborg is 72,530 (2021 census).\nVyborg was founded as a medieval fortress in Finland under Swedish rule during the Third Swedish Crusade. After numerous wars between the Russians and Swedes, the Treaty of Nöteborg in 1323 defined the border of eastern Finland, and would separate the two cultures. Vyborg remained under Swedish rule until it was captured by the Russians during the Great Northern War (1700–1721). Under Russian rule, Vyborg was the seat of Vyborg Governorate until it was incorporated into the newly established Grand Duchy of Finland, an autonomous part of the Russian Empire. Finland declared its independence from Russia in 1917, after which Vyborg became its second-most significant city after Helsinki, and represented internationally as its most multicultural city. During World War II, Vyborg's population was evacuated and the town was ceded to the Soviet Union. In 2010, Vyborg was conferred the status of \"City of Military Glory\" by Russian president Dmitry Medvedev.\nThe city hosts the Russian end of the 1,222 km (759 mi) Nord Stream 1 gas pipeline, laid in 2011 and operated by a consortium led by Russia's Gazprom state hydrocarbons enterprise to pump 55 billion cubic meters (1.9 trillion cubic feet) of natural gas a year under the Baltic Sea to Lubmin, Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "vyborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3007,
+    "attempt": 2985,
+    "place_id": "gn-5327298",
+    "input": {
+      "place": {
+        "place_id": "gn-5327298",
+        "name": "Bell",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.97751,
+        "lon": -118.18702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bell, California",
+          "url": "https://en.wikipedia.org/wiki/Bell,_California",
+          "text": "Bell is an incorporated city in Los Angeles County, California, United States. Located near the center of the former San Antonio Township (abolished after 1960), its population was 33,559 at the 2020 census, down from 35,477 at the 2010 census. Bell is located on the west bank of the Los Angeles River and is a suburb of the city of Los Angeles. At 2.5 square miles (6.5 km2), Bell is the thirteenth-smallest city in the United States with a population of at least 25,000.\nIn 2007, the U.S. Census Bureau ranked Bell's land area at 1245 out of 1257 cities (defined as incorporated areas) and two unincorporated areas that had a population of at least 25,000 in year 2000. Ten cities in the list of 1267 cities had no land area data (e.g., Goleta, California).\nCity residents voted to become a charter city in a special municipal election on November 29, 2005. Fewer than 400 voters turned out for that special election. More than half of those votes were dubiously obtained absentee votes. Being a charter city meant that city officials were exempt from state salary caps. A scandal ensued, in which several city officials were indicted for fraud, found guilty on numerous charges and sentenced to up to 12 years in prison, after giving themselves extraordinarily high salaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "bell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3008,
+    "attempt": 2986,
+    "place_id": "gn-5345032",
+    "input": {
+      "place": {
+        "place_id": "gn-5345032",
+        "name": "East Palo Alto",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.46883,
+        "lon": -122.14108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Palo Alto, California",
+          "url": "https://en.wikipedia.org/wiki/East_Palo_Alto,_California",
+          "text": "East Palo Alto ( EAST PAL-oh AL-toh; abbreviated E.P.A.) is a city in San Mateo County, California, United States. As of the 2020 census, the population of East Palo Alto was 30,034. It is situated on the San Francisco Peninsula, roughly halfway between the cities of San Francisco and San Jose. To the north and east is the San Francisco Bay, to the west is the city of Menlo Park, and to the south the city of Palo Alto. East Palo Alto was founded as an unincorporated community and was incorporated in July 1983. The two cities are separated only by San Francisquito Creek and, largely, the Bayshore Freeway (the vast majority of East Palo Alto is northeast of the freeway, while all of the residential part of Palo Alto is southwest of the freeway). The revitalization projects in 2000, and high income high-tech professionals moving into new developments, including employees from Google and Facebook, have begun to slowly eliminate the historically wide cultural and economic differences between the two cities. East Palo Alto and Palo Alto share both telephone area codes and postal ZIP codes.\nIn 1990, 43% of East Palo Alto's residents were African Americans, which was the result of redlining practices and racial deed restrictions in Palo Alto, while 34% were Latinos. As of 2020, African Americans were 11%, while Latinos are about 66%. A small minority of Pacific Islanders also reside in East Palo Alto, most of Tongan, Samoan, and Fijian origin.\nThe prosperity that benefited Silicon Valley during the dot-com boom of the late 1990s largely bypassed East Palo Alto. The Ravenswood City School District, which serves East Palo Alto and part of adjoining Menlo Park, has struggled with low academic performance. Eventually, however, the Peninsula's shortage of land and soaring property prices meant that East Palo Alto became an option for urban regeneration.\nEast Palo Alto includes a small piece of land southwest of the Bayshore Freeway (U.S. Route 101), across the freeway from the Gateway 101 shopping center.  This land is roughly triangular and sits between the freeway and San Francisquito Creek.  This land was formerly the site of a two-block-long retail business district known as Whiskey Gulch. Since 1888, Stanford University, on the west side of Palo Alto, prohibited alcohol sales within a radius of 1.5-mile (2.4 km) from the campus. Whiskey Gulch, which was just outside these limits, became home to a number of liquor stores, bars, and music venues. The rules were relaxed in 1970, but the neighborhood still retained this character until 2000, when the city tore down Whiskey Gulch and replaced it with the University Circle office complex. A 200-room Four Seasons hotel opened in University Circle in 2006.\nOver 25% of East Palo Alto (400+ acres) has been bulldozed and replaced with brand new housing and brand-name retail establishments since approximately 1997, attracting an entirely new demographic. The University Square community has become particularly appealing to young high-tech professionals and high-income couples, including many employees from Google, Facebook, Sun Microsystems, Yahoo!, and various other software and startup companies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 511
+    },
+    "banned_terms": [
+      {
+        "term": "east palo alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3009,
+    "attempt": 2987,
+    "place_id": "gn-5364329",
+    "input": {
+      "place": {
+        "place_id": "gn-5364329",
+        "name": "Laguna Niguel",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.52253,
+        "lon": -117.70755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laguna Niguel, California",
+          "url": "https://en.wikipedia.org/wiki/Laguna_Niguel,_California",
+          "text": "Laguna Niguel ( luh-GOO-nuh nih-GEL) is a city in Orange County, California, United States. The name Laguna Niguel is derived from the words \"Laguna\" (Spanish for \"lagoon\") and \"Niguili\" (the name of a Native American village once located near Aliso Creek). It also appeared in Spanish records as Nigüili, Nigüel, or Neuil from Juaneño (Acjachemem) nawil. As of the 2020 census, the population was 64,355. Laguna Niguel is located in the San Joaquin Hills in the southeastern corner of Orange County, close to the Pacific Ocean, and borders the cities of Aliso Viejo, Dana Point, Laguna Beach, Laguna Hills, Mission Viejo, and San Juan Capistrano.\nLaguna Niguel has its origins in the Rancho Niguel Mexican land grant, which was acquired in 1959 by the Laguna Niguel Corporation to develop one of California's first master-planned communities. As a predominantly residential city, Laguna Niguel serves as a bedroom community for the job centers of northern and central Orange County. Laguna Niguel has a median household income 31 percent above the Orange County average and nearly double the U.S. average. It is known for its mild coastal climate, low crime rate, and its numerous parks and public trails."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "laguna niguel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "niguel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3010,
+    "attempt": 2988,
+    "place_id": "gn-5380668",
+    "input": {
+      "place": {
+        "place_id": "gn-5380668",
+        "name": "Palm Springs",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.8303,
+        "lon": -116.54529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Springs, California",
+          "url": "https://en.wikipedia.org/wiki/Palm_Springs,_California",
+          "text": "Palm Springs (Cahuilla: Séc-he) is a desert resort city in Riverside County, California, United States, within the Colorado Desert's Coachella Valley. The city covers approximately 94 square miles (240 km2), making it the largest city in Riverside County by land area. With multiple plots in checkerboard pattern, more than 10% of the city is part of the Agua Caliente Band of Cahuilla Indians reservation land and is the administrative capital of the most populated reservation in California.\nThe population of Palm Springs was 44,575 as of the 2020 census, but because Palm Springs is a retirement location and a winter snowbird destination, the city's population triples between November and March. The majority of the snowbirds are Canadians.\nThe city is noted for its mid-century modern architecture, design elements, arts and cultural scene, and recreational activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "palm springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3011,
+    "attempt": 2989,
+    "place_id": "gn-5710756",
+    "input": {
+      "place": {
+        "place_id": "gn-5710756",
+        "name": "Albany",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.63651,
+        "lon": -123.10593
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albany, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Albany,_Oregon",
+          "text": "Albany ( AL-bə-nee) is a city in and the county seat of Linn County, Oregon, and is the 11th most populous city in the state. Albany is located in the Willamette Valley at the confluence of the Calapooia River and the Willamette River in both Linn and Benton counties, just east of Corvallis and south of Salem. It is predominantly a farming and manufacturing city that settlers founded around 1848. As of the 2020 United States census, the population of Albany, Oregon was 56,472.\nAlbany has a home rule charter, a council–manager government, and a full-time unelected city manager. The city provides the population with access to over 30 parks and trails, a senior center, and many cultural events such as the Northwest Art & Air Festival, River Rhythms, Summer Sounds and Movies at Monteith. In addition to farming and manufacturing, the city's economy depends on retail trade, health care, and social assistance. In recent years the city has worked to revive the downtown shopping area, with help from the Central Albany Revitalization Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3012,
+    "attempt": 2990,
+    "place_id": "gn-664437",
+    "input": {
+      "place": {
+        "place_id": "gn-664437",
+        "name": "Turnu Măgurele",
+        "country": "Romania",
+        "subdivision": "Teleorman County",
+        "lat": 43.7469,
+        "lon": 24.86846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turnu Măgurele",
+          "url": "https://en.wikipedia.org/wiki/Turnu_Măgurele",
+          "text": "Turnu Măgurele (Romanian pronunciation: [ˌturnu məɡuˈrele]) is a city in Teleorman County, Romania, in the historical region of Muntenia. Developed nearby the site once occupied by the medieval port of Turnu, it is situated north-east of the confluence between the Olt River and the Danube, at the edge of the Wallachian Plain.\nThe first documentary attestation of the town appears in a diploma issued by Sigismund of Luxembourg, King of Hungary, on the occasion of the battles fought here in 1394. The fortress belonged to the Ottoman Empire, intermittently, between 1417 and 1829, being a Turkish raya. During the Iancu Jianu's hajduk raids against the Vidin pasha Osman Pazvantoğlu, the fortress was burned and destroyed. After the Russo-Turkish War of 1828–1829, the town became part of Wallachia, as a result of the Treaty of Adrianople. After 1829, the locality was relocated on a nearby hill, near the localities of Odaia and Măgurele, and the fortress was demolished. Turnu Măgurele was the residence of Teleorman County from 1839 to 1950, and once again from 1952 until 1968, when, following Romania's administrative reorganization of that year, it lost the status of county residence in favor of the city of Alexandria.\nThe communist urban systematization had a major impact on the town's urban planning and the establishment of the Chemical Fertilizer Plant (1962) transformed the city into an industrial one. Forced urbanization caused the city's population to grow substantially to reach almost 37,000 in 1992.\nAfter the 1989 Revolution, the municipality suffered a sharp decline as a result of the collapse of industrial and economic activities and the migration of the population to the larger cities as well as to other European states."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "turnu magurele",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "turnu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "magurele",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3013,
+    "attempt": 2991,
+    "place_id": "gn-729730",
+    "input": {
+      "place": {
+        "place_id": "gn-729730",
+        "name": "Kyustendil",
+        "country": "Bulgaria",
+        "subdivision": "Kyustendil",
+        "lat": 42.28314,
+        "lon": 22.69224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kyustendil",
+          "url": "https://en.wikipedia.org/wiki/Kyustendil",
+          "text": "Kyustendil (Bulgarian: Кюстендил [kʲustenˈdiɫ]) is a town in the far west of Bulgaria, the capital of the Kyustendil Province, a former bishopric and present Latin Catholic titular see.\nThe town is situated in the southern part of the Kyustendil Valley, near the borders of Serbia and North Macedonia; 90 km southwest of Sofia, 130 km northeast of Skopje and 243 km north of Thessaloniki. The population is 37 799, with a Bulgarian majority and a Roma minority. During the Iron Age, a Thracian settlement was located within the town, later known as Roman in the 1st century AD. In the Middle Ages, the town switched hands between the Byzantine Empire, Bulgaria and Serbia, prior to Ottoman annexation in 1395. After centuries of Ottoman rule, the town became part of an independent Bulgarian state in 1878."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "kyustendil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3014,
+    "attempt": 2992,
+    "place_id": "gn-933182",
+    "input": {
+      "place": {
+        "place_id": "gn-933182",
+        "name": "Palapye",
+        "country": "Botswana",
+        "subdivision": "Central",
+        "lat": -22.54605,
+        "lon": 27.12507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palapye",
+          "url": "https://en.wikipedia.org/wiki/Palapye",
+          "text": "Palapye is a growing town in Botswana, situated about halfway between Francistown and Gaborone (170 km (106 mi) from Francistown and 240 km (149 mi) from Gaborone). Over the years its position has made it a convenient stopover on one of Southern Africa's principal north–south rail and road routes.\nLocated here is the Morupule Colliery, which supplies Morupule Power Station, Botswana's principal domestic source of electricity. The power station has undertaken an expansion project to increase its generation capacity in an effort to meet the country's increasing demand for electricity. Construction began in 2010. As of May 2021, Morupule A plant produces 132 MW of electricity, while Morupule B produces 600 MW.\nIn 1997 Palapye was said to be the fastest-growing village in Africa, and was expected to expand its population from 30,000 to 180,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "palapye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3015,
+    "attempt": 2993,
+    "place_id": "gn-1685373",
+    "input": {
+      "place": {
+        "place_id": "gn-1685373",
+        "name": "Sultan sa Barongis",
+        "country": "Philippines",
+        "subdivision": "Autonomous Region in Muslim Mindanao",
+        "lat": 6.8,
+        "lon": 124.63667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sultan sa Barongis",
+          "url": "https://en.wikipedia.org/wiki/Sultan_sa_Barongis",
+          "text": "Sultan sa Barongis, officially the Municipality of Sultan sa Barongis (Maguindanaon: Inged nu Sultan sa Barungis, Jawi: ايڠد نو سولتان س بروڠس; Tagalog: Bayan ng Sultan sa Barongis), is a municipality in the province of Maguindanao del Sur, Philippines. According to the 2024 census, it has a population of 39,182 people.\nSultan sa Barongis was initially known as Lambayong and was created on October 29, 1952 through Executive No. 543, signed by President Elpidio Quirino. It was carved from the municipality of Dulawan (now Datu Piang), and then renamed on June 21, 1959 after Mantagmama of the House of Talik, grandfather of lawyer, guerrilla leader, and politician, Salipada Pendatun.\nIn 2004, eleven barangays of Sultan sa Barongis were transferred to the municipality of Rajah Buayan, reducing the number of barangays from 23 to 12."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "sultan sa barongis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sultan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sa",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "barongis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3016,
+    "attempt": 2994,
+    "place_id": "gn-2081114",
+    "input": {
+      "place": {
+        "place_id": "gn-2081114",
+        "name": "Weno",
+        "country": "Micronesia",
+        "subdivision": "Chuuk",
+        "lat": 7.44648,
+        "lon": 151.84135
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weno",
+          "url": "https://en.wikipedia.org/wiki/Weno",
+          "text": "Weno (Chuukese: Wééné), formerly Moen, is an island municipality in the Nomoneas region of Chuuk Lagoon in Chuuk State, Federated States of Micronesia (FSM). It is the capital and main commercial hub of the state and represents the largest settlement in the FSM.\nAccording to legend, Sowukachaw, leader of the first Chuukese people, settled on Weno in a place called Wunuunganata (meaning \"high place\"). It was from here that the sociopolitical hierarchy of Chuuk was established and from where Sowukachaw's descendants eventually spread throughout Weno and other parts of the state. Weno is therefore of special significance to the Chuukese and is regarded as their ancestral homeland. Today, Wunuunganata, now known as Nantaku, is the center of Chuuk's administrative activities and is where the Chuuk State Government complex and other important facilities are located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "weno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3017,
+    "attempt": 2995,
+    "place_id": "gn-2639192",
+    "input": {
+      "place": {
+        "place_id": "gn-2639192",
+        "name": "Romford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.57515,
+        "lon": 0.18582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Romford",
+          "url": "https://en.wikipedia.org/wiki/Romford",
+          "text": "Romford is a large town in east London, England, located 14 mi (23 km) northeast of Charing Cross. Part of the London Borough of Havering, the town is one of the major metropolitan centres of Greater London identified in the London Plan.\nHistorically part of the ancient parish of Hornchurch in the Becontree hundred of Essex, Romford has been a market town since 1247. It formed the administrative centre of the liberty of Havering until that liberty was dissolved in 1892, and became a civil parish of its own in 1849. Good road links to London and the opening of the railway station in 1839 were key to the development of the town. The economic history of Romford is characterised by a shift from agriculture to light industry and then to retail and commerce.\nAs part of the suburban growth of London throughout the 20th century, Romford significantly expanded and increased in population, becoming a municipal borough in 1937. In 1965, following reform of local government in London, it merged with the Hornchurch Urban District to form the London Borough of Havering, and was incorporated into Greater London. Today, it is one of the largest commercial, retail, entertainment and leisure districts in London and has a well-developed night-time economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "romford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3018,
+    "attempt": 2996,
+    "place_id": "gn-2648187",
+    "input": {
+      "place": {
+        "place_id": "gn-2648187",
+        "name": "Gravesend",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.44206,
+        "lon": 0.37106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gravesend",
+          "url": "https://en.wikipedia.org/wiki/Gravesend",
+          "text": "Gravesend   is a town in northwest Kent, England, situated 21 miles (35 km) east-southeast of Charing Cross (central London) on the south bank of the River Thames, opposite Tilbury in Essex. Located in the Diocese of Rochester, it is the administrative centre of the borough of Gravesham. Gravesend marks the eastern limit of the Greater London Built-up Area, as defined by the UK Office for National Statistics. It had a population of roughly 60,250 in 2021.\nIts geographical situation has given Gravesend strategic importance throughout the maritime and communications history of South East England. A Thames Gateway commuter town, it retains strong links with the River Thames, not least through the Port of London Authority Pilot Station, and has witnessed rejuvenation since the advent of High Speed 1 rail services via Gravesend railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gravesend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3019,
+    "attempt": 2997,
+    "place_id": "gn-2649578",
+    "input": {
+      "place": {
+        "place_id": "gn-2649578",
+        "name": "Felling",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.95297,
+        "lon": -1.57152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Felling, Tyne and Wear",
+          "url": "https://en.wikipedia.org/wiki/Felling,_Tyne_and_Wear",
+          "text": "Felling is a town in the Metropolitan Borough of Gateshead in Tyne and Wear, England. Historically part of County Durham, the town became part of the metropolitan borough of Gateshead in 1974. It lies on the B1426 Sunderland Road and the A184 Felling bypass, less than 1 mile (1.6 km) east of Gateshead, 1 mile (1.6 km) south east of Newcastle-upon-Tyne and 10 miles north west of the City of Sunderland. In 2011, Felling had a population of 8,908.\nThe three distinct settlements at Low Felling, High Felling and Felling Shore amalgamated with other surrounding villages to form the town of Felling, which was administered by the Felling Urban District Council. The areas covered by Felling council were Felling, High Felling, Windy Nook, Whitehills Estate, Leam-Lane Estate, Pelaw, Wardley, Heworth, Bill Quay and Follingsby. The council was abolished in 1974 when Felling was incorporated into the new Metropolitan Borough of Gateshead."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "felling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3020,
+    "attempt": 2998,
+    "place_id": "gn-2653646",
+    "input": {
+      "place": {
+        "place_id": "gn-2653646",
+        "name": "Carshalton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36829,
+        "lon": -0.16755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carshalton",
+          "url": "https://en.wikipedia.org/wiki/Carshalton",
+          "text": "Carshalton ( kar-SHAWL-tən, -⁠SHOL-) is a town, with a historic village centre, in south London, England, within the London Borough of Sutton. It is situated around 9.5 miles (15.3 km) southwest of Charing Cross and around 1.2 miles (1.9 km) east of Sutton town centre, in the valley of the River Wandle, one of the sources of which is Carshalton Ponds in the south of the village. Prior to the creation of Greater London in 1965, Carshalton was in the administrative county of Surrey.\nCarshalton consists of a number of neighbourhoods. The main focal point, Carshalton Village, is visually scenic and picturesque. At its centre it has two adjoining ponds, which are overlooked by the Grade II listed All Saints Church on the south side and the Victorian Grove Park on the north side. The Grade II listed Honeywood Museum sits on the west side, a few yards from the water. There are a number of other listed buildings, as well as three conservation areas, including one in the village. In addition to Honeywood Museum, there are several other cultural features in Carshalton, including the Charles Cryer Theatre and an art gallery in Oaks Park. It is also home to the Sutton Ecology Centre, and every year an environmental fair is held in Carshalton Park to the south of the village.\nCarshalton is part of the Carshalton and Wallington parliamentary constituency formed in 1983. Tom Brake (Liberal Democrat) was its MP from 1997 to 2019, and Elliot Colburn (Conservative) was the MP from 2019 to 2024. As of 2024, Bobby Dean (Liberal Democrat) is the current MP. Carshalton is part of the Carshalton Central and Carshalton South & Clockhouse wards for elections to Sutton London Borough Council.\nThe combined population of the five wards comprising Carshalton was 45,525 at the 2001 census. A majority of the population of Carshalton is in the ABC1 social group. In the 2011 Census the wards had been merged into 3 with a total population of 29,917."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "carshalton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3021,
+    "attempt": 2999,
+    "place_id": "gn-2653947",
+    "input": {
+      "place": {
+        "place_id": "gn-2653947",
+        "name": "Camberley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33705,
+        "lon": -0.74261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camberley",
+          "url": "https://en.wikipedia.org/wiki/Camberley",
+          "text": "Camberley  is a town in north-west Surrey, England, around 29 miles (47 kilometres) south-west of central London. It is in the Borough of Surrey Heath and is close to the county boundaries with Hampshire and Berkshire. Known originally as \"Cambridge Town\", it was assigned its current name by the General Post Office in 1877.\nUntil the start of the 19th century, the area was a sparsely populated area of infertile land known as Bagshot or Frimley Heath. Following the construction of the Royal Military College at Sandhurst in 1812, a small settlement grew up to the south and became known as Yorktown (also spelled York Town). A second British Army institute, the Staff College, opened to the east in 1862, and the nucleus of Cambridge Town was laid out at around the same time. The two settlements grew together over the following decades and are now contiguous. Much of the town centre dates from the late 20th and early 21st centuries, including The Atrium, a retail, entertainment and residential complex, opened in 2008.\nTransport links through the area began to improve with the opening of the London-Basingstoke turnpike in 1728, now the A30 London Road. The Basingstoke Canal, which runs to the south of Camberley, was completed in 1794 and the wharf at Frimley was used to supply building materials for the Royal Military College. Blackwater station, on the Reading to Guildford line, opened to the west of Yorktown in 1849 and Camberley station, on the Ascot to Aldershot line, followed in 1878. In the second half of the 20th century, improvements to the road network in the area included the construction of the M3 motorway and the Blackwater Valley relief road.\nThe area has a strong links to the performing arts – Camberley Theatre was opened in 1966 and Elmhurst Ballet School was based in the town until 2004. Among the former residents are the Victorian composer, Arthur Sullivan, who attended Yorktown School as a child, the musician Rick Wakeman, who lived in Camberley during the 1980s, and the actress, Simone Ashley, who was born in the town in 1995. There are several works of public art in Camberley, including The Concrete Elephant, which was installed in 1964 on the London Road, having been commissioned for the Lord Mayor's Show of the previous year. Into Our First World, a sculpture by Ken Ford, is on display outside the borough council offices on Knoll Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "camberley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3022,
+    "attempt": 3000,
+    "place_id": "gn-2738785",
+    "input": {
+      "place": {
+        "place_id": "gn-2738785",
+        "name": "Guarda",
+        "country": "Portugal",
+        "subdivision": "Guarda",
+        "lat": 40.53754,
+        "lon": -7.26631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guarda, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Guarda,_Portugal",
+          "text": "Guarda (European Portuguese pronunciation: [ˈɡwaɾðɐ] ) is a city and a municipality in the District of Guarda and the capital of the Beiras e Serra da Estrela sub-region in northern Portugal. The population in 2021 was 40,126, in an area of 712.10 square kilometres (274.94 mi2) with 31,224 inhabitants in the city proper in 2006. Founded by King Sancho I in 1199, Guarda is the city located at the highest altitude in Portugal (1,056 m (3,465 ft) a.s.l.) and one of the most important cities in the Portuguese region of Beira Alta. Serra da Estrela, the highest mountain range in continental Portugal, is partially located in the district. The city is served by national and international trains on the Beira Alta and Baixa railway lines. The present mayor is Sérgio Costa, as an independent. The municipal holiday is November 27.\nGuarda is known as the \"city of the five F's\": Farta, Forte, Fria, Fiel e Formosa - abundant (or totally satisfied), strong, cold, loyal and beautiful. The explanation of the five F's is as follows:\n\nFarta (abundant), due to the fertility of the lands of the Mondego River valley;\nForte (strong), because the castle tower, the walls and its geographical location demonstrate its strength;\nFria (cold), due to its proximity to Serra da Estrela;\nFiel (loyal), because the Captain General of the Castle Guard, Álvaro Gil Cabral, Pedro Álvares Cabral's great-great-grandfather, refused to hand over the keys to the city to the King of Castile during the Crisis of 1383-1385 and still had the strength to participate in the Battle of Aljubarrota;\nFormosa (beautiful), for the natural beauty of the urban nucleus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "guarda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

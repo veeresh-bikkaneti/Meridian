@@ -1,0 +1,707 @@
+[
+  {
+    "rank": 450,
+    "place_id": "gn-98717",
+    "input": {
+      "place": {
+        "place_id": "gn-98717",
+        "name": "Ramadi",
+        "country": "Iraq",
+        "subdivision": "Anbar",
+        "lat": 33.42056,
+        "lon": 43.30778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramadi",
+          "url": "https://en.wikipedia.org/wiki/Ramadi",
+          "text": "Ramadi (Arabic: ٱلرَّمَادِي Ar-Ramādī; IPA: [r.ra.maː.diː]; also formerly rendered as Rumadiyah or Rumadiya) is a city in central Iraq, about 110 kilometers (68 mi) west of Baghdad and 50 kilometers (31 mi) west of Fallujah. It is the capital and largest city of Al Anbar Governorate which shares borders with Syria, Jordan, and Saudi Arabia. The city extends along the Euphrates which bisects Al Anbar. Founded in 1879, it was one of the towns established during the later period of Ottoman Iraq. By 2018 it had about 223,500 residents, near all of whom Sunni Arabs from the Dulaim tribal confederation. It lies in the Sunni Triangle of western Iraq."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "ramadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 460,
+    "place_id": "gn-3435217",
+    "input": {
+      "place": {
+        "place_id": "gn-3435217",
+        "name": "Corrientes",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -27.46784,
+        "lon": -58.8344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corrientes",
+          "url": "https://en.wikipedia.org/wiki/Corrientes",
+          "text": "Corrientes (Spanish pronunciation: [koˈrjentes] ; Guarani: Taragui, lit. 'Currents') is the capital city of the province of Corrientes, Argentina, on the eastern shore of the Paraná River, about 1,000 km (621 mi) from Buenos Aires and 300 km (186 mi) from Posadas, on National Route 12. It has a population of 346,334 according to the 2010 Census. It lies opposite its twin city, Resistencia, Chaco.\nCorrientes has a mix of colonial and modern architecture, several churches and a number of lapacho, ceibo, jacaranda and orange trees. It is also home to one of Argentina's biggest carnival and chamamé celebrations.\nThe annual average temperature is 21.3 °C (70.3 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "corrientes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 461,
+    "place_id": "gn-3460899",
+    "input": {
+      "place": {
+        "place_id": "gn-3460899",
+        "name": "Itaguaí",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.85222,
+        "lon": -43.77528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itaguaí",
+          "url": "https://en.wikipedia.org/wiki/Itagua%C3%AD",
+          "text": "Itaguaí (Portuguese pronunciation: [itagwaˈi]) is a municipality located in the Brazilian state of Rio de Janeiro and contains several important iron ore loading ports of the world including Ilha Guaiba. Its population was 134,819 in 2020 and its area is 273 km2. The city was founded in 1688 and lies midway between Rio de Janeiro and Angra dos Reis.\nItaguaí is located approximately 75 km west of the city of Rio de Janeiro on the road to Santos (SP). It is located between the shore of Sepetiba Bay and the Atlantic Rainforest.\nItaguai and the region around it contain some of the largest ore exporting ports in Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "itaguai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 465,
+    "place_id": "gn-1262771",
+    "input": {
+      "place": {
+        "place_id": "gn-1262771",
+        "name": "Morena",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.49892,
+        "lon": 77.99534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morena, Madhya Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Morena,_Madhya_Pradesh",
+          "text": "Morena is a town and a district in the Indian state of northern Madhya Pradesh. The place gets its name from mor (meaning peacock) and raina, which means a place where peacocks are found in abundance; Morena is home to the largest number of peacocks in India.\nMorena is situated on the border of three states: Madhya Pradesh, Rajsthan, and Uttar Pradesh. It is governed by a municipal corporation. It is also the administrative headquarters of the Chambal division. It is located 33 kilometres (21 mi) from Dholpur, 44 kilometres (27 mi) from Gwalior, 90 kilometres (56 mi) from Agra and 100 kilometres (62 mi) from Bhind."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "morena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 470,
+    "place_id": "gn-303195",
+    "input": {
+      "place": {
+        "place_id": "gn-303195",
+        "name": "Osmaniye",
+        "country": "Türkiye",
+        "subdivision": "Osmaniye",
+        "lat": 37.07417,
+        "lon": 36.24778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osmaniye",
+          "url": "https://en.wikipedia.org/wiki/Osmaniye",
+          "text": "Osmaniye (pronounced [osˈmaːnije]) is a city on the eastern edge of the Çukurova plain in southern Turkey. It is the seat of Osmaniye Province and Osmaniye District. Its population is 252,186 (2022).\nBacked by the foothills of the Nur Mountains, Osmaniye lay on one of the old Silk Roads and was always a place of strategic importance since it straddled the main route between Anatolia and the Middle East.\nOsmaniye lies at the centre of a rich agricultural region watered by the Ceyhan river and known for growing peanuts. During the intensely hot summers many residents escape either to the Mediterranean coast or into the Nur mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "osmaniye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 476,
+    "place_id": "gn-1606250",
+    "input": {
+      "place": {
+        "place_id": "gn-1606250",
+        "name": "Si Racha",
+        "country": "Thailand",
+        "subdivision": "Chon Buri",
+        "lat": 13.17283,
+        "lon": 100.93159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Si Racha",
+          "url": "https://en.wikipedia.org/wiki/Si_Racha",
+          "text": "Si Racha (Thai: ศรีราชา, pronounced [sǐː rāːt͡ɕʰāː]) is a subdistrict and town in Thailand on the east coast of the Gulf of Thailand, about 120 km (75 mi) southeast of Bangkok in Si Racha district, Chonburi province. \nThe town is the center of the Si Racha district, the ninth-largest urban city area in Thailand. Si Racha is in the industrial Eastern Seaboard zone, along with Pattaya, Laem Chabang, and Chonburi. It is also part of the Pattaya-Chonburi Metropolitan Area, a conurbation with a population of 999,092 people.\nSi Racha is known as the birthplace of the popular hot sauce, Sriracha, which is named after the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "si racha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "si",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "racha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 483,
+    "place_id": "gn-2038087",
+    "input": {
+      "place": {
+        "place_id": "gn-2038087",
+        "name": "Chengde",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 40.9519,
+        "lon": 117.95883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chengde",
+          "url": "https://en.wikipedia.org/wiki/Chengde",
+          "text": "Chengde, formerly known as Jehol and Rehe, is a prefecture-level city in Hebei province, situated about 225 kilometres (140 mi) northeast of Beijing. It is best known as the site of the Mountain Resort, a vast imperial garden and palace formerly used by the Qing emperors as summer residence. Its local dialect is also known for being the closest to Standard Chinese. The permanent resident population is approximately 3,473,200 in 2017. At the end of 2024, the total resident population of the city was 3,285,700, a decrease of 16,500 from the end of the previous year. The urbanization rate of the resident population is 59.77%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "chengde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 494,
+    "place_id": "gn-1712531",
+    "input": {
+      "place": {
+        "place_id": "gn-1712531",
+        "name": "Guiguinto",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.83333,
+        "lon": 120.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guiguinto",
+          "url": "https://en.wikipedia.org/wiki/Guiguinto",
+          "text": "Guiguinto, officially the Municipality of Guiguinto (Tagalog: Bayan ng Guiguinto),  is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 118,173 people.\nIt is the birthplace of composer Constancio de Guzman, known for writing songs like \"Maalaala Mo Kaya\". It also houses the Immaculate Conception Seminary, a Diocesan Seminary of the Diocese of Malolos located in barangay Tabe. The appellation “Guiguinto” literally translates to “Gold” (ginto for Tagalog, gintu for Kapampangan) for the early conquistadores came and saw this town on a harvest season when it lushes in golden rice stalks against the sun."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "guiguinto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 523,
+    "place_id": "gn-3395981",
+    "input": {
+      "place": {
+        "place_id": "gn-3395981",
+        "name": "Maceió",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.66583,
+        "lon": -35.73528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maceió",
+          "url": "https://en.wikipedia.org/wiki/Macei%C3%B3",
+          "text": "Maceió (Portuguese: [masejˈjɔ]), formerly anglicised as Maceio, is the capital and the largest city of the coastal state of Alagoas, Brazil. The name \"Maceió\" is a Tupi Indigenous term for a spring.\nMost maceiós flow to the sea, but some get trapped and form lakes (\"lagoas\", in Portuguese). There are numerous maceiós and lakes in this part of Brazil; because of this, the city was named Maceió, and the state, Alagoas. The new Zumbi dos Palmares International Airport connects Maceió with many Brazilian cities and also operates some international flights. The city is home to the Federal University of Alagoas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "maceio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 527,
+    "place_id": "gn-3628053",
+    "input": {
+      "place": {
+        "place_id": "gn-3628053",
+        "name": "San Juan de los Morros",
+        "country": "Venezuela",
+        "subdivision": "Guárico",
+        "lat": 9.91246,
+        "lon": -67.35398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan de los Morros",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_de_los_Morros",
+          "text": "San Juan de los Morros (Spanish pronunciation: [saŋ ˈxwan de los ˈmoros]) is the capital city of Guárico State, located in Venezuela. The city is commonly referred to as the \"Gateway to the Central Plains\" (Puerta a Los Llanos Centrales). Having a geography in which majestic mountains prevail, the capital city's population is 120,111, (taken from the 2011 census), being the second most populated city in Guárico State, after Calabozo, and is the state's first in population density.\nIt was one of the first cities founded in Guárico State, along with Calabozo, Valle de la Pascua, and Zaraza. Among the primary landmarks of the city are the Monument to the Flag, the mountain range Arístides Rojas (known as Morros de San Juan), the Monument to San Juan Bautista, El Platillón hill, the monument to the Beata Guariqueña, Madre Candelaria de San José, La Villa Olímpica, and the thermal waters (baños termales), which have great significance in the city due to the medicinal properties of its sulphuric waters (that is, because of the amount of sulphur that its waters possess): such is its effectiveness and fame, that from ancient times, once he became President of Venezuela, Antonio Guzmán Blanco, constructed the first highway to the city, which grants entry to this restoration supply that his own circle of relative physician had recommended.\nSan Juan de los Morros has a weather of 24 to 32 °C and its remedy is ruled via way of means of mountains, which evaluation with the plains of the relaxation of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "san juan de los morros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "morros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 535,
+    "place_id": "gn-1700360",
+    "input": {
+      "place": {
+        "place_id": "gn-1700360",
+        "name": "Mati",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 6.95508,
+        "lon": 126.21655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mati, Davao Oriental",
+          "url": "https://en.wikipedia.org/wiki/Mati,_Davao_Oriental",
+          "text": "Mati, officially the City of Mati (Cebuano: Dakbayan sa Mati; Filipino: Lungsod ng Mati / Siyudad ng Mati), is a  component city and capital of the province of Davao Oriental, Philippines, located on the southeasternmost side of Mindanao and is part of Metropolitan Davao, the second-most populous metropolitan area in the Philippines, and its managing entity, the MDDA. According to the 2024 census, it has a population of 147,547 people making it the most populous in the province.\nMati has three bays, namely Pujada, Mayo, and Balete. These bays were listed as \"one\" of the world’s most beautiful bays, a combined distinction for all three bays in the same city, by the association of the Most Beautiful Bays in the World (Les Plus Belles Baies du Monde) in 2022, hence the nickname 'The City of Beautiful Bays'.\nThe east side of Mount Hamiguitan, a UNESCO World Heritage Site, facing sunrise and the three bays of Mati, is located within Mati's territorial jurisdiction.\nIn the 2023 Cities and Municipalities Competitiveness Index (CMCI), Mati ranked 39th out of 114 overall on the competitive component cities in the Philippines. Since 2020, the city government of Mati has been a consistent recipient of the Department of the Interior and Local Government Seal of Good Local Governance, and Good Financial Housekeeping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "mati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 541,
+    "place_id": "gn-3658666",
+    "input": {
+      "place": {
+        "place_id": "gn-3658666",
+        "name": "Cuenca",
+        "country": "Ecuador",
+        "subdivision": "Azuay",
+        "lat": -2.8953,
+        "lon": -78.9963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuenca, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Cuenca,_Ecuador",
+          "text": "Cuenca, officially Santa Ana de los Ríos de Cuenca, is an Ecuadorian city, head of the canton of the same name and capital of the province of Azuay, as well as its largest and most populated city. It is crossed by the Tomebamba, Tarqui, Yanuncay and Machángara rivers, in the south-central inter-Andean region of Ecuador, in the Paute river basin, at an altitude of 2,538 meters above sea level and with a temperate Andean climate averaging 16.3 °C.\nIt has been locally called \"Cuenca of the Andes\" or \"Athens of Ecuador\" for its architecture, its cultural diversity, its contribution to Ecuadorian arts, sciences and literature, and for being the birthplace of many illustrious figures of Ecuadorian society. At the 2022 census it had a population of 596,101 inhabitants, making it the third most populous city in the country behind Guayaquil and Quito. The city is the core of the Cuenca metropolitan area, which is also made up of nearby rural towns and parishes. The conglomerate also ranks third among Ecuador's conurbations.\nIt was founded on April 12, 1557, on the ruins of the Inca city of Tomebamba (a major administrative center) and the Cañari city of Guapondelig, by Gil Ramírez Dávalos, under orders of the viceroy of Peru Andrés Hurtado de Mendoza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "cuenca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 543,
+    "place_id": "gn-1650357",
+    "input": {
+      "place": {
+        "place_id": "gn-1650357",
+        "name": "Bandung",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.92222,
+        "lon": 107.60694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandung",
+          "url": "https://en.wikipedia.org/wiki/Bandung",
+          "text": "Bandung is the capital city of the West Java province of Indonesia. Located on the western highland of Java island, it has one of the coolest climates compared to other provincial capitals in Indonesia, situated 708 meters (2,323 feet) above sea level (the highest point being at an altitude of 892 meters (2,927 feet) in the north, and the lowest at 666 meters (2,185 feet) in the south), approximately 145 kilometres (90 miles) southeast of Jakarta. Bandung lies in a river basin surrounded by volcanic mountains that provide a natural defense system, which was the primary reason for the Dutch East Indies government's plan to move the capital from Batavia (modern-day Jakarta) to Bandung.\nThe Dutch first established tea plantations around the mountains in the 18th century. In the early 19th century, a road was constructed to connect the plantation area with Batavia the colonial capital located 180 kilometers (112 miles) to the northwest and to serve as a transport route for the island of Java's defense network. In the early 20th century, the Dutch population in Bandung demanded the establishment of a municipal government (gemeente) a request granted in 1906 and the city subsequently developed into an exclusive resort area for Europeans, complete with hotels, cafés, and shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "bandung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 554,
+    "place_id": "gn-1516905",
+    "input": {
+      "place": {
+        "place_id": "gn-1516905",
+        "name": "Taraz",
+        "country": "Kazakhstan",
+        "subdivision": "Zhambyl",
+        "lat": 42.89799,
+        "lon": 71.37334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taraz",
+          "url": "https://en.wikipedia.org/wiki/Taraz",
+          "text": "Taraz (Kazakh: Тараз ; also historically known as Talas) is a city and the administrative center of Jambyl Region in Kazakhstan, located on the Talas (Taraz) River in the south of the country near the border with Kyrgyzstan. It had a population of 330,100 as of the 1999 census, up 9% from 1989, making it one of the fastest-growing cities in the country, after Astana and Turkistan. The current population of Taraz is 428,000 (April 2023).\nOne of the oldest cities in Kazakhstan and in Transoxania, built and populated by the ancient Sogdians, Taraz celebrated its official 2,000th anniversary (recognized by UNESCO) in 2001, dating from a fortress built in the area by a Xiongnu Chanyu named Zhizhi, and was a site of the Battle of Zhizhi in 36 BCE. The city was first recorded under the name \"Talas\" in 568 CE by Menander Protector. The medieval city of Talas was a major trade center along the Silk Road. It was later described by the Buddhist monk and traveler Xuanzang, who passed Talas in 629 and later wrote: \"Traveling westward from the Thousand Springs 140 or 150 li, we come to the city of Daluosi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "taraz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 556,
+    "place_id": "gn-4671240",
+    "input": {
+      "place": {
+        "place_id": "gn-4671240",
+        "name": "Arlington",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.73569,
+        "lon": -97.10807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arlington, Texas",
+          "url": "https://en.wikipedia.org/wiki/Arlington,_Texas",
+          "text": "Arlington is a city in Tarrant County, Texas, United States. It is part of the Mid-Cities region of the Dallas–Fort Worth–Arlington metropolitan statistical area, and is a principal city of the metropolis and region. The city had a population of 394,266 in 2020, making it the second-largest city in the county after Fort Worth and the third-largest city in the metropolitan area, after Dallas and Fort Worth. Arlington is the 51st-most populous city in the United States, the seventh-most populous city in the state of Texas, and the largest city in the state that is not a county seat.\nArlington is home to the University of Texas at Arlington, a major urban research university, the Arlington Assembly plant used by General Motors, the Nuclear Regulatory Commission Region IV, Texas Health Resources, Mensa International, and D. R. Horton. Additionally, Arlington hosts the Texas Rangers at Globe Life Field, the Dallas Cowboys at AT&T Stadium, the Dallas Wings at College Park Center, the International Bowling Campus (which houses the United States Bowling Congress and the International Bowling Museum and Hall of Fame), and the theme parks Six Flags Over Texas (the original Six Flags) and Hurricane Harbor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "arlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 557,
+    "place_id": "gn-1646511",
+    "input": {
+      "place": {
+        "place_id": "gn-1646511",
+        "name": "Cilegon",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.0144,
+        "lon": 106.0542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cilegon",
+          "url": "https://en.wikipedia.org/wiki/Cilegon",
+          "text": "Cilegon (Indonesian: Kota Cilegon, Indonesian pronunciation: [t͡ʃiˈləgɔn] ) is a major coastal industrial city in Banten province, Indonesia, covering 162.51 km2 (62.75 sq mi). It is located on the island of Java. The city had a population of 374,464 at the 2010 Census and 434,896 at the 2020 Census; the official estimate as of mid-2023 was 470,378.\nAmong the factories located in Cilegon are the Krakatau Steel Company, a vital company in Indonesia, which produces steel for industrial (domestic and foreign) needs, and the Asahimas Chemical Company. The nickname for Cilegon is \"Steel City\" since the city is the largest steel producer in Southeast Asia, about 6 million tons of steel produced each year in the Industrial Area Krakatau Steel, Cilegon. Additionally Cilegon is one of the vital assets of the state, because in this town there is a wide range of important objects such as the Merak Harbour, the Krakatau Steel Industrial Zone (including the PT. Krakatau Steel Tbk, Asahimas, Siemens, KS - POSCO joint venture, Chandra Asri, and Pertamina), PLTU Suralaya, Power plant Krakatau, Krakatau Tirta Industrial Water Treatment Plant, the Sunda Strait Bridge Construction (Lot Plan) & Sunda Strait Industrial Zones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "cilegon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 558,
+    "place_id": "gn-1631761",
+    "input": {
+      "place": {
+        "place_id": "gn-1631761",
+        "name": "Pekanbaru",
+        "country": "Indonesia",
+        "subdivision": "Riau",
+        "lat": 0.51667,
+        "lon": 101.44167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pekanbaru",
+          "url": "https://en.wikipedia.org/wiki/Pekanbaru",
+          "text": "Pekanbaru ([pəkanˈbaru]) is the capital city of the Indonesian province of Riau, and a major economic centre on the eastern side of Sumatra Island with its name derived from the Malay (Indonesian) word for 'new market' ('pekan' is market and 'baru' is new).\nIt has an area of 639.00 km2 (246.72 sq mi), with a population of 897,767 at the 2010 Census, and 983,356 at the 2020 Census; the official estimate as of mid 2025 was 1,192,990 (comprising 599,452 males and 593,538 females), and was projected to be 1,228,298 as at mid 2026. It is located on the banks of the Siak River, which flows into the Strait of Malacca, Pekanbaru has direct access to the busy strait and has long been known as a trading port.\nA settlement has existed on the site since the 17th century. In the late 19th century, the city was developed to serve the coffee and coal industries, and the Dutch built roads to help ship goods to Singapore and Malacca. This city has an airport called Sultan Syarif Kasim II International Airport, and a port called Sungai Duku that is located by the Siak River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "pekanbaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 562,
+    "place_id": "gn-1646170",
+    "input": {
+      "place": {
+        "place_id": "gn-1646170",
+        "name": "Cirebon",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.7063,
+        "lon": 108.557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cirebon",
+          "url": "https://en.wikipedia.org/wiki/Cirebon",
+          "text": "Cirebon (Indonesian pronunciation: [t͡ʃirə'bɔn] , formerly rendered Cheribon or Chirebon in English) is a port city on the northern coast of the Indonesian island of Java. It is the only coastal city of West Java, located about 40 km west of the provincial border with Central Java, approximately 297 km (185 mi) east of Jakarta, at 6°43′S 108°34′E. It had a population of 296,389 at the 2010 census and 333,303 at the 2020 census; the official estimate as of mid 2025 was 347,537 (comprising 174,364 males and 173,173 females).\nThe built-up area of Cirebon reaches out from the city and into the surrounding regency of the same name; the official metropolitan area encompasses the whole of this regency as well as the city, and covers an area of 1,114.64 km2 (430.36 sq mi), with a 2010 census population of 2,363,585; the 2020 census total was 2,603,924 and the official estimate as at mid 2025 was 2,761,351.\nStraddling the border between West and Central Java, Cirebon's history has been influenced by both Sundanese and Javanese culture as well as Arab and Chinese, and is the seat of a former Sultanate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "cirebon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 563,
+    "place_id": "gn-1168197",
+    "input": {
+      "place": {
+        "place_id": "gn-1168197",
+        "name": "Peshawar",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.008,
+        "lon": 71.57849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peshawar",
+          "url": "https://en.wikipedia.org/wiki/Peshawar",
+          "text": "Peshawar is the capital and the largest city in the Pakistani province of Khyber Pakhtunkhwa. It is the eighth-most populous Pakistani city, with a population of over 1.9 million. It is located in the north-west of the country, lying in the Peshawar Valley, a broad area situated east of the Khyber Pass.\nPeshawar's recorded history dates back to at least the sixth century BC, making it one of the oldest continuously inhabited cities in South Asia. One of the principal cities of the ancient Gandhara, Peshawar (then known as Puruṣapura) served as the capital of the Kushan Empire during the rule of Kanishka the Great in the second century CE. A variety of Muslim empires ruled the city following the conquest of Peshawar by the Ghaznavids from the Hindu Shahis in 1001 CE. It was an important trading centre of the Mughal Empire, later serving as the winter capital of the Durrani Empire from 1776 until its capture by the Sikh Empire in 1823. In 1849, the city was annexed by the East India Company along with rest of Punjab and subsequently became part of the British Raj."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "peshawar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 572,
+    "place_id": "gn-2331140",
+    "input": {
+      "place": {
+        "place_id": "gn-2331140",
+        "name": "Makurdi",
+        "country": "Nigeria",
+        "subdivision": "Benue State",
+        "lat": 7.73375,
+        "lon": 8.52139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makurdi",
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "text": "Makurdi is the capital of Benue State, located in central Nigeria, and part of the Middle Belt region of central Nigeria. The city is situated along the Benue River. In 2017, Makurdi's urban population was 517,342.\nThe town is divided by the River Benue into the north and south banks, which are connected by two bridges: the railway bridge, which was built in 1932, and the new dual carriage bridge commissioned in 1978.\nThe southern part of the town is made up of several neighborhoods or wards; the Central Ward, Old GRA, Ankpa Ward, Wadata, High Level, Wurukum (Low Level), New GRA, Nyiman layout, Achusa, etc. Important establishments and offices located here include the Government House, The State Secretariat, The Federal Secretariat, The Central Bank of Nigeria Regional headquarters, Commercial Banks, Telecommunication companies, Police Headquarters, Nigeria Prisons Service, Aper Aku Stadium, Nigeria Air Force Base, Makurdi, The Makurdi Modern Market, the Federal Medical Centre, Nigeria Railway Station, Benue Printing and Publishing Company Limited, Radio Benue, Nigerian Television Authority (NTA), Nigerian Postal Service, Benue Hotels Makurdi, Benue Plaza Hotel, Benue State University, Benue State Breweries, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "makurdi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

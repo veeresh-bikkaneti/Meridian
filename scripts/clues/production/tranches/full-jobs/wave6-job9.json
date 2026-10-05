@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1171,
+    "attempt": 1161,
+    "place_id": "gn-3470127",
+    "input": {
+      "place": {
+        "place_id": "gn-3470127",
+        "name": "Belo Horizonte",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.92083,
+        "lon": -43.93778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belo Horizonte",
+          "url": "https://en.wikipedia.org/wiki/Belo_Horizonte",
+          "text": "Belo Horizonte is the sixth-largest city in Brazil, with a population of around 2.4 million, and the third largest metropolitan area, containing a population of 6 million. It is the 13th-largest city in South America and the 18th-largest in the Americas. The metropolis is anchor to the Belo Horizonte metropolitan area, ranked as the third most populous metropolitan area in Brazil and the 17th most populous in the Americas. Belo Horizonte is the capital of the state of Minas Gerais, Brazil's second-most populous state. It is the first planned modern city in Brazil.\nThe region was first settled in the early 18th century, but the city as it is known today was planned and constructed in the 1890s to replace Ouro Preto as the capital of Minas Gerais. The city features a mixture of contemporary and classical buildings and is home to several modern Brazilian architectural icons, most notably the Pampulha Complex. In planning the city, Aarão Reis and Francisco Bicalho sought inspiration in the urban planning of Washington, D.C. The city has employed notable programs in urban revitalization and food security, for which it has been awarded international accolades.\nThe city is built on several hills, and is completely surrounded by mountains. There are several large parks in the surroundings of Belo Horizonte. The Mangabeiras Park (Parque das Mangabeiras), 6 km (4 mi) southeast of the city centre in the hills of Curral Ridge (Serra do Curral), has a broad view of the city. It has an area of 2.35 km2 (580 acres), of which 0.9 km2 (220 acres) is covered by the native forest. The Jambreiro Woods (Mata do Jambreiro) nature reserve extends over 912 hectares (2,250 acres), with vegetation typical of the Atlantic Forest. More than 100 species of birds inhabit the reserve, as well as 10 species of mammals.\nBelo Horizonte was one of the host cities of the 1950 and the 2014 FIFA World Cup. Additionally, the city shared as host of the 2013 FIFA Confederations Cup and the football tournament during the 2016 Summer Olympics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 341
+    },
+    "banned_terms": [
+      {
+        "term": "belo horizonte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "horizonte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1172,
+    "attempt": 1162,
+    "place_id": "gn-3471859",
+    "input": {
+      "place": {
+        "place_id": "gn-3471859",
+        "name": "Araçatuba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -21.20889,
+        "lon": -50.43278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Araçatuba",
+          "url": "https://en.wikipedia.org/wiki/Araçatuba",
+          "text": "Araçatuba is a city located in the northwest of São Paulo state, Brazil. The city has 208,415 inhabitants (IBGE/2025) and spans 1,167 square kilometres (451 sq mi). The city name comes from the Tupi language and means \"abundance of araçá\" (a fruit, Psidium cattleianum). Araçatuba is located 532 kilometres (331 mi) from São Paulo.\nIts origins date back to the coffee boom and, at the turn of the century, its economy was characterized by the growth of sugarcane plantations. This scenario also includes livestock farming, an activity that made it known in the country as the Capital of Fat Cattle due to the negotiations of the arroba of cattle held in Praça Rui Barbosa, in addition to the inclusion of other animal breeding activities such as sheep farming. With a diversified economy, the service sector is the predominant one in the city. Araçatuba is also characterized by being a university hub in the northwest region of the state of São Paulo. It is served by the Brazil-Bolivia Gas Pipeline and the Tietê-Paraná waterway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "aracatuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1173,
+    "attempt": 1163,
+    "place_id": "gn-3494242",
+    "input": {
+      "place": {
+        "place_id": "gn-3494242",
+        "name": "Punta Cana",
+        "country": "Dominican Republic",
+        "subdivision": "La Altagracia Province",
+        "lat": 18.58182,
+        "lon": -68.40431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Punta Cana",
+          "url": "https://en.wikipedia.org/wiki/Punta_Cana",
+          "text": "Punta Cana is a resort town in the easternmost region of the Dominican Republic. It was politically incorporated as the \"Verón–Punta Cana Touristic Municipal District\" in 2006, and it is subject to the municipality of Higüey (La Altagracia Province). According to the 2022 census, this township or district had a population of 138,919 inhabitants.\nPunta Cana is the second-most popular tourist destination in Latin America, with more visitors than any other city in the Caribbean region. The Punta Cana International Airport is located about 3 kilometres (1.9 mi) inland, on the highway that leads from Higüey to La Romana. This airport receives 64% of all flights that arrive in the Dominican Republic, receiving more passengers than the Las Américas International Airport, located in Santo Domingo, the country's capital.\nThe area is known for its white sand beaches, blue turquoise waters, and balnearios which face both the Caribbean Sea and the Atlantic Ocean. The weather is hot for most of the year, especially in late summer and autumn when the Northern Tropics receive their most direct sunlight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "punta cana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "punta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1174,
+    "attempt": 1164,
+    "place_id": "gn-4460243",
+    "input": {
+      "place": {
+        "place_id": "gn-4460243",
+        "name": "Charlotte",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.22709,
+        "lon": -80.84313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlotte, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Charlotte,_North_Carolina",
+          "text": "Charlotte is the most populous city in the U.S. state of North Carolina. With a population of 874,579 at the 2020 census, it is the 14th-most populous city in the U.S., seventh-most populous city in the South, and second-most populous city in the Southeast (after Jacksonville, Florida). The Charlotte metropolitan area, with an estimated 2.88 million residents, is the 21st-largest metropolitan area in the U.S. The Charlotte metropolitan area is part of an 18-county combined statistical area with an estimated population of 3.47 million as of 2024. It is the county seat of Mecklenburg County.\nBetween 2004 and 2014, Charlotte was among the country's fastest-growing metropolitan areas, with 888,000 new residents. Based on U.S. census data from 2005 to 2015, Charlotte tops the U.S. in millennial population growth. Throughout the 2020s, it has remained one of the fastest-growing major cities in the United States. Residents of Charlotte are referred to as \"Charlotteans\".\nCharlotte is home to the corporate headquarters of Bank of America, Honeywell, Truist Financial, and the East Coast headquarters of Wells Fargo, which, when combined with other Charlotte-based financial institutions, makes the city the second-largest banking center in the nation.\nCharlotte's notable attractions include three major league professional sports teams, the Carolina Panthers of the NFL, the Charlotte Hornets of the NBA, and Charlotte FC of MLS. The city is also home to the NASCAR Hall of Fame, Opera Carolina, Charlotte Symphony, Charlotte Ballet, Children's Theatre of Charlotte, Mint Museum, Harvey B. Gantt Center, Bechtler Museum of Modern Art, the Billy Graham Library, Levine Museum of the New South, Charlotte Museum of History, Carowinds amusement park, and U.S. National Whitewater Center.\nCharlotte has a humid subtropical climate. It is located several miles east of the Catawba River and southeast of Lake Norman, the largest human-made lake in North Carolina. Lake Wylie and Mountain Island Lake are two smaller human-made lakes located near the city. As of 2024, 66% of the city's area is occupied by green spaces. The city ranks as the greenest in North America and 28th in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "charlotte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1175,
+    "attempt": 1165,
+    "place_id": "gn-5401395",
+    "input": {
+      "place": {
+        "place_id": "gn-5401395",
+        "name": "Temecula",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.49364,
+        "lon": -117.14836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temecula, California",
+          "url": "https://en.wikipedia.org/wiki/Temecula,_California",
+          "text": "Temecula is a city in southwestern Riverside County, California, United States. The city had a population of 110,003 as of the 2020 census and was incorporated on December 1, 1989. The city is a tourist and resort destination, with the Temecula Valley Wine Country, Old Town Temecula, Pechanga Resort Casino, championship golf courses, and resort accommodations contributing to the city's economic profile.\nThe city of Temecula, forming the southwestern anchor of the Inland Empire region, is approximately 58 miles (93 km) north of downtown San Diego and 85 miles (137 km) southeast of downtown Los Angeles. Temecula is part of the Greater Los Angeles area. Temecula is bordered by the city of Murrieta to the north and the Pechanga Indian Reservation and San Diego County to the south. Temecula is also the principal city of the Temecula–Murrieta–Menifee, CA urban area, which had a population of 528,991 as of the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "temecula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1176,
+    "attempt": 1166,
+    "place_id": "gn-6075357",
+    "input": {
+      "place": {
+        "place_id": "gn-6075357",
+        "name": "Mississauga",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.5789,
+        "lon": -79.6583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mississauga",
+          "url": "https://en.wikipedia.org/wiki/Mississauga",
+          "text": "Mississauga is a city in Peel Region, Ontario, Canada. Situated on the northwestern shore of Lake Ontario, it borders Toronto (Etobicoke) to the east, Brampton to the north, Milton to the northwest, and Oakville to the southwest. With a population of 717,961 as of 2021, Mississauga is the seventh-most populous municipality in Canada, third largest city in Ontario, and second-most populous in the Greater Toronto Area after Toronto itself. However, for the first time in its history, the city's population declined according to the 2021 census, from a 2016 population of 721,599 to 717,961, a 0.5 per cent decrease.\nThe growth of Mississauga was initially attributed to its proximity to Toronto. However, during the latter half of the 20th century, the city attracted a diverse and multicultural population. Over time, it built up a transit-oriented central business district of its own: Mississauga City Centre. Malton, a neighbourhood of the city located in its northeast end, is home to Toronto Pearson International Airport, Canada's busiest airport, as well as the headquarters of many Canadian and multinational corporations. Mississauga is not a traditional city, but is instead an amalgamation of three former Ontario villages and two townships which contained a number of rural hamlets (a general pattern common to several suburban GTA cities) that were significant population centres, with none being clearly dominant, prior to the city's incorporation that later coalesced into a single urban area.\nIndigenous people have lived in the area for thousands of years, and Mississauga is situated on the traditional territory of the Wendat, Haudenosaunee and Anishinaabeg people, including the namesake Mississaugas. Most of present-day Mississauga was founded in 1805 as Toronto Township within York County, and became part of Peel County when new counties were formed by splitting off parts of the original county in 1851. Mississauga itself was established in 1968 as a town, and was reincorporated as a city in 1974, when Peel was restructured into a regional municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 324
+    },
+    "banned_terms": [
+      {
+        "term": "mississauga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1177,
+    "attempt": 1167,
+    "place_id": "gn-764484",
+    "input": {
+      "place": {
+        "place_id": "gn-764484",
+        "name": "Mokotów",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.1934,
+        "lon": 21.03487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mokotów",
+          "url": "https://en.wikipedia.org/wiki/Mokotów",
+          "text": "Mokotów (Polish pronunciation: [mɔˈkɔtuf] ) is a district of Warsaw, the capital city of Poland.  It is densely populated, and hosts many companies and foreign embassies. Only a small part of the district is lightly industrialised (Służewiec Przemysłowy), while the majority is full of parks and green areas (Mokotów Field).\nAlthough the area has been populated at least since the early Middle Ages, Mokotów was not incorporated into Warsaw until 1916. The origins of the area's name are unclear, first appearing as the village of Mokotowo in documents from the year 1367. It is hypothesised to have come from the name of a German owner of the village, who called himself Mokoto or Mokot, although no exact reference to such an individual has been found in historical records. In the 18th century, Moktów developed as a place where mansions, villas and palaces of the magnates and wealthy bourgeoisie were built. However, most of the area was urbanised and redeveloped throughout the 1930s in the style of modernism. The majority of buildings survived World War II, making it one of the few well-preserved pre-war areas of Warsaw. Mokotów Prison is located within the borough. Residential real estate in Mokotów, particularly in the neighbourhoods of Stary Mokotów and Wyględów, ranks among the most expensive in Warsaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "mokotow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1178,
+    "attempt": 1168,
+    "place_id": "gn-1273491",
+    "input": {
+      "place": {
+        "place_id": "gn-1273491",
+        "name": "Darbhanga",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 26.15216,
+        "lon": 85.89707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darbhanga",
+          "url": "https://en.wikipedia.org/wiki/Darbhanga",
+          "text": "Darbhanga (pronounced [/d̪əɾ.bʱəŋ.ɡɑː/]), is one of the largest cities and municipal corporation in the Indian state of Bihar in India, and is considered an important city in North Bihar. It serves as the headquarters of the Darbhanga district and the Darbhanga division. Darbhanga is also referred to as the gateway to Bengal, because it is held that the name Darbhanga has been derived from Dwār Banga or Dari – Banga, meaning the 'door of Bengal'.\nDarbhanga was the seat of the erstwhile Khandwala zamidaar dynasty under the Mughals and British India. It is considered an important medical centre of North Bihar as it is the location of the Darbhanga Medical College and Hospital, and the second AIIMS of Bihar i.e. AIIMS Darbhanga is to be constructed here. Darbhanga is the second city in the state of Bihar, where Software Technology Park of India (STPI) has been established. Similarly by the end of year 2029, it is expected that the city will be equipped with modern infrastructure of metro railway services called as Darbhanga Metro having 18.8 kilometres long metro line with 18 metro stations on it. On 29 October 2025, the union home minister Amit Shah announced to build a grand Mithila Cultural Museum in the city to preserve the cultural heritage of the Mithila region.\nDarbhanga is one of the oldest cities in India. Musical, folk art, and literary traditions in Maithili, Sanskrit, Urdu, and Hindi have been passed down through generations in Darbhanga and constitute the city's strong cultural background. It is popularly known as the \"Cultural Capital of Bihar\" and the \"Heart of Mithila\", a significant district in the Mithila region of India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "darbhanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1179,
+    "attempt": 1169,
+    "place_id": "gn-1624917",
+    "input": {
+      "place": {
+        "place_id": "gn-1624917",
+        "name": "Bandar Lampung",
+        "country": "Indonesia",
+        "subdivision": "Lampung",
+        "lat": -5.42917,
+        "lon": 105.26111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Lampung",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Lampung",
+          "text": "Bandar Lampung (/ˈbɑːndɑː ˈlæmpʌŋ/\nBUN-dar-LUM-pung; Indonesian: Kota Bandar Lampung; Lampung: Kutak Bandarlampung; and formerly Dutch: Oosthaven, lit. 'Eastern Harbor') is the capital and largest city of the Indonesian province of Lampung. Located on the southern tip of Sumatra, Bandar Lampung was originally called Tanjungkarang–Telukbetung, since it was a unification of two major settlements in Lampung, before being renamed in 1983.\nThe city proper, together with South Lampung Regency (which borders the city on its northern and eastern sides) and Pesawaran Regency (which borders it on its western side), are major transmigration recipients. The city's area is about 183.77 km2. It had a census population of 881,801 in 2010 and 1,166,066 in 2020; the official estimate as of mid 2025 was 1,088,200 (comprising 548,900 males and 539,300 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "bandar lampung",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lampung",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1180,
+    "attempt": 1170,
+    "place_id": "gn-1715430",
+    "input": {
+      "place": {
+        "place_id": "gn-1715430",
+        "name": "Dasmariñas",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.32944,
+        "lon": 120.93667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dasmariñas",
+          "url": "https://en.wikipedia.org/wiki/Dasmariñas",
+          "text": "Dasmariñas (Tagalog: [dɐsmaˈɾiɲɐs]), officially the City of Dasmariñas, is a component city in the province of Cavite, Philippines. According to the 2024 census, it has a population of 744,511 people. With a land area of 90.1 square kilometers (34.8 sq mi) , it is the largest city both in terms of area and population in Cavite and the wealthiest local government unit in the province.\nBeing located just 10 kilometers (6 mi) from Imus and 30 kilometers (19 mi) south of Manila, the growing congestion and conurbation of Metro Manila has led to its rapid development in the late 1900s. This growth is manifested by the influx of major shopping malls, hospitals, universities, banks, industrial parks, and the growing number of residential subdivisions accommodating its growing population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "dasmarinas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1181,
+    "attempt": 1171,
+    "place_id": "gn-1789176",
+    "input": {
+      "place": {
+        "place_id": "gn-1789176",
+        "name": "Feicheng",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.24861,
+        "lon": 116.76583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Feicheng",
+          "url": "https://en.wikipedia.org/wiki/Feicheng",
+          "text": "Feicheng (Chinese: 肥城; pinyin: Féichéng) is a county-level city under the administration of Tai'an City in the west of Shandong Province, China. As of 2017, the population was 992,000. Part of the Great Wall of Qi starts here and is listed on the People's Republic of China's list of cultural artifacts.\nFeicheng City has a relatively developed economy, ranking among the top 100 counties in China since 2006  and 76th in 2018. In 2017, Feicheng's GDP was 80.88 billion yuan, and its per capita GDP was 83,476.1 yuan, higher than the average level of Shandong Province and Tai'an City. Its most famous specialty is Feicheng peach, which was a royal tribute in the Ming and Qing dynasties and sold overseas at the end of the Qing Dynasty. Feicheng is the principal peach-producing district of the Northern Group. The Peach Blossom Festival is held every year in Feicheng City. In 1995, Feicheng City was recognized by the Chinese Ministry of Agriculture as the \"Hometown of Chinese Buddha peach\", and in 2000, Feicheng Peach Garden set a Guinness World Record as the \"largest peach garden in the world\".\nBillionaire businessman Xiao Jianhua grew up in Feicheng."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "feicheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1182,
+    "attempt": 1172,
+    "place_id": "gn-2336905",
+    "input": {
+      "place": {
+        "place_id": "gn-2336905",
+        "name": "Iwo",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.63527,
+        "lon": 4.18156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iwo, Osun State",
+          "url": "https://en.wikipedia.org/wiki/Iwo,_Osun_State",
+          "text": "Iwo () is a city in Osun State, Nigeria. The Iwo people, like all other people of the Yoruba kingdom, are believed to have originated from Ile-Ife, where they migrated sometime in the 11th century according to Alademomi Kenyon and Prince Adelegan Adegbola (2009). The only predicted land with the symbol of the parrots (which signifies the location of the promised land) is the Iwo kingdom. The city was formerly part of old Oyo state and was later separated and became one of the major townships in Osun State, Nigeria. Isola Kamoli Adeniyi is the current chairman of the council.\nIt has over 30 ancient and powerful Kings all under the Oluwo of Iwoland, HRM Oba Abdulrasheed Adewale Akanbi as the only Consenting Authority and paramount ruler. In Osun State alone, he ranks firmly behind The Ooni of Ife, The Owa Obokun of Ijesaland, The Orangun of Ila. In an area of 245 km2 and a population of 191,348 (central city/Local Government). The other local governments in Iwo from satellite towns are Aiyedire Local Government, 265.783 km2 area and 76,309 by population, as well as Ola-Oluwa Local Government, 332.117 km2 area and 76,227 by population. The headquarters of the local governments are Iwo (Central), Iwo; Aiyedire, Ile Ogbo; and Ola-Oluwa, Bode-Osi. Iwo now has additional four local governments: Iwo East, Olomowewe; Iwo West, Agberire; Ọla Oluwa South East, Ilemowu; Ayedire South East, Oluponna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "iwo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1183,
+    "attempt": 1173,
+    "place_id": "gn-2509954",
+    "input": {
+      "place": {
+        "place_id": "gn-2509954",
+        "name": "Valencia",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.47391,
+        "lon": -0.37966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valencia",
+          "url": "https://en.wikipedia.org/wiki/Valencia",
+          "text": "Valencia, known officially in Valencian as València, is the capital and largest city of the Valencian Community and the province of the same name in Spain. It is located on the banks of the Turia, on the east coast of the Iberian Peninsula on the Mediterranean Sea. With a population of 824,340, it is the third most-populous city in Spain. The urban area of Valencia has 1.6 million people while the metropolitan region has 2.5 million.\nValencia was founded as a Roman colony in 138 BC as\n\"Valentia Edetanorum\". As an autonomous city in late antiquity, its militarization followed the onset of the threat posed by the Byzantine presence to the South, together with effective integration to the Visigothic Kingdom of Toledo in the late 6th century. Islamic rule and acculturation ensued in the 8th century, together with the introduction of new irrigation systems and crops. With the Aragonese Christian conquest in 1238, the city became the capital of the Kingdom of Valencia.\nDue to trade with the rest of the Iberian Peninsula, Italian ports, and other Mediterranean locations, the city thrived in the 15th century and Valencia had become one of the largest European cities by the end of the century. The emergence of the Atlantic World affected Mediterranean trade in the global trade networks and, along with insecurity created by Barbary piracy throughout the 16th century. The 16th century had been notable for the large number of religious foundations which, according to one estimate, suggested that one third of its area had been occupied by religious buildings. The city's economic activity suffered a crisis following the expulsion of the Moriscos in 1609.\nThe city became a major silk manufacturing centre in the 18th century. During the Spanish Civil War, the city served as the provisional seat of the Spanish Government from 1936 to 1937.\nThe Port of Valencia is one of the busiest container ports in Europe and the Mediterranean. The city is ranked as a Gamma-level global city by the Globalization and World Cities Research Network. Valencia has numerous celebrations and traditions, such as the Falles (or Fallas), which were declared a Fiesta of National Tourist Interest of Spain in 1965 and an intangible cultural heritage by UNESCO in November 2016. The city was selected as the World Design Capital 2022 and the European Green Capital 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "valencia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1184,
+    "attempt": 1174,
+    "place_id": "gn-2517117",
+    "input": {
+      "place": {
+        "place_id": "gn-2517117",
+        "name": "Granada",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.18817,
+        "lon": -3.60667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Granada",
+          "url": "https://en.wikipedia.org/wiki/Granada",
+          "text": "Granada ( grə-NAH-də; Spanish: [ɡɾaˈnaða] ) is the capital city of the province of Granada, in the autonomous community of Andalusia, Spain. Granada is located at the foot of the Sierra Nevada mountains, at the confluence of four rivers, the Darro, the Genil, the Monachil and the Beiro. Ascribed to the Vega de Granada comarca, the city sits at an average elevation of 738 m (2,421 ft) above sea level 50 km from the Mediterranean coast, the Costa Tropical. With a population of 233,532 as of 2024, it is the 20th-largest city in Spain and is an important wine growing region. It was the last Muslim stronghold in Islamic Spain.\nNearby is the Sierra Nevada Ski Station, where the FIS Alpine World Ski Championships 1996 were held. Its nearest airport is Federico García Lorca Granada-Jaén Airport.\nThe area was settled since ancient times by Iberians, Romans, and Visigoths. The current settlement became a major city of Al-Andalus in the 11th century during the Zirid Taifa of Granada. In the 13th century it became the capital of the Emirate of Granada under Nasrid rule, the last Muslim-ruled state in the Iberian Peninsula. Granada was conquered in 1492 by the Catholic Monarchs and progressively transformed into a Christian city over the course of the 16th century.\nThe Alhambra, a medieval Nasrid citadel and palace, is located in Granada. It is one of the most famous monuments of Islamic architecture and one of the most visited tourist sites in Spain. Islamic-period influence and Moorish architecture are also preserved in the Albaicín neighborhood and other medieval monuments in the city. The 16th century also saw a flourishing of Mudéjar architecture and Renaissance architecture, followed later by Baroque and Churrigueresque styles. The University of Granada has an estimated 47,000 undergraduate students spread over five different campuses in the city. The pomegranate (Spanish: granada) is the heraldic device of Granada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "granada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1185,
+    "attempt": 1175,
+    "place_id": "gn-2747891",
+    "input": {
+      "place": {
+        "place_id": "gn-2747891",
+        "name": "Rotterdam",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.9225,
+        "lon": 4.47917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotterdam",
+          "url": "https://en.wikipedia.org/wiki/Rotterdam",
+          "text": "Rotterdam ( ROT-ər-dam, UK also  ROT-ər-DAM; Dutch: [ˌrɔtərˈdɑm] ) is the second-largest city in the Netherlands by population and the largest by area (319.4 km2). It is in the province of South Holland, part of the North Sea mouth of the Rhine–Meuse–Scheldt delta, via the New Meuse inland shipping channel, dug to connect to the Meuse at first and now to the Rhine.\nRotterdam's history goes back to 1270, when a dam was constructed in the Rotte. In 1340, Rotterdam was granted city rights by William IV, Count of Holland.\nThe Rotterdam–The Hague metropolitan area, with a population of approximately 2.7 million, is the 10th-largest in the European Union and the most populous in the country.\nA major logistic and economic centre, Rotterdam is Europe's largest seaport. In 2022, Rotterdam had a population of 655,468 and is home to over 180 different nationalities.\nRotterdam is known for its university, riverside setting, lively cultural life, maritime heritage and modern architecture. The near-complete destruction of the city centre during the World War II German bombing has resulted in a varied architectural landscape, including skyscrapers designed by architects such as Rem Koolhaas, Piet Blom and Ben van Berkel.\nThe Rhine, Meuse and Scheldt give waterway access into the heart of Western Europe, including the highly industrialized Ruhr. The extensive distribution system including rail, roads, and waterways have earned Rotterdam the nicknames \"Gateway to Europe\" and \"Gateway to the World\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "rotterdam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1186,
+    "attempt": 1176,
+    "place_id": "gn-2911298",
+    "input": {
+      "place": {
+        "place_id": "gn-2911298",
+        "name": "Hamburg",
+        "country": "Germany",
+        "subdivision": "Hamburg",
+        "lat": 53.55073,
+        "lon": 9.99302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamburg",
+          "url": "https://en.wikipedia.org/wiki/Hamburg",
+          "text": "Hamburg, officially the Free and Hanseatic City of Hamburg, is the second-largest city in Germany after Berlin and sixth-largest city in the European Union, with a population of over 1.9 million. The Hamburg Metropolitan Region has a population of over 5.1 million and is the tenth-largest metropolitan region by GDP in the European Union. At the base of the Jutland Peninsula, the 110 km (68 mi)-long Elbe estuary begins in Hamburg, at the confluence of the Alster and Bille. Hamburg is one of Germany's three city-states alongside Berlin and Bremen, and is surrounded by Schleswig-Holstein to the north and Lower Saxony to the south. The Port of Hamburg is Germany's largest and Europe's third-largest, after Rotterdam and Antwerp. The local dialect is a variant of Low Saxon.\nThe official name reflects Hamburg's history as a member of the medieval Hanseatic League and a free imperial city of the Holy Roman Empire. Before the 1871 unification of Germany, it was a fully sovereign city state, and before 1919 formed a civic republic headed constitutionally by a class of hereditary Grand Burghers, or Hanseaten. Beset by disasters such as the Great Fire of Hamburg in 1842, the Allied fire-bombing of the city in 1943, and  North Sea flood of 1962, the city has managed to recover and emerge wealthier after each catastrophe. Major regional broadcaster NDR, the printing and publishing firm Gruner + Jahr and the newspapers Der Spiegel and Die Zeit are based in the city. Hamburg is the seat of Germany's oldest stock exchange and the world's oldest merchant bank, Berenberg Bank. Media, commercial, logistical, and industrial firms with significant locations in the city include multinationals Airbus, Blohm + Voss, Aurubis, Beiersdorf, Lufthansa and Unilever.\nHamburg is also a major European science, research, and education hub, with several universities and institutions, including the University of Hamburg, and the Deutsches Elektronen-Synchrotron Laboratory DESY. The city enjoys a very high quality of living, being ranked 28th in the 2024 Mercer Quality of Living Survey. Hamburg hosts specialists in world economics and international law, including consular and diplomatic missions such as the International Tribunal for the Law of the Sea, the EU-LAC Foundation, and the UNESCO Institute for Lifelong Learning, multipartite international political conferences and summits such as Europe and China and the G20. Former German chancellors Helmut Schmidt and Angela Merkel were both born in Hamburg. The former Mayor of Hamburg, Olaf Scholz, was chancellor from December 2021 until May 2025.\nHamburg is a major international and domestic tourist destination. The Speicherstadt and Kontorhausviertel were declared World Heritage Sites by UNESCO in 2015. Hamburg's rivers and canals are crossed by around 2,500 bridges, making it the city with the highest number of bridges in Europe, and Hamburg is also home to five of the world's 29 tallest churches, making it the city with the greatest number of churches surpassing 100 metres (330 ft) worldwide. Aside from its rich architectural heritage, the city is also home to notable cultural venues such as the Elbphilharmonie and Laeiszhalle concert halls. It gave birth to movements like Hamburger Schule and paved the way for bands including the Beatles. Hamburg is also known for several theatres and a variety of musical shows. St. Pauli's Reeperbahn is among the best-known European red-light districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 545
+    },
+    "banned_terms": [
+      {
+        "term": "hamburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1187,
+    "attempt": 1177,
+    "place_id": "gn-3081741",
+    "input": {
+      "place": {
+        "place_id": "gn-3081741",
+        "name": "Włocławek",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 52.64817,
+        "lon": 19.0678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Włocławek",
+          "url": "https://en.wikipedia.org/wiki/Włocławek",
+          "text": "Włocławek is a city in the Kuyavian–Pomeranian Voivodeship in central Poland along the Vistula River, bordered by the Gostynin-Włocławek Landscape Park. As of December 2021, the population of the city is 106,928.\nFounded in the 9th century, Włocławek is located in the historical region of Kuyavia, and was its administrative center and main city in the Middle Ages. Nowadays, Włocławek is the third largest city of the Kuyavian-Pomeranian Voivodeship (after Bydgoszcz and Toruń) and the main cultural and economic center of eastern Kuyavia. It is the seat of the Roman Catholic Diocese of Włocławek, one of the oldest dioceses in Poland, since the 12th century, with the landmark Gothic Włocławek Cathedral listed as a Historic Monument of Poland. Poland's largest hydroelectric power plant is also located there. Włocławek is also a prominent centre for the production of faience and ketchup in Poland. It is home to several museums and the successful basketball club Anwil Włocławek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "w oc awek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "w",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oc",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "awek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1188,
+    "attempt": 1178,
+    "place_id": "gn-3128026",
+    "input": {
+      "place": {
+        "place_id": "gn-3128026",
+        "name": "Bilbao",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.26271,
+        "lon": -2.92528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilbao",
+          "url": "https://en.wikipedia.org/wiki/Bilbao",
+          "text": "Bilbao is a city in northern Spain, the largest city in the province of Biscay and in the autonomous community of the Basque Country. With a population of 347,342 as of 2024, it is the 11th most populous city in Spain, and the most populous in northern Spain. The Bilbao metropolitan area has 1,037,847 inhabitants, making it the most populous metropolitan area in northern Spain. The comarca of Greater Bilbao is the fifth-largest urban area in Spain. Bilbao is also the main urban area in what is defined as the Greater Basque region.\nBilbao is located in the north-central part of Spain, some 16 kilometres (10 mi) south of the Bay of Biscay, where the economic social development is located, where the estuary of Bilbao is formed. Its main urban core is surrounded by two small mountain ranges with an average elevation of 400 metres (1,300 ft). Its climate is shaped by the Bay of Biscay low-pressure systems and mild air, moderating summer temperatures by Iberian standards, with low sunshine and high rainfall. The annual temperature range is low for its latitude.\nAfter its foundation in the late 13th century by Diego López V de Haro, head of the powerful Haro family, Bilbao was one of the commercial hubs of the Basque Country that enjoyed significant importance in the Crown of Castile. This was due to its thriving port activity based on the export of wool and iron commodities extracted from the Biscayan quarries to all over Europe.\nThroughout the nineteenth century and the beginning of the twentieth, Bilbao experienced heavy industrialisation, making it the centre of the second-most industrialised region of Spain, behind Barcelona. At the same time an extraordinary population explosion prompted the annexation of several adjacent municipalities. Nowadays, Bilbao is a vigorous service city that is experiencing an ongoing social, economic, and aesthetic revitalisation process, started by the iconic Guggenheim Museum Bilbao, and continued by infrastructure investments, such as the airport terminal, the rapid transit system, the tram line, the Azkuna Zentroa, and the currently under development Abandoibarra and Zorrozaurre renewal projects.\nBilbao is also home to football team Athletic Club, a significant symbol for Basque nationalism due to its promotion of only Basque players and being one of the most successful clubs in Spanish football history.\nOn 19 May 2010, the city of Bilbao was recognised with the Lee Kuan Yew World City Prize, awarded by the city state of Singapore. Considered the Nobel Prize for urbanism, it was handed out on 29 June 2010. On 7 January 2013, its mayor, Iñaki Azkuna, received the 2012 World Mayor Prize awarded every two years by the British foundation The City Mayors Foundation, in recognition of the urban transformation experienced by the Biscayan capital since the 1990s. On 8 November 2017, Bilbao was chosen the Best European City 2018 at The Urbanism Awards 2018, awarded by the international organisation The Academy of Urbanism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 485
+    },
+    "banned_terms": [
+      {
+        "term": "bilbao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1189,
+    "attempt": 1179,
+    "place_id": "gn-3164419",
+    "input": {
+      "place": {
+        "place_id": "gn-3164419",
+        "name": "Vicenza",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.54672,
+        "lon": 11.5475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vicenza",
+          "url": "https://en.wikipedia.org/wiki/Vicenza",
+          "text": "Vicenza ( vih-CHENT-sə, Italian: [viˈtʃɛntsa] ; Venetian: Vicença or Vicensa [viˈtʃeŋsa], archaically Vixenza [viˈzeŋ(t)sa]) is a city in northeastern Italy. It is in the Veneto region, at the northern base of the Monte Berico, where it straddles the River Bacchiglione. Vicenza is approximately 60 kilometres (37 mi) west of Venice and 200 kilometres (120 mi) east of Milan.\nVicenza is a city with a rich history and culture, and many museums, art galleries, piazzas, villas, churches and Renaissance palazzi. With the Palladian villas of the Veneto in the surrounding area, and the Teatro Olimpico (\"Olympic Theater\"), the \"city of Palladio\" has been listed as a UNESCO World Heritage Site since 1994.\nVicenza had an estimated population of 115,927 and a metropolitan area population of 270,000 in 2008. Vicenza is the third-largest Italian industrial centre as measured by the value of its exports, and is one of the country's wealthiest cities, in large part due to its textile and steel industries, which employ tens of thousands of people. Additionally, about one fifth of the country's gold and jewelry is made in Vicenza, greatly contributing to the city's economy. Another important sector is the engineering/computer components industry (Federico Faggin, the microprocessor's co-inventor, was born in Vicenza)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "vicenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1190,
+    "attempt": 1180,
+    "place_id": "gn-3471374",
+    "input": {
+      "place": {
+        "place_id": "gn-3471374",
+        "name": "Assis",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.66167,
+        "lon": -50.41222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Assis",
+          "url": "https://en.wikipedia.org/wiki/Assis",
+          "text": "Assis is a city and a municipality in the southwestern part of the state of São Paulo in Brazil. The population is 101,409 (2022 Census) in an area of 460.61 km2. The town was founded on July 5, 1905, and became a municipality in 1917, when it was separated from Platina. It is the largest city of its microregion, and the 2nd of its mesoregion, and is 434 km away from the capital, São Paulo. \nThe town has an annual average temperature of 21,37 °C, annual rainfall 1,441 mm (56.7 in), and the vegetation predominates Mata Atlântica and Cerrado, is then a transition zone of vegetation. Its Human Development Index (HDI) is 0.805, considered high if compared to state and is in 28th place among Brazilian cities.\n\nThe name Assis is a reference to Captain Assis, who explored the lands of the region. It is currently formed by the city of Assis, with its single district headquarters since Tarumã became a separate municipality in 1990.\nThe city is known for its title Fraternal City and the undergraduate courses from UNESP at Assis, FEMA (Municipal Assis Educational Foundation) and Unip (Universidade Paulista - Paulista University). In the city, there are many industries, schools, universities, large agricultural production, and strong commerce and services. The city is the seat of the Roman Catholic Diocese of Assis. Assis is one of the most important regions and has a privileged geographic location where there are different types of agriculture. Furthermore, the city is served by Marcelo Pires Halzhausen State Airport. Assis is cropped by the railroad old Estrada de Ferro Sorocabana and by numerous highways connecting the main cities of the region, the states of Mato Grosso do Sul and Paraná\nFurthermore, the city is regional development reference, with influence in the cities of Assis's Microregion, a few municipalities in the Ourinhos's Microregion, Marília's Microregion and North of Paraná by his commerce, services, cultural services, sports, science and technology that make Assis that bears the title of Capital of Paranapanema, even with strong competition from larger centers such as Marilia, Presidente Prudente and Londrina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "assis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

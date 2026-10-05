@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 1997,
+    "attempt": 1981,
+    "place_id": "gn-3175121",
+    "input": {
+      "place": {
+        "place_id": "gn-3175121",
+        "name": "L'Aquila",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.35055,
+        "lon": 13.39954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Aquila",
+          "url": "https://en.wikipedia.org/wiki/L'Aquila",
+          "text": "L'Aquila ( LAK-wil-ə; Italian: [ˈlaːkwila] ; Neapolitan: [ˈlaːkwiːlə]) is the capital city of the region of Abruzzo in central Italy. With 70,421 inhabitants as of 2025, it is also the second-largest city in the region. Laid out within medieval walls on a hill in the wide valley of the Aterno river, it is surrounded by the Apennine Mountains, with the Gran Sasso d'Italia to the north-east.\nL'Aquila sits on a hillside in the middle of a narrow valley; the snow-capped mountains of the Gran Sasso massif flank the town. A maze of narrow streets, lined with Baroque and Renaissance buildings and churches, open onto elegant piazzas. Home to the University of L'Aquila, it is a lively college town and, as such, has many cultural institutions: a repertory theatre, a symphony orchestra, a fine art academy, a state conservatory and a film institute. There are several ski resorts in the surrounding province (Campo Imperatore, Ovindoli, Pescasseroli, Roccaraso, Scanno)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "l aquila",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "aquila",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1998,
+    "attempt": 1982,
+    "place_id": "gn-3601627",
+    "input": {
+      "place": {
+        "place_id": "gn-3601627",
+        "name": "Santa Cruz de Yojoa",
+        "country": "Honduras",
+        "subdivision": "Cortés Department",
+        "lat": 14.98086,
+        "lon": -87.89091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz de Yojoa",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_de_Yojoa",
+          "text": "Santa Cruz de Yojoa is a town, with a population of 20,960 (2023 calculation), and a municipality in the Honduran department of Cortés.\nSanta Cruz de Yojoa is located approximately 50 miles south of San Pedro Sula on top of a large hillside on the way to the dam that supplies power to many Central American cities.  Santa Cruz de Yojoa, over the years, has become a large populated city, with its central park known as \"Parque Central de Santa Cruz de Yojoa\" which translated into English means \"Santa Cruz de Yojoa Central Park\".  SCDY is home to 2 churches, one being Catholic and the other Christian of a different denomination.  Santa cruz owns more than 10 transportation buses which have its route through Santa Cruze's only paved street.  1 of said buses are stored in SCDY's main hotel, Los Amigos hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz de yojoa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yojoa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1999,
+    "attempt": 1983,
+    "place_id": "gn-3996893",
+    "input": {
+      "place": {
+        "place_id": "gn-3996893",
+        "name": "Magdalena de Kino",
+        "country": "Mexico",
+        "subdivision": "Sonora",
+        "lat": 30.62681,
+        "lon": -110.96151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magdalena de Kino",
+          "url": "https://en.wikipedia.org/wiki/Magdalena_de_Kino",
+          "text": "Magdalena de Kino (Spanish pronunciation: [maɣðaˈlena ðe ˈkino] ) is a city, part of the surrounding municipality of the same name, located in the Mexican state of Sonora covering approximately 560 square miles (1,460 square kilometers). According to the 2005 census, the city's population was 23,101, and the municipality's was 25,500. Magdalena de Kino is in the northern section of Sonora 50 miles (80 kilometers) from the Mexico-U.S. border. To the north the municipality abuts Nogales; to the south, the municipality of Santa Ana; to the east, Ímuris and Cucurpe; and to the west, the municipalities of Tubutama and Sáric. Its main sectors include San Ignacio, San Isidro, Tacicuri, and Sásabe. The city was named after the pioneer Roman Catholic missionary and explorer, Father Eusebio Francisco Kino, who worked in the area, as well as in the present-day US state of Arizona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "magdalena de kino",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "magdalena",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kino",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2000,
+    "attempt": 1984,
+    "place_id": "gn-4540737",
+    "input": {
+      "place": {
+        "place_id": "gn-4540737",
+        "name": "Lawton",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 34.60869,
+        "lon": -98.39033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lawton, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Lawton,_Oklahoma",
+          "text": "Lawton is a city in and the county seat of Comanche County in the U.S. state of Oklahoma.  Located in western Oklahoma, about 87 mi (140 km) southwest of Oklahoma City, it is the principal city of the Lawton, Oklahoma, metropolitan statistical area. According to the 2020 census, Lawton's population was 90,381, making it the sixth-largest city in the state, and the largest in Western Oklahoma.\nDeveloped on former reservation lands of the Kiowa, Comanche, and Apache peoples, Lawton was incorporated in 1901. It was named after Major General Henry Ware Lawton, who served in the Civil War, where he earned the Medal of Honor, and was killed in action in the Philippine–American War. Lawton's landscape is typical of the Great Plains, with flat topography and gently rolling hills, while the area north of the city is marked by the Wichita Mountains.\nThe city's proximity to the Fort Sill Military Reservation, formerly the base of the Apache territory before statehood, gave Lawton economic and population stability throughout the 20th century.\nAlthough Lawton's economy is still largely dependent on Fort Sill, it has grown to encompass manufacturing, higher education, health care, and retail. The city has a council-manager government; the city council members are elected from single-member districts and the mayor is elected at-large. They hire a professional city manager to direct daily operations.\nInterstate 44 and three major United States highways serve the city, Lawton-Fort Sill Regional Airport connects Lawton by air, while Greyhound Lines and the Lawton Area Transit System provide intercity and local bus service, respectively. Lawton is also home to Cameron University, which enrolled nearly 3,700 students in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "lawton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2001,
+    "attempt": 1985,
+    "place_id": "gn-4769125",
+    "input": {
+      "place": {
+        "place_id": "gn-4769125",
+        "name": "Leesburg",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 39.11566,
+        "lon": -77.5636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leesburg, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Leesburg,_Virginia",
+          "text": "Leesburg is a town in and the county seat of Loudoun County, Virginia, United States. It is part of both the Northern Virginia region of the state and the Washington metropolitan area, including Washington, D.C., the nation's capital.\nEuropean settlement in the area began around 1740, when it was named for the Lee family, early colonial leaders of the town. Located in the far northeast of the state, in the War of 1812 it was a refuge for important federal documents evacuated from Washington, D.C., and in the Civil War, it changed hands several times.\nLeesburg is 33 miles (53 km) west-northwest of Washington, D.C., along the base of Catoctin Mountain and close to the Potomac River. The town is the northwestern terminus of the Dulles Greenway, a private toll road that connects to the Dulles Toll Road at Dulles International Airport. Its population was 48,250 as of the 2020 Census and an estimated 48,908 in 2021. It is Virginia's largest incorporated town within a county.\nLike much of Loudoun County, Leesburg has undergone considerable growth and development over the last 30 years, transforming from a small, rural Piedmont town to a suburban bedroom community for commuters to the national capital. Growth in the town and its immediate area to the east (Lansdowne/Ashburn) concentrates along the Dulles Greenway and State Route 7, which roughly parallels the Potomac River between Winchester to the west and Alexandria to the east.\nLeesburg is home to professional soccer team Loudoun United FC of the USL Championship division who play their home matches at Segra Field.\nThe Federal Aviation Administration's Washington Air Route Traffic Control Center is in Leesburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "leesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2002,
+    "attempt": 1986,
+    "place_id": "gn-5102443",
+    "input": {
+      "place": {
+        "place_id": "gn-5102443",
+        "name": "Passaic",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85677,
+        "lon": -74.12848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Passaic, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Passaic,_New_Jersey",
+          "text": "Passaic ( pə-SAY-ik or locally  pə-SAYK) is a city in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the city was the state's 16th-most-populous municipality, with a population of 70,537, falling behind Bayonne (ranked 16th in 2010), an increase of 756 (+1.1%) from the 2010 census count of 69,781, which in turn reflected an increase of 1,920 residents (+2.8%) from the 2000 census population of 67,861. The Census Bureau's Population Estimates Program calculated a population of 68,903 for 2023, making it the 552nd-most populous municipality in the nation. Among cities with more than 50,000 people, Passaic was the fifth-most densely populated municipality in the United States, with more than 22,000 people per square mile.\nLocated north of Newark on the Passaic River, it was first settled in 1678 by Dutch traders, as Acquackanonk Township. The city and river get their name from the Lenape word \"pahsayèk\" which has been variously attributed to mean \"valley\" or \"place where the land splits.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "passaic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2003,
+    "attempt": 1987,
+    "place_id": "gn-5372223",
+    "input": {
+      "place": {
+        "place_id": "gn-5372223",
+        "name": "Menlo Park",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.45383,
+        "lon": -122.18219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menlo Park, California",
+          "url": "https://en.wikipedia.org/wiki/Menlo_Park,_California",
+          "text": "Menlo Park ( MEN-loh) is a city in San Mateo County in the San Francisco Bay Area of California, United States.  Located at the eastern edge of the county, It is bordered by San Francisco Bay on the north and east; East Palo Alto, Palo Alto, and Stanford to the south; and Atherton, North Fair Oaks, and Redwood City to the west. It had 33,780 residents at the 2020 United States census. Part of Silicon Valley, it is home to the corporate headquarters of Meta Platforms, and is where Google, Roblox Corporation, Round Table Pizza, and SRI International were founded.  The train station holds the record as the oldest continually operating train station in California. It is one of the most educated cities in California and the United States; nearly 70% of residents over 25 have earned a bachelor's degree or higher."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "menlo park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "menlo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2004,
+    "attempt": 1988,
+    "place_id": "gn-733618",
+    "input": {
+      "place": {
+        "place_id": "gn-733618",
+        "name": "Asenovgrad",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.01667,
+        "lon": 24.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asenovgrad",
+          "url": "https://en.wikipedia.org/wiki/Asenovgrad",
+          "text": "Asenovgrad (Bulgarian: Асеновград [ɐˈsɛnovˌɡrat]) is a town in central southern Bulgaria, part of Plovdiv Province. The seat of Asenovgrad Municipality, it is the largest town in Bulgaria that is not a province center. Previously known as Stanimaka (Станимака) or Stenimachos, it was renamed in 1934 after the 13th-century tsar Ivan Asen II. Asenovgrad includes the districts of Gorni Voden and Dolni Voden, which until 1986 were separate villages.\nThe town is situated between the Upper Thracian Plain and the Rhodope Mountains along the river Chepelarska reka.\nAbove the town are the remains of the Asen's Fortress, an old castle that was strengthened under Ivan Asen II and turned into an important military post in the defense of the southern borders of the Second Bulgarian Empire. The city is known for its many churches, monasteries and chapels and is often called Little Jerusalem. It is also known as the \"City of Bridal Gowns\" because of the large number of ateliers and shops for wedding dresses and accessories.\nAccording to the census data of 2021, the population of the city is 47 815 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "asenovgrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2005,
+    "attempt": 1989,
+    "place_id": "gn-1248749",
+    "input": {
+      "place": {
+        "place_id": "gn-1248749",
+        "name": "Dambulla",
+        "country": "Sri Lanka",
+        "subdivision": "Central Province",
+        "lat": 7.86,
+        "lon": 80.65167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dambulla",
+          "url": "https://en.wikipedia.org/wiki/Dambulla",
+          "text": "Dambulla (Sinhala: දඹුල්ල Dam̆bulla, Tamil: தம்புள்ளை Tampuḷḷai) is a city situated in the north of Matale District, in Sri Lanka's Central Province. It is the second largest populated and urbanised centre after Matale in the Matale District. It is situated 148 km (92 mi) north-east of Colombo, 43 km (27 mi) north of Matale and 72 km (45 mi) north of Kandy. Due to its location at a major junction, it is the centre of major vegetable distribution in the country.\nMajor attractions of the area include the largest and best preserved cave temple complex of Sri Lanka, sigiriya rock fortress located in the division and the Rangiri Dambulla International Stadium, famous for being built in just 167 days. The area also boasts the largest rose quartz mountain range in South Asia, and the Iron wood forest, or Na Uyana Aranya.\nIbbankatuwa prehistoric burial site near Dambulla cave temple complexes is the latest archaeological site of significant historical importance found in Dambulla, which is located within 3 km (1.9 mi) of the cave temples providing evidence of the presence of indigenous civilisations long before the arrival of Indian influence on the Island nation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "dambulla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2006,
+    "attempt": 1990,
+    "place_id": "gn-147105",
+    "input": {
+      "place": {
+        "place_id": "gn-147105",
+        "name": "Shusha",
+        "country": "Azerbaijan",
+        "subdivision": "Shusha",
+        "lat": 39.76006,
+        "lon": 46.74989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shusha",
+          "url": "https://en.wikipedia.org/wiki/Shusha",
+          "text": "Shusha (Azerbaijani: Şuşa, ) or Shushi (Armenian: Շուշի) is a city in Nagorno-Karabakh, Azerbaijan. Situated at an altitude of 1.4–1.8 kilometres (4,600–5,900 ft) in the Karabakh mountains, the city was a mountain resort in the Soviet era.\nThe origin of the city is disputed, in the 1750s, Panah Ali Khan founded the Karabakh Khanate, and the city developed with the establishment of the fortress of Shusha. There was an alliance between Panah Ali Khan and Melik Shahnazar, the local Armenian prince (melik) of Varanda. The nearby Armenian village of Shosh (see § Etymology for further information), has been suggested as an origin of the town's name. The town has been described as an important center within the Armenian melikdoms of Karabakh in the 1720s, and the plateau has been suggested to have been the site of an already existing Armenian fortification. From the mid-18th century to 1822, Shusha was the capital of the Karabakh Khanate. The town became one of the cultural centers of the South Caucasus after the Russian conquest of the Caucasus region from Qajar Iran in the first half of the 19th century. Over the course of the 19th century, the town grew in size to become a city, and was home to many Armenian and Azerbaijani intellectuals, poets, writers and musicians (including Azerbaijani ashiks, mugham singers and kobuz players.\nThe town has religious, cultural and strategic importance to both groups. Shusha is often considered the cradle of Azerbaijan's music and poetry, and one of the leading centres of the Azerbaijani culture. Shusha also contains a number of Armenian Apostolic churches, including Ghazanchetsots Cathedral and Kanach Zham (demolished by Azerbaijan as of 2026), and serves as a land link between Nagorno-Karabakh and Armenia, via the Lachin corridor to the west. Throughout modern history, the city fostered a mixed Armenian–Azerbaijani population. The first available demographic information about the city in 1823 suggests the city had an Azerbaijani majority. The Armenian inhabitants of the city steadily grew over time to constitute a majority of the city's population until the Shusha massacre in 1920, in which the Armenian half of the city was destroyed by Azerbaijani forces, resulting in the death or expulsion of the Armenian population, up to 20,000 people.\nThe city has suffered significant destruction and depopulation during the Nagorno-Karabakh conflict. After the capture of Shusha in 1992 by Armenian forces during First Nagorno-Karabakh War, the city's Azerbaijani population fled, and most of the city was destroyed. Between May 1992 and November 2020, Shusha was under the de facto control of the breakaway Republic of Artsakh and administered as the centre of its Shushi Province. On 8 November 2020, Azerbaijani forces gained control of the city during the Second Nagorno-Karabakh War following a three-day long battle.  The Armenian population of the city fled, and multiple reports emerged that the Armenian cultural heritage of the city was being destroyed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 480
+    },
+    "banned_terms": [
+      {
+        "term": "shusha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2007,
+    "attempt": 1991,
+    "place_id": "gn-175967",
+    "input": {
+      "place": {
+        "place_id": "gn-175967",
+        "name": "Mporokoso",
+        "country": "Zambia",
+        "subdivision": "Northern Province",
+        "lat": -9.37273,
+        "lon": 30.12501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mporokoso",
+          "url": "https://en.wikipedia.org/wiki/Mporokoso",
+          "text": "Mporokoso (also spelled and pronounced 'Mpolokoso' and 'Mumpolokoso') is a town in the Northern Province of Zambia, lying at an elevation of nearly 1500 m on the flat plateau about 75 km south east of Lake Mweru Wantipa and 100 km south-west of Lake Tanganyika. It is named for Chief Mporokoso (also spelled 'Mumpolokoso') a senior chief of the Bemba people whose palace is located at Chishamwamba close to the town. Mporokoso District is also one of the 12 administrative districts of the Northern Province.\nA large population of refugees from the Second Congo War living at the UNHCR-administered refugee camp at Mwange, 32 km west of the town, are being repatriated after the end of that war. \nA number of waterfalls lie within 50 km of the town. The closest is the Kapumo Falls, 7km south-west of the town centre. Pule Falls and Mumbuluma Falls III are on the Luangwa River which flows to the south of the town. Lupupa Falls are on the nearby Mukubwe River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "mporokoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2008,
+    "attempt": 1992,
+    "place_id": "gn-2641689",
+    "input": {
+      "place": {
+        "place_id": "gn-2641689",
+        "name": "Newbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40148,
+        "lon": -1.32471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newbury, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Newbury,_Berkshire",
+          "text": "Newbury is a market town in West Berkshire, England, in the valley of the River Kennet. It is 26 miles (42 km) south of Oxford, 25 miles (40 km) north of Winchester, 27 miles (43 km) southeast of Swindon and 20 miles (32 km) west of Reading. It is also where West Berkshire Council is headquartered.\nNewbury lies on the edge of the Berkshire Downs, part of the North Wessex Downs Area of outstanding natural beauty, 3 miles (5 km) north of the Hampshire–Berkshire county boundary. In the suburban village of Donnington lies the part-ruined Donnington Castle and the surrounding hills are home to some of the country's most famous racehorse training grounds (centred on nearby Lambourn). To the south is a narrower range of hills including Walbury Hill and a few private landscape gardens and mansions, such as Highclere Castle. The local economy is inter-related to that of the eastern M4 corridor, which has most of its industrial, logistical and research businesses close to Newbury, mostly around Reading, Bracknell, Maidenhead and Slough. Together with the adjoining town of Thatcham, 3 miles (5 km) distant, Newbury forms the principal part of an urban area of approximately 70,000 people.\nNewbury is also home to Newbury Racecourse, as well as being the location of the headquarters of Vodafone. The town centres around a large market square and retains a rare medieval Cloth Hall, an adjoining half timbered granary, and the 15th-century St Nicolas Church, along with 17th- and 18th-century listed buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "newbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2009,
+    "attempt": 1993,
+    "place_id": "gn-2953416",
+    "input": {
+      "place": {
+        "place_id": "gn-2953416",
+        "name": "Bad Kreuznach",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.8414,
+        "lon": 7.86713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Kreuznach",
+          "url": "https://en.wikipedia.org/wiki/Bad_Kreuznach",
+          "text": "Bad Kreuznach  (German pronunciation: [baːt ˈkʁɔʏtsnax] ) is a town in the Bad Kreuznach district of Rhineland-Palatinate, Germany. It is a spa town, known for its medieval bridge dating from around 1300, the Alte Nahebrücke, which is one of the few remaining bridges in the world with buildings on it.\nThe town is located in the Nahe River wine region, renowned both nationally and internationally for its wines, especially from the Riesling, Silvaner and Müller-Thurgau grape varieties.\nBad Kreuznach does not lie within any Verbandsgemeinde, even though it is the seat of the Bad Kreuznach (Verbandsgemeinde). The town is the seat of several courts, as well as federal and state authorities. Bad Kreuznach is also officially a große kreisangehörige Stadt (\"large town belonging to a district\"), meaning that it does not have the district-level powers that kreisfreie Städte (\"district-free towns/cities\") enjoy. It is, nonetheless, the district seat, and also the seat of the state chamber of commerce for Rhineland-Palatinate. It is classed as a middle centre with some functions of an upper centre, making it the administrative, cultural and economic hub of a region with more than 150,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "bad kreuznach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kreuznach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2010,
+    "attempt": 1994,
+    "place_id": "gn-3023924",
+    "input": {
+      "place": {
+        "place_id": "gn-3023924",
+        "name": "Conflans-Sainte-Honorine",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 49.00158,
+        "lon": 2.09694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Conflans-Sainte-Honorine",
+          "url": "https://en.wikipedia.org/wiki/Conflans-Sainte-Honorine",
+          "text": "Conflans-Sainte-Honorine (French pronunciation: [kɔ̃flɑ̃ sɛ̃t ɔnɔʁin] ) is a commune in the Yvelines department in the Île-de-France region in north-central France. It is located in the northwestern suburbs of Paris, 24.2 km (15.0 mi) from the center of Paris.\nThe commune was originally named for its geographic position at the confluence of the Seine and Oise rivers. The village was given the addition \"Sainte Honorine\" in the 13th century after Saint Honorina, whose relics had been kept there since AD 876.\nPartly on account of its strategic position, Conflans-Sainte-Honorine is considered the capital of the French inland waterways, and the right bank of the river Seine is still lined with barges (although these are now used mainly as houseboats). Every year in June, the town celebrates the Pardon national de la batellerie in remembrance of its former importance to inland shipping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "conflans sainte honorine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "conflans",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "honorine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2011,
+    "attempt": 1995,
+    "place_id": "gn-3180792",
+    "input": {
+      "place": {
+        "place_id": "gn-3180792",
+        "name": "Canosa di Puglia",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.21954,
+        "lon": 16.06768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canosa di Puglia",
+          "url": "https://en.wikipedia.org/wiki/Canosa_di_Puglia",
+          "text": "Canosa di Puglia, generally known simply as Canosa (Canosino: Canaus), is a town and comune in the province of Barletta-Andria-Trani, Apulia, southern Italy. It is located between Bari and Foggia, not far from Barletta on the northwestern edge of the plateau of the Murgia which dominates the Ofanto valley and the extensive plains of Tavoliere delle Puglie, ranging from Mount Vulture at the Gargano, to the Adriatic coast. Canosa, the Roman Canusium, is considered the principal archaeological center of Apulia, and is one of the oldest continually inhabited cities in Italy.  A number of vases and other archaeological finds are located in local museums and private collections. It is not far from the position on the Ofanto River where the Romans found refuge after the defeat of the Battle of Cannae and is the burial place of Bohemund I of Antioch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "canosa di puglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2012,
+    "attempt": 1996,
+    "place_id": "gn-161290",
+    "input": {
+      "place": {
+        "place_id": "gn-161290",
+        "name": "Bagamoyo",
+        "country": "Tanzania",
+        "subdivision": "Pwani",
+        "lat": -6.44222,
+        "lon": 38.90422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagamoyo",
+          "url": "https://en.wikipedia.org/wiki/Bagamoyo",
+          "text": "Bagamoyo (Mji wa Bagamoyo, in Swahili) is a historic coastal town and capital of Bagamoyo District in the Pwani Region of Tanzania. Much of the settlement was founded at the end of the 18th century, though it is an extension of a much older (8th century) Swahili settlement, Kaole. It was chosen as the capital of German East Africa by the German colonial administration and it became one of the most important trading ports for the Germans along the East African coast along the west of the Indian Ocean in the late 19th and early 20th century. Bagamoyo lies 75 kilometres (47 miles) north of Dar-es-Salaam on the coast of the Zanzibar Channel, across from the island of Zanzibar. The town hosts Bagamoyo Historic Town, that is a National Historic Site of Tanzania. In 2011, the town had 82,578 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "bagamoyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2013,
+    "attempt": 1997,
+    "place_id": "gn-2646032",
+    "input": {
+      "place": {
+        "place_id": "gn-2646032",
+        "name": "Irvine",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.6194,
+        "lon": -4.65508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irvine, North Ayrshire",
+          "url": "https://en.wikipedia.org/wiki/Irvine,_North_Ayrshire",
+          "text": "Irvine ( UR-vin; Scots: Irvin [ˈɪrvɪn]; Scottish Gaelic: Irbhinn [ˈiɾʲivɪɲ]) is a town and former royal burgh on the coast of the Firth of Clyde in North Ayrshire, Scotland. In 2022, The town had a population of 33,998 inhabitants, making it the largest settlement in North Ayrshire, and 22nd largest settlement in Scotland.\nIrvine was designated as the fifth and final Scottish new town in November 1966. Irvine is the administrative centre and the seat of the North Ayrshire Council administration which has its headquarters based at Cunninghame House. Irvine was the site of Scotland's 12th century military capital and former headquarters of the Lord High Constable of Scotland, Hugh de Morville. It also served as the capital of Cunninghame and was, at the time of David I, Robert II and Robert III, one of the earliest capitals of Scotland.  \nDespite being classed as a new town, Irvine has had a long history stretching back many centuries and was classed as a royal burgh. There are also conflicting rumours that Mary, Queen of Scots, stayed briefly at Seagate Castle. There is still a yearly festival, called Marymass, held in the town. Marymass refers to Mary Queen of Scots and is celebrated for around a week starting from the 15th of August, and was therefore Mary's Mass hence, Marymass. The town became a haunt of Robert Burns, after he briefly worked a flax-dresser in a heckling shop near the Glasgow Vennel. Two streets in the town are named after him: Burns Street and Burns Crescent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "irvine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2014,
+    "attempt": 1998,
+    "place_id": "gn-2651468",
+    "input": {
+      "place": {
+        "place_id": "gn-2651468",
+        "name": "Deal",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22316,
+        "lon": 1.4028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deal, Kent",
+          "url": "https://en.wikipedia.org/wiki/Deal,_Kent",
+          "text": "Deal is a coastal town in Kent, England, which lies where the North Sea and the English Channel meet, 8 miles (13 km) north-east of Dover and 8 miles (13 km) south of Ramsgate. It is a former fishing, mining and garrison town whose history is closely linked to the anchorage in the Downs. Close to Deal is Walmer, a possible location for Julius Caesar's first arrival in Britain.\nDeal became a 'limb port' of the Cinque Ports in 1278 and grew into the busiest port in England; today it is a seaside resort, its streets and houses a reminder of its history along with many ancient buildings and monuments. In 1968, Middle Street was the first conservation area in Kent. The coast of France is approximately 25 miles (40 km) from the town and is visible on clear days. Deal Castle is a device fort commissioned by then-King, Henry VIII."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "deal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2015,
+    "attempt": 1999,
+    "place_id": "gn-284375",
+    "input": {
+      "place": {
+        "place_id": "gn-284375",
+        "name": "Battir",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.7,
+        "lon": 35.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Battir",
+          "url": "https://en.wikipedia.org/wiki/Battir",
+          "text": "Battir (Arabic: بتير, Hebrew: ביתר) is a Palestinian village in the Bethlehem Governorate of the State of Palestine, in the West Bank, 6.4 km west of Bethlehem, and southwest of Jerusalem. In 2017, the village had a population of 4,696.\nBattir has long history that dates back to ancient times. Within its area is an archaeological site containing the remains of Beitar, an ancient Jewish village and the last stronghold of the Bar Kokhba revolt against the Roman Empire. The village is particularly known for its ancient terraces and an irrigation system that dates back to the Roman period. Due to this, In 2014, Battir was inscribed in the List of World Heritage Sites as a World Heritage Site in the State of Palestine, under the name Battir – Land of Olives and Vines — Cultural Landscape of Southern Jerusalem.\nBattir was inhabited during the Byzantine and Islamic periods, and in the Ottoman and British Mandate censuses its population was recorded as primarily Muslim. In former times, the city lay along the route from Jerusalem to Bayt Jibrin. Battir is situated just above the modern route of the Jaffa–Jerusalem railway, which served as the armistice line between Israel and Jordan from 1949 until the Six-Day War, when it was occupied by Israel. In 2007, Battir had a population of about 4,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "battir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2016,
+    "attempt": 2000,
+    "place_id": "gn-3189075",
+    "input": {
+      "place": {
+        "place_id": "gn-3189075",
+        "name": "Velenje",
+        "country": "Slovenia",
+        "subdivision": "Urban Municipality of Velenje",
+        "lat": 46.35719,
+        "lon": 15.11277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Velenje",
+          "url": "https://en.wikipedia.org/wiki/Velenje",
+          "text": "Velenje (pronounced [ʋɛˈlɛ̀ːnjɛ] ; German: Wöllan) is the sixth-largest city of Slovenia, and the seat of the Municipality of Velenje. Velenje was owned by the Habsburgs for several centuries, which is reflected in the exceptionally rich legacy of castles and manors. The city is located in the traditional Slovenian region of Styria, among the rolling green hills of the Šalek Valley, with the Kamnik–Savinja Alps to the west and the Pohorje Mountains to the east. The city of Velenje was officially opened on September 20, 1959, according to a unified construction plan. Velenje is marked by mining with the Velenje Coal Mine, popular due to its longwall mining method, opened in 1875 and still operating, where over 260 million tons of coal have been mined. The old part of the coal mine is home to the Slovenian Coal Mining Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "velenje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

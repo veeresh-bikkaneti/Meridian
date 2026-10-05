@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 708,
+    "attempt": 701,
+    "place_id": "gn-1841603",
+    "input": {
+      "place": {
+        "place_id": "gn-1841603",
+        "name": "Gyeongju",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangbuk-do",
+        "lat": 35.84278,
+        "lon": 129.21167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gyeongju",
+          "url": "https://en.wikipedia.org/wiki/Gyeongju",
+          "text": "Gyeongju (Korean: 경주; pronounced [kjʌŋ.dʑu]), historically known as Sŏrabŏl (서라벌; pronounced [sʰʌ.ɾa.bʌɭ]), is a coastal city in the far southeastern corner of North Gyeongsang Province, South Korea. It is the second largest city by area in the province after Andong, covering 1,324 km2 (511 sq mi) with a population of 264,091 people as of December 2012. Gyeongju is 370 km (230 mi) southeast of Seoul, and 55 km (34 mi) east of Daegu. The city borders Cheongdo and Yeongcheon to the west, Ulsan to the south and Pohang to the north, while to the east lies the coast of the Sea of Japan. Numerous low mountains—outliers of the Taebaek range—are scattered around the city.\nGyeongju was the capital of the ancient kingdom of Silla (57 BC – 935 AD), which ruled about two-thirds of the Korean peninsula at its height between the 7th and 9th centuries, for close to one thousand years, where it was known as Sŏrabŏl. According to Samguk yusa, Sŏrabŏl had more than 170,000 households or between 800,000 and 900,000 inhabitants.\nLater Silla was a prosperous and wealthy country, and Gyeongju was the fourth largest city in the world. A vast number of archaeological sites and cultural properties from this period remain in the city. Gyeongju is often referred to as \"the museum without walls\". Among such historical treasures, Seokguram grotto, Bulguksa temple, Gyeongju Historic Areas and Yangdong Folk Village are designated as World Heritage Sites by UNESCO. The many major historical sites have helped Gyeongju become one of the most popular tourist destinations in South Korea.\nThe city of Gyeongju was united with the nearby rural Gyeongju County in 1995 and is now an urban–rural complex. It is similar to 53 other small and medium-sized cities with a population under 300,000 people in South Korea. As well as its rich historical heritage, Gyeongju today is affected by the economic, demographic, and social trends that have shaped modern South Korean culture. Tourism remains the major economic driver, but manufacturing activities have developed due to its proximity to major industrial centers such as Ulsan and Pohang. Gyeongju is connected to the nationwide rail and highway networks, which facilitate industrial and tourist traffic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "gyeongju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 709,
+    "attempt": 702,
+    "place_id": "gn-2644668",
+    "input": {
+      "place": {
+        "place_id": "gn-2644668",
+        "name": "Leicester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.6386,
+        "lon": -1.13169
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leicester",
+          "url": "https://en.wikipedia.org/wiki/Leicester",
+          "text": "Leicester (  LES-tər) is a city, unitary authority area, and the county town of Leicestershire, in the East Midlands of England. It is the largest city in the East Midlands, with a population of 383,116 in 2025. The greater Leicester urban area had a population of 559,017 in 2021, making it the 11th most populous in England, and the 13th most populous in the United Kingdom. For three years running, the annual Good Growth for Cities Index has ranked Leicester as the best place to live and work in the East Midlands. The latest study, which is based on a range of economic factors, rated Leicester as the best performing city in the East Midlands in 2024 and 20th overall out of 52 other UK cities.\nThe city lies on the River Soar and is approximately 90 miles (140 km) north-northwest of London, 33 miles (53 km) east-northeast of Birmingham and 21 miles (34 km) northeast of Coventry. Nottingham and Derby lie around 21 miles (34 km) to the north and northwest respectively, whilst Peterborough is located 37 miles (60 km) to the east. Leicester is close to the eastern end of the National Forest.\nLeicester has a long history extending into ancient times. The site of an Iron Age oppidum, it developed into the Roman town of Ratae Corieltauvorum following the conquest. The ruins of Ratae were later settled by the Anglo-Saxons, and then captured by the Vikings who made it one of the Five Boroughs of the Danelaw. After the Norman Conquest the town came under the authority of the Beaumont and De Montfort Earls, most notably the famous rebel Simon de Montfort. After his death in 1265 the town passed to the House of Lancaster and Leicester Castle became one of their strongholds, a royal residence when the family came to the throne in 1399. Leicester therefore became an important town in the wider nation, the meeting place of the parliaments of 1318, 1414, and 1450, and a place frequently visited by the King and his court. Most famously King Richard III spent his last days in the town before his death at the Battle of Bosworth and was buried there in August 1485. In the Early Modern era Puritanism flourished in Leicester and the town was a supporter of the Parliamentarian cause in the Civil War. In the Victorian age the town became known for its hosiery and shoe manufacturing industries. It also rapidly expanded in population and size eventually gaining city status in 1919. Since the mid-20th century, immigration from countries of the British Commonwealth has seen Leicester become an ethnically diverse city, and one of the largest urban centres of the Midlands.\nLeicester is at the intersection of two railway lines: the Midland Main Line and the Birmingham to London Stansted Airport line. It is also at the confluence of the M1/M69 motorways and the A6/A46 trunk routes. Leicester Cathedral is home to the new tomb of Richard III who was reburied in the cathedral in 2015 after being discovered nearby in the foundations of the lost Greyfriars chapel, more than 500 years after his death. In sporting terms, the city of Leicester is home to football club Leicester City, rugby club Leicester Tigers, basketball team Leicester Riders, the Leicester City Hockey Club, and the Leicestershire County Cricket Club. In 1996, a statue was erected in the city centre to commemorate the success of the city's sporting teams in this year. In 2016, Leicester was named as the UK's Greatest Sporting City, and in 2008, it was named as a European City of Sport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 600
+    },
+    "banned_terms": [
+      {
+        "term": "leicester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 710,
+    "attempt": 703,
+    "place_id": "gn-2654264",
+    "input": {
+      "place": {
+        "place_id": "gn-2654264",
+        "name": "Burnley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.8,
+        "lon": -2.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burnley",
+          "url": "https://en.wikipedia.org/wiki/Burnley",
+          "text": "Burnley () is a town and the administrative centre of the wider Borough of Burnley in Lancashire, England, with a 2021 population of 78,266. It is 21 miles (34 km) north of Manchester and 20 miles (32 km) east of Preston, at the confluence of the River Calder and River Brun.\nThe town is located near the countryside to the south and east, with the towns of Padiham and Brierfield to the west and north respectively. It has a reputation as a regional centre of excellence for the manufacturing and aerospace industries.\nThe town began to develop in the early medieval period as a number of farming hamlets surrounded by manor houses and royal forests, and has held a market for more than 700 years. During the Industrial Revolution it became one of Lancashire's most prominent mill towns; at its peak, it was one of the world's largest producers of cotton cloth and a major centre of engineering.\nBurnley has retained a strong manufacturing sector, and has strong economic links with the cities of Manchester and Leeds, as well as neighbouring towns along the M65 corridor.  In 2013, in recognition of its success, it received an Enterprising Britain award from the UK Government as the Most Enterprising Area in the UK. For the first time in more than 50 years, a direct train service now operates between the town's Manchester Road railway station and Manchester's Victoria station and onward to Headbolt Lane via the restored Todmorden Curve, which opened in May 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "burnley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 711,
+    "attempt": 704,
+    "place_id": "gn-2659994",
+    "input": {
+      "place": {
+        "place_id": "gn-2659994",
+        "name": "Lausanne",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.516,
+        "lon": 6.63282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lausanne",
+          "url": "https://en.wikipedia.org/wiki/Lausanne",
+          "text": "Lausanne ( loh-ZAN, US also  loh-ZAHN; French: [lozan] ) is the capital and largest city of the Swiss French-speaking canton of Vaud, in Switzerland. The Olympic capital, it is a hilly city situated on the shores of Lake Geneva, about halfway between the Jura Mountains and the Alps, and facing the French town of Évian-les-Bains across the lake. Lausanne is 51.7 kilometres (32 miles) northeast of Geneva, the nearest major city. The Federal Supreme Court of Switzerland convenes in Lausanne, although it is not the de jure capital of the nation.\nThe municipality of Lausanne has a population of about 150,000, making it the fourth largest city in Switzerland after Basel, Geneva, and Zurich, with the entire agglomeration area having about 420,000 inhabitants (as of January 2019). The metropolitan area of Lausanne-Geneva (including Vevey-Montreux, Yverdon-les-Bains, Valais and foreign parts), commonly designated as Arc lémanique was over 1.3 million inhabitants in 2017 and is the fastest growing in Switzerland.\nInitially a Celtic and Roman settlement on the shores of the lake, Lausanne became a town at the foot of Notre Dame, a cathedral built in the 12th century. \nHowever, in the 20th century, Lausanne became a focus of international sport, hosting the International Olympic Committee (which has recognized the city as the \"Olympic Capital\" since 1994), the Court of Arbitration for Sport and some 55 international sport associations. It lies in a noted wine-growing region. With its 28-station metro system, Lausanne is the smallest city in the world to have a rapid transit system. Lausanne hosted the 2020 Winter Youth Olympics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "lausanne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 712,
+    "attempt": 705,
+    "place_id": "gn-3402655",
+    "input": {
+      "place": {
+        "place_id": "gn-3402655",
+        "name": "Caruaru",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.28333,
+        "lon": -35.97611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caruaru",
+          "url": "https://en.wikipedia.org/wiki/Caruaru",
+          "text": "Caruaru (Portuguese pronunciation: [caɾua'ɾu]  listen) is a Brazilian municipality in the state of Pernambuco, located in the Northeast region of the country. It is part of the Caruaru Intermediate Geographic Region. According to the 2025 census, its population is 405,408 inhabitants, making it the second most populous municipality in the interior of Pernambuco and the fourth most populous in the Northeast countryside, surpassed only by Feira de Santana, Campina Grande, and Petrolina. The municipality is situated to the west of the state capital, Recife, approximately 130 kilometres (81 mi) away. It covers an area of 923.150 square kilometres (356.430 sq mi), of which 59.51 square kilometres (22.98 sq mi) is urban.\nFounded on 18 May 1857, one account of its origin suggests that the municipality began to take shape in 1681 when the then-governor of the captaincy granted the Rodrigues de Sá family a sesmaria spanning thirty leagues, aimed at developing agriculture and cattle ranching in the region. However, a more widely accepted account considers a sesmaria charter granted in 1661 by Governor Fernão de Souza Coutinho to Captain Bernardo Vieira de Mello, a nobleman and knight of the Royal Household, who likely held lands that included Caruaru. A 1758 document recording an investigation into abuses committed by Bernardo’s son, Antônio Vieira de Mello, mentions \"…in these my lands a site called Caruru, which my father settled eighty years ago…\" (verbatim), dating the establishment of Caruru around 1678, when the area was demarcated and organized as a farm.\nThe name Caruru likely refers to the region and gave its name to a farm at the heart of what is now the city’s central landmark. Its strategic location and the entrepreneurial spirit of its inhabitants led to significant growth and rapid population increase, necessitating the construction of a chapel in 1782, dedicated to Our Lady of Conception. This chapel fostered a sense of community and visibility for the residents of the village and surrounding areas, eventually giving rise to the city. The chapel’s builder, José Rodrigues de Jesus, was not a native of the area but came from Cabo de Santo Agostinho, son of Plácido Rodrigues de Jesus and Lourença do Vale Pereira. He was married to Maria do Rosário, a native of Vitória de Santo Antão, and they had eleven children. Although it is claimed that the Rodrigues de Sá family is related to the Rodrigues de Jesus, no documentary evidence supports this.\nAccording to the IBGE, Caruaru is a regional capital classified as category B, playing a significant centralizing role in the Agreste and countryside of Pernambuco. It is a major hub for medical-hospital services, academic institutions, culture, and tourism in the Agreste. The municipality is also renowned for its grand June Festivals. It hosts the Feira de Caruaru, recognized as the world’s largest open-air market and designated an intangible cultural heritage of Brazil by the National Institute of Historic and Artistic Heritage (IPHAN). Its clay craftsmanship gained worldwide recognition through the work of Vitalino Pereira dos Santos, known as Mestre Vitalino, who represented Pernambuco at the 1955 Brazilian Primitive and Modern Art Exhibition in Neuchâtel, Switzerland. His works are displayed at the Louvre Museum in Paris and at his former residence in the Alto do Moura neighborhood of Caruaru. Mestre Vitalino’s followers have made Caruaru the largest center of figurative art in the Americas, according to UNESCO."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 559
+    },
+    "banned_terms": [
+      {
+        "term": "caruaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 713,
+    "attempt": 706,
+    "place_id": "gn-3590979",
+    "input": {
+      "place": {
+        "place_id": "gn-3590979",
+        "name": "Quetzaltenango",
+        "country": "Guatemala",
+        "subdivision": "Quetzaltenango",
+        "lat": 14.84462,
+        "lon": -91.52316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quetzaltenango",
+          "url": "https://en.wikipedia.org/wiki/Quetzaltenango",
+          "text": "Quetzaltenango (Spanish pronunciation: [keˌtsal.teˈnaŋ.ɡo], also known by its Kʼicheʼ Maya name Xelajú [ʃelaˈχu] or Xela [ˈʃela], is a municipality and the capital of the namesake department in western Guatemala. Situated within a high-altitude volcanic basin of the Sierra Madre at an elevation of 2,330 metres (7,640 ft) above sea level, the city is encircled by prominent volcanic complexes including Santa María, Santiaguito, and Cerro Quemado. It functions as the primary economic, educational, and cultural hub of the southwestern Guatemalan highlands.\nQuetzaltenango is a part of the Los Altos Metropolitan Area, which also includes the municipalities of Salcajá, Cantel, Almolonga, Zunil, Concepción Chiquirichapa, San Mateo, La Esperanza, San Juan Ostuncalco, Olintepeque, San Miguel Sigüilá, and Cajolá in Quetzaltenango Department, as well as San Cristóbal Totonicapán and San Andrés Xecul in Totonicapán Department.\nAs of the 2018 census, the city has a population of 180,706 in 122 km2 (47 sq mi). 43% of the population was indigenous Guatemalan in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "quetzaltenango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 714,
+    "attempt": 707,
+    "place_id": "gn-6545326",
+    "input": {
+      "place": {
+        "place_id": "gn-6545326",
+        "name": "Ursynów",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.15051,
+        "lon": 21.05041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ursynów",
+          "url": "https://en.wikipedia.org/wiki/Ursynów",
+          "text": "Ursynów (Polish: [urˈsɘ̟n.uf] ) is a district of the city of Warsaw, Poland. It has an area of 43.79 km2 (16.88 sq mi), and in 2023, it was inhabited by 149,775 people, making it the 5th most populous and 3rd largest district of the city. Located in its western part, it is its southernmost district of the city, bordering Włochy to the west, Mokotów to the north, Wilanów, to the east, with its southern and part of western border forming the city boundary. There, it borders the municipalities of Lesznowola in Piaseczno County, and Raszyn in Pruszków County. The district is dominated by residential areas, with its east predominantly featuring high-rise multifamily housing such as in neighbourhoods of Jary, and Stokłosy in central north, Imielin, Na Skraju, and West Ursynów in the northeast, and Natolin and Kabaty in the central east. The west is dominated by low-rise single-family housing with neighbourhoods of Dąbrówka, Grabów, Jeziorki, Pyry, and Wyczółki.\nUrsynów is home to the campus of the Warsaw University of Life Sciences, one of the largest and most technologically advanced in Europe. It also includes the Maria Skłodowska-Curie National Research Institute of Oncology, the Institute of Haematology and Transfusion Medicine, and Centre for Advanced Materials and Technologies, with the latter being one of the largest high tech research facilities in the country. Ursynów also features several urban parks such as John Paul II Park, Kozłowski Park, Przy Bażantarni Park, and Silent Unseen Park, as well as the Polish Academy of Sciences Botanical Garden and Powsin Centre for Biological Diversity Conservation, which gathers over 10,000 species of plants in its collection, including numerous exotic and rare species. Additionally, the Kabaty Woods, located in the southwest, form the largest forest in the city, with an area of 903 hectares. The district also includes the Służewiec Racecourse, which hosts Great Warsaw Race, the most prestigious horse race in Poland. Ursynów also has five stations of the Warsaw Metro.\nBy the 9th century, the area was inhabited by the monks of the Order of Saint Benedict, in 1238, there was established a Roman Catholic parish in Warsaw, centered around the St. Catherine Parish, which would later be replaced with its current building in 1848. By that time, the village of Służew was also present in the area, and more farming communities developed in the following centuries. In 1776, there was constructed the Krasiński Palace, later rebuilt in 1860 in the Renaissance Revival. In 1939, in Ursynów was opened the Służewiec Racecourse, then the largest and the most modern horse racing venue in Europe. Throughout the 1930s, a military base in the neighbourhood of Pyry and nearby Kabaty Woods, operated a military complex, which housed a branch of the Cipher Bureau responsible for deciphering German codes and messages. Its team was the first to decipher the coding of the Enigma machine in 1932, used by the German military, sharing their decryption techniques there with British and French intelligence agencies in 1939. During the Second World War, under the German occupation over 300 people were executed and buried in the Kabaty Woods. Between the 1950s and 1970s, around Nowoursynowska Street was developed the campus of the Warsaw University of Life Sciences. Throughout the 1970s and 1980s, in Ursynów were developed series of large multifamily neighbourhoods. In 1995, there were opened five stations of the Warsaw Metro.\nSłużew and Wyczółki were incorporated into Warsaw in 1938, while the rest of the modern district was incorporated in 1951. They originally became part of Mokotów, with the area being first separated into its own administrative unit, then the municipality of Warsaw-Ursynów, in 1994. In 2002, it was restructured into the district of Ursynów."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 613
+    },
+    "banned_terms": [
+      {
+        "term": "ursynow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 715,
+    "attempt": 708,
+    "place_id": "gn-1214724",
+    "input": {
+      "place": {
+        "place_id": "gn-1214724",
+        "name": "Langsa",
+        "country": "Indonesia",
+        "subdivision": "Aceh",
+        "lat": 4.4683,
+        "lon": 97.9683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langsa",
+          "url": "https://en.wikipedia.org/wiki/Langsa",
+          "text": "Langsa (Indonesian: Kota Langsa, Jawi: لڠسا), is a city in Aceh, Indonesia. It is located on the island of Sumatra. Apart from a small seacoast to the northeast, it borders Manyak Payed District of Aceh Tamiang Regency to the east and is otherwise surrounded by Birem Bayeun District of Aceh Timur Regency (of which the city was formerly a part until 2001) to the north, west and south. The city covers an area of 239.83 square kilometres and had a population of 148,945 at the 2010 Census (compared with 117,256 at the previous 2000 Census); this grew to 185,971 at the 2020 Census, and the official estimate as of mid 2025 was 184,016 (comprising 92,153 males and 91,863 females).\nLangsa is located 440 kilometres (273 miles) from the city of Banda Aceh, the province's capital. Langsa is close to its province's southern border and is 167 kilometres (103 miles) from Medan, the capital city of North Sumatra. This makes Langsa a strategic city for trade and traffic between the two provinces.\nThere are several universities in the city of Langsa both state and private universities. Among them are Samudra University and IAIN Zawiyah Cot Kala, Campus LP3I. The city hosts several schools of nursing and midwifery, including the Academy of Nursing of \"Harapan Ibu\", the Academy of Nursing \"Yayasan Cut Nyak Dhien\" and the Academy of Nursing \"UMMI\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "langsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 716,
+    "attempt": 709,
+    "place_id": "gn-1562798",
+    "input": {
+      "place": {
+        "place_id": "gn-1562798",
+        "name": "Vinh",
+        "country": "Vietnam",
+        "subdivision": "Nghệ An Province",
+        "lat": 18.67337,
+        "lon": 105.69232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vinh",
+          "url": "https://en.wikipedia.org/wiki/Vinh",
+          "text": "Vinh (Vietnamese: [viŋ̟] ) is a former city located in the North Central Coast region of Vietnam and was the capital city of Nghệ An province, Vietnam. Vinh also is an economic and cultural center of the country's North-Central region. The city's name \"Vinh\" currently refers to a 166.22 square kilometres (64.18 sq mi) area, comprising an urban agglomeration of 6 wards, including Trường Vinh, Thành Vinh, Vinh Hưng, Vinh Phú, Vinh Lộc, and Cửa Lò.\nOn September 5, 2008, it was upgraded from a Grade-II city to a Grade-I city, becoming the fourth city to hold the status, after Haiphong, Đà Nẵng and Huế.\nVinh is located in the Southeast of Nghe An, alongside the Lam River and is located on the main North–South transportation route of Vietnam, making it accessible by highway, railroad, boat and air. The Vinh International Airport is served daily by four carriers: Vietnam Airlines, VietJet Air, Bamboo Airways and Jetstar Pacific. Vinh is a key point in the East–West economic corridor linking Myanmar, Thailand, Laos and Vietnam.\nThe city was bordered by Nghi Lộc district to the North and East, Hưng Nguyên district to the West, and Nghi Xuân district of Hà Tĩnh Province to the South across the Lam River. Vinh was about 300 kilometres (190 mi) South of Hanoi and 1,400 kilometres (870 mi) North of Ho Chi Minh City.\nIn 2025, the population of the city was 580669. The total area of the city was 166.22 square kilometres (64.18 sq mi), divided administratively into 24 wards and 9 communes.\nVinh ceased to exist as a municipal city on 1 July 2025, following the elimination of district level units in Vietnam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "vinh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 717,
+    "attempt": 710,
+    "place_id": "gn-1684308",
+    "input": {
+      "place": {
+        "place_id": "gn-1684308",
+        "name": "Taguig",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.5243,
+        "lon": 121.0792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taguig",
+          "url": "https://en.wikipedia.org/wiki/Taguig",
+          "text": "Taguig (Tagalog: [taˈɡiɡ] ), officially the City of Taguig (Filipino: Lungsod ng Taguig), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 1,308,085 people, making it the fifth most populous city in the country. It is a national center for culture, finance, technology, entertainment and media, academics, and the arts and fashion. The city hosts several embassies, making it an important center for the country's international diplomacy. As the home of Fort Bonifacio, which contains the largest financial districts such as Bonifacio Global City, Bonifacio Capital District, and McKinley Hill, major local and multinational corporations have their headquarters in the city, and it has the third largest skyline in the Philippines, with 289 high-rises, 80 of which exceed 100 m (328 ft).\nTaguig is located alongside the northwestern shores of Laguna de Bay and is situated in the southeastern portion of Metro Manila. The city covers about 47.28 square kilometers (18.25 sq mi) and it is bordered by Pasig and Pateros to the north, Makati and Mandaluyong to the northwest, Pasay and Parañaque to the west, Taytay, Rizal to the northeast and Muntinlupa to the south.\nTaguig was once a hamlet during the Spanish colonial period, Pateros become a visita of Taguig from 1742 until it become a separate municipality in 1815. During the American colonial period, large swaths of the city became a military reservation, and the town was merged with the municipalities of Pateros and Muntinlupa at some point until the 2 municipality becomes independent from it. Redevelopment of the military reservation spearheaded by the Bases Conversion and Development Authority (BCDA) in the 1990s established Taguig as a center of finance and commerce in the Philippines, with the establishment of districts such as Bonifacio Global City (BGC), McKinley Hill, and the Bonifacio Capital District. Taguig became a highly urbanized city with the passage of Republic Act No. 8487 in 2004, which was ratified by a plebiscite."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "taguig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 718,
+    "attempt": 711,
+    "place_id": "gn-1791673",
+    "input": {
+      "place": {
+        "place_id": "gn-1791673",
+        "name": "Weihai",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 37.50914,
+        "lon": 122.11356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weihai",
+          "url": "https://en.wikipedia.org/wiki/Weihai",
+          "text": "Weihai (Weihainese: Wé4iHæ, [ʋeɪ̯˥˩ hɛ̆꜌]; Chinese: 威海; pinyin: Wēihǎi), formerly Weihaiwei (Chinese: 威海卫; pinyin: Wēihǎiwèi; lit. 'Mighty Sea Fort'), is a prefecture-level city and major seaport city in the easternmost Shandong province of China. It borders Yantai to the west and the Yellow Sea to the east, and is the closest mainland Chinese city to South Korea (specifically, Chengshan to Yeonpyeongdo).\nCompared with the 2,804,771 people in the 2010 Chinese census, there has been a total increase of 101,777 people over the past decade, an increase of 3.63%, with an average annual growth rate of 0.36%. Weihai's population was 2,906,548 as of the 2020 Chinese census, of whom 1,164,730 lived in the current built-up (or metro) area of (Huancui District) even though Wendeng district to the south with 563,529 inhabitants is soon being conurbated. There are two county-level cities within Weihai; Rongcheng had a built up area with 714,211 inhabitants, while Rushan had 464,078 inhabitants in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "weihai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 719,
+    "attempt": 712,
+    "place_id": "gn-2496049",
+    "input": {
+      "place": {
+        "place_id": "gn-2496049",
+        "name": "Ghardaïa",
+        "country": "Algeria",
+        "subdivision": "Ghardaia",
+        "lat": 32.49094,
+        "lon": 3.67347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghardaïa",
+          "url": "https://en.wikipedia.org/wiki/Ghardaïa",
+          "text": "Ghardaïa (Arabic: غرداية, Tumzabt: Taɣerdayt) is the capital city of Ghardaïa Province, Algeria. The commune of Ghardaïa has a population of 93,423 according to the 2008 census, up from 87,599 in 1998, with an annual growth rate of 0.7%., up to 477953 in 2019 with an annual growth rate of 0.7%.\nIt is located in northern-central Algeria in the Sahara and lies along the left bank of the Wadi Mzab. The M'zab in the Ghardaïa Province was made a World Heritage Site in 1982, as a cultural property evaluated under the criteria II (for its settlement affecting urban planning even to the present century), III (for its Ibadi cultural values), and V (a settlement culture which has prevailed to the present century).\nGhardaïa is part of a pentapolis, a hilltop city amongst four others, built almost a thousand years ago in the M’Zab valley. It was founded by the Mozabites, an Ibadi sect of the Berber Muslims.\nIt is a major centre of date production and the manufacture of rugs and cloths. Divided into three walled sectors, it is a fortified town. At the centre is the historical Mʾzabite area, with a pyramid-style mosque and an arcaded square. Distinctive white, pink, and red houses, made of sand, clay and gypsum, rise in terraces and arcades.\nIn her 1963 book, La Force des choses, the French existentialist philosopher Simone de Beauvoir described Ghardaïa as \"a Cubist painting beautifully constructed\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "ghardaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 720,
+    "attempt": 713,
+    "place_id": "gn-338832",
+    "input": {
+      "place": {
+        "place_id": "gn-338832",
+        "name": "Dire Dawa",
+        "country": "Ethiopia",
+        "subdivision": "Dire Dawa",
+        "lat": 9.59306,
+        "lon": 41.86611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dire Dawa",
+          "url": "https://en.wikipedia.org/wiki/Dire_Dawa",
+          "text": "Dire Dawa (Oromo: Dirree Dhawaa, lit. 'Place of Remedy'; Somali: Diridhaba, meaning \"where the Dir hit his spear into the ground\" or \"The true Dir\", Amharic: ድሬዳዋ, Harari: ዲርሬዳዋ, lit. \"Plain of Medicine\") is a city in eastern Ethiopia near the Oromia Region and Oromo border and one of two chartered cities in Ethiopia (the other being Addis Ababa, the capital). Dire Dawa alongside present-day Sitti Zone were a part of the Dire Dawa autonomous region of the Somali Region stipulated in the 1987 Ethiopian Constitution until 1993 when it was split by the federal government into a separately administered chartered city.\nIt is divided administratively into two woredas, the city proper and the non-urban woredas of Gurgura.\nDire Dawa lies in the eastern part of the nation, on the Dechatu River, at the foot of a ring of cliffs. The western outskirts of the city lie on the Gorro River, a tributary of the Dechatu River. It is located at the latitude and longitude of 9°36′N 41°52′E. The city is an industrial centre, home to several markets and the Dire Dawa Airport.\nThe projected population for 2015 was 440,000 for the entire chartered city and 277,000 for the city proper, making the latter the second largest city in Ethiopia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "dire dawa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dire",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dawa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 721,
+    "attempt": 714,
+    "place_id": "gn-3688928",
+    "input": {
+      "place": {
+        "place_id": "gn-3688928",
+        "name": "Bello",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.33732,
+        "lon": -75.55795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bello, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Bello,_Antioquia",
+          "text": "Bello (Spanish pronunciation: [ˈbeʎo], [ˈbeʝo]) is a city and municipality in Antioquia Department, Colombia and a suburb of Medellín, the department capital. Bello is part of the Metropolitan Area of the Aburrá Valley in the department of Antioquia. It is bordered on the north by the municipality of San Pedro de los Milagros, on the east by the municipality of Copacabana, on the south by the municipality of Medellín and on the west by the municipalities of Medellín and San Jerónimo.\nIt is the center of the development in the north of the Aburrá Valley (Spanish: Valle de Aburrá), and as a member of the Metropolitan Area of Aburrá Valley, or AMVA (Spanish: Área Metropolitana del Valle de Aburrá), some public services are regulated for the Metropolitan Area. There are several nicknames for the municipality: Imperio del Cacique Niquia (Cacique Niquia's Empire), Cuna de Marco Fidel Suárez (\"Marco Fidel Suárez's cradle\"), \"Ciudad de los artistas\" (\"Artist's city\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "bello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 722,
+    "attempt": 715,
+    "place_id": "gn-4014875",
+    "input": {
+      "place": {
+        "place_id": "gn-4014875",
+        "name": "Celaya",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.52181,
+        "lon": -100.81399
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Celaya",
+          "url": "https://en.wikipedia.org/wiki/Celaya",
+          "text": "Celaya (Spanish pronunciation: [seˈlaja] ; Otomi: Ndathi) is a city and its surrounding municipality in the state of Guanajuato, Mexico, located in the southeast quadrant of the state. It is the third most populous city in the state, with a 2005 census population of 310,413. The municipality for which the city serves as municipal seat, had a population of 415,869. The city is located in the geographic center of the municipality, which has an areal extent of 553.1 km2 (213.6 sq mi) and includes many smaller outlying communities, the largest of which are San Miguel Octopan, Rincón de Tamayo and San Juan de la Vega.\nThere are many smaller towns around Celaya including Rincón de Tamayo, Tarimoro, Villagrán, La Moncada, Panales Jamaica (Cañones), Panales Galera, La Calera, La Estancia, La Noria, Los Fierros, El Acebuche, Cacalote, and Charco Largo. It is also not far away from Cortazar, Salamanca, Salvatierra, Apaseo el Grande, Querétaro City and among others. The city was founded in 1570 as Villa de la Purisíma Concepción de Zalaya. The word Zalaya is of Basque origin and means \"Flat Land\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "celaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 723,
+    "attempt": 716,
+    "place_id": "gn-776251",
+    "input": {
+      "place": {
+        "place_id": "gn-776251",
+        "name": "Bemowo",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.2546,
+        "lon": 20.90844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bemowo",
+          "url": "https://en.wikipedia.org/wiki/Bemowo",
+          "text": "Bemowo (Polish: [bɛˈmɔ.vɔ]) is a district of the city of Warsaw, Poland. It has an area of 24.95 km2 (9.63 sq mi), and in 2024, it was inhabited by 128,895 people, making it the 7th most populous and 8th largest district of the city. Located at the west edge of the city, it borders districts of Bielany to the north, Wola and Żoliborz to the east, and Ursus and Włochy to the south, with its western border forming the city boundary. There, it borders municipalities of Ożarów Mazowiecki and Stare Babice in Warsaw West County. The district is dominated by residential areas, predominantly featuring high-rise multifamily housing estates such as Nowe Bemowo in the northeast, Górce in the centre, and Chrzanów, Górczewska, Jelonki, and Lazurowa in the south. The area also features a few low-rise single-family neighbourhoods, including Boernerowo, Fort Radiowo, and Groty in the northwest, and Friendship Estate, Nowy Chrzanów, and Stare Jelonki in the southeast. The district also includes the Warsaw Babice Airport, the campus of the Military University of Technology. Additionally, it has the Bemowo metro station, with two more, Lazurowa and Karolin, currently being under construction.\nBy the 15th century, within the modern district were present villages of Górce and Groty. In the following centuries, more communities were also founded, including Chrzanów, Jelonki, Karolin, and Parysów. In the second half of the 19th century, four forts were built there as part of the fortifications of the Warsaw Fortress, erected around the city by the Imperial Russian Army. In 1923, the Fort IIA was adopted to house the broadcasting infrastructure of the Transatlantic Radiotelegraph Exchange, at the time, one of the largest radio communication stations in the world. It provided stable connections for worldwide communications. It was later destroyed in 1944. In the late 1920s, Jelonki and Górce began developing as suburbs, and in the 1930s, Boernerowo was also founded in the north. In 1950, the Warsaw Babice Airport was opened in the northern Bemowo, which was used by the military until the 1990s. Additionally, in 1951, the Military University of Technology was opened in the district, and in 1952, the Friendship Estate was also constructed in its central east. In the 1970s and 1980s, numerous large high-rise multifamily housing estates were built across Bemowo, including Nowe Bemowo, Nowe Górce, Górczewska, Jelonki, and Lazurowa. In the 2000s, new housing developments were also constructed in Chrzanów and Fort Bema.\nThe area was incorporated into warsaw in 1951, originally becoming part of the Wola district. In 1994, it was separated into its own administrative unit, the municipality of Warsaw-Bemowo, which was restructured into the Bemowo district in 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 439
+    },
+    "banned_terms": [
+      {
+        "term": "bemowo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 724,
+    "attempt": 717,
+    "place_id": "gn-1215102",
+    "input": {
+      "place": {
+        "place_id": "gn-1215102",
+        "name": "Gunungsitoli",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 1.2888,
+        "lon": 97.6143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gunungsitoli",
+          "url": "https://en.wikipedia.org/wiki/Gunungsitoli",
+          "text": "Gunungsitoli (Nias pronunciation: [gu.nuŋ.si.to.li]) is a city located in North Sumatra province, Indonesia, on the Indian Ocean island of Nias, west of Sumatra. Gunungsitoli is the island's only city and is the main hub for the island and surrounding smaller islands. Located on the north-eastern side of Nias island, the city was historically a series of fortifications made by the Dutch colonial administration in the 1600s to defend against frequent raids from Nias tribes, especially those from southern parts of the island. Until 1914, it was the only part of the island that was effectively controlled by the Dutch.\nGunungsitoli had a population of 126,202 at the 2010 Census and 136,017 at the 2020 Census; in mid 2024, Gunungsitoli had a population of 145,233 (comprising 70,954 males and 74,279 females); it was officially projected to rise to 147,516 by mid 2025, and reach 150,000 in mid 2026. which makes it the seventh-most-populous city in North Sumatra. It had a population density of 309 people per square kilometre in 2024, making it the most-densely populated place on Nias island. Being the only city in the island, Gunungsitoli is the economic hub of the island and the surrounding Nias archipelago, as well as the only place with significant, non-agriculture industries, on the island. The city was previously part of the larger Nias Regency but was separated on 29 October 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "gunungsitoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 725,
+    "attempt": 718,
+    "place_id": "gn-1624647",
+    "input": {
+      "place": {
+        "place_id": "gn-1624647",
+        "name": "Tasikmalaya",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -7.3274,
+        "lon": 108.2207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tasikmalaya",
+          "url": "https://en.wikipedia.org/wiki/Tasikmalaya",
+          "text": "Tasikmalaya (also known as Tasik) is a landlocked city in West Java, Indonesia. The city is sometimes dubbed kota santri (city of religious learners) or \"the City of a Thousand Pesantrens\" for its abundance of Islamic boarding schools. Located around 120 kilometres (75 mi) southeast from the provincial capital of Bandung, Tasikmalaya is passed by Indonesian National Route 3.\nThe city is located in the mountainous East Parahyangan region of Java at an elevation of 351 metres (1,151 feet).\nThe population of the city (excluding the Tasikmalaya Regency, which surrounds the city to the west, south and east) was 634,948 according to the 2010 census, and increased to 716,155 at the 2020 census; the official estimate as of mid 2024 was 770,839 (comprising 391,746 males and 379,093 females). Its built-up (or metro) area (made of Tasikmalaya City and 14 neighbouring districts spread over Tasikmalaya and Ciamis Regencies) was home to 1,214,000 inhabitants as at mid 2023. Tasikmalaya is the largest city in West Java outside of Jakarta and Bandung metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "tasikmalaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 726,
+    "attempt": 719,
+    "place_id": "gn-2550078",
+    "input": {
+      "place": {
+        "place_id": "gn-2550078",
+        "name": "El Jadida",
+        "country": "Morocco",
+        "subdivision": "Casablanca-Settat",
+        "lat": 33.25682,
+        "lon": -8.50882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Jadida",
+          "url": "https://en.wikipedia.org/wiki/El_Jadida",
+          "text": "El Jadida (Arabic: الجديدة, romanized: al-Jadīda, [alʒadiːda]; Standard Moroccan Tamazight: ⵍⵊⴷⵉⴷⴰ, romanized: ljdida) is a major port city on the Atlantic coast of Morocco. It is located in the province of El Jadida, Casablanca-Settat, 96 kilometres (60 mi) south of the city of Casablanca. It has a population of 237,564 as of 2024.\nThe fortified city, built by the Portuguese at the beginning of the 16th century and named Mazagan (Mazagão in Portuguese), was given up by the Portuguese in 1769 and incorporated into Morocco. El Jadida's old city sea walls are one of the Seven Wonders of Portuguese Origin in the World. The Portuguese Fortified City of Mazagan was registered as a UNESCO World Heritage Site in 2004, on the basis of its status as an \"outstanding example of the interchange of influences between European and Moroccan cultures\" and as an \"early example of the realisation of the Renaissance ideals integrated with Portuguese construction technology\". According to UNESCO, the most important buildings from the Portuguese period are the cistern and the Church of the Assumption, both in a Manueline style.\nThe city is a popular resort and destination for both Moroccan and international tourists. An important industrial complex, Jorf Lasfar, lies 20 kilometres to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "el jadida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jadida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 727,
+    "attempt": 720,
+    "place_id": "gn-2990440",
+    "input": {
+      "place": {
+        "place_id": "gn-2990440",
+        "name": "Nice",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.70313,
+        "lon": 7.26608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nice",
+          "url": "https://en.wikipedia.org/wiki/Nice",
+          "text": "Nice is a city and commune, and the prefecture of the department of Alpes-Maritimes, and the administrative region of Provence-Alpes-Côte d'Azur, France. The Nice agglomeration extends beyond the administrative city limits, with a population of nearly one million over an area of approximately 744 km2 (287 sq mi) or about the size of Singapore. Located on the French Riviera, the southeastern coast of France on the Mediterranean Sea, at the foot of the French Alps, Nice is the second-largest French city on the Mediterranean coast and second-largest city in the Provence-Alpes-Côte d'Azur region after Marseille. It is approximately 13 kilometres (8 mi) from the principality of Monaco and 30 kilometres (19 mi) from the French–Italian border. Nice's airport serves as a gateway to the region.\nThe city is nicknamed Nice la Belle (Nissa La Bella in Niçard), meaning 'Nice the Beautiful', which is also the title of the unofficial anthem of Nice, written by Menica Rondelly. The Nice agglomeration contains Terra Amata, an archaeological site which displays evidence of early use of fire 380,000 years ago. Around 350 BC, Greeks of Marseille founded a permanent settlement and called it Nikaia, after Nike, the goddess of victory. The town has changed hands many times. Its strategic location and port significantly contributed to its maritime strength. From 1388, it was a dominion of Savoy, then became part of the French First Republic between 1792 and 1815, when it was returned to the Kingdom of Piedmont-Sardinia, the legal predecessor of the Kingdom of Italy, until its annexation by France in 1860.\nThe natural environment of the Nice area and its mild Mediterranean climate came to the attention of the English upper classes in the second half of the 18th century, when an increasing number of aristocratic families began spending their winters there. In 1931, following its refurbishment, the city's main promenade, the Promenade des Anglais (\"Walkway of the English\"), was inaugurated by Prince Arthur, Duke of Connaught; it owes its name to visitors to the resort. These included Queen Victoria along with her son Edward VII who spent winters there.\nThe clear air and soft light have appealed to notable painters, such as Marc Chagall, Henri Matisse, Niki de Saint Phalle, and Arman. Their work is commemorated in the city's museums, including Musée Marc Chagall, Musée Matisse and Musée des Beaux-Arts. Frank Harris wrote several books, including his autobiography My Life and Loves, in Nice. Friedrich Nietzsche spent six consecutive winters in Nice, and wrote Thus Spoke Zarathustra there. Russian writer Anton Chekhov completed his play Three Sisters while living in Nice. Nice's appeal extended to the Russian upper classes. Prince Nicholas Alexandrovich, heir apparent to Imperial Russia, died in Nice and was a patron of the Russian Orthodox Cemetery, Nice where Princess Catherine Dolgorukova, morganatic wife of Tsar Alexander II of Russia, is buried. Also buried there are General Dmitry Shcherbachev and General Nikolai Yudenich, leaders of the anti-Communist White Movement. Those interred at the Cimetière du Château include celebrated jeweler Alfred Van Cleef, Emil Jellinek-Mercedes, founder of the Mercedes car company, poet Agathe-Sophie Sasserno, Asterix comics creator René Goscinny, The Phantom of the Opera author Gaston Leroux, French prime minister Léon Gambetta, and the first president of the International Court of Justice José Gustavo Guerrero.\nBecause of its historical importance as a winter resort town for the European aristocracy and the resulting mix of cultures, UNESCO proclaimed Nice a World Heritage Site in 2021. The city has the second largest hotel capacity in the country, and is the second most visited metropolis in Metropolitan France, receiving four million tourists every year. It is the historical capital city of the County of Nice (French: Comté de Nice, Niçard: Countèa de Nissa)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 619
+    },
+    "banned_terms": [
+      {
+        "term": "nice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

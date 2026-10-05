@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 306,
+    "attempt": 301,
+    "place_id": "gn-1816920",
+    "input": {
+      "place": {
+        "place_id": "gn-1816920",
+        "name": "Shaoyang",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.23818,
+        "lon": 111.46214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaoyang",
+          "url": "https://en.wikipedia.org/wiki/Shaoyang",
+          "text": "Shaoyang (simplified Chinese: 邵阳; traditional Chinese: 邵陽; pinyin: Shàoyáng), formerly named Baoqing (Paoking) (Chinese: 宝庆), is a prefecture-level city in southwestern Hunan province, China, bordering Guangxi to the south. It has a history of 2500 years and remains an important commercial and transportation city in Hunan. As of the 2020 Chinese census, its total population was 6,563,520 inhabitants, of whom 1,415,173 lived in the built-up (or metro) area made of three urban districts and Xinshao County largely conurbated.\nOne of the major forest areas in Hunan, Shaoyang has a forest coverage of 42.7%. The 23,000,000-acre (93,000 km2) NanShan Pastures is one of the biggest in South Central China and provide dairy products and meat for Hunanese.\nShaoyang is home to Shaoyang University. The school is composed of the former Shaoyang Normal College and Shaoyang College.\nThe Shaoyang dialect of Lou Shao group of dialects of Xiang is generally spoken here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "shaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 307,
+    "attempt": 302,
+    "place_id": "gn-204953",
+    "input": {
+      "place": {
+        "place_id": "gn-204953",
+        "name": "Tshikapa",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Kasai",
+        "lat": -6.41621,
+        "lon": 20.79995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tshikapa",
+          "url": "https://en.wikipedia.org/wiki/Tshikapa",
+          "text": "Tshikapa is the capital city of Kasaï Province in the Democratic Republic of the Congo. The city is located 60 km (37 mi) north of the Angolan border and 189 km (117 mi) west of Kananga at the confluence of the Tshikapa and Kasai rivers. According to records published by the Utrecht University library, the population of the city grew from 38,900 in 1970 to 180,900 in 1994. However, the Congo wars and the Kamwina Nsapu rebellion triggered waves of internal displacement, with many residents fleeing violence or relocating temporarily. The World Population Review estimates the 2025 population of Tshikapa and its urban agglomeration at 1,185,920. \nTshikapa has been a site of diamond mining since its founding in the early 20th century. The city was founded by Forminière, an American/Belgian mining consortium which discovered diamonds near this location in the early 1900s.\nThe city is served by the Tshikapa Airport. The diamond industry is the main form of income for the city. Despite this, it is poor and few of the roads are paved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "tshikapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 308,
+    "attempt": 303,
+    "place_id": "gn-3835994",
+    "input": {
+      "place": {
+        "place_id": "gn-3835994",
+        "name": "Santa Rosa",
+        "country": "Argentina",
+        "subdivision": "La Pampa",
+        "lat": -36.61617,
+        "lon": -64.28991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa, La Pampa",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa,_La_Pampa",
+          "text": "Santa Rosa (Spanish pronunciation: [ˈsanta ˈrosa]) is a city in the Argentine Pampas (lowlands), and the capital of La Pampa Province, Argentina. It lies on the east of the province, on the shore of the Don Tomás Lagoon, at the intersection of National Routes National Route 5 and National Route 35. The city (94,340) and its surroundings hold 102,610 inhabitants (2001 census [INDEC]), around a third of the population of the province. Its current mayor is Luciano di Nápoli. \nFounded in 1892 by Tomás Mason, Santa Rosa did not develop into a relatively important agricultural centre until the second half of the 20th century. It is still one of the smallest provincial capitals of the country after Patagonian Rawson, Ushuaia and Viedma.\nCity sights include the Fitte neighbourhood (1930), the monument to San Martín, the Palace of Justice, the Teatro Español (1908), the Provincial Art Museum (with paintings by Raúl Soldi, Antonio Berni, Quinquela Martín and other important Argentine painters) and the Provincial Natural History Museum.\nThe Santa Rosa Airport (IATA: RSA, ICAO: SAZR) is located 2 kilometres from Santa Rosa on Route 35, and serves regular flights to Buenos Aires.\nNear Santa Rosa is the city of Toay, together both cities form the Gran Santa Rosa metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 309,
+    "attempt": 304,
+    "place_id": "gn-3906194",
+    "input": {
+      "place": {
+        "place_id": "gn-3906194",
+        "name": "Sacaba",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.39799,
+        "lon": -66.03825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sacaba",
+          "url": "https://en.wikipedia.org/wiki/Sacaba",
+          "text": "Sacaba is a capital city and a municipality in the Bolivian province of Chapare. The city, located 13 km (8.1 mi) eastward from Cochabamba, is the second largest city in the Cochabamba Department after Cochabamba city. Post-colonial architecture may be seen in the inner part of Sacaba; however, some has been destroyed due to lack of municipal care.\nSacaba was the site of anti-coca eradication riots in 2002, which caused the removal of Evo Morales, leader of the cocalero movement and the MAS, from his seat in the Bolivian congress. Morales opposed the closing of a coca market in Sacaba, and ensuing protests involved the death of several people on both sides. Morales served as president of Bolivia between 2006 and 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sacaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 310,
+    "attempt": 305,
+    "place_id": "gn-4984247",
+    "input": {
+      "place": {
+        "place_id": "gn-4984247",
+        "name": "Ann Arbor",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.27756,
+        "lon": -83.74088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ann Arbor, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Ann_Arbor,_Michigan",
+          "text": "Ann Arbor is a city in Washtenaw County, Michigan, United States. The county seat, it had a population of 123,851 in 2020, making it the fifth most populous city in Michigan.\nThe city is home to the University of Michigan, the oldest university in the state. Its economy is primarily focused on high technology, with numerous startup companies drawn to the area due to the university's robust research and development activities.\nFounded in 1824 with American settlers from the East Coast, it was incorporated as a city in 1851. Located on the Huron River, Ann Arbor is the principal city of its metropolitan area, and it is also included in the Detroit–Warren–Ann Arbor combined statistical area and that of Great Lakes megalopolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "ann arbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ann",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 311,
+    "attempt": 306,
+    "place_id": "gn-1255634",
+    "input": {
+      "place": {
+        "place_id": "gn-1255634",
+        "name": "Srinagar",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 34.08565,
+        "lon": 74.80555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Srinagar",
+          "url": "https://en.wikipedia.org/wiki/Srinagar",
+          "text": "Srinagar is a city in Indian-administered  Jammu and Kashmir in the disputed Kashmir region. It is the largest city and summer capital of Jammu and Kashmir, which is an Indian-administered union territory. It lies in the Kashmir Valley along the banks of the Jhelum River, and the shores of Dal Lake and Anchar Lakes, between the Hari Parbat and Shankaracharya hills. The city is known for its natural environment, various gardens, waterfronts and houseboats. It is also known for traditional Kashmiri handicrafts like the Kashmir shawl (made of pashmina and cashmere wool), papier-mâché, wood carving, carpet weaving, and jewel making, as well as for dried fruits. It is the second-largest metropolitan area in the Himalayas (after Kathmandu, the capital of Nepal).\nFounded in the 6th century during the rule of the Gonanda dynasty according to the Rajatarangini, the city took on the name of an earlier capital thought to have been founded by the Mauryas in its vicinity. The city remained the most important capital of the Kashmir Valley under the Hindu dynasties, and was a major centre of learning. During the 14th–16th centuries the city's old town saw major expansions, particularly under the Shah Mir dynasty, whose kings used various parts of it as their capitals. It became the spiritual centre of Kashmir, and attracted several Sufi preachers. It also started to emerge as a hub of shawl weaving and other Kashmiri handicrafts. In the late 16th century, the city became part of the Mughal Empire, many of whose emperors used it as their summer resort. Many Mughal gardens were built in the city and around Dal lake during this time, of which Shalimar and Nishat are the most well-known.\nAfter passing through the hands of the Afghan Durranis and the Sikhs in the late 18th and early 19th century, it eventually became the summer capital of the Dogra kingdom of Jammu and Kashmir in 1846. The city became a popular tourist destination among Europeans and Indian elites during this time, with several hotels and its iconic houseboats being built. In 1952, the city became the summer capital of Jammu and Kashmir, a region administered by India as a state, with Jammu being its winter capital. It was the flashpoint of violence during the 1990s and early 2000s insurgency in the region. In 2019, it became the summer capital of a smaller region which is administered by India as a union territory, after the former state's reorganisation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 408
+    },
+    "banned_terms": [
+      {
+        "term": "srinagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 312,
+    "attempt": 307,
+    "place_id": "gn-1279186",
+    "input": {
+      "place": {
+        "place_id": "gn-1279186",
+        "name": "Aizawl",
+        "country": "India",
+        "subdivision": "Mizoram",
+        "lat": 23.72894,
+        "lon": 92.71791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aizawl",
+          "url": "https://en.wikipedia.org/wiki/Aizawl",
+          "text": "Aizawl (English:   EYE-zawl; Mizo: [ˈaɪ̯.ˈzɔːl] ), formerly known as Aijal, is the capital city and the most populous city of Mizoram, India. It is also the third largest city in northeast India. It is situated atop a series of ridges, with an average elevation of around 1,132 metres (3,714 feet) above sea level. In 2024, the city has an estimated population of 415,000 people.\nHaving served as the capital of the British Lushai Hills from 1898 to 1947, colonial structures are prevalent in the city centre including but not limited to the Aijal Club, Raj Bhavan, the Red School, and the Office of the Deputy Commissioner. As the seat of the Government of Mizoram, Aizawl is home to the Assembly House. Additionally, Aizawl is part of the Smart Cities Mission, an initiative by the Ministry of Housing and Urban Affairs aimed at urban development and infrastructure enhancement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "aizawl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 313,
+    "attempt": 308,
+    "place_id": "gn-1329221",
+    "input": {
+      "place": {
+        "place_id": "gn-1329221",
+        "name": "Amarapura",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Mandalay Region",
+        "lat": 21.90709,
+        "lon": 96.04894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amarapura",
+          "url": "https://en.wikipedia.org/wiki/Amarapura",
+          "text": "Amarapura (Burmese: အမရပူရ, romanized: aamarapuur, pronounced [ʔəməɹa̰pùɹa̰], lit. 'The Immortal City'; also spelt as Ummerapoora) is a former capital of Myanmar, and now a township of Mandalay city. Amarapura is bounded by the Irrawaddy River in the west, Chanmyathazi Township in the north, and the ancient capital site of Ava (Inwa) in the south. It was the capital of Myanmar twice during the Konbaung period (1783–1821 and 1842–1857) before finally being supplanted by Mandalay 11 kilometres (6.8 mi) north in 1859. It is historically referred to as Taungmyo (Southern City) in relation to Mandalay. Amarapura today is part of Mandalay, as a result of urban sprawl. The township is known today for its traditional silk and cotton weaving, and bronze casting. It is a popular tourist day-trip destination from Mandalay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "amarapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 314,
+    "attempt": 309,
+    "place_id": "gn-2750053",
+    "input": {
+      "place": {
+        "place_id": "gn-2750053",
+        "name": "Nijmegen",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.8425,
+        "lon": 5.85278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nijmegen",
+          "url": "https://en.wikipedia.org/wiki/Nijmegen",
+          "text": "Nijmegen ( NY-may-gən, Dutch: [ˈnɛimeːɣə(n)] ; Nijmeegs: Nimwéêge [ˈnɪmβ̞ɛːçə]) is the largest city in the Dutch province of Gelderland and the ninth largest of the Netherlands as a whole. Located on the Waal River close to the German border, Nijmegen is one of the oldest cities in the Netherlands and the first to be recognized as such in Roman times. In 2005, it celebrated 2,000 years of existence.\nNijmegen became a free imperial city in 1230 and a Hanseatic city in 1402. Since 1923 it has been a university city with the opening of a Catholic institution now known as the Radboud University Nijmegen. The city is well known for the annual Vierdaagse — the International Four Days Marches Nijmegen event.\nIts population as of 2024 was 187,011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "nijmegen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 315,
+    "attempt": 310,
+    "place_id": "gn-3348613",
+    "input": {
+      "place": {
+        "place_id": "gn-3348613",
+        "name": "Gabela",
+        "country": "Angola",
+        "subdivision": "Kwanza Sul",
+        "lat": -10.85147,
+        "lon": 14.37993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gabela, Angola",
+          "url": "https://en.wikipedia.org/wiki/Gabela,_Angola",
+          "text": "Gabela is a town, with a population of 116,903 (2014), and a commune, named Gabela Sede, in the municipality of Amboim, province of Cuanza Sul, Angola and the seat of that municipality. The area of the  commune comprises 459 km2 with a population of 184,723. It was founded as N'Guebela on September 28, 1907.\nAround the town, some areas of the Angolan Scarp savanna and woodlands with its unique plants and animals are still to be found. The Gabela akalat (Sheppardia gabela), a species of bird, was first recorded here by scientists and subsequently named after the town, as were the Gabela helmet-shrike (Prionops gabela) and Gabela bush-shrike (Laniarius amboimensis); these endangered species are only found in the uplands near Gabela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "gabela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 316,
+    "attempt": 311,
+    "place_id": "gn-3456290",
+    "input": {
+      "place": {
+        "place_id": "gn-3456290",
+        "name": "Nilópolis",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.8075,
+        "lon": -43.41389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nilópolis",
+          "url": "https://en.wikipedia.org/wiki/Nil%C3%B3polis",
+          "text": "Nilópolis (Portuguese pronunciation: [niˈlɔpoliʃ], [niˈlɔpɔliʃ], [niˈlɔpuliʃ]) is a municipality in Brazil, located in the Rio de Janeiro state's southwestern region, bordering São João de Meriti, Mesquita and Rio de Janeiro. It is the smallest municipality in Rio de Janeiro state, with a total area of 19.39 km2. The population of 162,693 inhabitants living in an area of 9 km2 and the remaining area corresponds to the Gericinó's Natural Park. Officially, the population density exceeds 8,120 inhabitants/km2, but if calculated just 9 km2 occupied, it becomes the most densely populated city in Brazil with more than 17.400 inhabitants/km2. Currently, São João de Meriti has the highest population density, with 12,897 inhabitants/km2.\nThe city was named after Nilo Peçanha, a President of Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "nilopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 317,
+    "attempt": 312,
+    "place_id": "gn-3458449",
+    "input": {
+      "place": {
+        "place_id": "gn-3458449",
+        "name": "Londrina",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -23.31028,
+        "lon": -51.16278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Londrina",
+          "url": "https://en.wikipedia.org/wiki/Londrina",
+          "text": "Londrina (Portuguese pronunciation: [lõˈdɾĩnɐ], literally \"from London\") is a city located in the north of the state of Paraná, Brazil, and is 388 km (241 miles) north-west of the state capital Curitiba. It is the second largest city in the state and fourth largest in the southern region of the country, with 555,965 inhabitants in the whole municipality (2022).\nLondrina was originally explored by British settlers, and then officially established in 1930 by a small group of Italian, Japanese and German settlers. It rapidly became the commercial, political, and cultural centre of the state's northern pioneer zone. Its universities include the Universidade Estadual de Londrina (Londrina State University) and the Universidade Tecnológica Federal do Paraná (Federal University of Technology – Paraná)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "londrina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 318,
+    "attempt": 313,
+    "place_id": "gn-379555",
+    "input": {
+      "place": {
+        "place_id": "gn-379555",
+        "name": "El Fasher",
+        "country": "Sudan",
+        "subdivision": "Northern Darfur",
+        "lat": 13.62793,
+        "lon": 25.34936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Fasher",
+          "url": "https://en.wikipedia.org/wiki/El_Fasher",
+          "text": "El Fasher (also alternatively rendered as Al-Fashir; Arabic: الفاشر, romanized: al-Fāshir) is a city in western Sudan. It serves as the capital of the North Darfur State, is located in the Darfur region of Sudan, and is 195 kilometres (121 mi) northeast of Nyala. A historical caravan post, El Fasher is located at an elevation of about 700 metres (2,300 ft). The city serves as an agricultural marketing point for the cereals and fruits grown in the surrounding region. El Fasher is linked by road to both Geneina and Umm Keddada.\nThe city was the site of a major siege during the ongoing Sudanese civil war, which lasted 18 months, before falling to the Rapid Support Forces (RSF) in October 2025. Shortly after the city's capture by the RSF, an estimated 60,000–68,000 civilians were killed in the El Fasher massacre. By January 2026, it was described as a ghost town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "el fasher",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fasher",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 319,
+    "attempt": 314,
+    "place_id": "gn-479561",
+    "input": {
+      "place": {
+        "place_id": "gn-479561",
+        "name": "Ufa",
+        "country": "Russia",
+        "subdivision": "Bashkortostan Republic",
+        "lat": 54.74306,
+        "lon": 55.96779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ufa",
+          "url": "https://en.wikipedia.org/wiki/Ufa",
+          "text": "Ufa is the capital and largest city of Bashkortostan, Russia. The city lies at the confluence of the Belaya and Ufa rivers, in the centre-north of Bashkortostan, on hills forming the Ufa Plateau to the west of the southern Ural Mountains, with a population of over 1.1 million residents, up to 1.4 million residents in the urban agglomeration. Ufa is the tenth-most populous city in Russia, and the fourth-most populous city in the Volga Federal District.\nThe city was founded in 1574, when a fortress was built on the site by the order of Ivan the Terrible. Ufa was made capital of Ufa Governorate in 1865 when the governorate split from Orenburg Governorate. Ufa's population expanded during the early 20th century.\nUfa's economy consists primarily of the oil refining, chemistry, and mechanical engineering industries; the petroleum company Bashneft and several of its subsidiaries are headquartered in Ufa. Ufa is an ethnically diverse city, home to a substantial number of ethnic Bashkirs and Tatars, with an ethnic Russian majority population. Several educational institutions are located in Ufa, including Bashkir State University, Ufa State Aviation Technical University, Ufa State Petroleum Technological University, and Ural State Law University. The city hosted separate summits of the BRICS group as well as the Shanghai Cooperation Organisation in 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "ufa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 320,
+    "attempt": 315,
+    "place_id": "gn-5037649",
+    "input": {
+      "place": {
+        "place_id": "gn-5037649",
+        "name": "Minneapolis",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.97997,
+        "lon": -93.26384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minneapolis",
+          "url": "https://en.wikipedia.org/wiki/Minneapolis",
+          "text": "Minneapolis is a city in Hennepin County, Minnesota, United States, and its county seat. With a population of 429,954 as of the 2020 census, it is the state's most populous city. Located in the state's center near the eastern border, it occupies both banks of the Upper Mississippi River and adjoins Saint Paul, the state capital of Minnesota. Minneapolis, Saint Paul, and the surrounding area are collectively known as the Twin Cities, a metropolitan area with 3.69 million residents. Minneapolis is built on an artesian aquifer on relatively flat terrain and is known for cold, snowy winters and hot, humid summers. Nicknamed the \"City of Lakes\", Minneapolis is abundant in water, with thirteen lakes, wetlands, the Mississippi River, creeks, and waterfalls. The city's public park system is connected by the Grand Rounds National Scenic Byway.\nDakota people previously inhabited the site of today's Minneapolis. European settlement began north of Fort Snelling along Saint Anthony Falls—the only natural waterfall on the Mississippi River. Location near the fort and the falls' power—with its potential for industrial activity—fostered the city's early growth. For a time in the 19th century, Minneapolis was the lumber and flour milling capital of the world, and as home to the Federal Reserve Bank of Minneapolis, it has preserved its financial clout into the 21st century. A Minneapolis Depression-era labor strike brought about federal worker protections. Work in Minneapolis contributed to the computing industry, and the city is the birthplace of General Mills, the Pillsbury brand, Target Corporation, and Thermo King mobile refrigeration.\nThe city's major arts institutions include the Minneapolis Institute of Art, the Walker Art Center, the Minnesota Orchestra, and the Guthrie Theater. Four professional sports teams play downtown. Musician Prince played at the First Avenue nightclub. Minneapolis is home to the University of Minnesota's main campus. The city's public transport is provided by Metro Transit, and the international airport, serving the Twin Cities region, is located towards the south on the city limits.\nResidents adhere to more than fifty religions. Despite its well-regarded quality of life, Minneapolis has stark disparities among its residents—arguably the most critical issue confronting the city in the 21st century. Governed by a mayor-council system, Minneapolis has a political landscape dominated by the Minnesota Democratic–Farmer–Labor Party (DFL), with Jacob Frey serving as mayor since 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 383
+    },
+    "banned_terms": [
+      {
+        "term": "minneapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 321,
+    "attempt": 316,
+    "place_id": "gn-1258044",
+    "input": {
+      "place": {
+        "place_id": "gn-1258044",
+        "name": "Roorkee",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.86632,
+        "lon": 77.89118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roorkee",
+          "url": "https://en.wikipedia.org/wiki/Roorkee",
+          "text": "Roorkee (Rūṛkī; Hindi: [ɾuːɽkiː]), formerly also anglicized as Rurki, is a city and municipal corporation in the Haridwar district of the state of Uttarakhand, India. It is 31 km (19 mi) from Haridwar, the district headquarters. It is spread over a flat terrain under the Sivalik Hills of the Himalayas. The city is developed on the banks of the Ganges Canal, its dominant feature, which flows from north–south through the middle of the city. \nRoorkee is home to Asia's Second engineering college the Indian Institute of Technology Roorkee, formerly known as Thomson College of Civil Engineering. Roorkee is also known for the Roorkee Cantonment, one of the country's oldest military establishments and the headquarters of Bengal Engineer Group since 1853."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "roorkee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 322,
+    "attempt": 317,
+    "place_id": "gn-1799629",
+    "input": {
+      "place": {
+        "place_id": "gn-1799629",
+        "name": "Nanyang",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 33.00524,
+        "lon": 112.54659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanyang, Henan",
+          "url": "https://en.wikipedia.org/wiki/Nanyang,_Henan",
+          "text": "Nanyang is a prefecture-level city in the southwest of Henan province, China. The city with the largest administrative area in Henan, Nanyang borders Xinyang to the southeast, Zhumadian to the east, Pingdingshan to the northeast, Luoyang to the north, Sanmenxia to the northwest, the province of Shaanxi to the west, and the province of Hubei to the south.\nNanyang was the home of various important figures in Chinese history. It nurtured the \"sage of science\" Zhang Heng, \"sage of medicine\" Zhang Zhongjing, \"sage of commerce\" Fan Li, and \"sage of intelligence\" Zhuge Liang. It has also been home to contemporary celebrities such as philosopher Feng Youlan, military strategist Peng Xuefeng, novelist Yao Xueyin, inventor Wang Yongmin, and writer Er Yuehe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "nanyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 323,
+    "attempt": 318,
+    "place_id": "gn-1835553",
+    "input": {
+      "place": {
+        "place_id": "gn-1835553",
+        "name": "Suwon",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.29111,
+        "lon": 127.00889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suwon",
+          "url": "https://en.wikipedia.org/wiki/Suwon",
+          "text": "Suwon (Korean: 수원; Korean pronunciation: [sʰu.wʌn]) is the largest city and capital of Gyeonggi Province, South Korea's most populous province. The city lies approximately 30 km (19 mi) south of the national capital, Seoul. With a population of 1.2 million, Suwon has more inhabitants than the metropolitan city of Ulsan, though it enjoys a lesser degree of self-governance as a 'special city'.\nTraditionally known as the 'City of Filial Piety', modern Suwon retains a variety of historical landmarks. As a walled city, it is a popular destination for day-trippers from Seoul, with the wall itself—Hwaseong Fortress—receiving 1½ million visits in 2015.\nSuwon plays an important economic role as it is home to Samsung Electronics, Korea's largest and most profitable company. The company's research and development centre is in Yeongtong District in eastern Suwon, where its headquarters have also been located since 2016. Samsung's prominence in Suwon is clear: the company is partnered with Sungkyunkwan University, which has a campus in the city; it also owns the professional football team Suwon Samsung Bluewings. This team has won the K League four times and the Asian Super Cup twice. The city is also home to the K League 2 team Suwon FC and the KBO League baseball team KT Wiz.\nSuwon houses several well-known universities, most notably Sungkyunkwan University and Ajou University. It is served by three expressways, the national railway network, and three lines on the Seoul Metropolitan Subway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "suwon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 324,
+    "attempt": 319,
+    "place_id": "gn-2035265",
+    "input": {
+      "place": {
+        "place_id": "gn-2035265",
+        "name": "Qiqihar",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 47.33922,
+        "lon": 123.96154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qiqihar",
+          "url": "https://en.wikipedia.org/wiki/Qiqihar",
+          "text": "Qiqihar (also spelled Tsitsihar) is the second-largest city in the Heilongjiang province of China, in the west central part of the province. The built-up (or metro) area made up of Longsha, Tiefeng and Jianhua districts had 959,787 inhabitants, while the total population of the prefecture-level city was shrinking to 4,067,489 as of the 2020 census (5,367,003 as of 2010). In 2024, the total registered population of the city will be 5.06 million. Among them, the rural population is 3.165 million. These are mainly Han Chinese, though the city is also home to thirty-four minorities including Manchus, Daur, and Mongols. Numerous wetlands are close to Qiqihar, including the Zhalong Nature Reserve, famous in China for being home to numerous red-crowned cranes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "qiqihar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 325,
+    "attempt": 320,
+    "place_id": "gn-2545957",
+    "input": {
+      "place": {
+        "place_id": "gn-2545957",
+        "name": "Inezgane",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 30.35535,
+        "lon": -9.53639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inezgane",
+          "url": "https://en.wikipedia.org/wiki/Inezgane",
+          "text": "Inezgane (Arabic: إنزكان) is the capital of Inezgane-Aït Melloul Prefecture located on the north bank of the Sous River, about 11.5 km (7.1 mi) south of Agadir, on the Atlantic Ocean coast of Morocco. It is in some ways a suburb to the larger Agadir, but unlike the tourism-centered Agadir, Inezgane is a typical Moroccan city. Located where the N1, N8 and N10 highways meet, Inezgane is an important transport hub in the region of Souss-Massa.\nInezgane is well known for its souks and silver jewellery, as well as for its vegetable, fruit, and spice market. Tuesday is the main market day, when people come from all the villages nearby to sell their goods and buy provisions for the week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "inezgane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

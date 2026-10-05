@@ -1,0 +1,276 @@
+[
+ {
+  "rank": 102,
+  "place_id": "gn-3204541",
+  "input": {
+   "place": {
+    "place_id": "gn-3204541",
+    "name": "Banja Luka",
+    "country": "Bosnia & Herzegovina",
+    "subdivision": "Srpska",
+    "lat": 44.77879,
+    "lon": 17.20629
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Banja Luka",
+     "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+     "text": "Banja Luka (Serbian Cyrillic: Бања Лука, pronounced [bǎɲa lǔːka] ) or Banjaluka (Serbian Cyrillic: Бањалука, pronounced [baɲalǔːka]) is the second-largest city in Bosnia and Herzegovina, and the most populous in Republika Srpska. It is Republika Srpska's main economic, political, and administrative centre. Banja Luka is the traditional centre of the densely forested Bosanska Krajina region of northwestern Bosnia and Herzegovina. According to the 2013 census, the city proper has a population of 138,963, while its administrative area comprises a total of 185,042 inhabitants. The City Day of Banja Luka is celebrated on 22 April, commemorating the liberation of the city at the end of World War II.\nThe city is home to the University of Banja Luka and the University Clinical Center of the Republika Srpska, as well as numerous entity- and state-level institutions of Republika Srpska and Bosnia and Herzegovina, respectively. The city is located on the Vrbas river. Banja Luka was declared a European City of Sport in 2018 and designated a UNESCO City of Music in 2023."
+    },
+    {
+     "article": "Banja Luka (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Banja_Luka#Climate",
+     "text": "Banja Luka has a moderate humid subtropical climate with mild winters, infrequent frosts, and warm summers. The warmest month of the year is July, with an average temperature of . The coldest month of the year is January, when temperatures average around .\nThe annual precipitation for the city is about . Banja Luka has an average of 104 rainy days a year.\nHighest recorded temperature: on 10 August 2017"
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 70,
+   "leadWords": 170,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract gives a river location in a densely forested region and university facts, but states no climate mechanism, extreme, or paradox; forest cover is not climate.",
+   "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+  },
+  "banned_terms": [
+   {
+    "term": "banja luka",
+    "tokenOnly": false,
+    "source": "name"
+   },
+   {
+    "term": "banja",
+    "tokenOnly": false,
+    "source": "name part"
+   },
+   {
+    "term": "luka",
+    "tokenOnly": false,
+    "source": "name part"
+   }
+  ]
+ },
+ {
+  "rank": 103,
+  "place_id": "gn-3363094",
+  "input": {
+   "place": {
+    "place_id": "gn-3363094",
+    "name": "Paarl",
+    "country": "South Africa",
+    "subdivision": "Western Cape",
+    "lat": -33.73378,
+    "lon": 18.97523
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Paarl",
+     "url": "https://en.wikipedia.org/wiki/Paarl",
+     "text": "Paarl (; Afrikaans: [ˈpæːrəl]; derived from parel, meaning \"pearl\" in Dutch) is a town with 294,457 inhabitants in the Western Cape province of South Africa. It is the largest town in the Cape Winelands. Due to the growth of the Mbekweni township, it is now a de facto urban unit with Wellington. It is situated about 60 kilometres (37 mi) northeast of Cape Town in the Western Cape Province and is known for its scenic environment and viticulture and fruit-growing heritage.\nPaarl is the seat of the Drakenstein Local Municipality; although not part of the Cape Town metropolitan area, it falls within its economic catchment. Paarl is unusual among South African place-names, in being pronounced differently in English than in Afrikaans; likewise unusual about the town's name is Afrikaners customary attachment to it, saying not  in Paarl, but rather in die Paarl, or in die Pêrel (literally, \"in the Paarl\").\nPaarl gained additional international attention when, on 11 February 1990, Nelson Mandela walked, with live international television coverage, out of Victor Verster Correctional Centre (now known as Drakenstein Correctional Centre) in Paarl ending his 27 years of imprisonment, and beginning a course to South Africa's post-apartheid era and, notably, to multi-racial elections. Mandela spent three years in prison here living in a private house within the walls.  Today, a bronze statue of Mandela stands outside the prison.\nPaarl hosted three matches of the ICC Cricket World Cup 2003.  The headquarters of Ceres Fruit Juices is located in the city, although its namesake and source of much of the fruit, Ceres Valley, lies around one hour's drive to the northeast.\nThe district is particularly well known for its Pearl Mountain or \"Paarl Rock\". This huge granite rock consists of three rounded outcrops. Paarl Rock consists of intrusive igneous rock."
+    },
+    {
+     "article": "Paarl (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Paarl#Climate",
+     "text": "Paarl has a Mediterranean climate (Köppen: Csa)."
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 7,
+   "leadWords": 298,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract mentions scenic environment and viticulture and fruit-growing heritage but states no climate mechanism, extreme, paradox, seasonal rhythm, or record; a non-redundant climate clue cannot be sourced without inventing weather details",
+   "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, temperature, wind, or seasonal pattern"
+  },
+  "banned_terms": [
+   {
+    "term": "paarl",
+    "tokenOnly": false,
+    "source": "name"
+   }
+  ]
+ },
+ {
+  "rank": 104,
+  "place_id": "gn-3513090",
+  "input": {
+   "place": {
+    "place_id": "gn-3513090",
+    "name": "Willemstad",
+    "country": "Curaçao",
+    "subdivision": "Curaçao",
+    "lat": 12.12246,
+    "lon": -68.88641
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Willemstad",
+     "url": "https://en.wikipedia.org/wiki/Willemstad",
+     "text": "Willemstad ( WIL-əm-staht, VIL-; Dutch: [ˈʋɪləmstɑt]; Papiamento: [wiləmˈstad]) is the capital and largest city of Curaçao, an island in the southern Caribbean Sea that is a constituent country of the Kingdom of the Netherlands. It was the capital of the Netherlands Antilles prior to that entity's dissolution in 2010. The city accounts for around 90% of Curaçao's population, with 136,660 inhabitants as of 2011. The historic centre of the city consists of four quarters: the Punda and Otrobanda, which are separated by the Sint Anna Bay, an inlet that leads into the large natural harbour called the Schottegat, as well as the Scharloo and Pietermaai Smal quarters, which are across from each other on the smaller Waaigat harbour. Willemstad is home to the Curaçao synagogue, the oldest surviving synagogue in the Americas. The city centre, with its unique architecture and harbour entry, has been designated a UNESCO World Heritage Site."
+    },
+    {
+     "article": "Willemstad (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Willemstad#Climate",
+     "text": "Willemstad has a hot semi-arid climate (Köppen: BSh), experiencing hot summers and winters."
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 13,
+   "leadWords": 150,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract describes the capital, harbour, quarters, synagogue, and UNESCO centre but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+   "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated trade-wind, rainfall, heat, or storm pattern"
+  },
+  "banned_terms": [
+   {
+    "term": "willemstad",
+    "tokenOnly": false,
+    "source": "name"
+   }
+  ]
+ },
+ {
+  "rank": 105,
+  "place_id": "gn-4613868",
+  "input": {
+   "place": {
+    "place_id": "gn-4613868",
+    "name": "Clarksville",
+    "country": "United States",
+    "subdivision": "Tennessee",
+    "lat": 36.52977,
+    "lon": -87.35945
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Clarksville, Tennessee",
+     "url": "https://en.wikipedia.org/wiki/Clarksville,_Tennessee",
+     "text": "Clarksville is a city in Montgomery County, Tennessee, United States, its county seat, and only incorporated municipality. The city had a population of 166,722 as of the 2020 census, making it the fifth-most populous city in Tennessee. It is the principal city of the Clarksville metropolitan area, which consists of Montgomery and Stewart counties in Tennessee and Christian and Trigg counties in Kentucky.\nThe city was founded in 1785 and incorporated in 1807, and named for General George Rogers Clark, frontier fighter and Revolutionary War hero, and brother of William Clark of the Lewis and Clark Expedition.\nClarksville is the home of Austin Peay State University; The Leaf-Chronicle, the oldest newspaper in Tennessee; and neighbor to the Fort Campbell, United States Army post. The site of the 101st Airborne Division (Air Assault), Fort Campbell is located about 10 miles (16 km) from downtown Clarksville and straddles the Tennessee-Kentucky state line."
+    },
+    {
+     "article": "Clarksville, Tennessee (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Clarksville,_Tennessee#Climate",
+     "text": "The climate is humid subtropical (Köppen: Cfa) with hot summers and cold winters but interspersed with milder times due to its location between the warmer climates of the Gulf of Mexico and the colder ones of the Midwest. Freezing temperatures are not uncommon but usually the averages are above zero in January (around 2 °C) and in July can often pass through 25 °C. Snow in winter is common, but large accumulated amounts are more sporadic; usually the soil is covered by a thin layer during some time of winter. Precipitation is abundant year-round without any major difference, but May tends to have the highest cumulative amount of 142 mm in the form of rain. The wet season runs from February through July, while the dry season runs from August through January with a September nadir of 85 mm and secondary December peak of 125 mm."
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 146,
+   "leadWords": 150,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract covers founding in 1785, the university, newspaper, and nearby Fort Campbell but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+   "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated seasonal weather, storm, flood, or temperature pattern"
+  },
+  "banned_terms": [
+   {
+    "term": "clarksville",
+    "tokenOnly": false,
+    "source": "name"
+   }
+  ]
+ },
+ {
+  "rank": 106,
+  "place_id": "gn-1176615",
+  "input": {
+   "place": {
+    "place_id": "gn-1176615",
+    "name": "Islamabad",
+    "country": "Pakistan",
+    "subdivision": "Islamabad",
+    "lat": 33.72148,
+    "lon": 73.04329
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Islamabad",
+     "url": "https://en.wikipedia.org/wiki/Islamabad",
+     "text": "Islamabad is the capital city of Pakistan. It is the country's tenth-most populous city with a population of over 1.1 million and is federally administered by the Pakistani government as part of the Islamabad Capital Territory — with a metropolitan population of over 2.3 million. Built as a planned city along the Margalla Hills in the 1960s and established in 1967, Islamabad replaced Karachi as Pakistan's national capital. It is located in the northern Punjab region, north of the city of Rawalpindi — with which it forms a metropolitan area of over 5.7 million inhabitants.\nThe Greek architect Constantinos Apostolou Doxiadis developed Islamabad's master plan, in which he divided it into eight zones. The city comprises administrative areas, a diplomatic enclave, residential areas, educational and industrial sectors, commercial areas, as well as rural and green areas administered by the Islamabad Metropolitan Corporation with support from the Capital Development Authority. Islamabad is known for its parks and forests, including the Margalla Hills National Park and the Shakarparian. It is home to several landmarks, including the country's flagship Faisal Mosque. Other prominent landmarks include the Pakistan Monument and Democracy Square.\nRated as Gamma+ by the Globalization and World Cities Research Network, Islamabad has one of the highest costs of living in Pakistan. The city's populace is dominated by both middle- and upper-middle-class citizens. Islamabad is home to more than twenty universities, including Bahria University, Quaid-e-Azam University, PIEAS, COMSATS University, FAST-NUCES, and NUST. It is also rated as one of the safest cities in Pakistan and has an expansive RFID-enabled surveillance system with almost 2,000 active CCTV cameras."
+    },
+    {
+     "article": "Islamabad (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Islamabad#Climate",
+     "text": "Islamabad has a humid subtropical climate (Köppen: Cwa), with five seasons: Winter (November–February), Spring (March and April), Summer (May and June), Rainy Monsoon (July and August) and Autumn (September and October). The hottest month is June, where average highs routinely exceed . The wettest month is July, with heavy rainfalls and evening thunderstorms with the possibility of cloudburst and flooding. The coolest month is January.\nIslamabad's micro-climate is regulated by three artificial reservoirs: Rawal, Simli, and Khanpur Dam. The latter is located on the Haro River near the town of Khanpur, about from Islamabad. Simli Dam is north of Islamabad. of the city consists of Margalla Hills National Park. Loi Bher Forest is situated along the Islamabad Highway, covering an area of . The highest monthly rainfall of was recorded during July 1995. Winters generally feature dense fog in the mornings and sunny afternoons. In the city, temperatures stay mild, with snowfall over the higher-elevation points on nearby hill stations, notably Murree and Nathia Gali. The temperatures range from in January to in June. The highest recorded temperature was on 23 June 2005 while the lowest temperature was on 17 January 1967. Light snowfall sometimes happens on the peaks of the hills visible from the city, though this is rare. Snowfall does not occur in the city itself. On 23 July 2001, Islamabad received a record-breaking of rainfall in just 10 hours. It was the heaviest rainfall in Islamabad in the past 100 years and the highest rainfall in 24 hours as well. Water supply is strained, leading to project proposals like the Ghazi Barotha water supply project."
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 268,
+   "leadWords": 265,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract describes the planned capital, parks, forests, landmarks, and universities but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record; greenery alone is not climate",
+   "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated monsoon, heat, rainfall, or seasonal pattern"
+  },
+  "banned_terms": [
+   {
+    "term": "islamabad",
+    "tokenOnly": false,
+    "source": "name"
+   }
+  ]
+ },
+ {
+  "rank": 107,
+  "place_id": "gn-1277013",
+  "input": {
+   "place": {
+    "place_id": "gn-1277013",
+    "name": "Bareilly",
+    "country": "India",
+    "subdivision": "Uttar Pradesh",
+    "lat": 28.36678,
+    "lon": 79.43167
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Bareilly",
+     "url": "https://en.wikipedia.org/wiki/Bareilly",
+     "text": "Bareilly, also spelled Bareli, is a city in Bareilly district in the Indian state of Uttar Pradesh. It is among the largest metropolises in Western Uttar Pradesh and is the centre of the Bareilly division as well as the historical region of Rohilkhand. The city lies in the Indo-Gangetic Plains, about 252 kilometres (157 mi) northwest of the state capital, Lucknow, and 265 kilometres (165 mi) east of the national capital, New Delhi. With a population of 903,668 in 2011, it is the eighth most populous city in the state, 17th in northern India and 54th in India. It is located on the bank of Ramganga River and is the site of the Ramganga Barrage built for canal irrigation.\nThe earliest settlement in what is now Bareilly was established in 1537 by a local chieftain Jagat Singh Katehriya who named it 'Bans-Bareli' after his two sons Bansaldev and Bareldev. The town came under the rule of the Mughals in 1569 and had become the capital of a local pargana by 1596. The foundation of the modern city of Bareilly was laid by Mughal governor Mukrand Rai in 1657, and in 1658 it became the seat of the governor of Budaun. The weakening of Mughal Empire lead to the rise of the Kingdom of Rohilkhand, of which Bareilly was a major centre. The city came under the control of Oudh State in 1774 after the fall of Rohillas in the First Rohilla War and was then ceded to the British East India Company by the Nawab of Oudh in 1801. A Military station was established in 1811 to the south of the city, where a fort was constructed in 1816. Bareilly was freed by the rebels during the Indian Rebellion of 1857 and remained independent under the rule of Khan Bahadur Khan until it was re-annexed by the British in 1858.\nBareilly is renowned for being the place of origin of the Barelvi movement, a Sunni Islamic movement formed by Islamic scholar Ahmad Raza Khan to counter the growing influence of the Deobandi movement and Wahhabism. His shrine, located at the Bareilly Dargah, is visited by millions of his followers every year on the occasion of Urs-e-Razavi.\nThe city has been known as Nath Nagri due to the presence of several ancient Shiva temples, and more recently as Jumka City. It is a centre for furniture manufacturing and trade in cotton, cereal and sugar. Bareilly is one of the 100 Smart Cities being developed in India, and one of the nine counter magnet cities of the National Capital Region (NCR). The city is served by the Bareilly Airport which has direct flights to Delhi, Lucknow, Mumbai and Bangalore. The Bareilly Junction railway station located in the city is among the top 100 booking stations of Indian Railways while Izzatnagar is the divisional headquarters of one of the three divisions of North Eastern Railways."
+    },
+    {
+     "article": "Bareilly (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Bareilly#Climate",
+     "text": "Bareilly has a humid subtropical climate (Köppen climate classification: Cwa) with hot summers and cool winters. The average temperature for the year is 25 °C. June, with an average temperature of 32.8 °C is the warmest month, while the coolest month of the year is January, with an average temperature of 15 °C."
+    }
+   ]
+  },
+  "evidence": {
+   "sectionStatus": "ok",
+   "sectionSource": "climate",
+   "sectionHeading": "Climate",
+   "sectionWords": 53,
+   "leadWords": 482,
+   "priorRejectionTier": "climate",
+   "priorReason": "Extract covers plains location, river, long history, religious movement, and trade but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+   "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated monsoon, heat, rainfall, or flood pattern"
+  },
+  "banned_terms": [
+   {
+    "term": "bareilly",
+    "tokenOnly": false,
+    "source": "name"
+   }
+  ]
+ }
+]

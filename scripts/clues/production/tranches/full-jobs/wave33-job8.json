@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 6588,
+    "attempt": 6541,
+    "place_id": "gn-5127824",
+    "input": {
+      "place": {
+        "place_id": "gn-5127824",
+        "name": "Mount Sinai",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.94704,
+        "lon": -73.02955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Sinai, New York",
+          "url": "https://en.wikipedia.org/wiki/Mount_Sinai,_New_York",
+          "text": "Mount Sinai is a hamlet and census-designated place (CDP) located within the Town of Brookhaven, in Suffolk County, New York, United States. As of the 2020 census, Mount Sinai had a population of 11,623. The hamlet is located on the North Shore of Long Island.\nMount Sinai was first settled in the 1660s and was known by the name of Old Mans until a name change in the 1840s. Initially an agricultural hamlet, it transitioned into a popular resort town in the late-19th century and developed into a suburb of New York City in the mid-20th century.  While primarily a residential community, the hamlet contains Mount Sinai Harbor and its popular public beach, Cedar Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "mount sinai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sinai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6589,
+    "attempt": 6542,
+    "place_id": "gn-5160622",
+    "input": {
+      "place": {
+        "place_id": "gn-5160622",
+        "name": "Lewis Center",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.1984,
+        "lon": -83.01018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewis Center, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Lewis_Center,_Ohio",
+          "text": "Lewis Center (also Lewis Centre) is an unincorporated community in northwestern Orange Township, Delaware County, Ohio, United States, in the Columbus metropolitan area.\nIts ZIP code is 43035. Although Lewis Center is a small community, its ZIP code encompasses a number of shopping centers and retail establishments that line U.S. Route 23 in the nearby vicinity. The Lewis Center area lies on the east side of the Olentangy River, across from the city of Powell,  west of Alum Creek State Park and north of the Polaris shopping hub. It is located in the Olentangy Local School District.\nLewis Center has a population of 30,398 with an average population density of 1371 people per square mile. The median age in Lewis Center is 33.6, slightly below the United States average of 36.8. The median per capita income in Lewis Center is $49,690 and the median household income is $140,076. Lewis Center is also home of the Olentangy School District, one of Ohio's highest scoring school districts. The district includes 4 high schools. Due to a higher median income, the area has been in a real estate boom, further amplified by the coronavirus pandemic. Newer development such as Evans Farm have resulted in thousands of new houses being built each year. There are many thriving suburban neighborhoods, like Olentangy Meadows, Oak Creek, Alum Creek, Walker Wood, Glen Oak, North Orange, and the Meadows at Lewis Center. Since 2000, the place has seen itself become a growing suburb of Columbus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "lewis center",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lewis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "center",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6590,
+    "attempt": 6543,
+    "place_id": "gn-5183234",
+    "input": {
+      "place": {
+        "place_id": "gn-5183234",
+        "name": "Carlisle",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.20148,
+        "lon": -77.18887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlisle, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Carlisle,_Pennsylvania",
+          "text": "Carlisle is a borough in and the county seat of Cumberland County, Pennsylvania, United States. Carlisle is located within the Cumberland Valley, a highly productive agricultural region. As of the 2020 census, the borough population was 20,118; including suburbs in the neighboring townships, 37,695 live in the Carlisle urban cluster. Carlisle is the smaller principal city of the Harrisburg–Carlisle metropolitan statistical area, which includes Cumberland and Dauphin and Perry counties in South Central Pennsylvania.\nThe U.S. Army War College, located at Carlisle Barracks, prepares high-level military personnel and civilians for strategic leadership responsibilities. The Carlisle Barracks ranks among the oldest U.S. Army installations and the most senior military educational institution in the United States Army. Carlisle Barracks is home of the United States Army Heritage and Education Center, an archives and museum complex open to the public. Carlisle is also home to Penn State Dickinson School of Law and Dickinson College. Dickinson College was the first college or university chartered after the United States was founded."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "carlisle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6591,
+    "attempt": 6544,
+    "place_id": "gn-5352771",
+    "input": {
+      "place": {
+        "place_id": "gn-5352771",
+        "name": "Gold River",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.62629,
+        "lon": -121.24662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gold River, California",
+          "url": "https://en.wikipedia.org/wiki/Gold_River,_California",
+          "text": "Gold River is a census-designated place (CDP) in Sacramento County, California, United States. The population was 7,844 at the 2020 census, down from 7,912 at the 2010 census. Gold River is part of the Sacramento-Arden-Arcade-Roseville Metropolitan Statistical Area.  With a median family income of $141,399 according to U.S. Census Bureau in 2021, Gold River is the highest-income community in Sacramento County.\nThe community of Gold River consists of a residential planned development and some smaller subdivisions served by the Gold River Discovery Center (a K through 8 school), as well as some retail, commercial and light industrial areas.  The community consists of detached single family homes, duplex and triplexes, as well as a condominium development.  Gold River lies between the cities of Rancho Cordova on the south and west, Folsom on the east, and the American River to the north. The Gold River Community Association is the master association for the 25 separate \"villages\" that make up the planned development. Each village has its own subassociations as well. The planned development and two subdivisions, including Gold Station, opted out of inclusion into the City of Rancho Cordova by resolution and petitions, respectively. The community remains an unincorporated part of Sacramento County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "gold river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gold",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6592,
+    "attempt": 6545,
+    "place_id": "gn-5803990",
+    "input": {
+      "place": {
+        "place_id": "gn-5803990",
+        "name": "Moses Lake",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.13014,
+        "lon": -119.27808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moses Lake, Washington",
+          "url": "https://en.wikipedia.org/wiki/Moses_Lake,_Washington",
+          "text": "Moses Lake is a city in Grant County, Washington, United States. The population was 25,146 at the 2020 census, and was estimated to be 26,969 in 2024. Moses Lake is the most populous city in Grant County. The city anchors the Moses Lake Micropolitan area, which includes all of Grant County and is part of the Moses Lake–Othello combined statistical area.\nMoses Lake, on which the city lies, is made up of three main arms over 18 miles (29 km) long and up to one mile (1.6 km) wide. It is the largest natural body of fresh water in Grant County and has over 120 miles (190 km) of shoreline covering 6,500 acres (2,600 ha). Before it was dammed in the early 1900s and then incorporated into the Columbia Basin Project, Moses Lake was a smaller shallow lake. To the south of the town is the Potholes Reservoir and the Columbia National Wildlife Refuge that has a number of seep lakes and vast amounts of migratory birds and other fauna natural to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "moses lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "moses",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6593,
+    "attempt": 6546,
+    "place_id": "gn-5861187",
+    "input": {
+      "place": {
+        "place_id": "gn-5861187",
+        "name": "Eagle River",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 61.32139,
+        "lon": -149.56778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eagle River, Anchorage, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Eagle_River,_Anchorage,_Alaska",
+          "text": "Eagle River is a community within the Municipality of Anchorage situated on the Eagle River, for which it is named, between Joint Base Elmendorf-Richardson (JBER) and Chugach State Park in the Chugach Mountains. Its ZIP code is 99577. Settled by homesteaders, Eagle River was annexed to the Municipality of Anchorage in the 1970s—a relationship that is, at times, complicated. Eagle River functions as an Anchorage suburb – many Eagle River residents work, shop, and participate in community life in the Anchorage Bowl. The community is itself also a significant business hub between Wasilla and Anchorage, offering shopping, restaurants, recreation and employment. Much of the community is made up of residents from nearby Joint Base Elmendorf-Richardson. Secession efforts have from time to time gained traction by residents who would like Eagle River legally regarded as a separate community. Eagle River also has a close relationship with its neighboring community to the north, Chugiak, with which it shares some history. If Eagle River were not part of the Municipality of Anchorage, it would be one of the five largest cities in Alaska."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "eagle river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eagle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6594,
+    "attempt": 6547,
+    "place_id": "gn-5908473",
+    "input": {
+      "place": {
+        "place_id": "gn-5908473",
+        "name": "Brentwood Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.58294,
+        "lon": -123.45262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brentwood Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Brentwood_Bay,_British_Columbia",
+          "text": "Brentwood Bay is a small village in the municipality of Central Saanich, on the Saanich Peninsula in British Columbia, Canada. It lies north of the city of Victoria, east of the community of Willis Point, and south of the town of Sidney. Situated on the Saanich Inlet and the Tod Inlet, it includes the Butchart Gardens, the Victoria Butterfly Gardens and the Brentwood Bay Lodge & Spa. Brentwood Bay also includes a BC Ferries dock which connects to Mill Bay. The region also plays host to various wineries and restaurants, and also features hiking and a variety of wildlife in Gowlland Tod Provincial Park.\nBrentwood Bay is part of the District of Central Saanich (pop. 17,385), one of the 13 municipalities that make up the Greater Victoria area (pop. 397,237 ). It is located on Highway 17A just west of Highway 17 (known locally as the \"Pat Bay Highway\"), the main route running the length of the Saanich Peninsula. It is also served frequently by the Brentwood-Mill Bay ferry, the MV Klitsa, run by BC Ferries.\nOriginally named Sluggett after an early settler, it was renamed Brentwood Bay for the town of Brentwood, Essex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "brentwood bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brentwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6595,
+    "attempt": 6548,
+    "place_id": "gn-5919137",
+    "input": {
+      "place": {
+        "place_id": "gn-5919137",
+        "name": "Central Saanich",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.56634,
+        "lon": -123.41932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Central Saanich",
+          "url": "https://en.wikipedia.org/wiki/Central_Saanich",
+          "text": "Central Saanich is a district municipality in Greater Victoria, British Columbia, Canada, and a member municipality of the Capital Regional District. It is located on the Saanich Peninsula, in the far south-east of Vancouver Island. It is the traditional territory of the W̱SÁNEĆ people. The district began as a farming community, and many hobby farms, along working farms and vineyards, still exist. In recent decades, the area has seen increasing residential, commercial, and industrial development, especially around the neighbourhoods of Brentwood Bay and Saanichton, which are occasionally referred to as separate communities.\nThe area's best-known tourist attractions are the Butchart Gardens, located in the Brentwood Bay area, Gowlland Tod Provincial Park, and Island View Beach.\nThe mayor of Central Saanich is former district councillor Ryan Windsor.  Municipal councillors last elected in 2022 include Niall Paltiel, Sarah Riddell, Zeb King, Bob Thompson, Gord Newton, and Christopher Graham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "central saanich",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "central",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saanich",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6596,
+    "attempt": 6549,
+    "place_id": "gn-5978765",
+    "input": {
+      "place": {
+        "place_id": "gn-5978765",
+        "name": "Huntsville",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.33341,
+        "lon": -79.21632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntsville, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Huntsville,_Ontario",
+          "text": "Huntsville is a town in the District Municipality of Muskoka, Ontario, Canada. It is located 215 kilometres (134 mi) north of Toronto and 130 kilometres (81 mi) south of North Bay. Of the three major Muskoka towns (the others being Gravenhurst and Bracebridge), Huntsville has the largest population (21,147 per 2021 census) and land area (710.64 square kilometres (274.38 sq mi)).\nHuntsville is located in the hilly terrain of the Canadian Shield and is dotted with many lakes. Due to its natural environment and natural resources, Huntsville is a tourist destination that draws many people from around the world. The Toronto Star ranked the town the #1 place to take a summer trip in 2011.\nHuntsville serves as the western gateway to Algonquin Provincial Park via Ontario Highway 60 and was the host to the 36th G8 summit in June 2010, at Deerhurst Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "huntsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6597,
+    "attempt": 6550,
+    "place_id": "gn-613902",
+    "input": {
+      "place": {
+        "place_id": "gn-613902",
+        "name": "Khoni",
+        "country": "Georgia",
+        "subdivision": "Imereti",
+        "lat": 42.32535,
+        "lon": 42.42243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khoni",
+          "url": "https://en.wikipedia.org/wiki/Khoni",
+          "text": "Khoni (Georgian: ხონი [χo̞n̪i]) is a town in the Western Georgian region (mkhare) of Imereti with a population of 7,756 as of January 2024. It is situated on the left bank of the Tskhenistsqali River in the north-west of Imereti, close to the border with the region of Samegrelo-Zemo Svaneti and 266 km west of Georgia's capital Tbilisi. The town serves as an administrative centre of the Khoni District. Its economy is based on agriculture, particularly tea production.\nKhoni has been known as a lively trading locale and a see of the Georgian Orthodox diocese since the Middle Ages. The town itself was founded in the 6th or 9th century and the still functioning St. George's Cathedral in downtown Khoni was constructed between the 11th and 13th centuries. It acquired the status of a town in 1921. Under the Soviet Union, it was named after the Marxist revolutionary Alexander Tsulukidze in 1936, but the historical name of Khoni was restored in 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "khoni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6598,
+    "attempt": 6551,
+    "place_id": "gn-6163868",
+    "input": {
+      "place": {
+        "place_id": "gn-6163868",
+        "name": "The Glebe",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.40393,
+        "lon": -75.69005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "The Glebe",
+          "url": "https://en.wikipedia.org/wiki/The_Glebe",
+          "text": "The Glebe is a neighbourhood in Ottawa, Ontario, Canada. It is located just south of Downtown Ottawa in the Capital Ward. As of 2016, the neighbourhood had a population of 13,055.\nThe Glebe is bounded on the north by the Queensway, on the east and south by the Rideau Canal and on the west by LeBreton Street South, Carling Avenue and Dow's Lake. This area includes the Glebe Annex, an area west of Bronson Avenue, north of Carling Avenue, east of LeBreton South Street and south of the Queensway. It also includes the Dow's Lake neighbourhood, an area north of the Rideau Canal, east of Dow's Lake, south of Carling Avenue, and west of Bronson.\nThe Glebe lies in the federal riding of Ottawa Centre and the provincial electoral district of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "the glebe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glebe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6599,
+    "attempt": 6552,
+    "place_id": "gn-6244870",
+    "input": {
+      "place": {
+        "place_id": "gn-6244870",
+        "name": "Stokes Valley",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.17827,
+        "lon": 174.9802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stokes Valley",
+          "url": "https://en.wikipedia.org/wiki/Stokes_Valley",
+          "text": "Stokes Valley, a major suburb of the city of Lower Hutt in the North Island of New Zealand, lies at the edge of the city, seven kilometres northeast of the city centre. It occupies the valley of a small tributary of the Hutt River, called Stokes Valley Stream, which flows north to meet the main river close to the Taitā Gorge. Stokes Valley takes its name from Robert Stokes, who formed part of the original survey team of 1840 commissioned to plan the city at Thorndon in Wellington.\nStokes Valley comprises a suburb in its own valley, physically separated from the rest of Lower Hutt. It is surrounded on all sides by densely forested hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "stokes valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stokes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6600,
+    "attempt": 6553,
+    "place_id": "gn-634093",
+    "input": {
+      "place": {
+        "place_id": "gn-634093",
+        "name": "Tornio",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 65.84811,
+        "lon": 24.14662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tornio",
+          "url": "https://en.wikipedia.org/wiki/Tornio",
+          "text": "Tornio (Finnish: [ˈtornio]; Swedish: Torneå; Northern Sami: Duortnus [ˈtuo̯rtnuːs]; Inari Sami: Tuárnus) is a city and municipality in Lapland, Finland.  The city forms a cross-border twin city together with Haparanda on the Swedish side. The municipality covers an area of 1,348.83 square kilometres (520.79 sq mi), of which 161.59 km2 (62.39 sq mi) is water. The population density is 17.52 inhabitants per square kilometre (45.4/sq mi), with a total population of 20,823 (31 December 2025).\nTornio is unilingually Finnish with a negligible number of native Swedish speakers, although this does not count vast numbers of bilinguals who speak Swedish as a second language, with an official target of universal working bilingualism for both border municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tornio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6601,
+    "attempt": 6554,
+    "place_id": "gn-636464",
+    "input": {
+      "place": {
+        "place_id": "gn-636464",
+        "name": "Sodankylä",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 67.41667,
+        "lon": 26.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sodankylä",
+          "url": "https://en.wikipedia.org/wiki/Sodankylä",
+          "text": "Sodankylä (Finnish: [ˈsodɑŋˌkylæ]; Northern Sami: Soađegilli [ˈso̯ɑðeˌkilːiː]; Inari Sami: Suáđigil; Skolt Sami: Suäʹđjel) is a municipality of Finland. It is located in the region of Lapland, and lies at the northern end of Highway 5 (E63) and along Highway 4 (E75). The Kitinen River flows near the center of Sodankylä. Its neighbouring municipalities are Inari, Kemijärvi, Kittilä, Pelkosenniemi, Rovaniemi, and Savukoski. The municipality has two official languages: Finnish and Northern Sami.\nThe municipality has a population of 8,095, (31 December 2025) which makes it the fourth largest municipality in Lapland after Rovaniemi, Tornio and Kemi, and at the same time the largest municipality in population that does not use the title of city or town. It covers an area of 12,415.50 square kilometres (4,793.65 sq mi) of which 718.65 km2 (277.47 sq mi) is water, making it the second largest municipality in Finland in terms of area, right after its neighboring municipality of Inari. The population density is 0.69 inhabitants per square kilometre (1.8/sq mi).\nSodankylä has an airfield. Also, one of EISCAT's scientific radar receiver stations is located outside Sodankylä, at the site of the Sodankylä Geophysical Observatory. The urban area around the observatory is known as \"Tähtelä\", which translates as \"Place of Stars\", although the observatory does not observe stars. The Jaeger Brigade of the Finnish Army is also located in Sodankylä. There is also much mining in Sodankylä, as the Pahtavaara mine (Pahtavaaran kaivos), which was opened in 1996 and focused on gold, and the Kevitsa mine (Kevitsan kaivos), which started commercial nickel mining production in 2012, operates in the municipality's territory. Although the name \"Sodankylä\" and (also \"Soađegilli\") directly translate to \"Village of War\", the etymology of the name is from a surname Sova rather than the word \"war\".\nSince 1986, Sodankylä has been home to the Midnight Sun Film Festival (Sodankylän elokuvajuhlat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "sodankyla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6602,
+    "attempt": 6555,
+    "place_id": "gn-659169",
+    "input": {
+      "place": {
+        "place_id": "gn-659169",
+        "name": "Hamina",
+        "country": "Finland",
+        "subdivision": "Kymenlaakso",
+        "lat": 60.56974,
+        "lon": 27.19794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamina",
+          "url": "https://en.wikipedia.org/wiki/Hamina",
+          "text": "Hamina (Finnish pronunciation: [ˈhɑminɑ]; Swedish: Fredrikshamn, Finland Swedish: [freːdriksˈhɑmn] , Sweden Swedish: [freːdrɪksˈhamːn]) is a town and a municipality of Finland. It is located in the Kymenlaakso region (formerly the province of Southern Finland), approximately 145 km (90 mi) east of the country's capital Helsinki and approximately 25 km (16 mi) of Kotka, the regional capital of Kymenlaakso.\nThe municipality's population is 19,113 (as of 31 December 2025) and covers an area of 1,155.14 square kilometres (446.00 sq mi), of which 545.66 km2 (210.68 sq mi)\nis water. The population density is\n31.34 inhabitants per square kilometre (81.2/sq mi). The population of the central town is approximately 10,000. The municipal language of Hamina is Finnish.\nHighway 7 (E18) is the town's road connection to Helsinki, after it was upgraded to a continuous motorway in September 2014. Hamina is also the base of one of the most important harbors of Finland, the Port of Hamina-Kotka. The port specializes in forest products and the transit of cargo to Russia. One of Google's five European data centers is situated in Hamina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "hamina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6603,
+    "attempt": 6556,
+    "place_id": "gn-682301",
+    "input": {
+      "place": {
+        "place_id": "gn-682301",
+        "name": "Cernica",
+        "country": "Romania",
+        "subdivision": "Ilfov",
+        "lat": 44.41667,
+        "lon": 26.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cernica",
+          "url": "https://en.wikipedia.org/wiki/Cernica",
+          "text": "Cernica is a commune in the southeast part of Ilfov County, Muntenia, Romania, with a population of 11,871 as of 2021. It is composed of five villages: Bălăceanca, Căldăraru, Cernica, Poșta, and Tânganu. \nThe commune is situated in the Wallachian Plain, on the banks of the Dâmbovița River and its left tributary, the Colentina River. It is located in the southeastern part of Ilfov County, 17 km (11 mi) east of downtown Bucharest, on the border with Călărași County. Cernica is crossed by the A2 motorway, which links Bucharest with the port city of Constanța.\nThe commune lent its name to the Cernica Monastery, an early 17th-century Orthodox monastery in the nearby town of Pantelimon. The name is also given to the Cernica Forest, the largest wooded area around Bucharest.\nThe name of the commune is derived from the name of the vornic Cernica Știrbei and is of Slavic origin, meaning \"black\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "cernica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6604,
+    "attempt": 6557,
+    "place_id": "gn-688089",
+    "input": {
+      "place": {
+        "place_id": "gn-688089",
+        "name": "Katerynivka",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.55586,
+        "lon": 39.18277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katerynivka, Luhansk Oblast",
+          "url": "https://en.wikipedia.org/wiki/Katerynivka,_Luhansk_Oblast",
+          "text": "Katerynivka (Ukrainian: Катеринівка) is a rural settlement in Luhansk urban hromada, Luhansk Raion, Luhansk Oblast (region), Ukraine. Population: 16,311 (2022 estimate)\nThe city was formerly named Yuvileine (Ukrainian: Ювілейне; Russian: Юбиле́йное), as part of the Soviet Union, and during its early years following Ukrainian independence. On 12 May 2016 it was renamed  Katerynivka by the Ukrainian government in a systematic renaming of small cities as part of decommunization.\nAs of 2022, the city is under the control of the Russian military as a part of the invasion of Ukraine and occupation, but that annexation by Russia has not been accepted by the international community. The city was previously controlled by the self-declared Luhansk People's Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "katerynivka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6605,
+    "attempt": 6558,
+    "place_id": "gn-712576",
+    "input": {
+      "place": {
+        "place_id": "gn-712576",
+        "name": "Inkerman",
+        "country": "Ukraine",
+        "subdivision": "Sevastopol City",
+        "lat": 44.61391,
+        "lon": 33.6098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inkerman",
+          "url": "https://en.wikipedia.org/wiki/Inkerman",
+          "text": "Inkerman (Russian: Инкерман; Ukrainian: Інкерман; Crimean Tatar: İnkerman) is a city in the Crimean peninsula. It is de jure located within the Autonomous Republic of Crimea of Ukraine, but de facto within the federal city of Sevastopol, which is administered as part of the Russian Federation. It lies 5 kilometres (3 miles) east of Sevastopol, at the mouth of the Chernaya River which flows into Sevastopol Inlet (also called the North Inlet). Administratively, Inkerman was subordinate to the municipality of Sevastopol, but since September 2023 it de jure became a part of Bakhchysarai Raion of AR Crimea. The city's population is 10,348 (2014 Census).\nThe name Inkerman is said to mean 'cave fortress' in Turkish.\nDuring the Soviet era, the area was known between 1976 and 1991 as Bilokamiansk (Ukrainian: Білокам'янськ) or Belokamensk (Russian: Белокаменск), which literally means 'white stone city', in reference to the soft white stone quarried in the area and commonly used for construction. In 1991 the Ukrainian authorities restored the pre-1976 name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "inkerman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6606,
+    "attempt": 6559,
+    "place_id": "gn-8220949",
+    "input": {
+      "place": {
+        "place_id": "gn-8220949",
+        "name": "Beekhuizen",
+        "country": "Suriname",
+        "subdivision": "Paramaribo District",
+        "lat": 5.80575,
+        "lon": -55.17367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beekhuizen",
+          "url": "https://en.wikipedia.org/wiki/Beekhuizen",
+          "text": "Beekhuizen is a former sugarcane plantation and currently a resort in Suriname, located in the Paramaribo District.  Its population at the 2012 census was 17,185.\nThe plantation was founded before 1700 by Benjamin Beeke. Around 1850, the Moravian Church became part owner of the plantation, started a school, and freed the slaves working on their part of the plantation, because they were against slavery. In the late 19th century, the Saramacca canal was widened, and 8,200 hectares could be put under cultivation.\nAt the outbreak of World War II, in May 1940, some Surinamese detainees were interned there, as well as some Germans on a temporary basis until the internment camp at Copieweg was completed. In 1947, Bruynzeel started a wood factory, and constructed wooden prefabricated houses on an industrial scale. In 1945, Beekhuizen became a neighbourhood of Paramaribo. The Zorg en Hoop Airport is located in the Beekhuizen resort. The Jules Sedney Harbour, one of the two main cargo harbours of Suriname (the other being in Nieuw-Nickerie), is also located in the resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "beekhuizen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6607,
+    "attempt": 6560,
+    "place_id": "gn-8348441",
+    "input": {
+      "place": {
+        "place_id": "gn-8348441",
+        "name": "Beverly Hills",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.94799,
+        "lon": 151.07979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beverly Hills, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Beverly_Hills,_New_South_Wales",
+          "text": "Beverly Hills is a southern suburb of Sydney, in the state of New South Wales, Australia. Beverly Hills is located 15 kilometres southwest of the Sydney central business district and is part of the St George area and is split between the local government areas of the Georges River Council and the City of Canterbury-Bankstown. The postcode is 2209, which it shares with neighbouring Narwee.\nBeverly Hills is mostly residential, consisting of many freestanding red brick and tile bungalows built in the years immediately after World War II. Many of these feature late Art Deco design elements. Medium density flats have been built in the areas close to King Georges Road and Stoney Creek Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "beverly hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beverly",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

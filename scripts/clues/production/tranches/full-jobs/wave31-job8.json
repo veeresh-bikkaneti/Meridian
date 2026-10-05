@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 6185,
+    "attempt": 6141,
+    "place_id": "gn-1576304",
+    "input": {
+      "place": {
+        "place_id": "gn-1576304",
+        "name": "Lao Bảo",
+        "country": "Vietnam",
+        "subdivision": "Quang Tri",
+        "lat": 16.61406,
+        "lon": 106.60065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lao Bảo",
+          "url": "https://en.wikipedia.org/wiki/Lao_Bảo",
+          "text": "Lao Bảo is a commune and small town in Quảng Trị Province, Vietnam, located in the North Central Coast region, near the border with Laos. Its population is approximately 30,000.\nLao Bảo is the last Vietnamese town on National Route 9, which runs westwards from Dong Ha near the Vietnamese coast over the Annamite Range into Laos. The road was constructed  in 1930 by the French colonial administration to connect the towns along the Mekong River to the Vietnamese coast. As route AH16 in Asian Highway Network, the road continues further westwards through Laos and across the Mekong into Thailand. It is part of the East-West Economic Corridor that stretches 1,450 km, connecting four Mekong region countries: Vietnam, Laos, Thailand, and Myanmar.\nAs Lao Bảo is located in an advantaged area of commerce and border trade between Vietnam and Laos, this small town has opportunities to do business and exchange timber with Laos and Thailand for profit. Although it is a small town in the border area, it also provides several jobs for the people there. In comparison with the provincial capital of Đông Hà in standard of individual earnings, the earnings of inhabitants of Lao Bao are higher. In Lao Bảo the Sepon River (Vietnamese: Sông Xê-pôn) is the border line between Hướng Hóa and the Savan province of Laos. This river is only 1 meter in depth and its width is about 100 metres. Surrounding the river is a jungle with large, tall trees. Several commerce and trade initiatives with Laos and Thailand have been recently developed in Lao Bảo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "lao bao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6186,
+    "attempt": 6142,
+    "place_id": "gn-2065176",
+    "input": {
+      "place": {
+        "place_id": "gn-2065176",
+        "name": "Murray Bridge",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.11986,
+        "lon": 139.27345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murray Bridge, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Murray_Bridge,_South_Australia",
+          "text": "Murray Bridge (formerly Mobilong and Edwards Crossing; Ngarrindjeri: Pomberuk) is a city in the Australian state of South Australia, located 78 kilometres (48 mi) east-southeast of the state's capital city, Adelaide, and 77 kilometres (48 mi) north of the town of Meningie.\nThe city is called Pomberuk by the traditional owners of the land, the Ngarrindjeri people. It was later known as Mobilong and later as Edwards Crossing, before being renamed as Murray Bridge in 1924, deriving its name from the then Murray River road/rail bridge crossing over the Murray River. The city is situated on the Princes Highway, the main road transport link between Adelaide and Melbourne.\nThe city services a farming area including dairy, pigs, chickens, cereal crops and vegetables."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "murray bridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "murray",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6187,
+    "attempt": 6143,
+    "place_id": "gn-2152625",
+    "input": {
+      "place": {
+        "place_id": "gn-2152625",
+        "name": "Potts Point",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.86701,
+        "lon": 151.22586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potts Point",
+          "url": "https://en.wikipedia.org/wiki/Potts_Point",
+          "text": "Potts Point is a small and densely populated suburb in inner-city Sydney, New South Wales, Australia. Potts Point is located 2 kilometres (1.2 mi) east of the Sydney central business district and is part of the local government area of the City of Sydney.\nPotts Point sits on a ridge immediately east of Woolloomooloo, west of Elizabeth Bay and Rushcutters Bay and north of Darlinghurst. The suburb has a roughly trapezoidal shape, and at its greatest extent is no more than 1 kilometre (0.62 mi) long by 200 metres (660 ft) wide. The suburb's boundaries include Macleay Street to the east, Darlinghurst Road to the southeast, William Street to the south, Brougham Street and part of Cowper Wharf Roadway to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "potts point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "potts",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6188,
+    "attempt": 6144,
+    "place_id": "gn-2476409",
+    "input": {
+      "place": {
+        "place_id": "gn-2476409",
+        "name": "Timgad",
+        "country": "Algeria",
+        "subdivision": "Batna",
+        "lat": 35.49281,
+        "lon": 6.46999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Timgad",
+          "url": "https://en.wikipedia.org/wiki/Timgad",
+          "text": "Timgad or Thamugadi (colonia Marciana Traiana Thamugadi in latin, Arabic: تيمقاد, romanized: Tīmqād,) , nicknamed the «Pompeii of north africa» was a Roman city in the Aurès Mountains of Algeria. It was founded by the Roman Emperor Trajan around 100 CE. The full name of the city was Colonia Marciana Ulpia Traiana Thamugadi. Emperor Trajan named the city in commemoration of his mother Marcia, eldest sister Ulpia Marciana, and father Marcus Ulpius Traianus.\nTimgad is Located in modern-day Algeria, about 35 km (22 mi) east of the city of Batna.\nThe ruins are noteworthy for representing one of the best extant examples of the grid plan as used in Roman town planning.\nIn 1982, UNESCO inscribed Timgad as a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "timgad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6189,
+    "attempt": 6145,
+    "place_id": "gn-2522228",
+    "input": {
+      "place": {
+        "place_id": "gn-2522228",
+        "name": "Albatera",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.17902,
+        "lon": -0.87059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albatera",
+          "url": "https://en.wikipedia.org/wiki/Albatera",
+          "text": "Albatera (Spanish pronunciation: [alβaˈteɾa]) is a town and municipality located in the comarca of Vega Baja del Segura, in the province of Alicante, part of the Valencian Community, Spain. Albatera has an area of 66.5 km2 and, according to the 2005 census, a total population of 10,499 inhabitants. The economy of Albatera is mainly based on trade, confección costura (Clothing Manufacture) and agriculture. The most important monument in the city is the baroque Catholic church of Santiago Apóstol, built in 1727.\nIts name comes from the Arabic term “al-uatira”, which means, pathway or path. This toponim with the pass of the time was transformed to the current Latin origin word Albatera, changing completely its meaning to White (Alba) land (Terra) \"Tierra Blanca\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "albatera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6190,
+    "attempt": 6146,
+    "place_id": "gn-2555885",
+    "input": {
+      "place": {
+        "place_id": "gn-2555885",
+        "name": "Bni Drar",
+        "country": "Morocco",
+        "subdivision": "Oriental",
+        "lat": 34.86005,
+        "lon": -1.98979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bni Drar",
+          "url": "https://en.wikipedia.org/wiki/Bni_Drar",
+          "text": "Bni Drar or Ait Idrār (Berber: ⴰⵢⵜ ⵉⴷⵔⴰⵔ, which means Children of the mountains) is a municipality in the Oujda-Angad prefecture in Beni Snassen region in the Oriental Region of Morocco. In the country's 2004 census, Bni Drar's population was recorded as 8,919, making it the second largest settlement in the prefecture after the city of Oujda. In 1994 its population was 6663 and it is estimated in 2012 that its population is 11,083.\nIt lies on the N2 highway 20 km to the northwest of the regional capital, Oujda, and 17 km southeast of Ahfir. It is near the closed border with Algeria.\nThe town has a school and a lycée, a market, a hospital, a woman's club and a cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "bni drar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bni",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "drar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6191,
+    "attempt": 6147,
+    "place_id": "gn-2641616",
+    "input": {
+      "place": {
+        "place_id": "gn-2641616",
+        "name": "Newmarket",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.24467,
+        "lon": 0.40418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newmarket, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Newmarket,_Suffolk",
+          "text": "Newmarket is a market town and civil parish in the West Suffolk district of Suffolk, England. It lies 14 miles (22.5 km) west of Bury St Edmunds and the same distance north-east of Cambridge. The population in 2021 was 16,772.\nThe town is known as a centre for the breeding, training and racing of thoroughbred horses; it is home to two racecourses, about 70 training yards, some 3,000 horses, over 60 stud farms, two equine hospitals, the British Racing School, Tattersalls auction sales, the Jockey Club Rooms, the National Horseracing Museum and racing charities. The Rowley Mile racecourse hosts two British Classic Races. Between them, the two racecourses hold races on 39 days every year, more than any other town in Britain.\nNewmarket originated in the early 13th century, when the lord of the manor of Exning was granted a charter to hold a weekly market. During the Tudor period, it served the needs of travellers on the London to Norwich road with a number of inns and alehouses. The town has enjoyed royal patronage since the 17th century, when James I, Charles I and Charles II made Newmarket Palace their base for sporting activities. Until the late 19th century, Newmarket was divided down the middle of the High Street into two parishes: St Mary's in Suffolk to the north and All Saints in Cambridgeshire to the south. From 1889 to 1974, the town was part of the county of West Suffolk and, since 1974, has been part of the West Suffolk district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "newmarket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6192,
+    "attempt": 6148,
+    "place_id": "gn-2643096",
+    "input": {
+      "place": {
+        "place_id": "gn-2643096",
+        "name": "Mansfield Woodhouse",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.16495,
+        "lon": -1.19384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mansfield Woodhouse",
+          "url": "https://en.wikipedia.org/wiki/Mansfield_Woodhouse",
+          "text": "Mansfield Woodhouse is a town and civil parish in the Mansfield District of Nottinghamshire, England. It is about 1 mile (1.6 km) north of Mansfield, along the main A60 road in a wide, low valley between the Rivers Maun and Meden. Founded before the Roman Empire, it is noteworthy for its stone-built centre.\nOriginally separate with its own urban district council, after continuous development it has become a part of the Mansfield Urban Area. After the Local Government Act 1972, Mansfield Woodhouse and Warsop Urban District Councils merged with the Municipal Borough of Mansfield on 1 April 1974, to form a new local government area known as Mansfield. Mansfield Woodhouse's economy was traditionally based on the quarrying, mining, farming and textile industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "mansfield woodhouse",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mansfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woodhouse",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6193,
+    "attempt": 6149,
+    "place_id": "gn-2653239",
+    "input": {
+      "place": {
+        "place_id": "gn-2653239",
+        "name": "Chertsey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38812,
+        "lon": -0.50782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chertsey",
+          "url": "https://en.wikipedia.org/wiki/Chertsey",
+          "text": "Chertsey is a town in the Borough of Runnymede in Surrey, England, 18 miles (29 km) south-west of central London. It grew up around Chertsey Abbey, founded in AD 666 by St Erkenwald, and gained a market charter from Henry I. A bridge across the River Thames first appeared in the early 15th century.\nThe River Bourne through the town meets the Thames at Weybridge. The Anglican church has a medieval tower and chancel roof. The 18th-century listed buildings include the current stone Chertsey Bridge and Botleys Mansion. A curfew bell, rung at 8pm on weekdays from Michaelmas to Lady Day ties with the romantic local legend of Blanche Heriot, marked by a statue of her and the bell at Chertsey Bridge. Green areas include the Thames Path National Trail, Chertsey Meads and a round knoll (St Ann's Hill) with remains of a prehistoric hill fort known as Eldebury Hill. Pyrcroft House dates from the 18th century and Tara from the late 20th.\nTrain services are run between Chertsey railway station and London Waterloo by South Western Railway. The town is within the M25, accessible via junction 11. It has a population of 15,967."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "chertsey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6194,
+    "attempt": 6150,
+    "place_id": "gn-2656848",
+    "input": {
+      "place": {
+        "place_id": "gn-2656848",
+        "name": "Atherstone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.57536,
+        "lon": -1.54693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atherstone",
+          "url": "https://en.wikipedia.org/wiki/Atherstone",
+          "text": "Atherstone  is a market town and civil parish in the North Warwickshire district of Warwickshire, England. Located in the far north of the county, Atherstone is on the A5 national route, and is adjacent to the border with Leicestershire which is here formed by the River Anker. It is situated between the larger towns of Tamworth and Nuneaton. Atherstone is the administrative centre of the North Warwickshire district, with the offices of North Warwickshire Borough Council located in the town.\nAtherstone has a local tradition of holding an annual Shrove Tuesday Ball Game in the streets, which has been played annually for over 800 years since 1199.\nIn the 2021 census the population of the civil parish of Atherstone was at 9,212. The population of the larger built-up area which includes the adjoining village of Mancetter was 11,259."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "atherstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6195,
+    "attempt": 6151,
+    "place_id": "gn-2717517",
+    "input": {
+      "place": {
+        "place_id": "gn-2717517",
+        "name": "Djursholm",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.39926,
+        "lon": 18.05619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Djursholm",
+          "url": "https://en.wikipedia.org/wiki/Djursholm",
+          "text": "Djursholm (Swedish pronunciation: [jʉːʂˈhɔlm]) is one of four suburban districts in, and the seat of Danderyd Municipality, Stockholm County, Sweden. Djursholm is included in the multi-municipal Stockholm urban area. Djursholm is divided into a number of different areas: Djursholms Ekeby (northwest), Svalnäs (northeast), Ösby (central), Berga (southwest) and Gamla Djursholm ('Old Djursholm', southeast).\nSince the community was founded in 1889, Djursholm has largely been characterized by villa buildings on large plots of land. However, over the years, the older houses have been supplemented with both more modern villas and city center buildings as well as smaller areas with apartment buildings. Several areas in the community consist of buildings typical of their time, characterised by styles such as romantic nationalism, neoclassicism and functionalism.\nDjursholm, with approximately 9,300 inhabitants, is considered an exclusive residential area, with some of the country's most expensive addresses, and has been the residence of several notable representatives of Swedish finance and business, academia and cultural life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "djursholm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6196,
+    "attempt": 6152,
+    "place_id": "gn-2732978",
+    "input": {
+      "place": {
+        "place_id": "gn-2732978",
+        "name": "Valongo",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.18883,
+        "lon": -8.49857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valongo",
+          "url": "https://en.wikipedia.org/wiki/Valongo",
+          "text": "Valongo (Portuguese pronunciation: [vɐˈlõɡu] ) is a Portuguese city and municipality located in the District of Porto and 10 kilometres (6.2 mi) from Porto, in the northern region of Portugal.\nThe municipality area consists of 75.12 square kilometres (29.00 mi2) and 94,672 inhabitants in 2021, and it is subdivided into four parishes: Alfena, Campo e Sobrado, Ermesinde and Valongo. The municipality is limited to the north by the municipality of Santo Tirso, to the northeast by Paços de Ferreira, to the east by Paredes, to the southwest by Gondomar and to the west by Maia.\nIn 2022, Valongo was awarded the European Green Leaf title by the European Commission for its environmental efforts, including forest conservation, climate adaptation, and circular economy initiatives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "valongo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6197,
+    "attempt": 6153,
+    "place_id": "gn-2755281",
+    "input": {
+      "place": {
+        "place_id": "gn-2755281",
+        "name": "Groenlo",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.04167,
+        "lon": 6.61111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Groenlo",
+          "url": "https://en.wikipedia.org/wiki/Groenlo",
+          "text": "Groenlo (Dutch pronunciation: [ˈɣrunloː] ) is a city in the municipality of Oost Gelre, situated in the eastern part of the Netherlands, on the German border, within a region in the province of Gelderland called the Achterhoek (literally: \"back corner\"). Groenlo was a municipality until 1 January 2005, when it merged with Lichtenvoorde. Until 19 May 2006 Groenlo was the official name of Oost Gelre. As of 1 January 2006 Groenlo, including its hamlet Zwolle, counted a population of 10,067. Groenlo is known locally and historically as Grolle, Groll or Grol.\nToday, Groenlo is known primarily for its beer brewery Grolsch (literal meaning: \"from Grol\"), which was in business since 1615, but has been closed in 2004 when it moved to Boekelo. Grolsch produces many specialty beers (including beers for each season) and its beer is exported all over the world. Groenlo's military history is less well known today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "groenlo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6198,
+    "attempt": 6154,
+    "place_id": "gn-2755594",
+    "input": {
+      "place": {
+        "place_id": "gn-2755594",
+        "name": "Genemuiden",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.62333,
+        "lon": 6.04028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Genemuiden",
+          "url": "https://en.wikipedia.org/wiki/Genemuiden",
+          "text": "Genemuiden is a city located in the north western part of the Province of Overijssel. It received city rights in 1275, which is also the first time Genemuiden gets mentioned in history.\nIt stayed independent up until 2001 when, despite fierce opposition of its inhabitants, it was forced to merge with the smaller, neighbouring villages of Zwartsluis and Hasselt to form the municipality of Zwartewaterland.\n\nThe town itself doesn't have any buildings over 150 years old as two fires destroyed the town completely in 1866. These fires could not be controlled due to the great number of hay stacks in one street, 'de Achterweg' or 'Nachtweg'. This street still holds a non smoking sign, which is unique for a street in Europe.\nSince the 18th century, the people from Genemuiden have been producing floor mats made of the bulrush that grows on the shores of the Zuiderzee. When the quality of the bulrush deteriorated in the 20th century, due to the change from salt water to fresh water (see Zuiderzee), the industry switched over to using coir imported from India to produce mats and carpets. In the sixties the first tufting machines were imported and currently Genemuiden is one of Europe's main production centres of tufted carpet and artificial grass.\nGenemuiden is a Protestant stronghold, having five Reformed Protestant denominations and no Roman Catholic church. It's on the north-eastern tip of the so-called Dutch Bible Belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "genemuiden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6199,
+    "attempt": 6155,
+    "place_id": "gn-2918612",
+    "input": {
+      "place": {
+        "place_id": "gn-2918612",
+        "name": "Gottmadingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.73511,
+        "lon": 8.77687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gottmadingen",
+          "url": "https://en.wikipedia.org/wiki/Gottmadingen",
+          "text": "Gottmadingen is a municipality in the district of Konstanz, in Baden-Württemberg, Germany, situated on the Swiss border, 5 km southwest of Singen, and 12 km east of Schaffhausen.\nA first mention of Gottmadingen was in 965. Until the construction of the Singen - Schaffhausen railway line it was a tiny village. Of historical interest is that on 9 April 1917, Vladimir Lenin accompanied by his wife and close friends, took a train from the Switzerland village of Schaffhausen and arrived in Gottmadingen. The German government had agreed to provide him with transportation to Russia. The German government hoped that with his arrival in Russia at this time would greatly aid Russias withdrawal from the war \nEconomic growth began in the 20th century. Due to the high demand for workers in the new factories the number of inhabitants grew rapidly.\nGottmadingen's industry was mainly based on the production of agricultural machinery. In the years 1960s and 1970s more than 4,000 workers were employed in the \"Fahr\" factory for agricultural engines. The factory was closed in 2003. Today's economy is based on several companies that settled on the former \"Fahr\" factory area. Another notable industry in the town consisted of the local \"Bilger\" brewery, established in 1821. The brewery served as a staple of the area until its acquisition by Fürstenberg in 1968.\nThe municipal area of Gottmadingen comprises also the outlying villages of Bietingen, Ebringen and Randegg, as well as the hamlet Murbach. Both Bietingen and Gottmadingen itself have railway stations and benefit from rail connections to Schaffhausen and Singen. The village Randegg and the hamlet Murbach are served by buses from Switzerland with a connection to the Swiss villages Ramsen and Dörflingen as well as the city of Schaffhausen. The route also passes through the German exclave of Büsingen am Hochrhein and its outlying village Stemmer, crossing the international border four times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "gottmadingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6200,
+    "attempt": 6156,
+    "place_id": "gn-2946821",
+    "input": {
+      "place": {
+        "place_id": "gn-2946821",
+        "name": "Boizenburg",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.38081,
+        "lon": 10.73758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boizenburg",
+          "url": "https://en.wikipedia.org/wiki/Boizenburg",
+          "text": "Boizenburg (German pronunciation: [ˈbɔʏtsn̩ˌbʊʁk] ) is a town in the Ludwigslust-Parchim district in Mecklenburg-Vorpommern, Germany. It is situated on the right bank of the Elbe, 53 kilometres (33 mi) west of Ludwigslust, 25 km (16 mi) northeast of Lüneburg and 50 km (31 mi) east of Hamburg. It is, via its district, a part of the Hamburg Metropolitan Region. Boizenburg's historical old town is located on the Boize, a tributary of the Elbe to which the town is connected by a harbour. With a well preserved old town, Boizenburg offers heritage baroque timberframe and brick architecture.\nDuring the Cold War, Boizenburg was part of East Germany, being located only about 7 km (4.3 mi) east of the Inner German Border (Iron Curtain)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "boizenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6201,
+    "attempt": 6157,
+    "place_id": "gn-2961086",
+    "input": {
+      "place": {
+        "place_id": "gn-2961086",
+        "name": "Tullamore",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.27389,
+        "lon": -7.48889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tullamore",
+          "url": "https://en.wikipedia.org/wiki/Tullamore",
+          "text": "Tullamore (; Irish: Tulach Mhór, meaning 'great mound') is the county town of County Offaly in Ireland. It is on the Grand Canal, in the middle of the county, and is the fourth most populous town in the Midlands Region, with 15,598 inhabitants at the 2022 census.\nThe town retained Gold Medal status in the National Tidy Town Awards in 2015 and also played host to the World Sheep Dog Trials in 2005, which attracted international interest in the region. The Tullamore Show is held near the town every year. The town's most famous export is Tullamore Dew – an Irish whiskey distilled by Tullamore Distillery – that can be traced back to 1829. The original distillery was shut down in 1954. The brand was later resurrected, but at first was produced at the Midleton Distillery in County Cork. However, in 2014, the brand's new owners, William Grant & Sons, invested in a new distillery near Tullamore, bringing whiskey production back to the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "tullamore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6202,
+    "attempt": 6158,
+    "place_id": "gn-2973748",
+    "input": {
+      "place": {
+        "place_id": "gn-2973748",
+        "name": "Sucé-sur-Erdre",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.33333,
+        "lon": -1.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sucé-sur-Erdre",
+          "url": "https://en.wikipedia.org/wiki/Sucé-sur-Erdre",
+          "text": "Sucé-sur-Erdre (French pronunciation: [syse syʁ ɛʁdʁ] , literally Sucé on Erdre; Breton: Sulieg) is a commune in the Loire-Atlantique department in western France.\nIts name comes from the Latin sulcus, meaning \"furrow\", and the Celtic erdam, meaning \"small river\".\nSucé-sur-Erdre, as its name indicates, is located on the river Erdre, which at this point is near its confluence with the Loire. The town was fairly small (2,000 or so) for quite some time until it began to be absorbed into the greater suburbia of Nantes. As of 2023, it has about 7,500 inhabitants, a significant portion of which commute to Nantes. In general, the area is middle-class with a good portion of upper-middle class and upper-class homes, especially on the river banks.\nSucé-sur-Erdre is relatively well known in the area for its scenic river landscapes, and its many water sports opportunities, including fishing, sailing, windsurfing in Mazerolles (Funboard44), kayaking, and water skiing. It has essentially no industry, the main employer is a large convalescence home. There are many shops (butcher, baker, etc...) and one small supermarket.\nSucé-sur-Erdre has had few encounters with history, its greatest claim to fame being that the famous philosopher René Descartes spent some time there (although this is not very well documented). It has a few old houses, but the church is modern (late nineteenth century. There are many picturesque farm houses in the area, although they are disappearing quickly due to the accelerated modernization brought by the expansion of Nantes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "suce sur erdre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "suce",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "erdre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6203,
+    "attempt": 6159,
+    "place_id": "gn-2976656",
+    "input": {
+      "place": {
+        "place_id": "gn-2976656",
+        "name": "Saint-Victoret",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.41957,
+        "lon": 5.23396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Victoret",
+          "url": "https://en.wikipedia.org/wiki/Saint-Victoret",
+          "text": "Saint-Victoret (French pronunciation: [sɛ̃ viktɔʁɛ]; Occitan: Sant Victoret) is a commune in the Bouches-du-Rhône department in the Provence-Alpes-Côte d'Azur region in southern France. It is located northwest of Marseille.\nSaint-Victoret is a small market town situated just next to Marignane, not far from the airport and just a few kilometres from the eastern shore of the Étang de Berre.\nIf you take the secondary road D20 to Saint-Victoret, you first pass through the hamlet of Pas-des-Lanciers. Here you will find a small, lively district with a few shops and an SNCF railway station for the transport of goods and freight to the airport. In the roads parallel to the D20 there are some pretty little villas which were built before the airport.\nTwo kilometres beyond Pas-des-Lanciers you will come to the centre of Saint Victoret. With its new housing blocks, roundabouts planted with flowers, a media library and a cultural centre, the heart of the village is well laid out and pleasantly floral. You may feel as though you have arrived in the new village of Saint Victoret, since everything looks so recent. Nevertheless, the village makes the most of what historic heritage there is, with several chapels, churches and pretty fountains.\nThe history and life of Saint-Victoret are closely linked with the activities of the airport in every respect. There is one Saint-Victoret before the airport and another after the airport ... the proximity of the airport has enormous repercussions for the village. First and foremost is obviously the incessant noise of aeroplanes landing at the airport. How bearable the noise is depends on which district of Saint-Victoret you are in (some districts lie directly beneath the flight path to the landing strip).\nIn terms of employment, real estate and, above all, the revival of the local economy, the airport has certainly had a very real impact on Saint-Victoret... both in a positive and a negative sense."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "saint victoret",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "victoret",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6204,
+    "attempt": 6160,
+    "place_id": "gn-3058897",
+    "input": {
+      "place": {
+        "place_id": "gn-3058897",
+        "name": "Malacky",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.43604,
+        "lon": 17.02188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malacky",
+          "url": "https://en.wikipedia.org/wiki/Malacky",
+          "text": "Malacky (; German: Malatzka, Hungarian: Malacka) is a town and municipality in western Slovakia around 35 kilometres (22 miles) north of Slovakia's capital, Bratislava. From the second half of the 10th century until 1918, it was part of the Kingdom of Hungary.\nIt is one of the key cities of the region \"Záhorie\", between the Little Carpathians in the east and Morava River in the west, and a cultural and economic hub for nearby villages such as Gajary, Kostolište, Veľké Leváre, and Jakubov. The town is located on the large Prague–Brno–Bratislava highway, and many residents commute daily to Bratislava. The Little Carpathians mountain range provides excellent opportunities for recreational activities like hiking or mountain biking, with its wide array of signposted trails."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "malacky",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

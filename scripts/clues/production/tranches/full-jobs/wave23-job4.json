@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4496,
+    "attempt": 4461,
+    "place_id": "gn-2645733",
+    "input": {
+      "place": {
+        "place_id": "gn-2645733",
+        "name": "Keynsham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41387,
+        "lon": -2.4978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keynsham",
+          "url": "https://en.wikipedia.org/wiki/Keynsham",
+          "text": "Keynsham ( KAYN-shəm) is a town and civil parish in the Bath and North East Somerset district of Somerset, England. It lies close to the south-eastern outskirts of the city of Bristol, on the A4 road that links Bristol and Bath. At the 2021 census the parish had a population of 19,596 and the built-up area had a population of 19,255. It was listed in the Domesday Book as Cainesham (as it is pronounced), which is believed to mean the home of Saint Keyne.\nThe site of the town has been occupied since prehistoric times, and may have been the site of the Roman settlement of Trajectus. The remains of at least two  Roman villas have been excavated, and an additional 15 Roman buildings have been detected beneath the Keynsham Hams. Keynsham developed into a medieval market town after Keynsham Abbey was founded around 1170. It is situated at the confluence of the River Chew and River Avon and was subject to serious flooding before the creation of Chew Valley Lake and river level controls at Keynsham Lock in 1727. The Chew Stoke flood of 1968 inundated large parts of the town. It was home to the Cadbury's chocolate factory, Somerdale, which opened in 1935 as a major employer in the town.\nIt is home to Memorial Park, which is used for the annual town festival and several nature reserves. The park is also the centre of the annual chicken race, held every October. The town is served by Keynsham railway station on the London-Bristol and Bristol-Southampton trunk routes and is close to the A4 road which bypassed the town in 1964. There are schools, religious, sporting, and cultural clubs and venues."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "keynsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4497,
+    "attempt": 4462,
+    "place_id": "gn-2751385",
+    "input": {
+      "place": {
+        "place_id": "gn-2751385",
+        "name": "Lunteren",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.085,
+        "lon": 5.62222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lunteren",
+          "url": "https://en.wikipedia.org/wiki/Lunteren",
+          "text": "Lunteren is a town in Gelderland, the Netherlands. It has a railway station on the line between Amersfoort and Ede.\nIt is well known for three conference centres in the vicinity, including Het Bosgoed, which mostly hosts academic conferences and De Werelt Congress Hotel.\nIt is also famous because the Geographical Center of the Netherlands is located northeast of the village, and because the National Socialist Movement in the Netherlands (\"NSB\") held their annual Hagespraken (propagandistic open-air meetings) there between 1936 and 1940. In 1938, the NSB built what is known as the Muur van Mussert (\"wall of Mussert\") there, which was planned as the first step in a large conglomeration of buildings and monuments for the party.\nLunteren was a separate municipality until 1818, when it was merged with Ede."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "lunteren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4498,
+    "attempt": 4463,
+    "place_id": "gn-2977390",
+    "input": {
+      "place": {
+        "place_id": "gn-2977390",
+        "name": "Saint-Pol-de-Léon",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.68494,
+        "lon": -3.98764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Pol-de-Léon",
+          "url": "https://en.wikipedia.org/wiki/Saint-Pol-de-L%C3%A9on",
+          "text": "Saint-Pol-de-Léon (French pronunciation: [sɛ̃ pɔl də leɔ̃]; Breton: Kastell-Paol) is a commune in the Finistère department in Brittany in north-western France, located on the coast.\nIt is noted for its 13th-century cathedral on the site of the original founded by Saint Paul Aurelian in the 6th century. It has kept a unique architecture, such as Notre-Dame du Kreisker Chapel, an 80 m high chapel, which is the highest in Brittany. It was also the scene of a battle during the Breton War of Succession, where the Montfortists and their English allies defeated an army led by Charles of Blois.\nIt is the largest vegetable producer and farmers market in Brittany responsible for 90% of French artichoke production and exports tens of thousands of vegetables to the whole of Europe every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "saint pol de leon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pol",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4499,
+    "attempt": 4464,
+    "place_id": "gn-302903",
+    "input": {
+      "place": {
+        "place_id": "gn-302903",
+        "name": "Pamukkale",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 37.91644,
+        "lon": 29.11729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pamukkale",
+          "url": "https://en.wikipedia.org/wiki/Pamukkale",
+          "text": "Pamukkale, (Turkish pronunciation: [pa.mukˈka.le]) meaning \"cotton castle\" in Turkish, is a natural site in Denizli Province in southwestern Turkey. The area is famous for a carbonate mineral left by the flowing of thermal spring water. It is located in Turkey's Inner Aegean region, in the River Menderes valley, which has a temperate climate for most of the year.\nThe ancient Greek city of Hierapolis was built on top of the travertine formation which is in total about 2,700 metres (8,860 ft) long, 600 m (1,970 ft) wide and 160 m (525 ft) high. It can be seen from the hills on the opposite side of the valley in the town of Denizli, 20 km away. This area has been drawing visitors to its thermal springs since the time of classical antiquity. The Turkish name refers to the surface of the shimmering, snow-white limestone, shaped over millennia by calcite-rich springs. Dripping slowly down the mountainside, mineral-rich waters collect in and cascade down the mineral terraces, into pools below.\nIt was added as a UNESCO World Heritage Site in 1988 along with Hierapolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "pamukkale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4500,
+    "attempt": 4465,
+    "place_id": "gn-3200837",
+    "input": {
+      "place": {
+        "place_id": "gn-3200837",
+        "name": "Foča",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Srpska",
+        "lat": 43.50646,
+        "lon": 18.77854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foča",
+          "url": "https://en.wikipedia.org/wiki/Fo%C4%8Da",
+          "text": "Foča (Serbian Cyrillic: Фоча, pronounced [fôtʃa]) is a town and municipality in Republika Srpska, Bosnia and Herzegovina, located in the southeast on the banks of Drina river. As of 2013, the town has a population of 12,234 inhabitants, while the municipality has 18,288 inhabitants.\nFoča houses some faculties (including the Medical and Orthodox Theological Faculty of Saint Basil of Ostrog) from the Istočno Sarajevo University. It is also home to the \"Seminary of Saint Peter of Sarajevo and Dabar-Bosna\", one of seven seminaries in the Serbian Orthodox Church. \nFoča was, before the ethnic cleansing in 1992-1994, home to one of Bosnia's most important Islamic high schools, the Madrasa of Mehmed Pasha Kukavica. The Sutjeska National Park, which is the oldest National Park in Bosnia and Herzegovina, is located in the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "foca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4501,
+    "attempt": 4466,
+    "place_id": "gn-3865449",
+    "input": {
+      "place": {
+        "place_id": "gn-3865449",
+        "name": "Armstrong",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.78487,
+        "lon": -61.60321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armstrong, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Armstrong,_Argentina",
+          "text": "Armstrong is a city in the southwest of the province of Santa Fe, Argentina. It has 11,181 inhabitants as per the 2010 census [INDEC]. It is located 214 km (133 mi) from the provincial capital Santa Fe, 80 km (50 mi) west of Rosario and 20 km (12 mi) from Cañada de Gómez, on National Route 9 near the intersection with National Route 178.\nThe economy of the area is based on agriculture, but Armstrong, together with nearby Las Parejas, has also become an industrial center focused on the manufacturing of agricultural machinery for local use and export. These two cities together are home to 20% of Argentina's productive establishment of said industry.\nArmstrong hosts an annual agro-industrial fair, Feriagro, which gathers exhibitors and visitors from the whole country and abroad. The agro-machinery industry has boomed since the turn of the 21st century, as the Argentine economy recovers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "armstrong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4502,
+    "attempt": 4467,
+    "place_id": "gn-4459343",
+    "input": {
+      "place": {
+        "place_id": "gn-4459343",
+        "name": "Carrboro",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.91014,
+        "lon": -79.07529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carrboro, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Carrboro,_North_Carolina",
+          "text": "Carrboro is a town in Orange County in the U.S. state of North Carolina. The population was 21,295 at the 2020 census. The town, which is part of the Raleigh-Durham-Chapel Hill combined statistical area, was named after North Carolina industrialist Julian S. Carr.\nLocated directly west of Chapel Hill, home of the University of North Carolina's flagship campus, Carrboro has a reputation as one of the most progressive communities in the Southeastern United States. It was the first municipality in North Carolina to elect an openly gay mayor (Michael R. Nelson in 1995) and the first municipality in the state to grant domestic-partner benefits to same-sex couples. In October 2002, Carrboro was among the first municipalities in the South to adopt resolutions opposing the Iraq War and the USA PATRIOT Act."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "carrboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4503,
+    "attempt": 4468,
+    "place_id": "gn-4503665",
+    "input": {
+      "place": {
+        "place_id": "gn-4503665",
+        "name": "Pomona",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.47845,
+        "lon": -74.57516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pomona, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Pomona,_New_Jersey",
+          "text": "Pomona is an unincorporated community and census-designated place (CDP) located within Galloway Township, in Atlantic County, in the U.S. state of New Jersey. As of the 2020 census, Pomona had a population of 7,416. The area is served as United States Postal Service ZIP Code 08240.\nLocally, the name \"Pomona\" is loosely used also to refer to areas adjacent to Pomona proper, including adjoining portions of Hamilton Township and Egg Harbor Township in the vicinity of the Atlantic City International Airport.\nPomona was often described as the home to Stockton University, since the mailing address for the college was a post-office box located in the Pomona Post Office. In 2011, the university changed its mailing address to its main campus (using the street Vera King Farris Drive, Galloway Township, New Jersey)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "pomona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4504,
+    "attempt": 4469,
+    "place_id": "gn-4720131",
+    "input": {
+      "place": {
+        "place_id": "gn-4720131",
+        "name": "Portland",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 27.87725,
+        "lon": -97.32388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portland, Texas",
+          "url": "https://en.wikipedia.org/wiki/Portland,_Texas",
+          "text": "Portland is a city primarily located in San Patricio County with some portions extending into Nueces County, in the U.S. state of Texas. It is located along the north shore of Corpus Christi Bay and Nueces Bay, across from Corpus Christi, in the Coastal Bend region. Portland was established in 1890 as a port and agricultural community by land developer John G. Willacy, who saw the city's high bluff and bays as an opportunity. The early settlement of the area progressed slowly until the establishment of transportation routes and developing industries, primarily in Corpus Christi, stimulated Portland's growth. Portland was officially incorporated in 1949.\nThroughout the twentieth century, Portland grew from a small farming settlement into a well-established suburb closely tied to the surrounding industrial and economic development of Corpus Christi. Specifically, its location along the bay provided both scenic and commercial assistance to new residents and businesses. By the early twenty-first century, Portland was marked by residential neighborhoods, waterfront parks for recreation, and the proximity of industrial development in the area, which included the Port of Corpus Christi and petrochemical industrial plants across the bay.\nIn the 2020 census in the United States, Portland had a population of 20,383. The City of Portland has conducted more ongoing estimates that currently put the population at about 20,956 (as of 2025), a continued growth trend in the area. Today, Portland maintains a blend of suburban character, coastal natural areas, and economic integration with the greater Corpus Christi metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "portland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4505,
+    "attempt": 4470,
+    "place_id": "gn-4943490",
+    "input": {
+      "place": {
+        "place_id": "gn-4943490",
+        "name": "Maynard",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.43343,
+        "lon": -71.44951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maynard, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Maynard,_Massachusetts",
+          "text": "Maynard is a town in Middlesex County, Massachusetts, United States. The town is located 22 miles west of Boston, in the MetroWest and Greater Boston region of Massachusetts and borders Acton, Concord, Stow and Sudbury. The town's population was 10,746 as of the 2020 United States Census.\nMaynard is located on the Assabet River, a tributary of the Concord River. A large part of the Assabet River National Wildlife Refuge is located within the town, and the Assabet River Rail Trail connects the Refuge and downtown Maynard to the South Acton commuter rail station. Historic downtown Maynard is home to many shops, restaurants, galleries, a movie theater, and the former Assabet Woolen Mill, which produced wool fabrics from 1846 to 1950, including cloth for Union Army uniforms during the Civil War. Maynard was the headquarters location for Digital Equipment Corporation from 1957 to 1998. Owners of the former mill complex currently lease space to office and light-industry businesses.\nThe town temporarily changed its name to Mayenard in honor of Drake Maye and the New England Patriots participating in Super Bowl LX, on February 8, 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "maynard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4506,
+    "attempt": 4471,
+    "place_id": "gn-4984029",
+    "input": {
+      "place": {
+        "place_id": "gn-4984029",
+        "name": "Allendale",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.97225,
+        "lon": -85.95365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allendale, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Allendale,_Michigan",
+          "text": "Allendale is a census-designated place (CDP) in Ottawa County in the U.S. state of Michigan.  The population was 27,073 at the 2020 census.  It is located within Allendale Charter Township, occupying approximately the northern two-thirds of the township, from the eastern boundary with the Grand River west along Pierce St., north along 75th Ave., then west along Lake Michigan Drive (M-45) to the western boundary of the township. It is a part of the Grand Rapids-Muskegon-Holland, Michigan combined statistical area, and is an exurb of Grand Rapids, due to its major commuter routes into the city (M-45 and I-96).\nThe CDP's ZIP code 49401 serves most of the township, as well as portions of Blendon Township to the south and Georgetown Township to the southeast.\nAllendale is named for the township. The township was organized in 1849, state senator Pennoyer changed the name to Allendale, after Agnes Allen, the first person on the tax roll in the area and the widow of Hannibal Allen, who was the son of Revolutionary War hero Ethan Allen.\nAllendale is home to the main campus of Grand Valley State University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "allendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4507,
+    "attempt": 4472,
+    "place_id": "gn-5125125",
+    "input": {
+      "place": {
+        "place_id": "gn-5125125",
+        "name": "Long Island City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74482,
+        "lon": -73.94875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Island City",
+          "url": "https://en.wikipedia.org/wiki/Long_Island_City",
+          "text": "Long Island City (LIC) is a neighborhood within the New York City borough of Queens. It is bordered by Astoria to the north; the East River to the west; Sunnyside to the east; and Newtown Creek, which separates Queens from Greenpoint, Brooklyn, to the south.  Its name refers to its location on the western tip of Long Island.\nIncorporated as a city in 1870, Long Island City was originally the seat of government of the Town of Newtown, before becoming part of the City of Greater New York in 1898.  In the early 21st century, Long Island City became known for its rapid and ongoing residential growth and gentrification, its waterfront parks, and its thriving arts community. The area has a high concentration of art galleries, art institutions, and studio space. Long Island City is the eastern terminus of the Queensboro Bridge, the only non-tolled automotive route connecting Queens and Manhattan. Northeast of the bridge are the Queensbridge Houses, a development of the New York City Housing Authority and the largest public housing complex in the Western Hemisphere.\nLong Island City is part of Queens Community District 1 to the north and Queens Community District 2 to the south. It is patrolled by the New York City Police Department's 108th Precinct. Politically, Long Island City is represented by the New York City Council's 26th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "long island city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4508,
+    "attempt": 4473,
+    "place_id": "gn-5196220",
+    "input": {
+      "place": {
+        "place_id": "gn-5196220",
+        "name": "King of Prussia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.08927,
+        "lon": -75.39602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "King of Prussia, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/King_of_Prussia,_Pennsylvania",
+          "text": "King of Prussia, sometimes abbreviated to K.O.P., is a census-designated place in Upper Merion Township in Montgomery County, Pennsylvania, United States. The community took its unusual name in the 18th century from a local tavern named the King of Prussia Inn, which was named after King Frederick the Great of Prussia. As of the 2020 census, its population was 24,695.\nLocated 35 miles (56 km) south of Allentown and approximately 15 miles (24 km) northwest of Philadelphia, King of Prussia is considered to be an edge city of Philadelphia and part of the larger Philadelphia metropolitan area. It is situated at the convergence of four highways and consists of large amounts of retail and office space, with one of the highest concentrations of hotels, businesses, residences, and entertainment venues in Pennsylvania.\nKing of Prussia is best known for its mall of the same name, the fourth-largest shopping mall in the U.S. It also hosts the headquarters of the Nuclear Regulatory Commission Region I and American Baptist Churches USA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "king of prussia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "king",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prussia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4509,
+    "attempt": 4474,
+    "place_id": "gn-5959878",
+    "input": {
+      "place": {
+        "place_id": "gn-5959878",
+        "name": "Gaspé",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.83341,
+        "lon": -64.48194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaspé, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Gasp%C3%A9,_Quebec",
+          "text": "Gaspé (French pronunciation: [ɡaspe]) is a city at the tip of the Gaspé Peninsula in the Gaspésie–Îles-de-la-Madeleine region of eastern Quebec in Canada. Gaspé is about 650 km (400 mi) northeast of Quebec City and 350 km (220 mi) east of Rimouski. Gaspé has a total population of 15,063, as of the 2021 Canadian Census.\nGaspé is where Jacques Cartier took possession of New France (now part of Canada) in the name of François I of France on July 24, 1534. The first French settlement on the Gaspé Peninsula was established in 1672 by Pierre Denys de La Ronde on land that formed part of a seigneury owned by his uncle, Nicolas Denys.\nThe most common assumption is that \"Gaspé\" may come from the Miꞌkmaq word Gespeg which means \"Land's end\". Other theories hold that the name may be a mutation of the Basque word geizpe or kerizpe which means \"shelter\" or \"place of refuge\". Another theory is that it is named after Portuguese explorer Gaspar Corte-Real, who explored Labrador in 1500.\nIn 1600, Englishman Richard Hakluyt used the name Gaspay in his translation of Cosmosgraphie by Jean Alfonse, which became the common spelling in the early 17th century. Thereafter, many other spellings appeared, such as Gachepé, Gachepay, Gaschepay, Gaspey, Gaspèche, and Gapèche."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "gaspe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4510,
+    "attempt": 4475,
+    "place_id": "gn-760680",
+    "input": {
+      "place": {
+        "place_id": "gn-760680",
+        "name": "Radzyń Podlaski",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.78333,
+        "lon": 22.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radzyń Podlaski",
+          "url": "https://en.wikipedia.org/wiki/Radzy%C5%84_Podlaski",
+          "text": "Radzyń Podlaski pronounced [ˈrad͡zɨɲ pɔdˈlaskʲi] is a town in eastern Poland, about 60 km (37 mi) north of Lublin, with 15,808 inhabitants (2017). The town has been part of the Lublin Voivodeship since 1999, previously it was part of the Biała Podlaska Voivodeship (1975–1998). It is the capital of Radzyń County, and historically belongs to the region of Lesser Poland (despite the adjective Podlaski, which suggests that it is part of another Polish province, Podlaskie). The town was founded in 1468, and its most important landmark is the rococo Potocki Palace.\nRadzyń lies on the Białka River within the South Podlasie Lowland, at a height of 150 metres (490 ft) above sea level. The town has an area of 20.29 square kilometres (7.83 sq mi), of which forests make only 5%. It is located along the Expressway S19, which passes through Białystok, Lublin and Rzeszów."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "radzyn podlaski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "radzyn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "podlaski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4511,
+    "attempt": 4476,
+    "place_id": "gn-8349173",
+    "input": {
+      "place": {
+        "place_id": "gn-8349173",
+        "name": "Dunlop",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.19402,
+        "lon": 149.01984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunlop, Australian Capital Territory",
+          "url": "https://en.wikipedia.org/wiki/Dunlop,_Australian_Capital_Territory",
+          "text": "Dunlop is a suburb of the Belconnen district of Canberra, located within the Australian Capital Territory, Australia. Dunlop is at the far north-west edge of Canberra, near the border with the state of New South Wales. Approximately 11.6 kilometres (7.2 mi) north-west of the city, Dunlop is next to the suburbs of Fraser, Charnwood and Macgregor. At the edge and within Dunlop lies the Canberra Nature Park called Dunlop Grasslands Nature Reserve, West Belconnen Ponds, Jarramlee Pond and Fassifern Pond which are part of the Ginninderra Catchment.\nDunlop is named after Lieutenant Colonel Sir Ernest Edward \"Hammer\" Dunlop, an Australian surgeon who was renowned for his leadership while being held prisoner of war by the Japanese during the Second World War. Streets in Dunlop are named after inventors, inventions and artists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "dunlop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4512,
+    "attempt": 4477,
+    "place_id": "gn-1735274",
+    "input": {
+      "place": {
+        "place_id": "gn-1735274",
+        "name": "Kampar",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.3,
+        "lon": 101.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kampar, Perak",
+          "url": "https://en.wikipedia.org/wiki/Kampar,_Perak",
+          "text": "Kampar (Perak Malay: Kampo) is a town located in the state of Perak, Malaysia, and serves as the administrative centre of Kampar District in Perak. Founded in 1887, the town lies within the Kinta Valley, an area rich in tin reserves. It was a tin mining town which boomed during the height of the tin mining industry. Many tin towns were established in the late 19th century, flourished in the 1900s, only to stagnate and decline after World War I, with the exception of an exhilarating boom in the 1920s. Most have closed down following the collapse of the industry, especially in the late 20th century.\nKampar is 33 km south of the state capital Ipoh, well connected by both Federal Route 1 and the KTM West Coast railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "kampar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4513,
+    "attempt": 4478,
+    "place_id": "gn-2147139",
+    "input": {
+      "place": {
+        "place_id": "gn-2147139",
+        "name": "Templestowe Lower",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.76667,
+        "lon": 145.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Templestowe Lower",
+          "url": "https://en.wikipedia.org/wiki/Templestowe_Lower",
+          "text": "Templestowe Lower is a suburb of Melbourne, Victoria, Australia, 14 km northeast of Melbourne's Central Business District, located within the City of Manningham local government area. Templestowe Lower recorded a population of 14,098 at the 2021 census.\nIts name reflects the fact that Lower Templestowe is situated on the Yarra River, but downstream from the neighbouring suburb of Templestowe. It is bounded in the west by Rose Avenue, Russell Street and Sheahans Road, in the north by the Yarra River, in the east by Ruffey Creek and Williamsons Road and in the south generally by Manningham Road.\nIt is home to primary schools and a secondary school; Templestowe Secondary College. Like neighbouring Templestowe, it is poorly serviced by public transportation, lying geographically between three existing rail lines (Hurstbridge and Lilydale/Belgrave). An excellent and frequent bus service exists, running from Lower Templestowe into the city or to the nearest train lines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "templestowe lower",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "templestowe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lower",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4514,
+    "attempt": 4479,
+    "place_id": "gn-2156825",
+    "input": {
+      "place": {
+        "place_id": "gn-2156825",
+        "name": "Morwell",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.23476,
+        "lon": 146.39499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morwell",
+          "url": "https://en.wikipedia.org/wiki/Morwell",
+          "text": "Morwell is a town in the Latrobe Valley area of Gippsland, in South-Eastern Victoria, Australia approximately 152 km (94 mi) east of Melbourne.\nMorwell has a population of 14,389 people at the 2021 census.\nIt is both the capital and administrative centre for the City of Latrobe and the city's second most populous town after the neighbouring Traralgon. Morwell is located in the centre of the Latrobe Valley urban area, which has a population of 77,168 at the 2021 Census and is home to many of the greater urban area's civic institutions, administrative functions and infrastructure.\nMorwell's centenary rose garden located in the central business district, won an award in 2009 for being a 'garden of excellence'. Since 2018, the town has hosted the International Rose Garden Festival Morwell (IRGFM)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "morwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4515,
+    "attempt": 4480,
+    "place_id": "gn-2189016",
+    "input": {
+      "place": {
+        "place_id": "gn-2189016",
+        "name": "Katikati",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -37.55,
+        "lon": 175.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katikati",
+          "url": "https://en.wikipedia.org/wiki/Katikati",
+          "text": "Katikati is a town in New Zealand's North Island, located on the Uretara Stream near a tidal inlet towards the northern end of Tauranga Harbour, 28 kilometres south of Waihi and 40 kilometres northwest of Tauranga. State Highway 2 passes through the town. A bypass scheduled to have begun construction in 2008 was put on hold, and is no longer planned.\nKatikati has become known for its many murals painted on walls of commercial buildings. These were started in the 1990s to regenerate tourist interest in the town and district, and led to the town being recognised New Zealand's 'Most Beautiful Small Town' award for towns of less than 8,000 population in 2005 by the Keep New Zealand Beautiful Society.\nIn 2018, Katikati was named \"Avocado Capital of New Zealand.  Besides its avocado orchards, there are many kiwifruit orchards around Katikati.\nThere are hot springs three kilometres to the south of Katikati at Sapphire Springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "katikati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

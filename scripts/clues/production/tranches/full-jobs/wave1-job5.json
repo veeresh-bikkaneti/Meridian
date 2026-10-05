@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 83,
+    "attempt": 81,
+    "place_id": "gn-1234569",
+    "input": {
+      "place": {
+        "place_id": "gn-1234569",
+        "name": "Dehiwala-Mount Lavinia",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.84019,
+        "lon": 79.87116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dehiwala-Mount Lavinia",
+          "url": "https://en.wikipedia.org/wiki/Dehiwala-Mount_Lavinia",
+          "text": "Dehiwala-Mount Lavinia (Sinhala: දෙහිවල-ගල්කිස්ස, romanized: Dehivala-Galkissa; Tamil: தெஹிவளை-கல்கிசை, romanized: Tehivaḷai-Kalkicai), population 245,974 (2012), is a large municipality in Sri Lanka, covering 2,109 ha (5,210 acres). It lies south of the Colombo Municipal Council area and is separated from it by the Dehiwala canal which forms the northern boundary of DMMC. Its southern limits lie in Borupana Road and the eastern boundary is Weras Ganga with its canal system and it includes some areas to its east (Pepiliyana, Gangodawila and Kohuwala). This town has experienced extensive population growth and rapid industrialisation and urbanisation in recent years. It is home to Sri Lanka's National Zoological Gardens, which remains one of Asia's largest. Colombo South Teaching Hospital, Kalubowila and Colombo Airport, Ratmalana are some important landmarks in this area. Dehiwela-Mount Lavinia and Sri Jayawardenapura Kotte being two large suburban centres of the city of Colombo function together as one large urban agglomeration in the Region (Western Province). The overspill from the City in residential and commercial uses of land has rapidly urbanised these suburban centres. Dehiwela-Mount Lavinia and Sri Jayawardenpaura along with Colombo Municipal Council form the most urbanised part of the core area of the Colombo Metropolitan Region. Dehiwala and Mount Lavinia lie along the Galle Road artery, which runs along the coast to the south of the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "dehiwala mount lavinia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dehiwala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lavinia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 84,
+    "attempt": 82,
+    "place_id": "gn-1800163",
+    "input": {
+      "place": {
+        "place_id": "gn-1800163",
+        "name": "Nanchang",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 28.68396,
+        "lon": 115.85306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanchang",
+          "url": "https://en.wikipedia.org/wiki/Nanchang",
+          "text": "Nanchang is the capital of Jiangxi, China. Located in the north-central part of the province and in the hinterland of Poyang Lake Plain, it is bounded on the west by the Jiuling Mountains, and on the east by Poyang Lake. Because of its strategic location connecting the prosperous East and South China, it has become a major railway hub in Southern China in recent decades.\nAs the Nanchang Uprising in 1927 is distinctively recognized by the ruling Communist Party as \"firing the first gunshot against the Nationalists\", the current government has therefore named the city since 1949 \"the place where the People's Liberation Army was born\", and the most widely known \"place where the military banner of the People's Liberation Army was first raised\".\nNanchang is also a major city, appearing among the top 100 cities in the world by scientific research outputs, as tracked by the Nature Index and home to Nanchang University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "nanchang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 85,
+    "attempt": 83,
+    "place_id": "gn-1804879",
+    "input": {
+      "place": {
+        "place_id": "gn-1804879",
+        "name": "Kaifeng",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.7986,
+        "lon": 114.30742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaifeng",
+          "url": "https://en.wikipedia.org/wiki/Kaifeng",
+          "text": "Kaifeng (Chinese: 开封; pinyin: Kāifēng) is a prefecture-level city in east-central Henan province, China. It is one of the Eight Ancient Capitals of China, having been the capital eight times in history.\nAs of the 2020 census, 4,824,016 people lived in Kaifeng's Prefecture, of whom 1,735,581 lived in the metropolitan area consisting of Xiangfu, Longting, Shunhe Hui, Gulou and Yuwantai Districts. Located along the Yellow River's southern bank, it borders the provincial capital of Zhengzhou to the west, Xinxiang to the northwest, Shangqiu to the east, Zhoukou to the southeast, Xuchang to the southwest, and Heze of Shandong to the northeast.\nKaifeng is a major city for research in central China, ranking as the world's 138th top city by scientific output as tracked by the Nature Index. The city is home to a campus of Henan University, one of the national key universities in the Double First Class University Plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "kaifeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 86,
+    "attempt": 84,
+    "place_id": "gn-2759661",
+    "input": {
+      "place": {
+        "place_id": "gn-2759661",
+        "name": "Arnhem",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.98,
+        "lon": 5.91111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arnhem",
+          "url": "https://en.wikipedia.org/wiki/Arnhem",
+          "text": "Arnhem (Dutch: [ˈɑrnɛm]  or [ˈɑr(ə)nɦɛm] ; German: Arnheim [ˈaʁnhaɪm] ; Ernems: Èrnem) is a city and municipality situated in the eastern part of the Netherlands, near the German border. It is the capital of the province of Gelderland and its second-most populous municipality (after Nijmegen), located on both banks of the rivers Nederrijn and Sint-Jansbeek, which was the source of the city's development.\nArnhem is home to the Hogeschool van Arnhem en Nijmegen, ArtEZ Institute of the Arts, Netherlands Open Air Museum, Royal Burgers' Zoo, NOC*NSF and National Sports Centre Papendal. The north corner of the municipality is part of the Hoge Veluwe National Park. It is approximately 55 square kilometres (21 sq mi) in area, consisting of heathlands, sand dunes, and woodlands.\nArnhem is the namesake of the Dutch East India Company (VOC) ship Arnhem, which in turn gave its name to Arnhem Land and the Arnhem Land tropical savanna in northern Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "arnhem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 87,
+    "attempt": 85,
+    "place_id": "gn-4685907",
+    "input": {
+      "place": {
+        "place_id": "gn-4685907",
+        "name": "Denton",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.21484,
+        "lon": -97.13307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denton, Texas",
+          "url": "https://en.wikipedia.org/wiki/Denton,_Texas",
+          "text": "Denton is a city in the U.S. state of Texas and the county seat of Denton County. With a population of 139,869 as of 2020, it is the 20th-most populous city in Texas, the 177th-most populous city in the United States, and the 10th-most populous city in the Dallas–Fort Worth metroplex.\nA Texas land grant led to the formation of Denton County in 1846, and the city was incorporated in 1866. Both were named after pioneer and Texas militia captain John B. Denton. The arrival of a railroad line in the city in 1881 spurred population, and the establishment of the University of North Texas in 1890 and Texas Woman's University in 1901 distinguished the city from neighboring regions. After the construction of Dallas/Fort Worth International Airport finished in 1974, the city had more rapid growth; between 2022 and 2023, Denton was the 13th largest-gaining city in population nationwide in terms of numeric change.\nLocated on the far north end of the Dallas–Fort Worth metroplex in North Texas on Interstate 35, Denton is known for its active music scene; the North Texas State Fair and Rodeo, Denton Arts and Jazz Festival, and Thin Line Fest attract over 300,000 people to the city each year. The city has hot, humid summers and few extreme weather events. Its diverse citizenry is represented by a nonpartisan city council, and numerous county and state departments have offices in the city. With over 45,000 students enrolled at the two universities within its city limits, Denton is often characterized as a college town. As a result of the universities' growth, educational services play a large role in the city's economy. Residents are served by the Denton County Transportation Authority, which provides commuter rail and bus service to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "denton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 88,
+    "attempt": 86,
+    "place_id": "gn-5907990",
+    "input": {
+      "place": {
+        "place_id": "gn-5907990",
+        "name": "Brantford",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.1334,
+        "lon": -80.26636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brantford",
+          "url": "https://en.wikipedia.org/wiki/Brantford",
+          "text": "Brantford is a city in Ontario, Canada, founded on the Grand River in Southwestern Ontario. It is surrounded by Brant County but is politically separate with a municipal government of its own that is fully independent of the county's municipal government.\nBrantford is situated on the Haldimand Tract, and is named after Joseph Brant, a Mohawk leader, soldier, farmer and slave owner. Brant was an important Loyalist leader during the American Revolutionary War and later, after the Haudenosaunee moved to the Brantford area in Upper Canada. Many of his descendants and other First Nations people live on the nearby Six Nations of the Grand River reserve south of Brantford; it is the most populous reserve in Canada.\nBrantford is known as the \"Telephone City\" because resident Alexander Graham Bell invented the first telephone at his father's homestead, Melville House, now the Bell Homestead National Historic Site, located in Tutela Heights south of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "brantford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 89,
+    "attempt": 87,
+    "place_id": "gn-6174041",
+    "input": {
+      "place": {
+        "place_id": "gn-6174041",
+        "name": "Victoria",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.4359,
+        "lon": -123.35155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_British_Columbia",
+          "text": "Victoria is the capital city of the Canadian province of British Columbia, located on the southern tip of Vancouver Island off Canada's Pacific coast. The city has a population of 91,867, and the Greater Victoria area has a population of 397,237. The city of Victoria is the seventh most densely populated city in Canada with 4,406 inhabitants per square kilometre (11,410/sq mi).\nVictoria is the southernmost major city in Western Canada and is about 100 kilometres (62 mi) southwest from British Columbia's largest city, Vancouver, on the mainland. The city is about 100 kilometres (62 mi) from Seattle, Washington, United States, by airplane, seaplane, ferry, or the Victoria Clipper passenger-only ferry, and 25 miles (40 km) from Port Angeles, Washington, United States, by the ferry Coho across the Strait of Juan de Fuca.\nNamed for Queen Victoria, the city is one of the oldest in the Pacific Northwest, with British settlement beginning in 1843. The city has retained a large number of its historic buildings, in particular its two most famous landmarks, the Parliament Buildings (finished in 1897 and home of the Legislative Assembly of British Columbia) and the Empress Hotel (opened in 1908). The city's Chinatown is the second oldest in North America, after San Francisco. The region's Coast Salish First Nations peoples established communities in the area long before European settlement, which had large populations at the time of European exploration.\nKnown as \"the Garden City\", Victoria is an attractive city and a popular tourism destination and has a regional technology sector that has risen to be its largest revenue-generating private industry. In 2019, Victoria was in the top 20 world cities for quality of life, according to Numbeo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 90,
+    "attempt": 88,
+    "place_id": "gn-1647003",
+    "input": {
+      "place": {
+        "place_id": "gn-1647003",
+        "name": "Cibinong",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.48167,
+        "lon": 106.85417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cibinong",
+          "url": "https://en.wikipedia.org/wiki/Cibinong",
+          "text": "Cibinong (Sundanese: ᮎᮤᮘᮤᮔᮧᮀ) is a large town and an administrative district (kecamatan) in Bogor Regency, West Java Province, Indonesia which serves as the Regency's administrative seat - not to be confused with the district of the same name in Cianjur Regency. The town is located immediately due south of the city of Depok, which itself lies just south of Jakarta, with both Depok and Cibinong being part of the Jakarta Metropolitan Area. The town and district are named after the Binong River (the prefix \"ci\" means \"river\"). Cibinong District covers a land area of 44.27 km2, and had 326,519 inhabitants at the 2010 Census and 363,424 inhabitants at the 2020 Census; the official estimate as at mid 2024 was 379,786 (comprising 190,790 males and 188,996 females}. The administrative headquarters are in the town of Cirimekar.\nThe Science Center of the Indonesian Institute of Sciences (Lembaga Ilmu Pengetahuan Indonesia) is located in the district. Cibinong contains a swamp forest, which was already mentioned by van Steenis in 1933, called Rawa (Swamp) Siradayah, and it is still preserved until the present time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "cibinong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 91,
+    "attempt": 89,
+    "place_id": "gn-4990729",
+    "input": {
+      "place": {
+        "place_id": "gn-4990729",
+        "name": "Detroit",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.33143,
+        "lon": -83.04575
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Detroit",
+          "url": "https://en.wikipedia.org/wiki/Detroit",
+          "text": "Detroit (  dih-TROYT, locally also  DEE-troyt) is the most populous city in the U.S. state of Michigan. It is situated on the bank of the Detroit River across from the Canadian city of Windsor, Ontario. It is the 26th-most populous city in the United States and the largest U.S. city on the Canada–United States border, with a population of 639,111 at the 2020 census, and an estimated 2025 population of 649,095, its first population increase since 1950. The Metro Detroit area, at over 4.4 million people, is the 14th-largest metropolitan area in the nation and second-largest in the Midwest (after the Chicago metropolitan area). The county seat of Wayne County, Detroit is a significant cultural center known for its contributions to music, art, architecture, and design, in addition to its historical automotive and industrial background.\nIn 1701, French explorers Antoine de la Mothe Cadillac and Alphonse de Tonty founded Fort Pontchartrain du Détroit. During the late 19th and early 20th centuries, it became an important industrial hub at the center of the Great Lakes region. The city's population rose to be the fourth-largest in the nation by 1920, with the expansion of the automotive industry in the early 20th century. One of its main features, the Detroit River, became the busiest commercial hub in the world. In the mid-20th century, Detroit entered a state of urban decay that has continued to the present, as a result of industrial restructuring, the loss of jobs in the auto industry, and rapid suburbanization. Since reaching a peak of 1.85 million at the 1950 census, Detroit's population has declined by more than 65 percent. In 2013, Detroit became the largest U.S. city to file for bankruptcy, but successfully exited in 2014. In 2025, the U.S. Census Bureau reported that Detroit's population grew for a second consecutive year and led population growth in Michigan for the first time since the 1950s.\nDetroit is a port on the Detroit River, one of the four major straits that connect the Great Lakes system to the St. Lawrence Seaway. The city anchors the third-largest regional economy in the Midwest and the 16th-largest in the United States. It is also best known as the center of the U.S. automotive industry, and the \"Big Three\" auto manufacturers—General Motors, Ford, and Stellantis North America (Chrysler)—are all headquartered in Metro Detroit. Metro Detroit houses the Detroit Metropolitan Airport, one of the most important hub airports in the United States. Detroit and the adjacent Canadian city of Windsor constitute the second-busiest international crossing in North America, after San Diego–Tijuana.\nDetroit's culture is marked with diversity, having both local and international influences. Detroit gave rise to the music genres of Motown and techno, and also played an important role in the development of jazz, hip-hop, rock, and punk. As a result of the city's rapid growth in its boom years, Detroit has many globally unique architectural monuments and historic places. Since the 2000s, conservation efforts have managed to save many architectural pieces and achieve several large-scale revitalizations, including the restoration of several historic theaters and entertainment venues, high-rise renovations, new sports stadiums, and a riverfront revitalization project. Detroit is an increasingly popular tourist destination which caters to about 16 million visitors per year. In 2015, Detroit was designated a \"City of Design\" by UNESCO, the first and only U.S. city to receive this designation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 560
+    },
+    "banned_terms": [
+      {
+        "term": "detroit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 92,
+    "attempt": 90,
+    "place_id": "gn-1253914",
+    "input": {
+      "place": {
+        "place_id": "gn-1253914",
+        "name": "Ujjain",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 23.18239,
+        "lon": 75.77643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ujjain",
+          "url": "https://en.wikipedia.org/wiki/Ujjain",
+          "text": "Ujjain (,  Hindi pronunciation: [ʊ̯d͡ːʑæn] , [əʋən̪t̪ɪkaː]), also known as Ujjayini, is a city in Ujjain district of the Indian state of Madhya Pradesh. It is the fifth-largest city in Madhya Pradesh by population and is the administrative as well as religious centre of Ujjain district and Ujjain division. It is one of the Hindu pilgrimage centres of Sapta Puri famous for the Kumbh Mela (Simhastha) held there every 12 years. The ancient and world famous temple of Mahakaleshwar Jyotirlinga is located in the center of the city. The city has been one of the most prominent trade and political centres of the Indian subcontinent from the time of the ancient Mahājanapadas until the British colonisation of India.\nAn ancient city situated on the eastern bank of the Shipra River, then known as Avantika, it was the most prominent city on the Malwa plateau of central India for much of its history. It emerged as the political centre of central India around 600 BCE. It was the capital of the ancient Avanti kingdom, one of the sixteen Mahājanapadas. During the 18th century, the city briefly became the capital of the Scindia state of the Maratha Confederacy, when Ranoji Scindia established his capital at Ujjain in 1731. It remained an important political, commercial, and cultural centre of Central India until the early 19th century, when the British administrators decided to develop Indore as an alternative to it. Ujjain continues to be an important place of pilgrimage for Shaivites, Vaishnavites and Shaktas. Bathing in the holy Shipra river of Ujjain liberates one from sins. Therefore, Ujjain is also called the 'Mokshadayini city'. The name of this river is taken among the holy rivers like Kaveri, Narmada, Godavari and Krishna.\nAccording to Puranic legend, Ujjain, along with Haridwar, Nashik, and Prayag, is one of four sites where drops of amrita, the elixir of immortality, accidentally spilled over from a kumbha (pitcher) while being carried by the celestial bird Garuda during the Samudra Manthana, or the churning of the ocean of milk.\nUjjain has been selected as one of the hundred Indian cities to be developed as a smart city under Prime Minister Narendra Modi's flagship Smart Cities Mission."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 365
+    },
+    "banned_terms": [
+      {
+        "term": "ujjain",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 93,
+    "attempt": 91,
+    "place_id": "gn-1269771",
+    "input": {
+      "place": {
+        "place_id": "gn-1269771",
+        "name": "Imphal",
+        "country": "India",
+        "subdivision": "Manipur",
+        "lat": 24.80805,
+        "lon": 93.9442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imphal",
+          "url": "https://en.wikipedia.org/wiki/Imphal",
+          "text": "Imphal (UK:  IM-fahl, US:   IMP-hul; Meitei: [impʰal]) is the capital city of the Indian state of Manipur. The metropolitan centre of the city contains the ruins of Kangla Palace (officially known as Kangla Fort), the royal seat of the former Kingdom of Manipur, surrounded by a moat. Spread over parts of the districts of Imphal West and Imphal East, the former contains the majority of the city's area and population. Imphal is part of the Smart Cities Mission under the Ministry of Housing and Urban Affairs. Being a prominent commercial hub, Imphal is known for its weaving, brass-ware, bronze-ware, and other cottage industries. \nINS Imphal, the third ship of the Visakhapatnam-class stealth guided missile destroyer of the Indian Navy, was named in recognition of the Indian soldiers who fought in Battle of Imphal during World War II, and is the first Indian Navy Ship (INS) named after a city in Northeast India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "imphal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 94,
+    "attempt": 92,
+    "place_id": "gn-1692192",
+    "input": {
+      "place": {
+        "place_id": "gn-1692192",
+        "name": "Quezon City",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6488,
+        "lon": 121.0509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quezon City",
+          "url": "https://en.wikipedia.org/wiki/Quezon_City",
+          "text": "Quezon City (UK: , US: ; Filipino: Lungsod Quezon [luŋˈsod ˈkɛson] ), also known as the City of Quezon and Q.C. (read and pronounced in Filipino as Kyusi), is the most populous city in the Philippines. According to the 2024 census, it has a population of 3,084,270 people. It was founded on October 12, 1939, and was named after Manuel L. Quezon, the second president of the Philippines. Quezon City served as the capital of the Philippines from 1948 until 1976, when the designation was returned to Manila.\nThe city was intended to be the national capital of the Philippines that would replace Manila, as the latter was suffering from overcrowding, lack of housing, poor sanitation, and traffic congestion. To create Quezon City, several barrios were carved out from the towns of Caloocan, Marikina, San Juan and Pasig, in addition to the eight vast estates the Philippine government purchased for this purpose. It was officially proclaimed the national capital on October 12, 1949, and several government departments and institutions moved out of Manila and settled into the new capital city. This necessitated the expansion of the city northward, carving out Novaliches from Caloocan, which divided it into two non-contiguous parts. Several barrios were also taken from San Mateo and parts of Montalban. However, on June 24, 1976, Presidential Decree No. 940 was enacted, which reverted national capital status to Manila while the whole of Metro Manila was designated as the seat of government. The city was also chosen as the regional center of Southern Tagalog, which was created in 1965, along with the provinces of Quezon and Aurora, the birthplace of Manuel L. Quezon; however, its status of regional center became ineffective when the region was divided into Calabarzon and Mimaropa, through the effect of Executive Order No. 103 in May 2002 under the presidency of Gloria Macapagal Arroyo, and Aurora was transferred to the authority of Central Luzon, with Southern Tagalog limited to being a cultural-geographic region.\nQuezon City is known for its culture, entertainment industry, and media, and is aptly called the \"City of Stars\". Major broadcasting networks have their headquarters and studios in the city. It is also known for its commerce, education, research, technology, politics, tourism, art, and sports. Several national government branches including the Batasang Pambansa Complex, the seat of House of Representatives of the Philippines, call the city home. As the home of major government institutions, universities, and national media networks, Quezon City has played a central role in the political, educational, and civic development of the modern Philippines.\nQuezon City is a planned city. It covers a total area of 161.11 square kilometers (62.20 sq mi), making it the largest city in Metro Manila/NCR in terms of land area. It is politically subdivided into six congressional districts, which represent the city in the Lower House of the Congress of the Philippines. The city has 142 barangays under the City Government. National government departments and agencies are mostly situated in the first National Government Center (NGC) in Diliman and the second National Government Center in Batasan Hills, where the Lower House of the Philippine Congress is located. Most of the city's northern part lies at the foothills of the Sierra Madre mountain range, including the La Mesa Watershed Reservation, the largest watershed in Metro Manila and a designated protected area.\nAccording to its 2023 estimated census, Quezon City had 3.1 million people in its boundaries, and ₱1.27 trillion (US$93.8 billion) in its gross domestic product (GDP), and it is the only planned city in the National Capital Region of the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 597
+    },
+    "banned_terms": [
+      {
+        "term": "quezon city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quezon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 95,
+    "attempt": 93,
+    "place_id": "gn-2934246",
+    "input": {
+      "place": {
+        "place_id": "gn-2934246",
+        "name": "Düsseldorf",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.22319,
+        "lon": 6.77927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Düsseldorf",
+          "url": "https://en.wikipedia.org/wiki/D%C3%BCsseldorf",
+          "text": "Düsseldorf (German: [ˈdʏsl̩dɔʁf] ) is the capital city of North Rhine-Westphalia, the most populous state of Germany. It is the second-largest city in the state after Cologne and the seventh-largest city in Germany, with a 2025 population of 619,444. Most of Düsseldorf lies on the right bank of the Rhine, and the city has grown together with Neuss, Krefeld, Hilden, Langenfeld, Ratingen, Meerbusch, Dormagen, Erkrath, Solingen, and Monheim. Düsseldorf is the central city of Rhine-Ruhr, the second-biggest metropolitan region by GDP in the European Union, which stretches from Bonn via Cologne and Düsseldorf to the Ruhr.\nDüsseldorf began as a small settlement at the mouth of the Düssel River, gaining city rights in 1288 after the Battle of Worringen. In the Late Middle Ages and Renaissance, it grew into a regional political and cultural centre under the Dukes of Berg and later as the capital of the United Duchies of Jülich-Cleves-Berg. The 17th and 18th centuries saw flourishing arts and architecture, with Düsseldorf becoming known for its court culture and early art academy. During the Napoleonic era, it was briefly part of the Grand Duchy of Berg before coming under Prussian control in 1815, where it industrialised rapidly in the 19th century. During the 20th century, Düsseldorf developed into one of Germany's most important centres for administration, business, and culture. In 1946, it became the capital of the newly created state of North Rhine-Westphalia, strengthening its political role.\nDüsseldorf is classified as a GaWC Alpha- world city. It is an international business and financial centre, known for its fashion and trade fairs, and is headquarters to two Fortune Global 500 (Uniper and Metro) and three DAX companies (Rheinmetall, Henkel and GEA). Messe Düsseldorf organises nearly one-fifth of premier trade shows. Düsseldorf Airport is Germany's fourth-busiest airport, serving as the main international hub for the Ruhr, Germany's largest urban area. Mercer's 2023 Quality of Living survey ranked Düsseldorf the tenth most livable city in the world.\nThere are 22 institutions of higher education in the city including the Heinrich-Heine-Universität Düsseldorf, the university of applied sciences (Hochschule Düsseldorf), the academy of arts (Kunstakademie Düsseldorf, whose members include Joseph Beuys, Emanuel Leutze, August Macke, Gerhard Richter, Sigmar Polke, and Andreas Gursky), and the university of music (Robert-Schumann-Musikhochschule Düsseldorf). The city is also known for its influence on electronic/experimental music (Kraftwerk) and its Japanese community. As the second-largest city of the Rhineland, Düsseldorf holds Rhenish Carnival celebrations in February and March, which rank as the third most prominent in Germany after those of Cologne and Mainz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 422
+    },
+    "banned_terms": [
+      {
+        "term": "dusseldorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 96,
+    "attempt": 94,
+    "place_id": "gn-2946447",
+    "input": {
+      "place": {
+        "place_id": "gn-2946447",
+        "name": "Bonn",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.73438,
+        "lon": 7.09549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonn",
+          "url": "https://en.wikipedia.org/wiki/Bonn",
+          "text": "Bonn (German pronunciation: [bɔn] ), officially the Federal City of Bonn (German: Bundesstadt Bonn), is a federal city in the German state of North Rhine-Westphalia, located on the banks of the Rhine. With a population exceeding 320,000, it lies about 24 km (15 mi) south-southeast of Cologne, in the southernmost part of the Rhine-Ruhr region. Bonn served as the capital of West Germany from 1949 until 1990 and was the seat of government for reunified Germany until 1999, when the government relocated to Berlin. The city holds historical significance as the birthplace of Germany's current constitution, the Basic Law.\nFounded in the 1st century BC as a settlement of the Ubii and later part of the Roman province Germania Inferior, Bonn is among Germany's oldest cities. It was the capital city of the Electorate of Cologne from 1597 to 1794 and served as the residence of the Archbishops and Prince-electors of Cologne. The period during which Bonn was the capital of West Germany is often referred to by historians as the Bonn Republic.\nFollowing the German reunification, a political compromise known as the Berlin-Bonn Act ensured that the German federal government retained a significant presence in Bonn. As of 2019, approximately one-third of all ministerial jobs remain in the city. Bonn is considered an unofficial secondary capital of Germany and is the location of the secondary seats of the president, the chancellor, and the Bundesrat. Bonn is also the location of the primary seats of six federal ministries and twenty federal authorities. The city's title as Federal City (German: Bundesstadt) underscores its political importance.\nThe global headquarters of Deutsche Post DHL and Deutsche Telekom, both DAX-listed corporations, are in Bonn. The city is home to the Rheinische Friedrich-Wilhelms-Universität Bonn university, and a total of 20 United Nations institutions, the highest number in all of Germany. These institutions include the headquarters for Secretariat of the UN Framework Convention Climate Change (UNFCCC), the Secretariat of the UN Convention to Combat Desertification (UNCCD), and the UN Volunteers programme. Birthplace of composer Ludwig van Beethoven, a center of Rhenish carnival, and its geography by the Middle Rhine make it an important tourist destination. In Bonn the Bönnsch Platt, a dialect of the Ripuarian language is spoken by all generations, especially during carnival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 378
+    },
+    "banned_terms": [
+      {
+        "term": "bonn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 97,
+    "attempt": 95,
+    "place_id": "gn-1259385",
+    "input": {
+      "place": {
+        "place_id": "gn-1259385",
+        "name": "Port Blair",
+        "country": "India",
+        "subdivision": "Andaman and Nicobar",
+        "lat": 11.66613,
+        "lon": 92.74635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Blair",
+          "url": "https://en.wikipedia.org/wiki/Port_Blair",
+          "text": "Port Blair (), officially named Sri Vijaya Puram (Hindi pronunciation: [ˌɕɾˈɨː ˈʋɪ̯ˌd͡ʑʌjᵊ pʊˈɾ.əm]), is the capital city of the Indian union territory of Andaman and Nicobar Islands. It is located on the South Andaman Island situated between the Bay of Bengal to the west and the Andaman Sea to the east. It is located approximately 1,190 km (740 mi) from Chennai and 1,255 km (780 mi) from Kolkata in mainland India. It is the headquarters of the South Andaman district, and the union territory's only notified town.\nThe town is home to the Veer Savarkar International Airport, the only major airport in the islands, and Port Blair Port, and serves as the major gateway for the islands. It is home to the air base INS Utkrosh and the naval base INS Jarawa of the Indian Navy, and the Andaman and Nicobar Command, the only integrated tri-command of the Indian Armed Forces.\nThe indigenous inhabitants of the region were the Andamanese. In the late 18th century, the British colonised the Andaman Islands, and established a naval base, and a penal colony, which was abandoned two years later. On 22 February 1858, the British re-established a colony at Port Blair, and a new penal colony was established on the Ross Island near Port Blair, mainly to house the prisoners of the Indian rebellion of 1857. In 1872, the Andaman and Nicobar Islands were united under a single command and administered by a chief commissioner based at Port Blair. The Cellular Jail was completed in 1906, and used to house political prisoners and independence activists. During Second World War, the Japanese captured Port Blair on 23 March 1942, and it was retaken by the British on 7 October 1945. After India became independent in 1947, the Andaman and Nicobar islands became part of the Dominion of India, and later a union territory with the capital at Port Blair.\nThe city was named after Archibald Blair, an officer of the Royal Indian Navy, who colonised the region in the late 18th century. On 13 September 2024, the Government of India officially renamed the city to Sri Vijaya Puram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "port blair",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blair",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 98,
+    "attempt": 96,
+    "place_id": "gn-2651123",
+    "input": {
+      "place": {
+        "place_id": "gn-2651123",
+        "name": "Doncaster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.52285,
+        "lon": -1.13116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doncaster",
+          "url": "https://en.wikipedia.org/wiki/Doncaster",
+          "text": "Doncaster ( DONK-ə-stər, DONK-ast-ər) is a city in South Yorkshire, England. Named after the River Don, it is the administrative centre of the City of Doncaster metropolitan borough, and is the second largest settlement in South Yorkshire after Sheffield. Noted for its racing and railway history, it is situated in the Don Valley on the western edge of the Humberhead Levels and east of the Pennines. It had a population of 87,455 at the 2021 census, whilst its built-up area had a population of 160,220, and the wider metropolitan borough had a population of 308,100.\nAdjacent to Doncaster to its east is the Isle of Axholme in Lincolnshire, which contains the towns of Haxey, Epworth and Crowle, and directly south is Harworth Bircotes in Nottinghamshire. Also, within the city's vicinity are Barnsley, Wakefield, Pontefract, Selby, Goole, Scunthorpe, Gainsborough, Retford, Worksop and Rotherham, to which Doncaster is linked by road and rail.\nAs part of the Platinum Jubilee Civic Honours, Doncaster received city status by Letters Patent. A ceremony to confer city status took place at Mansion House on 9 November 2022 as part of a tour of Yorkshire by King Charles III and Queen Camilla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "doncaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 99,
+    "attempt": 97,
+    "place_id": "gn-3181928",
+    "input": {
+      "place": {
+        "place_id": "gn-3181928",
+        "name": "Bologna",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.49381,
+        "lon": 11.33875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bologna",
+          "url": "https://en.wikipedia.org/wiki/Bologna",
+          "text": "Bologna (Bolognese: Bulåggna) is the capital and largest city of the Emilia-Romagna region in northern Italy. It is the seventh most populous city in Italy, with 391,473 inhabitants from 150 different nationalities. Its metropolitan province is home to more than 1 million people as of 2026. Bologna is most famous for being the home to the oldest university in continuous operation, the University of Bologna, established in AD 1088.\nThe city has been an important urban center for centuries, first under the Etruscans (who called it Felsina), then under the Celts as Bona, later under the Romans (Bonōnia), then again in the Middle Ages, as a free municipality and later signoria, when it was among the largest European cities by population. Famous for its towers, churches and lengthy porticoes, Bologna has a well-preserved historical centre, thanks to a careful restoration and conservation policy which began at the end of the 1970s. In 2000, it was declared European capital of culture and in 2006, a UNESCO \"City of Music\" and part of the Creative Cities Network. In 2021, UNESCO recognized the lengthy porticoes of the city as a World Heritage Site.\nBologna is an important agricultural, industrial, financial and transport hub, where many large mechanical, electronic and food companies have their headquarters, and is also home to one of the largest permanent trade fairs in Europe. In 2022, Il Sole 24 Ore named Bologna the best city in Italy for overall quality of life, although it dropped to 4th place in 2025. Bologna intends to become carbon neutral by 2040 and raise female employment rates, focusing on sustainable and equitable urban development. The city is also increasing its investment in sustainability as part of a 2022–2024 program that integrates gender perspectives into urban planning, with an emphasis on sustainable mobility, public infrastructure, and green spaces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "bologna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 100,
+    "attempt": 98,
+    "place_id": "gn-3390760",
+    "input": {
+      "place": {
+        "place_id": "gn-3390760",
+        "name": "Recife",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.05389,
+        "lon": -34.88111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Recife",
+          "url": "https://en.wikipedia.org/wiki/Recife",
+          "text": "Recife ( riss-EE-fee, -⁠fə; Brazilian Portuguese: [ʁeˈsifi] ) is the state capital of Pernambuco, Brazil, on the northeastern Atlantic coast of South America. It is the largest urban area within both the North and the Northeast Region of Brazil. It is the largest city in Pernambuco state, and the fourth-largest urban area in all of Brazil; the metro population of the city of Recife was 3,726,974 in 2022. Recife was founded in 1537, serving as the main harbor of the Captaincy of Pernambuco—known for its large-scale production of sugar cane. At one point, it was known as Mauritsstad, when it served as the capital city of the 17th century colony of New Holland of Dutch Brazil (founded by the Dutch West India Company). Situated at the confluence of the Beberibe and Capibaribe rivers, before they drain into the South Atlantic Ocean, Recife is a major seaport along the Brazilian Atlantic coast. Its name is an allusion to the stone reefs that are present offshore. Together with the urban presence of the Beberibe and Capibaribe rivers and their tributaries, the many additional unique, small islands—and more than 50 bridges linking them throughout the city—create a distinct maritime or \"riviera\" atmosphere, leading to Recife being known as the \"Venice of Brazil\".\nAs of 2010, Recife has maintained the highest HDI of any state capital in Northeastern Brazil, and the second-highest of the entire Northern and Northeastern regions (second only to Palmas). However, the city also is known as having some of the highest rates of gun violence in the entire country, despite also being considered the \"safest state capital\" in the Northeast. Although Recife often has a consistently higher crime rate than Brazil's South Region, it typically has a much lower crime rate than other regional capitals—such as Salvador or São Luís. Nonetheless, crime rose nearly 440% in 2015. The waters along the coastline are also considered to be among the most dangerous \"on earth\", as there have been many recorded shark attacks on swimmers at the beaches, including fatal incidents.\nThe Metropolitan Region of Recife is the main industrial zone of the State of Pernambuco, major products are those derived from cane (sugar and ethanol), motor vehicles, ships, oil platforms, electronics, software, and others. With fiscal incentives by the government, many industrial companies were started in the 1970s and 1980s. Recife has a tradition of being the most important commercial hub of the North/Northeastern region of Brazil, with more than 52,500 business enterprises in Recife plus 32,500 in the Metro Area, totaling more than 85,000.\nA combination of a large supply of labor and significant private investments turned Recife into Brazil's second largest medical hub (the first being São Paulo); modern hospitals with state-of-the-art equipment receive patients from several neighbouring States.\nRecife stands out as a major tourist site within the Brazilian Northeast, known for the city itself, its beaches and for its historical sites, with many places of significance dating back to both the Portuguese and the Dutch colonies in the region. The beach of Porto de Galinhas, located 60 kilometers (37 mi) south of the city, has been repeatedly awarded the title of best beach in Brazil and has drawn many tourists. The Historic Centre of Olinda, 7 kilometers (4.3 mi) north of the city, was declared a UNESCO World Heritage Site in 1982, and both cities' Brazilian Carnival are among the world's most famous. According to The Herald, Recife has the biggest consumption of whisky around the world.\nThe city is an education hub, and home to the Federal University of Pernambuco, the largest university in Pernambuco. Several Brazilian historical figures, such as the poet and abolitionist Castro Alves, moved to Recife for their studies. Recife and Natal are the only Brazilian cities with direct flights to the islands of Fernando de Noronha, a World Heritage Site.\nRecife was one of the host cities of the 2014 FIFA World Cup, and previously hosted the 2013 FIFA Confederations Cup and the 1950 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 666
+    },
+    "banned_terms": [
+      {
+        "term": "recife",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 101,
+    "attempt": 99,
+    "place_id": "gn-3169921",
+    "input": {
+      "place": {
+        "place_id": "gn-3169921",
+        "name": "Prato",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.8805,
+        "lon": 11.09699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prato",
+          "url": "https://en.wikipedia.org/wiki/Prato",
+          "text": "Prato ( PRAH-toh; Italian: [ˈpraːto] ) is a city and comune (municipality) in the region of Tuscany in Italy, and is the capital of the Province of Prato. The city lies in the northeast of Tuscany, at an elevation of 65 metres (213 ft), at the foot of Monte Retaia (the last peak in the Calvana chain). The distance between Prato and Florence is approximately 15–17 kilometers (about 9–10 miles). With a population of 198,327 as of 2026, Prato is Tuscany's 2nd-largest city after Florence, and the 18th-largest in Italy.\nHistorically, Prato's economy has been based on the textile industry which has continued in recent years leading to it becoming Italy's fast fashion manufacturing hub. The city's textile district, the largest in Europe, is home to about 5000 fashion companies which are largely small, Chinese-run subcontractors engaging in illegal activity known as the \"Prato system\" run by Chinese organized crime. The left wing Partito Democratico (PD) has been implicated in the crimes with the PD mayor Ilaria Bugetti resigning after the opening of a corruption investigation against her in July 2025.\nThe city boasts important historical and artistic attractions, with a cultural span that started with the Etruscans and then expanded in the Middle Ages and reached its peak with the Renaissance, when artists such as Donatello, Filippo Lippi and Botticelli left their testimonies in the city. The renowned Datini archives are a significant collection of late medieval documents concerning economic and trade history, produced between 1363 and 1410.\nCantucci, a type of biscotti invented in Prato during the Middle Ages, are still produced by local traditional bakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "prato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 102,
+    "attempt": 100,
+    "place_id": "gn-3204541",
+    "input": {
+      "place": {
+        "place_id": "gn-3204541",
+        "name": "Banja Luka",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Srpska",
+        "lat": 44.77879,
+        "lon": 17.20629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banja Luka",
+          "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+          "text": "Banja Luka (Serbian Cyrillic: Бања Лука, pronounced [bǎɲa lǔːka] ) or Banjaluka (Serbian Cyrillic: Бањалука, pronounced [baɲalǔːka]) is the second-largest city in Bosnia and Herzegovina, and the most populous in Republika Srpska. It is Republika Srpska's main economic, political, and administrative centre. Banja Luka is the traditional centre of the densely forested Bosanska Krajina region of northwestern Bosnia and Herzegovina. According to the 2013 census, the city proper has a population of 138,963, while its administrative area comprises a total of 185,042 inhabitants. The City Day of Banja Luka is celebrated on 22 April, commemorating the liberation of the city at the end of World War II.\nThe city is home to the University of Banja Luka and the University Clinical Center of the Republika Srpska, as well as numerous entity- and state-level institutions of Republika Srpska and Bosnia and Herzegovina, respectively. The city is located on the Vrbas river. Banja Luka was declared a European City of Sport in 2018 and designated a UNESCO City of Music in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "banja luka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "banja",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

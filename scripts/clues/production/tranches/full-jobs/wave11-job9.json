@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 2177,
+    "attempt": 2161,
+    "place_id": "gn-4903184",
+    "input": {
+      "place": {
+        "place_id": "gn-4903184",
+        "name": "Mundelein",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.26308,
+        "lon": -88.00397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mundelein, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Mundelein,_Illinois",
+          "text": "Mundelein is a village in Lake County, Illinois, United States and a northern suburb of Chicago. Per the 2020 census, the population was 31,560, making this the fourth largest town in Lake County. The village straddles Libertyville Township and Fremont Township, and borders Grayslake, Ivanhoe, Diamond Lake, and Libertyville. The village lies 33 miles northwest of the Chicago Loop.\nMundelein was first settled by European settlers in 1835, and was incorporated in 1909 after a spur line connected the village to the Chicago North Shore and Milwaukee Railroad. The University of Saint Mary of the Lake opened in 1921, and in June 1926 the village hosted the closing events of the 28th International Eucharistic Congress, bringing hundreds of thousands of people to the village. Its name was changed four times over its history, including two after incorporation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "mundelein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2178,
+    "attempt": 2162,
+    "place_id": "gn-4954380",
+    "input": {
+      "place": {
+        "place_id": "gn-4954380",
+        "name": "Waltham",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.37649,
+        "lon": -71.23561
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waltham, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Waltham,_Massachusetts",
+          "text": "Waltham ( WAWL-tham) is a city in Middlesex County, Massachusetts, United States, and was an early center for the labor movement as well as a major contributor to the American Industrial Revolution. The original home of the Boston Manufacturing Company, the city was a prototype for 19th century industrial city planning, spawning what became known as the Waltham-Lowell system of labor and production. The city is now a center for research and higher education as home to Brandeis University and Bentley University. The population was 65,218 at the 2020 United States census. Waltham is part of the Greater Boston area and lies 9 miles (14 km) west of Downtown Boston.\nWaltham has been called \"Watch City\" because of its association with the watch industry. Waltham Watch Company opened its factory in Waltham in 1854 and was the first company to make watches on an assembly line. It won the gold medal in 1876 at the Philadelphia Centennial Exposition. The company produced over 35 million watches, clocks, and instruments before it closed in 1957.\nWaltham borders Watertown and Belmont to the east, Lexington to the north, Lincoln and Weston to the west, and Newton to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "waltham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2179,
+    "attempt": 2163,
+    "place_id": "gn-5530022",
+    "input": {
+      "place": {
+        "place_id": "gn-5530022",
+        "name": "San Angelo",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.46377,
+        "lon": -100.43704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Angelo, Texas",
+          "url": "https://en.wikipedia.org/wiki/San_Angelo,_Texas",
+          "text": "San Angelo ( SAN AN-jə-loh) is a city in and the county seat of Tom Green County, Texas, United States. It is in the Concho Valley, a region of West Texas between the Permian Basin to the northwest, Chihuahuan Desert to the southwest, Osage Plains to the northeast, and Central Texas to the southeast. According to the 2020 United States Census, San Angelo had a population of 99,893. It is the principal city and center of the San Angelo metropolitan area, which had a population of 100,159.\nSan Angelo is home to Angelo State University, historic Fort Concho, and Goodfellow Air Force Base. It is home to the Concho Valley Baptist Association and is the seat of the Roman Catholic Diocese of San Angelo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "san angelo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angelo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2180,
+    "attempt": 2164,
+    "place_id": "gn-5826027",
+    "input": {
+      "place": {
+        "place_id": "gn-5826027",
+        "name": "Gillette",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 44.29109,
+        "lon": -105.50222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gillette, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Gillette,_Wyoming",
+          "text": "Gillette (, jih-LET) is a city in and the county seat of Campbell County, Wyoming, United States. The town was founded in 1891 as a major railway town on the Chicago, Burlington and Quincy Railroad.\nThe population was estimated at 33,496, as of July 1, 2023, making it the third-most populous city in Wyoming after Cheyenne and Casper. Gillette's population had increased 48% in the ten years after the 2000 census, which counted 19,646 residents, after a boom in its local fossil fuel industries.\nGillette is centrally located in an area devoted to the development of vast quantities of coal, oil, and coalbed methane gas. The city calls itself the \"Energy Capital of the Nation\", because Wyoming provides nearly 35% of the nation's coal. However, a decline in coal use in the U.S. in the first quarter of the 21st century has affected the state economy. Some local officials are seeking other industries or employment opportunities. As a major economic hub for the county, the city is also a regional center for media, education, health, and arts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "gillette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2181,
+    "attempt": 2165,
+    "place_id": "gn-5957776",
+    "input": {
+      "place": {
+        "place_id": "gn-5957776",
+        "name": "Fredericton",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.94541,
+        "lon": -66.66558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fredericton",
+          "url": "https://en.wikipedia.org/wiki/Fredericton",
+          "text": "Fredericton (; French pronunciation: [fʁedeʁiktœn]) is the capital city of the Canadian province of New Brunswick. The city is situated in the west-central portion of the province along the Saint John River, which flows west to east as it bisects the city. The river is the dominant natural feature of the area. One of the main urban centres in New Brunswick, as of 2026, according to the city's update on building development, it has a population of approximately 79,000 with the metropolitan population in 2025 estimated at 125,303. It is the third-largest city in the province, after Moncton and Saint John.\nAn important cultural, artistic, and educational centre for the province, Fredericton is home to two universities, The University of New Brunswick and St. Thomas University, as well as the New Brunswick College of Craft and Design, New Brunswick Community College and cultural institutions such as the Beaverbrook Art Gallery, the Fredericton Region Museum, and The Playhouse, a performing arts venue. The city hosts the annual Harvest Jazz & Blues Festival, attracting regional and international jazz, blues, rock, and world artists. The city also hosts the Garrison Night Market during the summer months which showcases many local vendors, artists, and musicians. Fredericton is also an important and vibrant centre for the region's top visual artists with artists such as Goodridge Roberts, and Molly and Bruno Bobak having lived and worked here.\nAs a provincial capital, its economy is tied to the public sector; however, the city also has a growing IT and commercial sector. The city has the highest percentage of residents with post-secondary education in the province and the highest per capita income of any city in New Brunswick."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "fredericton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2183,
+    "attempt": 2166,
+    "place_id": "gn-293807",
+    "input": {
+      "place": {
+        "place_id": "gn-293807",
+        "name": "Ra'anana",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 32.1836,
+        "lon": 34.87386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ra'anana",
+          "url": "https://en.wikipedia.org/wiki/Ra'anana",
+          "text": "Ra'anana (Hebrew: רעננה, lit. 'Fresh') is an affluent city in the southern Sharon Plain of the Central District of Israel. It was founded in 1922 as an American-Jewish settlement, c.1 km south of the village of Tabsur, where an important World War I battle had taken place four years previously.\nBordered by Kfar Saba and Hod HaSharon on the east and Herzliya on the southwest, it had a population of 82,964 in 2024. While the majority of its residents are Israeli-born Jews, a large part of the population consists of Jewish immigrants from the Americas, Europe and South Africa.\nRa'anana's industrial park is home to global and local start-up companies. It was designated a \"Green City\" by the World Health Organization in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ra anana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ra",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "anana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2184,
+    "attempt": 2167,
+    "place_id": "gn-2953395",
+    "input": {
+      "place": {
+        "place_id": "gn-2953395",
+        "name": "Bad Nauheim",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.36463,
+        "lon": 8.73859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Nauheim",
+          "url": "https://en.wikipedia.org/wiki/Bad_Nauheim",
+          "text": "Bad Nauheim (German pronunciation: [baːt ˈnaʊhaɪm] ) is a spa town in Wetteraukreis, Hesse, Germany.\nAs of 2020, Bad Nauheim has a population of 32,493. The town is approximately 35 kilometres (22 mi) north of Frankfurt am Main, on the east edge of the Taunus mountain range. It is a world-famous resort, noted for its salt springs, which are used to treat heart and nerve diseases. A Nauheim (or \"effervescent\") bath, named after Bad Nauheim, is a type of spa bath through which carbon dioxide is bubbled. This bath was one of several types of hydrotherapy used at the Battle Creek Sanitarium and it was also used at the Maurice Bathhouse in Bathhouse Row in the early 1900s during the heyday of hydrotherapy. The Konitzky Foundation, a charitable foundation and hospital for those without economic means, was founded in 1896 and its building occupies a central place next to the Kurpark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bad nauheim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nauheim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2185,
+    "attempt": 2168,
+    "place_id": "gn-3064000",
+    "input": {
+      "place": {
+        "place_id": "gn-3064000",
+        "name": "Třinec",
+        "country": "Czechia",
+        "subdivision": "Moravian-Silesian Region",
+        "lat": 49.67763,
+        "lon": 18.67078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Třinec",
+          "url": "https://en.wikipedia.org/wiki/T%C5%99inec",
+          "text": "Třinec (Czech pronunciation: [ˈtr̝̊ɪnɛts] ; Polish: Trzyniec, German: Trzynietz) is a city in Frýdek-Místek District in the Moravian-Silesian Region of the Czech Republic. It has about 34,000 inhabitants, making it the least populated statutory city in the country. Třinec is located on the Olza River on the border with Poland and is an important cultural centre of the Polish minority in the Czech Republic.\nTřinec was probably founded in the second half of the 14th century, but it only became a town in 1931 as a result of industrialisation and subsequent growth. The city is known for the Třinec Iron and Steel Works company – the only steel producer in the country, which has a major impact on the city's character and demographics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "trinec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2186,
+    "attempt": 2169,
+    "place_id": "gn-3088972",
+    "input": {
+      "place": {
+        "place_id": "gn-3088972",
+        "name": "Piotrków Trybunalski",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.40547,
+        "lon": 19.70321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piotrków Trybunalski",
+          "url": "https://en.wikipedia.org/wiki/Piotrk%C3%B3w_Trybunalski",
+          "text": "Piotrków Trybunalski ([ˈpʲɔtrkuf trɨbuˈnalskʲi] ; also known by alternative names), often simplified to Piotrków, is a city in central Poland with 71,252 inhabitants (2021). It is the capital of Piotrków County and the second-largest city in the Łódź Voivodeship.\nFounded in the late Middle Ages, Piotrków was once a royal city and holds an important place in Polish history; the first parliament sitting was held here in the 15th century. It then became the seat of a Crown Tribunal, the highest court of the Polish–Lithuanian Commonwealth. The city also hosted one of Poland's oldest Jewish communities, which was entirely destroyed by the Holocaust. The old town in Piotrków features many historical and architectural monuments, including tenements, churches, synagogues and the medieval Royal Castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "piotrkow trybunalski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "piotrkow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trybunalski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2187,
+    "attempt": 2170,
+    "place_id": "gn-3115177",
+    "input": {
+      "place": {
+        "place_id": "gn-3115177",
+        "name": "Oleiros",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.33333,
+        "lon": -8.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oleiros, Galicia",
+          "url": "https://en.wikipedia.org/wiki/Oleiros,_Galicia",
+          "text": "Oleiros (Spanish and Galician: [oˈlejɾos] ) is a municipality of northwestern Spain in the province of A Coruña, in the autonomous community of Galicia. The whole municipality is basically a residential area and the vast majority of its residents commute on a daily basis to the neighbor city of A Coruña. Oleiros is the wealthiest municipality in Galicia, it enjoys very high living standards and is notably famous for its public gardens and for a very careful urban planning. The population is more dense in the four major urban areas of Oleiros: Santa Cristina-Perillo, Santa Cruz, Oleiros and Mera. The wealthiest inhabitants of Oleiros usually live in suburbs outside these urban areas. Many of these suburbs are composed of terraced or semidetached houses. Some rural areas still exist all across the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "oleiros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2188,
+    "attempt": 2171,
+    "place_id": "gn-3855075",
+    "input": {
+      "place": {
+        "place_id": "gn-3855075",
+        "name": "General Pico",
+        "country": "Argentina",
+        "subdivision": "La Pampa",
+        "lat": -35.6593,
+        "lon": -63.75787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "General Pico",
+          "url": "https://en.wikipedia.org/wiki/General_Pico",
+          "text": "General Pico is a city located in the northeast of La Pampa Province, Argentina. It is located at 143 m (469 ft) above sea level and inside the region of the Pampas Plain. It has a surface area of 2,555 km2 (986 sq mi).\nThe city was founded on November 11, 1905, by Eduardo de Chapeaurouge, The city is named after former La Pampa Province governor Eduardo de Chapeaurouge. With a population of 53,352 (2001 census [INDEC]) it is the second-largest city in the province after the provincial capital Santa Rosa, and it is the capital of the department of Maracó. The region is heavily agricultural, producing meat that is renowned around the world, and most of the grain consumed in the country.\nThe crossing between the west and south railroads was a determinant point in the placing of this city, founded on November 11 by Eduardo Chapeaurouge. It is named after General Eduardo Gustavo Pico, who was governor of La Pampa Province for three consecutive periods (1891-1899).\nGeneral Pico has a very important section dedicated to factories and what is known as a Zona Franca, a customs-free area where products can be imported and distributed to the rest of the country.\nThe city has two basketball teams in the Argentine League: Pico Foot Ball Club and Independiente de Pico. It also has its own airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "general pico",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "general",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pico",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2189,
+    "attempt": 2172,
+    "place_id": "gn-4593142",
+    "input": {
+      "place": {
+        "place_id": "gn-4593142",
+        "name": "Rock Hill",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.92487,
+        "lon": -81.02508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rock Hill, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Rock_Hill,_South_Carolina",
+          "text": "Rock Hill is the most populous city in York County, South Carolina, United States, and the 5th-most populous city in the state. It is also the 4th-most populous city of the Charlotte metropolitan area, behind Charlotte, Concord, and Gastonia (all located in North Carolina). As of the 2020 census, the city's population was 74,372.\nThe city is located approximately 25 miles (40 km) south of Charlotte and approximately 70 miles (110 km) north of Columbia.\nRock Hill offers scenic riverfront views along the Catawba River and is home to numerous nature trails, restaurants, and thirty-one parks which are used for both national and local events. Its historic downtown consist of twelve contiguous buildings built as early as 1840 offering dining and retail options. The city is also home to three colleges, including Winthrop University, a public liberal arts university founded in 1886 which enrolls nearly 6,000 students annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "rock hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2190,
+    "attempt": 2173,
+    "place_id": "gn-4950065",
+    "input": {
+      "place": {
+        "place_id": "gn-4950065",
+        "name": "Salem",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.51977,
+        "lon": -70.89552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salem, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Salem,_Massachusetts",
+          "text": "Salem (, SAY-ləm) is a historic coastal city in Essex County, Massachusetts, United States, located on the North Shore of Greater Boston. Continuous settlement by Europeans began in 1626 with English colonists. Salem was one of the most significant seaports for trading commodities in early American history. Prior to the dissolution of county governments in Massachusetts in 1999, it served as one of two county seats for Essex County, alongside Lawrence.\nToday, Salem is a residential and tourist area that is home to the House of Seven Gables, Salem State University, Pioneer Village, the Salem Maritime National Historic Site, Salem Willows Park, and the Peabody Essex Museum. It features historic residential neighborhoods in the Federal Street District and the Charter Street Historic District. The city's population was 44,480 at the 2020 census.\nSalem is most well-known for the Salem witch trials of 1692, which strongly informs the city's cultural identity into the present. Some of Salem's police cars are adorned with witch logos, a public elementary school is known as Witchcraft Heights, and the Salem High School athletic teams are named the Witches. The top of Gallows Hill was believed to be the site of the executions during the Witch Trials, but in 2016 a site near the foot of the hill, called Proctor's Ledge, was identified as the site for the public hangings. Gallows Hill now serves as a city park and the Ledge was made a memorial. Salem is also the birthplace of the National Guard, which first mustered at the Salem Common in 1636.  In the 19th century, the Salem area became the subject of American Literature, particularly in the writings of Nathaniel Hawthorne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "salem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2191,
+    "attempt": 2174,
+    "place_id": "gn-6185377",
+    "input": {
+      "place": {
+        "place_id": "gn-6185377",
+        "name": "Yellowknife",
+        "country": "Canada",
+        "subdivision": "Northwest Territories",
+        "lat": 62.45411,
+        "lon": -114.37248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yellowknife",
+          "url": "https://en.wikipedia.org/wiki/Yellowknife",
+          "text": "Yellowknife is the capital, largest community, and the only city in the Northwest Territories, Canada. It is on the northern shore of Great Slave Lake, about 400 kilometres (250 mi) south of the Arctic Circle, on the west side of Yellowknife Bay near the outlet of the Yellowknife River.\nYellowknife and its surrounding water bodies were named after a local Dene tribe, who were known as the \"Copper Indians\" or \"Yellowknife Indians\", today incorporated as the Yellowknives Dene First Nation. They traded tools made from copper deposits near the Arctic Coast. Modern Yellowknives members can be found in the city as well as in the adjoining, primarily Indigenous communities of Ndilǫ and Dettah.\nThe city's population was 20,340 per the 2021 Canadian census. Of the eleven official languages of the Northwest Territories, five are spoken in significant numbers in Yellowknife: Dene Suline, Dogrib, South and North Slavey, English, and French. In the Dogrib language, the city is known as Sǫǫ̀mbak’è (Athapascan pronunciation: [sõːᵐbakʼe], \"where the money is\").\nThe Yellowknife settlement is considered to have been founded in 1934, after gold was found in the area, although commercial activity in the present-day waterfront area did not begin until 1936. Yellowknife quickly became the centre of economic activity in the NWT, and was named the capital of the Northwest Territories in 1967. As gold production began to decrease, Yellowknife shifted from being a mining town to a centre of government services in the 1980s. However, with the discovery of diamonds north of the city in 1991, this shift began to reverse. In recent years, tourism, transportation, and communications have also emerged as significant industries in Yellowknife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "yellowknife",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2192,
+    "attempt": 2175,
+    "place_id": "gn-1003953",
+    "input": {
+      "place": {
+        "place_id": "gn-1003953",
+        "name": "Fort Beaufort",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.77477,
+        "lon": 26.63376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Beaufort",
+          "url": "https://en.wikipedia.org/wiki/Fort_Beaufort",
+          "text": "Fort Beaufort (Xhosa: iBhofolo), officially renamed KwaMaqoma in March 2023, is a town in the Amatole District of South Africa's Eastern Cape Province, and had a population of 25,668 in 2011. The town was established in 1837 and became a municipality in 1883. The town lies at the confluence of the Kat River and Brak River between the Keiskamma and Great Fish Rivers. KwaMaqoma serves as a mini-'dormitory' for academic staff and students of Fort Hare University, based in the nearby town of Alice, and is also close to Sulphur Springs.\nIt is also the birthplace of South African politician and anti-apartheid activist who is also the first Premier of the Eastern Cape Raymond Mhlaba and his former first wife Joyce Meke."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "fort beaufort",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2193,
+    "attempt": 2176,
+    "place_id": "gn-1165789",
+    "input": {
+      "place": {
+        "place_id": "gn-1165789",
+        "name": "Sehwan",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 26.42495,
+        "lon": 67.86126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sehwan",
+          "url": "https://en.wikipedia.org/wiki/Sehwan",
+          "text": "Sehwan (Sindhi: سيوهڻ شريف; Urdu: سہون شریف), also commonly referred to as Sehwan Sharif (meaning Noble Sehwan) is a historic city located in Jamshoro District of the Sindh province in Pakistan. It is situated on the west bank of the Indus River, approximately 130 kilometers (80 miles) northwest of Hyderabad, Sindh. The city is best known for being the site of one of Pakistan's most prominent Sufi shrines, the Shrine of Lal Shahbaz Qalandar. Sehwan holds the administrative status of a taluka within the Jamshoro District. Historically, it was part of the Dadu District until the creation of Jamshoro District, when it was incorporated into the new administrative unit.\nSehwan is recognized as one of Pakistan's most significant spiritual and pilgrimage centers. It holds a central place in the country's Sufi heritage, alongside other prominent shrines such as the Shrine of Abdullah Shah Ghazi in Karachi, the Data Durbar Complex in Lahore, Bari Imam in Noorpur Shahan near Islamabad, and the revered tombs of the Suhrawardi Sufis in Multan. These sites collectively reflect the deep-rooted Sufi traditions that have shaped the religious and cultural landscape of the region for centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "sehwan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2194,
+    "attempt": 2177,
+    "place_id": "gn-2154219",
+    "input": {
+      "place": {
+        "place_id": "gn-2154219",
+        "name": "Orange",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.28397,
+        "lon": 149.10018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orange, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Orange,_New_South_Wales",
+          "text": "Orange is a city on the western edge of the Central Tablelands region in New South Wales, Australia. It is 254 km (158 mi) west of the state capital, Sydney [206 km (128 mi) on a great circle], at an altitude of 862 metres (2,828 ft). Orange had an urban population of 41,920 at the 2021 Census, making the city a significant regional centre. A significant nearby landmark is Mount Canobolas with a peak elevation of 1,395 m (4,577 ft) AHD and commanding views of the district. Orange is situated within the traditional lands of the Wiradyuri Nation.\nOrange was the birthplace of poets Banjo Paterson and Kenneth Slessor, although Paterson lived in Orange for only a short time as an infant. Walter W. Stone, book publisher (Wentworth Books) and passionate supporter of Australian literature, was also born in Orange. The first Australian Touring Car Championship, known today as the Supercars Championship, was held at the Gnoo Blas Motor Racing Circuit in 1960."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2195,
+    "attempt": 2178,
+    "place_id": "gn-2513106",
+    "input": {
+      "place": {
+        "place_id": "gn-2513106",
+        "name": "Ontinyent",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.82191,
+        "lon": -0.60603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ontinyent",
+          "url": "https://en.wikipedia.org/wiki/Ontinyent",
+          "text": "Ontinyent, in Valencian (known in Spanish as Onteniente), is a town and municipality in the comarca of Vall d'Albaida, Valencian Community, Spain. It is situated on the banks of the Clarià River, a tributary of the Xúquer, and on the Xàtiva–Alcoi railway. Ontinyent is near the Serra de Mariola Natural Park.\nOntinyent is a historic city featuring many baroque churches, aristocratic mansions, city walls, the palace of the Dukes of Almodòver and a 16th-century bridge alongside newer apartment buildings and modern retail. The city has been known for its production of cloth, paper, brandy, furniture and earthenware as well as its trade in cereals, wine, almonds and olive oil.\nJuan Roig, Spanish billionaire and president of Mercadona, went to school in Ontinyent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "ontinyent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2196,
+    "attempt": 2179,
+    "place_id": "gn-2612045",
+    "input": {
+      "place": {
+        "place_id": "gn-2612045",
+        "name": "Svendborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.05982,
+        "lon": 10.60677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Svendborg",
+          "url": "https://en.wikipedia.org/wiki/Svendborg",
+          "text": "Svendborg (Danish: [ˈsvenˌpɒˀ] ) is a town on the island of Funen in south-central Denmark, and the seat of Svendborg Municipality. With a population of 27,593 (1 January 2026), Svendborg is Funen's second largest city. In 2000 Svendborg was declared \"Town of the year\" in Denmark, and in 2003 it celebrated its 750th anniversary as a market town. By road, Svendborg is located 195 kilometres (121 mi) southwest of Copenhagen, 183 kilometres (114 mi) south of Aarhus, 44.2 kilometres (27.5 mi) south of Odense, and 28.5 kilometres (17.7 mi) east of Faaborg.\nSvendborg is home to \"Danmarks Forsorgsmuseum\" social history museum and \"Naturama\" natural history museum. The latter holds a wide variety of taxidermy from whales and bears to birds and Foxes.\nThe largest container ship company in the world, A.P. Møller-Mærsk has its origins in Svendborg, in the \"Villa Anna\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "svendborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2197,
+    "attempt": 2180,
+    "place_id": "gn-2654724",
+    "input": {
+      "place": {
+        "place_id": "gn-2654724",
+        "name": "Brierley Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.48173,
+        "lon": -2.12139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brierley Hill",
+          "url": "https://en.wikipedia.org/wiki/Brierley_Hill",
+          "text": "Brierley Hill is a town and electoral ward in the Metropolitan Borough of Dudley, West Midlands (originally in Staffordshire), England. It is located three miles (five kilometres) south of Dudley and one mile (1.5 kilometres) north of Stourbridge. Part of the Black Country and in a heavily industrialised area, it had a population of 13,935 at the 2011 census. It is best known for glass and steel manufacturing, although the industry has declined considerably since the 1970s. One of the largest factories in the area was the Round Oak Steelworks, which closed down and was redeveloped in the 1980s to become the Merry Hill Shopping Centre. Since 2008, Brierley Hill has been designated as the Strategic Town Centre of the Dudley Borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "brierley hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brierley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

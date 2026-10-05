@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 4596,
+    "attempt": 4561,
+    "place_id": "gn-7262790",
+    "input": {
+      "place": {
+        "place_id": "gn-7262790",
+        "name": "Schofield Barracks",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.49837,
+        "lon": -158.06515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schofield Barracks",
+          "url": "https://en.wikipedia.org/wiki/Schofield_Barracks",
+          "text": "Schofield Barracks is a United States Army installation and census-designated place (CDP) located in Honolulu and in the Wahiawa District of the Hawaiian island of Oʻahu, Hawaiʻi. Schofield Barracks lies adjacent to the town of Wahiawā, separated from most of it by Lake Wilson (also known as Wahiawā Reservoir). Schofield Barracks is named after Lieutenant General John McAllister Schofield, who was the Commanding General of the United States Army from August 1888 to September 1895. He had been sent to Hawaiʻi in 1872 and had recommended the establishment of a naval base at Pearl Harbor.\nSchofield Barracks has an area of 17,725 acres (72 km2) on Central Oʻahu. The post was established in 1908 to provide mobile defense of Pearl Harbor and the entire island. It has been the home of the 25th Infantry Division, nicknamed the \"Tropic Lightning\" division, since 1941, as well as the headquarters for United States Army Hawaii (USARHAW).\nSchofield is home to the Pacific field office of the Army CID.\nThe population was 14,904 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "schofield barracks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "schofield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barracks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4597,
+    "attempt": 4562,
+    "place_id": "gn-881164",
+    "input": {
+      "place": {
+        "place_id": "gn-881164",
+        "name": "Shurugwi",
+        "country": "Zimbabwe",
+        "subdivision": "Midlands Province",
+        "lat": -19.67016,
+        "lon": 30.00589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shurugwi",
+          "url": "https://en.wikipedia.org/wiki/Shurugwi",
+          "text": "Shurugwi, originally known as Selukwe, is a small town and administrative centre in Midlands Province, southern Zimbabwe, located about 350 km (220 mi) south of Harare, with a population of 22,900 according to the 2022 census. The town was established in 1899 on the Selukwe Goldfield, which itself was discovered in the early 1890s, not long after the annexation of Rhodesia by the Pioneer Column.\nThe town lies in well wooded, hilly and picturesque country at an altitude of about 1,440 metres (4,720 ft) and is well watered having a typical annual rainfall of 890 millimetres (35 in). On a clear day, it is quite possible to see the hills around Masvingo and Great Zimbabwe, with the latter being over 145 km (90 mi) away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "shurugwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4598,
+    "attempt": 4563,
+    "place_id": "gn-1819706",
+    "input": {
+      "place": {
+        "place_id": "gn-1819706",
+        "name": "Jardine's Lookout",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Wan Chai",
+        "lat": 22.26857,
+        "lon": 114.19252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jardine's Lookout",
+          "url": "https://en.wikipedia.org/wiki/Jardine's_Lookout",
+          "text": "Jardine's Lookout (Chinese: 渣甸山) is a mountain in Wan Chai District, Hong Kong, with a height of 433 metres (1,421 ft). It is located east of Happy Valley, south of Causeway Bay, and west of Braemar Hill and north of Tai Tam Country Park. It has Hong Kong's most expensive landed single houses, more valuable than ones on Victoria Peak. \nA low-density, high-end residential area called Jardine's Lookout can be found between Wong Nai Chung Gap and Mount Butler. The residential area of Jardine's Lookout consists of thirteen roads named after famous British persons during Hong Kong's colonial times. Addresses on Tai Hang Road, Tai Hang Drive and Chun Fai Road are considered to be Tai Hang Mid-levels or Happy Valley, not Jardine's Lookout.\nJardine's Lookout is surrounded by several other hills including Mount Nicholson, Violet Hill and Mount Butler. Jardine's Lookout is the second most expensive area in Hong Kong, after Deep Water Bay and more expensive than the third most expensive area  Victoria Peak. It has many entries in the list of the most expensives houses in Hong Kong."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "jardine s lookout",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jardine",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lookout",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4599,
+    "attempt": 4564,
+    "place_id": "gn-2266865",
+    "input": {
+      "place": {
+        "place_id": "gn-2266865",
+        "name": "Mafra",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.93793,
+        "lon": -9.32756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mafra, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Mafra,_Portugal",
+          "text": "Mafra (Portuguese pronunciation: [ˈmafɾɐ] ) is a city and a municipality in the district of Lisbon, on the west coast of Portugal, and part of the urban agglomeration of the Greater Lisbon subregion. The population in 2011 was 76,685, in an area of 291.66 km2.\nIt is mostly known for the sumptuous Mafra National Palace inscribed as a UNESCO World Heritage Site. Built in the baroque style, the Mafra National Palace also inspired Portuguese Nobel Prize laureate José Saramago to write his novel Baltasar and Blimunda (Memorial do Convento). Other points of interest around the municipality include the Tapada Nacional de Mafra (also part of the UNESCO site), an enclosed wildlife and game reserve, and Ericeira's World Surf Reserve, the second in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mafra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4600,
+    "attempt": 4565,
+    "place_id": "gn-2622793",
+    "input": {
+      "place": {
+        "place_id": "gn-2622793",
+        "name": "Ebeltoft",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.19442,
+        "lon": 10.6821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ebeltoft",
+          "url": "https://en.wikipedia.org/wiki/Ebeltoft",
+          "text": "Ebeltoft is an old port town on the central east coast of Denmark with a population of 7,437 (1 January 2026). It is located in Syddjurs municipality in Region Midtjylland on the larger Djursland peninsula of Jutland.\nEbeltoft is known for its old town center with cobble-stoned streets and centuries-old half-timbered houses. Plans for the conservation of this peculiar environment, was initiated in the 1960s by the city council and the National Museum of Denmark. Apart from this overall old-village charm, Ebeltoft holds several other notable institutions such as Glasmuseet Ebeltoft, one of the world's first glass museums, Fregatten Jylland, the longest wooden warship in the world and the European Film College, offering short and long courses in film making, especially for young people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ebeltoft",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4601,
+    "attempt": 4566,
+    "place_id": "gn-2639189",
+    "input": {
+      "place": {
+        "place_id": "gn-2639189",
+        "name": "Romsey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.98906,
+        "lon": -1.49989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Romsey",
+          "url": "https://en.wikipedia.org/wiki/Romsey",
+          "text": "Romsey ( ROM-zee) is a town and civil parish in the Test Valley district of Hampshire, England. The town is situated 7 miles (11 km) northwest of Southampton, 11 miles (18 km) southwest of Winchester and 17 miles (27 km) southeast of Salisbury. It sits on the outskirts of the New Forest, just over 3 miles (4.8 km) northeast of its eastern edge. The population of the parish of Romsey was 14,768 at the 2011 census.\nRomsey is one of the principal towns in the Test Valley borough and lies on the River Test, which is known for fly fishing, predominantly trout. In 2019, the town centre underwent substantial remodelling, removing the roundabout around the statue of Lord Palmerston, and creating a pedestrianised area.\nRomsey was home to the 17th-century philosopher and economist William Petty and the 19th-century British prime minister, Lord Palmerston, whose statue has stood in the town centre since 1857. The town was also home to the 20th-century naval officer and statesman Louis Mountbatten, 1st Earl Mountbatten of Burma, who lived at Broadlands. Romsey Abbey, the largest parish church in Hampshire, dominates the centre of the town. Other notable buildings include a 13th-century hunting lodge, an 18th-century coaching inn and the 19th-century corn exchange."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "romsey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4602,
+    "attempt": 4567,
+    "place_id": "gn-2646863",
+    "input": {
+      "place": {
+        "place_id": "gn-2646863",
+        "name": "Hindhead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.11381,
+        "lon": -0.73351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hindhead",
+          "url": "https://en.wikipedia.org/wiki/Hindhead",
+          "text": "Hindhead is a village in the Waverley district of the county of Surrey, England. It is the highest village in the county and its buildings are between 185 metres (607 ft) and 253 metres (830 ft) above sea level. The village forms part of the Haslemere parish. Situated on the county border with Hampshire, it is best known as the location of the Devil's Punch Bowl, a beauty spot and site of special scientific interest. \nThe A3 between Portsmouth and London was crossed by the A287 between Hook and Haslemere. The A3 now passes under Hindhead in the Hindhead Tunnel and its route along the Punch Bowl has been removed and landscaped, but the crossroads still exists for local traffic, as a double mini-roundabout. Hindhead is 11 miles (18 km) south-west of Guildford and on the border with Hampshire. It is a ward in the district of Waverley, and part of the civil parish of Haslemere. The ward, which includes Beacon Hill, had a population of 4,292 at the 2011 Census. The name \"Hindhead\" is first attested in 1571, and means \"hill frequented by hinds\", or female deer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "hindhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4603,
+    "attempt": 4568,
+    "place_id": "gn-2647143",
+    "input": {
+      "place": {
+        "place_id": "gn-2647143",
+        "name": "Helston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.10319,
+        "lon": -5.27045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Helston",
+          "url": "https://en.wikipedia.org/wiki/Helston",
+          "text": "Helston (Cornish: Hellys [ˈhɛlːɪs] ) is a town and civil parish in Cornwall, England. It is situated at the northern end of the Lizard Peninsula, approximately 12 miles (19.3 km) east of Penzance and 9 miles (14.5 km) south-west of Falmouth. Helston is the most southerly town on the island of Great Britain and is around 1+1⁄2 mi (2.4 km) farther south than Penzance. At the 2021 census, the population of the parish was 11,611 and that of the built up area was 11,360.\nThe former stannary and cattle market town is best known for the annual Furry Dance, known locally as the Flora Dance. It is said to originate from the medieval period; however, the Hal-an-Tow is reputed to be of Celtic origin. The associated song and music, The Floral Dance, is known to have been written in 1911. In 2001, the town celebrated the 800th anniversary of the granting of its charter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "helston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4604,
+    "attempt": 4569,
+    "place_id": "gn-2657408",
+    "input": {
+      "place": {
+        "place_id": "gn-2657408",
+        "name": "Alton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.14931,
+        "lon": -0.97469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alton, Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Alton,_Hampshire",
+          "text": "Alton ( AWL-tən) is a market town and civil parish in East Hampshire, England, near the source of the northern branch of the River Wey. It is on the A31 road 8.5 miles (13.7 km) southeast of Farnham and 16 miles (26 km) northwest of Winchester. \nIt was an important market town: it was recorded in the 11th-century Domesday Book as having the most valuable market in England. There have been multiple historic battles in Alton, in 1001 and during the English Civil War in 1643. Alton was the site of the treaty in which Robert Curthose recognised Henry I as the King of England.\nThe town had an urban district council until 1974, when a civil parish was established, creating Alton Town Council. The town had a population of 17,880 at the 2021 census.\nThe town has connections with Sweet Fanny Adams, who was famously murdered in 1867, and Georgian novelist Jane Austen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "alton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4605,
+    "attempt": 4570,
+    "place_id": "gn-2866174",
+    "input": {
+      "place": {
+        "place_id": "gn-2866174",
+        "name": "Neubiberg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.0771,
+        "lon": 11.65812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neubiberg",
+          "url": "https://en.wikipedia.org/wiki/Neubiberg",
+          "text": "Neubiberg (German pronunciation: [nɔʏˈbiːbɛʁk]) is a municipality south-east of Munich, Germany, founded in 1912. It is part of the Munich district of Upper Bavaria.\nIt used to have a military airport that was used as a Luftwaffe base in the Third Reich. After the war, it served as a U.S. airbase and in the following years as the German Air Force officer school, before this moved to Fürstenfeldbruck. Today, the former airfield is a conservation and leisure area; the remainder of the area is used by the University of the Bundeswehr Munich, one of the two universities of the German military, which are also the only two federal universities in Germany.\nNeubiberg proper consists mainly of semi-detached and detached houses and has many gardens. The village of Unterbiberg is part of the municipality and lies to the west of the university, while Neubiberg proper lies to the east. It hosts the headquarters of Infineon Technologies (Campeon) located in the far west of Neubiberg, as well as the headquarters of Intel Deutschland GmbH, a wireless semiconductor business.\nNeubiberg is served by the Munich S-Bahn with a stop Neubiberg on line S7. The Campeon is served by the stop Fasanenpark on line S3, on the border to neighboring Unterhaching. Autobahn A8 also runs by Unterbiberg with an exit near the residential area and a tunnel underneath the former airstrip."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "neubiberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4606,
+    "attempt": 4571,
+    "place_id": "gn-2953541",
+    "input": {
+      "place": {
+        "place_id": "gn-2953541",
+        "name": "Bad Blankenburg",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.68189,
+        "lon": 11.27369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Blankenburg",
+          "url": "https://en.wikipedia.org/wiki/Bad_Blankenburg",
+          "text": "Bad Blankenburg (German pronunciation: [bat ˈblaŋkn̩bʊʁk] ) is a spa town in the district of Saalfeld-Rudolstadt, in Thuringia, Germany. It is situated 6 km southwest of Rudolstadt, and 37 km southeast of Erfurt. It is most famous for being the location of the first kindergarten of Friedrich Wilhelm August Fröbel, in 1837.\nTo the north of it, on an eminence, rise the fine ruins of the castle of Greifenstein, built by the German king Henry I, and from 1275 to 1583 the seat of a cadet branch of the counts of Schwarzburg.\nIn the nineteenth century, Bad Blankenburg was part of the small principality of Schwarzburg-Rudolstadt.\nBad Blankenburg is the headquarters of Deutsche Evangelische Allianz, a cooperative network of most Protestant churches in Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "bad blankenburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blankenburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4607,
+    "attempt": 4572,
+    "place_id": "gn-2961960",
+    "input": {
+      "place": {
+        "place_id": "gn-2961960",
+        "name": "Raheny",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.38681,
+        "lon": -6.18067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raheny",
+          "url": "https://en.wikipedia.org/wiki/Raheny",
+          "text": "Raheny (Irish: Ráth Eanaigh) is a northern suburb of Dublin, Ireland, halfway from the city centre to Howth. It is centred on a historic settlement, first documented in 570 AD (Mervyn Archdall). The district shares Dublin's two largest municipal parks, Saint Anne's Park and Bull Island with its 4.5 km beach, with neighbouring Clontarf, and is crossed by several small watercourses.\nThe coastal hamlet grew rapidly in the 20th century and is now a mid-density, chiefly residential, Northside suburb with a village core. It is home to a range of retail and banking outlets, multiple sports groups including two golf courses, several schools and churches, Dublin's second-busiest library and a Garda station.\nRaheny is also a civil parish in the ancient barony of Coolock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "raheny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4608,
+    "attempt": 4573,
+    "place_id": "gn-302824",
+    "input": {
+      "place": {
+        "place_id": "gn-302824",
+        "name": "Pasinler",
+        "country": "Türkiye",
+        "subdivision": "Erzurum",
+        "lat": 39.97975,
+        "lon": 41.66997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasinler",
+          "url": "https://en.wikipedia.org/wiki/Pasinler",
+          "text": "Pasinler or Basean (Turkish: Pasinler; Armenian: Բասէն, romanized: Pasēn; Georgian: ბასიანი, romanized: basiani; Latin: Phasiani; Greek: Φασιανοί, romanized: Phasianoí; formerly Hasankale and Hesenqele 'the fortress of Hasan'), is a municipality and district of Erzurum Province, Turkey. Its area is 1,134 km2, and its population is 27,055 (2022). It lies on the Aras River.\nIt is located 40 kilometres (25 mi) east of the city of Erzurum and is the site of Hasankale Castle (sometimes called Pasinler Castle). It was the birthplace of the Ottoman poet Nef'i. The old name \"Hasankale\" may be based upon the Aq Qoyunlu ruler Uzun Hasan or upon Hasan the governor of the region in the 1330s or after Küçük Hasan, grandson of Coban, who attacked the town in 1340."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "pasinler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4609,
+    "attempt": 4574,
+    "place_id": "gn-3440939",
+    "input": {
+      "place": {
+        "place_id": "gn-3440939",
+        "name": "Punta del Este",
+        "country": "Uruguay",
+        "subdivision": "Maldonado",
+        "lat": -34.94747,
+        "lon": -54.93382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Punta del Este",
+          "url": "https://en.wikipedia.org/wiki/Punta_del_Este",
+          "text": "Punta del Este (Spanish pronunciation: [ˈpunta ðel ˈeste]) is a seaside city and peninsula on the Atlantic Coast in the Maldonado Department of southeastern Uruguay. Starting as a small town, Punta del Este grew to become a resort for the Latin and North American jet set and tourists. The city has been called \"The Hamptons of South America\", as well as \"The Monaco of the South\", \"The Miami Beach of South America\", \"The Pearl of the Atlantic\", and \"The St. Tropez of South America\". Many famous people have visited, resided, or acquired vacation properties in Punta del Este and its surroundings.\nPunta del Este hosted the Whitbread Around the World yacht races from 1985 to 1994 and participated with its own yacht 'Uruguay Natural'. Punta del Este also hosted the 1967 American Summit attended by U.S. President Lyndon Johnson, and the beginning of the Uruguay Round of international trade negotiations in 1986 that led to the creation of the World Trade Organization in 1994. The city hosted the  2014 Formula E Championship and the Gran Premio de Punta del Este receiving national, South American and international competitions.\nIn addition to international film festivals, gastronomy, and first-class hotels, the region has protected natural reserves such as Isla de Lobos, Gorriti Island, La Barra, or the Arboretum Lussich. Popular landmarks in the area include the La Mano giant sculpture, the Santorini-styled complex Casapueblo, the Rafael Viñoly designed Puente Garzón bridge, and the Museum of the Sea. Although the city has a year-round population of about 18,200 in winter, the number greatly expands during the summer season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "punta del este",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "punta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "este",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4610,
+    "attempt": 4575,
+    "place_id": "gn-3614797",
+    "input": {
+      "place": {
+        "place_id": "gn-3614797",
+        "name": "Belén Gualcho",
+        "country": "Honduras",
+        "subdivision": "Ocotepeque Department",
+        "lat": 14.48333,
+        "lon": -88.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belén Gualcho",
+          "url": "https://en.wikipedia.org/wiki/Bel%C3%A9n_Gualcho",
+          "text": "Belén Gualcho is a municipality in the Honduran department of Ocotepeque. \nThis small village founded in 1715 is a jewel in the middle of the Honduran mountains, located in the department of Ocotepeque and close to Gracias and San Sebastian to the south. The highlights of the village are the colonial Church of La Trinidad and Sunday Market where the Lenca people come to sale and get basic supplies. In 1871, it was listed as the head of the Curato de Gualcho, later it was called Belén de Copán or Belén de Occidente; on September 2, 1907, it became part of the Ocotepeque Department, calling it Belén de Ocotepeque and on February 15, 1922 it was called Belén Gualcho, belonging to the Sensenti district. Its name according to the Mexica spelling means \"House of the oaks\", and in Lenca language it means \"Place of many waters\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "belen gualcho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gualcho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4611,
+    "attempt": 4576,
+    "place_id": "gn-4934664",
+    "input": {
+      "place": {
+        "place_id": "gn-4934664",
+        "name": "Dedham",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.24177,
+        "lon": -71.16616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dedham, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Dedham,_Massachusetts",
+          "text": "Dedham ( DED-əm) is a town in, and the county seat of, Norfolk County, Massachusetts, United States. Located on Boston's southwestern border, the population was 25,364 at the 2020 census.\nFirst settled by English colonists in 1635 and incorporated in 1636, Dedham established the first public school in America in 1643. Dedham is home to the Fairbanks House, the oldest surviving timber-frame house in the United States. On January 1, 1643, by unanimous vote, Dedham  authorized the first taxpayer-funded public school, \"the seed of American education.\" The first man-made canal in North America, Mother Brook, was created in Dedham in 1639.\nThe town took an active part in the American Revolution and was home to the Dedham Liberty Pole in the late 18th century. When a split occurred at the First Church and Parish in Dedham, the resulting lawsuit became known as The Dedham Case, an important landmark in the separation of church and state. In 1921, the historic Sacco and Vanzetti trial was held in the Norfolk County Courthouse. Dedham is sometimes called the \"mother of towns\" because 14 present-day communities were included within its original broad borders.\nDedham is governed by a representative town meeting, a select board which appoints the town manager, and various other boards and committees. The town is served by MBTA's commuter rail and bus service. The Dedham Public Schools operates seven schools, and a number of private schools also operate within the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "dedham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4612,
+    "attempt": 4577,
+    "place_id": "gn-5220798",
+    "input": {
+      "place": {
+        "place_id": "gn-5220798",
+        "name": "Barrington",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.74066,
+        "lon": -71.30866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrington, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Barrington,_Rhode_Island",
+          "text": "Barrington is a suburban, residential town in Bristol County, Rhode Island, United States, approximately 7 miles (11 km) southeast of Providence. As of the 2020 United States Census, the population was 17,153.\nBarrington was founded by Congregationalist separatists from Swansea, Massachusetts, and incorporated in 1717. It was ceded from Massachusetts to Rhode Island and merged into Warren in 1747, and in 1770 made into a separate town by the Rhode Island legislature. It was a sparsely developed, agricultural community until the arrival of brickmaking companies in the 1850s, which employed large numbers of French-Canadians and Italians. The construction of a railroad to Providence in 1855 further contributed to suburban development, attracting residents of neighboring urban areas and contributing to the development of manufacturing industries. The post–World War II baby boom increased suburbanization trends, resulting in a large population increase.\nHistorical sites provide examples of architectural and suburban development during various stages of the town's history, including the Allen-West House, Barrington Civic Center Historic District, and O'Bannon Mill. Nine sites in Barrington are listed under the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "barrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4613,
+    "attempt": 4578,
+    "place_id": "gn-5336477",
+    "input": {
+      "place": {
+        "place_id": "gn-5336477",
+        "name": "Chinatown",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.7966,
+        "lon": -122.40858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinatown, San Francisco",
+          "url": "https://en.wikipedia.org/wiki/Chinatown,_San_Francisco",
+          "text": "The Chinatown, centered on Grant Avenue and Stockton Street in San Francisco, California, is the oldest Chinatown in North America and is one of the largest Chinese enclaves outside Asia. It is also the oldest and largest of the four notable Chinese enclaves within San Francisco. Since its establishment in the early 1850s, it has been important and influential in the history and culture of ethnic Chinese immigrants in North America. Chinatown is an enclave that has retained its own customs, languages, places of worship, social clubs, and identity. San Francisco's Chinatown is also a major tourist attraction, drawing more visitors annually than the Golden Gate Bridge (as of 2013).\nThe Chinatown district is primarily Cantonese and Taishanese-speaking, both dialects originating in southern China. Most Chinatown residents have origins in Guangdong Province and Hong Kong, with some Mandarin-speaking residents from Taiwan and central and Northern China, although lesser in comparison to Cantonese-speaking people, despite Cantonese being a minority language amongst people in China and ethnically Chinese people in Asia.\nThere are two hospitals, several parks and squares, numerous churches, a post office, and other infrastructure. Recent immigrants, many of whom are elderly, opt to live in Chinatown because of the availability of affordable housing and their familiarity with the culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "chinatown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4614,
+    "attempt": 4579,
+    "place_id": "gn-653281",
+    "input": {
+      "place": {
+        "place_id": "gn-653281",
+        "name": "Kemi",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 65.73641,
+        "lon": 24.56371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemi",
+          "url": "https://en.wikipedia.org/wiki/Kemi",
+          "text": "Kemi (Finnish: [ˈkemi]; Northern Sami: Giepma [ˈkie̯pma]; Inari Sami: Kiemâ; Skolt Sami: Ǩeeʹmm) is a town and municipality of Finland. It is located approximately 30 kilometres (19 mi) from the city of Tornio and the Swedish border. The distance to Oulu is 105 kilometres (65 mi) to the south and to Rovaniemi is 117 kilometres (73 mi) to the northeast. It was founded in 1869 by a decree of the Emperor Alexander II of Russia because of its proximity to a deepwater port.\nThe town has a population of 19,339 (31 December 2025) and covers an area of 747.28 km2 (288.53 sq mi) of which 652.1 square kilometers (251.8 sq mi) are water. The population density is 202.76 inhabitants per square kilometre (525.1/sq mi).\nAccording to current statistics, Kemi has the highest number of drug crimes than any other town in Finland. This is thought to be due to its proximity to the Swedish border and the drug smuggling that occurs across it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "kemi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4615,
+    "attempt": 4580,
+    "place_id": "gn-760917",
+    "input": {
+      "place": {
+        "place_id": "gn-760917",
+        "name": "Pułtusk",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.7025,
+        "lon": 21.08276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pułtusk",
+          "url": "https://en.wikipedia.org/wiki/Pu%C5%82tusk",
+          "text": "Pułtusk ([ˈpuwtusk]) is a town in Poland, by the river Narew. Located 70 kilometres (43 miles) north of Warsaw in the Masovian Voivodeship, it has a population of 19,224 as of 2023. Known for its historic architecture and Europe's longest paved marketplace (380 metres (1,250 ft) in length), it is a popular weekend destination for the residents of Warsaw.\nPułtusk is one of the oldest towns in Poland, having received town rights from Duke Siemowit I of Masovia in 1257. Throughout the 15th and 17th centuries, the settlement was a significant economic centre of Masovia. The favourable geographical placement of the town on the Narew, along which goods were transported to the port of Gdańsk on the Baltic Sea, contributed to the town's importance. Pułtusk was also the site of notable events, such as the Napoleon's 1806 battle, and the world's largest recorded meteorite shower to date in 1868, among others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "pu tusk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pu",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tusk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

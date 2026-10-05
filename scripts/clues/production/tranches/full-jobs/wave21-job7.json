@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4152,
+    "attempt": 4121,
+    "place_id": "gn-4608657",
+    "input": {
+      "place": {
+        "place_id": "gn-4608657",
+        "name": "Bristol",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.59511,
+        "lon": -82.18874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bristol, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Bristol,_Virginia",
+          "text": "Bristol is an independent city in Virginia, United States. As of the 2020 census, the population was 17,219. It is the twin city of Bristol, Tennessee, just across the state line, which runs down the middle of its main street, State Street. As an independent city, Bristol is not part of any county, but it is adjacent to Washington County, Virginia. It is a principal city in the Kingsport–Bristol metropolitan area, which had a population of 307,614 in 2020. The metro area is a component of the larger Tri-Cities region of Tennessee and Virginia, with a population of 508,260 in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bristol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4153,
+    "attempt": 4122,
+    "place_id": "gn-4696233",
+    "input": {
+      "place": {
+        "place_id": "gn-4696233",
+        "name": "Harlingen",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 26.19063,
+        "lon": -97.6961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harlingen, Texas",
+          "url": "https://en.wikipedia.org/wiki/Harlingen,_Texas",
+          "text": "Harlingen ( HAR-lin-jin) is a city in Cameron County, Texas. It is located in the central region of the Rio Grande Valley, about 30 miles (48 km) from the coast of the Gulf of Mexico. The city covers more than 40 square miles (104 km2) and is the second-largest city in Cameron County, as well as the sixth-largest in the Rio Grande Valley. As of the 2020 census, the city had a population of 71,892.\nHarlingen is a principal city of the Brownsville–Harlingen metropolitan area, which is part of the larger Brownsville–Harlingen–Raymondville combined statistical area, included in the Matamoros–Brownsville metropolitan region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "harlingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4154,
+    "attempt": 4123,
+    "place_id": "gn-4905367",
+    "input": {
+      "place": {
+        "place_id": "gn-4905367",
+        "name": "Park Ridge",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.01114,
+        "lon": -87.84062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park Ridge, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Park_Ridge,_Illinois",
+          "text": "Park Ridge is a city in Cook County, Illinois, United States, and a northwestern suburb of the Chicago metropolitan area. It is located 15 miles (24 km) north of downtown Chicago. It is close to O'Hare International Airport, major expressways, and rail transportation. It borders three community areas of Chicago in its Far Northwest Side: Edison Park, Norwood Park, and O'Hare.\nThe soil is abundant with clay deposits, which made it a brick-making center for the developing city of Chicago. Park Ridge was originally called Pennyville to honor George Penny, the businessman who owned the local brickyard along with Robert Meacham. Later it was named Brickton. The Des Plaines River divides Park Ridge from neighboring Des Plaines, which is west of Park Ridge. Chicago is south and east of Park Ridge, and Niles and unincorporated Maine Township are to its north.\nPer the 2020 census, the population of Park Ridge was 39,656."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "park ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4155,
+    "attempt": 4124,
+    "place_id": "gn-4915734",
+    "input": {
+      "place": {
+        "place_id": "gn-4915734",
+        "name": "Waukegan",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.36363,
+        "lon": -87.84479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waukegan, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Waukegan,_Illinois",
+          "text": "Waukegan ( wə-KEE-ghən) is a city in Lake County, Illinois, United States, and its county seat. Located 36 miles (58 km) north of Chicago, Waukegan is a satellite city within the greater Chicago metropolitan area. Its population was 89,321 at the 2020 census.\nWaukegan is the most populous city in Lake County, the seventh-most populous city within the Chicago metropolitan area, and the 10th-most populous city in Illinois. Waukegan has historically been more industrial in comparison to neighboring wealthy North Shore suburbs; it has long been classified by the Illinois state government as \"socioeconomically distressed\" despite having some middle class inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "waukegan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4156,
+    "attempt": 4125,
+    "place_id": "gn-4923531",
+    "input": {
+      "place": {
+        "place_id": "gn-4923531",
+        "name": "Michigan City",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.70754,
+        "lon": -86.89503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Michigan City, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Michigan_City,_Indiana",
+          "text": "Michigan City is a city in LaPorte County, Indiana, United States. It had a population of 32,075 at the 2020 census. Located along Lake Michigan in the Michiana region, the city is about 45 miles (72 km) east of Chicago and is 40 miles (64 km) west of South Bend.\nMichigan City is noted for both its proximity to Indiana Dunes National Park and for bordering Lake Michigan. It receives a fair amount of tourism during the summer, especially by residents of Chicago and nearby cities in Northern Indiana. It is connected to Chicago via the South Shore Line passenger train."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "michigan city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "michigan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4157,
+    "attempt": 4126,
+    "place_id": "gn-4936008",
+    "input": {
+      "place": {
+        "place_id": "gn-4936008",
+        "name": "Everett",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.40843,
+        "lon": -71.05366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Everett, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Everett,_Massachusetts",
+          "text": "Everett is a city in Middlesex County, Massachusetts, United States, directly north of Boston, bordering the neighborhood of Charlestown. The population was 49,075 at the time of the 2020 United States census.\nEverett was the last city in the United States to have a bicameral legislature, which was composed of a seven-member Board of Aldermen and an eighteen-member Common Council. On November 8, 2011, the voters approved a new City Charter that changed the City Council to a unicameral body with eleven members – six ward councilors and five councilors-at-large. The new City Council was elected during the 2013 City Election."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "everett",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4158,
+    "attempt": 4127,
+    "place_id": "gn-5097441",
+    "input": {
+      "place": {
+        "place_id": "gn-5097441",
+        "name": "East Orange",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.76732,
+        "lon": -74.20487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Orange, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/East_Orange,_New_Jersey",
+          "text": "East Orange is a city in Essex County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 69,612, an increase of 5,342 (+8.3%) from the 2010 census count of 64,270, which in turn reflected a decline of 5,554 (−8.0%) from the 69,824 counted in the 2000 census. The city was the state's 17th most populous municipality in 2020, after having been ranked 20th in 2010 and 14th statewide in 2000. The Census Bureau's Population Estimates Program calculated a population of 69,556 for 2023, making it the 544th-most populous municipality in the nation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "east orange",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4159,
+    "attempt": 4128,
+    "place_id": "gn-5161902",
+    "input": {
+      "place": {
+        "place_id": "gn-5161902",
+        "name": "Marion",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.58867,
+        "lon": -83.12852
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marion, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Marion,_Ohio",
+          "text": "Marion is a city in Marion County, Ohio, United States, and its county seat. It is located in north-central Ohio, approximately 50 miles (80 km) north of Columbus. The population was 35,999 at the 2020 census, down slightly from 36,837 at the 2010 census. It is the largest city in Marion County and the principal city of the Marion micropolitan area. It is also part of the larger Columbus–Marion–Zanesville, OH Combined Statistical Area.\nPresident Warren G. Harding, a former owner of the Marion Star, was a resident of Marion for much of his adult life and is buried at Harding Tomb. The city and its development were closely related to industrialist Edward Huber and his extensive business interests. The city is home to several historic properties, some listed on the National Register of Historic Places listings in Marion County, Ohio.\nMarion currently styles itself as \"America's Workforce Development Capital\" given public–private educational partnerships and coordination of educational venues, from four and two–year college programs to vocational and technical training and skill certification programs. The mayor of Marion is Bill Collins."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "marion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4160,
+    "attempt": 4129,
+    "place_id": "gn-585400",
+    "input": {
+      "place": {
+        "place_id": "gn-585400",
+        "name": "Naftalan",
+        "country": "Azerbaijan",
+        "subdivision": "Naftalan",
+        "lat": 40.50821,
+        "lon": 46.8203
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naftalan, Azerbaijan",
+          "url": "https://en.wikipedia.org/wiki/Naftalan,_Azerbaijan",
+          "text": "Naftalan is a city in Azerbaijan, known as a medical touristic center. It is located on an agricultural plain near the Lesser Caucasus Mountains. The word naftalan also means a petroleum product that can be obtained there. It is the centre of a petroleum industry, with a grade of oil referred to as \"Naftalan\".\nThe city is located approximately 330 kilometers west of Baku, 50 kilometers from Ganja city, and 40 kilometers from Mingachevir city. It is 225 meters above sea level and experiences a warm spring and mild winter climate, with an average annual temperature of approximately +14.8 degrees Celsius. The city covers an area of 35.73 square kilometers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "naftalan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4161,
+    "attempt": 4130,
+    "place_id": "gn-5989117",
+    "input": {
+      "place": {
+        "place_id": "gn-5989117",
+        "name": "Kanata",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.3001,
+        "lon": -75.91606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanata, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Kanata,_Ontario",
+          "text": "Kanata (, kə-NAT-ə) is a satellite community and former city within Ottawa, Ontario. It is located about 22 km (14 mi) west of the city's downtown core. As of 2021, the former City of Kanata had a population of 98,938, with the population centre (which includes next-door Stittsville) having a population of 137,118. Before it was amalgamated into Ottawa in 2001, it was one of the fastest-growing cities in Canada and the fastest-growing community in Eastern Ontario. Located just to the west of the National Capital Commission Greenbelt, it is one of the largest of several communities that surround central Ottawa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kanata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4162,
+    "attempt": 4131,
+    "place_id": "gn-6145489",
+    "input": {
+      "place": {
+        "place_id": "gn-6145489",
+        "name": "Shawinigan",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.56675,
+        "lon": -72.74913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shawinigan",
+          "url": "https://en.wikipedia.org/wiki/Shawinigan",
+          "text": "Shawinigan (English: ; French: [ʃawiniɡan] ) is a town located on the Saint-Maurice River in the Mauricie area in Quebec, Canada and now a satellite town of the greater Trois-Rivières area. It had a population of 49,620 as of the 2021 Canadian census. \nShawinigan is also the name for the local territory equivalent to a regional county municipality (TE) and census division (CD) of Quebec encompassing the town and surrounds. Its geographical code is 36. Shawinigan is the seat of the judicial district of Saint-Maurice.\nThe name Shawinigan has had numerous spellings over time: Chaouinigane, Oshaouinigane, Assaouinigane, Achawénégan, Chawinigame, Shawenigane, Chaouénigane. It may mean \"south portage\", \"portage of beeches\", \"angular portage\", \"summit\" or \"crest\". Before 1958, the city was known as Shawinigan Falls.\nShawinigan is the birthplace of former Prime Minister of Canada Jean Chrétien."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "shawinigan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4163,
+    "attempt": 4132,
+    "place_id": "gn-6318807",
+    "input": {
+      "place": {
+        "place_id": "gn-6318807",
+        "name": "Tucumã",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -6.7475,
+        "lon": -51.16111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tucumã, Pará",
+          "url": "https://en.wikipedia.org/wiki/Tucumã,_Pará",
+          "text": "Tucumã is a municipality in the state of Pará in the Northern region of Brazil. It is located in the southeastern region of the state, approximately 882 km away from the capital. The town experienced significant population growth in the 1980s due to favorable agricultural conditions, timber exploitation, and gold extraction. It has a total area of 2,535.11 km2 and is part of the now-extinct Grande Carajás Program. According to the latest data from 2020, Tucumã had a population of 40,136 inhabitants. The municipality has a medium Human Development Index (HDI) of 0.747 and a per capita income of R$ 15,452.90. Tucumã, along with the neighboring city of Ourilândia do Norte, forms the only conurbated area in the southeastern part of Pará."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "tucuma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4164,
+    "attempt": 4133,
+    "place_id": "gn-651943",
+    "input": {
+      "place": {
+        "place_id": "gn-651943",
+        "name": "Kokkola",
+        "country": "Finland",
+        "subdivision": "Central Ostrobothnia",
+        "lat": 63.83847,
+        "lon": 23.13066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kokkola",
+          "url": "https://en.wikipedia.org/wiki/Kokkola",
+          "text": "Kokkola (Finnish: [ˈkokːolɑ]; Swedish: Karleby, Finland Swedish: [ˈkɑrleˌbyː]) is a town in Finland and the regional capital of Central Ostrobothnia. It is located on the west coast of the country, on the Gulf of Bothnia. The population of Kokkola is approximately 48,000, while the sub-region has a population of approximately 54,000. It is the 22nd most populous municipality in Finland, and the 20th most populous urban area in the country.\nKokkola covers an area of 2,730.80 square kilometres (1,054.37 sq mi) of which 1,286.61 km2 (496.76 sq mi) is water. The population density is 33.42 inhabitants per square kilometre (86.6/sq mi). Neighbour municipalities are Halsua, Kalajoki, Kannus, Kaustinen, Kronoby, Lestijärvi, Larsmo, and Toholampi.\nKokkola is a bilingual municipality with Finnish and Swedish as its official languages. The population consists of 82% Finnish speakers, 12% Swedish speakers, and 6% speakers of other languages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "kokkola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4165,
+    "attempt": 4134,
+    "place_id": "gn-654899",
+    "input": {
+      "place": {
+        "place_id": "gn-654899",
+        "name": "Kajaani",
+        "country": "Finland",
+        "subdivision": "Kainuu",
+        "lat": 64.22728,
+        "lon": 27.72846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kajaani",
+          "url": "https://en.wikipedia.org/wiki/Kajaani",
+          "text": "Kajaani (Finnish: [ˈkɑjɑːni]; Swedish: Kajana), is a town in Finland and the regional capital of Kainuu. Kajaani is located southeast of Lake Oulu, which drains into the Gulf of Bothnia through the Oulu River. The population of Kajaani is approximately 36,000, while the sub-region has a population of approximately 51,000. It is the 32nd most populous municipality in Finland.\nThe town was founded in the 17th century, fueled by the growth of the tar industry, but it was preceded by a long history of settlements. During the Great Northern War it succumbed to Russian forces, who ruined Kajaani Castle in 1716. Today, the local economy is mainly driven by the sawmill, lumber, and paper industries, although UPM Kymmene's paper mill, the main employer from 1907 until 2008, has since closed. Kajaani's church was built in 1896 in the Neo-Gothic style by the architect Jac Ahrenberg to replace an earlier church. Kajaani's town theatre was established in 1969.\nKajaani is home to two football clubs, AC Kajaani and Kajaanin Haka, and the ice hockey team Hokki. The Kajaani University of Applied Sciences was established in 1992. Kajaani is also home to LUMI, the \"fastest supercomputer in the EU\", which is located on the former paper mill site of UPM. Also, Google is planning a data center to be located in the village of Otanmäki, which is situated approximately 37 kilometres (23 mi) from the town center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "kajaani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4166,
+    "attempt": 4135,
+    "place_id": "gn-6690866",
+    "input": {
+      "place": {
+        "place_id": "gn-6690866",
+        "name": "Surbiton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39148,
+        "lon": -0.29825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surbiton",
+          "url": "https://en.wikipedia.org/wiki/Surbiton",
+          "text": "Surbiton is a suburban neighbourhood in South West London, within the Royal Borough of Kingston upon Thames (RBK). It is next to the River Thames, 11 miles (18 km) southwest of Charing Cross. Surbiton was in the historic county of Surrey and since 1965 it has been in Greater London. Surbiton comprises five of the RBK's wards: Alexandra, Berrylands, St. Mark's, Surbiton Hill, and Tolworth.\nFounded originally as Kingston-upon-Railway when the area was first developed in the 1840s, Surbiton possesses a mixture of grand 19th-century townhouses, Art Deco courts, and more recent residential blocks blending in with semi-detached 20th-century housing estates. With a population of 45,132 in 2016, it accounts for approximately 25% of the total population of the Royal Borough of Kingston upon Thames. Surbiton extends over an area of 7.18 km2 (2.77 mi2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "surbiton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4167,
+    "attempt": 4136,
+    "place_id": "gn-678459",
+    "input": {
+      "place": {
+        "place_id": "gn-678459",
+        "name": "Fălticeni",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.45,
+        "lon": 26.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fălticeni",
+          "url": "https://en.wikipedia.org/wiki/Fălticeni",
+          "text": "Fălticeni (Romanian pronunciation: [fəltiˈt͡ʃenʲ]; German: Foltischeni; Hungarian: Falticsén; Hebrew: פלטיצ'ן Yiddish: פאלטישאן, romanized: Foltshen) is a town in Suceava County, northeastern Romania. It is situated in the historical region of Western Moldavia. According to the 2021 census, Fălticeni is the third largest urban settlement in the county. It was declared a municipality in 1995, along with two other cities in Suceava County: Rădăuți and Câmpulung Moldovenesc.\nFălticeni covers an area of 28.76 km2 (11.10 sq mi), of which 25% are orchards and lakes, and it administers two villages: Șoldănești and Țarna Mare. It was the capital of former Baia County (1929–1950). The town is known for the high number of Romanian writers, artists, and scientists who were born, lived, studied, or have created here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "falticeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4168,
+    "attempt": 4137,
+    "place_id": "gn-728378",
+    "input": {
+      "place": {
+        "place_id": "gn-728378",
+        "name": "Pazardzhik",
+        "country": "Bulgaria",
+        "subdivision": "Pazardzhik",
+        "lat": 42.19934,
+        "lon": 24.33318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pazardzhik",
+          "url": "https://en.wikipedia.org/wiki/Pazardzhik",
+          "text": "Pazardzhik (Bulgarian: Пазарджик [ˈpazɐrd͡ʒik]) is a city situated along the banks of the Maritsa river, southern Bulgaria. It is the centre of Pazardzhik Province and Pazardzhik Municipality. It is located in the Upper Thracian Plain and in the Pazardzhik-Plovdiv Field, a subregion of the plains. It is west of Plovdiv, about 37 kilometres (23 mi), 112 kilometres (70 mi) southeast of Sofia and 288 kilometres (179 mi) from Burgas. The population is 55,220, as it has been growing around from the end of the 19th century to the end of the 20th century. The city reached its highest milestone, exceeding 80,000. Due to poor economic performance in Bulgaria during the 1990s and early 2000s, emigration of Bulgarians began, which affected Pazardzhik as well.\nThe history of Pazardzhik can be traced back to the 7th millennium BC, with early civilisations being brought from Asia-Minor. They were agro-pastralists and settled near Maritsa, Pazardzhik and Sinitovo. A clay idol named the Pazardzhik Venus was found in 1872. The Drougoubitai tribe settled in the early Middle Ages. Many different researches have all been disputed on the founding of Pazardzhik. One of them was that the city was founded in 1395 by nomads from Saruhan. Another one was three years later in 1398, the city was founded by the migration of Tatars from Actav to Rumelia. The third is about the establishment in 1418, where the Minnet Bey and the Tatars came from Isquilip, and the fourth thesis and the final one is the city's foundation from the resettled Crimean Tatar people. Rice cultivation intensified in the region, which made the economy of the city grow.\nDuring the Russo-Turkish War (1806–1812), there was a brief siege under Count Nikolay Kamensky. In the mid-19th century, it was an important craft and trade centre. Many institutions were established in this period. Тhe Church of the Dormition was first founded. Vasil Levski appointed the revolutionary committee in Pazardzhik as a second centre in 1872. Following 4 years after that, Georgi Benkovski resumed the activity of the committee. During the Russo-Turkish War (1877–1878), Iosif Gurko wrestled the Ottomans out of the city and during the same period, Ovanes Sovadzhian prevented the annihilation of the city. The first reported Red Army troops entered Pazardzhik on 23 September 1944. After 9 September 1944, the city grew to an industrial centre, which in 1947 during nationalisation, began consolidation of industrial enterprises. There were demonstrations consisting of about 5,000 protesters, demanding to change to democracy.\nThe economy of Pazardzhik is now a slowly growing one. GDP per capita is 9,101 BGN in 2012. The average monthly salary was 635 BGN and unemployment was 5.2% in 2015. The economy today is mainly based on agriculture, which also includes animal breeding. Farms are mainly located in the fertile land of the Upper Thracian Plain. The landmarks of the city are the clock tower, Church of the Dormition, which has a wood-carved iconstasis protected by UNESCO, the History Museum, the old post office, the Drama Theatre and others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 502
+    },
+    "banned_terms": [
+      {
+        "term": "pazardzhik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4169,
+    "attempt": 4138,
+    "place_id": "gn-933004",
+    "input": {
+      "place": {
+        "place_id": "gn-933004",
+        "name": "Tlokweng",
+        "country": "Botswana",
+        "subdivision": "South-East",
+        "lat": -24.66861,
+        "lon": 25.97111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlokweng",
+          "url": "https://en.wikipedia.org/wiki/Tlokweng",
+          "text": "Tlokweng is a peri-urban settlement classified as an urban  village located east of the capital of Botswana, Gaborone and falling under the jurisdiction of South East District Council.  It can be considered part of the conurbation of Gaborone. Tlokweng stands on the other side of the river, and is on the road to the border with South Africa, the border post being just 15 km to the east. The population was 35,982 at the 2011 census. It is now part of Gaborone agglomeration, home to 421,907 inhabitants at the 2011 census. The tribe originating from Tlokweng is referred to as Batlokwa. Many people from across Botswana have come to seek permanent and sometimes temporary settlement in Tlokweng because of its proximity to the capital city where most jobs are.\nAccording to Asperen the settlement of Tlokweng has a dual spatial structure with a traditional unplanned area and a modern planned area. Tlokweng is surrounded by grazing and arable land use under tribal and freehold tenure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "tlokweng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4170,
+    "attempt": 4139,
+    "place_id": "gn-10126715",
+    "input": {
+      "place": {
+        "place_id": "gn-10126715",
+        "name": "Gành Hào",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 9.02827,
+        "lon": 105.42116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gành Hào",
+          "url": "https://en.wikipedia.org/wiki/Gành_Hào",
+          "text": "Gành Hào is a ward of Cà Mau Province, in south-western Vietnam.\nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 16 June 2025). Accordingly, Gành Hào Commune was established in Cà Mau Province on the basis of the entire natural area of 13.40 km² with a population of 17,587 people of Gành Hào Township, and the entire natural area of 71.25 km² with a population of 13,965 people of Long Điền Tây Commune, Đông Hải District, Bạc Liêu Province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ganh hao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ganh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4171,
+    "attempt": 4140,
+    "place_id": "gn-1149698",
+    "input": {
+      "place": {
+        "place_id": "gn-1149698",
+        "name": "Phetchaburi",
+        "country": "Thailand",
+        "subdivision": "Phetchaburi",
+        "lat": 13.11189,
+        "lon": 99.94467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phetchaburi",
+          "url": "https://en.wikipedia.org/wiki/Phetchaburi",
+          "text": "Phetchaburi (Thai: เพชรบุรี, pronounced [pʰét.t͡ɕʰā.bū.rīː]) or Phet Buri (pronounced [pʰét bū.rīː]) is a town (thesaban mueang) in southern Thailand, capital of Phetchaburi Province. In Thai, Phetchaburi means \"city of diamonds\" (buri means \"city\" in Sanskrit language). It is approximately 160 km south of Bangkok, at the northern end of the Thai peninsula. As of 2005, the town had a population of 26,181 and covers the two tambon Tha Rap and Khlong Krachaeng.\nThe Phetchaburi River runs through the middle of the city. The region is mostly flat, save for a single hill (called Khao Wang) on the outskirts of town. The royal palace named Phra Nakhon Khiri (from Sanskrit language, \"Phara\" from Vara meaning noble or blessed, \"nakhon\" from nagar from city, \"khiri\" from giri meaning hill or mountain), and one of the many wats are on top of Khao Wang. The hill and town is the site of an annual festival, called the Phra Nakhon Khiri Fair. It lasts for eight days in early February and includes a sound and light show and classical Thai dance.\nThe official city flower is the leelowadee flower or frangipani.\nPhetchaburi is known for its traditional Thai desserts. The most well-known is a custard dessert called khanom mor gaeng. Other popular desserts include Portuguese-influenced thong yip, thong yod, and foi thong. In 2021, Phetchaburi was recognized by UNESCO as a creative city of gastronomy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "phetchaburi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

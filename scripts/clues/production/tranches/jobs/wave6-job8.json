@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5889,
+    "place_id": "gn-952865",
+    "input": {
+      "place": {
+        "place_id": "gn-952865",
+        "name": "Springs",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.25,
+        "lon": 28.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springs, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springs,_South_Africa",
+          "text": "Springs is a former independent city that is now part of the City of Ekurhuleni, based in the east of Johannesburg (East Rand), in Gauteng Province, South Africa. It lies 50 km (31 mi) east of Johannesburg and 72 km (45 mi) southeast from Pretoria. Its name is probably derived  from the large number of springs in the area, and its estimated population is more than 121,610 in 2011. It is situated at 1,628 m (5,341 ft) above sea level.\nDuring the apartheid-era, the city was racially segregated under the Group Areas Act. These consisted of middle and upper-income white suburbs around the city centre and the Indian area of Bakerton east of the CBD. A community of black Africans were living in a \"black spot\" of Springs known as Payneville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5895,
+    "place_id": "gn-2523693",
+    "input": {
+      "place": {
+        "place_id": "gn-2523693",
+        "name": "Pozzallo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.73028,
+        "lon": 14.84672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pozzallo",
+          "url": "https://en.wikipedia.org/wiki/Pozzallo",
+          "text": "Pozzallo (Sicilian: Puzzaddu) is a town and comune in the province of Ragusa, Sicily, southern Italy.  \nPozzallo  is a major summer destination for tourists: as of July 2025, two beaches in the city hold a Blue Flag award, presented by the FEE and given to beaches which meet strict criteria dealing with water quality, environmental education and information, environmental management, and safety and other services. Very few beaches retain this award in Sicily, including the two located in Pozzallo.\nIt is also a major port, with daily routes between Sicily and Malta (about 90 minutes on high speed ferry) for passengers on a catamaran service. \nThe main monument of the city is Torre Cabrera, a 15th century watchtower built by Bernat Juan de Cabrera, son of Bernat II de Cabrera."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "pozzallo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5903,
+    "place_id": "gn-2656296",
+    "input": {
+      "place": {
+        "place_id": "gn-2656296",
+        "name": "Barnes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47352,
+        "lon": -0.24839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barnes, London",
+          "url": "https://en.wikipedia.org/wiki/Barnes,_London",
+          "text": "Barnes () is a district in the London Borough of Richmond upon Thames in south-west London, England. It is centred 5.8 miles (9.3 km) west south-west of Charing Cross in a bend of the River Thames.\nIts built environment includes a wide variety of convenience and arts shopping on its high street and a high proportion of 18th- and 19th-century buildings in the streets near Barnes Pond. Together they make up the Barnes Village conservation area where, along with its west riverside, pictured, most of the mid-19th-century properties are concentrated. On the east riverside is the WWT London Wetland Centre adjoining Barn Elms playing fields.\nBarnes has retained woodland on the \"Barnes Trail\", a short circular walk taking in the riverside, commercial streets and conservation area, including the Olympic Studios."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "barnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5911,
+    "place_id": "gn-3451051",
+    "input": {
+      "place": {
+        "place_id": "gn-3451051",
+        "name": "Rio Verde de Mato Grosso",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso do Sul",
+        "lat": -18.91806,
+        "lon": -54.84417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Verde de Mato Grosso",
+          "url": "https://en.wikipedia.org/wiki/Rio_Verde_de_Mato_Grosso",
+          "text": "Rio Verde de Mato Grosso is a municipality located in the Brazilian state of Mato Grosso do Sul. Its population was 19,973 (2020) and its area is 8,152 km2 (3,148 sq mi).\nRio Verde (which means \"Green River\" in English), how it's popularly called among the people from northern Mato Grosso do Sul, is a small town in the very edge of Serra da Alegria (which means \"The Happiness Mountains\"), close to the Pantanal of Nhecolândia (which means \"The Blissful Burg\"), one of the largest on earth. The following closest city is Coxim, an alternative center for backpackers and ecotourists from all over the world. Some of Rio Verde's great attractions are the Sete Quedas (Seven Falls), the Fazenda Igrejinha (Little Church Ranch) and the Jardim dos Tamanudás (Anteaters' Garden)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "rio verde de mato grosso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verde",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mato",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grosso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5916,
+    "place_id": "gn-5104836",
+    "input": {
+      "place": {
+        "place_id": "gn-5104836",
+        "name": "South Orange",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.74899,
+        "lon": -74.26126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Orange, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_Orange,_New_Jersey",
+          "text": "South Orange is a historic suburban village located in Essex County, New Jersey. It was formally known as the Township of South Orange Village from October 1978 until April 25, 2024. As of the 2020 United States census, the village population was 18,484, an increase of 2,286 (+14.1%) from the 2010 census count of 16,198, which in turn reflected a decline of 766 (−4.5%) from the 16,964 counted in the 2000 census. Seton Hall University is located in the township.\n\"The time and circumstances under which the name South Orange originated will probably never be known,\" wrote historian William H. Shaw in 1884, \"and we are obliged to fall back on a tradition, that Mr. Nathan Squier first used the name in an advertisement offering wood for sale\" in 1795."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "south orange",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5919,
+    "place_id": "gn-5187905",
+    "input": {
+      "place": {
+        "place_id": "gn-5187905",
+        "name": "East Falls",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.01456,
+        "lon": -75.19157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Falls, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/East_Falls,_Philadelphia",
+          "text": "East Falls (also The Falls, formerly the Falls of Schuylkill) is a neighborhood in Lower Northwest, Philadelphia, Pennsylvania, United States. It lies on the east bank of the \"Falls of the Schuylkill,\" cataracts submerged in 1822 by the Schuylkill Canal and Fairmount Water Works projects. East Falls sits next to the Germantown, Roxborough, Allegheny West, and the Nicetown-Tioga neighborhoods. Wissahickon Valley Park separates it from Manayunk, Philadelphia.\nThe neighborhood runs along a few miles of Ridge Avenue, along the banks of the Schuylkill River, then extends northeast to Wissahickon Avenue. It overlooks the multi-use recreational path of Fairmount Park along Kelly Drive, and is desirable for its central location, an easy commute to Center City with easy access to several major roadways and public transportation including the East Falls station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "east falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5926,
+    "place_id": "gn-706244",
+    "input": {
+      "place": {
+        "place_id": "gn-706244",
+        "name": "Khotyn",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.50555,
+        "lon": 26.48978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khotyn",
+          "url": "https://en.wikipedia.org/wiki/Khotyn",
+          "text": "Khotyn (Ukrainian: Хотин, pronounced [xoˈtɪn] ; Romanian: Hotin, pronounced [hoˈtin]; see other names) is a city in Dniester Raion, Chernivtsi Oblast of western Ukraine, located south-west of Kamianets-Podilskyi. It hosts the administration of Khotyn urban hromada, one of the hromadas of Ukraine. According to the 2001 Ukrainian census, it has a population of 11,124. Current population: 8,936 (2022 estimate).\nKhotyn, first chronicled in 1001, is located on the right (southwestern) bank of the Dniester River, and is part of the historical region Bessarabia. Important architectural landmarks within the city include the Khotyn Fortress, constructed in the 13-15th centuries (new fortress started in 1325, major improvements in the 1380s and 1460s), and two 15th-century constructions by Moldavia's ruler Stephen the Great: the Prince's Palace (Palatul Domnesc) and the city's clock tower."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "khotyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5938,
+    "place_id": "gn-3462882",
+    "input": {
+      "place": {
+        "place_id": "gn-3462882",
+        "name": "Fundão",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -19.93408,
+        "lon": -40.40473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fundão, Espírito Santo",
+          "url": "https://en.wikipedia.org/wiki/Fundão,_Espírito_Santo",
+          "text": "Fundão (Portuguese pronunciation: [fũˈdɐ̃w]) is a Brazilian municipality in the state of Espírito Santo. Part of the Greater Vitória metropolitan region, the Intermediate Region of Vitória, and the Immediate Region of Vitória, it is located north of the state capital, approximately 53 kilometres (33 mi) away. Covering an area of 288.724 square kilometres (111.477 sq mi), of which 0.9 square kilometres (0.35 sq mi) is urban, its population was recorded as 18,014 inhabitants by the Brazilian Institute of Geography and Statistics (IBGE) in 2022.\nThe average annual temperature in the municipal seat is 23.2 °C (73.8 °F), with the predominant vegetation being Atlantic Forest. With an urbanization rate of approximately 84%, the municipality had five healthcare facilities in 2009. Its Human Development Index (HDI) is 0.718, classified as high."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "fundao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5952,
+    "place_id": "gn-6697141",
+    "input": {
+      "place": {
+        "place_id": "gn-6697141",
+        "name": "Mindarie",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.68932,
+        "lon": 115.70698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mindarie, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Mindarie,_Western_Australia",
+          "text": "Mindarie is an outer coastal suburb of Perth, Western Australia. It is located 36 kilometres (22 mi) north of Perth's central business district, and forms part of the City of Wanneroo local government area.\nAfter being briefly used for its limestone deposits in the early 20th century, the suburb was formally established in 1988 with the construction of the Mindarie Marina and hotel, one of the largest man-made marina resorts in the state. Several shops, restaurants and schools are now dispersed throughout the rest of the area, which is primarily residential in character. A number of large bushland reserves and parks preserve Mindarie's previously natural state, such as its large coastal dunes.\nMindarie was used as one of the filming locations for the children's science fiction television series Stormworld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "mindarie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5954,
+    "place_id": "gn-8449777",
+    "input": {
+      "place": {
+        "place_id": "gn-8449777",
+        "name": "Visitacion Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.71715,
+        "lon": -122.40433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visitacion Valley, San Francisco",
+          "url": "https://en.wikipedia.org/wiki/Visitacion_Valley,_San_Francisco",
+          "text": "Visitacion Valley (VIZ-i-TAY-shən; Spanish: Valle de la Visitación), colloquially referred to as Viz Valley, is a neighborhood located in the southeastern quadrant of San Francisco, California.\nVisitacion Valley is roughly defined by McLaren Park and Gleneagles Golf Course to the West, Mansell Blvd and Portola to the north, Bayview Hill and Candlestick Cove to the east, and the San Francisco / San Mateo County line to the south. The streets of this neighborhood straddle the border between San Francisco and Daly City, hence partially blending with the adjacent Daly City neighborhood of Bayshore. The grounds of the Cow Palace, straddling the San Francisco/Daly City border, parking areas are partially within Visitacion Valley.\nThe Sunnydale Housing Community, a predominately African-American and Pacific Islander American community, is located in Visitacion Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "visitacion valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "visitacion",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5961,
+    "place_id": "gn-2170139",
+    "input": {
+      "place": {
+        "place_id": "gn-2170139",
+        "name": "Cowra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.83554,
+        "lon": 148.69663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cowra",
+          "url": "https://en.wikipedia.org/wiki/Cowra",
+          "text": "Cowra () is a town in the Central West region of New South Wales, Australia. It is the largest population centre and the council seat for the Cowra Shire, with a population of 8,254.\nCowra is located approximately 310 m (1,017 ft) above sea level, on the banks of the Lachlan River, in the Lachlan Valley. By road it is approximately 310 km (193 mi) west of the state capital, Sydney, and 189 km (117 mi) north of the nation's capital, Canberra. The town is situated at the intersection of three state highways: the Mid-Western Highway, Olympic Highway and the Lachlan Valley Way.\nCowra is included in the rainfall recorder and weather forecast region for the Central West Slopes and Plains division of the Bureau of Meteorology forecasts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "cowra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5963,
+    "place_id": "gn-2510799",
+    "input": {
+      "place": {
+        "place_id": "gn-2510799",
+        "name": "Son Servera",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.62073,
+        "lon": 3.36008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Son Servera",
+          "url": "https://en.wikipedia.org/wiki/Son_Servera",
+          "text": "Son Servera (Balearic Catalan: [son səɾˈveɾə]) is a municipality in northeast Mallorca, in the Balearic Islands, Spain.\nFounded in 1300 by James I of Aragon, in the lands of the Servera family, Son Servera was first documented in 1354 with the name of Benicanella, which would later become two towns: Son Fra Garí and Ca l'Hereu which would then become Son Servera. In 1814, king Ferdinand VII puts Son Servera municipality in Arta. In 1820, the population was struck by plague, but in 1934 the population reached 1,000 inhabitants and returned to the status of municipality.\nWith more than 10,000 inhabitants, Son Servera contains Cala Millor, a popular summer tourist area, with a large German community.  Costa de los Pinos is a summer destination for Spanish high society."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "son servera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "son",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "servera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5966,
+    "place_id": "gn-2653520",
+    "input": {
+      "place": {
+        "place_id": "gn-2653520",
+        "name": "Caterham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.2823,
+        "lon": -0.07889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caterham",
+          "url": "https://en.wikipedia.org/wiki/Caterham",
+          "text": "Caterham () is a town in the Tandridge district of Surrey, England. The town is administratively divided into two: Caterham on the Hill, and Caterham Valley, which includes the main town centre in the middle of a dry valley but rises to equal heights to the south. The town lies close to the A22, 21 miles (34 kilometres) from Guildford and 6 miles (10 kilometres) south of Croydon, in an upper valley cleft into the dip slope of the North Downs. Caterham on the Hill is above the valley to the west.\nThe town is particularly associated with being the location of the original factory for the Caterham 7 and for being the location of Caterham School, the estate of which lies on the outskirts of Caterham Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "caterham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5975,
+    "place_id": "gn-4069659",
+    "input": {
+      "place": {
+        "place_id": "gn-4069659",
+        "name": "Jasper",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 33.83122,
+        "lon": -87.27751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jasper, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Jasper,_Alabama",
+          "text": "Jasper is a city in and the county seat of Walker County, Alabama, United States. As of the 2020 census, Jasper had a population of 14,572. Named in honor of Sergeant William Jasper, an American Revolutionary War hero, Jasper was settled around 1815 and incorporated on August 18, 1886.\nThe first significant growth of the area was in 1886 when the Kansas City, Memphis and Birmingham Railroad and the Sheffield & Birmingham Railroads were completed through Jasper. The population grew from 200 people in 1886 to more than 3,000 in 1890. In a special edition in 1891, the Mountain Eagle stated there were six coal mines, two sandstone quarries, 400 coke ovens, one foundry and machine shop, two saw mills, one brick works, four hotels, and two banks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "jasper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5982,
+    "place_id": "gn-1694631",
+    "input": {
+      "place": {
+        "place_id": "gn-1694631",
+        "name": "Pasacao",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 13.5118,
+        "lon": 123.0426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasacao",
+          "url": "https://en.wikipedia.org/wiki/Pasacao",
+          "text": "Pasacao (), officially the Municipality of Pasacao (Central Bikol: Banwaan kan Pasacao; Tagalog: Bayan ng Pasacao), is a 1st class municipality in the province of Camarines Sur, Philippines. According to the 2024 census, it has a population of 50,708 people. The area is noted for its brown sand beaches and is sometimes referred to as the \"Summer Capital of Camarines Sur.\nDuring the Spanish colonization in the 16th century, a settlement surrounded a port in what is now Pasacao, serving as a primary embarkation point in Camarines Sur and the only sea link to Manila. This strategic location supported commerce and trade across the archipelago.\nColloquially, \"Pasacao\" refers to this former settlement, which is still recognized separately as the modern town center housing government and business hubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "pasacao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5990,
+    "place_id": "gn-2648154",
+    "input": {
+      "place": {
+        "place_id": "gn-2648154",
+        "name": "Great Bookham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.27916,
+        "lon": -0.37423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Bookham",
+          "url": "https://en.wikipedia.org/wiki/Great_Bookham",
+          "text": "Great Bookham is a village in the Mole Valley district, in Surrey, England, one of six semi-urban spring line settlements between the towns of Leatherhead and Guildford. With the narrow strip parish of Little Bookham, it forms part of the Saxon settlement of Bocham (\"the village by the beeches\"). The Bookhams are surrounded by common land, and Bookham railway station in Church Road, Great Bookham, serves both settlements.\nThe villages are astride the A246, which is the direct route between the two towns. Once two distinct villages, the Bookhams have long been interconnected with residential roads which give the impression of one large village.\nOn the southern edge of the village is Polesden Lacey, a country house surrounded by more than 1,000 acres (4.0 km2) of grounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "great bookham",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bookham",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5991,
+    "place_id": "gn-2652318",
+    "input": {
+      "place": {
+        "place_id": "gn-2652318",
+        "name": "Corsham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43433,
+        "lon": -2.18437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corsham",
+          "url": "https://en.wikipedia.org/wiki/Corsham",
+          "text": "Corsham is a historic market town and civil parish in west Wiltshire, England. It is at the southwestern edge of the Cotswolds, just off the A4 national route. It is 28 miles (45 km) southwest of Swindon, 20 miles (32 km) east of Bristol, 8 miles (13 km) north-east of Bath, and 4 miles (6 km) southwest of Chippenham.\nHistorically, Corsham was a centre for agriculture and later, the wool industry, and remains a focus for quarrying Bath Stone. It has several notable historic buildings, including the stately home of Corsham Court. During the Second World War and the Cold War, it became a major administrative and manufacturing centre for the Ministry of Defence, with numerous establishments both above ground and in disused quarry and mine tunnels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "corsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5998,
+    "place_id": "gn-3362675",
+    "input": {
+      "place": {
+        "place_id": "gn-3362675",
+        "name": "Prince Alfred Hamlet",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.30392,
+        "lon": 19.32468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prince Alfred Hamlet",
+          "url": "https://en.wikipedia.org/wiki/Prince_Alfred_Hamlet",
+          "text": "Prince Alfred Hamlet is a small town in the Western Cape province of South Africa.\nIt was founded by Johannes Cornelis Goosen, who was born in the Klein Drakenstein and came to the Warm Bokkeveld as a young farmer.\nIn March 1851 Goosen bought the farm Wagenbooms Rivier from George Sebastiaan Wolfaardt at the “fantastic” price of £6 000. Ten years later he measured out first 80 and then another 10 plots and sold them for £6 000 each.  These plots had water rights and each owner also received one morgen or 0.856 hectares (2.12 acres) of land to cultivate in the Bakoven River to grow feed for their animals.\nWhile Goosen was busy measuring out his plots, Queen Victoria's son Prince Alfred visited the  Cape Colony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "prince alfred hamlet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prince",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alfred",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamlet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6009,
+    "place_id": "gn-5807239",
+    "input": {
+      "place": {
+        "place_id": "gn-5807239",
+        "name": "Port Townsend",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.11742,
+        "lon": -122.76071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Townsend, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+          "text": "Port Townsend  is a city on the Quimper Peninsula in Jefferson County, Washington, United States. The population was 10,148 at the 2020 United States Census. It is the county seat of, and the only incorporated city in, Jefferson County.\nIn addition to its natural scenery at the northeast tip of the Olympic Peninsula, the city is known for the many Victorian buildings remaining from its late 19th-century heyday, numerous annual cultural events, and as a maritime center for independent boatbuilders and related industries and crafts. The Port Townsend Historic District is a U.S. National Historic Landmark District. It is also significantly drier than the surrounding region due to being in the rainshadow of the Olympic Mountains, receiving only 19 inches or 480 millimeters of rain per year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "port townsend",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "townsend",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6015,
+    "place_id": "gn-8541937",
+    "input": {
+      "place": {
+        "place_id": "gn-8541937",
+        "name": "Dubai Festival City",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.22177,
+        "lon": 55.35733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubai Festival City",
+          "url": "https://en.wikipedia.org/wiki/Dubai_Festival_City",
+          "text": "Dubai Festival City (DFC) (Arabic: دبي فستيفال سيتي), also known as Al Kheeran, is a large-scale mixed-use waterfront development on the eastern bank of Dubai Creek. Developed by Al-Futtaim Real Estate, the project spans 5.2 million square metres and functions as a self-contained \"city-within-a-city.\"\nIt has residential and commercial properties, including Marsa Plaza, Al Badia Residences, Al Badia Hillside, Al Badia Living, the Dubai Festival City Mall with over 400 outlets, an IHG hotel complex with over 1,600 rooms, a marina, and a golf course. Other features include the IMAGINE light and water show, the BOUNCE-X Freestyle Terrain Park, Market Island, and a 3.3 km waterfront promenade. Located two kilometres from Dubai International Airport, it is one of the largest privately developed projects in the Middle East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "dubai festival city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dubai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "festival",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

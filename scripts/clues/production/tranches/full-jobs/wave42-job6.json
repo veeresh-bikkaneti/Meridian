@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 8358,
+    "attempt": 8301,
+    "place_id": "gn-2994404",
+    "input": {
+      "place": {
+        "place_id": "gn-2994404",
+        "name": "Méribel",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.41497,
+        "lon": 6.565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Méribel",
+          "url": "https://en.wikipedia.org/wiki/Méribel",
+          "text": "Méribel (French pronunciation: [meʁibɛl]) is a ski resort in the Tarentaise Valley in the French Alps. Méribel refers to three neighbouring villages in the Les Allues commune of the Savoie department of France, near the town of Moûtiers (45.401°N 6.5655°E﻿ / 45.401; 6.5655), called Méribel Centre, Méribel-Mottaret and Méribel Village. The villages are within Vanoise National Park and a part of the Les Trois Vallées interlinked ski system.\nMéribel Les Allues is a ski resort that was developed adjacent to the traditional hamlet of Morel, with its centre situated at about 1400 metres above sea level. It was founded by a Scotsman, Major Peter Lindsay, who was looking for a new site for winter sports away from the ski resorts of Austria and Germany, because of the growing strength of the Nazi regime. In 1936, he visited the town of Les Allues for the first time. He then imagined how the town could become a ski resort. Firstly, he decided to create a property company in order to develop finances strong enough to build the resort. In 1938, the first lift was placed above Les Allues. A year later, he began the construction of the first chalets and hotels in the hamlet of Méribel. Three years later, the war would stop the development of the resort, but when it was over, development continued. Now a Colonel, Peter Lindsay used specialised architects, Paul Grillo (Grand Prix de Rome in 1937) and his partner Christian Durupt, so that all buildings would be in harmony with the Savoyard style, using wood and stone for the walls, with slanted slate roofs. In 1950, the Burgin-Saulire gondola was built to link the resort to Courchevel. Lindsay's family continue to hold a financial stake in the resort. Lindsay's ashes and those of his wife are  scattered on the Burgin mountain.\nMéribel was a subsite and hosted some events of the 1992 Winter Olympics hosted by nearby Albertville. The resort host the ice hockey and the women's alpine skiing events. Until 2011, Méribel was the host to the Altitude Festival, with acts such as KT Tunstall, Marcus Brigstocke and Omid Djalili performing in the bars and nightclubs around the resort. For 2011, it has been announced that the festival will be moved to Austria, with the organiser Richard Lett citing a reduction in support from the Méribel Tourist Office. Lett has since joined the Méribel Les Allues council under the new mayor, Bernard Front.\nThe ski resort is part of the Trois Vallées ski area. The Three Valleys area comprises 180 lifts, 335 marked runs (over 600 kilometres) and over 130 km of cross-country tracks. The Three Valleys was expanded in 1996 to incorporate a fourth valley, though the area kept the name Trois Vallées. The area comprises the resorts of Courchevel, La Tania, Méribel, Les Menuires-Saint Martin, Val Thorens and Orelle.\nThe resort comprises the sub-villages of: Méribel-Mottaret, at an altitude of 1,750 m towards the head of the Allues Valley—served by the Plattiers gondola which provides access to neighbouring resorts Les Menuires and Val Thorens; Raffort and La Gittaz, which are served by the Meribel Olympic Gondola; Chandon, which has free bus access to resort; and Méribel Village at 1,400 m on the road to Courchevel 1850 at the bottom of the Lapin piste and start of the Golf Chair to the popular beginners skiing area The Altiport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 563
+    },
+    "banned_terms": [
+      {
+        "term": "meribel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8359,
+    "attempt": 8302,
+    "place_id": "gn-3030708",
+    "input": {
+      "place": {
+        "place_id": "gn-3030708",
+        "name": "Bouxwiller",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.82495,
+        "lon": 7.48117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bouxwiller, Bas-Rhin",
+          "url": "https://en.wikipedia.org/wiki/Bouxwiller,_Bas-Rhin",
+          "text": "Bouxwiller (French pronunciation: [buksvilɛʁ] ; German: Buchsweiler, [ˈbʊksˌvaɪ̯lɐ]; Alemannic German: Buxwiller, or Busswiller) is a commune in the Bas-Rhin department, Alsace, Grand Est, northeastern France. Likely meaning \"Bucco's land\", Bouxwiller is the capital of the Bouxwiller canton and is located within the Saverne arrondissement about 34 kilometres (21 mi) northwest of Strasbourg.\nThe earliest known mention of Bouxwiller dates to 724 AD. In the 13th century, the town came into possession of the Lichtenberg family, who constructed the Château de Bouxwiller here in the early 14th century. Bouxwiller was the capital of the County of Hanau-Lichtenberg, and residence of the Counts of Hanau-Lichtenberg, throughout its existence from 1480 to 1736. The Château de Bouxwiller was pillaged during the French Revolution and its remnants were gone by the early 19th century. In 1973, the villages of Griesbach-le-Bastberg, Imbsheim, and Riedheim were incorporated into the commune of Bouxwiller."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "bouxwiller",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8360,
+    "attempt": 8303,
+    "place_id": "gn-3119918",
+    "input": {
+      "place": {
+        "place_id": "gn-3119918",
+        "name": "La Cabrera",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.86386,
+        "lon": -3.61265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Cabrera",
+          "url": "https://en.wikipedia.org/wiki/La_Cabrera",
+          "text": "La Cabrera (Spanish: [la kaˈβɾeɾa] ) is a municipality in central Spain, around 56 km (35 mi) away from Madrid. La Cabrera belongs to the comarca called Sierra Norte de Madrid which is part of the wider autonomous Community of Madrid. \nCovering an area of 22.40 km2 (8.65 sq mi), it is bordered to the north by Lozoyuela-Navas-Sieteiglesias, to the east by El Berrueco, to the south by Cabanillas de la Sierra and Torrelaguna, and to the east by Valdemanco.\nEuropean route E-05 runs through the town, following the old N-I radial road connecting Madrid to Irun and France (later split into the A-1). \nLa Cabrera is characterised by its mountainous topography with the prominent La Cabrera mountain range forming a natural limit to the North. The town is situated in the easternmost part of the range at about 1,038 m (3,406 ft) above sea level. Although most of the mountain range is in La Cabrera, it also reaches the neighbouring municipalities of Valdemanco and Lozoyuela. \nThe landscape is formed by a granite massif of Palaeozoic origin. Its main features include the summits of Cancho Gordo (1,564 m [5,131 ft]), Pico del Miel (1,392 m [4,567 ft]) and Cerro de La Cabeza (1,247 m [4,091 ft]), as well as natural springs and streams, including the Alfrecho stream which feeds the Jarama River. \nAmong its flora are the trees and thickets of the southern slopes, such as: Pyrenean Oak, Holm Oak, Poplar, Willow, and Pink Rockrose."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "la cabrera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cabrera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8361,
+    "attempt": 8304,
+    "place_id": "gn-3201136",
+    "input": {
+      "place": {
+        "place_id": "gn-3201136",
+        "name": "Drvar",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 44.37389,
+        "lon": 16.38083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drvar",
+          "url": "https://en.wikipedia.org/wiki/Drvar",
+          "text": "Drvar (Serbian Cyrillic: Дрвар, pronounced [dř̩ʋaːr]) is a town and the seat of the Municipality of Drvar in Canton 10 of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is situated in western Bosnia and Herzegovina, on the road between Bosansko Grahovo and Bosanski Petrovac, and also near Glamoč.\nDrvar lies in a vast valley, the southeastern part of Bosanska Krajina, between the Osječenica, Klekovača, Vijenca and Šator mountains of the Dinaric Alps. The southeastern side of the boundary extends from the Šator over the Jadovnik, the Ujilica and descends to the Lipovo and the Una River.\nThis extremely hilly region, comprising the town of Drvar and the numerous outlying villages, covers approximately 1,030 square kilometres (400 square miles). The town is mainly situated on the left side of the River Unac, and its elevation is approximately 480 meters (1,574 feet)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "drvar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8362,
+    "attempt": 8305,
+    "place_id": "gn-4012593",
+    "input": {
+      "place": {
+        "place_id": "gn-4012593",
+        "name": "Creel",
+        "country": "Mexico",
+        "subdivision": "Chihuahua",
+        "lat": 27.75281,
+        "lon": -107.63472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Creel, Chihuahua",
+          "url": "https://en.wikipedia.org/wiki/Creel,_Chihuahua",
+          "text": "Creel (Spanish pronunciation: [ˈkɾil]) is a town in the Sierra Tarahumara (part of the Sierra Madre Occidental) of the Mexican state of Chihuahua. It is the second-largest town (after San Juanito) in the municipality of Bocoyna. It is located some 175 kilometres (109 mi) to the southwest of the state capital, Chihuahua City. At the census of 2010, it had a population of 5,026, down from 5,338 as of 2005. It is notable for being inhabited mostly by Native Americans of the Rarámuri ethnic group, and the use of their native language is widespread in the population in daily life and public events such as church masses.\nCreel was historically a logging town, although tourism has become the primary job source over the last 20 years because it is close to the Copper Canyon as well as Basaseachic Falls, one of the highest waterfalls in Mexico. There are many hotels, restaurants and a number of tours down into the canyons and throughout the surrounding area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "creel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8363,
+    "attempt": 8306,
+    "place_id": "gn-5098760",
+    "input": {
+      "place": {
+        "place_id": "gn-5098760",
+        "name": "Hamburg",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.15343,
+        "lon": -74.57627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamburg, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hamburg,_New_Jersey",
+          "text": "Hamburg is a borough in Sussex County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 3,266, a decrease of 11 (−0.3%) from the 2010 census count of 3,277, which in turn reflected an increase of 172 (+5.5%) from the 3,105 counted in the 2000 census. The United States Census Bureau's Population Estimates Program calculated that the population of Hamburg increased by 65 (+2.0%) to 3,331 in 2023.\nIn 1753, when Sussex County was formed from portions of Morris County, the area of present-day Hamburg was part of Newton Township; on February 25, 1762, it became part of the newly established Hardyston Township. On April 8, 1793, when Vernon Township was formed from Hardyston, Hamburg was included within the boundaries of Vernon. In 1852, the boundary line was changed so that Hamburg was again in Hardyston Township. Hamburg was incorporated as a borough on March 19, 1920, from portions of Hardyston Township, based on the results of a referendum held on April 24, 1920. The borough was named after Hamburg, Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "hamburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8364,
+    "attempt": 8307,
+    "place_id": "gn-6354950",
+    "input": {
+      "place": {
+        "place_id": "gn-6354950",
+        "name": "Tofino",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.15314,
+        "lon": -125.90744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tofino",
+          "url": "https://en.wikipedia.org/wiki/Tofino",
+          "text": "Tofino (  tə-FEE-noh, Nuu-chah-nulth: Načiks) is a town of approximately 2,516 residents on the west coast of Vancouver Island in the Canadian province of British Columbia. The District of Tofino is located at the western terminus of Highway 4 on the tip of the Esowista Peninsula at the southern edge of Clayoquot Sound. It is situated in the traditional territory of the Tla-o-qui-aht First Nations, who have occupied Clayoquot Sound for thousands of years. European and American vessels began trading along this coast in the late eighteenth century, and permanent non-Indigenous settlement began in the 1890s; the community took the name Tofino, after nearby Tofino Inlet, in the early 1900s, and its post office opened in 1909. Tofino was incorporated as a municipality in 1932 and as a district in 1982.\nA popular year-round tourism destination, Tofino's summer population swells to many times its winter size. It attracts surfers, hikers, nature lovers, bird watchers, campers, whale watchers and fishermen. Despite its small population, the town attracts a number of chefs and culinary professionals, which has resulted in a burgeoning choice of restaurants and specialty shops. In the winter, it is not as bustling, although many people visit Tofino and the West Coast to watch storms on the water. Close to Tofino is Long Beach, a scenic and popular year-round destination, in Pacific Rim National Park Reserve. With its natural hot springs, Maquinna Marine Provincial Park is a popular day-trip destination for tourists. Reachable by boat or floatplane, the park is located about 45 km (28 mi) north of Tofino.\nOnce a resource-based community sustained chiefly by fishing and logging, Tofino remained accessible only by air, water, or a gated logging road until a highway connection to the rest of Vancouver Island opened in 1959. The town gained international attention in the 1980s and 1990s as the focus of large-scale protests against old-growth logging in Clayoquot Sound, a dispute that contributed to the designation of the Sound as a UNESCO Biosphere Reserve in 2000. Since the 1990s, tourism has become Tofino's dominant industry, and the municipality received Resort Municipality status from the provincial government in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "tofino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8365,
+    "attempt": 8308,
+    "place_id": "gn-682117",
+    "input": {
+      "place": {
+        "place_id": "gn-682117",
+        "name": "Chilia Veche",
+        "country": "Romania",
+        "subdivision": "Tulcea County",
+        "lat": 45.41667,
+        "lon": 29.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilia Veche",
+          "url": "https://en.wikipedia.org/wiki/Chilia_Veche",
+          "text": "Chilia Veche (Romanian pronunciation: /kiˈlija ˈveˈke/; meaning Old Chilia) is a commune in Tulcea County, Northern Dobruja, Romania, in the Danube Delta. It gave its name to the Chilia branch of the Danube, which separates it from Ukraine. It is composed of four villages: Câșlița, Chilia Veche, Ostrovu Tătaru and Tatanir.\nFounded by the Greek Byzantines, it was given its name after the word for \"granaries\" - κελλίa, kellia, recorded earliest in 1241 in the works of Persian chronicler Rashid al-Din. Some scholars consider the mediaeval Genoese trade centre known as Lycostomo (Λυκόστομο) was also located here. A town on the other side of the Danube, now in Ukraine, known as Nova Kiliia (Romanian: Chilia Nouă) or \"New Chilia\", was built by Stephen the Great of Moldavia in order to counteract the Ottoman Empire (that had taken control of the former town in the 15th century).\nOstrovu Tătaru village, which has no permanent population, is located on Tătaru Mare Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "chilia veche",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chilia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "veche",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8366,
+    "attempt": 8309,
+    "place_id": "gn-2059470",
+    "input": {
+      "place": {
+        "place_id": "gn-2059470",
+        "name": "Victor Harbor",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.55042,
+        "lon": 138.62154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victor Harbor, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Victor_Harbor,_South_Australia",
+          "text": "Victor Harbor is a town in the Australian state of South Australia located within the City of Victor Harbor on the south coast of the Fleurieu Peninsula, about 82 kilometres (51 mi) south of the state capital of Adelaide. The town is the largest population centre on the peninsula, with an economy based upon agriculture, fisheries, and tourism. It is a popular tourist destination, with the area's population greatly expanding during the summer holidays, usually by Adelaide locals looking to escape the summer heat.\nThe coast stretching for around 50 km (31 mi) from west of Victor Harbor along to Goolwa is often referred to as the South Coast, especially among surfers, as many of the beaches on this stretch are popular surfing spots.\nIt is a popular destination with South Australian high school graduates for their end of year celebrations, known colloquially as schoolies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "victor harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8367,
+    "attempt": 8310,
+    "place_id": "gn-2654736",
+    "input": {
+      "place": {
+        "place_id": "gn-2654736",
+        "name": "Bridge of Weir",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.85582,
+        "lon": -4.57894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridge of Weir",
+          "url": "https://en.wikipedia.org/wiki/Bridge_of_Weir",
+          "text": "Bridge of Weir is a village within the Renfrewshire council area and wider historic county of Renfrewshire in the west central Lowlands of Scotland.\nLying within the Gryffe Valley, Bridge of Weir owes its name to the historic crossing point that it provided over the River Gryffe. The village was initially formed around industries such as cotton and leather, reliant on the power of the river. These industries brought about its expansion in the 18th century in land attached to the 15th century Ranfurly Castle situated between the two established parishes of Kilbarchan and Houston and Killellan. A rail connection, as part of the Glasgow and South Western Railway, in the 1860s, significantly supported the village's development.\nToday Bridge of Weir serves largely as a dormitory settlement for nearby Glasgow and Paisley, maintaining a commercial centre of its own and some light industry and agriculture. It remains well known for its leather production, which has continued since the first industry emerged."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "bridge of weir",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "weir",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8368,
+    "attempt": 8311,
+    "place_id": "gn-3666003",
+    "input": {
+      "place": {
+        "place_id": "gn-3666003",
+        "name": "Villa de Leyva",
+        "country": "Colombia",
+        "subdivision": "Boyacá",
+        "lat": 5.63413,
+        "lon": -73.52438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de Leyva",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_Leyva",
+          "text": "Villa de Leyva, also called Villa de Leiva, is a touristic colonial town and municipality, in the Ricaurte Province, part of the Boyacá Department of Colombia. The town is a Colombian National Heritage Town and is on the tentative list for UNESCO World Heritage Sites. Villa de Leyva is located 37 kilometres (23 mi) west of the departmental capital Tunja.\nLocated away from major trade routes in a high altitude valley of semi-desert terrain, and with no mineral deposits nearby to exploit, the town has undergone little development in the last 400 years. As a consequence, it is one of the few towns in Colombia to have preserved completely its original colonial style and architecture: the streets and large central plaza are still paved with cobblestones, and many buildings date from the sixteenth century. This has resulted in Villa de Leyva becoming one of Colombia's principal tourist attractions, and it was declared a National Monument on December 17, 1954 to preserve its architecture. The town and the surrounding countryside, which contains several sites of interest, are popular weekend destinations for citizens of Bogotá, and attract an increasing number of foreign tourists.\nAs a result of its cool temperatures, dry climate, and rich soil, Villa de Leyva has established itself as a wine region, with the emergence of a number of wineries around the town in recent years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "villa de leyva",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leyva",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8369,
+    "attempt": 8312,
+    "place_id": "gn-4143821",
+    "input": {
+      "place": {
+        "place_id": "gn-4143821",
+        "name": "Nassau",
+        "country": "United States",
+        "subdivision": "Delaware",
+        "lat": 38.75206,
+        "lon": -75.18769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nassau, Delaware",
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Delaware",
+          "text": "Nassau is an unincorporated community in eastern Sussex County, Delaware, United States. It lies just off Delaware Route 1 west of the city of Lewes and northeast of the town of Georgetown, the county seat of Sussex County.  Its elevation is 26 feet (8 m).  It has a post office with the ZIP code 19969.\nNassau, like much of central Delmarva, is part of the Salisbury, Maryland-Delaware Metropolitan Statistical Area. The Delaware Coast Line Railway passed through Nassau on its way to its customer in Lewes, SPI Pharma, and maintained a run-around track in Nassau to facilitate the moves to SPI Pharma, the locomotive using the run-around to then continue pushing the consist of tankcars and/or covered hoppers over the trackage between Nassau and Lewes to the end-of-track for the Lewes Branch at SPI Pharma, just outside the main entrance to Cape Henlopen State Park. The last train run was in 2017.  The ROW is now a bike and pedestrian trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "nassau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8370,
+    "attempt": 8313,
+    "place_id": "gn-2173306",
+    "input": {
+      "place": {
+        "place_id": "gn-2173306",
+        "name": "Bundanoon",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.65658,
+        "lon": 150.29623
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bundanoon, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Bundanoon,_New_South_Wales",
+          "text": "Bundanoon  is a town in the Southern Highlands of New South Wales, Australia, in Wingecarribee Shire, on Gandangarra and Dharawal Country (where these two countries meet). It is an Aboriginal name meaning \"place of deep gullies\" and was formerly known as Jordan's Crossing.\nBundanoon is colloquially known as Bundy/Bundi.\nBundanoon, like its fellow Southern Villages of the Southern Highlands, has had a boom-and-bust economic cycle.  The town became a well-known tourist destination early in the 20th century; its picturesqueness and the scenery of what is now Morton National Park, combined with being served by the railway network, made it a pleasant and convenient holiday area for city dwellers who could not afford more expensive accommodations at the popular Blue Mountains resort area.  By the 1950s, however, changes in lifestyle, particularly the affordability of the motor car, gave city dwellers more options and Bundanoon declined.\nThe Sydney real estate boom of the early 21st century made Bundanoon an affordable haven within commuting distance of the city. Property values increased several-fold, and houses in Bundanoon were selling for over a million dollars by 2007.\nSeveral houses in the town were destroyed by a bushfire in January 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "bundanoon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8371,
+    "attempt": 8314,
+    "place_id": "gn-2651872",
+    "input": {
+      "place": {
+        "place_id": "gn-2651872",
+        "name": "Cross Hands",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.79306,
+        "lon": -4.0875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cross Hands",
+          "url": "https://en.wikipedia.org/wiki/Cross_Hands",
+          "text": "Cross Hands is a village in Carmarthenshire, Wales, approximately 12 miles (19 kilometres) from Carmarthen.\nCross Hands is notable for its Public Hall, erected in 1920 and designed by an unknown Italian designer in the classic Art Deco Style. Fully restored, the Public Hall has a fully functioning stage and cinema screen and is protected as a Grade II* listed building. During the 1960s and 1970s the village was a useful halfway stop for motorists from South East Wales driving to/from Pembrokeshire with the local chip shop adjacent to the village crossroads being a very popular facility.\nThe continuous built up area which includes the villages of Cross Hands, Gorslas, Cefneithin and Pen-y-groes had a population of 5,717 in 2011.\nCross Hands is a growing residential and employment area and includes the established Cross Hands Food Park to the south west of the A48.  A new business park, the Cross Hands Business Park, is being developed to the northeast of the A48 which the local authority hopes will create 1,000 jobs.\nGweunydd Glan-y-glasnant, a Site of Special Scientific Interest notable for its species-rich neutral grassland, is 3⁄4 mile (1.2 kilometres) southwest of Cross Hands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "cross hands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cross",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8372,
+    "attempt": 8315,
+    "place_id": "gn-2978163",
+    "input": {
+      "place": {
+        "place_id": "gn-2978163",
+        "name": "Saint-Maurice-de-Beynost",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.8344,
+        "lon": 4.9775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Maurice-de-Beynost",
+          "url": "https://en.wikipedia.org/wiki/Saint-Maurice-de-Beynost",
+          "text": "Saint-Maurice-de-Beynost (French pronunciation: [sɛ̃ mɔʁis də beno] ; literally \"Saint-Maurice of Beynost\") is a commune in the Ain department, in the Auvergne-Rhône-Alpes region, located at about 15 km (9 mi) from Lyon.\nThe commune is included in the canton of Miribel and in the intercommunality of communauté de communes de Miribel et du Plateau.\nA small farming village at the beginning of the 20th century, the commune of Saint-Maurice-de-Beynost became an industrial town in the 1920s, following the construction of the second textile factory of the \"Lyon Society of Artificial Silk\". The need for workers in this factory led to a quadrupling of the population in just five years, between 1926 and 1931. Today, the factory, which belongs to the Japanese group Toray Industries, is still the main employer in the city with nearly five hundred employees.\nThe inhabitants of Saint-Maurice-de-Beynost are called Mauriciens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "saint maurice de beynost",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maurice",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beynost",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8373,
+    "attempt": 8316,
+    "place_id": "gn-4503788",
+    "input": {
+      "place": {
+        "place_id": "gn-4503788",
+        "name": "Rio Grande",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.01456,
+        "lon": -74.88156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Grande, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Rio_Grande,_New_Jersey",
+          "text": "Rio Grande () is an unincorporated community and census-designated place (CDP) located within Middle Township and Lower Township in Cape May County, in the U.S. state of New Jersey.\nThough for the 1990 to 2010 U.S. censuses the CDP was entirely located within Middle Township, a small section at the southern edge of the community, located in Lower Township, is sometimes called Rio Grande. For the 2020 U.S. census, the boundary was redrawn so that portions of Lower Township were included in the Rio Grande CDP.\nIt is part of the Ocean City Metropolitan Statistical Area. As of the 2020 United States census, the CDP's population was 3,610, its highest decennial census count ever and an increase of 940 (+35.2%) from the 2,679 counted at the 2020 census, which in turn had reflected an increase of 226 (+9.2%) from the 2000 census of 2,444."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "rio grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8374,
+    "attempt": 8317,
+    "place_id": "gn-506680",
+    "input": {
+      "place": {
+        "place_id": "gn-506680",
+        "name": "Ponezhukay",
+        "country": "Russia",
+        "subdivision": "Adygeya Republic",
+        "lat": 44.88761,
+        "lon": 39.38551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponezhukay",
+          "url": "https://en.wikipedia.org/wiki/Ponezhukay",
+          "text": "Ponezhukay (Russian: Понежукай; Adyghe: Пэнэжьыкъуай [panaʑəqʷaːj] Peneźyqwaj) is a rural locality (an aul) and the administrative center of Teuchezhsky District of the Republic of Adygea, Russia, located on the Apchas River (Kuban's basin) near Krasnodar Reservoir, 80 kilometers (50 mi) north of Maykop. Population: 3,456 (2010 Census); 3,388 (2002 Census).\nThere are no educational facilities above the level of secondary school in the aul.\nA hospital serving the entire district was built here in 2006. The majority of the construction expenses were funded with the personal money of the then-President of the republic Hazret Sovmen.\nThe landfill in Ponezhukay is located within the territory of the water protection zone (on the right slope of the Shunduk River), as well as in the vicinity of forests and agricultural lands, and is considered to pose high ecological risk since the time of its opening in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "ponezhukay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8375,
+    "attempt": 8318,
+    "place_id": "gn-5099060",
+    "input": {
+      "place": {
+        "place_id": "gn-5099060",
+        "name": "Highlands",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.40372,
+        "lon": -73.99153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Highlands, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Highlands,_New_Jersey",
+          "text": "See also New York–New Jersey Highlands for the northwestern part of New Jersey.\nHighlands is a borough in northern Monmouth County, in the U.S. state of New Jersey. A historic waterfront community located on the Raritan Bay within the Raritan Valley region, this scenic borough is a commuter town of New York City in the New York metropolitan area. As of the 2020 United States census, the borough's population was 4,621, a decrease of 384 (−7.7%) from the 2010 census count of 5,005, which in turn reflected a decline of 92 (−1.8%) from the 5,097 counted in the 2000 census. The eastern part of the town is on a high bluff that overlooks Sandy Hook and Sandy Hook Bay, the entrance to New York Harbor, and the Atlantic Ocean, from which the borough derives its name. Atop this bluff are the Navesink Twin Lights.\nHighlands was incorporated as a borough by an act of the New Jersey Legislature on March 22, 1900, from parts of Middletown Township. Additional parts of Middletown Township were annexed in 1914.\nHighlands was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing the traditional downtowns, residential neighborhoods, maritime history, and the natural environment of the Raritan Bayshore coastline. The plan has since been integrated into the 2016 Monmouth County Master Plan.\nOn October 29, 2012, Hurricane Sandy struck the eastern seaboard of the United States, making landfall just north of Atlantic City, before causing significant damage to businesses and homes in the borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "highlands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8376,
+    "attempt": 8319,
+    "place_id": "gn-5921588",
+    "input": {
+      "place": {
+        "place_id": "gn-5921588",
+        "name": "Chisasibi",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 53.78333,
+        "lon": -78.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chisasibi",
+          "url": "https://en.wikipedia.org/wiki/Chisasibi",
+          "text": "Chisasibi (Cree: ᒋᓵᓰᐲ, romanized: Cisâsîpî; meaning Great River) is a village and  Cree reserved land (TC) on the eastern shore of James Bay, in Eeyou Istchee, an equivalent territory (ET) in Nord-du-Québec, Canada. It is situated on the south shore of La Grande River (the Grand River), less than 10 km (6.2 mi) from the river's mouth. Chisasibi is one of nine Cree villages in the region, and is a member of the Grand Council of the Crees of Quebec.\nThe territory surrounding Chisasibi is part of the municipality Eeyou Istchee James Bay, of which parts are jointly managed by the municipalities of the Jamésie TE and the Cree Regional Authority of the Eeyou Istchee TE.\nThe land area of the town is 491.63 km2 (189.82 sq mi) and the area of the associated Chisasibi Cree village municipality is 825.11 km2 (318.58 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "chisasibi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8377,
+    "attempt": 8320,
+    "place_id": "gn-669818",
+    "input": {
+      "place": {
+        "place_id": "gn-669818",
+        "name": "Porumbacu de Jos",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.75,
+        "lon": 24.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porumbacu de Jos",
+          "url": "https://en.wikipedia.org/wiki/Porumbacu_de_Jos",
+          "text": "Porumbacu de Jos (German: Unter-Bornbach; Hungarian: Alsóporumbák) is a commune in Sibiu County, Transylvania, central Romania, first documented in 1473. It is composed of five villages: Colun (Kellen, Kolun), Porumbacu de Jos, Porumbacu de Sus (Felsőporumbák), Sărata (Salz, Szarata), and Scoreiu (Skorei).\nThe commune is located in the southeastern part of the country, at the extreme west of the historical region of Țara Făgărașului. It is crossed by the DN1 road, and lies at a distance of 34 km (21 mi) from the county seat, Sibiu, 42 km (26 mi) from Făgăraș, 108 km (67 mi) from Brașov, and 281 km (175 mi) from Bucharest.\nAt the 2011 census, Porumbacu de Jos had a population of 3,061; of those, 86.28% were Romanians and 8.3% Roma. At the 2021 census, the commune had a population of 2,876; of those, 75.87% were Romanians and 12.07% Roma.\nPorumbacu de Jos is a base for hiking and climbing tours to the Southern Carpathians, notably the Negoiu chalet at 1,546 m (5,072 ft) altitude, which lies at the foot of Negoiu Peak (2,535 m (8,317 ft))."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "porumbacu de jos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porumbacu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

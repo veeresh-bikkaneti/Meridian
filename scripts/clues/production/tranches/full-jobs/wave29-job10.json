@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5824,
+    "attempt": 5781,
+    "place_id": "gn-13696823",
+    "input": {
+      "place": {
+        "place_id": "gn-13696823",
+        "name": "Haarlemmerbuurt",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.38312,
+        "lon": 4.89004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haarlemmerbuurt",
+          "url": "https://en.wikipedia.org/wiki/Haarlemmerbuurt",
+          "text": "Haarlemmerbuurt is a neighbourhood in Amsterdam, in the Dutch province of North Holland, and is part of the borough Centrum. The central artery of the area is formed by the streets Haarlemmerdijk and Haarlemmerstraat, the old road to Haarlem. The neighbourhood is bordered to the south by Brouwersgracht, to the west by Singelgracht, on the north by the railway embankment and on the east by the Singel.\n\nHaarlemmerplein, with the Haarlemmerpoort or Willemspoort city gate, is a square located at the western end of the neighbourhood. On the north side there used to be a timber storage area, which is why this part is called Haarlemmer Houttuinen (Haarlemmer Timberyards). With the construction of the railway line between Singelgracht and Central Station through the Haarlemmer Houttuinen in 1878 this became the northern boundary.\nIn the 1970s, a traffic thoroughfare was built alongside the railway, for which a large part of the Haarlemmer Houttuinen and part of the buildings on the north facade of Haarlemmerplein were demolished. This caused the square to lose its cohesion. Since a new block on the north facade was finished in 2012, the square is once again complete.\nThe West-Indisch Huis (West India House) is located at Haarlemmerstraat 75, and is the former headquarters of the Dutch West India Company. The Posthoornkerk, a church by architect Pierre Cuypers, is located further down the street at numbers 124-126.\nHaarlemmerstraat and Haarlemmerdijk are known for the great quality and diversity of their shops, boutiques and restaurants, and were voted \"best shopping street of The Netherlands\" in 2011. There are also a couple of coffeeshops located on Haarlemmerstraat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "haarlemmerbuurt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5825,
+    "attempt": 5782,
+    "place_id": "gn-1718393",
+    "input": {
+      "place": {
+        "place_id": "gn-1718393",
+        "name": "Carigara",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.29811,
+        "lon": 124.67895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carigara",
+          "url": "https://en.wikipedia.org/wiki/Carigara",
+          "text": "Carigara (Tagalog: [kɐɾiˈɡaɾɐʔ]), officially the Municipality of Carigara (Waray: Bungto han Carigara; Tagalog: Bayan ng Carigara), is a First Income Class municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 56,060 people.\nEstablished in 1571, Carigara is the first town founded in the Eastern Visayas region. A pivotal development occurred in 1735 when Leyte and Samar were separated from Cebu province, forming a unified provincial governance structure with Carigara serving as provincial capital during this era.\nCarigara is renowned for its distinct offerings, including pastillas, humba, sundang (machete), and the hubhob delicacy. Hubhob, a local delight, is crafted from grated cassava, eggs, kalamay, milk, and sugar, cooked within a bagacay (bamboo pole) over charcoal, bringing a unique and flavorful taste to this traditional specialty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "carigara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5826,
+    "attempt": 5783,
+    "place_id": "gn-1731676",
+    "input": {
+      "place": {
+        "place_id": "gn-1731676",
+        "name": "Alangalang",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.20611,
+        "lon": 124.84667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alangalang",
+          "url": "https://en.wikipedia.org/wiki/Alangalang",
+          "text": "Alangalang (IPA: [ʔɐlɐŋ'ʔalɐŋ]), officially the Municipality of Alangalang (Waray: Bungto han Alangalang; Cebuano: Lungsod sa Alangalang; Tagalog: Bayan ng Alangalang), is a First Income Class municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 59,063 people.\nIt is a landlocked town with an area of 151 km2. It is bounded on the north by Barugo and San Miguel, on the south by Pastrana, on the north-east by Tacloban City, on the east by Santa Fe and on the west by Jaro.\nOn the way to Carigara is a steel bridge spanning the Mainit River. There was a time when only footpaths existed and the river was far too wide for a leap and too deep to wade in, travelers were undecided what to do. Hence the name Alangalang was given to the town, from the vernacular word alang-alang which means \"indecision\".\nThe Poblacion or town center was transferred twice. The first settlement was in a hilly place in Bukid, then down the hill across the Mainit River (now Brgy. Binongto-an). Those two earlier settlements were prone to flooding. A big flood in the year 1883 prompted another move in November that year to the present site. The last relocation in November 1883 is annually commemorated and re-enacted as \"Bakwit\".\nThe strongest tropical Typhoon Haiyan, more commonly known as Typhoon Yolanda impacted the town on November 8, 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "alangalang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5827,
+    "attempt": 5784,
+    "place_id": "gn-2197895",
+    "input": {
+      "place": {
+        "place_id": "gn-2197895",
+        "name": "Tavua",
+        "country": "Fiji",
+        "subdivision": "Western",
+        "lat": -17.44221,
+        "lon": 177.86221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tavua, Fiji",
+          "url": "https://en.wikipedia.org/wiki/Tavua,_Fiji",
+          "text": "Tavua (Fijian pronunciation: [taβua] ) is a town and tikina (district) in Fiji, 91 kilometres from Nadi and 9 kilometres from the gold mining settlement of Vatukoula. It was formally incorporated as a Town in 1992 with the appointment of its first Mayor, Iliesa Vula from Tavualevu. The town covers a land area of 100 square kilometres, and had a population of 8,810 at the 2017 census.\nTavua is supposed to be governed by a 9-member Town Council, elected for a three-year term, who elect a Mayor from among themselves for a one-year term, renewable indefinitely. At the most recent municipal election, held on 22 October 2005, all 9 seats were won by the Tavua Ratepayers, Landowners, and Tenants Association. The new council reelected Chandra Singh, Mayor since 2001, for another term.\nIn 2009, the Military-backed interim government dismissed all municipal governments throughout Fiji and appointed special administrators to run the urban areas. As of 2015, elected municipal government has not been restored. The special administrator of Tavua is Tulsi Ram. He took office in January 2015, replacing Jay Whyte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "tavua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5828,
+    "attempt": 5785,
+    "place_id": "gn-2326221",
+    "input": {
+      "place": {
+        "place_id": "gn-2326221",
+        "name": "Omoku",
+        "country": "Nigeria",
+        "subdivision": "Rivers State",
+        "lat": 5.34388,
+        "lon": 6.65684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omoku",
+          "url": "https://en.wikipedia.org/wiki/Omoku",
+          "text": "Omoku is a town in Rivers State, Nigeria with about 320,000 people. It Is located in the Northern part of the state, near the boundary with Delta State and Imo State.  It is the headquarters of Ogba/Egbema/Ndoni Local Government Area and one of the major cities of the Ogba people and Rivers State of Nigeria with latitude 5° 20' 37.97\" N and longitude 6° 39' 24.62\" E. It is also the capital seat of the Oba of Ogba land, and a home to the Federal College of Education (Technical). The indigenes speak Ogba of the Igboid language family.\nOil companies that operate there include Shell Petroleum Development Company, Total Energies, and Nigerian Agip Oil Company.  The city's infrastructure has been improved by constructing dual carriageway roads, a power generation plant, and banks.\nThere are two festivals celebrated by the people of Omoku called NCHAKA & OKUROSO (masquerade) festivals; the Nchaka festival is celebrated in late November or early December, while the Okuroso is celebrated between January and February every year. Other cultural festivals celebrated Omoku are Igba-Ogwe, Ebiam, Egwi-Iji Onube, and Egwu-Ohali."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "omoku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5829,
+    "attempt": 5786,
+    "place_id": "gn-2636881",
+    "input": {
+      "place": {
+        "place_id": "gn-2636881",
+        "name": "Stocksbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48249,
+        "lon": -1.59373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stocksbridge",
+          "url": "https://en.wikipedia.org/wiki/Stocksbridge",
+          "text": "Stocksbridge is a town and civil parish, it is encircled to the north and east by the southern edge of the Metropolitan Borough of Barnsley, although since 1974 it lies within the borders of the City of Sheffield, in South Yorkshire, England. The town is approximately 9 miles (14 km) from Barnsley and 10 miles (16 km) from Sheffield.\nHistorically part of the West Riding of Yorkshire, it lies just to the east of the Peak District. The town is located in the steep-sided valley of the Little Don River, below the Underbank Reservoir. It blends into the areas of Deepcar, Bolsterstone and the eastern end of Ewden valley around Ewden village, which are also within the civil parish. The population of the civil parish as of the 2011 census was 13,455."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "stocksbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5830,
+    "attempt": 5787,
+    "place_id": "gn-2638207",
+    "input": {
+      "place": {
+        "place_id": "gn-2638207",
+        "name": "Send",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28875,
+        "lon": -0.52666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Send, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Send,_Surrey",
+          "text": "Send is a village and civil parish in the Guildford borough of the English county of Surrey. The name is thought to mean \"sandy place\" and sand was extracted at various periods until the 1990s at pits in the outskirts of the parish.\nSend is buffered by Metropolitan Green Belt from other villages and towns except for the Grove Heath neighbourhood of Ripley. A rural band of the village adjoins the River Wey including Cartbridge and Send Marsh – this land has been drained and the river tamed by sluices, the Broadmead Cut and the Wey Navigation.  The vast majority of the built-up areas are not within an area of flood risk. Between the river and the navigation, in the far north of the parish, are the Papercourt and Broad Mead SSSIs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "send",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5831,
+    "attempt": 5788,
+    "place_id": "gn-2654824",
+    "input": {
+      "place": {
+        "place_id": "gn-2654824",
+        "name": "Brechin",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.72993,
+        "lon": -2.65729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brechin",
+          "url": "https://en.wikipedia.org/wiki/Brechin",
+          "text": "Brechin (BREE-kin, ; Scottish Gaelic: Breichin) is a historic market town and former royal burgh in Angus, Scotland. Traditionally Brechin was described as a city because of its cathedral and its status as the seat of a pre-Reformation Roman Catholic diocese (which continues today as an episcopal seat of the Scottish Episcopal Church), but that status has not been officially recognised in the modern era. \nNevertheless, the designation is often used, with examples being the City of Brechin and District Community Council, City of Brechin and Area Partnership, City of Brechin Civic Trust and Brechin City Football Club. Kinnaird Castle is nearby. Brechin is located slightly closer to Dundee than Aberdeen on the A90 between the cities. It is the fourth largest settlement of Angus, with a population of 7,186 in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "brechin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5832,
+    "attempt": 5789,
+    "place_id": "gn-2655819",
+    "input": {
+      "place": {
+        "place_id": "gn-2655819",
+        "name": "Berwick-Upon-Tweed",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.76868,
+        "lon": -2.00537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berwick-upon-Tweed",
+          "url": "https://en.wikipedia.org/wiki/Berwick-upon-Tweed",
+          "text": "Berwick-upon-Tweed ( ), sometimes known as Berwick-on-Tweed or simply Berwick, is a town and civil parish in Northumberland, England. It lies 2.5 mi (4 km) south of the Anglo-Scottish border and is the northernmost town in England. The 2011 census recorded Berwick's population as 12,043.\nThe town is at the mouth of the River Tweed on the east coast, 56 mi (90 km) south-east of Edinburgh, 65 mi (105 km) north of Newcastle upon Tyne and 345 mi (555 km) north of London. Uniquely for England, the town is slightly further north than Denmark's capital Copenhagen and the southern tip of Sweden, further east of the North Sea, which Berwick borders.\nBerwick was founded as an Anglo-Saxon settlement in the Kingdom of Northumbria, which was annexed by England in the 10th century. A civil parish and town council were formed in 2008 comprising the communities of Berwick, Spittal and Tweedmouth. It is the northernmost civil parish in England.\nFor more than 400 years, the area was central to historic border wars between the Kingdoms of England and Scotland, and several times possession of Berwick changed hands between the two kingdoms. The last time it changed hands was when Richard, Duke of Gloucester (later King Richard III) retook it for England in 1482. To this day, many Berwickers feel a close affinity to Scotland. Both Berwick Rangers Football Club and Berwick Rugby Football Club play in Scottish leagues.\nBerwick remains a traditional market town and also has some notable architectural features, in particular its medieval town walls, its Georgian Town Hall, its Elizabethan ramparts, and Britain's earliest barracks buildings, which Nicholas Hawksmoor built (1717–1721) for the Board of Ordnance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 278
+    },
+    "banned_terms": [
+      {
+        "term": "berwick upon tweed",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "berwick",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "upon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tweed",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5833,
+    "attempt": 5790,
+    "place_id": "gn-2787948",
+    "input": {
+      "place": {
+        "place_id": "gn-2787948",
+        "name": "Rochefort",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.1631,
+        "lon": 5.2216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rochefort, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Rochefort,_Belgium",
+          "text": "Rochefort (French: [ʁɔʃfɔʁ] ; Walloon: Rotchfoirt) is a municipality and city of Wallonia located in the province of Namur, Belgium, close to the Ardennes. On 1 January 2006, Rochefort had a total population of 12,038. The total area is 165.27 km2 (63.81 sq mi) which gives a population density of 73 inhabitants per km2. It was a resort in the 19th century.\nThe municipality consists of the following districts: Ave-et-Auffe, Buissonville, Éprave, Han-sur-Lesse, Jemelle, Lavaux-Sainte-Anne, Lessive, Mont-Gauthier, Rochefort, Villers-sur-Lesse, and Wavreille.\nIts ancient position at the crossroads where the route to Saint-Hubert crossed that from Liège to Bouillon required fortifying: the ruins of the old castle, which gave the place its name and a title to a long line of counts who had the right of coining their own money, still exist. This castle underwent many sieges and suffered at the hands of Marshal de Châtillon (1636).\nNear Rochefort are the red marble quarries of St. Remy, and Rochefort Abbey, a Trappist monastery, which operates the Rochefort Brewery, known for brewing dark and sweet beers, especially the Rochefort 10, a deep dark-brown rich and fruity beer.\nThe town was the site of the Battle of Bure during the Second World War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "rochefort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5834,
+    "attempt": 5791,
+    "place_id": "gn-3359736",
+    "input": {
+      "place": {
+        "place_id": "gn-3359736",
+        "name": "Vredendal",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -31.66833,
+        "lon": 18.50119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vredendal",
+          "url": "https://en.wikipedia.org/wiki/Vredendal",
+          "text": "Vredendal (locally ) is a town in the northern Olifants River Valley in the Western Cape province of South Africa, with a population (according to the 2001 census) of 16,164 people. It lies 250 kilometres (160 mi) north of Cape Town on the banks of the Olifants River at the southern edge of Little Namaqualand.\nVredendal was laid out in 1933 as part of the Olifants River Irrigation Scheme, and attained municipal status in 1963. The name is Dutch and Afrikaans for \"valley of peace\", and was taken from the name of an old farm.\nVredendal is the administrative and commercial centre of the northern Olifants River Valley and the northern part of the Western Cape province. It is the seat of the Matzikama Local Municipality and of a Vredendal Magistrate's Court. Between 1968 and 2001 it was a major integrated military base housing two SAAF fighter jet squadrons, a ground attack squadron, an Aerial refueling squadron, two airlifting transport squadrons (i.e. the 2nd SAAF Group) attached to 3 Paratrooper Companies, an attack helicopter squadron colocated with an SADF Armoured Battalion and 2 Light Infantry Battalions which formed the 6th SADF Infantry Brigade. It was also the site of the 4 Coastal Artillery Group of the SADF Navy equipped with Surface to Ship Guided Missiles and Anti-Submarine Helicopters.\nVredendal is connected to the N7 national road by the R362 and R363 roads, which run along the north and south banks, respectively, of the Olifants River. Vredendal is also served by the West Coast railway line which runs from Cape Town to Bitterfontein. The travel distance from Cape Town is approximately 300 kilometres (190 mi) by road and 360 kilometres (220 mi) by rail.\nIt is on the boundary between the Mediterranean climate to the south and the semi-arid climate towards the north. Winters are mild with occasional rainy days. The summers can be warm to very hot and very dry.\nIn August 2014 the town hit the news headlines when Lionel Phillips, acting director for development and city planning, caused an uproar by requesting the organisers of the Namaqua festival to cancel the performance of the singer Steve Hofmeyr. Hofmeyr responded by stating  \"There you have it Lionel Phillips: 17 artists, one agency and a whole town without an income for that weekend.\"\nOn 27 October 2015, a temperature of 48.4 °C was recorded in Vredendal, the highest global temperature for October that year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "vredendal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5835,
+    "attempt": 5792,
+    "place_id": "gn-3457426",
+    "input": {
+      "place": {
+        "place_id": "gn-3457426",
+        "name": "Vila Bela da Santíssima Trindade",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -15.00806,
+        "lon": -59.95056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Bela da Santíssima Trindade",
+          "url": "https://en.wikipedia.org/wiki/Vila_Bela_da_Santíssima_Trindade",
+          "text": "Vila Bela da Santíssima Trindade is a Brazilian municipality in Mato Grosso with 16,271 (2020) inhabitants. It is located at upper Guaporé River close to the border with Bolivia. The municipality was founded by Dom Antônio Rolim de Moura Tavares (1709-1782), the first governor of the Captaincy of Mato Grosso, to serve as the capital of the new captaincy.\nToday, because most inhabitants descend from former African slaves, the town creates the impression of a town in the African jungle rather than in one in the Amazon jungle. The distinct African feeling is also reflected in a yearly festival called  Festa do Congo. One of its main events is the Dança do Congo, which is performed at the ruins of the former igreja matriz — a particular type of colonial Portuguese church. Aside from those church ruins, which are the main tourist site of the town, there is a small history museum.\nThe town serves as a hub for trips to the Amazon jungle along the upper Guaporé River and the nearby nature reserve Parque Estadual da Serra de Ricardo Franco. One of the main attractions of the latter is the  Cascata dos Namorados (English: Valentine Cascades).\nThe municipality contains the 158,621-hectare (391,960-acre) Serra Ricardo Franco State Park, created in 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "vila bela da santissima trindade",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bela",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santissima",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trindade",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5836,
+    "attempt": 5793,
+    "place_id": "gn-3840896",
+    "input": {
+      "place": {
+        "place_id": "gn-3840896",
+        "name": "Plaza Huincul",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -38.93012,
+        "lon": -69.20778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plaza Huincul",
+          "url": "https://en.wikipedia.org/wiki/Plaza_Huincul",
+          "text": "Plaza Huincul is a small city in Neuquen province, with a population of around 13,000 people, located in southwestern Argentina. It is approximately 1,288 km (800 mi) south-west from the capital, Buenos Aires. Plaza Huincul is located in the middle of the desert and grew due to an oil discovery in the area in 1918. The region around the city has yielded the holotype fossils of some of the largest species of dinosaurs discovered to date, such as Argentinosaurus, Giganotosaurus, and Mapusaurus.\nPlaza Huincul has an oil & gas refinery that belongs to YPF, an Argentinian oil company and it shares various common factors with the city of Cutral Có (mostly with its paleontological tourism). One of the most important roads in the province go through Plaza Huincul: National Road Number 22.\nIts economy is mainly around oil & gas services. There is a growing number of farms that raise sheep and goats"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "plaza huincul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plaza",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "huincul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5837,
+    "attempt": 5794,
+    "place_id": "gn-3850929",
+    "input": {
+      "place": {
+        "place_id": "gn-3850929",
+        "name": "Laguna Larga",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.77569,
+        "lon": -63.80038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laguna Larga",
+          "url": "https://en.wikipedia.org/wiki/Laguna_Larga",
+          "text": "Laguna Larga is a town and municipality in the Impira District of the Río Segundo Department, Córdoba Province, Argentina, 55 kilometres (34 mi) from the provincial capital, Córdoba.\nIt is beside National Route 9, 4 kilometres (2.5 mi) from the Rosario-Córdoba Highway and 12 kilometres (7.5 mi) from the RP 10, which connects with National Route 158 of Mercosur.\nIts urban plant is 150 hectares (370 acres) in size, in a checkerboard pattern with a service street that divides it into two smaller blocks, with 225 blocks. National Route 9, parallel to the Nuevo Central Argentino (NCA) railroad tracks, divides the town into north and south sectors. The north has more economic activity, while the south is basically residential. Sportspeople such as Paulo Dybala and Thiago Prieto were born in Laguna Larga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "laguna larga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "larga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5838,
+    "attempt": 5795,
+    "place_id": "gn-4351327",
+    "input": {
+      "place": {
+        "place_id": "gn-4351327",
+        "name": "Cheverly",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.92817,
+        "lon": -76.91581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheverly, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Cheverly,_Maryland",
+          "text": "Cheverly is a town in Prince George's County, Maryland, United States, located very close to Washington, D.C., though not bordering it directly. The town was founded in 1918 and incorporated in 1931. Per the 2020 census, the population was 6,170. Cheverly borders the communities of Tuxedo, Chapel Oaks, Landover, Landover Hills, Villa Heights, and Bladensburg.\nCheverly is home to the Mount Hope, Prince George's County Health Department, Cheverly Professional Building, PepsiCo bottling plant, Judith P Hoyer Early Childhood Center, Cheverly American Legion Post 108, Magruder Spring Historic Landmark, ABC Supply Company Inc., Washington Woodworking Company, Cheverly Sport Fair Fishing Store, and Publick Playhouse Theater.\nUntil 2021, Cheverly had been home to the University of Maryland Prince George’s Hospital Center, which was founded in 1944 and was known as a first-class trauma center. The facility closed on June 12, 2021, replaced by the all-new, $543 million University of Maryland Capital Region Medical Center, which opened the same day in nearby Largo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "cheverly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5839,
+    "attempt": 5796,
+    "place_id": "gn-4702732",
+    "input": {
+      "place": {
+        "place_id": "gn-4702732",
+        "name": "Katy",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.78579,
+        "lon": -95.8244
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katy, Texas",
+          "url": "https://en.wikipedia.org/wiki/Katy,_Texas",
+          "text": "Katy is a city in the U.S. state of Texas, approximately centered at the tripoint of Harris, Fort Bend, and Waller counties. The population was 21,894 at the 2020 census. It is the center of the urban Greater Katy area, itself forming the western part of the Greater Houston metropolitan area.\nFirst formally settled in the mid-1890s, Katy was a railroad town along the Missouri–Kansas–Texas (MKT) Railroad which ran parallel to U.S. Route 90 (today Interstate 10) into downtown Houston. Katy obtained its name when the MKT Railroad dropped its Missouri waypoint and the junction became known as the \"KT stop\". The fertile floodplain of Buffalo Bayou, which has its source near Katy, and its tributaries made the city and other communities in the surrounding prairie an attractive location for rice farming. Beginning in the 1960s, the rapid growth of Houston moved westward along the new Interstate 10 corridor, bringing Katy into its environs.\nToday, Katy lies at the center of a broader area known as Greater Katy, which has become heavily urbanized. Homes and businesses may have Katy postal addresses without being in the city limits. While largely subsumed into Greater Houston, the town of Katy is still notable for Katy Mills Mall, Katy High School and its football dominance , and the historic Katy town square along the former right-of-way of the MKT railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "katy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5840,
+    "attempt": 5797,
+    "place_id": "gn-4928703",
+    "input": {
+      "place": {
+        "place_id": "gn-4928703",
+        "name": "Acton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.48509,
+        "lon": -71.43284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Acton,_Massachusetts",
+          "text": "Acton is a town in Middlesex County, Massachusetts, United States, approximately 21 miles (34 km) west-northwest of Boston along Massachusetts Route 2 west of Concord and about ten miles (16 km) southwest of Lowell. The population was 24,021 in April 2020, according to the United States Census Bureau. It is bordered by Westford and Littleton to the north, Concord and Carlisle to the east, Stow, Maynard, and Sudbury to the south and Boxborough to the west. Acton became an incorporated town in 1735. The town employs the Open Town Meeting form of government with a town manager and an elected, five-member select board.\nActon was named the 11th Best Place To Live among small towns in the country by Money Magazine in 2015, and the 16th best in 2009 and in 2011. The local high school, Acton-Boxborough Regional High School, was named a Blue Ribbon School by the U.S. Department of Education in 2009. The town is also a member of Minuteman Technical Vocational Regional School District.  Minuteman was recognized as a National Blue Ribbon School by the Department of Education in 2018. Minuteman was recognized as a National Green Ribbon School by Department of Education in 2024"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "acton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5841,
+    "attempt": 5798,
+    "place_id": "gn-5115843",
+    "input": {
+      "place": {
+        "place_id": "gn-5115843",
+        "name": "East Flatbush",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.65371,
+        "lon": -73.93042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Flatbush, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/East_Flatbush,_Brooklyn",
+          "text": "East Flatbush is a residential neighborhood in the New York City borough of Brooklyn. East Flatbush is bounded by Crown Heights and Empire Boulevard to the north; Brownsville and East 98th Street to the east; Flatlands, Canarsie and the Long Island Rail Road's Bay Ridge Branch to the south; and the neighborhood of Flatbush and New York Avenue to the west. East Flatbush is a predominantly black neighborhood of African American and Afro-Caribbean persons and has a population of 135,619 as of the 2010 United States census.\nEast Flatbush is part of Brooklyn Community District 17, and its primary ZIP Code is 11203. It is patrolled by the 67th Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 40th, 41st, and 45th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "east flatbush",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "flatbush",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5842,
+    "attempt": 5799,
+    "place_id": "gn-5126208",
+    "input": {
+      "place": {
+        "place_id": "gn-5126208",
+        "name": "Mastic",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80204,
+        "lon": -72.84094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mastic, New York",
+          "url": "https://en.wikipedia.org/wiki/Mastic,_New_York",
+          "text": "Mastic is a hamlet and a census-designated place (CDP) in the southeastern part of the town of Brookhaven in central Suffolk County, New York, United States. As of the 2020 census, Mastic had a population of 15,404.\nThe hamlet was originally called Forge until 1893, when it was changed to the current name of Mastic. The Long Island Rail Road built a station in 1882 and, on July 15, 1960, the stop was moved 7,010 feet (2,140 m) west and renamed Mastic–Shirley.\nThe Poospatuck Indian Reservation of the state-recognized Unkechaug Nation lies entirely within the community, near its southern end and along the Forge River.\n\nThe northernmost section of the hamlet is unofficially referred to as Manor Park, which stretches from Sunrise Highway to Moriches-Middle Island Road immediately east of Brookhaven Airport. Part of the neighborhood lies within the hamlet of Shirley, but is served entirely by Mastic's zip code of 11950."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "mastic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5843,
+    "attempt": 5800,
+    "place_id": "gn-5129290",
+    "input": {
+      "place": {
+        "place_id": "gn-5129290",
+        "name": "Northport",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.90093,
+        "lon": -73.34317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northport, New York",
+          "url": "https://en.wikipedia.org/wiki/Northport,_New_York",
+          "text": "Northport is a village in the Town of Huntington in Suffolk County, on the North Shore of Long Island, New York, United States. The population was 7,336 at the time of the 2025 census.\nInitially designated Great Cow Harbour by 17th-century English colonists, the area was officially renamed Northport in 1837. In 1894, in an effort to localize governance, the community was incorporated as a village.\nThe Incorporated Village of Northport is known for its Victorian-era village center, still bearing trolley rails from a long-discontinued streetcar line which transported village residents to the Long Island Rail Road station in East Northport. The village Main Street runs from the Village Green along the harborfront to the former hamlet of Vernon Valley, which has since been subsumed by the neighboring community of East Northport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "northport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

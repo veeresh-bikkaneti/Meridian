@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 3751,
+    "attempt": 3721,
+    "place_id": "gn-196752",
+    "input": {
+      "place": {
+        "place_id": "gn-196752",
+        "name": "Hola",
+        "country": "Kenya",
+        "subdivision": "Tana River County",
+        "lat": -1.48256,
+        "lon": 40.03341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hola, Kenya",
+          "url": "https://en.wikipedia.org/wiki/Hola,_Kenya",
+          "text": "Hola, also known as Galole, is a small town in Kenya on the Tana River with a population of 6,932. Hola is the capital of the Tana River County. It is a busy market town and a portal to Garissa County and the former North Eastern Province by local canoe ferry across the Tana River.\nIn addition to the Hola agricultural irrigation scheme, there is a District Hospital and a Kenya Prisons facility located within the town. After the 2013 election, which brought in devolution, based on the 2010 constitution,  the town become the headquarters of the Tana River County. the office of the governor is located in Hola town. the county has three constituencies, Bura, Galole and Garsen. the county has a number of elected officials namely Governor, senator, women representative, deputy governor and three members of parliament. The county also has 15 ward representatives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "hola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3752,
+    "attempt": 3722,
+    "place_id": "gn-2204582",
+    "input": {
+      "place": {
+        "place_id": "gn-2204582",
+        "name": "Labasa",
+        "country": "Fiji",
+        "subdivision": "Northern",
+        "lat": -16.4332,
+        "lon": 179.36451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Labasa",
+          "url": "https://en.wikipedia.org/wiki/Labasa",
+          "text": "Labasa (Fijian pronunciation: [lamˈbasa] , Hindi: लम्बासा) is a town in Fiji with a population of 28,500 at the 2010 census.\nLabasa is located in Macuata Province, in the north-eastern part of the island of Vanua Levu, and is the largest town on the island. The town itself is located on a delta formed by three rivers – the Wailevu, the Labasa (after which the town is named), and the Qawa.\nThe township (unlike in the past) is now less dependent on the sugar industry. The farmers' market offers seasonal produce and seafood. The main street is lined with small family-run businesses, supermarkets and restaurants offering a lively pedestrian thoroughfare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "labasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3753,
+    "attempt": 3723,
+    "place_id": "gn-2423018",
+    "input": {
+      "place": {
+        "place_id": "gn-2423018",
+        "name": "Bissikrima",
+        "country": "Guinea",
+        "subdivision": "Faranah",
+        "lat": 10.85,
+        "lon": -10.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bissikrima",
+          "url": "https://en.wikipedia.org/wiki/Bissikrima",
+          "text": "Bissikrima is a town and sub-prefecture in the Faranah Region of Guinea in Dabola prefecture. As of 2014 it had a population of 28,840 people.\nBissikrima is located at the geographical centre of Guinea on the Tinkisso River, one of the tributaries of the Niger on which there is a hydro-electric dam supplying the towns of Faranah, Dabola and Dinguiraye. Bissikrima is the only sub-prefecture in Dabola which enjoys a supply of electric power. As a result, it is one of the top five sub-prefectures in Guinea. For some time, Bissikrima has been an important railway station on the line connecting Conakry and Kankan, the two largest towns in Guinea. It is also a major road hub on the RN1 and the RN30, the road north to Dinguiraye. The Fula, Mandinka and Susu peoples have cohabited peacefully in Bissikrima for an extended period. Bissikrima is said to be a miniature version of Guinea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "bissikrima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3754,
+    "attempt": 3724,
+    "place_id": "gn-2509982",
+    "input": {
+      "place": {
+        "place_id": "gn-2509982",
+        "name": "Valdepeñas",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 38.76211,
+        "lon": -3.38483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valdepeñas",
+          "url": "https://en.wikipedia.org/wiki/Valdepeñas",
+          "text": "Valdepeñas is a municipality in the province of Ciudad Real, in the autonomous community of Castile-La Mancha, Spain. It is also the seat of the judicial district that covers the localities of Moral de Calatrava, Santa Cruz de Mudela, Viso del Marqués, Torrenueva, Castellar de Santiago and Almuradiel.\nDeveloped in the 13th century under the auspices of the Order of Calatrava, its emergence is connected to the depopulation of the nearby settlements of Santa María, Aberturas, and Corral Rubio. It possesses a traditional wine industry. It lies on the road (A-4) and rail (Alcázar de San Juan–Cádiz railway) route traditionally connecting the Meseta Central with Andalusia through the Despeñaperros Pass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "valdepenas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3755,
+    "attempt": 3725,
+    "place_id": "gn-2636876",
+    "input": {
+      "place": {
+        "place_id": "gn-2636876",
+        "name": "Stockton-on-Tees",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.56848,
+        "lon": -1.3187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockton-on-Tees",
+          "url": "https://en.wikipedia.org/wiki/Stockton-on-Tees",
+          "text": "Stockton-on-Tees is a market town in County Durham, England, with a population of 84,815 at the 2021 census. It gives its name to and is the largest settlement in the wider Borough of Stockton-on-Tees. It is part of Teesside and the Tees Valley, on the northern bank of the River Tees.\nThe River Tees was straightened in the early 19th century, so that larger ships could access the town. The ports have since relocated closer to the North Sea, and ships are no longer able to sail from the sea to the town. This is due to the building of the Tees Barrage, which was installed to manage tidal flooding. The Stockton and Darlington Railway served the port during the early part of the Industrial Revolution. The railway was also the world's first permanent steam-powered passenger railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "stockton on tees",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stockton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tees",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3756,
+    "attempt": 3726,
+    "place_id": "gn-2637087",
+    "input": {
+      "place": {
+        "place_id": "gn-2637087",
+        "name": "Stanford-le-Hope",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52274,
+        "lon": 0.43422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stanford-le-Hope",
+          "url": "https://en.wikipedia.org/wiki/Stanford-le-Hope",
+          "text": "Stanford-le-Hope is a town in the borough of Thurrock in Essex, England. Often known locally simply as Stanford, the town is located 24 miles (39 km) east of Charing Cross in central London. At the 2021 census the Stanford-le-Hope built up area as defined by the Office for National Statistics, which includes Corringham, had a population of 29,525.\nStanford-le-Hope was an ancient parish. It was abolished as a civil parish in 1936 on the creation of Thurrock Urban District, which in turn became the modern borough of Thurrock in 1974. The ecclesiastical parish has been merged with neighbouring Mucking to form a Church of England parish called \"Stanford-le-Hope with Mucking\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "stanford le hope",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stanford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hope",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3757,
+    "attempt": 3727,
+    "place_id": "gn-2641267",
+    "input": {
+      "place": {
+        "place_id": "gn-2641267",
+        "name": "North Shields",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.01646,
+        "lon": -1.44925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Shields",
+          "url": "https://en.wikipedia.org/wiki/North_Shields",
+          "text": "North Shields ( SHEELZ) is a town in the borough of North Tyneside in Tyne and Wear, England. It is 8 miles (13 km) north-east of Newcastle upon Tyne and borders nearby Wallsend and Tynemouth. The population of North Shields at the 2021 census was 6,137.\nSince 1974, it has been in the North Tyneside borough of Tyne and Wear: its historic administration was as part of the Castle ward in county of Northumberland. It was part of the Tynemouth County Borough; when abolished in 1974, the borough became an unparished area.\nIt is on the northern bank of the River Tyne, opposite to South Shields on the other bank.  The name derives from Middle English schele meaning \"temporary sheds or huts used by fishermen\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "north shields",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shields",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3758,
+    "attempt": 3728,
+    "place_id": "gn-2649258",
+    "input": {
+      "place": {
+        "place_id": "gn-2649258",
+        "name": "Folkestone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.08169,
+        "lon": 1.16734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Folkestone",
+          "url": "https://en.wikipedia.org/wiki/Folkestone",
+          "text": "Folkestone (  FOHK-stən) is a coastal town on the English Channel, in Kent, south-east England. The town lies on the southern edge of the North Downs at a valley between two cliffs. It was an important harbour, shipping port, and fashionable coastal resort for most of the 19th and mid-20th centuries. \nThis location has had a settlement since the Mesolithic era. A nunnery was founded by Eanswith, granddaughter of Æthelberht of Kent in the 7th century, who is still commemorated as part of the town's culture. During the 13th century, it developed into a seaport, and the harbour developed during the early 19th century to defend against a French invasion. Folkestone expanded further west after the arrival of the railway in 1843 as an elegant coastal resort, thanks to the investment of the Earl of Radnor under the urban plan of Decimus Burton.\nIn its Edwardian-era heyday, Folkestone was considered the most fashionable resort of the time, visited by royalty — amongst them Queen Victoria and Edward VII and other members of the English aristocracy. The town's architecture, especially in the West End part, is a testimony of this period, with many impressive buildings, townhouses, villas, private squares, and large hotels built to accommodate the gentry. After two world wars and the boom of the overseas holiday package, the town quickly declined. The harbour's trade diminished following the opening of the nearby Channel Tunnel and the ending of ferry services from Folkestone, but it still remains in active use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "folkestone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3759,
+    "attempt": 3729,
+    "place_id": "gn-2653290",
+    "input": {
+      "place": {
+        "place_id": "gn-2653290",
+        "name": "Cheadle Hulme",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.3761,
+        "lon": -2.1897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheadle Hulme",
+          "url": "https://en.wikipedia.org/wiki/Cheadle_Hulme",
+          "text": "Cheadle Hulme () is a suburb in the Metropolitan Borough of Stockport, Greater Manchester, England. It lies in the historic county of Cheshire, 2 miles (3.2 km) south-west of Stockport and 8 miles (12.9 km) south-east of Manchester. In 2011, it had a population of 26,479. The suburb has good transport links, with its own railway station and is in close proximity to Manchester Airport, the M60 motorway and the A34 road.\nEvidence of Bronze Age, Roman and Anglo-Saxon activity, including coins, jewellery and axes, have been discovered locally. The area was first mentioned in the Domesday Book of 1086 when it was a large estate which included neighbouring Cheadle. In the early 14th century, it was split into southern and northern parts at about the future locations of Cheadle Hulme and Cheadle respectively. The area was acquired by the Moseley family in the 17th century and became known as Cheadle Moseley. Unlike many English villages, it did not grow around a church; instead it formed from several hamlets, many of which retain their names as neighbourhoods within Cheadle Hulme. In the late 19th century, Cheadle Hulme was united with Cheadle, Gatley and other neighbouring places to form the urban district of Cheadle and Gatley. This district was abolished in 1974 and Cheadle Hulme became a part of the Metropolitan Borough of Stockport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "cheadle hulme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cheadle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hulme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3760,
+    "attempt": 3730,
+    "place_id": "gn-2654715",
+    "input": {
+      "place": {
+        "place_id": "gn-2654715",
+        "name": "Brighouse",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.70322,
+        "lon": -1.78428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brighouse",
+          "url": "https://en.wikipedia.org/wiki/Brighouse",
+          "text": "Brighouse (, locally also ) is a town within the metropolitan borough of Calderdale, in West Yorkshire, England. Historically within the West Riding of Yorkshire, it is situated on the River Calder, 4 miles (6.4 km) east of Halifax. It is served by Junction 25 of the M62 motorway and Brighouse railway station on the Caldervale Line and Huddersfield Line.  In the town centre is a mooring basin on the Calder and Hebble Navigation. The United Kingdom Census 2001 gave the Brighouse / Rastrick subdivision of the West Yorkshire Urban Area a population of 32,360. The Brighouse ward of Calderdale Council had a population of 11,195 at the 2011 Census. Brighouse has an HD6 postcode, despite being associated with Halifax for local government. \nThe name Brighouse (or \"Bridge House\") originates from a building on (or close to) the bridge over the River Calder. In its early history, it was a hamlet of the nearby village of Rastrick.\nBrighouse is twinned with Lüdenscheid in Germany, the link beginning with an exchange by Brighouse Children's Theatre in 1950 followed by a civic twinning charter in 1960."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "brighouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3761,
+    "attempt": 3731,
+    "place_id": "gn-2735787",
+    "input": {
+      "place": {
+        "place_id": "gn-2735787",
+        "name": "Póvoa de Varzim",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.38344,
+        "lon": -8.76364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Póvoa de Varzim",
+          "url": "https://en.wikipedia.org/wiki/Póvoa_de_Varzim",
+          "text": "Póvoa de Varzim (European Portuguese pronunciation: [ˈpɔvu.ɐ ðɨ vɐɾˈzĩ] ) is a Portuguese city in Northern Portugal and sub-region of Greater Porto, 30 km (18.6 mi) from its city centre. It sits in a sandy coastal plain, a cuspate foreland, halfway between the Minho and Douro rivers. In 2001, there were 63,470 inhabitants, with 42,396 living in the city proper. The city expanded southwards, to Vila do Conde, and there are about 100,000 inhabitants in the urban area alone. It is the seventh-largest urban agglomeration in Portugal and the third largest in Northern Portugal.\nPermanent settlement in Póvoa de Varzim dates back to around four to six thousand years ago. Around 900 BC, unrest in the region led to the establishment of Cividade de Terroso, a fortified city, which developed maritime trade routes with the civilizations of classical antiquity. Modern Póvoa de Varzim emerged after the conquest by the Roman Republic of the city by 138 BC; fishing and fish processing units soon developed, which became the foundations of the local economy. By the 11th century, the fishing industry and fertile farmlands were the economic base of a feudal lordship and Varzim was fiercely disputed between the local overlords and the early Portuguese kings, which resulted in the establishment of the present day's municipality in 1308 and being subjugated to monastic power some years later. Póvoa de Varzim's importance reemerged with the Age of Discovery due to its shipbuilders and merchants proficiency and wealth, who traded around the globe in complex trade routes. By the 17th century, the fish processing industry rebounded and, sometime later, Póvoa became the dominant fishing port in Northern Portugal.\nPóvoa de Varzim has been a well-known beach resort for over three centuries, the most popular in Northern Portugal, which unfolded an influential literary culture and historical-artistic patronage in music and theater. Casino da Póvoa is one of the few and prominent gambling venues in Portugal. Leisure and health benefits provided in large sandy beaches attracts national and international visitors. Póvoa de Varzim holds other landmarks, especially the traditional Junqueira shopping street, Garrett Theatre, the Ethnography and History Museum, Cividade de Terroso, the Medieval Rates Monastery, Baroque Matriz Church, city Hall and Portuguese vernacular architecture in Praça do Almada, and numerous Portuguese cuisine restaurants that make Póvoa de Varzim popular in all Northern Portugal, which started to attract an international following. Farol da Lapa, Farol de Regufe, the main breakwater of the Port of Póvoa de Varzim, Carvalhido and São Félix Hill are preferred for sightseeing. The city has significant textile and food industries. The town has retained a distinct cultural identity and ancient Norse customs such as the writing system of siglas poveiras, the masseira farming technique and festivals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 454
+    },
+    "banned_terms": [
+      {
+        "term": "povoa de varzim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "povoa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "varzim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3762,
+    "attempt": 3732,
+    "place_id": "gn-2750896",
+    "input": {
+      "place": {
+        "place_id": "gn-2750896",
+        "name": "Middelburg",
+        "country": "Netherlands",
+        "subdivision": "Zeeland",
+        "lat": 51.5,
+        "lon": 3.61389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middelburg, Zeeland",
+          "url": "https://en.wikipedia.org/wiki/Middelburg,_Zeeland",
+          "text": "Middelburg (Dutch: [ˈmɪdəlbʏr(ə)x] ) is a city and municipality in the south-western Netherlands serving as the capital of the province of Zeeland. Situated on the central peninsula of the Zeeland province, Midden-Zeeland (consisting of former islands Walcheren, Noord-Beveland and Zuid-Beveland), it has a population of about 48,000.\nIn terms of technology, Middelburg played a role in the Scientific Revolution at the early modern period. The town was historically a center of lens crafting in the Golden Age of Dutch science and technology. The invention of the microscope and telescope is often credited to Middelburg spectacle-makers (including Zacharias Janssen and Hans Lipperhey) in the late 16th century and early 17th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "middelburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3763,
+    "attempt": 3733,
+    "place_id": "gn-2922586",
+    "input": {
+      "place": {
+        "place_id": "gn-2922586",
+        "name": "Garbsen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.41961,
+        "lon": 9.6033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garbsen",
+          "url": "https://en.wikipedia.org/wiki/Garbsen",
+          "text": "Garbsen (German pronunciation: [ˈɡaʁpsn̩] ) is a town in the district of Hanover, in Lower Saxony, Germany. It is situated on the river Leine, approximately 11 kilometres (6.8 mi) northwest of Hanover. The name Garbsen can be traced back to 1223. Today's 13 city districts have partly developed independently until the city of Garbsen was formed within its current boundaries during the regional reform in 1974.\nIn the course of industrialization and especially after the Second World War, the population of Garbsen and its predecessor municipalities increased significantly. In 1963, the current district Auf der Horst was created as a residential and working class district for up to 10,000 residents. Originally planned by the state capital Hannover, Auf der Horst became an important factor for the independent urban development of Garbsen in the following years.\nIn the first decades of the post-war period, Garbsen was primarily a classic commuter town for numerous workers in Hanover's industrial enterprises such as VW Nutzfahrzeuge, Continental or VARTA, today Johnson Controls. Since then Garbsen has experienced a significant change in the economic structure. Predominantly medium-size enterprises from different industries were created or settled, the number of the jobs more than doubled itself.\nWith the Production Technology Center (PZH) and the Underwater Technology Center, Garbsen is home to significant parts of the Mechanical Engineering Department of the Leibniz University of Hannover. By the winter semester 2019/2020, the entire Faculty of Mechanical Engineering is to be united on the Garbsen campus, which is currently under construction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "garbsen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3764,
+    "attempt": 3734,
+    "place_id": "gn-3037538",
+    "input": {
+      "place": {
+        "place_id": "gn-3037538",
+        "name": "Annemasse",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.19439,
+        "lon": 6.23775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annemasse",
+          "url": "https://en.wikipedia.org/wiki/Annemasse",
+          "text": "Annemasse (French pronunciation: [anmas] ; Arpitan: Anemâsse) is a commune in the Haute-Savoie department in the Auvergne-Rhône-Alpes region in Eastern France. Even though it covers a relatively small territory (4.98 km2 or 1.92 sq mi), it is Haute-Savoie's third most populous commune after the prefecture Annecy and Thonon-les-Bains, with 37,628 residents as of 2023.\nAnnemasse is part of the Grand Genève (Greater Geneva), a transborder agglomeration between France and Switzerland, which encompasses the developed areas on the southwestern shore of Lake Geneva. It lies near the Swiss border, approximately 8 km (5 mi) east of Geneva. Its railway station is served by TGV, RegioExpress, Léman Express and TER Auvergne-Rhône-Alpes trains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "annemasse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3765,
+    "attempt": 3735,
+    "place_id": "gn-3104703",
+    "input": {
+      "place": {
+        "place_id": "gn-3104703",
+        "name": "Villaviciosa de Odón",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.3581,
+        "lon": -3.9043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villaviciosa de Odón",
+          "url": "https://en.wikipedia.org/wiki/Villaviciosa_de_Odón",
+          "text": "Villaviciosa de Odón (Spanish pronunciation: [biʎaβiˈθjosa ðe oˈðon]) is a municipality in the western zone of the Community of Madrid in Spain. The town is located 15 km west of Madrid's city center, in the western zone of the metro area. The Spanish Air Force Museum and the Universidad Europea de Madrid are located within the municipality.\nVillaviciosa's quiet lifestyle and its proximity to Madrid propitiated rapid and extensive development during the late 1990s and early 2000s. Because of its proximity to the Universidad Europea de Madrid, it has become a university town, with well-developed residential area and amenities for students. The town contains the Castle of Villaviciosa de Odón."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "villaviciosa de odon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villaviciosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "odon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3766,
+    "attempt": 3736,
+    "place_id": "gn-3107418",
+    "input": {
+      "place": {
+        "place_id": "gn-3107418",
+        "name": "Tudela",
+        "country": "Spain",
+        "subdivision": "Navarre",
+        "lat": 42.06166,
+        "lon": -1.60452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tudela",
+          "url": "https://en.wikipedia.org/wiki/Tudela",
+          "text": "Tudela (Basque: Tutera) is a  municipality in Spain, the second largest city of the chartered community of Navarre and twice a former Latin bishopric. Its population is around 35,000. The city is sited in the Ebro valley. Fast trains running on two-track electrified railways serve the city and two freeways (AP 68 and AP 15) join close to it. Tudela is the capital of the agricultural region of Ribera Navarra, and also the seat of the courts of its judicial district.\nThe city hosts an annual festival in honor of Santa Ana (mother of the Virgin Mary) which begins on 24 July at noon and continues for approximately a week. Street music, bullfights and the running of the bulls are typical events of the festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "tudela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3767,
+    "attempt": 3737,
+    "place_id": "gn-3182272",
+    "input": {
+      "place": {
+        "place_id": "gn-3182272",
+        "name": "Battipaglia",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.60861,
+        "lon": 14.98209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Battipaglia",
+          "url": "https://en.wikipedia.org/wiki/Battipaglia",
+          "text": "Battipaglia (pronounced [ˌbattiˈpaʎʎa]) is a town and comune in the Province of Salerno, in the Campania region of southern Italy. With around 50,000 inhabitants, it is one of the most populous municipalities in the province after Salerno itself, and the main agricultural, industrial and railway hub of the Sele Plain.\nThe town is internationally renowned for the production of buffalo mozzarella. Beyond dairy farming, the surrounding plain is one of the most intensively cultivated areas of southern Italy, producing artichokes, tomatoes, tobacco and fruit, and is a leading centre for the cultivation of rocket and pre-washed bagged salads, much of it processed locally for the national and European retail market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "battipaglia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3768,
+    "attempt": 3738,
+    "place_id": "gn-3182336",
+    "input": {
+      "place": {
+        "place_id": "gn-3182336",
+        "name": "Barra",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84255,
+        "lon": 14.31849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra, Naples",
+          "url": "https://en.wikipedia.org/wiki/Barra,_Naples",
+          "text": "Barra is an eastern quarter of Naples, southern Italy, with a population of some 40,000 inhabitants (36,642 in the 2011 census).\nBarra occupies the easternmost section of the territory of the comune of Naples, ranging from the sea to the slopes of Mount Vesuvius. Its territory is predominantly flat and lies at an elevation of 15 metres above sea level. It borders the quarter of Ponticelli and the comune of Cercola to the north, the comuni of San Giorgio a Cremano and San Sebastiano al Vesuvio to the east, the quarter of San Giovanni a Teduccio to the south, and the quarters of Poggioreale and Zona Industriale to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3769,
+    "attempt": 3739,
+    "place_id": "gn-3201047",
+    "input": {
+      "place": {
+        "place_id": "gn-3201047",
+        "name": "Dubrovnik",
+        "country": "Croatia",
+        "subdivision": "Dubrovnik-Neretva",
+        "lat": 42.64125,
+        "lon": 18.10909
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubrovnik",
+          "url": "https://en.wikipedia.org/wiki/Dubrovnik",
+          "text": "Dubrovnik, historically also known as Ragusa, is a city in southern Dalmatia, Croatia, by the Adriatic Sea. It is one of the most prominent tourist destinations in the Mediterranean, a seaport and the centre of the Dubrovnik-Neretva County. In 2021, its total population was 41,562. Recognizing its outstanding medieval architecture and fortifications, UNESCO inscribed the Old City of Dubrovnik as a World Heritage Site in 1979.\nThe history of the city probably dates back to the 7th century, when the town known as Ragusa was founded by refugees from Epidaurum (Ragusa Vecchia). It was under protectorate of the Byzantine Empire and later under the sovereignty of the Republic of Venice. Between the 14th and 19th centuries, Dubrovnik ruled itself as a free state. The prosperity of the city was historically based on maritime trade; as the capital of the maritime Republic of Ragusa, it achieved a high level of development, particularly during the 15th and 16th centuries, as it became notable for its wealth and skilled diplomacy. At the same time, Dubrovnik became a cradle of Croatian literature. In his letter to Nikola Nalješković (1564), poet Ivan Vidalić named it the \"crown of Croatian cities\".\nThe entire city was almost destroyed in a devastating earthquake in 1667. During the Napoleonic Wars, Dubrovnik was occupied by the French Empire forces, and then the Republic of Ragusa was abolished and incorporated into the Napoleonic Kingdom of Italy and later into the Illyrian Provinces of France. From the early 19th to early 20th centuries, Dubrovnik was part of the Kingdom of Dalmatia within the Austrian Empire. Dubrovnik became part of the Kingdom of Yugoslavia immediately upon its creation, and it was incorporated into its Zeta Banovina in 1929, before becoming part of the Banovina of Croatia upon its creation in 1939. During World War II, it was part of the Independent State of Croatia, an Axis puppet state, before being reincorporated into the Socialist Republic of Croatia in the Socialist Federal Republic of Yugoslavia.\nIn 1991, during the Croatian War of Independence, Dubrovnik was besieged by the Yugoslav People's Army for seven months and suffered significant damage from shelling. After undergoing repair and restoration works in the 1990s and early 2000s, it re-emerged as one of the Mediterranean's top tourist destinations, as well as a popular filming location.  Often called \"The Queen of the Adriatic\" Dubrovnik is considered one of the most popular destinations in the Adriatic and in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 407
+    },
+    "banned_terms": [
+      {
+        "term": "dubrovnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3770,
+    "attempt": 3740,
+    "place_id": "gn-3345437",
+    "input": {
+      "place": {
+        "place_id": "gn-3345437",
+        "name": "Camden Town",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.54057,
+        "lon": -0.14334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camden Town",
+          "url": "https://en.wikipedia.org/wiki/Camden_Town",
+          "text": "Camden Town ( ) is an area in the London Borough of Camden, around 2.5 miles (4 km) north-northwest of Charing Cross. Historically in Middlesex, it is identified in the  London Plan as one of 34 major centres in Greater London.\nLaid out as a residential district from 1791 and originally part of the manor of Kentish Town, Camden Town became an important location during the early development of the railways, which reinforced its position on the London canal network. The area's industrial economic base has been replaced by service industries such as retail, tourism and entertainment. The area now hosts street markets and music venues associated with alternative culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "camden town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "camden",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4274,
+    "attempt": 4241,
+    "place_id": "gn-6943586",
+    "input": {
+      "place": {
+        "place_id": "gn-6943586",
+        "name": "Paddington",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.45939,
+        "lon": 152.99509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paddington, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Paddington,_Queensland",
+          "text": "Paddington is an inner-western suburb in the City of Brisbane, Queensland, Australia, located about 4.6 kilometres (2.9 mi) west of the Brisbane CBD. At the 2021 census, Paddington had a population of 9,063 people.\nSet across steep ridges and hills, the suburb is noted for its distinctive Queenslander houses, many dating from the late nineteenth and early twentieth centuries. Paddington includes the neighbourhood of Rosalie, which has its centre at the junction of Baroona Road and Nash Street  (27.4661°S 152.9969°E﻿ / -27.4661; 152.9969﻿ (Rosalie (centre of neighbourhood))) and was a separate suburb until 1975.\nPaddington is one of Brisbane's most famed suburbs noted for its hilly streets and heritage architecture. It has been frequently the subject of artists including William Bustard, Roy Parkinson, and Jon Molvig, as well as contemporary artists and photographers such as William Robinson and Richard Stringer. The areas of Given and Latrobe Terraces and Rosalie village is best known for boutique shopping, cafés, galleries, and dining."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "paddington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4275,
+    "attempt": 4242,
+    "place_id": "gn-2779115",
+    "input": {
+      "place": {
+        "place_id": "gn-2779115",
+        "name": "Fürstenfeld",
+        "country": "Austria",
+        "subdivision": "Styria",
+        "lat": 47.05,
+        "lon": 16.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fürstenfeld",
+          "url": "https://en.wikipedia.org/wiki/F%C3%BCrstenfeld",
+          "text": "Fürstenfeld (Austrian German: [ˈfʏrstn̩fɛld]; Hungarian: Fölöstöm) is a small historic city in Styria, Austria. It is situated near the border with Hungary, which is why the city was originally founded. The town has become quite famous in Austria and Germany because of the song by the same name by Styrian band S.T.S.\nFürstenfeld has a population of some 10,391 as of January 1, 2025. It was the centre of an eponymous district until the end of 2012, when this was merged with Hartberg to form the district of Hartberg-Fürstenfeld.\nFürstenfeld was founded around 1170 as a defense against the Hungarians (the present Austrian state of Burgenland was part of Hungary until after World War I, so Fürstenfeld used to lie right on the border) and received its town charter in 1215.\nToday, it is known for its schools, middle-sized industry, and vicinity to several spa towns (Bad Blumau, Bad Loipersdorf and Bad Waltersdorf in Styria, and Stegersbach in Burgenland)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 159,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "furstenfeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4276,
+    "attempt": 4243,
+    "place_id": "gn-6074409",
+    "input": {
+      "place": {
+        "place_id": "gn-6074409",
+        "name": "Mimico",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.61616,
+        "lon": -79.51269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mimico",
+          "url": "https://en.wikipedia.org/wiki/Mimico",
+          "text": "Mimico (, MIH-mih-koh) is a neighbourhood (and a former municipality) in Toronto, Ontario, Canada, being located in the south-west area of Toronto on Lake Ontario. It is in the south-east corner of the former Township (and later, City) of Etobicoke, and was an independent municipality from 1911 to 1967.\nMimico, which was named after the passenger pigeon, is the oldest of the former Lakeshore Municipalities. The Town of Mimico was established by a plan of sub-division in 1856, but was not sub-divided from the former Township of Etobicoke until 1911. The land area of Mimico originated mainly from three family farms, namely: Stock Estate (North of Portland), Hendry Estate (between Royal York and Queens Ave), Van Every Estate (between Royal York Rd and Dwight Ave). Mimico was an independent municipality until 1967, when it was amalgamated into the new Borough of Etobicoke (later, City of, in 1984), which was itself amalgamated in 1998 into the current city of Toronto.\nToday, Mimico is primarily a residential area with two commercial strips; one along Royal York Road and the other along Lake Shore Boulevard West, parallel to the shoreline (from Louisa Avenue to Allen Avenue). There is also a former commercial strip along Mimico Avenue connecting Royal York Road and Lake Shore Boulevard West. Some areas of industrial use exist along the railway corridor. In early 2012, Toronto Life magazine ranked Mimico first on their \"Where to Buy Now\" list of Toronto neighbourhoods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 159,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "mimico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4277,
+    "attempt": 4244,
+    "place_id": "gn-6693937",
+    "input": {
+      "place": {
+        "place_id": "gn-6693937",
+        "name": "Crystal Palace",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41934,
+        "lon": -0.07854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crystal Palace, London",
+          "url": "https://en.wikipedia.org/wiki/Crystal_Palace,_London",
+          "text": "Crystal Palace is a place in South London, named after the Crystal Palace Exhibition building which stood in the area from 1854, until it was destroyed by a fire in 1936. About 7 miles (11 km) southeast of Charing Cross, it includes one of the highest points in London, at 367 feet (112 m), offering views over the capital.\nThe area has no defined boundaries and straddles five London boroughs and three postal districts, although there is a Crystal Palace electoral ward and Crystal Palace Park in the London Borough of Bromley. It forms a group of the greater area known as Upper Norwood, and is contiguous with the areas of Anerley, Dulwich Wood, Gipsy Hill, Penge, South Norwood and Sydenham. The area is represented by four parliamentary constituencies, four London Assembly constituencies and fourteen local councillors.\nUntil development began in the 19th century, and before the arrival of the Crystal Palace, the area was known as Sydenham Hill. The Norwood Ridge and an historic oak tree were used to mark parish boundaries. After the Crystal Palace burned down in 1936, the site of the building and its grounds became Crystal Palace Park, the location of the National Sports Centre which contains an athletics track, stadium and other sports facilities. Crystal Palace Park has also been used as the setting for a number of concerts and films, such as The Italian Job and The Pleasure Garden and contains the Crystal Palace Park Concert Platform, in place since 1997. \nTwo television transmitter masts make the district a landmark location, visible from many parts of Greater London. Local landmarks include the Crystal Palace Triangle, a shopping district made up of three streets forming a triangle; Westow Park, a smaller park that lies off the triangle southwest of Crystal Palace Park; and the Stambourne Woodland Walk.\nCrystal Palace was named in the Sunday Times newspaper's top ten list of \"the best places to live in London\" of 2016. In April 2022 Crystal Palace was named the best place to live in London by the Sunday Times, being characterised by a bohemian fusion of urban vibes and village-feel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 159,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "crystal palace",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crystal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palace",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4278,
+    "attempt": 4245,
+    "place_id": "gn-3166866",
+    "input": {
+      "place": {
+        "place_id": "gn-3166866",
+        "name": "Scorzè",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.57405,
+        "lon": 12.11156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scorzè",
+          "url": "https://en.wikipedia.org/wiki/Scorz%C3%A8",
+          "text": "Scorzè is a comune in the Metropolitan City of Venice, in the Italian region of Veneto, located about 25 kilometres (16 mi) northwest of Venice.\nThe country is bordered by Zero Branco, Trebaseleghe, Venezia, Noale and Salzano.\nThe municipality of Scorzè contains many hamlets which are: Rio San Martino, Peseggia, Cappella, and Gardigiano.\nIt is situated on an area inhabited since the Paleovenetian era, then colonized by the Romans. In the Middle Ages it was a feud of the bishops of Treviso, who had as vassals in the territory several families, in particular the Tempesta and the Scorzadis; then part of the Serenissima; since 1866, after the treaty of Vienna becomes a comune in the Kingdom of Italy, then Republic.\nIt is an important agricultural, handicraft, industrial center, and is home to numerous companies, both large and small, and a hub of a certain importance from the point of view of traffic and the national electricity distribution network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "scorze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4279,
+    "attempt": 4246,
+    "place_id": "gn-3515484",
+    "input": {
+      "place": {
+        "place_id": "gn-3515484",
+        "name": "Tlacolula de Matamoros",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.95525,
+        "lon": -96.47764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlacolula de Matamoros",
+          "url": "https://en.wikipedia.org/wiki/Tlacolula_de_Matamoros",
+          "text": "Tlacolula de Matamoros is a city and municipality in the Mexican state of Oaxaca, about 30 km from the center of the city of Oaxaca on Federal Highway 190, which leads east to Mitla and the Isthmus of Tehuantepec. \nIt is part of the Tlacolula District in the east of the Valles Centrales Region.\nThe city is the main commercial center for the Tlacolula Valley area, and best known for its weekly open air market held on Sundays. This market is one of the oldest, largest and busiest in Oaxaca, mostly selling food and other necessities for the many rural people which come into town on this day to shop. The city is also home to a 16th-century Dominican church, whose chapel, the Capilla del Señor de Tlacolula, is known for its ornate Baroque decoration and a crucifix to which have been ascribed many miracles.  Outside the city proper, the municipality is home to the Yagul archeological site. and a number of a group of one hundred caves and rock shelters which document the pre-historic transition of people from hunting and gathering to agriculture based on the domestication  of corn and other plants.\nThe name most likely comes from the Nahuatl phrase tlacolullan, which means \"place of abundance.\" However, some trace the origin to the Nahuatl phrase tlacololli, which means \"something twisted.\" Its original Zapotec name was Guillbaan, which means \"village of the burials.\" The appendage \"de Matamoros\" is to honor Mariano Matamoros of the Mexican War of Independence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "tlacolula de matamoros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tlacolula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "matamoros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4280,
+    "attempt": 4247,
+    "place_id": "gn-4890075",
+    "input": {
+      "place": {
+        "place_id": "gn-4890075",
+        "name": "Douglas",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.83476,
+        "lon": -87.61811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Douglas, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Chicago",
+          "text": "Douglas is one of the 77 community areas of Chicago in Illinois, United States, located on the South Side of Chicago.\nThe Douglas community area stretches from 26th Street, south to Pershing Road along the Lake Shore, including parts of the Green Line, along State Street and the Metra Electric and Amtrak passenger railroad tracks, which run parallel to Lake Shore Drive. Burnham Park runs along its shoreline, containing 31st Street Beach. The community area also contains part of the neighborhood of Bronzeville, the historic center of black culture in the city, since the early 20th century and the Great Migration.\nThe neighborhood is named for Stephen A. Douglas, Illinois politician and Abraham Lincoln's political foe, whose estate included a tract of land given to the federal government. This tract later was developed for use as the Civil War Union training and prison camp, Camp Douglas, located in what is now the eastern portion of the Douglas neighborhood. Douglas gave that part of his estate at Cottage Grove and 35th to the Old University of Chicago. The Chicago 2016 Olympic bid planned for the Olympic Village to be constructed on a 37-acre (15 ha) truck parking lot, south of McCormick Place, that is mostly in the Douglas community area and partly in the Near South Side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "douglas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4281,
+    "attempt": 4248,
+    "place_id": "gn-5095626",
+    "input": {
+      "place": {
+        "place_id": "gn-5095626",
+        "name": "Bernardsville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.71871,
+        "lon": -74.56932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bernardsville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bernardsville,_New_Jersey",
+          "text": "Bernardsville () is the northernmost borough in Somerset County, New Jersey, United States. Situated within the heart of the Raritan Valley and Somerset Hills regions, the borough is an historic and wealthy bedroom community of New York City in the New York metropolitan area. As of the 2020 United States census, the borough's population was 7,893, an increase of 186 (+2.4%) from the 2010 census count of 7,707, which in turn had reflected an increase of 362 (+4.9%) from the 7,345 counted at the 2000 census. Bernardsville is often mispronounced as \"Ber-NARDS-ville\" as opposed to the correct pronunciation, \"BER-nards-ville\".\nBernardsville was incorporated as a borough by an act of the New Jersey Legislature on March 6, 1924, from portions of Bernards Township, based on the results of a referendum held on April 29, 1924. The borough was named for Sir Francis Bernard, 1st Baronet, who served as governor of the Province of New Jersey before the Revolutionary War. In 2009, part of the borough was listed on the National Register of Historic Places as the Olcott Avenue Historic District.\nIn 2000, Bernardsville had the 10th-highest per capita income in New Jersey. Based on data from the 2006–2010 American Community Survey, the borough had a per-capita income of $70,141, ranked 27th in the state. In 2019, the borough was ranked by Bloomberg News as 64th of 100 on its 2019 list of Bloomberg Richest Places, one of 18 in the state included on the list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "bernardsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4282,
+    "attempt": 4249,
+    "place_id": "gn-6157995",
+    "input": {
+      "place": {
+        "place_id": "gn-6157995",
+        "name": "Strathcona",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.27655,
+        "lon": -123.09117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strathcona, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Strathcona,_Vancouver",
+          "text": "Strathcona is the oldest residential neighbourhood of Vancouver, British Columbia, Canada.  Officially a part of the East Side, it is bordered by Downtown Vancouver's Chinatown neighbourhood and the False Creek inlet (across Main Street) to the west, Downtown Eastside (across Hastings Street) to the north, Grandview-Woodland (across Clark Drive) to the east, and Mount Pleasant to the south of Emily Carr University and the Canadian National Railway and Great Northern Railway (now BNSF Railway) classification yards.\nBy some definitions, Strathcona's northern border is the roads just south of Burrard Inlet, and much of the Downtown Eastside lies within Strathcona.  By other definitions, Strathcona's northern boundary is just south of Hastings Street, and the Downtown Eastside is a separate neighbourhood to the north and northwest of Strathcona.\nStrathcona has long been a hub of immigration and culture relative to Vancouver's more recently settled neighbourhoods. Chinese immigrants, Vietnamese immigrants, and various groups of European immigrants have characterized the neighbourhood's culture. Although Strathcona was historically a working-class neighbourhood, recently, more middle-class and affluent groups have come to inhabit the neighbourhood. Strathcona is home to many art galleries, family-owned corner stores, and other small businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "strathcona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4283,
+    "attempt": 4250,
+    "place_id": "gn-2207754",
+    "input": {
+      "place": {
+        "place_id": "gn-2207754",
+        "name": "Ultimo",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.87722,
+        "lon": 151.1972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ultimo, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Ultimo,_New_South_Wales",
+          "text": "Ultimo is an inner-city suburb of Sydney, New South Wales, Australia. It is adjacent to the Sydney central business district in the local government area of the City of Sydney west of the Darling Harbour area, and is bordered by Pyrmont to the north, the Sydney CBD and Chinatown/Haymarket to the east, Broadway and Chippendale to the south, and Glebe and Wentworth Park to the west. \nUltimo is considered to be the leading technology, media and startup hub of Sydney, with the University of Technology Sydney, TAFE NSW Ultimo and JMC Academy having campuses within the suburb. Ultimo boasts the highest density of startups in Australia and is a central pillar of the NSW Government's Tech Central precinct. The suburb is also home to the headquarters of the national non-profit organisation, Sydney School of Entrepreneurship.   \nBroadway is a locality around the road of the same name, which is located on the borders of Ultimo, Chippendale and Glebe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "ultimo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4284,
+    "attempt": 4251,
+    "place_id": "gn-2657815",
+    "input": {
+      "place": {
+        "place_id": "gn-2657815",
+        "name": "Abergavenny",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.82098,
+        "lon": -3.01743
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abergavenny",
+          "url": "https://en.wikipedia.org/wiki/Abergavenny",
+          "text": "Abergavenny ( ; Welsh: Y Fenni, pronounced [ə ˈvɛni], archaically Abergafenni, 'mouth of the River Gavenny') is a market town and community in Monmouthshire, Wales. Abergavenny is promoted as a \"Gateway to Wales\"; it is approximately 7 miles (11 km) from the border with England (Herefordshire) and is located where the A40 trunk road and the recently upgraded A465 Heads of the Valleys road meet.\nOriginally the site of a Roman fort, Gobannium, it became a medieval walled town within the Welsh Marches. The town contains the remains of a medieval stone castle built soon after the Norman conquest of Wales.\nAbergavenny is situated at the confluence of the River Usk and a tributary stream, the Gavenny. It is almost entirely surrounded by mountains and hills: the Blorenge (559 m, 1,834 ft), the Sugar Loaf (596 m, 1,955 ft), Skirrid Fawr (Great Skirrid), Ysgyryd Fach (Little Skirrid), Deri, Rholben and Mynydd Llanwenarth, known locally as \"Llanwenarth Breast\". Abergavenny provides access to the nearby Black Mountains and the wider Brecon Beacons National Park. The Cambrian Way, Beacons Way and Marches Way pass through Abergavenny whilst the Offa's Dyke Path passes through Pandy five miles to the north and the Usk Valley Walk passes through nearby Llanfoist.\nIn the UK 2011 census, the six relevant wards (Lansdown, Grofield, Castle, Croesonen, Cantref and Priory) collectively listed Abergavenny's population as 12,515. The town hosted the 2016 National Eisteddfod of Wales."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "abergavenny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4285,
+    "attempt": 4252,
+    "place_id": "gn-3174641",
+    "input": {
+      "place": {
+        "place_id": "gn-3174641",
+        "name": "Locorotondo",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.75661,
+        "lon": 17.32392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Locorotondo",
+          "url": "https://en.wikipedia.org/wiki/Locorotondo",
+          "text": "Locorotondo (Barese: U Curdunne) is a town and municipality of the Metropolitan City of Bari, Apulia, southern Italy, with a population of about 14,000. It is situated between Martina Franca and Alberobello in the Valle d'Itria, a green stretch of countryside dotted with the famous whitewashed cone-roofed trulli houses. Locorotondo is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\") and it has been awarded the Orange Flag of the Touring Club of Italy due to the harmony of its shapes and the accessibility of the old town, as it can be easily visited on foot. It is an intricate network of little streets lined with old buildings and it is known for its typical houses called \"Le Cummerse\", which have a regular geometric shape and a sloping roof made of two different layers of limestone slabs. These dwellings have nowadays been renovated and offered to visitors in the form of scattered hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "locorotondo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4286,
+    "attempt": 4253,
+    "place_id": "gn-3178999",
+    "input": {
+      "place": {
+        "place_id": "gn-3178999",
+        "name": "Cerveteri",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.9908,
+        "lon": 12.09082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerveteri",
+          "url": "https://en.wikipedia.org/wiki/Cerveteri",
+          "text": "Cerveteri (Italian: [tʃerˈvɛːteri]) is a comune (municipality) in the Metropolitan City of Rome Capital, in the Italian region of Lazio. Known by the ancient Romans as Caere, and previously by the Etruscans as Caisra or Cisra, and as Agylla (or Άγυλλα) by the Greeks, its modern name derives from Caere Vetus (more precisely its locative Caere Veterī) used in the 13th century to distinguish it from Caere Novum (the current town).\nIt is the site of an ancient Etruscan city, one of the most important Etruscan cities, with an area more than 15 times larger than today's town. The best-known structures on the site form the Banditaccia Necropolis, and comprises all of the most important tumulus tombs and chambers known. Cut out of tufa, most of the tombs echo Greek architecture. \nCaere was one of the city-states of the Etruscan League and at its height, around 600 BC, its population was perhaps around 25,000 – 40,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "cerveteri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4287,
+    "attempt": 4254,
+    "place_id": "gn-3861824",
+    "input": {
+      "place": {
+        "place_id": "gn-3861824",
+        "name": "Chamical",
+        "country": "Argentina",
+        "subdivision": "La Rioja",
+        "lat": -30.35942,
+        "lon": -66.31387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chamical",
+          "url": "https://en.wikipedia.org/wiki/Chamical",
+          "text": "Chamical is a small city in, and the seat of government of, Chamical Department in the south of La Rioja Province of Argentina. With a population numbering 15,666 permanent residents at the 2022 census [INDEC], up from 12,919 at the time of the 2010 census, it is the fourth-most populous settlement in La Rioja Province after Aimogasta. It is home to the CELPA aerospace test center, founded in 1961 and operated by the Argentine Air Force. The town, which is crossed by the Tirante wadi, lies on the Ruta 38 (Spanish Wikipedia), around 135 km from La Rioja (1 hour 24 minutes by car), and some 295 km from Córdoba (3 hours 3 minutes by car).\nThis young urban habitation has been an important site in several stages of Argentine history during the past fifty years.\nChamical has plentiful wilderness touristic spots, such as \"Las Ollitas\" (a natural waterfall lake) and\n\"La Salina\" (a long salt flat).\nChamical is regarded as the tango hub in La Rioja Province.\nThe local demonym for Chamical is a Chamicalense."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "chamical",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4288,
+    "attempt": 4255,
+    "place_id": "gn-4558183",
+    "input": {
+      "place": {
+        "place_id": "gn-4558183",
+        "name": "Gettysburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.83093,
+        "lon": -77.2311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gettysburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Gettysburg,_Pennsylvania",
+          "text": "Gettysburg (; locally  ) is a borough in Adams County, Pennsylvania, United States, and its county seat. As of the 2020 census, the borough had a population of 7,106 people.\nGettysburg was the site of the Battle of Gettysburg, which was fought in Gettysburg over three days from July 1 to 3, 1863, during the American Civil War. With over 50,000 combined casualties, the Battle of Gettysburg is both the deadliest battle of the Civil War and in all of American history. The battle, which was won by the Union army, also proved the turning point of the war, leading to the Union's victory two years later and the nation's preservation. Later that year, on November 19, President Abraham Lincoln traveled to present-day Gettysburg National Cemetery, where he participated in a ceremonial consecration of the cemetery and delivered the Gettysburg Address, a carefully crafted 271-word address, which is considered one of the most famous speeches in history.\nGettysburg is home to Gettysburg National Military Park, which includes Gettysburg Battlefield, where the Battle of Gettysburg was largely fought."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "gettysburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4289,
+    "attempt": 4256,
+    "place_id": "gn-5750477",
+    "input": {
+      "place": {
+        "place_id": "gn-5750477",
+        "name": "Sandy",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.39734,
+        "lon": -122.26148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandy, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Sandy,_Oregon",
+          "text": "Sandy is a city located in Clackamas County, Oregon, United States, settled c. 1853 and named after the nearby Sandy River. Located in the foothills of the Cascade Mountain Range, the city serves as the western gateway to the Mount Hood Corridor, and is located approximately 27 miles (43 km) east of Portland.\nThe city of Sandy was originally settled by travelers passing along Barlow Road, one of the final sections of the Oregon Trail, and initially known as Revenue, after settlers Francis and Lydia Revenue. The city subsequently took the name Sandy after the Sandy River, named by Meriwether Lewis and William Clark in 1805; the river and previously been named the Barings River, after Sir Francis Baring, 1st Baronet, following a 1792 expedition in the region.\nIn the late 19th and early 20th centuries, Sandy's local economy was mainly based on logging and the sawmill industry due to the abundance of timber in the area. The city continued to grow with the arrival of German immigrants in the late 19th century, and the city was formally incorporated in 1911. In the latter half of the 20th century, the city's population saw a significant increase in residents, concurrent with the growth of the Portland metropolitan area.\nAs of the 2020 census, the city had a total population of 12,612. It is the home of Sandy High School, founded in 1914, which serves the population of Sandy as well as outlying communities, such as Boring and the Villages of Mount Hood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "sandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4290,
+    "attempt": 4257,
+    "place_id": "gn-2166370",
+    "input": {
+      "place": {
+        "place_id": "gn-2166370",
+        "name": "Footscray",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 144.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Footscray, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Footscray,_Victoria",
+          "text": "Footscray (  FUUT-skray) is an inner-city suburb in Melbourne, Victoria, Australia, 5 km (3.1 mi) west of Melbourne's Central Business District, located within the City of Maribyrnong local government area and its council seat. Footscray recorded a population of 17,131 at the 2021 census.\nFootscray is characterised by a very diverse, multicultural central shopping area, which reflects the successive waves of immigration experienced by Melbourne, and by Footscray in particular. Once a centre for Greek, Italian and former Yugoslavian migrants, it later became a hub for Vietnamese and East African immigrants in Melbourne. It has recently begun to undergo rapid development and gentrification, and Time Out magazine placed Footscray at 13th in its \"50 Coolest Neighbourhoods in the World\" for 2019, reflecting its evolving reputation, citing in particular its diverse array of international cuisine, bars and nightlife, as well as its arts scene.\nFootscray is named after Foots Cray, on the River Cray in London, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "footscray",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4291,
+    "attempt": 4258,
+    "place_id": "gn-2653235",
+    "input": {
+      "place": {
+        "place_id": "gn-2653235",
+        "name": "Chesham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.7,
+        "lon": -0.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chesham",
+          "url": "https://en.wikipedia.org/wiki/Chesham",
+          "text": "Chesham ( CHESH-əm, locally  CHESS-əm or  CHEZ-əm) is a market town and civil parish in Buckinghamshire, England, United Kingdom, 11 miles (18 km) south-east of the county town of Aylesbury, about 26 miles (42 km) north-west of central London, and part of the London commuter belt. It is in the Chess Valley, surrounded by farmland. The earliest records of Chesham as a settlement are from the second half of the 10th century, although there is archaeological evidence of people in this area from around 8000 BC. Henry III granted a royal charter for a weekly market in 1257.\nChesham is known for its four Bs — boots, beer, brushes and Baptists. In the face of fierce competition from both home and abroad during the later 19th and early 20th centuries, the three traditional industries rapidly declined. The ready availability of skilled labour encouraged new industries to the town both before and after the Second World War. Today, employment in the town is provided mainly by small businesses engaged in light industry, technology and professional services.\nFrom the early part of the 20th century, Chesham has experienced considerable expansion, with new housing developments and civic infrastructure. Chesham has become a commuter town with improved connection to London via the London Underground and road networks. The town centre has been progressively redeveloped since the 1960s and has been pedestrianised since the 1990s. The population at the 2021 census was 23,008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "chesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4292,
+    "attempt": 4259,
+    "place_id": "gn-2773698",
+    "input": {
+      "place": {
+        "place_id": "gn-2773698",
+        "name": "Korneuburg",
+        "country": "Austria",
+        "subdivision": "Lower Austria",
+        "lat": 48.35,
+        "lon": 16.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Korneuburg",
+          "url": "https://en.wikipedia.org/wiki/Korneuburg",
+          "text": "Korneuburg (German pronunciation: [kɔʁˈnɔʏbʊʁk] ; Central Bavarian: Korneibuag) is a town in the Weinviertel region of the province of Lower Austria, famous for its typical white and red wines, such as Gruner Veltliner and Blauer Zweigelt. Situated on the Danube about 12 km northwest of Vienna, the town itself covers an area of 9.77 square km and, as of January 2025, boasted 13,805 inhabitants. It also serves as the administrative centre of the much larger municipal district of Korneuburg.\nOriginally a riverside settlement called Nivenburg, it lies on the left bank of the river, opposite the Augustinian abbey town of Klosterneuburg, with which it was historically linked.  Korneuburg was first mentioned in 1136 as a busy market town and, in 1298, received the right to formally separate from Klosterneuburg.\nNowadays, the two towns retain an unusual physical link, a catamaran ferry whose rudders harness the strong current of the Danube to propel itself back and forth. With no regular engine, it maintains its position using a cable suspended above the river. Environmentally friendly, it provides a very popular link in summer, since it connects the long distance cycling routes along both river banks. It can also accommodate a handful of cars along with foot passengers.\nAt the beginning of the 15th century, moated defence walls were erected around the town with four gateways. One opened in the direction of the river, towards which, according to local legend, a vengeful Pied Piper lured away the children of the town, echoing the story set in Hamelin, Germany. The villain's imagined appearance can be seen standing atop a drinking fountain in the main square.\nShort sections of wall are still visible but the main historic feature today is a mighty watchtower, built around 1455, which looms over the colourful main square. From its symmetrically placed erker windows, it affords excellent views in all directions over the town and surrounding countryside. In turbulent times, it was occupied by a watchman to spot and warn of dangers, such as fires or approaching soldiers. Once part of a mediaeval church, demolished in the 19th century, the tower was incorporated by the architect Max Kropf into his neo-Gothic town hall which now dominates the main square. Designed in the historicist style, it contains colourful tile and fresco ornamentation, with an impressive double staircase leading up to the fine council chamber with its coffered ceiling. Both the tower and town hall can usually be visited during office hours, however the tower is currently closed for restoration.\nDue to its strategic location on the Danube, not far upstream from the capital, Korneuburg frequently fell victim to marauding armies on their way to attack Vienna. For example, the town suffered during the long conflict between the Hungarian king Matthias Corvinus and the Habsburg emperor Frederick III. A number of later major military campaigns ravaged the town, including the Thirty Years' War, the Ottoman Siege of 1683 or Battle of Vienna, the French Revolutionary and Napoleonic Wars, and Allied bombing during the Oil Campaign of World War II. However, each time the industrious citizens managed to re-build the town so that today it presents a pretty mix of original late mediaeval housing and shops, interspersed with carefully restored buildings.\nA maze of passageways and side streets run off the main square, and along one of these is the oldest building of any kind in the town, the ancient synagogue. Erected in the 14th century, it soon lost its religious purpose with the expulsion of the Jews from Habsburg lands in 1421. Over the centuries it has been sadly neglected and suffered various types of misuse, including serving as a horse-powered mill (hence the name of the side street on which it stands, the Rossmuhlgasse). Even in its ruinous condition and barely recognisable as a former place of worship, it remains one of the oldest synagogue structures in Central Europe. Efforts to acquire and restore the building, now in private ownership and utilised as a garage workshop, have failed, perhaps due to the costs involved, although rather ironically it appears on the national catalogue as a protected historic landmark.\nKorneuburg's main industry for well over a hundred years was the shipyard of the famous \"Donaudampfschiffahrtsgesellschaft“ or Danube Steamboat Company. Opened in 1852, it served as the principal site for the construction and repair of its large fleet of ships and barges. After the Nazi annexation of Austria in 1938, the shipyard was integrated into the Hermann-Göring-Werke, and significantly enlarged. Thus in 1941, 16 barracks were built to house forced labourers and prisoners of war. In 1945, the Red Army captured the shipyard. Closed in 1993, with its four remaining assembly halls placed under protection as historic landmarks, the Korneuburg Shipyard is nowadays the site of a branch of the Museum of Military History, Vienna comprising two patrol boats, Niederösterreich and Oberst Brecht. These were the Austrian Army's last patrol ships on the Danube, and the successors of the KuK Kriegsmarine.\nNowadays Korneuburg is no longer so dependent on a single industry but has successfully diversified into a wide range of modern activities, while its proximity to Vienna has led to an increasing development of flats and houses to accommodate new generations of commuters into the capital city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 875
+    },
+    "banned_terms": [
+      {
+        "term": "korneuburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4293,
+    "attempt": 4260,
+    "place_id": "gn-4703078",
+    "input": {
+      "place": {
+        "place_id": "gn-4703078",
+        "name": "Kerrville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.04743,
+        "lon": -99.14032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerrville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Kerrville,_Texas",
+          "text": "Kerrville is a city in and the county seat of Kerr County, Texas, United States.  The population of Kerrville was 24,278 at the 2020 census. The city is named after James Kerr, a major in the Texas Revolution, and friend of settler-founder Joshua Brown, who settled in the area to start a shingle-making camp.\nBeing nestled in the hills of the Texas Hill Country, Kerrville is best known for its parks that line the Guadalupe River, which runs directly through the city; its other features include nearby youth summer camps, hunting ranches, and RV parks. It is home to the Texas' Official State Arts and Crafts Fair, the Kerrville Folk Festival, the Kerrville Triathlon (since 2011), and the Kerrville Renaissance Festival (since 2017), as well as Mooney Aviation Company, James Avery Jewelry, and Schreiner University. The Museum of Western Art (founded 1983) features the work of living artists specializing in the themes of the American West."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "kerrville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2320,
+    "attempt": 2301,
+    "place_id": "gn-4884192",
+    "input": {
+      "place": {
+        "place_id": "gn-4884192",
+        "name": "Batavia",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.85003,
+        "lon": -88.31257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batavia, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Batavia,_Illinois",
+          "text": "Batavia () is a city mainly in Kane County and partly in DuPage County in the U.S. state of Illinois. Located in the Chicago metropolitan area, it was founded in 1833 and is the oldest city in Kane County. Per the 2020 census, the population was 26,098.\nDuring the latter part of the 19th century, Batavia, home to six American-style windmill manufacturing companies, became known as \"The Windmill City\". Fermi National Accelerator Laboratory, a federal government-sponsored high-energy physics laboratory, where both the bottom quark and the top quark were first detected, is located just east of the city limits.\nBatavia is part of a vernacular region known as the Tri-City area, along with St. Charles and Geneva, all western suburbs of similar size and relative socioeconomic condition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "batavia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2321,
+    "attempt": 2302,
+    "place_id": "gn-4996248",
+    "input": {
+      "place": {
+        "place_id": "gn-4996248",
+        "name": "Holland",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.78752,
+        "lon": -86.10893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holland, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Holland,_Michigan",
+          "text": "Holland is a city in Ottawa and Allegan counties in the U.S. state of Michigan. Located in the western region of the Lower Peninsula, the city is situated near the eastern shore of Lake Michigan on Lake Macatawa, which is fed by the Macatawa River. As of the 2020 census, the population was 34,378, with an urbanized area population of 107,034. Holland's ZIP codes extend into parts of surrounding townships in Ottawa and Allegan counties.\nHolland was founded by Dutch Americans and is in an area that has a large percentage of citizens of Dutch American heritage. It is home to Hope College and Western Theological Seminary, institutions of the Reformed Church in America. Holland's economy includes manufacturing, agriculture, tourism, and higher education. It is home to a number of prominent companies, including Herman Miller, Haworth, and Adient. The city also attracts thousands of visitors each year for its annual Tulip Time Festival, which celebrates the area's Dutch heritage and tulip fields.\nThe city spans the Ottawa/Allegan county line, with 9.08 sq mi (23.52 km2) in Ottawa and the remaining 8.13 sq mi (21.06 km2) in Allegan. Holland is the largest city in both Ottawa and Allegan counties. The Ottawa County portion is part of the Grand Rapids metropolitan area, while the Allegan County portion anchors the Holland micropolitan statistical area, which is coextensive with Allegan County. The city is part of the larger Grand Rapids–Wyoming combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "holland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2322,
+    "attempt": 2303,
+    "place_id": "gn-5326032",
+    "input": {
+      "place": {
+        "place_id": "gn-5326032",
+        "name": "Banning",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.92557,
+        "lon": -116.87641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banning, California",
+          "url": "https://en.wikipedia.org/wiki/Banning,_California",
+          "text": "Banning is a city in the Inland Empire region of Riverside County, California, United States. Its population was 29,505 as of the 2020 census, down from 29,603 at the 2010 census. It is situated in the San Gorgonio Pass, also known as Banning Pass. It is named for Phineas Banning, stagecoach line owner and the \"Father of the Port of Los Angeles.\"\nBanning shares geographic and regional features with its western neighbor, the city of Beaumont. Banning and Beaumont have been rapidly growing in size and population since the 1990s. Both cities are about 80 miles east of downtown Los Angeles and 30 miles west of Palm Springs, both connected by freeway and railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "banning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2323,
+    "attempt": 2304,
+    "place_id": "gn-784227",
+    "input": {
+      "place": {
+        "place_id": "gn-784227",
+        "name": "Vranje",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 42.55139,
+        "lon": 21.90028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vranje",
+          "url": "https://en.wikipedia.org/wiki/Vranje",
+          "text": "Vranje (Serbian Cyrillic: Врање, pronounced [ʋrâɲɛ] ) is a city in Southern Serbia and the administrative center of the Pčinja District. According to the 2022 census, the city itself had a population of 55,214 while the city administrative area had 74,381 inhabitants.\nVranje is the economical, political and cultural centre of the Pčinja District in Southern Serbia. It was the first city from the Balkans to be declared UNESCO city of Music in 2019. It is located on the Pan-European Corridor X, close to the borders with North Macedonia, Kosovo and Bulgaria. The Serbian Orthodox Eparchy of Vranje is seated in the city, as is the 4th Land Force Brigade of the Serbian Army."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "vranje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2324,
+    "attempt": 2305,
+    "place_id": "gn-8125829",
+    "input": {
+      "place": {
+        "place_id": "gn-8125829",
+        "name": "Kamigyō-ku",
+        "country": "Japan",
+        "subdivision": "Kyoto",
+        "lat": 35.02954,
+        "lon": 135.75666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamigyō-ku, Kyoto",
+          "url": "https://en.wikipedia.org/wiki/Kamigy%C5%8D-ku,_Kyoto",
+          "text": "Kamigyō-ku (上京区; かみぎょうく) is one of the eleven wards in the city of Kyoto, in Kyoto Prefecture, Japan. The ward was a district of residences for the royalty, aristocrats, and upper classes in the old capital of JapanーHeian-kyō. Located in the center of the present-day city of Kyoto, Japan, it previously occupied the northern region of the ancient capital of Kyoto. The Kamo River flows on the eastern border of the ward. \nThe ward is home to the Kyoto Imperial Palace, the Kitano Tenmangu Shinto shrine, the Seimei shrine, nishijin-ori textiles, and the headquarters of the Omotesenke and Urasenke schools of Japanese tea ceremony.\nAs of 2020, Kamigyō-ku had a population of 83,832 people.\nThe Masugata Shōtengai Shopping District is the setting of the 2013 anime series, Tamako Market, produced by Kyoto Animation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "kamigyo ku",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kamigyo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ku",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2325,
+    "attempt": 2306,
+    "place_id": "gn-8533869",
+    "input": {
+      "place": {
+        "place_id": "gn-8533869",
+        "name": "West Vancouver",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.3286,
+        "lon": -123.16019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Vancouver",
+          "url": "https://en.wikipedia.org/wiki/West_Vancouver",
+          "text": "West Vancouver (also West Van) is a district municipality in the province of British Columbia, Canada. A member municipality of the Metro Vancouver Regional District, West Vancouver is situated on the north shore of Burrard Inlet to the northwest of the city of Vancouver. With the District of North Vancouver and the City of North Vancouver, West Vancouver is part of a regional grouping known as the North Shore municipalities. It is among the wealthiest municipalities in Canada by average household net worth.\nWest Vancouver is home to the Horseshoe Bay ferry terminal, one of the main transportation hubs connecting the British Columbia mainland and Vancouver Island, and to much of Cypress Provincial Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "west vancouver",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vancouver",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2326,
+    "attempt": 2307,
+    "place_id": "gn-904422",
+    "input": {
+      "place": {
+        "place_id": "gn-904422",
+        "name": "Mumbwa",
+        "country": "Zambia",
+        "subdivision": "Central Province",
+        "lat": -14.98293,
+        "lon": 27.0619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mumbwa",
+          "url": "https://en.wikipedia.org/wiki/Mumbwa",
+          "text": "Mumbwa is a town in the Central Province of Zambia, lying on the M9 Road.  Its district covers the western part of the Central Province bordering Kaoma and Western Province to the west, Namwala and Southern Province to the south, Lusaka and Lusaka Province to the east, Kasempa and North-Western Province to the north and Kabwe to the north-east. It is known for its cotton and has a ginnery. The Zambia Air Force has a base in the district. Kafue National Park borders the district to the west. The predominant tribes are the Ila, who speak a dialect known as Sala, mostly to the south and south east and the Kaonde to the north. The Lenje are to the north-east on the border area with Kabwe. There are also relatively large settlement of people from the west and north west such as the Lozi, Nkoya and Luvale, Shona people from the then Southern Rhodesia who settled there as refugees from the civil war in that country and who are now almost integrated and Tonga from the south. A lot of prospecting for minerals such as copper and gold was done in the district and small scale mines operated there. Most are now closed, though the gold mine at Luiri has been revived."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "mumbwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2327,
+    "attempt": 2308,
+    "place_id": "gn-1685146",
+    "input": {
+      "place": {
+        "place_id": "gn-1685146",
+        "name": "Taal",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 13.87992,
+        "lon": 120.92311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taal, Batangas",
+          "url": "https://en.wikipedia.org/wiki/Taal,_Batangas",
+          "text": "Taal [ta'ʔal], officially the Municipality of Taal (Tagalog: Bayan ng Taal),  is a  municipality in the province of Batangas, Philippines. According to the 2024 census, it had a population of 61,559.\nIt is famous for its old ancestral houses, one particular ancestral house (now a museum) where Marcela Coronel Mariño de Agoncillo grew up in Taal, Batangas built in the 1770s by her grandparents, Don Andres Sauza Mariño and Doña Eugenia Diokno Mariño. The poblacion (town proper) is designated as a National Historical Landmark. It is also known as the balisong and barong tagalog capital of the Philippines. The town is home to hundreds of heritage structures dating from the Spanish colonial period. Scholars have been pushing for its inclusion in the UNESCO World Heritage List."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "taal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2328,
+    "attempt": 2309,
+    "place_id": "gn-2168943",
+    "input": {
+      "place": {
+        "place_id": "gn-2168943",
+        "name": "Devonport",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -41.17695,
+        "lon": 146.35152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Devonport, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Devonport,_Tasmania",
+          "text": "Devonport ( DEV-ən-port; pirinilaplu/palawa kani: Limilinaturi) is a port city situated at the mouth of the Mersey River on the north-west coast of Tasmania, Australia. Positioned 47 kilometres (29 mi) east of Burnie and 98 kilometres (61 mi) north of Launceston, it is the busiest freight port on the island, managing over half Tasmania's imports and exports.\nDevonport's supporting industries include agriculture, manufacturing, and tourism. The City of Devonport's gross domestic product (GDP) was estimated at $3.5b in 2023.\nDevonport's harbour is home to the Spirit of Tasmania's passenger terminal, facilitating roll-on/roll-off (RoRo) ferry operations connecting mainland Australia and Tasmania. In the 2022–23 fiscal year, the Port of Devonport welcomed over 450,000 passengers.\nThe completion of the $240m Quaylink project is expected to increase this capacity by an additional 160,000 passengers annually.\nDevonport was established in 1893 through the amalgamation of the 1850s settlements of Torquay on the east bank and Formby on the west bank of the Mersey River. The township became a municipality in 1907 and was designated a city by Prince Charles on 21 April 1981.\nWith an urban population of 26,150 at the 2021 Australian census, Devonport is Tasmania's third-largest city, encompassing a total of 48,293 residents living within the greater statistical area.\nDespite its relatively small size, Devonport has been foundational for many innovative industries that grew to be nationally-significant, such as the Finlayson family foundry, who engineered what is believed to be the first steam car in the Southern Hemisphere.\nSimilarly, family members of shipping company Holyman & Sons established the first airline connecting Bass Strait in 1934 as Holyman Airways, which eventually evolved into Australian National Airways and subsequently merged with Ansett.\nDevonport also holds a place in Australian political history as the home town of both Joseph Lyons, the tenth Prime Minister of Australia, and Dame Enid Lyons, the first woman elected to the House of Representatives and the first woman to serve in the federal cabinet. Dame Enid lived at their residence, \"Home Hill\" until her death in 1981, which has since become a popular tourist destination and is registered with the National Trust of Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "devonport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2329,
+    "attempt": 2310,
+    "place_id": "gn-2278158",
+    "input": {
+      "place": {
+        "place_id": "gn-2278158",
+        "name": "Buchanan",
+        "country": "Liberia",
+        "subdivision": "Grand Bassa County",
+        "lat": 5.87693,
+        "lon": -10.04964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buchanan, Liberia",
+          "url": "https://en.wikipedia.org/wiki/Buchanan,_Liberia",
+          "text": "Buchanan (Bassa: Gbezohn), also previously known as Grand Bassa on some maps, is the third largest city in Liberia, lying on Waterhouse Bay, part of the Atlantic Ocean. As of the 2008 census, Buchanan had a population of 34,270. Of this, 16,984 were male and 17,286 female.\nNamed for Thomas Buchanan, cousin of U.S. president James Buchanan, and second governor of Liberia, it is also the capital of Grand Bassa County and lies 70 miles (110 km) southeast of Monrovia, near the mouth of the Saint John River. The town was a refuge during the First Liberian Civil War, as it largely escaped the fighting. Fishing is an important industry in the town. The town also has isolated beaches and lagoons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "buchanan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2330,
+    "attempt": 2311,
+    "place_id": "gn-2356454",
+    "input": {
+      "place": {
+        "place_id": "gn-2356454",
+        "name": "Pô",
+        "country": "Burkina Faso",
+        "subdivision": "Centre-Sud",
+        "lat": 11.16972,
+        "lon": -1.145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pô",
+          "url": "https://en.wikipedia.org/wiki/P%C3%B4",
+          "text": "Pô is a city in southern Burkina Faso. It is the capital of the province of Nahouri. The main ethnic group (making about 60% of the inhabitants) is the Kasséna, a group close to the Gurunsi.  It is said to have been founded in around 1500 and is home to an army base, including the Académie militaire Georges Namoano.\nIn 1983, an army unit under Blaise Compaoré led a rebellion which resulted in Thomas Sankara's release from prison and ascension to the presidency.\nOn October 31, 2014 Compaoré announced he had left the presidency and that there was a \"power vacuum\"; he also called for a \"free and transparent\" election within 90 days. Yacouba Isaac Zida then took over the reins as head of state in an interim capacity. It was reported that a heavily armed convoy believed to be carrying Compaoré was traveling towards the southern town of Pô. However, it diverted before reaching the town and he then fled to Ivory Coast with the support of President Alassane Ouattara.\n\"Pô Department\", centered on Po, is one of five departments within the province of Nahouri in the Centre-Sud Region of Burkina Faso. It is located on the border with Ghana.\nPô National Park lies near the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "po",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2331,
+    "attempt": 2312,
+    "place_id": "gn-2464041",
+    "input": {
+      "place": {
+        "place_id": "gn-2464041",
+        "name": "Zaghouan",
+        "country": "Tunisia",
+        "subdivision": "Zaghouan Governorate",
+        "lat": 36.40291,
+        "lon": 10.14292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaghouan",
+          "url": "https://en.wikipedia.org/wiki/Zaghouan",
+          "text": "Zaghouan or Zaghwan (Arabic: زغوان, romanized: Zaġwān, pronounced [zaʁˈwɛːn] ; Andalusian Arabic: إِسْطَوَان, romanized: Isṭawán) is a town in the northern half of Tunisia.\nSituated on a low ridge of the Dorsale Mountains, the town has a mild climate and presents a green aspect. Cold water from here was taken by the Zaghouan Aqueduct to Carthage. The town is famous for its roses, originally cultivated by Muslim refugees from Spain in the seventeenth century. The town is located around 60 km due south of Tunis and around 50 km inland (west) from the Gulf of Hammamet and has an estimated population of around 20,837 (2014). It is the capital of the Zaghouan Governorate.\nOn the mountain south of the city is the Roman Water Temple Djebel Zaghouan (Temple de Eaux), source of an aqueduct which used to take water to the city of Carthage over 100 km away. The ruins here are illustrated in Fisher's Drawing Room Scrap Book, 1840, as 'Temple and Fountain of Zagwhan', the painting being by Sir Greenville Temple with a poetical illustration by Letitia Elizabeth Landon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "zaghouan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2332,
+    "attempt": 2313,
+    "place_id": "gn-2939623",
+    "input": {
+      "place": {
+        "place_id": "gn-2939623",
+        "name": "Dachau",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.26,
+        "lon": 11.43402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dachau, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Dachau,_Bavaria",
+          "text": "Dachau (German pronunciation: [ˈdaxaʊ] ) is a town in the Upper Bavaria district of Bavaria, a state in the southern part of Germany. It is a major district town—a Große Kreisstadt—of the administrative region of Upper Bavaria, about 20 kilometres (12 miles) north-west of Munich. It is now a popular residential area for people working in Munich, with roughly 45,000 inhabitants. The historic centre of town with its 18th-century castle is situated on an elevation and visible over a great distance.\nDachau was founded in the 9th century. It was home to many artists during the late 19th and early 20th centuries; well-known author and editor Ludwig Thoma lived here for two years. The town is known for its proximity to the Dachau concentration camp, operated by Nazi Germany between 1933 until 1945, in which tens of thousands of prisoners died."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "dachau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2333,
+    "attempt": 2314,
+    "place_id": "gn-2984513",
+    "input": {
+      "place": {
+        "place_id": "gn-2984513",
+        "name": "Rambouillet",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.64374,
+        "lon": 1.82992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rambouillet",
+          "url": "https://en.wikipedia.org/wiki/Rambouillet",
+          "text": "Rambouillet (UK: , US: ; French: [ʁɑ̃bujɛ] ) is a commune and subprefecture of the Yvelines department in the Île-de-France region of France. It is located beyond the outskirts of Paris, 44.3 km (27.5 mi) southwest of its centre. As of 2023, its population was 27,224.\nRambouillet lies on the edge of the vast Forest of Rambouillet (Forêt de Rambouillet or Forêt de l'Yveline); it is famous for its historical castle, the Château de Rambouillet, which hosted several international summits, including the 1st G6 summit and 1999 Rambouillet conference. Due to its proximity to Paris and Versailles, Rambouillet has long been an occasional seat of government. Rambouillet station is on the Paris–Brest railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "rambouillet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2334,
+    "attempt": 2315,
+    "place_id": "gn-3450440",
+    "input": {
+      "place": {
+        "place_id": "gn-3450440",
+        "name": "Santa Bárbara",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.95944,
+        "lon": -43.41528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Bárbara, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Santa_B%C3%A1rbara,_Minas_Gerais",
+          "text": "Santa Bárbara is a Brazilian municipality founded in 1704 and located in the state of Minas Gerais. It is a historic town on the Gold Circuit of Minas Gerais, located ninety-eight kilometres from Belo Horizonte, in the centre of the Estrada Real. The bucolic landscape, with its churches, roofs and backyards at the foot of the imposing Serra do Caraça makes Santa Bárbara one of the most beautiful towns in Minas Gerais. Despite the current increase in economic development, it is a peaceful and welcoming town with simple and hospitable people who preserve their traditions and live an active cultural life. The 6th President of Brazil, Afonso Pena was born in Santa Bárbara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "santa barbara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barbara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2335,
+    "attempt": 2316,
+    "place_id": "gn-3652100",
+    "input": {
+      "place": {
+        "place_id": "gn-3652100",
+        "name": "Salinas",
+        "country": "Ecuador",
+        "subdivision": "Santa Elena",
+        "lat": -2.21452,
+        "lon": -80.95151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salinas, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Salinas,_Ecuador",
+          "text": "Salinas is a coastal city located in the Province of Santa Elena, Ecuador. It is the seat of the canton that bears its name. The westernmost city on mainland Ecuador, Salinas is an important tourist center. Salinas, Ecuador's largest coastal resort, offers one of the country's best real estate investment markets and most popular and most upscale beach lifestyle. It was the site of the ISA World Junior Surfing Games Ecuador in 2009. There are two major yacht clubs in Salinas, the first is Salinas Yacht Club, which is smaller than the Puerto Lucia Yacht Club, in Santa Elena, in an area known as 'La Libertad' which, in Spanish means 'The Freedom Town'. Puerto Lucia boasts a hotel, several restaurants, a private beach and apartment buildings, as well as the large marina and port.\nIt was a small fishing village until June 30, 1929, when it was established as the rural parish of Santa Elena. On December 22, 1937, an official decree was signed by the Commander in Chief, General Alberto Enriquez Gallo and published in Official Gazette No. 52 of December 27 of that year, that elevated the parish to the rank of canton.  Its cantonal head is the town of Salinas, and is composed of the rural parishes Ancon, and Jose Luis Tamayo Anconcito (Muey)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "salinas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2336,
+    "attempt": 2317,
+    "place_id": "gn-3679554",
+    "input": {
+      "place": {
+        "place_id": "gn-3679554",
+        "name": "La Ceja",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.03131,
+        "lon": -75.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceja, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/La_Ceja,_Antioquia",
+          "text": "La Ceja del Tambo, known as La Ceja, is a town and municipality in the Antioquia Department of Colombia. It is part of the subregion of Eastern Antioquia. La Ceja borders the Rionegro and Carmen de Viboral municipalities to the north, La Unión to the east, and Montebello and Retiro to the west. It is located approximately 41 kilometers from Medellín, the department capital.\nThe town is known for being well-connected with other towns and municipalities in Antioquia through its extensive roads and highways, including the Medellin-Bogota highway, the Las Palmas roads, and the Medellín Santa Elena road. It also has a dirt road that leads to the Mesopotamia neighborhood of La Unión.\nFather Germán Montoya wrote the hymn for the town, called \"Hymn of La Ceja del Tambo\". Donato Duque Patiño created the flag."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "la ceja",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceja",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2337,
+    "attempt": 2318,
+    "place_id": "gn-4146429",
+    "input": {
+      "place": {
+        "place_id": "gn-4146429",
+        "name": "Aventura",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.95648,
+        "lon": -80.13921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aventura, Florida",
+          "url": "https://en.wikipedia.org/wiki/Aventura,_Florida",
+          "text": "Aventura is a planned suburban city in northeastern Miami-Dade County, Florida, United States, 15 miles (24 km) north of Miami and part of the Miami metropolitan area. The city is especially known for Aventura Mall, the fifth largest mall in the United States by total square feet of retail space and the largest mall in Florida.\nThe city name is from the Spanish word for \"adventure\", and was named \"Aventura\" after the developers of the original group of condominiums in the area, Eddie Lewis and Don Soffer, who had remarked \"What an adventure this is going to be.\"\nAs of the 2020 census, the city population was 40,242, up from 35,762 in 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "aventura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2338,
+    "attempt": 2319,
+    "place_id": "gn-4256038",
+    "input": {
+      "place": {
+        "place_id": "gn-4256038",
+        "name": "Columbus",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 39.20144,
+        "lon": -85.92138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Columbus, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Columbus,_Indiana",
+          "text": "Columbus () is a city in and the county seat of Bartholomew County, Indiana, United States. The population was 50,474 at the 2020 census. The city is known for its architectural significance, having commissioned noted works of modern architecture and public art since the mid-20th century; the annual program Exhibit Columbus celebrates this legacy. Located about 40 mi (64 km) south of Indianapolis, on the east fork of the White River, it is the state's 20th-largest city. It is the principal city of the Columbus, Indiana, metropolitan statistical area, which encompasses all of Bartholomew County. Columbus is the birthplace of former Indiana Governor and former Vice President of the United States, Mike Pence.\nColumbus is the headquarters of the engine company Cummins. In 2004 the city was named as one of \"The Ten Most Playful Towns\" by Nick Jr. Family Magazine. In the July 2005 edition of GQ magazine, Columbus was named as one of the \"62 Reasons to Love Your Country\". Columbus won the national contest \"America in Bloom\" in 2006, and in late 2008, National Geographic Traveler ranked Columbus 11th on its historic destinations list, describing the city as \"authentic, unique, and unspoiled.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "columbus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2339,
+    "attempt": 2320,
+    "place_id": "gn-4489985",
+    "input": {
+      "place": {
+        "place_id": "gn-4489985",
+        "name": "Salisbury",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.67097,
+        "lon": -80.47423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salisbury, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Salisbury,_North_Carolina",
+          "text": "Salisbury ( SAWLZ-ber-ee) is a city in the Piedmont region of North Carolina, United States; it has been the county seat of Rowan County since 1753 when its territory extended to the Mississippi River. Located 25 miles (40 km) northeast of Charlotte and within its metropolitan area, the town has attracted a growing population. The 2020 census shows 35,580 residents.\nSalisbury is the oldest continually populated colonial town in the western region of North Carolina. It is noted for its historic preservation, with five Local Historic Districts and ten National Register Historic Districts.\nSoft drink producer Cheerwine and regional supermarket Food Lion are located in Salisbury and Rack Room Shoes was founded there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "salisbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

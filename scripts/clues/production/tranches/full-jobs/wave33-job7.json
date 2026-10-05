@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 6568,
+    "attempt": 6521,
+    "place_id": "gn-2657928",
+    "input": {
+      "place": {
+        "place_id": "gn-2657928",
+        "name": "Zermatt",
+        "country": "Switzerland",
+        "subdivision": "Valais",
+        "lat": 46.01998,
+        "lon": 7.74863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zermatt",
+          "url": "https://en.wikipedia.org/wiki/Zermatt",
+          "text": "Zermatt (German: [tsɛʁˈmat] , Swiss Standard German: [tsɛrˈmat]; Highest Alemannic: Zärmatt) is a municipality in the district of Visp in the German-speaking section of the canton of Valais in Switzerland. It has a year-round population of about 5,800 and is classified as a town by the Swiss Federal Statistical Office (FSO).\nIt lies at the upper end of Mattertal at an elevation of 1,620 m (5,310 ft), at the foot of Switzerland's highest peaks. It lies about 10 km (6.2 mi) from the over 3,292 m (10,801 ft) high Theodul Pass bordering Italy. Zermatt is the southernmost commune of the German Sprachraum.\nZermatt is famed as a mountaineering and ski resort of the Swiss Alps. Until the mid-19th century, it was predominantly an agricultural community; the first and tragic ascent of the Matterhorn in 1865 was followed by a rush on the mountains surrounding the village, leading to the construction of many tourist facilities. The year-round population (as of December 2020) is 5,820, though there may be several times as many tourists in Zermatt at any one time. Much of the local economy is based on tourism, with about half of the jobs in town in hotels or restaurants and just under half of all apartments are vacation apartments. Just over one-third of the permanent population was born in the town, while another third moved to Zermatt from outside Switzerland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "zermatt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6569,
+    "attempt": 6522,
+    "place_id": "gn-2747227",
+    "input": {
+      "place": {
+        "place_id": "gn-2747227",
+        "name": "Sint-Oedenrode",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.5675,
+        "lon": 5.45972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Oedenrode",
+          "url": "https://en.wikipedia.org/wiki/Sint-Oedenrode",
+          "text": "Sint-Oedenrode (Dutch pronunciation: [sɪnt ˈudə(n)roːdə] ) is a town in the Dutch province of North Brabant.\nSint-Oedenrode is a moderately urbanized town in the Meierij of 's-Hertogenbosch. Sint-Oedenrode had a population of 18,360 as of 2021 and has an area of 64.94 km2 (25.07 sq mi). On 1 January 2017 Sint-Oedenrode, together with Schijndel and Veghel, merged into a new municipality called Meierijstad, creating the largest municipality of the North-Brabant province in terms of land area.\nThe municipality traditionally had \"vrijheidsrechten\" (a predecessor of city rights), since 1232, until the abolishment of the privileges and introduction of the Municipalities Act in 1851. In those feudal times Sint-Oedenrode was referred to as a \"Vlek\" (market town). Today it is still a large town. From southeast to northwest, the town is split by the river Dommel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "sint oedenrode",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oedenrode",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6570,
+    "attempt": 6523,
+    "place_id": "gn-2905604",
+    "input": {
+      "place": {
+        "place_id": "gn-2905604",
+        "name": "Herrsching am Ammersee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.99888,
+        "lon": 11.17679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herrsching am Ammersee",
+          "url": "https://en.wikipedia.org/wiki/Herrsching_am_Ammersee",
+          "text": "Herrsching am Ammersee (German pronunciation: [ˈhɛʁʃɪŋ ʔam ˈʔamɐˌzeː] , lit. 'Herrsching on the Ammersee') is a municipality in Upper Bavaria, Germany, on the east shore of the Ammersee, southwest of Munich. The population is around 8,000 in winter, increasing to 13,000 in summer.\nSituated at one terminus of the Munich S-Bahn line S8, the village is popular with travellers for its water-sports and as the starting point of trips to the Benedictine Andechs Abbey. Herrsching is also a stop for touring steamships of the Bavarian Seenschiffahrt or lake fleet.\nHerrsching is home for the unit finance of \"college of public service in Bavaria\".\nPrior to the Second World War, it was there the Reichsfinanzschule Hersching. From 1943 to 1946, the school was converted into a hospital and rehab facility for soldiers who had lost limbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "herrsching am ammersee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herrsching",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ammersee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6571,
+    "attempt": 6524,
+    "place_id": "gn-2962283",
+    "input": {
+      "place": {
+        "place_id": "gn-2962283",
+        "name": "Newcastle West",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.44917,
+        "lon": -9.06111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newcastle West",
+          "url": "https://en.wikipedia.org/wiki/Newcastle_West",
+          "text": "Newcastle West (Irish: An Caisleán Nua Thiar) or simply Newcastle (An Caisleán Nua, formerly anglicised as Castlenoe) is a town in west County Limerick, Ireland. It is the largest town in the county, excluding Limerick city. It is also the county town and sits on the River Arra, which flows into the River Deel. Newcastle West is in the middle of a great bowl-shaped valley in West Limerick, known one time as the valley of the Wild Boar, apparently due to the abundance of this animal here when the area was thickly wooded. The crest of the town carries the image of a wild boar. The town is partly in  the civil parish of Newcastle.\nNewcastle West is on the N21 road from Limerick to Tralee, between Rathkeale and Abbeyfeale. It is the second-largest urban center in the county, with a population of 7,209 in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "newcastle west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newcastle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6572,
+    "attempt": 6525,
+    "place_id": "gn-2965654",
+    "input": {
+      "place": {
+        "place_id": "gn-2965654",
+        "name": "Castlebar",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.85,
+        "lon": -9.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castlebar",
+          "url": "https://en.wikipedia.org/wiki/Castlebar",
+          "text": "Castlebar (Irish: Caisleán an Bharraigh, meaning 'Barry's Castle') is the county town of County Mayo, Ireland. Developing around a 13th-century castle of the de Barry family, from which the town got its name, Castlebar is now a social and economic focal point for the surrounding hinterland. With a population of 13,054 in the 2022 census (up from 7,648 in the 1991 census), Castlebar was one of Ireland's fastest-growing towns in the early 21st century.\nA campus of Atlantic Technological University and the Country Life section of the National Museum are two important facilities in the area. The town is linked by railway to Dublin, Westport and Ballina. The main route by road is the N5."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "castlebar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6573,
+    "attempt": 6526,
+    "place_id": "gn-3005082",
+    "input": {
+      "place": {
+        "place_id": "gn-3005082",
+        "name": "Le Bourget",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.93405,
+        "lon": 2.43584
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Bourget",
+          "url": "https://en.wikipedia.org/wiki/Le_Bourget",
+          "text": "Le Bourget (French pronunciation: [lə buʁˈʒɛ] ) is a commune in the northeastern suburbs of Paris, France. It is located 10.6 km (6+9⁄16 mi) from the center of Paris.\nThe commune features Le Bourget Airport, which in turn hosts the Musée de l'Air et de l'Espace (Air and Space Museum). A very small part of Le Bourget Airport lies on the territory of the commune of Le Bourget, which nonetheless gave its name to the airport. Most of the airport lies on the territory of the communes of Dugny, Bonneuil-en-France, and Gonesse. The Bureau d'Enquêtes et d'Analyses pour la Sécurité de l'Aviation Civile is also headquartered on the airport grounds and in Le Bourget proper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "le bourget",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bourget",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6574,
+    "attempt": 6527,
+    "place_id": "gn-3023842",
+    "input": {
+      "place": {
+        "place_id": "gn-3023842",
+        "name": "Contes",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.81278,
+        "lon": 7.31444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Contes, Alpes-Maritimes",
+          "url": "https://en.wikipedia.org/wiki/Contes,_Alpes-Maritimes",
+          "text": "Contes (French pronunciation: [kɔ̃t]; Occitan: Còntes; Italian: Conti) is a commune in the Alpes-Maritimes department in the region of Provence-Alpes-Côte d'Azur in south-eastern France.\nIts inhabitants are Contois. Because the village sounds like the French word comte, the aristocratic title count, it called itself Pointe-Libre during the revolutionary period.\nFamous sons of Contes are Henri Charpentier, a chef who studied under Escoffier, Camous and Ritz. He worked for some of the most famous restaurants in Paris and then emigrated to the United States where he would open restaurants in New York and Los Angeles. The other, Humbert Ricolfi was actually a classmate of Charpentier and went on to become Minister of Finance for the Republique. He financed the Maginot Line and is remembered as an upholder of the great ideals of the French Republique.\nIt was probably mentioned in an ancient inscription DEO EGOMONI CVNTINO VIC CVN P."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "contes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6575,
+    "attempt": 6528,
+    "place_id": "gn-3109527",
+    "input": {
+      "place": {
+        "place_id": "gn-3109527",
+        "name": "Santoña",
+        "country": "Spain",
+        "subdivision": "Cantabria",
+        "lat": 43.44386,
+        "lon": -3.45757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santoña",
+          "url": "https://en.wikipedia.org/wiki/Santoña",
+          "text": "Santoña is a town in the eastern coast of the autonomous community of Cantabria, on the north coast of Spain. It is situated by the bay of the same name. It is 45 kilometres (28 mi) from the capital Santander. Santoña is divided into two zones, an urban plain, and a mountainous area, with Mount Buciero at its eastern limit, and Brusco and the beach of Berria to the north. The beach of San Martin comprises its south limit and the fishing harbor and marsh area its western limit.\nIn August 1719 the town was successfully attacked and captured by French forces supported by the British Royal Navy during the War of the Quadruple Alliance. Extensive naval supplies were seized or destroyed, and along with the Duke of Berwick's simultaneous taking of San Sebastian, put pressure of Philip V to make peace which he subsequently did at the Treaty of The Hague."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "santona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6576,
+    "attempt": 6529,
+    "place_id": "gn-3110610",
+    "input": {
+      "place": {
+        "place_id": "gn-3110610",
+        "name": "Sanxenxo",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.39996,
+        "lon": -8.80698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanxenxo",
+          "url": "https://en.wikipedia.org/wiki/Sanxenxo",
+          "text": "Sanxenxo (Galician: [sanˈʃɛnʃʊ]; Spanish: Sangenjo) is a municipality in Galicia, Spain, in the province of Pontevedra. \nIt is situated in the southern part of the O Salnés region 15 kilometres west of the city of Pontevedra and is bordered by the Atlantic Ocean, and the estuaries of Pontevedra and Arousa. The municipality has a population of 17,347 inhabitants (INE 2019).\nA popular tourism destination, Sanxenxo is a favorite resort for Spanish public figures such as Mariano Rajoy (former Prime Minister of Spain) and Amancio Ortega (co-founder of the Inditex group).\nThe Volvo Ocean Race was held in the town in 2005–2006. The race organisation and the competing teams chose Sanxenxo as their base in Spain. An In Port race took place in Sanxenxo on November 5. It gave spectators a chance to see the race boats at close quarters.\nThe 2013 edition of the Tour of Spain was held in the Rías Baixas, Galicia, between August 24 to September 14. Sanxenxo was the goal in the first stage of La Vuelta 2013 that began in Vilanova de Arousa in a Batea, a wooden platform out in the water used for farming of mussels, oysters and scallops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "sanxenxo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6577,
+    "attempt": 6530,
+    "place_id": "gn-3157686",
+    "input": {
+      "place": {
+        "place_id": "gn-3157686",
+        "name": "Fetsund",
+        "country": "Norway",
+        "subdivision": "Akershus",
+        "lat": 59.92463,
+        "lon": 11.15711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fetsund",
+          "url": "https://en.wikipedia.org/wiki/Fetsund",
+          "text": "Fetsund is a village in the municipality Lillestrøm, Akershus, Norway. The name comes from the local geography, Fet means \"where water meets grass\". As for the -sund part, it simply means 'strait, inlet'. Accordingly, Fetsund is located at the strait of Glomma, Norway's largest river, just before it enters Øyeren nature reservation, and this is the place the logging industry in years past pulled the logs out of the water for transport to steam sawmills.\nToday, Fetsund and its surrounding area is a small town and is mainly a residential area with very little industry. The old log industry is gone, but its buildings and site is still preserved as a national museum, Fetsund Lenser. Fetsund's close proximity to Lillestrøm and the nation's capital, Oslo, have contributed to the town growing much larger in recent years. Its small-town qualities, low population density, and closeness to the capital, makes it a preferred place to live.\nFetsund's history dates back to the ancient kings' road going from the medieval town of Oslo towards the neighbouring country Sweden. As Fetsund was the shortest distance by ferry or boat over the river Glomma, the place naturally grew into the urbanized area it is today. Now there are two bridges in Fetsund spanning the Glomma, and it is still the only crossing within the area.\nFetsund has a church with an altarpiece dating from the 17th century.\nFetsund's railway station was built in the 1860s, which still stands today and is used by people working in Oslo and to a lesser extent Lillestrøm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "fetsund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6578,
+    "attempt": 6531,
+    "place_id": "gn-3363957",
+    "input": {
+      "place": {
+        "place_id": "gn-3363957",
+        "name": "Moorreesburg",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.15388,
+        "lon": 18.66031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moorreesburg",
+          "url": "https://en.wikipedia.org/wiki/Moorreesburg",
+          "text": "Moorreesburg is a rural town situated about 90 kilometres (60 mi) north of Cape Town, in the Western Cape province of South Africa. It was laid out in 1879 on the farm Hooikraal, was administered by a village management board from 1882 and attained municipal status in 1909. Today it falls within the Swartland Local Municipality, which is part of the West Coast District Municipality. The town is the seat of government for the West Coast District Municipality.\nMoorreesburg lies just off the N7 national road, at a driving distance of 100 kilometres (62 mi) from Cape Town. The R311 regional road also passes through the town, as does the West Coast branch line railway. It has two public primary schools, one public high school, a library, a police station, a magistrate's court, and a health clinic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "moorreesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6579,
+    "attempt": 6532,
+    "place_id": "gn-3523418",
+    "input": {
+      "place": {
+        "place_id": "gn-3523418",
+        "name": "Mazatán",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 14.86313,
+        "lon": -92.44939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mazatán, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Mazatán,_Chiapas",
+          "text": "Villa Mazatán (Spanish pronunciation: [ˈβiʝa masaˈtan]) is a municipality in the Mexican state of Chiapas in southern Mexico. It has an area of 386.6 km2 (149.3 sq mi) and is located in the southwestern portion of the Mexican state.\nIn 2010, the municipality had a total population of 26,573.\nIn 2010, the town of Mazatán had a population of 6,838. Other than the town of Mazatán, the municipality had 177 localities, the largest of which (with 2010 populations in parentheses) were: Buenos Aires (4,260), classified as urban, and Marte R. Gómez (1,263) and Aquiles Serdán (1,135), classified as rural.\nA very long archaeological history, going back to 2500 BC, has been documented for this area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "mazatan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6580,
+    "attempt": 6533,
+    "place_id": "gn-3587018",
+    "input": {
+      "place": {
+        "place_id": "gn-3587018",
+        "name": "Chirilagua",
+        "country": "El Salvador",
+        "subdivision": "San Miguel Department",
+        "lat": 13.22028,
+        "lon": -88.13861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chirilagua",
+          "url": "https://en.wikipedia.org/wiki/Chirilagua",
+          "text": "Chirilagua is a municipality in southeastern El Salvador, in the department of San Miguel.\nIt contains approximately 24,000 inhabitants as a result of census of 2007. The town is located on a mountain plateau adjacent to the Pacific Ocean.\nThere is a lot to do at this town; from eating traditional food, to playing soccer in La plaza  or the soccer fields, to just getting a snow cone and walking around. “ La Plaza “ which is a center of the town where there are many food places, a turf field, shopping center, grocery store playground, and basketball court. There are many types of religions in this town but the most popular one is Catholicism. The main Catholic church is located in the middle of the town beside “ La Plaza”. As traditions, every December 12 the Catholic community gets together to celebrate the Virgin Mary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "chirilagua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6581,
+    "attempt": 6534,
+    "place_id": "gn-3590804",
+    "input": {
+      "place": {
+        "place_id": "gn-3590804",
+        "name": "Río Bravo",
+        "country": "Guatemala",
+        "subdivision": "Suchitepeque",
+        "lat": 14.40042,
+        "lon": -91.31713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Bravo, Suchitepéquez",
+          "url": "https://en.wikipedia.org/wiki/Río_Bravo,_Suchitepéquez",
+          "text": "Río Bravo is a town, with a population of 15,391 (2018 census), and a municipality in the Suchitepéquez department of Guatemala. Rio Bravo is a municipality that belongs to the department of Suchitepequez, in the Republic of Guatemala. The town was established December 10, 1951.\nFormerly it was known as San Francisco Rio Bravo and belonged to the municipality of Santa Barbara. Its population was established near the Grande de Zacapa River, from which it gets its name.\nIt is located 127 km from the capital of Guatemala, reaching the coastal plain along the Pacific Ocean, because of this temperature is normally maintained at 32 °C but drops to 22 °C or 37 °C totals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "rio bravo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bravo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6582,
+    "attempt": 6535,
+    "place_id": "gn-3670475",
+    "input": {
+      "place": {
+        "place_id": "gn-3670475",
+        "name": "Sabaneta",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.15153,
+        "lon": -75.61657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabaneta, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Sabaneta,_Antioquia",
+          "text": "Sabaneta is a municipality of Colombia, located in the Aburrá Valley of the Antioquia department. It is bordered on the north by the municipalities of La Estrella, Itagüí and Envigado, on the east by Envigado, on the south by Caldas, and on the west by La Estrella.\nIt is the smallest municipality in Colombia, with an area of only 15 km2. It is known as the Municipio Modelo de Colombia (\"Model Municipality of Colombia\") or the Vallecito de Encanto (\"Charming little Valley\"). The municipality owes its name to the diminutive \"sabana,\" a Spanish word meaning \"savannah\".\nThe population receives an influx of visitors on the weekends because of its reputation for having outstanding entertainment venues."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "sabaneta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6583,
+    "attempt": 6536,
+    "place_id": "gn-3835297",
+    "input": {
+      "place": {
+        "place_id": "gn-3835297",
+        "name": "Sierra Grande",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -41.60546,
+        "lon": -65.35702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sierra Grande, Río Negro",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Grande,_Río_Negro",
+          "text": "Sierra Grande is a city and municipality in the San Antonio Department of Río Negro Province in Argentina. It was founded in 1903, and as of the 2010 census [INDEC] it counted with a population of 7,641.\nThe lands where the city now stands was once Tehuelche territory. The first white settlers came from Viedma and Carmen de Patagones; they established a small settlement with the name of Sierra Vieja, later renamed as Colonia Chilavert. On 19 October 1903, the first juez de paz took seat in the settlement, and this is now celebrated as the town's foundational moment. The discovery of iron ore in the region led to the town's growth in the 1940s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "sierra grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sierra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6584,
+    "attempt": 6537,
+    "place_id": "gn-4673353",
+    "input": {
+      "place": {
+        "place_id": "gn-4673353",
+        "name": "Bellaire",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.70579,
+        "lon": -95.45883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellaire, Texas",
+          "url": "https://en.wikipedia.org/wiki/Bellaire,_Texas",
+          "text": "Bellaire is a city in southwestern Harris County, Texas, United States, within the Houston–Pasadena–The Woodlands metropolitan area. As of the 2020 census, Bellaire had a population of 17,202. It is surrounded by the cities of Houston and West University Place. Bellaire is known as the \"City of Homes\", owing to its mostly residential character; but it has offices along the I-610 Loop within the city limits. Bellaire has two public elementary schools, one public middle school, one public high school, and one public library in the city limits, as well as three private K-12 schools. The municipality also has a bus transit center and multiple public bus routes; formerly it was on a streetcar line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "bellaire",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6585,
+    "attempt": 6538,
+    "place_id": "gn-5108844",
+    "input": {
+      "place": {
+        "place_id": "gn-5108844",
+        "name": "Bergen Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.62038,
+        "lon": -73.9068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergen Beach, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Bergen_Beach,_Brooklyn",
+          "text": "Bergen Beach is a residential neighborhood in the borough of Brooklyn, New York City. It is located on a peninsula abutting Jamaica Bay in the southeastern portion of the borough, and is bordered by Mill Basin and the neighborhood of the same name to the south and west; the neighborhood of Flatlands to the northwest; Paerdegat Basin and the neighborhood of Canarsie to the northeast; and Jamaica Bay and the Belt Parkway to the east. Bergen Beach contains a sub-neighborhood named Georgetown. The vast majority of residents are white, and the neighborhood generally has a suburban quality.\nBergen Beach was originally an island. The Canarsie Indians who occupied the area referred to it as Winnipague. The island was renamed Bergen Island for early settler Hans Hansen Bergen. From 1896 to 1919, Percy G. Williams and Thomas Adams operated an amusement park in the area. Bergen Beach was connected to the rest of Brooklyn via landfill by 1918, although development did not come for many years. In the 1960s, a housing development called \"Georgetowne\" was proposed for Bergen Beach, but it was never built due to opposition from local residents. As a result, much of Bergen Beach was not fully developed until the 1990s.\nBergen Beach is part of Brooklyn Community District 18, and its primary ZIP Code is 11234. It is patrolled by the 63rd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "bergen beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bergen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6586,
+    "attempt": 6539,
+    "place_id": "gn-5113142",
+    "input": {
+      "place": {
+        "place_id": "gn-5113142",
+        "name": "Cohoes",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.77424,
+        "lon": -73.70012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cohoes, New York",
+          "url": "https://en.wikipedia.org/wiki/Cohoes,_New_York",
+          "text": "Cohoes ( kə-HOHZ) is an incorporated city located in the northeast corner of Albany County in the U.S. state of New York. It is called the \"Spindle City\" because of the importance of textile manufacturing to its growth in the 19th century. The city's factories processed cotton from the Deep South. Like other major textile manufacturing centers in the Northeast United States, the labor needs of the city's textile mills were supplied by immigrants, especially French-Canadians from Québec, who made up more than 30% of its total population by 1881. French remained widely spoken as a native language in Cohoes until the late 20th century.\nAs of the 2020 census, the city population was 18,174. The name Cohoes is believed to be derived from a Mohawk term, Kahón:ios, referring to the Cohoes Falls and meaning \"Place of the Falling Canoe,\" an interpretation noted by Horatio Gates Spafford in his 1823 publication \"A Gazetteer of the State of New York\". Later historians posited that the name is derived from the Algonquian Cohoes, a place name based on a word meaning 'pine tree'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "cohoes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6587,
+    "attempt": 6540,
+    "place_id": "gn-5118005",
+    "input": {
+      "place": {
+        "place_id": "gn-5118005",
+        "name": "Fresh Meadows",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.73482,
+        "lon": -73.79347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fresh Meadows, Queens",
+          "url": "https://en.wikipedia.org/wiki/Fresh_Meadows,_Queens",
+          "text": "Fresh Meadows is a neighborhood in the northeastern section of the New York City borough of Queens. Fresh Meadows was formerly part of the broader town of Flushing and is bordered to the north by the Horace Harding Expressway and Auburndale; to the west by Pomonok, St. John's University, Hillcrest, and Utopia; to the east by Cunningham Park and the Clearview Expressway; and to the south by the Grand Central Parkway.\nFresh Meadows is located in Queens Community District 8 and its ZIP Codes are 11365 and 11366. It is patrolled by the New York City Police Department's 107th Precinct. Politically, Fresh Meadows is represented by the New York City Council's 23rd and 24th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "fresh meadows",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fresh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "meadows",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

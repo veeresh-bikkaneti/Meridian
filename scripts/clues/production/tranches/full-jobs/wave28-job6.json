@@ -1,0 +1,867 @@
+[
+  {
+    "rank": 5543,
+    "attempt": 5501,
+    "place_id": "gn-1634904",
+    "input": {
+      "place": {
+        "place_id": "gn-1634904",
+        "name": "Muara Bungo",
+        "country": "Indonesia",
+        "subdivision": "Jambi",
+        "lat": -1.49018,
+        "lon": 102.1149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muara Bungo",
+          "url": "https://en.wikipedia.org/wiki/Muara_Bungo",
+          "text": "Muara Bungo is a town in the Indonesian province of Jambi, Sumatra. It is the administrative capital of Bungo Regency, a regency (kabupaten) in Sumatra. It has a land area of 9.21 km2, and\thad a population of 21,243 as of the 2020 census; the official estimate as at mid 2024 was 21,703, comprising the five kelurahan which make up the official town (Bungo Barat, Bungo Timur, Batang Bungo, Jaya Setia and Tanjung Gedang). \nOther kelurahan in the adjacent Bungo Dani District (Sungai Pinang and Sungai Kerjan) and Rimbo Tengah District (Cadika and Pasih Putih) form part of the built-up area of the town, while the three kelurahan of Bathin III District (Bungo Taman Agung, Manggis and Sungai Binjai) adjoin it on the north side of the Batang Hari River and the Benit River. Altogether this comprised 75,249 inhabitants in an area of 84.84 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "muara bungo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "muara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bungo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5544,
+    "attempt": 5502,
+    "place_id": "gn-2262644",
+    "input": {
+      "place": {
+        "place_id": "gn-2262644",
+        "name": "Tomar",
+        "country": "Portugal",
+        "subdivision": "Santarém",
+        "lat": 39.60199,
+        "lon": -8.40924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tomar",
+          "url": "https://en.wikipedia.org/wiki/Tomar",
+          "text": "Tomar (Portuguese pronunciation: [tuˈmaɾ] ), also known in English as Thomar, is a Portuguese city and a municipality in the historical Ribatejo Portuguese province, and in Santarém district. The town proper has a population of about 20,000. The municipality population in 2011 was 40,677, in an area of 351.20 km2 (135.60 sq mi).\nThe town of Tomar was created inside the walls of the Convento de Cristo, constructed under the orders of Gualdim de Pais, the fourth Grand Master of the Knights Templar in Portugal in the late 12th century.\nTomar was the last Templar town to be commissioned for construction and one of Portugal's historical jewels. The town was especially important in the 15th century when it was a center of Portuguese overseas expansion under Henry the Navigator, the Grand Master of the Order of Christ, successor organization to the Knights Templar in Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "tomar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5545,
+    "attempt": 5503,
+    "place_id": "gn-2634803",
+    "input": {
+      "place": {
+        "place_id": "gn-2634803",
+        "name": "Wanstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5768,
+        "lon": 0.02463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wanstead",
+          "url": "https://en.wikipedia.org/wiki/Wanstead",
+          "text": "Wanstead () is an area in East London, England, in the London Borough of Redbridge. It borders South Woodford to the north, Redbridge to the east and Manor Park to the south, with Leytonstone and Walthamstow to the west. It is located 8 miles northeast of Charing Cross.\nHistorically an ancient parish in the Becontree hundred of Essex, it was granted urban district status in 1894, and formed part of the Municipal Borough of Wanstead and Woodford between 1937 and 1965, when it became part of the London Borough of Redbridge. Wanstead was a key part of the M11 link road protest from 1993 to 1995, which ended with the construction of the A12 that runs through the town.\nThe area contains a number of open spaces that are part of Epping Forest, including the grasslands of Wanstead Flats and the woodland of Wanstead Park. Wanstead Park was the site of a suspected Roman villa, and later Wanstead Hall, the manor house of Wanstead Manor. The park, with artificial lakes, was formerly part of the estate of a large stately home Wanstead House (1722–1825), built by Richard Child, 1st Earl Tylney."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "wanstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5546,
+    "attempt": 5504,
+    "place_id": "gn-2746351",
+    "input": {
+      "place": {
+        "place_id": "gn-2746351",
+        "name": "Tholen",
+        "country": "Netherlands",
+        "subdivision": "Zeeland",
+        "lat": 51.53167,
+        "lon": 4.22083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tholen",
+          "url": "https://en.wikipedia.org/wiki/Tholen",
+          "text": "Tholen (Dutch pronunciation: [ˈtoːlə(n)] ) is a 25,000 people municipality in the southwest of the Netherlands. The municipality of Tholen takes its name from the town of Tholen, which is the largest population center in the municipality.\nThe municipality consists of two peninsulas, formerly islands, the larger one on the south also called Tholen, the smaller one on the north called Sint Philipsland. The two are separated by the former strait, now bay, of Krabbenkreek. The municipality is bordered on the east by the Eendracht, once a Scheldt branch but now part of the Scheldt-Rhine Canal, crossed by three road bridges, by the Oosterschelde estuary to the south, the straits of Keeten-Mastgat to the west and the Krammer strait to the north.\nThe town has a small historical center partly surrounded by a \"gracht\" and partly bordered by a harbour for fishing boats and yachts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "tholen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5547,
+    "attempt": 5505,
+    "place_id": "gn-2881104",
+    "input": {
+      "place": {
+        "place_id": "gn-2881104",
+        "name": "Langendreer",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.46023,
+        "lon": 7.32584
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langendreer",
+          "url": "https://en.wikipedia.org/wiki/Langendreer",
+          "text": "Langendreer is the largest and most populous district of the city of Bochum in the Ruhr area in Germany, with a population of 25,438 as of 31 December 2023. The district is located between the cities Dortmund, the largest city of Westphalia, to the east and Witten to the south, and four other districts of Bochum to the north and west — Langendreer-Alter Bahnhof, Bochum-Laer, Bochum-Querenburg, and Bochum-Werne. Langendreer is the easternmost district of Bochum. The district includes, among others, Kaltehardt, a mainly residential area, Langendreerholz, and Ümmingen. Bochum-Langendreer station is one of the largest railway stations in Bochum and the district is also served by Bochum-Langendreer West station. The freight station in Langendreer was one of the reasons why the village and administrative district of Langendreer was incorporated into the city of Bochum on 1 August 1929, as Bochum did not have comparable capacities. Langendreer used to be one of the main centers of the East Prussian minority in Western Germany.\nIn the early 20th century coal mining and steel manufacturing were the primary employers in Langendreer.\nLangendreer-Alter Bahnhof is a statistical district and monument area of the city of Bochum. Langendreer-Alter Bahnhof is in the east side of the city, between Bochum-Querenburg and Bochum-Werne. It used to be, and to some extent, still is a business district that accommodated the needs of the mines and railway, while the rest of Langendreer is more of a \"village\" with residential areas.\nLangendreer-Alter Bahnhof is south of the main Autobahn of the Ruhr, A 40."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "langendreer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5548,
+    "attempt": 5506,
+    "place_id": "gn-3034911",
+    "input": {
+      "place": {
+        "place_id": "gn-3034911",
+        "name": "Bar-le-Duc",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.77275,
+        "lon": 5.16108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bar-le-Duc",
+          "url": "https://en.wikipedia.org/wiki/Bar-le-Duc",
+          "text": "Bar-le-Duc (French pronunciation: [baʁ lə 'dyk] ), formerly known as Bar, is a commune in the Meuse département, of which it is the capital. The department is in Grand Est in northeastern France.\nThe lower, more modern and busier part of the town extends along a narrow valley, shut in by wooded or vine-clad hills, and is traversed by the Ornain, which is crossed by several bridges. It is bordered on the north-east by the Marne–Rhine Canal and on the south-west by a small arm of the Ornain called the Canal des Usines, on the left bank of which the upper town (Ville Haute) is situated.\nThe highly rarefied Bar-le-duc jelly, also known as Lorraine jelly, is a spreadable preparation of white currant or red currant fruit preserves. First mentioned in the historical record in 1344, it is also colloquially referred to as \"Bar caviar\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "bar le duc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "duc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5549,
+    "attempt": 5507,
+    "place_id": "gn-3110458",
+    "input": {
+      "place": {
+        "place_id": "gn-3110458",
+        "name": "San Lorenzo de El Escorial",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.59144,
+        "lon": -4.14738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Lorenzo de El Escorial",
+          "url": "https://en.wikipedia.org/wiki/San_Lorenzo_de_El_Escorial",
+          "text": "San Lorenzo de El Escorial, also known as El Escorial de Arriba, is a town and municipality in the Community of Madrid, Spain, located to the northwest of the region in the southeastern side of the Sierra de Guadarrama, at the foot of Mount Abantos and Las Machotas, 47 kilometres (29 mi) from Madrid. It is head of the eponymous judicial party. The settlement is popularly called El Escorial de Arriba, to differentiate it from the neighbouring village of El Escorial, also known as El Escorial de Abajo.\nThe Monastery of El Escorial is the most prominent building in the town and is one of the main Spanish Renaissance monuments. Especially remarkable is the Royal Library, inside the Monastery.\nThe monastery and its historic surroundings were declared a World Heritage Site UNESCO on November 2, 1984, under the name of \"El Escorial, monastery and site\".\nThe site also enjoys protection on Spain's heritage register; since June 21, 2006, it has been protected by the Community of Madrid as a Property of Cultural Interest.\nSan Lorenzo de El Escorial is located on the southern slopes of the Mount Abantos (elevation 1753 m). The average altitude of the municipality is 1,032 metres (3,386 ft), and most of the urban area is above 1,000 metres (3,300 ft). The hamlet initially sprang up around Monastery of El Escorial, gradually extending up the mountain. In the 20th and 21st centuries, the town underwent a strong urban expansion, particularly towards the southeastern side of Mount Abantos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "san lorenzo de el escorial",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lorenzo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "escorial",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5550,
+    "attempt": 5508,
+    "place_id": "gn-3520214",
+    "input": {
+      "place": {
+        "place_id": "gn-3520214",
+        "name": "Juan Rodríguez Clara",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 17.99283,
+        "lon": -95.40099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juan Rodríguez Clara",
+          "url": "https://en.wikipedia.org/wiki/Juan_Rodríguez_Clara",
+          "text": "Juan Rodríguez Clara is a city and its surrounding municipality in the Mexican state of Veracruz. It is located in the south of the state, about 335 km from the state capital Xalapa. The municipality covers a surface are of 934.20 km2 and the municipal seat is located at 18°00′N 95°24′W.\nFormerly known as El Burro and Nopalapan de Zaragoza, the current name commemorates a local martyr to the cause of agrarianism and was adopted in 1925. The municipality was established on 22 December 1960 from land belonging to San Juan Evangelista. \nThe municipality of Juan Rodríguez Clara is delimited to the north by Hueyapan de Ocampo, to the east by Acayucan and San Juan Evangelista, to the south by the state of Oaxaca, and to the west by Playa Vicente and Isla.\nIt principally produces maize,  beans, rice, watermelon, green chile, sugarcane and pineapple.\nJuan Rodríguez Clara celebrates the Virgin of Guadalupe, the town's patron saint, in December.\nThe weather in Juan Rodríguez Clara is warm all year with rains in summer and autumn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "juan rodriguez clara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rodriguez",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5551,
+    "attempt": 5509,
+    "place_id": "gn-358245",
+    "input": {
+      "place": {
+        "place_id": "gn-358245",
+        "name": "Dahab",
+        "country": "Egypt",
+        "subdivision": "South Sinai",
+        "lat": 28.48208,
+        "lon": 34.49505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dahab",
+          "url": "https://en.wikipedia.org/wiki/Dahab",
+          "text": "Dahab (Egyptian Arabic: دهب, romanized: dahab, lit. 'gold', IPA: [ˈdæhæb]) is a small town on the southeast coast of the Sinai Peninsula in Egypt, approximately 80 km (50 mi) northeast of Sharm el-Sheikh.\nDahab can be divided into three major parts. Masbat, which includes the Bedouin village of Asalah, in the north; Mashraba, south of Masbat, and Medina in the southwest. Dahab is mentioned in Deuteronomy as דִ֥י זָהָֽב (dî zāhāḇ), and in the Septuagint translation as Καταχρύσεα. Gesenius exegetes as, “I have no doubt but that it is the same place as that now called Dehab on the western shore of the Ælanitic gulf, where there are many palms.” Dahab is known as the \"diving capital\" of South Sinai, and one of the most famous diving destinations in the world, thanks to a number of unique sites that suit all levels of diving enthusiasts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "dahab",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5552,
+    "attempt": 5510,
+    "place_id": "gn-3583196",
+    "input": {
+      "place": {
+        "place_id": "gn-3583196",
+        "name": "Santiago Nonualco",
+        "country": "El Salvador",
+        "subdivision": "La Paz Department",
+        "lat": 13.51667,
+        "lon": -88.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago Nonualco",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Nonualco",
+          "text": "Santiago Nonualco is a municipality in La Paz department of El Salvador.\n\"Nonualco\" means \"tribe of mutes\" in the native Nahuat language, referring to the Nonoalca people who settled here around 900 CE. There are three \"Nonualcos\" in the area, the other two are San Juan Nonualco and San Pedro Nonualco.\nSantiago Nonualco is a relatively poor community even by Salvadoran standards. The primary historical economic activity has been subsistence farming and the cultivation of sugar cane, providing back-breaking work for those willing to bake in the sun swinging their \"corvos,\" curved tobacco-knife like machetes, for a couple of dollars a day. Currently there are very few employers in the area. Santiago Nonualco has a small central market, a few modest stores (tiendas), diners (comedores), bars, doctor's office, pharmacy, a couple of dentists, a small bank (casa de credito), some lawyers, and not much else. The nearest factories are located near the airport at El Pedregal, about 25 minutes away by bus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "santiago nonualco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nonualco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5553,
+    "attempt": 5511,
+    "place_id": "gn-3701917",
+    "input": {
+      "place": {
+        "place_id": "gn-3701917",
+        "name": "Río Abajo",
+        "country": "Panama",
+        "subdivision": "Panamá",
+        "lat": 9.02397,
+        "lon": -79.49361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Abajo",
+          "url": "https://en.wikipedia.org/wiki/Río_Abajo",
+          "text": "Río Abajo is a corregimiento within Panama City, in Panamá District, Panamá Province, Panama with a population of 26,607 as of 2010. Its population as of 1990 was 33,155; its population as of 2000 was 28,714. It is a West Indian neighborhood; the unique culture of this area of Panama stems mainly from the English Caribbean people who relocated to the area from Anglophone islands in the Antilles more than a century ago, namely Jamaica and Barbados. Rio Abajo consists of over 30 streets, the most notable are 4th, 13th and 17th streets, 2 story wood houses, churches with old southern architecture. Rio Abajo is also the name of a river flowing through Rio Abajo neighborhood.\nOne of Rio Abajo's most famous sons is El General (born Edgardo A. Franco), arguably the one musical artist who most helped to spread the popularity of Spanish Reggae. The latter a product of Panamanian youth of Caribbean descent with the first known one to be sung by Renato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "rio abajo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abajo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5554,
+    "attempt": 5512,
+    "place_id": "gn-4148399",
+    "input": {
+      "place": {
+        "place_id": "gn-4148399",
+        "name": "Boca Del Mar",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.34508,
+        "lon": -80.14671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boca Del Mar, Florida",
+          "url": "https://en.wikipedia.org/wiki/Boca_Del_Mar,_Florida",
+          "text": "Boca Del Mar was a former census-designated place (CDP) and current unincorporated place near Boca Raton in Palm Beach County, Florida, United States. The population was 21,832 at the 2000 census. While it is not officially in the City of Boca Raton, the community is often classified under its umbrella term.\nThe development was first planned in 1969 as \"Boca Granada\" by the Behring Development Company, who previously developed Tamarac Lakes, and Woodmont and The Woodlands in the Fort Lauderdale area. The name was changed to its current moniker to avoid confusion of a nearby condominium complex, and the first approval for a planned unit development was granted in 1971. Behring was sold to Cerro Corporation in 1972 and Leadership Housing, Incorporated was formed, a joint-venture between Cerro and the real estate development arm of another conglomerate Texaco Industries, who had previously developed Anaheim Hills. Leadership Housing would develop other upscale communities in the area, and construction progressed significantly in the 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "boca del mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5555,
+    "attempt": 5513,
+    "place_id": "gn-4560584",
+    "input": {
+      "place": {
+        "place_id": "gn-4560584",
+        "name": "Queen Village",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.93428,
+        "lon": -75.14851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queen Village, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Queen_Village,_Philadelphia",
+          "text": "Queen Village is a residential neighborhood of Philadelphia, Pennsylvania, United States that lies along the eastern edge of the city in South Philadelphia. It shares boundaries with Society Hill to the north, Bella Vista to the west and Pennsport to the south. Street boundaries are the south side of Lombard Street to the north side of Washington Avenue, the Delaware River to 6th Street, encompassing two principal commercial corridors, South Street and Fabric Row on 4th Street.\nHistorically, the area is part of old Southwark, Philadelphia's first suburb, which was incorporated into the city in 1854 and remains the city's oldest residential neighborhood. It is known for its large Jewish and Irish immigrant population, though the South Philadelphia Irish-American community is increasingly centered in the nearby southern neighborhood of Pennsport. As with most of South Philadelphia, there is also an Italian-American community within the neighborhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "queen village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "queen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5556,
+    "attempt": 5514,
+    "place_id": "gn-5097459",
+    "input": {
+      "place": {
+        "place_id": "gn-5097459",
+        "name": "East Rutherford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.83399,
+        "lon": -74.09709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Rutherford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/East_Rutherford,_New_Jersey",
+          "text": "East Rutherford is a borough in Bergen County, in the U.S. state of New Jersey. It is an inner-ring suburb of New York City, located 7 miles (11 km) west of Midtown Manhattan. As of the 2020 United States census, the borough's population was 10,022, an increase of 1,109 (+12.4%) from the 2010 census count of 8,913, which in turn reflected an increase of 197 (+2.3%) from the 8,716 counted in the 2000 census.\nUnder the terms of an act of the New Jersey Legislature on April 17, 1889, a portion of the old Union Township was incorporated under the name of Boiling Springs Township. The new township took its name from a spring in the community. On March 28, 1894, the Borough of East Rutherford was created, based on the results of a referendum held the previous day, and Boiling Springs Township was dissolved. While there was no change in its borders, the name and form of government were changed. The borough was the second formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The borough was already the site of several industries prior to its incorporation, with the number of industrial firms located in East Rutherford totaling over 50 by 1940.\nEast Rutherford is the home of the Meadowlands Sports Complex, which includes Meadowlands Arena and MetLife Stadium. MetLife Stadium is home of the New York Giants and New York Jets of the National Football League and hosted Super Bowl XLVIII, which made East Rutherford the smallest city ever to host a Super Bowl. East Rutherford hosted seven matches for the 1994 FIFA World Cup at Giants Stadium and hosted eight matches for the 2026 FIFA World Cup, including the World Cup final, held at MetLife Stadium, also making the borough the smallest-ever host of any of those tournament final games.\nThe borough is also the site of American Dream, a 3,000,000-square-foot (280,000 m2) shopping center and entertainment complex that opened in October 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "east rutherford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rutherford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5557,
+    "attempt": 5515,
+    "place_id": "gn-5110446",
+    "input": {
+      "place": {
+        "place_id": "gn-5110446",
+        "name": "Brownsville",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.66094,
+        "lon": -73.92014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brownsville, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Brownsville,_Brooklyn",
+          "text": "Brownsville is a residential neighborhood in eastern Brooklyn in New York City. The neighborhood is bordered by Crown Heights to the northwest; Bedford–Stuyvesant and the subsection of Ocean Hill to the north; East New York to the east; Canarsie to the south; and East Flatbush to the west.\nThe 1.163-square-mile (3.01 km2) area that comprises Brownsville has 58,300 residents as of the 2010 United States census, with an estimated population of 128,369 residents in 2019. Founded in its current incarnation in 1858, Brownsville was initially a settlement composed of Jewish factory workers. The neighborhood underwent a major demographic change in the 1950s that saw an influx of African-American residents. Since the late 20th century, Brownsville has consistently held one of the highest poverty and crime rates of any neighborhood in New York City, even at times when crime rates were declining elsewhere in the borough.\nBrownsville is part of Brooklyn Community District 16, and its primary ZIP Code is 11212. It is patrolled by the 73rd Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 42nd and 41st Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "brownsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5558,
+    "attempt": 5516,
+    "place_id": "gn-5847504",
+    "input": {
+      "place": {
+        "place_id": "gn-5847504",
+        "name": "Kailua-Kona",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 19.64016,
+        "lon": -155.99912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kailua-Kona, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kailua-Kona,_Hawaii",
+          "text": "Kailua-Kona is an unincorporated community and, under the name Kailua, a census-designated place (CDP) in Hawaii County, Hawaii, United States. It is most commonly referred to simply as Kona (a name it shares with the district to which it belongs), but also as Kona Town, and occasionally as Kailua (a name it shares with a community on the windward side of Oʻahu), thus its less frequent use. Kailua-Kona is the second-largest settlement on the island of Hawaii (after Hilo) and the largest on the island's west side, where it is the center of commerce and the tourist industry. Kailua-Kona is served by Kona International Airport, just to the north in the adjacent CDP of Kaiminani. The population was 19,713 at the 2020 census, up from 11,975 at the 2010 census.\nKailua-Kona was the closest major settlement to the epicenter of the 2006 Kiholo Bay earthquake.\nThe U.S. Census Bureau significantly altered Kailua CDP's boundaries for the 2020 census. The eastern portion of Kailua CDP became part of the neighboring Holualoa CDP, while the western portion of Holualoa became part of Kailua CDP."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "kailua kona",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kailua",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kona",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5559,
+    "attempt": 5517,
+    "place_id": "gn-8349243",
+    "input": {
+      "place": {
+        "place_id": "gn-8349243",
+        "name": "Hillside",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.69047,
+        "lon": 144.74172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillside, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Hillside,_Victoria",
+          "text": "Hillside is a suburb in Melbourne, Victoria, Australia, 24 km (15 mi) north-west of Melbourne's Central Business District, located within the Cities of Brimbank and Melton local government areas. Hillside recorded a population of 17,331 at the 2021 census.\nThere is another locality in Victoria named Hillside, a small rural district near Bairnsdale.\nThe suburb of Hillside was previously part of the neighbouring suburb of Sydenham, however its name was changed to Hillside approximately 18 years ago. It has estates with names of Cypress Rise, Banchory Grove, Parkwood Green, Bellevue Hill, Sugargum Estate, Hillside 2000 and Regency Rise. A large water tower (known as \"The Golf Ball\" by locals) exists in the estate of The Bellevue, which can be seen from several kilometres around and, along with the large radio transmission towers in nearby Delahey, is a major landmark of the outer north-western suburban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "hillside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5560,
+    "attempt": 5518,
+    "place_id": "gn-8605012",
+    "input": {
+      "place": {
+        "place_id": "gn-8605012",
+        "name": "Elmendorf Air Force Base",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 61.25703,
+        "lon": -149.63139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmendorf Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Elmendorf_Air_Force_Base",
+          "text": "Elmendorf Air Force Base (IATA: EDF, ICAO: PAED, FAA LID: EDF) is a United States Air Force (USAF) facility in Anchorage, Alaska. Originally known as Elmendorf Field, it became Elmendorf Air Force Base after World War II.\nIt is the home of the Headquarters, Alaskan Air Command (ALCOM), Alaskan NORAD Region (ANR), Eleventh Air Force (11 AF), the 673d Air Base Wing, the 3rd Wing, the 176th Wing and other tenant units.\nIn 2010, it was amalgamated with nearby Fort Richardson to form Joint Base Elmendorf-Richardson. The adjacent facilities were officially combined by the 2005 Base Closure and Realignment Commission. Its mission is to support and defend U.S. interests in the Asia-Pacific region and around the world by providing units who are ready for worldwide air power projection and a base that is capable of meeting United States Pacific Command's theater staging and throughput requirements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "elmendorf air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "elmendorf",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5561,
+    "attempt": 5519,
+    "place_id": "gn-1020592",
+    "input": {
+      "place": {
+        "place_id": "gn-1020592",
+        "name": "Bedford",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.67903,
+        "lon": 26.08686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedford, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Bedford,_South_Africa",
+          "text": "Bedford or Nyarha is a town in the centre of the Eastern Cape province of South Africa. It was established in the mid-19th century when Sir Andries Stockenstroom sold portions of land from his farm Maastroom to raise funds for the restoration of his library, which had been burnt by British soldiers mistrustful of his attempts to broker peace in one of the Cape Frontier Wars. The farm is still there and open for visitors.\nIt is located on the southern edge of the Winterberg mountain range, in the Smaldeel (a narrow strip of grassland running laterally from Fort Beaufort to Somerset East, renowned for its sweet grass). The town suffered a major decline in fortunes in the latter half of the 20th century before reviving itself around the turn of the millennium. It is regarded today as an artist's haven and retirement village.\nBedford has the following locations or human settlements; Town, New Brighton, Coloured Valley, Nonzwakazi, Bhongweni, Ndlovini, Khayelitsha, Polar Park, New Rest and Goodwin Park\nThe lack of industry in the town, while a boon to those hoping to escape the rat race, means that the town has a large unemployment rate. The woes of the poor are exacerbated by a high HIV-AIDS infection rate.\nBedford is home to two high schools namely; Templeton High School, situated in the suburban part of the town and Lonwabo Senior Secondary School, situated in Circular Drive in the Polar Park Location. Other than that there is a Model C school, Bedford Country School situated just behind the Public Library in town . Nonyameko Junior Primary School is situated in the Nonzwakazi Location just as is Ntlama Higher Primary School. Bedford Primary School is situated in the Coloured Location of Bedford.\nThe Bedford Provincial Hospital is situated in Maitland Street, three blocks northwest of the town's centre. Other healthcare centres include the Town Clinic in the suburban part of the town and Mzamohle Clinic in the location part of the town.\nMost tourists visit Bedford to experience true South African farm living. It is also known for the garden festival where people who live in the town and surrounding farms get to show case their gardens and other creative art work."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "bedford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5562,
+    "attempt": 5520,
+    "place_id": "gn-13118432",
+    "input": {
+      "place": {
+        "place_id": "gn-13118432",
+        "name": "Business Bay",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.18544,
+        "lon": 55.26969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Business Bay",
+          "url": "https://en.wikipedia.org/wiki/Business_Bay",
+          "text": "Business Bay (Arabic: الخليج التجاري: Al-Khaleej Al-Tijari) is a central business district under construction in Dubai, United Arab Emirates. The project features numerous skyscrapers located in an area where Dubai Creek has been dredged and extended, and located immediately south of Downtown Dubai. Business Bay will have upwards of 240 buildings, comprising commercial and residential developments. The infrastructure of Business Bay has been completed in 2008, and the entire development was expected to be completed between 2012 and 2015.\nBusiness Bay is part of the vision of Sheikh Mohammed Bin Rashed Al Maktoum, UAE Vice President, Prime Minister, Minister of Defence, and Ruler of Dubai. Business Bay will be a new 'city' within the city of Dubai and is being built as a commercial, residential and business cluster along a new extension of Dubai Creek extending from Ras Al Khor to Sheikh Zayed Road. Covering an area of 64,000,000 square feet (5,900,000 m2), it is composed of office and residential towers set in landscaped gardens with a network of roads, pathways and canals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "business bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "business",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

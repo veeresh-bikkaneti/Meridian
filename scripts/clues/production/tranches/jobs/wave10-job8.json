@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 10334,
+    "place_id": "gn-3682465",
+    "input": {
+      "place": {
+        "place_id": "gn-3682465",
+        "name": "Firavitoba",
+        "country": "Colombia",
+        "subdivision": "Boyacá",
+        "lat": 5.66885,
+        "lon": -72.99289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Firavitoba",
+          "url": "https://en.wikipedia.org/wiki/Firavitoba",
+          "text": "Firavitoba is a town and municipality in Sugamuxi Province, a subregion of the department of Boyacá in Colombia.\nBefore Spanish colonization, Firavitoba was part of the Muisca Confederation of the Chibcha people in the highlands of the Eastern Cordillera of the Colombian Andes. Firavitoba belonged to the Iraca or Suamox state which, uniquely, did not observe a hereditary leadership system but elected its ruler alternately from Firavitoba and Tobasá, two of its many tribes.\nFiravitoba is distinguished by its neo-Gothic church, the third biggest in Colombia. Nuestra Señora de las Nieves (Our Lady of the Snows) was built between 1873 and 1976, entirely of stone sourced from nearby Sogamoso's Pedregal district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "firavitoba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10338,
+    "place_id": "gn-5849207",
+    "input": {
+      "place": {
+        "place_id": "gn-5849207",
+        "name": "Kēōkea",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 20.70711,
+        "lon": -156.35446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kēōkea, Maui County, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kēōkea,_Maui_County,_Hawaii",
+          "text": "Kēōkea (Hawaiian for 'the sound of white [caps]') is an unincorporated community, census-designated place (CDP), and Hawaiian home land on the island of Maui in Maui County, Hawaii, United States. It is situated on Hawaii State Highway 37 (the Kula Highway) at North Latitude 20.71 degrees, West Longitude 156.36 degrees. Its elevation is 2,860 feet (870 meters) above sea level. As of the 2020 census its population was 2,199, up from 1,612 in 2010.\nAgriculture, forestry and ranching, which are supported by the area's fertile though often rocky volcanic loams, are important around this settlement, which has a temperate climate because of its elevation. Tourism also contributes to the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "keokea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10362,
+    "place_id": "gn-5112771",
+    "input": {
+      "place": {
+        "place_id": "gn-5112771",
+        "name": "Clarence Center",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.01061,
+        "lon": -78.63753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarence Center, New York",
+          "url": "https://en.wikipedia.org/wiki/Clarence_Center,_New_York",
+          "text": "Clarence Center is an affluent hamlet and census-designated place (CDP) in the town of Clarence in Erie County, New York, United States. Clarence Center (14032) is the most expensive zip code in all of Western New York and Central New York. It is the second most expensive zip code in Upstate New York with only 12866 (Saratoga Springs) having a higher average home price. The population was 3,337 as of 2021. It is part of the Buffalo-Niagara Falls metropolitan area.\nClarence Center, within the south-central part of the town, is the location of most of the town government facilities, although the actual town hall is within the Clarence postal zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "clarence center",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "clarence",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "center",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10364,
+    "place_id": "gn-5960304",
+    "input": {
+      "place": {
+        "place_id": "gn-5960304",
+        "name": "Gentilly",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.40005,
+        "lon": -72.2741
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gentilly, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Gentilly,_Quebec",
+          "text": "Gentilly (French pronunciation: [ʒɑ̃tiji] ), known as Saint-Édouard-de-Gentilly until 1900, is a village now part of Bécancour, Quebec, Canada. It is one of the major population centres within Bécancour's extensive territory, with 1,673 inhabitants counted in Gentilly at the 2016 population census.\nThe village is home to a traditionally French-speaking population and hosts the famous yearly Potirothon. While Gentilly is a small town, it has all the essential services and a warm/welcoming community. The Parc Regional de la Rivière Gentilly is close to town and offers hiking, camping, mountain biking and kayaking. It is also in proximity to the Parc Industriel de Bécancour where most industries are involved in manufacturing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "gentilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10370,
+    "place_id": "gn-2156298",
+    "input": {
+      "place": {
+        "place_id": "gn-2156298",
+        "name": "Mulwala",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.98536,
+        "lon": 146.00534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mulwala",
+          "url": "https://en.wikipedia.org/wiki/Mulwala",
+          "text": "Mulwala (locally  mul-WAY-lə, elsewhere also  mul-WAH-lə) is a town in the Federation Council local government area in the Riverina district of New South Wales, Australia. Situated on Lake Mulwala, an artificial lake formed by the damming of the Murray River, it forms a \"twin town\" with the larger town of Yarrawonga across the border in Victoria. At the 2021 census, Mulwala had a population of 2,557 people. The town's name is derived from an aboriginal word for 'rain'.\nMulwala is a popular destination for water sports and fishing, especially for tourists from nearby Melbourne, 300 kilometres (190 mi) to the south. Other popular attractions include three major licensed clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "mulwala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10371,
+    "place_id": "gn-2170796",
+    "input": {
+      "place": {
+        "place_id": "gn-2170796",
+        "name": "Coniston",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.45,
+        "lon": 150.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coniston, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Coniston,_New_South_Wales",
+          "text": "Coniston ( CON-ist-ən), is a suburb of Wollongong in New South Wales, Australia. At the 2021 census, it had a population of 2,267.\nConiston is just north of the Port Kembla Steelworks and includes the Greenhouse Park, a one time waste pile converted into a natural park area with a weather station. The hill, known locally as \"The Overseer\" has a lookout over the city and Port Kembla. Coniston is also bordered to the west by the hill suburbs of Mangerton and Mount Saint Thomas.\nConiston has a variety of businesses including The Coniston Hotel, formally Gilmore's Hotel, a bakery, 24 Hour petrol station and several other specialty stores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "coniston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10373,
+    "place_id": "gn-2633624",
+    "input": {
+      "place": {
+        "place_id": "gn-2633624",
+        "name": "Woodsetts",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.34804,
+        "lon": -1.17204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodsetts",
+          "url": "https://en.wikipedia.org/wiki/Woodsetts",
+          "text": "Woodsetts is a village and civil parish in the Metropolitan Borough of Rotherham in South Yorkshire, England, on the border with Nottinghamshire. It lies between the towns of Dinnington and Worksop at an elevation of around 60 metres above sea level, and has a population of 1,746 at the 2011 Census. The village originated as a medieval farming hamlet, the name Woodsetts was first recorded in 1220, but there is evidence of human settlement in the area from 80 BC. The village grew rapidly in the late 19th century when a colliery was sunk at Dinnington. Woodsetts now serves as a commuter base for people working in nearby towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "woodsetts",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10377,
+    "place_id": "gn-2642377",
+    "input": {
+      "place": {
+        "place_id": "gn-2642377",
+        "name": "Moira",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.73698,
+        "lon": -1.53496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moira, Leicestershire",
+          "url": "https://en.wikipedia.org/wiki/Moira,_Leicestershire",
+          "text": "Moira is a former mining village about 2.5 miles (4 km) south-west of Ashby-de-la-Zouch in North West Leicestershire, England. The village is about 3 miles (5 km) south of Swadlincote and is close to the boundary with Derbyshire. The population is included in the civil parish of Ashby Woulds.\nFor centuries North West Leicestershire has been quarried and mined for coal, limestone, granite and brick clay, and its environmental damage was one of the reasons that it was chosen in the 1990s as the site for the National Forest, which is part of a Government-funded programme to create more woodland. Proximate villages include Donisthorpe, Overseal, Oakthorpe and Spring Cottage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "moira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10379,
+    "place_id": "gn-2657476",
+    "input": {
+      "place": {
+        "place_id": "gn-2657476",
+        "name": "Allhallows",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46866,
+        "lon": 0.63686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allhallows, Kent",
+          "url": "https://en.wikipedia.org/wiki/Allhallows,_Kent",
+          "text": "Allhallows is a village and civil parish on the Hoo Peninsula in Rochester Kent, England. Situated in the northernmost part of Kent, and covering an area of 23.99 km2, the parish is bounded on the north side by the River Thames, and in the east by the course of Yantlet creek, now silted up. At the 2011 census the parish had a population of 1,676.\nAllhallows village is in two parts: the ancient Hoo All Hallows and the 20th century holiday colony Allhallows-on-Sea.\nTo the west of the village is Windhill Green. There used to be a hamlet on the site, but all the original buildings have been demolished."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "allhallows",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10386,
+    "place_id": "gn-3581968",
+    "input": {
+      "place": {
+        "place_id": "gn-3581968",
+        "name": "Hattieville",
+        "country": "Belize",
+        "subdivision": "Belize District",
+        "lat": 17.44779,
+        "lon": -88.39355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hattieville",
+          "url": "https://en.wikipedia.org/wiki/Hattieville",
+          "text": "Hattieville is a village in the Belize District of the nation of Belize. It is located at 17N 88W, at an elevation of 196 feet (60 meters) above mean sea level, and has a population of about 1,300 people. Hattieville was established as a refugee camp after Hurricane Hattie made many people homeless in Belize City when it hit in 1961, but it became a permanent town.\nOperation New Horizons 2007 built two additional school rooms onto the Hattieville government school between 17 March - 12 May 2007. This mission was under the command of the Louisiana Army National Guard.\nBelize Central Prison (formerly Hattieville Prison) is in Hattieville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "hattieville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10399,
+    "place_id": "gn-2647471",
+    "input": {
+      "place": {
+        "place_id": "gn-2647471",
+        "name": "Harlech",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.85941,
+        "lon": -4.10831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harlech",
+          "url": "https://en.wikipedia.org/wiki/Harlech",
+          "text": "Harlech (Welsh pronunciation: [ˈharlɛχ] ) is a seaside resort and community in Gwynedd, North Wales, and formerly in the historic county of Merionethshire. It lies on Tremadog Bay in the Snowdonia National Park. Before 1966, it belonged to the Meirionydd District of the 1974 County of Gwynedd. Its landmark Harlech Castle was begun in 1283 by Edward I of England, captured by Owain Glyndŵr, and in the 1480s, a stronghold of Henry Tudor. Once on a seaside cliff face, it is now half a mile (800 m) inland. New housing has appeared in the low town and in the high town around the shopping street, church and castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "harlech",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10403,
+    "place_id": "gn-282536",
+    "input": {
+      "place": {
+        "place_id": "gn-282536",
+        "name": "Neve Daniel",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.67676,
+        "lon": 35.14375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neve Daniel",
+          "url": "https://en.wikipedia.org/wiki/Neve_Daniel",
+          "text": "Neve Daniel (Hebrew: נְוֵה דָּנִיֵּאל) is an Israeli settlement in the West Bank. Located in western Gush Etzion south of Jerusalem and just west of Bethlehem, it sits atop one of the highest points in the area – close to 1,000 meters above sea level, and has a view of much of the Mediterranean coastal plain, as well as the mountains of Jordan. In 2024, it had a population of 2,418. It is organised as a community settlement and falls under the jurisdiction of Gush Etzion Regional Council.\nThe international community considers Israeli settlements in the West Bank illegal under international law, but the Israeli government disputes this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "neve daniel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "neve",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "daniel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10409,
+    "place_id": "gn-5188029",
+    "input": {
+      "place": {
+        "place_id": "gn-5188029",
+        "name": "East Pittsburgh",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.39562,
+        "lon": -79.83866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Pittsburgh, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/East_Pittsburgh,_Pennsylvania",
+          "text": "East Pittsburgh is a borough in Allegheny County, Pennsylvania, United States, approximately 11 miles (18 km) southeast of the confluence of the Monongahela and the Allegheny rivers at Pittsburgh. The population in 1900 stood at 2,883, and in 1910, at 5,615. As of the 2020 census, the borough population was 1,927, having fallen from 6,079 in 1940. George Westinghouse erected large works there which supplied equipment to the great power plants at Niagara Falls and for the elevated and rapid-transit systems of New York City. Nearby, the George Westinghouse Bridge over Turtle Creek is a prominent fixture in the area, which is very near the borough of Braddock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "east pittsburgh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pittsburgh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10412,
+    "place_id": "gn-8349065",
+    "input": {
+      "place": {
+        "place_id": "gn-8349065",
+        "name": "Hillman",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.28327,
+        "lon": 115.76364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillman, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Hillman,_Western_Australia",
+          "text": "Hillman is an outer southern suburb of Perth, the capital city of Western Australia, located within the City of Rockingham. It is principally a suburb of residential dwellings, and contains Hillman Primary School.\nThe suburb was created and named in 1970 after Alfred Hillman, a draughtsman, surveyor and explorer, who arrived in Western Australia in 1831 and made many initial surveys in the Rockingham area. On 7 May 2009, a boundary realignment of Cooloongup and Hillman approved by the Minister for Lands incorporated the Rockingham Train Station into Rockingham.\nA significant portion of the north and east portions of the suburb is incorporated into Rockingham Lakes Regional Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "hillman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10413,
+    "place_id": "gn-9429265",
+    "input": {
+      "place": {
+        "place_id": "gn-9429265",
+        "name": "Great Corby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.88169,
+        "lon": -2.82452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Corby",
+          "url": "https://en.wikipedia.org/wiki/Great_Corby",
+          "text": "Great Corby is a village in northern Cumbria, England, above the eastern bank of a wooded gorge on the River Eden.  Directly across the river from Great Corby is the village of Wetheral. The two villages are linked by a railway viaduct (Corby Bridge, popularly known as \"Wetheral Viaduct\").  This is on the Tyne Valley Line from Newcastle to Carlisle, which passes to the north of the village. The railway station at Wetheral is accessible to residents of Great Corby by a pedestrian footpath attached to the railway viaduct.\nAdministratively Great Corby lies within the civil parish of Wetheral and the electoral ward of Great Corby and Geltsdale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "great corby",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corby",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10417,
+    "place_id": "gn-2061735",
+    "input": {
+      "place": {
+        "place_id": "gn-2061735",
+        "name": "Serpentine",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.36051,
+        "lon": 115.97723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serpentine, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Serpentine,_Western_Australia",
+          "text": "Serpentine is a town located 55 kilometres (34 mi) south-southeast of Perth, the capital of Western Australia, and 7 km south of Mundijong.\nSerpentine is located on the South Western Railway between Perth and Bunbury, and was one of the original stations when the line was opened in 1893. The population of the town was 128 (80 males and 48 females) in 1898. At the 2016 census, Serpentine had a population of 1,265.\nIt is the locality to which the Bureau of Meteorology weather radar has been shifted following on from the original Perth location in West Perth. The Bodhinyana Buddhist Monastery is located near the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "serpentine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10418,
+    "place_id": "gn-2177810",
+    "input": {
+      "place": {
+        "place_id": "gn-2177810",
+        "name": "Apollo Bay",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.7594,
+        "lon": 143.67219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apollo Bay",
+          "url": "https://en.wikipedia.org/wiki/Apollo_Bay",
+          "text": "Apollo Bay is a coastal town in southwestern Victoria, Australia. It is situated on the eastern side of Cape Otway, along the edge of the Barham River and on the Great Ocean Road, in the Colac Otway Shire. The town had a population of 1,790 at the 2021 census.\nIt is a major tourist destination in Victoria. It is host to the annual Apollo Bay WordFest, Winter Wild and the Great Ocean Road Running Festival. \nIn winter to spring, southern right whales come to the area mainly to breed, bear their calves, and  raise them in the warmer, calm waters of South Australia during their migration season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "apollo bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "apollo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10422,
+    "place_id": "gn-2659627",
+    "input": {
+      "place": {
+        "place_id": "gn-2659627",
+        "name": "Montagnola",
+        "country": "Switzerland",
+        "subdivision": "Ticino",
+        "lat": 45.98323,
+        "lon": 8.91786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montagnola",
+          "url": "https://en.wikipedia.org/wiki/Montagnola",
+          "text": "Montagnola (Italian pronunciation: [montaɲˈɲɔːla]) is a small Swiss village in Collina d'Oro municipality. Located in the Italian-speaking canton of Ticino, it is close to the border between Switzerland and Italy. It looks over Lake Lugano and the city of Lugano upon it. It falls within the local parish of Sant'Abbondio Gentilino.\nLandmarks include the house where Hermann Hesse lived for half of his life, a house where George Harrison went for health reasons and The American School In Switzerland (TASIS), a boarding school.\nMontagnola was formerly a municipality of its own, but was merged with Agra and Gentilino in 2004 to form the new municipality Collina d'Oro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "montagnola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10425,
+    "place_id": "gn-3010619",
+    "input": {
+      "place": {
+        "place_id": "gn-3010619",
+        "name": "La Canourgue",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 44.43252,
+        "lon": 3.21439
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Canourgue",
+          "url": "https://en.wikipedia.org/wiki/La_Canourgue",
+          "text": "La Canourgue (French pronunciation: [la kanuʁɡ]; Occitan: La Canorga) is a commune in the Lozère department in southern France. In 1973 it absorbed three former communes: Auxillac, La Capelle and Montjézieu. It is sometimes referred to in French as \"La petite Venise lozérienne\", the Little Venice of Lozère.\nExposed to a mountain climate, it is drained by the Lot, the Urugne, the Chardonnet stream, the Felgeyre stream and by various other small watercourses. The commune has a Natura 2000 network (the \"Urugne valley\") and four zones of ecological, fauna and floral interest.\nLa Canourgue is a rural commune having experienced a strong increase in population since 1962."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "la canourgue",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canourgue",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10427,
+    "place_id": "gn-3104397",
+    "input": {
+      "place": {
+        "place_id": "gn-3104397",
+        "name": "Yuncler",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 40.04079,
+        "lon": -3.89979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yuncler",
+          "url": "https://en.wikipedia.org/wiki/Yuncler",
+          "text": "Yuncler is a town and municipality in the Sagra shire, province of Toledo, Spain, 42 km to the south from the national capital, Madrid. It borders Villaluenga de la Sagra to the south, Yuncos and Cedillo to the north, Numancia to the northeast, Pantoja to the east and Cedillo to the west.\nIt has an agricultural-based economy, with a recent surge in small businesses.\nThe climate is mediterranean. Winters are cold with temperatures, sometimes lower than 3 °C. The summers can be very hot, with temperatures over 37 °C.\nYuncler is a village where there is not a lot of rain data, but sometimes there are rainstorms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "yuncler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

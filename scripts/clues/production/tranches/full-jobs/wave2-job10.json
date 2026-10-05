@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 386,
+    "attempt": 381,
+    "place_id": "gn-1798760",
+    "input": {
+      "place": {
+        "place_id": "gn-1798760",
+        "name": "Pingliang",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 35.53917,
+        "lon": 106.68611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pingliang",
+          "url": "https://en.wikipedia.org/wiki/Pingliang",
+          "text": "Pingliang (simplified Chinese: 平凉; traditional Chinese: 平涼; pinyin: Píngliàng; lit. 'Pacify Liang') is a prefecture-level city in eastern Gansu province, China, bordering Shaanxi province to the south and east and the Ningxia Hui Autonomous Region to the north. The city was established in 376 AD. It has a residential population of 2,125,300 in 2019. The urban population is almost 900,000.\nPingliang is well known for the nearby Kongtong Mountains, which are sacred to Taoism and location of the mythical meeting place of the Yellow Emperor and Guangchengzi, an immortal.\nThe Book of Sui and Tongdian record that the Ashina tribe who founded the First Turkic Khaganate (also known as Göktürk Khaganate) were from Pingliang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "pingliang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 387,
+    "attempt": 382,
+    "place_id": "gn-1838343",
+    "input": {
+      "place": {
+        "place_id": "gn-1838343",
+        "name": "Pyeongtaek",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 36.99472,
+        "lon": 127.08889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyeongtaek",
+          "url": "https://en.wikipedia.org/wiki/Pyeongtaek",
+          "text": "Pyeongtaek (Korean: 평택; Korean pronunciation: [pʰjʌŋ.tʰɛk̚]) is a city in Gyeonggi Province, South Korea. Located in the southwestern part of the province, Pyeongtaek was founded as a union of two districts in 1940. It was elevated to city status in 1986 and is home to a South Korean naval base and a large concentration of United States troops. The South Korean government plans to transform Pyeongtaek into an international economic hub to coincide with the move of United States Forces Korea (USFK) to Pyeongtaek. During the Korean War, it was the site of the Battle of Pyongtaek, an early battle between U.S. and North Korean forces. It is also the location of Pyeongtaek University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "pyeongtaek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 388,
+    "attempt": 383,
+    "place_id": "gn-2992166",
+    "input": {
+      "place": {
+        "place_id": "gn-2992166",
+        "name": "Montpellier",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.61093,
+        "lon": 3.87635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montpellier",
+          "url": "https://en.wikipedia.org/wiki/Montpellier",
+          "text": "Montpellier (UK: ; US: ) is a city in southern France near the Mediterranean Sea. One of the largest urban centres in the region of Occitania, Montpellier is the prefecture of the department of Hérault. As of 2023, 310,240 people live in the city proper, while its metropolitan area has a population of 842,923. Montpellier is the third-largest French city near the Mediterranean coast, behind Marseille and Nice, and the seventh-largest city of France overall. The inhabitants are called Montpelliérains and Montpelliéraines.\nIn the Middle Ages, Montpellier was an important city of the Crown of Aragon (and was the birthplace of James I), and then of Majorca, before its sale to France in 1349. Established in 1220, the University of Montpellier is one of the oldest universities in the world and has the oldest medical school still in operation, with notable alumni such as Petrarch, Nostradamus and François Rabelais. Above the medieval city, the ancient citadel of Montpellier is a stronghold built in the seventeenth century by Louis XIII.\nSince the 1990s, Montpellier has experienced one of the strongest economic and demographic growths in the country. Its urban area has experienced the highest population growth in France since the year 2000. Numbering 70,000, students comprise nearly one-fourth of its population, one of the highest such proportions in Europe. Its living environment, with one of Europe's largest pedestrian areas, along with its rich cultural life and Mediterranean climate, explains the enthusiasm for the city, which is nicknamed the \"Gifted\". Montpellier was nominated for \"Best Emerging Culture City of the Year 2017\" by the think tank LCD. It is ranked as a Sufficiency city by the Globalization and World Cities Research Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "montpellier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 389,
+    "attempt": 384,
+    "place_id": "gn-3171457",
+    "input": {
+      "place": {
+        "place_id": "gn-3171457",
+        "name": "Parma",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.79935,
+        "lon": 10.32618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parma",
+          "url": "https://en.wikipedia.org/wiki/Parma",
+          "text": "Parma (Italian: [ˈparma] ; Parmigiano: Pärma [ˈpɛːʁmɐ]) is a city in the region of Emilia-Romagna in northern Italy, known for its architecture, music, art, prosciutto (ham), cheese and surrounding countryside. With a population of 199,450 as of 2026, Parma is the second most populous city in Emilia-Romagna after Bologna, the region's capital.\nThe city is home to the University of Parma, one of the oldest universities in the world. Parma is divided into two parts by the stream of the same name. The district on the west side of the river is Oltretorrente, meaning The other side of the stream. Parma's Etruscan name was adapted by Romans to describe the round shield called Parma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "parma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 390,
+    "attempt": 385,
+    "place_id": "gn-3177090",
+    "input": {
+      "place": {
+        "place_id": "gn-3177090",
+        "name": "Ferrara",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.83804,
+        "lon": 11.62057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferrara",
+          "url": "https://en.wikipedia.org/wiki/Ferrara",
+          "text": "Ferrara (; Italian: [ferˈraːra] ; Emilian: Fràra [ˈfraːra]) is a city and comune (municipality) in the region of Emilia-Romagna in northern Italy, capital of the province of Ferrara. As of 2026, with a population of 129,048, it is the 29th-largest city in Italy.\nIt is situated 44 kilometres (27 miles) northeast of Bologna, on the Po di Volano, a branch channel of the main stream of the Po River, located 5 km (3 miles) north. The town has broad streets and numerous palaces dating from the Renaissance, when it hosted the court of the House of Este. For its beauty and cultural importance, it has been designated by UNESCO as a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "ferrara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 391,
+    "attempt": 386,
+    "place_id": "gn-3451668",
+    "input": {
+      "place": {
+        "place_id": "gn-3451668",
+        "name": "Resende",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.46889,
+        "lon": -44.44667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Resende, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Resende,_Rio_de_Janeiro",
+          "text": "Resende (Brazilian Portuguese pronunciation: [ʁeˈzẽdʒi]) is a municipality located in the Brazilian state of Rio de Janeiro. The population is 132,312 (2020 est.) in an area of 1094 km2. Resendense refers to people or things that come from or inhabit Resende. It is the oldest town in this region, which has boundaries with the state of São Paulo and Minas Gerais. It is an important industrial, automotive, metallurgical, and tourist center, and headquarters of the world's second-largest military complex, the Academia Militar das Agulhas Negras (AMAN). Resende is of national importance and houses the Nuclear Fuel Factory complex of the \"Indústrias Nucleares\" of Brasil (Brazilian Nuclear Factories), the only one able to enrich uranium. Resende's automotive area holds  MAN Latin America (former Volkswagen Trucks and Buses), the biggest truck and bus factory of Brazil, limited to PSA Peugeot Citroën and Michelin.\nThe town has the following tourist attractions: Visconde de Mauá, Parque Nacional do Itatiaia, Engenheiro Passos, AMAN, Serrinha do Alambari, Penedo (which belong the city of Itatiaia), the Cachoeira da Fumaça, and some of the city's houses. Resende is home to the largest theater in Latin America, The Academy Theater with a capacity of 2,884 people. Resende is crossed by Rodovia Presidente Dutra, the most important Brazilian road, also called Rio - São Paulo. The municipality has a big territorial extension, 1.144 km2, as mentioned before, the biggest in the area between Rio and São Paulo, between the municipalities traversed by the road which connects them. Resende is served by  Resende Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "resende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 392,
+    "attempt": 387,
+    "place_id": "gn-3463237",
+    "input": {
+      "place": {
+        "place_id": "gn-3463237",
+        "name": "Florianópolis",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.59667,
+        "lon": -48.54917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florianópolis",
+          "url": "https://en.wikipedia.org/wiki/Florian%C3%B3polis",
+          "text": "Florianópolis (English:  FLOR-ee-ə-NOP-əl-iss, Brazilian Portuguese: [floɾiaˈnɔpolis]) is the capital and second largest city of the state of Santa Catarina, in the South Region of Brazil. The city encompasses Santa Catarina Island and surrounding small islands, as well as part of the mainland. It has a population of 537,211, according to the 2022 Brazilian census, the second-most populous city in the state (after Joinville), and the 39th in Brazil. The metropolitan area has an estimated population of 1,111,702, the 21st largest in the country. The city is known for having the country's third-highest Human Development Index score among all Brazilian cities (0.847).\nThe economy of Florianópolis is heavily based on information technology, tourism, and services. The city has 60 beaches and is a center of surfing activity. Lagoa da Conceição is the most famous area for tourism, recreation, nature, and extreme sports. The New York Times reported that \"Florianopolis is the party destination of the year in 2009.\" Newsweek placed Florianópolis in its \"ten most dynamic cities of the world\" list in 2006. Veja, a Brazilian publication, named the city as \"the best place to live in Brazil.\" As a result of this exposure, Florianópolis is growing as a second home destination for many Paulistas, Argentines, Uruguayans, Americans, and Europeans.\nFlorianópolis is also commonly known by the nicknames Floripa and Ilha da Magia (Magic Island). Most of the population lives on the mainland and on the island's central and northern parts. The southern half is less inhabited. Many small commercial fishermen populate the island.\nThe Hercílio Luz International Airport serves the city. Florianópolis is home to the Universidade Federal de Santa Catarina (Federal University of Santa Catarina). There are also the Santa Catarina Federal Institute of Education, Science and Technology (Instituto Federal de Santa Catarina), and two campuses of the Universidade do Estado de Santa Catarina (State University of Santa Catarina), among other institutions of higher and professional education.\nThe city has been ranked as the safest capital to live in Brazil in 2024, according to the 2024 Security Atlas, released by the Institute for Applied Economic Research (IPEA) and the Brazilian Public Security Forum (FBSP). Among other rankings, it has been placed as well as the 5th best place to retire, in Brazil and the USA, by the Mongeral Aegon Longevity Institute in partnership with FGV."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 386
+    },
+    "banned_terms": [
+      {
+        "term": "florianopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 393,
+    "attempt": 388,
+    "place_id": "gn-358840",
+    "input": {
+      "place": {
+        "place_id": "gn-358840",
+        "name": "Bilbeis",
+        "country": "Egypt",
+        "subdivision": "Sharqia",
+        "lat": 30.42039,
+        "lon": 31.56223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilbeis",
+          "url": "https://en.wikipedia.org/wiki/Bilbeis",
+          "text": "Bilbeis (Arabic: بلبيس pronounced [belˈbeːs]; Bohairic Coptic: Ⲫⲉⲗⲃⲉⲥ/Ⲫⲉⲗⲃⲏⲥ Phelbes/Phelbēs) is an ancient fortress city on the eastern edge of the southern Nile Delta in Egypt, the site of the ancient city and former bishopric of Phelbes and a Latin Catholic titular see. It is located 20 km from the city of 10th of Ramadan and roughly 50 km from the city of Cairo.\nThe city is small in size but densely populated, with over 407,300 residents. It also houses the Egyptian Air Force Academy complex, which contains the town's largest public school in Al-Zafer.\nCoptic tradition says that Bilbeis was one of the stopping places of the Holy Family during the Flight into Egypt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "bilbeis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 394,
+    "attempt": 389,
+    "place_id": "gn-4409896",
+    "input": {
+      "place": {
+        "place_id": "gn-4409896",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 37.21533,
+        "lon": -93.29824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Missouri",
+          "text": "Springfield is the third most populous city in the U.S. state of Missouri and the county seat of Greene County. The city's population was 169,176 at the 2020 census. It is the principal city of the Springfield metropolitan area, which had an estimated population of 487,061 in 2022 and includes the counties of Christian, Dallas, Greene, Polk, and Webster. Springfield is the largest city in the Ozarks region, and sits on the Springfield Plateau, which ranges from nearly level to rolling hills.\nSpringfield's nicknames include \"Queen City of the Ozarks\" and \"The Birthplace of Route 66\". The city has been called the \"Buckle of the Bible Belt\" due to its association with evangelical Christianity. The city is the headquarters for Bass Pro Shops, Cabela's, and the adjoining Wonders of Wildlife Museum & Aquarium. It is also home to O'Reilly Auto Parts, which began as a family business with 13 employees in 1957. Springfield is close to Wilson's Creek National Battlefield and is along the national historic Trail of Tears. In 2020, Springfield's largest ethnicities were 87.6% white, 4% black, and 5% two or more races, placing it among the least diverse cities in the United States. The city is a regional center of medical care, with the two largest hospitals, CoxHealth and Mercy, being the largest employers in the city. Springfield hosts several universities and colleges, including Missouri State University, Drury University, and Evangel University. Springfield is an important regional center for distribution, logistics, and manufacturing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 395,
+    "attempt": 390,
+    "place_id": "gn-482283",
+    "input": {
+      "place": {
+        "place_id": "gn-482283",
+        "name": "Tolyatti",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.5303,
+        "lon": 49.3461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tolyatti",
+          "url": "https://en.wikipedia.org/wiki/Tolyatti",
+          "text": "Tolyatti or Togliatti, known before 1964 as Stavropol, is a city in Samara Oblast, Russia. It is the largest city in Russia which is neither the administrative center of a federal subject, nor the largest city of a subject. Population: 684,709 (2021 census); 719,632 (2010 census); 702,879 (2002 census); 630,543 (1989 Soviet census). The city is best known as the home of Russia's largest car manufacturer AvtoVAZ (Lada). For this reason, Tolyatti is often dubbed \"Russia's motor city\" or \"Russia's Motown\" (in reference to Detroit in the United States—the spiritual home of the American automotive industry). It was renamed after Italian communist politician Palmiro Togliatti in 1964, upon his death in the Soviet Union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "tolyatti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 396,
+    "attempt": 391,
+    "place_id": "gn-5577592",
+    "input": {
+      "place": {
+        "place_id": "gn-5577592",
+        "name": "Greeley",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.42331,
+        "lon": -104.70913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greeley, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Greeley,_Colorado",
+          "text": "Greeley is the home rule city that is the county seat of, and the most populous municipality in, Weld County, Colorado United States. The city population was 108,795 at the 2020 United States census, an increase of 17.12% since the 2010 United States census. Greeley is the tenth most populous city in Colorado. Greeley is the principal city of the Greeley, CO Metropolitan Statistical Area and is a major city of the Front Range Urban Corridor. Greeley is located in northern Colorado and is situated 49 miles (79 km) north-northeast of the Colorado State Capitol in Denver. The city is a college town, home to the University of Northern Colorado and Aims Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "greeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 397,
+    "attempt": 392,
+    "place_id": "gn-1174625",
+    "input": {
+      "place": {
+        "place_id": "gn-1174625",
+        "name": "Kasur",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.11866,
+        "lon": 74.45025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kasur",
+          "url": "https://en.wikipedia.org/wiki/Kasur",
+          "text": "Kasur (Punjabi / Urdu: قصور; Punjabi pronunciation: [ˈkɐsuːɾᵊ]; Urdu pronunciation: [ˈqəsuːɾ] also romanized as Qasūr; from pluralized Arabic word Qasr meaning \"palaces\" or \"forts\") is a city to the south of Lahore, in the Pakistani province of Punjab. The city serves as the headquarters of Kasur District. Kasur is the 16th largest city in Punjab and 24th largest in Pakistan, by population. It is also known for being the burial place of the 17th-century Sufi-poet Bulleh Shah. It is near the border with India, and borders the Lahore, Sheikhupura and Okara Districts of Punjab. The city is an aggregation of 26 fortified hamlets overlooking the alluvial valleys of the Beas and Sutlej rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "kasur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 398,
+    "attempt": 393,
+    "place_id": "gn-1259005",
+    "input": {
+      "place": {
+        "place_id": "gn-1259005",
+        "name": "Raigarh",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.89764,
+        "lon": 83.3966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raigarh",
+          "url": "https://en.wikipedia.org/wiki/Raigarh",
+          "text": "Raigarh is a city in northern Chhattisgarh known as the 'Cultural capital of Chhattisgarh'; Raigarh is famous for its dance form “SUWA” (as Raigarh Gharana) and classical music; Raigarh is also known as Sanskritidhani.\nIt is also known for its coal reserves and power generation for the state and the country. With a population of just about 150,019 (2011) it is a rapidly growing industrial city. Raigarh is one of the major rice-producing districts in India.\nRich in culture and tradition, Raigarh City is the administrative headquarters of Raigarh district. Apart from its cultural heritage, the city of Raigarh is also known for its Kosa (a fine silk) and rich deposits of coal.\nRaigarh is home to one of the oldest jute mills in India and is major producer of steel, iron ore and electricity in the country. The most spoken language of the people living here are Odia, Chattisgarhi and Hindi. It is rapidly emerging as an industrial city on the map of Chhattisgarh and India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "raigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 399,
+    "attempt": 394,
+    "place_id": "gn-1262482",
+    "input": {
+      "place": {
+        "place_id": "gn-1262482",
+        "name": "Munger",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.37459,
+        "lon": 86.47455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munger",
+          "url": "https://en.wikipedia.org/wiki/Munger",
+          "text": "Munger, formerly spelt as Monghyr, is a twin city and a Municipal Corporation situated in the Indian state of Bihar. It is the administrative headquarters of Munger district and Munger Division. Munger was one of the major cities in Eastern India and undivided Bengal during Mughal period and British Raj. It is one of the major political, cultural, educational and commercial centers of Bihar and Eastern India. Munger is situated about 180 km (110 mi) east of capital city Patna, about 480 km (300 mi) west of Eastern India's largest city Kolkata and 1,200 km (750 mi) from country's capital New Delhi.\nHistorically, Munger is known for being an ancient seat of rule. The twin city comprises Munger and Jamalpur situated on the southern bank of the river Ganges. It is situated 8 km (5.0 mi) from Jamalpur Junction, 180 km (110 mi) east of capital city Patna and 430 km (270 mi) from Kolkata the capital of West Bengal.\n\nMunger is said to have been founded by the Guptas (4th century CE) and contains a fort that houses the tomb of the Muslim saint Shah Mushk Nafā (died 1497). In 1763, the Nawab of Bengal Mir Qasim made Munger his capital and built an arsenal and several palaces. It was constituted a municipality in 1864."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "munger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 400,
+    "attempt": 395,
+    "place_id": "gn-1274040",
+    "input": {
+      "place": {
+        "place_id": "gn-1274040",
+        "name": "Chittorgarh",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.88963,
+        "lon": 74.62403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chittorgarh",
+          "url": "https://en.wikipedia.org/wiki/Chittorgarh",
+          "text": "Chittorgarh (Hindi pronunciation: [t͡ʃɪt̪ːɔːɽ.gəɽʱ] ; also Chitror or Chittor or Chittaurgarh) is a major city in the state of Rajasthan in western India. It lies on the Berach River, a tributary of the Banas, and is the administrative headquarters of Chittorgarh District. It was a major stronghold of the Rajput State of Medapata (modern Mewar). The city of Chittorgarh is located on the banks of the rivers Gambhiri and Berach.\nChittorgarh is home to the Chittor Fort, one of the largest forts in India and Asia. It was sacked thrice; first in 1303 by Alauddin Khalji, again in 1535 by Bahadur Shah of Gujarat, and lastly by the Mughal Emperor Akbar in 1568. Chittor has been a land of worship for Meera. It is also known for Panna Dai and Rani Padmini."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "chittorgarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 401,
+    "attempt": 396,
+    "place_id": "gn-2033467",
+    "input": {
+      "place": {
+        "place_id": "gn-2033467",
+        "name": "Yanji",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 42.88825,
+        "lon": 129.50241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yanji",
+          "url": "https://en.wikipedia.org/wiki/Yanji",
+          "text": "Yanji (Chinese: 延吉; Korean: 연길 Yŏn'gil; alternately romanized as Yenki or Yenji) is a county-level city in the east of China's Jilin Province, and is the seat of the Yanbian Korean Autonomous Prefecture. Yanji City is located in the eastern part of Jilin Province. It is the seat of the government of Yanbian Korean Autonomous Prefecture and the political, economic and cultural center of the entire autonomous prefecture. Its population is approximately 400,000 of which a significant portion is ethnic Korean.  Yanji is a busy hub of transport and trade between China and North Korea. The city is home to Yanbian University, a comprehensive university and the only Project 211 university in Yanji."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yanji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 402,
+    "attempt": 397,
+    "place_id": "gn-2523630",
+    "input": {
+      "place": {
+        "place_id": "gn-2523630",
+        "name": "Reggio Calabria",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.11047,
+        "lon": 15.66129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reggio Calabria",
+          "url": "https://en.wikipedia.org/wiki/Reggio_Calabria",
+          "text": "Reggio Calabria, also known as Reggio di Calabria and often simply as Reggio, is the largest city in Calabria as well as the seat of the Metropolitan City of Reggio Calabria. As of 2026, with a population of 167,925, it is the 22nd most populous city in Italy, after Reggio Emilia. Reggio Calabria is located near the center of the Mediterranean and is known for its climate, and ethnic and cultural diversity. It is the third economic centre of mainland Southern Italy. About 511,935 people live in its metropolitan area.\nReggio is located on the \"toe\" of the Italian Peninsula and is separated from the island of Sicily by the Strait of Messina. It is situated on the slopes of the Aspromonte, a long, craggy mountain range that runs up through the centre of the region.\nAs a major functional pole in the region, it has strong historical, cultural and economic ties with the city of Messina, which lies across the strait in Sicily, forming a metro city of less than 1 million people.\nReggio is the oldest city in the region, and during ancient times, it was an important and flourishing colony of Magna Graecia. Reggio has a modern urban system, set up after the catastrophic earthquake of 1908, which destroyed most of the city. Before that seismic event, the region had been subject to several other previous earthquakes. The seismicity is caused by Reggio being on the Eurasian Plate near the faultline where it meets the African Plate that runs through the strait, dividing the two European regions of Calabria and Sicily into two different tectonic regions.\nIt is a major economic centre for regional services and transport on the southern shores of the Mediterranean. Reggio, with Naples and Taranto, is home to one of the most important archaeological museums, the National Archaeological Museum of Magna Græcia, dedicated to Ancient Greece (which houses the Bronzes of Riace, rare example of Greek bronze sculpture, which became one of the symbols of the city). Reggio is the seat, since 1907, of the Archeological Superintendence of Bruttium and Lucania. The city is home to football club Reggina, which previously played in the Italian top flight.\nThe city centre, consisting primarily of Liberty buildings, has a linear development along the coast with parallel streets, and the promenade is dotted with rare magnolias and exotic palms. Reggio has several commonly used nicknames: The \"City of Bronzes\", after the Bronzes of Riace that are testimonials of its Greek origins; the \"City of bergamot\", which is exclusively cultivated in the region; and the \"City of Fatamorgana\", an optical phenomenon visible in Italy only from the Reggio seaside."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 442
+    },
+    "banned_terms": [
+      {
+        "term": "reggio calabria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "reggio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calabria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 403,
+    "attempt": 398,
+    "place_id": "gn-2651347",
+    "input": {
+      "place": {
+        "place_id": "gn-2651347",
+        "name": "Derby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.92277,
+        "lon": -1.47663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derby",
+          "url": "https://en.wikipedia.org/wiki/Derby",
+          "text": "Derby (  DAR-bee) is a cathedral city and unitary authority area on the River Derwent in Derbyshire, England. Derbyshire is named after Derby, which was its original county town. As a unitary authority, Derby is administratively independent from Derbyshire County Council. The population of Derby is 275,344 (2025).\nThe Romans established the town of Derventio, which was later captured by the Anglo-Saxons and then by the Vikings who made Djúra-bý one of the Five Boroughs of the Danelaw. Initially a market town, Derby grew rapidly in the industrial era and was home to Lombe's Mill, an early British factory and it contains the southern part of the Derwent Valley Mills World Heritage Site. With the arrival of the railways in the 19th century, Derby became a centre of the British rail industry. Despite having a cathedral since 1927, Derby did not gain city status until 1977.\nDerby is a centre for advanced transport manufacturing. It is home to engine manufacturer Rolls-Royce and Alstom (formerly Bombardier Transportation) has a production facility at the Derby Litchurch Lane Works; Toyota's UK headquarters is located south-west of the city at Burnaston."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "derby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 404,
+    "attempt": 399,
+    "place_id": "gn-282615",
+    "input": {
+      "place": {
+        "place_id": "gn-282615",
+        "name": "Nablus",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 32.22111,
+        "lon": 35.25444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nablus",
+          "url": "https://en.wikipedia.org/wiki/Nablus",
+          "text": "Nablus ( NA(H)B-ləs) is a city in the West Bank, Palestine, and the capital of the Nablus Governorate. It is located approximately 49 kilometres (30 mi) north of Jerusalem, between Mount Ebal and Mount Gerizim with a population of 156,906. The city is a commercial and cultural centre of Palestine, home to An-Najah National University, one of the largest institutions of higher learning in Palestine, and the Palestine Stock Exchange. Nablus is under the administration of the Palestinian National Authority (PNA).\nNablus has been traditionally associated with the ancient city of Shechem. However, Shechem is now identified with the nearby site of Tell Balata in the Balata al-Balad suburb of the West Bank.\nThe modern name of the city can be traced back to the Roman period, when it was named Flavia Neapolis by Roman emperor Vespasian in 72 CE. During the Byzantine period, conflict between the city's Samaritan and newer Christian inhabitants peaked in the Samaritan revolts that were eventually suppressed by the Byzantines by 573, which greatly dwindled the Samaritan population of the city. Following the Muslim conquest of the Levant in the 7th century, the city was given its present-day Arabic name of Nablus. After the First Crusade, the Crusaders drafted the laws of the Kingdom of Jerusalem in the Council of Nablus, and its Christian, Samaritan, and Muslim inhabitants prospered. The city then came under the control of the Ayyubids and the Mamluk Sultanate. Under the Ottoman Turks, who conquered the city in 1517, Nablus served as the administrative and commercial centre for the surrounding area corresponding to the modern-day northern West Bank. Much of Nablus' history is preserved in its Old City, which contains more than 100 monumental buildings.\nAfter the city was captured by British forces during World War I, Nablus was incorporated into Mandatory Palestine in 1922. The 1948 Arab–Israeli War saw the entire West Bank, including Nablus, occupied and annexed by Transjordan. Since the 1967 Arab–Israeli War, the West Bank has been occupied by Israel; since 1995, it has been governed by the Palestinian Authority as part of Area A of the West Bank. Today, the population is predominantly Muslim, with small Christian and Samaritan minorities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "nablus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 405,
+    "attempt": 400,
+    "place_id": "gn-3557846",
+    "input": {
+      "place": {
+        "place_id": "gn-3557846",
+        "name": "Guanabacoa",
+        "country": "Cuba",
+        "subdivision": "Havana",
+        "lat": 23.12518,
+        "lon": -82.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guanabacoa",
+          "url": "https://en.wikipedia.org/wiki/Guanabacoa",
+          "text": "Guanabacoa is a colonial township in eastern Havana, Cuba, and one of the 15 municipalities (or boroughs) of the city. It is famous for its historical Santería and is home to the first African Cabildo in Havana. Guanabacoa was briefly the capital of Cuba in 1555 after Havana was attacked by French pirate Jacques de Sores. This gave rise to the Cuban saying \"Like putting Havana in Guanabacoa,\" which is used to describe trying to fit something too large into a space too small. Guanabacoa was the site of the Battle of Guanabacoa, a skirmish between British and Spanish troops as part of the larger Battle of Havana during the Seven Years' War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "guanabacoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

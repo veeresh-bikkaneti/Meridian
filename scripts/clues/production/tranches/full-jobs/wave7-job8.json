@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1353,
+    "attempt": 1341,
+    "place_id": "gn-4706057",
+    "input": {
+      "place": {
+        "place_id": "gn-4706057",
+        "name": "Lewisville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.04623,
+        "lon": -96.99417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewisville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Lewisville,_Texas",
+          "text": "Lewisville ( LOO-iss-vil) is a city in the U.S. state of Texas, located in Denton County with portions extending into Dallas County. As one of the Mid-Cities within the Dallas–Fort Worth metroplex, the 2020 census reported a population of 111,822.\nOriginally called Holford's Prairie, Lewisville dates back to the early 1840s. The arrival of the town's first railroad in 1881 engendered its initial growth, and the expansion of the area's transportation infrastructure spurred further development in the early part of the 20th century. Lewisville incorporated in 1925, and when construction of Lewisville Lake was completed in the 1950s, the city began to expand rapidly.\nLewisville's proximity to Lewisville Lake has made it a recreational hub of the Dallas–Fort Worth metroplex. The area's transportation infrastructure has evolved around the I-35 Corridor along Interstate 35E. The diversity of its population and industry such as multiple landfills, has created a stable economic climate. Lewisville Independent School District provides most of the area's public education programs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "lewisville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1354,
+    "attempt": 1342,
+    "place_id": "gn-5110629",
+    "input": {
+      "place": {
+        "place_id": "gn-5110629",
+        "name": "Buffalo",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.88645,
+        "lon": -78.87837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buffalo, New York",
+          "url": "https://en.wikipedia.org/wiki/Buffalo,_New_York",
+          "text": "Buffalo is a city in the U.S. state of New York. It lies in Western New York on the eastern shore of Lake Erie and at the head of the Niagara River on the Canada–United States border. It is the second-most populous city in New York, with a population of 278,349 at the 2020 census. The Buffalo–Niagara Falls metropolitan area, with over 1.23 million residents, is the 2nd-largest metropolitan area in New York State behind only the New York City metropolitan area, and the 51st-largest metropolitan area in the United States. Buffalo is the county seat of Erie County.\nBefore the 17th century, the region was inhabited by nomadic Paleo-Indians who were succeeded by the Neutral, Erie, and Iroquois nations. In the early 17th century, the French began to explore the region. In the 18th century, Iroquois land surrounding Buffalo Creek was ceded through the Holland Land Purchase, and a small village was established at its headwaters. Buffalo was selected as the terminus of the Erie Canal in 1825, which led to its incorporation in 1832 and stimulated its growth as the primary inland port between the Great Lakes and Atlantic Ocean. Transshipment made Buffalo the world's largest grain port in that era. After the coming of railroads greatly reduced the canal's importance, the city became the second-largest railway hub (after Chicago), and the city came to be dominated by steel production by the 20th century. Later, deindustrialization and the opening of the St. Lawrence Seaway saw the city's economy decline and diversify. It developed its service industries, such as health care, retail, tourism, logistics, and education, while retaining some manufacturing.\nIn 2023, the gross domestic product of the Buffalo–Niagara Falls metropolitan area was approximately $90.7 billion (equivalent to about $109.5 billion in 2024). The city's cultural landmarks include the oldest urban parks system in the United States, the Buffalo AKG Art Museum, the Buffalo History Museum, the Buffalo Philharmonic Orchestra, Shea's Performing Arts Center, the Buffalo Museum of Science, and several annual festivals. Its educational institutions include the University at Buffalo, Buffalo State University, Canisius University, and D'Youville University. Buffalo is also known for its winter weather, Buffalo wings, and three major-league sports teams: the National Football League's Buffalo Bills, the National Hockey League's Buffalo Sabres and the National Lacrosse League's Buffalo Bandits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 384
+    },
+    "banned_terms": [
+      {
+        "term": "buffalo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1355,
+    "attempt": 1343,
+    "place_id": "gn-6053154",
+    "input": {
+      "place": {
+        "place_id": "gn-6053154",
+        "name": "Lethbridge",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 49.69999,
+        "lon": -112.81856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lethbridge",
+          "url": "https://en.wikipedia.org/wiki/Lethbridge",
+          "text": "Lethbridge ( LETH-brij) is a city in the province of Alberta, Canada. With a population of 106,550 in the 2023 municipal census, Lethbridge became the fourth Alberta city to surpass 100,000 people. The nearby Canadian Rocky Mountains contribute to the city's warm summers, mild winters, and windy climate. Lethbridge lies approximately 215 km (134 mi) southeast of Calgary on the Oldman River, 169 km (105 mi) west of Medicine Hat, and 105 km (65 mi) northwest of the Canada–United States border at the Sweetgrass–Coutts Border Crossing.\nLethbridge is the commercial, educational, financial, industrial and transportation centre of southern Alberta. The city's economy developed from drift mining for coal in the late 19th century and agriculture in the early 20th century. Half of the workforce is employed in the health, education, retail, and hospitality sectors, and the top five employers are government-based. Post-secondary institutes in the city include the University of Lethbridge, the only university in Alberta south of Calgary, as well as Lethbridge Polytechnic and Red Crow College. Cultural venues in the city include performing art theatres, galleries, museums, gardens, and sports centres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "lethbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1356,
+    "attempt": 1344,
+    "place_id": "gn-615532",
+    "input": {
+      "place": {
+        "place_id": "gn-615532",
+        "name": "Batumi",
+        "country": "Georgia",
+        "subdivision": "Adjara",
+        "lat": 41.64077,
+        "lon": 41.6306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batumi",
+          "url": "https://en.wikipedia.org/wiki/Batumi",
+          "text": "Batumi (; Georgian: ბათუმი pronounced [ˈb̥a'tʰu.mi] ) is the second-largest city of Georgia and the capital of Georgia's Autonomous Republic of Adjara, located on the coast of the Black Sea in Georgia's southwest, 20 kilometres (12 mi)  north of the border with Turkey. It is situated in a subtropical zone at the foot of the Caucasus. Much of Batumi's economy revolves around tourism and gambling (it is nicknamed \"The Las Vegas of the Black Sea\"), but the city is also an important seaport and includes industries like shipbuilding, food processing and light manufacturing. Since 2010, Batumi has been transformed by the construction of modern high-rise buildings, as well as the restoration of classical 19th-century edifices lining its historic Old Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "batumi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1357,
+    "attempt": 1345,
+    "place_id": "gn-935264",
+    "input": {
+      "place": {
+        "place_id": "gn-935264",
+        "name": "Saint-Denis",
+        "country": "Réunion",
+        "subdivision": "Reunion",
+        "lat": -20.88231,
+        "lon": 55.4504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Denis, Réunion",
+          "url": "https://en.wikipedia.org/wiki/Saint-Denis,_Réunion",
+          "text": "Saint-Denis (, French: [sɛ̃ d(ə)ni] ; Reunionese Creole: Sin-Dni), unofficially Saint-Denis de La Réunion (pronounced [sɛ̃ d(ə)ni də la ʁeynjɔ̃]) for disambiguation, is the prefecture (administrative capital) of the French overseas department and region of Réunion, in the Indian Ocean. It is located at the island's northernmost point, close to the mouth of the Rivière Saint-Denis.\nSaint-Denis is the most populous commune in the French overseas departments and the twentieth most populous in all of France. At the 2023 census, there were 326,743 inhabitants in the metropolitan area of Saint-Denis (as defined by INSEE), 155,634 of whom lived in the city (commune) of Saint-Denis proper and the remainder in the neighbouring communes of La Possession, Sainte-Marie, Sainte-Suzanne, Saint-André, and Bras-Panon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "saint denis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "denis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1358,
+    "attempt": 1346,
+    "place_id": "gn-940909",
+    "input": {
+      "place": {
+        "place_id": "gn-940909",
+        "name": "Welkom",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.97742,
+        "lon": 26.73506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welkom",
+          "url": "https://en.wikipedia.org/wiki/Welkom",
+          "text": "Welkom (Afrikaans pronunciation: [ˈvɛlkɔm]) is a city in the Free State province of South Africa, located about 140 kilometres (90 mi) northeast of Bloemfontein, the provincial capital. Welkom is also known as Circle City, City Within A Garden, Mvela and Matjhabeng. The city's Sesotho name, Matjhabeng means 'where nations meet', derived from the migrant labour system, where people of various countries such as Lesotho, Malawi and Mozambique etc. met to work in the mines of the gold fields.\nA settlement was laid out on a farm named \"Welkom\" (which is the Afrikaans and Dutch word for \"welcome\") after gold was discovered in the region, and it was officially proclaimed a town in 1948. The town became a municipality in 1961. It now falls in the Matjhabeng Municipality, part of the Lejweleputswa District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "welkom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1359,
+    "attempt": 1347,
+    "place_id": "gn-1248991",
+    "input": {
+      "place": {
+        "place_id": "gn-1248991",
+        "name": "Colombo",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.93548,
+        "lon": 79.84868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colombo",
+          "url": "https://en.wikipedia.org/wiki/Colombo",
+          "text": "Colombo ( kə-LUM-boh; Sinhala: කොළඹ, romanised: Koḷam̆ba, IPA: [ˈkoləᵐbə]; Tamil: கொழும்பு, romanised: Koḻumpu, IPA: [koɻumbɯ]) is Sri Lanka's executive and judicial capital, as well as the country's most populous city. It is also the financial centre of the island and a tourist destination. The Colombo metropolitan area is estimated to have a population of 5.6 million, and 752,993 within the municipal limits. It is located on the west coast of the island. It is also the administrative capital of the Western Province and the district capital of Colombo District.\nIt was made the capital of the island when Sri Lanka was ceded to the British Empire in 1815, retaining its capital status when Sri Lanka gained independence in 1948. In 1978, when administrative functions were moved to Sri Jayawardenepura Kotte, Colombo was designated as the commercial capital of Sri Lanka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "colombo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1360,
+    "attempt": 1348,
+    "place_id": "gn-1496153",
+    "input": {
+      "place": {
+        "place_id": "gn-1496153",
+        "name": "Omsk",
+        "country": "Russia",
+        "subdivision": "Omsk Oblast",
+        "lat": 54.99244,
+        "lon": 73.36859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omsk",
+          "url": "https://en.wikipedia.org/wiki/Omsk",
+          "text": "Omsk is the administrative center and largest city of Omsk Oblast, Russia. It is situated in southwestern Siberia and has a population of over one million. Omsk is the third largest city in Siberia after Novosibirsk and Krasnoyarsk, and the twelfth-largest city in Russia. It is an important transport node, serving as a train station for the Trans-Siberian Railway and as a staging post for the Irtysh River.\n\nDuring the imperial era, Omsk was the seat of the governor general of Western Siberia and, later, of the governor general of the Steppes. For a brief period during the Russian Civil War in 1918–1920, it served as the capital of the anti-Bolshevik Russian State and held the imperial gold reserves.\nOmsk serves as the episcopal see of the bishop of Omsk and Tara, as well as the administrative seat of the Imam of Siberia. The mayor is Sergey Shelest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "omsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1361,
+    "attempt": 1349,
+    "place_id": "gn-1684712",
+    "input": {
+      "place": {
+        "place_id": "gn-1684712",
+        "name": "Tacloban",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.24333,
+        "lon": 125.00472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tacloban",
+          "url": "https://en.wikipedia.org/wiki/Tacloban",
+          "text": "Tacloban ( tak-LOH-ban; Tagalog pronunciation: [tɐkˈloban]), officially the City of Tacloban (Waray: Syudad han Tacloban; Filipino: Lungsod ng Tacloban), is a highly urbanized city in the Eastern Visayas region of the Philippines. According to the 2024 census, it has a population of 259,353, making it the most populous city in Eastern Visayas. The city is located 360 miles (580 km) southeast of Manila.\nTacloban is the regional center of Eastern Visayas and the largest city and capital of Leyte. Although geographically situated within Leyte and grouped with the province by the Philippine Statistics Authority, it is administratively independent.\nTacloban briefly served as the capital of the Philippines under the Commonwealth government from October 20, 1944, to February 27, 1945. In a survey released by the Asian Institute of Management Policy Center in 2010, it ranked fifth among the country's most competitive cities and second among emerging cities. The city was devastated by Typhoon Haiyan on November 8, 2013, having previously suffered similarly destructive typhoons in 1897 and 1912. On January 17, 2015, Pope Francis visited Tacloban during his apostolic visit to the Philippines and celebrated Mass at Barangay San Jose and Daniel Z. Romualdez Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "tacloban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1362,
+    "attempt": 1350,
+    "place_id": "gn-1695462",
+    "input": {
+      "place": {
+        "place_id": "gn-1695462",
+        "name": "Pandi",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.865,
+        "lon": 120.95722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pandi, Bulacan",
+          "url": "https://en.wikipedia.org/wiki/Pandi,_Bulacan",
+          "text": "Pandi [pɐnˈde], officially the Municipality of Pandi (Tagalog: Bayan ng Pandi),  is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 162,725 people.\nPandi is one of the youngest towns in Bulacan. During the Spanish Regime, Pandi was a part of the political jurisdiction of the town of Meycauayan including the towns of San Jose del Monte, Bocaue, Marilao, Valenzuela, Obando, Santa Maria, Balagtas, it also formed part of the vast Hacienda Santa Maria de Pandi, which included the towns of Santa Maria and Balagtas and parts of Angat and Bustos. Pandi was then a part of Balagtas (then Bigaa) until its formal separation and independence on April 17, 1946."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "pandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1363,
+    "attempt": 1351,
+    "place_id": "gn-1697846",
+    "input": {
+      "place": {
+        "place_id": "gn-1697846",
+        "name": "Navotas",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.66667,
+        "lon": 120.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Navotas",
+          "url": "https://en.wikipedia.org/wiki/Navotas",
+          "text": "Navotas, officially the City of Navotas (Filipino: Lungsod ng Navotas), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 252,878 people.\nIt was formerly part of the Province of Rizal in southern Luzon. It comprises what is known as the CAMANAVA area along with the cities of Caloocan, Malabon, and Valenzuela.\nIt is known as the Commercial Fishing Hub of the Philippines, for the city has the third largest fish port in Asia and the largest in Southeast Asia. Although it was established on February 16, 1859, Navotas celebrates its foundation day every January 16, the day in 1906 when it finally separated from Malabon. Navotas became a highly urbanized city on June 24, 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "navotas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1364,
+    "attempt": 1352,
+    "place_id": "gn-1709968",
+    "input": {
+      "place": {
+        "place_id": "gn-1709968",
+        "name": "Kabankalan",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 9.9839,
+        "lon": 122.81423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabankalan",
+          "url": "https://en.wikipedia.org/wiki/Kabankalan",
+          "text": "Kabankalan, officially the City of Kabankalan  (Hiligaynon: Dakbanwa sang Kabankalan; Cebuano: Dakbayan sa Kabankalan; Filipino: Lungsod ng Kabankalan, Spanish: Ciudad de Cabancalán), is a  component city in the province of Negros Occidental, Philippines. According to the 2024 census, it has a population of 210,893 people, making it the second most populous city in Negros Occidental next to Bacolod.\nKabankalan is currently applying for Highly Urbanized City (HUC) status. It ranks as the second-highest city in both gross and net income in Negros Occidental, following Bacolod.\nThe city hosts three major festivals: the Kabankalan Sinulog every third Sunday of January (celebrated together with Cebu City), Udyakan sa Kabankalan and the Charter Anniversary. Notable attractions include Mag-aso Falls and Balicaocao Resort. The city also hosts the main campus of the Central Philippines State University (CPSU).\nIn 2011, Kabankalan City received the “Best Performing City” award in Region VI during the Regional Search for Excellence in Local Governance (EXCEL). The award was presented at the Pagdayaw 2011 program held at the Iloilo Grand Hotel in December of that year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "kabankalan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1365,
+    "attempt": 1353,
+    "place_id": "gn-1797929",
+    "input": {
+      "place": {
+        "place_id": "gn-1797929",
+        "name": "Qingdao",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.06488,
+        "lon": 120.38042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qingdao",
+          "url": "https://en.wikipedia.org/wiki/Qingdao",
+          "text": "Qingdao, previously transliterated as Tsingtao, is a prefecture-level city in China's Shandong province. Lying across the Shandong Peninsula and looking out to the Yellow Sea, it borders the prefecture-level cities of Yantai to the northeast, Weifang to the west, and Rizhao to the southwest. The Jiaozhou Bay Bridge links Qingdao's main urban area with Huangdao district, straddling Jiaozhou Bay.\nQingdao was an important fortress, and is a major seaport and naval base, as well as a commercial and financial center. It is a major nodal city of the Belt and Road Initiative (BRI) that connects Continental and East Asia with Europe.\nAdministered at the sub-provincial level, Qingdao has jurisdiction over seven districts and three county-level cities (Jiaozhou, Pingdu, Laixi). As of the 2020 census, Qingdao built-up (or metro) area made of the seven urban districts (Shinan, Shibei, Huangdao, Laoshan, Licang, Chengyang and Jimo) was home to 7,172,451 inhabitants, making it the 15th largest city in China by population. It has the highest GDP of any city in the province.\nIn 1897, the city was ceded to Germany. For the Germans, Qingdao was a strategic trade center, port and base for its East Asia Squadron, allowing the German navy to project dominance in the Pacific. In 1914, following the outbreak of World War I, Japan occupied the city and the surrounding province during the Siege of Tsingtao. In 1915, China agreed to recognize Japan's special position in the territory through what became known as the Twenty-One Demands. In 1918, the Chinese government, under the control of the warlord Duan Qirui, secretly agreed to Japanese terms in exchange for a loan. Following the First World War, during the Paris Peace Conference, Japan secured agreements with the Allied powers to recognize its claim to the areas in Shandong, which included Qingdao, previously occupied by Germany. The recognition directly triggered the May Fourth Movement among the Chinese public in a strong response. In 1922, Shandong reverted to Chinese control following the United States' mediation during the Washington Naval Conference.\nQingdao is home to electronics multinationals such as Haier and Hisense. Its historic German-style architecture and Tsingtao Brewery, the second largest brewery in China, are legacies of the German occupation (1898–1914). Qingdao is classified as a Large-Port Metropolis.\nIn 2007, Qingdao was named as one of China's top ten cities by the Chinese Cities Brand Value Report. In 2009, Qingdao was named China's most livable city by the Chinese Institute of City Competitiveness. In 2018, Qingdao held the Shanghai Cooperation Organization summit. In the 2024 Global Financial Centers Index, Qingdao ranked 31st. In 2024, Qingdao was rated as a Beta- level global city by the Globalization and World Cities Research Network.\nQingdao is also one of the world's top 35 cities for global scientific research as tracked by the Nature Index. The city was also ranked 20th globally in the \"Global Top 100 Science & Technology Cluster Cities\" as of 2024. It is home to several notable universities, including the Ocean University of China, China University of Petroleum, Shandong University of Science and Technology, Qingdao University, Qingdao University of Science and Technology, Qingdao University of Technology, and Qingdao Agricultural University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 525
+    },
+    "banned_terms": [
+      {
+        "term": "qingdao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1366,
+    "attempt": 1354,
+    "place_id": "gn-1804430",
+    "input": {
+      "place": {
+        "place_id": "gn-1804430",
+        "name": "Lanzhou",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 36.05701,
+        "lon": 103.83987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lanzhou",
+          "url": "https://en.wikipedia.org/wiki/Lanzhou",
+          "text": "Lanzhou, formerly Lanchow, is the capital and largest city of Gansu province in northwestern China. Located on the banks of the Yellow River, it is a key regional transportation hub, connecting areas further west by rail to the eastern half of the country. Historically, it has been a major link on the Northern Silk Road and it stands to become a major hub on the New Eurasian Land Bridge. The city is also a center for heavy industry and the petrochemical industry.\nLanzhou is the geographical center of China's land territory, and the third largest city in Northwestern China after Xi'an and Ürümqi.  Lanzhou is also an important center for scientific research and education in Northwestern China after Xi'an. The city is one of the top 50 major cities in the world by scientific research output as tracked by the Nature Index. It hosts several research institutions, including, Lanzhou University, Northwest Normal University, Lanzhou University of Technology, Gansu Agricultural University, Gansu University of Chinese Medicine, and Lanzhou Jiaotong University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "lanzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1367,
+    "attempt": 1355,
+    "place_id": "gn-1863641",
+    "input": {
+      "place": {
+        "place_id": "gn-1863641",
+        "name": "Gifu",
+        "country": "Japan",
+        "subdivision": "Gifu",
+        "lat": 35.42291,
+        "lon": 136.76039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gifu",
+          "url": "https://en.wikipedia.org/wiki/Gifu",
+          "text": "Gifu (岐阜市, Gifu-shi; Japanese pronunciation: [ɡʲi.ɸɯ, ɡʲi.ɸɯ̥ꜜ.ɕi]) is a city located in the south-central portion of Gifu Prefecture, Japan, and serves as the prefectural capital. The city has played an important strategic role in Japan's history because of its location in the middle of the country. During the Sengoku period, various warlords used the area as a base in their efforts to unify and control Japan. Among them was Oda Nobunaga, who gave the region the name it is known by today. Gifu continued to flourish even after Japan's unification as both an important shukuba along the Edo period Nakasendō and, later, as one of Japan's fashion centers. It has been designated a core city by the national government. The city is a part of the Chūkyō metropolitan area, centered around Nagoya."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "gifu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1368,
+    "attempt": 1356,
+    "place_id": "gn-1882316",
+    "input": {
+      "place": {
+        "place_id": "gn-1882316",
+        "name": "Woodlands",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.43801,
+        "lon": 103.78877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodlands, Singapore",
+          "url": "https://en.wikipedia.org/wiki/Woodlands,_Singapore",
+          "text": "Woodlands is the regional centre of the North Region of Singapore. As of 2019, the town had a population of 254,733. Located approximately 25 km (16 miles) north of the city-centre, it is the densest planning area for the northern parts of the country. \nThe Woodlands planning area borders Sembawang to the east, Mandai to the south and Sungei Kadut to the west. It has nine subzones; Greenwood Park, Midview, North Coast, Senoko West, Woodgrove, Woodlands East, Woodlands Regional Centre, Woodlands South and Woodlands West.  Woodlands New Town is situated within the Woodlands planning area, which was developed during the 1980s as part of Singapore's plan to decentralise the city centre and create self-contained residential areas throughout the country. \nWoodlands also serves as one of the two international land border connections on the Singaporean side between Singapore and Malaysia at Woodlands Checkpoint, which leads to the Johor–Singapore Causeway. The other connection is the Tuas Second Link at Tuas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "woodlands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1369,
+    "attempt": 1357,
+    "place_id": "gn-2636503",
+    "input": {
+      "place": {
+        "place_id": "gn-2636503",
+        "name": "Sutton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.35,
+        "lon": -0.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sutton, London",
+          "url": "https://en.wikipedia.org/wiki/Sutton,_London",
+          "text": "Sutton is a town in the London Borough of Sutton in South London, England. It is the administrative headquarters of the Outer London borough. It is 10 miles (16 km) south-southwest of Charing Cross, one of the fourteen metropolitan centres in the London Plan.\nAn ancient parish originally in the county of Surrey, Sutton is recorded in the Domesday Book of 1086 as having two churches and about 30 houses. Its location on the London to Brighton turnpike from 1755 led to the opening of coaching inns, spurring its growth as a village. When it was connected to Central London by rail in 1847, it began to grow into a town, and it expanded further in the 20th century. It became a municipal borough with Cheam in 1934, and became part of Greater London in 1965.\nSutton has the largest library in the borough, several works of public art and four conservation areas. It is home to several large international companies and the sixth most important shopping area in London, centred on Sutton High Street. Sutton railway station is the largest station in the borough, offering frequent services by Southern and Govia Thameslink to Central London and other destinations, including Wimbledon and St Albans. It is home to the Royal Marsden Hospital and the Institute of Cancer Research.\nFuture plans for Sutton as of 2024 include creating the world's second largest cancer research campus and improving connectivity to central London and the London Underground through the Sutton Link tram project (currently awaiting funding)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "sutton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1370,
+    "attempt": 1358,
+    "place_id": "gn-3530517",
+    "input": {
+      "place": {
+        "place_id": "gn-3530517",
+        "name": "Coatzacoalcos",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.14905,
+        "lon": -94.4447
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coatzacoalcos",
+          "url": "https://en.wikipedia.org/wiki/Coatzacoalcos",
+          "text": "Coatzacoalcos (Spanish: [koatsakoˈalkos]; formerly known as Puerto México; Nahuatl languages: Koatzakwalko; Zapotec: Niniashi; Popoluca: Puertu) is a major port city in the southern part of the Mexican state of Veracruz, mostly on the western side of the Coatzacoalcos River estuary, on the Bay of Campeche, on the southern Gulf of Mexico coast. The city serves as the municipal seat of the municipality of the same name. The city had a 2020 census population of 212,540, making it the third-largest city in the state after Veracruz and Xalapa. The municipality covers a surface area of 471.16 km2 (181.916 sq mi) and reported a population of 310,698 persons. The municipality population in 2015 was 319,187 a decrease of 9% over 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "coatzacoalcos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1371,
+    "attempt": 1359,
+    "place_id": "gn-3995523",
+    "input": {
+      "place": {
+        "place_id": "gn-3995523",
+        "name": "Monclova",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 26.90687,
+        "lon": -101.42056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monclova",
+          "url": "https://en.wikipedia.org/wiki/Monclova",
+          "text": "Monclova (Spanish pronunciation: [moŋˈkloβa]) is a city and the seat of the surrounding municipality of the same name in the northern Mexican state of Coahuila. According to the 2015 census, the city had 231,107 inhabitants. Its metropolitan area has 381,432 inhabitants and a population density of 29.88 inhabitants per square kilometer. Monclova is the third-largest city and metropolitan area in the state in terms of population, after Torreón and Saltillo.\nThe city accounts for the highest production of steel in Mexico as well as Latin America, hence its nickname \"The Steel Capital\".\nToday Monclova has one of the highest levels of commercial, industrial, and financial development, and is currently has one of the lowest poverty rates among Mexican cities. Its metropolitan area is among the 10 most competitive urban areas in the country, and it also has one of the highest labor productivity rates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "monclova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1372,
+    "attempt": 1360,
+    "place_id": "gn-4883817",
+    "input": {
+      "place": {
+        "place_id": "gn-4883817",
+        "name": "Aurora",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.76058,
+        "lon": -88.32007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aurora, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Aurora,_Illinois",
+          "text": "Aurora is a city in northeastern Illinois, United States, located along the Fox River. The population was 180,542 at the 2020 census. It is the second-most populous city in Illinois, after Chicago, and the 144th-most populous city in the US. Aurora is the most populous city in Illinois that is not a county seat.\nFounded within Kane County, Aurora's city limits have expanded into DuPage, Kendall, and Will counties. Once a mid-sized manufacturing city, Aurora has grown since the 1960s into a large city within the Chicago metropolitan area. In 1908, Aurora adopted the nickname \"City of Lights\", because in 1881 it was one of the first cities in the United States to implement an all-electric street lighting system.\nAurora's historic downtown is centered on Stolp Island. The city is divided into three regions, the West Side, East Side, and Far East Side/Fox Valley. The Aurora area has architecture by Frank Lloyd Wright, Ludwig Mies van der Rohe, Bruce Goff and George Grant Elmslie. Aurora is also home to over 50 Sears Catalog Homes and seven Lustron all-steel homes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "aurora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

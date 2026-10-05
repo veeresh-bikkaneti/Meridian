@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5684,
+    "attempt": 5641,
+    "place_id": "gn-2655136",
+    "input": {
+      "place": {
+        "place_id": "gn-2655136",
+        "name": "Boston Spa",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.90419,
+        "lon": -1.34523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boston Spa",
+          "url": "https://en.wikipedia.org/wiki/Boston_Spa",
+          "text": "Boston Spa is a village and civil parish in the Leeds Metropolitan District in West Yorkshire, England. Situated 3 miles (5 km) south of Wetherby, Boston Spa is on the south bank of the River Wharfe across from Thorp Arch. According to the 2001 census, the parish had a population of 4,006 rising to 4,079 in the 2011 census.\nThe village grew in the 18th century around sulphur springs that briefly made it a spa town. Today it is best known for its association with the British Library, whose principal storage and document-supply campus, holding the majority of the United Kingdom's national collection, adjoins the village to the north-east at Thorp Arch and is known as the library's Boston Spa site.\nIt sits in the Wetherby ward of Leeds City Council and the Wetherby and Easingwold parliamentary constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "boston spa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5685,
+    "attempt": 5642,
+    "place_id": "gn-2656847",
+    "input": {
+      "place": {
+        "place_id": "gn-2656847",
+        "name": "Atherton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.52371,
+        "lon": -2.49354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atherton, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Atherton,_Greater_Manchester",
+          "text": "Atherton () is a town in the Metropolitan Borough of Wigan, Greater Manchester, England, historically part of Lancashire. It is 5 miles (8 km) south of Bolton, 7 miles (11 km) east of Wigan, and 10 miles (16 km) northwest of Manchester. During the Industrial Revolution, the town was a key part of the Manchester Coalfield.\nAtherton was associated with coal mining and nail manufacture from the 14th century, encouraged by outcropping coal seams. At the beginning of the 20th century, the town was described as \"the centre of a district of collieries, cotton mills and iron-works, which cover the surface of the country with their inartistic buildings and surroundings, and are linked together by the equally unlovely dwellings of the people\". Atherton's last deep coal mine closed in 1966, and the last cotton mill closed in 1999. Today the town is the third-largest retail centre in the Borough of Wigan; almost 20% of those employed in the area work in the wholesale and retail trades, although there is still some significant manufacturing industry in the town.\nEvidence has been discovered of a Roman road passing through the area, on the ancient route between Coccium (Wigan) and Mamucium (Manchester). Following the Anglo-Saxon invasion of England, Atherton, which is built on and around seven brooks, became part of the manor of Warrington until the Norman Conquest, when it became a township or vill in the ancient parish of Leigh. Since 1974 the town has been part of the Metropolitan Borough of Wigan, a local government district of the Metropolitan County of Greater Manchester and since 2024 it has been part of the Leigh and Atherton parliamentary constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "atherton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5686,
+    "attempt": 5643,
+    "place_id": "gn-2793548",
+    "input": {
+      "place": {
+        "place_id": "gn-2793548",
+        "name": "La Hulpe",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.73091,
+        "lon": 4.48577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Hulpe",
+          "url": "https://en.wikipedia.org/wiki/La_Hulpe",
+          "text": "La Hulpe (French pronunciation: [la ylp] ; Dutch: Terhulpen, pronounced [tɛrˈɦʏlpə(n)] ; Walloon: L’ Elpe) is a municipality of Wallonia in the Belgian province of Walloon Brabant, 20 km south-east of the centre of Brussels, but only about 3 km from the edge of the Brussels-Capital Region. On January 1, 2007, La Hulpe had a total population of 7,309. The total area is 15.60 km2, including 3 km2 of the Sonian Forest; this gives a population density of 463 inhabitants per km2.\nLa Hulpe still keeps two hamlets, Gaillemarde in the west and Malaise-Bakenbos in the east. The limits of the latter hamlet and of other parts of La Hulpe were modified when the linguistic border (between French and Dutch) was fixed in 1963.\nThe Society for Worldwide Interbank Financial Telecommunication's (SWIFT) headquarters are located in La Hulpe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "la hulpe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hulpe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5687,
+    "attempt": 5644,
+    "place_id": "gn-2969958",
+    "input": {
+      "place": {
+        "place_id": "gn-2969958",
+        "name": "Verdun",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.15964,
+        "lon": 5.3829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verdun",
+          "url": "https://en.wikipedia.org/wiki/Verdun",
+          "text": "Verdun ( vur-DUN, UK also  VAIR-dun, US also  vair-DUN; French: [vɛʁdœ̃] ; official name before 1970: Verdun-sur-Meuse) is a city in the Meuse department in Grand Est, northeastern France. It is an arrondissement of the department.\nIn 843, the Treaty of Verdun, which divided the Carolingian Empire into three kingdoms—considered the foundation of Germany and France—was signed there. An episcopal principality of the Holy Roman Empire since the 10th century, Verdun was subjugated by France in 1552, during the \"Voyage to Austrasia\". Along with the other free cities of the Empire, Metz and Toul, it formed the province of the Three Bishoprics, which was attached to the Kingdom of France in 1648 by the Treaty of Münster.\nVerdun is the biggest city in Meuse, although the capital of the department is Bar-le-Duc, which is slightly smaller than Verdun. It is well known for giving its name to the longest battle in modern history in the First World War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "verdun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5688,
+    "attempt": 5645,
+    "place_id": "gn-2993679",
+    "input": {
+      "place": {
+        "place_id": "gn-2993679",
+        "name": "Mitry-Mory",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.98333,
+        "lon": 2.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mitry-Mory",
+          "url": "https://en.wikipedia.org/wiki/Mitry-Mory",
+          "text": "Mitry-Mory (French pronunciation: [mitʁi mɔʁi] ) is a commune in the Seine-et-Marne department in the Île-de-France region in north-central France. It is located in the north-eastern suburbs of Paris 24.4 km (15.2 mi) from the center just off the N2 national highway.\nAbout one-sixth of Charles de Gaulle Airport (CDG) (essentially runways and taxiways) lies on the territory of the commune of Mitry-Mory—mostly at the end of the runway. The construction of CDG caused the closure of the prewar Mitry-Mory airfield in the late 1960s. From the air, the most prominent feature, aside from farmland, is the Great circle (or round-about) of Rue de la Garenne, a feature which forms a wagon wheel like structure with spokes forming a cross in which a crucifix building is surrounded by another inter-circle round-about. It is also a major railroad centre. Another very prominent feature is a huge parking lot for such a small commune.\nMany of the streets and roads are named for famous people: Mozart, Guy-Lussac, Léon Foucault, Berlioz, Picasso, Gauguin among others — some of whom actually visited there.\nMitry-Mory is very convenient to Paris and a less expensive place to live for those who work in Paris but prefer the commute by train or road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "mitry mory",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mitry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mory",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5689,
+    "attempt": 5646,
+    "place_id": "gn-3361142",
+    "input": {
+      "place": {
+        "place_id": "gn-3361142",
+        "name": "Springbok",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -29.66434,
+        "lon": 17.8865
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springbok, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springbok,_South_Africa",
+          "text": "Springbok (Khoekhoe: ǁgũǀ’aos) is the largest town in the Namaqualand area in the Northern Cape province of South Africa. It was called Springbokfontein until 1911, when it was shortened to Springbok. Springbok is located on the N7 national route which connects the Cape with Namibia, and at the western end of the N14, which connects it with Upington and Pretoria. It is the main town of the Nama Khoi Local Municipality, which also includes a number of surrounding towns such as Okiep and Nababeep.\nThe town lies at an elevation of 1,007 metres (3,304 feet) in a narrow valley between the high granite domes of the Klein Koperberge (Small Copper Mountains). This name gives away the reason for the early settlement which gradually turned into a major commercial and administrative centre for copper mining operations in the region. While the town initially developed rapidly, this slowed when rich copper deposits were discovered in Okiep. As the main source of water, Springbok continued to develop as the commercial and administrative centre for different mines in the area. Even though mining activities have dwindled, the town remains an important administrative capital in the region and due to its location a favourite stopover for tourists on their way to Namibia. Today the main income is generated from tourism, mining activities, commerce and farming.\nAs of 2011, the small town which covers an area of 37.56 km², had a population of 12 790. Coloured people make up 79.9% of its residents with Afrikaans being the most widely spoken language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "springbok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5690,
+    "attempt": 5647,
+    "place_id": "gn-4140176",
+    "input": {
+      "place": {
+        "place_id": "gn-4140176",
+        "name": "Riggs Park",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.95428,
+        "lon": -76.99414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riggs Park",
+          "url": "https://en.wikipedia.org/wiki/Riggs_Park",
+          "text": "Riggs Park is a residential neighborhood in Ward 4 of Northeast Washington, D.C. It is part of the greater Lamond-Riggs community (comprising the Lamond neighborhood to the north, and Riggs Park to the south). Riggs Park is bounded by South Dakota Ave NE to the west, Eastern Ave NE to the east, Galloway St NE to the south, and New Hampshire Ave NE to the north. Riggs Park is adjacent to the neighborhoods of Michigan Park, and Fort Totten, located in Ward 5 of Northeast Washington D.C. In addition to these neighborhoods, Riggs Park also borders the city/neighborhood Chillum, which is located in Prince George's County, Maryland. The WMATA Red Line train tracks pass through the Riggs Park neighborhood when traveling between the Takoma and Fort Totten Metro stations, alongside the adjacent CSX, MARC, and Amtrak train tracks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "riggs park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "riggs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5691,
+    "attempt": 5648,
+    "place_id": "gn-5102208",
+    "input": {
+      "place": {
+        "place_id": "gn-5102208",
+        "name": "Oradell",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.95871,
+        "lon": -74.03681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oradell, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Oradell,_New_Jersey",
+          "text": "Oradell is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 8,244, an increase of 266 (+3.3%) from the 2010 census count of 7,978, which in turn reflected a decline of 69 (-0.9%) from the 8,047 counted in the 2000 census. The borough includes a dam on the Hackensack River that forms the Oradell Reservoir. Oradell is a suburb of New York City, located approximately 15 miles (24 km) northwest of Midtown Manhattan.\nOradell was originally formed on March 8, 1894, as the borough of Delford, from portions of Harrington Township, Midland Township (now Rochelle Park) and Palisades Township. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. The name \"Delford\" was a portmanteau created from the names of two communities within the new borough: Oradell and New Milford. The Hotel Delford had been constructed in 1870 after the construction of the first railroad to reach the area. On November 12, 1920, the borough's name was officially changed to \"Oradell\", based on the results of a referendum held ten days earlier. Oradell derives its name from \"ora\" (Latin for \"edge\") and \"dell\".\nNew Jersey Monthly ranked Oradell as the 68th best place to live in New Jersey in its 2010 rankings of the \"Top Towns\" in the state. This ranking also makes the borough the seventh best place to live in Bergen County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "oradell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5692,
+    "attempt": 5649,
+    "place_id": "gn-5145067",
+    "input": {
+      "place": {
+        "place_id": "gn-5145067",
+        "name": "Woodside",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74538,
+        "lon": -73.90541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodside, Queens",
+          "url": "https://en.wikipedia.org/wiki/Woodside,_Queens",
+          "text": "Woodside is a neighborhood in the western portion of the borough of Queens in New York City. It is bordered on the south by Maspeth, on the north by Astoria, on the west by Sunnyside, and on the east by Elmhurst, Jackson Heights, and East Elmhurst. Some areas are widely residential and very quiet, while other parts, especially the ones around Roosevelt Avenue, are busier.\nIn the 19th century the area was part of the Town of Newtown (now Elmhurst). The adjacent area of Winfield was largely incorporated into the post office serving Woodside and as a consequence Winfield lost much of its identity distinct from Woodside. However, with large-scale residential development in the 1860s, Woodside became the largest Irish American community in Queens, being approximately 80% Irish by the 1930s and maintaining a strong Irish culture today. In the early 1990s, many Asian American families include a large Filipino community moved into the area, and as a result the current population is 30% Asian American. South Asians and Latinos have also moved to Woodside in recent years.\nReflecting the neighborhood’s long-standing cultural diversity, the area offers a wide range of international restaurants, cafés, and pubs. It is particularly known for its Thai,  Filipino, and South American dining options, which contribute to the neighborhood’s varied and distinctive culinary scene.Woodside is located in Queens Community District 2 and its ZIP Code is 11377. It is patrolled by the New York City Police Department's 108th Precinct. Politically, Woodside is represented by the New York City Council's 22nd and 26th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "woodside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5693,
+    "attempt": 5650,
+    "place_id": "gn-5364414",
+    "input": {
+      "place": {
+        "place_id": "gn-5364414",
+        "name": "Lake Arrowhead",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.24834,
+        "lon": -117.18921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Arrowhead, California",
+          "url": "https://en.wikipedia.org/wiki/Lake_Arrowhead,_California",
+          "text": "Lake Arrowhead is an unincorporated community and a census-designated place (CDP) in the San Bernardino Mountains of San Bernardino County, California, surrounded by the San Bernardino National Forest, and surrounding the eponymous Lake Arrowhead Reservoir. Lake Arrowhead is located 13 miles (21 km) north east of the San Bernardino city limits. The population of the CDP was estimated at 12,401 in the 2020 census. It was called \"Little Bear Lake\" until around 1920, when a group from Los Angeles, the Arrowhead Lake Company, bought the lake and the land surrounding it, and changed its name to Arrowhead Lake.\nTourism is the primary economic generator for the area, contributing several million dollars per year to the county and providing hundreds of full-time and part-time jobs for local residents. The area is host to over four million visitors a year. Lake Arrowhead offers over 1,600 guest accommodations, including more than 1,200 licensed vacation rentals on platforms like Airbnb and VRBO, around 175 rooms at the Lake Arrowhead Resort & Spa, and over 100 rooms at the UCLA Lake Arrowhead Lodge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "lake arrowhead",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arrowhead",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5694,
+    "attempt": 5651,
+    "place_id": "gn-5397664",
+    "input": {
+      "place": {
+        "place_id": "gn-5397664",
+        "name": "South Lake Tahoe",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.93324,
+        "lon": -119.98435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Lake Tahoe, California",
+          "url": "https://en.wikipedia.org/wiki/South_Lake_Tahoe,_California",
+          "text": "South Lake Tahoe is the most populous city in El Dorado County, California, United States, in the Sierra Nevada mountains. The city's population was 21,330 at the 2020 census, down from 21,403 at the 2010 census. The city, along the southern edge of Lake Tahoe, extends about 5 miles (8 km) west-southwest along U.S. Route 50, also known as Lake Tahoe Boulevard. The east end of the city, on the California–Nevada state line right next to the town of Stateline, Nevada, is mainly geared towards tourism, restaurants, hotels, and Heavenly Mountain Resort with the Nevada casinos just across the state line in Stateline. The western end of town is mainly residential, and clusters around \"The Y\", the intersection of US 50, State Route 89, and the continuation of Lake Tahoe Boulevard after it loses its federal highway designation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "south lake tahoe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tahoe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5695,
+    "attempt": 5652,
+    "place_id": "gn-5991055",
+    "input": {
+      "place": {
+        "place_id": "gn-5991055",
+        "name": "Kenora",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 49.76741,
+        "lon": -94.48985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenora",
+          "url": "https://en.wikipedia.org/wiki/Kenora",
+          "text": "Kenora (), previously named Rat Portage (French: Portage-aux-Rats), is a city situated on the Lake of the Woods in Ontario, Canada, close to the Manitoba boundary, and about 208 km (129 mi) east of Winnipeg by the Trans-Canada Highway. It is the seat of Kenora District.\nThe history of the name extends beyond the time of French settlers arriving in the region. The name Rat Portage had its origin in the Ojibwe name Wazhashk-Onigam, which, roughly translated, means portage to the country of the muskrats. A shortened and somewhat corrupted version, Rat Portage, was adopted by the Hudson's Bay Company in naming their post, then located on Old Fort Island on the Winnipeg River. When the post was moved to the mainland and a town grew up around it, the name Rat Portage was assumed by the community.\nThe town of Rat Portage was renamed in 1905 by using the first two letters of itself and the neighbouring towns of Keewatin and Norman to form the present-day City of Kenora. In 2001, the towns of Kenora (including Norman) and Keewatin as well as the Township of Jaffray Melick amalgamated under the Municipal Act.\nKenora is the administrative headquarters of the Anishinabe of Wauzhushk Onigum, Obashkaandagaang Bay, and Washagamis Bay First Nations band governments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "kenora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5696,
+    "attempt": 5653,
+    "place_id": "gn-605859",
+    "input": {
+      "place": {
+        "place_id": "gn-605859",
+        "name": "Haparanda",
+        "country": "Sweden",
+        "subdivision": "Norrbotten",
+        "lat": 65.83549,
+        "lon": 24.13676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haparanda",
+          "url": "https://en.wikipedia.org/wiki/Haparanda",
+          "text": "Haparanda (Swedish: [hapaˈrǎnːda]; Meänkieli and Finnish: Haaparanta, lit. 'aspen shore or bank') is a locality and the seat of Haparanda Municipality in Norrbotten County, Sweden. It is adjacent to Tornio, Finland. Haparanda has a population of 9,166 inhabitants (2024).\nHaparanda is located near the Sweden-Finland border, at the northerly extreme of the Swedish coastline, as well as the easternmost point in Sweden, far removed from large cities. Its summers are very warm  for a coastal location so far north, and winters are normally not extremely cold in spite of the relative proximity to the Arctic Circle.\nAs a twin city, Haparanda has strong connections to Tornio and the Finnish side of the river and bilingualism of Swedish and Finnish is common although Swedish is the sole official language and the mother tongue of a vast majority of inhabitants. In 2010, it was estimated that 70% of Haparanda's inhabitants spoke Finnish as a second language.\nHaparanda, for historical reasons, is often still referred to as a \"city\" despite its small population, although Statistics Sweden only counts localities with more than 10,000 inhabitants as cities. The municipality itself, on the other hand, uses the term Haparanda stad (City of Haparanda) not only for the town itself, but for its whole territory (927 km2 or 358 sq mi). At 24° 8' E, Haparanda is Sweden's easternmost settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "haparanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5697,
+    "attempt": 5654,
+    "place_id": "gn-11282157",
+    "input": {
+      "place": {
+        "place_id": "gn-11282157",
+        "name": "Malamulele",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -22.97111,
+        "lon": 30.67361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malamulele",
+          "url": "https://en.wikipedia.org/wiki/Malamulele",
+          "text": "Malamulele can refer to the town of Malamulele or the area of Malamulele. Both the town (approximately in the center of the area) and area are in the Limpopo province of South Africa and predominantly occupied by Tsonga people. Malamulele town has one provincial road and one regional road; the R81 to Giyani and the R524 to Thohoyandou (and the Kruger National Park's Punda Maria Gate) respectively. Malamulele is flanked by two rivers, Levubu River (Rivhubye) to the west and Letaba River to the east, meanwhile the Shingwedzi River runs from Malamulele West to Malamulele East, joining the Olifants in Mozambique on its way to the Indian Ocean. Malamulele is the seat of the Collins Chabane Local Municipality.\nThere are between 100 and 120 villages in the Malamulele area, with an approximate population of half a million. According to official Stats SA census 2011 results, some 82 Malamulele villages (excluding the township), were home to 206,646 people. In 2001, Thulamela calculated the population according to some 16 main areas (again, excluding the township), supposedly representing the number of independent chiefs, which add up to 199,807 inhabitants.\nThe Malamulele Area is situated between Giyani on the east, starting at Letaba river, and Thohoyandou on the north-west, starting at Rivhubye river. To the west of Malamulele Area is Waterval, famous for the Elim Hospital. The Cahora Bassa HVDC power transmission line passes through Malamulele from Tete Province to Gauteng. The Malamulele Area formed its own municipality in August 2016, named Collins Chabane, separated from Thulamela but still under the Vhembe District Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "malamulele",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5698,
+    "attempt": 5655,
+    "place_id": "gn-13512371",
+    "input": {
+      "place": {
+        "place_id": "gn-13512371",
+        "name": "Kerrisdale",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.23442,
+        "lon": -123.15511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerrisdale",
+          "url": "https://en.wikipedia.org/wiki/Kerrisdale",
+          "text": "Kerrisdale is a neighbourhood in the city of Vancouver, British Columbia, Canada.\nKerrisdale is a neighbourhood located in Vancouver's west side. It features a mix of newer houses and older bungalows as well as various low and mid-rise rental and condo apartment buildings in its northern section. The neighbourhood is a racial mix of European and East Asian Canadians. It features a shopping district running generally along West 41st Avenue between Larch and Maple Streets and West Boulevard between 37th and 49th Avenues. \nAlthough the city officially defines Kerrisdale as being south of 41st Ave (north of 41st is called Arbutus Ridge), the majority of the area's residents consider the area's boundaries to be West 33rd Avenue to the north, Granville Street to the east, West 57th Avenue to the south, and Blenheim Street to the west. The northern part of Marpole is also generally thought of as part of Kerrisdale, thus some refer to the area as Kerrisdale-Marpole. The southwestern part of Kerrisdale is known as Southlands, due to its location in relation to the city. Southlands is known for its horse stables and rural feel and is located on the floodplain of the North Arm of the Fraser River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "kerrisdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5699,
+    "attempt": 5656,
+    "place_id": "gn-1732826",
+    "input": {
+      "place": {
+        "place_id": "gn-1732826",
+        "name": "Mersing",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 2.4312,
+        "lon": 103.8405
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mersing",
+          "url": "https://en.wikipedia.org/wiki/Mersing",
+          "text": "Mersing (Terengganu Malay: Merecing or Ngesing) is a town, mukim and the capital of Mersing District, Johor, Malaysia. The town is located at the southern end of the east coast of Peninsular Malaysia. As of 2010, the town has an estimated population of 70,894.\nMersing town is particularly significant for a number of reasons: it is one of only two major towns in the eastern half of Johor state (the other being Kota Tinggi); it lies on the main trunk road that connects southern as well as eastern Johor with the east coast of Pahang state including Pahang's capital Kuantan (part of Federal Route; and it is the main departure point for ferries to the nearby offshore islands such as Rawa Island of Sultan Iskandar Marine Park (Malay: Taman Laut Sultan Iskandar) and also Tioman Island, Pahang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "mersing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5700,
+    "attempt": 5657,
+    "place_id": "gn-181122",
+    "input": {
+      "place": {
+        "place_id": "gn-181122",
+        "name": "Rongo",
+        "country": "Kenya",
+        "subdivision": "Migori County",
+        "lat": -0.75675,
+        "lon": 34.59833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rongo, Kenya",
+          "url": "https://en.wikipedia.org/wiki/Rongo,_Kenya",
+          "text": "Rongo or Rongo town is located in the southwestern part of Kenya in Migori County, Kenya. It is situated approximately 30 kilometers northeast of Migori town along the Kisii-Migori highway.\nRongo has a diverse population that includes the Luo community, which is the dominant ethnic group, along with other communities. The population is a mix of locals and individuals from different parts of Kenya, especially due to the university and other business opportunities.\nIn the 2009 National Census, Rongo had a total population of 82,066 with 12,355 in the urban core and by 2019, the population had grown to 124,587, according to the National Census.\nRongo attracts lots of investors due to its massive gold mineral deposits since decades and also due to its positioning along the highway that connects Kenya to Tanzania through Sirare/Isbania Border post. In 2023, construction of the Rongo - Kisii road stalled temporarily after area residents discovered gold deposits in murram that was excavated to pave way for the construction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "rongo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5701,
+    "attempt": 5658,
+    "place_id": "gn-2637357",
+    "input": {
+      "place": {
+        "place_id": "gn-2637357",
+        "name": "South Norwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39944,
+        "lon": -0.07469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Norwood",
+          "url": "https://en.wikipedia.org/wiki/South_Norwood",
+          "text": "South Norwood is a district of South London, England, within the London Borough of Croydon, Greater London and formerly in the historic county of Surrey. It is located 7.8 miles (12.5 km) south-east of Charing Cross, north of Woodside and Addiscombe, east of Selhurst and Thornton Heath, south of Crystal Palace/Upper Norwood and Anerley, and south-west of Penge.\nTogether with Norwood New Town, it forms the electoral ward of South Norwood in the local authority of Croydon. The ward as a whole had a resident population in 2001 of just over 14,000.\nThe south-eastern side of the district is dominated by the 125-acre (0.51 km2) country park which opened in 1989. At the northern end of the town is South Norwood Lake, which was created after the reservoir for the unsuccessful Croydon Canal went out of use. It is used by the Croydon Sailing Club and local anglers who fish for carp, bream and perch.\nThere are two secondary schools in the area along with a public leisure centre. South Norwood has a high street which forms part of Selhurst Road. It is a commuter district, with many residents travelling to either Croydon or the City of London for employment via Norwood Junction railway station. South Norwood and surrounding areas are covered by the London SE25 postcode, the southernmost  London post town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "south norwood",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "norwood",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5702,
+    "attempt": 5659,
+    "place_id": "gn-2648372",
+    "input": {
+      "place": {
+        "place_id": "gn-2648372",
+        "name": "Godalming",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.1858,
+        "lon": -0.61489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Godalming",
+          "url": "https://en.wikipedia.org/wiki/Godalming",
+          "text": "Godalming ( GOD-əl-ming) is a market town and civil parish in south-west Surrey, England, around 30 miles (49 km) south-west of central London. It is in the Borough of Waverley, at the confluence of the Rivers Wey and Ock. The civil parish covers 3.74 sq mi (9.7 km2) and includes the settlements of Farncombe, Binscombe and Aaron's Hill. Much of the area lies on the strata of the Lower Greensand Group and Bargate stone was quarried locally until the Second World War.\nThe earliest evidence of human activity is from the Paleolithic and land above the Wey floodplain at Charterhouse was first settled in the middle Iron Age. The modern town is believed to have its origins in the 6th or early 7th centuries and its name is thought to derive from that of a Saxon landowner. Kersey, a woollen cloth, dyed blue, was produced at Godalming for much of the Middle Ages, but the industry declined in the early modern period. In the 17th century, the town began to specialise in the production of knitted textiles and in the manufacture of hosiery in particular.\nThroughout its history, Godalming has benefitted from its location on the main route from London to Portsmouth Dockyard. Local transport links were improved from the early 18th century with the opening of the turnpike road through the town in 1749 and the construction of the Godalming Navigation in 1764. Expansion of the settlement began in the mid-19th century, stimulated by the opening of the first railway station in 1849 and the relocation of Charterhouse School from London in 1872. The town has a claim to be the first place in the world to have a combined public and private electricity supply.\nSeveral buildings in the town centre date from the 16th and 17th centuries. The distinctive Pepperpot was built in 1814 to replace the medieval market house and to house the council chamber. Among the notable former residents of the civil parish were Jack Phillips, the senior wireless operator on the RMS Titanic, and the mountaineer George Mallory. James Oglethorpe, the founder of the Colony of Georgia, was born in Godalming in 1696 and the town maintains a friendship with the U.S. state and the cities of Savannah and Augusta in particular."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "godalming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5703,
+    "attempt": 5660,
+    "place_id": "gn-2655582",
+    "input": {
+      "place": {
+        "place_id": "gn-2655582",
+        "name": "Bishopbriggs",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.90669,
+        "lon": -4.21869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishopbriggs",
+          "url": "https://en.wikipedia.org/wiki/Bishopbriggs",
+          "text": "Bishopbriggs (Scots: The Briggs; Scottish Gaelic: Achadh an Easbaig) is a town in East Dunbartonshire, Scotland. It lies on the northern fringe of Greater Glasgow, approximately 4 miles (6 km) from the city centre. Historically in Lanarkshire, the area was once part of the historic parish of Cadder - originally lands granted by King William the Lion to the Bishop of Glasgow, Jocelin, in 1180. It was later part of the county of Lanarkshire, and then an independent burgh from 1964 to 1975. Today, Bishopbriggs' close geographic proximity to Glasgow now effectively makes it a suburb and commuter town of the city. \nBishopbriggs grew from a small rural village on the old road from Glasgow to Kirkintilloch and Stirling during the 19th century, eventually growing to incorporate the adjacent villages of Auchinairn, Cadder, Jellyhill and Mavis Valley. It has a population of approximately 23,500 people. In architectural terms, Bishopbriggs is notable for its Victorian villas, constructed after local landowners Feued lands to the west of Kirkintilloch Road and Springfield Road from the 1850s, adjacent to the then recently completed Bishopbriggs station on the Glasgow to Edinburgh Railway, its inter-war art deco 'Garden Suburb' on the former Kenmure Estate, and also for its large-scale post-war private housing developments, which has more recently also including housing developments in the neighbouring formerly rural area of Robroyston.\nIt was ranked the 2nd most desirable postcode in Scotland to live in following a study by the Centre for Economic and Business Research in 2015 and 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "bishopbriggs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

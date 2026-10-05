@@ -1,0 +1,697 @@
+[
+  {
+    "rank": 2663,
+    "place_id": "gn-3619194",
+    "input": {
+      "place": {
+        "place_id": "gn-3619194",
+        "name": "Estelí",
+        "country": "Nicaragua",
+        "subdivision": "Estelí Department",
+        "lat": 13.09291,
+        "lon": -86.35589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estelí",
+          "url": "https://en.wikipedia.org/wiki/Estelí",
+          "text": "Estelí (Spanish pronunciation: [esteˈli]), officially Villa de San Antonio de Pavia de Estelí is a city and municipality within the Estelí department. It is the 8th largest city in Nicaragua due to the high urbanization of its municipality, at 84.8%, with an urban population of 111,244 (2022 estimate). It is also the eighth-largest municipality, and an active commercial center in the north, known as \"the Diamond of the Segovia\" (this name being created by Oscar Corea Molina in his radio show \"Trampolin 43”) and the de facto capital of the north.\nEstelí is on the Pan-American Highway, 150 km north of Managua. It enjoys a temperate climate most of the year due to its location in the north central highlands at a mean elevation of 844 m (2769 ft) above sea level.  The city is also surrounded by forested mountains of pines, oaks, and walnuts, and plateaus up to 1600 m above sea level, some of which are protected as natural reserves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "esteli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2667,
+    "place_id": "gn-2639022",
+    "input": {
+      "place": {
+        "place_id": "gn-2639022",
+        "name": "Royal Tunbridge Wells",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.13321,
+        "lon": 0.26256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royal Tunbridge Wells",
+          "url": "https://en.wikipedia.org/wiki/Royal_Tunbridge_Wells",
+          "text": "Royal Tunbridge Wells (formerly, until 1909, and still commonly Tunbridge Wells) is a town in Kent, England, 30 miles (50 kilometres) southeast of Central London. It lies close to the border with East Sussex on the northern edge of the High Weald, whose sandstone geology is exemplified by the rock formation High Rocks. The town was a spa in the Restoration and a fashionable resort in the mid-1700s under Beau Nash when the Pantiles, and its chalybeate spring, attracted visitors who wished to take the waters. Though its popularity as a spa town waned with the advent of sea bathing, the town still derives much of its income from tourism. The prefix \"Royal\" was granted to it in 1909 by King Edward VII; it is one of only four towns in England with the title.\nThe town had a population of 59,947 in 2016, and is the administrative centre of Tunbridge Wells Borough and in the parliamentary constituency of Tunbridge Wells."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "royal tunbridge wells",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tunbridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wells",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2671,
+    "place_id": "gn-2639897",
+    "input": {
+      "place": {
+        "place_id": "gn-2639897",
+        "name": "Prestwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53333,
+        "lon": -2.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prestwich",
+          "url": "https://en.wikipedia.org/wiki/Prestwich",
+          "text": "Prestwich ( PREST-witch) is a town in the Metropolitan Borough of Bury, Greater Manchester, England, three miles (five kilometres) north of Manchester, three miles (five kilometres) north of Salford and five miles (eight kilometres) south of Bury.\nWithin the boundaries of the historic county of Lancashire, Prestwich was the seat of the ancient parish of Prestwich-cum-Oldham, centred around the Grade I listed Church of St Mary the Virgin. In recent times, it has grown in popularity as a commuter town of Manchester, being consistently named one of the best places to live in the UK by The Sunday Times, and has been nicknamed the 'new Didsbury' in comparison with the affluent suburb in the south of the city.\nThe oldest part of Prestwich, around Bury New Road, is known as Prestwich Village. There is a large Jewish community in Prestwich which, together with neighbouring Whitefield, Broughton and Crumpsall, makes up the second largest Jewish community in the UK outside London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "prestwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2675,
+    "place_id": "gn-5830062",
+    "input": {
+      "place": {
+        "place_id": "gn-5830062",
+        "name": "Laramie",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 41.31137,
+        "lon": -105.5911
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laramie, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Laramie,_Wyoming",
+          "text": "Laramie () is a city in and the county seat of Albany County, Wyoming, United States, known for its high elevation at 7,200 feet (2,200 m), for its railroad history, and as the home of the University of Wyoming. The population was 31,407 at the 2020 census, making it the fourth-most populous city in Wyoming. Located on the Laramie River, the city is west of Cheyenne and 25 miles (40 km) north of the Colorado state line, at the junction of Interstate 80 and U.S. Route 287.\nAfter 12,000 years or more of Indigenous populations living in the area, Laramie was settled by European Americans in 1868 with the completion of the Union Pacific Railroad line to the area, which crosses the Laramie River at Laramie. The river and several creeks fed by freshwater springs made the area an attractive place for settlement. It is home to the University of Wyoming, WyoTech, and a branch of Laramie County Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "laramie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2680,
+    "place_id": "gn-3374083",
+    "input": {
+      "place": {
+        "place_id": "gn-3374083",
+        "name": "Bathsheba",
+        "country": "Barbados",
+        "subdivision": "Saint Joseph",
+        "lat": 13.21133,
+        "lon": -59.52596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathsheba, Barbados",
+          "url": "https://en.wikipedia.org/wiki/Bathsheba,_Barbados",
+          "text": "Bathsheba is the main fishing village in the parish of Saint Joseph with some 5,000 inhabitants on the east coastline of Barbados. The town has a number of quaint churches; Saint Joseph Anglican Church was built on Horse Hill in the town as early as 1640 but was rebuilt in 1839 following a hurricane in 1831. Little Saint Joseph chapel was built nearby in 1837 but was restored and dedicated to Saint Aiden in 1904 following a landslide. It has a number of attractions including the Flower Forest and Cotton Tower which is renowned for its dramatic scenery and views of Scotland District. The ecologically rich Joe's River Tropical Rainforest is located on the outskirts of the town with some 85 acres (340,000 m2) of woodland and rainforest with giant ficus, citrifolia, fid woods, white woods, cabbage palm trees and mahogany trees. Bathsheba beach is known as the Soup Bowl where local and international surfing competitions take place annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "bathsheba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2683,
+    "place_id": "gn-2649957",
+    "input": {
+      "place": {
+        "place_id": "gn-2649957",
+        "name": "Epsom",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3305,
+        "lon": -0.27011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Epsom",
+          "url": "https://en.wikipedia.org/wiki/Epsom",
+          "text": "Epsom is a town in the borough of Epsom and Ewell in Surrey, England, about 14 miles (22 kilometres) south of central London. The town is first recorded as Ebesham in the 10th century and its name probably derives from that of a Saxon landowner. The earliest evidence of human activity is from the mid-Bronze Age, but the modern settlement probably grew up in the area surrounding St Martin's Church in the 6th or 7th centuries and the street pattern is thought to have become established in the Middle Ages. Today the High Street is dominated by the clock tower, which was erected in 1847–8.\nLike other nearby settlements, Epsom is located on the spring line where the permeable chalk of the North Downs meets the impermeable London Clay. Several tributaries of the Hogsmill River rise in the town and in the 17th and early 18th centuries, the spring on Epsom Common was believed to have healing qualities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "epsom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2689,
+    "place_id": "gn-3515796",
+    "input": {
+      "place": {
+        "place_id": "gn-3515796",
+        "name": "Tequisquiapan",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 20.5225,
+        "lon": -99.89167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tequisquiapan",
+          "url": "https://en.wikipedia.org/wiki/Tequisquiapan",
+          "text": "Tequisquiapan (Spanish pronunciation: [tekis'kjapan]; Otomi: Ntʼe) is a town and municipality located in the southeast of the state of Querétaro in central Mexico. The center of the town has cobblestone streets, traditional rustic houses with wrought iron fixtures, balconies, and wooden windowsills, which is the legacy of its 300-year heritage as a colonial town populated mostly by indigenous people. This, the climate, and the local natural water springs have made the town a popular weekend getaway for cities such as Querétaro and Mexico City, which has led to the construction of weekend homes in the town.\nTequisquiapan is part of Querétaro's Ruta de Vino (Wine Route) with La Redonda as the municipality's major producer. Grape production began in the early 1960s, but has become important enough to be featured on the municipality's seal. The town hosts the annual Feria Nacional del Queso y el Vino, (National Cheese and Wine Fair) which showcases southern Querétaro's cheese and wine production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "tequisquiapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2699,
+    "place_id": "gn-2650188",
+    "input": {
+      "place": {
+        "place_id": "gn-2650188",
+        "name": "Egham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43158,
+        "lon": -0.55239
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Egham",
+          "url": "https://en.wikipedia.org/wiki/Egham",
+          "text": "Egham ( EG-əm) is a town in the Borough of Runnymede in Surrey, England, approximately 19 miles (31 km) west of central London. First settled in the Bronze Age, the town was under the control of Chertsey Abbey for much of the Middle Ages. In 1215, Magna Carta was sealed by King John at Runnymede, to the north of Egham, having been chosen for its proximity to the King's residence at Windsor. Under the Dissolution of the Monasteries in the early 16th Century, the major, formerly ecclesiastical, manorial freehold interests in the town and various market revenues passed to the Crown.\nIn the 17th and 18th centuries, Egham became a stop on coaching routes between London and many places to the west. The importance of this shrank from the building of the Western and South Western Railways but was for many decades offset by the stark growth in the population of London and the country at large."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "egham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2706,
+    "place_id": "gn-2655009",
+    "input": {
+      "place": {
+        "place_id": "gn-2655009",
+        "name": "Bracknell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41363,
+        "lon": -0.75054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bracknell",
+          "url": "https://en.wikipedia.org/wiki/Bracknell",
+          "text": "Bracknell () is a town and civil parish in Berkshire, England, the westernmost area within the Greater London Urban Area and the administrative centre of the borough of Bracknell Forest. It lies 11 miles (18 km) to the east of Reading, 9 miles (14 km) south of Maidenhead, 10 miles (16 km) southwest of Windsor and 25 miles (40 km) west of central London. Bracknell is the third largest town in Berkshire.\nThe name Bracknell is derived from the Saxon Braccan Heal or Braccan Heale, first recorded in a charter boundary of 942 AD. In the Middle Ages, Bracknell developed into two small market villages, Old Bracknoll and New Bracknoll. By the 19th century, the two Bracknells had combined into a single market town, which was an important centre of local industry, most notably for its brick trade. In the 20th century, Bracknell experienced a period of rapid growth after it was declared a New Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "bracknell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2729,
+    "place_id": "gn-3164565",
+    "input": {
+      "place": {
+        "place_id": "gn-3164565",
+        "name": "Vercelli",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.32163,
+        "lon": 8.41989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vercelli",
+          "url": "https://en.wikipedia.org/wiki/Vercelli",
+          "text": "Vercelli (Italian: [verˈtʃɛlli] ; Piedmontese: Vërsèj [vərˈsɛj]) is a city and comune (municipality) of 46,552 inhabitants (January 1, 2017) in the Province of Vercelli, Piedmont, northern Italy. One of the oldest urban sites in northern Italy, it was founded, according to most historians, around 600 BC.\nThe city is situated on the Sesia River in the plain of the Po River between Milan and Turin. It is an important centre for the cultivation of rice and is surrounded by rice paddies, which are flooded in the summer. The climate is typical of the Po Valley with cold, foggy winters (0.4 °C (33 °F) in January) and humid heat during the summer months (23.45 °C or 74 °F in July). Rainfall is most prevalent during the spring and autumn; thunderstorms are common in the summer.\nThe languages spoken in Vercelli are Italian and Piedmontese; the variety of Piedmontese native to the city is called Varslèis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "vercelli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2734,
+    "place_id": "gn-4933002",
+    "input": {
+      "place": {
+        "place_id": "gn-4933002",
+        "name": "Chicopee",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.1487,
+        "lon": -72.60787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chicopee, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Chicopee,_Massachusetts",
+          "text": "Chicopee ( CHIK-ə-pee) is a city located on the Connecticut River in Hampden County, Massachusetts, United States. At the 2020 census, the city had a population of 55,560, making it the second-largest city in western Massachusetts after Springfield. Chicopee is part of the Springfield, Massachusetts Metropolitan Statistical Area. The communities of Chicopee Center (Cabotville), Chicopee Falls, Willimansett, Fairview, Aldenville, Burnett Road, Smith Highlands and Westover are located within the city.\nOne of the ventures of the Boston Associates, Chicopee is a city built around several smaller former mill communities on its namesake, the Chicopee River. During the 19th century, the city was home to the first American producer of friction matches as well as a variety of other industries, including the Ames Manufacturing Company, an early pioneer in machining lathes, building upon the work of Springfield's Thomas Blanchard, and the largest producer of swords and cutlasses for the Union Army during the Civil War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "chicopee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2737,
+    "place_id": "gn-2267226",
+    "input": {
+      "place": {
+        "place_id": "gn-2267226",
+        "name": "Lagos",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.10202,
+        "lon": -8.67422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lagos, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Lagos,_Portugal",
+          "text": "Lagos (pronounced [ˈlaɣuʃ] ; Proto-Celtic: *Lacobriga) is a city and municipality in the Barlavento region of the Algarve, southern Portugal, situated at the mouth of the Bensafrim River along the Atlantic Ocean. As of the March 2021 census, the municipality had a population of 33,494 across an area of 212.99 km². The coastal area is densely populated and oriented toward tourism and services, while the inland region is sparsely inhabited with an economy based largely on agriculture and forestry. The population increases significantly during summer months due to tourism.\nLagos is one of the most visited cities in the Algarve, attracting tourists with its beaches, rock formations such as Ponta da Piedade, and summer nightlife. The city also holds significant historical importance as a centre of the Portuguese Age of Discovery, a frequent residence of Henry the Navigator, a historical shipbuilding hub, and, at one point, a centre of the European slave trade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "lagos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2738,
+    "place_id": "gn-2449067",
+    "input": {
+      "place": {
+        "place_id": "gn-2449067",
+        "name": "Timbuktu",
+        "country": "Mali",
+        "subdivision": "Tombouctou",
+        "lat": 16.77348,
+        "lon": -3.00742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Timbuktu",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu",
+          "text": "Timbuktu (  TIM-buk-TOO; French: Tombouctou; Koyra Chiini: Tunbutu; Tuareg: ⵜⵏⵀⵗⵜ, romanized: Tin Bukt) is an ancient city in Mali, situated 20 kilometres (12 miles) north of the Niger River. It is the capital of the Tombouctou Region, one of the 19 administrative regions of Mali, with a population of around eighty-four thousand people in the 2023 census.\nArchaeological evidence suggests prehistoric settlements in the region, predating the city's Islamic scholarly and trade prominence in the medieval period. Timbuktu began as a seasonal settlement and became permanent early in the 12th century. After a shift in trading routes, particularly after the visit by Mansa Musa around 1325, Timbuktu flourished, due to its strategic location, from the trade in salt, gold, and ivory. It gradually expanded as an important Islamic city on the Saharan trade route and attracted many scholars and traders before it became part of the Mali Empire early in the 14th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "timbuktu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2744,
+    "place_id": "gn-3934707",
+    "input": {
+      "place": {
+        "place_id": "gn-3934707",
+        "name": "Mollendo",
+        "country": "Peru",
+        "subdivision": "Arequipa",
+        "lat": -17.02306,
+        "lon": -72.01472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mollendo",
+          "url": "https://en.wikipedia.org/wiki/Mollendo",
+          "text": "Mollendo is a town on the Pacific Ocean in southern Peru. It is located in the Arequipa Region and is the capital of both the Islay Province and the Mollendo District. Mollendo was the main port on the Peruvian southern coast until Matarani was developed around the mid-20th century; the port of Mollendo serves fishermen for the local economy and all the commercial shipping is done through Matarani, 12 km to the north, as the old port is in ruins. From about 1830 to 1880 it was a key port in the guano trade.\nA railroad used to run passenger trains daily, but a developed highway connects Mollendo to the Panamerican Highway, with the train now only running as a summer express from Arequipa, on Saturday, returning Sunday. The local beaches are the main attraction in the area, even though it is visited by the Humboldt Current that brings cold water from Antarctica."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "mollendo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2747,
+    "place_id": "gn-4939783",
+    "input": {
+      "place": {
+        "place_id": "gn-4939783",
+        "name": "Holyoke",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.20426,
+        "lon": -72.6162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holyoke, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Holyoke,_Massachusetts",
+          "text": "Holyoke () is a city in Hampden County, Massachusetts, United States, that lies between the western bank of the Connecticut River and the Mount Tom Range. As of the 2020 census, the city had a population of 38,248. Located 8 miles (13 km) north of Springfield, Holyoke is part of the Springfield Metropolitan Area, one of the two distinct metropolitan areas in Massachusetts.\nHolyoke is among the early planned industrial cities in the United States. Built in tandem with the Holyoke Dam to utilize the water power of Hadley Falls, it is one of a handful of cities in New England built on the grid plan. During the late 19th century the city produced an estimated 80% of the writing paper used in the United States and was home to the largest paper mill architectural firm in the country, as well as the largest paper, silk, and alpaca wool mills in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "holyoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2758,
+    "place_id": "gn-2956206",
+    "input": {
+      "place": {
+        "place_id": "gn-2956206",
+        "name": "Andernach",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.43109,
+        "lon": 7.40425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andernach",
+          "url": "https://en.wikipedia.org/wiki/Andernach",
+          "text": "Andernach (German pronunciation: [ˈandɐˌnax] ) is a town in the district of Mayen-Koblenz, in Rhineland-Palatinate, Germany, of about 30,000 inhabitants. It is situated towards the end of the Neuwied basin on the left bank of the Rhine between the former tiny fishing village of Fornich in the north and the mouth of the small river Nette in the southeast, just 21 kilometres (13 miles) north of Koblenz, with its five external town districts: Kell, Miesenheim, Eich, Namedy, and Bad Tönisstein.\nA few hundred metres downstream of Andernach the Rhine valley narrows from both sides forming the northern part of the romantic Middle Rhine stretch. Already in Roman times the place the narrow passage begins was named \"Porta Antunnacensis\" or Andernachian Gate. It is formed by two hills, the Krahnenberg  (engl. Crane hill)  and the Engwetter (Narrow weather) on the right bank near the wine village Leutesdorf (external town district of Bad Hönningen)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "andernach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2763,
+    "place_id": "gn-5095611",
+    "input": {
+      "place": {
+        "place_id": "gn-5095611",
+        "name": "Bergenfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.9276,
+        "lon": -73.99736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergenfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bergenfield,_New_Jersey",
+          "text": "Bergenfield is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 28,321, an increase of 1,557 (+5.8%) from the 2010 census count of 26,764, which in turn reflected an increase of 517 (+2.0%) from the 26,247 counted in the 2000 census.\nNew Jersey Monthly magazine ranked Bergenfield as its 211th best place to live in its 2010 rankings of the \"Best Places To Live\" in New Jersey. The magazine ranked Bergenfield as its 231st best place to live in its 2008 rankings of the \"Best Places To Live\".\nNeighborhoodScout named Bergenfield as the safest municipality in the nation in 2012 with more than 25,000 residents and in both 2013 and 2014 they named it as the 2nd safest town in the US only behind Franklin, Massachusetts.\nIn 2019, Bergenfield has dropped in their ratings, falling to number 4."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "bergenfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2774,
+    "place_id": "gn-4846834",
+    "input": {
+      "place": {
+        "place_id": "gn-4846834",
+        "name": "Ames",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 42.03471,
+        "lon": -93.61994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ames, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Ames,_Iowa",
+          "text": "Ames () is a city in Story County, Iowa, United States, located approximately 30 miles (48 km) north of Des Moines in central Iowa. It is the home of Iowa State University (ISU). According to the 2020 census, Ames had a population of 66,427, making it the state's ninth-most populous city. Iowa State University was home to 30,177 students as of fall 2023, which make up approximately one half of the city's population.\nA United States Department of Energy national laboratory, Ames National Laboratory, is located on the ISU campus. Ames also hosts United States Department of Agriculture (USDA) sites: the largest federal animal disease center in the United States, the USDA Agricultural Research Service's National Animal Disease Center (NADC), as well as one of two national USDA sites for the Animal and Plant Health Inspection Service (APHIS), which comprises the National Veterinary Services Laboratory and the Center for Veterinary Biologics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "ames",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2785,
+    "place_id": "gn-3650267",
+    "input": {
+      "place": {
+        "place_id": "gn-3650267",
+        "name": "Ventanas",
+        "country": "Ecuador",
+        "subdivision": "Los Ríos",
+        "lat": -1.44285,
+        "lon": -79.46274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ventanas",
+          "url": "https://en.wikipedia.org/wiki/Ventanas",
+          "text": "Ventanas is an Ecuadorian city; head of the Ventanas Canton, in the Los Ríos Province, as well as the fourth most populated city in the Province of Los Ríos.  It is located in the center of the coastal region of Ecuador, on an extensive plain, crossed by the Zapotal River, at an altitude of 24 meters above sea level and with a rainy tropical climate of 26 °C on average. It is called \"The Corn Capital of Ecuador\" for its important production of corn.  At the 2022 census it had a population of 41,531, making it the thirty-eighth most populous city in the country.  It is part of the metropolitan area of Babahoyo, since its economic, social and commercial activity is strongly linked to Babahoyo, being a \"dormitory city\" for thousands of workers who travel to that city by land daily.  The conglomerate is home to more than 250,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "ventanas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2802,
+    "place_id": "gn-1702934",
+    "input": {
+      "place": {
+        "place_id": "gn-1702934",
+        "name": "Malaybalay",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.1575,
+        "lon": 125.12778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malaybalay",
+          "url": "https://en.wikipedia.org/wiki/Malaybalay",
+          "text": "Malaybalay, officially the City of Malaybalay (Binukid: Bánuwa ta Malaybaláy; Cebuano: Siyudad sa Malaybalay), is a  component city and capital of the province of Bukidnon, Philippines. According to the 2024 census, it has a population of 195,046 people.\nThe city, dubbed as the \"South Summer Capital of the Philippines\", is bordered north by Impasugong; west by Lantapan; south by Valencia and San Fernando; and east by Cabanglasan and Agusan del Sur.\nIt was formerly part of the province of Misamis Oriental as a municipal district in the late 19th century. When the special province of Agusan (now Agusan del Norte and Agusan del Sur) and its sub-province (Bukidnon) were created in 1907, Malaybalay was designated as the capital of Bukidnon. It was then formally established as a municipality on October 19, 1907, and was created into a city on February 11, 1998, by virtue of Republic Act 8490."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "malaybalay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

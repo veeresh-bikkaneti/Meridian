@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5040,
+    "attempt": 5001,
+    "place_id": "gn-2656161",
+    "input": {
+      "place": {
+        "place_id": "gn-2656161",
+        "name": "Battle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.91732,
+        "lon": 0.48417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Battle, East Sussex",
+          "url": "https://en.wikipedia.org/wiki/Battle,_East_Sussex",
+          "text": "Battle is a town and civil parish in the district of Rother in East Sussex, England. It lies 50 miles (80 km) south-east of London, 27 miles (43 km) east of Brighton and 20 miles (32 km) east of Lewes. Hastings is to the south-east and Bexhill-on-Sea to the south. Battle is in the designated High Weald National Landscape. The parish population was 6,673 according to the 2011 Census and 6,800 in the 2021 census. Battle contains the site of, and is named after, the Battle of Hastings, where William, Duke of Normandy, defeated King Harold II to become William I of England in 1066. For some 250 years after 1066, official documents referred to the town as (Latin) Bellum or (French) Bataille."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "battle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5041,
+    "attempt": 5002,
+    "place_id": "gn-2795398",
+    "input": {
+      "place": {
+        "place_id": "gn-2795398",
+        "name": "Hoogstraten",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.40029,
+        "lon": 4.76034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoogstraten",
+          "url": "https://en.wikipedia.org/wiki/Hoogstraten",
+          "text": "Hoogstraten (Dutch pronunciation: [ˈɦoːxstraːtə(n)]) is a municipality and city located in the Belgian province of Antwerp. The municipality comprises Hoogstraten, Meer, Meerle, Meersel-Dreef, Minderhout and Wortel (Meersel-Dreef includes the northernmost point in Belgium).\nHoogstraten (originally Hoogstraeten) has a population of over 20,000, and lies in Flanders at the northern border of Belgium within an enclave surrounded on three sides by the Netherlands. Today, about 15% percent of the population consists of Dutch people.\nThe town is named after the hoge straat or \"high road\" – a military highway that linked the old towns of Antwerp and 's-Hertogenbosch. In the town's early days, little trade existed. Villages and towns produced just enough for their own support, with little or no surplus to be 'sold' to other areas. Thus, most travelers along this high road were soldiers and armies.\nToday Hoogstraten is internationally known for its strawberries. Veiling Hoogstraten (auction) is one of the largest of the Benelux. Every year more than 30,000 tonnes of strawberries are traded there.  However its main agricultural crop is the tomato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "hoogstraten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5042,
+    "attempt": 5003,
+    "place_id": "gn-2938344",
+    "input": {
+      "place": {
+        "place_id": "gn-2938344",
+        "name": "Delligsen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 51.9412,
+        "lon": 9.80272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delligsen",
+          "url": "https://en.wikipedia.org/wiki/Delligsen",
+          "text": "Delligsen is a municipality in Holzminden district, in Lower Saxony, Germany.\nIt consists of six localities which were independent until 1974: Delligsen itself, Grünenplan, Ammensen, Hohenbüchen, Kaierde and Varrigsen. \nThe area is dominated by the massif of the Hils hills\nDelligsen itself has been an industrial settlement dominated by the Friedrich-Carls-Hütte ironworks which closed down in 1984.\nGrünenplan further up in the Hils is an officially designated climate health resort. It has three centuries of history in glass manufacturing and still has a Schott AG glass factory. The factory was founded in 1744 by the prince of Brunswick's government in order to produce large mirrors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "delligsen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5043,
+    "attempt": 5004,
+    "place_id": "gn-3014816",
+    "input": {
+      "place": {
+        "place_id": "gn-3014816",
+        "name": "Gravelines",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.98651,
+        "lon": 2.12807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gravelines",
+          "url": "https://en.wikipedia.org/wiki/Gravelines",
+          "text": "Gravelines ( grav-LEEN, French: [ɡʁavlin] ; Dutch: Grevelingen [ˈɣreːvəlɪŋə(n)]) is a commune in the Nord department in Northern France. It lies at the mouth of the river Aa 15 miles (24 km) southwest of Dunkirk. It was formed in the 12th century around the mouth of a canal built to connect Saint-Omer with the sea. As it was on the western borders of Spanish territory in Flanders it became heavily fortified, some of which remains.\nThere is a market in the town square (Place Charles Valentin) on Fridays. The \"Arsenal\" approached from the town square is home to an extensive and carefully displayed art collection. There are modern bronze statues in the grounds.  The town is also home to French basketball club BCM Gravelines.\nThe Gravelines Belfry is one of 56 belfries of Belgium and France that is inscribed on the UNESCO World Heritage List in recognition of its architecture and importance in the history of municipal power in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "gravelines",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5044,
+    "attempt": 5005,
+    "place_id": "gn-3070862",
+    "input": {
+      "place": {
+        "place_id": "gn-3070862",
+        "name": "Mělník",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 50.3505,
+        "lon": 14.47411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mělník",
+          "url": "https://en.wikipedia.org/wiki/M%C4%9Bln%C3%ADk",
+          "text": "Mělník (Czech pronunciation: [ˈmɲɛlɲiːk] ; German: Melnik) is a town in the Central Bohemian Region of the Czech Republic. It has about 20,000 inhabitants. The town is located at the confluence of the two longest Czech rivers, Elbe and Vltava, and is one of the largest river ports of the Czech Republic. Mělník lies in one of the most important agricultural areas of the country and is known for its production of wine.\nMělník is among the longest continuously inhabited locations in the country. It was promoted to a town in 1274 and then it became a dowry town ruled by the queens of Bohemia. The historic town centre is well preserved and is protected as an urban monument zone. The main landmark of Mělník is the Mělník Castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "melnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5045,
+    "attempt": 5006,
+    "place_id": "gn-3112787",
+    "input": {
+      "place": {
+        "place_id": "gn-3112787",
+        "name": "A Pobra do Caramiñal",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.60295,
+        "lon": -8.93824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "A Pobra do Caramiñal",
+          "url": "https://en.wikipedia.org/wiki/A_Pobra_do_Carami%C3%B1al",
+          "text": "A Pobra do Caramiñal is a town and municipality at the entrance of one of the lower bays of the Galician coastline known as the Ría de Arousa in the province of A Coruña, Spain. It is located in the autonomous community of Galicia. A Pobra do Caramiñal belongs to the comarca of A Barbanza. It is the next stop out of the ria (bay or more apropos fjord) after Boiro and is famous for its unusual festival procession in September. A Pobra do Caramiñal features a large harbor with docks for commercial and leisure craft, the Alameda, the Old Town, and a popular beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "a pobra do caraminal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "pobra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caraminal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5046,
+    "attempt": 5007,
+    "place_id": "gn-3167559",
+    "input": {
+      "place": {
+        "place_id": "gn-3167559",
+        "name": "Santa Maria degli Angeli",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 43.05691,
+        "lon": 12.57497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Maria degli Angeli, Assisi",
+          "url": "https://en.wikipedia.org/wiki/Santa_Maria_degli_Angeli,_Assisi",
+          "text": "Santa Maria degli Angeli is a frazione of the comune of Assisi in the Province of Perugia, Umbria, central Italy. It stands at an elevation of 218 metres above sea level. At the time of the Istat census of 2001 it had 6,665 inhabitants, and is located c. 4 km south from Assisi. The name of the city was used by the Spanish Franciscan missionaries as the name of Los Angeles, currently one of the largest cities of the United States.\nIt is home to the Basilica of Santa Maria degli Angeli, which includes the Porziuncola, the most sacred place of the various Franciscan Orders. Saint Francis of Assisi himself died here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "santa maria degli angeli",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "degli",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angeli",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5047,
+    "attempt": 5008,
+    "place_id": "gn-3169540",
+    "input": {
+      "place": {
+        "place_id": "gn-3169540",
+        "name": "Recanati",
+        "country": "Italy",
+        "subdivision": "The Marches",
+        "lat": 43.40381,
+        "lon": 13.55379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Recanati",
+          "url": "https://en.wikipedia.org/wiki/Recanati",
+          "text": "Recanati (Italian pronunciation: [rekaˈnaːti]) is a comune (municipality) in the province of Macerata, in the Italian region of Marche. Recanati was founded around 1150 AD from three pre-existing castles. In 1290 it proclaimed itself an independent republic and, in the 15th century, was famous for its international fair. In March 1798 it was conquered by Napoleon.\nThe elongated historic center extends from one end to the other for over 200 metres and occupies an area of about 35 hectares. Its linear structure distinguishes it from most of the neighboring centers with a concentric plan, in which the inhabited area has extended from a central square. Along the margins of the central road, connecting the ancient housing clusters, there are numerous aristocratic buildings, for the most part on three floors, built by merchants or landowners.\n\nIt is the hometown of the tenor Beniamino Gigli and the poet Giacomo Leopardi, which is why the town is known to some as \"the city of poetry\". Famous medieval Ashkenazi Kabbalist Rabbi Menahem Recanati flourished here in the 13th century. Teatro Persiani named after Giuseppe Persiani an opera composer, born in 1799, is located in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "recanati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5048,
+    "attempt": 5009,
+    "place_id": "gn-3206150",
+    "input": {
+      "place": {
+        "place_id": "gn-3206150",
+        "name": "Aspach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.96667,
+        "lon": 9.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aspach, Baden-Württemberg",
+          "url": "https://en.wikipedia.org/wiki/Aspach,_Baden-W%C3%BCrttemberg",
+          "text": "Aspach (German pronunciation: [ˈaspax] ) is a community in the Rems-Murr-Kreis in Germany, near Backnang.\nAspach is made up of four, formerly independent villages: Großaspach, Kleinaspach, Allmersbach and Rietenau. In 1972, the four villages joined forces under the name Aspach. The villages were founded between 950AD and 1150AD. Rietenau is home to natural springs and used to be a popular Spa until early 1900. Water from Rietenau is still bottled today. The main village, Großaspach, is the birthplace of Hans Werner Aufrecht, co-founder of AMG Engine Production and Development, more commonly known as AMG, as well as the meaning of the \"G\" in the name. It is commonly mistaken for being the company's first location, but no AMG office, factory, or research facility has ever been located there - except for the garage, where Aufrecht and Melcher (the M in AMG) started out tuning cars and engines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "aspach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5049,
+    "attempt": 5010,
+    "place_id": "gn-3360396",
+    "input": {
+      "place": {
+        "place_id": "gn-3360396",
+        "name": "Tulbagh",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.28596,
+        "lon": 19.14116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulbagh",
+          "url": "https://en.wikipedia.org/wiki/Tulbagh",
+          "text": "Tulbagh (Afrikaans: [ˈtœlbaχ]), previously named Roodezand, then Land van Waveren later in 1804 named after Cape of Good Hope Governor Ryk Tulbagh, is a town located in the \"Land van Waveren\" mountain basin (also known as the Tulbagh basin), in the Winelands of the Western Cape, South Africa. The basin is fringed on three sides by mountains, and is drained by the Klein Berg River and its tributaries. The nearest towns are Ons Rust and Gouda beyond the Nuwekloof Pass, Wolseley some 15 kilometres (9.3 mi) to the south inside the basin, and Ceres and Prince Alfred Hamlet beyond Michell's Pass in the Warm Bokkeveld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "tulbagh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5050,
+    "attempt": 5011,
+    "place_id": "gn-3998287",
+    "input": {
+      "place": {
+        "place_id": "gn-3998287",
+        "name": "Loreto",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 26.01217,
+        "lon": -111.34888
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loreto, Baja California Sur",
+          "url": "https://en.wikipedia.org/wiki/Loreto,_Baja_California_Sur",
+          "text": "Loreto is a city and municipal seat of Loreto Municipality, Baja California Sur, on the West Coast of Mexico. Located on the Gulf of California, the city had a population of 16,311 inhabitants in 2020. Loreto is a regional economic and cultural center, as well as a major tourist destination on the Baja California Peninsula.\nLoreto was founded in 1697, when Juan María de Salvatierra founded Misión de Nuestra Señora de Loreto Conchó. The city served as the capital of Province of the Californias until 1777, when the capital moved to Monterey, California. Loreto continued to serve as the capital of Baja California until 1829. The city grew rapidly in the 20th century and is today a major tourist destination and regional hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "loreto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5051,
+    "attempt": 5012,
+    "place_id": "gn-4047906",
+    "input": {
+      "place": {
+        "place_id": "gn-4047906",
+        "name": "Trinity",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.18085,
+        "lon": -82.68177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trinity, Florida",
+          "url": "https://en.wikipedia.org/wiki/Trinity,_Florida",
+          "text": "Trinity is a census-designated place (CDP) in Pasco County, Florida, United States.  The population was 11,924 in 2020, according to the most recent census. The Trinity Community is named after Trinity College of Florida, a Bible college founded in 1932, when it relocated to the first occupied site in the communities developed by James Gills in the late 1980s. The main plaza is found near the high school, known as Mitchell Ranch Plaza. Trinity is located at the junction where Pasco, Hillsborough and Pinellas Counties meet. The community of Longleaf is located in Trinity and it is believed that the “Welcome Plank” originated in Longleaf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "trinity",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5052,
+    "attempt": 5013,
+    "place_id": "gn-4205885",
+    "input": {
+      "place": {
+        "place_id": "gn-4205885",
+        "name": "Lithia Springs",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.794,
+        "lon": -84.66049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lithia Springs, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Lithia_Springs,_Georgia",
+          "text": "Lithia Springs () is an unincorporated community and census-designated place, formerly incorporated as a city, located in northeastern Douglas County, Georgia, United States. As of the 2020 census, the community had a population of 16,644. The area is named for its historic lithia mineral water springs.\nIncorporated in 1882, Lithia Springs was dissolved the first time in 1933. Lithia Springs became incorporated again in 1994, to be Douglas County's second completely internal municipality, but disincorporated again in 2000.\nIn 2000, the citizens voted (80% yea, 20% nay) on December 20 to dissolve the city charter and de-incorporate the city, transferring all assets to the county. The referendum that ended the town was part of the settlement in a lawsuit brought by city residents charging the city should be dissolved because it did not deliver enough services to justify its existence under state law. During its incorporation until 2000, the former city had five mayors.\nLithia Springs is assigned the United States Postal Service ZIP code of 30122."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "lithia springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lithia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5053,
+    "attempt": 5014,
+    "place_id": "gn-4359721",
+    "input": {
+      "place": {
+        "place_id": "gn-4359721",
+        "name": "Kemp Mill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.039,
+        "lon": -77.01914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemp Mill, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Kemp_Mill,_Maryland",
+          "text": "Kemp Mill is a census-designated place and an unincorporated census area in Montgomery County, Maryland, United States. It is known for its creekside walkways, calm suburban atmosphere, Brookside Gardens, and numerous hiking trails. Home to the largest Orthodox Jewish community on the East Coast between Baltimore and Miami, it hosts more than half a dozen synagogues within its boundaries.  The population was 13,378 at the 2020 census.\nKemp Mill census area consists of multiple subdivisions, including Kemp Mill Estates, Kemp Mill Farms, Kemp Mill Forest, and  Springbrook Forest. The community also includes University Towers, with 523 condominium units, and the Warwick, with 393 rental units. The neighborhood has over 1,693 houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "kemp mill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kemp",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5054,
+    "attempt": 5015,
+    "place_id": "gn-4560691",
+    "input": {
+      "place": {
+        "place_id": "gn-4560691",
+        "name": "Port Richmond",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.99345,
+        "lon": -75.10017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Richmond, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Port_Richmond,_Philadelphia",
+          "text": "Port Richmond is a neighborhood in the River Wards section of Philadelphia, Pennsylvania, United States. It is notable for its large Polish immigrant and Polish American community, and it has been known as the Little Poland of Philadelphia. The neighborhood is also home to a large Irish American community and sizable German, Lithuanian, Italian, and Puerto Rican communities, along with a historic Jewish community, as represented in the various churches and organizations. In more recent years, a sizable Albanian community has moved in. Port Richmond's ZIP code is 19134. A small portion of the neighborhood, north of Castor Avenue, falls into the 19137 ZIP code.\nThe neighborhood is bounded by the Frankford Creek to the northeast, Lehigh Avenue to the southwest, the Delaware River to the east, and Kensington and Allegheny Avenues to the northwest.\nWhile many locals often refer to Port Richmond as simply Richmond, there is a specific area named Richmond consisting of the most northeastern section of the neighborhood (the area north of Allegheny Avenue up to Frankford Creek). Adjacent neighborhoods are Bridesburg to the northeast, Juniata to the north, Harrowgate to the northwest and Kensington to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "port richmond",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5055,
+    "attempt": 5016,
+    "place_id": "gn-4707932",
+    "input": {
+      "place": {
+        "place_id": "gn-4707932",
+        "name": "Los Fresnos",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 26.07174,
+        "lon": -97.47637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Fresnos, Texas",
+          "url": "https://en.wikipedia.org/wiki/Los_Fresnos,_Texas",
+          "text": "Los Fresnos  is a city in Cameron County, Texas, United States. The population was 8,114 at the 2020 census, up from 5,542 at the 2010 census. It is part of the Brownsville–Harlingen–Raymondville and the Matamoros–Brownsville metropolitan areas.\nLocated in south-central Cameron County, the city was named for the fresnos (Fraxinus berlandieriana) scattered in the woods and along streams. In 1912, Lon Hill, an early landowner, formed a company to develop a canal system that would use the Rio Grande to irrigate land for farming. Railroad construction in the early 1900s began to bring settlers to the area, and by 1915, a post office was established. Because of the fertile, irrigated land, farm products increased, and with the long growing season in the Rio Grande Valley, farming flourished. Today, the city is still surrounded by fertile farm/ranch land. Major crops are cotton, sugarcane, grains, oranges, and red grapefruit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "los fresnos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fresnos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5056,
+    "attempt": 5017,
+    "place_id": "gn-4932587",
+    "input": {
+      "place": {
+        "place_id": "gn-4932587",
+        "name": "Centerville",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.64872,
+        "lon": -70.34808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Centerville, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Centerville,_Massachusetts",
+          "text": "Centerville is one of the seven villages in the Town of Barnstable, Massachusetts, United States, on Cape Cod. Located on the South Side of Barnstable, Centerville is primarily residential, and includes a small business district as well as several notable beaches.   It has its own elementary school and public library, and is home to the Centerville Historic District and the Centerville Historical Museum.\nCenterville contains the neighborhood of Craigville, which includes Craigville Beach.  Centerville was originally named Chequaquet (meaning \"pleasant harbor\"). Centerville is the location of the award-winning, independent Four Seas Ice Cream shop on South Main Street near the intersection with Old Stage Road. It is also home to the Centerville Pie Company, mentioned on The Oprah Winfrey Show's 2010 \"Oprah's Favorite Things\" episode. Located on Pine Street is the St. Francis Xavier cemetery, which is the final resting place for Eunice Kennedy Shriver and her husband Sargent Shriver.  In late June 1993, Jaleel White, who portrayed Steve Urkel on the sitcom Family Matters, performed in a one-man production of Fiddler on the Roof in front of the Centerville Public Library. The American composer Amy Beach frequently summered in Centerville during the 1920s and 1930s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "centerville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5057,
+    "attempt": 5018,
+    "place_id": "gn-4957570",
+    "input": {
+      "place": {
+        "place_id": "gn-4957570",
+        "name": "Bath",
+        "country": "United States",
+        "subdivision": "Maine",
+        "lat": 43.91064,
+        "lon": -69.8206
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bath, Maine",
+          "url": "https://en.wikipedia.org/wiki/Bath,_Maine",
+          "text": "Bath is a city in and county seat of Sagadahoc County, Maine, United States. Bath had a 2024 population of 8,870. Bath is  growing at a rate of 0.29% annually, and its population has increased by 1.21% since the most recent census, which recorded a population of 8,764 in 2020. The city is popular with tourists, many drawn by its 19th-century architecture. It is home to the Bath Iron Works and Heritage Days Festival, held annually during the Fourth of July weekend. It is commonly known as the \"City of Ships\" due to the number of sailing ships that were built in the Bath shipyards. Bath is part of the Portland-South Portland-Biddeford metropolitan statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "bath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5058,
+    "attempt": 5019,
+    "place_id": "gn-5130854",
+    "input": {
+      "place": {
+        "place_id": "gn-5130854",
+        "name": "Pelham",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.90982,
+        "lon": -73.80791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pelham, New York",
+          "url": "https://en.wikipedia.org/wiki/Pelham,_New_York",
+          "text": "Pelham  is a suburban town in Westchester County, approximately 10 miles northeast of Midtown Manhattan. As of the 2020 census, it had a population of 13,079, an increase from the 2010 census.   Historically, Pelham was composed of five villages and became known as \"the Pelhams\". Pelham currently contains two independently incorporated villages: the Villages of Pelham and Pelham Manor.\nApproximately 35 minutes away from Grand Central Terminal by the Metro-North Railroad's New Haven Line, Pelham is home to many New York City commuters and has an active social community for its residents. The Bronx–Whitestone Bridge is approximately 8.5 miles (13.7 km) south of the town. It is also 13 miles (21 km) northeast of LaGuardia Airport and 19.5 miles (31.4 km) north of John F. Kennedy International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "pelham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5059,
+    "attempt": 5020,
+    "place_id": "gn-5771960",
+    "input": {
+      "place": {
+        "place_id": "gn-5771960",
+        "name": "Brigham City",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 41.51021,
+        "lon": -112.0155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brigham City, Utah",
+          "url": "https://en.wikipedia.org/wiki/Brigham_City,_Utah",
+          "text": "Brigham City is a city in Box Elder County, Utah, United States. The population was 19,650 at the 2020 census, up from the 2010 figure of 17,899. It is the county seat of Box Elder County. It lies on the western slope of the Wellsville Mountains, a branch of the Wasatch Range at the western terminus of Box Elder Canyon. It is near the former headquarters of ATK Thiokol, now Northrop Grumman, the company that created the solid rocket boosters for the Space Shuttle.\nBrigham City is known for its peaches and holds an annual celebration called Peach Days on the weekend after Labor Day. Much of Main Street is closed off to cars, and the festival is celebrated by a parade, a car show, a carnival, and other activities.\nThe Church of Jesus Christ of Latter-day Saints (LDS Church) dedicated its fourteenth temple in Utah in Brigham City on September 23, 2012. Brigham City is home to the Golden Spike State Historical Monument and one of the nine regional campuses of Utah State University.\nThe city is the headquarters of the Northwestern Band of the Shoshone Nation, a federally recognized tribe of Shoshone people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "brigham city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brigham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

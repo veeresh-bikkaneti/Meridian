@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1535,
+    "attempt": 1521,
+    "place_id": "gn-1257629",
+    "input": {
+      "place": {
+        "place_id": "gn-1257629",
+        "name": "Salem",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.65376,
+        "lon": 78.15538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salem, Tamil Nadu",
+          "url": "https://en.wikipedia.org/wiki/Salem,_Tamil_Nadu",
+          "text": "Salem (pronounced [seːlam] ) is a  city in the Indian state of Tamil Nadu. It is located on the banks of the Thirumanimutharu River and surrounded by the Eastern Ghats. It is the fifth largest city in the state as per the 2011 census. It is the administrative capital of Salem District and is administered by the Salem Municipal Corporation which was established in 1994.\nThe history of the region dates back to the Sangam period (1st–4th centuries CE), when it was part of the Chera Empire. It was engaged in trade with the Roman Empire, evidenced by Roman coins, dating back to the era, found in archeological excavations in the region. The region was ruled by various successive dynasties including the Pandyas, Pallavas, Cholas, and Hoysalas. In the 14th century, it became part of the Vijayanagara Empire, and later ruled by the Madurai Nayaks. During the period, the governance was under the control of local chieftains known as Poligars.\nBy the late 18th century, it came under the Kingdom of Mysore after conflicts with the Madurai Nayaks. Following the defeat of Tipu Sultan in the Anglo-Mysore Wars, the region was annexed by the British East India Company and integrated into the Madras Presidency. Salem district was formally established in 1792. The region played a role in early resistance against the British, and was the base of Dheeran Chinnamalai during the Second Polygar War. After Indian independence, Salem became part of the Madras Province, which later became Tamil Nadu.\nIn modern times, Salem has developed into a major industrial and economic hub, known for textiles, steel production, and agro-based industries like sago extraction and mango cultivation. It is home to the Salem Steel Plant and several industrial corridors and special economic zones. The city has a well developed transport network including rail, highways, and an airport, and is home to several educational institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "salem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1536,
+    "attempt": 1522,
+    "place_id": "gn-1273193",
+    "input": {
+      "place": {
+        "place_id": "gn-1273193",
+        "name": "Deoria",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.50167,
+        "lon": 83.77936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deoria, Uttar Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Deoria,_Uttar_Pradesh",
+          "text": "Deoria is a city in the state of Uttar Pradesh, India. Deoria is located 45 km east of Gorakhpur and about 317 km from the state capital Lucknow.  It shares its eastern border with the Indian state of Bihar. It is one of five tehsils of the Deoria district and serves as the administrative headquarters of that district, and is part of the Gorakhpur division. As per the 2011 Census, the population of Deoria city was 129,479, with a literacy rate of 86.8%. The city is an important agricultural and trade hub in the region and is well connected by road and rail networks to other parts of Uttar Pradesh and Bihar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "deoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1537,
+    "attempt": 1523,
+    "place_id": "gn-1293960",
+    "input": {
+      "place": {
+        "place_id": "gn-1293960",
+        "name": "Taunggyi",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 20.78919,
+        "lon": 97.03776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taunggyi",
+          "url": "https://en.wikipedia.org/wiki/Taunggyi",
+          "text": "Taunggyi is the capital and largest city of Shan State, Myanmar. It also serves as the administrative seat of Southern Shan State. Situated on the eastern mountains of Myanmar at an elevation of 4,712 feet (1,436 meters) above sea level, it is a city known for its pleasant and cool climate. Unlike many other cities, Taunggyi is built directly along the mountain ridges rather than on the valley floor.\n\nDue to its high-altitude location, the beauty of the surrounding valleys and mountain ranges can be viewed from almost any part of the city. Taunggyi is renowned as a healthy hill station where residents and visitors can enjoy fresh, clean mountain air year-round.\nIn addition to being a scenic hill station, Taunggyi is the administrative, economic, and educational heart of Shan State. Strategically located on major highways connecting Southern, Northern, and Eastern Shan State (Kengtung), it serves as a vital hub for the flow of goods. As the state capital, it is the busiest urban center in Shan State, home to modern infrastructure, several universities, and major healthcare facilities. The city’s beauty is further enhanced by the blooming of cherry blossoms in late autumn and winter, followed by the vibrant purple Jacaranda and orchid tree flowers in the spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "taunggyi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1538,
+    "attempt": 1524,
+    "place_id": "gn-149402",
+    "input": {
+      "place": {
+        "place_id": "gn-149402",
+        "name": "Tunduma",
+        "country": "Tanzania",
+        "subdivision": "Songwe",
+        "lat": -9.3,
+        "lon": 32.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tunduma",
+          "url": "https://en.wikipedia.org/wiki/Tunduma",
+          "text": "Tunduma  is a city in Songwe Region, Tanzania, on the border between Tanzania and Zambia. It has border posts for both the Tanzam Highway and the TAZARA railway (for which it has a station) linking the two countries.  It is located 103 km southwest of Mbeya.  It is also the junction for the tarmac road which runs via Sumbawanga through the remote far western districts of Tanzania to Kasulu and Kibondo in the north-west. According to the 2022 census, it has a population of 219,309. Tunduma can be the most famous border city within  SADCC countries and is informally known as the 'gateway to East Africa' with the neighbouring country of Zambia. Nakonde is immediately across the border in Zambia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tunduma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1539,
+    "attempt": 1525,
+    "place_id": "gn-1668399",
+    "input": {
+      "place": {
+        "place_id": "gn-1668399",
+        "name": "Taichung",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 24.1469,
+        "lon": 120.6839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taichung",
+          "url": "https://en.wikipedia.org/wiki/Taichung",
+          "text": "Taichung (, Wade–Giles: Tʻai2-chung1, Pinyin Táizhōng), officially Taichung City, is a special municipality in central Taiwan. Taichung is Taiwan's second-largest city, with more than 2.86 million residents, making it the largest city in Central Taiwan. It serves as the core of the Taichung–Changhua metropolitan area, Taiwan's second-largest metropolitan area.\nLocated in the Taichung Basin, the city was initially developed from several scattered hamlets helmed by the Taiwanese indigenous peoples. It was constructed to be the new capital of Taiwan Province and renamed \"Taiwan-fu\" in the late Qing dynastic era between 1887 and 1894. During the Japanese era from 1895, the urban planning of present-day Taichung was performed and developed by the Japanese. The urban area of Taichung was organized as a provincial city from the start of ROC rule in 1945 until 25 December 2010, when the original provincial city and Taichung County were merged into a new special municipality.\nThe city is home to the National Museum of Natural Science, the National Taiwan Museum of Fine Arts, the National Taichung Theater, the National Library of Public Information, National Taiwan Museum of Comics, National Taiwan Symphony Orchestra, as well as many cultural sites, including the historic Taichung Park, the Lin Family Gardens, and many temples."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "taichung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1540,
+    "attempt": 1526,
+    "place_id": "gn-1698829",
+    "input": {
+      "place": {
+        "place_id": "gn-1698829",
+        "name": "Naga",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 13.61917,
+        "lon": 123.18139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naga, Camarines Sur",
+          "url": "https://en.wikipedia.org/wiki/Naga,_Camarines_Sur",
+          "text": "Naga, officially the City of Naga (Filipino: Lungsod ng Naga; Central Bikol: Ciudad nin Naga; Rinconada Bikol: Ciudad ka Naga) or the Pilgrim City of Naga, is an independent component city in the Bicol Region of the Philippines. According to the 2024 census, it has a population of 210,545 people. It is the most populous city in Camarines Sur and the smallest city in Bicol by land area. On 26 May 2026, President Bongbong Marcos signed Proclamation No. 1267, declaring Naga a highly urbanized city. Under the Local Government Code of 1991, a plebiscite is required within 120 days to ratify the proclamation and formally convert Naga into a highly urbanized city.\nThe town was established in 1575 by order of Governor-General Francisco de Sande. The city, then named Nueva Cáceres (New Cáceres), was one of the Spanish royal cities in the Spanish East Indies, along with Manila, Cebu City, and Iloilo City, and is historically the third oldest.\nGeographically and statistically classified, as well as legislatively represented, within Camarines Sur, but administratively and politically independent of the provincial government, Naga is considered the Bicol Region's trade, business, religious, cultural, industrial, commercial, medical, educational, and financial center.\nNaga is known as the \"Queen City of Bicol\" due to the historical significance of Naga in the Bicol Region; as the \"Heart of Bicol\", due to its central geographical location on the Bicol Peninsula; and as the \"Pilgrim City\", in Camarines Sur since Naga is home to one of the largest Marian pilgrimages in Asia to the shrine of Our Lady of Peñafrancia, an image that is one of the country's most popular objects of devotion. Naga is described as \"One of the Seven Golden Cities of the Sun\" by Nick Joaquin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "naga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1541,
+    "attempt": 1527,
+    "place_id": "gn-1799869",
+    "input": {
+      "place": {
+        "place_id": "gn-1799869",
+        "name": "Nanning",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 22.81667,
+        "lon": 108.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanning",
+          "url": "https://en.wikipedia.org/wiki/Nanning",
+          "text": "Nanning is the capital of the Guangxi Zhuang Autonomous Region in southern China. It is known as the \"Green City (绿城)\" because of its abundance of lush subtropical foliage. Located in the South of Guangxi, Nanning is surrounded by a hilly basin, with a warm, monsoon-influenced humid subtropical climate.\nBeginning in 1949, as it underwent sustained industrial growth, Nanning's economy began developing beyond its former role, and the city became essentially a commercial and administrative centre. Today, Nanning is considered the economic, financial and cultural center of Guangxi, and the chief centre for the training of the Zhuang minority in Guangxi. The People's Park is located in the center of the city. The city also serves as a gateway for the China-ASEAN opening up and cooperation.\nAs of 2025, Nanning was ranked one of the top 150 science cities in the world by scientific research outputs. The city is home to several notable universities in South China, including Guangxi University, Guangxi Medical University, Guangxi University for Nationalities, Guangxi University of Finance and Economics and Guangxi Arts University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "nanning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1542,
+    "attempt": 1528,
+    "place_id": "gn-1841811",
+    "input": {
+      "place": {
+        "place_id": "gn-1841811",
+        "name": "Gwangju",
+        "country": "South Korea",
+        "subdivision": "Gwangju",
+        "lat": 35.15472,
+        "lon": 126.91556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwangju",
+          "url": "https://en.wikipedia.org/wiki/Gwangju",
+          "text": "Gwangju (Korean: 광주; Korean: [kwaŋ.dʑu] ), formerly romanized as Kwangju, was a city in South Korea. In July 2026, the city was merged with South Jeolla Province into a new provincial-level city called Jeonnam-Gwangju.\nGwangju was the sixth-largest metropolis in the country. It was a designated metropolitan city under the direct control of the central government's Home Minister. The city was also the capital of South Jeolla Province until its promotion to a metropolitan city in 2005, upon which the provincial office moved to the southern village of Namak in Muan County.\nIts name is composed of the words gwang (Korean: 광; Hanja: 光) meaning \"light\" and ju (주; 州) meaning \"province\". Gwangju was historically recorded as Muju (무주; 武州), in which \"Silla merged all of the land to establish the provinces of Gwangju, Ungju, Jeonju, Muju and various counties, plus the southern boundary of Goguryeo and the ancient territories of Silla\" in the Samguk sagi. In the heart of the agricultural Jeolla region, the city is also famous for its rich and diverse cuisine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "gwangju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1543,
+    "attempt": 1529,
+    "place_id": "gn-2317765",
+    "input": {
+      "place": {
+        "place_id": "gn-2317765",
+        "name": "Zaria",
+        "country": "Nigeria",
+        "subdivision": "Kaduna State",
+        "lat": 11.11128,
+        "lon": 7.7227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaria",
+          "url": "https://en.wikipedia.org/wiki/Zaria",
+          "text": "Zaria  (formerly Zazzau) is a metropolitan city in Nigeria, located within four local government areas in Kaduna State. It serves as the capital of the Zazzau Emirate Council and is one of the original seven Hausa city-states. The local government areas comprising Zaria are Zaria, Sabon Gari, Giwa, and Soba local government areas of Kaduna State, Nigeria.\nIt contains Nigeria's largest university, Ahmadu Bello University, and various tertiary institutions including the Federal College of Education (FCE Zaria), Nigerian College of Aviation Technology, Nigerian Institute of Transport Technology, Nigeria Institute of Leather and Science Technology and Nuhu Bamalli Polytechnic.  Department of Agriculture Ahmed Bello University Zaria. Ameer Shehu Idris College of Advanced Diploma. \nFrom the 2006 population census, Zaria was estimated to have 736,000 people. It is home to the Emir of Zazzau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "zaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1544,
+    "attempt": 1530,
+    "place_id": "gn-2377450",
+    "input": {
+      "place": {
+        "place_id": "gn-2377450",
+        "name": "Nouakchott",
+        "country": "Mauritania",
+        "subdivision": "Mauritania",
+        "lat": 18.08581,
+        "lon": -15.9785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouakchott",
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "text": "Nouakchott ( nwa(h)k-SHOT) is the capital and largest city of Mauritania. Located in the southwestern part of the country, it is one of the largest cities in the Sahara. The city also serves as the administrative and economic center of Mauritania.\nOnce a mid-sized coastal village, Nouakchott was selected as the capital for the nascent nation of Mauritania, with construction beginning in 1958. It was originally designed to accommodate a population of 15,000, but experienced significant population growth in the 1970s when many Mauritanians fled their home villages due to drought and increasing desertification. Many of the newcomers settled in slum areas of the city that were poorly maintained and extremely overcrowded. By the mid-1980s, Nouakchott's population was estimated to be between 400,000 and 500,000.\nAs of 2023, the city had a population of nearly 1.5 million people and serves as the hub of the Mauritanian economy. It is home to a deepwater port and Nouakchott–Oumtounsy International Airport, one of the country's two international airports. It also hosts the University of Nouakchott and several other more specialized institutions of higher learning."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "nouakchott",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1545,
+    "attempt": 1531,
+    "place_id": "gn-2751792",
+    "input": {
+      "place": {
+        "place_id": "gn-2751792",
+        "name": "Leeuwarden",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 53.20271,
+        "lon": 5.80973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leeuwarden",
+          "url": "https://en.wikipedia.org/wiki/Leeuwarden",
+          "text": "Leeuwarden (Dutch: [ˈleːu.ɑrdə(n)] ; West Frisian: Ljouwert [ˈljɔu(ə)t] ; Stadsfries Dutch: Liwwadden; Leeuwarder dialect: Leewarden) is a city and municipality in Friesland, Netherlands, with a population of 127,073 (2023). It is the provincial capital and seat of the Provincial Council of Friesland.\nThe region has been continuously inhabited since the 10th century. It came to be known as Leeuwarden in the early 9th century AD and was granted city privileges in 1435. It is the main economic hub of Friesland, situated in a green and water-rich environment. Leeuwarden is a former royal residence and has a historic city centre, many historically relevant buildings, and a large shopping centre with squares and restaurants. Leeuwarden was awarded the title European Capital of Culture for 2018. Also, Leeuwarden has been a UNESCO City of Literature since 2019.\nThe Elfstedentocht (Eleven Cities Tour), an ice skating tour passing the eleven cities of Friesland, starts and finishes in Leeuwarden.\nThe following towns and villages within the municipality have populations in excess of 1,000 people: Leeuwarden, Stiens, Grou, Goutum, Wergea, Jirnsum, Reduzum, and Wirdum. The municipality is governed by the interim mayor Foort van Oosten and a coalition of the Labour Party, Christian Democratic Appeal, and GreenLeft."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "leeuwarden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1546,
+    "attempt": 1532,
+    "place_id": "gn-2945756",
+    "input": {
+      "place": {
+        "place_id": "gn-2945756",
+        "name": "Bottrop",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.52392,
+        "lon": 6.9285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bottrop",
+          "url": "https://en.wikipedia.org/wiki/Bottrop",
+          "text": "Bottrop (German pronunciation: [ˈbɔtʁɔp] ) is a city in west-central Germany, on the Rhine–Herne Canal, in North Rhine-Westphalia. Located in the Ruhr industrial area, Bottrop adjoins Essen, Oberhausen, Gladbeck, and Dorsten. The city had been a coal-mining and rail center and contains factories producing coal-tar derivatives, chemicals, textiles, and machinery. Bottrop grew as a mining center beginning in the 1860s, was chartered as a city in 1921, and bombed during the Oil Campaign of World War II. In 1975, it unified with the neighbouring communities of Gladbeck and Kirchhellen, but Gladbeck left it in 1976, leading to Kirchhellen becoming a district of Bottrop as Bottrop-Kirchhellen. It is also twinned with Blackpool, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "bottrop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1547,
+    "attempt": 1533,
+    "place_id": "gn-2965140",
+    "input": {
+      "place": {
+        "place_id": "gn-2965140",
+        "name": "Cork",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.89797,
+        "lon": -8.47061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cork, Blackrock and Passage Railway",
+          "url": "https://en.wikipedia.org/wiki/Cork,_Blackrock_and_Passage_Railway",
+          "text": "The Cork, Blackrock and Passage Railway (CB&PR) was a 3 ft (914 mm) narrow gauge railway in County Cork, Ireland. The line originally opened in 1850 as a 5 ft 3 in (1,600 mm) Irish standard gauge railway between Cork and Passage West and operated steam feeder ferries to other locations round Cork Harbour.  The company was heavily dependent on summer tourist traffic for a considerable proportion of its revenue.  The railway was converted to 3 ft (914 mm) narrow gauge in 1900 in conjunction with extensions southwards to Crosshaven which were completed in 1904. The railway closed in 1932 and has since been replaced by a public pathway and nature area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "cork",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1548,
+    "attempt": 1534,
+    "place_id": "gn-3099424",
+    "input": {
+      "place": {
+        "place_id": "gn-3099424",
+        "name": "Gdynia",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.51889,
+        "lon": 18.53188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gdynia",
+          "url": "https://en.wikipedia.org/wiki/Gdynia",
+          "text": "Gdynia is a city in northern Poland and a seaport on the Baltic Sea coast. With a population of c. 239,000, it is the 12th-largest city in Poland and the second-largest in the Pomeranian Voivodeship after Gdańsk. Gdynia is part of a conurbation with the spa town of Sopot, the city of Gdańsk, and suburban communities, which together form a metropolitan area called the Tricity (Trójmiasto) with around one million inhabitants. Gdynia is the largest city in Poland not to be a voivodeship capital.\nHistorically and culturally part of Kashubia and Eastern Pomerania, Gdynia for centuries remained a small fishing village. By the 20th-century it attracted visitors as a seaside resort town. In 1926, Gdynia was granted city rights after which it enjoyed demographic and urban development, with a modernist cityscape. It became a major seaport city of Poland. In 1970, protests in and around Gdynia contributed to the rise of the Solidarity movement in nearby Gdańsk.\nThe port of Gdynia is a regular stopover on the cruising itinerary of luxury passenger ships and ferries travelling to Scandinavia. Gdynia's downtown, designated a historical monument of Poland and inscribed on the UNESCO World Heritage List, is an example of building an integrated European community and includes Functionalist architectural forms. The city is also known for holding the annual Gdynia Film Festival. In 2013, Gdynia was ranked by readers of The News as Poland's best city to live in, and topped the national rankings in the category of \"general quality of life\". In 2021, the city entered the UNESCO Creative Cities Network and was named UNESCO City of Film."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "gdynia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1549,
+    "attempt": 1535,
+    "place_id": "gn-3118150",
+    "input": {
+      "place": {
+        "place_id": "gn-3118150",
+        "name": "Logroño",
+        "country": "Spain",
+        "subdivision": "La Rioja",
+        "lat": 42.46615,
+        "lon": -2.45115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Logroño",
+          "url": "https://en.wikipedia.org/wiki/Logroño",
+          "text": "Logroño (UK:   log-RON-yoh, US:  lə-GROHN-yoh, loh-, Spanish: [loˈɣɾoɲo] ) is the capital of the autonomous community of La Rioja, Spain. Located in the north of the Iberian Peninsula, primarily on the right (south) bank of the Ebro River, Logroño has historically been a place of passage, such as for the Camino de Santiago. Its borders were disputed between the Iberian kingdoms of Castille, Navarre and Aragon during the Middle Ages.\nThe population of the city in 2021 was 150,808 while the metropolitan area included nearly 200,000 inhabitants. The city is a centre of trade for Rioja wine, for which the area is noted, and the manufacture of wood, metal and textile products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "logrono",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1550,
+    "attempt": 1536,
+    "place_id": "gn-3121437",
+    "input": {
+      "place": {
+        "place_id": "gn-3121437",
+        "name": "Getafe",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.30571,
+        "lon": -3.73295
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Getafe",
+          "url": "https://en.wikipedia.org/wiki/Getafe",
+          "text": "Getafe (Spanish pronunciation: [xeˈtafe] ) is a municipality and a city in Spain belonging to the Community of Madrid. As of 2018, it has a population of 180,747, the region's sixth most populated municipality.\nGetafe is located 13 km south of Madrid's city centre, within a flat area of central Iberia's Meseta Central in the Manzanares River basin. The Cerro de los Ángeles hill, a site traditionally considered to be the geographical center of the Iberian Peninsula, also lies within the municipal limits.\nGetafe was a hamlet attached to the Madrid's sexmo of Villaverde during the late Middle Ages. Its proximity to Madrid fostered industrial development during the 20th and 21st centuries. Industrialisation was followed by an increase in population, reaching 170,115 in 2011. Due to its industrial and social networks, the majority of residents work or study within the city. New neighborhoods were developed towards the end of the 20th century.\nGetafe hosts an Airbus factory. It is home to the Getafe Air Base, one of the oldest Spanish military air bases, and to the main campus of the Charles III University of Madrid (UC3M)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "getafe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1551,
+    "attempt": 1537,
+    "place_id": "gn-3191648",
+    "input": {
+      "place": {
+        "place_id": "gn-3191648",
+        "name": "Rijeka",
+        "country": "Croatia",
+        "subdivision": "Primorje-Gorski Kotar",
+        "lat": 45.32673,
+        "lon": 14.44241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rijeka",
+          "url": "https://en.wikipedia.org/wiki/Rijeka",
+          "text": "Rijeka (lit. River) is the principal seaport and the third-largest city in Croatia. It is located in Primorje-Gorski Kotar County on Kvarner Bay, an inlet of the Adriatic Sea and in 2021 had a population of 107,964 inhabitants. Historically, because of its strategic position and its excellent deep-water port, the city was fiercely contested, especially between the Holy Roman Empire, the Republic of Venice, the Kingdom of Italy, the Habsburg Empire, the Kingdom of Hungary, and Yugoslavia, changing rulers and demographics many times over centuries. According to the 2021 census data, 85% of its citizens are Croats, along with small numbers of Serbs, Bosniaks and Italians.\nRijeka is the main city and county seat of the Primorje-Gorski Kotar County. Historically shaped by various ruling powers—including the Habsburg Monarchy, Hungary, Italy (while being Free State of Fiume), and Yugoslavia—Rijeka has developed a diverse cultural heritage reflected in its architecture, language, and traditions. The city is known for its major port facilities, shipbuilding industry, and vibrant cultural scene, including the internationally recognized Rijeka Carnival. The city's economy largely depends on shipbuilding (shipyards 3. Maj and Viktor Lenac Shipyard) and maritime transport (Jadrolinija). The city is home to the University of Rijeka and several important cultural institutions, including theaters, museums, and galleries. Its architectural landscape reflects a mix of Austro-Hungarian, Italian, and modern influences, with notable landmarks such as Trsat Castle, Rijeka Cathedral, Ivan Zajc Croatian National Theatre, Palace Modello, City Clock Tower, Trsat, Petar Kružić staircase and many others.\nIn 2016, Rijeka was selected as the European Capital of Culture for 2020, alongside Galway, Ireland, and Rijeka is known for other manifestations and sporting events such as: Kvarnerska Rivijera, Rijeka Open, Yugoslavian motorcycle Grand Prix, EuroBasket 1975, 2000 European Men's Handball Championship, 2003 World Women's Handball Championship, 2008 European Short Course Swimming Championships, 2016 European Universities Games and 2018 LEN Men's Europa Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "rijeka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1552,
+    "attempt": 1538,
+    "place_id": "gn-3348313",
+    "input": {
+      "place": {
+        "place_id": "gn-3348313",
+        "name": "Huambo",
+        "country": "Angola",
+        "subdivision": "Huambo",
+        "lat": -12.77611,
+        "lon": 15.73917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huambo",
+          "url": "https://en.wikipedia.org/wiki/Huambo",
+          "text": "Huambo, formerly Nova Lisboa (English: New Lisbon), is the third-most populous city in Angola, after the capital city Luanda and Lubango, with a population of 710,000 (2024) in the city and a population of 836,293 in the municipality of Huambo (Census 2024). The city is the capital of the province of Huambo and is located about 220 km E from Benguela and 600 km SE from Luanda. Huambo is a main hub on the Caminho de Ferro de Benguela (CFB) (the Benguela Railway), which runs from the port of Lobito to the Democratic Republic of the Congo's southernmost province, Katanga. Huambo is served by the Albano Machado Airport (formerly Nova Lisboa Airport)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "huambo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1553,
+    "attempt": 1539,
+    "place_id": "gn-3981609",
+    "input": {
+      "place": {
+        "place_id": "gn-3981609",
+        "name": "Tijuana",
+        "country": "Mexico",
+        "subdivision": "Baja California",
+        "lat": 32.5027,
+        "lon": -117.00371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tijuana",
+          "url": "https://en.wikipedia.org/wiki/Tijuana",
+          "text": "Tijuana is the most populous city of the Mexican state of Baja California, located on the northwestern Pacific Coast of Mexico. It is the municipal seat of the Tijuana Municipality, the hub of the Tijuana metropolitan area and the most populous city in northern Mexico. Tijuana is just south of California and is adjacent to the Mexico–United States border which is part of the San Diego–Tijuana metro area.\nTijuana is the 27th largest city in the Americas,  and is the westernmost city in Mexico. As of 2024, the population of Tijuana has increased to 2,297,000, reflecting a growth of 1.63% since 2023. The city was second-largest nationally in 2020 with 1,810,645 inhabitants. The international metropolitan region including San Diego was estimated at 5,158,459 in 2016, making it the third-largest metropolitan area in the Californias, 19th-largest metropolitan area in the Americas, and the largest bi-national conurbation that is shared between the US and Mexico. The city is one of the fastest-growing metro areas in the country and rated as a \"High Sufficiency\" global city by the Globalization and World Cities Research Network.\nTijuana traces its modern history to the arrival of Spanish colonists in the 16th century who were mapping the coast of the Californias. Following the division of the Californias after the American Conquest of California, Tijuana found itself located on an international border, giving rise to a new economic and political structure. The city was incorporated on 11 July 1889 as urban development began. The city has served as a major tourist destination since the 1880s. Today, Tijuana is a dominant manufacturing center for North America, hosting facilities of many multinational conglomerate companies. In the early 21st century, Tijuana has emerged as the medical device manufacturing capital of North America and is increasingly recognized as an important cultural Mecca for the border region of the Californias. The city is the most visited border city in the world, sharing a border of about 24 km (15 mi) with its sister city San Diego. More than fifty million people cross the border between these two cities every year.\nDespite its popularity as a tourist destination, Tijuana suffers from a high amount of crime, especially violent crime, due to the extensive presence of organized crime and Mexican cartels. It regularly ranks among the most violent cities by homicide rate. According to Statista in August 2023, Tijuana had the second highest homicide rate in the world. Incidents involving the murder or kidnapping of foreigners since the 2000s have also sparked travel fears and affected Tijuana's status among international tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 426
+    },
+    "banned_terms": [
+      {
+        "term": "tijuana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1554,
+    "attempt": 1540,
+    "place_id": "gn-4167499",
+    "input": {
+      "place": {
+        "place_id": "gn-4167499",
+        "name": "Palm Bay",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.03446,
+        "lon": -80.58866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Bay, Florida",
+          "url": "https://en.wikipedia.org/wiki/Palm_Bay,_Florida",
+          "text": "Palm Bay is a city in Brevard County, Florida, United States. The city's population was 119,760 at the 2020 United States census, up from 103,190 at the 2010 census, making it the most populous city in the county and the largest by land mass. The historic section of the city lies on the mouth of the Turkey Creek and the Palm Bay. Palm Bay has historically expanded south and to the west. The newer section is mostly situated west of Interstate 95 and south of the Tillman Canal.\nPalm Bay is a principal city of the Palm Bay–Melbourne–Titusville, Florida Metropolitan Statistical Area, which had a population of 606,612 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "palm bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

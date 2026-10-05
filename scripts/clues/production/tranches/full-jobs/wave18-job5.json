@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 3510,
+    "attempt": 3481,
+    "place_id": "gn-3601494",
+    "input": {
+      "place": {
+        "place_id": "gn-3601494",
+        "name": "Santa Rosa de Copán",
+        "country": "Honduras",
+        "subdivision": "Copán Department",
+        "lat": 14.77388,
+        "lon": -88.7756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa de Copán",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa_de_Copán",
+          "text": "Santa Rosa de Copán (Spanish pronunciation: [ˈsanta ˈrosa ðe koˈpan]) is a municipality in Honduras. The city of Santa Rosa de Copán is the municipal seat and the departmental capital of the Honduran department of Copán. It is located approximately 1,150 metres (3,773 ft) above mean sea level.\nSanta Rosa de Copán is the largest and most important city in western Honduras with a population of 61,800 (2023 calculation). Santa Rosa is the governmental hub of the department of Copán. The city is connected through the International Highway of the West (CA-4) with San Pedro Sula to the North and with the borders of El Salvador at El Poy and Guatemala at Agua Caliente to the west. Santa Rosa has a subtropical climate with temperatures ranging from 25 °C (77 °F) to 29 °C (84 °F) in the summer (March–June), and from 13 °C (55 °F) to 15 °C (59 °F) in the winter (December–February).\nThe historical centre of Santa Rosa de Copán has been declared a Honduran national monument, with preservation of its Republican or Neoclassical architecture and cobblestone streets that has its origins in a prosperous tobacco farming industry of the 18th century. Santa Rosa is situated at a strategic point between Copán Ruinas and Gracias, Lempira and the Celaque National Park. As before, tobacco farming remains a staple of the local economy, particularly the cultivation of premium cigar tobaccos. The La Flor de Copán cigar factory is located in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa de copan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "copan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3511,
+    "attempt": 3482,
+    "place_id": "gn-4578737",
+    "input": {
+      "place": {
+        "place_id": "gn-4578737",
+        "name": "Florence",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.19543,
+        "lon": -79.76256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florence, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Florence,_South_Carolina",
+          "text": "Florence () is a city in and the county seat of Florence County, South Carolina, United States. It lies at the intersection of Interstates 20 and 95 and is the eastern terminus of the former. It is the primary city within the Florence metropolitan area. The area forms the core of the historical Pee Dee region of South Carolina, which includes the eight counties of northeastern South Carolina, along with sections of southeastern North Carolina. As of the 2020 census, the population of the city was 39,899, making it the 10th-most-populous city in the state.\nOne of the major cities in South Carolina,  Florence was named an All-American City in 1965, presented by the National Civic League. The city was founded as a railroad hub and became the junction of three major railroad systems, including the Wilmington and Manchester, the Northeastern, and the Cheraw and Darlington. Florence is also a higher-education hub, home to Francis Marion University and Florence-Darlington Technical College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "florence",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3512,
+    "attempt": 3483,
+    "place_id": "gn-457954",
+    "input": {
+      "place": {
+        "place_id": "gn-457954",
+        "name": "Liepāja",
+        "country": "Latvia",
+        "subdivision": "Liepaja",
+        "lat": 56.50474,
+        "lon": 21.01085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liepāja",
+          "url": "https://en.wikipedia.org/wiki/Liepāja",
+          "text": "Liepāja (pronounced [liepaːja] ) (formerly: Libau) is a state city in western Latvia, located on the Baltic Sea. It is the largest city in the Courland region and the third-largest in the country after Riga and Daugavpils. It is an important ice-free port.\nIn the 19th and early 20th century, it was a favourite place for sea-bathers and travellers, with the town boasting a fine park, many pretty gardens and a theatre. Liepāja is however known throughout Latvia as the \"City where the wind is born\", likely because of the constant sea breeze. A song of the same name (Latvian: \"Pilsētā, kurā piedzimst vējš\") was composed by Imants Kalniņš and has become the anthem of the city. Its reputation as the windiest city in Latvia was strengthened with the construction of the largest wind farm in the nation (33 Enercon wind turbines) nearby.\nLiepāja is chosen as the European Capital of Culture in 2027."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "liepaja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3513,
+    "attempt": 3484,
+    "place_id": "gn-4769667",
+    "input": {
+      "place": {
+        "place_id": "gn-4769667",
+        "name": "Linton Hall",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.75984,
+        "lon": -77.57499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linton Hall, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Linton_Hall,_Virginia",
+          "text": "Linton Hall is a census-designated place (CDP) in Prince William County, Virginia, United States, which includes unincorporated Bristow. As of the 2020 census, Linton Hall had a population of 41,754.\nAccording to the United States Census Bureau, residents of Linton Hall had an average commute of 46.3 minutes each way between 2005 and 2007, the longest average commute for the period in the nation. The average commute in the United States for the period was 25.1 minutes. The chairman of the Prince William Board of County Supervisors said commutes were especially long for residents during the period studied because the county had not finished building roads to support the new residential areas that had just been built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "linton hall",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "linton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hall",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3514,
+    "attempt": 3485,
+    "place_id": "gn-4887158",
+    "input": {
+      "place": {
+        "place_id": "gn-4887158",
+        "name": "Champaign",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.11642,
+        "lon": -88.24338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Champaign, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Champaign,_Illinois",
+          "text": "Champaign ( sham-PAYN) is a city in Champaign County, Illinois, United States. The population was 88,302 at the 2020 census. It is the tenth-most populous municipality in Illinois and the fourth most populous city in the state outside the Chicago metropolitan area. It is a principal city of the Champaign–Urbana metropolitan area, which had 236,000 residents in 2020.\nChampaign shares the main campus of the University of Illinois with its twin city of Urbana and is also home to Parkland College, which gives the city a large student population during the academic year. Due to the university and a number of technology startup companies, it is often referred to as a hub of the Illinois Silicon Prairie. Champaign houses offices for the Fortune 500 companies Abbott, Archer Daniels Midland (ADM), Caterpillar, John Deere, Dow Chemical Company, IBM, and State Farm. Champaign also serves as the headquarters for several companies, including Jimmy John's."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "champaign",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3515,
+    "attempt": 3486,
+    "place_id": "gn-4890925",
+    "input": {
+      "place": {
+        "place_id": "gn-4890925",
+        "name": "Elk Grove Village",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.00392,
+        "lon": -87.97035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elk Grove Village, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Elk_Grove_Village,_Illinois",
+          "text": "Elk Grove Village is a village in Cook and DuPage Counties, Illinois, United States. The population was 32,812 at the 2020 census, and was estimated at 31,802 in 2024. Located 22 miles (35 km) northwest of Chicago along the Golden Corridor, the Village of Elk Grove Village was incorporated on July 17, 1956. It is directly adjacent to O'Hare International Airport and is economically important to the Chicago metropolitan area due to its large industrial park, located on the eastern border of the village. The community is served by several Interstate highways including I-90, I-290/I-355/Route 53, and IL-390. Elk Grove is also expected to be served by the I-490 Western O'Hare Bypass upon completion of the project."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "elk grove village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "elk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3516,
+    "attempt": 3487,
+    "place_id": "gn-4945819",
+    "input": {
+      "place": {
+        "place_id": "gn-4945819",
+        "name": "Northampton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.32509,
+        "lon": -72.6412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northampton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Northampton,_Massachusetts",
+          "text": "Northampton  is a city in and the county seat of Hampshire County, Massachusetts, United States. As of the 2020 census, the population of Northampton (including its outer villages, Florence and Leeds) was 29,571.\nNorthampton is known as an academic, artistic, musical, and countercultural hub. It features a large politically liberal community along with numerous alternative health and intellectual organizations. Based on U.S. Census demographics, election returns, and other criteria, the website Epodunk rates Northampton as the most politically liberal medium-size city (population 25,000–99,000) in the United States. The city has a high proportion of residents who identify as gay and lesbian and a high number of same-sex households and is a popular destination for the LGBT community.\nNorthampton is part of the Pioneer Valley and is one of the northernmost cities in the Knowledge Corridor—a cross-state cultural and economic partnership with other Connecticut River Valley cities and towns. Northampton is part of the Springfield Metropolitan Area, one of western Massachusetts's two separate metropolitan areas. It sits approximately 19 miles (31 km) north of the city of Springfield.\nNorthampton is home to Smith College, the Hotel Northampton, Northampton High School, Smith Vocational and Agricultural High School, and the Clarke Schools for Hearing and Speech."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "northampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3517,
+    "attempt": 3488,
+    "place_id": "gn-5090046",
+    "input": {
+      "place": {
+        "place_id": "gn-5090046",
+        "name": "Nashua",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 42.76537,
+        "lon": -71.46757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nashua, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Nashua,_New_Hampshire",
+          "text": "Nashua () is a city in southern New Hampshire, United States. As of the 2020 census, it had a population of 91,322, the second-largest in northern New England after nearby Manchester. It is one of two county seats of New Hampshire's most populous county, Hillsborough; the other being Manchester.\nBuilt around the now-departed textile industry, in recent decades Nashua's economy has shifted to the financial and professional services, high tech, and defense industries as part of the economic recovery that started in the 1980s in the Greater Boston region. Major private employers in the city include Nashua Corporation, and BAE Systems. The city also hosts two major regional medical centers, Southern New Hampshire Medical Center and St. Joseph Hospital. The South Nashua commercial district is a major regional shopping destination, lying directly on the Massachusetts border and taking advantage of New Hampshire's lack of sales tax. It is anchored by the Pheasant Lane Mall and numerous smaller shopping centers.\nIt is one of several U.S. cities nicknamed Gate City, which references a reputation for being a travel gateway—in this case between the Boston region and New Hampshire. A number of civic groups and institutions have adopted the title."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "nashua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3518,
+    "attempt": 3489,
+    "place_id": "gn-5103269",
+    "input": {
+      "place": {
+        "place_id": "gn-5103269",
+        "name": "Ridgewood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.97926,
+        "lon": -74.11653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ridgewood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ridgewood,_New_Jersey",
+          "text": "Ridgewood is a village in Bergen County, in the U.S. state of New Jersey. Ridgewood is a suburban bedroom community of New York City, located approximately 20 miles (32 km) northwest of Midtown Manhattan. As of the 2020 United States census, the village's population was 25,979, an increase of 1,021 (+4.1%) from the 2010 census count of 24,958, which in turn reflected an increase of 22 (+0.1%) from 24,936 in the 2000 census.\nIt has been one of the state's highest-income communities. In 2000, its per capita income of $51,658 was ranked the 35th-highest in the state. Based on data from the 2006–2010 American Community Survey, it had a per-capita income of $67,560, 31st in the state. Based on data from the American Community Survey for 2013–2017, it had a median household income of $162,011, ranked 7th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475.\nRidgewood was ranked 26th in Money magazine's \"Best Places to Live\" in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "ridgewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3519,
+    "attempt": 3490,
+    "place_id": "gn-5197079",
+    "input": {
+      "place": {
+        "place_id": "gn-5197079",
+        "name": "Lancaster",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.03788,
+        "lon": -76.30551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lancaster, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lancaster,_Pennsylvania",
+          "text": "Lancaster is a city in Lancaster County, Pennsylvania, United States, and its county seat. With a population of 58,039 at the 2020 census, it is the eighth-most populous city in the state. It is a core city within South Central Pennsylvania, with 552,984 residents in the Lancaster metropolitan area.\nSettled in the 1720s, Lancaster is one of the oldest inland cities in the US. It served as the capital of Pennsylvania from 1799 to 1812. The city's primary industries include healthcare, tourism, public administration, manufacturing, and both professional and semi-professional services. Lancaster is located 59 miles (95 km) southwest of Allentown and 61 miles (98 km) west of Philadelphia and is a hub of Pennsylvania Dutch Country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "lancaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3520,
+    "attempt": 3491,
+    "place_id": "gn-5275191",
+    "input": {
+      "place": {
+        "place_id": "gn-5275191",
+        "name": "Superior",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 46.72077,
+        "lon": -92.10408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Superior, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Superior,_Wisconsin",
+          "text": "Superior is a city in Douglas County, Wisconsin, United States, and its county seat. The population was 26,751 at the 2020 census. Superior and nearby Duluth, Minnesota, sit at the western tip of Lake Superior and together form the Twin Ports, a major Great Lakes harbor.\nBordered by Saint Louis, Superior, and Allouez bays, the city is framed by two rivers: the Nemadji and the Saint Louis. Superior is at the junction of U.S. Route 2 and U.S. Route 53 immediately north of, and adjacent to, both the Village of Superior and the Town of Superior. It is an industrial city, with ship harbors along two sides, several large rail yards, an oil refinery, and a shipyard. Superior and neighboring Duluth feature museum ships (SS William A. Irvin in Duluth and SS Meteor in Superior), devoted to the local maritime heritage. Superior was the final port of call for SS Edmund Fitzgerald before her sinking on November 10, 1975."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "superior",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3521,
+    "attempt": 3492,
+    "place_id": "gn-5371261",
+    "input": {
+      "place": {
+        "place_id": "gn-5371261",
+        "name": "Maywood",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.98668,
+        "lon": -118.18535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maywood, California",
+          "url": "https://en.wikipedia.org/wiki/Maywood,_California",
+          "text": "Maywood is a city in Los Angeles County, California, United States. A gateway city, at 1.18 square miles (3.1 km2) Maywood is the third-smallest incorporated city in Los Angeles County by area. It is bordered by the cities of Bell on the south, Vernon on the north and west, Huntington Park on the southwest, and Commerce on the east.\nAs of July 1, 2010, Maywood became the first municipality in California to outsource all of its city services, dismantling its police department, laying off all city employees except for the city manager, city attorney and elected officials, and contracting with outside agencies for the provision of all municipal services. The population was 25,138 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "maywood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3522,
+    "attempt": 3493,
+    "place_id": "gn-5406976",
+    "input": {
+      "place": {
+        "place_id": "gn-5406976",
+        "name": "Walnut",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.02029,
+        "lon": -117.86534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walnut, California",
+          "url": "https://en.wikipedia.org/wiki/Walnut,_California",
+          "text": "Walnut is a city in the San Gabriel Valley of eastern Los Angeles County in the U.S. state of California. According to the 2020 census, the city had a population of 28,430.\nThe greater Walnut Valley is located between the steep San Jose Hills to the north and the gently sloping Puente Hills to the south. Quality housing consists of master-planned single family homes ranging in size from 1,800 to 11,200 sq ft (170 to 1,040 m2). The city hosts a highly ranked public school system: the Walnut Valley Unified School District, which has been ranked by numerous sources as one of the top public school districts in Southern California, as well as Mt. San Antonio College.\nThe city covers nearly 9 sq mi (23 km2) and is home to hundreds of businesses. According to the 2023 census bureau estimate, Walnut has a median household income at one of the top-earning percentiles in the country at $133,762.\nThe city's name is derived from the Rancho Los Nogales Mexican land grant, nogales being the Spanish word for \"walnut trees\"; the native California black walnut is a common tree, native to the San Jose Hills. The City of Walnut is a general law city incorporated on January 19, 1959. It is governed by a city council/city manager form of government. A five-member city council is elected by the residents, and a mayor is elected annually by the council to serve a twelve-month term. A city manager is appointed by the council to oversee the daily activities of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "walnut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3523,
+    "attempt": 3494,
+    "place_id": "gn-5802049",
+    "input": {
+      "place": {
+        "place_id": "gn-5802049",
+        "name": "Lynnwood",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.82093,
+        "lon": -122.31513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lynnwood, Washington",
+          "url": "https://en.wikipedia.org/wiki/Lynnwood,_Washington",
+          "text": "Lynnwood is a city in Snohomish County, Washington, United States. The city is part of the Seattle metropolitan area and is located 16 miles (26 km) north of Seattle and 13 miles (21 km) south of Everett, near the junction of Interstate 5 and Interstate 405. It is the fourth-largest city in Snohomish County, with a population of 38,568 in the 2020 U.S. census.\nOften characterized as a suburb or bedroom community, Lynnwood has the highest concentration of retailers in the region and a growing core of businesses, anchored by the Alderwood Mall. The city also has a community college, a convention center, and a major transit center. It is headquarters for several companies, including retailer Zumiez.\nThe Lynnwood area was logged and settled by homesteaders in the late 19th century and early 20th century, including the development of Alderwood Manor as a planned farming community. Lynnwood, named for the wife of a realtor, emerged in the late 1940s around the intersection of Highway 99 and 196th Street Southwest. The city was incorporated on April 23, 1959, and grew into a suburban hub in the years following the completion of Interstate 5 and Interstate 405. Alderwood Mall opened in 1979 and spurred the transformation of eastern Lynnwood into a retail and office district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "lynnwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3524,
+    "attempt": 3495,
+    "place_id": "gn-604490",
+    "input": {
+      "place": {
+        "place_id": "gn-604490",
+        "name": "Luleå",
+        "country": "Sweden",
+        "subdivision": "Norrbotten",
+        "lat": 65.58415,
+        "lon": 22.15465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luleå",
+          "url": "https://en.wikipedia.org/wiki/Luleå",
+          "text": "Luleå ( LOO-lay-oh, Swedish: [ˈlʉ̌ːlɛɔ] , locally [ˈlʉ̌ːlɛ] ; Lule Sami: Luleju; Finnish and Meänkieli: Luulaja) is a city on the coast of northern Sweden, and the capital of Norrbotten County, the northernmost county in Sweden. Luleå has 48,728 inhabitants in its urban core as of 2018 and is the seat of Luleå Municipality with a total population of about 80,000 as of 2025. Luleå is Sweden's 25th largest city and Norrbotten County's largest city. Luleå is considered as the world's largest brackish water archipelago with 1,312 islands, several rivers and vast forestland.\nLuleå has the seventh biggest harbour in Sweden for shipping goods. It has a large steel industry and is a centre for extensive research. It is also home to the Swedish Air Force Wing Norrbotten Wing (F 21) based in Luleå Airport. Luleå University of Technology is one of Sweden's three technology universities with around 15,000 students and is the northernmost university in Sweden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "lulea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3525,
+    "attempt": 3496,
+    "place_id": "gn-610824",
+    "input": {
+      "place": {
+        "place_id": "gn-610824",
+        "name": "Zugdidi",
+        "country": "Georgia",
+        "subdivision": "Samegrelo and Zemo Svaneti",
+        "lat": 42.5084,
+        "lon": 41.86796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zugdidi",
+          "url": "https://en.wikipedia.org/wiki/Zugdidi",
+          "text": "Zugdidi (Georgian: ზუგდიდი [ˈz̪ugd̪id̪i]; Mingrelian: ზუგდიდი or ზუგიდი) is a city in the western Georgian historical province of Samegrelo (Mingrelia). It is situated in the north-west of that province. The city is located 318 kilometres west of Tbilisi, 30 km from the Black Sea coast and 30 km from the Egrisi Range, at an elevation of 100–110 metres above sea level. Zugdidi is the capital of the Samegrelo-Zemo Svaneti region, which combines Samegrelo (Mingrelia) and upper part of Svaneti, and the centre of the Zugdidi Municipality within. Zugdidi is the sixth most populous city in Georgia.\nThe city serves as a residence of the Metropolitan of Zugdidi and Tsaishi Eparchy of the Georgian Apostolic Autocephalous Orthodox Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "zugdidi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3526,
+    "attempt": 3497,
+    "place_id": "gn-648900",
+    "input": {
+      "place": {
+        "place_id": "gn-648900",
+        "name": "Lappeenranta",
+        "country": "Finland",
+        "subdivision": "South Karelia",
+        "lat": 61.05871,
+        "lon": 28.18871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lappeenranta",
+          "url": "https://en.wikipedia.org/wiki/Lappeenranta",
+          "text": "Lappeenranta (Finnish: [ˈlɑpːeːnˌrɑntɑ]; Swedish: Villmanstrand) is a city in Finland and the regional capital of South Karelia. It is located in the southeastern interior of the country and in the Finnish Lakeland. The population of Lappeenranta is approximately 73,000, while the sub-region has a population of approximately 88,000. It is the 13th most populous municipality in Finland, and the 11th most populous urban area in the country.\nLappeenranta is located on the shore of Lake Saimaa, 30 kilometres (19 miles) from the Russian border and 64 kilometres (40 mi) from the city of Vyborg. Lappeenranta is one of the most important urban centres in the entire Saimaa region, together with the cities of Imatra, Mikkeli and Savonlinna.  Lappeenranta incorporated the late municipalities of Lappee and Lauritsala in 1967, Nuijamaa in 1989, Joutseno in 2009 and Ylämaa in 2010.\nLappeenranta, the region's tourism centre, is the second most visited city in Finland by Russian tourists after Helsinki and competes with Helsinki for the largest share of tax-free sales in Finland. Lappeenranta is a model for renewable energy and a clean living environment. Lappeenranta was the only Finnish city among the 14 finalists of the international Earth Hour City Challenge 2014 organised by WWF. In 2009, Lappeenranta was ranked fourth in the comparison of the largest Finnish cities, while in the 2008 survey the city was ranked fifth. In a survey conducted among business representatives in 2011, Lappeenranta was ranked 17th among Finnish cities in terms of image.\nLappeenranta Airport, opened in 1918 and located in the city centre, is Finland's oldest operating airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "lappeenranta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3527,
+    "attempt": 3498,
+    "place_id": "gn-7302857",
+    "input": {
+      "place": {
+        "place_id": "gn-7302857",
+        "name": "Silapathar",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.59441,
+        "lon": 94.72402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silapathar",
+          "url": "https://en.wikipedia.org/wiki/Silapathar",
+          "text": "Silapathar is a small city and municipal board in Dhemaji district in the Indian state of Assam. The name itself derived from Assamese word \"Sila\" means Kite and \"Pothar\" means rice fields as the place used be a kiting ground for native Mising people during the winters. The city is on the northern bank of the Brahmaputra River and is 470 kilometres (290 mi) from the city of Guwahati and just six km (3.7 mi) from border of Arunachal Pradesh. The longest rail cum road bridge in India (Bogibeel bridge) connects Silapathar to Dibrugarh. Historical Malinithan Mandir is located around ten km (6.2 mi) from Silapathar.\nSilapathar is the commercial hub of Dhemaji district and Arunachal Pradesh. The place has a heady mix of indigenous communities like Mising, Chutia, Ahom, Gorkhas and Deoris. \nSilapathar Buddhist Monastery (Zangdok Palri Monastery) is the second largest Buddhist Monastery in India constructed by Khen Rinpoche Tsering Dorjee under the aegis of Pema Mani Charitable Trust."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "silapathar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3528,
+    "attempt": 3499,
+    "place_id": "gn-774558",
+    "input": {
+      "place": {
+        "place_id": "gn-774558",
+        "name": "Chełm",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.14312,
+        "lon": 23.4716
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chełm",
+          "url": "https://en.wikipedia.org/wiki/Chełm",
+          "text": "Chełm is a city in eastern Poland in the Lublin Voivodeship with 60,231 inhabitants as of December 2021. It is located to the south-east of Lublin, north of Zamość and south of Biała Podlaska, some 25 kilometres (16 miles) from the border with Ukraine. The Chełm–Kovel railway (both 1435 mm and 1520 mm gauge) links the city to Kovel, and represents the longest standard-gauge railway connecting Ukraine to the rest of Europe.\nThe city is of mostly industrial character, though it also features numerous notable historical monuments and tourist attractions in the Old Town. Chełm is a multiple (former) bishopric. In the third quarter of the 13th century, it was the capital of the Kingdom of Galicia–Volhynia. Following the Galicia–Volhynia Wars of succession, in the mid-14th century, the town became part of the Kingdom of Poland. Chełm was once a multicultural and religious centre populated by Catholics, Eastern Orthodox Christians, Protestants and Jews. The Jewish population was decimated in World War II, going from 15,000 Jewish inhabitants to mere dozens. From 1975 to 1998 it was the capital of the Chełm Voivodeship. The city's landmarks are the Castle Hill with the Basilica of the Birth of the Virgin Mary and the unique Chełm Chalk Tunnels spanning some 15 kilometres (9 mi) of underground routes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "che m",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "che",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "m",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3529,
+    "attempt": 3500,
+    "place_id": "gn-1152188",
+    "input": {
+      "place": {
+        "place_id": "gn-1152188",
+        "name": "Mae Sot",
+        "country": "Thailand",
+        "subdivision": "Tak",
+        "lat": 16.71667,
+        "lon": 98.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mae Sot",
+          "url": "https://en.wikipedia.org/wiki/Mae_Sot",
+          "text": "Mae Sot (Northern Thai: ᨾᩯ᩵ᩈᩬᨯ; Thai: แม่สอด, pronounced [mɛ̂ː sɔ̀ːt]; Burmese: မဲဆောက်, [mɛ́ sʰaʊʔ]; Shan: မႄႈသွတ်ႇ, [mɛ sʰɔt̚]) is a city in western Thailand that shares a border with Myanmar to the west. It is notable as a trade hub and for its substantial population of Burmese migrants and refugees. The city is part of Tak Province, 87 km from the city of Tak and 492 km from Bangkok. It is home to the district headquarters of Mae Sot District, and is the main gateway between Thailand and Burma. As a result, it has gained notoriety for its trade in gems and teak, as well as black market services such as human trafficking and illicit drugs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "mae sot",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mae",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sot",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

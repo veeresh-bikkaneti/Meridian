@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 4508,
+    "place_id": "gn-5196220",
+    "input": {
+      "place": {
+        "place_id": "gn-5196220",
+        "name": "King of Prussia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.08927,
+        "lon": -75.39602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "King of Prussia, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/King_of_Prussia,_Pennsylvania",
+          "text": "King of Prussia, sometimes abbreviated to K.O.P., is a census-designated place in Upper Merion Township in Montgomery County, Pennsylvania, United States. The community took its unusual name in the 18th century from a local tavern named the King of Prussia Inn, which was named after King Frederick the Great of Prussia. As of the 2020 census, its population was 24,695.\nLocated 35 miles (56 km) south of Allentown and approximately 15 miles (24 km) northwest of Philadelphia, King of Prussia is considered to be an edge city of Philadelphia and part of the larger Philadelphia metropolitan area. It is situated at the convergence of four highways and consists of large amounts of retail and office space, with one of the highest concentrations of hotels, businesses, residences, and entertainment venues in Pennsylvania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "king of prussia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "king",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prussia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4529,
+    "place_id": "gn-2267538",
+    "input": {
+      "place": {
+        "place_id": "gn-2267538",
+        "name": "Grândola",
+        "country": "Portugal",
+        "subdivision": "Setúbal",
+        "lat": 38.17718,
+        "lon": -8.56675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grândola",
+          "url": "https://en.wikipedia.org/wiki/Gr%C3%A2ndola",
+          "text": "Grândola (pronounced [ˈɡɾɐ̃dulɐ] , locally [ˈɡɾɐ̃dʷɫɐ]) is a town (vila) and municipality in Setúbal District in Portugal. The population in 2021 was 13,822, in an area of 825.94 square kilometres (318.90 mi2). Besides the town of Grândola, it includes areas such as Tróia (part of Carvalhal parish), a peninsula between the Atlantic Ocean and the Sado River, and the popular summer resort of Melides. The municipality also features the Serra de Grândola mountain range and its coastline is partly within the Comporta region.\nGrândola is known for inspiring the song \"Grândola, Vila Morena\" by José Afonso, which became an iconic symbol during the Carnation Revolution. The song was used as the second, secret radio broadcast signal on the 25th of April 1974, confirming that the military coup was underway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "grandola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4542,
+    "place_id": "gn-1255551",
+    "input": {
+      "place": {
+        "place_id": "gn-1255551",
+        "name": "Suket",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.64609,
+        "lon": 76.0417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suket",
+          "url": "https://en.wikipedia.org/wiki/Suket",
+          "text": "Suket is a census town, near the city of Kota in Kota district in the Indian state of Rajasthan. It is well known for mining of Kota Stone a yellow or green limestone.  Suket lies on the bank of the Ahu river, a tributary of the river Chambal.\nThe town is also known for its local food culture, including the popularity of Hina Khan's cloud kitchen, which has gained recognition among residents for its non-vegetarian cuisine. The kitchen is especially known for dishes such as pav kebab, biryani, chicken chilli, and fried chicken, which are widely appreciated in the local community. Over time, it has become a notable part of the town's contemporary food scene and contributes to its growing reputation for quality street-style and home-style food offerings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "suket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4560,
+    "place_id": "gn-3019280",
+    "input": {
+      "place": {
+        "place_id": "gn-3019280",
+        "name": "Évian-les-Bains",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.40111,
+        "lon": 6.58793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Évian-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/%C3%89vian-les-Bains",
+          "text": "Évian-les-Bains ([evjɑ̃ le bɛ̃] ; lit. 'Évian-the-Baths'; Arpitan: Èvian, Évyan, or L'Èvian), or simply Évian, is a commune in Eastern France, by the Swiss border. It is located in the northern part of the Haute-Savoie department in the Auvergne-Rhône-Alpes region.\nAn upmarket holiday resort and spa town on the shores of Lake Geneva (French: Lac Léman), it has been visited, over two centuries, by royalty such as Kings Edward VII and George V of the United Kingdom and King Farouk of Egypt, and celebrities such as Countess Anna de Noailles and Marcel Proust.\nIn international relations, it is the namesake of the 1962 Évian Accords, which ended the Algerian War, and its Hôtel Royal hosted the 29th G8 summit in 2003 and 52nd G7 summit in 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "evian les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "evian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4562,
+    "place_id": "gn-5098132",
+    "input": {
+      "place": {
+        "place_id": "gn-5098132",
+        "name": "Fort Dix",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.02984,
+        "lon": -74.61849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Dix",
+          "url": "https://en.wikipedia.org/wiki/Fort_Dix",
+          "text": "Fort Dix, the common name for the Army Support Activity (ASA) located at Joint Base McGuire–Dix–Lakehurst, is a United States Army post. It is located 16.1 miles (25.9 km) south-southeast of Trenton, New Jersey. Fort Dix is under the jurisdiction of the Air Force Air Mobility Command. As of the 2020 U.S. census, Fort Dix census-designated place (CDP) had a total population of 7,716, of which 5,951 were in New Hanover Township, 1,765 were in Pemberton Township, and none were in Springfield Township (though portions of the CDP are included there).\nEstablished in 1917, Fort Dix was combined with adjoining U.S. Air Force and Navy facilities to become Joint Base McGuire-Dix-Lakehurst (JB MDL) in 2009. However, it remains commonly known as \"Fort Dix\", \"ASA Dix\", or \"Dix\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "fort dix",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dix",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4563,
+    "place_id": "gn-5108135",
+    "input": {
+      "place": {
+        "place_id": "gn-5108135",
+        "name": "Battery Park City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71149,
+        "lon": -74.01625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Battery Park City",
+          "url": "https://en.wikipedia.org/wiki/Battery_Park_City",
+          "text": "Battery Park City is a neighborhood and planned community at the southern tip of Manhattan in New York City. The neighborhood is situated along the Hudson River waterfront, and separated the Financial District and Tribeca by the West Side Highway. Directly to the south lies The Battery, formerly known as Battery Park, from which the neighborhood derives its name. Battery Park City is located on state-owned land managed by the Battery Park City Authority (BPCA), a New York State public-benefit corporation.\nAlthough primarily a residential neighborhood, there also are several office buildings, including the Brookfield Place complex and 200 West Street (headquarters of Goldman Sachs). The neighborhood is also home to the Museum of Jewish Heritage, Stuyvesant High School, along with some hotels, street-level retail and restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "battery park city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "battery",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4566,
+    "place_id": "gn-5895650",
+    "input": {
+      "place": {
+        "place_id": "gn-5895650",
+        "name": "Beaconsfield",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.43341,
+        "lon": -73.86586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaconsfield, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Beaconsfield,_Quebec",
+          "text": "Beaconsfield is a suburb on the Island of Montreal, Quebec, Canada, part of the Greater Montreal region locally referred to as the West Island. It is a residential community located on the north shore of Lac Saint-Louis, bordered on the west by Baie-D'Urfé, north by Kirkland and east by Pointe-Claire.\nIncorporated in 1910, named in honour of Benjamin Disraeli, Earl of Beaconsfield, Prime Minister of the United Kingdom and close confidant of Queen Victoria, the city's historical roots go back as far as 1698. Beaconsfield, in its current form, was developed as a cottage community by affluent Montreal residents. Over the decades, the city has transformed from summer homes, to year-round residents, and has flourished.\nThe population of Beaconsfield, as of the Canada 2021 Census, is 19,277."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "beaconsfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4567,
+    "place_id": "gn-6111745",
+    "input": {
+      "place": {
+        "place_id": "gn-6111745",
+        "name": "Port Elgin",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.43605,
+        "lon": -81.38981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Elgin, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Port_Elgin,_Ontario",
+          "text": "Port Elgin is a community in the town of Saugeen Shores, Ontario, Canada. Originally named Normanton the town was renamed Port Elgin when it was incorporated in 1874, after James Bruce, 8th Earl of Elgin, a former Governor General of the Province of Canada.\nAlthough road signs indicate the name Port Elgin, it is no longer an entity, per se. In 1998, the Town of Southampton, the Town of Port Elgin and Saugeen Township were amalgamated to form the Town of Port Elgin-Saugeen-Southampton. On December 17, 1998, the Province renamed the new municipality as the Town of Saugeen Shores.\nUnlike \"beach towns\" such as Sauble Beach, this is a four seasons community where most businesses are open all year and activities for locals are available most months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "port elgin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "elgin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4569,
+    "place_id": "gn-931070",
+    "input": {
+      "place": {
+        "place_id": "gn-931070",
+        "name": "Chikwawa",
+        "country": "Malawi",
+        "subdivision": "Southern Region",
+        "lat": -16.03352,
+        "lon": 34.80091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chikwawa",
+          "url": "https://en.wikipedia.org/wiki/Chikwawa",
+          "text": "Chikwawa is a town with a population of 6,114 according to the 2018 census located in the Southern Region of Malawi on the west bank of the Shire River.  It is the administrative capital of the Chikwawa District. Chikwawa lies almost 50 kilometres (30 mi) south of Blantyre, the commercial capital of Malawi.\nChikwawa, then known as Chibisa's village, was the first town in Malawi to be seen by European explorers, when visited in March   1859 by David Livingstone's second Zambesi expedition. Their way upstream was blocked by the Kapachira Falls, and they returned in August for land exploration which reached Lake Malawi on 18 September. Two of the missionaries accompanying Dr Livingstone, belonging to the Universities Mission to the Central Africa (UMCA) Dr Dickinson and Rev."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "chikwawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4573,
+    "place_id": "gn-3521305",
+    "input": {
+      "place": {
+        "place_id": "gn-3521305",
+        "name": "Polanco",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.43332,
+        "lon": -99.19919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polanco",
+          "url": "https://en.wikipedia.org/wiki/Polanco",
+          "text": "Polanco is a neighborhood in the Miguel Hidalgo borough of Mexico City. Polanco is an affluent colonia, noted for its luxury shopping along Presidente Masaryk Avenue, the most expensive street in Mexico, as well as for the numerous prominent cultural institutions located within the neighborhood.\nOriginally a residential area of large single-family homes, the land use of the neighborhood began to change in the second half of the 20th century. Particularly after the 1985 Mexico City earthquake, the former residences were replaced by commercial properties and high rise buildings. Today, Polanco is best known as a shopping district.\nPolanco is known for having one of the country's densest concentrations of luxury shopping, with the most upscale restaurants, high-net-worth individuals, upscale hotels, and diplomatic missions and embassies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "polanco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4578,
+    "place_id": "gn-5907092",
+    "input": {
+      "place": {
+        "place_id": "gn-5907092",
+        "name": "Bracebridge",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.03341,
+        "lon": -79.31633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bracebridge, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Bracebridge,_Ontario",
+          "text": "Bracebridge is a town and the seat of the District Municipality of Muskoka in Ontario, Canada.\nThe town was built around a waterfall on the Muskoka River in the centre of town and is known for its other nearby waterfalls (Wilson's Falls, High Falls, etc.). It was first incorporated in 1875 and celebrated the town's 150-year-anniversary in 2025.\nThe town is the seat of the district government and a centre of tourism for the Muskoka area and has several historical sites, such as the Clock Tower, Woodchester Villa, and the Silver Bridge, which joins Manitoba Street with Ecclestone Drive. The Silver Bridge was repaired in 2002, and is currently out of service and undergoing rehabilitation that is set to conclude in the fourth quarter of 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "bracebridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4580,
+    "place_id": "gn-5992059",
+    "input": {
+      "place": {
+        "place_id": "gn-5992059",
+        "name": "Kimberley",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.67071,
+        "lon": -115.9776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kimberley, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Kimberley,_British_Columbia",
+          "text": "Kimberley is a city in southeast British Columbia, Canada along Highway 95A between the Purcell and Rocky Mountains. Kimberley was named in 1896 after the Kimberley mine in South Africa. \nAt approximately 1,120 meters (3,675 feet) above sea level, the city's elevation is the highest in British Columbia.\nFrom 1917 to 2001, it was the home to the world's largest lead-zinc mine, the Sullivan Mine. Today, Kimberley is primarily a tourist destination and home to the Kimberley Alpine Resort, a ski area and Kimberley's Underground Mining Railway that features a 750-foot-long (230 m) underground mining interpretive centre complete with operational 3 ft (914 mm) narrow-gauge railway equipment. Recreational pursuits include world-class skiing, snowboarding, snowmobiling, fishing, whitewater rafting, kayaking, biking, hiking and golfing on championship golf courses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "kimberley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4583,
+    "place_id": "gn-974611",
+    "input": {
+      "place": {
+        "place_id": "gn-974611",
+        "name": "Montagu",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.78664,
+        "lon": 20.12106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montagu, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Montagu,_South_Africa",
+          "text": "Montagu is a town in the Western Cape province of South Africa, about 180 kilometres (110 mi) from Cape Town in the Western Little Karoo. \nThe town is named after former secretary of the Cape Colony, John Montagu, but was once known as Agter Cogman's Kloof, Cogman's Kloof linking the town and railway station. It is situated at the confluence of the Keisie and Kingna rivers.\nMontagu was founded on the farm \"Uitvlugt\" in 1851, and is known for its hot mineral springs and scenic mountains. It is also an agricultural centre, where orchards and vineyards are in production and local herbs are grown. The farming area, 'Koo', lies north of the town and is famous for the quality of its apples, pears, apricots and peaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "montagu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4586,
+    "place_id": "gn-2783175",
+    "input": {
+      "place": {
+        "place_id": "gn-2783175",
+        "name": "Zottegem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.86955,
+        "lon": 3.81052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zottegem",
+          "url": "https://en.wikipedia.org/wiki/Zottegem",
+          "text": "Zottegem (Dutch pronunciation: [ˈzɔtəɣɛm], Sotteghem and Sottegem in older English and French language sources) is a municipality and city located in Belgium and more particularly in Flanders, in the province of East Flanders. The municipality comprises the town of Zottegem proper and the villages of Elene, Erwetegem, Godveerdegem, Grotenberge, Leeuwergem, Oombergen, Sint-Goriks-Oudenhove, Sint-Maria-Oudenhove, Strijpen and Velzeke-Ruddershove. On 1 January 2018, Zottegem had a total population of 26,373. The total area is 56.66 km2 which gives a population density of 470 inhabitants per km2.\nZottegem is part of the hilly geographical area of the Flemish Ardennes (Vlaamse Ardennen); the hills and cobblestone streets (Paddestraat) are regular locations in the springtime cycle classics of Flanders.\nThe city is known for its ties with Lamoral, Count of Egmont."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "zottegem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4588,
+    "place_id": "gn-2998127",
+    "input": {
+      "place": {
+        "place_id": "gn-2998127",
+        "name": "L'Isle-sur-la-Sorgue",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.91971,
+        "lon": 5.05141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Isle-sur-la-Sorgue",
+          "url": "https://en.wikipedia.org/wiki/L'Isle-sur-la-Sorgue",
+          "text": "L'Isle-sur-la-Sorgue (French pronunciation: [lil syʁ la sɔʁɡ]; Provençal: L'Illa de Sòrga [ˈlilɔ de ˈsɔʀɡɔ] or L'Illa de Venissa [ˈlilɔ de veˈnisɔ]) is a town and commune on the Sorgue river in Southeastern France. Politically, the commune is in the arrondissement of Avignon within the department of Vaucluse, in the région of Provence-Alpes-Côte d'Azur.\nThe small town is famous for its many antique shops and hosts antique markets most Sundays. It has many waterside cafés and restaurants, all within walking distance of each other. Its many attractive water wheels throughout the town are still in working order, and it is sometimes known as Venise Comtadine, or the Venice of the Comtat Venaissin.\nL'Isle-sur-la-Sorgue is twinned with the towns of Penicuik in Scotland and Anagni in Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "l isle sur la sorgue",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "isle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sorgue",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4589,
+    "place_id": "gn-3019259",
+    "input": {
+      "place": {
+        "place_id": "gn-3019259",
+        "name": "Évron",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 48.15587,
+        "lon": -0.40242
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Évron",
+          "url": "https://en.wikipedia.org/wiki/%C3%89vron",
+          "text": "Évron (French pronunciation: [evʁɔ̃]) is a commune in the Mayenne department in north-western France. On 1 January 2019, the former communes Châtres-la-Forêt and Saint-Christophe-du-Luat were merged into Évron. Évron is noted for the Basilica of Notre-Dame de l'Épine (12th century), formerly the church of the suppressed Évron Abbey, with 13th-century wall paintings and Aubusson tapestries. The nave and tower of the church date from the 11th century; the rest of the structure dates from the 18th century\nÉvron is the home to the largest Babybel Cheese factory globally and accounts for 18% of \"Group Bel\" global production. The plant processes 650k litres of milk a day making the surrounding countryside heavily geared to milk production and the growing of winter feed for the dairy herds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "evron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4591,
+    "place_id": "gn-3532821",
+    "input": {
+      "place": {
+        "place_id": "gn-3532821",
+        "name": "Antón Lizardo",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.05962,
+        "lon": -95.99272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antón Lizardo, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Ant%C3%B3n_Lizardo,_Veracruz",
+          "text": "Antón Lizardo is a fishing town (2005 population 4,586)\nin the Mexican state of Veracruz. \nIt is located 23 km (14 mi) south of the port city of Veracruz, near Boca del Río, in the municipality of Alvarado.\nIn January 1860, the small naval Battle of Antón Lizardo occurred here between Mexican rebels and United States Navy warships. Since 11 November 1952, it is the home of the Heroica Escuela Naval Militar, the country's Naval Academy.\nAntón Lizardo offers a fairly long beach with fine, dark, hard-packed sand and calm shallow waters that make up part of the Veracruz Coral Reef System. These beaches are convenient for transportation for scuba diving at the coral reefs, but offer no protection from the wind or from drivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "anton lizardo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lizardo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4592,
+    "place_id": "gn-3865385",
+    "input": {
+      "place": {
+        "place_id": "gn-3865385",
+        "name": "Arroyo Seco",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -33.15365,
+        "lon": -60.51168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arroyo Seco, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Arroyo_Seco,_Santa_Fe",
+          "text": "Arroyo Seco is a city in the province of Santa Fe, Argentina. It has about 20,000 inhabitants according to the 2010 census [INDEC]. Its name (literally \"dry stream\") is the same as a neighbouring creek. The city is located on the western shore of the Paraná River and can be reached also by National Route 9 (Argentina), Provincial Route 21, and the Nuevo Central Argentino railway line.\nThe town was founded in 1889 by Liberato Aguirre, who donated part of his lands to the provincial government in order to allow the train to pass through (it was a part of the Buenos Aires–Rosario line, the latter being only 30 km (19 mi) away). The original name, \"Pueblo Aguirre\", was soon replaced by \"Pueblo Arroyo Seco\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "arroyo seco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arroyo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4597,
+    "place_id": "gn-881164",
+    "input": {
+      "place": {
+        "place_id": "gn-881164",
+        "name": "Shurugwi",
+        "country": "Zimbabwe",
+        "subdivision": "Midlands Province",
+        "lat": -19.67016,
+        "lon": 30.00589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shurugwi",
+          "url": "https://en.wikipedia.org/wiki/Shurugwi",
+          "text": "Shurugwi, originally known as Selukwe, is a small town and administrative centre in Midlands Province, southern Zimbabwe, located about 350 km (220 mi) south of Harare, with a population of 22,900 according to the 2022 census. The town was established in 1899 on the Selukwe Goldfield, which itself was discovered in the early 1890s, not long after the annexation of Rhodesia by the Pioneer Column.\nThe town lies in well wooded, hilly and picturesque country at an altitude of about 1,440 metres (4,720 ft) and is well watered having a typical annual rainfall of 890 millimetres (35 in). On a clear day, it is quite possible to see the hills around Masvingo and Great Zimbabwe, with the latter being over 145 km (90 mi) away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "shurugwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4607,
+    "place_id": "gn-2961960",
+    "input": {
+      "place": {
+        "place_id": "gn-2961960",
+        "name": "Raheny",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.38681,
+        "lon": -6.18067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raheny",
+          "url": "https://en.wikipedia.org/wiki/Raheny",
+          "text": "Raheny (Irish: Ráth Eanaigh) is a northern suburb of Dublin, Ireland, halfway from the city centre to Howth. It is centred on a historic settlement, first documented in 570 AD (Mervyn Archdall). The district shares Dublin's two largest municipal parks, Saint Anne's Park and Bull Island with its 4.5 km beach, with neighbouring Clontarf, and is crossed by several small watercourses.\nThe coastal hamlet grew rapidly in the 20th century and is now a mid-density, chiefly residential, Northside suburb with a village core. It is home to a range of retail and banking outlets, multiple sports groups including two golf courses, several schools and churches, Dublin's second-busiest library and a Garda station.\nRaheny is also a civil parish in the ancient barony of Coolock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "raheny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

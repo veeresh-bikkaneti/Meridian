@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7995,
+    "attempt": 7941,
+    "place_id": "gn-5978126",
+    "input": {
+      "place": {
+        "place_id": "gn-5978126",
+        "name": "Hudson",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.45008,
+        "lon": -74.14922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hudson, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Hudson,_Quebec",
+          "text": "Hudson is an off-island suburb of Montreal, with a population of 5,411 as of 2021. It is located on the south-west bank of the lower Ottawa River, in Vaudreuil-Soulanges Regional County Municipality. Situated about 60 kilometres (37 mi) west of downtown Montreal, many residents commute to work on the Island of Montreal.\nHudson is a municipality within Greater Montreal.  An informal rural agglomeration since the early part of the 19th century, the Town of Hudson was formally created in June 1969 by merging the villages of Hudson, Hudson Heights and Como. A relatively wealthy town, Hudson is known for its large, turn-of-the century houses, many of which border the Lake of Two Mountains. A ferry from Hudson takes cars across the lake (a widening of the Ottawa River) to the village of Oka.\nHudson has been compared to culturally and demographically similar Quebec towns such as the Eastern Townships villages of  North Hatley and  Brome Lake as well as nearby Senneville. All four municipalities border a body of water (used extensively for recreation year-round) and include a blend of French and English residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "hudson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7996,
+    "attempt": 7942,
+    "place_id": "gn-6104215",
+    "input": {
+      "place": {
+        "place_id": "gn-6104215",
+        "name": "Picton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.00176,
+        "lon": -77.14637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Picton, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Picton,_Ontario",
+          "text": "Picton is an unincorporated community located in Prince Edward County in southeastern Ontario, roughly 160 km (99 mi) east of Toronto. It is the county's largest community and former seat located at the southwestern end of Picton Bay, a branch of the Bay of Quinte, which is along the northern shoreline of Lake Ontario. The town is named for Lieutenant General Sir Thomas Picton, who served in the British Army during the Peninsular War in Spain and Portugal. He also saw action at the Battle of Waterloo, where he was killed. It was formerly incorporated as a town. Picton is home to the Picton Pirates of the Provincial Junior Hockey League Tod Division."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "picton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7997,
+    "attempt": 7943,
+    "place_id": "gn-673365",
+    "input": {
+      "place": {
+        "place_id": "gn-673365",
+        "name": "Mihai Viteazu",
+        "country": "Romania",
+        "subdivision": "Cluj County",
+        "lat": 46.53333,
+        "lon": 23.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mihai Viteazu, Cluj",
+          "url": "https://en.wikipedia.org/wiki/Mihai_Viteazu,_Cluj",
+          "text": "Mihai Viteazu (archaic: Sânmihaiu; Hungarian: Szentmihály; German: Michelsdorf) is a commune in Cluj County, Transylvania, Romania. It is composed of three villages: Cheia (Mészkő), Cornești (Sinfalva), and Mihai Viteazu.\nMihai Viteazu village, which is named after the medieval ruler Michael the Brave (Romanian: Mihai Viteazu), was founded in 1925 by the merging of two villages, Sânmihaiu de Jos (Alsószentmihály) and Sânmihaiu de Sus (Felsőszentmihály). Those two, together with Cornești and Cheia, were first mentioned in documents in the 14th century, after the settlement of Székelys in the Aranyos Seat area. However, archaeologists unearthed traces of human dwellings from earlier periods, too. \nThe commune covers an area of 47.53 square kilometres (18.35 square miles). The most interesting sight of the area is the Turda Gorge (Cheile Turzii)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "mihai viteazu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mihai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "viteazu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7998,
+    "attempt": 7944,
+    "place_id": "gn-673367",
+    "input": {
+      "place": {
+        "place_id": "gn-673367",
+        "name": "Mihai Viteazu",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.63333,
+        "lon": 28.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mihai Viteazu, Constanța",
+          "url": "https://en.wikipedia.org/wiki/Mihai_Viteazu,_Constan%C8%9Ba",
+          "text": "Mihai Viteazu (Romanian pronunciation: [miˈhaj viˈte̯azu]) is a commune in Constanța County, Northern Dobruja, Romania. It is situated in the northeastern part of the county, some 60 km (37 mi) from the county seat, Constanța. To the east are the shores of the Black Sea and of Lake Sinoe, while to the north is Tulcea County.\nThe commune consists of two villages, which are 3 km (1.9 mi) apart:\n\nMihai Viteazu, named after the Wallachian prince Michael the Brave (historical name: Sariurt).\nSinoe (historical names: Casapchioi, Turkish: Kasapköy).\nThe Eolica Mihai Viteazu Wind Farm (with a nominal output of up to 80 MW of power) is located on the territory of the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "mihai viteazu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mihai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "viteazu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7999,
+    "attempt": 7945,
+    "place_id": "gn-8348802",
+    "input": {
+      "place": {
+        "place_id": "gn-8348802",
+        "name": "Gunn",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -12.48765,
+        "lon": 130.99322
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gunn, Northern Territory",
+          "url": "https://en.wikipedia.org/wiki/Gunn,_Northern_Territory",
+          "text": "Gunn is an inner-city suburb of Palmerston, Northern Territory, Australia. It is 23 km southeast of the Darwin CBD. Its local government area is the City of Palmerston. It is located on the traditional Country and waterways of the Larrakia people.\nGunn is bounded to the north by the Temple Tce and Roystonea Ave, to the west is Chung Wah Terrace, and to the south is Lambrick Ave and East is Roystonea Ave . The suburb is mostly composed of developments from the 2000s to 2010s after Cyclone Tracy struck Darwin in 1974.\nThe suburb of Gunn is named after Mrs Jeannie Gunn, born in Carlton, Melbourne as Jeannie Taylor in June 1870. Miss Jeannie Taylor met Aeneas Gunn. The Gunns came to Port Darwin on the SS Guthrie Aeneas Gunn had previously been to the Northern Territory in 1890."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "gunn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8000,
+    "attempt": 7946,
+    "place_id": "gn-945995",
+    "input": {
+      "place": {
+        "place_id": "gn-945995",
+        "name": "Underberg",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.79084,
+        "lon": 29.49448
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Underberg, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Underberg,_KwaZulu-Natal",
+          "text": "Underberg is an administrative town in a dairy and cattle farming community in the Mzimkulu River valley of KwaZulu-Natal, South Africa. It is situated at the foot of the 1,904 m Hlogoma Peak (place of echoes) in the foothills of the southern Drakensberg, KwaZulu-Natal. Underberg was established in 1917 when the railway from Pietermaritzburg reached the area. It is an important commercial centre for the region's farming industry providing many of the support services. It is also a trading center for people who come down the nearby Sani Pass from Lesotho.\nThe town also houses provincial offices of the ministries of Social Welfare and Transport, a clinic; as well as the municipal library. The Underberg School offers pre-primary and primary education.\nTourism is the second biggest industry in the area, next to farming. The area surrounding Underberg provides a large variety of tourism offerings, as a gateway to the Southern Drakensberg. The Southern Drakensberg Community Tourism Organisation was established by the community in 2007 and serves to promote tourism under the Southern Berg Escape brand. Underberg offers a variety of accommodation and eatery options, mostly of casual nature to suit most tastes.\nThe Underberg district is, along with Dullstroom, Mpumalanga, one of South Africa's premier trout fly fishing destinations. Splashy Fen, an annual outdoor music festival, is held on a farm near Underberg. The internationally acclaimed Sani2C Mountain Bike race held annually starts in Underberg, while paddlers from far and wide gather annually for the Drak Challenge canoe race held on the Mzimkulu river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "underberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8001,
+    "attempt": 7947,
+    "place_id": "gn-1850244",
+    "input": {
+      "place": {
+        "place_id": "gn-1850244",
+        "name": "Toi",
+        "country": "Japan",
+        "subdivision": "Shizuoka",
+        "lat": 34.90169,
+        "lon": 138.79995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toi, Shizuoka",
+          "url": "https://en.wikipedia.org/wiki/Toi,_Shizuoka",
+          "text": "Toi (土肥町, Toi-chō) is a town located in Tagata District, Shizuoka Prefecture, Japan on the west coast of Izu Peninsula facing Suruga Bay.\nAs of March 1, 2004, final population data before the amalgamation, the town had an estimated population of 5,203 and a density of 105 persons per km2.\nOn April 1, 2004, Toi, along with the towns of Amagiyugashima, Nakaizu and Shuzenji (all from Tagata District), was merged to create the city of Izu.\nToi was also home to the Toi gold mine, the second most productive gold mine in Japan after Sado, Niigata. The total area was 49.41 km2. It was the location of the world's largest flower clock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "toi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8002,
+    "attempt": 7948,
+    "place_id": "gn-2158100",
+    "input": {
+      "place": {
+        "place_id": "gn-2158100",
+        "name": "Merbein",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -34.16802,
+        "lon": 142.06599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merbein",
+          "url": "https://en.wikipedia.org/wiki/Merbein",
+          "text": "Merbein is a town in the Rural City of Mildura, Victoria, Australia. It is on the Calder Highway between Mildura and the Murray River crossing at the Abbotsford Bridge to Curlwaa. At the 2016 census, the town had a population of 1,981. Merbein is 12 kilometres from Mildura, 553 kilometres (344 mi) from Melbourne and 389 kilometres (242 mi) from Adelaide.\nThe town is known for farming and is part what is informally called the \"fruit bowl\" or \"food bowl\", the growing region roughly made of the Coomealla and Sunraysia irrigation districts fed by the Darling and Murray rivers. Produce farmed in Merbein include grapes, citrus, mushrooms, green beans, asparagus and pistachios.\n\nMerbein is also home of Mildura Wines, a winery W. B. Chaffey built in 1913 for the first intake of grapes in 1914. The winery, originally known as the Mildura Distillery and Winery, stands on a 30-metre sandstone cliff near Pump Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "merbein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8003,
+    "attempt": 7949,
+    "place_id": "gn-2640452",
+    "input": {
+      "place": {
+        "place_id": "gn-2640452",
+        "name": "Penmaenmawr",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.26667,
+        "lon": -3.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penmaenmawr",
+          "url": "https://en.wikipedia.org/wiki/Penmaenmawr",
+          "text": "Penmaenmawr (, Welsh: [ˈpɛnmaːɨnmaur] ) is a town and community in Conwy County Borough, Wales, which was formerly in the parish of Dwygyfylchi and the traditional county of Caernarfonshire. It is on the North Wales coast between Conwy and Llanfairfechan and was an important quarrying town, though quarrying is no longer a major employer. The population of the community was 4,353 in 2011, including Dwygyfylchi and Capelulo. The town itself having a population of 2,868 (2011).\nIt was named after Penmaenmawr mountain, which stands above the sea immediately west of the town. Much of its formerly rounded top (with an old hill-fort) has been quarried away, leaving the present-day lower flat top.\nThe town was bypassed by the A55 Expressway in the 1980s, losing its old Edwardian period promenade in the process, which was largely replaced by a modern one. Penmaenmawr is noted for its spectacular mountain and coastal walks. Nearby are the popular attractions of Sychnant Pass and Conwy Mountain, and the town also lies partly within Snowdonia National Park (Eryri)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "penmaenmawr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8004,
+    "attempt": 7950,
+    "place_id": "gn-2715324",
+    "input": {
+      "place": {
+        "place_id": "gn-2715324",
+        "name": "Färjestaden",
+        "country": "Sweden",
+        "subdivision": "Kalmar",
+        "lat": 56.6499,
+        "lon": 16.46859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Färjestaden",
+          "url": "https://en.wikipedia.org/wiki/F%C3%A4rjestaden",
+          "text": "Färjestaden is a locality situated in Mörbylånga Municipality, Kalmar County, Sweden with 5,018 inhabitants in 2010. It is located in the southern part of the island of Öland, on the Kalmar Strait side, south of Borgholm. Färjestaden, literally The Ferry Town, is named after the ferries that used to be the only connection to the mainland. Nowadays the car-bridge Ölandsbron connects the mainland with the island, and Färjestaden has had an impressive population increase, making it several times bigger than the town Mörbylånga.\nIn the city center of Färjestaden there is a shopping mall with, among other things, a pharmacy, grocery store and local library.\nFBC Kalmarsund is based in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "farjestaden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8005,
+    "attempt": 7951,
+    "place_id": "gn-3209379",
+    "input": {
+      "place": {
+        "place_id": "gn-3209379",
+        "name": "Jankomir",
+        "country": "Croatia",
+        "subdivision": "Zagreb",
+        "lat": 45.79167,
+        "lon": 15.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jankomir",
+          "url": "https://en.wikipedia.org/wiki/Jankomir",
+          "text": "Jankomir (Croatian pronunciation: [ˈjɑŋkomiːr]) is a neighborhood in Zagreb, Croatia. It is located in the Stenjevec city district in the western part of the city, and is officially referred to as \"Stenjevec - jug\", with an area of 824.34 ha (2,037.0 acres) and a population of 8,072.\nJankomir is regarded citywide as a shopping destination since it houses several shopping centers. Its main arterial roads are Velimir Škorpik Road, Ljubljanska Avenue and Zagrebačka Avenue. Before the advent of the shopping centers Jankomir was mostly known for the nearby Jankomir interchange, a major interchange of the Zagreb bypass and Ljubljanska Avenue. Jankomir is also home to a psychiatric hospital of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "jankomir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8006,
+    "attempt": 7952,
+    "place_id": "gn-3861405",
+    "input": {
+      "place": {
+        "place_id": "gn-3861405",
+        "name": "Chimpay",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -39.1654,
+        "lon": -66.14642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chimpay",
+          "url": "https://en.wikipedia.org/wiki/Chimpay",
+          "text": "Chimpay is a municipality in Río Negro Province in Argentina. It lies on the National Route 22 in the Mid Valley of the Río Negro.\nPopulated by the Tehuelche and the Mapuche before the Conquest of the Desert, lonco Manuel Namuncurá established himself there for years, after receiving lands there as a condition to surrender to the Argentine Government. The village is known as the birthplace of his son, blessed Ceferino Namuncurá, who dedicated his short life to help the locals.\nThe economy is mostly based on its agriculture sector with religious tourism also playing a role. Known for its cherry production, the town is considered the Cherry Capital of the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "chimpay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8007,
+    "attempt": 7953,
+    "place_id": "gn-3981727",
+    "input": {
+      "place": {
+        "place_id": "gn-3981727",
+        "name": "Teuchitlán",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.68476,
+        "lon": -103.8492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teuchitlán",
+          "url": "https://en.wikipedia.org/wiki/Teuchitl%C3%A1n",
+          "text": "Teuchitlán is a town and municipality in Jalisco, central-western Mexico. The municipality covers an area of 219.1 km2 and is 36 mi (58 km) from Guadalajara, the capital city.\nAs of 2005, the municipality had a total population of 8,361.\nTeuchitlán is located near the archeological site of Los Guachimontones, associated with the pre-Columbian Teuchitlán culture.\nOn 5 March 2025, groups searching for missing persons in Mexico found an extermination site containing 200 pairs of shoes, personal belongings, apparent human bones, and three crematoriums in Rancho Izaguirre, about 4.5 km (2.8 mi) southeast of Teuchitlán. Members of the New Generation Jalisco Cartel allegedly used it as a confinement, training, and extermination center. State authorities had secured the ranch in September 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "teuchitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8008,
+    "attempt": 7954,
+    "place_id": "gn-4677344",
+    "input": {
+      "place": {
+        "place_id": "gn-4677344",
+        "name": "Bullard",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.13988,
+        "lon": -95.32023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bullard, Texas",
+          "url": "https://en.wikipedia.org/wiki/Bullard,_Texas",
+          "text": "Bullard is a small town in the Smith and Cherokee counties in the east-central part of the U.S. state of Texas. U.S. Route 69 and Farm-to-Market Roads 2137, 2493, and 344 intersect here, about 15 miles (24 km) south of the larger city of Tyler. Its population was 3,318 at the 2020 census, up from 2,463 at the 2010 census.\nThe Smith County portion of the town is part of the Tyler metropolitan statistical area, while the Cherokee County portion is part of the Jacksonville micropolitan statistical area.\nBullard was earlier known as \"Etna\" and \"Hewsville\". The town is named for John H. Bullard, a Confederate soldier, and Emma Eugenia (Erwin) Bullard. In 1881, John Bullard opened the Hewsville post office in his store. In 1883, the Etna post office, near Hewsville, was closed. Then, the Hewsville office was renamed \"Bullard\". Many rural residents in northern Cherokee County are served by the Bullard post office. The bypassing of the railroad brought about the demise of Etna and the rise of Bullard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "bullard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8009,
+    "attempt": 7955,
+    "place_id": "gn-5104930",
+    "input": {
+      "place": {
+        "place_id": "gn-5104930",
+        "name": "Spring Lake Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.152,
+        "lon": -74.039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Lake Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Spring_Lake_Heights,_New_Jersey",
+          "text": "Spring Lake Heights is a borough located in the southern coastal portion of Monmouth County, New Jersey, United States. As of the 2020 United States census, the borough's population was 4,890, an increase of 177 (+3.8%) from the 2010 census count of 4,713, which in turn reflected a decline of 514 (−9.8%) from the 5,227 counted in the 2000 census.\nThe borough of Spring Lake Heights was formed by an act of the New Jersey Legislature on March 19, 1927, from portions of Wall Township, based on the results of a referendum held on May 3, 1927. The borough was named for Spring Lake, which was named for a clear spring-fed lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "spring lake heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8010,
+    "attempt": 7956,
+    "place_id": "gn-5138847",
+    "input": {
+      "place": {
+        "place_id": "gn-5138847",
+        "name": "South Glens Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.29924,
+        "lon": -73.63512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Glens Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/South_Glens_Falls,_New_York",
+          "text": "South Glens Falls is a village in northern Saratoga County, New York, United States. The population was 3,744 at the 2020 census. The village is surrounded by Town of Moreau and separated from the City of Glens Falls by the Hudson River.\nCooper's Cave, shown on the village seal, is named after the author James Fenimore Cooper. Cooper was inspired to use the area as a location in his novel, The Last of the Mohicans, after visiting the area. The cave is within the bedrock of the Hudson River, but a viewing platform under the bridge between the village and Glens Falls allow visitors to see it from a unique vantage point."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "south glens falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "glens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8011,
+    "attempt": 7957,
+    "place_id": "gn-5409959",
+    "input": {
+      "place": {
+        "place_id": "gn-5409959",
+        "name": "Winchester",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.70697,
+        "lon": -117.08447
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winchester, California",
+          "url": "https://en.wikipedia.org/wiki/Winchester,_California",
+          "text": "Winchester is a census-designated place (CDP) in the Inland Empire region of Riverside County, California, USA. As of the 2020 census, the CDP had a total population of 3,068, up from 2,534 at the 2010 census.\nWinchester was founded in 1886 in Pleasant Valley in what was then San Diego County. The town was named after the widow of Horace Winchester, Mrs. Amy Winchester.\nLargely rural for most of its history, and home to agricultural businesses including the Winchester Cheese Company, Winchester experienced rapid growth during the housing construction boom in the early-to-mid 2000s.  However, construction and growth slowed when the housing bubble burst in 2007, resulting in a housing market correction.  The mid-to-late 2010s saw housing prices in Winchester recover and construction continue with new subdivisions, schools, and parks being built.\nIn 2022, Riverside County expanded the Winchester Planning area to 42 square miles. extending Winchester to the Temecula City limits. In order to meet state requirements for 40 thousand new homes. The City of Temecula is pushing back against the expanded planning area due to traffic concerns. The city of Menifee is pushing back against the expanded community boundary due to desire to annex land west of State route 79"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "winchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8012,
+    "attempt": 7958,
+    "place_id": "gn-5794761",
+    "input": {
+      "place": {
+        "place_id": "gn-5794761",
+        "name": "Forks",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.95036,
+        "lon": -124.38549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forks, Washington",
+          "url": "https://en.wikipedia.org/wiki/Forks,_Washington",
+          "text": "Forks, also previously known as the unincorporated town of Quillayute, is a town in southwest Clallam County, Washington, United States. The population was 3,335 at the 2020 census. It is named after the forks in the nearby Bogachiel, Calawah, and Sol Duc rivers which join to form the Quillayute River.\nFor much of the 20th century, the city's economy was fueled by the local timber industry. Forks later became a tourism destination for visitors to Olympic National Park, recreational sport fishing in nearby rivers, and fans of the novel series Twilight and films, which are set in Forks. The town is also near the Clallam Bay Corrections Center and Olympic Corrections Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "forks",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8013,
+    "attempt": 7959,
+    "place_id": "gn-5874678",
+    "input": {
+      "place": {
+        "place_id": "gn-5874678",
+        "name": "Soldotna",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 60.48778,
+        "lon": -151.05833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soldotna, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Soldotna,_Alaska",
+          "text": "Soldotna is a city in the Kenai Peninsula Borough in the U.S. state of Alaska. At the 2020 census, the population was 4,342, up from 4,163 in 2010. It is the seat of the Kenai Peninsula Borough.\nSoldotna is located in the Southcentral portion of Alaska on the central-western portion of the Kenai Peninsula. The city limits span 7 square miles along the Kenai River, which empties into the Cook Inlet in the nearby city of Kenai. Soldotna is located on the western edge of the vast Kenai National Wildlife Refuge, a protected area spanning nearly 2 million acres and home to bears, moose, caribou, sheep, and many fish and bird species.\nThe city is located at the junction of the Sterling Highway and the Kenai Spur Highway, which has enabled Soldotna to develop as a service and retail hub for the Central Peninsula as well as for travelers between Anchorage and Homer. The Central Peninsula Hospital serves the medical needs of the region's residents and tourists. The Kenai Peninsula College, a branch of the University of Alaska Anchorage, operates the Kenai River Campus in Soldotna. Additionally, the headquarters of the Kenai National Wildlife Refuge, the Kenai Peninsula Borough, and the Kenai Peninsula Borough School District are located in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "soldotna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8014,
+    "attempt": 7960,
+    "place_id": "gn-5919815",
+    "input": {
+      "place": {
+        "place_id": "gn-5919815",
+        "name": "Channel-Port aux Basques",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 47.57286,
+        "lon": -59.13808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Channel-Port aux Basques",
+          "url": "https://en.wikipedia.org/wiki/Channel-Port_aux_Basques",
+          "text": "Channel-Port aux Basques is a town at the extreme southwestern tip of Newfoundland fronting on the western end of the Cabot Strait.  A Marine Atlantic ferry terminal is located in the town which is the primary entry point onto the island of Newfoundland and the western terminus of the Newfoundland and Labrador Route 1 (Trans-Canada Highway) in the province.  The town was incorporated in 1945 and its population in the 2021 census was 3,547.\nPort aux Basques is the oldest of the collection of villages that make up the present-day town, which consists of Port aux Basques, Channel, Grand Bay and Mouse Island. The town is called \"Siinalk\" in the Miꞌkmaq language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "channel port aux basques",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "channel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "basques",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

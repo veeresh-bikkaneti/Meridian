@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4556,
+    "attempt": 4521,
+    "place_id": "gn-2656120",
+    "input": {
+      "place": {
+        "place_id": "gn-2656120",
+        "name": "Beaconsfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.61219,
+        "lon": -0.64732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaconsfield",
+          "url": "https://en.wikipedia.org/wiki/Beaconsfield",
+          "text": "Beaconsfield (  BECK-ənz-feeld) is a market town and civil parish in Buckinghamshire, England, 24 miles (39 kilometres) northwest of Central London and 16 miles (26 kilometres) southeast of Aylesbury. Three other towns are within 5 miles (8 kilometres): Gerrards Cross, Amersham and High Wycombe.\nThe town is adjacent to the Chiltern Hills Area of Outstanding Natural Beauty and has Georgian, neo-Georgian and Tudor revival high street architecture, known as the Old Town. It is known for the first model village in the world and the National Film and Television School.\nBeaconsfield was Britain's richest town (based on an average house price of £684,474) in 2008. In 2011 it had the highest proportion in the UK of £1 million-plus homes for sale (at 47%, compared to 3.5% nationally)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "beaconsfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4557,
+    "attempt": 4522,
+    "place_id": "gn-2833296",
+    "input": {
+      "place": {
+        "place_id": "gn-2833296",
+        "name": "Selb",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.17058,
+        "lon": 12.13054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selb",
+          "url": "https://en.wikipedia.org/wiki/Selb",
+          "text": "Selb (German pronunciation: [zɛlp] ) is a town in the district of Wunsiedel in the region of Upper Franconia in the state of Bavaria in Germany. It is situated in the Fichtel Mountains, on the border with the Czech Republic, 20 kilometres (12 mi) northwest of Cheb and 23 kilometres (14 mi) southeast of Hof.\n\nSelb is well known for its porcelain manufacture, and is the home of the Rosenthal factory, founded in 1879 by Philipp Rosenthal as a family business. In the 1960s the town was the location for an unrealized town development plan prepared by Walter Gropius shortly before his death.\nThe \"Selber Wiesenfest\", a traditional fair with thousands of visitors per day, always takes place on the \"Goldberg\" on the second weekend of July."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "selb",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4558,
+    "attempt": 4523,
+    "place_id": "gn-2940187",
+    "input": {
+      "place": {
+        "place_id": "gn-2940187",
+        "name": "Charlottenburg",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.51667,
+        "lon": 13.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlottenburg",
+          "url": "https://en.wikipedia.org/wiki/Charlottenburg",
+          "text": "Charlottenburg (German: [ʃaʁˈlɔtn̩bʊʁk] ) is a locality of Berlin within the borough of Charlottenburg-Wilmersdorf. Established as a town in 1705 and named after Sophia Charlotte of Hanover, Queen consort of Prussia, it is best known for Charlottenburg Palace – the largest surviving such royal palace in Berlin – and the adjacent museums.\nCharlottenburg was an independent city to the west of Berlin until 1920 when it was incorporated into \"Groß-Berlin\" (Greater Berlin) and transformed into a borough. In the course of Berlin's 2001 administrative reform it was merged with the former borough of Wilmersdorf becoming a part of a new borough called Charlottenburg-Wilmersdorf. Later, in 2004, the new borough's districts were rearranged, dividing the former borough of Charlottenburg into the localities of Charlottenburg proper, Westend and Charlottenburg-Nord."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "charlottenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4559,
+    "attempt": 4524,
+    "place_id": "gn-2962026",
+    "input": {
+      "place": {
+        "place_id": "gn-2962026",
+        "name": "Portlaoise",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.03441,
+        "lon": -7.29979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portlaoise",
+          "url": "https://en.wikipedia.org/wiki/Portlaoise",
+          "text": "Portlaoise ( port-LEESH, Irish: Port Laoise), known until 1929 as Maryborough, is the county town of County Laois, Ireland.\nIt is in the South Midlands in the province of Leinster.\nPortlaoise was the fastest growing of the top 20 largest towns and cities in Ireland from 2011 to 2016. However, the 2022 census shows that the town's population increased by 6.6% to 23,494, which was below the national average of 8%. It is the most populous and also the most densely populated town in the Midland Region, which has a total population of 317,999 at the 2022 census.\nIt was an important town in the sixteenth century, as the site of the Fort of Maryborough, a fort built by English settlers during the Plantation of Queen's County.\nPortlaoise is fringed by the Slieve Bloom mountains to the west and north-west and the Great Heath of Maryborough to the east. It is notable for its architecture, engineering and transport connections.\nOn the national road network, Portlaoise is located 94 km (58 mi) west-southwest from Dublin on the M7 motorway, 170 km (106 mi) north-east from Cork on the M8 and M7, and 114 km (71 mi) east-northeast from Limerick on the M7.\nIt was once known for the manufacture of iron and steel buildings, tennis balls, rubber seals, tyres, electrical cabling, and Ireland's first aircraft. Today, Portlaoise is a commercial centre with the economy dominated by the service sector, and a hub of shopping, transport, and events for the surrounding catchment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "portlaoise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4560,
+    "attempt": 4525,
+    "place_id": "gn-3019280",
+    "input": {
+      "place": {
+        "place_id": "gn-3019280",
+        "name": "Évian-les-Bains",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.40111,
+        "lon": 6.58793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Évian-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/%C3%89vian-les-Bains",
+          "text": "Évian-les-Bains ([evjɑ̃ le bɛ̃] ; lit. 'Évian-the-Baths'; Arpitan: Èvian, Évyan, or L'Èvian), or simply Évian, is a commune in Eastern France, by the Swiss border. It is located in the northern part of the Haute-Savoie department in the Auvergne-Rhône-Alpes region.\nAn upmarket holiday resort and spa town on the shores of Lake Geneva (French: Lac Léman), it has been visited, over two centuries, by royalty such as Kings Edward VII and George V of the United Kingdom and King Farouk of Egypt, and celebrities such as Countess Anna de Noailles and Marcel Proust.\nIn international relations, it is the namesake of the 1962 Évian Accords, which ended the Algerian War, and its Hôtel Royal hosted the 29th G8 summit in 2003 and 52nd G7 summit in 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "evian les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "evian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4561,
+    "attempt": 4526,
+    "place_id": "gn-4002745",
+    "input": {
+      "place": {
+        "place_id": "gn-4002745",
+        "name": "La Cruz",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 23.92126,
+        "lon": -106.8925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Cruz, Sinaloa",
+          "url": "https://en.wikipedia.org/wiki/La_Cruz,_Sinaloa",
+          "text": "La Cruz is a small city in the Mexican state of Sinaloa. It stands at \n23°55′17″N 106°53′31″W.\nThe city reported 15,657 inhabitants in the 2010 census.\nLa Cruz, Sinaloa, commonly known in Spanish as La Cruz de Elota, is the municipal seat of the municipality of Elota, and is the site of Elota's municipal hall.  There are shops and schools, as well as a nearby beach area, better known as Ceuta's Beach, which is located 8 km from La Cruz.\nLa Cruz is located between Culiacán (the capital of Sinaloa) and Mazatlán (Sinaloa's most important tourist destination and biggest harbor).  Culiacán lies to the north at a distance of 120 km (74.5 miles) and Mazatlán to the south with a distance of 100 km (62 miles approximately)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "la cruz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4562,
+    "attempt": 4527,
+    "place_id": "gn-5098132",
+    "input": {
+      "place": {
+        "place_id": "gn-5098132",
+        "name": "Fort Dix",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.02984,
+        "lon": -74.61849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Dix",
+          "url": "https://en.wikipedia.org/wiki/Fort_Dix",
+          "text": "Fort Dix, the common name for the Army Support Activity (ASA) located at Joint Base McGuire–Dix–Lakehurst, is a United States Army post. It is located 16.1 miles (25.9 km) south-southeast of Trenton, New Jersey. Fort Dix is under the jurisdiction of the Air Force Air Mobility Command. As of the 2020 U.S. census, Fort Dix census-designated place (CDP) had a total population of 7,716, of which 5,951 were in New Hanover Township, 1,765 were in Pemberton Township, and none were in Springfield Township (though portions of the CDP are included there).\nEstablished in 1917, Fort Dix was combined with adjoining U.S. Air Force and Navy facilities to become Joint Base McGuire-Dix-Lakehurst (JB MDL) in 2009. However, it remains commonly known as \"Fort Dix\", \"ASA Dix\", or \"Dix\".\nDuring 2015 to 2016, Colonel Shelley Balderson was commander, making her the first female commander of Fort Dix in the base's century-long history.\nThe Current Garrison Commander of U.S. Army Support Activity Fort Dix is Colonel Bryan R. Dunker, who also serves as Deputy Commander of Joint Base McGuire, Dix, Lakehurst (JBMDL) since July 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "fort dix",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dix",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4563,
+    "attempt": 4528,
+    "place_id": "gn-5108135",
+    "input": {
+      "place": {
+        "place_id": "gn-5108135",
+        "name": "Battery Park City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71149,
+        "lon": -74.01625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Battery Park City",
+          "url": "https://en.wikipedia.org/wiki/Battery_Park_City",
+          "text": "Battery Park City is a neighborhood and planned community at the southern tip of Manhattan in New York City. The neighborhood is situated along the Hudson River waterfront, and separated the Financial District and Tribeca by the West Side Highway. Directly to the south lies The Battery, formerly known as Battery Park, from which the neighborhood derives its name. Battery Park City is located on state-owned land managed by the Battery Park City Authority (BPCA), a New York State public-benefit corporation.\nAlthough primarily a residential neighborhood, there also are several office buildings, including the Brookfield Place complex and 200 West Street (headquarters of Goldman Sachs). The neighborhood is also home to the Museum of Jewish Heritage, Stuyvesant High School, along with some hotels, street-level retail and restaurants. More than one-third of the area is parkland and public open space.\nThe land upon which Battery Park City is built was created in the 1970s by land reclamation on the Hudson River using over 3 million cubic yards (2.3 million cubic meters) of soil and rock excavated during the construction of the World Trade Center, the New York City Water Tunnel, and certain other construction projects, as well as from sand dredged from New York Harbor off Staten Island.\nBattery Park City is part of Manhattan Community District 1. It is patrolled by the 1st Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "battery park city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "battery",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4564,
+    "attempt": 4529,
+    "place_id": "gn-527581",
+    "input": {
+      "place": {
+        "place_id": "gn-527581",
+        "name": "Mendeleyevo",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 56.03333,
+        "lon": 37.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendeleyevo, Moscow Oblast",
+          "url": "https://en.wikipedia.org/wiki/Mendeleyevo,_Moscow_Oblast",
+          "text": "Mendeleyevo (Russian: Менделе́ево) is an urban locality (a work settlement) in Solnechnogorsky District of Moscow Oblast, Russia. It stands on the Klyazma River, about 10 kilometers (6.2 mi) from its source, near the city of Zelenograd, and opposite the ancient Russian village of Lyalovo. Population:  7,927 (2010 census); 8,030 (2002 census); 9,172 (1989 Soviet census).\nIt was founded in 1957 as a closed town associated with the All-Union (now All-Russian) Scientific Research Institute for Physical-Engineering and Radiotechnical Metrology (VNIIFTRI).  It is named after the famous Russian chemist Dmitry Mendeleyev who was also an eminent metrologist. Although it is no longer officially listed as a Russian naukograd, it remains close to this classification, as the VNIIFTRI scientific institute continues to be one of the most important local employers. Aeroflot Flight 411 crashed near the town in July 1982."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "mendeleyevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4565,
+    "attempt": 4530,
+    "place_id": "gn-5468773",
+    "input": {
+      "place": {
+        "place_id": "gn-5468773",
+        "name": "Gallup",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 35.52808,
+        "lon": -108.74258
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gallup, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Gallup,_New_Mexico",
+          "text": "Gallup is a city in McKinley County, New Mexico, United States, with a population of 21,899 as of the 2020 census. A substantial percentage of its population is Native American, with residents from the Navajo, Hopi, and Zuni tribes. Gallup is the county seat of McKinley County and the most populous city between Flagstaff and Albuquerque along historic U.S. Route 66.\nGallup is known as the \"Heart of Indian Country\" because it is on the edge of the Navajo reservation and is also home to members of many other tribes. Because of the nearby rugged terrain, it was a popular location in the 1940s and 1950s for Hollywood Westerns. The city is on the Trails of the Ancients Byway, one of the designated New Mexico Scenic Byways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "gallup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4566,
+    "attempt": 4531,
+    "place_id": "gn-5895650",
+    "input": {
+      "place": {
+        "place_id": "gn-5895650",
+        "name": "Beaconsfield",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.43341,
+        "lon": -73.86586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaconsfield, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Beaconsfield,_Quebec",
+          "text": "Beaconsfield is a suburb on the Island of Montreal, Quebec, Canada, part of the Greater Montreal region locally referred to as the West Island. It is a residential community located on the north shore of Lac Saint-Louis, bordered on the west by Baie-D'Urfé, north by Kirkland and east by Pointe-Claire.\nIncorporated in 1910, named in honour of Benjamin Disraeli, Earl of Beaconsfield, Prime Minister of the United Kingdom and close confidant of Queen Victoria, the city's historical roots go back as far as 1698. Beaconsfield, in its current form, was developed as a cottage community by affluent Montreal residents. Over the decades, the city has transformed from summer homes, to year-round residents, and has flourished.\nThe population of Beaconsfield, as of the Canada 2021 Census, is 19,277. While the population is predominantly anglophone, 77% of residents speak both official languages of Canada.  Most residents live in single-family homes, though there are residents of townhouses and apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "beaconsfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4567,
+    "attempt": 4532,
+    "place_id": "gn-6111745",
+    "input": {
+      "place": {
+        "place_id": "gn-6111745",
+        "name": "Port Elgin",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.43605,
+        "lon": -81.38981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Elgin, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Port_Elgin,_Ontario",
+          "text": "Port Elgin is a community in the town of Saugeen Shores, Ontario, Canada. Originally named Normanton the town was renamed Port Elgin when it was incorporated in 1874, after James Bruce, 8th Earl of Elgin, a former Governor General of the Province of Canada.\nAlthough road signs indicate the name Port Elgin, it is no longer an entity, per se. In 1998, the Town of Southampton, the Town of Port Elgin and Saugeen Township were amalgamated to form the Town of Port Elgin-Saugeen-Southampton. On December 17, 1998, the Province renamed the new municipality as the Town of Saugeen Shores.\nUnlike \"beach towns\" such as Sauble Beach, this is a four seasons community where most businesses are open all year and activities for locals are available most months. The primary employment categories are agriculture, small business, tourism and work at the Bruce Power nuclear power station. Close to MacGregor Point Provincial Park and Southampton, the community has several beaches on Lake Huron.\nAlthough the seasonal population is significantly higher due to the many cottages and campgrounds in the area, the permanent population was 6,880 in 2016 in the town's land area of 5.36 square kilometres according to the most recent Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "port elgin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "elgin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4568,
+    "attempt": 4533,
+    "place_id": "gn-6179830",
+    "input": {
+      "place": {
+        "place_id": "gn-6179830",
+        "name": "Whalley",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.17917,
+        "lon": -122.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whalley, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Whalley,_Surrey",
+          "text": "Whalley is the most densely populated and urban of the six town centres in Surrey, British Columbia, Canada. It encompasses City Centre, the city's central business district, and is home to the Surrey City Hall, the main branch of Surrey Libraries, Central City, SFU Surrey and the site of Kwantlen Polytechnic University's (KPU) Civic Plaza campus. It is the only town centre in Surrey served by Metro Vancouver's SkyTrain rapid transit system. Expo Line stations serving Whalley include Scott Road, Gateway, Surrey Central and King George.\nBased on the city of Surrey statistics, Whalley is the second-most populous community in Surrey after Newton. As of 2018, the population of Whalley is 75,610, while the population of City Centre, the central subarea in the Whalley core, is 26,945. The total population of the area is 102,555. Whalley is represented in the Legislative Assembly of British Columbia by the Surrey North and Surrey City Centre electoral districts, and in the House of Commons of Canada by the Surrey Centre electoral district. Randeep Sarai is Whalley's member of Parliament, and Mandeep Dhaliwal and Amna Shah are its members of the Legislative Assembly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "whalley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4569,
+    "attempt": 4534,
+    "place_id": "gn-931070",
+    "input": {
+      "place": {
+        "place_id": "gn-931070",
+        "name": "Chikwawa",
+        "country": "Malawi",
+        "subdivision": "Southern Region",
+        "lat": -16.03352,
+        "lon": 34.80091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chikwawa",
+          "url": "https://en.wikipedia.org/wiki/Chikwawa",
+          "text": "Chikwawa is a town with a population of 6,114 according to the 2018 census located in the Southern Region of Malawi on the west bank of the Shire River.  It is the administrative capital of the Chikwawa District. Chikwawa lies almost 50 kilometres (30 mi) south of Blantyre, the commercial capital of Malawi.\nChikwawa, then known as Chibisa's village, was the first town in Malawi to be seen by European explorers, when visited in March   1859 by David Livingstone's second Zambesi expedition. Their way upstream was blocked by the Kapachira Falls, and they returned in August for land exploration which reached Lake Malawi on 18 September. Two of the missionaries accompanying Dr Livingstone, belonging to the Universities Mission to the Central Africa (UMCA) Dr Dickinson and Rev. Scudamore died in the district and were buried in Chisanja-Julius Village along the Shire River, a walkable distance from the Kamuzu Bridge.\nThe surrounding region was ravaged by Portuguese slave traders in the nineteenth century.\nThe Majete Wildlife Reserve, the Mwabvi Wildlife Reserve and Lengwe National Park lie in the vicinity of Chikwawa. Large numbers of hippopotamus and crocodiles inhabit the Shire River area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "chikwawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4570,
+    "attempt": 4535,
+    "place_id": "gn-187641",
+    "input": {
+      "place": {
+        "place_id": "gn-187641",
+        "name": "Marigat",
+        "country": "Kenya",
+        "subdivision": "Baringo",
+        "lat": 0.47119,
+        "lon": 35.98638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marigat",
+          "url": "https://en.wikipedia.org/wiki/Marigat",
+          "text": "Marigat is a small town in Baringo County, Kenya.\nMarigat is a fast-growing town located in the lowlands of Baringo County which was named after the Tugen name for narrowing corners. Its growth is supported by the Perkerra irrigation scheme where onions, pepper, papaws and maize, among other crops, are grown. Marigat town is about 20 km from both the famous L. Baringo and L. Bogoria; this exposes the town to new a ideology through interaction between visitors and the locals. Marketing of local products such as honey (enaisho), goat's meat (nkirri), and cultural artifacts is made effective by the surging local and foreign tourists and travellers.\nTourists go for art such as braided callabush, the ilchamus club, ilchamus sheets and the tugen bow and arrows.  Passengers buy onions, tomatoes, honey, water, melon, bananas, oranges from the Parkerra irrigation scheme as they wait for the bus at the Matatu stage to surprise their families.\nMarigat is inhabited by the Tugen (Samor) mainly from the upper regions, i.e. south, southeast and southwest, the Ilchamus mainly from the low regions northwards and the western Pokot communities who are mainly pastoralists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "marigat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4571,
+    "attempt": 4536,
+    "place_id": "gn-3088065",
+    "input": {
+      "place": {
+        "place_id": "gn-3088065",
+        "name": "Prudnik",
+        "country": "Poland",
+        "subdivision": "Opole Voivodeship",
+        "lat": 50.32124,
+        "lon": 17.57461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prudnik",
+          "url": "https://en.wikipedia.org/wiki/Prudnik",
+          "text": "Prudnik [ˈprudɲik]  (Czech: Prudník, Silesian: Prōmnik, German: Neustadt) is a town in southern Poland, located in the southern part of Opole Voivodeship near the border with the Czech Republic. It is the administrative seat of Prudnik County and Gmina Prudnik. Its population numbers 21,368 inhabitants (2016). Since 2015, Prudnik is a member of the Cittaslow International.\nThe town was founded in the 1250s, and was historically part of the Piast-ruled Duchy of Opole, and afterwards was located within the Habsburg monarchy, the Polish–Lithuanian Commonwealth, the Habsburg monarchy again, Prussia, the German Reich, and eventually Poland again. It was once an important industrial hub known for its shoe-making traditions and more recently towel making by the ZPB \"Frotex\" Company, one of the largest towel manufacturers in Europe. The town also possesses numerous architectural monuments and historic buildings such as the Main Town Hall and \"Wok's Tower\" (Wieża Woka) from the 13th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "prudnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4572,
+    "attempt": 4537,
+    "place_id": "gn-3167736",
+    "input": {
+      "place": {
+        "place_id": "gn-3167736",
+        "name": "Sansepolcro",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.57258,
+        "lon": 12.13858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sansepolcro",
+          "url": "https://en.wikipedia.org/wiki/Sansepolcro",
+          "text": "Sansepolcro, formerly Borgo Santo Sepolcro, is a town and comune founded in the 11th century, located in the Italian Province of Arezzo in the eastern part of the region of Tuscany.\nSituated on the upper reaches of the Tiber river, the town is the birthplace of the painters Piero della Francesca, Raffaellino del Colle (a pupil of Raphael), Matteo di Giovanni, Santi di Tito, and Angiolo Tricca.  It was also the birthplace of the Italian mathematician Luca Pacioli, and of Matteo Cioni, who translated Piero della Francesca's treatise about perspective in painting (De prospectiva pingendi) into Latin.\nToday, the economy of the town is based on agriculture, industrial manufacturing, food processing and pharmaceuticals. It is the home of Buitoni pasta, founded by Giulia Buitoni in 1827."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "sansepolcro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4573,
+    "attempt": 4538,
+    "place_id": "gn-3521305",
+    "input": {
+      "place": {
+        "place_id": "gn-3521305",
+        "name": "Polanco",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.43332,
+        "lon": -99.19919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polanco",
+          "url": "https://en.wikipedia.org/wiki/Polanco",
+          "text": "Polanco is a neighborhood in the Miguel Hidalgo borough of Mexico City. Polanco is an affluent colonia, noted for its luxury shopping along Presidente Masaryk Avenue, the most expensive street in Mexico, as well as for the numerous prominent cultural institutions located within the neighborhood.\nOriginally a residential area of large single-family homes, the land use of the neighborhood began to change in the second half of the 20th century. Particularly after the 1985 Mexico City earthquake, the former residences were replaced by commercial properties and high rise buildings. Today, Polanco is best known as a shopping district.\nPolanco is known for having one of the country's densest concentrations of luxury shopping, with the most upscale restaurants, high-net-worth individuals, upscale hotels, and diplomatic missions and embassies. It is one of the most expensive real estate markets in Latin America.\nA newer development north of Polanco, popularly termed \"Nuevo Polanco\", is a business district that is home to BBVA, WeWork and Telecel while also housing important cultural institutions such as the Museo Soumaya and the Colección Jumex. Nuevo Polanco, officially in the colonias of Granada and Ampliación Granada, is not part of the Polanco neighborhood. However, Polanco and Nuevo Polanco are sometimes grouped together."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "polanco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4574,
+    "attempt": 4539,
+    "place_id": "gn-3982887",
+    "input": {
+      "place": {
+        "place_id": "gn-3982887",
+        "name": "Sombrerete",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 23.63138,
+        "lon": -103.64134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sombrerete",
+          "url": "https://en.wikipedia.org/wiki/Sombrerete",
+          "text": "Sombrerete (Spanish: [sombɾeˈɾete] ) is a town and municipality located in the northwest region of the Mexican state of Zacatecas.\nSombrerete was founded in 1555 by Spanish conquistador Juan de Tolosa as a mining center. Due to the wealth that the mines provided, it was one of the most important towns in New Spain. The historical center of Sombrerete, La Noria de San Pantaleón, and the Sierra de Órganos National Park were declared a UNESCO World Heritage Site in 2010, as a part of the Camino Real de Tierra Adentro (Royal Inland Road, or Silver Trail). \nIn 2012, Sombrerete was declared a Pueblo Mágico by the Mexican Secretariat of Tourism. The total population of Sombrerete in 2020 was 63,665 inhabitants, with 50.6% woman, and 49.4% men."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "sombrerete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4575,
+    "attempt": 4540,
+    "place_id": "gn-4149959",
+    "input": {
+      "place": {
+        "place_id": "gn-4149959",
+        "name": "Cape Canaveral",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.40584,
+        "lon": -80.60477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cape Canaveral",
+          "url": "https://en.wikipedia.org/wiki/Cape_Canaveral",
+          "text": "Cape Canaveral (Spanish: Cabo Cañaveral) is a cape in Brevard County, Florida, in the United States, near the center of the state's Atlantic coast. Officially Cape Kennedy from 1963 to 1973, it lies east of Merritt Island, separated from it by the Banana River. It is part of a region known as the Space Coast, and is the site of the Cape Canaveral Space Force Station. Since many U.S. spacecraft have been launched from both the station and the Kennedy Space Center on adjacent Merritt Island, the two are sometimes conflated.\nOther features of the cape include Port Canaveral, one of the busiest cruise ports in the world, and the Cape Canaveral Lighthouse. The city of Cape Canaveral lies just south of the Port Canaveral District. Mosquito Lagoon, the Indian River, Merritt Island National Wildlife Refuge and Canaveral National Seashore are also features of this area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "cape canaveral",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cape",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "canaveral",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

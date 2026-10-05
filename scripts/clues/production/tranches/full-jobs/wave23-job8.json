@@ -1,0 +1,832 @@
+[
+  {
+    "rank": 4576,
+    "attempt": 4541,
+    "place_id": "gn-5002344",
+    "input": {
+      "place": {
+        "place_id": "gn-5002344",
+        "name": "Monroe",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 41.91643,
+        "lon": -83.39771
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monroe, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Monroe,_Michigan",
+          "text": "Monroe is the largest city in Monroe County, Michigan, United States, and its county seat. The population was 20,462 at the 2020 census. The city is bordered on the south by Monroe Charter Township, but the two are administered autonomously. Monroe is the core city in the Monroe metropolitan area, which is coterminous with Monroe County and had a population of 154,809 in 2020. On the western shores of Lake Erie about 20 miles (32 km) northeast of Toledo, Ohio, and 40 miles (64 km) southwest of Detroit, the city is part of the Detroit–Ann Arbor–Flint combined statistical area.\nThe Monroe area was the scene of several military conflicts during the War of 1812 against the United Kingdom and is known for the Battle of Frenchtown. In 1817, parts of the Frenchtown settlement along the River Raisin were platted and renamed \"Monroe\" after then-president James Monroe. When Michigan became a state in 1837, Monroe was incorporated as a city.\nMonroe is known as the childhood residence of George Armstrong Custer and other members of his family, including his brother Boston Custer and wife Elizabeth Bacon. Several structures are named after Custer, including Custer Airport. Founded in 1928, La-Z-Boy's world headquarters are in Monroe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "monroe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4577,
+    "attempt": 4542,
+    "place_id": "gn-555624",
+    "input": {
+      "place": {
+        "place_id": "gn-555624",
+        "name": "Ivangorod",
+        "country": "Russia",
+        "subdivision": "Leningradskaya Oblast'",
+        "lat": 59.37155,
+        "lon": 28.21625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivangorod",
+          "url": "https://en.wikipedia.org/wiki/Ivangorod",
+          "text": "Ivangorod (Russian: Иванго́род, IPA: [ɪvɐnˈɡorət]; Estonian: Jaanilinn; Votic: Jaanilidna) is a town in Kingiseppsky District of Leningrad Oblast, Russia, located on the east bank of the Narva river which flows along the Estonia–Russia international border, 159 kilometers (99 mi) west of Saint Petersburg, 218 kilometers (135 mi) east of Tallinn, Estonia. The town's population was recorded as  9,854 (2010 census); 11,206 (2002 census); 11,833 (1989 Soviet census). As of 2025, the population of Ivangorod was estimated to be 9,878. \nIvangorod is a major border crossing point and a railway station on the Tallinn–Saint Petersburg line. It is located just opposite to the Estonian town of Narva. The town is the site of the Ivangorod Fortress, a prominent fortification monument of the 15th and the 16th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "ivangorod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4578,
+    "attempt": 4543,
+    "place_id": "gn-5907092",
+    "input": {
+      "place": {
+        "place_id": "gn-5907092",
+        "name": "Bracebridge",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.03341,
+        "lon": -79.31633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bracebridge, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Bracebridge,_Ontario",
+          "text": "Bracebridge is a town and the seat of the District Municipality of Muskoka in Ontario, Canada.\nThe town was built around a waterfall on the Muskoka River in the centre of town and is known for its other nearby waterfalls (Wilson's Falls, High Falls, etc.). It was first incorporated in 1875 and celebrated the town's 150-year-anniversary in 2025.\nThe town is the seat of the district government and a centre of tourism for the Muskoka area and has several historical sites, such as the Clock Tower, Woodchester Villa, and the Silver Bridge, which joins Manitoba Street with Ecclestone Drive. The Silver Bridge was repaired in 2002, and is currently out of service and undergoing rehabilitation that is set to conclude in the fourth quarter of 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "bracebridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4579,
+    "attempt": 4544,
+    "place_id": "gn-5931800",
+    "input": {
+      "place": {
+        "place_id": "gn-5931800",
+        "name": "Cranbrook",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.49991,
+        "lon": -115.76879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cranbrook, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Cranbrook,_British_Columbia",
+          "text": "Cranbrook ( KRAN-bruuk) is a city in southeast British Columbia, Canada, located approximately 10 km (6.2 mi) southwest of the confluence of the Kootenay River and the St. Mary's River. It is the largest urban centre in the region known as the East Kootenay. As of 2021, Cranbrook's population is 20,499 with a census agglomeration population of 27,040. It is the location of the headquarters of the Regional District of East Kootenay and also the location of the regional headquarters of various provincial ministries and agencies, notably the Rocky Mountain Forest District.\nCranbrook is home to the Canadian Museum of Rail Travel which presents static exhibits of passenger rail cars built in the 1920s for the CPR and in the 1900s for the Spokane International Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "cranbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4580,
+    "attempt": 4545,
+    "place_id": "gn-5992059",
+    "input": {
+      "place": {
+        "place_id": "gn-5992059",
+        "name": "Kimberley",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.67071,
+        "lon": -115.9776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kimberley, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Kimberley,_British_Columbia",
+          "text": "Kimberley is a city in southeast British Columbia, Canada along Highway 95A between the Purcell and Rocky Mountains. Kimberley was named in 1896 after the Kimberley mine in South Africa. \nAt approximately 1,120 meters (3,675 feet) above sea level, the city's elevation is the highest in British Columbia.\nFrom 1917 to 2001, it was the home to the world's largest lead-zinc mine, the Sullivan Mine. Today, Kimberley is primarily a tourist destination and home to the Kimberley Alpine Resort, a ski area and Kimberley's Underground Mining Railway that features a 750-foot-long (230 m) underground mining interpretive centre complete with operational 3 ft (914 mm) narrow-gauge railway equipment. Recreational pursuits include world-class skiing, snowboarding, snowmobiling, fishing, whitewater rafting, kayaking, biking, hiking and golfing on championship golf courses. \nThe city has the largest urban park in Canada. At 1,977 acres (800 ha), the Kimberley Nature Park is the largest incorporated park in Canada.\nSunMine was the largest solar PV plant in Western Canada when built in 2015 on contaminated\nbrownfield, formerly the site of the Sullivan Mine concentrator."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "kimberley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4581,
+    "attempt": 4546,
+    "place_id": "gn-6137540",
+    "input": {
+      "place": {
+        "place_id": "gn-6137540",
+        "name": "Saint-Bruno-de-Montarville",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.53341,
+        "lon": -73.34916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Bruno-de-Montarville",
+          "url": "https://en.wikipedia.org/wiki/Saint-Bruno-de-Montarville",
+          "text": "Saint-Bruno-de-Montarville (French pronunciation: [sɛ̃ bʁyno d(ə) mɔ̃taʁvil]) is an off-island suburb of Montreal, in southwestern Quebec, Canada, on the south bank of the Saint Lawrence River just east of Montreal. It lies on the west flank of Mont Saint-Bruno, one of the Monteregian Hills. The population as of the Canada 2021 Census was 26,273.\nThe city is well known to Montrealers and its neighbouring population for Mont Saint-Bruno, location to both Mont-Saint-Bruno National Park and Ski Mont Saint-Bruno, a ski facility and school.\nThere are two prevailing hypotheses on the origin of the city's name:\n\nThat the city was named after Bruno of Cologne and the Montarville seigneury. The name \"Montarville\" is a homonym of a village of Eure-et-Loir in France: Montharville, whose etymology is uncertain. The name was written in its Latin form, Mons Harvilla in the 12th century – in other words \"Haric's farm's mount\", a name of Germanic origins also found in Harville (Hairici villa, 9th century). However, this uncommon composition of a Roman appellation (\"mont\") associated with the Norman toponymy \"-ville\" place name casts doubts on this explication. It could be the name of an unidentified Germanic individual.\nQuebec's toponymy commission suggests another hypothesis to explain the origin of the city's name. \"Montarville\" could be a portmanteau of \"montagne\" (French for mountain) and \"Boucherville\" after Pierre Boucher de Boucherville, the region's first seigneur. The hypothesis rests on the fact that the descendants of de Boucherville were named Montarville, Niverville, etc. The patron saint of the city could be explained by the sale of the seigneury to François-Pierre Bruneau, whose name was slightly transformed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "saint bruno de montarville",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bruno",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montarville",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4582,
+    "attempt": 4547,
+    "place_id": "gn-8347847",
+    "input": {
+      "place": {
+        "place_id": "gn-8347847",
+        "name": "Taylors Lakes",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.69863,
+        "lon": 144.78631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taylors Lakes",
+          "url": "https://en.wikipedia.org/wiki/Taylors_Lakes",
+          "text": "Taylors Lakes is a suburb in Melbourne, Victoria, Australia, 20 km (12 mi) north-west of Melbourne's Central Business District, located within the City of Brimbank local government area. Taylors Lakes recorded a population of 16,910 at the 2021 census.\nTaylors Lakes is bounded by the Calder Freeway in the north, Overnewton Road and Taylors Creek in the east, Lady Nelson Way in the south and the Bendigo railway line in the west. The suburb is mostly composed of recent developments dating from the 1990s, with Taylors Lakes Post Office opening on 18 August 1994.\nOne of Keilor's earliest settlers was the Scotsman William Taylor, who built the Overnewton homestead in 1849. Taylors Creek was named after him, which in turn gives the name of the suburb.\nThere are many available facilities in Taylors Lakes, such as shopping centres, cinemas, bowling alley, schools, a railway station, bus routes, parks and gardens, sports grounds, roads, houses and kindergartens. It also has the largest rate of Southern/Eastern European ancestry of any Melbourne suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "taylors lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "taylors",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4583,
+    "attempt": 4548,
+    "place_id": "gn-974611",
+    "input": {
+      "place": {
+        "place_id": "gn-974611",
+        "name": "Montagu",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.78664,
+        "lon": 20.12106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montagu, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Montagu,_South_Africa",
+          "text": "Montagu is a town in the Western Cape province of South Africa, about 180 kilometres (110 mi) from Cape Town in the Western Little Karoo. \nThe town is named after former secretary of the Cape Colony, John Montagu, but was once known as Agter Cogman's Kloof, Cogman's Kloof linking the town and railway station. It is situated at the confluence of the Keisie and Kingna rivers.\nMontagu was founded on the farm \"Uitvlugt\" in 1851, and is known for its hot mineral springs and scenic mountains. It is also an agricultural centre, where orchards and vineyards are in production and local herbs are grown. The farming area, 'Koo', lies north of the town and is famous for the quality of its apples, pears, apricots and peaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "montagu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4584,
+    "attempt": 4549,
+    "place_id": "gn-1716397",
+    "input": {
+      "place": {
+        "place_id": "gn-1716397",
+        "name": "Cuyo",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 10.8525,
+        "lon": 121.00861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuyo, Palawan",
+          "url": "https://en.wikipedia.org/wiki/Cuyo,_Palawan",
+          "text": "Cuyo, officially the Municipality of Cuyo (Cuyonon: Banwa 'ang Cuyo, Tagalog: Bayan ng Cuyo),  is a municipality in the province of Palawan, Philippines. According to the 2024 census, it has a population of 24,702 people.\nIts territory includes the western half of Cuyo Island, as well as Bisucay, Caponayan, Cauayan, Imalaguan, Lubid, Manamoc, Pamalican, Pandan, Round, and Quiminatin islands, all part of the Cuyo Archipelago.\nCuyo is the oldest town in Palawan which has a culture of its own and was preserved for more than 350 years. During the Spanish colonization of the Philippines, Cuyo became the second capital of Palawan after Puerto Princesa from 1873 to 1903.\nFrom the sea, the first visible landmark of Cuyo Island is a lighthouse located near the pier. Many of the streets leading into the town have been paved, while the layout of the poblacion retains the traditional Hispanic *plaza-iglesia* pattern. Dominating the town center is Cuyo’s church complex, which includes the church, convent, and fort built by the Spanish and completed in 1680. Nearby are a school building and a monument dedicated to national hero Jose Rizal.\nThe municipality is served by Cuyo Airport in the neighboring municipality of Magsaysay. The town and its cultural and natural environs are being considered to be nominated in the tentative list for UNESCO World Heritage Site declaration in the future."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "cuyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4585,
+    "attempt": 4550,
+    "place_id": "gn-2188909",
+    "input": {
+      "place": {
+        "place_id": "gn-2188909",
+        "name": "Kelvin Grove",
+        "country": "New Zealand",
+        "subdivision": "Manawatu-Wanganui",
+        "lat": -40.32875,
+        "lon": 175.64512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kelvin Grove, Palmerston North",
+          "url": "https://en.wikipedia.org/wiki/Kelvin_Grove,_Palmerston_North",
+          "text": "Kelvin Grove is a suburb of Palmerston North on New Zealand's North Island. It is bounded on the north by the North Island Main Trunk railway, Manawatū District and Milson, on the west by Palmerston North–Gisborne Line and Roslyn, the south by the Manawatū River, and the east by James Line and Whakarongo.\nIt was identified as one of New Zealand's fastest growth suburbs in November 2016.\nThe lower North Island distribution centres of Foodstuffs, Coca-Cola Amatil and Woolworths are located in Kelvin Grove. The national customer centre of Toyota New Zealand and the Radius Peppertree rest home and hospital is also located on Roberts Line.\nMany Kelvin Grove street name are named after New Zealand places, such as Kaimanawa, Anakiwa, Karamea, Mahia and Wairau. Local parks include Kaimanawa Park, Celaeno Park, Kelvin Grove Park, Linklater Block, Schnell Reserve, Schnell Esplanade Reserve, Robêrt Reserve, Frederick Krull Reserve, Dahlstrom Reserve, James Line Reserve and Parnell Reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "kelvin grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kelvin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4586,
+    "attempt": 4551,
+    "place_id": "gn-2783175",
+    "input": {
+      "place": {
+        "place_id": "gn-2783175",
+        "name": "Zottegem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.86955,
+        "lon": 3.81052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zottegem",
+          "url": "https://en.wikipedia.org/wiki/Zottegem",
+          "text": "Zottegem (Dutch pronunciation: [ˈzɔtəɣɛm], Sotteghem and Sottegem in older English and French language sources) is a municipality and city located in Belgium and more particularly in Flanders, in the province of East Flanders. The municipality comprises the town of Zottegem proper and the villages of Elene, Erwetegem, Godveerdegem, Grotenberge, Leeuwergem, Oombergen, Sint-Goriks-Oudenhove, Sint-Maria-Oudenhove, Strijpen and Velzeke-Ruddershove. On 1 January 2018, Zottegem had a total population of 26,373. The total area is 56.66 km2 which gives a population density of 470 inhabitants per km2.\nZottegem is part of the hilly geographical area of the Flemish Ardennes (Vlaamse Ardennen); the hills and cobblestone streets (Paddestraat) are regular locations in the springtime cycle classics of Flanders.\nThe city is known for its ties with Lamoral, Count of Egmont. Lamoral has an Egmont Castle (Egmontkasteel), an Egmont museum (Egmontkamer) and two statues of Egmont in the centre of Zottegem. He is buried in Egmont's crypt (Egmontcrypte) under the Church of the Assumption of Our Lady.\nLeeuwergem Castle in Elene is an 18th-century stately home. There also the ruins of an 18th-century windmill can be found. Breivelde Castle in Grotenberge is surrounded by an English landscape garden. The archaeological museum of Velzeke exhibits findings from Gallo-Roman culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "zottegem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4587,
+    "attempt": 4552,
+    "place_id": "gn-2844056",
+    "input": {
+      "place": {
+        "place_id": "gn-2844056",
+        "name": "Rothenburg ob der Tauber",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.37885,
+        "lon": 10.18711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rothenburg ob der Tauber",
+          "url": "https://en.wikipedia.org/wiki/Rothenburg_ob_der_Tauber",
+          "text": "Rothenburg ob der Tauber (German pronunciation: [ˈʁoːtn̩bʊʁk ʔɔp deːɐ̯ ˈtaʊbɐ] , lit. 'Rothenburg above the Tauber') is a town in the district of Ansbach of Mittelfranken (Middle Franconia), in the Franconia region of Bavaria, Germany. It is best known for its well-preserved medieval old town, a destination for tourists from around the world. It is part of the popular Romantic Road through southern Germany. Today it is one of only four towns in Germany that still have completely intact city walls, the other three being Nördlingen, Dinkelsbühl and Berching, all in Bavaria.\nRothenburg was a free imperial city (German: Freie Reichsstadt) from the late Middle Ages to 1803. Between 1884 and 1903, Johann Friedrich von Hessing built the Wildbad spa in Rothenburg ob der Tauber."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "rothenburg ob der tauber",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rothenburg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ob",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tauber",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4588,
+    "attempt": 4553,
+    "place_id": "gn-2998127",
+    "input": {
+      "place": {
+        "place_id": "gn-2998127",
+        "name": "L'Isle-sur-la-Sorgue",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.91971,
+        "lon": 5.05141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Isle-sur-la-Sorgue",
+          "url": "https://en.wikipedia.org/wiki/L'Isle-sur-la-Sorgue",
+          "text": "L'Isle-sur-la-Sorgue (French pronunciation: [lil syʁ la sɔʁɡ]; Provençal: L'Illa de Sòrga [ˈlilɔ de ˈsɔʀɡɔ] or L'Illa de Venissa [ˈlilɔ de veˈnisɔ]) is a town and commune on the Sorgue river in Southeastern France. Politically, the commune is in the arrondissement of Avignon within the department of Vaucluse, in the région of Provence-Alpes-Côte d'Azur.\nThe small town is famous for its many antique shops and hosts antique markets most Sundays. It has many waterside cafés and restaurants, all within walking distance of each other. Its many attractive water wheels throughout the town are still in working order, and it is sometimes known as Venise Comtadine, or the Venice of the Comtat Venaissin.\nL'Isle-sur-la-Sorgue is twinned with the towns of Penicuik in Scotland and Anagni in Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "l isle sur la sorgue",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "isle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sorgue",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4589,
+    "attempt": 4554,
+    "place_id": "gn-3019259",
+    "input": {
+      "place": {
+        "place_id": "gn-3019259",
+        "name": "Évron",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 48.15587,
+        "lon": -0.40242
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Évron",
+          "url": "https://en.wikipedia.org/wiki/%C3%89vron",
+          "text": "Évron (French pronunciation: [evʁɔ̃]) is a commune in the Mayenne department in north-western France. On 1 January 2019, the former communes Châtres-la-Forêt and Saint-Christophe-du-Luat were merged into Évron. Évron is noted for the Basilica of Notre-Dame de l'Épine (12th century), formerly the church of the suppressed Évron Abbey, with 13th-century wall paintings and Aubusson tapestries. The nave and tower of the church date from the 11th century; the rest of the structure dates from the 18th century\nÉvron is the home to the largest Babybel Cheese factory globally and accounts for 18% of \"Group Bel\" global production. The plant processes 650k litres of milk a day making the surrounding countryside heavily geared to milk production and the growing of winter feed for the dairy herds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "evron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4590,
+    "attempt": 4555,
+    "place_id": "gn-3166034",
+    "input": {
+      "place": {
+        "place_id": "gn-3166034",
+        "name": "Sulmona",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.04945,
+        "lon": 13.92578
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sulmona",
+          "url": "https://en.wikipedia.org/wiki/Sulmona",
+          "text": "Sulmona (Abruzzese: Sulmóne; Latin: Sulmo) is a comune (municipality) in the province of L'Aquila, in the Italian region of Abruzzo. It is located in the Valle Peligna, a plain once occupied by a lake that disappeared in prehistoric times. In the ancient era, it was one of the most important cities of the Paeligni and is known for being the native town of the Roman poet Ovid, of whom there is a bronze statue, located on the town's main road.\nThe closest airport is Abruzzo Airport, which is 43 miles away. The closest beach is in Pescara, which is 49 miles. Two hospitals in town are Ospedale Civile di Sulmona and Unita' Sanitaria Locale Avezzano Sulmona, though there are many other medical center options available."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "sulmona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4591,
+    "attempt": 4556,
+    "place_id": "gn-3532821",
+    "input": {
+      "place": {
+        "place_id": "gn-3532821",
+        "name": "Antón Lizardo",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.05962,
+        "lon": -95.99272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antón Lizardo, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Ant%C3%B3n_Lizardo,_Veracruz",
+          "text": "Antón Lizardo is a fishing town (2005 population 4,586)\nin the Mexican state of Veracruz. \nIt is located 23 km (14 mi) south of the port city of Veracruz, near Boca del Río, in the municipality of Alvarado.\nIn January 1860, the small naval Battle of Antón Lizardo occurred here between Mexican rebels and United States Navy warships. Since 11 November 1952, it is the home of the Heroica Escuela Naval Militar, the country's Naval Academy.\nAntón Lizardo offers a fairly long beach with fine, dark, hard-packed sand and calm shallow waters that make up part of the Veracruz Coral Reef System. These beaches are convenient for transportation for scuba diving at the coral reefs, but offer no protection from the wind or from drivers. The beaches here, as in Veracruz and Boca del Río, are packed during national holidays and Carnaval. It is a very small town, it does not have many people, but it is a very quiet place to vacation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "anton lizardo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lizardo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4592,
+    "attempt": 4557,
+    "place_id": "gn-3865385",
+    "input": {
+      "place": {
+        "place_id": "gn-3865385",
+        "name": "Arroyo Seco",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -33.15365,
+        "lon": -60.51168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arroyo Seco, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Arroyo_Seco,_Santa_Fe",
+          "text": "Arroyo Seco is a city in the province of Santa Fe, Argentina. It has about 20,000 inhabitants according to the 2010 census [INDEC]. Its name (literally \"dry stream\") is the same as a neighbouring creek. The city is located on the western shore of the Paraná River and can be reached also by National Route 9 (Argentina), Provincial Route 21, and the Nuevo Central Argentino railway line.\nThe town was founded in 1889 by Liberato Aguirre, who donated part of his lands to the provincial government in order to allow the train to pass through (it was a part of the Buenos Aires–Rosario line, the latter being only 30 km (19 mi) away). The original name, \"Pueblo Aguirre\", was soon replaced by \"Pueblo Arroyo Seco\".\nArroyo Seco became a city on 12 April 1962."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "arroyo seco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arroyo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4593,
+    "attempt": 4558,
+    "place_id": "gn-4502820",
+    "input": {
+      "place": {
+        "place_id": "gn-4502820",
+        "name": "Lumberton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.96595,
+        "lon": -74.80516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lumberton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lumberton,_New_Jersey",
+          "text": "Lumberton is a township in Burlington County, in the U.S. state of New Jersey. The township, and all of Burlington County, is a part of the Philadelphia metropolitan area. As of the 2020 United States census, the township's population was 12,803, an increase of 244 (+1.9%) from the 2010 census count of 12,559, which in turn reflected an increase of 2,098 (+20.1%) from the 10,461 counted in the 2000 census.\nLumberton was incorporated as a township by an act of the New Jersey Legislature on March 14, 1860, from portions of Medford, Southampton and Eastampton townships. Portions of Lumberton were taken on March 12, 1924, to form Hainesport Township. Named for its early lumber industry, the township supplied Philadelphia with wood from harvested pitch pines.\nIn March 2007, Lumberton was identified as having the most active community of eBay buyers and sellers on a per-capita basis in the United States, with 46,000 items posted on the site over a three-week period by members based in the Lumberton ZIP code 08048."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "lumberton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4594,
+    "attempt": 4559,
+    "place_id": "gn-5204278",
+    "input": {
+      "place": {
+        "place_id": "gn-5204278",
+        "name": "Oil City",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.43395,
+        "lon": -79.70644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oil City, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Oil_City,_Pennsylvania",
+          "text": "Oil City (Seneca: Tga:no's) is the largest city in Venango County, Pennsylvania, United States. Known for its prominence in the initial exploration and development of the petroleum industry, it is located at a bend in the Allegheny River at the mouth of Oil Creek. The population was 9,608 at the 2020 census, and it is the principal city of the Oil City micropolitan area.\nInitial settlement of Oil City was sporadic, and tied to the iron industry. After the first oil wells were drilled in 1861, it became central to the petroleum industry while hosting headquarters for the Pennzoil, Quaker State, and Wolf's Head motor oil companies. Tourism plays a prominent role in the region by promoting oil heritage sites, nature trails, and Victorian architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "oil city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oil",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4595,
+    "attempt": 4560,
+    "place_id": "gn-5992836",
+    "input": {
+      "place": {
+        "place_id": "gn-5992836",
+        "name": "Kirkland Lake",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 48.14461,
+        "lon": -80.03767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkland Lake",
+          "url": "https://en.wikipedia.org/wiki/Kirkland_Lake",
+          "text": "Kirkland Lake is a town and municipality in Timiskaming District of Northeastern Ontario, in the Canadian province of Ontario. The 2021 population, according to Statistics Canada, was 7,750.\nThe community name was based on a nearby lake which in turn was named after Winnifred Kirkland, a secretary of the Ontario Department of Mines in Toronto. The lake was named by surveyor Louis Rorke in 1907. Miss Kirkland never visited the town, and the lake that bore her name did not exist as it dried because of mine tailings, but due to floodings of the mineshafts it has recently come back up to about half of its initial depth. The community comprises Kirkland Lake (Teck Township), as well as Swastika, Chaput Hughes, Bernhardt, and Morrisette Township.\nKirkland Lake was built on gold mining, but is also notable for its hockey players.  As well, hockey broadcaster Foster Hewitt called Kirkland Lake \"the town that made the NHL.\" The town celebrated this via Hockey Heritage North, which was renamed Heritage North.\nUntil January 1, 1972, the town was known as Township of Teck. A by-law was introduced, on July 20, 1971, to change the municipality's name to Town of Kirkland Lake, effective January 1, 1972."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "kirkland lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kirkland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

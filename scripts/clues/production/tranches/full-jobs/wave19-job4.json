@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3691,
+    "attempt": 3661,
+    "place_id": "gn-2636049",
+    "input": {
+      "place": {
+        "place_id": "gn-2636049",
+        "name": "Thatcham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40366,
+        "lon": -1.26049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thatcham",
+          "url": "https://en.wikipedia.org/wiki/Thatcham",
+          "text": "Thatcham is a market town and civil parish in West Berkshire, England. It is situated in the valley of the River Kennet 3 miles (4.8 km) east of Newbury, 14 miles (23 km) west of Reading and 54 miles (87 km) west of London. The town has a long history dating back to prehistoric times, a claimant to the title of oldest continuously inhabited place in Great Britain. As of 2021, it had a population of 25,464, though it is part of a built-up area comprising itself and neighbouring Newbury of over 70,000 residents. It is on the route of the A4 Bath Road, the historic main road between London and Bristol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "thatcham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3692,
+    "attempt": 3662,
+    "place_id": "gn-2642135",
+    "input": {
+      "place": {
+        "place_id": "gn-2642135",
+        "name": "Motherwell",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.78924,
+        "lon": -3.99187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Motherwell",
+          "url": "https://en.wikipedia.org/wiki/Motherwell",
+          "text": "Motherwell (Scots: Mitherwall, Scottish Gaelic: Tobar na Màthar) is a town and former burgh in North Lanarkshire, Scotland, around 12 miles (19 km) south east of Glasgow. It has a population of around 32,120. Historically in the parish of Dalziel and part of Lanarkshire, Motherwell is the headquarters for North Lanarkshire Council. Geographically the River Clyde separates Motherwell from Hamilton to the west whereas the South Calder Water separates Motherwell from Carfin to the north-east and New Stevenston and Bellshill towards the north.\nMotherwell is also geographically attached to Wishaw and the two towns form a large urban area in North Lanarkshire, with both towns having similar populations and strong community ties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "motherwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3693,
+    "attempt": 3663,
+    "place_id": "gn-2647074",
+    "input": {
+      "place": {
+        "place_id": "gn-2647074",
+        "name": "Hereford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.05684,
+        "lon": -2.71482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hereford",
+          "url": "https://en.wikipedia.org/wiki/Hereford",
+          "text": "Hereford (  HERR-if-ərd) is a cathedral city and the county town of the ceremonial county of Herefordshire, England. It is on the banks of the River Wye and lies 16 miles (26 km) east of the border with Wales, 23 miles (37 km) north-west of Gloucester and 24 miles (39 km) south-west of Worcester. With a population of 61,900 in 2024, it is the largest settlement in Herefordshire.\nAn early town charter from 1189, granted by Richard I of England, describes it as \"Hereford in Wales\". Hereford has been recognised as a city since time immemorial, with the status being reconfirmed in October 2000. Hereford has been a civil parish since 2000.\nProducts from Hereford include cider, beer, leather goods, nickel alloys, poultry, chemicals and sausage rolls, as well as the Hereford breed of cattle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hereford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3694,
+    "attempt": 3664,
+    "place_id": "gn-2653232",
+    "input": {
+      "place": {
+        "place_id": "gn-2653232",
+        "name": "Cheshunt",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.7002,
+        "lon": -0.03026
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheshunt",
+          "url": "https://en.wikipedia.org/wiki/Cheshunt",
+          "text": "Cheshunt (  CHEZ-ənt) is a town in the Borough of Broxbourne, in Hertfordshire, England. It lies within the London commuter belt approximately 13 miles (21 km) north of Central London, on the River Lea and Lee Navigation, bordering the Lee Valley Park. At the 2021 census, the Cheshunt built-up area had a population of 43,680.\nCheshunt was recorded as Cestrehunt in the Domesday Book of 1086. The original centre of Cheshunt was around St Mary's Church, near the course of the Roman road of Ermine Street. The main centre subsequently shifted eastwards onto the High Street and Turners Hill, which together form a main road running roughly parallel to the River Lea. Cheshunt was an ancient parish; as well as Cheshunt itself the parish also covered Waltham Cross, Turnford, Goffs Oak, and surrounding rural areas. The parish included a number of large country houses and their estates, notably including Cheshunt Great House, Cheshunt Park, and Theobalds. The civil parish of Cheshunt was abolished in 1974 on the creation of the borough of Broxbourne.\nIn the 20th century, the town was known for glasshouse horticulture and rose cultivation. Cheshunt today is a commuter town with regular services via Cheshunt railway station on the West Anglia Main Line and London Overground, and is accessible by road via the A10 and M25 motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "cheshunt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3695,
+    "attempt": 3665,
+    "place_id": "gn-2661513",
+    "input": {
+      "place": {
+        "place_id": "gn-2661513",
+        "name": "Biel/Bienne",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 47.13713,
+        "lon": 7.24608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biel/Bienne",
+          "url": "https://en.wikipedia.org/wiki/Biel/Bienne",
+          "text": "Biel/Bienne (official bilingual wording; German: Biel [biːl] ; French: Bienne [bjɛn]; Alemannic German: Biu [biːu]) is a bilingual city and municipality in the canton of Bern in Switzerland. With over 55,000 residents, it is the country's tenth-largest city by population. The Biel/Bienne urban area has a population of around 100,000 inhabitants. Biel/Bienne is the capital of the Biel/Bienne administrative district. The city has been an industrial and watchmaking heart of Switzerland since the 19th century. With world-famous watch brands such as Rolex, Omega and Swatch based in Biel/Bienne, the city is one of the main centres of the Swiss watch industry and is also referred to as the \"world capital of watchmaking\".\nBiel/Bienne lies on the language boundary between the French-speaking and German-speaking parts of Switzerland, and is bilingual throughout. Biel is the German name for the city whereas Bienne is its French counterpart. The city is often referred to in both languages simultaneously. Since 1 January 2005, the official name has been \"Biel/Bienne\". Until then, the town was officially named Biel or Bienne.\nThe city lies at the foot of the first mountain range of the Jura Mountains area, guarding the only practical connection to Jura, on the northeastern shores of Lake Biel (Bielersee, Lac de Bienne), sharing the eastern tip of the lake with its sister town, Nidau. The cities of Neuchâtel, Solothurn, and Bern (the capital of Switzerland) lie southwest, northeast and southeast of Biel/Bienne. They all can be reached within about 30 minutes by train or car. The cities of Zurich, Basel and Lausanne can each be reached in about one hour by car or train."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "biel bienne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "biel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bienne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3696,
+    "attempt": 3666,
+    "place_id": "gn-2692475",
+    "input": {
+      "place": {
+        "place_id": "gn-2692475",
+        "name": "Märsta",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.62157,
+        "lon": 17.85476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Märsta",
+          "url": "https://en.wikipedia.org/wiki/Märsta",
+          "text": "Märsta (Swedish: [ˈmæ̂ːʂʈa]) is a suburb of Metropolitan Stockholm, a locality and the seat of Sigtuna Municipality, Stockholm County, Sweden with 27,034 inhabitants in 2015. The town is situated close to Stockholm's main international airport, Arlanda. Even though its origins go back to around 500 AD, Märsta is a widespread modern residential area. Märsta has a mix of multi-storey dwellings and smaller houses. It is in a phase of expansion and new residential areas are built both in central parts of Märsta and in the surrounding areas such as Steningehöjden. Märsta can be reached by Stockholm commuter rail trains running at quarterly intervals during daytime and by bus from Stockholm Arlanda Airport. The central parts of Märsta has a shopping area \"Märsta Centrum\" with various shops, pub and restaurants. Another smaller shopping area is \"Valsta Centrum\". East of the central parts of Märsta there is an industrial area and a bit further east close to the airport a shopping mall \"Eurostop\". Most parts of Märsta and the municipality of Sigtuna can be reached with local bus services originating at the Märsta railway station and also connecting with commuter trains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "marsta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3697,
+    "attempt": 3667,
+    "place_id": "gn-2753106",
+    "input": {
+      "place": {
+        "place_id": "gn-2753106",
+        "name": "Kampen",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.555,
+        "lon": 5.91111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kampen, Overijssel",
+          "url": "https://en.wikipedia.org/wiki/Kampen,_Overijssel",
+          "text": "Kampen (Dutch pronunciation: [ˈkɑmpə(n)] ) is a city and municipality in the province of Overijssel, Netherlands. A member of the former Hanseatic League, it is located at the lower reaches of the river IJssel.\nThe municipality of Kampen had a population of 54,474 in 2021 and covers an area of 161.79 square kilometres (62.47 square miles). Kampen is located in the North West of Overijssel and is the largest city in this region. The city of Kampen itself has around 37,000 inhabitants.\nKampen has one of the best preserved old town centres of the Netherlands, including remains of the ancient city wall (of which three gates are still standing) and numerous churches. Also notable are the three bridges over the IJssel which connect Kampen with IJsselmuiden and Kampereiland, the agricultural area between the branches which form the IJssel delta, and a windmill (d' Olde Zwarver – the Old Vagabond). Since November 2018, the town and some communes are on a river island. Between the 14th and 16th century it was one of the biggest towns in the Northern Netherlands (modern day European Netherlands). The town is about 90 kilometer northeast of Amsterdam.\nTraditionally people in Kampen speak a variation of the Sallands dialect, known as Kampers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "kampen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3698,
+    "attempt": 3668,
+    "place_id": "gn-277130",
+    "input": {
+      "place": {
+        "place_id": "gn-277130",
+        "name": "Baalbek",
+        "country": "Lebanon",
+        "subdivision": "Baalbek-Hermel Governorate",
+        "lat": 34.00583,
+        "lon": 36.21806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baalbek",
+          "url": "https://en.wikipedia.org/wiki/Baalbek",
+          "text": "Baalbek ( BAHL-bek, BAY-əl-bek; Arabic: بَعْلَبَكّ, romanized: Baʿlabakk, Lebanese: Bʿalbak; Syriac: ܒܥܠܒܟ; Phoenician: 𐤁𐤏𐤋𐤁𐤊, romanized: bʿlbk) is a city located east of the Litani River in Lebanon's Beqaa Valley, about 67 km (42 mi) northeast of Beirut. It is the capital of Baalbek-Hermel Governorate. In 1998, the city had a population of 82,608. Most of the population consists of Shia Muslims, followed by Sunni Muslims and Christians; in 2017, there was also a large presence of Syrian refugees.\nBaalbek's history dates back at least 11,000 years. After Alexander the Great conquered the city in 334 BCE, he renamed it Heliopolis (Ancient Greek: Ἡλιούπολις, romanized: Hēlioúpolis, lit. 'Sun City'; Syriac: ܐܝܠܝܘܦܘܠܝܣ, romanized: ʾĪliyōp̄ōlīs). The city flourished under Roman rule. However, it underwent transformations during the Christianization period and the subsequent rise of Islam following the Arab conquest in the 7th century. In later periods, the city was sacked by the Mongols and faced a series of earthquakes, resulting in a decline in importance during the Ottoman and modern periods.\nIn the modern era, Baalbek is a tourist destination. It is known for the ruins of the Roman temple complex, which includes the Temple of Bacchus and the Temple of Jupiter, and was inscribed in 1984 as a UNESCO World Heritage site. Other tourist attractions are the Great Umayyad Mosque, the Baalbek International Festival, the mausoleum of Sit Khawla, and a Roman quarry site named Hajar al-Hibla. Baalbek's tourism sector has encountered challenges due to conflicts in Lebanon, particularly the 1975–1990 civil war, spillover from the Syrian civil war between 2011 and 2017, and the Israel–Hezbollah conflict since 2023.\nBaalbek is considered to be part of Hezbollah's heartland and is known to be their political stronghold. During the Israeli occupation of Southern Lebanon (1982–2000), the group managed to overpower the Lebanese army in Baalbek and gain control of the city. The settlement was subsequently used as a base to recruit and train men for attacks against Israeli forces. Hezbollah continues to hold significant political influence and popular support in Baalbek. In the 2022 Lebanese general election the Amal-Hezbollah list won 9 out of 10 seats in the Baalbek-Hermel Governorate.\nIsrael has conducted numerous airstrikes and raids against military and civilian targets in the Baalbek area in the past decades. For instance, in 2006 during the Operation Sharp and Smooth, Israeli commandos raided a hospital and bombed multiple houses, killing two Hezbollah fighters and at least eleven civilians. In 2024, during the Israel–Hezbollah conflict, Israel sent forced displacement calls for the entire city. Shortly after, Israeli airstrikes killed 19 people, including 8 women."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 430
+    },
+    "banned_terms": [
+      {
+        "term": "baalbek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3699,
+    "attempt": 3669,
+    "place_id": "gn-2953089",
+    "input": {
+      "place": {
+        "place_id": "gn-2953089",
+        "name": "Balingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.27525,
+        "lon": 8.85464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balingen",
+          "url": "https://en.wikipedia.org/wiki/Balingen",
+          "text": "Balingen (German pronunciation: [ˈbaːlɪŋən] ; Swabian: Balenga) is a town in Baden-Württemberg, Germany, capital of the district of Zollernalbkreis. It is located near the Swabian Jura, approximately 35 km to the south of Tübingen, 35 km northeast of Villingen-Schwenningen, and 70 km south southwest of Stuttgart.\nBalingen is the second largest town in the Zollernalb district after Albstadt. It is a medium-sized center for the surrounding municipalities and was named a large district town in 1974. The town of Balingen has undergone dynamic development since 1945. The town, officially designated a  \"Große Kreisstadt\" (large district town) since January 1, 1974, has entered into an administrative partnership with the neighboring town of Geislingen.\nBalingen is home to the Bizerba and Ideal companies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "balingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3700,
+    "attempt": 3670,
+    "place_id": "gn-3121070",
+    "input": {
+      "place": {
+        "place_id": "gn-3121070",
+        "name": "Guadalajara",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 40.62862,
+        "lon": -3.16185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadalajara, Spain",
+          "url": "https://en.wikipedia.org/wiki/Guadalajara,_Spain",
+          "text": "Guadalajara ( GWAH-də-lə-HAR-ə, Spanish: [ɡwaðalaˈxaɾa] ) is a city and municipality in Spain, located in the autonomous community of Castilla–La Mancha. It is the capital of the Province of Guadalajara.\nGuadalajara lies on the central part of the Iberian Peninsula at roughly 685 meters (2,247 ft) above sea level. Most of the city housing is located on the left (southern) bank of the Henares, in between the river and the moors of La Alcarria. In addition to the city, the municipality also includes the villages of Iriépal, Taracena, Usanos, and Valdenoches. As of 1 January 2025, Guadalajara has a registered population of 93,470, which makes it the region's second most populated municipality.\nFounded in the 9th century as Madīnat al-Faraŷ under the Emirate of Córdoba, it became a stronghold of the Masmuda Berber clan of the Banū Sālim. After the Christian conquest of the Taifa of Toledo in 1085, it grew into a sizable town of the Crown of Castile under control of the Mendoza family. It was a hub for mystical iluminismo in the 16th century in the Kingdom of Toledo. Depopulation and decay of key economy parametres ensued in the 17th century. Growth in the 21st century was caused by its closeness to the functional urban area of Madrid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "guadalajara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3701,
+    "attempt": 3671,
+    "place_id": "gn-3489460",
+    "input": {
+      "place": {
+        "place_id": "gn-3489460",
+        "name": "Montego Bay",
+        "country": "Jamaica",
+        "subdivision": "Saint James Parish",
+        "lat": 18.47116,
+        "lon": -77.91883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montego Bay",
+          "url": "https://en.wikipedia.org/wiki/Montego_Bay",
+          "text": "Montego Bay (Jamaican Patois: Mobay or Muhbay) is the capital of the parish of St. James in Jamaica. The city is the fourth most populous urban area in the country, after Kingston, Spanish Town, and Portmore, all of which form the Greater Kingston Metropolitan Area, home to more than half a million people. As a result, Montego Bay is the second-largest anglophone city in the Caribbean, after Kingston.\nMontego Bay is a popular tourist destination featuring duty-free shopping, a cruise line terminal and several beaches and resorts. The city is served by the Donald Sangster International Airport, the busiest airport in the Anglophone Caribbean, which is located within the official city limits. The city is enclosed in a watershed, drained by several rivers such as the Montego River. Montego Bay is referred to as \"The Second City\", \"MoBay\" or \"Bay\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "montego bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montego",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3702,
+    "attempt": 3672,
+    "place_id": "gn-3565432",
+    "input": {
+      "place": {
+        "place_id": "gn-3565432",
+        "name": "Cárdenas",
+        "country": "Cuba",
+        "subdivision": "Matanzas Province",
+        "lat": 23.03632,
+        "lon": -81.20602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cárdenas, Cuba",
+          "url": "https://en.wikipedia.org/wiki/Cárdenas,_Cuba",
+          "text": "San Juan de Dios de Cárdenas, or simply Cárdenas (Spanish pronunciation: [ˈkaɾðenas]), is a municipality and city in the Matanzas Province of Cuba, about 116 km (72 mi) by air [156 km (97 mi) by road] east of Havana. Cárdenas is the 15th most-populated Cuban city and the second most populated one not being a provincial seat, after Manzanillo.\nThe Cuban Flag was first raised over Cuba in this historic city of straight and narrow streets (the \"Charleston of the Caribbean\"), horse-drawn carriages, industry and \"cangrejos\" (blue crabs). It was in Cárdenas where José Arechabala S.A. launched and started production of Havana Club in 1934.\nCárdenas is the northernmost municipality in Cuba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "cardenas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3703,
+    "attempt": 3673,
+    "place_id": "gn-3617459",
+    "input": {
+      "place": {
+        "place_id": "gn-3617459",
+        "name": "Nueva Guinea",
+        "country": "Nicaragua",
+        "subdivision": "South Caribbean Coast",
+        "lat": 11.68758,
+        "lon": -84.45616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nueva Guinea",
+          "url": "https://en.wikipedia.org/wiki/Nueva_Guinea",
+          "text": "Nueva Guinea (Spanish pronunciation: [ˈnweβa ɣiˈnea]) is a town and a municipality in the South Caribbean Coast Autonomous Region of Nicaragua.\nNueva Guinea was founded in the 1960s and saw significant growth in the early 1970s as the US Peace Corps helped to move families from the Pacific region of Nicaragua to Nueva Guinea in exchange for free land and agricultural help.\n20 km east of Leon Nicaragua, Cerro Negro erupted on 3 February 1971, causing extensive ash fall to the west. Up to 10 cm of ash were deposited in villages near the volcano. The eruption ended on 14 February. Much farmland was damaged by the ash fall from the eruption.  USAID and/or perhaps U.S. Peace Corps, in conjunction with the Government of Nicaragua, provided aid consisting of elements of the U.S. Air Force 24th Special Operations Squadron, Howard Air Force Base, Canal Zone (Panama).  In an effort encompassing approximately 3 weeks in early 1971, U.S.A.F. C123K aircraft conducted numerous sorties between Leon Nicaragua and Nueva Guinea relocating an estimated 1000 families along with their livestock and pets to Nueva Guinea.  Helping to coordinate the weeks-long relief effort were 2 U.S.A.F. combat controllers on site throughout at Nueva Guinea.  The two controllers provided radio communications, set up and maintained a non directional beacon navigation aid, provided weather observations and updated airfield status reports helping to ensure safe air operations.\nSkilled pilots landed the high-wing C123s on the unimproved runway surface at Nueva Guinea onto a sod runway surface not much wider than the fuselage and landing gear of the large aircraft. The high wings extended over meter high berms along each side of the runway.  Part way into the mission, a bulldozer was airlanded by the C123K aircraft.  The bulldozer was used to extend the runway and over-run area and some levelling of the berms along the runway length was accomplished.  This was done in order to increase runway safety.\nDuring the weeks-long mission, the on site air force controllers were joined each day alongside the runway by several of the local children ages from about two years to perhaps 14 years who watched the goings-on and were delightful companions to the two working controllers.\nThe disaster response relocation of Nicaraguan citizens was of a magnitude (estimated 1000 families) that was at the time quite significant to the Nueva Guinea community.  It is believed at that time (1971) that Nueva Guinea lacked all-weather road connections.  The road connecting to populated regions of Nicaragua was only believed passable during the dry season.  In 1971 there was a medium size electric generator in the town that operated for several hours nightly, powering some street lights and perhaps a few basic shops and homes.  Refrigeration was accomplished with \"ice boxes\" and ice, packed in burlap bags with sawdust for insulation was flown in regularly. It is believed that two local bakers alternated bread making duties for the townspeople and fresh beef or pork was available- usually one or the other- depending upon the butchering schedule.  As chickens seemed numerous, eggs were readily available at the small restaurant in town. At the time of the air mission, in addition to the two USAF personnel in town there was one U.S. citizen known to reside longer-term in Nueva Guinea, that being a Catholic aid worker from Sheboygan, Wisconsin USA. (Written by a USAF combat controller who lived at Nueva Guinea throughout the relief mission in 1971.)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 572
+    },
+    "banned_terms": [
+      {
+        "term": "nueva guinea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nueva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guinea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3704,
+    "attempt": 3674,
+    "place_id": "gn-3652977",
+    "input": {
+      "place": {
+        "place_id": "gn-3652977",
+        "name": "Pomasqui",
+        "country": "Ecuador",
+        "subdivision": "Pichincha",
+        "lat": -0.0542,
+        "lon": -78.45382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pomasqui",
+          "url": "https://en.wikipedia.org/wiki/Pomasqui",
+          "text": "Pomasqui is a village in Quito Canton, Ecuador. Located 16 kilometres (9.9 mi) north of Quito, and 6 kilometres (3.7 mi) from the equator, it is on the road to Ciudad Mitad del Mundo. The village's main plaza, Plaza Yerovi, features two churches, the Church of El Senor del Arbol (\"the Lord of the Tree\"), as well as the parish church, which contains some religious paintings which are considered odd. Santa Clara is the patron saint of Pomasqui. Dia de Santa Clara and the fiesta of El Senor del Arbol are both celebrated in July. The economy features a shoe industry, which uses parts of the maguey plant found in the region. The climate is so dry as to have given it the name of Piurita (\"little Piura\"). The southern boundary of the Cara culture, extended to Pomasqui."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "pomasqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3705,
+    "attempt": 3675,
+    "place_id": "gn-4274305",
+    "input": {
+      "place": {
+        "place_id": "gn-4274305",
+        "name": "Leavenworth",
+        "country": "United States",
+        "subdivision": "Kansas",
+        "lat": 39.31111,
+        "lon": -94.92246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leavenworth, Kansas",
+          "url": "https://en.wikipedia.org/wiki/Leavenworth,_Kansas",
+          "text": "Leavenworth () is the county seat of and the largest city in Leavenworth County, Kansas, United States. Part of the Kansas City metropolitan area, Leavenworth is located on the west bank of the Missouri River, on the site of Fort Leavenworth, built in 1827. The city became known in American history for its role as a key supply base in the settlement of the American West. During the Civil War, many volunteers joined the Union Army from Leavenworth.  The city has been notable as the location of several prisons, particularly the United States Disciplinary Barracks and United States Penitentiary, Leavenworth. As of the 2020 census, the population of the city was 37,351."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "leavenworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3706,
+    "attempt": 3676,
+    "place_id": "gn-4274994",
+    "input": {
+      "place": {
+        "place_id": "gn-4274994",
+        "name": "Manhattan",
+        "country": "United States",
+        "subdivision": "Kansas",
+        "lat": 39.18361,
+        "lon": -96.57167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manhattan, Kansas",
+          "url": "https://en.wikipedia.org/wiki/Manhattan,_Kansas",
+          "text": "Manhattan is a city in and the county seat of Riley County, Kansas, United States, although the city extends into Pottawatomie County. It is located in northeastern Kansas at the junction of the Kansas River and Big Blue River. As of the 2020 census, the population of the city was 54,100.\nThe city was founded by settlers from the New England Emigrant Aid Company as a Free-State town in the 1850s, during the Bleeding Kansas era. Nicknamed \"the Little Apple\" as a play on New York City's moniker of the \"Big Apple\", the city is a college town with a significant student population, because it is home to Kansas State University (KSU)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "manhattan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3707,
+    "attempt": 3677,
+    "place_id": "gn-4285268",
+    "input": {
+      "place": {
+        "place_id": "gn-4285268",
+        "name": "Bowling Green",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 36.99032,
+        "lon": -86.4436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowling Green, Kentucky",
+          "url": "https://en.wikipedia.org/wiki/Bowling_Green,_Kentucky",
+          "text": "Bowling Green is a city in and the county seat of Warren County, Kentucky, United States. Its population was 72,294 as of the 2020 census, making it the third-most populous city in the state, after Louisville and Lexington. The Bowling Green metropolitan area is the fourth-largest in the state and had a population of 179,639 in 2020.\nFounded by pioneers in 1798, Bowling Green was the provisional capital of Confederate Kentucky during the American Civil War. In the 21st century, it is the location of numerous manufacturers, including General Motors, Spalding, and Fruit of the Loom. The Bowling Green Assembly Plant has been the source of all Chevrolet Corvettes built since 1981. Bowling Green is also home to Western Kentucky University (or WKU for short), and the National Corvette Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "bowling green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bowling",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3708,
+    "attempt": 3678,
+    "place_id": "gn-471101",
+    "input": {
+      "place": {
+        "place_id": "gn-471101",
+        "name": "Vsevolozhsk",
+        "country": "Russia",
+        "subdivision": "Leningradskaya Oblast'",
+        "lat": 60.01512,
+        "lon": 30.67314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vsevolozhsk",
+          "url": "https://en.wikipedia.org/wiki/Vsevolozhsk",
+          "text": "Vsevolozhsk (Russian: Все́воложск, romanized: Vsévoložsk, IPA: [ˈfsʲe.və.ləʂsk]; Finnish: Seuloskoi) is a town and the administrative center of Vsevolozhsky District in Leningrad Oblast, Russia, located on the Karelian Isthmus 24 kilometers (15 mi) east of Saint Petersburg. Historically, the population of Vsevolozhsk was as follows:  59,704 (2010 census); 45,310 (2002 census); 31,946 (1989 Soviet census).\nThe town's name comes from manufacturer Vsevolozhsky. In 1941–1944, the Road of Life (the vital road connecting besieged Leningrad with the rest of the Soviet Union) passed through the town. Currently, a considerable part of the population of Vsevolozhsk commutes to Saint Petersburg for work, which is facilitated by the wide-scale construction of apartment buildings in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "vsevolozhsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3709,
+    "attempt": 3679,
+    "place_id": "gn-4939085",
+    "input": {
+      "place": {
+        "place_id": "gn-4939085",
+        "name": "Haverhill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.7762,
+        "lon": -71.07728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haverhill, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Haverhill,_Massachusetts",
+          "text": "Haverhill  ( HAY-vril) is a city in Essex County, Massachusetts, United States. Haverhill is located 35 miles (56 km) north of Boston on the New Hampshire border and about 17 miles (27 km) from the Atlantic Ocean. The population was 67,787 at the 2020 United States census.\nLocated on the Merrimack River, Haverhill began as a farming community of Puritans, largely from Newbury Plantation. The land was officially purchased from the Pentuckets on November 15, 1642 (one year after incorporation) for three pounds, ten shillings. Pentucket was renamed Haverhill (after the Ward family's hometown in England) and evolved into an important industrial center, beginning with sawmills and gristmills run by water power. In the 18th and 19th centuries, Haverhill developed woolen mills, tanneries, shipping and shipbuilding. The town was home to a significant shoe-making industry for many decades. By the end of 1913, one tenth of the shoes produced in the United States were made in Haverhill, and because of this the town was known during the time as the \"Queen Slipper City\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "haverhill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3710,
+    "attempt": 3680,
+    "place_id": "gn-5101879",
+    "input": {
+      "place": {
+        "place_id": "gn-5101879",
+        "name": "North Bergen",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.80427,
+        "lon": -74.01208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Bergen, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Bergen,_New_Jersey",
+          "text": "North Bergen is a township in the northern part of Hudson County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 63,361, an increase of 2,588 (+4.3%) from the 2010 census count of 60,773, which in turn reflected an increase of 2,681 (+4.6%) from the 58,092 counted in the 2000 census. The township was incorporated in 1843. It was much diminished in territory by a series of secessions. Situated on the Hudson Palisades, it is one of the hilliest municipalities in the United States. Like neighboring North Hudson communities, North Bergen is among those places in the country with the highest population density."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "north bergen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bergen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

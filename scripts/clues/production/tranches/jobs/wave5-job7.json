@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 4801,
+    "place_id": "gn-4185110",
+    "input": {
+      "place": {
+        "place_id": "gn-4185110",
+        "name": "Buford",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.12066,
+        "lon": -84.00435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buford, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Buford,_Georgia",
+          "text": "Buford is a city in Gwinnett and Hall counties in the U.S. state of Georgia. As of the 2020 census, the city had a population of 17,144. Most of the city is in Gwinnett County, which is part of the Atlanta-Sandy Springs-Marietta Metropolitan Statistical Area. The northern sliver of the city is in Hall County, which comprises the Gainesville, Georgia Metropolitan Statistical Area and is part of the larger Atlanta-Athens-Clarke-Sandy Springs Combined Statistical Area.\nThe city was founded in 1872 after a railroad was built in the area connecting Charlotte, North Carolina, with Atlanta. Buford was named after Algernon Sidney Buford, who at the time was president of the Atlanta and Richmond Air-Line Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "buford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4814,
+    "place_id": "gn-5892532",
+    "input": {
+      "place": {
+        "place_id": "gn-5892532",
+        "name": "Banff",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.17622,
+        "lon": -115.56982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banff, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Banff,_Alberta",
+          "text": "Banff is a resort town in Banff National Park, Alberta, Canada, in Alberta's Rockies along the Trans-Canada Highway, 126 km (78 mi) west of Calgary, 58 km (36 mi) east of Lake Louise, and 1,400 to 1,630 m (4,590 to 5,350 ft) above sea level.\nBanff was the first municipality to incorporate within a Canadian national park. The town is a member of the Calgary Regional Partnership.\nBanff is one of Canada's most popular tourist destinations. Known for its mountainous surroundings and hot springs, it is a destination for outdoor sports and hiking, biking, scrambling and skiing. Sunshine Village, Ski Norquay and Lake Louise Ski Resort are nearby ski resorts within the national park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "banff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4815,
+    "place_id": "gn-6087591",
+    "input": {
+      "place": {
+        "place_id": "gn-6087591",
+        "name": "New Hamburg",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.38339,
+        "lon": -80.6997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Hamburg, Ontario",
+          "url": "https://en.wikipedia.org/wiki/New_Hamburg,_Ontario",
+          "text": "New Hamburg is a community of approximately 11,953 (2011 stats) in the township of Wilmot, Ontario, Canada. It is in the far western part of the Regional Municipality of Waterloo, near the regional border with Perth County. It is adjacent to the community of Baden, which sits to its east and is also a part of the township of Wilmot. The nearest cities are Kitchener, Waterloo, and Stratford.\nThe Nith River winds throughout the town and flows through the downtown core, which is home to a 50-foot waterwheel made of wood, being built in 1990. This wooden wheel was torn down on March 15, 2023, and replaced with a metal recreation of the wheel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "new hamburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4819,
+    "place_id": "gn-12719585",
+    "input": {
+      "place": {
+        "place_id": "gn-12719585",
+        "name": "Kwun Lung Lau",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.28044,
+        "lon": 114.12758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwun Lung Lau",
+          "url": "https://en.wikipedia.org/wiki/Kwun_Lung_Lau",
+          "text": "Kwun Lung Lau is a public housing estate in Kennedy Town, Hong Kong. It is one of the first public housing developments in Hong Kong, built in 1967 to alleviate a housing crisis in the territory. It is on 20 Lung Wah Street.\nIt consists of seven buildings, namely Block A - G. The overall shape was that of a snaking dragon, and hence its name which means Watching Dragon Building in Chinese.\nKwun Lung Lau is also famous for a landslide on 23 July 1994 that killed five people and injured three. Leaking water and heavy rain had built up behind a masonry retaining wall, which was too thin, and subsequently collapsed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "kwun lung lau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kwun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lung",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4822,
+    "place_id": "gn-18918",
+    "input": {
+      "place": {
+        "place_id": "gn-18918",
+        "name": "Protaras",
+        "country": "Cyprus",
+        "subdivision": "Ammochostos",
+        "lat": 35.0125,
+        "lon": 34.05833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Protaras",
+          "url": "https://en.wikipedia.org/wiki/Protaras",
+          "text": "Protaras (Greek: Πρωταράς) is a predominantly tourist resort that falls under the administrative jurisdiction of the Municipality of Paralimni in Cyprus. In ancient times, the area was home to the old city-state of Leukolla. The city had a small, safe harbour where Demetrius Poliorketes sought refuge in 306 BC, lying in wait for Ptolemy, one of the successors of Alexander the Great. In the ensuing battle, Ptolemy was defeated and fled to Egypt, leaving Cyprus briefly in Demetrius's hands. Protaras is also known as \"the land of windmills\" which preserves the nostalgic quality of the past.\nProtaras has clear, sky-blue waters and sandy beaches, the best known of which is Fig Tree Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "protaras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4825,
+    "place_id": "gn-2303258",
+    "input": {
+      "place": {
+        "place_id": "gn-2303258",
+        "name": "Bechem",
+        "country": "Ghana",
+        "subdivision": "Ahafo",
+        "lat": 7.09034,
+        "lon": -2.02498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bechem",
+          "url": "https://en.wikipedia.org/wiki/Bechem",
+          "text": "Bechem is a town and is the capital of the Tano South district of the Ahafo Region of Ghana, and Bechem is the district capital for the Tano South Constituency. Bechem is located close to the capital town of Bono, Sunyani. The town is known for the Bechem Presbyterian Secondary School. The school is a second-cycle institution. The town has one of the best teacher training colleges in the country, known as St Joseph College (JOSCO), and has Bechem School for the Deaf and Blind and Technical Institute for the Deaf. It has two villages known as Techimantia and Derma, which both stand tall when it comes to tomato production in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "bechem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4835,
+    "place_id": "gn-3013173",
+    "input": {
+      "place": {
+        "place_id": "gn-3013173",
+        "name": "Honfleur",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.41985,
+        "lon": 0.23294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Honfleur",
+          "url": "https://en.wikipedia.org/wiki/Honfleur",
+          "text": "Honfleur (French: [ɔ̃flœʁ] ) is a commune in the Calvados department in northwestern France. It is located on the southern bank of the estuary of the Seine across from Le Havre and very close to the exit of the Pont de Normandie. The people that inhabit Honfleur are called Honfleurais.\nIt is especially known for its old port, characterized by its houses with slate-covered frontages, painted frequently by artists. There have been many notable artists, including Gustave Courbet, Eugène Boudin, Claude Monet and Johan Jongkind. They all met at La Ferme Saint Siméon, which is now a five-star hotel, and created the \"Saint Siméon gathering\", contributing to the appearance of the Impressionist movement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "honfleur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4837,
+    "place_id": "gn-3075605",
+    "input": {
+      "place": {
+        "place_id": "gn-3075605",
+        "name": "Holešovice",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.10468,
+        "lon": 14.44946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holešovice",
+          "url": "https://en.wikipedia.org/wiki/Hole%C5%A1ovice",
+          "text": "Holešovice (Czech pronunciation: [ˈɦolɛʃovɪtsɛ]) is a district in the north of Prague situated on a meander of the River Vltava, which makes up the main part of the district Prague 7 (an insignificant part belongs to Prague 1). In the past Holešovice was a heavily industrial suburb; today it is home to the main site of the Prague's National Gallery with the Trade Fair Palace (Veletržní palác), and the National Technical Museum.\nIn 1928, the Libeň Bridge was opened on the site of a wooden temporary bridge from 1903, and is still the longest river bridge in Prague. In 2020, The Guardian named Holešovice as one of the 10 coolest neighborhoods in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "holesovice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4839,
+    "place_id": "gn-3353871",
+    "input": {
+      "place": {
+        "place_id": "gn-3353871",
+        "name": "Otjimbingwe",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -22.35536,
+        "lon": 16.12883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otjimbingwe",
+          "url": "https://en.wikipedia.org/wiki/Otjimbingwe",
+          "text": "Otjimbingwe (also: Otjimbingue) is a settlement in the Erongo Region of central Namibia. Otjimbingwe has approximately 8,000 inhabitants and belongs to the Karibib electoral constituency.\nOtjimbingwe was an important settlement in South West Africa. In the 1860s, the Herero people, facing an imminent attack from the Nama people, united here and elected Maharero first their military commander, and later their first paramount chief. Situated on the Old Bay Road, an ox wagon track leading from Windhoek to Walvis Bay, the settlement was also an economic and cultural centre. Karl Johan Andersson had his trading headquarters here, the Augustineum seminary was situated in town, and it hosted the headquarters of the Rhenish Mission Society."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "otjimbingwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4842,
+    "place_id": "gn-3532525",
+    "input": {
+      "place": {
+        "place_id": "gn-3532525",
+        "name": "Ayapango",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.12692,
+        "lon": -98.79988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ayapango",
+          "url": "https://en.wikipedia.org/wiki/Ayapango",
+          "text": "Ayapango is one of 125 municipalities located in the southeast portion of the State of Mexico, southeast of Mexico City. Its municipal seat and largest town is Ayapango de Gabriel Ramos Millán. Despite the fact that this municipality is distinctly rural, it falls within the Mexico City Metropolitan Area. The town is known for its \"French style\" (Spanish afrancesado) houses built early in the last century which have names which reflect something of their characteristics. The name Ayapango is derived from \"eyapanco\" which roughly translates to \"place where three irrigation ditches meet.\" This town has been designated as a \"Pueblo con Encanto\" (Town with Charm) by the government of the State of Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "ayapango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4845,
+    "place_id": "gn-4851163",
+    "input": {
+      "place": {
+        "place_id": "gn-4851163",
+        "name": "Charles City",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 43.06636,
+        "lon": -92.67241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charles City, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Charles_City,_Iowa",
+          "text": "Charles City is a city in and the county seat of Floyd County, Iowa, United States.  The population was 7,396 at the 2020 census. Charles City is a significant commercial, industrial, and transportation center for the area. U.S. Routes 18, 218 (the Avenue of the Saints), and Iowa Highway 14 converge in the city. The nearest population centers are Mason City (35 miles to the west), Waterloo-Cedar Falls (45 miles to the southeast), and the state capital of Des Moines is located 150 miles to the southwest.\nCharles City is known for its history in agricultural manufacturing, and is where the term \"tractor\" was first conied by the former Hart-Parr Gasoline Engine Company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "charles city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4863,
+    "place_id": "gn-2513406",
+    "input": {
+      "place": {
+        "place_id": "gn-2513406",
+        "name": "Muro",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.73661,
+        "lon": 3.05559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muro, Mallorca",
+          "url": "https://en.wikipedia.org/wiki/Muro,_Mallorca",
+          "text": "Muro (Balearic Catalan: [ˈmuɾo]) is a small municipality on Mallorca, the largest of the Balearic Islands, which are part of Spain. It is located in the north-east of the island. With a history stretching back to prehistoric times, Muro has been shaped by various cultures, including Roman and Muslim influences, before becoming part of the Kingdom of Majorca after the Catalan Conquest in the 13th century. Historically an agricultural hub, the town is known for its production of oranges, lemons, olives, and potatoes, though its agricultural sector faces modern challenges. As of 2024, Muro had a population of 8,136 residents and experiences a significant increase in tourism, particularly during the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "muro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4870,
+    "place_id": "gn-3188498",
+    "input": {
+      "place": {
+        "place_id": "gn-3188498",
+        "name": "Umag",
+        "country": "Croatia",
+        "subdivision": "Istria",
+        "lat": 45.43139,
+        "lon": 13.52389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umag",
+          "url": "https://en.wikipedia.org/wiki/Umag",
+          "text": "Umag (pronounced [ûmaɡ]; Italian: Umago; Venetian: Umago) is a coastal town in Istria, Croatia. Located in the northwestern part of Croatia, near the border with Slovenia, situated on the Adriatic Sea in the county of Istria. Umag is known for its historic old town, Mediterranean climate, and tourism industry. The town has a long history dating back to Roman times and developed as an important regional settlement due to its strategic coastal position. \nToday, Umag is recognized as a popular tourist destination, featuring marinas, beaches, and sports facilities, particularly for tennis. It hosts the annual Croatia Open, an ATP Tour international tennis tournament that attracts players and visitors from around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "umag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4872,
+    "place_id": "gn-363243",
+    "input": {
+      "place": {
+        "place_id": "gn-363243",
+        "name": "Sarandë",
+        "country": "Albania",
+        "subdivision": "Vlorë County",
+        "lat": 39.87534,
+        "lon": 20.00477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarandë",
+          "url": "https://en.wikipedia.org/wiki/Sarand%C3%AB",
+          "text": "Sarandë (Albanian: [saˈɾandə]; Albanian definite form: Saranda; Greek: Άγιοι Σαράντα) is a city in Albania and the seat of Sarandë Municipality. Geographically, the city is located on an open sea gulf of the Ionian Sea within the Mediterranean Sea. Stretching along the Albanian Ionian Sea Coast, Sarandë has a Mediterranean climate with over 300 sunny days a year.\nIn ancient times, the city was known as Onchesmus and Onchesmos, and was a port-town of Chaonia in ancient Epirus. It owes its modern name to the nearby Byzantine monastery of the Forty Saints  by which it became known from the High Middle Ages. Sarandë today is known for its deep blue Mediterranean waters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "sarande",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4874,
+    "place_id": "gn-4457040",
+    "input": {
+      "place": {
+        "place_id": "gn-4457040",
+        "name": "Brevard",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.23345,
+        "lon": -82.73429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brevard, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Brevard,_North_Carolina",
+          "text": "Brevard ( brə-VARD) is a city in and the county seat of Transylvania County, North Carolina, United States, with a population of 7,744 as of the 2020 census.\nBrevard is located at the entrance to Pisgah National Forest and has become a noted tourism, retirement, and cultural center in western North Carolina. A moderate climate, environmental beauty and cultural activities attracts retirees to the area.\nBrevard is also known for its white squirrels. There are several theories of how they came to live there, including an overturned carnival truck and an escaped pet breeding with native squirrels.\nAlong with nearby Asheville and Hendersonville, Brevard forms the Asheville-Brevard, NC CSA combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "brevard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4878,
+    "place_id": "gn-6139045",
+    "input": {
+      "place": {
+        "place_id": "gn-6139045",
+        "name": "Saint-Sauveur",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.88686,
+        "lon": -74.17943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Sauveur, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Saint-Sauveur,_Quebec",
+          "text": "Saint-Sauveur (French pronunciation: [sɛ̃ sovœʁ] ) is a town and municipality within the Les Pays-d'en-Haut Regional County Municipality, Quebec, Canada. It is in the administrative region of Laurentides in the Laurentian Mountains, located about 60 kilometres north of Montreal.\nSt-Sauveur is well known for its local ski areas, the biggest of which is Mont Saint-Sauveur. The ski areas market themselves jointly under the name of \"Valley of Saint-Sauveur\". Its proximity to Montreal, as well as its snow-making capability, night-time skiing, and après-ski establishments make St-Sauveur a popular destination for skiers.\nOn September 11, 2002 the city was created from the merger of the village of Saint-Sauveur-des-Monts and the parish municipality of Saint-Sauveur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "saint sauveur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sauveur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4880,
+    "place_id": "gn-8224784",
+    "input": {
+      "place": {
+        "place_id": "gn-8224784",
+        "name": "Stockton Heath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.37084,
+        "lon": -2.57406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockton Heath",
+          "url": "https://en.wikipedia.org/wiki/Stockton_Heath",
+          "text": "Stockton Heath is a civil parish and suburb of Warrington, in the Borough of Warrington, Cheshire, England. It is located to the north of the Bridgewater Canal and to the south of the Manchester Ship Canal, which divides Stockton Heath from Latchford and north Warrington. It has a total resident population of 6,396.\nVictoria Square is at the centre of Stockton Heath and is on the crossroads of the A49 and A56. Until the 1970s, the Victoria Hotel stood on this square but its location has been redeveloped. North of the square is the main shopping area which includes the Forge Shopping Centre, developed on the site of the old forge (Caldwell's)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "stockton heath",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stockton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heath",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4882,
+    "place_id": "gn-1044995",
+    "input": {
+      "place": {
+        "place_id": "gn-1044995",
+        "name": "Inhassoro",
+        "country": "Mozambique",
+        "subdivision": "Inhambane Province",
+        "lat": -21.53472,
+        "lon": 35.20222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inhassoro",
+          "url": "https://en.wikipedia.org/wiki/Inhassoro",
+          "text": "Inhassoro is a small fishing port in Inhassoro District of Inhambane Province in Mozambique. The town has 11,297 inhabitants and is located on the Indian Ocean coast along the EN1 highway.\nInhassoro, which looks out at Bazaruto and Santa Carolina or Paradise Island is a developing tourist town. The population of Inhassoro is growing steadily as a result of the increase in tourism. Several old hotels date back to colonial times.\nThe bay off Inhassaro is popular with scuba divers with the reefs and the area is a seasonal home to many species of dolphin, turtle, the rare and endangered dugong or sea cow, whale sharks, manta rays and humpback whales."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "inhassoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4890,
+    "place_id": "gn-2181688",
+    "input": {
+      "place": {
+        "place_id": "gn-2181688",
+        "name": "Tawa",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.17038,
+        "lon": 174.82613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tawa, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Tawa,_New_Zealand",
+          "text": "Tawa is the northernmost suburb within the Wellington city boundary, located roughly 15 km north of Wellington's CBD between Churton Park and Porirua in the North Island of New Zealand. It takes its name from the broadleaf tree, which was once prolific throughout the area, although its most famous tree is the Bucket Tree, a large macrocarpa with the topiary of an upside-down bucket. Tawa is also known for its large number of churches, representing a wide range of Christian denominations.\nWithin Tawa, there are a number of named subdivisions: Lindenvale, Westhaven, Redwood and Southgate to the west and Linden, Greenacres and Sundale to the east of the central Tawa area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "tawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4899,
+    "place_id": "gn-727921",
+    "input": {
+      "place": {
+        "place_id": "gn-727921",
+        "name": "Provadia",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.18333,
+        "lon": 27.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Provadia",
+          "url": "https://en.wikipedia.org/wiki/Provadia",
+          "text": "Provadia (Bulgarian: Провадия [proˈvadijɐ]) is a town in northeastern Bulgaria, part of Varna Province, located in a deep karst gorge (Provadia syncline) along the Provadiya River not far from the Bulgarian Black Sea Coast. It is the administrative centre of Provadia Municipality. As of December 2009, the town had a population of 12,901.\nProvadia served as a customs point since ancient times. It is well known for salty mineral waters, its mild climate and a total of 70 km of caves in the surrounding mountain walls. It can be reached by train from Sofia or Varna and there are also hourly buses from and to Varna, and a sophisticated road system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "provadia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6448,
+    "attempt": 6401,
+    "place_id": "gn-2511649",
+    "input": {
+      "place": {
+        "place_id": "gn-2511649",
+        "name": "Rute",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.3269,
+        "lon": -4.36827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rute",
+          "url": "https://en.wikipedia.org/wiki/Rute",
+          "text": "Rute is a municipality in the province of Córdoba, Spain. It lies between Iznájar to the South East, and Lucena to the North West.  Its primary economy centres on the extensive production of foodstuffs including dozens of different makes of anise and traditional Spanish hams. Galleros and Flor de Rute both have their factories there; Galleros being famous for its annual \"Belen\" - the Nativity Scene made from Chocolate, on view from around 15 October each year, and Flor de Rute for their sugarwork which in 2007 included a sugar life-sized scene of Picasso amongst other characters.\nThe name Rute is of uncertain origin, but has a likely Semitic root. Later, the first \"anis\" factory was opened. Because of this, more factories were opened and this municipality became one of the most important makers of anis for over the world. Today, most of these factories are still open and many people go to Rute at Christmas for the sweets that are made there. There are many festivities too. There is Our Lady of Cabeza (Virgen de la Cabeza) which is a procession that leaves a little church and for a day traverses its village in May (usually on the second weekend of the month). There is also another procession that is Virgin of Carmel (Virgen del Carmen) that traverses Rute on the fifteenth of August. Carnivale is celebrated here too, and it has many influence in February, because many people from others villages go to Rute to celebrate there. Easter is celebrated too and there are many brotherhoods which carry their processions out.\nThe olive industry is also key to this area of Spain, along with tourism connected to the aforementioned sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "rute",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6449,
+    "attempt": 6402,
+    "place_id": "gn-2524493",
+    "input": {
+      "place": {
+        "place_id": "gn-2524493",
+        "name": "Ispica",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.78622,
+        "lon": 14.9053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ispica",
+          "url": "https://en.wikipedia.org/wiki/Ispica",
+          "text": "Ispica (Sicilian: Spaccafurnu, Latin: Hyspicae Fundus) is a city and comune in the south of Sicily, Italy. It is 30 kilometres (19 mi) from Ragusa, 50 kilometres (31 mi) from Syracuse, and 90 kilometres (56 mi) away from Valletta, on the coast of Malta. The first mention in a document of Ispica occurred in 1093, in a list of churches and ecclesiastic departments for administrative purposes, but the territory has been colonized since the Bronze Age.\n\nThe city is located on a hill. The main economical activity consists of farming and organic products, especially carrot, zucchini, tomatoes, olives, vineyards. Ispica is the largest producer of organic carrot in\nsouthern Italy with about 18,000 tons of annual production.\nThe town also hosts examples of Sicilian Baroque architecture such as the Vincenzo Sinatra's Basilica di Santa Maria Maggiore, the Annunziata Church, the Carmine monastery, and the St. Barthelemy cathedral.\nIspica was destroyed by the 1693 Sicily earthquake and rebuilt on its present site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "ispica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6450,
+    "attempt": 6403,
+    "place_id": "gn-2635563",
+    "input": {
+      "place": {
+        "place_id": "gn-2635563",
+        "name": "Tranent",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.94439,
+        "lon": -2.95412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tranent",
+          "url": "https://en.wikipedia.org/wiki/Tranent",
+          "text": "Tranent  is a town in East Lothian (formerly Haddingtonshire), in the south-east of Scotland. Tranent lies 6 mi (9.7 km) from the boundary of Edinburgh, and 9.1 mi (14.6 km) from the city centre. It lies south of the A1 road that runs through the parish splitting it from its associated villages and hamlets Meadowmill and the ports of Cockenzie and Port Seton. The original main post road ran straight through the town until the new A1 was built. Built on a gentle slope, about 90 metres (300 ft) above sea level it is one of the oldest towns in East Lothian. The population of the town is approximately 12,140, an increase of over 4,000 since 2001. Tranent was formerly a major mining town, but now serves as a commuter town for Edinburgh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "tranent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6451,
+    "attempt": 6404,
+    "place_id": "gn-2635937",
+    "input": {
+      "place": {
+        "place_id": "gn-2635937",
+        "name": "Thrapston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.39675,
+        "lon": -0.5392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thrapston",
+          "url": "https://en.wikipedia.org/wiki/Thrapston",
+          "text": "Thrapston is a market town and civil parish in the North Northamptonshire unitary authority area of Northamptonshire, England. It was the headquarters of the former East Northamptonshire district, and at the time of the 2021 census, had a population of 7,238.\nThe town's name means 'Farmstead or town of a man named Thraepst'. Another source suggests the individual name is related with Old Germanic 'Trapsta', 'Trafstila' and 'thrafstjan' meaning 'to comfort:, henceforth 'farmstead or town of a man named Draefst or Draepst'.\nThrapston is situated close to the River Nene, where the pronunciation changes from nene to neen and is at the junction of the A14 and the A45. Until the 1960s, Thrapston had two railway stations. Thrapston (Midland) was on the Kettering to Cambridge route, and the former station and viaduct can be seen from the adjacent A14 road. Thrapston (Bridge Street) was on the former LNWR Northampton to Peterborough line.\nA market charter was granted to the town in 1205, in exchange for two palfreys. This is celebrated every year with the town's Charter fair, when the high street is closed and the townspeople congregate in commemoration. A relative of George Washington, Sir John Washington, lived in Chancery Lane in the town, and his wife is buried in the Church of St James. Sir John was brother to George Washington's great-grandfather. Naturalist and writer Horace William Wheelwright practised as an attorney in Thrapston in the 1840s. The Corn Exchange, on the north side of the High Street, was completed in 1850.\nThrapston had two schools, Thrapston Primary and King John Middle School, which together served children from Nursery to Year 8. However, in 2015, East Northamptonshire switched to a two-tier school system resulting in the middle schools closing. As King John School closed, Thrapston Primary School expanded into the King John building, in order to accommodate the year 5 and 6 children. Following this, children usually go to Prince William school in Oundle or another school in the area from year 7 onwards.\nThe local authorities that cover different aspects of civic life in Thrapston are Thrapston Town Council, and North Northamptonshire Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "thrapston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6452,
+    "attempt": 6405,
+    "place_id": "gn-2637659",
+    "input": {
+      "place": {
+        "place_id": "gn-2637659",
+        "name": "Sleaford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.99826,
+        "lon": -0.40941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sleaford",
+          "url": "https://en.wikipedia.org/wiki/Sleaford",
+          "text": "Sleaford is a market town and civil parish in the North Kesteven district of Lincolnshire, England. On the edge of the Fenlands, it is 11 miles (18 kilometres) north-east of Grantham, 16 mi (26 km) west of Boston, and 17 mi (27 km) south of Lincoln. It is the largest settlement in North Kesteven with a population of 19,807 in 2021. Centred on the former parish of New Sleaford, the modern boundaries and urban area include Quarrington to the south-west, Holdingham to the north-west and Old Sleaford to the east. The town is bypassed by the A17 and the A15 roads. Sleaford railway station is on the Nottingham to Skegness (via Grantham) and Peterborough to Lincoln lines.\nThe first settlement formed in the Iron Age where a prehistoric track crossed the River Slea. It was likely home to a mint for the Corieltauvi in the 1st centuries BC and AD. Evidence of Roman and Anglo-Saxon settlement has been found. Medieval records differentiate between Old and New Sleaford, the latter emerging by the 12th century around the present-day market place and St Denys' Church; Sleaford Castle was also built at that time for the Bishops of Lincoln, who owned the manor. Granted the right to hold a market in the mid-12th century, New Sleaford developed into a market town and became locally important in the wool trade, while Old Sleaford (based near the site of the prehistoric settlement) declined.\nFrom the 16th century, the landowning Carre family kept tight control over the town – it grew little in the early modern period. The manor passed by marriage to the Hervey family (Earls and later Marquesses of Bristol) in 1688. The town's common lands were enclosed by 1794, giving ownership mostly to the Herveys. This coincided with canalisation of the Slea, which brought economic growth until it was superseded by the railways in the mid-1850s. These new transport links supported the development of light industries and expanded the town's role in the trade in agricultural goods. Long a centre for justice and administration in north Kesteven, Sleaford became an urban district in 1894 and was home to Kesteven County Council's offices from 1925 to 1974. After a period of stagnation, in the late 20th and early 21st centuries the sale of farmland around Sleaford led to the development of large housing estates, causing the population to rapidly expand and the urban area to engulf Quarrington and Holdingham.\nThough its traditional market has declined in the 21st century (and its cattle and corn markets shut in the 20th century) and much of its heavier manufacturing has departed, Sleaford's economy has diversified. The town remains an important administrative, service and commercial centre for the surrounding district. It houses supermarkets, shops and a large business park with offices and light manufacturing; the headquarters of North Kesteven District Council; three secondary schools (two of which are selective); four primary schools; three newspapers; police, fire and ambulance stations; several places of worship; many sports clubs; a leisure centre; and several medical and dental practices and care homes. Regeneration has transformed some earlier industrial areas, including through the construction of The Hub. The town is one of the largest employment centres in the district; the commonest employers in 2021 were the public sector, retail and, to a much lesser degree, manufacturing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 553
+    },
+    "banned_terms": [
+      {
+        "term": "sleaford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6453,
+    "attempt": 6406,
+    "place_id": "gn-2637916",
+    "input": {
+      "place": {
+        "place_id": "gn-2637916",
+        "name": "Shoreham-by-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.83413,
+        "lon": -0.27431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shoreham-by-Sea",
+          "url": "https://en.wikipedia.org/wiki/Shoreham-by-Sea",
+          "text": "Shoreham-by-Sea (often shortened to Shoreham) is a coastal town and port in the Adur district, in the county of West Sussex, England. In 2011 it had a population of 20,547.\nThe town is bordered to its north by the South Downs, to its west by the Adur Valley, and to its south by the River Adur and Shoreham Beach on the English Channel. The town lies in the middle of the ribbon of urban development along the English south coast, approximately equidistant from the city of Brighton and Hove to the east and the town of Worthing to the west. Shoreham covers an area of 2,430 acres (980 ha) and has a population of 20,547 (2011 census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "shoreham by sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shoreham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "by",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6454,
+    "attempt": 6407,
+    "place_id": "gn-2638138",
+    "input": {
+      "place": {
+        "place_id": "gn-2638138",
+        "name": "Shanklin",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.62613,
+        "lon": -1.1785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shanklin",
+          "url": "https://en.wikipedia.org/wiki/Shanklin",
+          "text": "Shanklin () is a seaside resort town and civil parish on the Isle of Wight, England, located on Sandown Bay. Shanklin is the southernmost of three settlements which occupy the bay, and is close to Lake and Sandown. The sandy beach, its Old Village and a wooded ravine, Shanklin Chine, are its main attractions. The esplanade along the beach is occupied by hotels and restaurants for the most part, and is one of the most tourist-oriented parts of the town. The other is the Old Village, at the top of Shanklin Chine.\nTogether with Lake and Sandown to the north, Shanklin forms a built up area of around 25,000 inhabitants, Shanklin alone contributing around 9,123 of this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "shanklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6455,
+    "attempt": 6408,
+    "place_id": "gn-2641718",
+    "input": {
+      "place": {
+        "place_id": "gn-2641718",
+        "name": "Newbiggin-by-the-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.18532,
+        "lon": -1.51469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newbiggin-by-the-Sea",
+          "url": "https://en.wikipedia.org/wiki/Newbiggin-by-the-Sea",
+          "text": "Newbiggin-by-the-Sea, often abbreviated to Newbiggin, is a seaside town and civil parish in Northumberland, England, located on the North Sea coast.\nThe town is a fishing port and formerly a part of a trade route for shipping grain. Newbiggin Colliery operated from 1908 until 1967.\nNewbiggin became a popular beach resort by 1828 and remains a tourist attraction with landmarks such as the Couple sculpture by Sean Henry, and the 13th-century parish church. The town council oversees governance while the economy remains diverse with 89 active companies as of this date. Newbiggin was part of the Wansbeck local government district until 2009, and lies within the Wansbeck UK Parliamentary constituency, represented by Ian Lavery MP since 2010. The town holds an annual music festival that raises money for charity and is also home to several religious sites representing various denominations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "newbiggin by the sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newbiggin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "by",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6456,
+    "attempt": 6409,
+    "place_id": "gn-2657784",
+    "input": {
+      "place": {
+        "place_id": "gn-2657784",
+        "name": "Abertillery",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.72981,
+        "lon": -3.13432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abertillery",
+          "url": "https://en.wikipedia.org/wiki/Abertillery",
+          "text": "Abertillery (; Welsh: Abertyleri) is a town and community in Blaenau Gwent County Borough, Wales. It is located in the Ebbw Fach valley, and the historic county of Monmouthshire.\nThe surrounding landscape borders the Brecon Beacons National Park and the Blaenavon World heritage Site. Formerly a major coal mining centre the Abertillery area was transformed in the 1990s using EU and other funding to return to a greener environment.\nSituated on the A467 the town is 15 miles (24 km) north of the M4 and 5 miles (8 km) south of the A465 \"Heads of the Valleys\" trunk road. It is about 25 miles (40 km) by road from Cardiff and 47 miles (76 km) from Bristol.\nAccording to the 2011 Census, 4.8% of the ward's 4,416 (212 residents) resident-population can speak, read, and write Welsh. This is below the county's figure of 5.5% of 67,348 (3,705 residents) who can speak, read, and write Welsh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "abertillery",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6457,
+    "attempt": 6410,
+    "place_id": "gn-2758106",
+    "input": {
+      "place": {
+        "place_id": "gn-2758106",
+        "name": "Bunnik",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.06667,
+        "lon": 5.19861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunnik",
+          "url": "https://en.wikipedia.org/wiki/Bunnik",
+          "text": "Bunnik (Dutch pronunciation: [ˈbʏnɪk] ) is a municipality and village in the province of Utrecht, Netherlands. The recorded history of the village dates back nearly 2000 years, when the Romans constructed a fort at Fectio (now Vechten) with a harbour facing the river Rhine, which marked the border of the Roman Empire. The fort developed into a thriving trading centre, which continued to exist after the Romans abandoned the fort in the fourth century. Subsequently, the area was occupied by the Frisians and the Franks. In the 8th and 9th century, the villages of Bunninchem (Bunnik), Lodichem (Odijk) and Wercundia (Werkhoven) developed.\nBunnik is of interest for its surrounding nature area, consisting mainly of forests and farmlands. Additionally, Bunnik, hosts the oldest Youth Hostel in the Netherlands. The major European construction and services company Royal BAM Group has its headquarters in Bunnik."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "bunnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6458,
+    "attempt": 6411,
+    "place_id": "gn-2774347",
+    "input": {
+      "place": {
+        "place_id": "gn-2774347",
+        "name": "Kitzbühel",
+        "country": "Austria",
+        "subdivision": "Tyrol",
+        "lat": 47.44637,
+        "lon": 12.39215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kitzbühel",
+          "url": "https://en.wikipedia.org/wiki/Kitzbühel",
+          "text": "Kitzbühel (German: [ˈkɪtsbyːl]  or [ˈkɪtsbyːəl] ; Bavarian: Kitzbiché [ˈkxɪtspɪxɪ]) is a medieval town situated in the Kitzbühel Alps along the river Kitzbüheler Ache in Tyrol, Austria, about 100 km (62 mi) east of the state capital Innsbruck, and is the administrative centre of the Kitzbühel District (Bezirk). Kitzbühel is one of the most famous and exclusive ski resorts in the world and is frequented by the international high society. The world's hardest ski race Hahnenkamm Races is a yearly event that attracts the attention of ski fans around the world. Kitzbühel's real estate continuously ranks among the world's most expensive. The proximity to Munich has made it a preferred location for vacation homes among the German elite."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "kitzbuhel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6459,
+    "attempt": 6412,
+    "place_id": "gn-2783188",
+    "input": {
+      "place": {
+        "place_id": "gn-2783188",
+        "name": "Zonhoven",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.99064,
+        "lon": 5.36819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zonhoven",
+          "url": "https://en.wikipedia.org/wiki/Zonhoven",
+          "text": "Zonhoven (Dutch pronunciation: [ˈzɔnɦoːvə(n)]; Limburgish: Zoneve) is a municipality located in the middle of the Belgian province of Limburg located north of Hasselt and also borders Houthalen-Helechteren, Genk and Heusden-Zolder. It’s an urbanized municipality, in the edge area of Hasselt. The municipality belongs to the On January 1, 2019, Zonhoven had a total population of 21,237. The total area is 39.34 km2 which gives a population density of 506 inhabitants per km2.\nArchaeological findings from the period 11,000 BCE to 5,000 BCE, including the only fixed prehistoric polishing stone in Flanders, indicate early inhabitation of the territory. From the Middle Ages to the early modern period, Zonhoven and its neighboring villages belonged to the Land of Vogelsanck. Since the arrival of industry in the 19th and 20th centuries, the municipality has experienced a significant population increase: between 1930 and 1980, the population tripled. Iron ore mining, in particular, played a prominent role in the economy of Zonhoven.\nThe municipality includes the hamlets Halveweg, Termolen, and Terdonk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "zonhoven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6460,
+    "attempt": 6413,
+    "place_id": "gn-2794212",
+    "input": {
+      "place": {
+        "place_id": "gn-2794212",
+        "name": "Knokke",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.35113,
+        "lon": 3.28744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knokke",
+          "url": "https://en.wikipedia.org/wiki/Knokke",
+          "text": "Knokke (Dutch pronunciation: [ˈknɔkə]) is a town in the municipality of Knokke-Heist, which is located in the province of West Flanders in Flanders, Belgium. The town itself has 15,708 inhabitants (as of 2007).\n\nKnokke is the most north-eastern seaside resort on the Belgian coast. It lies adjacent to the Dutch border; separated from the Dutch territory by the Zwin nature reserve. Knokke came into existence as a result of the construction of dikes that were to protect the area around the 'Zwin' sea-arm.\nOriginally a vacation haven for the city folk of Brussels in the early 19th century, artists such as James Ensor, Alfred Verwee and others started to frequent the small hamlet to paint its vistas. The artists rented a small miller's cottage and founded the Cercle des Artistes in 1880. It gradually became a resort town with upscale clientele, restaurants and shops. St. George's Anglican Church serves the English-speaking community.\nNowadays Knokke is known for its beaches and for the dike system to which it owes its origins. The largest of Belgium's ten casinos, Knokke Casino, is located on a seaside promenade and is open 20 hours a day.\nThe town lies at the northern end of the Belgian Coast Tram line and is also served by NMBS trains at Knokke railway station. The N34 connects Knokke to De Panne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "knokke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6461,
+    "attempt": 6414,
+    "place_id": "gn-2823538",
+    "input": {
+      "place": {
+        "place_id": "gn-2823538",
+        "name": "Tempelhof",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.46667,
+        "lon": 13.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tempelhof",
+          "url": "https://en.wikipedia.org/wiki/Tempelhof",
+          "text": "Tempelhof (German: [ˈtɛmpl̩hoːf] ) is a locality of Berlin within the borough of Tempelhof-Schöneberg. It is the location of the former Tempelhof Airport, one of the earliest commercial airports in the world. The former airport and surroundings are now a park called Tempelhofer Feld, making it the largest inner city open space in the world.\n\nThe Tempelhof locality is located in the south-central part of the city. Before Berlin's 2001 administrative reform, the area of Tempelhof, together with the localities of Mariendorf, Marienfelde, and Lichtenrade, constituted a borough of its own, also called Tempelhof. These localities grew from historic villages on the Teltow plateau founded in the early 13th century in the course of the German Ostsiedlung."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "tempelhof",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6462,
+    "attempt": 6415,
+    "place_id": "gn-2834978",
+    "input": {
+      "place": {
+        "place_id": "gn-2834978",
+        "name": "Schwarzenberg",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.53791,
+        "lon": 12.78522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwarzenberg, Saxony",
+          "url": "https://en.wikipedia.org/wiki/Schwarzenberg,_Saxony",
+          "text": "Schwarzenberg (German pronunciation: [ˈʃvaʁtsn̩ˌbɛʁk] ) is a town in the district of Erzgebirgskreis in Saxony’s Ore Mountains, near the German–Czech border. The town lies roughly 15 km southeast of Aue, and 35 km southwest of Chemnitz.\nFounded in the 12th century to protect a trade road, the small mountain town became the centre of a territory known as Herrschaft Schwarzenberg and later Amt Schwarzenberg. During the division of Germany, Schwarzenberg was part of East Germany and became the greatest producer of washing machines in Eastern Europe. Schwarzenberg became more widely known in 1987, when Stefan Heym coined the term Free Republic of Schwarzenberg for a small gap between the Soviet and American occupation zones in May/June 1945."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "schwarzenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6463,
+    "attempt": 6416,
+    "place_id": "gn-2857451",
+    "input": {
+      "place": {
+        "place_id": "gn-2857451",
+        "name": "Oldenburg in Holstein",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 54.29498,
+        "lon": 10.89043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oldenburg in Holstein",
+          "url": "https://en.wikipedia.org/wiki/Oldenburg_in_Holstein",
+          "text": "Oldenburg in Holstein  (German: [ˈɔldn̩bʊʁk ʔɪn ˈhɔlʃtaɪn] ) is a German town on the southwestern shore of the Baltic Sea. The nearest city is Lübeck. The town belongs to the (historical) region of Holstein, today in the German state of Schleswig-Holstein.\nOldenburg was the chief town of the Wagrians, one of the Slavic peoples that migrated as far west as the river Elbe in or after the 6th century (see Völkerwanderung), also known as Wends and Obotrites. They arrived about A.D. 700 and the Slavic name was Starigard or Stargard, meaning \"Old Settlement\", \"Old Castle\", \"Old City/Town\"; the German name Oldenburg is of Low German origin and carries the same meaning. The Obotrites were allies of Charlemagne. Emperor Otto I established the bishopric of Oldenburg under Adaldag, archbishop of Hamburg.\nTo the Northern Germanic Vikings, the city was known as Brandehuse, i.e. \"the burned houses\", indicating the bellicose times.\nFor centuries, Starigard/Oldenburg remained the Slavic competitor of Hedeby on the Baltic trade, until the counts Adolph I and Adolph II of Schauenburg and Holstein, supported by Henry the Lion, finally defeated the Wends during the first half of the 12th century.\nThe modern town has a partnership with Bergen auf Rügen in Mecklenburg-Vorpommern."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "oldenburg in holstein",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oldenburg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "holstein",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6464,
+    "attempt": 6417,
+    "place_id": "gn-2936977",
+    "input": {
+      "place": {
+        "place_id": "gn-2936977",
+        "name": "Dillingen",
+        "country": "Germany",
+        "subdivision": "Saarland",
+        "lat": 49.35557,
+        "lon": 6.72781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dillingen, Saarland",
+          "url": "https://en.wikipedia.org/wiki/Dillingen,_Saarland",
+          "text": "Dillingen (German pronunciation: [ˈdɪlɪŋən]; officially Dillingen/Saar; French: Dillange) is a town in the district of Saarlouis, in Saarland. It has about 20,000 inhabitants and is divided into three districts: Dillingen city centre, Pachten and Diefflen. The city is located on the edge of the Saar-Hunsrück Nature Park at the mouth of the Prims in the Saar and is located about 10 km from the French border. Dillingen is located about 60 km from Luxembourg City and Trier, 50 km from Metz and 30 km from Saarbrücken and is directly adjacent to the urban area of Saarlouis. In terms of population, it is the second-largest municipality in the district of Saarlouis. The Dillinger Hütte steelworks is located here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "dillingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6465,
+    "attempt": 6418,
+    "place_id": "gn-2972857",
+    "input": {
+      "place": {
+        "place_id": "gn-2972857",
+        "name": "Thiers",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.85654,
+        "lon": 3.54758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thiers, Puy-de-Dôme",
+          "url": "https://en.wikipedia.org/wiki/Thiers,_Puy-de-Dôme",
+          "text": "Thiers (French pronunciation: [tjɛːʁ] ; Auvergnat: Tièrn) is a commune in the Puy-de-Dôme department of Auvergne in central France. With Ambert, Issoire and Riom, it is one of the department's four sub-prefectures. The district of Thiers consists of forty-three municipalities in six cantons. Its inhabitants are known as Thiernois or Bitords.\nThiers is a major historical centre of knife manufacturing, with about one hundred companies and a cutlery museum; seventy percent of French pocketknives, kitchen and table knives are manufactured in Thiers. The knowledge and craft of the Thiernois cutlers are over seven centuries old, and many of the old watermills that were used to manufacture Thiernois knives can still be seen in the Vallée des Rouets.\nThe city extends over 7 kilometres (4+1⁄4 miles) on a rocky spur overhanging the nearby mountains and the villages. It is divided into two sections: the lower city (home to many hypermarkets) and the upper, medieval city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "thiers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6466,
+    "attempt": 6419,
+    "place_id": "gn-3123478",
+    "input": {
+      "place": {
+        "place_id": "gn-3123478",
+        "name": "Elgoibar",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.21601,
+        "lon": -2.41334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elgoibar",
+          "url": "https://en.wikipedia.org/wiki/Elgoibar",
+          "text": "Elgoibar (Spanish: Elgóibar) is an industrial town located in the province of Gipuzkoa, in the Autonomous Community of the Basque Country, northern Spain.\nLocated in a valley, it is traversed by the Deba river.\nElgoibar is nicknamed the \"capital city of the Machine tool\".\nOriginally the town was called Villamayor de Marquina, but it had been founded in a place called before Elgoibar field. The town came to be known by this name a few centuries of its foundation. Until the mid-15th century it appears in the documentation as Villamayor de Marquina, but in the statutes of the Brotherhood of Gipuzkoa of 1457 and 1463 years appears with the Elgoibar name and it has prevailed until today.\nElgoibar name has been used in Spanish and in Basque in order to refer to the small town. The only difference is that in Spanish the name Elgoibar has an accent mark above its \"o\".\nElgoibar etymologically comes from the Basque language and is possibly composed of the word elge (meaning \"field\", usually cultivated), and iba - a word which means \"valley\" or \"plain\". Therefore, \"elge ibar\" would be a similar term to \"vega\" or \"a cultivated field\". This etymology would fit quite well with the mention of Elgoibar field that appears in the settlement charter of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "elgoibar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6467,
+    "attempt": 6420,
+    "place_id": "gn-3129661",
+    "input": {
+      "place": {
+        "place_id": "gn-3129661",
+        "name": "Arenys de Mar",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.5819,
+        "lon": 2.54936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenys de Mar",
+          "url": "https://en.wikipedia.org/wiki/Arenys_de_Mar",
+          "text": "Arenys de Mar (Catalan: [əˈɾɛɲz ðə ˈmaɾ], locally [əˈɾɛɲʒ ðə ˈmaɾ]; arenys being Catalan for \"sands (of a seasonal creek)\", and de mar for \"by the sea\" as opposed to Arenys de Munt, \"sands up hill\") is one of the main municipalities of the comarca of Maresme, Barcelona Province, Catalonia, Spain. It is situated on the coast between Caldes d'Estrac and Canet de Mar, about 40 kilometres (25 miles) northeast of Barcelona. As of 2022, it had a population of 16,155.\nArenys' harbour was  for many years the only existing port on the north coast of Barcelona. The beaches, framed by hills which run right down to the sea, give a view of the neighbouring Costa Brava."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "arenys de mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arenys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

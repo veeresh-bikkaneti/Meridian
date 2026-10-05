@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5180,
+    "attempt": 5141,
+    "place_id": "gn-2523864",
+    "input": {
+      "place": {
+        "place_id": "gn-2523864",
+        "name": "Patti",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.14736,
+        "lon": 14.96409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Patti, Sicily",
+          "url": "https://en.wikipedia.org/wiki/Patti,_Sicily",
+          "text": "Patti is a town and comune in northeastern Sicily, southern Italy, administratively part of the Metropolitan City of Messina, on the western shore of the gulf of the same name. It is located 76 kilometres (47 mi) from Messina.\nIt is connected to the rest of Sicily by train, via the Patti-San Piero Patti train station, located on the railway line Messina-Palermo, and the A20 Palermo-Messina highway.\nIt is best known for the remains of its rich monumental Roman Villa and for the impressive ruins of ancient city of Tyndaris nearby.\nPatti is also famous for its large sandy beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "patti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5181,
+    "attempt": 5142,
+    "place_id": "gn-2633671",
+    "input": {
+      "place": {
+        "place_id": "gn-2633671",
+        "name": "Woodbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.09332,
+        "lon": 1.32042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodbridge, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Woodbridge,_Suffolk",
+          "text": "Woodbridge is a port town and civil parish in the East Suffolk district of Suffolk, England. It is 8 miles (13 km) up the River Deben from the sea. It lies 7 miles (11 km) north-east of Ipswich and around 74 miles (119 km) north-east of London. In 2011 it had a population of 7,749.\nThe town is close to some major archaeological sites of the Anglo-Saxon period, including the Sutton Hoo burial ship. It is well known for its boating harbour and tide mill next to the River Deben, in the Suffolk & Essex Coast & Heaths National Landscape. Several festivals are held. As a \"gem in Suffolk's crown\" (according to The Suffolk Coast tourist site) it has been named the best place to live in the East of England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "woodbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5182,
+    "attempt": 5143,
+    "place_id": "gn-2644976",
+    "input": {
+      "place": {
+        "place_id": "gn-2644976",
+        "name": "Lanark",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.67371,
+        "lon": -3.7817
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lanark",
+          "url": "https://en.wikipedia.org/wiki/Lanark",
+          "text": "Lanark ( LAN-ərk; Scottish Gaelic: Lannraig [ˈl̪ˠaun̪ˠɾɪkʲ]; Scots: Lanrik) is a historic market town in South Lanarkshire, Scotland, located 12 miles to the south-east of Hamilton. The town lies on the River Clyde, at its confluence with Mouse Water. It had a population of 8,943 in 2022.\nLanark was usually a royal burgh from 1140 to 1975, and was historically the county town of Lanarkshire, though in modern times this title belongs to Hamilton. Notable landmarks nearby include New Lanark, the Corra Linn and the site of Lanark Castle.\nLanark railway station and bus interchange have frequent services to Glasgow. Its shops serve the local agricultural community and surrounding villages. The outskirts of the town are home to a large modern livestock auction market and biscuit manufacturer Border Biscuits Ltd."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "lanark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5183,
+    "attempt": 5144,
+    "place_id": "gn-2814305",
+    "input": {
+      "place": {
+        "place_id": "gn-2814305",
+        "name": "Wandlitz",
+        "country": "Germany",
+        "subdivision": "Brandenburg",
+        "lat": 52.74196,
+        "lon": 13.45799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wandlitz",
+          "url": "https://en.wikipedia.org/wiki/Wandlitz",
+          "text": "Wandlitz (German pronunciation: [ˈvandlɪts] ) is a village, a borough (Ortsteil) and an independent municipality in the Landkreis (district) of Barnim, in Brandenburg, Germany. It is situated 25 km north of Berlin, and 15 km east of Oranienburg. The municipality was established in 2004 by merger of the nine villages Basdorf, Klosterfelde, Lanke, Prenden, Schönerlinde, Schönwalde, Stolzenhagen, Wandlitz and Zerpenschleuse.\nThe communal government of the Amtsfreie Gemeinde (independent municipality) of Wandlitz has its seat in Wandlitz directly. It consists of deputies from the several parts of the commune and in accordance with the election results of the existing parties here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "wandlitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5184,
+    "attempt": 5145,
+    "place_id": "gn-2885888",
+    "input": {
+      "place": {
+        "place_id": "gn-2885888",
+        "name": "Königsfeld im Schwarzwald",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.13814,
+        "lon": 8.41973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Königsfeld im Schwarzwald",
+          "url": "https://en.wikipedia.org/wiki/K%C3%B6nigsfeld_im_Schwarzwald",
+          "text": "Königsfeld im Schwarzwald (Low Alemannic: Kinnigsfeld) is a town in the district of Schwarzwald-Baar in Baden-Württemberg in Germany. It is the northernmost town of the district Schwarzwald Baar. Königsfeld has six boroughs (Königsfeld, Neuhausen, Erdmannsweiler, Buchenberg, Burgberg and Weiler). Founded in 1807, it is a centre of the Moravian Church. Until after the Second World War, most of the town's inhabitants continued to be Moravians and the Vorsteher (congregational business manager) of the Congregation also served as de facto Mayor of the town. After the war, great numbers of refugees from former eastern provinces of Germany settled in the town. Königsfeld is on several major bus lines, the next train stations are in St. Georgen and Villingen-Schwenningen. Regional bus lines connect Königsfeld to these towns. Until 1981 it was served by the train station Peterzell-Königsfeld, 5 km outside Königsfeld. Königsfeld is the seat of several boarding schools and a classical Gymnasium/High School/Public School and a School for Home Economics, all operated by the Moravian Church. Humanitarian Albert Schweizer maintained a home in Königsfeld because his wife could not live in Lambaréné due to her health. His home in Königsfeld is now a museum. There is also a small museum dealing with the history of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "konigsfeld im schwarzwald",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "konigsfeld",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "im",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "schwarzwald",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5185,
+    "attempt": 5146,
+    "place_id": "gn-3071304",
+    "input": {
+      "place": {
+        "place_id": "gn-3071304",
+        "name": "Lysá nad Labem",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 50.20143,
+        "lon": 14.83281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lysá nad Labem",
+          "url": "https://en.wikipedia.org/wiki/Lys%C3%A1_nad_Labem",
+          "text": "Lysá nad Labem (Czech pronunciation: [ˈlɪsaː ˈnad labɛm]; German: Lissa an der Elbe) is a town in Nymburk District in the Central Bohemian Region of the Czech Republic. It has about 10,000 inhabitants. The town proper is situated on the Elbe River in the Central Elbe Table.\nLysá nad Labem is known for its horse racing course and large exhibition grounds. The historic town centre is well preserved and is protected as an urban monument zone. The town is rich in Baroque monuments, the most famous of which are Lysá nad Labem Castle and Church of Saint John the Baptist."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lysa nad labem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lysa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "labem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5186,
+    "attempt": 5147,
+    "place_id": "gn-3126584",
+    "input": {
+      "place": {
+        "place_id": "gn-3126584",
+        "name": "Canet de Mar",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.59054,
+        "lon": 2.58116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canet de Mar",
+          "url": "https://en.wikipedia.org/wiki/Canet_de_Mar",
+          "text": "Canet de Mar (Catalan pronunciation: [kəˈnɛd də ˈmaɾ]) is a municipality in the comarca of the Maresme in Catalonia, Spain. It is situated on the coast between Arenys de Mar and Sant Pol de Mar. el Corredor and el Montnegre ranges. It is a tourist centre, but is also known for the cultivation of flowers and strawberries and for having several modernist style buildings. It is served by the main N-II road along the coast, the highway C-32 and by a station on the Renfe railway line. Canet de Mar is in the province of Barcelona, 43 kilometers from Barcelona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "canet de mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canet",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5187,
+    "attempt": 5148,
+    "place_id": "gn-4163220",
+    "input": {
+      "place": {
+        "place_id": "gn-4163220",
+        "name": "Maitland",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.62778,
+        "lon": -81.36312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maitland, Florida",
+          "url": "https://en.wikipedia.org/wiki/Maitland,_Florida",
+          "text": "Maitland is a suburban city in Orange County, Florida, United States, part of the Greater Orlando area. The population was 19,543 at the 2020 census. The area's history is exhibited at the Maitland Historical Museum; the city also hosts the Maitland Art Center, as well as notable examples of Mayan Revival architecture and Fantasy architecture, the Maitland Telephone Museum, and the William H. Waterhouse House Museum (all museums and the Maitland Art Center are now managed by Art & History Museums of Maitland). A SunRail station is located in Maitland on Highway 17–92. The city is named for Fort Maitland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "maitland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5188,
+    "attempt": 5149,
+    "place_id": "gn-4173002",
+    "input": {
+      "place": {
+        "place_id": "gn-4173002",
+        "name": "Silver Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.21664,
+        "lon": -82.05759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silver Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Silver_Springs,_Florida",
+          "text": "Silver Springs is an unincorporated community and census-designated place (CDP) in Marion County of northern Florida. It is the site of the Silver Springs, a group of artesian springs and a historic tourist attraction that is now part of Silver Springs State Park. The community is part of the Ocala metropolitan area. It was first listed as a CDP for the 2020 census, when it had a population of 2,844. One of Florida's first tourist attractions, the springs drew visitors even before the U.S. Civil War. Glass-bottom boats have been a popular way to see the 242-acre (98 ha) complex. A small amusement park with various animals, a concert stage, a carousel, and exhibits also developed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "silver springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5189,
+    "attempt": 5150,
+    "place_id": "gn-4359619",
+    "input": {
+      "place": {
+        "place_id": "gn-4359619",
+        "name": "Joppatowne",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.414,
+        "lon": -76.358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joppatowne, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Joppatowne,_Maryland",
+          "text": "Joppatowne is a census-designated place in southwestern Harford County, Maryland, United States. Serving as a bedroom community for nearby Baltimore, it was established in 1961 as a planned unit development (PUD). The population was 12,616 at the 2010 census, up from 11,391 in 2000.\nJoppatowne is covered by the \"Joppa\" ZIP Code of 21085, and \"Joppa\" is a designated planning region for Harford County. The Joppa ZIP code extends 6 miles (10 km) north of Joppatowne, as far as Benson, just south of Bel Air.\nThe namesake of both Joppatowne and Joppa is the original town of \"Joppa\" (Jaffa, Israel). It was a major seaport in American colonial times and the county seat of the original Baltimore County until 1768. Its site is located within the boundaries of present-day Joppatowne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "joppatowne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5190,
+    "attempt": 5151,
+    "place_id": "gn-4463053",
+    "input": {
+      "place": {
+        "place_id": "gn-4463053",
+        "name": "Davidson",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.50233,
+        "lon": -80.83912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Davidson, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Davidson,_North_Carolina",
+          "text": "Davidson is a suburban town in Mecklenburg and Iredell counties, North Carolina, United States. Some areas of neighboring Cabarrus County also use a Davidson postal address, but are not within the town limits. It is a suburb in the Charlotte metropolitan area. The population was 15,106 at the 2020 census, up from 10,944 in 2010. The town was founded in 1837 with the establishment of the Presbyterian Davidson College, named for Brigadier General William Lee Davidson, a local Revolutionary War hero. The land for Davidson College came from Davidson's estate, a large portion of which was donated by his son."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "davidson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5191,
+    "attempt": 5152,
+    "place_id": "gn-4673258",
+    "input": {
+      "place": {
+        "place_id": "gn-4673258",
+        "name": "Beeville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 28.40095,
+        "lon": -97.74974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beeville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Beeville,_Texas",
+          "text": "Beeville is a city in Bee County, Texas, United States. Its population of 13,543 at the 2020 census  makes it the 207th-largest city in Texas. It is the county seat of Bee County and home to the main campus of Coastal Bend College. The area around the city contains three prisons operated by the Texas Department of Criminal Justice.\nMany of the stately homes, commercial buildings, and schools in the area, including the Bee County Courthouse, were designed by architect William Charles Stephenson, who came to Beeville in 1908 from Buffalo, New York. Beeville is a national Main Street city. Gutzon Borglum, the sculptor of Mount Rushmore, and his son Lincoln, lived in the city during the time Rushmore was being sculpted."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "beeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5192,
+    "attempt": 5153,
+    "place_id": "gn-4692279",
+    "input": {
+      "place": {
+        "place_id": "gn-4692279",
+        "name": "Fredericksburg",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.2752,
+        "lon": -98.87198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fredericksburg, Texas",
+          "url": "https://en.wikipedia.org/wiki/Fredericksburg,_Texas",
+          "text": "Fredericksburg is a city in and the county seat of Gillespie County, Texas, United States. As of the 2020 Census, this city had a population of 10,875.\nFredericksburg was founded in 1846 and named after Prince Frederick of Prussia. Old-time German residents often referred to Fredericksburg as Fritztown, a nickname that is still used in some businesses. It is located 70 miles northwest of San Antonio, and approximately 80 miles west of Austin. This city is also notable as the center of Texas German, a dialect spoken by the first generations of German settlers who initially refused to learn English. Fredericksburg shares many cultural characteristics with New Braunfels, which had been established by Prince Carl of Solms-Braunfels the previous year. Fredericksburg is the birthplace of Fleet Admiral Chester Nimitz. It is the sister city of Montabaur, Germany. On October 14, 1970, the Fredericksburg Historic District was added to the National Register of Historic Places in Texas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "fredericksburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5193,
+    "attempt": 5154,
+    "place_id": "gn-5016450",
+    "input": {
+      "place": {
+        "place_id": "gn-5016450",
+        "name": "Anoka",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 45.19774,
+        "lon": -93.38718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anoka, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Anoka,_Minnesota",
+          "text": "Anoka ( ə-NOH-kə) is a city in and the county seat of Anoka County, Minnesota, United States. The population was 17,921 at the 2020 census. Anoka is a northern suburb of the Twin Cities, at the confluence of the Rum and Mississippi Rivers. It is nicknamed the \"Halloween Capital of the World\" because in 1920 it hosted one of the first Halloween parades. It continues to celebrate the holiday each year with several parades. U.S. Highways 10 / 169 and State Highway 47 are three of Anoka's main routes, and it had a station on the Northstar Line to Minneapolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "anoka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5194,
+    "attempt": 5155,
+    "place_id": "gn-5099093",
+    "input": {
+      "place": {
+        "place_id": "gn-5099093",
+        "name": "Hillside",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.70121,
+        "lon": -74.23015
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillside, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hillside,_New_Jersey",
+          "text": "Hillside is a township in Union County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 22,456, an increase of 1,052 (+4.9%) from the 2010 census count of 21,404, which in turn reflected a decline of 343 (−1.6%) from the 21,747 counted in the 2000 census.\nHillside was incorporated as a township on April 3, 1913, from portions of Union Township, based on the results of a referendum held on April 29, 1913. The township was named for the surrounding hills.\nThe township is split between area codes 908 and 973."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hillside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5195,
+    "attempt": 5156,
+    "place_id": "gn-5219619",
+    "input": {
+      "place": {
+        "place_id": "gn-5219619",
+        "name": "Willow Grove",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.144,
+        "lon": -75.11573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willow Grove, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Willow_Grove,_Pennsylvania",
+          "text": "Willow Grove is a census-designated place (CDP) in Montgomery County, Pennsylvania, United States. A community in Philadelphia's northern suburbs, the population was 13,730 at the 2020 census. It is located in Abington Township and Upper Moreland Township. Willow Grove was once known for Willow Grove Park, an amusement park that was open from 1896 to 1976, now the site of Willow Grove Park Mall. Willow Grove is considered an edge city of Philadelphia, with large amounts of retail and office space.\nNaval Air Station Joint Reserve Base Willow Grove was located northwest of the Willow Grove CDP in Horsham Township. NAS JRB Willow Grove transitioned into Horsham Air National Guard Station in September 2011.\nWillow Grove is located 37 miles (60 km) southeast of Allentown and 13 miles (21 km) north of Philadelphia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "willow grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "willow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5196,
+    "attempt": 5157,
+    "place_id": "gn-5594956",
+    "input": {
+      "place": {
+        "place_id": "gn-5594956",
+        "name": "Hailey",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 43.51963,
+        "lon": -114.31532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hailey, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Hailey,_Idaho",
+          "text": "Hailey is a city in and the county seat of Blaine County, in the Wood River Valley of the central part of the U.S. state of Idaho. The population was 9,161 at the 2020 census, up from 7,960 in 2010. Hailey is the site of Friedman Memorial Airport (SUN), the airport for the resort area of Sun Valley/Ketchum, 12 miles (19 km) north.  The town of Bellevue is a few miles south.  From 1882 to 1895, Hailey was the county seat of now-defunct Alturas County.\nThe city is named after John Hailey, a two-time Congressional delegate from the Idaho Territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hailey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5197,
+    "attempt": 5158,
+    "place_id": "gn-5807236",
+    "input": {
+      "place": {
+        "place_id": "gn-5807236",
+        "name": "Port Orchard",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.54037,
+        "lon": -122.63625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Orchard, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Orchard,_Washington",
+          "text": "Port Orchard is a city in and the county seat of Kitsap County, Washington, United States. It is located 13 miles (21 km) due west of West Seattle and south from Bremerton across Sinclair Inlet. Port Orchard is connected to Seattle and Vashon Island via the Washington State Ferries run to Southworth. The city is named after Port Orchard, the strait that separates Bainbridge Island from the Kitsap Peninsula.\nThe population was 15,587 in the 2020 census, and estimated to be 17,089 in 2022. Together with its two major suburbs, East Port Orchard and Parkwood, the population is over 28,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "port orchard",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orchard",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5198,
+    "attempt": 5159,
+    "place_id": "gn-671398",
+    "input": {
+      "place": {
+        "place_id": "gn-671398",
+        "name": "Panciu",
+        "country": "Romania",
+        "subdivision": "Vrancea",
+        "lat": 45.9,
+        "lon": 27.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panciu",
+          "url": "https://en.wikipedia.org/wiki/Panciu",
+          "text": "Panciu (Romanian pronunciation: [ˈpant͡ʃju]) is a town in Vrancea County, Romania. It lies on the river Șușița, in the southern part of Western Moldavia, 30 km (19 mi) northwest of Focșani. It administers five villages: Crucea de Jos, Crucea de Sus, Dumbrava, Neicu, and Satu Nou.\nThe town is located in the east-central part of the county, on the banks of the Șușița River. The region is famous for its white wines but also for its sparkling wines (white, red and rosé).\nAt the 2021 census, the town a population of 6,921; of those, 86% were Romanians and 2.5% Roma.\nWriter Ioan Slavici died in Panciu in 1926, and was buried at the hermitage within Brazi Monastery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "panciu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5199,
+    "attempt": 5160,
+    "place_id": "gn-6945991",
+    "input": {
+      "place": {
+        "place_id": "gn-6945991",
+        "name": "Plessisville",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.21856,
+        "lon": -71.76201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plessisville, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Plessisville,_Quebec",
+          "text": "Plessisville (French pronunciation: [plɛsivil]) is a county seat of L'Érable Regional County Municipality, Quebec, Canada. Routes 116 and 165 go through it. The city is 185 km from Montreal and 95 km from Quebec City.  The city has hosted an annual Maple festival since 1958, and the Institut québécois de l'érable (Quebec Maple Institute) is headquartered there.  The production of maple syrup and maple products is a major industry in the entire area, even giving the regional county municipality its name (érable is French for \"maple\").\nThe first person to permanently settle in the area was Jean-Baptiste Lafond, in 1835.  First incorporated as the village of Somerset, the settlement was officially incorporated as the village of Plessisville in 1855 in honour of Monseigneur Octave Plessis, bishop of Quebec at the time. In 2024, the city and the parish merged to form the current city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "plessisville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6347,
+    "attempt": 6301,
+    "place_id": "gn-2160910",
+    "input": {
+      "place": {
+        "place_id": "gn-2160910",
+        "name": "Kyabram",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -36.31335,
+        "lon": 145.05035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kyabram",
+          "url": "https://en.wikipedia.org/wiki/Kyabram",
+          "text": "Kyabram () is a town in north central Victoria, Australia. Kyabram is located in the centre of a rich irrigation district in the Goulburn River Valley, 200 kilometres (120 mi) north of Melbourne. The name of the town is thought to derive from a Bangerang word 'Kiambram' meaning 'thick forest'.\nIt is the second-largest town in the Shire of Campaspe, situated between the towns of Echuca and Shepparton and is close to the Murray River, Goulburn River, Campaspe River and Waranga Basin. As of the 2021 census the town had a population of 7,416 people and provides services to a district population of around 16,000.\nSurrounding smaller towns include Merrigum, Lancaster, Undera, Cooma, Wyuna, Kyvalley, Girgarre, Stanhope and Tongala."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "kyabram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6348,
+    "attempt": 6302,
+    "place_id": "gn-2169378",
+    "input": {
+      "place": {
+        "place_id": "gn-2169378",
+        "name": "Darlinghurst",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.87939,
+        "lon": 151.21925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darlinghurst",
+          "url": "https://en.wikipedia.org/wiki/Darlinghurst",
+          "text": "Darlinghurst is an inner-city suburb in the eastern suburbs of Sydney, New South Wales, Australia. Darlinghurst is located immediately east of the Sydney central business district (CBD) and Hyde Park, within the local government area of the City of Sydney.  It is often colloquially referred to as \"Darlo\".\nDarlinghurst is a densely populated suburb with the majority of residents living in apartments or terraced houses. Once a slum and red-light district, Darlinghurst has undergone urban renewal since the 1980s to become a cosmopolitan area made up of precincts. Places such as Victoria Street (which connects Darlinghurst to Potts Point in the north), Stanley Street (Little Italy) and Crown Street (Vintage and Retro Fashion) are known as culturally rich destinations. These high street areas are connected by a network of lane-ways and street corners with shops, cafes and bars.\nDemographically, Darlinghurst is home to the highest percentage of Generation X and Millennials in Australia. The majority of businesses in Darlinghurst are independently owned and operated small businesses with over 50% of all commercial activity in the area being consumer oriented: indie retail, food, drink, dining, leisure and personal services. Darlinghurst is also home to large number of off-street creative industries.\nDarlinghurst's main street is Oxford Street, which runs east from the south-eastern corner of Hyde Park through Darlinghurst and Paddington and terminates at Bondi Junction. Oxford Street is one of Sydney's most famous shopping and dining strips. The Darlinghurst end is known around the world as the centre of Sydney's gay community, is the yearly parade route of the Sydney Mardi Gras and the spiritual birthplace of the LGBTQ rights movement. It is home to a number of gay venues and businesses, Darlinghurst is a centre of Sydney's burgeoning small bar scene.\nFrom the 1990s onwards, Oxford Street began to garner a reputation for being Sydney's primary \"nightclub strip\", popular with both gay and straight clubbers, surpassing the notorious red-light district of Kings Cross in popularity. As a result of the influx of revellers, crime rates increased in the area around 2007, particularly for assaults and robberies. This reported increase should be understood in terms of a very low background crime rate in East Sydney in general. The 2014 lockout laws saw many nightclubs close and the crime rate drop once again, with a new focus on small bars, restaurants and cafes after the lockout laws ended in 2020.\nThere are a number of named localities in and around Darlinghurst including Taylor Square, Three Saints Square, and confusingly also East Sydney. Locals have used this name to refer to the area immediately around Stanley Street in the suburb's west, however the title is used more broadly throughout the area from Woolloomooloo up to Taylor Square where the old Darlinghurst Gaol still has the words East Sydney in brass lettering above the main entrance. This is because from 1900 to 1969 the entire area to the east of Sydney's CBD, from the harbour to Redfern, was an electorate known as the Division of East Sydney. Already in 1820 the entire ridge line running from Potts Point to Surry Hills was known as Eastern Hill.\nDarlinghurst shares a postcode (2010) and an extensive soft southern border with neighbouring suburb Surry Hills which, with Paddington to the east and Woolloomooloo, Rushcutters Bay and Potts Point to the north, comprise the metropolitan region of East Sydney. Although only minutes walk away from the Sydney CBD, this region is geographically distinct from it; separated from the more well known commercial centre by several landmarks: Central railway station, Hyde Park, St Mary's Cathedral and The Domain. East Sydney hosts many well-known restaurants.\nSydney's Eastern Suburbs cover all the land from the east of Darlinghurst up to the Pacific Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 622
+    },
+    "banned_terms": [
+      {
+        "term": "darlinghurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6349,
+    "attempt": 6303,
+    "place_id": "gn-2184972",
+    "input": {
+      "place": {
+        "place_id": "gn-2184972",
+        "name": "Papanui",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.5,
+        "lon": 172.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papanui",
+          "url": "https://en.wikipedia.org/wiki/Papanui",
+          "text": "Papanui is a suburb of Christchurch, New Zealand. It is situated five kilometres to the northwest of the city centre. Papanui has a population of 3,645 consisting predominantly of Pākehā (New Zealand European & Others) 86.9%, Asian 7.6%, Māori 5.3%, Pacific peoples 3.1%, Middle Eastern/Latin American/African 0.7% (2013 census). The suburb is located at the junction of three busy thoroughfares; Papanui Road leading to the city, the Main North Road that leads to North Canterbury and Harewood Road that leads to Christchurch International Airport. However, as with most Christchurch suburbs, Papanui has no defined borders.\nOver the last 160 years Papanui has developed into a major suburban centre and is a satellite centre for Government and City Council services. These include the central government 'Super Centre' in Winstone Avenue, Housing New Zealand in Restell Street and the Council Service Centre and Library on Langdons Road. The area has two high schools and five primary schools. There is little farm land left in the suburb with most of it having been developed into residential and commercial properties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "papanui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6350,
+    "attempt": 6304,
+    "place_id": "gn-2520283",
+    "input": {
+      "place": {
+        "place_id": "gn-2520283",
+        "name": "Candelaria",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.3548,
+        "lon": -16.37268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Candelaria, Tenerife",
+          "url": "https://en.wikipedia.org/wiki/Candelaria,_Tenerife",
+          "text": "Candelaria, also Villa Mariana de Candelaria, is a municipality and city in the eastern part of the island of Tenerife in the Province of Santa Cruz de Tenerife, in the Canary Islands, Spain. The city is located on the coast, 17 km southwest of Santa Cruz de Tenerife. The population is 25,140 (2010), and the area is 49.18 km².\nThe town is noted by Catholics in Spain and Latin America as a place of veneration of the Virgin of Candelaria, the patron of the Canary Islands. The most prominent building is the Basilica of Candelaria, which holds the sculpture of the Virgin Mary and murals. Also highlighted on the square are statues of the nine aboriginal kings of Tenerife.\nIn the times of the historic Guanche, the region was part of the menceyato, or kingdom, of Güímar.  A sacred cave is situated near Candelaria that is believed to have been a place of indigenous worship for more than 3,000 years. \nSince 1995 the Festival de la Canción de Candelaria has become one of the most important festivities on the island. It celebrated its 10th anniversary in 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "candelaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6351,
+    "attempt": 6305,
+    "place_id": "gn-2634204",
+    "input": {
+      "place": {
+        "place_id": "gn-2634204",
+        "name": "Weybridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.37178,
+        "lon": -0.45975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weybridge",
+          "url": "https://en.wikipedia.org/wiki/Weybridge",
+          "text": "Weybridge () is a town in the Borough of Elmbridge in Surrey, England, around 17 mi (27 km) south-west of central London. The settlement is recorded as Waigebrugge and Weibrugge in the 7th century and the name derives from a crossing point of the River Wey, which flows into the River Thames to the north of the town centre. The earliest evidence of human activity is from the Bronze Age. During the Anglo-Saxon and medieval periods, Weybridge was held by Chertsey Abbey. In 2011 it had a population of 15,449.\nIn the 1530s Henry VIII constructed Oatlands Palace to the north of the town centre, which he intended to be the residence of his fourth wife, Anne of Cleves. He married Catherine Howard there in July 1540 and the palace remained a royal residence until the English Civil War in the 1640s. The buildings were demolished in the early 1650s and a new mansion, Oatlands House, was constructed to the east of Weybridge later the same century. Prince Frederick, Duke of York and Albany, owned the mansion in the 18th century.\nThe town began to expand beyond its medieval footprint in the early 19th century, catalysed by the initial breakup of the Oatlands House estate, the enclosure of Weybridge Heath and the opening of the railway station in 1838. The developer, W. G. Tarrant, was responsible for the construction of housing on St George's Hill in the first half of the 20th century.\nThe world's first purpose-built racing circuit was constructed at Brooklands in 1907. The track hosted the first British Grand Prix in 1926 and was used by Malcolm Campbell to develop his final land speed record car, Campbell-Railton Blue Bird. Throughout the 20th century, Brooklands was an important location for the aerospace industry and aircraft developed and tested there included the Sopwith Camel, the Wellington bomber and the Hurricane fighter. Vickers established a factory at the circuit in 1915 and aircraft manufacturing continued at the site until 1988."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "weybridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6352,
+    "attempt": 6306,
+    "place_id": "gn-2637595",
+    "input": {
+      "place": {
+        "place_id": "gn-2637595",
+        "name": "Snaresbrook",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.58432,
+        "lon": 0.01923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Snaresbrook",
+          "url": "https://en.wikipedia.org/wiki/Snaresbrook",
+          "text": "Snaresbrook is a district in the London Borough of Redbridge, in East London. It is located eight miles (13 kilometres) east of Charing Cross.\nThe name derives from a corruption of Sayers brook, a tributary of the River Roding that flows through Wanstead to the East.\nSnaresbrook is bounded approximately by South Woodford to the north, the lower reaches of Epping Forest and Upper Leytonstone, Leyton and Walthamstow to the west, Leytonstone to the south and Wanstead to the east. Snaresbrook Ward in the London Borough of Redbridge covers most of Wanstead High Street. The ward forms part of the 2007 parliamentary boundary changes and is currently entirely within the parliamentary constituency of Leyton and Wanstead (UK Parliament constituency).\nSnaresbrook's most notable building is Snaresbrook Crown Court. It was opened in 1843 as the Wanstead Infant Orphan Asylum by King Leopold I of Belgium, and later became the Royal Wanstead School. It was designed by Sir George Gilbert Scott and William Bonython Moffatt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "snaresbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6353,
+    "attempt": 6307,
+    "place_id": "gn-2639998",
+    "input": {
+      "place": {
+        "place_id": "gn-2639998",
+        "name": "Portslade",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.84286,
+        "lon": -0.21608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portslade",
+          "url": "https://en.wikipedia.org/wiki/Portslade",
+          "text": "Portslade is a western suburb of the city of Brighton and Hove in the ceremonial county of East Sussex, England. Portslade Village, the original settlement a mile inland to the north, was built up in the 16th century. The arrival of the railway from Brighton in 1840 encouraged rapid development of the coastal area and in 1898 the southern part, formerly known as Copperas Gap, was granted urban district status and renamed Portslade-by-Sea, making it distinct from Portslade Village. After World War II the district of Mile Oak to the north was added. Today, Portslade is bisected from east to west by the old A27 road (now the A270) between Brighton and Worthing, each part having a distinct character."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "portslade",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6354,
+    "attempt": 6308,
+    "place_id": "gn-2640004",
+    "input": {
+      "place": {
+        "place_id": "gn-2640004",
+        "name": "Portrush",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.19592,
+        "lon": -6.6493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portrush",
+          "url": "https://en.wikipedia.org/wiki/Portrush",
+          "text": "Portrush (from Irish Port Rois, meaning 'port of the promontory') is a small seaside resort town on the north coast of County Antrim, Northern Ireland. It neighbours the resort of Portstewart in County Londonderry. The main part of the old town, including the railway station as well as most hotels, restaurants and bars, is built on a 1 mile (1.6 km)–long peninsula, Ramore Head. It had a population of 6,150 at the 2021 census.\nThe town is well known for its three sandy beaches, the West Strand, East Strand and White Rocks, as well as the Royal Portrush Golf Club, the only golf club outside Great Britain which has hosted The Open Championship – in 1951, 2019, and 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "portrush",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6355,
+    "attempt": 6309,
+    "place_id": "gn-2642573",
+    "input": {
+      "place": {
+        "place_id": "gn-2642573",
+        "name": "Middlewich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.19296,
+        "lon": -2.44402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middlewich",
+          "url": "https://en.wikipedia.org/wiki/Middlewich",
+          "text": "Middlewich is a market town and civil parish in the Cheshire East district of Cheshire, England. It is located 20 miles (32.2 km) east of Chester, 3 miles (4.8 km) east of Winsford, 5 miles (8.0 km) south-east of Northwich and 5 miles (8.0 km) north-west of Sandbach. The population of the parish at the 2021 census was 14,421.\nMiddlewich lies at the confluence of three rivers: the Dane, Croco and Wheelock. Two canals also pass through the town: the Shropshire Union and the Trent & Mersey, both connected by the short Wardle Canal. The town has three major roads: the A533, A54 and A530; there are also good motorway links to the nearby cities of Manchester and Liverpool. The town's population has doubled since 1970, despite a reduction in the number of manufacturing jobs in salt and textile manufacturing.\nSince 1990, there have been initiatives to increase the volume of tourism into the town, through events such as the annual folk and boat festival, the Roman and Norman festivals, and regular farmers' markets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "middlewich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6356,
+    "attempt": 6310,
+    "place_id": "gn-2645099",
+    "input": {
+      "place": {
+        "place_id": "gn-2645099",
+        "name": "Knowle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.38333,
+        "lon": -1.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knowle, West Midlands",
+          "url": "https://en.wikipedia.org/wiki/Knowle,_West_Midlands",
+          "text": "Knowle  is a large village situated 3 miles (5 km) east-southeast of the town of Solihull, in the county of the West Midlands, England. Knowle lies within the Arden area of the historic county boundaries of Warwickshire, and since 1974 it has been part of the Metropolitan Borough of Solihull. It lies 2.5 miles from the Warwickshire border and had a recorded population of 10,678.\nKnowle is in the parliamentary constituency of Meriden and Solihull East. It is contiguous to the south with the similar-sized communities of Dorridge and Bentley Heath, both of which are mainly residential in nature. The affluent district of Copt Heath is a suburb of Knowle to the north, with Tilehouse Green to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "knowle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6357,
+    "attempt": 6311,
+    "place_id": "gn-2654411",
+    "input": {
+      "place": {
+        "place_id": "gn-2654411",
+        "name": "Buckie",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.6757,
+        "lon": -2.96238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buckie",
+          "url": "https://en.wikipedia.org/wiki/Buckie",
+          "text": "Buckie (Scottish Gaelic: Bucaidh) is a burgh town (defined as such in 1888) on the Moray Firth coast of Scotland. Historically in Banffshire, Buckie was the largest town in the county until the administrative area was abolished in 1975. The town is the third largest in the Moray council area after Elgin and Forres and within the definitions of statistics published by the General Register Office for Scotland was ranked at number 75 in the list of population estimates for settlements in Scotland mid-year 2006. Buckie is virtually equidistant from Banff to the east and Elgin to the west, with both approximately 17 miles (27 kilometres) distant, whilst Keith lies 12 mi (19 km) to the south by road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "buckie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6358,
+    "attempt": 6312,
+    "place_id": "gn-2715081",
+    "input": {
+      "place": {
+        "place_id": "gn-2715081",
+        "name": "Filipstad",
+        "country": "Sweden",
+        "subdivision": "Värmland",
+        "lat": 59.71236,
+        "lon": 14.16831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Filipstad",
+          "url": "https://en.wikipedia.org/wiki/Filipstad",
+          "text": "Filipstad is a locality and the seat of Filipstad Municipality, Värmland County, Sweden, with 10,644 inhabitants in 2019.\nFilipstad was granted city privileges in 1611 by Charles IX of Sweden, who named it after his son Duke Carl Philip (1601–1622; younger brother of Gustavus Adolphus).\nAfter a major fire destroyed forest and town in 1694, Filipstad lost its privileges, as it was believed the remaining forest would not be sustainable if the town were to be rebuilt. In 1835 the rights were regranted. The local government acts of 1862 made the very privileges obsolete, but the title stad (city) remained in use until the municipal reform of 1971. Since then Filipstad is the seat of the larger Filipstad Municipality. Filipstad is, despite its small population, for historical reasons, normally still referred to as a city. Statistics Sweden, however, only counts localities with more than 10,000 inhabitants as cities.\nAt Filipstad, there is Klockarhöjdenmasten, a 330 metres tall guyed mast used for FM/TV-broadcasting.\nWasabröd, the largest crisp bread manufacturer in the world, has one of its two factories in Filipstad, the other being in Celle, Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "filipstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6359,
+    "attempt": 6313,
+    "place_id": "gn-2836040",
+    "input": {
+      "place": {
+        "place_id": "gn-2836040",
+        "name": "Schrozberg",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.34528,
+        "lon": 9.97944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schrozberg",
+          "url": "https://en.wikipedia.org/wiki/Schrozberg",
+          "text": "Schrozberg (German pronunciation: [ˈʃʁɔtsˌbɛʁk] ) is a town in the district of Schwäbisch Hall, in Baden-Württemberg, Germany. It is located 21 km (13 mi) west of Rothenburg ob der Tauber, and 31 km (19 mi) northeast of Schwäbisch Hall.\nSchrozburg Castle of the Lords of Schrozberg was built in the 12th century and destroyed in 1441 by the city of Rothenburg. Schrozberg was then possessed by the lords of Schrozberg, later jointly by the noble families Seldeneck, Adelsheim, the city of Rothenburg, the House of Hohenlohe und the barons of Berlichingen. A new castle outside the town was built in the early 16th century.\nBy 1455, Albrecht of Hohenlohe had acquired the castle and lordship of Bartenstein near Schrozberg. The castle is still today the residence of the Prince of Hohenlohe-Bartenstein."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "schrozberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6360,
+    "attempt": 6314,
+    "place_id": "gn-2843355",
+    "input": {
+      "place": {
+        "place_id": "gn-2843355",
+        "name": "Rudolstadt",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.72043,
+        "lon": 11.34046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rudolstadt",
+          "url": "https://en.wikipedia.org/wiki/Rudolstadt",
+          "text": "Rudolstadt (German pronunciation: [ˈʁuːdɔlˌʃtat] ) is a town in the German federal state Thuringia, within the Thuringian Forest, to the southwest, and to Jena and Weimar to the north.\nThe former capital of Schwarzburg-Rudolstadt, the town is built along the River Saale inside a wide valley surrounded by woods. Rudolstadt was founded in 776 and has had municipal law since 1326. The town's landmark is the Castle Heidecksburg which is enthroned on a hill above the old town. The former municipality Remda-Teichel was merged into Rudolstadt in January 2019.\nRudolstadt was once well known because of the Anchor Stone Blocks of the Toy Company Richter and porcelain factories, beginning with the establishment of the Volkstedt porcelain manufacture in 1762."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "rudolstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6361,
+    "attempt": 6315,
+    "place_id": "gn-2919502",
+    "input": {
+      "place": {
+        "place_id": "gn-2919502",
+        "name": "Gohlis",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.366,
+        "lon": 12.367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gohlis",
+          "url": "https://en.wikipedia.org/wiki/Gohlis",
+          "text": "Gohlis (German pronunciation: [ˈɡoːlɪs]) is a locality in the borough north of the city of Leipzig, Germany. Once a village and knightly estate (Rittergut), it became in 1838 a rural community (Landgemeinde). It urbanised during the Gründerzeit period of the 19th century and was incorporated into the city of Leipzig in 1890. Gohlis is now divided into three administrative localities (Gohlis-Süd, Gohlis-Mitte and Gohlis-Nord), all of which belong to the Stadtbezirk Nord of Leipzig. Dominated by residential buildings from the late-19th and first half of the 20th century, Gohlis has a population of more than 45,000 inhabitants (2020).\nIt is well known as the place where Friedrich Schiller wrote the first version of his Ode to Joy in 1785."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "gohlis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6362,
+    "attempt": 6316,
+    "place_id": "gn-2977880",
+    "input": {
+      "place": {
+        "place_id": "gn-2977880",
+        "name": "Saint-Nicolas-de-Port",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.62857,
+        "lon": 6.29668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Nicolas-de-Port",
+          "url": "https://en.wikipedia.org/wiki/Saint-Nicolas-de-Port",
+          "text": "Saint-Nicolas-de-Port (French pronunciation: [sɛ̃ nikɔla də pɔʁ]) is a commune in the Meurthe-et-Moselle département in north-eastern France.\nThe town's basilica, Saint Nicolas, is a pilgrimage site, supposedly holding relics of Saint Nicholas brought from Italy. It is one of France's Monuments historiques, and a minor basilica since 1950.\nThe town's inhabitants are known as Portois. In the past, the Portois were known as loudmouths; their neighbours across the Meurthe at Varangéville liked to gather on the opposite river bank to bombard them with a chorus indicating a wish to defecate in their mouths:\n\nBooyaî d'Senn 'Colais,\nTend tet ghieule quand je...\nwhich in the local Lorrain dialect means:\n\nLoudmouths of St Nicks,\nOpen your gob when I'm taking a...\nSt Nicholas-de-Port is also known for fossil remains of very early (late Triassic) ancestral mammals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "saint nicolas de port",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nicolas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6363,
+    "attempt": 6317,
+    "place_id": "gn-3023953",
+    "input": {
+      "place": {
+        "place_id": "gn-3023953",
+        "name": "Condé-sur-Noireau",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 48.84881,
+        "lon": -0.55214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Condé-sur-Noireau",
+          "url": "https://en.wikipedia.org/wiki/Condé-sur-Noireau",
+          "text": "Condé-sur-Noireau (French pronunciation: [kɔ̃de syʁ nwaʁo] , lit. 'Condé on Noireau') is a former commune in the Calvados department in the Normandy region in northwestern France. On 1 January 2016, it was merged into the new commune of Condé-en-Normandie. It is situated on the Noireau River. In the fifteenth century, the town was occupied by the English, and belonged to Sir John Fastolf of Caister Castle in Norfolk (1380–1459). It was from here that the Spanish mercenary François de Surienne launched an attack on Fougères in Brittany, which triggered the invasion of English Normandy by Charles VII of France, and the end of the Hundred Years' War.\nThe former commune is part of the area known as Suisse Normande."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "conde sur noireau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "conde",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noireau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6364,
+    "attempt": 6318,
+    "place_id": "gn-3032340",
+    "input": {
+      "place": {
+        "place_id": "gn-3032340",
+        "name": "Blanquefort",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.91065,
+        "lon": -0.63758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blanquefort, Gironde",
+          "url": "https://en.wikipedia.org/wiki/Blanquefort,_Gironde",
+          "text": "Blanquefort (French pronunciation: [blɑ̃kfɔʁ]; Gascon: Blancahòrt) is a commune in the Gironde department in Nouvelle-Aquitaine in southwestern France. Blanquefort is an outlying commune of the Bordeaux metropolitan area.\nThe commune consists of historic Blanquefort and Caychac, which is further out from central Bordeaux and was formerly a commune in its own right. Historic Blanquefort includes the ruins of a small medieval fortress and a nineteenth-century park, the Parc de Majolan, complete with a maze-like grotto and small artificial ruins which were in vogue at that time.\nBlanquefort is well connected to the rest of the agglomeration by the Bordeaux bus services, including services most of the night. It also has a train station with regular services to central Bordeaux. The Bordeaux tram system is projected to connect with Blanquefort in 2013.\nBlanquefort, which is located in a famous wine-producing area, has a notable educational institution for viticulture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "blanquefort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6365,
+    "attempt": 6319,
+    "place_id": "gn-3032556",
+    "input": {
+      "place": {
+        "place_id": "gn-3032556",
+        "name": "Biscarrosse",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.39454,
+        "lon": -1.16721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biscarrosse",
+          "url": "https://en.wikipedia.org/wiki/Biscarrosse",
+          "text": "Biscarrosse (French pronunciation: [biskaʁɔs]; Occitan: Biscarròssa) is a commune in the Landes department in Nouvelle-Aquitaine in southwestern France. It is located 65 km (40 mi) southwest of Bordeaux, and 10 km (6.2 mi) inland from the seaside resort of Biscarrosse-Plage on the Atlantic coast.\nNear Biscarrosse is the CEL (national test centre) from which numerous French military rockets have been launched for test purposes. Likewise, the CEL has facilities for launching civilian rockets to study the upper atmosphere.\nNear the town centre, outside the Café de l'orme, there was what is believed to have been the oldest elm tree in Europe. Planted in 1350, this field elm Ulmus minor died in 2010 after finally succumbing to Dutch elm disease. Legend has it that girls deemed promiscuous were forced to stand naked upon a barrel beneath the tree for a day. One unfortunate, unjustly accused, died of shame, the tree annually producing a corona of blanched leaves in her memory.\nThe commune has an airport, called Biscarrosse - Parentis Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "biscarrosse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6366,
+    "attempt": 6320,
+    "place_id": "gn-3050212",
+    "input": {
+      "place": {
+        "place_id": "gn-3050212",
+        "name": "Keszthely",
+        "country": "Hungary",
+        "subdivision": "Zala County",
+        "lat": 46.76812,
+        "lon": 17.24317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keszthely",
+          "url": "https://en.wikipedia.org/wiki/Keszthely",
+          "text": "Keszthely (Hungarian pronunciation: [ˈkɛsthɛj]; also known by alternative names) is a Hungarian city of 20,895 inhabitants located on the western shore of Lake Balaton. It is the second largest city by the lake and one of the more important cultural, educational and economic hubs in the region. Due to its favorable location and accessibility by both road and rail, Keszthely and the surrounding area is a preferred holiday destination.\nFrom the middle of the 5th century until the middle of the 7th century the Keszthely Culture flourished in the area.\nThe Faculty for Agriculture of University of Pannonia is located in Keszthely. George Fejer, Hungarian author and librarian at the University of Pest, was born in Keszthely in 1766."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "keszthely",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

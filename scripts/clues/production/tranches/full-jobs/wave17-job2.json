@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 3245,
+    "attempt": 3221,
+    "place_id": "gn-3165475",
+    "input": {
+      "place": {
+        "place_id": "gn-3165475",
+        "name": "Torre Annunziata",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.75337,
+        "lon": 14.45251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torre Annunziata",
+          "url": "https://en.wikipedia.org/wiki/Torre_Annunziata",
+          "text": "Torre Annunziata (Italian: [ˈtorre annunˈtsjaːta]; Neapolitan: Torre Nunziata) is a comune (municipality) in the Metropolitan City of Naples, in the Italian region of Campania. It is located on the Gulf of Naples, at the foot of Mount Vesuvius.\nThe municipality lies on the innermost part of the Gulf of Naples, in a narrow coastal strip between Vesuvius and the Tyrrhenian Sea. It is included in the Vesuvius \"red zone\", the area planned for preventive evacuation in the event of renewed volcanic activity. To the south, the municipal territory reaches the mouth of the Sarno River, within the area of the Sarno River Regional Park.\nThe town stands above the remains of ancient Oplontis, a Roman settlement buried by the eruption of Vesuvius in AD 79. The archaeological area of Oplontis, in Torre Annunziata, forms part of the UNESCO World Heritage Site \"Archaeological Areas of Pompeii, Herculaneum and Torre Annunziata\", inscribed in 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "torre annunziata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "torre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "annunziata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3246,
+    "attempt": 3222,
+    "place_id": "gn-3427428",
+    "input": {
+      "place": {
+        "place_id": "gn-3427428",
+        "name": "Villaguay",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -31.86767,
+        "lon": -59.02701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villaguay",
+          "url": "https://en.wikipedia.org/wiki/Villaguay",
+          "text": "Villaguay is a city in the province of Entre Ríos in the Argentine Mesopotamia. It has about 49,000 inhabitants as of the census 2010 and is the head town of the department of the same name.\nThe city lies near the geographic center of the province, east of the Gualeguay River, on National Route 18 (which links it to Paraná, the provincial capital, located 155 km to the west, and to Concordia, 120 km east). The area is served by Villaguay Aerodrome (ICAO: SAAU) at 31°51′S 59°5′W.\nThe earliest records of European settlement date to 1790. In the nineteenth century, Spanish, Jewish, French, Italian, Volga German, and Belgian communities were established in the area. In 1873, Villaguay, previously administered by military commanders, became a municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "villaguay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3247,
+    "attempt": 3223,
+    "place_id": "gn-3665098",
+    "input": {
+      "place": {
+        "place_id": "gn-3665098",
+        "name": "Barcelos",
+        "country": "Brazil",
+        "subdivision": "Amazonas",
+        "lat": -0.97357,
+        "lon": -62.9269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barcelos, Amazonas",
+          "url": "https://en.wikipedia.org/wiki/Barcelos,_Amazonas",
+          "text": "Barcelos (also Barcellos), formerly Mariuá, is a municipality located in the state of Amazonas, northern Brazil. Its population was 27,638 (2020) and its area is 122,476 square kilometres (47,288 mi2). It is the second largest municipality in Brazil (behind Altamira, Pará), equivalent in size to New York state in the United States and slightly larger than North Korea.\nSince 1994, Barcelos has been the host of an annual festival celebrating ornamental fish, which is a significant source of income for the region. Project Piaba uses Barcelos as the starting point for their annual research expedition into the Rio Negro area. The region is the biggest exporter of this particular fish in Brazil with over 19 million specimens exported into Europe, Asia, and the United States. Barcelos is known for Ecotourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "barcelos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3248,
+    "attempt": 3224,
+    "place_id": "gn-3671519",
+    "input": {
+      "place": {
+        "place_id": "gn-3671519",
+        "name": "Puerto Carreño",
+        "country": "Colombia",
+        "subdivision": "Vichada Department",
+        "lat": 6.19041,
+        "lon": -67.48391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Carreño",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Carreño",
+          "text": "Puerto Carreño (Spanish pronunciation: [ˈpweɾto kaˈreɲo]) is the departmental capital city, and a municipality of the department of Vichada in the Llanos of Colombia located on the Orinoco River. Puerto Carreño is best-known as a tourist gateway to hundreds of adventure, ecological and sustainable tourism destinations, it is well-known for peacock bass fishing on the Vita River, Indigenous artisans from the Orinoquia, as a river port trade center, and as a frontier settlement that has become the capital of the second largest department (province) in Colombia.\nPuerto Carreño is also known as the Colombian city with more trees than most, it is known agriculturally for marañon fruit (cashew) and in the city limits there are more than a dozen different types of mango tree varieties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "puerto carreno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carreno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3249,
+    "attempt": 3225,
+    "place_id": "gn-3833520",
+    "input": {
+      "place": {
+        "place_id": "gn-3833520",
+        "name": "Tunuyán",
+        "country": "Argentina",
+        "subdivision": "Mendoza",
+        "lat": -33.58125,
+        "lon": -69.01537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tunuyán",
+          "url": "https://en.wikipedia.org/wiki/Tunuyán",
+          "text": "Tunuyán is a city in the west of the province of Mendoza, Argentina, located on the western shore of the Tunuyán River, 80 km (50 mi) south from the provincial capital Mendoza and 100 km (62 mi) east of the Chilean border. It has 49,132 inhabitants, and is the head town of the Tunuyán Department. Along with the Tupungato Department and the San Carlos Department it makes up the \"Valle de Uco\" region, which is famous in the Argentine wine industry for its important and modern vineyards and wineries. Investments since the millennium, attracted by the climate, soil, and altitude combination, have transformed the area, making it one of Argentina's most important regions when it comes to high-quality wine production and its associated connoisseur-driven enotourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "tunuyan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3250,
+    "attempt": 3226,
+    "place_id": "gn-4563308",
+    "input": {
+      "place": {
+        "place_id": "gn-4563308",
+        "name": "Cayey",
+        "country": "Puerto Rico",
+        "subdivision": "Cayey",
+        "lat": 18.11191,
+        "lon": -66.166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cayey, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Cayey,_Puerto_Rico",
+          "text": "Cayey (Spanish pronunciation: [kaˈʝej]), officially Cayey de Muesas, is a mountain town and municipality in central Puerto Rico located on the Sierra de Cayey within the Central Mountain range, north east of Salinas and north of Guayama; south of Cidra and Caguas; east of Aibonito and west of San Lorenzo. Cayey is spread over 21 barrios plus Cayey Pueblo (the downtown area and the administrative center). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nCayey is notable for its surrounding mountains. The city has been actively growing since the 1990s, evidenced by its designation as a Metropolitan Area by the U.S. Census Bureau. It has experienced significant growth in commerce, and many major retailers, such as Wal-Mart have opened stores in the city. Industries in Cayey include sugar, tobacco and poultry. For tobacco there is a well-known company called Consolidated Cigar Corp. A new coliseum and hospital facilities have also been built. Coca-Cola is a major corporation that has a manufacturing facility in the town. Cayey is also host to one of the campuses of the University of Puerto Rico, the University of Puerto Rico at Cayey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "cayey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3251,
+    "attempt": 3227,
+    "place_id": "gn-4569298",
+    "input": {
+      "place": {
+        "place_id": "gn-4569298",
+        "name": "Anderson",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.50344,
+        "lon": -82.65013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anderson, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Anderson,_South_Carolina",
+          "text": "Anderson is a city in and the county seat of Anderson County, South Carolina, United States. The population was 28,106 at the 2020 census, making it the 16th-most populous city in South Carolina. It is one of the principal cities in the Greenville-Anderson-Greer, SC Metropolitan Statistical Area, which had an estimated population of 975,480 in 2023. It is included in the larger Greenville-Spartanburg-Anderson, SC Combined Statistical Area, which had an estimated population of 1,590,636 in 2023. \nIt is just off Interstate 85 and is 120 miles (190 km) from Atlanta and 140 miles (230 km) from Charlotte. Anderson is the smallest of the three primary cities that make up the Upstate region, and is nicknamed the \"Electric City\" and the \"Friendliest City in South Carolina\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "anderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3252,
+    "attempt": 3228,
+    "place_id": "gn-459201",
+    "input": {
+      "place": {
+        "place_id": "gn-459201",
+        "name": "Jūrmala",
+        "country": "Latvia",
+        "subdivision": "Jūrmala",
+        "lat": 56.968,
+        "lon": 23.77038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jūrmala",
+          "url": "https://en.wikipedia.org/wiki/Jūrmala",
+          "text": "Jūrmala (Latvian: [ˈjuːrmala] ; \"seaside\") is a state city in the Vidzeme region of Latvia, about 25 kilometres (16 miles) west of Riga. Jūrmala is a resort town stretching 32 km (20 miles) and is sandwiched between the Gulf of Riga and the Lielupe River. It has a 33 km (21 miles) stretch of white-sand beach and is the fifth-largest city in Latvia.\nWhile Latvia was under Soviet occupation, Jūrmala was a favorite holiday-resort and tourist destination for high-level Communist Party officials, particularly Leonid Brezhnev and Nikita Khrushchev. Although many amenities such as beach-houses and concrete hotels remain, some have fallen into disrepair. Jūrmala remains a tourist attraction with long beaches facing the Gulf of Riga and romantic wooden houses in the Art Nouveau style."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jurmala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3253,
+    "attempt": 3229,
+    "place_id": "gn-4904381",
+    "input": {
+      "place": {
+        "place_id": "gn-4904381",
+        "name": "Oak Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.88503,
+        "lon": -87.7845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oak Park, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Oak_Park,_Illinois",
+          "text": "Oak Park is a village in Cook County, Illinois, United States, adjacent to Chicago. It is the 26th-most populous municipality in Illinois, with a population of 54,318 as of the 2020 census. Oak Park was first settled in 1835 and later incorporated in 1902, when it separated from Cicero. It is closely tied to the smaller village of River Forest sharing a chamber of commerce and a high school, Oak Park and River Forest High School.\nArchitect Frank Lloyd Wright and his wife settled in Oak Park in 1889, and his work heavily influenced local architecture and design, including the Frank Lloyd Wright Home and Studio. Over the years, rapid development was spurred by railroads and streetcars connecting the village to jobs in nearby Chicago. In 1968, Oak Park enacted an Open Housing Ordinance, which helped devise strategies to racially integrate the village and prevent white flight.\nOak Park became and remains a multicultural, politically progressive community, with 80% or higher voter turnout in every presidential election since 2000. Oak Park has several public transportation links to Chicago with Chicago Transit Authority access via the Green Line and Blue Line \"L\" train lines, as well as the Metra Union Pacific West Line Oak Park station downtown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "oak park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3254,
+    "attempt": 3230,
+    "place_id": "gn-5122534",
+    "input": {
+      "place": {
+        "place_id": "gn-5122534",
+        "name": "Jamestown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.097,
+        "lon": -79.23533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamestown, New York",
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_New_York",
+          "text": "Jamestown is a city in southern Chautauqua County, New York, United States. The population was 28,712 at the 2020 census. Situated between Lake Erie to the north and the Allegheny National Forest to the south, Jamestown is the largest city in the county. Nearby Chautauqua Lake is a freshwater resource used by fishermen, boaters, and naturalists.\nIn the 20th century, Jamestown was a thriving industrial area, noted for producing several well-known products.  They include the crescent wrench, produced by Karl Peterson's the Crescent Tool Company in Jamestown beginning in 1907; and the automatic lever voting machine, manufactured by the Automatic Voting Machine Company, which dominated the lever voting machine industry from its location on Jones and Gifford Avenue in Jamestown until its bankruptcy in 1983.  Jamestown was also once called the \"Furniture Capital of the World\" because of the once-thriving furniture industry.  People visited from all over the country to attend furniture expositions at the Furniture Mart, a building that still stands in the city and houses offices for a variety of companies.  For most of the 20th century, Blackstone Corporation, led by Reginald Lenna, was Jamestown's largest employer and one of the driving cores of the local economy, manufacturing washing machines and automobile components.\nNotable people from Jamestown include legendary comedienne Lucille Ball, U.S. Supreme Court justice and Nuremberg chief prosecutor Robert H. Jackson, musician Natalie Merchant, musician Dennis Drew, musician John Lombardo, naturalist Roger Tory Peterson, NFL head coach Nick Sirianni, and NFL Commissioner Roger Goodell."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "jamestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3255,
+    "attempt": 3231,
+    "place_id": "gn-5197796",
+    "input": {
+      "place": {
+        "place_id": "gn-5197796",
+        "name": "Levittown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.15511,
+        "lon": -74.82877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Levittown, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Levittown,_Pennsylvania",
+          "text": "Levittown is a census-designated place (CDP) and planned community in Bucks County, Pennsylvania, United States. The community includes portions of the municipalities of Bristol Township, Falls Township, Middletown Township and Tullytown Borough, but is not itself an independent municipality. Levittown is part of the Philadelphia metropolitan area with a population was 52,699 at the 2020 census, which is down from 52,983 at the 2010 census.\nLevittown is 40 feet (12 m) above sea level. While not an independent municipality, it is sometimes recognized as the largest suburb of Philadelphia while Upper Darby, Lower Merion, Bensalem, Abington, and Bristol townships are municipalities larger in size within the three surrounding Pennsylvania counties. Starting with land purchased in 1951, it was planned and built by Levitt & Sons. The brothers William Levitt and architect Alfred Levitt designed its six typical houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "levittown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3256,
+    "attempt": 3232,
+    "place_id": "gn-5964347",
+    "input": {
+      "place": {
+        "place_id": "gn-5964347",
+        "name": "Grande Prairie",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 55.16667,
+        "lon": -118.80271
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grande Prairie",
+          "url": "https://en.wikipedia.org/wiki/Grande_Prairie",
+          "text": "Grande Prairie is a city in northwestern Alberta, Canada, within the southern portion of an area known as Peace River Country. It is located at the intersection of Highway 43 (part of the CANAMEX Corridor) and Highway 40 (the Bighorn Highway), approximately 456 kilometres (283 mi) northwest of the provincial capital, Edmonton. The city is surrounded by the County of Grande Prairie No. 1.\nGrande Prairie was the seventh-largest city in Alberta in 2021, with a population of 63,166, and was one of Canada's fastest growing cities between 2001 and 2006, and Canada's northernmost city with more than 50,000 people.\nThe city has adopted the trumpeter swan as its official symbol due to its proximity to the bird's migration route and its summer nesting grounds. For that reason, Grande Prairie is sometimes nicknamed the Swan City. The dinosaur has also emerged as an unofficial symbol of the city due to paleontological discoveries in the areas north and west of Grande Prairie."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "grande prairie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prairie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3257,
+    "attempt": 3233,
+    "place_id": "gn-6691227",
+    "input": {
+      "place": {
+        "place_id": "gn-6691227",
+        "name": "Radcliffe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.56178,
+        "lon": -2.32455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radcliffe, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Radcliffe,_Greater_Manchester",
+          "text": "Radcliffe is a market town in the Metropolitan Borough of Bury, Greater Manchester, England. It lies in the Irwell Valley  7 miles (11 km) northwest of Manchester and 3 miles (5 km) southwest of Bury and is contiguous with Whitefield to the south. The disused Manchester Bolton & Bury Canal bisects the town.\nEvidence of Mesolithic, Roman and Norman activity has been found in Radcliffe and its surroundings. A Roman road passes through the area, along the border between Radcliffe and Bury. Radcliffe appears in an entry of the Domesday Book as \"Radeclive\" and in the High Middle Ages formed a small parish and township centred on the Church of St Mary and the manorial Radcliffe Tower, both of which are Grade I listed buildings.\nPlentiful coal in the area facilitated the Industrial Revolution, providing fuel for the cotton spinning and papermaking industries. By the mid-19th century, Radcliffe was an important mill town with cotton mills, bleachworks and a road, canal and railway network.\nAt the 2011 Census, Radcliffe had a population of 29,950. Radcliffe is predominantly a residential area whose few remaining cotton mill buildings are now occupied by small businesses.\nAt the 2021 Census, the population of Radcliffe had seen an increase, rising to 31,307."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "radcliffe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3258,
+    "attempt": 3234,
+    "place_id": "gn-7258780",
+    "input": {
+      "place": {
+        "place_id": "gn-7258780",
+        "name": "West Falls Church",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.86484,
+        "lon": -77.18787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Falls Church, Virginia",
+          "url": "https://en.wikipedia.org/wiki/West_Falls_Church,_Virginia",
+          "text": "West Falls Church is a census-designated place (CDP) in Fairfax County, Virginia, United States. As of the 2020 census, West Falls Church had a population of 30,243.\nBefore 2010, West Falls Church was officially named Jefferson (from Thomas Jefferson). Outside of the Jefferson Village neighborhood, \"Jefferson\" generally is not used locally to refer to the area bounding Falls Church city to the south and southwest that comprises the CDP.  Likewise, \"West Falls Church\" is rarely used to describe the area but is usually applied to areas west of Falls Church city or near West Falls Church metro station. The bulk of it is made of subdivisions built in the 1940s and early 1950s, including Jefferson Village, Westlawn, Hillwood, Sleepy Hollow, Woodley, Raymondale and Broyhill Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "west falls church",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "church",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3259,
+    "attempt": 3235,
+    "place_id": "gn-1274987",
+    "input": {
+      "place": {
+        "place_id": "gn-1274987",
+        "name": "Kannur",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 11.86752,
+        "lon": 75.35763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kannur",
+          "url": "https://en.wikipedia.org/wiki/Kannur",
+          "text": "Kannur (Malayalam: [kɐɳːuːr] ), formerly known in English as Cannanore, is a  city and municipal corporation in the state of Kerala, India. It is the administrative headquarters of the Kannur district and situated 274 kilometres (170 mi) north of the major port city and commercial hub Kochi and 137 kilometres (85 mi) south of the major port city and commercial hub, Mangalore. It is the fifth largest city in Kerala. During British colonial rule in India, when Kannur was a part of the Malabar District (Madras Presidency), the city was known as Cannanore. Kannur is the fifth largest urban agglomeration in Kerala. As of the 2011 census, Kannur Municipal Corporation, the local body which administers mainland area of city, had a population of 232,486.\nKannur was the headquarters of Kolathunadu, one of the four most important dynasties on the Malabar Coast, along with the Zamorin of Calicut, Kingdom of Cochin and Kingdom of Quilon. The Arakkal kingdom had right over the city of Kannur and Laccadive Islands in the late medieval period. Kannur municipality was formed on 1 November 1866 by the Madras Act 10 of 1865 (Amendment of the Improvements in Towns Act 1850) of the British Indian Empire, along with the municipalities of Thalassery, Kozhikode, Palakkad and Fort Kochi, making them the first modern municipalities in the state. It was upgraded to a municipal corporation in 2015.\nKannur Cantonment is the only cantonment board in Kerala. The Indian Naval Academy at Ezhimala is Asia's largest, and the world's third-largest, naval academy. Muzhappilangad beach is the longest drive-in beach in Asia and appeared among the top six best beaches for driving in the world in a BBC Top Gear article. During British rule, Kannur's chief importance laid in producing Thalassery pepper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 292
+    },
+    "banned_terms": [
+      {
+        "term": "kannur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3260,
+    "attempt": 3236,
+    "place_id": "gn-12750571",
+    "input": {
+      "place": {
+        "place_id": "gn-12750571",
+        "name": "Mont Kiara",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.16866,
+        "lon": 101.65076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mont Kiara",
+          "url": "https://en.wikipedia.org/wiki/Mont_Kiara",
+          "text": "Mont Kiara, often stylized as MK, is an affluent suburb at the northwest of downtown Kuala Lumpur, Malaysia, in the constituency of Segambut. It consists mainly of high-rise residential condominiums and office complexes which were mostly developed by UEM Sunrise Berhad, a well-known property development arm of UEM Group. It is located in the heart of Klang Valley, halfway between Kepong and downtown Kuala Lumpur. It is adjacent to Sri Hartamas in the south and KL Metropolis in the east, and is heavily populated by expats.\nWhile the name \"North Kiara\" refers to the area near Bukit Segambut as it is located north of Mont Kiara, the name has been used by developers up till now to link their property developments to the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mont kiara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kiara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3262,
+    "attempt": 3237,
+    "place_id": "gn-1570819",
+    "input": {
+      "place": {
+        "place_id": "gn-1570819",
+        "name": "Phong Thạnh",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 9.32361,
+        "lon": 105.34639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phong Thạnh, Cà Mau",
+          "url": "https://en.wikipedia.org/wiki/Phong_Thạnh,_Cà_Mau",
+          "text": "Phong Thạnh  is a commune (xã) and village in Cà Mau Province, in south-western Vietnam.\nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 1 July 2025). Accordingly, Phong Thạnh Commune was established in Cà Mau Province on the basis of the entire 27.08 km² of natural area and a population of 11,110 people of Tân Thạnh Commune, the entire 53.04 km² of natural area and a population of 11,744 people of Phong Thạnh Tây Commune, and the entire 62.84 km² of natural area and a population of 31,058 people of Tân Phong Commune, all formerly belonging to Giá Rai Town, Bạc Liêu Province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "phong thanh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "phong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "thanh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3263,
+    "attempt": 3238,
+    "place_id": "gn-1724767",
+    "input": {
+      "place": {
+        "place_id": "gn-1724767",
+        "name": "Bislig",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 8.21528,
+        "lon": 126.31639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bislig",
+          "url": "https://en.wikipedia.org/wiki/Bislig",
+          "text": "Bislig, officially the City of Bislig (Cebuano: Dakbayan sa Bislig; Filipino: Lungsod ng Bislig), is a  component city in the province of Surigao del Sur, Philippines. According to the 2024 census, it has a population of 99,872 people.\nIn 2000, Bislig was converted into a city per Republic Act 8804. It is the most populous among the cities and municipalities in the province of Surigao del Sur.\nBarangay Mangagoy, the downtown area often dubbed by its residents as \"the little city within the city\", is the center of trade and industry of Bislig which has a population of 32,464 as of the 2015 estimate. It is the largest barangay in the city and the entire province of Surigao del Sur in terms of population. Since Barangay Poblacion is often referred by the locals simply as 'Bislig', Mangagoy on the other hand is often mistaken as a separate town though it is only just one out of the 24 barangays that comprises the entire City of Bislig.\nBislig is geographically the easternmost city of the Philippines. The city serves as the center of trade and commerce in the province of Surigao del Sur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "bislig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3264,
+    "attempt": 3239,
+    "place_id": "gn-1735339",
+    "input": {
+      "place": {
+        "place_id": "gn-1735339",
+        "name": "Mukah",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.89435,
+        "lon": 112.09145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mukah",
+          "url": "https://en.wikipedia.org/wiki/Mukah",
+          "text": "Mukah (muːkəh), historically known as Muka, is a coastal town in Malaysia which has served as the capital and the administrative center of the Mukah Division since 1 March 2002.\nThe district also covers an area of 2,536 square kilometres (979 sq mi) with a population about 49,900 in the Mukah town and 18,800 in the Dalat administrative town of Dalat District.\nIt is located on the Borneo island, by the South China Sea, about 2 hours by road from the city of Sibu. Mukah is also accessible by air by AirBorneo from Kuching and Miri. The duration of both flights is about one hour. There are also speed boats connecting the town of Dalat (about 30 kilometres [19 mi] from Mukah) to Sibu. The speed boat trip takes approximately 2 hours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "mukah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3265,
+    "attempt": 3240,
+    "place_id": "gn-1819353",
+    "input": {
+      "place": {
+        "place_id": "gn-1819353",
+        "name": "Mong Kok",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Yau Tsim Mong District",
+        "lat": 22.31935,
+        "lon": 114.17136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mong Kok",
+          "url": "https://en.wikipedia.org/wiki/Mong_Kok",
+          "text": "Mong Kok (Chinese: 旺角), also spelled Mongkok, often abbreviated as MK, is an area in Kowloon, Hong Kong. The Prince Edward subarea occupies the northern part of Mong Kok.\nAs one of the major shopping areas in Hong Kong, Mong Kok is characterised by a mixture of old and new multi-story buildings, with shops and restaurants at street level, and commercial or residential units above. Major industries in Mong Kok are retail, restaurants (including fast food) and entertainment. It has been described and portrayed in films as an area in which triads run bars, nightclubs, and massage parlours. With its extremely high population density of 130,000/km2 (340,000/sq mi), Mong Kok was described as the busiest district in the world by the Guinness World Records."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mong kok",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kok",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

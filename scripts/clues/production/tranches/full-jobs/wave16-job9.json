@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 3184,
+    "attempt": 3161,
+    "place_id": "gn-1639215",
+    "input": {
+      "place": {
+        "place_id": "gn-1639215",
+        "name": "Kudus",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -6.8048,
+        "lon": 110.8405
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kudus, Indonesia",
+          "url": "https://en.wikipedia.org/wiki/Kudus,_Indonesia",
+          "text": "Kudus (Javanese: ꦏꦸꦢꦸꦱ꧀) is the capital and the namesake of the Kudus Regency in Central Java, Indonesia. Its name has an Arabic etymology (Arab: القدس al-Quds) connected to its foundation by the legendary figure Sunan Kudus. It also houses the mosque established by Sunan Kudus named Menara Kudus Mosque, one of the most important and influential mosques in Indonesia. According to the 2010 census, its population was 92,776, but by mid-2022 this had declined to 88,635.\nDuring the Dutch East Indies era, Kudus was the seat of the Kudus Regency which was a part of Semarang Residency dating back to 1817. From 1928 to 1931, it was the seat of the short-lived Koedoes Residency, which incorporated the regency as well as the neighboring Demak and Jepara regencies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "kudus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3185,
+    "attempt": 3162,
+    "place_id": "gn-2143285",
+    "input": {
+      "place": {
+        "place_id": "gn-2143285",
+        "name": "Wodonga",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -36.12179,
+        "lon": 146.88809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wodonga",
+          "url": "https://en.wikipedia.org/wiki/Wodonga",
+          "text": "Wodonga ( wə-DONG-gə; Pallanganmiddang: Wordonga) is a city on the Victorian side of the border with New South Wales, 324 kilometres (201 mi) north-east of Melbourne, Australia. It is part of the twin city of Albury–Wodonga and is located all within the boundaries of the City of Wodonga LGA and is separated from its twin city in New South Wales, Albury, by the Murray River. As of the 2021 Census, Wodonga and its suburbs have a population of 37,839 and combined with Albury, the two cities form the urban area Albury–Wodonga with a population of 97,793. There are multiple suburbs of Wodonga including Bandiana, Baranduda, Barnawartha, Bonegilla, Ebden, Huon Creek, Killara, Leneva and Staghorn.\nWodonga produces a gross domestic product of $2.57 billion per year on average."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "wodonga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3186,
+    "attempt": 3163,
+    "place_id": "gn-2183472",
+    "input": {
+      "place": {
+        "place_id": "gn-2183472",
+        "name": "Richmond",
+        "country": "New Zealand",
+        "subdivision": "Tasman District",
+        "lat": -41.33333,
+        "lon": 173.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, Tasman",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_Tasman",
+          "text": "Richmond (Māori: Waimea), originally known as Waimea East, is a town and the seat of the Tasman District Council in New Zealand. It lies 13 kilometres (8 mi) south of Nelson in the South Island, close to the southern extremity of Tasman Bay. The town, first settled by Europeans in 1842, was named in 1854 after the town of Richmond on Thames near London. The town has an estimated population of 19,950 as of June 2025.\nAlthough most of Richmond lies outside the boundaries of Nelson City and the town is considered a separate urban area, Richmond is part of the wider Nelson metropolitan area along with nearby Brightwater, Hope, Māpua and Wakefield. The two unitary authorities (Nelson and Tasman) co-operate for tourism-marketing purposes via \"Latitude Nelson\". As of 2020 Richmond forms part of the Nelson parliamentary electorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3187,
+    "attempt": 3164,
+    "place_id": "gn-2644204",
+    "input": {
+      "place": {
+        "place_id": "gn-2644204",
+        "name": "Livingston",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.90288,
+        "lon": -3.52261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livingston, West Lothian",
+          "url": "https://en.wikipedia.org/wiki/Livingston,_West_Lothian",
+          "text": "Livingston (Scots: Leivinstoun, Scottish Gaelic: Baile Dhunlèibhe) is the largest town in West Lothian, Scotland. Designated in 1962, it is the fourth post-war new town to be built in Scotland. Taking its name from a village of the same name incorporated into the new town, it was originally developed in the then-counties of Midlothian and West Lothian along the banks of the River Almond. It is situated approximately fifteen miles (24 km) west of Edinburgh and thirty miles (48 km) east of Glasgow, and is close to the towns of Broxburn to the north-east and Bathgate to the north-west.\nThe town was built around a collection of small villages, Livingston Village, Bellsquarry, and Livingston Station (now part of Deans). The town has a number of residential areas. These include Craigshill, Howden, Ladywell, Knightsridge, Deans, Dedridge, Murieston, Almondvale, Eliburn, Kirkton, and Adambrae. There are several large industrial estates in Livingston, including Houston industrial estate, Brucefield Industrial Estate, Alba Business Park, and Kirkton Campus. The locality of Livingston as defined by the General Register Office for Scotland (GROS) includes Uphall Station and Pumpherston. The wider urban settlement, also defined by the GROS, further includes Mid Calder and East Calder. Other neighbouring villages include: Kirknewton, Polbeth and West Calder. The 2001 UK Census reported that the town had a population of 50,826. The 2011 UK Census showed the population of Livingston had increased to 56,269. Livingston is the second-largest settlement in the Lothians, after Edinburgh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "livingston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3188,
+    "attempt": 3165,
+    "place_id": "gn-2655882",
+    "input": {
+      "place": {
+        "place_id": "gn-2655882",
+        "name": "Bentley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53333,
+        "lon": -1.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bentley, South Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Bentley,_South_Yorkshire",
+          "text": "Bentley is a suburb of Doncaster in South Yorkshire, England two miles north of the city centre. The population of the ward (also including Arksey, Shaftholme, Toll Bar and part of Scawthorpe) within the City of Doncaster at the 2021 census was 18,195. The Bentley built-up area subdivision had a population of 12,048.\nHistorically within the West Riding of Yorkshire, the village was once owned by Edmund Hastings of Plumtree, Nottinghamshire, who had inherited it from his wife Copley's Sprotborough family. Hastings subsequently sold the manor to John Levett, a York lawyer born at High Melton who married the niece of Hastings's wife, who then conveyed it to Sir Arthur Ingram of York, High Sheriff of Yorkshire.\nA former mining village, it lies on the River Don. Bentley Colliery, which is now Bentley Community Woodland, closed in December 1993. Bentley and the nearby hamlet of Toll Bar were badly affected by floods in June 2007.\nThe local parish church of St. Peter dates back to 1891. A second church, Church of SS Philip and James in the New Village area was dedicated in 1915\nBentley includes West End, New Village and Rostholme. Streets in Bentley include Cooke Street and High Street.\nDuring the 2019 United Kingdom floods residents of Bentley were asked to leave their homes after the area suffered flooding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "bentley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3189,
+    "attempt": 3166,
+    "place_id": "gn-2738925",
+    "input": {
+      "place": {
+        "place_id": "gn-2738925",
+        "name": "Gondomar",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.14454,
+        "lon": -8.53223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gondomar, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Gondomar,_Portugal",
+          "text": "Gondomar (Portuguese pronunciation: [ɡõ.duˈmaɾ] ), officially the City of Gondomar (Portuguese: Cidade de Gondomar), is a Portuguese municipality located in the eastern part of the Porto Metropolitan Area, just 7 kilometres (4.3 mi) from central Porto. The population in 2021 was 164,257, in an area of 131.86 square kilometres (50.91 mi2). The name \"Gondomar\" is sometimes attributed to the Visigothic king Gundemar, who may have established a religious domain in the region around the 7th century.\nNotable for its long-standing tradition in jewelry-making, Gondomar is considered the heart of Portugal's goldsmithing industry, accounting for 42% of the country's annual production. Gondomar's local gastronomy is deeply influenced by the nearby Douro River with dishes like shad and lamprey being regional specialties. Gondomar's current mayor is Luís Filipe Araújo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "gondomar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3190,
+    "attempt": 3167,
+    "place_id": "gn-3134331",
+    "input": {
+      "place": {
+        "place_id": "gn-3134331",
+        "name": "Tønsberg",
+        "country": "Norway",
+        "subdivision": "Vestfold",
+        "lat": 59.26754,
+        "lon": 10.40762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tønsberg",
+          "url": "https://en.wikipedia.org/wiki/Tønsberg",
+          "text": "Tønsberg (pronounced [ˈtœ̂nsbær(ɡ)] ), historically Tunsberg, is a city in Tønsberg Municipality in Vestfold county, Norway. It is located about 102 kilometres (63 miles) south-southwest of the capital city of Oslo on the western coast of the Oslofjord near its mouth onto the Skagerrak. The city is the most populous metropolis in Vestfold county. Tønsberg also serves as the administrative centre for Vestfold county and the seat of the County Governor of Vestfold og Telemark.\n\nTønsberg is generally regarded as the oldest city in Norway, founded in the 9th century. Snorri Sturluson mentions the town in Harald Hårfagre's saga (written around 1220) before the battle at Hafrsfjord, which historians have traditionally dated to the year 872, therefore the town was in existence by 871 at the latest. This dating is again based on Are Frode's book, Íslendingabók. Using this information, Tønsberg celebrated its one-thousandth anniversary in 1871 and its 1100th anniversary in 1971. Archaeological findings confirm that there was a farm settlement in Tønsberg at the end of the 8th century, which likely developed into a town during the early 9th century.\nThe 26.31-square-kilometre (6,500-acre) city has a population (2023) of 55,387 and a population density of 2,105 inhabitants per square kilometre (5,450/sq mi). The city has actually grown to the south onto the island of Nøtterøy, so 10.37-square-kilometre (4.00 sq mi) of the city and 17,979 residents are actually located in Færder Municipality.\nThe city of Tønsberg was established as a municipality on 1 January 1838 (see formannskapsdistrikt law). The rural Sem Municipality was merged with the city of Tønsberg on 1 January 1988, creating a much larger Tønsberg Municipality. The neighboring Re Municipality was merged into Tønsberg on 1 January 2020.\nThe city is home to Tønsberg Fortress on Slottsfjellet (\"Castle Mountain\"), which includes ruins from Castrum Tunsbergis, Norway's largest castle in the 13th century. An outdoor music festival is held at Tønsberg Fortress every July. Tønsberg is also home of Oseberg Mound, where the 9th-century Oseberg Ship was excavated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "t nsberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "t",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "nsberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3191,
+    "attempt": 3168,
+    "place_id": "gn-3183284",
+    "input": {
+      "place": {
+        "place_id": "gn-3183284",
+        "name": "Alghero",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.55969,
+        "lon": 8.31953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alghero",
+          "url": "https://en.wikipedia.org/wiki/Alghero",
+          "text": "Alghero (Italian: [alˈɡɛːro]; Algherese: L'Alguer [lalˈɣe]; Sardinian: S'Alighera [saliˈɣɛɾa]; Sassarese: L'Aliera [laˈljɛːɾa]) is a city and comune (municipality) in the Metropolitan City of Sassari in the northwest of the autonomous island region of Sardinia in Italy, next to the Mediterranean Sea. With a population of 41,765, it is the 5th-largest city in Sardinia.\nThe population is noted for having retained the language of the Crown of Aragon rulers from the end of the Middle Ages, when Sardinia was part of the Crown of Aragon; hence, Algherese (the Catalan dialect spoken there) is officially recognized as a minority language.\nAlghero is the third university center in the island, coming after Cagliari and Sassari. It hosts the headquarters of the Università degli Studi di Sassari's Architecture and Design department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "alghero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3192,
+    "attempt": 3169,
+    "place_id": "gn-3466763",
+    "input": {
+      "place": {
+        "place_id": "gn-3466763",
+        "name": "Casimiro de Abreu",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.48056,
+        "lon": -42.20417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casimiro de Abreu, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Casimiro_de_Abreu,_Rio_de_Janeiro",
+          "text": "Casimiro de Abreu (Portuguese pronunciation: [kaziˈmiɾu dʒ(j) ɐˈbɾew]) (formerly known as Barra de São João Portuguese pronunciation: [ˈbaʁɐ d(ʒi) sɐ̃w ʒuˈɐ̃w]) is a municipality located in the Brazilian state of Rio de Janeiro. Its population was 46,110 (2022) and its area is 462 km2.\nThe city was called Indaiaçu until it was rebaptized in 1925 to homage the poet Casimiro de Abreu, who was born in their coastal district Barra de São João.\nThe municipality contains part of the Central Rio de Janeiro Atlantic Forest Mosaic, created in 2006.\nIt holds part of the União Biological Reserve, home to a population of endangered golden lion tamarin.\nIt contains 1,045 hectares (2,580 acres) of the 35,038 hectares (86,580 acres) Macaé de Cima Environmental Protection Area, created in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "casimiro de abreu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casimiro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abreu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3193,
+    "attempt": 3170,
+    "place_id": "gn-3616232",
+    "input": {
+      "place": {
+        "place_id": "gn-3616232",
+        "name": "Somoto",
+        "country": "Nicaragua",
+        "subdivision": "Madriz Department",
+        "lat": 13.4841,
+        "lon": -86.58229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somoto, Madriz",
+          "url": "https://en.wikipedia.org/wiki/Somoto,_Madriz",
+          "text": "Somoto (Spanish pronunciation: [soˈmoto]) is a city and a municipality located in the hills of northern Nicaragua, and capital of the department of Madriz. It is around 20 km (12 miles) south-west of Ocotal and 51 km (32 miles) north-west of Estelí. It sits on the Pan-American Highway around 16 km (10 miles) from the Honduran border crossing at El Espino.\nFounded in pre-Columbian times by Olmec and Aztec immigrants from modern Mexico, Somoto is the economic and cultural heart of Madriz. It has also become a growing tourist centre since the discovery of Somoto Canyon, located 13 km (8 miles) west of the city. Somoto Municipality has a total population of 40,322, with 21,211 people living in the urban area and 19,111 in 48 nearby communities.\nIt is known as La Flor de Henequén (the Flower of Henequen) as a result of the cultivation of this crop in the city's environs. It is also renowned for its production of rosquillas somoteñas, crispy corn biscuits with a variety of flavours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "somoto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3194,
+    "attempt": 3171,
+    "place_id": "gn-4632595",
+    "input": {
+      "place": {
+        "place_id": "gn-4632595",
+        "name": "Jackson",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 35.61452,
+        "lon": -88.81395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jackson, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Jackson,_Tennessee",
+          "text": "Jackson is a city in and the county seat of Madison County, Tennessee, United States. Located 70 miles (110 km) east of Memphis and 130 miles (210 km) southwest of Nashville, it is a regional center of trade for West Tennessee. Its total population was 68,205 as of the 2020 United States census. Jackson is the primary city of the Jackson, Tennessee metropolitan area, Madison County's largest city, and the second-largest city in West Tennessee after Memphis. It is home to the Tennessee Supreme Court's courthouse for West Tennessee, as Jackson was the major city in the west when the court was established in 1834.\nIn the antebellum era, Jackson was the market city for an agricultural area based on cultivation of cotton, the major commodity crop. Beginning in 1851, the city became a hub of railroad systems ultimately connecting to major markets in the north and south, as well as east and west. This was key to its development, attracting trade and many workers on the railroads in the late 19th century with the construction of railroads after the American Civil War. Through the 1960s, the city was served by 15 passenger trains daily, but industry restructuring reduced such service and caused the loss of jobs. The economy has adjusted to new businesses, with major manufacturing in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "jackson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3195,
+    "attempt": 3172,
+    "place_id": "gn-5104404",
+    "input": {
+      "place": {
+        "place_id": "gn-5104404",
+        "name": "Sayreville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.45927,
+        "lon": -74.36098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sayreville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Sayreville,_New_Jersey",
+          "text": "Sayreville is a borough in Middlesex County, in the U.S. state of New Jersey, in the New York metropolitan area. Sayreville is within the heart of the Raritan Valley region, located on the south banks of the Raritan River, and also located on the Raritan Bay. As of the 2020 United States census, the borough's population was 45,345, an increase of 2,641 (+6.2%) from the 2010 census count of 42,704, which in turn reflected an increase of 2,327 (+5.8%) from the 40,377 counted in the 2000 census.\nSayreville was originally incorporated as a township on April 6, 1876, from portions of South Amboy Township. On April 2, 1919, the borough was reincorporated as the Borough of Sayreville and ratified by a referendum held on April 29, 1919."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "sayreville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3196,
+    "attempt": 3173,
+    "place_id": "gn-5136454",
+    "input": {
+      "place": {
+        "place_id": "gn-5136454",
+        "name": "Schenectady",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.81424,
+        "lon": -73.93957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schenectady, New York",
+          "url": "https://en.wikipedia.org/wiki/Schenectady,_New_York",
+          "text": "Schenectady ( skə-NEKT-ə-dee) is a city in Schenectady County, New York, United States, of which it is the county seat. As of the 2020 census, the city's population of 67,047 made it the state's ninth-most populous city and the 25th-most populous municipality. The city is in eastern New York, near the confluence of the Mohawk and Hudson Rivers. It is in the same metropolitan area as the state capital, Albany, which is about 15 mi (24 km) southeast.\nSchenectady was founded on the south side of the Mohawk River by Dutch colonists in the 17th century, many of whom came from the Albany area. The name \"Schenectady\" is derived from the Mohawk word skahnéhtati, meaning \"beyond the pines\" and used for the area around Albany, New York. Residents of the new village developed farms on strip plots along the river.\nUnion College, the first nondenominational institution of higher education in the United States, and the second college established in the State of New York, was chartered in Schenectady in 1795.\nConnected to the west by the Mohawk River and Erie Canal, Schenectady developed rapidly in the 19th century as part of the Mohawk Valley trade, manufacturing, and transportation corridor. By 1824, more people worked in manufacturing than agriculture or trade; like many New York cities, it had a cotton mill that processed cotton from the Deep South. In the 19th century, nationally influential companies and industries developed in Schenectady, including General Electric (GE) and American Locomotive Company, which were powers into the mid-20th century. Schenectady was part of emerging technologies, with GE collaborating in the production of nuclear-powered submarines and, in the 21st century, working on other forms of renewable energy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "schenectady",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3197,
+    "attempt": 3174,
+    "place_id": "gn-759412",
+    "input": {
+      "place": {
+        "place_id": "gn-759412",
+        "name": "Siedlce",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.16772,
+        "lon": 22.29006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siedlce",
+          "url": "https://en.wikipedia.org/wiki/Siedlce",
+          "text": "Siedlce (Polish pronunciation: ['ɕɛdlt͡sɛ] ) (Yiddish: שעדליץ Shedlits) is a city in the Masovian Voivodeship in eastern Poland with 74,780 inhabitants (as of 2024).\nThe city is situated between two small rivers, the Muchawka and the Helenka, around 90 kilometres (56 mi) east of Warsaw. It is the fourth largest city of the Masovian Voivodeship, and the seat of the Roman Catholic Diocese of Siedlce. Siedlce is a local educational, cultural and sports center, with a university, a notable rugby club and two important museums. It also hosts a garrison of the Polish Armed Forces.\nFirst recorded in the medieval period, Siedlce is a former residential city of prominent Polish magnate families of Czartoryski and Ogiński, under whose patronage it became an important cultural center in Poland. The city contains several landmarks in various styles, especially Baroque and Neoclassical, including the Ogiński Palace and Park ensemble. From 1975 to 1998, the city was the capital of a separate Siedlce Voivodeship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "siedlce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3198,
+    "attempt": 3175,
+    "place_id": "gn-997140",
+    "input": {
+      "place": {
+        "place_id": "gn-997140",
+        "name": "Heilbron",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.28115,
+        "lon": 27.9709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heilbron",
+          "url": "https://en.wikipedia.org/wiki/Heilbron",
+          "text": "Heilbron is a town in the Free State province of South Africa which services the cattle, dairy, sorghum, sunflower and maize industries. Raw stock beneficiation occurs in leisure foods, dairy products and stock feeds. It also serves as a dormitory town for the Gauteng metropolis.\nGame farming in the district grew to the extent that it is believed that game numbers reached an all-time high, evident in visiting tourist numbers. Due to its close proximity to Gauteng (60 km) the town became ever more popular to weekend tourists and city dwellers in need of a relaxing weekend filled with peace, quiet and fresh air. Popular activities are horse riding, off-road cycling, fishing, game drives, utilizing both motor vehicles and quad bikes, historical tours and affordable sporting facilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "heilbron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3199,
+    "attempt": 3176,
+    "place_id": "gn-1014747",
+    "input": {
+      "place": {
+        "place_id": "gn-1014747",
+        "name": "Bultfontein",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.28756,
+        "lon": 26.14996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bultfontein",
+          "url": "https://en.wikipedia.org/wiki/Bultfontein",
+          "text": "Bultfontein is a town in the Free State province of South Africa with a total population of about 23,400 people. It is situated in the Tswelopele Local Municipality, about 100 kilometres (60 mi) north of Bloemfontein. The town site was laid out in 1873; it had been delayed because of a location dispute which also led to the establishment of Hoopstad 55 kilometres (35 mi) to the north-west. The township of Phahameng was established on the outskirts of Bultfontein in the 1970s.\n\nAccording to the 2011 census, Bultfontein proper has a population of 2,176, while Phahameng has a population of 21,189, giving the urban area a total population of 23,365. Of this population 93% described themselves as Black African, 5.5% as White, and 0.5% as Coloured. 57% spoke Sotho as their home language, 23% spoke Xhosa, 9.5% spoke Tswana and 6% spoke Afrikaans as first language.\nBultfontein has 8 public schools. Two are high schools, three are combined schools, and three are primary schools. The town is 60 km away from Welkom and 80 km away from Bloemfontein. It has several retail stores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "bultfontein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3200,
+    "attempt": 3177,
+    "place_id": "gn-1179496",
+    "input": {
+      "place": {
+        "place_id": "gn-1179496",
+        "name": "Dullewala",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.83439,
+        "lon": 71.43639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dullewala",
+          "url": "https://en.wikipedia.org/wiki/Dullewala",
+          "text": "Dullewala  (Urdu: دُلّے والا) is a town in the Bhakkar District in Punjab, Pakistan.\nThe town has a population of 54,277 inhabitants. It is located roughly 155 mi (or 249 km) south-west of Islamabad, the national capital.\nSome of the schools here are:\n\nPakistan Public School and College Dullewala\nKings Castle School\nGhazi Education System\nAl Qalam Public School and College\nAl Syed Model Public School Dullewala\nThe common castes of the town are:\nTeli Malik, Jhammat, Rawn, Miana, Gazar, Mughal, Baloch, Malik, Haindan, Maachhi, Bhatti, Qazi, Arain, Chheena, Awan, Saandi, Bihari, Ghoka, Chohan, Khan, Niazi, Bheen, Shahi, Ghallu, Darkhan, Lohar, Alizai, Khokhar, Jutt, Joiya, Naai, Mochi, Dharhal, Janjar, Khodi, Chundi, Shah Syed, Wains, Gudara, Kumhar, Kallu, Kalyar, Tarair, Dogar, Gari, Pathan, Langah, Sailu, Choudhary, Jaura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "dullewala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3201,
+    "attempt": 3178,
+    "place_id": "gn-1262097",
+    "input": {
+      "place": {
+        "place_id": "gn-1262097",
+        "name": "Nakodar",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 31.12586,
+        "lon": 75.47508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nakodar",
+          "url": "https://en.wikipedia.org/wiki/Nakodar",
+          "text": "Nakodar is a town and a municipal council in Jalandhar district in the Indian state of Punjab.\nThe city is almost 365 km from Delhi, 25 km from Jalandhar, 49 km from Ludhiana, and about 101 km from Amritsar. Surrounding villages include Chak Mughlani, Maheru, Allowal, Mehatpur (Haripur) (Bhullar) Nawan Pind Jattan, Heran, Bir Pind, (Aulakh), Shankar, Nur Pur Chatha, Sarih, Malri, Khanpur Dhadda, Uggi, and Malhian Kalan.\nThe town is well paved and currently forms a Tehsil of District Jalandhar. Outside the town, there are two large tombs dating from the times of Emperor Jahangir, later one of them is said to be the burial place of the adviser of Emperor Shah Jahan, but it is not known who stand buried in the earlier tomb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "nakodar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3202,
+    "attempt": 3179,
+    "place_id": "gn-1465622",
+    "input": {
+      "place": {
+        "place_id": "gn-1465622",
+        "name": "Porur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.03565,
+        "lon": 80.15821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porur",
+          "url": "https://en.wikipedia.org/wiki/Porur",
+          "text": "Porur (Tamil: [poːɾuːɾ]) is a neighbourhood of the city of Chennai, India. It forms part of the Maduravoyal taluk of Chennai district. Situated about 17 kilometres (11 miles) by road from Chennai in the western part of the city, Porur is largely a residential neighbourhood with a significant portion devoted to commercial, religious, and  industrial activities. Porur's ideal geographic position at the junction of the Mount-Poonamallee and Kundrathur roads at the western gates to Chennai city remains a major driver of economic growth.\nThe earliest recorded history of Porur goes back to the Chola period when it formed a nādu of the Chola Empire. Porur was administered by a village panchayat till 1 October 1977, when it was elevated to the status of a town panchayat. In 2011, the Porur town panchayat was abolished and its administration transferred to the Greater Chennai Corporation where they form part of the Corporation wards 151 and 153. While traditional in character, Porur has also recently witnessed considerable influx of immigrants from other parts of India largely in connection with industries and services related to the IT, construction and hospitality sectors.\nPorur had a population of 46,690 in 2011. Porur is well-connected by road and has a bus terminus, railway stations and an airport in close proximity. It also has other basic amenities like water supply and sewerage and garbage disposal services, electricity, a sub post office and a police station. Six Chennai metro stations are being constructed in Porur as part of the Phase II extension activities. The Porur Lake is one of the biggest lakes in the Chennai metropolitan area and one of the major sources of drinking water to the city while the Sri Ramachandra Medical College and Research Institute, a top-ranked private health sciences university is also situated in Porur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "porur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3203,
+    "attempt": 3180,
+    "place_id": "gn-1573570",
+    "input": {
+      "place": {
+        "place_id": "gn-1573570",
+        "name": "Năm Căn",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 8.75899,
+        "lon": 104.99285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Năm Căn",
+          "url": "https://en.wikipedia.org/wiki/Năm_Căn",
+          "text": "Năm Căn is a ward (phường) of Cà Mau province, in Vietnam. \nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 16 June 2025). Accordingly, Năm Căn Commune was established in Cà Mau Province on the basis of the entire natural area of 24.8 km2 and a population of 8,023 people of Hàng Vịnh Commune; the adjustment of 36.98 km2 in natural area with a population of 7,002 people from the remaining part of Hàm Rồng Commune; and the adjustment of 8.28 km2 in natural area with a population of 15,110 people from the remaining part of Năm Căn Township, all belonging to Năm Căn District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "nam can",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nam",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "can",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

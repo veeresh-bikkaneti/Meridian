@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 8338,
+    "attempt": 8281,
+    "place_id": "gn-7315377",
+    "input": {
+      "place": {
+        "place_id": "gn-7315377",
+        "name": "Paloma Creek",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.2253,
+        "lon": -96.93742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paloma Creek, Texas",
+          "url": "https://en.wikipedia.org/wiki/Paloma_Creek,_Texas",
+          "text": "Paloma Creek is a master-planned community in northeastern Denton County, Texas, United States. The community is listed by the U.S. Census Bureau as two separate census-designated places, \"Paloma Creek\" and \"Paloma Creek South\", separated by U.S. Highway 380. As of the 2010 census, the Paloma Creek CDP (known locally as \"Paloma Creek North\") had a population of 2,501, while Paloma Creek South had a population of 2,753.  As of 2022, the HOA currently estimates the population to be approximately 20,000.\nPaloma Creek was developed by Dallas-based Provident Realty Advisors over an area of approximately 1,200 acres (4.9 km2). The complete master-planned community is located north and south of U.S. Route 380 in an unincorporated area governed by the Denton County Fresh Water Supply Districts 8-A, 8-B, 11-A, 11-B, and 11-C.  The Lakeside Estates neighborhood shares Paloma Creek's HOA and is located on the West side of South Paloma Creek.  Although it is within the town limits of Little Elm, the vast majority of the 5,600 homes are within the five FWSDs.  The homes referred to as North Paloma Creek that are North of 380 have Aubrey mailing addresses.  The homes in South Paloma Creek have Little Elm mailing addresses.\nFWSD 11-B is also shared with Northlake Estates; however, those homes are not part of Paloma Creek.  They merely share infrastructure.  Phase I was completed in 2022 with 97 homes and Phase II began shortly thereafter with an additional 252 homes slated for completion.\nThe proximity to US Route 380 Highway, Dallas North Tollway, and Lewisville Lake Toll Bridge are major factors for the rapid residential growth in the area.\nIn early 2005, the first phase of homes was completed.  Upon its completion, the community will be populated with 5,600 homes constructed by several different builders.\nPaloma Creek is divided into the sections listed below:\n\nPaloma Creek North - 900 home sites, comprising the \"Paloma Creek\" census-designated place\nPaloma Creek South - 4,700 home sites"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 324
+    },
+    "banned_terms": [
+      {
+        "term": "paloma creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paloma",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8339,
+    "attempt": 8282,
+    "place_id": "gn-11592295",
+    "input": {
+      "place": {
+        "place_id": "gn-11592295",
+        "name": "Thornliebank",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.80454,
+        "lon": -4.31746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thornliebank",
+          "url": "https://en.wikipedia.org/wiki/Thornliebank",
+          "text": "Thornliebank (Scots: Thonliebank, Scottish Gaelic: Bruach nan Dealgan) is an area of East Renfrewshire, in the west central Lowlands of Scotland. Part of the Greater Glasgow conurbation, it is located on the Auldhouse Burn about six miles (ten kilometres) south of Glasgow city centre, and just outside the city's administrative boundaries (the closest neighbourhoods within Glasgow, to the west and north of Thornliebank, being Arden, Carnwadric, Deaconsbank, Eastwood, Jenny Lind and Mansewood). The neighbouring East Renfrewshire town of Giffnock lies directly to the east, with Rouken Glen Park to the south.\nThe original village was founded in the 18th century and began to develop after the opening of a printworks in 1778, and subsequently other light industry. Despite industrial decline in the 20th century, Thornliebank continued to expand due to extensive public and private housing construction. As of the 2011 Census, the area has a population of 4,051."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "thornliebank",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8340,
+    "attempt": 8283,
+    "place_id": "gn-3175807",
+    "input": {
+      "place": {
+        "place_id": "gn-3175807",
+        "name": "Grizzana Morandi",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.2582,
+        "lon": 11.15288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grizzana Morandi",
+          "url": "https://en.wikipedia.org/wiki/Grizzana_Morandi",
+          "text": "Grizzana Morandi (Medial Mountain Bolognese: Grizèna) is a comune (municipality) in the Metropolitan City of Bologna, in the Italian region of Emilia-Romagna. It is located in the Bolognese Apennines, about 30 km (19 mi) southwest of Bologna, between the valleys of the Reno and Setta rivers.\nThe municipality was known as Tavernola Reno until 1883, then as Grizzana until 1985, when Morandi was added in honour of the painter Giorgio Morandi, who had a long connection with the village and its landscape.\nIts territory includes several cultural sites of the Bolognese Apennines, including Rocchetta Mattei, the village of La Scola, the mountain and religious complex of Montovolo, the Casa Museo Morandi and the church of Santa Maria Assunta at Riola, designed by Alvar Aalto.\nGrizzana Morandi borders the municipalities of Camugnano, Castel di Casio, Castiglione dei Pepoli, Gaggio Montano, Marzabotto, Monzuno, San Benedetto Val di Sambro and Vergato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "grizzana morandi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grizzana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "morandi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8341,
+    "attempt": 8284,
+    "place_id": "gn-5535484",
+    "input": {
+      "place": {
+        "place_id": "gn-5535484",
+        "name": "Blanding",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 37.62433,
+        "lon": -109.47966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blanding, Utah",
+          "url": "https://en.wikipedia.org/wiki/Blanding,_Utah",
+          "text": "Blanding ( ) (Navajo: Shash Jaaʼ) is a city in San Juan County, Utah, United States. The population was 3,394 at the 2020 census, making it the most populated city in San Juan County. It was settled in the late 19th century by Mormon settlers, predominantly from the famed Hole-In-The-Rock expedition.  Economic contributors include mineral processing, mining, agriculture, local commerce, tourism, and transportation.\nBlanding is located near both the Navajo and White Mesa Ute Native American reservations and a significant percentage of Blanding's population has family ties to these nearby cultures.  Blanding is a gateway to an abundance of nearby natural and archaeological resources, including The Dinosaur Museum, Natural Bridges National Monument, Monument Valley, and the Four Corners area, Glen Canyon National Recreation Area (Lake Powell), Cedar Mesa archaeological and wilderness area, the San Juan River including Goosenecks State Park, and the Needles district of Canyonlands National Park.  It is located approximately 1 hour south of the popular recreation hub of Moab and Arches National Park.\nBlanding is home to one of the nine statewide regional campuses of Utah State University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "blanding",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8342,
+    "attempt": 8285,
+    "place_id": "gn-666480",
+    "input": {
+      "place": {
+        "place_id": "gn-666480",
+        "name": "Solovăstru",
+        "country": "Romania",
+        "subdivision": "Mureș County",
+        "lat": 46.76667,
+        "lon": 24.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solovăstru",
+          "url": "https://en.wikipedia.org/wiki/Solovăstru",
+          "text": "Solovăstru (Hungarian: Görgényoroszfalu, Hungarian pronunciation: [ˈɡørɡeːɲorosfɒlu]) is a commune in Mureș County, Transylvania, Romania that is composed of two villages, Jabenița (Görgénysóakna) and Solovăstru.\nThe commune is located in the north-central part of the county, on the left bank of the Mureș River, just east of Reghin, and 36 km (22 mi) north of the county seat, Târgu Mureș. It is traversed east to west by the Gurghiu River, an affluent of the Mureș. It is surrounded to the east by Gurghiu commune, to the west by the city of Reghin, to the south by Beica de Jos commune, and to the north by Ideciu de Jos commune.\nAs of the 2011 census, Solovăstru had a population of 2,888, of which 85% were Romanians and 10.6% Roma. At the 2021 census, the commune had a population of 3,205; of those, 86.27% were Romanians, 8.21% Roma, and 1.75% Hungarians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "solovastru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8343,
+    "attempt": 8286,
+    "place_id": "gn-6691030",
+    "input": {
+      "place": {
+        "place_id": "gn-6691030",
+        "name": "Coolock",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.3887,
+        "lon": -6.19998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coolock",
+          "url": "https://en.wikipedia.org/wiki/Coolock",
+          "text": "Coolock (Irish: An Chúlóg, meaning 'the little corner') is a large suburban area, centred on a village, on Dublin city's Northside in Ireland. Coolock is crossed by the Santry River, a prominent feature in the middle of the district, with a linear park and ponds. The Coolock suburban area encompasses parts of three Dublin postal districts: Dublin 5, Dublin 13 and Dublin 17.\nThe extensive civil parish of Coolock takes in the land between the Tonlegee Road (as far as Donaghmede) and the Malahide Road, as well as the lands on either side of the Malahide Road between Darndale and Artane, and the lands either side of the Oscar Traynor Road on the approach to Santry.\nCoolock is also the name of the historical barony which accounts for most of north Dublin city, from the coast as far as Phoenix Park, and stretching north as far as Swords."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "coolock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8344,
+    "attempt": 8287,
+    "place_id": "gn-12750643",
+    "input": {
+      "place": {
+        "place_id": "gn-12750643",
+        "name": "Forest City",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.33884,
+        "lon": 103.58876
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forest City, Johor",
+          "url": "https://en.wikipedia.org/wiki/Forest_City,_Johor",
+          "text": "Forest City is an integrated property development and special financial zone (SFZ) in Iskandar Puteri, Johor, Malaysia. It is located on reclaimed land in the southwestern part of Johor Bahru District, the second largest district in Malaysia by population. It was first announced in 2006 as a twenty-year investment project mostly financed by Chinese developer Country Garden, pitched under the Belt and Road Initiative. It was officiated by then Prime Minister of Malaysia Najib Razak in 2016, with the approval of the Sultan of Johor, Sultan Ibrahim Ismail. Forest City is a joint venture between Esplanade Danga 88, an affiliate of state government subsidiary Kumpulan Prasarana Rakyat Johor (KPRJ), and Country Garden Holding Ltd (CGPV), with CGPV holding 60 percent of shares, while KPRJ holds the other 40 percent. Forest City is under the management of the Iskandar Puteri City Council and the Iskandar Regional Development Authority.\nThe development of Forest City is contentious. The project was not targeted at local Malaysians but rather at upper-middle-class citizens from China who wanted to park their wealth abroad, by offering relatively affordable seafront properties compared to expensive coastal cities within their country such as Shanghai. However, initial strong sales from China collapsed after CCP general secretary Xi Jinping implemented stronger currency controls. Such lackluster sales were exacerbated by the 2020–2022 Malaysian political crisis and the COVID-19 pandemic, with the project being described as a \"ghost town\" in 2022. The project has also been criticised for causing large amounts of habitat destruction in the vicinity. Since 2024, Forest City has been designated by the government as Malaysia's first tax-free special financial zone, primarily to attract global business services, banking institutions and financial technology companies and revive the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "forest city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8345,
+    "attempt": 8288,
+    "place_id": "gn-2650325",
+    "input": {
+      "place": {
+        "place_id": "gn-2650325",
+        "name": "East Tilbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48053,
+        "lon": 0.41714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Tilbury",
+          "url": "https://en.wikipedia.org/wiki/East_Tilbury",
+          "text": "East Tilbury is a community in the borough of Thurrock in Essex, England. The community is in two main parts, being the older village near the banks of the River Thames, and a garden village to the north which was initially called Bataville, founded in the 1930s to serve the Bata shoe factory.\nEast Tilbury was an ancient parish. It was abolished as a civil parish in 1936 on the creation of Thurrock Urban District, which in turn became the modern borough of Thurrock in 1974. The ecclesiastical parish has also been abolished, and the area now forms part of a Church of England ecclesiastical parish called \"East and West Tilbury and Linford\". East Tilbury gives its name to one of the wards of Thurrock, which covers a larger area than the old parish of East Tilbury, additionally including the separate villages of West Tilbury and Linford. At the 2021 census the ward had a population of 7,713 and the East Tilbury built up area as defined by the Office for National Statistics (which just covers the garden village part of East Tilbury) had a population of 5,750.\nThere is evidence of Romano-British settlement in what is now East Tilbury as far back as the 1st and 2nd centuries. The first written record of the settlement was likely in the Anglo-Saxon Chronicle of 653. During the Anglo-Saxon period, it likely formed a single manorial estate of Tilbury, which subsequently fragmented into East Tilbury and West Tilbury. Coalhouse Fort on the banks of the Thames was constructed in the 1860s. From the 1930s to 1960s, the area experienced significant growth with the opening of the Bata shoe factory and the construction of Bataville to house its thousands of workers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "east tilbury",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tilbury",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8346,
+    "attempt": 8289,
+    "place_id": "gn-297097",
+    "input": {
+      "place": {
+        "place_id": "gn-297097",
+        "name": "Yenifoça",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.73333,
+        "lon": 26.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yenifoça",
+          "url": "https://en.wikipedia.org/wiki/Yenifoça",
+          "text": "Yenifoça (meaning \"New Foça\" in Turkish, the words sometimes spelled separately as \"Yeni Foça\") is a former municipality of the Foça district, in Turkey's İzmir Province. It was merged into the municipality of Foça in 2008.\nThe town of Yenifoça is situated at about 80 km (50 mi) north by northwest of İzmir city center and a distance of 20 km (12 mi) from Foça proper. Since the names Yenifoça and that of the district center share the same roots, Foça itself is locally often called as Eskifoça (\"the old Foça\") in daily parlance.\nYenifoça is a small resort set around a harbor, with a large number of old houses in Ottoman or Greek styles filling its back streets. In recent years, the small town became very popular with those seeking second homes, especially from the province center of İzmir, and the estate agency business flourished considerably.\n\nYenifoça, taken over by the Genoese in 1275 and initially as a dowry, was the more active of the two Foças during the Middle Ages, due principally to the region's rich alum reserves, the Genoese lease over them having been preserved well into the Ottoman era. On 12 May 1649, at the height of the Cretan War (1645–1669), the harbor was the scene of a naval engagement in which the Ottoman and Venetian navies briefly checked each other.\nIn June 1914 Turkish forces attacked the Greek residents of the city resulting in the Massacre of Phocaea. During the massacre in YeniFoça, a local Muslim mother tried to defend the execution of her Greek neighbor by risking quarrel with chettes (Turkish irregular armed forces). People who belonged to the local networks were radically different in their perception of the Greeks compared to the muhacirs who were alien to the local networks. The local communities favored the Greeks. When the Greeks left, due to the attacks, their houses were occupied by muhacirs (forced Muslim migrants). When Félix Sartiaux, a French engineer and archaeologist who was working in the area together with his excavation team, visited New Phocaea a week after the Massacre of Phocaea, he found a scene similar to that in Phocaea: the town was deserted, looted, and in ruins. A few wounded individuals had been left behind in the streets, including a 99-year-old woman whom one of the archaeologists carried on his back.\nSome of the Greeks returned later (1919) to their houses, when the Greek army arrived at the city. The muhacirs that lived there ran away when the Greeks returned. When the Greek army defeated (1922), according to a testimony of a muhacir, the Greeks who tried to escape with boats or other things \"were stopped and the punishments they deserved were delivered to them in and around the harbor of Eski Foça\".\nMany parts of the district are under strict environmental protection, due to the value of the flora and the fauna, especially along the road north from Foça to Yenifoça, winding past camping grounds, hotels and holiday villas, and offering dramatic sea views. Therefore, a judicious way to get to know the district would be by boat tours regularly organized with departure either from Foça or Yenifoça. Because of the protective measures, new constructions are not permitted in many parts of the district and Foça is set to preserve its unique characteristic as composed principally of old houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 559
+    },
+    "banned_terms": [
+      {
+        "term": "yenifoca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8347,
+    "attempt": 8290,
+    "place_id": "gn-3177773",
+    "input": {
+      "place": {
+        "place_id": "gn-3177773",
+        "name": "Crocetta del Montello",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.83667,
+        "lon": 12.03361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crocetta del Montello",
+          "url": "https://en.wikipedia.org/wiki/Crocetta_del_Montello",
+          "text": "Crocetta del Montello (or Croseta del Montel in the local Venetian dialect), formerly Crocetta Trevigiana, is a comune (municipality) in the province of Treviso, in the Italian region of Veneto, located about 50 kilometres (31 mi) northwest of Venice and about 25 kilometres (16 mi) northwest of Treviso. As of 31 December 2025, it had a population of 6,074 and an area of 26.4 square kilometres (10.2 mi2).\nThe town lies about 3 kilometres (2 mi) southwest of the Piave river, and borders the municipalities of Cornuda, Montebelluna, Moriago della Battaglia, Pederobba, Vidor, and Volpago del Montello. The present name literally means \"Little Cross of the Little Hill\", and refers to the Montello, an isolated hillock, 5 by 13 kilometres (3 by 8 mi) in size and 371 metres (1,217 ft) in elevation, that rises from the Piave's alluvial plain at the west edge of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "crocetta del montello",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crocetta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montello",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8348,
+    "attempt": 8291,
+    "place_id": "gn-3514138",
+    "input": {
+      "place": {
+        "place_id": "gn-3514138",
+        "name": "Zacualpan",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 18.71895,
+        "lon": -99.77605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zacualpan, State of Mexico",
+          "url": "https://en.wikipedia.org/wiki/Zacualpan,_State_of_Mexico",
+          "text": "Zacualpan is one of the 125 municipalities in the State of Mexico in Mexico. Its municipal seat and largest settlement is the town of Zacualpan. It is located to the South of the state sharing a border with the State of Guerrero, 40 minutes from Ixtapan de la Sal, 1 hour and 50 minutes from the city of Toluca (the State's Capital), and 2+1⁄2 hours from Mexico City. The municipality covers an area of 305.5 km2 (1.35% of the area of the State of Mexico). Zacualpan is delimited to the North by the municipalities of Almoloya de Alquisiras and Coatepec Harinas, to the East by Ixtapan de la Sal and the municipality of Pilcaya (Guerrero), to the West by Sultepec, and to the South by Pilcaya, Tetipac, and Pedro Ascencio de Alquisiras (Guerrero).\nThe official name of the capital of the municipality is Real de Minas Zacualpan. The capital of the municipality was the first mining town established in the American Continent and mining is still an important economic activity in the life of its inhabitants. Due to its mining roots, its colonial buildings, and its landscape, Zacualpan was named \"Pueblo con Encanto\" (A Town with Charm) between 2006 and 2009.\nThe Spanish opened silver mines here around 1540.\nAs of 2005, the municipality had a total population of 13,800."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "zacualpan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8349,
+    "attempt": 8292,
+    "place_id": "gn-3589900",
+    "input": {
+      "place": {
+        "place_id": "gn-3589900",
+        "name": "San Juan Ixcoy",
+        "country": "Guatemala",
+        "subdivision": "Huehuetenango",
+        "lat": 15.60022,
+        "lon": -91.44639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan Ixcoy",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_Ixcoy",
+          "text": "San Juan Ixcoy (also known as Yich Kʼox in Qʼanjobʼal) is a municipality in the Guatemalan department of Huehuetenango. The municipality covers an area of 224 km2 (86 sq mi) and is formed by the town of San Juan Ixcoy, 11 villages and 33 caserios (rural communities). Its population of 19,367 (in 2002) is predominantly of Maya Q'anjob'al descent.\nSan Juan Ixcoy is located in the Sierra de los Cuchumatanes range and borders with the municipalities of Soloma and Santa Eulalia in the North, Chiantla in the South and Nebaj in the East. By road, San Juan Ixcoy is directly served by RN-9-N. No rail transport exists nearby, and while there is an airport in Quetzaltenango, the closest international airport is La Aurora International Airport.\nMost households depend on subsistence agricultural and produce maize, beans and ayote (Cucurbita argyrosperma), as well as potatoes, wheat, and horticultural products. Artesanal production of textiles and traditional crafts adds to household income. Other economic activities include labour migration to the large plantations on the Guatemalan south coast and in some cases to the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "san juan ixcoy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ixcoy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8350,
+    "attempt": 8293,
+    "place_id": "gn-3985019",
+    "input": {
+      "place": {
+        "place_id": "gn-3985019",
+        "name": "San Pedro Lagunillas",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.22178,
+        "lon": -104.75114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro Lagunillas",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_Lagunillas",
+          "text": "San Pedro Lagunillas is both a municipality and the municipal seat of the same in the Mexican state of Nayarit, being the least populous municipality in Nayarit.  The population of the municipality was 7,155 (2005)   in a total area of 520 square kilometers.  The population of the town and municipal seat was 3,630 (2005).\nThe population has been declining since 1980 when it was 8,308 inhabitants.\nThe municipality of San Pedro Lagunillas is located at the following extreme coordinates: from parallel 20° 59’ to 21° 20’ latitude north and  from meridian 104° 37’ to 104° 54’ longitude west.  It is located in the south of the state of Nayarit  and is bounded in the north and east by the municipality of Santa María del Oro, in the south by the municipality of Ahuacatlán and the state of Jalisco, and in the west by the municipality of Compostela.\nThe pre-Hispanic name was \"Ximochoque\", which means \"Place of bitter jars\".  With the arrival of the Spanish the place was rebaptized with the name of San Pedro Lagunillas to honor the first Count of Miravalle, Pedro Alonso Dávalos Bracamonte y Uibarri, who provided the resources for the construction of the church and in reference to the lakes of clear water found in the region.\nMost of the municipality belongs to a volcanic zone.  The main elevations are \"Cerro Grande\"(2,000 meters), \"Cerro Tetillas\" (1,760 meters), \"Cerro La Palma\" (1,740 meters), \"Cerro Estiladero\" (1,600 meters), \"Cerro El Carretón\" (1,580 meters), and the extinct volcano of \"Tepetiltic\" (1,500 meters).\nThe economy is mainly agricultural with the main crops being corn, beans, and sugarcane.  There is some cattle raising with 34,214 head counted in the 1990 census.\nDue to the seasonal nature of the agriculture there has been intensive emigration in the last twenty years, especially to the United States of America.\nThe main tourist sights are the two lakes of San Pedro and Tepetiltic.  There is also a small museum in the town with displays of pre-Columbian artifacts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro lagunillas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lagunillas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8351,
+    "attempt": 8294,
+    "place_id": "gn-6269280",
+    "input": {
+      "place": {
+        "place_id": "gn-6269280",
+        "name": "Caol",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.83721,
+        "lon": -5.10062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caol",
+          "url": "https://en.wikipedia.org/wiki/Caol",
+          "text": "Caol (Gaelic: An Caol) is a village near Fort William, in the Highland council area of Scotland. It is about 1+1⁄4 miles (2 kilometres) north of Fort William town centre, on the shore of Loch Linnhe, and is within the parish of Kilmallie.\nThe name \"Caol\" is from the Gaelic for \"narrow\", in this case referring to the narrow water between Loch Linnhe and Loch Eil.\nThe Caledonian Canal passes by to the north-west of Caol near the rotator cuffs, and the Great Glen Way long-distance footpath passes through the village before it follows the canal towpath.\nThe village is largely residential, and has three primary schools, Caol Primary School; St Columba’s RC Primary School; and, for Scottish Gaelic-medium education, the Bun-sgoil Ghàidhlig Loch Abar, which has hosted the Lochaber Mòd since 2016. At Caol Primary School the Room 13 International project for art education was founded.\nThe local shinty team is Kilmallie Shinty Club, which plays at Canal Park in the west of Caol on the “Moominmamma” pitches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "caol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8352,
+    "attempt": 8295,
+    "place_id": "gn-2144571",
+    "input": {
+      "place": {
+        "place_id": "gn-2144571",
+        "name": "Warrawee",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.72884,
+        "lon": 151.12051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrawee",
+          "url": "https://en.wikipedia.org/wiki/Warrawee",
+          "text": "Warrawee  is a suburb on the Upper North Shore of Sydney in the state of New South Wales, Australia. Warrawee is located 17 kilometres north-west of the Sydney Central Business District, in the local government area of Ku-ring-gai Council. Warrawee is predominantly a residential suburb with few commercial entities. Notably, its railway station supports no commercial activities, which is uncommon on the Sydney train network. The closest thing to commercial activity is Knox Grammar School, which is no more than 200 metres from the station, although it is officially located in Wahroonga, it is located predominantly in Warrawee, and sits on the boundary of the two suburbs\nThe suburb should not be confused with Wirrawee, the fictional small country town in the Tomorrow series of books for young people by John Marsden, or the film derived from the first book, Tomorrow, When the War Began (2010)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "warrawee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8353,
+    "attempt": 8296,
+    "place_id": "gn-2474031",
+    "input": {
+      "place": {
+        "place_id": "gn-2474031",
+        "name": "Dehiba",
+        "country": "Tunisia",
+        "subdivision": "Tataouine",
+        "lat": 32.00799,
+        "lon": 10.70135
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dehiba",
+          "url": "https://en.wikipedia.org/wiki/Dehiba",
+          "text": "Dehiba (Arabic: الذهيبة Dehiba) is a town and commune in the east of Tataouine Governorate, Tunisia. It lies some four kilometers west of the border of Libya, itself about the same distance east from the Libyan town of Wazzin.\nDuring the 2011 Libyan civil war, the border crossing became crucial as a vital transport link for supplies to beleaguered civilians and rebel military forces in the Nafusa Mountains front.\nTented camps were set up near Dehiba to accommodate refugees from the Libyan conflict, mainly consisting of the inhabitants of the heavily disputed mountain towns nearby. The Libyan and Tunisian populations involved are mainly Imazighen (or Berbers), who share a common culture and language as well as family relationships.\nSkirmishes took place between anti-Gaddafi rebels and Libyan government forces for control of the border crossing which spilled over into the town of Dehiba and its surrounding area. Tunisian troops also were reportedly involved in the exchanges of fire. On 17 May, and again on 14 June, Libyan government forces fired Grad rockets across the border in the vicinity of Dehiba, without causing damage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "dehiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8354,
+    "attempt": 8297,
+    "place_id": "gn-2523591",
+    "input": {
+      "place": {
+        "place_id": "gn-2523591",
+        "name": "Roggiano Gravina",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.61786,
+        "lon": 16.16173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roggiano Gravina",
+          "url": "https://en.wikipedia.org/wiki/Roggiano_Gravina",
+          "text": "Roggiano Gravina is a town and comune in the province of Cosenza in the Calabria region of southern Italy.\nThe Roman villa of Larderia is one of the most important extra-urban residential complexes in Roman Calabria, both in terms of layout and mosaics floors. The site dates from the end of the 3rd century BC until the early Middle Ages. The villa is built on two terraces: the eastern sector, a group of three rooms and the western sector with a large nymphaeum with a semicircular exedra in front of a cross-shaped room. The residential part to the east overlooked a large courtyard probably with a portico. To the west were large baths with a series of rooms with a hypocaust and geometric mosaic floors from the 2nd century AD.\nGiovanni Vincenzo Gravina (1664–1718), an Italian man of letters and jurist was born at Roggiano Gravina. Angelo Maria Mazzia (1823–1891), an Italian painter was also born there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "roggiano gravina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "roggiano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gravina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8355,
+    "attempt": 8298,
+    "place_id": "gn-2639715",
+    "input": {
+      "place": {
+        "place_id": "gn-2639715",
+        "name": "Radstock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.292,
+        "lon": -2.445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radstock",
+          "url": "https://en.wikipedia.org/wiki/Radstock",
+          "text": "Radstock is a town and civil parish on the northern slope of the Mendip Hills in Somerset, England, about 9 miles (14 km) south-west of Bath and 8 miles (13 km) north-west of Frome. It is within the area of the unitary authority of Bath and North East Somerset. At the 2021 census, the parish had a population of 6,149, and the built-up area as defined by the Office for National Statistics, which extends into the neighbouring parish of Westfield, had a population of 9,980.\nRadstock has been settled since the Iron Age, and its importance grew after the construction of the Fosse Way, a Roman road. The town grew after 1763, when coal was discovered in the area. Large numbers of mines opened during the 19th century, including several owned by the Waldegrave family, who had been Lords of the Manor since the Civil War. Admiral Lord Radstock, brother of George, fourth Earl Waldegrave, took the town's name as his title when created a Baron.\nThe spoil heap of Writhlington colliery is now the Writhlington Site of Special Scientific Interest, which includes 3,000 tons of Upper Carboniferous spoil from which more than 1,400 insect fossil specimens have been recovered. The complex geology and narrow seams made coal extraction difficult. Tonnage increased throughout the 19th century, reaching a peak around 1901, when there were 79 separate collieries and annual production was 1,250,000 tons per annum. However, due to local geological difficulties and manpower shortages, output declined and the number of pits reduced from 30 at the beginning of the 20th century to 14 by the mid-thirties; the last two pits, Kilmersdon and Writhlington, closed in September 1973. Manufacturing industries such as printing, binding and packaging provide some local employment. In recent years, Radstock has increasingly become a commuter town for the cities of Bath and Bristol.\nRadstock is home to the Radstock Museum which is housed in a former market hall, and has a range of exhibits which offer an insight into north-east Somerset life since the 19th century. Many of the exhibits relate to local geology and the now disused Somerset coalfield. The town is also home to Writhlington School, famous for its Orchid collection, and a range of educational, religious and cultural buildings and sporting clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 378
+    },
+    "banned_terms": [
+      {
+        "term": "radstock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8356,
+    "attempt": 8299,
+    "place_id": "gn-2657837",
+    "input": {
+      "place": {
+        "place_id": "gn-2657837",
+        "name": "Abercynon",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.64548,
+        "lon": -3.32727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abercynon",
+          "url": "https://en.wikipedia.org/wiki/Abercynon",
+          "text": "Abercynon (Welsh pronunciation: [abɛrˈkənɔn]) is a village and community (and electoral ward) in the Cynon Valley within the unitary authority of Rhondda Cynon Taf, Wales. The community comprises the village and the districts of Carnetown and Grovers Field to the south, Navigation Park to the east, and Glancynon (or Aber-taf) to the north.\nThe population of Abercynon was recorded as 6,428 in the 2001 Census, decreasing to 6,390 at the 2011 Census, despite more than a hundred additional households built over this period (from 2,582 in 2011 to 2,694 by 2011).  The electoral ward of Abercynon includes both the community of Abercynon, but also takes into account the nearby villages of Pontcynon, Ynysboeth and Tyntetown further north.\nAbercynon is approximately 16 miles (26 km) north of Cardiff and approximately 40 miles (64 km) from Swansea. The rivers Taff and Cynon converge at Watersmeet near Martin's Terrace. Abercynon used to have many churches, chapels and pubs. There are now only four public houses left - The Thorn Hotel, The Navigation, The Top Club and the Carne Park Hotel. The only churches still left are St. Donat's Church in Wales, its daughter church, St. Gwynno's, St. Thomas' Roman Catholic Church and the Methodist church in Martin's Lane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "abercynon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8357,
+    "attempt": 8300,
+    "place_id": "gn-2898004",
+    "input": {
+      "place": {
+        "place_id": "gn-2898004",
+        "name": "Hügelsheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.8,
+        "lon": 8.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hügelsheim",
+          "url": "https://en.wikipedia.org/wiki/Hügelsheim",
+          "text": "Hügelsheim (Low Alemannic: Heilze or Helse) is a western German town across the Rhine river border with French Alsace.\nTwo burial places suggest possible settlements dating back as far as the Bronze Age. The \"Heilingenbuck\" (Holy Hill), a princely tomb, dates back to the Hallstattian period, probably the 3rd or 4th century BC. The Romans who occupied the area from 69 to 79 AD built a road leading from Strasburg via Kehl, Hügelsheim, Rastatt, Gruenwinkel and Graben to Neuenheim which gave the village its ribbon-built character. In the 3rd century AD the Romans were driven out by the Alemanni tribes. In a document from 788 intended for the Bonifatius convent in Fulda, Hügelsheim is mentioned for the first time as \"Hughilaheim\".\nThe population of Hügelsheim earned their livelihood as farmers, fishermen and barge men, and for centuries there was a weekly market ship traveling to Strasbourg. In 1834 the first steamship on the Rhine rang in the end of the Hügelsheim barge men's guild.\nThe Rhine River has always brought not only benefits but also harm to the village, reaching into the most recent history. The construction of the Iffezheim Lock has caused irreparable damage to pastures and in its wake brought considerable financial disadvantages to the community. A lawsuit against the Federal Government in this matter lasted for nearly a decade. Finally Hügelsheim was granted a 1 million Deutsch Mark compensation for the loss in its industrial gravel pits.\nHügelsheim has its own water supply and purification plant, and natural gas is supplied by the public utility works of the city of Baden-Baden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "hugelsheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

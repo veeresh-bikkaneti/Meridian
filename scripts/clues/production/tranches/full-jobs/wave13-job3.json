@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 2460,
+    "attempt": 2441,
+    "place_id": "gn-1272259",
+    "input": {
+      "place": {
+        "place_id": "gn-1272259",
+        "name": "Duliajan",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.36035,
+        "lon": 95.31806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duliajan",
+          "url": "https://en.wikipedia.org/wiki/Duliajan",
+          "text": "Duliajan is an industrial city of Dibrugarh district in the Indian state of Assam located in the upper north-east corner of India.It is about 45 km east of Dibrugarh City. It is particularly known for its oil related industry, Oil India Limited, one of the country's largest oil and gas companies. There is also other central government owned companies like B.C.P.L. GDU Station, N.E.E.P.C.O., D.N.P.L., LPG Plant and the Shivani company which is India's largest private company for drilling. Assam Gas Company Limited, which carries out business related to natural gas in India owned by the Government of Assam, is also located in this township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "duliajan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2461,
+    "attempt": 2442,
+    "place_id": "gn-1709003",
+    "input": {
+      "place": {
+        "place_id": "gn-1709003",
+        "name": "Kawit",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.44426,
+        "lon": 120.90164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kawit",
+          "url": "https://en.wikipedia.org/wiki/Kawit",
+          "text": "Kawit, officially the Municipality of Kawit (Tagalog: Bayan ng Kawit),  is an urban municipality in the province of Cavite, Philippines. According to the 2024 census, it has a population of 123,631 people.\nIt is one of the notable places that had a major role in the country's history during the 1800s and 1900s.\nFormerly known as Cavite el Viejo, it is known as the birthplace of Emilio Aguinaldo, the 1st President of the Philippines, who from 1895 to 1897, served as the municipality's chief executive. The Aguinaldo home, where independence from Spain was declared on June 12, 1898, is now formally called the Aguinaldo Shrine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kawit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2462,
+    "attempt": 2443,
+    "place_id": "gn-2090409",
+    "input": {
+      "place": {
+        "place_id": "gn-2090409",
+        "name": "Mount Hagen",
+        "country": "Papua New Guinea",
+        "subdivision": "Western Highlands Province",
+        "lat": -5.85746,
+        "lon": 144.23058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Hagen",
+          "url": "https://en.wikipedia.org/wiki/Mount_Hagen",
+          "text": "Mount Hagen (Tok Pisin: Maun Hagen) is the third largest city in Papua New Guinea, with a population of 46,250. It is the capital of the Western Highlands Province and is located in the large fertile Wahgi Valley in central mainland Papua New Guinea, at an elevation of 1,677 m (5,502 ft).\nThe Highlands Highway is the main arterial route to connect Mount Hagen with the coastal cities of Lae and Madang.\nThe city is named after the old eroded volcano Mount Hagen, located about 24 kilometres (15 mi) to the north-west. The volcano was named after the German colonial officer Curt von Hagen (1859–1897)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mount hagen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hagen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2463,
+    "attempt": 2444,
+    "place_id": "gn-2094342",
+    "input": {
+      "place": {
+        "place_id": "gn-2094342",
+        "name": "Kavieng",
+        "country": "Papua New Guinea",
+        "subdivision": "New Ireland",
+        "lat": -2.57337,
+        "lon": 150.79516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kavieng",
+          "url": "https://en.wikipedia.org/wiki/Kavieng",
+          "text": "Kavieng is the capital of the Papua New Guinean province of New Ireland and the largest town on the island of the same name. The town is located at Balgai Bay, on the northern tip of the island. As of 2009, it had a population of 17,248.\nKavieng is the main port for New Ireland, and is both a trading and tourist destination. Several dive companies operate from the town, as the area is known for its diving, both for natural sites and wrecks dating from the Second World War. There are plane and shipwrecks in Kavieng Harbor itself, as well as several more nearby.\nThe town is serviced by Kavieng Airport, with daily connections to Port Moresby. It lies at one end of the Boluminski Highway which runs 293 kilometres (182 mi) of sealed road to Namatanai.\nKavieng has all the usual services of a local administrative center: local government offices; shopping; hotels (such as the Kavieng Hotel, the Malagan Beach Resort hotel and the Kavieng Club (the former \"colonial club\" in the town); a hospital providing general medical, pediatric and surgical services; and a weekly market. There is also a large wharf for copra export on the town's edge, which allow deep-water ships to load copra and oil directly from land.\nVisible from Kavieng are the many islands of the archipelago lying between New Ireland and New Hanover, including Nusa Lik, Nusa Lawa, and Nango Island (which was formerly the site of a fish cannery in the 1960s and 1970s). Nango is also the site of a new marine research center for the PNG National Fisheries Authority. Its opening was overseen by the Governor-General of PNG, Mr. Paulius Matane, in July 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "kavieng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2464,
+    "attempt": 2445,
+    "place_id": "gn-2745392",
+    "input": {
+      "place": {
+        "place_id": "gn-2745392",
+        "name": "Vlissingen",
+        "country": "Netherlands",
+        "subdivision": "Zeeland",
+        "lat": 51.4425,
+        "lon": 3.57361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vlissingen",
+          "url": "https://en.wikipedia.org/wiki/Vlissingen",
+          "text": "Vlissingen (Dutch: [ˈvlɪsɪŋə(n)] ; Zeelandic: Vlissienge) is a municipality and a city in the southwestern Netherlands on the island of Walcheren. With its strategic location between the Scheldt river and the North Sea, Vlissingen has been an important harbour for centuries. It was granted city rights in 1315. In the 17th century the roadstead of Vlissingen was a main harbour for ships of the Dutch East India Company (VOC). It is also known as the birthplace of Lieutenant-Admiral Michiel de Ruyter.\nVlissingen is mainly noted for the yards on the Scheldt where most of the ships of the Royal Netherlands Navy (Koninklijke Marine) are built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "vlissingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2465,
+    "attempt": 2446,
+    "place_id": "gn-2841648",
+    "input": {
+      "place": {
+        "place_id": "gn-2841648",
+        "name": "Sankt Augustin",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.77538,
+        "lon": 7.197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sankt Augustin",
+          "url": "https://en.wikipedia.org/wiki/Sankt_Augustin",
+          "text": "Sankt Augustin (German pronunciation: [zaŋkt ˈaʊɡʊstiːn] ; Ripuarian: Sank Aujustin) is a town in the Rhein-Sieg district in North Rhine-Westphalia, Germany. It is named after the patron saint of the Steyler missionaries, Saint Augustine of Hippo (354-430). The missionaries established the \"Saint Augustine Monastery\" near the current town centre in 1913. The municipality of Sankt Augustin was established in 1969, and on September 6, 1977, Sankt Augustin acquired town privileges (German: Stadtrechte). Sankt Augustin is situated about 8 km northeast of Bonn and 8 km southwest of Siegburg. Sankt Augustin belongs to the economic region of Bonn/Rhein-Sieg as well as the scientific region of Bonn. With over 59,000 inhabitants, it is the second-largest town in the Rhein-Sieg district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sankt augustin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sankt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "augustin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2466,
+    "attempt": 2447,
+    "place_id": "gn-298935",
+    "input": {
+      "place": {
+        "place_id": "gn-298935",
+        "name": "Torbalı",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.182,
+        "lon": 27.335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torbalı",
+          "url": "https://en.wikipedia.org/wiki/Torbal%C4%B1",
+          "text": "Torbalı (Turkish pronunciation: ['toɾbaɫɯ]) is a municipality and district of İzmir Province, Turkey. Its area is 577 km2, and its population is 207,840 (2022).\nAn ancient Ionian city, Metropolis, is found in the district. It was famous for its wines and religious sites, and had three sanctuaries in marble dedicated to the Roman Emperor Augustus and his foster child Germanicus, in an ancient theatre which dominates the valley.\nPieces of art found during the excavations are now exhibited in İzmir and Ephesus museums. The town has the remains of an old port and a few holiday complexes, and is set attractively against a pine forest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "torbal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2467,
+    "attempt": 2448,
+    "place_id": "gn-3518221",
+    "input": {
+      "place": {
+        "place_id": "gn-3518221",
+        "name": "Zinacantepec",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.28428,
+        "lon": -99.73394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zinacantepec",
+          "url": "https://en.wikipedia.org/wiki/Zinacantepec",
+          "text": "Zinacantepec is a municipality located just west of the city of Toluca in Mexico State, Mexico. The municipal seat is the town of San Miguel Zinacantepec. Zinacantepec is Nahuatl for \"bat mountain\" and its Aztec glyph is a bat on a mountain. It is named after a small mountain which contained two caves which used to be filled with thousands of bats.\nIn the 18th century, the residents of this mountain moved to settle alongside the Franciscan monastery established here in the 16th century. This monastery is the best preserved of a network of missionaries established in the Toluca Valley in the mid 16th century. Today, the complex functions as the parish church, with the cloister dedicated as the colonial era museum of the state of Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "zinacantepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2468,
+    "attempt": 2449,
+    "place_id": "gn-3580236",
+    "input": {
+      "place": {
+        "place_id": "gn-3580236",
+        "name": "Grenville",
+        "country": "Grenada",
+        "subdivision": "Saint Andrew Parish",
+        "lat": 12.12278,
+        "lon": -61.62498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grenville, Grenada",
+          "url": "https://en.wikipedia.org/wiki/Grenville,_Grenada",
+          "text": "Grenville is the third largest town in Grenada, after St. George's and Gouyave and it is the capital of the largest parish, Saint Andrew. It is one of four coastal villages located about halfway up the eastern coast of the Caribbean island of Grenada that make up the Grenville Bay Area.\nThe town has a population of about 2,400 residents, with many more in the surrounding region. It serves as an economic and transportation hub for that part of the island, and once was home to the largest nutmeg-processing plant in Grenada. The town's marketplace houses a variety of fruit, vegetable, craft and meat stalls. Although open every day, the most popular day for activity is Saturday, the island's traditional 'market day'. A newly opened bus terminal on Sendal Street allows for organized public transportation in the form of minibuses to and from the town.\nThis town is not only heavily involved in the agriculture export industry, but is also home to some of the island's top institutions. For example, Grenville's Anglican Church and Saint Andrew's Anglican Primary School stand at the north end of Victoria Street, the main thoroughfare along the bay. The St. Andrew's Anglican Secondary School, Grenville Secondary School, St. Joseph's Convent Grenville,  the St. Andrew's Methodist School and the St. Andrew's Roman Catholic School, are five other schools located within this town that are all nationally noted for their academic and athletic performance. Overall, this town comprises multiple clothing stores, supermarkets, a fish market, a playing field, and the parish's main judicial institutions: Grenville Magistrate's Court and Grenville Police Station.\nGrenville's surrounding villages are also main attractions of St. Andrew. Pearls Airport, Grenada's first airport is on the outskirts of the town. It is no longer used for aviation, but skeletons of abandoned Air Cuba planes are still present. Also, just north of Grenville is one of Grenada's largest playing fields known as Progress Park. Sir Eric Gairy, the first Prime Minister of Grenada, was born in a village just north of Grenville known as Dunfermline."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "grenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2469,
+    "attempt": 2450,
+    "place_id": "gn-4467732",
+    "input": {
+      "place": {
+        "place_id": "gn-4467732",
+        "name": "Gastonia",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.26208,
+        "lon": -81.1873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gastonia, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Gastonia,_North_Carolina",
+          "text": "Gastonia is a city in and the county seat of Gaston County, North Carolina, United States. The most populous city in the county and the 13th-most populous city in North Carolina, the population was 80,411 at the 2020 census. It is part of the Charlotte-Concord-Gastonia, NC-SC Metropolitan Statistical Area, which is part of the Charlotte-Concord, NC-SC Combined Statistical Area.\nThe city is a historic center for textile manufacturing and was the site of the Loray Mill Strike of 1929, which became a key event in the labor movement. While manufacturing remains important to the local economy, the city also has healthcare, education, and government sectors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "gastonia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2470,
+    "attempt": 2451,
+    "place_id": "gn-4920607",
+    "input": {
+      "place": {
+        "place_id": "gn-4920607",
+        "name": "Gary",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.59337,
+        "lon": -87.34643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gary, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Gary,_Indiana",
+          "text": "Gary is a city in Lake County, Indiana, United States. The population was 69,093 at the 2020 census, making it Indiana's eleventh-most populous city. The city has been historically dominated by major industrial activity and is home to U.S. Steel's Gary Works, the largest steel mill complex in North America. Gary is located along the southern shore of Lake Michigan about 25 miles (40 km) southeast of Chicago. The city is the western gateway to the Indiana Dunes National Park, and is within the Chicago area.\nGary was named after lawyer Elbert Henry Gary, who was the founding chairman of the United States Steel Corporation. U.S. Steel had established the city in 1906 as a company town to serve its steel mills. Since the 1970s, Gary and other Rust Belt cities have lost a high number of people as the steel industry has gone through restructuring and manufacturing jobs moved out of the United States.  As a result of this economic shift, the city's population has declined 61% since the 1960 census.\nAlthough initially a very diverse city, Gary currently has one of the United States's highest percentages of African Americans. Between 1970 and 2010, Gary had the nation's highest Black population per capita. The city has a legacy of African-American cultural and historical accomplishments. In 1945, Gary was the first city in the Midwest (and one of the first in the United States) to fully integrate its public school system. It elected the country's first Black mayor, Richard Hatcher in 1967, and in 1972 hosted the first and largest National Black Political Convention. World-famed singer Michael Jackson is from Gary.\nGary is served by the Gary/Chicago International Airport, an alternative to the Chicago region's two larger airports. The city's public transport is provided by the Gary Public Transportation Corporation and the South Shore Line passenger railway, which connects to the Chicago transit system. It is home to a professional baseball team, the Gary SouthShore RailCats. In addition to its large steel mills, the city is known as  the birthplace of the Jackson family,  well-known entertainers whose members include singers Michael and Janet Jackson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "gary",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2471,
+    "attempt": 2452,
+    "place_id": "gn-5342992",
+    "input": {
+      "place": {
+        "place_id": "gn-5342992",
+        "name": "Diamond Bar",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.02862,
+        "lon": -117.81034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diamond Bar, California",
+          "url": "https://en.wikipedia.org/wiki/Diamond_Bar,_California",
+          "text": "Diamond Bar is a city in the San Gabriel Valley of eastern Los Angeles County, California, United States. The 2020 census listed a population of 55,072.It is named after the \"diamond over a bar\" branding iron registered in 1918 by ranch owner Frederic E. Lewis (1884–1963). The city features a public Los Angeles County golf course.\nLocated at the junction of the Pomona and Orange freeways, Diamond Bar is primarily residential with shopping centers interspersed throughout the city. It is surrounded by the cities of Brea, Walnut, Chino Hills, Pomona, City of Industry, and the unincorporated areas of Rowland Heights and\nSouth Diamond Bar.\nNorthern Diamond Bar is a part of the Pomona Unified School District. Southern Diamond Bar is a part of the Walnut Valley Unified School District. The city is also served by International Polytechnic High School. It also has the first hydrogen fueling station to be built in Southern California, near the South Coast Air Quality Management District building."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "diamond bar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "diamond",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2472,
+    "attempt": 2453,
+    "place_id": "gn-5692947",
+    "input": {
+      "place": {
+        "place_id": "gn-5692947",
+        "name": "Williston",
+        "country": "United States",
+        "subdivision": "North Dakota",
+        "lat": 48.14697,
+        "lon": -103.61797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Williston, North Dakota",
+          "url": "https://en.wikipedia.org/wiki/Williston,_North_Dakota",
+          "text": "Williston is a city in and the county seat of Williams County, North Dakota, United States. The 2020 census gave its population as 29,160, making Williston the sixth-most populous city in North Dakota.\nIt is near the southeast edge of the Williston Basin, named after the city. This  huge subterranean geologic feature is known for its rich deposits of petroleum, coal, and potash, which contributed to the city's population nearly doubling between 2010 and 2020, due largely to the North Dakota oil boom.\nWilliston's newspaper is the weekly Williston Herald. Williston is the home of Williston State College and the Miss North Dakota Scholarship Pageant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "williston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2473,
+    "attempt": 2454,
+    "place_id": "gn-6051122",
+    "input": {
+      "place": {
+        "place_id": "gn-6051122",
+        "name": "Leamington",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.05009,
+        "lon": -82.59981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leamington, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Leamington,_Ontario",
+          "text": "Leamington ( LEEM-ing-tən) is a municipality in Essex County, Ontario, Canada.  With a population of 29,680 in the Canada 2021 Census, it forms the second largest urban centre in Windsor-Essex County after Windsor, Ontario.\nKnown since the 20th century as the \"Tomato Capital of Canada\", it is the location of a tomato processing plant owned by Highbury-Canco; founded in 1908, the plant was owned until 2014 by the H. J. Heinz Company. Due to its location in the southernmost part of Canada, Leamington uses the motto \"Sun Parlour of Canada\". The Heinz factory in Leamington closed in 2014 after more than 100 years of operation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "leamington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2474,
+    "attempt": 2455,
+    "place_id": "gn-695274",
+    "input": {
+      "place": {
+        "place_id": "gn-695274",
+        "name": "Rubizhne",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 49.00849,
+        "lon": 38.37972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rubizhne",
+          "url": "https://en.wikipedia.org/wiki/Rubizhne",
+          "text": "Rubizhne (Ukrainian: Рубіжне, IPA: [rʊˈbiʒne] ) or Rubezhnoye (Russian: Рубежное, IPA: [rʊˈbʲeʐnəjə]) is a city in Luhansk Oblast, in the Donbas region of eastern Ukraine. Situated on the left bank of the Donets River near the cities of Sievierodonetsk and Lysychansk. Prior to 2020, it was a city of oblast significance, before the designation was abolished.\nIn 2014, at the start of the war in Donbas, Rubizhne was contested between Ukrainian and pro-Russian separatist forces. From mid-2014 until early 2022, the city was under control of Ukrainian forces. From early 2022 it has been under Russian control following their victory in the Battle of Rubizhne. Russia claimed Rubizhne as part of their Luhansk People's Republic since its annexation of the region in September 2022.\nThe city had an estimated population of 56,247, as of January 2022, its current population is unknown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "rubizhne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2475,
+    "attempt": 2456,
+    "place_id": "gn-761228",
+    "input": {
+      "place": {
+        "place_id": "gn-761228",
+        "name": "Pruszków",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.17072,
+        "lon": 20.81214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pruszków",
+          "url": "https://en.wikipedia.org/wiki/Pruszk%C3%B3w",
+          "text": "Pruszków [ˈpruʂkuf]  is a town in east-central Poland, capital of Pruszków County in the Masovian Voivodeship. Pruszków is located along the western edge of the Warsaw metropolitan area.\nPruszków is the largest settlement in the Warsaw metropolitan area outside Warsaw. Since the 19th century it has developed as an industrial centre located on an important railway line. In the 1990s and 2000s the town was synonymous with the \"Pruszków gang\", one of two major organised crime groups in the country. It is known for the country's chief indoor velodrome and the Dulag 121 Museum at the former Nazi German camp for Poles expelled from Warsaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "pruszkow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2476,
+    "attempt": 2457,
+    "place_id": "gn-1254385",
+    "input": {
+      "place": {
+        "place_id": "gn-1254385",
+        "name": "Tiruchengode",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.38016,
+        "lon": 77.89444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiruchengode",
+          "url": "https://en.wikipedia.org/wiki/Tiruchengode",
+          "text": "Tiruchengode is a special grade municipality and town located in western part of southern Indian state of Tamil Nadu, in Namakkal district. It is famous for the ancient hilltop Ardhanareeswarar Temple, dedicated to the unique combined male-female form of Lord Shiva and Goddess Parvathi. This important place of pilgrimage is mentioned in the Tamil work Silapathikaram as 'Nedulkundru' and is celebrated in the hymns of Saivite saints. The equally famous Chenkottu Velavar Temple, dedicated to Lord Murugan, is situated on the same hill. As of the 2011 census, the municipality had a population of 95,335. The estimated population as of 2026 is approximately 1,39,000. As per 2011 population, Tiruchengode is the largest city in Namakkal district. It is also famous for rig business."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "tiruchengode",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2477,
+    "attempt": 2458,
+    "place_id": "gn-12718812",
+    "input": {
+      "place": {
+        "place_id": "gn-12718812",
+        "name": "Praktiseer",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.58398,
+        "lon": 30.31684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Praktiseer",
+          "url": "https://en.wikipedia.org/wiki/Praktiseer",
+          "text": "Praktiseer is a township in Sekhukhune District Municipality in the Limpopo province of South Africa.\nIt is made up of 5 sub-sections namely: Shushumela (written as Šušumela) extension 1, extension 2, Dark City, and Kasi, sikiring and lately Tswelopele park.\nPraktiseer has a public health clinic situated in Kasi,4 primary schools namely Bogwasha, Itirele, Koboti and Batubatse, two public high schools (Kweledi Secondary School and Leolo High School) and a private high school, Ntlhahlole. It is also a home to a TVET college Sekhukhune FET college formerly known as Dr. C.N Phatudi college of education. Neighbouring three villages namely; Alverton, Ga Motodi and Bothashoek. Praktiseer is one of the fastest developing townships in the Sekhukhune District Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "praktiseer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2478,
+    "attempt": 2459,
+    "place_id": "gn-178202",
+    "input": {
+      "place": {
+        "place_id": "gn-178202",
+        "name": "Webuye",
+        "country": "Kenya",
+        "subdivision": "Bungoma County",
+        "lat": 0.6004,
+        "lon": 34.77119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Webuye",
+          "url": "https://en.wikipedia.org/wiki/Webuye",
+          "text": "Webuye, previously named Broderick Falls, is an industrial town in western region of Kenya and home to the Bukusu people. It is located within Webuye West sub county in Bungoma County, at the slopes of chetambe hill Kenya.  Located on the main road to Uganda, the town is home to the Pan African Paper Mills, formerly the largest paper factory in the region, as well as East African heavy-chemicals plant.  The area is heavily populated and is used mainly for subsistence agriculture. The town has an urban population of 42,642 (2019 census).\nAreas near Webuye include Lugulu, Milo, Maraka, Furoi, Lukusi, Lutacho  and Misikhu. It is home to the Nabuyole Falls of Nzoia River. In Maraka, there exists the famed \"mfunje\" suspension bridge which consists of rickety timber strips joined with some metal wires, precariously dangling across River Nzoia. It attracts a considerable number of both local and foreign tourists who enjoy the thrill of crossing the river on the shaky locally made bridge.\nWebuye has in the recent past also seen the establishment of some important education centres, including a constituent college campus of the Masinde Muliro University of Science and Technology, and a Kenya Medical Training college Campus.\nWebuye town hosts Webuye County Hospital, a leading referral medical facility in the region.\nThe town's economy was hit hard by the dwindling fortunes of Pan African Paper Mills, which closed down in 2008 but opened up again under a new investor thus changing its identity to Rai paper manufacturing company  which has resulted to once again the liveliness of the town. Currently major malls and hotels are being constructed in the town which will bring in a new air. \nThe nearest tourist attraction is the Nabuyole waterfalls on River Nzoia. The falls are seven kilometres from Webuye and provide a cool breeze to tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "webuye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2479,
+    "attempt": 2460,
+    "place_id": "gn-197226",
+    "input": {
+      "place": {
+        "place_id": "gn-197226",
+        "name": "Githunguri",
+        "country": "Kenya",
+        "subdivision": "Kiambu County",
+        "lat": -1.05754,
+        "lon": 36.77625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Githunguri",
+          "url": "https://en.wikipedia.org/wiki/Githunguri",
+          "text": "Githunguri is an agricultural town in Kiambu County in central Kenya's former Central Province. It is one of the administrative centres of Kiambu County and home to one of East Africa's largest dairy processing plant Fresha, which is owned by a farmers co-operative, Githunguri Dairy farmers cooperative Society. Most of the financial institutions have a presence in town. They include: TAI Sacco Ltd GDC Sacco, KCB, Family Bank, Equity Bank, Absa Bank, and Cooperative Bank.\nGithunguri Seniors is the main team currently playing in Kenya football league division 2 Zone A.(2023/2024 season).\n\nThe other economic activities include tea, coffee, pig, poultry and horticultural farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "githunguri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

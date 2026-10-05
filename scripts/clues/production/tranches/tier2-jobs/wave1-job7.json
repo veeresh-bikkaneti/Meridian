@@ -1,0 +1,907 @@
+[
+  {
+    "rank": 130,
+    "place_id": "gn-3665542",
+    "input": {
+      "place": {
+        "place_id": "gn-3665542",
+        "name": "Zipaquirá",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 5.02208,
+        "lon": -74.00481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zipaquirá",
+          "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+          "text": "Zipaquirá (Spanish pronunciation: [sipakiˈɾa]) is a municipality and city of Colombia in the department of Cundinamarca. Its neighboring municipalities are Cogua and Nemocón to the north; Tabio, Cajicá and Sopó to the south, Tocancipá and Gachancipá to the east and Pacho and Subachoque to the west.\nIts seat of municipal government is 49 kilometers from the national capital Bogotá. It is part of the Greater Bogotá Metropolitan Area, and is the capital of the Sabana Centro province. It is also the headquarters of the diocese of the same name and that includes much of the Department of Cundinamarca, extending to the centre of Bogotá, the region of Rionegro, the Ubaté Valley, and the region of Guavio.\nThe city is primarily known for its Salt Cathedral, an underground church built inside a salt mine in a tunnel made as result of the excavation of the salinas. Zipaquirá has historic architecture, and the old city centre is a tourist attraction. Its main square is surrounded by old buildings in the Spanish Colonial style. This small city can be reached by train from Bogotá."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 181,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location near Bogota, neighbouring towns, the Salt Cathedral in a salt mine, and colonial buildings, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zipaquira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 131,
+    "place_id": "gn-4155966",
+    "input": {
+      "place": {
+        "place_id": "gn-4155966",
+        "name": "Fort Lauderdale",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.12231,
+        "lon": -80.14338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Lauderdale, Florida",
+          "url": "https://en.wikipedia.org/wiki/Fort_Lauderdale,_Florida",
+          "text": "Fort Lauderdale () is a coastal city located in the U.S. state of Florida, 30 miles (48 km) north of Miami along the Atlantic Ocean. It is the seat of government of and most populous city in Broward County with a population of 182,760 at the 2020 census, making it the tenth-most populous city in Florida. After Miami and Hialeah, Fort Lauderdale is the third-most populous city in the Miami metro area, which had a population of 6,166,488 in 2019.\nBuilt in 1838 and first incorporated in 1911, Fort Lauderdale is named after a series of forts built by the United States during the Second Seminole War. The forts took their name from Major William Lauderdale (1782–1838), younger brother of Lieutenant Colonel James Lauderdale. Development of the city did not begin until 50 years after the forts were abandoned at the end of the conflict. Three forts named \"Fort Lauderdale\" were constructed, including the first at the fork of the New River, the second at Tarpon Bend on the New River between the present-day Colee Hammock and Rio Vista neighborhoods, and the third near the site of the Bahia Mar Marina.\nKnown as the \"Venice of America\", Fort Lauderdale has 165 miles of inland waterways across the city. In addition to tourism, Fort Lauderdale has a diversified economy including marine, manufacturing, finance, insurance, real estate, high technology, avionics/aerospace, film, and television production. The city is a popular tourist destination with an average year-round temperature of 75.5 °F (24.2 °C) and 3,000 hours of sunshine per year. Greater Fort Lauderdale, encompassing all of Broward County, hosted more than 13 million overnight visitors in 2018. Nearly four million cruise passengers annually pass through its Port Everglades, making it the world's third-busiest cruise port. With over 50,000 registered yachts and 100 marinas, Fort Lauderdale is also known as the \"yachting capital of the world.\""
+        },
+        {
+          "article": "Fort Lauderdale, Florida (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Fort_Lauderdale,_Florida#Climate",
+          "text": "According to the Köppen climate classification, Fort Lauderdale has a tropical rainforest climate (Köppen Af). While the city does not have a fully dry season, much of the seasonal rainfall comes between May and October. Winters are frequently dry and sunny, and drought can be a concern in some years.\nFort Lauderdale is situated in USDA hardiness zones 10b to 11a near the coast.\nThe wet season runs from May through October, and weather is typically hot, humid, and wet with average high temperatures of and lows of . During this period, more than half of summer days may bring brief afternoon or evening thunderstorms with lightning and bursts of intense rainfall. The record high temperature of was recorded on June 22, 2009, and August 4, 1944.\nThe dry season often arrives some time in November, and lasts through early to mid April. Seasonable weather is often warm, dry, and sunny. Average high temperatures of and lows of are typical in the dry season. On rare occasions, cool fronts may make it all the way south to Fort Lauderdale, and the city will see a day or two of highs in the 60s °F (16–21 °C) and lows in the 40s °F (4–10 °C). Rare frosts occur every few decades, and only once in recorded history have snow flurries been reported in the air, which occurred on January 19, 1977. During the dry season (winter), brush fires can be a concern in many years.\nAnnual average precipitation is , with most of it occurring during the wet season from May through October. However, rainfall occurs in all months, even during the drier months from November through April, such as during the April 2023 flash flood where about two feet of rain fell in half a day. Fort Lauderdale has an average of 131 precipitation days annually. The hurricane season is between June 1 and November 30, with major hurricanes most likely to affect the city or state in September and October. The most recent storms to directly affect the city were Hurricane Irma in 2017, in addition to Hurricane Katrina and Hurricane Wilma, both of which struck the city in 2005. Other direct hits were Hurricane Cleo in 1964, Hurricane King in 1950, and the 1947 Fort Lauderdale Hurricane. On April 12, 2023, Fort Lauderdale received of rainfall, causing historic flooding and the temporary closure of the Fort Lauderdale–Hollywood International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 401,
+      "leadWords": 311,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract offers only average statistics, an average year-round temperature of 75.5 degrees and 3,000 hours of sunshine per year, with no mechanism, extreme, paradox, or seasonal rhythm; average temperatures alone do not qualify",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm beyond average temperature and sunshine statistics in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fort lauderdale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lauderdale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 132,
+    "place_id": "gn-5511077",
+    "input": {
+      "place": {
+        "place_id": "gn-5511077",
+        "name": "Reno",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 39.52963,
+        "lon": -119.8138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reno, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Reno,_Nevada",
+          "text": "Reno (, REE-noh) is a city in the northwest section of the U.S. state of Nevada, along the Nevada–California border. It is the county seat and most populous city of Washoe County. Sitting in the High Eastern Sierra foothills, in the Truckee River valley, on the eastern side of the Sierra Nevada, it is about 23 miles (37 km) northeast of Lake Tahoe. Reno is the 78th most populous city in the United States, the third most populous city in Nevada, and the most populous in Nevada outside the Las Vegas Valley. It is known as \"The Biggest Little City in the World\" and had a population of 264,165 at the 2020 census.\nThe city is named after Civil War Union major general Jesse L. Reno, who was killed in action during the American Civil War at the Battle of South Mountain, on Fox's Gap.\nThe downtowns of Reno and neighboring city Sparks reside in a valley known as the Truckee Meadows, which is sometimes colloquially used as a name for the entire metro area. However, the Reno–Sparks metropolitan area (MSA), the second-largest in Nevada, comprises all of Washoe, Lyon and Storey Counties. In addition, Reno is part of a combined statistical area that includes Carson City, Douglas County and parts of Placer and Nevada Counties in California.\nFor much of the 20th century, Reno saw a significant number of people seeking to take advantage of Nevada's relatively lax divorce laws and the city gained a national reputation as a divorce mill. Today, Reno is a tourist destination known for its casino gambling and proximity to Lake Tahoe and the Sierra Nevada. The city is also home to the University of Nevada at Reno, the state's second-largest university by enrollment and the flagship campus of the University of Nevada system.\nReno was for decades the most populous city in Nevada, before it ceded this place to Las Vegas, with the 1960 census being the first US census where Las Vegas had more residents than Reno."
+        },
+        {
+          "article": "Reno, Nevada (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Reno,_Nevada#Climate",
+          "text": "Reno has a cold semi-arid climate (Köppen: BSk), bordering a hot-summer Mediterranean climate (Köppen: Csa) to the west. It experiences moderately cold winters and hot summers; it is influenced by the Sierra Nevada mountains to the west and the more arid Great Basin to the east. It is situated across a varied geographic landscape, which extends from the foothills of the Sierra Nevada into the Truckee River valley. While Reno experiences a rain shadow effect from the surrounding mountains, its western portions can receive three to four times as much precipitation as those extending eastward. Annual rainfall patterns in Reno adhere to a Mediterranean climate, with most precipitation occurring in fall, winter, and spring, followed by long, hot, dry summers.\nThe monthly daily average temperature ranges from in December to in July, with the diurnal temperature variation occasionally reaching in summer, still lower than much of the high desert to the east. There are 6.0 days of + highs, 65 days of + highs, 1.6 days with + lows, and 1.9 days with sub- lows annually; the temperature reaches or dips below the freezing point on 122 days, and does not rise above freezing on only 4.1 of those days. The record high temperature is , which occurred on July 10 and 11, 2002, again on July 5, 2007, and again on July 16, 2023. The record low temperature is , which occurred on January 21, 1916; the lowest temperature recorded at the airport is , which occurred on four occasions, most recently on February 7, 1989.\nWinter snowfall is usually light to moderate, but can be heavy on some days, averaging annually. Snowfall varies with the lowest amounts (roughly 19–23 inches annually) at the lowest part of the valley at and east of the airport at , while the foothills of the Carson Range to the west ranging from in elevation just a few miles west of downtown can receive two to three times as much annual snowfall. The mountains of the Virginia Range to the east, meanwhile, can receive more summer thunderstorms and precipitation, and around twice as much annual snowfall above . However, snowfall increases in the Virginia Range are less dramatic as elevation climbs than in the Carson Range to the west, because the Virginia Range is well within the rain shadow of the Sierra Nevada and Carson Range. The most snowfall in Reno in one winter was in 1915–1916, with an astonishing in January, the most in a calendar month, as well as on January 17, the most in a calendar day; the most snowfall in a calendar year was in 1916."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 437,
+      "leadWords": 335,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location in Sierra foothills in the Truckee River valley near Lake Tahoe, naming, divorce history, casinos, and university facts, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "reno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 133,
+    "place_id": "gn-1252948",
+    "input": {
+      "place": {
+        "place_id": "gn-1252948",
+        "name": "Warangal",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 18,
+        "lon": 79.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warangal",
+          "url": "https://en.wikipedia.org/wiki/Warangal",
+          "text": "Warangal (Telugu: [ʋɐrɐŋɡɐl] ), also known as Orugallu, is a city in the Indian state of Telangana and the district headquarters of Warangal district. It is the second largest city in Telangana with a population of 811,844 per 2011 Census of India, and spreading over an 406 km2 (157 sq mi). \nWarangal served as the capital of the Kakatiya dynasty which was established in 1163. The monuments left by the Kakatiyas include fortresses, lakes, temples and stone gateways which, in the present, helped the city to become a popular tourist attraction. The Kakatiya Kala Thoranam was included in the emblem of Telangana by the state government and Warangal is also touted as the cultural capital of Telangana.\nIt is one of eleven cities in the country to have been chosen for the Heritage City Development and Augmentation Yojana scheme by the Government of India. It was also selected as a smart city in the \"fast-track competition\", which makes it eligible for additional investment to improve urban infrastructure and industrial opportunities under the Smart Cities Mission.\nUNESCO has included Warangal in its Global Network of Learning Cities (GNLC) in recognition of the city's outstanding efforts to make lifelong learning a reality for all at the local level.\nThe three urban cities: Kazipet, Hanamkonda and Warangal are together known as Warangal Tri-City. The three cities are connected by the National Highway 163 (Hyderabad–Bhuvanagiri–Warangal–Bhopalpatnam). The major stations are Kazipet Junction railway station and Warangal railway station."
+        },
+        {
+          "article": "Warangal (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Warangal#Geography_and_climate",
+          "text": "Warangal is located at . It has an average elevation of 266 metres (873 feet). It is settled in the eastern part of Deccan Plateau made up of granite rocks and hill formations which left the region barren making the cultivation dependent on seasonal rainfall. There are no major rivers flowing near the city, making it reliant on the Kakatiya Canal, which originates from Sriram Sagar Project, to meet the city's water requirements. Located in the semi-arid region of Telangana, Warangal has a predominantly hot and dry climate. Summer starts in March, and peaks in May with average high temperatures in the range. The monsoon arrives in June and lasts until September with about of precipitation. A dry, mild winter starts in October and lasts until early February, when there is little humidity and average temperatures in the range. Many hill rocks and lakes are located around warangal. Padmakshi hill, mettu gutta, hanumathgiri gutta, ursu gutta and Govinda Rajula Gutta are famous hills with temples.\nBhadrakali Lake, Dharmasagar lake and Waddepally Lake are the three lakes which add scenic beauty and are the major sources of drinking water."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 188,
+      "leadWords": 243,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives the Kakatiya capital history from 1163, monuments, heritage and smart-city schemes, and tri-city facts, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "warangal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 134,
+    "place_id": "gn-1274746",
+    "input": {
+      "place": {
+        "place_id": "gn-1274746",
+        "name": "Chandigarh",
+        "country": "India",
+        "subdivision": "Chandigarh",
+        "lat": 30.73629,
+        "lon": 76.7884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chandigarh",
+          "url": "https://en.wikipedia.org/wiki/Chandigarh",
+          "text": "Chandigarh is a city and union territory in northwestern India, serving as a shared capital for the states of Punjab and Haryana. Situated near the foothills of the Shivalik range of Himalayas, it borders Haryana to the east and Punjab in the remaining directions. Chandigarh constitutes the bulk of the Chandigarh Capital Region or Greater Chandigarh, which also includes the adjacent satellite cities of Panchkula in Haryana and Mohali in Punjab. It is located 260 km (162 miles) northwest of New Delhi and 229 km (143 miles) southeast of Amritsar and 104 km (64 miles) southwest of Shimla.\nChandigarh became one of the earliest planned cities in post-independence India and is internationally known for its architecture and urban design. The master plan of the city was prepared by Le Corbusier, which built upon earlier plans created by architect Maciej Nowicki and the Albert Mayer. Most of the government buildings and housing in the city were designed by a team headed by Le Corbusier and architects Jane Drew and Maxwell Fry. Chandigarh's Capitol Complex—as part of a global ensemble of Le Corbusier's buildings—was declared a World Heritage Site by UNESCO at the 40th session of the World Heritage Conference in July 2016.\nChandigarh has grown greatly since its initial construction, and has also driven the development of Mohali and Panchkula; the tri-city metropolitan area has a combined population of over 1,611,770. The city has one of the highest per capita incomes in the country. The union territory has the third-highest Human Development Index among Indian states and territories. In 2015, a survey by LG Electronics ranked it as the happiest city in India on the happiness index. In 2015, an article published by the BBC identified Chandigarh as one of the few master-planned cities in the world to have succeeded in terms of combining monumental architecture, cultural growth, and modernisation."
+        },
+        {
+          "article": "Chandigarh (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chandigarh#Climate",
+          "text": "Chandigarh has a humid subtropical climate (Köppen: Cwa) characterised by a seasonal rhythm: very hot summers, mild winters, unreliable rainfall, and great temperature variation (). The average annual rainfall is . The city also receives occasional winter rains from the Western Disturbance originating over the Mediterranean Sea. The western disturbances bring rain predominantly from mid-December until the end of April, which can be heavier sometimes with strong wind and hail if the weather turns colder (during March–April months), which usually proves disastrous to local crops. Cold northwesterly winds usually tend to come from the Himalayas that lie to the north, which receive snowfall during wintertime.\nChandigarh has been ranked 27th best \"National Clean Air City\" (under Category 1 >10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 123,
+      "leadWords": 309,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location near Shivalik foothills, shared-capital status, and the planned-city design by Le Corbusier and others, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chandigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 135,
+    "place_id": "gn-1624725",
+    "input": {
+      "place": {
+        "place_id": "gn-1624725",
+        "name": "Tarakan",
+        "country": "Indonesia",
+        "subdivision": "North Kalimantan",
+        "lat": 3.31332,
+        "lon": 117.59152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarakan",
+          "url": "https://en.wikipedia.org/wiki/Tarakan",
+          "text": "Tarakan is an island and co-extensively the sole city within the Indonesian province of North Kalimantan. The island city is the largest urban area in North Kalimantan population-wise and is located in northern Borneo, midway along the coast of the province. The city boundaries are co-extensive with the island (including a couple of small islands off the coast of the Tarakan Barat District). Once a major oil-producing region during the colonial period, Tarakan had great strategic importance during the Pacific War and was among the first Japanese targets early in the conflict. It is the sole city within the Indonesian province of North Kalimantan (established in 2012). According to Statistics Indonesia, the city had a population of 193,370 at the 2010 Census and 242,786 inhabitants at the 2020 Census; the official estimate as at mid 2024 was 255,310 (comprising 132,175 males and 123,135 females)."
+        },
+        {
+          "article": "Tarakan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tarakan#Climate",
+          "text": "Tarakan has a tropical rainforest climate (Af) with heavy rainfall year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 11,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives island location in northern Borneo, oil-producing colonial history, and Pacific War strategic importance, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tarakan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 137,
+    "place_id": "gn-2212775",
+    "input": {
+      "place": {
+        "place_id": "gn-2212775",
+        "name": "Sabha",
+        "country": "Libya",
+        "subdivision": "Sabha District",
+        "lat": 27.03766,
+        "lon": 14.42832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabha, Libya",
+          "url": "https://en.wikipedia.org/wiki/Sabha,_Libya",
+          "text": "Sabha or Sebha  (Arabic: سَبْهَا, romanized: Sabhā) is an oasis city in southwestern Libya, approximately 640 kilometres (400 mi) south of Tripoli. It was historically the capital of the Fezzan region and the Fezzan-Ghadames Military Territory and is the capital of the Sabha District. Sabha Air Base, south of the city, is a Libyan Air Force installation that is home to multiple MiG-25 aircraft.\nSabha was where the erstwhile ruler of Libya, Muammar Gaddafi, grew up and received secondary education and where he also later became involved in political activism. After the Libyan Civil War and the resultant instability in the country, Sabha reportedly grew in importance as a slave auctioning town. However, an investigation by the National Commission for Human Rights in Libya (NCHRL) revealed that while there was illegal slavery, reports were exaggerated, as slave auctions were rare and not made public. The city was seized by forces loyal to the Libyan National Army (LNA) and its leader Khalifa Haftar in January 2019, but some politicians in the area switched their loyalty to the Government of National Accord (GNA) in May 2020."
+        },
+        {
+          "article": "Sabha, Libya (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sabha,_Libya#Climate",
+          "text": "Due to its location in the Sahara Desert, Sabha has a hot desert climate (Köppen BWh), with mild winters with a high diurnal temperature variation, very hot summers with temperatures reaching regularly and hardly any precipitation. The average annual mean temperature is , the average annual high temperature is and the average annual low temperature is . June is the hottest month, having the highest average high at , the highest mean at and the highest average low at . January is the coldest month, with the lowest average high at , lowest mean at and lowest average low at .\nSabha receives just of rain over 2.9 precipitation days, with a no rain in July and August and extremely little precipitation during the rest of the year. October, the wettest month, receives of rainfall over 0.6 precipitation days. Humidity is low throughout the year, with April having a humidity of just 22% and January having a humidity of 42%. Sabha receives abundant amounts of sunshine, with 3526 hours of sunshine annually on average, with the most sunshine in summer and the least in winter. July receives the most sunshine of any month with 375 hours on average, while December and February both receive the least with 252 hours."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 209,
+      "leadWords": 184,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract calls the place an oasis city south of Tripoli and gives Fezzan capital history, an air base, Gaddafi schooling, and civil-war events, but the oasis label alone provides no climate mechanism, extreme, paradox, or seasonal rhythm",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm beyond the oasis label verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sabha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 138,
+    "place_id": "gn-2655524",
+    "input": {
+      "place": {
+        "place_id": "gn-2655524",
+        "name": "Blackburn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.75,
+        "lon": -2.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn",
+          "url": "https://en.wikipedia.org/wiki/Blackburn",
+          "text": "Blackburn ( ) is an industrial town and the administrative centre of the Blackburn with Darwen borough, in Lancashire, England. The town lies north of the West Pennine Moors on the southern edge of the Ribble Valley, 8 miles (13 km) east of Preston and 21 miles (34 km) north-north-west of Manchester. Blackburn is at the centre of the wider unitary authority area along with the town of Darwen. It is the second-largest town in Lancashire, after Blackpool.\nAt the 2021 census, Blackburn had a population of 124,983, while the wider borough of Blackburn with Darwen had a population of 154,922; 30.8% of the population of the town were people of ethnic backgrounds other than White British.\nA former mill town, Blackburn has been the site of textile production since the mid-13th century, when wool was woven in people's houses in the domestic system. Flemish weavers who settled in the area in the 14th century helped to develop the woollen cottage industry. The most rapid period of growth and development in Blackburn's history coincided with the industrialisation and expansion of textile manufacturing.\nBlackburn's textile sector fell into decline from the mid-20th century and subsequently faced similar challenges to other post-industrial northern towns, including deindustrialisation, economic deprivation and housing problems. The town has had significant investment and redevelopment since 1958 through government funding and the European Regional Development Fund."
+        },
+        {
+          "article": "Blackburn (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Blackburn#Geography",
+          "text": "Blackburn lies above sea level, east of Preston and north-north-east of Manchester. The Ribble Valley and West Pennine Moors lie to the north and south respectively. Blackburn experiences a temperate maritime climate, like much of the British Isles, with relatively cool summers and mild winters. There is regular but generally light precipitation throughout the year.\nAlthough the City of Preston, the administrative centre for Lancashire, is located about west, Blackburn is the largest municipality in East Lancashire. The town is bounded on other sides by the towns of Accrington to the east and Darwen to the south. The village of Wilpshire is north of Blackburn and is partly contiguous (development-touching) however in the Ribble Valley local government district. Other nearby villages are Langho, approximately north-east and Mellor to the north-west.\nThe towns of Rishton, to the east, and Great Harwood, to the north-east, are both in the local government district of Hyndburn. The town of Burnley lies to the east.\nGeology and terrain\nsatellite in 2000 (false colour image)]]\nfrom one of the highest points in Blackburn at the site of the old water tank at Revidge]]\nLocated in the midst of the East Lancashire Hills, some areas of the town are characterised by steep slopes. The town centre centres in a plain of above sea level surrounded by hills. The Revidge to the north can be reached via a steep climb up Montague Street and Dukes Brow to reach a peak of above sea level.\nTo the west, the wooded Billinge Hill in Witton Country Park is high, while Royal Blackburn Teaching Hospital is situated to the east of the town at a vantage point of .\nThe Coal Measures in the area overlie the Millstone Grit which has been quarried in the past for millstones and, along with local limestone deposits, used as a construction material for roads and buildings. In addition, there were deposits of iron ore in the Furness and Ulverston districts.\nThe Blackburn area was subjected to glaciation during the Pleistocene ice age, and the sandstone-and-shale bedrock is overlain in much of the area by glacial deposits called till (which is also called \"boulder clay\") of varying thickness up to several tens of feet. Glacial outwash (sand and gravel) also occur in small patches, including along Grimshaw Brook.\nGreen belt\nBlackburn is within a green belt region that extends into the wider surrounding counties, and is in place to reduce urban sprawl, prevent the towns in the nearby Greater Manchester and Merseyside conurbations from further convergence, protect the identity of outlying communities, encourage brownfield reuse, and preserve nearby countryside. This is achieved by restricting inappropriate development within the designated areas and imposing stricter conditions on permitted building.\nSizeable areas of green belt exist within the borough, west and south of Blackburn surrounding Witton Country Park and Pleasington parish, with other parishes in the borough containing portions of green belt, Tockholes, Eccleshill, Yate and Pickup Bank parish, Livesy, Darwen, with North Turton largely covered. The green belt was first drawn up in 1982 under Lancashire County Council"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 511,
+      "leadWords": 228,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location north of the West Pennine Moors on the edge of the Ribble Valley, textile history since the 13th century, and later decline, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 139,
+    "place_id": "gn-3441575",
+    "input": {
+      "place": {
+        "place_id": "gn-3441575",
+        "name": "Montevideo",
+        "country": "Uruguay",
+        "subdivision": "Montevideo Department",
+        "lat": -34.90328,
+        "lon": -56.18816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montevideo",
+          "url": "https://en.wikipedia.org/wiki/Montevideo",
+          "text": "Montevideo (, US also ; Spanish: [monteβiˈðeo] ) is the capital and largest city of Uruguay. As of the 2023 census, the city proper has a population of 1,287,452, making up about 36.8% of the country's total population, in an area of 201 square kilometers (78 sq mi). Montevideo is situated on the southern coast of the country, on the northeastern bank of the Río de la Plata.\nA Portuguese garrison was established at the site of modern-day Montevideo in November 1723. The Portuguese garrison was expelled in February 1724 by a Spanish soldier, Bruno Mauricio de Zabala, as a strategic move amidst the Spanish-Portuguese dispute over the platine region. There is no official document establishing the foundation of the city, but the \"Diario\" of Bruno Mauricio de Zabala officially mentions the date of 24 December 1726 as the foundation, corroborated by presential witnesses. The complete independence from Buenos Aires as a real city was not reached until 1 January 1730. It was also under brief British rule in 1807, but eventually the city was retaken by Spanish  criollos who defeated the British invasions of the River Plate. Montevideo is the seat of the administrative headquarters of Mercosur and ALADI, Latin America's leading trade blocs, a position that has entailed comparisons to the role of Brussels in Europe.\nThe 2019 Mercer report on quality of life rated Montevideo first in Latin America, a rank the city has consistently held since 2005. As of 2010, Montevideo was the 19th largest city economy in the continent and 9th highest income earner among major cities. In 2022, it has a projected GDP of $53.9 billion, with a per capita of $30,148. In 2018, it was classified as a beta global city, ranking eighth in Latin America and 84th in the world. Montevideo hosted every match during the first FIFA World Cup in 1930. It has been described as a \"vibrant, eclectic place with a rich cultural life\", and \"a thriving tech center and entrepreneurial culture\".\nThe city features historic European architecture and is considered one of the cities with the most art deco influence. It is the hub of commerce and higher education in Uruguay as well as its chief port and financial hub, anchoring a metropolitan area with a population of around 2 million."
+        },
+        {
+          "article": "Montevideo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Montevideo#Climate",
+          "text": "Montevideo has a humid subtropical climate (Köppen Cfa) in a middle latitude, the city experiences the four seasons. It has cool winters (June to August), warm to hot summers (December to February), mild autumns (March to May) and volatile springs (September to November); The climate is characterized by having mild temperatures, without harsh cold or extreme heat. There are numerous thunderstorms but no tropical cyclones. Rainfall is regular and evenly spread throughout the year, reaching around .\nWinters are generally cool, wet, windy and overcast. The average temperature during this season is just above . Daytime temperatures are generally between and , and night lows between and . During this season, there are bursts of icy and relatively dry winds of continental polar air masses, giving an unpleasant chilly feeling to the everyday life of the city, with daytime temperatures around or below and possible night frosts. These occur few times during winter, with temperatures generally not falling below because of the oceanic influence that moderates the temperature; a few kilometres inland, frosts are more common and colder. On the other hand, even in the middle of winter it's not uncommon to have temperatures above for a few days. Rainfall and sleet are a frequent winter occurrence, but snowfall is extremely rare: flurries have been recorded only four times but with no accumulation, the last one on 13 July 1930 during the inaugural match of the World Cup, (the other three snowfalls were in 1850, 1853 and 1917); the alleged 1980 Carrasco snowfall was actually a hailstorm.\nSummers are warm-hot and humid, with less wind than other seasons. The average temperature in this season is\n. Daytime temperatures are usually between and , while night lows between and . During this season, a moderate wind often blows from the sea in the evenings which has a pleasant cooling effect on the city, in contrast to the more severe summer heat of nearby cities like Buenos Aires. Heat waves come with the north winds, which bring humid and hot air masses from the tropical interior of the continent; temperatures can rise above . These warm periods are usually followed by thunderstorms, generated by cold fronts from the southwest that lowers temperatures considerably. This phenomenon is regional, and can occur several times all year long.\nThe autumn in Montevideo is quite pleasant and not so unstable. Daytime temperatures are in general around and nights around .\nSpring average temperatures are very similar to the autumn, but the weather in that season tends to be more windy and volatile, with more dramatic changes in a short period of time.\nMontevideo has an annual average temperature of . The lowest recorded temperature is while the highest is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 454,
+      "leadWords": 382,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives southern-coast location on the Rio de la Plata, the 1723-1730 founding dispute history, trade-bloc headquarters, and quality-of-life rankings, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "montevideo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 140,
+    "place_id": "gn-4722625",
+    "input": {
+      "place": {
+        "place_id": "gn-4722625",
+        "name": "Richardson",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.94818,
+        "lon": -96.72972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richardson, Texas",
+          "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+          "text": "Richardson is a city in Dallas and Collin counties in the U.S. state of Texas. As of the 2020 United States census, the city had a total population of 119,469. Richardson is an inner suburb of the city of Dallas.\nIt is home to the University of Texas at Dallas and the Telecom Corridor, with a high concentration of telecommunications companies. More than 5,000 businesses have operations within Richardson's 28 square miles (73 km2), including many of the world's largest telecommunications and networking companies, such as AT&T, Verizon, Cisco Systems, Samsung, ZTE, MetroPCS, Texas Instruments, Qorvo, and Fujitsu. Richardson's largest employment base is provided by the insurance industry, with Blue Cross and Blue Shield of Texas's headquarters, a regional hub for the insurance company GEICO, regional offices for UnitedHealth Group#UnitedHealthcare, and one of State Farm Insurance's three national regional hubs located in the community."
+        },
+        {
+          "article": "Richardson, Texas (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Richardson,_Texas#Climate",
+          "text": "The climate in this area is characterized by hot, humid summers and generally mild to cool winters. According to the Köppen Climate Classification system, Richardson has a humid subtropical climate, abbreviated \"Cfa\" on climate maps."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 35,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location as an inner suburb of Dallas, the university, and the Telecom Corridor and insurance employers, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "richardson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 141,
+    "place_id": "gn-629634",
+    "input": {
+      "place": {
+        "place_id": "gn-629634",
+        "name": "Brest",
+        "country": "Belarus",
+        "subdivision": "Brest",
+        "lat": 52.10894,
+        "lon": 23.71749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brest, Belarus",
+          "url": "https://en.wikipedia.org/wiki/Brest,_Belarus",
+          "text": "Brest, formerly Brest-Litovsk (1600s–1923) and Brest-on-the-Bug (1923–1939), is a city in south-western Belarus at the border with Poland opposite the Polish town of Terespol, where the Bug and Mukhavets rivers meet, making it a border town. It serves as the administrative center of Brest Region and Brest District, though it is administratively separated from the district. As of 2026, it has a population of 347,138.\nBrest is one of the oldest cities in Belarus and a historical site for many cultures, as it hosted important historical events, such as the Union of Brest and Treaty of Brest-Litovsk. Furthermore, the Brest Fortress was recognized by the Soviet Union as a Hero Fortress in honour of the defense of Brest Fortress in June 1941.\nIn the High Middle Ages, the city often passed between Poland, the principalities of Kievan Rus', and the Grand Duchy of Lithuania. From the Late Middle Ages, the city was part of Lithuania, which later became a part of the Polish–Lithuanian Commonwealth from 1569. In 1795, it was incorporated into the Russian Empire with the Third Partition of Poland. After the Polish-Soviet War, the city became part of the Second Polish Republic. In 1939, the city was captured by Nazi Germany during the invasion of Poland and then transferred to the Soviet Union per the German–Soviet Frontier Treaty. In 1941, it was retaken by the Germans during Operation Barbarossa. In 1944, it was retaken by the Soviet Red Army during the Lublin–Brest offensive. The city was part of the Byelorussian SSR, and since the breakup of the Soviet Union in 1991, Brest has been part of independent Belarus."
+        },
+        {
+          "article": "Brest, Belarus (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Brest,_Belarus#Climate",
+          "text": "Brest has a humid continental climate but slightly leans towards oceanic due to the irregular winter temperatures that mostly hover around the freezing point. However, summers are warm and influenced by its inland position compared to areas nearer the Baltic Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 41,
+      "leadWords": 270,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives border location where the Bug and Mukhavets rivers meet, old-city status, fortress defence in 1941, and repeated changes of rule, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "brest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 142,
+    "place_id": "gn-984998",
+    "input": {
+      "place": {
+        "place_id": "gn-984998",
+        "name": "Ladysmith",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.55874,
+        "lon": 29.77896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ladysmith, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+          "text": "Ladysmith, officially known as uMnambithi since 2024, is a town that serves as the seat of both the Alfred Duma Local Municipality and the Uthukela District Municipality in KwaZulu-Natal, South Africa. It lies 230 kilometres (140 mi) north-west of Durban and 365 kilometres (227 mi) south-east of Johannesburg. Important industries in the area include food processing, textiles, and tyre production.\nThe town was named after Juana María de los Dolores de León Smith, also known as \"Lady Smith,\" the Spanish wife of Sir Harry Smith, the Governor of the Cape Colony from 1847–1852. It held strategic importance during the Second Boer War when, after numerous small skirmishes, it was besieged by Boer forces on 2 November 1899. After three British attempts to relieve the defenders and one Boer attempt to take the town all failed, the siege was eventually broken on 28 February 1900. Both Winston Churchill and Mahatma Gandhi were present at the siege, the former as a war correspondent and the latter as a stretcher-bearer.\nIn 1900, the unincorporated town of Oyster Harbour on the east coast of Vancouver Island, British Columbia, Canada, was renamed Ladysmith by James Dunsmuir in honour of the lifting of the siege of Ladysmith.\n\nIn 2023, it was proposed for Ladysmith to be renamed to uMnambithi. The name change officially took place in March 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 222,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location north-west of Durban, naming after Lady Smith, and the 1899-1900 siege with Churchill and Gandhi present, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ladysmith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 143,
+    "place_id": "gn-4221552",
+    "input": {
+      "place": {
+        "place_id": "gn-4221552",
+        "name": "Savannah",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.08354,
+        "lon": -81.09983
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savannah, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+          "text": "Savannah is a city in and the county seat of Chatham County, Georgia, United States. Established in 1733 on the Savannah River, it is the oldest city in the state, and was the capital of the colonial Province of Georgia and later the first state capital of Georgia. A strategic port city in the American Revolution and during the American Civil War, Savannah today is an industrial center and an important Atlantic seaport. The city is the most populous in the Coastal Georgia region and the fifth-most populous in the state as a whole, with a population of 147,780 at the 2020 census and an estimated 149,440 in 2025. The Savannah metropolitan area, with about 438,000 residents in 2025, is the third-largest metro area in the state.\nSavannah attracts millions of visitors each year to its cobblestone streets, parks, and notable historic buildings. These include the birthplace of Juliette Gordon Low (founder of the Girl Scouts of the USA), the Georgia Historical Society (the oldest continually operating historical society in the South), the Telfair Academy of Arts and Sciences (one of the South's first public museums), the First African Baptist Church (one of the oldest African-American Baptist congregations in the United States), Temple Mickve Israel (the third-oldest synagogue in the U.S.), and the Central of Georgia Railway roundhouse complex (the oldest standing antebellum rail facility in the U.S., now a museum and visitor center).\nSavannah's downtown area, which includes the Savannah Historic District, its 22 parklike squares, and the Savannah Victorian Historic District, is one of the largest National Historic Landmark Districts in the U.S., designated by the federal government in 1966. Downtown Savannah largely retains the founder James Oglethorpe's original town plan, a design known as the Oglethorpe Plan. \nDuring the 1996 Summer Olympics hosted by Atlanta, Savannah held sailing competitions in the nearby Wassaw Sound."
+        },
+        {
+          "article": "Savannah, Georgia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia#Climate",
+          "text": "Savannah's climate is classified as humid subtropical (Köppen Cfa). Throughout the Deep South, this is characterized by long and almost tropical summers and short, mild winters. Savannah records only a few days of freezing temperatures each year, and snowfall is rare. Due to its proximity to the Atlantic coast, Savannah rarely experiences temperatures as extreme as those in Georgia's interior. Nevertheless, the extreme temperatures have officially ranged from , on July 20, 1986, and July 12, 1879, down to during the January 1985 Arctic outbreak.\nSeasonally, Savannah tends to have hot and humid summers with frequent (but brief) thunderstorms that develop in the warm and tropical air masses, which are common. Although summers in Savannah are frequently sunny, half of Savannah's annual precipitation falls from June through September. Average dewpoints in summer range from . Winters in Savannah are mild and sunny with average daily high temperatures of in January. November and December are the driest months recorded at Savannah–Hilton Head International Airport. Each year, Savannah reports 21 days on average with low temperatures below freezing, though in some years, fewer than 10 nights will fall below freezing, and the city has even gone an entire winter season (1879–80) without recording a freeze. Although decades might pass between snowfall events, Savannah has experienced snow on rare occasions, most notably in December 1989, when up to was recorded in one day in parts of the city.\nSavannah is at risk for hurricanes, particularly of the Cape Verde type of storms that take place during the peak of the season. Because of its location in the Georgia Bight (the arc of the Atlantic coastline in Georgia and northern Florida) as well as the tendency for hurricanes to re-curve up the coast, Savannah has a lower risk of hurricanes than some other coastal cities such as Charleston, South Carolina. Savannah was seldom affected by hurricanes during the 20th century. Hurricane David, in August 1979, is a notable exception. However, the historical record shows that the city was frequently affected during the second half of the 19th century. The most prominent of these storms was the 1893 Sea Islands hurricane, which killed at least 2,000 people. (This estimate may be low, as deaths among the many impoverished rural African Americans living on Georgia's barrier islands may not have been reported.)\nSavannah was most recently affected by an active 2016 hurricane season, including Hurricane Matthew (which made a partial eyewall landfall), and was brushed by Hurricane Irma in 2017. The 2024 season saw impacts from Hurricane Debby and Hurricane Helene.\nThe first meteorological observations in Savannah probably occurred at Oglethorpe Barracks circa 1827, continuing intermittently until 1850 and resuming in 1866. The Signal Service began observations in 1874, and the National Weather Service has kept records of most data continually since then; since 1948, Savannah-Hilton Head International Airport has served as Savannah's official meteorological station. Annual records (dating back to 1950) from the airport's weather station are available on the web."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 496,
+      "leadWords": 307,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives founding in 1733 on a river, oldest-city and port history, historic buildings and squares, and Olympic sailing, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "savannah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 144,
+    "place_id": "gn-1688749",
+    "input": {
+      "place": {
+        "place_id": "gn-1688749",
+        "name": "San Pedro",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.3595,
+        "lon": 121.0473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro, Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+          "text": "San Pedro, officially the City of San Pedro (Filipino: Lungsod ng San Pedro), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 348,968 people.\nIt is named after its patron, Saint Peter.\nSan Pedro has been dubbed as “dormitory town” of Metro Manila and migrants from other provinces commuting everyday through its highly efficient road and transport system. Despite being one of the smallest political units in the entire province, with a total land area of only 24.05 square kilometers (9.29 sq mi), San Pedro is the 5th most populous city (out of 6) after the cities of Biñan, Calamba, Santa Rosa and Cabuyao. The city also has the highest population density in the province of Laguna and in the whole Calabarzon region, having 15,000 inhabitants per square kilometer (39,000/sq mi). San Pedro became a component city of Laguna by virtue of Republic Act No. 10420 dated March 27, 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 161,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a dormitory town for Metro Manila, its small land area, high population density, and 2013 city status, with no climate mechanism, extreme, or paradox at all",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 145,
+    "place_id": "gn-1276032",
+    "input": {
+      "place": {
+        "place_id": "gn-1276032",
+        "name": "Bhavnagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 21.76287,
+        "lon": 72.15331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhavnagar",
+          "url": "https://en.wikipedia.org/wiki/Bhavnagar",
+          "text": "Bhavnagar is a city and the headquarters of Bhavnagar district in the Indian state of Gujarat. Bhavnagar was founded in 1723 by Bhavsinhji Gohil. It was the capital of Bhavnagar State, which was a princely state before it was merged into the Indian Union in February 1948.Bhavnagar currently has the 5th largest population in Gujarat.\nBhavnagar is situated 190 kilometres or 120 miles away from the state capital Gandhinagar and to the west of the Gulf of Khambhat. It has always been an important city for trade with many large and small scale industries along with the world's largest ship breaking yard, Alang which is located 50 kilometres or 31 miles away. Historically, Bhavnagar holds the distinction of being the first princely state to voluntarily merge into the Union of India in January 1948, a move led by Maharaja Krishnakumarsinhji Gohil.\nThe city is a significant educational center in Gujarat; Shamaldas Arts College, founded by Maharaja Takhtsinhji in 1885, is historically prominent as the institution where Mahatma Gandhi studied in 1888. Gandhi's admission to the college is recorded as one of the earliest milestones in his academic journey before he left for London to study law. The city serves as the gateway to Blackbuck National Park, Velavadar, which is recognized as the only tropical grassland in India to be designated as a National Park along with Victoria park which is the only  urban forest  of Gujarat located at the heart of Bhavnagar \nBhavnagar is also famous for its version of the popular Gujarati snack 'Ganthiya' and 'Jalebi'."
+        },
+        {
+          "article": "Bhavnagar (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bhavnagar#Climate",
+          "text": "Like most of Gujarat, Bhavnagar has a hot semi-arid climate (Köppen: BSh), with sweltering, dry summers from March to mid-June, the hot and humid southwest monsoon from mid-June to October, and the very warm \"winter\" from November to February. There is essentially no rainfall outside the monsoon season, whilst during the monsoon the city receives around of rain on average, though variability is extreme as can be seen from annual totals as high as in 1970 but as little as in 1974. The semi-arid classification is due to the city's high evapotranspiration. The average temperature from November to February is around , with low humidity."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 105,
+      "leadWords": 257,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers founding in 1723, trade, the nearby ship-breaking yard, education, and snacks, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "bhavnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 146,
+    "place_id": "gn-184745",
+    "input": {
+      "place": {
+        "place_id": "gn-184745",
+        "name": "Nairobi",
+        "country": "Kenya",
+        "subdivision": "Nairobi County",
+        "lat": -1.28333,
+        "lon": 36.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nairobi",
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "text": "Nairobi (  ny-ROH-bee) (Jiji kuu la Nairobi, in Swahili),  is the capital and largest city of Kenya, located in the south-central part of the country. As of 2026, it has a population of 5.6 million and a metropolitan population of 15.95 million, making it the 8th most populous city in Africa and the 4th most populous metropolitan area. The city goes beyond its borders and has expanded into neighbouring counties, making it the 4th largest metropolitan area in Africa.\nNicknamed the \"Green City under the Sun\", Nairobi is uniquely notable for being the only capital city in the world that hosts a national park within its boundaries. Its name originates from the Maasai phrase Enkare Nyirobi, meaning \"place of cool waters\".\nAs the national capital, Nairobi is home to the Kenyan Parliament Buildings, the State House and the Supreme Court Building. It is the major financial and economic hub of East Africa, hosting thousands of Kenyan businesses and international companies and organisations, including the United Nations Environment Programme (UN Environment) and the United Nations Office at Nairobi (UNON). The Nairobi Securities Exchange (NSE) is one of the largest stock exchanges in Africa and the second-oldest exchange on the continent. It is Africa's fourth-largest stock exchange by trading volume, capable of processing 10 million trades a day. Nairobi is considered a global city and was ranked as a \"Beta World City\" by the Globalisation and World Cities Research Network as of 2024.\nNairobi was founded in 1898 by colonial authorities in British East Africa, as a rail depot on the Uganda–Kenya Railway. The authorities favoured it as an ideal resting place due to its high elevation, temperate climate, and adequate water supply. The town quickly grew to replace Mombasa as the capital of Kenya in 1907.\nAfter independence in 1963, Nairobi became the capital of the Republic of Kenya. During Kenya's early period, the city became a centre for the coffee, tea and sisal industries. Successive post-independence governments have built and turned Nairobi into a modern metropolitan city with a diverse population and a growing economy."
+        },
+        {
+          "article": "Nairobi (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nairobi#Climate",
+          "text": "Under the Köppen climate classification, Nairobi has a subtropical highland climate (Cwb). At above sea level, evenings may be cool, especially in the June/July season, when the temperature can drop to . The sunniest and warmest part of the year is from December to March, when temperatures average in the high-twenties Celsius during the day. The mean maximum temperature for this period is .\nThere are rainy seasons, but rainfall can be moderate. The cloudiest part of the year is just after the first rainy season, when, until September, conditions are usually overcast with drizzle. As Nairobi is situated close to the equator, the differences between the seasons are minimal. The seasons are referred to as the wet season and dry season. The timing of sunrise and sunset varies little throughout the year for the same reason."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 137,
+      "leadWords": 345,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only lists a temperate climate alongside high elevation and adequate water supply as reasons the site was favoured; that is a bare climate label with no described mechanism, extreme, or paradox",
+      "priorMissing": "extract text describing how a mechanism produces this place's weather, or a stated climate extreme or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "nairobi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 147,
+    "place_id": "gn-3471039",
+    "input": {
+      "place": {
+        "place_id": "gn-3471039",
+        "name": "Balneário Camboriú",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.99056,
+        "lon": -48.63472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balneário Camboriú",
+          "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+          "text": "Balneário Camboriú (Portuguese pronunciation: [bawneˈaɾju kɐ̃boɾiˈu]) is a coastal city in the southern Brazilian state of Santa Catarina. The city is built on steep hills which drop down to the sea. It is a popular tourist destination for South Americans, who are drawn to its main ocean boulevard Avenida Atlântica (Atlantic Avenue), and who swell the city's population from 139,155 (2022 Census) to over one million in the summer. The city is famous for its unique beach-to-beach cable car which links its central beach with the beach of Laranjeiras. Balneário Camboriú is located 10 km (6.2 mi) south of the city of Itajaí, 96 km (60 mi) south of the city of Joinville, and 80 km (50 mi) north of the state capital, Florianópolis.\nThe city is served by Ministro Victor Konder International Airport located in the adjoining municipality of Navegantes.\nThe original meaning of the city's name is unknown. According to the city's archives, it is \"River filled with Snook (Robalo)\", which is a very common type of fish in this region. Ilha das Cabras (Goats' Island) is directly opposite the city and is too small for habitation but it is lit at night. Visitors to nearby Laranjeiras Beach can sail there aboard 17th century-style pirate ships, going around Ilha das Cabras before returning to Balneário Camboriú.  The city also has a statue similar to Rio de Janeiro's Cristo Redentor (Christ the Redeemer). Standing atop the Morro da Cruz, Cristo Luz (Christ Light) portrays Jesus holding a circular \"broad-brimmed hat\" at his left shoulder, symbolizing the sun, and which houses a spotlight that shines out over the city.  The Cristo Luz at 33 meters tall is only five meters shorter than the Redeemer and colorful lights both within and without the statue give it nighttime illumination.  Another common sight in the city are paragliders over the beach, alongside the tall buildings, from the gliderport in Praia dos Amores.  To the west the city is bordered by the Camboriú River, which joins the ocean at the southern edge of the center of the city, where the cable car (teleférico) rises from the central beach.\nThe city has been called the \"Brazilian Dubai\", due to its high number of skyscrapers and affluent tourists."
+        },
+        {
+          "article": "Balneário Camboriú (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA#Climate",
+          "text": "The climate is considered mild and is the classification of Köppen Cfa type (mesothermic humid with hot summers). In summer, though hot, hardly ever reach the 40 °C, and its average is 25 °C. In winter, the average temperature is around 15 °C, but the minimum in the early morning can attain cooler values between 0 °C and 4 °C. The annual average is 19 °C. The climate is generally humid, with mean annual rainfall of 1,500 mm, with no defined dry season (the rainfall regime is typical of the humid subtropical type of climate). Possible floods and droughts hit the city, damaging its economy and population.\nThe temperature of sea water for this region of Balneário Camboriú ranges from 16 °C on average (in winter) to 24.4 °C on average (in summer), whereas in autumn and spring is around 21 °C The warmest months are: February and March are the two best months to enjoy the beach."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 158,
+      "leadWords": 372,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only notes that tourists swell the population in the summer; it states no weather pattern, climate mechanism, extreme, or paradox, and summer tourism alone is not a described climate rhythm",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, seasonal weather rhythm, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "balneario camboriu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balneario",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camboriu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 148,
+    "place_id": "gn-4905687",
+    "input": {
+      "place": {
+        "place_id": "gn-4905687",
+        "name": "Peoria",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.69365,
+        "lon": -89.58899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peoria, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Peoria,_Illinois",
+          "text": "Peoria ( pee-OR-ee-ə) is a city in Peoria County, Illinois, United States, and its county seat. Located on the Illinois River, the city had a population of 113,150 as of the 2020 census, making it the eighth-most populous city in Illinois. It is the principal city of the Peoria metropolitan area in Central Illinois, consisting of Fulton, Marshall, Peoria, Stark, Tazewell, and Woodford counties and had a combined population of 402,391 in 2020.\nEstablished in 1691 by the French explorer Henri de Tonti, Peoria is the oldest permanent European settlement in Illinois, according to the Illinois State Archaeological Survey. The city received its current name when the County of Peoria was organized in 1825 and was named after the Peoria people, a member of the Illinois Confederation. On October 16, 1854, Abraham Lincoln made his Peoria speech against the Kansas–Nebraska Act. Before the onset of Prohibition in 1920, Peoria was a major center of the American whiskey industry, with more than a dozen distilleries operating in the city by the late 19th century—a greater concentration than in any other U.S. city at that time.\nA major port on the Illinois River, Peoria is a trading and shipping center for a large agricultural area that produces corn, soybeans, and livestock. While Peoria’s economy is diversified, manufacturing—including heavy machinery, agricultural equipment, metal products, and chemical production—continues to play an important role. Until 2018, Peoria was the global and national headquarters for heavy equipment and engine manufacturer Caterpillar Inc., one of the 30 companies composing the Dow Jones Industrial Average, and listed on the Fortune 100; the company relocated its headquarters to Deerfield, Illinois, in 2018, and then Irving, Texas, in 2022.\nThe city is associated with the phrase \"Will it play in Peoria?\", which may have originated from the vaudeville era and is often spuriously attributed to Groucho Marx. Museums in the city include the Peoria Riverfront Museum, the Pettengill–Morron House and the John C. Flanagan House (both of which are managed by the Peoria Historical Society), and the Peoria Playhouse Children's Museum. Wheels o' Time Museum is near Peoria."
+        },
+        {
+          "article": "Peoria, Illinois (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Peoria,_Illinois#Climate",
+          "text": "Peoria has a humid continental climate (Köppen Dfa), with cold, snowy winters, and hot, humid summers. Monthly daily mean temperatures range from to . Snowfall is common in the winter, averaging , but this figure varies considerably from year to year. Precipitation, averaging , peaks in the spring and summer, and is the lowest in winter. Extremes have ranged from in January 1884 to in July 1936."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 67,
+      "leadWords": 348,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the river location, 1691 settlement, whiskey distilleries, Lincoln's 1854 speech, and manufacturing, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "peoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 149,
+    "place_id": "gn-5393015",
+    "input": {
+      "place": {
+        "place_id": "gn-5393015",
+        "name": "Santa Clara",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.35411,
+        "lon": -121.95524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Clara, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+          "text": "Santa Clara ( SAN-tə KLAR-ə; Spanish for 'Saint Clare') is a city in Santa Clara County, California, United States. Located in the southern San Francisco Bay Area, it was founded by the Spanish in 1777 with the establishment of Mission Santa Clara de Asís under the leadership of Junípero Serra. The city's population was 127,647 at the 2020 census, making it the eighth-most populous city in the Bay Area. The U.S. Census Bureau estimated Santa Clara's population at 133,446 as of July 1, 2025.\nSanta Clara is located in the center of Silicon Valley and is home to the headquarters of companies such as Intel, Advanced Micro Devices (AMD), and Nvidia. It is also home to Santa Clara University, the oldest university in California, Levi's Stadium, home of the National Football League's San Francisco 49ers, and California's Great America amusement park. Santa Clara is bordered by San Jose on almost every side, except for Sunnyvale and Cupertino to the west."
+        },
+        {
+          "article": "Santa Clara, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California#Climate",
+          "text": "The average daily temperatures in July range from to . Winters are mild, with the mean daily temperatures in January ranging from to . Most of the annual rainfall comes in the winter months; the summer months are generally rainless."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 40,
+      "leadWords": 160,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the southern Bay Area location, the 1777 mission founding, Silicon Valley companies, university, and stadium, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "santa clara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 150,
+    "place_id": "gn-1839652",
+    "input": {
+      "place": {
+        "place_id": "gn-1839652",
+        "name": "Osan",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.15222,
+        "lon": 127.07056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osan",
+          "url": "https://en.wikipedia.org/wiki/Osan",
+          "text": "Osan (Korean: 오산; Korean pronunciation: [o.san]) is a city in Gyeonggi Province, South Korea, approximately 35 km (22 mi) south of Seoul. The population of the city is around 200,000.  The local economy is supported by a mix of agricultural and industrial enterprises.\nIt is famous for one of the largest markets in South Korea, Osan Market, which has been in continuous operation since 1792. The city was the scene of the first battle between the US and North Korea during the Korean War in 1950; there is a statue and museum dedicated to UN forces on the outskirts of the city.\nThe United States Air Force base named after the city, Osan Air Base, is not actually located in the city, but is instead 8 km (5.0 mi) south, in the Songtan district (formerly a separate city) of Pyeongtaek.\nOsan Station is a large subway station located in the heart of Osan. It is part of the Seoul Subway Line 1 and the KTX. There is a bus terminal next to the subway station and many buses stop in front of the subway station."
+        },
+        {
+          "article": "Osan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Osan#Climate",
+          "text": "Osan has a humid continental climate (Köppen: Dwa), but can be considered a borderline humid subtropical climate (Köppen: Cwa) using the isotherm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 22,
+      "leadWords": 185,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers the market operating since 1792, the 1950 Korean War battle, the nearby air base, and transport links, with no climate mechanism, extreme, or paradox stated",
+      "priorMissing": "extract text stating a place-specific climate mechanism, extreme, or paradox"
+    },
+    "banned_terms": [
+      {
+        "term": "osan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 7955,
+    "attempt": 7901,
+    "place_id": "gn-5316960",
+    "input": {
+      "place": {
+        "place_id": "gn-5316960",
+        "name": "Taylor",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 34.46504,
+        "lon": -110.09123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taylor, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Taylor,_Arizona",
+          "text": "Taylor is a town in Navajo County, Arizona, United States. It was founded by settlers of The Church of Jesus Christ of Latter-day Saints in January 1878, several months before the neighboring community of Snowflake. Taylor straddles Silver Creek, flowing from the nearby White Mountains to the Little Colorado River on Arizona's Colorado Plateau. As of the 2020 census, Taylor had a population of 3,995. The town was named for John Taylor, the third president of the Church of Jesus Christ of Latter-day Saints. There is no postal home delivery in Taylor; residents within a certain radius of the Post Office who produce proof of Taylor residency are allocated a small PO box free of charge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "taylor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7956,
+    "attempt": 7902,
+    "place_id": "gn-5790554",
+    "input": {
+      "place": {
+        "place_id": "gn-5790554",
+        "name": "Colfax",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.88017,
+        "lon": -117.36435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colfax, Washington",
+          "url": "https://en.wikipedia.org/wiki/Colfax,_Washington",
+          "text": "Colfax is a city in and the county seat of Whitman County, Washington, United States. The population was 2,782 at the 2020 census, making Colfax the second largest city in Whitman County behind Pullman. It is situated amidst wheat-covered hills in a valley at the confluence of the north and south forks of the Palouse River. U.S. Route 195, which forms the town's main street, intersects with State Route 26 at the north end of town; in the past, Colfax also lay at the junction of three major railway lines. It is part of the Pullman–Moscow combined statistical area. It was named after Schuyler Colfax, the Vice President of the United States from 1869 to 1873."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "colfax",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7957,
+    "attempt": 7903,
+    "place_id": "gn-5909403",
+    "input": {
+      "place": {
+        "place_id": "gn-5909403",
+        "name": "Bromont",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.31678,
+        "lon": -72.64912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bromont",
+          "url": "https://en.wikipedia.org/wiki/Bromont",
+          "text": "Bromont (French pronunciation: [bʁɔmɔ̃]) is a city in the Brome-Missisquoi Regional County Municipality in the Estrie region of southern Quebec, Canada. It lies at the foot of Mont Brome, one of the Monteregian Hills, between Granby and Cowansville. Bromont had a population of 11,357 in the 2021 Canadian census.\nThe present city grew from a planned community established in 1964 by brothers Roland and Germain Désourdy and from the older settlements of West Shefford and Adamsville. West Shefford was merged with Bromont in 1966, while the village municipality of Adamsville was annexed in 1973. The new city was planned around two principal areas of development: recreation and tourism around Mont Brome, and a high-technology industrial sector.\nBromont later became a centre for alpine skiing, cycling and equestrian sport. Its Olympic Equestrian Centre hosted most of the equestrian competitions at the 1976 Summer Olympics, as well as the riding portion of the modern pentathlon. The city's industrial area developed around firms in microelectronics and advanced manufacturing, including IBM, Teledyne DALSA and GE Aerospace, and is also home to the Université de Sherbrooke's MiQro Innovation Collaborative Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "bromont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7958,
+    "attempt": 7904,
+    "place_id": "gn-1273712",
+    "input": {
+      "place": {
+        "place_id": "gn-1273712",
+        "name": "Dagshai",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 30.88431,
+        "lon": 77.05228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dagshai",
+          "url": "https://en.wikipedia.org/wiki/Dagshai",
+          "text": "Dagshai, also known as Daagh-e-Shahi, is one of the oldest cantonment towns in the Solan district of Himachal Pradesh, India.  It is on top of a 5,689-foot (1,734-m) high hillock that stands sphinx-like astride the Kalka-Shimla Highway at a point about 11 km from Solan. It was founded in 1847 by the East India Company by securing free of cost five villages from Maharaja of Patiala aka Bhupinder Singh of Patiala. The names of these villages were Dabbi, Badhtiala, Chunawad, Jawag and Dagshai. The new cantonment was named after the last named village, as it was the largest and most strategically located. The name Dagshai, according to a popular local legend was derived from Daagh-e-Shahi. During the Moghul times a Daagh-e-Shahi (royal mark) was put on the forehead of the criminals and sent packing to the then Dagshai village.  It was built by the British as a sanatorium for tuberculosis patients."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "dagshai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7959,
+    "attempt": 7905,
+    "place_id": "gn-2174892",
+    "input": {
+      "place": {
+        "place_id": "gn-2174892",
+        "name": "Bonville",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.38284,
+        "lon": 153.05959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonville, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Bonville,_New_South_Wales",
+          "text": "Bonville is a small town located on the Mid North Coast of New South Wales, Australia, 11 kilometres south of Coffs Harbour and in the local government area of City of Coffs Harbour. It has a population of 1,891 as of 2006. The town's name supposedly derives from \"Bongol Bongol/Bongil Bongil\", which in Gumbaingirr, means a place where one stays a long time.\nThe town is known for Bonville International Golf Course. It has a Christian high school and two public primary schools. The town has now been bypassed by the Pacific Highway A railway station on the North Coast line was open between 1915 and 1974, it was subsequently demolished and no trace remains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "bonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7960,
+    "attempt": 7906,
+    "place_id": "gn-2687498",
+    "input": {
+      "place": {
+        "place_id": "gn-2687498",
+        "name": "Ödåkra",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 56.10412,
+        "lon": 12.7477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ödåkra",
+          "url": "https://en.wikipedia.org/wiki/%C3%96d%C3%A5kra",
+          "text": "Ödåkra () is a locality situated in Helsingborg Municipality, Skåne County, Sweden with 4,920 inhabitants in 2010. It is situated just north-east of Helsingborg and could be regarded as a suburb of that city. Ödåkra is known for its old distillery, which existed from 1897 to 1976 and gave the name to the spirit Ödåkra Taffel Aqvavit.\nThe locality is located about eight kilometres north of Helsingborg’s City Centre, and also about eight kilometres from Öresund. Immediately south of the town lies the shopping centre Väla centrum. Ödåkra is bisected by the West Coast Line (train stop on the Skåne Commuter Rail between Ängelholm and Malmö), and lies adjacent to the motorways E6/E20 and E4. The proximity of Helsingborg has made the town quite popular (about ten minutes by train), along with the large townhouse area Björka built near Väla centrum in Ödåkra in the 1980s. More housing is under development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "odakra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7961,
+    "attempt": 7907,
+    "place_id": "gn-2882329",
+    "input": {
+      "place": {
+        "place_id": "gn-2882329",
+        "name": "Seiffen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.65,
+        "lon": 13.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seiffen",
+          "url": "https://en.wikipedia.org/wiki/Seiffen",
+          "text": "Seiffen is a town in the district of Erzgebirgskreis in the central south of Saxony in Germany.\nSeiffen nestles in the heart of the Ore Mountains, which are famous for many Christmas traditions. As the silver and tin deposits declined, former miners had to look for new ways to feed their families. In addition to lace making and weaving, the local population turned to  wood carving. Nutcrackers, \"smoking men\", Christmas pyramids (carousels with figures of the Christmas story or from mining) and Schwibbögen (wooden candle arches, displayed in windows, symbolising the opening of a mine) are some of many Christmas goods made in the Ore Mountains. Seiffen is a centre of the wooden toy industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "seiffen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7962,
+    "attempt": 7908,
+    "place_id": "gn-3033470",
+    "input": {
+      "place": {
+        "place_id": "gn-3033470",
+        "name": "Bénodet",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 47.87531,
+        "lon": -4.1058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bénodet",
+          "url": "https://en.wikipedia.org/wiki/B%C3%A9nodet",
+          "text": "Bénodet (French pronunciation: [benɔdɛ]; Breton: Benoded) is a commune in the Finistère department and administrative region of Brittany in north-western France. It lies about 16 kilometres south of Quimper. The Breton name Benoded means \"mouth of the Odet\".\nBénodet has a casino, a thalassotherapy centre, a cinema, a marina, a number of hotels, and several beaches. As with many coastal towns in Brittany, there are many second homes and the population increases sixfold over the summer period. Bénodet is also the site of menhirs and a church, dedicated to the 5th-century Irish saint Brigid of Kildare, which was built at the end of the 11th century and was classed as a historic monument in 1916."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "benodet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7963,
+    "attempt": 7909,
+    "place_id": "gn-3042871",
+    "input": {
+      "place": {
+        "place_id": "gn-3042871",
+        "name": "Villány",
+        "country": "Hungary",
+        "subdivision": "Baranya",
+        "lat": 45.86889,
+        "lon": 18.45389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villány",
+          "url": "https://en.wikipedia.org/wiki/Vill%C3%A1ny",
+          "text": "Villány (German: Wieland; Croatian: Viljan, Biljan or Vilanje; Serbian: Виљан, romanized: Viljan) is a town in Baranya County, Hungary that is famous for its wine. Residents are Hungarians, with a minority of Croats, Serbs and Germans of Hungary. Until the end of World War II, the inhabitants were Danube Swabians, also called locally as Stifolder, because their ancestors arrived around 1720 from Fulda (district).  Most of the former German settlers were expelled to Allied-occupied Germany and Allied-occupied Austria in 1945–1948, pursuant to the Potsdam Agreement. Only a few Germans of Hungary live there, the majority today are descendant of Hungarians from the Czechoslovak–Hungarian population exchange. They received the houses of the former Danube Swabians inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "villany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7964,
+    "attempt": 7910,
+    "place_id": "gn-3120985",
+    "input": {
+      "place": {
+        "place_id": "gn-3120985",
+        "name": "Getaria",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.30326,
+        "lon": -2.20444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Getaria, Spain",
+          "url": "https://en.wikipedia.org/wiki/Getaria,_Spain",
+          "text": "Getaria is a town on the Urola coast, in the province of Gipuzkoa, in the autonomous community of the Basque Country, in northern Spain. It borders Zarautz to the east and Zumaia to the west.\nGetaria is well known for being the hometown of Juan Sebastián Elcano: a sailor famous for being the first to circumnavigate the world. He was the captain of the Nao Victoria, the only ship in Magellan's ill-fated fleet to complete the voyage.\nToday, Getaria is also famous for its restaurants that serve grilled fish and white wine with a Denomination of Origin somewhere in the Getariako Txakolina near the town. The town is also home to the Cristobal Balenciaga Museum.\nIn May 2012, a two-man team from Getaria won Google's 'Model Your Town' competition by creating a complete 3D representation of their home town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "getaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7965,
+    "attempt": 7911,
+    "place_id": "gn-4454370",
+    "input": {
+      "place": {
+        "place_id": "gn-4454370",
+        "name": "Beaufort",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.7184,
+        "lon": -76.66161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaufort, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Beaufort,_North_Carolina",
+          "text": "Beaufort ( BOH-fərt) is a town in and the county seat of Carteret County, North Carolina, United States. Founded in 1709, Established in 1713 and incorporated in 1723, Beaufort is the third oldest town in North Carolina (after Bath, New Bern). The population was 4,464 at the 2020 census.\nBeaufort is located in North Carolina's \"Inner Banks\" region. The town is home to the North Carolina Maritime Museum, the Duke University Marine Laboratory (Nicholas School of the Environment), and the National Oceanic and Atmospheric Administration (NOAA) Center for Coastal Fisheries and Habitat Research. It is also the location of the Rachel Carson Reserve, part of the N.C. Coastal Reserve and National Estuarine Research Reserve system. It is sometimes confused with a city of the same name in South Carolina; the two are distinguished by different pronunciations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7966,
+    "attempt": 7912,
+    "place_id": "gn-4807310",
+    "input": {
+      "place": {
+        "place_id": "gn-4807310",
+        "name": "Grafton",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 39.34092,
+        "lon": -80.01897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grafton, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Grafton,_West_Virginia",
+          "text": "Grafton is a city in Taylor County, West Virginia, United States, and its county seat. The population was 4,729 at the 2020 census. Located along the Tygart Valley River, it originally developed as a junction point for the Baltimore and Ohio Railroad, serving numerous branches of a network that was vital to the regional coal industry.\nGrafton is the home of both of West Virginia's national cemeteries, and was where the West Virginia Equal Suffrage Association formed in 1895. Mother's Day was founded in Grafton on May 10, 1908, and the city is home to the International Mother's Day Shrine. Grafton was also among the first cities in the United States to observe Memorial Day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "grafton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7967,
+    "attempt": 7913,
+    "place_id": "gn-5331568",
+    "input": {
+      "place": {
+        "place_id": "gn-5331568",
+        "name": "Buellton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.6136,
+        "lon": -120.19265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buellton, California",
+          "url": "https://en.wikipedia.org/wiki/Buellton,_California",
+          "text": "Buellton is a small city in Santa Barbara County, California, United States. It is located in the Santa Ynez Valley, 3 miles (4.8 km) west of Solvang. The population was 5,161 at the 2020 census, up from 4,828 at the 2010 census.\nLocated at the junction of U.S. Route 101 and State Route 246, Buellton attracts travelers to hotels, restaurants, parks and shops. It may be most famous for its nickname “Home of Split Pea Soup,” which is a reference to the former Pea Soup Andersen's Restaurant that shut down in 2024. Buellton traces its beginnings to 1867 when a portion of a Mexican land grant was deeded to Rufus T. Buell and his brother. They developed a successful cattle ranch in the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "buellton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7968,
+    "attempt": 7914,
+    "place_id": "gn-8858256",
+    "input": {
+      "place": {
+        "place_id": "gn-8858256",
+        "name": "San Francisco de Asís",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.59694,
+        "lon": -102.56361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Francisco de Asís, Atotonilco El Alto",
+          "url": "https://en.wikipedia.org/wiki/San_Francisco_de_As%C3%ADs,_Atotonilco_El_Alto",
+          "text": "San Francisco de Asís is a town within the municipality of Atotonilco El Alto, located in the southeastern part of the state of Jalisco, Mexico. It is named after Saint Francis of Assisi, an Italian Catholic saint and founder of the Franciscan Order. According to the 2020 census, the town had a population of 5,167 inhabitants.\nThe town’s most notable features include the Shrine of Our Lady of Los Altos (Nuestra Señora de los Altos) and the presence of new tequila production facilities in the surrounding area.\nThe municipality of Atotonilco el Alto covers an area of 1,532.78 km² (591.81 sq mi). According to the 2005 census, it had a total population of 126,625 inhabitants. Since 2005, the municipality has experienced continued development, including residential expansion and the construction of new churches and schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "san francisco de asis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "asis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7969,
+    "attempt": 7915,
+    "place_id": "gn-1733885",
+    "input": {
+      "place": {
+        "place_id": "gn-1733885",
+        "name": "Tenom",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.11922,
+        "lon": 115.93719
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tenom",
+          "url": "https://en.wikipedia.org/wiki/Tenom",
+          "text": "Tenom (Malay: Pekan Tenom, Malay pronunciation: [te.nom]) is the capital of the Tenom District in the Interior Division of Sabah, Malaysia. It is located about 176 kilometres south of Kota Kinabalu and 128 kilometres north of Long Pasia, which is one of the famous attractions in Sabah. Tenom is also famous for its Tenom Coffee, which is a landmark of the town. Its population was estimated to be around 48,026 in 2020. In the early days of British colonial rule in Malaysia, the town was called Fort Birch. The town is considered the unofficial capital of the Murut community, whose most important festival, the annual Pesta Kalimaran (Kalimaran Festival), is held in the town. It is also the main gateway to other areas within the Murut heartland and the minority of Lundayeh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "tenom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7970,
+    "attempt": 7916,
+    "place_id": "gn-2647919",
+    "input": {
+      "place": {
+        "place_id": "gn-2647919",
+        "name": "Gresford",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.08539,
+        "lon": -2.97062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gresford",
+          "url": "https://en.wikipedia.org/wiki/Gresford",
+          "text": "Gresford (; Welsh: Gresffordd Welsh pronunciation: [ˈɡrɛsfɔrð]) is a village and community in Wrexham County Borough, Wales.\nAccording to the 2001 Census, the population of the community, which also includes the village of Marford, was 5,334, reducing to 5,010 at the 2011 census.\nThe Grade I listed All Saints' Church, Gresford has been described as the finest parish church in Wales, and has the most surviving medieval stained glass of any Welsh church.  Its bells are one of the traditional Seven Wonders of Wales.\nThe former Gresford Colliery was the site of the Gresford disaster, one of Britain's worst coal mining disasters, when 266 men died in an underground explosion on 22 September 1934."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "gresford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7971,
+    "attempt": 7917,
+    "place_id": "gn-2654628",
+    "input": {
+      "place": {
+        "place_id": "gn-2654628",
+        "name": "Broadway",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.03825,
+        "lon": -1.86079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broadway, Worcestershire",
+          "url": "https://en.wikipedia.org/wiki/Broadway,_Worcestershire",
+          "text": "Broadway is a large village and civil parish in the Cotswolds, England, with a population of 3,478 at the 2021 census. It is in the far southeast of Worcestershire, close to the Gloucestershire border, midway between Evesham and Moreton-in-Marsh.\nIt is sometimes referred to as the \"Jewel of the Cotswolds\".\nBroadway village lies beneath Fish Hill on the western Cotswold escarpment. The \"broad way\" is the wide grass-fringed main street, centred on the Green, which is lined with red chestnut trees and honey-coloured Cotswold limestone buildings, many dating from the 16th century. It is known for its association with the Arts and Crafts movement, and is in an area of outstanding scenery and conservation. The wide High Street is lined with a wide variety of shops and cafes, many housed in listed buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "broadway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7972,
+    "attempt": 7918,
+    "place_id": "gn-2962745",
+    "input": {
+      "place": {
+        "place_id": "gn-2962745",
+        "name": "Macroom",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.90663,
+        "lon": -8.96968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Macroom",
+          "url": "https://en.wikipedia.org/wiki/Macroom",
+          "text": "Macroom (; Irish: Maigh Chromtha) is a market town in County Cork, Ireland, located in the valley of the River Sullane, halfway between Cork city and Killarney. Its population has grown and receded over the centuries as it went through periods of war, famine and workhouses, forced emigration and intermittent prosperity. The 2011 census gave an urban population of 3,879 people, while the 2016 census recorded 3,765 people. The town is in a civil parish of the same name.\n\nMacroom began as a meeting place for the druids of Munster. It is first mentioned is in 6th-century records, and the immediate area hosted a major battle c. 987 involving the Irish king Brian Boru. During the Middle Ages, the town was invaded by a succession of warring clans, including the Murcheatach Uí Briain and Richard de Cogan families. In the early modern period the MacCarthys took control and later the area found prosperity via milling. The MacCarthys built a series of tower houses, some of which survive. The family lost influence during the Williamite wars of the 1690s, after which authority over the town castle waxed and waned between the MacCarthys and a number of Anglo-Irish families.\nThe population fell in the 1840s during the Great Famine. Evidence can be found in the former workhouse, now the district hospital at the north side of New Street, and the mass graveyard to the west, near Clondrohid. During the late 18th and early 19th century, a number of Anglo-Irish families, and a branch of the Massey family, settled in the area. Many of their estate houses were burned in the period around the Irish War of Independence as the town was caught up in the turmoil of IRA activity.\nToday the town is an economic hub for the mid-Cork region, and the location of a Danone milk processing factory, which dries and cans infant formula from milk supplied by local dairy farmers. Until the 1950s, New Street was the town's economic hub, and contained many small retail outlets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "macroom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7973,
+    "attempt": 7919,
+    "place_id": "gn-3032518",
+    "input": {
+      "place": {
+        "place_id": "gn-3032518",
+        "name": "Bitche",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.05232,
+        "lon": 7.42992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bitche",
+          "url": "https://en.wikipedia.org/wiki/Bitche",
+          "text": "Bitche (English pronunciation:  BEECH, French: [bitʃ]; German and Lorraine Franconian: Bitsch) is a commune in Moselle department, in the region of Grand Est in northeastern France. It is the Pays de Bitche's capital city, and the seat of the Canton of Bitche and the Pays de Bitche community of communes.\nThe town belongs to the Northern Vosges Regional Nature Park and is rated four-flowers in the towns and villages in bloom competition. The inhabitants of the commune are known as Bitchois and Bitchoises.\nThe town is known for its large citadel originating from a castle built at the beginning of the 13th century. The fortress is noted for its resistance during the Franco-Prussian War. Its commander Louis-Casimir Teyssier held it for about eight months, with 3,000 men against about 20,000 Prussian and Bavarian soldiers, until the French government ordered him to surrender after the 1871 ceasefire. The town became part of Germany from that date until the end of the First World War, when it was given back to France. During the Second World War it was annexed by the Third German Reich (1940–1944)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "bitche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7974,
+    "attempt": 7920,
+    "place_id": "gn-4464897",
+    "input": {
+      "place": {
+        "place_id": "gn-4464897",
+        "name": "Edenton",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.05794,
+        "lon": -76.60772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edenton, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Edenton,_North_Carolina",
+          "text": "The town of Edenton is located on the Albemarle Sound in North Carolina, United States, in the Inner Banks region.  It is the county seat of Chowan County. The population was 4,397 at the 2020 census. \nEdenton served as the first capital of North Carolina, during the colonial era as the Province of North Carolina, though other than housing the governor's official residence, it did not have other governmental functions. It served as capital from 1722 to 1743, when the capital was moved to Brunswick. The town was the site of the Edenton Tea Party, a protest organized by several Edenton women in 1774 in solidarity with the organizers of the Boston Tea Party. It was the birthplace of Harriet Jacobs, an enslaved African American whose 1861 autobiography, Incidents in the Life of a Slave Girl, is now considered an American classic. \nIn the late 1980s and into the 1990s, Edenton was the site of a controversial and heavily reported sexual abuse trial and overturned conviction, what ultimately became North Carolina’s longest and most costly criminal trial — during what has been described as a period of widespread day-care sex-abuse hysteria.\nEdenton's local economy is primarily driven by tourism, and the town is a popular retirement location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "edenton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

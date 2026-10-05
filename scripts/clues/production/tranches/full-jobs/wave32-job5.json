@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 6327,
+    "attempt": 6281,
+    "place_id": "gn-5096075",
+    "input": {
+      "place": {
+        "place_id": "gn-5096075",
+        "name": "Burlington",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.07122,
+        "lon": -74.86489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burlington, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Burlington,_New_Jersey",
+          "text": "Burlington is a city situated on the banks of the Delaware River in Burlington County, in the U.S. state of New Jersey. It is a suburb of Philadelphia. As of the 2020 United States census, the city's population was 9,743, a decrease of 177 (−1.8%) from the 9,920 recorded at the 2010 census, which in turn reflected an increase of 184 (+1.9%) from the 9,736 counted in the 2000 census. The city, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nBurlington was first incorporated on October 24, 1693, and was reincorporated by Royal charter on May 7, 1733. After American independence, the city was incorporated by the State of New Jersey on December 21, 1784. On March 14, 1851, the city was reincorporated and enlarged with portions of the surrounding township.\nBurlington was originally the county seat of Burlington County. In 1796, in response to the growth of population to the east away from the Delaware River, the county seat was moved to Mount Holly Township, a more central location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "burlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6328,
+    "attempt": 6282,
+    "place_id": "gn-5098863",
+    "input": {
+      "place": {
+        "place_id": "gn-5098863",
+        "name": "Harrison",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.74649,
+        "lon": -74.15626
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harrison, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Harrison,_New_Jersey",
+          "text": "Harrison is a town in the western part of Hudson County in the U.S. state of New Jersey. It is part of the New York metropolitan area. It is a suburb of the neighboring city of Newark, and is located 8 miles (13 km) from New York City. Once considered \"the beehive of industry\", the town is undergoing a residential and economic renewal, particularly along the Passaic River.\nAs of the 2020 United States census, the town's population was 19,450, an increase of 5,830 (+42.8%) from the 2010 census count of 13,620, which in turn reflected a decrease of 804 (−5.6%) from the 14,424 counted in the 2000 census. The Population Estimates Program calculated a population of 22,182 for 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "harrison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6329,
+    "attempt": 6283,
+    "place_id": "gn-5101938",
+    "input": {
+      "place": {
+        "place_id": "gn-5101938",
+        "name": "North Plainfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.6301,
+        "lon": -74.42737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Plainfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Plainfield,_New_Jersey",
+          "text": "North Plainfield is a borough in Somerset County, in the U.S. state of New Jersey. It is located within the Raritan Valley region. As of the 2020 United States census, the borough's population was 22,808, an increase of 872 (+4.0%) from the 2010 census count of 21,936, which in turn reflected an increase of 833 (+3.9%) from the 21,103 counted in the 2000 census.\nNorth Plainfield Township was created from portions of Warren Township by an act of the New Jersey Legislature passed on April 2, 1872. The borough of North Plainfield became an independent municipality on June 9, 1885. The name derives from Plainfield, which in turn derived its name from a local estate and for its scenic location.\nIn 1902, the New Jersey Legislature approved measures that would have allowed the borough to become part of Union County (a measure repealed in 1903) and to allow for a merger of North Plainfield with the City of Plainfield subject to the approval of a referendum by voters in both municipalities.\nNorth Plainfield is home to the Washington Park Historic District, which was listed on the National Register of Historic Places in 1987."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "north plainfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plainfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6330,
+    "attempt": 6284,
+    "place_id": "gn-5138744",
+    "input": {
+      "place": {
+        "place_id": "gn-5138744",
+        "name": "South Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.58329,
+        "lon": -74.07609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Beach, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/South_Beach,_Staten_Island",
+          "text": "South Beach is a neighborhood on the East Shore of Staten Island, New York City, situated directly south of the Verrazzano–Narrows Bridge. South Beach is bounded by New York Bay on the southeast, Seaview Avenue on the southwest, Laconia Avenue on the northwest, Reid and McClean Avenues on the north, and Lily Pond Avenue on the northeast. It is adjacent to Midland Beach to the southwest, Dongan Hills and Old Town/Concord to the northwest, and Fort Wadsworth and Rosebank to the northeast.\nSouth Beach contains a boardwalk with an eponymous beach on its southeastern coast. Directly east of the beach are two small islands, Hoffman Island and Swinburne Island.  The northern part of South Beach is sometimes known as Arrochar.\nSouth Beach is part of Staten Island Community District 2 and its ZIP Code is 10305. South Beach is patrolled by the 122nd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "south beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6331,
+    "attempt": 6285,
+    "place_id": "gn-5178892",
+    "input": {
+      "place": {
+        "place_id": "gn-5178892",
+        "name": "Bala Cynwyd",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.00761,
+        "lon": -75.23407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bala Cynwyd, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Bala_Cynwyd,_Pennsylvania",
+          "text": "Bala Cynwyd ( BAL-ə KIN-wuud) is a community and census-designated place in Lower Merion Township, Pennsylvania, United States. It is located on the Philadelphia Main Line in the Philadelphia metropolitan area, and borders the western edge of Philadelphia at U.S. Route 1 (City Avenue). \nThe present-day community was originally two separate towns, Bala and Cynwyd, but was united as a single community largely because the U.S. Post Office, the Bala Cynwyd branch, served both towns, later using ZIP Code 19004. The combining of the communities gives a total population of 9,285 as of the 2020 census.  The community was long known as hyphenated Bala-Cynwyd. Bala and Cynwyd are currently served by separate stations on SEPTA's Cynwyd Line of Regional Rail.\nBala Cynwyd lies in the Welsh Tract of Pennsylvania and was settled in the 1680s by Welsh Quakers, who named it after the town of Bala and the village of Cynwyd in Wales. A mixed residential community made up predominantly of single-family detached homes, it extends west of the Philadelphia city limits represented by City Avenue from Old Lancaster Road at 54th Street west to Meeting House Lane and then along Manayunk and Conshohocken State Roads north to Mary Watersford Road, then east along Belmont Avenue back to City. This large residential district contains some of Lower Merion's oldest and finest stone mansions, built mainly from 1880 through the 1920s and located in the sycamore-lined district between Montgomery Avenue and Levering Mill Road, as well as split level tract houses built east of Manayunk Road just after World War II."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "bala cynwyd",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cynwyd",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6332,
+    "attempt": 6286,
+    "place_id": "gn-5339873",
+    "input": {
+      "place": {
+        "place_id": "gn-5339873",
+        "name": "Coto De Caza",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.60419,
+        "lon": -117.58699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coto de Caza, California",
+          "url": "https://en.wikipedia.org/wiki/Coto_de_Caza,_California",
+          "text": "Coto de Caza (KOH-toh deh KAH-zuh; Spanish for \"hunting reserve\") is a census-designated place (CDP) and guard-gated private community in Orange County, California, United States. The population was 14,710 at the 2020 census.\nThe CDP is a suburban planned community of about 4,000 homes and one of Orange County's oldest and most expensive master-planned communities. The project began in 1968, when it was envisioned as a hunting lodge, now the Lodge at Coto de Caza, and the community was completed in 2003. Coto de Caza also includes Los Ranchos Estates, a 355-acre rural community of 75 large custom homes. Los Ranchos Estates is a separate private community behind the gates of Coto de Caza and has its own homeowner's association."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "coto de caza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6333,
+    "attempt": 6287,
+    "place_id": "gn-5363748",
+    "input": {
+      "place": {
+        "place_id": "gn-5363748",
+        "name": "Koreatown",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.05779,
+        "lon": -118.30091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koreatown, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Koreatown,_Los_Angeles",
+          "text": "Koreatown (Korean: 코리아타운) is a neighborhood in central Los Angeles, California, centered near Sixth and Alexandria streets.\nKoreans began immigrating in larger numbers in the 1960s and found housing in the Mid-Wilshire area. Many opened businesses as they found friendly rental rates and tolerance toward the growing Korean population.  Many of the historic Art Deco buildings with terra cotta façades have been preserved because the buildings remained economically viable for the new businesses.\nDespite the name evoking a traditional ethnic enclave, the community is complex and has an impact on areas outside the traditional boundaries. While the neighborhood culture was historically oriented to the Korean immigrant population, Korean business owners are creating stronger ties to the Latino community in Koreatown. The community is highly diverse ethnically, with half the residents being Latino and a third being Asian. Two-thirds of the residents were born outside of the United States, a high figure compared to the rest of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "koreatown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6334,
+    "attempt": 6288,
+    "place_id": "gn-5375938",
+    "input": {
+      "place": {
+        "place_id": "gn-5375938",
+        "name": "Muscoy",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.15418,
+        "lon": -117.34421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muscoy, California",
+          "url": "https://en.wikipedia.org/wiki/Muscoy,_California",
+          "text": "Muscoy is a census-designated place (CDP) in the Inland Empire region of San Bernardino County, California, United States. The population was 10,719 at the 2020 census, up from 10,644 at the 2010 census. Muscoy shares ZIP code 92407 with the communities of Verdemont, Devore Heights, Rosena Ranch and Arrowhead Farms in northwestern San Bernardino. Residents enjoy a semi-rural setting with large lots where they can raise horses and other livestock, nursery plants, and fruit trees.  For this reason, much of Muscoy is included in the county Additional Agriculture (AA) overlay, which specifies the types and quantities of animals that may be kept on each parcel. A distinctive feature of Muscoy life today is motor vehicles and equestrians sharing the roadways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "muscoy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6335,
+    "attempt": 6289,
+    "place_id": "gn-5965932",
+    "input": {
+      "place": {
+        "place_id": "gn-5965932",
+        "name": "Greely",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.26139,
+        "lon": -75.56111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greely, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Greely,_Ontario",
+          "text": "Greely is a suburban-rural community in Ottawa, Ontario, Canada. Located south of the city in Osgoode Ward, it was part of the Township of Osgoode prior to amalgamation in 2001. Greely is currently the largest rural village in terms of land area and the third largest in terms of population in the City of Ottawa.  According to the Greely Community Association, it is bounded on the east by Sale Barn Road and Greyscreek Road, on the north by Mitch Owens on the west by Manotick Station Road, and on the south by Snake Island Road. According to the Canada 2011 Census, the population within these boundaries was 9,049.\nGreely falls within the borders of the federal parliamentary riding of Carleton. Provincially, it falls within the riding of Carleton, which shares the same boundaries of its federal counterpart, and is represented on City Council by George Darouze, being in Osgoode Ward.\nGreely is home to a set of tight-knit and unique communities throughout the village. Most homes sit on 1⁄2-acre to 2-acre (8,100 m2) lots. Some developers offer condominium-like amenities such as pools, tennis courts, man-made lakes, beaches, and small neighbourhood community centres within their residential communities. The Greely Community Centre hosts meetings and activities for the entire rural town. Every year, they organize a Winter Carnival and a renowned Canada Day celebration.\nBetween 2000 and 2008, Greely has seen a 58.7% increase in the number of dwellings.  Greely's increasingly rapid growth can be attributed to its rural atmosphere and easy access to Ottawa's urban centre. Furthermore, Greely presently has several large areas of undeveloped land within its boundaries. Greely's boundaries currently contain enough land for approximately twenty-two years of residential growth based on current development patterns.\nGreely has a strong commercial district housing many small and medium manufacturing and services companies.  It has a few businesses to provide the community with essentials, including 2 gas stations, 3 pizzerias, an A & W and a couple of restaurants.  In the summer, it hosts an outdoor weekly market featuring local makers, a coffee shop and a used book store.  A new commercial development at Parkway Road and Bank Street houses a 24-hour grocery store with liquor/beer store, a dollar store and more businesses under development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 373
+    },
+    "banned_terms": [
+      {
+        "term": "greely",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6336,
+    "attempt": 6290,
+    "place_id": "gn-6080488",
+    "input": {
+      "place": {
+        "place_id": "gn-6080488",
+        "name": "Mount Dennis",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.68694,
+        "lon": -79.48917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Dennis",
+          "url": "https://en.wikipedia.org/wiki/Mount_Dennis",
+          "text": "Mount Dennis is a neighbourhood located in Toronto, Ontario, Canada. It was initially an urban area within the former township of York. Primarily located along Eglinton Avenue between the Humber River and the Kitchener commuter rail line, the neighbourhood was best known for Kodak Heights, once a major film manufacturing facility owned and operated by the Eastman Kodak Company. According to the 2016 Toronto Ward 11 Census, 62,620 residents are in the area, with a median age of 39.3 as of 2016, and a population growth of over 0.4% as of 2016. 24, 895 households are in Ward 11, and 230 net new households were built in 2016.  A total of 31,125 of 62,620 are immigrant populations as of 2016. Unemployment rate is 9.5% in Ward 11 as of 2016,  with an average household income of $66,447 and is much lower than Toronto's average of $102,721 as of 2016. Average rent price is $940/month as of 2016's census as well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "mount dennis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dennis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6337,
+    "attempt": 6291,
+    "place_id": "gn-6176722",
+    "input": {
+      "place": {
+        "place_id": "gn-6176722",
+        "name": "Waterdown",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.33341,
+        "lon": -79.88293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waterdown, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Waterdown,_Ontario",
+          "text": "Waterdown is a community in the city of Hamilton in the Canadian province of Ontario. Waterdown is approximately 60 km west of downtown Toronto and, as of 2021, has a population of approximately 24,400 residents.\nOn January 1, 2001, the new city of Hamilton was formed from the amalgamation of six municipalities, Hamilton, Ancaster, Dundas, Flamborough, Glanbrook, and Stoney Creek. Before the amalgamation, the old city of Hamilton had 331,121 Hamiltonians divided into 100 neighbourhoods. The newly-amalgamated city had 490,268 people in over 200 neighbourhoods.\nWaterdown was created from that part of East Flamborough Township on the edge of the Niagara Escarpment, just east of the junction of Dundas Street (Highway 5) and Highway 6, traditionally known as Clappison's Corners.\nIn 1974, the village was amalgamated with East Flamborough, West Flamborough and Beverly townships to form the Town of Flamborough. In 2001, Flamborough and five other municipalities were amalgamated into the City of Hamilton.\nWaterdown has seen significant commercial development, including opening an expansive YMCA facility. Waterdown population growth was approximately 28.9% over the years 1996 and 2001. In 2012, the average house price in Waterdown was nearly $400,000.\nWaterdown District High School (WDHS) expanded its facilities in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "waterdown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6338,
+    "attempt": 6292,
+    "place_id": "gn-6232191",
+    "input": {
+      "place": {
+        "place_id": "gn-6232191",
+        "name": "Blockhouse Bay",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.9182,
+        "lon": 174.70019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blockhouse Bay",
+          "url": "https://en.wikipedia.org/wiki/Blockhouse_Bay",
+          "text": "Blockhouse Bay is a residential suburb in the south west of Auckland, in New Zealand's North Island. It is sited on the northern coast of the Manukau Harbour, and is also close to the administrative boundary that existed between Auckland City and Waitakere City, two of the former four cities of what was the Auckland conurbation before amalgamation into Auckland Council.\nThe suburb is located 11 kilometres to the southwest of the city centre, and is surrounded by the more central suburbs of Lynfield and New Windsor, and the Waitakere suburbs of New Lynn and Green Bay.\nThe Blockhouse Bay Library is located in the town centre, as is the Blockhouse Bay Community Centre, located 200 metres from the library."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "blockhouse bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blockhouse",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6339,
+    "attempt": 6293,
+    "place_id": "gn-679146",
+    "input": {
+      "place": {
+        "place_id": "gn-679146",
+        "name": "Dolhasca",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.43333,
+        "lon": 26.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolhasca",
+          "url": "https://en.wikipedia.org/wiki/Dolhasca",
+          "text": "Dolhasca (Romanian pronunciation: [dolˈhaska]) is a town in Suceava County, in the historical region of Western Moldavia, northeastern Romania. Dolhasca is the eighth largest urban settlement in the county, with a population of 11,007 inhabitants as of 2021. It was declared a town in 2004, along with seven other localities in Suceava County. The town administers seven villages, namely: Budeni, Gulia, Poiana, Poienari, Probota, Siliștea Nouă, and Valea Poienei.\nDespite being a town, Dolhasca looks like a rural settlement in many aspects, and the main occupation of the inhabitants is agriculture. The Probota Monastery, built in 1530 by the Moldavian ruler Petru Rareș, and located close to the town, is one of the Churches of Moldavia UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "dolhasca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6340,
+    "attempt": 6294,
+    "place_id": "gn-7258318",
+    "input": {
+      "place": {
+        "place_id": "gn-7258318",
+        "name": "Mount Vernon",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.71412,
+        "lon": -77.10082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Vernon, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Mount_Vernon,_Virginia",
+          "text": "Mount Vernon is a census-designated place (CDP) and unincorporated community in Fairfax County, Virginia, United States. The population was 12,914 at the 2020 census.  Primarily due to its historical significance and natural recreation and beauty, the Mount Vernon area receives over one million tourists each year.\nWhile the name \"Mount Vernon\"—drawn from the Mount Vernon estate, the home of George Washington located south of Alexandria—is often used locally to refer to the entire unincorporated area between Old Town Alexandria and Fort Belvoir, Mount Vernon as defined by the Census Bureau encompasses only the portion bounded by the Potomac River to the south, Fort Belvoir to the west, U.S. Route 1 to the north, and Little Hunting Creek to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "mount vernon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vernon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6341,
+    "attempt": 6295,
+    "place_id": "gn-727886",
+    "input": {
+      "place": {
+        "place_id": "gn-727886",
+        "name": "Parvomay",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.1,
+        "lon": 25.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parvomay",
+          "url": "https://en.wikipedia.org/wiki/Parvomay",
+          "text": "Parvomay (Bulgarian: Първомай [pɐrvoˈmaj]) is a town located in the Plovdiv Province of southern Bulgaria, part of the similarly named municipality (Parvomay Municipality). It is geographically close to the towns of Sadovo and Chirpan. The name literally means First of May, i.e., May Day, in English and is sometimes transliterated as Parvomai or Purvomai.\nAs with many places in Bulgaria, the town has other names, such as its old name (up until 1947) of Borisovgrad (after Bulgaria's last Tsar, Boris to celebrate his birthday on 30 January 1894), as well as Borissograd, Borissovgrade, or Borissowgrad. Until 1894, it was known by its Turkish names of Hadzi Ejles (Bulgarian Хаджи Елес), Hadzi-Ele, Hadzi-Jeiles, Khadzhi Eiles, or Khadzhi-Eles (\"Hacı İlyas\" in Turkish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "parvomay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6342,
+    "attempt": 6296,
+    "place_id": "gn-1567167",
+    "input": {
+      "place": {
+        "place_id": "gn-1567167",
+        "name": "Tam Giang",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 8.8,
+        "lon": 105.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tam Giang, Cà Mau",
+          "url": "https://en.wikipedia.org/wiki/Tam_Giang,_Cà_Mau",
+          "text": "Tam Giang is a commune (xã) and village in Cà Mau province, in Vietnam.\nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 16 June 2025). Accordingly, Tam Giang Commune was established in Cà Mau Province on the basis of the entire natural area of 36.60 km2 and a population of 7,707 people of Hiệp Tùng Commune; the entire natural area of 101.70 km2 and a population of 9,167 people of Tam Giang Commune; and the entire natural area of 66.90 km2 and a population of 6,403 people of Tam Giang Đông Commune, all belonging to Năm Căn District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tam giang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tam",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "giang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6343,
+    "attempt": 6297,
+    "place_id": "gn-1717896",
+    "input": {
+      "place": {
+        "place_id": "gn-1717896",
+        "name": "Cateel",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.79139,
+        "lon": 126.45333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cateel",
+          "url": "https://en.wikipedia.org/wiki/Cateel",
+          "text": "Cateel ([kɐtiʔil]), officially the Municipality of Cateel (Cebuano: Lungsod sa Cateel; Tagalog: Bayan ng Cateel), is a municipality in the province of Davao Oriental, Philippines. According to the 2024 census, it has a population of 45,623 people.\nCateel is home of the Aliwagwag Falls, located in Barangay Aliwagwag within the Aliwagwag Protected Landscape. It is a multi-tiered cascade regarded by hydraulic engineers as the highest waterfall in the country and is considered one of the most beautiful in the Philippines. \nThe falls consist of 84 cascading tiers resembling a stairway, with individual drops ranging from 2 to 33.5 meters (7 to 110 ft). Some of the notable tiers measure approximately 22 meters (72 ft) and 20 meters (66 ft). Overall, Aliwagwag Falls has a total height of about 340 meters (1,120 ft) and a width of around 20 meters (66 ft).\nThe waterfall is set within a largely undisturbed forest, and a river flows at its base, featuring 13 rapids."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "cateel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6344,
+    "attempt": 6298,
+    "place_id": "gn-186139",
+    "input": {
+      "place": {
+        "place_id": "gn-186139",
+        "name": "Msambweni",
+        "country": "Kenya",
+        "subdivision": "Kwale County",
+        "lat": -4.4619,
+        "lon": 39.48265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Msambweni",
+          "url": "https://en.wikipedia.org/wiki/Msambweni",
+          "text": "Msambweni (meaning \"land of Msambwe\"  in Swahili) is a small fishing town and constituency in Kwale County of southeastern Kenya, formerly in Kwale District of Coast Province. The origin of the name, Msambwe (plural Misambwe) refers to a hardy and wild fruits (sambwe) tree indigenous to the area. A few remnants of the Msambwe trees are still existing at Mkunguni Beach, Sawa Sawa Village. By road, Msambweni is 55.4 kilometres (34.4 mi) south of Mombasa and 46.5 kilometres (28.9 mi) northeast of Lunga Lunga on the Tanzanian border. As of 2009, the town had a population of 11,985 people.\nFishing is the primary source of income, although coconut palm, buxa coloring, cashew nuts and fruits are produced for trade. Because of its reef and extensive beaches, the snorkeling industry is gaining in popularity in Msambweni, and holiday cottages and hotels have sprung up in the area, such as the Msambweni Beach House. The town is noted for its leprosarium and contains the Msambweni District Hospital. The Koromojo Dam is immediately north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "msambweni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6345,
+    "attempt": 6299,
+    "place_id": "gn-2147821",
+    "input": {
+      "place": {
+        "place_id": "gn-2147821",
+        "name": "Surry Hills",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.88374,
+        "lon": 151.21282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surry Hills",
+          "url": "https://en.wikipedia.org/wiki/Surry_Hills",
+          "text": "Surry Hills is an inner-east suburb of Sydney, in the state of New South Wales, Australia. It is immediately south-east of the Sydney central business district in the local government area of the City of Sydney. Surry Hills is surrounded by the suburbs of Darlinghurst to the north, Chippendale and Haymarket to the west, Moore Park and Paddington to the east and Redfern to the south.  It is often colloquially referred to as \"Surry\".\nSurry Hills is bordered by Elizabeth Street and Chalmers Street to the west, Cleveland Street to the south, South Dowling Street to the east, and Oxford Street to the north. Crown Street is a main thoroughfare through the suburb with numerous restaurants, pubs and bars. Central is a locality in the north-west of the suburb around Central station. Prince Alfred Park is located nearby. Strawberry Hills is a locality around Cleveland and Elizabeth Streets and Brickfield Hill to the east of that.\nA multicultural suburb, Surry Hills has had a long association with the Portuguese community of Sydney."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "surry hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "surry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6346,
+    "attempt": 6300,
+    "place_id": "gn-2158307",
+    "input": {
+      "place": {
+        "place_id": "gn-2158307",
+        "name": "McKinnon",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.911,
+        "lon": 145.038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McKinnon, Victoria",
+          "url": "https://en.wikipedia.org/wiki/McKinnon,_Victoria",
+          "text": "McKinnon is a suburb in Melbourne, Victoria, Australia, 12 km south-east of Melbourne's Central Business District, located within the City of Glen Eira local government area. McKinnon recorded a population of 6,878 at the 2021 census.\nMcKinnon is bounded by Murray Road, Lewis Street and Blackshaw Street to the north, Tucker Road to the east, Abergeldie Avenue, Lindsay Street, Field Street, Nicholson Street, Fitzroy Street and Elster Creek to the south and Thomas Street to the west. It contains parks such as Wattle Grove Park, Allnutt Park and Joyce Park. Until 1941 the territory of the suburb was a part of Bentleigh, while the part of current McKinnon Road to the East from Jasper Road was named Manchester Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "mckinnon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

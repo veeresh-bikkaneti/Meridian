@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 3731,
+    "attempt": 3701,
+    "place_id": "gn-3490165",
+    "input": {
+      "place": {
+        "place_id": "gn-3490165",
+        "name": "Half Way Tree",
+        "country": "Jamaica",
+        "subdivision": "Saint Andrew Parish",
+        "lat": 18.01248,
+        "lon": -76.79928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Half Way Tree",
+          "url": "https://en.wikipedia.org/wiki/Half_Way_Tree",
+          "text": "Half Way Tree (Jamaican Patois: Halfatri) is a neighbourhood in the city of Kingston, Jamaica. It is the parish capital of St. Andrew.\nHalf Way Tree is served by the Kingston 10 post office.\nIn recent years, as a result of crime and violence in Downtown Kingston and Cross Roads, Half Way Tree has overtaken these areas as the central hub of the capital, Kingston and, perhaps, the busiest thoroughfare in the city. The area has become a popular location to do business in Kingston because of its central location and proximity to Downtown Kingston, the New Kingston Business District as well as it being the transportation of hub of Kingston. The National Works Agency, for example, estimates that approximately 250,000 commute through the Half Way Tree area daily from Monday through Saturday. In recent years, the area has become increasingly attractive as a residential neighbourhood to young professionals, again because of its proximity to where many of them work. The apartments and townhouses are located mainly on Surbiton Road, Winchester Road, Ruthven Road and Cecelio Avenue. As a result, Half Way Tree has become one of the most expensive areas in Kingston to purchase real estate: an acre of land can run as high as US$1.5 million.\nA number of prominent schools, including St Andrew High School for Girls and Holy Childhood High School, are located in the heart of Half Way Tree.\nA busy shopping district, Half Way Tree is also home to the most well-known plazas and malls—such as Twin Gates, Mall Plaza, Tropical Plaza, Kings Plaza, Lane Plaza, the Pavilion Mall—in Kingston and Jamaica as a whole. There are also a number of prominent churches in the area such as Holy Cross Church and Webster Memorial.\n\nWhile the business and commercial areas are in the heart of Half Way Tree, the residential areas tend to be concentrated on the outer verges.\nWithin a mile of the clock tower marking the position of the old Half Way Tree is Devon House, a National Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "half way tree",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "half",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "way",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tree",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3732,
+    "attempt": 3702,
+    "place_id": "gn-3573899",
+    "input": {
+      "place": {
+        "place_id": "gn-3573899",
+        "name": "Point Fortin",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Point Fortin",
+        "lat": 10.17411,
+        "lon": -61.68407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Point Fortin",
+          "url": "https://en.wikipedia.org/wiki/Point_Fortin",
+          "text": "Point Fortin, officially the Borough of Point Fortin, is the smallest borough in Trinidad and Tobago and is located in southwestern Trinidad, about 32 km (20 mi) southwest of San Fernando. After the discovery of petroleum in the area in 1906 the town grew into a major oil-producing centre. The town grew with the oil industry between the 1940s and 1980s, culminating in its elevation to borough status in 1980. After the end of the oil boom Point Fortin was hit hard by economic recession in the 1980s and the closure of its oil refinery. Construction of a Liquefied Natural Gas plant by Atlantic LNG in late 1990s boosted the economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "point fortin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fortin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3733,
+    "attempt": 3703,
+    "place_id": "gn-3654536",
+    "input": {
+      "place": {
+        "place_id": "gn-3654536",
+        "name": "Machachi",
+        "country": "Ecuador",
+        "subdivision": "Pichincha",
+        "lat": -0.51273,
+        "lon": -78.57066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Machachi",
+          "url": "https://en.wikipedia.org/wiki/Machachi",
+          "text": "Machachi is the canton seat of Mejía Canton in the Pichincha province of Ecuador.\nMachachi is located to the south of the capital of Ecuador, Quito. It is a city surrounded by the volcanos Atacazo, Corazon, Rumiñahui, Illinizas Peaks, Viudita Hill, Pasochoa, and Sincholagua, and owns part of the Cotopaxi volcano, a great active volcano which measures 5,897 m (19,347 ft) in altitude. In fact, the valley owns eight volcanoes inside, one the reasons Alexander von Humboldt named the region \"Avenue of Volcanoes\".\nIn the Panzaleo language, it means great active land. Machachi is the cradle of many slopes and the same ground is a perennial thermal and mineral water outcrop.  In the fertile valleys of San Pedro are about 22 sources of chemicals which have theurapeutical properties.\nMachachi has a similar temperature to Quito, fluctuating from 19 °C (66 °F) average high to 10 °C (50 °F) average low; these averages are for the whole year, with the dry months being June, July, and August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "machachi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3734,
+    "attempt": 3704,
+    "place_id": "gn-3665559",
+    "input": {
+      "place": {
+        "place_id": "gn-3665559",
+        "name": "Zarzal",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 4.3958,
+        "lon": -76.07113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zarzal",
+          "url": "https://en.wikipedia.org/wiki/Zarzal",
+          "text": "Zarzal (Spanish pronunciation: [saɾˈsal]) is a city and municipality in the north of the department of Valle del Cauca in Colombia. Its economy is based primarily on the extensive cultivation of sugar cane, on small and medium enterprises in the metallurgic sector, and on utilities. Commerce is also of great importance, because a great number of warehouses for basic necessity goods exist in the city. A marketplace also exists, which serves as reference for various cities that are close by. Zarzal municipality has a population of about 42,000. New city districts were constructed in the center of the city; it has now become difficult to find bare land inside the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "zarzal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3735,
+    "attempt": 3705,
+    "place_id": "gn-4394870",
+    "input": {
+      "place": {
+        "place_id": "gn-4394870",
+        "name": "Lee's Summit",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 38.91084,
+        "lon": -94.38217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lee's Summit, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Lee's_Summit,_Missouri",
+          "text": "Lee's Summit is a city in Jackson and Cass counties in Missouri, United States. It is part of the Kansas City metropolitan area and is a suburb of Kansas City, about 20 miles (32 kilometers) to the southeast. As of the 2020 census, the population was 101,108, making Lee's Summit the sixth most populous city in both Missouri and the Kansas City metropolitan area. It is part of the Wooded Osage Plains region, characterized by rolling topography.\nIn 1865, the town was incorporated as Strother, remaining so until it was renamed Lee’s Summit three years later. Lee's Summit began as an agricultural community and persisted as such until the mid-twentieth century. Upon the conclusion of World War II, with new highway infrastructure and an increased desire for single family housing, the city began to rapidly suburbanize and grow in population, transitioning into a commuter suburb of Kansas City. The city's period of population and territorial growth lasted through the remainder of the twentieth century.\nThe Lee's Summit public school district has consistently ranked among the city’s top employers, alongside federal government offices, healthcare facilities, and retail centers. Most residents, however, commute to other cities for work, often other nearby suburbs. The city retains its historic downtown and train station, while now also encompassing suburban developments, several human-made lake reservoirs, and numerous parks. The city's relatively large size and location near major highways have made it a principal suburb of the Kansas City metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "lee s summit",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lee",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "summit",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3736,
+    "attempt": 3706,
+    "place_id": "gn-4566103",
+    "input": {
+      "place": {
+        "place_id": "gn-4566103",
+        "name": "Luquillo",
+        "country": "Puerto Rico",
+        "subdivision": "Luquillo",
+        "lat": 18.37245,
+        "lon": -65.71655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luquillo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Luquillo,_Puerto_Rico",
+          "text": "Luquillo (Spanish pronunciation: [luˈkiʎo]) is a town and municipality of Puerto Rico located in the northeast coast, northwest of Fajardo; and east of Rio Grande. Luquillo is spread over 5 barrios and Luquillo Pueblo (the downtown area and the administrative center of the city). It lends its name to the Sierra de Luquillo, where El Yunque National Forest is located. It is part of the Fajardo Metropolitan Statistical Area.\nThe city of Luquillo is 26 square miles and it sits on 12 miles of Atlantic coastline. It is nestled between the blue waters of the Atlantic and the El Yunque National Forest, a rainforest, giving it a diverse and unique ecology. Luquillo marks the beginning of the Northeast Ecological Corridor Nature Reserve which runs down the coast from downtown Luquillo all the way down to the Seven Seas Beach in Fajardo. During certain times of the year, it is not unusual to encounter rare or endangered species of fauna (like the leatherback turtle) while visiting in Luquillo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "luquillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3737,
+    "attempt": 3707,
+    "place_id": "gn-4935304",
+    "input": {
+      "place": {
+        "place_id": "gn-4935304",
+        "name": "East Boston",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3751,
+        "lon": -71.03922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Boston",
+          "url": "https://en.wikipedia.org/wiki/East_Boston",
+          "text": "East Boston, nicknamed Eastie, is a neighborhood of Boston, Massachusetts, United States, which was annexed by the city of Boston in 1836. Neighboring communities include Winthrop, Revere, and Chelsea. It is separated from the Boston neighborhood of Charlestown and downtown Boston by Boston Harbor. The final outline of East Boston, including Logan International Airport, was created in the 1940s by connecting five of the inner harbor islands using land fill.\nEast Boston has long provided homes for immigrants, such as the Irish, Russian Jews and later, Italians. John F. Kennedy's great-grandfather was one of many Irish people to immigrate to East Boston, and the Kennedy family lived there for some time. From 1920 to 1954, East Boston was the site of the East Boston Immigration Station, which served as the regional immigration hub for Boston and the surrounding area. A once Italian dominated community, East Boston has demographically changed to reflect a diverse population of immigrants. Since the 1990s, the neighborhood has witnessed growing numbers of Latin American immigrants, who have come to make up over fifty percent of the population according to the 2020 Census data."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "east boston",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boston",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3738,
+    "attempt": 3708,
+    "place_id": "gn-4948247",
+    "input": {
+      "place": {
+        "place_id": "gn-4948247",
+        "name": "Quincy",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.25288,
+        "lon": -71.00227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quincy, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Quincy,_Massachusetts",
+          "text": "Quincy (English pronunciation: /ˈkwɪn.zi/ ) is a [[City|city]] in Norfolk County, Massachusetts, United States. It is the largest city in the county. Quincy is part of the Greater Boston area as one of Boston's immediate southern suburbs. Its population in 2020 was 101,636, making it the seventh-largest city in the state. Known as the \"City of Presidents\", Quincy is the birthplace of two U.S. presidents—John Adams and his son John Quincy Adams—as well as John Hancock, the first signer of the Declaration of Independence and the first and third governor of Massachusetts.\nFirst settled in 1625, Quincy was briefly part of Dorchester before becoming the North Precinct of Braintree in 1640. In 1792, Quincy was split off from the Town of Braintree and was incorporated separately as the Town of Quincy; the new town was named after Colonel John Quincy, maternal grandfather of Abigail Adams and after whom John Quincy Adams was also named. Quincy became a city in 1888.\nFor over a century, Quincy was home to a thriving granite quarrying industry; the city was also the site of the Granite Railway, the United States' first commercial railroad. Shipbuilding at the Fore River Shipyard was another key contributor to the city's economy. In the 20th century, both Howard Johnson's and Dunkin' Donuts were founded in the city. Today, Quincy has developed into both a vibrant immigrant destination and a suburban business hub, and is considered attractive due to its safety, relatively large housing stock, and extensive connections to Boston."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "quincy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3739,
+    "attempt": 3709,
+    "place_id": "gn-5325423",
+    "input": {
+      "place": {
+        "place_id": "gn-5325423",
+        "name": "Azusa",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.13362,
+        "lon": -117.90756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azusa, California",
+          "url": "https://en.wikipedia.org/wiki/Azusa,_California",
+          "text": "Azusa (Tongva: Azuksa, meaning \"skunk\") is a city in the San Gabriel Valley region of Los Angeles County, California, United States, at the foot of the San Gabriel Mountains and located 20 miles (32 km) east of downtown Los Angeles.\nIts population was 50,000 in 2020, an increase from 46,361 at the 2010 census. Azusa is located along historic Route 66, which passes through the city on Foothill Boulevard and Alosta Avenue.\nAzusa is bordered by the San Gabriel Mountains range to the north, Irwindale to the west, the unincorporated community of Vincent to the southwest, Glendora and the unincorporated community of Citrus to the east, and Covina to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "azusa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3740,
+    "attempt": 3710,
+    "place_id": "gn-5397603",
+    "input": {
+      "place": {
+        "place_id": "gn-5397603",
+        "name": "South Gate",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.95474,
+        "lon": -118.21202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Gate, California",
+          "url": "https://en.wikipedia.org/wiki/South_Gate,_California",
+          "text": "South Gate is a city in Los Angeles County, California, United States, with 7.4 square miles (19 km2). It is located 7 miles (11 km) southeast of Downtown Los Angeles. South Gate is part of the Gateway Cities region of southeastern Los Angeles County.\nThe city was incorporated on January 20, 1923, and it became known as the \"Azalea City\" when it adopted the flower as its symbol in 1965. As of the 2020 census, the city had a population of 92,726, making it the 19th largest in the county.\nIn 1990, South Gate was one of ten U.S. communities to receive the All-America City Award from the National Civic League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "south gate",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gate",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3741,
+    "attempt": 3711,
+    "place_id": "gn-5398277",
+    "input": {
+      "place": {
+        "place_id": "gn-5398277",
+        "name": "Spring Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.74477,
+        "lon": -116.99892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Valley, San Diego County, California",
+          "url": "https://en.wikipedia.org/wiki/Spring_Valley,_San_Diego_County,_California",
+          "text": "Spring Valley is a census-designated place (CDP) in the East County region of San Diego County, California. The population was 30,998 at the 2020 census, up from 28,205 at the 2010 census.\nFrom 1970 through 1990, Spring Valley included what is now the La Presa CDP to the south; La Presa is still popularly considered to be a part of Spring Valley. Extended definitions of Spring Valley may also include the Casa de Oro neighborhood to the north, which belongs to the Casa de Oro-Mount Helix CDP. Locations in both La Presa and Casa de Oro use Spring Valley addresses.\nSpring Valley is served by the 91977 and 91978 ZIP Codes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "spring valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3742,
+    "attempt": 3712,
+    "place_id": "gn-677106",
+    "input": {
+      "place": {
+        "place_id": "gn-677106",
+        "name": "Giurgiu",
+        "country": "Romania",
+        "subdivision": "Giurgiu County",
+        "lat": 43.88664,
+        "lon": 25.9627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Giurgiu",
+          "url": "https://en.wikipedia.org/wiki/Giurgiu",
+          "text": "Giurgiu (Romanian pronunciation: [ˈdʒjurdʒju] ; Bulgarian: Гюргево, romanized: Gyurgevo; Turkish: Yergöğü) is a city in southern Romania. The seat of Giurgiu County, it lies in the historical region of Muntenia. It is situated amongst mud-flats and marshes on the left bank of the Danube facing the Bulgarian city of Ruse on the opposite bank. It is one of six Romanian county seats lying on the river Danube. Three small islands face the city, and a larger one shelters its port, Smarda. The rich grain-growing land to the north is traversed by a railway to Bucharest, the first line opened in Romania, which was built in 1869 and afterwards extended to Smarda. In the past, Giurgiu exported timber, grain, salt and petroleum, and imported coal, iron, and textiles.\nThe Giurgiu-Ruse Friendship Bridge, in the shared Bulgarian-Romanian section of the Danube, crosses the river in the outskirts of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "giurgiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3743,
+    "attempt": 3713,
+    "place_id": "gn-6822223",
+    "input": {
+      "place": {
+        "place_id": "gn-6822223",
+        "name": "Nanjō",
+        "country": "Japan",
+        "subdivision": "Okinawa",
+        "lat": 26.14447,
+        "lon": 127.76697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanjō",
+          "url": "https://en.wikipedia.org/wiki/Nanjō",
+          "text": "Nanjō (Japanese: 南城市, Hepburn: Nanjō-shi) is a city located in the southern part of Okinawa Island in Okinawa Prefecture, Japan. Translated literally, the name Nanjō means \"southern castle\". Many castle ruins, called gusuku in the Okinawan language, can be found throughout the city. The modern city of Nanjō was established on January 1, 2006, from the merger of the town of Sashiki, and the villages of Chinen, Ōzato and Tamagusuku (all from Shimajiri District). Nanjō has an area of 49.94 km² and, on the date of its inception, a population of 46,690, and a density of 934.92 per km².\nOf the eleven cities in Okinawa Prefecture, Nanjō has the smallest population. It does not have a separate police station nor a high school. For those services, citizens have to refer to the neighbouring towns of Yonabaru and Yaese. The city hosts a fire station responsible for Chinen, Ōzato and Tamagusuku and parts of Yaese, while Sashiki is served by a separate station. The city's main economic activities are agriculture and tourism. Important crops include sugarcane, for sugar and vinegar production, and turmeric, a popular medicinal herb in Okinawa. Several turmeric processing plants are based in the city, producing semi-processed goods to be used by industries on the mainland or consumer products like tea and dietary supplements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "nanjo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3744,
+    "attempt": 3714,
+    "place_id": "gn-707565",
+    "input": {
+      "place": {
+        "place_id": "gn-707565",
+        "name": "Irpin",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 50.52201,
+        "lon": 30.24037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irpin",
+          "url": "https://en.wikipedia.org/wiki/Irpin",
+          "text": "Irpin (Ukrainian: Ірпінь, IPA: [irˈpʲinʲ] ) is a city on the Irpin River in Bucha Raion, Kyiv Oblast, northern Ukraine. It is located next to the capital Kyiv, on the Irpin River. Irpin hosts the administration of Irpin urban hromada, or administrative division. The city had an estimated population of 65,167 (2022 estimate).\nThere were several villages on the site from the 17th century onwards, with the city being built around the railway station that was constructed in 1899.\nIn the battle of Irpin during the 2022 Russian invasion of Ukraine, 70% of the city was damaged, including the House of Culture, which had been built by the community in 1954. In June 2023, the city's mayor reported that most people had already returned, along with around 25,000 internally displaced people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "irpin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3745,
+    "attempt": 3715,
+    "place_id": "gn-8740373",
+    "input": {
+      "place": {
+        "place_id": "gn-8740373",
+        "name": "Laitumkhrah",
+        "country": "India",
+        "subdivision": "Meghalaya",
+        "lat": 25.57067,
+        "lon": 91.89771
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laitumkhrah",
+          "url": "https://en.wikipedia.org/wiki/Laitumkhrah",
+          "text": "Laitumkhrah (Khasi: lait meaning \"free\" and umkhrah which is the name of a river Umkhrah) is a census town in Shillong, Meghalaya, India. The name of the place basically means a place where the river \"Umkhrah\" originates from making its name aptly suited.\nFrom Laitumkhrah there are three roads connecting Happy Valley (Them Basuk), Umpling & New Colony. The area is one of the costlier areas in Shillong but staying here itself is an experience. Laitumkhrah is filled with old historical buildings but with constant development in the area, most of the older buildings have been replaced with modern buildings. This place is relatively cold compared to other places of Shillong.\nLaitumkhrah is the heart of Shillong. The area has a number of churches, schools and colleges. There's a market called Laitumkhrah Market (locally called 'Iew Shyllong') providing fresh vegetables, pork, beef, chicken and other stuffs. Nazerth Hospital, one of the oldest hospitals in Shillong, is located here.\nLaitumkhrah houses the famous Ramakrishna Mission Shillong. The third generation sweet shop \"Kalpatru\" offering a wide variety of sweets is also located in Laitumkhrah.\nLaitumkhrah is the center of education in Shillong with numerous well known educational institutions like St.Margaret's Higher Secondary School Shillong, Loreto Convent, St. Edmund's College, St. Anthony's College, Shillong, Saint Mary's College (Shillong), Don Bosco Technical School, Shillong and the National Institute of Technology Meghalaya  all located within the boundary of Laitumkhrah.\nMary Help of Christians Cathedral, Shillong which serves as the seat of the Roman Catholic Archdiocese of Shillong is also located in Laitumkhrah. The church is the first Catholic cathedral church in what was then Assam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "laitumkhrah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3746,
+    "attempt": 3716,
+    "place_id": "gn-12719555",
+    "input": {
+      "place": {
+        "place_id": "gn-12719555",
+        "name": "Shek Kip Mei Estate",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Sham Shui Po District",
+        "lat": 22.33412,
+        "lon": 114.16531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shek Kip Mei Estate",
+          "url": "https://en.wikipedia.org/wiki/Shek_Kip_Mei_Estate",
+          "text": "Shek Kip Mei Estate is the first public housing estate in Hong Kong. It is located in Sham Shui Po and is under the management of the Hong Kong Housing Authority. The estate was constructed as a result of a fire in Shek Kip Mei in 1953, to settle the families of inhabitants in the squats over the hill who lost their homes in one night.\nOriginally constructed in 1953 to alleviate the immediate housing needs, the units in this \"Mark I\" estate were utilitarian. Redevelopment of the estate commenced in 1972, with new towers coming on stream between 1979 and 1982. Site 1 of redevelopment was occupied in 2007.\nThe estate now consists of 21 residential blocks, containing 10,800 rental flats. The estate has an authorised capacity of 26,400."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "shek kip mei estate",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kip",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mei",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estate",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3747,
+    "attempt": 3717,
+    "place_id": "gn-1274890",
+    "input": {
+      "place": {
+        "place_id": "gn-1274890",
+        "name": "Chakradharpur",
+        "country": "India",
+        "subdivision": "Jharkhand",
+        "lat": 22.67611,
+        "lon": 85.62892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chakradharpur",
+          "url": "https://en.wikipedia.org/wiki/Chakradharpur",
+          "text": "Chakradharpur is a city in West Singhbhum district in the state of Jharkhand, India. It is the railway divisional headquarters of Chakradharpur (CKP) division of the South Eastern Railway. The city stands at an elevation of 227 metres (745 feet) and has urban area of 10 square kilometres bounded on the east by Jamshedpur (Tatanagar), on the west by Rourkela (Odisha), on the north by Ranchi (state capital of Jharkhand) and on the south by Chaibasa (district town of West Singhbhum district). Chakradharpur is close to boundaries of two neighbouring states, Odisha and West Bengal.\nChakradharpur is one of the divisions of Indian Railways under the zone South Eastern Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "chakradharpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3748,
+    "attempt": 3718,
+    "place_id": "gn-1734418",
+    "input": {
+      "place": {
+        "place_id": "gn-1734418",
+        "name": "Padang Serai",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 5.51307,
+        "lon": 100.55356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padang Serai",
+          "url": "https://en.wikipedia.org/wiki/Padang_Serai",
+          "text": "Padang Serai (literal meaning: lemongrass field) is a little town in Kulim District, Kedah, Malaysia.\nThe sleepy hollow, surrounded by oil palm plantations and the nearby Kulim High-tech Industrial Zone has 56 percent Malay, 23 percent Indians and 12 percent Chinese voters.\nThere are few villages such as Kampong Guar Lobak, Kg Terat Batu, Kg Teluk Binu, Kg\nSidam Kiri, Kg Sidam Kanan, Kg Sentosa, Permatang Durian and some estates like Ladang Bukit Selarong, Ladang Henrietta, Ladang Nagalilit.  Labu Besar is 20km away.\nPadang Serai is famous with its \"Pekan Ahad\" or Sunday's Market. Pasar Pagi Padang Serai Located 3132, Jalan Mahsuri 3J, Taman Mahsuri, 09400 Padang Serai, Kedah, Malaysia. Padang Serai is a fast expanding town with the mushrooming of many new housing estates.\nFor smallholders or planters, there is one Aik Hwa shop supplies fertilisers, herbicide and the fishing gear.\nPadang Serai is also a parliamentary constituency. The seat was held formerly by N. Surendran of the People's Justice Party (PKR). He is replaced by Karuppaiya Muthusamy (PKR) in the 2018 Malaysian general election."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "padang serai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "padang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "serai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3749,
+    "attempt": 3719,
+    "place_id": "gn-1787437",
+    "input": {
+      "place": {
+        "place_id": "gn-1787437",
+        "name": "Yangliuqing",
+        "country": "China",
+        "subdivision": "Tianjin",
+        "lat": 39.1375,
+        "lon": 116.99972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangliuqing",
+          "url": "https://en.wikipedia.org/wiki/Yangliuqing",
+          "text": "Yangliuqing Town (simplified Chinese: 杨柳青镇; traditional Chinese: 楊柳青鎮; pinyin: Yángliǔqīng Zhèn) is a market town in Xiqing District, in the western suburbs of Tianjin, People's Republic of China. Despite its relatively small size, it has been named since 2006 in the \"famous historical and cultural market towns in China\".\nIt is best known in China for creating nianhua or Yangliuqing nianhua. For more than 400 years, Yangliuqing has in effect specialised in the creation of these woodcuts for the New Year.  Wood block prints using vivid colour schemes to portray traditional scenes of children's games often interwoven with auspiciouse objects.\nAs of 2010, it had a total population of 118,291."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "yangliuqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3750,
+    "attempt": 3720,
+    "place_id": "gn-1862555",
+    "input": {
+      "place": {
+        "place_id": "gn-1862555",
+        "name": "Hirado",
+        "country": "Japan",
+        "subdivision": "Nagasaki",
+        "lat": 33.36853,
+        "lon": 129.55247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hirado, Nagasaki",
+          "url": "https://en.wikipedia.org/wiki/Hirado,_Nagasaki",
+          "text": "Hirado (平戸市, Hirado-shi) is a city located in Nagasaki Prefecture, Japan. As of 1 June 2024, the city had an estimated population of  28,172, and a population density of 120 people per km2. The total area of the city is 235.12 km2 (90.78 sq mi).\nHistorically, Hirado had been an important port city and a gateway for foreign trade between Japan and Europe, especially during the 16th–17th centuries.  Its rich history blends samurai culture, foreign influence, and maritime trade. Today, Hirado is also recognized for its role in Japan's early international connections, as part of the broader UNESCO World Heritage Sites related to Hidden Christian Sites in the Nagasaki Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hirado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

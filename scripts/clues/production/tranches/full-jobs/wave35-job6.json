@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 6949,
+    "attempt": 6901,
+    "place_id": "gn-2754841",
+    "input": {
+      "place": {
+        "place_id": "gn-2754841",
+        "name": "Haren",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.17209,
+        "lon": 6.60931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haren, Groningen",
+          "url": "https://en.wikipedia.org/wiki/Haren,_Groningen",
+          "text": "Haren (Dutch: [ˈɦaːrə(n)] ; Gronings: Hoaren) is a town and a former municipality in the northeastern Netherlands. It is located in the direct urban area of the City of Groningen and, in January 2019, was merged into municipality of Groningen.\nHaren is a commuting town with many wealthy inhabitants. It lies on the northern part of a ridge of sand called the Hondsrug. It contains one of two dolmens in the province of Groningen (in the village of Noordlaren) and the largest botanical garden of the Netherlands called Hortus Haren. The municipality comprises a woodland area called Appèlbergen (east of the village of Glimmen) and a lake called Paterswoldsemeer.\nThe first mention of Haren was in 1249.\nOn 21 September 2012, riots broke out in Haren when over 350,000 people turned up to a birthday party that was accidentally made public on Facebook. There were over 30 arrests after vandalism and looting caused over a million euros in damage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "haren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6950,
+    "attempt": 6902,
+    "place_id": "gn-2890478",
+    "input": {
+      "place": {
+        "place_id": "gn-2890478",
+        "name": "Kirchheimbolanden",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.66249,
+        "lon": 8.01513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirchheimbolanden",
+          "url": "https://en.wikipedia.org/wiki/Kirchheimbolanden",
+          "text": "Kirchheimbolanden is the capital and the second largest city of the Donnersbergkreis, in Rhineland-Palatinate. Situated in south-western Germany, it is approximately 25 km west of Worms, and 30 km north-east of Kaiserslautern.\nThe first part of the name, Kirchheim, dates back to 774.  It became a town in 1368, and the Sponheim family improved its security with many towers and walls. William, Duke of Nassau, ancestor of the royal families of Belgium, Sweden, Denmark and Norway, and of the grand-ducal family of Luxembourg, was born in Kirchheimbolanden. It was also ruled by the First French Empire between 1792 and 1814, before passing to the Kingdom of Bavaria in 1815. It was a rural district centre in the Rheinkreis, which was renamed Pfalz (Palatinate) in 1835."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "kirchheimbolanden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6951,
+    "attempt": 6903,
+    "place_id": "gn-2936267",
+    "input": {
+      "place": {
+        "place_id": "gn-2936267",
+        "name": "Donaueschingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.95514,
+        "lon": 8.49707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donaueschingen",
+          "url": "https://en.wikipedia.org/wiki/Donaueschingen",
+          "text": "Donaueschingen (German pronunciation: [ˌdoːnaʊˈʔɛʃɪŋən] ; Low Alemannic: Eschinge) is a German town in the Black Forest in the southwest of the federal state of Baden-Württemberg in the Schwarzwald-Baar Kreis. It stands near the confluence of the two sources of the river Danube (in German: Donau).\nDonaueschingen stands in a basin within low mountainous terrain. It is located about 13 km (8.1 mi) south of Villingen-Schwenningen, 24 km (15 mi) west of Tuttlingen, and about 30 km (19 mi) north of the Swiss town of Schaffhausen. In 2015 the population was 21,750, making it the second largest town in the district (Kreis) of Schwarzwald-Baar. It is a regional rail hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "donaueschingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6952,
+    "attempt": 6904,
+    "place_id": "gn-2964436",
+    "input": {
+      "place": {
+        "place_id": "gn-2964436",
+        "name": "Edenderry",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.33948,
+        "lon": -7.04752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edenderry",
+          "url": "https://en.wikipedia.org/wiki/Edenderry",
+          "text": "Edenderry (; Irish: Éadan Doire, meaning 'hill-brow of the oak wood') is a town in eastern County Offaly, Ireland. 55 km west of Dublin city centre, it is near the borders with Counties Kildare, Meath and Westmeath. The Grand Canal runs along the south of Edenderry, through the Bog of Allen, and there is a short spur to the town centre.\nThe R401 road from Kinnegad to the north and the R402 from Enfield to the east meet at the northeastern end of the Main Street. At the Grand Canal they split, with the R402 continuing westwards towards Tullamore and the R401 heads south to Rathangan and Kildare Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "edenderry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6953,
+    "attempt": 6905,
+    "place_id": "gn-308220",
+    "input": {
+      "place": {
+        "place_id": "gn-308220",
+        "name": "Kemer",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.59778,
+        "lon": 30.56056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemer",
+          "url": "https://en.wikipedia.org/wiki/Kemer",
+          "text": "Kemer is a seaside resort, municipality and district of Antalya Province, Turkey. Its area is 412 km2, and its population is 49,383 (2022). It is on the Mediterranean coast, 43 km (27 mi) west of the city of Antalya, on the Turkish Riviera.\nKemer is on the Gulf of Antalya, 53 km (33 mi) of sea coast with the skirts of the western Taurus Mountains behind. The coast has the typical Mediterranean hot, dry weather and warm sea. Until the early 1980s this was a quiet rural district, but today the town of Kemer and coastal villages in the district play a very important part in tourism in Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kemer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6954,
+    "attempt": 6906,
+    "place_id": "gn-3099127",
+    "input": {
+      "place": {
+        "place_id": "gn-3099127",
+        "name": "Gniew",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 53.83602,
+        "lon": 18.8231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gniew",
+          "url": "https://en.wikipedia.org/wiki/Gniew",
+          "text": "Gniew [ɡɲɛf] is a historic town situated on the left bank of the Vistula River, in the Pomeranian Voivodeship, in northern Poland. It has 6,870 inhabitants (2016).\nIt is one of the oldest towns in Eastern Pomerania, and is renowned for its medieval Brick Gothic Castle, which has become one of the region's most recognizable monuments. The town also has other medieval Gothic monuments, and in early modern times it was a centre for the wine trade and the seat of local starosts, most notably John III Sobieski, who was elected King of Poland. Gniew is located in the ethnocultural region of Kociewie in the historic region of Pomerania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "gniew",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6955,
+    "attempt": 6907,
+    "place_id": "gn-3102076",
+    "input": {
+      "place": {
+        "place_id": "gn-3102076",
+        "name": "Bukowno",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 50.26474,
+        "lon": 19.45962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukowno",
+          "url": "https://en.wikipedia.org/wiki/Bukowno",
+          "text": "Bukowno [buˈkɔvnɔ] is a town in Olkusz County, Lesser Poland Voivodeship, Poland. Before 1975 it belonged to the Kraków Voivodeship and in 1975-1998 to the Katowice Voivodeship. Bukowno is located in western part of Lesser Poland Voivodeship, between Katowice and Kraków about 40 km (24.85 mi) away from both towns. As of December 2021, the town has a population of 9,876.\nBukowno is situated on the Sztoła River, and belongs to the Jaworzno - Chrzanów Industrial District, which is part of historic Lesser Poland, and is located in the Lesser Polish Upland, amidst deciduous and coniferous forests. Bukowno is a major center of industry, with zinc and lead plants. The town has the area of 63 km2., of which 73% is forested. Bukowno is a rail hub, with rail connections to Olkusz, Kielce, Jaworzno and Katowice. It also is located along the Broad Gauge Metallurgy Line. Five kilometers north of town goes National Road Nr. 94."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "bukowno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6956,
+    "attempt": 6908,
+    "place_id": "gn-3108702",
+    "input": {
+      "place": {
+        "place_id": "gn-3108702",
+        "name": "Sopela",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.37891,
+        "lon": -2.98313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sopela",
+          "url": "https://en.wikipedia.org/wiki/Sopela",
+          "text": "Sopela, formerly known as Sopelana, is a town and municipality located in the province of Biscay, in the autonomous community of Basque Country, northern  Spain.\nThe town is roughly 820 hectares in size, located in the comarca Mungialdea on the north east side of Bilbao and due east of the Nervión river estuary. In the municipality, other former towns like Larrabasterra were annexed to make Sopela larger. The population is 13,878 people, as recorded in the 2019 census. The area of Sopela is situated among green hills and beaches. This makes it a very attractive suburb of Greater Bilbao, with a short commute of 35 minutes on the metro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "sopela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6957,
+    "attempt": 6909,
+    "place_id": "gn-3121881",
+    "input": {
+      "place": {
+        "place_id": "gn-3121881",
+        "name": "Hondarribia",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.36859,
+        "lon": -1.79622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hondarribia",
+          "url": "https://en.wikipedia.org/wiki/Hondarribia",
+          "text": "Hondarribia (Basque: Hondarribia; Spanish: Fuenterrabía; French: Fontarrabie) is a Spanish town situated on the west shore of the Bidasoa river's estuary, in Gipuzkoa, in the Basque Autonomous Community.\nThe border town is situated on a little promontory facing Hendaye (France) over the Txingudi bay. A service boat makes the trip between the two. The town has an ancient old quarter with walls and a castle. In addition, Hondarribia features a beach across the Bidasoa from the touristy housing estate Sokoburu in Hendaye, alongside a mountain called Jaizkibel providing a hilly backdrop to the town. A road leads northeast from the beach area to Cape Higuer, located in this municipality.\nThe town harbours the San Sebastian Airport, which serves domestic flights. The population as of 2005 is 15,700 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "hondarribia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6958,
+    "attempt": 6910,
+    "place_id": "gn-3130131",
+    "input": {
+      "place": {
+        "place_id": "gn-3130131",
+        "name": "Amposta",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 40.70995,
+        "lon": 0.57856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amposta",
+          "url": "https://en.wikipedia.org/wiki/Amposta",
+          "text": "Amposta (Catalan pronunciation: [əmˈpɔstə/amˈpɔsta]) is the capital of the comarca of Montsià, in the province of Tarragona, Catalonia, Spain, 190 km south of Barcelona on the Mediterranean Coast. It is located at 8 metres above sea level, on the Ebre river, not far from its mouth. It has a population of 23,080 (register office, 2025) .\nThe GR 92 long distance footpath, which roughly follows the length of the Mediterranean coast of Spain, has a staging point at Amposta. Stage 30 links northwards to L'Ampolla, a distance of 16.3 kilometres (10.1 mi), whilst stage 31 links southwards to the Pont de l'Olivar, a distance of 25.4 kilometres (15.8 mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "amposta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6959,
+    "attempt": 6911,
+    "place_id": "gn-3164931",
+    "input": {
+      "place": {
+        "place_id": "gn-3164931",
+        "name": "Valdobbiadene",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.89689,
+        "lon": 11.98245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valdobbiadene",
+          "url": "https://en.wikipedia.org/wiki/Valdobbiadene",
+          "text": "Valdobbiadene (Italian: [ˌvaldobˈbjaːdene]; Venetian: Valdobiàden) is a town and comune (municipality) in the province of Treviso, Veneto, Italy.\nThe saint Venantius Fortunatus was born in the town in the 6th century.\nValdobbiadene is a wine growing area: located below the Alpine-Dolomite areas of Veneto, the climate allows the cultivation of the Glera variety of grape. The Conegliano Valdobbiadene area is the home of the best Prosecco, an extra dry sparkling white wine. Prosecco brands that derive from this area include  Altaneve, Bisol, Mionetto, Col Vetoraz, Coda, Valdo and others. On 7 July 2019, Le Colline del Prosecco di Conegliano e Valdobbiadene was inscribed as a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "valdobbiadene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6960,
+    "attempt": 6912,
+    "place_id": "gn-3177372",
+    "input": {
+      "place": {
+        "place_id": "gn-3177372",
+        "name": "Erba",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.8088,
+        "lon": 9.22609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erba, Lombardy",
+          "url": "https://en.wikipedia.org/wiki/Erba,_Lombardy",
+          "text": "Erba (previously Erba-Incino, as it was formed by the union of these two places, together with some smaller districts) is a comune (municipality) of some 16,000 inhabitants in the Province of Como in the Italian region Lombardy. It is located 40 kilometres (25 mi) north of Milan and about 10 kilometres (6 mi) east of Como in the traditional region of Brianza at the foot of the Lombard Prealps and close to Monte Bollettone.\nIt received the honorary title of city with a presidential decree on May 12, 1970. Erba borders the following municipalities: Albavilla, Caslino d'Erba, Castelmarte, Eupilio, Faggeto Lario, Longone al Segrino, Merone, Monguzzo, Ponte Lambro, Proserpio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "erba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6961,
+    "attempt": 6913,
+    "place_id": "gn-3367877",
+    "input": {
+      "place": {
+        "place_id": "gn-3367877",
+        "name": "Franschhoek",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.91075,
+        "lon": 19.1198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franschhoek",
+          "url": "https://en.wikipedia.org/wiki/Franschhoek",
+          "text": "Franschhoek ([fransˈɦuk]; Afrikaans for \"French Corner\", Dutch spelling before 1947 Fransche Hoek, French: Le Coin Français) is a small town in the Western Cape Province and one of the oldest towns in South Africa. It was formerly known as Oliphants hoek (as there were vast groups of elephants roaming the valley). It is situated about 75 kilometres (47 mi) from Cape Town, a 45-minute drive away. The whole area, including townships such as Groendal and suburbs such as Wemmershoek, has a population of slightly over 20,000 people while the town proper, known as Hugenote, has a population of around 1,000. Since 2000, it has been incorporated into Stellenbosch Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "franschhoek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6962,
+    "attempt": 6914,
+    "place_id": "gn-3372908",
+    "input": {
+      "place": {
+        "place_id": "gn-3372908",
+        "name": "Madalena",
+        "country": "Portugal",
+        "subdivision": "Azores",
+        "lat": 38.53642,
+        "lon": -28.5266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madalena, Azores",
+          "url": "https://en.wikipedia.org/wiki/Madalena,_Azores",
+          "text": "Madalena (Portuguese pronunciation: [mɐðɐˈlenɐ] ) is a municipality along the western coast of the island of Pico, in the Portuguese Azores. It has 6,332 inhabitants as of 2021, in an area of 147.12 km2. The municipality is fronted by the stratovolcano Pico in the eastern frontier, and the Faial Channel which divides Pico from the island of Faial seven kilometers away. It is made up of six freguesias (civil parishes) and is encircled almost entirely by the Atlantic Ocean except in the east, where it is bordered by the two remaining municipalities on the island: Lajes do Pico to the southeast, and São Roque do Pico to the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "madalena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6963,
+    "attempt": 6915,
+    "place_id": "gn-3428858",
+    "input": {
+      "place": {
+        "place_id": "gn-3428858",
+        "name": "San José de Feliciano",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -30.38546,
+        "lon": -58.75025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San José de Feliciano",
+          "url": "https://en.wikipedia.org/wiki/San_José_de_Feliciano",
+          "text": "San José de Feliciano is a city in the north of the province of Entre Ríos, Argentina, near the border with Corrientes. It has 11,137 inhabitants as per the 2001 census [INDEC], and is the head town of the Feliciano Department.\nThe city was officially founded in 1818. Its name is a homage to Saint Joseph and to Feliciano Rodríguez, who accompanied Juan de Garay during the foundation of Santa Fe.\nThe area is traversed by many streams and punctuated by forests of palm trees, alternating with natural pasture lands which are employed to raise cattle and sheep. The streams and the nearby Guayquiraró River are adequate for fishing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "san jose de feliciano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "feliciano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6964,
+    "attempt": 6916,
+    "place_id": "gn-3445689",
+    "input": {
+      "place": {
+        "place_id": "gn-3445689",
+        "name": "Urucuia",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -16.1325,
+        "lon": -45.74222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Urucuia",
+          "url": "https://en.wikipedia.org/wiki/Urucuia",
+          "text": "Urucuia is a municipality in the north of the state of Minas Gerais in Brazil. As of 2020 the population was 17,173 in an area of 2,072 km2 (800 sq mi).  The elevation of the municipal seat is 498 meters.  It became a municipality in 1993.  The postal code (CEP) is 39315-000 and it belongs to the statistical microregion of Januária\nUrucuia is located in an isolated region between the São Francisco River and the Distrito Federal  It is connected by dirt road to Arinos and to São Romãoon the São Francisco River.  It lies on the left bank of the Urucuia Rivers, a tributary of the São Francisco.\nThe economy is based on agriculture with emphasis on cattle raising.  There were 35,000 head in 2006.  The main agricultural crops were coffee, coconuts, manioc, and corn.  The GDP was R$39,297,000 in 2005.  In 2006 there were 4,300 people connected to agriculture among whom were 700 salaried workers.  There were no banking agencies.\nThis municipality is extremely isolated from major population centers and suffers from drought and poor soils.  It is one of the poorest in the state and in the country.  Like many impoverished districts it fought for municipal autonomy to apply for government assistance programs.\n\nMunicipal Human Development Index: .675 (2000)\nState ranking: 653 out of 853 municipalities as of 2000\nNational ranking: 3,372 out of 5,138 municipalities as of 2000 \nHealth clinics and hospitals: 1 basic clinics, 2 health centers, and 1 hospital with 36 beds\nLife expectancy: 69.2 (2004)\nThe social and health indicators were: degree of urbanization—44.9%; Literacy rate: 77.6; coverage of sewage system in the urban area—0.10%; coverage of garbage collection in the urban area—67.9; and infant mortality—18.60."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "urucuia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6965,
+    "attempt": 6917,
+    "place_id": "gn-3578599",
+    "input": {
+      "place": {
+        "place_id": "gn-3578599",
+        "name": "Pointe-à-Pitre",
+        "country": "Guadeloupe",
+        "subdivision": "Guadeloupe",
+        "lat": 16.23638,
+        "lon": -61.53459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pointe-à-Pitre",
+          "url": "https://en.wikipedia.org/wiki/Pointe-à-Pitre",
+          "text": "Pointe-à-Pitre (French pronunciation: [pwɛ̃tapitʁ]; Guadeloupean Creole: Pwentapit, [pwɛ̃tapit], or simply Lapwent, [lapwɛ̃t]) is the second most populous commune of Guadeloupe (after Les Abymes). Guadeloupe is an overseas region and department of France located in the Lesser Antilles, of which it is a sous-préfecture, being the seat of the arrondissement of Pointe-à-Pitre.\nAlthough Pointe-à-Pitre is not Guadeloupe's administrative capital (that distinction goes to Basse-Terre), it is nonetheless the region's economic capital. The inhabitants are called \"Pointois\". In 2022, it had a population of 14,855 in the city (commune) of Pointe-à-Pitre proper and 252,132 inhabitants in the urban unit Pointe-à-Pitre–Les Abymes. It is part of the metropolitan area of Les Abymes.\nPointe-à-Pitre International Airport, Guadeloupe's main international airport, is located 3 km (1.9 mi) north of downtown Pointe-à-Pitre in the commune of Les Abymes.\nThe current mayor of Pointe-à-Pitre is Harry Durimel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "pointe a pitre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pointe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "pitre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6966,
+    "attempt": 6918,
+    "place_id": "gn-3682160",
+    "input": {
+      "place": {
+        "place_id": "gn-3682160",
+        "name": "Garagoa",
+        "country": "Colombia",
+        "subdivision": "Boyacá",
+        "lat": 5.08236,
+        "lon": -73.36334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garagoa",
+          "url": "https://en.wikipedia.org/wiki/Garagoa",
+          "text": "Garagoa (Spanish pronunciation: [ɡaɾaˈɣoa]) is a town and municipality in Colombia, located in the Boyacá Department. It covers an area of 191.75 km2 and the urban centre is located at an altitude of 1,650 metres (5,410 ft) above sea level. Parts of the municipality reach altitudes of 3,050 metres (10,010 ft). It is the capital of the province of Neira. It is also the seat of the Diocese of Garagoa of the Catholic Church. The municipality is situated in the Eastern Ranges of the Colombian Andes and borders Chinavita in the north, Macanal in the south, Tenza and Sutatenza in the west and Miraflores and Chinavita in the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "garagoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6967,
+    "attempt": 6919,
+    "place_id": "gn-3699832",
+    "input": {
+      "place": {
+        "place_id": "gn-3699832",
+        "name": "Aguas Verdes",
+        "country": "Peru",
+        "subdivision": "Tumbes",
+        "lat": -3.48139,
+        "lon": -80.245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguas Verdes",
+          "url": "https://en.wikipedia.org/wiki/Aguas_Verdes",
+          "text": "Aguas Verdes (literally \"green waters\") is a town in the Zarumilla Province of the Tumbes Region in northwestern Peru. It has a population of 2,390 (1999) and is capital of the Aguas Verdes District.\nAguas Verdes is located in the border with Ecuador. An international bridge that goes over the Zarumilla River connects it with the Ecuadorian town of Huaquillas. Both towns have an intense commercial life and many formal, as well as informal street sellers that sell goods both in Peruvian soles and US dollars, which is the only currency in Ecuador.\nA free transit agreement exists and people from both countries can travel freely between these towns. Peruvian and Ecuadorian immigration control posts are located further inland to both sides of the border.\nAguas Verdes is located 27 km northeast of Tumbes, the regional capital. Since it is a rather chaotic town, tourists are advised to take a cab when visiting Aguas Verdes.\nThe northern terminus of the Pan-American Highway, the largest road in the country, is located in Aguas Verdes at the border crossing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "aguas verdes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aguas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verdes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6968,
+    "attempt": 6920,
+    "place_id": "gn-372299",
+    "input": {
+      "place": {
+        "place_id": "gn-372299",
+        "name": "Kodok",
+        "country": "South Sudan",
+        "subdivision": "Upper Nile",
+        "lat": 9.88889,
+        "lon": 32.10944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kodok",
+          "url": "https://en.wikipedia.org/wiki/Kodok",
+          "text": "Kodok or Kothok (Arabic: كودوك), formerly known as Fashoda, is a town in the Fashoda County of Upper Nile State, in the Greater Upper Nile region of South Sudan. Kodok is the capital of Shilluk country, formally known as the Shilluk Kingdom. Shilluk had been an independent kingdom for more than sixteen centuries. Fashoda is best known as the place where the British and French nearly went to war in 1898 in the Fashoda Incident.\nAccording to Shilluk belief, religion, tradition and constitution, Kodok serves as the mediating city for the Shilluk King. It is a place where ceremonies and the coronation of each new Shilluk King takes place. For over 500 years, Kodok was kept hidden and acted as a forbidden city for the Shilluk King, but as modern educations and traditions emerge, Kodok is now known to the outside world. Kodok is believed to be a place where the spirit of Juok (God), the spirit of Nyikango (the founder of Shilluk Kingdom and the spiritual leader of Shilluk religion), the spirit of the deceased Shilluk kings and the spirit of the living Shilluk King come to mediate for the Kingdom of Shilluk's spiritual healing. Kodok is preserved as a quiet place for the spirit of God, where the sounds and speeches of God (Juok) can be heard and received by the King, leaders, and elders. For the Shilluk, Kodok is a city of mediation and peace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "kodok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

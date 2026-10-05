@@ -1,0 +1,707 @@
+[
+  {
+    "rank": 575,
+    "place_id": "gn-3450269",
+    "input": {
+      "place": {
+        "place_id": "gn-3450269",
+        "name": "Santa Cruz do Sul",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.7175,
+        "lon": -52.42583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz do Sul",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_do_Sul",
+          "text": "Santa Cruz do Sul () is a Brazilian municipality located in the central region of the state of Rio Grande do Sul, approximately 155 kilometres (96 mi) from Porto Alegre. According to estimates by the Brazilian Institute of Geography and Statistics (IBGE), its population in 2024 was 138,104, making it the 14th most populous municipality in Rio Grande do Sul. Covering an area of 733.4 square kilometres (283.2 mi2), it is situated in the Vale do Rio Pardo region, bordering the municipalities of Vera Cruz, Rio Pardo, Sinimbu, Venâncio Aires, and Passo do Sobrado. The municipality has a temperate climate, lies in a physiographic transition zone between the Brazilian Highlands and the Central Depression, and features vegetation from both the Atlantic Forest and the Pampas, with a predominance of volcanic rocks.\nOriginally established as the Santa Cruz Colony on December 6, 1847, the city was officially founded on March 31, 1877, when it was emancipated from Rio Pardo. A significant hub of German colonization in Rio Grande do Sul, the municipality is bilingual, with residents speaking both Portuguese and German, particularly the Hunsrückisch dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz do sul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 576,
+    "place_id": "gn-3740007",
+    "input": {
+      "place": {
+        "place_id": "gn-3740007",
+        "name": "Cité Soleil",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.58028,
+        "lon": -72.33806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cité Soleil",
+          "url": "https://en.wikipedia.org/wiki/Cité_Soleil",
+          "text": "Cité Soleil (French pronunciation: [site sɔlɛj]; Haitian Creole: Site Solèy; English: Sun City) is an extremely impoverished and densely populated commune located in the Port-au-Prince metropolitan area in Haiti. Cité Soleil originally developed as a shanty town and grew to an estimated 200,000 to 400,000 residents, the majority of whom live in extreme poverty. The area is generally regarded as one of the poorest and most dangerous areas of the Western Hemisphere and it is one of the biggest slums in the Northern Hemisphere. The area has virtually no sewers and has a poorly maintained open canal system that serves as its sewage system, few formal businesses but many local commercial activities and enterprises, sporadic but largely unpaid-for electricity, a few hospitals, and two government schools, Lycée Nationale de Cité Soleil, and École Nationale de Cité Soleil. \nFor several years until 2007, the area was ruled by a number of gangs, each controlling their own sectors. Government control was reestablished after a series of operations in early 2007 by the United Nations Stabilization Mission in Haiti (MINUSTAH) with the participation of the local population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "cite soleil",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "soleil",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 603,
+    "place_id": "gn-3453643",
+    "input": {
+      "place": {
+        "place_id": "gn-3453643",
+        "name": "Piracicaba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.72528,
+        "lon": -47.64917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piracicaba",
+          "url": "https://en.wikipedia.org/wiki/Piracicaba",
+          "text": "Piracicaba (Brazilian Portuguese: [piɾɐsiˈkabɐ] or [piˌɾasiˈkabɐ]) is a Brazilian municipality located in the interior of São Paulo state, in the Southeast Region of Brazil. It serves as the main city of the Metropolitan Region of Piracicaba (RMP) and is situated approximately 150 km (93 mi) northwest of the state capital, São Paulo. Covering an area of just over 1,378 km2 (532 sq mi), with around 169 km2 (65 sq mi) classified as urban area, Piracicaba has a population of 438,827 inhabitants, making it the 13th most populous municipality in São Paulo state.\nEstablished in 1767 along the banks of the Piracicaba River, a vital water source for the region, Piracicaba saw significant agricultural development during the 19th century, particularly in sugarcane and coffee cultivation. However, the early 20th century brought economic decline due to the collapse of the coffee cycle and falling sugar prices, a situation that persisted until the onset of industrialization.\nPiracicaba was among the first Brazilian cities to industrialize, with the establishment of factories in the metalworking and sugar production equipment sectors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "piracicaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 607,
+    "place_id": "gn-524305",
+    "input": {
+      "place": {
+        "place_id": "gn-524305",
+        "name": "Murmansk",
+        "country": "Russia",
+        "subdivision": "Murmansk",
+        "lat": 68.96778,
+        "lon": 33.09922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murmansk",
+          "url": "https://en.wikipedia.org/wiki/Murmansk",
+          "text": "Murmansk (Russian: Мурманск) is the administrative center and largest city of Murmansk Oblast in the far northwest part of Russia. It is a major port city that is the world's largest and most populous city north of the Arctic Circle and sits on both slopes and banks of Kola Bay, with its bulk on the east bank of the inlet. The bay, a modest fjord, is an estuarine inlet of the Barents Sea. The city is a major port of the Arctic Ocean and is about 100 kilometres (62 mi) from the border with Norway, 180 kilometres (110 mi) from the border with Finland, and 1,930 kilometres (1,200 mi) from Moscow.\nBeing a non-freezing port due to the warm North Atlantic Current, Murmansk resembles cities of its size across western Russia, with highway and railway access to the rest of Europe, and the northernmost trolleybus system on Earth. Its connectivity contrasts with the isolation of Arctic ports like the Siberian Dikson on the shores of the Kara Sea, and Iqaluit in the Canadian Arctic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "murmansk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 621,
+    "place_id": "gn-3114472",
+    "input": {
+      "place": {
+        "place_id": "gn-3114472",
+        "name": "Pamplona",
+        "country": "Spain",
+        "subdivision": "Navarre",
+        "lat": 42.81687,
+        "lon": -1.64323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pamplona",
+          "url": "https://en.wikipedia.org/wiki/Pamplona",
+          "text": "Pamplona (Spanish: [pamˈplona] ; Basque: Iruña [i.ɾuɲa]; officially in its bilingual form: Pamplona-Iruña), historically also known as Pampeluna in English, is the capital city of the Chartered Community of Navarre in Spain. As of 2024, with a population of 208,243, it is the 29th largest city in Spain.\nLying at near 450 m (1,480 ft) above sea level, the city (and the wider Cuenca de Pamplona) is located on the flood plain of the Arga river, a second-order tributary of the Ebro. Precipitation-wise, it is located in a transitional location between the rainy Atlantic northern façade of the Iberian Peninsula and its drier inland. Early population in the settlement traces back to the late Bronze to early Iron Age, even if the traditional inception date refers to the foundation of Pompaelo by Pompey during the Sertorian Wars circa 75 BC. During Visigothic rule Pamplona became an episcopal see, serving as a staging ground for the Christianization of the area. It later became one of the capitals of the Kingdom of Pamplona/Navarre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "pamplona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 622,
+    "place_id": "gn-3407882",
+    "input": {
+      "place": {
+        "place_id": "gn-3407882",
+        "name": "Altamira",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -3.20333,
+        "lon": -52.20639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altamira, Pará",
+          "url": "https://en.wikipedia.org/wiki/Altamira,_Pará",
+          "text": "Altamira is a municipality in the state of Pará, in northern Brazil. It has an area of 159,533.73 square kilometres or 61,596.32 square miles, making it the largest municipality by area both in Pará state and Brazil, and until 2009 it was the world's largest municipal subdivision. It occupies 12.8% of the state's territory, 1.8% of Brazil's territory and 0.8% of South America. It also covers a more extensive area than 104 countries, and its size is comparable to that of the US state of Georgia.\nAltamira Municipality encompasses the Altamira city and district, the seat of local government, whose majority population lives in urban area, and nine other mostly rural districts (most of those covered by the Amazon rainforest), whose urban populations are minorities, and live in inhabited areas spaced by tens or hundreds of kilometers. According to the 2010 Brazilian National Census the municipality had 99,075 inhabitants which grew to 115,969 at the 2020 Census, making a density of only 0.73 inhabitants per square kilometer at the same year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "altamira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 627,
+    "place_id": "gn-2038679",
+    "input": {
+      "place": {
+        "place_id": "gn-2038679",
+        "name": "Acheng",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.54558,
+        "lon": 126.95191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acheng, Harbin",
+          "url": "https://en.wikipedia.org/wiki/Acheng,_Harbin",
+          "text": "Acheng District (Manchu: Alcuka Hoton) is one of nine districts of the prefecture-level city of Harbin, the capital of Heilongjiang Province, Northeast China, covering part of the southeastern suburbs. The district was approved to establish from the former Acheng City (阿城市) by the Chinese State Council on August 15, 2006. As of 2010, it had a population of 596,856 residing in an area of 2,680 km2 (1,030 sq mi), and is 29 km (18 mi) southeast of downtown Harbin, 190 km (120 mi) north of Jilin City, and around 50 km (31 mi) south of the Songhua River. It lies within the basin of and until 1909 was considered synonymous with the Ashi River which gave its name to the Jurchen Jin Dynasty. The district administers nine subdistricts, eight towns, one township, and one ethnic township. It borders Daowai District to the north, Bin County to the northeast, Shangzhi to the southeast, and Wuchang to the south, Shuangcheng District to the west, and Pingfang and Xiangfang Districts to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "acheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 629,
+    "place_id": "gn-3394682",
+    "input": {
+      "place": {
+        "place_id": "gn-3394682",
+        "name": "Mossoró",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.1875,
+        "lon": -37.34417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mossoró",
+          "url": "https://en.wikipedia.org/wiki/Mossoró",
+          "text": "Mossoró (Portuguese pronunciation: [mosoˈɾɔ]) is a Brazilian municipality in the interior of the state of Rio Grande do Norte, recognized as the capital of the Brazilian semi-arid region. Covering an area of approximately 2,100 square kilometres (810 sq mi), it is the largest municipality in the state by area, located 281 kilometers from the state capital, Natal. With a population of 264,577 inhabitants according to the 2022 demographic census, it ranks as the second most populous city in Rio Grande do Norte, after the capital, the most populous in the state's interior, and the 108th in Brazil.\nSituated between two state capitals, Natal and Fortaleza, both connected by the BR-304 highway that bypasses the municipality, Mossoró is one of the main cities in the Northeast's interior and is experiencing significant economic and infrastructural growth. It is one of the most attractive cities in Brazil for investments. The municipality is one of Brazil's largest producers of onshore oil, and its economy is notably driven by irrigated horticulture, largely oriented toward export."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "mossoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 656,
+    "place_id": "gn-4158476",
+    "input": {
+      "place": {
+        "place_id": "gn-4158476",
+        "name": "Hialeah",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.8576,
+        "lon": -80.27811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hialeah, Florida",
+          "url": "https://en.wikipedia.org/wiki/Hialeah,_Florida",
+          "text": "Hialeah ( HY-ə-LEE-ə; Latin American Spanish: [xaʝaˈli.a]) is a city in Miami-Dade County, Florida, United States. With a population of 223,109 as of the 2020 census, it is the sixth-largest city in Florida. It is the second largest city by population in Miami-Dade County, in the Miami metropolitan area of South Florida, which was home to an estimated 6,198,782 people at the 2018 census. It is located west-northwest of Miami, and is one of a few places in the county—others being Homestead, Miami Beach, Surfside, Bal Harbour, Sunny Isles Beach, and Golden Beach—to have its own street grid numbered separately from the rest of the county (which is otherwise based on Miami Avenue at Flagler Street in Downtown Miami, the county seat).\nHialeah was incorporated in 1925.\nThe city is notable for its high Hispanic proportion, which was 94% in 2020; this was the second-highest proportion of Hispanic Americans in the contiguous United States, and the highest proportion among incorporated communities outside of Puerto Rico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "hialeah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 661,
+    "place_id": "gn-2514169",
+    "input": {
+      "place": {
+        "place_id": "gn-2514169",
+        "name": "Marbella",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.51543,
+        "lon": -4.88583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marbella",
+          "url": "https://en.wikipedia.org/wiki/Marbella",
+          "text": "Marbella (UK:  mar-BAY-yə, US:  mar-BEL-ə, Spanish: [maɾˈβeʎa]) is a city and municipality in southern Spain, belonging to the province of Málaga in the autonomous community of Andalusia. It is part of the Costa del Sol and is the headquarters of the Association of Municipalities of the region; it is also the head of the judicial district that bears its name.\nMarbella is situated on the Mediterranean Sea, between Málaga and the Strait of Gibraltar, in the foothills of the Sierra Blanca. The municipality covers an area of 117 square kilometres (45 sq mi) crossed by highways on the coast, which are its main entrances.\nIn 2023, the population of the city was 156,295 inhabitants, making it the second most populous municipality in the province of Málaga and the seventh in Andalusia. It is one of the most important tourist cities of the Costa del Sol and throughout most of the year is an international tourist attraction, due mainly to its climate and tourist infrastructure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "marbella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 671,
+    "place_id": "gn-1626381",
+    "input": {
+      "place": {
+        "place_id": "gn-1626381",
+        "name": "Sukabumi",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.91806,
+        "lon": 106.92667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sukabumi",
+          "url": "https://en.wikipedia.org/wiki/Sukabumi",
+          "text": "Sukabumi (Sundanese: ᮞᮥᮊᮘᮥᮙᮤ) is a landlocked city surrounded by the regency of the same name (within which it is an enclave) in the southern foothills of Mount Gede, in West Java, Indonesia, about 100 km (62 mi) south of the national capital, Jakarta.\nAt an altitude of approximately 584 m (1,916 ft), the city is a minor hill station resort, with a cooler climate than the surrounding lowlands. The area around Sukabumi is also a popular destination for whitewater rafting. Tea and Rubber production is a major industry in the area. The suburban area surrounding Sukabumi circling the mountain has grown tremendously in population, such that northern Sukabumi Regency, hugging the volcano, and bordering Greater Jakarta, is home to the bulk of the regency's population.\nThe area of the city is 48.31 km2, and the population at the 2010 Census was 300,359, while the 2020 Census was 346,325; the official estimate as at mid 2025 was 370,680 (comprising 186,130 males and 184,550 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "sukabumi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 672,
+    "place_id": "gn-1636022",
+    "input": {
+      "place": {
+        "place_id": "gn-1636022",
+        "name": "Martapura",
+        "country": "Indonesia",
+        "subdivision": "South Kalimantan",
+        "lat": -3.4109,
+        "lon": 114.8642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martapura, South Kalimantan",
+          "url": "https://en.wikipedia.org/wiki/Martapura,_South_Kalimantan",
+          "text": "Martapura is the capital of the Banjar Regency in South Kalimantan province, Indonesia. It is located immediately to the north of the city of Banjarbaru (with which it forms a continuous built-up area) and it consists of three districts within the Regency - Martapura, West Martapura and East Martapura, with a combined population at the 2020 Census of 169,356 people; the official estimate as at mid 2025 was 181,064.\nOriginally this town was named \"Kayutangi\", which was the last capital of the former Sultanate of Banjar. The famous Banjarese ulema Sheikh Muhammad Arsyad al-Banjari, author of Sabilal Muhtadin, comes from this town. \nThis town is famous as kota santri or the \"city of santri (Muslim students)\" in Kalimantan, because of the pesantren (Islamic boarding school) of Pondok Pesantren Darussalam Martapura. Martapura is often called \"Veranda of Mecca\" because there are many santris wearing white clothes in this town who walk up and down to study Islam, similar to Mecca in the hajj season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "martapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 673,
+    "place_id": "gn-1783763",
+    "input": {
+      "place": {
+        "place_id": "gn-1783763",
+        "name": "Zhuzhou",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.83333,
+        "lon": 113.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhuzhou",
+          "url": "https://en.wikipedia.org/wiki/Zhuzhou",
+          "text": "Zhuzhou (Chinese: 株洲; pinyin: Zhūzhōu, joo-joh), formerly Jianning (建宁), is a prefecture-level city of Hunan Province, China, straddling the Xiang River southeast of the provincial capital, Changsha, and bordering Jiangxi province to the east. It is part of the \"Greater Changsha Metropolitan Region, also known as Changzhutan Golden Triangle\" (comprising the cities of Changsha, Zhuzhou and Xiangtan). The city has jurisdiction over five counties (Yanling, Chaling, Youxian, Liling, Zhuzhou) and four districts (Hetang, Lusong, Shifeng and Tianyuan, a high-tech industrial development zone), and covers an area of 11,420 km2 (4,410 sq mi).\nAs of the 2022 census, Zhuzhou had 3,871,100 inhabitants, of whom 1,055,373 lived in the built-up area (4 urban districts). With Xiangtan areas adjoining Zhuzhou due to be agglomerated in a few years' time, the joint built-up area will be home to 2,933,069 inhabitants.\nZhuzhou is located in a subtropical monsoon climate zone and with its abundant mineral and organic resources has one of the highest agricultural yields in Hunan province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "zhuzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 677,
+    "place_id": "gn-3895088",
+    "input": {
+      "place": {
+        "place_id": "gn-3895088",
+        "name": "Chillán",
+        "country": "Chile",
+        "subdivision": "Ñuble",
+        "lat": -36.60664,
+        "lon": -72.10344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillán",
+          "url": "https://en.wikipedia.org/wiki/Chillán",
+          "text": "Chillán (Spanish pronunciation: [tʃiˈʝan]) is the capital city of Ñuble Region, Diguillín Province, Chile, located about 400 km (249 mi) south of the country's capital, Santiago, near the center of the country. It has been the capital of the new Ñuble Region since 6 September 2015. Within the city is a railway station, an intercity bus terminal named María Teresa, and a regimental military base. The city features a modern, enclosed shopping centre in addition to the Chillán Market, an iconic multi-block, open-air farmers' market and street fair where fruits, vegetables, crafts, clothing and other goods are sold. The nearby mountains, such as in Laguna del Laja National Park (Spanish: Parque Nacional Laguna del Laja) and the Nevados de Chillán (English: 'snowy peaks of Chillán') are popular destinations for skiing, hiking and their hot springs.\nFounded by the Spanish in 1580, the city withstood numerous early attacks by the indigenous Mapuche and Pehuenche, among other peoples, who were vehemently opposed to Spanish colonialism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "chillan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 682,
+    "place_id": "gn-1798524",
+    "input": {
+      "place": {
+        "place_id": "gn-1798524",
+        "name": "Pudong",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.23995,
+        "lon": 121.50094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pudong",
+          "url": "https://en.wikipedia.org/wiki/Pudong",
+          "text": "Pudong is a district of Shanghai located east of the Huangpu, the river which flows through central Shanghai. The name Pudong was originally applied to the Huangpu's east bank, directly across from the west bank or Puxi, the historic city center.  It now refers to the broader Pudong New Area, a state-level new area which extends all the way to the East China Sea.\nThe traditional area of Pudong is now home to the Lujiazui Finance and Trade Zone and the Shanghai Stock Exchange and many of Shanghai's best-known buildings, such as the Oriental Pearl Tower, the Jin Mao Tower, the Shanghai World Financial Center, and the Shanghai Tower. These modern skyscrapers directly face Puxi's historic Bund, a remnant of former foreign concessions in China. The rest of the new area includes the Port of Shanghai, the Shanghai Expo and Century Park, Zhangjiang Hi-Tech Park, Shanghai Pudong International Airport, the Jiuduansha Wetland Nature Reserve, Nanhui New City, and the Shanghai Disney Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "pudong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 686,
+    "place_id": "gn-266826",
+    "input": {
+      "place": {
+        "place_id": "gn-266826",
+        "name": "Tripoli",
+        "country": "Lebanon",
+        "subdivision": "North Lebanon",
+        "lat": 34.43352,
+        "lon": 35.84415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tripoli, Lebanon",
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Lebanon",
+          "text": "Tripoli ( TRIP-əl-ee; Arabic: طَرَابُلُس, ALA-LC: Ṭarābulus, pronounced [tˤaˈraːbulus] ; Lebanese Arabic: طرابلس, romanized: Ṭrāblos, see below) is the largest city in northern Lebanon and the second-largest city in the country. Situated 81 km (50 mi) north of the capital Beirut, it is the capital of the North Governorate and the Tripoli District. Tripoli overlooks the eastern Mediterranean Sea, and it is the northernmost seaport in Lebanon. The city is predominantly inhabited by Sunni Muslims, with smaller populations of Alawites and Christians, including Maronites and Armenians among others.\nThe history of Tripoli dates back at least to the 14th century BC. It was called Athar by the Phoenicians, and later Tripolis by the Greek settlers, whence the modern Arabic name Ṭarābulus derives. In the Arab world, Tripoli has been historically known as Ṭarābulus ash-Shām (Arabic: طرابلس الشام, lit. 'Tripoli of the Levant'), to distinguish it from its Libyan counterpart, known as Ṭarābulus al-Gharb (Arabic: طرابلس الغرب‎, lit. 'Tripoli of the West')."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "tripoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 696,
+    "place_id": "gn-2468369",
+    "input": {
+      "place": {
+        "place_id": "gn-2468369",
+        "name": "Gabès",
+        "country": "Tunisia",
+        "subdivision": "Gabès Governorate",
+        "lat": 33.88146,
+        "lon": 10.0982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gabès",
+          "url": "https://en.wikipedia.org/wiki/Gabès",
+          "text": "Gabès ( GAH-bess, UK also  GAH-biss; Arabic: قابس, romanized: Qābis; Tunisian Arabic: ڨابس, romanized: Gābis, pronounced [ˈɡɛːbɪs] ), is the capital of the Gabès Governorate in Tunisia. Situated on the coast of the Gulf of Gabès, the city has a population of 167,863, making it the 6th largest city in Tunisia. Located 327 km southeast of Tunis and 113 km from Sfax, Gabès lies at the delta of the Wadi Qabis, which originates 10 kilometers upstream at Ras al-Oued and serves as its primary water source.  \nHistorically, the town was a Carthaginian settlement known as Tacapae before falling under Roman control. It was later ruined during the 7th-century Arab invasion but was recovered by Sidi Boulbaba, a revered companion of the Prophet Muhammad and a patron of the town. Although it experienced decline under the Ottomans, Gabès saw significant growth under French rule from 1881 to 1955, with the development of key infrastructure, including a railway, road network, and port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "gabes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 703,
+    "place_id": "gn-2267057",
+    "input": {
+      "place": {
+        "place_id": "gn-2267057",
+        "name": "Lisbon",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.72509,
+        "lon": -9.1498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lisbon",
+          "url": "https://en.wikipedia.org/wiki/Lisbon",
+          "text": "Lisbon (  LIZ-bən; Portuguese: Lisboa [liʒˈβoɐ] ) is the capital and most populous city of Portugal, with an estimated population of 658,236 as of 2025, within its administrative limits and 3,353,000 within the metropolis, as of 2025. The city lies on the Atlantic Ocean in the western part of the Iberian Peninsula, fronting the northern shore of the River Tagus.  The western portion of its metro area, the Portuguese Riviera, hosts the westernmost point of Continental Europe, culminating at Cabo da Roca.\nLisbon is one of the oldest cities in the world and the second-oldest European capital city (after Athens), predating other modern European capitals by centuries. Settled by pre-Celtic tribes and later founded and civilised by the Phoenicians, Julius Caesar made it a municipium called Felicitas Julia, adding the term to the name Olisipo. After the fall of the Roman Empire, it was ruled by a series of Germanic tribes from the 5th century, most notably the Visigoths."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "lisbon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 732,
+    "place_id": "gn-1697018",
+    "input": {
+      "place": {
+        "place_id": "gn-1697018",
+        "name": "Ormoc",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.00639,
+        "lon": 124.6075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ormoc",
+          "url": "https://en.wikipedia.org/wiki/Ormoc",
+          "text": "Ormoc (IPA: [ʔoɾˈmok]), officially the City of Ormoc (Cebuano: Dakbayan sa Ormoc; Waray: Syudad han Ormoc; Filipino: Lungsod ng Ormoc), is an independent component city in the Eastern Visayas region of the Philippines. According to the 2024 census, it has a population of 238,545 inhabitants, making it the second most-populous city in the province of Leyte after the provincial capital of Tacloban. Ormoc City is the economic, cultural, commercial and transportation hub of western Leyte.\nOrmoc is an independent component city, not subject to regulation from the Provincial Government of Leyte. However, the city is part of the 4th Congressional District of Leyte together with Albuera, Kananga, Merida, Palompon and Isabel, and statistically grouped under the province by the Philippine Statistics Authority. On November 8, 2013, the city was extensively damaged by Super Typhoon Yolanda (Haiyan), having previously suffered severe destruction and loss of life in 1991 from torrential flooding during Tropical Storm Uring (Thelma)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "ormoc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 734,
+    "place_id": "gn-2655095",
+    "input": {
+      "place": {
+        "place_id": "gn-2655095",
+        "name": "Bournemouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.72048,
+        "lon": -1.8795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bournemouth",
+          "url": "https://en.wikipedia.org/wiki/Bournemouth",
+          "text": "Bournemouth (  BORN-məth) is a coastal resort town and civil parish in the Bournemouth, Christchurch and Poole unitary authority area, in the ceremonial county of Dorset, on the south coast of England. At the 2021 census, the built-up area had a population of 196,455, making it the largest town in Dorset. \nPreviously an uninhabited heathland, visited only by fishermen and occasional smugglers, a health resort was founded in the area by Lewis Tregonwell in 1810. After the Ringwood, Christchurch and Bournemouth Railway opened in 1870, Bournemouth grew into an important resort town, which today attracts over five million visitors annually for its coastline and nightlife.\nThe town is a population centre within the South East Dorset conurbation and is known for its seven-mile stretch of golden sand, with well-known spots including Alum Chine Beach, Durley Chine Beach, and Bournemouth Central Beach. The shoreline continues westward and gradually merges into the affluent Sandbanks area and Poole."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "bournemouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

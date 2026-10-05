@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 6969,
+    "attempt": 6921,
+    "place_id": "gn-3841475",
+    "input": {
+      "place": {
+        "place_id": "gn-3841475",
+        "name": "Perito Moreno",
+        "country": "Argentina",
+        "subdivision": "Santa Cruz",
+        "lat": -46.5905,
+        "lon": -70.92574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perito Moreno, Santa Cruz",
+          "url": "https://en.wikipedia.org/wiki/Perito_Moreno,_Santa_Cruz",
+          "text": "Perito Moreno is a town in the northwest of Santa Cruz Province, Argentina, 25 km east of Lake Buenos Aires. It should not be confused with the Perito Moreno National Park over 300 km south by road, or the Perito Moreno Glacier near El Calafate. The town is the capital of the Lago Buenos Aires Department. It lies on the RN43, a paved road which links Caleta Olivia on the Atlantic coast to Los Antiguos and the Chilean frontier 60 km west, and Ruta 40, running north and south.\nThe town is a centre of cattle ranches and smallholdings producing fruit and vegetables.  Tourism is also an important industry.  Perito Moreno is the closest town to Cueva de las Manos, 170 km south by road, and Parque Laguna.\nIn the 2022 census the town had a population of 7,812."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "perito moreno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "perito",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moreno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6970,
+    "attempt": 6922,
+    "place_id": "gn-3853786",
+    "input": {
+      "place": {
+        "place_id": "gn-3853786",
+        "name": "Ingeniero Jacobacci",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -41.3292,
+        "lon": -69.55015
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ingeniero Jacobacci",
+          "url": "https://en.wikipedia.org/wiki/Ingeniero_Jacobacci",
+          "text": "Ingeniero Jacobacci is a city in Río Negro Province, Argentina. It has a population of 12,000. It is named in honor of Guido Jacobacci, the general director of Ferrocarriles Patagónicos (Patagonian Railways) responsible for the city's rail connection via the Old Patagonian Express in 1916. The line ran between San Antonio Oeste, on the Atlantic Ocean coast, and Bariloche, in the Andes.\nA remote outpost in Patagonia, Jacobacci benefited from its proximity to scenic Lake Carri Laufquen (es) and in 1990, an airport was opened to facilitate tourist arrivals in the area. The line to Esquel is no longer in service as the old locomotive does not run anymore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "ingeniero jacobacci",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ingeniero",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jacobacci",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6971,
+    "attempt": 6923,
+    "place_id": "gn-4164602",
+    "input": {
+      "place": {
+        "place_id": "gn-4164602",
+        "name": "Miramar Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.37437,
+        "lon": -86.35856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miramar Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Miramar_Beach,_Florida",
+          "text": "Miramar Beach is a census-designated place (CDP) in Walton County, Florida, United States. The population was 8,002 at the 2020 census, up from 6,146 at the 2010 census. It is part of the Crestview—Fort Walton Beach–Destin, Florida Metropolitan Statistical Area. Although many other coastal localities in Florida have appended \"Beach\" to their names to distinguish themselves from an adjacent inland or cross-bay municipality – such as Miami Beach, St. Pete Beach, Fort Myers Beach, Panama City Beach, Melbourne Beach, Cocoa Beach, and Jacksonville Beach  – the city of Miramar, Florida is actually over 450 miles (720 km) away in South Florida. Miramar Beach is due east of Destin, Florida. It is often considered to be part of the city of Destin. However, it has its own ZIP code (32550) and is in Walton County, whereas Destin is in Okaloosa County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "miramar beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "miramar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6972,
+    "attempt": 6924,
+    "place_id": "gn-4500541",
+    "input": {
+      "place": {
+        "place_id": "gn-4500541",
+        "name": "Atco",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.76984,
+        "lon": -74.88739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atco, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Atco,_New_Jersey",
+          "text": "Atco is an unincorporated community and census-designated place (CDP) in Waterford Township in Camden County, in the U.S. state of New Jersey. It is part of the Philadelphia-Camden metropolitan area, located 16 miles (26 km) southeast of Camden. Though generally considered part of Waterford Township, a small section of the southern edge of Atco is located in Winslow Township.\nAtco was first listed as a CDP prior to the 2020 census with a population of 9,058.\nAtco was the home of the Atco Raceway, and served as the location for the movie Eddie and the Cruisers. In 2005, an episode of Viva La Bam was shot at the raceway. The area is served as United States Postal Service ZIP Code 08004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "atco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6973,
+    "attempt": 6925,
+    "place_id": "gn-4746457",
+    "input": {
+      "place": {
+        "place_id": "gn-4746457",
+        "name": "Belle Haven",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.78539,
+        "lon": -77.06303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belle Haven, Fairfax County, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Belle_Haven,_Fairfax_County,_Virginia",
+          "text": "Belle Haven is a census-designated place (CDP) in Fairfax County, Virginia, United States. Nearby CDPs are Huntington (northwest), Groveton (southwest) and Fort Hunt (south). The population of Belle Haven was 6,851 at the 2020 census.\nThe CDP is located just south of Old Town Alexandria and bounded on the west by Richmond Highway (U.S. 1) and on the east by the Potomac River. It encompasses Belle Haven, a wealthy subdivision dating from the 1920s, and several adjoining neighborhoods. Some, particularly New Alexandria and Belle View, are among the lowest-lying residential areas of Fairfax County, and sustained extensive flood damage from storms including 2003's Hurricane Isabel and 1972's Hurricane Agnes. The Belleview branch of the Alexandria Post Office is located in Belle Haven, and serves the 22307 ZIP code in which the majority of the CDP falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "belle haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6974,
+    "attempt": 6926,
+    "place_id": "gn-4885444",
+    "input": {
+      "place": {
+        "place_id": "gn-4885444",
+        "name": "Braidwood",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.26503,
+        "lon": -88.21228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braidwood, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Braidwood,_Illinois",
+          "text": "Braidwood is a city in Will and Grundy counties, Illinois, United States, approximately 53 miles (85 km) southwest of Chicago and 18 miles (29 km) south of Joliet. As of the 2020 census, Braidwood had a population of 6,194.\nThe Braidwood Nuclear Generating Station, a nuclear power plant owned by Exelon Corporation, is also located in the area (although the plant's address is actually in the nearby village of Braceville). The station is one of the major employers in the area and provides a significant portion of the electricity used in the Chicago area. The plant has been the subject of controversy concerning a series of leaks since 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "braidwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6975,
+    "attempt": 6927,
+    "place_id": "gn-4935434",
+    "input": {
+      "place": {
+        "place_id": "gn-4935434",
+        "name": "East Longmeadow",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.06454,
+        "lon": -72.51259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Longmeadow, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/East_Longmeadow,_Massachusetts",
+          "text": "East Longmeadow is a town in Hampden County, Massachusetts, United States, in the Pioneer Valley region of Western Massachusetts. It had a population of 16,430 at the 2020 census. East Longmeadow is 5 mi (8.0 km) southeast of downtown Springfield, part of the Springfield Metropolitan Statistical Area. It is 25 mi (40 km) north of Hartford, 88 mi (142 km) southwest of Boston, and 142 mi (229 km) northeast of New York City.\nThe development of East Longmeadow around the turn-of-the century was largely reliant on the brownstone quarrying industry. The industry brought many Swedish immigrants, formerly of Connecticut, along with large French and Italian populations to the area. These immigrants typically labored in the quarries.\nEast Longmeadow hosts an annual Fourth of July Parade, one of the largest Fourth of July parades in Western Massachusetts. East Longmeadow High School also hosts an annual Fourth of July fireworks display, traditionally held on July 3."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "east longmeadow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "longmeadow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6976,
+    "attempt": 6928,
+    "place_id": "gn-4993402",
+    "input": {
+      "place": {
+        "place_id": "gn-4993402",
+        "name": "Freeland",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.52503,
+        "lon": -84.12276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freeland, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Freeland,_Michigan",
+          "text": "Freeland is a census-designated place in Tittabawassee Township, Saginaw County in the U.S. state of Michigan. It is part of the Saginaw-Midland-Bay Metropolitan Area. As of the 2020 census, the CDP population was 7,630.  The CDP covers an area in the central portion of Tittabawassee Township. The Freeland post office, ZIP code 48623, serves nearly the entire township, as well as portions of Midland and Williams townships to the north, Frankenlust and Kochville townships to the east, Thomas and Richland townships to the south, and Ingersoll Township to the west.\nIt is the location of MBS International Airport, which serves three major nearby cities: Saginaw, Bay City and Midland.\nIt is also the location of the Saginaw Correctional Facility, which is a level I, II and IV maximum security prison."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "freeland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6977,
+    "attempt": 6929,
+    "place_id": "gn-5098247",
+    "input": {
+      "place": {
+        "place_id": "gn-5098247",
+        "name": "Franklin Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.43899,
+        "lon": -74.53515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franklin Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Franklin_Park,_New_Jersey",
+          "text": "Franklin Park is an unincorporated community and census-designated place (CDP) located within Franklin Township, in Somerset County, in the U.S. state of New Jersey. As of the 2020 census, Franklin Park had a population of 13,430. Route 27 (historically known as Old Road/King's Highway and once part of the Lincoln Highway system) bisects the village and serves as the dividing line between the two counties. The adjacent sections of South Brunswick and North Brunswick, Middlesex County on the east side of Route 27 are also known as Franklin Park, but are not included within the CDP's boundaries.\nThe area is served as United States Postal Service ZIP Code 08823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "franklin park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "franklin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6978,
+    "attempt": 6930,
+    "place_id": "gn-5116603",
+    "input": {
+      "place": {
+        "place_id": "gn-5116603",
+        "name": "Endwell",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.11285,
+        "lon": -76.02103
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Endwell, New York",
+          "url": "https://en.wikipedia.org/wiki/Endwell,_New_York",
+          "text": "Endwell is a hamlet (and census-designated place) located in the town of Union in Broome County, New York, United States. As of the 2020 census, Endwell had a population of 11,762.\nEndwell is situated between the villages of Endicott and Johnson City. It is west of Binghamton and is considered a suburb of that city.\nEndwell is also the home of a popular local park, Highland Park, well known in the area for its annual Fourth of July fireworks display as well as its classic carousel. Although most children residing in Endwell that attend public schools are served through the Maine-Endwell School District, some attend the Union-Endicott School District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "endwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6979,
+    "attempt": 6931,
+    "place_id": "gn-5126180",
+    "input": {
+      "place": {
+        "place_id": "gn-5126180",
+        "name": "Maspeth",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72316,
+        "lon": -73.91264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maspeth, Queens",
+          "url": "https://en.wikipedia.org/wiki/Maspeth,_Queens",
+          "text": "Maspeth is a residential and commercial community in the borough of Queens in New York City. It was founded in the early 17th century by Dutch and English settlers. Neighborhoods sharing borders with Maspeth are Woodside to the north; Sunnyside to the northwest; Greenpoint, Brooklyn, to the west; East Williamsburg, Brooklyn, to the southwest; Fresh Pond and Ridgewood to the south; and Middle Village and Elmhurst to the east.\nMaspeth is located in Queens Community District 5 and its ZIP Code is 11378. It is patrolled by the New York City Police Department's 104th Precinct. Politically, Maspeth is represented by the New York City Council's 26th and 30th districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "maspeth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6980,
+    "attempt": 6932,
+    "place_id": "gn-5218829",
+    "input": {
+      "place": {
+        "place_id": "gn-5218829",
+        "name": "West Oak Lane",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.06928,
+        "lon": -75.16629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Oak Lane, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/West_Oak_Lane,_Philadelphia",
+          "text": "In the mid-1800s, Joseph Wharton, founder of the Wharton School at the University of Pennsylvania and co-founder of Bethlehem Steel, owned much of West Oak Lane.  Although it was predominantly Caucasian from its inception until the mid-1960s, West Oak Lane is now one of Philadelphia's middle-class African American communities.  \nThe neighborhood has distinct architecture that separates it from surrounding neighborhoods.  Along with larger and sometimes detached houses, West Oak Lane has many tree-lined streets and small yards.  In 2005, the 19126 and 19138 ZIP Codes, which contain West Oak Lane, had a median home sale price of $113,200. This was a 34-percent increase over the median price in 2004. The median home sale price as of April 2015 was $122,941, which was a 1.2% percent increase from the previous year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "west oak lane",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lane",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6981,
+    "attempt": 6933,
+    "place_id": "gn-5370542",
+    "input": {
+      "place": {
+        "place_id": "gn-5370542",
+        "name": "Marina del Rey",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.98162,
+        "lon": -118.45371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marina del Rey, California",
+          "url": "https://en.wikipedia.org/wiki/Marina_del_Rey,_California",
+          "text": "Marina del Rey (Spanish for \"Docks of the King\") is an unincorporated seaside community in Los Angeles County, California, United States. The marina, which includes residential, light commercial, and office facilities, is a major boating and water recreation destination of the Greater Los Angeles area. It is North America's largest man-made small-craft harbor with slips for approximately 5,000 boats. The area is a popular tourism destination for both land and water activities, such as paddleboard and kayak rentals, dining cruises, and yacht charters. Land activities include bicycling on several bicycle paths, walking paths along the waterfront, and birdwatching (birding). Wildlife watching opportunities include California sea lions and harbor seals. Dolphins and whales occasionally visit the deeper waters of the harbor. This Westside locale is approximately 4 miles (6.4 km) south of Santa Monica, 4 miles (6.4 km) north of Los Angeles International Airport, and 12.5 miles (20.1 km) west-southwest of downtown Los Angeles. It is surrounded by the City of Los Angeles.\nThe harbor is owned by Los Angeles County and managed by the Department of Beaches and Harbors (DBH), but the waters are environmentally regulated by the state and the federal governments through their many agencies and departments with overlapping oversight. The Los Angeles Times in a 1997 editorial called the harbor \"perhaps the county's most valuable resource.\" For statistical purposes, the United States Census Bureau has defined Marina del Rey as a census-designated place (CDP). The population of the CDP was 11,373 at the 2020 census. The census definition of the area may not precisely correspond to local understanding of the area with the same name; for example, the 90292 ZIP Code includes all of Marina del Rey and portions of neighboring Los Angeles (including parts of Venice) as well as the far western portion of Culver City, and has a population of 21,576, more than double that of the CDP. Many residents of the 90292 ZIP code consider themselves to live in Marina del Rey even if they in fact live outside the official boundaries of the CDP."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 341
+    },
+    "banned_terms": [
+      {
+        "term": "marina del rey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6982,
+    "attempt": 6934,
+    "place_id": "gn-5779068",
+    "input": {
+      "place": {
+        "place_id": "gn-5779068",
+        "name": "North Salt Lake",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.84856,
+        "lon": -111.90688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Salt Lake, Utah",
+          "url": "https://en.wikipedia.org/wiki/North_Salt_Lake,_Utah",
+          "text": "North Salt Lake is a city in Davis County, Utah, United States. It is part of the Ogden–Clearfield, Utah Metropolitan Statistical Area. The population was 16,322 at the 2010 census, which had risen to 21,907 as of 2020.\nThe city is often casually known as North Salt Lake City as it shares a municipal boundary with Salt Lake City to the south, though the city's actual corporate name is \"The City of North Salt Lake\". The error also has been solidified with the Federal Communications Commission, which has radio station KALL (700) officially licensed to \"North Salt Lake City\", though that station serves the general Salt Lake City market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "north salt lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6983,
+    "attempt": 6935,
+    "place_id": "gn-5854571",
+    "input": {
+      "place": {
+        "place_id": "gn-5854571",
+        "name": "Waimea",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 20.02323,
+        "lon": -155.67288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waimea, Hawaiʻi County, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Waimea,_Hawaiʻi_County,_Hawaii",
+          "text": "Waimea is a landlocked community in Hawaiʻi County, Hawaii, United States. Waimea is the center for ranching activities and paniolo culture. The name Waimea means reddish water. For statistical purposes, the United States Census Bureau has defined that community as a census-designated place (CDP). The population was 7,028 at the 2000 census and 9,212 at the 2010 census. Since each U.S. state cannot have more than one post office of the same name, and there is a post office in Waimea, Kauai County, the official U.S. Post Office designation for Waimea is Kamuela, although this name is only used by the post office, not by locals nor road signage.\nThe Parker Ranch in and around Waimea is the largest privately owned cattle ranch in the United States, and the annual Fourth of July rodeo is a major event. The Waimea Cherry Blossom Heritage Festival is held annually in the first week of February.\nWaimea is home to the headquarters of two astronomical observatories located on Mauna Kea, the W. M. Keck Observatory and the Canada–France–Hawaii Telescope. It is headquarters of the International Lunar Observatory Association.\nWaimea is the home of Hawaii Preparatory Academy and Parker School, two of the top independent schools in Hawaii."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "waimea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6984,
+    "attempt": 6936,
+    "place_id": "gn-5941761",
+    "input": {
+      "place": {
+        "place_id": "gn-5941761",
+        "name": "Dorchester",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.98339,
+        "lon": -81.06643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dorchester, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Dorchester,_Ontario",
+          "text": "Dorchester is a town in Ontario whose name first applied to the township and honours Sir Guy Carleton, Lord Dorchester (1724-1808). The name was changed from Dorchester Station on May 3, 1961. Dorchester is the residential and commercial core of the municipality of Thames Centre, in Southwestern Ontario, Canada, a few kilometres directly east of the city of London, Ontario. According to the 2016 census, the town has a population of 3,911.\nThe local arena underwent a $10 million expansion and opened on November 2, 2010. This expansion added a second NHL-sized ice pad, a gymnasium, and many other facilities to go along with upgrades to the existing part. It is now home to the Dorchester Dolphins Junior C hockey team. Much of the funding raised was done by local events such as Raise the Roof and TC Rocks, an outdoor concert.\nInspired by the 1989 movie \"Field of Dreams\", Thames Centre is currently constructing a new outdoor recreation centre complex at 3245 Hamilton Rd. The new recreation centre will have a baseball diamond, three full size soccer pitches, two mini-pitches, a pond, and a proposed clubhouse. The total cost is an estimated $200,000. In the master plan, the municipality wishes to make the recreation centre in recognition of the need for children, youths, adults, masters, and people with disabilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "dorchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6985,
+    "attempt": 6937,
+    "place_id": "gn-712590",
+    "input": {
+      "place": {
+        "place_id": "gn-712590",
+        "name": "Bilohorodka",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 50.3898,
+        "lon": 30.22726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilohorodka, Kyiv Oblast",
+          "url": "https://en.wikipedia.org/wiki/Bilohorodka,_Kyiv_Oblast",
+          "text": "Bilohorodka (Ukrainian: Білогородка) is a village in Bucha Raion, Kyiv Oblast of north Ukraine. It hosts the administration of Bilohorodka rural hromada, one of the hromadas of Ukraine, formed on 12 June 12 2020 and including nine neighbouring villages: Bobrytsia, Horenytsia, Myzychi, Sviatopetrivske, Hnativka, Stoianka, Shevchenko, Nehrashi, and Luka.\nOne of the community's nine component villages, Hnativka, is perhaps better known by its Hebrew and Yiddish name Anatevka, and is the site of a modern-day refugee village which was named after the fictional town of Anatevka from the Sholem Aleichem stories, including Fiddler on the Roof, stories which were set in this same area of the former Kiev Governorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "bilohorodka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6986,
+    "attempt": 6938,
+    "place_id": "gn-726546",
+    "input": {
+      "place": {
+        "place_id": "gn-726546",
+        "name": "Svilengrad",
+        "country": "Bulgaria",
+        "subdivision": "Haskovo",
+        "lat": 41.76836,
+        "lon": 26.19775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Svilengrad",
+          "url": "https://en.wikipedia.org/wiki/Svilengrad",
+          "text": "Svilengrad (Bulgarian: Свиленград; Greek: Σβίλενγκραντ; Ottoman Turkish: Cisr-i Mustafapaşa) is a town in Haskovo Province, south-central Bulgaria, situated at the tripoint of Bulgaria, Turkey, and Greece. It is the administrative centre of the homonymous Svilengrad Municipality.\nSvilengrad lies on the Maritsa River in southeastern Bulgaria, close to the borders with both Greece and Turkey. The town is about 2 km (1.2 mi) north of the Greek border and 14 km (8.7 mi) northwest of the Turkish border. The Greek village of Ormenio lies to the south, while Edirne in Turkey is about 30 km to the east.\nThe town’s position near two international borders has strongly influenced its development. The main road and railway routes between Bulgaria and Turkey pass through the area, and customs, freight transport and other border-related services are important to the local economy. The Kapitan Andreevo border crossing, southeast of Svilengrad, is one of the principal road crossings between Bulgaria and Turkey.\nSvilengrad occupies part of the broad valley of the Maritsa. The Sakar Mountains rise to the northeast, while the easternmost foothills of the Rhodope Mountains lie to the southwest. The surrounding lowlands have a relatively warm climate and are used for agriculture, including vineyards and fruit growing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "svilengrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6987,
+    "attempt": 6939,
+    "place_id": "gn-727838",
+    "input": {
+      "place": {
+        "place_id": "gn-727838",
+        "name": "Radnevo",
+        "country": "Bulgaria",
+        "subdivision": "Stara Zagora",
+        "lat": 42.3,
+        "lon": 25.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radnevo",
+          "url": "https://en.wikipedia.org/wiki/Radnevo",
+          "text": "Radnevo (Bulgarian: Раднево Bulgarian pronunciation: [ˈradnɛvo]) is a town in southern Bulgaria, part of Stara Zagora Province, located in the eastern Upper Thracian Lowlands. It is the administrative centre of the homonymous Radnevo Municipality. As of December 2009, the town had a population of 13,384.\nThe far east corner of Radnevo is the location of the Maritsa Iztok-2 power station. This power station was ranked as the industrial facility that is causing the highest damage costs to health and the environment in Bulgaria and the entire European Union.\nNotable natives include Bulgarian Agrarian National Union politician Dimitar Dragiev (1869–1943), poet Geo Milev (1895–1925), Bulgarian international footballer Andrey Zhelyazkov (b. 1952)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "radnevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6988,
+    "attempt": 6940,
+    "place_id": "gn-730518",
+    "input": {
+      "place": {
+        "place_id": "gn-730518",
+        "name": "Kavarna",
+        "country": "Bulgaria",
+        "subdivision": "Dobrich",
+        "lat": 43.43601,
+        "lon": 28.33953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kavarna",
+          "url": "https://en.wikipedia.org/wiki/Kavarna",
+          "text": "Kavarna (Bulgarian: Каварна [kɐˈvarnɐ], Greek: Καβάρνα) is a Black Sea coastal town and seaside resort in the Dobruja region of northeastern Bulgaria. It lies 42 kilometres (26 miles) northeast of Varna, 43 km (27 mi) from Dobrich, and 43 km (27 mi) south of the border with Romania. It is the principal town of Kavarna Municipality, part of Dobrich Province. As of December 2009, the town had a population of 11,397. A little yacht port, a fishing base, a spacious beach and a resort complex exist in the town. The landmark Cape Kaliakra is located a few kilometers to the east, as is the tiny beachfront resort of Rusalka. Three 18-hole golf courses with villa communities and marinas are being developed nearby, two of the courses are designed by Gary Player and one by Ian Woosnam.\nDuring the 2000s, the town became famous with the annual Kaliakra Rock Fest featuring famous rock bands from around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "kavarna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

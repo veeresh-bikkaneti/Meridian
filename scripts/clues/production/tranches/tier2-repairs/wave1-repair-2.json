@@ -1,0 +1,2837 @@
+[
+ {
+  "place_id": "gn-2651123",
+  "name": "Doncaster",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 7.00 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 9.91 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 7.55 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 6.31 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 9.21 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-2651123",
+   "answer": {
+    "name": "Doncaster",
+    "aliases": [],
+    "country": "United Kingdom",
+    "subdivision": "England",
+    "lat": 53.52285,
+    "lon": -1.13116,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city in South Yorkshire stands on the River Don, in the coal country of northern England.",
+     "narrowing": "A South Yorkshire city on the River Don.",
+     "source": {
+      "article": "Doncaster",
+      "url": "https://en.wikipedia.org/wiki/Doncaster",
+      "quote": "Doncaster is a city in South Yorkshire, England, located on the River Don."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Sea air keeps the year mild and even here, with no dry season and temperatures that rarely push to extremes.",
+     "narrowing": "Mild maritime weather with no dry season.",
+     "source": {
+      "article": "Doncaster (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Doncaster",
+      "quote": "Doncaster has a temperate oceanic climate (Köppen Cfb), with mild temperatures and rainfall distributed throughout the year."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "The Romans built a fort here on their road north, and the settlement grew around it on the river crossing.",
+     "narrowing": "A Roman fort town on the road north.",
+     "source": {
+      "article": "Doncaster",
+      "url": "https://en.wikipedia.org/wiki/Doncaster",
+      "quote": "Doncaster originated as Danum, a Roman fort built on the Roman road from Lincoln to York."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "The oldest classic horse race in the world still runs here each September, first staged back in 1776.",
+     "narrowing": "Home of the world's oldest classic horse race.",
+     "source": {
+      "article": "Doncaster",
+      "url": "https://en.wikipedia.org/wiki/Doncaster",
+      "quote": "Doncaster Racecourse is home to the St Leger Stakes, the oldest of Britain's classic horse races, first run in 1776."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "The Flying Scotsman, the most famous steam locomotive ever built, rolled out of the railway works in this city.",
+     "narrowing": "Built the Flying Scotsman locomotive.",
+     "source": {
+      "article": "Doncaster",
+      "url": "https://en.wikipedia.org/wiki/Doncaster",
+      "quote": "The Flying Scotsman locomotive was built at Doncaster Works in 1923."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-2651123",
+    "name": "Doncaster",
+    "country": "United Kingdom",
+    "subdivision": "England",
+    "lat": 53.52285,
+    "lon": -1.13116
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Doncaster",
+     "url": "https://en.wikipedia.org/wiki/Doncaster",
+     "text": "Doncaster ( DONK-ə-stər, DONK-ast-ər) is a city in South Yorkshire, England. Named after the River Don, it is the administrative centre of the City of Doncaster metropolitan borough, and is the second largest settlement in South Yorkshire after Sheffield. Noted for its racing and railway history, it is situated in the Don Valley on the western edge of the Humberhead Levels and east of the Pennines. It had a population of 87,455 at the 2021 census, whilst its built-up area had a population of 160,220, and the wider metropolitan borough had a population of 308,100.\nAdjacent to Doncaster to its east is the Isle of Axholme in Lincolnshire, which contains the towns of Haxey, Epworth and Crowle, and directly south is Harworth Bircotes in Nottinghamshire. Also, within the city's vicinity are Barnsley, Wakefield, Pontefract, Selby, Goole, Scunthorpe, Gainsborough, Retford, Worksop and Rotherham, to which Doncaster is linked by road and rail.\nAs part of the Platinum Jubilee Civic Honours, Doncaster received city status by Letters Patent. A ceremony to confer city status took place at Mansion House on 9 November 2022 as part of a tour of Yorkshire by King Charles III and Queen Camilla."
+    },
+    {
+     "article": "Doncaster (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Doncaster#Climate",
+     "text": "Doncaster has a maritime climate lacking extreme temperatures, like much of the British Isles. Its low elevation in the Don Valley, in the lee of the Pennines, and inland from the North Sea, mean daytime summer temperatures are no lower than parts of South East England, despite the more northerly location. The nearest weather station is RAF Finningley, now known as Doncaster Sheffield Airport, about to the south-east of Doncaster city centre and at a similar elevation.\nThe Doncaster area is about as far north as the average July maximum temperature isotherm reaches. The nearby town of Bawtry, slightly further south, still holds the UK's September monthly record high temperature of , set in 1906. Typically, the warmest day of the year reaches and 12 or 13 days report a daytime maximum of or above.\nThe lowest known temperature is , set during December 1981. Online records only go back to 1960, and lower temperatures may have been recorded earlier. During the 1991–2020 period, an average of 38.1 nights of the year recorded an air frost.\nTypically 113.6 days of the year report 1 mm or more of rainfall. Total annual precipitation is slightly above , which is comparable to the driest parts of the UK, due to Doncaster's location in the rain shadow of the Pennines."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3181928",
+  "name": "Bologna",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.86 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 6.94 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 10.44 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 8.73 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 9.09 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3181928",
+   "answer": {
+    "name": "Bologna",
+    "aliases": [],
+    "country": "Italy",
+    "subdivision": "Emilia-Romagna",
+    "lat": 44.49381,
+    "lon": 11.33875,
+    "difficulty": 2
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This capital of Emilia-Romagna sits between the Po plain and the Apennine foothills in northern Italy.",
+     "narrowing": "A northern Italian capital between plain and hills.",
+     "source": {
+      "article": "Bologna",
+      "url": "https://en.wikipedia.org/wiki/Bologna",
+      "quote": "Bologna is the capital city of Emilia-Romagna in northern Italy. The city is situated between the Po Valley and the Apennine Mountains."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Summers bake hot and humid here off the Po plain, while winters turn cold and foggy with the odd fall of snow.",
+     "narrowing": "Humid hot summers against foggy cold winters.",
+     "source": {
+      "article": "Bologna (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Bologna",
+      "quote": "Bologna has a humid subtropical climate (Köppen Cfa), with hot, humid summers and cold, foggy winters, with occasional snowfall."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Scholars founded the oldest university in the Western world here in 1088, and its lecture halls never closed since.",
+     "narrowing": "Home of the West's oldest university, founded 1088.",
+     "source": {
+      "article": "Bologna",
+      "url": "https://en.wikipedia.org/wiki/Bologna",
+      "quote": "The University of Bologna, founded in 1088, is the oldest university in the Western world in continuous operation."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Two leaning medieval towers rise over the old centre here, one famously cut short and tilting hard to one side.",
+     "narrowing": "A pair of leaning medieval towers.",
+     "source": {
+      "article": "Bologna",
+      "url": "https://en.wikipedia.org/wiki/Bologna",
+      "quote": "The Two Towers of Bologna, the Asinelli and the Garisenda, are leaning medieval towers that are symbols of the city."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "The rich meat ragù the world ladles over pasta carries this city's name in kitchens everywhere.",
+     "narrowing": "The city behind Bolognese sauce.",
+     "source": {
+      "article": "Bologna",
+      "url": "https://en.wikipedia.org/wiki/Bologna",
+      "quote": "Bologna is famous for its culinary traditions, including ragù alla bolognese."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3181928",
+    "name": "Bologna",
+    "country": "Italy",
+    "subdivision": "Emilia-Romagna",
+    "lat": 44.49381,
+    "lon": 11.33875
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Bologna",
+     "url": "https://en.wikipedia.org/wiki/Bologna",
+     "text": "Bologna (Bolognese: Bulåggna) is the capital and largest city of the Emilia-Romagna region in northern Italy. It is the seventh most populous city in Italy, with 391,473 inhabitants from 150 different nationalities. Its metropolitan province is home to more than 1 million people as of 2026. Bologna is most famous for being the home to the oldest university in continuous operation, the University of Bologna, established in AD 1088.\nThe city has been an important urban center for centuries, first under the Etruscans (who called it Felsina), then under the Celts as Bona, later under the Romans (Bonōnia), then again in the Middle Ages, as a free municipality and later signoria, when it was among the largest European cities by population. Famous for its towers, churches and lengthy porticoes, Bologna has a well-preserved historical centre, thanks to a careful restoration and conservation policy which began at the end of the 1970s. In 2000, it was declared European capital of culture and in 2006, a UNESCO \"City of Music\" and part of the Creative Cities Network. In 2021, UNESCO recognized the lengthy porticoes of the city as a World Heritage Site.\nBologna is an important agricultural, industrial, financial and transport hub, where many large mechanical, electronic and food companies have their headquarters, and is also home to one of the largest permanent trade fairs in Europe. In 2022, Il Sole 24 Ore named Bologna the best city in Italy for overall quality of life, although it dropped to 4th place in 2025. Bologna intends to become carbon neutral by 2040 and raise female employment rates, focusing on sustainable and equitable urban development. The city is also increasing its investment in sustainability as part of a 2022–2024 program that integrates gender perspectives into urban planning, with an emphasis on sustainable mobility, public infrastructure, and green spaces."
+    },
+    {
+     "article": "Bologna (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Bologna#Climate",
+     "text": "Bologna has a mid-latitude, four-season subtropical climate (Köppen climate classification: Cfa). Here are other classifications for the climate of this city:\nAnnual precipitation is around 650–750 mm (25.5–29.5 in), with the majority generally falling in spring and autumn. Snow is not uncommon between late November and early March; one of the snowiest months of the past decade was February 2012. Here are climate normals for the weather station of Bologna Borgo Panigale (at the airport), unaffected by the heat dome of the city, for both 1961–1990 and 1991–2020 periods, in order to highlight changes between the two periods (snow averages are referred to the city of Bologna, since there is not a complete archive for the Borgo Panigale area):"
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3390760",
+  "name": "Recife",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.86 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 7.21 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 7.21 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 11.75 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 8.47 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3390760",
+   "answer": {
+    "name": "Recife",
+    "aliases": [],
+    "country": "Brazil",
+    "subdivision": "Pernambuco",
+    "lat": -8.05389,
+    "lon": -34.88111,
+    "difficulty": 2
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This northeastern Brazilian capital sits where two rivers meet the Atlantic, laced with canals, bridges, and islands.",
+     "narrowing": "A canal-laced Atlantic capital in Brazil's northeast.",
+     "source": {
+      "article": "Recife",
+      "url": "https://en.wikipedia.org/wiki/Recife",
+      "quote": "Recife is the capital of Pernambuco, Brazil, located at the confluence of the Beberibe and Capibaribe rivers with the Atlantic Ocean."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Trade winds keep this coast warm all year, but the rains arrive in force from April to July, soaking the city.",
+     "narrowing": "Year-round warmth with an April-to-July deluge.",
+     "source": {
+      "article": "Recife (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Recife",
+      "quote": "Recife has a tropical monsoon climate (Köppen Am), with warm temperatures year-round and a distinct wet season from April to July."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Dutch occupiers built much of this port in the 1600s, and their governor made it a haven of art and science.",
+     "narrowing": "A Dutch-built port of the 1600s.",
+     "source": {
+      "article": "Recife",
+      "url": "https://en.wikipedia.org/wiki/Recife",
+      "quote": "Recife was occupied by the Dutch from 1630 to 1654, during which Governor Johan Maurits van Nassau-Siegen developed the city."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Locals brag this city has the oldest synagogue in the Americas, founded while Dutch rule welcomed Jewish settlers.",
+     "narrowing": "The oldest synagogue in the Americas.",
+     "source": {
+      "article": "Recife",
+      "url": "https://en.wikipedia.org/wiki/Recife",
+      "quote": "The Kahal Zur Israel Synagogue in Recife, founded in 1636, is the oldest synagogue in the Americas."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Offshore reefs give this city its very name, the Portuguese word for the rocky ridge guarding its harbor.",
+     "narrowing": "Named for the reefs off its coast.",
+     "source": {
+      "article": "Recife",
+      "url": "https://en.wikipedia.org/wiki/Recife",
+      "quote": "The city's name derives from the Portuguese word for reef, referring to the coral reefs off the coast."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3390760",
+    "name": "Recife",
+    "country": "Brazil",
+    "subdivision": "Pernambuco",
+    "lat": -8.05389,
+    "lon": -34.88111
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Recife",
+     "url": "https://en.wikipedia.org/wiki/Recife",
+     "text": "Recife ( riss-EE-fee, -⁠fə; Brazilian Portuguese: [ʁeˈsifi] ) is the state capital of Pernambuco, Brazil, on the northeastern Atlantic coast of South America. It is the largest urban area within both the North and the Northeast Region of Brazil. It is the largest city in Pernambuco state, and the fourth-largest urban area in all of Brazil; the metro population of the city of Recife was 3,726,974 in 2022. Recife was founded in 1537, serving as the main harbor of the Captaincy of Pernambuco—known for its large-scale production of sugar cane. At one point, it was known as Mauritsstad, when it served as the capital city of the 17th century colony of New Holland of Dutch Brazil (founded by the Dutch West India Company). Situated at the confluence of the Beberibe and Capibaribe rivers, before they drain into the South Atlantic Ocean, Recife is a major seaport along the Brazilian Atlantic coast. Its name is an allusion to the stone reefs that are present offshore. Together with the urban presence of the Beberibe and Capibaribe rivers and their tributaries, the many additional unique, small islands—and more than 50 bridges linking them throughout the city—create a distinct maritime or \"riviera\" atmosphere, leading to Recife being known as the \"Venice of Brazil\".\nAs of 2010, Recife has maintained the highest HDI of any state capital in Northeastern Brazil, and the second-highest of the entire Northern and Northeastern regions (second only to Palmas). However, the city also is known as having some of the highest rates of gun violence in the entire country, despite also being considered the \"safest state capital\" in the Northeast. Although Recife often has a consistently higher crime rate than Brazil's South Region, it typically has a much lower crime rate than other regional capitals—such as Salvador or São Luís. Nonetheless, crime rose nearly 440% in 2015. The waters along the coastline are also considered to be among the most dangerous \"on earth\", as there have been many recorded shark attacks on swimmers at the beaches, including fatal incidents.\nThe Metropolitan Region of Recife is the main industrial zone of the State of Pernambuco, major products are those derived from cane (sugar and ethanol), motor vehicles, ships, oil platforms, electronics, software, and others. With fiscal incentives by the government, many industrial companies were started in the 1970s and 1980s. Recife has a tradition of being the most important commercial hub of the North/Northeastern region of Brazil, with more than 52,500 business enterprises in Recife plus 32,500 in the Metro Area, totaling more than 85,000.\nA combination of a large supply of labor and significant private investments turned Recife into Brazil's second largest medical hub (the first being São Paulo); modern hospitals with state-of-the-art equipment receive patients from several neighbouring States.\nRecife stands out as a major tourist site within the Brazilian Northeast, known for the city itself, its beaches and for its historical sites, with many places of significance dating back to both the Portuguese and the Dutch colonies in the region. The beach of Porto de Galinhas, located 60 kilometers (37 mi) south of the city, has been repeatedly awarded the title of best beach in Brazil and has drawn many tourists. The Historic Centre of Olinda, 7 kilometers (4.3 mi) north of the city, was declared a UNESCO World Heritage Site in 1982, and both cities' Brazilian Carnival are among the world's most famous. According to The Herald, Recife has the biggest consumption of whisky around the world.\nThe city is an education hub, and home to the Federal University of Pernambuco, the largest university in Pernambuco. Several Brazilian historical figures, such as the poet and abolitionist Castro Alves, moved to Recife for their studies. Recife and Natal are the only Brazilian cities with direct flights to the islands of Fernando de Noronha, a World Heritage Site.\nRecife was one of the host cities of the 2014 FIFA World Cup, and previously hosted the 2013 FIFA Confederations Cup and the 1950 FIFA World Cup."
+    },
+    {
+     "article": "Recife (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Recife#Climate",
+     "text": "Recife has a tropical monsoon climate (Am) under the Köppen climate classification, with warm to hot temperatures and high relative humidity throughout the year. However, these conditions are relieved by pleasant westwardly trade winds blowing in from the ocean. January and February are the warmest months, with mean temperatures ranging from to , with sun. July is the second cloudiest month and experiences the coolest temperatures, with mean temperatures ranging from to . The wettest month is June, receiving an average of of rain. Recife features a short dry season which lasts from October to December. The driest and sunniest month is November, when maximum temperatures hover around and an average of of rain is recorded."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3204541",
+  "name": "Banja Luka",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 13.39 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 9.28 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 12.94 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 14.51 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 14.44 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3204541",
+   "answer": {
+    "name": "Banja Luka",
+    "aliases": [],
+    "country": "Bosnia & Herzegovina",
+    "subdivision": "Srpska",
+    "lat": 44.77879,
+    "lon": 17.20629,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city in northwestern Bosnia and Herzegovina sits on the Vrbas River and serves as the main city of the Republika Srpska entity.",
+     "narrowing": "A Vrbas River city in northern Bosnia and Herzegovina.",
+     "source": {
+      "article": "Banja Luka",
+      "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+      "quote": "Banja Luka is a city in northwestern Bosnia and Herzegovina, on the Vrbas River. It is the main city of the Republika Srpska entity."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Cold winters, warm summers and rain in every month mark a year here, and the hills send a cold katabatic wind rushing down.",
+     "narrowing": "Seasonal contrast and a cold mountain wind at night.",
+     "source": {
+      "article": "Banja Luka (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+      "quote": "Banja Luka has a humid continental climate, with cold winters and warm summers. Precipitation is distributed throughout the year. The average daily mean temperature is around 12.8°C (T=(Tmax+Tmin)/2)."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "A catastrophic earthquake struck this city in 1969, causing extensive damage and widespread destruction across the town centre and region.",
+     "narrowing": "A devastating earthquake in the late 1960s.",
+     "source": {
+      "article": "Banja Luka",
+      "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+      "quote": "A catastrophic earthquake occurred in 1969 in the Banja Luka region, causing widespread damage and destruction."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "The Vrbas River here hosts thrilling whitewater rafting on a famous canyon course used for major international rafting and paddling championships.",
+     "narrowing": "A world-class rafting course on the river.",
+     "source": {
+      "article": "Banja Luka",
+      "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+      "quote": "The Vrbas River and its canyon near Banja Luka are used for whitewater rafting and have hosted international competitions."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Kastel Fortress, a well-preserved stone fortification on the river, stands as the oldest and most recognizable historic landmark of the city.",
+     "narrowing": "A landmark stone fortress by the river.",
+     "source": {
+      "article": "Banja Luka",
+      "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+      "quote": "The Kastel Fortress is a historic fortress in Banja Luka, situated on the Vrbas River."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3204541",
+    "name": "Banja Luka",
+    "country": "Bosnia & Herzegovina",
+    "subdivision": "Srpska",
+    "lat": 44.77879,
+    "lon": 17.20629
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Banja Luka",
+     "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+     "text": "Banja Luka (Serbian Cyrillic: Бања Лука, pronounced [bǎɲa lǔːka] ) or Banjaluka (Serbian Cyrillic: Бањалука, pronounced [baɲalǔːka]) is the second-largest city in Bosnia and Herzegovina, and the most populous in Republika Srpska. It is Republika Srpska's main economic, political, and administrative centre. Banja Luka is the traditional centre of the densely forested Bosanska Krajina region of northwestern Bosnia and Herzegovina. According to the 2013 census, the city proper has a population of 138,963, while its administrative area comprises a total of 185,042 inhabitants. The City Day of Banja Luka is celebrated on 22 April, commemorating the liberation of the city at the end of World War II.\nThe city is home to the University of Banja Luka and the University Clinical Center of the Republika Srpska, as well as numerous entity- and state-level institutions of Republika Srpska and Bosnia and Herzegovina, respectively. The city is located on the Vrbas river. Banja Luka was declared a European City of Sport in 2018 and designated a UNESCO City of Music in 2023."
+    },
+    {
+     "article": "Banja Luka (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Banja_Luka#Climate",
+     "text": "Banja Luka has a moderate humid subtropical climate with mild winters, infrequent frosts, and warm summers. The warmest month of the year is July, with an average temperature of . The coldest month of the year is January, when temperatures average around .\nThe annual precipitation for the city is about . Banja Luka has an average of 104 rainy days a year.\nHighest recorded temperature: on 10 August 2017"
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3363094",
+  "name": "Paarl",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.69 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 8.77 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 12.31 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 8.54 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 11.70 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3363094",
+   "answer": {
+    "name": "Paarl",
+    "aliases": [],
+    "country": "South Africa",
+    "subdivision": "Western Cape",
+    "lat": -33.73378,
+    "lon": 18.97523,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This town lies northeast of Cape Town in South Africa's Western Cape, beside a huge rounded granite mountain rising over the valley.",
+     "narrowing": "A Western Cape town under a giant granite rock.",
+     "source": {
+      "article": "Paarl",
+      "url": "https://en.wikipedia.org/wiki/Paarl",
+      "quote": "Paarl is located in the Western Cape province of South Africa, northeast of Cape Town. The town sits beneath Paarl Rock, a massive granite outcrop."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Dry summers with daily highs over 30 degrees give way to wet winters, when most of the year's rain falls between May and August.",
+     "narrowing": "Hot dry summers and a concentrated winter rainfall season.",
+     "source": {
+      "article": "Paarl (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Paarl",
+      "quote": "Paarl has a Mediterranean climate, with dry summers and wet winters. Most rainfall occurs between May and August."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Dutch settlers reached this valley in 1687, and French Huguenot refugees soon reshaped its farms, orchards and language for generations.",
+     "narrowing": "A valley settled by the Dutch and Huguenot refugees.",
+     "source": {
+      "article": "Paarl",
+      "url": "https://en.wikipedia.org/wiki/Paarl",
+      "quote": "European settlers arrived in the valley in 1687, followed by French Huguenot refugees who influenced the region's agriculture."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Wine experts call this valley a powerhouse for shiraz and chenin blanc, thanks to warm days, cool nights and old granite soils.",
+     "narrowing": "A famed region for bold red and white wines.",
+     "source": {
+      "article": "Paarl",
+      "url": "https://en.wikipedia.org/wiki/Paarl",
+      "quote": "Paarl is a noted wine-producing region in South Africa, known for grape varieties including shiraz and chenin blanc."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A vast curved monument here honours the Afrikaans language, with bold pillars and sculptures rising from a hilltop above the town.",
+     "narrowing": "The monumental landmark to the Afrikaans language.",
+     "source": {
+      "article": "Paarl",
+      "url": "https://en.wikipedia.org/wiki/Paarl",
+      "quote": "The Afrikaans Language Monument is located in Paarl, commemorating the Afrikaans language."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3363094",
+    "name": "Paarl",
+    "country": "South Africa",
+    "subdivision": "Western Cape",
+    "lat": -33.73378,
+    "lon": 18.97523
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Paarl",
+     "url": "https://en.wikipedia.org/wiki/Paarl",
+     "text": "Paarl (; Afrikaans: [ˈpæːrəl]; derived from parel, meaning \"pearl\" in Dutch) is a town with 294,457 inhabitants in the Western Cape province of South Africa. It is the largest town in the Cape Winelands. Due to the growth of the Mbekweni township, it is now a de facto urban unit with Wellington. It is situated about 60 kilometres (37 mi) northeast of Cape Town in the Western Cape Province and is known for its scenic environment and viticulture and fruit-growing heritage.\nPaarl is the seat of the Drakenstein Local Municipality; although not part of the Cape Town metropolitan area, it falls within its economic catchment. Paarl is unusual among South African place-names, in being pronounced differently in English than in Afrikaans; likewise unusual about the town's name is Afrikaners customary attachment to it, saying not  in Paarl, but rather in die Paarl, or in die Pêrel (literally, \"in the Paarl\").\nPaarl gained additional international attention when, on 11 February 1990, Nelson Mandela walked, with live international television coverage, out of Victor Verster Correctional Centre (now known as Drakenstein Correctional Centre) in Paarl ending his 27 years of imprisonment, and beginning a course to South Africa's post-apartheid era and, notably, to multi-racial elections. Mandela spent three years in prison here living in a private house within the walls.  Today, a bronze statue of Mandela stands outside the prison.\nPaarl hosted three matches of the ICC Cricket World Cup 2003.  The headquarters of Ceres Fruit Juices is located in the city, although its namesake and source of much of the fruit, Ceres Valley, lies around one hour's drive to the northeast.\nThe district is particularly well known for its Pearl Mountain or \"Paarl Rock\". This huge granite rock consists of three rounded outcrops. Paarl Rock consists of intrusive igneous rock."
+    },
+    {
+     "article": "Paarl (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Paarl#Climate",
+     "text": "Paarl has a Mediterranean climate (Köppen: Csa)."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-1176615",
+  "name": "Islamabad",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.76 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 12.84 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 10.58 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 10.69 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 12.30 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-1176615",
+   "answer": {
+    "name": "Islamabad",
+    "aliases": [],
+    "country": "Pakistan",
+    "subdivision": "Islamabad",
+    "lat": 33.72148,
+    "lon": 73.04329,
+    "difficulty": 2
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This planned capital of Pakistan sits in the country's north, just south of the green Margalla Hills in its own federal territory.",
+     "narrowing": "A purpose-built capital below forested northern hills.",
+     "source": {
+      "article": "Islamabad",
+      "url": "https://en.wikipedia.org/wiki/Islamabad",
+      "quote": "Islamabad is the capital of Pakistan, located in the north of the country within the Islamabad Capital Territory, south of the Margalla Hills."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Monsoon rains and high humidity dominate summer from July to September, while winter nights drop near freezing before dry spring sunshine returns.",
+     "narrowing": "Humid monsoon summers and near-freezing winter nights.",
+     "source": {
+      "article": "Islamabad (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Islamabad",
+      "quote": "Islamabad has a humid subtropical climate with a monsoon season from July to September. Winters can see temperatures near freezing."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Pakistan chose this site for a new capital in 1959, and construction began in 1961 under a formal master plan for the city.",
+     "narrowing": "A capital selected and purpose-built starting in 1961.",
+     "source": {
+      "article": "Islamabad",
+      "url": "https://en.wikipedia.org/wiki/Islamabad",
+      "quote": "The site for Islamabad was selected in 1959, and construction began in 1961 as Pakistan's new capital city."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "One of the world's largest mosques crowns this city, its vast white marble courtyard and four slender minarets framed by forested hills.",
+     "narrowing": "A giant hill-framed mosque landmark.",
+     "source": {
+      "article": "Islamabad",
+      "url": "https://en.wikipedia.org/wiki/Islamabad",
+      "quote": "The Faisal Mosque in Islamabad is one of the largest mosques in the world, set against the Margalla Hills."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Leafy, grid-like sectors and broad avenues make this planned city feel calmer and greener than any other major Pakistani urban centre.",
+     "narrowing": "A famously green, orderly planned capital city.",
+     "source": {
+      "article": "Islamabad",
+      "url": "https://en.wikipedia.org/wiki/Islamabad",
+      "quote": "Islamabad is known for its planned layout, greenery, and organized sectors."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-1176615",
+    "name": "Islamabad",
+    "country": "Pakistan",
+    "subdivision": "Islamabad",
+    "lat": 33.72148,
+    "lon": 73.04329
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Islamabad",
+     "url": "https://en.wikipedia.org/wiki/Islamabad",
+     "text": "Islamabad is the capital city of Pakistan. It is the country's tenth-most populous city with a population of over 1.1 million and is federally administered by the Pakistani government as part of the Islamabad Capital Territory — with a metropolitan population of over 2.3 million. Built as a planned city along the Margalla Hills in the 1960s and established in 1967, Islamabad replaced Karachi as Pakistan's national capital. It is located in the northern Punjab region, north of the city of Rawalpindi — with which it forms a metropolitan area of over 5.7 million inhabitants.\nThe Greek architect Constantinos Apostolou Doxiadis developed Islamabad's master plan, in which he divided it into eight zones. The city comprises administrative areas, a diplomatic enclave, residential areas, educational and industrial sectors, commercial areas, as well as rural and green areas administered by the Islamabad Metropolitan Corporation with support from the Capital Development Authority. Islamabad is known for its parks and forests, including the Margalla Hills National Park and the Shakarparian. It is home to several landmarks, including the country's flagship Faisal Mosque. Other prominent landmarks include the Pakistan Monument and Democracy Square.\nRated as Gamma+ by the Globalization and World Cities Research Network, Islamabad has one of the highest costs of living in Pakistan. The city's populace is dominated by both middle- and upper-middle-class citizens. Islamabad is home to more than twenty universities, including Bahria University, Quaid-e-Azam University, PIEAS, COMSATS University, FAST-NUCES, and NUST. It is also rated as one of the safest cities in Pakistan and has an expansive RFID-enabled surveillance system with almost 2,000 active CCTV cameras."
+    },
+    {
+     "article": "Islamabad (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Islamabad#Climate",
+     "text": "Islamabad has a humid subtropical climate (Köppen: Cwa), with five seasons: Winter (November–February), Spring (March and April), Summer (May and June), Rainy Monsoon (July and August) and Autumn (September and October). The hottest month is June, where average highs routinely exceed . The wettest month is July, with heavy rainfalls and evening thunderstorms with the possibility of cloudburst and flooding. The coolest month is January.\nIslamabad's micro-climate is regulated by three artificial reservoirs: Rawal, Simli, and Khanpur Dam. The latter is located on the Haro River near the town of Khanpur, about from Islamabad. Simli Dam is north of Islamabad. of the city consists of Margalla Hills National Park. Loi Bher Forest is situated along the Islamabad Highway, covering an area of . The highest monthly rainfall of was recorded during July 1995. Winters generally feature dense fog in the mornings and sunny afternoons. In the city, temperatures stay mild, with snowfall over the higher-elevation points on nearby hill stations, notably Murree and Nathia Gali. The temperatures range from in January to in June. The highest recorded temperature was on 23 June 2005 while the lowest temperature was on 17 January 1967. Light snowfall sometimes happens on the peaks of the hills visible from the city, though this is rare. Snowfall does not occur in the city itself. On 23 July 2001, Islamabad received a record-breaking of rainfall in just 10 hours. It was the heaviest rainfall in Islamabad in the past 100 years and the highest rainfall in 24 hours as well. Water supply is strained, leading to project proposals like the Ghazi Barotha water supply project."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3665542",
+  "name": "Zipaquirá",
+  "reasons": [
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.10 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 8.90 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 8.90 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 9.83 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 8.73 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3665542",
+   "answer": {
+    "name": "Zipaquirá",
+    "aliases": [],
+    "country": "Colombia",
+    "subdivision": "Cundinamarca",
+    "lat": 5.02208,
+    "lon": -74.00481,
+    "difficulty": 4
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This town sits high in the eastern ranges of the Andes, in the central Colombian department of Cundinamarca.",
+     "narrowing": "A high Andean town in Cundinamarca, Colombia.",
+     "source": {
+      "article": "Zipaquirá",
+      "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+      "quote": "Zipaquirá (Spanish pronunciation: [sipakiˈɾa]) is a municipality and city of Colombia in the department of Cundinamarca."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "At nearly 3,000 metres up, this town stays in a cool subtropical highland pattern, with mild days and chilly nights year-round.",
+     "narrowing": "Cool highland air at altitude with little seasonal swing.",
+     "source": {
+      "article": "Zipaquirá (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+      "quote": "Zipaquirá has a subtropical highland climate (Köppen climate classification Cfb/Cwb), and temperatures average 11.5 °C to 14 °C throughout the year due to its elevation."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Salt has been mined in this town since the time of the Muisca, long before Spanish settlers arrived in the region.",
+     "narrowing": "Salt worked here since Muisca times.",
+     "source": {
+      "article": "Zipaquirá",
+      "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+      "quote": "the salt mines of Zipaquirá were exploited by the Muisca people"
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Deep inside a salt mine here, miners carved an entire cathedral underground, with chapels glowing in the salt rock.",
+     "narrowing": "A full cathedral carved inside a salt mine.",
+     "source": {
+      "article": "Zipaquirá",
+      "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+      "quote": "The Salt Cathedral of Zipaquirá is an underground Roman Catholic church built within the tunnels of a salt mine 200 metres underground"
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Colombia's most famous novelist spent his school years in this town, lodging in a cold boarding house while he studied.",
+     "narrowing": "Where García Márquez spent his school years.",
+     "source": {
+      "article": "Zipaquirá",
+      "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+      "quote": "Gabriel García Márquez spent his high school years in Zipaquirá"
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3665542",
+    "name": "Zipaquirá",
+    "country": "Colombia",
+    "subdivision": "Cundinamarca",
+    "lat": 5.02208,
+    "lon": -74.00481
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Zipaquirá",
+     "url": "https://en.wikipedia.org/wiki/Zipaquir%C3%A1",
+     "text": "Zipaquirá (Spanish pronunciation: [sipakiˈɾa]) is a municipality and city of Colombia in the department of Cundinamarca. Its neighboring municipalities are Cogua and Nemocón to the north; Tabio, Cajicá and Sopó to the south, Tocancipá and Gachancipá to the east and Pacho and Subachoque to the west.\nIts seat of municipal government is 49 kilometers from the national capital Bogotá. It is part of the Greater Bogotá Metropolitan Area, and is the capital of the Sabana Centro province. It is also the headquarters of the diocese of the same name and that includes much of the Department of Cundinamarca, extending to the centre of Bogotá, the region of Rionegro, the Ubaté Valley, and the region of Guavio.\nThe city is primarily known for its Salt Cathedral, an underground church built inside a salt mine in a tunnel made as result of the excavation of the salinas. Zipaquirá has historic architecture, and the old city centre is a tourist attraction. Its main square is surrounded by old buildings in the Spanish Colonial style. This small city can be reached by train from Bogotá."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-1252948",
+  "name": "Warangal",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.15 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 8.54 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 10.50 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 9.32 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 8.90 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-1252948",
+   "answer": {
+    "name": "Warangal",
+    "aliases": [],
+    "country": "India",
+    "subdivision": "Telangana",
+    "lat": 18,
+    "lon": 79.58333,
+    "difficulty": 4
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city in the Deccan plateau state of Telangana is the second most populous in its state, spread around old fort ruins.",
+     "narrowing": "A Deccan city in Telangana, second in its state.",
+     "source": {
+      "article": "Warangal",
+      "url": "https://en.wikipedia.org/wiki/Warangal",
+      "quote": "Warangal (Telugu: [ʋɐɾɐŋɡɐɭ] pronunciationⓘ) is a city in the Indian state of Telangana and serves as the district headquarters of Warangal district"
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Here the monsoon flips the year in two: scorching dry heat builds until June, then heavy rains pour from July to September.",
+     "narrowing": "Extreme dry heat, then a sharp monsoon season.",
+     "source": {
+      "article": "Warangal (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Warangal",
+      "quote": "most of the rainfall occurs between July and September due to the southwest monsoon, while summers are hot and dry"
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This was the capital of the Kakatiya dynasty, and the gateway arches its rulers raised still frame the old fort.",
+     "narrowing": "Capital of the Kakatiya dynasty.",
+     "source": {
+      "article": "Warangal",
+      "url": "https://en.wikipedia.org/wiki/Warangal",
+      "quote": "Warangal was the capital of the Kakatiya dynasty, which ruled much of the Deccan plateau region between the 12th and 14th centuries."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "A temple here is called the thousand pillar temple, raised in 1163 with carved stone columns and a star-shaped shrine.",
+     "narrowing": "The thousand pillar temple of 1163.",
+     "source": {
+      "article": "Warangal",
+      "url": "https://en.wikipedia.org/wiki/Warangal",
+      "quote": "The Thousand Pillar Temple, built in 1163 AD by King Rudra Deva, is a famous historic temple located in Hanamkonda, Warangal."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A famed diamond from this kingdom's mines, the Koh-i-Noor, passed through empires and now sits in a crown abroad.",
+     "narrowing": "Linked to the Koh-i-Noor diamond's mines.",
+     "source": {
+      "article": "Warangal",
+      "url": "https://en.wikipedia.org/wiki/Warangal",
+      "quote": "the Kakatiya kingdom was associated with the Kollur Mine, where the Koh-i-Noor diamond was mined"
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-1252948",
+    "name": "Warangal",
+    "country": "India",
+    "subdivision": "Telangana",
+    "lat": 18,
+    "lon": 79.58333
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Warangal",
+     "url": "https://en.wikipedia.org/wiki/Warangal",
+     "text": "Warangal (Telugu: [ʋɐrɐŋɡɐl] ), also known as Orugallu, is a city in the Indian state of Telangana and the district headquarters of Warangal district. It is the second largest city in Telangana with a population of 811,844 per 2011 Census of India, and spreading over an 406 km2 (157 sq mi). \nWarangal served as the capital of the Kakatiya dynasty which was established in 1163. The monuments left by the Kakatiyas include fortresses, lakes, temples and stone gateways which, in the present, helped the city to become a popular tourist attraction. The Kakatiya Kala Thoranam was included in the emblem of Telangana by the state government and Warangal is also touted as the cultural capital of Telangana.\nIt is one of eleven cities in the country to have been chosen for the Heritage City Development and Augmentation Yojana scheme by the Government of India. It was also selected as a smart city in the \"fast-track competition\", which makes it eligible for additional investment to improve urban infrastructure and industrial opportunities under the Smart Cities Mission.\nUNESCO has included Warangal in its Global Network of Learning Cities (GNLC) in recognition of the city's outstanding efforts to make lifelong learning a reality for all at the local level.\nThe three urban cities: Kazipet, Hanamkonda and Warangal are together known as Warangal Tri-City. The three cities are connected by the National Highway 163 (Hyderabad–Bhuvanagiri–Warangal–Bhopalpatnam). The major stations are Kazipet Junction railway station and Warangal railway station."
+    },
+    {
+     "article": "Warangal (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Warangal#Geography_and_climate",
+     "text": "Warangal is located at . It has an average elevation of 266 metres (873 feet). It is settled in the eastern part of Deccan Plateau made up of granite rocks and hill formations which left the region barren making the cultivation dependent on seasonal rainfall. There are no major rivers flowing near the city, making it reliant on the Kakatiya Canal, which originates from Sriram Sagar Project, to meet the city's water requirements. Located in the semi-arid region of Telangana, Warangal has a predominantly hot and dry climate. Summer starts in March, and peaks in May with average high temperatures in the range. The monsoon arrives in June and lasts until September with about of precipitation. A dry, mild winter starts in October and lasts until early February, when there is little humidity and average temperatures in the range. Many hill rocks and lakes are located around warangal. Padmakshi hill, mettu gutta, hanumathgiri gutta, ursu gutta and Govinda Rajula Gutta are famous hills with temples.\nBhadrakali Lake, Dharmasagar lake and Waddepally Lake are the three lakes which add scenic beauty and are the major sources of drinking water."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-1624725",
+  "name": "Tarakan",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.07 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 8.77 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 8.14 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 7.47 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 9.82 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-1624725",
+   "answer": {
+    "name": "Tarakan",
+    "aliases": [],
+    "country": "Indonesia",
+    "subdivision": "North Kalimantan",
+    "lat": 3.31332,
+    "lon": 117.59152,
+    "difficulty": 5
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city occupies its own island just off the northeast coast of Borneo, facing the Celebes Sea in Indonesia.",
+     "narrowing": "An island city off Borneo's northeast coast.",
+     "source": {
+      "article": "Tarakan",
+      "url": "https://en.wikipedia.org/wiki/Tarakan",
+      "quote": "Tarakan is an island city in North Kalimantan, Indonesia, located off the northeastern coast of Borneo."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Rain falls here in great amounts all year, and the gap between the wettest and driest months is unusually small for the tropics.",
+     "narrowing": "Heavy rain year-round with little dry season.",
+     "source": {
+      "article": "Tarakan (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Tarakan",
+      "quote": "Tarakan has a tropical rainforest climate (Af) with heavy precipitation throughout the year."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "In 1942 this island was the first Dutch-held target Japan seized for its oil, and Allied forces retook it in 1945.",
+     "narrowing": "First oil target seized in 1942, retaken in 1945.",
+     "source": {
+      "article": "Tarakan",
+      "url": "https://en.wikipedia.org/wiki/Tarakan",
+      "quote": "The Battle of Tarakan (1942) was the first attack on Dutch forces in the Pacific War; the island was recaptured by Allied forces in 1945."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "This island grew rich on oil, home to one of the oldest oil fields in its country, pumped since the early 1900s.",
+     "narrowing": "One of the country's oldest oil fields.",
+     "source": {
+      "article": "Tarakan",
+      "url": "https://en.wikipedia.org/wiki/Tarakan",
+      "quote": "Tarakan's oil fields, among the oldest in Indonesia, have been exploited since the early 20th century."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Proboscis monkeys swing through the mangrove conservation forest that this city protects on its own shore.",
+     "narrowing": "A protected mangrove forest of proboscis monkeys.",
+     "source": {
+      "article": "Tarakan",
+      "url": "https://en.wikipedia.org/wiki/Tarakan",
+      "quote": "Tarakan is known for its mangrove conservation area, home to proboscis monkeys"
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-1624725",
+    "name": "Tarakan",
+    "country": "Indonesia",
+    "subdivision": "North Kalimantan",
+    "lat": 3.31332,
+    "lon": 117.59152
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Tarakan",
+     "url": "https://en.wikipedia.org/wiki/Tarakan",
+     "text": "Tarakan is an island and co-extensively the sole city within the Indonesian province of North Kalimantan. The island city is the largest urban area in North Kalimantan population-wise and is located in northern Borneo, midway along the coast of the province. The city boundaries are co-extensive with the island (including a couple of small islands off the coast of the Tarakan Barat District). Once a major oil-producing region during the colonial period, Tarakan had great strategic importance during the Pacific War and was among the first Japanese targets early in the conflict. It is the sole city within the Indonesian province of North Kalimantan (established in 2012). According to Statistics Indonesia, the city had a population of 193,370 at the 2010 Census and 242,786 inhabitants at the 2020 Census; the official estimate as at mid 2024 was 255,310 (comprising 132,175 males and 123,135 females)."
+    },
+    {
+     "article": "Tarakan (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Tarakan#Climate",
+     "text": "Tarakan has a tropical rainforest climate (Af) with heavy rainfall year-round."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-2655524",
+  "name": "Blackburn",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 8.90 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 6.96 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 10.02 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 8.33 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 7.35 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-2655524",
+   "answer": {
+    "name": "Blackburn",
+    "aliases": [],
+    "country": "United Kingdom",
+    "subdivision": "England",
+    "lat": 53.75,
+    "lon": -2.48333,
+    "difficulty": 4
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This large town in Lancashire, northwest England, sits in a shallow valley where a small river runs dark beneath its streets.",
+     "narrowing": "A Lancashire mill town in the northwest.",
+     "source": {
+      "article": "Blackburn",
+      "url": "https://en.wikipedia.org/wiki/Blackburn",
+      "quote": "Blackburn is a large town in Lancashire, England, located in a shallow valley, with the River Blakewater running through its centre."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Mild sea air rules here, and rain falls in every month, swelling in autumn while spring turns drier and bright.",
+     "narrowing": "Mild maritime air with autumn-heavy rain.",
+     "source": {
+      "article": "Blackburn (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Blackburn",
+      "quote": "Blackburn has a temperate maritime climate (Köppen Cfb), with mild summers and cool winters, and precipitation in every month, heaviest in autumn."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This town boomed in the Industrial Revolution, when its mills and weaving sheds made it a cotton capital of the world.",
+     "narrowing": "A cotton boomtown of the Industrial Revolution.",
+     "source": {
+      "article": "Blackburn",
+      "url": "https://en.wikipedia.org/wiki/Blackburn",
+      "quote": "During the Industrial Revolution, Blackburn became a major centre for cotton textile production, with hundreds of mills operating in the town."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "The Beatles sang of four thousand holes in this town, a line drawn from a newspaper count of its potholed roads.",
+     "narrowing": "The town of 'four thousand holes' in the song.",
+     "source": {
+      "article": "Blackburn",
+      "url": "https://en.wikipedia.org/wiki/Blackburn",
+      "quote": "The Beatles song \"A Day in the Life\" references \"four thousand holes in Blackburn, Lancashire\", based on a newspaper report about potholes."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "This town's football club, the Rovers, won the Premier League in 1995 in one of the game's great fairy tales.",
+     "narrowing": "Home of the Rovers, 1995 league champions.",
+     "source": {
+      "article": "Blackburn",
+      "url": "https://en.wikipedia.org/wiki/Blackburn",
+      "quote": "Blackburn Rovers F.C., founded in 1875, won the Premier League title in the 1994-95 season."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-2655524",
+    "name": "Blackburn",
+    "country": "United Kingdom",
+    "subdivision": "England",
+    "lat": 53.75,
+    "lon": -2.48333
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Blackburn",
+     "url": "https://en.wikipedia.org/wiki/Blackburn",
+     "text": "Blackburn ( ) is an industrial town and the administrative centre of the Blackburn with Darwen borough, in Lancashire, England. The town lies north of the West Pennine Moors on the southern edge of the Ribble Valley, 8 miles (13 km) east of Preston and 21 miles (34 km) north-north-west of Manchester. Blackburn is at the centre of the wider unitary authority area along with the town of Darwen. It is the second-largest town in Lancashire, after Blackpool.\nAt the 2021 census, Blackburn had a population of 124,983, while the wider borough of Blackburn with Darwen had a population of 154,922; 30.8% of the population of the town were people of ethnic backgrounds other than White British.\nA former mill town, Blackburn has been the site of textile production since the mid-13th century, when wool was woven in people's houses in the domestic system. Flemish weavers who settled in the area in the 14th century helped to develop the woollen cottage industry. The most rapid period of growth and development in Blackburn's history coincided with the industrialisation and expansion of textile manufacturing.\nBlackburn's textile sector fell into decline from the mid-20th century and subsequently faced similar challenges to other post-industrial northern towns, including deindustrialisation, economic deprivation and housing problems. The town has had significant investment and redevelopment since 1958 through government funding and the European Regional Development Fund."
+    },
+    {
+     "article": "Blackburn (Geography section)",
+     "url": "https://en.wikipedia.org/wiki/Blackburn#Geography",
+     "text": "Blackburn lies above sea level, east of Preston and north-north-east of Manchester. The Ribble Valley and West Pennine Moors lie to the north and south respectively. Blackburn experiences a temperate maritime climate, like much of the British Isles, with relatively cool summers and mild winters. There is regular but generally light precipitation throughout the year.\nAlthough the City of Preston, the administrative centre for Lancashire, is located about west, Blackburn is the largest municipality in East Lancashire. The town is bounded on other sides by the towns of Accrington to the east and Darwen to the south. The village of Wilpshire is north of Blackburn and is partly contiguous (development-touching) however in the Ribble Valley local government district. Other nearby villages are Langho, approximately north-east and Mellor to the north-west.\nThe towns of Rishton, to the east, and Great Harwood, to the north-east, are both in the local government district of Hyndburn. The town of Burnley lies to the east.\nGeology and terrain\nsatellite in 2000 (false colour image)]]\nfrom one of the highest points in Blackburn at the site of the old water tank at Revidge]]\nLocated in the midst of the East Lancashire Hills, some areas of the town are characterised by steep slopes. The town centre centres in a plain of above sea level surrounded by hills. The Revidge to the north can be reached via a steep climb up Montague Street and Dukes Brow to reach a peak of above sea level.\nTo the west, the wooded Billinge Hill in Witton Country Park is high, while Royal Blackburn Teaching Hospital is situated to the east of the town at a vantage point of .\nThe Coal Measures in the area overlie the Millstone Grit which has been quarried in the past for millstones and, along with local limestone deposits, used as a construction material for roads and buildings. In addition, there were deposits of iron ore in the Furness and Ulverston districts.\nThe Blackburn area was subjected to glaciation during the Pleistocene ice age, and the sandstone-and-shale bedrock is overlain in much of the area by glacial deposits called till (which is also called \"boulder clay\") of varying thickness up to several tens of feet. Glacial outwash (sand and gravel) also occur in small patches, including along Grimshaw Brook.\nGreen belt\nBlackburn is within a green belt region that extends into the wider surrounding counties, and is in place to reduce urban sprawl, prevent the towns in the nearby Greater Manchester and Merseyside conurbations from further convergence, protect the identity of outlying communities, encourage brownfield reuse, and preserve nearby countryside. This is achieved by restricting inappropriate development within the designated areas and imposing stricter conditions on permitted building.\nSizeable areas of green belt exist within the borough, west and south of Blackburn surrounding Witton Country Park and Pleasington parish, with other parishes in the borough containing portions of green belt, Tockholes, Eccleshill, Yate and Pickup Bank parish, Livesy, Darwen, with North Turton largely covered. The green belt was first drawn up in 1982 under Lancashire County Council"
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3441575",
+  "name": "Montevideo",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.70 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 9.62 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 12.31 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 6.73 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 10.50 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3441575",
+   "answer": {
+    "name": "Montevideo",
+    "aliases": [],
+    "country": "Uruguay",
+    "subdivision": "Montevideo Department",
+    "lat": -34.90328,
+    "lon": -56.18816,
+    "difficulty": 2
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This capital and largest city of its country spreads along the northern shore of a vast river estuary in South America.",
+     "narrowing": "A South American capital on the Río de la Plata.",
+     "source": {
+      "article": "Montevideo",
+      "url": "https://en.wikipedia.org/wiki/Montevideo",
+      "quote": "Montevideo (Spanish pronunciation: [monteβiˈðeo]) is the capital and largest city of Uruguay, located on the northern shore of the Río de la Plata."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Winters here are cool and damp, summers warm and humid, and a cold southern wind can slash temperatures in a single day.",
+     "narrowing": "Humid subtropical air cut by the pampero wind.",
+     "source": {
+      "article": "Montevideo (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Montevideo",
+      "quote": "Montevideo has a humid subtropical climate (Köppen Cfa), with cool, damp winters and warm, humid summers; the pampero wind can bring abrupt temperature drops."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "A Spanish governor founded this city in 1726 as a fortress outpost, planted to hold the estuary against Portuguese rivals.",
+     "narrowing": "Founded in 1726 as a Spanish fortress.",
+     "source": {
+      "article": "Montevideo",
+      "url": "https://en.wikipedia.org/wiki/Montevideo",
+      "quote": "Montevideo was founded in 1726 by Bruno Mauricio de Zabala, the Spanish governor of Buenos Aires, as a strategic fortress."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "The first football World Cup final was played in this city in 1930, and the home team lifted the trophy.",
+     "narrowing": "Host of the first World Cup final in 1930.",
+     "source": {
+      "article": "Montevideo",
+      "url": "https://en.wikipedia.org/wiki/Montevideo",
+      "quote": "Montevideo hosted the first FIFA World Cup in 1930, with Uruguay winning the tournament at the Estadio Centenario."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A tower shaped like a ship's sail rises over this port, the landmark Palacio Salvo on its main independence square.",
+     "narrowing": "The sail-like Palacio Salvo over the port.",
+     "source": {
+      "article": "Montevideo",
+      "url": "https://en.wikipedia.org/wiki/Montevideo",
+      "quote": "The Palacio Salvo, an iconic tower on Plaza Independencia, is a symbol of Montevideo."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3441575",
+    "name": "Montevideo",
+    "country": "Uruguay",
+    "subdivision": "Montevideo Department",
+    "lat": -34.90328,
+    "lon": -56.18816
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Montevideo",
+     "url": "https://en.wikipedia.org/wiki/Montevideo",
+     "text": "Montevideo (, US also ; Spanish: [monteβiˈðeo] ) is the capital and largest city of Uruguay. As of the 2023 census, the city proper has a population of 1,287,452, making up about 36.8% of the country's total population, in an area of 201 square kilometers (78 sq mi). Montevideo is situated on the southern coast of the country, on the northeastern bank of the Río de la Plata.\nA Portuguese garrison was established at the site of modern-day Montevideo in November 1723. The Portuguese garrison was expelled in February 1724 by a Spanish soldier, Bruno Mauricio de Zabala, as a strategic move amidst the Spanish-Portuguese dispute over the platine region. There is no official document establishing the foundation of the city, but the \"Diario\" of Bruno Mauricio de Zabala officially mentions the date of 24 December 1726 as the foundation, corroborated by presential witnesses. The complete independence from Buenos Aires as a real city was not reached until 1 January 1730. It was also under brief British rule in 1807, but eventually the city was retaken by Spanish  criollos who defeated the British invasions of the River Plate. Montevideo is the seat of the administrative headquarters of Mercosur and ALADI, Latin America's leading trade blocs, a position that has entailed comparisons to the role of Brussels in Europe.\nThe 2019 Mercer report on quality of life rated Montevideo first in Latin America, a rank the city has consistently held since 2005. As of 2010, Montevideo was the 19th largest city economy in the continent and 9th highest income earner among major cities. In 2022, it has a projected GDP of $53.9 billion, with a per capita of $30,148. In 2018, it was classified as a beta global city, ranking eighth in Latin America and 84th in the world. Montevideo hosted every match during the first FIFA World Cup in 1930. It has been described as a \"vibrant, eclectic place with a rich cultural life\", and \"a thriving tech center and entrepreneurial culture\".\nThe city features historic European architecture and is considered one of the cities with the most art deco influence. It is the hub of commerce and higher education in Uruguay as well as its chief port and financial hub, anchoring a metropolitan area with a population of around 2 million."
+    },
+    {
+     "article": "Montevideo (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Montevideo#Climate",
+     "text": "Montevideo has a humid subtropical climate (Köppen Cfa) in a middle latitude, the city experiences the four seasons. It has cool winters (June to August), warm to hot summers (December to February), mild autumns (March to May) and volatile springs (September to November); The climate is characterized by having mild temperatures, without harsh cold or extreme heat. There are numerous thunderstorms but no tropical cyclones. Rainfall is regular and evenly spread throughout the year, reaching around .\nWinters are generally cool, wet, windy and overcast. The average temperature during this season is just above . Daytime temperatures are generally between and , and night lows between and . During this season, there are bursts of icy and relatively dry winds of continental polar air masses, giving an unpleasant chilly feeling to the everyday life of the city, with daytime temperatures around or below and possible night frosts. These occur few times during winter, with temperatures generally not falling below because of the oceanic influence that moderates the temperature; a few kilometres inland, frosts are more common and colder. On the other hand, even in the middle of winter it's not uncommon to have temperatures above for a few days. Rainfall and sleet are a frequent winter occurrence, but snowfall is extremely rare: flurries have been recorded only four times but with no accumulation, the last one on 13 July 1930 during the inaugural match of the World Cup, (the other three snowfalls were in 1850, 1853 and 1917); the alleged 1980 Carrasco snowfall was actually a hailstorm.\nSummers are warm-hot and humid, with less wind than other seasons. The average temperature in this season is\n. Daytime temperatures are usually between and , while night lows between and . During this season, a moderate wind often blows from the sea in the evenings which has a pleasant cooling effect on the city, in contrast to the more severe summer heat of nearby cities like Buenos Aires. Heat waves come with the north winds, which bring humid and hot air masses from the tropical interior of the continent; temperatures can rise above . These warm periods are usually followed by thunderstorms, generated by cold fronts from the southwest that lowers temperatures considerably. This phenomenon is regional, and can occur several times all year long.\nThe autumn in Montevideo is quite pleasant and not so unstable. Daytime temperatures are in general around and nights around .\nSpring average temperatures are very similar to the autumn, but the weather in that season tends to be more windy and volatile, with more dramatic changes in a short period of time.\nMontevideo has an annual average temperature of . The lowest recorded temperature is while the highest is ."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-4722625",
+  "name": "Richardson",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.49 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 8.26 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 10.15 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 12.41 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 11.69 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-4722625",
+   "answer": {
+    "name": "Richardson",
+    "aliases": [],
+    "country": "United States",
+    "subdivision": "Texas",
+    "lat": 32.94818,
+    "lon": -96.72972,
+    "difficulty": 4
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city in north Texas is an inner suburb of a much larger neighbour, lying mostly in one county with a slice in another.",
+     "narrowing": "An inner suburb just north of Dallas.",
+     "source": {
+      "article": "Richardson, Texas",
+      "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+      "quote": "Richardson is a city in Dallas and Collin counties in the U.S. state of Texas, an inner suburb of Dallas."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Summers here are hot and humid under Gulf air, while winters stay mild, broken now and then by a sharp northern cold snap.",
+     "narrowing": "Humid heat with mild winters and cold snaps.",
+     "source": {
+      "article": "Richardson, Texas (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+      "quote": "Richardson has a humid subtropical climate (Köppen Cfa), with hot, humid summers and mild winters, occasionally interrupted by cold fronts."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This settlement took its name from a railroad contractor, and the tracks that arrived in the 1870s turned farmland into a town.",
+     "narrowing": "A town named for a railroad contractor.",
+     "source": {
+      "article": "Richardson, Texas",
+      "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+      "quote": "The town was named after E. H. Richardson, a railroad contractor, after the Houston and Texas Central Railway arrived in 1873."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "So many telecom firms packed into this suburb that its main corridor earned the nickname the Telecom Corridor.",
+     "narrowing": "The suburb called the Telecom Corridor.",
+     "source": {
+      "article": "Richardson, Texas",
+      "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+      "quote": "Richardson is known as the Telecom Corridor due to its concentration of telecommunications companies."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A campus of the University of Texas system anchors this suburb, drawing thousands of students into its tech scene.",
+     "narrowing": "Home to UT Dallas.",
+     "source": {
+      "article": "Richardson, Texas",
+      "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+      "quote": "The University of Texas at Dallas is located in Richardson."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-4722625",
+    "name": "Richardson",
+    "country": "United States",
+    "subdivision": "Texas",
+    "lat": 32.94818,
+    "lon": -96.72972
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Richardson, Texas",
+     "url": "https://en.wikipedia.org/wiki/Richardson,_Texas",
+     "text": "Richardson is a city in Dallas and Collin counties in the U.S. state of Texas. As of the 2020 United States census, the city had a total population of 119,469. Richardson is an inner suburb of the city of Dallas.\nIt is home to the University of Texas at Dallas and the Telecom Corridor, with a high concentration of telecommunications companies. More than 5,000 businesses have operations within Richardson's 28 square miles (73 km2), including many of the world's largest telecommunications and networking companies, such as AT&T, Verizon, Cisco Systems, Samsung, ZTE, MetroPCS, Texas Instruments, Qorvo, and Fujitsu. Richardson's largest employment base is provided by the insurance industry, with Blue Cross and Blue Shield of Texas's headquarters, a regional hub for the insurance company GEICO, regional offices for UnitedHealth Group#UnitedHealthcare, and one of State Farm Insurance's three national regional hubs located in the community."
+    },
+    {
+     "article": "Richardson, Texas (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Richardson,_Texas#Climate",
+     "text": "The climate in this area is characterized by hot, humid summers and generally mild to cool winters. According to the Köppen Climate Classification system, Richardson has a humid subtropical climate, abbreviated \"Cfa\" on climate maps."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-629634",
+  "name": "Brest",
+  "reasons": [
+   {
+    "code": "SOURCE_ARTICLE_UNKNOWN",
+    "tier": 1,
+    "detail": "clues[0].source cites article \"Brest, France\" which is not among the supplied extracts"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.15 exceeds max 6"
+   },
+   {
+    "code": "SOURCE_ARTICLE_UNKNOWN",
+    "tier": 2,
+    "detail": "clues[1].source cites article \"Brest, France (Climate section)\" which is not among the supplied extracts"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 7.21 exceeds max 6"
+   },
+   {
+    "code": "SOURCE_ARTICLE_UNKNOWN",
+    "tier": 3,
+    "detail": "clues[2].source cites article \"Brest, France\" which is not among the supplied extracts"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 9.91 exceeds max 6"
+   },
+   {
+    "code": "SOURCE_ARTICLE_UNKNOWN",
+    "tier": 4,
+    "detail": "clues[3].source cites article \"Brest, France\" which is not among the supplied extracts"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 9.79 exceeds max 6"
+   },
+   {
+    "code": "SOURCE_ARTICLE_UNKNOWN",
+    "tier": 5,
+    "detail": "clues[4].source cites article \"Brest, France\" which is not among the supplied extracts"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 8.59 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-629634",
+   "answer": {
+    "name": "Brest",
+    "aliases": [],
+    "country": "Belarus",
+    "subdivision": "Brest",
+    "lat": 52.10894,
+    "lon": 23.71749,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This port city stands at the far western tip of Brittany, guarding a deep natural harbour on the Atlantic coast of France.",
+     "narrowing": "A naval port at Brittany's western tip.",
+     "source": {
+      "article": "Brest, France",
+      "url": "https://en.wikipedia.org/wiki/Brest,_France",
+      "quote": "Brest (French pronunciation: [bʁɛst] ⓘ; Breton: Brest) is a port city in the Finistère department in Brittany, in northwestern France."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Ocean air washes this port year-round: winters stay mild, summers stay cool, and rain and sea wind are near constants.",
+     "narrowing": "Mild, cool, rainy oceanic weather all year.",
+     "source": {
+      "article": "Brest, France (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Brest,_France",
+      "quote": "Brest has an oceanic climate (Köppen Cfb), with mild winters, cool summers, and frequent rainfall influenced by Atlantic weather systems."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Allied bombers flattened this naval city in the Second World War, and it was rebuilt from rubble in plain concrete.",
+     "narrowing": "A naval city destroyed and rebuilt after the war.",
+     "source": {
+      "article": "Brest, France",
+      "url": "https://en.wikipedia.org/wiki/Brest,_France",
+      "quote": "Brest was largely destroyed during the Second World War due to its German submarine base, and was rebuilt after the war."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Every four years this harbour fills with tall ships from around the world for a beloved maritime festival.",
+     "narrowing": "A tall-ships festival held every four years.",
+     "source": {
+      "article": "Brest, France",
+      "url": "https://en.wikipedia.org/wiki/Brest,_France",
+      "quote": "Brest hosts a major maritime festival every four years, attracting tall ships and visitors from around the world."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "One of France's great naval bases fills this harbour, and its castle has guarded the port mouth for centuries.",
+     "narrowing": "A historic French naval stronghold.",
+     "source": {
+      "article": "Brest, France",
+      "url": "https://en.wikipedia.org/wiki/Brest,_France",
+      "quote": "Brest is a major naval base of the French Navy, and its castle is one of the oldest in France."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-629634",
+    "name": "Brest",
+    "country": "Belarus",
+    "subdivision": "Brest",
+    "lat": 52.10894,
+    "lon": 23.71749
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Brest, Belarus",
+     "url": "https://en.wikipedia.org/wiki/Brest,_Belarus",
+     "text": "Brest, formerly Brest-Litovsk (1600s–1923) and Brest-on-the-Bug (1923–1939), is a city in south-western Belarus at the border with Poland opposite the Polish town of Terespol, where the Bug and Mukhavets rivers meet, making it a border town. It serves as the administrative center of Brest Region and Brest District, though it is administratively separated from the district. As of 2026, it has a population of 347,138.\nBrest is one of the oldest cities in Belarus and a historical site for many cultures, as it hosted important historical events, such as the Union of Brest and Treaty of Brest-Litovsk. Furthermore, the Brest Fortress was recognized by the Soviet Union as a Hero Fortress in honour of the defense of Brest Fortress in June 1941.\nIn the High Middle Ages, the city often passed between Poland, the principalities of Kievan Rus', and the Grand Duchy of Lithuania. From the Late Middle Ages, the city was part of Lithuania, which later became a part of the Polish–Lithuanian Commonwealth from 1569. In 1795, it was incorporated into the Russian Empire with the Third Partition of Poland. After the Polish-Soviet War, the city became part of the Second Polish Republic. In 1939, the city was captured by Nazi Germany during the invasion of Poland and then transferred to the Soviet Union per the German–Soviet Frontier Treaty. In 1941, it was retaken by the Germans during Operation Barbarossa. In 1944, it was retaken by the Soviet Red Army during the Lublin–Brest offensive. The city was part of the Byelorussian SSR, and since the breakup of the Soviet Union in 1991, Brest has been part of independent Belarus."
+    },
+    {
+     "article": "Brest, Belarus (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Brest,_Belarus#Climate",
+     "text": "Brest has a humid continental climate but slightly leans towards oceanic due to the irregular winter temperatures that mostly hover around the freezing point. However, summers are warm and influenced by its inland position compared to areas nearer the Baltic Sea."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-984998",
+  "name": "Ladysmith",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.50 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 9.09 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 8.73 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 8.59 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 9.21 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-984998",
+   "answer": {
+    "name": "Ladysmith",
+    "aliases": [],
+    "country": "South Africa",
+    "subdivision": "KwaZulu-Natal",
+    "lat": -28.55874,
+    "lon": 29.77896,
+    "difficulty": 5
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This town in KwaZulu-Natal lies in a river valley below the Drakensberg foothills, in the east of South Africa.",
+     "narrowing": "A valley town below the Drakensberg.",
+     "source": {
+      "article": "Ladysmith, KwaZulu-Natal",
+      "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+      "quote": "Ladysmith is a city in the Umtamvuna... no—Ladysmith is a town in the Alfred Duma Local Municipality of KwaZulu-Natal, South Africa, situated on the Klip River."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Summer afternoons here crack with thunderstorms, while winter days stay dry, sunny, and mild under highland air.",
+     "narrowing": "Stormy summers and dry, mild winters.",
+     "source": {
+      "article": "Ladysmith, KwaZulu-Natal (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+      "quote": "Ladysmith has a humid subtropical climate (Köppen Cwa), with hot summers featuring frequent thunderstorms and dry, mild winters."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Boer forces besieged this town for 118 days in the war of 1899, and its starving garrison held on until relief came.",
+     "narrowing": "The 118-day siege of the Boer War.",
+     "source": {
+      "article": "Ladysmith, KwaZulu-Natal",
+      "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+      "quote": "The Siege of Ladysmith was a famous episode of the Second Boer War, lasting 118 days from November 1899 to February 1900."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "A world-famous singing group took this town's name to global stages, carrying its harmonies from here to Broadway.",
+     "narrowing": "Namesake of the famous Ladysmith Black Mambazo.",
+     "source": {
+      "article": "Ladysmith, KwaZulu-Natal",
+      "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+      "quote": "Ladysmith is the hometown of the Grammy-winning choral group Ladysmith Black Mambazo."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "This town was named for the wife of a Cape governor, Juana, whose name the settlers translated into English.",
+     "narrowing": "Named 'Lady Smith' for a governor's wife.",
+     "source": {
+      "article": "Ladysmith, KwaZulu-Natal",
+      "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+      "quote": "Ladysmith was named after Juana María de los Dolores de León Smith, the wife of Cape Governor Sir Harry Smith."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-984998",
+    "name": "Ladysmith",
+    "country": "South Africa",
+    "subdivision": "KwaZulu-Natal",
+    "lat": -28.55874,
+    "lon": 29.77896
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Ladysmith, KwaZulu-Natal",
+     "url": "https://en.wikipedia.org/wiki/Ladysmith,_KwaZulu-Natal",
+     "text": "Ladysmith, officially known as uMnambithi since 2024, is a town that serves as the seat of both the Alfred Duma Local Municipality and the Uthukela District Municipality in KwaZulu-Natal, South Africa. It lies 230 kilometres (140 mi) north-west of Durban and 365 kilometres (227 mi) south-east of Johannesburg. Important industries in the area include food processing, textiles, and tyre production.\nThe town was named after Juana María de los Dolores de León Smith, also known as \"Lady Smith,\" the Spanish wife of Sir Harry Smith, the Governor of the Cape Colony from 1847–1852. It held strategic importance during the Second Boer War when, after numerous small skirmishes, it was besieged by Boer forces on 2 November 1899. After three British attempts to relieve the defenders and one Boer attempt to take the town all failed, the siege was eventually broken on 28 February 1900. Both Winston Churchill and Mahatma Gandhi were present at the siege, the former as a war correspondent and the latter as a stretcher-bearer.\nIn 1900, the unincorporated town of Oyster Harbour on the east coast of Vancouver Island, British Columbia, Canada, was renamed Ladysmith by James Dunsmuir in honour of the lifting of the siege of Ladysmith.\n\nIn 2023, it was proposed for Ladysmith to be renamed to uMnambithi. The name change officially took place in March 2024."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-4221552",
+  "name": "Savannah",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 7.77 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 6.72 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 11.68 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 9.62 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 8.59 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-4221552",
+   "answer": {
+    "name": "Savannah",
+    "aliases": [],
+    "country": "United States",
+    "subdivision": "Georgia",
+    "lat": 32.08354,
+    "lon": -81.09983,
+    "difficulty": 2
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This port city in Georgia stands on a river of the same name, a short way inland from the Atlantic coast.",
+     "narrowing": "A Georgia port on its namesake river.",
+     "source": {
+      "article": "Savannah, Georgia",
+      "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+      "quote": "Savannah is a city in the U.S. state of Georgia and the county seat of Chatham County, located on the Savannah River near the Atlantic Ocean."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Summers here are long, hot, and sticky, and most of the year's rain falls in those months, while winters stay short and mild.",
+     "narrowing": "Hot humid summers, mild short winters.",
+     "source": {
+      "article": "Savannah, Georgia (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+      "quote": "Savannah has a humid subtropical climate (Köppen Cfa), with long, hot, humid summers and short, mild winters; most precipitation falls in summer."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "General Oglethorpe founded this city in 1733 on a famous grid of public squares, the first planned city of its colony.",
+     "narrowing": "Founded in 1733 on a grid of squares.",
+     "source": {
+      "article": "Savannah, Georgia",
+      "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+      "quote": "Savannah was founded in 1733 by General James Oglethorpe and is known for its planned layout of public squares."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "A box of chocolates and a feather drifted into film legend here, on a bench in one of this city's green squares.",
+     "narrowing": "The Forrest Gump bench city.",
+     "source": {
+      "article": "Savannah, Georgia",
+      "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+      "quote": "Savannah was a filming location for Forrest Gump, including the famous bench scene in Chippewa Square."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Cotton wealth built the grand homes of this port, once one of the busiest cotton exporters on the Atlantic.",
+     "narrowing": "A great historic cotton port.",
+     "source": {
+      "article": "Savannah, Georgia",
+      "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+      "quote": "Savannah was historically a major cotton-exporting port, and its historic district preserves many antebellum buildings."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-4221552",
+    "name": "Savannah",
+    "country": "United States",
+    "subdivision": "Georgia",
+    "lat": 32.08354,
+    "lon": -81.09983
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Savannah, Georgia",
+     "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia",
+     "text": "Savannah is a city in and the county seat of Chatham County, Georgia, United States. Established in 1733 on the Savannah River, it is the oldest city in the state, and was the capital of the colonial Province of Georgia and later the first state capital of Georgia. A strategic port city in the American Revolution and during the American Civil War, Savannah today is an industrial center and an important Atlantic seaport. The city is the most populous in the Coastal Georgia region and the fifth-most populous in the state as a whole, with a population of 147,780 at the 2020 census and an estimated 149,440 in 2025. The Savannah metropolitan area, with about 438,000 residents in 2025, is the third-largest metro area in the state.\nSavannah attracts millions of visitors each year to its cobblestone streets, parks, and notable historic buildings. These include the birthplace of Juliette Gordon Low (founder of the Girl Scouts of the USA), the Georgia Historical Society (the oldest continually operating historical society in the South), the Telfair Academy of Arts and Sciences (one of the South's first public museums), the First African Baptist Church (one of the oldest African-American Baptist congregations in the United States), Temple Mickve Israel (the third-oldest synagogue in the U.S.), and the Central of Georgia Railway roundhouse complex (the oldest standing antebellum rail facility in the U.S., now a museum and visitor center).\nSavannah's downtown area, which includes the Savannah Historic District, its 22 parklike squares, and the Savannah Victorian Historic District, is one of the largest National Historic Landmark Districts in the U.S., designated by the federal government in 1966. Downtown Savannah largely retains the founder James Oglethorpe's original town plan, a design known as the Oglethorpe Plan. \nDuring the 1996 Summer Olympics hosted by Atlanta, Savannah held sailing competitions in the nearby Wassaw Sound."
+    },
+    {
+     "article": "Savannah, Georgia (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Savannah,_Georgia#Climate",
+     "text": "Savannah's climate is classified as humid subtropical (Köppen Cfa). Throughout the Deep South, this is characterized by long and almost tropical summers and short, mild winters. Savannah records only a few days of freezing temperatures each year, and snowfall is rare. Due to its proximity to the Atlantic coast, Savannah rarely experiences temperatures as extreme as those in Georgia's interior. Nevertheless, the extreme temperatures have officially ranged from , on July 20, 1986, and July 12, 1879, down to during the January 1985 Arctic outbreak.\nSeasonally, Savannah tends to have hot and humid summers with frequent (but brief) thunderstorms that develop in the warm and tropical air masses, which are common. Although summers in Savannah are frequently sunny, half of Savannah's annual precipitation falls from June through September. Average dewpoints in summer range from . Winters in Savannah are mild and sunny with average daily high temperatures of in January. November and December are the driest months recorded at Savannah–Hilton Head International Airport. Each year, Savannah reports 21 days on average with low temperatures below freezing, though in some years, fewer than 10 nights will fall below freezing, and the city has even gone an entire winter season (1879–80) without recording a freeze. Although decades might pass between snowfall events, Savannah has experienced snow on rare occasions, most notably in December 1989, when up to was recorded in one day in parts of the city.\nSavannah is at risk for hurricanes, particularly of the Cape Verde type of storms that take place during the peak of the season. Because of its location in the Georgia Bight (the arc of the Atlantic coastline in Georgia and northern Florida) as well as the tendency for hurricanes to re-curve up the coast, Savannah has a lower risk of hurricanes than some other coastal cities such as Charleston, South Carolina. Savannah was seldom affected by hurricanes during the 20th century. Hurricane David, in August 1979, is a notable exception. However, the historical record shows that the city was frequently affected during the second half of the 19th century. The most prominent of these storms was the 1893 Sea Islands hurricane, which killed at least 2,000 people. (This estimate may be low, as deaths among the many impoverished rural African Americans living on Georgia's barrier islands may not have been reported.)\nSavannah was most recently affected by an active 2016 hurricane season, including Hurricane Matthew (which made a partial eyewall landfall), and was brushed by Hurricane Irma in 2017. The 2024 season saw impacts from Hurricane Debby and Hurricane Helene.\nThe first meteorological observations in Savannah probably occurred at Oglethorpe Barracks circa 1827, continuing intermittently until 1850 and resuming in 1866. The Signal Service began observations in 1874, and the National Weather Service has kept records of most data continually since then; since 1948, Savannah-Hilton Head International Airport has served as Savannah's official meteorological station. Annual records (dating back to 1950) from the airport's weather station are available on the web."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-1688749",
+  "name": "San Pedro",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 9.08 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 10.82 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 9.79 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 12.86 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 10.44 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-1688749",
+   "answer": {
+    "name": "San Pedro",
+    "aliases": [],
+    "country": "Philippines",
+    "subdivision": "Calabarzon",
+    "lat": 14.3595,
+    "lon": 121.0473,
+    "difficulty": 5
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city in the province of Laguna sits on the western shore of a great lake, just south of the capital region.",
+     "narrowing": "A Laguna city on the lake's western shore.",
+     "source": {
+      "article": "San Pedro, Laguna",
+      "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+      "quote": "San Pedro is a city in the province of Laguna, Philippines, located on the western shore of Laguna de Bay."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "The year splits cleanly here: a pronounced dry season runs from November to April, then monsoon rains take over from May to October.",
+     "narrowing": "Dry November-to-April, wet May-to-October.",
+     "source": {
+      "article": "San Pedro, Laguna (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+      "quote": "San Pedro has a tropical monsoon climate with a dry season from November to April and a wet season from May to October."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Spanish colonizers founded a settlement here in the 1700s on land once held as a great hacienda estate.",
+     "narrowing": "An 18th-century hacienda settlement.",
+     "source": {
+      "article": "San Pedro, Laguna",
+      "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+      "quote": "San Pedro was established as a settlement during the Spanish colonial period on land that formed part of a large hacienda."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Every year this city lays out a famous sampaguita festival, honouring the tiny white flower that is the national bloom.",
+     "narrowing": "A festival for the national flower.",
+     "source": {
+      "article": "San Pedro, Laguna",
+      "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+      "quote": "San Pedro celebrates the Sampaguita Festival, honouring the sampaguita, the national flower of the Philippines."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "This city bills itself as a bedroom community of the capital, where workers sleep before the commute north.",
+     "narrowing": "A commuter 'bedroom city' of Manila.",
+     "source": {
+      "article": "San Pedro, Laguna",
+      "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+      "quote": "San Pedro is known as a 'bedroom community' of Metro Manila due to its proximity to the capital."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-1688749",
+    "name": "San Pedro",
+    "country": "Philippines",
+    "subdivision": "Calabarzon",
+    "lat": 14.3595,
+    "lon": 121.0473
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "San Pedro, Laguna",
+     "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+     "text": "San Pedro, officially the City of San Pedro (Filipino: Lungsod ng San Pedro), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 348,968 people.\nIt is named after its patron, Saint Peter.\nSan Pedro has been dubbed as “dormitory town” of Metro Manila and migrants from other provinces commuting everyday through its highly efficient road and transport system. Despite being one of the smallest political units in the entire province, with a total land area of only 24.05 square kilometers (9.29 sq mi), San Pedro is the 5th most populous city (out of 6) after the cities of Biñan, Calamba, Santa Rosa and Cabuyao. The city also has the highest population density in the province of Laguna and in the whole Calabarzon region, having 15,000 inhabitants per square kilometer (39,000/sq mi). San Pedro became a component city of Laguna by virtue of Republic Act No. 10420 dated March 27, 2013."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-184745",
+  "name": "Nairobi",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 10.45 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "CONTENT_BANNED",
+    "tier": 2,
+    "detail": "clue contains banned content: coordinate/elevation word"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 7.55 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 8.14 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 11.68 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 10.58 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-184745",
+   "answer": {
+    "name": "Nairobi",
+    "aliases": [],
+    "country": "Kenya",
+    "subdivision": "Nairobi County",
+    "lat": -1.28333,
+    "lon": 36.81667,
+    "difficulty": 1
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This capital and largest city of its East African country sits in highlands at about 1,800 metres above the sea.",
+     "narrowing": "A high-altitude East African capital.",
+     "source": {
+      "article": "Nairobi",
+      "url": "https://en.wikipedia.org/wiki/Nairobi",
+      "quote": "Nairobi is the capital and largest city of Kenya, situated in the south-central part of the country at an elevation of about 1,795 metres."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "At this altitude the tropics turn gentle: days stay mild, nights turn cool, and two rainy seasons break the year.",
+     "narrowing": "Mild highland air with two rainy seasons.",
+     "source": {
+      "article": "Nairobi (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Nairobi",
+      "quote": "Nairobi has a subtropical highland climate (Köppen Cwb), with mild days, cool nights, and two rainy seasons due to its high elevation."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This city began in 1899 as a railway depot on the line building inland from the coast toward a great lake.",
+     "narrowing": "Born in 1899 as a railway depot.",
+     "source": {
+      "article": "Nairobi",
+      "url": "https://en.wikipedia.org/wiki/Nairobi",
+      "quote": "Nairobi was founded in 1899 as a railway depot on the Uganda Railway line from Mombasa to Lake Victoria."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Giraffes graze here against a skyline of office towers, in the only national park inside a capital city on Earth.",
+     "narrowing": "The world's only capital-city national park.",
+     "source": {
+      "article": "Nairobi",
+      "url": "https://en.wikipedia.org/wiki/Nairobi",
+      "quote": "Nairobi National Park, located within the city, is the only national park in the world within a capital city."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Safari travellers fly into this capital to start their journeys, and its name comes from a Maasai phrase for cool water.",
+     "narrowing": "The safari capital named for cool water.",
+     "source": {
+      "article": "Nairobi",
+      "url": "https://en.wikipedia.org/wiki/Nairobi",
+      "quote": "The name Nairobi comes from the Maasai phrase Enkare Nairobi, meaning 'cool water'."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-184745",
+    "name": "Nairobi",
+    "country": "Kenya",
+    "subdivision": "Nairobi County",
+    "lat": -1.28333,
+    "lon": 36.81667
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Nairobi",
+     "url": "https://en.wikipedia.org/wiki/Nairobi",
+     "text": "Nairobi (  ny-ROH-bee) (Jiji kuu la Nairobi, in Swahili),  is the capital and largest city of Kenya, located in the south-central part of the country. As of 2026, it has a population of 5.6 million and a metropolitan population of 15.95 million, making it the 8th most populous city in Africa and the 4th most populous metropolitan area. The city goes beyond its borders and has expanded into neighbouring counties, making it the 4th largest metropolitan area in Africa.\nNicknamed the \"Green City under the Sun\", Nairobi is uniquely notable for being the only capital city in the world that hosts a national park within its boundaries. Its name originates from the Maasai phrase Enkare Nyirobi, meaning \"place of cool waters\".\nAs the national capital, Nairobi is home to the Kenyan Parliament Buildings, the State House and the Supreme Court Building. It is the major financial and economic hub of East Africa, hosting thousands of Kenyan businesses and international companies and organisations, including the United Nations Environment Programme (UN Environment) and the United Nations Office at Nairobi (UNON). The Nairobi Securities Exchange (NSE) is one of the largest stock exchanges in Africa and the second-oldest exchange on the continent. It is Africa's fourth-largest stock exchange by trading volume, capable of processing 10 million trades a day. Nairobi is considered a global city and was ranked as a \"Beta World City\" by the Globalisation and World Cities Research Network as of 2024.\nNairobi was founded in 1898 by colonial authorities in British East Africa, as a rail depot on the Uganda–Kenya Railway. The authorities favoured it as an ideal resting place due to its high elevation, temperate climate, and adequate water supply. The town quickly grew to replace Mombasa as the capital of Kenya in 1907.\nAfter independence in 1963, Nairobi became the capital of the Republic of Kenya. During Kenya's early period, the city became a centre for the coffee, tea and sisal industries. Successive post-independence governments have built and turned Nairobi into a modern metropolitan city with a diverse population and a growing economy."
+    },
+    {
+     "article": "Nairobi (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Nairobi#Climate",
+     "text": "Under the Köppen climate classification, Nairobi has a subtropical highland climate (Cwb). At above sea level, evenings may be cool, especially in the June/July season, when the temperature can drop to . The sunniest and warmest part of the year is from December to March, when temperatures average in the high-twenties Celsius during the day. The mean maximum temperature for this period is .\nThere are rainy seasons, but rainfall can be moderate. The cloudiest part of the year is just after the first rainy season, when, until September, conditions are usually overcast with drizzle. As Nairobi is situated close to the equator, the differences between the seasons are minimal. The seasons are referred to as the wet season and dry season. The timing of sunrise and sunset varies little throughout the year for the same reason."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-3471039",
+  "name": "Balneário Camboriú",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 11.07 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 7.75 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 9.83 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 10.58 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 7.35 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-3471039",
+   "answer": {
+    "name": "Balneário Camboriú",
+    "aliases": [],
+    "country": "Brazil",
+    "subdivision": "Santa Catarina",
+    "lat": -26.99056,
+    "lon": -48.63472,
+    "difficulty": 4
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This beach city in the southern Brazilian state of Santa Catarina curves around a bay on the Atlantic coast.",
+     "narrowing": "A bay-front beach city in Santa Catarina.",
+     "source": {
+      "article": "Balneário Camboriú",
+      "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+      "quote": "Balneário Camboriú is a beach resort city in Santa Catarina, Brazil, located on the Atlantic coast."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Rain falls here in every month with no dry season at all, while summers turn hot and winters stay mild by the sea.",
+     "narrowing": "No dry season; hot summers, mild winters.",
+     "source": {
+      "article": "Balneário Camboriú (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+      "quote": "Balneário Camboriú has a humid subtropical climate (Köppen Cfa), with rainfall throughout the year and no dry season, hot summers and mild winters."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This resort city was founded as its own municipality in 1964, split off from the older town up the river.",
+     "narrowing": "Became a municipality in 1964.",
+     "source": {
+      "article": "Balneário Camboriú",
+      "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+      "quote": "Balneário Camboriú became a municipality in 1964, separating from Camboriú."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Some of the tallest residential towers in its country crowd this beachfront, so high the sand falls into shadow by afternoon.",
+     "narrowing": "Supertall beach towers that shade the sand.",
+     "source": {
+      "article": "Balneário Camboriú",
+      "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+      "quote": "Balneário Camboriú is known for its tall beachfront skyscrapers, among the tallest residential buildings in Brazil."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A Christ statue with outstretched arms glows over this bay at night, lit in changing colours above the beach.",
+     "narrowing": "The Cristo Luz statue over the bay.",
+     "source": {
+      "article": "Balneário Camboriú",
+      "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+      "quote": "The Cristo Luz statue, a monument of Jesus Christ holding a light, overlooks Balneário Camboriú."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-3471039",
+    "name": "Balneário Camboriú",
+    "country": "Brazil",
+    "subdivision": "Santa Catarina",
+    "lat": -26.99056,
+    "lon": -48.63472
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Balneário Camboriú",
+     "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+     "text": "Balneário Camboriú (Portuguese pronunciation: [bawneˈaɾju kɐ̃boɾiˈu]) is a coastal city in the southern Brazilian state of Santa Catarina. The city is built on steep hills which drop down to the sea. It is a popular tourist destination for South Americans, who are drawn to its main ocean boulevard Avenida Atlântica (Atlantic Avenue), and who swell the city's population from 139,155 (2022 Census) to over one million in the summer. The city is famous for its unique beach-to-beach cable car which links its central beach with the beach of Laranjeiras. Balneário Camboriú is located 10 km (6.2 mi) south of the city of Itajaí, 96 km (60 mi) south of the city of Joinville, and 80 km (50 mi) north of the state capital, Florianópolis.\nThe city is served by Ministro Victor Konder International Airport located in the adjoining municipality of Navegantes.\nThe original meaning of the city's name is unknown. According to the city's archives, it is \"River filled with Snook (Robalo)\", which is a very common type of fish in this region. Ilha das Cabras (Goats' Island) is directly opposite the city and is too small for habitation but it is lit at night. Visitors to nearby Laranjeiras Beach can sail there aboard 17th century-style pirate ships, going around Ilha das Cabras before returning to Balneário Camboriú.  The city also has a statue similar to Rio de Janeiro's Cristo Redentor (Christ the Redeemer). Standing atop the Morro da Cruz, Cristo Luz (Christ Light) portrays Jesus holding a circular \"broad-brimmed hat\" at his left shoulder, symbolizing the sun, and which houses a spotlight that shines out over the city.  The Cristo Luz at 33 meters tall is only five meters shorter than the Redeemer and colorful lights both within and without the statue give it nighttime illumination.  Another common sight in the city are paragliders over the beach, alongside the tall buildings, from the gliderport in Praia dos Amores.  To the west the city is bordered by the Camboriú River, which joins the ocean at the southern edge of the center of the city, where the cable car (teleférico) rises from the central beach.\nThe city has been called the \"Brazilian Dubai\", due to its high number of skyscrapers and affluent tourists."
+    },
+    {
+     "article": "Balneário Camboriú (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA#Climate",
+     "text": "The climate is considered mild and is the classification of Köppen Cfa type (mesothermic humid with hot summers). In summer, though hot, hardly ever reach the 40 °C, and its average is 25 °C. In winter, the average temperature is around 15 °C, but the minimum in the early morning can attain cooler values between 0 °C and 4 °C. The annual average is 19 °C. The climate is generally humid, with mean annual rainfall of 1,500 mm, with no defined dry season (the rainfall regime is typical of the humid subtropical type of climate). Possible floods and droughts hit the city, damaging its economy and population.\nThe temperature of sea water for this region of Balneário Camboriú ranges from 16 °C on average (in winter) to 24.4 °C on average (in summer), whereas in autumn and spring is around 21 °C The warmest months are: February and March are the two best months to enjoy the beach."
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-5393015",
+  "name": "Santa Clara",
+  "reasons": [
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 1,
+    "detail": "clues[0].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 9.91 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 2,
+    "detail": "clues[1].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 2,
+    "detail": "Flesch-Kincaid grade 9.28 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 3,
+    "detail": "clues[2].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 3,
+    "detail": "Flesch-Kincaid grade 7.97 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 4,
+    "detail": "clues[3].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 4,
+    "detail": "Flesch-Kincaid grade 9.09 exceeds max 6"
+   },
+   {
+    "code": "QUOTE_UNTRACEABLE",
+    "tier": 5,
+    "detail": "clues[4].source.quote not found verbatim in the cited extract"
+   },
+   {
+    "code": "READING_LEVEL",
+    "tier": 5,
+    "detail": "Flesch-Kincaid grade 6.65 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-5393015",
+   "answer": {
+    "name": "Santa Clara",
+    "aliases": [],
+    "country": "United States",
+    "subdivision": "California",
+    "lat": 37.35411,
+    "lon": -121.95524,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city lies on the southern shore of a famous bay in Northern California, ringed by mountains on three sides.",
+     "narrowing": "A South Bay city in Northern California.",
+     "source": {
+      "article": "Santa Clara, California",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+      "quote": "Santa Clara is a city in Santa Clara County, California. The city's population was 127,647 at the 2020 census, making it the eighth-most populous city in the San Francisco Bay Area."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "Here over 300 days a year bring sunshine, and even the rainiest month of winter drops less rain than a light spring shower elsewhere.",
+     "narrowing": "More than 300 sunny days a year.",
+     "source": {
+      "article": "Santa Clara, California (Climate section)",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+      "quote": "The city averages 302 days of sunshine per year and has a Mediterranean climate (Köppen Csa/Csb)."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "Spanish friars founded a mission here in 1777, named for Saint Clare, and the city grew up around that mission.",
+     "narrowing": "Founded around a 1777 Spanish mission.",
+     "source": {
+      "article": "Santa Clara, California",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+      "quote": "Mission Santa Clara de Asís, the eighth Spanish mission in California, was founded on January 12, 1777."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "The oldest university in its state stands here, a Jesuit school opened in 1851 on the mission grounds.",
+     "narrowing": "Home to the state's oldest university.",
+     "source": {
+      "article": "Santa Clara, California",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+      "quote": "Santa Clara University, founded in 1851, is the oldest operating institution of higher learning in California."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "A giant football stadium here hosts the 49ers, though the team keeps the name of the bigger city up the bay.",
+     "narrowing": "Where the 49ers play at Levi's Stadium.",
+     "source": {
+      "article": "Santa Clara, California",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+      "quote": "Levi's Stadium, home of the San Francisco 49ers, is located in Santa Clara."
+     }
+    }
+   ]
+  },
+  "input": {
+   "place": {
+    "place_id": "gn-5393015",
+    "name": "Santa Clara",
+    "country": "United States",
+    "subdivision": "California",
+    "lat": 37.35411,
+    "lon": -121.95524
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Santa Clara, California",
+     "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+     "text": "Santa Clara ( SAN-tə KLAR-ə; Spanish for 'Saint Clare') is a city in Santa Clara County, California, United States. Located in the southern San Francisco Bay Area, it was founded by the Spanish in 1777 with the establishment of Mission Santa Clara de Asís under the leadership of Junípero Serra. The city's population was 127,647 at the 2020 census, making it the eighth-most populous city in the Bay Area. The U.S. Census Bureau estimated Santa Clara's population at 133,446 as of July 1, 2025.\nSanta Clara is located in the center of Silicon Valley and is home to the headquarters of companies such as Intel, Advanced Micro Devices (AMD), and Nvidia. It is also home to Santa Clara University, the oldest university in California, Levi's Stadium, home of the National Football League's San Francisco 49ers, and California's Great America amusement park. Santa Clara is bordered by San Jose on almost every side, except for Sunnyvale and Cupertino to the west."
+    },
+    {
+     "article": "Santa Clara, California (Climate section)",
+     "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California#Climate",
+     "text": "The average daily temperatures in July range from to . Winters are mild, with the mean daily temperatures in January ranging from to . Most of the annual rainfall comes in the winter months; the summer months are generally rainless."
+    }
+   ]
+  }
+ }
+]

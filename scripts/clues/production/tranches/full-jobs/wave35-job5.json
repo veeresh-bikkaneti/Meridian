@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 6929,
+    "attempt": 6881,
+    "place_id": "gn-2062944",
+    "input": {
+      "place": {
+        "place_id": "gn-2062944",
+        "name": "Prospect",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.88241,
+        "lon": 138.5933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prospect, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Prospect,_South_Australia",
+          "text": "Prospect is an inner northern suburb of greater Adelaide, South Australia, and the namesake of its Local Government Area, the City of Prospect. It is located 5 km (3.1 mi) north of Adelaide's centre.\nSurrounding suburbs include Kilburn, Fitzroy, Medindie and Devon Park. The suburb has boundaries of Main North Road to the east; Carter Street, Audley Avenue and Avenue Road to the south; The Gawler railway line to the west, and a line 400m north of Regency Road (Livingstone Avenue, Angwin Avenue and Henrietta Street) to the north.\nProspect comprises a large majority of the land area (about five-sevenths, or 71%) of the City of Prospect council area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "prospect",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6930,
+    "attempt": 6882,
+    "place_id": "gn-2063036",
+    "input": {
+      "place": {
+        "place_id": "gn-2063036",
+        "name": "Port Lincoln",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.72625,
+        "lon": 135.87442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Lincoln",
+          "url": "https://en.wikipedia.org/wiki/Port_Lincoln",
+          "text": "Port Lincoln is a city on the Lower Eyre Peninsula in the Australian state of South Australia. Known as Galinyala by the Barngarla people who hold native title rights, it is situated on the shore of Boston Bay, which opens eastward into Spencer Gulf. It is the largest city in the West Coast region, and is located approximately 280 km (170 mi) from the state's capital city of Adelaide (646 km (401 mi) by road).\nIn June 2019 Port Lincoln had an estimated population of 26,418, having grown at an average annual rate of 0.55% year-on-year over the preceding five years. The city claims to be Australia's \"Seafood Capital\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "port lincoln",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6931,
+    "attempt": 6883,
+    "place_id": "gn-2169386",
+    "input": {
+      "place": {
+        "place_id": "gn-2169386",
+        "name": "Darley",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.65807,
+        "lon": 144.44344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darley, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Darley,_Victoria",
+          "text": "Darley is a suburb of Bacchus Marsh, Victoria, Australia located directly north of the central area across the Western Freeway.  It is the most populous locality and earliest settlement (1838) in Bacchus Marsh.  At the 2021 census, Darley had a population of 9,190.\nIt is bordered by the Lerderderg River to the east, Korkuperrimui Creek to the west, Western Freeway to the south and Lerderderg State Park to the north.  Darley is located on the rural-urban fringe, the topography varies but is mostly undulating.\nIt began as a small agricultural settlement on the bend of the Lerderderg River in 1838 and was surveyed and proclaimed a town in 1861.\nIn recent decades Darley has rapidly grown and has become a major suburban area of Bacchus Marsh with a large number of housing estates and developments to the east south and north capitalising on Darley's proximity to the freeway.\nThe suburb is home to Darley Primary School, Pentland Hills Primary School, large sports oval (Darley Oval) home to the Darley Football Club and Darley Cricket Club, the Bacchus Marsh Golf club, IGA supermarket and small commercial centre on Albert Street.\nDarley is also home to \"Triassic park\" (The Council Trench), The Council Trench is geologically significant to Victoria. It is the only known outcrop of Triassic aged sedimentary rock in the state. The Council Trench is exposed as outcrop in a trench, about 40m in length and 2 to 5 m depth, cut into a low ridge, on the east side of Tramway Lane, Darley.\nA former Military camp \"Camp Darley\" was housed in the Darley area, accommodating US service personnel from many units including, 49th Fighter group, 5th Airforce, 808 Engineer Aviation battalion and 182nd Infantry regiment of task force 6814."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 291
+    },
+    "banned_terms": [
+      {
+        "term": "darley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6932,
+    "attempt": 6884,
+    "place_id": "gn-2264575",
+    "input": {
+      "place": {
+        "place_id": "gn-2264575",
+        "name": "Pombal",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.91674,
+        "lon": -8.62847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pombal, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Pombal,_Portugal",
+          "text": "Pombal (Portuguese pronunciation: [põˈbal] ) is a city and a municipality located in the historical Beira Litoral province and in the região de Leiria of the  Leiria district. \nThe population in 2011 was 55217, in an area of 626.00 km2. The population of the city of Pombal proper is about 18000 inhabitants.\nThe municipality is served by a railway station which is part of the Linha do Norte, the main Portuguese railway line that connects its two largest cities, Lisbon and Porto.\nThe Mayor is Luís Diogo de Paiva Morão Alves Mateus since 2013, elected by the Social Democratic Party. The municipal holiday is November 11 and celebrates St. Martin's Day.\nIn 2017, an 82-foot-long skeleton of a possible sauropod dinosaur was uncovered in a Pombal property owner's backyard.\nIn January 2026, Storm Kristin caused a catastrophic impact in the municipality of Pombal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "pombal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6933,
+    "attempt": 6885,
+    "place_id": "gn-2509783",
+    "input": {
+      "place": {
+        "place_id": "gn-2509783",
+        "name": "Vejer de la Frontera",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.25213,
+        "lon": -5.96717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vejer de la Frontera",
+          "url": "https://en.wikipedia.org/wiki/Vejer_de_la_Frontera",
+          "text": "Vejer de la Frontera is a Spanish hilltop town and municipality in the province of Cádiz, Andalusia, on the right bank of the river Barbate. The town of Vejer de la Frontera occupies a low hill overlooking the Straits of Gibraltar and surrounded by orchards and orange groves. It contains several ancient churches and convents, and the architecture of many of its houses recalls the period of Moorish rule, which lasted from 711 until the town was captured by Saint Ferdinand of Castile in 1248. Agriculture and fruit-farming are the chief industries; fighting bulls are also bred in the neighborhood and a running of the bulls is held annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "vejer de la frontera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vejer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frontera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6934,
+    "attempt": 6886,
+    "place_id": "gn-2510574",
+    "input": {
+      "place": {
+        "place_id": "gn-2510574",
+        "name": "Tegueste",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.52236,
+        "lon": -16.34074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tegueste",
+          "url": "https://en.wikipedia.org/wiki/Tegueste",
+          "text": "Tegueste is a town and a municipality of the northeastern part of the island of Tenerife in the Santa Cruz de Tenerife province, on the Canary Islands, Spain. It is surrounded by the municipality of San Cristóbal de La Laguna. The town Tegueste is located 4 km northwest of San Cristóbal de La Laguna and 11 km northwest of the island capital Santa Cruz de Tenerife. Tegueste became independent from San Cristóbal de La Laguna in the 17th century.\nCurrently, it is thought that the place name Tegueste is related to Thagaste, a city in Algeria where Saint Augustine of Hippo was born and a center of Berber culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "tegueste",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6935,
+    "attempt": 6887,
+    "place_id": "gn-2523207",
+    "input": {
+      "place": {
+        "place_id": "gn-2523207",
+        "name": "Scalea",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.80605,
+        "lon": 15.79635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scalea",
+          "url": "https://en.wikipedia.org/wiki/Scalea",
+          "text": "Scalea is a town and comune in the province of Cosenza in the Calabria region of southern Italy.\nThe old city sits within a preserved set of ancient walls on the heights. The interior of the old city is an intricate maze of stairs, alleys,  wide streets and plazas, support beams, and arches. One of the defining characteristics of the historic center is \"suppuorti\": wooden floors built above the alleyways, born out of the need for defensibility and for growth in dense limited space.\nSince the 1960s, the beach at the base of the town was developed into a modern shopping and leisure center known as the Scalea Marina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "scalea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6936,
+    "attempt": 6888,
+    "place_id": "gn-2635043",
+    "input": {
+      "place": {
+        "place_id": "gn-2635043",
+        "name": "Uttoxeter",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.89838,
+        "lon": -1.86488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uttoxeter",
+          "url": "https://en.wikipedia.org/wiki/Uttoxeter",
+          "text": "Uttoxeter (  yoo-TOK-sit-ər, locally also  UUTCH-it-ər) is a market town and civil parish in the East Staffordshire borough of Staffordshire, England. It is near to the Derbyshire county border.\nThe town is 14 miles (23 km) from Burton upon Trent via the A50 and the A38, 14 miles (23 km) from Stafford via the A518, 18 miles (29 km) from Stoke-on-Trent via the A50, and 19 miles (31 km) from Derby via the A50 and the A38, and 11 miles (18 km) northeast of Rugeley via the A518 and the B5013.\nThe population was 14,014 at the 2021 Census.\nThe town's literary connections include Samuel Johnson and Mary Howitt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "uttoxeter",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6937,
+    "attempt": 6889,
+    "place_id": "gn-2635113",
+    "input": {
+      "place": {
+        "place_id": "gn-2635113",
+        "name": "Upper Norwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41505,
+        "lon": -0.0927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upper Norwood",
+          "url": "https://en.wikipedia.org/wiki/Upper_Norwood",
+          "text": "Upper Norwood is an area of south London, England, within the London Boroughs of Bromley, Croydon, Lambeth and Southwark. It is north of Croydon. The eastern part of it is better known as the Crystal Palace area. The SE19 London postcode covers the entirety of the district.\nUpper Norwood is one of the highest areas in London, situated along the London clay ridge known as Beulah Hill, which offers panoramic views northwards to central London and southwards to Central Croydon and the North Downs. Most housing dates from the 19th and 20th centuries, with large detached properties along the ridge and smaller, semi-detached and terraced dwellings on the slopes. There are some more modern areas of social housing that date from the 1970s, as well as the recent construction of larger apartment buildings on Beulah Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "upper norwood",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "upper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "norwood",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6938,
+    "attempt": 6890,
+    "place_id": "gn-2638530",
+    "input": {
+      "place": {
+        "place_id": "gn-2638530",
+        "name": "Sandy",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.12927,
+        "lon": -0.28925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandy, Bedfordshire",
+          "url": "https://en.wikipedia.org/wiki/Sandy,_Bedfordshire",
+          "text": "Sandy is a town and civil parish in Central Bedfordshire, England. It lies 8 miles (13 km) to the east of Bedford, 18 miles (29 km) to the south west of Cambridge and 43 miles (69 km) north of Central London. It had a population of 12,171 at the 2021 census.\nThe town takes its name from a low range of sandy hills on the eastern side of the town, which form part of the Bedfordshire Greensand Ridge. The main part of the built-up area lies between the hills to the east and the River Ivel to the west. The A1 road skirts the western edge of the town. Sandy railway station is on the Great Northern route between London and Peterborough, with the railway running along the eastern edge of the built-up area. The parish also includes the hamlet of Beeston, which straddles the A1 to the south-west of the town.\nThe headquarters of the Royal Society for the Protection of Birds (RSPB) is at The Lodge at Sandy Warren in the hills to the east of the town, where it has been based since 1961."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "sandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6939,
+    "attempt": 6891,
+    "place_id": "gn-2642182",
+    "input": {
+      "place": {
+        "place_id": "gn-2642182",
+        "name": "Morpeth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.16882,
+        "lon": -1.68893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morpeth, Northumberland",
+          "url": "https://en.wikipedia.org/wiki/Morpeth,_Northumberland",
+          "text": "Morpeth is a historic market town in Northumberland, England, lying on the River Wansbeck. Nearby towns include Ashington and Bedlington. In the 2011 census, the population of Morpeth was given as 14,017, up from 13,833 in the 2001 census. The earliest evidence of settlement is believed to be from the Neolithic period, and some Roman artefacts have also been found. \nThe first written mention of the town is from 1080, when the de Merlay family was granted the barony of Morpeth. The meaning of the town's name is uncertain, but it may refer to its position on the road to Scotland and a murder which occurred on that road. The de Merlay family built two castles in the town in the late 11th century and the 13th century. The town was granted its coat of arms in 1552. By the mid-1700s it had become one of the main markets in England, having been granted a market charter in 1200, but the opening of the railways in the 1800s led the market to decline. The town's history is celebrated in the annual Northumbrian Gathering.\nMorpeth is governed by Northumberland County Council and Morpeth Town Council. The town is split into three wards – North, Kirkhill and Stobhill – for the purposes of parish elections. In 2008, the town suffered a severe flood, which was repeated in 2012, resulting in the construction of new flood defences. Morpeth railway station is on the east coast line and a curve to the south of it has caused several rail crashes. Several sports teams compete in Morpeth, with Morpeth Town A.F.C. having been the winner of the FA Vase in 2016. The town hosted its own Olympics from 1873 to 1958. Two middle schools, a high school and seven first schools are situated in Morpeth, as well as several churches of Anglican, Roman Catholic, United Reformed and Methodist denominations. Morpeth's Carlisle Park, the recipient of several awards, contains one of the four floral clocks in England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "morpeth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6940,
+    "attempt": 6892,
+    "place_id": "gn-2642484",
+    "input": {
+      "place": {
+        "place_id": "gn-2642484",
+        "name": "Milngavie",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.94071,
+        "lon": -4.32311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milngavie",
+          "url": "https://en.wikipedia.org/wiki/Milngavie",
+          "text": "Milngavie (  mul-GHY; Scottish Gaelic: Muileann-Ghaidh) is a town in East Dunbartonshire, Scotland and a suburb of Glasgow. It is on the Allander Water, at the northwestern edge of Greater Glasgow, and about ten kilometres (six miles) from Glasgow city centre. It neighbours Bearsden.\nIn 2018, the Scottish Government published statistics for the town showing that the population increased to 13,537 in 6,062 households. The town is also a popular retirement location, with a high number of elderly people living there.\nThe Milngavie and Bearsden Herald, owned by Johnston Press, is a weekly newspaper that covers local events from the schools, town halls, community and government in the area. The paper was established in 1901 and is printed every Wednesday, to be sold on Thursdays.\nThe town is the start point of the West Highland Way long distance footpath which runs northwards for 154 kilometres (96 mi) to the town of Fort William. A granite obelisk in the town centre marks the official starting point of the footpath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "milngavie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6941,
+    "attempt": 6893,
+    "place_id": "gn-2645420",
+    "input": {
+      "place": {
+        "place_id": "gn-2645420",
+        "name": "Kingswinford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.49755,
+        "lon": -2.16889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingswinford",
+          "url": "https://en.wikipedia.org/wiki/Kingswinford",
+          "text": "Kingswinford is a town of the Metropolitan Borough of Dudley in the West Midlands County, England. It is situated 5 miles (8 km) west-southwest of Dudley, bordering Staffordshire. In 2021, the Kingswinford built-up area had a population of 51,910.\nPositioned at the far western edge of the West Midlands conurbation, it borders on a rural area extending past the River Severn; but its position at the edge of the Black Country and its long standing in the area means it has had significant industrial influence in the past. This is illustrated by the influence in creating local workhouses, which shows a population of 15,000 plus in the 1831 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kingswinford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6942,
+    "attempt": 6894,
+    "place_id": "gn-2647784",
+    "input": {
+      "place": {
+        "place_id": "gn-2647784",
+        "name": "Guiseley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.87561,
+        "lon": -1.71232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guiseley",
+          "url": "https://en.wikipedia.org/wiki/Guiseley",
+          "text": "Guiseley ( GHYZE-lee) is a small town in the City of Leeds, West Yorkshire, England. Historically part of the West Riding of Yorkshire, it is situated south of Otley and Menston and is now a north-western suburb of Leeds.\nIt sits in the Guiseley and Rawdon ward of Leeds City Council and the Leeds North West parliamentary constituency. At the 2001 census, Guiseley with Rawdon had a population of over 21,000, increasing to 22,347 at the 2011 census.\nThe A65 Otley Road, which passes through the town, is the main shopping street. Guiseley railway station has regular train services into Leeds, Bradford and Ilkley stations on the Wharfedale Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "guiseley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6943,
+    "attempt": 6895,
+    "place_id": "gn-2648319",
+    "input": {
+      "place": {
+        "place_id": "gn-2648319",
+        "name": "Goole",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.70324,
+        "lon": -0.87732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goole",
+          "url": "https://en.wikipedia.org/wiki/Goole",
+          "text": "Goole is a port town and civil parish on the River Ouse in the East Riding of Yorkshire, England. The town's historic county is the West Riding of Yorkshire.\nAt the 2021 UK census, Goole parish had a population of 21,246. It is 16 miles (26 km) north-east of Doncaster, 19 miles (31 km) south of York and 29 miles (47 km) west of Hull.\nThe town has the United Kingdom's furthest inland port, being about 50 miles (80 km) from the North Sea. It is capable of handling nearly 2 million tonnes of cargo per year, making it one of the most important ports on England's east coast.\nGoole is twinned with Złotów in Poland. Goole was informally twinned with Gibraltar in the 1960s; at that time, Gibraltar Court was named in Goole and Goole Court was named in Gibraltar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "goole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6944,
+    "attempt": 6896,
+    "place_id": "gn-2659297",
+    "input": {
+      "place": {
+        "place_id": "gn-2659297",
+        "name": "Olten",
+        "country": "Switzerland",
+        "subdivision": "Solothurn",
+        "lat": 47.34999,
+        "lon": 7.90329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olten",
+          "url": "https://en.wikipedia.org/wiki/Olten",
+          "text": "Olten (German pronunciation: [ˈɔltn̩]; High Alemannic: Oute or Olte) is a municipality, a town in the canton of Solothurn in Switzerland and the capital of the district of the same name.\nOlten grew into a town during the Middle Ages at the location of a bridge over the Aare. After a period of decline, it grew rapidly as a railway town in the 19th century. Its railway station is a major rail hub of Switzerland, located at the junction of lines to Zurich, Basel, Bern, and Lucerne, all of which are within 30 minutes by train, and the town is also home to a depot for Swiss Federal Railways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "olten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6945,
+    "attempt": 6897,
+    "place_id": "gn-2712993",
+    "input": {
+      "place": {
+        "place_id": "gn-2712993",
+        "name": "Gamla Uppsala",
+        "country": "Sweden",
+        "subdivision": "Uppsala",
+        "lat": 59.89817,
+        "lon": 17.63386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gamla Uppsala",
+          "url": "https://en.wikipedia.org/wiki/Gamla_Uppsala",
+          "text": "Gamla Uppsala (Swedish: [ˈɡâmːla ˈɵ̂pːˌsɑːla], Old Uppsala) is a parish and a village outside Uppsala in Sweden. It had 17,973 inhabitants in 2016.\nAs early as the 3rd century AD and the 4th century AD and onwards, it was an important religious, economic and political centre. Early written sources show that already during prehistory, Gamla Uppsala was widely famous in Northern Europe as the residence of Swedish kings of the legendary Yngling dynasty. In fact, the oldest Scandinavian sources, such as Ynglingatal, the Westrogothic law and the Gutasaga talk of the King of the Swedes (Suiones) as the \"King at Uppsala\". It was the main centre of the Swedes.\nDuring the Middle Ages, it was the largest village of Uppland, the eastern part of which probably originally formed the core of the complex of properties belonging to the Swedish Crown, the so-called Uppsala öd, of which the western part consisted of the royal estate itself, kungsgården.\nIt was also the location of the Thing of all Swedes which was a thing (general assembly) held from prehistoric times to the Middle Ages, at the end of February or early March.\nIt was held in conjunction with a great fair called Disting, and a Norse religious celebration called Dísablót.\nThe Law of Uppland says that it was at this assembly that the king proclaimed that the fleet levy would be summoned for warfare during the summer, and all the crews, rowers, commanders and ships were decided.\nIt was not only the Norse cultic centre, it also became Sweden's archbishopric in 1164."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "gamla uppsala",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gamla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "uppsala",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6946,
+    "attempt": 6898,
+    "place_id": "gn-2740761",
+    "input": {
+      "place": {
+        "place_id": "gn-2740761",
+        "name": "Chaves",
+        "country": "Portugal",
+        "subdivision": "Vila Real",
+        "lat": 41.74019,
+        "lon": -7.46879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chaves, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Chaves,_Portugal",
+          "text": "Chaves (European Portuguese pronunciation: [ˈʃavɨʃ] ), officially the City of Chaves (Portuguese: Cidade de Chaves), is a city and a municipality in the north of Portugal. It is 10 km south of the Spanish border and 22 km south of Verín (Spain). The population of the entire municipality in 2011 was 41,243, in an area of 591.23 km2. The municipality is the second most populous of the district of Vila Real (the district capital, Vila Real, is 60 km south on the A24 motorway). With origins in the Roman civitas Aquæ Flaviæ, Chaves has developed into a regional centre. The urban area or city proper has 17,535 residents (2001)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "chaves",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6947,
+    "attempt": 6899,
+    "place_id": "gn-2747870",
+    "input": {
+      "place": {
+        "place_id": "gn-2747870",
+        "name": "Rozenburg",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.90417,
+        "lon": 4.24861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rozenburg",
+          "url": "https://en.wikipedia.org/wiki/Rozenburg",
+          "text": "Rozenburg (Dutch pronunciation: [ˈroːzə(m)bʏr(ə)x] ) is a town and former municipality in the western Netherlands, in the province of South Holland. The municipality had a population of 13,173 in 2004, and covers an area of 6.50 km2 (of which 1.99 km2 water). It was the second-smallest municipality in the Netherlands in area (behind Bennebroek). On 10 July 2008, the local council decided to disband the municipality and to form a submunicipality of Rotterdam. This was ratified on 27 October 2009 by the Eerste Kamer (the Dutch Senate), and came into effect on 18 March 2010.\n\nThe town is located on the former island by the same name: Rozenburg Island. Its current form was created out of three separate parts: Rozenburg proper (a former sand bar between Het Scheur and Brielse Maas – part of the Nieuwe Maas river – both being branches of the Rhine–Meuse–Scheldt delta), the sand bar Welplaat, and the southernmost part of the Hook of Holland (which was cut off from mainland Holland by the construction of the Nieuwe Waterweg ship canal in 1870 and subsequently was connected to Rozenburg when the remainder of Het Scheur was dammed off). The island is now connected to Voorne-Putten by a sea barrier and a dam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "rozenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6948,
+    "attempt": 6900,
+    "place_id": "gn-2748737",
+    "input": {
+      "place": {
+        "place_id": "gn-2748737",
+        "name": "Panningen",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 51.32667,
+        "lon": 5.97917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panningen",
+          "url": "https://en.wikipedia.org/wiki/Panningen",
+          "text": "Panningen (Dutch: [ˈpɑnɪŋə(n)]; Limburgish: Kepèl) is a Dutch town with a population of 7,618 inhabitants (2020) and is the biggest settlement of the municipality Peel en Maas. It is centrally located between the cities of Roermond, Weert and Venlo in the north of the Dutch province Limburg. Before the 2010 municipal redivision, when Panningen became a part of the newly formed municipality of Peel en Maas, it was part of Helden. Together with Helden, Panningen forms a double core, the double core Helden-Panningen has 13,863 inhabitants (2020). Its nearest city, Venlo, lies about 13 km eastwards.\nThe built-up area of the town is 3.38 km², and contains 4,523 residences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "panningen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
