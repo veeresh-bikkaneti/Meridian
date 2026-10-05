@@ -2022,6 +2022,10 @@ function PlayLoaded({
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}
+          // Full dealing pool (not the banded subset): the nearest-place
+          // fallback for the "Your pin" line scans it for the closest
+          // same-territory place. Same array reference — no copy.
+          poolPlaces={places}
           // The growth line is derived from the place's recorded attempts
           // (including the commit that just revealed it), so it recomputes
           // identically after a reload. Null when the flag is off.

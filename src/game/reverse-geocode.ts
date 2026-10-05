@@ -22,6 +22,7 @@
 import { geoContains } from "d3-geo";
 import { feature } from "topojson-client";
 import { territoryAt } from "./territory.ts";
+import { countryNameForIso2, countryNameForRegionId } from "./question-label.ts";
 import type { LonLat } from "./types.ts";
 
 export type ResolvedPin = { admin1: string | null; country: string | null };
@@ -156,4 +157,214 @@ export function pinCompareLine(
   }
   if (player.country === truth.country) return "Right country, wrong town!";
   return `Your pin: ${player.admin1 ?? player.country} · True spot: ${truth.admin1 ?? truth.country}`;
+}
+
+// --- Nearest-place "Your pin" detail (fallback for admin-1 coverage gaps) ---
+//
+// Context (Veeresh's live-play diagnostic, 2026-10-04): admin1At() only
+// covers the US (us-atlas) and AU/BR/CA/CN/IN (ne-50m-admin-1.json) — Italy
+// and France have ZERO admin-1 features. In country editions without
+// vendored admin-1 data, both sides of pinCompareLine resolve admin1: null
+// and the classic path degrades to the bare "Right country, wrong town!" —
+// the "Your pin" line silently drops. (India is the working reference: its
+// 36 vendored features let the classic path name both Indian states.)
+//
+// This section is the graceful fallback: name the player's raw pin from the
+// already-loaded region pool (whose records carry build-time subdivision
+// display names at 99.7% coverage), honestly qualified as "near <city>",
+// gated on same-territory and a 100 km budget. The classic pinCompareLine
+// path is untouched and stays the fallback — and the regression lock — for
+// state edition, ocean pins, and any gate failure.
+
+/** Honesty budget: farthest a pin may be from its named nearest place. */
+export const NEAREST_PLACE_MAX_KM = 100;
+
+/** Structural subset of Starter — the only fields the matcher reads. */
+export type PoolPlace = {
+  lon: number;
+  lat: number;
+  name: string;
+  subdivision?: string;
+};
+
+export type NearestPoolPlace = {
+  name: string;
+  subdivision: string | null;
+  distanceKm: number;
+};
+
+export type PlayerPinDetail = {
+  /** world-atlas numeric key, e.g. "380" — exact-match, never name-compared. */
+  territoryKey: string;
+  /** world-atlas display name, e.g. "Italy". */
+  territoryName: string;
+  nearest: NearestPoolPlace;
+};
+
+/** Mean earth radius, km. */
+const EARTH_RADIUS_KM = 6371;
+
+/**
+ * Haversine distance. Antimeridian-safe: sin²(Δlon/2) is periodic in Δlon,
+ * so a raw Δlon needs no ±180° wrapping.
+ */
+function haversineKm(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number,
+): number {
+  const rLat1 = (lat1 * Math.PI) / 180;
+  const rLat2 = (lat2 * Math.PI) / 180;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(rLat1) * Math.cos(rLat2) * Math.sin(dLon / 2) ** 2;
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(Math.min(1, a)));
+}
+
+/** Non-empty-string subdivision pass-through (the question-label convention). */
+function cleanSubdivision(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
+/**
+ * Names the player's raw pin from the already-loaded region pool.
+ * Returns null when: the pin is ocean/unresolvable (territoryAt null);
+ * no pool place shares the pin's territory (country not covered by the
+ * pool — e.g. the 13 country-chunk nations in globe edition); or the
+ * nearest same-territory place is farther than NEAREST_PLACE_MAX_KM.
+ * Synchronous, never throws. Needs NO admin-1 preload — the subdivision
+ * comes from the chunk pipeline, so this works even in the first 10 s of
+ * a run before preloadAdmin1Boundaries() resolves (an improvement over
+ * the classic path, which degrades to country-only meanwhile).
+ */
+export function nearestPoolPlace(
+  lat: number,
+  lon: number,
+  pool: ReadonlyArray<PoolPlace>,
+): PlayerPinDetail | null {
+  try {
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+    const pinTerritory = territoryAt([lon, lat]);
+    if (!pinTerritory) return null;
+    let best: PoolPlace | null = null;
+    let bestKm = Infinity;
+    for (const candidate of pool) {
+      if (!candidate) continue;
+      if (!Number.isFinite(candidate.lat) || !Number.isFinite(candidate.lon)) {
+        continue;
+      }
+      const distanceKm = haversineKm(lat, lon, candidate.lat, candidate.lon);
+      if (distanceKm < bestKm) {
+        bestKm = distanceKm;
+        best = candidate;
+      }
+    }
+    if (!best || bestKm > NEAREST_PLACE_MAX_KM) return null;
+    // Territory gate: numeric keys, never name-compared ("United States of
+    // America" vs "United States" must never be string-matched).
+    const candidateTerritory = territoryAt([best.lon, best.lat]);
+    if (!candidateTerritory || candidateTerritory.key !== pinTerritory.key) {
+      return null;
+    }
+    return {
+      territoryKey: pinTerritory.key,
+      territoryName: pinTerritory.name,
+      nearest: {
+        name: best.name,
+        subdivision: cleanSubdivision(best.subdivision),
+        distanceKm: bestKm,
+      },
+    };
+  } catch {
+    return null;
+  }
+}
+
+export type RevealPinLineInput = {
+  edition: "state" | "country" | "globe";
+  playerLat: number;
+  playerLon: number;
+  truth: {
+    name: string;
+    lat: number;
+    lon: number;
+    subdivision?: string;
+    iso2?: string;
+    regionId: string;
+    originRegionId?: string;
+  };
+  pool: ReadonlyArray<PoolPlace>;
+};
+
+/**
+ * Truth-side country for the globe suffix — the same funnel the question
+ * bubble uses (countryNameForIso2 → regionId → originRegionId), so the
+ * reveal matches what was asked. Fail-closed: null when unresolvable.
+ */
+function truthCountryName(truth: RevealPinLineInput["truth"]): string | null {
+  return (
+    countryNameForIso2(truth.iso2) ??
+    countryNameForRegionId(truth.regionId) ??
+    countryNameForRegionId(truth.originRegionId)
+  );
+}
+
+/** "city" + optional ", state" segment. */
+function cityStateSegment(name: string, subdivision: string | null): string {
+  return subdivision ? `${name}, ${subdivision}` : name;
+}
+
+/**
+ * The pin-compare line for a MISS reveal. Layered, fail-closed:
+ *  1. state edition → classic pinCompareLine (byte-identical; regression lock).
+ *  2. country/globe → the detail line when nearestPoolPlace is honest.
+ *  3. otherwise → classic pinCompareLine (today's copy; ocean → null).
+ * Miss-only: the hit card never calls this.
+ *
+ * The "near" qualifier is unconditional — the pin is a raw lat/lon, never
+ * presented as an exact pick, even at distance ≈ 0.
+ */
+export function revealPinLine(input: RevealPinLineInput): string | null {
+  let classic: string | null = null;
+  try {
+    classic = pinCompareLine(
+      resolvePin(input.playerLat, input.playerLon),
+      resolvePin(input.truth.lat, input.truth.lon),
+    );
+    if (input.edition === "state") return classic;
+    const detail = nearestPoolPlace(
+      input.playerLat,
+      input.playerLon,
+      input.pool,
+    );
+    if (!detail) return classic;
+    const truth = input.truth;
+    const pinSide = cityStateSegment(
+      detail.nearest.name,
+      detail.nearest.subdivision,
+    );
+    const truthSide = cityStateSegment(truth.name, cleanSubdivision(truth.subdivision));
+    // Same-country check: numeric territory keys. A null truth territory
+    // counts as different-country (the suffix direction is the more
+    // informative one).
+    const sameCountry =
+      territoryAt([truth.lon, truth.lat])?.key === detail.territoryKey;
+    if (input.edition === "country") {
+      return sameCountry
+        ? `Your pin: near ${pinSide} · True spot: ${truthSide}`
+        : `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}`;
+    }
+    // globe: both sides always carry the country suffix. Unresolvable truth
+    // country → classic (never a malformed line).
+    const truthCountry = truthCountryName(truth);
+    if (!truthCountry) return classic;
+    return `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}, ${truthCountry}`;
+  } catch {
+    return classic;
+  }
 }
