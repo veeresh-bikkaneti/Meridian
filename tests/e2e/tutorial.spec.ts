@@ -5,7 +5,6 @@ import {
   commitPin,
   readPhase,
   dismissTileOverlayIfPresent,
-  tapHitsMap,
   spotViewportPoint,
   NO_IDLE,
 } from "./helpers";
@@ -61,9 +60,25 @@ async function commitPracticePin(page: Page): Promise<void> {
   await expect
     .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
     .toBe("ready");
+  // Settle the intro camera (same stabilization pattern as startGlobeRun):
+  // sampling the spot mid-dive would stale the point before the click lands.
+  await expect
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
   const spot = await spotViewportPoint(page);
   expect(spot).not.toBeNull();
-  expect(await tapHitsMap(page, spot!.x, spot!.y)).toBe(true);
+  // No tapHitsMap gate: the beat-1 banner and question bubble are
+  // pointer-transparent, so a real tap passes through them to the map even
+  // where elementFromPoint reports chrome. The France framing keeps the
+  // Eiffel Tower clear of every pointer-active control on all runs.
   const { phase } = await commitPin(page, spot!.x, spot!.y);
   expect(phase).toBe("story");
 }
