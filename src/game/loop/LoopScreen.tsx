@@ -28,7 +28,7 @@ import {
 
 const STALE_REFRESH_KEY = "meridian.staleRefresh";
 
-const CLUE_TIERS = ["Geography", "Climate", "History", "The hook", "Giveaway"] as const;
+const CLUE_TIERS = ["Geography", "Climate", "History", "The Hook", "Giveaway"] as const;
 
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
@@ -310,6 +310,7 @@ function LoopGame({
             Guess {dayState.guesses.length + 1} of {LOOP_MAX_GUESSES}
             {guessesLeft <= 2 ? ` — ${guessesLeft} left` : ""}
           </p>
+          <p className="text-sm text-muted">Tap a name from the list to guess it.</p>
           <GuessInput onPick={onPick} />
           {notice ? (
             <p role="status" className="text-sm text-fg">
@@ -444,13 +445,30 @@ function LoopReveal({
           {won ? "🎯 You found it!" : "Out of guesses"}
         </p>
         <h2 className="mt-1 font-display text-3xl text-fg">
-          {answerName ?? (won ? winningGuess?.name ?? "Mystery place" : "The mystery place")}
+          {answerName ??
+            (won
+              ? winningGuess?.name ?? "Mystery place"
+              : "The answer's page didn't load — your clues are all above.")}
         </h2>
         <p className="mt-2 text-sm text-muted">
           {won
-            ? `Solved in ${dayState.guesses.length} ${dayState.guesses.length === 1 ? "guess" : "guesses"}.`
+            ? `Solved in ${dayState.guesses.length} ${dayState.guesses.length === 1 ? "guess" : "guesses"}. A new mystery lands at midnight UTC — see you tomorrow, detective.`
             : "Better luck with tomorrow's mystery — a new puzzle lands at midnight UTC."}
         </p>
+        <section aria-label="Today's story" className="mt-4">
+          <h3 className="text-sm tracking-wide text-muted uppercase">Today&rsquo;s story</h3>
+          <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
+          <div className="mt-2 flex flex-col gap-2">
+            <p className="text-sm text-fg">
+              <span className="text-muted">{CLUE_TIERS[2]}: </span>
+              {clue.clues[2]}
+            </p>
+            <p className="text-sm text-fg">
+              <span className="text-muted">{CLUE_TIERS[3]}: </span>
+              {clue.clues[3]}
+            </p>
+          </div>
+        </section>
         <div className="mt-4">
           <ShareLoop dateKey={dateKey} dayState={dayState} />
         </div>

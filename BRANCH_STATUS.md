@@ -101,6 +101,43 @@ UNCOMMITTED in the working tree as the baseline for the follow-up.
     unaffected).
 - [ ] **Step 9 — Ship incrementally** (Veeresh): wave 1 = ported mode; names.json weight mitigations are a later wave only if field data warrants.
 
+## T10b review fixes (fix crew, 2026-10-05)
+
+All six findings implemented as specified — copy/UI only, no mechanic or
+content changes:
+
+- **A1 (major)** — `LoopScreen.tsx` `LoopReveal`: added the "Today's story"
+  section between the solved/unsolved line and the share box, on both win
+  and loss. Header "Today's story", subline "This is what the clues were
+  telling you.", body replays the day's tier-3 (History) and tier-4 (Hook)
+  clue texts **verbatim** from the fetched clue file (`clue.clues[2]`,
+  `clue.clues[3]`) — byte-reuse, no paraphrase, zero fabrication risk.
+  Restores the standing every-reveal story-card rule for the Loop.
+- **A2** — `CLUE_TIERS`: `"The hook"` → `"The Hook"`.
+- **A4** — `src/game/brand.ts` `tagline` replaced with Veeresh's real slogan
+  ("Explore the world, one pin at a time — where every guess unlocks a new
+  story."). Verified unrendered first: `tagline` is only defined, never
+  read (`BRAND.name`/`siteUrl`/`shareHost` are the used fields) — additive,
+  no rendered output changes.
+- **B5** — win line now ends "A new mystery lands at midnight UTC — see you
+  tomorrow, detective." (loss line already had its tomorrow wording;
+  untouched).
+- **B7** — loss fallback when the lazy name-index lookup fails:
+  `"The mystery place"` → "The answer's page didn't load — your clues are
+  all above." Trigger condition unchanged (fail-closed: only when the lookup
+  actually fails).
+- **B3** — inline hint in the guess section: "Tap a name from the list to
+  guess it." Typeahead submission behavior untouched.
+
+Gates: `npx tsc --noEmit` clean; loop unit tests 41/41 green; the
+`geodetective` E2E spec needs no changes — its assertions are article-scoped
+or substring matches ("Solved in 2 guesses." still matches the extended win
+line), and no assertion touches History/Hook clue text, so the story recap
+cannot collide. T11 re-runs the full suite on the final commit.
+
+**Deferred as post-launch polish (do NOT implement now):** B6
+midnight-rollover listener; C3 streaks/growth instrumentation.
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
@@ -110,6 +147,7 @@ UNCOMMITTED in the working tree as the baseline for the follow-up.
 - `d3af1f7` docs: BRANCH_STATUS.md — T8 steps 1-4 done, step 5 assertion failed
 - `bbc649a` port(geodetective): T8 step 6 re-pin E2E specs; step 7 GameApp wiring + docs
 - `f06b47b` chore(geodetective): T8 step 8 — register geodetective E2E project; BRANCH_STATUS gates
+- `c072bb4` fix(geodetective): T10b review fixes — reveal story recap + 5 trivial copy/brand fixes
 
 ## Rules
 
