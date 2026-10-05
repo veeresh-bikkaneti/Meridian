@@ -88,9 +88,14 @@ function deckSeed() {
 }
 
 async function seedDeck(page: import("playwright/test").Page) {
+  // Seed-once: addInitScript runs before every navigation (including the
+  // test's own reload), so only seed when the key is absent — otherwise a
+  // reload would clobber the deck updates the test is asserting.
   await page.addInitScript(
     ({ key, seed }) => {
-      localStorage.setItem(key, JSON.stringify(seed));
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, JSON.stringify(seed));
+      }
     },
     { key: DECK_KEY, seed: deckSeed() },
   );
