@@ -13,10 +13,50 @@
 ## T8 work order status (T8 crew: steps 1–5)
 
 - [x] **Step 1 — Branch + BRANCH_STATUS.md** (this file; committed + pushed first).
-- [ ] **Step 2 — Port the verbatim set** from `origin/feat/meridian-loop` @ `c1dc443`: `src/game/loop/*` (8 sources + 5 tests), `src/game/geo.test.ts`, both E2E specs (structure only), `docs/geodetective.md` (content-gate paragraph updated: 387 validated sets, PR #59 merged; placeholders retired).
-- [ ] **Step 3 — Two surgical hunks**: `initialBearing`/`octantOf` → `src/game/geo.ts`; `loopGuessMark`/`shareLoopText` → `src/game/share.ts`. `npx tsc --noEmit` clean before proceeding.
-- [ ] **Step 4 — Split `scripts/build-loop.mjs`**: port the names-index path + `dayIndexFor` contract; gate or delete placeholder clue-file/manifest emission; prune `build-loop.test.mjs`. Do NOT copy `loop-seed.json`, placeholder clue files, or the `size:12` manifest.
-- [ ] **Step 5 — Regenerate `public/loop/names.json`** via the ported builder against main's chunks + GeoNames dump. Assertions: `geonames:8556321` (La Ceiba) and `geonames:2058304` (Williamstown) present; ~119k entries; `LoopNameEntry` key shape. Never hand-patch the index.
+- [x] **Step 2 — Port the verbatim set** (commit `b26766c`): `src/game/loop/*` (8 sources + 5 tests), `src/game/geo.test.ts`, both E2E specs (structure only), `docs/geodetective.md` (content-gate paragraph updated: 387 validated sets, PR #59 merged; placeholders retired).
+- [x] **Step 3 — Two surgical hunks** (commit `920763c`): `initialBearing`/`octantOf` → `src/game/geo.ts`; `loopGuessMark`/`shareLoopText` → `src/game/share.ts`. Byte-identical to the branch versions; anchors verified on main's unchanged context. `npx tsc --noEmit` clean.
+- [x] **Step 4 — Split `scripts/build-loop.mjs`** (commit `585bfb9`): placeholder clue-file/manifest emission DELETED (kept functions byte-identical: normalizeName, countryName, regionLabel, dayIndexFor, loadChunkPlaces, loadPopulations, entryFor, dedupeEntries, resolveAliasTarget, buildNamesIndex). `build-loop.test.mjs` pruned 19 → 11 tests; package.json registers the 6 ported loop/geo test files. Loop unit tests 48/48 green.
+- [ ] **Step 5 — Regenerate `public/loop/names.json`: MECHANICAL ASSERTION FAILED** — see "Step 5 failure" below. The regenerated index (119,038 entries, `LoopNameEntry` key shape ✓) is in the working tree UNCOMMITTED pending the decision. Production content untouched (manifest md5 `b0ea4b3c…`, 387 clue files intact).
+
+## Step 5 failure — 2 of 387 clue targets shadowed by dedupe (2026-10-05, T8 crew)
+
+**What ran:** `node scripts/build-loop.mjs` against main's chunks (124,690 places)
++ GeoNames dump — `places=124690 populations=124690 missingPop=0`,
+`names.json entries=119038` (the 7-entry delta vs the branch's 119,045 is
+exactly the 7 dropped placeholder-era aliases).
+
+**Assertion results:**
+- `geonames:8556321` (La Ceiba) present — **FAIL (absent)**
+- `geonames:2058304` (Williamstown) present — **FAIL (absent)**
+- ~119k entries — **PASS (119,038)**
+- `LoopNameEntry` key shape `{n,id,lon,lat,r,p}` — **PASS (all 119,038)**
+
+**Root cause (verified, not a port bug):** the ported `dedupeEntries` keeps
+the highest-population entry per (normalized name, region) — byte-identical
+branch behavior. GeoNames carries duplicate records that collide:
+- `la ceiba||Honduras`: keeps `geonames:3608248` (pop 222,055) over the clue
+  target `geonames:8556321` (pop 215,973)
+- `williamstown||Australia`: keeps `geonames:2143561` (Victoria, pop 14,407)
+  over the clue target `geonames:2058304` (South Australia, pop 2,689)
+
+T7 assumed `entryFor`'s `gn-<id>` → `geonames:<id>` mapping survives; it does
+not survive dedupe for these two. Full scan: exactly 2/387 clue targets are
+missing from the index (the same two T7 named).
+
+**Gameplay consequence:** `submitGuess` wins only on exact `placeId` match, so
+on the La Ceiba day (`clues/132.json`) and the Williamstown day
+(`clues/370.json`) the player cannot win by picking the place's name from the
+typeahead — 2 unwinnable days. (La Ceiba's shadow is ~5.6 km from the target,
+so the distance feedback would read "almost there" while the day stays
+unwinnable.)
+
+**Not fixed because:** hand-patching is forbidden; changing dedupe to pin
+target ids, changing the win condition to distance-based, or re-targeting the
+two clue files are all design/content decisions — out of T8 scope, Veeresh's
+call. The regression test `production loop targets are guessable by their
+own names` in `scripts/build-loop.test.mjs` encodes the required invariant
+and stays red until the decision lands. The regenerated `names.json` is left
+UNCOMMITTED in the working tree as the baseline for the follow-up.
 
 ## Next crew (steps 6–7 + full gates)
 
