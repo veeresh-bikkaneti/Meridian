@@ -15,11 +15,12 @@ export const TUTORIAL_SEEN_KEY = "meridian.tutorialSeen";
 /**
  * The tutorial's single practice place: the curated Eiffel Tower starter
  * (tier 1, famous, authored hook — "meant to be temporary and stayed").
- * The tour runs a "country" edition practice round on France with this as
- * the only dealt place, so the first beat is an easy, famous, guaranteed
- * question.
+ * Starter ids are `${regionId}-${slug}` (see src/game/starters.ts
+ * `place()`), hence "france-eiffel". The tour runs a "country" edition
+ * practice round on France with this as the only dealt place, so the
+ * first beat is an easy, famous, guaranteed question.
  */
-export const TUTORIAL_PLACE_ID = "eiffel";
+export const TUTORIAL_PLACE_ID = "france-eiffel";
 export const TUTORIAL_EDITION = "country" as const;
 export const TUTORIAL_REGION_ID = "france";
 export const TUTORIAL_REGION_NAME = "France";

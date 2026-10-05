@@ -9,6 +9,7 @@ import {
   isTutorialRunPool,
   type TutorialStorage,
 } from "./tutorial.ts";
+import { STARTERS } from "./starters.ts";
 
 /** In-memory Storage stand-in (node --test has no DOM). */
 function fakeStorage(initial: Record<string, string> = {}): TutorialStorage {
@@ -72,8 +73,7 @@ describe("tutorial seen flag", () => {
   });
 });
 
-describe("isTutorialRunPool", () => {
-  it("matches exactly the single tutorial place id", () => {
+describe("isTutorialRunPool", () => {  it("matches exactly the single tutorial place id", () => {
     assert.equal(isTutorialRunPool([TUTORIAL_PLACE_ID]), true);
   });
 
@@ -86,5 +86,18 @@ describe("isTutorialRunPool", () => {
   it("rejects null/undefined", () => {
     assert.equal(isTutorialRunPool(null), false);
     assert.equal(isTutorialRunPool(undefined), false);
+  });
+});
+
+describe("tutorial practice place", () => {
+  it("TUTORIAL_PLACE_ID is a real curated starter (guards against renames)", () => {
+    const place = STARTERS.find((s) => s.id === TUTORIAL_PLACE_ID);
+    assert.ok(place, `starter ${TUTORIAL_PLACE_ID} exists`);
+    assert.equal(place.edition, "country");
+    assert.equal(place.regionId, "france");
+    // The first beat guarantees success with an easy famous place.
+    assert.equal(place.difficulty, 1);
+    assert.ok(place.story.trim().length > 0);
+    assert.ok(place.name.toLowerCase().includes("eiffel"));
   });
 });

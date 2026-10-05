@@ -208,9 +208,11 @@ export function TutorialOverlay(props: {
     <FloatingBanner
       testId="tutorial-beat-1"
       label="Tutorial: how to play"
-      // On phones the question bubble occupies the top-left; park the
-      // coachmark above the Drop pin pill instead of covering the bubble.
-      positionClass="top-16 max-sm:top-auto max-sm:bottom-24"
+      // Parked above the Drop pin pill on every viewport: the top-center
+      // spot would cover northern France — the very area the practice
+      // question (Paris) lives in — while the bottom-center sits by the
+      // player's next action and leaves the question bubble visible.
+      positionClass="bottom-24"
     >
       <>
         <p className="text-lg font-semibold">
