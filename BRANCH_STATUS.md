@@ -19,8 +19,12 @@
 - [x] **tsc --noEmit** clean.
 - [x] **Attribution:** all-NE public domain — no attribution change needed (confirmed, nothing non-PD vendored).
 
+## Follow-up crew (2026-10-05) — main integration + finish job
+- [x] **Veeresh RATIFIED the NE 10m source deviation** (2026-10-05) — no rework, proceed as built.
+- [x] Merged `origin/main` (PR #61 first-run tutorial, `0aeac14`) into `feat/admin1-narrow-7` — one conflict (BRANCH_STATUS.md, kept admin1 version), game-app.tsx + tutorial files auto-merged. Post-merge: `tsc --noEmit` clean, `npm test` **613/613 green**, `node scripts/lint-cards.mjs` GATE PASSED.
+
 ## Pending
-- [ ] Full `npm test` (only the 2 touched suites run so far)
+- [x] Full `npm test` — 613/613 green post-main-merge
 - [ ] `node scripts/lint-cards.mjs` gate
 - [ ] `npm run build:pages` + verify dist chunk layout → SW runtime-caching coverage for `/Meridian/assets/*` chunks (offline = country-lines fallback, never a hang)
 - [ ] Real-browser Playwright E2E on the built artifact: France + Japan country editions (classic pin-compare line), Italy classic-path update + aborted-chunk fallback test (PR #58 fail-closed proof), existing reveal specs regression
