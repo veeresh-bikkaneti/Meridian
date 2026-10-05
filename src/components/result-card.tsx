@@ -1,4 +1,4 @@
-import { formatDistance } from "@/game/geo";
+import { formatDistance, initialBearing, windName8 } from "@/game/geo";
 import { bubbleHeaderText } from "@/game/question-label";
 import { summarizeRun, type Run } from "@/game/run";
 import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
@@ -242,6 +242,18 @@ export function ResultCard({
     });
   }, [drop, place, run.edition, poolPlaces]);
 
+  // Bearing on the miss headline: the miss teaches direction as well as
+  // distance — "457 km northeast of your pin" — naming what the drawn line
+  // from the white pin to the gold spot already shows. Miss-only; the hit
+  // card never shows a bearing. Fail closed: when the bearing can't be
+  // computed (coincident points) the classic "{distance} off" line renders
+  // byte-identical to before.
+  const missWind = useMemo(() => {
+    if (!drop || !place) return null;
+    const bearing = initialBearing([drop.lon, drop.lat], [place.lon, place.lat]);
+    return bearing === null ? null : windName8(bearing);
+  }, [drop, place]);
+
   if (dismissed) {
     // Dismissing the card must never strand the run: the restore pill keeps
     // company with the continue action, so hiding the card can't funnel the
@@ -372,8 +384,15 @@ export function ResultCard({
 
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p className="font-display text-4xl tabular-nums">
-                {drop ? `${formatDistance(drop.distanceKm)} off` : "Miss"}
+              <p
+                data-testid="miss-headline"
+                className="font-display text-4xl tabular-nums"
+              >
+                {drop
+                  ? missWind
+                    ? `${formatDistance(drop.distanceKm)} ${missWind} of your pin`
+                    : `${formatDistance(drop.distanceKm)} off`
+                  : "Miss"}
               </p>
               {pinLine ? (
                 <p

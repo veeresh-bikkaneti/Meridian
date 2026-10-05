@@ -80,10 +80,13 @@ test("reload during reveal: result card re-renders with Next place", async ({
   await expect(card).toBeVisible({ timeout: 15_000 });
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 10_000 });
 
-  // …and the rehydrated drop must carry the real distance (the bug showed
-  // the broken "Pin dropped. ." with an empty distance).
-  const distancePara = card.locator("p.font-display").first();
-  await expect(distancePara).toContainText("off", { timeout: 5_000 });
+  // …and the rehydrated drop must carry the real distance + bearing (the bug
+  // showed the broken "Pin dropped. ." with an empty distance).
+  const distancePara = card.getByTestId("miss-headline");
+  await expect(distancePara).toContainText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+    { timeout: 5_000 },
+  );
 
   // …and Next place must advance to a fresh question, not strand.
   await clickNextPlace(page);
