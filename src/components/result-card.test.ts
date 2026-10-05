@@ -119,6 +119,19 @@ const MOCK_REVERSE_GEOCODE = [
   "  if (player.country === truth.country) return 'Right country, wrong town!';",
   "  return 'Your pin: ' + (player.admin1 ?? player.country) + ' \\u00b7 True spot: ' + (truth.admin1 ?? truth.country);",
   "}",
+  // revealPinLine is the production card's entry point. The mock replays the
+  // real module's funnel contract: state edition → classic byte-identical;
+  // country/globe → the scenario's explicit line when set (stands in for an
+  // honest nearestPoolPlace detail), else the classic fallback.
+  "export function revealPinLine(input) {",
+  "  const classic = pinCompareLine(",
+  "    resolvePin(input.playerLat, input.playerLon),",
+  "    resolvePin(input.truth.lat, input.truth.lon));",
+  "  if (!input || input.edition === 'state') return classic;",
+  "  const s = globalThis.__pinMockScenario;",
+  "  if (s && typeof s.revealPinLine === 'string') return s.revealPinLine;",
+  "  return classic;",
+  "}",
 ].join("\n");
 const MOCK_REVERSE_GEOCODE_URL =
   "data:text/javascript," + encodeURIComponent(MOCK_REVERSE_GEOCODE);
@@ -180,11 +193,15 @@ const DROP_LON = -96.7;
 const PLACE_LAT = 38.9;
 const PLACE_LON = -77.03;
 
-// Per-test scenario for the mocked resolvePin. `null` pins (or a null
-// scenario) make resolvePin return null — the fail-closed path.
+// Per-test scenario for the mocked resolvePin/revealPinLine. `null` pins (or
+// a null scenario) make resolvePin return null — the fail-closed path. An
+// explicit `revealLine` stands in for an honest nearestPoolPlace detail on
+// country/globe editions; when omitted the mock falls back to the classic
+// line, exactly like the production gate failure.
 function setPinScenario(
   dropPin: ResolvedPin | null,
   placePin: ResolvedPin | null,
+  revealLine?: string,
 ): void {
   (globalThis as Record<string, unknown>).__pinMockScenario =
     dropPin === null && placePin === null
@@ -196,14 +213,18 @@ function setPinScenario(
           placeLon: PLACE_LON,
           dropPin,
           placePin,
+          revealPinLine: revealLine ?? null,
         };
 }
 
 const { ResultCard } = await import("./result-card.tsx");
 
-function makeRun(phase: "story" | "done"): Run {
+function makeRun(
+  phase: "story" | "done",
+  edition: "state" | "country" | "globe" = "state",
+): Run {
   return {
-    edition: "state",
+    edition,
     regionId: "nebraska",
     regionName: "Nebraska",
     difficultyChoice: "medium",
@@ -237,10 +258,13 @@ function makePlace(): Starter {
   };
 }
 
-function renderCard(phase: "story" | "done"): string {
+function renderCard(
+  phase: "story" | "done",
+  edition: "state" | "country" | "globe" = "state",
+): string {
   return renderToString(
     createElement(ResultCard, {
-      run: makeRun(phase),
+      run: makeRun(phase, edition),
       place: makePlace(),
       placeLabel: "Testville, Nebraska, United States",
       drop: {
@@ -257,6 +281,9 @@ function renderCard(phase: "story" | "done"): string {
       onDismissedChange: () => {},
       onContinue: () => {},
       growthLine: null,
+      // The prop exists so the card can scan the dealing pool; the mock
+      // revealPinLine ignores its contents (scenarios ride on the global).
+      poolPlaces: [],
     }),
   );
 }
@@ -311,6 +338,51 @@ describe("result-card — pin-compare line (reveal)", () => {
     assert.ok(
       !html.includes("pin-compare-line"),
       "the hit card must not show the pin-compare line",
+    );
+  });
+
+  it("country edition renders the detail line: 'Your pin: near …'", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+      "Your pin: near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria",
+    );
+    const html = renderCard("done", "country");
+    assert.ok(html.includes('data-testid="pin-compare-line"'));
+    assert.ok(
+      html.includes(
+        "Your pin: near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria",
+      ),
+      "country detail line must name both locations with the honest 'near' qualifier",
+    );
+  });
+
+  it("globe edition renders the detail line with country suffixes", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+      "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
+    );
+    const html = renderCard("done", "globe");
+    assert.ok(html.includes('data-testid="pin-compare-line"'));
+    assert.ok(
+      html.includes(
+        "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
+      ),
+      "globe detail line must carry the country suffix on both sides",
+    );
+  });
+
+  it("country edition with no honest detail falls back to the classic line", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+    );
+    const html = renderCard("done", "country");
+    assert.ok(html.includes('data-testid="pin-compare-line"'));
+    assert.ok(
+      html.includes("Right country, wrong town!"),
+      "gate failure must render the classic line — never silently drop",
     );
   });
 });
