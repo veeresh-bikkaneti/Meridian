@@ -34,7 +34,7 @@ export function readColors(): Colors {
     coast: pick("--map-coast", "#0c1816"),
     lit: pick("--map-lit", "#6e9084"),
     pin: pick("--map-pin", "#f4f1ea"),
-    answer: pick("--map-answer", "#8fb8c6"),
+    answer: pick("--map-answer", "#f2c14e"), // legend: "gold is the true spot" — region-highlight gold
     arc: pick("--map-arc", "#f4f1ea"),
     cross: pick("--map-cross", "#d7ddd9"),
     highlight: pick("--map-highlight", "#f2c14e"),
