@@ -213,6 +213,70 @@ what each fix names.
 story payoff, M5 content copy pass (Liz's crew), M6 share glow-up, B6
 midnight-rollover listener, C3 streaks/growth instrumentation.
 
+## T11 full-suite E2E verdict + spec-bug fix crew (QA/E2E, 2026-10-05)
+
+T11 ran the full Playwright suite (27 projects, 130 tests) on `8d0f3bb`:
+**107 passed / 23 failed — RED.** GeoDetective's own 8 specs all GREEN.
+Triage (deterministic failures verified identical across 3 runs):
+
+- **4 deterministic failures = SPEC BUGS, not app bugs (fixed in this commit):**
+  - `tests/e2e/endgame-share.spec.ts` (`:166`, `:207`): the
+    `expectedShareText` helper rebuilt only the 3-line session contract, but
+    the app (correctly, per feature `89f43c6` on main, unit-covered in
+    `src/game/share-action.test.ts`) appends the breakdown after it — one
+    line per played difficulty mode (`Medium 0/1 (0%) · 0 pts`) plus one
+    per-region totals line (`Globe 0`). Fix: the helper now mirrors
+    `sessionShareText()` exactly, rebuilding the breakdown from the app's
+    own stored session (`meridian.session` `byDifficulty` / `regions`),
+    easy → medium → hard, unplayed modes omitted, regions in first-seen
+    order.
+  - `tests/e2e/history-first-cards.desktop.spec.ts` (`:217`, Miami +
+    Nashville): the spec seeded the `medium` band and never touched the
+    difficulty picker, but Miami (`gn-4164138`, difficulty 1) and Nashville
+    (`gn-4644585`, difficulty 1) are easy-band only — the medium pool was
+    empty and dealing fell back to a random medium place ("Find Lakes by
+    the Bay."). Fix: `Target.band` added (`easy`|`medium`); the two
+    difficulty-1 targets drive the picker to Easy (clicking the "Easy"
+    button in the "How do you want to grow your map today?" group) and seed
+    `meridian:seen:v2:state:<region>:easy`. West Englewood (difficulty 3)
+    and Barry Farms (difficulty 4) are genuinely medium — untouched.
+  - **Spec-only changes — no app code touched** (`src/` diff in this commit
+    is zero).
+- **19 failures = environment/load flakes, NOT code:** `Target crashed`,
+  canvas never visible, tile watchdog firing, zoom-settle timeouts, while VM
+  load sat 8–14.7 with ~33 concurrent Chromium processes. Churn between
+  runs (a test failing in one run passes in the next and vice versa)
+  confirms flakiness, not a regression. Flake-cluster specs:
+  learning-outcomes, reveal-your-pin-country-globe, reveal-zoomout,
+  state-story, gap-view-reveal.reduced, question-randomization,
+  desktop-gestures, result-card-dismiss, reload-reveal, pwa. The port's only
+  `satellite-map.tsx` changes are attribution links + a `React.lazy`
+  default export — nothing touching zoom/tile logic.
+- **Pre-existing-on-main confirmation:** `git diff origin/main...HEAD` on
+  `tests/e2e/endgame-share.spec.ts`,
+  `tests/e2e/history-first-cards.desktop.spec.ts`,
+  `src/game/share-action.ts`, `src/game/share-action.test.ts`,
+  `src/game/pool.ts`, `src/game/generated-places.ts` is EMPTY — the port is
+  additive-only there (`src/game/share.ts` gained only the new
+  `shareLoopText` for GeoDetective; the endgame share path is byte-identical
+  to `origin/main`). The 4 spec failures are main's own, not port-caused.
+  No main-worktree comparison was needed.
+
+Gates for this commit: `npx tsc --noEmit` clean; `npm run build:pages` green;
+the two fixed spec files run at `--workers=4` — endgame-share 2/2 and
+history-first-cards 4/4 (Miami/Nashville through the Easy picker). One
+observed failure in the gate run was the known zoom-settle flake in
+`startGlobeRun` (helpers.ts:132, `data-zoom` poll timed out under VM load —
+the share-text assertion was never reached); it passed green on a
+standalone re-run and the share-text assertions matched byte-for-byte,
+confirming the helper fix.
+
+**Step 5 quiet re-run (low concurrency, no retries) runs next on the new
+HEAD:** the two fixed spec files + the 10 flake-cluster spec files + the 2
+GeoDetective spec files. T12 (PR) is unblocked only if that re-run is GREEN
+raw (a same-test repeat failure = possible real issue, escalated, not
+papered over).
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
