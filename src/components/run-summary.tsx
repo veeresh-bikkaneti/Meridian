@@ -8,6 +8,7 @@ import {
 } from "@/game/session";
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
+import { REVIEW_DECK_COPY } from "@/game/review-deck";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
 
@@ -32,8 +33,16 @@ export function RunSummaryCard(props: {
   growth?: GrowthSummary | null;
   onDone: () => void;
   onPlayAgain: () => void;
+  /**
+   * "Review my misses" invitation (flag-gated): starts a review session
+   * over the due deck cards. Rendered only when reviewDueCount > 0 — the
+   * deck is an invitation, never a gate.
+   */
+  onReview?: () => void;
+  /** Cards currently due for review. */
+  reviewDueCount?: number;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount } = props;
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
@@ -199,6 +208,16 @@ export function RunSummaryCard(props: {
                 Your pins are landing closer in {t.regionName}!
               </p>
             ))}
+            {onReview && (reviewDueCount ?? 0) > 0 ? (
+              <Button
+                variant="secondary"
+                className="mt-3 w-full"
+                onClick={onReview}
+                data-testid="summary-review-deck"
+              >
+                {REVIEW_DECK_COPY.summaryCta} ({reviewDueCount})
+              </Button>
+            ) : null}
           </div>
         ) : null}
 

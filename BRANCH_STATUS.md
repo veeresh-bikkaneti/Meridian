@@ -28,16 +28,21 @@ reveal opens. Builds on the `learningOutcomes` per-place learning records
 
 ## Done
 - [x] Design settled (see above)
+- [x] `src/game/review-deck.ts` — pure deck logic + fail-closed persistence
+      (21 unit tests green)
+- [x] `src/game/review-deck.test.ts` + package.json test-script registration
+- [x] `game-app.tsx` integration: deck sync in onConfirm (miss → upsert,
+      review answer → reschedule, newly-mastered → remove), review-run
+      plumbing in Play/PlayLoaded (synthetic `Run`, due-order queue,
+      per-card original question context, no session banking, no
+      cleared-mode, review-complete screen), picker banner entry,
+      boot drops review runs (fail closed)
+- [x] `run-summary.tsx` — "Review my misses (N)" button in "My growth"
+- [x] Gates so far: `npx tsc --noEmit` clean · `npm test` 616/616 green
 
 ## Pending
-- [ ] `src/game/review-deck.ts` — pure deck logic + fail-closed persistence
-- [ ] `src/game/review-deck.test.ts` + package.json test-script registration
-- [ ] `game-app.tsx` integration (deck sync in onConfirm, review-run
-      plumbing in Play/PlayLoaded, picker entry, review-complete screen)
-- [ ] `run-summary.tsx` — "Review my misses (N)" button
 - [ ] `docs/learning-outcomes.md` — deck section
-- [ ] Gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`,
-      `npm run build:pages`
+- [ ] Gates: `node scripts/lint-cards.mjs`, `npm run build:pages`
 - [ ] E2E `tests/e2e/review-deck.desktop.spec.ts` (empty state, review flow,
       persistence across reload) + playwright.config.ts project entry
 - [ ] Self-review (code-reviewer + ux hats): zero blockers
