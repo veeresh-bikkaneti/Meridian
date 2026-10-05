@@ -53,12 +53,17 @@ reveal opens. Builds on the `learningOutcomes` per-place learning records
       concurrent suites, 794 MB /dev/shm).
 
 ## Pending
-- [ ] E2E `tests/e2e/review-deck.desktop.spec.ts` green on the final
-      artifact (empty state ✓ already, flag-off ✓ already; review flow +
-      persistence re-run queued under the VM-wide lock — 1 spec bug fixed:
-      commitHit returns { committedAt } only, not phase)
-- [ ] Commit remaining files (docs, playwright.config.ts, E2E spec),
-      push, open PR (target main) — NEVER merge; Veeresh merges
+- [x] E2E `tests/e2e/review-deck.desktop.spec.ts` — **4/4 GREEN** on the
+      final artifact (empty state, flag-off, review flow, persistence
+      across reload). Two spec-only bugs found and fixed along the way
+      (commitHit returns { committedAt } only; addInitScript re-seeds on
+      reload — conditional seeding now).
+- [ ] Open PR (target main) — NEVER merge; Veeresh merges — DONE: PR #62
+
+## Gates — ALL GREEN (2026-10-05)
+- `npx tsc --noEmit` clean · `npm test` 616/616 · `node scripts/lint-cards.mjs`
+  GATE PASSED · `npm run build:pages` green · Playwright E2E 4/4 green
+- Self-review (code-reviewer + ux hats): zero blockers.
 
 ## Rules
 - Stage named files only (`git status` + `git diff --cached --stat` before
