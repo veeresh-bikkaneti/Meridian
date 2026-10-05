@@ -66,22 +66,27 @@ const FAKE_INDEX: LoopNameEntry[] = [
   entry({ n: "sao paulo", id: "geonames:5", r: "São Paulo, BR", p: 12300000 }),
 ];
 
-test("rankLoopSuggestions: substring match, ranked by population desc", () => {
-  const out = rankLoopSuggestions(FAKE_INDEX, "spring");
+test("rankLoopSuggestions: word-boundary name matches outrank substring noise", () => {
+  const { suggestions } = rankLoopSuggestions(FAKE_INDEX, "spring");
   assert.deepEqual(
-    out.map((e) => e.id),
+    suggestions.map((e) => e.id),
+    // "springfield" x3 are word-boundary hits (tier 1, pop desc);
+    // "coldspring" is a mid-word substring (tier 2) and sorts last.
     ["geonames:2", "geonames:3", "geonames:1", "geonames:4"],
   );
 });
 
 test("rankLoopSuggestions: query normalization matches diacritic-free index", () => {
-  const out = rankLoopSuggestions(FAKE_INDEX, "São");
-  assert.deepEqual(out.map((e) => e.id), ["geonames:5"]);
+  const { suggestions } = rankLoopSuggestions(FAKE_INDEX, "São");
+  assert.deepEqual(suggestions.map((e) => e.id), ["geonames:5"]);
 });
 
-test("rankLoopSuggestions: blank query and no match return []", () => {
-  assert.deepEqual(rankLoopSuggestions(FAKE_INDEX, "   "), []);
-  assert.deepEqual(rankLoopSuggestions(FAKE_INDEX, "zzz-no-such-place"), []);
+test("rankLoopSuggestions: blank query and no match return empty", () => {
+  assert.deepEqual(rankLoopSuggestions(FAKE_INDEX, "   "), { suggestions: [], total: 0 });
+  assert.deepEqual(rankLoopSuggestions(FAKE_INDEX, "zzz-no-such-place"), {
+    suggestions: [],
+    total: 0,
+  });
 });
 
 test("rankLoopSuggestions: caps at the limit and dedupes ids", () => {
@@ -89,13 +94,16 @@ test("rankLoopSuggestions: caps at the limit and dedupes ids", () => {
   for (let i = 0; i < 20; i++) {
     many.push(entry({ id: `geonames:dup`, n: `spring${i}`, p: 1000 - i }));
   }
-  const out = rankLoopSuggestions(many, "spring", 5);
-  assert.equal(out.length, 1); // deduped to the single id
+  const deduped = rankLoopSuggestions(many, "spring", 5);
+  assert.equal(deduped.suggestions.length, 1); // deduped to the single id
+  assert.equal(deduped.total, 1);
   const twenty: LoopNameEntry[] = [];
   for (let i = 0; i < 20; i++) {
     twenty.push(entry({ id: `geonames:${i}`, n: `springtown${i}`, p: i }));
   }
-  assert.equal(rankLoopSuggestions(twenty, "spring").length, LOOP_SUGGESTION_LIMIT);
+  const capped = rankLoopSuggestions(twenty, "spring");
+  assert.equal(capped.suggestions.length, LOOP_SUGGESTION_LIMIT);
+  assert.equal(capped.total, 20);
   assert.equal(LOOP_SUGGESTION_LIMIT, 8);
 });
 
@@ -183,9 +191,9 @@ test("rankLoopSuggestions: a non-matching alias never swallows the canonical nam
     entry({ n: "new york city", id: "geonames:5128581", r: "New York, United States", p: 8804190 }),
     entry({ n: "east new york", id: "geonames:5115985", r: "New York, United States", p: 173198 }),
   ];
-  const out = rankLoopSuggestions(index, "new york");
+  const { suggestions } = rankLoopSuggestions(index, "new york");
   assert.deepEqual(
-    out.map((e) => e.n),
+    suggestions.map((e) => e.n),
     ["new york city", "east new york"],
   );
 });

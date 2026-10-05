@@ -28,6 +28,8 @@ test("reduced motion: clue reveal is opacity-only, no transform animation", asyn
   await box.click();
   await box.fill("paris");
   await page.getByRole("option").first().click();
+  // Propose -> commit: the suggestion tap only arms the Guess button.
+  await page.getByRole("button", { name: "Guess", exact: true }).click();
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
 
   // The newly revealed clue 2 body: opacity-only under reduced motion —

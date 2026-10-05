@@ -41,30 +41,67 @@ export function displayLoopName(entry: LoopNameEntry): string {
 export const LOOP_SUGGESTION_LIMIT = 8;
 
 /**
- * Rank index entries against a raw query: substring match on the normalized
- * name (`entry.n`), highest population first, deduplicated by id, capped at
- * `limit` (default 8). Returns [] for a blank query.
+ * How well the normalized name matches the query words:
+ * 0 = exact (whole name equals the whole query), 1 = a query word starts a
+ * name word ("pica" -> "pica grande"), 2 = a query word is a name substring
+ * ("pica" inside "espica"), 3 = no query word in the name (region-only hit).
+ */
+function nameMatchTier(name: string, query: string, words: string[]): number {
+  if (name === query) return 0;
+  const atBoundary = (w: string): boolean => {
+    let idx = name.indexOf(w);
+    while (idx >= 0) {
+      if (idx === 0 || name[idx - 1] === " ") return true;
+      idx = name.indexOf(w, idx + 1);
+    }
+    return false;
+  };
+  if (words.some(atBoundary)) return 1;
+  if (words.some((w) => name.includes(w))) return 2;
+  return 3;
+}
+
+export interface RankedLoopSuggestions {
+  /** Top-`limit` entries, best match first. */
+  suggestions: LoopNameEntry[];
+  /** All matches, before the cap — drives the "N of M — keep typing" hint. */
+  total: number;
+}
+
+/**
+ * Rank index entries against a raw query. Every query word must appear
+ * somewhere in the combined "name + region" text, so "paris texas" and
+ * "springfield nebraska" resolve; exact-name and word-boundary name matches
+ * rank above substring noise (so "pica" surfaces Pica, Chile first).
+ * Dedupes by id (aliases of the same place collapse), caps at `limit`,
+ * and returns the pre-cap total alongside.
  */
 export function rankLoopSuggestions(
   entries: LoopNameEntry[],
   query: string,
   limit: number = LOOP_SUGGESTION_LIMIT,
-): LoopNameEntry[] {
+): RankedLoopSuggestions {
   const q = normalizeLoopName(query);
-  if (!q) return [];
-  const seen = new Set<string>();
-  const matches: LoopNameEntry[] = [];
+  if (!q) return { suggestions: [], total: 0 };
+  const words = q.split(" ");
+  // Match first, dedupe second — but dedupe keeps the BEST name match per
+  // id: the index holds aliases per place id ("big apple" before "new york
+  // city"), and a region-only alias match must never swallow the canonical
+  // name when the canonical name matches better.
+  const best = new Map<string, { entry: LoopNameEntry; tier: number }>();
   for (const entry of entries) {
-    // Match first, dedupe second: the index holds several aliases per
-    // place id ("big apple" before "new york city"), and checking the id
-    // first would let a non-matching alias swallow the canonical name.
-    if (!entry.n.includes(q)) continue;
-    if (seen.has(entry.id)) continue;
-    seen.add(entry.id);
-    matches.push(entry);
+    const haystack = `${entry.n} ${normalizeLoopName(entry.r)}`;
+    if (!words.every((w) => haystack.includes(w))) continue;
+    const tier = nameMatchTier(entry.n, q, words);
+    const prev = best.get(entry.id);
+    if (!prev || tier < prev.tier) best.set(entry.id, { entry, tier });
   }
-  matches.sort((a, b) => b.p - a.p);
-  return matches.slice(0, limit);
+  const ranked = [...best.values()];
+  ranked.sort((a, b) => a.tier - b.tier || b.entry.p - a.entry.p);
+  return {
+    suggestions: ranked.slice(0, limit).map((r) => r.entry),
+    total: ranked.length,
+  };
 }
 
 // ---------------------------------------------------------------------------

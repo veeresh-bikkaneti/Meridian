@@ -13,6 +13,16 @@ import { serveBuiltArtifact } from "./helpers";
  */
 
 test.beforeEach(async ({ context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  // Force the clipboard share path (mirrors endgame-share.spec.ts): the
+  // native sheet is unavailable in headless Chromium.
+  await context.addInitScript(() => {
+    try {
+      Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+    } catch {
+      /* navigator.share stays; the test asserts the path taken instead */
+    }
+  });
   await serveBuiltArtifact(context);
 });
 
@@ -28,7 +38,7 @@ function guessBox(page: import("playwright/test").Page) {
   return page.getByRole("combobox", { name: "Guess the place" });
 }
 
-/** Type a query and pick the first matching suggestion. */
+/** Type a query, propose the first matching suggestion, then commit the guess. */
 async function guess(page: import("playwright/test").Page, query: string) {
   const box = guessBox(page);
   await box.click();
@@ -37,6 +47,16 @@ async function guess(page: import("playwright/test").Page, query: string) {
   // The 11 MB name index parses on first focus; allow headroom on slow VMs.
   await expect(option).toBeVisible({ timeout: 30_000 });
   await option.click();
+  // Propose -> commit: tapping a suggestion only fills the input and arms
+  // the Guess button; the button burns the guess.
+  await page.getByRole("button", { name: "Guess", exact: true }).click();
+}
+
+/** Click "Share result" (clipboard path) and return the shared text. */
+async function sharedText(page: import("playwright/test").Page): Promise<string> {
+  await page.getByRole("button", { name: "Share result" }).click();
+  await expect(page.getByRole("button", { name: "Copied ✓" })).toBeVisible();
+  return page.evaluate(() => navigator.clipboard.readText());
 }
 
 async function guessCount(page: import("playwright/test").Page): Promise<number> {
@@ -92,10 +112,10 @@ test("win path: clues unlock in order, correct guess wins, share text formats", 
   await expect(page.getByText("Unlocks after your next guess.")).toHaveCount(0);
 
   // Share text: three lines, proximity-graded grid, solved-in-N.
-  const share = page.locator("pre", { hasText: "meridian geodetective" });
-  await expect(share).toContainText("meridian geodetective October 3");
-  await expect(share).toContainText("https://veeresh-bikkaneti.github.io/Meridian/");
-  await expect(share).toContainText("🟥🟩⬜⬜⬜ solved in 2");
+  const share = await sharedText(page);
+  expect(share).toContain("meridian geodetective October 3");
+  expect(share).toContain("https://veeresh-bikkaneti.github.io/Meridian/");
+  expect(share).toContain("🟥🟩⬜⬜⬜ solved in 2");
 });
 
 test("reload mid-game restores the day state", async ({ page }) => {
@@ -140,10 +160,10 @@ test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async 
   // No locked cards remain on a finished day.
   await expect(page.getByText("Unlocks after your next guess.")).toHaveCount(0);
 
-  const share = page.locator("pre", { hasText: "meridian geodetective" });
-  await expect(share).toContainText("meridian geodetective October 4");
+  const share = await sharedText(page);
+  expect(share).toContain("meridian geodetective October 4");
   // Proximity-graded: all five guesses are >2000 km from Tarija (red).
-  await expect(share).toContainText(/🟥🟥🟥🟥🟥 not solved/);
+  expect(share).toMatch(/🟥🟥🟥🟥🟥 not solved/);
 });
 
 test("unknown guess consumes nothing; no-match message is friendly", async ({ page }) => {

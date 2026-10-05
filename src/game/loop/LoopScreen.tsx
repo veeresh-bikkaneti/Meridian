@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { formatDistance } from "@/game/geo";
+import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { displayDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
+import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
 import { loopDateKey, loopDayIndex, loopNowFromSearch } from "./day";
@@ -100,7 +102,10 @@ function isLoopClueFile(value: unknown): value is LoopClueFile {
     (c.clues as unknown[]).every((clue) => typeof clue === "string" && clue.length > 0) &&
     !!source &&
     typeof source.label === "string" &&
-    typeof source.href === "string"
+    typeof source.href === "string" &&
+    // F1: scheme allowlist — the href renders into an <a>, so only
+    // https: survives validation (latent stored-XSS sink otherwise).
+    /^https:\/\//.test(source.href)
   );
 }
 
@@ -310,7 +315,10 @@ function LoopGame({
             Guess {dayState.guesses.length + 1} of {LOOP_MAX_GUESSES}
             {guessesLeft <= 2 ? ` — ${guessesLeft} left` : ""}
           </p>
-          <p className="text-sm text-muted">Tap a name from the list to guess it.</p>
+          <p className="text-sm text-muted">
+            Pick a name from the list, then press Guess — each press uses one of your five
+            guesses.
+          </p>
           <GuessInput onPick={onPick} />
           {notice ? (
             <p role="status" className="text-sm text-fg">
@@ -433,7 +441,13 @@ function LoopReveal({
   const winningGuess = won
     ? (dayState.guesses.find((g) => g.placeId === clue.placeId) ?? null)
     : null;
-  const answerName = useAnswerName(clue, dayState.status, winningGuess?.name ?? null);
+  const answer = useAnswerName(clue, dayState.status, winningGuess?.name ?? null);
+  const closestGuess = !won
+    ? dayState.guesses.reduce<LoopGuess | null>(
+        (best, g) => (!best || g.distKm < best.distKm ? g : best),
+        null,
+      )
+    : null;
 
   return (
     <Rise reduced={reduced}>
@@ -445,16 +459,22 @@ function LoopReveal({
           {won ? "🎯 You found it!" : "Out of guesses"}
         </p>
         <h2 className="mt-1 font-display text-3xl text-fg">
-          {answerName ??
-            (won
-              ? winningGuess?.name ?? "Mystery place"
-              : "The answer's page didn't load — your clues are all above.")}
+          {answer.name ??
+            (answer.settled
+              ? "We couldn't find the answer's name — but your clues are all above."
+              : "Finding today's answer…")}
         </h2>
         <p className="mt-2 text-sm text-muted">
           {won
             ? `Solved in ${dayState.guesses.length} ${dayState.guesses.length === 1 ? "guess" : "guesses"}. A new mystery lands at midnight UTC — see you tomorrow, detective.`
             : "Better luck with tomorrow's mystery — a new puzzle lands at midnight UTC."}
         </p>
+        {!won && closestGuess ? (
+          <p className="mt-2 text-sm text-muted">
+            Your closest guess was {closestGuess.name} — {formatDistance(closestGuess.distKm)}{" "}
+            away.
+          </p>
+        ) : null}
         <section aria-label="Today's story" className="mt-4">
           <h3 className="text-sm tracking-wide text-muted uppercase">Today&rsquo;s story</h3>
           <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
@@ -497,17 +517,28 @@ function LoopReveal({
  * The answer's display name. On a win it is the winning guess's name. On a
  * loss the clue file deliberately carries no name, so the name is looked up
  * lazily from the shared guess index (usually a browser-cache hit, since
- * the guess input already loaded it); null when the lookup fails.
+ * the guess input already loaded it).
+ *
+ * M7: the lookup starts unsettled on EVERY loss — the heading shows a
+ * neutral "Finding today's answer…" skeleton until the lookup settles, so
+ * it never flashes a false failure. Only an actual lookup failure shows
+ * the failure copy.
  */
 function useAnswerName(
   clue: LoopClueFile,
   status: LoopStatus,
   winName: string | null,
-): string | null {
-  const [name, setName] = useState<string | null>(winName);
+): { name: string | null; settled: boolean } {
+  const [answer, setAnswer] = useState<{ name: string | null; settled: boolean }>(() => ({
+    name: winName,
+    settled: status !== "lost",
+  }));
   useEffect(() => {
-    setName(winName);
-    if (status !== "lost") return;
+    if (status !== "lost") {
+      setAnswer({ name: winName, settled: true });
+      return;
+    }
+    setAnswer({ name: null, settled: false });
     let cancelled = false;
     // Reuse the guess input's cached index (a second network fetch is
     // pointless — the player already loaded it to make their guesses).
@@ -515,20 +546,19 @@ function useAnswerName(
       .then((entries) => {
         if (cancelled) return;
         const entry = entries.find((e) => e.id === clue.placeId);
-        setName(entry ? displayLoopName(entry) : null);
+        setAnswer({ name: entry ? displayLoopName(entry) : null, settled: true });
       })
       .catch(() => {
-        if (!cancelled) setName(null);
+        if (!cancelled) setAnswer({ name: null, settled: true });
       });
     return () => {
       cancelled = true;
     };
   }, [clue.placeId, status, winName]);
-  return name;
+  return answer;
 }
 
 function ShareLoop({ dateKey, dayState }: { dateKey: string; dayState: LoopDayState }) {
-  const [copied, setCopied] = useState(false);
   const text = shareLoopText({
     dateKey,
     status: dayState.status,
@@ -537,20 +567,17 @@ function ShareLoop({ dateKey, dayState }: { dateKey: string; dayState: LoopDaySt
 
   return (
     <div className="flex flex-col gap-3">
-      <pre className="whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
-        {text}
-      </pre>
-      <Button
-        variant="secondary"
-        onClick={() => {
-          void navigator.clipboard.writeText(text).then(
-            () => setCopied(true),
-            () => setCopied(false),
-          );
-        }}
-      >
-        {copied ? "Copied" : "Copy result"}
-      </Button>
+      <ShareButton
+        title="GeoDetective result"
+        text={text}
+        url={BRAND.siteUrl}
+        label="Share result"
+        failureFallback={
+          <pre className="whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+            {text}
+          </pre>
+        }
+      />
     </div>
   );
 }

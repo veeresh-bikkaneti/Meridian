@@ -138,6 +138,81 @@ cannot collide. T11 re-runs the full suite on the final commit.
 **Deferred as post-launch polish (do NOT implement now):** B6
 midnight-rollover listener; C3 streaks/growth instrumentation.
 
+## T10 fix batch (fix crew, 2026-10-05) — pre-merge blockers + majors
+
+All 10 findings implemented as specified; no mechanic changes beyond the
+specified propose→commit, no content changes, no shared-code changes beyond
+what each fix names.
+
+- **B1a — pin-through-dedupe** (`scripts/build-loop.mjs`): new exported
+  `loadLoopTargetIds()` reads the 387 production clue target ids from
+  `public/loop/clues/*.json` (read-only); `dedupeEntries(entries,
+  pinnedIds)` never dedupes a pinned target away — not against a
+  higher-population shadow, not against another pinned target. Non-pinned
+  entries whose (name, region) collides with a pinned target are dropped.
+  This is option (a) of the recorded decision (converged architect +
+  ux-researcher recommendation), reversible by dropping the pin set.
+  Edge found during implementation: `geonames:3608248` (clue 130) is ITSELF
+  a production target sharing ("la ceiba", "Honduras") with `geonames:8556321`
+  (clue 132) — the La Ceiba twins. Naive pinned-wins-first would only move
+  the unwinnable day from 132 to 130; both twins survive, so both days are
+  winnable (the typeahead shows the identical "La Ceiba, Honduras" option
+  twice, once per twin's placeId; distance feedback disambiguates).
+  `public/loop/names.json` regenerated (119,039 entries) and committed.
+- **B1b — build-time gate** (`scripts/build-loop.test.mjs`): the known-red
+  `production loop targets are guessable by their own names` now asserts
+  ALL 387 clue targets present, plus a new test asserting each target is
+  reachable by typing its own display name (top-8 via the REAL runtime
+  ranker, imported from `src/game/loop/evaluate.ts` — no logic duplication).
+  Both GREEN. The (name, region) uniqueness assertion now allows duplicates
+  only when every entry sharing the key is a pinned production target.
+- **B2 — typeahead matching** (`src/game/loop/evaluate.ts`): `rankLoopSuggestions`
+  matches every query word against "name + region" (so "paris texas" →
+  Paris TX, "springfield nebraska" → Springfield NE); ranks exact-name >
+  word-boundary > substring > region-only, population within tiers (so
+  "pica" surfaces Pica, Chile first); dedupes by id keeping the best name
+  match per id (a region-only alias never swallows the canonical name);
+  returns `{ suggestions, total }` so the UI shows "8 of 65 — keep typing
+  to narrow it down" when the cap cuts the list. Verified: "pica" → Pica CL,
+  "risan" → Risan ME, "paris texas" → Paris TX (total=1).
+- **F1 — href scheme allowlist** (`LoopScreen.tsx` `isLoopClueFile`): `source.href`
+  must match `^https://`. ~3 lines, client-side only; locked content
+  validators untouched.
+- **Light theme** (`guess-input.tsx`): hardcoded dark frosted glass replaced
+  with theme tokens (`text-muted` label, `bg-surface border-line text-fg`
+  field/listbox, `aria-selected:bg-fg/10`); `text-base` iOS zoom guard kept.
+- **Propose→commit** (`guess-input.tsx`, covers M1): suggestion tap/Enter now
+  PROPOSES (fills the input, arms the Guess button); the primary `Guess`
+  button commits and burns the guess. Helper text updated ("Pick a name from
+  the list, then press Guess — each press uses one of your five guesses.").
+  E2E specs updated: the `guess()` helper and the reduced spec click Guess
+  after proposing; share-text assertions moved to the clipboard path
+  ("Share result" → "Copied ✓" → `navigator.clipboard.readText()`), since
+  the `<pre>` preview is now the ShareButton failure fallback only.
+- **ShareButton** (`LoopScreen.tsx` `ShareLoop`): clipboard-only "Copy result"
+  replaced with the shared `ShareButton` (title "GeoDetective result", label
+  "Share result"); the `<pre>` preview kept as the failure fallback. Share
+  text unchanged (`shareLoopText` untouched).
+- **idleToast** (`src/components/game-app.tsx`): rendered in the loop branch
+  so the 2-min session watchdog warns instead of silently killing.
+- **M2 — dead Enter while loading** (`guess-input.tsx`): Enter with the index
+  still loading/idle announces "Still loading place names — one moment…" via
+  the status region (and kicks the load if idle); on error the existing
+  retry affordance stands.
+- **M7 rework — loss answer loading** (`LoopScreen.tsx` `useAnswerName`): the
+  old "page didn't load" copy flashed a false failure because the lookup
+  starts null on EVERY loss. Now a `{ name, settled }` pair: neutral skeleton
+  "Finding today's answer…" until the lookup settles; only on actual lookup
+  failure does "We couldn't find the answer's name — but your clues are all
+  above." appear.
+- **M4 — loss closest-guess summary** (`LoopScreen.tsx` `LoopReveal`): on loss,
+  one line — "Your closest guess was {name} — {N} km away." — from the min
+  `distKm` in day state.
+
+**Deferred (do NOT implement — Veeresh's call / other crews):** M3 deeper
+story payoff, M5 content copy pass (Liz's crew), M6 share glow-up, B6
+midnight-rollover listener, C3 streaks/growth instrumentation.
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)

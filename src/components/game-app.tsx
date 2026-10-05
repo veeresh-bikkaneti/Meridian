@@ -928,7 +928,12 @@ export function GameApp() {
   // storage namespace, its own daily rhythm. An in-progress run takes
   // precedence (the player is mid-game); otherwise the open flag wins.
   if (loopOpen) {
-    return <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />;
+    return (
+      <>
+        <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />
+        {idleToast}
+      </>
+    );
   }
 
   // Chunk loading state: the region's places are being fetched. The menu is
