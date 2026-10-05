@@ -1,20 +1,50 @@
-# BRANCH_STATUS.md — fix/gis-review-gaps
+# BRANCH_STATUS.md — feat/misses-review-deck
 
-**Branch:** `fix/gis-review-gaps` off `origin/main` @ `fab222e`
-**Worktree:** `~/workspace/meridian-worktrees/gis-gaps`
-**Mission:** Implement the two P0 gaps from the GIS Analyst map review (2026-10-05). Game code only. Veeresh merges.
+**Branch:** `feat/misses-review-deck` · **Base:** `origin/main @ ea3117b`
+**Worktree:** `~/workspace/meridian-worktrees/misses-deck` (dedicated — do not touch other worktrees)
+**Task:** Misses-review deck (game-review improvement #1, approved by Veeresh 2026-10-05) —
+a spaced-repetition review deck of the player's misses that closes the loop the
+reveal opens. Builds on the `learningOutcomes` per-place learning records
+(`src/game/learning.ts`); client-side only; never blocks play; never a gate.
 
-## Scope (from gis-analyst-map-review.md)
-- [x] **P0-1 — Legend lies about color.** DONE 2026-10-05 (senior-developer + brand-guardian). **Brand Guardian decision:** the answer mark goes gold `#f2c14e` — the long-standing legend text ("gold is the true spot") wins; gold is the app's proven region-highlight color (region-highlight.ts `GOLD`, satellite-map highlight), verified visible on satellite imagery, and the diamond answer glyph stays distinct from the region boundary stroke — no symbology redesign. Changed `--map-answer` in all 4 theme blocks of `src/styles.css` (dark/light/paper/night: `#8fb8c6`/`#1d4e63` → `#f2c14e`) + the fallback in `src/map/colors.ts`; legend text untouched. Gates: `tsc --noEmit` clean · `npm test` 587/587 · `lint-cards` GATE PASSED · `build:pages` green · runtime browser check: built app resolves `--map-answer` to `#f2c14e` (real Chromium, /opt/meta-chromium). E2E honesty note: full reveal spec files flaked on VM infrastructure ("Couldn't load satellite imagery" tile-stub failures + tab crashes in test setup) — identical code failed then passed across reruns; all observed failures were setup/infra, zero assertion failures on card text, pin lines, or colors. PR #58 Your-pin regression assertions untouched and passing where the harness cooperated.
-- [x] **P0-2 — Bearing on the reveal.** DONE (2026-10-05). Misses now teach direction as well as magnitude: the miss headline reads "457 km northeast of your pin" (UX crews approved Veeresh's reference shape verbatim — kid-readable compass words; "your pin" anchors it to the player's action). `initialBearing()` did not exist — implemented pure/no-I/O in `src/game/geo.ts` alongside `distanceKm`, plus `windName8()` 8-wind snap (boundaries round up; null on coincident points → fail-closed to legacy "{dist} off"). Integration is miss-only in `ResultCard`'s `done` block (hit `story` block untouched), all three editions via the single card; `formatDistance` untouched; `data-testid="miss-headline"` added. Gates: `npx tsc --noEmit` ✓ · `npm test` 595/595 ✓ (11 new: 8 geo + 3 card) · `lint-cards.mjs` GATE PASSED ✓ · `build:pages` ✓. Real-browser E2E (live Chromium, built artifact): new `tests/e2e/reveal-bearing.desktop.spec.ts` 3/3 ✓ — country miss asserts the exact wind word against live screen geometry, state miss + hit (no bearing on hits), globe miss; `reveal-pin-compare` 4/4 ✓ (PR #58 lines); `gap-view-reveal` desktop 3/3 + reduced 2/2 ✓ (updated headline assertions); `reload-reveal` ✓. Honest caveats: `result-card-dismiss` + `reveal-your-pin-country-globe` go red in this VM on tile-network/watchdog/preload timeouts (load avg 13, renderer crashes observed) — every failure signature is in tile-status/overlay/preload assertions, none in bearing/pin-compare copy; also fixed a pre-existing data-zoom harness race in the gap-view specs (intro dive can outlast the shared settle check — now waits for the documented post-dive "2").
-- [x] **Ticket-3 — Admin-1 data gap** (scoped ticket, NO implementation this run): delivered as `docs/admin1-gap-ticket.md`. Measured: 1.2 MB / 116 features (AU 9, BR 27, CA 13, CN 31, IN 36), 121 props/feature (119 dead). Gameplay gap = exactly 7 countries (EG/FR/DE/IT/JP/MX/GB); map-context gap is global. Sources sized from published specs (no downloads): NE 50m full 2.22 MB (public domain, coverage unverified — Step 0 for impl crew), NE 10m 38.84 MB, GeoBoundaries gbOpen per-country simplified (7 countries ≈ 9.9 MB raw, mixed per-file licenses incl. ODbL/Etalab), GADM disqualified (no-redistribution license). Joint recommendation: narrow scope (7 countries) as lazy per-country chunks mirroring `loadRegionChunk`; PR #58 fallbacks stay. **Veeresh decision needed:** narrow vs global scope; if global, source (NE 10m→50m vs GeoBoundaries); bundled-data rule check.
-- [ ] **Handoff-4 — GeoDetective between-guess shading** belongs to the edition build (Multi-Agent Systems Architect coordinator). Confirm handoff; do not implement here.
+## Design (game-designer + frontend + ux hats, 2026-10-05)
+- The deck is a synthetic `Run` (`regionId "review-deck"`, typed edition
+  `"globe"`) reusing the PlayLoaded game loop — no forked map/reveal code.
+- Each deck card snapshots its original question context at miss time
+  (coords, story, original edition/region, hit radius, map mode, region
+  bounds) so a review card replays the exact original question framing.
+- Spaced repetition: Leitner-lite intervals [0, 1, 3, 7, 14, 30] days by
+  consecutive successful reviews; a fresh miss is due immediately; a
+  mastered place leaves the deck (mastery derived from learning records).
+- Review answers record into learning records with the ORIGINAL
+  edition/region (metrics stay truthful) but never bank into the session —
+  review is practice, not scoring. Session totals, streaks, share, story
+  cards: untouched.
+- Entry points (invitations, never gates): picker banner below the edition
+  grid + "Review my misses (N)" in the end-game "My growth" section.
+  Gated on the `learningOutcomes` flag like the other growth surfaces.
+- Reload mid-review fails closed to the picker (the deck in localStorage is
+  the durable state; the session queue is rebuilt fresh each time).
 
-## Review loop — CLEAN (2026-10-05)
-- Review crew (code-reviewer + software-architect + SRE): all 5 dimensions PASS — correctness (bearing math independently verified, all 8 winds + boundaries + degenerate cases; legend/mark agree in all 4 themes), CLEAN/DDD/SOLID (pure `initialBearing`/`windName8` in `src/game/geo.ts`, no layer smearing), security (no new deps/network/secrets), deploy safety (build green, content-hashed CSS, cache-safe), no regressions (PR #58 Your-pin lines intact, story block byte-identical).
-- **ZERO BLOCKERS — signed off.** 4 tech-debt items logged (windName8 array hoist, antipodal epsilon guard, duplicated E2E helper, package.json test glob) — non-blocking.
-- Gates: tsc clean, 595/595 tests, card gate PASSED, build green, real-browser E2E on reveal paths.
+## Done
+- [x] Design settled (see above)
+
+## Pending
+- [ ] `src/game/review-deck.ts` — pure deck logic + fail-closed persistence
+- [ ] `src/game/review-deck.test.ts` + package.json test-script registration
+- [ ] `game-app.tsx` integration (deck sync in onConfirm, review-run
+      plumbing in Play/PlayLoaded, picker entry, review-complete screen)
+- [ ] `run-summary.tsx` — "Review my misses (N)" button
+- [ ] `docs/learning-outcomes.md` — deck section
+- [ ] Gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`,
+      `npm run build:pages`
+- [ ] E2E `tests/e2e/review-deck.desktop.spec.ts` (empty state, review flow,
+      persistence across reload) + playwright.config.ts project entry
+- [ ] Self-review (code-reviewer + ux hats): zero blockers
+- [ ] Open PR (target main) — NEVER merge; Veeresh merges
 
 ## Rules
-- Stage named files only. Push early and often. Never break State/Country/Globe editions — the PR #58 Your-pin lines are regression-tested.
-- Learning outcomes first. No labels on the map — ever.
+- Stage named files only (`git status` + `git diff --cached --stat` before
+  each commit). Push early and often. Never break State/Country/Globe
+  editions, scoring, share, streaks, story cards, or PR #58/60 reveal
+  behavior. No labels on the map — ever.
