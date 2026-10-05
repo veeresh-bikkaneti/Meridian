@@ -28,6 +28,7 @@
 - [~] Full `admin1-narrow.desktop.spec.ts` + `tutorial.spec.ts` (tutorial touches the same map code — regression check) re-run queued on the E2E lock.
 
 ## Pending
+- [x] Open PR (target main) — **https://github.com/veeresh-bikkaneti/Meridian/pull/66** — NEVER merge; Veeresh merges
 - [x] `reveal-your-pin-country-globe.desktop.spec.ts -g "Italy"` — **4/4 green** (Sardinia/Calabria regions, aborted-chunk fallback, ocean pin, hit — no line)
 - [x] Full `npm test` — 613/613 green post-main-merge
 - [ ] `node scripts/lint-cards.mjs` gate
