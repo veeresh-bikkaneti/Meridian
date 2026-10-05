@@ -1,20 +1,28 @@
-# BRANCH_STATUS.md — fix/gis-review-gaps
+# BRANCH_STATUS.md — feat/first-run-tutorial
 
-**Branch:** `fix/gis-review-gaps` off `origin/main` @ `fab222e`
-**Worktree:** `~/workspace/meridian-worktrees/gis-gaps`
-**Mission:** Implement the two P0 gaps from the GIS Analyst map review (2026-10-05). Game code only. Veeresh merges.
+**Branch:** `feat/first-run-tutorial` off `origin/main` @ `ea3117b`
+**Worktree:** `~/workspace/meridian-worktrees/tutorial`
+**Mission:** First-run 3-beat tutorial (game-review improvement #2 in the table, approved by Veeresh 2026-10-05 as "first-run tutorial"). Veeresh merges.
 
-## Scope (from gis-analyst-map-review.md)
-- [x] **P0-1 — Legend lies about color.** DONE 2026-10-05 (senior-developer + brand-guardian). **Brand Guardian decision:** the answer mark goes gold `#f2c14e` — the long-standing legend text ("gold is the true spot") wins; gold is the app's proven region-highlight color (region-highlight.ts `GOLD`, satellite-map highlight), verified visible on satellite imagery, and the diamond answer glyph stays distinct from the region boundary stroke — no symbology redesign. Changed `--map-answer` in all 4 theme blocks of `src/styles.css` (dark/light/paper/night: `#8fb8c6`/`#1d4e63` → `#f2c14e`) + the fallback in `src/map/colors.ts`; legend text untouched. Gates: `tsc --noEmit` clean · `npm test` 587/587 · `lint-cards` GATE PASSED · `build:pages` green · runtime browser check: built app resolves `--map-answer` to `#f2c14e` (real Chromium, /opt/meta-chromium). E2E honesty note: full reveal spec files flaked on VM infrastructure ("Couldn't load satellite imagery" tile-stub failures + tab crashes in test setup) — identical code failed then passed across reruns; all observed failures were setup/infra, zero assertion failures on card text, pin lines, or colors. PR #58 Your-pin regression assertions untouched and passing where the harness cooperated.
-- [x] **P0-2 — Bearing on the reveal.** DONE (2026-10-05). Misses now teach direction as well as magnitude: the miss headline reads "457 km northeast of your pin" (UX crews approved Veeresh's reference shape verbatim — kid-readable compass words; "your pin" anchors it to the player's action). `initialBearing()` did not exist — implemented pure/no-I/O in `src/game/geo.ts` alongside `distanceKm`, plus `windName8()` 8-wind snap (boundaries round up; null on coincident points → fail-closed to legacy "{dist} off"). Integration is miss-only in `ResultCard`'s `done` block (hit `story` block untouched), all three editions via the single card; `formatDistance` untouched; `data-testid="miss-headline"` added. Gates: `npx tsc --noEmit` ✓ · `npm test` 595/595 ✓ (11 new: 8 geo + 3 card) · `lint-cards.mjs` GATE PASSED ✓ · `build:pages` ✓. Real-browser E2E (live Chromium, built artifact): new `tests/e2e/reveal-bearing.desktop.spec.ts` 3/3 ✓ — country miss asserts the exact wind word against live screen geometry, state miss + hit (no bearing on hits), globe miss; `reveal-pin-compare` 4/4 ✓ (PR #58 lines); `gap-view-reveal` desktop 3/3 + reduced 2/2 ✓ (updated headline assertions); `reload-reveal` ✓. Honest caveats: `result-card-dismiss` + `reveal-your-pin-country-globe` go red in this VM on tile-network/watchdog/preload timeouts (load avg 13, renderer crashes observed) — every failure signature is in tile-status/overlay/preload assertions, none in bearing/pin-compare copy; also fixed a pre-existing data-zoom harness race in the gap-view specs (intro dive can outlast the shared settle check — now waits for the documented post-dive "2").
-- [x] **Ticket-3 — Admin-1 data gap** (scoped ticket, NO implementation this run): delivered as `docs/admin1-gap-ticket.md`. Measured: 1.2 MB / 116 features (AU 9, BR 27, CA 13, CN 31, IN 36), 121 props/feature (119 dead). Gameplay gap = exactly 7 countries (EG/FR/DE/IT/JP/MX/GB); map-context gap is global. Sources sized from published specs (no downloads): NE 50m full 2.22 MB (public domain, coverage unverified — Step 0 for impl crew), NE 10m 38.84 MB, GeoBoundaries gbOpen per-country simplified (7 countries ≈ 9.9 MB raw, mixed per-file licenses incl. ODbL/Etalab), GADM disqualified (no-redistribution license). Joint recommendation: narrow scope (7 countries) as lazy per-country chunks mirroring `loadRegionChunk`; PR #58 fallbacks stay. **Veeresh decision needed:** narrow vs global scope; if global, source (NE 10m→50m vs GeoBoundaries); bundled-data rule check.
-- [ ] **Handoff-4 — GeoDetective between-guess shading** belongs to the edition build (Multi-Agent Systems Architect coordinator). Confirm handoff; do not implement here.
+## Design (spec: game-review-recommendations.md, improvement #2)
+- 3 beats, kid reading age ~10, skimmable, ADHD-friendly. Core verb (tap the map) within 30 seconds.
+- Beat 1: aim-phase coachmark — tap the map, easy famous place (Eiffel Tower, Paris; curated tier-1 starter with an authored hook).
+- Beat 2: reveal feedback — distance + "closer = more points" + every place tells its story.
+- Beat 3: ends on a hook — "One place, one pin, one story. 100,000+ places to discover."
+- Dismissible, NEVER blocks play: inline invitation banner on the menu (one tap still starts a game); every beat skippable; "seen" persisted client-side (localStorage `meridian.tutorialSeen`).
+- Tour = isolated practice round: France country run with a single-place pool; no session banking, no learning record, no no-repeat-history pollution; reload mid-tour lands on the menu (sentinel pool check).
+- No-labels policy holds; fail-closed everywhere.
 
-## Review loop — CLEAN (2026-10-05)
-- Review crew (code-reviewer + software-architect + SRE): all 5 dimensions PASS — correctness (bearing math independently verified, all 8 winds + boundaries + degenerate cases; legend/mark agree in all 4 themes), CLEAN/DDD/SOLID (pure `initialBearing`/`windName8` in `src/game/geo.ts`, no layer smearing), security (no new deps/network/secrets), deploy safety (build green, content-hashed CSS, cache-safe), no regressions (PR #58 Your-pin lines intact, story block byte-identical).
-- **ZERO BLOCKERS — signed off.** 4 tech-debt items logged (windName8 array hoist, antipodal epsilon guard, duplicated E2E helper, package.json test glob) — non-blocking.
-- Gates: tsc clean, 595/595 tests, card gate PASSED, build green, real-browser E2E on reveal paths.
+## Status
+- [x] `src/game/tutorial.ts` — seen-flag storage helpers (fail-closed), practice-round constants, `isTutorialRunPool` sentinel.
+- [x] `src/game/tutorial.test.ts` — 10 unit tests (green); wired into `npm test`.
+- [x] `src/components/tutorial-overlay.tsx` — invite banner + 3 beat overlays (dismissible, pointer-transparent beats 1–2, kid reading age ~10).
+- [x] `src/components/game-app.tsx` — tutorial state in GameApp; `openRun` tutorial opt (single-place France pool, no history/banking/learning side effects); restore guard drops a persisted tour; beat 1→2 effect; card "Next place" → beat 3; invite on the top-level menu.
+- [x] `tests/e2e/tutorial.spec.ts` + playwright `tutorial` project — invite, dismiss persistence, full 3-beat tour, beat-1 skip, reload-mid-tour, post-tour playability.
+- [x] Gates: `npx tsc --noEmit` ✓, `npm test` 606/606 ✓, `node scripts/lint-cards.mjs` GATE PASSED ✓, `npm run build:pages` ✓ (buildId 3570943).
+- [~] Playwright E2E `tests/e2e/tutorial.spec.ts` on the built artifact: first locked run 3/4 — the failure caught a REAL bug (see below), fixed; re-run queued behind 3 sibling suites on the VM-wide `~/workspace/.e2e.lock` (infra rule 2026-10-05: lock + `--workers=1` + `--disable-dev-shm-usage` via local /tmp config, repo config untouched).
+- [x] Self-review (code-reviewer + UX hats) — fixes applied: seen-flag marked only after the tour run starts (failed chunk load keeps the invite); beat-1 banner parks above the Drop pin pill on every viewport (top-center would cover Paris); overlay hidden on summary; Escape closes the beat-3 dialog; rules-of-hooks fix in TutorialOverlay; **E2E-found bug: `TUTORIAL_PLACE_ID` was `"eiffel"` but starter ids are `${regionId}-${slug}` → `"france-eiffel"`; the tour silently asked "Poulx, Occitanie". Fixed + unit test anchors the id to the real starter.**
+- [x] PR opened (target main) — Veeresh merges: https://github.com/veeresh-bikkaneti/Meridian/pull/61 — **do not merge until the E2E re-run is green** (noted in the PR body).
 
 ## Rules
-- Stage named files only. Push early and often. Never break State/Country/Globe editions — the PR #58 Your-pin lines are regression-tested.
-- Learning outcomes first. No labels on the map — ever.
+- Stage named files only. Push early and often. Existing features must not regress (boot path, edition picker, all editions, PR #58/60 reveal behavior, PWA/service worker).

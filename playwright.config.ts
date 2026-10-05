@@ -153,6 +153,11 @@ export default defineConfig({
       name: "question-card-header",
       testMatch: /question-card-header\.spec\.ts/,
     },
+    {
+      name: "tutorial",
+      testMatch: /tutorial\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
   ],
   reporter: [
     ["list"],
