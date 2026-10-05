@@ -4,6 +4,14 @@
 **Worktree:** `~/workspace/meridian-worktrees/tutorial`
 **Mission:** First-run 3-beat tutorial (game-review improvement #2, approved by Veeresh 2026-10-05).
 
+## 2026-10-05 — E2E GREEN (4/4) on the final spec
+`flock ~/workspace/.e2e.lock npx playwright test --config ~/workspace/.pw-tutorial-local.config.ts --workers=1`:
+- invitation shows on first run; dismissing persists across visits ✓
+- full tour: three beats, then the menu — game stays playable ✓ (exact-spot tap → hit → "Bullseye" beat 2 → beat 3 → menu → globe run playable)
+- skip tour from beat 1 returns to the menu ✓
+- reload mid-tour lands on the menu (practice run never resumes) ✓
+All quality gates green: tsc · 606/606 unit · lint-cards GATE PASSED · build:pages (3570943) · E2E 4/4 · self-review zero blockers.
+
 ## 2026-10-05 — PR #61 MERGED by Veeresh (0aeac14)
 Veeresh merged the tutorial to main (his call — the PR body asked not to merge until E2E went green). The tutorial feature is on main as of 0aeac14.
 **Remaining:** 2 test-only commits on this branch need a follow-up PR once push auth is restored (see blocker below):
