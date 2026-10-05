@@ -228,6 +228,9 @@ export function ResultCard({
   // null renders exactly as today (no line). Computed whenever a pin and
   // place exist; only rendered in the done (miss) block below — the hit
   // card never shows it.
+  // NOTE: poolPlaces is the full dealing pool passed by reference (no copy).
+  // The nearest-match scan must not allocate new module-level data — Safari
+  // jetsam budget (see design §7). Keep this prop a pass-through reference.
   const pinLine = useMemo(() => {
     if (!drop || !place) return null;
     return revealPinLine({

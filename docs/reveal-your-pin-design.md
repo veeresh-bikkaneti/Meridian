@@ -1,7 +1,7 @@
 # Design: "Your pin" line for country & globe editions (wrong-answer reveal)
 
 **Branch:** `fix/reveal-your-pin-country-globe` (off `origin/main` @ `650065e`)
-**Status:** Proposed — read-only recon, no code written
+**Status:** Implemented — commit c705e7d; design contract holds. E2E + technical-architect/tone reviews pending.
 **Author:** DESIGN crew (software-architect persona)
 
 ## 0. Problem statement
@@ -285,8 +285,10 @@ pick"); dropping it would violate the no-fabrication rule.
   valid — those functions are untouched. Add tests for the new functions in the
   file's established style ("known coordinates encode what the vendored data
   REALLY says"): e.g. Sardinia pin → detail with an Italian city; Milan pin →
-  null (nearest globe-chunk place is Chiasso, CH — territory gate, verified by
-  measurement in §5.2); ocean pin → null.
+  null (nearest globe-chunk place is Mendrisio, CH ("756", 48.1 km from the
+  pin) — territory gate, verified by measurement in §5.2; note: world-atlas
+  50m places Chiasso inside Italy, so Chiasso is NOT the null-case test);
+  ocean pin → null.
 - `tests/e2e/reveal-pin-compare.desktop.spec.ts`: expectations almost certainly
   unchanged (Bahia → classic fallback; ocean → no line; hit → no line). BUILD
   must run the suite (standing E2E gate) rather than assume.
