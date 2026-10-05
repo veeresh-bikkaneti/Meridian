@@ -24,7 +24,7 @@
   --map-coast: #0c1816;
   --map-lit: #6e9084;
   --map-pin: #f4f1ea;
-  --map-answer: #8fb8c6;
+  --map-answer: #f2c14e; /* matches region-highlight gold */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   color-scheme: dark;
@@ -53,7 +53,7 @@
     --map-coast: #7f9aa2;
     --map-lit: #d5e4ea;
     --map-pin: #1c2420;
-    --map-answer: #1d4e63;
+    --map-answer: #f2c14e; /* legend: gold is the true spot */
     --map-arc: #3e4c46;
     --map-cross: #1c2420;
     color-scheme: light;
@@ -82,7 +82,7 @@
   --map-coast: #7f9aa2;
   --map-lit: #d5e4ea;
   --map-pin: #1c2420;
-  --map-answer: #1d4e63;
+  --map-answer: #f2c14e; /* legend: gold is the true spot */
   --map-arc: #3e4c46;
   --map-cross: #1c2420;
   color-scheme: light;
@@ -110,7 +110,7 @@
   --map-coast: #0c1816;
   --map-lit: #6e9084;
   --map-pin: #f4f1ea;
-  --map-answer: #8fb8c6;
+  --map-answer: #f2c14e; /* matches region-highlight gold */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   color-scheme: dark;

@@ -197,8 +197,11 @@ test("miss in the ocean: no line, card otherwise identical", async ({
   // Fail closed: the pin is unresolvable, so no line renders...
   await expect(card.getByTestId("pin-compare-line")).toHaveCount(0);
 
-  // ...but everything else on the miss card is exactly as before.
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  // ...but everything else on the miss card is exactly as before: the
+  // distance + bearing headline now reads e.g. "1,235 km east of your pin".
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
   const subscript = card.getByTestId("miss-subscript");
   await expect(subscript).toContainText("White pin is your guess");
   await expect(card.getByRole("link")).toBeVisible();

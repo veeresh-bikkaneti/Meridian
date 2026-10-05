@@ -61,7 +61,9 @@ test("X on the result card hides it without ending the game", async ({ page }) =
 
   const card = resultCard(page);
   await expect(card).toBeVisible({ timeout: 30_000 });
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
 
   // Issue 2: the educational blurb must not be clipped by line-clamp.
   const subscript = card.getByTestId("miss-subscript");

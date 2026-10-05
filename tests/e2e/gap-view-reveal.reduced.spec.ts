@@ -26,6 +26,21 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
+/**
+ * See gap-view-reveal.desktop.spec.ts: the shared startGlobeRun settle
+ * check can return while the globe intro dive is still running on very
+ * slow machines (data-zoom sits at "1" until the first zoomend fires, then
+ * settles to "2"). Wait for the documented post-dive value before
+ * capturing the aim zoom.
+ */
+async function awaitGlobeDiveDone(page: Page): Promise<void> {
+  await expect
+    .poll(() => page.locator(".satellite-map").getAttribute("data-zoom"), {
+      timeout: 30_000,
+    })
+    .toBe("2");
+}
+
 type Page = import("playwright/test").Page;
 
 /** Commit a pin at (x, y); resolves with the landed phase. */
@@ -152,7 +167,9 @@ test("reduced motion: miss is a jump cut — the card appears immediately", asyn
 
   // The miss card still carries the educational content.
   const card = page.getByRole("region", { name: "Result" });
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
   await expect(card.getByTestId("miss-subscript")).toContainText(
     "White pin is your guess",
   );
@@ -167,6 +184,7 @@ test("reduced motion: hit is synchronous — the card appears immediately", asyn
   page,
 }) => {
   await startGlobeRun(page);
+  await awaitGlobeDiveDone(page);
   const zoomBefore = await page
     .locator(".satellite-map")
     .getAttribute("data-zoom");

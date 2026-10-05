@@ -312,8 +312,11 @@ test("country (Italy): ocean pin — no line, fail closed", async ({ page }) => 
   // Fail closed: the pin is unresolvable, so no line renders...
   await expect(card.getByTestId("pin-compare-line")).toHaveCount(0);
 
-  // ...but everything else on the miss card is exactly as before.
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  // ...but everything else on the miss card is exactly as before: the
+  // headline teaches direction as well as distance.
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
   await expect(card.getByTestId("miss-subscript")).toContainText(
     "White pin is your guess",
   );
