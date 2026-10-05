@@ -26,11 +26,14 @@ import {
  * (fix/reveal-your-pin-country-globe).
  *
  * The fix layers a nearest-place-in-pool fallback over the untouched classic
- * pinCompareLine: in country/globe editions a miss now renders
- * "Your pin: near <city>, <state>[, <country>] · True spot: <truth city>,
- * <truth state>[, <truth country>]" (data-testid="pin-compare-line") even
- * for countries with no vendored admin-1 boundaries (IT/FR/...). State
- * edition is byte-identical to before; hits and ocean pins show no line.
+ * pinCompareLine: in the COUNTRY edition a miss now renders
+ * "Your pin: near <city>, <state> · True spot: <truth city>, <truth state>"
+ * (data-testid="pin-compare-line") even for countries with no vendored
+ * admin-1 boundaries (IT/FR/...). In the GLOBE edition the line is
+ * symmetric country-level ("Your pin: Spain · True spot: Hungary") —
+ * Veeresh's 2026-10-05 naming decision; the "near <city>" detail path is
+ * not used in globe. State edition is byte-identical to before; hits and
+ * ocean pins show no line.
  *
  * Determinism: the no-repeat seen store (localStorage
  * `meridian:seen:v2:<edition>:<regionId>:<band>`) is pre-seeded with every
@@ -214,9 +217,9 @@ test("globe: pin and truth in two different countries — suffixes on both sides
 
   // Run B: force Debrecen (Hungary) first; drop the pin on Sevilla.
   // Sevilla -> Debrecen is ~1900 km, far outside the 750 km globe hit
-  // radius: a guaranteed miss. Both countries are in the globe pool but
-  // have no vendored admin-1, so the detail path must fire with country
-  // suffixes on both sides.
+  // radius: a guaranteed miss. Both countries have no vendored admin-1,
+  // and the globe line is symmetric country-level (the detail path is
+  // country-edition only).
   await freshBoot(page);
   await seedSeenExcept(page, "globe", "globe", DEBRECEN_ID, allIds, "easy");
   await pickBand(page, "Easy");
@@ -231,13 +234,10 @@ test("globe: pin and truth in two different countries — suffixes on both sides
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  // The pin town is whatever pool place is nearest the tap (integer-rounded
-  // screen point can resolve to a neighboring town, e.g. Alcalá de Guadaira
-  // for a Sevilla tap); the regions, both country suffixes, and the "near"
-  // qualifier are the assertions.
-  await expect(line).toHaveText(
-    /Your pin: near .+, Andalusia, Spain · True spot: Debrecen, Hajdú-Bihar, Hungary/,
-  );
+  // Symmetric country-level by design (Veeresh, 2026-10-05): the pin town
+  // is whatever pool place is nearest the tap, but the line names only
+  // the countries.
+  await expect(line).toHaveText("Your pin: Spain · True spot: Hungary");
 });
 
 test("country (Italy): ocean pin — no line, fail closed", async ({ page }) => {
@@ -262,7 +262,7 @@ test("country (Italy): ocean pin — no line, fail closed", async ({ page }) => 
     /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
   );
   await expect(card.getByTestId("miss-subscript")).toContainText(
-    "White pin is your guess",
+    "Your pin is your guess",
   );
 });
 

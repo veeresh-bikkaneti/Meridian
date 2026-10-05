@@ -426,9 +426,9 @@ export type RevealPinLineInput = {
 };
 
 /**
- * Truth-side country for the globe suffix — the same funnel the question
- * bubble uses (countryNameForIso2 → regionId → originRegionId), so the
- * reveal matches what was asked. Fail-closed: null when unresolvable.
+ * Truth-side country for the globe pin-compare line — the same funnel the
+ * question bubble uses (countryNameForIso2 → regionId → originRegionId), so
+ * the reveal matches what was asked. Fail-closed: null when unresolvable.
  */
 function truthCountryName(truth: RevealPinLineInput["truth"]): string | null {
   return (
@@ -446,12 +446,18 @@ function cityStateSegment(name: string, subdivision: string | null): string {
 /**
  * The pin-compare line for a MISS reveal. Layered, fail-closed:
  *  1. state edition → classic pinCompareLine (byte-identical; regression lock).
- *  2. country/globe → the detail line when nearestPoolPlace is honest.
- *  3. otherwise → classic pinCompareLine (today's copy; ocean → null).
+ *  2. globe edition → symmetric COUNTRY-level names ("Your pin: Brazil ·
+ *     True spot: Angola"). Admin-1 and city-level ("near <city>") naming
+ *     are deliberately not used here — Veeresh approved country-level for
+ *     globe (2026-10-05); the city-level follow-up is parked in
+ *     docs/globe-naming-followup.md, not built. Null when either side is
+ *     unresolvable (card renders no line — fail closed).
+ *  3. country edition → the detail line when nearestPoolPlace is honest.
+ *  4. otherwise → classic pinCompareLine (today's copy; ocean → null).
  * Miss-only: the hit card never calls this.
  *
- * The "near" qualifier is unconditional — the pin is a raw lat/lon, never
- * presented as an exact pick, even at distance ≈ 0.
+ * The "near" qualifier (country edition only) is unconditional — the pin
+ * is a raw lat/lon, never presented as an exact pick, even at distance ≈ 0.
  */
 export function revealPinLine(input: RevealPinLineInput): string | null {
   let classic: string | null = null;
@@ -461,6 +467,17 @@ export function revealPinLine(input: RevealPinLineInput): string | null {
       resolvePin(input.truth.lat, input.truth.lon),
     );
     if (input.edition === "state") return classic;
+    if (input.edition === "globe") {
+      const playerCountry = resolvePin(
+        input.playerLat,
+        input.playerLon,
+      )?.country;
+      const truthCountry =
+        truthCountryName(input.truth) ??
+        resolvePin(input.truth.lat, input.truth.lon)?.country;
+      if (!playerCountry || !truthCountry) return null;
+      return `Your pin: ${playerCountry} · True spot: ${truthCountry}`;
+    }
     const detail = nearestPoolPlace(
       input.playerLat,
       input.playerLon,
@@ -483,11 +500,9 @@ export function revealPinLine(input: RevealPinLineInput): string | null {
         ? `Your pin: near ${pinSide} · True spot: ${truthSide}`
         : `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}`;
     }
-    // globe: both sides always carry the country suffix. Unresolvable truth
-    // country → classic (never a malformed line).
-    const truthCountry = truthCountryName(truth);
-    if (!truthCountry) return classic;
-    return `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}, ${truthCountry}`;
+    // Unreachable: edition is "state" | "country" | "globe" and the first
+    // two returned above. Kept as the fail-closed default.
+    return classic;
   } catch {
     return classic;
   }

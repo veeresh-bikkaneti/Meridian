@@ -24,7 +24,16 @@ export default defineConfig({
   retries: 0,
   use: {
     baseURL: "http://127.0.0.1:4123",
-    launchOptions: { executablePath: "/opt/meta-chromium/chrome" },
+    // INFRA (2026-10-05): the VM has 7.7 GB RAM, zero swap, 794 MB /dev/shm.
+    // Concurrent E2E suites OOM-kill Chromium, and /dev/shm exhaustion alone
+    // crashes the renderer — so /tmp-backed shm is used instead (disk is
+    // plentiful). E2E runs are also serialized VM-wide via
+    // `flock ~/workspace/.e2e.lock` with --workers=1; never run two suites
+    // concurrently.
+    launchOptions: {
+      executablePath: "/opt/meta-chromium/chrome",
+      args: ["--disable-dev-shm-usage"],
+    },
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
   },
@@ -154,9 +163,15 @@ export default defineConfig({
       testMatch: /question-card-header\.spec\.ts/,
     },
     {
+<<<<<<< HEAD
+      name: "review-deck",
+      testMatch: /review-deck\.desktop\.spec\.ts/,
+    },
+    {
       name: "tutorial",
       testMatch: /tutorial\.spec\.ts/,
       use: { viewport: { width: 1440, height: 900 } },
+>>>>>>> origin/main
     },
   ],
   reporter: [

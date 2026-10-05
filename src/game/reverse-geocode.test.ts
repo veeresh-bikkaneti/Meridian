@@ -293,7 +293,7 @@ test("revealPinLine: country edition, different country — pin side carries the
   );
 });
 
-test("revealPinLine: globe edition — both sides carry the country suffix", () => {
+test("revealPinLine: globe edition — symmetric country-level names", () => {
   const line = revealPinLine({
     edition: "globe",
     playerLat: 39.3,
@@ -301,10 +301,8 @@ test("revealPinLine: globe edition — both sides carry the country suffix", () 
     truth: CALABRIA_TRUTH,
     pool: ITALY_POOL,
   });
-  assert.equal(
-    line,
-    "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  // Globe is country-level by design — no admin-1, no "near <city>".
+  assert.equal(line, "Your pin: Italy · True spot: Italy");
 });
 
 test("revealPinLine: globe truth country funnels through regionId (no iso2)", () => {
@@ -322,13 +320,10 @@ test("revealPinLine: globe truth country funnels through regionId (no iso2)", ()
     },
     pool: ITALY_POOL,
   });
-  assert.equal(
-    line,
-    "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  assert.equal(line, "Your pin: Italy · True spot: Italy");
 });
 
-test("revealPinLine: missing subdivision omits the segment, never renders 'null'", () => {
+test("revealPinLine: globe player in a third country names both countries", () => {
   // Kyoto has no subdivision in this pool; the vendored territory name is
   // "Japan" (key "392") — verified, not assumed.
   const line = revealPinLine({
@@ -338,29 +333,19 @@ test("revealPinLine: missing subdivision omits the segment, never renders 'null'
     truth: CALABRIA_TRUTH,
     pool: [{ name: "Kyoto", lon: 135.7681, lat: 35.0116 }],
   });
-  assert.equal(
-    line,
-    "Your pin: near Kyoto, Japan · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  assert.equal(line, "Your pin: Japan · True spot: Italy");
 });
 
-test("revealPinLine: detail null → classic line (never silently drops)", () => {
-  // Globe-style pool without Italy: the Milan pin's nearest candidate is
-  // cross-border (gate) — the classic country-level line must render.
-  const input = {
-    edition: "globe" as const,
-    playerLat: 43.7034,
-    playerLon: 7.2663,
+test("revealPinLine: globe ocean pin fails closed (no line)", () => {
+  // Mid-Pacific: territoryAt null → playerCountry undefined → null.
+  const line = revealPinLine({
+    edition: "globe",
+    playerLat: 0,
+    playerLon: -140,
     truth: CALABRIA_TRUTH,
-    pool: [{ name: "Genoa", lon: 8.9332, lat: 44.4056, subdivision: "Liguria" }],
-  };
-  const line = revealPinLine(input);
-  const classic = pinCompareLine(
-    resolvePin(input.playerLat, input.playerLon),
-    resolvePin(input.truth.lat, input.truth.lon),
-  );
-  assert.equal(line, classic, "gate failure must fall back to the classic line");
-  assert.equal(line, "Your pin: France · True spot: Italy");
+    pool: ITALY_POOL,
+  });
+  assert.equal(line, null);
 });
 
 test("INDIA REGRESSION LOCK: country edition names both locations, never drops the line", () => {
