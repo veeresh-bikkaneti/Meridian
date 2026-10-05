@@ -80,6 +80,67 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
+import {
+  REVIEW_DECK_COPY,
+  REVIEW_DECK_REGION_ID,
+  REVIEW_DECK_REGION_NAME,
+  deckCounts,
+  deckStarter,
+  dueEntries,
+  emptyReviewDeck,
+  readReviewDeck,
+  recordReview,
+  removeDeckEntry,
+  upsertMiss,
+  writeReviewDeck,
+  type DeckEntry,
+  type DeckPlaceSnapshot,
+} from "@/game/review-deck";
+
+/**
+ * A review-deck session is a Run with this regionId (typed edition "globe")
+ * so the PlayLoaded game loop is reused instead of forked. Every
+ * review-specific branch keys off this predicate. Review runs never consult
+ * the no-repeat history of real regions and never bank into the session —
+ * review is practice, not scoring.
+ */
+function isReviewRun(run: Run): boolean {
+  return run.regionId === REVIEW_DECK_REGION_ID;
+}
+
+/**
+ * Snapshot a missed place's full question context for the deck: a review
+ * card replays the exact question the player missed (same framing, same
+ * hit radius, same label), with no region-chunk fetch at review time.
+ */
+function snapshotForDeck(
+  place: Starter,
+  run: Run,
+  radiusKm: number,
+): DeckPlaceSnapshot {
+  return {
+    id: place.id,
+    name: place.name,
+    lon: place.lon,
+    lat: place.lat,
+    story: place.story,
+    history: place.history,
+    fact: place.fact,
+    curated: place.curated,
+    difficulty: place.difficulty,
+    edition: run.edition,
+    regionId: run.regionId,
+    regionName: run.regionName,
+    subdivision: place.subdivision,
+    iso2: place.iso2,
+    originRegionId: place.originRegionId,
+    sourceLabel: place.sourceLabel,
+    sourceHref: place.sourceHref,
+    mapMode: run.edition === "globe" ? "globe" : "flat",
+    regionBounds: run.edition === "globe" ? undefined : boundsFor(run),
+    radiusKm,
+  };
+}
 
 /**
  * Session flag marking that this tab already reloaded for a stale build.
@@ -517,6 +578,38 @@ function useSessionState() {
   return { session, update, replace: persist, get };
 }
 
+/**
+ * Review-deck entry status for the edition picker. Gated on the
+ * `learningOutcomes` flag like the other growth surfaces: flag off = no
+ * deck entry at all (the deck only populates while the flag is on). Re-read
+ * whenever the app returns to the picker (`run` → null): a review session
+ * reschedules cards and a normal game adds misses, so a boot-time snapshot
+ * would go stale — and a stale "N cards due" with an empty queue would make
+ * "Start review" silently no-op.
+ */
+function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total: number } {
+  const [status, setStatus] = useState({ enabled: false, due: 0, total: 0 });
+  const onPicker = run === null;
+  useEffect(() => {
+    let active = true;
+    loadFlags().then(() => {
+      if (!active) return;
+      if (!isEnabled("learningOutcomes")) {
+        setStatus({ enabled: false, due: 0, total: 0 });
+        return;
+      }
+      const deck = readReviewDeck() ?? emptyReviewDeck();
+      if (!active) return;
+      const { total, due } = deckCounts(deck, Date.now());
+      setStatus({ enabled: true, total, due });
+    });
+    return () => {
+      active = false;
+    };
+  }, [onPicker]);
+  return status;
+}
+
 export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
@@ -632,6 +725,19 @@ export function GameApp() {
       return;
     }
     const saved = readRun();
+    // Review sessions never resume across reloads: the deck (localStorage)
+    // is the durable state; the session queue is rebuilt fresh on every
+    // start. Fail closed to the edition picker.
+    if (saved && saved.regionId === REVIEW_DECK_REGION_ID) {
+      clearDrop();
+      try {
+        sessionStorage.removeItem(RUN_KEY);
+      } catch {
+        // Storage blocked; the in-memory run is dropped regardless.
+      }
+      setReady(true);
+      return;
+    }
     // A persisted tutorial practice round never resumes: the tour is a
     // single-place practice round, so resuming it would recycle the same
     // place forever with no tutorial UI (beat state is in-memory only).
@@ -801,6 +907,48 @@ export function GameApp() {
     },
     [commit, ensureSession],
   );
+
+  // Review-deck status for the picker entry (flag-gated; re-read whenever
+  // the app returns to the picker — see useDeckStatus).
+  const deckStatus = useDeckStatus(run);
+
+  /**
+   * Start a review session over the currently-due deck cards. The session is
+   * a synthetic Run (regionId "review-deck") whose pool is the due queue in
+   * due order. Deliberately no ensureSession: review answers never bank
+   * into the session — review is practice, not scoring.
+   */
+  const startReview = useCallback(() => {
+    const deck = readReviewDeck() ?? emptyReviewDeck();
+    const due = dueEntries(deck, Date.now());
+    // Fail closed: the entry points only render when due > 0, so this is
+    // unreachable in practice — never start a run with an empty queue.
+    if (due.length === 0) return;
+    const next = startRun(
+      {
+        edition: "globe",
+        regionId: REVIEW_DECK_REGION_ID,
+        regionName: REVIEW_DECK_REGION_NAME,
+        dateKey: trailDate(),
+        difficultyChoice,
+      },
+      due.map((entry) => entry.place.id),
+      null,
+    );
+    commit(next);
+    setMenu(null);
+  }, [commit, difficultyChoice]);
+
+  /**
+   * "Review my misses" from the end-game summary: the session already ended
+   * there, so just leave the summary behind and start the review session.
+   */
+  const handleReviewDeck = useCallback(() => {
+    clearDrop();
+    setRun(null);
+    setMenu(null);
+    startReview();
+  }, [startReview]);
 
   /**
    * First-run tutorial handlers. The invitation marks the tour seen whether
@@ -976,6 +1124,7 @@ export function GameApp() {
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
           }}
+          onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
           celebrationOpen={cleared !== null}
         />
@@ -1144,6 +1293,8 @@ export function GameApp() {
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
+      onReview={startReview}
+      deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
       tutorialInvite={
@@ -1174,6 +1325,8 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  onReview,
+  deck,
   notice,
   difficultyChoice,
   onDifficultyChoice,
@@ -1182,6 +1335,10 @@ function Choose({
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
+  /** Start a review session over the due deck cards. */
+  onReview: () => void;
+  /** Deck entry status (flag-gated; see useDeckStatus). */
+  deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
@@ -1261,6 +1418,29 @@ function Choose({
           onClick={onGlobe}
         />
       </div>
+      {deck.enabled ? (
+        <section
+          aria-label={REVIEW_DECK_COPY.pickerTitle}
+          className="mt-8 rounded-xl border border-line bg-surface p-5"
+        >
+          <h2 className="font-display text-2xl text-fg">{REVIEW_DECK_COPY.pickerTitle}</h2>
+          {deck.due > 0 ? (
+            <>
+              <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerDueLine}</p>
+              <p className="mt-1 text-sm font-medium text-fg" data-testid="deck-due-count">
+                {deck.due} {deck.due === 1 ? "card" : "cards"} due
+              </p>
+              <Button className="mt-4" onClick={onReview}>
+                {REVIEW_DECK_COPY.startReview}
+              </Button>
+            </>
+          ) : deck.total > 0 ? (
+            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+          ) : (
+            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerEmpty}</p>
+          )}
+        </section>
+      ) : null}
     </main>
   );
 }
@@ -1284,6 +1464,46 @@ function EditionCard({
         {action}
       </Button>
     </article>
+  );
+}
+
+/**
+ * End of a review session: the due queue is exhausted. Bounded and
+ * completable by design (ADHD-friendly). Cards answered correctly come
+ * back later — further out every time; missed cards are due again right
+ * away, so a quick retry is always one tap away from the picker.
+ */
+function ReviewComplete({
+  results,
+  total,
+  onDone,
+}: {
+  results: PlaceResult[];
+  total: number;
+  onDone: () => void;
+}) {
+  const remembered = results.filter((r) => r.hit).length;
+  return (
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <p className="text-sm tracking-wide text-muted uppercase">
+        {REVIEW_DECK_COPY.pickerTitle}
+      </p>
+      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="review-complete">
+        {total === 0
+          ? "Nothing to review."
+          : `${REVIEW_DECK_COPY.completeTitle} You remembered ${remembered} of ${total}.`}
+      </h1>
+      <p className="mt-4 max-w-md text-lg text-muted">
+        {total === 0
+          ? REVIEW_DECK_COPY.pickerEmpty
+          : remembered === total
+            ? "Each card comes back later — further out every time you get it right."
+            : "The ones you missed are due again right away. One more round locks them in."}
+      </p>
+      <div className="mt-6">
+        <Button onClick={onDone}>{REVIEW_DECK_COPY.backToEditions}</Button>
+      </div>
+    </main>
   );
 }
 
@@ -1349,6 +1569,7 @@ function Play({
   onEditions,
   onSummaryDone,
   onReplayed,
+  onReviewDeck,
   onCleared,
   celebrationOpen,
   tutorial,
@@ -1376,6 +1597,8 @@ function Play({
   onSummaryDone: () => void;
   /** A fresh run started via Play again; starts a fresh session. */
   onReplayed: (run: Run) => void;
+  /** "Review my misses" from the end-game summary. */
+  onReviewDeck: () => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
   /**
@@ -1393,11 +1616,39 @@ function Play({
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
+  // Review sessions: the due deck entries in session order (the poolIds
+  // order). Null for normal runs.
+  const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
+  const review = isReviewRun(run);
 
   useEffect(() => {
     let cancelled = false;
     setPlaces(null);
     setPoolError(null);
+    setReviewEntries(null);
+    if (review) {
+      // Review deck: no chunk fetch — due cards carry their own snapshots.
+      // Aligned to the run's poolIds (the session queue); a deck that
+      // changed since session start fails closed to the currently-due list.
+      try {
+        const deck = readReviewDeck() ?? emptyReviewDeck();
+        const due = dueEntries(deck, Date.now());
+        const byId = new Map(due.map((entry) => [entry.place.id, entry]));
+        const ordered = run.poolIds
+          .map((id) => byId.get(id))
+          .filter((entry): entry is DeckEntry => entry !== undefined);
+        const entries = ordered.length > 0 ? ordered : due;
+        if (!cancelled) {
+          setReviewEntries(entries);
+          setPlaces(entries.map(deckStarter));
+        }
+      } catch {
+        if (!cancelled) setPoolError("Could not load your review deck.");
+      }
+      return () => {
+        cancelled = true;
+      };
+    }
     placesFor(run.edition, run.regionId).then(
       (loaded) => {
         if (!cancelled) setPlaces(loaded);
@@ -1451,8 +1702,10 @@ function Play({
       onEditions={onEditions}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
+      onReviewDeck={onReviewDeck}
       onCleared={onCleared}
       celebrationOpen={celebrationOpen}
+      reviewEntries={reviewEntries}
       tutorial={tutorial}
       onTutorialAdvance={onTutorialAdvance}
       onTutorialEnd={onTutorialEnd}
@@ -1470,8 +1723,10 @@ function PlayLoaded({
   onEditions,
   onSummaryDone: finishSummary,
   onReplayed,
+  onReviewDeck,
   onCleared,
   celebrationOpen,
+  reviewEntries,
   tutorial,
   onTutorialAdvance,
   onTutorialEnd,
@@ -1496,8 +1751,20 @@ function PlayLoaded({
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
-  /** Whether the cleared-mode celebration dialog is open (M5 Escape yields to it). */
+  /** "Review my misses" from the end-game summary. */
+  onReviewDeck: () => void;
+  /**
+   * Whether the cleared-mode celebration dialog is open. The M5 Escape
+   * handler yields while it is open so one Escape press dismisses only
+   * the dialog (the dialog's own handler), never the result card beneath.
+   */
   celebrationOpen: boolean;
+  /**
+   * Review sessions only: the due deck entries in session order (null for
+   * normal runs). Each entry's snapshot carries the card's original
+   * question context.
+   */
+  reviewEntries: DeckEntry[] | null;
   /** First-run tutorial beat (null when inactive); owned by GameApp. */
   tutorial: TutorialBeat | null;
   /** Advance the tutorial to a beat. */
@@ -1505,6 +1772,14 @@ function PlayLoaded({
   /** Skip/finish the tutorial: tear down the practice round. */
   onTutorialEnd: () => void;
 }) {
+  // Review-deck session: a synthetic Run reusing this game loop. The deck
+  // queue (due order) is the pool; review answers never bank into the
+  // session and the cleared-mode celebration never fires here.
+  const review = isReviewRun(run);
+  const reviewEntryById = useMemo(
+    () => new Map((reviewEntries ?? []).map((entry) => [entry.place.id, entry] as const)),
+    [reviewEntries],
+  );
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
   // rebuilds the identical pool (not a reshuffled smaller one). An empty
@@ -1540,33 +1815,44 @@ function PlayLoaded({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [pool, run.seed, run.dateKey, run.edition, run.regionId, run.difficultyChoice, run.prevLastId],
   );
-  const place = dealer.at(run.index);
+  const place = review ? pool[run.index] : dealer.at(run.index);
+  /** The deck entry behind the dealt card (review sessions only). */
+  const reviewEntry = review && place ? reviewEntryById.get(place.id) : undefined;
   // The qualified question label ("Manhattan, Nebraska, United States" in
   // globe; "Manhattan, Nebraska" in country; bare name in state). Computed
   // once per place and shared by the question bubble and the result card so
   // what you were asked matches what you're shown. Fail-closed inside
   // buildQuestionLabel: unresolvable parents fall back to the bare name.
-  const questionLabel = useMemo(
-    () =>
-      place
-        ? buildQuestionLabel({
-            edition: run.edition,
-            place,
-            countryRegionId: run.edition === "country" ? run.regionId : null,
-            hasCollision: collisionCounts
-              ? hasNameCollision(place, collisionCounts)
-              : false,
-          })
-        : "",
-    [place, run.edition, run.regionId, collisionCounts],
-  );
+  const questionLabel = useMemo(() => {
+    if (!place) return "";
+    if (review) {
+      // Review cards replay the original question verbatim: the label uses
+      // the card's original edition (never the synthetic review run).
+      const edition = reviewEntry?.place.edition ?? "globe";
+      return buildQuestionLabel({
+        edition,
+        place,
+        countryRegionId:
+          edition === "country" ? (reviewEntry?.place.regionId ?? null) : null,
+        hasCollision: false,
+      });
+    }
+    return buildQuestionLabel({
+      edition: run.edition,
+      place,
+      countryRegionId: run.edition === "country" ? run.regionId : null,
+      hasCollision: collisionCounts ? hasNameCollision(place, collisionCounts) : false,
+    });
+  }, [place, review, reviewEntry, run.edition, run.regionId, collisionCounts]);
   // Record dealt places into the no-repeat history as the run advances.
-  // Skipped for the tutorial practice round: the tour must not pollute the
-  // France band's persistent history with its practice place.
+  // Skipped for review sessions and the tutorial practice round: the deck
+  // queue is the dealing order (and the review namespace must never pollute
+  // real regions' histories), and the tour must not pollute the France
+  // band's persistent history with its practice place.
   useEffect(() => {
-    if (tutorial) return;
+    if (review || tutorial) return;
     dealer.markDealtThrough(run.index);
-  }, [dealer, run.index, tutorial]);
+  }, [dealer, review, run.index, tutorial]);
   // Tutorial beat 1 → 2: the pin was committed (phase left "aim"), so the
   // reveal feedback takes over. Any later phase change is a real run's
   // business — tutorial is already 2 or 3 by then.
@@ -1724,9 +2010,12 @@ function PlayLoaded({
   }, [run.phase, aim, celebrationOpen]);
 
   useEffect(() => {
+    // Review sessions: an exhausted queue (place undefined) renders the
+    // review-complete screen — never the run "done" phase.
+    if (review) return;
     if (place || run.phase === "done" || run.phase === "summary") return;
     onRun({ ...run, phase: "done" });
-  }, [onRun, place, run]);
+  }, [onRun, place, review, run]);
 
   useEffect(() => {
     if (run.phase !== "story" || !place) {
@@ -1767,12 +2056,14 @@ function PlayLoaded({
       pin: { lon: drop.lon, lat: drop.lat },
       spot: { lon: place.lon, lat: place.lat },
       kilometers: drop.distanceKm,
-      radiusKm:
-        run.edition === "globe"
+      // Review cards replay the original question's hit radius.
+      radiusKm: review
+        ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+        : run.edition === "globe"
           ? radiusKm("globe", 0)
           : radiusKm(run.edition, greaterSideKm(boundsFor(run))),
     };
-  }, [drop, place, run]);
+  }, [drop, place, review, reviewEntry, run]);
 
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
@@ -1794,25 +2085,30 @@ function PlayLoaded({
   function onConfirm(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
     const distance = distanceKm([lon, lat], [place.lon, place.lat]);
-    const radius =
-      run.edition === "globe"
+    // Review cards are judged against the hit radius of the original
+    // question (snapshotted at miss time) — the same bar as the first try.
+    const radius = review
+      ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+      : run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
-    // a miss scores 0 and resets the streak (handled in dropPin).
-    const scored = hit
-      ? scorePlace({
-          distanceKm: distance,
-          ring: scoreRingForEdition(run.edition),
-          difficulty: place.difficulty,
-          streakBefore: run.streak,
-          edition: run.edition,
-          regionId: run.regionId,
-          pin: [lon, lat],
-          target: [place.lon, place.lat],
-        })
-      : null;
+    // a miss scores 0 and resets the streak (handled in dropPin). Review is
+    // practice, not scoring: no points, so nothing can leak into the session.
+    const scored =
+      !review && hit
+        ? scorePlace({
+            distanceKm: distance,
+            ring: scoreRingForEdition(run.edition),
+            difficulty: place.difficulty,
+            streakBefore: run.streak,
+            edition: run.edition,
+            regionId: run.regionId,
+            pin: [lon, lat],
+            target: [place.lon, place.lat],
+          })
+        : null;
     setAim(null);
     setAimAnnouncement(null);
     const nextDrop: Drop = {
@@ -1833,42 +2129,74 @@ function PlayLoaded({
     // Bank the scored place into the session exactly once: dropPin appends
     // exactly one result per aim-phase commit, so the length check guards
     // the (unreachable here) no-op path. Skipped for the tutorial practice
-    // round — the tour is unscored practice, so it banks nothing into the
-    // session and records no learning record.
+    // round — the tour is unscored practice. Review sessions record their
+    // learning record and deck sync below but never bank into the session's
+    // totals and streaks.
     if (!tutorial && nextRun.results.length > bankedBefore) {
-      onBankPlace({
-        edition: run.edition,
-        score: hit && scored ? scored.score : 0,
-        hit,
-        distanceKm: distance,
-        streakAfter: nextRun.streak,
-        difficultyChoice: run.difficultyChoice,
-        regionId: run.regionId,
-        regionName: run.regionName,
-      });
+      if (!review) {
+        onBankPlace({
+          edition: run.edition,
+          score: hit && scored ? scored.score : 0,
+          hit,
+          distanceKm: distance,
+          streakAfter: nextRun.streak,
+          difficultyChoice: run.difficultyChoice,
+          regionId: run.regionId,
+          regionName: run.regionName,
+        });
+      }
       // Learning record: observational, flag-gated, fail closed. Runs
       // *beside* bankPlace — never inside dropPin/bankPlace — and can never
       // throw into the pin-commit path or corrupt the session. The growth
       // line on the reveal card is derived from the stored record at render
       // time, so it survives a reload exactly like the drop does.
+      //
+      // Review answers record against the card's ORIGINAL edition/region
+      // (never the synthetic review run), so retention, mastery, and
+      // region trends stay truthful — and the deck sync lives here too:
+      // a normal-play miss joins the deck, a review answer reschedules its
+      // card, and a newly mastered place leaves the deck.
       if (learningEnabled) {
         try {
           setLearningStore((prev) => {
-            const next = recordAnswer(prev ?? emptyLearningStore(), {
+            const at = Date.now();
+            const answered = recordAnswer(prev ?? emptyLearningStore(), {
               placeId: place.id,
-              edition: run.edition,
-              regionId: run.regionId,
-              regionName: run.regionName,
+              edition: review ? (reviewEntry?.place.edition ?? "globe") : run.edition,
+              regionId: review ? (reviewEntry?.place.regionId ?? run.regionId) : run.regionId,
+              regionName: review ? (reviewEntry?.place.regionName ?? run.regionName) : run.regionName,
               distanceKm: distance,
               radiusKm: radius,
               hit,
               score: hit && scored ? scored.score : 0,
-              at: Date.now(),
+              at,
             });
             // recordAnswer is pure (same input → same output), so even if
             // React re-invokes this updater the write is idempotent.
-            writeLearningStore(next.store);
-            return next.store;
+            writeLearningStore(answered.store);
+            try {
+              const deck = readReviewDeck() ?? emptyReviewDeck();
+              let nextDeck = deck;
+              // Idempotency guard: the updater above must stay pure — if
+              // React ever re-invokes it, the second pass must not advance
+              // the Leitner streak a second time for the same attempt.
+              const alreadyRecorded =
+                deck.entries[place.id]?.lastReviewedAt === at;
+              if (!alreadyRecorded) {
+                if (review) {
+                  nextDeck = recordReview(deck, place.id, hit, at);
+                } else if (!hit) {
+                  nextDeck = upsertMiss(deck, snapshotForDeck(place, run, radius), at);
+                }
+              }
+              if (answered.event.newlyMastered) {
+                nextDeck = removeDeckEntry(nextDeck, place.id);
+              }
+              writeReviewDeck(nextDeck);
+            } catch {
+              // Deck storage failure must never break the game.
+            }
+            return answered.store;
           });
         } catch {
           // Storage failure must never break the game.
@@ -1897,7 +2225,9 @@ function PlayLoaded({
     const justAnswered = dealer.at(run.index);
     // The mark check comes first: once celebrated, no later tap in this
     // cycle can re-trigger, so the catalog/history scan below is skipped.
-    if (justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+    // Review sessions never celebrate clears: the deck is a practice queue,
+    // not a difficulty band.
+    if (!review && justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
       // The band catalog is the unfiltered region catalog narrowed by the
       // run's difficulty band — the same filter the replay path uses.
       const bandCatalogIds = filterByTier(places, run.difficultyChoice).map(
@@ -2011,8 +2341,47 @@ function PlayLoaded({
     onReplayed(freshRun);
   }
 
-  const mode = run.edition === "globe" ? "globe" : "flat";
-  const bounds = run.edition === "globe" ? undefined : boundsFor(run);
+  // Review sessions replay each card's original question context: the map
+  // reframes per card (the satellite-map effect remounts on edition/region/
+  // bounds change, exactly like an edition switch in normal play).
+  const mapEdition: Edition = review ? (reviewEntry?.place.edition ?? "globe") : run.edition;
+  const mapRegionName = review
+    ? (reviewEntry?.place.regionName ?? REVIEW_DECK_REGION_NAME)
+    : run.regionName;
+  const mode = review
+    ? (reviewEntry?.place.mapMode ?? "globe")
+    : run.edition === "globe"
+      ? "globe"
+      : "flat";
+  const bounds = review
+    ? reviewEntry?.place.regionBounds
+    : run.edition === "globe"
+      ? undefined
+      : boundsFor(run);
+  // The reveal card describes the question as originally asked: the card's
+  // original edition/region, never the synthetic review run.
+  const displayRun: Run =
+    review && reviewEntry
+      ? { ...run, edition: reviewEntry.place.edition, regionName: reviewEntry.place.regionName }
+      : run;
+  // Cards due right now (for the end-game "Review my misses" invitation).
+  // Read fresh when the summary opens — the deck may have grown during
+  // the session that just ended.
+  const reviewDueCount = useMemo(
+    () =>
+      learningEnabled && run.phase === "summary"
+        ? deckCounts(readReviewDeck() ?? emptyReviewDeck(), Date.now()).due
+        : 0,
+    [learningEnabled, run.phase],
+  );
+
+  // Review session complete: the due queue is exhausted. A bounded,
+  // completable session — ADHD-friendly — never the endless run.
+  if (review && run.index >= pool.length) {
+    return (
+      <ReviewComplete results={run.results} total={pool.length} onDone={onEditions} />
+    );
+  }
 
   return (
     <main className="relative h-dvh bg-bg">
@@ -2022,8 +2391,8 @@ function PlayLoaded({
             <SatelliteMap
               key={mapKey}
               mode={mode}
-              edition={run.edition}
-              regionName={run.regionName}
+              edition={mapEdition}
+              regionName={mapRegionName}
               bounds={bounds}
               onAim={onAim}
               onConfirm={onConfirm}
@@ -2037,8 +2406,17 @@ function PlayLoaded({
         </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
-            Editions
+            {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
           </Button>
+          {review ? (
+            <p
+              data-testid="review-progress"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-fg"
+            >
+              {REVIEW_DECK_COPY.progressOf} {Math.min(run.index + 1, pool.length)} of{" "}
+              {pool.length}
+            </p>
+          ) : (
           <div className="flex flex-col items-end gap-2">
             <div className="relative">
               <button
@@ -2121,6 +2499,7 @@ function PlayLoaded({
               </button>
             ) : null}
           </div>
+          )}
         </div>
       </div>
       <p className="sr-only" aria-live="polite">
@@ -2140,8 +2519,8 @@ function PlayLoaded({
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
-          edition={run.edition}
-          regionName={run.regionName}
+          edition={mapEdition}
+          regionName={mapRegionName}
           placeName={questionLabel}
           difficulty={place.difficulty}
           hasPin={aim !== null}
@@ -2162,7 +2541,7 @@ function PlayLoaded({
       ) : null}
       {run.phase !== "aim" && run.phase !== "summary" && revealDone ? (
         <ResultCard
-          run={run}
+          run={displayRun}
           place={place}
           placeLabel={questionLabel}
           drop={drop}
@@ -2216,6 +2595,8 @@ function PlayLoaded({
           }
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
+          onReview={onReviewDeck}
+          reviewDueCount={reviewDueCount}
         />
       ) : null}
     </main>
