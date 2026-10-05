@@ -570,16 +570,23 @@ function useSessionState() {
 /**
  * Review-deck entry status for the edition picker. Gated on the
  * `learningOutcomes` flag like the other growth surfaces: flag off = no
- * deck entry at all (the deck only populates while the flag is on). Read
- * once at boot; the review session itself re-reads the deck when started.
+ * deck entry at all (the deck only populates while the flag is on). Re-read
+ * whenever the app returns to the picker (`run` → null): a review session
+ * reschedules cards and a normal game adds misses, so a boot-time snapshot
+ * would go stale — and a stale "N cards due" with an empty queue would make
+ * "Start review" silently no-op.
  */
-function useDeckStatus(): { enabled: boolean; due: number; total: number } {
+function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total: number } {
   const [status, setStatus] = useState({ enabled: false, due: 0, total: 0 });
+  const onPicker = run === null;
   useEffect(() => {
     let active = true;
     loadFlags().then(() => {
       if (!active) return;
-      if (!isEnabled("learningOutcomes")) return;
+      if (!isEnabled("learningOutcomes")) {
+        setStatus({ enabled: false, due: 0, total: 0 });
+        return;
+      }
       const deck = readReviewDeck() ?? emptyReviewDeck();
       if (!active) return;
       const { total, due } = deckCounts(deck, Date.now());
@@ -588,7 +595,7 @@ function useDeckStatus(): { enabled: boolean; due: number; total: number } {
     return () => {
       active = false;
     };
-  }, []);
+  }, [onPicker]);
   return status;
 }
 
@@ -841,8 +848,9 @@ export function GameApp() {
     [commit, ensureSession],
   );
 
-  // Review-deck status for the picker entry (flag-gated; see useDeckStatus).
-  const deckStatus = useDeckStatus();
+  // Review-deck status for the picker entry (flag-gated; re-read whenever
+  // the app returns to the picker — see useDeckStatus).
+  const deckStatus = useDeckStatus(run);
 
   /**
    * Start a review session over the currently-due deck cards. The session is
@@ -1381,7 +1389,7 @@ function ReviewComplete({
         {total === 0
           ? REVIEW_DECK_COPY.pickerEmpty
           : remembered === total
-            ? "Every card moves further out — you'll see them again right before they'd fade."
+            ? "Each card comes back later — further out every time you get it right."
             : "The ones you missed are due again right away. One more round locks them in."}
       </p>
       <div className="mt-6">
@@ -2030,10 +2038,17 @@ function PlayLoaded({
             try {
               const deck = readReviewDeck() ?? emptyReviewDeck();
               let nextDeck = deck;
-              if (review) {
-                nextDeck = recordReview(deck, place.id, hit, at);
-              } else if (!hit) {
-                nextDeck = upsertMiss(deck, snapshotForDeck(place, run, radius), at);
+              // Idempotency guard: the updater above must stay pure — if
+              // React ever re-invokes it, the second pass must not advance
+              // the Leitner streak a second time for the same attempt.
+              const alreadyRecorded =
+                deck.entries[place.id]?.lastReviewedAt === at;
+              if (!alreadyRecorded) {
+                if (review) {
+                  nextDeck = recordReview(deck, place.id, hit, at);
+                } else if (!hit) {
+                  nextDeck = upsertMiss(deck, snapshotForDeck(place, run, radius), at);
+                }
               }
               if (answered.event.newlyMastered) {
                 nextDeck = removeDeckEntry(nextDeck, place.id);

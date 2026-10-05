@@ -38,15 +38,27 @@ reveal opens. Builds on the `learningOutcomes` per-place learning records
       cleared-mode, review-complete screen), picker banner entry,
       boot drops review runs (fail closed)
 - [x] `run-summary.tsx` — "Review my misses (N)" button in "My growth"
-- [x] Gates so far: `npx tsc --noEmit` clean · `npm test` 616/616 green
+- [x] Gates so far: `npx tsc --noEmit` clean · `npm test` 616/616 green ·
+      `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green
+- [x] Self-review round 1 (code-reviewer + ux hats): fixed 3 issues —
+      stale picker banner (deck status now re-reads whenever the app
+      returns to the picker), updater idempotency guard for the deck sync,
+      honest review-complete copy ("further out every time", no
+      fade-timing claim)
+- [x] Infra rule adopted (parent directive 2026-10-05): all E2E via
+      `flock ~/workspace/.e2e.lock` + `--workers=1`, and
+      `--disable-dev-shm-usage` in playwright.config.ts launchOptions
+      (test config only — no app code touched). This fixed the renderer
+      crashes seen in the first E2E attempt (OOM-killed Chromium under
+      concurrent suites, 794 MB /dev/shm).
 
 ## Pending
-- [ ] `docs/learning-outcomes.md` — deck section
-- [ ] Gates: `node scripts/lint-cards.mjs`, `npm run build:pages`
-- [ ] E2E `tests/e2e/review-deck.desktop.spec.ts` (empty state, review flow,
-      persistence across reload) + playwright.config.ts project entry
-- [ ] Self-review (code-reviewer + ux hats): zero blockers
-- [ ] Open PR (target main) — NEVER merge; Veeresh merges
+- [ ] E2E `tests/e2e/review-deck.desktop.spec.ts` green on the final
+      artifact (empty state ✓ already, flag-off ✓ already; review flow +
+      persistence re-run queued under the VM-wide lock — 1 spec bug fixed:
+      commitHit returns { committedAt } only, not phase)
+- [ ] Commit remaining files (docs, playwright.config.ts, E2E spec),
+      push, open PR (target main) — NEVER merge; Veeresh merges
 
 ## Rules
 - Stage named files only (`git status` + `git diff --cached --stat` before
