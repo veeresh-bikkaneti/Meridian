@@ -33,7 +33,8 @@
   - Standing Meridian E2E gate: SATISFIED for this fix (design §4.3).
 
 ## Pending
-- [ ] Technical-architect review (APPROVE, no blockers) + tone/docs review (APPROVE)
+- [x] Technical-architect review: **APPROVE, no blockers** (code-reviewer persona; verified empirically — haversine vs independent 3D reference <0.01 km, Mendrisio substitution sound, all null paths fail closed, no import cycle, state zero-change, miss-only preserved)
+- [x] Tone/docs review: **APPROVE** (technical-writer persona; one NEEDS WORK round on doc accuracy — status line, Mendrisio correction, jetsam comment — all fixed verbatim and re-verified)
 - [ ] Open PR (no merge — Veeresh merges)
 
 ## Notes
