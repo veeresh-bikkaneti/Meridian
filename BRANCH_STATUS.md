@@ -16,7 +16,7 @@
   - `src/components/result-card.tsx`: optional `poolPlaces?: Starter[]` prop; pinLine memo now calls `revealPinLine()`; miss-only rendering unchanged
 - [x] India regression lock (Veeresh's working reference): Mumbai/Pune-verified test asserts both locations named, never dropped — detail supersedes classic there ("Your pin: near Mumbai, Maharashtra · True spot: Bengaluru, Karnataka"); classic reference path independently asserted ("Your pin: Maharashtra · True spot: Karnataka")
 - [x] Gates (all four, BUILD crew ran them 2026-10-04): `npx tsc --noEmit` clean · `npm test` 584/584 green (36 suites) · `node scripts/lint-cards.mjs` → GATE PASSED · `npm run build:pages` green
-- [x] Pushed to origin (commit <SHA>)
+- [x] Pushed to origin (commit c705e7d)
 
 ## In progress
 - [ ] E2E: pin-compare line in country AND globe editions; state unchanged (standing Meridian E2E gate — design §4.3: `tests/e2e/reveal-pin-compare.desktop.spec.ts`, `EXPECTED_BAHIA_LINE` preserved by the classic fallback)
