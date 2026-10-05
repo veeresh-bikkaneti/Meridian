@@ -277,6 +277,52 @@ GeoDetective spec files. T12 (PR) is unblocked only if that re-run is GREEN
 raw (a same-test repeat failure = possible real issue, escalated, not
 papered over).
 
+### Step 5 outcome — BLOCKED by VM resource exhaustion (2026-10-05, QA/E2E crew)
+
+Three re-run attempts on `2d64162`, all compromised; **no trustworthy GREEN
+possible right now — escalated per the no-paper-over rule. This RED is
+infrastructural, not code.**
+
+- Attempt 1 (33.7 min, `--workers=4`): a Playwright CLI footgun — file
+  filters are unanchored regexes tested against the ABSOLUTE file path, so
+  the `geodetective` filter matched the worktree dir name
+  (`geodetective-edition`) and the run executed ~78 tests instead of the
+  intended ~40. 29 failed / 49 passed under load 17–19 with a sibling
+  suite running concurrently in another worktree.
+- Attempt 2 (`--workers=2`, correctly `$`-anchored filters): killed after a
+  second sibling suite started 2 min in and load hit 15–16; browsers were
+  being killed mid-test.
+- Attempt 3 (`--workers=1`, focused: the 2 fixed spec files + the 2
+  GeoDetective files, 14 tests): tab crashed on test #1
+  (`page.evaluate: Target crashed`) while a `vite build` ran in the
+  `tutorial` worktree. Killed.
+
+Root cause (measured, not inferred): the VM has **7.7 GB RAM, zero swap,
+794 MB /dev/shm**, and E2E suites run uncoordinated across worktrees
+(`geodetective-edition`, `gd-qa-ea3117b`, `globe-pin-legend`,
+`misses-deck`) alongside heavy builds (`vite build` in `tutorial` hit
+1.2 GB RSS). Chromium tabs get OOM-killed → the exact T11 flake signature
+(`Target crashed`, session closed, canvas never visible, zoom-settle
+timeouts). `serveBuiltArtifact` intercepts requests per-context (no port
+contention); the shared resource is RAM.
+
+What IS verified on `2d64162` (green, trustworthy):
+- `npx tsc --noEmit` clean; `npm run build:pages` green (buildId 2d64162).
+- Both fixed spec files GREEN: endgame-share 2/2 (the clipboard-path test's
+  only failure was the known zoom-settle flake; it passed on immediate
+  re-run with the fixed helper matching the app's clipboard payload
+  byte-for-byte), history-first-cards 4/4 (Miami + Nashville through the
+  Easy picker drive).
+- The 4 failures were confirmed pre-existing on `origin/main` (empty diffs;
+  port additive-only) — spec bugs, not app bugs. The commit is spec-only.
+
+To unblock T12: (1) serialize E2E runs across crews (a lock/queue — three
+crews ran concurrently today, one polling `kill -0` for a window);
+(2) add swap and/or enlarge /dev/shm on the VM; (3) re-run step 5 on a
+quiet VM. Lesson: anchor Playwright CLI file filters (`"name\.spec\.ts$"`)
+— an unanchored filter can match the worktree directory in the absolute
+path.
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
