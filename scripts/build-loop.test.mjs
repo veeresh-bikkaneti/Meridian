@@ -19,9 +19,11 @@ import {
   buildNamesIndex,
   dayIndexFor,
   dedupeEntries,
+  loadLoopTargetIds,
   normalizeName,
   regionLabel,
 } from "./build-loop.mjs";
+import { rankLoopSuggestions } from "../src/game/loop/evaluate.ts";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
@@ -89,6 +91,47 @@ test("dedupeEntries keeps distinct (name, region) combos", () => {
   assert.equal(mo.p, 200);
 });
 
+test("dedupeEntries pins loop targets past the population heuristic", () => {
+  const mk = (id, n, r, p) => ({ n, id, lon: 0, lat: 0, r, p });
+  const pins = new Set(["geonames:2"]);
+  // Shadow arrives first: the pinned target still wins the lane.
+  const out = dedupeEntries(
+    [mk("geonames:1", "la ceiba", "Honduras", 222055), mk("geonames:2", "la ceiba", "Honduras", 215973)],
+    pins,
+  );
+  assert.equal(out.length, 1);
+  assert.equal(out[0].id, "geonames:2");
+  // The higher-population shadow is dropped even when it arrives second.
+  const out2 = dedupeEntries(
+    [mk("geonames:2", "la ceiba", "Honduras", 215973), mk("geonames:1", "la ceiba", "Honduras", 222055)],
+    pins,
+  );
+  assert.equal(out2.length, 1);
+  assert.equal(out2[0].id, "geonames:2");
+});
+
+test("dedupeEntries never collapses two pinned targets sharing a name+region", () => {
+  const mk = (id, n, r, p) => ({ n, id, lon: 0, lat: 0, r, p });
+  // The La Ceiba twins (clues 130/132): duplicate GeoNames records for the
+  // same city, both production days — both must survive.
+  const pins = new Set(["geonames:1", "geonames:2"]);
+  const out = dedupeEntries(
+    [mk("geonames:1", "la ceiba", "Honduras", 222055), mk("geonames:2", "la ceiba", "Honduras", 215973)],
+    pins,
+  );
+  assert.equal(out.length, 2);
+});
+
+test("dedupeEntries without pins keeps the old highest-population behavior", () => {
+  const mk = (id, n, r, p) => ({ n, id, lon: 0, lat: 0, r, p });
+  const out = dedupeEntries([
+    mk("geonames:1", "la ceiba", "Honduras", 222055),
+    mk("geonames:2", "la ceiba", "Honduras", 215973),
+  ]);
+  assert.equal(out.length, 1);
+  assert.equal(out[0].id, "geonames:1");
+});
+
 test("dedupeEntries drops empty normalized names", () => {
   const out = dedupeEntries([{ n: "", id: "x", lon: 0, lat: 0, r: "r", p: 0 }]);
   assert.equal(out.length, 0);
@@ -115,8 +158,9 @@ test("regionLabel builds State, Country for states and Country otherwise", () =>
 
 test("names.json entries are well-formed and normalized", () => {
   const entries = readJson(join(OUT_DIR, "names.json"));
+  const targetIds = loadLoopTargetIds(join(OUT_DIR, "clues"));
   assert.ok(Array.isArray(entries) && entries.length > 100_000);
-  const seen = new Set();
+  const seen = new Map();
   for (const e of entries) {
     assert.equal(typeof e.n, "string");
     assert.ok(e.n.length > 0);
@@ -127,8 +171,19 @@ test("names.json entries are well-formed and normalized", () => {
     assert.equal(typeof e.r, "string");
     assert.ok(e.r.length > 0);
     assert.equal(typeof e.p, "number");
-    assert.ok(!seen.has(`${e.n}||${e.r}`), `duplicate ${e.n}||${e.r}`);
-    seen.add(`${e.n}||${e.r}`);
+    const key = `${e.n}||${e.r}`;
+    // (name, region) is unique except for pinned production-target twins
+    // (e.g. the two La Ceiba clue days) — identical options a typist cannot
+    // tell apart, each carrying its own day's placeId.
+    if (seen.has(key)) {
+      const other = seen.get(key);
+      assert.ok(
+        targetIds.has(e.id) && targetIds.has(other.id),
+        `duplicate ${key} with non-target entry`,
+      );
+    } else {
+      seen.set(key, e);
+    }
   }
   for (let i = 1; i < entries.length; i++) {
     assert.ok(entries[i - 1].p >= entries[i].p, "not sorted by population desc");
@@ -156,6 +211,42 @@ test("production loop targets are guessable by their own names", () => {
   // rule requires the builder to pick them up from the chunks.
   assert.ok(byId.has("geonames:8556321"), "La Ceiba missing from names.json");
   assert.ok(byId.has("geonames:2058304"), "Williamstown missing from names.json");
+
+  // B1 build gate: EVERY production clue target must be present in the
+  // index — pin-through-dedupe, not hand-patching.
+  const targetIds = [...loadLoopTargetIds(join(OUT_DIR, "clues"))].sort();
+  assert.equal(targetIds.length, 387, `expected 387 clue targets, got ${targetIds.length}`);
+  const absent = targetIds.filter((id) => !byId.has(id));
+  assert.deepEqual(absent, [], `${absent.length} clue targets missing from names.json`);
+});
+
+test("every production loop target is reachable by typing its own display name", () => {
+  // B1 build gate (second half): presence is not enough — a target crowded
+  // out of the typeahead's top-8 (Pica CL, Risan ME in the old
+  // population-only ranker) is still an unwinnable day. Typing the
+  // target's own display name must surface it in the top-8 suggestions,
+  // using the REAL runtime ranker (no logic duplication).
+  const entries = readJson(join(OUT_DIR, "names.json"));
+  const byId = new Map();
+  for (const e of entries) {
+    if (!byId.has(e.id)) byId.set(e.id, e);
+  }
+  const targetIds = [...loadLoopTargetIds(join(OUT_DIR, "clues"))].sort();
+  const failures = [];
+  for (const id of targetIds) {
+    const entry = byId.get(id);
+    if (!entry) {
+      failures.push(`${id}: absent from names.json`);
+      continue;
+    }
+    // A player types the display name ("La Ceiba, Honduras" normalizes to
+    // the entry's own normalized name) — the day's placeId must be pickable.
+    const { suggestions, total } = rankLoopSuggestions(entries, entry.n, 8);
+    if (!suggestions.some((s) => s.id === id)) {
+      failures.push(`${id} (${entry.n}, ${entry.r}): not in top-8 for its own name (${total} matches)`);
+    }
+  }
+  assert.deepEqual(failures, [], `${failures.length} targets unreachable by their own name:\n${failures.join("\n")}`);
 });
 
 test("buildNamesIndex sorts by population desc then name", () => {

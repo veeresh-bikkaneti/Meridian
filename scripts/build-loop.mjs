@@ -35,6 +35,7 @@ const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
 const CHUNKS_DIR = join(ROOT, "src/game/data/geonames/chunks");
 const OUT_DIR = join(ROOT, "public/loop");
+const CLUES_DIR = join(OUT_DIR, "clues");
 
 const DUMP_PATH =
   process.env.MERIDIAN_GEONAMES_DUMP ??
@@ -148,16 +149,56 @@ function entryFor(place, pops) {
  * Dedupe identical (normalized name, region) combos, keeping the
  * highest-population entry; distinct (name, region) combos are all kept, so
  * "springfield" still yields Springfield IL, MO, ... as separate entries.
+ *
+ * Pin-through (option (a), reversible): `pinnedIds` are the 387 production
+ * clue target ids (see loadLoopTargetIds). A pinned entry is never deduped
+ * away — neither by a higher-population shadow nor by another pinned
+ * target: two production days can share a name+region (the La Ceiba twins,
+ * clues 130/132 — duplicate GeoNames records for the same city), and
+ * collapsing them would leave one of the two days unwinnable. A
+ * non-pinned entry whose (name, region) collides with a pinned target is
+ * dropped — the production target owns that name+region lane.
+ * Reversible: dropping the pin set restores pure highest-population dedupe.
  */
-export function dedupeEntries(entries) {
-  const byKey = new Map();
+export function dedupeEntries(entries, pinnedIds = new Set()) {
+  const pinned = [];
+  const pinnedSeenIds = new Set();
+  const rest = [];
   for (const e of entries) {
     if (!e.n) continue;
+    if (pinnedIds.has(e.id)) {
+      if (!pinnedSeenIds.has(e.id)) {
+        pinnedSeenIds.add(e.id);
+        pinned.push(e);
+      }
+    } else {
+      rest.push(e);
+    }
+  }
+  const pinnedKeys = new Set(pinned.map((e) => `${e.n}||${e.r}`));
+  const byKey = new Map();
+  for (const e of rest) {
     const key = `${e.n}||${e.r}`;
+    if (pinnedKeys.has(key)) continue;
     const prev = byKey.get(key);
     if (!prev || e.p > prev.p) byKey.set(key, e);
   }
-  return [...byKey.values()];
+  return [...pinned, ...byKey.values()];
+}
+
+/**
+ * Load the production clue target ids from public/loop/clues/*.json.
+ * These are production content (PR #59) — read-only input, never written.
+ */
+export function loadLoopTargetIds(cluesDir = CLUES_DIR) {
+  const ids = new Set();
+  for (const file of readdirSync(cluesDir).filter((f) => f.endsWith(".json"))) {
+    const data = JSON.parse(readFileSync(join(cluesDir, file), "utf8"));
+    if (typeof data.placeId === "string" && data.placeId.length > 0) {
+      ids.add(data.placeId);
+    }
+  }
+  return ids;
 }
 
 function resolveAliasTarget(alias, places, pops) {
@@ -184,12 +225,12 @@ function resolveAliasTarget(alias, places, pops) {
   };
 }
 
-export function buildNamesIndex(places, pops, aliases) {
+export function buildNamesIndex(places, pops, aliases, pinnedIds = new Set()) {
   const entries = places.map((p) => entryFor(p, pops));
   for (const alias of aliases) {
     entries.push(resolveAliasTarget(alias, places, pops));
   }
-  const deduped = dedupeEntries(entries);
+  const deduped = dedupeEntries(entries, pinnedIds);
   deduped.sort((a, b) => b.p - a.p || (a.n < b.n ? -1 : a.n > b.n ? 1 : 0) || (a.r < b.r ? -1 : a.r > b.r ? 1 : 0));
   return deduped;
 }
@@ -220,7 +261,11 @@ async function main() {
   // Guess index only. This script never writes clue files or the manifest —
   // public/loop/clues/** and public/loop/manifest.json are production
   // content (PR #59) and are out of bounds for the data pipeline.
-  const index = buildNamesIndex(places, pops, []);
+  // Pin-through-dedupe (option (a)): the 387 production clue targets win
+  // (name, region) collisions so no production day is unwinnable.
+  const targetIds = loadLoopTargetIds();
+  console.log(`loopTargets=${targetIds.size}`);
+  const index = buildNamesIndex(places, pops, [], targetIds);
   writeJson(join(OUT_DIR, "names.json"), index);
   console.log(`names.json entries=${index.length}`);
 }
