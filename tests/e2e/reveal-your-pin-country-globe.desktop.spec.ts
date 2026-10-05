@@ -76,11 +76,17 @@ const DEBRECEN_ID = "gn-721472"; // Debrecen, Hajdú-Bihar, HU — easy (1)
  */
 const ITALY_OCEAN_PT = { x: 1360, y: 780 };
 
-test("country (Italy): Sardinia pin, Calabria truth — the card names both provinces", async ({
+test("country (Italy): Sardinia pin, Calabria truth — the card names both regions", async ({
   page,
 }) => {
-  // admin1-narrow: Italy now ships a vendored admin-1 chunk (NE 10m), so the
-  // classic pin-compare path names both provinces once the chunk loads.
+  // admin1-narrow: Italy ships a vendored admin-1 chunk (NE 10m), loaded
+  // below. NOTE on the line format (crew-lead call, 2026-10-05): the card
+  // renders PR #58's detail line — "Your pin: near <city>, <region> ·
+  // True spot: <city>, <region>" — not the bare classic "Your pin:
+  // <admin1> · True spot: <admin1>". That is the shipped, unit-tested
+  // behavior (the "near" qualifier is unconditional — a raw pin is never
+  // an exact pick); this test was first written against the classic
+  // format and failed on the first locked run.
   const allIds = poolIds("country", "italy");
 
   // Run A: force Sassari (Sardinia) first; record its settled screen point.
@@ -110,8 +116,11 @@ test("country (Italy): Sardinia pin, Calabria truth — the card names both prov
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  // NE 10m province names, probed against the built chunk (not assumed).
-  await expect(line).toHaveText("Your pin: Sassari · True spot: Catanzaro");
+  // The pin town is whatever pool place is nearest the tap (integer-rounded
+  // screen point); the regions and the "near" qualifier are the assertions.
+  await expect(line).toHaveText(
+    /Your pin: near .+, Sardinia · True spot: Catanzaro, Calabria/,
+  );
 });
 
 test("country (Italy): aborted admin-1 chunk falls back to the 'near' line", async ({
