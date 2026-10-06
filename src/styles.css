@@ -757,6 +757,24 @@
   color: var(--atlas-muted);
 }
 
+/* ---- Cartographer's Plate: .place-name wrap foundation (spec §3) ----
+ * "Names are the payload; containers flex, names never do."
+ * Every surface renders the FULL place name — never an ellipsis.
+ * - overflow-wrap: break-word breaks only the unbreakable tokens
+ *   (e.g. 24-char "Staronizhestebliyevskaya") at the overflow edge.
+ * - word-break: normal — never break-all on Latin (vetoed).
+ * - text-wrap: balance evens wrapped heading lines (progressive
+ *   enhancement; degrades silently where unsupported).
+ * - hyphens stays manual: hyphens: auto is vetoed (no per-name lang
+ *   metadata; wrong-dictionary hyphenation reads as typos).
+ */
+.place-name {
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-wrap: balance;
+  line-height: 1.28;
+}
+
 /* ---- Reduced motion: everything lands instantly, fully visible ---- */
 
 @media (prefers-reduced-motion: reduce) {

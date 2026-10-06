@@ -1,29 +1,29 @@
-# BRANCH_STATUS.md — feat/home-redesign
+# BRANCH_STATUS.md — feat/longname-pr1
 
-**Branch:** `feat/home-redesign` (rebased onto `origin/main` @ `26acb2b` — PR #71 merged 2026-10-06 ~09:03 CDT; rebase was conflict-free, source files byte-identical pre/post rebase)
-**Task:** Redesign Meridian's home/edition picker with a distinctive "chart-room" identity. Home screen ONLY — gameplay screens untouched.
+**Branch:** `feat/longname-pr1` (off `origin/main` @ `a838fc6` — PR #72 merged 2026-10-06 ~10:29 CDT)
+**Task:** "The Cartographer's Plate" — PR1 Wrap foundation per `~/workspace/your_files/long-name-design-spec.md` §12.
+Doctrine: **names are the payload; containers flex, names never do.** No ellipsis, no clamping, anywhere.
 **Status:** 🟡 IN PROGRESS
 
-## Design: "The Chart Room"
-- **Type:** Fraunces (display, engraved-atlas serif) + Karla (body) + Space Mono (dossier labels). Google Fonts with display=swap + system fallbacks; offline build unaffected.
-- **Theme:** deep sea-chart ink + brass (dark) / expedition journal paper (light). Brass is the single sharp accent; signal red reserved for the GeoDetective "OPEN" stamp.
-- **Background:** full-viewport fixed layer — brass graticule, topographic contour SVG, vignette. No flat colors.
-- **Motion:** one orchestrated staggered entrance (110ms steps); card hover lift; stamp slam-in; `prefers-reduced-motion` fallbacks.
-- **Layout:** GeoDetective leads as a featured case-file dossier (keeps PR #71 unlimited copy: "🔎 Solve a mystery"/"▶️ Resume your case" + streak line); State/Country/Globe become numbered expeditions (01/02/03) with line icons; review deck becomes a dashed field-notes strip.
-- **Frozen:** all button accessible names, headings, difficulty group semantics, routing — E2E-safe.
+## Scope (nothing more, nothing less)
+1. New `.place-name` utility in `src/styles.css` per spec §3 (`overflow-wrap: break-word`, `word-break: normal`, `text-wrap: balance`, `line-height: 1.28`). No `hyphens: auto`, no `break-all`.
+2. Apply `.place-name` to: question-bubble name element (`src/components/question-bubble.tsx`), GeoDetective guess-list name span (`src/game/loop/LoopScreen.tsx` ~:632), bottom-sheet h2 (`LoopScreen.tsx` ~:697), reveal headings incl. ledger-TRUE-SPOT analog (`src/components/result-card.tsx` answer h2s + `pin-compare-line`, LoopReveal answer h2). Keep `title={placeName}` on name elements; no FIELD ENTRY tag (Veeresh: skip entirely).
+3. Delete the ONE existing `truncate` at `LoopScreen.tsx:632` (`items-baseline` → `items-start` on the guess row).
+4. Extend the existing no-clamp test gate (`question-bubble.test.ts`) to all four surfaces — zero ellipsis on names, labels, guesses, headings.
+5. E2E: fixture-driven spec using the real longest names from spec §11 (98-char worst case → 7-char Lincoln) asserting full names render with zero ellipsis and no horizontal overflow, at 360/768/1280 × light/dark × reduced-motion. No `text-overflow: ellipsis` on name elements. `data-name-tier` NOT asserted (PR2). Frozen E2E seams: `difficulty-chip`, `pin-compare-line`, `miss-headline`, `growth-line`, `score-breakdown`.
 
 ## What's done
-- [x] Atlas tokens in `src/styles.css` (dark + light + paper + night) + home component CSS
-- [x] `Choose`/`EditionCard` rewrite in `src/components/game-app.tsx` (native buttons, min 44–48px targets)
-- [x] Font links in `src/routes/__root.tsx`
-- [x] `npx tsc --noEmit` clean
+- [x] Clone + branch off `origin/main` @ `a838fc6`
 
 ## What's pending
-1. `npm test` full unit suite — DONE (716/716, re-verified after font change)
-2. `npm run build:pages` production build — DONE (green, fonts bundled to dist)
-3. Playwright E2E via VM lock — DONE: drilldown/pwa/tutorial/geodetective/difficulty-picker all green.
-   - Caught 2 real issues: (a) Google Fonts CDN failed through the VM proxy (ERR_TUNNEL_CONNECTION_FAILED) → fonts now SELF-HOSTED (7 latin woff2 in src/assets/fonts, @font-face in styles.css, zero runtime CDN dependency); (b) dossier was a `<section>`, spec filters `article` → dossier is now `<article>`. One flake (Easy-tier pin timing) passed on rerun.
-4. Screenshots — DONE: desktop 1280px (dark + light), mobile 360px (light).
-   Honest notes: dark chart-room and light journal both read well; brass graticule + contour lines subtle but present; dossier OPEN stamp lands; cards stack cleanly at 360px with no overflow; all buttons ≥44px. The fullPage capture shows a seam where the fixed bg ends — capture artifact only, the fixed layer always covers the real viewport. The first-run tutorial invite banner is still the old unstyled component (out of scope, separate component) — flag as follow-up polish.
-5. Open PR (base: main) — do NOT merge — DONE: https://github.com/veeresh-bikkaneti/Meridian/pull/72 (CI queued at open; Veeresh merges)
-6. AFTER PR #71 merges to main: rebase — DONE 2026-10-06 ~09:05 CDT (conflict-free; PR #71 merged as 26acb2b)
+1. Add `.place-name` utility to `src/styles.css`
+2. Apply to the four surfaces + delete `truncate` at `LoopScreen.tsx:632` + keep titles
+3. Extend `question-bubble.test.ts` no-clamp gate to all four surfaces
+4. Gates: `npx tsc --noEmit` clean · `npm test` green · `npm run build:pages` green
+5. Playwright E2E via VM lock (fixture-driven, real longest names, 360/768/1280 × light/dark × reduced-motion)
+6. Open PR (base: `main`, head: `feat/longname-pr1`) — do NOT merge; Veeresh merges
+
+## Notes
+- The old `feat/home-redesign` BRANCH_STATUS content is superseded by this file.
+- `question-bubble.tsx` at this base has NO `truncate` (already removed upstream); PR1 only adds the `place-name` class there.
+- The reveal ledger (`<dl>`) does not exist yet — it is a PR2 deliverable. PR1 applies `place-name` to the current reveal name surfaces (answer h2s + `pin-compare-line` in `result-card.tsx`, answer h2 in `LoopReveal`).
