@@ -1,27 +1,28 @@
-# BRANCH_STATUS.md — fix/audio-rework
+# BRANCH_STATUS.md — fix-dep-69 (PR #69)
 
-## Veeresh's requirements (2026-10-06)
-1. [ ] TURN OFF globe spin swish — remove startGlobeSpin/stopGlobeSpin calls (keep API)
-2. [ ] NEW: playEditionEntrance() — epic gladiator/Colosseum brass horn fanfare on edition select
-3. [ ] FIX: wire playWin/playLose to guess outcomes in regular game (currently win only on first-ever, lose never)
-4. [ ] Make win/lose MORE Mario-like: bolder ascending fanfare (right), distinctive descending "death" tune (wrong). Original melodies only.
+## Objective
+Fix and merge dependabot PR #69 (source-map-js 1.2.1 → 1.2.2).
 
-## Work items
-- [x] sfx.ts: add playEditionEntrance(), rewrite playWin/playLose
-- [x] satellite-map.tsx: spin sound triggers removed (safeguard stops kept)
-- [x] game-app.tsx: entrance fanfare in openRun, win/lose on reveal complete via dropHitRef
-- [x] Unit tests: sfx.test.ts 19/19 pass
-- [ ] E2E verification
-- [ ] tsc clean, full suite green
-- [ ] Open PR
+## Root cause
+CI failed at `npm ci` with EUSAGE: package-lock.json out of sync —
+missing `lru-cache@11.5.3`. The dependabot branch was based on stale main
+(a66a416) and the lock file wasn't regenerated after main moved on.
 
-## Notes
-- "Mario-like" = STYLE (bouncy arcade), NOT Nintendo melodies. All original.
-- All sounds respect meridian.sound mute gate.
+## Fix
+- Merged origin/main into the branch (no conflicts beyond BRANCH_STATUS.md).
+- Ran `npm install --package-lock-only` to sync the lock file.
+  - Added missing `lru-cache@11.5.3` entry.
+  - source-map-js remains at 1.2.2 (the dependabot bump is intact).
 
-## 2026-10-06 23:00 — PR #81 opened
-- https://github.com/veeresh-bikkaneti/Meridian/pull/81
-- Unit: 19/19 sfx tests pass, full suite fail 0
-- tsc clean
-- E2E: 6/7 game-sfx pass; 'NO loop texture' test failing (investigating — source change verified in build)
-- Ready for Veeresh's review/merge decision
+## Verification
+- `npx tsc --noEmit`: clean.
+- `npm ci --dry-run`: succeeds (no EUSAGE).
+- Change is lock-file only + main merge; no source code changes.
+
+## Status
+- [x] Root cause identified
+- [x] Lock file synced
+- [x] tsc clean
+- [ ] Push and wait for CI green
+- [ ] Architect sign-off
+- [ ] Merge
