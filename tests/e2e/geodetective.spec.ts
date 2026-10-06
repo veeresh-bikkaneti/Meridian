@@ -2,12 +2,15 @@ import { test, expect } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * GeoDetective Phase 3 deploy-gate E2E.
+ * GeoDetective "Detective's Atlas" (Option A) deploy-gate E2E.
  *
  * Deterministic days via the `?loop-date=` seam (inert in production):
  *   2026-10-03 -> clue 218 -> Ankara (geonames:323786)
  *   2026-10-04 -> clue 219 -> Tarija (geonames:3903320)
  *
+ * The map is the primary guess surface: the jump search flies the camera
+ * and opens the confirm sheet; tapping the map resolves the nearest
+ * labeled place through the E2E seam (`__loopMap` on the map element).
  * The built Pages artifact is served from disk (see helpers.ts); the loop
  * data (manifest, clues, names index) ships in dist/client/loop/.
  */
@@ -32,24 +35,54 @@ async function openLoop(page: import("playwright/test").Page, loopDate: string) 
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({ timeout: 30_000 });
   // The day's first clue card is visible once the clue file loads.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
+  // The Detective's Atlas map is the primary guess surface.
+  await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
 }
 
-function guessBox(page: import("playwright/test").Page) {
-  return page.getByRole("combobox", { name: "Guess the place" });
+function searchBox(page: import("playwright/test").Page) {
+  return page.getByRole("combobox", { name: "Search the map" });
 }
 
-/** Type a query, propose the first matching suggestion, then commit the guess. */
-async function guess(page: import("playwright/test").Page, query: string) {
-  const box = guessBox(page);
+/**
+ * Jump-search to a place (flies the camera + opens the confirm sheet),
+ * then confirm. The jump never burns a guess by itself — only the sheet's
+ * button does.
+ */
+async function guessViaMap(page: import("playwright/test").Page, query: string) {
+  const box = searchBox(page);
   await box.click();
   await box.fill(query);
   const option = page.getByRole("option").first();
   // The 11 MB name index parses on first focus; allow headroom on slow VMs.
   await expect(option).toBeVisible({ timeout: 30_000 });
   await option.click();
-  // Propose -> commit: tapping a suggestion only fills the input and arms
-  // the Guess button; the button burns the guess.
-  await page.getByRole("button", { name: "Guess", exact: true }).click();
+  // Jump auto-selects: the confirm bottom sheet opens.
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await page.getByRole("button", { name: "Guess this place" }).click();
+}
+
+/** Drive the map camera deterministically through the E2E seam. */
+async function jumpCamera(
+  page: import("playwright/test").Page,
+  lon: number,
+  lat: number,
+  zoom: number,
+) {
+  await page.evaluate(
+    ([lo, la, z]) => {
+      const el = document.querySelector('[data-testid="loop-map"]') as unknown as {
+        __loopMap: { jumpTo(o: unknown): void };
+      };
+      el.__loopMap.jumpTo({ center: [lo, la], zoom: z });
+    },
+    [lon, lat, zoom],
+  );
+}
+
+/** Tap the map canvas center (resolves the nearest labeled place). */
+async function tapMapCenter(page: import("playwright/test").Page) {
+  await page.locator('[data-testid="loop-map"] canvas').click();
 }
 
 /** Click "Share result" (clipboard path) and return the shared text. */
@@ -63,12 +96,22 @@ async function guessCount(page: import("playwright/test").Page): Promise<number>
   return page.getByRole("region", { name: "Your guesses" }).getByRole("listitem").count().catch(() => 0);
 }
 
+/** Rendered ring features on the deduction surface. */
+async function ringFeatureCount(page: import("playwright/test").Page): Promise<number> {
+  return page.evaluate(() => {
+    const el = document.querySelector('[data-testid="loop-map"]') as unknown as {
+      __loopMap: { queryRenderedFeatures(o: unknown): unknown[] };
+    };
+    return el.__loopMap.queryRenderedFeatures({ layers: ["loop-ring-line"] }).length;
+  });
+}
+
 test("loop-date seam pins the day; UTC date header matches", async ({ page }) => {
   await openLoop(page, "2026-10-03");
   await expect(page.getByText("October 3 · UTC")).toBeVisible();
 });
 
-test("win path: clues unlock in order, correct guess wins, share text formats", async ({
+test("win path: clues unlock in order, map guess wins, share text formats", async ({
   page,
 }) => {
   await openLoop(page, "2026-10-03"); // Ankara
@@ -81,12 +124,14 @@ test("win path: clues unlock in order, correct guess wins, share text formats", 
     "Unlocks after your next guess.",
   );
 
-  // Wrong guess 1: Paris. Far from Ankara -> red square in share.
-  await guess(page, "paris");
+  // Wrong guess 1: Paris via the map. Far from Ankara -> red square in share.
+  await guessViaMap(page, "paris");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   await expect(
     page.getByRole("region", { name: "Your guesses" }).getByText("Paris, France"),
   ).toBeVisible();
+  // The deduction surface drew the miss ring.
+  expect(await ringFeatureCount(page)).toBeGreaterThan(0);
 
   // Clue 2 unlocked after the first guess; clue 3 still locked.
   await expect(
@@ -97,13 +142,14 @@ test("win path: clues unlock in order, correct guess wins, share text formats", 
   );
 
   // Duplicate: Paris again must not consume a guess.
-  await guess(page, "paris");
+  await guessViaMap(page, "paris");
+  // The confirm still opens (the sheet doesn't know); confirming is rejected.
   await expect(page.getByText(/You already guessed Paris/)).toBeVisible();
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   expect(await guessCount(page)).toBe(1);
 
   // Correct guess: Ankara.
-  await guess(page, "ankara");
+  await guessViaMap(page, "ankara");
   await expect(page.getByRole("heading", { name: "Ankara, Türkiye" })).toBeVisible();
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
   await expect(page.getByText("Solved in 2 guesses.")).toBeVisible();
@@ -118,10 +164,50 @@ test("win path: clues unlock in order, correct guess wins, share text formats", 
   expect(share).toContain("🟥🟩⬜⬜⬜ solved in 2");
 });
 
-test("reload mid-game restores the day state", async ({ page }) => {
+test("map tap selects the nearest labeled place; sheet confirm burns the guess", async ({
+  page,
+}) => {
   await openLoop(page, "2026-10-03");
-  await guess(page, "tokyo");
+
+  // Fly to Paris deterministically, then tap the canvas center.
+  await jumpCamera(page, 2.35, 48.85, 10);
+  await tapMapCenter(page);
+
+  // The confirm sheet names the resolved place; nothing guessed yet.
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toContainText("Paris", { timeout: 15_000 });
+  expect(await guessCount(page)).toBe(0);
+
+  // Cancel burns nothing.
+  await page.getByRole("button", { name: "Not this one" }).click();
+  await expect(dialog).toHaveCount(0);
+  expect(await guessCount(page)).toBe(0);
+
+  // Tap again, confirm this time.
+  await tapMapCenter(page);
+  await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
+  await page.getByRole("button", { name: "Guess this place" }).click();
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  expect(await guessCount(page)).toBe(1);
+});
+
+test("ocean tap selects nothing and hints", async ({ page }) => {
+  await openLoop(page, "2026-10-03");
+
+  // Mid-Atlantic at low zoom: no labeled place within tap range.
+  await jumpCamera(page, -30, 30, 3);
+  await tapMapCenter(page);
+
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.getByText(/isn’t a labeled place/)).toBeVisible();
+  expect(await guessCount(page)).toBe(0);
+});
+
+test("reload mid-game restores the day state and the rings", async ({ page }) => {
+  await openLoop(page, "2026-10-03");
+  await guessViaMap(page, "tokyo");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  expect(await ringFeatureCount(page)).toBeGreaterThan(0);
 
   await page.reload();
   // Reload-restore: the in-progress day comes back, not a reset.
@@ -131,12 +217,12 @@ test("reload mid-game restores the day state", async ({ page }) => {
   await expect(
     page.getByRole("region", { name: "Your guesses" }).getByText("Tokyo, Japan"),
   ).toBeVisible();
+  // The ring repaints from the persisted guess coordinates.
+  expect(await ringFeatureCount(page)).toBeGreaterThan(0);
   // Clue 2 is still unlocked after the restore.
   await expect(
     page.getByRole("article", { name: /Clue 2: Climate/ }).getByText("Unlocks after"),
   ).toHaveCount(0);
-
-  // A fresh browser context on the same pinned day starts clean.
 });
 
 test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async ({
@@ -145,7 +231,7 @@ test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async 
   await openLoop(page, "2026-10-04"); // Tarija
 
   for (const q of ["paris", "tokyo", "sydney", "cairo", "new york"]) {
-    await guess(page, q);
+    await guessViaMap(page, q);
   }
 
   await expect(page.getByText("Out of guesses")).toBeVisible();
@@ -166,14 +252,14 @@ test("loss path: 5 wrong guesses, giveaway shown, share says not solved", async 
   expect(share).toMatch(/🟥🟥🟥🟥🟥 not solved/);
 });
 
-test("unknown guess consumes nothing; no-match message is friendly", async ({ page }) => {
+test("unknown search consumes nothing; no-match message is friendly", async ({ page }) => {
   await openLoop(page, "2026-10-03");
 
-  const box = guessBox(page);
+  const box = searchBox(page);
   await box.click();
   await box.fill("xqzzy-not-a-place");
   await expect(page.getByText(/No places match/)).toBeVisible();
-  // Enter with no suggestions must not submit.
+  // Enter with no suggestions must not submit (and there is no Guess button).
   await box.press("Enter");
   await expect(page.getByText("Guess 1 of 5")).toBeVisible();
   expect(await guessCount(page)).toBe(0);
@@ -181,7 +267,7 @@ test("unknown guess consumes nothing; no-match message is friendly", async ({ pa
 
 test("explicit leave stays on the menu after reload (no hijack)", async ({ page }) => {
   await openLoop(page, "2026-10-03");
-  await guess(page, "paris");
+  await guessViaMap(page, "paris");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
 
   // Leave explicitly, then reload: the menu stays, the day is not hijacked.
@@ -191,8 +277,9 @@ test("explicit leave stays on the menu after reload (no hijack)", async ({ page 
   await expect(page.getByRole("button", { name: "Solve today's mystery" })).toBeVisible({
     timeout: 30_000,
   });
-  // The loop screen (not the menu's edition card) is closed: no guess input.
-  await expect(page.getByRole("combobox", { name: "Guess the place" })).toHaveCount(0);
+  // The loop screen (not the menu's edition card) is closed: no map, no search.
+  await expect(page.getByTestId("loop-map")).toHaveCount(0);
+  await expect(page.getByRole("combobox", { name: "Search the map" })).toHaveCount(0);
 
   // The day state itself survived — reopening resumes mid-game.
   await page.getByRole("button", { name: "Solve today's mystery" }).click();
@@ -204,7 +291,7 @@ test("explicit leave stays on the menu after reload (no hijack)", async ({ page 
 
 test("loop state is namespaced: endless-run keys untouched", async ({ page }) => {
   await openLoop(page, "2026-10-03");
-  await guess(page, "paris");
+  await guessViaMap(page, "paris");
 
   const keys = await page.evaluate(() => Object.keys(localStorage));
   expect(keys).toContain("meridian.loop.v1");
@@ -214,4 +301,6 @@ test("loop state is namespaced: endless-run keys untouched", async ({ page }) =>
   const store = await page.evaluate(() => JSON.parse(localStorage.getItem("meridian.loop.v1")!));
   expect(store["2026-10-03"].guesses).toHaveLength(1);
   expect(store["2026-10-03"].status).toBe("playing");
+  // Map-era guesses persist coordinates for the rings.
+  expect(store["2026-10-03"].guesses[0].lon).toBeCloseTo(2.35, 1);
 });
