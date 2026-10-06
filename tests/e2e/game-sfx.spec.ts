@@ -254,10 +254,10 @@ test("geodetective: win arpeggio fires on a solved mystery", async ({ page }) =>
     timeout: 15_000,
   });
 
-  // Win: deterministic rising major arpeggio C5→E5→G5→C6 + 2093 Hz shimmer.
-  // (The winning guess also draws its ring: 1568 Hz ping + 3136 shimmer.)
+  // Win: Mario-style ascending run C5→E5→G5→C6→E6 + triumphant chord.
+  // (The winning guess also draws its ring: 1568 Hz ping.)
   const freshFreqs = (await oscRecords(page)).slice(before.length).map((o) => o.freq);
-  for (const f of [523.25, 659.25, 783.99, 1046.5, 2093]) {
+  for (const f of [523.25, 659.25, 783.99, 1046.5, 1318.5]) {
     expect(freshFreqs).toContain(f);
   }
   expect(freshFreqs).toContain(1568); // ring reveal on the exact guess
@@ -286,10 +286,10 @@ test("geodetective: lose sting after five misses; next-case deal snaps", async (
   }
 
   await expect(page.getByText("Out of guesses")).toBeVisible({ timeout: 15_000 });
-  // Lose: the muted descending sting — deterministic 440 → 329.63 Hz.
+  // Lose: the Mario-style descending run — E5→Eb5→D5→Db5→C5.
   const stingFreqs = (await oscRecords(page)).map((o) => o.freq);
-  expect(stingFreqs).toContain(440);
-  expect(stingFreqs).toContain(329.63);
+  expect(stingFreqs).toContain(659.25);
+  expect(stingFreqs).toContain(523.25);
 
   // Next mystery: the deal snaps (cached noise buffer source + 196 Hz tick).
   const srcBefore = await srcCount(page);
