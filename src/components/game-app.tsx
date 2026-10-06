@@ -61,6 +61,7 @@ import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
+import { CometMascot } from "./comet-mascot";
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -1545,6 +1546,7 @@ function Choose({
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
+    <>
     <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
       <AtlasBackdrop />
       {notice}
@@ -1691,6 +1693,11 @@ function Choose({
         </section>
       ) : null}
     </main>
+    {/* Comet hosts the Chart Room home page only — never in-game, never in
+        GeoDetective, never in review. The fixed wrapper is pointer-events
+        gated so it never blocks page scroll or taps. */}
+    <CometMascot />
+    </>
   );
 }
 
