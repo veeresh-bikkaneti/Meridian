@@ -340,3 +340,48 @@ test("full session: deal → guesses → win → next deal never repeats in-cycl
   assert.equal(next.reshuffled, true);
   assert.equal(next.deck.cycle, 2);
 });
+
+test("completePuzzle: last undealt case of the cycle flags completedCycle (fires once)", () => {
+  // Deck of one: dealing it empties the deck, so completing it ends the cycle.
+  const store: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(1),
+    streak: 4,
+  };
+  const dealt = dealPuzzleIndex(store.deck, 1);
+  assert.equal(dealt.deck.deck.length, 0);
+  const finished = completePuzzle(
+    { ...store, deck: dealt.deck },
+    wonPuzzle(dealt.index, dealt.deck.cycle),
+    "2026-10-06",
+  );
+  assert.equal(finished.current!.completedCycle, true);
+  assert.equal(finished.deck.cycleCompleted, 1);
+  // Mid-cycle completion does NOT flag: only the final case carries it.
+  const mid = completePuzzle(
+    { ...freshLoopUnlimitedStore(10), deck: { deck: [1, 2, 3], cycle: 1, cycleCompleted: 6 } },
+    wonPuzzle(0, 1),
+    "2026-10-06",
+  );
+  assert.equal(mid.current!.completedCycle, false);
+});
+
+test("completePuzzle: full 387 cycle flags exactly one puzzle", () => {
+  let store = freshLoopUnlimitedStore(387);
+  let flagged = 0;
+  for (let i = 0; i < 387; i++) {
+    const dealt = dealPuzzleIndex(store.deck, 387);
+    store = { ...store, deck: dealt.deck };
+    store = completePuzzle(store, wonPuzzle(dealt.index, dealt.deck.cycle), "2026-10-06");
+    if (store.current!.completedCycle) flagged++;
+  }
+  assert.equal(flagged, 1);
+  assert.equal(store.deck.deck.length, 0);
+});
+
+test("freshLoopPuzzleState: completedCycle starts false; validator tolerates its absence", () => {
+  assert.equal(freshLoopPuzzleState(5, 1).completedCycle, false);
+  const legacy = { ...freshLoopPuzzleState(5, 1) };
+  delete (legacy as Partial<LoopPuzzleState>).completedCycle;
+  assert.equal(isLoopPuzzleState(legacy), true);
+  assert.equal(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(4), current: legacy }), true);
+});

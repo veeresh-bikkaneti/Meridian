@@ -100,7 +100,9 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     (s.cluesRevealed as number) >= 1 &&
     (s.cluesRevealed as number) <= LOOP_MAX_GUESSES &&
     (s.completedAt === null || isUtcDateKey(s.completedAt)) &&
-    (s.streakEndedAt === null || isNonNegativeInt(s.streakEndedAt))
+    (s.streakEndedAt === null || isNonNegativeInt(s.streakEndedAt)) &&
+    // completedCycle is new: absent on pre-celebration stores, boolean after.
+    (s.completedCycle === undefined || typeof s.completedCycle === "boolean")
   );
 }
 
@@ -165,6 +167,7 @@ export function freshLoopPuzzleState(index: number, cycle: number): LoopPuzzleSt
     cluesRevealed: 1,
     completedAt: null,
     streakEndedAt: null,
+    completedCycle: false,
   };
 }
 
@@ -229,6 +232,11 @@ export function completePuzzle(
   completedAt: string,
 ): LoopUnlimitedStore {
   const won = finished.status === "won";
+  // The deck shrinks as indexes are dealt, so an empty deck here means this
+  // was the last undealt case of the cycle — the reveal celebrates exactly
+  // once per cycle. (Seam-pinned plays never pop the deck, so they can't
+  // trip this.)
+  const completedCycle = store.deck.deck.length === 0;
   return {
     ...store,
     streak: won ? store.streak + 1 : 0,
@@ -241,6 +249,7 @@ export function completePuzzle(
       ...finished,
       completedAt,
       streakEndedAt: won ? null : store.streak,
+      completedCycle,
     },
   };
 }

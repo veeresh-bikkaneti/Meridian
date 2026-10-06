@@ -53,6 +53,11 @@ export interface LoopPuzzleState extends LoopPuzzleProgress {
   /** The streak value before a loss reset it; null unless status is lost.
    * Lets the loss reveal name the ended streak even after a reload. */
   streakEndedAt: number | null;
+  /** True when finishing this mystery completed the deck's cycle — i.e.
+   * it was the last undealt case of the cycle. The reveal uses it for the
+   * one-time "you closed every case" celebration. Exactly one finished
+   * puzzle per cycle carries true, so it fires once per cycle. */
+  completedCycle: boolean;
 }
 
 /** The shuffled deck: indexes in deal order, head = next to deal. */

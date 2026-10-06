@@ -429,6 +429,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
           puzzle={current}
           streak={store.streak}
           caseNo={caseNo}
+          cycleCompleted={store.deck.cycleCompleted}
           reduced={reduced}
           notice={pickNotice}
           revealAnnouncement={revealAnnouncement}
@@ -464,6 +465,7 @@ function LoopGame({
   puzzle,
   streak,
   caseNo,
+  cycleCompleted,
   reduced,
   notice,
   revealAnnouncement,
@@ -475,6 +477,7 @@ function LoopGame({
   puzzle: LoopPuzzleState;
   streak: number;
   caseNo: number;
+  cycleCompleted: number;
   reduced: boolean;
   notice: string | null;
   revealAnnouncement: string | null;
@@ -650,6 +653,7 @@ function LoopGame({
           puzzle={puzzle}
           streak={streak}
           caseNo={caseNo}
+          cycleCompleted={cycleCompleted}
           reduced={reduced}
           revealAnnouncement={revealAnnouncement}
           onNextMystery={onNextMystery}
@@ -779,6 +783,7 @@ function LoopReveal({
   puzzle,
   streak,
   caseNo,
+  cycleCompleted,
   reduced,
   revealAnnouncement,
   onNextMystery,
@@ -788,6 +793,8 @@ function LoopReveal({
   puzzle: LoopPuzzleState;
   streak: number;
   caseNo: number;
+  /** Mysteries finished in the current cycle — names the celebration count. */
+  cycleCompleted: number;
   reduced: boolean;
   revealAnnouncement: string | null;
   onNextMystery: () => void;
@@ -823,6 +830,20 @@ function LoopReveal({
         aria-label={won ? "You won" : "Out of guesses"}
         className="rounded-2xl border border-line bg-surface p-5"
       >
+        {puzzle.completedCycle ? (
+          <div
+            role="status"
+            aria-label="Cycle complete celebration"
+            className="mb-4 rounded-xl border border-line bg-bg p-4 text-center"
+          >
+            <p className="text-lg font-semibold text-fg">
+              🏆 You closed all {cycleCompleted} cases, detective!
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              Every mystery in the deck, solved or survived. A fresh deck is on your desk.
+            </p>
+          </div>
+        ) : null}
         <p className="text-[11px] tracking-wider text-muted uppercase">
           {won ? "🎯 You found it!" : "Out of guesses"}
         </p>
@@ -869,7 +890,7 @@ function LoopReveal({
           </div>
         </section>
         <div className="mt-4">
-          <ShareLoop puzzle={puzzle} />
+          <ShareLoop puzzle={puzzle} streak={streak} />
         </div>
         <div className="mt-5 flex flex-col gap-2">
           <Button
@@ -948,7 +969,7 @@ function useAnswerName(
   return answer;
 }
 
-function ShareLoop({ puzzle }: { puzzle: LoopPuzzleState }) {
+function ShareLoop({ puzzle, streak }: { puzzle: LoopPuzzleState; streak: number }) {
   // The share date is the UTC completion date stamped when the mystery
   // ended — not the deal date, not the clock at share time.
   const dateKey = puzzle.completedAt ?? calendarDate("UTC", new Date());
@@ -956,6 +977,7 @@ function ShareLoop({ puzzle }: { puzzle: LoopPuzzleState }) {
     dateKey,
     status: puzzle.status,
     guesses: puzzle.guesses,
+    streak,
   });
 
   return (
