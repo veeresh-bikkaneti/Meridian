@@ -135,8 +135,9 @@ test("review reframes the map per card: Nebraska flat, not a stuck globe", async
   await seedDeck(page);
   await startReview(page);
 
-  // Card 1 (Lincoln, Nebraska): flat framing on Nebraska.
-  await expect(page.getByText("Lincoln", { exact: true }).first()).toBeVisible({
+  // Card 1 (Auburn, Nebraska — dueEntries sorts by place.id, so Auburn
+  // deals first): flat framing on Nebraska.
+  await expect(page.getByText("Auburn", { exact: true }).first()).toBeVisible({
     timeout: 15_000,
   });
   let c = await mapCenter(page);
@@ -153,11 +154,11 @@ test("review reframes the map per card: Nebraska flat, not a stuck globe", async
     timeout: 10_000,
   });
 
-  // Card 2 (Auburn, Nebraska): the map must reframe to Nebraska again —
+  // Card 2 (Lincoln, Nebraska): the map must reframe to Nebraska again —
   // not sit on the globe it may have visited during the reveal beat.
   await clickNextPlace(page);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
-  await expect(page.getByText("Auburn", { exact: true }).first()).toBeVisible({
+  await expect(page.getByText("Lincoln", { exact: true }).first()).toBeVisible({
     timeout: 15_000,
   });
   await waitForMapSettled(page);
