@@ -35,11 +35,24 @@ export function destination(lon: number, lat: number, bearingDeg: number, distKm
   return [lonDeg, (lat2 * 180) / Math.PI];
 }
 
-/** Circle polygon centered on (lon, lat) with radiusKm radius. */
+/** Circle polygon centered on (lon, lat) with radiusKm radius.
+ *
+ * Longitudes are unwrapped (kept continuous, allowed outside ±180) so a
+ * planet-scale ring doesn't tear at the antimeridian: `destination`
+ * normalizes to [-180, 180], which turns a big circle into a polygon with
+ * a 350°+ jump that the tile worker silently drops (observed: an 8,764 km
+ * ring produced zero features). The renderer wraps out-of-range
+ * longitudes correctly.
+ */
 export function ringPolygon(lon: number, lat: number, radiusKm: number, steps = 72): GeoJSON.Polygon {
   const ring: LngLat[] = [];
+  let prevLon = lon;
   for (let i = 0; i <= steps; i++) {
-    ring.push(destination(lon, lat, (i * 360) / steps, radiusKm));
+    let [lo, la] = destination(lon, lat, (i * 360) / steps, radiusKm);
+    while (lo - prevLon > 180) lo -= 360;
+    while (lo - prevLon < -180) lo += 360;
+    ring.push([lo, la]);
+    prevLon = lo;
   }
   return { type: "Polygon", coordinates: [ring] };
 }

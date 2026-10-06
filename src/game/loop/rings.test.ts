@@ -28,6 +28,25 @@ test("ringPolygon closes and has the right radius", () => {
   }
 });
 
+test("ringPolygon unwraps longitudes across the antimeridian", () => {
+  // Tokyo-scale miss: the 8,764 km ring wraps the planet. Without
+  // unwrapping, destination()'s [-180, 180] normalization tears the
+  // polygon (350°+ jump) and the tile worker drops it (zero features).
+  const poly = ringPolygon(139.6917, 35.6895, 8764.06);
+  const ring = poly.coordinates[0]!;
+  let maxJump = 0;
+  for (let i = 1; i < ring.length; i++) {
+    maxJump = Math.max(maxJump, Math.abs(ring[i]![0] - ring[i - 1]![0]));
+  }
+  assert.ok(maxJump < 30, `max longitude jump ${maxJump}° (torn ring)`);
+  // Still an exact-km circle: every point is 8,764 km from Tokyo
+  // (distanceKm handles out-of-range longitudes).
+  for (const pt of ring) {
+    const d = distanceKm([139.6917, 35.6895], pt as [number, number]);
+    assert.ok(Math.abs(d - 8764.06) < 5, `ring point ${d} km`);
+  }
+});
+
 test("guessArrow points along the bearing and scales with distance", () => {
   const { shaft, head } = guessArrow(0, 0, 90, 1000);
   // Shaft runs due east, 30% of the miss distance.
