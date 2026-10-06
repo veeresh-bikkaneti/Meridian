@@ -1,0 +1,40 @@
+# Re-runs main-branch CI runs that GitHub's own infrastructure starved of
+# runners — never touches genuine code failures or manual cancels.
+#
+# Incident: 2026-10-05, Node.js CI + Pages runs sat queued ~15 min
+# ("The job was not acquired by Runner of type hosted even after multiple
+# attempts") and were auto-cancelled with zero code fault. The watchdog finds
+# such runs on main and re-runs them once, with guards:
+#   - only runs whose check-run annotations contain the runner-acquisition message
+#   - a run with ANY job conclusion=failure is never re-run (genuine failure)
+#   - a cancelled run without that annotation is never re-run (manual cancel)
+#   - max 2 auto re-runs per run (attempt guard in scripts/ci-watchdog.sh)
+#
+# No new third-party actions: gh CLI (preinstalled on runners) + GITHUB_TOKEN.
+
+name: CI runner-capacity watchdog
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: ci-watchdog
+  cancel-in-progress: true
+
+jobs:
+  rerun-starved:
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Re-run main-branch runs starved of runners
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: bash scripts/ci-watchdog.sh

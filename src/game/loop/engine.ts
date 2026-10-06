@@ -2,14 +2,14 @@ import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import { evaluateGuess } from "./evaluate.ts";
 import {
   LOOP_MAX_GUESSES,
-  type LoopDayState,
   type LoopGuess,
+  type LoopPuzzleProgress,
   type Octant,
 } from "./types.ts";
 
 /**
- * The GeoDetective's 5-guess state machine. Pure functions: given a day
- * state and a guess, produce the next day state. The screen persists the
+ * The GeoDetective's 5-guess state machine. Pure functions: given a puzzle
+ * state and a guess, produce the next puzzle state. The screen persists the
  * result via the loop store.
  */
 
@@ -58,6 +58,8 @@ export function buildLoopGuess(
 ): LoopGuess {
   return {
     name: pick.name,
+    lon: pick.lon,
+    lat: pick.lat,
     ...evaluateGuess(
       { id: pick.placeId, lon: pick.lon, lat: pick.lat },
       target,
@@ -70,16 +72,16 @@ export function buildLoopGuess(
  * Append a guess to the day state. Win when the guess's placeId matches
  * the clue file's target placeId; loss when all 5 guesses are used.
  * `cluesRevealed` tracks guesses: min(5, 1 + guesses.length) — one new
- * clue card per guess. Submitting on a finished day, past the guess cap,
+ * clue card per guess. Submitting on a finished mystery, past the guess cap,
  * or a place that was already guessed returns the state unchanged (a
  * repeated pick is never a wasted guess). Warmer is re-derived from the
  * previous guess so the engine — not the input — is authoritative.
  */
 export function submitGuess(
-  state: LoopDayState,
+  state: LoopPuzzleProgress,
   guess: LoopGuess,
   targetPlaceId: string,
-): LoopDayState {
+): LoopPuzzleProgress {
   if (state.status !== "playing") return state;
   if (state.guesses.length >= LOOP_MAX_GUESSES) return state;
   if (state.guesses.some((g) => g.placeId === guess.placeId)) return state;

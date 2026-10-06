@@ -120,11 +120,13 @@ test("country (Italy): Sardinia pin, Calabria truth — the card names both regi
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
+  // PR2: the ledger is a real <dl> (DT/DD), not the flat "Your pin: … ·
+  // True spot: …" text. Assert the structured sides.
   // The pin town is whatever pool place is nearest the tap (integer-rounded
   // screen point); the regions and the "near" qualifier are the assertions.
-  await expect(line).toHaveText(
-    /Your pin: near .+, Sardinia · True spot: Catanzaro, Calabria/,
-  );
+  const dds = line.locator("dd");
+  await expect(dds.nth(0)).toHaveText(/near .+, Sardinia/);
+  await expect(dds.nth(1)).toHaveText(/Catanzaro, Calabria/);
 });
 
 test("country (Italy): aborted admin-1 chunk falls back to the 'near' line", async ({
@@ -157,11 +159,12 @@ test("country (Italy): aborted admin-1 chunk falls back to the 'near' line", asy
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
+  // PR2: the ledger is a real <dl> (DT/DD), not the flat text.
   // The pin town is whatever pool place is nearest the tap (integer-rounded
   // screen point); the regions and the "near" qualifier are the assertions.
-  await expect(line).toHaveText(
-    /Your pin: near .+, Sardinia · True spot: Catanzaro, Calabria/,
-  );
+  const dds2 = line.locator("dd");
+  await expect(dds2.nth(0)).toHaveText(/near .+, Sardinia/);
+  await expect(dds2.nth(1)).toHaveText(/Catanzaro, Calabria/);
 });
 
 test("country (India): Maharashtra pin, Karnataka truth — never dropped", async ({
@@ -195,11 +198,12 @@ test("country (India): Maharashtra pin, Karnataka truth — never dropped", asyn
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
+  // PR2: the ledger is a real <dl> (DT/DD), not the flat text.
   // The pin town is whatever pool place is nearest the tap (integer-rounded
   // screen point); the regions and the "near" qualifier are the assertions.
-  await expect(line).toHaveText(
-    /Your pin: near .+, Maharashtra · True spot: Bengaluru, Karnataka/,
-  );
+  const dds3 = line.locator("dd");
+  await expect(dds3.nth(0)).toHaveText(/near .+, Maharashtra/);
+  await expect(dds3.nth(1)).toHaveText(/Bengaluru, Karnataka/);
 });
 
 test("globe: pin and truth in two different countries — suffixes on both sides", async ({
@@ -237,8 +241,10 @@ test("globe: pin and truth in two different countries — suffixes on both sides
   await expect(line).toBeVisible({ timeout: 15_000 });
   // Symmetric country-level by design (Veeresh, 2026-10-05): the pin town
   // is whatever pool place is nearest the tap, but the line names only
-  // the countries.
-  await expect(line).toHaveText("Your pin: Spain · True spot: Hungary");
+  // the countries. PR2: the ledger is a real <dl> (DT/DD).
+  const dds4 = line.locator("dd");
+  await expect(dds4.nth(0)).toHaveText("Spain");
+  await expect(dds4.nth(1)).toHaveText("Hungary");
 });
 
 test("country (Italy): ocean pin — no line, fail closed", async ({ page }) => {
@@ -330,5 +336,6 @@ test("state (Nebraska): regression — 'Right state, wrong town!' unchanged", as
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  await expect(line).toHaveText("Right state, wrong town!");
+  // PR2: the ledger is a real <dl>; the verdict text is in the first DD.
+  await expect(line.locator("dd").nth(0)).toHaveText("Right state, wrong town!");
 });

@@ -182,6 +182,20 @@ export default defineConfig({
         reducedMotion: "reduce",
       },
     },
+    {
+      name: "game-sfx",
+      testMatch: /game-sfx\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
+      name: "celebration",
+      testMatch: /celebration\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
   ],
   reporter: [
     ["list"],

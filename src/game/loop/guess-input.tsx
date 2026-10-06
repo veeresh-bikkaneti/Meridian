@@ -1,7 +1,6 @@
 import { useId, useMemo, useRef, useState } from "react";
 import type { JSX, KeyboardEvent } from "react";
 import type { LoopNameEntry } from "./types.ts";
-import { Button } from "@/components/ui/button";
 import {
   displayLoopName,
   fetchLoopIndex,
@@ -18,30 +17,32 @@ export { normalizeLoopName } from "./evaluate.ts";
 type LoadState = "idle" | "loading" | "ready" | "error";
 
 /**
- * Constrained typeahead for the GeoDetective edition (WAI-ARIA 1.2 combobox).
+ * Camera-jump search for the GeoDetective "Detective's Atlas" map
+ * (WAI-ARIA 1.2 combobox).
  *
  * - The name index (public/loop/names.json) is fetched lazily on first
  *   focus and never ships in the main bundle.
  * - Suggestions match every query word against "name + region", ranked
  *   exact-name > word-boundary > substring > region-only, then population;
  *   capped at 8, with the pre-cap total shown ("8 of 65 — keep typing").
- * - Propose -> commit: tapping a suggestion or pressing Enter only PROPOSES
- *   (fills the input, arms the Guess button); the Guess button commits the
- *   guess. A mis-tap never burns one of the five guesses.
- * - Keyboard: ArrowDown/ArrowUp move the active option, Enter proposes the
+ * - Picking a suggestion (tap or Enter) flies the map camera there via
+ *   onJump and never submits a guess — there is no Guess button. The
+ *   bottom sheet confirms the guess; a mis-tap never burns one of the five.
+ * - Keyboard: ArrowDown/ArrowUp move the active option, Enter jumps to the
  *   active option (or the top suggestion when none is active), Escape
  *   closes the listbox.
- * - Free text with no match shows a friendly inline message and never
- *   arms the Guess button.
+ * - Free text with no match shows a friendly inline message and jumps nowhere.
  */
-export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void }): JSX.Element {
+export function GuessInput({
+  onJump,
+}: {
+  onJump: (entry: LoopNameEntry) => void;
+}): JSX.Element {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<LoopNameEntry[] | null>(null);
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  // The proposed pick: chosen from the list, not yet a guess.
-  const [pending, setPending] = useState<LoopNameEntry | null>(null);
   // Transient status-region note (e.g. Enter while the index is loading).
   const [statusNote, setStatusNote] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -78,25 +79,14 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
     if (loadState === "idle") loadIndex();
   }
 
-  /** Propose: fill the input and arm the Guess button. Burns nothing. */
+  /** Jump: fly the camera to the picked place. Burns nothing — the pick
+   * only selects; the bottom sheet commits the guess. */
   function propose(entry: LoopNameEntry): void {
-    setPending(entry);
     setStatusNote(null);
-    setQuery(displayLoopName(entry));
-    setOpen(false);
-    setActiveIndex(-1);
-    // Keep focus so the player can commit (or keep typing) immediately.
-    inputRef.current?.focus();
-  }
-
-  /** Commit: the Guess button burns one of the five guesses. */
-  function commit(): void {
-    if (!pending) return;
-    onPick(pending);
-    setPending(null);
     setQuery("");
     setOpen(false);
     setActiveIndex(-1);
+    onJump(entry);
     inputRef.current?.focus();
   }
 
@@ -138,7 +128,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
   return (
     <div className="relative w-full">
       <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-muted">
-        Guess the place
+        Search the map
       </label>
       <input
         ref={inputRef}
@@ -156,7 +146,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
         autoCapitalize="off"
         autoCorrect="off"
         spellCheck={false}
-        placeholder="Type a place name…"
+        placeholder="Type a place to fly there…"
         value={query}
         onFocus={() => {
           ensureIndexLoaded();
@@ -164,8 +154,6 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
         }}
         onChange={(e) => {
           setQuery(e.target.value);
-          // The input no longer matches the proposal — disarm the button.
-          setPending(null);
           setStatusNote(null);
           setOpen(true);
           setActiveIndex(-1);
@@ -186,6 +174,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
               key={entry.id}
               id={`${listboxId}-option-${i}`}
               role="option"
+              data-entry-id={entry.id}
               aria-selected={i === activeIndex}
               // mousedown (not click): fires before the input's blur closes
               // the listbox; preventDefault keeps focus in the combobox.
@@ -201,9 +190,6 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
           ))}
         </ul>
       )}
-      <Button type="button" onClick={commit} disabled={pending === null} className="mt-2 w-full">
-        Guess
-      </Button>
       <p id={statusId} role="status" className="mt-1 min-h-[1.25rem] text-sm text-muted">
         {statusNote}
         {!statusNote && loadState === "loading" && "Loading place names…"}

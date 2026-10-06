@@ -43,13 +43,33 @@ import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrat
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
-import { Compass } from "lucide-react";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
+import {
+  initAudio,
+  isSoundEnabled,
+  playCardTap,
+  playDifficultySelect,
+  playEditionEntrance,
+  playLose,
+  playWin,
+  setSoundEnabled,
+} from "@/game/audio/sfx";
+import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
+import { CometMascot } from "./comet-mascot";
+import {
+  CelebrationOverlay,
+  celebrationSeamSpec,
+  celebrationSpec,
+  hasCelebratedFirstWin,
+  markFirstWinCelebrated,
+  type CelebrationSpec,
+} from "./celebration-overlay";
 import {
   buildCollisionCounts,
   buildQuestionLabel,
@@ -81,7 +101,7 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import { LoopScreen } from "@/game/loop/LoopScreen";
-import { readLoopOpen, writeLoopOpen } from "@/game/loop/store";
+import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -108,6 +128,61 @@ import {
  */
 function isReviewRun(run: Run): boolean {
   return run.regionId === REVIEW_DECK_REGION_ID;
+}
+
+/**
+ * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
+ * default ON, and the single control for ALL sounds (the 7 shipped + the
+ * 9 celebration recipes — every play call goes through the
+ * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
+ * OFF is silent. This toggle is the "reduced sound" control — reduced
+ * motion never mutes audio (spec §4.6).
+ *
+ * One instance lives in the Chart Room home header; a second lives in the
+ * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
+ * The two never co-mount — each reads the persisted value on mount, so a
+ * toggle flipped on one screen is correct on the next.
+ */
+function SoundToggle({
+  testId,
+  className,
+  style,
+  iconClassName = "size-5",
+}: {
+  testId: string;
+  className?: string;
+  style?: CSSProperties;
+  iconClassName?: string;
+}) {
+  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
+  const toggleSound = () => {
+    try {
+      const next = !soundOn;
+      setSoundEnabled(next);
+      setSoundOn(next);
+      if (next) playCardTap();
+    } catch {
+      // Sound is enhancement-only; the toggle itself never throws.
+    }
+  };
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      aria-pressed={soundOn}
+      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+      title={soundOn ? "Sound on" : "Sound off"}
+      onClick={toggleSound}
+      className={className}
+      style={style}
+    >
+      {soundOn ? (
+        <Volume2 className={iconClassName} aria-hidden="true" />
+      ) : (
+        <VolumeX className={iconClassName} aria-hidden="true" />
+      )}
+    </button>
+  );
 }
 
 /**
@@ -613,19 +688,67 @@ function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total:
 }
 
 export function GameApp() {
+  // SFX autoplay gate (audio spec §7): the AudioContext is created on the
+  // first user gesture ONLY. `{ once: true }` listeners — load-bearing, not
+  // optional: creating the context before a gesture leaves it `suspended`
+  // and every sound silently no-ops. StrictMode-safe: the cleanup removes
+  // the listeners on the double-mount's unmount, the remount re-registers.
+  useEffect(() => {
+    const boot = () => initAudio();
+    window.addEventListener("pointerdown", boot, { once: true });
+    window.addEventListener("keydown", boot, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", boot);
+      window.removeEventListener("keydown", boot);
+    };
+  }, []);
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
   // GeoDetective mounts its own screen outside the endless-run state
-  // machine; it persists under meridian.loop.v1 and never touches the
+  // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the day, not the menu.
+  // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cleared-mode celebration: set when a difficulty band's full cycle is
   // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
   const [cleared, setCleared] = useState<ClearedInfo | null>(null);
+  // Celebration overlay (spec §7.2): the parent owns the spec; dismiss →
+  // null → unmount. Set by first-win (endless game), streak milestones via
+  // sound only, and GeoDetective's 387 completion (via onCelebrate).
+  // E2E seam: ?celebration=<variant> renders the overlay on boot,
+  // mirroring ?loop-puzzle=.
+  const [celebration, setCelebration] = useState<CelebrationSpec | null>(() =>
+    typeof window === "undefined" ? null : celebrationSeamSpec(window.location.search),
+  );
+  const dismissCelebration = useCallback(() => setCelebration(null), []);
+  const celebrationOverlay = celebration ? (
+    <CelebrationOverlay
+      variant={celebration.variant}
+      character={celebration.character}
+      title={celebration.title}
+      body={celebration.body}
+      onDismiss={dismissCelebration}
+    />
+  ) : null;
+  // Celebration audio (spec §3): the cleared-mode dialog's opening beat.
+  // Easy/Medium get the medium applause; Hard gets the grand fanfare
+  // (coronation — the 60 s grand cooldown drops it to applause instead of
+  // stacking). First clear only: the cleared mark is set before the dialog
+  // opens, so the ref guard fires once per open — an Escape dismissal
+  // still sounds, because the trigger is the open, never the close.
+  const clearedSoundRef = useRef<ClearedInfo | null>(null);
+  useEffect(() => {
+    if (!cleared) {
+      clearedSoundRef.current = null;
+      return;
+    }
+    if (clearedSoundRef.current === cleared) return;
+    clearedSoundRef.current = cleared;
+    playCelebrationSound(cleared.choice === "hard" ? "grandFanfare" : "mediumApplause");
+  }, [cleared]);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
@@ -633,6 +756,14 @@ export function GameApp() {
     setDifficultyChoiceState(choice);
     writeDifficultyChoice(choice);
   }, []);
+  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
+  const withCardTap = useCallback(
+    (open: () => void) => () => {
+      playCardTap();
+      open();
+    },
+    [],
+  );
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -817,6 +948,10 @@ export function GameApp() {
       // backstop — the tour is unscored practice, never a real run.
       opts?: { fresh?: boolean; tutorial?: boolean },
     ) => {
+      // Edition entrance fanfare: the player is making their grand arrival
+      // into an edition (gladiator-into-the-arena energy). Not for the
+      // tutorial (quiet practice round).
+      if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
       setStarting({ regionName });
       setStartError(null);
       try {
@@ -1002,6 +1137,7 @@ export function GameApp() {
   const bankScoredPlace = useCallback(
     (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number; difficultyChoice: PickerDifficulty; regionId: string; regionName: string }) => {
       const dateKey = trailDate();
+      const prevBest = getSession()?.bestStreak ?? 0;
       updateSession((prev) => {
         // Sessions are date-scoped like runs: a UTC-midnight rollover starts
         // a fresh session rather than silently dropping banks into a stale one.
@@ -1009,8 +1145,27 @@ export function GameApp() {
         const base = prev.dateKey === dateKey ? prev : startSession(dateKey, Date.now());
         return bankPlace(base, input);
       });
+      // Celebration audio (spec §3): streak milestones + first-ever win.
+      // Only hits celebrate — a miss resets the streak, never a milestone.
+      if (input.hit) {
+        // Streak milestones 10/25/50: one small cheer per crossing of the
+        // live streak, with the 5 s anti-annoyance spacing in the guard.
+        const crossed = [10, 25, 50].find(
+          (m) => input.streakAfter >= m && prevBest < m,
+        );
+        if (crossed !== undefined) playCelebrationSound("smallCheer");
+        // First-ever win in any edition, once per lifetime: the Parade
+        // overlay. The endless game plays its own playWin here (GeoDetective
+        // already played its win on the solve — the mystery-solved variant
+        // plays nothing more, so it never doubles).
+        if (!hasCelebratedFirstWin()) {
+          markFirstWinCelebrated();
+          if (soundAudible()) safePlay(playWin);
+          setCelebration(celebrationSpec("mystery-solved", "first-win"));
+        }
+      }
     },
-    [updateSession],
+    [updateSession, getSession],
   );
 
   // End game: the session's totals (not the run's) become the summary, and
@@ -1171,18 +1326,23 @@ export function GameApp() {
             }}
           />
         ) : null}
+        {celebrationOverlay}
         {idleToast}
       </>
     );
   }
 
   // GeoDetective lives outside the run machine: its own screen, its own
-  // storage namespace, its own daily rhythm. An in-progress run takes
+  // storage namespace, its own deck rhythm. An in-progress run takes
   // precedence (the player is mid-game); otherwise the open flag wins.
   if (loopOpen) {
     return (
       <>
-        <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />
+        <LoopScreen
+          onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+          onCelebrate={(spec) => setCelebration(spec)}
+        />
+        {celebrationOverlay}
         {idleToast}
       </>
     );
@@ -1200,6 +1360,7 @@ export function GameApp() {
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1256,6 +1417,7 @@ export function GameApp() {
           }
         }}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1283,6 +1445,7 @@ export function GameApp() {
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
         }
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1304,6 +1467,7 @@ export function GameApp() {
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1316,10 +1480,10 @@ export function GameApp() {
   return (
     <>
     <Choose
-      onState={() => setMenu({ kind: "states" })}
-      onCountry={() => setMenu({ kind: "countries" })}
-      onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
-      onLoop={() => { writeLoopOpen(true); setLoopOpen(true); }}
+      onState={withCardTap(() => setMenu({ kind: "states" }))}
+      onCountry={withCardTap(() => setMenu({ kind: "countries" }))}
+      onGlobe={withCardTap(() => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onLoop={withCardTap(() => { writeLoopOpen(true); setLoopOpen(true); })}
       onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -1336,6 +1500,7 @@ export function GameApp() {
         </>
       }
     />
+    {celebrationOverlay}
     {idleToast}
     </>
   );
@@ -1363,7 +1528,7 @@ function Choose({
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
-  /** Open the GeoDetective daily edition. */
+  /** Open the GeoDetective edition (unlimited mysteries). */
   onLoop: () => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
@@ -1374,30 +1539,43 @@ function Choose({
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
 }) {
+  // GeoDetective progress for the edition card: the resume variant and the
+  // streak line. Read on mount (the menu remounts when the loop screen
+  // closes, so this is always fresh on return).
+  const [loopProgress] = useState(() => peekLoopProgress());
+  // Stagger order for the orchestrated entrance (110ms steps in CSS).
+  const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <>
+    <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
+      <AtlasBackdrop />
       {notice}
       {tutorialInvite}
       <header>
-        <p className="flex items-center gap-2 text-sm text-muted">
-          <Compass className="size-5" aria-hidden="true" />
-          {trailDate()} UTC
-        </p>
-        <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted">
+        <div className="flex items-start justify-between gap-3">
+          <p className="atlas-eyebrow home-rise" style={rise(0)}>
+            <Compass className="size-4" aria-hidden="true" />
+            Field atlas · {trailDate()} UTC
+          </p>
+          <SoundToggle
+            testId="sound-toggle"
+            className="atlas-sound-toggle home-rise"
+            style={rise(0)}
+          />
+        </div>
+        <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
+          {BRAND.name}
+        </h1>
+        <p className="atlas-tagline home-rise mt-4" style={rise(2)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
-        <div className="mt-6">
-          <p id="difficulty-label" className="text-sm font-medium text-fg">
+        <div className="home-rise mt-7" style={rise(3)}>
+          <p id="difficulty-label" className="atlas-difficulty-label">
             How do you want to grow your map today?
           </p>
-          <div
-            role="group"
-            aria-labelledby="difficulty-label"
-            className="mt-2 inline-flex rounded-full border border-line bg-surface p-1"
-          >
+          <div role="group" aria-labelledby="difficulty-label" className="atlas-seg mt-3">
             {(
               [
                 { value: "easy", label: "Easy" },
@@ -1411,94 +1589,175 @@ function Choose({
                   key={option.value}
                   type="button"
                   aria-pressed={selected}
-                  onClick={() => onDifficultyChoice(option.value)}
-                  className={
-                    selected
-                      ? "rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
-                      : "rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg"
-                  }
+                  onClick={() => {
+                    // SFX audio spec §2.6: the select chirps only on an
+                    // actual change — re-tapping the active band stays silent.
+                    if (option.value !== difficultyChoice) playDifficultySelect();
+                    onDifficultyChoice(option.value);
+                  }}
                 >
                   {option.label}
                 </button>
               );
             })}
           </div>
-          <p className="mt-2 text-sm text-muted" aria-live="polite">
+          <p className="atlas-hint" aria-live="polite">
             {DIFFICULTY_HINTS[difficultyChoice]}
           </p>
         </div>
+        <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
       </header>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <EditionCard
-          title="State"
-          detail="Pick a country, then one of its states. Each state is its own run."
-          action="Choose a state"
-          onClick={onState}
-        />
-        <EditionCard
-          title="Country"
-          detail="Play a country whole, or drill into its states where available."
-          action="Choose a country"
-          onClick={onCountry}
-        />
-        <EditionCard
-          title="Globe"
-          detail="The whole earth. Continent outlines at a distance, countries as you close in."
-          action="Play the globe"
-          onClick={onGlobe}
-        />
-        <EditionCard
-          title="GeoDetective"
-          detail="Five guesses, one mystery place. Each guess unlocks a clue — a new puzzle at midnight UTC."
-          action="Solve today's mystery"
+      {/* GeoDetective leads: the flagship case file, unlimited mysteries. */}
+      <article
+        aria-labelledby="geodetective-title"
+        className="atlas-dossier home-rise mt-8"
+        style={rise(4)}
+      >
+        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+          Open
+        </span>
+        <p className="atlas-eyebrow">Case file · Unlimited</p>
+        <h2 id="geodetective-title" className="atlas-dossier-title">
+          GeoDetective
+        </h2>
+        <p className="atlas-dossier-detail">
+          Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+          you can.
+        </p>
+        {loopProgress.streak > 0 ? (
+          <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
+        ) : null}
+        <button
+          type="button"
+          className="atlas-btn atlas-btn-brass mt-5"
           onClick={onLoop}
-        />
+        >
+          {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+        </button>
+      </article>
+      <div className="home-rise mt-10" style={rise(5)}>
+        <p className="atlas-eyebrow">Choose your expedition</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <EditionCard
+            index="01"
+            icon={<MapPin className="size-6" aria-hidden="true" />}
+            title="State"
+            detail="Pick a country, then one of its states. Each state is its own run."
+            action="Choose a state"
+            onClick={onState}
+          />
+          <EditionCard
+            index="02"
+            icon={<Flag className="size-6" aria-hidden="true" />}
+            title="Country"
+            detail="Play a country whole, or drill into its states where available."
+            action="Choose a country"
+            onClick={onCountry}
+          />
+          <EditionCard
+            index="03"
+            icon={<Globe2 className="size-6" aria-hidden="true" />}
+            title="Globe"
+            detail="The whole earth. Continent outlines at a distance, countries as you close in."
+            action="Play the globe"
+            onClick={onGlobe}
+          />
+        </div>
       </div>
       {deck.enabled ? (
         <section
           aria-label={REVIEW_DECK_COPY.pickerTitle}
-          className="mt-8 rounded-xl border border-line bg-surface p-5"
+          className="atlas-fieldnotes home-rise mt-8"
+          style={rise(6)}
         >
-          <h2 className="font-display text-2xl text-fg">{REVIEW_DECK_COPY.pickerTitle}</h2>
+          <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
           {deck.due > 0 ? (
             <>
-              <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerDueLine}</p>
-              <p className="mt-1 text-sm font-medium text-fg" data-testid="deck-due-count">
+              <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerDueLine}</p>
+              <p className="mt-1 text-sm font-medium" data-testid="deck-due-count">
                 {deck.due} {deck.due === 1 ? "card" : "cards"} due
               </p>
-              <Button className="mt-4" onClick={onReview}>
+              <button
+                type="button"
+                className="atlas-btn atlas-btn-line mt-4"
+                onClick={onReview}
+              >
                 {REVIEW_DECK_COPY.startReview}
-              </Button>
+              </button>
             </>
           ) : deck.total > 0 ? (
-            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
           ) : (
-            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerEmpty}</p>
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerEmpty}</p>
           )}
         </section>
       ) : null}
     </main>
+    {/* Comet hosts the Chart Room home page only — never in-game, never in
+        GeoDetective, never in review. The fixed wrapper is pointer-events
+        gated so it never blocks page scroll or taps. */}
+    <CometMascot />
+    </>
+  );
+}
+
+/**
+ * Full-viewport chart-room atmosphere behind the home screen: brass
+ * graticule, topographic contour lines, vignette. Decorative only.
+ */
+function AtlasBackdrop() {
+  return (
+    <div className="atlas-bg" aria-hidden="true">
+      <svg
+        className="atlas-contours"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <g fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M-20,110 C140,80 260,150 420,120 S700,100 830,140" />
+          <path d="M-20,150 C140,120 260,190 420,160 S700,140 830,180" />
+          <path d="M-20,470 C160,440 300,510 470,480 S720,460 830,500" />
+          <path d="M-20,510 C160,480 300,550 470,520 S720,500 830,540" />
+          <path d="M120,300 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M150,300 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M620,380 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M650,380 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M540,180 c30,-42 100,-42 130,0 c30,42 -30,84 -65,62 c-35,-22 -85,-20 -65,-62 Z" />
+        </g>
+      </svg>
+    </div>
   );
 }
 
 function EditionCard({
+  index,
+  icon,
   title,
   detail,
   action,
   onClick,
 }: {
+  /** Mono expedition number, e.g. "01". */
+  index: string;
+  /** Brass line icon. */
+  icon: ReactNode;
   title: string;
   detail: string;
   action: string;
   onClick: () => void;
 }) {
   return (
-    <article className="flex flex-col rounded-xl border border-line bg-surface p-5">
-      <h2 className="font-display text-3xl text-fg">{title}</h2>
-      <p className="mt-2 flex-1 text-sm text-muted">{detail}</p>
-      <Button className="mt-4" onClick={onClick}>
+    <article className="atlas-card">
+      <p className="atlas-card-index">N° {index}</p>
+      <div className="atlas-card-icon" aria-hidden="true">
+        {icon}
+      </div>
+      <h2 className="atlas-card-title">{title}</h2>
+      <p className="atlas-card-detail">{detail}</p>
+      <button type="button" className="atlas-btn atlas-btn-line mt-4 w-full" onClick={onClick}>
         {action}
-      </Button>
+      </button>
     </article>
   );
 }
@@ -1902,6 +2161,10 @@ function PlayLoaded({
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
   // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
   const [drop, setDrop] = useState<Drop | null>(null);
+  // Ref mirror of the drop's hit outcome for the reveal-complete sound.
+  // (Avoids stale closure: onRevealComplete fires from the map's animation
+  // controller, which may hold an older render's callback.)
+  const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
@@ -2156,6 +2419,9 @@ function PlayLoaded({
       streakBefore: run.streak,
     };
     setDrop(nextDrop);
+    // Mirror the hit outcome for the reveal-complete fanfare (ref avoids
+    // stale closures in the map's animation callback).
+    dropHitRef.current = scored !== null;
     // Persisted so a reload during the result card can rehydrate it; the
     // mount restore validates the shape and the place match before use.
     writeDrop(nextDrop);
@@ -2296,6 +2562,11 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setRevealDone(false);
     onRun(continueRun(run));
+    // Celebration audio (spec §3): the next chart unrolls — fired when the
+    // player taps "Next place" and a new question actually deals. The
+    // cleared path above returns early, so the celebration never
+    // double-sounds the applause; reload-restores advance silently.
+    playCelebrationSound("nextPlace");
   }
 
   function onEndGame() {
@@ -2378,8 +2649,13 @@ function PlayLoaded({
   }
 
   // Review sessions replay each card's original question context: the map
-  // reframes per card (the satellite-map effect remounts on edition/region/
-  // bounds change, exactly like an edition switch in normal play).
+  // reframes per card. The satellite-map effect remounts on edition/region/
+  // bounds change — but a review advance can change ONLY the card (same
+  // edition/region/mode, new bounds identity), and the in-place effect
+  // remount does not reliably re-run the narrow beat (live bug: Nebraska
+  // card 2 stuck on the intro globe). Keying by review card forces the
+  // proven fresh-mount path per card, exactly like the replay remount.
+  const mapKeyForCard = review && place ? `review:${place.id}:${mapKey}` : mapKey;
   const mapEdition: Edition = review ? (reviewEntry?.place.edition ?? "globe") : run.edition;
   const mapRegionName = review
     ? (reviewEntry?.place.regionName ?? REVIEW_DECK_REGION_NAME)
@@ -2425,7 +2701,7 @@ function PlayLoaded({
         <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
-              key={mapKey}
+              key={mapKeyForCard}
               mode={mode}
               edition={mapEdition}
               regionName={mapRegionName}
@@ -2436,14 +2712,30 @@ function PlayLoaded({
               marks={marks}
               variation={variation}
               spot={place ? { lon: place.lon, lat: place.lat } : null}
-              onRevealComplete={() => setRevealDone(true)}
+              onRevealComplete={() => {
+                setRevealDone(true);
+                // Guess outcome fanfare: hit → triumphant win, miss →
+                // descending lose. Uses the ref (not stale closure).
+                if (soundAudible() && dropHitRef.current !== null) {
+                  safePlay(dropHitRef.current ? playWin : playLose);
+                }
+              }}
             />
           </Suspense>
         </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
-            {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
-          </Button>
+          <div className="flex items-start gap-2">
+            <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
+              {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
+            </Button>
+            {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
+                as the home header, reachable mid-game. Mutes every sound —
+                all play calls go through the isSoundEnabled() gate. */}
+            <SoundToggle
+              testId="sound-toggle-game"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
+            />
+          </div>
           {review ? (
             <p
               data-testid="review-progress"
