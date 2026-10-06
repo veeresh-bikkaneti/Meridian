@@ -426,19 +426,26 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Canada" }).click();
           await expectAim(page);
           await dismissBubble(page);
-          // Fixed viewport center tap (not __project): sits deep inside
-          // Canada at every matrix width, far from the Ontario target
-          // (a miss), and near pool places (resolvable for the ledger).
-          // __project proved unreliable at 1280px (projected Vancouver
-          // to the map center while the tap landed in the Arctic).
+          // Tap strategy is viewport-conditional: __project (Vancouver) is
+          // reliable at 360/768px but projected to the map center at 1280px
+          // (tap landed in the Arctic). At 1280px use a fixed point just
+          // below center — southern Canada has denser pool places.
           const vp = page.viewportSize() ?? { width: 1280, height: 800 };
-          const cx = Math.round(vp.width / 2);
-          const cy = Math.round(vp.height / 2);
-          expect(
-            await tapHitsMap(page, cx, cy),
-            "center tap must hit the map canvas, not chrome",
-          ).toBe(true);
-          const { phase } = await commitPin(page, cx, cy);
+          let tx: number;
+          let ty: number;
+          if (vp.width < 1000) {
+            const miss = await missPointOnNamedPlace(page);
+            tx = miss.x;
+            ty = miss.y;
+          } else {
+            tx = Math.round(vp.width * 0.5);
+            ty = Math.round(vp.height * 0.55);
+            expect(
+              await tapHitsMap(page, tx, ty),
+              "tap must hit the map canvas, not chrome",
+            ).toBe(true);
+          }
+          const { phase } = await commitPin(page, tx, ty);
           expect(phase).toBe("done");
 
           const ledger = page.getByTestId("pin-compare-line");
