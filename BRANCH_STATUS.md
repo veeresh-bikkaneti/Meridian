@@ -1,49 +1,27 @@
-# BRANCH_STATUS.md — feat/comet-mascot
+# BRANCH_STATUS.md — fix/audio-rework
 
-Comet, the star-dragon pup, hosts the Chart Room home page: cursor-tracking
-mascot + once-per-day TTS greeting bubble. Home page only.
+## Veeresh's requirements (2026-10-06)
+1. [ ] TURN OFF globe spin swish — remove startGlobeSpin/stopGlobeSpin calls (keep API)
+2. [ ] NEW: playEditionEntrance() — epic gladiator/Colosseum brass horn fanfare on edition select
+3. [ ] FIX: wire playWin/playLose to guess outcomes in regular game (currently win only on first-ever, lose never)
+4. [ ] Make win/lose MORE Mario-like: bolder ascending fanfare (right), distinctive descending "death" tune (wrong). Original melodies only.
 
-## Done
-- [x] `src/components/comet-greetings.ts` — 12 greeting lines (narrative-designer owned;
-      suspense/excitement movie-trailer tone, `avocado_v2:casper` voice), day-of-year % 12
-      index, `meridian.cometGreeting.lastDate` helpers, audio URL builder.
-- [x] `src/components/comet-mascot.tsx` — inline-SVG Comet (adapted Chart Room Crew art),
-      8-sector cursor tracking + 70px dead zone + 0.12 hysteresis (fine-pointer only),
-      WAAPI squash-and-stretch boop (420ms), blink every 4–7s, 4-boop dizzy easter egg,
-      prefers-reduced-motion → static pose, no tracking, no idle.
-- [x] `src/components/comet-greeting.tsx` — daily bubble implementing all 6 locked
-      designer decisions (sound-on sync w/ 150ms audio lead, sound-off + speaker opt-in,
-      autoplay gesture gate w/ 3s sync window, dismiss rules, once-per-day, reduced-motion).
-- [x] `src/components/comet-mascot.css` — 120–140px desktop / 72–88px mobile / 64px short
-      viewports; fixed bottom-right; z-40; pointer-events gated; transform/opacity only.
-- [x] Mounted in `Choose` (Chart Room home) in `game-app.tsx` — not in game, review, or GeoDetective.
-- [x] `tests/e2e/helpers.ts` — added `.mp3 → audio/mpeg` MIME so the built artifact serves greeting audio.
-- [x] E2E: `comet-mascot.desktop|mobile|reduced.spec.ts` (render size/placement, CTA overlap,
-      boop, dizzy, tracking on/off, once-per-day, autoplay gate, speaker opt-in, no console errors).
-- [x] Gates: `tsc` clean; gzip 10.2KB / 15KB budget.
-- [x] Audio: 12 regenerated `public/audio/comet/greet-*.mp3` (casper voice, 459KB) — committed
-      by parent as 8211183; lines module updated to match.
-
-## Pending
-- [x] `npm test` full unit suite — 736/736 green
-- [x] `node scripts/lint-cards.mjs` gate — GATE PASSED
-- [x] `npm run build:pages` production build — green
-- [x] Playwright E2E (serialized via `flock ~/workspace/.e2e.lock`) — 15/15 green
-      (9 desktop + 3 mobile + 3 reduced)
-- [ ] Open PR (base: main) — DO NOT MERGE
-
-## E2E notes
-- React #418 is a pre-existing flaky hydration warning in this repo (the
-  cleared-mode and difficulty-picker specs filter it the same way); the
-  comet specs follow that convention. It is unrelated to this feature.
-- Dizzy window widened 2.5s → 4s: kinder for kid tappers and robust against
-  Playwright actionability waits during the WAAPI squash.
-- `tests/e2e/helpers.ts` gained `.mp3 → audio/mpeg` so the built artifact
-  serves greeting audio with the right content type.
+## Work items
+- [x] sfx.ts: add playEditionEntrance(), rewrite playWin/playLose
+- [x] satellite-map.tsx: spin sound triggers removed (safeguard stops kept)
+- [x] game-app.tsx: entrance fanfare in openRun, win/lose on reveal complete via dropHitRef
+- [x] Unit tests: sfx.test.ts 19/19 pass
+- [ ] E2E verification
+- [ ] tsc clean, full suite green
+- [ ] Open PR
 
 ## Notes
-- No new npm packages; no external assets (mp3s are the approved exception).
-- Greeting lines live in `comet-greetings.ts` so the narrative designer can rewrite
-  text without touching component logic; index ↔ mp3 pairing is positional.
-- Voice note: `avocado_v2:casper` is an original voice — never described as a
-  celebrity impression in code or UI.
+- "Mario-like" = STYLE (bouncy arcade), NOT Nintendo melodies. All original.
+- All sounds respect meridian.sound mute gate.
+
+## 2026-10-06 23:00 — PR #81 opened
+- https://github.com/veeresh-bikkaneti/Meridian/pull/81
+- Unit: 19/19 sfx tests pass, full suite fail 0
+- tsc clean
+- E2E: 6/7 game-sfx pass; 'NO loop texture' test failing (investigating — source change verified in build)
+- Ready for Veeresh's review/merge decision

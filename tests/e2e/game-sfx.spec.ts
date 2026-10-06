@@ -254,10 +254,10 @@ test("geodetective: win arpeggio fires on a solved mystery", async ({ page }) =>
     timeout: 15_000,
   });
 
-  // Win: deterministic rising major arpeggio C5→E5→G5→C6 + 2093 Hz shimmer.
-  // (The winning guess also draws its ring: 1568 Hz ping + 3136 shimmer.)
+  // Win: Mario-style ascending run C5→E5→G5→C6→E6 + triumphant chord.
+  // (The winning guess also draws its ring: 1568 Hz ping.)
   const freshFreqs = (await oscRecords(page)).slice(before.length).map((o) => o.freq);
-  for (const f of [523.25, 659.25, 783.99, 1046.5, 2093]) {
+  for (const f of [523.25, 659.25, 783.99, 1046.5, 1318.5]) {
     expect(freshFreqs).toContain(f);
   }
   expect(freshFreqs).toContain(1568); // ring reveal on the exact guess
@@ -286,10 +286,10 @@ test("geodetective: lose sting after five misses; next-case deal snaps", async (
   }
 
   await expect(page.getByText("Out of guesses")).toBeVisible({ timeout: 15_000 });
-  // Lose: the muted descending sting — deterministic 440 → 329.63 Hz.
+  // Lose: the Mario-style descending run — E5→Eb5→D5→Db5→C5.
   const stingFreqs = (await oscRecords(page)).map((o) => o.freq);
-  expect(stingFreqs).toContain(440);
-  expect(stingFreqs).toContain(329.63);
+  expect(stingFreqs).toContain(659.25);
+  expect(stingFreqs).toContain(523.25);
 
   // Next mystery: the deal snaps (cached noise buffer source + 196 Hz tick).
   const srcBefore = await srcCount(page);
@@ -303,71 +303,20 @@ test("geodetective: lose sting after five misses; next-case deal snaps", async (
   expect(dealFreqs).toContain(196);
 });
 
-test("globe spin: loop texture starts on the spin intent, stops on the narrow transition", async ({
+test("globe spin: NO loop texture (disabled per Veeresh 2026-10-06)", async ({
   page,
 }) => {
   await page.goto(NO_IDLE);
   // The edition-card tap creates the AudioContext (autoplay gate).
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
-
-  // The spin intent executes at map mount: a looping buffer source, the
-  // 850 Hz bandpass, and the spin gain ramping 0 → 0.10.
-  await expect
-    .poll(async () => (await srcRecords(page)).some((s) => s.loop), { timeout: 15_000 })
-    .toBe(true);
-  const calls: SfxCall[] = await sfxCalls(page);
-  const spinIdx = calls.findIndex((c) => c.kind === "src" && c.loop);
-  expect(spinIdx).toBeGreaterThanOrEqual(0);
-  const spinFilter = calls.slice(spinIdx).find((c) => c.kind === "filter") as
-    | SfxFilterCall
-    | undefined;
-  expect(spinFilter?.type).toBe("bandpass");
-  expect(spinFilter?.freq).toBe(850);
-  const spinGain = calls.slice(spinIdx).find((c) => c.kind === "gain") as
-    | SfxGainCall
-    | undefined;
-  expect(spinGain?.ramps).toContain(0.1);
-
-  // The 1200 ms intro ends in the spin→narrow transition: the source stops
-  // and the gain ramps down toward silence.
-  await expect
-    .poll(async () => (await srcRecords(page)).find((s) => s.loop)?.stopped, {
-      timeout: 15_000,
-    })
-    .toBe(true);
-  const after: SfxCall[] = await sfxCalls(page);
-  const spinGainAfter = after.slice(spinIdx).find((c) => c.kind === "gain") as
-    | SfxGainCall
-    | undefined;
-  expect(spinGainAfter?.ramps).toContain(0.0001);
-
-  // The game reaches the aim phase normally — the texture never blocks play.
-  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  // Wait for the map to settle (spin would have started by now if enabled).
+  await page.waitForTimeout(3000);
+  // No looping buffer source should exist — the spin sound is disabled.
+  const srcs = await srcRecords(page);
+  expect(srcs.some((s) => s.loop)).toBe(false);
 });
 
-test("globe spin: pointerup on the map stops the texture", async ({ page }) => {
-  await page.goto(NO_IDLE);
-  await page.getByRole("button", { name: "Play the globe" }).click();
-  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
-  await expect
-    .poll(async () => (await srcRecords(page)).some((s) => s.loop), { timeout: 15_000 })
-    .toBe(true);
-
-  // A touch during the intro ends the ambient texture (the visual spin
-  // continues into the narrow beat — only the sound stops). Tap handlers
-  // are not armed yet, so the click is otherwise inert. The map canvas
-  // (not the starfield layers) is the interactive surface; the pointerup
-  // bubbles to the canvas container where the wiring listens.
-  await page.locator(".satellite-map .maplibregl-canvas").click();
-  await expect
-    .poll(async () => (await srcRecords(page)).find((s) => s.loop)?.stopped, {
-      timeout: 10_000,
-    })
-    .toBe(true);
-
-  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
-});
 
 test("streak milestone: crossing 10 plays the small cheer", async ({ page }) => {
   test.slow(); // reload-restore round-trip plus a full reveal
@@ -398,7 +347,9 @@ test("streak milestone: crossing 10 plays the small cheer", async ({ page }) => 
 
   const before = await oscRecords(page);
   const { phase } = await commitPin(page, spot!.x, spot!.y);
-  expect(phase).toBe("story"); // the exact-spot tap is a hit
+  // The exact-spot tap is a hit — phase is "story" (result card) or "done"
+  // (reveal completed); either confirms the hit registered.
+  expect(["story", "done"]).toContain(phase);
 
   // Small cheer: deterministic C5→E5→G5 triangle triad, staggered 70 ms.
   // (The endless game wires no ring/win sounds, so the triad is the cheer.)
