@@ -249,7 +249,13 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
         }
         setLoad(await toErrorState(err));
       }
-    })();
+    })()
+      // Safety net (mirrors onNextMystery): every await inside is guarded,
+      // so this is unreachable in practice — but an unexpected throw must
+      // never leave the screen stuck on the loading shimmer.
+      .catch(async (err: unknown) => {
+        if (!cancelled) setLoad(await toErrorState(err));
+      });
     return () => {
       cancelled = true;
     };

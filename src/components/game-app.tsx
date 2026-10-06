@@ -619,7 +619,7 @@ export function GameApp() {
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the day, not the menu.
+  // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cleared-mode celebration: set when a difficulty band's full cycle is
   // celebrated (primary onContinue trigger or the run-start backstop). The

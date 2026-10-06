@@ -283,7 +283,10 @@ export function loadLoopStore(poolSize: number): LoopUnlimitedStore {
 }
 
 /** Persist the v2 blob (invalid shapes are dropped, never written).
- * Fail-silent when storage is blocked — the session continues in memory. */
+ * Fail-silent when storage is blocked — the session continues in memory.
+ * Known limitation: no cross-tab lock — two tabs playing concurrently are
+ * last-writer-wins and could double-deal an index. Out of scope: the
+ * product is a single-tab phone game. */
 export function writeLoopStoreV2(store: LoopUnlimitedStore): void {
   if (!isLoopUnlimitedStore(store)) return;
   const target = storage();
