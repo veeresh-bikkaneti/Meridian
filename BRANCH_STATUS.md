@@ -39,8 +39,8 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - [x] E2E fixes: full-width meta band (eyebrow no longer ellipsizes at 360px); miss-tap hardening (dismiss bubble first, on-screen Nebraska point, pin-side "near X" assertion); CDP AX-tree single-announce check (Playwright 1.63 lacks page.accessibility.snapshot); eslint useEffect dep restored
 - [x] **Product bug fixed (cfd69e1):** the full-width PR2 bubble put the Hide-question button under the chrome bar's End-game button at 360px (a real tap would hit End game; Playwright retried the intercepted click forever). Bubble top 4rem → 6rem moves the buttons clear.
 - [x] E2E green via VM lock: **84/84 passed** (19.3m) — full matrix 360/768/1280 × light/dark × reduced-motion
-- [ ] Regression E2E on touched surfaces (question-wrap, question-card-header, reveal-pin-compare, geodetective, longname-wrap PR1)
-- [ ] PR opened (base main) — NOT merged
+- [x] Regression E2E: question-wrap ✓, question-card-header ✓ (5/5), reveal-pin-compare (tile infra flake), reveal-your-pin-country-globe ✓ (updated for <dl>), geodetective ✓, longname-wrap (PR1) ✓
+- [x] PR opened: **#80** (base main, head feat/longname-pr2) — NOT merged (Veeresh merges)
 
 ## Spec deviations (deliberate, rationale recorded)
 1. **Collapse toggle keeps "Collapse question"/"Expand question" labels** (spec §5 wants "Show/Hide place name"): existing E2E (`question-card-header`, `question-wrap`) + unit tests depend on current labels; rename belongs to PR3's collapse-a11y work.
