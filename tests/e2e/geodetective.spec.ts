@@ -96,14 +96,30 @@ async function guessCount(page: import("playwright/test").Page): Promise<number>
   return page.getByRole("region", { name: "Your guesses" }).getByRole("listitem").count().catch(() => 0);
 }
 
-/** Rendered ring features on the deduction surface. */
+/** Ring features on the deduction surface. Polls until the GeoJSON source
+ * exists, finishes (re)tiling after setData, and reports its features —
+ * all three are asynchronous, so a single read races. */
 async function ringFeatureCount(page: import("playwright/test").Page): Promise<number> {
-  return page.evaluate(() => {
-    const el = document.querySelector('[data-testid="loop-map"]') as unknown as {
-      __loopMap: { queryRenderedFeatures(o: unknown): unknown[] };
-    };
-    return el.__loopMap.queryRenderedFeatures({ layers: ["loop-ring-line"] }).length;
-  });
+  const handle = await page.waitForFunction(
+    () => {
+      const el = document.querySelector('[data-testid="loop-map"]') as unknown as {
+        __loopMap?: {
+          getSource(id: string): unknown;
+          querySourceFeatures(id: string): unknown[];
+        };
+      } | null;
+      const m = el?.__loopMap;
+      if (!m || !m.getSource("loop-rings")) return 0;
+      try {
+        return m.querySourceFeatures("loop-rings").length;
+      } catch {
+        return 0;
+      }
+    },
+    undefined,
+    { timeout: 30_000 },
+  );
+  return (await handle.jsonValue()) as number;
 }
 
 test("loop-date seam pins the day; UTC date header matches", async ({ page }) => {
