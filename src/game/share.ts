@@ -70,6 +70,7 @@ function loopGuessMark(guess: LoopGuess, isWinningGuess: boolean): string {
  *   line 2: the site URL on its own line (auto-linkified by messaging apps)
  *   line 3: the emoji strip (one slot per guess, ⬜ for unused guesses)
  *            plus the result ("solved in N" / "not solved").
+ *   line 4 (only when streak > 0): `🔥 N` — the consecutive-solve streak.
  * Spoiler-free: no place names, no distances.
  */
 export function shareLoopText(input: {
@@ -78,6 +79,9 @@ export function shareLoopText(input: {
   status: LoopStatus;
   dateKey: string;
   now?: Date;
+  /** Consecutive solves. Appended as a `🔥 N` line when > 0; hidden when
+   * 0 or unset so a cold or reset streak stays out of the share. */
+  streak?: number;
 }): string {
   const when = shareDateLabel(input.dateKey, input.now ?? new Date());
   const marks = input.guesses.map((guess, i) =>
@@ -85,5 +89,7 @@ export function shareLoopText(input: {
   );
   while (marks.length < LOOP_MAX_GUESSES) marks.push("⬜");
   const result = input.status === "won" ? `solved in ${input.guesses.length}` : "not solved";
-  return `${BRAND.shareHost} geodetective ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}`;
+  const streakLine =
+    typeof input.streak === "number" && input.streak > 0 ? `\n🔥 ${input.streak}` : "";
+  return `${BRAND.shareHost} geodetective ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}${streakLine}`;
 }

@@ -174,6 +174,7 @@ export function GuessInput({
               key={entry.id}
               id={`${listboxId}-option-${i}`}
               role="option"
+              data-entry-id={entry.id}
               aria-selected={i === activeIndex}
               // mousedown (not click): fires before the input's blur closes
               // the listbox; preventDefault keeps focus in the combobox.

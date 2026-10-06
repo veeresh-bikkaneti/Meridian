@@ -19,8 +19,8 @@ test("reduced motion: clue reveal is opacity-only, no transform animation", asyn
   );
   expect(reduced).toBe(true);
 
-  await page.goto("http://127.0.0.1:4123/Meridian/?loop-date=2026-10-03");
-  await page.getByRole("button", { name: "Solve today's mystery" }).click();
+  await page.goto("http://127.0.0.1:4123/Meridian/?loop-puzzle=218");
+  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible();
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible();
 
