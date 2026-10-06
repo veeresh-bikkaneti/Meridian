@@ -454,6 +454,28 @@
   color: var(--atlas-brass);
 }
 
+/* Sound toggle (SFX audio spec §4): brass line button, ≥44px target. */
+.atlas-sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 999px;
+  color: var(--atlas-brass);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.atlas-sound-toggle:hover {
+  border-color: var(--atlas-brass);
+}
+.atlas-sound-toggle:focus-visible {
+  outline: 2px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
 .atlas-title {
   font-family: var(--font-atlas-display);
   font-weight: 560;

@@ -11,6 +11,13 @@ import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { loopPuzzleFromSearch } from "./day";
 import {
+  playConfirmGuess,
+  playDeal,
+  playLose,
+  playRingReveal,
+  playWin,
+} from "@/game/audio/sfx";
+import {
   clampDeckToPoolSize,
   completePuzzle,
   dealPuzzleIndex,
@@ -285,6 +292,9 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
       return;
     }
     setPickNotice(null);
+    // SFX audio spec §2.1: the confirm blip fires once the duplicate check
+    // passes — duplicates get no sound (they already get a text notice).
+    playConfirmGuess();
     const prev = current.guesses[current.guesses.length - 1] ?? null;
     const progressed: LoopPuzzleState = {
       ...current,
@@ -308,6 +318,11 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
     } else {
       // Completion: streak, totals, cycle counter, and the share date move
       // in one synchronous handler — exactly once per mystery.
+      // SFX audio spec §2.3/§2.4: the win arpeggio / lose sting fire on the
+      // reveal (reload-restoring an unacknowledged reveal re-renders from the
+      // store and never passes through here — no sound on restore).
+      if (progressed.status === "won") playWin();
+      else playLose();
       commitStore(completePuzzle(s, progressed, calendarDate("UTC", new Date())));
       setRevealAnnouncement("Reveal loaded. Next mystery button available.");
     }
@@ -350,6 +365,12 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
           isLoopClueFile,
         );
         setLoad({ phase: "ready", clue, index: dealt.index });
+        // SFX audio spec §2.5: the "case file snapped open" fires when the
+        // next mystery deals — only on this explicit user tap, and only on
+        // a successful deal. A failed deal stays silent; the mount path
+        // (fresh deal AND reload-restore of an unacknowledged reveal) never
+        // fires it.
+        playDeal();
       } catch (err: unknown) {
         const rolled = clampDeckToPoolSize(
           {
@@ -530,6 +551,12 @@ function LoopGame({
   // Announce each new ring as text (the visual deduction surface has a
   // spoken equivalent). Resets per mystery so a resume never re-announces
   // old rings and a new deal never inherits a stale count.
+  // SFX audio spec §2.2: the distance ring's pitch IS the distance —
+  // playRingReveal fires exactly once per new guess, keyed on the same
+  // guess-count transition that draws the ring. A correct guess (distKm 0)
+  // clamps to 1 km → brightest ping. StrictMode double-effects are safe:
+  // announcedCount.current persists across the double-invoke, so the second
+  // pass sees no new guess and stays silent.
   useEffect(() => {
     const key = `${puzzle.cycle}:${puzzle.index}`;
     if (announcedKey.current !== key) {
@@ -539,7 +566,10 @@ function LoopGame({
     const n = puzzle.guesses.length;
     if (n > announcedCount.current) {
       const latest = puzzle.guesses[n - 1];
-      if (latest && latest.distKm > 0) setRingNote(ringAnnouncement(latest));
+      if (latest) {
+        playRingReveal(latest.distKm);
+        if (latest.distKm > 0) setRingNote(ringAnnouncement(latest));
+      }
     }
     announcedCount.current = n;
   }, [puzzle]);

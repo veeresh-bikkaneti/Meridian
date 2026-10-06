@@ -1,29 +1,29 @@
-# BRANCH_STATUS.md — feat/home-redesign
+# BRANCH_STATUS.md — feat/game-sfx
 
-**Branch:** `feat/home-redesign` (rebased onto `origin/main` @ `26acb2b` — PR #71 merged 2026-10-06 ~09:03 CDT; rebase was conflict-free, source files byte-identical pre/post rebase)
-**Task:** Redesign Meridian's home/edition picker with a distinctive "chart-room" identity. Home screen ONLY — gameplay screens untouched.
+**Branch:** `feat/game-sfx` (worktree: `~/workspace/meridian-worktrees/game-sfx`)
+**Base:** `origin/main` @ `a838fc6` (PR #72 merge). Spec committed as `614d0dd` (not yet pushed — this branch owns pushing from here).
+**Task:** Meridian's first audio pass — 100% Web Audio synthesized SFX, zero assets, exactly to the audio designer's spec (`docs/sfx-spec.md`, §4–§6 own the details).
 **Status:** 🟡 IN PROGRESS
 
-## Design: "The Chart Room"
-- **Type:** Fraunces (display, engraved-atlas serif) + Karla (body) + Space Mono (dossier labels). Google Fonts with display=swap + system fallbacks; offline build unaffected.
-- **Theme:** deep sea-chart ink + brass (dark) / expedition journal paper (light). Brass is the single sharp accent; signal red reserved for the GeoDetective "OPEN" stamp.
-- **Background:** full-viewport fixed layer — brass graticule, topographic contour SVG, vignette. No flat colors.
-- **Motion:** one orchestrated staggered entrance (110ms steps); card hover lift; stamp slam-in; `prefers-reduced-motion` fallbacks.
-- **Layout:** GeoDetective leads as a featured case-file dossier (keeps PR #71 unlimited copy: "🔎 Solve a mystery"/"▶️ Resume your case" + streak line); State/Country/Globe become numbered expeditions (01/02/03) with line icons; review deck becomes a dashed field-notes strip.
-- **Frozen:** all button accessible names, headings, difficulty group semantics, routing — E2E-safe.
+## Design (from spec)
+- Single module `src/game/audio/sfx.ts`: 8 play fns + `initAudio()` + `is/setSoundEnabled()` + pure `distanceToFrequencyKm()`.
+- Lazy AudioContext on first user gesture (pointerdown/keydown `{ once: true }` in app root; webkit prefix fallback; resume if suspended).
+- Master chain: voice gain → masterGain(0.8) → DynamicsCompressor(−9 dB/6/12/3 ms/120 ms) → destination. Max 8 voices; ring/win/lose high priority; debounce 80 ms.
+- Distance→pitch mapping `round(1568 * d^-0.28)` — DO NOT re-tune (−0.28 exponent, 1568/98 Hz endpoints are load-bearing).
+- `meridian.sound` localStorage toggle, default ON, in Chart Room header. `prefers-reduced-motion` does NOT mute.
 
 ## What's done
-- [x] Atlas tokens in `src/styles.css` (dark + light + paper + night) + home component CSS
-- [x] `Choose`/`EditionCard` rewrite in `src/components/game-app.tsx` (native buttons, min 44–48px targets)
-- [x] Font links in `src/routes/__root.tsx`
-- [x] `npx tsc --noEmit` clean
+- [x] Spec committed (614d0dd): `docs/sfx-spec.md`
 
 ## What's pending
-1. `npm test` full unit suite — DONE (716/716, re-verified after font change)
-2. `npm run build:pages` production build — DONE (green, fonts bundled to dist)
-3. Playwright E2E via VM lock — DONE: drilldown/pwa/tutorial/geodetective/difficulty-picker all green.
-   - Caught 2 real issues: (a) Google Fonts CDN failed through the VM proxy (ERR_TUNNEL_CONNECTION_FAILED) → fonts now SELF-HOSTED (7 latin woff2 in src/assets/fonts, @font-face in styles.css, zero runtime CDN dependency); (b) dossier was a `<section>`, spec filters `article` → dossier is now `<article>`. One flake (Easy-tier pin timing) passed on rerun.
-4. Screenshots — DONE: desktop 1280px (dark + light), mobile 360px (light).
-   Honest notes: dark chart-room and light journal both read well; brass graticule + contour lines subtle but present; dossier OPEN stamp lands; cards stack cleanly at 360px with no overflow; all buttons ≥44px. The fullPage capture shows a seam where the fixed bg ends — capture artifact only, the fixed layer always covers the real viewport. The first-run tutorial invite banner is still the old unstyled component (out of scope, separate component) — flag as follow-up polish.
-5. Open PR (base: main) — do NOT merge — DONE: https://github.com/veeresh-bikkaneti/Meridian/pull/72 (CI queued at open; Veeresh merges)
-6. AFTER PR #71 merges to main: rebase — DONE 2026-10-06 ~09:05 CDT (conflict-free; PR #71 merged as 26acb2b)
+1. `src/game/audio/sfx.ts` — the module
+2. Wiring: LoopScreen (confirm blip / ring reveal / win arpeggio / lose sting / next-case deal) + home (card tap / difficulty select / speaker toggle)
+3. Unit tests `src/game/audio/sfx.test.ts` (mapping endpoints + monotonic, toggle round-trip, no-crash without AudioContext) wired into `npm test`
+4. `npx tsc --noEmit` clean
+5. `npm test` full unit suite green
+6. `npm run build:pages` production build green (needed for the E2E artifact)
+7. Playwright E2E `tests/e2e/game-sfx.spec.ts` (stubbed AudioContext; game stays playable silent) + full E2E regression run
+8. Push early and often (named files only); open PR (base: main) — DO NOT merge, Veeresh merges
+
+## Spec §7 careful-abouts (all honored — see final report for code locations)
+- Autoplay once-listeners load-bearing; iOS webkit prefix + in-gesture resume; mapping exponent/endpoints untouched; noise buffer cached once; no setInterval; initAudio StrictMode-idempotent; playDeal never on reload-restore.

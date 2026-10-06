@@ -43,7 +43,14 @@ import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrat
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
-import { Compass, Flag, Globe2, MapPin } from "lucide-react";
+import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
+import {
+  initAudio,
+  isSoundEnabled,
+  playCardTap,
+  playDifficultySelect,
+  setSoundEnabled,
+} from "@/game/audio/sfx";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
@@ -613,6 +620,20 @@ function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total:
 }
 
 export function GameApp() {
+  // SFX autoplay gate (audio spec §7): the AudioContext is created on the
+  // first user gesture ONLY. `{ once: true }` listeners — load-bearing, not
+  // optional: creating the context before a gesture leaves it `suspended`
+  // and every sound silently no-ops. StrictMode-safe: the cleanup removes
+  // the listeners on the double-mount's unmount, the remount re-registers.
+  useEffect(() => {
+    const boot = () => initAudio();
+    window.addEventListener("pointerdown", boot, { once: true });
+    window.addEventListener("keydown", boot, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", boot);
+      window.removeEventListener("keydown", boot);
+    };
+  }, []);
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
@@ -633,6 +654,14 @@ export function GameApp() {
     setDifficultyChoiceState(choice);
     writeDifficultyChoice(choice);
   }, []);
+  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
+  const withCardTap = useCallback(
+    (open: () => void) => () => {
+      playCardTap();
+      open();
+    },
+    [],
+  );
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -1316,10 +1345,10 @@ export function GameApp() {
   return (
     <>
     <Choose
-      onState={() => setMenu({ kind: "states" })}
-      onCountry={() => setMenu({ kind: "countries" })}
-      onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
-      onLoop={() => { writeLoopOpen(true); setLoopOpen(true); }}
+      onState={withCardTap(() => setMenu({ kind: "states" }))}
+      onCountry={withCardTap(() => setMenu({ kind: "countries" }))}
+      onGlobe={withCardTap(() => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onLoop={withCardTap(() => { writeLoopOpen(true); setLoopOpen(true); })}
       onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -1378,6 +1407,17 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
+  // Sound toggle (SFX audio spec §4): persisted under `meridian.sound`,
+  // default ON. Turning ON plays the card tap as confirmation; OFF is
+  // silent. This toggle is the "reduced sound" control — reduced motion
+  // never mutes audio (spec §4.6).
+  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
+  const toggleSound = () => {
+    const next = !soundOn;
+    setSoundEnabled(next);
+    setSoundOn(next);
+    if (next) playCardTap();
+  };
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
@@ -1386,10 +1426,28 @@ function Choose({
       {notice}
       {tutorialInvite}
       <header>
-        <p className="atlas-eyebrow home-rise" style={rise(0)}>
-          <Compass className="size-4" aria-hidden="true" />
-          Field atlas · {trailDate()} UTC
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <p className="atlas-eyebrow home-rise" style={rise(0)}>
+            <Compass className="size-4" aria-hidden="true" />
+            Field atlas · {trailDate()} UTC
+          </p>
+          <button
+            type="button"
+            data-testid="sound-toggle"
+            aria-pressed={soundOn}
+            aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+            title={soundOn ? "Sound on" : "Sound off"}
+            onClick={toggleSound}
+            className="atlas-sound-toggle home-rise"
+            style={rise(0)}
+          >
+            {soundOn ? (
+              <Volume2 className="size-5" aria-hidden="true" />
+            ) : (
+              <VolumeX className="size-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
         <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
           {BRAND.name}
         </h1>
@@ -1416,7 +1474,12 @@ function Choose({
                   key={option.value}
                   type="button"
                   aria-pressed={selected}
-                  onClick={() => onDifficultyChoice(option.value)}
+                  onClick={() => {
+                    // SFX audio spec §2.6: the select chirps only on an
+                    // actual change — re-tapping the active band stays silent.
+                    if (option.value !== difficultyChoice) playDifficultySelect();
+                    onDifficultyChoice(option.value);
+                  }}
                 >
                   {option.label}
                 </button>
