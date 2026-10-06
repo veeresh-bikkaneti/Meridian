@@ -91,33 +91,21 @@ async function targetEntry(page: import("playwright/test").Page) {
 
 /**
  * Guess the resolved target through the search box. The query is the
- * entry's normalized name; the exact option is disambiguated by region so
- * a same-named bigger city can never steal the pick.
+ * entry's normalized name; the exact option is picked by its entry id
+ * (data-entry-id), so a same-named bigger city — or a duplicate row —
+ * can never steal the pick.
  */
 async function guessTarget(
   page: import("playwright/test").Page,
-  entry: { n: string; r: string },
+  entry: { n: string; id: string },
 ) {
   const box = searchBox(page);
   await box.click();
   await box.fill(entry.n);
-  const options = page.getByRole("option").filter({ hasText: entry.r });
-  await expect(options.first()).toBeVisible({ timeout: 30_000 });
-  const texts = await options.allTextContents();
-  const norm = (s: string) =>
-    s
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/\p{M}/gu, "")
-      .replace(/[^a-z0-9 ]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  const suffix = `, ${entry.r}`;
-  let idx = texts.findIndex(
-    (t) => t.endsWith(suffix) && norm(t.slice(0, t.length - suffix.length)) === entry.n,
-  );
-  if (idx === -1) idx = 0;
-  await options.nth(idx).click();
+  const option = page.locator(`li[role="option"][data-entry-id="${entry.id}"]`);
+  // The 11 MB name index parses on first focus; allow headroom on slow VMs.
+  await expect(option).toBeVisible({ timeout: 30_000 });
+  await option.click();
   await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   await page.getByRole("button", { name: "Guess this place" }).click();
 }
