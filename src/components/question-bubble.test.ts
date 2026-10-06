@@ -20,10 +20,11 @@ const source = readFileSync(
   "utf8",
 );
 
-// The elements that render the place name as their text content.
-// Cartographer's Plate PR2: names render through <PlaceNameText>
-// (ZWSP display refinement + strict-rule anchor tail) with data-name-tier
-// set from the raw label length.
+// The element that renders the place name as its text content.
+// Cartographer's Plate PR3: a SINGLE h2 (the collapsed view folds the
+// name away entirely — honest, never clamped). Names render through
+// <PlaceNameText> (ZWSP display refinement + strict-rule anchor tail)
+// with data-name-tier set from the raw label length.
 const nameElements = [
   ...source.matchAll(
     /<(h2|p)\b([^>]*?)className="([^"]*)"([^>]*?)>\s*<PlaceNameText name=\{placeName\} \/>/g,
@@ -31,9 +32,11 @@ const nameElements = [
 ].map((m) => ({ tag: m[1], className: m[3], attrs: `${m[2]}${m[4]}` }));
 
 describe("question-bubble — full question label, never an ellipsis", () => {
-  it("finds both place-name elements (expanded h2 + collapsed p)", () => {
-    const tags = nameElements.map((e) => e.tag).sort();
-    assert.deepEqual(tags, ["h2", "p"]);
+  it("renders exactly one place-name element: the expanded h2", () => {
+    // PR3: collapsed folds the name away entirely (hidden panel) — there
+    // is no collapsed <p> anymore.
+    assert.equal(nameElements.length, 1, "one name element only");
+    assert.equal(nameElements[0]!.tag, "h2");
   });
 
   it("no place-name element uses single-line truncation", () => {
@@ -64,38 +67,44 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     }
   });
 
-  it("place-name elements are not scroll containers (no scrollbar chrome)", () => {
+  it("the name element itself is not a scroll container (no scrollbar chrome)", () => {
+    // PR #77 (Veeresh's will): scrollbar arrows overlap the name. The
+    // SCROLL REGION wrapper scrolls; the h2 never does.
     for (const el of nameElements) {
       const tokens = el.className.split(/\s+/);
       assert.ok(
         !tokens.includes("overflow-y-auto") &&
           !tokens.includes("overflow-y-scroll"),
-        `<${el.tag}> must not scroll — scrollbar arrows overlap the name`,
+        `<${el.tag}> must not scroll — the region wrapper scrolls instead`,
       );
     }
   });
 
-  it("keeps the full-name tooltip on both views", () => {
+  it("keeps the full-name tooltip", () => {
     const tooltips = source.match(/title=\{placeName\}/g) ?? [];
-    assert.equal(
-      tooltips.length,
-      2,
-      "both expanded and collapsed views keep title={placeName}",
-    );
+    assert.equal(tooltips.length, 1, "the expanded h2 keeps title={placeName}");
   });
 
-  it("sets data-name-tier from the raw label length on both views (spec §2)", () => {
+  it("sets data-name-tier from the raw label length (spec §2)", () => {
     for (const el of nameElements) {
       assert.ok(
         /data-name-tier=\{nameTier\(placeName\)\}/.test(el.attrs),
         `<${el.tag}> must set data-name-tier={nameTier(placeName)} — the React→CSS bridge`,
       );
     }
+    // The shell carries the tier too: spec §6.1 chrome compaction
+    // (14px → 12px) keys off the same bridge.
+    assert.ok(
+      /<div\b[^>]*className="[^"]*bubble-shell[^"]*"[^>]*data-name-tier=\{nameTier\(placeName\)\}/.test(
+        source,
+      ),
+      "the bubble shell must carry data-name-tier for the §6.1 yield compaction",
+    );
   });
 
-  it("drops tabIndex and aria-label from static name elements (spec §5/§8.3)", () => {
+  it("drops tabIndex and aria-label from the static name element (spec §5/§8.3)", () => {
     // Tab-stop fatigue: SRs get the full text anyway with zero ellipsis.
-    // (PR3 restores keyboard reachability on the scroll REGION wrapper.)
+    // Keyboard reachability lives on the scroll REGION wrapper (§8.1).
     for (const el of nameElements) {
       assert.ok(
         !/tabIndex/.test(el.attrs),
@@ -112,8 +121,8 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     // The chip lives in the pinned meta band (spec §6.4) — same size,
     // label, and position at every tier; never shrinks below 11px.
     assert.ok(
-      /<div className="name-meta">/.test(source),
-      "the question card needs the pinned meta band",
+      /<div className="name-meta bubble-meta">/.test(source),
+      "the question card needs the pinned meta band (bubble-meta)",
     );
     const chip = /<span\b[^>]*data-testid="difficulty-chip"[^>]*>/.exec(source);
     assert.ok(chip, "the difficulty-chip E2E seam must survive, never renamed");
@@ -135,6 +144,121 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     assert.ok(
       source.includes("bubbleHeaderText(edition, regionName)"),
       "the header must render bubbleHeaderText(edition, regionName)",
+    );
+  });
+});
+
+describe("question-bubble PR3 — backstop scroll architecture (spec §5)", () => {
+  it("name + hint form ONE scroll region: role, name, tabindex (spec §8.1)", () => {
+    assert.ok(
+      /<div\b[^>]*className="bubble-scroll"[^>]*>/.test(source),
+      "the backstop needs the .bubble-scroll region",
+    );
+    const region = /<div\b[^>]*className="bubble-scroll"[^>]*>/.exec(source)![0];
+    assert.ok(
+      region.includes('role="region"'),
+      "the scroll region needs role=\"region\"",
+    );
+    assert.ok(
+      region.includes('aria-label="Place name — scroll for more"'),
+      "the scroll region needs its accessible name",
+    );
+    assert.ok(
+      region.includes("tabIndex={0}"),
+      "the scroll region needs tabindex=\"0\" — keyboard users must reach it",
+    );
+  });
+
+  it("the scroll cue is wired: useMoreBelow + ScrollCue (spec §5/§8.1)", () => {
+    assert.ok(
+      source.includes('} from "@/components/scroll-cue"'),
+      "the bubble must use the shared scroll-cue module",
+    );
+    assert.ok(
+      /const \{ ref: scrollRef, moreBelow \} = useMoreBelow<HTMLDivElement>\(\);/.test(
+        source,
+      ),
+      "the bubble must track the more-below state",
+    );
+    assert.ok(
+      source.includes("<ScrollCue visible={moreBelow} />"),
+      "the fade + ⋯ + \"more below\" cue renders from the more-below state",
+    );
+    // The region carries the ref the hook measures.
+    const region = /<div\b[^>]*className="bubble-scroll"[^>]*>/.exec(source)![0];
+    assert.ok(
+      region.includes("ref={scrollRef}"),
+      "the scroll region must carry the measurement ref",
+    );
+  });
+
+  it("the shell caps the backstop at min(38dvh, 20rem)", () => {
+    assert.ok(
+      source.includes("bubble-shell"),
+      "the bubble needs the .bubble-shell backstop container",
+    );
+    assert.ok(
+      stylesSource.includes("max-height: min(38dvh, 20rem)"),
+      "styles.css must cap the shell at min(38dvh, 20rem) (spec §5)",
+    );
+  });
+
+  it("the scroll region visually hides its scrollbar (PR #77 — Veeresh's will)", () => {
+    assert.ok(
+      stylesSource.includes(".bubble-scroll::-webkit-scrollbar"),
+      "webkit scrollbar must be hidden on the bubble scroll region",
+    );
+    assert.ok(
+      /\.bubble-scroll,\s*\n\.result-body,/.test(stylesSource) &&
+        stylesSource.includes("scrollbar-width: none"),
+      "scrollbar-width: none must cover the PR3 scroll regions",
+    );
+  });
+});
+
+describe("question-bubble PR3 — collapse toggle (spec §5/§8.6)", () => {
+  it("the toggle names its consequence: Show/Hide place name", () => {
+    assert.ok(
+      source.includes('"Show place name"') || source.includes(">Show place name<") ||
+        /\{expanded \? "Hide place name" : "Show place name"\}/.test(source),
+      "the toggle must read “Show place name” / “Hide place name”",
+    );
+    assert.ok(
+      !source.includes("Collapse question") && !source.includes("Expand question"),
+      "the old Collapse/Expand question labels are gone",
+    );
+  });
+
+  it("the toggle exposes aria-expanded and is full-width, 44px minimum", () => {
+    assert.ok(
+      /<button\b[^>]*className="bubble-toggle"[^>]*>/.test(source),
+      "the toggle needs the .bubble-toggle class",
+    );
+    const toggle = /<button\b[^>]*className="bubble-toggle"[^>]*>/.exec(source)![0];
+    assert.ok(
+      toggle.includes("aria-expanded={expanded}"),
+      "the toggle must expose aria-expanded",
+    );
+    assert.ok(
+      stylesSource.includes(".bubble-toggle"),
+      "styles.css must style the toggle",
+    );
+    const block = /\.bubble-toggle\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(block && block.includes("min-height: 44px"), "toggle min-height 44px");
+  });
+
+  it("collapsed folds the name away entirely: the panel uses hidden", () => {
+    // Honest, never clamped: the folded panel uses `hidden` (removed
+    // from AT) — there is no collapsed name element anymore.
+    assert.ok(
+      /<div className="scroll-cue-wrap bubble-scroll-wrap" hidden=\{!expanded\}>/.test(
+        source,
+      ),
+      "the name+hint panel must fold away with hidden when collapsed",
+    );
+    assert.ok(
+      stylesSource.includes(".scroll-cue-wrap[hidden]"),
+      "styles.css must keep [hidden] authoritative over the wrapper display",
     );
   });
 });
@@ -345,5 +469,176 @@ describe("cartographer's plate PR2 — dossier guess rows (LoopScreen.tsx)", () 
       "closest-guess line",
     );
     assertNameContract("closest-guess line", className);
+  });
+});
+
+describe("cartographer's plate PR3 — GeoDetective scroll architecture (LoopScreen.tsx)", () => {
+  it("the guess list scrolls as one named region; rows never scroll (spec §5)", () => {
+    assert.ok(
+      loopScreenSource.includes("function GuessListScroll"),
+      "the guess list needs its scroll-region wrapper",
+    );
+    assert.ok(
+      loopScreenSource.includes('aria-label="Guess list — scroll for more"'),
+      "the guess-list region must be named per spec §8.1",
+    );
+    assert.ok(
+      /className="loop-guess-scroll"[\s\S]{0,200}?role="region"/.test(loopScreenSource) ||
+        /role="region"[\s\S]{0,200}?className="loop-guess-scroll"/.test(loopScreenSource),
+      "the guess-list region needs role=\"region\"",
+    );
+    assert.ok(
+      stylesSource.includes(".loop-guess-scroll"),
+      "styles.css must style the guess-list region",
+    );
+    // The standalone .loop-guess-scroll rule (not the shared scrollbar
+    // group): match the rule whose block carries max-height.
+    const ruleMatch = /\.loop-guess-scroll\s*\{[^}]*max-height:[^}]*\}/.exec(
+      stylesSource,
+    );
+    assert.ok(ruleMatch, ".loop-guess-scroll CSS rule must exist");
+    assert.ok(
+      ruleMatch[0].includes("max-height: 40dvh"),
+      "the guess LIST scrolls at max-h 40dvh (spec §5)",
+    );
+    assert.ok(
+      ruleMatch[0].includes("overflow-y: auto"),
+      "the guess list scrolls",
+    );
+    // Rows never scroll: no overflow on the dossier rows themselves.
+    assert.ok(
+      !/\.dossier-row\s*\{[^}]*overflow/.test(stylesSource),
+      "dossier rows must never scroll — only the list does",
+    );
+  });
+
+  it("the bottom sheet pins its 48px dismiss header (spec §5)", () => {
+    assert.ok(
+      loopScreenSource.includes("sheet-header"),
+      "the sheet header needs the .sheet-header class",
+    );
+    const block = /\.sheet-header\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(block && block.includes("min-height: 48px"), "sheet header min-height 48px");
+    // Detents + overscroll containment survive PR3.
+    assert.ok(
+      loopScreenSource.includes("min(85dvh, 36rem)") &&
+        loopScreenSource.includes("min(45dvh, 20rem)"),
+      "the sheet keeps its half/full detents",
+    );
+    assert.ok(
+      loopScreenSource.includes('overscrollBehavior: "contain"'),
+      "the sheet keeps overscroll-behavior: contain",
+    );
+    assert.ok(
+      loopScreenSource.includes("size-12"),
+      "the dismiss button stays 48px (size-12)",
+    );
+  });
+
+  it("the loop reveal is a three-zone card: pinned header / body / CTA", () => {
+    assert.ok(
+      loopScreenSource.includes("loop-reveal-header"),
+      "zone 1: pinned header",
+    );
+    assert.ok(
+      loopScreenSource.includes("loop-reveal-cta"),
+      "zone 3: pinned CTA",
+    );
+    assert.ok(
+      loopScreenSource.includes('aria-label="Case file — scroll for more"'),
+      "zone 2: the body region must be named per spec §8.1",
+    );
+    assert.ok(
+      loopScreenSource.includes("🔎 Next mystery"),
+      "the pinned CTA keeps the next-mystery retention hook",
+    );
+    const ctaBlock = /\.loop-reveal-cta\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(ctaBlock, ".loop-reveal-cta CSS must exist");
+    assert.ok(
+      ctaBlock.includes("flex-shrink: 0"),
+      "the CTA zone is pinned (flex-shrink: 0)",
+    );
+    assert.ok(
+      ctaBlock.includes("var(--game-chrome-solid)"),
+      "the CTA zone uses the solid chrome bg (spec §5)",
+    );
+  });
+
+  it("clue-history rows compact to summaries; full text stays in the DOM (spec §5)", () => {
+    assert.ok(
+      loopScreenSource.includes("clue-history-toggle"),
+      "summary rows need the toggle",
+    );
+    const toggle = /<button\b[^>]*className="clue-history-toggle"[^>]*>/.exec(
+      loopScreenSource,
+    )?.[0];
+    assert.ok(toggle, "the summary row toggle must exist");
+    assert.ok(
+      toggle.includes("aria-expanded={open}"),
+      "the toggle must expose aria-expanded",
+    );
+    assert.ok(
+      toggle.includes('data-testid={`clue-history-row-${index + 1}`}'),
+      "summary rows keep a stable testid",
+    );
+    // The full clue text stays in the DOM, expanded on tap.
+    assert.ok(
+      loopScreenSource.includes("<p className=\"text-sm text-fg\">{clue.clues[index]}</p>"),
+      "the full clue text stays in the DOM inside the expandable panel",
+    );
+    assert.ok(
+      /<div hidden=\{!open\} className="clue-history-body">/.test(loopScreenSource),
+      "the collapsed panel uses hidden (removed from AT until expanded)",
+    );
+    // The summary shows only the tier label + clue number.
+    assert.ok(
+      loopScreenSource.includes("Clue {index + 1} · {tier}"),
+      "the summary row shows only the clue-tier label and clue number",
+    );
+    const toggleBlock = /\.clue-history-toggle\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(
+      toggleBlock && toggleBlock.includes("min-height: 48px"),
+      "summary-row toggles keep the 48px motor minimum (§8.10)",
+    );
+  });
+
+  it("no italics on any PR3 surface (spec §8.9)", () => {
+    for (const [label, src] of [
+      ["question-bubble", source],
+      ["result-card", resultCardSource],
+      ["LoopScreen", loopScreenSource],
+    ] as const) {
+      assert.ok(
+        !/font-style:\s*italic/.test(src) && !/italic['"]/.test(src),
+        `${label} must not use italics`,
+      );
+    }
+  });
+
+  it("200%-zoom caps exist in CSS (spec §8.7)", () => {
+    assert.ok(
+      stylesSource.includes("max-height: 30%"),
+      "the meta band is capped at 30% of the card height",
+    );
+    const mins = stylesSource.match(/min-height: max\(120px, 20%\)/g) ?? [];
+    assert.ok(
+      mins.length >= 3,
+      `scroll regions keep ≥ max(120px, 20%) — found ${mins.length}, want ≥3 (bubble, result body, loop body)`,
+    );
+  });
+
+  it("focus contract exists in CSS (spec §8.2)", () => {
+    assert.ok(
+      stylesSource.includes("outline: 2px solid var(--atlas-brass-text)"),
+      "the ≥2px --atlas-brass-text focus ring must exist",
+    );
+    assert.ok(
+      stylesSource.includes("outline-offset: 2px"),
+      "the focus ring needs its 2px offset",
+    );
+    assert.ok(
+      stylesSource.includes("scroll-margin:"),
+      ":focus-visible needs scroll-margin so focus never lands under the fade",
+    );
   });
 });

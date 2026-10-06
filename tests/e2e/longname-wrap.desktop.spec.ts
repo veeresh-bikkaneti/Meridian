@@ -293,24 +293,33 @@ for (const vp of VIEWPORTS) {
           // Frozen seam: the difficulty chip is untouched by this PR.
           await expect(page.getByTestId("difficulty-chip")).toBeVisible();
 
-          // Collapsed view: the name still wraps instead of truncating.
-          await page.getByRole("button", { name: "Collapse question" }).click();
-          await expectFullName(page, "p.place-name", TARGET_LABEL);
+          // Collapsed view (Cartographer's Plate PR3): the name folds away
+          // entirely — honest, never clamped.
+          await page.getByRole("button", { name: "Hide place name" }).click();
+          const toggle = page.getByRole("button", { name: "Show place name" });
+          await expect(toggle).toBeVisible({ timeout: 10_000 });
+          await expect(toggle).toHaveAttribute("aria-expanded", "false");
+          await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
 
           // Re-open, commit a guaranteed miss on a NAMED place, and check the
-          // reveal card: answer heading + pin-compare-line both carry full
+          // reveal card: verdict h2 + pin-compare-line both carry full
           // names. (A mid-ocean pin fail-closes to no pin-compare-line, so
           // the miss targets Vancouver through the __project seam.)
-          await page.getByRole("button", { name: "Expand question" }).click();
+          await toggle.click();
           const miss = await missPointOnNamedPlace(page);
           const { phase } = await commitPin(page, miss.x, miss.y);
           expect(phase, "the Vancouver tap must be a miss (done phase)").toBe("done");
 
           const card = page.locator('section[aria-label="Result"]');
           await expect(card).toBeVisible({ timeout: 15_000 });
+          // PR3 verdict-first: the pinned verdict h2 reads "Result: …";
+          // the full answer name lives only in the ledger TRUE SPOT.
+          const verdict = page.getByTestId("miss-headline");
+          await expect(verdict).toBeVisible({ timeout: 15_000 });
+          expect(((await verdict.textContent()) ?? "").trim()).toMatch(/^Result: /);
           await expectFullName(
             page,
-            'section[aria-label="Result"] h2.place-name',
+            '[data-testid="pin-compare-line"] .truespot-name',
             TARGET_LABEL,
           );
           // Frozen seam: the pin-compare-line testid is untouched.
