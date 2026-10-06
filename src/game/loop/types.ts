@@ -17,6 +17,13 @@ export interface LoopGuess {
   octant: Octant;
   /** Warmer than the previous guess; null for the first guess. */
   warmer: boolean | null;
+  /**
+   * Guessed place coordinates, for the map's deduction surface (rings).
+   * Present on every guess made through the map; absent on pre-map days
+   * (the validator tolerates the absence — those days simply draw no ring).
+   */
+  lon?: number;
+  lat?: number;
 }
 
 export type LoopStatus = "playing" | "won" | "lost";

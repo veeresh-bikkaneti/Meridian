@@ -58,6 +58,8 @@ export function buildLoopGuess(
 ): LoopGuess {
   return {
     name: pick.name,
+    lon: pick.lon,
+    lat: pick.lat,
     ...evaluateGuess(
       { id: pick.placeId, lon: pick.lon, lat: pick.lat },
       target,

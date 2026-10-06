@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { formatDistance } from "@/game/geo";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
+import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { loopDateKey, loopDayIndex, loopNowFromSearch } from "./day";
 import { getDayState, saveDayState } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
@@ -293,8 +294,106 @@ function LoopGame({
   const finished = dayState.status !== "playing";
   const guessesLeft = LOOP_MAX_GUESSES - dayState.guesses.length;
 
+  // Detective's Atlas (Option A): the map is the primary guess surface.
+  const mapHandleRef = useRef<LoopMapHandle | null>(null);
+  // Place tapped on the map, awaiting confirm in the bottom sheet.
+  const [selected, setSelected] = useState<LoopNameEntry | null>(null);
+  // Gentle hint for ocean/empty taps (fail closed: never a wasted guess).
+  const [emptyTapHint, setEmptyTapHint] = useState(false);
+  // Screen-reader announcement for each freshly drawn ring.
+  const [ringNote, setRingNote] = useState<string | null>(null);
+  const announcedCount = useRef(dayState.guesses.length);
+
+  // Tap on the map: open the confirm sheet for the resolved place.
+  const onMapSelect = (entry: LoopNameEntry) => {
+    if (finished) return;
+    setEmptyTapHint(false);
+    setSelected(entry);
+  };
+  const onMapEmptyTap = () => {
+    setSelected(null);
+    setEmptyTapHint(true);
+  };
+  // Camera-jump search: fly there AND select the place (the sheet still
+  // confirms — a jump never burns a guess by itself).
+  const onJump = (entry: LoopNameEntry) => {
+    if (finished) return;
+    mapHandleRef.current?.flyToEntry(entry);
+    setEmptyTapHint(false);
+    setSelected(entry);
+  };
+  // Bottom-sheet confirm: the same onPick flow as the old typeahead —
+  // duplicate check, engine submit, persist.
+  const onConfirmSelected = () => {
+    if (!selected) return;
+    onPick(selected);
+    setSelected(null);
+  };
+
+  // Announce each new ring as text (the visual deduction surface has a
+  // spoken equivalent).
+  useEffect(() => {
+    const n = dayState.guesses.length;
+    if (n > announcedCount.current) {
+      const latest = dayState.guesses[n - 1];
+      if (latest && latest.distKm > 0) setRingNote(ringAnnouncement(latest));
+    }
+    announcedCount.current = n;
+  }, [dayState.guesses]);
+
+  // Clear a stale selection when the day finishes underneath it.
+  useEffect(() => {
+    if (finished) setSelected(null);
+  }, [finished]);
+
   return (
     <div className="mt-8 flex flex-col gap-6">
+      <section aria-label="Detective's map" className="flex flex-col gap-3">
+        <p className="text-sm text-muted" role="status">
+          Guess {dayState.guesses.length + 1} of {LOOP_MAX_GUESSES}
+          {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
+        </p>
+        <LoopMap
+          guesses={dayState.guesses}
+          target={clue.target}
+          finished={finished}
+          handleRef={mapHandleRef}
+          onSelectPlace={onMapSelect}
+          onEmptyTap={onMapEmptyTap}
+        />
+        {!finished ? (
+          <>
+            <GuessInput mode="jump" onJump={onJump} />
+            {emptyTapHint ? (
+              <p role="status" className="text-sm text-muted">
+                That spot isn&rsquo;t a labeled place — tap a name on the map, or search
+                above to fly there.
+              </p>
+            ) : null}
+            {notice ? (
+              <p role="status" className="text-sm text-fg">
+                {notice}
+              </p>
+            ) : null}
+          </>
+        ) : (
+          <p className="text-sm text-muted">
+            Case closed — the gold star marks today&rsquo;s answer.
+          </p>
+        )}
+        <p role="status" aria-live="polite" className="sr-only">
+          {ringNote}
+        </p>
+      </section>
+
+      {selected && !finished ? (
+        <PlaceSheet
+          entry={selected}
+          onConfirm={onConfirmSelected}
+          onCancel={() => setSelected(null)}
+        />
+      ) : null}
+
       <section aria-label="Clues" className="flex flex-col gap-3">
         {clue.clues.map((text, i) => (
           <ClueCard
@@ -309,25 +408,6 @@ function LoopGame({
           />
         ))}
       </section>
-
-      {!finished ? (
-        <section aria-label="Make a guess" className="flex flex-col gap-3">
-          <p className="text-sm text-muted" role="status">
-            Guess {dayState.guesses.length + 1} of {LOOP_MAX_GUESSES}
-            {guessesLeft <= 2 ? ` — ${guessesLeft} left` : ""}
-          </p>
-          <p className="text-sm text-muted">
-            Pick a name from the list, then press Guess — each press uses one of your five
-            guesses.
-          </p>
-          <GuessInput onPick={onPick} />
-          {notice ? (
-            <p role="status" className="text-sm text-fg">
-              {notice}
-            </p>
-          ) : null}
-        </section>
-      ) : null}
 
       {dayState.guesses.length > 0 ? (
         <section aria-label="Your guesses" className="flex flex-col gap-2">
@@ -365,6 +445,63 @@ function LoopGame({
           onLeave={onLeave}
         />
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * Confirm bottom sheet for a map-tapped place (Option A).
+ * The tap only SELECTS — this sheet's button burns the guess, so a
+ * mis-tap never costs one of the five. All targets ≥ 44px (fat-finger
+ * safety on mobile). Escape/backdrop cancel without penalty.
+ */
+function PlaceSheet({
+  entry,
+  onConfirm,
+  onCancel,
+}: {
+  entry: LoopNameEntry;
+  onConfirm: () => void;
+  onCancel: () => void;
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCancel();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onCancel]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Guess ${displayLoopName(entry)}?`}
+      className="fixed inset-0 z-50 flex items-end justify-center"
+    >
+      <button
+        type="button"
+        aria-label="Cancel — keep exploring the map"
+        onClick={onCancel}
+        className="absolute inset-0 cursor-default bg-black/60"
+      />
+      <div className="relative w-full max-w-md rounded-t-3xl border border-line bg-surface p-6 pb-8">
+        <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
+        <h2 className="mt-1 font-display text-2xl text-fg">{displayLoopName(entry)}</h2>
+        <div className="mt-5 flex flex-col gap-2">
+          <Button type="button" onClick={onConfirm} className="min-h-[48px] w-full text-base">
+            Guess this place
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={onCancel}
+            className="min-h-[48px] w-full"
+          >
+            Not this one
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

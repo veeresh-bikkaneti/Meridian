@@ -33,8 +33,21 @@ type LoadState = "idle" | "loading" | "ready" | "error";
  *   closes the listbox.
  * - Free text with no match shows a friendly inline message and never
  *   arms the Guess button.
+ *
+ * Jump mode ("jump"): the same combobox, demoted to camera navigation for
+ * the Detective's Atlas. Picking a suggestion flies the map camera there
+ * via onJump and never submits a guess — there is no Guess button. The
+ * keyboard/screen-reader path stays fully operable.
  */
-export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void }): JSX.Element {
+export function GuessInput({
+  onPick,
+  mode = "guess",
+  onJump,
+}: {
+  onPick?: (entry: LoopNameEntry) => void;
+  mode?: "guess" | "jump";
+  onJump?: (entry: LoopNameEntry) => void;
+}): JSX.Element {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<LoopNameEntry[] | null>(null);
   const [loadState, setLoadState] = useState<LoadState>("idle");
@@ -78,8 +91,18 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
     if (loadState === "idle") loadIndex();
   }
 
-  /** Propose: fill the input and arm the Guess button. Burns nothing. */
+  /** Propose: fill the input and arm the Guess button. Burns nothing.
+   * In jump mode the proposal IS the action: fly the camera immediately. */
   function propose(entry: LoopNameEntry): void {
+    if (mode === "jump") {
+      setStatusNote(null);
+      setQuery("");
+      setOpen(false);
+      setActiveIndex(-1);
+      onJump?.(entry);
+      inputRef.current?.focus();
+      return;
+    }
     setPending(entry);
     setStatusNote(null);
     setQuery(displayLoopName(entry));
@@ -92,7 +115,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
   /** Commit: the Guess button burns one of the five guesses. */
   function commit(): void {
     if (!pending) return;
-    onPick(pending);
+    onPick?.(pending);
     setPending(null);
     setQuery("");
     setOpen(false);
@@ -135,10 +158,13 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
     }
   }
 
+  const label = mode === "jump" ? "Search the map" : "Guess the place";
+  const placeholder = mode === "jump" ? "Type a place to fly there…" : "Type a place name…";
+
   return (
     <div className="relative w-full">
       <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-muted">
-        Guess the place
+        {label}
       </label>
       <input
         ref={inputRef}
@@ -156,7 +182,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
         autoCapitalize="off"
         autoCorrect="off"
         spellCheck={false}
-        placeholder="Type a place name…"
+        placeholder={placeholder}
         value={query}
         onFocus={() => {
           ensureIndexLoaded();
@@ -201,9 +227,11 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
           ))}
         </ul>
       )}
-      <Button type="button" onClick={commit} disabled={pending === null} className="mt-2 w-full">
-        Guess
-      </Button>
+      {mode === "guess" ? (
+        <Button type="button" onClick={commit} disabled={pending === null} className="mt-2 w-full">
+          Guess
+        </Button>
+      ) : null}
       <p id={statusId} role="status" className="mt-1 min-h-[1.25rem] text-sm text-muted">
         {statusNote}
         {!statusNote && loadState === "loading" && "Loading place names…"}
