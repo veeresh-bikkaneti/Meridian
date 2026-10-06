@@ -163,20 +163,37 @@ async function expectAim(page: Page): Promise<void> {
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
 }
 
-/** A tap point deep in the far west of the map — a guaranteed miss for an Ontario target. */
-async function farMissPoint(page: Page): Promise<{ x: number; y: number }> {
-  const p = await page.locator(".satellite-map").evaluate((el) => {
-    const r = el.getBoundingClientRect();
-    return {
-      x: Math.round(r.left + r.width * 0.12),
-      y: Math.round(r.top + r.height * 0.7),
-    };
-  });
+/**
+ * Vancouver, BC — ~3,300 km from the Ontario target (a guaranteed miss) and
+ * a pool place, so the pin reverse-geocodes and the pin-compare-line
+ * renders (ocean pins fail closed to no line — observed in the first E2E
+ * pass). Projected through the __project E2E seam so the tap point is
+ * deterministic at every viewport.
+ */
+const MISS_LON = -123.11934;
+const MISS_LAT = 49.24966;
+
+async function missPointOnNamedPlace(page: Page): Promise<{ x: number; y: number }> {
+  const p = await page.locator(".satellite-map").evaluate(
+    (el, [lon, lat]: [number, number]) => {
+      const hook = (
+        el as unknown as {
+          __project?: (lo: number, la: number) => { x: number; y: number } | null;
+        }
+      ).__project;
+      const s = hook?.(lon, lat) ?? null;
+      if (!s) return null;
+      const r = el.getBoundingClientRect();
+      return { x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) };
+    },
+    [MISS_LON, MISS_LAT] as [number, number],
+  );
+  expect(p, "the __project seam must resolve the miss point").not.toBeNull();
   expect(
-    await tapHitsMap(page, p.x, p.y),
+    await tapHitsMap(page, p!.x, p!.y),
     "miss tap point must hit the map canvas, not chrome",
   ).toBe(true);
-  return p;
+  return p!;
 }
 
 // ---- GeoDetective helpers (mirror geodetective.spec.ts) ----
@@ -280,12 +297,14 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Collapse question" }).click();
           await expectFullName(page, "p.place-name", TARGET_LABEL);
 
-          // Re-open, commit a guaranteed miss, and check the reveal card:
-          // answer heading + pin-compare-line both carry full names.
+          // Re-open, commit a guaranteed miss on a NAMED place, and check the
+          // reveal card: answer heading + pin-compare-line both carry full
+          // names. (A mid-ocean pin fail-closes to no pin-compare-line, so
+          // the miss targets Vancouver through the __project seam.)
           await page.getByRole("button", { name: "Expand question" }).click();
-          const miss = await farMissPoint(page);
+          const miss = await missPointOnNamedPlace(page);
           const { phase } = await commitPin(page, miss.x, miss.y);
-          expect(phase, "the far-west tap must be a miss (done phase)").toBe("done");
+          expect(phase, "the Vancouver tap must be a miss (done phase)").toBe("done");
 
           const card = page.locator('section[aria-label="Result"]');
           await expect(card).toBeVisible({ timeout: 15_000 });

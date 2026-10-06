@@ -695,6 +695,26 @@ export function SatelliteMap(props: {
       };
     };
 
+    // E2E seam (mirrors __spotScreen): project an arbitrary lon/lat to
+    // wrapper-relative screen coordinates so specs can tap deterministic
+    // geographic points (e.g. a miss pin on a named place for the
+    // pin-compare-line assertions). Inert in production.
+    (
+      wrapperEl as unknown as {
+        __project?: (lon: number, lat: number) => { x: number; y: number } | null;
+      }
+    ).__project = (lon: number, lat: number) => {
+      const liveMap = mapRef.current;
+      if (!liveMap) return null;
+      const p = liveMap.project([lon, lat]);
+      const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
+      const wrapperRect = wrapperEl.getBoundingClientRect();
+      return {
+        x: p.x + (containerRect.left - wrapperRect.left),
+        y: p.y + (containerRect.top - wrapperRect.top),
+      };
+    };
+
     // Design §2: the starfield mounts behind the map container (first child
     // of the wrapper, own absolute positioning + dark fallback, canvases
     // pointer-events-none). The MapLibre canvas is alpha:true with no
