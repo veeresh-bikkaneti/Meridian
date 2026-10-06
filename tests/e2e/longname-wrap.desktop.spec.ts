@@ -263,8 +263,11 @@ for (const vp of VIEWPORTS) {
           await page.goto(APP);
           await seedSeenExcept(page);
           await page.getByRole("button", { name: "Choose a country" }).click();
+          // Canada has no admin1 subdivisions, so choosing it opens the
+          // country run DIRECTLY (game-app.tsx: no "Play entire Canada"
+          // button exists — that header action only renders for the
+          // admin1-drilled countries like the United States).
           await page.getByRole("button", { name: "Canada" }).click();
-          await page.getByRole("button", { name: "Play entire Canada" }).click();
           await expectAim(page);
 
           // Expanded view: the full 106-char qualified label wraps.
