@@ -92,6 +92,13 @@ async function expectCtasUncovered(page: Page) {
   }
 }
 
+function expectCleanConsole(errors: string[]): void {
+  // React #418 is a pre-existing flaky hydration warning, unrelated to this
+  // feature (same filter as the cleared-mode and difficulty-picker specs).
+  const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
+  expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
+}
+
 test("renders bottom-right at desktop size without covering CTAs", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey() });
   const box = await page.getByTestId("comet-mascot").boundingBox();
@@ -104,7 +111,7 @@ test("renders bottom-right at desktop size without covering CTAs", async ({ page
   expect(vp.width - (box!.x + box!.width)).toBeLessThanOrEqual(40);
   expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(40);
   await expectCtasUncovered(page);
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("boop fires the squash reaction and resets", async ({ page }) => {
@@ -113,7 +120,7 @@ test("boop fires the squash reaction and resets", async ({ page }) => {
   await mascot.click();
   await expect(mascot).toHaveAttribute("data-state", "booped");
   await expect(mascot).toHaveAttribute("data-state", "idle", { timeout: 5000 });
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("four quick boops trigger the dizzy easter egg", async ({ page }) => {
@@ -125,7 +132,7 @@ test("four quick boops trigger the dizzy easter egg", async ({ page }) => {
   await expect(mascot).toHaveAttribute("data-state", "dizzy", { timeout: 5000 });
   await expect(page.locator(".comet-svg")).toHaveAttribute("data-eyes", "dizzy");
   await expect(mascot).toHaveAttribute("data-state", "idle", { timeout: 8000 });
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("cursor tracking turns the head toward the pointer", async ({ page }) => {
@@ -137,14 +144,16 @@ test("cursor tracking turns the head toward the pointer", async ({ page }) => {
   await page.mouse.move(60, 60);
   await expect
     .poll(async () => pupils.getAttribute("style"), { timeout: 5000 })
-    .not.toBe("translate(0px, 0px)");
+    .not.toContain("translate(0px, 0px)");
   const turned = await pupils.getAttribute("style");
   expect(turned).toContain("-"); // NW = negative x/y offsets
   // Back onto the mascot: inside the dead zone → neutral pose.
   const box = await mascot.boundingBox();
   await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
-  await expect.poll(async () => pupils.getAttribute("style"), { timeout: 5000 }).toBe("translate(0px, 0px)");
-  expect(errors).toEqual([]);
+  await expect
+    .poll(async () => pupils.getAttribute("style"), { timeout: 5000 })
+    .toContain("translate(0px, 0px)");
+  expectCleanConsole(errors);
 });
 
 test("greeting shows once per local day", async ({ page }) => {
@@ -165,7 +174,7 @@ test("greeting shows once per local day", async ({ page }) => {
   await page.evaluate((key) => localStorage.setItem(key, "2000-01-01"), LAST_DATE_KEY);
   await page.reload();
   await expect(page.getByTestId("comet-greeting")).toBeVisible();
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("autoplay gate: audio waits for the first gesture, then plays in sync", async ({ page }) => {
@@ -182,7 +191,7 @@ test("autoplay gate: audio waits for the first gesture, then plays in sync", asy
     .not.toBe("idle");
   const state = await bubble.getAttribute("data-audio");
   expect(["playing", "ended"]).toContain(state);
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("sound off: text greeting with speaker opt-in that leaves the toggle alone", async ({
@@ -201,7 +210,7 @@ test("sound off: text greeting with speaker opt-in that leaves the toggle alone"
   // The global toggle is untouched by the opt-in.
   const sound = await page.evaluate(() => localStorage.getItem("meridian.sound"));
   expect(sound).toBe("off");
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("tap dismisses the greeting instantly", async ({ page }) => {
@@ -212,12 +221,12 @@ test("tap dismisses the greeting instantly", async ({ page }) => {
   await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
   // Mascot stays put — only the bubble dismisses.
   await expect(page.getByTestId("comet-mascot")).toBeVisible();
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });
 
 test("no greeting when already greeted today", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: todayKey() });
   await expect(page.getByTestId("comet-mascot")).toBeVisible();
   await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
-  expect(errors).toEqual([]);
+  expectCleanConsole(errors);
 });

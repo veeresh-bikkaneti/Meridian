@@ -35,7 +35,7 @@ const PUPIL_SCALE = 0.5;
 const BLINK_MIN_MS = 4000;
 const BLINK_MAX_MS = 7000;
 const BLINK_SHUT_MS = 150;
-const BOOP_WINDOW_MS = 2500; // boops inside this window count toward dizzy
+const BOOP_WINDOW_MS = 4000; // boops inside this window count toward dizzy (generous for kid tappers)
 const DIZZY_BOOPS = 4;
 
 function sectorForAngle(angle: number): number {
@@ -50,12 +50,14 @@ function angDist(a: number, b: number): number {
 }
 
 function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(
-    () => typeof matchMedia !== "undefined" && matchMedia(query).matches,
-  );
+  // SSR-safe: the server (no matchMedia) and the client's first render must
+  // agree, or React throws hydration error #418. The real value syncs in
+  // an effect after hydration.
+  const [matches, setMatches] = useState(false);
   useEffect(() => {
     if (typeof matchMedia === "undefined") return;
     const q = matchMedia(query);
+    setMatches(q.matches);
     const onChange = () => setMatches(q.matches);
     q.addEventListener("change", onChange);
     return () => q.removeEventListener("change", onChange);

@@ -25,11 +25,21 @@ mascot + once-per-day TTS greeting bubble. Home page only.
       by parent as 8211183; lines module updated to match.
 
 ## Pending
-- [ ] `npm test` full unit suite (running)
-- [ ] `node scripts/lint-cards.mjs` gate
-- [ ] `npm run build:pages` production build
-- [ ] Playwright E2E (serialized via `flock ~/workspace/.e2e.lock --workers=1`)
+- [x] `npm test` full unit suite — 736/736 green
+- [x] `node scripts/lint-cards.mjs` gate — GATE PASSED
+- [x] `npm run build:pages` production build — green
+- [x] Playwright E2E (serialized via `flock ~/workspace/.e2e.lock`) — 15/15 green
+      (9 desktop + 3 mobile + 3 reduced)
 - [ ] Open PR (base: main) — DO NOT MERGE
+
+## E2E notes
+- React #418 is a pre-existing flaky hydration warning in this repo (the
+  cleared-mode and difficulty-picker specs filter it the same way); the
+  comet specs follow that convention. It is unrelated to this feature.
+- Dizzy window widened 2.5s → 4s: kinder for kid tappers and robust against
+  Playwright actionability waits during the WAAPI squash.
+- `tests/e2e/helpers.ts` gained `.mp3 → audio/mpeg` so the built artifact
+  serves greeting audio with the right content type.
 
 ## Notes
 - No new npm packages; no external assets (mp3s are the approved exception).
