@@ -1,7 +1,10 @@
 /**
  * Meridian SFX — 100% Web Audio synthesized, zero assets.
  *
- * Implements the audio designer's spec at docs/sfx-spec.md (§1–§7).
+ * Implements the audio designer's spec at docs/sfx-spec.md (§1–§7),
+ * extended by the celebration spec (§2.7–§2.14: 9 celebration sounds +
+ * globe-spin loop via admitLoop). The 7 shipped play functions are
+ * untouched by the extension.
  * Sonic identity: cartographic (clean attacks, sine/triangle cores),
  * inquisitive (sound answers "how close am I?"), brass-warm (low-passed,
  * gentle shimmer, ±4-cent detune pairs — never above −12 dB).
@@ -64,6 +67,20 @@ export function setSoundEnabled(on: boolean): void {
     storage()?.setItem(SOUND_KEY, on ? "on" : "off");
   } catch {
     // Storage unavailable (private mode etc.) — silent, game plays on.
+  }
+  if (!on) {
+    // Toggling sound OFF stops any active loop (globe spin) immediately —
+    // spec §7.1. The registry lives in the voice-management section below;
+    // referenced here at call time, so declaration order is irrelevant.
+    const stops = [...activeLoops.values()];
+    activeLoops.clear();
+    for (const stop of stops) {
+      try {
+        stop();
+      } catch {
+        // Silent — sound is enhancement only.
+      }
+    }
   }
 }
 
@@ -198,6 +215,78 @@ function admit(
   }
 }
 
+/**
+ * Module-level registry of active loop stops, keyed by voice key.
+ * `setSoundEnabled(false)` stops every entry; a stolen/finished loop
+ * removes itself via its wrapped stop. Loops have no setTimeout prune —
+ * stop() removes the voice entry manually (spec §7.1).
+ */
+const activeLoops = new Map<string, () => void>();
+
+/**
+ * Admit a looping voice (the globe-spin texture). Same voice-ceiling and
+ * steal ordering as admit(): a loop counts toward MAX_VOICES=8, and a
+ * lower-priority loop (spin = priority 1) is stolen first by
+ * ring/win/lose/fanfare. A stolen loop does NOT auto-restart — the map
+ * layer re-arms on the next dragstart.
+ *
+ * Differences from admit():
+ * - Same-key restart stops the previous instance IMMEDIATELY (no 80 ms
+ *   debounce) — a new spin drag must cut the old texture at once.
+ * - No setTimeout prune: the caller owns the lifetime and must call the
+ *   stop (startGlobeSpin's 30 s auto-stop is a one-shot backstop, and
+ *   stopGlobeSpin()/steal/setSoundEnabled(false) end it).
+ * - The stop removes the voice entry manually via the wrapped callback.
+ *
+ * Returns true when admitted (voice registered, stop registered in
+ * activeLoops), false when dropped (no context, sound off, or the ceiling
+ * is held by higher-priority voices). Never throws.
+ */
+function admitLoop(key: string, priority: VoicePriority, onStop: () => void): boolean {
+  try {
+    if (!ctx || !master) return false;
+    if (!isSoundEnabled()) return false;
+    // Best-effort resume, same as admit() (spec §4).
+    if (ctx.state === "suspended") void resumeQuietly(ctx);
+
+    const now = nowMs();
+    // Same-key restart: stop the previous loop immediately — no debounce.
+    const dup = voices.find((v) => v.key === key);
+    if (dup) {
+      dup.stop();
+      voices = voices.filter((v) => v !== dup);
+    }
+    if (voices.length >= MAX_VOICES) {
+      // Steal the oldest lowest-priority voice. A higher-priority ceiling
+      // refuses the newcomer instead (UI blips never steal ring/win/lose).
+      const victim = [...voices].sort(
+        (a, b) => a.priority - b.priority || a.t - b.t,
+      )[0];
+      if (!victim || victim.priority > priority) return false;
+      victim.stop();
+      voices = voices.filter((v) => v !== victim);
+    }
+    const voice: Voice = { key, priority, t: now, stop: () => {} };
+    // Wrapped stop: runs the caller's teardown, removes the voice entry
+    // manually, and unregisters from the loop registry.
+    const wrappedStop = (): void => {
+      try {
+        onStop();
+      } catch {
+        // Silent — sound is enhancement only.
+      }
+      voices = voices.filter((v) => v !== voice);
+      activeLoops.delete(key);
+    };
+    voice.stop = wrappedStop;
+    voices.push(voice);
+    activeLoops.set(key, wrappedStop);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Synthesis helpers
 // ---------------------------------------------------------------------------
@@ -216,6 +305,9 @@ interface ToneOpts {
   peak: number;
   /** ±cent detune pair: two oscillators at −c/+c (spec: shimmer pairs). */
   detunePairCents?: number;
+  /** Vibrato: LFO rate (Hz) and ±Hz depth applied to osc.frequency. */
+  vibratoRateHz?: number;
+  vibratoDepthHz?: number;
 }
 
 /**
@@ -237,7 +329,7 @@ function scheduleTone(
   env.gain.linearRampToValueAtTime(o.peak, t + a);
   env.gain.exponentialRampToValueAtTime(0.001, t + a + d);
   env.connect(dest);
-  const startOne = (detuneCents: number): OscillatorNode => {
+  const startOne = (detuneCents: number): AudioScheduledSourceNode[] => {
     const osc = c.createOscillator();
     osc.type = o.type;
     osc.frequency.setValueAtTime(o.freq, t);
@@ -248,11 +340,25 @@ function scheduleTone(
     osc.connect(env);
     osc.start(t);
     osc.stop(t + a + d + 0.05);
-    return osc;
+    const out: AudioScheduledSourceNode[] = [osc];
+    if (o.vibratoRateHz && o.vibratoDepthHz) {
+      // LFO → depth gain → osc.frequency, for the small-cheer wobble.
+      const lfo = c.createOscillator();
+      lfo.type = "sine";
+      lfo.frequency.value = o.vibratoRateHz;
+      const depth = c.createGain();
+      depth.gain.value = o.vibratoDepthHz;
+      lfo.connect(depth);
+      depth.connect(osc.frequency);
+      lfo.start(t);
+      lfo.stop(t + a + d + 0.05);
+      out.push(lfo);
+    }
+    return out;
   };
   return o.detunePairCents
-    ? [startOne(-o.detunePairCents), startOne(o.detunePairCents)]
-    : [startOne(0)];
+    ? [...startOne(-o.detunePairCents), ...startOne(o.detunePairCents)]
+    : startOne(0);
 }
 
 function lowpass(c: AudioContext, hz: number): BiquadFilterNode {
@@ -275,6 +381,76 @@ function stopAll(nodes: AudioScheduledSourceNode[], out: GainNode): void {
   } catch {
     // Already disconnected — harmless.
   }
+}
+
+/**
+ * The cached white-noise buffer (shared with playDeal's inline copy —
+ * generation is identical: 0.5 s of white noise via the module-local PRNG).
+ * Generated once; the globe-spin loop reuses it with loop=true, zero new
+ * allocation (spec §7.1).
+ */
+function getNoiseBuf(c: AudioContext): AudioBuffer {
+  if (!noiseBuf) {
+    const len = Math.max(1, Math.floor(c.sampleRate * 0.5));
+    const buf = c.createBuffer(1, len, c.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) data[i] = sfxRandom() * 2 - 1;
+    noiseBuf = buf;
+  }
+  return noiseBuf;
+}
+
+interface NoiseOpts {
+  /** Filter type over the noise — default "bandpass". */
+  filterType?: BiquadFilterType;
+  /** Bandpass center / lowpass cutoff, Hz. */
+  freq: number;
+  /** Bandpass Q (ignored for lowpass). */
+  q?: number;
+  /** Optional exponential sweep of the filter frequency. */
+  glideTo?: number;
+  glideTimeMs?: number;
+  /** Offset from the sound's t0, in ms. */
+  atMs?: number;
+  attackMs: number;
+  decayMs: number;
+  /** Gain peak 0–1 (pre-master). */
+  peak: number;
+}
+
+/**
+ * Schedule one filtered noise burst: linear attack, exponential decay to
+ * −60 dB (0.001), source stops at t0 + A + D + 50 ms — the noise analogue
+ * of scheduleTone. Returns the source node so voice-steal can stop it.
+ */
+function scheduleNoise(
+  c: AudioContext,
+  dest: AudioNode,
+  t0: number,
+  o: NoiseOpts,
+): AudioScheduledSourceNode[] {
+  const t = t0 + (o.atMs ?? 0) / 1000;
+  const a = o.attackMs / 1000;
+  const d = o.decayMs / 1000;
+  const src = c.createBufferSource();
+  src.buffer = getNoiseBuf(c);
+  const f = c.createBiquadFilter();
+  f.type = o.filterType ?? "bandpass";
+  f.frequency.setValueAtTime(o.freq, t);
+  if (o.glideTo !== undefined && o.glideTimeMs) {
+    f.frequency.exponentialRampToValueAtTime(Math.max(1, o.glideTo), t + o.glideTimeMs / 1000);
+  }
+  if (o.q !== undefined) f.Q.value = o.q;
+  const env = c.createGain();
+  env.gain.setValueAtTime(0.0001, t);
+  env.gain.linearRampToValueAtTime(o.peak, t + a);
+  env.gain.exponentialRampToValueAtTime(0.001, t + a + d);
+  src.connect(f);
+  f.connect(env);
+  env.connect(dest);
+  src.start(t);
+  src.stop(t + a + d + 0.05);
+  return [src];
 }
 
 /**
@@ -309,7 +485,7 @@ function uiJitter(freq: number): number {
 }
 
 // ---------------------------------------------------------------------------
-// The 8 sounds (spec §2)
+// The 8 shipped sounds (spec §2.1–§2.6) — DO NOT alter their recipes.
 // ---------------------------------------------------------------------------
 
 /** GeoDetective guess confirm — fired once, after the duplicate check passes. */
@@ -590,6 +766,476 @@ export function playDifficultySelect(): void {
         peak: 0.05,
       }),
     ];
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Celebration sounds (celebration spec §2.7–§2.14). Same contract as the
+// shipped sounds: void, fire-and-forget, try/catch-guarded, behind the
+// meridian.sound toggle, master chain untouched. UI blips (pinDrop,
+// nextPlace, toast, confetti) get ±2% uiJitter; celebrations are
+// deterministic. Peaks: UI tier ≤ 0.25 · cheer/applause ≤ 0.40 ·
+// fanfare ≤ 0.45. Fundamentals live in 98–1600 Hz.
+// ---------------------------------------------------------------------------
+
+/**
+ * Pin placed, placement accepted — a "chart-stamp": bright up-glide +
+ * paper tok. Distinct from playCardTap (D5 587 fixed): lower, gliding,
+ * with the paper tok. Pass/fail is about placement, never accuracy.
+ */
+export function playPinDropPass(): void {
+  try {
+    const commit = admit("pindrop", 1, 150);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 3200);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Osc 1: triangle 392 → 440 Hz exp glide over 40 ms (inquisitive up-lift).
+    nodes.push(
+      ...scheduleTone(c, lp, t0, {
+        type: "triangle",
+        freq: uiJitter(392),
+        glideTo: uiJitter(440),
+        glideTimeMs: 40,
+        attackMs: 3,
+        decayMs: 60,
+        peak: 0.24,
+      }),
+    );
+    // Osc 2: paper tok — cached noise → bandpass 1800 Hz, Q 1.0.
+    nodes.push(
+      ...scheduleNoise(c, lp, t0, {
+        freq: 1800,
+        q: 1.0,
+        attackMs: 2,
+        decayMs: 30,
+        peak: 0.1,
+      }),
+    );
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Tap rejected — soft "page turn": airy descend. Fail = placement
+ * rejected, no reveal follows (camera animating, double-tap misfire, tap
+ * on non-interactive chrome). Deliberately no buzzer, no dissonance;
+ * distinguishable from the pass in <150 ms (bright up-lift vs descend).
+ */
+export function playPinDropFail(): void {
+  try {
+    const commit = admit("pindrop", 1, 300);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 1000);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Noise: bandpass sweeping 1200 → 450 Hz over 220 ms, soft attack.
+    nodes.push(
+      ...scheduleNoise(c, lp, t0, {
+        freq: 1200,
+        glideTo: 450,
+        glideTimeMs: 220,
+        attackMs: 25,
+        decayMs: 220,
+        peak: 0.14,
+      }),
+    );
+    // Osc: sine 247 → 220 Hz gentle exp fall over 200 ms.
+    nodes.push(
+      ...scheduleTone(c, lp, t0, {
+        type: "sine",
+        freq: uiJitter(247),
+        glideTo: uiJitter(220),
+        glideTimeMs: 200,
+        attackMs: 25,
+        decayMs: 240,
+        peak: 0.12,
+      }),
+    );
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/** One-shot backstop for the globe-spin loop: fires stopGlobeSpin() at 30 s. */
+let spinAutoStop: ReturnType<typeof setTimeout> | undefined;
+
+/**
+ * Start the intro globe-rotation texture (spec §7.1): the cached noise
+ * buffer looping (zero new allocation) → bandpass 850 Hz Q0.7 → gain
+ * ramps 0 → 0.10 over 400 ms. Idempotent — restarting cuts the previous
+ * loop immediately (no debounce) and re-arms the 30 s safety. Before
+ * initAudio() (or with sound off) this is a silent no-op that never throws.
+ */
+export function startGlobeSpin(): void {
+  try {
+    if (!ctx || !master) return;
+    // Cut any running spin first: idempotent restart AND clears the old
+    // 30 s backstop so a fresh one is armed below.
+    stopGlobeSpin();
+    const c = ctx;
+    const t0 = c.currentTime;
+    const src = c.createBufferSource();
+    src.buffer = getNoiseBuf(c);
+    src.loop = true;
+    const bp = c.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = 850;
+    bp.Q.value = 0.7;
+    const spinGain = c.createGain();
+    spinGain.gain.setValueAtTime(0, t0);
+    spinGain.gain.linearRampToValueAtTime(0.1, t0 + 0.4);
+    src.connect(bp);
+    bp.connect(spinGain);
+    spinGain.connect(master);
+    src.start(t0);
+    let stopped = false;
+    const doStop = (): void => {
+      if (stopped) return;
+      stopped = true;
+      try {
+        const t = c.currentTime;
+        spinGain.gain.cancelScheduledValues(t);
+        spinGain.gain.setValueAtTime(spinGain.gain.value, t);
+        spinGain.gain.linearRampToValueAtTime(0.0001, t + 0.25);
+        src.stop(t + 0.3);
+        if (typeof setTimeout !== "undefined") {
+          setTimeout(() => {
+            try {
+              spinGain.disconnect();
+            } catch {
+              // Already disconnected — harmless.
+            }
+          }, 400);
+        }
+      } catch {
+        // Silent — sound is enhancement only.
+      }
+    };
+    if (!admitLoop("spin", 1, doStop)) {
+      // Dropped (voice ceiling held by higher-priority voices) — tear down.
+      try {
+        src.stop();
+      } catch {
+        // Already stopped — harmless.
+      }
+      try {
+        spinGain.disconnect();
+      } catch {
+        // Already disconnected — harmless.
+      }
+      return;
+    }
+    // 30 s auto-stop safety: a single one-shot setTimeout (NOT setInterval —
+    // spec §7). Backstop only; callers stop on screen transition.
+    if (typeof setTimeout !== "undefined") {
+      spinAutoStop = setTimeout(() => {
+        spinAutoStop = undefined;
+        stopGlobeSpin();
+      }, 30_000);
+    }
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Stop the globe-spin texture: gain fades to 0.0001 over 250 ms, the
+ * source stops at fade end, nodes disconnect. No-op when not running —
+ * never throws.
+ */
+export function stopGlobeSpin(): void {
+  try {
+    if (typeof clearTimeout !== "undefined" && spinAutoStop !== undefined) {
+      clearTimeout(spinAutoStop);
+      spinAutoStop = undefined;
+    }
+    const stop = activeLoops.get("spin");
+    if (stop) stop(); // wrapped: fades out, removes the voice entry, unregisters
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Regular-game "Next place" — chart unrolling, not a case file:
+ * bright paper snap + rising chirp. Distinct from playDeal's 2400 Hz snap.
+ */
+export function playNextPlace(): void {
+  try {
+    const commit = admit("nextplace", 1, 200);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 3200);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Snap: brighter paper than playDeal's snap (3000 Hz vs 2400 Hz).
+    nodes.push(
+      ...scheduleNoise(c, lp, t0, {
+        freq: 3000,
+        q: 1.0,
+        attackMs: 2,
+        decayMs: 50,
+        peak: 0.24,
+      }),
+    );
+    // Chirp: triangle 330 → 392 Hz over 60 ms at t0 + 20 ms.
+    nodes.push(
+      ...scheduleTone(c, lp, t0, {
+        type: "triangle",
+        freq: uiJitter(330),
+        glideTo: uiJitter(392),
+        glideTimeMs: 60,
+        atMs: 20,
+        attackMs: 3,
+        decayMs: 90,
+        peak: 0.18,
+      }),
+    );
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Spark/Cheer-tier milestone — three triangle voices (C5→E5→G5),
+ * staggered 70 ms, formant-tinted (bandpass 900 Hz Q2) with a 6 Hz
+ * vibrato ±15 Hz. Deterministic (celebrations carry meaning — no jitter).
+ */
+export function playSmallCheer(): void {
+  try {
+    const commit = admit("cheer", 3, 500);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const bp = c.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = 900;
+    bp.Q.value = 2;
+    const out = c.createGain();
+    bp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    for (const [i, freq] of [523.25, 659.25, 783.99].entries()) {
+      nodes.push(
+        ...scheduleTone(c, bp, t0, {
+          type: "triangle",
+          freq,
+          atMs: i * 70,
+          attackMs: 5,
+          decayMs: 250,
+          peak: 0.18,
+          vibratoRateHz: 6,
+          vibratoDepthHz: 15,
+        }),
+      );
+    }
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Difficulty cleared — 8 hand-claps over a G-major pad. 8 cached-noise
+ * bursts (bandpass 1500 Hz Q1.5) + triangle triad 392/493.88/587.33 with
+ * ±4-cent detune pairs. Deterministic. Total ~1.15 s (≤ 1.2 s ceiling).
+ */
+export function playMediumApplause(): void {
+  try {
+    const commit = admit("applause", 3, 1200);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 2500);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Claps at t0 + 90/180/300/430/560/700/870/1050 ms.
+    for (const atMs of [90, 180, 300, 430, 560, 700, 870, 1050]) {
+      nodes.push(
+        ...scheduleNoise(c, lp, t0, {
+          freq: 1500,
+          q: 1.5,
+          atMs,
+          attackMs: 1,
+          decayMs: 40,
+          peak: 0.14,
+        }),
+      );
+    }
+    // Pad: G-major triad, ±4-cent detune pairs (brass-warm shimmer).
+    for (const freq of [392, 493.88, 587.33]) {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "triangle",
+          freq,
+          attackMs: 50,
+          decayMs: 1000,
+          peak: 0.1,
+          detunePairCents: 4,
+        }),
+      );
+    }
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * 387-cycle completion / hard-clear coronation — G-major fanfare
+ * (distinct from playWin's C major): G4 392 → C5 523.25 → E5 659.25 →
+ * G5 783.99 (hold), staggered 140/140/280 ms, ±4-cent detune pairs; sine
+ * shimmer 1568 Hz on the final; noise crowd swell → lowpass 800 Hz.
+ * Deterministic. Total ~1.15 s — Veeresh's locked fit (spec §2.7): the
+ * recipe's shimmer D 700 is trimmed to D 570 so the final lands at
+ * 560 + 8 + 570 = 1138 ms, inside the 1.2 s ceiling.
+ */
+export function playGrandFanfare(): void {
+  try {
+    const commit = admit("fanfare", 3, 1200);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 4500);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    const notes: Array<[number, number]> = [
+      [392, 0],
+      [523.25, 140],
+      [659.25, 280],
+      [783.99, 560],
+    ];
+    for (const [freq, atMs] of notes) {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "triangle",
+          freq,
+          atMs,
+          attackMs: 8,
+          decayMs: 420,
+          peak: 0.28,
+          detunePairCents: 4,
+        }),
+      );
+    }
+    // Shimmer on the final note.
+    nodes.push(
+      ...scheduleTone(c, lp, t0, {
+        type: "sine",
+        freq: 1568,
+        atMs: 560,
+        attackMs: 8,
+        decayMs: 570,
+        peak: 0.08,
+      }),
+    );
+    // Crowd swell: noise → lowpass 800 Hz, A 300 ms / D 600 ms.
+    nodes.push(
+      ...scheduleNoise(c, lp, t0, {
+        filterType: "lowpass",
+        freq: 800,
+        attackMs: 300,
+        decayMs: 600,
+        peak: 0.1,
+      }),
+    );
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Milestone banner slides in (no confetti) — soft glassy chime:
+ * sine 880 → 990 Hz glide over 80 ms. UI tier (jittered).
+ */
+export function playToastChime(): void {
+  try {
+    const commit = admit("toast", 1, 150);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 3000);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes = scheduleTone(c, lp, t0, {
+      type: "sine",
+      freq: uiJitter(880),
+      glideTo: uiJitter(990),
+      glideTimeMs: 80,
+      attackMs: 4,
+      decayMs: 80,
+      peak: 0.16,
+    });
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Confetti burst — fires ONLY when visual confetti fires: two noise pops
+ * (bandpass 2200 Hz Q1.2) at t0 and t0 + 120 ms + a triangle 660 → 880 Hz
+ * chirp. UI tier (jittered).
+ */
+export function playConfettiPop(): void {
+  try {
+    const commit = admit("confetti", 1, 350);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 3200);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    for (const atMs of [0, 120]) {
+      nodes.push(
+        ...scheduleNoise(c, lp, t0, {
+          freq: 2200,
+          q: 1.2,
+          atMs,
+          attackMs: 1,
+          decayMs: 35,
+          peak: 0.14,
+        }),
+      );
+    }
+    nodes.push(
+      ...scheduleTone(c, lp, t0, {
+        type: "triangle",
+        freq: uiJitter(660),
+        glideTo: uiJitter(880),
+        glideTimeMs: 120,
+        attackMs: 3,
+        decayMs: 120,
+        peak: 0.12,
+      }),
+    );
     commit(() => stopAll(nodes, out));
   } catch {
     // Silent — sound is enhancement only.

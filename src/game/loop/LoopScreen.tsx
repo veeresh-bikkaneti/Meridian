@@ -18,6 +18,12 @@ import {
   playWin,
 } from "@/game/audio/sfx";
 import {
+  celebrationSpec,
+  hasCelebratedFirstWin,
+  markFirstWinCelebrated,
+  type CelebrationSpec,
+} from "@/components/celebration-overlay";
+import {
   clampDeckToPoolSize,
   completePuzzle,
   dealPuzzleIndex,
@@ -158,7 +164,17 @@ export function caseNumber(store: LoopUnlimitedStore): number {
   return store.totals.solved + store.totals.lost + 1;
 }
 
-export function LoopScreen({ onLeave }: { onLeave: () => void }) {
+export function LoopScreen({
+  onLeave,
+  onCelebrate,
+}: {
+  onLeave: () => void;
+  /**
+   * Celebration overlay trigger (owned by GameApp): the 387-cycle
+   * Legendary overlay and the first-ever-win Parade overlay.
+   */
+  onCelebrate: (spec: CelebrationSpec) => void;
+}) {
   const reduced = usePrefersReducedMotion();
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without
@@ -323,7 +339,26 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
       // store and never passes through here — no sound on restore).
       if (progressed.status === "won") playWin();
       else playLose();
-      commitStore(completePuzzle(s, progressed, calendarDate("UTC", new Date())));
+      const completedStore = completePuzzle(s, progressed, calendarDate("UTC", new Date()));
+      commitStore(completedStore);
+      // Celebration (spec §3): the last undealt case of the cycle resolves
+      // here — win or lose. A completed cycle fires the grand fanfare +
+      // Legendary overlay exactly once (the silent reshuffle into the next
+      // cycle never passes through here; reload-restores re-render from
+      // the store and never pass through here either). Legendary outranks
+      // Parade: a first win landing on the final case gets the Legendary
+      // overlay, but the first-win flag is still marked so it never fires
+      // later. Otherwise a first-ever win gets the Parade overlay — the
+      // mystery-solved variant plays nothing more (playWin already fired
+      // above), so it never doubles.
+      const cycleDone = completedStore.current?.completedCycle === true;
+      if (cycleDone) {
+        markFirstWinCelebrated();
+        onCelebrate(celebrationSpec("game-complete", "deck-complete"));
+      } else if (progressed.status === "won" && !hasCelebratedFirstWin()) {
+        markFirstWinCelebrated();
+        onCelebrate(celebrationSpec("mystery-solved", "first-win"));
+      }
       setRevealAnnouncement("Reveal loaded. Next mystery button available.");
     }
   };

@@ -2,6 +2,7 @@ import { useEffect, useRef, type JSX } from "react";
 import { Map as MLMap, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { formatDistance, initialBearing } from "@/game/geo";
+import { playCelebrationSound } from "@/game/audio/play-guards";
 import { IMAGERY_TILES } from "@/map/imagery";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
 import { buildPlaceGrid, nearestPlace, type PlaceGrid } from "./place-resolve";
@@ -78,6 +79,9 @@ export function LoopMap({
   const mapRef = useRef<MLMap | null>(null);
   const gridRef = useRef<PlaceGrid | null>(null);
   const entriesRef = useRef<LoopNameEntry[] | null>(null);
+  // Last tap timestamp (performance.now): the ≥300 ms double-tap guard for
+  // the pin-drop SFX below.
+  const lastTapAtRef = useRef(0);
   // Refs mirror the props the map event handlers need (the handlers are
   // registered once; refs keep them reading current values). Written in an
   // effect, not during render (concurrent-mode safety).
@@ -158,6 +162,21 @@ export function LoopMap({
     const onClick = (e: { lngLat: { lng: number; lat: number }; point: { x: number; y: number } }) => {
       const { onSelectPlace, onEmptyTap, finished } = cbRef.current;
       if (finished) return;
+      // Pin-drop SFX (celebration spec §2.1–§2.2): a tap is accepted when it
+      // lands with the camera idle and ≥300 ms since the last tap. A tap
+      // while the camera animates, a double-tap misfire (<300 ms), or a tap
+      // on a spot with no labeled place is rejected — the soft page-turn
+      // tick (500 ms suppress in the guard), never a buzzer — and selects
+      // nothing. The Drop-pin commit stays silent by design (spec §3): the
+      // ring answers next.
+      const now =
+        typeof performance !== "undefined" ? performance.now() : Date.now();
+      const sinceLastTap = now - lastTapAtRef.current;
+      lastTapAtRef.current = now;
+      if (map.isMoving() || sinceLastTap < 300) {
+        playCelebrationSound("pinDropFail");
+        return;
+      }
       const grid = gridRef.current;
       const entries = entriesRef.current;
       if (!grid || !entries) {
@@ -183,8 +202,16 @@ export function LoopMap({
       const dyKm = Math.abs(edgeY.lat - e.lngLat.lat) * 111.32;
       const maxDistKm = Math.min(Math.max(dxKm, dyKm, 8), MAX_TAP_KM);
       const hit = nearestPlace(grid, entries, e.lngLat.lng, e.lngLat.lat, maxDistKm);
-      if (hit) onSelectPlace(hit);
-      else onEmptyTap(false);
+      if (hit) {
+        // Accepted: the bottom sheet opens for the confirm (which burns the
+        // guess and plays its own sound — this stamp is only the placement).
+        playCelebrationSound("pinDropPass");
+        onSelectPlace(hit);
+      } else {
+        // Rejected: ocean/empty tap — the map shrugs with the gentle hint.
+        playCelebrationSound("pinDropFail");
+        onEmptyTap(false);
+      }
     };
     map.on("click", onClick);
 

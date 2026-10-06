@@ -49,14 +49,24 @@ import {
   isSoundEnabled,
   playCardTap,
   playDifficultySelect,
+  playWin,
   setSoundEnabled,
 } from "@/game/audio/sfx";
+import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
+import {
+  CelebrationOverlay,
+  celebrationSeamSpec,
+  celebrationSpec,
+  hasCelebratedFirstWin,
+  markFirstWinCelebrated,
+  type CelebrationSpec,
+} from "./celebration-overlay";
 import {
   buildCollisionCounts,
   buildQuestionLabel,
@@ -115,6 +125,61 @@ import {
  */
 function isReviewRun(run: Run): boolean {
   return run.regionId === REVIEW_DECK_REGION_ID;
+}
+
+/**
+ * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
+ * default ON, and the single control for ALL sounds (the 7 shipped + the
+ * 9 celebration recipes — every play call goes through the
+ * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
+ * OFF is silent. This toggle is the "reduced sound" control — reduced
+ * motion never mutes audio (spec §4.6).
+ *
+ * One instance lives in the Chart Room home header; a second lives in the
+ * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
+ * The two never co-mount — each reads the persisted value on mount, so a
+ * toggle flipped on one screen is correct on the next.
+ */
+function SoundToggle({
+  testId,
+  className,
+  style,
+  iconClassName = "size-5",
+}: {
+  testId: string;
+  className?: string;
+  style?: CSSProperties;
+  iconClassName?: string;
+}) {
+  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
+  const toggleSound = () => {
+    try {
+      const next = !soundOn;
+      setSoundEnabled(next);
+      setSoundOn(next);
+      if (next) playCardTap();
+    } catch {
+      // Sound is enhancement-only; the toggle itself never throws.
+    }
+  };
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      aria-pressed={soundOn}
+      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+      title={soundOn ? "Sound on" : "Sound off"}
+      onClick={toggleSound}
+      className={className}
+      style={style}
+    >
+      {soundOn ? (
+        <Volume2 className={iconClassName} aria-hidden="true" />
+      ) : (
+        <VolumeX className={iconClassName} aria-hidden="true" />
+      )}
+    </button>
+  );
 }
 
 /**
@@ -647,6 +712,40 @@ export function GameApp() {
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
   const [cleared, setCleared] = useState<ClearedInfo | null>(null);
+  // Celebration overlay (spec §7.2): the parent owns the spec; dismiss →
+  // null → unmount. Set by first-win (endless game), streak milestones via
+  // sound only, and GeoDetective's 387 completion (via onCelebrate).
+  // E2E seam: ?celebration=<variant> renders the overlay on boot,
+  // mirroring ?loop-puzzle=.
+  const [celebration, setCelebration] = useState<CelebrationSpec | null>(() =>
+    typeof window === "undefined" ? null : celebrationSeamSpec(window.location.search),
+  );
+  const dismissCelebration = useCallback(() => setCelebration(null), []);
+  const celebrationOverlay = celebration ? (
+    <CelebrationOverlay
+      variant={celebration.variant}
+      character={celebration.character}
+      title={celebration.title}
+      body={celebration.body}
+      onDismiss={dismissCelebration}
+    />
+  ) : null;
+  // Celebration audio (spec §3): the cleared-mode dialog's opening beat.
+  // Easy/Medium get the medium applause; Hard gets the grand fanfare
+  // (coronation — the 60 s grand cooldown drops it to applause instead of
+  // stacking). First clear only: the cleared mark is set before the dialog
+  // opens, so the ref guard fires once per open — an Escape dismissal
+  // still sounds, because the trigger is the open, never the close.
+  const clearedSoundRef = useRef<ClearedInfo | null>(null);
+  useEffect(() => {
+    if (!cleared) {
+      clearedSoundRef.current = null;
+      return;
+    }
+    if (clearedSoundRef.current === cleared) return;
+    clearedSoundRef.current = cleared;
+    playCelebrationSound(cleared.choice === "hard" ? "grandFanfare" : "mediumApplause");
+  }, [cleared]);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
@@ -1031,6 +1130,7 @@ export function GameApp() {
   const bankScoredPlace = useCallback(
     (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number; difficultyChoice: PickerDifficulty; regionId: string; regionName: string }) => {
       const dateKey = trailDate();
+      const prevBest = getSession()?.bestStreak ?? 0;
       updateSession((prev) => {
         // Sessions are date-scoped like runs: a UTC-midnight rollover starts
         // a fresh session rather than silently dropping banks into a stale one.
@@ -1038,8 +1138,27 @@ export function GameApp() {
         const base = prev.dateKey === dateKey ? prev : startSession(dateKey, Date.now());
         return bankPlace(base, input);
       });
+      // Celebration audio (spec §3): streak milestones + first-ever win.
+      // Only hits celebrate — a miss resets the streak, never a milestone.
+      if (input.hit) {
+        // Streak milestones 10/25/50: one small cheer per crossing of the
+        // live streak, with the 5 s anti-annoyance spacing in the guard.
+        const crossed = [10, 25, 50].find(
+          (m) => input.streakAfter >= m && prevBest < m,
+        );
+        if (crossed !== undefined) playCelebrationSound("smallCheer");
+        // First-ever win in any edition, once per lifetime: the Parade
+        // overlay. The endless game plays its own playWin here (GeoDetective
+        // already played its win on the solve — the mystery-solved variant
+        // plays nothing more, so it never doubles).
+        if (!hasCelebratedFirstWin()) {
+          markFirstWinCelebrated();
+          if (soundAudible()) safePlay(playWin);
+          setCelebration(celebrationSpec("mystery-solved", "first-win"));
+        }
+      }
     },
-    [updateSession],
+    [updateSession, getSession],
   );
 
   // End game: the session's totals (not the run's) become the summary, and
@@ -1200,6 +1319,7 @@ export function GameApp() {
             }}
           />
         ) : null}
+        {celebrationOverlay}
         {idleToast}
       </>
     );
@@ -1211,7 +1331,11 @@ export function GameApp() {
   if (loopOpen) {
     return (
       <>
-        <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />
+        <LoopScreen
+          onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+          onCelebrate={(spec) => setCelebration(spec)}
+        />
+        {celebrationOverlay}
         {idleToast}
       </>
     );
@@ -1229,6 +1353,7 @@ export function GameApp() {
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1285,6 +1410,7 @@ export function GameApp() {
           }
         }}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1312,6 +1438,7 @@ export function GameApp() {
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
         }
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1333,6 +1460,7 @@ export function GameApp() {
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1365,6 +1493,7 @@ export function GameApp() {
         </>
       }
     />
+    {celebrationOverlay}
     {idleToast}
     </>
   );
@@ -1407,17 +1536,6 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
-  // Sound toggle (SFX audio spec §4): persisted under `meridian.sound`,
-  // default ON. Turning ON plays the card tap as confirmation; OFF is
-  // silent. This toggle is the "reduced sound" control — reduced motion
-  // never mutes audio (spec §4.6).
-  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
-  const toggleSound = () => {
-    const next = !soundOn;
-    setSoundEnabled(next);
-    setSoundOn(next);
-    if (next) playCardTap();
-  };
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
@@ -1431,22 +1549,11 @@ function Choose({
             <Compass className="size-4" aria-hidden="true" />
             Field atlas · {trailDate()} UTC
           </p>
-          <button
-            type="button"
-            data-testid="sound-toggle"
-            aria-pressed={soundOn}
-            aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-            title={soundOn ? "Sound on" : "Sound off"}
-            onClick={toggleSound}
+          <SoundToggle
+            testId="sound-toggle"
             className="atlas-sound-toggle home-rise"
             style={rise(0)}
-          >
-            {soundOn ? (
-              <Volume2 className="size-5" aria-hidden="true" />
-            ) : (
-              <VolumeX className="size-5" aria-hidden="true" />
-            )}
-          </button>
+          />
         </div>
         <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
           {BRAND.name}
@@ -2435,6 +2542,11 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setRevealDone(false);
     onRun(continueRun(run));
+    // Celebration audio (spec §3): the next chart unrolls — fired when the
+    // player taps "Next place" and a new question actually deals. The
+    // cleared path above returns early, so the celebration never
+    // double-sounds the applause; reload-restores advance silently.
+    playCelebrationSound("nextPlace");
   }
 
   function onEndGame() {
@@ -2585,9 +2697,18 @@ function PlayLoaded({
           </Suspense>
         </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
-            {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
-          </Button>
+          <div className="flex items-start gap-2">
+            <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
+              {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
+            </Button>
+            {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
+                as the home header, reachable mid-game. Mutes every sound —
+                all play calls go through the isSoundEnabled() gate. */}
+            <SoundToggle
+              testId="sound-toggle-game"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
+            />
+          </div>
           {review ? (
             <p
               data-testid="review-progress"
