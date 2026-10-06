@@ -377,8 +377,9 @@ for (const vp of VIEWPORTS) {
           await openLoop(page, "7");
 
           // Bottom sheet: the 98-char worst case opens at the FULL detent.
+          // (The dialog's only div child is the sheet; the backdrop is a button.)
           await openSheetFor(page, "dysart", LOOP_WORST_ID);
-          const sheet = page.locator('div[role="dialog"] > div').nth(1);
+          const sheet = page.locator('div[role="dialog"] > div').first();
           const detent = await sheet.evaluate((el) => ({
             maxHeight: (el as HTMLElement).style.maxHeight,
             overscroll: (el as HTMLElement).style.overscrollBehavior,
