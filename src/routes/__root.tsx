@@ -113,6 +113,15 @@ export const Route = createRootRoute({
     links: [
       { rel: "icon", type: "image/svg+xml", href: `${import.meta.env.BASE_URL}favicon.svg` },
       { rel: "stylesheet", href: appCss },
+      // Atlas home type system: Fraunces (display) + Karla (body) + Space Mono
+      // (dossier labels). display=swap with system fallbacks in CSS, so the
+      // offline build renders fine when the CDN is unreachable.
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..700;1,9..144,340..700&family=Karla:ital,wght@0,400..700;1,400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+      },
       // Static PWA manifest (public/manifest.webmanifest). The dev-only
       // /__grok/manifest.webmanifest is middleware-served and 404s on the
       // static Pages build — never point at it here.
