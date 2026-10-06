@@ -4,6 +4,17 @@
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
 **Status:** 🟢 ALL GATES GREEN — PR ready (Veeresh merges)
 
+## Follow-up: Veeresh's flippable-call decisions (2026-10-06 ~08:40 CDT)
+Decisions: (1) share-heading date KEEP — no change; (2) streak in share YES — implemented; (3) skip-case button NO — no change; (4) 387-complete celebration YES — implemented.
+- `npx tsc --noEmit` — clean
+- `npm test` — **716/716** green (+5: 2 share streak tests, 3 store completedCycle tests)
+- Playwright E2E (geodetective project): **17/17** green (+3: streak line in share text, celebration fires once on last case + Next mystery unblocked, no celebration mid-cycle)
+- Commits: `5deeca8` (feature), `7e62e51` (E2E) — pushed to origin
+- Implementation notes:
+  - `shareLoopText` takes optional `streak`; appends `\n🔥 N` when > 0, hidden at 0/unset. ShareLoop passes the reveal's streak.
+  - `LoopPuzzleState.completedCycle` set by `completePuzzle` when the deck is empty pre-completion (last undealt case); validator tolerates absence (back-compat). LoopReveal renders the celebration card with the cycle count; it never blocks "Next mystery".
+- `lint-cards`: not run — no card content touched.
+
 ## Final gate summary (2026-10-06, buildId 8141867)
 - `npx tsc --noEmit` — clean
 - `npm test` — **711/711** green (71 loop tests: deck exactly-once over 387, reshuffle cycle++, 404 rollback, blocked-storage fallback, streak transitions, v1-inert)
