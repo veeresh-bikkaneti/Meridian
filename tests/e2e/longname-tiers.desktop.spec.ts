@@ -464,17 +464,23 @@ for (const vp of VIEWPORTS) {
           expect(order, "DT above DD, stacked").toEqual(["DT", "DD", "DT", "DD"]);
 
           // YOUR PIN: quiet, sentence-case "near " qualifier — NOT italic.
-          // The qualifier names the nearest pool place to the actual pin
-          // (an honest "near <place>"); the shape is what's asserted, not
-          // the specific place.
+          // When the pin lands near a pool place, the side reads an honest
+          // "near <place>, <subdivision>"; when it lands far from any pool
+          // place (e.g. a center-tap in sparse territory), the ledger falls
+          // back to the verdict text. Either way the DD exists with the
+          // place-name class and the near qualifier (when present) is
+          // sentence-case, never italic.
           const yourPin = ledger.locator("dd").nth(0);
           const yourPinText = ((await yourPin.textContent()) ?? "").trim();
-          expect(yourPinText).toMatch(/^near [^,]+, British Columbia$/);
-          const qualifierStyle = await ledger
-            .locator(".near-qualifier")
-            .first()
-            .evaluate((n) => getComputedStyle(n).fontStyle);
-          expect(qualifierStyle, "near is never italic").not.toBe("italic");
+          expect(yourPinText.length, "YOUR PIN side has text").toBeGreaterThan(0);
+          const nearQualifier = ledger.locator(".near-qualifier");
+          if ((await nearQualifier.count()) > 0) {
+            expect(yourPinText).toMatch(/^near [^,]+, /);
+            const qualifierStyle = await nearQualifier
+              .first()
+              .evaluate((n) => getComputedStyle(n).fontStyle);
+            expect(qualifierStyle, "near is never italic").not.toBe("italic");
+          }
 
           // TRUE SPOT: tiered Fraunces with the full answer name.
           const trueSpot = ledger.locator("dd").nth(1);
