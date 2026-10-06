@@ -53,6 +53,7 @@ const MIME: Record<string, string> = {
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
   ".ico": "image/x-icon",
+  ".mp3": "audio/mpeg",
   ".webmanifest": "application/manifest+json",
   ".woff2": "font/woff2",
   ".woff": "font/woff",
