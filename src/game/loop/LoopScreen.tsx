@@ -790,7 +790,7 @@ function PlaceSheet({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [onCancel]);
   const tappedName = displayLoopName(entry);
   // Names over 60 chars open at the full detent (skip half-sheet).
   const fullDetent = nameTier(tappedName) === "long";

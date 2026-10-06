@@ -510,20 +510,23 @@ for (const vp of VIEWPORTS) {
           expect(anchorColor, "weight-only, no color change").toBe(h2Color);
 
           // …and the screen reader gets the name ONCE (no double-announce).
-          const snapshot = await page.accessibility.snapshot();
-          const findHeading = (node: any): any => {
-            if (node?.role === "heading" && node.name === LOOP_WORST_NAME)
-              return node;
-            for (const child of node?.children ?? []) {
-              const found = findHeading(child);
-              if (found) return found;
+          // Via CDP's accessibility tree: exactly one heading node carries
+          // the full name — the nested <strong> keeps the name a single
+          // element, so no SR can announce it twice.
+          const cdp = await page.context().newCDPSession(page);
+          const axTree = await cdp.send("Accessibility.getFullAXTree", {});
+          const headingsNamedFull = (function count(nodes: any[]): number {
+            let n = 0;
+            for (const node of nodes ?? []) {
+              if (node.role?.value === "heading" && node.name?.value === LOOP_WORST_NAME) n++;
+              n += count(node.children ?? []);
             }
-            return null;
-          };
+            return n;
+          })(axTree.nodes);
           expect(
-            findHeading(snapshot),
-            "the accessible name is the full name, announced once",
-          ).not.toBeNull();
+            headingsNamedFull,
+            "exactly one heading exposes the full name — single-announce, never doubled",
+          ).toBe(1);
 
           // ARIA carries the raw name — never the display refinement.
           expect(
