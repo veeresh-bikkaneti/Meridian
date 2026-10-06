@@ -36,7 +36,9 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - [x] Unit tests: place-name (tier boundaries, ZWSP, anchor rule), units (derivation, formatLength, bands); updated question-bubble + result-card contract tests
 - [x] Gates: tsc clean, npm test green (752/752), build:pages green, eslint 0 errors
 - [x] Committed (759457b) + pushed to origin/feat/longname-pr2
-- [ ] E2E green via VM lock (12/12 question-card cell passed; remaining 72 running)
+- [x] E2E fixes: full-width meta band (eyebrow no longer ellipsizes at 360px); miss-tap hardening (dismiss bubble first, on-screen Nebraska point, pin-side "near X" assertion); CDP AX-tree single-announce check (Playwright 1.63 lacks page.accessibility.snapshot); eslint useEffect dep restored
+- [x] **Product bug fixed (cfd69e1):** the full-width PR2 bubble put the Hide-question button under the chrome bar's End-game button at 360px (a real tap would hit End game; Playwright retried the intercepted click forever). Bubble top 4rem → 6rem moves the buttons clear.
+- [ ] E2E green via VM lock (full 84-test suite running)
 - [ ] Regression E2E on touched surfaces (question-wrap, question-card-header, reveal-pin-compare, geodetective, longname-wrap PR1)
 - [ ] PR opened (base main) — NOT merged
 
