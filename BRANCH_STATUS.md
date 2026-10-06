@@ -2,16 +2,17 @@
 
 **Branch:** `feat/geodetective-unlimited` (off `origin/main` @ `f0db7ba`, post-#70 Detective's Atlas merge)
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
-**Status:** 🟡 SPEC PHASE (Game Designer drafting the mechanic spec)
+**Status:** 🟢 BUILD PHASE (spec approved → developer implementing)
 
 ## Crew
 - **Orchestrator:** branch hygiene, quality gates, E2E, software-architect review, PR, completion report
-- **Agent 1 — Game Designer:** unlimited-mode mechanic spec FIRST; playtest sign-off on the build before PR
-- **Agent 2 — Game Developer:** implements the designer's spec in `src/game/loop/` + unit tests
+- **Agent 1 — Game Designer:** ✅ spec delivered (`~/workspace/your_files/geodetective-unlimited-spec.md`); playtest sign-off pending post-build
+- **Agent 2 — Game Developer:** 🟡 implementing spec in `src/game/loop/` + unit tests
 
 ## What's done
 - [x] Fresh worktree at `~/workspace/meridian-worktrees/geodetective-unlimited`, branch off origin/main (f0db7ba)
 - [x] Code study: `src/game/loop/` (LoopScreen, engine, store, day, types), `share.ts`, entry point (`game-app.tsx:1453` "Solve today's mystery"), E2E specs (`geodetective.spec.ts`, `geodetective.reduced.spec.ts`)
+- [x] Game Designer: unlimited-mode mechanic spec v1 (deal flow, Next-mystery moment, streak, share, entry rename, storage versioning, 9 edge cases, 10 playtest failure states, 4 flippable calls for Veeresh)
 
 ## What's pending
 1. Designer: mechanic spec (deal flow, Next-mystery moment, streak, share, entry rename, storage versioning, edge cases)
