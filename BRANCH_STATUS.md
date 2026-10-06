@@ -33,3 +33,10 @@ established pattern as the replay remount. Normal play is untouched
 - [ ] E2E validation (blocked on VM lock held by game-sfx crew)
 - [ ] Full E2E suite green
 - [ ] Open PR (base: main) — Veeresh merges, I do not
+
+## 2026-10-06 14:15 CDT — E2E green, all three specs pass
+- review-framing.desktop.spec.ts: 1 passed (fixed test bugs: card order, moveend-lag polling, marker count >= 2)
+- review-deck.desktop.spec.ts: 4 passed (earlier failure was a contention flake from a lockless concurrent suite)
+- state-story.desktop.spec.ts: 2 passed (earlier failure was a content flake — short blurb on a random place)
+- Visual verification: Nebraska frames correctly flat per card; reveal shows pin + gold spot + distance ring + line.
+- Ready for Veeresh's merge decision.
