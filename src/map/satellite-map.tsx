@@ -935,14 +935,11 @@ export function SatelliteMap(props: {
           case "spin": {
             if (intent.active) {
               startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
-              // Celebration audio (spec §2.3): the intro globe-rotation
-              // texture. Hidden-tab safe: a backgrounded tab starts no loop.
-              if (soundAudible()) safePlay(startGlobeSpin);
+              // Globe-spin audio DISABLED per Veeresh (2026-10-06): no swish
+              // on spin. startGlobeSpin stays in sfx.ts (API preserved).
             } else {
               stopSpin();
-              // The spin→narrow transition ends the texture (the 30 s
-              // backstop in sfx.ts is only a safety net). No-op when no loop
-              // is running — never throws.
+              // stopGlobeSpin is a no-op safeguard (never started now).
               safePlay(stopGlobeSpin);
             }
             break;

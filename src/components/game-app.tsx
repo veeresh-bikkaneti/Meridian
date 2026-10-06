@@ -49,6 +49,8 @@ import {
   isSoundEnabled,
   playCardTap,
   playDifficultySelect,
+  playEditionEntrance,
+  playLose,
   playWin,
   setSoundEnabled,
 } from "@/game/audio/sfx";
@@ -945,6 +947,10 @@ export function GameApp() {
       // backstop — the tour is unscored practice, never a real run.
       opts?: { fresh?: boolean; tutorial?: boolean },
     ) => {
+      // Edition entrance fanfare: the player is making their grand arrival
+      // into an edition (gladiator-into-the-arena energy). Not for the
+      // tutorial (quiet practice round).
+      if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
       setStarting({ regionName });
       setStartError(null);
       try {
@@ -2148,6 +2154,10 @@ function PlayLoaded({
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
   // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
   const [drop, setDrop] = useState<Drop | null>(null);
+  // Ref mirror of the drop's hit outcome for the reveal-complete sound.
+  // (Avoids stale closure: onRevealComplete fires from the map's animation
+  // controller, which may hold an older render's callback.)
+  const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
@@ -2402,6 +2412,9 @@ function PlayLoaded({
       streakBefore: run.streak,
     };
     setDrop(nextDrop);
+    // Mirror the hit outcome for the reveal-complete fanfare (ref avoids
+    // stale closures in the map's animation callback).
+    dropHitRef.current = scored !== null;
     // Persisted so a reload during the result card can rehydrate it; the
     // mount restore validates the shape and the place match before use.
     writeDrop(nextDrop);
@@ -2692,7 +2705,14 @@ function PlayLoaded({
               marks={marks}
               variation={variation}
               spot={place ? { lon: place.lon, lat: place.lat } : null}
-              onRevealComplete={() => setRevealDone(true)}
+              onRevealComplete={() => {
+                setRevealDone(true);
+                // Guess outcome fanfare: hit → triumphant win, miss →
+                // descending lose. Uses the ref (not stale closure).
+                if (soundAudible() && dropHitRef.current !== null) {
+                  safePlay(dropHitRef.current ? playWin : playLose);
+                }
+              }}
             />
           </Suspense>
         </MapErrorBoundary>

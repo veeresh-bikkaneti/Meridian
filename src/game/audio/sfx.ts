@@ -588,42 +588,62 @@ export function playRingReveal(distanceKm: number): void {
 }
 
 /** Mystery solved — rising major arpeggio C5→E5→G5→C6, staggered 110 ms. */
+/**
+ * Correct pin — BOLD arcade win fanfare (Mario-style excitement, original
+ * melody). Bouncy ascending run with square-wave punch, ending in a
+ * triumphant held chord. Unmistakable: you NAILED it.
+ */
 export function playWin(): void {
   try {
-    const commit = admit("win", 3, 1200);
+    const commit = admit("win", 3, 1600);
     if (!commit || !ctx || !master) return;
     const c = ctx;
     const t0 = c.currentTime;
-    const lp = lowpass(c, 5000);
+    const lp = lowpass(c, 6000);
     const out = c.createGain();
     lp.connect(out);
     out.connect(master);
-    const notes = [523.25, 659.25, 783.99, 1046.5];
     const nodes: AudioScheduledSourceNode[] = [];
-    notes.forEach((freq, i) => {
-      const last = i === notes.length - 1;
+    // Ascending bouncy run: C5 E5 G5 C6 E6 — square wave for arcade punch.
+    // Original melody (not Nintendo's) — the STYLE is celebratory arcade.
+    const run = [523.25, 659.25, 783.99, 1046.5, 1318.5];
+    run.forEach((freq, i) => {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "square",
+          freq,
+          atMs: i * 90,
+          attackMs: 5,
+          decayMs: 180,
+          peak: 0.22,
+        }),
+      );
+    });
+    // Triumphant final chord: C6 + E6 + G6 held (triangle for warmth under
+    // the square punch).
+    const chordAt = run.length * 90;
+    [1046.5, 1318.5, 1568.0].forEach((freq) => {
       nodes.push(
         ...scheduleTone(c, lp, t0, {
           type: "triangle",
           freq,
-          atMs: i * 110,
-          attackMs: 5,
-          decayMs: 380,
-          peak: 0.3,
-          // ±4-cent detune pair on the final C6 only (spec §2.3).
-          detunePairCents: last ? 4 : undefined,
+          atMs: chordAt,
+          attackMs: 10,
+          decayMs: 700,
+          peak: 0.28,
+          detunePairCents: 4,
         }),
       );
     });
-    // Final C6 sine octave shimmer @ 2093 Hz (−14 dB-ish, never above −12).
+    // Sparkle octave on top.
     nodes.push(
       ...scheduleTone(c, lp, t0, {
         type: "sine",
-        freq: 2093,
-        atMs: 3 * 110,
+        freq: 2093.0,
+        atMs: chordAt,
         attackMs: 5,
-        decayMs: 700,
-        peak: 0.08,
+        decayMs: 800,
+        peak: 0.1,
       }),
     );
     commit(() => stopAll(nodes, out));
@@ -632,28 +652,117 @@ export function playWin(): void {
   }
 }
 
-/** Out of guesses — muted descending two-note sting (page turning, not a buzzer). */
+/**
+ * Wrong pin — distinctive descending "game over" tune (Mario-style death,
+ * original melody). Clear chromatic descent with sawtooth edge: unmistakable
+ * "aww, you missed." Bouncy, not harsh — kids are the audience.
+ */
 export function playLose(): void {
   try {
-    const commit = admit("lose", 3, 900);
+    const commit = admit("lose", 3, 1400);
     if (!commit || !ctx || !master) return;
     const c = ctx;
     const t0 = c.currentTime;
-    const lp = lowpass(c, 1400);
+    const lp = lowpass(c, 3000);
     const out = c.createGain();
     lp.connect(out);
     out.connect(master);
-    const nodes = [
-      ...scheduleTone(c, lp, t0, { type: "sine", freq: 440, attackMs: 8, decayMs: 420, peak: 0.38 }),
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Descending "death" run: E5 Eb5 D5 Db5 C5 — chromatic slide down.
+    // Original melody (not Nintendo's) — the STYLE is classic arcade fail.
+    const descent = [659.25, 622.25, 587.33, 554.37, 523.25];
+    descent.forEach((freq, i) => {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "sawtooth",
+          freq,
+          atMs: i * 130,
+          attackMs: 8,
+          decayMs: 220,
+          peak: 0.18,
+        }),
+      );
+    });
+    // Final "womp": low B3 held with a downward glide — the sad trombone.
+    nodes.push(
       ...scheduleTone(c, lp, t0, {
-        type: "sine",
-        freq: 329.63,
-        atMs: 220,
-        attackMs: 8,
-        decayMs: 420,
-        peak: 0.38,
+        type: "sawtooth",
+        freq: 246.94,
+        glideTo: 185.0,
+        glideTimeMs: 400,
+        atMs: descent.length * 130,
+        attackMs: 10,
+        decayMs: 500,
+        peak: 0.2,
       }),
-    ];
+    );
+    commit(() => stopAll(nodes, out));
+  } catch {
+    // Silent — sound is enhancement only.
+  }
+}
+
+/**
+ * Edition entrance — EPIC gladiator/Colosseum brass horn fanfare. Bold,
+ * triumphant horn calls announcing the player's arrival into an edition
+ * (globe/country/state). Sawtooth brass at low-mid register, original
+ * composition — think arena horns, not any specific movie theme.
+ */
+export function playEditionEntrance(): void {
+  try {
+    const commit = admit("edition-entrance", 3, 2000);
+    if (!commit || !ctx || !master) return;
+    const c = ctx;
+    const t0 = c.currentTime;
+    const lp = lowpass(c, 2500);
+    const out = c.createGain();
+    lp.connect(out);
+    out.connect(master);
+    const nodes: AudioScheduledSourceNode[] = [];
+    // Horn call 1: G3 – C4 – E4 – G4 (rising fifths, the "announcement").
+    const call1 = [196.0, 261.63, 329.63, 392.0];
+    call1.forEach((freq, i) => {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "sawtooth",
+          freq,
+          atMs: i * 160,
+          attackMs: 20,
+          decayMs: 280,
+          peak: 0.25,
+        }),
+      );
+    });
+    // Horn call 2 (answer): A3 – D4 – F#4 – A4 — a fourth higher, bolder.
+    const call2 = [220.0, 293.66, 369.99, 440.0];
+    const call2At = call1.length * 160 + 80;
+    call2.forEach((freq, i) => {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "sawtooth",
+          freq,
+          atMs: call2At + i * 160,
+          attackMs: 20,
+          decayMs: 280,
+          peak: 0.25,
+        }),
+      );
+    });
+    // Triumphant finale: D4 + G4 + B4 held together (G major chord).
+    const finaleAt = call2At + call2.length * 160 + 60;
+    [293.66, 392.0, 493.88].forEach((freq) => {
+      nodes.push(
+        ...scheduleTone(c, lp, t0, {
+          type: "sawtooth",
+          freq,
+          atMs: finaleAt,
+          attackMs: 30,
+          decayMs: 900,
+          peak: 0.22,
+          detunePairCents: 5,
+        }),
+      );
+    });
     commit(() => stopAll(nodes, out));
   } catch {
     // Silent — sound is enhancement only.
