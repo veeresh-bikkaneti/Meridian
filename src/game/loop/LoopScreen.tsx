@@ -657,9 +657,11 @@ function LoopGame({
             {[...puzzle.guesses].reverse().map((g, ri) => (
               <li
                 key={`${g.placeId}-${ri}`}
-                className="flex items-baseline justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3"
+                className="flex items-start justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3"
               >
-                <span className="min-w-0 truncate font-medium text-fg">{g.name}</span>
+                <span className="place-name min-w-0 font-medium text-fg" title={g.name}>
+                  {g.name}
+                </span>
                 <span className="flex shrink-0 items-center gap-2 text-sm text-muted">
                   <span className="tabular-nums">{formatDistance(g.distKm)}</span>
                   <span
@@ -732,7 +734,9 @@ function PlaceSheet({
       />
       <div className="relative w-full max-w-md rounded-t-3xl border border-line bg-surface p-6 pb-8">
         <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
-        <h2 className="mt-1 font-display text-2xl text-fg">{displayLoopName(entry)}</h2>
+        <h2 className="place-name mt-1 font-display text-2xl text-fg" title={displayLoopName(entry)}>
+          {displayLoopName(entry)}
+        </h2>
         <div className="mt-5 flex flex-col gap-2">
           <Button type="button" onClick={onConfirm} className="min-h-[48px] w-full text-base">
             Guess this place
@@ -877,7 +881,7 @@ function LoopReveal({
         <p className="text-[11px] tracking-wider text-muted uppercase">
           {won ? "🎯 You found it!" : "Out of guesses"}
         </p>
-        <h2 className="mt-1 font-display text-3xl text-fg">
+        <h2 className="place-name mt-1 font-display text-3xl text-fg" title={answer.name ?? undefined}>
           {answer.name ??
             (answer.settled
               ? "We couldn't find the answer's name — but your clues are all above."
@@ -893,7 +897,7 @@ function LoopReveal({
         ) : (
           <>
             {closestGuess ? (
-              <p className="mt-2 text-sm text-muted">
+              <p className="place-name mt-2 text-sm text-muted">
                 Your closest guess was {closestGuess.name} — {formatDistance(closestGuess.distKm)}{" "}
                 away.
               </p>

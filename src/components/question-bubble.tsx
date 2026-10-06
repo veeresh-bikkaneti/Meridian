@@ -110,7 +110,7 @@ export function QuestionBubble({
                     {bubbleHeaderText(edition, regionName)}
                   </p>
                   <h2
-                    className="mt-0.5 max-h-48 overflow-y-auto font-display text-xl leading-tight"
+                    className="place-name mt-0.5 max-h-48 overflow-y-auto font-display text-xl leading-tight"
                     title={placeName}
                     tabIndex={0}
                     aria-label={`Question: ${placeName}`}
@@ -126,7 +126,7 @@ export function QuestionBubble({
                 </>
               ) : (
                 <p
-                  className="max-h-48 overflow-y-auto font-display text-lg leading-tight"
+                  className="place-name max-h-48 overflow-y-auto font-display text-lg leading-tight"
                   title={placeName}
                   tabIndex={0}
                   aria-label={`Question: ${placeName}`}

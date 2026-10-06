@@ -303,7 +303,8 @@ export function ResultCard({
                   <h2
                     ref={headingRef}
                     tabIndex={-1}
-                    className="mt-0.5 font-display text-2xl leading-tight outline-none"
+                    title={placeLabel}
+                    className="place-name mt-0.5 font-display text-2xl leading-tight outline-none"
                   >
                     {placeLabel}
                   </h2>
@@ -312,7 +313,7 @@ export function ResultCard({
                 <h2
                   ref={headingRef}
                   tabIndex={-1}
-                  className="font-display text-2xl leading-tight outline-none"
+                  className="place-name font-display text-2xl leading-tight outline-none"
                 >
                   {bubbleHeaderText(run.edition, run.regionName)}
                 </h2>
@@ -398,7 +399,8 @@ export function ResultCard({
               {pinLine ? (
                 <p
                   data-testid="pin-compare-line"
-                  className="text-sm leading-relaxed text-white/85"
+                  title={pinLine}
+                  className="place-name text-sm leading-relaxed text-white/85"
                 >
                   {pinLine}
                 </p>
