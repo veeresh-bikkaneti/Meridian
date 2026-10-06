@@ -80,6 +80,8 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
+import { LoopScreen } from "@/game/loop/LoopScreen";
+import { readLoopOpen, writeLoopOpen } from "@/game/loop/store";
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -614,6 +616,11 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // GeoDetective mounts its own screen outside the endless-run state
+  // machine; it persists under meridian.loop.v1 and never touches the
+  // run/drop keys. The open flag (meridian.loop.open) restores the screen
+  // after a reload so a mid-game refresh resumes the day, not the menu.
+  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cleared-mode celebration: set when a difficulty band's full cycle is
   // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
@@ -1169,6 +1176,18 @@ export function GameApp() {
     );
   }
 
+  // GeoDetective lives outside the run machine: its own screen, its own
+  // storage namespace, its own daily rhythm. An in-progress run takes
+  // precedence (the player is mid-game); otherwise the open flag wins.
+  if (loopOpen) {
+    return (
+      <>
+        <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />
+        {idleToast}
+      </>
+    );
+  }
+
   // Chunk loading state: the region's places are being fetched. The menu is
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
@@ -1300,6 +1319,7 @@ export function GameApp() {
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
+      onLoop={() => { writeLoopOpen(true); setLoopOpen(true); }}
       onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -1332,6 +1352,7 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  onLoop,
   onReview,
   deck,
   notice,
@@ -1342,6 +1363,8 @@ function Choose({
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
+  /** Open the GeoDetective daily edition. */
+  onLoop: () => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
@@ -1405,7 +1428,7 @@ function Choose({
           </p>
         </div>
       </header>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <EditionCard
           title="State"
           detail="Pick a country, then one of its states. Each state is its own run."
@@ -1423,6 +1446,12 @@ function Choose({
           detail="The whole earth. Continent outlines at a distance, countries as you close in."
           action="Play the globe"
           onClick={onGlobe}
+        />
+        <EditionCard
+          title="GeoDetective"
+          detail="Five guesses, one mystery place. Each guess unlocks a clue — a new puzzle at midnight UTC."
+          action="Solve today's mystery"
+          onClick={onLoop}
         />
       </div>
       {deck.enabled ? (

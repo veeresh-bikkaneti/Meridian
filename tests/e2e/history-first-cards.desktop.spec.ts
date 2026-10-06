@@ -46,6 +46,15 @@ type Target = {
   placeName: string;
   /** Picker label for the state edition (the state list shows states, not places). */
   stateName?: string;
+  /**
+   * The difficulty band this target's deal comes from. Miami (gn-4164138)
+   * and Nashville (gn-4644585) are difficulty: 1 — easy band only — so the
+   * default (medium) pool is empty for them and dealing resets to a random
+   * medium place; those targets drive the picker to Easy and seed the easy
+   * band. West Englewood (difficulty: 3) and Barry Farms (difficulty: 4)
+   * are genuinely medium.
+   */
+  band: "easy" | "medium";
 };
 
 const TARGETS: Target[] = [
@@ -56,6 +65,7 @@ const TARGETS: Target[] = [
     placeId: "gn-4915989",
     placeName: "West Englewood",
     stateName: "Illinois",
+    band: "medium",
   },
   {
     edition: "country",
@@ -63,6 +73,7 @@ const TARGETS: Target[] = [
     chunkFile: "united-states.json",
     placeId: "gn-4137672",
     placeName: "Barry Farms",
+    band: "medium",
   },
   {
     edition: "state",
@@ -71,6 +82,7 @@ const TARGETS: Target[] = [
     placeId: "gn-4164138",
     placeName: "Miami",
     stateName: "Florida",
+    band: "easy",
   },
   {
     edition: "state",
@@ -79,6 +91,7 @@ const TARGETS: Target[] = [
     placeId: "gn-4644585",
     placeName: "Nashville",
     stateName: "Tennessee",
+    band: "easy",
   },
 ];
 
@@ -179,14 +192,24 @@ async function commitTargetHit(page: Page): Promise<void> {
 async function startTargetedRun(page: Page, target: Target): Promise<void> {
   await page.goto("http://127.0.0.1:4123/Meridian/");
   // Seed the persistent no-repeat history with every ID except the target,
-  // so the dealer's pool shrinks to exactly the target place.
+  // so the dealer's pool shrinks to exactly the target place. The history
+  // is band-scoped (meridian:seen:v2:<edition>:<region>:<band>), so the seed
+  // goes into the target's own band.
   await page.evaluate(
     ({ key, ids }) => localStorage.setItem(key, JSON.stringify(ids)),
     {
-      key: `meridian:seen:v2:${target.edition}:${target.regionId}:medium`,
+      key: `meridian:seen:v2:${target.edition}:${target.regionId}:${target.band}`,
       ids: seedIds(target),
     },
   );
+  // The picker defaults to Medium; difficulty-1 targets live in the easy
+  // band, so drive the picker to Easy before choosing the edition.
+  if (target.band !== "medium") {
+    await page
+      .getByRole("group", { name: "How do you want to grow your map today?" })
+      .getByRole("button", { name: "Easy", exact: true })
+      .click();
+  }
   if (target.edition === "state") {
     await page.getByRole("button", { name: "Choose a state" }).click();
     await expect(page.getByRole("heading", { name: "State" })).toBeVisible();

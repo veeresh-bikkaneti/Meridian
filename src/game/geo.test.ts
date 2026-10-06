@@ -1,6 +1,91 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { initialBearing, windName8 } from "./geo.ts";
+import { initialBearing, octantOf, windName8 } from "./geo.ts";
+
+const NYC: [number, number] = [-74.006, 40.7128];
+const LONDON: [number, number] = [-0.1278, 51.5074];
+const SYDNEY: [number, number] = [151.2093, -33.8688];
+const TOKYO: [number, number] = [139.6917, 35.6895];
+
+/** initialBearing is null only for coincident points — assert non-null in tests. */
+function bearing(a: [number, number], b: [number, number]): number {
+  const v = initialBearing(a, b);
+  assert.ok(v !== null, `expected a bearing from ${a} to ${b}, got null`);
+  return v;
+}
+
+// ---------------------------------------------------------------------------
+// initialBearing + octantOf (GeoDetective bearing feedback)
+// ---------------------------------------------------------------------------
+
+test("initialBearing: NYC to London is ~51 degrees (north-east)", () => {
+  const b = bearing(NYC, LONDON);
+  assert.ok(b > 50 && b < 53, `expected ~51, got ${b}`);
+  assert.equal(octantOf(b), "north-east");
+});
+
+test("initialBearing: Sydney to Tokyo is just west of due north", () => {
+  const b = bearing(SYDNEY, TOKYO);
+  assert.ok(b > 345 && b < 355, `expected ~350, got ${b}`);
+  assert.equal(octantOf(b), "north");
+});
+
+test("initialBearing: the four cardinals from the equator", () => {
+  assert.equal(initialBearing([0, 0], [0, 10]), 0); // due north
+  assert.equal(initialBearing([0, 0], [10, 0]), 90); // due east
+  assert.equal(initialBearing([0, 0], [0, -10]), 180); // due south
+  assert.equal(initialBearing([0, 0], [-10, 0]), 270); // due west
+});
+
+test("initialBearing: always in [0, 360)", () => {
+  const pts: [number, number][] = [
+    [0, 0],
+    [179, 89],
+    [-179, -89],
+    [45, 45],
+  ];
+  for (const a of pts) {
+    for (const b of pts) {
+      if (a[0] === b[0] && a[1] === b[1]) continue; // coincident → null
+      const bng = bearing(a, b);
+      assert.ok(bng >= 0 && bng < 360, `out of range: ${bng}`);
+      assert.equal(octantOf(bng).length > 0, true);
+    }
+  }
+});
+
+test("octantOf: 8 winds at their centers", () => {
+  assert.equal(octantOf(0), "north");
+  assert.equal(octantOf(45), "north-east");
+  assert.equal(octantOf(90), "east");
+  assert.equal(octantOf(135), "south-east");
+  assert.equal(octantOf(180), "south");
+  assert.equal(octantOf(225), "south-west");
+  assert.equal(octantOf(270), "west");
+  assert.equal(octantOf(315), "north-west");
+});
+
+test("octantOf: sector boundaries (N = 337.5–22.5, NE = 22.5–67.5, …)", () => {
+  assert.equal(octantOf(22.4), "north");
+  assert.equal(octantOf(22.5), "north-east");
+  assert.equal(octantOf(67.4), "north-east");
+  assert.equal(octantOf(67.5), "east");
+  assert.equal(octantOf(112.5), "south-east");
+  assert.equal(octantOf(337.4), "north-west");
+  assert.equal(octantOf(337.5), "north");
+  assert.equal(octantOf(359.9), "north");
+});
+
+test("octantOf: wraps negatives and >360", () => {
+  assert.equal(octantOf(-45), "north-west");
+  assert.equal(octantOf(360), "north");
+  assert.equal(octantOf(405), "north-east");
+  assert.equal(octantOf(720 + 200), "south");
+});
+
+// ---------------------------------------------------------------------------
+// initialBearing + windName8 (reveal-card bearing, e.g. "457 km northeast")
+// ---------------------------------------------------------------------------
 
 const CLOSE = 0.01;
 function near(actual: number | null, expected: number): void {
@@ -9,13 +94,6 @@ function near(actual: number | null, expected: number): void {
     `expected bearing ≈ ${expected}°, got ${actual}`,
   );
 }
-
-test("initialBearing: the four cardinals from the equator", () => {
-  near(initialBearing([0, 0], [0, 10]), 0); // due north
-  near(initialBearing([0, 0], [10, 0]), 90); // due east
-  near(initialBearing([0, 0], [0, -10]), 180); // due south
-  near(initialBearing([0, 0], [-10, 0]), 270); // due west
-});
 
 test("initialBearing: the four diagonals snap to the right winds", () => {
   // On a sphere the great-circle initial bearing for a diagonal target is

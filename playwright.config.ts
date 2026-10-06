@@ -163,6 +163,10 @@ export default defineConfig({
       testMatch: /question-card-header\.spec\.ts/,
     },
     {
+      name: "geodetective",
+      testMatch: /geodetective\.spec\.ts/,
+    },
+    {
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
     },

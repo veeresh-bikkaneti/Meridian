@@ -16,6 +16,7 @@ import {
   freshBoot,
   pickBand,
   startCountryRun,
+  startGlobeRun,
   readQuestion,
   waitForSpotSettle,
   waitForAdmin1Chunk,

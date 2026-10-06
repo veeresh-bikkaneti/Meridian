@@ -88,12 +88,25 @@ async function newSharePage(
   return { context, page };
 }
 
+interface DifficultyBucket {
+  score: number;
+  places: number;
+  hits: number;
+}
+
+interface RegionScore {
+  regionName: string;
+  score: number;
+}
+
 interface ShareInputs {
   dateKey: string;
   regionName: string;
   totalScore: number;
   placesPlayed: number;
   bestStreak: number;
+  byDifficulty: Record<string, DifficultyBucket>;
+  regions: RegionScore[];
 }
 
 /** The app's session/run records, read from the storage it wrote. */
@@ -107,14 +120,27 @@ async function readShareInputs(page: Page): Promise<ShareInputs> {
       totalScore: session.totalScore as number,
       placesPlayed: session.placesPlayed as number,
       bestStreak: session.bestStreak as number,
+      byDifficulty: session.byDifficulty as Record<string, DifficultyBucket>,
+      regions: session.regions as RegionScore[],
     };
   });
 }
 
+const PICKER_DIFFICULTIES = ["easy", "medium", "hard"] as const;
+const DIFFICULTY_LABELS: Record<string, string> = {
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
+};
+
 /**
- * Mirrors shareText() for the session payload (sessionShareText): three
- * lines, `meridian <date>` / the site URL on its own line / totals, no
- * per-place emoji strip, no place names.
+ * Mirrors sessionShareText() for the session payload: the three-line
+ * session contract (`meridian <date>` / the site URL on its own line /
+ * totals — no per-place emoji strip, no place names), then the breakdown
+ * the app appends — one line per played difficulty mode (easy → medium →
+ * hard), then one line of per-region totals in first-seen order. Rendered
+ * straight from the same session record the end-game screen banks, never
+ * recomputed: mirrors sessionShareText() exactly.
  */
 function expectedShareText(input: ShareInputs): string {
   const [year, month, day] = input.dateKey.split("-").map(Number);
@@ -130,12 +156,31 @@ function expectedShareText(input: ShareInputs): string {
     input.placesPlayed > 0 ? Math.round(input.totalScore / input.placesPlayed) : 0;
   const streak =
     input.bestStreak >= 2 ? ` · 🔥 ${input.bestStreak} best streak` : "";
-  return (
+  const lines = [
     `meridian ${when}\n` +
-    `${SITE_URL}\n` +
-    `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
-    `${averagePerPlace} avg/place${streak} · ${input.regionName}`
-  );
+      `${SITE_URL}\n` +
+      `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
+      `${averagePerPlace} avg/place${streak} · ${input.regionName}`,
+  ];
+  // Unplayed modes are omitted — never shown as 0%.
+  for (const mode of PICKER_DIFFICULTIES) {
+    const bucket = input.byDifficulty?.[mode];
+    if (!bucket || bucket.places <= 0) continue;
+    const rate = Math.round((100 * bucket.hits) / bucket.places);
+    lines.push(
+      `${DIFFICULTY_LABELS[mode]} ${bucket.hits}/${bucket.places} ` +
+        `(${rate}%) · ` +
+        `${bucket.score.toLocaleString("en-US")} pts`,
+    );
+  }
+  if (input.regions && input.regions.length > 0) {
+    lines.push(
+      input.regions
+        .map((r) => `${r.regionName} ${r.score.toLocaleString("en-US")}`)
+        .join(" · "),
+    );
+  }
+  return lines.join("\n");
 }
 
 /**
