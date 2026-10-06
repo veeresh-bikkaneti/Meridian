@@ -10,7 +10,7 @@
 ## Active work
 - [ ] sfx.ts: 9 new functions + admitLoop + unit tests
 - [ ] Mute button in game chrome (in addition to home header)
-- [ ] Components: characters.tsx, confetti.tsx, celebration-overlay.tsx/.css, use-prefers-reduced-motion.ts
+- [x] Components: characters.tsx, confetti.tsx, celebration-overlay.tsx/.css, use-prefers-reduced-motion.ts (+ celebration-copy.ts, particle-caps.ts pure helpers for testability; 3 unit test files, 14 tests green; tsc clean; ~10.3KB gzipped prod code, within 12KB budget)
 - [ ] Wiring: game-app.tsx (celebration state, ?celebration= seam), LoopScreen pin-drop, satellite-map spin
 - [ ] Narrative copy tone pass
 - [ ] E2E: celebration.spec.ts, sfx-stub.ts extraction, game-sfx extensions
