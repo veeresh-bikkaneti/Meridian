@@ -261,20 +261,21 @@ function makePlace(): Starter {
 function renderCard(
   phase: "story" | "done",
   edition: "state" | "country" | "globe" = "state",
+  drop: Parameters<typeof ResultCard>[0]["drop"] = {
+    lon: DROP_LON,
+    lat: DROP_LAT,
+    distanceKm: 1234.5,
+    placeId: "worker-b-test-place",
+    breakdown: null,
+    streakBefore: 0,
+  },
 ): string {
   return renderToString(
     createElement(ResultCard, {
       run: makeRun(phase, edition),
       place: makePlace(),
       placeLabel: "Testville, Nebraska, United States",
-      drop: {
-        lon: DROP_LON,
-        lat: DROP_LAT,
-        distanceKm: 1234.5,
-        placeId: "worker-b-test-place",
-        breakdown: null,
-        streakBefore: 0,
-      },
+      drop,
       story: null,
       empty: false,
       dismissed: false,
@@ -304,7 +305,7 @@ describe("result-card — pin-compare line (reveal)", () => {
       "the line must name both locations",
     );
     // The line sits directly under the distance paragraph.
-    const distanceIdx = html.indexOf("off</p>");
+    const distanceIdx = html.indexOf("east of your pin</p>");
     const lineIdx = html.indexOf("pin-compare-line");
     assert.ok(
       distanceIdx !== -1 && lineIdx > distanceIdx,
@@ -357,19 +358,17 @@ describe("result-card — pin-compare line (reveal)", () => {
     );
   });
 
-  it("globe edition renders the detail line with country suffixes", () => {
+  it("globe edition renders the symmetric country-level line", () => {
     setPinScenario(
       { admin1: null, country: "Italy" },
       { admin1: null, country: "Italy" },
-      "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
+      "Your pin: Italy · True spot: Italy",
     );
     const html = renderCard("done", "globe");
     assert.ok(html.includes('data-testid="pin-compare-line"'));
     assert.ok(
-      html.includes(
-        "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-      ),
-      "globe detail line must carry the country suffix on both sides",
+      html.includes("Your pin: Italy · True spot: Italy"),
+      "globe line must name the country on both sides, never admin-1 or 'near <city>'",
     );
   });
 
@@ -383,6 +382,50 @@ describe("result-card — pin-compare line (reveal)", () => {
     assert.ok(
       html.includes("Right country, wrong town!"),
       "gate failure must render the classic line — never silently drop",
+    );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Miss bearing headline (P0-2, gis-review-gaps)
+// ---------------------------------------------------------------------------
+// The fixture miss vector runs from the drop (-96.7, 41.1) to the truth
+// (-77.03, 38.9): initial bearing 91.9° → "east". The headline must read
+// "1,235 km east of your pin" — magnitude + direction, the reference shape
+// UX approved. Distance formatting is untouched (formatDistance still owns
+// the "1,235 km" part).
+describe("result-card — miss bearing headline", () => {
+  it("miss headline names direction: '1,235 km east of your pin'", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(html.includes('data-testid="miss-headline"'));
+    assert.ok(
+      html.includes("1,235 km east of your pin"),
+      "the miss headline must teach direction as well as distance",
+    );
+    assert.ok(
+      !html.includes("1,235 km off"),
+      "the legacy '{distance} off' line is replaced when a bearing exists",
+    );
+  });
+
+  it("hit (phase story) shows no bearing — miss-only", () => {
+    setPinScenario(null, null);
+    const html = renderCard("story");
+    assert.ok(
+      !html.includes("of your pin"),
+      "the hit card must never show a bearing",
+    );
+    assert.ok(!html.includes('data-testid="miss-headline"'));
+  });
+
+  it("miss with no drop renders the bare 'Miss' headline", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done", "state", null);
+    assert.ok(html.includes('data-testid="miss-headline"'));
+    assert.ok(
+      html.includes(">Miss</p>"),
+      "no drop → no distance, no bearing, just 'Miss'",
     );
   });
 });

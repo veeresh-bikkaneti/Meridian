@@ -1,4 +1,4 @@
-import { formatDistance } from "@/game/geo";
+import { formatDistance, initialBearing, windName8 } from "@/game/geo";
 import { bubbleHeaderText } from "@/game/question-label";
 import { summarizeRun, type Run } from "@/game/run";
 import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
@@ -221,10 +221,11 @@ export function ResultCard({
   }, [phase, dismissed, place?.name]);
 
   // Pin-compare line for the miss card: names BOTH locations ("Your pin:
-  // near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria").
-  // In country/globe editions the nearest-place fallback fills the gap
-  // where vendored admin-1 data is missing (IT/FR); in state edition and
-  // on any gate failure the classic line renders unchanged. Fail closed —
+  // Brazil · True spot: Angola" in globe; "Your pin: near Cagliari,
+  // Sardinia · True spot: Reggio di Calabria, Calabria" in country).
+  // In country edition the nearest-place fallback fills the gap where
+  // vendored admin-1 data is missing (IT/FR); in state edition and on any
+  // gate failure the classic line renders unchanged. Fail closed —
   // null renders exactly as today (no line). Computed whenever a pin and
   // place exist; only rendered in the done (miss) block below — the hit
   // card never shows it.
@@ -241,6 +242,18 @@ export function ResultCard({
       pool: poolPlaces ?? [],
     });
   }, [drop, place, run.edition, poolPlaces]);
+
+  // Bearing on the miss headline: the miss teaches direction as well as
+  // distance — "457 km northeast of your pin" — naming what the drawn line
+  // from the white pin to the gold spot already shows. Miss-only; the hit
+  // card never shows a bearing. Fail closed: when the bearing can't be
+  // computed (coincident points) the classic "{distance} off" line renders
+  // byte-identical to before.
+  const missWind = useMemo(() => {
+    if (!drop || !place) return null;
+    const bearing = initialBearing([drop.lon, drop.lat], [place.lon, place.lat]);
+    return bearing === null ? null : windName8(bearing);
+  }, [drop, place]);
 
   if (dismissed) {
     // Dismissing the card must never strand the run: the restore pill keeps
@@ -372,8 +385,15 @@ export function ResultCard({
 
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p className="font-display text-4xl tabular-nums">
-                {drop ? `${formatDistance(drop.distanceKm)} off` : "Miss"}
+              <p
+                data-testid="miss-headline"
+                className="font-display text-4xl tabular-nums"
+              >
+                {drop
+                  ? missWind
+                    ? `${formatDistance(drop.distanceKm)} ${missWind} of your pin`
+                    : `${formatDistance(drop.distanceKm)} off`
+                  : "Miss"}
               </p>
               {pinLine ? (
                 <p
@@ -386,10 +406,10 @@ export function ResultCard({
               <p
                 data-testid="miss-subscript"
                 className="text-xs leading-relaxed text-white/70"
-                title={`White pin is your guess · gold is the true spot. ${storyLede}`}
+                title={`Your pin is your guess · the gold mark is the true spot. ${storyLede}`}
               >
                 <span className="text-white/60">
-                  White pin is your guess · gold is the true spot.
+                  Your pin is your guess · the gold mark is the true spot.
                 </span>
                 <br />
                 <span className="mt-1 block text-sm leading-relaxed text-white/85">

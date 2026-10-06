@@ -18,11 +18,12 @@ import {
  *
  * On a miss, the result card names BOTH locations
  * (data-testid="pin-compare-line") so the player learns where their guess
- * actually landed: "Your pin: Bahia · True spot: Hungary", "Right state,
- * wrong town!" when the state matches, "Right country, wrong town!" when
- * only the country matches. Fail closed: unresolvable pins (mid-ocean)
- * render no line and the card is otherwise identical; correct answers
- * never show the line.
+ * actually landed: in globe edition both sides are COUNTRY-level
+ * ("Your pin: Brazil · True spot: Hungary"); "Right state, wrong town!"
+ * when the state matches, "Right country, wrong town!" when only the
+ * country matches (state/country editions). Fail closed: unresolvable pins
+ * (mid-ocean) render no line and the card is otherwise identical; correct
+ * answers never show the line.
  *
  * Determinism: the globe deal is a per-session shuffle (trail.ts), so the
  * date freeze alone cannot pin the first place. seedDeterministicDeal
@@ -136,10 +137,12 @@ async function seedDeterministicDeal(page: Page): Promise<void> {
  * Fixed miss pin: central Bahia, Brazil — far from the true spot and on
  * the visible hemisphere at the initial globe camera. The live tap path
  * resolves it to admin-1 "Bahia", country "Brazil" (neighbor taps at
- * ±20px resolve identically, so it is not near a state border).
+ * ±20px resolve identically, so it is not near a state border), but the
+ * globe line is country-level by design — Veeresh's symmetric-naming
+ * decision (2026-10-05).
  */
 const BAHIA_PIN = { x: 580, y: 490 };
-const EXPECTED_BAHIA_LINE = "Your pin: Bahia · True spot: Hungary";
+const EXPECTED_BAHIA_LINE = "Your pin: Brazil · True spot: Hungary";
 
 /**
  * Fixed mid-ocean pin: South Atlantic. territoryAt() returns null there,
@@ -197,10 +200,13 @@ test("miss in the ocean: no line, card otherwise identical", async ({
   // Fail closed: the pin is unresolvable, so no line renders...
   await expect(card.getByTestId("pin-compare-line")).toHaveCount(0);
 
-  // ...but everything else on the miss card is exactly as before.
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  // ...but everything else on the miss card is exactly as before: the
+  // distance + bearing headline now reads e.g. "1,235 km east of your pin".
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
   const subscript = card.getByTestId("miss-subscript");
-  await expect(subscript).toContainText("White pin is your guess");
+  await expect(subscript).toContainText("Your pin is your guess");
   await expect(card.getByRole("link")).toBeVisible();
 });
 

@@ -181,10 +181,14 @@ export function evaluateGuess(
   const guessLonLat: [number, number] = [entry.lon, entry.lat];
   const targetLonLat: [number, number] = [target.lon, target.lat];
   const distKm = distanceKm(guessLonLat, targetLonLat);
+  const bearing = initialBearing(guessLonLat, targetLonLat);
   return {
     placeId: entry.id,
     distKm,
-    octant: octantOf(initialBearing(guessLonLat, targetLonLat)),
+    // Coincident points have no bearing (null): the guess is on the target
+    // (distKm 0, a win by exact id), so the direction is moot — "north" is
+    // the arbitrary but stable placeholder.
+    octant: bearing === null ? "north" : octantOf(bearing),
     warmer: prevDistKm === null ? null : distKm < prevDistKm,
   };
 }

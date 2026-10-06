@@ -41,11 +41,29 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
+/**
+ * The shared startGlobeRun settle check (data-zoom stable across 800 ms)
+ * can return while the globe intro dive is still running on very slow
+ * machines: data-zoom sits at "1" until the first zoomend fires, then
+ * settles to "2" (the documented post-dive value — see helpers.ts). Tests
+ * that capture the aim zoom must wait for the dive to actually finish,
+ * otherwise they snapshot the transient "1" and fail later. This completes
+ * the wait the helper intends; it changes no app behavior.
+ */
+async function awaitGlobeDiveDone(page: Page): Promise<void> {
+  await expect
+    .poll(() => page.locator(".satellite-map").getAttribute("data-zoom"), {
+      timeout: 30_000,
+    })
+    .toBe("2");
+}
+
 
 test("miss: the gap view frames pin + spot; card leads with distance, subscript, story, source", async ({
   page,
 }) => {
   await startGlobeRun(page);
+  await awaitGlobeDiveDone(page);
   const aimZoom = await page
     .locator(".satellite-map")
     .getAttribute("data-zoom");
@@ -71,12 +89,14 @@ test("miss: the gap view frames pin + spot; card leads with distance, subscript,
   }
 
   const card = resultCard(page);
-  // Distance headline ("12.3 km off" / "850 m off").
-  await expect(card.getByText(/(m|km) off/)).toBeVisible();
+  // Distance + bearing headline ("12.3 km northeast of your pin").
+  await expect(card.getByTestId("miss-headline")).toHaveText(
+    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+  );
   // 2-line explanatory subscript: legend + story lede.
   const subscript = card.getByTestId("miss-subscript");
   await expect(subscript).toBeVisible();
-  await expect(subscript).toContainText("White pin is your guess");
+  await expect(subscript).toContainText("Your pin is your guess");
   // The place story and its source.
   await expect(card.getByRole("link")).toBeVisible();
 
@@ -147,6 +167,7 @@ test("hit: light confirmation — the card appears promptly, the camera never mo
   page,
 }) => {
   await startGlobeRun(page);
+  await awaitGlobeDiveDone(page);
   const zoomBefore = await page
     .locator(".satellite-map")
     .getAttribute("data-zoom");

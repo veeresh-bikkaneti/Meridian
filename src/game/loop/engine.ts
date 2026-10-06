@@ -32,7 +32,10 @@ export const OCTANT_ARROWS: Record<Octant, string> = {
  * exactly one bearing/octant implementation.
  */
 export function octantFor(lon1: number, lat1: number, lon2: number, lat2: number): Octant {
-  return octantOf(initialBearing([lon1, lat1], [lon2, lat2]));
+  const bearing = initialBearing([lon1, lat1], [lon2, lat2]);
+  // Coincident points have no bearing — "north" is the arbitrary but stable
+  // placeholder (same convention as evaluateGuess).
+  return bearing === null ? "north" : octantOf(bearing);
 }
 
 /** A place the player picked in the guess input, before feedback is attached. */
