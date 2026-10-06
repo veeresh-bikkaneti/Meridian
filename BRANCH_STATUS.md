@@ -342,6 +342,44 @@ Full suite on `d56aeff`, serialized through the VM-wide E2E lock, `--workers=1`,
 
 T12 (PR) is unblocked: E2E is GREEN.
 
+## Finish-line review cycle (2026-10-05, Veeresh-authorized)
+
+Game-developer + GIS review, findings fixed, PR prep.
+
+**GIS review: ALL GREEN.** 387/387 clue targets resolve in names.json;
+La Ceiba (geonames:8556321) + Williamstown (geonames:2058304) present and
+winnable via exact-match win logic (engine.ts); 42/42 coordinate samples
+OK (Hyderabad rule); leak spot-check 10/10 clean. Zero blockers.
+
+**Game-developer review: 1 BLOCKER found and fixed (B1).**
+- B1 (BLOCKER): build/runtime normalizer drift — `scripts/build-loop.mjs`
+  vs `evaluate.ts` disagreed on punctuation and non-decomposable letters
+  (ł, ı): index held "bia ystok"/"h n s", queries normalized to
+  "bialystok"/"hinis" → Białystok + Hınıs unfindable (plus Winston-Salem,
+  N'Djamena, Coeur d'Alene casualties). Fixed: single shared normalizer
+  `src/game/loop/normalize.ts` with transliteration map, used by both
+  sides; names.json rebuilt (119,038 entries); build-time findability gate
+  added (387/387 natural-name queries green through the real ranker);
+  B1 regression test + transliteration unit tests.
+- S1 (SHOULD-FIX, needs Veeresh): La Ceiba twins render identical rows —
+  50/50 coin flip. Flagged as PR decision point (accept either twin vs
+  disambiguate).
+- S2 fixed: Octant type moved into geo.ts (core no longer imports from
+  the feature module).
+- S3 (needs Veeresh): GeoDetective play is invisible to learning-outcomes
+  instrumentation — flagged as PR decision point.
+- S4: branch rebased onto origin/main (4accf5c); merge conflicts resolved
+  (game-app Choose props, geo.ts nullable initialBearing reconciled,
+  geo.test.ts suites merged, package.json/playwright.config.ts unions).
+  Loop adapted to nullable initialBearing (coincident → "north").
+- Nits: N3 fixed (non-empty source label); N1/N2/N4/N5/N6 noted, no action.
+
+**Veeresh decision points (documented in PR body for override):**
+1. Dedupe pin (La Ceiba/Williamstown) — implemented per crew recommendation.
+2. Share heading `meridian geodetective <date>` — kept per recommendation.
+3. La Ceiba twins UX (S1) — accept either twin vs disambiguate.
+4. Learning-outcomes instrumentation for GeoDetective (S3) — record or not.
+
 ## Commit log (this branch)
 
 - `a8f4ac4` docs: BRANCH_STATUS.md (T8 step 1)
