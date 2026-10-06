@@ -7,10 +7,10 @@
 4. [ ] Make win/lose MORE Mario-like: bolder ascending fanfare (right), distinctive descending "death" tune (wrong). Original melodies only.
 
 ## Work items
-- [ ] sfx.ts: add playEditionEntrance(), rewrite playWin/playLose
-- [ ] satellite-map.tsx: remove spin sound triggers
-- [ ] game-app.tsx: entrance fanfare in openRun, win/lose on reveal complete
-- [ ] Unit tests
+- [x] sfx.ts: add playEditionEntrance(), rewrite playWin/playLose
+- [x] satellite-map.tsx: spin sound triggers removed (safeguard stops kept)
+- [x] game-app.tsx: entrance fanfare in openRun, win/lose on reveal complete via dropHitRef
+- [x] Unit tests: sfx.test.ts 19/19 pass
 - [ ] E2E verification
 - [ ] tsc clean, full suite green
 - [ ] Open PR
