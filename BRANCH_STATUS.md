@@ -2,7 +2,19 @@
 
 **Branch:** `feat/geodetective-unlimited` (off `origin/main` @ `f0db7ba`, post-#70 Detective's Atlas merge)
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
-**Status:** 🟡 ARCHITECT REVIEW — E2E resolved; software-architect review running
+**Status:** 🟢 ALL GATES GREEN — PR ready (Veeresh merges)
+
+## Final gate summary (2026-10-06, buildId 8141867)
+- `npx tsc --noEmit` — clean
+- `npm test` — **711/711** green (71 loop tests: deck exactly-once over 387, reshuffle cycle++, 404 rollback, blocked-storage fallback, streak transitions, v1-inert)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green
+- Playwright E2E: GeoDetective **15/15** green; full suite 147 passed / 8 failed → all resolved (1 real app bug fixed: seam precedence; 2 test bugs fixed; 1 E2E duplicate-name flake fixed via data-entry-id; 1 pre-existing main failure: safari-launch boot-JS ceiling, fails identically on f0db7ba; 2 flakes passed on rerun)
+- Game Designer: spec + playtest sign-off (48/48 checks)
+- Software Architect: **APPROVED WITH FINDINGS, zero blockers** — all 5 findings addressed (mount catch safety net, two-tab limitation documented, stale comment fixed)
+
+## What's pending
+1. Open PR (Veeresh merges — do NOT merge)
 
 ## E2E final (2026-10-06)
 - Full suite: 147 passed / 8 failed → all 8 accounted for:
