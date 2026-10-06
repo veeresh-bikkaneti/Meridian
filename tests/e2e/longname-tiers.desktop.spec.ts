@@ -142,6 +142,10 @@ async function expectAim(page: Page): Promise<void> {
   await dismissTileOverlayIfPresent(page);
   await expect(page.locator(".satellite-map")).toBeVisible();
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  // The fly-to-region camera settles within ~500ms of phase "aim"; wait
+  // 1s so __project taps land where expected (a tap during the flight
+  // projected Vancouver to the Arctic at 1280px).
+  await page.waitForTimeout(1000);
 }
 
 const MISS_LON = -123.11934;
@@ -422,8 +426,19 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Canada" }).click();
           await expectAim(page);
           await dismissBubble(page);
-          const miss = await missPointOnNamedPlace(page);
-          const { phase } = await commitPin(page, miss.x, miss.y);
+          // Fixed viewport center tap (not __project): sits deep inside
+          // Canada at every matrix width, far from the Ontario target
+          // (a miss), and near pool places (resolvable for the ledger).
+          // __project proved unreliable at 1280px (projected Vancouver
+          // to the map center while the tap landed in the Arctic).
+          const vp = page.viewportSize() ?? { width: 1280, height: 800 };
+          const cx = Math.round(vp.width / 2);
+          const cy = Math.round(vp.height / 2);
+          expect(
+            await tapHitsMap(page, cx, cy),
+            "center tap must hit the map canvas, not chrome",
+          ).toBe(true);
+          const { phase } = await commitPin(page, cx, cy);
           expect(phase).toBe("done");
 
           const ledger = page.getByTestId("pin-compare-line");
