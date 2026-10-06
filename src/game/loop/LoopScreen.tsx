@@ -1,32 +1,43 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatDistance } from "@/game/geo";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
-import { displayDate } from "@/game/daily";
+import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
-import { loopDateKey, loopDayIndex, loopNowFromSearch } from "./day";
-import { getDayState, saveDayState } from "./store";
+import { loopPuzzleFromSearch } from "./day";
+import {
+  clampDeckToPoolSize,
+  completePuzzle,
+  dealPuzzleIndex,
+  freshLoopPuzzleState,
+  loadLoopStore,
+  returnIndexToDeckHead,
+  writeLoopStoreV2,
+} from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import {
   LOOP_MAX_GUESSES,
   type LoopClueFile,
-  type LoopDayState,
   type LoopGuess,
   type LoopManifest,
   type LoopNameEntry,
+  type LoopPuzzleState,
   type LoopStatus,
+  type LoopUnlimitedStore,
 } from "./types";
 
 /**
- * The GeoDetective edition screen. Mounts OUTSIDE the endless-run state
- * machine: it fetches the day's clue file lazily, restores the day's
- * progress from the loop store, and persists every guess there. It never
- * reads or writes `meridian.run` / `meridian.drop`.
+ * The GeoDetective edition screen, unlimited era. Mounts OUTSIDE the
+ * endless-run state machine: it deals mysteries from a shuffled deck
+ * persisted under `meridian.loop.v2`, restores the open mystery from the
+ * store, and persists every guess there. It never reads or writes
+ * `meridian.run` / `meridian.drop`, and it never touches the daily-era
+ * `meridian.loop.v1` archive.
  */
 
 const STALE_REFRESH_KEY = "meridian.staleRefresh";
@@ -119,65 +130,128 @@ async function fetchJson<T>(url: string, isValid: (value: unknown) => value is T
   return parsed;
 }
 
-/** E2E seam: `?loop-date=YYYY-MM-DD` pins the day; inert otherwise. */
-function loopNow(): Date {
-  if (typeof location === "undefined") return new Date();
-  return loopNowFromSearch(location.search) ?? new Date();
+/**
+ * E2E seam: `?loop-puzzle=<index>` pins the dealt puzzle for the mount,
+ * skipping the deck (no pop, no deck side effects). Inert when absent or
+ * invalid — production play always deals from the deck.
+ */
+function seamPuzzleIndex(poolSize: number): number | null {
+  if (typeof location === "undefined") return null;
+  const index = loopPuzzleFromSearch(location.search);
+  return index !== null && index < poolSize ? index : null;
 }
 
 type LoadState =
-  | { phase: "loading" }
+  | { phase: "loading"; message: string }
   | { phase: "ready"; clue: LoopClueFile; index: number }
   | { phase: "error"; message: string; staleBuild: boolean };
 
+/** The case-file number of the mystery currently on the desk. */
+export function caseNumber(store: LoopUnlimitedStore): number {
+  return store.totals.solved + store.totals.lost + 1;
+}
+
 export function LoopScreen({ onLeave }: { onLeave: () => void }) {
   const reduced = usePrefersReducedMotion();
-  // Read once: the seam (or the clock) fixes the day for this mount.
-  const now = useMemo(loopNow, []);
-  const dateKey = loopDateKey(now);
+  const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
+  // Ref mirror so event handlers always see the latest store without
+  // stale closures (the deal/complete paths must be race-free).
+  const storeRef = useRef<LoopUnlimitedStore | null>(null);
+  const commitStore = (next: LoopUnlimitedStore) => {
+    storeRef.current = next;
+    setStore(next);
+    writeLoopStoreV2(next);
+  };
 
-  const [load, setLoad] = useState<LoadState>({ phase: "loading" });
+  const [load, setLoad] = useState<LoadState>({
+    phase: "loading",
+    message: "Loading this mystery…",
+  });
   const [reloadKey, setReloadKey] = useState(0);
-  // Reload-restore (PR #31 pattern): restore the in-progress day state
-  // from the store on mount — never reset it.
-  const [dayState, setDayState] = useState<LoopDayState>(() => getDayState(dateKey));
   // Friendly, screen-reader-announced feedback for rejected picks
   // (duplicates). Never consumes a guess.
   const [pickNotice, setPickNotice] = useState<string | null>(null);
+  // Screen-reader announcement when a reveal lands (the Next-mystery
+  // button must not be a sighted-only affordance).
+  const [revealAnnouncement, setRevealAnnouncement] = useState<string | null>(null);
+  // "Next mystery" idempotence: the button deals once and unmounts with
+  // the reveal; a second tap during the deal is a no-op.
+  const dealingRef = useRef(false);
 
+  // Mount / retry: fetch the manifest, resolve the store (resume, seam,
+  // finished-but-unacknowledged reveal, or fresh deck deal), then fetch
+  // the clue file. A 404 on a freshly dealt index rolls the pop back so
+  // the deck stays exactly-once.
   useEffect(() => {
     let cancelled = false;
-    setLoad({ phase: "loading" });
     (async () => {
+      setLoad({ phase: "loading", message: "Loading this mystery…" });
       const base = assetBase();
-      const manifest = await fetchJson(`${base}loop/manifest.json`, isLoopManifest);
-      const index = loopDayIndex(now, manifest.size);
-      const clue = await fetchJson(`${base}loop/clues/${index}.json`, isLoopClueFile);
-      if (!cancelled) setLoad({ phase: "ready", clue, index });
-    })().catch(async (err: unknown) => {
-      if (cancelled) return;
-      // Stale-deploy pattern (mirrors game-app): when the tab predates the
-      // current deploy, hashed/rotated assets 404 — offer a one-tap refresh
-      // instead of a dead-end error.
-      let staleBuild = false;
+      let manifest: LoopManifest;
       try {
-        staleBuild =
-          sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" && (await isNewBuildDeployed());
-      } catch {
-        staleBuild = false;
+        manifest = await fetchJson(`${base}loop/manifest.json`, isLoopManifest);
+      } catch (err: unknown) {
+        if (!cancelled) setLoad(await toErrorState(err));
+        return;
       }
-      if (!cancelled) {
-        setLoad({
-          phase: "error",
-          message: err instanceof Error ? err.message : String(err),
-          staleBuild,
-        });
+      let next = storeRef.current
+        ? clampDeckToPoolSize(storeRef.current, manifest.size)
+        : loadLoopStore(manifest.size);
+      const seam = seamPuzzleIndex(manifest.size);
+      let dealIndex: number;
+      let popped = false;
+      if (seam !== null) {
+        // E2E seam: deal the pinned puzzle directly — the deck is untouched.
+        dealIndex = seam;
+        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle) };
+      } else if (next.current && next.current.status === "playing") {
+        // Resume: the open mystery keeps its puzzle — never pop the deck again.
+        dealIndex = next.current.index;
+      } else if (next.current) {
+        // Finished but unacknowledged (reload on the reveal): re-render the
+        // reveal, do NOT deal a fresh mystery.
+        dealIndex = next.current.index;
+      } else {
+        const dealt = dealPuzzleIndex(next.deck, manifest.size);
+        dealIndex = dealt.index;
+        popped = true;
+        next = {
+          ...next,
+          deck: dealt.deck,
+          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle),
+        };
       }
-    });
+      if (cancelled) return;
+      commitStore(next);
+      try {
+        const clue = await fetchJson(
+          `${base}loop/clues/${dealIndex}.json`,
+          isLoopClueFile,
+        );
+        if (!cancelled) setLoad({ phase: "ready", clue, index: dealIndex });
+      } catch (err: unknown) {
+        if (cancelled) return;
+        if (popped) {
+          // §7e: the deal failed — put the index back on the deck head so
+          // the deck stays exactly-once. Retry re-attempts the same index.
+          const rolled = clampDeckToPoolSize(
+            {
+              ...next,
+              deck: returnIndexToDeckHead(next.deck, dealIndex),
+              current: null,
+            },
+            manifest.size,
+          );
+          commitStore(rolled);
+        }
+        setLoad(await toErrorState(err));
+      }
+    })();
     return () => {
       cancelled = true;
     };
-  }, [now, reloadKey]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reloadKey]);
 
   const refreshForNewBuild = () => {
     try {
@@ -189,32 +263,113 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
   };
 
   const onPick = (entry: LoopNameEntry) => {
-    if (load.phase !== "ready" || dayState.status !== "playing") return;
-    if (isDuplicateGuess(entry.id, dayState.guesses)) {
+    const s = storeRef.current;
+    const current = s?.current;
+    // The loaded clue must belong to the open mystery — a stale pick
+    // against a mismatched deal is never submitted.
+    if (load.phase !== "ready" || !s || !current || current.status !== "playing") return;
+    if (load.index !== current.index) return;
+    if (isDuplicateGuess(entry.id, current.guesses)) {
       // A repeated pick is never a wasted guess: say so, announce it,
-      // and leave the day state (and the persisted store) untouched.
+      // and leave the store untouched.
       setPickNotice(`You already guessed ${displayLoopName(entry)} — try another place.`);
       return;
     }
     setPickNotice(null);
-    const prev = dayState.guesses[dayState.guesses.length - 1] ?? null;
-    const next = submitGuess(
-      dayState,
-      buildLoopGuess(
-        {
-          name: displayLoopName(entry),
-          placeId: entry.id,
-          lon: entry.lon,
-          lat: entry.lat,
-        },
-        load.clue.target,
-        prev,
+    const prev = current.guesses[current.guesses.length - 1] ?? null;
+    const progressed: LoopPuzzleState = {
+      ...current,
+      ...submitGuess(
+        current,
+        buildLoopGuess(
+          {
+            name: displayLoopName(entry),
+            placeId: entry.id,
+            lon: entry.lon,
+            lat: entry.lat,
+          },
+          load.clue.target,
+          prev,
+        ),
+        load.clue.placeId,
       ),
-      load.clue.placeId,
-    );
-    setDayState(next);
-    saveDayState(dateKey, next);
+    };
+    if (progressed.status === "playing") {
+      commitStore({ ...s, current: progressed });
+    } else {
+      // Completion: streak, totals, cycle counter, and the share date move
+      // in one synchronous handler — exactly once per mystery.
+      commitStore(completePuzzle(s, progressed, calendarDate("UTC", new Date())));
+      setRevealAnnouncement("Reveal loaded. Next mystery button available.");
+    }
   };
+
+  /** The core retention hook: instant deal from the deck, no waiting room. */
+  const onNextMystery = () => {
+    if (dealingRef.current) return;
+    const s = storeRef.current;
+    if (!s?.current || s.current.status === "playing") return;
+    dealingRef.current = true;
+    setRevealAnnouncement(null);
+    setPickNotice(null);
+    setLoad({ phase: "loading", message: "A new mystery is on your desk…" });
+    (async () => {
+      const base = assetBase();
+      let manifest: LoopManifest;
+      try {
+        manifest = await fetchJson(`${base}loop/manifest.json`, isLoopManifest);
+      } catch (err: unknown) {
+        setLoad(await toErrorState(err));
+        return;
+      }
+      // Prefer the in-memory store when the screen already holds one
+      // (blocked-storage sessions live entirely in memory — re-reading
+      // from storage would reset the session).
+      let next = storeRef.current
+        ? clampDeckToPoolSize(storeRef.current, manifest.size)
+        : loadLoopStore(manifest.size);
+      const dealt = dealPuzzleIndex(next.deck, manifest.size);
+      next = {
+        ...next,
+        deck: dealt.deck,
+        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle),
+      };
+      commitStore(next);
+      try {
+        const clue = await fetchJson(
+          `${base}loop/clues/${dealt.index}.json`,
+          isLoopClueFile,
+        );
+        setLoad({ phase: "ready", clue, index: dealt.index });
+      } catch (err: unknown) {
+        const rolled = clampDeckToPoolSize(
+          {
+            ...next,
+            deck: returnIndexToDeckHead(next.deck, dealt.index),
+            current: null,
+          },
+          manifest.size,
+        );
+        commitStore(rolled);
+        setLoad(await toErrorState(err));
+      }
+    })()
+      .catch(() => {
+        // Unreachable in practice (every await is guarded), but a rejection
+        // must never leave the screen stuck on a shimmer.
+        setLoad({
+          phase: "error",
+          message: "Something went wrong dealing the next mystery.",
+          staleBuild: false,
+        });
+      })
+      .finally(() => {
+        dealingRef.current = false;
+      });
+  };
+
+  const current = store?.current ?? null;
+  const caseNo = store ? caseNumber(store) : 1;
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -222,7 +377,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
         <Button variant="ghost" className="self-start" onClick={onLeave}>
           Editions
         </Button>
-        <p className="text-sm text-muted">{displayDate("UTC", now)} · UTC</p>
+        <p className="text-sm text-muted">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
         <h1 className="font-display text-5xl text-fg">GeoDetective</h1>
@@ -234,7 +389,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
 
       {load.phase === "loading" ? (
         <p className="mt-10 text-lg text-muted" role="status">
-          Loading today&rsquo;s mystery&hellip;
+          {load.message}
         </p>
       ) : null}
 
@@ -251,7 +406,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
           </div>
         ) : (
           <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
-            <p className="text-fg">Couldn&rsquo;t load today&rsquo;s mystery: {load.message}</p>
+            <p className="text-fg">Couldn&rsquo;t load this mystery: {load.message}</p>
             <Button className="mt-4" onClick={() => setReloadKey((k) => k + 1)}>
               Retry
             </Button>
@@ -259,14 +414,17 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
         )
       ) : null}
 
-      {load.phase === "ready" ? (
+      {load.phase === "ready" && store && current ? (
         <LoopGame
           clue={load.clue}
-          dayState={dayState}
-          dateKey={dateKey}
+          puzzle={current}
+          streak={store.streak}
+          caseNo={caseNo}
           reduced={reduced}
           notice={pickNotice}
+          revealAnnouncement={revealAnnouncement}
           onPick={onPick}
+          onNextMystery={onNextMystery}
           onLeave={onLeave}
         />
       ) : null}
@@ -274,25 +432,49 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
   );
 }
 
+/** Stale-deploy pattern (mirrors game-app): when the tab predates the
+ * current deploy, hashed/rotated assets 404 — offer a one-tap refresh
+ * instead of a dead-end error. */
+async function toErrorState(err: unknown): Promise<Extract<LoadState, { phase: "error" }>> {
+  let staleBuild = false;
+  try {
+    staleBuild =
+      sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" && (await isNewBuildDeployed());
+  } catch {
+    staleBuild = false;
+  }
+  return {
+    phase: "error",
+    message: err instanceof Error ? err.message : String(err),
+    staleBuild,
+  };
+}
+
 function LoopGame({
   clue,
-  dayState,
-  dateKey,
+  puzzle,
+  streak,
+  caseNo,
   reduced,
   notice,
+  revealAnnouncement,
   onPick,
+  onNextMystery,
   onLeave,
 }: {
   clue: LoopClueFile;
-  dayState: LoopDayState;
-  dateKey: string;
+  puzzle: LoopPuzzleState;
+  streak: number;
+  caseNo: number;
   reduced: boolean;
   notice: string | null;
+  revealAnnouncement: string | null;
   onPick: (entry: LoopNameEntry) => void;
+  onNextMystery: () => void;
   onLeave: () => void;
 }) {
-  const finished = dayState.status !== "playing";
-  const guessesLeft = LOOP_MAX_GUESSES - dayState.guesses.length;
+  const finished = puzzle.status !== "playing";
+  const guessesLeft = LOOP_MAX_GUESSES - puzzle.guesses.length;
 
   // Detective's Atlas (Option A): the map is the primary guess surface.
   const mapHandleRef = useRef<LoopMapHandle | null>(null);
@@ -304,7 +486,8 @@ function LoopGame({
   const [emptyTapHint, setEmptyTapHint] = useState<"empty" | "loading" | null>(null);
   // Screen-reader announcement for each freshly drawn ring.
   const [ringNote, setRingNote] = useState<string | null>(null);
-  const announcedCount = useRef(dayState.guesses.length);
+  const announcedCount = useRef(puzzle.guesses.length);
+  const announcedKey = useRef(`${puzzle.cycle}:${puzzle.index}`);
 
   // Tap on the map: open the confirm sheet for the resolved place.
   const onMapSelect = (entry: LoopNameEntry) => {
@@ -333,17 +516,23 @@ function LoopGame({
   };
 
   // Announce each new ring as text (the visual deduction surface has a
-  // spoken equivalent).
+  // spoken equivalent). Resets per mystery so a resume never re-announces
+  // old rings and a new deal never inherits a stale count.
   useEffect(() => {
-    const n = dayState.guesses.length;
+    const key = `${puzzle.cycle}:${puzzle.index}`;
+    if (announcedKey.current !== key) {
+      announcedKey.current = key;
+      announcedCount.current = puzzle.guesses.length;
+    }
+    const n = puzzle.guesses.length;
     if (n > announcedCount.current) {
-      const latest = dayState.guesses[n - 1];
+      const latest = puzzle.guesses[n - 1];
       if (latest && latest.distKm > 0) setRingNote(ringAnnouncement(latest));
     }
     announcedCount.current = n;
-  }, [dayState.guesses]);
+  }, [puzzle]);
 
-  // Clear a stale selection when the day finishes underneath it.
+  // Clear a stale selection when the mystery finishes underneath it.
   useEffect(() => {
     if (finished) setSelected(null);
   }, [finished]);
@@ -352,11 +541,11 @@ function LoopGame({
     <div className="mt-8 flex flex-col gap-6">
       <section aria-label="Detective's map" className="flex flex-col gap-3">
         <p className="text-sm text-muted" role="status">
-          Guess {dayState.guesses.length + 1} of {LOOP_MAX_GUESSES}
+          Guess {puzzle.guesses.length + 1} of {LOOP_MAX_GUESSES}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
         <LoopMap
-          guesses={dayState.guesses}
+          guesses={puzzle.guesses}
           target={clue.target}
           finished={finished}
           handleRef={mapHandleRef}
@@ -388,7 +577,7 @@ function LoopGame({
           </>
         ) : (
           <p className="text-sm text-muted">
-            Case closed — the gold star marks today&rsquo;s answer.
+            Case closed — the gold star marks the answer.
           </p>
         )}
         <p role="status" aria-live="polite" className="sr-only">
@@ -411,19 +600,19 @@ function LoopGame({
             tier={CLUE_TIERS[i]!}
             index={i}
             text={text}
-            // When the day is over there is no "next guess" — reveal every
+            // When the mystery is over there is no "next guess" — reveal every
             // clue so the locked cards never promise one.
-            revealed={finished || i < dayState.cluesRevealed}
+            revealed={finished || i < puzzle.cluesRevealed}
             reduced={reduced}
           />
         ))}
       </section>
 
-      {dayState.guesses.length > 0 ? (
+      {puzzle.guesses.length > 0 ? (
         <section aria-label="Your guesses" className="flex flex-col gap-2">
           <h2 className="text-sm tracking-wide text-muted uppercase">Your guesses</h2>
           <ol className="flex flex-col gap-2">
-            {[...dayState.guesses].reverse().map((g, ri) => (
+            {[...puzzle.guesses].reverse().map((g, ri) => (
               <li
                 key={`${g.placeId}-${ri}`}
                 className="flex items-baseline justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3"
@@ -449,9 +638,12 @@ function LoopGame({
       {finished ? (
         <LoopReveal
           clue={clue}
-          dayState={dayState}
-          dateKey={dateKey}
+          puzzle={puzzle}
+          streak={streak}
+          caseNo={caseNo}
           reduced={reduced}
+          revealAnnouncement={revealAnnouncement}
+          onNextMystery={onNextMystery}
           onLeave={onLeave}
         />
       ) : null}
@@ -570,28 +762,35 @@ function ClueCard({
  * Win/loss reveal. The endless-run ResultCard is hard-coupled to the run
  * model (Run/Drop/ScoredPlace) — fabricating one for the Loop would invent
  * scores — so the Loop renders its own reveal card in the same visual
- * language: answer, stats, share, source.
+ * language: answer, stats, share, source. The primary action is the
+ * retention hook: an instant "🔎 Next mystery" deal, on both win and loss.
  */
 function LoopReveal({
   clue,
-  dayState,
-  dateKey,
+  puzzle,
+  streak,
+  caseNo,
   reduced,
+  revealAnnouncement,
+  onNextMystery,
   onLeave,
 }: {
   clue: LoopClueFile;
-  dayState: LoopDayState;
-  dateKey: string;
+  puzzle: LoopPuzzleState;
+  streak: number;
+  caseNo: number;
   reduced: boolean;
+  revealAnnouncement: string | null;
+  onNextMystery: () => void;
   onLeave: () => void;
 }) {
-  const won = dayState.status === "won";
+  const won = puzzle.status === "won";
   const winningGuess = won
-    ? (dayState.guesses.find((g) => g.placeId === clue.placeId) ?? null)
+    ? (puzzle.guesses.find((g) => g.placeId === clue.placeId) ?? null)
     : null;
-  const answer = useAnswerName(clue, dayState.status, winningGuess?.name ?? null);
+  const answer = useAnswerName(clue, puzzle.status, winningGuess?.name ?? null);
   const closestGuess = !won
-    ? dayState.guesses.reduce<LoopGuess | null>(
+    ? puzzle.guesses.reduce<LoopGuess | null>(
         (best, g) => (!best || g.distKm < best.distKm ? g : best),
         null,
       )
@@ -610,19 +809,30 @@ function LoopReveal({
           {answer.name ??
             (answer.settled
               ? "We couldn't find the answer's name — but your clues are all above."
-              : "Finding today's answer…")}
+              : "Finding the answer…")}
         </h2>
-        <p className="mt-2 text-sm text-muted">
-          {won
-            ? `Solved in ${dayState.guesses.length} ${dayState.guesses.length === 1 ? "guess" : "guesses"}. A new mystery lands at midnight UTC — see you tomorrow, detective.`
-            : "Better luck with tomorrow's mystery — a new puzzle lands at midnight UTC."}
-        </p>
-        {!won && closestGuess ? (
-          <p className="mt-2 text-sm text-muted">
-            Your closest guess was {closestGuess.name} — {formatDistance(closestGuess.distKm)}{" "}
-            away.
-          </p>
-        ) : null}
+        {won ? (
+          <>
+            <p className="mt-2 text-sm text-muted">
+              Solved in {puzzle.guesses.length} of {LOOP_MAX_GUESSES} guesses.
+            </p>
+            <p className="mt-1 text-sm font-medium text-fg">🔥 Streak: {streak}</p>
+          </>
+        ) : (
+          <>
+            {closestGuess ? (
+              <p className="mt-2 text-sm text-muted">
+                Your closest guess was {closestGuess.name} — {formatDistance(closestGuess.distKm)}{" "}
+                away.
+              </p>
+            ) : null}
+            {puzzle.streakEndedAt !== null && puzzle.streakEndedAt > 0 ? (
+              <p className="mt-2 text-sm font-medium text-fg">
+                Streak reset — it ended at {puzzle.streakEndedAt}.
+              </p>
+            ) : null}
+          </>
+        )}
         <section aria-label="Today's story" className="mt-4">
           <h3 className="text-sm tracking-wide text-muted uppercase">Today&rsquo;s story</h3>
           <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
@@ -638,8 +848,24 @@ function LoopReveal({
           </div>
         </section>
         <div className="mt-4">
-          <ShareLoop dateKey={dateKey} dayState={dayState} />
+          <ShareLoop puzzle={puzzle} />
         </div>
+        <div className="mt-5 flex flex-col gap-2">
+          <Button
+            type="button"
+            onClick={onNextMystery}
+            className="min-h-[48px] w-full text-base"
+          >
+            🔎 Next mystery
+          </Button>
+          <p className="text-center text-sm text-muted">Case #{caseNo} is on your desk.</p>
+          <Button variant="ghost" onClick={onLeave}>
+            Back to editions
+          </Button>
+        </div>
+        <p role="status" aria-live="polite" className="sr-only">
+          {revealAnnouncement}
+        </p>
         <p className="mt-4 text-xs text-muted">
           Clues:{" "}
           <a
@@ -651,11 +877,6 @@ function LoopReveal({
             {clue.source.label}
           </a>
         </p>
-        <div className="mt-4">
-          <Button variant="ghost" onClick={onLeave}>
-            Back to editions
-          </Button>
-        </div>
       </section>
     </Rise>
   );
@@ -668,7 +889,7 @@ function LoopReveal({
  * the guess input already loaded it).
  *
  * M7: the lookup starts unsettled on EVERY loss — the heading shows a
- * neutral "Finding today's answer…" skeleton until the lookup settles, so
+ * neutral "Finding the answer…" skeleton until the lookup settles, so
  * it never flashes a false failure. Only an actual lookup failure shows
  * the failure copy.
  */
@@ -706,11 +927,14 @@ function useAnswerName(
   return answer;
 }
 
-function ShareLoop({ dateKey, dayState }: { dateKey: string; dayState: LoopDayState }) {
+function ShareLoop({ puzzle }: { puzzle: LoopPuzzleState }) {
+  // The share date is the UTC completion date stamped when the mystery
+  // ended — not the deal date, not the clock at share time.
+  const dateKey = puzzle.completedAt ?? calendarDate("UTC", new Date());
   const text = shareLoopText({
     dateKey,
-    status: dayState.status,
-    guesses: dayState.guesses,
+    status: puzzle.status,
+    guesses: puzzle.guesses,
   });
 
   return (
