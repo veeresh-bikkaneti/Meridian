@@ -43,8 +43,8 @@ import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrat
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
-import { Compass } from "lucide-react";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Compass, Flag, Globe2, MapPin } from "lucide-react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
@@ -1378,30 +1378,31 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
+  // Stagger order for the orchestrated entrance (110ms steps in CSS).
+  const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
+      <AtlasBackdrop />
       {notice}
       {tutorialInvite}
       <header>
-        <p className="flex items-center gap-2 text-sm text-muted">
-          <Compass className="size-5" aria-hidden="true" />
-          {trailDate()} UTC
+        <p className="atlas-eyebrow home-rise" style={rise(0)}>
+          <Compass className="size-4" aria-hidden="true" />
+          Field atlas · {trailDate()} UTC
         </p>
-        <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted">
+        <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
+          {BRAND.name}
+        </h1>
+        <p className="atlas-tagline home-rise mt-4" style={rise(2)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
-        <div className="mt-6">
-          <p id="difficulty-label" className="text-sm font-medium text-fg">
+        <div className="home-rise mt-7" style={rise(3)}>
+          <p id="difficulty-label" className="atlas-difficulty-label">
             How do you want to grow your map today?
           </p>
-          <div
-            role="group"
-            aria-labelledby="difficulty-label"
-            className="mt-2 inline-flex rounded-full border border-line bg-surface p-1"
-          >
+          <div role="group" aria-labelledby="difficulty-label" className="atlas-seg mt-3">
             {(
               [
                 { value: "easy", label: "Easy" },
@@ -1416,73 +1417,100 @@ function Choose({
                   type="button"
                   aria-pressed={selected}
                   onClick={() => onDifficultyChoice(option.value)}
-                  className={
-                    selected
-                      ? "rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
-                      : "rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg"
-                  }
                 >
                   {option.label}
                 </button>
               );
             })}
           </div>
-          <p className="mt-2 text-sm text-muted" aria-live="polite">
+          <p className="atlas-hint" aria-live="polite">
             {DIFFICULTY_HINTS[difficultyChoice]}
           </p>
         </div>
+        <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
       </header>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <EditionCard
-          title="State"
-          detail="Pick a country, then one of its states. Each state is its own run."
-          action="Choose a state"
-          onClick={onState}
-        />
-        <EditionCard
-          title="Country"
-          detail="Play a country whole, or drill into its states where available."
-          action="Choose a country"
-          onClick={onCountry}
-        />
-        <EditionCard
-          title="Globe"
-          detail="The whole earth. Continent outlines at a distance, countries as you close in."
-          action="Play the globe"
-          onClick={onGlobe}
-        />
-        <EditionCard
-          title="GeoDetective"
-          detail="Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as you can."
-          action={loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
-          foot={
-            loopProgress.streak > 0 ? (
-              <span className="font-medium text-fg">🔥 Streak: {loopProgress.streak}</span>
-            ) : null
-          }
+      {/* GeoDetective leads: the flagship case file, unlimited mysteries. */}
+      <article
+        aria-labelledby="geodetective-title"
+        className="atlas-dossier home-rise mt-8"
+        style={rise(4)}
+      >
+        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+          Open
+        </span>
+        <p className="atlas-eyebrow">Case file · Unlimited</p>
+        <h2 id="geodetective-title" className="atlas-dossier-title">
+          GeoDetective
+        </h2>
+        <p className="atlas-dossier-detail">
+          Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+          you can.
+        </p>
+        {loopProgress.streak > 0 ? (
+          <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
+        ) : null}
+        <button
+          type="button"
+          className="atlas-btn atlas-btn-brass mt-5"
           onClick={onLoop}
-        />
+        >
+          {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+        </button>
+      </article>
+      <div className="home-rise mt-10" style={rise(5)}>
+        <p className="atlas-eyebrow">Choose your expedition</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <EditionCard
+            index="01"
+            icon={<MapPin className="size-6" aria-hidden="true" />}
+            title="State"
+            detail="Pick a country, then one of its states. Each state is its own run."
+            action="Choose a state"
+            onClick={onState}
+          />
+          <EditionCard
+            index="02"
+            icon={<Flag className="size-6" aria-hidden="true" />}
+            title="Country"
+            detail="Play a country whole, or drill into its states where available."
+            action="Choose a country"
+            onClick={onCountry}
+          />
+          <EditionCard
+            index="03"
+            icon={<Globe2 className="size-6" aria-hidden="true" />}
+            title="Globe"
+            detail="The whole earth. Continent outlines at a distance, countries as you close in."
+            action="Play the globe"
+            onClick={onGlobe}
+          />
+        </div>
       </div>
       {deck.enabled ? (
         <section
           aria-label={REVIEW_DECK_COPY.pickerTitle}
-          className="mt-8 rounded-xl border border-line bg-surface p-5"
+          className="atlas-fieldnotes home-rise mt-8"
+          style={rise(6)}
         >
-          <h2 className="font-display text-2xl text-fg">{REVIEW_DECK_COPY.pickerTitle}</h2>
+          <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
           {deck.due > 0 ? (
             <>
-              <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerDueLine}</p>
-              <p className="mt-1 text-sm font-medium text-fg" data-testid="deck-due-count">
+              <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerDueLine}</p>
+              <p className="mt-1 text-sm font-medium" data-testid="deck-due-count">
                 {deck.due} {deck.due === 1 ? "card" : "cards"} due
               </p>
-              <Button className="mt-4" onClick={onReview}>
+              <button
+                type="button"
+                className="atlas-btn atlas-btn-line mt-4"
+                onClick={onReview}
+              >
                 {REVIEW_DECK_COPY.startReview}
-              </Button>
+              </button>
             </>
           ) : deck.total > 0 ? (
-            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
           ) : (
-            <p className="mt-2 text-sm text-muted">{REVIEW_DECK_COPY.pickerEmpty}</p>
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerEmpty}</p>
           )}
         </section>
       ) : null}
@@ -1490,28 +1518,63 @@ function Choose({
   );
 }
 
+/**
+ * Full-viewport chart-room atmosphere behind the home screen: brass
+ * graticule, topographic contour lines, vignette. Decorative only.
+ */
+function AtlasBackdrop() {
+  return (
+    <div className="atlas-bg" aria-hidden="true">
+      <svg
+        className="atlas-contours"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <g fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M-20,110 C140,80 260,150 420,120 S700,100 830,140" />
+          <path d="M-20,150 C140,120 260,190 420,160 S700,140 830,180" />
+          <path d="M-20,470 C160,440 300,510 470,480 S720,460 830,500" />
+          <path d="M-20,510 C160,480 300,550 470,520 S720,500 830,540" />
+          <path d="M120,300 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M150,300 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M620,380 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M650,380 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M540,180 c30,-42 100,-42 130,0 c30,42 -30,84 -65,62 c-35,-22 -85,-20 -65,-62 Z" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 function EditionCard({
+  index,
+  icon,
   title,
   detail,
   action,
-  foot,
   onClick,
 }: {
+  /** Mono expedition number, e.g. "01". */
+  index: string;
+  /** Brass line icon. */
+  icon: ReactNode;
   title: string;
   detail: string;
   action: string;
-  /** Optional line under the detail (e.g. the GeoDetective streak). */
-  foot?: ReactNode;
   onClick: () => void;
 }) {
   return (
-    <article className="flex flex-col rounded-xl border border-line bg-surface p-5">
-      <h2 className="font-display text-3xl text-fg">{title}</h2>
-      <p className="mt-2 flex-1 text-sm text-muted">{detail}</p>
-      {foot ? <p className="mt-2 text-sm text-muted">{foot}</p> : null}
-      <Button className="mt-4" onClick={onClick}>
+    <article className="atlas-card">
+      <p className="atlas-card-index">N° {index}</p>
+      <div className="atlas-card-icon" aria-hidden="true">
+        {icon}
+      </div>
+      <h2 className="atlas-card-title">{title}</h2>
+      <p className="atlas-card-detail">{detail}</p>
+      <button type="button" className="atlas-btn atlas-btn-line mt-4 w-full" onClick={onClick}>
         {action}
-      </Button>
+      </button>
     </article>
   );
 }
