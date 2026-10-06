@@ -2,7 +2,19 @@
 
 **Branch:** `feat/geodetective-unlimited` (off `origin/main` @ `f0db7ba`, post-#70 Detective's Atlas merge)
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
-**Status:** 🟡 E2E VERIFICATION — full suite: 147 passed / 8 failed → 5 GeoDetective failures root-caused and fixed, 15/15 GeoDetective specs green on rerun; 3 non-GeoDetective failures under investigation (rerun in flight)
+**Status:** 🟡 ARCHITECT REVIEW — E2E resolved; software-architect review running
+
+## E2E final (2026-10-06)
+- Full suite: 147 passed / 8 failed → all 8 accounted for:
+  - 5 GeoDetective: 1 real app bug (seam clobbered open mystery — FIXED, resume branches now precede the seam) + 2 test bugs (share regex for random targets, "Editions" strict-mode — FIXED). Rerun: **15/15 green**.
+  - 1 pre-existing: safari-launch boot-JS ceiling fails identically on pristine main (f0db7ba) — NOT a regression (routes chunk already 2.06 MB vs 1.8 MB ceiling on main; this branch adds +4 KB / +0.2%).
+  - 2 flakes: review-deck:168, difficulty-picker:302 — both passed on rerun.
+- Scratch main worktree at ~/workspace/meridian-scratch-main (kept for reference; node_modules symlinked).
+
+## What's pending
+1. ~~Full Playwright E2E~~ ✅ resolved (above)
+2. Software-architect review — 🟡 RUNNING, zero blockers required
+3. Open PR (Veeresh merges — do NOT merge)
 
 ## E2E findings (full suite 2026-10-06, buildId 06be340)
 - **Real app bug (fixed):** `?loop-puzzle=` seam clobbered an open mystery — the seam branch ran before the resume branches, so a reload/return with the param still in the URL wiped in-progress guesses and re-dealt on finished reveals. Fixed: resume branches now take precedence; seam only pins when no mystery is open (spec §8#4 now holds; also resolves the designer's playtest nit #2 properly).
