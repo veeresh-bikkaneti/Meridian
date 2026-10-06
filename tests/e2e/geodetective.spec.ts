@@ -562,3 +562,52 @@ test("unknown search consumes nothing; no-match message is friendly", async ({ p
   await expect(page.getByText("Guess 1 of 5")).toBeVisible();
   expect(await guessCount(page)).toBe(0);
 });
+
+test("share text carries the streak line when streak > 0 (Veeresh: flippable #2)", async ({
+  page,
+}) => {
+  await openLoop(page, "218"); // Ankara
+  await guessTarget(page, await targetEntry(page));
+  await expect(page.getByText("🎯 You found it!")).toBeVisible();
+  const text = await sharedText(page);
+  // Heading and existing lines untouched; streak appended as its own line.
+  expect(text.split("\n")[0]).toMatch(/^meridian geodetective /);
+  expect(text).toContain("solved in 1");
+  expect(text).toContain("\n🔥 1");
+});
+
+test("cycle-complete celebration fires once on the last case, then next mystery deals (Veeresh: flippable #4)", async ({
+  page,
+}) => {
+  // Seed a near-complete cycle: one index left in the deck, 386 completed.
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "meridian.loop.v2",
+      JSON.stringify({
+        deck: { deck: [218], cycle: 1, cycleCompleted: 386 },
+        current: null,
+        streak: 5,
+        totals: { solved: 300, lost: 86 },
+      }),
+    );
+  });
+  await openLoop(page); // no seam — deals the deck's last index (218)
+  await guessTarget(page, await targetEntry(page));
+  const celebration = page.getByRole("status", { name: "Cycle complete celebration" });
+  await expect(celebration).toBeVisible({ timeout: 15_000 });
+  await expect(celebration).toContainText("You closed all 387 cases, detective!");
+  // The celebration is a beat, not a blocker: Next mystery deals a fresh cycle.
+  await page.getByRole("button", { name: "🔎 Next mystery" }).click();
+  await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({
+    timeout: 30_000,
+  });
+  const store = await loopStore(page);
+  expect(store.deck.cycle).toBe(2);
+});
+
+test("no celebration on a mid-cycle win", async ({ page }) => {
+  await openLoop(page, "218"); // Ankara, seam play — the deck is untouched
+  await guessTarget(page, await targetEntry(page));
+  await expect(page.getByText("🎯 You found it!")).toBeVisible();
+  await expect(page.getByRole("status", { name: "Cycle complete celebration" })).toHaveCount(0);
+});
