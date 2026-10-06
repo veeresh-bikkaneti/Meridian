@@ -81,7 +81,7 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import { LoopScreen } from "@/game/loop/LoopScreen";
-import { readLoopOpen, writeLoopOpen } from "@/game/loop/store";
+import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -617,7 +617,7 @@ export function GameApp() {
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
   // GeoDetective mounts its own screen outside the endless-run state
-  // machine; it persists under meridian.loop.v1 and never touches the
+  // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
   // after a reload so a mid-game refresh resumes the day, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
@@ -1177,7 +1177,7 @@ export function GameApp() {
   }
 
   // GeoDetective lives outside the run machine: its own screen, its own
-  // storage namespace, its own daily rhythm. An in-progress run takes
+  // storage namespace, its own deck rhythm. An in-progress run takes
   // precedence (the player is mid-game); otherwise the open flag wins.
   if (loopOpen) {
     return (
@@ -1363,7 +1363,7 @@ function Choose({
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
-  /** Open the GeoDetective daily edition. */
+  /** Open the GeoDetective edition (unlimited mysteries). */
   onLoop: () => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
@@ -1374,6 +1374,10 @@ function Choose({
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
 }) {
+  // GeoDetective progress for the edition card: the resume variant and the
+  // streak line. Read on mount (the menu remounts when the loop screen
+  // closes, so this is always fresh on return).
+  const [loopProgress] = useState(() => peekLoopProgress());
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       {notice}
@@ -1449,8 +1453,13 @@ function Choose({
         />
         <EditionCard
           title="GeoDetective"
-          detail="Five guesses, one mystery place. Each guess unlocks a clue — a new puzzle at midnight UTC."
-          action="Solve today's mystery"
+          detail="Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as you can."
+          action={loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+          foot={
+            loopProgress.streak > 0 ? (
+              <span className="font-medium text-fg">🔥 Streak: {loopProgress.streak}</span>
+            ) : null
+          }
           onClick={onLoop}
         />
       </div>
@@ -1485,17 +1494,21 @@ function EditionCard({
   title,
   detail,
   action,
+  foot,
   onClick,
 }: {
   title: string;
   detail: string;
   action: string;
+  /** Optional line under the detail (e.g. the GeoDetective streak). */
+  foot?: ReactNode;
   onClick: () => void;
 }) {
   return (
     <article className="flex flex-col rounded-xl border border-line bg-surface p-5">
       <h2 className="font-display text-3xl text-fg">{title}</h2>
       <p className="mt-2 flex-1 text-sm text-muted">{detail}</p>
+      {foot ? <p className="mt-2 text-sm text-muted">{foot}</p> : null}
       <Button className="mt-4" onClick={onClick}>
         {action}
       </Button>
