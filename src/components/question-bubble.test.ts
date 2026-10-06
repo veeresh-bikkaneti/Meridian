@@ -9,7 +9,8 @@ import { fileURLToPath } from "node:url";
 // ellipsis. line-clamp-3 (commit 59f0de0) still ellipsized long qualified
 // labels, so clamping is structurally wrong now that labels carry
 // subdivision/country qualifiers. The bubble grows vertically to fit;
-// a max-height + scroll safety valve covers pathological names.
+// names wrap naturally with no scroll container (scrollbars render
+// native arrow chrome that overlaps the name — see 2026-10-06).
 // There is no DOM test infra in this repo, so this test asserts on the
 // rendered class contract in the component source; the Playwright E2E
 // (tests/e2e/question-wrap.spec.ts + question-card-header.spec.ts)
@@ -60,16 +61,13 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     }
   });
 
-  it("both place-name elements carry the max-height + scroll safety valve", () => {
+  it("place-name elements are not scroll containers (no scrollbar chrome)", () => {
     for (const el of nameElements) {
       const tokens = el.className.split(/\s+/);
       assert.ok(
-        tokens.some((t) => t.startsWith("max-h-")),
-        `<${el.tag}> needs a max-height safety valve for pathological names`,
-      );
-      assert.ok(
-        tokens.includes("overflow-y-auto"),
-        `<${el.tag}> needs overflow-y-auto with the max-height`,
+        !tokens.includes("overflow-y-auto") &&
+          !tokens.includes("overflow-y-scroll"),
+        `<${el.tag}> must not scroll — scrollbar arrows overlap the name`,
       );
     }
   });
