@@ -14,6 +14,12 @@ Doctrine: **names are the payload; containers flex, names never do.** No ellipsi
 
 ## What's done
 - [x] Clone + branch off `origin/main` @ `a838fc6`
+- [x] `.place-name` utility in `src/styles.css` (spec §3 verbatim: `overflow-wrap: break-word`, `word-break: normal`, `text-wrap: balance`, `line-height: 1.28`; no `hyphens: auto`, no `break-all`)
+- [x] Applied to all four surfaces: bubble h2 + collapsed p, guess-list span (+ deleted the ONE `truncate`, `items-baseline`→`items-start`), sheet h2, result-card answer h2s + `pin-compare-line`, LoopReveal answer h2 + closest-guess line. `title={placeName}` kept/added on all name elements
+- [x] Extended `question-bubble.test.ts` no-clamp gate: 15 tests (4 describes) covering utility contract + all four surfaces
+- [x] `npx tsc --noEmit` clean
+- [x] `npm test` green — 724/724, 0 failures
+- [x] Pushed to origin (commit 2ac63db)
 
 ## What's pending
 1. Add `.place-name` utility to `src/styles.css`
