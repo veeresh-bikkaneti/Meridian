@@ -1,8 +1,8 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { buildLoopGuess, octantFor, submitGuess } from "./engine.ts";
-import { freshLoopDayState } from "./store.ts";
-import type { LoopDayState, LoopGuess } from "./types.ts";
+import { freshLoopPuzzleState } from "./store.ts";
+import type { LoopPuzzleProgress, LoopGuess } from "./types.ts";
 
 function guess(overrides: Partial<LoopGuess> = {}): LoopGuess {
   return {
@@ -51,7 +51,7 @@ test("buildLoopGuess: warmer compares against the previous guess", () => {
 });
 
 test("submitGuess: first wrong guess stays playing and reveals clue 2", () => {
-  const next = submitGuess(freshLoopDayState(), guess(), TARGET);
+  const next = submitGuess(freshLoopPuzzleState(0, 1), guess(), TARGET);
   assert.equal(next.guesses.length, 1);
   assert.equal(next.status, "playing");
   assert.equal(next.cluesRevealed, 2);
@@ -59,7 +59,7 @@ test("submitGuess: first wrong guess stays playing and reveals clue 2", () => {
 });
 
 test("submitGuess: win when placeId matches the clue file target", () => {
-  const s1 = submitGuess(freshLoopDayState(), guess({ placeId: "other" }), TARGET);
+  const s1 = submitGuess(freshLoopPuzzleState(0, 1), guess({ placeId: "other" }), TARGET);
   const s2 = submitGuess(s1, guess({ placeId: TARGET, distKm: 0 }), TARGET);
   assert.equal(s2.status, "won");
   assert.equal(s2.guesses.length, 2);
@@ -67,7 +67,7 @@ test("submitGuess: win when placeId matches the clue file target", () => {
 });
 
 test("submitGuess: loss on the fifth wrong guess", () => {
-  let state: LoopDayState = freshLoopDayState();
+  let state: LoopPuzzleProgress = freshLoopPuzzleState(0, 1);
   for (let i = 0; i < 4; i++) {
     state = submitGuess(state, guess({ placeId: `geonames:wrong${i}`, name: `Wrong ${i}`, distKm: 500 + i }), TARGET);
     assert.equal(state.status, "playing");
@@ -80,16 +80,16 @@ test("submitGuess: loss on the fifth wrong guess", () => {
 });
 
 test("submitGuess: no-ops once the day is won or lost", () => {
-  const won = submitGuess(freshLoopDayState(), guess({ placeId: TARGET }), TARGET);
+  const won = submitGuess(freshLoopPuzzleState(0, 1), guess({ placeId: TARGET }), TARGET);
   assert.equal(submitGuess(won, guess(), TARGET), won);
-  let lost: LoopDayState = freshLoopDayState();
+  let lost: LoopPuzzleProgress = freshLoopPuzzleState(0, 1);
   for (let i = 0; i < 5; i++) lost = submitGuess(lost, guess({ placeId: `geonames:lost${i}` }), TARGET);
   assert.equal(lost.status, "lost");
   assert.equal(submitGuess(lost, guess({ placeId: "geonames:extra" }), TARGET), lost);
 });
 
 test("submitGuess: warmer is re-derived from the previous guess", () => {
-  const s1 = submitGuess(freshLoopDayState(), guess({ placeId: "geonames:1", distKm: 1000, warmer: true }), TARGET);
+  const s1 = submitGuess(freshLoopPuzzleState(0, 1), guess({ placeId: "geonames:1", distKm: 1000, warmer: true }), TARGET);
   assert.equal(s1.guesses[0]!.warmer, null, "first guess is always null");
   const s2 = submitGuess(s1, guess({ placeId: "geonames:2", distKm: 900, warmer: false }), TARGET);
   assert.equal(s2.guesses[1]!.warmer, true, "engine overrides a wrong input value");
@@ -98,7 +98,7 @@ test("submitGuess: warmer is re-derived from the previous guess", () => {
 });
 
 test("submitGuess: a repeated placeId is rejected without consuming a guess", () => {
-  const first = submitGuess(freshLoopDayState(), guess(), TARGET);
+  const first = submitGuess(freshLoopPuzzleState(0, 1), guess(), TARGET);
   assert.equal(first.guesses.length, 1);
   const dup = submitGuess(first, guess({ distKm: 5 }), TARGET);
   // Same state object identity: nothing appended, no extra clue revealed.
@@ -109,7 +109,7 @@ test("submitGuess: a repeated placeId is rejected without consuming a guess", ()
 });
 
 test("submitGuess: a repeated placeId that would win still wins on the first submission", () => {
-  const won = submitGuess(freshLoopDayState(), guess({ placeId: TARGET }), TARGET);
+  const won = submitGuess(freshLoopPuzzleState(0, 1), guess({ placeId: TARGET }), TARGET);
   assert.equal(won.status, "won");
   const again = submitGuess(won, guess({ placeId: TARGET }), TARGET);
   assert.equal(again, won);

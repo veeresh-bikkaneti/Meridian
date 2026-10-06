@@ -1,8 +1,8 @@
 // Shared contract for the GeoDetective edition.
 //
-// Written by the build coordinator BEFORE the workers started, so Workers 2
-// (game mechanics) and 3 (guess input) build against identical definitions.
-// Do not change these shapes without coordinating all Loop workers.
+// Unlimited era (v2): mysteries are dealt from a shuffled deck persisted
+// under `meridian.loop.v2` — no UTC-day keying. The daily-era v1 archive
+// (`meridian.loop.v1`) is never read, written, or deleted; it sits inert.
 import type { Octant } from "../geo.ts";
 export type { Octant };
 
@@ -28,21 +28,65 @@ export interface LoopGuess {
 
 export type LoopStatus = "playing" | "won" | "lost";
 
-export interface LoopDayState {
+/**
+ * The guess-progress half of a mystery: the shape `submitGuess` reads and
+ * writes. The engine stays day- and deck-agnostic — the screen owns the
+ * puzzle identity fields below.
+ */
+export interface LoopPuzzleProgress {
   guesses: LoopGuess[];
   status: LoopStatus;
   /** Number of clue cards visible: 1..5. */
   cluesRevealed: number;
 }
 
-/** Keyed by UTC dateKey ("YYYY-MM-DD"). */
-export type LoopStore = Record<string, LoopDayState>;
+/** One mystery in the unlimited deck model. */
+export interface LoopPuzzleState extends LoopPuzzleProgress {
+  /** Clue-file index (public/loop/clues/{index}.json). */
+  index: number;
+  /** Deck cycle this mystery was dealt from (1-based). */
+  cycle: number;
+  /** UTC "YYYY-MM-DD" of completion; null while playing. The share text
+   * uses this date, so a resumed-then-finished-later mystery shares its
+   * completion date, not its deal date. */
+  completedAt: string | null;
+  /** The streak value before a loss reset it; null unless status is lost.
+   * Lets the loss reveal name the ended streak even after a reload. */
+  streakEndedAt: number | null;
+}
 
-export const LOOP_STORAGE_KEY = "meridian.loop.v1";
+/** The shuffled deck: indexes in deal order, head = next to deal. */
+export interface LoopDeckState {
+  /** Clue-file indexes remaining this cycle, in shuffled deal order. */
+  deck: number[];
+  /** 1-based cycle number. Increments each time the deck is rebuilt. */
+  cycle: number;
+  /** Stat: mysteries completed in the current cycle. */
+  cycleCompleted: number;
+}
+
+/** The whole unlimited-mode blob, persisted as one JSON value. */
+export interface LoopUnlimitedStore {
+  deck: LoopDeckState;
+  /**
+   * The open mystery. Set when a mystery is dealt; cleared only after
+   * "Next mystery" deals the next one. An abandoned in-progress mystery
+   * stays here so the screen resumes it instead of popping the deck again.
+   */
+  current: LoopPuzzleState | null;
+  /** Consecutive solves. +1 on win, reset to 0 on loss, nothing else. */
+  streak: number;
+  /** Lifetime totals for the edition card / case counter. */
+  totals: { solved: number; lost: number };
+}
+
+/** Unlimited-era storage key. The daily-era `meridian.loop.v1` archive is
+ * never read, written, or deleted. */
+export const LOOP_STORAGE_KEY_V2 = "meridian.loop.v2";
 /**
  * Separate key in the same namespace: whether the GeoDetective was the
  * open screen when the tab closed/reloaded. Lets a mid-game reload reopen
- * the loop screen (whose day state persists under `meridian.loop.v1`)
+ * the loop screen (whose mystery persists under `meridian.loop.v2`)
  * instead of dropping the player back at the editions menu.
  */
 export const LOOP_OPEN_KEY = "meridian.loop.open";
