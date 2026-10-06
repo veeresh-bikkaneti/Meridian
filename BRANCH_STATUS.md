@@ -1,39 +1,43 @@
-# BRANCH_STATUS.md — feat/longname-pr1
+# BRANCH_STATUS.md — fix/review-deck-framing
 
-**Branch:** `feat/longname-pr1` (off `origin/main` @ `a838fc6` — PR #72 merged 2026-10-06 ~10:29 CDT)
-**Task:** "The Cartographer's Plate" — PR1 Wrap foundation per `~/workspace/your_files/long-name-design-spec.md` §12.
-Doctrine: **names are the payload; containers flex, names never do.** No ellipsis, no clamping, anywhere.
-**Status:** 🟡 IN PROGRESS
+**Branch:** `fix/review-deck-framing` off `origin/main` @ `a838fc6`
+**Task:** Fix the live misses-review bug (Veeresh's report): the review map
+doesn't reframe per card — a Nebraska state card renders over a stuck globe
+showing Africa. The map must reframe per card (flat editions zoom to the
+card's region bounds; globe cards stay globe), and the reveal must show the
+pin-vs-true-spot mapping exactly like normal play.
 
-## Scope (nothing more, nothing less)
-1. New `.place-name` utility in `src/styles.css` per spec §3 (`overflow-wrap: break-word`, `word-break: normal`, `text-wrap: balance`, `line-height: 1.28`). No `hyphens: auto`, no `break-all`.
-2. Apply `.place-name` to: question-bubble name element (`src/components/question-bubble.tsx`), GeoDetective guess-list name span (`src/game/loop/LoopScreen.tsx` ~:632), bottom-sheet h2 (`LoopScreen.tsx` ~:697), reveal headings incl. ledger-TRUE-SPOT analog (`src/components/result-card.tsx` answer h2s + `pin-compare-line`, LoopReveal answer h2). Keep `title={placeName}` on name elements; no FIELD ENTRY tag (Veeresh: skip entirely).
-3. Delete the ONE existing `truncate` at `LoopScreen.tsx:632` (`items-baseline` → `items-start` on the guess row).
-4. Extend the existing no-clamp test gate (`question-bubble.test.ts`) to all four surfaces — zero ellipsis on names, labels, guesses, headings.
-5. E2E: fixture-driven spec using the real longest names from spec §11 (98-char worst case → 7-char Lincoln) asserting full names render with zero ellipsis and no horizontal overflow, at 360/768/1280 × light/dark × reduced-motion. No `text-overflow: ellipsis` on name elements. `data-name-tier` NOT asserted (PR2). Frozen E2E seams: `difficulty-chip`, `pin-compare-line`, `miss-headline`, `growth-line`, `score-breakdown`.
+## Done
+- [x] Branch created off origin/main
+- [x] Repro/regression spec: tests/e2e/review-framing.desktop.spec.ts
+- [x] Production build for E2E (build:pages)
+- [x] Root cause identified + fix implemented
+- [x] tsc clean, unit tests 716/716 green
 
-## What's done
-- [x] Clone + branch off `origin/main` @ `a838fc6`
-- [x] `.place-name` utility in `src/styles.css` (spec §3 verbatim: `overflow-wrap: break-word`, `word-break: normal`, `text-wrap: balance`, `line-height: 1.28`; no `hyphens: auto`, no `break-all`)
-- [x] Applied to all four surfaces: bubble h2 + collapsed p, guess-list span (+ deleted the ONE `truncate`, `items-baseline`→`items-start`), sheet h2, result-card answer h2s + `pin-compare-line`, LoopReveal answer h2 + closest-guess line. `title={placeName}` kept/added on all name elements
-- [x] Extended `question-bubble.test.ts` no-clamp gate: 15 tests (4 describes) covering utility contract + all four surfaces
-- [x] `npx tsc --noEmit` clean
-- [x] `npm test` green — 724/724, 0 failures
-- [x] Pushed to origin (commit 2ac63db)
+## Root cause
+On review card advance, the SatelliteMap mount effect re-ran (bounds identity
+change) and tore down/recreated the MapLibre instance — but the narrow beat
+to the new card's region did not reliably complete, leaving the fresh map
+stuck at its [0,0]/zoom-1 intro globe (Africa). The question bubble proved the
+React props were correct (STATE · NEBRASKA) — the failure was inside the
+in-place effect remount path.
 
-## What's pending
-1. Add `.place-name` utility to `src/styles.css`
-2. Apply to the four surfaces + delete `truncate` at `LoopScreen.tsx:632` + keep titles
-3. Extend `question-bubble.test.ts` no-clamp gate to all four surfaces
-4. Gates: `npx tsc --noEmit` clean · `npm test` green · `npm run build:pages` green
-5. Playwright E2E via VM lock — ⏳ RE-QUEUED with second fix (see below). Second attempt: 12/12 GeoDetective passed, 12/12 bubble tests failed on `pin-compare-line` not found — root cause: my far-west miss tap landed in the Pacific (ocean pins fail closed to no line, by design). Screenshots again prove the product side: the answer h2 rendered the full 106-char label. Fix committed (4294f1a): new `__project` E2E seam on satellite-map (mirrors `__spotScreen`, inert in prod) + deterministic miss pin on Vancouver, BC (pool place, ~3,300 km from target). Rebuilt (`build:pages` green) and re-queued behind the current lock holder with `--reporter=line`.
-6. Open PR (base: `main`, head: `feat/longname-pr1`) — do NOT merge; Veeresh merges — AFTER E2E goes green
+## Fix
+`src/components/game-app.tsx`: key the SatelliteMap by review card
+(`review:${place.id}:${mapKey}` in review mode). Each card now gets a full
+React remount through the proven fresh-mount narrow path — the same
+established pattern as the replay remount. Normal play is untouched
+(key stays `mapKey` when not reviewing).
 
-## Notes
-- The old `feat/home-redesign` BRANCH_STATUS content is superseded by this file.
-- `question-bubble.tsx` at this base has NO `truncate` (already removed upstream); PR1 only adds the `place-name` class there.
-- The reveal ledger (`<dl>`) does not exist yet — it is a PR2 deliverable. PR1 applies `place-name` to the current reveal name surfaces (answer h2s + `pin-compare-line` in `result-card.tsx`, answer h2 in `LoopReveal`).
+## In progress
+- [ ] E2E validation (blocked on VM lock held by game-sfx crew)
+- [ ] Full E2E suite green
+- [ ] Open PR (base: main) — Veeresh merges, I do not
 
-## Completion (2026-10-06 ~14:15 CDT)
-- [x] E2E 24/24 green (fixture-driven, 360/768/1280 × light/dark × reduced-motion)
-- [x] PR opened: https://github.com/veeresh-bikkaneti/Meridian/pull/76 (base: main — Veeresh merges)
+## 2026-10-06 14:15 CDT — E2E green, all three specs pass
+- review-framing.desktop.spec.ts: 1 passed (fixed test bugs: card order, moveend-lag polling, marker count >= 2)
+- review-deck.desktop.spec.ts: 4 passed (earlier failure was a contention flake from a lockless concurrent suite)
+- state-story.desktop.spec.ts: 2 passed (earlier failure was a content flake — short blurb on a random place)
+- Visual verification: Nebraska frames correctly flat per card; reveal shows pin + gold spot + distance ring + line.
+- Ready for Veeresh's merge decision.
+# Merged main 2026-10-06
