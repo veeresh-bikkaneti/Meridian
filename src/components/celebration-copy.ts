@@ -50,7 +50,7 @@ export const CHARACTER_CATCHPHRASES: Record<CharacterName, string> = {
 export const CELEBRATION_COPY: Record<CelebrationMomentKey, CelebrationMoment> = {
   "difficulty-clear": {
     headline: "Easy mode: charted!",
-    line: "Every explorer starts somewhere — you just finished your first voyage through Nebraska.",
+    line: "Every explorer starts somewhere — you just finished your first full voyage.",
     character: "nova",
     greeting: "Steady course, explorer! Try Medium next, or sail Easy once more.",
   },
@@ -62,12 +62,12 @@ export const CELEBRATION_COPY: Record<CelebrationMomentKey, CelebrationMoment> =
   },
   "streak-25": {
     headline: "Twenty-five! Unstoppable explorer!",
-    line: "A quarter hundred straight wins — real explorers are noticing you now.",
+    line: "That's twenty-five wins in a row — other explorers are starting to notice you.",
     character: "rusty",
     greeting: "Logged in the great atlas! Twenty-five voyages and counting.",
   },
   "streak-50": {
-    headline: "Fifty streak! Legend status!",
+    headline: "Fifty in a row — legend status!",
     line: "Fifty correct guesses in a row. You've earned a place among the great navigators.",
     character: "nova",
     greeting: "Steady course, explorer — fifty victories strong. I salute you!",
@@ -127,3 +127,99 @@ export const CELEBRATION_CHROME = {
   dismissLabel: "Close celebration",
   headingId: "celebration-overlay-heading",
 } as const;
+
+/**
+ * The parent-owned celebration state (spec §7.2): the overlay's full props
+ * minus onDismiss. Dismiss → null → unmount.
+ */
+export type CelebrationSpec = {
+  variant: CelebrationVariant;
+  character: CharacterName;
+  title: string;
+  body: string;
+};
+
+/** Compose an overlay-ready spec from the copy table's moment entries. */
+export function celebrationSpec(
+  variant: CelebrationVariant,
+  moment: CelebrationMomentKey,
+): CelebrationSpec {
+  const entry = CELEBRATION_COPY[moment];
+  return {
+    variant,
+    character: entry.character,
+    title: entry.headline,
+    body: `${entry.line} ${entry.greeting}`,
+  };
+}
+
+const CELEBRATION_PARAM = "celebration";
+
+const CELEBRATION_VARIANTS: readonly CelebrationVariant[] = [
+  "difficulty-clear",
+  "mystery-solved",
+  "session-milestone",
+  "game-complete",
+];
+
+/**
+ * E2E seam: `?celebration=<variant>` (mirrors `?loop-puzzle=`). Returns the
+ * variant, or null when absent/invalid — production never sets it.
+ */
+export function celebrationFromSearch(search: string): CelebrationVariant | null {
+  let raw: string | null = null;
+  try {
+    raw = new URLSearchParams(search).get(CELEBRATION_PARAM);
+  } catch {
+    return null;
+  }
+  if (!raw) return null;
+  return (CELEBRATION_VARIANTS as readonly string[]).includes(raw)
+    ? (raw as CelebrationVariant)
+    : null;
+}
+
+/** Seam variant → representative moment (each variant needs a full spec). */
+const SEAM_MOMENTS: Record<CelebrationVariant, CelebrationMomentKey> = {
+  "difficulty-clear": "difficulty-clear",
+  "mystery-solved": "first-win",
+  "session-milestone": "streak-10",
+  "game-complete": "deck-complete",
+};
+
+/** The full overlay spec for `?celebration=<variant>`; null when no seam. */
+export function celebrationSeamSpec(search: string): CelebrationSpec | null {
+  const variant = celebrationFromSearch(search);
+  return variant ? celebrationSpec(variant, SEAM_MOMENTS[variant]) : null;
+}
+
+const FIRST_WIN_KEY = "meridian.firstWinCelebrated";
+
+function celebrationStorage(): Storage | null {
+  try {
+    return typeof localStorage === "undefined" ? null : localStorage;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * First-ever win, once per lifetime across every edition. A dedicated flag
+ * (not derived from session/loop totals): sessions reset daily and the
+ * loop store only counts GeoDetective.
+ */
+export function hasCelebratedFirstWin(): boolean {
+  try {
+    return celebrationStorage()?.getItem(FIRST_WIN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markFirstWinCelebrated(): void {
+  try {
+    celebrationStorage()?.setItem(FIRST_WIN_KEY, "1");
+  } catch {
+    // Storage blocked — the overlay simply may fire again next win.
+  }
+}

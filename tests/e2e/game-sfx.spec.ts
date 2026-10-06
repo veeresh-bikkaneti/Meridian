@@ -1,12 +1,29 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import {
+  serveBuiltArtifact,
+  spotViewportPoint,
+  tapHitsMap,
+  commitPin,
+  readPhase,
+  dismissTileOverlayIfPresent,
+} from "./helpers";
+import {
+  installSfxStub,
+  sfxCalls,
+  oscRecords,
+  srcRecords,
+  ctxCreated,
+  srcCount,
+  expectedHz,
+  type SfxCall,
+  type SfxFilterCall,
+  type SfxGainCall,
+} from "./sfx-stub";
 
 /**
- * Meridian SFX E2E — proves sounds fire on the real flows with a stubbed
- * AudioContext (no real audio in headless Chromium). The stub records every
- * created oscillator (type + frequency + glide target) and every noise
- * buffer source into `window.__sfxCalls`, and counts context constructions
- * in `window.__sfxCtxCreated`.
+ * Meridian SFX E2E — proves sounds fire on the real flows with the shared
+ * stubbed AudioContext from ./sfx-stub.ts (no real audio in headless
+ * Chromium).
  *
  * The game must stay fully playable silent: the stub is a stand-in for
  * "no audio hardware" as much as for "audio works" — every flow here
@@ -15,134 +32,22 @@ import { serveBuiltArtifact } from "./helpers";
  */
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
+const NO_IDLE = `${BASE}?idle-ms=3600000`;
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
-  // Stub AudioContext before any page script runs. The sfx module reads
-  // window.AudioContext lazily inside initAudio(), so this fully
-  // substitutes the real implementation.
-  await context.addInitScript(() => {
-    const calls: Array<{
-      kind: string;
-      type?: string;
-      freq?: number;
-      glideTo?: number | null;
-    }> = [];
-    (window as unknown as Record<string, unknown>).__sfxCalls = calls;
-    (window as unknown as Record<string, unknown>).__sfxCtxCreated = 0;
-    const makeParam = (
-      onValue?: (v: number) => void,
-      onExp?: (v: number) => void,
-    ) => ({
-      value: 0,
-      setValueAtTime(v: number) {
-        this.value = v;
-        onValue?.(v);
-      },
-      linearRampToValueAtTime(v: number) {
-        this.value = v;
-      },
-      exponentialRampToValueAtTime(v: number) {
-        this.value = v;
-        onExp?.(v);
-      },
-      setTargetAtTime() {},
-    });
-    class FakeAudioContext {
-      currentTime = 0;
-      state = "running";
-      sampleRate = 44100;
-      destination = {};
-      constructor() {
-        (window as unknown as Record<string, unknown>).__sfxCtxCreated =
-          ((window as unknown as Record<string, unknown>).__sfxCtxCreated as number) + 1;
-      }
-      resume() {
-        return Promise.resolve();
-      }
-      createGain() {
-        return { gain: makeParam(), connect() {} };
-      }
-      createOscillator() {
-        const rec: { kind: string; type: string; freq: number; glideTo: number | null } = {
-          kind: "osc",
-          type: "sine",
-          freq: 0,
-          glideTo: null,
-        };
-        calls.push(rec);
-        return {
-          set type(v: string) {
-            rec.type = v;
-          },
-          get type() {
-            return rec.type;
-          },
-          frequency: makeParam(
-            (v) => {
-              rec.freq = v;
-            },
-            (v) => {
-              rec.glideTo = v;
-            },
-          ),
-          detune: makeParam(),
-          connect() {},
-          start() {},
-          stop() {},
-        };
-      }
-      createBiquadFilter() {
-        return { type: "lowpass", frequency: makeParam(), Q: makeParam(), connect() {} };
-      }
-      createDynamicsCompressor() {
-        return {
-          threshold: makeParam(),
-          knee: makeParam(),
-          ratio: makeParam(),
-          attack: makeParam(),
-          release: makeParam(),
-          connect() {},
-        };
-      }
-      createBuffer(_ch: number, len: number, _rate: number) {
-        return { getChannelData: () => new Float32Array(len) };
-      }
-      createBufferSource() {
-        calls.push({ kind: "src" });
-        return { buffer: null, connect() {}, start() {}, stop() {} };
-      }
-    }
-    (window as unknown as Record<string, unknown>).AudioContext = FakeAudioContext;
-  });
+  // Stub AudioContext before any page script runs.
+  await installSfxStub(context);
 });
 
-type SfxCall = { kind: string; type?: string; freq?: number; glideTo?: number | null };
+type SfxCallT = SfxCall;
 
-async function sfxCalls(page: import("playwright/test").Page): Promise<SfxCall[]> {
-  return page.evaluate(
-    () => (window as unknown as { __sfxCalls: SfxCall[] }).__sfxCalls ?? [],
-  );
-}
-
-async function oscRecords(page: import("playwright/test").Page): Promise<SfxCall[]> {
-  return (await sfxCalls(page)).filter((c) => c.kind === "osc");
-}
-
-async function ctxCreated(page: import("playwright/test").Page): Promise<number> {
-  return page.evaluate(
-    () => (window as unknown as { __sfxCtxCreated: number }).__sfxCtxCreated ?? 0,
-  );
-}
-
-async function srcCount(page: import("playwright/test").Page): Promise<number> {
-  return (await sfxCalls(page)).filter((c) => c.kind === "src").length;
-}
-
-/** The spec's mapping, replicated to compute the expected ring pitch. */
-function expectedHz(distKm: number): number {
-  const d = Math.min(20000, Math.max(1, distKm));
-  return Math.round(1568 * Math.pow(d, -0.28));
+async function startGlobeAim(page: import("playwright/test").Page): Promise<void> {
+  await page.goto(NO_IDLE);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
 }
 
 function searchBox(page: import("playwright/test").Page) {
@@ -280,6 +185,33 @@ test("home: card tap fires on gesture-created context; toggle persists and silen
     .toBeGreaterThan(before);
 });
 
+test("in-game mute button toggles sound mid-game", async ({ page }) => {
+  await startGlobeAim(page);
+
+  const toggle = page.getByTestId("sound-toggle-game");
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+
+  // Mute mid-game: the persisted value flips and the pressed state follows.
+  await toggle.click();
+  expect(await page.evaluate(() => localStorage.getItem("meridian.sound"))).toBe("off");
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  await expect(toggle).toHaveAccessibleName("Turn sound on");
+
+  // Unmute: the card tap confirms (a new voice), persistence round-trips.
+  const before = (await oscRecords(page)).length;
+  await toggle.click();
+  expect(await page.evaluate(() => localStorage.getItem("meridian.sound"))).toBe("on");
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect
+    .poll(async () => (await oscRecords(page)).length, { timeout: 10_000 })
+    .toBeGreaterThan(before);
+
+  // The game is unaffected: the map is still interactive in the aim phase.
+  await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("aim");
+  await expect(page.locator(".satellite-map")).toBeVisible();
+});
+
 test("geodetective: guess confirm blip + distance-mapped ring reveal", async ({ page }) => {
   // ?loop-puzzle=218 -> Ankara.
   await openLoop(page, "218");
@@ -369,4 +301,109 @@ test("geodetective: lose sting after five misses; next-case deal snaps", async (
   await expect.poll(() => srcCount(page), { timeout: 10_000 }).toBeGreaterThan(srcBefore);
   const dealFreqs = (await oscRecords(page)).slice(oscBefore).map((o) => o.freq);
   expect(dealFreqs).toContain(196);
+});
+
+test("globe spin: loop texture starts on the spin intent, stops on the narrow transition", async ({
+  page,
+}) => {
+  await page.goto(NO_IDLE);
+  // The edition-card tap creates the AudioContext (autoplay gate).
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+
+  // The spin intent executes at map mount: a looping buffer source, the
+  // 850 Hz bandpass, and the spin gain ramping 0 → 0.10.
+  await expect
+    .poll(async () => (await srcRecords(page)).some((s) => s.loop), { timeout: 15_000 })
+    .toBe(true);
+  const calls: SfxCall[] = await sfxCalls(page);
+  const spinIdx = calls.findIndex((c) => c.kind === "src" && c.loop);
+  expect(spinIdx).toBeGreaterThanOrEqual(0);
+  const spinFilter = calls.slice(spinIdx).find((c) => c.kind === "filter") as
+    | SfxFilterCall
+    | undefined;
+  expect(spinFilter?.type).toBe("bandpass");
+  expect(spinFilter?.freq).toBe(850);
+  const spinGain = calls.slice(spinIdx).find((c) => c.kind === "gain") as
+    | SfxGainCall
+    | undefined;
+  expect(spinGain?.ramps).toContain(0.1);
+
+  // The 1200 ms intro ends in the spin→narrow transition: the source stops
+  // and the gain ramps down toward silence.
+  await expect
+    .poll(async () => (await srcRecords(page)).find((s) => s.loop)?.stopped, {
+      timeout: 15_000,
+    })
+    .toBe(true);
+  const after: SfxCall[] = await sfxCalls(page);
+  const spinGainAfter = after.slice(spinIdx).find((c) => c.kind === "gain") as
+    | SfxGainCall
+    | undefined;
+  expect(spinGainAfter?.ramps).toContain(0.0001);
+
+  // The game reaches the aim phase normally — the texture never blocks play.
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+});
+
+test("globe spin: pointerup on the map stops the texture", async ({ page }) => {
+  await page.goto(NO_IDLE);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect
+    .poll(async () => (await srcRecords(page)).some((s) => s.loop), { timeout: 15_000 })
+    .toBe(true);
+
+  // A touch during the intro ends the ambient texture (the visual spin
+  // continues into the narrow beat — only the sound stops). Tap handlers
+  // are not armed yet, so the click is otherwise inert. The map canvas
+  // (not the starfield layers) is the interactive surface; the pointerup
+  // bubbles to the canvas container where the wiring listens.
+  await page.locator(".satellite-map .maplibregl-canvas").click();
+  await expect
+    .poll(async () => (await srcRecords(page)).find((s) => s.loop)?.stopped, {
+      timeout: 10_000,
+    })
+    .toBe(true);
+
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+});
+
+test("streak milestone: crossing 10 plays the small cheer", async ({ page }) => {
+  test.slow(); // reload-restore round-trip plus a full reveal
+  await startGlobeAim(page);
+
+  // Isolate the cheer: the first-win fanfare shares the C-major triad, so
+  // mark it celebrated — this bank must voice only the milestone cheer.
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  // Seed the run streak to 9 through the reload-restore path (resumeRun
+  // preserves streak): the next hit crosses 10 and banks the cheer.
+  await page.evaluate(() => {
+    const raw = sessionStorage.getItem("meridian.run");
+    if (!raw) throw new Error("no saved run to seed");
+    const run = JSON.parse(raw);
+    run.streak = 9;
+    sessionStorage.setItem("meridian.run", JSON.stringify(run));
+  });
+  await page.reload();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  await dismissTileOverlayIfPresent(page);
+
+  // The exact spot is a guaranteed hit (distance ~0).
+  const spot = await spotViewportPoint(page);
+  expect(spot, "the true spot must project").not.toBeNull();
+  expect(await tapHitsMap(page, spot!.x, spot!.y)).toBe(true);
+
+  const before = await oscRecords(page);
+  const { phase } = await commitPin(page, spot!.x, spot!.y);
+  expect(phase).toBe("story"); // the exact-spot tap is a hit
+
+  // Small cheer: deterministic C5→E5→G5 triangle triad, staggered 70 ms.
+  // (The endless game wires no ring/win sounds, so the triad is the cheer.)
+  const freshFreqs = (await oscRecords(page)).slice(before.length).map((o) => o.freq);
+  for (const f of [523.25, 659.25, 783.99]) {
+    expect(freshFreqs).toContain(f);
+  }
 });

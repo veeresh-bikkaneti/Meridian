@@ -6,6 +6,8 @@ import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { isHit } from "@/game/radius";
+import { startGlobeSpin, stopGlobeSpin } from "@/game/audio/sfx";
+import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
@@ -881,6 +883,12 @@ export function SatelliteMap(props: {
           }
           case "paint-highlight": {
             paintHighlight(intent.feature);
+            // Celebration audio (spec §3): the narrow-in landed — the
+            // region's chart has arrived. This intent is emitted only at
+            // narrow completion (zoom-space emits it nowhere else), so the
+            // chime fires on the actual swap, never on a timer and never on
+            // restore paths (which paint directly and bypass the executor).
+            playCelebrationSound("toastChime");
             break;
           }
           case "clear-highlight": {
@@ -925,8 +933,18 @@ export function SatelliteMap(props: {
             break;
           }
           case "spin": {
-            if (intent.active) startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
-            else stopSpin();
+            if (intent.active) {
+              startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
+              // Celebration audio (spec §2.3): the intro globe-rotation
+              // texture. Hidden-tab safe: a backgrounded tab starts no loop.
+              if (soundAudible()) safePlay(startGlobeSpin);
+            } else {
+              stopSpin();
+              // The spin→narrow transition ends the texture (the 30 s
+              // backstop in sfx.ts is only a safety net). No-op when no loop
+              // is running — never throws.
+              safePlay(stopGlobeSpin);
+            }
             break;
           }
           case "reveal-done": {
@@ -1067,6 +1085,17 @@ export function SatelliteMap(props: {
       return true;
     };
     skipControlRef.current = { arm: armSkip, disarm: disarmSkip, trySkip };
+
+    // Celebration audio (spec §2.3): the player's first touch on the map
+    // during the intro spin ends the ambient texture — the spin sound
+    // belongs to the unattended intro, not to an interacting player.
+    // stopGlobeSpin is a no-op when no loop is running, so the listener is
+    // unconditional and never throws (safePlay belt-and-braces).
+    const spinContainer = map.getCanvasContainer();
+    const onIntroPointerUp = () => {
+      safePlay(stopGlobeSpin);
+    };
+    spinContainer.addEventListener("pointerup", onIntroPointerUp);
 
     // Must-fix #2: tile load lifecycle (see tile-status.ts wiring contract).
     // Only TILE failures feed it: the "error" event also fires for
@@ -1341,6 +1370,9 @@ export function SatelliteMap(props: {
       window.clearTimeout(watchdog);
       disarmSkip();
       stopSpin();
+      // An unmount mid-intro must not leave the ambient loop playing.
+      safePlay(stopGlobeSpin);
+      spinContainer.removeEventListener("pointerup", onIntroPointerUp);
       destroyStarfield.destroy();
       detachTapHandlers();
       for (const marker of markersRef.current) marker.remove();

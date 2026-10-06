@@ -7,6 +7,7 @@ import {
   commitMiss,
   clickNextPlace,
 } from "./helpers";
+import { installSfxStub, oscRecords } from "./sfx-stub";
 import type { Page } from "playwright/test";
 
 /**
@@ -387,4 +388,105 @@ test("Hard-cleared shows neighbor buttons; a neighbor starts a Hard run", async 
   await expect(celebration(page)).toBeHidden();
 
   expectCleanConsole(errors);
+});
+
+/**
+ * Celebration audio on the cleared dialog (spec §3): the dialog's opening
+ * beat plays the medium applause for Easy/Medium and the grand fanfare for
+ * Hard. Driven through the run-start backstop (full band pre-seeded, no
+ * cleared mark) so no pin commit is needed — the dialog opens on real
+ * gestures, which also satisfy the audio autoplay gate.
+ */
+
+async function driveBackstopClear(
+  page: Page,
+  regionId: string,
+  stateName: string,
+  choice: Band,
+): Promise<void> {
+  const catalog = bandCatalogIds(regionId, choice);
+  expect(catalog.length, `${regionId} needs a real ${choice} band`).toBeGreaterThan(1);
+
+  // Simulate a band cleared before celebration existed: the full band
+  // covered by the no-repeat history, and NO cleared mark set.
+  await page.evaluate(
+    ([k, ids]: [string, string[]]) => localStorage.setItem(k, JSON.stringify(ids)),
+    [`${SEEN_PREFIX}state:${regionId}:${choice}`, catalog] as [string, string[]],
+  );
+  expect(await readClearedMark(page, regionId, choice)).toBeNull();
+
+  await pickDifficulty(page, choice === "easy" ? "Easy" : choice === "medium" ? "Medium" : "Hard");
+  await playState(page, stateName);
+
+  // The celebration appears at run start — before any question is answered.
+  await expect(celebration(page)).toBeVisible({ timeout: 30_000 });
+}
+
+async function expectTriad(
+  page: Page,
+  before: number,
+  freqs: number[],
+): Promise<void> {
+  await expect
+    .poll(
+      async () => {
+        const fresh = (await oscRecords(page)).slice(before).map((o) => o.freq);
+        return freqs.every((f) => fresh.includes(f));
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+}
+
+test("cleared dialog plays the medium applause on open (Easy)", async ({
+  page,
+  context,
+}) => {
+  await installSfxStub(context);
+  await page.goto(APP);
+  const before = await oscRecords(page);
+
+  await driveBackstopClear(page, "vermont", "Vermont", "easy");
+
+  // Medium applause: the deterministic G-major triad 392/493.88/587.33
+  // under the 8 hand-claps. Nothing else on this path voices those three
+  // together (card taps sit at ~587 Hz, the difficulty chirp glides).
+  await expectTriad(page, before, [392, 493.88, 587.33]);
+});
+
+test("cleared dialog plays the grand fanfare on open (Hard)", async ({
+  page,
+  context,
+}) => {
+  await installSfxStub(context);
+  await page.goto(APP);
+  const before = await oscRecords(page);
+
+  await driveBackstopClear(page, "rhode-island", "Rhode Island", "hard");
+
+  const dlg = celebration(page);
+  await expect(dlg.getByRole("heading")).toContainText(/True Rhode Island explorer/i);
+
+  // Grand fanfare: G4 392 → C5 523.25 → E5 659.25 → G5 783.99 + the 1568 Hz
+  // shimmer on the final note.
+  await expectTriad(page, before, [392, 523.25, 659.25, 783.99, 1568]);
+});
+
+test.describe("reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+
+  test("cleared-dialog applause still fires under reduced motion (spec §4.6)", async ({
+    page,
+    context,
+  }) => {
+    // Sounds are never gated on reduced motion — the sound toggle is the
+    // sound control. The applause must voice even with the reduce setting.
+    await installSfxStub(context);
+    await page.goto(APP);
+    const before = await oscRecords(page);
+
+    await driveBackstopClear(page, "vermont", "Vermont", "easy");
+
+    await expectTriad(page, before, [392, 493.88, 587.33]);
+  });
 });

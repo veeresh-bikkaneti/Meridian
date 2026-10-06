@@ -189,6 +189,13 @@ export default defineConfig({
         viewport: { width: 1440, height: 900 },
       },
     },
+    {
+      name: "celebration",
+      testMatch: /celebration\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
   ],
   reporter: [
     ["list"],

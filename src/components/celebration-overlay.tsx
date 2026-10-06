@@ -12,8 +12,19 @@ import {
 
 // The copy constant lives in celebration-copy.ts (pure data, unit-testable);
 // it is re-exported here so app code imports it from the overlay module.
-export { CELEBRATION_COPY } from "./celebration-copy";
-export type { CelebrationVariant } from "./celebration-copy";
+export {
+  CELEBRATION_COPY,
+  celebrationFromSearch,
+  celebrationSeamSpec,
+  celebrationSpec,
+  hasCelebratedFirstWin,
+  markFirstWinCelebrated,
+} from "./celebration-copy";
+export type {
+  CelebrationMomentKey,
+  CelebrationSpec,
+  CelebrationVariant,
+} from "./celebration-copy";
 export type { CharacterName } from "./characters";
 
 export type CelebrationOverlayProps = {
@@ -63,19 +74,36 @@ export function CelebrationOverlay({
     return () => window.removeEventListener("keydown", onKey);
   }, [onDismiss]);
 
-  // Mount effect: play the mapped SFX once.
+  // Mount effect: play the mapped SFX once, with the spec §3 anti-annoyance
+  // guards (hidden-tab suppression, grand-tier cooldown). mystery-solved
+  // plays nothing — playWin() already fired for the solve. Sounds are
+  // unaffected by reduced motion (spec §4.6).
   useEffect(() => {
     const name = CELEBRATION_SFX[variant];
     if (name === null) return;
     let cancelled = false;
     void (async () => {
       try {
+        const guards = (await import("../game/audio/play-guards")) as unknown as {
+          soundAudible(): boolean;
+          claimGrand(): boolean;
+        };
+        if (cancelled) return;
+        // Rule 6: no sound while the tab is hidden — the visual is unseen,
+        // so sound would become the sole signal.
+        if (!guards.soundAudible()) return;
         const sfx = (await import("../game/audio/sfx")) as unknown as Record<
           string,
           (() => void) | undefined
         >;
         if (cancelled) return;
-        sfx[name]?.();
+        // Rule 1: a recent grand-tier celebration cools the fanfare down to
+        // applause instead of stacking grandeur.
+        const recipe =
+          name === "playGrandFanfare" && !guards.claimGrand()
+            ? "playMediumApplause"
+            : name;
+        sfx[recipe]?.();
         // The pop only ever accompanies visible confetti.
         if (!reducedMotion) sfx["playConfettiPop"]?.();
       } catch {
