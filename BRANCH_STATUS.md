@@ -26,8 +26,8 @@ Doctrine: **names are the payload; containers flex, names never do.** No ellipsi
 2. Apply to the four surfaces + delete `truncate` at `LoopScreen.tsx:632` + keep titles
 3. Extend `question-bubble.test.ts` no-clamp gate to all four surfaces
 4. Gates: `npx tsc --noEmit` clean · `npm test` green · `npm run build:pages` green
-5. Playwright E2E via VM lock (fixture-driven, real longest names, 360/768/1280 × light/dark × reduced-motion)
-6. Open PR (base: `main`, head: `feat/longname-pr1`) — do NOT merge; Veeresh merges
+5. Playwright E2E via VM lock (fixture-driven, real longest names, 360/768/1280 × light/dark × reduced-motion) — ⏳ BLOCKED on `~/workspace/.e2e.lock` since 17:05 UTC (60+ min). Lock holder at last check: review-framing-fix crew's `playwright test review-framing review-deck --project=desktop` (queued 16:25); game-sfx's full-suite run finished ahead of them; a game-sfx rerun is queued behind this branch. This branch's command is queued and will auto-run the 24-test matrix when the lock frees: `flock ~/workspace/.e2e.lock npx playwright test tests/e2e/longname-wrap.desktop.spec.ts --workers=1`
+6. Open PR (base: `main`, head: `feat/longname-pr1`) — do NOT merge; Veeresh merges — AFTER E2E goes green
 
 ## Notes
 - The old `feat/home-redesign` BRANCH_STATUS content is superseded by this file.
