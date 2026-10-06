@@ -21,11 +21,14 @@ const source = readFileSync(
 );
 
 // The elements that render the place name as their text content.
+// Cartographer's Plate PR2: names render through <PlaceNameText>
+// (ZWSP display refinement + strict-rule anchor tail) with data-name-tier
+// set from the raw label length.
 const nameElements = [
   ...source.matchAll(
-    /<(h2|p)\b([^>]*?)className="([^"]*)"([^>]*?)>\s*\{placeName\}/g,
+    /<(h2|p)\b([^>]*?)className="([^"]*)"([^>]*?)>\s*<PlaceNameText name=\{placeName\} \/>/g,
   ),
-].map((m) => ({ tag: m[1], className: m[3] }));
+].map((m) => ({ tag: m[1], className: m[3], attrs: `${m[2]}${m[4]}` }));
 
 describe("question-bubble — full question label, never an ellipsis", () => {
   it("finds both place-name elements (expanded h2 + collapsed p)", () => {
@@ -81,17 +84,46 @@ describe("question-bubble — full question label, never an ellipsis", () => {
     );
   });
 
-  it("scroll safety valve is keyboard-reachable", () => {
-    // max-h + overflow-y-auto creates a scroll region; without tabIndex a
-    // keyboard user can't reach a pathological name's tail.
-    const tabbed = source.match(/tabIndex=\{0\}/g) ?? [];
+  it("sets data-name-tier from the raw label length on both views (spec §2)", () => {
+    for (const el of nameElements) {
+      assert.ok(
+        /data-name-tier=\{nameTier\(placeName\)\}/.test(el.attrs),
+        `<${el.tag}> must set data-name-tier={nameTier(placeName)} — the React→CSS bridge`,
+      );
+    }
+  });
+
+  it("drops tabIndex and aria-label from static name elements (spec §5/§8.3)", () => {
+    // Tab-stop fatigue: SRs get the full text anyway with zero ellipsis.
+    // (PR3 restores keyboard reachability on the scroll REGION wrapper.)
+    for (const el of nameElements) {
+      assert.ok(
+        !/tabIndex/.test(el.attrs),
+        `<${el.tag}> must not carry tabIndex — dropped per spec §5`,
+      );
+      assert.ok(
+        !/aria-label/.test(el.attrs),
+        `<${el.tag}> must not carry aria-label — visible text == accessible name (§8.3)`,
+      );
+    }
+  });
+
+  it("meta band locks the difficulty chip: never compacts, never leaves", () => {
+    // The chip lives in the pinned meta band (spec §6.4) — same size,
+    // label, and position at every tier; never shrinks below 11px.
     assert.ok(
-      tabbed.length >= 2,
-      "both place-name scroll regions need tabIndex={0}",
+      /<div className="name-meta">/.test(source),
+      "the question card needs the pinned meta band",
+    );
+    const chip = /<span\b[^>]*data-testid="difficulty-chip"[^>]*>/.exec(source);
+    assert.ok(chip, "the difficulty-chip E2E seam must survive, never renamed");
+    assert.ok(
+      chip[0].includes('className="difficulty-chip"'),
+      "the chip uses the locked .difficulty-chip class (11px floor, nowrap, flex-shrink: 0)",
     );
     assert.ok(
-      /aria-label=\{`Question: \$\{placeName\}`\}/.test(source),
-      "scroll regions need an aria-label naming the question",
+      !/difficulty-chip"[^>]*style=/.test(source),
+      "the chip must not take inline size overrides",
     );
   });
 
@@ -195,19 +227,31 @@ describe("cartographer's plate PR1 — reveal headings (result-card.tsx)", () =>
   it("answer heading renders the full name, never an ellipsis", () => {
     const className = classOfTag(
       resultCardSource,
-      /<h2\b[^>]*>\s*\{placeLabel\}/,
+      /<h2\b[^>]*>\s*<PlaceNameText name=\{placeLabel\} \/>/,
       "result-card answer h2",
     );
     assertNameContract("result-card answer h2", className);
   });
 
-  it("pin-compare-line keeps full names, never an ellipsis", () => {
-    const className = classOfTag(
-      resultCardSource,
-      /<p\b[^>]*data-testid="pin-compare-line"[^>]*>/,
-      'result-card [data-testid="pin-compare-line"]',
+  it("pin-compare ledger is a real <dl>: full names, never an ellipsis", () => {
+    // Cartographer's Plate PR2: the compounding text line becomes a real
+    // <dl> with stacked YOUR PIN / TRUE SPOT entries.
+    const dlMatch = /<dl\b[^>]*data-testid="pin-compare-line"[^>]*>/.exec(resultCardSource);
+    assert.ok(dlMatch, 'result-card must render <dl data-testid="pin-compare-line">');
+    assert.ok(
+      resultCardSource.includes("<dt>Your pin</dt>"),
+      "YOUR PIN eyebrow stacks above its name",
     );
-    assertNameContract('result-card [data-testid="pin-compare-line"]', className);
+    assert.ok(
+      resultCardSource.includes("True spot"),
+      "TRUE SPOT eyebrow stacks above its name",
+    );
+    const truespotClass = classOfTag(
+      resultCardSource,
+      /<dd\b[^>]*>\s*<PlaceNameText name=\{placeLabel\} \/>/,
+      "ledger TRUE SPOT dd",
+    );
+    assertNameContract("ledger TRUE SPOT dd", truespotClass);
     // E2E seam: the testid must survive the redesign untouched.
     assert.ok(
       resultCardSource.includes('data-testid="pin-compare-line"'),
@@ -223,50 +267,75 @@ describe("cartographer's plate PR1 — reveal headings (result-card.tsx)", () =>
   });
 });
 
-describe("cartographer's plate PR1 — geodetective surfaces (LoopScreen.tsx)", () => {
-  it("guess-list name span: the one truncate is gone, full names wrap", () => {
+describe("cartographer's plate PR2 — dossier guess rows (LoopScreen.tsx)", () => {
+  it("guess rows are dossier rows: grid, brass number, unlimited-line name", () => {
     const className = classOfTag(
       loopScreenSource,
-      /<span\b[^>]*>\s*\{g\.name\}\s*<\/span>/,
-      "guess-list name span",
+      /<span\b[^>]*>\s*<PlaceNameText name=\{g\.name\} \/>/,
+      "dossier name span",
     );
-    assertNameContract("guess-list name span", className);
+    assertNameContract("dossier name span", className);
     assert.ok(
       !/\btruncate\b/.test(loopScreenSource),
       "LoopScreen.tsx must contain ZERO truncate — the one hard truncation is deleted",
     );
+    // Row: grid 1fr auto, dossier number, name, right column.
     assert.ok(
-      loopScreenSource.includes(
-        "flex items-start justify-between gap-3 rounded-xl border border-line bg-surface",
-      ),
-      "guess row switches items-baseline → items-start so multi-line names top-align with the distance",
+      loopScreenSource.includes('className="dossier-row border border-line bg-surface"'),
+      "guess rows use the dossier-row grid (1fr auto), keeping the existing border/bg",
+    );
+    assert.ok(
+      loopScreenSource.includes("dossier-num"),
+      "each row carries the brass dossier number",
+    );
+    assert.ok(
+      loopScreenSource.includes("first-guess-tag"),
+      "row 1 gets the FIRST GUESS tag — never a trend",
+    );
+    assert.ok(
+      loopScreenSource.includes("dossier-trend"),
+      "rows 2+ get the WARMER/COLDER trend word",
+    );
+    assert.ok(
+      loopScreenSource.includes("dossier-bearing"),
+      "each row carries the bearing arrow + octant label",
+    );
+    // Single accessible list item: the composed aria-label names the
+    // guess, its trend, its distance, and its direction.
+    assert.ok(
+      /aria-label=\{`Guess \$\{n\}: /.test(loopScreenSource),
+      "each row is a single accessible list item with a composed aria-label",
     );
     assert.ok(
       loopScreenSource.includes("title={g.name}"),
-      "guess-list name span keeps title={g.name}",
+      "dossier name span keeps title={g.name}",
     );
   });
 
-  it("bottom-sheet h2 renders the full tapped name", () => {
+  it("bottom-sheet h2 renders the full tapped name, tiered", () => {
     const className = classOfTag(
       loopScreenSource,
-      /<h2\b[^>]*>\s*\{displayLoopName\(entry\)\}/,
+      /<h2\b[^>]*>\s*<PlaceNameText name=\{tappedName\} \/>/,
       "bottom-sheet h2",
     );
     assertNameContract("bottom-sheet h2", className);
     assert.ok(
-      loopScreenSource.includes("title={displayLoopName(entry)}"),
+      loopScreenSource.includes("title={tappedName}"),
       "bottom-sheet h2 keeps the full-name title",
     );
   });
 
-  it("loop reveal answer heading renders the full answer", () => {
+  it("loop reveal answer heading renders the full answer, tiered", () => {
     const className = classOfTag(
       loopScreenSource,
-      /<h2\b[^>]*>\s*\{answer\.name/,
+      /<h2\b[^>]*className="place-name lrname[^"]*"[^>]*>/,
       "loop reveal answer h2",
     );
     assertNameContract("loop reveal answer h2", className);
+    assert.ok(
+      loopScreenSource.includes("<PlaceNameText name={answer.name} />"),
+      "the loop reveal answer renders through PlaceNameText (ZWSP + anchor tail)",
+    );
   });
 
   it("closest-guess line keeps the full guess name", () => {

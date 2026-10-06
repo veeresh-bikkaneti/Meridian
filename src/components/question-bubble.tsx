@@ -2,6 +2,8 @@ import { ChevronDown, Target, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { difficultyChip, type Difficulty } from "@/game/scoring";
 import { bubbleHeaderText } from "@/game/question-label";
+import { nameTier } from "@/game/place-name";
+import { PlaceNameText } from "@/components/place-name";
 import type { Edition } from "@/game/run";
 
 export type BubbleViewState = "open" | "collapsed" | "dismissed";
@@ -82,7 +84,7 @@ export function QuestionBubble({
 
   if (view === "dismissed") {
     return (
-      <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -98,40 +100,40 @@ export function QuestionBubble({
   }
 
   const expanded = view === "open";
+  // Cartographer's Plate PR2 — the meta band is pinned above the name:
+  // eyebrow + difficulty chip in one baseline row. The chip is LOCKED in
+  // the band (spec §6.4): same size, label, and position at every tier —
+  // never compacts, never leaves, never shrinks below 11px.
+  const metaBand = (
+    <div className="name-meta">
+      <p className="name-eyebrow">{bubbleHeaderText(edition, regionName)}</p>
+      <span data-testid="difficulty-chip" className="difficulty-chip">
+        {difficultyChip(difficulty)}
+      </span>
+    </div>
+  );
   return (
-    <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20 max-w-[min(320px,calc(100vw-20px))]">
+    <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
       <Enter key={view} durationMs={expanded ? 400 : 333} reduced={reduced}>
-        <div className={`pointer-events-auto rounded-[20px] p-3 pl-4 text-white ${CHROME}`}>
-          <div className="flex items-center justify-between gap-2">
-            <div className="min-w-0">
+        <div className="game-chrome pointer-events-auto rounded-[20px] p-3 pl-4">
+          {metaBand}
+          <div className="mt-1.5 flex items-start justify-between gap-2">
+            <div className="min-w-0 flex-1">
               {expanded ? (
-                <>
-                  <p className="text-[11px] tracking-wider text-white/60 uppercase">
-                    {bubbleHeaderText(edition, regionName)}
-                  </p>
-                  <h2
-                    className="place-name mt-0.5 font-display text-xl leading-tight"
-                    title={placeName}
-                    tabIndex={0}
-                    aria-label={`Question: ${placeName}`}
-                  >
-                    {placeName}
-                  </h2>
-                  <span
-                    data-testid="difficulty-chip"
-                    className="mt-1.5 inline-block rounded-full border border-amber-200/30 bg-amber-200/10 px-2 py-0.5 text-[11px] font-medium tracking-wide text-amber-100"
-                  >
-                    {difficultyChip(difficulty)}
-                  </span>
-                </>
+                <h2
+                  className="place-name qname mt-1.5"
+                  data-name-tier={nameTier(placeName)}
+                  title={placeName}
+                >
+                  <PlaceNameText name={placeName} />
+                </h2>
               ) : (
                 <p
-                  className="place-name font-display text-lg leading-tight"
+                  className="place-name qname mt-1.5"
+                  data-name-tier={nameTier(placeName)}
                   title={placeName}
-                  tabIndex={0}
-                  aria-label={`Question: ${placeName}`}
                 >
-                  {placeName}
+                  <PlaceNameText name={placeName} />
                 </p>
               )}
             </div>
@@ -141,7 +143,7 @@ export function QuestionBubble({
                 aria-label={expanded ? "Collapse question" : "Expand question"}
                 aria-expanded={expanded}
                 onClick={() => onViewChange(expanded ? "collapsed" : "open")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
+                className="flex size-11 items-center justify-center rounded-full text-[var(--atlas-muted)] transition-all duration-150 hover:bg-white/10 hover:text-[var(--atlas-ink)] active:scale-95"
               >
                 <ChevronDown
                   className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
@@ -152,16 +154,14 @@ export function QuestionBubble({
                 type="button"
                 aria-label="Hide question"
                 onClick={() => onViewChange("dismissed")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
+                className="flex size-11 items-center justify-center rounded-full text-[var(--atlas-muted)] transition-all duration-150 hover:bg-white/10 hover:text-[var(--atlas-ink)] active:scale-95"
               >
                 <X className="size-5" aria-hidden="true" />
               </button>
             </div>
           </div>
           {expanded ? (
-            <p className="mt-1.5 text-sm leading-snug text-white/80">
-              {hasPin ? HINT_PIN : HINT_EMPTY}
-            </p>
+            <p className="bubble-hint">{hasPin ? HINT_PIN : HINT_EMPTY}</p>
           ) : null}
         </div>
       </Enter>
