@@ -81,6 +81,59 @@ A "case file snapped open" — paper snap + low tick. Noise is synthesized, not 
 - `playCardTap()` — edition card tap: triangle 587.33 Hz (D5), A 4 ms / D 110 ms, peak 0.20, lowpass 3000 Hz.
 - `playDifficultySelect()` — difficulty select: sine 880 Hz gliding to 940 Hz over 80 ms + fifth shimmer 1318.5 Hz at −14 dB (peak 0.22 / 0.05), A 4 ms / D 140 ms. Deliberately a fifth above the card tap so the two never feel identical.
 
+### 2.7 `playPinDropPass()` — pin lands, placement accepted
+Pass/fail is about **placement**, never accuracy — at pin-drop time the outcome doesn't exist yet. Pass = tap accepted, a reveal will follow.
+
+- Osc 1: triangle, 392 → 440 Hz exponential glide over 40 ms (inquisitive up-lift)
+- Osc 2: paper tok — cached noise buffer → bandpass 1800 Hz, Q 1.0, A 2 ms / D 30 ms, peak 0.10
+- Osc 1: A 3 ms / D 60 ms, peak 0.24; shared lowpass 3200 Hz
+- Total ~95 ms · Priority: low (UI) · ±2% micro-variation · Peak ≤0.25
+- Distinct from `playCardTap` (D5 587 fixed): lower, gliding, paper tok.
+
+### 2.8 `playPinDropFail()` — tap rejected, soft "page turn"
+Fail = placement rejected, no reveal follows: tap while camera animating, double-tap misfire (<300 ms), tap on non-interactive chrome. A legal-but-wrong guess is NOT a fail — it gets the normal ring reveal. No buzzer, no dissonance.
+
+- Noise: cached buffer → bandpass sweeping 1200 → 450 Hz over 220 ms, A 25 ms (soft attack) / D 220 ms, peak 0.14
+- Osc: sine 247 → 220 Hz gentle exponential fall over 200 ms, A 25 ms / D 240 ms, peak 0.12, lowpass 1000 Hz
+- Total ~285 ms · Priority: low (UI) · Peak ≤0.25 · distinguishable from pass in <150 ms (bright up-lift vs airy descend)
+
+### 2.9 `startGlobeSpin()` / `stopGlobeSpin()` — intro globe rotation texture
+Looping voice (see §3 loop rules): the cached noise buffer with `loop = true` (zero new allocation) → bandpass 850 Hz, Q 0.7 → gain ramps 0 → 0.10 over 400 ms.
+
+- `startGlobeSpin()`: idempotent — a restart cuts the previous loop immediately (no debounce) and re-arms the safety. Before `initAudio()` (or with sound off) it is a silent no-op.
+- `stopGlobeSpin()`: gain fades to 0.0001 over 250 ms, source stops at fade end, nodes disconnect. No-op when not running.
+- **30 s auto-stop safety** (one-shot `setTimeout`, never `setInterval`): backstop only — callers stop on screen transition.
+- Counts as 1 of the 8 voices; ambient priority 1 (never steals, stealable by ring/win/lose/fanfare); a stolen spin does NOT auto-restart — the map layer re-arms on the next dragstart. `setSoundEnabled(false)` stops any active loop immediately.
+
+### 2.10 `playNextPlace()` — regular-game "Next place" (map re-deal)
+Distinct from GeoDetective's `playDeal` file-snap — this is a chart unrolling, not a case file.
+
+- Snap: cached noise → bandpass 3000 Hz, Q 1.0, A 2 ms / D 50 ms, peak 0.24 (brighter paper than deal's 2400 Hz)
+- Chirp: triangle 330 → 392 Hz over 60 ms at t0 + 20 ms, A 3 ms / D 90 ms, peak 0.18, lowpass 3200 Hz
+- Total ~150 ms · Priority: low (UI) · ±2% micro-variation · Peak ≤0.25
+
+### 2.11 `playSmallCheer()` — Spark/Cheer tier milestone
+- 3 triangle voices C5 523.25 → E5 659.25 → G5 783.99, staggered 70 ms, A 5 ms / D 250 ms, peak 0.18 each, bandpass 900 Hz Q 2 (formant tint) + 6 Hz vibrato ±15 Hz
+- Deterministic (celebrations carry meaning — no jitter) · Total ~450 ms · Priority: high (win-class) · Peak ≤0.40
+
+### 2.12 `playMediumApplause()` — difficulty cleared
+- Claps: 8 cached-noise bursts → bandpass 1500 Hz Q 1.5, A 1 ms / D 40 ms, peak 0.14 each, at t0 + 90/180/300/430/560/700/870/1050 ms
+- Pad: triangle G-major triad 392/493.88/587.33 Hz, A 50 ms / D 1000 ms, peak 0.10 each, lowpass 2500 Hz, ±4-cent detune pairs
+- Deterministic · Total ~1.15 s · Priority: high · Peak ≤0.40 · within the 1.2 s ceiling
+
+### 2.13 `playGrandFanfare()` — 387 completion / hard-clear coronation
+- G major (distinct from `playWin`'s C major): G4 392 → C5 523.25 → E5 659.25 → G5 783.99 (hold), staggered 140/140/280 ms; triangle, A 8 ms / D 420 ms, peak 0.28, ±4-cent detune pairs
+- Shimmer: sine 1568 Hz on the final, peak 0.08 — D trimmed to 570 ms so the final lands at 560 + 8 + 570 = 1138 ms, holding the locked **1.15 s** total (Veeresh's decision; the audio recipe's D 700 would overshoot the 1.2 s ceiling)
+- Crowd swell: noise → lowpass 800 Hz, A 300 ms / D 600 ms, peak 0.10
+- Shared lowpass 4500 Hz · Deterministic · Priority: high · Peak ≤0.45
+
+### 2.14 `playToastChime()` — milestone banner slides in (no confetti)
+- Sine 880 → 990 Hz glide over 80 ms, A 4 ms / D 80 ms, peak 0.16, lowpass 3000 Hz · Total ~110 ms · Priority: low (UI) · ±2% micro-variation
+
+### 2.15 `playConfettiPop()` — confetti burst (only when visual confetti fires)
+- 2 noise pops → bandpass 2200 Hz Q 1.2, A 1 ms / D 35 ms, peak 0.14 each, at t0 and t0 + 120 ms
+- Triangle 660 → 880 Hz chirp, A 3 ms / D 120 ms, peak 0.12, lowpass 3200 Hz · Total ~300 ms · Priority: low (UI) · ±2% micro-variation
+
 ---
 
 ## 3. Mix rules
@@ -88,9 +141,10 @@ A "case file snapped open" — paper snap + low tick. Noise is synthesized, not 
 - **Master ceiling:** `masterGain = 0.8` into the safety compressor (§2). No clipping, ever.
 - **Per-sound peaks (pre-master):** UI blips ≤ 0.25 · ring ≤ 0.50 · win/lose ≤ 0.45 · deal ≤ 0.40.
 - **Mobile-speaker-friendly:** no fundamental below 98 Hz; every voice low-passed ≤ 8000 Hz; all fundamentals live in 98–1600 Hz where phone speakers actually reproduce. No sub-bass, no harsh highs.
-- **Max 8 concurrent voices.** Priority: ring / win / lose = high (never stolen by UI); UI blips = low. Steal policy: steal oldest lowest-priority voice; same event re-fired within 80 ms replaces its previous instance (debounce).
-- **Max duration:** no single sound exceeds 1.2 s (win arpeggio at ~1.1 s is the ceiling).
-- **Micro-variation:** ±2% random detune on UI blips only, so rapid taps don't machine-gun. Ring/win/lose/deal are deterministic — they carry information.
+- **Max 8 concurrent voices.** Priority: ring / win / lose / cheer / applause / fanfare = high (never stolen by UI); UI blips = low; globe-spin loop = ambient (priority 1, never steals). Steal policy: steal oldest lowest-priority voice; same event re-fired within 80 ms replaces its previous instance (debounce).
+- **Loop voices (`admitLoop`).** The globe-spin loop counts toward the 8-voice ceiling and participates in steal ordering (spin = priority 1, stolen by ring/win/lose/fanfare). Differences from one-shots: same-key restart stops the previous instance immediately (no 80 ms debounce); the `setTimeout` prune skips loops — `stop()` removes the voice entry manually; a stolen spin does NOT auto-restart (the map layer re-arms on the next dragstart); `setSoundEnabled(false)` stops any active loop via a module-level registry; the 30 s auto-stop is a one-shot `setTimeout` backstop, never `setInterval`.
+- **Max duration:** no single sound exceeds 1.2 s (win arpeggio at ~1.1 s is the ceiling; grand fanfare is fit to 1.15 s).
+- **Micro-variation:** ±2% random detune on UI blips only (confirm, card, difficulty, pinDrop, nextPlace, toast, confetti), so rapid taps don't machine-gun. Ring/win/lose/deal/cheer/applause/fanfare are deterministic — they carry information.
 
 ## 4. Architecture contract — `src/game/audio/sfx.ts`
 
@@ -98,7 +152,7 @@ A "case file snapped open" — paper snap + low tick. Noise is synthesized, not 
 ```ts
 initAudio(): void
 isSoundEnabled(): boolean
-setSoundEnabled(on: boolean): void
+setSoundEnabled(on: boolean): void   // false also stops any active loop
 distanceToFrequencyKm(km: number): number   // pure — unit-testable, no AudioContext needed
 playConfirmGuess(): void
 playRingReveal(distanceKm: number): void
@@ -107,6 +161,17 @@ playLose(): void
 playDeal(): void
 playCardTap(): void
 playDifficultySelect(): void
+// Celebration extension (spec §2.7–§2.15):
+playPinDropPass(): void
+playPinDropFail(): void
+startGlobeSpin(): void              // idempotent; silent no-op before initAudio()
+stopGlobeSpin(): void               // no-op when not running
+playNextPlace(): void
+playSmallCheer(): void
+playMediumApplause(): void
+playGrandFanfare(): void
+playToastChime(): void
+playConfettiPop(): void
 ```
 
 **Rules:**
@@ -128,6 +193,10 @@ Sounds are soft (peaks ≤ 0.5 pre-master), short (longest 1.1 s), non-looping, 
 - [ ] Home: `playCardTap()` on edition card press; `playDifficultySelect()` on difficulty change.
 - [ ] Speaker toggle in Chart Room header; persists `meridian.sound`.
 - [ ] Unit tests: `distanceToFrequencyKm` mapping (endpoints + band edges); play functions are no-ops without AudioContext (no throw in jsdom).
+- [ ] Pin drop: `playPinDropPass()` when a tap is accepted (phase aim, playable map, camera idle, ≥300 ms since last tap); `playPinDropFail()` when a tap is rejected (camera animating, double-tap <300 ms, non-interactive chrome).
+- [ ] Regular editions: `playNextPlace()` on the result-card "Next place" press (only when a new question actually deals); `playToastChime()` when narrow-in tiles swap in after the globe spin.
+- [ ] Globe intro: `startGlobeSpin()` when the spin intent executes → `stopGlobeSpin()` on screen transition (the 30 s auto-stop is a backstop, not the mechanism); skipped intro → no sound at all.
+- [ ] Celebrations: `playSmallCheer()` on streak 10/25/50 (with the 5 s spacing rule); `playMediumApplause()` on Easy/Medium cleared dialog (first clear only); `playGrandFanfare()` on hard-clear dialog and on 387-cycle completion (exactly once per cycle); `playConfettiPop()` only when visual confetti fires.
 
 ## 7. Careful-about list
 

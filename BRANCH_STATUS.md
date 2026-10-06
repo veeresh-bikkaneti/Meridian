@@ -8,7 +8,7 @@
 4. Streak-50: Parade. 5. Sound default ON + mute-all button reachable in game.
 
 ## Active work
-- [ ] sfx.ts: 9 new functions + admitLoop + unit tests
+- [x] sfx.ts: 9 new functions + admitLoop + unit tests (shipped 2026-10-06: tsc clean, 19/19 sfx tests green; 7 shipped sounds byte-identical)
 - [ ] Mute button in game chrome (in addition to home header)
 - [x] Components: characters.tsx, confetti.tsx, celebration-overlay.tsx/.css, use-prefers-reduced-motion.ts (+ celebration-copy.ts, particle-caps.ts pure helpers for testability; 3 unit test files, 14 tests green; tsc clean; ~10.3KB gzipped prod code, within 12KB budget)
 - [ ] Wiring: game-app.tsx (celebration state, ?celebration= seam), LoopScreen pin-drop, satellite-map spin
