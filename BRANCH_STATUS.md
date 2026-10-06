@@ -2,7 +2,14 @@
 
 **Branch:** `feat/geodetective-unlimited` (off `origin/main` @ `f0db7ba`, post-#70 Detective's Atlas merge)
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
-**Status:** 🟡 E2E PHASE — designer signed off; full Playwright suite running under flock lock
+**Status:** 🟡 E2E VERIFICATION — full suite: 147 passed / 8 failed → 5 GeoDetective failures root-caused and fixed, 15/15 GeoDetective specs green on rerun; 3 non-GeoDetective failures under investigation (rerun in flight)
+
+## E2E findings (full suite 2026-10-06, buildId 06be340)
+- **Real app bug (fixed):** `?loop-puzzle=` seam clobbered an open mystery — the seam branch ran before the resume branches, so a reload/return with the param still in the URL wiped in-progress guesses and re-dealt on finished reveals. Fixed: resume branches now take precedence; seam only pins when no mystery is open (spec §8#4 now holds; also resolves the designer's playtest nit #2 properly).
+- **Test bug (fixed):** loss-path share asserted `/🟥{5} not solved/` — invalid for a random real-deck target (wrong guesses can be <2000 km → 🟧/🟨). Now `/[🟥🟧🟨]{5} not solved/`.
+- **Test bug (fixed):** "Editions" locator matched 2 buttons on the win reveal (header "Editions" + reveal "Back to editions"); test now clicks "Back to editions".
+- **Rerun:** geodetective.spec.ts + geodetective.reduced.spec.ts → **15/15 passed** (buildId 1dcd331).
+- **Open:** review-deck.desktop, difficulty-picker, safari-launch failures — rerunning to determine flake vs regression.
 
 ## Crew
 - **Orchestrator:** branch hygiene, quality gates, E2E, software-architect review, PR, completion report
