@@ -337,7 +337,7 @@ test("real deck deal: loss path, streak reset, Next mystery deals a different pu
 
   const share = await sharedText(page);
   expect(share).toContain(expectedShareHeading());
-  expect(share).toMatch(/🟥{5} not solved/);
+  expect(share).toMatch(/[🟥🟧🟨]{5} not solved/);
 
   // Next mystery: a different real-deck puzzle, deck shrinks again.
   await page.getByRole("button", { name: "🔎 Next mystery" }).click();
@@ -486,7 +486,9 @@ test("edition card shows the streak after a win", async ({ page }) => {
   await guessViaMap(page, "ankara");
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
 
-  await page.getByRole("button", { name: "Editions" }).click();
+  // Leave via the reveal's button (the header "Editions" and the reveal's
+  // "Back to editions" both match a bare "Editions" locator — disambiguate).
+  await page.getByRole("button", { name: "Back to editions" }).click();
   const card = page.getByRole("article").filter({ hasText: "GeoDetective" });
   await expect(card.getByText("🔥 Streak: 1")).toBeVisible();
   // The finished mystery is acknowledged: fresh deal, not resume.

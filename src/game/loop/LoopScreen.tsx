@@ -200,17 +200,20 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
       const seam = seamPuzzleIndex(manifest.size);
       let dealIndex: number;
       let popped = false;
-      if (seam !== null) {
-        // E2E seam: deal the pinned puzzle directly — the deck is untouched.
-        dealIndex = seam;
-        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle) };
-      } else if (next.current && next.current.status === "playing") {
-        // Resume: the open mystery keeps its puzzle — never pop the deck again.
+      if (next.current && next.current.status === "playing") {
+        // Resume first: neither the seam nor a fresh deal ever clobbers an
+        // in-progress mystery (the seam param survives reloads in the URL —
+        // re-pinning here would wipe the player's guesses).
         dealIndex = next.current.index;
       } else if (next.current) {
         // Finished but unacknowledged (reload on the reveal): re-render the
         // reveal, do NOT deal a fresh mystery.
         dealIndex = next.current.index;
+      } else if (seam !== null) {
+        // E2E seam: deal the pinned puzzle directly — the deck is untouched.
+        // Only applies when no mystery is open.
+        dealIndex = seam;
+        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle) };
       } else {
         const dealt = dealPuzzleIndex(next.deck, manifest.size);
         dealIndex = dealt.index;
