@@ -1,5 +1,58 @@
 @import "tailwindcss";
 
+/* Self-hosted Atlas type system (latin subsets, vendored from Google Fonts;
+ * no runtime CDN dependency, so the app — and its "clean console" E2E gate —
+ * never depends on a font fetch succeeding). */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 340 700;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 340 700;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./assets/fonts/karla-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Karla";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./assets/fonts/karla-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/spacemono-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/spacemono-bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/spacemono-italic.woff2") format("woff2");
+}
+
 :root {
   --bg: #101211;
   --fg: #f3f4f2;

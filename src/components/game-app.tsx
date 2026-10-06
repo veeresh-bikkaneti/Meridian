@@ -1430,7 +1430,7 @@ function Choose({
         <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
       </header>
       {/* GeoDetective leads: the flagship case file, unlimited mysteries. */}
-      <section
+      <article
         aria-labelledby="geodetective-title"
         className="atlas-dossier home-rise mt-8"
         style={rise(4)}
@@ -1456,7 +1456,7 @@ function Choose({
         >
           {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
         </button>
-      </section>
+      </article>
       <div className="home-rise mt-10" style={rise(5)}>
         <p className="atlas-eyebrow">Choose your expedition</p>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
