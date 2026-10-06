@@ -102,6 +102,7 @@ function isLoopClueFile(value: unknown): value is LoopClueFile {
     (c.clues as unknown[]).every((clue) => typeof clue === "string" && clue.length > 0) &&
     !!source &&
     typeof source.label === "string" &&
+    source.label.length > 0 &&
     typeof source.href === "string" &&
     // F1: scheme allowlist — the href renders into an <a>, so only
     // https: survives validation (latent stored-XSS sink otherwise).

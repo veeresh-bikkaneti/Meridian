@@ -3,16 +3,8 @@
 // Written by the build coordinator BEFORE the workers started, so Workers 2
 // (game mechanics) and 3 (guess input) build against identical definitions.
 // Do not change these shapes without coordinating all Loop workers.
-
-export type Octant =
-  | "north"
-  | "north-east"
-  | "east"
-  | "south-east"
-  | "south"
-  | "south-west"
-  | "west"
-  | "north-west";
+import type { Octant } from "../geo.ts";
+export type { Octant };
 
 export interface LoopGuess {
   /** Display name as picked, e.g. "Springfield, Illinois, US". */

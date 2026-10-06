@@ -1,5 +1,6 @@
 import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
+import { normalizeLoopName } from "./normalize.ts";
 
 // Pure logic behind the GeoDetective guess input (Worker 3). Kept in a plain
 // TS module so it is unit-testable without a DOM/React; guess-input.tsx is
@@ -10,20 +11,10 @@ import type { LoopGuess, LoopNameEntry } from "./types.ts";
 // ---------------------------------------------------------------------------
 
 /**
- * Normalize a raw place-name query the same way the build-time index does:
- * lowercase, NFD-strip diacritics, drop punctuation/symbols, collapse
- * whitespace. Deliberately duplicated here (not imported from Worker 1's
- * data pipeline) so the input surface owns its copy.
+ * Normalize a raw place-name query the same way the build-time index does.
+ * Single source of truth: ./normalize.ts (shared with scripts/build-loop.mjs).
  */
-export function normalizeLoopName(raw: string): string {
-  return raw
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^\p{L}\p{N}\s]/gu, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+export { normalizeLoopName };
 
 /**
  * Human-readable label for an index entry, e.g. "Springfield, Illinois, US".

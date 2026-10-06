@@ -49,6 +49,13 @@ test("normalizeLoopName strips diacritics, punctuation, case, extra space", () =
   assert.equal(normalizeLoopName(""), "");
 });
 
+test("normalizeLoopName transliterates non-decomposable letters (shared with build pipeline)", () => {
+  // Single source of truth: ./normalize.ts, also used by scripts/build-loop.mjs.
+  assert.equal(normalizeLoopName("Białystok"), "bialystok");
+  assert.equal(normalizeLoopName("Hınıs"), "hinis");
+  assert.equal(normalizeLoopName("Straße"), "strasse");
+});
+
 test("displayLoopName renders 'Name, Region'", () => {
   assert.equal(displayLoopName(entry()), "Springfield, Illinois, US");
   assert.equal(displayLoopName(entry({ n: "sao paulo", r: "São Paulo, BR" })), "Sao Paulo, São Paulo, BR");

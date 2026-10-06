@@ -30,6 +30,12 @@ import {
 } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+// Single shared normalizer with the runtime typeahead (src/game/loop/evaluate.ts).
+// The build and the query path must never drift again.
+import { normalizeLoopName } from "../src/game/loop/normalize.ts";
+// The REAL runtime ranker — the findability gate below must use the same
+// matching logic the typeahead uses, never a reimplementation.
+import { rankLoopSuggestions } from "../src/game/loop/evaluate.ts";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
@@ -46,16 +52,13 @@ const DUMP_PATH =
 
 const MS_PER_DAY = 86_400_000;
 
-/** Lowercase, NFD diacritics stripped, punctuation removed, spaces collapsed. */
-export function normalizeName(s) {
-  return s
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9 ]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+/**
+ * Lowercase, transliterate, NFD diacritics stripped, punctuation → space,
+ * spaces collapsed. Single source of truth: ../src/game/loop/normalize.ts
+ * (shared with the runtime typeahead). Kept as a named export for the
+ * pipeline tests.
+ */
+export const normalizeName = normalizeLoopName;
 
 const COUNTRY_NAMES = new Intl.DisplayNames(["en"], { type: "region" });
 
@@ -239,6 +242,37 @@ function writeJson(path, value) {
   writeFileSync(path, JSON.stringify(value));
 }
 
+/**
+ * Build-time findability gate (fail-closed data gate, same spirit as
+ * lint-cards.mjs): every production clue target must be reachable by typing
+ * its NATURAL name — the name a player actually types — through the REAL
+ * runtime ranker. Presence in the index is not enough: a target whose
+ * indexed form can't be produced by typing its natural name is an
+ * unwinnable day (2026-10-05: Białystok/Hınıs were present but unfindable
+ * due to a build/runtime normalizer drift).
+ */
+function assertTargetsFindable(index, places, targetIds) {
+  const naturalById = new Map(places.map((p) => [`geonames:${p.numericId}`, p.name]));
+  const failures = [];
+  for (const id of targetIds) {
+    const natural = naturalById.get(id);
+    if (!natural) {
+      failures.push(`${id}: no natural name in chunk places`);
+      continue;
+    }
+    const { suggestions } = rankLoopSuggestions(index, natural, 8);
+    if (!suggestions.some((s) => s.id === id)) {
+      failures.push(`${id} (${natural}): not in top-8 for natural-name query`);
+    }
+  }
+  if (failures.length > 0) {
+    throw new Error(
+      `findability gate: ${failures.length} targets unreachable by natural name:\n${failures.join("\n")}`,
+    );
+  }
+  console.log(`findability gate: ${targetIds.size}/${targetIds.size} targets reachable by natural name`);
+}
+
 async function main() {
   const places = loadChunkPlaces();
   const wanted = new Set(places.map((p) => p.numericId));
@@ -266,6 +300,7 @@ async function main() {
   const targetIds = loadLoopTargetIds();
   console.log(`loopTargets=${targetIds.size}`);
   const index = buildNamesIndex(places, pops, [], targetIds);
+  assertTargetsFindable(index, places, targetIds);
   writeJson(join(OUT_DIR, "names.json"), index);
   console.log(`names.json entries=${index.length}`);
 }

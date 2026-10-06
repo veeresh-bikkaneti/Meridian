@@ -1,5 +1,15 @@
 import type { LonLat, Place, Shape } from "./types.ts";
-import type { Octant } from "./loop/types.ts";
+
+/** The 8 compass winds, used by octantOf and the GeoDetective bearing feedback. */
+export type Octant =
+  | "north"
+  | "north-east"
+  | "east"
+  | "south-east"
+  | "south"
+  | "south-west"
+  | "west"
+  | "north-west";
 
 const EARTH_KM = 6371.0088;
 

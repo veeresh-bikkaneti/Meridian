@@ -42,6 +42,18 @@ test("normalizeName strips diacritics, punctuation, and case", () => {
   assert.equal(normalizeName("N'Djamena"), "n djamena");
 });
 
+test("normalizeName transliterates non-decomposable letters (build/runtime parity)", () => {
+  // 2026-10-05 B1: these letters have no NFD decomposition — without the
+  // transliteration map the build and the runtime typeahead disagreed and
+  // Białystok/Hınıs were unfindable.
+  assert.equal(normalizeName("Białystok"), "bialystok");
+  assert.equal(normalizeName("Hınıs"), "hinis");
+  assert.equal(normalizeName("Straße"), "strasse");
+  assert.equal(normalizeName("Œuvre"), "oeuvre");
+  assert.equal(normalizeName("Winston-Salem"), "winston salem");
+  assert.equal(normalizeName("Coeur d'Alene"), "coeur d alene");
+});
+
 test("normalizeName leaves plain names untouched", () => {
   assert.equal(normalizeName("springfield"), "springfield");
   assert.equal(normalizeName("New York City"), "new york city");
@@ -221,11 +233,12 @@ test("production loop targets are guessable by their own names", () => {
 });
 
 test("every production loop target is reachable by typing its own display name", () => {
-  // B1 build gate (second half): presence is not enough — a target crowded
-  // out of the typeahead's top-8 (Pica CL, Risan ME in the old
-  // population-only ranker) is still an unwinnable day. Typing the
-  // target's own display name must surface it in the top-8 suggestions,
-  // using the REAL runtime ranker (no logic duplication).
+  // Presence is not enough — a target crowded out of the typeahead's top-8
+  // is still an unwinnable day. Typing the target's own display name must
+  // surface it in the top-8 suggestions, using the REAL runtime ranker (no
+  // logic duplication). NOTE: this types the indexed (normalized) name; the
+  // natural-name findability gate lives in build-loop.mjs itself
+  // (assertTargetsFindable), which has the unnormalized names in memory.
   const entries = readJson(join(OUT_DIR, "names.json"));
   const byId = new Map();
   for (const e of entries) {
@@ -247,6 +260,27 @@ test("every production loop target is reachable by typing its own display name",
     }
   }
   assert.deepEqual(failures, [], `${failures.length} targets unreachable by their own name:\n${failures.join("\n")}`);
+});
+
+test("tricky natural names are findable (B1 regression: build/runtime normalizer parity)", () => {
+  // 2026-10-05: the build pipeline and the runtime typeahead had duplicated
+  // normalizers that disagreed on punctuation and non-decomposable letters
+  // (ł, ı) — Białystok and Hınıs were in the index but unfindable by typing
+  // their natural names. These queries must surface the right place id.
+  const entries = readJson(join(OUT_DIR, "names.json"));
+  const cases = [
+    ["Białystok", "geonames:776069"],
+    ["Hınıs", "geonames:312114"],
+    ["Winston-Salem", "geonames:4499612"],
+    ["N'Djamena", "geonames:2427123"],
+  ];
+  for (const [query, id] of cases) {
+    const { suggestions, total } = rankLoopSuggestions(entries, query, 8);
+    assert.ok(
+      suggestions.some((s) => s.id === id),
+      `"${query}" should surface ${id} (got ${total} matches: ${suggestions.map((s) => s.id).join(", ")})`,
+    );
+  }
 });
 
 test("buildNamesIndex sorts by population desc then name", () => {
