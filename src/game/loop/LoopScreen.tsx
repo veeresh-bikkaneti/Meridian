@@ -905,8 +905,8 @@ function LoopReveal({
             ) : null}
           </>
         )}
-        <section aria-label="Today's story" className="mt-4">
-          <h3 className="text-sm tracking-wide text-muted uppercase">Today&rsquo;s story</h3>
+        <section aria-label="Case file" className="mt-4">
+          <h3 className="text-sm tracking-wide text-muted uppercase">Case file</h3>
           <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
           <div className="mt-2 flex flex-col gap-2">
             <p className="text-sm text-fg">

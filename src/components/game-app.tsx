@@ -2517,8 +2517,13 @@ function PlayLoaded({
   }
 
   // Review sessions replay each card's original question context: the map
-  // reframes per card (the satellite-map effect remounts on edition/region/
-  // bounds change, exactly like an edition switch in normal play).
+  // reframes per card. The satellite-map effect remounts on edition/region/
+  // bounds change — but a review advance can change ONLY the card (same
+  // edition/region/mode, new bounds identity), and the in-place effect
+  // remount does not reliably re-run the narrow beat (live bug: Nebraska
+  // card 2 stuck on the intro globe). Keying by review card forces the
+  // proven fresh-mount path per card, exactly like the replay remount.
+  const mapKeyForCard = review && place ? `review:${place.id}:${mapKey}` : mapKey;
   const mapEdition: Edition = review ? (reviewEntry?.place.edition ?? "globe") : run.edition;
   const mapRegionName = review
     ? (reviewEntry?.place.regionName ?? REVIEW_DECK_REGION_NAME)
@@ -2564,7 +2569,7 @@ function PlayLoaded({
         <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
-              key={mapKey}
+              key={mapKeyForCard}
               mode={mode}
               edition={mapEdition}
               regionName={mapRegionName}
