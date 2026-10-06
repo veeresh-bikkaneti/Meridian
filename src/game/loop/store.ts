@@ -50,8 +50,8 @@ function isLoopGuess(value: unknown): value is LoopGuess {
     isOctant(g.octant) &&
     (g.warmer === null || typeof g.warmer === "boolean") &&
     // Map-era coordinates: optional for pre-map days, finite when present.
-    (g.lon === undefined || (typeof g.lon === "number" && Number.isFinite(g.lon))) &&
-    (g.lat === undefined || (typeof g.lat === "number" && Number.isFinite(g.lat)))
+    (g.lon === undefined || (typeof g.lon === "number" && Number.isFinite(g.lon) && g.lon >= -180 && g.lon <= 180)) &&
+    (g.lat === undefined || (typeof g.lat === "number" && Number.isFinite(g.lat) && g.lat >= -90 && g.lat <= 90))
   );
 }
 

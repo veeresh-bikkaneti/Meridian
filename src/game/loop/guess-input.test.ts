@@ -4,7 +4,8 @@ import test from "node:test";
 // over these helpers; there is no React/DOM test harness in this repo, so
 // this file pins the component's whole logic surface — normalization,
 // ranking, display, and the lazy index load (mock fetch) — against a tiny
-// fake index.
+// fake index. The component is jump-only: picking a suggestion calls onJump
+// (camera fly); the bottom sheet commits the guess.
 import {
   clearLoopIndexCache,
   displayLoopName,
@@ -50,7 +51,7 @@ test("component pipeline: diacritics in the query still match", async () => {
   clearLoopIndexCache();
 });
 
-test("component pipeline: no match -> empty suggestions (inline message, no onPick)", async () => {
+test("component pipeline: no match -> empty suggestions (inline message, no jump)", async () => {
   clearLoopIndexCache();
   const index = await fetchLoopIndex(mockFetch(FAKE_INDEX));
   assert.deepEqual(rankLoopSuggestions(index, "xyzzy"), { suggestions: [], total: 0 });

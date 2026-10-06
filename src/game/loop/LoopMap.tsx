@@ -1,7 +1,7 @@
 import { useEffect, useRef, type JSX } from "react";
 import { Map as MLMap, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { initialBearing } from "@/game/geo";
+import { formatDistance, initialBearing } from "@/game/geo";
 import { IMAGERY_TILES } from "@/map/imagery";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
 import { buildPlaceGrid, nearestPlace, type PlaceGrid } from "./place-resolve";
@@ -62,7 +62,8 @@ interface LoopMapProps {
   /** Ref for the camera-jump search. */
   handleRef?: React.RefObject<LoopMapHandle | null>;
   onSelectPlace: (entry: LoopNameEntry) => void;
-  onEmptyTap: () => void;
+  /** Empty tap; `indexLoading` when the place index isn't ready yet. */
+  onEmptyTap: (indexLoading: boolean) => void;
 }
 
 export function LoopMap({
@@ -78,13 +79,16 @@ export function LoopMap({
   const gridRef = useRef<PlaceGrid | null>(null);
   const entriesRef = useRef<LoopNameEntry[] | null>(null);
   // Refs mirror the props the map event handlers need (the handlers are
-  // registered once; refs keep them reading current values).
+  // registered once; refs keep them reading current values). Written in an
+  // effect, not during render (concurrent-mode safety).
   const cbRef = useRef({ onSelectPlace, onEmptyTap, finished });
-  cbRef.current = { onSelectPlace, onEmptyTap, finished };
-  // Paint inputs ride a ref too: the style-load handler fires at an
-  // arbitrary time, long after the mount effect's closure went stale.
   const paintRef = useRef({ guesses, target, finished });
-  paintRef.current = { guesses, target, finished };
+  useEffect(() => {
+    cbRef.current = { onSelectPlace, onEmptyTap, finished };
+    // Paint inputs ride a ref too: the style-load handler fires at an
+    // arbitrary time, long after the mount effect's closure went stale.
+    paintRef.current = { guesses, target, finished };
+  });
 
   // Preload the guess index on mount so the first tap resolves instantly.
   // fetchLoopIndex caches the promise; the jump search shares it.
@@ -157,23 +161,30 @@ export function LoopMap({
       const grid = gridRef.current;
       const entries = entriesRef.current;
       if (!grid || !entries) {
-        // Index still loading: retry the load, hint the player.
+        // Index still loading: retry the load, hint the player (the hint
+        // says "loading", not "no place here" — the place may just not
+        // have loaded yet).
         fetchLoopIndex()
           .then((fresh) => {
             entriesRef.current = fresh;
             gridRef.current = buildPlaceGrid(fresh);
           })
           .catch(() => {});
-        onEmptyTap();
+        onEmptyTap(true);
         return;
       }
       // Pixel tolerance → km at the tap point, capped for world zoom.
-      const edge = map.unproject([e.point.x + TAP_PX, e.point.y]);
-      const dxKm = Math.abs(edge.lng - e.lngLat.lng) * 111.32 * Math.cos((e.lngLat.lat * Math.PI) / 180);
-      const maxDistKm = Math.min(Math.max(dxKm, 8), MAX_TAP_KM);
+      // Both axes: in Web Mercator vertical pixels cover more km than
+      // horizontal at high latitudes, so take the max.
+      const edgeX = map.unproject([e.point.x + TAP_PX, e.point.y]);
+      const edgeY = map.unproject([e.point.x, e.point.y + TAP_PX]);
+      const dxKm =
+        Math.abs(edgeX.lng - e.lngLat.lng) * 111.32 * Math.cos((e.lngLat.lat * Math.PI) / 180);
+      const dyKm = Math.abs(edgeY.lat - e.lngLat.lat) * 111.32;
+      const maxDistKm = Math.min(Math.max(dxKm, dyKm, 8), MAX_TAP_KM);
       const hit = nearestPlace(grid, entries, e.lngLat.lng, e.lngLat.lat, maxDistKm);
       if (hit) onSelectPlace(hit);
-      else onEmptyTap();
+      else onEmptyTap(false);
     };
     map.on("click", onClick);
 
@@ -195,6 +206,26 @@ export function LoopMap({
           type: "line",
           source: RING_SOURCE,
           paint: { "line-color": GOLD, "line-width": 2.5, "line-opacity": 0.95 },
+        });
+      }
+      // Exact-km label at each ring's northmost point: the map is a
+      // self-contained deduction surface, no scrolling to the list needed.
+      if (!map.getLayer("loop-ring-label")) {
+        map.addLayer({
+          id: "loop-ring-label",
+          type: "symbol",
+          source: RING_SOURCE,
+          filter: ["==", ["get", "kind"], "ring-label"],
+          layout: {
+            "text-field": ["get", "label"],
+            "text-size": 13,
+            "text-allow-overlap": false,
+          },
+          paint: {
+            "text-color": GOLD,
+            "text-halo-color": "rgba(0,0,0,0.9)",
+            "text-halo-width": 2,
+          },
         });
       }
       if (!map.getLayer("loop-arrow-line")) {
@@ -301,6 +332,12 @@ export function LoopMap({
         properties: { placeId: g.placeId },
         geometry: ringPolygon(g.lon, g.lat, g.distKm),
       });
+      // Km label at the ring's northmost point (bearing 0 from the guess).
+      ringFeatures.push({
+        type: "Feature",
+        properties: { kind: "ring-label", label: formatDistance(g.distKm) },
+        geometry: { type: "Point", coordinates: destination(g.lon, g.lat, 0, g.distKm) },
+      });
       const bearing = initialBearing([g.lon, g.lat], [target.lon, target.lat]);
       if (bearing !== null) {
         const arrow = guessArrow(g.lon, g.lat, bearing, g.distKm);
@@ -368,8 +405,10 @@ export function LoopMap({
   );
 }
 
-/** Screen-reader announcement for a freshly drawn ring. */
+/** Screen-reader announcement for a freshly drawn ring.
+ * The octant is the TARGET's direction from the guess (same convention as
+ * the guess list's aria-labels) — phrase it that way, not inverted. */
 export function ringAnnouncement(guess: LoopGuess): string {
   const arrow = guess.octant.replace("-", " ");
-  return `${guess.name}: ${Math.round(guess.distKm).toLocaleString("en-US")} km ${arrow} of the target.`;
+  return `${guess.name}: the target is ${Math.round(guess.distKm).toLocaleString("en-US")} km ${arrow} of your guess.`;
 }

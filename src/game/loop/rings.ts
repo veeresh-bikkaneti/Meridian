@@ -77,7 +77,9 @@ export function guessArrow(
 ): ArrowGeometry {
   const lengthKm = Math.max(distKm * 0.3, 1);
   const tip = destination(lon, lat, bearingDeg, lengthKm);
-  const headLenKm = Math.max(lengthKm * 0.18, 40);
+  // Head scales with the shaft and never below a visible minimum — but
+  // stays proportionate (a 40 km floor on a 1.5 km shaft is just a V).
+  const headLenKm = Math.max(lengthKm * 0.35, 0.5);
   const left = destination(tip[0], tip[1], bearingDeg + 155, headLenKm);
   const right = destination(tip[0], tip[1], bearingDeg - 155, headLenKm);
   return {

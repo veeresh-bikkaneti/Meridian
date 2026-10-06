@@ -41,6 +41,26 @@ test("nearestPlace wraps the antimeridian", () => {
   assert.equal(hit.id, "w");
 });
 
+test("nearestPlace works at high latitude (76°N)", () => {
+  // Longitude degrees shrink with cos(lat): at 76°N a place 113 km east
+  // sits 3 cells away — the old equatorial ring bound (2) never searched
+  // there, resolving to null (false "ocean" hint) instead of the place.
+  const entries = [entry("north-cape", 6.1, 76.0)];
+  const grid = buildPlaceGrid(entries);
+  const hit = nearestPlace(grid, entries, 1.9, 76.0, 150);
+  assert.ok(hit, "expected a hit at 76°N despite the longitude squeeze");
+  assert.equal(hit.id, "north-cape");
+});
+
+test("nearestPlace breaks ties by population", () => {
+  const big: LoopNameEntry = { n: "big", id: "big", lon: 10, lat: 10, r: "", p: 1000000 };
+  const small: LoopNameEntry = { n: "small", id: "small", lon: 10, lat: 10, r: "", p: 100 };
+  const grid = buildPlaceGrid([small, big]);
+  // Exactly equidistant: the populous entry wins, not grid order.
+  const hit = nearestPlace(grid, [small, big], 10.001, 10, 150);
+  assert.equal(hit?.id, "big");
+});
+
 test("nearestPlace rejects non-finite input", () => {
   const grid = buildPlaceGrid(ENTRIES);
   assert.equal(nearestPlace(grid, ENTRIES, NaN, 48.9, 150), null);

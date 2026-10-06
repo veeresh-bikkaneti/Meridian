@@ -42,8 +42,11 @@ export function buildPlaceGrid(entries: LoopNameEntry[], cell = 2): PlaceGrid {
 
 /**
  * Nearest indexed place to (lon, lat) within maxDistKm, or null.
- * Expanding-ring cell search: correct (never misses a closer place in a
- * farther ring) and bounded by maxDistKm.
+ * Rectangular cell search: correct (never misses a closer place) and
+ * bounded by maxDistKm. Longitude cells shrink with cos(lat), so the
+ * x-radius is widened at high latitudes (above ~70° the equatorial bound
+ * would miss places inside the tap tolerance).
+ * Ties (equidistant) prefer the higher-population entry.
  */
 export function nearestPlace(
   grid: PlaceGrid,
@@ -57,33 +60,28 @@ export function nearestPlace(
   const wrapped = ((((lon + 180) % 360) + 360) % 360) - 180;
   const cx = Math.floor((wrapped + 180) / cell);
   const cy = Math.floor((lat + 90) / cell);
-  // Cell diagonal in km is the safe per-ring bound (1° ≈ 111.32 km).
-  const maxRings = Math.ceil(maxDistKm / (cell * 111.32)) + 1;
+  // 1° of latitude ≈ 111.32 km; longitude degrees shrink with cos(lat).
+  const cosLat = Math.max(Math.cos((lat * Math.PI) / 180), 0.1);
+  const ringsY = Math.ceil(maxDistKm / (cell * 111.32)) + 1;
+  const ringsX = Math.ceil(maxDistKm / (cell * 111.32 * cosLat)) + 1;
   const xCells = Math.ceil(360 / cell);
 
   let best: LoopNameEntry | null = null;
   let bestDist = maxDistKm;
-  for (let r = 0; r <= maxRings; r++) {
-    for (let dx = -r; dx <= r; dx++) {
-      for (let dy = -r; dy <= r; dy++) {
-        // Ring r only: skip the interior already searched.
-        if (r > 0 && Math.abs(dx) < r && Math.abs(dy) < r) continue;
-        const x = (((cx + dx) % xCells) + xCells) % xCells;
-        const bucket = cells.get(`${x},${cy + dy}`);
-        if (!bucket) continue;
-        for (const i of bucket) {
-          const entry = entries[i]!;
-          const d = distanceKm([lon, lat], [entry.lon, entry.lat]);
-          if (d <= bestDist) {
-            bestDist = d;
-            best = entry;
-          }
+  for (let dx = -ringsX; dx <= ringsX; dx++) {
+    for (let dy = -ringsY; dy <= ringsY; dy++) {
+      const x = (((cx + dx) % xCells) + xCells) % xCells;
+      const bucket = cells.get(`${x},${cy + dy}`);
+      if (!bucket) continue;
+      for (const i of bucket) {
+        const entry = entries[i]!;
+        const d = distanceKm([lon, lat], [entry.lon, entry.lat]);
+        if (d < bestDist || (d === bestDist && best !== null && entry.p > best.p)) {
+          bestDist = d;
+          best = entry;
         }
       }
     }
-    // Early exit: the closest unsearched cell is farther than our best.
-    // Ring r+1's nearest cell edge is at least r*cell degrees away.
-    if (best && bestDist < r * cell * 111.32 * 0.9) break;
   }
   return best;
 }

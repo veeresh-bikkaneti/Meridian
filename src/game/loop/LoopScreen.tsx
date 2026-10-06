@@ -299,7 +299,9 @@ function LoopGame({
   // Place tapped on the map, awaiting confirm in the bottom sheet.
   const [selected, setSelected] = useState<LoopNameEntry | null>(null);
   // Gentle hint for ocean/empty taps (fail closed: never a wasted guess).
-  const [emptyTapHint, setEmptyTapHint] = useState(false);
+  // "loading" while the place index isn't ready yet — the tapped spot may
+  // simply not have loaded, so don't claim it's not a place.
+  const [emptyTapHint, setEmptyTapHint] = useState<"empty" | "loading" | null>(null);
   // Screen-reader announcement for each freshly drawn ring.
   const [ringNote, setRingNote] = useState<string | null>(null);
   const announcedCount = useRef(dayState.guesses.length);
@@ -307,19 +309,19 @@ function LoopGame({
   // Tap on the map: open the confirm sheet for the resolved place.
   const onMapSelect = (entry: LoopNameEntry) => {
     if (finished) return;
-    setEmptyTapHint(false);
+    setEmptyTapHint(null);
     setSelected(entry);
   };
-  const onMapEmptyTap = () => {
+  const onMapEmptyTap = (indexLoading: boolean) => {
     setSelected(null);
-    setEmptyTapHint(true);
+    setEmptyTapHint(indexLoading ? "loading" : "empty");
   };
   // Camera-jump search: fly there AND select the place (the sheet still
   // confirms — a jump never burns a guess by itself).
   const onJump = (entry: LoopNameEntry) => {
     if (finished) return;
     mapHandleRef.current?.flyToEntry(entry);
-    setEmptyTapHint(false);
+    setEmptyTapHint(null);
     setSelected(entry);
   };
   // Bottom-sheet confirm: the same onPick flow as the old typeahead —
@@ -363,11 +365,19 @@ function LoopGame({
         />
         {!finished ? (
           <>
-            <GuessInput mode="jump" onJump={onJump} />
-            {emptyTapHint ? (
+            <GuessInput onJump={onJump} />
+            <p className="text-xs text-muted" aria-hidden="true">
+              ✕&thinsp;=&thinsp;searched&ensp;·&ensp;<span className="text-[#f2c14e]">gold ring</span>&thinsp;=&thinsp;exact distance from that guess
+            </p>
+            {emptyTapHint === "empty" ? (
               <p role="status" className="text-sm text-muted">
                 That spot isn&rsquo;t a labeled place — tap a name on the map, or search
                 above to fly there.
+              </p>
+            ) : null}
+            {emptyTapHint === "loading" ? (
+              <p role="status" className="text-sm text-muted">
+                Still loading place names — one moment…
               </p>
             ) : null}
             {notice ? (
