@@ -14,16 +14,18 @@
 
 ## What's done
 - [x] Spec committed (614d0dd): `docs/sfx-spec.md`
+- [x] `src/game/audio/sfx.ts` — the module (8 play fns, initAudio, toggle, distanceToFrequencyKm)
+- [x] Wiring: LoopScreen (confirm/ring/win/lose/deal) + home (card tap/difficulty/toggle in Chart Room header)
+- [x] Unit tests `src/game/audio/sfx.test.ts` — 11/11 green, wired into `npm test`
+- [x] `npx tsc --noEmit` clean (via sibling checkout's tsc; worktree node_modules is a symlink, gitignored)
+- [x] `npm test` full suite green — 727/727
+- [x] Pushed: `feat/game-sfx` @ dfb4e48 (spec commit 614d0dd now on origin)
+- [x] E2E spec `tests/e2e/game-sfx.spec.ts` (stubbed AudioContext; 4 tests)
 
 ## What's pending
-1. `src/game/audio/sfx.ts` — the module
-2. Wiring: LoopScreen (confirm blip / ring reveal / win arpeggio / lose sting / next-case deal) + home (card tap / difficulty select / speaker toggle)
-3. Unit tests `src/game/audio/sfx.test.ts` (mapping endpoints + monotonic, toggle round-trip, no-crash without AudioContext) wired into `npm test`
-4. `npx tsc --noEmit` clean
-5. `npm test` full unit suite green
-6. `npm run build:pages` production build green (needed for the E2E artifact)
-7. Playwright E2E `tests/e2e/game-sfx.spec.ts` (stubbed AudioContext; game stays playable silent) + full E2E regression run
-8. Push early and often (named files only); open PR (base: main) — DO NOT merge, Veeresh merges
+1. `npm run build:pages` production build green (needed for the E2E artifact) — RUNNING
+2. Playwright E2E `tests/e2e/game-sfx.spec.ts` via `flock ~/workspace/.e2e.lock --workers=1` + full E2E regression (no Globe/Country/State regressions)
+3. Push (named files only); open PR (base: main) — DO NOT merge, Veeresh merges
 
 ## Spec §7 careful-abouts (all honored — see final report for code locations)
 - Autoplay once-listeners load-bearing; iOS webkit prefix + in-gesture resume; mapping exponent/endpoints untouched; noise buffer cached once; no setInterval; initAudio StrictMode-idempotent; playDeal never on reload-restore.
