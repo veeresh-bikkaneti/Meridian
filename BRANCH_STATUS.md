@@ -33,3 +33,7 @@ Doctrine: **names are the payload; containers flex, names never do.** No ellipsi
 - The old `feat/home-redesign` BRANCH_STATUS content is superseded by this file.
 - `question-bubble.tsx` at this base has NO `truncate` (already removed upstream); PR1 only adds the `place-name` class there.
 - The reveal ledger (`<dl>`) does not exist yet — it is a PR2 deliverable. PR1 applies `place-name` to the current reveal name surfaces (answer h2s + `pin-compare-line` in `result-card.tsx`, answer h2 in `LoopReveal`).
+
+## Completion (2026-10-06 ~14:15 CDT)
+- [x] E2E 24/24 green (fixture-driven, 360/768/1280 × light/dark × reduced-motion)
+- [x] PR opened: https://github.com/veeresh-bikkaneti/Meridian/pull/76 (base: main — Veeresh merges)
