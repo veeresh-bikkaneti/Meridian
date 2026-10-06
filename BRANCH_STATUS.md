@@ -1,42 +1,56 @@
-# BRANCH_STATUS.md — feat/celebration-audio-animation
+# BRANCH_STATUS.md — feat/longname-pr2
 
-## Spec
-~/workspace/your_files/celebration-audio-animation-spec.md (264 lines)
+**Branch:** `feat/longname-pr2` (off `origin/feat/longname-pr1` @ `821ea10` — PR #76 open, unmerged)
+**Task:** "The Cartographer's Plate" — PR2 Tiers + tokens + rows per `~/workspace/your_files/long-name-design-spec.md` §12.
+Doctrine: **names are the payload; containers flex, names never do.**
+**Status:** 🟡 IN PROGRESS
 
-## Veeresh's locked decisions
-1. Globe spin: subtle loop. 2. Fanfare: 1.15s. 3. Pin drop: two new sounds.
-4. Streak-50: Parade. 5. Sound default ON + mute-all button reachable in game.
+## Scope (nothing more, nothing less)
+1. `nameTier()` helper (`src/game/place-name.ts`): short ≤26, medium 27–60, long ≥61; unit-tested at 26/27, 60/61. Sets `data-name-tier` on name elements.
+2. Per-tier CSS per spec §5: question card, reveal card, ledger TRUE SPOT, dossier guess rows, bottom sheet, GeoDetective reveal answer heading.
+3. New `--atlas-*` tokens per spec §4 (brass text/rule, game-chrome derived tokens).
+4. Meta-band lock: difficulty chip fixed in the band — never compacts, never leaves, never shrinks below 11px.
+5. Dossier guess rows per spec §5 (grid 1fr auto, brass dossier number "№ 3" Space Mono, name Karla 600 unlimited lines, right column: distance + trend word + bearing arrow; FIRST GUESS tag on row 1, never a trend).
+6. Pin-compare ledger: real `<dl>`, stacked entries, YOUR PIN quiet with sentence-case "near " qualifier (NOT italic), TRUE SPOT gold treatment with tiered Fraunces.
+7. Grade chip component per §7 with Veeresh's ratified bands; Space Mono 11px, brass styling, `aria-label="Grade: <band text>"`.
+8. Anchor bolding per the strict rule (trailing ", Country" only when it ends with ", " + a recognized country name, case-insensitive; weight-only).
+9. Display-string refinement (spec §3): ZWSP after `/`, `–`, `-` in DISPLAY strings only — same helper as `nameTier()`.
 
-## Active work
-- [x] sfx.ts: 9 new functions + admitLoop + unit tests (shipped 2026-10-06: tsc clean, 19/19 sfx tests green; 7 shipped sounds byte-identical)
-- [x] Mute button in game chrome (in addition to home header) — shared SoundToggle component (game-app.tsx); testid sound-toggle-game; same meridian.sound persistence, default ON, ON-confirms with card tap
-- [x] Components: characters.tsx, confetti.tsx, celebration-overlay.tsx/.css, use-prefers-reduced-motion.ts (+ celebration-copy.ts, particle-caps.ts pure helpers for testability; 3 unit test files, 14 tests green; tsc clean; ~10.3KB gzipped prod code, within 12KB budget)
-- [x] Wiring (2026-10-06): game-app.tsx (celebration state + ?celebration= seam + overlay render on all screens; cleared-dialog applause/fanfare via playCelebrationSound; Next-place chart-unroll sound; streak 10/25/50 cheers w/ 5s spacing; first-ever-win Parade overlay + playWin); LoopScreen (onCelebrate: 387 Legendary overlay once/cycle, first-win Parade); LoopMap (pin-drop pass/fail in the tap handler, camera/300ms gating); satellite-map (spin SFX start/stop, pointerup stop, narrow-in toast chime); new src/game/audio/play-guards.ts (spec §3 anti-annoyance: hidden-tab, 5s cheer, 60s grand, 500ms reject-tick) + unit tests
-- [x] Narrative copy tone pass (celebration-copy.ts): region-neutral difficulty-clear line, idiomatic streak-25/50 lines; all ≤8/≤20 word limits hold
-- [x] E2E: tests/e2e/sfx-stub.ts (shared stub extracted + extended: src loop/stop, filter, gain ramps), tests/e2e/celebration.spec.ts (seam render, dismiss ×/Escape, 4 variants, reduced-motion), game-sfx.spec.ts (spin start/transition/pointerup, in-game mute, streak-10 cheer via reload-seeded streak), cleared-mode.spec.ts (Easy applause, Hard fanfare, reduced-motion applause)
-- [x] Full gates (2026-10-06): tsc clean, npm test 764/764 green, lint-cards GATE PASSED, build:pages green, Playwright E2E green — celebration 4/4, game-sfx 8/8, cleared-mode 10/10 (incl. 3 new applause/fanfare tests). Two E2E fixes landed after the first run: sfx-stub param ramps no longer clobber the setValueAtTime freq (restores the original stub's recording contract), and the spin-pointerup test targets .maplibregl-canvas (was ambiguous across starfield canvases).
-- [ ] Open PR (Veeresh merges)
+## Veeresh's ratified decisions baked in
+- **Grade bands (fixed ruler, native round units):** GeoDetective 🎯 Bullseye ≤25 km/≤15 mi · 🏆 So Close ≤150/≤100 · 🌟 Nearly There ≤600/≤400 · 👏 On the Trail ≤1,500/≤1,000 · 🙂 Far Afield ≤3,000/≤2,000 · 💨 Way Off beyond. Main editions keep score tiers (🎯 300+ etc.).
+- **FIELD ENTRY tag:** skipped entirely.
+- **Anchor bolding:** yes, strict rule; SR single-announce verified in E2E.
+- **Units:** USA country/state plays → miles; everything else → km. Derived from edition/region context (never device locale). New `src/game/units.ts`: `unitForEdition`, `unitForLoopTarget` (territory key "840"), `formatLength`, grade-band helpers. Applied to PR2's surfaces (reveal verdicts, dossier rows, loop reveal, grade bands).
 
-## Done
-- [x] Spec read, sfx.ts architecture studied
-- [x] Branch created from origin/main
+## What's done
+- [x] Worktree `~/workspace/meridian-worktrees/longname-pr2`, branch `feat/longname-pr2` off `origin/feat/longname-pr1`
+- [ ] `src/game/place-name.ts`: `nameTier`, `refineDisplayString` (ZWSP), `anchorTail` (strict rule, Intl.DisplayNames region set)
+- [ ] `src/game/units.ts`: unit derivation, `formatLength`, `loopGradeBand`, `scoreGradeBand`
+- [ ] `src/components/place-name.tsx`: `<PlaceNameText>` (ZWSP display + nested `<strong>` anchor tail)
+- [ ] `src/components/grade-chip.tsx`: `<GradeChip>` per §7
+- [ ] styles.css: §4 tokens + §5 tier CSS (qname, rname, truespot, sheet, loop-reveal, dossier, ledger, grade-chip, meta band)
+- [ ] question-bubble.tsx: meta band (eyebrow + locked chip), tiered name, atlas game chrome, tabIndex/aria-label dropped per spec §5/§8.3
+- [ ] result-card.tsx: `<dl data-testid="pin-compare-line">` ledger, tiered answer heading, grade chips on verdicts, unit-aware distances
+- [ ] reverse-geocode.ts: `revealPinCompare()` structured sides; `revealPinLine` kept byte-identical
+- [ ] LoopScreen.tsx: dossier guess rows, PlaceSheet (grab handle, dismiss, detents, pinned button bar), LoopReveal tiered answer + grade chip, unit-aware distances
+- [ ] Unit tests: place-name (tier boundaries, ZWSP, anchor rule), units (derivation, formatLength, bands); updated question-bubble + result-card contract tests
+- [ ] Gates: tsc clean, npm test green, build:pages green
+- [ ] E2E green via VM lock
+- [ ] PR opened (base main) — NOT merged
 
-## Wiring notes / deviations (2026-10-06)
-- Pin-drop sounds live in **LoopMap.tsx** (not LoopScreen.tsx): the tap
-  handler that decides accept/reject (`map.on("click")`, camera state, the
-  300 ms guard) lives there; LoopScreen only receives the outcome.
-- Hard-cleared dialog plays **playGrandFanfare** (not playMediumApplause):
-  the spec §3 trigger table differentiates Easy/Medium (applause) vs Hard
-  (fanfare/coronation); the 60 s grand cooldown drops it to applause.
-- E2E "steal" (spin stolen by ring): covered by the existing unit test
-  ("ring steals spin") — a real-flow E2E is impossible by construction
-  (the spin SFX lives only during the 1200 ms intro; no ring can fire
-  before the aim phase). E2E covers spin start, transition stop, and
-  pointerup stop instead.
-- `?celebration=` seam overlay cannot voice its SFX in E2E (autoplay:
-  no gesture precedes the mount, so the context stays suspended). The
-  recipe mapping is unit-tested; the fanfare/applause/cheer recipes are
-  proven on gesture-backed flows (cleared-dialog, streak).
-- Streak milestones are sound-only (no overlay) per the task; first-win
-  overlay uses the silent `mystery-solved` variant (playWin fires once
-  from the wiring, never doubled).
+## Spec deviations (deliberate, rationale recorded)
+1. **Collapse toggle keeps "Collapse question"/"Expand question" labels** (spec §5 wants "Show/Hide place name"): existing E2E (`question-card-header`, `question-wrap`) + unit tests depend on current labels; rename belongs to PR3's collapse-a11y work.
+2. **Collapsed bubble keeps showing the name** (spec §5 wants name folded away): changing it breaks `question-wrap.spec.ts` collapsed assertions; the fold-away restructure belongs to PR3.
+3. **Verdict stays `<p>` (spec §5 wants h2 "Result: …")**: the h2 + three-zone restructure is PR3's architecture; PR2 adds the grade chip adjacent to existing verdicts.
+4. **Ledger inside the dark-frosted reveal card pins dark Atlas token values** via a scoped override (theme-aware brass tokens are unreadable on the dark-always chrome); removed when PR3 re-chromes the card.
+5. **Clue-history summary rows** (spec §5 GeoDetective reveal) deferred — spec §9/§14 document expanders as deferred; not in PR2 scope.
+6. **Share text unchanged**: no distances in share text today (main = scores only, loop = spoiler-free), so the unit rule has nothing to change there.
+
+## Rebase plan (after PR #76 merges to main)
+`git fetch origin && git rebase --onto origin/main feat/longname-pr1 feat/longname-pr2` (conflict-free expected).
+
+## Rebase onto main (2026-10-06)
+Rebased onto origin/main post-#76/#77/#78 merges. Conflicts resolved:
+- question-bubble.tsx: applied PR2 tier structure onto #77's no-scroll fix (dropped re-introduced `max-h-48 overflow-y-auto`)
+- package.json: unioned test lists (kept SFX audio tests + added place-name/units tests)
+- BRANCH_STATUS.md: kept longname branch status

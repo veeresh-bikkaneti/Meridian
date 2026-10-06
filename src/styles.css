@@ -99,6 +99,13 @@
   --map-answer: #f2c14e; /* matches region-highlight gold */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
+  /* ---- Cartographer's Plate: brass text/rule + derived game chrome (spec §4) ---- */
+  --atlas-brass-text: #e8b64c;
+  --atlas-brass-text-sm: #e8b64c;
+  --atlas-brass-rule: #e8b64c;
+  --game-chrome-bg: color-mix(in srgb, var(--atlas-bg-1) 80%, transparent);
+  --game-chrome-line: var(--atlas-card-line);
+  --game-chrome-solid: color-mix(in srgb, var(--atlas-bg-1) 94%, transparent);
   color-scheme: dark;
 }
 
@@ -144,6 +151,13 @@
     --map-answer: #f2c14e; /* legend: gold is the true spot */
     --map-arc: #3e4c46;
     --map-cross: #1c2420;
+    /* ---- Cartographer's Plate: brass text/rule, light values (spec §4) ---- */
+    --atlas-brass-text: #8a5f16;
+    --atlas-brass-text-sm: #6e4a0e; /* 7.08:1 — AAA-robust for kids/low vision */
+    --atlas-brass-rule: #a5761f; /* hairlines only (3.6:1 passes 1.4.11) */
+    --game-chrome-bg: color-mix(in srgb, var(--atlas-bg-1) 80%, transparent);
+    --game-chrome-line: var(--atlas-card-line);
+    --game-chrome-solid: color-mix(in srgb, var(--atlas-bg-1) 94%, transparent);
     color-scheme: light;
   }
 }
@@ -189,6 +203,13 @@
   --map-answer: #f2c14e; /* legend: gold is the true spot */
   --map-arc: #3e4c46;
   --map-cross: #1c2420;
+  /* ---- Cartographer's Plate: brass text/rule, light values (spec §4) ---- */
+  --atlas-brass-text: #8a5f16;
+  --atlas-brass-text-sm: #6e4a0e; /* 7.08:1 — AAA-robust for kids/low vision */
+  --atlas-brass-rule: #a5761f; /* hairlines only (3.6:1 passes 1.4.11) */
+  --game-chrome-bg: color-mix(in srgb, var(--atlas-bg-1) 80%, transparent);
+  --game-chrome-line: var(--atlas-card-line);
+  --game-chrome-solid: color-mix(in srgb, var(--atlas-bg-1) 94%, transparent);
   color-scheme: light;
 }
 
@@ -795,6 +816,399 @@
   word-break: normal;
   text-wrap: balance;
   line-height: 1.28;
+}
+
+/* Geographic-anchor tail (Veeresh's ratified decision 3): weight-only,
+ * no color change. Nested <strong> keeps the name a single element —
+ * no double-announce. */
+.place-name-anchor {
+  font-weight: 700;
+}
+
+/* =====================================================================
+ * Cartographer's Plate PR2 — name tiers (spec §2/§5).
+ * React sets data-name-tier from the full label length; CSS styles per
+ * tier. One family (Fraunces) across all tiers — the payload keeps its
+ * voice at every length. The long-tier register is the brass hairline
+ * frame above AND below, never a typeface swap.
+ * ===================================================================== */
+
+/* ---- Meta band (spec §6.4): eyebrow + difficulty chip, locked ----
+ * The chip NEVER compacts, never leaves the band, never shrinks below
+ * 11px: fixed 11px floor, nowrap, flex-shrink: 0, same padding at every
+ * tier (Walkthrough: signals never flex). If the name needs room, the
+ * eyebrow's margin-bottom halves first — the chip yields space, never
+ * size. */
+.name-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.name-eyebrow {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--atlas-brass-text-sm);
+  white-space: nowrap; /* never wraps past 1 line, never moves, never disappears */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.difficulty-chip {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px; /* the 11px mono floor is normative — 10px is not on the table */
+  padding: 3px 8px;
+  border: 1px solid var(--atlas-brass-rule);
+  border-radius: 999px;
+  color: var(--atlas-brass-text-sm);
+  white-space: nowrap;
+  flex-shrink: 0; /* never compacts, never leaves the band */
+}
+
+/* ---- Question card name (question-bubble.tsx) ---- */
+.qname[data-name-tier="short"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: clamp(22px, 5.6vw, 28px);
+  line-height: 1.12;
+}
+
+.qname[data-name-tier="medium"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: clamp(17px, 4.4vw, 22px);
+  line-height: 1.28;
+}
+
+.qname[data-name-tier="long"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-top: 1px solid var(--atlas-brass-rule);
+  border-bottom: 1px solid var(--atlas-brass-rule);
+}
+
+/* Question bubble chrome (spec §4): the Chart Room in a working register. */
+.game-chrome {
+  background: var(--game-chrome-bg);
+  border: 1px solid var(--game-chrome-line);
+  color: var(--atlas-ink);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.bubble-hint {
+  font-family: var(--font-atlas-body);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--atlas-muted);
+  margin-top: 8px;
+}
+
+/* ---- Reveal card answer heading (result-card.tsx) ---- */
+.rname[data-name-tier="short"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: clamp(22px, 5.6vw, 28px);
+  line-height: 1.12;
+}
+
+.rname[data-name-tier="medium"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: clamp(17px, 4.4vw, 22px);
+  line-height: 1.28;
+}
+
+.rname[data-name-tier="long"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-top: 1px solid var(--atlas-brass-rule);
+  border-bottom: 1px solid var(--atlas-brass-rule);
+}
+
+/* ---- Pin-compare ledger (result-card.tsx): a real <dl>, stacked ----
+ * DT small-caps eyebrow ABOVE DD — never side-by-side. Brass hairline
+ * separators. The two names never share a line — they can never compound
+ * again. */
+.pin-ledger {
+  margin: 0;
+}
+
+.pin-ledger-entry {
+  padding: 10px 0;
+}
+
+.pin-ledger-entry + .pin-ledger-entry {
+  border-top: 1px solid var(--atlas-brass-rule);
+}
+
+.pin-ledger dt {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--atlas-brass-text-sm);
+  margin-bottom: 4px;
+}
+
+.pin-ledger dd {
+  margin: 0;
+}
+
+/* YOUR PIN — quiet ink; the "near " honesty qualifier is sentence-case,
+ * NOT a small-caps label, NOT italic (dyslexia-safe). */
+.yourpin-name {
+  font-family: var(--font-atlas-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.near-qualifier {
+  color: var(--atlas-muted);
+}
+
+/* TRUE SPOT — the gold-truth treatment: #f2c14e answer-mark motif,
+ * tiered Fraunces. The name's hero moment on the reveal. */
+.truespot-mark {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background: #f2c14e;
+  transform: rotate(45deg);
+  vertical-align: 1px;
+}
+
+.truespot-name[data-name-tier="short"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.truespot-name[data-name-tier="medium"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.truespot-name[data-name-tier="long"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-top: 1px solid var(--atlas-brass-rule);
+  border-bottom: 1px solid var(--atlas-brass-rule);
+}
+
+/* The reveal card keeps its dark-always frosted chrome in PR2 (PR3 re-chromes
+ * it theme-aware). Pin the DARK Atlas values on this scope so the
+ * theme-aware brass tokens stay legible: light --atlas-ink is near-black
+ * and would vanish on the dark chrome. Remove this scope when the card
+ * moves to game-chrome tokens. */
+.atlas-dark-scope {
+  --atlas-brass-text: #e8b64c;
+  --atlas-brass-text-sm: #e8b64c;
+  --atlas-brass-rule: #e8b64c;
+  --atlas-ink: #f0e7d2;
+  --atlas-muted: #9db3ad;
+  color: var(--atlas-ink);
+}
+
+/* ---- GeoDetective bottom sheet name (LoopScreen.tsx PlaceSheet) ---- */
+.sheetname[data-name-tier="short"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.sheetname[data-name-tier="medium"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.sheetname[data-name-tier="long"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.5;
+  padding: 8px 0;
+  border-top: 1px solid var(--atlas-brass-rule);
+  border-bottom: 1px solid var(--atlas-brass-rule);
+}
+
+.sheet-handle {
+  width: 36px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--atlas-faint);
+  margin: 0 auto;
+}
+
+/* ---- GeoDetective reveal answer heading (LoopScreen.tsx LoopReveal) ---- */
+.lrname[data-name-tier="short"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.lrname[data-name-tier="medium"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.lrname[data-name-tier="long"] {
+  font-family: var(--font-atlas-display);
+  font-weight: 500;
+  font-size: 22px; /* the 22px floor — type never goes below the tier size */
+  line-height: 1.4;
+  padding: 8px 0;
+  border-top: 1px solid var(--atlas-brass-rule);
+  border-bottom: 1px solid var(--atlas-brass-rule);
+}
+
+/* ---- Grade chip (spec §7) ---- */
+.grade-chip {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px; /* the 11px mono floor is normative */
+  color: var(--atlas-brass-text-sm);
+  padding: 3px 8px;
+  border: 1px solid var(--atlas-brass-rule);
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Verdict row: grade chip + headline, baseline-aligned, wrapping to two
+ * lines on narrow widths with the headline never shrinking. */
+.verdict-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.verdict-headline {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---- GeoDetective dossier guess rows (LoopScreen.tsx) ----
+ * The ellipsis dies: grid 1fr auto, name Karla 600 unlimited lines,
+ * right column groups distance + trend + bearing so the eye can't read
+ * trend without distance. Brass hairline separators between rows. */
+.dossier-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 var(--atlas-brass-rule);
+}
+
+.dossier-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* The brass dossier number: Space Mono numerals, hairline border, no gloss. */
+.dossier-num {
+  font-family: var(--font-atlas-mono);
+  font-weight: 600;
+  font-size: 13px; /* >12px — the base brass token applies */
+  color: var(--atlas-brass-text);
+  border: 1px solid var(--atlas-brass-rule);
+  border-radius: 6px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.dossier-name {
+  font-family: var(--font-atlas-body);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.dossier-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  text-align: right;
+}
+
+.dossier-dist {
+  font-family: var(--font-atlas-body);
+  font-weight: 700;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dossier-trend {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--atlas-brass-text-sm);
+  white-space: nowrap;
+}
+
+/* Row 1 gets a FIRST GUESS tag — never a trend (a warmer/colder on the
+ * opening guess is a lie). */
+.first-guess-tag {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--atlas-brass-text-sm);
+  padding: 3px 8px;
+  border: 1px solid var(--atlas-brass-rule);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.dossier-bearing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.dossier-bearing-arrow {
+  font-size: 14px;
+  color: var(--atlas-brass-text); /* bearing arrow, brass, 14px */
+  line-height: 1;
+}
+
+.dossier-octant {
+  font-family: var(--font-atlas-mono);
+  font-size: 11px;
+  color: var(--atlas-muted);
 }
 
 /* ---- Reduced motion: everything lands instantly, fully visible ---- */

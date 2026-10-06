@@ -444,6 +444,103 @@ function cityStateSegment(name: string, subdivision: string | null): string {
 }
 
 /**
+ * Structured pin-compare for the Cartographer's Plate ledger (spec §5):
+ * the same layered, fail-closed funnel as revealPinLine, but returning
+ * the two sides separately so the reveal card can render a real `<dl>`
+ * (stacked YOUR PIN / TRUE SPOT entries) instead of one compounding
+ * text line.
+ *
+ * - `{ kind: "named", pin, truth, near }`: the pin side is a place label
+ *   ("Nebraska", "Cagliari, Sardinia", "Brazil"); `near` is true when the
+ *   honest "near <place>" qualifier applies (country edition only).
+ * - `{ kind: "verdict", text }`: the classic verdict copy ("Right state,
+ *   wrong town!") — no pin/truth names to split.
+ * - null: either side unresolvable — the card renders no ledger, fail
+ *   closed, exactly as today.
+ */
+export type PinCompare =
+  | { kind: "named"; pin: string; truth: string; near: boolean }
+  | { kind: "verdict"; text: string };
+
+export function revealPinCompare(input: RevealPinLineInput): PinCompare | null {
+  let classic: string | null = null;
+  try {
+    classic = pinCompareLine(
+      resolvePin(input.playerLat, input.playerLon),
+      resolvePin(input.truth.lat, input.truth.lon),
+    );
+    if (input.edition === "state") return classic ? splitClassic(classic) : null;
+    if (input.edition === "globe") {
+      const playerCountry = resolvePin(
+        input.playerLat,
+        input.playerLon,
+      )?.country;
+      const truthCountry =
+        truthCountryName(input.truth) ??
+        resolvePin(input.truth.lat, input.truth.lon)?.country;
+      if (!playerCountry || !truthCountry) return null;
+      return { kind: "named", pin: playerCountry, truth: truthCountry, near: false };
+    }
+    const detail = nearestPoolPlace(
+      input.playerLat,
+      input.playerLon,
+      input.pool,
+    );
+    if (!detail) return classic ? splitClassic(classic) : null;
+    const truth = input.truth;
+    const pinSide = cityStateSegment(
+      detail.nearest.name,
+      detail.nearest.subdivision,
+    );
+    const truthSide = cityStateSegment(truth.name, cleanSubdivision(truth.subdivision));
+    // Same-country check: numeric territory keys. A null truth territory
+    // counts as different-country (the suffix direction is the more
+    // informative one).
+    const sameCountry =
+      territoryAt([truth.lon, truth.lat])?.key === detail.territoryKey;
+    if (input.edition === "country") {
+      return sameCountry
+        ? { kind: "named", pin: pinSide, truth: truthSide, near: true }
+        : {
+            kind: "named",
+            pin: `${pinSide}, ${detail.territoryName}`,
+            truth: truthSide,
+            near: true,
+          };
+    }
+    // Unreachable: edition is "state" | "country" | "globe" and the first
+    // two returned above. Kept as the fail-closed default.
+    return classic ? splitClassic(classic) : null;
+  } catch {
+    return classic ? splitClassic(classic) : null;
+  }
+}
+
+/**
+ * Split a classic pinCompareLine string into structured sides. Verdict
+ * copy ("Right state, wrong town!") has no " · " separator and stays a
+ * verdict; "Your pin: X · True spot: Y" splits into named sides (with
+ * the "near " qualifier detected, never duplicated downstream).
+ */
+function splitClassic(classic: string): PinCompare {
+  const sep = " · ";
+  const sepIdx = classic.indexOf(sep);
+  if (sepIdx === -1) return { kind: "verdict", text: classic };
+  const pinPart = classic.slice("Your pin: ".length, sepIdx);
+  const truthPart = classic.slice(sepIdx + sep.length);
+  const truth = truthPart.startsWith("True spot: ")
+    ? truthPart.slice("True spot: ".length)
+    : truthPart;
+  const near = pinPart.startsWith("near ");
+  return {
+    kind: "named",
+    pin: near ? pinPart.slice("near ".length) : pinPart,
+    truth,
+    near,
+  };
+}
+
+/**
  * The pin-compare line for a MISS reveal. Layered, fail-closed:
  *  1. state edition → classic pinCompareLine (byte-identical; regression lock).
  *  2. globe edition → symmetric COUNTRY-level names ("Your pin: Brazil ·
@@ -458,52 +555,14 @@ function cityStateSegment(name: string, subdivision: string | null): string {
  *
  * The "near" qualifier (country edition only) is unconditional — the pin
  * is a raw lat/lon, never presented as an exact pick, even at distance ≈ 0.
+ *
+ * Implemented on top of revealPinCompare: the string contract is
+ * unchanged (byte-identical copy), while the card renders the structured
+ * ledger from revealPinCompare directly.
  */
 export function revealPinLine(input: RevealPinLineInput): string | null {
-  let classic: string | null = null;
-  try {
-    classic = pinCompareLine(
-      resolvePin(input.playerLat, input.playerLon),
-      resolvePin(input.truth.lat, input.truth.lon),
-    );
-    if (input.edition === "state") return classic;
-    if (input.edition === "globe") {
-      const playerCountry = resolvePin(
-        input.playerLat,
-        input.playerLon,
-      )?.country;
-      const truthCountry =
-        truthCountryName(input.truth) ??
-        resolvePin(input.truth.lat, input.truth.lon)?.country;
-      if (!playerCountry || !truthCountry) return null;
-      return `Your pin: ${playerCountry} · True spot: ${truthCountry}`;
-    }
-    const detail = nearestPoolPlace(
-      input.playerLat,
-      input.playerLon,
-      input.pool,
-    );
-    if (!detail) return classic;
-    const truth = input.truth;
-    const pinSide = cityStateSegment(
-      detail.nearest.name,
-      detail.nearest.subdivision,
-    );
-    const truthSide = cityStateSegment(truth.name, cleanSubdivision(truth.subdivision));
-    // Same-country check: numeric territory keys. A null truth territory
-    // counts as different-country (the suffix direction is the more
-    // informative one).
-    const sameCountry =
-      territoryAt([truth.lon, truth.lat])?.key === detail.territoryKey;
-    if (input.edition === "country") {
-      return sameCountry
-        ? `Your pin: near ${pinSide} · True spot: ${truthSide}`
-        : `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}`;
-    }
-    // Unreachable: edition is "state" | "country" | "globe" and the first
-    // two returned above. Kept as the fail-closed default.
-    return classic;
-  } catch {
-    return classic;
-  }
+  const compared = revealPinCompare(input);
+  if (!compared) return null;
+  if (compared.kind === "verdict") return compared.text;
+  return `Your pin: ${compared.near ? "near " : ""}${compared.pin} · True spot: ${compared.truth}`;
 }

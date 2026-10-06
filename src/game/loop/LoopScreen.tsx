@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { formatDistance } from "@/game/geo";
+import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
+import { nameTier } from "@/game/place-name";
+import { PlaceNameText } from "@/components/place-name";
+import { GradeChip } from "@/components/grade-chip";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
@@ -544,6 +547,11 @@ function LoopGame({
   const finished = puzzle.status !== "playing";
   const guessesLeft = LOOP_MAX_GUESSES - puzzle.guesses.length;
 
+  // Length unit for every distance on this screen: a USA mystery reads
+  // miles, the rest of the world reads kilometers — derived from the
+  // target's territory, never device locale (Veeresh's ratified decision 4).
+  const loopUnit = unitForLoopTarget([clue.target.lon, clue.target.lat]);
+
   // Detective's Atlas (Option A): the map is the primary guess surface.
   const mapHandleRef = useRef<LoopMapHandle | null>(null);
   // Place tapped on the map, awaiting confirm in the bottom sheet.
@@ -689,27 +697,52 @@ function LoopGame({
         <section aria-label="Your guesses" className="flex flex-col gap-2">
           <h2 className="text-sm tracking-wide text-muted uppercase">Your guesses</h2>
           <ol className="flex flex-col gap-2">
-            {[...puzzle.guesses].reverse().map((g, ri) => (
-              <li
-                key={`${g.placeId}-${ri}`}
-                className="flex items-start justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3"
-              >
-                <span className="place-name min-w-0 font-medium text-fg" title={g.name}>
-                  {g.name}
-                </span>
-                <span className="flex shrink-0 items-center gap-2 text-sm text-muted">
-                  <span className="tabular-nums">{formatDistance(g.distKm)}</span>
-                  <span
-                    role="img"
-                    title="Direction from your guess toward the target"
-                    aria-label={`target is ${g.octant} of your guess`}
-                  >
-                    {OCTANT_ARROWS[g.octant]} {g.octant}
+            {[...puzzle.guesses].reverse().map((g, ri) => {
+              // Rows render newest-first; the dossier number is the guess's
+              // actual 1-based position in play order.
+              const n = puzzle.guesses.length - ri;
+              const first = n === 1;
+              return (
+                <li
+                  key={`${g.placeId}-${ri}`}
+                  className="dossier-row border border-line bg-surface"
+                  aria-label={`Guess ${n}: ${g.name}. ${first ? "First guess" : g.warmer ? "Warmer than previous" : "Colder than previous"}. ${formatLength(g.distKm, loopUnit)}, ${g.octant.replace("-", "")}.`}
+                >
+                  <span className="dossier-left">
+                    <span className="dossier-num">№ {n}</span>
+                    <span
+                      className="place-name dossier-name"
+                      data-name-tier={nameTier(g.name)}
+                      title={g.name}
+                    >
+                      <PlaceNameText name={g.name} />
+                    </span>
                   </span>
-                  <GuessDelta guess={g} />
-                </span>
-              </li>
-            ))}
+                  <span className="dossier-right">
+                    <span className="dossier-dist">
+                      {formatLength(g.distKm, loopUnit)}
+                    </span>
+                    {first ? (
+                      <span className="first-guess-tag">First guess</span>
+                    ) : (
+                      <span className="dossier-trend">
+                        {g.warmer ? "Warmer" : "Colder"}
+                      </span>
+                    )}
+                    <span className="dossier-bearing">
+                      <span
+                        className="dossier-bearing-arrow"
+                        aria-hidden="true"
+                        title="Direction from your guess toward the target"
+                      >
+                        {OCTANT_ARROWS[g.octant]}
+                      </span>
+                      <span className="dossier-octant">{g.octant}</span>
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
           </ol>
         </section>
       ) : null}
@@ -736,6 +769,11 @@ function LoopGame({
  * The tap only SELECTS — this sheet's button burns the guess, so a
  * mis-tap never costs one of the five. All targets ≥ 44px (fat-finger
  * safety on mobile). Escape/backdrop cancel without penalty.
+ *
+ * Cartographer's Plate PR2 (spec §5): two detents — names over 60 chars
+ * open at the full detent (skip half-sheet); the header (48px dismiss +
+ * tiered name) and the button bar stay pinned outside the scroll zone;
+ * `overscroll-behavior: contain` so sheet scrolling never drags the map.
  */
 function PlaceSheet({
   entry,
@@ -752,13 +790,16 @@ function PlaceSheet({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onCancel]);
+  }, []);
+  const tappedName = displayLoopName(entry);
+  // Names over 60 chars open at the full detent (skip half-sheet).
+  const fullDetent = nameTier(tappedName) === "long";
 
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={`Guess ${displayLoopName(entry)}?`}
+      aria-label={`Guess ${tappedName}?`}
       className="fixed inset-0 z-50 flex items-end justify-center"
     >
       <button
@@ -767,41 +808,61 @@ function PlaceSheet({
         onClick={onCancel}
         className="absolute inset-0 cursor-default bg-black/60"
       />
-      <div className="relative w-full max-w-md rounded-t-3xl border border-line bg-surface p-6 pb-8">
-        <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
-        <h2 className="place-name mt-1 font-display text-2xl text-fg" title={displayLoopName(entry)}>
-          {displayLoopName(entry)}
-        </h2>
-        <div className="mt-5 flex flex-col gap-2">
-          <Button type="button" onClick={onConfirm} className="min-h-[48px] w-full text-base">
-            Guess this place
-          </Button>
-          <Button
+      <div
+        className="relative flex w-full max-w-md flex-col rounded-t-3xl border border-line bg-surface"
+        style={{
+          maxHeight: fullDetent ? "min(85dvh, 36rem)" : "min(45dvh, 20rem)",
+          overscrollBehavior: "contain",
+        }}
+      >
+        <div className="shrink-0 px-6 pt-3">
+          <div className="sheet-handle" aria-hidden="true" />
+        </div>
+        <div className="flex shrink-0 items-start justify-between gap-3 px-6 pt-2">
+          <div className="min-w-0">
+            <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
+            <h2
+              className="place-name sheetname mt-1"
+              data-name-tier={nameTier(tappedName)}
+              title={tappedName}
+            >
+              <PlaceNameText name={tappedName} />
+            </h2>
+          </div>
+          <button
             type="button"
-            variant="ghost"
+            aria-label="Dismiss — keep exploring the map"
             onClick={onCancel}
-            className="min-h-[48px] w-full"
+            className="flex size-12 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface-2 hover:text-fg"
           >
-            Not this one
-          </Button>
+            <span aria-hidden="true" className="text-xl leading-none">✕</span>
+          </button>
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col justify-end">
+          <div
+            className="shrink-0 border-t border-line px-6 pt-4"
+            style={{
+              paddingBottom: "calc(20px + env(safe-area-inset-bottom))",
+              background: "var(--game-chrome-solid)",
+            }}
+          >
+            <div className="flex flex-col gap-2">
+              <Button type="button" onClick={onConfirm} className="min-h-[48px] w-full text-base">
+                Guess this place
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={onCancel}
+                className="min-h-[48px] w-full"
+              >
+                Not this one
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function GuessDelta({ guess }: { guess: LoopGuess }) {
-  if (guess.warmer === null) {
-    return <span className="text-muted">· first guess</span>;
-  }
-  return guess.warmer ? (
-    <span className="text-fg" aria-label="warmer than your previous guess">
-      · warmer ↑
-    </span>
-  ) : (
-    <span className="text-muted" aria-label="colder than your previous guess">
-      · colder ↓
-    </span>
   );
 }
 
@@ -892,6 +953,18 @@ function LoopReveal({
     });
   }, [reduced]);
 
+  // Length unit for every distance on this card, from the mystery
+  // target's territory (Veeresh's ratified decision 4): a USA mystery
+  // reads miles, the rest of the world reads kilometers.
+  const loopUnit = unitForLoopTarget([clue.target.lon, clue.target.lat]);
+  // The reveal verdict pairs the number with meaning (spec §7): a win is
+  // always Bullseye; a loss grades the closest guess by proximity.
+  const gradeBand = won
+    ? loopGradeBand(0, loopUnit)
+    : closestGuess
+      ? loopGradeBand(closestGuess.distKm, loopUnit)
+      : null;
+
   return (
     <Rise reduced={reduced}>
       <section
@@ -913,14 +986,26 @@ function LoopReveal({
             </p>
           </div>
         ) : null}
-        <p className="text-[11px] tracking-wider text-muted uppercase">
-          {won ? "🎯 You found it!" : "Out of guesses"}
-        </p>
-        <h2 className="place-name mt-1 font-display text-3xl text-fg" title={answer.name ?? undefined}>
-          {answer.name ??
-            (answer.settled
-              ? "We couldn't find the answer's name — but your clues are all above."
-              : "Finding the answer…")}
+        <div className="verdict-row">
+          <p className="verdict-headline text-[11px] tracking-wider text-muted uppercase">
+            {won ? "🎯 You found it!" : "Out of guesses"}
+          </p>
+          {gradeBand ? (
+            <GradeChip emoji={gradeBand.emoji} bandName={gradeBand.name} />
+          ) : null}
+        </div>
+        <h2
+          className="place-name lrname mt-1 text-fg"
+          data-name-tier={answer.name ? nameTier(answer.name) : undefined}
+          title={answer.name ?? undefined}
+        >
+          {answer.name ? (
+            <PlaceNameText name={answer.name} />
+          ) : answer.settled ? (
+            "We couldn't find the answer's name — but your clues are all above."
+          ) : (
+            "Finding the answer…"
+          )}
         </h2>
         {won ? (
           <>
@@ -933,7 +1018,7 @@ function LoopReveal({
           <>
             {closestGuess ? (
               <p className="place-name mt-2 text-sm text-muted">
-                Your closest guess was {closestGuess.name} — {formatDistance(closestGuess.distKm)}{" "}
+                Your closest guess was {closestGuess.name} — {formatLength(closestGuess.distKm, loopUnit)}{" "}
                 away.
               </p>
             ) : null}
