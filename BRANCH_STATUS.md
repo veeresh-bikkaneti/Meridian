@@ -40,3 +40,4 @@ established pattern as the replay remount. Normal play is untouched
 - state-story.desktop.spec.ts: 2 passed (earlier failure was a content flake — short blurb on a random place)
 - Visual verification: Nebraska frames correctly flat per card; reveal shows pin + gold spot + distance ring + line.
 - Ready for Veeresh's merge decision.
+# Merged main 2026-10-06
