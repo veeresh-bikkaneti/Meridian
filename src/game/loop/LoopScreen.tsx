@@ -796,9 +796,21 @@ function LoopReveal({
       )
     : null;
 
+  // The Next-mystery button is the point of the reveal — pull the card into
+  // view on completion (on desktop it mounts below the fold). Instant under
+  // reduced motion, smooth otherwise.
+  const revealRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    revealRef.current?.scrollIntoView({
+      behavior: reduced ? "auto" : "smooth",
+      block: "start",
+    });
+  }, [reduced]);
+
   return (
     <Rise reduced={reduced}>
       <section
+        ref={revealRef}
         aria-label={won ? "You won" : "Out of guesses"}
         className="rounded-2xl border border-line bg-surface p-5"
       >
