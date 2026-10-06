@@ -18,3 +18,10 @@
 ## Notes
 - "Mario-like" = STYLE (bouncy arcade), NOT Nintendo melodies. All original.
 - All sounds respect meridian.sound mute gate.
+
+## 2026-10-06 23:00 — PR #81 opened
+- https://github.com/veeresh-bikkaneti/Meridian/pull/81
+- Unit: 19/19 sfx tests pass, full suite fail 0
+- tsc clean
+- E2E: 6/7 game-sfx pass; 'NO loop texture' test failing (investigating — source change verified in build)
+- Ready for Veeresh's review/merge decision
