@@ -113,12 +113,12 @@ export function QuestionBubble({
     </div>
   );
   return (
-    <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20 max-w-[min(320px,calc(100vw-20px))]">
+    <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
       <Enter key={view} durationMs={expanded ? 400 : 333} reduced={reduced}>
         <div className="game-chrome pointer-events-auto rounded-[20px] p-3 pl-4">
-          <div className="flex items-start justify-between gap-2">
+          {metaBand}
+          <div className="mt-1.5 flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              {metaBand}
               {expanded ? (
                 <h2
                   className="place-name qname mt-1.5"

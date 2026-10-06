@@ -24,18 +24,20 @@ Doctrine: **names are the payload; containers flex, names never do.**
 
 ## What's done
 - [x] Worktree `~/workspace/meridian-worktrees/longname-pr2`, branch `feat/longname-pr2` off `origin/feat/longname-pr1`
-- [ ] `src/game/place-name.ts`: `nameTier`, `refineDisplayString` (ZWSP), `anchorTail` (strict rule, Intl.DisplayNames region set)
-- [ ] `src/game/units.ts`: unit derivation, `formatLength`, `loopGradeBand`, `scoreGradeBand`
-- [ ] `src/components/place-name.tsx`: `<PlaceNameText>` (ZWSP display + nested `<strong>` anchor tail)
-- [ ] `src/components/grade-chip.tsx`: `<GradeChip>` per §7
-- [ ] styles.css: §4 tokens + §5 tier CSS (qname, rname, truespot, sheet, loop-reveal, dossier, ledger, grade-chip, meta band)
-- [ ] question-bubble.tsx: meta band (eyebrow + locked chip), tiered name, atlas game chrome, tabIndex/aria-label dropped per spec §5/§8.3
-- [ ] result-card.tsx: `<dl data-testid="pin-compare-line">` ledger, tiered answer heading, grade chips on verdicts, unit-aware distances
-- [ ] reverse-geocode.ts: `revealPinCompare()` structured sides; `revealPinLine` kept byte-identical
-- [ ] LoopScreen.tsx: dossier guess rows, PlaceSheet (grab handle, dismiss, detents, pinned button bar), LoopReveal tiered answer + grade chip, unit-aware distances
-- [ ] Unit tests: place-name (tier boundaries, ZWSP, anchor rule), units (derivation, formatLength, bands); updated question-bubble + result-card contract tests
-- [ ] Gates: tsc clean, npm test green, build:pages green
-- [ ] E2E green via VM lock
+- [x] `src/game/place-name.ts`: `nameTier`, `refineDisplayString` (ZWSP), `anchorTail` (strict rule, Intl.DisplayNames region set)
+- [x] `src/game/units.ts`: unit derivation, `formatLength`, `loopGradeBand`, `scoreGradeBand`
+- [x] `src/components/place-name.tsx`: `<PlaceNameText>` (ZWSP display + nested `<strong>` anchor tail)
+- [x] `src/components/grade-chip.tsx`: `<GradeChip>` per §7
+- [x] styles.css: §4 tokens + §5 tier CSS (qname, rname, truespot, sheet, loop-reveal, dossier, ledger, grade-chip, meta band)
+- [x] question-bubble.tsx: meta band (eyebrow + locked chip), tiered name, atlas game chrome, tabIndex/aria-label dropped per spec §5/§8.3
+- [x] result-card.tsx: `<dl data-testid="pin-compare-line">` ledger, tiered answer heading, grade chips on verdicts, unit-aware distances
+- [x] reverse-geocode.ts: `revealPinCompare()` structured sides; `revealPinLine` kept byte-identical
+- [x] LoopScreen.tsx: dossier guess rows, PlaceSheet (grab handle, dismiss, detents, pinned button bar), LoopReveal tiered answer + grade chip, unit-aware distances
+- [x] Unit tests: place-name (tier boundaries, ZWSP, anchor rule), units (derivation, formatLength, bands); updated question-bubble + result-card contract tests
+- [x] Gates: tsc clean, npm test green (752/752), build:pages green, eslint 0 errors
+- [x] Committed (759457b) + pushed to origin/feat/longname-pr2
+- [ ] E2E green via VM lock (12/12 question-card cell passed; remaining 72 running)
+- [ ] Regression E2E on touched surfaces (question-wrap, question-card-header, reveal-pin-compare, geodetective, longname-wrap PR1)
 - [ ] PR opened (base main) — NOT merged
 
 ## Spec deviations (deliberate, rationale recorded)

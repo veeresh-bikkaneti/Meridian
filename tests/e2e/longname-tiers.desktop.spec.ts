@@ -146,23 +146,38 @@ async function expectAim(page: Page): Promise<void> {
 
 const MISS_LON = -123.11934;
 const MISS_LAT = 49.24966;
+// Western Nebraska — on-screen when the map is zoomed to the state (the
+// Vancouver point is off-screen there). ~650 km from Offutt AFB: a miss.
+const NE_MISS_LON = -103.5;
+const NE_MISS_LAT = 41.7;
+
+async function dismissBubble(page: Page): Promise<void> {
+  // The expanded bubble can cover the projected tap point; hiding it
+  // leaves the map clear. The reveal is unaffected.
+  await page.getByRole("button", { name: "Hide question" }).click();
+  await expect(
+    page.getByRole("button", { name: "Show question" }),
+  ).toBeVisible({ timeout: 15_000 });
+}
 
 async function missPointOnNamedPlace(
   page: Page,
+  lon: number = MISS_LON,
+  lat: number = MISS_LAT,
 ): Promise<{ x: number; y: number }> {
   const p = await page.locator(".satellite-map").evaluate(
-    (el, [lon, lat]: [number, number]) => {
+    (el, [plon, plat]: [number, number]) => {
       const hook = (
         el as unknown as {
           __project?: (lo: number, la: number) => { x: number; y: number } | null;
         }
       ).__project;
-      const s = hook?.(lon, lat) ?? null;
+      const s = hook?.(plon, plat) ?? null;
       if (!s) return null;
       const r = el.getBoundingClientRect();
       return { x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) };
     },
-    [MISS_LON, MISS_LAT] as [number, number],
+    [lon, lat] as [number, number],
   );
   expect(p, "the __project seam must resolve the miss point").not.toBeNull();
   expect(
@@ -374,9 +389,13 @@ for (const vp of VIEWPORTS) {
           expect(weight, "short tier is Fraunces 600 (placard)").toBe("600");
 
           // Miss → the headline reads MILES on a USA play + the grade chip.
-          const miss = await missPointOnNamedPlace(page);
+          // The bubble is dismissed first so the tap point can't hide
+          // under the chrome; western Nebraska is on-screen in the
+          // state-zoomed map (Vancouver is not).
+          await dismissBubble(page);
+          const miss = await missPointOnNamedPlace(page, NE_MISS_LON, NE_MISS_LAT);
           const { phase } = await commitPin(page, miss.x, miss.y);
-          expect(phase, "the Vancouver tap must be a miss").toBe("done");
+          expect(phase, "the western-Nebraska tap must be a miss").toBe("done");
           const headline = page.getByTestId("miss-headline");
           await expect(headline).toBeVisible({ timeout: 15_000 });
           const headlineText = (await headline.textContent()) ?? "";
@@ -402,6 +421,7 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Choose a country" }).click();
           await page.getByRole("button", { name: "Canada" }).click();
           await expectAim(page);
+          await dismissBubble(page);
           const miss = await missPointOnNamedPlace(page);
           const { phase } = await commitPin(page, miss.x, miss.y);
           expect(phase).toBe("done");
@@ -429,10 +449,12 @@ for (const vp of VIEWPORTS) {
           expect(order, "DT above DD, stacked").toEqual(["DT", "DD", "DT", "DD"]);
 
           // YOUR PIN: quiet, sentence-case "near " qualifier — NOT italic.
+          // The qualifier names the nearest pool place to the actual pin
+          // (an honest "near <place>"); the shape is what's asserted, not
+          // the specific place.
           const yourPin = ledger.locator("dd").nth(0);
           const yourPinText = ((await yourPin.textContent()) ?? "").trim();
-          expect(yourPinText).toMatch(/^near /);
-          expect(yourPinText).toContain("Vancouver");
+          expect(yourPinText).toMatch(/^near [^,]+, British Columbia$/);
           const qualifierStyle = await ledger
             .locator(".near-qualifier")
             .first()
