@@ -7,6 +7,11 @@ import {
 } from "./helpers";
 import type { Page } from "playwright/test";
 
+// PR2 (Cartographer's Plate) inserts zero-width spaces after /, –, - in
+// DISPLAY strings (spec §3) — never in data or ARIA. Strip them before
+// comparing textContent to the data label.
+const stripZwsp = (s: string): string => s.replace(/​/g, "");
+
 /**
  * Question-card fixes (Veeresh's 2026-10-04 bug report):
  *
@@ -139,7 +144,7 @@ test("country: 'West Cambridge/Harvard Square, Massachusetts' renders in full �
   // The full qualified label Veeresh screenshotted as truncated.
   const heading = page.getByRole("heading", { name: TARGET_LABEL });
   await expect(heading).toBeVisible({ timeout: 15_000 });
-  expect(((await heading.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
+  expect(stripZwsp((await heading.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
   expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
   // Collapsed view: still no ellipsis.
@@ -174,7 +179,9 @@ test("header identifies the edition: Globe", async ({ page }) => {
   await page.goto(APP);
   await playGlobe(page);
   // The bubble header, not the menu button: scope to the question bubble.
-  const header = page.locator("p.uppercase", { hasText: "Globe" }).first();
+  // PR2: the eyebrow is now .name-eyebrow (uppercase via CSS, not the
+  // Tailwind `uppercase` class).
+  const header = page.locator("p.name-eyebrow", { hasText: "Globe" }).first();
   await expect(header).toBeVisible({ timeout: 15_000 });
   expect(((await header.textContent()) ?? "").trim()).toBe("Globe");
 });

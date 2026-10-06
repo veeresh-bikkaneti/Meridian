@@ -53,6 +53,18 @@ https://veeresh-bikkaneti.github.io/Meridian/
 
 Sharing uses the device's native share sheet where available and falls back to the clipboard otherwise; the end-game summary screen shares session totals instead of the trail.
 
+### GeoDetective — the daily edition
+
+A fourth edition alongside Globe → Country → State, mounted outside the run machine: one mystery place per UTC day, five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Each guess is typed into a constrained typeahead (no free-text penalties: unknown or repeated picks never cost a guess) and answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Progress persists per day under `meridian.loop.v1` (30-day archive), so a reload mid-game restores the board; the endless-run state is never touched.
+
+The daily puzzle draws from **387 human-reviewed, validated clue sets** (`public/loop/clues/`, pool-indexed by UTC day). The share line reads `meridian geodetective <date>` with a proximity-graded emoji grid — no place names, no distances, no spoilers:
+
+```
+meridian geodetective October 3
+https://veeresh-bikkaneti.github.io/Meridian/
+🟥🟩⬜⬜⬜ solved in 2
+```
+
 ## Where the stories come from
 
 Story cards are built by pipelines, not written by hand at play time. Two are in flight:

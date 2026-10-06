@@ -11,15 +11,21 @@
  *   geometries incl. DC and the territories; display name at
  *   `geometry.properties.name`).
  * - Admin-1, AU/BR/CA/CN/IN: `src/map/data/ne-50m-admin-1.json`
- *   (GeoJSON, 116 features; display name at `properties.name`).
+ *   (GeoJSON, 116 features; slim schema {name, iso_a2}, per-feature bbox;
+ *   display name at `properties.name`).
+ * - Admin-1, EG/FR/DE/IT/JP/MX/GB: `src/map/data/admin1/<iso2>.json`
+ *   (TopoJSON, built by scripts/build-admin1.mjs from NE 10m, public
+ *   domain; slim properties {name, iso_a2, bbox}; display name at
+ *   `properties.name`). Loaded per country via preloadAdmin1ForCountry().
  *
  * The admin-1 JSONs are large enough to matter at boot, so they load ONLY
- * via dynamic `import()` inside `preloadAdmin1Boundaries()` — never at
- * module top level (the Safari jetsam lesson from territory.ts applies
- * here too). `resolvePin` never triggers loading: if the caches aren't
- * populated it returns a country-only result, and it never throws.
+ * via dynamic `import()` inside `preloadAdmin1Boundaries()` /
+ * `preloadAdmin1ForCountry()` — never at module top level (the Safari
+ * jetsam lesson from territory.ts applies here too). `resolvePin` never
+ * triggers loading: if the caches aren't populated it returns a
+ * country-only result, and it never throws.
  */
-import { geoContains } from "d3-geo";
+import { geoBounds, geoContains } from "d3-geo";
 import { feature } from "topojson-client";
 import { territoryAt } from "./territory.ts";
 import { countryNameForIso2, countryNameForRegionId } from "./question-label.ts";
@@ -27,17 +33,27 @@ import type { LonLat } from "./types.ts";
 
 export type ResolvedPin = { admin1: string | null; country: string | null };
 
+/**
+ * Slim admin-1 feature shape shared by all three sources:
+ * - us-atlas: bbox computed at load (geoBounds); name at properties.name.
+ * - ne-50m-admin-1.json: GeoJSON-native top-level bbox.
+ * - admin1/<iso2>.json chunks: bbox inside properties (TopoJSON-safe).
+ */
 type Admin1Feature = {
-  properties?: { name?: string };
+  properties?: { name?: string | null; iso_a2?: string; bbox?: BBox };
+  bbox?: BBox;
   type: "Feature";
   geometry: unknown;
 };
 
+/** [west, south, east, north] in degrees. */
+type BBox = [number, number, number, number];
+
 // --- Lazy admin-1 caches ----------------------------------------------
 //
-// Populated ONLY by preloadAdmin1Boundaries(). resolvePin reads them
-// synchronously and treats "not loaded" as "admin1 unknown" — it never
-// starts a load itself.
+// Populated ONLY by preloadAdmin1Boundaries() / preloadAdmin1ForCountry().
+// resolvePin reads them synchronously and treats "not loaded" as "admin1
+// unknown" — it never starts a load itself.
 
 let usStatesCache: Admin1Feature[] | null = null;
 let neAdmin1Cache: Admin1Feature[] | null = null;
@@ -60,11 +76,18 @@ function getUsStates(): Promise<Admin1Feature[]> {
     usStatesPromise = import("us-atlas/states-10m.json", { with: { type: "json" } }).then(
       (mod) => {
         const topo = mod.default as unknown as { objects: { states: unknown } };
-        return (
+        const feats = (
           feature(topo, topo.objects.states) as unknown as {
             features: Admin1Feature[];
           }
         ).features;
+        // us-atlas carries no per-feature bbox — compute once at load so
+        // admin1At's bbox pre-filter applies uniformly to every source.
+        for (const f of feats) {
+          const [[w, s], [e, n]] = geoBounds(f as never);
+          f.bbox = [w, s, e, n];
+        }
+        return feats;
       },
     );
   }
@@ -106,11 +129,111 @@ export function preloadAdmin1Boundaries(): Promise<void> {
   return preloadPromise;
 }
 
+// --- Per-country admin-1 chunks (narrow scope: EG/FR/DE/IT/JP/MX/GB) -------
+//
+// Mirrors loadRegionChunk (generated-places.ts): fail-closed per-country
+// cache, failed loads evicted so the next call retries. resolvePin scans
+// every loaded chunk; chunks never loaded (or failed) simply contribute
+// nothing — the PR #58 nearestPoolPlace fallback stays the honesty layer.
+
+/** ISO2 codes with a vendored admin1 chunk (lowercase, matches filenames). */
+const ADMIN1_CHUNK_ISO2 = ["eg", "fr", "de", "it", "jp", "mx", "gb"] as const;
+export type Admin1ChunkIso2 = (typeof ADMIN1_CHUNK_ISO2)[number];
+
+/** Country-edition regionId → chunk iso2. Null for editions without a chunk. */
+export function admin1ChunkIso2ForRegion(regionId: string): Admin1ChunkIso2 | null {
+  switch (regionId) {
+    case "egypt":
+      return "eg";
+    case "france":
+      return "fr";
+    case "germany":
+      return "de";
+    case "italy":
+      return "it";
+    case "japan":
+      return "jp";
+    case "mexico":
+      return "mx";
+    case "united-kingdom":
+      return "gb";
+    default:
+      return null;
+  }
+}
+
+const admin1ChunkCache = new Map<string, Promise<Admin1Feature[]>>();
+const admin1ChunkFeatures = new Map<string, Admin1Feature[]>();
+const admin1ChunkLoadRuns = new Map<string, number>();
+
+/** Test seam: per-chunk load counts (mirrors admin1LoadRunsForTests). */
+export function admin1ChunkLoadRunsForTests(): Record<string, number> {
+  return Object.fromEntries(admin1ChunkLoadRuns);
+}
+
+/** Test seam: drop cached chunks so tests can observe fresh loads. */
+export function clearAdmin1ChunkCacheForTests(): void {
+  admin1ChunkCache.clear();
+  admin1ChunkFeatures.clear();
+}
+
+/**
+ * Loads one country's admin-1 chunk (TopoJSON → features with
+ * properties.bbox). Idempotent per country; never throws.
+ *
+ * Fail-closed: unknown iso2 resolves null with no fetch attempted; a
+ * failed fetch evicts the cache entry (next call retries) and resolves
+ * null. Callers must treat null as "admin1 unknown for this country".
+ */
+export function preloadAdmin1ForCountry(iso2: string): Promise<Admin1Feature[] | null> {
+  const code = iso2.trim().toLowerCase();
+  if (!(ADMIN1_CHUNK_ISO2 as readonly string[]).includes(code)) {
+    return Promise.resolve(null);
+  }
+  let pending = admin1ChunkCache.get(code);
+  if (!pending) {
+    admin1ChunkLoadRuns.set(code, (admin1ChunkLoadRuns.get(code) ?? 0) + 1);
+    pending = import(`../map/data/admin1/${code}.json`, { with: { type: "json" } })
+      .then((mod) => {
+        const topo = mod.default as unknown as { objects: { admin1: unknown } };
+        const feats = (
+          feature(topo, topo.objects.admin1) as unknown as { features: Admin1Feature[] }
+        ).features;
+        admin1ChunkFeatures.set(code, feats);
+        return feats;
+      })
+      .catch((err: unknown) => {
+        // Retry eviction (loadRegionChunk precedent): a failed load must
+        // not poison the cache.
+        admin1ChunkCache.delete(code);
+        admin1ChunkFeatures.delete(code);
+        throw err;
+      });
+    admin1ChunkCache.set(code, pending);
+  }
+  return pending.catch(() => null);
+}
+
+/** bbox for the pre-filter: GeoJSON-native or TopoJSON-properties form. */
+function featureBbox(f: Admin1Feature): BBox | null {
+  return f.bbox ?? f.properties?.bbox ?? null;
+}
+
 function admin1At(point: LonLat): string | null {
-  for (const list of [usStatesCache, neAdmin1Cache]) {
+  const [lon, lat] = point;
+  const lists: (Admin1Feature[] | null)[] = [usStatesCache, neAdmin1Cache];
+  for (const chunk of admin1ChunkFeatures.values()) lists.push(chunk);
+  for (const list of lists) {
     if (!list) continue;
     for (const item of list) {
+      // Bbox pre-filter before the expensive geoContains: every source
+      // carries a bbox (native, in-properties, or computed at load).
+      // A missing bbox degrades to the plain scan — never to a wrong answer.
+      const b = featureBbox(item);
+      if (b && (lon < b[0] || lon > b[2] || lat < b[1] || lat > b[3])) continue;
       if (geoContains(item as never, point)) {
+        // name can be null in the source (one MX feature) → fail closed
+        // to country-only rather than naming the pin wrong.
         return item.properties?.name ?? null;
       }
     }
@@ -161,13 +284,14 @@ export function pinCompareLine(
 
 // --- Nearest-place "Your pin" detail (fallback for admin-1 coverage gaps) ---
 //
-// Context (Veeresh's live-play diagnostic, 2026-10-04): admin1At() only
-// covers the US (us-atlas) and AU/BR/CA/CN/IN (ne-50m-admin-1.json) — Italy
-// and France have ZERO admin-1 features. In country editions without
-// vendored admin-1 data, both sides of pinCompareLine resolve admin1: null
-// and the classic path degrades to the bare "Right country, wrong town!" —
-// the "Your pin" line silently drops. (India is the working reference: its
-// 36 vendored features let the classic path name both Indian states.)
+// Context (Veeresh's live-play diagnostic, 2026-10-04): admin1At() used to
+// cover only the US (us-atlas) and AU/BR/CA/CN/IN (ne-50m-admin-1.json) —
+// Italy and France had ZERO admin-1 features. The 7 narrow-scope chunks
+// (EG/FR/DE/IT/JP/MX/GB, via preloadAdmin1ForCountry) close that gap, but
+// this fallback stays: it covers the pre-load window, ocean pins,
+// pool-coverage gaps, chunk-load failures, and any gate failure below.
+// (India is the working reference: its 36 vendored features let the classic
+// path name both Indian states.)
 //
 // This section is the graceful fallback: name the player's raw pin from the
 // already-loaded region pool (whose records carry build-time subdivision
@@ -302,9 +426,9 @@ export type RevealPinLineInput = {
 };
 
 /**
- * Truth-side country for the globe suffix — the same funnel the question
- * bubble uses (countryNameForIso2 → regionId → originRegionId), so the
- * reveal matches what was asked. Fail-closed: null when unresolvable.
+ * Truth-side country for the globe pin-compare line — the same funnel the
+ * question bubble uses (countryNameForIso2 → regionId → originRegionId), so
+ * the reveal matches what was asked. Fail-closed: null when unresolvable.
  */
 function truthCountryName(truth: RevealPinLineInput["truth"]): string | null {
   return (
@@ -320,29 +444,49 @@ function cityStateSegment(name: string, subdivision: string | null): string {
 }
 
 /**
- * The pin-compare line for a MISS reveal. Layered, fail-closed:
- *  1. state edition → classic pinCompareLine (byte-identical; regression lock).
- *  2. country/globe → the detail line when nearestPoolPlace is honest.
- *  3. otherwise → classic pinCompareLine (today's copy; ocean → null).
- * Miss-only: the hit card never calls this.
+ * Structured pin-compare for the Cartographer's Plate ledger (spec §5):
+ * the same layered, fail-closed funnel as revealPinLine, but returning
+ * the two sides separately so the reveal card can render a real `<dl>`
+ * (stacked YOUR PIN / TRUE SPOT entries) instead of one compounding
+ * text line.
  *
- * The "near" qualifier is unconditional — the pin is a raw lat/lon, never
- * presented as an exact pick, even at distance ≈ 0.
+ * - `{ kind: "named", pin, truth, near }`: the pin side is a place label
+ *   ("Nebraska", "Cagliari, Sardinia", "Brazil"); `near` is true when the
+ *   honest "near <place>" qualifier applies (country edition only).
+ * - `{ kind: "verdict", text }`: the classic verdict copy ("Right state,
+ *   wrong town!") — no pin/truth names to split.
+ * - null: either side unresolvable — the card renders no ledger, fail
+ *   closed, exactly as today.
  */
-export function revealPinLine(input: RevealPinLineInput): string | null {
+export type PinCompare =
+  | { kind: "named"; pin: string; truth: string; near: boolean }
+  | { kind: "verdict"; text: string };
+
+export function revealPinCompare(input: RevealPinLineInput): PinCompare | null {
   let classic: string | null = null;
   try {
     classic = pinCompareLine(
       resolvePin(input.playerLat, input.playerLon),
       resolvePin(input.truth.lat, input.truth.lon),
     );
-    if (input.edition === "state") return classic;
+    if (input.edition === "state") return classic ? splitClassic(classic) : null;
+    if (input.edition === "globe") {
+      const playerCountry = resolvePin(
+        input.playerLat,
+        input.playerLon,
+      )?.country;
+      const truthCountry =
+        truthCountryName(input.truth) ??
+        resolvePin(input.truth.lat, input.truth.lon)?.country;
+      if (!playerCountry || !truthCountry) return null;
+      return { kind: "named", pin: playerCountry, truth: truthCountry, near: false };
+    }
     const detail = nearestPoolPlace(
       input.playerLat,
       input.playerLon,
       input.pool,
     );
-    if (!detail) return classic;
+    if (!detail) return classic ? splitClassic(classic) : null;
     const truth = input.truth;
     const pinSide = cityStateSegment(
       detail.nearest.name,
@@ -356,15 +500,69 @@ export function revealPinLine(input: RevealPinLineInput): string | null {
       territoryAt([truth.lon, truth.lat])?.key === detail.territoryKey;
     if (input.edition === "country") {
       return sameCountry
-        ? `Your pin: near ${pinSide} · True spot: ${truthSide}`
-        : `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}`;
+        ? { kind: "named", pin: pinSide, truth: truthSide, near: true }
+        : {
+            kind: "named",
+            pin: `${pinSide}, ${detail.territoryName}`,
+            truth: truthSide,
+            near: true,
+          };
     }
-    // globe: both sides always carry the country suffix. Unresolvable truth
-    // country → classic (never a malformed line).
-    const truthCountry = truthCountryName(truth);
-    if (!truthCountry) return classic;
-    return `Your pin: near ${pinSide}, ${detail.territoryName} · True spot: ${truthSide}, ${truthCountry}`;
+    // Unreachable: edition is "state" | "country" | "globe" and the first
+    // two returned above. Kept as the fail-closed default.
+    return classic ? splitClassic(classic) : null;
   } catch {
-    return classic;
+    return classic ? splitClassic(classic) : null;
   }
+}
+
+/**
+ * Split a classic pinCompareLine string into structured sides. Verdict
+ * copy ("Right state, wrong town!") has no " · " separator and stays a
+ * verdict; "Your pin: X · True spot: Y" splits into named sides (with
+ * the "near " qualifier detected, never duplicated downstream).
+ */
+function splitClassic(classic: string): PinCompare {
+  const sep = " · ";
+  const sepIdx = classic.indexOf(sep);
+  if (sepIdx === -1) return { kind: "verdict", text: classic };
+  const pinPart = classic.slice("Your pin: ".length, sepIdx);
+  const truthPart = classic.slice(sepIdx + sep.length);
+  const truth = truthPart.startsWith("True spot: ")
+    ? truthPart.slice("True spot: ".length)
+    : truthPart;
+  const near = pinPart.startsWith("near ");
+  return {
+    kind: "named",
+    pin: near ? pinPart.slice("near ".length) : pinPart,
+    truth,
+    near,
+  };
+}
+
+/**
+ * The pin-compare line for a MISS reveal. Layered, fail-closed:
+ *  1. state edition → classic pinCompareLine (byte-identical; regression lock).
+ *  2. globe edition → symmetric COUNTRY-level names ("Your pin: Brazil ·
+ *     True spot: Angola"). Admin-1 and city-level ("near <city>") naming
+ *     are deliberately not used here — Veeresh approved country-level for
+ *     globe (2026-10-05); the city-level follow-up is parked in
+ *     docs/globe-naming-followup.md, not built. Null when either side is
+ *     unresolvable (card renders no line — fail closed).
+ *  3. country edition → the detail line when nearestPoolPlace is honest.
+ *  4. otherwise → classic pinCompareLine (today's copy; ocean → null).
+ * Miss-only: the hit card never calls this.
+ *
+ * The "near" qualifier (country edition only) is unconditional — the pin
+ * is a raw lat/lon, never presented as an exact pick, even at distance ≈ 0.
+ *
+ * Implemented on top of revealPinCompare: the string contract is
+ * unchanged (byte-identical copy), while the card renders the structured
+ * ledger from revealPinCompare directly.
+ */
+export function revealPinLine(input: RevealPinLineInput): string | null {
+  const compared = revealPinCompare(input);
+  if (!compared) return null;
+  if (compared.kind === "verdict") return compared.text;
+  return `Your pin: ${compared.near ? "near " : ""}${compared.pin} · True spot: ${compared.truth}`;
 }

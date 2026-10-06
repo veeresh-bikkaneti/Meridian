@@ -15,11 +15,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  admin1ChunkIso2ForRegion,
+  admin1ChunkLoadRunsForTests,
   admin1LoadRunsForTests,
+  clearAdmin1ChunkCacheForTests,
   NEAREST_PLACE_MAX_KM,
   nearestPoolPlace,
   pinCompareLine,
   preloadAdmin1Boundaries,
+  preloadAdmin1ForCountry,
   resolvePin,
   revealPinLine,
   type PoolPlace,
@@ -75,7 +79,8 @@ test("known pins resolve to what the vendored data really says", () => {
     admin1: "District of Columbia",
     country: "United States of America",
   });
-  // France has no admin-1 source (ne-50m covers AU/BR/CA/CN/IN only).
+  // France resolves admin1: null here — its chunk loads only via
+  // preloadAdmin1ForCountry (tested below); resolvePin never triggers it.
   assert.deepEqual(resolvePin(48.8566, 2.3522), { admin1: null, country: "France" });
   assert.deepEqual(resolvePin(-33.8688, 151.2093), {
     admin1: "New South Wales",
@@ -288,7 +293,7 @@ test("revealPinLine: country edition, different country — pin side carries the
   );
 });
 
-test("revealPinLine: globe edition — both sides carry the country suffix", () => {
+test("revealPinLine: globe edition — symmetric country-level names", () => {
   const line = revealPinLine({
     edition: "globe",
     playerLat: 39.3,
@@ -296,10 +301,8 @@ test("revealPinLine: globe edition — both sides carry the country suffix", () 
     truth: CALABRIA_TRUTH,
     pool: ITALY_POOL,
   });
-  assert.equal(
-    line,
-    "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  // Globe is country-level by design — no admin-1, no "near <city>".
+  assert.equal(line, "Your pin: Italy · True spot: Italy");
 });
 
 test("revealPinLine: globe truth country funnels through regionId (no iso2)", () => {
@@ -317,13 +320,10 @@ test("revealPinLine: globe truth country funnels through regionId (no iso2)", ()
     },
     pool: ITALY_POOL,
   });
-  assert.equal(
-    line,
-    "Your pin: near Cagliari, Sardinia, Italy · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  assert.equal(line, "Your pin: Italy · True spot: Italy");
 });
 
-test("revealPinLine: missing subdivision omits the segment, never renders 'null'", () => {
+test("revealPinLine: globe player in a third country names both countries", () => {
   // Kyoto has no subdivision in this pool; the vendored territory name is
   // "Japan" (key "392") — verified, not assumed.
   const line = revealPinLine({
@@ -333,29 +333,19 @@ test("revealPinLine: missing subdivision omits the segment, never renders 'null'
     truth: CALABRIA_TRUTH,
     pool: [{ name: "Kyoto", lon: 135.7681, lat: 35.0116 }],
   });
-  assert.equal(
-    line,
-    "Your pin: near Kyoto, Japan · True spot: Reggio di Calabria, Calabria, Italy",
-  );
+  assert.equal(line, "Your pin: Japan · True spot: Italy");
 });
 
-test("revealPinLine: detail null → classic line (never silently drops)", () => {
-  // Globe-style pool without Italy: the Milan pin's nearest candidate is
-  // cross-border (gate) — the classic country-level line must render.
-  const input = {
-    edition: "globe" as const,
-    playerLat: 43.7034,
-    playerLon: 7.2663,
+test("revealPinLine: globe ocean pin fails closed (no line)", () => {
+  // Mid-Pacific: territoryAt null → playerCountry undefined → null.
+  const line = revealPinLine({
+    edition: "globe",
+    playerLat: 0,
+    playerLon: -140,
     truth: CALABRIA_TRUTH,
-    pool: [{ name: "Genoa", lon: 8.9332, lat: 44.4056, subdivision: "Liguria" }],
-  };
-  const line = revealPinLine(input);
-  const classic = pinCompareLine(
-    resolvePin(input.playerLat, input.playerLon),
-    resolvePin(input.truth.lat, input.truth.lon),
-  );
-  assert.equal(line, classic, "gate failure must fall back to the classic line");
-  assert.equal(line, "Your pin: France · True spot: Italy");
+    pool: ITALY_POOL,
+  });
+  assert.equal(line, null);
 });
 
 test("INDIA REGRESSION LOCK: country edition names both locations, never drops the line", () => {
@@ -399,4 +389,99 @@ test("India: the classic reference path already names both admin-1s", () => {
     resolvePin(12.9716, 77.5946),
   );
   assert.equal(line, "Your pin: Maharashtra · True spot: Karnataka");
+});
+
+// ---------------------------------------------------------------------------
+// Per-country admin-1 chunks (admin1-narrow: EG/FR/DE/IT/JP/MX/GB)
+//
+// The chunks are TopoJSON built by scripts/build-admin1.mjs from NE 10m
+// (public domain). Known coordinates below encode what the built chunks
+// REALLY say (probed against the built files with d3 geoContains, not
+// assumed): Paris → "Paris" (département), Berlin → "Berlin" (Land),
+// Rome → "Roma" (provincia), Tokyo → "Tokyo" (prefecture),
+// Cairo → "Al Qahirah" (governorate), Mexico City → "Distrito Federal",
+// London → "Westminster" (unitary).
+// ---------------------------------------------------------------------------
+
+test("admin1ChunkIso2ForRegion maps the 7 country editions", () => {
+  assert.equal(admin1ChunkIso2ForRegion("egypt"), "eg");
+  assert.equal(admin1ChunkIso2ForRegion("france"), "fr");
+  assert.equal(admin1ChunkIso2ForRegion("germany"), "de");
+  assert.equal(admin1ChunkIso2ForRegion("italy"), "it");
+  assert.equal(admin1ChunkIso2ForRegion("japan"), "jp");
+  assert.equal(admin1ChunkIso2ForRegion("mexico"), "mx");
+  assert.equal(admin1ChunkIso2ForRegion("united-kingdom"), "gb");
+  assert.equal(admin1ChunkIso2ForRegion("india"), null);
+  assert.equal(admin1ChunkIso2ForRegion("australia"), null);
+  assert.equal(admin1ChunkIso2ForRegion("bogus"), null);
+  assert.equal(admin1ChunkIso2ForRegion(""), null);
+});
+
+test("preloadAdmin1ForCountry: unknown iso2 resolves null, no fetch attempted", async () => {
+  clearAdmin1ChunkCacheForTests();
+  assert.equal(await preloadAdmin1ForCountry("xx"), null);
+  assert.equal(await preloadAdmin1ForCountry("US"), null);
+  assert.equal(await preloadAdmin1ForCountry(""), null);
+  assert.deepEqual(admin1ChunkLoadRunsForTests(), {}, "no load may start for unknown iso2");
+});
+
+test("preloadAdmin1ForCountry loads once; repeat calls do not re-parse", async () => {
+  clearAdmin1ChunkCacheForTests();
+  const feats = await preloadAdmin1ForCountry("fr");
+  assert.ok(feats, "the FR chunk must load");
+  assert.equal(feats.length, 101, "FR chunk carries 101 departments");
+  assert.equal(admin1ChunkLoadRunsForTests().fr, 1);
+  await preloadAdmin1ForCountry("fr");
+  await preloadAdmin1ForCountry("FR");
+  assert.equal(
+    admin1ChunkLoadRunsForTests().fr,
+    1,
+    "chunk preload must be idempotent — no double parse",
+  );
+});
+
+test("chunk features carry the slim schema (name, iso_a2, bbox)", async () => {
+  const feats = await preloadAdmin1ForCountry("de");
+  assert.ok(feats && feats.length === 16, "DE chunk carries 16 Länder");
+  for (const f of feats) {
+    const keys = Object.keys(f.properties ?? {}).sort();
+    assert.deepEqual(keys, ["bbox", "iso_a2", "name"], "slim schema only");
+    const b = f.properties?.bbox;
+    assert.ok(
+      Array.isArray(b) && b.length === 4 && b.every((v) => Number.isFinite(v)),
+      "finite bbox on every feature",
+    );
+    assert.equal(f.properties?.iso_a2, "DE");
+  }
+});
+
+test("pins in the 7 countries resolve admin-1 after the chunk preload", async () => {
+  await preloadAdmin1ForCountry("eg");
+  await preloadAdmin1ForCountry("de");
+  await preloadAdmin1ForCountry("it");
+  await preloadAdmin1ForCountry("jp");
+  await preloadAdmin1ForCountry("mx");
+  await preloadAdmin1ForCountry("gb");
+  // (fr was preloaded above)
+  assert.deepEqual(resolvePin(48.8566, 2.3522), { admin1: "Paris", country: "France" });
+  assert.deepEqual(resolvePin(52.52, 13.405), { admin1: "Berlin", country: "Germany" });
+  assert.deepEqual(resolvePin(41.9028, 12.4964), { admin1: "Roma", country: "Italy" });
+  assert.deepEqual(resolvePin(35.6762, 139.6503), { admin1: "Tokyo", country: "Japan" });
+  assert.deepEqual(resolvePin(30.0444, 31.2357), { admin1: "Al Qahirah", country: "Egypt" });
+  assert.deepEqual(resolvePin(19.4326, -99.1332), {
+    admin1: "Distrito Federal",
+    country: "Mexico",
+  });
+  assert.deepEqual(resolvePin(51.5074, -0.1278), {
+    admin1: "Westminster",
+    country: "United Kingdom",
+  });
+});
+
+test("pinCompareLine names both sides once the chunks are loaded", () => {
+  const line = pinCompareLine(
+    resolvePin(48.8566, 2.3522), // Paris département
+    resolvePin(43.2965, 5.3698), // Marseille → Bouches-du-Rhône
+  );
+  assert.equal(line, "Your pin: Paris · True spot: Bouches-du-Rhône");
 });

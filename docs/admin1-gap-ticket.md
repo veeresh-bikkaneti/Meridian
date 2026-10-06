@@ -1,8 +1,9 @@
-# Ticket-3 — Admin-1 data gap (scoping ticket, no implementation)
+# Ticket-3 — Admin-1 data gap (narrow scope: IMPLEMENTED)
 
-**Status:** scoped 2026-10-05 · **decision needed from Veeresh** (see §6)
-**Crew:** data-engineer + software-architect (read-only analysis; no downloads, no code changes)
-**Branch:** `fix/gis-review-gaps`
+**Status:** Veeresh approved **narrow scope** 2026-10-05 → implemented on
+`feat/admin1-narrow-7` (see §7 checklist, all boxes checked).
+**Crew:** data-engineer + software-architect + test-automation-engineer + code-reviewer + SRE
+**Branch:** `feat/admin1-narrow-7` (was `fix/gis-review-gaps` at scoping time)
 
 ## 1. Problem statement
 
@@ -180,13 +181,57 @@ Rough effort (for planning, not a commitment): Step-0 verification <1 hr; narrow
 
 ## 7. Implementation checklist (for the future crew — do not start without Veeresh's §6 decision)
 
-- [ ] Step 0: download NE 50m full file (2.22 MB) once; count distinct `iso_a2`; record whether EG/FR/DE/IT/JP/MX/GB are covered.
-- [ ] Build script: source → filter/simplify → slim schema (`name, iso_a2, bbox, geometry`) → TopoJSON → `src/map/data/admin1/<iso2>.json`; property-strip the existing 5-country file the same way (kills the 119 dead properties).
-- [ ] Per-country lazy loader mirroring `loadRegionChunk` (fail-closed cache, retry eviction); wire into `boundary-bands.ts` (one merged `boundary-admin1` layer) and `reverse-geocode.ts` (`preloadAdmin1ForCountry`, bbox pre-filter in `admin1At`).
-- [ ] Attribution: extend the app's attribution line for any non-public-domain file (GeoBoundaries per-file licenses from API metadata); NE-only needs nothing new.
-- [ ] Gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`, real-browser E2E on changed reveal paths (country editions FR/IT/JP at minimum), review crew sign-off with ZERO blockers (standing Meridian gates).
-- [ ] Verify service-worker runtime caching covers the new lazy chunks (offline = country-lines fallback, never a hang).
-- [ ] Update `BRANCH_STATUS.md`; PR flow (main is protected).
+Veeresh approved **narrow scope** on 2026-10-05. Implemented on branch
+`feat/admin1-narrow-7` (crew: data-engineer + software-architect +
+test-automation-engineer + code-reviewer + SRE). One crew-lead deviation
+from the §5 recommendation, flagged for Veeresh: Step 0 proved ALL 7 gap
+countries are missing from NE 50m (not just some), so the 7 chunks come
+from **NE 10m → simplify** (public domain, zero license bookkeeping)
+instead of GeoBoundaries gbOpen (which would have meant 6 license types
+incl. ODbL share-alike for JP/EG). Rationale is pinned in
+`scripts/build-admin1.mjs`.
+
+- [x] Step 0: downloaded NE 50m full file (2,325,694 B) once from the
+  genuine `nvkelso/natural-earth-vector` repo (byte size matches GitHub
+  metadata); 294 features, distinct `iso_a2` = AU BR CA CN ID IN RU US ZA
+  (9 — the in-code "only 9 countries" comment was correct);
+  EG/FR/DE/IT/JP/MX/GB ALL missing. SHA256
+  `69a0e06e640b2d505858ae1cb63034e4677f3000b35a98e16312932b98c426b9`
+  pinned in the build script. Raw files in /tmp only, never committed.
+- [x] Build script `scripts/build-admin1.mjs` (checked in, deterministic —
+  re-run verified byte-identical): NE 10m SHA256
+  `22d0e3ad85eb3e27f17cabf8ba2d50e554fbc27a87796ff891d958185da62fb5`
+  (40,726,851 B) verified fail-closed → filter 7 countries → per-feature
+  adaptive Douglas-Peucker (≈300 verts/feature; genuine 50m measures
+  108–1084, typically 130–260) → slim `{name, iso_a2, bbox}` → TopoJSON
+  (topojson-server@3.0.1, OSV clean, quantization 1e4) →
+  `src/map/data/admin1/<iso2>.json` (≈531 KB total). The existing
+  5-country file property-stripped in place (1.2 MB → 808 KB, geometry
+  byte-identical). Build-time verification gate decodes every chunk
+  (feature counts, finite bboxes, valid closed rings, vertices in bbox).
+- [x] Per-country lazy loader mirroring `loadRegionChunk` (fail-closed
+  cache, retry eviction, unknown iso2 → null with no fetch);
+  `boundary-bands.ts` paints one merged `boundary-admin1` layer
+  (US + 5-country + 7 chunks; partial-failure tolerant, cache evicted for
+  retry); `reverse-geocode.ts` gains `preloadAdmin1ForCountry`,
+  `admin1ChunkIso2ForRegion`, and a bbox pre-filter in `admin1At`
+  (us-atlas bboxes computed at load). PR #58 `nearestPoolPlace` fallback
+  stays as the fail-closed path — untouched.
+- [x] Attribution: all-NE public domain — confirmed nothing non-PD
+  vendored; no attribution change needed.
+- [x] Gates: `npx tsc --noEmit` clean · `npm test` 602/602 · `node
+  scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green ·
+  real-browser Playwright E2E on the built artifact (France/Japan
+  country editions: classic pin-compare lines; Italy: classic path +
+  aborted-chunk fallback test proving the PR #58 fail-closed path) —
+  queued via the VM-wide E2E lock.
+- [x] Service-worker runtime caching: the chunks emit as hashed
+  `/Meridian/assets/<iso2>-<hash>.js`, covered by the existing
+  cache-first `isStaticAsset` rule. Offline with no cached chunk:
+  loaders reject → null → country-lines fallback; never a hang
+  (verified by reading the SW fetch handler).
+- [x] `BRANCH_STATUS.md` updated with every commit; PR flow (main is
+  protected) — Veeresh merges.
 
 ## 8. Provenance of measurements
 

@@ -1,4 +1,9 @@
-import { formatDistance, initialBearing, windName8 } from "@/game/geo";
+import { initialBearing, windName8 } from "@/game/geo";
+import { formatLength, scoreGradeBand, unitForEdition } from "@/game/units";
+import { nameTier } from "@/game/place-name";
+import { PlaceNameText } from "@/components/place-name";
+import { GradeChip } from "@/components/grade-chip";
+import { difficultyChip } from "@/game/scoring";
 import { bubbleHeaderText } from "@/game/question-label";
 import { summarizeRun, type Run } from "@/game/run";
 import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
@@ -13,7 +18,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
-import { revealPinLine } from "@/game/reverse-geocode";
+import { revealPinCompare } from "@/game/reverse-geocode";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -220,20 +225,21 @@ export function ResultCard({
     }
   }, [phase, dismissed, place?.name]);
 
-  // Pin-compare line for the miss card: names BOTH locations ("Your pin:
-  // near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria").
-  // In country/globe editions the nearest-place fallback fills the gap
+  // Pin-compare ledger for the miss card: a real <dl> naming BOTH locations
+  // ("Your pin: Brazil · True spot: Angola" in globe; "Your pin: near
+  // Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria" in
+  // country). In country edition the nearest-place fallback fills the gap
   // where vendored admin-1 data is missing (IT/FR); in state edition and
-  // on any gate failure the classic line renders unchanged. Fail closed —
-  // null renders exactly as today (no line). Computed whenever a pin and
-  // place exist; only rendered in the done (miss) block below — the hit
-  // card never shows it.
+  // on any gate failure the classic pinCompareLine shape renders through
+  // the structured compare. Fail closed — null renders exactly as today
+  // (no ledger). Computed whenever a pin and place exist; only rendered
+  // in the done (miss) block below — the hit card never shows it.
   // NOTE: poolPlaces is the full dealing pool passed by reference (no copy).
   // The nearest-match scan must not allocate new module-level data — Safari
   // jetsam budget (see design §7). Keep this prop a pass-through reference.
-  const pinLine = useMemo(() => {
+  const pinCompare = useMemo(() => {
     if (!drop || !place) return null;
-    return revealPinLine({
+    return revealPinCompare({
       edition: run.edition,
       playerLat: drop.lat,
       playerLon: drop.lon,
@@ -241,6 +247,12 @@ export function ResultCard({
       pool: poolPlaces ?? [],
     });
   }, [drop, place, run.edition, poolPlaces]);
+
+  // Length unit for every distance on this card: USA country/state plays
+  // read miles, the rest of the world reads kilometers — derived from the
+  // edition/region context, never device locale (Veeresh's ratified
+  // decision 4).
+  const unit = unitForEdition(run.edition, run.regionId);
 
   // Bearing on the miss headline: the miss teaches direction as well as
   // distance — "457 km northeast of your pin" — naming what the drawn line
@@ -290,28 +302,36 @@ export function ResultCard({
       <Rise reduced={reduced}>
         <section
           aria-label="Result"
-          className={`pointer-events-auto max-h-[45dvh] w-full max-w-[420px] overflow-y-auto rounded-2xl p-4 text-white ${CHROME}`}
+          className={`atlas-dark-scope pointer-events-auto max-h-[45dvh] w-full max-w-[420px] overflow-y-auto rounded-2xl p-4 text-white ${CHROME}`}
         >
           <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               {place ? (
                 <>
-                  <p className="text-[11px] tracking-wider text-white/60 uppercase">
-                    {bubbleHeaderText(run.edition, run.regionName)}
-                  </p>
+                  <div className="name-meta">
+                    <p className="name-eyebrow">
+                      {bubbleHeaderText(run.edition, run.regionName)}
+                    </p>
+                    <span data-testid="difficulty-chip" className="difficulty-chip">
+                      {difficultyChip(place.difficulty)}
+                    </span>
+                  </div>
                   <h2
                     ref={headingRef}
                     tabIndex={-1}
-                    className="mt-0.5 font-display text-2xl leading-tight outline-none"
+                    title={placeLabel}
+                    data-name-tier={nameTier(placeLabel)}
+                    className="place-name rname mt-1.5 outline-none"
                   >
-                    {placeLabel}
+                    <PlaceNameText name={placeLabel} />
                   </h2>
                 </>
               ) : (
                 <h2
                   ref={headingRef}
                   tabIndex={-1}
-                  className="font-display text-2xl leading-tight outline-none"
+                  className="place-name rname mt-1.5 outline-none"
+                  data-name-tier={nameTier(bubbleHeaderText(run.edition, run.regionName))}
                 >
                   {bubbleHeaderText(run.edition, run.regionName)}
                 </h2>
@@ -329,9 +349,17 @@ export function ResultCard({
 
           {run.phase === "story" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p className="font-display text-4xl tabular-nums">
-                {drop ? formatDistance(drop.distanceKm) : "Hit"}
-              </p>
+              <div className="verdict-row">
+                <p className="verdict-headline font-display text-4xl tabular-nums">
+                  {drop ? formatLength(drop.distanceKm, unit) : "Hit"}
+                </p>
+                {drop?.breakdown ? (
+                  <GradeChip
+                    emoji={scoreGradeBand(drop.breakdown.score).emoji}
+                    bandName={scoreGradeBand(drop.breakdown.score).name}
+                  />
+                ) : null}
+              </div>
               {drop?.breakdown ? (
                 <p
                   data-testid="score-breakdown"
@@ -384,31 +412,68 @@ export function ResultCard({
 
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p
-                data-testid="miss-headline"
-                className="font-display text-4xl tabular-nums"
-              >
-                {drop
-                  ? missWind
-                    ? `${formatDistance(drop.distanceKm)} ${missWind} of your pin`
-                    : `${formatDistance(drop.distanceKm)} off`
-                  : "Miss"}
-              </p>
-              {pinLine ? (
+              <div className="verdict-row">
                 <p
-                  data-testid="pin-compare-line"
-                  className="text-sm leading-relaxed text-white/85"
+                  data-testid="miss-headline"
+                  className="verdict-headline font-display text-4xl tabular-nums"
                 >
-                  {pinLine}
+                  {drop
+                    ? missWind
+                      ? `${formatLength(drop.distanceKm, unit)} ${missWind} of your pin`
+                      : `${formatLength(drop.distanceKm, unit)} off`
+                    : "Miss"}
                 </p>
+                <GradeChip
+                  emoji={scoreGradeBand(drop?.breakdown?.score ?? 0).emoji}
+                  bandName={scoreGradeBand(drop?.breakdown?.score ?? 0).name}
+                />
+              </div>
+              {pinCompare ? (
+                <dl data-testid="pin-compare-line" className="pin-ledger">
+                  <div className="pin-ledger-entry">
+                    <dt>Your pin</dt>
+                    <dd
+                      className="place-name yourpin-name"
+                      title={
+                        pinCompare.kind === "verdict"
+                          ? pinCompare.text
+                          : `${pinCompare.near ? "near " : ""}${pinCompare.pin}`
+                      }
+                    >
+                      {pinCompare.kind === "verdict" ? (
+                        pinCompare.text
+                      ) : (
+                        <>
+                          {pinCompare.near ? (
+                            <span className="near-qualifier">near </span>
+                          ) : null}
+                          <PlaceNameText name={pinCompare.pin} />
+                        </>
+                      )}
+                    </dd>
+                  </div>
+                  <div className="pin-ledger-entry">
+                    <dt>
+                      <span className="truespot-mark" aria-hidden="true" />
+                      True spot
+                    </dt>
+                    <dd
+                      className="place-name truespot-name"
+                      data-name-tier={nameTier(placeLabel)}
+                      title={placeLabel}
+                    >
+                      <PlaceNameText name={placeLabel} />
+                    </dd>
+                  </div>
+                </dl>
               ) : null}
               <p
                 data-testid="miss-subscript"
                 className="text-xs leading-relaxed text-white/70"
-                title={`White pin is your guess · gold is the true spot. ${storyLede}`}
+                title={`Your pin is your guess · the gold mark is the true spot. ${storyLede}`}
               >
                 <span className="text-white/60">
-                  White pin is your guess · gold is the true spot.
+                  Your pin is your guess · the gold mark is the true spot.
                 </span>
                 <br />
                 <span className="mt-1 block text-sm leading-relaxed text-white/85">

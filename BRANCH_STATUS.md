@@ -1,29 +1,27 @@
-# BRANCH_STATUS.md — fix/ci-runner-resilience
+# BRANCH_STATUS.md — fix/audio-rework
 
-**Branch:** `fix/ci-runner-resilience` off `origin/main` @ `0aeac14`
-**Worktree:** `~/workspace/ci-runner-fix` (fresh; sibling worktrees untouched)
-**Mission:** Harden CI against the 2026-10-05 runner-capacity incident
-(runs #37371985732 / #37371985856 cancelled after ~15 min queued:
-"The job was not acquired by Runner of type hosted even after multiple attempts").
-Veeresh merges.
+## Veeresh's requirements (2026-10-06)
+1. [ ] TURN OFF globe spin swish — remove startGlobeSpin/stopGlobeSpin calls (keep API)
+2. [ ] NEW: playEditionEntrance() — epic gladiator/Colosseum brass horn fanfare on edition select
+3. [ ] FIX: wire playWin/playLose to guess outcomes in regular game (currently win only on first-ever, lose never)
+4. [ ] Make win/lose MORE Mario-like: bolder ascending fanfare (right), distinctive descending "death" tune (wrong). Original melodies only.
 
-## Done
-- [x] Root-cause review (gh timelines + annotations + workflow read)
-- [x] Pin runner image ubuntu-latest → ubuntu-24.04 (both workflows)
-- [x] Add timeout-minutes (node.js.yml 20, pages.yml 15, watchdog 10)
-- [x] New scheduled watchdog workflow + scripts/ci-watchdog.sh
-- [x] Validation: YAML parse, bash -n, dry-run vs incident runs
+## Work items
+- [x] sfx.ts: add playEditionEntrance(), rewrite playWin/playLose
+- [x] satellite-map.tsx: spin sound triggers removed (safeguard stops kept)
+- [x] game-app.tsx: entrance fanfare in openRun, win/lose on reveal complete via dropHitRef
+- [x] Unit tests: sfx.test.ts 19/19 pass
+- [ ] E2E verification
+- [ ] tsc clean, full suite green
+- [ ] Open PR
 
-## Pending
-- [ ] BLOCKED: push rejected — OAuth token lacks `workflow` scope
-  ("refusing to allow an OAuth App to create or update workflow
-  `.github/workflows/ci-watchdog.yml` without `workflow` scope").
-  SSH is proxy-blocked. Need Veeresh to run `gh auth refresh -s workflow`
-  (or equivalent approved scope grant), then push + open PR.
-- [ ] Push branch + open PR (target main) — NEVER merge; Veeresh merges
-- [ ] Branch CI green on the PR
+## Notes
+- "Mario-like" = STYLE (bouncy arcade), NOT Nintendo melodies. All original.
+- All sounds respect meridian.sound mute gate.
 
-## Rules
-- Stage named files only. Push early and often.
-- No new third-party actions (gh CLI + built-ins only). No secrets.
-- Watchdog never re-runs genuine code failures (see script guards).
+## 2026-10-06 23:00 — PR #81 opened
+- https://github.com/veeresh-bikkaneti/Meridian/pull/81
+- Unit: 19/19 sfx tests pass, full suite fail 0
+- tsc clean
+- E2E: 6/7 game-sfx pass; 'NO loop texture' test failing (investigating — source change verified in build)
+- Ready for Veeresh's review/merge decision
