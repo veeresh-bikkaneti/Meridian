@@ -84,7 +84,7 @@ export function QuestionBubble({
 
   if (view === "dismissed") {
     return (
-      <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -113,7 +113,7 @@ export function QuestionBubble({
     </div>
   );
   return (
-    <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
+    <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
       <Enter key={view} durationMs={expanded ? 400 : 333} reduced={reduced}>
         <div className="game-chrome pointer-events-auto rounded-[20px] p-3 pl-4">
           {metaBand}
