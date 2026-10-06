@@ -277,9 +277,35 @@ function stopAll(nodes: AudioScheduledSourceNode[], out: GainNode): void {
   }
 }
 
+/**
+ * Module-local PRNG (mulberry32) for UI-blip jitter and the noise buffer.
+ *
+ * Deliberately NOT Math.random()/crypto.getRandomValues(): deterministic
+ * E2E tests mock those globals with a single stateful sequence to fix the
+ * deal, and any draw we took would shift every downstream value (observed:
+ * one jitter draw moved a seeded deal's true spot from Hungary to Iran).
+ * Seeded from performance.now() at first use — tap-to-tap variation is all
+ * the spec's ±2% anti-machine-gun jitter needs.
+ */
+let prngState = 0;
+function sfxRandom(): number {
+  if (prngState === 0) {
+    const t =
+      typeof performance !== "undefined" && typeof performance.now === "function"
+        ? Math.floor(performance.now() * 1000)
+        : 0;
+    prngState = ((0x9e3779b9 ^ t) >>> 0) || 1;
+  }
+  prngState |= 0;
+  prngState = (prngState + 0x6d2b79f5) | 0;
+  let t = Math.imul(prngState ^ (prngState >>> 15), 1 | prngState);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+
 /** ±2% random detune — UI blips only, so rapid taps don't machine-gun (spec §3). */
 function uiJitter(freq: number): number {
-  return freq * (1 + (Math.random() * 0.04 - 0.02));
+  return freq * (1 + (sfxRandom() * 0.04 - 0.02));
 }
 
 // ---------------------------------------------------------------------------
@@ -475,7 +501,7 @@ export function playDeal(): void {
       const len = Math.max(1, Math.floor(c.sampleRate * 0.5));
       const buf = c.createBuffer(1, len, c.sampleRate);
       const data = buf.getChannelData(0);
-      for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+      for (let i = 0; i < len; i++) data[i] = sfxRandom() * 2 - 1;
       noiseBuf = buf;
     }
     const src = c.createBufferSource();

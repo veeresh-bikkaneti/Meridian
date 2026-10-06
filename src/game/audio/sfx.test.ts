@@ -142,3 +142,90 @@ test("sound disabled: play functions short-circuit silently", () => {
   });
   setSoundEnabled(true);
 });
+
+test("sfx never draws from the global Math.random sequence", () => {
+  // Regression: deterministic-deal E2E tests mock Math.random with a
+  // stateful sequence, and one jitter draw shifted a seeded deal's true
+  // spot (Hungary -> Iran). All sfx randomness goes through a module-local
+  // PRNG instead.
+  let draws = 0;
+  const origRandom = Math.random;
+  (Math as unknown as { random: () => number }).random = () => {
+    draws++;
+    return origRandom();
+  };
+  // Minimal AudioContext fake so the play functions schedule for real.
+  const param = () => {
+    const p = { value: 0 };
+    return {
+      ...p,
+      setValueAtTime(v: number) {
+        p.value = v;
+      },
+      linearRampToValueAtTime(v: number) {
+        p.value = v;
+      },
+      exponentialRampToValueAtTime(v: number) {
+        p.value = v;
+      },
+      setTargetAtTime() {},
+    };
+  };
+  const node = () => ({ connect() {} });
+  const srcNode = () => ({ connect() {}, start() {}, stop() {} });
+  class FakeAudioContext {
+    currentTime = 0;
+    state = "running";
+    sampleRate = 44100;
+    destination = {};
+    resume() {
+      return Promise.resolve();
+    }
+    createGain() {
+      return { ...node(), gain: param() };
+    }
+    createOscillator() {
+      return { ...srcNode(), type: "sine", frequency: param(), detune: param() };
+    }
+    createBiquadFilter() {
+      return { ...node(), type: "lowpass", frequency: param(), Q: param() };
+    }
+    createDynamicsCompressor() {
+      return {
+        ...node(),
+        threshold: param(),
+        knee: param(),
+        ratio: param(),
+        attack: param(),
+        release: param(),
+      };
+    }
+    createBuffer(_ch: number, len: number, _rate: number) {
+      return { getChannelData: () => new Float32Array(len) };
+    }
+    createBufferSource() {
+      return { ...srcNode(), buffer: null };
+    }
+  }
+  (globalThis as Record<string, unknown>).window = {
+    AudioContext: FakeAudioContext,
+  };
+  try {
+    stubStorage();
+    setSoundEnabled(true);
+    initAudio();
+    playConfirmGuess();
+    playRingReveal(42);
+    playRingReveal(9000);
+    playWin();
+    playLose();
+    playDeal(); // builds the cached noise buffer — must not draw either
+    playCardTap();
+    playDifficultySelect();
+    assert.equal(draws, 0, `expected zero Math.random draws, saw ${draws}`);
+  } finally {
+    (Math as unknown as { random: () => number }).random = origRandom;
+    delete (globalThis as Record<string, unknown>).window;
+    unplugStorage();
+  }
+});
