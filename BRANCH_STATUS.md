@@ -14,18 +14,31 @@
 
 ## What's done
 - [x] Spec committed (614d0dd): `docs/sfx-spec.md`
-- [x] `src/game/audio/sfx.ts` — the module (8 play fns, initAudio, toggle, distanceToFrequencyKm)
+- [x] `src/game/audio/sfx.ts` — the module (8 play fns, initAudio, toggle, distanceToFrequencyKm; module-local PRNG — never touches global Math.random/crypto)
 - [x] Wiring: LoopScreen (confirm/ring/win/lose/deal) + home (card tap/difficulty/toggle in Chart Room header)
-- [x] Unit tests `src/game/audio/sfx.test.ts` — 11/11 green, wired into `npm test`
-- [x] `npx tsc --noEmit` clean (via sibling checkout's tsc; worktree node_modules is a symlink, gitignored)
-- [x] `npm test` full suite green — 727/727
-- [x] Pushed: `feat/game-sfx` @ dfb4e48 (spec commit 614d0dd now on origin)
-- [x] E2E spec `tests/e2e/game-sfx.spec.ts` (stubbed AudioContext; 4 tests)
+- [x] Unit tests `src/game/audio/sfx.test.ts` — 12/12 green, wired into `npm test`
+- [x] `npx tsc --noEmit` clean
+- [x] `npm test` full suite green — 728/728
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` green (rebuilt after PRNG fix @ 88e63be)
+- [x] E2E `tests/e2e/game-sfx.spec.ts` — 4/4 green (stubbed AudioContext)
+- [x] Full E2E regression: 158/162; 4 failures triaged (see below); targeted re-run of all 4 specs: 23/23 green
+- [x] Pushed: `feat/game-sfx` @ 88e63be
+
+## E2E triage (full run 2026-10-06, 162 tests)
+- **reveal-pin-compare (Hungary→Iran): REAL regression from this branch** — `playCardTap`'s `Math.random()` jitter consumed one value from the spec's mocked deterministic sequence, shifting the seeded deal. Fixed: module-local mulberry32 PRNG in sfx.ts (commit 88e63be) + unit test asserting zero global `Math.random` draws. Re-run: 4/4 green.
+- **question-randomization (90s timeout): flake** — VM contention; re-run passes (53.8s).
+- **pinch-zoom (NaN zoom): flake** — re-run: 12/12 green.
+- **safari-launch (boot-JS ceiling 2.51MB > 1.8MB): PRE-EXISTING on main** — built clean baseline @ a838fc6 in a scratch worktree: 2,507,113 bytes (index 435,371 + routes 2,071,742) already over the ceiling without any SFX change. This branch adds ~7KB (the sfx module). Flagged for Veeresh — not fixed here.
 
 ## What's pending
-1. `npm run build:pages` production build green (needed for the E2E artifact) — RUNNING
-2. Playwright E2E `tests/e2e/game-sfx.spec.ts` via `flock ~/workspace/.e2e.lock --workers=1` + full E2E regression (no Globe/Country/State regressions)
-3. Push (named files only); open PR (base: main) — DO NOT merge, Veeresh merges
+1. Open PR (base: main) — DO NOT merge, Veeresh merges
+2. CI status check after PR open
+
+## Notes
+- Worktree `node_modules` is a symlink to `~/workspace/meridian-build/node_modules` (deps identical); gitignored, untracked.
+- `npx` is shimmed in this environment — used `node_modules/.bin/{tsc,playwright}` directly.
+- E2E runs serialized VM-wide via `flock ~/workspace/.e2e.lock --workers=1` per repo convention.
 
 ## Spec §7 careful-abouts (all honored — see final report for code locations)
 - Autoplay once-listeners load-bearing; iOS webkit prefix + in-gesture resume; mapping exponent/endpoints untouched; noise buffer cached once; no setInterval; initAudio StrictMode-idempotent; playDeal never on reload-restore.
