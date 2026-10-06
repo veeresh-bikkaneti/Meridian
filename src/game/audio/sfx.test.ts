@@ -9,6 +9,7 @@ import {
   playConfirmGuess,
   playDeal,
   playDifficultySelect,
+  playEditionEntrance,
   playGrandFanfare,
   playLose,
   playMediumApplause,
@@ -125,6 +126,7 @@ test("no AudioContext: initAudio and all play functions are safe no-ops", () => 
   assert.doesNotThrow(() => playRingReveal(20000));
   assert.doesNotThrow(() => playWin());
   assert.doesNotThrow(() => playLose());
+  assert.doesNotThrow(() => playEditionEntrance());
   assert.doesNotThrow(() => playDeal());
   assert.doesNotThrow(() => playCardTap());
   assert.doesNotThrow(() => playDifficultySelect());
