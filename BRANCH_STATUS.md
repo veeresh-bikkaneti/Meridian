@@ -2,12 +2,12 @@
 
 **Branch:** `feat/geodetective-unlimited` (off `origin/main` @ `f0db7ba`, post-#70 Detective's Atlas merge)
 **Task:** GeoDetective goes FULLY UNLIMITED (Veeresh decision, 2026-10-06). The one-mystery-per-day model is dead — no daily gate, no UTC rollover. Players solve mystery after mystery.
-**Status:** 🟢 BUILD GREEN — implementation complete per spec; gates green; awaiting designer playtest sign-off
+**Status:** 🟡 E2E PHASE — designer signed off; full Playwright suite running under flock lock
 
 ## Crew
 - **Orchestrator:** branch hygiene, quality gates, E2E, software-architect review, PR, completion report
-- **Agent 1 — Game Designer:** ✅ spec delivered (`~/workspace/your_files/geodetective-unlimited-spec.md`); playtest sign-off pending post-build
-- **Agent 2 — Game Developer:** ✅ implementation complete, all gates green, pushed to origin
+- **Agent 1 — Game Designer:** ✅ spec delivered + ✅ playtest sign-off (48/48 scripted checks; 2 non-blocking nits — reveal auto-scroll FIXED by orchestrator, seam-reload heads-up is E2E-author-only)
+- **Agent 2 — Game Developer:** ✅ implementation complete, all gates green, pushed to origin (completion delivery hit a runtime hiccup; work intact in git)
 
 ## What's done
 - [x] Fresh worktree at `~/workspace/meridian-worktrees/geodetective-unlimited`, branch off origin/main (f0db7ba)
@@ -19,13 +19,16 @@
 - [x] E2E specs rewritten per §6 (real-deck win AND loss paths, Next-mystery different-puzzle asserts, resume, finished-reveal reload, copy regression) — NOT yet run (orchestrator runs under flock after playtest)
 - [x] Commits pushed to origin (see log)
 
+- [x] Orchestrator: designer playtest nit fixed — reveal card scrolls into view on completion (reduced-motion aware)
+- [x] `npm run build:pages` green on final code (buildId 06be340)
+
 ## What's pending
 1. ~~Designer: mechanic spec~~ ✅ delivered
-2. ~~Developer: implement spec~~ ✅ done — awaiting designer playtest sign-off (dev server URL in the completion report)
+2. ~~Developer: implement spec~~ ✅ done
 3. ~~Unit tests~~ ✅ done (deal/progression/storage/streak, no-repeat-until-exhausted, reshuffle, persistence round-trip)
-4. Designer playtest sign-off (via dev server)
-5. Full Playwright E2E via `flock ~/workspace/.e2e.lock --workers=1`: two-consecutive-mysteries spec, reload-persistence spec, existing GeoDetective specs, no regressions in Globe/Country/State
-6. Software-architect review — zero blockers
+4. ~~Designer playtest sign-off~~ ✅ signed off (48/48 checks)
+5. Full Playwright E2E via `flock ~/workspace/.e2e.lock --workers=1` — 🟡 RUNNING
+6. Software-architect review — zero blockers required
 7. Open PR (Veeresh merges — do NOT merge)
 
 ## Non-negotiables (untouched by this change)
