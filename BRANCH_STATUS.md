@@ -23,6 +23,7 @@
 2. `npm run build:pages` production build — DONE (green, fonts bundled to dist)
 3. Playwright E2E via VM lock — DONE: drilldown/pwa/tutorial/geodetective/difficulty-picker all green.
    - Caught 2 real issues: (a) Google Fonts CDN failed through the VM proxy (ERR_TUNNEL_CONNECTION_FAILED) → fonts now SELF-HOSTED (7 latin woff2 in src/assets/fonts, @font-face in styles.css, zero runtime CDN dependency); (b) dossier was a `<section>`, spec filters `article` → dossier is now `<article>`. One flake (Easy-tier pin timing) passed on rerun.
-4. Screenshots: desktop 1280px + mobile 360px — PENDING
+4. Screenshots — DONE: desktop 1280px (dark + light), mobile 360px (light).
+   Honest notes: dark chart-room and light journal both read well; brass graticule + contour lines subtle but present; dossier OPEN stamp lands; cards stack cleanly at 360px with no overflow; all buttons ≥44px. The fullPage capture shows a seam where the fixed bg ends — capture artifact only, the fixed layer always covers the real viewport. The first-run tutorial invite banner is still the old unstyled component (out of scope, separate component) — flag as follow-up polish.
 5. Open PR (base: main) — do NOT merge — PENDING
 6. AFTER PR #71 merges to main: rebase — DONE 2026-10-06 ~09:05 CDT (conflict-free; PR #71 merged as 26acb2b)
