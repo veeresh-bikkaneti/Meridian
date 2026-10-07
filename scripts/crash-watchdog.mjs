@@ -124,19 +124,15 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     /* best-effort */
   }
   // WebGL probe: webgl2, else webgl, on one canvas. A device with WebGL2
-  // also does WebGL1, so g1 covers both for diagnostics.
+  // also does WebGL1, so g1 covers both for diagnostics. Booleans only —
+  // the GPU renderer string (UNMASKED_RENDERER_WEBGL) is deliberately
+  // never read: it fingerprints the individual device (COPPA).
   var g1 = false,
-    g2 = false,
-    gpu = "";
+    g2 = false;
   try {
     var cv = doc.createElement("canvas");
     g2 = !!cv.getContext("webgl2");
     g1 = g2 || !!cv.getContext("webgl");
-    var _g = cv.getContext(g2 ? "webgl2" : "webgl");
-    if (_g) {
-      var _d = _g.getExtension("WEBGL_debug_renderer_info");
-      if (_d) gpu = tn(_g.getParameter(_d.UNMASKED_RENDERER_WEBGL), 120);
-    }
   } catch (e) {
     /* best-effort */
   }
@@ -194,12 +190,27 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       }
       if (ep) {
         try {
-          // Coarse device facts only. No coordinates, no place/guess
-          // content, no PII. undefined fields are dropped by JSON.
+          // Coarse device facts only (COPPA): OS + form-factor buckets
+          // derived from the UA, never the UA string itself, never the
+          // GPU renderer string. No coordinates, no place/guess content,
+          // no PII. undefined fields are dropped by JSON.
           var n = win.navigator || {},
-            w = win.screen || {};
+            w = win.screen || {},
+            uaS = String(n.userAgent).toLowerCase(),
+            os = /android/.test(uaS)
+              ? "android"
+              : /iphone|ipad|ipod/.test(uaS)
+                ? "ios"
+                : /windows/.test(uaS)
+                  ? "windows"
+                  : /mac/.test(uaS)
+                    ? "mac"
+                    : /linux/.test(uaS)
+                      ? "linux"
+                      : "other";
           var dv = {
-            ua: tn(n.userAgent, 300),
+            os: os,
+            form: os === "android" || os === "ios" ? "mobile" : "desktop",
             deviceMemory: n.deviceMemory,
             hardwareConcurrency: n.hardwareConcurrency,
             dpr: win.devicePixelRatio,
@@ -209,7 +220,6 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
             webgl2: g2,
             buildId: buildId,
           };
-          if (gpu) dv.gpu = gpu;
           var ev = {
             type: "boot_failure",
             ts: Date.now(),
@@ -230,7 +240,6 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
             s = js(ev);
           }
           if (s.length > CAP) {
-            if (dv.ua) dv.ua = dv.ua.slice(0, 120);
             if (ev.error.message) ev.error.message = ev.error.message.slice(0, 120);
             s = js(ev);
           }
@@ -381,8 +390,8 @@ const RENAME = {
   unclean: "uc",
   prev: "pv",
   shown: "sn",
-  gpu: "gp",
   err0: "e0",
+  uaS: "u",
   doc: "d",
   win: "o",
   true: "!0",

@@ -57,6 +57,15 @@ Optional fields pass through; the forwarded alert uses only type,
 buildId, edition/region, lastMilestone, and a truncated error
 name/message.
 
+## Tests
+
+```sh
+npm run test:worker        # 16 unit tests (validation, alert builder, rate limiter, CORS)
+npm run typecheck:worker   # strict tsc on the worker sources
+```
+
+Both run in CI (`.github/workflows/node.js.yml`).
+
 ## Deploy
 
 ```sh

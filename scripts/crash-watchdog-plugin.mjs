@@ -3,9 +3,9 @@
  *
  * Injects the dependency-free inline script from scripts/crash-watchdog.mjs
  * into the SPA shell (_shell.html) just before </body>, so it runs before
- * any app bundle code — even when the bundle itself cannot load. It also
- * injects window.__MERIDIAN_BUILD_ID__ immediately before the watchdog so
- * the build identity is available to inline scripts at runtime.
+ * any app bundle code — even when the bundle itself cannot load. The build
+ * identity travels baked into the watchdog script itself (as the buildId
+ * parameter of renderCrashWatchdogScript), so no separate global is needed.
  *
  * Ordering matters: TanStack Start's SPA shell is written by its prerender
  * step, which runs in a `buildApp: { order: "post" }` builder hook AFTER
@@ -47,18 +47,12 @@ function buildIdForWatchdog() {
   return "unknown";
 }
 
-/** Escape a string for safe embedding inside a <script> element. */
-function scriptSafe(value) {
-  return JSON.stringify(value).replace(/</g, "\\u003c");
-}
-
 function inject(html) {
   if (html.includes(MARKER)) return html;
   if (!html.includes("</body>")) return html;
   const buildId = buildIdForWatchdog();
-  const idScript = `<script>window.__MERIDIAN_BUILD_ID__=${scriptSafe(buildId)};</script>`;
   const watchdog = renderCrashWatchdogScript(buildId);
-  return html.replace("</body>", `${idScript}${watchdog}</body>`);
+  return html.replace("</body>", `${watchdog}</body>`);
 }
 
 /** Patch the emitted shell file on disk; no-op when absent or unpatched. */

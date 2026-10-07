@@ -32,7 +32,6 @@ function fakeDocument({
   bodyText = "",
   bodyInnerText = null,
   webgl = true,
-  gpu = null,
 } = {}) {
   const nodes = [];
   function mk(tag) {
@@ -104,13 +103,6 @@ function fakeDocument({
         return {
           getContext: (kind) => {
             if (!webgl) return null;
-            if (gpu && kind === "webgl2") {
-              return {
-                getExtension: (name) =>
-                  name === "WEBGL_debug_renderer_info" ? { UNMASKED_RENDERER_WEBGL: 37446 } : null,
-                getParameter: () => gpu,
-              };
-            }
             return { getExtension: () => null };
           },
         };
@@ -166,7 +158,8 @@ function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready =
   const host = {
     document: doc,
     navigator: {
-      userAgent: "FakeBrowser/1.0 (Test Phone)",
+      userAgent:
+        "Mozilla/5.0 (Linux; Android 13; Test Phone) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36",
       deviceMemory: 4,
       hardwareConcurrency: 8,
     },
@@ -489,7 +482,10 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.equal(body.buildId, "build-9");
   assert.equal(typeof body.ts, "number");
   assert.equal(body.device.webgl2, true);
-  assert.equal(body.device.ua, "FakeBrowser/1.0 (Test Phone)");
+  assert.equal(body.device.os, "android");
+  assert.equal(body.device.form, "mobile");
+  assert.ok(!("ua" in body.device), "full UA string is never sent (COPPA)");
+  assert.ok(!("gpu" in body.device), "GPU renderer string is never sent (COPPA)");
   assert.equal(body.device.deviceMemory, 4);
   assert.equal(body.device.hardwareConcurrency, 8);
   assert.equal(body.device.screenW, 390);
@@ -501,9 +497,8 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.ok(ma.innerHTML.includes("Thanks — we're on it."));
 });
 
-test("send flow: GPU renderer string is captured when available", () => {
+test("send flow: no fingerprinting material leaves the device (COPPA)", () => {
   const { host, calls, xhr } = fakeHost({
-    docOpts: { gpu: "Fake GPU 9000" },
     xhrOpts: {
       flagsText: JSON.stringify({
         observabilityEndpoint: "https://obs.test/hook",
@@ -514,7 +509,12 @@ test("send flow: GPU renderer string is captured when available", () => {
   fireTimer(calls);
   clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
-  assert.equal(body.device.gpu, "Fake GPU 9000");
+  const raw = xhr.posts[0].body;
+  assert.ok(!("gpu" in body.device), "no GPU renderer string");
+  assert.ok(!("ua" in body.device), "no full UA string");
+  assert.ok(!raw.includes("UNMASKED"), "no fingerprint extension name in payload");
+  assert.equal(body.device.os, "android");
+  assert.equal(body.device.form, "mobile");
 });
 
 test("send flow: fail-closed with no endpoint configured", () => {
