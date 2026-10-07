@@ -62,7 +62,7 @@ import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometMascot } from "./comet-mascot";
-import { KoFiSign } from "./ko-fi-sign";
+import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -1748,8 +1748,9 @@ function Choose({
         </section>
       ) : null}
     </main>
-    {/* Ko-fi tip-jar sign, presented by Comet — home only. Veeresh 2026-10-07. */}
-    <KoFiSign />
+    {/* Grandpa's Coffee Run — animated donation scene, home only.
+        Veeresh 2026-10-07: replaces PR #91's static sign. */}
+    <GrandpaCoffeeRun />
     {/* Comet hosts the Chart Room home page only — never in-game, never in
         GeoDetective, never in review. The fixed wrapper is pointer-events
         gated so it never blocks page scroll or taps. */}
