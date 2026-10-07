@@ -124,6 +124,34 @@ export const Route = createRootRoute({
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Google Analytics 4 — COPPA-safe: IP anonymized, no ad personalization, no Google signals */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NYKKMLQSN5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NYKKMLQSN5', {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+              });
+            `,
+          }}
+        />
+        {/* Microsoft Clarity — Project ID: ytspaudpvs */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "ytspaudpvs");
+            `,
+          }}
+        />
       </head>
       <body>
         <PreviewHostBridge />
