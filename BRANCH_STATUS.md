@@ -1,14 +1,15 @@
-# BRANCH_STATUS.md — feat/ko-fi-footer
+# BRANCH_STATUS.md — feat/ko-fi-animated-sign
 
 ## Active work
-- [x] Ko-fi tip-jar footer (Game Designer v1)
-- [x] Refactor: hardcoded IDs → build-time env vars (Veeresh 2026-10-07)
-- [x] tsc clean, 837/837 unit, 6/6 footer E2E, 10/10 comet E2E
-- [x] Dual-build proof: fail-closed without env, tags render with env
-- [x] GitHub Secrets wired in pages.yml
-- [ ] Veeresh: add 3 secrets in GitHub Settings → merge PR #90
+- [x] Animated Ko-fi sign presented by Comet (Veeresh 2026-10-07)
+- [x] Shared SupportGateDialog extracted from old footer
+- [x] comet:boop event wiring in CometMascot
+- [x] Quiet footer removed (sign replaces it — no duplication)
+- [x] tsc clean, 837/837 unit, build green
+- [x] E2E: 7/7 desktop + 2/2 reduced + 10/10 comet regression
+- [ ] Open PR (Veeresh merges)
 
-## Env vars (set in GitHub Settings → Secrets and variables → Actions)
-- VITE_GA4_MEASUREMENT_ID
-- VITE_CLARITY_PROJECT_ID
-- VITE_KOFI_URL
+## Context
+Veeresh 2026-10-07 explicit order, overriding the earlier expert
+recommendation: mascot + animated sign requesting donations. Game
+Designer's COPPA calls stand (no tracking, silent, fail-closed env).

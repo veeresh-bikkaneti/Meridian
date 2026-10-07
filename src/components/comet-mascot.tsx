@@ -276,6 +276,16 @@ export function CometMascot() {
     return () => window.removeEventListener("comet:edition-select", onEditionSelect);
   }, [handleBoop, later]);
 
+  // Ko-fi sign tap (Veeresh 2026-10-07): the sign lives outside CometMascot,
+  // so it asks for the happy boop via event — same decoupled pattern as
+  // comet:edition-select. Reduced-motion is handled inside handleBoop
+  // (its WAAPI animation no-ops); the happy eyes still show briefly.
+  useEffect(() => {
+    const onKoFiBoop = () => handleBoop();
+    window.addEventListener("comet:boop", onKoFiBoop);
+    return () => window.removeEventListener("comet:boop", onKoFiBoop);
+  }, [handleBoop]);
+
   const [hx, hy] = sector === -1 ? [0, 0] : HEAD_OFFSETS[sector];
   const px = hx * PUPIL_SCALE;
   const py = hy * PUPIL_SCALE;
