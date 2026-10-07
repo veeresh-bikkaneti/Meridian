@@ -1,14 +1,14 @@
 # BRANCH_STATUS.md — feat/ko-fi-footer
 
 ## Active work
-- [x] SupportFooter component (footer colophon + disclaimer, offline-hidden)
-- [x] "Ask a grown-up" interstitial (native dialog, backdrop/Esc dismiss)
-- [x] Wired into Chart Room home view
-- [x] E2E: 6/6 green (support-footer.desktop.spec.ts)
-- [x] tsc clean, unit 837/837, build:pages green
-- [ ] PR open — Veeresh merges
+- [x] Ko-fi tip-jar footer (Game Designer v1)
+- [x] Refactor: hardcoded IDs → build-time env vars (Veeresh 2026-10-07)
+- [x] tsc clean, 837/837 unit, 6/6 footer E2E, 10/10 comet E2E
+- [x] Dual-build proof: fail-closed without env, tags render with env
+- [x] GitHub Secrets wired in pages.yml
+- [ ] Veeresh: add 3 secrets in GitHub Settings → merge PR #90
 
-## Context
-Veeresh 2026-10-07: implement Game Designer's Ko-fi v1 UX.
-Hard rules: no audio, no analytics, no Comet involvement, no gating,
-plain <a> hardcoded URL, offline-hidden. Clean/minimal per Veeresh directive.
+## Env vars (set in GitHub Settings → Secrets and variables → Actions)
+- VITE_GA4_MEASUREMENT_ID
+- VITE_CLARITY_PROJECT_ID
+- VITE_KOFI_URL

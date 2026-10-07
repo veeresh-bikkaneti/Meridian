@@ -11,11 +11,12 @@ import "./support-footer.css";
  * Hard rules (grep-verifiable):
  * - zero imports from the audio system (no sfx.ts)
  * - zero analytics calls (no gtag)
- * - URL is a hardcoded constant, never built from config or input
+ * - URL comes from the VITE_KOFI_URL build env (GitHub Secrets pattern);
+ *   unset/empty → the footer does not render at all (fail-closed)
  * - plain <a>, never the router <Link> (keeps Ko-fi out of the PWA scope)
  * - hidden while offline (a dead link is worse than no link)
  */
-const KOFI_URL = "https://ko-fi.com/thesaltandpepperguy";
+const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
 
 export function SupportFooter() {
   const [online, setOnline] = useState(
@@ -56,6 +57,8 @@ export function SupportFooter() {
   }, []);
 
   if (!online) return null;
+  // Fail-closed: no Ko-fi URL configured → render nothing (no empty hrefs).
+  if (!KOFI_URL) return null;
 
   return (
     <>

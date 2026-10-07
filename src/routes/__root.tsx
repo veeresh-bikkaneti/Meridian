@@ -98,6 +98,56 @@ function PwaUpdateToast() {
   );
 }
 
+/**
+ * Analytics tags, fail-closed on missing build env.
+ *
+ * Veeresh 2026-10-07: no hardcoded key details in source. IDs come from
+ * build-time env (GitHub Secrets → Actions → VITE_*). When an ID is
+ * unset/empty, its tag does not render at all — no broken script tags.
+ * Local dev builds fine without any of these set.
+ */
+function AnalyticsTags() {
+  const ga4Id = import.meta.env.VITE_GA4_MEASUREMENT_ID?.trim() || undefined;
+  const clarityId = import.meta.env.VITE_CLARITY_PROJECT_ID?.trim() || undefined;
+  return (
+    <>
+      {ga4Id ? (
+        <>
+          {/* Google Analytics 4 — COPPA-safe: IP anonymized, no ad personalization, no Google signals */}
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', ${JSON.stringify(ga4Id)}, {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+              });
+            `,
+            }}
+          />
+        </>
+      ) : null}
+      {clarityId ? (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", ${JSON.stringify(clarityId)});
+            `,
+          }}
+        />
+      ) : null}
+    </>
+  );
+}
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -124,34 +174,7 @@ export const Route = createRootRoute({
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
-        {/* Google Analytics 4 — COPPA-safe: IP anonymized, no ad personalization, no Google signals */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NYKKMLQSN5" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-NYKKMLQSN5', {
-                'anonymize_ip': true,
-                'allow_google_signals': false,
-                'allow_ad_personalization_signals': false
-              });
-            `,
-          }}
-        />
-        {/* Microsoft Clarity — Project ID: ytspaudpvs */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "ytspaudpvs");
-            `,
-          }}
-        />
+        <AnalyticsTags />
       </head>
       <body>
         <PreviewHostBridge />

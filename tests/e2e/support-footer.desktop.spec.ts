@@ -8,6 +8,12 @@ import { serveBuiltArtifact } from "./helpers";
  * gate opens on link click (no navigation), Continue opens Ko-fi in a new
  * tab, Cancel / Esc / backdrop dismiss, offline hides the footer,
  * no console errors.
+ *
+ * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
+ *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
+ * Analytics env vars (VITE_GA4_MEASUREMENT_ID / VITE_CLARITY_PROJECT_ID) are
+ * intentionally OMITTED from the test build — the tags must not render, which
+ * also keeps external-script noise out of the console gate.
  */
 test.setTimeout(180_000);
 
@@ -16,7 +22,14 @@ test.beforeEach(async ({ context }) => {
 });
 
 const APP = "http://127.0.0.1:4123/Meridian/";
-const KOFI_URL = "https://ko-fi.com/thesaltandpepperguy";
+// Fail fast with a clear message if the artifact wasn't built with the URL.
+const KOFI_URL = process.env.VITE_KOFI_URL?.trim();
+if (!KOFI_URL) {
+  throw new Error(
+    "E2E requires VITE_KOFI_URL at build time: " +
+      "VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages",
+  );
+}
 
 async function loadHome(page: Page): Promise<string[]> {
   const errors: string[] = [];
@@ -32,11 +45,10 @@ async function loadHome(page: Page): Promise<string[]> {
 function expectCleanConsole(errors: string[]): void {
   // React #418 is a pre-existing flaky hydration warning, unrelated to this
   // feature (same filter as the cleared-mode and difficulty-picker specs).
-  // ERR_TUNNEL_CONNECTION_FAILED is the sandbox proxy refusing external
-  // analytics scripts (GA4/Clarity from PR #88) — environmental, not footer-related.
-  const relevant = errors.filter(
-    (e) => !e.includes("Minified React error #418") && !e.includes("ERR_TUNNEL_CONNECTION_FAILED"),
-  );
+  // Note: the ERR_TUNNEL_CONNECTION_FAILED filter this spec previously needed
+  // is gone — analytics tags are env-gated (Veeresh 2026-10-07) and the test
+  // build omits them, so no external scripts load in the sandbox.
+  const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
