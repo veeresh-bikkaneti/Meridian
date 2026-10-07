@@ -1,10 +1,10 @@
 # BRANCH_STATUS.md — feat/longname-pr3
 
-**Branch:** `feat/longname-pr3` (off `origin/feat/longname-pr2` @ `ab4676a` — already rebased on main incl. #76/#77/#78; PR #80 still open)
+**Branch:** `feat/longname-pr3` (was off `origin/feat/longname-pr2` @ `ab4676a`; **PR #80 merged 2026-10-06 ~18:48 CDT → rebasing onto `origin/main`** per task instructions)
 **Worktree:** `~/workspace/meridian-worktrees/longname-pr3`
 **Task:** "The Cartographer's Plate" — PR3 Scroll architecture + a11y per `~/workspace/your_files/long-name-design-spec.md` §5/§6/§8/§10/§12.
 Doctrine: **names are the payload; containers flex, names never do.**
-**Status:** 🟡 IN PROGRESS — Veeresh merges (never merge).
+**Status:** 🟢 E2E GREEN — opening PR (Veeresh merges, never merge).
 
 ## Scope
 1. **Question bubble backstop** (`question-bubble.tsx`): shell `max-height min(38dvh, 20rem)`; name+hint as ONE scroll region (`overflow-y auto`, `role="region"`, name "Place name — scroll for more", `tabindex="0"`, visually-hidden scrollbar); fade mask + `⋯` + "more below" cue (`aria-hidden`, hidden when content fits / scrolled to bottom); meta band `position: sticky; top: 0`; collapse toggle renamed "Show place name"/"Hide place name" (`aria-expanded`, folded panel `hidden`, min-height 44px, full-width, name folded away entirely — honest, never clamped).
@@ -18,19 +18,23 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - E2E seams kept: `difficulty-chip`, `pin-compare-line`, `miss-headline`, `growth-line`, `score-breakdown` — none renamed.
 
 ## Done
-- [x] Worktree + branch `feat/longname-pr3`; pushed to origin (`f94d962`)
+- [x] Worktree + branch `feat/longname-pr3`; pushed to origin
 - [x] `src/components/scroll-cue.tsx` (new): `useMoreBelow` + `<ScrollCue>`
 - [x] question-bubble.tsx backstop restructure (shell cap, one scroll region, sticky meta, Show/Hide toggle, §6.1 compaction)
 - [x] result-card.tsx three zones + theme-aware re-chrome (`atlas-dark-scope` deleted)
 - [x] LoopScreen.tsx: guess-list region, sheet 48px header, LoopReveal zones + clue-history summary rows
 - [x] styles.css: PR3 CSS (zones, cue/fade, hidden scrollbars, focus rings, zoom caps, reduced-motion)
 - [x] Unit tests: 816/816 green (incl. new scroll-cue tests + PR3 contracts)
-- [x] E2E specs updated (question-wrap, question-card-header, longname-wrap) + new `longname-scroll-a11y.desktop.spec.ts`
+- [x] E2E specs updated (question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing) + new `longname-scroll-a11y.desktop.spec.ts`
 - [x] Gates: tsc clean · npm test 816/816 · lint-cards GATE PASSED · build:pages green · eslint 0 errors (1 pre-existing warning in an untouched spec)
 - [x] Contrast figures recorded (see below)
+- [x] **PR3 E2E: 42/42 green** (`longname-scroll-a11y.desktop.spec.ts`, 360/768/1280 × light/dark × reduced-motion + 6 dedicated probes) — first run 17/42, all 25 failures were test-harness assertions (resolved dvh→px, Chromium "1e-05s" zero-duration serialization, real tab order incl. source link + share button, loading-pill timing), zero product bugs found
+- [x] Regression E2E: question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing, longname-tiers — see Active
 
 ## Active
-- [ ] E2E run via flock lock (running): new spec + updated specs + longname-tiers + reveal/loop regression
+- [ ] Regression E2E batch 1 running (question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing, longname-tiers)
+- [ ] Regression E2E batch 2: reveal-pin-compare, reveal-your-pin-country-globe, reveal-zoomout, geodetective, endless-game, tutorial, misses-deck (review-deck)
+- [ ] Rebase onto origin/main (PR #80 merged)
 - [ ] PR opened (base main) — NOT merged
 
 ## Contrast figures (spec §8.9, WCAG relative luminance, measured 2026-10-06)
@@ -44,4 +48,5 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - `grep -n "transition" src/styles.css` on PR3 selectors: only the chevron rotations (`.bubble-toggle svg`, `.clue-history-toggle svg`) and button micro-transitions — all zeroed under `prefers-reduced-motion: reduce` in the PR3 block. Tier properties (font-size/weight) carry no transitions anywhere — tier switches are instant. Enter/Rise/Fade choreography already reduced-motion-safe in JS.
 
 ## Spec deviations (deliberate, rationale recorded)
-_(none yet)_
+1. **Scroll-region `min-height: max(120px, 20%)` makes short-name bubbles taller** — implemented verbatim per spec §8.7 (scroll region ≥ max(120px, 20%)). Side effect: a short name that previously fit in a compact bubble now gets a 120px-tall region. Veeresh's call whether the uniformity is worth it; flagged, not changed.
+2. **Share text unchanged** — spec §5's units rule (miles/km) was already implemented in PR2; the share format itself carries no units change, so nothing to do. Confirmed, not a gap.
