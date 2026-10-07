@@ -54,6 +54,13 @@ const FLAGS_FILE = "flags.json";
 let overrides: Partial<Record<FlagName, boolean>> = {};
 
 /**
+ * Observability endpoint from the top-level `observabilityEndpoint` field
+ * of flags.json (NOT inside `flags` — it is a URL, not a boolean flag).
+ * Null = observability transport disabled (the shipped default).
+ */
+let observabilityEndpointValue: string | null = null;
+
+/**
  * Memoized production load promise: concurrent `loadFlags()` callers share
  * one fetch. Cleared when the load settles, so a later explicit call
  * re-fetches rather than returning a stale promise. The `testEnv` seam
@@ -67,7 +74,36 @@ let inflight: Promise<void> | null = null;
  */
 export function resetFlags(): void {
   overrides = {};
+  observabilityEndpointValue = null;
   inflight = null;
+}
+
+/**
+ * Validate an observability endpoint candidate: a string of at most 2048
+ * chars that is either a root-relative path ("/…", never protocol-relative
+ * "//…") or an absolute https: URL. Anything else is rejected so a bad
+ * flags.json deploy fails closed to "no endpoint" (transport disabled).
+ */
+export function isValidObservabilityEndpoint(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const v = value.trim();
+  if (!v || v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
+  if (v.startsWith("/")) return !v.startsWith("//");
+  try {
+    const url = new URL(v);
+    return url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+/** Current observability endpoint, or null when unset/invalid. Never throws. */
+export function getObservabilityEndpoint(): string | null {
+  try {
+    return observabilityEndpointValue;
+  } catch {
+    return null;
+  }
 }
 
 function viteBaseUrl(): string | undefined {
@@ -113,6 +149,7 @@ export function isEnabled(flag: FlagName): boolean {
 interface FlagsPayload {
   version?: unknown;
   flags?: unknown;
+  observabilityEndpoint?: unknown;
 }
 
 /**
@@ -122,6 +159,13 @@ interface FlagsPayload {
  */
 function applyPayload(data: unknown): void {
   if (typeof data !== "object" || data === null) return;
+  // Top-level observability endpoint: validated independently of `flags`
+  // so an endpoint-only payload still applies, and an invalid/missing
+  // endpoint resolves to null (transport disabled — the safe default).
+  const endpointCandidate = (data as FlagsPayload).observabilityEndpoint;
+  observabilityEndpointValue = isValidObservabilityEndpoint(endpointCandidate)
+    ? (endpointCandidate as string).trim()
+    : null;
   const flags = (data as FlagsPayload).flags;
   if (typeof flags !== "object" || flags === null) return;
   const next: Partial<Record<FlagName, boolean>> = {};

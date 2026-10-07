@@ -155,6 +155,10 @@ export default defineConfig({
       testMatch: /crash-loop-breaker\.spec\.ts/,
     },
     {
+      name: "observability",
+      testMatch: /observability\.spec\.ts/,
+    },
+    {
       name: "safari-launch",
       testMatch: /safari-launch\.spec\.ts/,
     },

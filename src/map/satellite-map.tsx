@@ -18,6 +18,8 @@ import {
   type RegionGeometryDTO,
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
+import { isCoarsePointer, mapOptionsForDevice } from "./map-options.ts";
+import { emitWebglContextLost, recordMilestone } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
@@ -643,8 +645,18 @@ export function SatelliteMap(props: {
     const initialMaxBounds =
       isRestore && retryView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
+    recordMilestone("map_init_start");
+    // Secondary jetsam mitigation: cap the WebGL canvas pixel ratio at
+    // 1.5 on coarse-pointer (touch) devices and bound the tile cache —
+    // see src/map/map-options.ts (unit-tested policy).
+    const deviceMapOptions = mapOptionsForDevice({
+      coarsePointer: isCoarsePointer(),
+      devicePixelRatio: typeof window !== "undefined" ? window.devicePixelRatio : undefined,
+    });
     const map = new Map({
       container,
+      ...(deviceMapOptions.pixelRatio !== undefined ? { pixelRatio: deviceMapOptions.pixelRatio } : {}),
+      maxTileCacheSize: deviceMapOptions.maxTileCacheSize,
       style: {
         version: 8,
         // Design §4: every edition opens from space — globe projection,
@@ -673,6 +685,17 @@ export function SatelliteMap(props: {
     projectionRef.current = initialProjection;
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
+
+    // Observability: a lost WebGL context is a field signal for GPU /
+    // memory pressure — emit on the shared (endpoint-gated) path.
+    const onWebglContextLost = () => {
+      emitWebglContextLost();
+    };
+    try {
+      map.getCanvas().addEventListener("webglcontextlost", onWebglContextLost);
+    } catch {
+      // Canvas unavailable — the map error boundary covers construction.
+    }
 
     // E2E hook (DOM contract): project the current spot to wrapper-relative
     // CSS pixels through the live camera. Specs use it to tap exact spots
@@ -1279,6 +1302,7 @@ export function SatelliteMap(props: {
     });
 
     map.on("load", () => {
+      recordMilestone("map_ready");
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
@@ -1378,6 +1402,11 @@ export function SatelliteMap(props: {
       labelRef.current = null;
       mapRef.current = null;
       setReady(false);
+      try {
+        map.getCanvas().removeEventListener("webglcontextlost", onWebglContextLost);
+      } catch {
+        // Canvas already gone with the map.
+      }
       try {
         clearBoundaryBands(map);
       } catch {

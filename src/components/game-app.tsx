@@ -79,7 +79,13 @@ import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
-import { isEnabled, loadFlags } from "@/lib/flags";
+import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import {
+  initObservability,
+  installGlobalErrorHandlers,
+  recordMilestone,
+  setObservabilityEndpoint,
+} from "@/lib/observability";
 import {
   TUTORIAL_EDITION,
   TUTORIAL_PLACE_ID,
@@ -848,6 +854,26 @@ export function GameApp() {
   }, [replaceSession]);
 
   useEffect(() => {
+    // Observability boot — MUST run before the crash-loop breaker effect
+    // below consumes the clean-exit state: initObservability() reads the
+    // previous breadcrumb and, when isUncleanShutdown() is true, queues
+    // exactly one suspected_crash event carrying that trail (see
+    // src/lib/observability.ts — a jetsam kill cannot beacon during the
+    // kill; detection is by asymmetry at next boot). Events queue in
+    // memory until flags resolve and provide the endpoint (possibly
+    // null = transport disabled), then flush. Never throws.
+    initObservability();
+    installGlobalErrorHandlers();
+    void loadFlags().then(() => {
+      setObservabilityEndpoint(getObservabilityEndpoint());
+    });
+  }, []);
+
+  useEffect(() => {
+    if (ready) recordMilestone("boot_ready");
+  }, [ready]);
+
+  useEffect(() => {
     // Crash-loop breaker: a normal unload (reload, tab close, navigation)
     // fires pagehide; a jetsam/WebKit process kill never does. The flag
     // this leaves behind tells the boot effect whether the saved run is
@@ -961,9 +987,30 @@ export function GameApp() {
       if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
       setStarting({ regionName });
       setStartError(null);
+      recordMilestone("run_start", { edition, regionId, chunkId: regionId });
+      // D1: arm the clean-exit dirty marker NOW, before the data-chunk
+      // load below — not only later in writeRun/commit. Why it must
+      // precede the load: a jetsam kill DURING the load (the Globe
+      // 13.7 MB chunk window) previously left meridian.cleanExit
+      // missing/"1" (writeRun had not run yet), so the next boot's
+      // initObservability gate (cleanExit === "0") failed and no
+      // suspected_crash was emitted — and the breadcrumb identifying
+      // the kill was silently overwritten. Interplay:
+      // (a) A kill during load leaves no saved run, so the boot
+      //     crash-loop breaker clearing the (absent) run and landing
+      //     on the menu is harmless and unchanged.
+      // (b) A normal chunk-load ERROR caught by the catch below does
+      //     NOT produce a spurious suspected_crash: any later normal
+      //     unload/reload fires pagehide → handlePageHide stamps "1".
+      // (c) Every openRun re-arms, so a repeat kill after the breaker
+      //     re-armed the flag to "1" at boot is detectable again.
+      // stampCleanExitDirty never throws (see clean-exit.ts).
+      stampCleanExitDirty();
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
+        recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
         const places = await placesFor(edition, regionId);
+        recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
         // pool is built. Fail-closed: an empty band yields an empty pool,
@@ -1922,6 +1969,14 @@ function Play({
   // order). Null for normal runs.
   const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
   const review = isReviewRun(run);
+
+  // Observability: the run is interactive once its places are loaded and
+  // it is in the aim phase — the last milestone of a healthy run start.
+  useEffect(() => {
+    if (places && run.phase === "aim") {
+      recordMilestone("game_loaded", { edition: run.edition, regionId: run.regionId, chunkId: run.regionId });
+    }
+  }, [places, run.phase, run.edition, run.regionId]);
 
   useEffect(() => {
     let cancelled = false;
