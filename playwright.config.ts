@@ -202,9 +202,10 @@ export default defineConfig({
         viewport: { width: 1440, height: 900 },
       },
     },
+    {
+      name: "crash-watchdog",
+      testMatch: /crash-watchdog\.spec\.ts/,
+    },
   ],
-  reporter: [
-    ["list"],
-    ["html", { open: "never", outputFolder: "playwright-report" }],
-  ],
+  reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

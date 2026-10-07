@@ -1,132 +1,75 @@
-# BRANCH_STATUS — fix/mobile-home-declutter
+# BRANCH_STATUS.md — feat/crash-reporter
 
-Mobile de-crowding of the Chart Room home page (Veeresh's 2026-10-07
-screenshot: grandpa's fixed donation scene walked across the GeoDetective
-card, Comet overlapped the card corner, the greeting bubble clipped, the
-tour invite ate the top 25% of the viewport).
-
-Implements the reconciled design decisions from the five lens reports
-(`/tmp/zone-spec.md`, `/tmp/narrative-audit.md`,
-`/tmp/economy-requirements.md`, `/tmp/audio-audit.md`,
-`/tmp/level-arch-requirements.md`). Layout/CSS only — no behavior, copy,
-or game-logic changes. (Prior branch content was PR #96, merged to main.)
+## Active work
+Crash reporter for Meridian (older devices: "won't even load"). Extends the
+existing observability pipeline (`src/lib/observability.ts`,
+`src/game/clean-exit.ts`) — no parallel pipeline. Transport stays dormant
+until the repo owner deploys the Worker and sets `observabilityEndpoint` in
+`public/flags.json` (fail-closed by design).
 
 ## Done
-
-- [x] `src/components/grandpa-coffee-run.css`
-  - Mobile (`≤1023.5px`): `.grandpa-scene` is now an **in-flow closing
-    band** (`position: relative`, `inset: auto`, `min-height: 18rem`,
-    `overflow-x: clip`) rendered as a sibling right after `</main>` — no
-    DOM move. Walk + kettle beats kept but contained: `.grandpa-path` and
-    `.grandpa-walker` are `absolute` inside the strip (full-bleed, so the
-    existing `vw` travel keyframes still work).
-  - Walker parks with `--park-right: … + 172px` so the centered 200px
-    cloud (231px rendered, content-box) keeps an 8px clear gap from
-    Comet's fixed 80px footprint. Short viewports (`max-height: 599.5px`)
-    use `+ 144px` for the 64px Comet.
-  - Cloud is **present on arrival** on mobile (never animation-gated);
-    the aria-hidden mid-walk cheers text is desktop-only (one ask per
-    strip, per economy).
-  - Gate buttons `.bubble-btn`: `min-height: 44px` + inline-flex centering
-    (were ~33px). Cloud ask target: `min-height: 44px`.
-  - Band reserves bottom clearance `80px + safe-area + 1.5rem` so the
-    strip's interactive content never scrolls under Comet; brass rule
-    `::before` opens the band (reads as camp corner, not a 5th card).
-  - Desktop `≥1024px` fixed overlay untouched; reduced-motion static
-    finale composes (verified by reading the cascade).
-- [x] `src/components/comet-mascot.css`
-  - Greeting bubble: `max-width: min(252px, calc(100vw - 3rem))`
-    (`min(210px, …)` at `≤480px`) — narrative's max-widths held, vw clamp
-    guards the edges.
-  - Speaker badge: 44px hit area (was 32px), re-anchored so it still
-    overhangs the bubble corner; icon 16px → 20px. Never clipped or
-    `display:none` (audio flag).
-- [x] `src/components/tutorial-overlay.tsx` — invite compact on mobile:
-  `p-4 sm:p-5`, `mb-4 sm:mb-6`, `gap-2 sm:gap-3`,
-  `text-base sm:text-lg`; both buttons `min-h-[44px]`. Desktop unchanged.
-- [x] `src/components/game-app.tsx` — edition grid `gap-4` → `gap-5`
-  (1.25rem floor between stacked cards). Sections already ≥2rem (`mt-8`/`mt-10`).
-- [x] `playwright.config.ts` — mobile project `testMatch` now also matches
-  `mobile-*.spec.ts` so the new spec runs in the mobile project.
-- [x] `tests/e2e/mobile-home-overlap.spec.ts` — NEW: 360/390px × dark/light
-  matrix; (a) zero overlapping boxes incl. walk-containment sampling and
-  breathing-room gaps; (b) all tap targets ≥44×44 + unobstructed
-  (elementFromPoint); (b2) speaker 44px when sound off; (c) cloud visible +
-  tappable + finale screenshot; (d) offline → strip collapses to zero height.
-- [x] `npx tsc --noEmit` — clean.
-- [x] `npm test` — unit suite green (837/837).
-- [x] `npm run build:pages` — green (VITE_KOFI_URL set).
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED.
-- [x] NEW `tests/e2e/mobile-home-overlap.spec.ts` — 20/20 green
-      (360/390px × dark/light): (a) zero overlapping boxes incl.
-      walk-containment sampling, strip-vs-Comet at scroll-to-bottom, and
-      breathing-room gaps; (b) all tap targets ≥44×44 + unobstructed;
-      (b2) speaker 44px (sound off); (c) cloud visible + tappable, finale
-      screenshots (ask + gate states) in
-      `/home/hatch/workspace/meridian-review/evidence/`; (d) offline →
-      strip collapses to zero height.
-- [x] Regression E2E green: `grandpa-coffee-run.mobile` 3/3,
-      `grandpa-coffee-run.reduced` 2/2, `comet-mascot.mobile` 4/4,
-      `tutorial` 4/4. (`grandpa-coffee-run.desktop`: 2 timing flakes in a
-      loaded 4-file run — both pass in isolation; unrelated to this
-      change.)
-- [x] Reduced-motion mobile verified: static seated finale, kettle
-      hidden, cloud fully inside the band.
-- [x] `tests/e2e/comet-mascot.mobile.spec.ts` — "renders bottom-right…"
-      now waits out the transient greeting (~9s auto-dismiss) before
-      asserting the permanent mascot never covers CTAs. The required
-      invite compaction shifted layout ~16px and flipped this knife-edge
-      assertion (the 9s transient bubble vs. a CTA center); the product
-      behavior is unchanged and pre-existing.
-
-## Reviews (2026-10-07)
-
-- [x] Senior architect + senior developer review (`/tmp/senior-review.md`):
-      **APPROVE-WITH-NITS**. Approach sound (in-flow band, clearance in
-      `min-height`, `overflow-x: clip` correct, no `!important`/specificity
-      issues, 360–430px relative units, comet spec change truly test-only).
-      Must-fix applied: `.kettle-stage { pointer-events: none; }` — the
-      kettle sweeps over the page during its drop inside the walker's
-      `role="button"` and would have opened the donation gate on tap.
-      Nits noted (not blocking): `--comet-clearance` hardcodes Comet's
-      footprint (suggest shared var); two vacuous E2E branches; the
-      "desktop untouched" claim is slightly inaccurate (44px buttons +
-      `--park-right` short-viewport fix also touch desktop — both
-      defensible improvements).
-- [x] Office-hours visual review (`/tmp/office-hours-review.md`):
-      **SHIP-WITH-NITS**. All 6 evidence shots PASS; fresh 390px-dark
-      captures clean. One nit fixed: the always-visible mobile bubble rode
-      the walker in from off-screen left, sliding in clipped at the
-      viewport edge for ~7s — it now fades in at 1.8s once the walker is
-      in-bounds (`bubble-mobile-enter`; added to the reduced-motion
-      `animation: none` list).
+- [x] WS1 senior-dev: `scripts/crash-watchdog.mjs` (ES5-only logic against
+      injected host + `renderCrashWatchdogScript()` from function sources —
+      no drift), `scripts/crash-watchdog.test.mjs` (30/30 node:test:
+      ES5-only output, marker, ≤5120 bytes, try/catch, behavior via fake
+      host), `scripts/crash-watchdog-plugin.mjs` (injects before `</body>`
+      in `_shell.html`, fail-closed marker assertion on GITHUB_PAGES=1),
+      registered in `vite.config.ts` after `tanstackStart()`.
+      Watchdog: 28s timer, fires only when readyState complete + tab
+      visible + `window.__meridian_ready` unset + no build-staleness
+      refresh UI + not asked this session. Fallback UI: "The game couldn't
+      start on this phone.", Try again FIRST, then "Tell us what happened —
+      it helps fix phones like yours.", warm thanks after tap, dedupe via
+      `meridian.crashwatchdogAsked`, Reload + `?nosw=1` links, WebGL-less
+      variant copy, inline CSS, role=alert, focus to heading, focus rings,
+      ≥4.5:1 contrast, prefers-reduced-motion honored. Endpoint read at
+      RUNTIME from flags.json (`new URL("flags.json", document.baseURI)`,
+      no-store); zero network until tap; XHR only.
+- [x] WS2 frontend: `window.__meridian_ready=true` via rAF after first
+      paint, exactly once (ref guard), next to `recordMilestone("boot_ready")`
+      in `src/components/game-app.tsx`; `"boot_failure"` added to
+      `ObservabilityEventType` in `src/lib/observability.ts`. Diff kept
+      minimal (38 insertions).
+- [x] WS3 devops: `workers/crash-report/` (new dir; root tsc ignores it):
+      `src/index.ts` (POST-only ingest, 8KB cap, schema validation incl.
+      `boot_failure`, per-IP 10req/60s rate limit, forwards to Discord
+      webhook and/or Resend via `wrangler secret put`, 200 no-op with no
+      secrets, never 500s, no PII in logs), `wrangler.toml` (no secrets),
+      `tsconfig.json`, `package.json` (pinned, NOT installed), `README.md`
+      (deploy, secrets, go-live step, alerting). 16/16 smoke tests pass.
+- [x] WS4 QA: `tests/e2e/crash-watchdog.spec.ts` (4/4 pass) + `crash-watchdog`
+      project in `playwright.config.ts`. (a) blocked chunks → fallback UI +
+      one `boot_failure` POST; (b) getContext→null → WebGL message;
+      (c) stale build → refresh UI wins, watchdog stands down, zero POSTs;
+      (d) seeded kill → exactly one `suspected_crash`, no double-report.
+- [x] Real bug found by e2e and fixed: the staleness stand-down check read
+      `body.textContent`, which includes the watchdog's own inline source
+      containing the seam string — it self-matched and stood down on every
+      boot. Fixed to `innerText` (excludes script/style) with a
+      null/undefined-only `textContent` fallback (`||` re-broke it: blocked
+      boot has `innerText === ""`). Two regression unit tests added.
+- [x] Gates: `npx tsc --noEmit` clean; `node --test
+      scripts/crash-watchdog.test.mjs` 30/30; observability unit 15/15;
+      eslint 0 errors on touched files; `npm run build:pages` green;
+      marker + build-id script verified in `dist/client/_shell.html`
+      (watchdog 5044/5120 bytes, before `</body>`, after build-id;
+      `meridian-nosw-hatch` still present — existing behavior intact).
 
 ## Pending
+- [ ] Repo owner: deploy Worker (`npx wrangler deploy` from
+      `workers/crash-report/`), `wrangler secret put` DISCORD_WEBHOOK_URL /
+      RESEND_API_KEY / REPORT_EMAIL, then add the Worker URL as top-level
+      `observabilityEndpoint` in `public/flags.json` (flags-only redeploy).
+      Do NOT commit secrets or the endpoint URL to the repo.
+- [ ] Repo owner: final review + merge (PR not created — no auth here).
+- [ ] Follow-up (separate): lite mode for ≤2GB devices (DPR cap, lower
+      maxZoom, or static-image map) — reporting identifies them; only
+      degradation keeps them playing. Watch the ~5118-byte watchdog budget.
 
-- [x] E2E re-run of `mobile-home-overlap.spec.ts` after the two review
-      fixes: 20/20 green (2026-10-07).
-- [ ] Open PR (Veeresh merges).
-
-## Notes / open questions
-
-- Economy wanted the strip *above* the review deck; the reconciled
-  decisions place it *below* (last band) — implemented as reconciled.
-- Bottom clearance is built into the band (`--comet-clearance` in the
-  walker/path `bottom` offsets + taller `min-height`), NOT as
-  `margin-bottom`: under `html,body{height:100%}` a trailing margin does
-  not extend the scrollable area, so the walker would have ended up under
-  Comet at max scroll. Verified: walker bottom stays above Comet's top.
-- Test (a) deviation from the literal task text: strict box-overlap
-  between *fixed* elements (Comet wrap, greeting) and *in-flow* cards is
-  geometrically unsatisfiable at scroll 0 for any fixed mascot
-  (pre-existing, accepted). The spec asserts the meaningful invariants
-  instead: in-flow elements pairwise disjoint; strip content vs Comet
-  strict at scroll-to-bottom; greeting never clipped, paints above card
-  content (the reported stacking bug), and covers no CTA center.
-- The kettle's dolly-vertigo drop still paints over page content above the
-  strip for ~2.8s mid-walk (same as the old fixed overlay; transient,
-  Veeresh-approved spectacle). Overlap assertions skip the kettle phase.
-- Gate focus-on-open can scroll the page on mobile (economy funnel risk);
-  fixing it is behavior work — out of scope, unchanged.
-- `VITE_KOFI_URL` unset → component returns null → no band, no reserved
-  space (code path unchanged; not E2E-covered — needs a separate build).
+## Known limits (documented, by design)
+- A device that never boots can never report; OS tab kills, GPU
+  context-loss hangs, and main-thread ANRs are invisible to the watchdog.
+- The openRun chunk-failure catch (`game-app.tsx`) emits no event — the
+  failure itself is invisible to the pipeline this boot (only the later
+  kill's `suspected_crash` would carry the trail).
+- Watchdog byte budget is tight (5044/5120); future additions need golfing.

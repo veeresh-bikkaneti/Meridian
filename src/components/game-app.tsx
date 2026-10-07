@@ -127,6 +127,18 @@ import {
 } from "@/game/review-deck";
 
 /**
+ * Watched by the inline crash watchdog injected into _shell.html
+ * (scripts/crash-watchdog.mjs): set to true once the React root has
+ * mounted and painted. The watchdog treats its absence after ~28s as a
+ * boot failure. Same local `declare global` pattern as sports-ai.ts.
+ */
+declare global {
+  interface Window {
+    __meridian_ready?: boolean;
+  }
+}
+
+/**
  * A review-deck session is a Run with this regionId (typed edition "globe")
  * so the PlayLoaded game loop is reused instead of forked. Every
  * review-specific branch keys off this predicate. Review runs never consult
@@ -710,6 +722,8 @@ export function GameApp() {
     };
   }, []);
   const [ready, setReady] = useState(false);
+  // Exactly-once guard for the crash-watchdog ready signal below.
+  const readySignaledRef = useRef(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
   // GeoDetective mounts its own screen outside the endless-run state
@@ -872,6 +886,29 @@ export function GameApp() {
 
   useEffect(() => {
     if (ready) recordMilestone("boot_ready");
+    // Crash-watchdog ready signal: the inline watchdog in _shell.html
+    // watches window.__meridian_ready and treats its absence after ~28s
+    // as a boot failure. Set it via requestAnimationFrame so the flag
+    // lands after first paint, not just after the state commit. Fires
+    // exactly once; never throws (SSR/edge-safe).
+    if (ready && !readySignaledRef.current) {
+      readySignaledRef.current = true;
+      try {
+        if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+          window.requestAnimationFrame(() => {
+            try {
+              window.__meridian_ready = true;
+            } catch {
+              /* flag write is best-effort */
+            }
+          });
+        } else if (typeof window !== "undefined") {
+          window.__meridian_ready = true;
+        }
+      } catch {
+        /* the watchdog simply treats a missing flag as not-ready */
+      }
+    }
   }, [ready]);
 
   useEffect(() => {

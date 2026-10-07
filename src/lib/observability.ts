@@ -54,6 +54,7 @@ export type MilestoneName =
 
 export type ObservabilityEventType =
   | "suspected_crash"
+  | "boot_failure"
   | "js_error"
   | "unhandled_rejection"
   | "map_error"
