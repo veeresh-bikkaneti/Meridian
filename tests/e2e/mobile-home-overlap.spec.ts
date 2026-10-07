@@ -164,7 +164,11 @@ for (const width of WIDTHS) {
         // card rects flap: wait for them before measuring.
         await expect(dossier).toBeVisible();
         await page.waitForTimeout(1800);
-        const gBox = await greeting.boundingBox();
+        // The greeting may have been dismissed by Grandpa's tour walk
+        // (it dismisses the transient greeting when the walk starts) — only
+        // measure it if it's still in the DOM.
+        const gBox =
+          (await greeting.count()) > 0 ? await greeting.boundingBox() : null;
         if (gBox) {
           // Fully inside the viewport — narrative's no-clip rule.
           expect(gBox.x, "greeting left edge").toBeGreaterThanOrEqual(-1);

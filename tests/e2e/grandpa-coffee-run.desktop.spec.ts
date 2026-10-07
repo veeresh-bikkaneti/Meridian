@@ -161,7 +161,22 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
       const m = t.match(/matrix\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,\s*([^)]+)\)/);
       return m ? parseFloat(m[1]) : 999;
     });
-  expect(fillTY, `mug fill translateY during pour: ${fillTY}px`).toBeLessThan(10);
+  // The fill rises over the 2.8s pour — poll until it's near the top rather
+  // than racing the stream's appearance.
+  await expect
+    .poll(
+      async () =>
+        page.getByTestId("grandpa-mug-fill").evaluate((el) => {
+          const t = getComputedStyle(el).transform;
+          if (t === "none") return 0;
+          const m = t.match(
+            /matrix\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,\s*([^)]+)\)/,
+          );
+          return m ? parseFloat(m[1]) : 999;
+        }),
+      { timeout: 5_000 },
+    )
+    .toBeLessThan(10);
 
   // Beat 4: the park finale — tree + bench fade in, he sits facing us.
   await waitForSeated(page);
