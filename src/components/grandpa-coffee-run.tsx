@@ -1,38 +1,42 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./grandpa-coffee-run.css";
-import { SupportGateDialog } from "./support-gate-dialog";
 
 /**
  * Grandpa's Coffee Run — animated donation scene on the Chart Room home.
  *
- * Veeresh 2026-10-07, explicit vision (finale rework):
+ * Veeresh 2026-10-07, explicit vision (park workflow rework):
  * Grandpa (elderly explorer with cane + coffee mug) strolls in from the left
  * edge at a leisurely pace, following an unrolling dotted treasure-map trail
- * toward Comet. Halfway he stops, turns to the viewer, and raises his mug in
- * a "cheers" toast — that's the first ask. At the end of the journey he pulls
- * up a wooden chair, sits facing the viewer, and holds his steaming mug up in
- * a relaxed, persistent cheers. His head stays still — NO pointer tracking
- * (Veeresh 2026-10-07: Comet already moves its head; two tracking heads is
- * annoying). Instead, every ~6s grandpa does a gentle mug-lift invite with a
- * fresh puff of steam — "come share a coffee with me" energy. The thought
- * cloud opens up into a clear donation message bubble: "Help me buy
- * coffee!". Tapping him opens the "ask a grown-up" gate to Ko-fi.
+ * toward Comet. NO thought cloud during the walk. Halfway he raises his mug
+ * and a coffee kettle drops from the top of the screen in a dolly-vertigo
+ * move — descending while scaling up dramatically toward the viewer — tilts,
+ * pours and fills his mug (visible fill + steam burst), then rises/fades away.
+ * Grandpa walks on to a little park by Comet: an SVG tree + wooden bench.
+ * He sits on the bench facing the viewer, head fixed (NO pointer tracking —
+ * Comet already moves its head; two tracking heads is annoying), waving/
+ * cheering gently with his filled mug (periodic mug-lift invite + steam).
+ * The thought cloud appears at the finale with "Help me buy coffee!".
  *
- * Five beats (JS-driven, CSS-animated):
- *  1. Entrance — walker slides in from off-screen left; dotted path unrolls.
- *  2. Walk — slow stroll (~9.5s): bob + cane tap + periodic mug sip, the
- *     thought cloud (coffee refill) tracks overhead.
- *  3. Cheers — travel pauses at 45%, front pose fades in, mug raised,
- *     donation text appears. The single attention moment of the walk.
- *  4. Arrival — travel resumes to the parking spot.
- *  5. Seated finale — chair pose fades in: seated, facing the viewer, mug
- *     raised with continuous steam, head fixed. Every ~6s the mug-lift
- *     invite fires (the attention-grabber). The thought cloud opens into the
- *     persistent donation bubble. Calm and ambient — one clear ask, no
- *     looping desperation.
+ * The key UX change: tapping grandpa OR the cloud opens the "ask a grown-up"
+ * gate INSIDE THE SAME CLOUD — the cloud content swaps (animated) to the
+ * confirmation workflow with inline [Continue]/[Cancel]. No separate dialog
+ * box; the UI never gets crowded. Continue opens Ko-fi in a new tab and the
+ * cloud reverts; Cancel/Esc reverts too. Continue is focused on open.
  *
- * Clean-UX bar: charming, never annoying. One slow walk per page load, then
- * the quiet seated finale. Never blocks edition cards or CTAs
+ * Beats (JS-driven, CSS-animated):
+ *  1. Walk — slow stroll (~9.5s): bob + cane tap + periodic mug sip. No cloud.
+ *  2. Kettle — travel pauses at 45%, front pose fades in, mug raised; the
+ *     kettle drops, pours, fills the mug, vanishes (~2.8s spectacle).
+ *  3. Walk — travel resumes to the parking spot.
+ *  4. Seated finale — park vignette (tree + bench) fades in; grandpa sits on
+ *     the bench facing the viewer, mug raised with steam, head fixed. Every
+ *     ~6s the mug-lift invite fires (the attention-grabber). The cloud opens
+ *     with the donation ask; tapping it (or grandpa) swaps the cloud to the
+ *     gate workflow.
+ *
+ * Clean-UX bar: charming, never annoying. The kettle moment is the single
+ * spectacle; everything else stays calm. One slow walk per page load, then
+ * the quiet park finale. Never blocks edition cards or CTAs
  * (E2E-verified at 360px).
  *
  * Hard rules (grep-verifiable):
@@ -43,18 +47,20 @@ import { SupportGateDialog } from "./support-gate-dialog";
  * - plain window.open with noopener/noreferrer, never the router <Link>
  * - hidden while offline
  * - never gates gameplay; no perks, no tiers UI
- * - prefers-reduced-motion: seated statically with the donation bubble,
- *   no walk/sway/steam/tracking/mug-gesture — the CTA stays discoverable
+ * - prefers-reduced-motion: static park scene — grandpa seated on the bench,
+ *   cloud shown statically, no walk/kettle/gesture — the CTA stays
+ *   discoverable
  */
 const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
 
-// Slow stroll across the dotted path (the cheers pause freezes the
+// Slow stroll across the dotted path (the kettle pause freezes the
 // timeline on top of this). Veeresh 2026-10-07: "he is going too fast" —
 // was 5200ms, now a leisurely ~9.5s.
 const WALK_MS = 9500;
-// Fraction of the walk at which Grandpa stops for the cheers beat.
-const CHEERS_AT = 0.45;
-const CHEERS_HOLD_MS = 2000;
+// Fraction of the walk at which the kettle drops.
+const KETTLE_AT = 0.45;
+// Drop (~0.8s) + hover/tilt/pour (~1.2s) + rise/fade (~0.6s) + margin.
+const KETTLE_HOLD_MS = 2800;
 
 const INK = "#0c181d";
 const BRASS = "#e8b64c";
@@ -65,20 +71,26 @@ const HAIR = "#f5f2ea";
 const TROUSER = "#33404f";
 const CANE = "#6b4a2c";
 const COFFEE = "#4a2c14";
+const COFFEE_SURFACE = "#5d3a1c";
 const WOOD = "#8a5a34";
 const PAPER = "#fffdf8";
+const LEAF = "#7d8b5f";
+const LEAF_DARK = "#66744c";
+const TRUNK = "#6b4a2c";
 
 // --- End of tuning constants ---
 
-type Beat = "walking" | "cheering" | "seated";
+type Beat = "walking" | "kettle" | "seated";
+type Cloud = "ask" | "gate";
 
 export function GrandpaCoffeeRun() {
   const [online, setOnline] = useState(
     typeof navigator === "undefined" ? true : navigator.onLine,
   );
   const [beat, setBeat] = useState<Beat>("walking");
-  const walkerRef = useRef<HTMLButtonElement | null>(null);
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const [cloud, setCloud] = useState<Cloud>("ask");
+  const walkerRef = useRef<HTMLDivElement | null>(null);
+  const continueRef = useRef<HTMLButtonElement | null>(null);
   const reducedMotion = useRef(
     typeof matchMedia !== "undefined" &&
       matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -95,7 +107,7 @@ export function GrandpaCoffeeRun() {
     };
   }, []);
 
-  // Beat machine: walking → cheering (travel paused) → walking → seated.
+  // Beat machine: walking → kettle (travel paused) → walking → seated.
   useEffect(() => {
     if (reducedMotion) {
       setBeat("seated");
@@ -104,41 +116,74 @@ export function GrandpaCoffeeRun() {
     const walker = walkerRef.current;
     if (!walker) return;
     let resumeTimer = 0;
-    const cheerTimer = window.setTimeout(() => {
-      setBeat("cheering");
+    const kettleTimer = window.setTimeout(() => {
+      setBeat("kettle");
       resumeTimer = window.setTimeout(() => {
         // Resume travel; the travel animation's `animationend` flips to seated.
         setBeat("walking");
-      }, CHEERS_HOLD_MS);
-    }, WALK_MS * CHEERS_AT);
+      }, KETTLE_HOLD_MS);
+    }, WALK_MS * KETTLE_AT);
     const onArrive = (e: AnimationEvent) => {
       if (e.animationName === "grandpa-travel") setBeat("seated");
     };
     walker.addEventListener("animationend", onArrive);
     return () => {
-      window.clearTimeout(cheerTimer);
+      window.clearTimeout(kettleTimer);
       window.clearTimeout(resumeTimer);
       walker.removeEventListener("animationend", onArrive);
     };
   }, [reducedMotion]);
 
-  const openGate = useCallback(() => {
-    const d = dialogRef.current;
-    if (d && !d.open) d.showModal();
+  const openCloudGate = useCallback(() => {
+    setCloud((c) => (c === "ask" ? "gate" : c));
   }, []);
+
+  const closeCloudGate = useCallback((refocusWalker = true) => {
+    setCloud("ask");
+    if (refocusWalker) walkerRef.current?.focus();
+  }, []);
+
+  const onContinue = useCallback(() => {
+    window.open(KOFI_URL, "_blank", "noopener,noreferrer");
+    closeCloudGate();
+  }, [closeCloudGate]);
+
+  // UX: focus lands on Continue the moment the gate opens.
+  useEffect(() => {
+    if (cloud === "gate") continueRef.current?.focus();
+  }, [cloud]);
+
+  const onGateKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.stopPropagation();
+        closeCloudGate();
+      }
+    },
+    [closeCloudGate],
+  );
+
+  const onWalkerKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openCloudGate();
+      }
+    },
+    [openCloudGate],
+  );
 
   if (!online) return null;
   // Fail-closed: no Ko-fi URL configured → render nothing.
   if (!KOFI_URL) return null;
 
   return (
-    <>
-      <div
-        className="grandpa-scene"
-        data-testid="grandpa-scene"
-        data-beat={beat}
-        data-reduced-motion={reducedMotion ? "true" : "false"}
-      >
+    <div
+      className="grandpa-scene"
+      data-testid="grandpa-scene"
+      data-beat={beat}
+      data-reduced-motion={reducedMotion ? "true" : "false"}
+    >
       {/* Dotted treasure-map trail unrolling beneath his feet. */}
       <div
         className="grandpa-path"
@@ -154,14 +199,69 @@ export function GrandpaCoffeeRun() {
         </svg>
       </div>
 
-      <button
+      <div
         ref={walkerRef}
-        type="button"
+        role="button"
+        tabIndex={0}
         className="grandpa-walker"
         data-testid="grandpa-walker"
-        onClick={openGate}
+        onClick={openCloudGate}
+        onKeyDown={onWalkerKeyDown}
         aria-label="Grandpa's coffee run. Activate to support Meridian on Ko-fi — asks a grown-up first."
       >
+        {/* Park vignette — tree + bench. Paints BEHIND grandpa (DOM order),
+            fades in when he sits down. Same unit scale as grandpa's SVG
+            (100 units = --gw), so coordinates line up 1:1. */}
+        <span
+          className="park-vignette"
+          aria-hidden="true"
+          data-testid="grandpa-park"
+        >
+          <svg viewBox="-90 0 210 140" className="park-svg">
+            {/* soft ground shadow under tree + bench */}
+            <ellipse cx="-10" cy="136" rx="85" ry="5" fill={INK} opacity="0.12" />
+            {/* tree — trunk + foliage, left of the bench */}
+            <g data-testid="grandpa-tree">
+              <path
+                d="M-86 138 L-74 138 L-77 96 L-79 78 L-83 96 Z"
+                fill={TRUNK}
+                stroke={INK}
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M-80 100 L-92 88"
+                stroke={TRUNK}
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M-80 92 L-68 80"
+                stroke={TRUNK}
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+              <circle cx="-80" cy="58" r="22" fill={LEAF} stroke={INK} strokeWidth="2" />
+              <circle cx="-99" cy="70" r="16" fill={LEAF} stroke={INK} strokeWidth="2" />
+              <circle cx="-61" cy="70" r="16" fill={LEAF} stroke={INK} strokeWidth="2" />
+              <circle cx="-80" cy="40" r="17" fill={LEAF} stroke={INK} strokeWidth="2" />
+              <circle cx="-88" cy="52" r="9" fill={LEAF_DARK} opacity="0.7" />
+              <circle cx="-72" cy="66" r="8" fill={LEAF_DARK} opacity="0.7" />
+            </g>
+            {/* bench — grandpa sits on it (seat top at Py 112 = his Gy 104).
+                Backrest peeks out behind his shoulders. */}
+            <g data-testid="grandpa-bench">
+              <rect x="-18" y="70" width="7" height="44" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="41" y="70" width="7" height="44" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="-24" y="72" width="76" height="8" rx="3.5" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="-24" y="88" width="76" height="8" rx="3.5" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="-24" y="112" width="76" height="8" rx="3.5" fill={WOOD} stroke={INK} strokeWidth="2.5" />
+              <rect x="-18" y="120" width="7" height="18" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="39" y="120" width="7" height="18" fill={WOOD} stroke={INK} strokeWidth="2" />
+            </g>
+          </svg>
+        </span>
+
         <span className="grandpa-bob" aria-hidden="true">
           <svg viewBox="0 0 100 132" className="grandpa-svg">
             {/* ============ SIDE POSE — walking profile, facing right ============ */}
@@ -341,7 +441,8 @@ export function GrandpaCoffeeRun() {
               </g>
             </g>
 
-            {/* ============ FRONT POSE — cheers, facing the viewer ============ */}
+            {/* ============ FRONT POSE — kettle beat: mug raised to be filled.
+                 The mug starts EMPTY; the kettle pours and .mug-fill rises. ============ */}
             <g className="pose pose-front">
               {/* legs planted */}
               <path
@@ -418,7 +519,7 @@ export function GrandpaCoffeeRun() {
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
-              {/* right arm raised high — the toast */}
+              {/* right arm raised high — the mug, awaiting the kettle */}
               <line
                 x1="62"
                 y1="58"
@@ -454,9 +555,34 @@ export function GrandpaCoffeeRun() {
                   fill="none"
                   strokeLinecap="round"
                 />
-                <ellipse cx="78" cy="12" rx="6.5" ry="2" fill={COFFEE} />
+                <clipPath id="grandpa-mug-clip">
+                  <rect x="71.5" y="11.5" width="13" height="15" rx="2" />
+                </clipPath>
+                <g clipPath="url(#grandpa-mug-clip)">
+                  <g className="mug-fill" data-testid="grandpa-mug-fill">
+                    <rect x="70" y="12" width="16" height="16" fill={COFFEE} />
+                    <ellipse cx="78" cy="12" rx="7" ry="2.2" fill={COFFEE_SURFACE} />
+                  </g>
+                </g>
+                {/* steam burst once the pour lands */}
+                <path
+                  className="pour-steam pour-steam-1"
+                  d="M75 6 Q77 1 75 -4"
+                  stroke={INK}
+                  strokeWidth="1.8"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  className="pour-steam pour-steam-2"
+                  d="M81 6 Q79 1 81 -4"
+                  stroke={INK}
+                  strokeWidth="1.8"
+                  fill="none"
+                  strokeLinecap="round"
+                />
               </g>
-              {/* toast sparkles */}
+              {/* kettle-moment sparkles */}
               <path
                 className="cheers-spark"
                 d="M90 8 l1.6 4 4 1.6 -4 1.6 -1.6 4 -1.6 -4 -4 -1.6 4 -1.6 Z"
@@ -507,17 +633,10 @@ export function GrandpaCoffeeRun() {
               />
             </g>
 
-            {/* ============ SEATED POSE — the finale: chair, facing the viewer,
-                 head fixed, mug raised with steam + periodic invite flourish ============ */}
+            {/* ============ SEATED POSE — the park finale: on the bench, facing
+                 the viewer, head fixed, mug raised with steam + periodic
+                 invite flourish. (The bench itself lives in .park-vignette.) ============ */}
             <g className="pose pose-seated">
-              {/* wooden chair (behind him) */}
-              <line x1="33" y1="58" x2="33" y2="106" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
-              <line x1="67" y1="58" x2="67" y2="106" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
-              <rect x="28" y="56" width="44" height="9" rx="4" fill={WOOD} stroke={INK} strokeWidth="2" />
-              <rect x="28" y="70" width="44" height="9" rx="4" fill={WOOD} stroke={INK} strokeWidth="2" />
-              <rect x="27" y="100" width="46" height="10" rx="4" fill={WOOD} stroke={INK} strokeWidth="2.5" />
-              <line x1="32" y1="110" x2="30" y2="130" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
-              <line x1="68" y1="110" x2="70" y2="130" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
               {/* coat, seated */}
               <path
                 d="M38 104 L37 72 Q37 60 50 60 Q63 60 63 72 L62 104 Q50 108 38 104 Z"
@@ -617,85 +736,145 @@ export function GrandpaCoffeeRun() {
               {/* left arm resting on his lap */}
               <line x1="38" y1="68" x2="42" y2="96" stroke={COAT} strokeWidth="8" strokeLinecap="round" />
               <circle cx="42" cy="98" r="4.5" fill={SKIN} stroke={INK} strokeWidth="2" />
-              {/* cane leaning against the chair */}
+              {/* cane leaning against the bench */}
               <line x1="24" y1="82" x2="18" y2="130" stroke={CANE} strokeWidth="4.5" strokeLinecap="round" />
               <path d="M24 82 Q24 75 31 75" stroke={CANE} strokeWidth="4.5" fill="none" strokeLinecap="round" />
             </g>
           </svg>
 
-          {/* Thought cloud: coffee refill — tracks him during the walk, then
-              "opens up" into the donation bubble when he sits down. */}
-          <span className="thought-cloud">
-            <svg viewBox="0 0 72 52">
-              <circle cx="16" cy="46" r="2.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
-              <circle cx="25" cy="40" r="3.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
+          {/* The kettle — drops from the top in a dolly-vertigo move during
+              the kettle beat: descends while scaling up toward the viewer,
+              tilts over the raised mug, pours, then rises/fades away. */}
+          <span className="kettle-stage" aria-hidden="true" data-testid="grandpa-kettle">
+            <svg viewBox="0 0 80 110" className="kettle-svg">
+              {/* handle (behind the body) */}
               <path
-                d="M22 34 Q14 34 14 26 Q14 17 23 17 Q25 9 34 9 Q43 9 45 17 Q54 17 54 26 Q54 34 46 34 Z"
-                fill={PAPER}
-                stroke={INK}
-                strokeWidth="2"
-                strokeLinejoin="round"
+                d="M62 32 Q79 36 75 54 Q73 64 62 62"
+                stroke={CANE}
+                strokeWidth="6"
+                fill="none"
+                strokeLinecap="round"
               />
-              {/* little coffee cup */}
-              <rect
-                x="29"
-                y="20"
-                width="13"
-                height="11"
-                rx="2"
+              {/* gooseneck spout: ink outline, brass inner, tip at (18, 79) */}
+              <path
+                d="M34 56 Q22 58 19 68 L18 78"
+                stroke={INK}
+                strokeWidth="11"
+                fill="none"
+                strokeLinecap="round"
+              />
+              <path
+                d="M34 56 Q22 58 19 68 L18 78"
+                stroke={BRASS}
+                strokeWidth="6.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+              <ellipse cx="18" cy="79" rx="3.5" ry="2" fill={INK} />
+              {/* body */}
+              <path
+                d="M28 36 Q28 27 38 25 L58 25 Q68 27 68 36 L64 66 Q63 73 55 73 L41 73 Q33 73 32 66 Z"
                 fill={BRASS}
                 stroke={INK}
-                strokeWidth="1.5"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
               />
+              {/* brass band */}
               <path
-                d="M42 22 Q46 25 42 28"
+                d="M29 44 L67 44"
                 stroke={INK}
                 strokeWidth="1.5"
-                fill="none"
-                strokeLinecap="round"
+                opacity="0.5"
               />
-              {/* refill arrow circling the cup */}
+              {/* lid + knob */}
+              <ellipse cx="48" cy="25" rx="11" ry="4" fill={BRASS} stroke={INK} strokeWidth="2" />
+              <circle cx="48" cy="20" r="3.5" fill={INK} />
+              {/* pour stream — lives only during the pour window */}
               <path
-                className="refill-arrow"
-                d="M27 15 Q35 10 43 15"
-                stroke={INK}
-                strokeWidth="1.8"
-                fill="none"
+                className="kettle-stream"
+                data-testid="grandpa-kettle-stream"
+                d="M18 82 L18 108"
+                stroke={COFFEE}
+                strokeWidth="3.5"
                 strokeLinecap="round"
-              />
-              <path
-                d="M43 15 l-4.5 -1 1.5 4.2 Z"
-                fill={INK}
               />
             </svg>
           </span>
         </span>
 
-        {/* The ask — visible only during the cheers beat (or as the bubble
-            once seated). Tapping anywhere on grandpa opens the gate. */}
+        {/* The mid-walk ask — visible only during the kettle beat. */}
         <span className="grandpa-cheers-text" aria-hidden="true">
           <strong>Support the Expedition</strong>
           <span>Grown-ups — help keep Meridian funded and free for kids</span>
         </span>
 
-        {/* The finale ask — the thought cloud "opened up". Persistent while
-            grandpa sits with his coffee. */}
-        <span
+        {/* The cloud — the finale ask, or the in-cloud gate workflow.
+            Tapping grandpa OR this cloud swaps it to the gate; the whole
+            flow lives here so the UI never gets crowded. */}
+        <div
           className="grandpa-donation-bubble"
           data-testid="grandpa-donation-bubble"
-          aria-hidden="true"
+          data-cloud={cloud}
         >
-          <strong>Help me buy coffee! ☕</strong>
-          <span>Grown-ups — donations keep Meridian free for kids</span>
-        </span>
-      </button>
+          <div key={cloud} className="bubble-pane">
+            {cloud === "ask" ? (
+              <button
+                type="button"
+                className="bubble-ask"
+                data-testid="grandpa-bubble-ask"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openCloudGate();
+                }}
+                aria-label="Help me buy coffee! Activate to learn how to support Meridian."
+              >
+                <strong>Help me buy coffee! ☕</strong>
+                <span>Grown-ups — donations keep Meridian free for kids</span>
+              </button>
+            ) : (
+              <div
+                className="bubble-gate"
+                role="dialog"
+                aria-label="Support Meridian on Ko-fi"
+                data-testid="grandpa-cloud-gate"
+                onKeyDown={onGateKeyDown}
+              >
+                <p className="bubble-gate-title">
+                  You&rsquo;re leaving Meridian to visit Ko-fi. Ask a grown-up!
+                </p>
+                <p className="bubble-gate-sub">
+                  Meridian is free forever — every game, every map, every mystery.
+                </p>
+                <div className="bubble-gate-actions">
+                  <button
+                    type="button"
+                    ref={continueRef}
+                    className="bubble-btn bubble-btn-primary"
+                    data-testid="grandpa-cloud-continue"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onContinue();
+                    }}
+                  >
+                    Continue
+                  </button>
+                  <button
+                    type="button"
+                    className="bubble-btn"
+                    data-testid="grandpa-cloud-cancel"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      closeCloudGate();
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-    {/*
-      The gate dialog lives OUTSIDE .grandpa-scene on purpose:
-      the scene is pointer-events:none (only the walker re-enables),
-      and an inherited none would make the native <dialog> unclickable.
-    */}
-    <SupportGateDialog dialogRef={dialogRef} koFiUrl={KOFI_URL} />
-    </>
   );
 }
