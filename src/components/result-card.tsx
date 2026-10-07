@@ -486,10 +486,18 @@ export function ResultCard({
                         </dt>
                         <dd
                           className="place-name truespot-name"
-                          data-name-tier={nameTier(placeLabel)}
-                          title={placeLabel}
+                          data-name-tier={nameTier(
+                            pinCompare?.kind === "named" ? pinCompare.truth : placeLabel,
+                          )}
+                          title={
+                            pinCompare?.kind === "named" ? pinCompare.truth : placeLabel
+                          }
                         >
-                          <PlaceNameText name={placeLabel} />
+                          <PlaceNameText
+                            name={
+                              pinCompare?.kind === "named" ? pinCompare.truth : placeLabel
+                            }
+                          />
                         </dd>
                       </div>
                     </dl>
