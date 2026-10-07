@@ -1,6 +1,6 @@
 # BRANCH_STATUS.md — feat/longname-pr3
 
-**Branch:** `feat/longname-pr3` (was off `origin/feat/longname-pr2` @ `ab4676a`; **PR #80 merged 2026-10-06 ~18:48 CDT → rebasing onto `origin/main`** per task instructions)
+**Branch:** `feat/longname-pr3` (rebased onto `origin/main` @ `64c64e8` 2026-10-06 — PR #80 merged, plus #82/#83)
 **Worktree:** `~/workspace/meridian-worktrees/longname-pr3`
 **Task:** "The Cartographer's Plate" — PR3 Scroll architecture + a11y per `~/workspace/your_files/long-name-design-spec.md` §5/§6/§8/§10/§12.
 Doctrine: **names are the payload; containers flex, names never do.**
