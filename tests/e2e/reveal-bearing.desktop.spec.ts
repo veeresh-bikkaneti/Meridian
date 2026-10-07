@@ -258,7 +258,7 @@ test("state edition: miss carries the bearing; hit carries none", async ({
   await expect(hitCard.getByTestId("miss-headline")).toHaveCount(0);
   await expect(hitCard.getByText(/of your pin/)).toHaveCount(0);
   await expect(hitCard.locator("h2.verdict-headline").first()).toHaveText(
-    /^(Result: )?[\d,]+(\.\d+)? (km|m)$/,
+    /^(Result: )?[\d,]+(\.\d+)? (km|mi|m)$/,
   );
 });
 
