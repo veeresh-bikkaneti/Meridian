@@ -39,9 +39,13 @@ current walk/kettle/park behavior.
       tests/e2e/grandpa-tasting-tour.spec.ts
 - [x] Updated existing specs (desktop/mobile/reduced copy; cheers assertions
       removed; mobile-home-overlap copy)
-- [x] tsc clean
+- [x] tsc clean; npm test 847 green; lint-cards GATE PASSED; build:pages green
+- [x] E2E fixes: parked-bench measure (data-mode gate), pour geometry,
+      straight-trail toggle dodge, getScreenCTM probe, handoff-timeout
+      cancelled-flag bug, seed-arg + dwell-window fixes
+- [ ] E2E full tour spec re-run (running)
+- [ ] Regression: grandpa desktop/mobile/reduced, comet, tutorial,
+      mobile-home-overlap
 
 ## Pending
-- [ ] Gates: npm test (full), lint-cards, build:pages, E2E (new +
-      grandpa/comet/tutorial regression)
-- [ ] Stage named files, atomic commits, push, open PR (Veeresh merges)
+- [ ] Open PR (Veeresh merges)
