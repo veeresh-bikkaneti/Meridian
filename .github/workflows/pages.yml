@@ -28,7 +28,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build:pages
+      - name: Build Pages artifact
+        run: npm run build:pages
+        env:
+          # Veeresh 2026-10-07: build-time secrets — set these in GitHub
+          # Settings → Secrets and variables → Actions. Unset → the
+          # corresponding tag/link is omitted from the build (fail-closed).
+          VITE_GA4_MEASUREMENT_ID: ${{ secrets.VITE_GA4_MEASUREMENT_ID }}
+          VITE_CLARITY_PROJECT_ID: ${{ secrets.VITE_CLARITY_PROJECT_ID }}
+          VITE_KOFI_URL: ${{ secrets.VITE_KOFI_URL }}
       - name: Static site directory
         id: site
         run: |
