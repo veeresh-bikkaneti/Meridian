@@ -50,6 +50,9 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
   const revealTimer = useRef(0);
   const dismissTimer = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Veeresh 2026-10-06: the tap that starts audio must not dismiss the bubble.
+  // pointerdown starts audio, click dismisses — same tap would kill it.
+  const audioStartTimeRef = useRef(0);
 
   const dismiss = useCallback(() => {
     if (dismissedRef.current) return;
@@ -95,6 +98,10 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
   const playGreetingAudio = useCallback(
     (synced: boolean) => {
       modeRef.current = "audio";
+      // Bug B fix: clear any stale text-mode dismiss timer so it can't cut audio mid-play.
+      window.clearTimeout(dismissTimer.current);
+      // Bug A fix: record when audio starts so the tap that started it doesn't dismiss.
+      audioStartTimeRef.current = Date.now();
       const audio = new Audio(greetingAudioUrl(indexRef.current));
       audioRef.current = audio;
       setAudioState("playing");
@@ -232,7 +239,12 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
       data-audio={audioState}
       data-greeting-index={indexRef.current}
       role="status"
-      onClick={dismiss}
+      onClick={() => {
+        // Bug A fix: ignore the click if it's the same tap that started the audio
+        // (pointerdown starts audio, click would immediately dismiss and pause it).
+        if (Date.now() - audioStartTimeRef.current < 600) return;
+        dismiss();
+      }}
     >
       <p
         className="comet-greeting-text"
