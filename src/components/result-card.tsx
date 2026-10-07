@@ -487,15 +487,21 @@ export function ResultCard({
                         <dd
                           className="place-name truespot-name"
                           data-name-tier={nameTier(
-                            pinCompare?.kind === "named" ? pinCompare.truth : placeLabel,
+                            run.edition === "globe" && pinCompare?.kind === "named"
+                              ? pinCompare.truth
+                              : placeLabel,
                           )}
                           title={
-                            pinCompare?.kind === "named" ? pinCompare.truth : placeLabel
+                            run.edition === "globe" && pinCompare?.kind === "named"
+                              ? pinCompare.truth
+                              : placeLabel
                           }
                         >
                           <PlaceNameText
                             name={
-                              pinCompare?.kind === "named" ? pinCompare.truth : placeLabel
+                              run.edition === "globe" && pinCompare?.kind === "named"
+                                ? pinCompare.truth
+                                : placeLabel
                             }
                           />
                         </dd>

@@ -372,7 +372,7 @@ describe("cartographer's plate PR1 — reveal headings (result-card.tsx)", () =>
     );
     const truespotClass = classOfTag(
       resultCardSource,
-      /<dd\b[^>]*>\s*<PlaceNameText name=\{placeLabel\} \/>/,
+      /<dd\b[^>]*>\s*<PlaceNameText\s+name=\{\s*run\.edition === "globe" && pinCompare\?\.kind === "named"\s*\?\s*pinCompare\.truth\s*:\s*placeLabel\s*\}\s*\/>/,
       "ledger TRUE SPOT dd",
     );
     assertNameContract("ledger TRUE SPOT dd", truespotClass);
