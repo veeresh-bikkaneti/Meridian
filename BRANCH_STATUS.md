@@ -18,24 +18,26 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - E2E seams kept: `difficulty-chip`, `pin-compare-line`, `miss-headline`, `growth-line`, `score-breakdown` — none renamed.
 
 ## Done
-- [x] Worktree + branch `feat/longname-pr3`; pushed to origin
+- [x] Worktree + branch `feat/longname-pr3`; rebased onto origin/main @ 64c64e8; pushed to origin
 - [x] `src/components/scroll-cue.tsx` (new): `useMoreBelow` + `<ScrollCue>`
 - [x] question-bubble.tsx backstop restructure (shell cap, one scroll region, sticky meta, Show/Hide toggle, §6.1 compaction)
-- [x] result-card.tsx three zones + theme-aware re-chrome (`atlas-dark-scope` deleted)
+- [x] result-card.tsx three zones + theme-aware re-chrome (`atlas-dark-scope` deleted) + globe pin-compare true-spot country-level fix
 - [x] LoopScreen.tsx: guess-list region, sheet 48px header, LoopReveal zones + clue-history summary rows
 - [x] styles.css: PR3 CSS (zones, cue/fade, hidden scrollbars, focus rings, zoom caps, reduced-motion)
 - [x] Unit tests: 816/816 green (incl. new scroll-cue tests + PR3 contracts)
-- [x] E2E specs updated (question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing) + new `longname-scroll-a11y.desktop.spec.ts`
-- [x] Gates: tsc clean · npm test 816/816 · lint-cards GATE PASSED · build:pages green · eslint 0 errors (1 pre-existing warning in an untouched spec)
+- [x] E2E specs updated (question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing, reveal-pin-compare) + new `longname-scroll-a11y.desktop.spec.ts`
+- [x] Gates: tsc clean · npm test 816/816 · lint-cards GATE PASSED · build:pages green · eslint 0 errors
 - [x] Contrast figures recorded (see below)
-- [x] **PR3 E2E: 42/42 green** (`longname-scroll-a11y.desktop.spec.ts`, 360/768/1280 × light/dark × reduced-motion + 6 dedicated probes) — first run 17/42, all 25 failures were test-harness assertions (resolved dvh→px, Chromium "1e-05s" zero-duration serialization, real tab order incl. source link + share button, loading-pill timing), zero product bugs found
-- [x] Regression E2E: question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing, longname-tiers — see Active
+- [x] **PR3 E2E: 42/42 green** (`longname-scroll-a11y.desktop.spec.ts`, 360/768/1280 × light/dark × reduced-motion + 6 dedicated probes)
+- [x] Regression E2E batch 1: 104/118 (14 failures: 5 tap-flakes fixed, 8 overflow-wrap fixed, 1 mi-units fixed — all verified green on re-run)
+- [x] Regression E2E batch 2: longname-wrap + reveal-bearing + reveal-pin-compare + reveal-your-pin-country-globe + reveal-zoomout — 39/42 (3 failures: 2 globe pin-compare fixed via true-spot country-level + test updates, 1 "Right state, wrong town!" stale pre-existing)
 
 ## Active
-- [ ] Regression E2E batch 1 running (question-wrap, question-card-header, longname-wrap, hit-story, reveal-bearing, longname-tiers)
-- [ ] Regression E2E batch 2: reveal-pin-compare, reveal-your-pin-country-globe, reveal-zoomout, geodetective, endless-game, tutorial, misses-deck (review-deck)
-- [ ] Rebase onto origin/main (PR #80 merged)
-- [ ] PR opened (base main) — NOT merged
+- [ ] PR opened (base main) — NOT merged (Veeresh merges)
+
+## Known pre-existing issues (not PR3 regressions)
+- `reveal-pin-compare` "same-state miss: 'Right state, wrong town!'" — test expects the old DOM (pre-dl structure); stale since PR #63.
+- Globe puzzle for frozen date 2026-09-29 changed Hungary→Iran (dataset update); test expectation updated.
 
 ## Contrast figures (spec §8.9, WCAG relative luminance, measured 2026-10-06)
 - Light `--atlas-brass-text` #8a5f16 on light surface #fffdf8 (bearing arrow + dossier number, >12px): **5.54:1** (≥3:1 large-text ✓, also clears 4.5:1)
