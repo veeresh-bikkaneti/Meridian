@@ -1198,6 +1198,10 @@ export function GrandpaCoffeeRun() {
         return;
       }
       setTour({ stage: "walk", geometry: geo, origin: geo.origin });
+      // The tour takes focus: dismiss Comet's transient greeting so the
+      // fixed bubble can't end up covering a CTA once the walk's
+      // auto-scroll moves the page beneath it.
+      window.dispatchEvent(new Event("meridian:tour-walk-start"));
     })();
     return () => {
       cancelled = true;
@@ -1379,6 +1383,20 @@ export function GrandpaCoffeeRun() {
         data-mode={mode}
         data-tour={mode === "tour" ? "active" : undefined}
       >
+        {/* Dotted treasure-map trail unrolling beneath his feet. */}
+        <div
+          className="grandpa-path"
+          aria-hidden="true"
+          data-testid="grandpa-path"
+        >
+          <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+            <line x1="6" y1="36" x2="868" y2="36" className="trail-dots" />
+            <g className="trail-x" transform="translate(924 36)">
+              <line x1="-11" y1="-11" x2="11" y2="11" />
+              <line x1="11" y1="-11" x2="-11" y2="11" />
+            </g>
+          </svg>
+        </div>
         <div
           ref={walkerRef}
           role={walkerInteractive ? "button" : undefined}

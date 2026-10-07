@@ -820,13 +820,6 @@
   pointer-events: none;
 }
 
-.grandpa-scene[data-tour="active"] .grandpa-donation-bubble {
-  opacity: 0;
-  visibility: hidden;
-  animation: none;
-  transition: none;
-}
-
 /* Desktop backstop: the tasting tour is mobile-only (the component also
  * never mounts the layer at ≥1024px). */
 @media (min-width: 1024px) {
