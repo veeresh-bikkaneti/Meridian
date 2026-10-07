@@ -105,3 +105,20 @@ test("greeting bubble is visible and dismissible on mobile", async ({ page }) =>
   await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
   expectCleanConsole(errors);
 });
+
+test("tap on the page turns Comet's head toward the tap (touch tracking)", async ({ page }) => {
+  // Veeresh 2026-10-06: on touch devices the mascot looks at the last tap.
+  const errors = await loadHome(page);
+  const mascot = page.getByTestId("comet-mascot");
+  await expect(mascot).toHaveAttribute("data-tracking", "on");
+  // Dismiss the greeting first so taps land on the page, not the bubble.
+  const bubble = page.getByTestId("comet-greeting");
+  if (await bubble.isVisible()) await bubble.tap();
+  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
+  // Tap top-left of the viewport, far from the bottom-right mascot.
+  await page.touchscreen.tap(40, 120);
+  // The head should turn toward the tap (north-west sector = 5).
+  const pupils = page.getByTestId("comet-pupils");
+  await expect(pupils).toHaveAttribute("style", /translate\(-/, { timeout: 5000 });
+  expectCleanConsole(errors);
+});
