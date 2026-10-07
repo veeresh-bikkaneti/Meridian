@@ -8,10 +8,10 @@ import { serveBuiltArtifact } from "./helpers";
  * Beats: entrance (dotted trail unrolls) → slow walk ~9.5s (bob, cane tap,
  * mug sip, NO cloud) → kettle beat at 45% (travel pauses, front pose, mug
  * raised; a kettle drops in a dolly-vertigo move, pours, fills the mug,
- * vanishes; the mid-walk ask shows) → arrival → park finale (tree + bench
- * fade in; grandpa sits on the bench facing the viewer, head fixed, mug
- * raised with steam + periodic invite flourish; the cloud opens with
- * "Help me buy coffee!").
+ * vanishes; the walk is silent — no mid-walk ask) → arrival → park finale
+ * (tree + bench fade in; grandpa sits on the bench facing the viewer, head
+ * fixed, mug raised with steam + periodic invite flourish; the cloud opens
+ * with Veeresh's copy "Grown-ups — buy me a coffee? ☕").
  *
  * The key UX change: tapping grandpa OR the cloud swaps the cloud content to
  * the "ask a grown-up" gate workflow INSIDE THE SAME CLOUD — no separate
@@ -120,18 +120,14 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
   await page.waitForTimeout(3000);
   await expect(scene).toHaveAttribute("data-beat", "walking");
 
-  // Beat 2: the kettle — travel pauses, he faces the viewer, the ask shows,
-  // and the kettle drops in a dolly-vertigo move.
+  // Beat 2: the kettle — travel pauses, he faces the viewer, and the
+  // kettle drops in a dolly-vertigo move. The walk is silent by design —
+  // there is no mid-walk ask (the cheers text was removed 2026-10-07).
   // (Walk is 9.5s; the kettle hits at 45% ≈ 4.3s and holds 2.8s.)
   await expect(scene).toHaveAttribute("data-beat", "kettle", {
     timeout: 12_000,
   });
-  const cheersText = page.locator(".grandpa-cheers-text");
-  await expect(cheersText).toContainText("Support the Expedition");
-  const cheersOpacity = await cheersText.evaluate(
-    (el) => getComputedStyle(el).opacity,
-  );
-  expect(parseFloat(cheersOpacity)).toBeGreaterThan(0.9);
+  await expect(page.locator(".grandpa-cheers-text")).toHaveCount(0);
 
   // The kettle is looming (scaled up toward the viewer).
   const kettle = page.getByTestId("grandpa-kettle");
@@ -204,9 +200,9 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
   // The cloud opened with the ask.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Help me buy coffee!");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   await expect(bubble).toContainText(
-    "Grown-ups — donations keep Meridian free for kids",
+    "Your support keeps Meridian free for kids",
   );
   const bubbleOpacity = await bubble.evaluate(
     (el) => getComputedStyle(el).opacity,
@@ -277,7 +273,7 @@ test("Continue opens Ko-fi in a new tab and the cloud reverts", async ({
   // The cloud reverts to the ask.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Help me buy coffee!");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
@@ -297,7 +293,7 @@ test("Cancel reverts the cloud without opening anything", async ({ page }) => {
   await page.getByTestId("grandpa-cloud-cancel").click();
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Help me buy coffee!");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );
