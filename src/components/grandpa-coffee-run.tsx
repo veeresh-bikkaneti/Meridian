@@ -5,24 +5,32 @@ import { SupportGateDialog } from "./support-gate-dialog";
 /**
  * Grandpa's Coffee Run — animated donation scene on the Chart Room home.
  *
- * Veeresh 2026-10-07, explicit vision, replacing PR #91's static sign:
- * Grandpa (elderly explorer with cane + coffee mug) walks in from the left
- * edge, following an unrolling dotted treasure-map trail toward Comet.
- * Halfway he stops, turns to the viewer, and raises his mug in a "cheers"
- * toast — that's the ask. Then he parks by Comet and idles, thought cloud
- * (coffee refill) floating overhead. Tapping him opens the "ask a grown-up"
- * gate to Ko-fi.
+ * Veeresh 2026-10-07, explicit vision (finale rework):
+ * Grandpa (elderly explorer with cane + coffee mug) strolls in from the left
+ * edge at a leisurely pace, following an unrolling dotted treasure-map trail
+ * toward Comet. Halfway he stops, turns to the viewer, and raises his mug in
+ * a "cheers" toast — that's the first ask. At the end of the journey he pulls
+ * up a wooden chair, sits facing the viewer, and holds his steaming mug up in
+ * a relaxed, persistent cheers. His eyes (and subtly his head) track the
+ * pointer, Comet-style. The thought cloud opens up into a clear donation
+ * message bubble: "Help me buy coffee!". Tapping him opens the "ask a
+ * grown-up" gate to Ko-fi.
  *
- * Four beats (JS-driven, CSS-animated):
+ * Five beats (JS-driven, CSS-animated):
  *  1. Entrance — walker slides in from off-screen left; dotted path unrolls.
- *  2. Walk — bob + cane tap + periodic mug sip, cloud tracks overhead.
+ *  2. Walk — slow stroll (~9.5s): bob + cane tap + periodic mug sip, the
+ *     thought cloud (coffee refill) tracks overhead.
  *  3. Cheers — travel pauses at 45%, front pose fades in, mug raised,
- *     donation text appears. The single attention moment.
- *  4. Arrival — travel resumes, he parks left of Comet, idles (gentle sway,
- *     occasional sip). Cloud stays.
+ *     donation text appears. The single attention moment of the walk.
+ *  4. Arrival — travel resumes to the parking spot.
+ *  5. Seated finale — chair pose fades in: seated, facing the viewer, mug
+ *     raised with continuous steam, eyes tracking the pointer. The thought
+ *     cloud opens into the persistent donation bubble. Calm and ambient —
+ *     one clear ask, no looping desperation.
  *
- * Clean-UX bar: charming, never annoying. One 5.2s walk, then quiet idle.
- * Never blocks edition cards or CTAs (E2E-verified at 360px).
+ * Clean-UX bar: charming, never annoying. One slow walk per page load, then
+ * the quiet seated finale. Never blocks edition cards or CTAs
+ * (E2E-verified at 360px).
  *
  * Hard rules (grep-verifiable):
  * - inline SVG only — no new assets, no npm packages
@@ -32,17 +40,18 @@ import { SupportGateDialog } from "./support-gate-dialog";
  * - plain window.open with noopener/noreferrer, never the router <Link>
  * - hidden while offline
  * - never gates gameplay; no perks, no tiers UI
- * - prefers-reduced-motion: parked statically near Comet, no walk/sway/
- *   cheers animation; cloud static; cheers text shown statically so the
- *   CTA stays discoverable
+ * - prefers-reduced-motion: seated statically with the donation bubble,
+ *   no walk/sway/steam/tracking — the CTA stays discoverable
  */
 const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
 
-// Walk travel time (the cheers pause freezes the timeline on top of this).
-const WALK_MS = 5200;
+// Slow stroll across the dotted path (the cheers pause freezes the
+// timeline on top of this). Veeresh 2026-10-07: "he is going too fast" —
+// was 5200ms, now a leisurely ~9.5s.
+const WALK_MS = 9500;
 // Fraction of the walk at which Grandpa stops for the cheers beat.
 const CHEERS_AT = 0.45;
-const CHEERS_HOLD_MS = 1700;
+const CHEERS_HOLD_MS = 2000;
 
 const INK = "#0c181d";
 const BRASS = "#e8b64c";
@@ -53,8 +62,40 @@ const HAIR = "#f5f2ea";
 const TROUSER = "#33404f";
 const CANE = "#6b4a2c";
 const COFFEE = "#4a2c14";
+const WOOD = "#8a5a34";
+const PAPER = "#fffdf8";
 
-type Beat = "walking" | "cheering" | "idle";
+// --- Gaze tracking: mirrors Comet's 8-sector head turn (comet-mascot.tsx).
+// 70px dead zone, 0.12 rad hysteresis slack so the head doesn't jitter on
+// sector boundaries. Head offsets in SVG units per sector, ordered E, SE, S,
+// SW, W, NW, N, NE; pupils move at half the head offset.
+const DEAD_ZONE_PX = 70;
+const HYSTERESIS_RAD = 0.12;
+const SECTOR = Math.PI / 4;
+const HEAD_OFFSETS: ReadonlyArray<readonly [number, number]> = [
+  [4, 0],
+  [2.8, 2.8],
+  [0, 4],
+  [-2.8, 2.8],
+  [-4, 0],
+  [-2.8, -2.8],
+  [0, -4],
+  [2.8, -2.8],
+];
+const PUPIL_SCALE = 0.5;
+
+function sectorForAngle(angle: number): number {
+  return ((Math.round(angle / SECTOR) % 8) + 8) % 8;
+}
+
+function angDist(a: number, b: number): number {
+  let d = a - b;
+  while (d > Math.PI) d -= 2 * Math.PI;
+  while (d < -Math.PI) d += 2 * Math.PI;
+  return Math.abs(d);
+}
+
+type Beat = "walking" | "cheering" | "seated";
 
 export function GrandpaCoffeeRun() {
   const [online, setOnline] = useState(
@@ -68,6 +109,12 @@ export function GrandpaCoffeeRun() {
       matchMedia("(prefers-reduced-motion: reduce)").matches,
   ).current;
 
+  // Gaze sector for the seated finale (-1 = neutral, inside the dead zone).
+  const [sector, setSector] = useState(-1);
+  const sectorRef = useRef(-1);
+  const pendingRef = useRef<{ x: number; y: number } | null>(null);
+  const rafRef = useRef(0);
+
   useEffect(() => {
     const goOnline = () => setOnline(true);
     const goOffline = () => setOnline(false);
@@ -79,10 +126,10 @@ export function GrandpaCoffeeRun() {
     };
   }, []);
 
-  // Beat machine: walking → cheering (travel paused) → walking → idle.
+  // Beat machine: walking → cheering (travel paused) → walking → seated.
   useEffect(() => {
     if (reducedMotion) {
-      setBeat("idle");
+      setBeat("seated");
       return;
     }
     const walker = walkerRef.current;
@@ -91,12 +138,12 @@ export function GrandpaCoffeeRun() {
     const cheerTimer = window.setTimeout(() => {
       setBeat("cheering");
       resumeTimer = window.setTimeout(() => {
-        // Resume travel; the travel animation's `animationend` flips to idle.
+        // Resume travel; the travel animation's `animationend` flips to seated.
         setBeat("walking");
       }, CHEERS_HOLD_MS);
     }, WALK_MS * CHEERS_AT);
     const onArrive = (e: AnimationEvent) => {
-      if (e.animationName === "grandpa-travel") setBeat("idle");
+      if (e.animationName === "grandpa-travel") setBeat("seated");
     };
     walker.addEventListener("animationend", onArrive);
     return () => {
@@ -106,6 +153,60 @@ export function GrandpaCoffeeRun() {
     };
   }, [reducedMotion]);
 
+  // Gaze tracking for the seated finale — same feel as Comet: rAF-throttled
+  // pointermove (mouse) + pointerdown (touch taps look at the last tap).
+  // Only active once seated; fully off under prefers-reduced-motion.
+  const tracking = beat === "seated" && !reducedMotion;
+  useEffect(() => {
+    if (!tracking) {
+      sectorRef.current = -1;
+      setSector(-1);
+      return;
+    }
+    const updateSector = (x: number, y: number) => {
+      const el = walkerRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const dx = x - (r.left + r.width / 2);
+      const dy = y - (r.top + r.height / 2);
+      let next = -1;
+      if (Math.hypot(dx, dy) >= DEAD_ZONE_PX) {
+        const angle = Math.atan2(dy, dx);
+        const cur = sectorRef.current;
+        next =
+          cur === -1 || angDist(angle, cur * SECTOR) >= SECTOR / 2 + HYSTERESIS_RAD
+            ? sectorForAngle(angle)
+            : cur;
+      }
+      if (next !== sectorRef.current) {
+        sectorRef.current = next;
+        setSector(next);
+      }
+    };
+    const onMove = (e: PointerEvent) => {
+      pendingRef.current = { x: e.clientX, y: e.clientY };
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        const p = pendingRef.current;
+        if (!p) return;
+        updateSector(p.x, p.y);
+      });
+    };
+    const onTap = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      updateSector(e.clientX, e.clientY);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onTap, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onTap);
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+    };
+  }, [tracking]);
+
   const openGate = useCallback(() => {
     const d = dialogRef.current;
     if (d && !d.open) d.showModal();
@@ -114,6 +215,10 @@ export function GrandpaCoffeeRun() {
   if (!online) return null;
   // Fail-closed: no Ko-fi URL configured → render nothing.
   if (!KOFI_URL) return null;
+
+  const [hx, hy] = sector === -1 ? [0, 0] : HEAD_OFFSETS[sector];
+  const px = hx * PUPIL_SCALE;
+  const py = hy * PUPIL_SCALE;
 
   return (
     <>
@@ -143,8 +248,9 @@ export function GrandpaCoffeeRun() {
         type="button"
         className="grandpa-walker"
         data-testid="grandpa-walker"
+        data-tracking={tracking ? "on" : "off"}
         onClick={openGate}
-        aria-label="Grandpa's coffee run. Activate to support the expedition on Ko-fi — asks a grown-up first."
+        aria-label="Grandpa's coffee run. Activate to support Meridian on Ko-fi — asks a grown-up first."
       >
         <span className="grandpa-bob" aria-hidden="true">
           <svg viewBox="0 0 100 132" className="grandpa-svg">
@@ -490,16 +596,116 @@ export function GrandpaCoffeeRun() {
                 strokeWidth="2"
               />
             </g>
+
+            {/* ============ SEATED POSE — the finale: chair, facing the viewer,
+                 mug raised with steam, eyes + head tracking the pointer ============ */}
+            <g className="pose pose-seated">
+              {/* wooden chair (behind him) */}
+              <line x1="33" y1="58" x2="33" y2="106" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
+              <line x1="67" y1="58" x2="67" y2="106" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
+              <rect x="28" y="56" width="44" height="9" rx="4" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="28" y="70" width="44" height="9" rx="4" fill={WOOD} stroke={INK} strokeWidth="2" />
+              <rect x="27" y="100" width="46" height="10" rx="4" fill={WOOD} stroke={INK} strokeWidth="2.5" />
+              <line x1="32" y1="110" x2="30" y2="130" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
+              <line x1="68" y1="110" x2="70" y2="130" stroke={WOOD} strokeWidth="5" strokeLinecap="round" />
+              {/* coat, seated */}
+              <path
+                d="M38 104 L37 72 Q37 60 50 60 Q63 60 63 72 L62 104 Q50 108 38 104 Z"
+                fill={COAT}
+                stroke={INK}
+                strokeWidth="2.5"
+              />
+              <circle cx="50" cy="76" r="2" fill={BRASS} />
+              <circle cx="50" cy="86" r="2" fill={BRASS} />
+              {/* shins + shoes */}
+              <path d="M42 104 L41 122" stroke={TROUSER} strokeWidth="9" strokeLinecap="round" />
+              <path d="M58 104 L59 122" stroke={TROUSER} strokeWidth="9" strokeLinecap="round" />
+              <ellipse cx="41" cy="124" rx="7" ry="4" fill={INK} />
+              <ellipse cx="59" cy="124" rx="7" ry="4" fill={INK} />
+              {/* head — translates toward the pointer when tracking */}
+              <g className="grandpa-head" style={{ transform: `translate(${hx}px, ${hy}px)` }}>
+                <circle cx="50" cy="40" r="13" fill={SKIN} stroke={INK} strokeWidth="2.5" />
+                <ellipse cx="44.5" cy="38" rx="3.6" ry="4.2" fill={PAPER} stroke={INK} strokeWidth="1.5" />
+                <ellipse cx="55.5" cy="38" rx="3.6" ry="4.2" fill={PAPER} stroke={INK} strokeWidth="1.5" />
+                <g data-testid="grandpa-pupils" style={{ transform: `translate(${px}px, ${py}px)` }}>
+                  <circle cx="44.5" cy="38.5" r="1.7" fill={INK} />
+                  <circle cx="55.5" cy="38.5" r="1.7" fill={INK} />
+                  <circle cx="43.9" cy="37.9" r="0.6" fill="#fff" />
+                  <circle cx="54.9" cy="37.9" r="0.6" fill="#fff" />
+                </g>
+                <path d="M40 31 Q44.5 29 49 31" stroke={HAIR} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <path d="M51 31 Q55.5 29 60 31" stroke={HAIR} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <circle cx="39" cy="43" r="2.6" fill="#e8a0a0" opacity="0.55" />
+                <circle cx="61" cy="43" r="2.6" fill="#e8a0a0" opacity="0.55" />
+                <path
+                  d="M41 48 Q50 62 59 48 Q55 56 50 56 Q45 56 41 48 Z"
+                  fill={HAIR}
+                  stroke={INK}
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
+                <path d="M45 47 Q50 50 55 47" stroke={INK} strokeWidth="2" fill="none" strokeLinecap="round" />
+                {/* flat cap */}
+                <path
+                  d="M37 32 Q39 20 50 20 Q61 20 63 32 L61 34 Q50 30 39 34 Z"
+                  fill={COAT_DARK}
+                  stroke={INK}
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
+              </g>
+              {/* right arm raised — the persistent cheers, steaming mug */}
+              <line x1="62" y1="68" x2="80" y2="36" stroke={COAT} strokeWidth="8" strokeLinecap="round" />
+              <circle cx="80" cy="34" r="4.5" fill={SKIN} stroke={INK} strokeWidth="2" />
+              <g transform="rotate(10 80 26)">
+                <rect x="72" y="16" width="16" height="18" rx="3" fill={BRASS} stroke={INK} strokeWidth="2.5" />
+                <path d="M88 20 Q93 24 88 29" stroke={INK} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <ellipse cx="80" cy="18" rx="6.5" ry="2" fill={COFFEE} />
+                <path
+                  className="steam steam-1"
+                  d="M77 12 Q79 8 77 4"
+                  stroke={INK}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity="0.55"
+                />
+                <path
+                  className="steam steam-2"
+                  d="M83 12 Q81 8 83 4"
+                  stroke={INK}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  opacity="0.55"
+                />
+              </g>
+              {/* gentle sparkles on the raised mug */}
+              <path
+                className="seated-spark"
+                d="M94 12 l1.4 3.4 3.4 1.4 -3.4 1.4 -1.4 3.4 -1.4 -3.4 -3.4 -1.4 3.4 -1.4 Z"
+                fill={BRASS}
+                stroke={INK}
+                strokeWidth="1"
+              />
+              {/* left arm resting on his lap */}
+              <line x1="38" y1="68" x2="42" y2="96" stroke={COAT} strokeWidth="8" strokeLinecap="round" />
+              <circle cx="42" cy="98" r="4.5" fill={SKIN} stroke={INK} strokeWidth="2" />
+              {/* cane leaning against the chair */}
+              <line x1="24" y1="82" x2="18" y2="130" stroke={CANE} strokeWidth="4.5" strokeLinecap="round" />
+              <path d="M24 82 Q24 75 31 75" stroke={CANE} strokeWidth="4.5" fill="none" strokeLinecap="round" />
+            </g>
           </svg>
 
-          {/* Thought cloud: coffee refill — tracks him the whole way. */}
+          {/* Thought cloud: coffee refill — tracks him during the walk, then
+              "opens up" into the donation bubble when he sits down. */}
           <span className="thought-cloud">
             <svg viewBox="0 0 72 52">
-              <circle cx="16" cy="46" r="2.5" fill="#fffdf8" stroke={INK} strokeWidth="1.5" />
-              <circle cx="25" cy="40" r="3.5" fill="#fffdf8" stroke={INK} strokeWidth="1.5" />
+              <circle cx="16" cy="46" r="2.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
+              <circle cx="25" cy="40" r="3.5" fill={PAPER} stroke={INK} strokeWidth="1.5" />
               <path
                 d="M22 34 Q14 34 14 26 Q14 17 23 17 Q25 9 34 9 Q43 9 45 17 Q54 17 54 26 Q54 34 46 34 Z"
-                fill="#fffdf8"
+                fill={PAPER}
                 stroke={INK}
                 strokeWidth="2"
                 strokeLinejoin="round"
@@ -539,11 +745,22 @@ export function GrandpaCoffeeRun() {
           </span>
         </span>
 
-        {/* The ask — visible only during the cheers beat (or statically
-            under reduced motion). Tapping anywhere on grandpa opens the gate. */}
+        {/* The ask — visible only during the cheers beat (or as the bubble
+            once seated). Tapping anywhere on grandpa opens the gate. */}
         <span className="grandpa-cheers-text" aria-hidden="true">
           <strong>Support the Expedition</strong>
-          <span>Grown-ups — fuel Comet&rsquo;s journey</span>
+          <span>Grown-ups — help keep Meridian funded and free for kids</span>
+        </span>
+
+        {/* The finale ask — the thought cloud "opened up". Persistent while
+            grandpa sits with his coffee. */}
+        <span
+          className="grandpa-donation-bubble"
+          data-testid="grandpa-donation-bubble"
+          aria-hidden="true"
+        >
+          <strong>Help me buy coffee! ☕</strong>
+          <span>Grown-ups — donations keep Meridian free for kids</span>
         </span>
       </button>
     </div>

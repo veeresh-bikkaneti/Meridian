@@ -4,10 +4,10 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * Grandpa's Coffee Run E2E — reduced motion (prefers-reduced-motion: reduce).
  *
- * Covers: grandpa appears parked near Comet, fully static (no walk, no bob,
- * no cheers animation, no swaying cloud); the cheers text is shown statically
- * so the CTA stays discoverable; the walker is still tappable and
- * keyboard-focusable; the gate still opens; no console errors.
+ * Covers: grandpa appears seated in his chair near Comet, fully static (no
+ * walk, no bob, no steam, no sway, no pointer tracking); the donation bubble
+ * is shown statically so the CTA stays discoverable; the walker is still
+ * tappable and keyboard-focusable; the gate still opens; no console errors.
  *
  * Build requirement: same as the desktop spec —
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -48,23 +48,24 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("grandpa is parked and fully static under reduced motion", async ({
+test("grandpa is seated and fully static under reduced motion", async ({
   page,
 }) => {
   const errors = await loadHome(page);
   const scene = page.getByTestId("grandpa-scene");
-  // No walk: beat goes straight to idle, never cheering.
-  await expect(scene).toHaveAttribute("data-beat", "idle", {
+  // No walk: beat goes straight to seated, never cheering.
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
     timeout: 10_000,
   });
   await expect(scene).toHaveAttribute("data-reduced-motion", "true");
 
   const walker = page.getByTestId("grandpa-walker");
-  // No travel animation.
+  // No travel animation, no pointer tracking.
   const walkerAnimation = await walker.evaluate(
     (el) => getComputedStyle(el).animationName,
   );
   expect(walkerAnimation).toBe("none");
+  await expect(walker).toHaveAttribute("data-tracking", "off");
   // Parked left of Comet.
   const box = await walker.boundingBox();
   expect(box).not.toBeNull();
@@ -72,13 +73,30 @@ test("grandpa is parked and fully static under reduced motion", async ({
   expect(comet).not.toBeNull();
   expect(box!.x + box!.width).toBeLessThanOrEqual(comet!.x + 4);
 
-  // The cheers text is shown statically so the CTA stays discoverable.
-  const cheersText = page.locator(".grandpa-cheers-text");
-  await expect(cheersText).toContainText("Support the Expedition");
-  const opacity = await cheersText.evaluate(
+  // The seated pose is the visible one, statically.
+  const seatedOpacity = await page
+    .locator(".pose-seated")
+    .evaluate((el) => getComputedStyle(el).opacity);
+  expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
+
+  // The donation bubble is shown statically so the CTA stays discoverable.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toContainText("Help me buy coffee!");
+  await expect(bubble).toContainText(
+    "Grown-ups — donations keep Meridian free for kids",
+  );
+  const bubbleOpacity = await bubble.evaluate(
     (el) => getComputedStyle(el).opacity,
   );
-  expect(parseFloat(opacity)).toBeGreaterThan(0.9);
+  expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
+
+  // No tracking: moving the pointer leaves the pupils alone.
+  const pupils = page.getByTestId("grandpa-pupils");
+  const pupilTransform = () =>
+    pupils.evaluate((el) => (el as SVGGElement).style.transform);
+  await page.mouse.move(60, 200, { steps: 5 });
+  await page.waitForTimeout(400);
+  expect(await pupilTransform()).toBe("translate(0px, 0px)");
 
   // Still tappable: gate opens.
   await walker.dispatchEvent("click");

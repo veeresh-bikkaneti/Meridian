@@ -3,17 +3,20 @@ import { serveBuiltArtifact } from "./helpers";
 
 /**
  * Grandpa's Coffee Run E2E — animated donation scene on the Chart Room home
- * (Veeresh 2026-10-07, replacing PR #91's static sign).
+ * (Veeresh 2026-10-07; finale rework: slow stroll, seated cheers, donation
+ * bubble, pointer-tracking eyes).
  *
- * Beats: entrance (dotted trail unrolls) → walk (bob, cane tap, mug sip,
- * cloud tracks) → cheers at 45% (travel pauses, front pose, donation text)
- * → arrival (parks left of Comet, idles). Tap grandpa → "ask a grown-up"
- * gate → Continue opens Ko-fi in a new tab.
+ * Beats: entrance (dotted trail unrolls) → slow walk ~9.5s (bob, cane tap,
+ * mug sip, cloud tracks) → cheers at 45% (travel pauses, front pose,
+ * donation text) → arrival → seated finale (chair, mug raised with steam,
+ * eyes track the pointer, thought cloud opens into the donation bubble).
+ * Tap grandpa → "ask a grown-up" gate → Continue opens Ko-fi in a new tab.
  *
- * Covers: full walk completes, cheers beat triggers with the ask text,
- * tap opens the gate (no navigation), Continue opens Ko-fi, Cancel / Esc /
- * backdrop dismiss, offline hides grandpa, never covers CTAs, no console
- * errors.
+ * Covers: slow walk completes, cheers beat triggers with the ask text,
+ * seated finale renders (chair pose, steam, bubble text, pupils track the
+ * pointer), tap opens the gate (no navigation), Continue opens Ko-fi,
+ * Cancel / Esc / backdrop dismiss, offline hides grandpa, never covers CTAs,
+ * no console errors.
  *
  * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -21,7 +24,7 @@ import { serveBuiltArtifact } from "./helpers";
  * intentionally OMITTED from the test build — the tags must not render, which
  * also keeps external-script noise out of the console gate.
  */
-test.setTimeout(180_000);
+test.setTimeout(240_000);
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -82,34 +85,40 @@ async function expectGrandpaNotCoveringCtas(page: Page) {
   }
 }
 
-test("grandpa walks in, cheers halfway with the ask, then parks by Comet", async ({
+test("grandpa strolls in slowly, cheers halfway, then sits with his coffee", async ({
   page,
 }) => {
   const errors = await loadHome(page);
   const scene = page.getByTestId("grandpa-scene");
 
-  // Beat 1+2: walking — the dotted trail is unrolling beneath him.
+  // Beat 1+2: the slow stroll — the dotted trail is unrolling beneath him.
   await expect(scene).toHaveAttribute("data-beat", "walking", {
     timeout: 5_000,
   });
   await expect(page.getByTestId("grandpa-path")).toBeVisible();
+  // The stroll is leisurely now (~9.5s): after 3s he must still be walking,
+  // not already parked.
+  await page.waitForTimeout(3000);
+  await expect(scene).toHaveAttribute("data-beat", "walking");
 
   // Beat 3: cheers — travel pauses, he faces the viewer, the ask appears.
-  // (Walk is 5.2s; cheers hits at 45% ≈ 2.3s and holds 1.7s.)
+  // (Walk is 9.5s; cheers hits at 45% ≈ 4.3s and holds 2s.)
   await expect(scene).toHaveAttribute("data-beat", "cheering", {
-    timeout: 10_000,
+    timeout: 12_000,
   });
   const cheersText = page.locator(".grandpa-cheers-text");
   await expect(cheersText).toContainText("Support the Expedition");
-  await expect(cheersText).toContainText("Grown-ups");
-  const opacity = await cheersText.evaluate(
+  await expect(cheersText).toContainText(
+    "Grown-ups — help keep Meridian funded and free for kids",
+  );
+  const cheersOpacity = await cheersText.evaluate(
     (el) => getComputedStyle(el).opacity,
   );
-  expect(parseFloat(opacity)).toBeGreaterThan(0.9);
+  expect(parseFloat(cheersOpacity)).toBeGreaterThan(0.9);
 
-  // Beat 4: arrival — parks left of Comet and idles.
-  await expect(scene).toHaveAttribute("data-beat", "idle", {
-    timeout: 15_000,
+  // Beat 5: the seated finale — chair pose, steam, donation bubble.
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 25_000,
   });
   const walker = page.getByTestId("grandpa-walker");
   const box = await walker.boundingBox();
@@ -122,7 +131,68 @@ test("grandpa walks in, cheers halfway with the ask, then parks by Comet", async
   const comet = await page.getByTestId("comet-mascot").boundingBox();
   expect(comet).not.toBeNull();
   expect(box!.x + box!.width).toBeLessThanOrEqual(comet!.x + 4);
+
+  // The seated pose is the visible one.
+  const seatedOpacity = await page
+    .locator(".pose-seated")
+    .evaluate((el) => getComputedStyle(el).opacity);
+  expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
+
+  // Steam is rising from the raised mug.
+  const steamAnim = await page
+    .locator(".pose-seated .steam-1")
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(steamAnim).toBe("steam-rise");
+
+  // The thought cloud opened into the donation bubble.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toContainText("Help me buy coffee!");
+  await expect(bubble).toContainText(
+    "Grown-ups — donations keep Meridian free for kids",
+  );
+  const bubbleOpacity = await bubble.evaluate(
+    (el) => getComputedStyle(el).opacity,
+  );
+  expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
+  // The mid-walk ask text is gone; the bubble is the persistent ask.
+  await expect(cheersText).toHaveCSS("opacity", "0");
+
   await expectGrandpaNotCoveringCtas(page);
+  expectCleanConsole(errors);
+});
+
+test("seated grandpa's eyes track the pointer like Comet's", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  const scene = page.getByTestId("grandpa-scene");
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 25_000,
+  });
+  await expect(page.getByTestId("grandpa-walker")).toHaveAttribute(
+    "data-tracking",
+    "on",
+  );
+
+  const pupils = page.getByTestId("grandpa-pupils");
+  const pupilTransform = () =>
+    pupils.evaluate((el) => (el as SVGGElement).style.transform);
+  const vp = page.viewportSize()!;
+
+  // Look far left of grandpa.
+  await page.mouse.move(60, 200, { steps: 5 });
+  await page.waitForTimeout(500);
+  const left = await pupilTransform();
+
+  // Look far right of grandpa.
+  await page.mouse.move(vp.width - 60, 200, { steps: 5 });
+  await page.waitForTimeout(500);
+  const right = await pupilTransform();
+
+  // The pupils moved (non-empty, distinct transforms).
+  expect(left).toContain("translate");
+  expect(right).toContain("translate");
+  expect(left).not.toBe(right);
   expectCleanConsole(errors);
 });
 

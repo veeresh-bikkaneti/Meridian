@@ -1,7 +1,9 @@
 /* Grandpa's Coffee Run — animated donation scene on the Chart Room home.
  * Chart Room aesthetic: ink outlines, brass accents, warm explorer palette.
- * One 5.2s walk with a cheers beat at 45%, then quiet idle. Charming,
- * never annoying. Fully static under prefers-reduced-motion. */
+ * One slow 9.5s stroll with a cheers beat at 45%, then the seated finale:
+ * grandpa in his chair, mug raised with steam, eyes tracking the pointer,
+ * thought cloud opened into the donation bubble. Charming, never annoying.
+ * Fully static under prefers-reduced-motion. */
 
 .grandpa-scene {
   position: fixed;
@@ -19,7 +21,7 @@
   height: 56px;
   pointer-events: none;
   clip-path: inset(0 100% 0 0);
-  animation: path-reveal 5200ms linear forwards;
+  animation: path-reveal 9500ms linear forwards;
 }
 
 .grandpa-path svg {
@@ -71,7 +73,7 @@
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  animation: grandpa-travel 5200ms linear forwards;
+  animation: grandpa-travel 9500ms linear forwards;
 }
 
 @keyframes grandpa-travel {
@@ -89,11 +91,11 @@
   border-radius: 12px;
 }
 
-/* ============ Walk bob → cheers sway → idle sway ============ */
+/* ============ Walk bob → cheers sway → seated sway ============ */
 .grandpa-bob {
   display: block;
   position: relative;
-  animation: grandpa-bob 0.55s ease-in-out infinite;
+  animation: grandpa-bob 0.8s ease-in-out infinite;
 }
 
 @keyframes grandpa-bob {
@@ -120,17 +122,18 @@
   }
 }
 
-.grandpa-scene[data-beat="idle"] .grandpa-bob {
-  animation: grandpa-idle 3.4s ease-in-out infinite;
+/* Seated finale: calm and ambient — a gentle mug bob, nothing more. */
+.grandpa-scene[data-beat="seated"] .grandpa-bob {
+  animation: grandpa-seated 2.4s ease-in-out infinite;
 }
 
-@keyframes grandpa-idle {
+@keyframes grandpa-seated {
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-2px) rotate(0.8deg);
+    transform: translateY(-2.5px) rotate(-0.6deg);
   }
 }
 
@@ -146,7 +149,8 @@
   transition: opacity 0.25s ease;
 }
 
-.pose-front {
+.pose-front,
+.pose-seated {
   opacity: 0;
 }
 
@@ -158,11 +162,26 @@
   opacity: 0;
 }
 
+.grandpa-scene[data-beat="seated"] .pose-side,
+.grandpa-scene[data-beat="seated"] .pose-front {
+  opacity: 0;
+}
+
+.grandpa-scene[data-beat="seated"] .pose-seated {
+  opacity: 1;
+}
+
+/* Walk-pose sub-animations rest once he's seated. */
+.grandpa-scene[data-beat="seated"] .cane,
+.grandpa-scene[data-beat="seated"] .mug-arm {
+  animation: none;
+}
+
 /* Cane tap — plants with each step. */
 .cane {
   transform-box: fill-box;
   transform-origin: 50% 0%;
-  animation: cane-tap 0.55s ease-in-out infinite;
+  animation: cane-tap 0.8s ease-in-out infinite;
 }
 
 @keyframes cane-tap {
@@ -179,7 +198,7 @@
 .mug-arm {
   transform-box: fill-box;
   transform-origin: 85% 15%;
-  animation: mug-sip 2.6s ease-in-out infinite;
+  animation: mug-sip 2.4s ease-in-out infinite;
 }
 
 @keyframes mug-sip {
@@ -194,7 +213,7 @@
   }
 }
 
-/* Coffee steam wisps. */
+/* Coffee steam wisps — rise continuously, including on the seated mug. */
 .steam {
   animation: steam-rise 2.2s ease-in infinite;
 }
@@ -232,6 +251,17 @@
   animation-delay: 0.4s !important;
 }
 
+/* Gentle sparkles on the seated mug — ambient, not flashy. */
+.seated-spark {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.grandpa-scene[data-beat="seated"] .seated-spark {
+  animation: spark-twinkle 2.6s ease-in-out infinite;
+}
+
 @keyframes spark-twinkle {
   0%,
   100% {
@@ -252,6 +282,9 @@
   width: 64px;
   display: block;
   animation: cloud-float 2.8s ease-in-out infinite;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .thought-cloud svg {
@@ -272,7 +305,14 @@
   }
 }
 
-/* ============ Cheers text (the ask) ============ */
+/* When he sits, the cloud "opens up" into the donation bubble. */
+.grandpa-scene[data-beat="seated"] .thought-cloud {
+  opacity: 0;
+  transform: translate(-30%, 6px) scale(0.5);
+  animation: none;
+}
+
+/* ============ Cheers text (the mid-walk ask) ============ */
 .grandpa-cheers-text {
   position: absolute;
   bottom: calc(100% + 52px);
@@ -318,6 +358,65 @@
   transform: translate(-50%, 0) scale(1);
 }
 
+/* ============ Donation bubble (the finale ask) ============
+ * The thought cloud "opened up": a persistent, readable message beside
+ * seated grandpa. Pops in with a soft spring when the beat flips. */
+.grandpa-donation-bubble {
+  position: absolute;
+  bottom: calc(100% + 36px);
+  left: 50%;
+  width: max-content;
+  max-width: 240px;
+  padding: 12px 16px 11px;
+  text-align: center;
+  background: #fffdf8;
+  border: 2.5px solid #0c181d;
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translate(-50%, 12px) scale(0.6);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+/* little cloud tail pointing down at grandpa */
+.grandpa-donation-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -1px);
+  border: 10px solid transparent;
+  border-top-color: #0c181d;
+}
+
+.grandpa-donation-bubble strong {
+  display: block;
+  font-family: var(--font-atlas-display);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #0c181d;
+}
+
+.grandpa-donation-bubble span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-atlas-body);
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #0c181d;
+  opacity: 0.8;
+}
+
+.grandpa-scene[data-beat="seated"] .grandpa-donation-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
 /* ============ Responsive: match Comet's breakpoints ============ */
 @media (max-width: 1023.5px) {
   .grandpa-walker {
@@ -343,6 +442,20 @@
   .grandpa-cheers-text span {
     font-size: 10.5px;
   }
+
+  .grandpa-donation-bubble {
+    max-width: 200px;
+    padding: 10px 13px 9px;
+    bottom: calc(100% + 28px);
+  }
+
+  .grandpa-donation-bubble strong {
+    font-size: 14px;
+  }
+
+  .grandpa-donation-bubble span {
+    font-size: 10.5px;
+  }
 }
 
 @media (max-height: 599.5px) {
@@ -359,9 +472,23 @@
   .grandpa-cheers-text {
     display: none; /* too cramped — the tap target remains */
   }
+
+  .grandpa-donation-bubble {
+    max-width: 170px;
+    padding: 8px 11px 7px;
+    bottom: calc(100% + 22px);
+  }
+
+  .grandpa-donation-bubble strong {
+    font-size: 12.5px;
+  }
+
+  .grandpa-donation-bubble span {
+    font-size: 10px;
+  }
 }
 
-/* ============ Reduced motion: fully static, parked by Comet ============ */
+/* ============ Reduced motion: seated statically, bubble shown, no tracking ============ */
 @media (prefers-reduced-motion: reduce) {
   .grandpa-walker,
   .grandpa-path,
@@ -370,7 +497,9 @@
   .cane,
   .mug-arm,
   .steam,
-  .cheers-spark {
+  .cheers-spark,
+  .seated-spark,
+  .grandpa-donation-bubble {
     animation: none !important;
   }
 
@@ -378,17 +507,28 @@
     clip-path: none !important;
   }
 
-  /* No cheers beat — the CTA stays visible so it's always discoverable. */
-  .grandpa-cheers-text {
-    opacity: 1 !important;
-    transform: translate(-50%, 0) !important;
-  }
-
+  /* Seated finale pose, statically. */
+  .pose-side,
   .pose-front {
     opacity: 0 !important;
   }
 
-  .pose-side {
+  .pose-seated {
     opacity: 1 !important;
+  }
+
+  .grandpa-cheers-text {
+    opacity: 0 !important;
+    transform: translate(-50%, 8px) scale(0.96) !important;
+  }
+
+  .thought-cloud {
+    opacity: 0 !important;
+  }
+
+  /* The CTA stays visible so it's always discoverable. */
+  .grandpa-donation-bubble {
+    opacity: 1 !important;
+    transform: translate(-50%, 0) scale(1) !important;
   }
 }
