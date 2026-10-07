@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
 import { GradeChip } from "@/components/grade-chip";
+import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
 import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
@@ -696,6 +698,10 @@ function LoopGame({
       {puzzle.guesses.length > 0 ? (
         <section aria-label="Your guesses" className="flex flex-col gap-2">
           <h2 className="text-sm tracking-wide text-muted uppercase">Your guesses</h2>
+          {/* Cartographer's Plate PR3 (spec §5): the LIST scrolls
+              (max-h 40dvh) — rows never do. Named region + tabindex="0"
+              so keyboard users can reach it (spec §8.1). */}
+          <GuessListScroll>
           <ol className="flex flex-col gap-2">
             {[...puzzle.guesses].reverse().map((g, ri) => {
               // Rows render newest-first; the dossier number is the guess's
@@ -744,6 +750,7 @@ function LoopGame({
               );
             })}
           </ol>
+          </GuessListScroll>
         </section>
       ) : null}
 
@@ -760,6 +767,31 @@ function LoopGame({
           onLeave={onLeave}
         />
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * Cartographer's Plate PR3 (spec §5): the guess-list scroll region.
+ * The LIST scrolls (`max-h 40dvh`) — rows never do. A named
+ * `role="region"` with `tabindex="0"` so keyboard users can reach and
+ * scroll it (spec §8.1); the fade + ⋯ + "more below" cue is the visual
+ * signal, hidden when everything fits.
+ */
+function GuessListScroll({ children }: { children: React.ReactNode }) {
+  const { ref, moreBelow } = useMoreBelow<HTMLDivElement>();
+  return (
+    <div className="scroll-cue-wrap">
+      <div
+        ref={ref}
+        className="loop-guess-scroll"
+        role="region"
+        aria-label="Guess list — scroll for more"
+        tabIndex={0}
+      >
+        {children}
+      </div>
+      <ScrollCue visible={moreBelow} />
     </div>
   );
 }
@@ -818,7 +850,9 @@ function PlaceSheet({
         <div className="shrink-0 px-6 pt-3">
           <div className="sheet-handle" aria-hidden="true" />
         </div>
-        <div className="flex shrink-0 items-start justify-between gap-3 px-6 pt-2">
+        {/* Cartographer's Plate PR3: pinned 48px dismiss header
+            (flex-shrink: 0 — never scrolled away). */}
+        <div className="sheet-header flex shrink-0 items-start justify-between gap-3 px-6 pt-2">
           <div className="min-w-0">
             <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
             <h2
@@ -964,89 +998,144 @@ function LoopReveal({
     : closestGuess
       ? loopGradeBand(closestGuess.distKm, loopUnit)
       : null;
+  // Cartographer's Plate PR3 — the case-file body scrolls behind the
+  // pinned verdict and the pinned CTA.
+  const { ref: bodyRef, moreBelow: bodyMoreBelow } = useMoreBelow<HTMLDivElement>();
+  // Clue-history summary rows (spec §5): compact to summary rows first;
+  // the full clue text stays in the DOM and expands on tap.
+  const [openClues, setOpenClues] = useState<Record<number, boolean>>({});
+  const toggleClue = (index: number) =>
+    setOpenClues((prev) => ({ ...prev, [index]: !prev[index] }));
 
   return (
     <Rise reduced={reduced}>
       <section
         ref={revealRef}
         aria-label={won ? "You won" : "Out of guesses"}
-        className="rounded-2xl border border-line bg-surface p-5"
+        className="loop-reveal rounded-2xl border border-line bg-surface"
       >
-        {puzzle.completedCycle ? (
-          <div
-            role="status"
-            aria-label="Cycle complete celebration"
-            className="mb-4 rounded-xl border border-line bg-bg p-4 text-center"
-          >
-            <p className="text-lg font-semibold text-fg">
-              🏆 You closed all {cycleCompleted} cases, detective!
-            </p>
-            <p className="mt-1 text-sm text-muted">
-              Every mystery in the deck, solved or survived. A fresh deck is on your desk.
-            </p>
-          </div>
-        ) : null}
-        <div className="verdict-row">
-          <p className="verdict-headline text-[11px] tracking-wider text-muted uppercase">
-            {won ? "🎯 You found it!" : "Out of guesses"}
-          </p>
-          {gradeBand ? (
-            <GradeChip emoji={gradeBand.emoji} bandName={gradeBand.name} />
+        {/* ---- Zone 1: pinned header — verdict + answer, never buried ---- */}
+        <div className="loop-reveal-header">
+          {puzzle.completedCycle ? (
+            <div
+              role="status"
+              aria-label="Cycle complete celebration"
+              className="mb-4 rounded-xl border border-line bg-bg p-4 text-center"
+            >
+              <p className="text-lg font-semibold text-fg">
+                🏆 You closed all {cycleCompleted} cases, detective!
+              </p>
+              <p className="mt-1 text-sm text-muted">
+                Every mystery in the deck, solved or survived. A fresh deck is on your desk.
+              </p>
+            </div>
           ) : null}
-        </div>
-        <h2
-          className="place-name lrname mt-1 text-fg"
-          data-name-tier={answer.name ? nameTier(answer.name) : undefined}
-          title={answer.name ?? undefined}
-        >
-          {answer.name ? (
-            <PlaceNameText name={answer.name} />
-          ) : answer.settled ? (
-            "We couldn't find the answer's name — but your clues are all above."
+          <div className="verdict-row">
+            <p className="verdict-headline loop-verdict-headline">
+              {won ? "🎯 You found it!" : "Out of guesses"}
+            </p>
+            {gradeBand ? (
+              <GradeChip emoji={gradeBand.emoji} bandName={gradeBand.name} />
+            ) : null}
+          </div>
+          <h2
+            className="place-name lrname mt-1 text-fg"
+            data-name-tier={answer.name ? nameTier(answer.name) : undefined}
+            title={answer.name ?? undefined}
+          >
+            {answer.name ? (
+              <PlaceNameText name={answer.name} />
+            ) : answer.settled ? (
+              "We couldn't find the answer's name — but your clues are all above."
+            ) : (
+              "Finding the answer…"
+            )}
+          </h2>
+          {won ? (
+            <>
+              <p className="mt-2 text-sm text-muted">
+                Solved in {puzzle.guesses.length} of {LOOP_MAX_GUESSES} guesses.
+              </p>
+              <p className="mt-1 text-sm font-medium text-fg">🔥 Streak: {streak}</p>
+            </>
           ) : (
-            "Finding the answer…"
+            <>
+              {closestGuess ? (
+                <p className="place-name mt-2 text-sm text-muted">
+                  Your closest guess was {closestGuess.name} — {formatLength(closestGuess.distKm, loopUnit)}{" "}
+                  away.
+                </p>
+              ) : null}
+              {puzzle.streakEndedAt !== null && puzzle.streakEndedAt > 0 ? (
+                <p className="mt-2 text-sm font-medium text-fg">
+                  Streak reset — it ended at {puzzle.streakEndedAt}.
+                </p>
+              ) : null}
+            </>
           )}
-        </h2>
-        {won ? (
-          <>
-            <p className="mt-2 text-sm text-muted">
-              Solved in {puzzle.guesses.length} of {LOOP_MAX_GUESSES} guesses.
-            </p>
-            <p className="mt-1 text-sm font-medium text-fg">🔥 Streak: {streak}</p>
-          </>
-        ) : (
-          <>
-            {closestGuess ? (
-              <p className="place-name mt-2 text-sm text-muted">
-                Your closest guess was {closestGuess.name} — {formatLength(closestGuess.distKm, loopUnit)}{" "}
-                away.
-              </p>
-            ) : null}
-            {puzzle.streakEndedAt !== null && puzzle.streakEndedAt > 0 ? (
-              <p className="mt-2 text-sm font-medium text-fg">
-                Streak reset — it ended at {puzzle.streakEndedAt}.
-              </p>
-            ) : null}
-          </>
-        )}
-        <section aria-label="Case file" className="mt-4">
-          <h3 className="text-sm tracking-wide text-muted uppercase">Case file</h3>
-          <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
-          <div className="mt-2 flex flex-col gap-2">
-            <p className="text-sm text-fg">
-              <span className="text-muted">{CLUE_TIERS[2]}: </span>
-              {clue.clues[2]}
-            </p>
-            <p className="text-sm text-fg">
-              <span className="text-muted">{CLUE_TIERS[3]}: </span>
-              {clue.clues[3]}
+        </div>
+        {/* ---- Zone 2: the single scrolling body — case file + share +
+            source. Named region + tabindex="0" per spec §8.1. ---- */}
+        <div className="scroll-cue-wrap loop-reveal-bodywrap">
+          <div
+            ref={bodyRef}
+            className="loop-reveal-body"
+            role="region"
+            aria-label="Case file — scroll for more"
+            tabIndex={0}
+          >
+            <section aria-label="Case file">
+              <h3 className="text-sm tracking-wide text-muted uppercase">Case file</h3>
+              <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
+              <div className="clue-history mt-2">
+                {[2, 3].map((index) => {
+                  const open = !!openClues[index];
+                  const tier = CLUE_TIERS[index]!;
+                  return (
+                    <div key={index} className="clue-history-row">
+                      <button
+                        type="button"
+                        className="clue-history-toggle"
+                        aria-expanded={open}
+                        data-testid={`clue-history-row-${index + 1}`}
+                        onClick={() => toggleClue(index)}
+                      >
+                        <span className="clue-history-label">
+                          Clue {index + 1} · {tier}
+                        </span>
+                        <ChevronDown
+                          className={`size-5 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <div hidden={!open} className="clue-history-body">
+                        <p className="text-sm text-fg">{clue.clues[index]}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+            <div>
+              <ShareLoop puzzle={puzzle} streak={streak} />
+            </div>
+            <p className="text-xs text-muted">
+              Clues:{" "}
+              <a
+                href={clue.source.href}
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                {clue.source.label}
+              </a>
             </p>
           </div>
-        </section>
-        <div className="mt-4">
-          <ShareLoop puzzle={puzzle} streak={streak} />
+          <ScrollCue visible={bodyMoreBelow} />
         </div>
-        <div className="mt-5 flex flex-col gap-2">
+        {/* ---- Zone 3: pinned CTA — the next mystery is the point of the
+            reveal; it never scrolls away and never animates in late. ---- */}
+        <div className="loop-reveal-cta">
           <Button
             type="button"
             onClick={onNextMystery}
@@ -1055,23 +1144,12 @@ function LoopReveal({
             🔎 Next mystery
           </Button>
           <p className="text-center text-sm text-muted">Case #{caseNo} is on your desk.</p>
-          <Button variant="ghost" onClick={onLeave}>
+          <Button variant="ghost" onClick={onLeave} className="min-h-[48px]">
             Back to editions
           </Button>
         </div>
         <p role="status" aria-live="polite" className="sr-only">
           {revealAnnouncement}
-        </p>
-        <p className="mt-4 text-xs text-muted">
-          Clues:{" "}
-          <a
-            href={clue.source.href}
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-2"
-          >
-            {clue.source.label}
-          </a>
         </p>
       </section>
     </Rise>

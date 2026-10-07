@@ -1,5 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { splitLede } from "./story-lede.ts";
 
 describe("splitLede — miss-card subscript contract", () => {
@@ -336,8 +337,8 @@ describe("result-card — pin-compare ledger (reveal)", () => {
       ledger.includes("Testville, Nebraska, United States"),
       "TRUE SPOT carries the full answer name — the name's hero moment",
     );
-    // The ledger sits directly under the distance paragraph.
-    const distanceIdx = html.indexOf("east of your pin</p>");
+    // The ledger sits directly under the verdict headline (pinned header).
+    const distanceIdx = html.indexOf("east of your pin</h2>");
     const lineIdx = html.indexOf("pin-compare-line");
     assert.ok(
       distanceIdx !== -1 && lineIdx > distanceIdx,
@@ -502,8 +503,171 @@ describe("result-card — miss bearing headline", () => {
     const html = renderCard("done", "state", null);
     assert.ok(html.includes('data-testid="miss-headline"'));
     assert.ok(
-      html.includes(">Miss</p>"),
-      "no drop → no distance, no bearing, just 'Miss'",
+      html.includes(">Miss</h2>"),
+      "no drop → no distance, no bearing, just 'Miss' (verdict h2)",
+    );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Cartographer's Plate PR3 — three-zone scroll architecture (spec §5)
+// ---------------------------------------------------------------------------
+// Pinned header (meta band + verdict h2) / single scrolling body / pinned
+// CTA. The two nested max-h-44 story scrollers are folded into the one
+// body region; the verdict is an h2 reading "Result: …" with a
+// visually-hidden "Result: " prefix. renderToString-based (no DOM infra).
+describe("result-card PR3 — three-zone scroll architecture", () => {
+  it("the card is a three-zone flex column, theme-aware chrome", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      html.includes("result-card"),
+      "the section must carry the .result-card three-zone shell",
+    );
+    assert.ok(
+      !html.includes("atlas-dark-scope"),
+      "PR3 re-chromes theme-aware: the dark-scope override is deleted",
+    );
+    assert.ok(
+      !html.includes("overflow-y-auto"),
+      "the section itself must not scroll — only the body region scrolls",
+    );
+    assert.ok(html.includes("result-header"), "zone 1: pinned header");
+    assert.ok(html.includes("result-body"), "zone 2: scrolling body");
+    assert.ok(html.includes("result-cta"), "zone 3: pinned CTA");
+  });
+
+  it("the verdict is an h2 with the visually-hidden 'Result: ' prefix", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      /<h2[^>]*data-testid="miss-headline"[^>]*>/.test(html),
+      "the miss verdict keeps the miss-headline E2E seam on an h2",
+    );
+    assert.ok(
+      html.includes('<span class="sr-only">Result: </span>'),
+      "the verdict h2 reads “Result: …” via the visually-hidden prefix",
+    );
+    assert.ok(
+      html.includes("767 mi east of your pin</h2>"),
+      "the verdict headline keeps the distance + bearing copy",
+    );
+  });
+
+  it("the hit verdict is an h2 too (no miss-headline seam on hits)", () => {
+    setPinScenario(null, null);
+    const html = renderCard("story");
+    assert.ok(
+      !html.includes('data-testid="miss-headline"'),
+      "the hit card must not carry the miss-headline seam",
+    );
+    assert.ok(
+      html.includes('<span class="sr-only">Result: </span>'),
+      "the hit verdict h2 also reads “Result: …”",
+    );
+  });
+
+  it("the body is a single named scroll region; nested scrollers are gone", () => {
+    setPinScenario(null, null);
+    for (const phase of ["story", "done"] as const) {
+      const html = renderCard(phase);
+      assert.ok(
+        html.includes('aria-label="Place details — scroll for more"'),
+        `${phase}: the body region must be named per spec §8.1`,
+      );
+      assert.ok(
+        html.includes('role="region"'),
+        `${phase}: the body region must expose role="region"`,
+      );
+      assert.ok(
+        !html.includes("max-h-44"),
+        `${phase}: the nested max-h-44 story scrollers are folded into the body`,
+      );
+    }
+  });
+
+  it("the pinned CTA carries “Next place →”, full-width, 48px minimum", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      html.includes("Next place →"),
+      "the CTA reads “Next place →” (spec §5)",
+    );
+    assert.ok(
+      html.includes("min-h-[48px]"),
+      "the CTA keeps the 48px motor minimum (§8.10)",
+    );
+  });
+
+  it("the frozen E2E seams survive the restructure, never renamed", () => {
+    // pin-compare-line needs resolvable pins (fail-closed: null pins →
+    // no ledger), so it renders under the Nebraska scenario.
+    setPinScenario(
+      { admin1: "Nebraska", country: "United States" },
+      { admin1: "District of Columbia", country: "United States" },
+    );
+    const done = renderCard("done");
+    for (const seam of ["difficulty-chip", "pin-compare-line", "miss-headline"]) {
+      assert.ok(
+        done.includes(`data-testid="${seam}"`),
+        `E2E seam "${seam}" must survive, never renamed`,
+      );
+    }
+    setPinScenario(null, null);
+    // score-breakdown renders only when the drop carries a breakdown.
+    const scored = renderCard("story", "state", {
+      lon: -96.7,
+      lat: 41.1,
+      distanceKm: 12.3,
+      placeId: "worker-b-test-place",
+      breakdown: {
+        base: 97,
+        difficulty: 2,
+        diffMult: 1.25,
+        streak: 1,
+        combo: 1.05,
+        regionBonus: 15,
+        regionBonusLabel: "state",
+        score: 350,
+      },
+      streakBefore: 0,
+    });
+    assert.ok(
+      scored.includes('data-testid="score-breakdown"'),
+      'E2E seam "score-breakdown" must survive, never renamed',
+    );
+    // growth-line renders only when the learning-outcomes flag sets a line
+    // (GrowthLine returns null otherwise) — the seam lives in source.
+    const src = readFileSync(
+      new URL("./result-card.tsx", import.meta.url),
+      "utf8",
+    );
+    assert.ok(
+      src.includes('data-testid="growth-line"'),
+      'E2E seam "growth-line" must survive, never renamed',
+    );
+  });
+
+  it("the scroll cue module is wired (fade + ⋯ + more below)", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    // renderToString never runs effects: the cue starts hidden, but the
+    // hook + component must be wired in source.
+    assert.ok(
+      html.includes("scroll-cue-wrap"),
+      "the body needs the scroll-cue wrapper",
+    );
+    const src = readFileSync(
+      new URL("./result-card.tsx", import.meta.url),
+      "utf8",
+    );
+    assert.ok(
+      src.includes('} from "@/components/scroll-cue"'),
+      "the card must use the shared scroll-cue module",
+    );
+    assert.ok(
+      src.includes("<ScrollCue visible={moreBelow} />"),
+      "the cue renders from the more-below state",
     );
   });
 });

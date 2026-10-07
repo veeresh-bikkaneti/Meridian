@@ -375,12 +375,16 @@ export async function spotViewportPoint(
 }
 
 /** True when a tap at (x, y) would hit the map canvas (not chrome like the
- *  question bubble floating over it). */
+ *  question bubble floating over it). Waits out the transient tile-loading
+ *  pill first — a tap point projected under it flaps otherwise. */
 export async function tapHitsMap(
   page: Page,
   x: number,
   y: number,
 ): Promise<boolean> {
+  await page
+    .getByText("Loading satellite imagery")
+    .waitFor({ state: "hidden", timeout: 30_000 });
   return page.evaluate(
     ({ px, py }) => {
       const el = document.elementFromPoint(px, py);

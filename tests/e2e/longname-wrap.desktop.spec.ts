@@ -129,6 +129,7 @@ async function expectFullName(
     return {
       textOverflow: style.textOverflow,
       overflowWrap: style.overflowWrap,
+      isPlaceName: node.classList.contains("place-name"),
       scrollW: node.scrollWidth,
       clientW: node.clientWidth,
       left: r.left,
@@ -139,10 +140,14 @@ async function expectFullName(
   expect(c.textOverflow, `${locator}: text-overflow must never be ellipsis`).not.toBe(
     "ellipsis",
   );
-  expect(
-    c.overflowWrap,
-    `${locator}: .place-name must apply (overflow-wrap: break-word)`,
-  ).toBe("break-word");
+  // overflow-wrap: break-word is the .place-name contract — only assert it on
+  // .place-name elements (the <dl> wrapper inherits normal, which is fine).
+  if (c.isPlaceName) {
+    expect(
+      c.overflowWrap,
+      `${locator}: .place-name must apply (overflow-wrap: break-word)`,
+    ).toBe("break-word");
+  }
   expect(
     c.scrollW,
     `${locator}: name must not overflow horizontally (scrollWidth ${c.scrollW} > clientWidth ${c.clientW})`,
@@ -293,24 +298,39 @@ for (const vp of VIEWPORTS) {
           // Frozen seam: the difficulty chip is untouched by this PR.
           await expect(page.getByTestId("difficulty-chip")).toBeVisible();
 
-          // Collapsed view: the name still wraps instead of truncating.
-          await page.getByRole("button", { name: "Collapse question" }).click();
-          await expectFullName(page, "p.place-name", TARGET_LABEL);
+          // Collapsed view (Cartographer's Plate PR3): the name folds away
+          // entirely — honest, never clamped.
+          await page.getByRole("button", { name: "Hide place name" }).click();
+          const toggle = page.getByRole("button", { name: "Show place name" });
+          await expect(toggle).toBeVisible({ timeout: 10_000 });
+          await expect(toggle).toHaveAttribute("aria-expanded", "false");
+          await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
 
-          // Re-open, commit a guaranteed miss on a NAMED place, and check the
-          // reveal card: answer heading + pin-compare-line both carry full
-          // names. (A mid-ocean pin fail-closes to no pin-compare-line, so
-          // the miss targets Vancouver through the __project seam.)
-          await page.getByRole("button", { name: "Expand question" }).click();
+          // Re-open to verify the toggle, then dismiss entirely: at 360px the
+          // bubble (even collapsed) can cover the projected miss point,
+          // flapping tapHitsMap.
+          await toggle.click();
+          await expect(
+            page.getByRole("button", { name: "Hide place name" }),
+          ).toBeVisible({ timeout: 10_000 });
+          await page.getByRole("button", { name: "Hide question" }).click();
+          await expect(
+            page.getByRole("button", { name: "Show question" }),
+          ).toBeVisible({ timeout: 10_000 });
           const miss = await missPointOnNamedPlace(page);
           const { phase } = await commitPin(page, miss.x, miss.y);
           expect(phase, "the Vancouver tap must be a miss (done phase)").toBe("done");
 
           const card = page.locator('section[aria-label="Result"]');
           await expect(card).toBeVisible({ timeout: 15_000 });
+          // PR3 verdict-first: the pinned verdict h2 reads "Result: …";
+          // the full answer name lives only in the ledger TRUE SPOT.
+          const verdict = page.getByTestId("miss-headline");
+          await expect(verdict).toBeVisible({ timeout: 15_000 });
+          expect(((await verdict.textContent()) ?? "").trim()).toMatch(/^Result: /);
           await expectFullName(
             page,
-            'section[aria-label="Result"] h2.place-name',
+            '[data-testid="pin-compare-line"] .truespot-name',
             TARGET_LABEL,
           );
           // Frozen seam: the pin-compare-line testid is untouched.

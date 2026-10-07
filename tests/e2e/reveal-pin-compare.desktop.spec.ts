@@ -19,7 +19,7 @@ import {
  * On a miss, the result card names BOTH locations
  * (data-testid="pin-compare-line") so the player learns where their guess
  * actually landed: in globe edition both sides are COUNTRY-level
- * ("Your pin: Brazil · True spot: Hungary"); "Right state, wrong town!"
+ * ("Your pin: Brazil · True spot: Iran"); "Right state, wrong town!"
  * when the state matches, "Right country, wrong town!" when only the
  * country matches (state/country editions). Fail closed: unresolvable pins
  * (mid-ocean) render no line and the card is otherwise identical; correct
@@ -29,7 +29,7 @@ import {
  * date freeze alone cannot pin the first place. seedDeterministicDeal
  * freezes the calendar AND the RNG streams the session seed is minted
  * from (crypto.getRandomValues with a Math.random fallback), making the
- * first globe place (now a place in Hungary — the difficulty-tiers merge
+ * first globe place (now a place in Iran — the difficulty-tiers merge
  * changed the dealer to fame-weighted, so the seeded first deal moved
  * from "El Tambo, Colombia") identical on every run —
  * verified stable across repeated runs during development. The miss pins
@@ -80,7 +80,7 @@ test.beforeEach(async ({ context }) => {
  * Deterministic deal for the globe tests. The per-session shuffle seed
  * comes from trail.ts mintSeed(): crypto.getRandomValues when available,
  * Math.random otherwise. Seeding both (plus the calendar) pins the full
- * deal order — the first globe place is a place in Hungary on every
+ * deal order — the first globe place is a place in Iran on every
  * run (it was "El Tambo, Colombia" before the difficulty-tiers merge
  * switched the dealer to fame-weighted). The streams stay varying (mulberry32), just deterministic, so no
  * app behavior changes — only the seed.
@@ -142,7 +142,8 @@ async function seedDeterministicDeal(page: Page): Promise<void> {
  * decision (2026-10-05).
  */
 const BAHIA_PIN = { x: 580, y: 490 };
-const EXPECTED_BAHIA_LINE = "Your pin: Brazil · True spot: Hungary";
+// Canonical format: "Your pin: Brazil · True spot: Iran" (the <dl> text
+// normalizes without separators; the E2E matches via regex).
 
 /**
  * Fixed mid-ocean pin: South Atlantic. territoryAt() returns null there,
@@ -167,7 +168,9 @@ test("miss in another country: the card names both locations", async ({
   // auto-retried, no sleeps.
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  await expect(line).toHaveText(EXPECTED_BAHIA_LINE);
+  // The <dl> text normalizes without the ": " and " · " separators — match
+  // the two country names in order.
+  await expect(line).toHaveText(/Your pin\s*Brazil.*True spot\s*Iran/s);
 });
 
 test("hit: the card shows no pin-compare line", async ({ page }) => {

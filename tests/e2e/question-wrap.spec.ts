@@ -122,11 +122,21 @@ test("country: 'Fairchild Air Force Base, Washington' wraps, never truncates", a
     .first()
     .screenshot({ path: "evidence/question-wrap-bubble.png" });
 
-  // Collapsed view: the name still wraps instead of truncating.
-  await page.getByRole("button", { name: "Collapse question" }).click();
-  const collapsed = page.locator(`p:text-is("${TARGET_LABEL}")`);
-  await expect(collapsed).toBeVisible({ timeout: 10_000 });
-  expect(await isFullyVisible(page, `p:text-is("${TARGET_LABEL}")`)).toBe(true);
+  // Collapsed view (Cartographer's Plate PR3): the name folds away
+  // entirely — honest, never clamped. The toggle names its consequence.
+  await page.getByRole("button", { name: "Hide place name" }).click();
+  const toggle = page.getByRole("button", { name: "Show place name" });
+  await expect(toggle).toBeVisible({ timeout: 10_000 });
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  const folded = page.locator(".bubble-scroll-wrap");
+  await expect(folded).toBeHidden();
+  // The full name is gone from the accessibility tree while folded…
+  await expect(page.getByRole("heading", { name: TARGET_LABEL })).toBeHidden();
+  // …and comes back intact on expand.
+  await toggle.click();
+  const headingAgain = page.getByRole("heading", { name: TARGET_LABEL });
+  await expect(headingAgain).toBeVisible({ timeout: 10_000 });
+  expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
   const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);

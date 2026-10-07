@@ -186,7 +186,7 @@ test("country edition miss: the headline teaches direction — '<dist> <wind> of
   const headline = card.getByTestId("miss-headline");
   await expect(headline).toHaveText(
     new RegExp(
-      `^[\\d,]+(\\.\\d+)? (km|m) ${wind} of your pin$`,
+      `^(Result: )?[\\d,]+(\\.\\d+)? (km|m) ${wind} of your pin$`,
     ),
     { timeout: 15_000 },
   );
@@ -238,13 +238,13 @@ test("state edition: miss carries the bearing; hit carries none", async ({
   const { wind, marginDeg } = windFromScreenAngle(center, spot!);
   if (marginDeg >= 12) {
     await expect(headline).toHaveText(
-      new RegExp(`^[\\d,]+(\\.\\d+)? (km|m) ${wind} of your pin$`),
+      new RegExp(`^(Result: )?[\\d,]+(\\.\\d+)? (km|mi|m|ft) ${wind} of your pin$`),
     );
   } else {
     // Too close to a wedge boundary to assert the exact word from screen
     // geometry — the copy shape is still the contract.
     await expect(headline).toHaveText(
-      /^[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
+      /^(Result: )?[\d,]+(\.\d+)? (km|mi|m|ft) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
     );
   }
 
@@ -257,8 +257,8 @@ test("state edition: miss carries the bearing; hit carries none", async ({
   const hitCard = resultCard(page);
   await expect(hitCard.getByTestId("miss-headline")).toHaveCount(0);
   await expect(hitCard.getByText(/of your pin/)).toHaveCount(0);
-  await expect(hitCard.locator("p.font-display").first()).toHaveText(
-    /^[\d,]+(\.\d+)? (km|m)$/,
+  await expect(hitCard.locator("h2.verdict-headline").first()).toHaveText(
+    /^(Result: )?[\d,]+(\.\d+)? (km|mi|m|ft)$/,
   );
 });
 
@@ -282,7 +282,7 @@ test("globe edition: miss headline carries the bearing, PR #58 line intact", asy
   const card = resultCard(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   await expect(card.getByTestId("miss-headline")).toHaveText(
-    /^[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
+    /^(Result: )?[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
     { timeout: 15_000 },
   );
 });

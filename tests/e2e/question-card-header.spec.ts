@@ -147,11 +147,19 @@ test("country: 'West Cambridge/Harvard Square, Massachusetts' renders in full â€
   expect(stripZwsp((await heading.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
   expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
-  // Collapsed view: still no ellipsis.
-  await page.getByRole("button", { name: "Collapse question" }).click();
-  const collapsed = page.locator(`p:text-is("${TARGET_LABEL}")`);
-  await expect(collapsed).toBeVisible({ timeout: 10_000 });
-  expect(await isFullyVisible(page, `p:text-is("${TARGET_LABEL}")`)).toBe(true);
+  // Collapsed view (Cartographer's Plate PR3): the name folds away
+  // entirely â€” honest, never clamped.
+  await page.getByRole("button", { name: "Hide place name" }).click();
+  const toggle = page.getByRole("button", { name: "Show place name" });
+  await expect(toggle).toBeVisible({ timeout: 10_000 });
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
+  // Re-expand: the full name returns, still no ellipsis.
+  await toggle.click();
+  const headingAgain = page.getByRole("heading", { name: TARGET_LABEL });
+  await expect(headingAgain).toBeVisible({ timeout: 10_000 });
+  expect(stripZwsp((await headingAgain.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
+  expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
   expect(errors, `console/page errors: ${JSON.stringify(errors)}`).toEqual([]);
 });
