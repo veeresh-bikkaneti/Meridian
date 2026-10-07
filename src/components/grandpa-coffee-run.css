@@ -1,0 +1,394 @@
+/* Grandpa's Coffee Run — animated donation scene on the Chart Room home.
+ * Chart Room aesthetic: ink outlines, brass accents, warm explorer palette.
+ * One 5.2s walk with a cheers beat at 45%, then quiet idle. Charming,
+ * never annoying. Fully static under prefers-reduced-motion. */
+
+.grandpa-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* same plane as Comet: above content, below dialogs */
+  pointer-events: none;
+}
+
+/* ============ Dotted treasure-map trail ============ */
+.grandpa-path {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(6px, env(safe-area-inset-bottom, 0px));
+  height: 56px;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  animation: path-reveal 5200ms linear forwards;
+}
+
+.grandpa-path svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.trail-dots {
+  stroke: var(--atlas-brass);
+  stroke-width: 5;
+  stroke-dasharray: 0.5 11;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+
+.trail-x line {
+  stroke: var(--atlas-brass);
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+@keyframes path-reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Pause the journey during the cheers beat (JS flips data-beat). */
+.grandpa-scene[data-beat="cheering"] .grandpa-walker,
+.grandpa-scene[data-beat="cheering"] .grandpa-path {
+  animation-play-state: paused;
+}
+
+/* ============ Grandpa walker (the tappable button) ============ */
+.grandpa-walker {
+  --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 132px + 18px);
+  --gw: 84px;
+  position: fixed;
+  left: calc(100vw - var(--park-right) - var(--gw));
+  bottom: max(14px, env(safe-area-inset-bottom, 0px));
+  width: var(--gw);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  animation: grandpa-travel 5200ms linear forwards;
+}
+
+@keyframes grandpa-travel {
+  from {
+    transform: translateX(calc(-100vw + var(--park-right) - 16px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.grandpa-walker:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* ============ Walk bob → cheers sway → idle sway ============ */
+.grandpa-bob {
+  display: block;
+  position: relative;
+  animation: grandpa-bob 0.55s ease-in-out infinite;
+}
+
+@keyframes grandpa-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.grandpa-scene[data-beat="cheering"] .grandpa-bob {
+  animation: grandpa-cheers-sway 1.2s ease-in-out infinite;
+}
+
+@keyframes grandpa-cheers-sway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+.grandpa-scene[data-beat="idle"] .grandpa-bob {
+  animation: grandpa-idle 3.4s ease-in-out infinite;
+}
+
+@keyframes grandpa-idle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.8deg);
+  }
+}
+
+/* ============ Grandpa SVG ============ */
+.grandpa-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.pose {
+  transition: opacity 0.25s ease;
+}
+
+.pose-front {
+  opacity: 0;
+}
+
+.grandpa-scene[data-beat="cheering"] .pose-front {
+  opacity: 1;
+}
+
+.grandpa-scene[data-beat="cheering"] .pose-side {
+  opacity: 0;
+}
+
+/* Cane tap — plants with each step. */
+.cane {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: cane-tap 0.55s ease-in-out infinite;
+}
+
+@keyframes cane-tap {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Mug sip — raises periodically during the walk. */
+.mug-arm {
+  transform-box: fill-box;
+  transform-origin: 85% 15%;
+  animation: mug-sip 2.6s ease-in-out infinite;
+}
+
+@keyframes mug-sip {
+  0%,
+  70%,
+  100% {
+    transform: rotate(0deg);
+  }
+  18%,
+  42% {
+    transform: rotate(-16deg);
+  }
+}
+
+/* Coffee steam wisps. */
+.steam {
+  animation: steam-rise 2.2s ease-in infinite;
+}
+
+.steam-2 {
+  animation-delay: 1.1s;
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-7px);
+    opacity: 0;
+  }
+}
+
+/* Toast sparkles — only during the cheers beat. */
+.cheers-spark {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.grandpa-scene[data-beat="cheering"] .cheers-spark {
+  animation: spark-twinkle 0.8s ease-in-out infinite;
+}
+
+.cheers-spark-2 {
+  animation-delay: 0.4s !important;
+}
+
+@keyframes spark-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* ============ Thought cloud (coffee refill) ============ */
+.thought-cloud {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  width: 64px;
+  display: block;
+  animation: cloud-float 2.8s ease-in-out infinite;
+}
+
+.thought-cloud svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes cloud-float {
+  0%,
+  100% {
+    transform: translate(-30%, 0);
+  }
+  50% {
+    transform: translate(-30%, -4px);
+  }
+}
+
+/* ============ Cheers text (the ask) ============ */
+.grandpa-cheers-text {
+  position: absolute;
+  bottom: calc(100% + 52px);
+  left: 50%;
+  width: max-content;
+  max-width: 230px;
+  padding: 10px 14px 9px;
+  text-align: center;
+  background: rgba(12, 24, 29, 0.92);
+  border: 2px solid var(--atlas-brass);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translate(-50%, 8px) scale(0.96);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease;
+  pointer-events: none;
+}
+
+.grandpa-cheers-text strong {
+  display: block;
+  font-family: var(--font-atlas-display);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.25;
+  color: #f3e6c8;
+  letter-spacing: 0.01em;
+}
+
+.grandpa-cheers-text span {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-atlas-body);
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #f3e6c8;
+  opacity: 0.85;
+}
+
+.grandpa-scene[data-beat="cheering"] .grandpa-cheers-text {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* ============ Responsive: match Comet's breakpoints ============ */
+@media (max-width: 1023.5px) {
+  .grandpa-walker {
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 80px + 12px);
+    --gw: 64px;
+  }
+
+  .thought-cloud {
+    width: 52px;
+    top: -30px;
+  }
+
+  .grandpa-cheers-text {
+    max-width: 190px;
+    padding: 8px 11px 7px;
+    bottom: calc(100% + 42px);
+  }
+
+  .grandpa-cheers-text strong {
+    font-size: 13px;
+  }
+
+  .grandpa-cheers-text span {
+    font-size: 10.5px;
+  }
+}
+
+@media (max-height: 599.5px) {
+  .grandpa-walker {
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 64px + 10px);
+    --gw: 56px;
+  }
+
+  .thought-cloud {
+    width: 46px;
+    top: -26px;
+  }
+
+  .grandpa-cheers-text {
+    display: none; /* too cramped — the tap target remains */
+  }
+}
+
+/* ============ Reduced motion: fully static, parked by Comet ============ */
+@media (prefers-reduced-motion: reduce) {
+  .grandpa-walker,
+  .grandpa-path,
+  .grandpa-bob,
+  .thought-cloud,
+  .cane,
+  .mug-arm,
+  .steam,
+  .cheers-spark {
+    animation: none !important;
+  }
+
+  .grandpa-path {
+    clip-path: none !important;
+  }
+
+  /* No cheers beat — the CTA stays visible so it's always discoverable. */
+  .grandpa-cheers-text {
+    opacity: 1 !important;
+    transform: translate(-50%, 0) !important;
+  }
+
+  .pose-front {
+    opacity: 0 !important;
+  }
+
+  .pose-side {
+    opacity: 1 !important;
+  }
+}

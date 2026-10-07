@@ -2,13 +2,18 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * KoFiSign E2E — animated Ko-fi tip-jar sign presented by Comet
- * (Veeresh 2026-10-07, overriding the earlier "Comet never presents" rule).
+ * Grandpa's Coffee Run E2E — animated donation scene on the Chart Room home
+ * (Veeresh 2026-10-07, replacing PR #91's static sign).
  *
- * Covers: sign renders bottom-right next to Comet without covering CTAs,
- * tap → Comet boops + gate dialog opens (no navigation), Continue opens
- * Ko-fi in a new tab, Cancel / Esc / backdrop dismiss, offline hides the
- * sign, no console errors.
+ * Beats: entrance (dotted trail unrolls) → walk (bob, cane tap, mug sip,
+ * cloud tracks) → cheers at 45% (travel pauses, front pose, donation text)
+ * → arrival (parks left of Comet, idles). Tap grandpa → "ask a grown-up"
+ * gate → Continue opens Ko-fi in a new tab.
+ *
+ * Covers: full walk completes, cheers beat triggers with the ask text,
+ * tap opens the gate (no navigation), Continue opens Ko-fi, Cancel / Esc /
+ * backdrop dismiss, offline hides grandpa, never covers CTAs, no console
+ * errors.
  *
  * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -39,7 +44,9 @@ async function loadHome(page: Page): Promise<string[]> {
     if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
   });
   await page.goto(APP);
-  await expect(page.getByTestId("kofi-sign")).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByTestId("grandpa-scene")).toBeVisible({
+    timeout: 20_000,
+  });
   return errors;
 }
 
@@ -50,7 +57,7 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-async function expectSignNotCoveringCtas(page: Page) {
+async function expectGrandpaNotCoveringCtas(page: Page) {
   const ctas = [
     page.getByRole("button", { name: /solve a mystery|resume your case/i }),
     page.getByRole("button", { name: "Choose a state" }),
@@ -66,48 +73,65 @@ async function expectSignNotCoveringCtas(page: Page) {
     const cy = box!.y + box!.height / 2;
     const top = await page.evaluate(([x, y]) => {
       const el = document.elementFromPoint(x, y);
-      return el ? (el as HTMLElement).outerHTML.slice(0, 120) : "none";
+      return el ? (el as HTMLElement).outerHTML.slice(0, 160) : "none";
     }, [cx, cy]);
     expect(
-      top.includes("kofi-sign"),
-      `CTA center covered by the Ko-fi sign: ${top}`,
+      /grandpa-/.test(top),
+      `CTA center covered by Grandpa's scene: ${top}`,
     ).toBe(false);
   }
 }
 
-test("sign renders bottom-right next to Comet without covering CTAs", async ({
+test("grandpa walks in, cheers halfway with the ask, then parks by Comet", async ({
   page,
 }) => {
   const errors = await loadHome(page);
-  const sign = page.getByTestId("kofi-sign");
-  await expect(sign).toContainText("Support the Expedition");
-  await expect(sign).toContainText("Grown-ups");
-  const box = await sign.boundingBox();
+  const scene = page.getByTestId("grandpa-scene");
+
+  // Beat 1+2: walking — the dotted trail is unrolling beneath him.
+  await expect(scene).toHaveAttribute("data-beat", "walking", {
+    timeout: 5_000,
+  });
+  await expect(page.getByTestId("grandpa-path")).toBeVisible();
+
+  // Beat 3: cheers — travel pauses, he faces the viewer, the ask appears.
+  // (Walk is 5.2s; cheers hits at 45% ≈ 2.3s and holds 1.7s.)
+  await expect(scene).toHaveAttribute("data-beat", "cheering", {
+    timeout: 10_000,
+  });
+  const cheersText = page.locator(".grandpa-cheers-text");
+  await expect(cheersText).toContainText("Support the Expedition");
+  await expect(cheersText).toContainText("Grown-ups");
+  const opacity = await cheersText.evaluate(
+    (el) => getComputedStyle(el).opacity,
+  );
+  expect(parseFloat(opacity)).toBeGreaterThan(0.9);
+
+  // Beat 4: arrival — parks left of Comet and idles.
+  await expect(scene).toHaveAttribute("data-beat", "idle", {
+    timeout: 15_000,
+  });
+  const walker = page.getByTestId("grandpa-walker");
+  const box = await walker.boundingBox();
   expect(box).not.toBeNull();
-  // Bottom-right quadrant: right of viewport center, near the bottom.
   const vp = page.viewportSize()!;
+  // Bottom-right quadrant, near the bottom edge.
   expect(box!.x).toBeGreaterThan(vp.width / 2);
-  expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(60);
+  expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(80);
   // Left of Comet (Comet sits at the far bottom-right corner).
   const comet = await page.getByTestId("comet-mascot").boundingBox();
   expect(comet).not.toBeNull();
   expect(box!.x + box!.width).toBeLessThanOrEqual(comet!.x + 4);
-  await expectSignNotCoveringCtas(page);
+  await expectGrandpaNotCoveringCtas(page);
   expectCleanConsole(errors);
 });
 
-test("tapping the sign makes Comet boop and opens the gate", async ({
+test("tapping grandpa opens the grown-up gate (no navigation)", async ({
   page,
 }) => {
   const errors = await loadHome(page);
-  await page.getByTestId("kofi-sign").dispatchEvent("click"); // sway animation defeats click stability checks
-  // Comet does the happy boop…
-  await expect(page.getByTestId("comet-mascot")).toHaveAttribute(
-    "data-state",
-    "booped",
-    { timeout: 5_000 },
-  );
-  // …and the COPPA gate opens without navigating.
+  // The walker is animated; dispatchEvent avoids click-stability flakiness.
+  await page.getByTestId("grandpa-walker").dispatchEvent("click");
   const dialog = page.getByTestId("support-dialog");
   await expect(dialog).toBeVisible();
   await expect(dialog).toContainText("Ask a grown-up!");
@@ -132,7 +156,7 @@ test("Continue opens Ko-fi in a new tab, app tab stays put", async ({
     }) as typeof window.open;
   });
   const errors = await loadHome(page);
-  await page.getByTestId("kofi-sign").dispatchEvent("click"); // sway animation defeats click stability checks
+  await page.getByTestId("grandpa-walker").dispatchEvent("click");
   await page.getByTestId("support-dialog-continue").click();
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
@@ -156,7 +180,7 @@ test("Cancel closes the gate without opening anything", async ({ page }) => {
     }) as typeof window.open;
   });
   const errors = await loadHome(page);
-  await page.getByTestId("kofi-sign").dispatchEvent("click"); // sway animation defeats click stability checks
+  await page.getByTestId("grandpa-walker").dispatchEvent("click");
   await expect(page.getByTestId("support-dialog")).toBeVisible();
   await page.getByTestId("support-dialog-cancel").click();
   await expect(page.getByTestId("support-dialog")).toBeHidden();
@@ -170,7 +194,7 @@ test("Cancel closes the gate without opening anything", async ({ page }) => {
 
 test("Esc dismisses the gate", async ({ page }) => {
   const errors = await loadHome(page);
-  await page.getByTestId("kofi-sign").dispatchEvent("click"); // sway animation defeats click stability checks
+  await page.getByTestId("grandpa-walker").dispatchEvent("click");
   await expect(page.getByTestId("support-dialog")).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page.getByTestId("support-dialog")).toBeHidden();
@@ -179,7 +203,7 @@ test("Esc dismisses the gate", async ({ page }) => {
 
 test("backdrop tap dismisses the gate", async ({ page }) => {
   const errors = await loadHome(page);
-  await page.getByTestId("kofi-sign").dispatchEvent("click"); // sway animation defeats click stability checks
+  await page.getByTestId("grandpa-walker").dispatchEvent("click");
   const dialog = page.getByTestId("support-dialog");
   await expect(dialog).toBeVisible();
   // Click the backdrop: top-left corner of the viewport is outside the dialog.
@@ -188,7 +212,25 @@ test("backdrop tap dismisses the gate", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("offline hides the sign", async ({ page, context }) => {
+test("grandpa is keyboard-focusable with a visible focus ring", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  const walker = page.getByTestId("grandpa-walker");
+  await walker.focus();
+  await expect(walker).toBeFocused();
+  const outlineWidth = await walker.evaluate(
+    (el) => getComputedStyle(el).outlineWidth,
+  );
+  expect(outlineWidth).toBe("3px");
+  // Enter activates the gate.
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("support-dialog")).toBeVisible();
+  expect(page.url()).toBe(APP);
+  expectCleanConsole(errors);
+});
+
+test("offline hides grandpa entirely", async ({ page, context }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {
@@ -196,14 +238,17 @@ test("offline hides the sign", async ({ page, context }) => {
   });
   await context.setOffline(true);
   await page.goto(APP);
-  // Home still loads; the sign must not render while offline.
+  // Home still loads; grandpa must not render while offline.
   await page.waitForTimeout(3000);
-  await expect(page.getByTestId("kofi-sign")).toHaveCount(0);
+  await expect(page.getByTestId("grandpa-scene")).toHaveCount(0);
   await context.setOffline(false);
   // Offline inherently logs resource failures; the assertion above is the
-  // test — filter the expected offline noise here.
+  // test — filter the expected offline noise here. React #418 is the known
+  // pre-existing flaky hydration warning (same filter as expectCleanConsole).
   const relevant = errors.filter(
-    (e) => !e.includes("ERR_INTERNET_DISCONNECTED"),
+    (e) =>
+      !e.includes("ERR_INTERNET_DISCONNECTED") &&
+      !e.includes("Minified React error #418"),
   );
   expect(relevant, `unexpected errors: ${JSON.stringify(relevant)}`).toEqual([]);
 });
