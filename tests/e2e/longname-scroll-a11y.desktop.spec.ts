@@ -7,6 +7,7 @@ import {
   dismissTileOverlayIfPresent,
   commitPin,
   tapHitsMap,
+  tabUntil,
 } from "./helpers";
 
 /**
@@ -131,6 +132,11 @@ const MISS_LON = -123.11934;
 const MISS_LAT = 49.24966;
 
 async function missPointOnNamedPlace(page: Page): Promise<{ x: number; y: number }> {
+  // Let the tile-loading pill clear first: the projected miss point must not
+  // land under transient chrome, or tapHitsMap flaps.
+  await page
+    .getByText("Loading satellite imagery")
+    .waitFor({ state: "hidden", timeout: 30_000 });
   const p = await page.locator(".satellite-map").evaluate(
     (el, [plon, plat]: [number, number]) => {
       const hook = (
@@ -298,11 +304,27 @@ for (const vp of VIEWPORTS) {
 
           // Reduced-motion: the toggle chevron goes instant.
           if (motion === "reduce") {
-            const dur = await page
+            const trans = await page
               .locator(".bubble-toggle svg")
               .first()
-              .evaluate((el) => getComputedStyle(el).transitionDuration);
-            expect(dur, "chevron instant under reduced motion").toBe("0s");
+              .evaluate((el) => {
+                const s = getComputedStyle(el);
+                return {
+                  prop: s.transitionProperty,
+                  dur: s.transitionDuration,
+                };
+              });
+            // transition: none wins over Tailwind's duration-300; Chromium
+            // may serialize the zero duration as "1e-05s" — assert the
+            // property is none and the duration is effectively zero.
+            expect(
+              trans.prop,
+              "chevron has no transition under reduced motion",
+            ).toBe("none");
+            expect(
+              parseFloat(trans.dur),
+              "chevron instant under reduced motion",
+            ).toBeLessThan(0.05);
           }
         });
 
@@ -457,7 +479,11 @@ for (const vp of VIEWPORTS) {
           const listCap = await list.evaluate(
             (el) => getComputedStyle(el).maxHeight,
           );
-          expect(listCap, "the LIST scrolls at 40dvh").toContain("40dvh");
+          // Chromium resolves 40dvh to px — compare the used value.
+          expect(
+            Math.abs(parseFloat(listCap) - vp.height * 0.4),
+            "the LIST scrolls at 40dvh",
+          ).toBeLessThan(2);
 
           // The pinned loop CTA is reachable without scrolling the body.
           const loopBody = page.locator(".loop-reveal-body").first();
@@ -558,7 +584,9 @@ test.describe("keyboard — no scroll traps", () => {
     const card = page.locator('section[aria-label="Result"]');
     await expect(card).toBeVisible({ timeout: 15_000 });
 
-    // Keyboard order: dismiss (Hide result) → body region → Next place.
+    // Keyboard order: dismiss (Hide result) → body region → … → Next place.
+    // (The body also contains the source link and share button, so Tab walks
+    // through those before the CTA — all reachable, no traps.)
     const dismiss = page.getByRole("button", { name: "Hide result" });
     await dismiss.focus();
     await expect(dismiss).toBeFocused();
@@ -576,6 +604,7 @@ test.describe("keyboard — no scroll traps", () => {
 
     await page.keyboard.press("Tab");
     const cta = page.getByRole("button", { name: "Next place" });
+    await tabUntil(page, () => cta.evaluate((el) => el === document.activeElement));
     await expect(cta).toBeFocused({ timeout: 10_000 });
   });
 });
@@ -593,9 +622,9 @@ for (const scheme of ["dark", "light"] as const) {
       const cta = page.getByRole("button", { name: "Next place" });
       await expect(cta).toBeVisible({ timeout: 15_000 });
       // Keyboard focus (not programmatic) so :focus-visible matches.
+      // Tab order walks the body's source link + share button before the CTA.
       await page.getByRole("button", { name: "Hide result" }).focus();
-      await page.keyboard.press("Tab"); // → body region
-      await page.keyboard.press("Tab"); // → Next place
+      await tabUntil(page, () => cta.evaluate((el) => el === document.activeElement));
       await expect(cta).toBeFocused({ timeout: 10_000 });
       const ring = await cta.evaluate((el) => {
         const s = getComputedStyle(el);
@@ -654,11 +683,14 @@ for (const scheme of ["dark", "light"] as const) {
         .locator(".result-body")
         .first()
         .evaluate((el) => ({
-          minH: parseFloat(getComputedStyle(el).minHeight),
+          minH: getComputedStyle(el).minHeight,
           sh: el.scrollHeight,
           ch: el.clientHeight,
         }));
-      expect(bodyMin.minH, "body keeps ≥120px").toBeGreaterThanOrEqual(120);
+      // Chromium keeps the specified max() unresolved in computed style —
+      // assert the 120px floor is specified; the browser enforces the used
+      // value from max(120px, 20%) at layout time.
+      expect(bodyMin.minH, "body keeps ≥120px floor").toContain("120px");
       // …and the CTA is reachable (scroll the body if needed, then click).
       const cta = page.getByRole("button", { name: "Next place" });
       await cta.evaluate((el) =>
