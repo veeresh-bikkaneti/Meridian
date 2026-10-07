@@ -1214,6 +1214,10 @@ export function GrandpaCoffeeRun() {
   const onTourHandoff = useCallback(() => {
     setTour((t) => (t ? { ...t, stage: "settled" } : t));
     setMode("seated");
+    // Flip the beat in the same render: the cloud is a new element here, so
+    // it appears at full opacity (no CSS transition from a prior hidden
+    // state) — matching the strip's original finale behavior.
+    setBeat("seated");
     writeStorage(TOUR_LAST_DATE_KEY, localDateKey(), "local");
     // The once-per-session cloud gate lives in the effect below — it runs on
     // the mode change and owns the session flag, so the cloud shows on the
