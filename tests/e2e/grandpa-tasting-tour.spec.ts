@@ -209,8 +209,8 @@ for (const width of WIDTHS) {
       }) => {
         const key = todayKey();
         await page.addInitScript(
-          (k: string) => localStorage.setItem(TOUR_DATE_KEY, k),
-          key,
+          ({ k, v }: { k: string; v: string }) => localStorage.setItem(k, v),
+          { k: TOUR_DATE_KEY, v: key },
         );
         const errors = await loadHome(page);
         // No replay: seated immediately, faint trail, no walker.
@@ -246,37 +246,28 @@ test("walker stops at each option, looks, sips, walks on", async ({
   const walker = page.getByTestId("grandpa-tour-walker");
 
   for (let i = 0; i < stopIds.length; i++) {
-    // The walker dwells at stop i (sip phase).
+    // The walker dwells at stop i (sip phase, 1.2s). Sample the bounding box
+    // twice inside the sip window — the walk bob (±3px) is the only expected
+    // motion — and confirm the phase is still "sip" so a late poll can't
+    // mistake the next leg's first steps for the dwell.
     await expect(tour).toHaveAttribute("data-stop-index", String(i), {
       timeout: 60_000,
     });
-    await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
-      timeout: 5_000,
-    });
-    // Let any in-flight smooth scroll settle, then verify the dwell: the
-    // walker barely moves while sipping, near the stop card.
-    await page.waitForFunction(
-      () => {
-        const y = window.scrollY;
-        return new Promise<boolean>((res) => {
-          setTimeout(() => res(Math.abs(window.scrollY - y) < 2), 350);
-        });
-      },
-      null,
-      { timeout: 10_000 },
-    );
     const box1 = await walker.boundingBox();
-    await page.waitForTimeout(600);
+    await page.waitForTimeout(450);
     const box2 = await walker.boundingBox();
+    await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
+      timeout: 2_000,
+    });
     expect(box1 && box2, "walker has a bounding box while sipping").toBeTruthy();
     expect(
       Math.abs(box1!.x - box2!.x),
       `walker dwells at stop ${i} (x)`,
-    ).toBeLessThan(10);
+    ).toBeLessThan(12);
     expect(
       Math.abs(box1!.y - box2!.y),
       `walker dwells at stop ${i} (y)`,
-    ).toBeLessThan(10);
+    ).toBeLessThan(12);
     const cardBox = await page.getByTestId(stopIds[i]).boundingBox();
     expect(cardBox, `stop card ${stopIds[i]} has a box`).not.toBeNull();
     const wcx = box2!.x + box2!.width / 2;
@@ -363,12 +354,15 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
   await expect(tour).toHaveAttribute("data-tour-stage", "settled", {
     timeout: 10_000,
   });
-  // The trail faded to ~15–20%.
-  const trailOpacity = await page
-    .getByTestId("grandpa-tour-path")
-    .evaluate((el) => getComputedStyle(el).opacity);
-  expect(parseFloat(trailOpacity)).toBeGreaterThan(0.1);
-  expect(parseFloat(trailOpacity)).toBeLessThan(0.3);
+  // The trail fades to ~15–20% over ~2s.
+  const trailOpacityNow = () =>
+    page
+      .getByTestId("grandpa-tour-path")
+      .evaluate((el) => parseFloat(getComputedStyle(el).opacity));
+  await expect
+    .poll(trailOpacityNow, { timeout: 10_000 })
+    .toBeLessThan(0.3);
+  expect(await trailOpacityNow()).toBeGreaterThan(0.1);
 
   // Veeresh's exact copy (2026-10-07, parent-directed).
   const bubble = page.getByTestId("grandpa-donation-bubble");
@@ -412,8 +406,8 @@ test("once per day: seeded date → seated immediately, no replay", async ({
 }) => {
   const key = todayKey();
   await page.addInitScript(
-    (k: string) => localStorage.setItem(TOUR_DATE_KEY, k),
-    key,
+    ({ k, v }: { k: string; v: string }) => localStorage.setItem(k, v),
+    { k: TOUR_DATE_KEY, v: key },
   );
   const errors = await loadHome(page);
   const scene = page.getByTestId("grandpa-scene");

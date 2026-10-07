@@ -902,9 +902,11 @@ function TourLayer({
       cancelAnimationFrame(raf);
       setPhase("done");
       // Let the tour walker fade before the strip takes over the finale.
+      // (The effect cleanup clears this timeout on unmount; no cancelled
+      // check here — cancelled is already true by design at this point.)
       timers.push(
         window.setTimeout(() => {
-          if (!cancelled) onHandoffRef.current();
+          onHandoffRef.current();
         }, 450),
       );
     };
