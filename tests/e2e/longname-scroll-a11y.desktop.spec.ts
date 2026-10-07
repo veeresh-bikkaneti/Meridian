@@ -132,11 +132,8 @@ const MISS_LON = -123.11934;
 const MISS_LAT = 49.24966;
 
 async function missPointOnNamedPlace(page: Page): Promise<{ x: number; y: number }> {
-  // Let the tile-loading pill clear first: the projected miss point must not
-  // land under transient chrome, or tapHitsMap flaps.
-  await page
-    .getByText("Loading satellite imagery")
-    .waitFor({ state: "hidden", timeout: 30_000 });
+  // tapHitsMap waits out the tile-loading pill, so the projected point can't
+  // land under transient chrome.
   const p = await page.locator(".satellite-map").evaluate(
     (el, [plon, plat]: [number, number]) => {
       const hook = (

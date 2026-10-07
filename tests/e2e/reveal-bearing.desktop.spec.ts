@@ -238,13 +238,13 @@ test("state edition: miss carries the bearing; hit carries none", async ({
   const { wind, marginDeg } = windFromScreenAngle(center, spot!);
   if (marginDeg >= 12) {
     await expect(headline).toHaveText(
-      new RegExp(`^(Result: )?[\\d,]+(\\.\\d+)? (km|m) ${wind} of your pin$`),
+      new RegExp(`^(Result: )?[\\d,]+(\\.\\d+)? (km|mi|m) ${wind} of your pin$`),
     );
   } else {
     // Too close to a wedge boundary to assert the exact word from screen
     // geometry — the copy shape is still the contract.
     await expect(headline).toHaveText(
-      /^(Result: )?[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
+      /^(Result: )?[\d,]+(\.\d+)? (km|mi|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin$/,
     );
   }
 

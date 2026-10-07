@@ -129,6 +129,7 @@ async function expectFullName(
     return {
       textOverflow: style.textOverflow,
       overflowWrap: style.overflowWrap,
+      isPlaceName: node.classList.contains("place-name"),
       scrollW: node.scrollWidth,
       clientW: node.clientWidth,
       left: r.left,
@@ -139,10 +140,14 @@ async function expectFullName(
   expect(c.textOverflow, `${locator}: text-overflow must never be ellipsis`).not.toBe(
     "ellipsis",
   );
-  expect(
-    c.overflowWrap,
-    `${locator}: .place-name must apply (overflow-wrap: break-word)`,
-  ).toBe("break-word");
+  // overflow-wrap: break-word is the .place-name contract — only assert it on
+  // .place-name elements (the <dl> wrapper inherits normal, which is fine).
+  if (c.isPlaceName) {
+    expect(
+      c.overflowWrap,
+      `${locator}: .place-name must apply (overflow-wrap: break-word)`,
+    ).toBe("break-word");
+  }
   expect(
     c.scrollW,
     `${locator}: name must not overflow horizontally (scrollWidth ${c.scrollW} > clientWidth ${c.clientW})`,
