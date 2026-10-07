@@ -232,3 +232,34 @@ test("greeting shows on every visit (not once per day)", async ({ page }) => {
   await expect(page.getByTestId("comet-greeting")).toHaveCount(1);
   expectCleanConsole(errors);
 });
+
+test("picking an edition makes Comet look at the card and react", async ({ page }) => {
+  // Veeresh 2026-10-06: tapping an edition card → Comet looks at the card,
+  // does the happy boop, and shows an excited bubble.
+  // Note: we dispatch the event directly rather than clicking a real card
+  // button, because a real click navigates away from the home page (Comet
+  // unmounts) before the reaction can be observed. The click→event wiring
+  // is covered by the withCardTap unit path.
+  const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  // Dismiss the greeting so it doesn't overlap the reaction bubble.
+  const bubble = page.getByTestId("comet-greeting");
+  if (await bubble.isVisible()) await bubble.click();
+  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
+  // Simulate the edition-card tap: game-app dispatches this on card click.
+  await page.evaluate(() => {
+    window.dispatchEvent(
+      new CustomEvent("comet:edition-select", {
+        detail: { x: 200, y: 300, edition: "Globe" },
+      }),
+    );
+  });
+  // Comet reacts: happy boop state + excited bubble naming the edition.
+  const mascot = page.getByTestId("comet-mascot");
+  await expect(mascot).toHaveAttribute("data-state", "booped", { timeout: 5000 });
+  const reaction = page.getByTestId("comet-reaction");
+  await expect(reaction).toBeVisible({ timeout: 5000 });
+  await expect(reaction).toContainText("Globe");
+  // The bubble clears itself after ~2.2s.
+  await expect(reaction).toHaveCount(0, { timeout: 8000 });
+  expectCleanConsole(errors);
+});

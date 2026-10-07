@@ -55,7 +55,7 @@ import {
   setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
@@ -756,10 +756,17 @@ export function GameApp() {
     setDifficultyChoiceState(choice);
     writeDifficultyChoice(choice);
   }, []);
-  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
+  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6).
+   *  Veeresh 2026-10-06: also tells Comet which edition was picked so the
+   *  mascot can look at the card and react. */
   const withCardTap = useCallback(
-    (open: () => void) => () => {
+    (edition: string, open: () => void) => (e: ReactMouseEvent) => {
       playCardTap();
+      window.dispatchEvent(
+        new CustomEvent("comet:edition-select", {
+          detail: { x: e.clientX, y: e.clientY, edition },
+        }),
+      );
       open();
     },
     [],
@@ -1480,10 +1487,10 @@ export function GameApp() {
   return (
     <>
     <Choose
-      onState={withCardTap(() => setMenu({ kind: "states" }))}
-      onCountry={withCardTap(() => setMenu({ kind: "countries" }))}
-      onGlobe={withCardTap(() => openRun("globe", "globe", "Globe", difficultyChoice))}
-      onLoop={withCardTap(() => { writeLoopOpen(true); setLoopOpen(true); })}
+      onState={withCardTap("State", () => setMenu({ kind: "states" }))}
+      onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
+      onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onLoop={withCardTap("mystery", () => { writeLoopOpen(true); setLoopOpen(true); })}
       onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -1525,11 +1532,11 @@ function Choose({
   onDifficultyChoice,
   tutorialInvite,
 }: {
-  onState: () => void;
-  onCountry: () => void;
-  onGlobe: () => void;
+  onState: (e: ReactMouseEvent) => void;
+  onCountry: (e: ReactMouseEvent) => void;
+  onGlobe: (e: ReactMouseEvent) => void;
   /** Open the GeoDetective edition (unlimited mysteries). */
-  onLoop: () => void;
+  onLoop: (e: ReactMouseEvent) => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
@@ -1745,7 +1752,7 @@ function EditionCard({
   title: string;
   detail: string;
   action: string;
-  onClick: () => void;
+  onClick: (e: ReactMouseEvent) => void;
 }) {
   return (
     <article className="atlas-card">
